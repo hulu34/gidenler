@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   GİDENLER — DESIGN TOKENS
+   Tek kaynak burasıdır. Bileşenler asla ham hex kullanmaz.
+
+   Yön A — "Kâğıt" (varsayılan, önerilen)
+     Sıcak kâğıt zemin, koyu mürekkep, tek elektrik indigo vurgu.
+     Editoryal otorite + tüketici sıcaklığı. Sayılar kahraman.
+   Yön B — "Gece"
+     Aynı sistemin koyu hâli. Otomatik olarak sistem temasından gelir,
+     ya da <html data-theme="dark"> ile zorlanır.
+
+   Renk yalnızca şu sinyaller için kullanılır:
+     accent   → Gidenler'in kendi sesi (skor, karar katmanı, doğrulama)
+     pos/neg  → olumlu / olumsuz (anlam, marka değil)
+     warn     → dikkat
+     ink-*    → metin hiyerarşisi
+   Sponsorlu içerik ve AI'ın kendi rengi YOKTUR; etiketle ayrılır.
+   ========================================================================== */
+
+@theme {
+  --font-ui: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-read: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-brand: "Instrument Serif", Georgia, serif;
+
+  --text-2xs: 0.625rem;   /* 10px  — micro label */
+  --text-xs: 0.6875rem;   /* 11px  — label */
+  --text-sm: 0.8125rem;   /* 13px  — meta */
+  --text-base: 0.9375rem; /* 15px  — ui */
+  --text-md: 1.0625rem;   /* 17px  — read */
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --text-4xl: 3.75rem;
+
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+
+  --spacing: 0.25rem;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: light;
+
+  --paper: #ffffff;
+  --sheet: #f7f7f6;
+  --sunk: #ececeb;
+  --raise: #ffffff;
+
+  --ink: #141310;
+  --ink-2: #4a473f;
+  --ink-3: #6b6862;
+
+  --line: #e3e2df;
+  --line-2: #c3c2be;
+  --line-strong: #141310;
+
+  --accent: #2b2ac4;
+  --accent-ink: #2b2ac4;
+  --accent-soft: #e0dff8;
+  --on-accent: #ffffff;
+
+  --pos: #0f8a72;
+  --pos-ink: #0b6e5b;
+  --neg: #c0562e;
+  --neg-ink: #a34620;
+  --warn: #8a5a0b;
+  --warn-soft: #f3ead7;
+
+  --shadow-1: 0 1px 1px rgb(20 19 16 / 0.04), 0 8px 22px -18px rgb(20 19 16 / 0.4);
+}
+
+/* --- tokenları Tailwind renk uzayına bağla --- */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-sheet: var(--sheet);
+  --color-sunk: var(--sunk);
+  --color-raise: var(--raise);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-pos: var(--pos);
+  --color-pos-ink: var(--pos-ink);
+  --color-neg: var(--neg);
+  --color-neg-ink: var(--neg-ink);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+}
+
+/* ---------- taban ---------- */
+@layer base {
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: var(--text-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--accent); color: var(--on-accent); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  button { cursor: pointer; text-align: inherit; }
+
+  /* rakamlar her yerde hizalı */
+  .tnum { font-variant-numeric: tabular-nums; }
+}
+
+@layer utilities {
+  /* Ürünün her yerinde tekrar eden mikro etiket. */
+  .label {
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .label-sm {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  /* Deneyim metni: uzun okuma için. */
+  .prose-exp {
+    font-family: var(--font-read);
+    font-size: var(--text-md);
+    line-height: 1.6;
+    max-width: 62ch;
+  }
+  .rule { border-top: 1px solid var(--line); }
+  .rule-strong { border-top: 2px solid var(--line-strong); }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
