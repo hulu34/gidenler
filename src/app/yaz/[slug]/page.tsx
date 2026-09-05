@@ -26,6 +26,7 @@ export default async function WritePage({ params }: { params: Promise<{ slug: st
 
   return (
     <WriteForm
+      entityId={entity.id}
       entityName={entity.name}
       entitySlug={entity.slug}
       categoryLabel={category.label}

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { askGidenler } from "@/lib/decision";
+import { askGidenler, type AskRefine } from "@/lib/decision";
+import { EntityActions } from "@/components/decision/EntityActions";
 import { getEntityById } from "@/data/entities";
 import { getTopicIntelligence } from "@/lib/api";
 import { score1 } from "@/lib/format";
@@ -33,13 +34,21 @@ const OVERRIDES = [
 export default function AskPage() {
   const [q, setQ] = useState("");
   const [asked, setAsked] = useState("");
+  const [refine, setRefine] = useState<AskRefine>({});
 
   useEffect(() => {
     const p = new URLSearchParams(window.location.search).get("q");
     if (p) { setQ(p); setAsked(p); }
   }, []);
 
-  const result = useMemo(() => (asked.trim() ? askGidenler(asked) : null), [asked]);
+  const result = useMemo(() => (asked.trim() ? askGidenler(asked, refine) : null), [asked, refine]);
+  const FOLLOW: Array<[string, Partial<AskRefine> | null]> = [
+    ["Daha ucuz olsun", { maxPrice: 2 }],
+    ["Avrupa Yakası olsun", { side: "avrupa" }],
+    ["Anadolu Yakası olsun", { side: "anadolu" }],
+    ["Date değil, arkadaşlarla", { context: "friends" }],
+    ["Sushi olmasın", { excludeFacet: "Japon mutfağı" }],
+  ];
 
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
@@ -87,15 +96,20 @@ export default function AskPage() {
             )}
           </div>
 
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">Devam et:</span>
+            {FOLLOW.map(([label, r]) => {
+              const on = r ? Object.entries(r).every(([k, v]) => (refine as Record<string, unknown>)[k] === v) : false;
+              return (
+                <button key={label} type="button" aria-pressed={on}
+                  onClick={() => setRefine((cur) => { const next = { ...cur, ...(r ?? {}) }; if (on) { for (const k of Object.keys(r ?? {})) delete (next as Record<string, unknown>)[k]; } return next; })}
+                  className={`h-8 border px-3 text-[12.5px] font-semibold ${on ? "border-accent bg-accent text-on-accent" : "border-line-2 hover:border-ink"}`}>
+                  {label}
+                </button>
+              );
+            })}
             {OVERRIDES.map(([label, add]) => (
-              <button
-                key={label} type="button"
-                onClick={() => { const n = (asked || q) + add; setQ(n); setAsked(n); }}
-                className="h-8 border border-line-2 px-3 text-[12.5px] font-semibold hover:border-ink"
-              >
-                {label}
-              </button>
+              <button key={label} type="button" onClick={() => { const n = (asked || q) + add; setQ(n); setAsked(n); }} className="h-8 border border-line-2 px-3 text-[12.5px] font-semibold hover:border-ink">{label}</button>
             ))}
           </div>
 
@@ -114,7 +128,15 @@ export default function AskPage() {
                         {intel.overallScore !== null ? ` · Gidenler ${score1(intel.overallScore)}` : ""}
                       </span>
                     </div>
-                    <WhyThisResult reasons={it.reasons} warnings={it.warning ? [it.warning] : []} compact />
+                    <WhyThisResult reasons={it.reasons.filter((r) => r.kind !== "trend")} warnings={it.warning ? [it.warning] : []} compact />
+                    {it.reasons.some((r) => r.kind === "trend") && (
+                      <p className="text-[12.5px] text-ink-3"><span className="font-semibold uppercase tracking-[0.1em]">Şimdi</span> · {it.reasons.filter((r) => r.kind === "trend").map((r) => r.text).join(" · ")}</p>
+                    )}
+                    <p className="text-[11.5px] text-ink-3">Neye dayanıyor: zevk profilin · sana benzeyenler · doğrulanmış deneyimler · son 90 gün · uzman sinyalleri</p>
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      <Link href={`/mekan/${e.slug}/`} className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Gör</Link>
+                      <EntityActions entityId={it.entityId} entitySlug={e.slug} entityName={e.name} variant="compact" via="ask" />
+                    </div>
                   </div>
                   <div className="flex flex-col items-start sm:items-end">
                     <span className="text-[34px] font-extrabold leading-none tracking-[-0.05em] text-accent-ink">%{it.match}</span>
@@ -134,11 +156,10 @@ export default function AskPage() {
                 <span key={s} className="font-semibold text-ink">{s}{i < result.sources.length - 1 ? " · " : ""}</span>
               ))}.
             </p>
-            {result.query.context === "default" && result.items.length > 1 && (
-              <p className="mt-2 text-[12.5px] text-ink-3">
-                Karşılaştırmak için: <Link className="underline underline-offset-4" href={`/karsilastir/?a=${getEntityById(result.items[0].entityId)!.slug}&b=${getEntityById(result.items[1].entityId)!.slug}`}>ilk ikisini yan yana koy</Link>.
-              </p>
-            )}
+            <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[12.5px] font-semibold">
+              {result.items.length > 1 && <Link className="underline decoration-line-2 underline-offset-4 hover:decoration-ink" href={`/karsilastir/?a=${getEntityById(result.items[0].entityId)!.slug}&b=${getEntityById(result.items[1].entityId)!.slug}`}>İlk ikisini karşılaştır</Link>}
+              <Link className="underline decoration-line-2 underline-offset-4 hover:decoration-ink" href={`/birlikte/?q=${encodeURIComponent(asked)}`}>Arkadaşlarınla karar ver — Birlikte Nereye?</Link>
+            </p>
           </div>
         </section>
       )}

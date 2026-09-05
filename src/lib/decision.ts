@@ -17,6 +17,8 @@ import {
   DEMO_USER_ID, ambientSignals, contextFit, decisionContexts, getTasteProfile, similarUsers,
 } from "@/data/taste";
 import { eventsOf } from "@/data/events";
+import { demoGroup, getGroup, vegetarianOption } from "@/data/group";
+import { demoGeo } from "@/data/map";
 import { getTopicIntelligence, listCards } from "@/lib/api";
 import { score1, nf } from "@/lib/format";
 import type {
@@ -24,6 +26,8 @@ import type {
   BusinessRootCause, Comparison, ComparisonRow, ConfidenceLevel, Decision, DecisionContext,
   DecisionContextKey, DecisionReason, DecisionVerdict, DecisionWarning, EntityEvent, MatchFactor,
   Passport, PersonalMatch, SimilarUsersPerspective, TasteProfile, TimingVerdict, TopicIntelligence,
+  Group, GroupCandidate, GroupDecision, GroupPreference, GroupVote, MapFilter, MapResult,
+  NotificationEvent, Provenance, TasteEdits, UserEntityRelationship,
 } from "@/lib/types";
 
 const clamp = (n: number, lo = 0, hi = 99) => Math.max(lo, Math.min(hi, n));
@@ -71,9 +75,10 @@ export function getPersonalMatch(
   context: DecisionContextKey = "default",
   userId: string = DEMO_USER_ID,
   overrides?: Partial<Record<string, number>>,
+  profileOverride?: TasteProfile,
 ): PersonalMatch | null {
   const entity = getEntityById(entityId);
-  const profile = getTasteProfile(userId);
+  const profile = profileOverride ?? getTasteProfile(userId);
   const it = getTopicIntelligence(entityId);
   const cat = entity && getCategory(entity.categoryId);
   if (!entity || !profile || !it || !cat || !cat.compliance.showScores || it.overallScore === null) return null;
@@ -191,10 +196,10 @@ function verdictOf(match: number, it: TopicIntelligence): DecisionVerdict {
   return "Şimdilik pas geç";
 }
 
-export function getDecision(entityId: string, context: DecisionContextKey = "default", overrides?: Partial<Record<string, number>>): Decision | null {
+export function getDecision(entityId: string, context: DecisionContextKey = "default", overrides?: Partial<Record<string, number>>, profile?: TasteProfile): Decision | null {
   const entity = getEntityById(entityId);
   const it = getTopicIntelligence(entityId);
-  const m = getPersonalMatch(entityId, context, DEMO_USER_ID, overrides);
+  const m = getPersonalMatch(entityId, context, DEMO_USER_ID, overrides, profile);
   if (!entity || !it || !m || it.overallScore === null) return null;
 
   const reasons: DecisionReason[] = [];
@@ -219,6 +224,9 @@ export function getDecision(entityId: string, context: DecisionContextKey = "def
     reasons.push({ text: `Bu konuda uzman ${nf(expert.experienceCount)} kişi ${score1(expert.score)} verdi`, kind: "expert", source: "Gidenler uzmanlık grafiği" });
   }
   if (it.verifiedRatio >= 0.7) reasons.push({ text: `Deneyimlerin ${pctOf(Math.round(it.verifiedRatio * 100))} doğrulanmış ziyaret`, kind: "verified" });
+  if (entity.business?.claimed && it.negativeThemes.some((t) => t.direction === "up")) {
+    reasons.push({ text: "İşletme şikâyetlere resmi yanıt veriyor", kind: "community", source: "doğrulanmış işletme hesabı · puana etkisi yok" });
+  }
 
   /* artan şikâyetler */
   for (const t of it.negativeThemes.filter((x) => x.direction === "up").slice(0, 2)) {
@@ -319,8 +327,18 @@ export function parseAsk(text: string): AskQuery {
   return q;
 }
 
-export function askGidenler(text: string): AskResult {
+export interface AskRefine {
+  maxPrice?: 1 | 2 | 3 | 4;
+  side?: "avrupa" | "anadolu";
+  context?: DecisionContextKey;
+  excludeFacet?: string;
+}
+const EUROPE = new Set(["Şişli", "Beşiktaş", "Beyoğlu"]);
+
+export function askGidenler(text: string, refine: AskRefine = {}): AskResult {
   const q = parseAsk(text);
+  if (refine.context) q.context = refine.context;
+  if (refine.maxPrice) q.budget = refine.maxPrice;
   const overrides: Partial<Record<string, number>> = {};
   for (const p of q.priorities) {
     if (p.startsWith("-")) overrides[p.slice(1)] = 10; else overrides[p] = 92;
@@ -334,6 +352,8 @@ export function askGidenler(text: string): AskResult {
   if (q.party) understood.push(`${q.party} kişi`);
   if (q.budget) understood.push("₺".repeat(q.budget));
   if (q.context !== "default") understood.push(decisionContexts.find((c) => c.key === q.context)?.label ?? q.context);
+  if (refine.side) understood.push(refine.side === "avrupa" ? "Avrupa Yakası" : "Anadolu Yakası");
+  if (refine.excludeFacet) understood.push(`${lower(refine.excludeFacet)} olmasın`);
   for (const p of q.priorities) understood.push(p.startsWith("-") ? "atmosfer önemli değil" : p === "value" ? "F/P önemli" : p === "taste" ? "lezzet önemli" : "servis önemli");
 
   /* "X mı Y mı?" — karşılaştırma niyeti */
@@ -345,7 +365,9 @@ export function askGidenler(text: string): AskResult {
     understood.splice(0, understood.length, "karşılaştırma", ...named.map((n) => n.name));
   }
   else {
+    if (refine.side) { q.district = undefined; const d = pool.filter((c) => refine.side === "avrupa" ? EUROPE.has(c.entity.location?.district ?? "") : !EUROPE.has(c.entity.location?.district ?? "")); if (d.length) pool = d; }
     if (q.district) { const d = pool.filter((c) => c.entity.location?.district === q.district); if (d.length) pool = d; }
+    if (refine.excludeFacet) pool = pool.filter((c) => !(c.entity.facets ?? []).includes(refine.excludeFacet!));
     if (q.facet) { const f = pool.filter((c) => (c.entity.facets ?? []).includes(q.facet!)); if (f.length) pool = f; }
     if (/yemek|ak[şs]am|restoran|sushi|bal[ıi]k|et\b|lokanta/i.test(text) && !q.facet?.includes("kahve")) {
       const r = pool.filter((c) => c.category.id === "cat.restaurant"); if (r.length) pool = r;
@@ -584,3 +606,201 @@ export function forYou(limit = 3) {
 
 export const demoUserExists = () => users.some((u) => u.id === DEMO_USER_ID);
 export { getSchema };
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   V4 — zevk düzenlemeleri · zevk benzerliği · grup · harita · bildirim
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/** Kullanıcının kendi düzenlemeleri çıkarımın üstüne yazar. Kalıcı profil (demo) değişmez. */
+export function effectiveProfile(edits?: TasteEdits, userId: string = DEMO_USER_ID): TasteProfile {
+  const base = getTasteProfile(userId);
+  if (!edits) return base;
+  const dims = base.dimensions.map((d) => ({ ...d, weight: edits.dimensions[d.key] ?? d.weight }));
+  const bump = (key: string, min: number) => { const d = dims.find((x) => x.key === key); if (d && d.weight < min) d.weight = min; };
+  if (edits.dislikes.includes("kalabalık") || edits.dislikes.includes("gürültü")) bump("quiet", 85);
+  if (edits.dislikes.includes("ilgisiz servis")) bump("service", 90);
+  if (edits.dislikes.includes("uzun bekleme")) bump("speed", 70);
+  const cuisines = base.cuisinePreferences.map((c) => ({ ...c, level: edits.cuisines[c.key] ?? c.level }));
+  return { ...base, dimensions: dims, cuisinePreferences: cuisines, lowTolerance: [...new Set([...base.lowTolerance, ...edits.dislikes])] };
+}
+
+/** Hangi tercih kullanıcının kendi seçimi, hangisi deneyimlerden çıkarım? */
+export function tasteSourceOf(edits: TasteEdits | undefined, kind: "dimension" | "cuisine", key: string): "explicit" | "inferred" {
+  if (!edits) return "inferred";
+  return kind === "dimension" ? (key in edits.dimensions ? "explicit" : "inferred") : (key in edits.cuisines ? "explicit" : "inferred");
+}
+
+const LEVEL_NUM: Record<string, number> = { "çok yüksek": 3, "yüksek": 2, "orta": 1, "düşük": 0 };
+
+/** Zevk benzerliği (0–100): öncelik ağırlıkları + mutfak tercihleri. */
+export function tasteSimilarity(a: TasteProfile, b: TasteProfile): { score: number; shared: string[] } {
+  const keys = ["taste", "service", "value", "atmosphere", "quiet", "speed"];
+  const wa = keys.map((k) => a.dimensions.find((d) => d.key === k)?.weight ?? (k === "taste" ? (a.dimensions.find((d) => d.key === "drink")?.weight ?? 50) : 50));
+  const wb = keys.map((k) => b.dimensions.find((d) => d.key === k)?.weight ?? (k === "taste" ? (b.dimensions.find((d) => d.key === "drink")?.weight ?? 50) : 50));
+  const dist = Math.sqrt(wa.reduce((acc, x, i) => acc + Math.pow((x - wb[i]) / 100, 2), 0) / keys.length);
+  const dimSim = 1 - dist;
+  const all = new Set([...a.cuisinePreferences.map((c) => c.key), ...b.cuisinePreferences.map((c) => c.key)]);
+  let agree = 0, n = 0; const shared: string[] = [];
+  for (const k of all) {
+    const pa = a.cuisinePreferences.find((c) => c.key === k); const pb = b.cuisinePreferences.find((c) => c.key === k);
+    if (!pa || !pb) continue; // sinyal yoksa yargı yok
+    const la = LEVEL_NUM[pa.level], lb = LEVEL_NUM[pb.level];
+    agree += 1 - Math.abs(la - lb) / 4; n++;
+    if (la >= 2 && lb >= 2) shared.push(k);
+  }
+  const cuisineSim = n ? agree / n : 0.5;
+  const score = Math.round((dimSim * 0.55 + cuisineSim * 0.45) * 100);
+  return { score: Math.min(98, score), shared };
+}
+
+/** Zevkine yakın uzmanlar — takipçiye göre değil, benzerliğe göre. */
+export function similarCreators(profile: TasteProfile, limit = 4) {
+  return users
+    .filter((u) => u.id !== profile.userId && getTasteProfile(u.id) && getTasteProfile(u.id).visibility === "public")
+    .map((u) => ({ user: u, ...tasteSimilarity(profile, getTasteProfile(u.id)) }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit);
+}
+
+/* ─────────────────────────── BİRLİKTE NEREYE? ──────────────────────────── */
+
+export const getDemoGroup = (): Group => demoGroup;
+export const getGroupById = (id: string): Group | undefined => getGroup(id);
+
+export function getGroupDecision(group: Group, votes: GroupVote[] = [], myEdits?: TasteEdits): GroupDecision {
+  const pool = listCards().filter((c) => c.score !== null && c.category.compliance.showScores && c.category.id === "cat.restaurant");
+  const needsVeg = group.members.some((m) => m.needsVegetarian);
+  const minBudget = Math.min(...group.members.map((m) => m.budget ?? 4));
+
+  const candidates: GroupCandidate[] = pool.map((c) => {
+    const memberMatches = group.members.map((m) => {
+      const prof = m.isYou ? effectiveProfile(myEdits) : getTasteProfile(m.tasteUserId);
+      const pm = getPersonalMatch(c.entity.id, group.context, m.tasteUserId, undefined, prof);
+      let s = pm?.score ?? 50;
+      if (m.budget && (c.entity.priceLevel ?? 2) > m.budget) s -= ((c.entity.priceLevel ?? 2) - m.budget) * 10;
+      if (m.needsVegetarian && !vegetarianOption[c.entity.id]) s -= 25;
+      return { memberId: m.id, score: Math.max(0, Math.round(s)) };
+    });
+    const mean = memberMatches.reduce((a, x) => a + x.score, 0) / memberMatches.length;
+    const min = Math.min(...memberMatches.map((x) => x.score));
+    /* Ortalama tek başına yetmez: en mutsuz üye de sayılır. */
+    let groupScore = Math.round(mean * 0.7 + min * 0.3);
+    if (group.district && c.entity.location?.district !== group.district) groupScore -= 6;
+    const myVotes = votes.filter((v) => v.entityId === c.entity.id && v.memberId.startsWith(`${group.id}|`));
+    groupScore += myVotes.reduce((a, v) => a + (v.choice === "olur" ? 3 : v.choice === "istemiyorum" ? -6 : 0), 0);
+    groupScore = Math.max(0, Math.min(99, groupScore));
+
+    const strong = memberMatches.filter((x) => x.score >= 75).length;
+    const reasons: DecisionReason[] = [];
+    if (strong >= Math.ceil(group.members.length / 2)) reasons.push({ text: `${group.members.length} kişinin ${strong}'${strong === 1 ? "ine" : strong === 2 || strong === 3 ? "üne" : "üne"} güçlü eşleşme`, kind: "taste" });
+    const fit = contextFit[c.entity.id]?.[group.context] ?? 0;
+    if (fit > 0) reasons.push({ text: `${decisionContexts.find((x) => x.key === group.context)?.label ?? "Grup"} bağlamına uygun`, kind: "community" });
+    const it = getTopicIntelligence(c.entity.id)!;
+    const taste = it.ratingDimensions.find((d) => d.key === "taste");
+    if (taste && taste.value >= 8.5) reasons.push({ text: `Yemek kalitesi güçlü — lezzet ${score1(taste.value)}`, kind: "community", source: `${nf(it.experienceCount)} deneyim` });
+    if (needsVeg && vegetarianOption[c.entity.id]) reasons.push({ text: "Vejetaryen seçenek deneyimlerde anlatılıyor", kind: "community" });
+    if (group.district && c.entity.location?.district === group.district) reasons.push({ text: `Herkesin istediği semtte — ${group.district}`, kind: "community" });
+
+    const warnings: DecisionWarning[] = [];
+    const over = group.members.filter((m) => m.budget && (c.entity.priceLevel ?? 2) > m.budget);
+    if (over.length) warnings.push({ text: `Grubun ${over.length} üyesinin bütçe tercihinin üzerinde (${over.map((m) => m.name).join(", ")})`, severity: over.length >= 2 ? "medium" : "low" });
+    if (needsVeg && !vegetarianOption[c.entity.id]) warnings.push({ text: `Vejetaryen seçenek zayıf — ${group.members.find((m) => m.needsVegetarian)?.name} için sorun`, severity: "medium" });
+    const unhappy = memberMatches.filter((x) => x.score < 55);
+    if (unhappy.length) warnings.push({ text: `${unhappy.map((x) => group.members.find((m) => m.id === x.memberId)?.name).join(", ")} için zayıf eşleşme`, severity: "low" });
+    if (group.district && c.entity.location?.district !== group.district) warnings.push({ text: `${c.entity.location?.district} — grubun istediği semt dışında`, severity: "low" });
+    return { entityId: c.entity.id, groupScore, memberMatches, reasons: reasons.slice(0, 4), warnings: warnings.slice(0, 2) };
+  }).sort((a, b) => b.groupScore - a.groupScore).slice(0, 3);
+
+  const total = group.members.length;
+  const likes = (facet: string) => group.members.filter((m) => { const p = m.isYou ? effectiveProfile(myEdits) : getTasteProfile(m.tasteUserId); return LEVEL_NUM[p.cuisinePreferences.find((c) => c.key === facet)?.level ?? "orta"] >= 2; }).length;
+  const preferences: GroupPreference[] = [
+    { label: "Japon mutfağı seviyor", count: likes("Japon mutfağı"), total },
+    { label: "fiyat / performansa hassas", count: group.members.filter((m) => (m.budget ?? 4) <= 2 || (m.isYou ? false : getTasteProfile(m.tasteUserId).priceSensitivity === "yüksek")).length, total },
+    { label: "vejetaryen seçenek istiyor", count: group.members.filter((m) => m.needsVegetarian).length, total },
+    { label: `${group.district ?? "aynı semt"} istiyor`, count: group.members.filter((m) => m.district === group.district).length, total },
+  ].filter((p) => p.count > 0);
+  void minBudget;
+  return { groupId: group.id, candidates, preferences, isDemo: true };
+}
+
+/* ─────────────────────────── HARİTADA GİDENLER ─────────────────────────── */
+
+export const mapFilters: Array<{ key: MapFilter; label: string }> = [
+  { key: "sana_gore", label: "Sana göre" }, { key: "en_iyi", label: "En iyi" }, { key: "yukselen", label: "Yükselen" },
+  { key: "uzman", label: "Uzmanların seçimi" }, { key: "fp", label: "F/P" }, { key: "sessiz", label: "Sessiz" },
+  { key: "date", label: "Date" }, { key: "aile", label: "Aile" },
+];
+
+function insightOf(it: TopicIntelligence): string {
+  const taste = it.ratingDimensions.find((d) => ["taste", "drink"].includes(d.key));
+  const rising = it.negativeThemes.find((t) => t.direction === "up");
+  const parts: string[] = [];
+  if (taste && taste.value >= 8.5) parts.push("Lezzet güçlü");
+  else if (taste && taste.value < 6.5) parts.push("Lezzet zayıf");
+  if (it.momentum === "stable") parts.push("son 90 gün stabil");
+  else if (it.momentum === "up" || it.momentum === "strong_up") parts.push("son 90 gün yükseliyor");
+  else parts.push("son 90 gün geriliyor");
+  if (rising) parts.push(`${lower(rising.label)} şikâyetleri artıyor`);
+  return parts.join(", ") + ".";
+}
+
+export function getMapRecommendations(filter: MapFilter = "sana_gore", edits?: TasteEdits): MapResult[] {
+  const prof = effectiveProfile(edits);
+  const rows = Object.entries(demoGeo).map(([id, g]) => {
+    const it = getTopicIntelligence(id)!; const e = getEntityById(id)!;
+    const ctx: DecisionContextKey = filter === "date" ? "date" : filter === "aile" ? "family" : "default";
+    const m = getPersonalMatch(id, ctx, DEMO_USER_ID, filter === "sessiz" ? { quiet: 95 } : filter === "fp" ? { value: 95 } : undefined, prof);
+    const expert = it.perspectives.find((p) => p.segment === "expert");
+    const key = filter === "en_iyi" ? (it.overallScore ?? 0) * 10
+      : filter === "yukselen" ? it.scoreTrend.delta * 100 + (it.overallScore ?? 0)
+      : filter === "uzman" ? (expert?.score ?? 0) * 10 + (expert?.experienceCount ?? 0)
+      : filter === "fp" ? (it.ratingDimensions.find((d) => d.key === "value")?.value ?? 0) * 10
+      : filter === "sessiz" ? (ambientSignals[id]?.quiet ?? 5) * 10
+      : (m?.score ?? 0);
+    return { entityId: id, lat: g.lat, lng: g.lng, score: it.overallScore, direction: it.scoreTrend.direction, match: m?.score ?? null, insight: insightOf(it), key, e };
+  }).sort((a, b) => b.key - a.key);
+  return rows.map((r, i) => ({ entityId: r.entityId, lat: r.lat, lng: r.lng, score: r.score, direction: r.direction, match: r.match, insight: r.insight, rank: i + 1 }));
+}
+
+/* ───────────────────────────── BİLDİRİM ────────────────────────────────── */
+
+export function getNotifications(relationships: Record<string, UserEntityRelationship>): NotificationEvent[] {
+  const out: NotificationEvent[] = [];
+  for (const rel of Object.values(relationships)) {
+    const e = getEntityById(rel.entityId); const it = getTopicIntelligence(rel.entityId);
+    if (!e || !it) continue;
+    if (rel.state === "want_to_go") {
+      if (it.momentum === "up" || it.momentum === "strong_up") out.push({ id: `n.up.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `Gitmek istediğin ${e.name} son 30 günde yükseliyor`, body: `Gidenler ${score1(it.overallScore ?? 0)} · ${it.scoreTrend.delta > 0 ? "+" : ""}${score1(it.scoreTrend.delta)} son 90 gün`, at: "2026-09-02", basedOn: "want_to_go" });
+      out.push({ id: `n.went.${e.id}`, kind: "went_yet", entityId: e.id, title: `${e.name}'a gittin mi?`, body: "Gitmek istiyorum demiştin. Gittiysen nasıl geçtiğini iki dokunuşla söyle.", at: "2026-09-02", basedOn: "want_to_go" });
+    }
+    if (rel.state === "saved") {
+      const t = it.negativeThemes.find((x) => x.direction === "up");
+      if (t) out.push({ id: `n.cmp.${e.id}`, kind: "saved_complaints_up", entityId: e.id, title: `Kaydettiğin ${e.name}'da ${lower(t.label)} şikâyetleri arttı`, body: `${nf(t.count)} deneyimde; son 30 günde yükselen tema.`, at: "2026-09-01", basedOn: "saved" });
+    }
+    if (rel.state === "visited") out.push({ id: `n.write.${e.id}`, kind: "visited_write_experience", entityId: e.id, title: `${e.name} için deneyimini yaz`, body: "Gittiğini söyledin. Yazdığın deneyim bir sonraki kararı besler.", at: "2026-09-02", basedOn: "visited" });
+  }
+  return out;
+}
+
+/* ───────────────────────────── PROVENANCE ──────────────────────────────── */
+
+export function decisionProvenance(entityId: string, m: PersonalMatch | null): Provenance | null {
+  const it = getTopicIntelligence(entityId);
+  if (!it) return null;
+  const expert = it.perspectives.find((p) => p.segment === "expert");
+  return {
+    sourceCount: it.experienceCount,
+    verifiedCount: Math.round(it.experienceCount * it.verifiedRatio),
+    timeWindow: "Son 90 gün",
+    confidence: m?.confidence ?? it.confidence,
+    lastUpdated: "2026-09-01",
+    derivedFrom: [
+      "Zevk profilin",
+      `${nf(m?.similarity.sampleSize ?? 0)} benzer kullanıcı`,
+      `${nf(it.experienceCount)} deneyim · son 90 gün`,
+      `${nf(Math.round(it.experienceCount * it.verifiedRatio))} doğrulanmış ziyaret`,
+      expert && expert.experienceCount ? `${nf(expert.experienceCount)} uzman deneyimi` : "Uzmanlık grafiği",
+    ],
+  };
+}

@@ -14,6 +14,7 @@ import { ExperienceCard } from "@/components/experience/ExperienceCard";
 import { getSchema, getCategory } from "@/lib/api";
 import { tasteProfileOf } from "@/lib/decision";
 import { TasteBlock } from "@/components/decision/TasteBlock";
+import { CreatorSimilarity } from "@/components/decision/CreatorSimilarity";
 
 /** Profil adresi: /@denizyer — SEO ve sosyal paylaşım için tek kelimelik kimlik. */
 export function generateStaticParams() {
@@ -67,6 +68,9 @@ export default async function ProfilePage({
 
         {u.bio && <p className="prose-exp max-w-[54ch] text-[17px]">{u.bio}</p>}
       </header>
+
+      {/* ───────── V4: seninle zevk uyumu + takip ───────── */}
+      <div className="mt-6"><CreatorSimilarity userId={u.id} handle={u.handle} /></div>
 
       {/* ───────── sayılar: Gidenler içi ───────── */}
       <section className="mt-8 border-t-2 border-line-strong pt-6">

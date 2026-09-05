@@ -13,6 +13,8 @@ import type { TopicIntelligence } from "@/lib/types";
 import { AskHero } from "@/components/decision/AskHero";
 import { forYou } from "@/lib/decision";
 import { WhyThisResult } from "@/components/decision/WhyThisResult";
+import { ContinueModule } from "@/components/decision/ContinueModule";
+import { EntityActions } from "@/components/decision/EntityActions";
 
 /* ──────────────────────────────────────────────────────────────────────────
    "Ne değişiyor?" için insan dili.
@@ -157,6 +159,7 @@ export default function HomePage() {
                   {card.entity.location?.district && <span>{card.entity.location.district}</span>}
                 </span>
                 <WhyThisResult reasons={decision!.reasons.slice(0, 2)} warnings={decision!.warnings.slice(0, 1)} compact />
+                <EntityActions entityId={card.entity.id} entitySlug={card.entity.slug} entityName={card.entity.name} variant="compact" via="home" />
               </li>
             ))}
           </ul>
@@ -168,6 +171,9 @@ export default function HomePage() {
           </p>
         </section>
       )}
+
+      {/* ───────── 3b · devam et — döngü (V4) ───────── */}
+      <ContinueModule />
 
       {/* ───────── 4 · uzmanların radarında — insan ve güven ağı ───────── */}
       {experts.length > 0 && (

@@ -861,3 +861,168 @@ export interface BusinessAlert {
   severity: "info" | "watch" | "action";
   at: ISODate;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   V4 — DECISION → VISIT → EXPERIENCE
+   --------------------------------------------------------------------------
+   Karar → Git → Yaşa → Yaz → Gidenler daha iyi bilsin → daha iyi karar.
+   Kullanıcı-mekân ilişkisi, hızlı tepki, grup kararı, harita, bildirim.
+   Prototipte kalıcılık localStorage; sözleşmeler backend'e taşınacak şekilde.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────── KULLANICI · MEKÂN İLİŞKİSİ ──────────────────────── */
+
+/** Kaydet ≠ Gitmek istiyorum ≠ Gittim ≠ Deneyim yazdım. Ayrı niyetler. */
+export type UserEntityState = "none" | "saved" | "want_to_go" | "visited" | "experienced";
+
+export interface UserEntityRelationship {
+  entityId: ID;
+  state: UserEntityState;
+  /** İlişki hangi yüzeyden kuruldu: topic | ask | compare | now | map | list */
+  via?: string;
+  listIds: ID[];
+  updatedAt: ISODate;
+  visitedAt?: ISODate;
+}
+
+/** "Gittim" — tek başına deneyim değildir; zayıf ama gerçek bir sinyal. */
+export interface VisitSignal {
+  id: ID;
+  entityId: ID;
+  userId: ID;
+  visitedAt: ISODate;
+  source: "self_report" | "location" | "receipt" | "reservation";
+}
+
+/** Hafif tepki — yazılı deneyimle aynı şey değildir; veri modelinde ayrı. */
+export type ReactionMood = "çok iyi" | "iyi" | "ortalama" | "kötü";
+
+export interface QuickReaction {
+  id: ID;
+  entityId: ID;
+  userId: ID;
+  mood: ReactionMood;
+  returnIntent: ReturnIntent;
+  note?: string;
+  createdAt: ISODate;
+  /** Detaylı deneyime dönüştü mü? */
+  upgradedToExperienceId?: ID;
+}
+
+/** Katkı merdiveni — ağırlık backend'de; mimari sırayı destekler. */
+export type ContributionKind = "VisitSignal" | "QuickReaction" | "Experience" | "VerifiedExperience" | "ExpertExperience";
+
+export interface PersonalList {
+  id: ID;
+  title: string;
+  entityIds: ID[];
+  createdAt: ISODate;
+  isDefault?: boolean;
+}
+
+/* ─────────────────────────── TASTE · KAYNAK ────────────────────────────── */
+
+export type TasteSource = "explicit" | "inferred";
+
+/** Kullanıcının kendi düzenlemeleri — çıkarımın üstüne yazar, kalıcı profili bozmaz. */
+export interface TasteEdits {
+  dimensions: Record<string, number>;
+  cuisines: Record<string, TasteLevel>;
+  dislikes: string[];   // "kalabalık", "gürültü"
+  updatedAt?: ISODate;
+}
+
+/* ───────────────────────── BİRLİKTE NEREYE? ────────────────────────────── */
+
+export interface GroupMember {
+  id: ID;
+  name: string;
+  isYou?: boolean;
+  tasteUserId: ID;
+  budget?: 1 | 2 | 3 | 4;
+  needsVegetarian?: boolean;
+  district?: string;
+  note?: string;
+}
+
+export interface GroupPreference {
+  label: string;      // "3 kişi Japon mutfağı seviyor"
+  count: number;
+  total: number;
+}
+
+export type GroupVoteChoice = "olur" | "farketmez" | "istemiyorum";
+
+export interface GroupVote {
+  memberId: ID;
+  entityId: ID;
+  choice: GroupVoteChoice;
+}
+
+export interface GroupCandidate {
+  entityId: ID;
+  groupScore: number;             // 0–100
+  memberMatches: Array<{ memberId: ID; score: number }>;
+  reasons: DecisionReason[];
+  warnings: DecisionWarning[];
+}
+
+export interface GroupDecision {
+  groupId: ID;
+  candidates: GroupCandidate[];
+  preferences: GroupPreference[];
+  chosenEntityId?: ID;
+  isDemo: boolean;
+}
+
+export interface Group {
+  id: ID;
+  title: string;
+  question: string;
+  context: DecisionContextKey;
+  when?: string;
+  district?: string;
+  members: GroupMember[];
+  createdAt: ISODate;
+  isDemo: boolean;
+}
+
+/* ─────────────────────────── HARİTADA GİDENLER ─────────────────────────── */
+
+export type MapFilter = "sana_gore" | "en_iyi" | "yukselen" | "uzman" | "fp" | "sessiz" | "date" | "aile";
+
+export interface MapResult {
+  entityId: ID;
+  lat: number;
+  lng: number;
+  score: number | null;
+  direction: "up" | "down" | "flat";
+  match: number | null;
+  insight: string;
+  rank: number;
+}
+
+/* ───────────────────────────── BİLDİRİM ────────────────────────────────── */
+
+export type NotificationKind = "want_to_go_rising" | "saved_complaints_up" | "visited_write_experience" | "went_yet";
+
+export interface NotificationEvent {
+  id: ID;
+  kind: NotificationKind;
+  entityId: ID;
+  title: string;
+  body: string;
+  at: ISODate;
+  basedOn: UserEntityState;
+}
+
+/* ───────────────────────────── PROVENANCE ──────────────────────────────── */
+
+export interface Provenance {
+  sourceCount: number;
+  verifiedCount: number;
+  timeWindow: string;
+  confidence: ConfidenceLevel;
+  lastUpdated: ISODate;
+  derivedFrom: string[];
+}

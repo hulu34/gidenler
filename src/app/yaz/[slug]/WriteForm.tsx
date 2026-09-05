@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { markExperienced, useUserData } from "@/lib/store";
 import { Button } from "@/components/ui/Button";
 import type { CommercialRelationship, RatingDimensionDef, ReturnIntent, VerificationMethod } from "@/lib/types";
 
@@ -29,9 +30,10 @@ const VERIFY: Array<{ key: VerificationMethod; label: string }> = [
  * doğrulama güven, şeffaflık dürüstlük. 25 soruluk form DEĞİL.
  */
 export function WriteForm({
-  entityName, entitySlug, categoryLabel, district, dimensions, returnQuestion, regulated,
+  entityName, entitySlug, entityId, categoryLabel, district, dimensions, returnQuestion, regulated,
 }: {
   entityName: string;
+  entityId?: string;
   entitySlug: string;
   categoryLabel: string;
   district?: string;
@@ -60,6 +62,17 @@ export function WriteForm({
 
   const rated = Object.keys(ratings).length;
   const canSend = body.trim().length >= 40 && ret !== null;
+  const userData = useUserData();
+  const quick = entityId ? userData.reactions.find((r) => r.entityId === entityId) : undefined;
+  const steps: Array<[string, boolean]> = [
+    ["Ne yaşadın", body.trim().length >= 40],
+    ["Boyutlar", rated >= Math.min(3, dimensions.length)],
+    ["Ne zaman", !!month],
+    ["Tekrar", ret !== null],
+    ["Doğrulama", verify !== null],
+    ["Şeffaflık", true],
+  ];
+  const doneCount = steps.filter((x) => x[1]).length;
 
   if (sent) {
     return (
@@ -104,6 +117,19 @@ export function WriteForm({
         </p>
       </header>
 
+      {/* ── ilerleme — mobilde yön duygusu ── */}
+      <ol className="mt-6 flex flex-wrap gap-x-4 gap-y-1 border-t border-line pt-3 text-[11px] font-semibold uppercase tracking-[0.12em]" aria-label="Adımlar">
+        {steps.map(([label, ok], i) => (
+          <li key={label} className={ok ? "text-pos-ink" : "text-ink-3"}>{ok ? "✓" : `${i + 1}.`} {label}</li>
+        ))}
+        <li className="ml-auto tnum text-ink-3">{doneCount}/{steps.length}</li>
+      </ol>
+      {quick && (
+        <p className="mt-3 border-l-2 border-accent pl-3 text-[13px] text-ink-2">
+          Hızlı tepkin: <span className="font-semibold">{quick.mood}</span>{quick.returnIntent === "evet" ? ", tekrar giderim" : quick.returnIntent === "hayır" ? ", tekrar gitmem" : ""}{quick.note ? ` — “${quick.note}”` : ""}. Şimdi olayı anlat; tepki deneyime dönüşsün.
+        </p>
+      )}
+
       {/* ── A. METİN — ekranın merkezi ── */}
       <section className="mt-8 border-t-2 border-line-strong pt-6">
         <textarea
@@ -114,9 +140,14 @@ export function WriteForm({
           aria-label="Deneyim metni"
           className="w-full resize-y border-b-2 border-line-2 bg-transparent pb-3 font-[family-name:var(--font-read)] text-[clamp(1.0625rem,2.4vw,1.375rem)] leading-[1.55] outline-none placeholder:text-ink-3 focus:border-accent"
         />
+        <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[12.5px] text-ink-3" aria-label="Yardımcı sorular">
+          {["Ne sipariş ettin?", "Ne zaman gittin?", "En iyi neydi?", "Ne kötüydü?", "Tekrar gider misin?"].map((q) => (
+            <li key={q}><button type="button" onClick={() => setBody((b) => (b.trim() ? `${b.trimEnd()}\n\n` : "") + q + " ")} className="underline decoration-line-2 underline-offset-4 hover:text-ink hover:decoration-ink">{q}</button></li>
+          ))}
+        </ul>
         <p className="mt-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-1 text-[12px] text-ink-3">
           <span className="max-w-[54ch]">
-            Suçlama değil, yaşadığını yaz. Kişisel veri, hakaret ve doğrulanamayan iddia
+            &quot;Harikaydı!!!&quot; değil, olay anlat. Kişisel veri, hakaret ve doğrulanamayan iddia
             moderasyondan geçmez.
           </span>
           <span className={`tnum ${body.trim().length >= 40 ? "text-pos-ink" : ""}`}>
@@ -274,7 +305,7 @@ export function WriteForm({
 
       {/* ── gönder ── */}
       <div className="sticky bottom-0 mt-12 flex flex-wrap items-center gap-4 border-t-2 border-line-strong bg-paper/95 py-4 backdrop-blur-sm">
-        <Button variant="primary" disabled={!canSend} onClick={() => setSent(true)}>
+        <Button variant="primary" disabled={!canSend} onClick={() => { if (entityId) markExperienced(entityId); setSent(true); }}>
           Deneyimi yayınla
         </Button>
         <p className="text-[12px] text-ink-3">

@@ -8,6 +8,7 @@ import { getEntityById } from "@/data/entities";
 import { score1 } from "@/lib/format";
 import { WhyThisResult } from "@/components/decision/WhyThisResult";
 import { DemoNotice } from "@/components/ui/DemoNotice";
+import { EntityActions } from "@/components/decision/EntityActions";
 import type { ComparisonRow } from "@/lib/types";
 
 function fmt(v: number | string | null, f: ComparisonRow["format"]) {
@@ -71,6 +72,10 @@ export default function ComparePage() {
                   {winner.name}
                 </Link>
                 <WhyThisResult reasons={cmp.reasons} warnings={cmp.warnings} />
+                <div className="flex flex-wrap items-center gap-2 border-t border-line pt-4">
+                  <EntityActions entityId={winner.id} entitySlug={winner.slug} entityName={winner.name} variant="compact" via="compare" />
+                  <Link href={`/birlikte/?q=${encodeURIComponent(`${ents[0].name} mı ${ents[1].name} mı?`)}`} className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Gruba sor</Link>
+                </div>
               </div>
               <div className="flex flex-col gap-2 border-t border-line pt-4 lg:border-t-0 lg:pt-0">
                 <span className="label">Duruma göre</span>

@@ -21,7 +21,7 @@ import { Perspectives } from "@/components/topic/Perspectives";
 import { ConsensusSignal } from "@/components/topic/ConsensusSignal";
 import { TrendModule } from "@/components/market/TrendModule";
 import { ExpectationModule } from "@/components/market/ExpectationModule";
-import { DecisionLayer } from "@/components/decision/DecisionLayer";
+import { DecisionHero, MobileActionBar } from "@/components/decision/DecisionHero";
 import { EventsTimeline } from "@/components/decision/EventsTimeline";
 import { getEntityEvents, getSimilarUsersPerspective } from "@/lib/decision";
 
@@ -78,7 +78,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   return (
-    <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
+    <div className="mx-auto max-w-[1180px] px-5 pb-32 sm:px-7 sm:pb-24">
       {/* ───────── 1. NE BURASI ───────── */}
       <header className="flex flex-col gap-4 pt-8 sm:pt-12">
         <nav className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.13em] text-ink-3">
@@ -128,17 +128,6 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           <h2 id="karar" className="sr-only">Gidenler değerlendirmesi</h2>
           <ScoreBlock intel={I} returnLabel={schema.returnLabel} />
 
-          <div className="mt-9">
-            <h3 className="label mb-4">Neye göre</h3>
-            <RatingDimensions dimensions={I.ratingDimensions} />
-          </div>
-
-          <p className="mt-6 max-w-[70ch] border-t border-line pt-3 text-[12px] leading-relaxed text-ink-3">
-            Puanlar {nf(I.experienceCount)} deneyimden hesaplandı. Doğrulanmış ziyaretler, yakın
-            tarihli deneyimler ve yazarın Gidenler itibarı ağırlığı artırır; beyan edilmiş ticari
-            ilişki ağırlığı düşürür.{" "}
-            <strong className="font-semibold text-ink-2">Gidenler puanı dış kaynakların ortalaması değildir.</strong>
-          </p>
         </section>
       ) : (
         <div className="mt-8">
@@ -149,11 +138,26 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ───────── 2b. GİTMELİ MİSİN — DECISION LAYER (V3) ───────── */}
       {I.overallScore !== null && c.mode === "standard" && (
         <div className="mt-10">
-          <DecisionLayer
+          <DecisionHero
             entityId={entity.id} entitySlug={entity.slug} entityName={entity.name}
             compareWith={compareWith ? { slug: compareWith.entity.slug, name: compareWith.entity.name } : undefined}
           />
+          <MobileActionBar entityId={entity.id} entitySlug={entity.slug} />
         </div>
+      )}
+
+      {/* ───────── 2c. NEYE GÖRE — derin zekâ başlıyor ───────── */}
+      {I.overallScore !== null && (
+        <section className="mt-11" aria-labelledby="neyegore">
+          <h2 id="neyegore" className="label mb-4">Neye göre</h2>
+          <RatingDimensions dimensions={I.ratingDimensions} />
+          <p className="mt-6 max-w-[70ch] border-t border-line pt-3 text-[12px] leading-relaxed text-ink-3">
+            Puanlar {nf(I.experienceCount)} deneyimden hesaplandı. Doğrulanmış ziyaretler, yakın
+            tarihli deneyimler ve yazarın Gidenler itibarı ağırlığı artırır; beyan edilmiş ticari
+            ilişki ağırlığı düşürür.{" "}
+            <strong className="font-semibold text-ink-2">Gidenler puanı dış kaynakların ortalaması değildir.</strong>
+          </p>
+        </section>
       )}
 
       {/* ───────── 3. KİM NE DÜŞÜNÜYOR ───────── */}

@@ -6,6 +6,7 @@ import { gidenlerNow, listDecisionContexts } from "@/lib/decision";
 import type { DecisionContextKey } from "@/lib/types";
 import { DecisionCard } from "@/components/decision/DecisionCard";
 import { DemoNotice } from "@/components/ui/DemoNotice";
+import { EntityActions } from "@/components/decision/EntityActions";
 
 /**
  * GİDENLER NOW — "bu akşam nereye?"
@@ -41,7 +42,10 @@ export default function NowPage() {
         {items.map(({ card, decision }, i) => (
           <li key={card.entity.id} className="grid gap-x-10 gap-y-3 border-b border-line py-7 sm:grid-cols-[auto_1fr]">
             <span className="tnum text-[13px] font-bold text-ink-3">{String(i + 1).padStart(2, "0")}</span>
-            <DecisionCard decision={decision!} entityName={card.entity.name} entitySlug={card.entity.slug} compact />
+            <div className="flex flex-col gap-3">
+              <DecisionCard decision={decision!} entityName={card.entity.name} entitySlug={card.entity.slug} compact />
+              <EntityActions entityId={card.entity.id} entitySlug={card.entity.slug} entityName={card.entity.name} variant="compact" via="now" />
+            </div>
           </li>
         ))}
       </ol>

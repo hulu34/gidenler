@@ -194,3 +194,36 @@ export const ambientSignals: Record<string, { quiet: number; speed: number }> = 
   "ent.tas-firin-cihangir": { quiet: 5.6, speed: 7.9 },
   "ent.hotel-payitaht":   { quiet: 7.0, speed: 6.0 },
 };
+
+/* ─────────────────── V4: ek profiller (kullanıcı + grup üyeleri) ───────── */
+
+const mk = (userId: string, dims: Array<[string, string, number]>, cuisines: Array<[string, TasteProfile["cuisinePreferences"][number]["level"]]>, extra: Partial<TasteProfile>): TasteProfile => ({
+  userId,
+  dimensions: dims.map(([key, label, weight]) => ({ key, label, weight })),
+  cuisinePreferences: cuisines.map(([key, level]) => ({ key, label: key, level })),
+  categoryPreferences: [{ key: "cat.restaurant", label: "Restoran", level: "çok yüksek" }],
+  locationPreferences: [], priceSensitivity: "orta", lowTolerance: [], visibility: "public",
+  confidence: "medium", basedOnExperiences: 20, updatedAt: "2026-08-20", isDemo: true, ...extra,
+});
+
+Object.assign(tasteProfiles, {
+  /* Nazlı Ada — takipçisi az, zevki demo kişiye yakın bir uzman. */
+  "u.nazli-ada": mk("u.nazli-ada",
+    [["taste", "Lezzet", 92], ["value", "Fiyat / performans", 74], ["quiet", "Sessizlik", 60], ["service", "Servis", 70], ["atmosphere", "Atmosfer", 40], ["speed", "Hız", 35]],
+    [["Japon mutfağı", "çok yüksek"], ["Esnaf lokantası", "yüksek"], ["Sokak lezzeti", "orta"], ["Filtre kahve", "yüksek"]],
+    { locationPreferences: ["Kadıköy"], lowTolerance: ["gürültü", "geç servis"], basedOnExperiences: 268, confidence: "high" }),
+
+  /* Birlikte Nereye? demo grubu — farklılıklar bilerek işe yarar. */
+  "u.grp-ece": mk("u.grp-ece",
+    [["taste", "Lezzet", 80], ["value", "Fiyat / performans", 95], ["quiet", "Sessizlik", 40], ["service", "Servis", 55], ["atmosphere", "Atmosfer", 60], ["speed", "Hız", 50]],
+    [["Esnaf lokantası", "çok yüksek"], ["Sokak lezzeti", "yüksek"], ["Japon mutfağı", "orta"], ["Balık", "yüksek"]],
+    { priceSensitivity: "yüksek", lowTolerance: ["turist fiyatı"] }),
+  "u.grp-mert": mk("u.grp-mert",
+    [["taste", "Lezzet", 96], ["value", "Fiyat / performans", 40], ["quiet", "Sessizlik", 55], ["service", "Servis", 80], ["atmosphere", "Atmosfer", 70], ["speed", "Hız", 20]],
+    [["Japon mutfağı", "çok yüksek"], ["Fine dining", "çok yüksek"], ["Steakhouse", "yüksek"], ["Sokak lezzeti", "düşük"]],
+    { priceSensitivity: "düşük", lowTolerance: ["kötü ürün"] }),
+  "u.grp-selin": mk("u.grp-selin",
+    [["taste", "Lezzet", 78], ["value", "Fiyat / performans", 65], ["quiet", "Sessizlik", 30], ["service", "Servis", 60], ["atmosphere", "Atmosfer", 90], ["speed", "Hız", 45]],
+    [["Balık", "çok yüksek"], ["Manzara", "yüksek"], ["Japon mutfağı", "yüksek"], ["Esnaf lokantası", "orta"]],
+    { priceSensitivity: "orta", lowTolerance: ["sıkıcı mekân"] }),
+});

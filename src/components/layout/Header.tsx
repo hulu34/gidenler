@@ -62,7 +62,7 @@ export function Header() {
             onFocus={() => setOpen(true)}
             onKeyDown={onKey}
             type="search"
-            placeholder="Nereye gidiyorsun?"
+            placeholder="Nereye?"
             aria-label="Mekân, kategori veya semt ara"
             autoComplete="off"
             className="h-9 w-full border-b-2 border-line-2 bg-transparent pb-1 text-[15px] outline-none placeholder:text-ink-3 focus:border-accent"
@@ -119,6 +119,12 @@ export function Header() {
             className="hidden text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink sm:block"
           >
             Keşfet
+          </Link>
+          <Link
+            href="/benim/"
+            className="text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink"
+          >
+            Benim
           </Link>
           <button
             type="button"
