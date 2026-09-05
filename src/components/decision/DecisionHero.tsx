@@ -16,7 +16,6 @@ const VERDICT_TONE: Record<Decision["verdict"], string> = {
   "Kesinlikle gidilir": "text-pos-ink", "Gidilir": "text-pos-ink", "Sana bağlı": "text-ink",
   "Biraz bekle": "text-warn", "Şimdilik pas geç": "text-neg-ink",
 };
-const CONF = { high: "Yüksek güven", medium: "Orta güven", low: "Sınırlı veri" } as const;
 
 /**
  * TOPIC DECISION HERO — ilk viewport'ta karar.
@@ -58,9 +57,7 @@ export function DecisionHero({ entityId, entitySlug, entityName, compareWith }: 
             </span>
             <span className="flex flex-col gap-1 pb-1.5">
               <span className={`text-[clamp(1.6rem,4.5vw,2.4rem)] font-extrabold leading-none tracking-[-0.035em] ${VERDICT_TONE[decision.verdict]}`}>{decision.verdict}</span>
-              <span className="text-[12px] text-ink-3">
-                {CONF[decision.confidence]} · {decision.timeContext}
-              </span>
+              <span className="text-[12px] text-ink-3">{decision.timeContext}</span>
             </span>
           </div>
 

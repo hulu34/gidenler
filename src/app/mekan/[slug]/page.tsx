@@ -26,6 +26,8 @@ import { EventsTimeline } from "@/components/decision/EventsTimeline";
 import { getEntityEvents, getSimilarUsersPerspective } from "@/lib/decision";
 import { blurbs } from "@/data/blurbs";
 import { Disclosure } from "@/components/ui/Disclosure";
+import { EvidenceStrip } from "@/components/topic/EvidenceStrip";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 
 export function generateStaticParams() {
   return entities.map((e) => ({ slug: e.slug }));
@@ -94,7 +96,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           <h1 className="max-w-[16ch] text-[clamp(2rem,7vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">
             {entity.name}
           </h1>
-          <div className="flex shrink-0 flex-wrap gap-2">
+          <div className="hidden shrink-0 flex-wrap gap-2 sm:flex">
             <Link href={`/yaz/${entity.slug}/`}>
               <Button variant="primary" size="sm">Deneyim yaz</Button>
             </Link>
@@ -116,7 +118,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </p>
 
         {blurbs[entity.id] && (
-          <p className="prose-exp max-w-[60ch] text-[16px] leading-[1.5] text-ink-2">{blurbs[entity.id]}</p>
+          <p className="prose-exp max-w-[60ch] text-[14.5px] leading-[1.5] text-ink-2 sm:text-[15px]">{blurbs[entity.id]}</p>
         )}
         {entity.facets && entity.facets.length > 0 && (
           <ul className="flex flex-wrap gap-x-4 gap-y-1">
@@ -127,12 +129,20 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         )}
       </header>
 
-      {/* ───────── 2. GİDENLER NE DİYOR ───────── */}
+      {/* ═══════════ KATMAN 1 — KARAR: puan · yön · güven · sana göre · hüküm · eylem ═══════════ */}
       {I.overallScore !== null ? (
-        <section className="mt-8 border-t-2 border-line-strong pt-7" aria-labelledby="karar">
-          <h2 id="karar" className="sr-only">Gidenler değerlendirmesi</h2>
-          <ScoreBlock intel={I} returnLabel={schema.returnLabel} lastVisitedAt={experiences[0]?.visitedAt} />
-
+        <section className="mt-7 border-t-2 border-line-strong pt-6" aria-labelledby="karar">
+          <h2 id="karar" className="sr-only">Karar</h2>
+          <ScoreBlock intel={I} />
+          {c.mode === "standard" && (
+            <div className="mt-7">
+              <DecisionHero
+                entityId={entity.id} entitySlug={entity.slug} entityName={entity.name}
+                compareWith={compareWith ? { slug: compareWith.entity.slug, name: compareWith.entity.name } : undefined}
+              />
+              <MobileActionBar entityId={entity.id} entitySlug={entity.slug} />
+            </div>
+          )}
         </section>
       ) : (
         <div className="mt-8">
@@ -140,34 +150,24 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </div>
       )}
 
-      {/* ───────── 2b. GİTMELİ MİSİN — DECISION LAYER (V3) ───────── */}
-      {I.overallScore !== null && c.mode === "standard" && (
-        <div className="mt-10">
-          <DecisionHero
-            entityId={entity.id} entitySlug={entity.slug} entityName={entity.name}
-            compareWith={compareWith ? { slug: compareWith.entity.slug, name: compareWith.entity.name } : undefined}
-          />
-          <MobileActionBar entityId={entity.id} entitySlug={entity.slug} />
-        </div>
-      )}
-
-      {/* ═══════════ KATMAN 2 — KANIT: Neden? (kompakt) ═══════════ */}
+      {/* ═══════════ KATMAN 2 — KANIT: Neye dayanıyor? (kompakt, editoryal) ═══════════ */}
       {I.overallScore !== null && (
         <section className="mt-12 border-t-2 border-line-strong pt-6" aria-labelledby="kanit">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-            <h2 id="kanit" className="text-[13px] font-bold uppercase tracking-[0.2em]">Neden?</h2>
+            <h2 id="kanit" className="text-[13px] font-bold uppercase tracking-[0.2em]">Neye dayanıyor?</h2>
             <p className="max-w-[48ch] text-[12px] text-ink-3">Puanın arkasındaki kanıt. Renk kaliteyi, ok yönü söyler.</p>
           </div>
-          <div className="mt-6">
+          <div className="mt-5"><EvidenceStrip intel={I} returnLabel={schema.returnLabel} lastVisitedAt={experiences[0]?.visitedAt} /></div>
+          <div className="mt-7 border-t border-line pt-5">
             <RatingDimensions dimensions={I.ratingDimensions} />
           </div>
           {I.perspectives.length > 0 && (
-            <div className="mt-9">
+            <div className="mt-8">
               <Perspectives perspectives={I.perspectives} similar={similar} />
             </div>
           )}
           {I.externalSignals.length > 0 && (
-            <div className="mt-9">
+            <div className="mt-8">
               <ExternalScores sources={I.externalSignals} />
             </div>
           )}
@@ -191,10 +191,10 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         <section className="mt-12 border-t-2 border-line-strong pt-6" aria-labelledby="derin">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
             <h2 id="derin" className="text-[13px] font-bold uppercase tracking-[0.2em]">Daha derine in</h2>
-            <p className="text-[12px] text-ink-3">Özet, konular, zaman serisi, olaylar, beklenti ve bütün deneyimler.</p>
+            <p className="text-[12px] text-ink-3">Karar için gerekmez; merak eden iner. Hiçbiri kararı değiştirmez, hepsi açıklar.</p>
           </div>
 
-          <Disclosure title="Deneyim özeti ve konular" hint={I.aiSummary ? `${nf(I.aiSummary.basedOnCount)} deneyim · son ${I.aiSummary.windowDays} gün` : undefined} defaultOpen>
+          <Disclosure title="Deneyim özeti ve konular" hint={[I.aiSummary ? `${nf(I.aiSummary.basedOnCount)} deneyimin özeti` : null, I.positiveThemes[0] ? `en çok: ${I.positiveThemes[0].label.toLocaleLowerCase("tr")}` : null, I.negativeThemes[0] ? `şikâyet: ${I.negativeThemes[0].label.toLocaleLowerCase("tr")}` : null].filter(Boolean).join(" · ")}>
             {I.aiSummary && <AISummaryBlock summary={I.aiSummary} />}
             {(I.positiveThemes.length > 0 || I.negativeThemes.length > 0) && (
               <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-14">
@@ -210,7 +210,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           </Disclosure>
 
           {I.timeline.length > 1 && (
-            <Disclosure title="Gidenler Trend" hint="Bir mekân bugünkü puanı değil, bir zaman serisidir." defaultOpen>
+            <Disclosure title="Gidenler Trend" hint={`${I.timeline.length} dönem · son 90 gün ${I.scoreTrend.delta > 0 ? "+" : ""}${score1(I.scoreTrend.delta)} · ${I.momentum === "up" || I.momentum === "strong_up" ? "yükseliyor" : I.momentum === "down" || I.momentum === "strong_down" ? "geriliyor" : "stabil"}`}>
               <TrendModule
                 name={entity.name} score={I.overallScore} timeline={I.timeline} periodChanges={I.periodChanges}
                 momentum={I.momentum} volume={I.volume} experienceCount={I.experienceCount}
@@ -234,20 +234,19 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           )}
 
           {expertExperiences.length > 0 && (
-            <Disclosure title="Uzmanların deneyimleri" hint={`${expertExperiences.length} uzman · farklı bir perspektif, daha üstün bir görüş değil`} defaultOpen>
+            <Disclosure title="Uzmanların deneyimleri" hint={`${expertExperiences.length} uzman deneyimi · farklı bir perspektif, daha üstün bir görüş değil`}>
               {expertExperiences.map((e) => (
                 <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
               ))}
             </Disclosure>
           )}
 
-          {ad && <div className="mt-10"><SponsoredSlot {...ad} /></div>}
-
           <Disclosure title="Bütün deneyimler" hint={`${nf(I.experienceCount)} deneyimin ${experiences.length} tanesi`}>
             {experiences.map((e) => (
               <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
             ))}
           </Disclosure>
+          {ad && <div className="mt-10"><SponsoredSlot {...ad} /></div>}
         </section>
       )}
 
@@ -276,9 +275,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
                     <span className="text-[17px] font-bold tracking-tight group-hover:text-accent-ink">{n.entity.name}</span>
                     <span className="label">{n.category.label}</span>
                   </span>
-                  {n.score !== null && (
-                    <span className="tnum text-[22px] font-extrabold tracking-[-0.04em]">{score1(n.score)}</span>
-                  )}
+                  {n.score !== null && <ScoreNumber score={n.score} size="md" label />}
                 </Link>
               </li>
             ))}

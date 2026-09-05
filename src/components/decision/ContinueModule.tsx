@@ -50,7 +50,7 @@ export function ContinueModule() {
             <li key={r.entityId} className="grid gap-x-8 gap-y-2 border-b border-line py-5 sm:grid-cols-[1fr_auto]">
               <div className="flex flex-col gap-1">
                 <Link href={`/mekan/${e.slug}/`} className="text-[19px] font-bold leading-tight tracking-[-0.02em] hover:text-accent-ink">{e.name}</Link>
-                <span className="text-[13px] text-ink-2">{r.state === "want_to_go" ? "Gitmek istiyorum demiştin." : "Gittiğini söyledin — nasıl geçti?"}{it.overallScore !== null && <span className="ml-2 inline-flex"><ScoreNumber score={it.overallScore} size="sm" trend={{ direction: it.scoreTrend.direction }} /></span>}</span>
+                <span className="text-[13px] text-ink-2">{r.state === "want_to_go" ? "Gitmek istiyorum demiştin." : "Gittiğini söyledin — nasıl geçti?"}{it.overallScore !== null && <span className="ml-2 inline-flex"><ScoreNumber score={it.overallScore} size="sm" trend={{ direction: it.scoreTrend.direction, delta: it.scoreTrend.delta }} /></span>}</span>
               </div>
               <EntityActions entityId={r.entityId} entitySlug={e.slug} entityName={e.name} variant={r.state === "visited" ? "full" : "compact"} via="home" />
             </li>

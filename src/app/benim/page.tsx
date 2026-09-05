@@ -39,7 +39,7 @@ export default function MyPage() {
           <Link href={`/mekan/${e.slug}/`} className="text-[18px] font-bold leading-tight tracking-[-0.02em] hover:text-accent-ink">{e.name}</Link>
           <span className="flex flex-wrap items-center gap-x-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
             {e.location?.district && <span>{e.location.district}</span>}
-            {it.overallScore !== null && <span className="normal-case tracking-normal"><ScoreNumber score={it.overallScore} size="sm" trend={{ direction: it.scoreTrend.direction }} /></span>}
+            {it.overallScore !== null && <span className="normal-case tracking-normal"><ScoreNumber score={it.overallScore} size="sm" trend={{ direction: it.scoreTrend.direction, delta: it.scoreTrend.delta }} /></span>}
             {m && <span className="tnum text-accent-ink">%{m.score} sana göre</span>}
           </span>
         </div>

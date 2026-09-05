@@ -51,6 +51,28 @@ const empty = (): UserData => ({
   feedback: [], recentIntents: [],
 });
 
+/** Eski sürümden kalan / bozuk kayıt hiçbir zaman sayfayı düşürmesin: her alan tipine göre doğrulanır. */
+function sanitize(p: Partial<UserData> | null): UserData {
+  const e = empty();
+  if (!p || typeof p !== "object") return e;
+  const arr = <T,>(v: unknown, d: T[]): T[] => (Array.isArray(v) ? (v as T[]) : d);
+  const obj = <T,>(v: unknown, d: T): T => (v && typeof v === "object" && !Array.isArray(v) ? (v as T) : d);
+  const taste = obj(p.taste, e.taste);
+  return {
+    relationships: Object.fromEntries(Object.entries(obj<Record<string, UserEntityRelationship>>(p.relationships, {})).filter(([, r]) => r && typeof r === "object" && typeof r.state === "string").map(([k, r]) => [k, { ...r, listIds: Array.isArray(r.listIds) ? r.listIds : [] }])),
+    visits: arr(p.visits, e.visits),
+    reactions: arr(p.reactions, e.reactions),
+    lists: arr<PersonalList>(p.lists, e.lists).filter((l) => l && typeof l === "object" && Array.isArray(l.entityIds)),
+    taste: { dimensions: obj(taste.dimensions, {}), cuisines: obj(taste.cuisines, {}), dislikes: arr(taste.dislikes, []), updatedAt: taste.updatedAt },
+    follows: arr(p.follows, e.follows),
+    groupVotes: arr(p.groupVotes, e.groupVotes),
+    groupChosen: obj(p.groupChosen, e.groupChosen),
+    feedback: arr(p.feedback, e.feedback),
+    recentIntents: arr(p.recentIntents, e.recentIntents),
+    demoMode: p.demoMode === "investor" ? "investor" : undefined,
+  };
+}
+
 let cache: UserData | null = null;
 const listeners = new Set<() => void>();
 
@@ -59,7 +81,7 @@ function read(): UserData {
   if (typeof window === "undefined") return empty();
   try {
     const raw = window.localStorage.getItem(KEY);
-    cache = raw ? { ...empty(), ...(JSON.parse(raw) as UserData) } : empty();
+    cache = raw ? sanitize(JSON.parse(raw) as Partial<UserData>) : empty();
   } catch { cache = empty(); }
   return cache;
 }

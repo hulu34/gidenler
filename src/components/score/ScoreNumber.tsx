@@ -25,9 +25,9 @@ export function ScoreNumber({ score, size = "md", label = false, trend, classNam
   const glyph = trend ? (trend.direction === "up" ? "↑" : trend.direction === "down" ? "↓" : "→") : null;
   const tcolor = trend ? (trend.direction === "up" ? "text-pos-ink" : trend.direction === "down" ? "text-neg-ink" : "text-ink-3") : "";
   return (
-    <span className={`inline-flex flex-wrap items-baseline gap-x-2 ${className}`}>
+    <span className={`inline-flex flex-wrap items-baseline gap-x-2 ${className}`} title={`${score1(score)} · ${s.label}`}>
       <span data-score={s.key} {...(size === "hero" ? { "data-score-hero": "" } : {})} className={`tnum font-extrabold ${SIZES[size]} ${s.text}`}>{score1(score)}</span>
-      {label && <span className={`text-[11px] font-bold uppercase tracking-[0.14em] ${s.text}`}>{s.label}</span>}
+      {label ? <span className={`text-[11px] font-bold uppercase tracking-[0.14em] ${s.text}`}>{s.label}</span> : <span className="sr-only">{s.label}</span>}
       {trend && glyph && (
         <span className={`tnum inline-flex items-center gap-1 text-[12px] font-bold ${tcolor}`}>
           <span aria-hidden>{glyph}</span>

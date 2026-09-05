@@ -1,10 +1,12 @@
-import { score1 } from "@/lib/format";
 import { TrendIndicator } from "./TrendIndicator";
+import { ScoreNumber } from "./ScoreNumber";
+import { getScoreSemantic } from "@/lib/semantic";
 import type { TopicIntelligence } from "@/lib/types";
 
 /**
  * Alt puanlar. RatingSchema'dan gelir — kategori değişince UI değişmez.
  * Mobilde accordion ya da yatay scroll YOK; ikili ızgara.
+ * Renk = kalite (semantik); marka mavisi burada kullanılmaz.
  */
 export function RatingDimensions({ dimensions }: { dimensions: TopicIntelligence["ratingDimensions"] }) {
   return (
@@ -15,12 +17,10 @@ export function RatingDimensions({ dimensions }: { dimensions: TopicIntelligence
             <span className="label leading-tight">{d.label}</span>
             <TrendIndicator direction={d.trend.direction} delta={d.trend.delta} />
           </div>
-          <span className="tnum text-[26px] font-extrabold leading-none tracking-[-0.04em]">
-            {score1(d.value)}
-          </span>
-          <span className="block h-[5px] w-full bg-sunk" aria-hidden>
+          <ScoreNumber score={d.value} size="md" />
+          <span className="block h-[4px] w-full bg-sunk" aria-hidden>
             <span
-              className="block h-full bg-accent"
+              className={`block h-full ${getScoreSemantic(d.value).dot}`}
               style={{ width: `${Math.max(2, d.value * 10)}%` }}
             />
           </span>

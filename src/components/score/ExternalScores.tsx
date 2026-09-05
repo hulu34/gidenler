@@ -35,7 +35,7 @@ export function ExternalScores({ sources }: { sources: ExternalSource[] }) {
             </span>
             {s.kind === "score" ? (
               <>
-                <span className="tnum text-[21px] font-bold leading-none tracking-tight">
+                <span className="tnum text-[16px] font-bold leading-none tracking-tight text-ink-2">
                   {score1(s.score ?? 0)}
                   <span className="text-[13px] font-semibold text-ink-3">/{s.scoreScale}</span>
                 </span>
@@ -43,7 +43,7 @@ export function ExternalScores({ sources }: { sources: ExternalSource[] }) {
               </>
             ) : (
               <>
-                <span className="tnum text-[21px] font-bold leading-none tracking-tight text-neg-ink">
+                <span className="tnum text-[16px] font-bold leading-none tracking-tight text-ink-2">
                   {nf(s.complaintCount ?? 0)}
                 </span>
                 <span className="text-[11.5px] text-ink-3">açık şikayet</span>

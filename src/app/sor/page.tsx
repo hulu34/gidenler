@@ -139,7 +139,7 @@ export default function AskPage() {
                       <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
                         {e.location?.district}{e.priceLevel ? ` · ${"₺".repeat(e.priceLevel)}` : ""}
                       </span>
-                      {intel.overallScore !== null && <ScoreNumber score={intel.overallScore} size="sm" label trend={{ direction: intel.scoreTrend.direction }} />}
+                      {intel.overallScore !== null && <ScoreNumber score={intel.overallScore} size="sm" label trend={{ direction: intel.scoreTrend.direction, delta: intel.scoreTrend.delta }} />}
                     </div>
                     <WhyThisResult reasons={it.reasons.filter((r) => r.kind !== "trend")} warnings={it.warning ? [it.warning] : []} compact />
                     {it.reasons.some((r) => r.kind === "trend") && (
@@ -149,6 +149,9 @@ export default function AskPage() {
                     <div className="flex flex-wrap items-center gap-2 pt-1">
                       <Link href={`/mekan/${e.slug}/`} className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Gör</Link>
                       <EntityActions entityId={it.entityId} entitySlug={e.slug} entityName={e.name} variant="compact" via="ask" />
+                      {result.items.length > 1 && (() => { const other = result.items[i === 0 ? 1 : 0]; const oe = getEntityById(other.entityId)!; return (
+                        <Link href={`/karsilastir/?a=${e.slug}&b=${oe.slug}`} className="inline-flex h-9 items-center px-2 text-[13px] font-semibold text-ink-3 hover:text-ink">{oe.name.split(" ")[0]} ile karşılaştır</Link>
+                      ); })()}
                     </div>
                   </div>
                   <div className="flex flex-col items-start sm:items-end">

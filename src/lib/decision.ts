@@ -386,7 +386,7 @@ export function askGidenler(text: string, refine: AskRefine = {}): AskResult {
     const m = getPersonalMatch(c.entity.id, q.context, DEMO_USER_ID, overrides);
     let bonus = 0;
     if (q.budget && c.entity.priceLevel) bonus += c.entity.priceLevel > q.budget ? -Math.max(0, c.entity.priceLevel - q.budget) * 14 : (q.budget - c.entity.priceLevel) * 5 + 3;
-    if (outside.has(c.entity.id)) bonus -= 20;
+    if (outside.has(c.entity.id)) bonus -= 11;
     if (q.quiet) bonus += ((ambientSignals[c.entity.id]?.quiet ?? 5) - 5) * 2;
     return { c, m, score: m ? clamp(m.score + bonus) : 0 };
   }).filter((x) => x.m).sort((a, b) => b.score - a.score).slice(0, 3);
