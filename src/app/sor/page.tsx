@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { useEffect, useMemo, useState } from "react";
 import { askGidenler, type AskRefine } from "@/lib/decision";
 import { EntityActions } from "@/components/decision/EntityActions";
@@ -9,9 +10,13 @@ import { getTopicIntelligence } from "@/lib/api";
 import { score1 } from "@/lib/format";
 import { WhyThisResult } from "@/components/decision/WhyThisResult";
 import { DemoNotice } from "@/components/ui/DemoNotice";
+import { recordIntent, useUserData } from "@/lib/store";
+
+/** Sunum modunda hazır soru: sayfa açıldığında sonuç görünür, "Devam et" düğmeleri hemen denenebilir. */
+const DEMO_QUERY = "Bu akşam Kadıköy'de sakin, iyi yemekli bir yer arıyorum.";
 
 const ORNEKLER = [
-  "Kadıköy'de sakin, iyi yemekli, 4 kişi gideceğimiz bir yer",
+  "Bu akşam Kadıköy'de sakin, iyi yemekli bir yer arıyorum.",
   "Nişantaşı'nda first date için nereyi seçeyim?",
   "Bu akşam iyi sushi nerede?",
   "Moda Lokantası mı Sakura mı?",
@@ -35,18 +40,26 @@ export default function AskPage() {
   const [q, setQ] = useState("");
   const [asked, setAsked] = useState("");
   const [refine, setRefine] = useState<AskRefine>({});
+  const data = useUserData();
+  const demo = data.demoMode === "investor";
 
   useEffect(() => {
     const p = new URLSearchParams(window.location.search).get("q");
     if (p) { setQ(p); setAsked(p); }
   }, []);
+  /* Sunum modu: soru boşsa hazır soruyu doldur — kullanıcı zaten yazdıysa dokunma. */
+  useEffect(() => {
+    if (demo && !asked && !new URLSearchParams(window.location.search).get("q")) { setQ(DEMO_QUERY); setAsked(DEMO_QUERY); }
+  }, [demo, asked]);
+  useEffect(() => { if (asked.trim()) recordIntent(asked); }, [asked]);
 
   const result = useMemo(() => (asked.trim() ? askGidenler(asked, refine) : null), [asked, refine]);
   const FOLLOW: Array<[string, Partial<AskRefine> | null]> = [
     ["Daha ucuz olsun", { maxPrice: 2 }],
+    ["Date için olsun", { context: "date" }],
     ["Avrupa Yakası olsun", { side: "avrupa" }],
     ["Anadolu Yakası olsun", { side: "anadolu" }],
-    ["Date değil, arkadaşlarla", { context: "friends" }],
+    ["Arkadaşlarla olsun", { context: "friends" }],
     ["Sushi olmasın", { excludeFacet: "Japon mutfağı" }],
   ];
 
@@ -125,14 +138,14 @@ export default function AskPage() {
                       <Link href={`/mekan/${e.slug}/`} className="text-[22px] font-bold leading-tight tracking-[-0.025em] hover:text-accent-ink">{e.name}</Link>
                       <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
                         {e.location?.district}{e.priceLevel ? ` · ${"₺".repeat(e.priceLevel)}` : ""}
-                        {intel.overallScore !== null ? ` · Gidenler ${score1(intel.overallScore)}` : ""}
                       </span>
+                      {intel.overallScore !== null && <ScoreNumber score={intel.overallScore} size="sm" label trend={{ direction: intel.scoreTrend.direction }} />}
                     </div>
                     <WhyThisResult reasons={it.reasons.filter((r) => r.kind !== "trend")} warnings={it.warning ? [it.warning] : []} compact />
                     {it.reasons.some((r) => r.kind === "trend") && (
                       <p className="text-[12.5px] text-ink-3"><span className="font-semibold uppercase tracking-[0.1em]">Şimdi</span> · {it.reasons.filter((r) => r.kind === "trend").map((r) => r.text).join(" · ")}</p>
                     )}
-                    <p className="text-[11.5px] text-ink-3">Neye dayanıyor: zevk profilin · sana benzeyenler · doğrulanmış deneyimler · son 90 gün · uzman sinyalleri</p>
+                    <p className="text-[11.5px] text-ink-3">Dayanak: zevk profilin · sana benzeyenler · {Math.round(intel.experienceCount * intel.verifiedRatio)} doğrulanmış deneyim · son 90 gün</p>
                     <div className="flex flex-wrap items-center gap-2 pt-1">
                       <Link href={`/mekan/${e.slug}/`} className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Gör</Link>
                       <EntityActions entityId={it.entityId} entitySlug={e.slug} entityName={e.name} variant="compact" via="ask" />

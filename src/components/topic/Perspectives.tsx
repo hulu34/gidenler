@@ -1,4 +1,5 @@
 import { nf, score1 } from "@/lib/format";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 import type { Perspective, SimilarUsersPerspective } from "@/lib/types";
 
 /**
@@ -31,9 +32,7 @@ export function Perspectives({ perspectives, similar }: { perspectives: Perspect
           <li key={p.segment} className="flex flex-col gap-1">
             <span className="label leading-tight">{p.label}</span>
             <span className="flex items-baseline gap-2">
-              <span className="tnum text-[28px] font-extrabold leading-none tracking-[-0.045em]">
-                {score1(p.score!)}
-              </span>
+              <ScoreNumber score={p.score!} size="md" />
               <span className="tnum text-[12px] font-semibold text-ink-3">
                 {nf(p.experienceCount)} deneyim
               </span>
@@ -45,9 +44,7 @@ export function Perspectives({ perspectives, similar }: { perspectives: Perspect
           <li className="flex flex-col gap-1 border-l-2 border-accent pl-4 sm:border-l-0 sm:pl-0">
             <span className="label leading-tight text-accent-ink">Sana benzeyenler</span>
             <span className="flex items-baseline gap-2">
-              <span className="tnum text-[28px] font-extrabold leading-none tracking-[-0.045em] text-accent-ink">
-                {score1(similar.score)}
-              </span>
+              <ScoreNumber score={similar.score} size="md" />
               <span className="tnum text-[12px] font-semibold text-ink-3">
                 {nf(similar.sampleSize)} benzer profil
               </span>

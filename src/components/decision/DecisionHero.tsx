@@ -10,6 +10,7 @@ import type { DecisionContextKey, Decision } from "@/lib/types";
 import { WhyThisResult } from "@/components/decision/WhyThisResult";
 import { TimingCard } from "@/components/decision/TimingCard";
 import { EntityActions } from "@/components/decision/EntityActions";
+import { RecommendationFeedback } from "@/components/decision/RecommendationFeedback";
 
 const VERDICT_TONE: Record<Decision["verdict"], string> = {
   "Kesinlikle gidilir": "text-pos-ink", "Gidilir": "text-pos-ink", "Sana bağlı": "text-ink",
@@ -88,8 +89,9 @@ export function DecisionHero({ entityId, entitySlug, entityName, compareWith }: 
             </div>
           )}
 
-          <div className="border-t border-line pt-4">
+          <div className="flex flex-col gap-3 border-t border-line pt-4">
             <EntityActions entityId={entityId} entitySlug={entitySlug} entityName={entityName} via="topic" />
+            <RecommendationFeedback entityId={entityId} surface="topic" />
           </div>
         </div>
 

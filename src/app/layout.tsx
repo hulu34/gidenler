@@ -10,6 +10,7 @@ import "@fontsource/instrument-serif/latin-400.css";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { DemoBoot } from "@/components/demo/DemoBoot";
 
 export const metadata: Metadata = {
   title: {
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           İçeriğe geç
         </a>
+        <DemoBoot />
         <Header />
         <main id="icerik">{children}</main>
         <Footer />

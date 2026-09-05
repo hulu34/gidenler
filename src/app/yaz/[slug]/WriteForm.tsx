@@ -78,20 +78,23 @@ export function WriteForm({
     return (
       <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
         <div className="flex flex-col items-start gap-5 pt-16 sm:pt-24">
-          <span className="label">Yayınlandı</span>
-          <h1 className="max-w-[16ch] text-[clamp(2rem,6vw,3rem)] font-extrabold leading-none tracking-[-0.045em]">
-            Deneyimin {entityName} sayfasında.
+          <span className="label">Deneyimin Gidenler&apos;e eklendi</span>
+          <h1 className="max-w-[18ch] text-[clamp(2rem,6vw,3rem)] font-extrabold leading-none tracking-[-0.045em]">
+            Bu deneyim gelecekteki kararları daha iyi hale getirecek.
           </h1>
           <p className="prose-exp max-w-[52ch] text-ink-2">
+            {entityName} için yazdıkların artık topluluğun deneyim havuzunda.{" "}
             {verify && verify !== "sonra"
-              ? "Ziyaret doğrulaman alındı; deneyimin puan hesabında daha ağır sayılacak."
-              : "Ziyaretini doğrularsan deneyimin puan hesabında daha ağır sayılır. Profilinden sonradan da ekleyebilirsin."}
+              ? "Ziyaret doğrulaman alındı; deneyimin daha güvenilir sayılır."
+              : "Ziyaretini doğrularsan deneyimin daha güvenilir sayılır; profilinden sonradan da ekleyebilirsin."}
+            {" "}Puana ne kadar ve nasıl yansıyacağı tek bir deneyimle belirlenmez.
           </p>
+          <p className="text-[13px] font-semibold text-ink-2">Her deneyim, bir sonraki kararı daha iyi yapar.</p>
           <div className="flex flex-wrap gap-3">
             <Link href={`/mekan/${entitySlug}/`}>
               <Button variant="primary">Sayfaya dön</Button>
             </Link>
-            <Link href="/"><Button variant="ghost">Keşfet</Button></Link>
+            <Link href="/benim/"><Button variant="ghost">Benim Gidenler&apos;im</Button></Link>
           </div>
           <p className="mt-6 border-t border-line pt-3 text-[12px] text-ink-3">
             Prototip: yazdıkların kaydedilmez, sayfayı yenileyince sıfırlanır.

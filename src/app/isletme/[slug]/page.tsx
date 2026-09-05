@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -76,7 +77,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
             <dt className="label">Gidenler puanı</dt>
             <dd className="flex items-baseline gap-2">
               <span className="tnum text-[52px] font-extrabold leading-none tracking-[-0.05em] text-accent-ink">
-                {I.overallScore !== null ? score1(I.overallScore) : "—"}
+                <ScoreNumber score={I.overallScore} size="xl" label />
               </span>
               <TrendIndicator direction={I.scoreTrend.direction} delta={I.scoreTrend.delta} showValue />
             </dd>

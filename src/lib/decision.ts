@@ -360,24 +360,33 @@ export function askGidenler(text: string, refine: AskRefine = {}): AskResult {
   const named = entities.filter((e) => lower(text).includes(lower(e.name.split(" ")[0])) && e.name.length > 3);
 
   let pool = listCards().filter((c) => c.score !== null && c.category.compliance.showScores);
+  const outside = new Set<string>();
   if (named.length >= 2) {
     pool = pool.filter((c) => named.some((n) => n.id === c.entity.id));
     understood.splice(0, understood.length, "karşılaştırma", ...named.map((n) => n.name));
   }
   else {
     if (refine.side) { q.district = undefined; const d = pool.filter((c) => refine.side === "avrupa" ? EUROPE.has(c.entity.location?.district ?? "") : !EUROPE.has(c.entity.location?.district ?? "")); if (d.length) pool = d; }
-    if (q.district) { const d = pool.filter((c) => c.entity.location?.district === q.district); if (d.length) pool = d; }
     if (refine.excludeFacet) pool = pool.filter((c) => !(c.entity.facets ?? []).includes(refine.excludeFacet!));
     if (q.facet) { const f = pool.filter((c) => (c.entity.facets ?? []).includes(q.facet!)); if (f.length) pool = f; }
     if (/yemek|ak[şs]am|restoran|sushi|bal[ıi]k|et\b|lokanta/i.test(text) && !q.facet?.includes("kahve")) {
       const r = pool.filter((c) => c.category.id === "cat.restaurant"); if (r.length) pool = r;
+    }
+    if (q.district) {
+      const d = pool.filter((c) => c.entity.location?.district === q.district);
+      if (d.length) {
+        /* Semt içinde az aday varsa semt dışından tamamla — ceza ile, açıkça etiketlenmiş. */
+        const rest = pool.filter((c) => c.entity.location?.district !== q.district);
+        if (d.length >= 3) pool = d; else { pool = [...d, ...rest]; for (const c of rest) outside.add(c.entity.id); }
+      }
     }
   }
 
   const scored = pool.map((c) => {
     const m = getPersonalMatch(c.entity.id, q.context, DEMO_USER_ID, overrides);
     let bonus = 0;
-    if (q.budget && c.entity.priceLevel) bonus -= Math.max(0, c.entity.priceLevel - q.budget) * 9;
+    if (q.budget && c.entity.priceLevel) bonus += c.entity.priceLevel > q.budget ? -Math.max(0, c.entity.priceLevel - q.budget) * 14 : (q.budget - c.entity.priceLevel) * 5 + 3;
+    if (outside.has(c.entity.id)) bonus -= 20;
     if (q.quiet) bonus += ((ambientSignals[c.entity.id]?.quiet ?? 5) - 5) * 2;
     return { c, m, score: m ? clamp(m.score + bonus) : 0 };
   }).filter((x) => x.m).sort((a, b) => b.score - a.score).slice(0, 3);
@@ -390,7 +399,8 @@ export function askGidenler(text: string, refine: AskRefine = {}): AskResult {
     if (it.momentum === "stable" || it.momentum === "up") reasons.push({ text: "Son 90 gün istikrarlı", kind: "trend", source: `${nf(it.experienceCount)} deneyim` });
     const warnT = it.negativeThemes.find((t) => t.direction === "up");
     const worst = m!.factors.filter((f) => f.effect < -0.3)[0];
-    const warning: DecisionWarning | undefined = worst ? { text: worst.evidence, severity: "medium" }
+    const warning: DecisionWarning | undefined = outside.has(c.entity.id) ? { text: `${q.district} dışında — ${c.entity.location?.district}`, severity: "low" }
+      : worst ? { text: worst.evidence, severity: "medium" }
       : warnT ? { text: `${warnT.label} şikâyetleri artıyor`, source: `${nf(warnT.count)} deneyimde`, severity: "low" } : undefined;
     return { entityId: c.entity.id, match: round(score), reasons: reasons.slice(0, 4), warning };
   });

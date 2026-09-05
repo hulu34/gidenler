@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ScoreNumber, QualityTag } from "@/components/score/ScoreNumber";
 import { nf, score1 } from "@/lib/format";
 import { TrendIndicator } from "@/components/score/TrendIndicator";
 import type { EntityCard } from "@/lib/api";
@@ -46,10 +47,9 @@ export function EntityCardRow({ card, rank }: { card: EntityCard; rank?: number 
         <div className="flex shrink-0 flex-col items-end gap-0.5">
           {score !== null ? (
             <>
-              <span className="tnum text-[30px] font-extrabold leading-none tracking-[-0.045em] group-hover:text-accent-ink">
-                {score1(score)}
-              </span>
-              <span className="flex items-center gap-1 text-[12px] font-semibold">
+              <ScoreNumber score={score} size="lg" />
+              <span className="flex items-center gap-2 text-[12px] font-semibold">
+                <QualityTag score={score} />
                 <TrendIndicator direction={dir} delta={delta90d} showValue />
               </span>
             </>

@@ -27,7 +27,16 @@ export interface UserData {
   follows: string[];          // user ids
   groupVotes: GroupVote[];
   groupChosen: Record<string, string>;
+  /** V5 — küçük öneri geri bildirimi: "Bana uymadı" + neden. Profili değiştirmez; sinyal olarak saklanır. */
+  feedback: RecommendationFeedback[];
+  /** V5 — Sor Gidenler'de son aranan niyetler (en yeni önce, en çok 5). */
+  recentIntents: RecentIntent[];
+  /** V5 — yatırımcı demo modu açık mı? */
+  demoMode?: "investor";
 }
+
+export interface RecommendationFeedback { entityId: string; reason: string; surface: string; createdAt: string }
+export interface RecentIntent { text: string; createdAt: string }
 
 const DEFAULT_LISTS: PersonalList[] = [
   { id: "l.week", title: "Bu hafta", entityIds: [], createdAt: TODAY, isDefault: true },
@@ -39,6 +48,7 @@ const DEFAULT_LISTS: PersonalList[] = [
 const empty = (): UserData => ({
   relationships: {}, visits: [], reactions: [], lists: DEFAULT_LISTS.map((l) => ({ ...l, entityIds: [] })),
   taste: { dimensions: {}, cuisines: {}, dislikes: [] }, follows: [], groupVotes: [], groupChosen: {},
+  feedback: [], recentIntents: [],
 });
 
 let cache: UserData | null = null;
@@ -169,3 +179,60 @@ export function chooseForGroup(groupId: string, entityId: string) {
 /* ─────────────────────────── demo sıfırlama ────────────────────────────── */
 
 export function resetDemo() { write(empty()); }
+
+/* ─────────────────────────── V5 · geri bildirim · niyet ────────────────── */
+
+export function submitFeedback(entityId: string, reason: string, surface: string) {
+  const d = read();
+  write({ ...d, feedback: [...d.feedback.filter((f) => f.entityId !== entityId), { entityId, reason, surface, createdAt: TODAY }] });
+}
+export function clearFeedback(entityId: string) {
+  const d = read();
+  write({ ...d, feedback: d.feedback.filter((f) => f.entityId !== entityId) });
+}
+export function recordIntent(text: string) {
+  const t = text.trim();
+  if (!t) return;
+  const d = read();
+  if (d.recentIntents[0]?.text === t) return;
+  write({ ...d, recentIntents: [{ text: t, createdAt: TODAY }, ...d.recentIntents.filter((i) => i.text !== t)].slice(0, 5) });
+}
+
+/* ─────────────────────────── V5 · yatırımcı demo modu ──────────────────── */
+
+/**
+ * Tek tıkla "yaşanmış" bir hesap: flywheel'in her aşamasında bir örnek var.
+ * Gerçek sinyal üretmez; yalnızca prototip durumunu tohumlar. Sıfırlama: resetDemo().
+ */
+export function seedInvestorDemo(): UserData {
+  const base = empty();
+  const rel = (entityId: string, state: UserEntityState, via: string, listIds: string[] = [], visitedAt?: string): UserEntityRelationship =>
+    ({ entityId, state, via, listIds, updatedAt: TODAY, visitedAt });
+  const lists = base.lists.map((l) =>
+    l.id === "l.week" ? { ...l, entityIds: ["ent.moda-lokantasi"] } :
+    l.id === "l.friends" ? { ...l, entityIds: ["ent.koz-durum"] } : l);
+  const data: UserData = {
+    ...base,
+    lists,
+    relationships: {
+      "ent.moda-lokantasi": rel("ent.moda-lokantasi", "want_to_go", "ask", ["l.week"]),
+      "ent.koz-durum": rel("ent.koz-durum", "saved", "topic", ["l.friends"]),
+      "ent.sakura-omakase": rel("ent.sakura-omakase", "experienced", "write", [], "2026-08-29"),
+      "ent.balikci-sokagi": rel("ent.balikci-sokagi", "visited", "visit", [], "2026-08-31"),
+    },
+    visits: [
+      { id: "v.demo1", entityId: "ent.sakura-omakase", userId: DEMO_USER_ID, visitedAt: "2026-08-29", source: "self_report" },
+      { id: "v.demo2", entityId: "ent.balikci-sokagi", userId: DEMO_USER_ID, visitedAt: "2026-08-31", source: "self_report" },
+    ],
+    reactions: [
+      { id: "r.demo1", entityId: "ent.sakura-omakase", userId: DEMO_USER_ID, mood: "çok iyi", returnIntent: "evet", note: "Uni ve toro efsaneydi.", createdAt: "2026-08-29", upgradedToExperienceId: "exp.demo1" },
+      { id: "r.demo2", entityId: "ent.balikci-sokagi", userId: DEMO_USER_ID, mood: "iyi", returnIntent: "emin değil", note: "Balık taze, servis biraz yavaştı.", createdAt: "2026-08-31" },
+    ],
+    follows: ["u.denizyer"],
+    recentIntents: [{ text: "Bu akşam Kadıköy'de sakin, iyi yemekli bir yer arıyorum.", createdAt: TODAY }],
+    demoMode: "investor",
+  };
+  write(data);
+  return data;
+}
+export function isInvestorDemo(): boolean { return read().demoMode === "investor"; }

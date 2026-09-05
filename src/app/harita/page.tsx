@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { useMemo, useState } from "react";
 import { getEntityById } from "@/data/entities";
 import { getMapRecommendations, mapFilters } from "@/lib/decision";
@@ -73,7 +74,7 @@ export default function MapPage() {
                 <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">{selE.location?.district} · {"₺".repeat(selE.priceLevel ?? 2)}</span>
               </div>
               <div className="flex flex-wrap items-end gap-x-8 gap-y-2">
-                <span className="flex flex-col"><span className="label">Gidenler</span><span className="tnum text-[30px] font-extrabold leading-none tracking-[-0.045em]">{sel.score !== null ? score1(sel.score) : "—"} <span className={`text-[16px] ${sel.direction === "up" ? "text-pos-ink" : sel.direction === "down" ? "text-neg-ink" : "text-ink-3"}`}>{sel.direction === "up" ? "↑" : sel.direction === "down" ? "↓" : "→"}</span></span></span>
+                <span className="flex flex-col gap-1"><span className="label">Gidenler</span><ScoreNumber score={sel.score} size="lg" label trend={{ direction: sel.direction }} /></span>
                 {sel.match !== null && <span className="flex flex-col"><span className="label">Sana göre</span><span className="text-[30px] font-extrabold leading-none tracking-[-0.05em] text-accent-ink">%{sel.match}</span></span>}
               </div>
               <p className="prose-exp text-[14.5px] leading-snug text-ink-2">{sel.insight}</p>

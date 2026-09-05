@@ -6,6 +6,7 @@ import { compareEntities } from "@/lib/decision";
 import { listCards } from "@/lib/api";
 import { getEntityById } from "@/data/entities";
 import { score1 } from "@/lib/format";
+import { getScoreSemantic } from "@/lib/semantic";
 import { WhyThisResult } from "@/components/decision/WhyThisResult";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { EntityActions } from "@/components/decision/EntityActions";
@@ -116,11 +117,19 @@ export default function ComparePage() {
                     return (
                       <tr key={r.key} className="border-t border-line">
                         <td className="py-2.5 pr-4 text-ink-2">{r.label}{r.key === "match" || r.key === "similar" ? <span className="ml-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-ink-3">demo</span> : null}</td>
-                        {r.values.map((v, i) => (
-                          <td key={i} className={`tnum py-2.5 text-right ${i === best && nums.filter((n) => n !== null).length > 1 && new Set(nums).size > 1 ? "font-extrabold text-accent-ink" : "font-semibold"}`}>
-                            {fmt(v, r.format)}
-                          </td>
-                        ))}
+                        {r.values.map((v, i) => {
+                          const isBest = i === best && nums.filter((n) => n !== null).length > 1 && new Set(nums).size > 1;
+                          /* Semantik sistem: puan rengi = kalite; değişim = yön; uyum = marka; oranlar nötr. */
+                          const tone = typeof v !== "number" ? "" :
+                            r.format === "score" ? getScoreSemantic(v).text :
+                            r.format === "delta" ? (v > 0 ? "text-pos-ink" : v < 0 ? "text-neg-ink" : "text-ink-3") :
+                            r.key === "match" ? "text-accent-ink" : "";
+                          return (
+                            <td key={i} className={`tnum py-2.5 text-right ${tone} ${isBest ? "font-extrabold" : "font-semibold"}`}>
+                              {fmt(v, r.format)}{isBest && <span className="sr-only"> (daha iyi)</span>}
+                            </td>
+                          );
+                        })}
                       </tr>
                     );
                   })}

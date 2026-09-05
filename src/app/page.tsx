@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 import {
   expertExperiences, falling, featuredLists, getTopicIntelligence, latestExperiences,
   listCards, listCreators, listIndices, pulse, rising, trending, type EntityCard,
@@ -68,9 +69,7 @@ function ChangeRow({ card, dir }: { card: EntityCard; dir: "up" | "down" }) {
         </div>
         <div className="flex shrink-0 flex-col items-end gap-0.5">
           {card.score !== null && (
-            <span className="tnum text-[24px] font-extrabold leading-none tracking-[-0.04em] group-hover:text-accent-ink">
-              {score1(card.score)}
-            </span>
+            <ScoreNumber score={card.score} size="md" />
           )}
           <span className={`tnum text-[12px] font-semibold ${tone}`}>
             {card.delta90d > 0 ? "+" : ""}
@@ -155,7 +154,7 @@ export default function HomePage() {
                 </Link>
                 <span className="flex flex-wrap items-center gap-x-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
                   <span className={decision!.verdict === "Biraz bekle" ? "text-warn" : "text-pos-ink"}>{decision!.verdict}</span>
-                  {card.score !== null && <span className="tnum">Gidenler {score1(card.score)}</span>}
+                  {card.score !== null && <span className="normal-case tracking-normal"><ScoreNumber score={card.score} size="sm" label /></span>}
                   {card.entity.location?.district && <span>{card.entity.location.district}</span>}
                 </span>
                 <WhyThisResult reasons={decision!.reasons.slice(0, 2)} warnings={decision!.warnings.slice(0, 1)} compact />
@@ -350,9 +349,7 @@ export default function HomePage() {
                       {c.entity.name}
                     </span>
                     <span className="flex items-baseline gap-2">
-                      <span className="tnum text-[26px] font-extrabold leading-none tracking-[-0.045em]">
-                        {score1(c.score!)}
-                      </span>
+                      <ScoreNumber score={c.score!} size="md" />
                       <span className={`tnum text-[13px] font-bold ${tone}`}>
                         <span aria-hidden>{arrow}</span> {c.delta90d > 0 ? "+" : ""}
                         {c.delta90d.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
@@ -419,27 +416,31 @@ export default function HomePage() {
             Bir puandan fazlası.
           </h2>
           <p className="prose-exp max-w-[60ch] text-[15.5px] leading-[1.5] text-ink-2">
-            Bir sayı tek başına ne yaşandığını anlatmaz. Gidenler; deneyimin ne zaman yaşandığını, hangi boyutlarda değiştiğini, kimin söylediğini ve ne kadar güvenilir olduğunu birlikte değerlendirir.
+            Bir sayı tek başına ne yaşandığını anlatmaz. Gidenler her mekân için aynı dört soruyu cevaplar — ve beşincisini de saklamaz.
           </p>
         </div>
         <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { n: "Zaman", t: "Bir mekân bugünkü puanı değil, bir eğridir.",
-              d: "Her deneyimde ne zaman gidildiği kayıtlı. Bir yerin bozulduğunu ya da toparlandığını görebilirsin." },
-            { n: "Boyut", t: "Tek yıldız değil, beş ayrı sinyal.",
-              d: "Lezzet iyi, servis kötü olabilir. Kategoriye göre değişen alt puanlar kararı senin yerine değil, seninle birlikte verir." },
-            { n: "Kim", t: "Herkesin görüşü aynı ağırlıkta değil.",
-              d: "Japon mutfağında 37 deneyimi olan biriyle ilk kez giden aynı sayılmaz. Uzmanlık satın alınamaz, kazanılır." },
-            { n: "Kaynak", t: "Puan bir girdi değil, çıktıdır.",
-              d: "Kimse yıldıza tıklamıyor. Puanlar yazılan deneyimlerden üretilir; satın alınacak bir düğme yok." },
+            { n: "01", t: "Kaç puan?",
+              d: "Topluluğun deneyimlerinden üretilen Gidenler puanı. Kimse yıldıza tıklamıyor; puan bir girdi değil, çıktıdır." },
+            { n: "02", t: "Nereye gidiyor?",
+              d: "Son 90 günün yönü. Bir mekân bugünkü puanı değil, bir eğridir — bozulduğunu ya da toparlandığını görürsün." },
+            { n: "03", t: "Sana uygun mu?",
+              d: "Zevk profilinle bu deneyimler arasındaki uyum. Puandan ayrı bir sayı; 9,4 alan bir yer sana %51 uyabilir." },
+            { n: "04", t: "Neden?",
+              d: "Hangi boyutlar, kimin deneyimleri, hangi tarihler. Karar senin yerine değil, seninle birlikte verilir." },
           ].map((x) => (
             <li key={x.n} className="flex flex-col gap-2">
-              <span className="label">{x.n}</span>
+              <span className="label tnum">{x.n}</span>
               <h3 className="text-[18px] font-bold leading-tight tracking-[-0.02em]">{x.t}</h3>
               <p className="prose-exp text-[14.5px] leading-[1.5] text-ink-2">{x.d}</p>
             </li>
           ))}
         </ul>
+        <p className="mt-7 border-t border-line pt-4 text-[13.5px] leading-relaxed text-ink-2">
+          <span className="font-bold">Ne kadar eminiz?</span>{" "}
+          <span className="text-ink-3">Her puanın yanında güven düzeyi var: kaç deneyim, kaçı doğrulanmış, ne kadar yeni, görüşler ne kadar örtüşüyor. Az veri puanı düşürmez; yalnızca daha temkinli okunmasını söyler.</span>
+        </p>
       </section>
 
       <div className="mt-12"><DemoNotice /></div>

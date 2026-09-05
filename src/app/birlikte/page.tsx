@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { useEffect, useMemo, useState } from "react";
 import { getEntityById } from "@/data/entities";
 import { getTopicIntelligence } from "@/lib/api";
@@ -88,7 +89,8 @@ export default function GroupPage() {
                     <div className="flex min-w-0 flex-col gap-3">
                       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                         <Link href={`/mekan/${e.slug}/`} className="text-[22px] font-bold leading-tight tracking-[-0.025em] hover:text-accent-ink">{e.name}</Link>
-                        <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">{e.location?.district} · {"₺".repeat(e.priceLevel ?? 2)} · Gidenler {it.overallScore !== null ? score1(it.overallScore) : "—"}</span>
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">{e.location?.district} · {"₺".repeat(e.priceLevel ?? 2)}</span>
+                        <ScoreNumber score={it.overallScore} size="sm" label />
                         {isChosen && <span className="border border-pos px-1.5 py-px text-[10px] font-bold uppercase tracking-[0.12em] text-pos-ink">grubun seçimi</span>}
                       </div>
                       <ul className="flex flex-wrap gap-x-4 gap-y-1 text-[12.5px]">

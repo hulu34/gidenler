@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -70,7 +71,7 @@ export default async function ListPage({ params }: { params: Promise<{ slug: str
               </span>
               {x.score !== null && (
                 <span className="tnum text-[26px] font-extrabold leading-none tracking-[-0.045em]">
-                  {score1(x.score)}
+                  <ScoreNumber score={x.score} size="md" />
                 </span>
               )}
             </Link>

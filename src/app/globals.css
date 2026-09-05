@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source inline("{text,border,bg}-q-{exceptional,verygood,good,average,weak,bad}");
+@source inline("bg-q-{exceptional,verygood,good,average,weak,bad}-soft");
 
 /* ==========================================================================
    GİDENLER — DESIGN TOKENS
@@ -73,6 +75,20 @@
   --warn-soft: #f3ead7;
 
   --shadow-1: 0 1px 1px rgb(20 19 16 / 0.04), 0 8px 22px -18px rgb(20 19 16 / 0.4);
+
+  /* --- SEMANTİK PUAN DİLİ (V5) ---
+     Renk süs değil, anlam: puan KALİTE söyler. Trend YÖN (pos/neg), uyum
+     İLGİ (accent), güven KESİNLİK (nötr tipografi). Karıştırılmaz.
+     7.x "kötü" değildir: uyarı sarısı değil, premium amber.
+     Hepsi beyaz zeminde ≥4.5:1 kontrast. */
+  --q-exceptional: #0b5540;  /* 9.0–10  olağanüstü — derin yeşil */
+  --q-verygood:    #12806a;  /* 8.0–8.9 çok iyi   — yeşil */
+  --q-good:        #8f6206;  /* 7.0–7.9 iyi       — amber / altın */
+  --q-average:     #b0521a;  /* 6.0–6.9 ortalama  — turuncu */
+  --q-weak:        #9a3d1a;  /* 5.0–5.9 zayıf     — koyu turuncu */
+  --q-bad:         #a8262d;  /* 0–4.9   kötü      — kırmızı */
+  --q-exceptional-soft: #e3efea; --q-verygood-soft: #e4f2ee; --q-good-soft: #f6efdc;
+  --q-average-soft: #f8e9df; --q-weak-soft: #f6e5dd; --q-bad-soft: #f7e3e4;
 }
 
 /* --- tokenları Tailwind renk uzayına bağla --- */
@@ -97,6 +113,18 @@
   --color-neg-ink: var(--neg-ink);
   --color-warn: var(--warn);
   --color-warn-soft: var(--warn-soft);
+  --color-q-exceptional: var(--q-exceptional);
+  --color-q-verygood: var(--q-verygood);
+  --color-q-good: var(--q-good);
+  --color-q-average: var(--q-average);
+  --color-q-weak: var(--q-weak);
+  --color-q-bad: var(--q-bad);
+  --color-q-exceptional-soft: var(--q-exceptional-soft);
+  --color-q-verygood-soft: var(--q-verygood-soft);
+  --color-q-good-soft: var(--q-good-soft);
+  --color-q-average-soft: var(--q-average-soft);
+  --color-q-weak-soft: var(--q-weak-soft);
+  --color-q-bad-soft: var(--q-bad-soft);
 }
 
 /* ---------- taban ---------- */

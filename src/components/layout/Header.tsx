@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { quickSearch } from "@/lib/api";
 import { score1 } from "@/lib/format";
+import { DemoIndicator } from "@/components/demo/DemoBoot";
 
 export function Header() {
   const router = useRouter();
@@ -108,6 +109,7 @@ export function Header() {
         </div>
 
         <nav className="ml-auto flex shrink-0 items-center gap-5">
+          <DemoIndicator />
           <Link
             href="/sor/"
             className="hidden text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink sm:block"

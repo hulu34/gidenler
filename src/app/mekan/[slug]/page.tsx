@@ -24,6 +24,8 @@ import { ExpectationModule } from "@/components/market/ExpectationModule";
 import { DecisionHero, MobileActionBar } from "@/components/decision/DecisionHero";
 import { EventsTimeline } from "@/components/decision/EventsTimeline";
 import { getEntityEvents, getSimilarUsersPerspective } from "@/lib/decision";
+import { blurbs } from "@/data/blurbs";
+import { Disclosure } from "@/components/ui/Disclosure";
 
 export function generateStaticParams() {
   return entities.map((e) => ({ slug: e.slug }));
@@ -113,6 +115,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           {entity.isDemo && <Badge tone="demo" className="ml-1">Demo kayıt</Badge>}
         </p>
 
+        {blurbs[entity.id] && (
+          <p className="prose-exp max-w-[60ch] text-[16px] leading-[1.5] text-ink-2">{blurbs[entity.id]}</p>
+        )}
         {entity.facets && entity.facets.length > 0 && (
           <ul className="flex flex-wrap gap-x-4 gap-y-1">
             {entity.facets.map((f) => (
@@ -126,7 +131,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {I.overallScore !== null ? (
         <section className="mt-8 border-t-2 border-line-strong pt-7" aria-labelledby="karar">
           <h2 id="karar" className="sr-only">Gidenler değerlendirmesi</h2>
-          <ScoreBlock intel={I} returnLabel={schema.returnLabel} />
+          <ScoreBlock intel={I} returnLabel={schema.returnLabel} lastVisitedAt={experiences[0]?.visitedAt} />
 
         </section>
       ) : (
@@ -146,56 +151,32 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </div>
       )}
 
-      {/* ───────── 2c. NEYE GÖRE — derin zekâ başlıyor ───────── */}
+      {/* ═══════════ KATMAN 2 — KANIT: Neden? (kompakt) ═══════════ */}
       {I.overallScore !== null && (
-        <section className="mt-11" aria-labelledby="neyegore">
-          <h2 id="neyegore" className="label mb-4">Neye göre</h2>
-          <RatingDimensions dimensions={I.ratingDimensions} />
+        <section className="mt-12 border-t-2 border-line-strong pt-6" aria-labelledby="kanit">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+            <h2 id="kanit" className="text-[13px] font-bold uppercase tracking-[0.2em]">Neden?</h2>
+            <p className="max-w-[48ch] text-[12px] text-ink-3">Puanın arkasındaki kanıt. Renk kaliteyi, ok yönü söyler.</p>
+          </div>
+          <div className="mt-6">
+            <RatingDimensions dimensions={I.ratingDimensions} />
+          </div>
+          {I.perspectives.length > 0 && (
+            <div className="mt-9">
+              <Perspectives perspectives={I.perspectives} similar={similar} />
+            </div>
+          )}
+          {I.externalSignals.length > 0 && (
+            <div className="mt-9">
+              <ExternalScores sources={I.externalSignals} />
+            </div>
+          )}
           <p className="mt-6 max-w-[70ch] border-t border-line pt-3 text-[12px] leading-relaxed text-ink-3">
-            Puanlar {nf(I.experienceCount)} deneyimden hesaplandı. Doğrulanmış ziyaretler, yakın
-            tarihli deneyimler ve yazarın Gidenler itibarı ağırlığı artırır; beyan edilmiş ticari
-            ilişki ağırlığı düşürür.{" "}
+            Puanlar {nf(I.experienceCount)} deneyimden hesaplandı. Doğrulanmış ziyaretler, yakın tarihli deneyimler ve
+            yazarın Gidenler itibarı ağırlığı artırır; beyan edilmiş ticari ilişki ağırlığı düşürür.{" "}
             <strong className="font-semibold text-ink-2">Gidenler puanı dış kaynakların ortalaması değildir.</strong>
           </p>
         </section>
-      )}
-
-      {/* ───────── 3. KİM NE DÜŞÜNÜYOR ───────── */}
-      {I.perspectives.length > 0 && (
-        <div className="mt-11">
-          <Perspectives perspectives={I.perspectives} similar={similar} />
-        </div>
-      )}
-
-      {I.consensus && (
-        <div className="mt-11">
-          <ConsensusSignal
-            consensus={I.consensus}
-            confidence={I.confidence}
-            experienceCount={I.experienceCount}
-          />
-        </div>
-      )}
-
-      {/* ───────── 4. DIŞ DÜNYA NE DİYOR ───────── */}
-      {I.externalSignals.length > 0 && (
-        <div className="mt-11">
-          <ExternalScores sources={I.externalSignals} />
-        </div>
-      )}
-
-      {/* ───────── 5. NEDEN ───────── */}
-      {I.aiSummary && (
-        <div className="mt-12">
-          <AISummaryBlock summary={I.aiSummary} />
-        </div>
-      )}
-
-      {(I.positiveThemes.length > 0 || I.negativeThemes.length > 0) && I.overallScore !== null && (
-        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-14">
-          <ThemeSignals title="En çok övülen" hint="Deneyimlerde en sık olumlu geçen konular." items={I.positiveThemes} tone="pos" />
-          <ThemeSignals title="En sık şikayet" hint="Sayı değil, konu ve yön." items={I.negativeThemes} tone="neg" />
-        </div>
       )}
 
       {I.overallScore === null && I.negativeThemes.length > 0 && (
@@ -205,80 +186,81 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </section>
       )}
 
-      {/* ───────── 6. NE DEĞİŞTİ — EXPERIENCE MARKET KATMANI ───────── */}
-      {I.timeline.length > 1 && I.overallScore !== null && (
-        <div className="mt-12">
-          <TrendModule
-            name={entity.name}
-            score={I.overallScore}
-            timeline={I.timeline}
-            periodChanges={I.periodChanges}
-            momentum={I.momentum}
-            volume={I.volume}
-            experienceCount={I.experienceCount}
-            consensusLevel={I.consensus?.level}
-            expertScore={I.perspectives.find((p) => p.segment === "expert")?.score ?? null}
-            verifiedRatio={I.verifiedRatio}
-          />
-        </div>
-      )}
-
-      {/* ───────── 6a. NE OLDU — EVENTS (V3) ───────── */}
-      {events.length > 0 && I.overallScore !== null && (
-        <div className="mt-12">
-          <EventsTimeline events={events} />
-        </div>
-      )}
-
-      {/* ───────── 6b. TOPLULUK BEKLENTİSİ ───────── */}
-      {I.expectation && (
-        <div className="mt-12">
-          <ExpectationModule e={I.expectation} />
-        </div>
-      )}
-
-      {ad && <div className="mt-12"><SponsoredSlot {...ad} /></div>}
-
-      {/* ───────── 7. UZMAN DENEYİMLERİ ───────── */}
-      {expertExperiences.length > 0 && (
-        <section className="mt-14" aria-labelledby="uzmanlar">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b-2 border-line-strong pb-3">
-            <h2 id="uzmanlar" className="text-[13px] font-bold uppercase tracking-[0.2em]">
-              Uzmanların deneyimleri
-            </h2>
-            <p className="max-w-[46ch] text-[12px] text-ink-3">
-              Bu konuda Gidenler uzmanlığı olan {expertExperiences.length} kişi buraya gitti.
-              Farklı bir perspektif; daha üstün bir görüş değil.
-            </p>
+      {/* ═══════════ KATMAN 3 — DERİNLİK: isteyen iner ═══════════ */}
+      {I.overallScore !== null && (
+        <section className="mt-12 border-t-2 border-line-strong pt-6" aria-labelledby="derin">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+            <h2 id="derin" className="text-[13px] font-bold uppercase tracking-[0.2em]">Daha derine in</h2>
+            <p className="text-[12px] text-ink-3">Özet, konular, zaman serisi, olaylar, beklenti ve bütün deneyimler.</p>
           </div>
+
+          <Disclosure title="Deneyim özeti ve konular" hint={I.aiSummary ? `${nf(I.aiSummary.basedOnCount)} deneyim · son ${I.aiSummary.windowDays} gün` : undefined} defaultOpen>
+            {I.aiSummary && <AISummaryBlock summary={I.aiSummary} />}
+            {(I.positiveThemes.length > 0 || I.negativeThemes.length > 0) && (
+              <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-14">
+                <ThemeSignals title="En çok övülen" hint="Deneyimlerde en sık olumlu geçen konular." items={I.positiveThemes} tone="pos" />
+                <ThemeSignals title="En sık şikayet" hint="Sayı değil, konu ve yön." items={I.negativeThemes} tone="neg" />
+              </div>
+            )}
+            {I.consensus && (
+              <div className="mt-8">
+                <ConsensusSignal consensus={I.consensus} confidence={I.confidence} experienceCount={I.experienceCount} />
+              </div>
+            )}
+          </Disclosure>
+
+          {I.timeline.length > 1 && (
+            <Disclosure title="Gidenler Trend" hint="Bir mekân bugünkü puanı değil, bir zaman serisidir." defaultOpen>
+              <TrendModule
+                name={entity.name} score={I.overallScore} timeline={I.timeline} periodChanges={I.periodChanges}
+                momentum={I.momentum} volume={I.volume} experienceCount={I.experienceCount}
+                consensusLevel={I.consensus?.level}
+                expertScore={I.perspectives.find((p) => p.segment === "expert")?.score ?? null}
+                verifiedRatio={I.verifiedRatio}
+              />
+            </Disclosure>
+          )}
+
+          {events.length > 0 && (
+            <Disclosure title="Ne oldu?" hint="Puan neden değişti — olaylar ve ardından gelen sinyaller." defaultOpen={I.momentum === "down" || I.momentum === "strong_down"}>
+              <EventsTimeline events={events} />
+            </Disclosure>
+          )}
+
+          {I.expectation && (
+            <Disclosure title="Topluluk beklentisi" hint="Deneysel · ikincil · puanı değiştirmez">
+              <ExpectationModule e={I.expectation} />
+            </Disclosure>
+          )}
+
+          {expertExperiences.length > 0 && (
+            <Disclosure title="Uzmanların deneyimleri" hint={`${expertExperiences.length} uzman · farklı bir perspektif, daha üstün bir görüş değil`} defaultOpen>
+              {expertExperiences.map((e) => (
+                <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
+              ))}
+            </Disclosure>
+          )}
+
+          {ad && <div className="mt-10"><SponsoredSlot {...ad} /></div>}
+
+          <Disclosure title="Bütün deneyimler" hint={`${nf(I.experienceCount)} deneyimin ${experiences.length} tanesi`}>
+            {experiences.map((e) => (
+              <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
+            ))}
+          </Disclosure>
+        </section>
+      )}
+
+      {I.overallScore === null && (
+        <section className="mt-10" aria-labelledby="deneyimler">
+          <h2 id="deneyimler" className="border-b-2 border-line-strong pb-3 text-[13px] font-bold uppercase tracking-[0.2em]">Bütün deneyimler</h2>
           <div className="mt-7">
-            {expertExperiences.map((e) => (
+            {experiences.map((e) => (
               <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
             ))}
           </div>
         </section>
       )}
-
-      {/* ───────── 8. BÜTÜN DENEYİMLER ───────── */}
-      <section className="mt-14" aria-labelledby="deneyimler">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b-2 border-line-strong pb-3">
-          <h2 id="deneyimler" className="text-[13px] font-bold uppercase tracking-[0.2em]">
-            Bütün deneyimler
-          </h2>
-          <div className="flex items-center gap-5">
-            <Tag>{nf(I.experienceCount)} deneyimin {experiences.length} tanesi</Tag>
-            <span className="flex gap-4 text-[12px] font-semibold uppercase tracking-[0.1em]">
-              <button className="border-b-2 border-accent pb-0.5 text-ink" type="button">Yeni gidenler</button>
-              <button className="text-ink-3 hover:text-ink" type="button">En faydalı</button>
-            </span>
-          </div>
-        </div>
-        <div className="mt-7">
-          {experiences.map((e) => (
-            <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
-          ))}
-        </div>
-      </section>
 
       {/* ───────── 9. YAKINDAKİLER ───────── */}
       {nearby.length > 0 && (

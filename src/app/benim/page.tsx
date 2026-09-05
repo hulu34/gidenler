@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { useMemo, useState } from "react";
 import { getEntityById } from "@/data/entities";
 import { getTopicIntelligence } from "@/lib/api";
@@ -38,7 +39,7 @@ export default function MyPage() {
           <Link href={`/mekan/${e.slug}/`} className="text-[18px] font-bold leading-tight tracking-[-0.02em] hover:text-accent-ink">{e.name}</Link>
           <span className="flex flex-wrap items-center gap-x-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
             {e.location?.district && <span>{e.location.district}</span>}
-            {it.overallScore !== null && <span className="tnum">Gidenler {score1(it.overallScore)} <span className={it.scoreTrend.direction === "up" ? "text-pos-ink" : it.scoreTrend.direction === "down" ? "text-neg-ink" : ""}>{it.scoreTrend.direction === "up" ? "↑" : it.scoreTrend.direction === "down" ? "↓" : "→"}</span></span>}
+            {it.overallScore !== null && <span className="normal-case tracking-normal"><ScoreNumber score={it.overallScore} size="sm" trend={{ direction: it.scoreTrend.direction }} /></span>}
             {m && <span className="tnum text-accent-ink">%{m.score} sana göre</span>}
           </span>
         </div>
@@ -65,6 +66,7 @@ export default function MyPage() {
             <Link href="/sor/" className="inline-flex h-9 items-center rounded-[3px] bg-accent px-3.5 text-[13.5px] font-semibold text-on-accent">Sor Gidenler</Link>
             <Link href="/zevkim/" className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Zevkini tanıyalım</Link>
             <Link href="/mekan/sakura-omakase/" className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Sakura Omakase&apos;ye bak</Link>
+            <Link href="/demo/" className="inline-flex h-9 items-center px-1 text-[12.5px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Sunum hesabını kur</Link>
           </div>
         </section>
       )}
@@ -82,8 +84,8 @@ export default function MyPage() {
       )}
 
       {notes.length > 0 && (
-        <section className="mt-10" aria-labelledby="haber">
-          <h2 id="haber" className="label">Senin için haberler</h2>
+        <section className="mt-10 border-t border-line pt-5" aria-labelledby="haber">
+          <h2 id="haber" className="text-[13px] font-bold uppercase tracking-[0.2em]">Sana özel değişiklikler</h2>
           <ul className="mt-2 flex flex-col divide-y divide-line border-t border-line">
             {notes.slice(0, 4).map((n) => {
               const e = getEntityById(n.entityId)!;
@@ -96,6 +98,17 @@ export default function MyPage() {
             })}
           </ul>
           <p className="mt-2 text-[11.5px] text-ink-3">Bildirim niyete dayanır: kaydettiğin ile gitmek istediğin farklı haber alır. Prototipte burada görünür; ileride bildirim olur.</p>
+        </section>
+      )}
+
+      {data.recentIntents.length > 0 && (
+        <section className="mt-10" aria-labelledby="niyet">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1"><h2 id="niyet" className="label">Son aradıkların</h2><span className="text-[12px] text-ink-3">Sor Gidenler'de sorduğun sorular; tekrar sormak için dokun.</span></div>
+          <ul className="mt-2 flex flex-wrap gap-2 border-t border-line pt-3">
+            {data.recentIntents.map((i) => (
+              <li key={i.text}><Link href={`/sor/?q=${encodeURIComponent(i.text)}`} className="inline-flex h-8 items-center border border-line-2 px-3 text-[13px] font-semibold hover:border-ink">{i.text}</Link></li>
+            ))}
+          </ul>
         </section>
       )}
 
