@@ -10,6 +10,9 @@ import { DemoNotice } from "@/components/ui/DemoNotice";
 import { Tag } from "@/components/ui/Badge";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 import type { TopicIntelligence } from "@/lib/types";
+import { AskHero } from "@/components/decision/AskHero";
+import { forYou } from "@/lib/decision";
+import { WhyThisResult } from "@/components/decision/WhyThisResult";
 
 /* ──────────────────────────────────────────────────────────────────────────
    "Ne değişiyor?" için insan dili.
@@ -90,6 +93,7 @@ export default function HomePage() {
   const all = listCards();
   const p = pulse();
   const idx = listIndices();
+  const mine = forYou(3);
 
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-20 sm:px-7">
@@ -104,6 +108,7 @@ export default function HomePage() {
         <p className="prose-exp max-w-[56ch] text-[clamp(1.0625rem,2.2vw,1.375rem)] leading-[1.45] text-ink-2">
           Deneyimler sürekli değişir. Gidenler bunu ölçer. Her deneyim bir sinyal. Her ziyaret yeni bir veri noktası. Her değişim bir yön. Gidenler, insanların deneyimlerini güven, uzmanlık ve zamanla anlamlandırır. Sadece bugünü değil, nereye gittiğini gösterir.
         </p>
+        <div className="mt-2"><AskHero /></div>
         <p className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-4 text-[12px] font-semibold uppercase tracking-[0.13em] text-ink-3">
           <span>İstanbul · yeme-içme</span>
           <span aria-hidden>·</span>
@@ -126,7 +131,45 @@ export default function HomePage() {
         </ul>
       </section>
 
-      {/* ───────── 3 · uzmanların radarında — insan ve güven ağı ───────── */}
+      {/* ───────── 3 · sana göre — decision layer (V3) ───────── */}
+      {mine.length > 0 && (
+        <section aria-labelledby="sanagore" className="mt-14">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-3">
+            <h2 id="sanagore" className="text-[13px] font-bold uppercase tracking-[0.2em]">Sana göre</h2>
+            <p className="flex items-center gap-3 text-[12px] text-ink-3">
+              <span>Aynı mekân herkes için aynı değil. Zevk profiline göre uyum.</span>
+              <span className="border border-dashed border-line-2 px-1.5 py-px text-[10px] font-bold uppercase tracking-[0.12em]">demo profil</span>
+            </p>
+          </div>
+          <ul className="grid gap-x-12 gap-y-8 pt-7 lg:grid-cols-3">
+            {mine.map(({ card, match, decision }) => (
+              <li key={card.entity.id} className="flex flex-col gap-3">
+                <Link href={`/mekan/${card.entity.slug}/`} className="group flex items-baseline justify-between gap-4">
+                  <span className="text-[21px] font-bold leading-tight tracking-[-0.025em] group-hover:text-accent-ink">{card.entity.name}</span>
+                  <span className="flex items-baseline gap-1.5">
+                    <span className="text-[30px] font-extrabold leading-none tracking-[-0.05em] text-accent-ink">%{match!.score}</span>
+                    <span className="label">uyum</span>
+                  </span>
+                </Link>
+                <span className="flex flex-wrap items-center gap-x-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
+                  <span className={decision!.verdict === "Biraz bekle" ? "text-warn" : "text-pos-ink"}>{decision!.verdict}</span>
+                  {card.score !== null && <span className="tnum">Gidenler {score1(card.score)}</span>}
+                  {card.entity.location?.district && <span>{card.entity.location.district}</span>}
+                </span>
+                <WhyThisResult reasons={decision!.reasons.slice(0, 2)} warnings={decision!.warnings.slice(0, 1)} compact />
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 flex flex-wrap gap-x-6 gap-y-1 border-t border-line pt-3 text-[12.5px] text-ink-3">
+            <Link href="/sor/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Sor Gidenler</Link>
+            <Link href="/simdi/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Bu akşam nereye?</Link>
+            <Link href="/karsilastir/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Karşılaştır</Link>
+            <span>Uyum, Gidenler puanı değildir; ikisi yan yana durur, toplanmaz.</span>
+          </p>
+        </section>
+      )}
+
+      {/* ───────── 4 · uzmanların radarında — insan ve güven ağı ───────── */}
       {experts.length > 0 && (
         <section aria-labelledby="uzmanlar" className="mt-14">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-3">

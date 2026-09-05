@@ -37,7 +37,11 @@ export function Header() {
     else if (e.key === "Enter") {
       e.preventDefault();
       if (results[active]) go(results[active].entity.slug);
-      else if (q.trim()) { setOpen(false); router.push(`/ara/?q=${encodeURIComponent(q.trim())}`); }
+      else if (q.trim()) {
+        setOpen(false);
+        const natural = q.trim().split(/\s+/).length >= 3 || /\?/.test(q);
+        router.push(natural ? `/sor/?q=${encodeURIComponent(q.trim())}` : `/ara/?q=${encodeURIComponent(q.trim())}`);
+      }
     } else if (e.key === "Escape") { setOpen(false); }
   }
 
@@ -96,7 +100,7 @@ export function Header() {
                 </ul>
               ) : (
                 <p className="px-4 py-3 text-[13px] text-ink-3">
-                  Eşleşme yok. Bu başlığı ilk sen açabilirsin.
+                  Mekân eşleşmesi yok. Enter&apos;a basarsan bunu bir soru olarak Sor Gidenler&apos;e iletirim.
                 </p>
               )}
             </div>
@@ -104,6 +108,12 @@ export function Header() {
         </div>
 
         <nav className="ml-auto flex shrink-0 items-center gap-5">
+          <Link
+            href="/sor/"
+            className="hidden text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink sm:block"
+          >
+            Sor
+          </Link>
           <Link
             href="/ara/"
             className="hidden text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink sm:block"

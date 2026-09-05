@@ -12,6 +12,8 @@ import { ExpertiseBlock } from "@/components/creator/ExpertiseBlock";
 import { ReputationChip, ReputationSignals } from "@/components/creator/ReputationChip";
 import { ExperienceCard } from "@/components/experience/ExperienceCard";
 import { getSchema, getCategory } from "@/lib/api";
+import { tasteProfileOf } from "@/lib/decision";
+import { TasteBlock } from "@/components/decision/TasteBlock";
 
 /** Profil adresi: /@denizyer — SEO ve sosyal paylaşım için tek kelimelik kimlik. */
 export function generateStaticParams() {
@@ -108,6 +110,22 @@ export default async function ProfilePage({
           )}
         </div>
       </div>
+
+      {/* ───────── taste: kim neyi seviyor (V3) ───────── */}
+      {(() => { const tp = tasteProfileOf(u.id); return tp && tp.visibility === "public" ? (
+        <div className="mt-12 border-t-2 border-line-strong pt-6">
+          <TasteBlock profile={tp} title="Zevk kimliği" showPrivacy />
+          <p className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1 text-[12.5px] text-ink-3">
+            <span>Zevk, uzmanlık değildir: uzmanlık neyi bildiğini, zevk neyi sevdiğini anlatır.</span>
+            <Link href={`/pasaport/${u.handle}/`} className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Gidenler Pasaportu</Link>
+          </p>
+        </div>
+      ) : (
+        <p className="mt-10 text-[12.5px] text-ink-3">
+          <Link href={`/pasaport/${u.handle}/`} className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Gidenler Pasaportu</Link>
+          <span> · zevk profili özel</span>
+        </p>
+      ); })()}
 
       {/* ───────── listeler ───────── */}
       {lists.length > 0 && (

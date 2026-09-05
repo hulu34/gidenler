@@ -21,6 +21,9 @@ import { Perspectives } from "@/components/topic/Perspectives";
 import { ConsensusSignal } from "@/components/topic/ConsensusSignal";
 import { TrendModule } from "@/components/market/TrendModule";
 import { ExpectationModule } from "@/components/market/ExpectationModule";
+import { DecisionLayer } from "@/components/decision/DecisionLayer";
+import { EventsTimeline } from "@/components/decision/EventsTimeline";
+import { getEntityEvents, getSimilarUsersPerspective } from "@/lib/decision";
 
 export function generateStaticParams() {
   return entities.map((e) => ({ slug: e.slug }));
@@ -69,6 +72,10 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const ad = c.allowAdvertising ? ADS[category.id] : undefined;
   const district = entity.location?.district;
   const canPanel = entity.business?.claimed && c.mode !== "regulated";
+  const similar = c.showScores ? getSimilarUsersPerspective(entity.id) : null;
+  const events = getEntityEvents(entity.id);
+  const compareWith = nearby.find((n) => n.score !== null && n.category.id === category.id)
+    ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
@@ -139,10 +146,20 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </div>
       )}
 
+      {/* ───────── 2b. GİTMELİ MİSİN — DECISION LAYER (V3) ───────── */}
+      {I.overallScore !== null && c.mode === "standard" && (
+        <div className="mt-10">
+          <DecisionLayer
+            entityId={entity.id} entitySlug={entity.slug} entityName={entity.name}
+            compareWith={compareWith ? { slug: compareWith.entity.slug, name: compareWith.entity.name } : undefined}
+          />
+        </div>
+      )}
+
       {/* ───────── 3. KİM NE DÜŞÜNÜYOR ───────── */}
       {I.perspectives.length > 0 && (
         <div className="mt-11">
-          <Perspectives perspectives={I.perspectives} />
+          <Perspectives perspectives={I.perspectives} similar={similar} />
         </div>
       )}
 
@@ -199,6 +216,13 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             expertScore={I.perspectives.find((p) => p.segment === "expert")?.score ?? null}
             verifiedRatio={I.verifiedRatio}
           />
+        </div>
+      )}
+
+      {/* ───────── 6a. NE OLDU — EVENTS (V3) ───────── */}
+      {events.length > 0 && I.overallScore !== null && (
+        <div className="mt-12">
+          <EventsTimeline events={events} />
         </div>
       )}
 

@@ -13,6 +13,8 @@ import { ThemeSignals } from "@/components/insight/ThemeSignals";
 import { TrendIndicator } from "@/components/score/TrendIndicator";
 import { ExperienceCard } from "@/components/experience/ExperienceCard";
 import { Button } from "@/components/ui/Button";
+import { getBusinessAlerts, getBusinessBenchmarks, getBusinessRecommendations, getBusinessRootCauses } from "@/lib/decision";
+import { Alerts, Benchmarks, Recommendations, RootCauses } from "@/components/decision/BusinessIntelligence";
 
 export function generateStaticParams() {
   return entities
@@ -38,6 +40,10 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
     expertSummary.expertScore !== null && expertSummary.communityScore !== null
       ? expertSummary.expertScore - expertSummary.communityScore
       : null;
+  const root = getBusinessRootCauses(slug);
+  const recs = getBusinessRecommendations(slug);
+  const bench = getBusinessBenchmarks(slug);
+  const alerts = getBusinessAlerts(slug);
 
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
@@ -89,6 +95,20 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
           ))}
         </dl>
       </section>
+
+      {/* ───────── V3: NEDEN DEĞİŞTİ · NEREDEN BAŞLAMALISIN ───────── */}
+      {root && (
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
+          <RootCauses {...root} />
+          <Recommendations items={recs} />
+        </div>
+      )}
+      {(bench.length > 0 || alerts.length > 0) && (
+        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <Benchmarks items={bench} />
+          <Alerts items={alerts} />
+        </div>
+      )}
 
       {/* ───────── uzman zekâsı — SaaS'ın asıl ürünü ───────── */}
       {expertSummary.expertCount > 0 && (

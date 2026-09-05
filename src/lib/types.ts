@@ -599,3 +599,265 @@ export interface SearchResults {
   creators: User[];
   lists: Array<CuratedList & { author: User }>;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   V3 — DECISION INTELLIGENCE
+   --------------------------------------------------------------------------
+   Experience Graph + Reputation Graph + Expertise Graph + TASTE GRAPH + Time
+   = Decision Intelligence.
+
+   KİLİTLİ: Personal Match ≠ Gidenler Score. Puan topluluğun deneyimlerinden
+   çıkar; uyum kullanıcı ile mekân arasındaki ilişkidir. İkisi toplanmaz.
+   Buradaki hesaplar prototip içindir; production ML varmış gibi davranılmaz.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────────── TASTE GRAPH ─────────────────────────────── */
+
+export type TasteLevel = "çok yüksek" | "yüksek" | "orta" | "düşük";
+
+/** Kullanıcı için bir boyutun ÖNEMİ (0–100). Puan değil, öncelik. */
+export interface TasteDimension {
+  key: string;          // rating dimension key: taste | value | service | atmosphere | quiet | speed …
+  label: string;
+  weight: number;       // 0–100
+}
+
+export interface TastePreference {
+  key: string;
+  label: string;
+  level: TasteLevel;
+}
+
+export interface TasteProfile {
+  userId: ID;
+  dimensions: TasteDimension[];
+  cuisinePreferences: TastePreference[];
+  categoryPreferences: TastePreference[];
+  locationPreferences: string[];
+  priceSensitivity: TasteLevel;
+  /** "Buna tahammülü düşük" — creator profillerinde görünür. */
+  lowTolerance: string[];
+  visibility: "private" | "public";
+  confidence: ConfidenceLevel;
+  basedOnExperiences: number;
+  updatedAt: ISODate;
+  isDemo: boolean;
+}
+
+/** 3 benzer kullanıcı ile 500 benzer kullanıcı aynı güven değildir. */
+export interface TasteSimilarity {
+  score: number;        // 0–1
+  sampleSize: number;
+  confidence: ConfidenceLevel;
+}
+
+/* ─────────────────────────── PERSONAL MATCH ────────────────────────────── */
+
+export type DecisionContextKey = "default" | "date" | "friends" | "business" | "family" | "solo" | "quick";
+
+export interface DecisionContext {
+  key: DecisionContextKey;
+  label: string;
+  /** Geçici öncelik değişimi; kalıcı profili değiştirmez. */
+  overrides?: Partial<Record<string, number>>;
+}
+
+export interface MatchFactor {
+  key: string;
+  label: string;
+  /** -1 … +1 — uyumu ne yönde etkiledi. */
+  effect: number;
+  evidence: string;     // "Lezzet 8,9 · senin en önemli kriterin"
+}
+
+export interface PersonalMatch {
+  entityId: ID;
+  userId: ID;
+  context: DecisionContextKey;
+  /** 0–100 */
+  score: number;
+  factors: MatchFactor[];
+  similarity: TasteSimilarity;
+  confidence: ConfidenceLevel;
+  isDemo: boolean;
+}
+
+/** "Sana benzeyenler" perspektifi — topluluğun içinden kişisel kohort. */
+export interface SimilarUsersPerspective {
+  entityId: ID;
+  score: number | null;
+  sampleSize: number;
+  returnRate: number;
+  confidence: ConfidenceLevel;
+  isDemo: boolean;
+}
+
+/* ───────────────────────────── DECISION ────────────────────────────────── */
+
+export type DecisionVerdict =
+  | "Kesinlikle gidilir" | "Gidilir" | "Sana bağlı" | "Biraz bekle" | "Şimdilik pas geç";
+
+export interface DecisionReason {
+  text: string;
+  /** Kaynak göstergesi: "61 deneyimde bekleme konusu" */
+  source?: string;
+  kind: "taste" | "community" | "trend" | "expert" | "similar" | "verified";
+}
+
+export interface DecisionWarning {
+  text: string;
+  source?: string;
+  severity: "low" | "medium" | "high";
+}
+
+export interface Decision {
+  entityId: ID;
+  context: DecisionContextKey;
+  verdict: DecisionVerdict;
+  personalMatch: number | null;
+  reasons: DecisionReason[];
+  warnings: DecisionWarning[];
+  bestFor: string[];
+  avoidIf: string[];
+  confidence: ConfidenceLevel;
+  timeContext?: string;
+  isDemo: boolean;
+}
+
+/** "Şimdi gitmek için iyi zaman mı?" — trendin tüketici diline çevrilmiş hâli. */
+export interface TimingVerdict {
+  entityId: ID;
+  answer: "Evet" | "Fark etmez" | "Biraz bekle";
+  window: string;                       // "Son 30 gün"
+  signals: Array<{ label: string; direction: "up" | "down" | "flat" }>;
+  explanation: string;
+  isDemo: boolean;
+}
+
+/* ─────────────────────────── EVENTS · NE OLDU ──────────────────────────── */
+
+export type EntityEventType =
+  | "chef_change" | "ownership_change" | "renovation" | "menu_change" | "price_change"
+  | "service_change" | "relocation" | "opening" | "closure" | "award" | "incident" | "unknown";
+
+export interface EntityEvent {
+  id: ID;
+  entityId: ID;
+  type: EntityEventType;
+  title: string;
+  description: string;
+  occurredAt: ISODate;
+  /** Olayın gerçekleştiğine dair güven — nedensellik iddiası DEĞİL. */
+  confidence: ConfidenceLevel;
+  /** Olayı izleyen sinyal değişimleri (korelasyon; nedensellik kurulmaz). */
+  relatedSignals: Array<{ period: string; label: string; direction: "up" | "down" | "flat" }>;
+  sourceType: "işletme beyanı" | "deneyimlerden çıkarım" | "kamuya açık kaynak" | "bilinmiyor";
+  isDemo: boolean;
+}
+
+/* ─────────────────────────── ASK GİDENLER ──────────────────────────────── */
+
+export interface AskQuery {
+  text: string;
+  district?: string;
+  facet?: string;
+  quiet?: boolean;
+  budget?: 1 | 2 | 3 | 4;
+  party?: number;
+  context: DecisionContextKey;
+  priorities: string[];
+}
+
+export interface AskResultItem {
+  entityId: ID;
+  match: number;
+  reasons: DecisionReason[];
+  warning?: DecisionWarning;
+}
+
+export interface AskResult {
+  query: AskQuery;
+  understood: string[];      // "Kadıköy", "sessiz", "4 kişi"
+  items: AskResultItem[];
+  sources: string[];         // "34 doğrulanmış deneyim · son 90 gün"
+  isDemo: boolean;
+}
+
+/* ───────────────────────────── COMPARE ─────────────────────────────────── */
+
+export interface ComparisonRow {
+  key: string;
+  label: string;
+  values: Array<number | string | null>;
+  /** Daha yüksek daha iyi mi? (fiyat için false) */
+  higherIsBetter: boolean;
+  format: "score" | "pct" | "text" | "delta";
+}
+
+export interface Comparison {
+  entityIds: ID[];
+  winnerId: ID;
+  headline: string;
+  reasons: DecisionReason[];
+  warnings: DecisionWarning[];
+  byContext: Array<{ label: string; entityId: ID }>;
+  rows: ComparisonRow[];
+  isDemo: boolean;
+}
+
+/* ───────────────────────────── PASSPORT ────────────────────────────────── */
+
+export interface PassportPeriod {
+  key: string;             // "2026" | "2026-08" | "yaz-2026" | "kadikoy"
+  label: string;           // "2026 Gidenler'im"
+  entityCount: number;
+  districtCount: number;
+  cuisineCount: number;
+  topFacets: Array<{ label: string; count: number }>;
+  topDistrict: string;
+  returnRate: number;
+  verifiedVisits: number;
+}
+
+export interface Passport {
+  userId: ID;
+  handle: string;
+  shareable: boolean;      // opt-in
+  periods: PassportPeriod[];
+  isDemo: boolean;
+}
+
+/* ───────────────────────── BUSINESS INTELLIGENCE ───────────────────────── */
+
+export interface BusinessRootCause {
+  dimensionKey: string;
+  label: string;
+  delta: number;
+  theme?: string;
+  themeChangePct?: number;
+  note: string;
+}
+
+export interface BusinessRecommendation {
+  title: string;
+  body: string;
+  impactArea: string;
+  source: string;          // "Son 60 günde 47 servis eleştirisi"
+  isDemo: boolean;
+}
+
+export interface BusinessBenchmark {
+  label: string;
+  you: number;
+  peers: number;
+  format: "score" | "pct";
+  peerGroup: string;
+}
+
+export interface BusinessAlert {
+  id: ID;
+  title: string;
+  detail: string;
+  severity: "info" | "watch" | "action";
+  at: ISODate;
+}
