@@ -66,7 +66,7 @@ export default function MyPage() {
             <Link href="/sor/" className="inline-flex h-9 items-center rounded-[3px] bg-accent px-3.5 text-[13.5px] font-semibold text-on-accent">Sor Gidenler</Link>
             <Link href="/zevkim/" className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Zevkini tanıyalım</Link>
             <Link href="/mekan/sakura-omakase/" className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Sakura Omakase&apos;ye bak</Link>
-            <Link href="/demo/" className="inline-flex h-9 items-center px-1 text-[12.5px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Sunum hesabını kur</Link>
+            <Link href="/demo/" className="inline-flex h-9 items-center px-1 text-[12.5px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Sunum modunu başlat</Link>
           </div>
         </section>
       )}
@@ -185,7 +185,7 @@ export default function MyPage() {
         {confirmReset ? (
           <span className="flex items-center gap-3 text-[12px]"><span className="text-ink-2">Sıfırlansın mı?</span><button type="button" onClick={() => { resetDemo(); setConfirmReset(false); }} className="font-semibold text-neg-ink">Evet, sıfırla</button><button type="button" onClick={() => setConfirmReset(false)} className="text-ink-3">Vazgeç</button></span>
         ) : (
-          <button type="button" onClick={() => setConfirmReset(true)} className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink">Demo verilerini sıfırla</button>
+          <button type="button" onClick={() => setConfirmReset(true)} className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink">{data.demoMode === "investor" ? "Sunumu sıfırla" : "Verilerimi sıfırla"}</button>
         )}
       </section>
       <div className="mt-8"><DemoNotice>Gitmek istediklerin, gittiklerin ve zevk düzenlemelerin yalnızca bu tarayıcıda saklanır; varsayılan olarak özeldir.</DemoNotice></div>

@@ -2,17 +2,17 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { resetDemo, seedInvestorDemo, useUserData } from "@/lib/store";
+import { enterInvestorDemo, exitInvestorDemo, resetDemo, useUserData } from "@/lib/store";
 
 const FLOW: { step: string; href: string; title: string; note: string }[] = [
-  { step: "01", href: "/", title: "Ana sayfa", note: "Devam et + Sana göre değişiklikler ilk ekranda." },
-  { step: "02", href: "/mekan/sakura-omakase/", title: "Sakura Omakase · 9,4", note: "Olağanüstü puan, düşen trend, %96 uyum — üç ayrı renk, üç ayrı anlam." },
-  { step: "03", href: "/mekan/asma-teras/", title: "Asma Teras · 5,4", note: "Zayıf puan, 'Ne oldu?' öne çıkar: şef değişimi, fiyat artışı." },
-  { step: "04", href: "/sor/", title: "Sor Gidenler", note: "Hazır soru dolu. 'Daha ucuz olsun' ve 'Date için olsun' sonuçları gerçekten değiştirir." },
-  { step: "05", href: "/benim/", title: "Benim Gidenler'im", note: "Moda için 'gitmek istiyorum', Balıkçı Sokağı için hızlı tepki, Sakura için yazılmış deneyim." },
-  { step: "06", href: "/@denizyer/", title: "@denizyer", note: "Takip ediliyor. Uzmanlık, %87 zevk uyumu, doğrulanma — takipçi sayısı ikinci planda." },
-  { step: "07", href: "/birlikte/?g=abc123", title: "Birlikte Nereye?", note: "Dört kişilik grup için tek sonuç; kısıtlar açık." },
-  { step: "08", href: "/isletme/moda-lokantasi/", title: "İşletme paneli", note: "Aynı semantik sistem: kök neden, kıyas, uyarı." },
+  { step: "01", href: "/", title: "Ana sayfa", note: "Devam et + Sana göre. Moda için 'gitmek istiyorum' hâlâ açık." },
+  { step: "02", href: "/sor/", title: "Sor Gidenler", note: "Hazır soru: Sakura %94, Moda, Köz — üç farklı neden. 'Daha ucuz' ve 'Date için' sırayı gerçekten değiştirir." },
+  { step: "03", href: "/mekan/sakura-omakase/", title: "Sakura Omakase · 9,4", note: "Olağanüstü · yükseliyor · %96 uyum. Date %99, Aile %63. 'Neden %96?' açıklar. Sonra: Gitmek istiyorum." },
+  { step: "04", href: "/benim/", title: "Benim Gidenler'im", note: "Devam et: Moda ve Sakura. Gittim → hızlı tepki → deneyim. Döngü burada kapanır." },
+  { step: "05", href: "/@denizyer/", title: "@denizyer", note: "Neyi biliyor, seninle %87 zevk uyumu. Takipçi sayısı güvenin ölçüsü değil." },
+  { step: "06", href: "/birlikte/?g=abc123", title: "Birlikte Nereye?", note: "Dört kişi, tek sonuç; kısıtlar açık." },
+  { step: "07", href: "/isletme/moda-lokantasi/", title: "İşletme paneli", note: "Aynı veri işletmeye 'neden değişti?' sorusunu cevaplar." },
+  { step: "08", href: "/mekan/asma-teras/", title: "Asma Teras · 5,4", note: "Zayıf · geriliyor · düşük uyum. 'Ne oldu?' açık: şef değişimi, fiyat artışı." },
 ];
 
 export function DemoControls() {
@@ -32,7 +32,7 @@ export function DemoControls() {
       <section className="flex flex-col gap-5" aria-labelledby="demo-durum">
         <h2 id="demo-durum" className="label">Hesap durumu</h2>
         <p className="text-[15px] font-semibold">
-          {on ? "Sunum modu açık — yaşanmış hesap yüklü." : "Sunum modu kapalı — hesap olduğu gibi."}
+          {on ? "Sunum modu açık — yaşanmış hesap yüklü." : "Sunum modu kapalı — normal kullanıcı hesabı."}
         </p>
         <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-[13.5px] sm:grid-cols-3">
           {[["Gitmek istiyorum", counts.want], ["Kaydedilen", counts.saved], ["Gidilen", counts.visited], ["Hızlı tepki", counts.reactions], ["Takip", counts.follows], ["Liste", data.lists.filter((l) => l.entityIds.length).length]].map(([k, v]) => (
@@ -43,18 +43,27 @@ export function DemoControls() {
           ))}
         </dl>
         <div className="flex flex-wrap items-center gap-3">
-          <button type="button" onClick={() => { seedInvestorDemo(); setFlash("Hesap kuruldu."); }}
-            className="h-10 border-2 border-ink bg-ink px-4 text-[13px] font-bold uppercase tracking-[0.1em] text-paper hover:bg-accent hover:border-accent">
-            {on ? "Yeniden kur" : "Sunum hesabını kur"}
-          </button>
-          <button type="button" onClick={() => { resetDemo(); setFlash("Her şey sıfırlandı."); }}
-            className="h-10 border-2 border-line-2 px-4 text-[13px] font-bold uppercase tracking-[0.1em] hover:border-ink">
-            Sıfırla
-          </button>
+          {on ? (
+            <>
+              <button type="button" onClick={() => { resetDemo(); setFlash("Sunum başlangıç durumuna döndü."); }}
+                className="h-10 border-2 border-ink bg-ink px-4 text-[13px] font-bold uppercase tracking-[0.1em] text-paper hover:bg-accent hover:border-accent">
+                Sunumu sıfırla
+              </button>
+              <button type="button" onClick={() => { exitInvestorDemo(); setFlash("Sunum modundan çıkıldı; normal hesabın olduğu gibi duruyor."); }}
+                className="h-10 border-2 border-line-2 px-4 text-[13px] font-bold uppercase tracking-[0.1em] hover:border-ink">
+                Sunumdan çık
+              </button>
+            </>
+          ) : (
+            <button type="button" onClick={() => { enterInvestorDemo(); setFlash("Sunum modu açıldı."); }}
+              className="h-10 border-2 border-ink bg-ink px-4 text-[13px] font-bold uppercase tracking-[0.1em] text-paper hover:bg-accent hover:border-accent">
+              Sunum modunu başlat
+            </button>
+          )}
           {flash && <span className="text-[12.5px] text-ink-3" role="status">{flash}</span>}
         </div>
         <p className="max-w-[52ch] text-[12.5px] leading-relaxed text-ink-3">
-          Kısayol: herhangi bir sayfaya <code className="bg-sunk px-1">?demo=investor</code> ekle; <code className="bg-sunk px-1">?demo=reset</code> temizler. Durum yalnızca bu tarayıcıda saklanır.
+          Kısayol: herhangi bir sayfaya <code className="bg-sunk px-1">?demo=investor</code> ekle; mod sayfalar arasında korunur. <code className="bg-sunk px-1">?demo=reset</code> başlangıca döner, <code className="bg-sunk px-1">?demo=off</code> çıkar. Sunum verisi ayrı tutulur; normal hesabına dokunmaz.
         </p>
       </section>
 

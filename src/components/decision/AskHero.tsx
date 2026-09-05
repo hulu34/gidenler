@@ -12,7 +12,7 @@ export function AskHero() {
   const [q, setQ] = useState("");
   return (
     <form
-      onSubmit={(e) => { e.preventDefault(); if (q.trim()) router.push(`/sor/?q=${encodeURIComponent(q.trim())}`); }}
+      onSubmit={(e) => { e.preventDefault(); router.push(q.trim() ? `/sor/?q=${encodeURIComponent(q.trim())}` : "/sor/"); }}
       className="flex flex-col gap-3"
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { useEffect, useMemo, useState } from "react";
-import { askGidenler, type AskRefine } from "@/lib/decision";
+import { askGidenler, getDecision, type AskRefine } from "@/lib/decision";
 import { EntityActions } from "@/components/decision/EntityActions";
 import { getEntityById } from "@/data/entities";
 import { getTopicIntelligence } from "@/lib/api";
@@ -54,6 +54,13 @@ export default function AskPage() {
   useEffect(() => { if (asked.trim()) recordIntent(asked); }, [asked]);
 
   const result = useMemo(() => (asked.trim() ? askGidenler(asked, refine) : null), [asked, refine]);
+  /* Takip çipi neyi değiştirdi — sadece sıra değil, ağırlık. Kara kutu değil. */
+  const refineNotes: string[] = [];
+  if (refine.context === "date") refineNotes.push("Date bağlamında sessizlik ve atmosfer ağırlığı arttı; hız önemsizleşti.");
+  if (refine.context === "friends") refineNotes.push("Arkadaşlarla bağlamında F/P ve atmosfer öne çıktı; sessizlik geri çekildi.");
+  if (refine.maxPrice) refineNotes.push(`Bütçe sınırı ${"₺".repeat(refine.maxPrice)}: üstündekiler geri düştü, altındakiler öne çıktı.`);
+  if (refine.side) refineNotes.push(`${refine.side === "avrupa" ? "Avrupa" : "Anadolu"} Yakası dışındaki adaylar elendi.`);
+  if (refine.excludeFacet) refineNotes.push(`${refine.excludeFacet} mekânları elendi; sıralama kalanlar arasında yeniden yapıldı.`);
   const FOLLOW: Array<[string, Partial<AskRefine> | null]> = [
     ["Daha ucuz olsun", { maxPrice: 2 }],
     ["Date için olsun", { context: "date" }],
@@ -109,6 +116,9 @@ export default function AskPage() {
             )}
           </div>
 
+          {refineNotes.length > 0 && (
+            <p className="mt-3 border-l-2 border-accent pl-3 text-[13px] text-ink-2" role="status">{refineNotes.join(" ")}</p>
+          )}
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">Devam et:</span>
             {FOLLOW.map(([label, r]) => {
@@ -145,7 +155,7 @@ export default function AskPage() {
                     {it.reasons.some((r) => r.kind === "trend") && (
                       <p className="text-[12.5px] text-ink-3"><span className="font-semibold uppercase tracking-[0.1em]">Şimdi</span> · {it.reasons.filter((r) => r.kind === "trend").map((r) => r.text).join(" · ")}</p>
                     )}
-                    <p className="text-[11.5px] text-ink-3">Dayanak: zevk profilin · sana benzeyenler · {Math.round(intel.experienceCount * intel.verifiedRatio)} doğrulanmış deneyim · son 90 gün</p>
+                    <p className="text-[11.5px] text-ink-3"><span className="font-semibold uppercase tracking-[0.1em]">Neye dayanıyor</span> · zevk profilin · benzer kullanıcılar · {Math.round(intel.experienceCount * intel.verifiedRatio)} doğrulanmış deneyim · son dönem trendi · uzman sinyalleri</p>
                     <div className="flex flex-wrap items-center gap-2 pt-1">
                       <Link href={`/mekan/${e.slug}/`} className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Gör</Link>
                       <EntityActions entityId={it.entityId} entitySlug={e.slug} entityName={e.name} variant="compact" via="ask" />
@@ -156,7 +166,8 @@ export default function AskPage() {
                   </div>
                   <div className="flex flex-col items-start sm:items-end">
                     <span className="text-[34px] font-extrabold leading-none tracking-[-0.05em] text-accent-ink">%{it.match}</span>
-                    <span className="label">uyum</span>
+                    <span className="label">sana göre</span>
+                    {(() => { const d = getDecision(it.entityId, refine.context ?? result.query.context); return d ? <span className="mt-1 text-[13px] font-bold">{d.verdict}</span> : null; })()}
                   </div>
                 </li>
               );

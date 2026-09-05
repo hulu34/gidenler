@@ -87,7 +87,7 @@ export default function MapPage() {
           <ol className="flex flex-col divide-y divide-line border-t border-line">
             {results.map((r) => { const e = getEntityById(r.entityId)!; return (
               <li key={r.entityId}>
-                <button type="button" onClick={() => setActive(r.entityId)} className={`flex w-full items-baseline justify-between gap-3 py-2 text-left hover:text-accent-ink ${sel?.entityId === r.entityId ? "text-accent-ink" : ""}`}>
+                <button type="button" aria-pressed={sel?.entityId === r.entityId} onClick={() => setActive(r.entityId)} className={`flex w-full items-baseline justify-between gap-3 py-2 text-left hover:text-accent-ink ${sel?.entityId === r.entityId ? "text-accent-ink" : ""}`}>
                   <span className="text-[14px] font-semibold"><span className="tnum mr-2 text-[11px] text-ink-3">{String(r.rank).padStart(2, "0")}</span>{e.name}</span>
                   <span className="tnum text-[12.5px] font-semibold">{r.score !== null ? score1(r.score) : "—"} · {r.match !== null ? `%${r.match}` : "—"}</span>
                 </button>

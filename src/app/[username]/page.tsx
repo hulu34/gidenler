@@ -16,6 +16,7 @@ import { tasteProfileOf } from "@/lib/decision";
 import { TasteBlock } from "@/components/decision/TasteBlock";
 import { CreatorSimilarity } from "@/components/decision/CreatorSimilarity";
 import { Disclosure } from "@/components/ui/Disclosure";
+import { TasteContextLine } from "@/components/decision/TasteContextLine";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { getScoreSemantic } from "@/lib/semantic";
 
@@ -93,22 +94,6 @@ export default async function ProfilePage({
         )}
       </section>
 
-      {/* ───────── taste: kim neyi seviyor (V3) ───────── */}
-      {(() => { const tp = tasteProfileOf(u.id); return tp && tp.visibility === "public" ? (
-        <div className="mt-12 border-t-2 border-line-strong pt-6">
-          <TasteBlock profile={tp} title="Zevk kimliği" showPrivacy />
-          <p className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1 text-[12.5px] text-ink-3">
-            <span>Zevk, uzmanlık değildir: uzmanlık neyi bildiğini, zevk neyi sevdiğini anlatır.</span>
-            <Link href={`/pasaport/${u.handle}/`} className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Gidenler Pasaportu</Link>
-          </p>
-        </div>
-      ) : (
-        <p className="mt-10 text-[12.5px] text-ink-3">
-          <Link href={`/pasaport/${u.handle}/`} className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Gidenler Pasaportu</Link>
-          <span> · zevk profili özel</span>
-        </p>
-      ); })()}
-
       {/* ───────── listeler ───────── */}
       {lists.length > 0 && (
         <section className="mt-14" aria-labelledby="listeler">
@@ -147,7 +132,8 @@ export default async function ProfilePage({
           </h2>
           <span className="label">{experiences.length} kayıt gösteriliyor</span>
         </div>
-        <div className="mt-7">
+        <div className="mt-3"><TasteContextLine userId={u.id} handle={u.handle} /></div>
+        <div className="mt-6">
           {experiences.map((e) => {
             const schema = getSchema(e.category.ratingSchemaId);
             if (!schema) return null;
@@ -210,12 +196,63 @@ export default async function ProfilePage({
         )}
       </div>
 
-      {/* ───────── ikincil: güven nereden geliyor — kapalı başlar ───────── */}
-      <div className="mt-8 border-t border-line">
-        <Disclosure title="Güven neden bu seviyede?" hint="itibar sinyalleri · trend isabeti · dış platform takipçileri (ikincil)">
-          <div className="flex flex-col gap-10">
+      {/* ───────── zevk kimliği — istenirse açılır ───────── */}
+      {(() => { const tp = tasteProfileOf(u.id); return tp && tp.visibility === "public" ? (
+        <div className="mt-12 border-t-2 border-line-strong">
+          <Disclosure title="Zevk kimliği" hint="neyi sevdiği · uzmanlık değil, zevk">
+            <TasteBlock profile={tp} title="Zevk kimliği" showPrivacy />
+            <p className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1 text-[12.5px] text-ink-3">
+              <span>Zevk, uzmanlık değildir: uzmanlık neyi bildiğini, zevk neyi sevdiğini anlatır.</span>
+              <Link href={`/pasaport/${u.handle}/`} className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Gidenler Pasaportu</Link>
+            </p>
+          </Disclosure>
+        </div>
+      ) : (
+        <p className="mt-10 text-[12.5px] text-ink-3">
+          <Link href={`/pasaport/${u.handle}/`} className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Gidenler Pasaportu</Link>
+          <span> · zevk profili özel</span>
+        </p>
+      ); })()}
+
+      {/* ───────── neden güvenilir — kompakt; hesap detayı açılır ───────── */}
+      <section className="mt-12 border-t-2 border-line-strong pt-6" aria-labelledby="guven">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+          <h2 id="guven" className="text-[13px] font-bold uppercase tracking-[0.2em]">Neden güvenilir?</h2>
+          <p className="text-[12px] text-ink-3">Gidenler içi davranıştan; dış popülerlikten değil.</p>
+        </div>
+        <ul className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["Doğrulanmış ziyaretler", `%${verifiedShare}`, `${nf(u.stats.verifiedExperiences)} / ${nf(u.stats.experiences)} deneyim`],
+            ["Ticari şeffaflık", `${u.reputation.signals.find((x) => x.key === "disclosure_behavior")?.value ?? "—"}/100`, "davet ve sponsorlukları beyan ediyor"],
+            ["Faydalı bulunan deneyimler", `%${u.reputation.signals.find((x) => x.key === "helpful_ratio")?.value ?? "—"}`, `${nf(u.stats.helpfulVotes)} faydalı oyu`],
+            ["Alan uzmanlığı", u.expertise[0]?.label ?? "—", u.expertise[0] ? `${u.expertise[0].experienceCount} deneyim · ${u.expertise[0].level}` : ""],
+          ].map(([k, v, sub]) => (
+            <li key={k} className="flex flex-col gap-0.5 border-t border-line pt-2">
+              <span className="label">{k}</span>
+              <span className="tnum text-[20px] font-extrabold leading-tight tracking-[-0.03em]">{v}</span>
+              <span className="text-[11.5px] text-ink-3">{sub}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-4 border-t border-line">
+          <Disclosure title="Güveni nasıl hesaplıyoruz?" hint="sekiz sinyal · ağırlıklı">
             <ReputationSignals reputation={u.reputation} />
-            {u.predictions && (
+          </Disclosure>
+        </div>
+      </section>
+
+      {/* ───────── diğer platformlarda — ikincil ───────── */}
+      {u.social.length > 0 && (
+        <section className="mt-10 border-t border-line pt-5" aria-label="Diğer platformlarda">
+          <SocialAuthority identities={u.social} />
+          <p className="mt-2 text-[12.5px] font-semibold text-ink-2">Takipçi sayısı Gidenler güveninin ölçüsü değildir.</p>
+        </section>
+      )}
+
+      {/* ───────── geçmiş tahminleri — ikincil, kapalı ───────── */}
+      {u.predictions && (
+        <div className="mt-8 border-t border-line">
+          <Disclosure title="Geçmiş tahminleri" hint={`${u.predictions.correctDirection} / ${u.predictions.totalPredictions} isabet · para ve oran yok`}>
               <section aria-labelledby="tahmin">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
                   <h2 id="tahmin" className="label">Trend tahminleri</h2>
@@ -237,11 +274,9 @@ export default async function ProfilePage({
                 </div>
                 <p className="mt-4 max-w-[66ch] text-[12px] leading-relaxed text-ink-3">Tahminler bir bahis değildir; para, jeton ve oran yoktur. İsabet oranı satın alınamaz ve Gidenler puanını etkilemez.</p>
               </section>
-            )}
-            <SocialAuthority identities={u.social} />
-          </div>
-        </Disclosure>
-      </div>
+          </Disclosure>
+        </div>
+      )}
 
       <div className="mt-12">
         <DemoNotice>

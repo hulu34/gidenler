@@ -2,6 +2,7 @@ import Link from "next/link";
 import { monthOf, nf, relative, score1 } from "@/lib/format";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 import { DisclosureNote } from "./DisclosureNote";
+import { ExperienceActions } from "./ExperienceActions";
 import type { ExperienceWithAuthor, RatingSchema } from "@/lib/types";
 
 const compact = (n: number) =>
@@ -21,11 +22,14 @@ export function ExperienceCard({
   schema,
   showScores,
   showEntity,
+  entitySlug,
 }: {
   experience: ExperienceWithAuthor;
   schema: RatingSchema;
   showScores: boolean;
   showEntity?: { name: string; slug: string; category: string };
+  /** Kartın ait olduğu mekân (topic sayfasında) — "kendi deneyimini yaz" bağlantısı için. */
+  entitySlug?: string;
 }) {
   const a = e.author;
   const topSocial = a.social
@@ -118,13 +122,7 @@ export function ExperienceCard({
         </ul>
       )}
 
-      <footer className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-ink-3">
-        <button className="hover:text-ink" type="button">
-          <span className="tnum">{nf(e.helpfulVotes)}</span> faydalı
-        </button>
-        <button className="hover:text-ink" type="button">yanıtla</button>
-        <button className="hover:text-neg-ink" type="button">bildir</button>
-      </footer>
+      <ExperienceActions experienceId={e.id} helpfulVotes={e.helpfulVotes} entitySlug={showEntity?.slug ?? entitySlug} />
 
       {e.response && (
         <aside className="ml-0 border-l-2 border-warn bg-warn-soft/40 py-4 pl-5 sm:ml-8">

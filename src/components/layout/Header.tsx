@@ -117,7 +117,7 @@ export function Header() {
             Sor
           </Link>
           <Link
-            href="/ara/"
+            href="/kesfet/"
             className="hidden text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink sm:block"
           >
             Keşfet
@@ -128,12 +128,12 @@ export function Header() {
           >
             Benim
           </Link>
-          <button
-            type="button"
+          <Link
+            href="/ara/?yaz=1"
             className="border-b-2 border-accent pb-0.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-ink"
           >
             Deneyim yaz
-          </button>
+          </Link>
         </nav>
       </div>
     </header>

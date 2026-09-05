@@ -5,7 +5,7 @@ import { TrendIndicator } from "@/components/score/TrendIndicator";
 import type { EntityCard } from "@/lib/api";
 
 /** Listelerde kullanılan tek satır. Kart kutusu yok; çizgi + tipografi. */
-export function EntityCardRow({ card, rank }: { card: EntityCard; rank?: number }) {
+export function EntityCardRow({ card, rank, match, href }: { card: EntityCard; rank?: number; match?: number | null; href?: string }) {
   const { entity, category, score, delta90d, experienceCount, topComplaint, external } = card;
   const dir = delta90d > 0.15 ? "up" : delta90d < -0.15 ? "down" : "flat";
   const ext = external.filter((s) => s.kind === "score").slice(0, 2);
@@ -13,7 +13,7 @@ export function EntityCardRow({ card, rank }: { card: EntityCard; rank?: number 
   return (
     <li className="border-t border-line">
       <Link
-        href={`/mekan/${entity.slug}/`}
+        href={href ?? `/mekan/${entity.slug}/`}
         className="group grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 py-5 transition-colors hover:bg-sheet"
       >
         <div className="flex min-w-0 flex-col gap-1.5">
@@ -52,6 +52,7 @@ export function EntityCardRow({ card, rank }: { card: EntityCard; rank?: number 
                 <QualityTag score={score} />
                 <TrendIndicator direction={dir} delta={delta90d} showValue />
               </span>
+              {typeof match === "number" && <span className="tnum text-[12px] font-bold text-accent-ink">%{match} sana göre</span>}
             </>
           ) : (
             <span className="max-w-[9rem] text-right text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">

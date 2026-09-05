@@ -86,7 +86,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ───────── 1. NE BURASI ───────── */}
       <header className="flex flex-col gap-4 pt-8 sm:pt-12">
         <nav className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.13em] text-ink-3">
-          <Link href="/" className="hover:text-ink">Keşfet</Link>
+          <Link href="/kesfet/" className="hover:text-ink">Keşfet</Link>
           <span aria-hidden>/</span>
           <span className="text-accent-ink">{category.label}</span>
           {district && (<><span aria-hidden>/</span><span>{district}</span></>)}
@@ -236,14 +236,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           {expertExperiences.length > 0 && (
             <Disclosure title="Uzmanların deneyimleri" hint={`${expertExperiences.length} uzman deneyimi · farklı bir perspektif, daha üstün bir görüş değil`}>
               {expertExperiences.map((e) => (
-                <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
+                <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} entitySlug={entity.slug} />
               ))}
             </Disclosure>
           )}
 
           <Disclosure title="Bütün deneyimler" hint={`${nf(I.experienceCount)} deneyimin ${experiences.length} tanesi`}>
             {experiences.map((e) => (
-              <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
+              <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} entitySlug={entity.slug} />
             ))}
           </Disclosure>
           {ad && <div className="mt-10"><SponsoredSlot {...ad} /></div>}
@@ -255,7 +255,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           <h2 id="deneyimler" className="border-b-2 border-line-strong pb-3 text-[13px] font-bold uppercase tracking-[0.2em]">Bütün deneyimler</h2>
           <div className="mt-7">
             {experiences.map((e) => (
-              <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} />
+              <ExperienceCard key={e.id} experience={e} schema={schema} showScores={c.showScores} entitySlug={entity.slug} />
             ))}
           </div>
         </section>

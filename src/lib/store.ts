@@ -15,8 +15,22 @@ import type {
 } from "@/lib/types";
 import { DEMO_USER_ID } from "@/data/taste";
 
-const KEY = "gidenler.v4";
+/**
+ * İKİ AYRI AD ALANI: normal kullanıcı verisi ile sunum (yatırımcı) verisi
+ * birbirine karışmaz. Sunum modu açıkken okuma/yazma `gidenler.demo`
+ * anahtarına gider; normal kullanıcının `gidenler.v4` kaydına dokunulmaz.
+ * Mod bayrağı üçüncü bir anahtarda tutulur ki sayfalar arasında korunsun.
+ */
+const KEY_USER = "gidenler.v4";
+const KEY_DEMO = "gidenler.demo";
+const KEY_MODE = "gidenler.mode";
 const TODAY = "2026-09-02";
+
+function readMode(): "investor" | null {
+  if (typeof window === "undefined") return null;
+  try { return window.localStorage.getItem(KEY_MODE) === "investor" ? "investor" : null; } catch { return null; }
+}
+const activeKey = () => (readMode() === "investor" ? KEY_DEMO : KEY_USER);
 
 export interface UserData {
   relationships: Record<string, UserEntityRelationship>;
@@ -31,8 +45,13 @@ export interface UserData {
   feedback: RecommendationFeedback[];
   /** V5 — Sor Gidenler'de son aranan niyetler (en yeni önce, en çok 5). */
   recentIntents: RecentIntent[];
-  /** V5 — yatırımcı demo modu açık mı? */
+  /** V5 — sunum (yatırımcı) modu açık mı? Ad alanından türetilir; kayda yazılmaz. */
   demoMode?: "investor";
+  /** V5.1 — "faydalı" işaretlediğin deneyimler ve bildirdiklerin (prototipte yerel). */
+  helpful: string[];
+  reports: string[];
+  /** V5.1 — işletme paneli taslakları (resmî yanıt / iç not); prototipte yerel. */
+  businessDrafts: Record<string, { reply?: string; note?: string }>;
 }
 
 export interface RecommendationFeedback { entityId: string; reason: string; surface: string; createdAt: string }
@@ -48,7 +67,7 @@ const DEFAULT_LISTS: PersonalList[] = [
 const empty = (): UserData => ({
   relationships: {}, visits: [], reactions: [], lists: DEFAULT_LISTS.map((l) => ({ ...l, entityIds: [] })),
   taste: { dimensions: {}, cuisines: {}, dislikes: [] }, follows: [], groupVotes: [], groupChosen: {},
-  feedback: [], recentIntents: [],
+  feedback: [], recentIntents: [], helpful: [], reports: [], businessDrafts: {},
 });
 
 /** Eski sürümden kalan / bozuk kayıt hiçbir zaman sayfayı düşürmesin: her alan tipine göre doğrulanır. */
@@ -69,26 +88,37 @@ function sanitize(p: Partial<UserData> | null): UserData {
     groupChosen: obj(p.groupChosen, e.groupChosen),
     feedback: arr(p.feedback, e.feedback),
     recentIntents: arr(p.recentIntents, e.recentIntents),
-    demoMode: p.demoMode === "investor" ? "investor" : undefined,
+    helpful: arr(p.helpful, e.helpful),
+    reports: arr(p.reports, e.reports),
+    businessDrafts: obj(p.businessDrafts, e.businessDrafts),
   };
 }
 
 let cache: UserData | null = null;
 const listeners = new Set<() => void>();
 
+let cacheKey: string | null = null;
+
 function read(): UserData {
-  if (cache) return cache;
+  const key = typeof window === "undefined" ? KEY_USER : activeKey();
+  if (cache && cacheKey === key) return cache;
   if (typeof window === "undefined") return empty();
   try {
-    const raw = window.localStorage.getItem(KEY);
+    const raw = window.localStorage.getItem(key);
     cache = raw ? sanitize(JSON.parse(raw) as Partial<UserData>) : empty();
   } catch { cache = empty(); }
+  /* Sunum modunda kayıt yoksa (ilk açılış / temizlenmiş) başlangıç anlık görüntüsünü kur. */
+  if (key === KEY_DEMO && !window.localStorage.getItem(key)) cache = investorSnapshot();
+  cache.demoMode = key === KEY_DEMO ? "investor" : undefined;
+  cacheKey = key;
   return cache;
 }
 
 function write(next: UserData) {
-  cache = next;
-  try { window.localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* özel pencere vb. */ }
+  const key = activeKey();
+  cache = { ...next, demoMode: key === KEY_DEMO ? "investor" : undefined };
+  cacheKey = key;
+  try { const { demoMode: _m, ...persist } = cache; void _m; window.localStorage.setItem(key, JSON.stringify(persist)); } catch { /* özel pencere vb. */ }
   listeners.forEach((l) => l());
 }
 
@@ -198,9 +228,13 @@ export function chooseForGroup(groupId: string, entityId: string) {
   write({ ...d, groupChosen: { ...d.groupChosen, [groupId]: entityId } });
 }
 
-/* ─────────────────────────── demo sıfırlama ────────────────────────────── */
+/* ─────────────────────────── sıfırlama ─────────────────────────────────── */
 
-export function resetDemo() { write(empty()); }
+/** Etkin ad alanını sıfırlar: normal modda kullanıcı verisi temizlenir, sunum modunda başlangıç anlık görüntüsü geri gelir. */
+export function resetDemo() {
+  if (readMode() === "investor") { write(investorSnapshot()); return; }
+  write(empty());
+}
 
 /* ─────────────────────────── V5 · geri bildirim · niyet ────────────────── */
 
@@ -220,41 +254,74 @@ export function recordIntent(text: string) {
   write({ ...d, recentIntents: [{ text: t, createdAt: TODAY }, ...d.recentIntents.filter((i) => i.text !== t)].slice(0, 5) });
 }
 
-/* ─────────────────────────── V5 · yatırımcı demo modu ──────────────────── */
+/* ─────────────────────────── V5 · sunum (yatırımcı) modu ───────────────── */
 
 /**
- * Tek tıkla "yaşanmış" bir hesap: flywheel'in her aşamasında bir örnek var.
- * Gerçek sinyal üretmez; yalnızca prototip durumunu tohumlar. Sıfırlama: resetDemo().
+ * Tek belirleyici anlık görüntü: döngünün her aşamasında bir örnek.
+ * Gerçek sinyal üretmez; yalnızca sunum ad alanını tohumlar. Normal kullanıcı verisine dokunmaz.
  */
-export function seedInvestorDemo(): UserData {
+export function investorSnapshot(): UserData {
   const base = empty();
   const rel = (entityId: string, state: UserEntityState, via: string, listIds: string[] = [], visitedAt?: string): UserEntityRelationship =>
     ({ entityId, state, via, listIds, updatedAt: TODAY, visitedAt });
   const lists = base.lists.map((l) =>
     l.id === "l.week" ? { ...l, entityIds: ["ent.moda-lokantasi"] } :
-    l.id === "l.friends" ? { ...l, entityIds: ["ent.koz-durum"] } : l);
-  const data: UserData = {
+    l.id === "l.friends" ? { ...l, entityIds: ["ent.koz-durum"] } :
+    l.id === "l.ist" ? { ...l, entityIds: ["ent.moda-lokantasi", "ent.balikci-sokagi"] } : l);
+  /* Sakura kasıtlı olarak boş bırakılır: sunumda "Gitmek istiyorum → Gittim → tepki → deneyim" zinciri onunla canlı yürür. */
+  return {
     ...base,
     lists,
     relationships: {
-      "ent.moda-lokantasi": rel("ent.moda-lokantasi", "want_to_go", "ask", ["l.week"]),
+      "ent.moda-lokantasi": rel("ent.moda-lokantasi", "want_to_go", "ask", ["l.week", "l.ist"]),
       "ent.koz-durum": rel("ent.koz-durum", "saved", "topic", ["l.friends"]),
-      "ent.sakura-omakase": rel("ent.sakura-omakase", "experienced", "write", [], "2026-08-29"),
-      "ent.balikci-sokagi": rel("ent.balikci-sokagi", "visited", "visit", [], "2026-08-31"),
+      "ent.balikci-sokagi": rel("ent.balikci-sokagi", "experienced", "write", ["l.ist"], "2026-08-29"),
+      "ent.ates-steak": rel("ent.ates-steak", "visited", "visit", [], "2026-08-31"),
     },
     visits: [
-      { id: "v.demo1", entityId: "ent.sakura-omakase", userId: DEMO_USER_ID, visitedAt: "2026-08-29", source: "self_report" },
-      { id: "v.demo2", entityId: "ent.balikci-sokagi", userId: DEMO_USER_ID, visitedAt: "2026-08-31", source: "self_report" },
+      { id: "v.demo1", entityId: "ent.balikci-sokagi", userId: DEMO_USER_ID, visitedAt: "2026-08-29", source: "self_report" },
+      { id: "v.demo2", entityId: "ent.ates-steak", userId: DEMO_USER_ID, visitedAt: "2026-08-31", source: "self_report" },
     ],
     reactions: [
-      { id: "r.demo1", entityId: "ent.sakura-omakase", userId: DEMO_USER_ID, mood: "çok iyi", returnIntent: "evet", note: "Uni ve toro efsaneydi.", createdAt: "2026-08-29", upgradedToExperienceId: "exp.demo1" },
-      { id: "r.demo2", entityId: "ent.balikci-sokagi", userId: DEMO_USER_ID, mood: "iyi", returnIntent: "emin değil", note: "Balık taze, servis biraz yavaştı.", createdAt: "2026-08-31" },
+      { id: "r.demo1", entityId: "ent.balikci-sokagi", userId: DEMO_USER_ID, mood: "çok iyi", returnIntent: "evet", note: "Balık taze, meze tabağı efsane.", createdAt: "2026-08-29", upgradedToExperienceId: "exp.demo1" },
+      { id: "r.demo2", entityId: "ent.ates-steak", userId: DEMO_USER_ID, mood: "iyi", returnIntent: "emin değil", note: "Et iyi, servis yavaştı.", createdAt: "2026-08-31" },
     ],
     follows: ["u.denizyer"],
     recentIntents: [{ text: "Bu akşam Kadıköy'de sakin, iyi yemekli bir yer arıyorum.", createdAt: TODAY }],
     demoMode: "investor",
   };
-  write(data);
-  return data;
 }
-export function isInvestorDemo(): boolean { return read().demoMode === "investor"; }
+
+/** Sunum moduna gir (normal veri olduğu gibi kalır) ve anlık görüntüyü kur. */
+export function enterInvestorDemo(): UserData {
+  try { window.localStorage.setItem(KEY_MODE, "investor"); } catch { /* yoksay */ }
+  cache = null; cacheKey = null;
+  const snap = investorSnapshot();
+  write(snap);
+  return snap;
+}
+/** Sunum modundan çık: sunum verisi silinir, normal kullanıcı verisine dönülür. */
+export function exitInvestorDemo() {
+  try { window.localStorage.removeItem(KEY_MODE); window.localStorage.removeItem(KEY_DEMO); } catch { /* yoksay */ }
+  cache = null; cacheKey = null;
+  listeners.forEach((l) => l());
+}
+/** Geriye uyumluluk: eski adı. */
+export const seedInvestorDemo = enterInvestorDemo;
+export function isInvestorDemo(): boolean { return readMode() === "investor"; }
+
+/* ─────────────────────────── V5.1 · faydalı · bildir ───────────────────── */
+
+export function toggleHelpful(experienceId: string) {
+  const d = read();
+  write({ ...d, helpful: d.helpful.includes(experienceId) ? d.helpful.filter((x) => x !== experienceId) : [...d.helpful, experienceId] });
+}
+export function saveBusinessDraft(experienceId: string, patch: { reply?: string; note?: string }) {
+  const d = read();
+  write({ ...d, businessDrafts: { ...d.businessDrafts, [experienceId]: { ...d.businessDrafts[experienceId], ...patch } } });
+}
+export function reportExperience(experienceId: string) {
+  const d = read();
+  if (d.reports.includes(experienceId)) return;
+  write({ ...d, reports: [...d.reports, experienceId] });
+}

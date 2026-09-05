@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
+import { BusinessReply } from "@/components/decision/BusinessReply";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -195,11 +196,8 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
         <div className="mt-7">
           {unanswered.slice(0, 3).map((e) => (
             <div key={e.id} className="flex flex-col gap-4">
-              <ExperienceCard experience={e} schema={schema} showScores={category.compliance.showScores} />
-              <div className="mb-8 flex flex-wrap gap-2 border-l-2 border-line-2 pl-5">
-                <Button variant="primary" size="sm">Resmî yanıt yaz</Button>
-                <Button variant="ghost" size="sm">Not al</Button>
-              </div>
+              <ExperienceCard experience={e} schema={schema} showScores={category.compliance.showScores} entitySlug={entity.slug} />
+              <BusinessReply experienceId={e.id} />
             </div>
           ))}
         </div>
@@ -210,7 +208,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
           <h2 className="label border-b border-line pb-2">Yanıtladıklarınız</h2>
           <div className="mt-6">
             {answered.map((e) => (
-              <ExperienceCard key={e.id} experience={e} schema={schema} showScores={category.compliance.showScores} />
+              <ExperienceCard key={e.id} experience={e} schema={schema} showScores={category.compliance.showScores} entitySlug={entity.slug} />
             ))}
           </div>
         </section>

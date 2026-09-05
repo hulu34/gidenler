@@ -33,8 +33,12 @@ export default function GroupPage() {
   const myVote = (entityId: string) => data.groupVotes.find((v) => v.memberId === groupVoteKey(group.id, "m.you") && v.entityId === entityId)?.choice;
   const shareUrl = typeof window !== "undefined" ? `${window.location.origin}${window.location.pathname}?g=${group.id}` : `gidenler.com/birlikte/?g=${group.id}`;
 
-  async function copy() { try { await navigator.clipboard.writeText(shareUrl); setCopied(true); setTimeout(() => setCopied(false), 1500); } catch { /* izin yok */ } }
-  async function share() { if (navigator.share) { try { await navigator.share({ title: "Birlikte Nereye?", text: group.question, url: shareUrl }); } catch { /* iptal */ } } else copy(); }
+  async function copy() {
+    try { await navigator.clipboard.writeText(shareUrl); setCopied(true); }
+    catch { /* pano izni yok: link zaten yanında görünür; kullanıcı elle seçer */ setCopied(true); }
+    setTimeout(() => setCopied(false), 1500);
+  }
+  async function share() { if (navigator.share) { try { await navigator.share({ title: "Birlikte Nereye?", text: group.question, url: shareUrl }); } catch { /* iptal */ } } else await copy(); }
 
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
@@ -44,7 +48,7 @@ export default function GroupPage() {
         <form onSubmit={(e) => { e.preventDefault(); setStarted(true); }} className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-end">
           <input value={q} onChange={(e) => setQ(e.target.value)} aria-label="Grup sorusu" placeholder="Cumartesi 4 kişi nereye gidelim?"
             className="h-12 w-full border-b-2 border-line-strong bg-transparent pb-1 text-[clamp(1.125rem,3vw,1.5rem)] outline-none placeholder:text-ink-3 focus:border-accent" />
-          <button type="submit" className="h-10 shrink-0 rounded-[3px] bg-accent px-5 text-[14px] font-semibold text-on-accent">Grup oluştur</button>
+          <button type="submit" aria-pressed={started} className="h-10 shrink-0 rounded-[3px] bg-accent px-5 text-[14px] font-semibold text-on-accent">{started ? "Soruyu güncelle" : "Grup oluştur"}</button>
         </form>
         {!started && <p className="mt-3 text-[13px] text-ink-3">Bir soru yaz, link paylaş; herkes kendi zevkiyle katılsın. Prototipte hazır bir demo grup açılır.</p>}
       </section>
@@ -100,7 +104,7 @@ export default function GroupPage() {
                       <div className="flex flex-wrap items-center gap-2 border-t border-line pt-3">
                         <span className="text-[12px] text-ink-3">Senin oyun:</span>
                         {VOTES.map(([k, l]) => <button key={k} type="button" aria-pressed={v === k} onClick={() => voteGroup(group.id, "m.you", c.entityId, k)} className={`h-8 border px-2.5 text-[12.5px] font-semibold ${v === k ? "border-accent bg-accent text-on-accent" : "border-line-2 hover:border-ink"}`}>{l}</button>)}
-                        <button type="button" onClick={() => chooseForGroup(group.id, c.entityId)} className="ml-auto text-[12.5px] font-semibold underline decoration-line-2 underline-offset-4 hover:decoration-ink">{isChosen ? "Seçildi" : "Bunu seç"}</button>
+                        <button type="button" aria-pressed={isChosen} onClick={() => chooseForGroup(group.id, c.entityId)} className="ml-auto text-[12.5px] font-semibold underline decoration-line-2 underline-offset-4 hover:decoration-ink">{isChosen ? "Seçildi" : "Bunu seç"}</button>
                       </div>
                     </div>
                     <div className="flex flex-col items-start sm:items-end">
