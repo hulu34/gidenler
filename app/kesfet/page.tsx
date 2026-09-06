@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PersonMark } from "@/components/experience/PersonMark";
 import { expertExperiences, featuredLists, listCards, listCategories, rising, trending } from "@/lib/api";
 import { nf } from "@/lib/format";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
@@ -87,7 +88,7 @@ export default function ExplorePage() {
             <li key={e.id} className="flex flex-col gap-1.5">
               <Link href={`/mekan/${card.entity.slug}/`} className="flex items-baseline justify-between gap-3 hover:text-accent-ink"><span className="text-[16px] font-bold">{card.entity.name}</span><ScoreNumber score={card.score} size="sm" /></Link>
               <p className="line-clamp-3 text-[13px] leading-relaxed text-ink-2">{e.body}</p>
-              <Link href={`/@${e.author.handle}/`} className="text-[12px] font-semibold text-ink-3 hover:text-ink">@{e.author.handle} · {e.author.expertise[0]?.label}</Link>
+              <Link href={`/@${e.author.handle}/`} className="flex items-center gap-2 text-[12px] font-semibold text-ink-3 hover:text-ink"><PersonMark user={e.author} size="xs" />@{e.author.handle} · {e.author.expertise[0]?.label}</Link>
             </li>
           ))}
         </ul>
