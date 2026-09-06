@@ -483,6 +483,8 @@ export interface EntityCard {
   topComplaint?: string;
   external: ExternalSource[];
   consensus?: Consensus | null;
+  /** Puan güveni (kart kanıt satırı için); regüle kategorilerde yok. */
+  confidence?: ConfidenceLevel;
 }
 
 export function cardOf(entity: Entity): EntityCard {
@@ -496,6 +498,7 @@ export function cardOf(entity: Entity): EntityCard {
     topComplaint: intel?.negativeThemes[0]?.label,
     external: intel?.externalSignals ?? [],
     consensus: intel?.consensus ?? null,
+    confidence: intel?.confidence,
   };
 }
 
