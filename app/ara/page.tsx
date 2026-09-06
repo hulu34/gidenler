@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { PersonMark } from "@/components/experience/PersonMark";
 import { useEffect, useMemo, useState } from "react";
 import { listCards, listCategories, search } from "@/lib/api";
 import { effectiveProfile, getPersonalMatch } from "@/lib/decision";
@@ -130,7 +131,7 @@ export default function SearchPage() {
           </div>
           <ul>
             {results.entities.slice(0, limit).map((c) => (
-              <EntityCardRow key={c.entity.id} card={c} match={matchOf(c.entity.id, c.category.compliance.showScores)}
+              <EntityCardRow key={c.entity.id} card={c} dense match={matchOf(c.entity.id, c.category.compliance.showScores)}
                 href={writeMode ? `/yaz/${c.entity.slug}/` : undefined} />
             ))}
           </ul>
@@ -152,10 +153,13 @@ export default function SearchPage() {
           <ul>
             {results.creators.map((u) => (
               <li key={u.id} className="border-b border-line">
-                <Link href={`/@${u.handle}/`} className="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4 hover:bg-sheet">
+                <Link href={`/@${u.handle}/`} className="group flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-4 hover:bg-sheet">
+                  <span className="flex items-center gap-3">
+                  <PersonMark user={u} size="md" />
                   <span className="flex flex-col gap-1">
                     <span className="text-[19px] font-bold tracking-[-0.02em] group-hover:text-accent-ink">@{u.handle}</span>
                     <ReputationChip reputation={u.reputation} kind={u.kind} />
+                  </span>
                   </span>
                   <span className="flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-ink-3">
                     {u.expertise.slice(0, 3).map((x) => <span key={x.key}>{x.label} <span className="tnum font-semibold text-ink-2">{x.score}</span></span>)}
