@@ -143,9 +143,9 @@ const SUBS: Sub[] = [
   { key: "sergi", label: "Sergi", cat: "cat.show", weight: 12, patterns: [(r, w) => `"${w} ${pick(r, ["ve Zaman", "Üzerine", "Hâlleri", "Defteri", "Işığı"])}"`], facets: ["Sergi"], price: [1, 2], tags: ["sergi", "fotoğraf", "resim"], quiet: [7, 9], speed: [5, 5] },
   { key: "film", label: "Film", cat: "cat.film", weight: 36, patterns: [(r, w) => `${w} ${pick(r, ["Vakti", "Sabahı", "Rüzgârı", "Yolu", "Sessizliği", "Odası", "Mevsimi"])}`, (r) => `${pick(r, ["Gri", "Son", "Uzak", "Kuzey", "Derin", "Sessiz", "Beyaz"])} ${pick(r, ["Sabah", "Vapur", "Liman", "Kış", "Gece", "Deniz", "Şehir"])}`], price: [1, 1], tags: ["dram", "komedi", "belgesel", "gerilim"], quiet: [5, 5], speed: [5, 5] },
   { key: "sehir", label: "Şehir", cat: "cat.travel", weight: 12, patterns: [P.bare()], facets: ["Şehir"], price: [1, 1], tags: ["şehir", "hafta sonu"], quiet: [3, 6], speed: [5, 5], real: ["Ankara", "İzmir", "Bursa", "Antalya", "Eskişehir", "Gaziantep", "Trabzon", "Mardin", "Safranbolu", "Şanlıurfa", "Edirne", "Çanakkale"], abroad: true },
-  { key: "destinasyon", label: "Destinasyon", cat: "cat.travel", weight: 16, patterns: [P.bare()], facets: ["Destinasyon"], price: [2, 3], tags: ["tatil", "koy"], quiet: [4, 8], speed: [5, 5], real: ["Kaş", "Alaçatı", "Kapadokya", "Cunda", "Datça", "Bozcaada", "Ayder Yaylası", "Şirince", "Kaleköy", "Gökçeada", "Amasra", "Assos", "Akyaka", "Ayvalık", "Sığacık", "Uzungöl"], abroad: true },
-  { key: "plaj", label: "Plaj", cat: "cat.travel", weight: 10, patterns: [P.bare()], facets: ["Plaj"], price: [1, 2], tags: ["deniz", "yaz"], quiet: [3, 7], speed: [5, 5], real: ["Kabak Koyu", "Ölüdeniz", "Kaputaş Plajı", "İztuzu Plajı", "Altınkum (Çeşme)", "Patara Plajı", "Cennet Koyu", "Kleopatra Plajı", "Kilyos Plajı", "Burç Beach"], abroad: true },
-  { key: "rota", label: "Rota", cat: "cat.travel", weight: 5, patterns: [P.bare()], facets: ["Rota"], price: [1, 2], tags: ["yürüyüş", "araba"], quiet: [6, 9], speed: [5, 5], real: ["Likya Yolu", "Karia Yolu", "Boğaz Sahil Yürüyüşü", "Kaçkar Yayla Rotası", "Ege Kıyı Rotası"], abroad: true },
+  { key: "destinasyon", label: "Destinasyon", cat: "cat.travel", weight: 16, patterns: [P.bare()], facets: ["Destinasyon"], price: [2, 3], tags: ["tatil", "koy"], quiet: [4, 8], speed: [5, 5], real: ["Kaş", "Alaçatı", "Kapadokya", "Cunda", "Datça", "Bozcaada", "Ayder Yaylası", "Şirince", "Kaleköy", "Gökçeada", "Amasra", "Assos", "Akyaka", "Ayvalık", "Sığacık", "Uzungöl", "Polonezköy", "Şile", "Ağva", "Büyükada", "Heybeliada", "Kilyos"], abroad: true },
+  { key: "plaj", label: "Plaj", cat: "cat.travel", weight: 10, patterns: [P.bare()], facets: ["Plaj"], price: [1, 2], tags: ["deniz", "yaz"], quiet: [3, 7], speed: [5, 5], real: ["Kabak Koyu", "Ölüdeniz", "Kaputaş Plajı", "İztuzu Plajı", "Altınkum (Çeşme)", "Patara Plajı", "Cennet Koyu", "Kleopatra Plajı", "Kilyos Plajı", "Burç Beach", "Riva Plajı", "Şile Plajı", "Ağva Plajı", "Yörükali Plajı"], abroad: true },
+  { key: "rota", label: "Rota", cat: "cat.travel", weight: 5, patterns: [P.bare()], facets: ["Rota"], price: [1, 2], tags: ["yürüyüş", "araba"], quiet: [6, 9], speed: [5, 5], real: ["Likya Yolu", "Karia Yolu", "Boğaz Sahil Yürüyüşü", "Kaçkar Yayla Rotası", "Ege Kıyı Rotası", "Adalar Bisiklet Turu", "Belgrad Ormanı Parkurları"], abroad: true },
   { key: "kuafor", label: "Kuaför", cat: "cat.service", weight: 14, patterns: [P.wSuffix("Kuaför"), P.wSuffix("Hair Studio")], facets: ["Kuaför"], price: [2, 3], hours: ["09.00 – 20.00"], tags: ["saç", "randevu"], quiet: [4, 7], speed: [5, 7] },
   { key: "berber", label: "Berber", cat: "cat.service", weight: 14, patterns: [P.prefixW("Berber"), P.wSuffix("Barber")], facets: ["Berber"], price: [1, 2], hours: ["09.00 – 21.00"], tags: ["tıraş", "sakal"], quiet: [4, 7], speed: [6, 8] },
   { key: "spor", label: "Spor salonu", cat: "cat.service", weight: 14, patterns: [P.wSuffix("Fitness"), P.wSuffix("Studio"), P.wSuffix("Gym")], facets: ["Spor salonu"], price: [2, 3], hours: ["06.00 – 23.00"], tags: ["fitness", "pilates"], quiet: [3, 6], speed: [5, 5] },
@@ -176,7 +176,9 @@ const REAL_LOC: Record<string, [string, string, string]> = {
   "Tüpraş Stadyumu": ["İstanbul", "Beşiktaş", "Dolmabahçe"], "RAMS Park": ["İstanbul", "Başakşehir", "Kayaşehir"], "Ülker Stadyumu": ["İstanbul", "Kadıköy", "Fenerbahçe"], "Recep Tayyip Erdoğan Stadyumu": ["İstanbul", "Kasımpaşa", "Kasımpaşa"], "Gürsel Aksel Stadyumu": ["İzmir", "Konak", "Göztepe"],
   "Ankara": ["Ankara", "Çankaya", ""], "İzmir": ["İzmir", "Konak", ""], "Bursa": ["Bursa", "Osmangazi", ""], "Antalya": ["Antalya", "Muratpaşa", ""], "Eskişehir": ["Eskişehir", "Odunpazarı", ""], "Gaziantep": ["Gaziantep", "Şahinbey", ""], "Trabzon": ["Trabzon", "Ortahisar", ""], "Mardin": ["Mardin", "Artuklu", ""], "Safranbolu": ["Karabük", "Safranbolu", ""], "Şanlıurfa": ["Şanlıurfa", "Eyyübiye", ""], "Edirne": ["Edirne", "Merkez", ""], "Çanakkale": ["Çanakkale", "Merkez", ""],
   "Kaş": ["Antalya", "Kaş", "Kaş Merkez"], "Alaçatı": ["İzmir", "Çeşme", "Alaçatı"], "Kapadokya": ["Nevşehir", "Ürgüp", "Göreme"], "Cunda": ["Balıkesir", "Ayvalık", "Cunda"], "Datça": ["Muğla", "Datça", "Datça Merkez"], "Bozcaada": ["Çanakkale", "Bozcaada", "Merkez"], "Ayder Yaylası": ["Rize", "Çamlıhemşin", "Ayder"], "Şirince": ["İzmir", "Selçuk", "Şirince"], "Kaleköy": ["Antalya", "Demre", "Kaleköy"], "Gökçeada": ["Çanakkale", "Gökçeada", "Merkez"], "Amasra": ["Bartın", "Amasra", "Merkez"], "Assos": ["Çanakkale", "Ayvacık", "Behramkale"], "Akyaka": ["Muğla", "Ula", "Akyaka"], "Ayvalık": ["Balıkesir", "Ayvalık", "Merkez"], "Sığacık": ["İzmir", "Seferihisar", "Sığacık"], "Uzungöl": ["Trabzon", "Çaykara", "Uzungöl"],
-  "Kabak Koyu": ["Muğla", "Fethiye", "Kabak"], "Ölüdeniz": ["Muğla", "Fethiye", "Ölüdeniz"], "Kaputaş Plajı": ["Antalya", "Kaş", "Kaputaş"], "İztuzu Plajı": ["Muğla", "Ortaca", "Dalyan"], "Altınkum (Çeşme)": ["İzmir", "Çeşme", "Altınkum"], "Patara Plajı": ["Antalya", "Kaş", "Patara"], "Cennet Koyu": ["Muğla", "Marmaris", "Cennet Adası"], "Kleopatra Plajı": ["Antalya", "Alanya", "Alanya Merkez"], "Kilyos Plajı": ["İstanbul", "Sarıyer", "Kilyos"], "Burç Beach": ["İstanbul", "Sarıyer", "Kilyos"],
+  "Kabak Koyu": ["Muğla", "Fethiye", "Kabak"], "Ölüdeniz": ["Muğla", "Fethiye", "Ölüdeniz"], "Kaputaş Plajı": ["Antalya", "Kaş", "Kaputaş"], "İztuzu Plajı": ["Muğla", "Ortaca", "Dalyan"], "Altınkum (Çeşme)": ["İzmir", "Çeşme", "Altınkum"], "Patara Plajı": ["Antalya", "Kaş", "Patara"], "Cennet Koyu": ["Muğla", "Marmaris", "Cennet Adası"], "Kleopatra Plajı": ["Antalya", "Alanya", "Alanya Merkez"], "Kilyos Plajı": ["İstanbul", "Sarıyer", "Kilyos"], "Riva Plajı": ["İstanbul", "Beykoz", "Riva"], "Şile Plajı": ["İstanbul", "Şile", "Şile Merkez"], "Ağva Plajı": ["İstanbul", "Şile", "Ağva"], "Yörükali Plajı": ["İstanbul", "Adalar", "Büyükada"],
+  "Polonezköy": ["İstanbul", "Beykoz", "Polonezköy"], "Şile": ["İstanbul", "Şile", "Şile Merkez"], "Ağva": ["İstanbul", "Şile", "Ağva"], "Büyükada": ["İstanbul", "Adalar", "Büyükada"], "Heybeliada": ["İstanbul", "Adalar", "Heybeliada"], "Kilyos": ["İstanbul", "Sarıyer", "Kilyos"],
+  "Adalar Bisiklet Turu": ["İstanbul", "Adalar", "Büyükada"], "Belgrad Ormanı Parkurları": ["İstanbul", "Sarıyer", "Bahçeköy"], "Burç Beach": ["İstanbul", "Sarıyer", "Kilyos"],
   "Likya Yolu": ["Antalya", "Kaş", "Likya"], "Karia Yolu": ["Muğla", "Datça", "Karia"], "Boğaz Sahil Yürüyüşü": ["İstanbul", "Beşiktaş", "Bebek"], "Kaçkar Yayla Rotası": ["Rize", "Çamlıhemşin", "Kaçkar"], "Ege Kıyı Rotası": ["İzmir", "Urla", "Urla Merkez"],
 };
 
@@ -375,7 +377,13 @@ const FRAG: Record<string, { pos: string[]; neg: string[]; neutral: string[]; re
     ret: ["Tekrar giderim.", "Bir daha gitmem.", "Yakınsa yine.", "Kararsızım."],
   },
 };
-const FRAG_OF: Record<string, string> = { "schema.dining": "dining", "schema.cafe": "cafe", "schema.hotel": "hotel", "schema.bar": "bar", "schema.place": "place", "schema.culture": "culture", "schema.show": "show", "schema.venue": "venue", "schema.travel": "travel", "schema.service": "service", "schema.film": "show" };
+FRAG.film = {
+  pos: ["Görüntü yönetimi filmi tek başına taşıyor.", "Baş roldeki oyunculuk abartısız, inandırıcı.", "Müzik sahnelerin önüne geçmiyor.", "Senaryo az diyalogla çok şey anlatıyor.", "Tempo yavaş ama bilinçli; sıkmadı.", "Final tartışmaya açık, iyi anlamda."],
+  neg: ["İkinci yarı gereksiz uzuyor.", "Diyaloglar yer yer yapay.", "Ses miksajı bazı sahnelerde replikleri yutuyor.", "Final aceleye getirilmiş.", "Yan karakterler yarım kalmış.", "Fragman filmin en iyi sahnelerini harcamış."],
+  neutral: ["Büyük perdede izlemek fark yaratıyor.", "Altyazılı gösterimi az salonda var.", "İlk yarım saat sabır istiyor."],
+  ret: ["İkinci kez izlerim.", "Bir kez yeterli.", "Evde tekrar izlerim, sinemada değil.", "Kararsızım."],
+};
+const FRAG_OF: Record<string, string> = { "schema.dining": "dining", "schema.cafe": "cafe", "schema.hotel": "hotel", "schema.bar": "bar", "schema.place": "place", "schema.culture": "culture", "schema.show": "show", "schema.venue": "venue", "schema.travel": "travel", "schema.service": "service", "schema.film": "film" };
 
 const THEME_POOL: Record<string, { pos: string[]; neg: string[] }> = {
   dining: { pos: ["Lezzet", "Servis", "Porsiyon", "Meze", "Ekmek", "Manzara", "Konum"], neg: ["Bekleme süresi", "Ses seviyesi", "Fiyat seviyesi", "Porsiyon", "Servis hızı", "Kalabalık", "Rezervasyon"] },
@@ -388,6 +396,7 @@ const THEME_POOL: Record<string, { pos: string[]; neg: string[] }> = {
   venue: { pos: ["Koltuk", "Ses", "Ulaşım", "Görüş"], neg: ["Çıkış kalabalığı", "Klima", "Büfe fiyatı", "Koltuk aralığı"] },
   travel: { pos: ["Mevsim", "Rota", "Lokantalar", "Ulaşım"], neg: ["Kalabalık", "Konaklama fiyatı", "Yol", "Park"] },
   service: { pos: ["Zamanlama", "Temizlik", "Fiyat şeffaflığı", "Sonuç"], neg: ["Gecikme", "Fiyat listesi", "Acele", "Soyunma odası"] },
+  film: { pos: ["Görüntü", "Oyunculuk", "Müzik", "Senaryo", "Tempo"], neg: ["Süre", "İkinci yarı", "Diyaloglar", "Final", "Ses miksajı"] },
 };
 
 const VERIFY: VerificationMethod[] = ["konum", "fiş", "rezervasyon", "bilet", "yok", "yok", "sonra"];
@@ -549,8 +558,8 @@ const GOLDEN: Golden[] = [
     const city = [ISTANBUL, ...CITIES].find((c) => c.name === g.city)!; const d = city.districts.find((x) => x.name === g.district)!;
     const slug = uniqueSlug(g.name, g.hood); usedNames.add(g.name);
     const e: Entity = { id: `ent.u.${slug}`, slug, name: g.name, categoryId: sub.cat, isDemo: true, isSynthetic: true, subcategory: sub.label,
-      location: { city: g.city, district: g.district, neighborhood: g.hood, geo: { lat: round1(d.lat * 1000 + (r() - 0.5) * 12) / 1000, lng: round1(d.lng * 1000 + (r() - 0.5) * 12) / 1000 } },
-      address: `${g.hood} (demo adres)`, hours: sub.hours ? pick(r, sub.hours) : undefined, priceLevel: g.price ?? (sub.price[0] as 1 | 2 | 3 | 4),
+      location: sub.cat === "cat.film" ? { city: g.city } : { city: g.city, district: g.district, neighborhood: g.hood, geo: { lat: round1(d.lat * 1000 + (r() - 0.5) * 12) / 1000, lng: round1(d.lng * 1000 + (r() - 0.5) * 12) / 1000 } },
+      address: sub.cat === "cat.film" ? undefined : `${g.hood} (demo adres)`, hours: sub.hours ? pick(r, sub.hours) : undefined, priceLevel: g.price ?? (sub.price[0] as 1 | 2 | 3 | 4),
       facets: g.facets ?? sub.facets, tags: sub.tags, business: sub.cat === "cat.restaurant" || sub.cat === "cat.cafe" || sub.cat === "cat.hotel" ? { claimed: r() < 0.5, subscription: "none" } : undefined, openedAt: `20${10 + Math.floor(r() * 15)}-0${1 + Math.floor(r() * 9)}-01` };
     universeBlurbs[e.id] = g.blurb;
     register(e, sub, "A", r, { score: g.score, delta: g.delta, count: g.count, verifiedRatio: g.verified });
@@ -574,7 +583,8 @@ const GOLDEN: Golden[] = [
         name = `${pre} ${pick(r, INITIALS)}.${pick(r, INITIALS)}. (${pick(r, br)} · ${d.name})`;
       } else {
         for (let tries = 0; tries < 12; tries++) { name = pick(r, sub.patterns)(r, pick(r, W), hood, d.name, cityName); if (!usedNames.has(name)) break; }
-        if (usedNames.has(name)) name = `${name} ${hood}`;
+        if (usedNames.has(name)) { for (const h2 of d.hoods) { name = pick(r, sub.patterns)(r, pick(r, W), h2, d.name, cityName); if (!usedNames.has(name)) { hood = h2; break; } } }
+        if (usedNames.has(name)) return; /* çakışan ad üretmektense kaydı atla — "X Caddesi Bahariye" gibi adlar olmaz */
       }
     }
     usedNames.add(name);
@@ -583,8 +593,8 @@ const GOLDEN: Golden[] = [
     const richable = !realName && sub.patterns.length > 0;
     const tier: "A" | "B" | "C" = richable && tierRoll < 0.17 ? "B" : "C";
     const e: Entity = { id: `ent.u.${slug}`, slug, name, categoryId: sub.cat, isDemo: true, isSynthetic: !realName, realIdentity: !!realName, subcategory: sub.label,
-      location: { city: cityName, district: d.name, neighborhood: sub.key === "sehir" || !hood ? undefined : hood, geo: d.lat ? { lat: round1(d.lat * 1000 + (r() - 0.5) * 14) / 1000, lng: round1(d.lng * 1000 + (r() - 0.5) * 14) / 1000 } : undefined },
-      address: realName ? undefined : `${hood} (demo adres)`, hours: sub.hours ? pick(r, sub.hours) : undefined,
+      location: sub.cat === "cat.film" ? { city: cityName } : { city: cityName, district: d.name, neighborhood: sub.key === "sehir" || !hood ? undefined : hood, geo: d.lat ? { lat: round1(d.lat * 1000 + (r() - 0.5) * 14) / 1000, lng: round1(d.lng * 1000 + (r() - 0.5) * 14) / 1000 } : undefined },
+      address: realName || sub.cat === "cat.film" ? undefined : `${hood} (demo adres)`, hours: sub.hours ? pick(r, sub.hours) : undefined,
       priceLevel: sub.price[1] === 1 && (sub.cat === "cat.place" || sub.cat === "cat.travel" || sub.patterns.length === 0) ? undefined : clamp(sub.price[0] + Math.round(r() * (sub.price[1] - sub.price[0])), 1, 4) as 1 | 2 | 3 | 4,
       facets: sub.facets, tags: sub.patterns.length === 0 ? sub.tags : sub.tags?.slice(0, 1 + Math.floor(r() * (sub.tags.length))), openedAt: realName ? undefined : `20${8 + Math.floor(r() * 17)}-0${1 + Math.floor(r() * 9)}-01` };
     register(e, sub, tier, r);
@@ -594,7 +604,8 @@ const GOLDEN: Golden[] = [
   for (const sub of SUBS) {
     const r = rng("gen:" + sub.key);
     if (sub.real) { for (const n of sub.real) { const city = /Ankara|İzmir|Bursa|Antalya|Eskişehir|Gaziantep|Trabzon|Mardin|Safranbolu|Şanlıurfa|Edirne|Çanakkale|Efes|Zeugma|Anadolu Medeniyetleri|Kaş|Alaçatı|Kapadokya|Cunda|Datça|Bozcaada|Ayder|Şirince|Kaleköy|Gökçeada|Amasra|Assos|Akyaka|Ayvalık|Sığacık|Uzungöl|Kabak|Ölüdeniz|Kaputaş|İztuzu|Çeşme|Patara|Cennet|Kleopatra|Likya|Karia|Kaçkar|Ege|Gürsel/.test(n) ? pick(r, CITIES) : ISTANBUL; emit(city, sub, r, n); } }
-    const nIst = Math.round((sub.weight / totalW) * ISTANBUL_TARGET);
+    /* Gezi: sentetik "destinasyon" üretilmez — İstanbul kaçamakları gerçek adlarla gelir (Şile, Polonezköy, Adalar…). */
+    const nIst = sub.cat === "cat.travel" ? 0 : Math.round((sub.weight / totalW) * ISTANBUL_TARGET);
     for (let i = 0; i < nIst; i++) emit(ISTANBUL, sub, r);
     if (sub.patterns.length && !sub.real && sub.cat !== "cat.physician" && sub.cat !== "cat.dentist" && sub.cat !== "cat.lawyer") {
       const abroadShare = sub.abroad ? 0.9 : 0.32;
