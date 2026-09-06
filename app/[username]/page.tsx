@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PersonMark } from "@/components/experience/PersonMark";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -57,12 +58,16 @@ export default async function ProfilePage({
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
       {/* ═══════ HERO — iki soru: bu kişi neyi biliyor, benimle ne kadar benziyor ═══════ */}
       <header className="flex flex-col gap-4 pt-9 sm:pt-14">
-        <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-4 sm:gap-5">
+          <PersonMark user={u} size="xl" className="hidden sm:inline-block" />
+          <PersonMark user={u} size="lg" className="sm:hidden" />
+          <div className="flex flex-col gap-2">
           <h1 className="text-[clamp(2rem,7vw,3.25rem)] font-extrabold leading-none tracking-[-0.05em]">@{u.handle}</h1>
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="text-[15px] font-bold tracking-[-0.01em]">{u.expertise.slice(0, 2).map((a) => a.label).join(" · ")} uzmanı</span>
             <ReputationChip reputation={u.reputation} kind={u.kind} />
           </p>
+          </div>
         </div>
         {u.bio && <p className="prose-exp max-w-[54ch] text-[16px]">{u.bio}</p>}
         {/* kompakt kanıt: kaç deneyim, ne kadar doğrulanmış — takipçi sayısı burada yok */}
