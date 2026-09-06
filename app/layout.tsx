@@ -9,7 +9,6 @@ import "@fontsource/instrument-serif/latin-400.css";
 
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
-import { VisualDefs } from "@/components/experience/EntityVisual";
 import { Footer } from "@/components/layout/Footer";
 import { DemoBoot } from "@/components/demo/DemoBoot";
 
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           İçeriğe geç
         </a>
         <DemoBoot />
-        <VisualDefs />
         <Header />
         <main id="icerik">{children}</main>
         <Footer />
