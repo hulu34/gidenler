@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { EntityVisual } from "@/components/experience/EntityVisual";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -85,8 +84,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-32 sm:px-7 sm:pb-24">
       {/* ───────── 1. NE BURASI ───────── */}
-      <header className={`grid gap-x-10 gap-y-5 pt-8 sm:pt-12 ${c.mode === "regulated" ? "" : "md:grid-cols-[1fr_300px]"}`}>
-        <div className="flex flex-col gap-4">
+      <header className="flex flex-col gap-4 pt-8 sm:pt-12">
         <nav className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.13em] text-ink-3">
           <Link href="/kesfet/" className="hover:text-ink">Keşfet</Link>
           <span aria-hidden>/</span>
@@ -126,12 +124,6 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
               <li key={f} className="label">{f}</li>
             ))}
           </ul>
-        )}
-        </div>
-        {c.mode !== "regulated" && (
-          <div className="order-first md:order-none">
-            <EntityVisual entity={entity} variant="card" priority className="border border-line" />
-          </div>
         )}
       </header>
 
