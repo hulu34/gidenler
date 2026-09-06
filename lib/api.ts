@@ -503,11 +503,51 @@ let cardsCache: EntityCard[] | null = null;
 export const listCards = (): EntityCard[] => (cardsCache ??= entities.map(cardOf));
 export const rising = () => listCards().filter((c) => c.delta90d > 0.15).sort((a, b) => b.delta90d - a.delta90d);
 export const falling = () => listCards().filter((c) => c.delta90d < -0.15).sort((a, b) => a.delta90d - b.delta90d);
-export const trending = () => listCards().sort((a, b) => b.experienceCount - a.experienceCount);
+export const trending = () => [...listCards()].sort((a, b) => b.experienceCount - a.experienceCount);
 
-export function latestExperiences(limit = 6) {
+/* ──────────────────────────── ANA SAYFA KÜRASYONU ─────────────────────────
+   Ana sayfa vitrindir, veritabanı değil: yalnızca İstanbul, yalnızca A/B
+   katmanı, kategori çorbası yok. Puan/trend modeline dokunmaz; sadece seçer. */
+export const inIstanbul = (c: EntityCard) => (c.entity.location?.city ?? "İstanbul") === "İstanbul";
+const showsScore = (c: EntityCard) => c.category.compliance.showScores && c.score !== null;
+const homeEligible = (c: EntityCard) => inIstanbul(c) && showsScore(c) && (c.entity.tier ?? "A") !== "C";
+
+/** Kategori dengesi: aynı kategoriden en fazla `perCat`; ilk iki farklı kategori. */
+function balanced(cards: EntityCard[], limit: number, perCat = 2): EntityCard[] {
+  const out: EntityCard[] = [];
+  const seen = new Map<string, number>();
+  for (const c of cards) {
+    const k = c.entity.categoryId;
+    const n = seen.get(k) ?? 0;
+    if (n >= perCat) continue;
+    if (out.length === 1 && out[0].entity.categoryId === k) continue;
+    out.push(c); seen.set(k, n + 1);
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+
+/** "İstanbul'da bugün konuşulanlar": hacim + hareket. İlk ikisi vitrin, sonrakiler kompakt. */
+export function homeAgenda(limit = 5): EntityCard[] {
+  const pool = listCards().filter(homeEligible).filter((c) => c.experienceCount >= 80);
+  const heat = (c: EntityCard) => c.experienceCount * (1 + Math.min(1, Math.abs(c.delta90d)) * 0.8);
+  const ranked = [...pool].sort((a, b) => heat(b) - heat(a));
+  const out = balanced(ranked, limit);
+  /* Vitrinin iki kartı aynı hikâyeyi anlatmasın: biri geriliyorsa öteki yükselen/istikrarlı olsun. */
+  const tone = (c: EntityCard) => (c.delta90d > 0.15 ? "up" : c.delta90d < -0.15 ? "down" : "flat");
+  if (out.length >= 2 && tone(out[0]) === tone(out[1])) {
+    const alt = ranked.find((c) => !out.includes(c) && c.entity.categoryId !== out[0].entity.categoryId && tone(c) !== tone(out[0]));
+    if (alt) { const dropped = out[1]; out[1] = alt; out.splice(2, 0, dropped); }
+  }
+  return out.slice(0, limit);
+}
+export const homeRising = (limit = 3) => balanced(rising().filter(homeEligible).filter((c) => c.experienceCount >= 40), limit, 2);
+export const homeFalling = (limit = 3) => balanced(falling().filter(homeEligible).filter((c) => c.experienceCount >= 40), limit, 2);
+
+export function latestExperiences(limit = 6, city?: string) {
   return experiences
     .filter((e) => e.state === "published")
+    .filter((e) => !city || (getEntityById(e.entityId)?.location?.city ?? "İstanbul") === city)
     .map(hydrate)
     .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
     .slice(0, limit)
@@ -518,9 +558,10 @@ export function latestExperiences(limit = 6) {
 }
 
 /** Uzmanlardan gelen son deneyimler — ana sayfadaki creator katmanı. */
-export function expertExperiences(limit = 4) {
+export function expertExperiences(limit = 4, city?: string) {
   return experiences
     .filter((e) => e.state === "published")
+    .filter((e) => !city || (getEntityById(e.entityId)?.location?.city ?? "İstanbul") === city)
     .map(hydrate)
     .map(withAuthor)
     .filter((e) => {
@@ -533,15 +574,15 @@ export function expertExperiences(limit = 4) {
 }
 
 /** Ana sayfadaki "Gidenler Pulse" — ağın bugünkü nabzı. */
-export function pulse() {
-  const cards = listCards().filter((c) => c.score !== null);
+export function pulse(city?: string) {
+  const cards = listCards().filter((c) => c.score !== null).filter((c) => !city || (c.entity.location?.city ?? "İstanbul") === city);
   const byDelta = [...cards].sort((a, b) => b.delta90d - a.delta90d);
   const byVolume = [...cards].sort(
     (a, b) =>
       (getTopicIntelligence(b.entity.id)?.volume.count ?? 0) -
       (getTopicIntelligence(a.entity.id)?.volume.count ?? 0),
   );
-  const expertPick = expertExperiences(1)[0];
+  const expertPick = expertExperiences(1, city)[0];
   return {
     rising: byDelta[0],
     falling: byDelta[byDelta.length - 1],
