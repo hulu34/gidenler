@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ScoreNumber, QualityTag } from "@/components/score/ScoreNumber";
-import { EntityMark } from "@/components/experience/EntityMark";
 import { nf, score1 } from "@/lib/format";
 import { TrendIndicator } from "@/components/score/TrendIndicator";
 import type { EntityCard } from "@/lib/api";
@@ -18,13 +17,12 @@ export function EntityCardRow({ card, rank, match, href }: { card: EntityCard; r
         className="group grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 py-5 transition-colors hover:bg-sheet"
       >
         <div className="flex min-w-0 flex-col gap-1.5">
-          <span className="flex items-center gap-2.5">
+          <span className="flex items-baseline gap-2.5">
             {rank !== undefined && (
               <span className="tnum text-[13px] font-bold text-ink-3">
                 {String(rank).padStart(2, "0")}
               </span>
             )}
-            <EntityMark name={entity.name} categoryId={category.id} />
             <span className="text-[19px] font-bold leading-tight tracking-[-0.02em] group-hover:text-accent-ink sm:text-[21px]">
               {entity.name}
             </span>
