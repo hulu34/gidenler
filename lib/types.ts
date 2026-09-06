@@ -99,6 +99,15 @@ export interface Entity {
   isSynthetic?: boolean;
   /** Gerçek bir kamusal yer/kurum adı (park, cadde, müze…): yalnızca temel kimlik; deneyim metni üretilmez. */
   realIdentity?: boolean;
+  /** Gerçek görsel (varsa). Yoksa kategoriye duyarlı nötr plaka çizilir — baş harf/rastgele renk asla. */
+  image?: EntityImage;
+}
+
+export interface EntityImage {
+  src: string;
+  alt?: string;
+  /** Kaynak/lisans notu — görselin kime ait olduğu. */
+  credit?: string;
 }
 
 export interface BusinessLink {
@@ -199,6 +208,8 @@ export interface User {
   social: SocialIdentity[];
   /** Trend tahmin isabeti — varsa küçük bir güven sinyali olarak gösterilir. */
   predictions?: PredictionReputation;
+  /** Profil fotoğrafı (varsa). Yoksa nötr silüet — baş harf/renk asla. */
+  photo?: string;
   stats: {
     experiences: number;
     verifiedExperiences: number;
