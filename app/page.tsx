@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import {
-  expertExperiences, falling, featuredLists, getTopicIntelligence, latestExperiences,
-  listCards, listCreators, listIndices, pulse, rising, trending, type EntityCard,
+  expertExperiences, featuredLists, getTopicIntelligence, homeAgenda, homeFalling, homeRising, inIstanbul, latestExperiences,
+  listCards, listCreators, listIndices, pulse, type EntityCard,
 } from "@/lib/api";
+import { changeInsight, talkInsight, talkStatus } from "@/lib/editorial";
+import { EntityVisual } from "@/components/experience/EntityVisual";
+import { PersonMark } from "@/components/experience/PersonMark";
 import { IndexStrip } from "@/components/market/IndexStrip";
 import { monthOf, nf, score1 } from "@/lib/format";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { Tag } from "@/components/ui/Badge";
 import { ReputationChip } from "@/components/creator/ReputationChip";
-import type { TopicIntelligence } from "@/lib/types";
 import { AskHero } from "@/components/decision/AskHero";
 import { forYou } from "@/lib/decision";
 import { WhyThisResult } from "@/components/decision/WhyThisResult";
@@ -18,33 +20,39 @@ import { ContinueModule } from "@/components/decision/ContinueModule";
 import { EntityActions } from "@/components/decision/EntityActions";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   "Ne değişiyor?" için insan dili.
-   Sayı ikincil kanıttır; önce ne olduğunu söyleriz. Yalnızca mevcut
-   TopicIntelligence'tan türetilir — yeni bir skor sistemi değildir.
+   GÜNDEM VİTRİNİ — mekân → neden konuşuluyor → durum.
+   Görsel + ad + tek cümle + puan + trend. Başka hiçbir şey.
    ────────────────────────────────────────────────────────────────────────── */
-const lower = (s: string) => s.toLocaleLowerCase("tr");
-
-function changeInsight(it: TopicIntelligence | null, dir: "up" | "down"): string {
-  if (!it) return dir === "up" ? "Son deneyimler öncekilerden daha olumlu." : "Son deneyimler öncekilerden daha olumsuz.";
-  const dims = it.ratingDimensions.filter((d) => d.trend.sufficient);
-
-  if (dir === "up") {
-    const best = [...dims].sort((a, b) => b.trend.delta - a.trend.delta)[0];
-    if (best && best.trend.delta > 0.25) return `Son deneyimlerde ${lower(best.label)} puanı yükseliyor.`;
-    const praised = it.positiveThemes.find((t) => t.direction === "up");
-    if (praised) return `${praised.label} son haftalarda daha sık övülüyor.`;
-    const easing = it.negativeThemes.find((t) => t.direction === "down");
-    if (easing) return `${easing.label} şikâyetleri azalıyor.`;
-    return "Son deneyimler öncekilerden daha olumlu.";
-  }
-
-  const growing = it.negativeThemes.find((t) => t.direction === "up");
-  if (growing) return `${growing.label} şikâyetleri artıyor.`;
-  const worst = [...dims].sort((a, b) => a.trend.delta - b.trend.delta)[0];
-  if (worst && worst.trend.delta < -0.25) return `Son deneyimlerde ${lower(worst.label)} puanı geriliyor.`;
-  const fading = it.positiveThemes.find((t) => t.direction === "down");
-  if (fading) return `${fading.label} eskisi kadar övülmüyor.`;
-  return "Son deneyimler öncekilerden daha olumsuz.";
+function AgendaHero({ card, rank }: { card: EntityCard; rank: number }) {
+  const it = getTopicIntelligence(card.entity.id);
+  const dir = card.delta90d > 0.15 ? "up" : card.delta90d < -0.15 ? "down" : "flat";
+  const st = talkStatus(card);
+  const tone = st.tone === "pos" ? "text-pos-ink" : st.tone === "neg" ? "text-neg-ink" : "text-ink-3";
+  const loc = card.entity.location;
+  return (
+    <li className="min-w-0">
+      <Link href={`/mekan/${card.entity.slug}/`} className="group flex flex-col gap-4">
+        <span className="relative block overflow-hidden border border-line">
+          <EntityVisual entity={card.entity} variant="hero" priority />
+          <span className="absolute left-3 top-3 flex items-center gap-2 bg-paper/92 px-2 py-1 text-[10.5px] font-bold uppercase tracking-[0.14em] backdrop-blur-[2px]">
+            <span className="tnum text-ink-3">{String(rank).padStart(2, "0")}</span>
+            <span className={tone}>{st.label}</span>
+          </span>
+        </span>
+        <span className="grid grid-cols-[1fr_auto] items-start gap-x-5">
+          <span className="flex min-w-0 flex-col gap-1.5">
+            <span className="text-[24px] font-bold leading-[1.05] tracking-[-0.03em] group-hover:text-accent-ink sm:text-[28px]">{card.entity.name}</span>
+            <span className="flex flex-wrap items-center gap-x-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
+              <span className="text-accent-ink">{card.entity.subcategory ?? card.category.label}</span>
+              {loc?.district && <span>{loc.district}{loc.neighborhood && loc.neighborhood !== loc.district ? ` · ${loc.neighborhood}` : ""}</span>}
+            </span>
+          </span>
+          {card.score !== null && <ScoreNumber score={card.score} size="xl" label stack trend={{ direction: dir, delta: dir === "flat" ? undefined : card.delta90d }} />}
+        </span>
+        <span className="prose-exp text-[17px] leading-[1.4] text-ink">{talkInsight(card, it)}</span>
+      </Link>
+    </li>
+  );
 }
 
 function ChangeRow({ card, dir }: { card: EntityCard; dir: "up" | "down" }) {
@@ -54,18 +62,18 @@ function ChangeRow({ card, dir }: { card: EntityCard; dir: "up" | "down" }) {
     <li className="border-t border-line">
       <Link
         href={`/mekan/${card.entity.slug}/`}
-        className="group grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-1.5 py-5 transition-colors hover:bg-sheet"
+        className="group grid grid-cols-[64px_1fr_auto] items-center gap-x-4 py-4 transition-colors hover:bg-sheet sm:gap-x-5 sm:py-5"
       >
-        <div className="flex min-w-0 flex-col gap-1.5">
-          <span className="text-[19px] font-bold leading-tight tracking-[-0.02em] group-hover:text-accent-ink">
+        <EntityVisual entity={card.entity} variant="thumb" className="w-16" />
+        <div className="flex min-w-0 flex-col gap-1">
+          <span className="line-clamp-2 text-[19px] font-bold leading-tight tracking-[-0.02em] group-hover:text-accent-ink">
             {card.entity.name}
           </span>
-          <span className="prose-exp text-[15px] leading-snug text-ink-2">{changeInsight(it, dir)}</span>
-          <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
-            <span className="text-accent-ink">{card.category.label}</span>
+          <span className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
+            <span className="text-accent-ink">{card.entity.subcategory ?? card.category.label}</span>
             {card.entity.location?.district && <span>{card.entity.location.district}</span>}
-            <span className="tnum">{nf(card.experienceCount)} deneyim</span>
           </span>
+          <span className="prose-exp line-clamp-2 text-[14.5px] leading-snug text-ink-2">{changeInsight(it, dir)}</span>
         </div>
         <div className="flex shrink-0 flex-col items-end gap-0.5">
           {card.score !== null && (
@@ -83,16 +91,19 @@ function ChangeRow({ card, dir }: { card: EntityCard; dir: "up" | "down" }) {
 }
 
 export default function HomePage() {
-  const trend = trending().slice(0, 5);
-  const up = rising().slice(0, 3);
-  const down = falling().slice(0, 3);
-  const experts = expertExperiences(3);
+  const agenda = homeAgenda(5);
+  const heroes = agenda.slice(0, 2);
+  const compact = agenda.slice(2);
+  const up = homeRising(3);
+  const down = homeFalling(3);
+  const experts = expertExperiences(3, "İstanbul");
   const shown = new Set(experts.map((x) => x.experience.id));
-  const latest = latestExperiences(10).filter((x) => !shown.has(x.experience.id)).slice(0, 4);
+  const latest = latestExperiences(12, "İstanbul").filter((x) => !shown.has(x.experience.id)).slice(0, 4);
   const lists = featuredLists(4);
   const creators = listCreators();
   const all = listCards();
-  const p = pulse();
+  const istanbulCount = all.filter(inIstanbul).length;
+  const p = pulse("İstanbul");
   const idx = listIndices();
   const mine = forYou(3);
 
@@ -111,25 +122,37 @@ export default function HomePage() {
         </p>
         <div className="mt-2"><AskHero /></div>
         <p className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-4 text-[12px] font-semibold uppercase tracking-[0.13em] text-ink-3">
-          <span>İstanbul · yeme-içme</span>
+          <span>İstanbul · yeme-içme, kültür, gezi</span>
           <span aria-hidden>·</span>
-          <span className="tnum">{nf(all.length)} mekân</span>
+          <span className="tnum">{nf(istanbulCount)} mekân</span>
           <span aria-hidden>·</span>
           <span className="tnum">{creators.length} doğrulanmış üretici</span>
         </p>
       </section>
 
-      {/* ───────── 2 · gündem — deneyimin kendisi ───────── */}
+      {/* ───────── 2 · gündem — vitrin: mekân → neden konuşuluyor → durum ───────── */}
       <section aria-labelledby="gundem" className="mt-4">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-3">
           <h2 id="gundem" className="text-[13px] font-bold uppercase tracking-[0.2em]">
             İstanbul&apos;da bugün konuşulanlar
           </h2>
-          <Tag>en çok deneyim alan mekânlar</Tag>
+          <p className="max-w-[44ch] text-[12px] text-ink-3">Deneyim hacmi ve son 90 günün hareketine göre; sponsor yok, sıralama satılmaz.</p>
         </div>
-        <ul>
-          {trend.map((c, i) => (<EntityCardRow key={c.entity.id} card={c} rank={i + 1} />))}
+        <ul className="grid gap-x-10 gap-y-10 pt-7 md:grid-cols-2">
+          {heroes.map((c, i) => <AgendaHero key={c.entity.id} card={c} rank={i + 1} />)}
         </ul>
+        {compact.length > 0 && (
+          <ul className="mt-8">
+            {compact.map((c, i) => (
+              <EntityCardRow key={c.entity.id} card={c} rank={i + 3} insight={talkInsight(c, getTopicIntelligence(c.entity.id))} />
+            ))}
+          </ul>
+        )}
+        <p className="mt-4 flex flex-wrap gap-x-6 gap-y-1 border-t border-line pt-3 text-[12.5px] text-ink-3">
+          <Link href="/kesfet/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Keşfet</Link>
+          <Link href="/ara/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Ara</Link>
+          <span>Vitrin İstanbul&apos;dur; diğer şehirler Keşfet&apos;te.</span>
+        </p>
       </section>
 
       {/* ───────── 3 · sana göre — decision layer (V3) ───────── */}
@@ -191,12 +214,7 @@ export default function HomePage() {
               return (
                 <li key={e.id} className="flex flex-col gap-3">
                   <Link href={`/@${e.author.handle}/`} className="group/u flex items-center gap-3">
-                    <span
-                      aria-hidden
-                      className="flex h-10 w-10 shrink-0 items-center justify-center border border-line-2 font-[family-name:var(--font-brand)] text-[19px] leading-none text-ink-2"
-                    >
-                      {e.author.handle.slice(0, 1).toLocaleUpperCase("tr")}
-                    </span>
+                    <PersonMark user={e.author} size="md" />
                     <span className="flex min-w-0 flex-col gap-0.5">
                       <span className="text-[14px] font-bold leading-tight group-hover/u:text-accent-ink">
                         @{e.author.handle}
@@ -251,8 +269,8 @@ export default function HomePage() {
                   </span>
                   <p className="prose-exp line-clamp-3 max-w-[70ch] text-[16px] text-ink-2">{e.body}</p>
                   <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <Link href={`/@${e.author.handle}/`} className="text-[13px] font-bold hover:text-accent-ink">
-                      @{e.author.handle}
+                    <Link href={`/@${e.author.handle}/`} className="flex items-center gap-2 text-[13px] font-bold hover:text-accent-ink">
+                      <PersonMark user={e.author} size="xs" />@{e.author.handle}
                     </Link>
                     <ReputationChip reputation={e.author.reputation} kind={e.author.kind} />
                     <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
