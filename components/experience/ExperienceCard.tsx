@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PersonMark } from "@/components/experience/PersonMark";
 import { monthOf, nf, relative, score1 } from "@/lib/format";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 import { DisclosureNote } from "./DisclosureNote";
@@ -62,8 +63,8 @@ export function ExperienceCard({
 
         <div className="flex min-w-0 flex-col gap-0.5">
           <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-            <Link href={`/@${a.handle}/`} className="text-[14px] font-bold hover:text-accent-ink">
-              {a.handle}
+            <Link href={`/@${a.handle}/`} className="flex items-center gap-2 text-[14px] font-bold hover:text-accent-ink">
+              <PersonMark user={a} size="sm" />{a.handle}
             </Link>
             <ReputationChip reputation={a.reputation} kind={a.kind} />
           </span>
