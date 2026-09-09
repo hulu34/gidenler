@@ -29,7 +29,7 @@ export function ForYouBlock() {
             <Link href={`/mekan/${c.entity.slug}/`} className="group flex items-baseline justify-between gap-4 py-3">
               <span className="flex min-w-0 flex-col gap-0.5">
                 <span className="text-[16px] font-bold group-hover:text-accent-ink">{c.entity.name}</span>
-                <span className="text-[12px] text-ink-3">{d!.verdict} · {c.entity.location?.district}</span>
+                <span className="text-[12px] text-ink-3">{d!.verdictText ?? d!.verdict} · {c.entity.location?.district}</span>
               </span>
               <span className="flex shrink-0 items-baseline gap-3">
                 <ScoreNumber score={c.score} size="sm" trend={{ direction: c.delta90d > 0.15 ? "up" : c.delta90d < -0.15 ? "down" : "flat", delta: c.delta90d }} />
