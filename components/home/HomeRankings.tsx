@@ -28,16 +28,22 @@ export function HomeRankings({ data }: { data: HomeData }) {
   const [cat, setCat] = useState<HomeCategoryKey>("all");
   const [other, setOther] = useState<OtherKey | null>(null);
 
+  /* seçim hatırlanır: "restaurant" ya da "other:physician". Alt alan olmadan "Diğer" hatırlanmaz — ana sayfa asla boş açılmaz. */
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem(STORE_KEY);
-      if (saved && data.primary.some((c) => c.key === saved)) setCat(saved as HomeCategoryKey);
+      const saved = window.localStorage.getItem(STORE_KEY) ?? "";
+      const [c, o] = saved.split(":");
+      if (c === "other") { if (o && data.other.some((x) => x.key === o)) { setCat("other"); setOther(o as OtherKey); } }
+      else if (c && data.primary.some((x) => x.key === c)) setCat(c as HomeCategoryKey);
     } catch { /* özel pencere */ }
-  }, [data.primary]);
+  }, [data.primary, data.other]);
+  const persist = (v: string) => { try { window.localStorage.setItem(STORE_KEY, v); } catch { /* yok say */ } };
   const choose = (k: HomeCategoryKey) => {
-    setCat(k); if (k !== "other") setOther(null);
-    try { window.localStorage.setItem(STORE_KEY, k); } catch { /* yok say */ }
+    setCat(k);
+    if (k === "other") { const first = other ?? data.other[0]?.key ?? null; setOther(first); persist(first ? `other:${first}` : "all"); }
+    else { setOther(null); persist(k); }
   };
+  const chooseOther = (k: OtherKey) => { setOther(k); persist(`other:${k}`); };
 
   const activeKey = cat === "other" ? other : cat;
   const block = activeKey ? data.rankings[activeKey] : undefined;
@@ -60,7 +66,7 @@ export function HomeRankings({ data }: { data: HomeData }) {
         {cat === "other" && (
           <div className="no-scrollbar flex gap-1.5 overflow-x-auto py-2.5">
             {data.other.map((o) => (
-              <button key={o.key} type="button" aria-pressed={other === o.key} onClick={() => setOther(o.key)}
+              <button key={o.key} type="button" aria-pressed={other === o.key} onClick={() => chooseOther(o.key)}
                 className={`h-8 shrink-0 whitespace-nowrap border px-3 text-[12.5px] font-semibold ${other === o.key ? "border-ink bg-ink text-paper" : "border-line-2 text-ink-2 hover:border-ink"}`}>
                 {o.label}
               </button>
