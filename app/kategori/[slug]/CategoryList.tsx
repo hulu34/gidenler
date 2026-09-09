@@ -19,6 +19,13 @@ export function CategoryList({ categoryId, subs, cities }: { categoryId: string;
   const [district, setDistrict] = useState("hepsi");
   const [sort, setSort] = useState<Sort>("puan");
   const [limit, setLimit] = useState(PAGE);
+  /* Ana sayfa "Tümünü gör →" bağlantıları: ?sirala=puan|yukselen|konusulan&sehir=İstanbul&alt=Kahveci */
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const so = p.get("sirala"); if (so === "puan" || so === "yukselen" || so === "konusulan") setSort(so);
+    if (p.get("sehir")) setCity(p.get("sehir")!);
+    if (p.get("alt")) setSub(p.get("alt")!);
+  }, []);
   const districts = useMemo(() => Array.from(new Set(all.filter((c) => city === "hepsi" || c.entity.location?.city === city).map((c) => c.entity.location?.district).filter(Boolean))).sort((a, b) => (a as string).localeCompare(b as string, "tr")) as string[], [all, city]);
   const rows = useMemo(() => all
     .filter((c) => (sub === "hepsi" || c.entity.subcategory === sub) && (city === "hepsi" || c.entity.location?.city === city) && (district === "hepsi" || c.entity.location?.district === district))
