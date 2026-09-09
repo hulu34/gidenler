@@ -6,6 +6,7 @@ import { EntityCardRow } from "@/components/experience/EntityCardRow";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { ForYouBlock } from "@/app/kesfet/ForYouBlock";
 import { DemoNotice } from "@/components/ui/DemoNotice";
+import { PulseModule } from "@/components/market/PulseModule";
 
 export const metadata = { title: "Keşfet" };
 
@@ -30,6 +31,7 @@ export default function ExplorePage() {
   const cities = countBy((c) => (c.entity.location?.city !== "İstanbul" ? c.entity.location?.city : undefined));
   const catCounts = new Map(countBy((c) => c.category.id));
   const total = listCards().length;
+  const istanbulTotal = listCards().filter((c) => (c.entity.location?.city ?? "İstanbul") === "İstanbul").length;
 
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
@@ -37,7 +39,7 @@ export default function ExplorePage() {
         <p className="label">Keşfet</p>
         <h1 className="max-w-[16ch] text-[clamp(2rem,6.5vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">Neye bakacağını bilmiyorsan buradan başla.</h1>
         <p className="max-w-[58ch] text-[15px] leading-relaxed text-ink-2">
-          <span className="tnum font-bold text-ink">{nf(total)}</span> kayıt: restoran, kahve, otel, sahne, müze, sahil, gezi, hizmet. Her satırda üç ayrı bilgi: puan (ne kadar iyi), yön (nereye gidiyor), uyum (sana uygun mu). Ne aradığını biliyorsan <Link href="/ara/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Ara</Link>; karar vermek istiyorsan <Link href="/sor/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Sor Gidenler</Link>.
+          <span className="tnum font-bold text-ink">{nf(total)}</span> kayıt (tüm şehirler; <span className="tnum font-semibold text-ink">{nf(istanbulTotal)}</span> tanesi İstanbul): restoran, kahve, otel, sahne, müze, sahil, gezi, hizmet. Her satırda üç ayrı bilgi: puan (ne kadar iyi), yön (nereye gidiyor), uyum (sana uygun mu). Ne aradığını biliyorsan <Link href="/ara/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Ara</Link>; karar vermek istiyorsan <Link href="/sor/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Sor Gidenler</Link>.
         </p>
       </header>
 
@@ -133,6 +135,12 @@ export default function ExplorePage() {
           </section>
         </div>
       </div>
+
+      {/* ağın nabzı — ana sayfadan buraya taşındı */}
+      <section className="mt-12" aria-labelledby="nabiz">
+        <h2 id="nabiz" className="sr-only">Ağın nabzı</h2>
+        <PulseModule />
+      </section>
 
       <div className="mt-12"><DemoNotice /></div>
     </div>
