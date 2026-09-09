@@ -11,7 +11,9 @@ const SIZES = {
 
 /**
  * PUAN — her yüzeyde aynı dil. Renk kaliteyi söyler; trend rengi ayrıdır.
- * Etiket (Olağanüstü / Çok iyi / …) renge bağımlı olmayan ikinci kanal.
+ * Etiket (Olağanüstü / Çok iyi / …) renge bağımlı olmayan ikinci kanal ve
+ * YALNIZCA BİR KEZ basılır: `label` verilmediyse görünmez metin de üretilmez
+ * ("7,7 İyi İyi" yok); erişilebilirlik aria-label ile sağlanır.
  */
 export function ScoreNumber({ score, size = "md", label = false, trend, stack = false, className = "" }: {
   score: number | null;
@@ -27,10 +29,10 @@ export function ScoreNumber({ score, size = "md", label = false, trend, stack = 
   const glyph = trend ? (trend.direction === "up" ? "↑" : trend.direction === "down" ? "↓" : "→") : null;
   const tcolor = trend ? (trend.direction === "up" ? "text-pos-ink" : trend.direction === "down" ? "text-neg-ink" : "text-ink-3") : "";
   return (
-    <span className={`${stack ? "inline-flex flex-col items-end gap-y-1" : "inline-flex flex-wrap items-baseline gap-x-2"} ${className}`} title={`${score1(score)} · ${s.label}`}>
+    <span className={`${stack ? "inline-flex flex-col items-end gap-y-1" : "inline-flex flex-wrap items-baseline gap-x-2"} ${className}`} title={`${score1(score)} · ${s.label}`} aria-label={label ? undefined : `${score1(score)} ${s.label}`}>
       <span data-score={s.key} {...(size === "hero" ? { "data-score-hero": "" } : {})} className={`tnum font-extrabold ${SIZES[size]} ${s.text}`}>{score1(score)}</span>
       <span className={stack ? "inline-flex items-center gap-x-2" : "contents"}>
-        {label ? <span className={`text-[11px] font-bold uppercase tracking-[0.14em] ${s.text}`}>{s.label}</span> : <span className="sr-only">{s.label}</span>}
+        {label && <span className={`text-[11px] font-bold uppercase tracking-[0.14em] ${s.text}`}>{s.label}</span>}
         {trend && glyph && (
           <span className={`tnum inline-flex items-center gap-1 text-[12px] font-bold ${tcolor}`}>
             <span aria-hidden>{glyph}</span>
