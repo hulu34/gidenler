@@ -5,11 +5,11 @@ import {
   listCards, listCreators, listIndices, pulse, type EntityCard,
 } from "@/lib/api";
 import { changeInsight, talkInsight, talkStatus } from "@/lib/editorial";
-import { EntityVisual } from "@/components/experience/EntityVisual";
 import { PersonMark } from "@/components/experience/PersonMark";
 import { IndexStrip } from "@/components/market/IndexStrip";
 import { monthOf, nf, score1 } from "@/lib/format";
-import { EntityCardRow } from "@/components/experience/EntityCardRow";
+import { EntityCardRow, evidenceLine } from "@/components/experience/EntityCardRow";
+import { CategoryGlyph } from "@/components/experience/CategoryGlyph";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { Tag } from "@/components/ui/Badge";
 import { ReputationChip } from "@/components/creator/ReputationChip";
@@ -30,26 +30,21 @@ function AgendaHero({ card, rank }: { card: EntityCard; rank: number }) {
   const tone = st.tone === "pos" ? "text-pos-ink" : st.tone === "neg" ? "text-neg-ink" : "text-ink-3";
   const loc = card.entity.location;
   return (
-    <li className="min-w-0">
-      <Link href={`/mekan/${card.entity.slug}/`} className="group flex flex-col gap-4">
-        <span className="relative block overflow-hidden border border-line">
-          <EntityVisual entity={card.entity} variant="hero" priority />
-          <span className="absolute left-3 top-3 flex items-center gap-2 bg-paper/92 px-2 py-1 text-[10.5px] font-bold uppercase tracking-[0.14em] backdrop-blur-[2px]">
-            <span className="tnum text-ink-3">{String(rank).padStart(2, "0")}</span>
-            <span className={tone}>{st.label}</span>
-          </span>
+    <li className="min-w-0 border-t-2 border-line-strong pt-4">
+      <Link href={`/mekan/${card.entity.slug}/`} className="group flex flex-col gap-3">
+        <span className="flex items-center gap-2.5 text-[10.5px] font-bold uppercase tracking-[0.16em]">
+          <span className="tnum text-ink-3">{String(rank).padStart(2, "0")}</span>
+          <span className={tone}>{st.label}</span>
         </span>
-        <span className="grid grid-cols-[1fr_auto] items-start gap-x-5">
-          <span className="flex min-w-0 flex-col gap-1.5">
-            <span className="text-[24px] font-bold leading-[1.05] tracking-[-0.03em] group-hover:text-accent-ink sm:text-[28px]">{card.entity.name}</span>
-            <span className="flex flex-wrap items-center gap-x-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
-              <span className="text-accent-ink">{card.entity.subcategory ?? card.category.label}</span>
-              {loc?.district && <span>{loc.district}{loc.neighborhood && loc.neighborhood !== loc.district ? ` · ${loc.neighborhood}` : ""}</span>}
-            </span>
-          </span>
-          {card.score !== null && <ScoreNumber score={card.score} size="xl" label stack trend={{ direction: dir, delta: dir === "flat" ? undefined : card.delta90d }} />}
+        <span className="text-[30px] font-extrabold leading-[1.02] tracking-[-0.035em] group-hover:text-accent-ink sm:text-[36px]">{card.entity.name}</span>
+        <span className="flex flex-wrap items-center gap-x-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
+          <CategoryGlyph entity={card.entity} />
+          <span className="text-ink-2">{card.entity.subcategory ?? card.category.label}</span>
+          {loc?.district && <><span aria-hidden>·</span><span>{loc.district}{loc.neighborhood && loc.neighborhood !== loc.district ? ` · ${loc.neighborhood}` : ""}</span></>}
         </span>
-        <span className="prose-exp text-[17px] leading-[1.4] text-ink">{talkInsight(card, it)}</span>
+        {card.score !== null && <ScoreNumber score={card.score} size="xl" label trend={{ direction: dir, delta: dir === "flat" ? undefined : card.delta90d }} />}
+        <span className="prose-exp max-w-[40ch] text-[18px] leading-[1.4] text-ink">{talkInsight(card, it)}</span>
+        <span className="tnum text-[12.5px] text-ink-3">{evidenceLine(card)}</span>
       </Link>
     </li>
   );
@@ -62,18 +57,19 @@ function ChangeRow({ card, dir }: { card: EntityCard; dir: "up" | "down" }) {
     <li className="border-t border-line">
       <Link
         href={`/mekan/${card.entity.slug}/`}
-        className="group grid grid-cols-[64px_1fr_auto] items-center gap-x-4 py-4 transition-colors hover:bg-sheet sm:gap-x-5 sm:py-5"
+        className="group grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-1.5 py-5 transition-colors hover:bg-sheet"
       >
-        <EntityVisual entity={card.entity} variant="thumb" className="w-16" />
-        <div className="flex min-w-0 flex-col gap-1">
-          <span className="line-clamp-2 text-[19px] font-bold leading-tight tracking-[-0.02em] group-hover:text-accent-ink">
+        <div className="flex min-w-0 flex-col gap-1.5">
+          <span className="text-[19px] font-bold leading-tight tracking-[-0.02em] group-hover:text-accent-ink">
             {card.entity.name}
           </span>
-          <span className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
-            <span className="text-accent-ink">{card.entity.subcategory ?? card.category.label}</span>
-            {card.entity.location?.district && <span>{card.entity.location.district}</span>}
+          <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
+            <CategoryGlyph entity={card.entity} />
+            <span className="text-ink-2">{card.entity.subcategory ?? card.category.label}</span>
+            {card.entity.location?.district && <><span aria-hidden>·</span><span>{card.entity.location.district}</span></>}
           </span>
-          <span className="prose-exp line-clamp-2 text-[14.5px] leading-snug text-ink-2">{changeInsight(it, dir)}</span>
+          <span className="prose-exp text-[15px] leading-snug text-ink-2">{changeInsight(it, dir)}</span>
+          <span className="tnum text-[12px] text-ink-3">{evidenceLine(card)}</span>
         </div>
         <div className="flex shrink-0 flex-col items-end gap-0.5">
           {card.score !== null && (
@@ -138,7 +134,7 @@ export default function HomePage() {
           </h2>
           <p className="max-w-[44ch] text-[12px] text-ink-3">Deneyim hacmi ve son 90 günün hareketine göre; sponsor yok, sıralama satılmaz.</p>
         </div>
-        <ul className="grid gap-x-10 gap-y-10 pt-7 md:grid-cols-2">
+        <ul className="grid gap-x-12 gap-y-8 pt-6 md:grid-cols-2">
           {heroes.map((c, i) => <AgendaHero key={c.entity.id} card={c} rank={i + 1} />)}
         </ul>
         {compact.length > 0 && (
