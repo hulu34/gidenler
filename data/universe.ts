@@ -173,7 +173,7 @@ const REAL_LOC: Record<string, [string, string, string]> = {
   "Kadıköy Sineması": ["İstanbul", "Kadıköy", "Bahariye"], "Atlas Sineması": ["İstanbul", "Beyoğlu", "Taksim"], "Beyoğlu Sineması": ["İstanbul", "Beyoğlu", "Taksim"], "Rexx Sineması": ["İstanbul", "Kadıköy", "Caferağa"], "Kadıköy Rexx": ["İstanbul", "Kadıköy", "Caferağa"],
   "Zorlu PSM": ["İstanbul", "Beşiktaş", "Levazım"], "Kenter Tiyatrosu": ["İstanbul", "Şişli", "Harbiye"], "Moda Sahnesi": ["İstanbul", "Kadıköy", "Moda"], "Kadıköy Halk Eğitim Merkezi Sahnesi": ["İstanbul", "Kadıköy", "Bahariye"], "Cemal Reşit Rey Konser Salonu": ["İstanbul", "Şişli", "Harbiye"],
   "Volkswagen Arena": ["İstanbul", "Sarıyer", "Maslak"], "KüçükÇiftlik Park": ["İstanbul", "Şişli", "Maçka"], "Babylon": ["İstanbul", "Şişli", "Bomonti"], "Salon İKSV": ["İstanbul", "Beyoğlu", "Şişhane"], "Bostancı Gösteri Merkezi": ["İstanbul", "Kadıköy", "Bostancı"], "Harbiye Cemil Topuzlu Açıkhava": ["İstanbul", "Şişli", "Harbiye"],
-  "Tüpraş Stadyumu": ["İstanbul", "Beşiktaş", "Dolmabahçe"], "RAMS Park": ["İstanbul", "Başakşehir", "Kayaşehir"], "Ülker Stadyumu": ["İstanbul", "Kadıköy", "Fenerbahçe"], "Recep Tayyip Erdoğan Stadyumu": ["İstanbul", "Kasımpaşa", "Kasımpaşa"], "Gürsel Aksel Stadyumu": ["İzmir", "Konak", "Göztepe"],
+  "Tüpraş Stadyumu": ["İstanbul", "Beşiktaş", "Dolmabahçe"], "RAMS Park": ["İstanbul", "Başakşehir", "Kayaşehir"], "Ülker Stadyumu": ["İstanbul", "Kadıköy", "Fenerbahçe"], "Recep Tayyip Erdoğan Stadyumu": ["İstanbul", "Beyoğlu", "Kasımpaşa"], "Gürsel Aksel Stadyumu": ["İzmir", "Konak", "Göztepe"],
   "Ankara": ["Ankara", "Çankaya", ""], "İzmir": ["İzmir", "Konak", ""], "Bursa": ["Bursa", "Osmangazi", ""], "Antalya": ["Antalya", "Muratpaşa", ""], "Eskişehir": ["Eskişehir", "Odunpazarı", ""], "Gaziantep": ["Gaziantep", "Şahinbey", ""], "Trabzon": ["Trabzon", "Ortahisar", ""], "Mardin": ["Mardin", "Artuklu", ""], "Safranbolu": ["Karabük", "Safranbolu", ""], "Şanlıurfa": ["Şanlıurfa", "Eyyübiye", ""], "Edirne": ["Edirne", "Merkez", ""], "Çanakkale": ["Çanakkale", "Merkez", ""],
   "Kaş": ["Antalya", "Kaş", "Kaş Merkez"], "Alaçatı": ["İzmir", "Çeşme", "Alaçatı"], "Kapadokya": ["Nevşehir", "Ürgüp", "Göreme"], "Cunda": ["Balıkesir", "Ayvalık", "Cunda"], "Datça": ["Muğla", "Datça", "Datça Merkez"], "Bozcaada": ["Çanakkale", "Bozcaada", "Merkez"], "Ayder Yaylası": ["Rize", "Çamlıhemşin", "Ayder"], "Şirince": ["İzmir", "Selçuk", "Şirince"], "Kaleköy": ["Antalya", "Demre", "Kaleköy"], "Gökçeada": ["Çanakkale", "Gökçeada", "Merkez"], "Amasra": ["Bartın", "Amasra", "Merkez"], "Assos": ["Çanakkale", "Ayvacık", "Behramkale"], "Akyaka": ["Muğla", "Ula", "Akyaka"], "Ayvalık": ["Balıkesir", "Ayvalık", "Merkez"], "Sığacık": ["İzmir", "Seferihisar", "Sığacık"], "Uzungöl": ["Trabzon", "Çaykara", "Uzungöl"],
   "Kabak Koyu": ["Muğla", "Fethiye", "Kabak"], "Ölüdeniz": ["Muğla", "Fethiye", "Ölüdeniz"], "Kaputaş Plajı": ["Antalya", "Kaş", "Kaputaş"], "İztuzu Plajı": ["Muğla", "Ortaca", "Dalyan"], "Altınkum (Çeşme)": ["İzmir", "Çeşme", "Altınkum"], "Patara Plajı": ["Antalya", "Kaş", "Patara"], "Cennet Koyu": ["Muğla", "Marmaris", "Cennet Adası"], "Kleopatra Plajı": ["Antalya", "Alanya", "Alanya Merkez"], "Kilyos Plajı": ["İstanbul", "Sarıyer", "Kilyos"], "Riva Plajı": ["İstanbul", "Beykoz", "Riva"], "Şile Plajı": ["İstanbul", "Şile", "Şile Merkez"], "Ağva Plajı": ["İstanbul", "Şile", "Ağva"], "Yörükali Plajı": ["İstanbul", "Adalar", "Büyükada"],
@@ -315,73 +315,86 @@ const BASE_AUTHORS = ["u.denizyer", "u.sokakvesofra", "u.filtrekayit", "u.nazli-
 
 /* ───── deneyim metni: kategoriye göre kısa, çeşitli, sahte edebiyat yok ───── */
 
-const FRAG: Record<string, { pos: string[]; neg: string[]; neutral: string[]; ret: string[] }> = {
+type Frag = { pos: string[]; neg: string[]; neutral: string[]; ret: { evet: string[]; hayır: string[]; belki: string[] } };
+const FRAG: Record<string, Frag> = {
   dining: {
     pos: ["Ana yemeği tekrar söylerim.", "Porsiyonlar dürüst, fiyat da öyle.", "Masa araları geniş, sesten yorulmadık.", "Servis siparişi bir kere bile karıştırmadı.", "Mezeler günlük, belli oluyor.", "Et pişirme tam istediğim gibiydi.", "Ekmek sıcak geldi, küçük ama önemli.", "Rezervasyonsuz gittik, on dakikada oturduk."],
     neg: ["Cuma akşamı servis yavaştı; ana yemek kırk dakika sürdü.", "Ses seviyesi konuşmayı zorlaştırıyor.", "Fiyatlar son bir yılda belirgin arttı.", "Tatlı menüsü zayıf.", "Bekleme sırasında kimse bilgi vermedi.", "Porsiyon küçüldü gibi geldi.", "Klima doğrudan masaya üflüyordu.", "Hesap istemek beş dakika sürdü."],
     neutral: ["Öğle menüsü akşamdan farklı, bilerek gidin.", "Hafta içi çok daha sakin.", "Kart geçiyor, nakit indirimi yok.", "Dışarıda oturmak için erken gitmek lazım."],
-    ret: ["Tekrar giderim.", "Yine gelirim ama hafta içi.", "Bir kez yeter.", "Kararsızım; mutfak iyi, tempo değil."],
+    ret: { evet: ["Tekrar giderim.", "Yine gelirim ama hafta içi."], hayır: ["Bir kez yeter."], belki: ["Kararsızım; mutfak iyi, tempo değil."] },
   },
   cafe: {
     pos: ["Filtre kahve düzgün demlenmiş, asidik değil.", "Priz var, wifi stabil; iki saat çalıştım.", "Kruvasan taze, katmanlı.", "Barista içimi sordu, kavurmayı anlattı.", "Sabah dokuzda bile sakin.", "Süt köpüğü doğru sıcaklıkta."],
     neg: ["Hafta sonu masa bulmak zor.", "Müzik çalışmak için fazla yüksek.", "Fiyat bardak başına biraz sert.", "Laptop yasağı akşam saatlerinde başlıyor, önceden söylenmiyor.", "Kahve ılık geldi."],
     neutral: ["Dışarıdaki masalar sokağa bakıyor, güneşi hesaplayın.", "Öğleden sonra kalabalıklaşıyor.", "Kurabiye çeşidi az ama iyi."],
-    ret: ["Sabahları tekrar gelirim.", "Çalışmak için ilk tercihim oldu.", "Bir daha uğramam.", "Mahallede olsam sık giderim."],
+    ret: { evet: ["Sabahları tekrar gelirim.", "Çalışmak için ilk tercihim oldu."], hayır: ["Bir daha uğramam."], belki: ["Kararsızım; kahve iyi, kalabalık değil."] },
   },
   hotel: {
     pos: ["Oda sessizdi, cadde tarafını sormayın.", "Kahvaltı sade ama taze.", "Resepsiyon geç check-in'i sorun etmedi.", "Yatak sert-orta, iyi uyudum.", "Konum yürüyerek her yere yetiyor."],
     neg: ["Duş suyu ısınana kadar bir dakika bekliyorsunuz.", "Asansör küçük, bavulla zor.", "Sabah kahvaltı salonu kalabalıktı.", "Klima gürültülü.", "Fiyat, odanın büyüklüğüne göre yüksek."],
     neutral: ["Otopark yok, yakın sokakta ücretli var.", "Odada su ısıtıcısı var, minibar yok."],
-    ret: ["Tekrar kalırım.", "İş için evet, tatil için hayır.", "Bir daha kalmam.", "Fiyat düşerse yine gelirim."],
+    ret: { evet: ["Tekrar kalırım.", "İş için evet, tatil için hayır."], hayır: ["Bir daha kalmam."], belki: ["Fiyat düşerse yine gelirim."] },
   },
   bar: {
     pos: ["Kokteyller dengeli, şeker bombası değil.", "Barmen menü dışı istek aldı.", "Ses konuşulabilir seviyede.", "Buz kalitesi iyi; sulanmadı."],
     neg: ["Gece yarısından sonra içeri girmek zor.", "Fiyatlar semte göre yüksek.", "Sigara dumanı içeri kadar geliyor.", "Servis kalabalıkta kayboluyor."],
     neutral: ["Hafta içi çok daha rahat.", "Yer bulmak için ondan önce gitmek lazım."],
-    ret: ["Tekrar giderim.", "Hafta içi yine.", "Bir kez yeterdi.", "Arkadaşlarla evet, date için değil."],
+    ret: { evet: ["Tekrar giderim.", "Hafta içi yine."], hayır: ["Bir kez yeterdi."], belki: ["Arkadaşlarla evet, date için değil."] },
   },
   place: {
     pos: ["Gün batımı saatinde yürüyüş için doğru yer.", "Bank ve gölge yeterli.", "Ulaşım kolay; iskeleye yakın.", "Sabah erken çok sakin."],
     neg: ["Hafta sonu öğleden sonra çok kalabalık.", "Tuvalet sayısı az.", "Bisiklet yolu yayayla karışıyor.", "Kafeler pahalı."],
     neutral: ["Pazar günü kalabalığı hesaba katın.", "Kışın rüzgâr sert."],
-    ret: ["Tekrar giderim.", "Sabah saatlerinde yine.", "Bir daha gitmem.", "Mevsime bağlı."],
+    ret: { evet: ["Tekrar giderim.", "Sabah saatlerinde yine."], hayır: ["Bir daha gitmem."], belki: ["Mevsime bağlı."] },
   },
   culture: {
     pos: ["Sergi metinleri kısa ve yeterli.", "Işıklandırma eserleri boğmuyor.", "Sesli rehber ücretsiz.", "Hafta içi öğleden sonra neredeyse boştu."],
     neg: ["Bilet fiyatı içerikle orantısız.", "Vestiyer sırası uzun.", "Bazı salonlar kapalıydı, girişte söylenmedi.", "Kafeterya pahalı."],
     neutral: ["Pazartesi kapalı.", "Öğrenci indirimi var."],
-    ret: ["Yeni sergide yine gelirim.", "Tekrar giderim.", "Bir kez yeterli.", "Kararsızım."],
+    ret: { evet: ["Yeni sergide yine gelirim.", "Tekrar giderim."], hayır: ["Bir kez yeterli."], belki: ["Kararsızım."] },
   },
   show: {
     pos: ["İkinci perde ilkinden güçlü.", "Oyunculuk metni taşıyor.", "Ses düzeni dengeliydi.", "Süre tam kararında, uzatılmamış."],
     neg: ["Arka sıralardan sahne görüşü kısıtlı.", "Ara çok kısa.", "Bilet fiyatı yüksek.", "Başlangıç yirmi dakika gecikti."],
     neutral: ["Ön sıra tercih edin.", "Program kitapçığı ayrı satılıyor."],
-    ret: ["Tekrar izlerim.", "Bir kez yeterli.", "Turnede yine giderim.", "Kararsızım."],
+    ret: { evet: ["Tekrar izlerim.", "Turnede yine izlerim."], hayır: ["Bir kez yeterli."], belki: ["Kararsızım."] },
   },
   venue: {
     pos: ["Koltuklar rahat, diz boşluğu yeterli.", "Ses dengesi iyi; bas boğmuyor.", "Metroya üç dakika.", "Perde büyük, görüş temiz."],
     neg: ["Çıkışta kalabalık uzun sürüyor.", "Klima yetersiz.", "Büfe fiyatları yüksek.", "Yan koltuk aralığı dar."],
     neutral: ["Otopark sınırlı.", "Bilet kontrolü hızlı."],
-    ret: ["Tekrar giderim.", "Bir daha gitmem.", "Uygun etkinlikte yine.", "Kararsızım."],
+    ret: { evet: ["Tekrar giderim.", "Uygun etkinlikte yine."], hayır: ["Bir daha gitmem."], belki: ["Kararsızım."] },
   },
   travel: {
     pos: ["Mayıs sonu ideal; deniz ılık, kalabalık yok.", "Yürüyüş rotası iyi işaretlenmiş.", "Küçük lokantalar dürüst fiyatlı.", "Ulaşım düşündüğümden kolaydı."],
     neg: ["Temmuz–Ağustos çok kalabalık.", "Konaklama fiyatları sezonda ikiye katlanıyor.", "Plaja inen yol dik.", "Park yeri bulmak zor."],
     neutral: ["Araçsız gitmek mümkün ama planlı.", "Hafta içi gidin."],
-    ret: ["Tekrar giderim.", "Sezon dışı yine.", "Bir kez görmek yeter.", "Kararsızım."],
+    ret: { evet: ["Tekrar giderim.", "Sezon dışı yine."], hayır: ["Bir kez görmek yeter."], belki: ["Kararsızım."] },
   },
   service: {
     pos: ["Randevu saatinde başladı.", "Temizlik iyi, ekipman yeni.", "Fiyat söylenenle aynı çıktı.", "Sonucu iki hafta sonra da beğendim."],
     neg: ["Randevuya yirmi dakika geç alındım.", "Fiyat listesi görünür değil.", "Kalabalık saatlerde acele ediliyor.", "Soyunma odası küçük."],
     neutral: ["Hafta içi sabah daha sakin.", "Online randevu var."],
-    ret: ["Tekrar giderim.", "Bir daha gitmem.", "Yakınsa yine.", "Kararsızım."],
+    ret: { evet: ["Tekrar giderim.", "Yakınsa yine."], hayır: ["Bir daha gitmem."], belki: ["Kararsızım."] },
   },
 };
 FRAG.film = {
   pos: ["Görüntü yönetimi filmi tek başına taşıyor.", "Baş roldeki oyunculuk abartısız, inandırıcı.", "Müzik sahnelerin önüne geçmiyor.", "Senaryo az diyalogla çok şey anlatıyor.", "Tempo yavaş ama bilinçli; sıkmadı.", "Final tartışmaya açık, iyi anlamda."],
   neg: ["İkinci yarı gereksiz uzuyor.", "Diyaloglar yer yer yapay.", "Ses miksajı bazı sahnelerde replikleri yutuyor.", "Final aceleye getirilmiş.", "Yan karakterler yarım kalmış.", "Fragman filmin en iyi sahnelerini harcamış."],
   neutral: ["Büyük perdede izlemek fark yaratıyor.", "Altyazılı gösterimi az salonda var.", "İlk yarım saat sabır istiyor."],
-  ret: ["İkinci kez izlerim.", "Bir kez yeterli.", "Evde tekrar izlerim, sinemada değil.", "Kararsızım."],
+  ret: { evet: ["İkinci kez izlerim.", "Evde tekrar izlerim, sinemada değil."], hayır: ["Bir kez yeterli."], belki: ["Kararsızım."] },
+};
+FRAG.concert = {
+  pos: ["Ses düzeni dengeliydi; vokal boğulmadı.", "Setlist beklenenden uzun ve cömertti.", "Sahne ışıkları şarkıların önüne geçmedi.", "Giriş hızlı, kapı kalabalığı iyi yönetildi.", "Bis bölümü gecenin en iyi kısmıydı."],
+  neg: ["Bas çok yüksekti; ön sıralarda sözler kayboldu.", "Konser kırk dakika geç başladı.", "Arka sıralardan sahne görünmüyordu.", "İçecek fiyatları semte göre çok yüksek.", "Çıkışta kalabalık uzun sürdü."],
+  neutral: ["Kapılar bir saat önce açılıyor; erken gidin.", "Metro son seferi konser bitişine yetişmiyor."],
+  ret: { evet: ["Bir sonraki turnede yine giderim.", "Tekrar giderim."], hayır: ["Bir kez yeterdi."], belki: ["Setlist değişirse belki."] },
+};
+FRAG.festival = {
+  pos: ["Program akışı gecikmesiz ilerledi.", "Sahneler arası geçiş rahat, alan geniş.", "Yiyecek alanı beklediğimden iyi.", "Ses düzeni bu yıl belirgin iyi.", "Ulaşım servisleri düzenliydi."],
+  neg: ["Tuvalet sayısı kalabalığa yetmedi.", "Ana sahne çevresi çok sıkışıktı.", "Su fiyatı fahiş.", "Ulaşım geceyarısından sonra sorunlu.", "Program saatleri son dakika değişti."],
+  neutral: ["Günlük bilet hafta sonu tükeniyor.", "Alan büyük; rahat ayakkabı şart."],
+  ret: { evet: ["Seneye yine gelirim.", "Tekrar katılırım."], hayır: ["Bir kez yeterli."], belki: ["Program iyiyse yine."] },
 };
 const FRAG_OF: Record<string, string> = { "schema.dining": "dining", "schema.cafe": "cafe", "schema.hotel": "hotel", "schema.bar": "bar", "schema.place": "place", "schema.culture": "culture", "schema.show": "show", "schema.venue": "venue", "schema.travel": "travel", "schema.service": "service", "schema.film": "film" };
 
@@ -397,12 +410,22 @@ const THEME_POOL: Record<string, { pos: string[]; neg: string[] }> = {
   travel: { pos: ["Mevsim", "Rota", "Lokantalar", "Ulaşım"], neg: ["Kalabalık", "Konaklama fiyatı", "Yol", "Park"] },
   service: { pos: ["Zamanlama", "Temizlik", "Fiyat şeffaflığı", "Sonuç"], neg: ["Gecikme", "Fiyat listesi", "Acele", "Soyunma odası"] },
   film: { pos: ["Görüntü", "Oyunculuk", "Müzik", "Senaryo", "Tempo"], neg: ["Süre", "İkinci yarı", "Diyaloglar", "Final", "Ses miksajı"] },
+  concert: { pos: ["Ses düzeni", "Setlist", "Sahne ışığı", "Giriş düzeni"], neg: ["Bas seviyesi", "Gecikme", "Görüş", "İçecek fiyatı", "Çıkış kalabalığı"] },
+  festival: { pos: ["Program", "Alan", "Yiyecek alanı", "Ses düzeni", "Ulaşım servisi"], neg: ["Tuvalet", "Kalabalık", "Su fiyatı", "Gece ulaşımı", "Program değişikliği"] },
 };
 
 const VERIFY: VerificationMethod[] = ["konum", "fiş", "rezervasyon", "bilet", "yok", "yok", "sonra"];
 
-function makeExperience(r: () => number, entityId: string, schemaId: string, stats: EntityStats, idx: number, authorPool: string[]): RawExperience {
-  const fam = FRAG[FRAG_OF[schemaId] ?? "dining"];
+/** Alt tür → metin ailesi: konser ve festival tiyatro cümlesi kullanmaz; sergi müze dilini, sinema salonu salon dilini kullanır. */
+function famKeyOf(schemaId: string, subcategory?: string): string {
+  if (subcategory === "Konser") return "concert";
+  if (subcategory === "Festival") return "festival";
+  if (subcategory === "Sergi") return "culture";
+  return FRAG_OF[schemaId] ?? "dining";
+}
+
+function makeExperience(r: () => number, entityId: string, schemaId: string, stats: EntityStats, idx: number, authorPool: string[], subcategory?: string): RawExperience {
+  const fam = FRAG[famKeyOf(schemaId, subcategory)];
   const dims = ratingSchemas.find((s) => s.id === schemaId)!.dimensions;
   const mood = r(); // 0..1 → kötü..iyi, puana bağlı
   const target = stats.score + (mood - 0.5) * 2.4;
@@ -414,9 +437,9 @@ function makeExperience(r: () => number, entityId: string, schemaId: string, sta
   else if (overall >= 6) { parts.push(pick(r, fam.pos)); parts.push(pick(r, fam.neg)); }
   else { parts.push(pick(r, fam.neg)); if (r() < 0.6) parts.push(pick(r, fam.neg)); if (r() < 0.5) parts.push(pick(r, fam.pos)); }
   if (r() < 0.45) parts.push(pick(r, fam.neutral));
-  const retIdx = overall >= 8 ? 0 : overall >= 7 ? (r() < 0.6 ? 0 : 1) : overall >= 6 ? (r() < 0.5 ? 3 : 1) : 2;
-  const ret: ReturnIntent = retIdx === 0 || retIdx === 1 ? "evet" : retIdx === 2 ? "hayır" : "emin değil";
-  if (r() < 0.7) parts.push(fam.ret[retIdx]);
+  /* Yapısal durum önce: tekrar niyeti puandan türer; cümle bu durumdan seçilir — metin yapısal alana asla ters düşmez. */
+  const ret: ReturnIntent = overall >= 7 ? "evet" : overall >= 6 ? (r() < 0.5 ? "emin değil" : "evet") : "hayır";
+  if (r() < 0.7) parts.push(pick(r, ret === "evet" ? fam.ret.evet : ret === "hayır" ? fam.ret.hayır : fam.ret.belki));
   const body = [...new Set(parts)].join(" ");
   const m = 2025 + (r() < 0.25 ? 0 : 1);
   const month = m === 2025 ? 7 + Math.floor(r() * 6) : 1 + Math.floor(r() * 8);
@@ -487,8 +510,10 @@ const GOLDEN: Golden[] = [
     const rawScore = given?.score ?? drawScore(r, sub.scoreBias ?? 0);
     /* 9+ nadir ve kanıtla gelir: keşif kaydı (C) 9,2'yi, gerçek kamusal yer 9,0'ı aşmaz. */
     const score = given?.score ?? round1(Math.min(rawScore, e.realIdentity ? 9.0 : tier === "C" ? 9.2 : 9.6));
-    const delta = given?.delta ?? drawDelta(r);
     const count = given?.count ?? drawCount(r, tier);
+    /* Az kanıttan büyük hareket üretilmez: 40 deneyimin altında |Δ| ≤ 0,9; 20'nin altında ≤ 0,6. */
+    const rawDelta = given?.delta ?? drawDelta(r);
+    const delta = given?.delta ?? round1(clamp(rawDelta, -(count < 20 ? 0.6 : count < 40 ? 0.9 : 1.6), count < 20 ? 0.6 : count < 40 ? 0.9 : 1.6));
     const verifiedRatio = given?.verifiedRatio ?? round1(clamp(0.2 + r() * 0.45 + (tier === "A" ? 0.1 : 0), 0.15, 0.8) * 100) / 100;
     const dimVals: Record<string, number> = {};
     for (const d of dims) dimVals[d.key] = round1(clamp(score + (r() - 0.5) * 1.6, 1, 10));
@@ -510,7 +535,7 @@ const GOLDEN: Golden[] = [
       const spread = tier === "A" ? 0.9 + r() * 0.8 : 1.0 + r() * 1.4;
       const dist = Array.from({ length: 10 }, (_, i) => Math.max(0, Math.round(count * Math.exp(-Math.pow((i + 1 - score) / spread, 2) / 2) / 3)));
       universeDistributions[e.id] = dist;
-      const fam = THEME_POOL[FRAG_OF[schemaId] ?? "dining"];
+      const fam = THEME_POOL[famKeyOf(schemaId, e.subcategory)] ?? THEME_POOL[FRAG_OF[schemaId] ?? "dining"];
       const tr = rng(e.id + ":themes");
       const posN = tier === "A" ? 3 : tier === "B" ? 2 : 1;
       const posLabels = shuffle(tr, fam.pos).slice(0, posN);
@@ -528,7 +553,7 @@ const GOLDEN: Golden[] = [
       if (tier !== "C" && !e.realIdentity) {
         const xr = rng(e.id + ":exp");
         const n = tier === "A" ? 6 + Math.floor(xr() * 3) : 3 + Math.floor(xr() * 3);
-        for (let i = 0; i < n; i++) universeExperiences.push(makeExperience(xr, e.id, schemaId, stats, i, usersPool));
+        for (let i = 0; i < n; i++) universeExperiences.push(makeExperience(xr, e.id, schemaId, stats, i, usersPool, e.subcategory));
       }
       if (tier === "A" && !e.realIdentity) {
         const pos = universePraised[e.id][0]; const neg = universeComplaints[e.id][0];
