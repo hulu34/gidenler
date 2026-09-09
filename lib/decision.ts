@@ -10,6 +10,7 @@
    hesaba girmez. Regüle kategorilerde kişisel öneri üretilmez.
    ========================================================================== */
 
+import { verbsFor } from "@/lib/verbs";
 import { entities, getEntity, getEntityById } from "@/data/entities";
 import { getCategory, getSchema } from "@/data/categories";
 import { getUserByHandle, users } from "@/data/users";
@@ -86,6 +87,8 @@ export function getPersonalMatch(
   const dims = applyContext(profile, context, overrides);
   const ambient = ambientSignals[entityId] ?? { quiet: 5, speed: 5 };
   const factors: MatchFactor[] = [];
+  const V = verbsFor(entity);
+  const noun = entity.categoryId === "cat.film" ? "film" : entity.categoryId === "cat.show" ? "etkinlik" : entity.categoryId === "cat.hotel" ? "otel" : "mekân";
 
   /* 1 — boyut uyumu: senin önceliklerin × mekânın puanları */
   let wsum = 0, vsum = 0;
@@ -109,7 +112,7 @@ export function getPersonalMatch(
   if (quietW >= 60) {
     factors.push({
       key: "ambient.quiet", label: "Sessizlik", effect: (ambient.quiet - 6) / 4,
-      evidence: ambient.quiet >= 7 ? "Deneyimlerde sakin bir mekân olarak anlatılıyor" : ambient.quiet <= 4 ? "Deneyimlerde gürültü ve kalabalık sık geçiyor" : "Gürültü konusunda deneyimler ikiye bölünmüş",
+      evidence: ambient.quiet >= 7 ? `Deneyimlerde sakin bir ${noun} olarak anlatılıyor` : ambient.quiet <= 4 ? "Deneyimlerde gürültü ve kalabalık sık geçiyor" : "Gürültü konusunda deneyimler ikiye bölünmüş",
     });
   }
 
@@ -124,7 +127,7 @@ export function getPersonalMatch(
   if (cuisineLabel) {
     factors.push({
       key: "taste.cuisine", label: cuisineLabel, effect: cuisine / 8,
-      evidence: cuisine > 0 ? `${cuisineLabel} mekânlarını ${cuisineLevel} değerlendiriyorsun` : `${cuisineLabel} senin listende ${cuisineLevel}`,
+      evidence: cuisine > 0 ? `${cuisineLabel} ${noun === "mekân" ? "mekânlarını" : `${noun}lerini`} ${cuisineLevel} değerlendiriyorsun` : `${cuisineLabel} senin listende ${cuisineLevel}`,
     });
   }
 
@@ -135,7 +138,7 @@ export function getPersonalMatch(
     simEffect = (sim.returnRate - 0.7) * 30;
     factors.push({
       key: "similar.return", label: "Sana benzeyenler", effect: simEffect / 6,
-      evidence: `Sana benzeyen ${nf(sim.sampleSize)} kişinin ${pctOf(Math.round(sim.returnRate * 100))} tekrar gitmiş`,
+      evidence: `Sana benzeyen ${nf(sim.sampleSize)} kişinin ${pctOf(Math.round(sim.returnRate * 100))} ${V.again.toLocaleLowerCase("tr").replace(/im$/, "iş").replace(/ım$/, "ış")}`,
     });
   }
 
@@ -190,6 +193,15 @@ export const getSimilarUsersPerspective = (entityId: string): SimilarUsersPerspe
 
 /* ────────────────────────────── DECISION ───────────────────────────────── */
 
+/** Hüküm metni kategoriye göre: "Kesinlikle gidilir" → film için "Kesinlikle izlenir", otel için "Kesinlikle kalınır". */
+export function verdictText(v: DecisionVerdict, V: { want: string }): string {
+  const stem = V.want.split(" ")[0]; /* Gitmek / İzlemek / Kalmak / Katılmak */
+  const pass = stem === "Gitmek" ? "gidilir" : stem === "İzlemek" ? "izlenir" : stem === "Kalmak" ? "kalınır" : "katılınır";
+  if (v === "Kesinlikle gidilir") return `Kesinlikle ${pass}`;
+  if (v === "Gidilir") return pass.charAt(0).toLocaleUpperCase("tr") + pass.slice(1);
+  return v;
+}
+
 function verdictOf(match: number, it: TopicIntelligence): DecisionVerdict {
   const down = it.momentum === "down" || it.momentum === "strong_down";
   if (down && match < 70) return "Biraz bekle";
@@ -221,7 +233,7 @@ export function getDecision(entityId: string, context: DecisionContextKey = "def
   }
 
   /* topluluk ve uzman kanıtı */
-  if (it.returnRate >= 0.8) reasons.push({ text: `Gidenlerin ${pctOf(Math.round(it.returnRate * 100))} tekrar giderim diyor`, kind: "community", source: `${nf(it.experienceCount)} deneyim` });
+  if (it.returnRate >= 0.8) reasons.push({ text: `Gidenlerin ${pctOf(Math.round(it.returnRate * 100))} ${verbsFor(entity).again.toLocaleLowerCase("tr")} diyor`, kind: "community", source: `${nf(it.experienceCount)} deneyim` });
   const expert = it.perspectives.find((p) => p.segment === "expert");
   if (expert?.score && expert.score >= 8.5 && expert.experienceCount >= 3) {
     reasons.push({ text: `Bu konuda uzman ${nf(expert.experienceCount)} kişi ${score1(expert.score)} verdi`, kind: "expert", source: "Gidenler uzmanlık grafiği" });
@@ -247,7 +259,7 @@ export function getDecision(entityId: string, context: DecisionContextKey = "def
   const avoidIf = fits.filter(([, v]) => v <= -8).sort((a, b) => a[1] - b[1]).slice(0, 2).map(([k]) => label(k));
 
   return {
-    entityId, context, verdict: verdictOf(m.score, it), personalMatch: m.score,
+    entityId, context, verdict: verdictOf(m.score, it), verdictText: verdictText(verdictOf(m.score, it), verbsFor(entity)), personalMatch: m.score,
     reasons: reasons.slice(0, 5), warnings: warnings.slice(0, 3), bestFor, avoidIf,
     confidence: m.confidence, timeContext: "Son 90 günün deneyimlerine göre", isDemo: true,
   };
@@ -816,11 +828,12 @@ export function getNotifications(relationships: Record<string, UserEntityRelatio
   for (const rel of Object.values(relationships)) {
     const e = getEntityById(rel.entityId); const it = getTopicIntelligence(rel.entityId);
     if (!e || !it) continue;
+    const V = verbsFor(e); const wantN = `${V.want.split(" ")[0]} istediğin`; /* "Gitmek istediğin" / "İzlemek istediğin" */
     if (rel.state === "want_to_go") {
-      if (it.momentum === "up" || it.momentum === "strong_up") out.push({ id: `n.up.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `Gitmek istediğin ${e.name} son 30 günde yükseliyor`, body: `Gidenler ${score1(it.overallScore ?? 0)} · ${it.scoreTrend.delta > 0 ? "+" : ""}${score1(it.scoreTrend.delta)} son 90 gün`, at: "2026-09-02", basedOn: "want_to_go" });
+      if (it.momentum === "up" || it.momentum === "strong_up") out.push({ id: `n.up.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `${wantN} ${e.name} son 30 günde yükseliyor`, body: `Gidenler ${score1(it.overallScore ?? 0)} · ${it.scoreTrend.delta > 0 ? "+" : ""}${score1(it.scoreTrend.delta)} son 90 gün`, at: "2026-09-02", basedOn: "want_to_go" });
       const dimUp = it.ratingDimensions.find((d) => d.trend.direction === "up" && d.trend.delta >= 0.2);
-      if (dimUp) out.push({ id: `n.dim.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `Gitmek istediğin ${e.name}'da ${lower(dimUp.label)} deneyimleri toparlanıyor`, body: `${dimUp.label} ${score1(dimUp.value)} · +${score1(dimUp.trend.delta)} son 90 gün`, at: "2026-09-01", basedOn: "want_to_go" });
-      out.push({ id: `n.went.${e.id}`, kind: "went_yet", entityId: e.id, title: `${e.name}'a gittin mi?`, body: "Gitmek istiyorum demiştin. Gittiysen nasıl geçtiğini iki dokunuşla söyle.", at: "2026-09-02", basedOn: "want_to_go" });
+      if (dimUp) out.push({ id: `n.dim.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `${wantN} ${e.name}'da ${lower(dimUp.label)} deneyimleri toparlanıyor`, body: `${dimUp.label} ${score1(dimUp.value)} · +${score1(dimUp.trend.delta)} son 90 gün`, at: "2026-09-01", basedOn: "want_to_go" });
+      out.push({ id: `n.went.${e.id}`, kind: "went_yet", entityId: e.id, title: `${e.name} — ${V.didQ.toLocaleLowerCase("tr")}`, body: `${V.want} demiştin. Nasıl geçtiğini iki dokunuşla söyle.`, at: "2026-09-02", basedOn: "want_to_go" });
     }
     if (rel.state === "saved") {
       if (it.momentum === "up" || it.momentum === "strong_up") out.push({ id: `n.sup.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `Kaydettiğin ${e.name} son 30 günde yükseliyor`, body: `Gidenler ${score1(it.overallScore ?? 0)} · +${score1(it.scoreTrend.delta)} son 90 gün`, at: "2026-09-02", basedOn: "saved" });
