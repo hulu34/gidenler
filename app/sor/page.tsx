@@ -167,7 +167,7 @@ export default function AskPage() {
                   <div className="flex flex-col items-start sm:items-end">
                     <span className="text-[34px] font-extrabold leading-none tracking-[-0.05em] text-accent-ink">%{it.match}</span>
                     <span className="label">sana göre</span>
-                    {(() => { const d = getDecision(it.entityId, refine.context ?? result.query.context); return d ? <span className="mt-1 text-[13px] font-bold">{d.verdict}</span> : null; })()}
+                    {(() => { const d = getDecision(it.entityId, refine.context ?? result.query.context); return d ? <span className="mt-1 text-[13px] font-bold">{d.verdictText ?? d.verdict}</span> : null; })()}
                   </div>
                 </li>
               );
