@@ -11,6 +11,7 @@ import { WhyThisResult } from "@/components/decision/WhyThisResult";
 import { TimingCard } from "@/components/decision/TimingCard";
 import { EntityActions } from "@/components/decision/EntityActions";
 import { RecommendationFeedback } from "@/components/decision/RecommendationFeedback";
+import { verbsForId } from "@/lib/verbs";
 
 const VERDICT_TONE: Record<Decision["verdict"], string> = {
   "Kesinlikle gidilir": "text-pos-ink", "Gidilir": "text-pos-ink", "Sana bağlı": "text-ink",
@@ -28,7 +29,8 @@ export function DecisionHero({ entityId, entitySlug, entityName, compareWith }: 
   const data = useUserData();
   const [ctx, setCtx] = useState<DecisionContextKey>("default");
   const [why, setWhy] = useState(false);
-  const contexts = listDecisionContexts();
+  const V = verbsForId(entityId);
+  const contexts = listDecisionContexts().filter((c) => V.contexts.includes(c.key));
   const profile = useMemo(() => effectiveProfile(data.taste), [data.taste]);
   const decision = useMemo(() => getDecision(entityId, ctx, undefined, profile), [entityId, ctx, profile]);
   const match = useMemo(() => getPersonalMatch(entityId, ctx, undefined, undefined, profile), [entityId, ctx, profile]);
@@ -56,7 +58,7 @@ export function DecisionHero({ entityId, entitySlug, entityName, compareWith }: 
               <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-ink-3">uyum</span>
             </span>
             <span className="flex flex-col gap-1 pb-1.5">
-              <span className={`text-[clamp(1.6rem,4.5vw,2.4rem)] font-extrabold leading-none tracking-[-0.035em] ${VERDICT_TONE[decision.verdict]}`}>{decision.verdict}</span>
+              <span className={`text-[clamp(1.6rem,4.5vw,2.4rem)] font-extrabold leading-none tracking-[-0.035em] ${VERDICT_TONE[decision.verdict]}`}>{decision.verdictText ?? decision.verdict}</span>
               <span className="text-[12px] text-ink-3">{decision.timeContext}</span>
             </span>
           </div>
@@ -95,7 +97,7 @@ export function DecisionHero({ entityId, entitySlug, entityName, compareWith }: 
         {/* ── bağlam + zaman ── */}
         <div className="flex flex-col gap-6">
           <div>
-            <span className="label">Ne için gidiyorsun?</span>
+            <span className="label">{V.forWhat}</span>
             <div className="mt-2 flex flex-wrap gap-1.5">
               {contexts.map((c) => (
                 <button key={c.key} type="button" onClick={() => setCtx(c.key)} aria-pressed={ctx === c.key}
