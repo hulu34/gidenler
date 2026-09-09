@@ -138,7 +138,7 @@ export function getPersonalMatch(
     simEffect = (sim.returnRate - 0.7) * 30;
     factors.push({
       key: "similar.return", label: "Sana benzeyenler", effect: simEffect / 6,
-      evidence: `Sana benzeyen ${nf(sim.sampleSize)} kişinin ${pctOf(Math.round(sim.returnRate * 100))} ${V.again.toLocaleLowerCase("tr").replace(/im$/, "iş").replace(/ım$/, "ış")}`,
+      evidence: `Sana benzeyen ${nf(sim.sampleSize)} kişinin ${pctOf(Math.round(sim.returnRate * 100))} ${V.wouldAgain}`,
     });
   }
 
