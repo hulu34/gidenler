@@ -733,6 +733,8 @@ export interface Decision {
   entityId: ID;
   context: DecisionContextKey;
   verdict: DecisionVerdict;
+  /** Kategoriye duyarlı hüküm metni ("Kesinlikle izlenir"); `verdict` anahtar olarak kalır. */
+  verdictText?: string;
   personalMatch: number | null;
   reasons: DecisionReason[];
   warnings: DecisionWarning[];
