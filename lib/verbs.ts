@@ -28,6 +28,8 @@ export interface Verbs {
   willAgain: string;
   /** "tekrar gitmem" */
   notAgain: string;
+  /** 3. tekil, niyet istatistiği: "…kişinin %91'i tekrar gider" */
+  wouldAgain: string;
   /** "Gitmek istediklerine eklendi." */
   wantAdded: string;
   /** "Ne için gidiyorsun?" */
@@ -40,22 +42,22 @@ export interface Verbs {
 
 const GO: Omit<Verbs, "nearby" | "contexts"> = {
   want: "Gitmek istiyorum", did: "Gittim", already: "Zaten gittim", didQ: "Gittin mi?", didYou: "Gittin", yesDid: "Evet, gittim",
-  again: "Tekrar giderim", againQ: "Tekrar gider misin?", willAgain: "Yine gideceğim", notAgain: "tekrar gitmem",
+  again: "Tekrar giderim", againQ: "Tekrar gider misin?", willAgain: "Yine gideceğim", notAgain: "tekrar gitmem", wouldAgain: "tekrar gider",
   wantAdded: "Gitmek istediklerine eklendi.", forWhat: "Ne için gidiyorsun?",
 };
 const WATCH: Omit<Verbs, "nearby" | "contexts"> = {
   want: "İzlemek istiyorum", did: "İzledim", already: "Zaten izledim", didQ: "İzledin mi?", didYou: "İzledin", yesDid: "Evet, izledim",
-  again: "Tekrar izlerim", againQ: "Tekrar izler misin?", willAgain: "Yine izleyeceğim", notAgain: "tekrar izlemem",
+  again: "Tekrar izlerim", againQ: "Tekrar izler misin?", willAgain: "Yine izleyeceğim", notAgain: "tekrar izlemem", wouldAgain: "tekrar izler",
   wantAdded: "İzlemek istediklerine eklendi.", forWhat: "Kiminle izliyorsun?",
 };
 const STAY: Omit<Verbs, "nearby" | "contexts"> = {
   want: "Kalmak istiyorum", did: "Kaldım", already: "Zaten kaldım", didQ: "Kaldın mı?", didYou: "Kaldın", yesDid: "Evet, kaldım",
-  again: "Tekrar kalırım", againQ: "Tekrar kalır mısın?", willAgain: "Yine kalacağım", notAgain: "tekrar kalmam",
+  again: "Tekrar kalırım", againQ: "Tekrar kalır mısın?", willAgain: "Yine kalacağım", notAgain: "tekrar kalmam", wouldAgain: "tekrar kalır",
   wantAdded: "Kalmak istediklerine eklendi.", forWhat: "Ne için kalıyorsun?",
 };
 const ATTEND: Omit<Verbs, "nearby" | "contexts"> = {
   want: "Katılmak istiyorum", did: "Katıldım", already: "Zaten katıldım", didQ: "Katıldın mı?", didYou: "Katıldın", yesDid: "Evet, katıldım",
-  again: "Tekrar katılırım", againQ: "Tekrar katılır mısın?", willAgain: "Yine katılacağım", notAgain: "tekrar katılmam",
+  again: "Tekrar katılırım", againQ: "Tekrar katılır mısın?", willAgain: "Yine katılacağım", notAgain: "tekrar katılmam", wouldAgain: "tekrar katılır",
   wantAdded: "Katılmak istediklerine eklendi.", forWhat: "Kiminle katılıyorsun?",
 };
 
