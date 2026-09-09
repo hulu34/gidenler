@@ -46,7 +46,7 @@ export function DecisionCard({
             <Link href={`/mekan/${entitySlug}/`} className="text-[15px] font-bold tracking-[-0.01em] hover:text-accent-ink">{entityName}</Link>
           ) : null}
           <span className={`font-extrabold leading-none tracking-[-0.035em] ${tone} ${compact ? "text-[22px]" : "text-[clamp(1.5rem,4vw,2.25rem)]"}`}>
-            {d.verdict}
+            {d.verdictText ?? d.verdict}
           </span>
           {d.timeContext && <span className="text-[11.5px] text-ink-3">{d.timeContext}</span>}
         </div>
