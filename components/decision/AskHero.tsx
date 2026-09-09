@@ -2,14 +2,18 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ORNEK = ["Kadıköy'de sakin bir akşam yemeği", "Bu akşam iyi sushi nerede?", "Çocukla pazar öğlen"];
+/** Dönen yer tutucu: yalnızca istemcide değişir; sunucu ilkini basar (hydration güvenli). */
+const PLACEHOLDERS = ["Kadıköy'de sakin bir akşam yemeği…", "İyi bir kahveci arıyorum…", "Bu hafta ne izlemeliyim?", "Beyoğlu'nda nereye gidelim?", "Boğaz'da bir otel…"];
 
 /** Ana sayfa arama alanı — mekân araması hâlâ çalışır; doğal dil sorgusu Sor Gidenler'e gider. */
 export function AskHero() {
   const router = useRouter();
   const [q, setQ] = useState("");
+  const [ph, setPh] = useState(0);
+  useEffect(() => { const t = window.setInterval(() => setPh((i) => (i + 1) % PLACEHOLDERS.length), 3200); return () => window.clearInterval(t); }, []);
   return (
     <form
       onSubmit={(e) => { e.preventDefault(); router.push(q.trim() ? `/sor/?q=${encodeURIComponent(q.trim())}` : "/sor/"); }}
@@ -18,7 +22,7 @@ export function AskHero() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
         <input
           value={q} onChange={(e) => setQ(e.target.value)}
-          placeholder="Nereye gitmek istiyorsun?"
+          placeholder={PLACEHOLDERS[ph]}
           aria-label="Sor Gidenler"
           className="h-12 w-full border-b-2 border-line-strong bg-transparent pb-1 text-[clamp(1.125rem,3vw,1.5rem)] outline-none placeholder:text-ink-3 focus:border-accent"
         />
