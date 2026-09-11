@@ -3,15 +3,14 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
-import { CategoryGlyph } from "@/components/experience/CategoryGlyph";
 import { useUserData } from "@/lib/store";
-import { nf } from "@/lib/format";
-import type { HomeCategoryKey, HomeRankings as Rankings, OtherKey, RankItem, RegulatedHome } from "@/lib/rankings";
+import { RANK_CONFIG } from "@/lib/rankings";
+import type { HomeCategoryKey, HomeRankings as Rankings, OtherKey, RankItem, RankSection, RegulatedHome } from "@/lib/rankings";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   ANA SAYFA = TERCİH YAPTIR.
-   Kategori seçici → beş omurga bölüm (Top 5) → Sana göre.
-   Dashboard değil, feature envanteri değil: "Ne arıyorsun? Bunlara bak."
+   ANA SAYFA = TERCİH YAPTIR — KOMPAKT BOARD.
+   Kategori seçici → 2 satır × 3 kolon: Popülerler · En yüksek · Konuşulanlar / Yükselişteler · Uzmanlar · Sana göre.
+   Her kolon BAŞLIK + Top 5 kompakt satır (ad · puan / semt · il · tek sinyal). Tek bakışta tercih; uzun anlatı yok.
    ────────────────────────────────────────────────────────────────────────── */
 
 export interface HomeData {
@@ -52,7 +51,7 @@ export function HomeRankings({ data }: { data: HomeData }) {
   const label = cat === "other" ? data.other.find((o) => o.key === other)?.label : data.primary.find((c) => c.key === cat)?.label;
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-8">
       {/* ── kategori seçici ── */}
       <div className="sticky top-[61px] z-20 sm:top-[69px] -mx-5 border-b border-line bg-paper/95 px-5 backdrop-blur-sm sm:-mx-7 sm:px-7">
         <div role="tablist" aria-label="Kategori" className="no-scrollbar -mb-px flex gap-1 overflow-x-auto">
@@ -82,80 +81,67 @@ export function HomeRankings({ data }: { data: HomeData }) {
       {block && block.regulated && <RegulatedBlock r={block} />}
 
       {block && !block.regulated && (
-        <>
-          {block.sections.map((s) => (
-            <section key={s.key} aria-labelledby={`h-${s.key}`}>
-              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
-                <h2 id={`h-${s.key}`} className="text-[13px] font-bold uppercase tracking-[0.2em]">
-                  {s.title}
-                  {s.window && <span className="ml-2 font-semibold normal-case tracking-normal text-ink-3">· {s.window.toLocaleLowerCase("tr")}</span>}
-                </h2>
-                <p className="max-w-[52ch] text-[12px] text-ink-3">{s.hint}</p>
+        <div className="home-board">
+          {block.sections.map((s) => <Column key={s.key} section={s} />)}
+          <Column
+            section={{ key: "sana", title: "Sana göre", hint: "Uyum, Gidenler puanı değildir; zevk profilinle deneyimler arasındaki ilişkidir.", items: personalized ? mine : [], signalKind: "match", seeAll: personalized && mine.length > 0 ? "/zevkim/" : undefined }}
+            seeAllLabel="Zevkim"
+            empty={
+              <div className="flex flex-col gap-3 pt-4">
+                <p className="text-[14.5px] leading-snug text-ink-2">Zevkini tanıdıkça burası sana özel olacak.</p>
+                <p><Link href="/zevkim/" className="inline-flex h-9 items-center rounded-[3px] bg-accent px-3.5 text-[13.5px] font-semibold text-on-accent">Zevkini tanıyalım →</Link></p>
+                <p className="text-[11.5px] text-ink-3">Üç dakika; profilin yalnızca bu tarayıcıda saklanır. Uydurma kişiselleştirme yapılmaz.</p>
               </div>
-              <ol>
-                {s.items.map((it, i) => <RankCard key={it.slug} it={it} rank={i + 1} />)}
-              </ol>
-              {s.seeAll && (
-                <p className="mt-3 text-[13px]">
-                  <Link href={s.seeAll} className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Tümünü gör →</Link>
-                </p>
-              )}
-            </section>
-          ))}
-
-          {/* ── Sana göre ── */}
-          <section aria-labelledby="h-sana">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
-              <h2 id="h-sana" className="text-[13px] font-bold uppercase tracking-[0.2em]">Sana göre</h2>
-              <p className="max-w-[52ch] text-[12px] text-ink-3">Uyum, Gidenler puanı değildir; zevk profilinle deneyimler arasındaki ilişkidir.</p>
-            </div>
-            {personalized && mine.length > 0 ? (
-              <>
-                <ol>{mine.map((it, i) => <RankCard key={it.slug} it={it} rank={i + 1} />)}</ol>
-                <p className="mt-3 flex flex-wrap gap-x-5 text-[13px]">
-                  <Link href="/sor/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Sor Gidenler</Link>
-                  <Link href="/zevkim/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Zevkim</Link>
-                </p>
-              </>
-            ) : (
-              <p className="flex flex-wrap items-center gap-x-5 gap-y-2 py-5 text-[15px] text-ink-2">
-                <span>Sana göre olanları görmek için zevkini tanıyalım.</span>
-                <Link href="/zevkim/" className="inline-flex h-9 items-center rounded-[3px] bg-accent px-3.5 text-[13.5px] font-semibold text-on-accent">Zevkimi tanıt</Link>
-                <span className="text-[12.5px] text-ink-3">Üç dakika; profilin yalnızca bu tarayıcıda saklanır.</span>
-              </p>
-            )}
-          </section>
-          {label && cat !== "all" && <p className="sr-only">Seçili kategori: {label}</p>}
-        </>
+            }
+          />
+        </div>
+      )}
+      {label && cat !== "all" && <p className="sr-only">Seçili kategori: {label}</p>}
+      {block && !block.regulated && (
+        <p className="max-w-[92ch] text-[11.5px] leading-relaxed text-ink-3">
+          Popülerlik ve konuşulma puan değildir; puan yalnızca deneyimlerden çıkar. En yüksek puanlılar için en az {RANK_CONFIG.topRated.minExperiences} deneyim ve orta güven şartı vardır; yükseliş son 90 günün hareketidir. Uzmanların seçtikleri takipçiye değil, kanıtlanmış uzmanlığa dayanır. Uyum senin zevk profilinle deneyimler arasındaki ilişkidir, Gidenler puanı değildir.
+        </p>
       )}
     </div>
   );
 }
 
-/* ───── sıralama kartı: 01 · ad / tür · konum / puan · etiket · trend / tek neden ───── */
-function RankCard({ it, rank }: { it: RankItem; rank: number }) {
-  const dir = it.delta > 0.15 ? "up" : it.delta < -0.15 ? "down" : "flat";
-  const first = rank === 1;
+/* ───── board kolonu: BAŞLIK → 01…05 kompakt satır ───── */
+function Column({ section: s, empty, seeAllLabel = "Tam liste" }: { section: RankSection; empty?: React.ReactNode; seeAllLabel?: string }) {
   return (
-    <li className="border-b border-line">
-      <Link href={`/mekan/${it.slug}/`} className={`group grid grid-cols-[1fr_auto] items-start gap-x-6 ${first ? "gap-y-2 py-5 sm:py-6" : "gap-y-1.5 py-4"} transition-colors hover:bg-sheet`}>
-        <div className="flex min-w-0 flex-col gap-1.5">
-          <span className="flex items-baseline gap-2.5">
-            <span className="tnum text-[12px] font-bold text-ink-3">{String(rank).padStart(2, "0")}</span>
-            <span className={`font-bold leading-tight tracking-[-0.025em] group-hover:text-accent-ink ${first ? "text-[24px] sm:text-[30px]" : "text-[18px] sm:text-[20px]"}`}>{it.name}</span>
-          </span>
-          <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
-            <CategoryGlyph entity={{ categoryId: it.categoryId, subcategory: it.kind }} />
-            <span className="text-ink-2">{it.kind}</span>
-            {it.where && <><span aria-hidden>·</span><span>{it.where}</span></>}
-          </span>
-          {it.reason && <span className={`prose-exp leading-snug text-ink-2 ${first ? "text-[16px] sm:text-[17px]" : "line-clamp-2 text-[14.5px] sm:line-clamp-1"}`}>{it.reason}</span>}
-          <span className="tnum text-[12px] text-ink-3">{it.evidence ?? [`${nf(it.count)} deneyim`, it.confidence].filter(Boolean).join(" · ")}</span>
-        </div>
-        <div className="flex shrink-0 flex-col items-end gap-1">
-          {it.score !== null && <ScoreNumber score={it.score} size={first ? "xl" : "lg"} label stack trend={{ direction: dir, delta: dir === "flat" ? undefined : it.delta }} />}
-          {typeof it.match === "number" && <span className="tnum text-[12px] font-bold text-accent-ink">%{it.match} uyum</span>}
-        </div>
+    <section aria-labelledby={`h-${s.key}`} className="min-w-0">
+      <div className="flex min-h-[2.25rem] items-end justify-between gap-x-3 border-b-2 border-line-strong pb-2">
+        <h2 id={`h-${s.key}`} className="min-w-0 text-[12px] font-bold uppercase leading-tight tracking-[0.14em]" title={s.hint}>{s.title}</h2>
+        <span className="flex shrink-0 items-baseline gap-x-2 whitespace-nowrap text-[11px] leading-tight text-ink-3">
+          {s.window && <span className="font-medium">{s.window.toLocaleLowerCase("tr")}</span>}
+          {s.seeAll && <Link href={s.seeAll} className="font-semibold hover:text-ink">{seeAllLabel} →</Link>}
+        </span>
+      </div>
+      {s.items.length > 0 ? (
+        <ol className="divide-y divide-line">
+          {s.items.map((it, i) => <Row key={it.slug} it={it} rank={i + 1} signalKind={s.signalKind ?? "text"} />)}
+        </ol>
+      ) : (empty ?? <p className="pt-4 text-[13px] text-ink-3">Bu kategoride henüz yeterli veri yok.</p>)}
+    </section>
+  );
+}
+
+/* ───── kompakt satır: 01 · AD ………… PUAN / semt · il ………… tek sinyal ───── */
+function Row({ it, rank, signalKind }: { it: RankItem; rank: number; signalKind: "trend" | "match" | "text" }) {
+  const dir = it.delta > 0.15 ? "up" : it.delta < -0.15 ? "down" : "flat";
+  const signalTone = signalKind === "trend" ? (dir === "up" ? "text-pos-ink" : dir === "down" ? "text-neg-ink" : "text-ink-3") : signalKind === "match" ? "text-accent-ink" : "text-ink-3";
+  return (
+    <li>
+      <Link href={`/mekan/${it.slug}/`} className="group grid grid-cols-[1.6rem_minmax(0,1fr)_auto] items-start gap-x-2 py-2.5 transition-colors hover:bg-sheet sm:-mx-2 sm:px-2">
+        <span className="tnum pt-[3px] text-[11px] font-bold text-ink-3">{String(rank).padStart(2, "0")}</span>
+        <span className="flex min-w-0 flex-col gap-0.5">
+          <span className="line-clamp-2 text-[15px] font-semibold leading-[1.25] tracking-[-0.015em] group-hover:text-accent-ink">{it.name}</span>
+          <span className="truncate text-[11px] font-medium leading-tight text-ink-3">{it.place || it.kind}</span>
+        </span>
+        <span className="flex shrink-0 flex-col items-end gap-0.5">
+          {it.score !== null ? <ScoreNumber score={it.score} size="sm" /> : <span className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">puan yok</span>}
+          {it.signal && <span className={`tnum whitespace-nowrap text-[11px] font-semibold ${signalTone}`}>{it.signal}</span>}
+        </span>
       </Link>
     </li>
   );
