@@ -183,6 +183,27 @@
   .rule-strong { border-top: 2px solid var(--line-strong); }
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { scrollbar-width: none; }
+
+  /* ANA SAYFA BOARD — 2 satır × 3 kolon. Kolonlar ince dikey çizgiyle, satırlar ince yatay çizgiyle ayrılır;
+     kutu içinde kutu yok. Tablet 2 kolon, mobil tek kolon (yalnızca boşluk). */
+  .home-board { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 2.25rem; }
+  @media (min-width: 768px) {
+    .home-board { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 0; }
+    .home-board > * { padding: 0 1.5rem; }
+    .home-board > :nth-child(2n + 1) { padding-left: 0; }
+    .home-board > :nth-child(2n) { padding-right: 0; border-left: 1px solid var(--line); }
+    .home-board > :nth-child(n + 3) { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+  }
+  @media (min-width: 1280px) {
+    .home-board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .home-board > * { padding: 0 1.75rem; border-left: 1px solid var(--line); }
+    .home-board > :nth-child(2n) { padding-right: 1.75rem; }
+    .home-board > :nth-child(2n + 1) { padding-left: 1.75rem; }
+    .home-board > :nth-child(3n + 1) { padding-left: 0; border-left: 0; }
+    .home-board > :nth-child(3n) { padding-right: 0; }
+    .home-board > :nth-child(n + 3) { margin-top: 0; padding-top: 0; border-top: 0; }
+    .home-board > :nth-child(n + 4) { margin-top: 2.25rem; padding-top: 2.25rem; border-top: 1px solid var(--line); }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
