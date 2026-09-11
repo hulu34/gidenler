@@ -73,22 +73,32 @@ function matchesSelector(c: EntityCard, sel: { cats: string[]; subcategory?: str
 /* ───── kart verisi: serileştirilebilir, küçük ───── */
 export interface RankItem {
   slug: string; name: string; kind: string; where: string; categoryId: string;
+  /** Konum bağlamı "Semt · İl" (semt yoksa yalnızca il; ikisi de yoksa boş — başlıkta gösterilmez). */
+  place: string;
   score: number | null; delta: number; count: number; confidence?: string;
   /** Tek neden — kartın cümlesi. */
   reason: string;
   /** Uzman/popüler gibi bölümlere özel küçük kanıt ("3 uzman deneyimi", "son 7 günde 41 kaydetme"). */
   evidence?: string;
+  /** Kompakt board için TEK destekleyici sinyal — sıralamanın nedenini söyler ("125 etkileşim", "Yüksek güven"). */
+  signal?: string;
   match?: number;
 }
 
-function itemOf(c: EntityCard, reason: string, evidence?: string): RankItem {
+/** "Kadıköy · İstanbul" — filmler gibi konumsuz kayıtlarda boş kalır, "· İstanbul" gibi kırık parça üretmez. */
+export function placeOf(loc: Entity["location"] | undefined): string {
+  if (!loc) return "";
+  return [loc.district, loc.city].filter((x): x is string => !!x && x.trim() !== "").join(" · ");
+}
+
+function itemOf(c: EntityCard, reason: string, evidence?: string, signal?: string): RankItem {
   const loc = c.entity.location;
   const where = loc?.district ? `${loc.city && loc.city !== "İstanbul" ? `${loc.city} · ` : ""}${loc.district}` : loc?.city && loc.city !== "İstanbul" ? loc.city : "";
   return {
-    slug: c.entity.slug, name: c.entity.name, kind: c.entity.subcategory ?? c.category.label, where, categoryId: c.entity.categoryId,
+    slug: c.entity.slug, name: c.entity.name, kind: c.entity.subcategory ?? c.category.label, where, place: placeOf(loc), categoryId: c.entity.categoryId,
     score: c.score, delta: c.delta90d, count: c.experienceCount,
     confidence: c.confidence && c.score !== null ? CONFIDENCE_LABEL[c.confidence] : undefined,
-    reason, evidence,
+    reason, evidence, signal,
   };
 }
 
@@ -168,7 +178,11 @@ function expertsByEntity() {
 }
 
 /* ───── bölümler ───── */
-export interface RankSection { key: string; title: string; hint: string; window?: string; items: RankItem[]; seeAll?: string }
+export interface RankSection {
+  key: string; title: string; hint: string; window?: string; items: RankItem[]; seeAll?: string;
+  /** Sinyal bir trend ise (Yükselişteler) trend rengiyle basılır; puan rengiyle karışmaz. */
+  signalKind?: "trend" | "match" | "text";
+}
 
 export interface HomeRankings {
   regulated: false;
@@ -204,7 +218,7 @@ export function buildRankings(sel: { cats: string[]; subcategory?: string }, opt
     L, opts.all,
   ).map((c) => {
     const w = weeklySignal(c.entity.id, last30(c), c.score ?? 7);
-    return itemOf(c, talkInsight(c, getTopicIntelligence(c.entity.id)), `${nf(w.saves)} kaydetme · ${nf(w.wants)} gitme niyeti · ${nf(w.experiences7)} yeni deneyim`);
+    return itemOf(c, talkInsight(c, getTopicIntelligence(c.entity.id)), `${nf(w.saves)} kaydetme · ${nf(w.wants)} gitme niyeti · ${nf(w.experiences7)} yeni deneyim`, `${nf(Math.round(w.total))} etkileşim`);
   });
 
   /* 2 · En yüksek puanlılar — kanıt eşiği */
@@ -212,7 +226,7 @@ export function buildRankings(sel: { cats: string[]; subcategory?: string }, opt
     [...pool].filter((c) => c.experienceCount >= RANK_CONFIG.topRated.minExperiences && CONF_RANK[c.confidence ?? "low"] >= CONF_RANK[RANK_CONFIG.topRated.minConfidence])
       .sort((a, b) => (b.score! - a.score!) || (b.experienceCount - a.experienceCount)),
     L, opts.all,
-  ).map((c) => itemOf(c, talkInsight(c, getTopicIntelligence(c.entity.id))));
+  ).map((c) => itemOf(c, talkInsight(c, getTopicIntelligence(c.entity.id)), undefined, c.confidence ? CONFIDENCE_LABEL[c.confidence] : undefined));
 
   /* 3 · En çok konuşulanlar — son 30 gün deneyim etkinliği */
   const talked = balanced(
@@ -222,7 +236,7 @@ export function buildRankings(sel: { cats: string[]; subcategory?: string }, opt
   ).map((c) => {
     const it = getTopicIntelligence(c.entity.id);
     const verified = Math.round(last30(c) * (it?.verifiedRatio ?? 0));
-    return itemOf(c, talkInsight(c, it), `son 30 günde ${nf(last30(c))} deneyim · ${nf(verified)} doğrulanmış`);
+    return itemOf(c, talkInsight(c, it), `son 30 günde ${nf(last30(c))} deneyim · ${nf(verified)} doğrulanmış`, `${nf(last30(c))} yeni deneyim`);
   });
 
   /* 4 · Yükselişteler — en anlamlı pozitif hareket */
@@ -230,7 +244,7 @@ export function buildRankings(sel: { cats: string[]; subcategory?: string }, opt
     [...pool].filter((c) => c.experienceCount >= RANK_CONFIG.rising.minExperiences && c.delta90d >= RANK_CONFIG.rising.minDelta && c.delta90d <= RANK_CONFIG.rising.maxDelta)
       .sort((a, b) => (b.delta90d * Math.log10(b.experienceCount)) - (a.delta90d * Math.log10(a.experienceCount))),
     L, opts.all,
-  ).map((c) => itemOf(c, changeInsight(getTopicIntelligence(c.entity.id), "up")));
+  ).map((c) => itemOf(c, changeInsight(getTopicIntelligence(c.entity.id), "up"), undefined, `↑ +${c.delta90d.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}`));
 
   /* 5 · Uzmanların seçtikleri — takipçi değil, uzmanlık + gerçek deneyim */
   const ex = expertsByEntity();
@@ -240,16 +254,17 @@ export function buildRankings(sel: { cats: string[]; subcategory?: string }, opt
     L, opts.all,
   ).map((c) => {
     const x = ex.get(c.entity.id)!;
-    return itemOf(c, talkInsight(c, getTopicIntelligence(c.entity.id)), `${x.authors.size} uzman · ${x.n} uzman deneyimi · uzman ortalaması ${(x.sum / x.n).toLocaleString("tr-TR", { maximumFractionDigits: 1 })}`);
+    const avg = (x.sum / x.n).toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    return itemOf(c, talkInsight(c, getTopicIntelligence(c.entity.id)), `${x.authors.size} uzman · ${x.n} uzman deneyimi · uzman ortalaması ${avg}`, `${x.authors.size} uzman · ${avg}`);
   });
 
   const sections: RankSection[] = [
     { key: "populer", title: "Haftanın popülerleri", hint: "Son 7 günün etkileşimi: kaydetme, gitme niyeti, yeni deneyim. Popülerlik puan değildir.", window: RANK_CONFIG.popular.window, items: popular, seeAll: seeAll(sel, "konusulan") },
     { key: "en-yuksek", title: "En yüksek puanlılar", hint: `Gidenler puanına göre; en az ${RANK_CONFIG.topRated.minExperiences} deneyim ve orta güven şartı. Az veriyle 9,8 burada görünmez.`, items: top, seeAll: seeAll(sel, "puan") },
     { key: "konusulan", title: "En çok konuşulanlar", hint: "Son 30 günde en çok deneyim yazılanlar; sayfa görüntüleme değil.", window: RANK_CONFIG.talked.window, items: talked, seeAll: seeAll(sel, "konusulan") },
-    { key: "yukselen", title: "Yükselişteler", hint: `${RANK_CONFIG.rising.window}de en anlamlı pozitif hareket; en az ${RANK_CONFIG.rising.minExperiences} deneyim.`, window: RANK_CONFIG.rising.window, items: rising, seeAll: seeAll(sel, "yukselen") },
+    { key: "yukselen", title: "Yükselişteler", hint: `${RANK_CONFIG.rising.window}de en anlamlı pozitif hareket; en az ${RANK_CONFIG.rising.minExperiences} deneyim.`, window: RANK_CONFIG.rising.window, items: rising, seeAll: seeAll(sel, "yukselen"), signalKind: "trend" as const },
     { key: "uzman", title: "Uzmanların seçtikleri", hint: "Bu alanda uzmanlığı kanıtlanmış kişilerin yazdığı deneyimler. Takipçi sayısı ölçü değildir.", items: experts },
-  ].filter((s) => s.items.length > 0);
+  ]; /* boş bölüm de kolon olarak kalır (board sabit 3+3); UI "yeterli veri yok" yazar */
 
   return { regulated: false, sections };
 }
@@ -261,7 +276,7 @@ export function forYouRanking(sel: { cats: string[]; subcategory?: string }, lim
     .filter((x) => x.m && x.d)
     .sort((a, b) => b.m!.score - a.m!.score)
     .slice(0, limit)
-    .map(({ c, m, d }) => ({ ...itemOf(c, d!.reasons[0]?.text ?? talkInsight(c, getTopicIntelligence(c.entity.id)), d!.verdictText ?? d!.verdict), match: m!.score }));
+    .map(({ c, m, d }) => ({ ...itemOf(c, d!.reasons[0]?.text ?? talkInsight(c, getTopicIntelligence(c.entity.id)), d!.verdictText ?? d!.verdict, `%${m!.score} sana göre`), match: m!.score }));
 }
 
 /* ───── regüle: doktor / diş hekimi / avukat — sıralama yok, yalnızca deneyim ───── */
