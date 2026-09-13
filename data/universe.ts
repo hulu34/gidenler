@@ -100,6 +100,8 @@ interface Sub {
   tags?: string[]; quiet?: [number, number]; speed?: [number, number];
   scoreBias?: number; abroad?: boolean; /* İstanbul dışı ağırlığı */
   real?: string[]; /* gerçek kamusal adlar — yalnızca kimlik */
+  /** Sonradan eklenen aile: mevcut evrenin dağılımını (totalW) değiştirmez; kendi payını ekler. */
+  addon?: boolean;
 }
 
 const SUBS: Sub[] = [
@@ -116,6 +118,10 @@ const SUBS: Sub[] = [
   { key: "burger", label: "Burger", cat: "cat.restaurant", weight: 24, patterns: [P.wSuffix("Burger"), P.wSuffix("Smash")], facets: ["Sokak lezzeti"], price: [1, 2], hours: ["12.00 – 00.00"], tags: ["burger", "patates"], quiet: [2, 5], speed: [7, 9] },
   { key: "kahvalti", label: "Kahvaltı", cat: "cat.restaurant", weight: 28, patterns: [P.wSuffix("Kahvaltı"), P.hoodSuffix("Kahvaltı Evi"), P.wSuffix("Serpme")], facets: ["Kahvaltı"], price: [2, 3], hours: ["08.00 – 16.00"], tags: ["serpme", "hafta sonu"], quiet: [2, 5], speed: [4, 6] },
   { key: "tatli", label: "Tatlıcı", cat: "cat.restaurant", weight: 18, patterns: [P.wSuffix("Tatlı"), P.wSuffix("Baklava"), P.prefixW("Künefeci")], facets: ["Sokak lezzeti"], price: [1, 2], hours: ["09.00 – 23.00"], tags: ["baklava", "künefe", "sütlaç"], quiet: [4, 7], speed: [8, 9] },
+  /* Yemek aileleri (arama alaka için eklendi): pide, döner, mantı — ayrı tarif/tema dili, yüksek servis hızı, düşük fiyat. */
+  { key: "pide", label: "Pideci", cat: "cat.restaurant", weight: 22, patterns: [P.hoodSuffix("Pidecisi"), P.wSuffix("Pide"), P.prefixW("Pideci"), P.wSuffix("Pide Salonu")], facets: ["Sokak lezzeti"], price: [1, 2], hours: ["11.00 – 23.00", "11.30 – 00.00"], tags: ["pide", "kıymalı pide", "kaşarlı pide", "kuşbaşılı pide", "lahmacun"], quiet: [3, 6], speed: [7, 9], addon: true },
+  { key: "doner", label: "Dönerci", cat: "cat.restaurant", weight: 22, patterns: [P.prefixW("Dönerci"), P.wSuffix("Döner"), P.hoodSuffix("Dönercisi"), P.wSuffix("İskender")], facets: ["Sokak lezzeti"], price: [1, 2], hours: ["11.00 – 22.00", "11.00 – 01.00"], tags: ["döner", "et döner", "tavuk döner", "dürüm", "iskender"], quiet: [2, 5], speed: [8, 9], addon: true },
+  { key: "manti", label: "Mantıcı", cat: "cat.restaurant", weight: 10, patterns: [P.wSuffix("Mantı"), P.hoodSuffix("Mantı Evi"), P.prefixW("Mantıcı")], facets: ["Esnaf lokantası"], price: [1, 2], hours: ["11.00 – 21.00"], tags: ["mantı", "kayseri mantısı", "yoğurtlu", "ev yapımı"], quiet: [4, 7], speed: [6, 8], addon: true },
   { key: "pastane", label: "Pastane", cat: "cat.cafe", weight: 18, patterns: [P.wSuffix("Pastanesi"), P.prefixW("Pastane")], facets: ["Fırın ve ekmek"], price: [1, 2], hours: ["07.30 – 21.00"], tags: ["pasta", "kurabiye"], quiet: [5, 8], speed: [8, 9] },
   { key: "kahve", label: "Kahveci", cat: "cat.cafe", weight: 90, patterns: [P.wSuffix("Kahve"), P.wSuffix("Coffee"), P.wSuffix("Roastery"), P.wSuffix("Espresso Bar")], facets: ["Filtre kahve"], price: [1, 2], hours: ["08.00 – 20.00", "08.30 – 22.00"], tags: ["filtre", "third wave", "çalışılır"], quiet: [5, 9], speed: [6, 9] },
   { key: "firin", label: "Fırın", cat: "cat.cafe", weight: 28, patterns: [P.hoodSuffix("Fırını"), P.wSuffix("Fırın"), P.prefixW("Fırın")], facets: ["Fırın ve ekmek"], price: [1, 2], hours: ["07.00 – 20.00"], tags: ["ekşi maya", "simit"], quiet: [4, 7], speed: [8, 9] },
@@ -396,10 +402,31 @@ FRAG.festival = {
   neutral: ["Günlük bilet hafta sonu tükeniyor.", "Alan büyük; rahat ayakkabı şart."],
   ret: { evet: ["Seneye yine gelirim.", "Tekrar katılırım."], hayır: ["Bir kez yeterli."], belki: ["Program iyiyse yine."] },
 };
+FRAG.pide = {
+  pos: ["Hamur ince, kenarlar çıtır; kıymalı pide tam kıvamında.", "Kaşarlı pide iki kişiye yetiyor, porsiyon dürüst.", "Fırından çıkar çıkmaz geldi, on dakikada masadaydı.", "Kuşbaşılı pide etli, yağı ölçülü.", "Fiyat semte göre makul; iki pide, ayran, yüzü geçmedi.", "Lahmacun da pide kadar iyi."],
+  neg: ["Cumartesi akşamı yarım saat sıra bekledik.", "Masa araları dar, ses yüksek.", "Pide bu kez fazla pişmişti, kenarlar kuru.", "Fiyat son bir yılda belirgin arttı.", "Paket servis sırası salondaki masaların önüne geçiyor."],
+  neutral: ["Öğle saatinde daha sakin.", "Kart geçiyor.", "Fırın önündeki masalar sıcak; arkaya oturun."],
+  ret: { evet: ["Tekrar giderim.", "Yine gelirim, hafta içi."], hayır: ["Bir kez yeter."], belki: ["Kararsızım; pide iyi, bekleme değil."] },
+};
+FRAG.doner = {
+  pos: ["Et döner ince kesilmiş, yağı doğru; dürüm sıkı sarılmış.", "Porsiyon döner pilavla birlikte dürüst bir öğle yemeği.", "Sipariş üç dakikada elimizdeydi.", "Tavuk döner kuru değil, marinasyon belli.", "Fiyat semtin en makulü; F/P güçlü.", "İskender tereyağı ölçülü, yoğurt soğuk."],
+  neg: ["Öğle saatinde sıra kapıya taşıyor.", "Oturacak yer az; ayakta yediğimiz oldu.", "Et döner bu kez fazla yağlıydı.", "Akşam geç saatte döner bitmişti.", "Ses ve kalabalık konuşmayı zorlaştırıyor."],
+  neutral: ["Paket servis daha hızlı.", "Nakit indirimi var.", "Öğle 12.30–13.30 arası en yoğun saat."],
+  ret: { evet: ["Tekrar giderim.", "Öğlen yine uğrarım."], hayır: ["Bir daha uğramam."], belki: ["Kararsızım; döner iyi, oturma yeri yok."] },
+};
+FRAG.manti = {
+  pos: ["Mantı ev yapımı, hamur ince; yoğurt kendi mayaları.", "Porsiyon doyurucu, sarımsak dengesi iyi.", "Tereyağı-nane sosu tam kıvam.", "Sessiz, küçük salon; aile işletmesi belli.", "Fiyat çok makul."],
+  neg: ["Hafta sonu öğlen masa bulmak zor.", "Servis tek kişi; sipariş uzun sürdü.", "Mantı bu kez fazla haşlanmıştı.", "Menü dar; mantı sevmeyen için seçenek yok."],
+  neutral: ["Paket mantı da satıyorlar.", "Kart geçiyor.", "Akşam erken kapanıyor."],
+  ret: { evet: ["Tekrar giderim.", "Yine gelirim."], hayır: ["Bir kez yeter."], belki: ["Kararsızım; mantı iyi, bekleme uzun."] },
+};
 const FRAG_OF: Record<string, string> = { "schema.dining": "dining", "schema.cafe": "cafe", "schema.hotel": "hotel", "schema.bar": "bar", "schema.place": "place", "schema.culture": "culture", "schema.show": "show", "schema.venue": "venue", "schema.travel": "travel", "schema.service": "service", "schema.film": "film" };
 
 const THEME_POOL: Record<string, { pos: string[]; neg: string[] }> = {
   dining: { pos: ["Lezzet", "Servis", "Porsiyon", "Meze", "Ekmek", "Manzara", "Konum"], neg: ["Bekleme süresi", "Ses seviyesi", "Fiyat seviyesi", "Porsiyon", "Servis hızı", "Kalabalık", "Rezervasyon"] },
+  pide: { pos: ["Hamur", "Kıymalı pide", "Porsiyon", "Fiyat/performans", "Servis hızı"], neg: ["Bekleme süresi", "Kalabalık", "Ses seviyesi", "Fiyat seviyesi", "Paket servis önceliği"] },
+  doner: { pos: ["Et kalitesi", "Dürüm", "Fiyat/performans", "Porsiyon", "Servis hızı"], neg: ["Bekleme süresi", "Oturma alanı", "Kalabalık", "Yağ oranı", "Geç saatte tükenme"] },
+  manti: { pos: ["Mantı", "Yoğurt", "Ev yapımı", "Porsiyon", "Sessizlik"], neg: ["Bekleme süresi", "Masa sayısı", "Servis hızı", "Menü darlığı"] },
   cafe: { pos: ["Kahve", "Çalışma ortamı", "Pastane ürünleri", "Servis", "Sessizlik"], neg: ["Kalabalık", "Müzik", "Fiyat seviyesi", "Masa sayısı", "Laptop saati"] },
   hotel: { pos: ["Konum", "Temizlik", "Kahvaltı", "Yatak", "Sessizlik"], neg: ["Duş", "Asansör", "Klima", "Fiyat seviyesi", "Kahvaltı kalabalığı"] },
   bar: { pos: ["Kokteyl", "Barmen", "Atmosfer", "Ses"], neg: ["Fiyat seviyesi", "Kalabalık", "Duman", "Servis hızı"] },
@@ -421,6 +448,9 @@ function famKeyOf(schemaId: string, subcategory?: string): string {
   if (subcategory === "Konser") return "concert";
   if (subcategory === "Festival") return "festival";
   if (subcategory === "Sergi") return "culture";
+  if (subcategory === "Pideci") return "pide";
+  if (subcategory === "Dönerci") return "doner";
+  if (subcategory === "Mantıcı") return "manti";
   return FRAG_OF[schemaId] ?? "dining";
 }
 
@@ -493,6 +523,11 @@ const GOLDEN: Golden[] = [
   { name: "Kestane Hamamı", sub: "spa", city: "Bursa", district: "Osmangazi", hood: "Çekirge", score: 6.4, delta: 0.8, count: 298, verified: 0.38, blurb: "Tarihi termal hamam; yenileme sonrası temizlik puanı toparlıyor. Ortalama ama yükseliyor.", price: 2 },
   { name: "İskele Burger", sub: "burger", city: "İstanbul", district: "Kadıköy", hood: "Kadıköy Rıhtım", score: 6.1, delta: -0.9, count: 1376, verified: 0.3, blurb: "Bir zamanlar Kadıköy'ün burgeri; ikinci şubeden sonra tutarlılık düştü, sıra hâlâ uzun.", price: 2 },
   { name: "Reyhan Kahve", sub: "kahve", city: "İstanbul", district: "Beykoz", hood: "Kanlıca", score: 9.4, delta: 0.1, count: 12, verified: 0.5, blurb: "Kanlıca'da altı masalı kahveci. Puan yüksek ama on iki deneyim: sınırlı veri.", price: 1 },
+  { name: "Karadeniz Pidecisi", sub: "pide", city: "İstanbul", district: "Kadıköy", hood: "Moda", score: 8.6, delta: 0.3, count: 312, verified: 0.49, blurb: "Moda'nın taş fırınlı pidecisi; kıymalı ve kuşbaşılı iki ana kalem, hamur ince. Cumartesi akşamı sıra normal.", price: 1 },
+  { name: "Moda Pide", sub: "pide", city: "İstanbul", district: "Kadıköy", hood: "Moda", score: 8.7, delta: 0.4, count: 214, verified: 0.52, blurb: "Kaşarlı pide ve ayran; dört kişilik masalar, hızlı fırın. Son 90 günde F/P deneyimleri toparlıyor.", price: 1 },
+  { name: "Dönerci Ali", sub: "doner", city: "İstanbul", district: "Kadıköy", hood: "Kadıköy Rıhtım", score: 8.3, delta: 0.2, count: 604, verified: 0.41, blurb: "Rıhtım'ın et dönercisi; dürüm sıkı, fiyat makul. Öğle sırası kapıya taşıyor.", price: 1 },
+  { name: "Beşiktaş Dönercisi", sub: "doner", city: "İstanbul", district: "Beşiktaş", hood: "Çarşı", score: 7.8, delta: -0.1, count: 488, verified: 0.37, blurb: "Çarşı'nın tavuk-et dönercisi; porsiyon döner öğle yemeği, oturma yeri az.", price: 1 },
+  { name: "Kadıköy Mantı Evi", sub: "manti", city: "İstanbul", district: "Kadıköy", hood: "Bahariye", score: 8.5, delta: 0.1, count: 186, verified: 0.55, blurb: "Ev yapımı mantı, kendi yoğurdu; on masalı sessiz salon. Hafta sonu öğlen dolu.", price: 1 },
   { name: "Mimoza Beach Hotel", sub: "resort", city: "Antalya", district: "Kemer", hood: "Çıralı", score: 4.6, delta: -1.4, count: 512, verified: 0.27, blurb: "Çıralı'da eski resort; son sezon temizlik ve servis deneyimleri sert düştü.", price: 3 },
 ];
 
@@ -591,7 +626,8 @@ const GOLDEN: Golden[] = [
   }
 
   /* 2) üretilmiş evren */
-  const totalW = SUBS.reduce((a, s) => a + s.weight, 0);
+  /* Eklenti aileler dağılım paydasına girmez: mevcut kayıtlar birebir korunur, yeni aileler kendi payını ekler. */
+  const totalW = SUBS.filter((s) => !s.addon).reduce((a, s) => a + s.weight, 0);
   let seq = 0;
   const emit = (city: City, sub: Sub, r: () => number, realName?: string) => {
     seq++;
