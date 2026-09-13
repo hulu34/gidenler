@@ -26,8 +26,10 @@ export function evidenceLine(card: EntityCard) {
  * ad / tür · konum / puan · etiket · trend / tek editoryal cümle / deneyim · güven.
  * Kartın çekiciliği bilginin sunumundan gelir; avatar, baş harf, görsel yok.
  */
-export function EntityCardRow({ card, rank, match, href, insight, dense = false }: {
+export function EntityCardRow({ card, rank, match, href, insight, dense = false, reason }: {
   card: EntityCard; rank?: number; match?: number | null; href?: string;
+  /** Arama alaka nedeni (sıkı listede küçük satır): "Kıymalı pide konusunda 81 olumlu deneyim · Kadıköy". */
+  reason?: string;
   /** Bir cümle: neden konuşuluyor / ne değişti. Verilmezse en sık konu. */
   insight?: string | null;
   /** Sıkı liste (arama): cümle yok, kanıt satırı meta içinde. */
@@ -56,6 +58,7 @@ export function EntityCardRow({ card, rank, match, href, insight, dense = false 
             {dense && <><span aria-hidden>·</span><span className="tnum normal-case tracking-normal">{evidenceLine(card)}</span></>}
           </span>
           {!dense && line && <span className="prose-exp line-clamp-2 text-[15px] leading-snug text-ink-2 sm:line-clamp-1">{line}</span>}
+          {dense && reason && <span className="line-clamp-1 text-[12.5px] text-ink-2">{reason}</span>}
           {!dense && <span className="tnum text-[12px] text-ink-3">{evidenceLine(card)}</span>}
         </div>
 
