@@ -162,6 +162,11 @@ function isExpertFor(user: User, entity: Entity): boolean {
 }
 
 let expertIndex: Map<string, { authors: Set<string>; n: number; sum: number }> | null = null;
+/** Karar motoru için: bir kaydın uzman deneyim sinyali (uzman sayısı, deneyim sayısı, uzman ortalaması). */
+export function expertSignal(entityId: string): { authors: number; n: number; avg: number } | null {
+  const x = expertsByEntity().get(entityId); if (!x) return null;
+  return { authors: x.authors.size, n: x.n, avg: Math.round((x.sum / x.n) * 10) / 10 };
+}
 function expertsByEntity() {
   if (expertIndex) return expertIndex;
   expertIndex = new Map();
