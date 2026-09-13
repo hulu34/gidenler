@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { quickSearch } from "@/lib/api";
+import { searchV3 } from "@/lib/search";
 import { score1 } from "@/lib/format";
 import { DemoIndicator } from "@/components/demo/DemoBoot";
 
@@ -14,7 +14,8 @@ export function Header() {
   const [active, setActive] = useState(0);
   const boxRef = useRef<HTMLDivElement>(null);
 
-  const results = q.trim().length >= 2 ? quickSearch(q) : [];
+  /* Hızlı öneri: arama motoru v3 (alaka kapısı) — tam eşleşmeler önce, yakın adaylar sonra. */
+  const results = q.trim().length >= 2 ? (() => { const r = searchV3(q, { limit: 6 }); return [...r.exact, ...r.adjacent].slice(0, 6).map((h) => h.card); })() : [];
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
