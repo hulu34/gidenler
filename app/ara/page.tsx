@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { PersonMark } from "@/components/experience/PersonMark";
 import { useEffect, useMemo, useState } from "react";
-import { listCards, listCategories, search } from "@/lib/api";
+import { listCards, listCategories } from "@/lib/api";
+import { searchV3, type SearchHit, type SearchOutput } from "@/lib/search";
+import type { EntityCard } from "@/lib/api";
+import type { User } from "@/lib/types";
 import { effectiveProfile, getPersonalMatch } from "@/lib/decision";
 import { useUserData } from "@/lib/store";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 
-const ORNEKLER = ["Sakura", "japon", "Kadıköy", "filtre kahve", "@denizyer", "steakhouse"];
+const ORNEKLER = ["pide", "Kadıköy döner", "sakin kahve Kadıköy", "ucuz döner", "Sakura", "@denizyer"];
 
 /**
  * ARA — kullanıcı ne aradığını biliyor: mekân, kategori, semt, kişi, liste.
@@ -42,25 +45,26 @@ export default function SearchPage() {
   const inLoc = (e: { location?: { city?: string; district?: string } }) => (city === "hepsi" || e.location?.city === city) && (district === "hepsi" || e.location?.district === district);
 
   const qq = q.trim().replace(/^@/, "");
+  /* Arama motoru v3: metin alakası kapı, sonra konum × kalite × güven × trend. Tam eşleşme ile "yakın olabilir" ayrı. */
   const results = useMemo(() => {
+    const keep = (c: { category: { id: string }; entity: { location?: { city?: string; district?: string } } }) => (cat === "hepsi" || c.category.id === cat) && inLoc(c.entity);
     if (!qq) {
-      const all = allCards.filter((c) => (cat === "hepsi" || c.category.id === cat) && inLoc(c.entity))
+      const all = allCards.filter(keep)
         .sort((a, b) => ((a.entity.tier === "C" ? 1 : 0) - (b.entity.tier === "C" ? 1 : 0)) || (b.score ?? 0) - (a.score ?? 0) || b.experienceCount - a.experienceCount);
-      return { entities: all, creators: [], lists: [] };
+      return { entities: all.map((c) => ({ card: c, reason: "" })), adjacent: [] as Array<{ card: EntityCard; reason: string }>, creators: [] as User[], lists: [] as SearchOutput["lists"], understood: [] as string[], corrections: [] as Array<[string, string]> };
     }
-    const r = search(qq);
-    const byId = new Map(allCards.map((c) => [c.entity.id, c]));
+    const r = searchV3(qq);
+    const pick = (h: SearchHit) => ({ card: h.card, reason: h.reason });
     return {
-      ...r,
-      entities: r.entities
-        .map((e) => byId.get(e.entity.id)!)
-        .filter((c) => c && (cat === "hepsi" || c.category.id === cat) && inLoc(c.entity)),
+      entities: r.exact.filter((h) => keep(h.card)).map(pick),
+      adjacent: r.adjacent.filter((h) => keep(h.card)).map(pick),
+      creators: r.creators, lists: r.lists, understood: r.query.understood, corrections: r.query.corrections,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qq, cat, city, district, allCards]);
   useEffect(() => setLimit(40), [qq, cat, city, district]);
 
-  const total = results.entities.length + results.creators.length + results.lists.length;
+  const total = results.entities.length + results.adjacent.length + results.creators.length + results.lists.length;
   const matchOf = (id: string, showScores: boolean) => (showScores ? getPersonalMatch(id, "default", undefined, undefined, profile)?.score ?? null : null);
 
   return (
@@ -123,15 +127,23 @@ export default function SearchPage() {
         )}
       </section>
 
+      {qq && (results.understood.length > 0 || results.corrections.length > 0) && (
+        <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px] text-ink-3">
+          <span className="label">Anlaşılan</span>
+          {results.understood.map((u) => <span key={u} className="border border-line-2 px-2 py-0.5 font-semibold text-ink-2">{u}</span>)}
+          {results.corrections.map(([a, b]) => <span key={a}>&ldquo;{a}&rdquo; → <strong className="font-semibold text-ink-2">{b}</strong></span>)}
+        </p>
+      )}
+
       {results.entities.length > 0 && (
         <section className="mt-9">
           <div className="flex items-baseline justify-between border-b-2 border-line-strong pb-3">
-            <h2 className="text-[13px] font-bold uppercase tracking-[0.2em]">Mekânlar</h2>
+            <h2 className="text-[13px] font-bold uppercase tracking-[0.2em]">{qq ? "Eşleşenler" : "Mekânlar"}</h2>
             <span className="tnum label">{results.entities.length}</span>
           </div>
           <ul>
-            {results.entities.slice(0, limit).map((c) => (
-              <EntityCardRow key={c.entity.id} card={c} dense match={matchOf(c.entity.id, c.category.compliance.showScores)}
+            {results.entities.slice(0, limit).map(({ card: c, reason }) => (
+              <EntityCardRow key={c.entity.id} card={c} dense reason={reason || undefined} match={matchOf(c.entity.id, c.category.compliance.showScores)}
                 href={writeMode ? `/yaz/${c.entity.slug}/` : undefined} />
             ))}
           </ul>
@@ -141,6 +153,21 @@ export default function SearchPage() {
               <span className="tnum text-[12px] text-ink-3">{Math.min(limit, results.entities.length)} / {results.entities.length}</span>
             </div>
           )}
+        </section>
+      )}
+
+      {qq && results.adjacent.length > 0 && (
+        <section className="mt-10">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 border-b-2 border-line-strong pb-3">
+            <h2 className="text-[13px] font-bold uppercase tracking-[0.2em]">Bunlar da yakın olabilir</h2>
+            <span className="text-[12px] text-ink-3">{results.entities.length === 0 ? "Tam eşleşme yok; en yakın adaylar." : "Tam eşleşme değil: semt dışı ya da yalnızca kategori/tema eşleşmesi."}</span>
+          </div>
+          <ul>
+            {results.adjacent.slice(0, 12).map(({ card: c, reason }) => (
+              <EntityCardRow key={c.entity.id} card={c} dense reason={reason || undefined} match={matchOf(c.entity.id, c.category.compliance.showScores)}
+                href={writeMode ? `/yaz/${c.entity.slug}/` : undefined} />
+            ))}
+          </ul>
         </section>
       )}
 
