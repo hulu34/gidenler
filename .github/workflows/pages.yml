@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_BASE_PATH: /gidenler
+          NEXT_OUTPUT: export
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
