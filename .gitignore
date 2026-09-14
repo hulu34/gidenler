@@ -4,3 +4,11 @@ out/
 .DS_Store
 *.tsbuildinfo
 next-env.d.ts
+
+# gizli değerler asla repoya girmez (.env.example hariç)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+*.ledger.jsonl

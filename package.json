@@ -6,7 +6,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:static": "NEXT_OUTPUT=export NEXT_BASE_PATH=/gidenler next build",
+    "ai:sec": "tsx scripts/aisec.ts",
+    "ai:eval": "tsx scripts/aieval.ts",
+    "qa": "tsx scripts/searchqa.ts && tsx scripts/semqa.ts"
   },
   "dependencies": {
     "@fontsource-variable/newsreader": "^5.3.0",
@@ -14,7 +18,8 @@
     "@fontsource/instrument-serif": "^5.3.0",
     "next": "^15.5.25",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
@@ -24,6 +29,7 @@
     "esbuild": "^0.28.2",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.13",
     "typescript": "^5.9.3"
   },
   "private": true
