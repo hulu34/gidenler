@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
-import { askAI, type AIAnswer, type AIStructured, type FollowUp } from "@/lib/decisionEngine";
+import { askAI, type AIAnswer, type AIRecommendation, type AIStructured, type FollowUp } from "@/lib/decisionEngine";
+import { askServer, sendFeedback } from "@/lib/ai/client";
+import type { AIResponse } from "@/lib/ai/schema";
 import { recordIntent, setEntityState, useUserData } from "@/lib/store";
 import { nf } from "@/lib/format";
 
@@ -12,6 +14,8 @@ import { nf } from "@/lib/format";
    Normal arama ("Ne arıyorum?") header'da ve /ara'da; burası karar alanı.
    Doğal dil birincil; Nerede / Gün / Saat / Kaç kişi / Kategori isteğe bağlı ve metinle birleşir.
    Sonuç: TOP 3 · NEDEN? · DİKKAT · kanıt satırı. Canlı uygunluk / masa iddiası yok.
+   İKİ KATMAN: yerel deterministik motor anında yanıt verir; sunucu modunda /api/ai (LLM + araçlar) varsa
+   yanıt onunla ZENGİNLEŞİR (gerekçe, uyarı, uyum). API yoksa / anahtar yoksa / hata → yerel motor kalır. Sahte AI yok.
    ────────────────────────────────────────────────────────────────────────── */
 
 const DISTRICTS = ["Kadıköy", "Beşiktaş", "Beyoğlu", "Şişli", "Üsküdar", "Sarıyer", "Fatih", "Bakırköy", "Ataşehir", "Maltepe", "Beykoz", "Adalar"];
@@ -35,6 +39,8 @@ export function AskAI() {
   const [asked, setAsked] = useState<{ text: string; s: AIStructured } | null>(null);
   const [follow, setFollow] = useState<FollowUp | null>(null);
   const [showParts, setShowParts] = useState<string | null>(null);
+  const [remote, setRemote] = useState<AIResponse | null>(null);
+  const [remoteState, setRemoteState] = useState<"idle" | "loading" | "llm" | "engine">("idle");
 
   /* ?ai=… ile gelen sorgu otomatik çalışır (demo bağlantıları) */
   useEffect(() => {
@@ -46,6 +52,21 @@ export function AskAI() {
     if (!asked.text.trim() && !asked.s.location && !asked.s.day) return null;
     return askAI(asked.text, asked.s, { personalized, taste: user.taste, followUp: follow });
   }, [asked, follow, personalized, user.taste]);
+
+  /* sunucu katmanı: varsa LLM yanıtıyla zenginleştir; yoksa sessizce yerel motor */
+  useEffect(() => {
+    if (!answer || answer.regulated) { setRemote(null); setRemoteState("idle"); return; }
+    let live = true; setRemote(null); setRemoteState("loading");
+    askServer({ query: asked!.text, structured: asked!.s, followUp: follow, taste: personalized ? user.taste : undefined, partySize: asked!.s.party }).then((r) => {
+      if (!live) return;
+      if (r.status === "ok" && r.data.mode !== "deterministic" && r.data.recommendations.length) { setRemote(r.data); setRemoteState("llm"); }
+      else setRemoteState("engine");
+    });
+    return () => { live = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asked, follow]);
+
+  const shown = useMemo(() => (answer && remote ? mergeRemote(answer, remote) : answer), [answer, remote]);
 
   const submit = (e?: React.FormEvent) => {
     e?.preventDefault();
@@ -101,14 +122,25 @@ export function AskAI() {
         )}
       </form>
 
-      {answer && <Answer a={answer} follow={follow} setFollow={setFollow} showParts={showParts} setShowParts={setShowParts} personalized={personalized} rel={user.relationships} />}
+      {shown && <Answer a={shown} remote={remote} remoteState={remoteState} follow={follow} setFollow={setFollow} showParts={showParts} setShowParts={setShowParts} personalized={personalized} rel={user.relationships} />}
     </section>
   );
 }
 
+/* LLM yanıtını yerel motor yanıtının üstüne bindir: kimlik/puan/trend Gidenler verisinden, gerekçe/uyarı/uyum modelden. */
+const CONF: Record<AIResponse["overallConfidence"], AIAnswer["overallConfidence"]> = { low: "Sınırlı", medium: "Orta", high: "Yüksek" };
+function mergeRemote(local: AIAnswer, r: AIResponse): AIAnswer {
+  const items: AIRecommendation[] = r.recommendations.map((x) => {
+    const l = local.items.find((i) => i.entityId === x.entityId);
+    const base: AIRecommendation = l ?? { entityId: x.entityId, slug: x.slug, name: x.name, kind: x.kind, place: x.place, score: x.score, delta: 0, confidence: x.confidence, match: x.matchScore, matchParts: [], reasons: [], cautions: [], hoursNote: x.hoursNote ?? "", provenance: "", outside: false };
+    return { ...base, match: x.matchScore, confidence: x.confidence, reasons: x.reasons.length ? x.reasons : base.reasons, cautions: x.cautions.length ? x.cautions : base.cautions };
+  });
+  return { ...local, items, overallConfidence: CONF[r.overallConfidence], note: r.note ?? local.note };
+}
+
 /* ───── yanıt ───── */
-function Answer({ a, follow, setFollow, showParts, setShowParts, personalized, rel }: {
-  a: AIAnswer; follow: FollowUp | null; setFollow: (f: FollowUp | null) => void; showParts: string | null; setShowParts: (s: string | null) => void; personalized: boolean; rel: Record<string, { state: string } | undefined>;
+function Answer({ a, remote, remoteState, follow, setFollow, showParts, setShowParts, personalized, rel }: {
+  a: AIAnswer; remote: AIResponse | null; remoteState: "idle" | "loading" | "llm" | "engine"; follow: FollowUp | null; setFollow: (f: FollowUp | null) => void; showParts: string | null; setShowParts: (s: string | null) => void; personalized: boolean; rel: Record<string, { state: string } | undefined>;
 }) {
   const conf = a.overallConfidence;
   return (
@@ -117,6 +149,9 @@ function Answer({ a, follow, setFollow, showParts, setShowParts, personalized, r
         <span className="label">Anlaşılan</span>
         {a.intent.understood.map((u) => <span key={u} className="border border-line-2 px-2 py-0.5 font-semibold text-ink-2">{u}</span>)}
         <span className={`ml-auto font-semibold ${conf === "Yüksek" ? "text-pos-ink" : conf === "Orta" ? "text-ink-2" : "text-warn"}`}>Güven: {conf}</span>
+        <span className="border border-line-2 px-2 py-0.5 text-[11px] font-semibold text-ink-3" title={remote ? `Sunucu modu · ${remote.provider ?? "model"}${remote.mode === "cached" ? " · önbellek" : ""}` : "Deterministik karar motoru (tarayıcıda)"}>
+          {remoteState === "loading" ? "AI değerlendiriyor…" : remote ? `Gidenler AI · ${remote.provider ?? "model"}` : "Gidenler motoru"}
+        </span>
       </div>
 
       {a.regulated ? (
@@ -177,8 +212,8 @@ function Answer({ a, follow, setFollow, showParts, setShowParts, personalized, r
                   )}
                   <p className="text-[11px] leading-snug text-ink-3">{i.hoursNote}. {i.provenance}</p>
                   <div className="mt-auto flex flex-wrap gap-2 pt-1">
-                    <Link href={`/mekan/${i.slug}/`} className="inline-flex h-8 items-center rounded-[3px] bg-ink px-3 text-[12.5px] font-semibold text-paper hover:bg-accent">Detaya git</Link>
-                    <button type="button" onClick={() => setEntityState(i.entityId, st === "saved" ? "none" : "saved", "ai")} aria-pressed={st === "saved"} className={`inline-flex h-8 items-center border px-3 text-[12.5px] font-semibold ${st === "saved" ? "border-ink bg-ink text-paper" : "border-line-2 hover:border-ink"}`}>{st === "saved" ? "✓ Kaydedildi" : "Kaydet"}</button>
+                    <Link href={`/mekan/${i.slug}/`} onClick={() => remote && sendFeedback({ requestId: remote.requestId, event: "click", entityId: i.entityId, mode: remote.mode })} className="inline-flex h-8 items-center rounded-[3px] bg-ink px-3 text-[12.5px] font-semibold text-paper hover:bg-accent">Detaya git</Link>
+                    <button type="button" onClick={() => { setEntityState(i.entityId, st === "saved" ? "none" : "saved", "ai"); if (remote && st !== "saved") sendFeedback({ requestId: remote.requestId, event: "save", entityId: i.entityId, mode: remote.mode }); }} aria-pressed={st === "saved"} className={`inline-flex h-8 items-center border px-3 text-[12.5px] font-semibold ${st === "saved" ? "border-ink bg-ink text-paper" : "border-line-2 hover:border-ink"}`}>{st === "saved" ? "✓ Kaydedildi" : "Kaydet"}</button>
                   </div>
                 </li>
               );
@@ -191,9 +226,25 @@ function Answer({ a, follow, setFollow, showParts, setShowParts, personalized, r
                 className={`h-8 border px-3 text-[12.5px] font-semibold ${follow === f.key ? "border-ink bg-ink text-paper" : "border-line-2 text-ink-2 hover:border-ink"}`}>{f.label}</button>
             ))}
           </div>
-          <p className="text-[11.5px] leading-relaxed text-ink-3">{a.provenance} Gidenler AI deneyim grafiği üzerinde çalışan bir karar motorudur; canlı uygunluk, masa durumu ya da çalışma saati doğrulaması üretmez.</p>
+          {remote && <FeedbackRow requestId={remote.requestId} mode={remote.mode} />}
+          <p className="text-[11.5px] leading-relaxed text-ink-3">{a.provenance} {remote ? "Gerekçeler bir dil modeli tarafından yalnızca Gidenler verisinden üretildi; mekân, puan ve saat verisi modelden değil Gidenler'den gelir." : "Gidenler AI deneyim grafiği üzerinde çalışan bir karar motorudur;"} Canlı uygunluk, masa durumu ya da çalışma saati doğrulaması üretilmez.</p>
         </>
       )}
+    </div>
+  );
+}
+
+/* ───── anonim geri bildirim (değerlendirme hattını besler) ───── */
+function FeedbackRow({ requestId, mode }: { requestId: string; mode: AIResponse["mode"] }) {
+  const [sent, setSent] = useState<string | null>(null);
+  const send = (event: "helpful" | "unhelpful" | "wrong_info") => { sendFeedback({ requestId, event, mode }); setSent(event); };
+  if (sent) return <p className="text-[11.5px] text-ink-3">Teşekkürler — geri bildirimin anonim olarak değerlendirme hattına eklendi.</p>;
+  return (
+    <div className="flex flex-wrap items-center gap-2 text-[11.5px] text-ink-3">
+      <span>Bu yanıt işine yaradı mı?</span>
+      <button type="button" onClick={() => send("helpful")} className="border border-line-2 px-2 py-0.5 font-semibold hover:border-ink hover:text-ink">Evet</button>
+      <button type="button" onClick={() => send("unhelpful")} className="border border-line-2 px-2 py-0.5 font-semibold hover:border-ink hover:text-ink">Hayır</button>
+      <button type="button" onClick={() => send("wrong_info")} className="border border-line-2 px-2 py-0.5 font-semibold hover:border-warn hover:text-warn">Yanlış bilgi var</button>
     </div>
   );
 }
