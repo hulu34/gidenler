@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "note": "Gidenler AI değerlendirme seti. Her sorgu için beklenen niyet alanları ve kabul ölçütleri. Metrikler: niyet çıkarımı, getirme alaka, öneri alaka, halüsinasyon, açıklama kalitesi, gecikme, maliyet. Yeni sorgu eklerken 'expect' alanlarını veriye göre yaz; sonuçlar scripts/aieval.ts ile üretilir.",
+  "cases": [
+    { "id": "kadikoy-sakin-kahve", "query": "Kadıköy'de sakin kahve", "expect": { "locations": ["kadikoy"], "qualifiers": ["quiet"], "category": "kahve", "minResults": 2, "districtMatch": true } },
+    { "id": "besiktas-doner", "query": "Beşiktaş'ta iyi döner", "expect": { "locations": ["besiktas"], "content": ["doner"], "minResults": 1, "districtMatch": true } },
+    { "id": "dogum-gunu-4", "query": "4 kişi doğum günü için restoran", "expect": { "party": 4, "category": "yemek", "minResults": 2 } },
+    { "id": "sisli-hizli-aksam", "query": "Bu akşam Şişli'de hızlı yemek", "expect": { "locations": ["sisli"], "qualifiers": ["fast"], "day": "Bugün", "minResults": 1, "districtMatch": true, "timeSensitive": true } },
+    { "id": "pazar-kahvalti-bogaz", "query": "Pazar kahvaltısı için Boğaz tarafında sakin yer", "expect": { "day": "Pazar", "qualifiers": ["quiet"], "region": "bogaz", "minResults": 1 } },
+    { "id": "romantik-uygun", "query": "Sevgilimle romantik ama çok pahalı olmayan restoran", "expect": { "context": "date", "qualifiers": ["value"], "category": "yemek", "minResults": 2 } },
+    { "id": "gece-12-sonrasi", "query": "Gece 12'den sonra yemek", "expect": { "qualifiers": ["late"], "minResults": 1 } },
+    { "id": "cocuklarla", "query": "Çocuklarla gidilecek yer", "expect": { "context": "family", "minResults": 1 } }
+  ]
+}
