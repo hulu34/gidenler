@@ -59,6 +59,7 @@ export interface AIAnswer {
 const DAYS: Array<[RegExp, string, boolean]> = [
   [/\bbug[üu]n\b/i, "Bugün", false], [/\byar[ıi]n\b/i, "Yarın", false],
   [/\bpazartesi\b/i, "Pazartesi", false], [/\bsal[ıi]\b/i, "Salı", false], [/\b[çc]ar[şs]amba\b/i, "Çarşamba", false], [/\bper[şs]embe\b/i, "Perşembe", false],
+  [/\bbu (ak[şs]am|gece|[öo][ğg]len?|sabah)\b|\b([şs]imdi|[şs]u an)\b/i, "Bugün", false],
   [/\bcuma\b(?!rtesi)/i, "Cuma", true], [/\bcumartesi\b/i, "Cumartesi", true], [/\bpazar\b(?!\s*(yeri|pazar[ıi]))/i, "Pazar", true], [/\bhafta\s*sonu\b/i, "Hafta sonu", true],
 ];
 const BOGAZ = ["besiktas", "sariyer", "uskudar", "beykoz"];
@@ -67,7 +68,9 @@ const REGULATED_WORDS = /\b(doktor|hekim|di[şs](\s|$|ci|çi|hekimi)|avukat|huku
 export function parseIntent(text: string, s: AIStructured = {}): AIIntent {
   const t = text.toLocaleLowerCase("tr");
   /* gün / saat / kişi ifadeleri arama metnine girmez ("pazar kahvaltısı" → pazar günü, pazar yeri değil) */
-  const cleaned = t.replace(/\b(bug[üu]n|yar[ıi]n|pazartesi|sal[ıi]|[çc]ar[şs]amba|per[şs]embe|cumartesi|cuma|pazar|hafta\s*sonu)('?[a-zçğıöşü]*)?\b/g, " ").replace(/\b([01]?\d|2[0-3])[.:][0-5]\d('?[a-zçğıöşü]*)?\b/g, " ").replace(/\b\d+\s*ki[şs]i(yiz|lik)?\b/g, " ");
+  const cleaned = t.replace(/\b(bug[üu]n|yar[ıi]n|pazartesi|sal[ıi]|[çc]ar[şs]amba|per[şs]embe|cumartesi|cuma|pazar|hafta\s*sonu)('?[a-zçğıöşü]*)?\b/g, " ").replace(/\b([01]?\d|2[0-3])[.:][0-5]\d('?[a-zçğıöşü]*)?\b/g, " ").replace(/\b\d+\s*ki[şs]i(yiz|lik)?\b/g, " ")
+    /* sosyal bağlam ve yardımcı fiiller içerik değil ("çocuklarla", "sevgilimle", "gidilecek", "pahalı olmayan") */
+    .replace(/(^|\s)(pahal[ıi]\s+(olmayan|olmas[ıi]n|de[ğg]il)|[çc]ocuk[a-zçğıöşü]*|aile[a-zçğıöşü]*|sevgili[a-zçğıöşü]*|arkada[şs][a-zçğıöşü]*|gidilecek|gidebilece[a-zçğıöşü]*|gidece[ğg]i[a-zçğıöşü]*|olmayan|olmas[ıi]n|de[ğg]il)(?=\s|$)/g, " ");
   const q: ParsedQuery = parseQuery([cleaned, s.location ?? ""].join(" "));
   const intent: AIIntent = { text, content: q.content, locations: q.locations, qualifiers: [...q.qualifiers], weekend: false, context: "default", categoryIds: null, understood: [], regulated: REGULATED_WORDS.test(text) };
 
@@ -93,7 +96,7 @@ export function parseIntent(text: string, s: AIStructured = {}): AIIntent {
   if (intent.context === "quick" && !intent.qualifiers.includes("fast")) intent.qualifiers.push("fast");
 
   /* bütçe */
-  if (/ucuz|hesapl[ıi]|b[üu]t[çc]e|ekonomik/.test(t)) intent.budget = 2;
+  if (/ucuz|hesapl[ıi]|b[üu]t[çc]e|ekonomik|pahal[ıi] (olmayan|olmas[ıi]n|de[ğg]il)|uygun fiyat|makul/.test(t)) { intent.budget = 2; if (!intent.qualifiers.includes("value")) intent.qualifiers.push("value"); }
   const tl = t.match(/₺{1,4}/); if (tl) intent.budget = tl[0].length as 1 | 2 | 3 | 4;
 
   /* bölge: "Boğaz tarafı" → dört ilçe; manzara niteliği zaten parseQuery'de */
