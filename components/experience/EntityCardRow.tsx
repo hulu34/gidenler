@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { pulseOf } from "@/lib/pulse";
+import { Pulse } from "@/components/viz/Pulse";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { CategoryGlyph } from "@/components/experience/CategoryGlyph";
 import { nf } from "@/lib/format";
@@ -38,6 +40,7 @@ export function EntityCardRow({ card, rank, match, href, insight, dense = false,
   const { entity, score, delta90d, topComplaint } = card;
   const dir = delta90d > 0.15 ? "up" : delta90d < -0.15 ? "down" : "flat";
   const { kind, where } = placeLine(card);
+  const pulse = score !== null ? pulseOf(entity.id) : null;
   const line = insight === null ? null : insight ?? (topComplaint ? `En sık konuşulan: ${topComplaint}.` : null);
 
   return (
@@ -67,6 +70,7 @@ export function EntityCardRow({ card, rank, match, href, insight, dense = false,
             <>
               <ScoreNumber score={score} size={dense ? "md" : "lg"} label stack trend={{ direction: dir, delta: dir === "flat" ? undefined : delta90d }} />
               {typeof match === "number" && <span className="tnum text-[12px] font-bold text-accent-ink">%{match} sana göre</span>}
+              {pulse && <span className="mt-1 hidden sm:block"><Pulse pulse={pulse} width={104} height={22} band={false} /></span>}
             </>
           ) : (
             <span className="max-w-[9rem] text-right text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">puan gösterilmiyor</span>
