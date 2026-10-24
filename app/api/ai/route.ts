@@ -4,7 +4,7 @@ import { AskRequestSchema } from "@/lib/ai/schema";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GİDENLER AI API — POST /api/ai (sor) · GET /api/ai (durum)
-   · Yalnızca sunucu modunda derlenir (`.api.ts` uzantısı; bkz. next.config.ts). Statik export'ta bu dosya yoktur;
+   · Yalnızca sunucu modunda derlenir (export modunda pageExtensions tsx/js; bkz. next.config.ts). Statik export'ta bu dosya yoktur;
      istemci /api/ai bulamazsa yerel deterministik motora düşer.
    · API anahtarları yalnızca process.env'de; bu dosyadan istemciye yalnızca AIResponse sözleşmesi gider.
    · Model çağrıları orchestrator içinde; burada yalnızca HTTP kabuğu ve hata → HTTP kodu eşlemesi.
