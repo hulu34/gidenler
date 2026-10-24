@@ -75,6 +75,19 @@ export interface Location {
   geo?: GeoPoint;
 }
 
+/** Mekânla ilgili sosyal medya içeriği (Instagram, X, YouTube, TikTok). Yalnızca doğrulanmış kaynaktan eklenir:
+ *  işletme paneli, deneyim yazarı ya da editör. Uydurma bağlantı yoktur; yoksa sayfa arama yönlendirmesi gösterir. */
+export interface MediaLink {
+  platform: "youtube" | "instagram" | "x" | "tiktok";
+  url: string;
+  title?: string;
+  author?: string;
+  /** YouTube için: sitede oynatılabilir (tıkla-oynat, youtube-nocookie). */
+  videoId?: string;
+  addedBy: "işletme" | "deneyim" | "editör";
+  addedAt?: string;
+}
+
 export interface Entity {
   id: ID;
   slug: string;
@@ -95,6 +108,8 @@ export interface Entity {
   subcategory?: string;
   /** Veri yoğunluğu katmanı: A = tam, B = zengin, C = keşif kaydı. */
   tier?: "A" | "B" | "C";
+  /** Sosyal medya içerikleri (bkz. MediaLink). */
+  media?: MediaLink[];
   /** Üretilmiş (sentetik) kimlik — gerçek bir işletme/kişiyle eşleşmez. */
   isSynthetic?: boolean;
   /** Gerçek bir kamusal yer/kurum adı (park, cadde, müze…): yalnızca temel kimlik; deneyim metni üretilmez. */
