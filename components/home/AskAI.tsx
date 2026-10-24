@@ -5,6 +5,8 @@ import { useEffect, useMemo, useState } from "react";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { askAI, type AIAnswer, type AIRecommendation, type AIStructured, type FollowUp } from "@/lib/decisionEngine";
 import { askServer, sendFeedback } from "@/lib/ai/client";
+import { pulseOf } from "@/lib/pulse";
+import { Pulse } from "@/components/viz/Pulse";
 import type { AIResponse } from "@/lib/ai/schema";
 import { recordIntent, setEntityState, useUserData } from "@/lib/store";
 import { nf } from "@/lib/format";
@@ -78,53 +80,92 @@ export function AskAI() {
   };
   const sel = "h-9 border-b-2 border-line-2 bg-transparent pr-5 text-[13px] font-semibold outline-none focus:border-accent";
 
-  return (
-    <section aria-labelledby="h-ai" className="border-t-2 border-line-strong pt-6">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-        <h2 id="h-ai" className="text-[13px] font-bold uppercase tracking-[0.2em]">Gidenler AI&apos;a Sor</h2>
-        <Link href="/ara/" className="text-[12px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Sadece bir yer mi arıyorsun? Ara →</Link>
-      </div>
-      <p className="mt-1 text-[15px] text-ink-2">Nereye gideceğini Gidenler&apos;e anlat; koşullarına göre deneyim grafiğinden seçsin.</p>
+  /* yazılıyormuş gibi dönen örnek: kutu boş ve odakta değilken; hareket azaltılmışsa sabit */
+  const [focused, setFocused] = useState(false);
+  const [ph, setPh] = useState(EXAMPLES[0]);
+  const [chips, setChips] = useState<string[]>(EXAMPLES.slice(1, 4));
+  const [more, setMore] = useState(false);
+  useEffect(() => { setChips(chipsFor(new Date())); }, []);
+  useEffect(() => {
+    if (focused || text) return;
+    let reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch { /* yok */ }
+    if (reduce) { setPh(EXAMPLES[0]); return; }
+    let i = 0, n = 0, back = false, wait = 0;
+    const id = window.setInterval(() => {
+      const full = EXAMPLES[i % EXAMPLES.length];
+      if (wait > 0) { wait--; return; }
+      if (!back) { n++; if (n >= full.length) { back = true; wait = 38; } }
+      else { n -= 3; if (n <= 0) { back = false; n = 0; i++; wait = 6; } }
+      setPh(full.slice(0, Math.max(0, n)));
+    }, 42);
+    return () => window.clearInterval(id);
+  }, [focused, text]);
+  const ask = (q: string) => { setText(q); setFollow(null); setShowParts(null); setAsked({ text: q, s }); recordIntent(q); };
 
-      <form onSubmit={submit} className="mt-4 flex flex-col gap-3">
-        <textarea
-          value={text} onChange={(e) => setText(e.target.value)} rows={2}
-          onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submit(); } }}
-          placeholder="Cumartesi 20:30'da Kadıköy'de 4 kişi pide yemek istiyoruz. Sakin olsun, F/P iyi olsun."
-          aria-label="Gidenler AI'a sor"
-          className="w-full resize-none border-b-2 border-line-strong bg-transparent pb-2 text-[clamp(1.0625rem,2.4vw,1.35rem)] leading-snug outline-none placeholder:text-ink-3 focus:border-accent"
-        />
-        <div className="flex flex-wrap items-end gap-x-5 gap-y-2">
-          <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Nerede?
-            <select value={s.location ?? ""} onChange={(e) => setS({ ...s, location: e.target.value || undefined })} className={sel}><option value="">Belirtme</option>{DISTRICTS.map((d) => <option key={d} value={d}>{d}</option>)}</select>
-          </label>
-          <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Gün
-            <select value={s.day ?? ""} onChange={(e) => setS({ ...s, day: e.target.value || undefined })} className={sel}><option value="">Belirtme</option>{DAYS.map((d) => <option key={d} value={d}>{d}</option>)}</select>
-          </label>
-          <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Saat
-            <select value={s.time ?? ""} onChange={(e) => setS({ ...s, time: e.target.value || undefined })} className={sel}><option value="">Belirtme</option>{TIMES.map((d) => <option key={d} value={d}>{d}</option>)}</select>
-          </label>
-          <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Kaç kişi?
-            <input type="number" min={1} max={20} value={s.party ?? ""} onChange={(e) => setS({ ...s, party: e.target.value ? Number(e.target.value) : undefined })} placeholder="—" className={`${sel} tnum w-16 pr-0`} />
-          </label>
-          <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Ne için?
-            <select value={s.category ?? "hepsi"} onChange={(e) => setS({ ...s, category: e.target.value as AIStructured["category"] })} className={sel}>{CATS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}</select>
-          </label>
-          <button type="submit" className="h-10 rounded-[3px] bg-accent px-5 text-[14px] font-semibold text-on-accent">Gidenler AI&apos;a sor</button>
+  return (
+    <section id="sor" aria-labelledby="h-ai" className="scroll-mt-24">
+      <h2 id="h-ai" className="sr-only">Gidenler AI&apos;a Sor</h2>
+      <form onSubmit={submit} className="relative max-w-[860px]">
+        <div className={`flex items-end gap-3 border-2 bg-paper/95 p-3 backdrop-blur-sm transition-colors sm:p-4 ${focused ? "border-accent" : "border-line-strong"}`}>
+          <span aria-hidden className="hidden pb-1 font-[family-name:var(--font-brand)] text-[2rem] italic leading-none text-accent-ink sm:block">→</span>
+          <div className="relative min-w-0 flex-1">
+            <textarea
+              value={text} onChange={(e) => setText(e.target.value)} rows={2}
+              onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+              onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submit(); } }}
+              aria-label="Gidenler AI'a sor: nereye, ne zaman, kaç kişi, nasıl bir yer?"
+              className="peer block w-full resize-none bg-transparent text-[clamp(1.125rem,2.6vw,1.5rem)] leading-snug outline-none"
+            />
+            {!text && (
+              <span aria-hidden className={`pointer-events-none absolute inset-0 line-clamp-2 overflow-hidden text-[clamp(1.125rem,2.6vw,1.5rem)] leading-snug text-ink-3 ${focused ? "" : "caret"}`}>
+                {focused ? "Nereye, ne zaman, kaç kişi, nasıl bir yer?" : ph}
+              </span>
+            )}
+          </div>
+          <button type="submit" className="h-12 shrink-0 rounded-[3px] bg-accent px-5 text-[15px] font-semibold text-on-accent transition-transform hover:-translate-y-0.5 active:translate-y-0">Sor</button>
         </div>
-        {!answer && (
-          <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[12.5px] text-ink-3">
-            <span>Örnek:</span>
-            {EXAMPLES.slice(0, 4).map((o) => (
-              <button key={o} type="button" onClick={() => { setText(o); setFollow(null); setAsked({ text: o, s }); recordIntent(o); }} className="text-left underline decoration-line-2 underline-offset-4 hover:text-ink hover:decoration-ink">“{o}”</button>
-            ))}
-          </p>
+
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-[12.5px]">
+          {chips.map((o) => (
+            <button key={o} type="button" onClick={() => ask(o)} className="rounded-full border border-line-2 bg-paper px-3 py-1 font-medium text-ink-2 transition-colors hover:border-ink hover:text-ink">{o}</button>
+          ))}
+          <button type="button" onClick={() => setMore(!more)} aria-expanded={more} className="ml-auto text-[12px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">{more ? "Ayrıntıyı kapat" : "+ yer, gün, saat, kişi"}</button>
+        </div>
+
+        {more && (
+          <div className="mt-3 flex flex-wrap items-end gap-x-5 gap-y-2 border-t border-line pt-3">
+            <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Nerede?
+              <select value={s.location ?? ""} onChange={(e) => setS({ ...s, location: e.target.value || undefined })} className={sel}><option value="">Belirtme</option>{DISTRICTS.map((d) => <option key={d} value={d}>{d}</option>)}</select>
+            </label>
+            <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Gün
+              <select value={s.day ?? ""} onChange={(e) => setS({ ...s, day: e.target.value || undefined })} className={sel}><option value="">Belirtme</option>{DAYS.map((d) => <option key={d} value={d}>{d}</option>)}</select>
+            </label>
+            <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Saat
+              <select value={s.time ?? ""} onChange={(e) => setS({ ...s, time: e.target.value || undefined })} className={sel}><option value="">Belirtme</option>{TIMES.map((d) => <option key={d} value={d}>{d}</option>)}</select>
+            </label>
+            <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Kaç kişi?
+              <input type="number" min={1} max={20} value={s.party ?? ""} onChange={(e) => setS({ ...s, party: e.target.value ? Number(e.target.value) : undefined })} placeholder="—" className={`${sel} tnum w-16 pr-0`} />
+            </label>
+            <label className="flex flex-col gap-0.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Ne için?
+              <select value={s.category ?? "hepsi"} onChange={(e) => setS({ ...s, category: e.target.value as AIStructured["category"] })} className={sel}>{CATS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}</select>
+            </label>
+            <Link href="/ara/" className="ml-auto pb-2 text-[12px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Sadece bir yer mi arıyorsun? Ara →</Link>
+          </div>
         )}
       </form>
 
       {shown && <Answer a={shown} remote={remote} remoteState={remoteState} follow={follow} setFollow={setFollow} showParts={showParts} setShowParts={setShowParts} personalized={personalized} rel={user.relationships} />}
     </section>
   );
+}
+
+/* Saate ve güne göre örnek sorgular: kutu boş görünmesin, ilk tıklama kolay olsun. */
+function chipsFor(d: Date): string[] {
+  const h = d.getHours(), wk = d.getDay() === 0 || d.getDay() === 6;
+  if (h < 11) return wk ? ["Pazar kahvaltısı Boğaz tarafında sakin", "Moda'da kahvaltı 2 kişi", "Beşiktaş'ta sakin kahve"] : ["Kadıköy'de sakin kahve", "Şişli'de çalışılabilir kafe", "Karaköy'de hızlı kahvaltı"];
+  if (h < 16) return ["Şişli'de hızlı öğle yemeği", "Kadıköy'de F/P iyi döner", "Beyoğlu'nda müze sonrası kahve"];
+  if (h < 23) return [wk ? "Bu akşam Kadıköy'de 4 kişi meyhane" : "Bu akşam Şişli'de hızlı yemek", "Sevgilimle romantik ama pahalı olmayan restoran", "Beşiktaş'ta iyi döner"];
+  return ["Gece 12'den sonra yemek", "Kadıköy'de geç saate açık bar", "Beyoğlu'nda gece çorba"];
 }
 
 /* LLM yanıtını yerel motor yanıtının üstüne bindir: kimlik/puan/trend Gidenler verisinden, gerekçe/uyarı/uyum modelden. */
@@ -143,8 +184,15 @@ function Answer({ a, remote, remoteState, follow, setFollow, showParts, setShowP
   a: AIAnswer; remote: AIResponse | null; remoteState: "idle" | "loading" | "llm" | "engine"; follow: FollowUp | null; setFollow: (f: FollowUp | null) => void; showParts: string | null; setShowParts: (s: string | null) => void; personalized: boolean; rel: Record<string, { state: string } | undefined>;
 }) {
   const conf = a.overallConfidence;
+  const [stamp, setStamp] = useState("");
+  useEffect(() => { const d = new Date(); setStamp(d.toLocaleString("tr-TR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })); }, [a]);
   return (
-    <div className="mt-6 flex flex-col gap-5">
+    <div className="receipt rise mt-6 flex flex-col gap-5 px-4 pb-6 pt-4 sm:px-6">
+      <div className="flex items-baseline justify-between gap-3 text-[10.5px] font-bold uppercase tracking-[0.18em] text-ink-3">
+        <span>Gidenler · karar fişi</span>
+        <span className="tnum">{stamp}</span>
+      </div>
+      <div className="dash" />
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[12.5px]">
         <span className="label">Anlaşılan</span>
         {a.intent.understood.map((u) => <span key={u} className="border border-line-2 px-2 py-0.5 font-semibold text-ink-2">{u}</span>)}
@@ -180,12 +228,13 @@ function Answer({ a, remote, remoteState, follow, setFollow, showParts, setShowP
               const dir = i.delta > 0.15 ? "up" : i.delta < -0.15 ? "down" : "flat";
               const st = rel[i.entityId]?.state ?? "none";
               return (
-                <li key={i.entityId} className={`flex flex-col gap-3 ${idx > 0 ? "border-t border-line pt-5 md:border-t-0 md:border-l md:pl-8 md:pt-0" : ""}`}>
+                <li key={i.entityId} style={{ animationDelay: `${120 + idx * 140}ms` }} className={`rise flex flex-col gap-3 ${idx > 0 ? "border-t border-dashed border-line-2 pt-5 md:border-t-0 md:border-l md:pl-8 md:pt-0" : ""}`}>
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
                       <span className="tnum text-[11px] font-bold text-ink-3">{String(idx + 1).padStart(2, "0")}</span>
                       <Link href={`/mekan/${i.slug}/`} className="block text-[19px] font-bold leading-tight tracking-[-0.02em] hover:text-accent-ink">{i.name}</Link>
                       <span className="text-[11px] font-medium text-ink-3">{i.kind} · {i.place}</span>
+                      <ItemPulse id={i.entityId} />
                     </div>
                     {i.score !== null && <ScoreNumber score={i.score} size="md" label stack trend={{ direction: dir, delta: dir === "flat" ? undefined : i.delta }} />}
                   </div>
@@ -247,4 +296,11 @@ function FeedbackRow({ requestId, mode }: { requestId: string; mode: AIResponse[
       <button type="button" onClick={() => send("wrong_info")} className="border border-line-2 px-2 py-0.5 font-semibold hover:border-warn hover:text-warn">Yanlış bilgi var</button>
     </div>
   );
+}
+
+/* Öneri satırında mekânın 12 aylık nabzı (gerçek seri; seri yoksa hiçbir şey çizilmez). */
+function ItemPulse({ id }: { id: string }) {
+  const p = useMemo(() => pulseOf(id), [id]);
+  if (!p) return null;
+  return <div className="mt-2"><Pulse pulse={p} width={150} height={30} draw /></div>;
 }
