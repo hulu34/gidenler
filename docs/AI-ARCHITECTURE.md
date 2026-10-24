@@ -9,7 +9,7 @@ Tarayıcı (components/home/AskAI.tsx)
    │  yerel deterministik motor → anında yanıt (her ortamda)
    │  POST /api/ai (yalnızca sunucu modunda var; yoksa sessizce yerel motor)
    ▼
-Gidenler AI API  (app/api/ai/route.api.ts)            ← HTTP kabuğu, hata→kod eşlemesi
+Gidenler AI API  (app/api/ai/route.ts)            ← HTTP kabuğu, hata→kod eşlemesi
    ▼
 Orkestratör  (lib/ai/orchestrator.ts)
    doğrula → PII temizle → rate limit → cache → bütçe kapısı
@@ -34,14 +34,14 @@ Model rolleri (env, koda gömülü ad yok): `primary` (karar/gerekçe), `fast` (
 Araç protokolü sağlayıcıya özgü "native tool calling" değil, düz JSON'dur (`{"toolCall":{tool,args}}` ya da nihai şema). Böylece dört sağlayıcı ve gelecekteki self-hosted model aynı davranır; şema `lib/ai/schema.ts` içinde tek yerde.
 
 ### İki dağıtım modu, tek kod tabanı
-- **GitHub Pages (statik)**: workflow `NEXT_OUTPUT=export` + `NEXT_BASE_PATH=/gidenler` verir. `pageExtensions` export modunda `api.ts` içermediği için `app/api/**/route.api.ts` derlemeye girmez; site bugünkü gibi çalışır, AskAI yerel motoru kullanır ("Gidenler motoru" rozeti).
+- **GitHub Pages (statik)**: workflow `NEXT_OUTPUT=export` + `NEXT_BASE_PATH=/gidenler` verir. `pageExtensions` export modunda yalnızca `tsx`/`js` olduğu için `app/api/**/route.ts` derlemeye girmez; site bugünkü gibi çalışır, AskAI yerel motoru kullanır ("Gidenler motoru" rozeti).
 - **Vercel (sunucu)**: env boş → route handler'lar etkin, anahtarlar yalnızca sunucu ortamında. Rozet "Gidenler AI · <sağlayıcı>".
 
 ## 2. Değişen / eklenen dosyalar
 
 | Dosya | Ne |
 |---|---|
-| `next.config.ts` | export/sunucu modu anahtarı, `route.api.ts` uzantı hilesi, `NEXT_PUBLIC_BASE_PATH` |
+| `next.config.ts` | export/sunucu modu anahtarı, `route.ts` uzantı hilesi, `NEXT_PUBLIC_BASE_PATH` |
 | `.github/workflows/pages.yml` | `NEXT_OUTPUT=export` (statik yayın kırılmaz) |
 | `package.json` | `zod` |
 | `lib/ai/types.ts` | sağlayıcı-bağımsız sözleşme (ChatRequest/Response, ModelProvider, CallRecord) |
@@ -58,9 +58,9 @@ Araç protokolü sağlayıcıya özgü "native tool calling" değil, düz JSON'd
 | `lib/ai/feedback.ts` | anonim olaylar, sorgu meta kaydı, gözlemlenebilirlik veri modeli |
 | `lib/ai/orchestrator.ts` | ana akış (`ask`, `status`) |
 | `lib/ai/client.ts` | tarayıcı köprüsü (anahtar/ayar yok), 404 → "API yok" işareti |
-| `app/api/ai/route.api.ts` | POST sor · GET durum |
-| `app/api/ai/feedback/route.api.ts` | POST anonim geri bildirim |
-| `app/api/ai/admin/route.api.ts` | GET gözlemlenebilirlik (Bearer `AI_ADMIN_TOKEN`) |
+| `app/api/ai/route.ts` | POST sor · GET durum |
+| `app/api/ai/feedback/route.ts` | POST anonim geri bildirim |
+| `app/api/ai/admin/route.ts` | GET gözlemlenebilirlik (Bearer `AI_ADMIN_TOKEN`) |
 | `components/home/AskAI.tsx` | sunucu katmanıyla zenginleştirme, mod rozeti, geri bildirim satırı |
 | `lib/decisionEngine.ts` | niyet ayrıştırıcı: "bu akşam", "pahalı olmayan", sosyal bağlam sözcükleri (eval bulguları) |
 | `eval/gidenler-eval-set.json`, `scripts/aieval.ts` | değerlendirme seti ve hattı |
