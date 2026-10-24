@@ -5,7 +5,7 @@ if (typeof window !== "undefined") throw new Error("lib/ai/config yalnızca sunu
 
 /* ──────────────────────────────────────────────────────────────────────────
    YAPILANDIRMA — yalnızca sunucu. Model adları koda gömülmez; env'den okunur.
-   Hiçbir değer istemciye gitmez (tarayıcıda yüklenirse modül kendini kapatır; `route.api.ts` dışından import edilmez).
+   Hiçbir değer istemciye gitmez (tarayıcıda yüklenirse modül kendini kapatır; `app/api/.../route.ts` dışından import edilmez).
 
    AI_PRIMARY_PROVIDER / AI_PRIMARY_MODEL   → kullanıcıya görünen karar ve açıklama
    AI_FAST_PROVIDER    / AI_FAST_MODEL      → niyet ayrıştırma, sınıflandırma (ucuz)
