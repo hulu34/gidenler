@@ -4,6 +4,12 @@ import type { Metadata } from "next";
 
 import { entities } from "@/data/entities";
 import { getTopic } from "@/lib/api";
+import { pulseOf } from "@/lib/pulse";
+import { Pulse } from "@/components/viz/Pulse";
+import { PlaceSeal } from "@/components/viz/PlaceSeal";
+import { VenueArt } from "@/components/art/DataArt";
+import { AtAGlance } from "@/components/topic/AtAGlance";
+import { SocialMedia } from "@/components/topic/SocialMedia";
 import { nf, score1 } from "@/lib/format";
 
 import { Badge } from "@/components/ui/Badge";
@@ -89,6 +95,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const events = getEntityEvents(entity.id);
   const V = verbsFor(entity);
   const scored = I.overallScore !== null;
+  const pulse = scored ? pulseOf(entity.id) : null;
   const dir = I.scoreTrend.direction;
   const oneLine = blurbs[entity.id] ?? I.aiSummary?.lines[0] ?? (scored ? talkInsight(cardOf(entity), I) : undefined);
   const expertIds = expertExperiences.map((e) => e.id);
@@ -100,14 +107,20 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ...(scored && I.timeline.length > 1 ? [{ id: "trend", label: "Trend" }] : []),
     ...(expertAuthors.length ? [{ id: "uzmanlar", label: "Uzmanlar" }] : []),
     ...(I.positiveThemes.length || I.negativeThemes.length ? [{ id: "analiz", label: "Analiz" }] : []),
+    { id: "sosyal", label: "Sosyal" },
   ];
   const compareWith = nearby.find((n) => n.score !== null && n.category.id === category.id)
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   return (
-    <div className="mx-auto max-w-[1180px] px-5 pb-32 sm:px-7 sm:pb-24">
+    <div className="mx-auto max-w-[1180px] overflow-x-clip px-5 pb-32 sm:px-7 sm:pb-24">
       {/* ═══════════ HERO — kısa ve güçlü: ad · tür · puan · yön · sana göre · tek cümle · eylem ═══════════ */}
-      <header className="flex flex-col gap-4 pt-7 sm:pt-10">
+      <header className="relative isolate flex flex-col gap-4 pt-7 sm:pt-10">
+        {scored && pulse && (
+          <div aria-hidden className="pointer-events-none absolute -right-40 -top-24 -z-10 hidden opacity-80 md:block [mask-image:radial-gradient(closest-side,black_55%,transparent)]">
+            <VenueArt pulse={pulse} size={560} />
+          </div>
+        )}
         <nav className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.13em] text-ink-3">
           <Link href="/kesfet/" className="hover:text-ink">Keşfet</Link>
           <span aria-hidden>/</span>
@@ -115,7 +128,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           {district && (<><span aria-hidden>/</span><span>{district}</span></>)}
         </nav>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex items-start justify-between gap-6">
+        <div className="flex min-w-0 flex-col gap-2">
           <h1 className="max-w-[18ch] text-[clamp(2rem,7vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">{entity.name}</h1>
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
             <CategoryGlyph entity={entity} />
@@ -124,6 +138,19 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             {PRICE(entity.priceLevel) && (<><span aria-hidden>·</span><span className="tnum">{PRICE(entity.priceLevel)}</span></>)}
             {entity.isDemo && <Badge tone="demo" className="ml-1">Demo kayıt</Badge>}
           </p>
+          {scored && pulse && (
+            <div className="mt-2 flex items-center gap-3 text-[12px] text-ink-3">
+              <Pulse pulse={pulse} width={180} height={34} draw />
+              <span className="tnum">son {pulse.raw.length} ay · {nf(pulse.volume)} deneyim</span>
+            </div>
+          )}
+        </div>
+        {scored && pulse && (
+          <div className="hidden flex-col items-center gap-1 sm:flex">
+            <PlaceSeal pulse={pulse} size={132} label={`${entity.name} mührü: son ${pulse.raw.length} ayın puanı ve deneyim hacmi`} />
+            <span className="text-[9.5px] font-bold uppercase tracking-[0.16em] text-ink-3">deneyim mührü</span>
+          </div>
+        )}
         </div>
 
         {scored ? (
@@ -145,6 +172,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           <ComplianceNotice policy={c} noun={category.noun} />
         )}
       </header>
+
+      {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda) ═══════════ */}
+      {scored && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
 
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
       <TopicNav sections={sections} />
@@ -285,6 +315,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           {ad && <div className="mt-10"><SponsoredSlot {...ad} /></div>}
         </section>
       )}
+
+      {/* ═══════════ SOSYAL MEDYADA — videolar sitede oynar, gönderiler platformunda açılır ═══════════ */}
+      <SocialMedia name={entity.name} district={district ?? undefined} media={entity.media} />
 
       {/* ═══════════ yakındakiler / benzerler — kategoriye duyarlı başlık, boş konum asla ═══════════ */}
       {nearby.length > 0 && (
