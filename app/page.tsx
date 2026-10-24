@@ -1,6 +1,12 @@
-import Link from "next/link";
 import { listCards, listCreators, inIstanbul } from "@/lib/api";
-import { nf } from "@/lib/format";
+import { nf, periodLabel } from "@/lib/format";
+import { lastPeriodVolume } from "@/lib/pulse";
+import { CityArt } from "@/components/art/DataArt";
+import { Ticker } from "@/components/home/Ticker";
+import { Risers } from "@/components/home/Risers";
+import { ScoreLies } from "@/components/home/ScoreLies";
+import { Districts } from "@/components/home/Districts";
+import { Method } from "@/components/home/Method";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { AskAI } from "@/components/home/AskAI";
 import { ContinueModule } from "@/components/decision/ContinueModule";
@@ -8,9 +14,11 @@ import { HomeRankings, type HomeData } from "@/components/home/HomeRankings";
 import { HOME_CATEGORIES, OTHER_CATEGORIES, buildRankings, buildRegulated, forYouRanking } from "@/lib/rankings";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   ANA SAYFA = KARAR VER. "Ne arıyorsun? Bunlara bak."
-   Hero (marka) → Gidenler AI'a Sor (karar motoru) → kategori seçici → 3+3 sıralama board'u → Devam et.
-   Pulse, endeksler, listeler, uzman radarı ve "nasıl çalışır" Keşfet / Nasıl çalışır'da yaşar.
+   ANA SAYFA = KARAR VER (yatırımcı sprinti, V7).
+   Hero: manşet + AI kutusu (birincil eylem), arkada İstanbul sismografı (gerçek semt×ay hacmi)
+   → borsa bandı → Yükselenler tablosu (nabız) → "Tek puan yanıltır" (çiz-tahmin et)
+   → Semtler → kategori sıralamaları → Devam et → Nasıl çalışır + tekrar CTA.
+   Tüm görseller veriden üretilen SVG; fotoğraf/stok yok.
    ────────────────────────────────────────────────────────────────────────── */
 
 function homeData(): HomeData {
@@ -37,39 +45,51 @@ export default function HomePage() {
   const all = listCards();
   const istanbulCount = all.filter(inIstanbul).length;
   const creators = listCreators();
+  const last = lastPeriodVolume();
 
   return (
-    <div className="mx-auto max-w-[1180px] px-5 pb-20 sm:px-7">
-      {/* ───────── hero: marka + tek soru ───────── */}
-      <section className="flex flex-col gap-5 pb-7 pt-10 sm:gap-6 sm:pb-8 sm:pt-14">
-        <h1 className="max-w-[13ch] text-[clamp(2.5rem,9vw,5rem)] font-extrabold leading-[0.92] tracking-[-0.055em]">
-          Gidenler{" "}
-          <span className="font-[family-name:var(--font-brand)] font-normal italic tracking-[-0.02em] text-accent-ink">bilir.</span>
-        </h1>
-        <p className="prose-exp max-w-[44ch] text-[clamp(1.0625rem,2.1vw,1.3rem)] leading-[1.42] text-ink-2">
-          Deneyimler sürekli değişir. Gidenler bunu ölçer; sadece bugünü değil, nereye gittiğini gösterir.
-        </p>
-        <p className="flex flex-wrap items-center gap-x-5 gap-y-1 text-[12px] font-semibold uppercase tracking-[0.13em] text-ink-3">
-          <span>İstanbul</span>
-          <span aria-hidden>·</span>
-          <span className="tnum">{nf(istanbulCount)} kayıt</span>
-          <span aria-hidden>·</span>
-          <span className="tnum">{creators.length} doğrulanmış üretici</span>
-          <span aria-hidden>·</span>
-          <Link href="/kesfet/" className="normal-case tracking-normal underline decoration-line-2 underline-offset-4 hover:text-ink">diğer şehirler ve tüm evren Keşfet&apos;te</Link>
-        </p>
+    <>
+      {/* ───────── hero: manşet + tek soru, arkada İstanbul sismografı (gerçek veri) ───────── */}
+      <section className="relative isolate overflow-hidden border-b border-line">
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-full opacity-90 [mask-image:linear-gradient(to_bottom,transparent,black_30%)]">
+          <CityArt />
+        </div>
+        <div className="mx-auto max-w-[1180px] px-5 pb-12 pt-10 sm:px-7 sm:pb-16 sm:pt-16">
+          <p className="rise flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
+            <span className="inline-flex items-center gap-1.5"><i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />İstanbul</span>
+            <span aria-hidden>·</span>
+            <span className="tnum">{periodLabel(last.period)}: {nf(last.count)} deneyim</span>
+            <span aria-hidden>·</span>
+            <span className="tnum">{nf(istanbulCount)} kayıt · {creators.length} doğrulanmış üretici</span>
+            <span className="rounded-full border border-line-2 px-2 py-px text-[9.5px] tracking-[0.14em]">demo veri</span>
+          </p>
+          <h1 className="rise mt-5 text-[clamp(2.75rem,8.4vw,6.25rem)] font-extrabold leading-[0.9] tracking-[-0.055em]" style={{ animationDelay: "80ms" }}>
+            Nereye gidelim?<br />
+            <span className="font-[family-name:var(--font-brand)] font-normal italic tracking-[-0.02em] text-accent-ink">Gidenler bilir.</span>
+          </h1>
+          <p className="rise mt-5 max-w-[46ch] font-[family-name:var(--font-read)] text-[clamp(1.0625rem,2.1vw,1.35rem)] leading-[1.42] text-ink-2" style={{ animationDelay: "160ms" }}>
+            Puan değil, son aylarda gidenlerin gerçekte yaşadığı. Koşulunu yaz; deneyim grafiğinden sana uyan üç yeri gerekçesiyle seçelim.
+          </p>
+          <div className="rise mt-8" style={{ animationDelay: "240ms" }}>
+            <AskAI />
+          </div>
+        </div>
       </section>
 
-      {/* ───────── Gidenler AI'a Sor — karar alanı (arama değil) ───────── */}
-      <AskAI />
+      <Ticker />
 
-      {/* ───────── seçici + sıralamalar ───────── */}
-      <div className="mt-12"><HomeRankings data={data} /></div>
-
-      {/* ───────── devam et — sadece kaydettiğin/gittiğin bir şey varsa ───────── */}
-      <div className="mt-12"><ContinueModule /></div>
-
-      <div className="mt-12"><DemoNotice /></div>
-    </div>
+      <div className="mx-auto flex max-w-[1180px] flex-col gap-20 px-5 pb-20 pt-14 sm:px-7">
+        {/* en iyiler · en çok konuşulanlar · yükselişte… — önceki sürümün kalbi, aynen ve en üstte */}
+        <section aria-label="Kategorilere göre sıralamalar">
+          <HomeRankings data={data} />
+        </section>
+        <ContinueModule />
+        <Risers />
+        <ScoreLies />
+        <Districts />
+        <Method />
+        <DemoNotice />
+      </div>
+    </>
   );
 }
