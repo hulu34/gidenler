@@ -1,5 +1,6 @@
 import type { Entity } from "@/lib/types";
 import { universeEntities } from "@/data/universe";
+import { realEntities } from "@/data/real";
 
 /**
  * DEMO VERİ. Buradaki işletmelerin hiçbiri gerçek değildir; isimler,
@@ -100,8 +101,8 @@ const baseEntities: Entity[] = [
   },
 ];
 
-/** El yapımı altın kayıtlar + deterministik evren — tek liste, tek doğruluk kaynağı. */
-export const entities: Entity[] = [...baseEntities.map((e) => ({ tier: "A" as const, ...e })), ...universeEntities];
+/** El yapımı altın kayıtlar + deterministik evren (demo) + gerçek mekânlar (OSM) — tek liste, tek doğruluk kaynağı. */
+export const entities: Entity[] = [...baseEntities.map((e) => ({ tier: "A" as const, ...e })), ...universeEntities, ...realEntities];
 const bySlug = new Map(entities.map((e) => [e.slug, e]));
 const byId = new Map(entities.map((e) => [e.id, e]));
 export const getEntity = (slug: string) => bySlug.get(slug);
