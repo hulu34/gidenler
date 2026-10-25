@@ -17,6 +17,9 @@ import { ExperienceCard } from "@/components/experience/ExperienceCard";
 import { Button } from "@/components/ui/Button";
 import { getBusinessAlerts, getBusinessBenchmarks, getBusinessRecommendations, getBusinessRootCauses } from "@/lib/decision";
 import { Alerts, Benchmarks, Recommendations, RootCauses } from "@/components/decision/BusinessIntelligence";
+import { BusinessReservations } from "@/components/reservation/BusinessReservations";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return entities
@@ -35,7 +38,8 @@ export async function generateMetadata({
 export default async function BusinessPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const d = getBusinessDashboard(slug);
-  if (!d) notFound();
+  /* Panel yalnızca sahiplenilmiş işletmede var; gerçek ama sahiplenilmemiş mekân için uydurma panel gösterilmez. */
+  if (!d || !d.entity.business?.claimed) notFound();
   const { entity, category, schema, intelligence: I, unanswered, answered, expertSummary, last30d } = d;
 
   const gap =
@@ -97,6 +101,8 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
           ))}
         </dl>
       </section>
+
+      <BusinessReservations entity={entity} />
 
       {/* ───────── V3: NEDEN DEĞİŞTİ · NEREDEN BAŞLAMALISIN ───────── */}
       {root && (
