@@ -248,7 +248,9 @@ function computeIntelligence(entityId: string): TopicIntelligence | null {
   const computed = totalW
     ? round1(list.reduce((a, e) => a + e.overall * weightOf(e), 0) / totalW)
     : 0;
-  const overallScore = c.showScores ? (tl.length ? tl[tl.length - 1].score : computed) : null;
+  /* Hiç deneyim yoksa (ör. yeni eklenen gerçek mekân) puan YOK — 0 değil. */
+  const hasEvidence = tl.length > 0 || list.length > 0 || !!st;
+  const overallScore = c.showScores && hasEvidence ? (tl.length ? tl[tl.length - 1].score : computed) : null;
 
   const delta90 = tl.length >= 4 ? round1(tl[tl.length - 1].score - tl[tl.length - 4].score) : 0;
 
@@ -296,7 +298,7 @@ function computeIntelligence(entityId: string): TopicIntelligence | null {
     periodChanges: c.showScores ? periodChangesOf(tl) : [],
     volume: volumeOf(tl),
     expectation: c.showScores ? expectations[entityId] ?? null : null,
-    ratingDimensions: c.showScores ? ratingDimensions : [],
+    ratingDimensions: c.showScores && hasEvidence ? ratingDimensions : [],
     returnRate: st ? st.returnRate : list.length
       ? list.filter((e) => e.returnIntent === "evet").length / list.length
       : 0,
@@ -334,6 +336,10 @@ export function getTopic(slug: string): TopicView | null {
   if (!category || !schema || !intelligence) return null;
 
   const all = publishedOf(entity.id).map(withAuthor);
+  /* Tabelog: "kaçıncı ziyaret" — aynı yazarın bu yerdeki deneyimleri tarih sırasıyla. */
+  const byAuthor = new Map<string, string[]>();
+  for (const x of [...all].sort((a, b) => (a.visitedAt < b.visitedAt ? -1 : 1))) (byAuthor.get(x.authorId) ?? byAuthor.set(x.authorId, []).get(x.authorId)!).push(x.id);
+  for (const x of all) x.visitNo = (byAuthor.get(x.authorId)?.indexOf(x.id) ?? 0) + 1;
   const expertExperiences = all.filter((e) => isExpertFor(e.author, entity));
 
   /* Konumu olmayan kayıtlar (film, rota) için "yakındakiler" yerine "benzerler": aynı şehir + aynı alt tür. */

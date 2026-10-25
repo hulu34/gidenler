@@ -116,6 +116,68 @@ export interface Entity {
   realIdentity?: boolean;
   /** Gerçek görsel (varsa). Yoksa kategoriye duyarlı nötr plaka çizilir — baş harf/rastgele renk asla. */
   image?: EntityImage;
+
+  /* ─── GERÇEK MEKÂN KATMANI (V8) ───
+     Gerçek işletme kaydı: kimlik bilgisi açık kaynaktan (OpenStreetMap, ODbL) gelir.
+     Puan, trend, yorum ÜRETİLMEZ; Gidenler puanı yalnızca gerçek deneyimlerden doğar. */
+  /** Gerçek, var olan bir işletme. isDemo=false ile birlikte kullanılır. */
+  isReal?: boolean;
+  /** Kimlik verisinin kaynağı (atıf ve güncelleme için). */
+  source?: RealSource;
+  /** İletişim — yalnızca kaynakta yayımlanmış olanlar. */
+  contact?: VenueContact;
+  /** Google Places kimliği (Google Cloud açılınca canlı yorum/fotoğraf için; saklanmasına izin verilen tek alan). */
+  googlePlaceId?: string;
+  /** Rezervasyon yapılandırması. Yoksa: iletişim bilgisiyle yönlendirme. */
+  reservation?: ReservationConfig;
+  /** Kişi başı bütçe bantları (₺) — Tabelog'un öğle/akşam bütçesi. Gerçek mekânda yalnızca işletme ya da deneyim verisinden. */
+  priceBands?: PriceBands;
+  /** Lisanslı/izinli fotoğraflar (işletme, kullanıcı, Wikimedia Commons). Stok ya da izinsiz görsel yok. */
+  photos?: VenuePhoto[];
+}
+
+export interface RealSource {
+  provider: "osm";
+  /** "node/123", "way/456" */
+  ref: string;
+  importedAt: ISODate;
+}
+
+export interface VenueContact {
+  phone?: string;
+  website?: string;
+  /** Kullanıcı adı, @ olmadan. */
+  instagram?: string;
+  /** OSM opening_hours biçimi, olduğu gibi. */
+  openingHours?: string;
+}
+
+export interface ReservationConfig {
+  /** gidenler: Gidenler üzerinden anlık talep (ortak işletme, kişi başı ücret). contact: telefon/web yönlendirmesi. */
+  mode: "gidenler" | "contact";
+  maxParty?: number;
+  lunchSlots?: string[];
+  dinnerSlots?: string[];
+  /** Kapalı günler (0 = Pazar … 6 = Cumartesi). */
+  closedDays?: number[];
+  note?: string;
+}
+
+export interface PriceBands {
+  lunch?: [number, number];
+  dinner?: [number, number];
+  /** Bandın kaynağı — "demo" uydurma değildir, sentetik kayıtların türetilmiş değeridir. */
+  basis: "işletme" | "deneyim" | "demo";
+}
+
+export interface VenuePhoto {
+  src: string;
+  category: "yemek" | "ic" | "dis" | "menu" | "icecek";
+  alt: string;
+  credit: string;
+  license?: string;
+  sourceUrl?: string;
+  addedBy: "işletme" | "kullanıcı" | "commons";
 }
 
 export interface EntityImage {
@@ -306,6 +368,8 @@ export interface Experience {
   body: string;
   /** Ziyaret zamanı — yazma zamanı değil. Ürünün kalbi. */
   visitedAt: ISODate;
+  /** Aynı yazarın bu yere kaçıncı deneyimi (Tabelog: "2. ziyaret"); 1 ise gösterilmez. Sunucuda hesaplanır. */
+  visitNo?: number;
   verification: Verification;
   ratings: ExperienceRatings;
   overall: number;
