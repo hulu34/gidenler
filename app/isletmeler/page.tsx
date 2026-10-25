@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getBusinessDashboard } from "@/lib/api";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { nf } from "@/lib/format";
+import { RESERVATION_FEES } from "@/lib/reservation";
 
 export const metadata = { title: "İşletmeler" };
 
@@ -18,7 +19,9 @@ export default function BusinessesPage() {
     "Kişisel uyum (\"Sana göre\") satın alınamaz.",
     "Olumsuz deneyimler ödeme ile kaldırılamaz.",
     "Sponsorlu görünürlük her zaman açıkça etiketlenir.",
+    "Rezervasyon ücreti puanı, sıralamayı ve görünürlüğü etkilemez.",
   ];
+  const F = RESERVATION_FEES;
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
       <header className="flex flex-col gap-3 pt-10 sm:pt-14">
@@ -60,6 +63,31 @@ export default function BusinessesPage() {
             <p className="text-[13.5px] leading-relaxed text-ink-2">{b}</p>
           </div>
         ))}
+      </section>
+
+      <section id="rezervasyon" className="mt-12 scroll-mt-24 border-t-2 border-line-strong pt-7" aria-labelledby="h-rz">
+        <h2 id="h-rz" className="text-[13px] font-bold uppercase tracking-[0.2em]">Gidenler rezervasyonu</h2>
+        <div className="mt-4 grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+          <div className="flex flex-col gap-3">
+            <p className="max-w-[56ch] text-[17px] leading-snug">Karar verdiği sayfada, tek dokunuşla masa. Ücreti yalnızca <b>gerçekleşen</b> rezervasyonda, oturan kişi başına ödersiniz.</p>
+            <ul className="flex flex-col gap-1.5 text-[14px] text-ink-2">
+              <li>· Müşteriden hiçbir ücret alınmaz.</li>
+              <li>· Gelmeyen (no-show) ve iptal edilen rezervasyon ücretsizdir.</li>
+              <li>· Kurulum ve aylık sabit ücret yok; fatura ay sonunda.</li>
+              <li>· Takviminizi siz yönetirsiniz: saatler, kapalı günler, en fazla kişi.</li>
+            </ul>
+          </div>
+          <div className="border border-line-strong">
+            <table className="w-full text-left text-[14px]">
+              <thead><tr className="border-b border-line text-[11px] uppercase tracking-[0.12em] text-ink-3"><th className="px-4 py-2.5 font-semibold">Oturum</th><th className="px-4 py-2.5 font-semibold">Kişi başı</th></tr></thead>
+              <tbody className="tnum">
+                <tr className="border-b border-line"><td className="px-4 py-3">Öğle <span className="text-ink-3">(saat {F.lunchUntil.replace(":", ".")}&apos;dan önce)</span></td><td className="px-4 py-3 text-[18px] font-extrabold">{F.lunch} {F.currency}</td></tr>
+                <tr><td className="px-4 py-3">Akşam</td><td className="px-4 py-3 text-[18px] font-extrabold">{F.dinner} {F.currency}</td></tr>
+              </tbody>
+            </table>
+            <p className="border-t border-line px-4 py-3 text-[12.5px] text-ink-2">Örnek: ayda 30 akşam rezervasyonu × ortalama 3 kişi = 90 kişi → <b className="tnum">{nf(90 * F.dinner)} {F.currency}</b>. KDV hariç.</p>
+          </div>
+        </div>
       </section>
 
       <section className="mt-12 border-t-2 border-line-strong pt-7" aria-labelledby="satin">
