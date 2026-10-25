@@ -10,6 +10,11 @@ import { PlaceSeal } from "@/components/viz/PlaceSeal";
 import { VenueArt } from "@/components/art/DataArt";
 import { AtAGlance } from "@/components/topic/AtAGlance";
 import { SocialMedia } from "@/components/topic/SocialMedia";
+import { VenueInfo } from "@/components/venue/VenueInfo";
+import { VenueVisuals } from "@/components/venue/VenueVisuals";
+import { VenueBadges, RealVenueNotice } from "@/components/venue/VenueBadges";
+import { ReservationBlock } from "@/components/reservation/ReservationBlock";
+import { canReserve } from "@/lib/reservation";
 import { nf, score1 } from "@/lib/format";
 
 import { Badge } from "@/components/ui/Badge";
@@ -101,12 +106,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const expertIds = expertExperiences.map((e) => e.id);
   const expertAuthors = Array.from(new Map(expertExperiences.map((e) => [e.author.id, e])).values());
   const sections: TopicSection[] = [
+    ...(canReserve(entity) ? [{ id: "bilgi", label: "Bilgi" }] : []),
     { id: "deneyimler", label: "Deneyimler" },
     ...(scored && I.aiSummary ? [{ id: "ozet", label: "Özet" }] : []),
     ...(scored ? [{ id: "puanlar", label: "Puanlar" }] : []),
     ...(scored && I.timeline.length > 1 ? [{ id: "trend", label: "Trend" }] : []),
     ...(expertAuthors.length ? [{ id: "uzmanlar", label: "Uzmanlar" }] : []),
     ...(I.positiveThemes.length || I.negativeThemes.length ? [{ id: "analiz", label: "Analiz" }] : []),
+    ...(entity.isReal || entity.photos?.length ? [{ id: "gor", label: "Gör" }] : []),
     { id: "sosyal", label: "Sosyal" },
   ];
   const compareWith = nearby.find((n) => n.score !== null && n.category.id === category.id)
@@ -137,7 +144,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             {(district || (entity.location?.city && entity.location.city !== "İstanbul")) && (<><span aria-hidden>·</span><span>{[entity.location?.city !== "İstanbul" ? entity.location?.city : null, district, entity.location?.neighborhood && entity.location.neighborhood !== district ? entity.location.neighborhood : null].filter(Boolean).join(" · ")}</span></>)}
             {PRICE(entity.priceLevel) && (<><span aria-hidden>·</span><span className="tnum">{PRICE(entity.priceLevel)}</span></>)}
             {entity.isDemo && <Badge tone="demo" className="ml-1">Demo kayıt</Badge>}
+            {entity.isReal && <span className="ml-1 rounded-full border border-pos px-2 py-px text-[9.5px] tracking-[0.14em] text-pos-ink">Gerçek mekân</span>}
           </p>
+          <VenueBadges entityId={entity.id} />
           {scored && pulse && (
             <div className="mt-2 flex items-center gap-3 text-[12px] text-ink-3">
               <Pulse pulse={pulse} width={180} height={34} draw />
@@ -168,6 +177,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
               </div>
             )}
           </div>
+        ) : entity.isReal && c.showScores ? (
+          <RealVenueNotice entity={entity} />
         ) : (
           <ComplianceNotice policy={c} noun={category.noun} />
         )}
@@ -176,6 +187,17 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda) ═══════════ */}
       {scored && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
 
+      {/* ═══════════ BİLGİ & REZERVASYON — Tabelog'un mağaza bilgisi + boş yer takvimi ═══════════ */}
+      {canReserve(entity) && (
+        <section id="bilgi" aria-labelledby="h-bilgi" className="scroll-mt-28 mt-10 grid gap-6 sm:scroll-mt-32 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-start">
+          <div className="min-w-0">
+            <div className="kunye"><h2 id="h-bilgi">Mekân bilgisi</h2><span /></div>
+            <div className="mt-3"><VenueInfo entity={entity} /></div>
+          </div>
+          <div className="min-w-0 md:sticky md:top-24"><ReservationBlock entity={entity} /></div>
+        </section>
+      )}
+
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
       <TopicNav sections={sections} />
 
@@ -183,14 +205,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       <section id="deneyimler" className="scroll-mt-28 pt-8 sm:scroll-mt-32" aria-labelledby="h-deneyimler">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
           <h2 id="h-deneyimler" className="text-[13px] font-bold uppercase tracking-[0.2em]">İnsanlar ne diyor?</h2>
-          <p className="max-w-[48ch] text-[12px] text-ink-3">{scored ? `${nf(I.experienceCount)} deneyim · ${Math.round(I.verifiedRatio * 100)}% doğrulanmış ziyaret` : "Bu kategoride puan üretilmez; deneyimler nötr anlatıdır."}</p>
+          <p className="max-w-[48ch] text-[12px] text-ink-3">{scored ? `${nf(I.experienceCount)} deneyim · ${Math.round(I.verifiedRatio * 100)}% doğrulanmış ziyaret` : entity.isReal ? "Gerçek mekân · deneyimler gelince burada" : "Bu kategoride puan üretilmez; deneyimler nötr anlatıdır."}</p>
         </div>
         <div className="mt-4">
           {experiences.length > 0 ? (
             <ExperienceFeed experiences={experiences} expertIds={expertIds} schema={schema} showScores={c.showScores} entitySlug={entity.slug} total={I.experienceCount} />
           ) : (
             <p className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line py-4 text-[13.5px] text-ink-2">
-              <span>{scored ? `Bu kayıt için deneyim metinleri prototipte gösterilmiyor; puan ve yön ${nf(I.experienceCount)} deneyimin özetidir.` : `Bu kayıt için deneyim metni prototipte gösterilmiyor; yalnızca nötr konu sayımı (${nf(I.experienceCount)} deneyim) var.`}</span>
+              <span>{entity.isReal ? `${entity.name} için henüz Gidenler deneyimi yok. Gittiysen ilk deneyimi sen yaz; puan, yeterli sayıda deneyimden sonra oluşur.` : scored ? `Bu kayıt için deneyim metinleri prototipte gösterilmiyor; puan ve yön ${nf(I.experienceCount)} deneyimin özetidir.` : `Bu kayıt için deneyim metni prototipte gösterilmiyor; yalnızca nötr konu sayımı (${nf(I.experienceCount)} deneyim) var.`}</span>
               <Link href={`/yaz/${entity.slug}/`} className="font-semibold underline decoration-line-2 underline-offset-4 hover:decoration-ink">İlk metni sen yaz</Link>
             </p>
           )}
@@ -317,6 +339,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       )}
 
       {/* ═══════════ SOSYAL MEDYADA — videolar sitede oynar, gönderiler platformunda açılır ═══════════ */}
+      <VenueVisuals entity={entity} />
+
       <SocialMedia name={entity.name} district={district ?? undefined} media={entity.media} />
 
       {/* ═══════════ yakındakiler / benzerler — kategoriye duyarlı başlık, boş konum asla ═══════════ */}
