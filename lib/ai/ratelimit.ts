@@ -1,5 +1,6 @@
 import { aiConfig } from "./config";
 import { hashKey } from "./privacy";
+import { RedisRateStore } from "@/lib/usage/rate";
 
 /* ──────────────────────────────────────────────────────────────────────────
    RATE LIMIT — IP ve oturum başına dakika + gün penceresi (sabit pencere sayaçları).
@@ -23,8 +24,23 @@ class MemoryRate implements RateStore {
   async reset() { this.m.clear(); }
 }
 
+/** Redis varsa ondan sayar (tüm sunucu örnekleri ortak); Redis hata verirse bellek deposuna düşer.
+ *  Not: bu yalnız ücretsiz yolların (AI, rezervasyon) hız sınırıdır. Ücretli çağrılar lib/usage/counter.ts ile
+ *  "çalışmazsa durdur" kuralına bağlıdır. */
+class FallbackStore implements RateStore {
+  private mem = new MemoryRate();
+  constructor(private primary: RateStore) {}
+  async incr(key: string, ttlSec: number) {
+    try { return await this.primary.incr(key, ttlSec); } catch { return this.mem.incr(key, ttlSec); }
+  }
+  async reset() { await this.mem.reset(); }
+}
+
 let store: RateStore | null = null;
-export const rateStore = () => (store ??= new MemoryRate());
+export const rateStore = () =>
+  (store ??= process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
+    ? new FallbackStore(new RedisRateStore())
+    : new MemoryRate());
 export function setRateStore(s: RateStore) { store = s; }
 
 export interface RateResult { allowed: boolean; scope?: "ip" | "session"; window?: "minute" | "day"; retryAfterSec?: number }

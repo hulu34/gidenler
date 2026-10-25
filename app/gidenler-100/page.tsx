@@ -12,7 +12,10 @@ export default function G100Page() {
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
       <header className="flex flex-col gap-3 pt-10 sm:pt-14">
-        <p className="label">Yılın seçkisi · {G100.year}</p>
+        <p className="label">Önizleme · demo veri · {G100.year}</p>
+        <p role="note" className="max-w-[70ch] border-l-2 border-accent bg-sheet px-3 py-2 text-[13px] leading-snug text-ink-2">
+          Bu bir <strong>önizlemedir</strong>: aşağıdaki sıralama demo deneyimlerden üretildi ve gerçek bir sıralama değildir. Gerçek Gidenler 100, yeterli sayıda doğrulanmış deneyim biriktiğinde yayımlanacak.
+        </p>
         <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-extrabold leading-[0.92] tracking-[-0.05em]">Gidenler <span className="font-[family-name:var(--font-brand)] font-normal italic text-accent-ink">100</span></h1>
         <p className="max-w-[60ch] font-[family-name:var(--font-read)] text-[18px] leading-snug text-ink-2">
           İstanbul&apos;da gidenlerin en iyi deneyimi yaşadığı yerler. Jüri yok, para yok: yalnızca en az {G100.minExperiences} deneyimi ve yüksek güveni olan yerler, son puana göre.

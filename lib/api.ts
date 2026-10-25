@@ -16,6 +16,7 @@ import { universeStats, slugify } from "@/data/universe";
 import { timelines, distributions } from "@/data/timelines";
 import { aiSummaries, praisedThemes, complaintThemes } from "@/data/insights";
 import { indices, expectations } from "@/data/market";
+import { experienceWeight } from "@/lib/score/weights";
 
 import type {
   BusinessDashboardView, Category, ConfidenceLevel, Consensus, CreatorProfileView,
@@ -74,16 +75,15 @@ function isExpertFor(user: User, entity: Entity): boolean {
  * varsaymaz. Kural sabittir: dış kaynaklar bu hesaba GİRMEZ.
  */
 function weightOf(e: Experience): number {
-  const months = (TODAY.getTime() - new Date(e.visitedAt).getTime()) / (1000 * 60 * 60 * 24 * 30);
-  const recency = Math.max(0.35, 1 - months / 24);
-  const verified = e.verification.verified ? 1.35 : 1;
+  /* İzin listesi: yalnız deneyim + yazar alanları. İşletmenin Gidenler'le ticari ilişkisi
+     (abonelik, reklam, rezervasyon ortaklığı) bu fonksiyona hiç ulaşmaz — bkz. lib/score/weights.ts. */
   const author = getUser(e.authorId);
-  const trust = author ? 0.85 + (author.reputation.score / 100) * 0.4 : 1;
-  // Ticari ilişkisi beyan edilmiş deneyimler puana daha az etki eder.
-  const commercial =
-    e.disclosure.relationship === "none" ? 1 :
-    e.disclosure.relationship === "unknown" ? 0.6 : 0.5;
-  return recency * verified * trust * commercial;
+  return experienceWeight({
+    visitedAt: e.visitedAt,
+    verified: e.verification.verified,
+    authorReputation: author?.reputation.score,
+    authorDisclosure: e.disclosure.relationship,
+  }, TODAY);
 }
 
 /* ───────────────────────────── consensus ───────────────────────────────── */
@@ -258,6 +258,7 @@ function computeIntelligence(entityId: string): TopicIntelligence | null {
   const seg = (arr: Experience[]) => {
     if (!arr.length) return st ? null : null;
     const w = arr.reduce((a, e) => a + weightOf(e), 0);
+    if (!w) return null;
     return round1(arr.reduce((a, e) => a + e.overall * weightOf(e), 0) / w);
   };
   const verifiedList = list.filter((e) => e.verification.verified);

@@ -2,7 +2,7 @@ import type { Disclosure } from "@/lib/types";
 
 /**
  * TİCARİ ŞEFFAFLIK — gizlemiyoruz ama bağırmıyoruz da.
- * Ayrıca: bu ilişki puan ağırlığını düşürür (bkz. lib/api weightOf).
+ * Ayrıca: bu ilişki puan ağırlığını düşürür (bkz. lib/score/weights.ts — bağımsızlık faktörü).
  */
 export function DisclosureNote({ disclosure }: { disclosure: Disclosure }) {
   if (disclosure.relationship === "none") return null;

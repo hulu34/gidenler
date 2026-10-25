@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { getScoreSemantic } from "@/lib/semantic";
+import { PUBLIC_FACTORS, NEVER_AFFECTS, ALGORITHM_VERSION } from "@/lib/score/weights";
+import { PUBLIC_VERIFICATION_TEXT } from "@/lib/visits/verify";
 
 export const metadata = { title: "Nasıl çalışır" };
 
@@ -128,6 +130,33 @@ export default function HowItWorksPage() {
         <div>
           <p className="label">08 · Sponsorlu içerik</p>
           <p className="mt-2 text-[14.5px] leading-relaxed text-ink-2">Sponsorlu alternatifler açıkça etiketlenir ve ayrı bir alanda durur. Sponsorluk puanı, uyumu ve organik sıralamayı değiştiremez; sıralama satın alınamaz. Hekim ve avukat gibi kategorilerde puan, özet ve reklam hiç yoktur.</p>
+        </div>
+      </section>
+
+      {/* 9 PUAN YÖNTEMİ — kamuya açık; teknik eşikler ve kötüye kullanım tespiti açıklanmaz */}
+      <section id="puan-yontemi" className="mt-10 scroll-mt-28 border-t-2 border-line-strong pt-7" aria-labelledby="s9">
+        <p className="label">09 · Gidenler Puanı yöntemi <span className="tnum text-ink-3">· sürüm {ALGORITHM_VERSION}</span></p>
+        <h2 id="s9" className="mt-2 text-[clamp(1.4rem,3vw,1.9rem)] font-extrabold tracking-[-0.02em]">Puanı ne etkiler, ne etkilemez</h2>
+        <div className="mt-5 grid gap-x-14 gap-y-8 lg:grid-cols-2">
+          <div>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em]">Etkiler</p>
+            <ul className="mt-3 flex flex-col gap-3">
+              {PUBLIC_FACTORS.map((f) => (
+                <li key={f.key} className="text-[14.5px] leading-relaxed text-ink-2"><strong className="text-ink">{f.title}.</strong> {f.text}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em]">Asla etkilemez</p>
+            <ul className="mt-3 flex flex-col gap-2">
+              {NEVER_AFFECTS.map((t) => <li key={t} className="text-[14.5px] leading-relaxed text-ink-2">· {t}</li>)}
+            </ul>
+            <p className="mt-6 text-[13px] font-bold uppercase tracking-[0.14em]">Ziyaret doğrulama</p>
+            <ul className="mt-3 flex flex-col gap-2">
+              {PUBLIC_VERIFICATION_TEXT.map((t) => <li key={t} className="text-[14.5px] leading-relaxed text-ink-2">· {t}</li>)}
+            </ul>
+            <p className="mt-4 text-[12.5px] text-ink-3">Ağırlıkların tam değerleri ve kötüye kullanım tespitinin ayrıntıları, puanı oynatmayı zorlaştırmak için açıklanmaz. Yöntem değiştiğinde sürüm numarası değişir ve burada duyurulur.</p>
+          </div>
         </div>
       </section>
 
