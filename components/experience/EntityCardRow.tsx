@@ -18,6 +18,7 @@ export function placeLine(card: EntityCard) {
 
 /** "214 deneyim · Yüksek güven" — kartın kanıt satırı. */
 export function evidenceLine(card: EntityCard) {
+  if (card.entity.isReal && card.experienceCount === 0) return "henüz deneyim yok";
   const parts = [`${nf(card.experienceCount)} deneyim`];
   if (card.confidence && card.score !== null) parts.push(CONFIDENCE_LABEL[card.confidence]);
   return parts.join(" · ");
@@ -73,7 +74,9 @@ export function EntityCardRow({ card, rank, match, href, insight, dense = false,
               {pulse && <span className="mt-1 hidden sm:block"><Pulse pulse={pulse} width={104} height={22} band={false} /></span>}
             </>
           ) : (
-            <span className="max-w-[9rem] text-right text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">puan gösterilmiyor</span>
+            entity.isReal
+              ? <span className="max-w-[9rem] text-right text-[11px] font-bold uppercase tracking-[0.12em] text-pos-ink">gerçek mekân · ilk deneyim bekliyor</span>
+              : <span className="max-w-[9rem] text-right text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">puan gösterilmiyor</span>
           )}
         </div>
       </Link>

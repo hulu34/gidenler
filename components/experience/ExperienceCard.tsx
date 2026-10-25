@@ -70,6 +70,7 @@ export function ExperienceCard({
           </span>
           <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[12px] text-ink-3">
             <span className="font-semibold text-ink-2">{monthOf(e.visitedAt)}&apos;da gitti</span>
+            {(e.visitNo ?? 1) > 1 && <span className="rounded-full border border-line-2 px-1.5 py-px text-[10.5px] font-bold text-ink-2">{e.visitNo}. ziyaret</span>}
             <span aria-hidden>·</span>
             <span>{relative(e.createdAt)} yazdı</span>
             {topSocial?.followerCount && (
