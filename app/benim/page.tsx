@@ -12,6 +12,7 @@ import { EntityActions } from "@/components/decision/EntityActions";
 import { TasteEditor } from "@/components/decision/TasteEditor";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 import { DemoNotice } from "@/components/ui/DemoNotice";
+import { MyReservations } from "@/components/reservation/MyReservations";
 
 /**
  * BENİM GİDENLER'İM — kullanıcının ana üssü.
@@ -57,6 +58,8 @@ export default function MyPage() {
           <span className="tnum">{want.length} gitmek istediğim</span><span className="tnum">{saved.length} kaydettiğim</span><span className="tnum">{visited.length} gittiğim</span><span className="tnum">{data.reactions.length} tepki</span>
         </p>
       </header>
+
+      <MyReservations />
 
       {empty && (
         <section className="mt-8 border-t-2 border-line-strong pt-7">
