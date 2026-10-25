@@ -1,35 +1,41 @@
 /* ==========================================================================
-   VERİTABANI GEÇİŞİ + TOHUM — Vercel üretim derlemesinde (vercel-build) çalışır.
-   · Yalnız VERCEL_ENV=production'da ya da DB_MIGRATE=1 ile; önizleme derlemeleri
-     üretim veritabanını DEĞİŞTİRMEZ (aynı veritabanını paylaşıyorlar).
-   · Bağlantı adresi yoksa sessizce atlar (statik derleme, yerel geliştirme).
-   · Gizli değer yazdırılmaz; yalnız sayılar.
+   YEREL / ELLE GEÇİŞ KOMUTU — derlemede ÇALIŞMAZ.
+   Kullanım:
+     DATABASE_URL_UNPOOLED=… npx tsx scripts/db-migrate.ts            → yalnız durum (değişiklik yok)
+     DATABASE_URL_UNPOOLED=… npx tsx scripts/db-migrate.ts --apply    → bekleyen geçişleri uygula
+     DATABASE_URL_UNPOOLED=… npx tsx scripts/db-migrate.ts --seed     → 148 mekân tohumu + bütünlük kontrolü
+   Gizli değer yazdırılmaz.
    ========================================================================== */
 import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { migrate } from "drizzle-orm/node-postgres/migrator";
 import * as schema from "../lib/db/schema";
-import { seedRealVenues } from "../lib/db/seed";
+import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
+import { seedRealVenues, verifyRealVenues } from "../lib/db/seed";
 import { realVenueRecords } from "../data/real";
 import type { Db } from "../lib/db/client";
 
 async function main() {
   const url = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
-  const allowed = process.env.VERCEL_ENV === "production" || process.env.DB_MIGRATE === "1";
-  if (!url) { console.log("[db] DATABASE_URL yok — geçiş atlandı."); return; }
-  if (!allowed) { console.log(`[db] VERCEL_ENV=${process.env.VERCEL_ENV ?? "-"} — yalnız üretimde geçiş yapılır, atlandı.`); return; }
-
-  const pool = new Pool({ connectionString: url, max: 2 });
+  if (!url) { console.error("DATABASE_URL_UNPOOLED gerekli."); process.exit(2); }
+  const pool = new Pool({ connectionString: url, max: 1 });
+  const x: Executor = {
+    async query<T>(text: string) { return (await pool.query(text)).rows as T[]; },
+    async transaction(stmts: string[]) {
+      const c = await pool.connect();
+      try { await c.query("BEGIN"); for (const s of stmts) await c.query(s); await c.query("COMMIT"); }
+      catch (e) { await c.query("ROLLBACK"); throw e; } finally { c.release(); }
+    },
+  };
   try {
-    const db = drizzle(pool, { schema });
-    const t0 = Date.now();
-    await migrate(db, { migrationsFolder: "./drizzle" });
-    console.log(`[db] geçişler uygulandı (${Date.now() - t0} ms)`);
-    const r = await seedRealVenues(db as unknown as Db, realVenueRecords);
-    console.log(`[db] tohum: ${r.inserted} yeni, ${r.updated} güncellendi, toplam ${r.total} mekân`);
-  } finally {
-    await pool.end();
-  }
+    if (process.argv.includes("--apply")) console.log(JSON.stringify(await applyMigrations(x), null, 1));
+    else console.log(JSON.stringify(await migrationStatus(x), null, 1));
+    if (process.argv.includes("--seed")) {
+      const db = drizzle(pool, { schema }) as unknown as Db;
+      console.log(JSON.stringify(await seedRealVenues(db, realVenueRecords)));
+      const v = await verifyRealVenues(db, realVenueRecords);
+      console.log(JSON.stringify(v));
+      if (!v.ok) process.exitCode = 1;
+    }
+  } finally { await pool.end(); }
 }
-
-main().catch((e) => { console.error("[db] geçiş başarısız:", e instanceof Error ? e.message : e); process.exit(1); });
+main().catch((e) => { console.error("Geçiş başarısız:", e instanceof Error ? e.message : e); process.exit(1); });

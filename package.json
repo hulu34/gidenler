@@ -11,9 +11,10 @@
     "ai:sec": "tsx scripts/aisec.ts",
     "ai:eval": "tsx scripts/aieval.ts",
     "qa": "tsx scripts/searchqa.ts && tsx scripts/semqa.ts",
-    "vercel-build": "tsx scripts/db-migrate.ts && next build",
-    "db:generate": "drizzle-kit generate",
-    "test:db": "tsx scripts/dbtest.ts"
+    "db:generate": "drizzle-kit generate && tsx scripts/db-bundle-migrations.ts",
+    "test:db": "tsx scripts/dbtest.ts",
+    "db:status": "tsx scripts/db-migrate.ts",
+    "db:apply": "tsx scripts/db-migrate.ts --apply"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.7.12",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.11",
+    "@electric-sql/pglite-socket": "^0.2.14",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.4.1",
     "@types/pg": "^8.23.1",

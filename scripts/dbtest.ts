@@ -4,11 +4,12 @@
    ========================================================================== */
 import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
-import { migrate } from "drizzle-orm/pglite/migrator";
 import { eq, sql } from "drizzle-orm";
 import * as schema from "../lib/db/schema";
 import { setDbForTests, type Db } from "../lib/db/client";
-import { seedRealVenues, PILOT_SLUGS } from "../lib/db/seed";
+import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
+import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
+import { MIGRATIONS } from "../lib/db/migrations.generated";
 import { realVenueRecords } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { reserve, BUDGETS, usageSnapshot } from "../lib/usage/counter";
@@ -49,7 +50,20 @@ async function main() {
   console.log("\n1) Şema ve geçiş (PGlite)");
   const pg = new PGlite();
   const db = drizzle(pg, { schema }) as unknown as Db;
-  await migrate(drizzle(pg), { migrationsFolder: "./drizzle" });
+  const x: Executor = {
+    async query<T>(t: string) { return (await pg.query(t)).rows as T[]; },
+    async transaction(stmts: string[]) { await pg.transaction(async (tx) => { for (const st of stmts) { if (st.startsWith("SELECT pg_advisory")) continue; await tx.query(st); } }); },
+  };
+  const s0 = await migrationStatus(x);
+  ok("başlangıçta tüm geçişler beklemede", s0.pending.length === MIGRATIONS.length && !s0.applied.length);
+  const a1 = await applyMigrations(x);
+  ok("geçişler uygulandı", a1.applied.length === MIGRATIONS.length && !a1.status.pending.length);
+  const a2 = await applyMigrations(x);
+  ok("ikinci çalıştırma hiçbir şey yapmaz (tekrar çalıştırılabilir)", a2.applied.length === 0);
+  await pg.query(`UPDATE "_gidenler_migrations" SET hash = 'bozuk' WHERE tag = '${MIGRATIONS[0].tag}'`);
+  let drift = false; try { await applyMigrations(x); } catch { drift = true; }
+  ok("uygulanmış geçiş değişirse durur", drift);
+  await pg.query(`UPDATE "_gidenler_migrations" SET hash = '${MIGRATIONS[0].hash}' WHERE tag = '${MIGRATIONS[0].tag}'`);
   const tables = await pg.query<{ n: number }>("select count(*)::int as n from information_schema.tables where table_schema='public'");
   ok("tüm tablolar oluştu (≥ 30)", tables.rows[0].n >= 30, tables.rows[0].n);
 
@@ -64,6 +78,8 @@ async function main() {
   ok("her mekânın OSM kimliği var", Number(osm.n) === realVenueRecords.length);
   const [prov] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.fieldProvenance);
   ok("alan kaynakları yazıldı", Number(prov.n) > realVenueRecords.length * 3, prov.n);
+  const v = await verifyRealVenues(db, realVenueRecords);
+  ok("bütünlük: eksiksiz, tekrarsız, OSM kimlikli", v.ok && v.present === realVenueRecords.length && v.duplicateSlugs === 0 && v.duplicateOsmRefs === 0 && v.missingOsmIdentifier === 0, v);
   const [ciya] = await db.select().from(schema.places).where(eq(schema.places.slug, "ciya-sofrasi-kadikoy"));
 
   console.log("\n3) Kullanıcı verisi ve ilişkiler (FK)");

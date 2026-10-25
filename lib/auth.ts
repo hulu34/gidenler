@@ -14,10 +14,24 @@ import { user, session, account, verification } from "@/lib/db/schema";
    ────────────────────────────────────────────────────────────────────────── */
 
 type Auth = ReturnType<typeof betterAuth>;
+
+/** Taban adres: BETTER_AUTH_URL (üretim; gidenler.com'a geçince güncellenir) → yoksa Preview dalının sabit adresi. */
+export function authBaseURL() {
+  if (process.env.BETTER_AUTH_URL) return process.env.BETTER_AUTH_URL;
+  if (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_BRANCH_URL) return `https://${process.env.VERCEL_BRANCH_URL}`;
+  return undefined;
+}
+
+/** Güvenilen kökenler: taban adres + Preview dal adresi + (varsa) BETTER_AUTH_TRUSTED_ORIGINS (virgülle). */
+function trustedOrigins() {
+  const list = [authBaseURL(), process.env.VERCEL_BRANCH_URL && `https://${process.env.VERCEL_BRANCH_URL}`,
+    ...(process.env.BETTER_AUTH_TRUSTED_ORIGINS ?? "").split(",").map((s) => s.trim())];
+  return [...new Set(list.filter(Boolean) as string[])];
+}
 let cached: Auth | null | undefined;
 
 export function authConfigured() {
-  return !!(process.env.DATABASE_URL && process.env.BETTER_AUTH_SECRET && process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
+  return !!(process.env.DATABASE_URL && process.env.BETTER_AUTH_SECRET && process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET && authBaseURL());
 }
 
 export function getAuth(): Auth | null {
@@ -25,6 +39,8 @@ export function getAuth(): Auth | null {
   const db = getDb();
   if (!db || !authConfigured()) return (cached = null);
   cached = betterAuth({
+    baseURL: authBaseURL(),
+    trustedOrigins: trustedOrigins(),
     database: drizzleAdapter(db, { provider: "pg", schema: { user, session, account, verification }, transaction: false }),
     emailAndPassword: { enabled: false },
     socialProviders: {

@@ -13,6 +13,7 @@ import { TasteEditor } from "@/components/decision/TasteEditor";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { MyReservations } from "@/components/reservation/MyReservations";
+import { AccountBox } from "@/components/auth/AccountBox";
 
 /**
  * BENİM GİDENLER'İM — kullanıcının ana üssü.
@@ -59,6 +60,7 @@ export default function MyPage() {
         </p>
       </header>
 
+      <AccountBox />
       <MyReservations />
 
       {empty && (

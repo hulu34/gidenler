@@ -1,5 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
+import { drizzle as drizzlePg } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
 import type { PgDatabase, PgQueryResultHKT } from "drizzle-orm/pg-core";
 import * as schema from "./schema";
 
@@ -21,7 +23,10 @@ export function getDb(): Db | null {
   if (cached !== undefined) return cached;
   const url = process.env.DATABASE_URL;
   if (!url) return (cached = null);
-  cached = drizzle(neon(url), { schema }) as unknown as Db;
+  /* DB_DRIVER=pg yalnız yerel test içindir (gömülü Postgres soketi); Vercel'de her zaman Neon HTTP. */
+  cached = (process.env.DB_DRIVER === "pg" && !process.env.VERCEL
+    ? drizzlePg(new Pool({ connectionString: url, max: 3 }), { schema })
+    : drizzle(neon(url), { schema })) as unknown as Db;
   return cached;
 }
 
