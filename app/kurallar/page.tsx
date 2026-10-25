@@ -46,6 +46,17 @@ export default function RulesPage() {
         </div>
       </section>
 
+      <section id="kvkk" className="mt-12 scroll-mt-24 border-t-2 border-line-strong pt-7" aria-labelledby="h-kvkk">
+        <h2 id="h-kvkk" className="text-[13px] font-bold uppercase tracking-[0.2em]">Rezervasyon · kişisel veri (aydınlatma özeti)</h2>
+        <ul className="mt-3 flex max-w-[72ch] flex-col gap-2 text-[14px] leading-relaxed text-ink-2">
+          <li>· Rezervasyon talebinde verdiğin <b>ad ve telefon</b>, yalnızca o rezervasyonun yerine getirilmesi için ilgili işletmeye iletilir.</li>
+          <li>· Gidenler bu bilgileri pazarlama için kullanmaz, üçüncü kişilere satmaz; sunucu kayıtlarına ad ve telefon yazılmaz.</li>
+          <li>· Tarayıcında yalnızca rezervasyon kodu, mekân, tarih, saat ve kişi sayısı tutulur (&ldquo;Rezervasyonlarım&rdquo;); dilediğinde tarayıcı verisini silerek kaldırabilirsin.</li>
+          <li>· Rezervasyon ücreti işletmeye aittir; kullanıcıdan ücret alınmaz.</li>
+        </ul>
+        <p className="mt-3 text-[12px] text-ink-3">Bu özet bilgilendirme amaçlıdır; şirket kuruluşu ve resmî aydınlatma metni hukuk danışmanıyla tamamlanacaktır.</p>
+      </section>
+
       <p className="mt-12 flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-4 text-[13px] font-semibold">
         <Link href="/nasil-calisir/" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Puan nasıl oluşur?</Link>
         <Link href="/isletmeler/" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">İşletmeler için</Link>
