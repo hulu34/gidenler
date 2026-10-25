@@ -3,67 +3,88 @@ import { getDb } from "@/lib/db/client";
 import { executorFor } from "@/lib/db/executors";
 import { applyMigrations, migrationStatus } from "@/lib/db/migrate";
 import { seedRealVenues, verifyRealVenues } from "@/lib/db/seed";
+import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview } from "@/lib/db/rollback";
 import { realVenueRecords } from "@/data/real";
+import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   /api/admin/db — KONTROLLÜ GEÇİŞ VE TOHUM (derlemede otomatik çalışmaz).
-   Koruma katmanları:
-   1. Yalnız Vercel PREVIEW dağıtımında var (VERCEL_ENV=preview); üretimde ve statik sitede 404.
-   2. Preview adresleri Vercel Authentication ile korunur: yalnız proje sahibi oturumuyla açılır.
-   3. Yazma işlemleri yalnız aynı kökenden POST + { confirm: "EVET" } ile.
-   4. Geçişler danışma kilidi + işlem içinde; tohum tekrar çalıştırılabilir.
-   Not: Preview ve Production aynı Neon veritabanını kullanır; buradaki işlem üretim verisini değiştirir.
+   /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
+   Koruma:
+   1. Yalnız dağıtıma özgü adresten (VERCEL_URL, ör. gidenler-ab12cd-…vercel.app) çalışır. Bu adresler
+      Vercel Authentication ile korunur; herkese açık alan adlarında (gidenler.vercel.app, gidenler.com) 404.
+   2. Her ortam kendi veritabanını değiştirir: Preview → Neon "preview/<dal>" dalı; Production → ana dal.
+   3. Yazma: aynı köken + POST + { confirm: "EVET", target: <bu dağıtımın ortamı> }.
+      Geri alma ayrıca { confirm: "GERI-AL" } ister ve kullanıcı verisi varsa durur.
    ────────────────────────────────────────────────────────────────────────── */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const H = { "Cache-Control": "no-store" };
-/* Vercel'de yalnız Preview; Vercel dışında (yerel test) yalnız DB_ADMIN_LOCAL=1 ile. */
-const enabled = () => process.env.VERCEL ? process.env.VERCEL_ENV === "preview" : process.env.DB_ADMIN_LOCAL === "1";
 const nf = () => new NextResponse(null, { status: 404 });
+const envName = () => process.env.VERCEL_ENV ?? "local";
 
-function exec() {
-  const url = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
-  return url ? executorFor(url) : null;
+/** Vercel'de: istek yalnız bu dağıtımın kendine özgü (korumalı) adresine geldiyse. Yerelde: DB_ADMIN_LOCAL=1. */
+function allowed(req: Request) {
+  if (!process.env.VERCEL) return process.env.DB_ADMIN_LOCAL === "1";
+  const host = (req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? "").toLowerCase();
+  const own = (process.env.VERCEL_URL ?? "").toLowerCase();
+  return !!own && host === own;
 }
 
-export async function GET() {
-  if (!enabled()) return nf();
+const dbUrl = () => process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
+function exec() {
+  const url = dbUrl();
+  return url ? executorFor(url) : null;
+}
+const fail = (e: unknown, status = 500) =>
+  NextResponse.json({ error: "failed", message: e instanceof Error ? e.message.slice(0, 300) : "error" }, { status, headers: H });
+
+export async function GET(req: Request) {
+  if (!allowed(req)) return nf();
   const x = exec(), db = getDb();
   if (!x || !db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
   try {
     const migrations = await migrationStatus(x);
-    const integrity = migrations.pending.length ? null : await verifyRealVenues(db, realVenueRecords).catch(() => null);
-    return NextResponse.json({ env: process.env.VERCEL_ENV ?? "local", migrations, integrity }, { headers: H });
-  } catch (e) {
-    return NextResponse.json({ error: "failed", message: e instanceof Error ? e.message.slice(0, 300) : "error" }, { status: 500, headers: H });
-  }
+    const ready = !migrations.pending.length;
+    const integrity = ready ? await verifyRealVenues(db, realVenueRecords).catch(() => null) : null;
+    const rollback = ready ? { seed: await rollbackSeedPreview(x), migration: await rollbackMigrationPreview(x) } : null;
+    return NextResponse.json({ env: envName(), db: { fingerprint: dbFingerprint(dbUrl()), writeGuard: previewWriteGuard(dbUrl()) }, migrations, integrity, rollback }, { headers: H });
+  } catch (e) { return fail(e); }
 }
 
 export async function POST(req: Request) {
-  if (!enabled()) return nf();
+  if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string } = {};
+  let body: { action?: string; confirm?: string; target?: string } = {};
   try { body = await req.json(); } catch { /* boş */ }
-  if (body.confirm !== "EVET") return NextResponse.json({ error: "confirm_required" }, { status: 400, headers: H });
+  if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
+  const guard = previewWriteGuard(dbUrl());
+  if (!guard.ok) return NextResponse.json({ error: "write_locked", reason: guard.reason }, { status: 409, headers: H });
   const x = exec(), db = getDb();
   if (!x || !db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
   try {
-    if (body.action === "migrate") {
-      const r = await applyMigrations(x);
-      return NextResponse.json({ action: "migrate", ...r }, { headers: H });
+    switch (body.action) {
+      case "migrate":
+        if (body.confirm !== "EVET") break;
+        return NextResponse.json({ action: "migrate", env: envName(), ...(await applyMigrations(x)) }, { headers: H });
+      case "seed": {
+        if (body.confirm !== "EVET") break;
+        const st = await migrationStatus(x);
+        if (st.pending.length) return NextResponse.json({ error: "pending_migrations", pending: st.pending }, { status: 409, headers: H });
+        const r = await seedRealVenues(db, realVenueRecords);
+        return NextResponse.json({ action: "seed", env: envName(), ...r, integrity: await verifyRealVenues(db, realVenueRecords) }, { headers: H });
+      }
+      case "rollback-seed":
+        if (body.confirm !== "GERI-AL") break;
+        return NextResponse.json({ action: "rollback-seed", env: envName(), ...(await rollbackSeed(x)) }, { headers: H });
+      case "rollback-migration":
+        if (body.confirm !== "GERI-AL") break;
+        return NextResponse.json({ action: "rollback-migration", env: envName(), ...(await rollbackMigration(x)) }, { headers: H });
+      default:
+        return NextResponse.json({ error: "unknown_action" }, { status: 400, headers: H });
     }
-    if (body.action === "seed") {
-      const st = await migrationStatus(x);
-      if (st.pending.length) return NextResponse.json({ error: "pending_migrations", pending: st.pending }, { status: 409, headers: H });
-      const r = await seedRealVenues(db, realVenueRecords);
-      const integrity = await verifyRealVenues(db, realVenueRecords);
-      return NextResponse.json({ action: "seed", ...r, integrity }, { headers: H });
-    }
-    return NextResponse.json({ error: "unknown_action" }, { status: 400, headers: H });
-  } catch (e) {
-    return NextResponse.json({ error: "failed", message: e instanceof Error ? e.message.slice(0, 300) : "error" }, { status: 500, headers: H });
-  }
+    return NextResponse.json({ error: "confirm_required" }, { status: 400, headers: H });
+  } catch (e) { return fail(e, 409); }
 }

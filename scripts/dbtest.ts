@@ -10,6 +10,7 @@ import { setDbForTests, type Db } from "../lib/db/client";
 import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
 import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
 import { MIGRATIONS } from "../lib/db/migrations.generated";
+import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview } from "../lib/db/rollback";
 import { realVenueRecords } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { reserve, BUDGETS, usageSnapshot } from "../lib/usage/counter";
@@ -192,6 +193,26 @@ async function main() {
   const w = (d: Parameters<typeof experienceWeight>[0]["authorDisclosure"]) => experienceWeight({ visitedAt: "2026-10-01", verified: true, authorReputation: 50, authorDisclosure: d }, new Date("2026-10-25"));
   ok("işletme sahibi / çalışanı puana girmez (ağırlık 0)", w("owner_related") === 0 && w("employee") === 0);
   ok("davetli yazar daha az etkili", w("invited") < w("none"));
+
+  console.log("\n9) Geri dönüş (kullanıcı verisi varsa durur)");
+  const sp = await rollbackSeedPreview(x);
+  ok("tohum geri alma: kullanıcı verisi bağlı → güvenli değil", !sp.safe && sp.linkedUserRows > 0, sp);
+  let stopped = false; try { await rollbackSeed(x); } catch { stopped = true; }
+  ok("tohum geri alma kullanıcı verisi varken durur", stopped);
+  const mp = await rollbackMigrationPreview(x);
+  ok("geçiş geri alma: kullanıcı var → güvenli değil", !mp.safe && mp.users >= 1, mp);
+  let stopped2 = false; try { await rollbackMigration(x); } catch { stopped2 = true; }
+  ok("geçiş geri alma kullanıcı varken durur", stopped2);
+  await pg.query(`DELETE FROM "user"`);
+  const rs = await rollbackSeed(x);
+  ok(`tohum geri alındı (${rs.removedPlaces} mekân)`, rs.removedPlaces === realVenueRecords.length);
+  const rm = await rollbackMigration(x);
+  const left = await pg.query<{ n: number }>("select count(*)::int as n from information_schema.tables where table_schema='public' and table_name <> '_gidenler_migrations'");
+  ok(`geçiş geri alındı (${rm.droppedTables} tablo), şema boş`, left.rows[0].n === 0, left.rows[0]);
+  const again = await applyMigrations(x);
+  ok("geri alındıktan sonra yeniden uygulanabilir", again.applied.length === MIGRATIONS.length);
+  const reseed = await seedRealVenues(db, realVenueRecords);
+  ok("yeniden tohum 148/148", reseed.inserted === realVenueRecords.length && (await verifyRealVenues(db, realVenueRecords)).ok);
 
   console.log(`\nSonuç: ${pass} geçti, ${fail} kaldı`);
   await pg.close();
