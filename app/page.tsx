@@ -7,6 +7,7 @@ import { Risers } from "@/components/home/Risers";
 import { ScoreLies } from "@/components/home/ScoreLies";
 import { Districts } from "@/components/home/Districts";
 import { Method } from "@/components/home/Method";
+import { RealVenues } from "@/components/home/RealVenues";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { AskAI } from "@/components/home/AskAI";
 import { ContinueModule } from "@/components/decision/ContinueModule";
@@ -84,6 +85,7 @@ export default function HomePage() {
           <HomeRankings data={data} />
         </section>
         <ContinueModule />
+        <RealVenues />
         <Risers />
         <ScoreLies />
         <Districts />
