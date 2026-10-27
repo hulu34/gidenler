@@ -28,7 +28,7 @@ export default function SearchPage() {
   const [limit, setLimit] = useState(40);
   const [writeMode, setWriteMode] = useState(false);
   /* Demo kayıtlar varsayılan sonuçlarda yok; geliştirme/sunum için açıkça açılır (?demo=1 ya da sunum modu). */
-  const [showDemo, setShowDemo] = useState(false);
+  const [showDemo, setShowDemo] = useState(DEMO_VISIBLE);
   const cats = listCategories();
   const data = useUserData();
   const profile = useMemo(() => effectiveProfile(data.taste), [data.taste]);

@@ -8,6 +8,7 @@ import { realVenueRecords } from "@/data/real";
 import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -34,7 +35,7 @@ function allowed(req: Request) {
   return !!own && host === own;
 }
 
-const dbUrl = () => process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
+const dbUrl = () => (DEMO_VISIBLE ? undefined : process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL);
 function exec() {
   const url = dbUrl();
   return url ? executorFor(url) : null;

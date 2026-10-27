@@ -3,6 +3,7 @@ import { drizzleAdapter } from "@better-auth/drizzle-adapter";
 import { nextCookies } from "better-auth/next-js";
 import { getDb } from "@/lib/db/client";
 import { user, session, account, verification } from "@/lib/db/schema";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* ──────────────────────────────────────────────────────────────────────────
    KİMLİK — Better Auth + "Google ile giriş" (Harun'un kararı).
@@ -31,6 +32,8 @@ function trustedOrigins() {
 let cached: Auth | null | undefined;
 
 export function authConfigured() {
+  /* Yatırımcı demosunda giriş yok (veritabanı da yok). */
+  if (DEMO_VISIBLE) return false;
   return !!(process.env.DATABASE_URL && process.env.BETTER_AUTH_SECRET && process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET && authBaseURL());
 }
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { gidenler100, G100 } from "@/lib/venue";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
+import G100PreviewPage from "./onizleme/page";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 
 export const metadata = { title: `Gidenler 100 · ${G100.year}`, description: "İstanbul'da gidenlerin en iyi deneyimi yaşadığı 100 yer — satın alınamaz, kanıta dayalı." };
@@ -8,6 +9,8 @@ export const metadata = { title: `Gidenler 100 · ${G100.year}`, description: "�
 /* GİDENLER 100 — Tabelog "Hyakumeiten"/Award'dan uyarlama. Kural: yeme-içme, İstanbul, en az 60 deneyim,
    yüksek güven; puana göre ilk 100. Abonelik, reklam, rezervasyon ücreti etkisizdir. */
 export default function G100Page() {
+  /* Yatırımcı demosunda bu adres demo önizlemeyi (DEMO etiketli) gösterir. */
+  if (DEMO_VISIBLE) return <G100PreviewPage />;
   const list = gidenler100();
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">

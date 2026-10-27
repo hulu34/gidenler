@@ -1,4 +1,5 @@
 import { Redis } from "@upstash/redis";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* Upstash Redis (REST) — yalnız sunucu. Ortam değişkenleri Vercel entegrasyonundan gelir (KV_REST_API_*). */
 let client: Redis | null | undefined;
@@ -9,7 +10,8 @@ export type RedisLike = Pick<Redis, "eval" | "get" | "set" | "incr" | "expire" |
 export function getRedis(): RedisLike | null {
   if (override) return override;
   if (client !== undefined) return client;
-  const url = process.env.KV_REST_API_URL, token = process.env.KV_REST_API_TOKEN;
+  /* Yatırımcı demosu Redis'e bağlanmaz (sayaç, kota, hız sınırı karışmaz; ücretli yollar kapalı kalır). */
+  const url = DEMO_VISIBLE ? undefined : process.env.KV_REST_API_URL, token = process.env.KV_REST_API_TOKEN;
   client = url && token ? new Redis({ url, token, automaticDeserialization: false }) : null;
   return client;
 }

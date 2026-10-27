@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 /* ==========================================================================
    FAZ 0 TESTLERİ — gömülü Postgres (PGlite) + sahte Redis + sahte Google.
    Gerçek ağ çağrısı ve gerçek maliyet YOK. Çalıştır: npm run test:db
@@ -200,6 +201,8 @@ async function main() {
   ok("aynı kodla ikinci deneyim → zayıf", assess([{ kind: "business_seated", at: t }, { kind: "receipt", at: t }], { reviewAt: rv, codeAlreadyUsed: true }).level === "weak");
 
   console.log("\n8) Puan ticari ilişkiden bağımsız · demo görünürlüğü");
+  const { demoPaths } = await import("./gen-demo-paths");
+  ok("demo adres listesi (middleware) güncel", JSON.stringify(demoPaths()) === JSON.stringify(JSON.parse(readFileSync(new URL("../data/demoPaths.json", import.meta.url), "utf8"))));
   if (!DEMO_VISIBLE) {
     ok("demo kapalı: uygulama listesinde demo kayıt yok", entities.every((e) => !e.isDemo) && entities.length === realVenueRecords.length);
     ok("demo kapalı: Gidenler 100 yalnız gerçek", gidenler100().every((c) => !c.entity.isDemo));

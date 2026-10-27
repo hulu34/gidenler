@@ -8,6 +8,7 @@ import { ScoreLies } from "@/components/home/ScoreLies";
 import { Districts } from "@/components/home/Districts";
 import { Method } from "@/components/home/Method";
 import { RealVenues } from "@/components/home/RealVenues";
+import { RealExplore } from "@/components/home/RealExplore";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { DEMO_VISIBLE } from "@/data/entities";
 import { isRestaurantTarget, realVenueRecords } from "@/data/real";
@@ -98,6 +99,7 @@ export default function HomePage() {
           </section>
         )}
         <ContinueModule />
+        {!DEMO_VISIBLE && <RealExplore />}
         <RealVenues />
         {DEMO_VISIBLE && <><Risers /><ScoreLies /><Districts /></>}
         <Method />

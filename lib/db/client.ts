@@ -4,6 +4,7 @@ import { drizzle as drizzlePg } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import type { PgDatabase, PgQueryResultHKT } from "drizzle-orm/pg-core";
 import * as schema from "./schema";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* ──────────────────────────────────────────────────────────────────────────
    VERİTABANI İSTEMCİSİ — yalnız sunucu.
@@ -21,7 +22,8 @@ let override: Db | null = null;
 export function getDb(): Db | null {
   if (override) return override;
   if (cached !== undefined) return cached;
-  const url = process.env.DATABASE_URL;
+  /* Yatırımcı demosu (NEXT_PUBLIC_SHOW_DEMO=true) hiçbir veritabanına bağlanmaz: gerçek kullanıcı verisinden izole. */
+  const url = DEMO_VISIBLE ? undefined : process.env.DATABASE_URL;
   if (!url) return (cached = null);
   /* DB_DRIVER=pg yalnız yerel test içindir (gömülü Postgres soketi); Vercel'de her zaman Neon HTTP. */
   cached = (process.env.DB_DRIVER === "pg" && !process.env.VERCEL

@@ -11,6 +11,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { DemoBoot } from "@/components/demo/DemoBoot";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 export const metadata: Metadata = {
   title: {
@@ -20,6 +21,8 @@ export const metadata: Metadata = {
   description:
     "Gidenler, dağınık deneyim sinyallerini karara dönüştürür. Restoran, kafe, otel, film ve daha fazlası için gerçek deneyimlerden üretilmiş puanlar.",
   applicationName: "Gidenler",
+  /* Yatırımcı demosu arama motorlarına tamamen kapalı. */
+  ...(DEMO_VISIBLE ? { robots: { index: false, follow: false, nocache: true } } : {}),
 };
 
 export const viewport: Viewport = {
@@ -38,6 +41,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           İçeriğe geç
         </a>
+        {DEMO_VISIBLE && (
+          <div role="note" className="sticky top-0 z-[60] bg-ink px-4 py-1.5 text-center text-[11.5px] font-bold uppercase tracking-[0.14em] text-paper">
+            Yatırımcı demosu · puanlar, deneyimler ve kişiler sentetiktir · gerçek bir işletmeye ait değildir
+          </div>
+        )}
         <DemoBoot />
         <Header />
         <main id="icerik">{children}</main>
