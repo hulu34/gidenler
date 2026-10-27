@@ -22,7 +22,8 @@ import { matchScore } from "../lib/match/score";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
-import { entities } from "../data/entities";
+import { entities, DEMO_VISIBLE } from "../data/entities";
+import { gidenler100 } from "../lib/venue";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info?: unknown) => {
@@ -198,18 +199,24 @@ async function main() {
   ok("işletmeyle ilişkili yazar → none", assess([{ kind: "business_seated", at: t }, { kind: "receipt", at: t }], { reviewAt: rv, authorRelatedToBusiness: true }).level === "none");
   ok("aynı kodla ikinci deneyim → zayıf", assess([{ kind: "business_seated", at: t }, { kind: "receipt", at: t }], { reviewAt: rv, codeAlreadyUsed: true }).level === "weak");
 
-  console.log("\n8) Puan ticari ilişkiden bağımsız");
-  const demo = entities.find((e) => e.isDemo && (e.experienceTotal ?? 0) > 20 && e.categoryId === "cat.restaurant")!;
-  const before = getTopic(demo.slug)?.intelligence?.overallScore;
-  const saved = { b: demo.business, r: demo.reservation };
-  demo.business = { claimed: true, subscription: "panel" };
-  demo.reservation = { mode: "gidenler" };
-  const after = getTopic(demo.slug)?.intelligence?.overallScore;
-  demo.business = saved.b; demo.reservation = saved.r;
-  ok(`abonelik + rezervasyon ortaklığı puanı değiştirmez (${demo.slug}: ${before} = ${after})`, before !== undefined && before === after);
-  const w = (d: Parameters<typeof experienceWeight>[0]["authorDisclosure"]) => experienceWeight({ visitedAt: "2026-10-01", verified: true, authorReputation: 50, authorDisclosure: d }, new Date("2026-10-25"));
-  ok("işletme sahibi / çalışanı puana girmez (ağırlık 0)", w("owner_related") === 0 && w("employee") === 0);
-  ok("davetli yazar daha az etkili", w("invited") < w("none"));
+  console.log("\n8) Puan ticari ilişkiden bağımsız · demo görünürlüğü");
+  if (!DEMO_VISIBLE) {
+    ok("demo kapalı: uygulama listesinde demo kayıt yok", entities.every((e) => !e.isDemo) && entities.length === realVenueRecords.length);
+    ok("demo kapalı: Gidenler 100 yalnız gerçek", gidenler100().every((c) => !c.entity.isDemo));
+    console.log("  · puan bağımsızlığı testi demo kayıt ister: NEXT_PUBLIC_SHOW_DEMO=true ile çalışır (npm run test:db iki modu da koşar)");
+  } else {
+    const demo = entities.find((e) => e.isDemo && (e.experienceTotal ?? 0) > 20 && e.categoryId === "cat.restaurant")!;
+    const before = getTopic(demo.slug)?.intelligence?.overallScore;
+    const saved = { b: demo.business, r: demo.reservation };
+    demo.business = { claimed: true, subscription: "panel" };
+    demo.reservation = { mode: "gidenler" };
+    const after = getTopic(demo.slug)?.intelligence?.overallScore;
+    demo.business = saved.b; demo.reservation = saved.r;
+    ok(`abonelik + rezervasyon ortaklığı puanı değiştirmez (${demo.slug}: ${before} = ${after})`, before !== undefined && before === after);
+    const w = (d: Parameters<typeof experienceWeight>[0]["authorDisclosure"]) => experienceWeight({ visitedAt: "2026-10-01", verified: true, authorReputation: 50, authorDisclosure: d }, new Date("2026-10-25"));
+    ok("işletme sahibi / çalışanı puana girmez (ağırlık 0)", w("owner_related") === 0 && w("employee") === 0);
+    ok("davetli yazar daha az etkili", w("invited") < w("none"));
+  }
 
   console.log("\n9) Geri dönüş (kullanıcı verisi varsa durur)");
   const sp = await rollbackSeedPreview(x);

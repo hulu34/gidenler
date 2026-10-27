@@ -173,6 +173,8 @@ export function cleanVenues(list) {
     if (v.neighborhood && v.neighborhood.length > 40) delete v.neighborhood;
     if (v.address) {
       v.address = v.address.replace(/No:no:/i, "No:");
+      /* kapı numarası alanına yazılmış telefon numarası gibi kaynak hataları: numarayı at, sokağı koru */
+      v.address = v.address.replace(/ No:\d{7,}/, "");
       if (v.address.length > 90 || /\d{5}\s/.test(v.address)) v.address = `${v.address.split(",")[0]}, ${v.district}`;
     }
     const n = v.name.toLocaleLowerCase("tr");

@@ -66,6 +66,8 @@ for (let round = 0; picked.length < need; round++) {
       const v = d.cands.shift();
       const key = v.name.toLocaleLowerCase("tr");
       if (takenNames.has(key) || takenRefs.has(v.ref)) continue;
+      /* otel/hostel/pansiyon: restoran hedefine alınmaz (konaklama işletmesinin restoranı ayrı doğrulanmalı) */
+      if (/\b(hotel|otel|hostel|pansiyon|suites?)\b/i.test(v.name)) continue;
       if ((kindCount.get(v.kind) ?? 0) >= KIND_CAP) continue;
       if (!IN_IST(v.lat, v.lng)) continue;
       let slug = v.slug;

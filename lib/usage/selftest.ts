@@ -5,7 +5,10 @@ import { strictHit } from "./rate";
 /* ──────────────────────────────────────────────────────────────────────────
    REDIS ÖZ TESTİ — gerçek Redis'te kota koruması, diğer ortamlara dokunmadan.
    · Yalnız bu ortamın ad alanında, 2099 tarihli test anahtarları; sonunda hepsi silinir.
-   · Diğer ortamların (ör. prod:) anahtar + değerleri test öncesi ve sonrası karşılaştırılır.
+   · Yazılan anahtarlar yalnız üç tanedir (aylık/günlük test sayacı + test hız anahtarı). Bu üçü DIŞINDAKİ
+     tüm anahtarlar (bu ortamın gerçek sayaçları dahil) test öncesi ve sonrası karşılaştırılır; canlı trafik
+     bir sayacı değiştirirse test "kaldı" der (güvenli tarafta hata).
+   · KEYS yalnız küçük sayaç veritabanı için uygundur; anahtar sayısı 10.000'i aşarsa test çalışmaz.
    · Google'a çağrı yapılmaz. Değer döndürülmez, yalnız sayılar ve geçti/kaldı.
    ────────────────────────────────────────────────────────────────────────── */
 export async function redisSelfTest() {
@@ -17,11 +20,17 @@ export async function redisSelfTest() {
   const key = "google:details_atmosphere" as const;
   const k = periodKeys(key, at);
   const rlKey = `itest-${Date.now()}`;
-  const SNAP = `local out = {} for _, k in ipairs(redis.call('KEYS', '*')) do
-    if string.sub(k, 1, ${ns.length + 1}) ~= '${ns}:' then
+  const testKeys = [k.month, k.day, `${ns}:rl:${rlKey}`];
+  /* Test anahtarları dışındaki her anahtarın adı + değeri (değerler yanıtta döndürülmez, yalnız karşılaştırılır). */
+  const SNAP = `local skip = {} for _, k in ipairs(KEYS) do skip[k] = true end
+    local all = redis.call('KEYS', '*') if #all > 10000 then return {'__too_many__'} end
+    local out = {} for _, k in ipairs(all) do if not skip[k] then
       local t = redis.call('TYPE', k)['ok'] local v = '' if t == 'string' then v = redis.call('GET', k) end
       table.insert(out, k .. '=' .. v) end end table.sort(out) return out`;
-  const before = (await r.eval(SNAP, [], [])) as string[];
+  const before = (await r.eval(SNAP, testKeys, [])) as string[];
+  if (before[0] === "__too_many__") return { ok: false, ns, otherEnvKeys: -1, checks: [{ name: "anahtar sayısı çok yüksek — test çalıştırılmadı", ok: false }] };
+  const pre = Number(await r.eval("local n = 0 for _, k in ipairs(KEYS) do n = n + redis.call('EXISTS', k) end return n", testKeys, []));
+  if (pre !== 0) return { ok: false, ns, otherEnvKeys: before.length, checks: [{ name: "test anahtarı önceden var — çakışma riski, test çalıştırılmadı", ok: false }] };
   try {
     const day = budgetFor(key).daily;
     let granted = 0;
@@ -34,12 +43,12 @@ export async function redisSelfTest() {
     for (let i = 0; i < 5; i++) if (await strictHit(rlKey, 3, 60)) allowed++;
     checks.push({ name: "hız sınırı tutuyor (3/5)", ok: allowed === 3, info: allowed });
   } finally {
-    await r.eval("for _, k in ipairs(KEYS) do redis.call('DEL', k) end return 1", [k.month, k.day, `${ns}:rl:${rlKey}`], []);
+    await r.eval("for _, k in ipairs(KEYS) do redis.call('DEL', k) end return 1", testKeys, []);
   }
-  const left = Number(await r.eval(`local n = 0 for _ in ipairs(redis.call('KEYS', '${ns}:*2099*')) do n = n + 1 end
-    return n + redis.call('EXISTS', KEYS[1])`, [`${ns}:rl:${rlKey}`], []));
+  const left = Number(await r.eval(`local n = 0 for _ in ipairs(redis.call('KEYS', '*2099*')) do n = n + 1 end
+    for _, k in ipairs(KEYS) do n = n + redis.call('EXISTS', k) end return n`, testKeys, []));
   checks.push({ name: "test anahtarlarının tamamı silindi", ok: left === 0, info: left });
-  const after = (await r.eval(SNAP, [], [])) as string[];
-  checks.push({ name: "diğer ortam anahtarları değişmedi", ok: JSON.stringify(before) === JSON.stringify(after), info: { before: before.length, after: after.length } });
+  const after = (await r.eval(SNAP, testKeys, [])) as string[];
+  checks.push({ name: "test dışındaki tüm anahtarlar (gerçek sayaçlar dahil) değişmedi", ok: JSON.stringify(before) === JSON.stringify(after), info: { before: before.length, after: after.length } });
   return { ok: checks.every((c) => c.ok), ns, otherEnvKeys: before.length, checks };
 }
