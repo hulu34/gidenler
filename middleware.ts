@@ -27,4 +27,6 @@ export function middleware(req: NextRequest) {
   return NextResponse.redirect(url, 301);
 }
 
-export const config = { matcher: ["/mekan/:path*", "/yaz/:path*", "/isletme/:path*", "/liste/:path*", "/pasaport/:path*", "/@:path*", "/%40:path*"] };
+/* Sayfa yolları (statik dosyalar, _next ve api hariç). "/@kullanıcı" kalıbı yol eşleyicide güvenilir
+   yakalanamadığı için karar kodda verilir; maliyet bir Set aramasıdır. */
+export const config = { matcher: ["/((?!_next/|api/|.*\\.[a-z0-9]+$).*)"] };

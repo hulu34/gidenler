@@ -13,7 +13,9 @@ import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 
-const ORNEKLER = ["pide", "Kadıköy döner", "sakin kahve Kadıköy", "ucuz döner", "Sakura", "@denizyer"];
+const ORNEKLER = DEMO_VISIBLE
+  ? ["pide", "Kadıköy döner", "sakin kahve Kadıköy", "ucuz döner", "Sakura", "@denizyer"]
+  : ["balık", "Kadıköy kebap", "meyhane", "pizza", "Beşiktaş", "kahvaltı"];
 
 /**
  * ARA — kullanıcı ne aradığını biliyor: mekân, kategori, semt, kişi, liste.
@@ -87,7 +89,7 @@ export default function SearchPage() {
 
         <input
           value={q} onChange={(e) => setQ(e.target.value)}
-          placeholder="Sakura, japon, Kadıköy, @denizyer…"
+          placeholder={DEMO_VISIBLE ? "Sakura, japon, Kadıköy, @denizyer…" : "balık, kebap, Kadıköy, meyhane…"}
           aria-label="Ara" autoFocus
           className="mt-6 h-12 w-full border-b-2 border-line-strong bg-transparent pb-1 text-[clamp(1.125rem,3vw,1.5rem)] outline-none placeholder:text-ink-3 focus:border-accent"
         />

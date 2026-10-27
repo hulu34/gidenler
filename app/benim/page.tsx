@@ -14,6 +14,7 @@ import { ReputationChip } from "@/components/creator/ReputationChip";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { MyReservations } from "@/components/reservation/MyReservations";
 import { AccountBox } from "@/components/auth/AccountBox";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /**
  * BENİM GİDENLER'İM — kullanıcının ana üssü.
@@ -70,8 +71,14 @@ export default function MyPage() {
           <div className="mt-4 flex flex-wrap gap-2">
             <Link href="/sor/" className="inline-flex h-9 items-center rounded-[3px] bg-accent px-3.5 text-[13.5px] font-semibold text-on-accent">Sor Gidenler</Link>
             <Link href="/zevkim/" className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Zevkini tanıyalım</Link>
-            <Link href="/mekan/sakura-omakase/" className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Sakura Omakase&apos;ye bak</Link>
-            <Link href="/demo/" className="inline-flex h-9 items-center px-1 text-[12.5px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Sunum modunu başlat</Link>
+            {DEMO_VISIBLE ? (
+              <>
+                <Link href="/mekan/sakura-omakase/" className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Sakura Omakase&apos;ye bak</Link>
+                <Link href="/demo/" className="inline-flex h-9 items-center px-1 text-[12.5px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Sunum modunu başlat</Link>
+              </>
+            ) : (
+              <Link href="/harita/" className="inline-flex h-9 items-center rounded-[3px] border border-line-2 px-3.5 text-[13.5px] font-semibold hover:border-ink">Haritada gerçek mekânlar</Link>
+            )}
           </div>
         </section>
       )}
@@ -186,7 +193,7 @@ export default function MyPage() {
       )}
 
       <section className="mt-12 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 border-t border-line pt-4">
-        <p className="text-[13px] text-ink-2">Pasaport: gerçek katkılarınla büyür — {nf(data.visits.length)} ziyaret, {nf(data.reactions.length)} tepki, {nf(rels.filter((r) => r.state === "experienced").length)} deneyim. Örnek: <Link href="/pasaport/denizyer/" className="font-semibold underline decoration-line-2 underline-offset-4 hover:decoration-ink">@denizyer&apos;in pasaportu</Link>.</p>
+        <p className="text-[13px] text-ink-2">Pasaport: gerçek katkılarınla büyür — {nf(data.visits.length)} ziyaret, {nf(data.reactions.length)} tepki, {nf(rels.filter((r) => r.state === "experienced").length)} deneyim.{DEMO_VISIBLE && <> Örnek: <Link href="/pasaport/denizyer/" className="font-semibold underline decoration-line-2 underline-offset-4 hover:decoration-ink">@denizyer&apos;in pasaportu</Link>.</>}</p>
         {confirmReset ? (
           <span className="flex items-center gap-3 text-[12px]"><span className="text-ink-2">Sıfırlansın mı?</span><button type="button" onClick={() => { resetDemo(); setConfirmReset(false); }} className="font-semibold text-neg-ink">Evet, sıfırla</button><button type="button" onClick={() => setConfirmReset(false)} className="text-ink-3">Vazgeç</button></span>
         ) : (

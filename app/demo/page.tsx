@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { DemoControls } from "@/app/demo/DemoControls";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { notFound } from "next/navigation";
 
 export const metadata = { title: "Yatırımcı demosu" };
 
@@ -9,6 +11,8 @@ export const metadata = { title: "Yatırımcı demosu" };
  * Sunum akışı buradan başlar; her adım için doğrudan bağlantı var.
  */
 export default function DemoPage() {
+  /* Sunum modu yalnız yatırımcı demosu dağıtımında; gerçek sitede bu adres yoktur. */
+  if (!DEMO_VISIBLE) notFound();
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
       <header className="flex flex-col gap-3 pt-10 sm:pt-14">

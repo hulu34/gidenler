@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import { effectiveProfile, getPersonalMatch, tasteSourceOf } from "@/lib/decision";
 import { resetTaste, toggleDislike, updateTasteCuisine, updateTasteDimension, useUserData } from "@/lib/store";
 import type { TasteLevel } from "@/lib/types";
+import { getEntityById } from "@/data/entities";
 
 const LEVELS: TasteLevel[] = ["düşük", "orta", "yüksek", "çok yüksek"];
 const DISLIKES = ["kalabalık", "gürültü", "uzun bekleme", "ilgisiz servis"];
@@ -18,7 +19,7 @@ const PREVIEW = [["ent.sakura-omakase", "Sakura"], ["ent.moda-lokantasi", "Moda"
 export function TasteEditor({ compact = false }: { compact?: boolean }) {
   const data = useUserData();
   const profile = useMemo(() => effectiveProfile(data.taste), [data.taste]);
-  const preview = useMemo(() => PREVIEW.map(([id, name]) => ({ name, id, m: getPersonalMatch(id, "default", undefined, undefined, profile)?.score ?? null })), [profile]);
+  const preview = useMemo(() => PREVIEW.filter(([id]) => getEntityById(id)).map(([id, name]) => ({ name, id, m: getPersonalMatch(id, "default", undefined, undefined, profile)?.score ?? null })), [profile]);
   const edited = Object.keys(data.taste.dimensions).length + Object.keys(data.taste.cuisines).length + data.taste.dislikes.length > 0;
 
   return (
