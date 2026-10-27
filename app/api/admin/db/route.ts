@@ -7,6 +7,7 @@ import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigration
 import { realVenueRecords } from "@/data/real";
 import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
+import { redisSelfTest } from "@/lib/usage/selftest";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -70,6 +71,12 @@ export async function POST(req: Request) {
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
   if (!guard.ok) return NextResponse.json({ error: "write_locked", reason: guard.reason }, { status: 409, headers: H });
+  /* Redis öz testi veritabanına dokunmaz; yazma kilidinden önce değil, onay ve hedef kontrolünden sonra. */
+  if (body.action === "redis-selftest") {
+    if (body.confirm !== "EVET") return NextResponse.json({ error: "confirm_required" }, { status: 400, headers: H });
+    try { return NextResponse.json({ action: "redis-selftest", env: envName(), ...(await redisSelfTest()) }, { headers: H }); }
+    catch (e) { return fail(e); }
+  }
   const x = exec(), db = getDb();
   if (!x || !db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
   try {
