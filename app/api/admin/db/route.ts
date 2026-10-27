@@ -8,6 +8,7 @@ import { realVenueRecords } from "@/data/real";
 import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
+import { redisAudit } from "@/lib/usage/audit";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -45,6 +46,10 @@ const fail = (e: unknown, status = 500) =>
 
 export async function GET(req: Request) {
   if (!allowed(req)) return nf();
+  /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
+  if (new URL(req.url).searchParams.get("rapor") === "redis") {
+    try { return NextResponse.json({ env: envName(), ...(await redisAudit()) }, { headers: H }); } catch (e) { return fail(e); }
+  }
   const x = exec(), db = getDb();
   if (!x || !db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
   try {

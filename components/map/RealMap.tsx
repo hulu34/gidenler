@@ -38,7 +38,7 @@ export function RealMap() {
       </div>
       <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
         <div className="overflow-x-auto border-2 border-line-strong bg-sheet">
-          <svg viewBox={`0 0 ${W} ${H}`} className="block h-auto w-full min-w-[520px]" role="img" aria-label="İstanbul'daki gerçek mekânların konumları (şematik)">
+          <svg viewBox={`0 0 ${W} ${H}`} className="block h-auto w-full" role="img" aria-label="İstanbul'daki gerçek mekânların konumları (şematik)">
             <path d={`M ${px(29.0)} 0 C ${px(28.99)} ${H * 0.3}, ${px(29.03)} ${H * 0.55}, ${px(29.02)} ${H * 0.62} L ${px(28.98)} ${H}`} stroke="var(--line-2)" strokeWidth="16" fill="none" strokeLinecap="round" opacity="0.55" />
             {inBox.map((p) => (
               <circle key={p.e.id} cx={px(p.lng)} cy={py(p.lat)} r={sel === p.e.id ? 7 : 3.6}
