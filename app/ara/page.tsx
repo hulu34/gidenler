@@ -9,6 +9,7 @@ import type { EntityCard } from "@/lib/api";
 import type { User } from "@/lib/types";
 import { effectiveProfile, getPersonalMatch } from "@/lib/decision";
 import { isInvestorDemo, useUserData } from "@/lib/store";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 
@@ -110,10 +111,12 @@ export default function SearchPage() {
             {districts.map((d) => <option key={d} value={d}>{d}</option>)}
           </select>
           {(city !== "hepsi" || district !== "hepsi") && <button type="button" onClick={() => { setCity("hepsi"); setDistrict("hepsi"); }} className="text-[12px] text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">temizle</button>}
-          <label className="ml-auto inline-flex items-center gap-2 text-[12px] text-ink-3">
-            <input type="checkbox" checked={showDemo} onChange={(e) => setShowDemo(e.target.checked)} />
-            Demo kayıtları da göster
-          </label>
+          {DEMO_VISIBLE && (
+            <label className="ml-auto inline-flex items-center gap-2 text-[12px] text-ink-3">
+              <input type="checkbox" checked={showDemo} onChange={(e) => setShowDemo(e.target.checked)} />
+              Demo kayıtları da göster
+            </label>
+          )}
         </div>
 
         {!qq && (

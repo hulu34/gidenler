@@ -16,7 +16,7 @@ export function RealVenues({ limit = 12 }: { limit?: number }) {
         <Link href="/gercek/" className="text-[12px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Tümü →</Link>
       </div>
       <p className="mt-2 max-w-[62ch] font-[family-name:var(--font-read)] text-[17px] leading-snug text-ink-2">
-        Demo dönemi bitiyor: gerçek mekânlar ekleniyor. Puanları yok, çünkü puanı gidenler verir. Gittiysen ilk deneyimi sen yaz.
+        Gerçek mekânlar ekleniyor. Puanları yok, çünkü puanı gidenler verir. Gittiysen ilk deneyimi sen yaz.
       </p>
       <ul className="mt-5 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-4">
         {pick.map((e) => (

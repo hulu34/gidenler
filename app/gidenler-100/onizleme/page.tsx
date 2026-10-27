@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { gidenler100, G100 } from "@/lib/venue";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 
@@ -9,6 +11,7 @@ export const metadata = { title: `Gidenler 100 önizleme (demo) · ${G100.year}`
    yüksek güven; puana göre ilk 100. Abonelik, reklam, rezervasyon ücreti etkisizdir. */
 /* DEMO ÖNİZLEME — geliştirme ve sunum için korunur; gerçek sıralamaya karışmaz, arama motorlarına kapalı. */
 export default function G100PreviewPage() {
+  if (!DEMO_VISIBLE) notFound();
   const list = gidenler100({ demo: true });
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">

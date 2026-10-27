@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { gidenler100, G100 } from "@/lib/venue";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 
 export const metadata = { title: `Gidenler 100 · ${G100.year}`, description: "İstanbul'da gidenlerin en iyi deneyimi yaşadığı 100 yer — satın alınamaz, kanıta dayalı." };
@@ -29,9 +30,9 @@ export default function G100Page() {
           ilk sıralama, mekânlar en az {G100.minExperiences} deneyime ulaştığında yayımlanacak.
         </p>
       ) : list.length < G100.size && <p className="mt-4 text-[13px] text-ink-3">Koşulları karşılayan {list.length} yer var; liste deneyimler arttıkça dolar.</p>}
-      <p className="mt-10 text-[12.5px] text-ink-3">
+      {DEMO_VISIBLE && <p className="mt-10 text-[12.5px] text-ink-3">
         Yöntemin nasıl göründüğünü merak ediyorsan: <Link href="/gidenler-100/onizleme/" className="underline underline-offset-2">demo verilerle önizleme</Link> (gerçek sıralama değildir).
-      </p>
+      </p>}
     </div>
   );
 }

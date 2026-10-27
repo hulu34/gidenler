@@ -9,6 +9,8 @@ import { Districts } from "@/components/home/Districts";
 import { Method } from "@/components/home/Method";
 import { RealVenues } from "@/components/home/RealVenues";
 import { DemoNotice } from "@/components/ui/DemoNotice";
+import { DEMO_VISIBLE } from "@/data/entities";
+import { isRestaurantTarget, realVenueRecords } from "@/data/real";
 import { AskAI } from "@/components/home/AskAI";
 import { ContinueModule } from "@/components/decision/ContinueModule";
 import { HomeRankings, type HomeData } from "@/components/home/HomeRankings";
@@ -45,6 +47,7 @@ export default function HomePage() {
   const data = homeData();
   const all = listCards();
   const istanbulCount = all.filter(inIstanbul).length;
+  const realRestaurants = realVenueRecords.filter(isRestaurantTarget).length;
   const creators = listCreators();
   const last = lastPeriodVolume();
 
@@ -59,10 +62,16 @@ export default function HomePage() {
           <p className="rise flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
             <span className="inline-flex items-center gap-1.5"><i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />İstanbul</span>
             <span aria-hidden>·</span>
-            <span className="tnum">{periodLabel(last.period)}: {nf(last.count)} deneyim</span>
-            <span aria-hidden>·</span>
-            <span className="tnum">{nf(istanbulCount)} kayıt · {creators.length} doğrulanmış üretici</span>
-            <span className="rounded-full border border-line-2 px-2 py-px text-[9.5px] tracking-[0.14em]">demo veri</span>
+            {DEMO_VISIBLE ? (
+              <>
+                <span className="tnum">{periodLabel(last.period)}: {nf(last.count)} deneyim</span>
+                <span aria-hidden>·</span>
+                <span className="tnum">{nf(istanbulCount)} kayıt · {creators.length} doğrulanmış üretici</span>
+                <span className="rounded-full border border-line-2 px-2 py-px text-[9.5px] tracking-[0.14em]">demo veri</span>
+              </>
+            ) : (
+              <span className="tnum">{nf(istanbulCount)} gerçek mekân · {nf(realRestaurants)} restoran · kaynak OpenStreetMap</span>
+            )}
           </p>
           <h1 className="rise mt-5 text-[clamp(2.75rem,8.4vw,6.25rem)] font-extrabold leading-[0.9] tracking-[-0.055em]" style={{ animationDelay: "80ms" }}>
             Nereye gidelim?<br />
@@ -77,20 +86,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Ticker />
+      {DEMO_VISIBLE && <Ticker />}
 
       <div className="mx-auto flex max-w-[1180px] flex-col gap-20 px-5 pb-20 pt-14 sm:px-7">
         {/* en iyiler · en çok konuşulanlar · yükselişte… — önceki sürümün kalbi, aynen ve en üstte */}
-        <section aria-label="Kategorilere göre sıralamalar">
-          <HomeRankings data={data} />
-        </section>
+        {/* Demo kapalıyken (varsayılan) yalnız gerçek veriye dayanan modüller; sıralama, yükselenler, semt hacmi
+            gerçek deneyimler biriktiğinde açılır. */}
+        {DEMO_VISIBLE && (
+          <section aria-label="Kategorilere göre sıralamalar">
+            <HomeRankings data={data} />
+          </section>
+        )}
         <ContinueModule />
         <RealVenues />
-        <Risers />
-        <ScoreLies />
-        <Districts />
+        {DEMO_VISIBLE && <><Risers /><ScoreLies /><Districts /></>}
         <Method />
-        <DemoNotice />
+        {DEMO_VISIBLE && <DemoNotice />}
       </div>
     </>
   );
