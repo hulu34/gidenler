@@ -61,10 +61,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const t = getTopic(slug);
   if (!t) return { title: "Bulunamadı" };
+  const e = t.entity;
+  /* Demo kayıtlar arama motorlarına kapalı; başlıkta puan ve "gerçek deneyim" iddiası yok. */
+  if (e.isDemo) return { title: `${e.name} (demo kayıt)`, description: "Prototip için üretilmiş demo kayıt; gerçek bir işletme değildir.", robots: { index: false, follow: false } };
+  if (e.isReal) {
+    const where = [e.subcategory, e.location?.district].filter(Boolean).join(" · ");
+    return { title: `${e.name}${where ? ` · ${where}` : ""}`, description: `${e.name}${where ? ` (${where}, İstanbul)` : ""}: adres, iletişim ve çalışma saatleri. Henüz Gidenler puanı yok; ilk deneyimi sen yaz.` };
+  }
   const s = t.intelligence.overallScore ? ` — Gidenler ${score1(t.intelligence.overallScore)}` : "";
   return {
-    title: `${t.entity.name}${s}`,
-    description: t.intelligence.aiSummary?.lines[0] ?? `${t.entity.name} hakkında gerçek deneyimler.`,
+    title: `${e.name}${s}`,
+    description: t.intelligence.aiSummary?.lines[0] ?? `${e.name} hakkında deneyimler.`,
   };
 }
 

@@ -6,6 +6,7 @@ import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { useUserData } from "@/lib/store";
 import { RANK_CONFIG } from "@/lib/rankings";
 import type { HomeCategoryKey, HomeRankings as Rankings, OtherKey, RankItem, RankSection, RegulatedHome } from "@/lib/rankings";
+import { DemoTag } from "@/components/ui/DemoNotice";
 
 /* ──────────────────────────────────────────────────────────────────────────
    ANA SAYFA = TERCİH YAPTIR — KOMPAKT BOARD.
@@ -111,7 +112,7 @@ function Column({ section: s, empty, seeAllLabel = "Tam liste" }: { section: Ran
   return (
     <section aria-labelledby={`h-${s.key}`} className="min-w-0">
       <div className="flex min-h-[2.25rem] items-end justify-between gap-x-3 border-b-2 border-line-strong pb-2">
-        <h2 id={`h-${s.key}`} className="min-w-0 text-[12px] font-bold uppercase leading-tight tracking-[0.14em]" title={s.hint}>{s.title}</h2>
+        <h2 id={`h-${s.key}`} className="min-w-0 text-[12px] font-bold uppercase leading-tight tracking-[0.14em]" title={s.hint}>{s.title}<DemoTag /></h2>
         <span className="flex shrink-0 items-baseline gap-x-2 whitespace-nowrap text-[11px] leading-tight text-ink-3">
           {s.window && <span className="font-medium">{s.window.toLocaleLowerCase("tr")}</span>}
           {s.seeAll && <Link href={s.seeAll} className="font-semibold hover:text-ink">{seeAllLabel} →</Link>}

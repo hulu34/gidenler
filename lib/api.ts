@@ -345,8 +345,9 @@ export function getTopic(slug: string): TopicView | null {
 
   /* Konumu olmayan kayıtlar (film, rota) için "yakındakiler" yerine "benzerler": aynı şehir + aynı alt tür. */
   const hasDistrict = !!entity.location?.district;
+  /* Gerçek mekânın komşuları yalnız gerçek; demo puanlar gerçek bir sayfada organik öneri gibi görünmez. */
   const nearby = entities
-    .filter((e) => e.id !== entity.id && e.categoryId === entity.categoryId && (hasDistrict ? e.location?.district === entity.location?.district : (e.location?.city ?? "İstanbul") === (entity.location?.city ?? "İstanbul") && (e.subcategory ?? "") === (entity.subcategory ?? "")))
+    .filter((e) => e.id !== entity.id && !!e.isDemo === !!entity.isDemo && e.categoryId === entity.categoryId && (hasDistrict ? e.location?.district === entity.location?.district : (e.location?.city ?? "İstanbul") === (entity.location?.city ?? "İstanbul") && (e.subcategory ?? "") === (entity.subcategory ?? "")))
     .sort((a, b) => ((a.location?.neighborhood === entity.location?.neighborhood ? 0 : 1) - (b.location?.neighborhood === entity.location?.neighborhood ? 0 : 1)) || ((getTopicIntelligence(b.id)?.overallScore ?? 0) - (getTopicIntelligence(a.id)?.overallScore ?? 0)))
     .slice(0, 3)
     .map((e) => {

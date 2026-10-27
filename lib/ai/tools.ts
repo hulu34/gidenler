@@ -24,7 +24,7 @@ const int = (v: unknown, d: number, lo: number, hi: number) => { const n = Numbe
 function placeOf(c: EntityCard) {
   const e = c.entity;
   return {
-    entityId: e.id, slug: e.slug, name: e.name, kind: e.subcategory ?? c.category.label,
+    entityId: e.id, isDemo: !!e.isDemo, slug: e.slug, name: e.name, kind: e.subcategory ?? c.category.label,
     district: e.location?.district ?? null, city: e.location?.city ?? "İstanbul",
     priceLevel: e.priceLevel ?? null, score: c.category.compliance.showScores ? c.score : null,
     experienceCount: c.experienceCount, confidence: c.confidence ?? "low", trend90d: Math.round(c.delta90d * 100) / 100,
@@ -54,7 +54,7 @@ function get_place_candidates(args: Record<string, unknown>, ctx: ToolContext) {
   return {
     intent: { content: a.intent.content, locations: a.intent.locations, qualifiers: a.intent.qualifiers, day: a.intent.dayLabel ?? null, hour: a.intent.hour ?? null, party: a.intent.party ?? null, context: a.intent.context, regulated: a.intent.regulated },
     pipeline: a.pipeline, overallConfidence: a.overallConfidence, note: a.note,
-    items: a.items.map((i) => ({ entityId: i.entityId, slug: i.slug, name: i.name, kind: i.kind, place: i.place, engineMatch: i.match, score: i.score, confidence: i.confidence, reasons: i.reasons.slice(0, 3), cautions: i.cautions.slice(0, 2), hoursNote: i.hoursNote, matchParts: i.matchParts.map((p) => ({ label: p.label, value: p.value, max: p.max })) })),
+    items: a.items.map((i) => ({ entityId: i.entityId, isDemo: !!getEntityById(i.entityId)?.isDemo, slug: i.slug, name: i.name, kind: i.kind, place: i.place, engineMatch: i.match, score: i.score, confidence: i.confidence, reasons: i.reasons.slice(0, 3), cautions: i.cautions.slice(0, 2), hoursNote: i.hoursNote, matchParts: i.matchParts.map((p) => ({ label: p.label, value: p.value, max: p.max })) })),
     regulated: a.regulated ? { note: a.regulated.note, items: a.regulated.items.slice(0, 5) } : null,
   };
 }
@@ -80,7 +80,7 @@ function get_place_details(args: Record<string, unknown>) {
   const c = cardOf(e); const it = getTopicIntelligence(e.id);
   const show = c.category.compliance.showScores;
   return {
-    ...placeOf(c), hours: e.hours ?? null, address: e.address ?? null, isDemo: e.isDemo, facets: (e.facets ?? []).slice(0, 6),
+    ...placeOf(c), hours: e.hours ?? null, address: e.address ?? null, facets: (e.facets ?? []).slice(0, 6),
     dimensions: show ? (it?.ratingDimensions ?? []).slice(0, 6).map((d) => ({ key: d.key, label: d.label, value: Math.round(d.value * 10) / 10 })) : [],
     positiveThemes: (it?.positiveThemes ?? []).slice(0, 4).map((t) => ({ label: t.label, count: t.count })),
     negativeThemes: (it?.negativeThemes ?? []).slice(0, 4).map((t) => ({ label: t.label, count: t.count })),

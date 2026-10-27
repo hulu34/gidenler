@@ -25,7 +25,8 @@ select
   (select count(distinct rv.place_id) from reviews rv join r on r.id = rv.place_id where rv.status = 'published')::int as reviews,
   (select count(distinct mi.place_id) from menu_items mi join r on r.id = mi.place_id)::int as menu,
   (select count(*) from vertical_restaurant vr join r on r.id = vr.place_id where vr.reservation_mode = 'gidenler')::int as reservation,
-  (select count(*) from places where id is null or name = '' or lat is null or lng is null or district is null)::int as missing_required`;
+  (select count(*) from places where id is null or name = '' or lat is null or lng is null or district is null)::int as missing_required,
+  (select count(*) from media_items where platform = 'commons' and (credit is null or license is null or external_id is null))::int as photo_attribution_missing`;
 
 type Row = Record<string, number> & { by_vertical: Record<string, number> | null };
 
@@ -36,7 +37,25 @@ export async function qualityReport(x: Executor) {
   const fields = ["photo", "phone", "website", "instagram", "hours", "menu", "video", "google", "reviews", "reservation", "contact", "address"] as const;
   return {
     placesTotal: r.places_total, byVertical: r.by_vertical ?? {}, restaurants: n, missingRequired: r.missing_required,
-    googlePending: r.google_pending,
+    googlePending: r.google_pending, photoAttributionMissing: r.photo_attribution_missing,
     restaurantFields: Object.fromEntries(fields.map((f) => [f, { count: r[f], pct: pct(r[f]) }])),
   };
+}
+
+/* Restoran başına eksik alanlar — "neyi tamamlamalıyız" listesi. Kişisel veri yok. */
+const MISSING_Q = `
+select p.slug, p.name, p.district,
+  (p.address is null) as address, (p.phone is null) as phone, (p.website is null) as website, (p.instagram is null) as instagram,
+  (p.opening_hours is null) as hours,
+  not exists (select 1 from media_places mp join media_items m on m.id = mp.media_id where mp.place_id = p.id and m.type = 'photo' and m.status = 'approved') as photo,
+  not exists (select 1 from media_places mp join media_items m on m.id = mp.media_id where mp.place_id = p.id and m.type in ('video','embed') and m.status = 'approved') as video,
+  not exists (select 1 from menu_items mi where mi.place_id = p.id) as menu,
+  not exists (select 1 from place_identifiers pi where pi.place_id = p.id and pi.provider = 'google' and pi.status in ('auto','confirmed')) as google,
+  not exists (select 1 from reviews rv where rv.place_id = p.id and rv.status = 'published') as reviews
+from places p where p.vertical = 'restaurant' and p.status = 'active' order by p.district, p.name`;
+
+const MISSING_KEYS = ["photo", "phone", "website", "instagram", "hours", "menu", "video", "google", "reviews", "address"] as const;
+export async function missingByRestaurant(x: Executor) {
+  const rows = await x.query<Record<string, unknown>>(MISSING_Q);
+  return rows.map((r) => ({ slug: r.slug as string, name: r.name as string, district: r.district as string, missing: MISSING_KEYS.filter((k) => r[k] === true) }));
 }

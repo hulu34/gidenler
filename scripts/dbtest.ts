@@ -10,7 +10,7 @@ import { setDbForTests, type Db } from "../lib/db/client";
 import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
 import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
 import { MIGRATIONS } from "../lib/db/migrations.generated";
-import { qualityReport } from "../lib/db/quality";
+import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
 import { realVenueRecords } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
@@ -90,6 +90,9 @@ async function main() {
   ok("zorunlu alanı bozuk kayıt reddedilir, hiçbir şey yazılmaz", rejected && Number(bozuk.n) === 0);
   const q = await qualityReport(x);
   ok("kalite raporu: restoran sayısı ve alan doluluğu", q.restaurants > 0 && q.missingRequired === 0 && q.restaurantFields.address.count <= q.restaurants && q.restaurantFields.google.count === 0, { restaurants: q.restaurants, address: q.restaurantFields.address });
+  ok("Commons görselleri sahibi, lisansı ve kaynak sayfasıyla", q.photoAttributionMissing === 0 && q.restaurantFields.photo.count === realVenueRecords.filter((r) => r.image && r.categoryId === "cat.restaurant").length, { missing: q.photoAttributionMissing, photo: q.restaurantFields.photo });
+  const miss = await missingByRestaurant(x);
+  ok("restoran başına eksik alan listesi", miss.length === q.restaurants && miss.every((m) => m.missing.includes("google") && m.missing.includes("menu")), miss[0]);
   const [ciya] = await db.select().from(schema.places).where(eq(schema.places.slug, "ciya-sofrasi-kadikoy"));
 
   console.log("\n3) Kullanıcı verisi ve ilişkiler (FK)");

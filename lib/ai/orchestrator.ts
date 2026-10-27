@@ -71,6 +71,7 @@ KURALLAR (ihlal edilemez):
 6. reasons: veriye dayalı, somut (deneyim sayısı, tema, trend, bağlam uyumu, saat). cautions: veri sınırlı / saat doğrulanmadı / kalabalık şikâyeti gibi dürüst uyarılar.
 7. En fazla 3 öneri. Regüle (hekim/avukat) kategoriler için öneri verme.
 8. followUps anahtarları yalnızca: quiet, value, near, expert, late.
+9. isDemo=true olan kayıtlar DEMO veridir: gerekçede bunu açıkça söyle ("demo kayıt"), puanını ve deneyim sayısını gerçek bir işletmeninmiş gibi sunma.
 
 Araçlar:
 ${(Object.entries(TOOL_DESCRIPTIONS) as Array<[string, string]>).map(([k, v]) => `- ${k}: ${v}`).join("\n")}`;
@@ -184,7 +185,7 @@ export async function ask(req: AskRequest, meta: AskMeta = {}): Promise<AIRespon
           matchScore: Math.round(Math.max(0, Math.min(100, r.matchScore))), score: c.category.compliance.showScores ? c.score : null, confidence: r.confidence,
           reasons: r.reasons.map((s) => sanitizeUntrusted(s, 160)).filter(Boolean).slice(0, 4),
           cautions: r.cautions.map((s) => sanitizeUntrusted(s, 160)).filter(Boolean).slice(0, 3),
-          hoursNote: eng?.hoursNote ?? (e.hours ? `Çalışma saati (demo veri): ${e.hours} · canlı uygunluk doğrulanmadı` : "Çalışma saati / canlı uygunluk doğrulanmadı"),
+          hoursNote: eng?.hoursNote ?? (e.hours ? `Çalışma saati (${e.isDemo ? "demo veri" : "OpenStreetMap"}): ${e.hours} · canlı uygunluk doğrulanmadı` : "Çalışma saati / canlı uygunluk doğrulanmadı"),
         };
       });
     const dropped = final.recommendations.length - recs.length;

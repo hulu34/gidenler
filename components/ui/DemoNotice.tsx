@@ -12,3 +12,12 @@ export function DemoNotice({ children }: { children?: React.ReactNode }) {
     </div>
   );
 }
+
+/** Satır içi küçük "demo" etiketi: demo puanlarla üretilmiş modül başlıklarında. */
+export function DemoTag({ className = "" }: { className?: string }) {
+  return (
+    <span title="Demo veri: puan ve deneyimler prototip için üretilmiştir" className={`ml-2 inline-block border border-dashed border-line-2 px-1 py-px align-middle text-[9.5px] font-bold uppercase tracking-[0.12em] text-ink-3 ${className}`}>
+      demo
+    </span>
+  );
+}

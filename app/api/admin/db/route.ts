@@ -6,7 +6,7 @@ import { seedRealVenues, verifyRealVenues } from "@/lib/db/seed";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "@/lib/db/rollback";
 import { realVenueRecords } from "@/data/real";
 import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
-import { qualityReport } from "@/lib/db/quality";
+import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -46,6 +46,8 @@ export async function GET(req: Request) {
   const x = exec(), db = getDb();
   if (!x || !db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
   try {
+    /* ?rapor=eksik → restoran başına eksik alan listesi */
+    if (new URL(req.url).searchParams.get("rapor") === "eksik") return NextResponse.json({ env: envName(), restaurants: await missingByRestaurant(x) }, { headers: H });
     const migrations = await migrationStatus(x);
     const ready = !migrations.pending.length;
     const integrity = ready ? await verifyRealVenues(db, realVenueRecords).catch(() => null) : null;

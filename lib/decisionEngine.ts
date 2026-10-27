@@ -271,13 +271,13 @@ function explain(h: SearchHit, intent: AIIntent, sc: ReturnType<typeof scoreCand
   if (c.delta90d <= -0.3 && cautions.length < 2) cautions.push(`Son 90 günde ${score1(c.delta90d)}`);
 
   const verified = Math.round(it.experienceCount * it.verifiedRatio);
-  const hoursNote = e.hours ? `Çalışma saati (demo veri): ${e.hours} · canlı uygunluk doğrulanmadı` : "Çalışma saati / canlı uygunluk doğrulanmadı";
+  const hoursNote = e.hours ? `Çalışma saati (${e.isDemo ? "demo veri" : "OpenStreetMap"}): ${e.hours} · canlı uygunluk doğrulanmadı` : "Çalışma saati / canlı uygunluk doğrulanmadı";
   return {
     entityId: e.id, slug: e.slug, name: e.name, kind: e.subcategory ?? c.category.label,
     place: [e.location?.district, e.location?.city].filter(Boolean).join(" · "),
     score: c.score, delta: c.delta90d, confidence: it.confidence,
     match: sc.match, matchParts: sc.parts, reasons: reasons.slice(0, 4), cautions: cautions.slice(0, 2), hoursNote,
-    provenance: `${nf(it.experienceCount)} deneyim, ${nf(verified)} doğrulanmış ziyaret ve son 90 günlük trend analiz edildi.`,
+    provenance: `${e.isDemo ? "DEMO KAYIT — deneyimler ve puan sentetiktir; gerçek bir işletme değildir. " : ""}${nf(it.experienceCount)} deneyim, ${nf(verified)} doğrulanmış ziyaret ve son 90 günlük trend analiz edildi.`,
     outside: h.loc === "none" && intent.locations.length > 0,
   };
 }

@@ -32,7 +32,7 @@ export async function generateMetadata({
 }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const d = getBusinessDashboard(slug);
-  return { title: d ? `${d.entity.name} — işletme paneli` : "Bulunamadı" };
+  return { title: d ? `${d.entity.name} — işletme paneli` : "Bulunamadı", robots: { index: false, follow: false } };
 }
 
 export default async function BusinessPage({ params }: { params: Promise<{ slug: string }> }) {

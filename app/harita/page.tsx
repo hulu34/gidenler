@@ -32,7 +32,7 @@ export default function MapPage() {
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
       <section className="pt-10 sm:pt-14">
-        <p className="label">Haritada Gidenler</p>
+        <p className="label">Haritada Gidenler · demo veri</p>
         <h1 className="mt-2 max-w-[16ch] text-[clamp(2rem,6.5vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">Yakınında sana göre.</h1>
         <div className="mt-5 flex flex-wrap gap-1.5">
           {mapFilters.map((f) => (

@@ -65,7 +65,8 @@ export async function seedRealVenues(db: Db, records: RealVenueRecord[], now = n
   const imgs = records.filter((r) => r.image);
   if (imgs.length) {
     await db.insert(mediaItems).values(imgs.map((r) => ({
-      id: uuidv7(), type: "photo", platform: "commons", url: r.image!.src, storageClass: "embed", category: "dis",
+      /* externalId = Commons dosya sayfası (kaynak); credit = fotoğraf sahibi; license = lisans adı */
+      id: uuidv7(), type: "photo", platform: "commons", url: r.image!.src, externalId: r.image!.sourceUrl, storageClass: "embed", category: "dis",
       credit: r.image!.credit, license: r.image!.license, source: "auto", status: "approved", lastCheckedAt: now,
     }))).onConflictDoNothing({ target: mediaItems.url });
     const media = await db.select({ id: mediaItems.id, url: mediaItems.url }).from(mediaItems).where(inArray(mediaItems.url, imgs.map((r) => r.image!.src)));

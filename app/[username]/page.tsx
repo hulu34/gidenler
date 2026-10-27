@@ -36,6 +36,7 @@ export async function generateMetadata({
   return {
     title: `@${p.user.handle}${top ? ` — ${top.label}` : ""}`,
     description: p.user.bio ?? `${p.user.handle} kullanıcısının Gidenler deneyimleri.`,
+    ...(p.user.isDemo ? { robots: { index: false, follow: false } } : {}),
   };
 }
 

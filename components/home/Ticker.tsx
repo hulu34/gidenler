@@ -17,7 +17,8 @@ export function Ticker() {
     </Link>
   ));
   return (
-    <div className="ticker-wrap overflow-hidden border-y border-line-strong bg-paper py-2" aria-label="Son 90 günde en çok değişen mekânlar">
+    <div className="ticker-wrap relative overflow-hidden border-y border-line-strong bg-paper py-2" aria-label="Son 90 günde en çok değişen mekânlar (demo veri)">
+      <span className="absolute left-0 top-1/2 z-10 -translate-y-1/2 bg-paper px-2 text-[9.5px] font-bold uppercase tracking-[0.12em] text-ink-3">demo</span>
       <div className="ticker">
         <div className="flex">{items(false)}</div>
         <div className="flex" aria-hidden>{items(true)}</div>
