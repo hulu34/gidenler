@@ -29,7 +29,7 @@ export default function SearchPage() {
   const [writeMode, setWriteMode] = useState(false);
   /* Demo kayıtlar varsayılan sonuçlarda yok; geliştirme/sunum için açıkça açılır (?demo=1 ya da sunum modu). */
   const [showDemo, setShowDemo] = useState(DEMO_VISIBLE);
-  const cats = listCategories();
+  const allCats = listCategories();
   const data = useUserData();
   const profile = useMemo(() => effectiveProfile(data.taste), [data.taste]);
 
@@ -44,6 +44,8 @@ export default function SearchPage() {
   }, []);
   /* konum listeleri — gerçek veriden; sahte mesafe yok */
   const allCards = useMemo(() => listCards().filter((c) => showDemo || !c.entity.isDemo), [showDemo]);
+  /* yalnız kaydı olan kategoriler (demo kapalıyken boş kategori düğmesi gösterilmez) */
+  const cats = useMemo(() => { const has = new Set(allCards.map((c) => c.category.id)); return allCats.filter((c) => has.has(c.id)); }, [allCards, allCats]);
   const cities = useMemo(() => Array.from(new Set(allCards.map((c) => c.entity.location?.city).filter(Boolean))) as string[], [allCards]);
   const districts = useMemo(() => Array.from(new Set(allCards.filter((c) => city === "hepsi" || c.entity.location?.city === city).map((c) => c.entity.location?.district).filter(Boolean))).sort((a, b) => (a as string).localeCompare(b as string, "tr")) as string[], [allCards, city]);
   const inLoc = (e: { location?: { city?: string; district?: string } }) => (city === "hepsi" || e.location?.city === city) && (district === "hepsi" || e.location?.district === district);

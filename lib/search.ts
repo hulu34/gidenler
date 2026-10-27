@@ -370,7 +370,7 @@ function reasonFor(h: SearchHit, q: ParsedQuery, d: SearchDoc): string {
   if (dish) {
     const t = dish.split(":")[0];
     const theme = it?.positiveThemes.find((x) => fold(x.label).includes(t));
-    parts.push(theme ? `${theme.label} konusunda ${theme.count} olumlu deneyim` : `${h.card.entity.subcategory ?? h.card.category.label} · ${h.card.experienceCount} deneyim`);
+    parts.push(theme ? `${theme.label} konusunda ${theme.count} olumlu deneyim` : h.card.experienceCount ? `${h.card.entity.subcategory ?? h.card.category.label} · ${h.card.experienceCount} deneyim` : `${h.card.entity.subcategory ?? h.card.category.label}`);
   } else if (byName) parts.push("Ad eşleşmesi");
   else if (h.matched.some((m) => /:kategori$/.test(m))) parts.push(`${h.card.category.label} kategorisi`);
   else if (h.matched.some((m) => /:tema$/.test(m))) parts.push(`Deneyimlerde "${h.matched.find((m) => /:tema$/.test(m))!.split(":")[0]}" geçiyor`);
