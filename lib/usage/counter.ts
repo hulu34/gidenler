@@ -12,10 +12,17 @@ import { getRedis, redisNs } from "./redis";
 export interface Budget { monthly: number; daily: number }
 
 /** Sağlayıcı kalemleri ve sınırları. Değiştirmek bilinçli bir maliyet kararıdır. */
+/* SKU'lar ve ücretsiz kotalar Google'ın resmî fiyat listesinden (Places API New, 14.10.2026):
+   · Text Search Pro (id, displayName, location, formattedAddress)      → 5.000/ay ücretsiz, sonra $32/1.000
+   · Place Details Enterprise (nationalPhoneNumber, websiteUri)          → 1.000/ay ücretsiz, sonra $20/1.000
+   · Place Details Enterprise + Atmosphere (reviews dahil sayfa isteği)  → 1.000/ay ücretsiz, sonra $25/1.000
+   · Place Details Photos (fotoğraf başına)                              → 1.000/ay ücretsiz, sonra $7/1.000
+   Sınırlar ücretsiz kotanın ~%12 altında: Preview payı (%10) eklense de toplam ücretsiz kotayı aşmaz. */
 export const BUDGETS = {
-  "google:text_search_pro": { monthly: 4500, daily: 150 },       // ücretsiz: 5.000/ay
-  "google:details_atmosphere": { monthly: 880, daily: 29 },      // ücretsiz: 1.000/ay
-  "google:photo": { monthly: 880, daily: 29 },                   // ücretsiz: 1.000/ay
+  "google:text_search_pro": { monthly: 4500, daily: 150 },       // eşleştirme araması
+  "google:details_enterprise": { monthly: 880, daily: 100 },     // eşleştirme doğrulaması (telefon, web)
+  "google:details_atmosphere": { monthly: 880, daily: 29 },      // sayfa: puan, yorum, saatler
+  "google:photo": { monthly: 880, daily: 29 },                   // sayfa: fotoğraf başına
 } satisfies Record<string, Budget>;
 export type BudgetKey = keyof typeof BUDGETS;
 

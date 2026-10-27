@@ -41,17 +41,40 @@ export function distanceM(a: { lat: number; lng: number }, b: { lat: number; lng
 const digits = (s?: string | null) => (s ?? "").replace(/\D/g, "").slice(-10);
 const host = (u?: string | null) => { try { return u ? new URL(u).hostname.replace(/^www\./, "") : ""; } catch { return ""; } };
 
-export interface MatchInput { name: string; lat: number; lng: number; phone?: string | null; website?: string | null }
+export interface MatchInput { name: string; lat: number; lng: number; phone?: string | null; website?: string | null; address?: string | null }
 
-export function matchScore(place: MatchInput, cand: MatchInput) {
+/* Adres benzerliği: sokak/cadde adı ve kapı numarası belirteçlerinin örtüşmesi (0–1). İlçe/şehir sayılmaz. */
+const ADDR_STOP = new Set(["no", "sk", "sok", "sokak", "sokagi", "cd", "cad", "cadde", "caddesi", "mah", "mahallesi", "mh", "istanbul", "turkiye", "turkey", "kat", "d"]);
+export function addressSimilarity(a?: string | null, b?: string | null) {
+  const toks = (s: string) => new Set(normName(s).split(" ").filter((w) => w.length > 1 && !ADDR_STOP.has(w)));
+  if (!a || !b) return null;
+  const A = toks(a), B = toks(b);
+  if (!A.size || !B.size) return null;
+  let hit = 0; for (const t of A) if (B.has(t)) hit++;
+  return hit / Math.min(A.size, B.size);
+}
+
+export type Signal = "match" | "conflict" | "unknown";
+export interface MatchResult {
+  score: number; name: number; distanceM: number; decision: "auto" | "review" | "reject";
+  phone: Signal; website: Signal; address: number | null;
+}
+
+export function matchScore(place: MatchInput, cand: MatchInput): MatchResult {
   const name = nameSimilarity(place.name, cand.name);
   const d = distanceM(place, cand);
-  if (d > 200) return { score: 0, name, distanceM: Math.round(d), decision: "reject" as const };
+  if (d > 200) return { score: 0, name, distanceM: Math.round(d), decision: "reject", phone: "unknown", website: "unknown", address: null };
   const dist = d <= 75 ? 1 : 1 - (d - 75) / 125;
   let score = 0.6 * name + 0.4 * dist;
-  if (digits(place.phone) && digits(place.phone) === digits(cand.phone)) score += 0.1;
-  if (host(place.website) && host(place.website) === host(cand.website)) score += 0.1;
+  /* telefon ve web: eşleşme destekler; iki tarafta da var ve farklıysa otomatik onay verilmez */
+  const ph: Signal = digits(place.phone) && digits(cand.phone) ? (digits(place.phone) === digits(cand.phone) ? "match" : "conflict") : "unknown";
+  const web: Signal = host(place.website) && host(cand.website) ? (host(place.website) === host(cand.website) ? "match" : "conflict") : "unknown";
+  const addr = addressSimilarity(place.address, cand.address);
+  if (ph === "match") score += 0.1;
+  if (web === "match") score += 0.1;
+  if (addr !== null && addr >= 0.5) score += 0.05;
   score = Math.min(1, score);
-  const decision = score >= 0.9 ? "auto" as const : score >= 0.6 ? "review" as const : "reject" as const;
-  return { score: Math.round(score * 1000) / 1000, name: Math.round(name * 1000) / 1000, distanceM: Math.round(d), decision };
+  let decision: MatchResult["decision"] = score >= 0.9 ? "auto" : score >= 0.6 ? "review" : "reject";
+  if (decision === "auto" && (ph === "conflict" || web === "conflict") && ph !== "match" && web !== "match") decision = "review";
+  return { score: Math.round(score * 1000) / 1000, name: Math.round(name * 1000) / 1000, distanceM: Math.round(d), decision, phone: ph, website: web, address: addr === null ? null : Math.round(addr * 100) / 100 };
 }

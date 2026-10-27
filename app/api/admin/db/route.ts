@@ -9,6 +9,8 @@ import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
+import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled } from "@/lib/providers/google";
+import { usageSnapshot } from "@/lib/usage/counter";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -46,6 +48,11 @@ const fail = (e: unknown, status = 500) =>
 
 export async function GET(req: Request) {
   if (!allowed(req)) return nf();
+  /* ?rapor=google → eşleşme sayıları, onay bekleyenler (yalnız place_id + bizim kayıtlarımız), SKU bazında kullanım */
+  if (new URL(req.url).searchParams.get("rapor") === "google") {
+    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot() }, { headers: H }); }
+    catch (e) { return fail(e); }
+  }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
   if (new URL(req.url).searchParams.get("rapor") === "redis") {
     try { return NextResponse.json({ env: envName(), ...(await redisAudit()) }, { headers: H }); } catch (e) { return fail(e); }
@@ -72,7 +79,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string; target?: string; wave?: number } = {};
+  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -100,6 +107,16 @@ export async function POST(req: Request) {
       case "rollback-seed":
         if (body.confirm !== "GERI-AL") break;
         return NextResponse.json({ action: "rollback-seed", env: envName(), ...(await rollbackSeed(x)) }, { headers: H });
+      case "google-match": {
+        /* Ücretli: her çağrı Redis kota kontrolünden geçer; tek seferde en çok 25 restoran. */
+        if (body.confirm !== "EVET") break;
+        const r = await matchGoogleBatch(Number(body.limit) || 20);
+        return NextResponse.json({ action: "google-match", env: envName(), ...r, stats: await googleMatchStats(), usage: await usageSnapshot() }, { headers: H });
+      }
+      case "google-review": {
+        if (body.confirm !== "EVET" || !body.id || !["confirmed", "rejected"].includes(body.decision ?? "")) break;
+        return NextResponse.json({ action: "google-review", ...(await reviewGoogleMatch(body.id, body.decision as "confirmed" | "rejected")) }, { headers: H });
+      }
       case "rollback-wave": {
         if (body.confirm !== "GERI-AL") break;
         /* Dalga 0 (ilk 148) bu yolla silinemez; onun için rollback-seed. */

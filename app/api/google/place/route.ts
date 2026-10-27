@@ -13,6 +13,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const H = { "Cache-Control": "no-store" };
+const BOT = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|headless|lighthouse|pagespeed|preview|curl|wget|python|axios|node-fetch/i;
 
 export async function GET(req: Request) {
   if (!googleEnabled()) return NextResponse.json({ disabled: true }, { headers: H });
@@ -20,6 +21,8 @@ export async function GET(req: Request) {
   const e = getEntity(slug);
   if (!e || !e.isReal) return NextResponse.json({ error: "not_found" }, { status: 404, headers: H });
 
+  /* Arama motoru ve otomasyon botları ücretli çağrı tetiklemez. */
+  if (BOT.test(req.headers.get("user-agent") ?? "")) return NextResponse.json({ disabled: true }, { headers: H });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "anon";
   if (!(await strictHit(`gp:${hashKey("ip:" + ip)}:h${Math.floor(Date.now() / 3_600_000)}`, 5, 3700))) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });

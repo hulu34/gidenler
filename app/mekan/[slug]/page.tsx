@@ -17,6 +17,8 @@ import { ReservationBlock } from "@/components/reservation/ReservationBlock";
 import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
+import { GooglePlace } from "@/components/venue/GooglePlace";
+import { mapLinks } from "@/lib/venue";
 import { nf, score1 } from "@/lib/format";
 
 import { Badge } from "@/components/ui/Badge";
@@ -206,6 +208,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           <div className="min-w-0 md:sticky md:top-24"><ReservationBlock entity={entity} /></div>
         </section>
       )}
+
+      {/* Google: puan, fotoğraf, saatler, yorumlar — temel bilgilerin hemen altında, ekrana girince yüklenir */}
+      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} /></div>}
 
       {entity.isReal && <DataCompleteness c={completenessOf(entity)} />}
 

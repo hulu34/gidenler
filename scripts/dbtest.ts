@@ -18,7 +18,7 @@ import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { fetchGooglePlace, googleEnabled } from "../lib/providers/google";
+import { fetchGooglePlace, googleEnabled, matchGoogleBatch } from "../lib/providers/google";
 import { matchScore } from "../lib/match/score";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
@@ -144,10 +144,12 @@ async function main() {
   const fake2 = new FakeRedis(); setRedisForTests(fake2 as unknown as RedisLike);
   process.env.GOOGLE_PLACES_API_KEY = "TEST_KEY_NOT_REAL";
   ok("Preview'da ücretli Google çağrıları varsayılan kapalı", googleEnabled("preview") === false && googleEnabled("production") === true);
-  const calls: string[] = []; let keyInUrl = false;
-  const mkFetch = (cand: { name: string; lat: number; lng: number }) => (async (url: string, init?: RequestInit) => {
+  const calls: string[] = []; const masks: string[] = []; let keyInUrl = false;
+  const mkFetch = (cand: { name: string; lat: number; lng: number; phone?: string; web?: string }) => (async (url: string, init?: RequestInit) => {
     calls.push(String(url)); if (String(url).includes("TEST_KEY")) keyInUrl = true;
     const h = (init?.headers ?? {}) as Record<string, string>;
+    masks.push(`${String(url).endsWith(":searchText") ? "search" : "details"}:${h["X-Goog-FieldMask"] ?? ""}`);
+    if (h["X-Goog-FieldMask"] === "nationalPhoneNumber,websiteUri") return Response.json({ nationalPhoneNumber: cand.phone, websiteUri: cand.web });
     if (h["X-Goog-Api-Key"] !== "TEST_KEY_NOT_REAL") return new Response("{}", { status: 403 });
     if (String(url).endsWith(":searchText")) return Response.json({ places: [{ id: "GID1", displayName: { text: cand.name }, location: { latitude: cand.lat, longitude: cand.lng } }] });
     if (String(url).includes("/media")) return Response.json({ photoUri: "https://lh3.example/p.jpg" });
@@ -178,6 +180,24 @@ async function main() {
   ok("moderasyon kuyruğuna düştü", mq.length === 1);
   const g2b = await fetchGooglePlace(moda.slug, mkFetch({ name: "Bambaşka Bir İşletme", lat: moda.lat! + 0.0009, lng: moda.lng! }));
   ok("onay beklerken tekrar arama yapılmaz, içerik yine gösterilmez", g2b.state === "unmatched" && g2b.reason === "pending_review", g2b);
+
+  const ENTERPRISE = ["nationalPhoneNumber", "websiteUri", "rating", "userRatingCount", "regularOpeningHours", "reviews", "priceLevel"];
+  ok("eşleştirme araması yalnız Pro alanları ister (Enterprise yok)", masks.filter((m) => m.startsWith("search:")).every((m) => !ENTERPRISE.some((f) => m.includes(f))), masks);
+  const [modaRow] = await db.select().from(schema.placeIdentifiers).where(sql`${schema.placeIdentifiers.provider} = 'google' and ${schema.placeIdentifiers.status} = 'pending'`);
+  const mqAll = await db.select().from(schema.moderationQueue);
+  ok("Google içeriği (aday adı) hiçbir tabloya yazılmaz", !mqAll.some((m) => (m.reason ?? "").includes("Şubesi")) && !(modaRow?.matchMethod ?? "").includes("Şubesi"), { reason: mqAll[0]?.reason, method: modaRow?.matchMethod });
+  /* telefon/web çelişkisi: ad ve konum birebir olsa da otomatik onay verilmez */
+  const withPhone = (await db.select().from(schema.places).where(sql`${schema.places.phone} is not null and ${schema.places.vertical} = 'restaurant' and ${schema.places.slug} <> ${moda.slug}`).limit(1))[0];
+  masks.length = 0;
+  const g4 = await fetchGooglePlace(withPhone.slug, mkFetch({ name: withPhone.name, lat: withPhone.lat!, lng: withPhone.lng!, phone: "0212 000 00 00", web: "https://baska-isletme.example" }));
+  ok("telefon ve web çelişirse onaya gider", g4.state === "unmatched" && g4.reason === "pending_review", g4);
+  ok("doğrulama için yalnız telefon+web istenir (Enterprise detay)", masks.includes("details:nationalPhoneNumber,websiteUri"), masks);
+  /* toplu eşleştirme: kota biterse durur, fazla çağrı yapmaz */
+  const fake3 = new FakeRedis(); setRedisForTests(fake3 as unknown as RedisLike);
+  for (let i = 0; i < BUDGETS["google:text_search_pro"].daily - 2; i++) await reserve("google:text_search_pro");
+  calls.length = 0;
+  const b = await matchGoogleBatch(25, mkFetch({ name: "Hiç Benzemeyen Ad", lat: 0, lng: 0 }));
+  ok("toplu eşleştirme günlük kotada durur", b.results.length <= 3 && b.results.at(-1)?.status === "limit" && calls.filter((u) => u.endsWith(":searchText")).length === 2, { n: b.results.length, last: b.results.at(-1)?.status, searches: calls.filter((u) => u.endsWith(":searchText")).length });
 
   setRedisForTests(null); calls.length = 0;
   const g3 = await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "Çiya Sofrası", lat: ciya.lat!, lng: ciya.lng! }));
