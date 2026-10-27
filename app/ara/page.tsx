@@ -8,7 +8,7 @@ import { searchV3, type SearchHit, type SearchOutput } from "@/lib/search";
 import type { EntityCard } from "@/lib/api";
 import type { User } from "@/lib/types";
 import { effectiveProfile, getPersonalMatch } from "@/lib/decision";
-import { useUserData } from "@/lib/store";
+import { isInvestorDemo, useUserData } from "@/lib/store";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 
@@ -26,6 +26,8 @@ export default function SearchPage() {
   const [district, setDistrict] = useState("hepsi");
   const [limit, setLimit] = useState(40);
   const [writeMode, setWriteMode] = useState(false);
+  /* Demo kayıtlar varsayılan sonuçlarda yok; geliştirme/sunum için açıkça açılır (?demo=1 ya da sunum modu). */
+  const [showDemo, setShowDemo] = useState(false);
   const cats = listCategories();
   const data = useUserData();
   const profile = useMemo(() => effectiveProfile(data.taste), [data.taste]);
@@ -37,9 +39,10 @@ export default function SearchPage() {
     if (p.get("kategori")) setCat(p.get("kategori")!);
     if (p.get("sehir")) setCity(p.get("sehir")!);
     if (p.get("semt")) setDistrict(p.get("semt")!);
+    if (p.get("demo") === "1" || isInvestorDemo()) setShowDemo(true);
   }, []);
   /* konum listeleri — gerçek veriden; sahte mesafe yok */
-  const allCards = useMemo(() => listCards(), []);
+  const allCards = useMemo(() => listCards().filter((c) => showDemo || !c.entity.isDemo), [showDemo]);
   const cities = useMemo(() => Array.from(new Set(allCards.map((c) => c.entity.location?.city).filter(Boolean))) as string[], [allCards]);
   const districts = useMemo(() => Array.from(new Set(allCards.filter((c) => city === "hepsi" || c.entity.location?.city === city).map((c) => c.entity.location?.district).filter(Boolean))).sort((a, b) => (a as string).localeCompare(b as string, "tr")) as string[], [allCards, city]);
   const inLoc = (e: { location?: { city?: string; district?: string } }) => (city === "hepsi" || e.location?.city === city) && (district === "hepsi" || e.location?.district === district);
@@ -47,7 +50,7 @@ export default function SearchPage() {
   const qq = q.trim().replace(/^@/, "");
   /* Arama motoru v3: metin alakası kapı, sonra konum × kalite × güven × trend. Tam eşleşme ile "yakın olabilir" ayrı. */
   const results = useMemo(() => {
-    const keep = (c: { category: { id: string }; entity: { location?: { city?: string; district?: string } } }) => (cat === "hepsi" || c.category.id === cat) && inLoc(c.entity);
+    const keep = (c: { category: { id: string }; entity: { isDemo?: boolean; location?: { city?: string; district?: string } } }) => (showDemo || !c.entity.isDemo) && (cat === "hepsi" || c.category.id === cat) && inLoc(c.entity);
     if (!qq) {
       const all = allCards.filter(keep)
         .sort((a, b) => ((a.entity.tier === "C" ? 1 : 0) - (b.entity.tier === "C" ? 1 : 0)) || (b.score ?? 0) - (a.score ?? 0) || b.experienceCount - a.experienceCount);
@@ -61,7 +64,7 @@ export default function SearchPage() {
       creators: r.creators, lists: r.lists, understood: r.query.understood, corrections: r.query.corrections,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qq, cat, city, district, allCards]);
+  }, [qq, cat, city, district, allCards, showDemo]);
   useEffect(() => setLimit(40), [qq, cat, city, district]);
 
   const total = results.entities.length + results.adjacent.length + results.creators.length + results.lists.length;
@@ -107,6 +110,10 @@ export default function SearchPage() {
             {districts.map((d) => <option key={d} value={d}>{d}</option>)}
           </select>
           {(city !== "hepsi" || district !== "hepsi") && <button type="button" onClick={() => { setCity("hepsi"); setDistrict("hepsi"); }} className="text-[12px] text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">temizle</button>}
+          <label className="ml-auto inline-flex items-center gap-2 text-[12px] text-ink-3">
+            <input type="checkbox" checked={showDemo} onChange={(e) => setShowDemo(e.target.checked)} />
+            Demo kayıtları da göster
+          </label>
         </div>
 
         {!qq && (

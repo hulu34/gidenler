@@ -19,7 +19,8 @@ export function placeLine(card: EntityCard) {
 /** "214 deneyim · Yüksek güven" — kartın kanıt satırı. */
 export function evidenceLine(card: EntityCard) {
   if (card.entity.isReal && card.experienceCount === 0) return "henüz deneyim yok";
-  const parts = [`${nf(card.experienceCount)} deneyim`];
+  /* Demo kayıtların puanı ve deneyim sayısı sentetiktir; her kartta açıkça söylenir. */
+  const parts = [`${card.entity.isDemo ? "demo · " : ""}${nf(card.experienceCount)} deneyim`];
   if (card.confidence && card.score !== null) parts.push(CONFIDENCE_LABEL[card.confidence]);
   return parts.join(" · ");
 }

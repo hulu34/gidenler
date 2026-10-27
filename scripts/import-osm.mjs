@@ -5,7 +5,7 @@
               node scripts/import-osm.mjs --selected data/real/raw/*.jsonl → seçilmiş + Commons'ı çözülmüş kayıtlardan (yalnızca temizlik)
    Çıktı: data/real/venues.json — elle düzenlenmez. Kaynak: © OpenStreetMap katkıcıları (ODbL). */
 import { readFileSync, writeFileSync } from "node:fs";
-import { DISTRICT_QUOTAS, cleanVenues, overpassQuery, selectVenues } from "./osm-select.mjs";
+import { DISTRICT_QUOTAS, cleanVenues, overpassQuery, resolveCommons, selectVenues } from "./osm-select.mjs";
 
 /** Kayıt başına bir satır: gözden geçirmesi ve fark (diff) okuması kolay. */
 const toJsonLines = (list) => "[\n" + list.map((v) => JSON.stringify(v)).join(",\n") + "\n]\n";
@@ -37,26 +37,3 @@ const venues = selectVenues(results);
 const finals = cleanVenues(await resolveCommons(venues));
 writeFileSync(new URL("../data/real/venues.json", import.meta.url), toJsonLines(finals));
 console.error(`${finals.length} gerçek mekân yazıldı (${finals.filter((v) => v.image).length} açık lisanslı fotoğraf).`);
-
-/** Wikimedia Commons dosyalarını yazar + lisansıyla çözer; lisansı okunamayan görsel kullanılmaz. */
-export async function resolveCommons(list) {
-  const out = [];
-  for (const v of list) {
-    const { commons, ...rest } = v;
-    if (commons) {
-      try {
-        const u = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=1200&titles=${encodeURIComponent(commons)}`;
-        const j = await (await fetch(u)).json();
-        const ii = Object.values(j.query.pages)[0]?.imageinfo?.[0];
-        const md = ii?.extmetadata ?? {};
-        const license = md.LicenseShortName?.value;
-        const artist = (md.Artist?.value ?? "").replace(/<[^>]+>/g, "").trim();
-        if (ii?.thumburl && license && /^(CC|Public domain|PD)/i.test(license)) {
-          rest.image = { src: ii.thumburl, credit: artist || "Wikimedia Commons", license, sourceUrl: ii.descriptionurl };
-        }
-      } catch { /* görsel yok sayılır */ }
-    }
-    out.push(rest);
-  }
-  return out;
-}

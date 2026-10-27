@@ -3,9 +3,10 @@ import { getDb } from "@/lib/db/client";
 import { executorFor } from "@/lib/db/executors";
 import { applyMigrations, migrationStatus } from "@/lib/db/migrate";
 import { seedRealVenues, verifyRealVenues } from "@/lib/db/seed";
-import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview } from "@/lib/db/rollback";
+import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "@/lib/db/rollback";
 import { realVenueRecords } from "@/data/real";
 import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
+import { qualityReport } from "@/lib/db/quality";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -48,8 +49,13 @@ export async function GET(req: Request) {
     const migrations = await migrationStatus(x);
     const ready = !migrations.pending.length;
     const integrity = ready ? await verifyRealVenues(db, realVenueRecords).catch(() => null) : null;
-    const rollback = ready ? { seed: await rollbackSeedPreview(x), migration: await rollbackMigrationPreview(x) } : null;
-    return NextResponse.json({ env: envName(), db: { fingerprint: dbFingerprint(dbUrl()), writeGuard: previewWriteGuard(dbUrl()) }, migrations, integrity, rollback }, { headers: H });
+    const waves = [...new Set(realVenueRecords.map((r) => r.wave ?? 0))].filter((w) => w > 0);
+    const rollback = ready ? {
+      seed: await rollbackSeedPreview(x), migration: await rollbackMigrationPreview(x),
+      waves: Object.fromEntries(await Promise.all(waves.map(async (w) => [w, await rollbackWavePreview(x, realVenueRecords.filter((r) => r.wave === w).map((r) => r.slug))]))),
+    } : null;
+    const quality = ready ? await qualityReport(x).catch(() => null) : null;
+    return NextResponse.json({ env: envName(), db: { fingerprint: dbFingerprint(dbUrl()), writeGuard: previewWriteGuard(dbUrl()) }, migrations, integrity, rollback, quality }, { headers: H });
   } catch (e) { return fail(e); }
 }
 
@@ -57,7 +63,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string; target?: string } = {};
+  let body: { action?: string; confirm?: string; target?: string; wave?: number } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -79,6 +85,13 @@ export async function POST(req: Request) {
       case "rollback-seed":
         if (body.confirm !== "GERI-AL") break;
         return NextResponse.json({ action: "rollback-seed", env: envName(), ...(await rollbackSeed(x)) }, { headers: H });
+      case "rollback-wave": {
+        if (body.confirm !== "GERI-AL") break;
+        /* Dalga 0 (ilk 148) bu yolla silinemez; onun için rollback-seed. */
+        if (!Number.isInteger(body.wave) || body.wave! < 1) return NextResponse.json({ error: "wave_required" }, { status: 400, headers: H });
+        const slugs = realVenueRecords.filter((r) => r.wave === body.wave).map((r) => r.slug);
+        return NextResponse.json({ action: "rollback-wave", wave: body.wave, env: envName(), ...(await rollbackWave(x, slugs)) }, { headers: H });
+      }
       case "rollback-migration":
         if (body.confirm !== "GERI-AL") break;
         return NextResponse.json({ action: "rollback-migration", env: envName(), ...(await rollbackMigration(x)) }, { headers: H });

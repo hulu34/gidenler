@@ -10,12 +10,14 @@ import { setDbForTests, type Db } from "../lib/db/client";
 import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
 import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
 import { MIGRATIONS } from "../lib/db/migrations.generated";
-import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview } from "../lib/db/rollback";
+import { qualityReport } from "../lib/db/quality";
+import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
 import { realVenueRecords } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
-import { reserve, BUDGETS, usageSnapshot } from "../lib/usage/counter";
+import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys } from "../lib/usage/counter";
+import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { fetchGooglePlace } from "../lib/providers/google";
+import { fetchGooglePlace, googleEnabled } from "../lib/providers/google";
 import { matchScore } from "../lib/match/score";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
@@ -68,7 +70,7 @@ async function main() {
   const tables = await pg.query<{ n: number }>("select count(*)::int as n from information_schema.tables where table_schema='public'");
   ok("tüm tablolar oluştu (≥ 30)", tables.rows[0].n >= 30, tables.rows[0].n);
 
-  console.log("\n2) 148 gerçek mekân tohumu");
+  console.log(`\n2) ${realVenueRecords.length} gerçek mekân tohumu`);
   const r1 = await seedRealVenues(db, realVenueRecords);
   ok(`ilk tohum ${realVenueRecords.length} mekân ekler`, r1.inserted === realVenueRecords.length && r1.total === realVenueRecords.length, r1);
   const r2 = await seedRealVenues(db, realVenueRecords);
@@ -81,6 +83,13 @@ async function main() {
   ok("alan kaynakları yazıldı", Number(prov.n) > realVenueRecords.length * 3, prov.n);
   const v = await verifyRealVenues(db, realVenueRecords);
   ok("bütünlük: eksiksiz, tekrarsız, OSM kimlikli", v.ok && v.present === realVenueRecords.length && v.duplicateSlugs === 0 && v.duplicateOsmRefs === 0 && v.missingOsmIdentifier === 0, v);
+  ok("restoran hedefi: OSM 'restaurant' kayıtların hepsi restoran olarak var", v.restaurantTarget.present === v.restaurantTarget.expected, v.restaurantTarget);
+  let rejected = false;
+  try { await seedRealVenues(db, [{ ...realVenueRecords[0], slug: "bozuk-kayit", ref: "osm-yok", lat: 0 }]); } catch { rejected = true; }
+  const [bozuk] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places).where(eq(schema.places.slug, "bozuk-kayit"));
+  ok("zorunlu alanı bozuk kayıt reddedilir, hiçbir şey yazılmaz", rejected && Number(bozuk.n) === 0);
+  const q = await qualityReport(x);
+  ok("kalite raporu: restoran sayısı ve alan doluluğu", q.restaurants > 0 && q.missingRequired === 0 && q.restaurantFields.address.count <= q.restaurants && q.restaurantFields.google.count === 0, { restaurants: q.restaurants, address: q.restaurantFields.address });
   const [ciya] = await db.select().from(schema.places).where(eq(schema.places.slug, "ciya-sofrasi-kadikoy"));
 
   console.log("\n3) Kullanıcı verisi ve ilişkiler (FK)");
@@ -120,11 +129,16 @@ async function main() {
   fake.broken = false;
   const snap = await usageSnapshot();
   ok("kullanım özeti okunur", !!snap && snap["google:details_atmosphere"].day === day);
+  ok("ortam ad alanları ayrı", redisNs("production") === "prod" && redisNs("preview") === "preview" && redisNs(undefined) === "dev");
+  ok("sayaç anahtarı ortam önekli", periodKeys("google:photo").month.startsWith(`${redisNs()}:usage:`));
+  ok("Preview payı %10, toplam ücretsiz kotanın altında",
+    (Object.keys(BUDGETS) as (keyof typeof BUDGETS)[]).every((k) => budgetFor(k, "preview").monthly + budgetFor(k, "production").monthly < (k === "google:text_search_pro" ? 5000 : 1000)));
 
   console.log("\n5) Google adaptörü (sahte API, gerçek çağrı yok)");
   setDbForTests(db);
   const fake2 = new FakeRedis(); setRedisForTests(fake2 as unknown as RedisLike);
   process.env.GOOGLE_PLACES_API_KEY = "TEST_KEY_NOT_REAL";
+  ok("Preview'da ücretli Google çağrıları varsayılan kapalı", googleEnabled("preview") === false && googleEnabled("production") === true);
   const calls: string[] = []; let keyInUrl = false;
   const mkFetch = (cand: { name: string; lat: number; lng: number }) => (async (url: string, init?: RequestInit) => {
     calls.push(String(url)); if (String(url).includes("TEST_KEY")) keyInUrl = true;
@@ -203,6 +217,14 @@ async function main() {
   ok("geçiş geri alma: kullanıcı var → güvenli değil", !mp.safe && mp.users >= 1, mp);
   let stopped2 = false; try { await rollbackMigration(x); } catch { stopped2 = true; }
   ok("geçiş geri alma kullanıcı varken durur", stopped2);
+  const w1 = realVenueRecords.filter((r) => r.wave === 1).map((r) => r.slug);
+  const wp = await rollbackWavePreview(x, w1);
+  ok("dalga geri alma: kullanıcı verisi ilk 148'de, dalga 1 güvenli", wp.safe && wp.places === w1.length, wp);
+  const wr = await rollbackWave(x, w1);
+  const [placesLeft] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places);
+  ok(`dalga 1 geri alındı (${wr.removedPlaces}), önceki kayıtlar ve kullanıcı verisi duruyor`, Number(placesLeft.n) === realVenueRecords.length - w1.length && (await rollbackSeedPreview(x)).linkedUserRows > 0);
+  const back = await seedRealVenues(db, realVenueRecords);
+  ok("dalga 1 yeniden eklendi, eski kimlikler korundu", back.inserted === w1.length && back.total === realVenueRecords.length, back);
   await pg.query(`DELETE FROM "user"`);
   const rs = await rollbackSeed(x);
   ok(`tohum geri alındı (${rs.removedPlaces} mekân)`, rs.removedPlaces === realVenueRecords.length);
@@ -212,7 +234,7 @@ async function main() {
   const again = await applyMigrations(x);
   ok("geri alındıktan sonra yeniden uygulanabilir", again.applied.length === MIGRATIONS.length);
   const reseed = await seedRealVenues(db, realVenueRecords);
-  ok("yeniden tohum 148/148", reseed.inserted === realVenueRecords.length && (await verifyRealVenues(db, realVenueRecords)).ok);
+  ok(`yeniden tohum ${realVenueRecords.length}/${realVenueRecords.length}`, reseed.inserted === realVenueRecords.length && (await verifyRealVenues(db, realVenueRecords)).ok);
 
   console.log(`\nSonuç: ${pass} geçti, ${fail} kaldı`);
   await pg.close();

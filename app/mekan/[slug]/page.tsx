@@ -15,6 +15,8 @@ import { VenueVisuals } from "@/components/venue/VenueVisuals";
 import { VenueBadges, RealVenueNotice } from "@/components/venue/VenueBadges";
 import { ReservationBlock } from "@/components/reservation/ReservationBlock";
 import { canReserve } from "@/lib/reservation";
+import { completenessOf } from "@/lib/completeness";
+import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { nf, score1 } from "@/lib/format";
 
 import { Badge } from "@/components/ui/Badge";
@@ -198,6 +200,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </section>
       )}
 
+      {entity.isReal && <DataCompleteness c={completenessOf(entity)} />}
+
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
       <TopicNav sections={sections} />
 
@@ -364,7 +368,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       )}
 
       {c.mode === "standard" && scored && <MobileActionBar entityId={entity.id} entitySlug={entity.slug} />}
-      <div className="mt-12"><DemoNotice /></div>
+      {entity.isDemo && <div className="mt-12"><DemoNotice /></div>}
     </div>
   );
 }

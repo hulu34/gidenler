@@ -1,4 +1,4 @@
-import { getRedis } from "./redis";
+import { getRedis, redisNs } from "./redis";
 
 /* ──────────────────────────────────────────────────────────────────────────
    ÜCRETLİ ÇAĞRI SAYACI — "önce say, sonra çağır".
@@ -19,6 +19,14 @@ export const BUDGETS = {
 } satisfies Record<string, Budget>;
 export type BudgetKey = keyof typeof BUDGETS;
 
+/** Preview, Production ile aynı Google projesini kullanır: payı %10 ile sınırlanır,
+    böylece iki ortamın toplamı da ücretsiz kotanın altında kalır (ör. 4.500 + 450 < 5.000). */
+export function budgetFor(key: BudgetKey, env = process.env.VERCEL_ENV): Budget {
+  const b = BUDGETS[key];
+  if (env !== "preview") return b;
+  return { monthly: Math.max(1, Math.floor(b.monthly / 10)), daily: Math.max(1, Math.floor(b.daily / 10)) };
+}
+
 const LUA = `
 local m = redis.call('INCR', KEYS[1]); if m == 1 then redis.call('EXPIRE', KEYS[1], ARGV[3]) end
 local d = redis.call('INCR', KEYS[2]); if d == 1 then redis.call('EXPIRE', KEYS[2], ARGV[4]) end
@@ -30,7 +38,8 @@ return 1`;
 const pad = (n: number) => String(n).padStart(2, "0");
 export function periodKeys(key: string, now = new Date()) {
   const ym = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}`;
-  return { month: `usage:${key}:m:${ym}`, day: `usage:${key}:d:${ym}${pad(now.getUTCDate())}` };
+  const ns = redisNs();
+  return { month: `${ns}:usage:${key}:m:${ym}`, day: `${ns}:usage:${key}:d:${ym}${pad(now.getUTCDate())}` };
 }
 
 export type ReserveResult = { ok: true } | { ok: false; reason: "no_redis" | "limit" | "error" };
@@ -39,7 +48,7 @@ export type ReserveResult = { ok: true } | { ok: false; reason: "no_redis" | "li
 export async function reserve(key: BudgetKey, n = 1, now = new Date()): Promise<ReserveResult> {
   const r = getRedis();
   if (!r) return { ok: false, reason: "no_redis" };
-  const b = BUDGETS[key];
+  const b = budgetFor(key);
   const k = periodKeys(key, now);
   try {
     for (let i = 0; i < n; i++) {
@@ -61,7 +70,7 @@ export async function usageSnapshot(now = new Date()) {
     const flat = keys.flatMap((k) => { const p = periodKeys(k, now); return [p.month, p.day]; });
     const vals = await r.mget<(string | null)[]>(...flat);
     return Object.fromEntries(keys.map((k, i) => [k, {
-      month: Number(vals[2 * i] ?? 0), day: Number(vals[2 * i + 1] ?? 0), budget: BUDGETS[k],
+      month: Number(vals[2 * i] ?? 0), day: Number(vals[2 * i + 1] ?? 0), budget: budgetFor(k),
     }]));
   } catch {
     return null;

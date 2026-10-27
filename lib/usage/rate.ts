@@ -1,4 +1,4 @@
-import { getRedis } from "./redis";
+import { getRedis, redisNs } from "./redis";
 import type { RateStore } from "@/lib/ai/ratelimit";
 
 /* Kalıcı hız sınırı deposu — Redis varsa tüm sunucu örnekleri aynı sayacı görür.
@@ -9,7 +9,7 @@ export class RedisRateStore implements RateStore {
     if (!r) throw new Error("no_redis");
     const v = await r.eval(
       "local n = redis.call('INCR', KEYS[1]); if n == 1 then redis.call('EXPIRE', KEYS[1], ARGV[1]) end; return n",
-      [`rl:${key}`], [String(ttlSec)],
+      [`${redisNs()}:rl:${key}`], [String(ttlSec)],
     );
     return Number(v);
   }

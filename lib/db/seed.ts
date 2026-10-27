@@ -1,8 +1,8 @@
 import { and, eq, inArray, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import type { Db } from "./client";
-import { places, placeIdentifiers, fieldProvenance, verticalRestaurant } from "./schema";
-import type { RealVenueRecord } from "@/data/real";
+import { places, placeIdentifiers, fieldProvenance, verticalRestaurant, mediaItems, mediaPlaces } from "./schema";
+import { invalidRecord, isRestaurantTarget, type RealVenueRecord } from "@/data/real";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GERÇEK MEKÂN TOHUMU — data/real/venues.json (OSM, ODbL) → veritabanı.
@@ -22,6 +22,9 @@ const ex = (col: string) => sql.raw(`excluded."${col}"`);
 
 export async function seedRealVenues(db: Db, records: RealVenueRecord[], now = new Date()) {
   if (!records.length) return { inserted: 0, updated: 0, total: 0 };
+  /* Zorunlu alanı eksik tek kayıt bile varsa hiçbir şey yazılmaz. */
+  const bad = records.map((r) => [r.slug, invalidRecord(r)] as const).filter(([, e]) => e);
+  if (bad.length) throw new Error(`invalid_records: ${bad.slice(0, 5).map(([s, e]) => `${s}:${e}`).join(", ")}`);
   const legacy = records.map((r) => legacyOf(r.slug));
   const before = await db.select({ legacyId: places.legacyId }).from(places).where(inArray(places.legacyId, legacy));
   const existed = new Set(before.map((b) => b.legacyId));
@@ -58,6 +61,19 @@ export async function seedRealVenues(db: Db, records: RealVenueRecord[], now = n
   })));
   for (let i = 0; i < prov.length; i += 500) await db.insert(fieldProvenance).values(prov.slice(i, i + 500));
 
+  /* açık lisanslı (Wikimedia Commons) fotoğraflar: yalnız bağlantı + atıf + lisans */
+  const imgs = records.filter((r) => r.image);
+  if (imgs.length) {
+    await db.insert(mediaItems).values(imgs.map((r) => ({
+      id: uuidv7(), type: "photo", platform: "commons", url: r.image!.src, storageClass: "embed", category: "dis",
+      credit: r.image!.credit, license: r.image!.license, source: "auto", status: "approved", lastCheckedAt: now,
+    }))).onConflictDoNothing({ target: mediaItems.url });
+    const media = await db.select({ id: mediaItems.id, url: mediaItems.url }).from(mediaItems).where(inArray(mediaItems.url, imgs.map((r) => r.image!.src)));
+    const mediaOf = new Map(media.map((m) => [m.url, m.id]));
+    await db.insert(mediaPlaces).values(imgs.map((r) => ({ mediaId: mediaOf.get(r.image!.src)!, placeId: idOf.get(legacyOf(r.slug))! })))
+      .onConflictDoNothing();
+  }
+
   const rest = ids.filter((i) => i.vertical === "restaurant").map((i) => ({ placeId: i.id, reservationMode: "contact" }));
   if (rest.length) await db.insert(verticalRestaurant).values(rest).onConflictDoNothing();
 
@@ -80,6 +96,15 @@ export async function verifyRealVenues(db: Db, records: RealVenueRecord[]) {
   const missingOsm = present_ids.filter((p) => !osmSet.has(p.id)).length;
   const [pilot] = await db.select({ n: count }).from(places).where(eq(places.isPilot, true));
   const expected = records.length;
-  const ok = Number(present.n) === expected && !dupSlug.length && !dupOsm.length && !missingOsm && Number(pilot.n) === PILOT_SLUGS.length;
-  return { ok, expected, present: Number(present.n), duplicateSlugs: dupSlug.length, duplicateOsmRefs: dupOsm.length, missingOsmIdentifier: missingOsm, pilot: Number(pilot.n) };
+  const restLegacy = records.filter(isRestaurantTarget).map((r) => legacyOf(r.slug));
+  const [rest] = restLegacy.length
+    ? await db.select({ n: count }).from(places).where(and(inArray(places.legacyId, restLegacy), eq(places.vertical, "restaurant")))
+    : [{ n: 0 }];
+  const invalid = records.filter((r) => invalidRecord(r)).length;
+  const ok = Number(present.n) === expected && !dupSlug.length && !dupOsm.length && !missingOsm && Number(pilot.n) === PILOT_SLUGS.length
+    && !invalid && Number(rest.n) === restLegacy.length;
+  return {
+    ok, expected, present: Number(present.n), duplicateSlugs: dupSlug.length, duplicateOsmRefs: dupOsm.length, missingOsmIdentifier: missingOsm,
+    pilot: Number(pilot.n), invalidRecords: invalid, restaurantTarget: { expected: restLegacy.length, present: Number(rest.n) },
+  };
 }

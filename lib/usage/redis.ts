@@ -14,5 +14,11 @@ export function getRedis(): RedisLike | null {
   return client;
 }
 
+/** Ortam ad alanı: Production ve Preview aynı Redis'e bağlansa bile sayaçları, hız sınırları ve
+    maliyet kayıtları ayrı anahtarlarda tutulur ("prod:", "preview:", "dev:"). */
+export function redisNs(env = process.env.VERCEL_ENV) {
+  return env === "production" ? "prod" : env === "preview" ? "preview" : "dev";
+}
+
 /** Yalnız testler için. */
 export function setRedisForTests(r: RedisLike | null) { override = r; client = undefined; }

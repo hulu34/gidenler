@@ -36,7 +36,35 @@ export async function rollbackSeedPreview(x: Executor) {
 export async function rollbackSeed(x: Executor) {
   const p = await rollbackSeedPreview(x);
   if (!p.safe) throw new Error(`Bu mekânlara bağlı ${p.linkedUserRows} kullanıcı kaydı var — tohum geri alma durduruldu.`);
-  await x.transaction([`DELETE FROM places WHERE legacy_id LIKE 'ent.r.%'`]);
+  await x.transaction([`DELETE FROM places WHERE legacy_id LIKE 'ent.r.%'`, ORPHAN_MEDIA]);
+  return { removedPlaces: p.places };
+}
+
+/** Otomatik eklenmiş, artık hiçbir mekâna bağlı olmayan açık lisanslı fotoğraflar. */
+const ORPHAN_MEDIA = `DELETE FROM media_items m WHERE m.source = 'auto' AND m.platform = 'commons'
+  AND NOT EXISTS (SELECT 1 FROM media_places mp WHERE mp.media_id = m.id)`;
+
+const legacyList = (slugs: string[]) => slugs.map((s) => `'ent.r.${s.replace(/'/g, "''")}'`).join(",");
+
+/** Yalnız bir dalganın mekânları (ör. Dalga 1'in yeni restoranları). Önceki dalgalara ve
+    kullanıcı verisine dokunmaz; bu mekânlara bağlı kullanıcı kaydı varsa DURUR. */
+export async function rollbackWavePreview(x: Executor, slugs: string[]) {
+  if (!slugs.length) return { places: 0, linkedUserRows: 0, safe: true };
+  const L = legacyList(slugs);
+  const linked = await count(x, `
+    SELECT count(*)::int AS n FROM (
+      SELECT place_id FROM reviews UNION ALL SELECT place_id FROM user_place_status
+      UNION ALL SELECT place_id FROM list_items WHERE place_id IS NOT NULL
+    ) t JOIN places p ON p.id = t.place_id WHERE p.legacy_id IN (${L})`);
+  const places = await count(x, `SELECT count(*)::int AS n FROM places WHERE legacy_id IN (${L})`);
+  return { places, linkedUserRows: linked, safe: linked === 0 };
+}
+
+export async function rollbackWave(x: Executor, slugs: string[]) {
+  const p = await rollbackWavePreview(x, slugs);
+  if (!p.safe) throw new Error(`Bu dalganın mekânlarına bağlı ${p.linkedUserRows} kullanıcı kaydı var — dalga geri alma durduruldu.`);
+  if (!slugs.length) return { removedPlaces: 0 };
+  await x.transaction([`DELETE FROM places WHERE legacy_id IN (${legacyList(slugs)})`, ORPHAN_MEDIA]);
   return { removedPlaces: p.places };
 }
 

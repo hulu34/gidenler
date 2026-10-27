@@ -182,3 +182,26 @@ export function cleanVenues(list) {
   }
   return out;
 }
+
+/** Wikimedia Commons dosyalarını yazar + lisansıyla çözer; lisansı okunamayan görsel kullanılmaz. */
+export async function resolveCommons(list) {
+  const out = [];
+  for (const v of list) {
+    const { commons, ...rest } = v;
+    if (commons) {
+      try {
+        const u = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=1200&titles=${encodeURIComponent(commons)}`;
+        const j = await (await fetch(u)).json();
+        const ii = Object.values(j.query.pages)[0]?.imageinfo?.[0];
+        const md = ii?.extmetadata ?? {};
+        const license = md.LicenseShortName?.value;
+        const artist = (md.Artist?.value ?? "").replace(/<[^>]+>/g, "").trim();
+        if (ii?.thumburl && license && /^(CC|Public domain|PD)/i.test(license)) {
+          rest.image = { src: ii.thumburl, credit: artist || "Wikimedia Commons", license, sourceUrl: ii.descriptionurl };
+        }
+      } catch { /* görsel yok sayılır */ }
+    }
+    out.push(rest);
+  }
+  return out;
+}

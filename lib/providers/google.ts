@@ -30,8 +30,11 @@ export interface GooglePlaceView {
   reviews: Array<{ author: string; authorUri?: string; authorPhoto?: string; rating: number; text: string; when: string; uri?: string }>;
 }
 
-export function googleEnabled() {
-  return !!process.env.GOOGLE_PLACES_API_KEY && process.env.GOOGLE_PLACES_ENABLED !== "false";
+/** Ücretli Google çağrıları: Production'da anahtar varsa açık; Preview'da yalnız GOOGLE_PLACES_PREVIEW=true
+    ile (ayrı Redis + kota koruması doğrulandıktan sonra) açılır. */
+export function googleEnabled(env = process.env.VERCEL_ENV) {
+  if (!process.env.GOOGLE_PLACES_API_KEY || process.env.GOOGLE_PLACES_ENABLED === "false") return false;
+  return env !== "preview" || process.env.GOOGLE_PLACES_PREVIEW === "true";
 }
 
 const headers = (key: string, mask: string) => ({ "content-type": "application/json", "X-Goog-Api-Key": key, "X-Goog-FieldMask": mask });

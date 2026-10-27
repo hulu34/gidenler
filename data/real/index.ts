@@ -28,7 +28,25 @@ export interface RealVenueRecord {
   cuisine?: string[];
   image?: { src: string; credit: string; license: string; sourceUrl: string };
   importedAt: string;
+  /** OSM'deki tür. 1.000 restoran hedefine yalnız "restaurant" sayılır. */
+  osmAmenity?: "restaurant" | "cafe" | "bar" | "pub" | "fast_food";
+  /** Aktarım dalgası: 0 = Faz 0 (148), 1 = 400, 2 = 700, 3 = 1.000. */
+  wave?: number;
 }
+
+const REF = /^(node|way|relation)\/\d+$/;
+const CATS = new Set(["cat.restaurant", "cat.cafe", "cat.bar"]);
+/** Zorunlu alanlar: ad, konum (lat/lng + semt, İstanbul içinde), kategori, kaynak (OSM ref), slug. */
+export function invalidRecord(r: RealVenueRecord): string | null {
+  if (!r.name?.trim()) return "name";
+  if (typeof r.lat !== "number" || typeof r.lng !== "number" || r.lat < 40.8 || r.lat > 41.6 || r.lng < 27.9 || r.lng > 29.95) return "location";
+  if (!r.district) return "district";
+  if (!CATS.has(r.categoryId)) return "category";
+  if (!REF.test(r.ref)) return "source";
+  if (!r.slug) return "slug";
+  return null;
+}
+export const isRestaurantTarget = (r: RealVenueRecord) => r.osmAmenity === "restaurant";
 
 export const realVenueRecords = raw as RealVenueRecord[];
 

@@ -57,16 +57,20 @@ export function areaKindRank(entityId: string) {
 
 /* ───── Gidenler 100 ───── */
 export const G100 = { year: 2026, size: 100, minExperiences: 60 } as const;
-let g100: EntityCard[] | null = null;
-/** Yeme-içme, İstanbul, ≥60 deneyim, güven yüksek; puana göre ilk 100. Ücret/abonelik etkisi yok. */
-export function gidenler100(): EntityCard[] {
-  g100 ??= listCards()
+const g100Cache: Partial<Record<"real" | "demo", EntityCard[]>> = {};
+/** Yeme-içme, İstanbul, ≥60 deneyim, güven yüksek; puana göre ilk 100. Ücret/abonelik etkisi yok.
+    Gerçek sıralama yalnız gerçek kayıtlardan oluşur; demo kayıtlar yalnız açıkça "önizleme" istenince (demo: true). */
+export function gidenler100({ demo = false }: { demo?: boolean } = {}): EntityCard[] {
+  const k = demo ? "demo" : "real";
+  g100Cache[k] ??= listCards()
+    .filter((c) => !!c.entity.isDemo === demo)
     .filter((c) => FOOD.has(c.entity.categoryId) && c.score !== null && (c.entity.location?.city ?? "İstanbul") === "İstanbul")
     .filter((c) => c.experienceCount >= G100.minExperiences && getTopicIntelligence(c.entity.id)?.confidence === "high")
     .sort((a, b) => (b.score! - a.score!) || b.experienceCount - a.experienceCount)
     .slice(0, G100.size);
-  return g100;
+  return g100Cache[k]!;
 }
+/** Rozet yalnız gerçek Gidenler 100 sırası için; demo önizleme sırası rozet olarak gösterilmez. */
 export function g100Rank(entityId: string): number | null {
   const i = gidenler100().findIndex((c) => c.entity.id === entityId);
   return i < 0 ? null : i + 1;

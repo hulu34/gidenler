@@ -28,8 +28,10 @@ export function Footer() {
           </div>
         </div>
         <p className="max-w-[74ch] text-[12px] leading-relaxed text-ink-3">
-          Prototip. Bu sitedeki işletmeler, deneyimler ve dış kaynak puanları demo verilerdir;
-          gerçek hiçbir işletmeye veya kişiye ait değildir. Gidenler puanı yalnızca Gidenler&apos;e
+          İki tür kayıt vardır: &ldquo;Gerçek mekân&rdquo; etiketli işletmelerin kimlik bilgisi
+          OpenStreetMap&apos;ten gelir ve henüz puanı yoktur; &ldquo;demo&rdquo; etiketli kayıtların
+          işletmesi, deneyimleri ve dış kaynak puanları prototip için üretilmiştir, gerçek hiçbir
+          işletmeye veya kişiye ait değildir. Gidenler puanı yalnızca Gidenler&apos;e
           yazılan deneyimlerden hesaplanır — dış kaynak puanlarının ortalaması değildir.
           Hekim ve avukat gibi meslek mevzuatı kısıtlı kategorilerde platform puan üretmez,
           özet cümlesi kurmaz ve reklam göstermez.
