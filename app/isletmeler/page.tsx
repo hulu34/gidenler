@@ -3,6 +3,7 @@ import { getBusinessDashboard } from "@/lib/api";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { nf } from "@/lib/format";
 import { RESERVATION_FEES } from "@/lib/reservation";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 export const metadata = { title: "İşletmeler" };
 
@@ -29,8 +30,8 @@ export default function BusinessesPage() {
         <h1 className="max-w-[18ch] text-[clamp(2rem,6.5vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">İnsanların ne söylediğini değil, neden değiştiğini görün.</h1>
         <p className="max-w-[60ch] text-[15px] leading-relaxed text-ink-2">Müşterilerinizin gördüğü puan, yön ve boyutlar aynı. Fark şu: panel size &ldquo;servis puanı neden düştü, hangi hafta, hangi konuda, kime göre&rdquo; sorusunu cevaplar.</p>
         <div className="mt-2 flex flex-wrap gap-3">
-          <Link href="/isletme/moda-lokantasi/" className="inline-flex h-10 items-center rounded-[3px] bg-accent px-4 text-[14px] font-semibold text-on-accent">İşletme panelini gör · Moda Lokantası</Link>
-          <Link href="/isletme/sakura-omakase/" className="inline-flex h-10 items-center rounded-[3px] border border-line-2 px-4 text-[14px] font-semibold hover:border-ink">Sakura paneli</Link>
+          {DEMO_VISIBLE && <Link href="/isletme/moda-lokantasi/" className="inline-flex h-10 items-center rounded-[3px] bg-accent px-4 text-[14px] font-semibold text-on-accent">İşletme panelini gör · Moda Lokantası</Link>}
+          {DEMO_VISIBLE && <Link href="/isletme/sakura-omakase/" className="inline-flex h-10 items-center rounded-[3px] border border-line-2 px-4 text-[14px] font-semibold hover:border-ink">Sakura paneli</Link>}
         </div>
       </header>
 
@@ -99,8 +100,8 @@ export default function BusinessesPage() {
       </section>
 
       <section className="mt-12 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 border-t border-line pt-5">
-        <p className="text-[14.5px] text-ink-2">Prototipte sahiplenme akışı yoktur; paneli demo işletmeler üzerinden inceleyebilirsiniz.</p>
-        <Link href="/isletme/moda-lokantasi/" className="inline-flex h-10 items-center rounded-[3px] bg-accent px-4 text-[14px] font-semibold text-on-accent">Paneli aç</Link>
+        <p className="text-[14.5px] text-ink-2">{DEMO_VISIBLE ? "Prototipte sahiplenme akışı yoktur; paneli demo işletmeler üzerinden inceleyebilirsiniz." : "Sahiplenme akışı yakında açılacak; panel yalnız sahiplenilmiş gerçek işletmelere açıktır."}</p>
+        {DEMO_VISIBLE && <Link href="/isletme/moda-lokantasi/" className="inline-flex h-10 items-center rounded-[3px] bg-accent px-4 text-[14px] font-semibold text-on-accent">Paneli aç</Link>}
       </section>
     </div>
   );

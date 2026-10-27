@@ -3,6 +3,7 @@ import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { getScoreSemantic } from "@/lib/semantic";
 import { PUBLIC_FACTORS, NEVER_AFFECTS, ALGORITHM_VERSION } from "@/lib/score/weights";
 import { PUBLIC_VERIFICATION_TEXT } from "@/lib/visits/verify";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 export const metadata = { title: "Nasıl çalışır" };
 
@@ -74,7 +75,7 @@ export default function HowItWorksPage() {
               <div><dt className="label">Date</dt><dd className="tnum text-[30px] font-extrabold leading-none tracking-[-0.045em] text-accent-ink">%99</dd></div>
               <div><dt className="label">Aile</dt><dd className="tnum text-[30px] font-extrabold leading-none tracking-[-0.045em] text-accent-ink">%63</dd></div>
             </dl>
-            <p className="mt-3 text-[12.5px] text-ink-3">Aynı 9,4; üç farklı cevap. Uyum puanı değiştirmez, sana ne yapacağını söyler. <Link href="/mekan/sakura-omakase/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4">Canlı örneğe bak</Link>.</p>
+            <p className="mt-3 text-[12.5px] text-ink-3">Aynı 9,4; üç farklı cevap. Uyum puanı değiştirmez, sana ne yapacağını söyler. <Link href={DEMO_VISIBLE ? "/mekan/sakura-omakase/" : "/mekan/ismet-baba-uskudar/"} className="font-semibold text-ink underline decoration-line-2 underline-offset-4">Canlı örneğe bak</Link>.</p>
           </div>
         </div>
       </section>
@@ -161,7 +162,7 @@ export default function HowItWorksPage() {
       </section>
 
       <p className="mt-12 flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-4 text-[13px] font-semibold">
-        <Link href="/mekan/sakura-omakase/" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Bir mekân sayfasında gör</Link>
+        <Link href={DEMO_VISIBLE ? "/mekan/sakura-omakase/" : "/mekan/ismet-baba-uskudar/"} className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Bir mekân sayfasında gör</Link>
         <Link href="/sor/" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Sor Gidenler&apos;i dene</Link>
         <Link href="/isletmeler/" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">İşletmeler için</Link>
         <Link href="/kurallar/" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Kurallar</Link>

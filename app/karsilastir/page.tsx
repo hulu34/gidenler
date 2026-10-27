@@ -11,6 +11,8 @@ import { WhyThisResult } from "@/components/decision/WhyThisResult";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { EntityActions } from "@/components/decision/EntityActions";
 import type { ComparisonRow } from "@/lib/types";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { getEntity } from "@/data/entities";
 
 function fmt(v: number | string | null, f: ComparisonRow["format"]) {
   if (v === null || v === undefined) return "—";
@@ -27,8 +29,8 @@ function fmt(v: number | string | null, f: ComparisonRow["format"]) {
  */
 export default function ComparePage() {
   const cards = useMemo(() => listCards().filter((c) => c.score !== null && c.category.compliance.showScores), []);
-  const [a, setA] = useState("sakura-omakase");
-  const [b, setB] = useState("moda-lokantasi");
+  const [a, setA] = useState(DEMO_VISIBLE ? "sakura-omakase" : "");
+  const [b, setB] = useState(DEMO_VISIBLE ? "moda-lokantasi" : "");
 
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
@@ -36,7 +38,7 @@ export default function ComparePage() {
     if (p.get("b")) setB(p.get("b")!);
   }, []);
 
-  const cmp = useMemo(() => (a !== b ? compareEntities([a, b]) : null), [a, b]);
+  const cmp = useMemo(() => (a && b && a !== b && getEntity(a) && getEntity(b) ? compareEntities([a, b]) : null), [a, b]);
   const ents = cmp ? cmp.entityIds.map((id) => getEntityById(id)!) : [];
   const winner = cmp ? getEntityById(cmp.winnerId)! : null;
 
@@ -47,6 +49,15 @@ export default function ComparePage() {
         {cards.map((c) => <option key={c.entity.slug} value={c.entity.slug}>{c.entity.name}</option>)}
       </select>
     </label>
+  );
+
+  /* Karşılaştırma puanlı kayıt ister; gerçek deneyimler birikene kadar açıklama gösterilir. */
+  if (cards.length < 2) return (
+    <div className="mx-auto max-w-[760px] px-5 pb-24 pt-14 sm:px-7">
+      <p className="label">Karşılaştır</p>
+      <h1 className="mt-2 text-[clamp(2rem,6vw,3rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">Karşılaştırma yakında.</h1>
+      <p className="mt-4 max-w-[58ch] text-[16px] leading-snug text-ink-2">İki mekânı karşılaştırmak için gerçek deneyimlerden oluşan puan gerekir. Deneyimler biriktikçe burası açılacak; şimdilik gerçek mekânları <Link href="/ara/" className="underline underline-offset-4">arayabilir</Link> ya da <Link href="/harita/" className="underline underline-offset-4">haritada</Link> görebilirsin.</p>
+    </div>
   );
 
   return (
