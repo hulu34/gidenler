@@ -18,7 +18,7 @@ import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { fetchGooglePlace, googleEnabled, matchGoogleBatch } from "../lib/providers/google";
+import { fetchGooglePlace, googleEnabled, matchGoogleBatch, rollbackGoogleMatches } from "../lib/providers/google";
 import { matchScore } from "../lib/match/score";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
@@ -198,6 +198,16 @@ async function main() {
   calls.length = 0;
   const b = await matchGoogleBatch(25, mkFetch({ name: "Hiç Benzemeyen Ad", lat: 0, lng: 0 }));
   ok("toplu eşleştirme günlük kotada durur", b.results.length <= 3 && b.results.at(-1)?.status === "limit" && calls.filter((u) => u.endsWith(":searchText")).length === 2, { n: b.results.length, last: b.results.at(-1)?.status, searches: calls.filter((u) => u.endsWith(":searchText")).length });
+
+  const [placesBefore] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places);
+  const [osmBefore] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "osm"));
+  const rg = await rollbackGoogleMatches();
+  const [gLeft] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "google"));
+  const [placesAfter] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places);
+  const [osmAfter] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "osm"));
+  const mqLeft = await db.select().from(schema.moderationQueue);
+  ok("Google pilot geri alma yalnız Google kayıtlarını siler", rg.ok && rg.removedIdentifiers > 0 && Number(gLeft.n) === 0 && mqLeft.length === 0
+    && Number(placesAfter.n) === Number(placesBefore.n) && Number(osmAfter.n) === Number(osmBefore.n), { rg, gLeft: gLeft.n, mq: mqLeft.length });
 
   setRedisForTests(null); calls.length = 0;
   const g3 = await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "Çiya Sofrası", lat: ciya.lat!, lng: ciya.lng! }));

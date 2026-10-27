@@ -229,3 +229,17 @@ export async function googleMatchStats() {
     .where(eq(placeIdentifiers.provider, "google")).groupBy(placeIdentifiers.status);
   return Object.fromEntries(rows.map((r) => [r.status, Number(r.n)]));
 }
+
+/** Pilot geri alma: YALNIZ Google eşleşme kayıtları ve onların onay kuyruğu satırları silinir.
+    Mekânlar, OSM kimlikleri, kullanıcılar, deneyimler ve diğer tablolar değişmez. */
+export async function rollbackGoogleMatches() {
+  const db = getDb();
+  if (!db) return { ok: false as const, error: "no_db" };
+  const ids = await db.select({ id: placeIdentifiers.id }).from(placeIdentifiers).where(eq(placeIdentifiers.provider, "google"));
+  const list = ids.map((i) => i.id);
+  if (list.length) {
+    await db.delete(moderationQueue).where(and(eq(moderationQueue.refTable, "place_identifiers"), inArray(moderationQueue.refId, list)));
+    await db.delete(placeIdentifiers).where(inArray(placeIdentifiers.id, list));
+  }
+  return { ok: true as const, removedIdentifiers: list.length };
+}

@@ -9,7 +9,7 @@ import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
-import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled } from "@/lib/providers/google";
+import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches } from "@/lib/providers/google";
 import { usageSnapshot } from "@/lib/usage/counter";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
@@ -116,6 +116,11 @@ export async function POST(req: Request) {
       case "google-review": {
         if (body.confirm !== "EVET" || !body.id || !["confirmed", "rejected"].includes(body.decision ?? "")) break;
         return NextResponse.json({ action: "google-review", ...(await reviewGoogleMatch(body.id, body.decision as "confirmed" | "rejected")) }, { headers: H });
+      }
+      case "rollback-google": {
+        /* Yalnız Google eşleşmeleri (pilot geri alma); başka hiçbir veriye dokunmaz. */
+        if (body.confirm !== "GERI-AL") break;
+        return NextResponse.json({ action: "rollback-google", env: envName(), ...(await rollbackGoogleMatches()) }, { headers: H });
       }
       case "rollback-wave": {
         if (body.confirm !== "GERI-AL") break;

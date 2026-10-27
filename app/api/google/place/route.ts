@@ -24,7 +24,9 @@ export async function GET(req: Request) {
   /* Arama motoru ve otomasyon botları ücretli çağrı tetiklemez. */
   if (BOT.test(req.headers.get("user-agent") ?? "")) return NextResponse.json({ disabled: true }, { headers: H });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "anon";
-  if (!(await strictHit(`gp:${hashKey("ip:" + ip)}:h${Math.floor(Date.now() / 3_600_000)}`, 5, 3700))) {
+  /* Kişi başı saatlik sınır; varsayılan 5. Yalnız korumalı test dağıtımında (--env) yükseltilebilir. */
+  const perIp = Math.min(60, Math.max(1, Number(process.env.GOOGLE_PLACES_IP_HOURLY) || 5));
+  if (!(await strictHit(`gp:${hashKey("ip:" + ip)}:h${Math.floor(Date.now() / 3_600_000)}`, perIp, 3700))) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });
   }
 
