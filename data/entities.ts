@@ -1,6 +1,7 @@
 import type { Entity } from "@/lib/types";
 import { universeEntities } from "@/data/universe";
 import { realEntities } from "@/data/real";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /**
  * DEMO VERİ. Buradaki işletmelerin hiçbiri gerçek değildir; isimler,
@@ -101,8 +102,14 @@ const baseEntities: Entity[] = [
   },
 ];
 
-/** El yapımı altın kayıtlar + deterministik evren (demo) + gerçek mekânlar (OSM) — tek liste, tek doğruluk kaynağı. */
-export const entities: Entity[] = [...baseEntities.map((e) => ({ tier: "A" as const, ...e })), ...universeEntities, ...realEntities];
+/* Demo kayıtlar varsayılan olarak görünmez (data/demoFlag): gerçek kullanıcı ana sayfada, haritada, AI
+   önerilerinde, sıralamalarda ve benzer mekânlarda demo görmez. Tam liste `allEntities`. */
+export { DEMO_VISIBLE };
+
+/** El yapımı altın kayıtlar + deterministik evren (demo) + gerçek mekânlar (OSM). */
+export const allEntities: Entity[] = [...baseEntities.map((e) => ({ tier: "A" as const, ...e })), ...universeEntities, ...realEntities];
+/** Uygulamanın gördüğü liste — tek doğruluk kaynağı. */
+export const entities: Entity[] = DEMO_VISIBLE ? allEntities : allEntities.filter((e) => !e.isDemo);
 const bySlug = new Map(entities.map((e) => [e.slug, e]));
 const byId = new Map(entities.map((e) => [e.id, e]));
 export const getEntity = (slug: string) => bySlug.get(slug);

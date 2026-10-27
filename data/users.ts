@@ -1,5 +1,6 @@
 import type { ExpertiseArea, Reputation, ReputationSignal, SocialIdentity, User } from "@/lib/types";
 import { universeUsers } from "@/data/universe";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* DEMO VERİ — kurgu kullanıcılar. Gerçek kişi veya influencer değildir. */
 
@@ -240,7 +241,8 @@ const baseUsers: User[] = [
   },
 ];
 
-export const users: User[] = [...baseUsers, ...universeUsers];
+export const allUsers: User[] = [...baseUsers, ...universeUsers];
+export const users: User[] = DEMO_VISIBLE ? allUsers : allUsers.filter((u) => !u.isDemo);
 const userById = new Map(users.map((u) => [u.id, u]));
 export const getUser = (id: string) => userById.get(id);
 export const getUserByHandle = (h: string) => users.find((u) => u.handle === h.replace(/^@/, ""));

@@ -1,5 +1,6 @@
 import type { CuratedList } from "@/lib/types";
 import { universeLists } from "@/data/universe";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /**
  * Creator listeleri — büyüme döngüsünün kalbi:
@@ -63,6 +64,7 @@ const baseLists: CuratedList[] = [
   },
 ];
 
-export const lists: CuratedList[] = [...baseLists, ...universeLists];
+export const allLists: CuratedList[] = [...baseLists, ...universeLists];
+export const lists: CuratedList[] = DEMO_VISIBLE ? allLists : allLists.filter((l) => !l.isDemo);
 export const getList = (slug: string) => lists.find((l) => l.slug === slug);
 export const listsByAuthor = (authorId: string) => lists.filter((l) => l.authorId === authorId);

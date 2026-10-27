@@ -805,7 +805,8 @@ function insightOf(it: TopicIntelligence): string {
 
 export function getMapRecommendations(filter: MapFilter = "sana_gore", edits?: TasteEdits): MapResult[] {
   const prof = effectiveProfile(edits);
-  const rows = Object.entries(demoGeo).map(([id, g]) => {
+  /* demoGeo yalnız demo kayıtlar içindir; demo kapalıyken (varsayılan) harita boş döner. */
+  const rows = Object.entries(demoGeo).filter(([id]) => getEntityById(id) && getTopicIntelligence(id)).map(([id, g]) => {
     const it = getTopicIntelligence(id)!; const e = getEntityById(id)!;
     const ctx: DecisionContextKey = filter === "date" ? "date" : filter === "aile" ? "family" : "default";
     const m = getPersonalMatch(id, ctx, DEMO_USER_ID, filter === "sessiz" ? { quiet: 95 } : filter === "fp" ? { value: 95 } : undefined, prof);

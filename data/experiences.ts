@@ -3,6 +3,7 @@ import type {
   ReturnIntent, VerificationMethod, Visit,
 } from "@/lib/types";
 import { universeExperiences } from "@/data/universe";
+import { entities } from "@/data/entities";
 
 /** Ham kayıt: `overall` alt puanlardan sunucuda hesaplanır, veride tutulmaz. */
 export type RawExperience = Omit<Experience, "overall">;
@@ -214,7 +215,10 @@ const baseExperiences: RawExperience[] = [
 ];
 
 /** Ziyaretler deneyimlerden türetilir — Visit ≠ Experience ayrımı korunur. */
-export const experiences: RawExperience[] = [...baseExperiences, ...universeExperiences];
+export const allExperiences: RawExperience[] = [...baseExperiences, ...universeExperiences];
+/* Görünen mekânlara ait deneyimler; demo kapalıyken demo mekânların (sentetik) deneyimleri görünmez. */
+const visibleIds = new Set(entities.map((e) => e.id));
+export const experiences: RawExperience[] = allExperiences.filter((e) => visibleIds.has(e.entityId));
 
 export const visits: Visit[] = experiences.map((e) => ({
   id: e.visitId,

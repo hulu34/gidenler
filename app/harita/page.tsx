@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { useMemo, useState } from "react";
-import { getEntityById } from "@/data/entities";
+import { DEMO_VISIBLE, getEntityById } from "@/data/entities";
 import { getMapRecommendations, mapFilters } from "@/lib/decision";
 import { useUserData } from "@/lib/store";
 import { score1 } from "@/lib/format";
@@ -32,7 +32,7 @@ export default function MapPage() {
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
       <section className="pt-10 sm:pt-14">
-        <p className="label">Haritada Gidenler · demo veri</p>
+        <p className="label">Haritada Gidenler{DEMO_VISIBLE ? " · demo veri" : ""}</p>
         <h1 className="mt-2 max-w-[16ch] text-[clamp(2rem,6.5vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">Yakınında sana göre.</h1>
         <div className="mt-5 flex flex-wrap gap-1.5">
           {mapFilters.map((f) => (
@@ -42,7 +42,13 @@ export default function MapPage() {
         </div>
       </section>
 
-      <div className="mt-6 grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+      {results.length === 0 && (
+        <p className="mt-6 max-w-[62ch] text-[15px] leading-snug text-ink-2">
+          Harita önerileri gerçek deneyimlerden oluşur ve henüz yeterli deneyim yok. Gerçek mekânları{" "}
+          <Link href="/ara/" className="underline underline-offset-4">Ara</Link> sayfasında semte göre bulabilirsin.
+        </p>
+      )}
+      {results.length > 0 && <div className="mt-6 grid gap-8 lg:grid-cols-[1.5fr_1fr]">
         <div className="overflow-x-auto border-2 border-line-strong bg-sheet">
           <svg viewBox={`0 0 ${W} ${H}`} className="block h-auto w-full min-w-[560px]" role="img" aria-label="Şematik İstanbul haritası, demo konumlar">
             {/* boğaz şeridi — şematik */}
@@ -95,8 +101,8 @@ export default function MapPage() {
             ); })}
           </ol>
         </div>
-      </div>
-      <div className="mt-12"><DemoNotice>Şematik harita; konumlar demodur, kullanıcı konumu alınmaz. Canlı kalabalık, masa veya bekleme süresi gösterilmez.</DemoNotice></div>
+      </div>}
+      {DEMO_VISIBLE && <div className="mt-12"><DemoNotice>Şematik harita; konumlar demodur, kullanıcı konumu alınmaz. Canlı kalabalık, masa veya bekleme süresi gösterilmez.</DemoNotice></div>}
     </div>
   );
 }
