@@ -15,7 +15,7 @@ const auth = { "x-vercel-protection-bypass": BYPASS };
 let fail = 0;
 for (const [slug, id] of Object.entries(IDS)) {
   const r = await fetch(admin, { method: "POST", headers: { ...auth, "content-type": "application/json" },
-    body: JSON.stringify({ action: "google-review", confirm: "EVET", id, decision: "confirmed" }) });
+    body: JSON.stringify({ action: "google-review", confirm: "EVET", target: "production", id, decision: "confirmed" }) });
   const j = await r.json().catch(() => null);
   if (!j?.ok) fail++;
   console.log(slug, r.status, j?.ok ? "confirmed" : (j?.error ?? "?"));
