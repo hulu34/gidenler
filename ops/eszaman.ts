@@ -17,6 +17,7 @@ const now = new Date(Date.UTC(2026, 9, 28, 12));
 const all = Object.keys(PRICES) as BudgetKey[];
 const monthCounts = async () => Object.fromEntries(await Promise.all(all.map(async (k) => [k, Number(await io.get(periodKeys(k, now).month) ?? 0)]))) as Record<BudgetKey, number>;
 
+async function main() {
 await io.connect(); setRedisForTests(adapt(io));
 
 /* 1) günlük sınır: 1.500 eşzamanlı istek, sınır 600 */
@@ -53,3 +54,5 @@ setRedisForTests(null);
 await io.quit(); dead.disconnect();
 console.log(`Sonuç: ${results.filter(Boolean).length}/${results.length}`);
 process.exit(results.every(Boolean) ? 0 : 1);
+}
+main().catch((e) => { console.log("✗ beklenmeyen hata", String(e).slice(0, 200)); process.exit(1); });
