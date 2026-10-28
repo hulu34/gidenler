@@ -16,7 +16,7 @@ concurrency:
 env:
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
-  TEST_HOST: gidenler-dg054cjj3-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
+  TEST_HOST: gidenler-6ujmo7dhd-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   olcum:
@@ -220,7 +220,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/dalkontrol.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEPLOYS: "gidenler-dg054cjj3-hulu34.vercel.app,gidenler-48ts77nfk-hulu34.vercel.app,gidenler-26kjwenny-hulu34.vercel.app,gidenler-378umehn7-hulu34.vercel.app,gidenler-7yt6j334i-hulu34.vercel.app,gidenler-4b31yw1tz-hulu34.vercel.app,gidenler-nr936qzlm-hulu34.vercel.app,gidenler-8r6juufwg-hulu34.vercel.app,gidenler-7q71pmbp3-hulu34.vercel.app,gidenler-63pt1v71o-hulu34.vercel.app,gidenler-kxf01etvx-hulu34.vercel.app,gidenler-rla1pc9bc-hulu34.vercel.app,gidenler-etjppcktn-hulu34.vercel.app,gidenler-3euvpz7id-hulu34.vercel.app,gidenler-7ba3pfswn-hulu34.vercel.app,gidenler-hbvf2hhpa-hulu34.vercel.app,gidenler-kekwtvrre-hulu34.vercel.app,gidenler-rfxljljzg-hulu34.vercel.app" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEPLOYS: "gidenler-6ujmo7dhd-hulu34.vercel.app,gidenler-dg054cjj3-hulu34.vercel.app,gidenler-48ts77nfk-hulu34.vercel.app,gidenler-26kjwenny-hulu34.vercel.app,gidenler-378umehn7-hulu34.vercel.app,gidenler-7yt6j334i-hulu34.vercel.app,gidenler-4b31yw1tz-hulu34.vercel.app,gidenler-nr936qzlm-hulu34.vercel.app,gidenler-8r6juufwg-hulu34.vercel.app,gidenler-7q71pmbp3-hulu34.vercel.app,gidenler-63pt1v71o-hulu34.vercel.app,gidenler-kxf01etvx-hulu34.vercel.app,gidenler-rla1pc9bc-hulu34.vercel.app,gidenler-etjppcktn-hulu34.vercel.app,gidenler-3euvpz7id-hulu34.vercel.app,gidenler-7ba3pfswn-hulu34.vercel.app,gidenler-hbvf2hhpa-hulu34.vercel.app,gidenler-kekwtvrre-hulu34.vercel.app,gidenler-rfxljljzg-hulu34.vercel.app" }
       - if: always()
         run: test -f out/dal.json && openssl cms -encrypt -aes256 -binary -in out/dal.json -out out/dal.json.cms -outform DER ops/olcum.pem && rm out/dal.json
       - if: always()
