@@ -66,42 +66,35 @@ export function PhotoMosaic({ slug, name, photos, isReal }: { slug: string; name
   const shown = all.slice(0, 5);
   const k = shown.length;
   /* masaüstü yerleşim: 1 → tam, 2 → yarı yarıya, 3–4 → büyük + yan, 5 → büyük + 2×2 */
+  /* Tailwind sınıfları derlemede taranır: önekli sınıflar düz metin olarak yazılır */
   const span = (i: number) => {
-    if (k === 1) return "col-span-4 row-span-2";
-    if (k === 2) return "col-span-2 row-span-2";
-    if (i === 0) return "col-span-2 row-span-2";
-    if (k === 3) return "col-span-2 row-span-1";
-    if (k === 4) return i === 1 ? "col-span-2 row-span-1" : "col-span-1 row-span-1";
-    return "col-span-1 row-span-1";
+    if (k === 1) return "sm:col-span-4 sm:row-span-2";
+    if (k === 2) return "sm:col-span-2 sm:row-span-2";
+    if (i === 0) return "sm:col-span-2 sm:row-span-2";
+    if (k === 3) return "sm:col-span-2 sm:row-span-1";
+    if (k === 4) return i === 1 ? "sm:col-span-2 sm:row-span-1" : "sm:col-span-1 sm:row-span-1";
+    return "sm:col-span-1 sm:row-span-1";
   };
   const hasGoogle = g.photos.length > 0;
 
   return (
     <section aria-label={`${name} fotoğrafları`} className="mt-5">
-      {/* mobil: kaydırmalı şerit */}
-      <div className="-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:hidden">
+      {/* TEK yapı: mobilde kaydırmalı şerit, masaüstünde mozaik (aynı <img>; gizli ikinci kopya indirilmez) */}
+      <div className={`-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:overflow-visible sm:px-0 ${k === 1 ? "sm:h-[clamp(220px,32vw,380px)]" : "sm:h-[clamp(260px,38vw,440px)]"}`}>
         {all.map((p, i) => (
-          <div key={p.src} className="relative aspect-[4/3] w-[86%] shrink-0 snap-center">
-            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} />
-          </div>
-        ))}
-        <Link href={galleryHref} className="flex aspect-[4/3] w-[40%] shrink-0 snap-center flex-col items-center justify-center gap-1 border border-line-2 text-[13px] font-semibold">
-          <span className="text-[22px]" aria-hidden>▦</span>Tüm fotoğraflar
-        </Link>
-      </div>
-
-      {/* masaüstü: mozaik */}
-      <div className={`hidden grid-cols-4 grid-rows-2 gap-1.5 sm:grid ${k === 1 ? "h-[clamp(220px,32vw,380px)]" : "h-[clamp(260px,38vw,440px)]"}`}>
-        {shown.map((p, i) => (
-          <div key={p.src} className={`relative ${span(i)}`}>
-            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} sizes={i === 0 || k <= 2 ? (k === 1 ? "1180px" : "590px") : "295px"} />
+          <div key={p.src} className={`relative aspect-[4/3] w-[86%] shrink-0 snap-center sm:aspect-auto sm:w-auto ${i < 5 ? span(i) : "sm:hidden"}`}>
+            {/* mobilde kapak 500 px sürümünden (LCP); masaüstünde kareye göre */}
+            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} sizes={`(max-width: 640px) 60vw, ${i === 0 || k <= 2 ? (k === 1 ? "1180px" : "590px") : "295px"}`} />
             {i === k - 1 && (
-              <Link href={galleryHref} className="absolute right-3 top-3 rounded-full bg-paper/95 px-3.5 py-1.5 text-[12.5px] font-bold text-ink shadow hover:bg-paper">
+              <Link href={galleryHref} className="absolute right-3 top-3 hidden rounded-full bg-paper/95 px-3.5 py-1.5 text-[12.5px] font-bold text-ink shadow hover:bg-paper sm:inline-block">
                 Tüm fotoğraflar{all.length > 1 || g.total ? ` (${Math.max(all.length, own.length + (g.total ?? 0))})` : ""}
               </Link>
             )}
           </div>
         ))}
+        <Link href={galleryHref} className="flex aspect-[4/3] w-[40%] shrink-0 snap-center flex-col items-center justify-center gap-1 border border-line-2 text-[13px] font-semibold sm:hidden">
+          <span className="text-[22px]" aria-hidden>▦</span>Tüm fotoğraflar
+        </Link>
       </div>
 
       <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-[11.5px] text-ink-3">
