@@ -48,7 +48,7 @@ export type AddVideoResult =
   | { ok: false; error: "no_db" | "bad_url" | "no_place" | "not_found_on_platform" };
 
 /** Yönetim: mekâna video bağlantısı ekler (aynı bağlantı tekrar eklenirse mevcut kayıt bağlanır). */
-export async function addPlaceVideo(input: { slug: string; url: string; credit?: string; category?: string }, f: typeof fetch = fetch): Promise<AddVideoResult> {
+export async function addPlaceVideo(input: { slug: string; url: string; credit?: string; category?: string; verifiedElsewhere?: boolean }, f: typeof fetch = fetch): Promise<AddVideoResult> {
   const db = getDb();
   if (!db) return { ok: false, error: "no_db" };
   let raw = input.url.trim();
@@ -61,7 +61,10 @@ export async function addPlaceVideo(input: { slug: string; url: string; credit?:
   if (!v) return { ok: false, error: "bad_url" };
   const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, input.slug)).limit(1);
   if (!p) return { ok: false, error: "no_place" };
-  const o = await oembed(v.platform, v.url, f);
+  let o = await oembed(v.platform, v.url, f);
+  /* TikTok oEmbed bazı veri merkezlerinden bölgesel olarak "bulunamadı" döner: yönetici bağlantıyı başka ağdan
+     doğruladıysa (verifiedElsewhere) yalnız TikTok için kabul edilir; atıf elle ya da @kullanıcı adından gelir. */
+  if (o === null && v.platform === "tiktok" && input.verifiedElsewhere) o = "skip";
   if (o === null) return { ok: false, error: "not_found_on_platform" };
   /* atıf: elle girilen > platformun oEmbed'teki kanal adı > bağlantıdaki @kullanıcı adı */
   const handle = raw.match(/(?:tiktok\.com|instagram\.com)\/(@?[A-Za-z0-9._]{2,30})\//)?.[1];

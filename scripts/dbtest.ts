@@ -319,6 +319,11 @@ async function main() {
   ok("aynı video farklı bağlantı biçimiyle ikinci kayıt olmaz", va2.ok && !va2.created && va1.ok && va2.id === va1.id, va2);
   ok("Instagram oEmbed'e gidilmez (anahtar ister), elle atıf", va3.ok && !oe.some((u) => u.includes("instagram")), oe);
   ok("platformda olmayan video reddedilir", !va4.ok && va4.error === "not_found_on_platform");
+  const ttGone = await addPlaceVideo({ slug: vslug, url: "https://www.tiktok.com/@kisi/video/7000000000000000001" }, (async () => new Response("", { status: 404 })) as unknown as typeof fetch);
+  const ttOk = await addPlaceVideo({ slug: vslug, url: "https://www.tiktok.com/@kisi/video/7000000000000000001", verifiedElsewhere: true }, (async () => new Response("", { status: 404 })) as unknown as typeof fetch);
+  const ytForce = await addPlaceVideo({ slug: vslug, url: "https://www.youtube.com/watch?v=ZZZZZZZZZZZ", verifiedElsewhere: true }, oembedFetch);
+  ok("TikTok bölgesel oEmbed hatası: yalnız yönetici doğrulamasıyla, yalnız TikTok", !ttGone.ok && ttOk.ok && !ytForce.ok, { ttGone, ttOk, ytForce });
+  if (ttOk.ok) await removePlaceVideo(ttOk.id);
   ok("bilinmeyen mekân reddedilir", !va5.ok && va5.error === "no_place");
   await addPlaceVideo({ slug: vslug, url: "https://youtu.be/dQw4w9WgXcQ", credit: "Elle Atıf" }, oembedFetch);
   ok("yeniden eklemede elle atıf güncellenir", (await listPlaceVideos(vslug)).some((v) => v.credit === "Elle Atıf"));
