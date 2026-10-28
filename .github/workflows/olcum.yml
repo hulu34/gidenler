@@ -87,7 +87,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/kuyruk.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-k2nbxwkdr-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }
   toplu:
     if: contains(github.event.head_commit.message, '[toplu:')
     runs-on: ubuntu-latest
@@ -100,9 +100,19 @@ jobs:
         env: { MSG: "${{ github.event.head_commit.message }}" }
         run: echo "PILOT_N=$(printf '%s' "$MSG" | sed -n 's/.*\[toplu:\([0-9]\{1,2\}\)\].*/\1/p')" >> "$GITHUB_ENV"
       - run: node ops/pilot.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-k2nbxwkdr-hulu34.vercel.app, PILOT_SHOW: "0" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app, PILOT_SHOW: "0" }
       - if: always()
         run: test -f out/pilot.json && openssl cms -encrypt -aes256 -binary -in out/pilot.json -out out/pilot.json.cms -outform DER ops/olcum.pem && rm out/pilot.json
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: toplu-sifreli, path: out/pilot.json.cms, retention-days: 3, if-no-files-found: ignore }
+  selftest:
+    if: contains(github.event.head_commit.message, '[selftest]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/selftest.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }

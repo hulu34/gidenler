@@ -69,6 +69,8 @@ function finish(code) {
   console.log("Sinyaller:", JSON.stringify({ phoneMatch: cnt((x) => x.phone === "match"), phoneConflict: cnt((x) => x.phone === "conflict"), webMatch: cnt((x) => x.website === "match"), webConflict: cnt((x) => x.website === "conflict"), duplicate: cnt((x) => x.duplicate) }));
   console.log("Çağrılar (bu koşu):", JSON.stringify(calls));
   console.log("Veritabanı Google durumları:", JSON.stringify(out.after?.stats ?? null));
+  const sp = out.match?.body?.spend ?? out.after?.spend;
+  console.log("Harcama (bu ay, USD):", sp ? `${sp.usd} / tavan ${sp.capUsd}` : "okunamadı", sp ? JSON.stringify(Object.fromEntries(Object.entries(sp.perSku).map(([k, v]) => [k.replace("google:", ""), `${v.used} (ücretsiz ${v.free}, ücretli ${v.billable}, $${v.usd})`]))) : "");
   console.log("Kota sayaçları:"); console.table(usage);
   console.log("Gösterim kontrolü:"); console.table(out.display.map(({ slug, ...d }, i) => ({ i: i + 1, ...d })));
   process.exit(code);
