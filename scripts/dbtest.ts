@@ -28,6 +28,7 @@ import { planImport, serverToLocal, isAccountEntity, replayPending, pushChange, 
 import { createReview, updateReview, deleteReview, reportReview, moderateReview, listPlaceReviews, listUserReviews, validateReview, publicName, type ReviewInput } from "../lib/community/reviews";
 import { INDEPENDENCE } from "../lib/score/weights";
 import { sameOrigin } from "../lib/community/http";
+import { authErrorMessage } from "../lib/community/authErrors";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
@@ -200,6 +201,13 @@ async function main() {
   const cxStoreSrc = readFileSync(new URL("../lib/store.ts", import.meta.url), "utf8");
   ok("gerçek kullanıcı işlemlerinde sabit tarih yok (yalnız demo anlık görüntüsü)", !/\bTODAY\b/.test(cxStoreSrc) && (cxStoreSrc.match(/DEMO_DATE/g) ?? []).length <= 8 && /const today = \(\) =>/.test(cxStoreSrc));
   ok("eski 'Deneyim yazdım' işareti hesaba 'Gittim' olarak gider, yayımlanmış/doğrulanmış sayılmaz", /normalizeLegacyExperienced/.test(cxStoreSrc) && planImport({ "ent.r.q": rel("ent.r.q", "experienced") }, [])[0]?.state === "visited");
+
+  console.log("\n3d) Üyelik ve oturum güvenliği");
+  const authSrc = readFileSync(new URL("../lib/auth.ts", import.meta.url), "utf8"), nextSrc = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
+  ok("yalnız Google; şifre girişi kapalı; kullanıcı 'kind'/'handle' alanını kendisi yazamaz", /emailAndPassword: \{ enabled: false \}/.test(authSrc) && /kind: \{[^}]*input: false/.test(authSrc) && /handle: \{[^}]*input: false/.test(authSrc));
+  ok("Google anahtarları veritabanında şifreli; giriş hatası açıklamalı sayfaya döner", /encryptOAuthTokens: true/.test(authSrc) && /errorURL: "\/benim\/\?giris=hata"/.test(authSrc));
+  ok("güvenlik başlıkları: çerçeveleme yasak, nosniff, referrer, izin politikası", ["X-Frame-Options", "frame-ancestors 'none'", "nosniff", "strict-origin-when-cross-origin", "geolocation=()"].every((h) => nextSrc.includes(h)));
+  ok("giriş hata kodları anlaşılır mesaja çevrilir (state_mismatch dahil)", /uzun süre beklendi/.test(authErrorMessage("state_mismatch")) && /iptal/.test(authErrorMessage("access_denied")) && /Yeniden dene/.test(authErrorMessage("bilinmeyen")));
 
   console.log("\n3c) Gidenler deneyimleri (yayınla / düzenle / sil / bildir)");
   const [{ slug: cxSlug }] = await db.select({ slug: schema.places.slug }).from(schema.places).where(sql`${schema.places.slug} not in (${"ciya-sofrasi-kadikoy"}, ${other[0]}, ${other[1]})`).limit(1);

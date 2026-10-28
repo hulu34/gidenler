@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { clearAccountStates } from "@/lib/store";
 import { signInWithGoogle } from "@/lib/community/signin";
+import { authErrorMessage } from "@/lib/community/authErrors";
 import { isAccountEntity, readPending, replayPending, signOutFlow, writePending } from "@/lib/community/sync";
 
 /* HESAP KUTUSU — Google ile giriş (Better Auth). Sunucuda kimlik yapılandırılmamışsa (503) ya da
@@ -16,6 +17,15 @@ export function AccountBox() {
   const [s, setS] = useState<S>({ state: "loading" });
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+
+  /* Google girişinden hata ile dönüldüyse (?giris=hata&error=…) açıklama göster; adresi temizle. */
+  useEffect(() => {
+    const q = new URLSearchParams(location.search);
+    if (q.get("giris") !== "hata" && !q.get("error")) return;
+    setErr(authErrorMessage(q.get("error")));
+    q.delete("giris"); q.delete("error");
+    history.replaceState(null, "", location.pathname + (q.toString() ? `?${q}` : "") + location.hash);
+  }, []);
 
   useEffect(() => {
     let alive = true;

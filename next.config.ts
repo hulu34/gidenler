@@ -30,6 +30,15 @@ const nextConfig: NextConfig = {
   ...(!isExport ? {
     async headers() {
       return [
+        /* Güvenlik başlıkları (bütün sayfalar): başka sitede çerçeve içine alınamaz (tıklama korsanlığı — yayınla/sil
+           düğmeleri), içerik türü tahmin edilmez, başka sitelere tam adres gönderilmez, kamera/mikrofon/konum kapalı. */
+        { source: "/:path*", headers: [
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=()" },
+        ] },
         /* Kendi sunduğumuz görseller içerik adına göre sabit: uzun süreli, değişmez önbellek. */
         { source: "/media/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
         /* Yatırımcı demosu: her yanıtta arama motoru yasağı (meta etiketine ek olarak başlık). */
