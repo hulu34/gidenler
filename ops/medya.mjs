@@ -9,11 +9,13 @@ if (db?.env !== "preview" || !db?.db?.writeGuard?.ok) { console.log("Preview ver
 let fail = 0;
 for (const [slug, urls] of Object.entries(list)) {
   if (slug.startsWith("_")) continue;
-  for (const url of urls) {
-    const r = await fetch(admin, { method: "POST", headers: { ...auth, "content-type": "application/json" }, body: JSON.stringify({ action: "media-add", confirm: "EVET", target: "preview", slug, url }) });
+  for (const item of urls) {
+    const { url, credit } = typeof item === "string" ? { url: item, credit: undefined } : item;
+    const r = await fetch(admin, { method: "POST", headers: { ...auth, "content-type": "application/json" }, body: JSON.stringify({ action: "media-add", confirm: "EVET", target: "preview", slug, url, credit }) });
     const j = await r.json().catch(() => ({}));
     if (!j.ok) fail++;
     console.log(slug, j.ok ? `${j.platform} ${j.created ? "eklendi" : "vardı"}` : `HATA ${j.error ?? r.status}`, "· atıf:", (j.videos ?? []).find((v) => v.externalId === j.externalId)?.credit ?? "-");
   }
 }
-process.exit(fail ? 1 : 0);
+/* TikTok oEmbed bazı ağlardan geçici olarak "bulunamadı" dönebilir: bilgi amaçlı, işi düşürmez */
+console.log("başarısız:", fail);

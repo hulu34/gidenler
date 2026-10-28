@@ -17,7 +17,7 @@ env:
   OLD_HOST: gidenler-3euvpz7id-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-8gzgxw6jp-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
-  PREVIEW_HOST: gidenler-lrhikgt30-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
+  PREVIEW_HOST: gidenler-5wtew92te-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
@@ -128,3 +128,19 @@ jobs:
         with: { node-version: 22 }
       - run: node ops/medya.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+  gorsel:
+    if: contains(github.event.head_commit.message, '[gorsel]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops puppeteer-core@23.11.1 lighthouse@12.8.2 chrome-launcher@1.2.0
+      - run: node ops/gorsel.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", CHROME_PATH: /usr/bin/google-chrome }
+      - if: always()
+        run: test -d out/gorsel && tar -C out -czf out/gorsel.tgz gorsel && rm -rf out/gorsel && openssl cms -encrypt -aes256 -binary -in out/gorsel.tgz -out out/gorsel.tgz.cms -outform DER ops/olcum.pem && rm out/gorsel.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gorsel-sifreli, path: out/gorsel.tgz.cms, retention-days: 1, if-no-files-found: ignore }
