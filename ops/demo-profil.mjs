@@ -12,7 +12,7 @@ for (const [dev, opts] of [["masaustu", { viewport: { width: 1366, height: 900 }
   const ctx = await b.newContext({ ...opts, extraHTTPHeaders: BYPASS });
   const ext = new Set(); const apis = [];
   ctx.on("request", (r) => { const u = new URL(r.url()); if (u.hostname !== process.env.DEMO_HOST) ext.add(u.hostname); else if (u.pathname.startsWith("/api/")) apis.push(r.method() + " " + u.pathname); });
-  for (const s of ["moda-lokantasi", "koz-durum", "asma-teras"]) {
+  for (const s of (process.env.SLUGS ?? "moda-lokantasi,koz-durum,asma-teras").split(",")) {
     const page = await ctx.newPage(); const r = {}; const errs = [];
     page.on("pageerror", (e) => errs.push(e.message));
     await page.goto(`${B}/mekan/${s}/`, { waitUntil: "networkidle" }); await page.waitForTimeout(600);
@@ -71,7 +71,8 @@ for (const [dev, opts] of [["masaustu", { viewport: { width: 1366, height: 900 }
 }
 let fail = 0;
 for (const [k, v] of Object.entries(res)) {
-  if (Array.isArray(v)) { const bad = k.endsWith("dis-istek") && v.length > 0; fail += bad; console.log(`${bad ? "✗" : "✓"} ${k}: ${v.join(", ") || "yok"}`); continue; }
+  /* vercel.live: Vercel'in önizleme dağıtımlarına eklediği araç çubuğu (Google/AI değil) */
+  if (Array.isArray(v)) { const bad = k.endsWith("dis-istek") && v.some((h) => h !== "vercel.live"); fail += bad; console.log(`${bad ? "✗" : "✓"} ${k}: ${v.join(", ") || "yok"}`); continue; }
   const good = v.sekmeler && v.simule === 3 && v.gercekMekanEtiketi === 0 && v.oneCikan && v.lightbox && v.lightboxKapandi && v.video >= 2 && v.oynadi.every(Boolean) && v.donus && v.dialogKapali && !v.hata.length && (!v.rezervasyon.startsWith("2") || /önizleme iletildi=false/.test(v.rezervasyon));
   fail += !good;
   console.log(`${good ? "✓" : "✗"} ${k} galeri=${v.galeri} menü=${v.menu} video=${v.video} oynadı=${v.oynadi.filter(Boolean).length} temsili=${v.temsili} rezervasyon=${v.rezervasyon} hata=${v.hata.length}`);
