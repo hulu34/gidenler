@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { markExperienced, useUserData } from "@/lib/store";
+import { useEffect, useState } from "react";
+import { markVisited, useUserData } from "@/lib/store";
+import { deleteDraft, loadDraft, saveDraft, visitMonths } from "@/lib/drafts";
 import { Button } from "@/components/ui/Button";
-import type { CommercialRelationship, RatingDimensionDef, ReturnIntent, VerificationMethod } from "@/lib/types";
-
-const AYLAR = ["ocak","şubat","mart","nisan","mayıs","haziran","temmuz","ağustos","eylül","ekim","kasım","aralık"];
+import type { CommercialRelationship, RatingDimensionDef, ReturnIntent } from "@/lib/types";
 
 const RELATIONSHIPS: Array<{ key: CommercialRelationship; label: string; hint?: string }> = [
   { key: "none", label: "Kendi ödediğim normal ziyaret" },
@@ -16,18 +15,12 @@ const RELATIONSHIPS: Array<{ key: CommercialRelationship; label: string; hint?: 
   { key: "owner_related", label: "İşletmeyle bağım var" },
 ];
 
-const VERIFY: Array<{ key: VerificationMethod; label: string }> = [
-  { key: "fis", label: "Fiş / adisyon" } as never,
-  { key: "rezervasyon", label: "Rezervasyon" },
-  { key: "bilet", label: "Bilet" },
-  { key: "konum", label: "Konum" },
-  { key: "sonra", label: "Daha sonra doğrularım" },
-];
-
 /**
  * DENEYİM YAZMA — arz tarafı burada oluşur.
  * Tasarım kuralı: METİN merkezde, puanlar yardımcı yapısal veri,
  * doğrulama güven, şeffaflık dürüstlük. 25 soruluk form DEĞİL.
+ * DÜRÜSTLÜK: yayınlama ve ziyaret doğrulama açılana kadar form yalnız bu cihazda TASLAK saklar;
+ * hiçbir ekran "yayınlandı" ya da "doğrulandı" demez (bkz. lib/drafts.ts).
  */
 export function WriteForm({
   entityName, entitySlug, entityId, categoryLabel, district, dimensions, returnQuestion, regulated,
@@ -42,23 +35,25 @@ export function WriteForm({
   regulated: boolean;
 }) {
   const [body, setBody] = useState("");
-  const [month, setMonth] = useState("2026-08");
+  const [month, setMonth] = useState("");
   const [ratings, setRatings] = useState<Record<string, number>>({});
   const [ret, setRet] = useState<ReturnIntent | null>(null);
-  const [verify, setVerify] = useState<VerificationMethod | null>(null);
   const [rel, setRel] = useState<CommercialRelationship>("none");
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState<"saved" | "unsaved" | null>(null);
+  const [restored, setRestored] = useState<string | null>(null);
+  /* Ay listesi tarayıcıda, bugünün tarihinden kurulur (sayfa önceden derlendiği için sunucuda kurulursa eskir). */
+  const [months, setMonths] = useState<Array<[string, string]>>([]);
 
-  const months = useMemo(() => {
-    const out: Array<[string, string]> = [];
-    const now = new Date(2026, 7, 31);
-    for (let i = 0; i < 24; i++) {
-      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
-      out.push([key, `${AYLAR[d.getMonth()]} ${d.getFullYear()}`]);
-    }
-    return out;
-  }, []);
+  useEffect(() => {
+    const ms = visitMonths();
+    setMonths(ms);
+    const d = loadDraft(entitySlug);
+    if (d) {
+      setBody(d.body); setRatings(d.ratings ?? {}); setRet(d.returnIntent ?? null); setRel(d.relationship ?? "none");
+      setMonth(ms.some(([k]) => k === d.month) ? d.month : ms[0][0]);
+      setRestored(d.savedAt);
+    } else setMonth(ms[0][0]);
+  }, [entitySlug]);
 
   const rated = Object.keys(ratings).length;
   const canSend = body.trim().length >= 40 && ret !== null;
@@ -69,7 +64,6 @@ export function WriteForm({
     ["Boyutlar", rated >= Math.min(3, dimensions.length)],
     ["Ne zaman", !!month],
     ["Tekrar", ret !== null],
-    ["Doğrulama", verify !== null],
     ["Şeffaflık", true],
   ];
   const doneCount = steps.filter((x) => x[1]).length;
@@ -78,18 +72,15 @@ export function WriteForm({
     return (
       <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
         <div className="flex flex-col items-start gap-5 pt-16 sm:pt-24">
-          <span className="label">Deneyimin Gidenler&apos;e eklendi</span>
+          <span className="label">{sent === "saved" ? "Taslağın bu cihazda saklandı" : "Taslak saklanamadı"}</span>
           <h1 className="max-w-[18ch] text-[clamp(2rem,6vw,3rem)] font-extrabold leading-none tracking-[-0.045em]">
-            Bu deneyim gelecekteki kararları daha iyi hale getirecek.
+            Deneyim yayınlama çok yakında açılıyor.
           </h1>
           <p className="prose-exp max-w-[52ch] text-ink-2">
-            {entityName} için yazdıkların artık topluluğun deneyim havuzunda.{" "}
-            {verify && verify !== "sonra"
-              ? "Ziyaret doğrulaman alındı; deneyimin daha güvenilir sayılır."
-              : "Ziyaretini doğrularsan deneyimin daha güvenilir sayılır; profilinden sonradan da ekleyebilirsin."}
-            {" "}Puana ne kadar ve nasıl yansıyacağı tek bir deneyimle belirlenmez.
+            {sent === "saved"
+              ? `${entityName} için yazdıkların yalnız bu tarayıcıda taslak olarak duruyor; henüz kimse göremez ve Gidenler puanına girmez. Yayınlama açıldığında Google ile giriş yapıp bu taslağı tek dokunuşla yayımlayabileceksin.`
+              : "Tarayıcın yerel kaydı kapalı görünüyor (ör. gizli pencere); yazdıkların saklanamadı. Metni kopyalayıp başka bir yerde tutabilirsin."}
           </p>
-          <p className="text-[13px] font-semibold text-ink-2">Her deneyim, bir sonraki kararı daha iyi yapar.</p>
           <div className="flex flex-wrap gap-3">
             <Link href={`/mekan/${entitySlug}/`}>
               <Button variant="primary">Sayfaya dön</Button>
@@ -97,7 +88,7 @@ export function WriteForm({
             <Link href="/benim/"><Button variant="ghost">Benim Gidenler&apos;im</Button></Link>
           </div>
           <p className="mt-6 border-t border-line pt-3 text-[12px] text-ink-3">
-            Prototip: yazdıkların kaydedilmez, sayfayı yenileyince sıfırlanır.
+            Yayınlanan her deneyim &ldquo;doğrulanmamış ziyaret&rdquo; olarak başlar; ziyaret doğrulama ayrı bir adımdır ve henüz açık değil.
           </p>
         </div>
       </div>
@@ -118,6 +109,18 @@ export function WriteForm({
         <p className="text-[13px] text-ink-2">
           {entityName} · {categoryLabel}{district ? ` · ${district}` : ""}
         </p>
+        <p role="note" className="max-w-[62ch] border-l-2 border-accent pl-3 text-[13px] leading-relaxed text-ink-2">
+          Deneyim yayınlama çok yakında açılıyor. Şimdilik yazdıkların <strong className="font-semibold">yalnız bu cihazda taslak</strong> olarak
+          saklanır; kimse göremez, puana girmez.
+        </p>
+        {restored && (
+          <p className="flex flex-wrap items-center gap-x-3 text-[12.5px] text-ink-3">
+            <span>Kaydettiğin taslak yüklendi.</span>
+            <button type="button" className="underline decoration-line-2 underline-offset-4 hover:text-ink" onClick={() => {
+              deleteDraft(entitySlug); setRestored(null); setBody(""); setRatings({}); setRet(null); setRel("none");
+            }}>Taslağı sil</button>
+          </p>
+        )}
       </header>
 
       {/* ── ilerleme — mobilde yön duygusu ── */}
@@ -169,6 +172,7 @@ export function WriteForm({
             aria-label="Ziyaret ayı"
             className="h-10 border-b-2 border-line-2 bg-transparent px-1 text-[17px] font-semibold outline-none focus:border-accent"
           >
+            {months.length === 0 && <option value="">…</option>}
             {months.map(([k, l]) => (<option key={k} value={k}>{l}</option>))}
           </select>
           <p className="max-w-[46ch] text-[12px] text-ink-3">
@@ -245,30 +249,12 @@ export function WriteForm({
         </div>
       </section>
 
-      {/* ── E. ZİYARET DOĞRULAMA ── */}
+      {/* ── E. ZİYARET DOĞRULAMA — henüz açık değil; kullanıcı seçimi "doğrulandı" SAYILMAZ ── */}
       <section className="mt-10">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-          <h2 className="label">Gittiğini doğrula</h2>
-          <span className="text-[12px] text-ink-3">İsteğe bağlı ama puanını ağırlaştırır</span>
-        </div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {VERIFY.map((v) => (
-            <button
-              key={v.key}
-              type="button"
-              onClick={() => setVerify(v.key)}
-              aria-pressed={verify === v.key}
-              className={`h-10 border px-4 text-[14px] font-semibold ${
-                verify === v.key ? "border-accent bg-accent text-on-accent" : "border-line-2 hover:border-ink"
-              }`}
-            >
-              {v.label}
-            </button>
-          ))}
-        </div>
-        <p className="mt-3 max-w-[62ch] text-[12px] leading-relaxed text-ink-3">
-          Yüklediğin belge <strong className="font-semibold text-ink-2">yayımlanmaz</strong>;
-          yalnızca &quot;gittiği doğrulandı&quot; rozeti üretir ve hemen ardından silinir.
+        <h2 className="label">Ziyaret doğrulama</h2>
+        <p className="mt-2 max-w-[62ch] text-[13px] leading-relaxed text-ink-2">
+          Henüz açık değil. Doğrulama; Gidenler rezervasyonu, işletmenin &ldquo;geldi&rdquo; işareti ya da fiş gibi
+          bağımsız kanıtlarla yapılacak. O zamana kadar bütün deneyimler <strong className="font-semibold">doğrulanmamış ziyaret</strong> olarak görünür.
         </p>
       </section>
 
@@ -308,12 +294,17 @@ export function WriteForm({
 
       {/* ── gönder ── */}
       <div className="sticky bottom-0 mt-12 flex flex-wrap items-center gap-4 border-t-2 border-line-strong bg-paper/95 py-4 backdrop-blur-sm">
-        <Button variant="primary" disabled={!canSend} onClick={() => { if (entityId) markExperienced(entityId); setSent(true); }}>
-          Deneyimi yayınla
+        <Button variant="primary" disabled={!canSend} onClick={() => {
+          const ok = saveDraft(entitySlug, { body, month, ratings, returnIntent: ret, relationship: rel });
+          if (ok && entityId) markVisited(entityId);
+          setSent(ok ? "saved" : "unsaved");
+          window.scrollTo({ top: 0 });
+        }}>
+          Taslak olarak sakla
         </Button>
         <p className="text-[12px] text-ink-3">
           {canSend
-            ? "Yayınlandıktan sonra düzenleyebilirsin; silinen deneyimler moderasyon kaydında kalır."
+            ? "Taslak yalnız bu tarayıcıda durur; yayınlama açılınca buradan yayımlayabileceksin."
             : "En az bir paragraf yaz ve tekrar gitme sorusunu yanıtla."}
         </p>
       </div>

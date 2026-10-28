@@ -22,6 +22,7 @@ import { fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled
 import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/match/score";
 import { parseVideoUrl, embedUrl } from "../lib/media/embed";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/store";
+import { visitMonths } from "../lib/drafts";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
@@ -396,6 +397,15 @@ async function main() {
   ok("işletmenin toplu onay patlaması → doğrulanmaz", !assess([{ kind: "reservation_created", at: t }, { kind: "business_seated", at: t }], { reservationAt: t, reviewAt: rv, businessSeatedBurst: true }).countsAsVerified);
   ok("işletmeyle ilişkili yazar → none", assess([{ kind: "business_seated", at: t }, { kind: "receipt", at: t }], { reviewAt: rv, authorRelatedToBusiness: true }).level === "none");
   ok("aynı kodla ikinci deneyim → zayıf", assess([{ kind: "business_seated", at: t }, { kind: "receipt", at: t }], { reviewAt: rv, codeAlreadyUsed: true }).level === "weak");
+
+  console.log("\n7b) Deneyim yazma: dürüstlük (yayın/doğrulama açılana kadar)");
+  const vm = visitMonths(new Date(2026, 9, 28));
+  ok("ziyaret ayı listesi bugünden başlar, 24 ay, gelecek ay yok", vm.length === 24 && vm[0][0] === "2026-10" && vm[0][1] === "ekim 2026" && vm[23][0] === "2024-11", vm.slice(0, 2));
+  ok("ay listesi yıl dönümünü doğru geçer", visitMonths(new Date(2027, 0, 5), 2).map((x) => x[0]).join() === "2027-01,2026-12");
+  const wf = readFileSync(new URL("../app/yaz/[slug]/WriteForm.tsx", import.meta.url), "utf8");
+  ok("yazma formu 'yayınlandı/eklendi' ya da 'doğrulandı' demiyor", !/Deneyimin Gidenler&apos;e eklendi|doğrulaman alındı|deneyim havuzunda|doğrulandı&quot; rozeti|Deneyimi yayınla/.test(wf));
+  ok("yazma formu kullanıcı seçimiyle doğrulama kabul etmiyor", !/setVerify|VERIFY\b/.test(wf) && /doğrulanmamış ziyaret/.test(wf));
+  ok("yazma formunda sabit (eskiyen) tarih yok", !/new Date\(20\d\d/.test(wf) && !/"20\d\d-\d\d"/.test(wf));
 
   console.log("\n8) Puan ticari ilişkiden bağımsız · demo görünürlüğü");
   const { demoPaths } = await import("./gen-demo-paths");
