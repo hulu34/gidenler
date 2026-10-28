@@ -15,6 +15,7 @@ const FLOW: { step: string; href: string; title: string; note: string }[] = [
   { step: "08", href: "/liste/kadikoy-fiyat-performans/", title: "Koleksiyon", note: "Kullanıcı listeleri: Moda ve Köz aynı koleksiyonda." },
   { step: "09", href: "/benim/", title: "Benim Gidenler'im", note: "Gitmek istiyorum → Gittim → deneyim. Döngü burada kapanır." },
   { step: "10", href: "/isletme/moda-lokantasi/", title: "İşletme paneli", note: "Aynı veri işletmeye 'neden değişti?' sorusunu cevaplar." },
+  { step: "11", href: "/demo/#canlandir", title: "Deneme eşiği · örnek bildirim", note: "Restoran sayfasında eşiğini kaydet, burada puan artışını canlandır: koşullar sağlanınca tek bir örnek bildirim." },
 ];
 
 export function DemoControls() {

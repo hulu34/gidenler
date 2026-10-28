@@ -15,7 +15,9 @@ import { VenueInfo } from "@/components/venue/VenueInfo";
 import { VenueVisuals } from "@/components/venue/VenueVisuals";
 import { VenueBadges, RealVenueNotice } from "@/components/venue/VenueBadges";
 import { ReservationBlock } from "@/components/reservation/ReservationBlock";
-import { canReserve } from "@/lib/reservation";
+import { canReserve, isPartner } from "@/lib/reservation";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { ThresholdBar, ThresholdCard, type ThresholdVenue } from "@/components/demo/ThresholdCard";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
@@ -139,6 +141,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const expertAuthors = Array.from(new Map(expertExperiences.map((e) => [e.author.id, e])).values());
   /* Yatırımcı demosu: kurgusal tanıtım + örnek menü + temsili görsel/klip olan profiller farklı sekmelerle açılır */
   const dp = entity.isDemo && scored ? demoProfileOf(entity.slug) : undefined;
+  /* Yatırımcı demosu: deneyim mührünün yerinde kişisel "Deneme eşiğin" kartı (puana ve sıralamaya girmez) */
+  const esik: ThresholdVenue | null = DEMO_VISIBLE && entity.isDemo && c.mode === "standard"
+    ? { entityId: entity.id, slug: entity.slug, name: entity.name, score: I.overallScore, menu: !!dp, reservation: canReserve(entity) && isPartner(entity) } : null;
   const sections: TopicSection[] = dp ? [
     { id: "genel", label: "Genel bakış" },
     { id: "menu", label: "Menü" },
@@ -203,7 +208,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             </div>
           )}
         </div>
-        {scored && pulse && (
+        {esik ? (
+          <div className="hidden w-[300px] shrink-0 sm:block"><ThresholdCard v={esik} /></div>
+        ) : scored && pulse && (
           <div className="hidden flex-col items-center gap-1 sm:flex">
             <PlaceSeal pulse={pulse} size={132} label={`${entity.name} mührü: son ${pulse.raw.length} ayın puanı ve deneyim hacmi`} />
             <span className="text-[9.5px] font-bold uppercase tracking-[0.16em] text-ink-3">deneyim mührü</span>
@@ -245,6 +252,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
       {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
       {(entity.isReal || entity.photos?.length) && <PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} />}
+
+      {/* mobilde deneme eşiği: fotoğrafların ALTINDA tek satır (ilk ekrandaki fotoğrafları itmez) */}
+      {esik && <div className="mt-4 sm:hidden"><ThresholdBar v={esik} /></div>}
 
       {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda); demo profilde grafikler sonra ═══════════ */}
       {scored && !dp && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}

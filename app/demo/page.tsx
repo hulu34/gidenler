@@ -3,6 +3,11 @@ import { DemoControls } from "@/app/demo/DemoControls";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { notFound } from "next/navigation";
 import { DemoMovers } from "@/components/demo/DemoMovers";
+import { ScoreScenario } from "@/components/demo/ScoreScenario";
+import type { ThresholdVenue } from "@/components/demo/ThresholdCard";
+import { DEMO_PROFILES } from "@/data/demoProfiles";
+import { getTopic } from "@/lib/api";
+import { canReserve, isPartner } from "@/lib/reservation";
 
 export const metadata = { title: "Yatırımcı demosu" };
 
@@ -14,6 +19,11 @@ export const metadata = { title: "Yatırımcı demosu" };
 export default function DemoPage() {
   /* Sunum modu yalnız yatırımcı demosu dağıtımında; gerçek sitede bu adres yoktur. */
   if (!DEMO_VISIBLE) notFound();
+  /* deneme eşiği senaryosu: içerik profili olan demo restoranlar, gerçek (demo verisindeki) Gidenler puanıyla */
+  const venues: ThresholdVenue[] = Object.keys(DEMO_PROFILES).flatMap((slug) => {
+    const t = getTopic(slug);
+    return t ? [{ entityId: t.entity.id, slug, name: t.entity.name, score: t.intelligence.overallScore, menu: true, reservation: canReserve(t.entity) && isPartner(t.entity) }] : [];
+  });
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
       <header className="flex flex-col gap-3 pt-10 sm:pt-14">
@@ -26,6 +36,7 @@ export default function DemoPage() {
         </p>
       </header>
       <div className="mt-8 border-t-2 border-line-strong pt-7"><DemoControls /></div>
+      <ScoreScenario venues={venues} />
       <DemoMovers />
     </div>
   );

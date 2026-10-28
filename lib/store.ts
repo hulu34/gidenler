@@ -14,6 +14,7 @@ import type {
   TasteEdits, TasteLevel, UserEntityRelationship, UserEntityState, VisitSignal,
 } from "@/lib/types";
 import { DEMO_USER_ID } from "@/data/taste";
+import { resetThresholdDemo } from "@/lib/thresholdStore";
 
 /**
  * İKİ AYRI AD ALANI: normal kullanıcı verisi ile sunum (yatırımcı) verisi
@@ -281,6 +282,7 @@ export function chooseForGroup(groupId: string, entityId: string) {
 
 /** Etkin ad alanını sıfırlar: normal modda kullanıcı verisi temizlenir, sunum modunda başlangıç anlık görüntüsü geri gelir. */
 export function resetDemo() {
+  resetThresholdDemo(); /* deneme eşiği senaryoları ve örnek bildirimler de başlangıca döner */
   if (readMode() === "investor") { write(investorSnapshot()); return; }
   write(empty());
 }
@@ -345,6 +347,7 @@ export function investorSnapshot(): UserData {
 export function enterInvestorDemo(): UserData {
   try { window.localStorage.setItem(KEY_MODE, "investor"); } catch { /* yoksay */ }
   cache = null; cacheKey = null;
+  resetThresholdDemo();
   const snap = investorSnapshot();
   write(snap);
   return snap;
@@ -352,6 +355,7 @@ export function enterInvestorDemo(): UserData {
 /** Sunum modundan çık: sunum verisi silinir, normal kullanıcı verisine dönülür. */
 export function exitInvestorDemo() {
   try { window.localStorage.removeItem(KEY_MODE); window.localStorage.removeItem(KEY_DEMO); } catch { /* yoksay */ }
+  resetThresholdDemo();
   cache = null; cacheKey = null;
   listeners.forEach((l) => l());
 }

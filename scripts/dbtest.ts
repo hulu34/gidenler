@@ -35,6 +35,7 @@ import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
 import { entities, DEMO_VISIBLE } from "../data/entities";
 import { gidenler100 } from "../lib/venue";
+import { evaluate, processEvent, standing, eventId, clampThreshold, withAcc, withDat, noticeText, type ThresholdPref, type ScoreEvent } from "../lib/threshold";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info?: unknown) => {
@@ -663,6 +664,38 @@ async function main() {
   ok("geri alındıktan sonra yeniden uygulanabilir", again.applied.length === MIGRATIONS.length);
   const reseed = await seedRealVenues(db, realVenueRecords);
   ok(`yeniden tohum ${realVenueRecords.length}/${realVenueRecords.length}`, reseed.inserted === realVenueRecords.length && (await verifyRealVenues(db, realVenueRecords)).ok);
+
+  console.log("\n9) Deneme eşiği (kişisel tercih, puana girmez)");
+  {
+    const pref: ThresholdPref = { entityId: "ent.x", threshold: 8.3, notify: true, updatedAt: "2026-10-28" };
+    const ev = (from: number, to: number, n: number, v: number): ScoreEvent => ({ id: eventId("ent.x", from, to, n, v), entityId: "ent.x", from, to, newExperiences: n, verifiedExperiences: v, simulated: true });
+    const venue = { slug: "x", name: "X", menu: true, reservation: false };
+    ok("eşik 1–10 arası, 0,1 adım", clampThreshold(0) === 1 && clampThreshold(11) === 10 && clampThreshold(8.34) === 8.3 && clampThreshold(Number.NaN) === 1);
+    ok("düğme ve bildirim metni Türkçe ekle", withAcc(8.3) === "8,3'ü" && withAcc(8) === "8,0'ı" && withDat(8.4) === "8,4'e" && withDat(9) === "9,0'a");
+    ok("bildirim metni", noticeText({ threshold: 8.3, to: 8.4 }) === "Beklediğin seviyeye geldi. Bu restoran, seçtiğin 8,3 eşiğini aşarak 8,4'e ulaştı.");
+    ok("eşiğin altında kalırsa bildirim yok", evaluate(pref, ev(7.9, 8.2, 12, 5)).state === "altinda" && evaluate(pref, ev(7.9, 8.3, 12, 5)).state === "altinda");
+    ok("zaten üstündeyse \"karşılıyor\", bildirim yok", evaluate(pref, ev(8.7, 8.9, 12, 5)).state === "karsiliyor" && standing(pref, 8.7).state === "karsiliyor");
+    ok("güven koşulu yoksa bildirim yok", evaluate(pref, ev(8.1, 8.4, 3, 1)).state === "yetersiz" && evaluate(pref, ev(8.1, 8.4, 9, 1)).state === "yetersiz");
+    const weak = evaluate(pref, ev(8.1, 8.4, 9, 1)).message;
+    ok("doğrulanmamış deneyim doğrulanmış sayılmaz, simülasyon yazılı", weak.includes("1 tanesi doğrulanmış ziyaret") && weak.includes("8 tanesi doğrulanmamış") && weak.includes("simülasyon"));
+    ok("puan henüz yoksa \"bekleniyor\"", standing(pref, null).state === "bekleniyor" && standing(pref, null).message.startsWith("Yeterli deneyim oluşması bekleniyor"));
+    ok("aşağı geçişte bildirim yok", evaluate(pref, ev(8.6, 8.1, 12, 5)).state === "asagi");
+    ok("takip kapalıyken bildirim yok", processEvent([], { ...pref, notify: false }, ev(8.1, 8.4, 12, 5), venue, "t").created === false);
+    ok("eşik seçilmemişse bildirim yok", processEvent([], undefined, ev(8.1, 8.4, 12, 5), venue, "t").state === "yok");
+    const e = ev(8.1, 8.4, 12, 5);
+    const a1 = processEvent([], pref, e, venue, "t1");
+    const a2 = processEvent(a1.notices, pref, e, venue, "t2");
+    const a3 = processEvent(a2.notices, pref, ev(8.1, 8.5, 14, 6), venue, "t3");
+    ok("alttan üste geçiş + güven koşulu → tek bildirim", a1.created && a1.notices.length === 1 && a1.state === "asti");
+    ok("yenileme / tekrar işleme ikinci bildirim üretmez", !a2.created && a2.state === "tekrar" && a2.notices.length === 1);
+    ok("eşik etrafında dalgalanma ikinci bildirim üretmez", !a3.created && a3.notices.length === 1);
+    const a4 = processEvent(a3.notices, { ...pref, threshold: 8.4 }, ev(8.1, 8.6, 12, 5), venue, "t4");
+    ok("eşik değişip yeniden aşılırsa yeni bildirim olabilir", a4.created && a4.notices.length === 2);
+    const before = getTopic("moda-lokantasi")?.intelligence;
+    processEvent([], { ...pref, entityId: "ent.moda-lokantasi" }, { ...e, entityId: "ent.moda-lokantasi" }, venue, "t");
+    const after = getTopic("moda-lokantasi")?.intelligence;
+    ok("eşik ve bildirim puanı, deneyim sayısını değiştirmez", after?.overallScore === before?.overallScore && after?.experienceCount === before?.experienceCount);
+  }
 
   console.log(`\nSonuç: ${pass} geçti, ${fail} kaldı`);
   await pg.close();

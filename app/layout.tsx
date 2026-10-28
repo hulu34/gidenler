@@ -11,6 +11,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { DemoBoot } from "@/components/demo/DemoBoot";
+import { ThresholdToast } from "@/components/demo/ThresholdToast";
 import { AccountSync } from "@/components/auth/AccountSync";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="icerik">{children}</main>
         <Footer />
+        {DEMO_VISIBLE && <ThresholdToast />}
       </body>
     </html>
   );
