@@ -1,7 +1,7 @@
 # Ölçüm ve Google pilotu — farklı ağdan (GitHub), Vercel korumasını kaldırmadan (Protection Bypass for Automation).
 # Depo herkese açık: log yalnız sayı; ayrıntılı çıktı ops/olcum.pem ile şifrelenir (anahtar yalnız proje sahibinde).
 # Tetik: ops/** dalına itme; YALNIZ commit mesajındaki etiketle seçilen iş çalışır ([olcum], [toplu:N], [onay],
-# [kuyruk], [selftest], [saglik]). Etiketsiz itmede bütün işler atlanır (skipped = hata değil, bildirim gitmez).
+# [kuyruk], [selftest], [saglik], [demo], [demoprofil]). Etiketsiz itmede bütün işler atlanır (skipped = hata değil, bildirim gitmez).
 # Adresler tek yerde (env): silinmiş dağıtıma istek gitmesin diye her iş önce adresin yaşadığını kontrol eder.
 # Vercel bu dalları derlemez.
 name: Olcum ve pilot
@@ -28,6 +28,17 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/demo.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEMO_HOST: "demo.gidenler.com" }
+  demoprofil:
+    if: contains(github.event.head_commit.message, '[demoprofil]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/demo-profil.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEMO_HOST: "demo.gidenler.com" }
   eszaman:
     if: contains(github.event.head_commit.message, '[eszaman]')
