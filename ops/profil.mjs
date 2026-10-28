@@ -4,7 +4,8 @@
 import { readFileSync } from "node:fs";
 import { chromium } from "playwright";
 const HOST = process.env.PREVIEW_HOST, SLUG = process.env.SLUG ?? "pandeli-fatih";
-const H = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS, "x-vercel-set-bypass-cookie": "true" };
+const H = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS };
+const HB = { ...H, "x-vercel-set-bypass-cookie": "true" }; /* yalnız tarayıcı (çerez kavanozu olan) bağlam için */
 const admin = `https://${HOST}/api/admin/db/`;
 const res = []; const ok = (n, c, i = "") => { res.push(c); console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const env = (await (await fetch(`${admin}?rapor=profil&slug=${SLUG}`, { headers: H })).json().catch(() => ({}))).env;
@@ -22,7 +23,7 @@ ok("profil okunuyor", !!rp.profile?.description && !!rp.profile?.menu, `menü b�
 
 const b = await chromium.launch({ channel: "chrome" });
 for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }], ["mobil", { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2, userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1" }]]) {
-  const ctx = await b.newContext({ ...o, extraHTTPHeaders: H, ...(o.userAgent ? {} : { userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" }) });
+  const ctx = await b.newContext({ ...o, extraHTTPHeaders: HB, ...(o.userAgent ? {} : { userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" }) });
   const hosts = new Map(); ctx.on("request", (r) => { const h = new URL(r.url()).hostname; hosts.set(h, (hosts.get(h) ?? 0) + 1); });
   const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(e.message));
   await p.goto(`https://${HOST}/mekan/${SLUG}/`, { waitUntil: "networkidle" }); await p.waitForTimeout(1500);
