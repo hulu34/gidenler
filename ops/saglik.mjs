@@ -8,6 +8,7 @@ const ok = (n, c, info = "") => { checks.push(c); console.log(`${c ? "✓" : "�
 ok("korumasız istek reddediliyor", [302, 401, 403].includes((await st("/", {})).s));
 ok("ana sayfa", (await st("/")).s === 200);
 ok("mekân sayfası", (await st("/mekan/700-gram-kadikoy/")).s === 200);
+ok("yazma sayfası", (await st("/yaz/700-gram-kadikoy/")).s === 200);
 const s1 = await st("/api/google/place/?slug=700-gram-kadikoy&part=status");
 ok("Google durum ucu (ücretsiz, kayıtlı kimlik var)", s1.s === 200 && s1.j?.available === true);
 const s2 = await st("/api/google/place/?slug=boyle-bir-mekan-yok&part=status");
