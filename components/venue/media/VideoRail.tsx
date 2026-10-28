@@ -14,7 +14,7 @@ import { embedUrl, PLATFORM_LABEL, thumbUrl, type VideoPlatform } from "@/lib/me
    · Video yoksa bölüm hiç çizilmez.
    ────────────────────────────────────────────────────────────────────────── */
 
-export interface RailVideo { id: string; platform: VideoPlatform; externalId: string; url: string; credit: string | null }
+export interface RailVideo { id: string; platform: VideoPlatform; externalId: string; url: string; credit: string | null; sponsored?: boolean }
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const vertical = (v: RailVideo) => v.platform !== "youtube" || v.url.includes("/shorts/");
 const MARK: Record<VideoPlatform, string> = { youtube: "▶", instagram: "◎", tiktok: "♪" };
@@ -31,6 +31,7 @@ function Card({ v, onOpen }: { v: RailVideo; onOpen: () => void }) {
         <span aria-hidden className={`absolute inset-0 ${v.platform === "instagram" ? "bg-[linear-gradient(160deg,#4f5bd5,#962fbf_45%,#d62976_75%,#fa7e1e)]" : "bg-[linear-gradient(160deg,#111,#25f4ee_160%)]"}`} />
       )}
       <span className="absolute left-2 top-2 rounded-full bg-black/60 px-2 py-0.5 text-[10.5px] font-semibold" translate="no">{PLATFORM_LABEL[v.platform]}</span>
+      {v.sponsored && <span className="absolute right-2 top-2 rounded-full bg-paper/90 px-2 py-0.5 text-[10.5px] font-bold text-ink">İşbirliği</span>}
       <span className="absolute inset-0 flex items-center justify-center">
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-paper/90 text-[18px] text-ink shadow-lg transition-transform group-hover:scale-110">{MARK[v.platform]}</span>
       </span>

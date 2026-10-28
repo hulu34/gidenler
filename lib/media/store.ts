@@ -12,14 +12,14 @@ import { parseVideoUrl, type VideoPlatform } from "./embed";
      Meta uygulama anahtarı istediği için yalnız bağlantı biçimi doğrulanır.
    ────────────────────────────────────────────────────────────────────────── */
 
-export interface PlaceVideo { id: string; platform: VideoPlatform; externalId: string; url: string; credit: string | null; category: string | null }
+export interface PlaceVideo { id: string; platform: VideoPlatform; externalId: string; url: string; credit: string | null; category: string | null; sponsored: boolean }
 
 const PLATFORMS: VideoPlatform[] = ["youtube", "instagram", "tiktok"];
 
 export async function listPlaceVideos(slug: string): Promise<PlaceVideo[]> {
   const db = getDb();
   if (!db) return [];
-  const rows = await db.select({ id: mediaItems.id, platform: mediaItems.platform, externalId: mediaItems.externalId, url: mediaItems.url, credit: mediaItems.credit, category: mediaItems.category })
+  const rows = await db.select({ id: mediaItems.id, platform: mediaItems.platform, externalId: mediaItems.externalId, url: mediaItems.url, credit: mediaItems.credit, category: mediaItems.category, sponsored: mediaItems.sponsored })
     .from(mediaItems).innerJoin(mediaPlaces, eq(mediaPlaces.mediaId, mediaItems.id)).innerJoin(places, eq(places.id, mediaPlaces.placeId))
     .where(and(eq(places.slug, slug), eq(mediaItems.status, "approved"), inArray(mediaItems.type, ["embed", "video"]), inArray(mediaItems.platform, PLATFORMS)))
     .orderBy(desc(mediaItems.createdAt)).limit(30);
@@ -48,7 +48,7 @@ export type AddVideoResult =
   | { ok: false; error: "no_db" | "bad_url" | "no_place" | "not_found_on_platform" };
 
 /** Yönetim: mekâna video bağlantısı ekler (aynı bağlantı tekrar eklenirse mevcut kayıt bağlanır). */
-export async function addPlaceVideo(input: { slug: string; url: string; credit?: string; category?: string; verifiedElsewhere?: boolean }, f: typeof fetch = fetch): Promise<AddVideoResult> {
+export async function addPlaceVideo(input: { slug: string; url: string; credit?: string; category?: string; verifiedElsewhere?: boolean; sponsored?: boolean }, f: typeof fetch = fetch): Promise<AddVideoResult> {
   const db = getDb();
   if (!db) return { ok: false, error: "no_db" };
   let raw = input.url.trim();
@@ -75,14 +75,14 @@ export async function addPlaceVideo(input: { slug: string; url: string; credit?:
   const [dup] = await db.select({ id: mediaItems.id }).from(mediaItems).where(and(eq(mediaItems.platform, v.platform), eq(mediaItems.externalId, v.id))).limit(1);
   if (dup) {
     /* yeniden ekleme: yayına alır; elle atıf verildiyse günceller */
-    await db.update(mediaItems).set({ status: "approved", ...(input.credit?.trim() ? { credit: input.credit.trim().slice(0, 120) } : {}) }).where(eq(mediaItems.id, dup.id));
+    await db.update(mediaItems).set({ status: "approved", lastCheckedAt: new Date(), ...(input.credit?.trim() ? { credit: input.credit.trim().slice(0, 120) } : {}), ...(input.sponsored !== undefined ? { sponsored: input.sponsored } : {}) }).where(eq(mediaItems.id, dup.id));
     await db.insert(mediaPlaces).values({ mediaId: dup.id, placeId: p.id }).onConflictDoNothing();
     return { ok: true, id: dup.id, platform: v.platform, externalId: v.id, created: false };
   }
   const id = uuidv7();
   const ins = await db.insert(mediaItems).values({
     id, type: "embed", platform: v.platform, url: v.url, externalId: v.id, storageClass: "id_only",
-    category: input.category?.slice(0, 32) || "video", credit, source: "editor", status: "approved", lastCheckedAt: new Date(),
+    category: input.category?.slice(0, 32) || "video", credit, source: "editor", status: "approved", lastCheckedAt: new Date(), sponsored: input.sponsored === true,
   }).onConflictDoNothing().returning({ id: mediaItems.id });
   const mediaId = ins[0]?.id ?? (await db.select({ id: mediaItems.id }).from(mediaItems).where(eq(mediaItems.url, v.url)).limit(1))[0]?.id;
   if (!ins.length) await db.update(mediaItems).set({ status: "approved" }).where(eq(mediaItems.id, mediaId));

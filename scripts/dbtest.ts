@@ -35,6 +35,7 @@ import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
 import { entities, DEMO_VISIBLE } from "../data/entities";
 import { gidenler100 } from "../lib/venue";
+import { applyProfile, readProfile, ProfileInput } from "../lib/profile";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info?: unknown) => {
@@ -634,6 +635,38 @@ async function main() {
     const w = (d: Parameters<typeof experienceWeight>[0]["authorDisclosure"]) => experienceWeight({ visitedAt: "2026-10-01", verified: true, authorReputation: 50, authorDisclosure: d }, new Date("2026-10-25"));
     ok("işletme sahibi / çalışanı puana girmez (ağırlık 0)", w("owner_related") === 0 && w("employee") === 0);
     ok("davetli yazar daha az etkili", w("invited") < w("none"));
+  }
+
+  console.log("\n8b) Restoran profili (gerçek mekân içerik kaydı)");
+  {
+    const file = JSON.parse(readFileSync(new URL("../content/profiles/pandeli-fatih.json", import.meta.url), "utf8"));
+    const { videos: _v, _kaynak_notu: _k, ...raw } = file; void _v; void _k;
+    const input = ProfileInput.parse(raw);
+    const nItems = input.menu!.sections.reduce((a, s) => a + s.items.length, 0);
+    const placeRow = async () => (await db.select().from(schema.places).where(eq(schema.places.slug, "pandeli-fatih")))[0];
+    const before = await placeRow();
+    const auditBefore = Number((await pg.query<{ n: number }>("select count(*)::int as n from audit_log")).rows[0].n);
+    ok("profil yokken okuma boş", (await readProfile(db, "pandeli-fatih")) === null);
+    const a1 = await applyProfile(db, input);
+    const pr = await readProfile(db, "pandeli-fatih");
+    ok("uygulandı: tanıtım, iletişim, kurallar, olanaklar", a1.ok && !!pr?.description && pr.phone?.value === "+90 212 527 39 09" && pr.notes.length === 2 && pr.amenities?.items.evcil_hayvan === false);
+    ok(`resmî menü ${nItems} kalem, bölüm sırası korunur, fiyatsız`, pr?.menu?.sections.reduce((a, s) => a + s.items.length, 0) === nItems && pr?.menu?.sections[0].title === "Çorba" && pr?.menu?.pricesPublished === false && pr.menu.sections.every((s) => s.items.every((i) => i.priceTry === undefined)));
+    ok("kaynak bağlantısı ve kontrol tarihi her alanda", [pr?.description, pr?.address, pr?.phone].every((f) => f?.url.startsWith("https://www.pandeli.com.tr") && f.checkedAt === "2026-10-28") && pr?.menu?.validFrom === "2026-02-01");
+    ok("bilinmeyen bilgi uydurulmaz: saat yok", pr?.hours === undefined && (await placeRow()).openingHours === before.openingHours);
+    ok("kimlik alanları kaynaktan güncellendi", (await placeRow()).phone === "+90 212 527 39 09" && (await placeRow()).address!.startsWith("Rüstempaşa"));
+    const a2 = await applyProfile(db, input);
+    const menuRows = Number((await pg.query<{ n: number }>("select count(*)::int as n from menu_items")).rows[0].n);
+    ok("aynı gün yeniden uygulama menüyü çoğaltmaz", a2.ok && menuRows === nItems);
+    const later = { ...input, phone: { ...input.phone!, checkedAt: "2026-11-15" }, menu: { ...input.menu!, checkedAt: "2026-11-15", sections: [{ title: "Çorba", items: [{ name: "Günün Çorbası", priceTry: 250 }] }], pricesPublished: true } };
+    await applyProfile(db, later);
+    const pr2 = await readProfile(db, "pandeli-fatih");
+    const kept = Number((await pg.query<{ n: number }>("select count(*)::int as n from menu_items")).rows[0].n);
+    ok("yeni kontrol günü: sayfa en yeni menüyü gösterir, eski kayıt silinmez", pr2?.menu?.checkedAt === "2026-11-15" && pr2.menu.sections[0].items[0].priceTry === 250 && kept === nItems + 1);
+    const auditAfter = Number((await pg.query<{ n: number }>("select count(*)::int as n from audit_log where action = 'profile_apply'")).rows[0].n);
+    ok("her uygulama önceki değerlerle denetim kaydına yazılır", auditAfter === 3 && Number((await pg.query<{ n: number }>("select count(*)::int as n from audit_log")).rows[0].n) === auditBefore + 3);
+    let bad = false; try { ProfileInput.parse({ ...raw, menu: { ...raw.menu, sections: [{ title: "X", items: [{ name: "Y", priceTry: -5 }] }] } }); } catch { bad = true; }
+    ok("geçersiz fiyat / alan reddedilir", bad && ProfileInput.safeParse({ ...raw, hours: { value: "x" } }).success === false);
+    ok("başka mekânın profili etkilenmez", (await readProfile(db, "ciya-sofrasi-kadikoy")) === null);
   }
 
   console.log("\n9) Geri dönüş (kullanıcı verisi varsa durur)");

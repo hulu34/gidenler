@@ -1,0 +1,313 @@
+{
+ "slug": "pandeli-fatih",
+ "description": {
+  "value": "Mısır Çarşısı içindeki tarihî lokanta. İşletmenin anlatımına göre 1901'de Pandeli Çobanoğlu tarafından açıldı; salonları mavi çinileriyle anılıyor. Menüde zeytinyağlılar, Pandeli'nin patlıcan böreği, hünkâr beğendi ve kâğıtta levrek gibi klasik İstanbul ve Türk mutfağı yemekleri yer alıyor.",
+  "provider": "official_site",
+  "url": "https://www.pandeli.com.tr/#about",
+  "checkedAt": "2026-10-28"
+ },
+ "address": {
+  "value": "Rüstempaşa Mah. Balık Pazarı Kapısı Sk., Mısır Çarşısı İçi No:1 D:2, Fatih, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.pandeli.com.tr/#reservation",
+  "checkedAt": "2026-10-28"
+ },
+ "phone": {
+  "value": "+90 212 527 39 09",
+  "provider": "official_site",
+  "url": "https://www.pandeli.com.tr/#reservation",
+  "checkedAt": "2026-10-28"
+ },
+ "website": {
+  "value": "https://www.pandeli.com.tr",
+  "provider": "official_site",
+  "url": "https://www.pandeli.com.tr",
+  "checkedAt": "2026-10-28"
+ },
+ "instagram": {
+  "value": "pandeliistanbul",
+  "provider": "official_site",
+  "url": "https://www.pandeli.com.tr",
+  "checkedAt": "2026-10-28"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki form ya da telefonla. Talepler 12.00–18.00 arası saatler için alınıyor; restorandan onay e-postası gelmedikçe rezervasyon kesinleşmiş sayılmıyor.",
+  "provider": "official_site",
+  "url": "https://www.pandeli.com.tr/#reservation",
+  "checkedAt": "2026-10-28"
+ },
+ "notes": [
+  {
+   "value": "Yalnız tatlı, çay ve kahve için misafir kabul edilmiyor.",
+   "provider": "official_site",
+   "url": "https://www.pandeli.com.tr",
+   "checkedAt": "2026-10-28"
+  },
+  {
+   "value": "Evcil hayvan kabul edilmiyor.",
+   "provider": "official_site",
+   "url": "https://www.pandeli.com.tr",
+   "checkedAt": "2026-10-28"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "evcil_hayvan": false
+  },
+  "provider": "official_site",
+  "url": "https://www.pandeli.com.tr",
+  "checkedAt": "2026-10-28"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.pandeli.com.tr/PANDELI-MENU.pdf",
+  "checkedAt": "2026-10-28",
+  "validFrom": "2026-02-01",
+  "pricesPublished": false,
+  "sections": [
+   {
+    "title": "Çorba",
+    "items": [
+     {
+      "name": "Günün Çorbası"
+     }
+    ]
+   },
+   {
+    "title": "Soğuklar",
+    "items": [
+     {
+      "name": "Közlenmiş Patlıcan Salatası"
+     },
+     {
+      "name": "Zeytinyağlı Fasulye Pilaki"
+     },
+     {
+      "name": "Zeytinyağlı Yaprak Sarma"
+     },
+     {
+      "name": "Zeytinyağlı Ayvalı Kereviz"
+     },
+     {
+      "name": "Zeytinyağlı Limonlu Bamya"
+     },
+     {
+      "name": "Mevsim Meyveli Komposto"
+     },
+     {
+      "name": "Tarama"
+     },
+     {
+      "name": "Lakerda",
+      "description": "2 dilim"
+     }
+    ]
+   },
+   {
+    "title": "Sıcaklar",
+    "items": [
+     {
+      "name": "Patlıcan Böreği",
+      "description": "Üzerinde dilim döner"
+     },
+     {
+      "name": "Kuzu Yaprak Ciğer"
+     },
+     {
+      "name": "Peynirli & Otlu Puf Börek"
+     },
+     {
+      "name": "Körpe Kabak & Kabak Çiçeği Tava"
+     },
+     {
+      "name": "Hamsi Mücveri",
+      "description": "Biberli ot salatası ile"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "İnce Kıyım Salata"
+     },
+     {
+      "name": "Körpe Roka Salata",
+      "description": "Ekstra virgin zeytinyağı & limon"
+     },
+     {
+      "name": "Cevizli Kaşık Salata",
+      "description": "Nar ekşili"
+     },
+     {
+      "name": "Ev Yapımı Karışık Turşu"
+     }
+    ]
+   },
+   {
+    "title": "Ana yemekler",
+    "items": [
+     {
+      "name": "Baharatlı Piliç Külbastı",
+      "description": "Fırınlanmış sebzeler ile"
+     },
+     {
+      "name": "Balık Köfte",
+      "description": "Tahinli fasulye ezme ile"
+     },
+     {
+      "name": "Döner Kebabı & Pilav"
+     },
+     {
+      "name": "Izgara Köfte & Pilav"
+     },
+     {
+      "name": "Geleneksel Kuzu Etli Hünkar Beğendi"
+     },
+     {
+      "name": "Fırında Patlıcanlı Kuzu Kebabı"
+     },
+     {
+      "name": "Kuzu İncik",
+      "description": "Ispanak ve patates püresi ile"
+     },
+     {
+      "name": "Simitli Şiş Köfte"
+     },
+     {
+      "name": "Kağıtta Pişirilmiş Levrek"
+     },
+     {
+      "name": "Levrek Izgara",
+      "description": "Ispanak püresi ile"
+     },
+     {
+      "name": "Kuzu Tandır",
+      "description": "İç pilav ile"
+     },
+     {
+      "name": "Beğendili Kuzu Lokum"
+     },
+     {
+      "name": "İstiridye Mantarlı Semiz Otu"
+     },
+     {
+      "name": "Tavuklu Pilav"
+     },
+     {
+      "name": "Karadeniz Hamsili Tereyağlı Pilav"
+     }
+    ]
+   },
+   {
+    "title": "Garnitürler",
+    "items": [
+     {
+      "name": "Patates Püresi"
+     },
+     {
+      "name": "İç Pilav"
+     },
+     {
+      "name": "Ispanak Püresi"
+     },
+     {
+      "name": "Pirinç Pilavı"
+     },
+     {
+      "name": "Tava Yoğurt"
+     },
+     {
+      "name": "Cacık"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Kazandibi"
+     },
+     {
+      "name": "Vişneli Tirit",
+      "description": "Kaymak ile"
+     },
+     {
+      "name": "Kabak Tatlısı",
+      "description": "Kaymak, ceviz ve tahin ile"
+     },
+     {
+      "name": "Ayva Tatlısı",
+      "description": "Kaymak ile"
+     },
+     {
+      "name": "Dondurma",
+      "description": "Vişne, vanilya, çikolata"
+     },
+     {
+      "name": "Badem Kurabiyesi",
+      "description": "4 adet"
+     },
+     {
+      "name": "Mevsim Meyve Tabağı"
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Çay"
+     },
+     {
+      "name": "Türk Kahvesi"
+     },
+     {
+      "name": "Ayran",
+      "description": "245 ml"
+     },
+     {
+      "name": "Su",
+      "description": "330 ml · 750 ml"
+     },
+     {
+      "name": "Soda",
+      "description": "200 ml · 750 ml"
+     },
+     {
+      "name": "Gazlı içecekler ve meyve suyu",
+      "description": "Menüde markalarıyla listeleniyor"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=9WVCmFISMBo",
+   "credit": "Turrehberin.Com · Mart 2020",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=KvvSxez_rxU",
+   "credit": "TRAVELGODDESS NY Nermin Yurtoğlu · Mart 2021",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=2LAKWUxHZrU",
+   "credit": "Gurmoss · Balçiçek'le Keşfet · Eylül 2023",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/shorts/PhPIPvnosWg",
+   "credit": "Kısık Ateş Akademi TV · Kasım 2025 · işbirliği",
+   "category": "influencer",
+   "sponsored": true
+  }
+ ],
+ "_kaynak_notu": "Yalnız işletmenin resmî sitesi (pandeli.com.tr), resmî menü PDF'i (01.02.2026'dan geçerli, fiyatsız) ve YouTube oEmbed bilgisi. Videolar en eskiden en yeniye eklenir (sayfada en yeni önce görünür). Çalışma saati resmî sitede yayımlanmadığı için yok."
+}

@@ -1,6 +1,7 @@
 import { after, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
-import { TAG_GOOGLE, TAG_MEDIA } from "@/lib/live";
+import { TAG_GOOGLE, TAG_MEDIA, profileTag } from "@/lib/live";
+import { applyProfile, ProfileInput, readProfile } from "@/lib/profile";
 import { getDb } from "@/lib/db/client";
 import { executorFor } from "@/lib/db/executors";
 import { applyMigrations, migrationStatus } from "@/lib/db/migrate";
@@ -66,6 +67,12 @@ export async function GET(req: Request) {
   if (new URL(req.url).searchParams.get("rapor") === "google-slug") {
     try { return NextResponse.json({ env: envName(), slugs: await googleUsableSlugs() }, { headers: H }); } catch (e) { return fail(e); }
   }
+  /* ?rapor=profil&slug=… → restoran profili (yalnız okuma) */
+  if (new URL(req.url).searchParams.get("rapor") === "profil") {
+    const db = getDb(); const slug = new URL(req.url).searchParams.get("slug") ?? "";
+    if (!db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
+    try { return NextResponse.json({ env: envName(), slug, profile: await readProfile(db, slug), videos: await listPlaceVideos(slug) }, { headers: H }); } catch (e) { return fail(e); }
+  }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
   /* ?rapor=yorumlar → açık şikâyet / spam kayıtları ve ilgili deneyimin durumu (metin dahil; yalnız yönetim) */
   if (new URL(req.url).searchParams.get("rapor") === "yorumlar") {
@@ -103,7 +110,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean } = {};
+  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown> } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -158,6 +165,19 @@ export async function POST(req: Request) {
         if (body.confirm !== "EVET" || !body.slug || !body.url) break;
         const r = await addPlaceVideo({ slug: body.slug, url: body.url, credit: body.credit, category: body.category, verifiedElsewhere: body.verifiedElsewhere === true });
         return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "profile-apply": {
+        /* Restoran profili: content/profiles/<slug>.json içeriği. Mevcut veriyi silmez; önceki değerler audit_log'da. */
+        if (body.confirm !== "EVET" || !body.profile) break;
+        const { videos, _kaynak_notu: _n, ...rest } = body.profile as { videos?: { url: string; credit?: string; category?: string; sponsored?: boolean }[]; _kaynak_notu?: string };
+        void _n;
+        const parsed = ProfileInput.safeParse(rest);
+        if (!parsed.success) return NextResponse.json({ error: "invalid_profile", issues: parsed.error.issues.slice(0, 8).map((i) => `${i.path.join(".")}: ${i.message}`) }, { status: 400, headers: H });
+        const r = await applyProfile(db, parsed.data);
+        const v = [] as unknown[];
+        for (const it of Array.isArray(videos) ? videos.slice(0, 20) : []) v.push(await addPlaceVideo({ slug: parsed.data.slug, url: it.url, credit: it.credit, category: it.category, sponsored: it.sponsored === true }));
+        fresh(profileTag(parsed.data.slug)); fresh(TAG_MEDIA);
+        return NextResponse.json({ action: "profile-apply", env: envName(), ...r, videos: v, profile: await readProfile(db, parsed.data.slug) }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "review-hide":
       case "review-restore": {

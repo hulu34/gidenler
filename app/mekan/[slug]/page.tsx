@@ -19,7 +19,8 @@ import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
-import { googleUsable, placeReviews, videoCounts } from "@/lib/live";
+import { googleUsable, placeProfile, placeReviews, videoCounts } from "@/lib/live";
+import { ProfileMenu, ProfileOverview, withProfile } from "@/components/venue/profile/ProfileSections";
 import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
@@ -149,8 +150,20 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   /* Kapak fotoğrafı ilk ekrandaki en büyük öğe: HTML ayrıştırılırken hemen, mozaikle aynı boyut kuralıyla iner */
-  const [usable, videos, realReviews] = entity.isReal ? await Promise.all([googleUsable(), videoCounts(), placeReviews(entity.slug)]) : [[], {} as Record<string, number>, []];
+  const [usable, videos, realReviews, rp] = entity.isReal ? await Promise.all([googleUsable(), videoCounts(), placeReviews(entity.slug), placeProfile(entity.slug)]) : [[], {} as Record<string, number>, [], null];
   const google = !!entity.isReal && usable.includes(entity.slug);
+  /* Gerçek restoran profili (kaynaklı içerik varsa): içerik odaklı düzen — genel bakış, menü, fotoğraflar, videolar, deneyimler */
+  const ent = withProfile(entity, rp);
+  const nVideos = videos[entity.slug] ?? 0;
+  const profileNav: TopicSection[] = rp ? [
+    { id: "genel", label: "Genel bakış" },
+    { id: "menu", label: "Menü" },
+    { id: "fotograflar", label: "Fotoğraflar" },
+    ...(nVideos ? [{ id: "videolar", label: "Videolar" }] : []),
+    { id: "deneyimler", label: "Deneyimler" },
+    ...(google ? [{ id: "google", label: "Google" }] : []),
+    { id: "gor", label: "Konum" },
+  ] : [];
   const cover = entity.photos?.[0];
   if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
     imageSizes: `(max-width: 640px) 60vw, ${(entity.photos?.length ?? 0) === 1 ? "1180px" : "590px"}` });
@@ -222,13 +235,32 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </header>
 
       {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
-      {(entity.isReal || entity.photos?.length) && <PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} />}
+      {(entity.isReal || entity.photos?.length) && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} /></div>}
+
+      {rp && (
+        <>
+          <TopicNav sections={profileNav} />
+          <section id="genel" aria-labelledby="h-genel" className="scroll-mt-28 mt-8 grid gap-6 sm:scroll-mt-32 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-start">
+            <div className="min-w-0">
+              <div className="kunye"><h2 id="h-genel">Genel bakış</h2><span /></div>
+              <div className="mt-3"><ProfileOverview entity={ent} p={rp} googleHours={google} /></div>
+            </div>
+            <div className="min-w-0 md:sticky md:top-24"><ReservationBlock entity={ent} /></div>
+          </section>
+          <section id="menu" aria-labelledby="h-menu" className="scroll-mt-28 mt-12 sm:scroll-mt-32">
+            <div className="kunye"><h2 id="h-menu">Menü</h2><span /></div>
+            <div className="mt-4">
+              {rp.menu ? <ProfileMenu m={rp.menu} /> : <p className="text-[13.5px] text-ink-2">Bu restoranın menüsü henüz doğrulanmış bir kaynaktan eklenmedi. Örnek menü ya da fiyat gösterilmez.</p>}
+            </div>
+          </section>
+        </>
+      )}
 
       {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda) ═══════════ */}
       {scored && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
 
       {/* ═══════════ BİLGİ & REZERVASYON — Tabelog'un mağaza bilgisi + boş yer takvimi ═══════════ */}
-      {canReserve(entity) && (
+      {!rp && canReserve(entity) && (
         <section id="bilgi" aria-labelledby="h-bilgi" className="scroll-mt-28 mt-10 grid gap-6 sm:scroll-mt-32 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-start">
           <div className="min-w-0">
             <div className="kunye"><h2 id="h-bilgi">Mekân bilgisi</h2><span /></div>
@@ -239,15 +271,15 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       )}
 
       {/* Google: puan, fotoğraf, saatler, yorumlar — temel bilgilerin hemen altında, ekrana girince yüklenir */}
-      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} google={google} /></div>}
+      {entity.isReal && <div id="google" className="scroll-mt-28 mt-8 sm:scroll-mt-32"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} google={google} /></div>}
 
       {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
       <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />
 
-      {entity.isReal && <DataCompleteness c={completenessOf(entity, { googleMatched: google, videos: videos[entity.slug] ?? 0 })} slug={entity.slug} google={google} />}
+      {entity.isReal && <DataCompleteness c={completenessOf(ent, { googleMatched: google, videos: nVideos, menuItems: rp?.menu?.sections.reduce((a, s) => a + s.items.length, 0) ?? 0 })} slug={entity.slug} google={google} />}
 
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
-      <TopicNav sections={sections} />
+      {!rp && <TopicNav sections={sections} />}
 
       {/* ═══════════ 1 · DENEYİMLER — insanlar ne diyor? Kahraman burası. ═══════════ */}
       <section id="deneyimler" className="scroll-mt-28 pt-8 sm:scroll-mt-32" aria-labelledby="h-deneyimler">
