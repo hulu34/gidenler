@@ -4,9 +4,9 @@
    sınırlarından geçer (günlük + aylık sert sınır); bu betik yalnız N restoranı ister. */
 import { mkdirSync, writeFileSync } from "node:fs";
 
-const BYPASS = process.env.VERCEL_BYPASS, HOST = process.env.TOPLU_HOST || process.env.PILOT_HOST, N = Number(process.env.PILOT_N);
+const BYPASS = process.env.VERCEL_BYPASS, HOST = process.env.TOPLU_HOST, N = Number(process.env.PILOT_N);
 const SHOW = Math.max(0, Number(process.env.PILOT_SHOW ?? 2));
-if (!BYPASS || !HOST || !(N >= 0 && N <= 25)) { console.error("VERCEL_BYPASS / PILOT_HOST / PILOT_N (0–25) eksik"); process.exit(2); }
+if (!BYPASS || !HOST || !(N >= 0 && N <= 25)) { console.error("VERCEL_BYPASS / TOPLU_HOST / PILOT_N (0–25) eksik"); process.exit(2); }
 
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36";
 const auth = { "x-vercel-protection-bypass": BYPASS, "user-agent": UA };

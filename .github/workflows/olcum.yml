@@ -1,6 +1,9 @@
 # Ölçüm ve Google pilotu — farklı ağdan (GitHub), Vercel korumasını kaldırmadan (Protection Bypass for Automation).
 # Depo herkese açık: log yalnız sayı; ayrıntılı çıktı ops/olcum.pem ile şifrelenir (anahtar yalnız proje sahibinde).
-# Tetik: ops/** dalına itme; commit mesajında [olcum] ve/veya [pilot:N] (N ≤ 25). Vercel bu dalları derlemez.
+# Tetik: ops/** dalına itme; YALNIZ commit mesajındaki etiketle seçilen iş çalışır ([olcum], [toplu:N], [onay],
+# [kuyruk], [selftest], [saglik]). Etiketsiz itmede bütün işler atlanır (skipped = hata değil, bildirim gitmez).
+# Adresler tek yerde (env): silinmiş dağıtıma istek gitmesin diye her iş önce adresin yaşadığını kontrol eder.
+# Vercel bu dalları derlemez.
 name: Olcum ve pilot
 on:
   push:
@@ -13,7 +16,7 @@ concurrency:
 env:
   OLD_HOST: gidenler-3euvpz7id-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
-  PILOT_HOST: gidenler-hkpfv8zjs-hulu34.vercel.app
+  TEST_HOST: gidenler-kqxmw0uew-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
 jobs:
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
@@ -31,43 +34,6 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: olcum-sifreli, path: out/olcum.json.cms, retention-days: 3, if-no-files-found: ignore }
-  pilot:
-    if: contains(github.event.head_commit.message, '[pilot:')
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - name: N
-        env: { MSG: "${{ github.event.head_commit.message }}" }
-        run: echo "PILOT_N=$(printf '%s' "$MSG" | sed -n 's/.*\[pilot:\([0-9]\{1,2\}\)\].*/\1/p')" >> "$GITHUB_ENV"
-      - run: node ops/pilot.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
-      - if: always()
-        run: test -f out/pilot.json && openssl cms -encrypt -aes256 -binary -in out/pilot.json -out out/pilot.json.cms -outform DER ops/olcum.pem && rm out/pilot.json
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: pilot-sifreli, path: out/pilot.json.cms, retention-days: 3, if-no-files-found: ignore }
-  gorsel:
-    if: contains(github.event.head_commit.message, '[gorsel]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm i --no-save --no-package-lock --prefix ops puppeteer-core@23.11.1
-      - run: node ops/shot.mjs
-        env:
-          VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}"
-          CHROME_PATH: /usr/bin/google-chrome
-          SHOT_SLUGS: 700-gram-kadikoy,aci-biber-kucukcekmece,adab-eski-usul-meyhane-sariyer
-      - if: always()
-        run: test -d out/shots && tar -C out -czf out/shots.tgz shots && rm -rf out/shots && openssl cms -encrypt -aes256 -binary -in out/shots.tgz -out out/shots.tgz.cms -outform DER ops/olcum.pem && rm out/shots.tgz
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: gorsel-sifreli, path: out/shots.tgz.cms, retention-days: 1, if-no-files-found: ignore }
   onay:
     if: contains(github.event.head_commit.message, '[onay]')
     runs-on: ubuntu-latest
@@ -76,8 +42,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
+      - name: Adres yaşıyor mu
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$TEST_HOST/")
+          echo "test dağıtımı HTTP $code"; [ "$code" = 200 ] || { echo "::error::Test dağıtımı ($TEST_HOST) yanıt vermiyor: $code"; exit 1; }
       - run: node ops/onay.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: "${{ env.TEST_HOST }}" }
   kuyruk:
     if: contains(github.event.head_commit.message, '[kuyruk]')
     runs-on: ubuntu-latest
@@ -86,8 +57,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
+      - name: Adres yaşıyor mu
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$TEST_HOST/")
+          echo "test dağıtımı HTTP $code"; [ "$code" = 200 ] || { echo "::error::Test dağıtımı ($TEST_HOST) yanıt vermiyor: $code"; exit 1; }
       - run: node ops/kuyruk.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: "${{ env.TEST_HOST }}" }
   toplu:
     if: contains(github.event.head_commit.message, '[toplu:')
     runs-on: ubuntu-latest
@@ -96,11 +72,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
+      - name: Adres yaşıyor mu
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$TEST_HOST/")
+          echo "test dağıtımı HTTP $code"; [ "$code" = 200 ] || { echo "::error::Test dağıtımı ($TEST_HOST) yanıt vermiyor: $code"; exit 1; }
       - name: N
         env: { MSG: "${{ github.event.head_commit.message }}" }
         run: echo "PILOT_N=$(printf '%s' "$MSG" | sed -n 's/.*\[toplu:\([0-9]\{1,2\}\)\].*/\1/p')" >> "$GITHUB_ENV"
       - run: node ops/pilot.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app, PILOT_SHOW: "0" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: "${{ env.TEST_HOST }}", PILOT_SHOW: "0" }
       - if: always()
         run: test -f out/pilot.json && openssl cms -encrypt -aes256 -binary -in out/pilot.json -out out/pilot.json.cms -outform DER ops/olcum.pem && rm out/pilot.json
       - if: always()
@@ -114,8 +95,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
+      - name: Adres yaşıyor mu
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$TEST_HOST/")
+          echo "test dağıtımı HTTP $code"; [ "$code" = 200 ] || { echo "::error::Test dağıtımı ($TEST_HOST) yanıt vermiyor: $code"; exit 1; }
       - run: node ops/selftest.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: "${{ env.TEST_HOST }}" }
   saglik:
     if: contains(github.event.head_commit.message, '[saglik]')
     runs-on: ubuntu-latest
@@ -124,5 +110,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
+      - name: Adres yaşıyor mu
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$TEST_HOST/")
+          echo "test dağıtımı HTTP $code"; [ "$code" = 200 ] || { echo "::error::Test dağıtımı ($TEST_HOST) yanıt vermiyor: $code"; exit 1; }
       - run: node ops/saglik.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: "${{ env.TEST_HOST }}" }
