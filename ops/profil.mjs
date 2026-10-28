@@ -16,7 +16,7 @@ if (process.env.APPLY === "1") {
   const profile = JSON.parse(readFileSync(new URL(`./profil/${SLUG}.json`, import.meta.url), "utf8"));
   const r = await fetch(admin, { method: "POST", headers: { ...H, "content-type": "application/json", "sec-fetch-site": "same-origin" }, body: JSON.stringify({ action: "profile-apply", confirm: "EVET", target: "preview", profile }) });
   const j = await r.json().catch(() => ({}));
-  ok("profil uygulandı (Preview)", r.ok && j.ok, `alan=${j.fields} menü=${j.menuItems} video=${(j.videos ?? []).filter((v) => v.ok).length}/${(j.videos ?? []).length} ${j.error ?? ""} ${(j.issues ?? []).join(";")}`);
+  ok("profil uygulandı (Preview)", r.ok && j.ok, `alan=${j.fields} menü=${j.menuItems} video=${(j.videos ?? []).filter((v) => v.ok).length}/${(j.videos ?? []).length} ${j.error ?? ""} ${j.message ?? ""} ${(j.issues ?? []).join(";")}`);
 }
 const rp = await (await fetch(`${admin}?rapor=profil&slug=${SLUG}`, { headers: H })).json();
 ok("profil okunuyor", !!rp.profile?.description && !!rp.profile?.menu, `menü bölüm=${rp.profile?.menu?.sections?.length} video=${rp.videos?.length} işbirliği=${(rp.videos ?? []).filter((v) => v.sponsored).length}`);
