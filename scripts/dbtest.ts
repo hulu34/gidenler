@@ -45,7 +45,7 @@ class FakeRedis {
     const n = (this.m.get(keys[0]) ?? 0) + 1; this.m.set(keys[0], n); return n;
   }
   async get(k: string) { this.chk(); return this.m.has(k) ? String(this.m.get(k)) : null; }
-  async set() { this.chk(); return "OK"; }
+  async set(k: string, v: unknown) { this.chk(); this.m.set(k, Number(v) || 1); return "OK"; }
   async incr(k: string) { this.chk(); const n = (this.m.get(k) ?? 0) + 1; this.m.set(k, n); return n; }
   async expire() { return 1; }
   async mget(...ks: string[]) { this.chk(); return ks.map((k) => (this.m.has(k) ? String(this.m.get(k)) : null)); }
@@ -215,6 +215,14 @@ async function main() {
   ok("şube eki listede olmasa da işaretlenir (Bambi Cafe ↔ Bambi Cafe Gayrettepe)", branchDiff("Bambi Cafe", "Bambi Cafe Gayrettepe").includes("gayrettepe") && branchDiff("Antiochia", "Antiochia").length === 0);
   ok("karar katmanı: 120 m asla otomatik değil", preDecide({ score: 0.9, name: 1, distanceM: 120, decision: "auto", phone: "unknown", website: "unknown", address: null }, { chain: false, branch: [], rival: false, addrConflict: false }, true).decision !== "auto");
   ok("karar katmanı: kapı no çelişkisi → onay", postDecide({ score: 1, name: 1, distanceM: 10, decision: "auto", phone: "match", website: "match", address: 1 }, { chain: false, branch: [], rival: false, addrConflict: true }).decision === "review");
+
+  /* eşleşmesi bulunamayan restoran sonraki partide yeniden aranmaz */
+  const fake4 = new FakeRedis(); setRedisForTests(fake4 as unknown as RedisLike);
+  calls.length = 0;
+  const nb1 = await matchGoogleBatch(3, mkFetch({ name: "Hiç Benzemeyen Ad", lat: 0, lng: 0 }));
+  const nb2 = await matchGoogleBatch(3, mkFetch({ name: "Hiç Benzemeyen Ad", lat: 0, lng: 0 }));
+  const s1 = nb1.results.map((x) => x.slug), s2 = nb2.results.map((x) => x.slug);
+  ok("eşleşmeyen restoran sonraki partide yeniden aranmaz", s1.length === 3 && s2.length === 3 && !s2.some((x) => s1.includes(x)) && nb2.noMatchRecent === 6, { s1, s2, n: nb2.noMatchRecent });
 
   /* toplu eşleştirme: kota biterse durur, fazla çağrı yapmaz */
   const fake3 = new FakeRedis(); setRedisForTests(fake3 as unknown as RedisLike);

@@ -3,6 +3,7 @@ import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
 import { places, placeIdentifiers, moderationQueue } from "@/lib/db/schema";
 import { reserve } from "@/lib/usage/counter";
+import { getRedis, redisNs } from "@/lib/usage/redis";
 import { matchScore, brandKey, branchDiff, houseNoConflict, preDecide, postDecide, type MatchContext } from "@/lib/match/score";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -161,16 +162,29 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
   }
 }
 
-/** Toplu eşleştirme (yalnız yönetim, korumalı uç): henüz HİÇ Google kaydı olmayan restoranlar, sırayla.
-    Onaylı, otomatik, bekleyen ya da reddedilmiş kayıtlar yeniden taranmaz. Kota biterse ya da hata olursa durur. */
+/* Eşleşme bulunamayan restoran hiçbir veritabanı kaydı bırakmaz; aynı partide ve sonraki partilerde boşuna yeniden
+   aranmasın diye 30 gün Redis'te işaretlenir (yalnız slug; Google içeriği yok). */
+const NONE_TTL = 30 * 86400;
+const noneKey = (slug: string) => `${redisNs()}:gmatch:none:${slug}`;
+
+/** Toplu eşleştirme (yalnız yönetim, korumalı uç): henüz HİÇ Google kaydı olmayan ve son 30 günde eşleşmesi
+    bulunamamış olmayan restoranlar, sırayla. Onaylı, otomatik, bekleyen ya da reddedilmiş kayıtlar yeniden
+    taranmaz. Kota biterse ya da hata olursa durur. */
 export async function matchGoogleBatch(limit: number, f: typeof fetch = fetch) {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key || !googleEnabled()) return { error: "disabled" as const, results: [] as MatchDiag[] };
   const db = getDb();
   if (!db) return { error: "no_db" as const, results: [] as MatchDiag[] };
-  const done = db.select({ id: placeIdentifiers.placeId }).from(placeIdentifiers).where(eq(placeIdentifiers.provider, "google"));
-  const todo = await db.select({ slug: places.slug }).from(places)
-    .where(and(eq(places.vertical, "restaurant"), notInArray(places.id, done))).orderBy(places.slug).limit(Math.max(1, Math.min(limit, 25)));
+  const redis = getRedis();
+  if (!redis) return { error: "no_redis" as const, results: [] as MatchDiag[] };
+  const open = async () => {
+    const done = db.select({ id: placeIdentifiers.placeId }).from(placeIdentifiers).where(eq(placeIdentifiers.provider, "google"));
+    const pool = await db.select({ slug: places.slug }).from(places)
+      .where(and(eq(places.vertical, "restaurant"), notInArray(places.id, done))).orderBy(places.slug);
+    const flags = pool.length ? await redis.mget<(string | null)[]>(...pool.map((p) => noneKey(p.slug))) : [];
+    return { untried: pool.filter((_, i) => !flags[i]), noneRecent: flags.filter(Boolean).length };
+  };
+  const todo = (await open()).untried.slice(0, Math.max(1, Math.min(limit, 25)));
   /* marka sayıları: bütün mekânlarımız (restoran, kafe, bar) üzerinden — zincir işareti */
   const brands = new Map<string, number>();
   for (const r of await db.select({ name: places.name }).from(places)) { const k = brandKey(r.name); if (k) brands.set(k, (brands.get(k) ?? 0) + 1); }
@@ -178,10 +192,11 @@ export async function matchGoogleBatch(limit: number, f: typeof fetch = fetch) {
   for (const t of todo) {
     const r = await resolveGooglePlaceId(t.slug, key, f, brands);
     results.push(r);
+    if (r.status === "no_match") await redis.set(noneKey(t.slug), "1", { ex: NONE_TTL });
     if (r.status === "limit" || r.status === "error") break;
   }
-  const [left] = await db.select({ n: sql<number>`count(*)::int` }).from(places).where(and(eq(places.vertical, "restaurant"), notInArray(places.id, done)));
-  return { results, remaining: Number(left?.n ?? 0) };
+  const after = await open();
+  return { results, remaining: after.untried.length, noMatchRecent: after.noneRecent };
 }
 
 /** Canlı Google bilgisi — YALNIZ kullanıcı istediğinde, yalnız kayıtlı (onaylı/otomatik) kimlik için. Hiçbir şey saklanmaz.
