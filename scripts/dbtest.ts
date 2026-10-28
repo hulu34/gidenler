@@ -649,7 +649,7 @@ async function main() {
     ok("profil yokken okuma boş", (await readProfile(db, "pandeli-fatih")) === null);
     const a1 = await applyProfile(db, input);
     const pr = await readProfile(db, "pandeli-fatih");
-    ok("uygulandı: tanıtım, iletişim, kurallar, olanaklar", a1.ok && !!pr?.description && pr.phone?.value === "+90 212 527 39 09" && pr.notes.length === 2 && pr.amenities?.items.evcil_hayvan === false);
+    ok("uygulandı: tanıtım, iletişim, kurallar, olanaklar", a1.ok && !!pr?.description && pr.phone?.value === "+90 212 527 39 09" && pr.notes.length === 2 && pr.amenities?.items.rezervasyon === true);
     ok(`resmî menü ${nItems} kalem, bölüm sırası korunur, fiyatsız`, pr?.menu?.sections.reduce((a, s) => a + s.items.length, 0) === nItems && pr?.menu?.sections[0].title === "Çorba" && pr?.menu?.pricesPublished === false && pr.menu.sections.every((s) => s.items.every((i) => i.priceTry === undefined)));
     ok("kaynak bağlantısı ve kontrol tarihi her alanda", [pr?.description, pr?.address, pr?.phone].every((f) => f?.url.startsWith("https://www.pandeli.com.tr") && f.checkedAt === "2026-10-28") && pr?.menu?.validFrom === "2026-02-01");
     ok("bilinmeyen bilgi uydurulmaz: saat yok", pr?.hours === undefined && (await placeRow()).openingHours === before.openingHours);

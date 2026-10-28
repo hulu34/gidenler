@@ -107,9 +107,9 @@ export function ProfileMenu({ m }: { m: NonNullable<PlaceProfile["menu"]> }) {
           Kaynak: <a href={m.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line-2 underline-offset-2 hover:text-ink">{PROVIDER[m.provider] ?? m.provider} — menü ({host(m.url)})</a> · son kontrol {trDate(m.checkedAt)}. Günün durumu ve fiyat için işletmeye danış.
         </span>
       </p>
-      <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+      <div className="gap-x-10 sm:columns-2 [&>section]:mb-6">
         {m.sections.map((s) => (
-          <section key={s.title} aria-label={s.title} className="min-w-0">
+          <section key={s.title} aria-label={s.title} className="min-w-0 break-inside-avoid">
             <h3 className="border-b border-line pb-1.5 text-[12px] font-bold uppercase tracking-[0.16em]">{s.title}</h3>
             <ul className="mt-1">
               {s.items.map((it) => (

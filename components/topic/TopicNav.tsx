@@ -16,10 +16,12 @@ export function TopicNav({ sections }: { sections: TopicSection[] }) {
   useEffect(() => {
     const OFFSET = 150;
     const compute = () => {
-      let cur = sections[0]?.id ?? "";
+      /* sayfada en son geçilen bölüm (sekme sırasından bağımsız: bölümler sayfada farklı sırada olabilir) */
+      let cur = sections[0]?.id ?? "", best = -Infinity;
       for (const s of sections) {
         const el = document.getElementById(s.id);
-        if (el && el.getBoundingClientRect().top <= OFFSET) cur = s.id;
+        const top = el?.getBoundingClientRect().top;
+        if (top !== undefined && top <= OFFSET && top > best) { best = top; cur = s.id; }
       }
       /* sayfa sonundaysak son bölüm aktif */
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = sections[sections.length - 1]?.id ?? cur;

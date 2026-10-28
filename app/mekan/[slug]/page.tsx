@@ -240,6 +240,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {rp && (
         <>
           <TopicNav sections={profileNav} />
+          {/* başlıktaki "Bilgi ve rezervasyon" bağlantısı (#bilgi) genel bakışa iner */}
+          <div id="bilgi" aria-hidden className="scroll-mt-28 sm:scroll-mt-32" />
           <section id="genel" aria-labelledby="h-genel" className="scroll-mt-28 mt-8 grid gap-6 sm:scroll-mt-32 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-start">
             <div className="min-w-0">
               <div className="kunye"><h2 id="h-genel">Genel bakış</h2><span /></div>

@@ -52,8 +52,7 @@
  ],
  "amenities": {
   "items": {
-   "rezervasyon": true,
-   "evcil_hayvan": false
+   "rezervasyon": true
   },
   "provider": "official_site",
   "url": "https://www.pandeli.com.tr",
