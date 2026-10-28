@@ -65,7 +65,8 @@ export async function addPlaceVideo(input: { slug: string; url: string; credit?:
   /* aynı video farklı bağlantı biçimiyle (Shorts / watch / youtu.be) ikinci kayıt olmaz: platform + kimlik tekildir */
   const [dup] = await db.select({ id: mediaItems.id }).from(mediaItems).where(and(eq(mediaItems.platform, v.platform), eq(mediaItems.externalId, v.id))).limit(1);
   if (dup) {
-    await db.update(mediaItems).set({ status: "approved" }).where(eq(mediaItems.id, dup.id));
+    /* yeniden ekleme: yayına alır; elle atıf verildiyse günceller */
+    await db.update(mediaItems).set({ status: "approved", ...(input.credit?.trim() ? { credit: input.credit.trim().slice(0, 120) } : {}) }).where(eq(mediaItems.id, dup.id));
     await db.insert(mediaPlaces).values({ mediaId: dup.id, placeId: p.id }).onConflictDoNothing();
     return { ok: true, id: dup.id, platform: v.platform, externalId: v.id, created: false };
   }

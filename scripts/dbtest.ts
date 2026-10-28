@@ -316,8 +316,10 @@ async function main() {
   ok("Instagram oEmbed'e gidilmez (anahtar ister), elle atıf", va3.ok && !oe.some((u) => u.includes("instagram")), oe);
   ok("platformda olmayan video reddedilir", !va4.ok && va4.error === "not_found_on_platform");
   ok("bilinmeyen mekân reddedilir", !va5.ok && va5.error === "no_place");
+  await addPlaceVideo({ slug: vslug, url: "https://youtu.be/dQw4w9WgXcQ", credit: "Elle Atıf" }, oembedFetch);
+  ok("yeniden eklemede elle atıf güncellenir", (await listPlaceVideos(vslug)).some((v) => v.credit === "Elle Atıf"));
   const vl = await listPlaceVideos(vslug);
-  ok("mekânın videoları listelenir (atıflı)", vl.length === 2 && vl.some((v) => v.credit === "Kanal Adı") && vl.some((v) => v.credit === "@hesap"), vl);
+  ok("mekânın videoları listelenir (atıflı)", vl.length === 2 && vl.some((v) => v.credit === "Elle Atıf") && vl.some((v) => v.credit === "@hesap"), vl);
   const [mi] = await db.select().from(schema.mediaItems).where(eq(schema.mediaItems.externalId, "C1a2B3c4D5e"));
   ok("saklama sınıfı id_only, kaynak editor, onaylı", mi?.storageClass === "id_only" && mi.source === "editor" && mi.status === "approved" && mi.type === "embed");
   await removePlaceVideo(va3.ok ? va3.id : "");
