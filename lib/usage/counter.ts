@@ -136,6 +136,26 @@ export async function readFloors(now = new Date()): Promise<Record<BudgetKey, nu
   } catch { return null; }
 }
 
+/* İlk eşitleme: Redis'teki aylık sayaç Neon tabanından büyükse (ör. bu kod yayına girmeden önceki kullanım,
+   ya da kaybolan bir taban kaydı) taban, sayacın üstündeki ilk eşiğe çekilir. Sunucu örneği başına ayda bir kez;
+   Neon okunamaz/yazılamazsa ücretli çağrı yapılmaz ve bir sonraki istekte yeniden denenir. */
+let syncedFor: string | null = null;
+let syncing: Promise<boolean> | null = null;
+function syncFloors(now: Date, counts: Record<BudgetKey, number>): Promise<boolean> {
+  const tag = `${redisNs()}:${ymOf(now)}`;
+  if (syncedFor === tag) return Promise.resolve(true);
+  syncing ??= (async () => {
+    const floors = await readFloors(now);
+    if (!floors) return false;
+    for (const x of Object.keys(PRICES) as BudgetKey[]) {
+      if (counts[x] > floors[x] && !(await writeFloor(x, now, Math.ceil(counts[x] / FLOOR_STEP) * FLOOR_STEP))) return false;
+    }
+    syncedFor = tag;
+    return true;
+  })().finally(() => { syncing = null; });
+  return syncing;
+}
+
 async function writeFloor(key: BudgetKey, now: Date, floor: number) {
   const db = getDb();
   if (!db) return false;
@@ -190,6 +210,9 @@ export async function reserve(key: BudgetKey, n = 1, now = new Date(), opts: { d
       if (!floors) return { ok: false, reason: "error" };
       await r.eval(SEED_LUA, monthKeys, [String(40 * 86400), ...all.map((x) => String(floors[x]))]);
       used = Math.max(used, floors[key]);
+    }
+    if (durable && !(await syncFloors(now, Object.fromEntries(all.map((x, i) => [x, Number(months[i] ?? 0)])) as Record<BudgetKey, number>))) {
+      return { ok: false, reason: "error" };
     }
     if (PACED.has(key)) daily = pacedDaily(b.monthly, used - Number(d ?? 0), now);
   } catch { return { ok: false, reason: "error" }; }

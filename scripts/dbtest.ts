@@ -201,6 +201,24 @@ async function main() {
   setDbForTests(db);
   const ktR8 = await reserve("google:photo", 1, ktOct31);
   ok("Neon dönünce çağrılar sürer ve taban yazılır", ktR8.ok && (await readFloorsT(ktOct31))?.["google:photo"] === 50, await readFloorsT(ktOct31));
+  /* İLK EŞİTLEME: yayından önceki kullanım (Redis'te var, Neon'da taban yok) ilk istekte tabana aktarılır */
+  const ktDec = new Date(Date.UTC(2026, 11, 15, 12));
+  const ktW9 = await fresh(); setRedisForTests(ktW9 as unknown as RedisLike);
+  const ktPre: Record<string, number> = { "google:text_search_pro": 447, "google:details_enterprise": 195, "google:details_atmosphere": 52, "google:details_essentials": 7, "google:photo": 245 };
+  for (const [x, v] of Object.entries(ktPre)) ktW9.m.set(periodKeys(x as keyof typeof BUDGETS, ktDec).month, v);
+  const ktR9 = await reserve("google:details_atmosphere", 1, ktDec);
+  const ktF9 = await readFloorsT(ktDec);
+  ok("yayın öncesi sayaçlar ilk istekte Neon tabanına aktarılır (447→450, 245→250, 7→10)", ktR9.ok && !!ktF9 && Object.entries(ktPre).every(([x, v]) => ktF9[x as keyof typeof BUDGETS] >= v) && ktF9["google:text_search_pro"] === 450 && ktF9["google:photo"] === 250 && ktF9["google:details_essentials"] === 10, ktF9);
+  const ktW10 = new FakeRedis(); setRedisForTests(ktW10 as unknown as RedisLike);   // hemen ardından Redis silinir
+  await reserve("google:photo", 1, ktDec);
+  ok("ardından Redis silinirse önceki kullanım kaybolmaz (her kalem ≥ yayın öncesi)", Object.entries(ktPre).every(([x, v]) => (ktW10.m.get(periodKeys(x as keyof typeof BUDGETS, ktDec).month) ?? 0) >= v));
+  const ktJan = new Date(Date.UTC(2027, 0, 10, 12));
+  setDbForTests(new Proxy({}, { get: () => { throw new Error("neon down"); } }) as unknown as Db);
+  const ktW11 = await (async () => new FakeRedis())(); setRedisForTests(ktW11 as unknown as RedisLike);
+  for (const x of Object.keys(BUDGETS)) ktW11.m.set(periodKeys(x as keyof typeof BUDGETS, ktJan).month, 100);
+  const ktR11 = await reserve("google:photo", 1, ktJan);
+  ok("ilk eşitleme için Neon okunamazsa ücretli çağrı yapılmaz", !ktR11.ok && ktR11.reason === "error", ktR11);
+  setDbForTests(db);
   setRedisForTests(fake as unknown as RedisLike);
   ok("ortam ad alanları ayrı", redisNs("production") === "prod" && redisNs("preview") === "preview" && redisNs(undefined) === "dev");
   ok("sayaç anahtarı ortam önekli", periodKeys("google:photo").month.startsWith(`${redisNs()}:usage:`));
