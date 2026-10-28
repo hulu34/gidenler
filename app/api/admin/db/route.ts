@@ -9,7 +9,7 @@ import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
-import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches } from "@/lib/providers/google";
+import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats } from "@/lib/providers/google";
 import { usageSnapshot } from "@/lib/usage/counter";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
@@ -50,7 +50,7 @@ export async function GET(req: Request) {
   if (!allowed(req)) return nf();
   /* ?rapor=google → eşleşme sayıları, onay bekleyenler (yalnız place_id + bizim kayıtlarımız), SKU bazında kullanım */
   if (new URL(req.url).searchParams.get("rapor") === "google") {
-    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot() }, { headers: H }); }
+    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot() }, { headers: H }); }
     catch (e) { return fail(e); }
   }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
@@ -116,6 +116,11 @@ export async function POST(req: Request) {
       case "google-review": {
         if (body.confirm !== "EVET" || !body.id || !["confirmed", "rejected"].includes(body.decision ?? "")) break;
         return NextResponse.json({ action: "google-review", ...(await reviewGoogleMatch(body.id, body.decision as "confirmed" | "rejected")) }, { headers: H });
+      }
+      case "google-queue-sync": {
+        /* Onaylanmış/reddedilmiş eşleşmelerin açık kuyruk satırlarını kapatır; silmez. */
+        if (body.confirm !== "EVET") break;
+        return NextResponse.json({ action: "google-queue-sync", env: envName(), ...(await syncGoogleQueue()), stats: await googleMatchStats() }, { headers: H });
       }
       case "rollback-google": {
         /* Yalnız Google eşleşmeleri (pilot geri alma); başka hiçbir veriye dokunmaz. */

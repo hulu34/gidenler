@@ -18,8 +18,8 @@ import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { fetchGooglePlace, googleEnabled, matchGoogleBatch, rollbackGoogleMatches } from "../lib/providers/google";
-import { matchScore } from "../lib/match/score";
+import { fetchGooglePlace, googleEnabled, matchGoogleBatch, resolveGooglePlaceId, reviewGoogleMatch, rollbackGoogleMatches } from "../lib/providers/google";
+import { matchScore, brandKey, preDecide, postDecide } from "../lib/match/score";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
@@ -137,7 +137,7 @@ async function main() {
   ok("ortam ad alanları ayrı", redisNs("production") === "prod" && redisNs("preview") === "preview" && redisNs(undefined) === "dev");
   ok("sayaç anahtarı ortam önekli", periodKeys("google:photo").month.startsWith(`${redisNs()}:usage:`));
   ok("Preview payı %10, toplam ücretsiz kotanın altında",
-    (Object.keys(BUDGETS) as (keyof typeof BUDGETS)[]).every((k) => budgetFor(k, "preview").monthly + budgetFor(k, "production").monthly < (k === "google:text_search_pro" ? 5000 : 1000)));
+    (Object.keys(BUDGETS) as (keyof typeof BUDGETS)[]).every((k) => budgetFor(k, "preview").monthly + budgetFor(k, "production").monthly < (k === "google:text_search_pro" ? 5000 : k === "google:details_essentials" ? 10000 : 1000)));
 
   console.log("\n5) Google adaptörü (sahte API, gerçek çağrı yok)");
   setDbForTests(db);
@@ -145,53 +145,76 @@ async function main() {
   process.env.GOOGLE_PLACES_API_KEY = "TEST_KEY_NOT_REAL";
   ok("Preview'da ücretli Google çağrıları varsayılan kapalı", googleEnabled("preview") === false && googleEnabled("production") === true);
   const calls: string[] = []; const masks: string[] = []; let keyInUrl = false;
-  const mkFetch = (cand: { name: string; lat: number; lng: number; phone?: string; web?: string }) => (async (url: string, init?: RequestInit) => {
+  const mkFetch = (cand: { name: string; lat: number; lng: number; phone?: string; web?: string; id?: string }) => (async (url: string, init?: RequestInit) => {
     calls.push(String(url)); if (String(url).includes("TEST_KEY")) keyInUrl = true;
     const h = (init?.headers ?? {}) as Record<string, string>;
     masks.push(`${String(url).endsWith(":searchText") ? "search" : "details"}:${h["X-Goog-FieldMask"] ?? ""}`);
     if (h["X-Goog-FieldMask"] === "nationalPhoneNumber,websiteUri") return Response.json({ nationalPhoneNumber: cand.phone, websiteUri: cand.web });
     if (h["X-Goog-Api-Key"] !== "TEST_KEY_NOT_REAL") return new Response("{}", { status: 403 });
-    if (String(url).endsWith(":searchText")) return Response.json({ places: [{ id: "GID1", displayName: { text: cand.name }, location: { latitude: cand.lat, longitude: cand.lng } }] });
+    if (String(url).endsWith(":searchText")) return Response.json({ places: [{ id: cand.id ?? "GID1", displayName: { text: cand.name }, location: { latitude: cand.lat, longitude: cand.lng } }] });
     if (String(url).includes("/media")) return Response.json({ photoUri: "https://lh3.example/p.jpg" });
     return Response.json({ rating: 4.6, userRatingCount: 1000, googleMapsUri: "https://maps.google.com/?cid=1",
       photos: [{ name: "places/GID1/photos/a" }, { name: "places/GID1/photos/b" }, { name: "places/GID1/photos/c" }],
       reviews: Array.from({ length: 7 }, (_, i) => ({ rating: 5, text: { text: `yorum ${i}` }, authorAttribution: { displayName: `Kişi ${i}` } })) });
   }) as unknown as typeof fetch;
 
-  const g1 = await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "Çiya Sofrası", lat: ciya.lat!, lng: ciya.lng! + 0.0002 }));
-  ok("doğru aday otomatik eşleşir, içerik gelir", g1.state === "ok", g1);
-  if (g1.state === "ok") {
-    ok("en çok 5 yorum", g1.data.reviews.length === 5);
-    ok("en çok 2 fotoğraf", g1.data.photos.length === 2);
-  }
-  ok("anahtar hiçbir URL'de yok", !keyInUrl);
+  const K = "TEST_KEY_NOT_REAL";
+  const g0 = await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "Çiya Sofrası", lat: ciya.lat!, lng: ciya.lng! }));
+  ok("sayfa görüntülemesi eşleştirme yapmaz (Google'a hiç istek yok)", g0.state === "unmatched" && calls.length === 0, { g0, calls });
+  const m1 = await resolveGooglePlaceId("ciya-sofrasi-kadikoy", K, mkFetch({ name: "Çiya Sofrası", lat: ciya.lat!, lng: ciya.lng! + 0.0002 }));
+  ok("güçlü eşleşme (aynı ad, ~17 m) otomatik ve Enterprise çağrısı YAPMAZ", m1.status === "auto" && m1.calls.detailsEnterprise === 0 && !masks.some((x) => x.includes("nationalPhoneNumber")), m1);
   const [gid] = await db.select().from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "google"));
   ok("yalnız place_id saklandı (auto)", gid?.externalId === "GID1" && gid.status === "auto");
-  calls.length = 0;
-  await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "x", lat: 0, lng: 0 }));
-  ok("ikinci açılışta eşleştirme araması yapılmaz", !calls.some((u) => u.endsWith(":searchText")));
+  const g1 = await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "x", lat: 0, lng: 0 }));
+  ok("yorumlar yalnız istenince: puan + en çok 5 yorum, fotoğraf yok", g1.state === "ok" && g1.data.reviews.length === 5 && g1.data.photos.length === 0, g1);
+  const g1p = await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "x", lat: 0, lng: 0 }), "photos");
+  ok("fotoğraflar ayrı istekle, en çok 2", g1p.state === "ok" && g1p.data.photos.length === 2, g1p);
+  ok("fotoğraf isteği yalnız photos alanını ister (Essentials)", masks.includes("details:photos"), masks);
+  ok("anahtar hiçbir URL'de yok", !keyInUrl);
+  ok("kayıtlı eşleşmeden sonra eşleştirme araması yapılmaz", calls.filter((u) => u.endsWith(":searchText")).length === 1);
+  const againG = await resolveGooglePlaceId("ciya-sofrasi-kadikoy", K, mkFetch({ name: "x", lat: 0, lng: 0 }));
+  ok("onaylı/otomatik kayıt yeniden taranmaz", againG.status === "existing" && againG.calls.textSearch === 0, againG);
   const used = await usageSnapshot();
-  ok("sayaç: 1 arama, 2 detay, 4 foto", used?.["google:text_search_pro"].month === 1 && used["google:details_atmosphere"].month === 2 && used["google:photo"].month === 4, used);
+  ok("sayaç: 1 arama, 0 doğrulama, 1 yorum, 1 foto listesi, 2 foto", used?.["google:text_search_pro"].month === 1 && used["google:details_enterprise"].month === 0
+    && used["google:details_atmosphere"].month === 1 && used["google:details_essentials"].month === 1 && used["google:photo"].month === 2, used);
 
   const moda = (await db.select().from(schema.places).where(sql`${schema.places.slug} <> 'ciya-sofrasi-kadikoy' and ${schema.places.district} = 'Kadıköy'`).limit(1))[0];
-  const g2 = await fetchGooglePlace(moda.slug, mkFetch({ name: moda.name + " Şubesi", lat: moda.lat! + 0.00135, lng: moda.lng! }));
-  ok("şüpheli aday manuel onaya gider, içerik gösterilmez", g2.state === "unmatched" && g2.reason === "pending_review", g2);
+  const m2 = await resolveGooglePlaceId(moda.slug, K, mkFetch({ name: moda.name + " Şubesi", lat: moda.lat! + 0.00135, lng: moda.lng! }));
+  ok("şube adı farkı + 150 m → manuel onay", m2.status === "pending", m2);
+  const g2 = await fetchGooglePlace(moda.slug, mkFetch({ name: "x", lat: 0, lng: 0 }));
+  ok("onay beklerken içerik gösterilmez", g2.state === "unmatched" && g2.reason === "pending_review", g2);
   const mq = await db.select().from(schema.moderationQueue);
-  ok("moderasyon kuyruğuna düştü", mq.length === 1);
-  const g2b = await fetchGooglePlace(moda.slug, mkFetch({ name: "Bambaşka Bir İşletme", lat: moda.lat! + 0.0009, lng: moda.lng! }));
-  ok("onay beklerken tekrar arama yapılmaz, içerik yine gösterilmez", g2b.state === "unmatched" && g2b.reason === "pending_review", g2b);
+  ok("moderasyon kuyruğuna düştü", mq.length === 1 && mq[0].status === "open");
 
   const ENTERPRISE = ["nationalPhoneNumber", "websiteUri", "rating", "userRatingCount", "regularOpeningHours", "reviews", "priceLevel"];
   ok("eşleştirme araması yalnız Pro alanları ister (Enterprise yok)", masks.filter((m) => m.startsWith("search:")).every((m) => !ENTERPRISE.some((f) => m.includes(f))), masks);
   const [modaRow] = await db.select().from(schema.placeIdentifiers).where(sql`${schema.placeIdentifiers.provider} = 'google' and ${schema.placeIdentifiers.status} = 'pending'`);
-  const mqAll = await db.select().from(schema.moderationQueue);
-  ok("Google içeriği (aday adı) hiçbir tabloya yazılmaz", !mqAll.some((m) => (m.reason ?? "").includes("Şubesi")) && !(modaRow?.matchMethod ?? "").includes("Şubesi"), { reason: mqAll[0]?.reason, method: modaRow?.matchMethod });
-  /* telefon/web çelişkisi: ad ve konum birebir olsa da otomatik onay verilmez */
-  const withPhone = (await db.select().from(schema.places).where(sql`${schema.places.phone} is not null and ${schema.places.vertical} = 'restaurant' and ${schema.places.slug} <> ${moda.slug}`).limit(1))[0];
+  ok("Google içeriği (aday adı) hiçbir tabloya yazılmaz", !mq.some((m) => (m.reason ?? "").includes("Şubesi")) && !(modaRow?.matchMethod ?? "").includes("Şubesi"), { reason: mq[0]?.reason, method: modaRow?.matchMethod });
+
+  /* onay: kuyruk satırı silinmez, geçmiş olarak "approved" kalır */
+  const rvG = await reviewGoogleMatch(modaRow.id, "confirmed");
+  const mqAfter = await db.select().from(schema.moderationQueue);
+  ok("onay kuyruk satırını silmez, kapatır (approved)", rvG.ok && mqAfter.length === 1 && mqAfter[0].status === "approved" && !!mqAfter[0].decidedAt, mqAfter);
+
+  /* zincir: markamız iki mekânda → web eşleşmesi tek başına yetmez; telefon eşleşirse otomatik */
+  const withContact = (await db.select().from(schema.places).where(sql`${schema.places.phone} is not null and ${schema.places.website} is not null and ${schema.places.vertical} = 'restaurant' and ${schema.places.slug} not in (${moda.slug}, 'ciya-sofrasi-kadikoy')`).limit(2));
+  const [c1, c2] = withContact;
+  const chainBrands = new Map([[brandKey(c1.name), 2]]);
   masks.length = 0;
-  const g4 = await fetchGooglePlace(withPhone.slug, mkFetch({ name: withPhone.name, lat: withPhone.lat!, lng: withPhone.lng!, phone: "0212 000 00 00", web: "https://baska-isletme.example" }));
-  ok("telefon ve web çelişirse onaya gider", g4.state === "unmatched" && g4.reason === "pending_review", g4);
+  const m3 = await resolveGooglePlaceId(c1.slug, K, mkFetch({ name: c1.name, lat: c1.lat! + 0.0002, lng: c1.lng!, phone: "0212 000 00 00", web: c1.website!, id: "GID_C1" }), chainBrands);
+  ok("zincir: aynı site ama farklı telefon → manuel onay (şube karışmaz)", m3.status === "pending" && m3.chain === true && m3.calls.detailsEnterprise === 1, m3);
   ok("doğrulama için yalnız telefon+web istenir (Enterprise detay)", masks.includes("details:nationalPhoneNumber,websiteUri"), masks);
+  await db.delete(schema.moderationQueue).where(eq(schema.moderationQueue.refTable, "place_identifiers"));
+  await db.delete(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.placeId, c1.id));
+  const m4 = await resolveGooglePlaceId(c1.slug, K, mkFetch({ name: c1.name, lat: c1.lat! + 0.0002, lng: c1.lng!, phone: c1.phone!, web: c1.website!, id: "GID_C1" }), chainBrands);
+  ok("zincir: telefon birebir ve ≤ 40 m → otomatik", m4.status === "auto", m4);
+  /* zincir değil, 60 m: alt alan adlı web sitesi (siparis.marka.com) eşleşme sayılır */
+  const site = new URL(/^https?:/.test(c2.website!) ? c2.website! : `https://${c2.website}`).hostname.replace(/^www\./, "");
+  const m5 = await resolveGooglePlaceId(c2.slug, K, mkFetch({ name: c2.name, lat: c2.lat! + 0.00054, lng: c2.lng!, phone: "0212 000 00 00", web: `https://siparis.${site}/`, id: "GID_C2" }));
+  ok("alt alan adlı site aynı site sayılır; telefon farkı tek başına engel değil", m5.status === "auto" && m5.website === "match" && m5.phone === "conflict", m5);
+  ok("karar katmanı: 120 m asla otomatik değil", preDecide({ score: 0.9, name: 1, distanceM: 120, decision: "auto", phone: "unknown", website: "unknown", address: null }, { chain: false, branch: [], rival: false, addrConflict: false }, true).decision !== "auto");
+  ok("karar katmanı: kapı no çelişkisi → onay", postDecide({ score: 1, name: 1, distanceM: 10, decision: "auto", phone: "match", website: "match", address: 1 }, { chain: false, branch: [], rival: false, addrConflict: true }).decision === "review");
+
   /* toplu eşleştirme: kota biterse durur, fazla çağrı yapmaz */
   const fake3 = new FakeRedis(); setRedisForTests(fake3 as unknown as RedisLike);
   for (let i = 0; i < BUDGETS["google:text_search_pro"].daily - 2; i++) await reserve("google:text_search_pro");
@@ -210,8 +233,8 @@ async function main() {
     && Number(placesAfter.n) === Number(placesBefore.n) && Number(osmAfter.n) === Number(osmBefore.n), { rg, gLeft: gLeft.n, mq: mqLeft.length });
 
   setRedisForTests(null); calls.length = 0;
-  const g3 = await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "Çiya Sofrası", lat: ciya.lat!, lng: ciya.lng! }));
-  ok("Redis yokken Google'a hiç istek gitmez", g3.state === "limit" && calls.length === 0, { g3, calls });
+  const g3 = await resolveGooglePlaceId("ciya-sofrasi-kadikoy", "TEST_KEY_NOT_REAL", mkFetch({ name: "Çiya Sofrası", lat: ciya.lat!, lng: ciya.lng! }));
+  ok("Redis yokken Google'a hiç istek gitmez", g3.status === "limit" && calls.length === 0, { g3, calls });
   delete process.env.GOOGLE_PLACES_API_KEY;
   ok("anahtar yokken kapalı", (await fetchGooglePlace("ciya-sofrasi-kadikoy")).state === "disabled");
 

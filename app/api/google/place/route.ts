@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import { getEntity } from "@/data/entities";
-import { fetchGooglePlace, googleEnabled } from "@/lib/providers/google";
+import { fetchGooglePlace, googleEnabled, storedGooglePlaceId } from "@/lib/providers/google";
 import { strictHit } from "@/lib/usage/rate";
 import { hashKey } from "@/lib/ai/privacy";
 
-/* GET /api/google/place?slug=… — Google Places (New) canlı vekil. YALNIZCA sunucu; anahtar istemciye gitmez.
+/* GET /api/google/place?slug=…&part=status|reviews|photos — Google Places (New) canlı vekil. YALNIZCA sunucu.
+   · part=status: Google'a istek ATMAZ; yalnız bu mekânın onaylı/otomatik Google kimliği var mı (düğmeyi göstermek için).
+   · part=reviews / photos: yalnız kullanıcı düğmeye basınca. Eşleştirme burada HİÇ yapılmaz (yalnız toplu iş).
    · Anahtar yoksa / kapalıysa { disabled: true } (bileşen yalnız Google Haritalar bağlantısı gösterir).
    · Yalnız gerçek mekânlar; demo kayıtlar için Google'a sorgu atılmaz.
    · Önbellek YOK (Google kuralı). Maliyet koruması: lib/usage/counter (önce say, sonra çağır; çalışmazsa durdur)
@@ -21,6 +23,13 @@ export async function GET(req: Request) {
   const e = getEntity(slug);
   if (!e || !e.isReal) return NextResponse.json({ error: "not_found" }, { status: 404, headers: H });
 
+  const part = new URL(req.url).searchParams.get("part") ?? "reviews";
+  if (part === "status") {
+    const s = await storedGooglePlaceId(slug).catch(() => null);
+    return NextResponse.json({ available: !!s && "id" in s }, { headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" } });
+  }
+  if (part !== "reviews" && part !== "photos") return NextResponse.json({ error: "bad_part" }, { status: 400, headers: H });
+
   /* Arama motoru ve otomasyon botları ücretli çağrı tetiklemez. */
   if (BOT.test(req.headers.get("user-agent") ?? "")) return NextResponse.json({ disabled: true }, { headers: H });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "anon";
@@ -30,7 +39,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });
   }
 
-  const r = await fetchGooglePlace(slug);
+  const r = await fetchGooglePlace(slug, fetch, part);
   switch (r.state) {
     case "ok": return NextResponse.json(r.data, { headers: H });
     case "disabled": return NextResponse.json({ disabled: true }, { headers: H });

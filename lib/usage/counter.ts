@@ -16,13 +16,15 @@ export interface Budget { monthly: number; daily: number }
    · Text Search Pro (id, displayName, location, formattedAddress)      → 5.000/ay ücretsiz, sonra $32/1.000
    · Place Details Enterprise (nationalPhoneNumber, websiteUri)          → 1.000/ay ücretsiz, sonra $20/1.000
    · Place Details Enterprise + Atmosphere (reviews dahil sayfa isteği)  → 1.000/ay ücretsiz, sonra $25/1.000
+   · Place Details Essentials (yalnız photos alanı)                      → 10.000/ay ücretsiz, sonra $5/1.000
    · Place Details Photos (fotoğraf başına)                              → 1.000/ay ücretsiz, sonra $7/1.000
    Sınırlar ücretsiz kotanın ~%12 altında: Preview payı (%10) eklense de toplam ücretsiz kotayı aşmaz. */
 export const BUDGETS = {
   "google:text_search_pro": { monthly: 4500, daily: 150 },       // eşleştirme araması
   "google:details_enterprise": { monthly: 880, daily: 100 },     // eşleştirme doğrulaması (telefon, web)
-  "google:details_atmosphere": { monthly: 880, daily: 29 },      // sayfa: puan, yorum, saatler
-  "google:photo": { monthly: 880, daily: 29 },                   // sayfa: fotoğraf başına
+  "google:details_atmosphere": { monthly: 880, daily: 29 },      // sayfa, kullanıcı isteyince: puan, yorum, saatler
+  "google:details_essentials": { monthly: 9000, daily: 300 },    // sayfa, kullanıcı isteyince: fotoğraf adları
+  "google:photo": { monthly: 880, daily: 29 },                   // sayfa, kullanıcı isteyince: fotoğraf başına
 } satisfies Record<string, Budget>;
 export type BudgetKey = keyof typeof BUDGETS;
 
