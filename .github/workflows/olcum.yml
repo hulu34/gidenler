@@ -36,6 +36,23 @@ jobs:
         with: { node-version: 22 }
       - run: npm ci --ignore-scripts && npm i --no-save ioredis@5.4.1
       - run: npx tsx ops-src/ops/eszaman.ts
+  eszaman2:
+    if: contains(github.event.head_commit.message, '[eszaman2]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      redis:
+        image: redis:7.4
+        ports: ["6379:6379"]
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: b5809d3e2ae09f05ed445750b51b2364a1ae1d33, fetch-depth: 0 }
+      - uses: actions/checkout@v4
+        with: { path: ops-src }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --ignore-scripts && npm i --no-save ioredis@5.4.1
+      - run: npx tsx ops-src/ops/eszaman2.ts
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
     runs-on: ubuntu-latest
