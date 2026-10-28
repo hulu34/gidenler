@@ -44,7 +44,8 @@ await p.$eval("#videolar", (e) => e.scrollIntoView({ block: "center" })); await 
 await shot(p, "02-ciya-masaustu-videolar");
 ok("sayfa açılışında YouTube/Instagram/TikTok isteği yok", !out.thirdParty.ciya_masaustu_acilis.some((h) => /youtube|ytimg|instagram|cdninstagram|tiktok/.test(h) && !/i\.ytimg\.com/.test(h)));
 const urlBefore = p.url();
-await vids[0].click(); await sleep(3500);
+const ytCard = await byText(p, "#videolar button", "YouTube");
+await (ytCard.asElement() ?? vids[0]).click(); await sleep(3500);
 ok("video tıklanınca oynatıcı Gidenler içinde açılır", !!(await p.$("[role=dialog] iframe[src*='youtube-nocookie.com/embed/']")));
 await shot(p, "03-ciya-masaustu-oynatici-youtube");
 await p.keyboard.press("ArrowDown"); await sleep(2500);
