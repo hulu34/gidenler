@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { markVisited, setEntityState, useUserData } from "@/lib/store";
 import { useAccountStatus } from "@/lib/community/accountState";
 import { signInWithGoogle } from "@/lib/community/signin";
+import { authErrorMessage } from "@/lib/community/authErrors";
 import { deleteDraft, loadDraft, saveDraft, visitMonths } from "@/lib/drafts";
 import { Button } from "@/components/ui/Button";
 import type { CommercialRelationship, RatingDimensionDef, ReturnIntent } from "@/lib/types";
@@ -68,6 +69,15 @@ export function WriteForm({
       setRestored(d.savedAt);
     } else setMonth(ms[0][0]);
   }, [entitySlug]);
+
+  /* Google girişi hata ile döndüyse (ör. süre aşımı): açıklama + taslağın korunduğu bilgisi; yeniden deneme düğmesi aynı. */
+  useEffect(() => {
+    const q = new URLSearchParams(location.search);
+    if (q.get("giris") !== "hata") return;
+    setError(`${authErrorMessage(q.get("error"))} Yazdıkların bu cihazda taslak olarak korundu.`);
+    q.delete("giris"); q.delete("error");
+    history.replaceState(null, "", location.pathname + (q.toString() ? `?${q}` : "") + location.hash);
+  }, []);
 
   /* Girişliyse: bu mekân için kendi deneyimi var mı? Varsa düzenleme kipinde aç (sunucudaki sürüm geçerli). */
   useEffect(() => {
