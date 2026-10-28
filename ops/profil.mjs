@@ -28,6 +28,7 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
   const ctx = await b.newContext({ ...o, extraHTTPHeaders: HB, ...(o.userAgent ? {} : { userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" }) });
   const hosts = new Map(); ctx.on("request", (r) => { const h = new URL(r.url()).hostname; hosts.set(h, (hosts.get(h) ?? 0) + 1); });
   const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(e.message));
+  const failed = []; p.on("requestfailed", (r) => { const u = new URL(r.url()); failed.push(`${u.hostname}${u.pathname.slice(0, 40)} ${r.failure()?.errorText ?? ""}`); });
   await p.goto(`https://${HOST}/mekan/${SLUG}/`, { waitUntil: "networkidle" }); await p.waitForTimeout(1500);
   await shot(p, `${dev}-1-ilk`);
   const t = await p.evaluate(() => document.body.innerText.replace(/\s+/g, " "));
@@ -62,6 +63,7 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
   const resv = await p.locator("#genel").innerText();
   ok(`${dev}: rezervasyon bloğu iletişimle (ortaklık iddiası yok)`, /Ara|Web sitesi/.test(resv) && !/Masa ayırt/.test(resv));
   ok(`${dev}: sayfa hatası yok`, errs.length === 0, errs.join(" | ").slice(0, 200));
+  if (failed.length) console.log(`  ${dev} başarısız istekler: ${[...new Set(failed)].slice(0, 8).join(" · ")}`);
   if (dev === "masaustu") {
     await p.goto(`https://${HOST}/yaz/${SLUG}/`, { waitUntil: "networkidle" });
     const w = await p.evaluate(() => document.body.innerText.replace(/\s+/g, " "));
