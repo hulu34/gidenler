@@ -3,8 +3,8 @@
 import type { VenuePhoto } from "@/lib/types";
 
 /* Görüntüleyicinin ortak fotoğraf biçimi: her fotoğraf KAYNAĞIYLA taşınır, kaynak ekranda her zaman yazılır. */
-export type PhotoSource = "gidenler" | "isletme" | "commons" | "google";
-export type PhotoCat = "yemek" | "ic" | "dis" | "menu" | "diger";
+export type PhotoSource = "gidenler" | "isletme" | "commons" | "google" | "demo";
+export type PhotoCat = "yemek" | "icecek" | "ic" | "dis" | "menu" | "diger";
 export interface ViewPhoto {
   src: string; alt: string; source: PhotoSource; category: PhotoCat;
   author?: string; authorUri?: string; authorPhoto?: string; license?: string; sourceUrl?: string; w?: number; h?: number;
@@ -14,8 +14,8 @@ export interface ViewPhoto {
   flagUri?: string;
 }
 
-export const CAT_LABEL: Record<PhotoCat, string> = { yemek: "Yemekler", ic: "İç mekân", dis: "Dış cephe", menu: "Menü", diger: "Diğer" };
-export const SOURCE_LABEL: Record<PhotoSource, string> = { gidenler: "Gidenler kullanıcısı", isletme: "İşletme", commons: "Açık lisans · Wikimedia Commons", google: "Google Maps" };
+export const CAT_LABEL: Record<PhotoCat, string> = { yemek: "Yemekler", icecek: "İçecekler", ic: "İç mekân", dis: "Dış cephe", menu: "Menü", diger: "Diğer" };
+export const SOURCE_LABEL: Record<PhotoSource, string> = { gidenler: "Gidenler kullanıcısı", isletme: "İşletme", commons: "Açık lisans · Wikimedia Commons", google: "Google Maps", demo: "Temsili görsel — demo" };
 
 /** Wikimedia Commons küçük resimleri boyut adımlarıyla sunulur (…/1280px-Dosya.jpg): tarayıcı ekrana uygun olanı seçer.
     Kapak fotoğrafı ilk ekranda olduğu için tam boy yerine ekran genişliğine yakın sürüm iner (LCP). */
@@ -28,8 +28,8 @@ export function responsive(p: ViewPhoto, sizes: string): { srcSet?: string; size
 
 export function fromVenuePhotos(list: VenuePhoto[] = []): ViewPhoto[] {
   return list.map((p) => ({
-    src: p.src, alt: p.alt, category: p.category === "icecek" ? "diger" : p.category,
-    source: p.addedBy === "commons" ? "commons" : p.addedBy === "işletme" ? "isletme" : "gidenler",
-    author: p.credit, license: p.license, sourceUrl: p.sourceUrl, srcSet: p.srcSet, full: p.full,
+    src: p.src, alt: p.alt, category: p.category,
+    source: p.addedBy === "commons" ? "commons" : p.addedBy === "işletme" ? "isletme" : p.addedBy === "demo" ? "demo" : "gidenler",
+    author: p.credit, license: p.license, sourceUrl: p.sourceUrl, srcSet: p.srcSet, full: p.full, w: p.w, h: p.h,
   }));
 }

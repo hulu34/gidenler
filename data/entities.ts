@@ -2,6 +2,8 @@ import type { Entity } from "@/lib/types";
 import { universeEntities } from "@/data/universe";
 import { realEntities } from "@/data/real";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { DEMO_PHOTOS } from "@/data/demoPhotos";
+import { DEMO_PROFILES } from "@/data/demoProfiles";
 
 /**
  * DEMO VERİ. Buradaki işletmelerin hiçbiri gerçek değildir; isimler,
@@ -107,7 +109,7 @@ const baseEntities: Entity[] = [
 export { DEMO_VISIBLE };
 
 /** El yapımı altın kayıtlar + deterministik evren (demo) + gerçek mekânlar (OSM). */
-export const allEntities: Entity[] = [...baseEntities.map((e) => ({ tier: "A" as const, ...e })), ...universeEntities, ...realEntities];
+export const allEntities: Entity[] = [...baseEntities.map((e) => ({ tier: "A" as const, ...e, ...(DEMO_PHOTOS[e.slug] ? { photos: DEMO_PHOTOS[e.slug] } : {}), ...(DEMO_PROFILES[e.slug] ? { priceBands: DEMO_PROFILES[e.slug].priceBands } : {}) })), ...universeEntities, ...realEntities];
 /** Uygulamanın gördüğü liste — tek doğruluk kaynağı. */
 export const entities: Entity[] = DEMO_VISIBLE ? allEntities : allEntities.filter((e) => !e.isDemo);
 const bySlug = new Map(entities.map((e) => [e.slug, e]));

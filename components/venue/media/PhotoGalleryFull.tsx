@@ -16,7 +16,7 @@ import { GoogleMapsText } from "./GoogleAttribution";
    ────────────────────────────────────────────────────────────────────────── */
 
 type Tab = "all" | PhotoCat | "google";
-const CATS: PhotoCat[] = ["yemek", "ic", "dis", "menu", "diger"];
+const CATS: PhotoCat[] = ["yemek", "icecek", "ic", "dis", "menu", "diger"];
 
 export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean }) {
   const own = useMemo(() => fromVenuePhotos(photos), [photos]);

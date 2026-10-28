@@ -26,7 +26,7 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
         referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
       <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-baseline gap-1.5 truncate bg-gradient-to-t from-black/75 to-transparent px-2 pb-1 pt-6 text-left text-[11px] text-white">
-        {p.source === "google" ? <><GoogleMapsText tone="white" /><span className="truncate opacity-90">· {p.author}</span></> : <>{p.author}{p.license ? ` · ${p.license}` : ""}</>}
+        {p.source === "google" ? <><GoogleMapsText tone="white" /><span className="truncate opacity-90">· {p.author}</span></> : <>{p.source === "demo" ? "Temsili görsel — demo · " : ""}{p.author}{p.license ? ` · ${p.license}` : ""}</>}
       </span>
     </button>
   );
@@ -148,7 +148,7 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
       {/* atıf satırı: yüklenirken ve sonra aynı yükseklik (sayfa kayması yok) */}
       <div className={`mt-2 flex flex-wrap items-center justify-between gap-2 text-[11.5px] text-ink-3 ${google ? "min-h-[34px] sm:min-h-[18px]" : ""}`}>
         <span>
-          {own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
+          {own.some((p) => p.source === "demo") ? <>Temsili görseller — demo: mekânın kendi fotoğrafları değildir; özgür lisanslı, künyesi her karede yazılı. </> : own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
           {hasGoogle && <>Google fotoğrafları sahiplerine aittir; büyütünce sahibi ve Google Haritalar bağlantısı görünür.</>}
         </span>
       </div>

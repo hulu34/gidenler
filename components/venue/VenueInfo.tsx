@@ -27,7 +27,7 @@ export function VenueInfo({ entity }: { entity: Entity }) {
     <span key="b" className="flex flex-col gap-0.5 tnum">
       {b.lunch && <span><span className="mr-1.5 text-ink-3">Öğle</span>{fmtBand(b.lunch)}</span>}
       {b.dinner && <span><span className="mr-1.5 text-ink-3">Akşam</span>{fmtBand(b.dinner)}</span>}
-      {b.basis === "demo" && <span className="text-[11px] text-ink-3">demo kayıt: fiyat seviyesinden türetildi</span>}
+      {b.basis === "demo" && <span className="text-[11px] text-ink-3">demo kayıt: örnek bütçe</span>}
       {b.basis === "deneyim" && <span className="text-[11px] text-ink-3">gidenlerin beyanlarından</span>}
     </span>
   )]);

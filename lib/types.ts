@@ -180,7 +180,10 @@ export interface VenuePhoto {
   /** Kendi alan adımızdan sunulan boyut adımları (srcset) ve tam ekran için kırpılmamış sürüm. */
   srcSet?: string;
   full?: string;
-  addedBy: "işletme" | "kullanıcı" | "commons";
+  /** "demo": yatırımcı demosunda temsili görsel (mekânın kendisi değil) */
+  addedBy: "işletme" | "kullanıcı" | "commons" | "demo";
+  w?: number;
+  h?: number;
 }
 
 export interface EntityImage {

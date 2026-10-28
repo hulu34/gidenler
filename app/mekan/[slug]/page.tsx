@@ -23,6 +23,9 @@ import { googleUsable, placeReviews, videoCounts } from "@/lib/live";
 import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
+import { PhotoGalleryFull } from "@/components/venue/media/PhotoGalleryFull";
+import { demoProfileOf } from "@/data/demoProfiles";
+import { DemoMenu, DemoOverview, DemoScoreStrip } from "@/components/demo/DemoProfile";
 import { parseVideoUrl } from "@/lib/media/embed";
 import { mapLinks } from "@/lib/venue";
 import { nf, score1 } from "@/lib/format";
@@ -134,7 +137,16 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const oneLine = blurbs[entity.id] ?? I.aiSummary?.lines[0] ?? (scored ? talkInsight(cardOf(entity), I) : undefined);
   const expertIds = expertExperiences.map((e) => e.id);
   const expertAuthors = Array.from(new Map(expertExperiences.map((e) => [e.author.id, e])).values());
-  const sections: TopicSection[] = [
+  /* Yatırımcı demosu: kurgusal tanıtım + örnek menü + temsili görsel/klip olan profiller farklı sekmelerle açılır */
+  const dp = entity.isDemo && scored ? demoProfileOf(entity.slug) : undefined;
+  const sections: TopicSection[] = dp ? [
+    { id: "genel", label: "Genel bakış" },
+    { id: "menu", label: "Menü" },
+    { id: "fotograflar", label: "Fotoğraflar" },
+    { id: "videolar", label: "Videolar" },
+    { id: "deneyimler", label: "Deneyimler" },
+    { id: "puanlar", label: "Puan ve trend" },
+  ] : [
     ...(canReserve(entity) ? [{ id: "bilgi", label: "Bilgi" }] : []),
     { id: "deneyimler", label: "Deneyimler" },
     ...(scored && I.aiSummary ? [{ id: "ozet", label: "Özet" }] : []),
@@ -201,11 +213,21 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
         {scored ? (
           <div className="flex flex-col gap-3">
+            {dp ? (
+              <>
+                <p className="prose-exp max-w-[62ch] text-[17px] leading-[1.45] text-ink">{dp.intro.slice(0, dp.intro.indexOf(". ") + 1)} <span className="text-ink-3">{dp.cuisine}.</span></p>
+                <DemoScoreStrip intel={I} sources={I.externalSignals} />
+                {c.mode === "standard" && <HeroMatch entityId={entity.id} />}
+              </>
+            ) : (
+              <>
             <div className="flex flex-wrap items-end gap-x-8 gap-y-3">
               <ScoreNumber score={I.overallScore!} size="xl" label trend={{ direction: dir, delta: dir === "flat" ? undefined : I.scoreTrend.delta }} />
               {c.mode === "standard" && <HeroMatch entityId={entity.id} />}
             </div>
             {oneLine && <p className="prose-exp max-w-[60ch] text-[17px] leading-[1.45] text-ink">{oneLine}</p>}
+              </>
+            )}
             {c.mode === "standard" && (
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-3">
                 <EntityActions entityId={entity.id} entitySlug={entity.slug} entityName={entity.name} variant="compact" via="topic-hero" />
@@ -224,8 +246,19 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
       {(entity.isReal || entity.photos?.length) && <PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} />}
 
-      {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda) ═══════════ */}
-      {scored && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
+      {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda); demo profilde grafikler sonra ═══════════ */}
+      {scored && !dp && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
+
+      {dp && <TopicNav sections={sections} />}
+      {dp && (
+        <section id="genel" aria-labelledby="h-genel" className="scroll-mt-28 pt-8 sm:scroll-mt-32">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
+            <h2 id="h-genel" className="text-[13px] font-bold uppercase tracking-[0.2em]">Genel bakış</h2>
+            <p className="max-w-[48ch] text-[12px] text-ink-3">Kurgusal demo mekân: tanıtım, fiyatlar ve görseller örnektir.</p>
+          </div>
+          <div className="mt-5"><DemoOverview p={dp} /></div>
+        </section>
+      )}
 
       {/* ═══════════ BİLGİ & REZERVASYON — Tabelog'un mağaza bilgisi + boş yer takvimi ═══════════ */}
       {canReserve(entity) && (
@@ -238,16 +271,36 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </section>
       )}
 
+      {dp && (
+        <>
+          <section id="menu" aria-labelledby="h-menu" className="scroll-mt-28 mt-12 sm:scroll-mt-32">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
+              <h2 id="h-menu" className="text-[13px] font-bold uppercase tracking-[0.2em]">Menü <span className="tnum font-semibold text-ink-3">{dp.menu.reduce((n, g) => n + g.items.length, 0)}</span></h2>
+              <p className="max-w-[48ch] text-[12px] text-ink-3">Örnek menü ve fiyatlar</p>
+            </div>
+            <div className="mt-4"><DemoMenu p={dp} /></div>
+          </section>
+          <section id="fotograflar" aria-labelledby="h-fotograflar" className="scroll-mt-28 mt-12 sm:scroll-mt-32">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
+              <h2 id="h-fotograflar" className="text-[13px] font-bold uppercase tracking-[0.2em]">Fotoğraflar <span className="tnum font-semibold text-ink-3">{entity.photos?.length ?? 0}</span></h2>
+              <p className="max-w-[56ch] text-[12px] text-ink-3">Temsili görsel — demo: mekânın kendi fotoğrafları değildir. Özgür lisanslı; yazar ve lisans her karede, kaynağı büyütünce.</p>
+            </div>
+            <div className="mt-4"><PhotoGalleryFull slug={entity.slug} name={entity.name} photos={entity.photos} google={false} /></div>
+          </section>
+          <VideoRail slug={entity.slug} name={entity.name} demo={dp.videos.map((v) => ({ ...v, platform: "demo" as const }))} />
+        </>
+      )}
+
       {/* Google: puan, fotoğraf, saatler, yorumlar — temel bilgilerin hemen altında, ekrana girince yüklenir */}
       {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} google={google} /></div>}
 
       {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
-      <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />
+      {!dp && <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />}
 
       {entity.isReal && <DataCompleteness c={completenessOf(entity, { googleMatched: google, videos: videos[entity.slug] ?? 0 })} slug={entity.slug} google={google} />}
 
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
-      <TopicNav sections={sections} />
+      {!dp && <TopicNav sections={sections} />}
 
       {/* ═══════════ 1 · DENEYİMLER — insanlar ne diyor? Kahraman burası. ═══════════ */}
       <section id="deneyimler" className="scroll-mt-28 pt-8 sm:scroll-mt-32" aria-labelledby="h-deneyimler">
@@ -268,6 +321,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           )}
         </div>
       </section>
+
+      {dp && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
 
       {/* ═══════════ 2 · ÖZET — kanıta dayalı kısa sentez ═══════════ */}
       {scored && I.aiSummary && (
@@ -295,7 +350,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {scored && (
         <section id="puanlar" className="scroll-mt-28 mt-12 sm:scroll-mt-32" aria-labelledby="h-puanlar">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
-            <h2 id="h-puanlar" className="text-[13px] font-bold uppercase tracking-[0.2em]">Puanlar</h2>
+            <h2 id="h-puanlar" className="text-[13px] font-bold uppercase tracking-[0.2em]">{dp ? "Puan ve trend" : "Puanlar"}</h2>
             <p className="max-w-[48ch] text-[12px] text-ink-3">Renk kaliteyi, ok yönü, güven ne kadar emin olduğumuzu söyler.</p>
           </div>
           <div className="mt-5"><ScoreBlock intel={I} /></div>
