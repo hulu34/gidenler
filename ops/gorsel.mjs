@@ -131,7 +131,11 @@ for (const [k, host] of [["once", OLD], ["sonra", PRE]]) {
       const a = res.lhr.audits;
       runs.push({ perf: Math.round(res.lhr.categories.performance.score * 100), a11y: Math.round(res.lhr.categories.accessibility.score * 100),
         lcp: Math.round(a["largest-contentful-paint"].numericValue), cls: +a["cumulative-layout-shift"].numericValue.toFixed(3),
-        tbt: Math.round(a["total-blocking-time"].numericValue), kb: Math.round(a["total-byte-weight"].numericValue / 1024) });
+        tbt: Math.round(a["total-blocking-time"].numericValue), kb: Math.round(a["total-byte-weight"].numericValue / 1024),
+        /* LCP öğesi ve aşamaları (TTFB / yükleme gecikmesi / yükleme süresi / çizim gecikmesi) */
+        lcpEl: (() => { const n = a["largest-contentful-paint-element"]?.details?.items?.[0]?.items?.[0]?.node; return n ? `${n.nodeLabel ?? ""}`.slice(0, 40) + " <" + (n.snippet ?? "").split(" ")[0].replace("<", "") + ">" : null; })(),
+        phases: Object.fromEntries((a["largest-contentful-paint-element"]?.details?.items?.[1]?.items ?? []).map((x) => [x.phase, Math.round(x.timing)])),
+        fcp: Math.round(a["first-contentful-paint"].numericValue) });
       await page.close();
     }
     const first = runs[0], med = (m) => [...runs.map((x) => x[m])].sort((x, y) => x - y)[1];
@@ -142,5 +146,6 @@ await b2.disconnect(); await chrome.kill();
 
 writeFileSync("out/gorsel/sonuc.json", JSON.stringify(out, null, 1));
 console.table(Object.fromEntries(Object.entries(out.lighthouse).map(([k, v]) => [k, { "perf(ilk)": v.ilk.perf, "LCP ms(ilk)": v.ilk.lcp, "KB(ilk)": v.ilk.kb, "erişilebilirlik": v.ilk.a11y, "CLS(ort)": v.ortanca.cls, "TBT ms(ort)": v.ortanca.tbt, "perf(ort)": v.ortanca.perf }])));
+for (const [k, v] of Object.entries(out.lighthouse)) console.log("LCP", k, "· öğe:", v.ilk.lcpEl, "· FCP", v.ilk.fcp, "· aşamalar:", JSON.stringify(v.ilk.phases));
 console.log("Açılışta üçüncü taraf alan adı sayısı:", JSON.stringify(Object.fromEntries(Object.entries(out.thirdParty).map(([k, v]) => [k, v.length]))));
 process.exit(Object.values(out.checks).every(Boolean) ? 0 : 1);
