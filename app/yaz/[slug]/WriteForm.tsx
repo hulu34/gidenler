@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { markExperienced, useUserData } from "@/lib/store";
+import { useEffect, useState } from "react";
+import { markVisited, setEntityState, useUserData } from "@/lib/store";
+import { useAccountStatus } from "@/lib/community/accountState";
+import { signInWithGoogle } from "@/lib/community/signin";
+import { deleteDraft, loadDraft, saveDraft, visitMonths } from "@/lib/drafts";
 import { Button } from "@/components/ui/Button";
-import type { CommercialRelationship, RatingDimensionDef, ReturnIntent, VerificationMethod } from "@/lib/types";
-
-const AYLAR = ["ocak","şubat","mart","nisan","mayıs","haziran","temmuz","ağustos","eylül","ekim","kasım","aralık"];
+import type { CommercialRelationship, RatingDimensionDef, ReturnIntent } from "@/lib/types";
 
 const RELATIONSHIPS: Array<{ key: CommercialRelationship; label: string; hint?: string }> = [
   { key: "none", label: "Kendi ödediğim normal ziyaret" },
@@ -16,22 +17,21 @@ const RELATIONSHIPS: Array<{ key: CommercialRelationship; label: string; hint?: 
   { key: "owner_related", label: "İşletmeyle bağım var" },
 ];
 
-const VERIFY: Array<{ key: VerificationMethod; label: string }> = [
-  { key: "fis", label: "Fiş / adisyon" } as never,
-  { key: "rezervasyon", label: "Rezervasyon" },
-  { key: "bilet", label: "Bilet" },
-  { key: "konum", label: "Konum" },
-  { key: "sonra", label: "Daha sonra doğrularım" },
-];
-
 /**
  * DENEYİM YAZMA — arz tarafı burada oluşur.
  * Tasarım kuralı: METİN merkezde, puanlar yardımcı yapısal veri,
  * doğrulama güven, şeffaflık dürüstlük. 25 soruluk form DEĞİL.
+ * YAYINLAMA: gerçek mekânda, Google ile giriş yapmış kullanıcı Neon'a yayınlar (/api/reviews); mekân başına tek
+ * deneyim — varsa form onu düzenleme kipinde açar. Girişsizken ve bağlantı koptuğunda metin bu cihazda TASLAK
+ * olarak korunur (lib/drafts.ts). Ziyaret doğrulaması yok: hiçbir ekran "doğrulandı" demez.
  */
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+type Sent = "saved" | "unsaved" | "published" | "pending" | "updated" | "deleted";
+interface Mine { id: string; body: string; visitedOn: string; overall: number; ratings: Record<string, number>; returnIntent: string | null; disclosure: string; status: string }
 export function WriteForm({
-  entityName, entitySlug, entityId, categoryLabel, district, dimensions, returnQuestion, regulated,
+  entityName, entitySlug, entityId, categoryLabel, district, dimensions, returnQuestion, regulated, isReal = false,
 }: {
+  isReal?: boolean;
   entityName: string;
   entityId?: string;
   entitySlug: string;
@@ -42,62 +42,119 @@ export function WriteForm({
   regulated: boolean;
 }) {
   const [body, setBody] = useState("");
-  const [month, setMonth] = useState("2026-08");
+  const [month, setMonth] = useState("");
   const [ratings, setRatings] = useState<Record<string, number>>({});
   const [ret, setRet] = useState<ReturnIntent | null>(null);
-  const [verify, setVerify] = useState<VerificationMethod | null>(null);
   const [rel, setRel] = useState<CommercialRelationship>("none");
-  const [sent, setSent] = useState(false);
+  const [overall, setOverall] = useState<number | null>(null);
+  const [sent, setSent] = useState<Sent | null>(null);
+  const [mine, setMine] = useState<Mine | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const account = useAccountStatus();
+  const canPublish = isReal && account === "in";
+  const [restored, setRestored] = useState<string | null>(null);
+  /* Ay listesi tarayıcıda, bugünün tarihinden kurulur (sayfa önceden derlendiği için sunucuda kurulursa eskir). */
+  const [months, setMonths] = useState<Array<[string, string]>>([]);
 
-  const months = useMemo(() => {
-    const out: Array<[string, string]> = [];
-    const now = new Date(2026, 7, 31);
-    for (let i = 0; i < 24; i++) {
-      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
-      out.push([key, `${AYLAR[d.getMonth()]} ${d.getFullYear()}`]);
+  useEffect(() => {
+    const ms = visitMonths();
+    setMonths(ms);
+    const d = loadDraft(entitySlug);
+    if (d) {
+      setBody(d.body); setRatings(d.ratings ?? {}); setRet(d.returnIntent ?? null); setRel(d.relationship ?? "none"); setOverall(d.overall ?? null);
+      setMonth(ms.some(([k]) => k === d.month) ? d.month : ms[0][0]);
+      setRestored(d.savedAt);
+    } else setMonth(ms[0][0]);
+  }, [entitySlug]);
+
+  /* Girişliyse: bu mekân için kendi deneyimi var mı? Varsa düzenleme kipinde aç (sunucudaki sürüm geçerli). */
+  useEffect(() => {
+    if (!canPublish) return;
+    let alive = true;
+    fetch(`${BASE}/api/me/reviews/?slug=${encodeURIComponent(entitySlug)}`, { cache: "no-store", credentials: "same-origin" })
+      .then((r) => (r.ok ? r.json() : null)).then((j: { reviews?: Mine[] } | null) => {
+        const r = j?.reviews?.[0];
+        if (!alive || !r) return;
+        setMine(r); setBody(r.body); setRatings(r.ratings ?? {}); setOverall(r.overall > 0 ? r.overall : null);
+        setRet((r.returnIntent as ReturnIntent) ?? null); setRel((r.disclosure as CommercialRelationship) ?? "none");
+        const m = r.visitedOn.slice(0, 7); setMonths((ms) => (ms.some(([k]) => k === m) ? ms : [...ms, [m, m]])); setMonth(m); setRestored(null);
+      }).catch(() => null);
+    return () => { alive = false; };
+  }, [canPublish, entitySlug]);
+
+  const payload = () => ({ body, visitMonth: month, overall: regulated ? null : overall, ratings: regulated ? {} : ratings, returnIntent: ret, disclosure: rel });
+  const keepDraft = () => saveDraft(entitySlug, { body, month, ratings, returnIntent: ret, relationship: rel, overall });
+
+  async function publish() {
+    setBusy(true); setError(null);
+    const url = mine ? `${BASE}/api/reviews/${mine.id}/` : `${BASE}/api/reviews/`;
+    const r = await fetch(url, { method: mine ? "PATCH" : "POST", credentials: "same-origin", headers: { "content-type": "application/json" },
+      body: JSON.stringify(mine ? payload() : { slug: entitySlug, ...payload() }) }).catch(() => null);
+    const j = r ? await r.json().catch(() => null) as { status?: string; message?: string; error?: string; id?: string } | null : null;
+    setBusy(false);
+    if (!r) { keepDraft(); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
+    if (r.ok) {
+      deleteDraft(entitySlug);
+      if (entityId) setEntityState(entityId, "visited", "write");
+      setSent(mine ? "updated" : j?.status === "pending" ? "pending" : "published"); window.scrollTo({ top: 0 }); return;
     }
-    return out;
-  }, []);
+    if (r.status === 401) { keepDraft(); setError("Oturumun kapanmış. Yazdıkların taslak olarak saklandı; yeniden giriş yapıp yayınla."); return; }
+    if (r.status === 409 && j?.error === "exists") { setError(j.message ?? "Bu mekân için zaten bir deneyimin var."); location.reload(); return; }
+    if (r.status >= 500) keepDraft();
+    setError(j?.message ?? "Gönderilemedi; yeniden dene.");
+  }
+
+  async function remove() {
+    if (!mine) return;
+    setBusy(true); setError(null);
+    const r = await fetch(`${BASE}/api/reviews/${mine.id}/`, { method: "DELETE", credentials: "same-origin" }).catch(() => null);
+    setBusy(false);
+    if (r?.ok) { deleteDraft(entitySlug); setSent("deleted"); window.scrollTo({ top: 0 }); return; }
+    const j = r ? await r.json().catch(() => null) as { message?: string } | null : null;
+    setError(j?.message ?? "Silinemedi (bağlantı sorunu); yeniden dene.");
+  }
 
   const rated = Object.keys(ratings).length;
-  const canSend = body.trim().length >= 40 && ret !== null;
+  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy;
   const userData = useUserData();
   const quick = entityId ? userData.reactions.find((r) => r.entityId === entityId) : undefined;
   const steps: Array<[string, boolean]> = [
     ["Ne yaşadın", body.trim().length >= 40],
+    ...(regulated ? [] : [["Genel puan", overall !== null] as [string, boolean]]),
     ["Boyutlar", rated >= Math.min(3, dimensions.length)],
     ["Ne zaman", !!month],
     ["Tekrar", ret !== null],
-    ["Doğrulama", verify !== null],
     ["Şeffaflık", true],
   ];
   const doneCount = steps.filter((x) => x[1]).length;
 
   if (sent) {
+    const live = sent === "published" || sent === "updated";
+    const TITLE: Record<Sent, [string, string, string]> = {
+      published: ["Deneyimin yayınlandı", "Teşekkürler; bir sonraki gidecek kişinin kararını kolaylaştırdın.", `${entityName} sayfasında "Gidenler deneyimleri" bölümünde görünüyor. Adın "Ad S." biçiminde gösterilir; ziyaretin doğrulanmamış olarak işaretlidir. Profilinden istediğin zaman düzenleyip silebilirsin.`],
+      updated: ["Değişiklikler kaydedildi", "Deneyimin güncellendi.", `${entityName} sayfasındaki deneyimin yenilendi. Önceki sürüm yalnız moderasyon kaydında tutulur.`],
+      pending: ["Deneyimin incelemede", "Kısa bir kontrolden sonra yayına girecek.", "Benzer bir metin başka bir mekân için de yazıldığından deneyimin moderasyon incelemesine alındı. Profilinden durumunu görebilirsin."],
+      deleted: ["Deneyimin silindi", "Artık kimse göremez.", "Deneyimin sayfadan ve profilinden kaldırıldı. İstersen 24 saat sonra bu mekân için yeniden yazabilirsin."],
+      saved: ["Taslağın bu cihazda saklandı", "Yayınlamak için hesap gerekiyor.", `${entityName} için yazdıkların yalnız bu tarayıcıda taslak olarak duruyor; kimse göremez ve Gidenler puanına girmez.`],
+      unsaved: ["Taslak saklanamadı", "Tarayıcının yerel kaydı kapalı.", "Yazdıkların saklanamadı (ör. gizli pencere). Metni kopyalayıp başka bir yerde tutabilirsin."],
+    };
+    const [label, head, text] = TITLE[sent];
     return (
       <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
         <div className="flex flex-col items-start gap-5 pt-16 sm:pt-24">
-          <span className="label">Deneyimin Gidenler&apos;e eklendi</span>
-          <h1 className="max-w-[18ch] text-[clamp(2rem,6vw,3rem)] font-extrabold leading-none tracking-[-0.045em]">
-            Bu deneyim gelecekteki kararları daha iyi hale getirecek.
-          </h1>
-          <p className="prose-exp max-w-[52ch] text-ink-2">
-            {entityName} için yazdıkların artık topluluğun deneyim havuzunda.{" "}
-            {verify && verify !== "sonra"
-              ? "Ziyaret doğrulaman alındı; deneyimin daha güvenilir sayılır."
-              : "Ziyaretini doğrularsan deneyimin daha güvenilir sayılır; profilinden sonradan da ekleyebilirsin."}
-            {" "}Puana ne kadar ve nasıl yansıyacağı tek bir deneyimle belirlenmez.
-          </p>
-          <p className="text-[13px] font-semibold text-ink-2">Her deneyim, bir sonraki kararı daha iyi yapar.</p>
+          <span className="label">{label}</span>
+          <h1 className="max-w-[18ch] text-[clamp(2rem,6vw,3rem)] font-extrabold leading-none tracking-[-0.045em]">{head}</h1>
+          <p className="prose-exp max-w-[52ch] text-ink-2">{text}</p>
           <div className="flex flex-wrap gap-3">
-            <Link href={`/mekan/${entitySlug}/`}>
-              <Button variant="primary">Sayfaya dön</Button>
+            <Link href={live ? `/mekan/${entitySlug}/#deneyimler` : `/mekan/${entitySlug}/`}>
+              <Button variant="primary">{live ? "Deneyimimi sayfada gör" : "Sayfaya dön"}</Button>
             </Link>
             <Link href="/benim/"><Button variant="ghost">Benim Gidenler&apos;im</Button></Link>
           </div>
           <p className="mt-6 border-t border-line pt-3 text-[12px] text-ink-3">
-            Prototip: yazdıkların kaydedilmez, sayfayı yenileyince sıfırlanır.
+            Her deneyim &ldquo;doğrulanmamış ziyaret&rdquo; olarak görünür; ziyaret doğrulama ayrı bir adımdır ve henüz açık değil.
           </p>
         </div>
       </div>
@@ -118,6 +175,22 @@ export function WriteForm({
         <p className="text-[13px] text-ink-2">
           {entityName} · {categoryLabel}{district ? ` · ${district}` : ""}
         </p>
+        <p role="note" className="max-w-[62ch] border-l-2 border-accent pl-3 text-[13px] leading-relaxed text-ink-2">
+          {canPublish ? (mine
+            ? <>Bu mekân için deneyimin {mine.status === "pending" ? "incelemede" : mine.status === "hidden" ? "moderasyonla gizlendi" : "yayında"}. Yeni bir ziyaret yaptıysan ayını güncelle; mekân başına tek deneyim tutulur.</>
+            : <>Deneyimin Gidenler hesabınla yayınlanır; adın &ldquo;Ad S.&rdquo; biçiminde görünür. Ziyaretin <strong className="font-semibold">doğrulanmamış</strong> olarak işaretlenir.</>)
+            : isReal && account === "anon"
+              ? <>Yayınlamak için Google ile giriş yap. Yazdıkların o sırada <strong className="font-semibold">bu cihazda taslak</strong> olarak korunur.</>
+              : <>Yazdıkların <strong className="font-semibold">yalnız bu cihazda taslak</strong> olarak saklanır; kimse göremez, puana girmez.</>}
+        </p>
+        {restored && (
+          <p className="flex flex-wrap items-center gap-x-3 text-[12.5px] text-ink-3">
+            <span>Kaydettiğin taslak yüklendi.</span>
+            <button type="button" className="underline decoration-line-2 underline-offset-4 hover:text-ink" onClick={() => {
+              deleteDraft(entitySlug); setRestored(null); setBody(""); setRatings({}); setRet(null); setRel("none");
+            }}>Taslağı sil</button>
+          </p>
+        )}
       </header>
 
       {/* ── ilerleme — mobilde yön duygusu ── */}
@@ -169,6 +242,7 @@ export function WriteForm({
             aria-label="Ziyaret ayı"
             className="h-10 border-b-2 border-line-2 bg-transparent px-1 text-[17px] font-semibold outline-none focus:border-accent"
           >
+            {months.length === 0 && <option value="">…</option>}
             {months.map(([k, l]) => (<option key={k} value={k}>{l}</option>))}
           </select>
           <p className="max-w-[46ch] text-[12px] text-ink-3">
@@ -177,6 +251,24 @@ export function WriteForm({
           </p>
         </div>
       </section>
+
+      {/* ── B2. GENEL PUAN — zorunlu (düzenlenmiş kategoride yok); 1–10, Gidenler ölçeği ── */}
+      {!regulated && (
+        <section className="mt-10">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+            <h2 className="label">Genel puanın</h2>
+            <span className="text-[12px] text-ink-3">Zorunlu · 1 (çok kötü) – 10 (olağanüstü)</span>
+          </div>
+          <div role="radiogroup" aria-label="Genel puan" className="mt-3 flex flex-wrap gap-1.5">
+            {Array.from({ length: 10 }, (_, i) => i + 1).map((v) => (
+              <button key={v} type="button" role="radio" aria-checked={overall === v} aria-label={`Genel puan: ${v}`} onClick={() => setOverall(v)}
+                className={`tnum h-11 w-11 border text-[15px] font-bold ${overall === v ? "border-accent bg-accent text-on-accent" : overall && v < overall ? "border-line-2 bg-accent-soft text-ink-2" : "border-line-2 text-ink-3 hover:border-ink hover:text-ink"}`}>
+                {v}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── C. BOYUT PUANLARI — şemadan gelir ── */}
       {!regulated && (
@@ -245,30 +337,12 @@ export function WriteForm({
         </div>
       </section>
 
-      {/* ── E. ZİYARET DOĞRULAMA ── */}
+      {/* ── E. ZİYARET DOĞRULAMA — henüz açık değil; kullanıcı seçimi "doğrulandı" SAYILMAZ ── */}
       <section className="mt-10">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-          <h2 className="label">Gittiğini doğrula</h2>
-          <span className="text-[12px] text-ink-3">İsteğe bağlı ama puanını ağırlaştırır</span>
-        </div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {VERIFY.map((v) => (
-            <button
-              key={v.key}
-              type="button"
-              onClick={() => setVerify(v.key)}
-              aria-pressed={verify === v.key}
-              className={`h-10 border px-4 text-[14px] font-semibold ${
-                verify === v.key ? "border-accent bg-accent text-on-accent" : "border-line-2 hover:border-ink"
-              }`}
-            >
-              {v.label}
-            </button>
-          ))}
-        </div>
-        <p className="mt-3 max-w-[62ch] text-[12px] leading-relaxed text-ink-3">
-          Yüklediğin belge <strong className="font-semibold text-ink-2">yayımlanmaz</strong>;
-          yalnızca &quot;gittiği doğrulandı&quot; rozeti üretir ve hemen ardından silinir.
+        <h2 className="label">Ziyaret doğrulama</h2>
+        <p className="mt-2 max-w-[62ch] text-[13px] leading-relaxed text-ink-2">
+          Henüz açık değil. Doğrulama; Gidenler rezervasyonu, işletmenin &ldquo;geldi&rdquo; işareti ya da fiş gibi
+          bağımsız kanıtlarla yapılacak. O zamana kadar bütün deneyimler <strong className="font-semibold">doğrulanmamış ziyaret</strong> olarak görünür.
         </p>
       </section>
 
@@ -307,15 +381,45 @@ export function WriteForm({
       </section>
 
       {/* ── gönder ── */}
-      <div className="sticky bottom-0 mt-12 flex flex-wrap items-center gap-4 border-t-2 border-line-strong bg-paper/95 py-4 backdrop-blur-sm">
-        <Button variant="primary" disabled={!canSend} onClick={() => { if (entityId) markExperienced(entityId); setSent(true); }}>
-          Deneyimi yayınla
-        </Button>
-        <p className="text-[12px] text-ink-3">
-          {canSend
-            ? "Yayınlandıktan sonra düzenleyebilirsin; silinen deneyimler moderasyon kaydında kalır."
-            : "En az bir paragraf yaz ve tekrar gitme sorusunu yanıtla."}
-        </p>
+      <div className="sticky bottom-0 mt-12 flex flex-col gap-2 border-t-2 border-line-strong bg-paper/95 py-4 backdrop-blur-sm">
+        {error && <p role="alert" className="text-[13px] font-semibold text-neg-ink">{error}</p>}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          {canPublish ? (
+            <Button variant="primary" disabled={!canSend} onClick={publish}>{busy ? "Gönderiliyor…" : mine ? "Değişiklikleri kaydet" : "Deneyimi yayınla"}</Button>
+          ) : isReal && account === "anon" ? (
+            <Button variant="primary" disabled={!canSend} onClick={async () => {
+              const ok = keepDraft();
+              if (!ok) { setError("Tarayıcının yerel kaydı kapalı; giriş dönüşünde taslak korunamaz. Metni kopyala, sonra giriş yap."); return; }
+              setBusy(true);
+              if (!(await signInWithGoogle(`/yaz/${entitySlug}/`))) { setBusy(false); setError("Giriş başlatılamadı; taslağın bu cihazda saklandı."); }
+            }}>{busy ? "Yönlendiriliyor…" : "Google ile giriş yap ve yayınla"}</Button>
+          ) : (
+            <Button variant="primary" disabled={!canSend} onClick={() => {
+              const ok = keepDraft();
+              if (ok && entityId) markVisited(entityId);
+              setSent(ok ? "saved" : "unsaved");
+              window.scrollTo({ top: 0 });
+            }}>Taslak olarak sakla</Button>
+          )}
+          <p className="text-[12px] text-ink-3">
+            {!canSend && !busy
+              ? `En az bir paragraf yaz${regulated ? "" : ", genel puanı seç"} ve tekrar gitme sorusunu yanıtla.`
+              : canPublish ? "Yayınladıktan sonra profilinden düzenleyip silebilirsin." : isReal && account === "anon" ? "Girişten sonra bu sayfaya dönersin; taslağın seni bekler." : "Taslak yalnız bu tarayıcıda durur."}
+          </p>
+        </div>
+        {mine && (
+          <div className="flex flex-wrap items-center gap-3 text-[13px]">
+            {!confirmDelete ? (
+              <button type="button" onClick={() => setConfirmDelete(true)} className="font-semibold text-neg-ink underline decoration-line-2 underline-offset-4">Deneyimi sil</button>
+            ) : (
+              <>
+                <span className="text-ink-2">Deneyimin sayfadan kaldırılsın mı?</span>
+                <button type="button" disabled={busy} onClick={remove} className="h-9 rounded-[3px] bg-neg px-3 font-semibold text-paper">Evet, sil</button>
+                <button type="button" onClick={() => setConfirmDelete(false)} className="h-9 rounded-[3px] border border-line-2 px-3 font-semibold">Vazgeç</button>
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

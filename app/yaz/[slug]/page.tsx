@@ -34,6 +34,7 @@ export default async function WritePage({ params }: { params: Promise<{ slug: st
       dimensions={schema.dimensions}
       returnQuestion={schema.returnQuestion}
       regulated={category.compliance.mode === "regulated"}
+      isReal={!!entity.isReal}
     />
   );
 }

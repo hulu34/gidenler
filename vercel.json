@@ -1,4 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "regions": ["fra1"]
+  "regions": ["fra1"],
+  "git": {
+    "deploymentEnabled": {
+      "**": false,
+      "feature/investor-v1": true,
+      "demo/yatirimci": true,
+      "feature/faz1-data": true,
+      "perf/**": true,
+      "gorsel/**": true
+    }
+  }
 }

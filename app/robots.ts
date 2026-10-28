@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
   /* Yatırımcı demosu: tümü kapalı. */
   if (DEMO_VISIBLE) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/demo/", "/gidenler-100/onizleme/", "/isletme/"] },
+    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/demo/", "/gidenler-100/onizleme/", "/isletme/", "/yonetim/"] },
     host: "https://www.gidenler.com",
   };
 }

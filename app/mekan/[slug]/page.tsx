@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { preload } from "react-dom";
 import type { Metadata } from "next";
 
 import { entities } from "@/data/entities";
@@ -17,6 +18,13 @@ import { ReservationBlock } from "@/components/reservation/ReservationBlock";
 import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
+import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
+import { googleUsable, placeReviews, videoCounts } from "@/lib/live";
+import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
+import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
+import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
+import { parseVideoUrl } from "@/lib/media/embed";
+import { mapLinks } from "@/lib/venue";
 import { nf, score1 } from "@/lib/format";
 
 import { Badge } from "@/components/ui/Badge";
@@ -93,6 +101,18 @@ const ADS: Record<string, { title: string; body: string; domain: string }> = {
   },
 };
 
+/** Kayıtlı (statik) sosyal medya bağlantılarından oynatılabilir videolar: YouTube / Instagram Reel / TikTok. */
+function railFromMedia(media: import("@/lib/types").MediaLink[] = []): RailVideo[] {
+  return media.flatMap((m) => {
+    const v = parseVideoUrl(m.url) ?? (m.platform === "youtube" && m.videoId ? parseVideoUrl(`https://www.youtube.com/watch?v=${m.videoId}`) : null);
+    return v ? [{ id: `static:${v.platform}:${v.id}`, platform: v.platform, externalId: v.id, url: v.url, credit: m.author ?? null }] : [];
+  });
+}
+
+/* Statik sayfa + saatlik yenileme; Google eşleşmesi ve videolar veritabanından (lib/live), yönetimdeki
+   değişiklik ilgili önbelleği hemen geçersiz kılar — yeni onaylanan restoran için yeniden derleme gerekmez. */
+export const revalidate = 3600;
+
 const PRICE = (n?: 1 | 2 | 3 | 4) => (n ? "₺".repeat(n) : undefined);
 
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -122,11 +142,18 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ...(scored && I.timeline.length > 1 ? [{ id: "trend", label: "Trend" }] : []),
     ...(expertAuthors.length ? [{ id: "uzmanlar", label: "Uzmanlar" }] : []),
     ...(I.positiveThemes.length || I.negativeThemes.length ? [{ id: "analiz", label: "Analiz" }] : []),
-    ...(entity.isReal || entity.photos?.length ? [{ id: "gor", label: "Gör" }] : []),
+    ...(entity.isReal ? [{ id: "gor", label: "Konum" }] : []),
     { id: "sosyal", label: "Sosyal" },
   ];
   const compareWith = nearby.find((n) => n.score !== null && n.category.id === category.id)
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
+
+  /* Kapak fotoğrafı ilk ekrandaki en büyük öğe: HTML ayrıştırılırken hemen, mozaikle aynı boyut kuralıyla iner */
+  const [usable, videos, realReviews] = entity.isReal ? await Promise.all([googleUsable(), videoCounts(), placeReviews(entity.slug)]) : [[], {} as Record<string, number>, []];
+  const google = !!entity.isReal && usable.includes(entity.slug);
+  const cover = entity.photos?.[0];
+  if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
+    imageSizes: `(max-width: 640px) 60vw, ${(entity.photos?.length ?? 0) === 1 ? "1180px" : "590px"}` });
 
   return (
     <div className="mx-auto max-w-[1180px] overflow-x-clip px-5 pb-32 sm:px-7 sm:pb-24">
@@ -156,6 +183,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             {entity.isReal && <span className="ml-1 rounded-full border border-pos px-2 py-px text-[9.5px] tracking-[0.14em] text-pos-ink">Gerçek mekân</span>}
           </p>
           <VenueBadges entityId={entity.id} />
+          {google && <GoogleRatingBadge slug={entity.slug} google />}
           {scored && pulse && (
             <div className="mt-2 flex items-center gap-3 text-[12px] text-ink-3">
               <Pulse pulse={pulse} width={180} height={34} draw />
@@ -187,11 +215,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             )}
           </div>
         ) : entity.isReal && c.showScores ? (
-          <RealVenueNotice entity={entity} />
+          <RealVenueNotice entity={entity} reviewCount={realReviews.length} />
         ) : (
           <ComplianceNotice policy={c} noun={category.noun} />
         )}
       </header>
+
+      {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
+      {(entity.isReal || entity.photos?.length) && <PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} />}
 
       {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda) ═══════════ */}
       {scored && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
@@ -207,7 +238,13 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </section>
       )}
 
-      {entity.isReal && <DataCompleteness c={completenessOf(entity)} />}
+      {/* Google: puan, fotoğraf, saatler, yorumlar — temel bilgilerin hemen altında, ekrana girince yüklenir */}
+      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} google={google} /></div>}
+
+      {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
+      <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />
+
+      {entity.isReal && <DataCompleteness c={completenessOf(entity, { googleMatched: google, videos: videos[entity.slug] ?? 0 })} slug={entity.slug} google={google} />}
 
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
       <TopicNav sections={sections} />
@@ -215,11 +252,13 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ═══════════ 1 · DENEYİMLER — insanlar ne diyor? Kahraman burası. ═══════════ */}
       <section id="deneyimler" className="scroll-mt-28 pt-8 sm:scroll-mt-32" aria-labelledby="h-deneyimler">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
-          <h2 id="h-deneyimler" className="text-[13px] font-bold uppercase tracking-[0.2em]">İnsanlar ne diyor?</h2>
-          <p className="max-w-[48ch] text-[12px] text-ink-3">{scored ? `${nf(I.experienceCount)} deneyim · ${Math.round(I.verifiedRatio * 100)}% doğrulanmış ziyaret` : entity.isReal ? "Gerçek mekân · deneyimler gelince burada" : "Bu kategoride puan üretilmez; deneyimler nötr anlatıdır."}</p>
+          <h2 id="h-deneyimler" className="text-[13px] font-bold uppercase tracking-[0.2em]">{entity.isReal ? "Gidenler deneyimleri" : "İnsanlar ne diyor?"}</h2>
+          <p className="max-w-[48ch] text-[12px] text-ink-3">{entity.isReal ? `${realReviews.length ? `${nf(realReviews.length)} deneyim · ` : ""}Gidenler üyelerinin kendi deneyimleri; Google yorumları ayrı bölümde ve Gidenler puanına girmez.` : scored ? `${nf(I.experienceCount)} deneyim · ${Math.round(I.verifiedRatio * 100)}% doğrulanmış ziyaret` : "Bu kategoride puan üretilmez; deneyimler nötr anlatıdır."}</p>
         </div>
         <div className="mt-4">
-          {experiences.length > 0 ? (
+          {entity.isReal ? (
+            <GidenlerExperiences slug={entity.slug} name={entity.name} reviews={realReviews} dimensions={schema.dimensions} showScores={c.showScores} />
+          ) : experiences.length > 0 ? (
             <ExperienceFeed experiences={experiences} expertIds={expertIds} schema={schema} showScores={c.showScores} entitySlug={entity.slug} total={I.experienceCount} />
           ) : (
             <p className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line py-4 text-[13.5px] text-ink-2">

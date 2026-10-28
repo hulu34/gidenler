@@ -56,6 +56,10 @@ export function getAuth(): Auth | null {
       },
     },
     session: { expiresIn: 60 * 60 * 24 * 30, updateAge: 60 * 60 * 24 },
+    /* Google erişim/yenileme anahtarları kimlik dışında kullanılmaz; veritabanında şifreli tutulur. */
+    account: { encryptOAuthTokens: true },
+    /* Google girişinde bir hata olursa (iptal, süre aşımı, tarayıcı değişimi) kullanıcı açıklamalı sayfaya döner. */
+    onAPIError: { errorURL: "/benim/?giris=hata" },
     advanced: { useSecureCookies: process.env.NODE_ENV === "production" },
     plugins: [nextCookies()],
   }) as unknown as Auth;
@@ -69,6 +73,18 @@ export async function currentUser(headers: Headers) {
   try {
     const s = await a.api.getSession({ headers });
     return s?.user ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Sunucu tarafında oturum + kullanıcı (yoksa null). Oturum kimliği "bu cihaz"ı tanımak için. */
+export async function currentSession(headers: Headers) {
+  const a = getAuth();
+  if (!a) return null;
+  try {
+    const s = await a.api.getSession({ headers });
+    return s?.user && s.session ? { user: s.user, session: s.session } : null;
   } catch {
     return null;
   }

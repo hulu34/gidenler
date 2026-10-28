@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { clearAccountStates } from "@/lib/store";
+import { signInWithGoogle } from "@/lib/community/signin";
+import { authErrorMessage } from "@/lib/community/authErrors";
+import { isAccountEntity, readPending, replayPending, signOutFlow, writePending } from "@/lib/community/sync";
 
 /* HESAP KUTUSU — Google ile giriş (Better Auth). Sunucuda kimlik yapılandırılmamışsa (503) ya da
-   statik sitede (404) hiç görünmez; site bugünkü gibi hesapsız çalışır. Faz 0'da yalnız giriş/çıkış;
-   Gittim, listeler ve deneyimlerin hesaba bağlanması Faz 1. */
+   statik sitede (404) hiç görünmez; site bugünkü gibi hesapsız çalışır. Girişte Kaydet / Gitmek istiyorum /
+   Gittim hesapta saklanır (bkz. AccountSync); çıkışta bu cihazdan silinir. Deneyim yayınlama sonraki aşama. */
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 type S = { state: "loading" | "off" | "out" } | { state: "in"; name: string; email: string; image?: string | null };
@@ -13,6 +17,15 @@ export function AccountBox() {
   const [s, setS] = useState<S>({ state: "loading" });
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+
+  /* Google girişinden hata ile dönüldüyse (?giris=hata&error=…) açıklama göster; adresi temizle. */
+  useEffect(() => {
+    const q = new URLSearchParams(location.search);
+    if (q.get("giris") !== "hata" && !q.get("error")) return;
+    setErr(authErrorMessage(q.get("error")));
+    q.delete("giris"); q.delete("error");
+    history.replaceState(null, "", location.pathname + (q.toString() ? `?${q}` : "") + location.hash);
+  }, []);
 
   useEffect(() => {
     let alive = true;
@@ -29,21 +42,21 @@ export function AccountBox() {
 
   async function signIn() {
     setBusy(true); setErr(null);
-    try {
-      const r = await fetch(`${BASE}/api/auth/sign-in/social/`, {
-        method: "POST", headers: { "content-type": "application/json" }, credentials: "same-origin",
-        body: JSON.stringify({ provider: "google", callbackURL: `${location.origin}${BASE}/benim/` }),
-      });
-      const j = await r.json().catch(() => null) as { url?: string } | null;
-      if (j?.url) location.href = j.url; else { setErr("Giriş başlatılamadı."); setBusy(false); }
-    } catch { setErr("Giriş başlatılamadı."); setBusy(false); }
+    if (!(await signInWithGoogle("/benim/"))) { setErr("Giriş başlatılamadı."); setBusy(false); }
   }
   async function signOut() {
-    setBusy(true);
-    await fetch(`${BASE}/api/auth/sign-out/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: "{}" }).catch(() => null);
-    location.reload();
+    setBusy(true); setErr(null);
+    const post = (body: unknown) => fetch(`${BASE}/api/me/places/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    const r = await signOutFlow({
+      flush: () => replayPending(post, readPending()).then((left) => { writePending(left); return left; }),
+      confirmLoss: (n) => window.confirm(`${n} değişiklik henüz hesabına gönderilemedi (bağlantı sorunu). Çıkış yaparsan bu cihazdan silinir. Yine de çıkılsın mı?`),
+      signOut: () => fetch(`${BASE}/api/auth/sign-out/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: "{}" }).then((x) => x.ok).catch(() => false),
+      clearLocal: () => { clearAccountStates(isAccountEntity); writePending({}); },
+    });
+    if (r === "signed_out") { location.reload(); return; }
+    setBusy(false);
+    if (r === "failed") setErr("Çıkış yapılamadı (bağlantı sorunu). Hâlâ girişlisin; verilerin bu cihazda duruyor, yeniden dene.");
   }
-
   if (s.state === "loading" || s.state === "off") return null;
   return (
     <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border border-line-2 px-4 py-3">
@@ -52,13 +65,14 @@ export function AccountBox() {
           <span className="flex items-center gap-3 text-[14px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             {s.image && <img src={s.image} alt="" width={28} height={28} className="h-7 w-7 rounded-full" referrerPolicy="no-referrer" />}
-            <span><b>{s.name}</b> <span className="text-ink-3">· {s.email}</span></span>
+            <span><b>{s.name}</b> <span className="text-ink-3">· {s.email}</span>
+              <span className="block text-[12.5px] text-ink-3">Kaydet, Gitmek istiyorum ve Gittim seçimlerin hesabında saklanıyor.</span></span>
           </span>
           <button type="button" onClick={signOut} disabled={busy} className="h-10 rounded-[3px] border border-line-2 px-4 text-[13px] font-semibold hover:border-ink">Çıkış yap</button>
         </>
       ) : (
         <>
-          <span className="text-[14px] text-ink-2">Kaydettiklerin, Gittim listen ve deneyimlerin hesabında saklansın.</span>
+          <span className="text-[14px] text-ink-2">Kaydettiklerin, Gitmek istediklerin ve Gittim listen hesabında saklansın; her cihazda seninle olsun.</span>
           <button type="button" onClick={signIn} disabled={busy} className="h-11 rounded-[3px] bg-ink px-5 text-[14px] font-semibold text-paper hover:bg-accent">
             {busy ? "Yönlendiriliyor…" : "Google ile giriş yap"}
           </button>

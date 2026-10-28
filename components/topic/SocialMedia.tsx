@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { MediaLink } from "@/lib/types";
+import { parseVideoUrl } from "@/lib/media/embed";
 
 /* ──────────────────────────────────────────────────────────────────────────
    SOSYAL MEDYADA — mekânla ilgili Instagram / X / YouTube / TikTok içerikleri.
@@ -57,14 +58,15 @@ function LinkCard({ m }: { m: MediaLink }) {
 }
 
 export function SocialMedia({ name, district, media = [] }: { name: string; district?: string; media?: MediaLink[] }) {
-  const videos = media.filter((m) => m.platform === "youtube" && m.videoId);
-  const links = media.filter((m) => !(m.platform === "youtube" && m.videoId));
+  /* oynatılabilir videolar (YouTube / Reels / TikTok) yukarıdaki Videolar şeridinde; burada yalnız diğer gönderiler */
+  const videos: MediaLink[] = [];
+  const links = media.filter((m) => !parseVideoUrl(m.url) && !(m.platform === "youtube" && m.videoId));
   const q = [name, district].filter(Boolean).join(" ");
   return (
     <section id="sosyal" className="scroll-mt-28 mt-12 sm:scroll-mt-32" aria-labelledby="h-sosyal">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
         <h2 id="h-sosyal" className="text-[13px] font-bold uppercase tracking-[0.2em]">Sosyal medyada</h2>
-        <p className="max-w-[52ch] text-[12px] text-ink-3">Videolar burada oynar; diğer gönderiler kendi platformunda açılır. Bağlantıları işletme, deneyim yazarları ya da editör ekler.</p>
+        <p className="max-w-[52ch] text-[12px] text-ink-3">Videolar yukarıda, sitede oynar; diğer gönderiler kendi platformunda açılır. Bağlantıları işletme, deneyim yazarları ya da editör ekler.</p>
       </div>
       {videos.length > 0 && <div className="mt-5 grid gap-6 md:grid-cols-2">{videos.map((m) => <YouTubeCard key={m.url} m={m} />)}</div>}
       {links.length > 0 && <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{links.map((m) => <LinkCard key={m.url} m={m} />)}</div>}

@@ -11,6 +11,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { DemoBoot } from "@/components/demo/DemoBoot";
+import { AccountSync } from "@/components/auth/AccountSync";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 export const metadata: Metadata = {
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         )}
         <DemoBoot />
+        {!DEMO_VISIBLE && <AccountSync />}
         <Header />
         <main id="icerik">{children}</main>
         <Footer />

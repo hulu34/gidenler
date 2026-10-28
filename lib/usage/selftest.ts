@@ -17,7 +17,7 @@ export async function redisSelfTest() {
   const checks: Array<{ name: string; ok: boolean; info?: unknown }> = [];
   const ns = redisNs();
   const at = new Date(Date.UTC(2099, 0, 1, 12));
-  const key = "google:details_atmosphere" as const;
+  const key = "google:details_essentials" as const;    // zamanlanmamış kalem: günlük sınır sabit
   const k = periodKeys(key, at);
   const rlKey = `itest-${Date.now()}`;
   const testKeys = [k.month, k.day, `${ns}:rl:${rlKey}`];
@@ -34,7 +34,7 @@ export async function redisSelfTest() {
   try {
     const day = budgetFor(key).daily;
     let granted = 0;
-    for (let i = 0; i < day + 3; i++) if ((await reserve(key, 1, at)).ok) granted++;
+    for (let i = 0; i < day + 3; i++) if ((await reserve(key, 1, at, { durable: false })).ok) granted++;
     checks.push({ name: `günlük sınır tutuyor (${day})`, ok: granted === day, info: granted });
     const [m, d] = await r.mget<(string | null)[]>(k.month, k.day);
     checks.push({ name: "reddedilen istek sayaca yazılmadı", ok: Number(d) === day && Number(m) === day });
