@@ -172,7 +172,7 @@ export interface PriceBands {
 
 export interface VenuePhoto {
   src: string;
-  category: "yemek" | "ic" | "dis" | "menu" | "icecek";
+  category: "yemek" | "ic" | "dis" | "menu" | "icecek" | "diger";
   alt: string;
   credit: string;
   license?: string;

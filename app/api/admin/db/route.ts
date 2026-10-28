@@ -11,6 +11,7 @@ import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
 import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch } from "@/lib/providers/google";
 import { usageSnapshot, spendReport } from "@/lib/usage/counter";
+import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -79,7 +80,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string } = {};
+  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -119,6 +120,16 @@ export async function POST(req: Request) {
       case "google-review": {
         if (body.confirm !== "EVET" || !body.id || !["confirmed", "rejected"].includes(body.decision ?? "")) break;
         return NextResponse.json({ action: "google-review", ...(await reviewGoogleMatch(body.id, body.decision as "confirmed" | "rejected")) }, { headers: H });
+      }
+      case "media-add": {
+        /* Mekâna video bağlantısı (YouTube / Instagram / TikTok). Yalnız kimlik ve atıf saklanır. */
+        if (body.confirm !== "EVET" || !body.slug || !body.url) break;
+        const r = await addPlaceVideo({ slug: body.slug, url: body.url, credit: body.credit, category: body.category });
+        return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "media-remove": {
+        if (body.confirm !== "EVET" || !body.id) break;
+        return NextResponse.json({ action: "media-remove", env: envName(), ...(await removePlaceVideo(body.id)) }, { headers: H });
       }
       case "google-retry": {
         /* Ücretli: eşleşmeyenler için alternatif arama; tek seferde en çok 15 restoran, her biri 30 günde bir kez. */

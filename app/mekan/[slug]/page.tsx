@@ -18,6 +18,9 @@ import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { GooglePlace } from "@/components/venue/GooglePlace";
+import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
+import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
+import { parseVideoUrl } from "@/lib/media/embed";
 import { mapLinks } from "@/lib/venue";
 import { nf, score1 } from "@/lib/format";
 
@@ -95,6 +98,14 @@ const ADS: Record<string, { title: string; body: string; domain: string }> = {
   },
 };
 
+/** Kayıtlı (statik) sosyal medya bağlantılarından oynatılabilir videolar: YouTube / Instagram Reel / TikTok. */
+function railFromMedia(media: import("@/lib/types").MediaLink[] = []): RailVideo[] {
+  return media.flatMap((m) => {
+    const v = parseVideoUrl(m.url) ?? (m.platform === "youtube" && m.videoId ? parseVideoUrl(`https://www.youtube.com/watch?v=${m.videoId}`) : null);
+    return v ? [{ id: `static:${v.platform}:${v.id}`, platform: v.platform, externalId: v.id, url: v.url, credit: m.author ?? null }] : [];
+  });
+}
+
 const PRICE = (n?: 1 | 2 | 3 | 4) => (n ? "₺".repeat(n) : undefined);
 
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -124,7 +135,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ...(scored && I.timeline.length > 1 ? [{ id: "trend", label: "Trend" }] : []),
     ...(expertAuthors.length ? [{ id: "uzmanlar", label: "Uzmanlar" }] : []),
     ...(I.positiveThemes.length || I.negativeThemes.length ? [{ id: "analiz", label: "Analiz" }] : []),
-    ...(entity.isReal || entity.photos?.length ? [{ id: "gor", label: "Gör" }] : []),
+    ...(entity.isReal ? [{ id: "gor", label: "Konum" }] : []),
     { id: "sosyal", label: "Sosyal" },
   ];
   const compareWith = nearby.find((n) => n.score !== null && n.category.id === category.id)
@@ -195,6 +206,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         )}
       </header>
 
+      {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
+      {(entity.isReal || entity.photos?.length) && <PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} isReal={!!entity.isReal} />}
+
       {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda) ═══════════ */}
       {scored && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
 
@@ -211,6 +225,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
       {/* Google: puan, fotoğraf, saatler, yorumlar — temel bilgilerin hemen altında, ekrana girince yüklenir */}
       {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} /></div>}
+
+      {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
+      <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />
 
       {entity.isReal && <DataCompleteness c={completenessOf(entity)} />}
 

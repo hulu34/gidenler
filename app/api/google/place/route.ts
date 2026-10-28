@@ -39,7 +39,8 @@ export async function GET(req: Request) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });
   }
 
-  const r = await fetchGooglePlace(slug, fetch, part);
+  const q = new URL(req.url).searchParams;
+  const r = await fetchGooglePlace(slug, fetch, part, { from: Number(q.get("from")) || 0, n: Number(q.get("n")) || undefined });
   switch (r.state) {
     case "ok": return NextResponse.json(r.data, { headers: H });
     case "disabled": return NextResponse.json({ disabled: true }, { headers: H });

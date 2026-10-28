@@ -7,7 +7,8 @@
       "feature/investor-v1": true,
       "demo/yatirimci": true,
       "feature/faz1-data": true,
-      "perf/**": true
+      "perf/**": true,
+      "gorsel/**": true
     }
   }
 }

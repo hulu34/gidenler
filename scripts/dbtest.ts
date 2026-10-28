@@ -20,6 +20,8 @@ import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
 import { fetchGooglePlace, googleEnabled, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
 import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/match/score";
+import { parseVideoUrl, embedUrl } from "../lib/media/embed";
+import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/store";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
@@ -293,6 +295,35 @@ async function main() {
   ok("aynı ad, 20 m → otomatik", matchScore(base, { ...base, lng: base.lng + 0.0002 }).decision === "auto");
   ok("farklı ad, 100 m → ret ya da onay", matchScore(base, { name: "Kadıköy Balıkçısı", lat: base.lat + 0.0009, lng: base.lng }).decision !== "auto");
   ok("300 m → ret", matchScore(base, { ...base, lat: base.lat + 0.003 }).decision === "reject");
+
+  console.log("\n6b) Mekân videoları (resmî gömme, yalnız kimlik)");
+  const yt = parseVideoUrl("https://youtube.com/shorts/dQw4w9WgXcQ?si=x"), yt2 = parseVideoUrl("https://youtu.be/dQw4w9WgXcQ");
+  const ig = parseVideoUrl("https://www.instagram.com/someone/reel/C1a2B3c4D5e/?igsh=x"), tt = parseVideoUrl("https://www.tiktok.com/@kisi/video/7301234567890123456?lang=tr");
+  ok("bağlantı çözümleme: Shorts, youtu.be, Reel, TikTok", yt?.platform === "youtube" && yt.vertical && yt2?.id === "dQw4w9WgXcQ" && !yt2.vertical
+    && ig?.platform === "instagram" && ig.id === "C1a2B3c4D5e" && tt?.platform === "tiktok" && tt.id === "7301234567890123456", { yt, yt2, ig, tt });
+  ok("tanınmayan bağlantılar reddedilir", !parseVideoUrl("https://example.com/video/1") && !parseVideoUrl("javascript:alert(1)") && !parseVideoUrl("https://www.youtube.com/watch?v=kisa"));
+  ok("gömme adresleri resmî ve çerezsiz YouTube", embedUrl("youtube", "dQw4w9WgXcQ").startsWith("https://www.youtube-nocookie.com/embed/") && embedUrl("tiktok", "1").startsWith("https://www.tiktok.com/player/v1/") && embedUrl("instagram", "x").startsWith("https://www.instagram.com/reel/"));
+  const vslug = realVenueRecords[0].slug;
+  const oe: string[] = [];
+  const oembedFetch = (async (u: string) => { oe.push(String(u)); return String(u).includes("GONE") || String(u).includes("ZZZZZZZZZZZ") ? new Response("", { status: 404 }) : Response.json({ author_name: "Kanal Adı" }); }) as unknown as typeof fetch;
+  const va1 = await addPlaceVideo({ slug: vslug, url: "https://www.youtube.com/shorts/dQw4w9WgXcQ" }, oembedFetch);
+  const va2 = await addPlaceVideo({ slug: vslug, url: "https://youtu.be/dQw4w9WgXcQ" }, oembedFetch);
+  const va3 = await addPlaceVideo({ slug: vslug, url: "https://www.instagram.com/reel/C1a2B3c4D5e/", credit: "@hesap" }, oembedFetch);
+  const va4 = await addPlaceVideo({ slug: vslug, url: "https://www.youtube.com/watch?v=ZZZZZZZZZZZ" }, oembedFetch);
+  const va5 = await addPlaceVideo({ slug: "yok-boyle-mekan", url: "https://youtu.be/dQw4w9WgXcQ" }, oembedFetch);
+  ok("video eklenir; atıf oEmbed'ten (yalnız kimlik + atıf)", va1.ok && va1.created && va1.platform === "youtube", va1);
+  ok("aynı video farklı bağlantı biçimiyle ikinci kayıt olmaz", va2.ok && !va2.created && va1.ok && va2.id === va1.id, va2);
+  ok("Instagram oEmbed'e gidilmez (anahtar ister), elle atıf", va3.ok && !oe.some((u) => u.includes("instagram")), oe);
+  ok("platformda olmayan video reddedilir", !va4.ok && va4.error === "not_found_on_platform");
+  ok("bilinmeyen mekân reddedilir", !va5.ok && va5.error === "no_place");
+  const vl = await listPlaceVideos(vslug);
+  ok("mekânın videoları listelenir (atıflı)", vl.length === 2 && vl.some((v) => v.credit === "Kanal Adı") && vl.some((v) => v.credit === "@hesap"), vl);
+  const [mi] = await db.select().from(schema.mediaItems).where(eq(schema.mediaItems.externalId, "C1a2B3c4D5e"));
+  ok("saklama sınıfı id_only, kaynak editor, onaylı", mi?.storageClass === "id_only" && mi.source === "editor" && mi.status === "approved" && mi.type === "embed");
+  await removePlaceVideo(va3.ok ? va3.id : "");
+  const vl2 = await listPlaceVideos(vslug);
+  const [still] = await db.select().from(schema.mediaItems).where(eq(schema.mediaItems.externalId, "C1a2B3c4D5e"));
+  ok("kaldırma silmez, yayından alır", vl2.length === 1 && still?.status === "removed");
 
   console.log("\n7) Ziyaret doğrulama (kod tek başına kanıt değil)");
   const t = "2026-10-20T19:00:00Z", rv = "2026-10-21T10:00:00Z";

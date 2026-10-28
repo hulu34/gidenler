@@ -1,32 +1,28 @@
 import type { Entity } from "@/lib/types";
 import { mapLinks } from "@/lib/venue";
-import { PhotoGallery } from "./PhotoGallery";
 import { OsmMapUnlessGoogle } from "./GooglePlace";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   GÖR — fotoğraflar · harita · 360° sokak görünümü · Instagram · Google (anahtar varsa).
+   KONUM — harita · 360° sokak görünümü · yol tarifi · Instagram. (Fotoğraflar artık başlığın altındaki kapak
+   mozaiğinde ve /fotograflar sayfasında; bkz. components/venue/media.)
    Yalnızca izinli kaynaklar: işletme/kullanıcı yüklemesi, açık lisanslı (Wikimedia Commons),
    Google Places (canlı, atıflı, saklanmadan), haritalar. Stok ya da izinsiz kopya görsel yok.
    Demo kayıtta gösterilmez: konumu temsilîdir, gerçek bir sokağa bağlanmamalı.
    ────────────────────────────────────────────────────────────────────────── */
 
 export function VenueVisuals({ entity }: { entity: Entity }) {
-  if (!entity.isReal && !entity.photos?.length) return null;
+  if (!entity.isReal) return null;
   const m = mapLinks(entity);
   const ig = entity.contact?.instagram;
   return (
     <section id="gor" aria-labelledby="h-gor" className="scroll-mt-28 mt-12 sm:scroll-mt-32">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
-        <h2 id="h-gor" className="text-[13px] font-bold uppercase tracking-[0.2em]">Gör</h2>
-        <p className="max-w-[52ch] text-[12px] text-ink-3">Fotoğraflar, 360° sokak görünümü ve konum. Yalnızca izinli kaynaklar; her görselin sahibi yazılı.</p>
+        <h2 id="h-gor" className="text-[13px] font-bold uppercase tracking-[0.2em]">Konum</h2>
+        <p className="max-w-[52ch] text-[12px] text-ink-3">Harita, 360° sokak görünümü ve yol tarifi.</p>
       </div>
 
-      <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-        <div className="flex flex-col gap-4">
-          <PhotoGallery photos={entity.photos ?? []} name={entity.name} />
-        </div>
-
-        <div className="flex flex-col gap-3">
+      <div className="mt-5">
+        <div className="flex max-w-[720px] flex-col gap-3">
           {m && (
             <>
               <OsmMapUnlessGoogle>

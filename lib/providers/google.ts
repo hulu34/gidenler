@@ -18,6 +18,8 @@ import { matchScore, brandKey, branchDiff, BRANCH_WORDS, houseNoConflict, preDec
 
 const API = "https://places.googleapis.com/v1";
 const PHOTO_LIMIT = 2;
+/** Tek istekte en çok kaç Google fotoğrafı (her biri ayrı Photo SKU isteği; bütçe sayacından geçer). */
+const PHOTO_PAGE_MAX = 5;
 
 export type GoogleStatus =
   | { state: "disabled" }
@@ -28,7 +30,9 @@ export type GoogleStatus =
 
 export interface GooglePlaceView {
   rating?: number; count?: number; mapsUri?: string; hours: string[];
-  photos: Array<{ src: string; author: string; authorUri?: string }>;
+  photos: Array<{ src: string; author: string; authorUri?: string; authorPhoto?: string; w?: number; h?: number }>;
+  /** Google'ın bu mekân için verdiği fotoğraf referansı sayısı (en çok 10). */
+  photoTotal?: number;
   reviews: Array<{ author: string; authorUri?: string; authorPhoto?: string; rating: number; text: string; when: string; uri?: string }>;
 }
 
@@ -258,7 +262,7 @@ export async function retryGoogleNoMatch(limit: number, f: typeof fetch = fetch)
 /** Canlı Google bilgisi — YALNIZ kullanıcı istediğinde, yalnız kayıtlı (onaylı/otomatik) kimlik için. Hiçbir şey saklanmaz.
     · part "reviews": tek Place Details Enterprise + Atmosphere isteği → puan, sayı, saatler, en çok 5 yorum.
     · part "photos":  Place Details Essentials (yalnız photos) + en çok 2 Place Photo isteği. */
-export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, part: "reviews" | "photos" = "reviews"): Promise<GoogleStatus> {
+export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, part: "reviews" | "photos" = "reviews", page: { from?: number; n?: number } = {}): Promise<GoogleStatus> {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key || !googleEnabled()) return { state: "disabled" };
   const s = await storedGooglePlaceId(slug).catch(() => null);
@@ -271,18 +275,21 @@ export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, pa
       if (!e.ok) return { state: "limit", reason: e.reason };
       const d = await f(url, { headers: headers(key, "photos"), cache: "no-store", signal: AbortSignal.timeout(6000) });
       if (!d.ok) return { state: "error" };
-      const p = await d.json() as { photos?: Array<{ name: string; authorAttributions?: Array<{ displayName: string; uri?: string }> }> };
+      const p = await d.json() as { photos?: Array<{ name: string; widthPx?: number; heightPx?: number; authorAttributions?: Array<{ displayName: string; uri?: string; photoUri?: string }> }> };
       const photos: GooglePlaceView["photos"] = [];
-      for (const ph of (p.photos ?? []).slice(0, PHOTO_LIMIT)) {
+      /* Google en çok 10 fotoğraf referansı verir; galeri sayfa sayfa ister (her fotoğraf ayrı Photo isteği) */
+      const from = Math.max(0, Math.min(9, page.from ?? 0)), n = Math.max(1, Math.min(PHOTO_PAGE_MAX, page.n ?? PHOTO_LIMIT));
+      for (const ph of (p.photos ?? []).slice(from, from + n)) {
         const ok = await reserve("google:photo");
         if (!ok.ok) break;                                  // foto bütçesi bitti
         const m = await f(`${API}/${ph.name}/media?maxWidthPx=800&skipHttpRedirect=true`, {
           headers: { "X-Goog-Api-Key": key }, cache: "no-store", signal: AbortSignal.timeout(6000),
         }).catch(() => null);
         const j = m && m.ok ? await m.json() as { photoUri?: string } : null;
-        if (j?.photoUri) photos.push({ src: j.photoUri, author: ph.authorAttributions?.[0]?.displayName ?? "Google kullanıcısı", authorUri: ph.authorAttributions?.[0]?.uri });
+        const a = ph.authorAttributions?.[0];
+        if (j?.photoUri) photos.push({ src: j.photoUri, author: a?.displayName ?? "Google kullanıcısı", authorUri: a?.uri, authorPhoto: a?.photoUri, w: ph.widthPx, h: ph.heightPx });
       }
-      return { state: "ok", data: { hours: [], reviews: [], photos } };
+      return { state: "ok", data: { hours: [], reviews: [], photos, photoTotal: (p.photos ?? []).length } };
     }
     const d0 = await reserve("google:details_atmosphere");
     if (!d0.ok) return { state: "limit", reason: d0.reason };
