@@ -17,7 +17,8 @@ env:
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-eremds0e3-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
-  PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
+  PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
+  PROFIL_HOST: gidenler-c4z17lgy7-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview, kendi Neon dalı)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
@@ -40,6 +41,17 @@ jobs:
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/demo-profil.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEMO_HOST: "demo.gidenler.com", SLUGS: "moda-lokantasi,koz-durum,asma-teras,tarcin-lokantasi,fistik,sedef-kahvalti,ayva-firin-pizza,erguvan-lokantasi,ekin-pide,meyhane-sardunya,iskele-burger,lokanta-sardunya,meyhane-nar" }
+  profil:
+    if: contains(github.event.head_commit.message, '[profil]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/profil.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}", APPLY: "${{ contains(github.event.head_commit.message, '[uygula]') && '1' || '0' }}" }
   adaylar:
     if: contains(github.event.head_commit.message, '[adaylar]')
     runs-on: ubuntu-latest
