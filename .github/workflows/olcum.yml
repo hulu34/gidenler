@@ -16,7 +16,7 @@ concurrency:
 env:
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
-  TEST_HOST: gidenler-rla1pc9bc-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
+  TEST_HOST: gidenler-63pt1v71o-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   olcum:
@@ -181,3 +181,13 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: oynatma-sifreli, path: out/oynatma.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  gview:
+    if: contains(github.event.head_commit.message, '[gview]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/gview.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }

@@ -1,0 +1,21 @@
+/* Aday sürümde otomatik Google görünümü: 1 sayfa görünümü + 1 galeri devamı. Log: yalnız sayılar (Google içeriği yok). */
+const BYPASS = process.env.VERCEL_BYPASS, HOST = process.env.TEST_HOST;
+const H = { "x-vercel-protection-bypass": BYPASS, "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile Safari/604.1" };
+const admin = `https://${HOST}/api/admin/db/`;
+const before = (await (await fetch(`${admin}?rapor=google`, { headers: H })).json()).usage;
+const slugs = (await (await fetch(`${admin}?rapor=google-slug`, { headers: H })).json()).slugs ?? [];
+console.log("Google'lı restoran (veritabanı):", slugs.length);
+const t0 = Date.now();
+const r = await fetch(`https://${HOST}/api/google/place/?slug=agora-meyhanesi-1890-fatih&part=view`, { headers: H });
+const v = await r.json();
+console.log("görünüm:", r.status, `${Date.now() - t0} ms`, JSON.stringify({ puan: typeof v.rating === "number", sayi: typeof v.count === "number", yorum: v.reviews?.length, yorumYazarli: (v.reviews ?? []).filter((x) => x.author && x.authorUri).length, saat: v.hours?.length, foto: v.photos?.length, fotoSahipli: (v.photos ?? []).filter((x) => x.author).length, kalanRef: v.refs?.length, toplamFoto: v.photoTotal, mapsUri: !!v.mapsUri }));
+const m = await fetch(`https://${HOST}/api/google/place/?slug=agora-meyhanesi-1890-fatih&part=media`, { method: "POST", headers: { ...H, "content-type": "application/json" }, body: JSON.stringify({ refs: v.refs ?? [] }) });
+const mj = await m.json();
+console.log("galeri devamı:", m.status, "foto:", mj.photos?.length);
+const bad = await fetch(`https://${HOST}/api/google/place/?slug=agora-meyhanesi-1890-fatih&part=media`, { method: "POST", headers: { ...H, "content-type": "application/json" }, body: JSON.stringify({ refs: [{ name: "places/BASKA/photos/x", author: "y" }] }) });
+console.log("yabancı referans:", bad.status, "foto:", (await bad.json()).photos?.length);
+const held = await fetch(`https://${HOST}/api/google/place/?slug=aga-ocakbasi-beyoglu&part=view`, { headers: H });
+console.log("bekletilen eşleşme:", held.status, JSON.stringify(await held.json()));
+const after = (await (await fetch(`${admin}?rapor=google`, { headers: H })).json());
+const d = Object.fromEntries(Object.keys(after.usage).map((k) => [k.replace("google:", ""), after.usage[k].month - (before[k]?.month ?? 0)]));
+console.log("bu testin Google istekleri:", JSON.stringify(d), "· ay toplamı harcama $", after.spend?.usd);
