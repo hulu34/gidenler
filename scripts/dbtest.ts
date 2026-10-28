@@ -208,6 +208,8 @@ async function main() {
   ok("yalnız Google; şifre girişi kapalı; kullanıcı 'kind'/'handle' alanını kendisi yazamaz", /emailAndPassword: \{ enabled: false \}/.test(authSrc) && /kind: \{[^}]*input: false/.test(authSrc) && /handle: \{[^}]*input: false/.test(authSrc));
   ok("Google anahtarları veritabanında şifreli; giriş hatası açıklamalı sayfaya döner", /encryptOAuthTokens: true/.test(authSrc) && /errorURL: "\/benim\/\?giris=hata"/.test(authSrc));
   ok("güvenlik başlıkları: çerçeveleme yasak, nosniff, referrer, izin politikası", ["X-Frame-Options", "frame-ancestors 'none'", "nosniff", "strict-origin-when-cross-origin", "geolocation=()"].every((h) => nextSrc.includes(h)));
+  const signSrc = readFileSync(new URL("../lib/community/signin.ts", import.meta.url), "utf8"), wfSrc = readFileSync(new URL("../app/yaz/[slug]/WriteForm.tsx", import.meta.url), "utf8");
+  ok("giriş süresi dolarsa aynı sayfaya dönülür, taslak korunur (güvenlik kontrolü gevşetilmeden)", /errorCallbackURL: `\$\{location\.origin\}\$\{BASE\}\$\{returnTo\}/.test(signSrc) && /taslak olarak korundu/.test(wfSrc) && /keepDraft\(\);\s*\n?\s*if \(!ok\)/.test(wfSrc.replace(/const ok = keepDraft\(\);/, "keepDraft();\nif (!ok)")) && !/skipStateCookieCheck/.test(readFileSync(new URL("../lib/auth.ts", import.meta.url), "utf8")));
   ok("giriş hata kodları anlaşılır mesaja çevrilir (state_mismatch dahil)", /uzun süre beklendi/.test(authErrorMessage("state_mismatch")) && /iptal/.test(authErrorMessage("access_denied")) && /Yeniden dene/.test(authErrorMessage("bilinmeyen")));
 
   console.log("\n3e) Aktif cihazlar (oturum listesi ve kapatma)");
