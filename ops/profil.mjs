@@ -1,7 +1,9 @@
 /* Restoran profili V1 · TEST ORTAMI (Preview, kendi Neon dalı). Üretime yazmaz: hedef "preview" değilse durur.
    1) içerik dosyasını yönetim yolundan uygular (yalnız Preview veritabanı) 2) profili okur 3) sayfayı masaüstü + mobilde dener.
    Log yalnız doğru/yanlış ve sayılar. */
-import { readFileSync } from "node:fs";
+import { readFileSync, mkdirSync } from "node:fs";
+const SHOTS = process.env.SHOTS === "1"; if (SHOTS) mkdirSync("out/profil", { recursive: true });
+const shot = async (pg, name, sel) => { if (!SHOTS) return; try { if (sel) await pg.locator(sel).first().screenshot({ path: `out/profil/${name}.png` }); else await pg.screenshot({ path: `out/profil/${name}.png` }); } catch { /* yoksay */ } };
 import { chromium } from "playwright";
 const HOST = process.env.PREVIEW_HOST, SLUG = process.env.SLUG ?? "pandeli-fatih";
 const H = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS };
@@ -27,6 +29,7 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
   const hosts = new Map(); ctx.on("request", (r) => { const h = new URL(r.url()).hostname; hosts.set(h, (hosts.get(h) ?? 0) + 1); });
   const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(e.message));
   await p.goto(`https://${HOST}/mekan/${SLUG}/`, { waitUntil: "networkidle" }); await p.waitForTimeout(1500);
+  await shot(p, `${dev}-1-ilk`);
   const t = await p.evaluate(() => document.body.innerText.replace(/\s+/g, " "));
   const nav = await p.evaluate(() => [...document.querySelectorAll("a[href^='#']")].map((a) => a.textContent.trim()));
   ok(`${dev}: sekmeler`, ["Genel bakış", "Menü", "Fotoğraflar", "Videolar", "Deneyimler"].every((x) => nav.includes(x)), nav.join("|"));
@@ -36,14 +39,18 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
   ok(`${dev}: kurallar ve olanaklar`, t.includes("Evcil hayvan kabul edilmiyor") && t.includes("Yalnız tatlı, çay ve kahve"));
   const menuN = await p.locator("#menu li").count();
   ok(`${dev}: resmî menü (52 kalem), geçerlilik ve fiyat notu`, menuN === 52 && t.includes("01.02.2026 tarihinden itibaren geçerli") && t.includes("fiyat yayımlamıyor"), `${menuN}`);
+  await shot(p, `${dev}-2-genel`, "#genel");
   await p.locator("a[href='#menu']").first().click(); await p.waitForTimeout(800);
+  await shot(p, `${dev}-3-menu`);
   ok(`${dev}: Menü sekmesi menüye götürür`, await p.evaluate(() => { const r = document.getElementById("menu").getBoundingClientRect(); return r.top >= 0 && r.top < innerHeight; }));
   const cards = p.locator("#videolar button"); await p.locator("#videolar").scrollIntoViewIfNeeded().catch(() => {});
   await p.waitForTimeout(800);
   const nv = await cards.count();
   ok(`${dev}: video kartları (4), işbirliği etiketi`, nv === 4 && (await p.locator("#videolar").innerText()).includes("İşbirliği"), `${nv}`);
   if (nv) {
+    await shot(p, `${dev}-4-videolar`, "#videolar");
     await cards.first().click(); await p.waitForTimeout(2500);
+    await shot(p, `${dev}-5-oynatici`);
     const src = await p.locator("[role=dialog] iframe").getAttribute("src").catch(() => null);
     ok(`${dev}: video Gidenler içinde resmî oynatıcıyla açılıyor (indirme yok)`, !!src && /youtube(-nocookie)?\.com\/embed\//.test(src), src ?? "");
     await p.locator("[role=dialog] button[aria-label^='Kapat']").click(); await p.waitForTimeout(500);
@@ -58,6 +65,7 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
   if (dev === "masaustu") {
     await p.goto(`https://${HOST}/yaz/${SLUG}/`, { waitUntil: "networkidle" });
     const w = await p.evaluate(() => document.body.innerText.replace(/\s+/g, " "));
+    await shot(p, "masaustu-6-deneyim-yaz");
     ok("deneyim yazma sayfası açılıyor (yayın için giriş istenir)", /Pandeli/.test(w) && /(Google ile|giriş)/i.test(w));
   }
   console.log(`  ${dev} dış alan adları: ${[...hosts.keys()].filter((h) => h !== HOST).sort().join(", ")}`);
