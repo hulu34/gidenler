@@ -3,9 +3,9 @@ import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* Upstash Redis (REST) — yalnız sunucu. Ortam değişkenleri Vercel entegrasyonundan gelir (KV_REST_API_*). */
 let client: Redis | null | undefined;
-let override: Pick<Redis, "eval" | "get" | "set" | "incr" | "expire" | "mget"> | null = null;
+let override: Pick<Redis, "eval" | "get" | "set" | "incr" | "expire" | "mget" | "ttl"> | null = null;
 
-export type RedisLike = Pick<Redis, "eval" | "get" | "set" | "incr" | "expire" | "mget">;
+export type RedisLike = Pick<Redis, "eval" | "get" | "set" | "incr" | "expire" | "mget" | "ttl">;
 
 export function getRedis(): RedisLike | null {
   if (override) return override;

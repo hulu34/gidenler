@@ -15,7 +15,7 @@ import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
 import { realVenueRecords } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
-import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap, pacedDaily } from "../lib/usage/counter";
+import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap, pacedDaily, googlePause } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
 import { fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, holdGoogleMatches, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
@@ -55,6 +55,7 @@ class FakeRedis {
   async set(k: string, v: unknown) { this.chk(); this.m.set(k, Number(v) || 1); return "OK"; }
   async incr(k: string) { this.chk(); const n = (this.m.get(k) ?? 0) + 1; this.m.set(k, n); return n; }
   async expire() { return 1; }
+  async ttl() { return 900; }
   async mget(...ks: string[]) { this.chk(); return ks.map((k) => (this.m.has(k) ? String(this.m.get(k)) : null)); }
 }
 
@@ -223,6 +224,23 @@ async function main() {
   vCalls.length = 0;
   const vLim = await fetchGoogleView("ciya-sofrasi-kadikoy", viewFetch, 5);
   ok("aylık sınır doluysa sayfa görünümü Google'a istek atmaz (limit)", vLim.state === "limit" && vCalls.length === 0, { vLim, vCalls });
+  /* sigorta: Google 429/403 verirse bütün Google çağrıları durur, sayfa kendi içeriğine düşer */
+  const tripFake = new FakeRedis(); setRedisForTests(tripFake as unknown as RedisLike);
+  let gHits = 0;
+  const quotaFetch = (async () => { gHits++; return new Response("{}", { status: 429 }); }) as unknown as typeof fetch;
+  const t1 = await fetchGoogleView("ciya-sofrasi-kadikoy", quotaFetch, 5);
+  const t2 = await fetchGoogleView("ciya-sofrasi-kadikoy", quotaFetch, 5);
+  const pz = await googlePause();
+  ok("Google 429 → sigorta atar, sonraki görünüm Google'a gitmez (paused)", t1.state === "error" && t2.state === "limit" && t2.reason === "paused" && gHits === 1 && pz?.status === 429, { t1, t2, gHits, pz });
+  const rsP = await reserve("google:text_search_pro");
+  ok("sigorta açıkken eşleştirme araması da durur", !rsP.ok && rsP.reason === "paused", rsP);
+  const mediaFake = new FakeRedis(); setRedisForTests(mediaFake as unknown as RedisLike);
+  const denyMedia = (async () => new Response("{}", { status: 403 })) as unknown as typeof fetch;
+  const mx = await fetchGooglePhotoMedia("ciya-sofrasi-kadikoy", [{ name: "places/GID1/photos/p1", author: "y" }], denyMedia);
+  ok("fotoğrafta 403 (faturalama/anahtar) → sigorta atar", mx.state === "limit" && (await googlePause())?.status === 403, mx);
+  const okFake = new FakeRedis(); setRedisForTests(okFake as unknown as RedisLike);
+  await fetchGoogleView("ciya-sofrasi-kadikoy", (async () => new Response("{}", { status: 500 })) as unknown as typeof fetch, 5);
+  ok("geçici 500 hatası sigortayı atmaz", (await googlePause()) === null);
   setRedisForTests(fake2 as unknown as RedisLike);
   ok("anahtar hiçbir URL'de yok", !keyInUrl);
   ok("kayıtlı eşleşmeden sonra eşleştirme araması yapılmaz", calls.filter((u) => u.endsWith(":searchText")).length === 1);

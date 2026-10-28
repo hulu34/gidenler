@@ -98,7 +98,23 @@ export function periodKeys(key: string, now = new Date()) {
   return { month: `${ns}:usage:${key}:m:${ym}`, day: `${ns}:usage:${key}:d:${ym}${pad(now.getUTCDate())}` };
 }
 
-export type ReserveResult = { ok: true } | { ok: false; reason: "no_redis" | "limit" | "spend_cap" | "error" };
+export type ReserveResult = { ok: true } | { ok: false; reason: "no_redis" | "limit" | "spend_cap" | "paused" | "error" };
+
+/* Sigorta: Google kota/faturalama hatası (429/403) verirse bütün Google çağrıları bir süre durur.
+   Google tarafındaki kotalar bu projede düşürülemiyor; tekrar tekrar başarısız istek atılmasın, site kendi içeriğiyle sürsün. */
+export const PAUSE_SECONDS: Record<number, number> = { 429: 15 * 60, 403: 60 * 60 };
+const pauseKey = () => `${redisNs()}:usage:google:pause`;
+export async function pauseGoogle(status: number) {
+  const ex = PAUSE_SECONDS[status];
+  const r = getRedis();
+  if (!ex || !r) return false;
+  try { await r.set(pauseKey(), String(status), { ex }); return true; } catch { return false; }
+}
+export async function googlePause() {
+  const r = getRedis();
+  if (!r) return null;
+  try { const [v, ttl] = await Promise.all([r.get<string | number>(pauseKey()), r.ttl(pauseKey())]); return v ? { status: Number(v), seconds: ttl } : null; } catch { return null; }
+}
 
 /** `n` adet ücretli çağrı için yer ayırır. ok:false ise çağrı YAPILMAMALI. */
 export async function reserve(key: BudgetKey, n = 1, now = new Date()): Promise<ReserveResult> {
@@ -106,14 +122,13 @@ export async function reserve(key: BudgetKey, n = 1, now = new Date()): Promise<
   if (!r) return { ok: false, reason: "no_redis" };
   const b = budgetFor(key);
   const k = periodKeys(key, now);
-  /* zamanlanmış kalem: bugünkü pay, ay içindeki gerçek harcamadan hesaplanır (okunamazsa çağrı yapılmaz) */
+  /* sigorta + zamanlanmış kalem: bugünkü pay, ay içindeki gerçek harcamadan hesaplanır (okunamazsa çağrı yapılmaz) */
   let daily = b.daily;
-  if (PACED.has(key)) {
-    try {
-      const [m, d] = await r.mget<(string | null)[]>(k.month, k.day);
-      daily = pacedDaily(b.monthly, Number(m ?? 0) - Number(d ?? 0), now);
-    } catch { return { ok: false, reason: "error" }; }
-  }
+  try {
+    const [p, m, d] = await r.mget<(string | null)[]>(pauseKey(), k.month, k.day);
+    if (p) return { ok: false, reason: "paused" };
+    if (PACED.has(key)) daily = pacedDaily(b.monthly, Number(m ?? 0) - Number(d ?? 0), now);
+  } catch { return { ok: false, reason: "error" }; }
   const all = Object.keys(PRICES) as BudgetKey[];
   const keys = [k.month, k.day, ...all.map((x) => periodKeys(x, now).month)];
   const args = [String(b.monthly), String(daily), String(40 * 86400), String(2 * 86400), String(Math.round(usdCap() * 1e6)),

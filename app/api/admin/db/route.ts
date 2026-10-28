@@ -12,7 +12,7 @@ import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
 import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
-import { usageSnapshot, spendReport } from "@/lib/usage/counter";
+import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
@@ -56,7 +56,7 @@ export async function GET(req: Request) {
   if (!allowed(req)) return nf();
   /* ?rapor=google → eşleşme sayıları, onay bekleyenler (yalnız place_id + bizim kayıtlarımız), SKU bazında kullanım */
   if (new URL(req.url).searchParams.get("rapor") === "google") {
-    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot(), spend: await spendReport() }, { headers: H }); }
+    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot(), spend: await spendReport(), pause: await googlePause() }, { headers: H }); }
     catch (e) { return fail(e); }
   }
   /* ?rapor=google-slug → Google içeriği gösterilebilen restoranlar (yalnız okuma; sayfalar lib/live ile dinamik okur) */

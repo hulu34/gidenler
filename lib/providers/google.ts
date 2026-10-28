@@ -2,7 +2,10 @@ import { and, eq, inArray, notInArray, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
 import { places, placeIdentifiers, moderationQueue } from "@/lib/db/schema";
-import { reserve } from "@/lib/usage/counter";
+import { reserve, pauseGoogle } from "@/lib/usage/counter";
+
+/** Google 429/403 döndürdüyse sigortayı atar (bkz. pauseGoogle); diğer hatalarda bir şey yapmaz. */
+const trip = async (res: Response | null) => { if (res && (res.status === 429 || res.status === 403)) await pauseGoogle(res.status); };
 import { getRedis, redisNs } from "@/lib/usage/redis";
 import { matchScore, brandKey, branchDiff, BRANCH_WORDS, houseNoConflict, preDecide, postDecide, type MatchContext } from "@/lib/match/score";
 
@@ -117,7 +120,7 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
               locationBias: { circle: { center: { latitude: p.lat, longitude: p.lng }, radius: 200 } } }),
       cache: "no-store", signal: AbortSignal.timeout(6000),
     });
-    if (!res.ok) return { slug, status: "error", calls };
+    if (!res.ok) { await trip(res); return { slug, status: "error", calls }; }
     const j = await res.json() as { places?: Cand[] };
     const self = { name: p.name, lat: p.lat!, lng: p.lng!, phone: p.phone, website: p.website, address: p.address };
     const asInput = (c: Cand, extra: { phone?: string; website?: string } = {}) =>
@@ -146,7 +149,7 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
       const d = await f(`${API}/places/${encodeURIComponent(best.c.id)}`, {
         headers: headers(key, "nationalPhoneNumber,websiteUri"), cache: "no-store", signal: AbortSignal.timeout(6000),
       });
-      if (!d.ok) return { slug, status: "error", calls };
+      if (!d.ok) { await trip(d); return { slug, status: "error", calls }; }
       const dj = await d.json() as { nationalPhoneNumber?: string; websiteUri?: string };
       m = matchScore(self, asInput(best.c, { phone: dj.nationalPhoneNumber, website: dj.websiteUri }));
       if (mode === "phone") {
@@ -274,7 +277,7 @@ export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, pa
       const e = await reserve("google:details_essentials");
       if (!e.ok) return { state: "limit", reason: e.reason };
       const d = await f(url, { headers: headers(key, "photos"), cache: "no-store", signal: AbortSignal.timeout(6000) });
-      if (!d.ok) return { state: "error" };
+      if (!d.ok) { await trip(d); return { state: "error" }; }
       const p = await d.json() as { photos?: Array<{ name: string; widthPx?: number; heightPx?: number; authorAttributions?: Array<{ displayName: string; uri?: string; photoUri?: string }> }> };
       const photos: GooglePlaceView["photos"] = [];
       /* Google en çok 10 fotoğraf referansı verir; galeri sayfa sayfa ister (her fotoğraf ayrı Photo isteği) */
@@ -285,6 +288,7 @@ export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, pa
         const m = await f(`${API}/${ph.name}/media?maxWidthPx=800&skipHttpRedirect=true`, {
           headers: { "X-Goog-Api-Key": key }, cache: "no-store", signal: AbortSignal.timeout(6000),
         }).catch(() => null);
+        if (m && !m.ok) await trip(m);
         const j = m && m.ok ? await m.json() as { photoUri?: string } : null;
         const a = ph.authorAttributions?.[0];
         if (j?.photoUri) photos.push({ src: j.photoUri, author: a?.displayName ?? "Google kullanıcısı", authorUri: a?.uri, authorPhoto: a?.photoUri, w: ph.widthPx, h: ph.heightPx });
@@ -295,7 +299,7 @@ export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, pa
     if (!d0.ok) return { state: "limit", reason: d0.reason };
     /* tek istek = Place Details Enterprise + Atmosphere (reviews nedeniyle); saatler aynı SKU içinde */
     const d = await f(url, { headers: headers(key, "rating,userRatingCount,googleMapsUri,reviews,regularOpeningHours.weekdayDescriptions"), cache: "no-store", signal: AbortSignal.timeout(6000) });
-    if (!d.ok) return { state: "error" };
+    if (!d.ok) { await trip(d); return { state: "error" }; }
     const p = await d.json() as {
       rating?: number; userRatingCount?: number; googleMapsUri?: string; regularOpeningHours?: { weekdayDescriptions?: string[] };
       reviews?: Array<{ authorAttribution?: { displayName?: string; uri?: string; photoUri?: string }; rating?: number; text?: { text?: string }; originalText?: { text?: string }; relativePublishTimeDescription?: string; googleMapsUri?: string }>;
@@ -339,6 +343,7 @@ async function photoMedia(key: string, refs: GooglePhotoRef[], f: typeof fetch) 
   for (const r of refs) { const ok = await reserve("google:photo"); if (!ok.ok) break; allowed.push(r); }
   const got = await Promise.all(allowed.map(async (r) => {
     const m = await f(`${API}/${r.name}/media?maxWidthPx=1200&skipHttpRedirect=true`, { headers: { "X-Goog-Api-Key": key }, cache: "no-store", signal: AbortSignal.timeout(6000) }).catch(() => null);
+    if (m && !m.ok) await trip(m);
     const j = m && m.ok ? await m.json().catch(() => null) as { photoUri?: string } | null : null;
     return j?.photoUri ? { src: j.photoUri, author: r.author, authorUri: r.authorUri, authorPhoto: r.authorPhoto, w: r.w, h: r.h, mapsUri: r.mapsUri, flagUri: r.flagUri } : null;
   }));
@@ -361,7 +366,7 @@ export function fetchGoogleView(slug: string, f: typeof fetch = fetch, n = 5): P
       const d = await f(`${API}/places/${encodeURIComponent(s.id)}?languageCode=tr`, {
         headers: headers(key, "rating,userRatingCount,googleMapsUri,reviews,regularOpeningHours.weekdayDescriptions,photos"), cache: "no-store", signal: AbortSignal.timeout(6000),
       });
-      if (!d.ok) return { state: "error" };
+      if (!d.ok) { await trip(d); return { state: "error" }; }
       const p = await d.json() as {
         rating?: number; userRatingCount?: number; googleMapsUri?: string; regularOpeningHours?: { weekdayDescriptions?: string[] }; photos?: RawPhoto[];
         reviews?: Array<{ authorAttribution?: { displayName?: string; uri?: string; photoUri?: string }; rating?: number; text?: { text?: string; languageCode?: string }; originalText?: { text?: string; languageCode?: string }; relativePublishTimeDescription?: string; googleMapsUri?: string; flagContentUri?: string }>;
