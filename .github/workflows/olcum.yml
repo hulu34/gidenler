@@ -77,7 +77,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/onay.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }
   kuyruk:
     if: contains(github.event.head_commit.message, '[kuyruk]')
     runs-on: ubuntu-latest
