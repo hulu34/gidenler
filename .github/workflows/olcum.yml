@@ -211,3 +211,18 @@ jobs:
         with: { node-version: 22 }
       - run: node ops/dinamik.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+  dalkontrol:
+    if: contains(github.event.head_commit.message, '[dalkontrol]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/dalkontrol.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEPLOYS: "gidenler-dg054cjj3-hulu34.vercel.app,gidenler-48ts77nfk-hulu34.vercel.app,gidenler-26kjwenny-hulu34.vercel.app,gidenler-378umehn7-hulu34.vercel.app,gidenler-7yt6j334i-hulu34.vercel.app,gidenler-4b31yw1tz-hulu34.vercel.app,gidenler-nr936qzlm-hulu34.vercel.app,gidenler-8r6juufwg-hulu34.vercel.app,gidenler-7q71pmbp3-hulu34.vercel.app,gidenler-63pt1v71o-hulu34.vercel.app,gidenler-kxf01etvx-hulu34.vercel.app,gidenler-rla1pc9bc-hulu34.vercel.app,gidenler-etjppcktn-hulu34.vercel.app,gidenler-3euvpz7id-hulu34.vercel.app,gidenler-7ba3pfswn-hulu34.vercel.app,gidenler-hbvf2hhpa-hulu34.vercel.app,gidenler-kekwtvrre-hulu34.vercel.app,gidenler-rfxljljzg-hulu34.vercel.app" }
+      - if: always()
+        run: test -f out/dal.json && openssl cms -encrypt -aes256 -binary -in out/dal.json -out out/dal.json.cms -outform DER ops/olcum.pem && rm out/dal.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: dal-sifreli, path: out/dal.json.cms, retention-days: 1, if-no-files-found: ignore }
