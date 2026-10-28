@@ -18,7 +18,7 @@ import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { fetchGooglePlace, googleEnabled, holdGoogleMatches, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
+import { fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, holdGoogleMatches, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
 import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/match/score";
 import { parseVideoUrl, embedUrl } from "../lib/media/embed";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/store";
@@ -190,13 +190,39 @@ async function main() {
   const g1p = await fetchGooglePlace("ciya-sofrasi-kadikoy", mkFetch({ name: "x", lat: 0, lng: 0 }), "photos");
   ok("fotoğraflar ayrı istekle, en çok 2", g1p.state === "ok" && g1p.data.photos.length === 2, g1p);
   ok("fotoğraf isteği yalnız photos alanını ister (Essentials)", masks.includes("details:photos"), masks);
+  /* otomatik sayfa görünümü: TEK Details isteği (yorum + puan + saatler + foto listesi) + ilk 5 foto */
+  const vCalls: string[] = [];
+  const viewFetch = (async (url: string, init?: RequestInit) => {
+    const h = (init?.headers ?? {}) as Record<string, string>; vCalls.push(String(url).includes("/media") ? "media" : `details:${h["X-Goog-FieldMask"]}`);
+    if (String(url).includes("/media")) return Response.json({ photoUri: "https://lh3.example/p.jpg?" + Math.random() });
+    await new Promise((r) => setTimeout(r, 20));
+    return Response.json({ rating: 4.4, userRatingCount: 1607, googleMapsUri: "https://maps.google.com/?cid=1", reviews: [{ rating: 5, text: { text: "x" }, authorAttribution: { displayName: "A" } }],
+      photos: Array.from({ length: 8 }, (_, i) => ({ name: `places/GID1/photos/p${i}`, authorAttributions: [{ displayName: `Foto ${i}` }] })) });
+  }) as unknown as typeof fetch;
+  const [v1, v2] = await Promise.all([fetchGoogleView("ciya-sofrasi-kadikoy", viewFetch, 5), fetchGoogleView("ciya-sofrasi-kadikoy", viewFetch, 5)]);
+  ok("sayfa görünümü: tek Details isteği, eşzamanlı istekler birleşir", vCalls.filter((c) => c.startsWith("details")).length === 1 && v1.state === "ok" && v2.state === "ok", vCalls);
+  ok("sayfa görünümü: puan + yorum + 5 foto + kalan 3 referans, foto listesi aynı istekte", v1.state === "ok" && v1.data.rating === 4.4 && v1.data.photos.length === 5 && v1.data.refs.length === 3 && v1.data.photoTotal === 8
+    && vCalls.includes("details:rating,userRatingCount,googleMapsUri,reviews,regularOpeningHours.weekdayDescriptions,photos") && vCalls.filter((c) => c === "media").length === 5, { vCalls });
+  vCalls.length = 0;
+  const more = v1.state === "ok" ? await fetchGooglePhotoMedia("ciya-sofrasi-kadikoy", v1.data.refs, viewFetch) : null;
+  ok("galerinin kalan fotoğrafları yalnız Photo isteği (Details yok)", more?.state === "ok" && more.data.photos.length === 3 && vCalls.every((c) => c === "media"), vCalls);
+  vCalls.length = 0;
+  const foreign = await fetchGooglePhotoMedia("ciya-sofrasi-kadikoy", [{ name: "places/BASKA/photos/x", author: "y" }, { name: "places/GID1/photos/../../x", author: "y" }], viewFetch);
+  ok("başka mekâna ait ya da bozuk fotoğraf referansı istenmez", foreign.state === "ok" && foreign.data.photos.length === 0 && vCalls.length === 0, { foreign, vCalls });
+  /* bütçe dolu: sayfa görünümü Google'a hiç gitmez, "limit" döner (sayfa Gidenler verisine düşer) */
+  const capFake2 = new FakeRedis(); setRedisForTests(capFake2 as unknown as RedisLike);
+  capFake2.m.set(periodKeys("google:details_atmosphere").month, BUDGETS["google:details_atmosphere"].monthly);
+  vCalls.length = 0;
+  const vLim = await fetchGoogleView("ciya-sofrasi-kadikoy", viewFetch, 5);
+  ok("aylık sınır doluysa sayfa görünümü Google'a istek atmaz (limit)", vLim.state === "limit" && vCalls.length === 0, { vLim, vCalls });
+  setRedisForTests(fake2 as unknown as RedisLike);
   ok("anahtar hiçbir URL'de yok", !keyInUrl);
   ok("kayıtlı eşleşmeden sonra eşleştirme araması yapılmaz", calls.filter((u) => u.endsWith(":searchText")).length === 1);
   const againG = await resolveGooglePlaceId("ciya-sofrasi-kadikoy", K, mkFetch({ name: "x", lat: 0, lng: 0 }));
   ok("onaylı/otomatik kayıt yeniden taranmaz", againG.status === "existing" && againG.calls.textSearch === 0, againG);
   const used = await usageSnapshot();
-  ok("sayaç: 1 arama, 0 doğrulama, 1 yorum, 1 foto listesi, 2 foto", used?.["google:text_search_pro"].month === 1 && used["google:details_enterprise"].month === 0
-    && used["google:details_atmosphere"].month === 1 && used["google:details_essentials"].month === 1 && used["google:photo"].month === 2, used);
+  ok("sayaç: 1 arama, 0 doğrulama, 2 sayfa görünümü (eski + yeni; birleşen istek sayılmaz), 1 foto listesi, 10 foto", used?.["google:text_search_pro"].month === 1 && used["google:details_enterprise"].month === 0
+    && used["google:details_atmosphere"].month === 2 && used["google:details_essentials"].month === 1 && used["google:photo"].month === 10, used);
 
   const moda = (await db.select().from(schema.places).where(sql`${schema.places.slug} <> 'ciya-sofrasi-kadikoy' and ${schema.places.district} = 'Kadıköy'`).limit(1))[0];
   const m2 = await resolveGooglePlaceId(moda.slug, K, mkFetch({ name: moda.name + " Şubesi", lat: moda.lat! + 0.00135, lng: moda.lng! }));

@@ -4,13 +4,15 @@ import Link from "next/link";
 import { useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
-import { fromVenuePhotos, responsive, useGooglePhotos, type ViewPhoto } from "./photos";
+import { fromVenuePhotos, responsive, type ViewPhoto } from "./photos";
+import { useGoogleView } from "./googleView";
 
 /* ──────────────────────────────────────────────────────────────────────────
    KAPAK MOZAİĞİ — başlığın hemen altında: bir büyük kapak + dört küçük kare (Tabelog'un üst şeridi gibi).
    · Fotoğraf yoksa büyük boş alan YOK: tek satırlık ince şerit.
-   · Google fotoğrafları sayfa açılışında yüklenmez (ücretli istek); "Google'daki fotoğrafları göster" ile gelir,
-     her karede sahibi ve "Google Maps" atfı yazılır.
+   · Google ile doğrulanmış restoranda Google fotoğrafları sayfa açılınca kendiliğinden mozaiğe girer (düğme yok);
+     her karede sahibi ve "Google Maps" atfı yazılır. Yüklenirken mozaik yeri ayrılır (sayfa kayması yok).
+   · Google sınırı/hatası: yalnız Gidenler fotoğrafları ya da ince şerit — sayfa bozulmaz.
    · İlk kare yüksek öncelikle, diğerleri geç yüklenir; kareler sabit oranlı (sayfa kayması yok).
    ────────────────────────────────────────────────────────────────────────── */
 
@@ -29,36 +31,37 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
   );
 }
 
-export function PhotoMosaic({ slug, name, photos, isReal }: { slug: string; name: string; photos?: VenuePhoto[]; isReal: boolean }) {
+export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean }) {
   const own = fromVenuePhotos(photos);
-  const g = useGooglePhotos(slug, isReal);
-  const all = [...own, ...g.photos];
+  const g = useGoogleView(slug, google);
+  const gPhotos = g.k === "ok" ? g.v.photos : [];
+  const all = [...own, ...gPhotos];
   const [open, setOpen] = useState<number | null>(null);
   const galleryHref = `/mekan/${slug}/fotograflar/`;
+  const total = own.length + (g.k === "ok" ? g.v.total : 0);
 
-  const googleButton = (label: string) => (
-    <button type="button" onClick={() => g.load(5)} disabled={g.state === "loading"}
-      className="inline-flex h-9 items-center gap-2 rounded-full border border-ink px-4 text-[13px] font-semibold hover:bg-ink hover:text-paper disabled:opacity-60">
-      {g.state === "loading" ? "Google'dan yükleniyor…" : label}
-    </button>
-  );
+  /* Google yükleniyor: mozaiğin yeri baştan ayrılır */
+  if (g.k === "loading" && !own.length) {
+    return (
+      <section aria-label={`${name} fotoğrafları yükleniyor`} aria-busy="true" className="mt-5">
+        <div className="-mx-5 flex gap-1.5 overflow-hidden px-5 sm:mx-0 sm:grid sm:h-[clamp(260px,38vw,440px)] sm:grid-cols-4 sm:grid-rows-2 sm:px-0">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <div key={i} className={`aspect-[4/3] w-[86%] shrink-0 animate-pulse bg-sheet sm:aspect-auto sm:w-auto ${i === 0 ? "sm:col-span-2 sm:row-span-2" : "sm:col-span-1 sm:row-span-1"}`} />
+          ))}
+        </div>
+        <p className="mt-2 h-[18px] text-[11.5px] text-ink-3"><span translate="no">Google Maps</span> fotoğrafları yükleniyor…</p>
+      </section>
+    );
+  }
 
   /* fotoğraf yok: ince şerit */
   if (!all.length) {
-    if (g.state === "check") return <div className="mt-5 h-[52px]" aria-hidden />;
     return (
       <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-y border-line py-2.5">
         <p className="text-[13px] text-ink-2">
           <span aria-hidden className="mr-1.5">▦</span>Henüz Gidenler fotoğrafı yok.
           <span className="text-ink-3"> Fotoğraf yükleme yakında.</span>
         </p>
-        {(g.state === "ready" || g.state === "loading") && (
-          <span className="flex items-center gap-3">
-            <span className="hidden text-[11.5px] text-ink-3 sm:inline">Google Maps&apos;ten canlı gelir, sahipleri yazılır</span>
-            {googleButton("Google'daki fotoğrafları göster")}
-          </span>
-        )}
-        {g.state === "limited" && <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name)}`} target="_blank" rel="noopener noreferrer" className="text-[13px] font-semibold underline underline-offset-4">Fotoğraflar Google Haritalar&apos;da ↗</a>}
       </div>
     );
   }
@@ -75,7 +78,7 @@ export function PhotoMosaic({ slug, name, photos, isReal }: { slug: string; name
     if (k === 4) return i === 1 ? "sm:col-span-2 sm:row-span-1" : "sm:col-span-1 sm:row-span-1";
     return "sm:col-span-1 sm:row-span-1";
   };
-  const hasGoogle = g.photos.length > 0;
+  const hasGoogle = gPhotos.length > 0;
 
   return (
     <section aria-label={`${name} fotoğrafları`} className="mt-5">
@@ -87,7 +90,7 @@ export function PhotoMosaic({ slug, name, photos, isReal }: { slug: string; name
             <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} sizes={`(max-width: 640px) 60vw, ${i === 0 || k <= 2 ? (k === 1 ? "1180px" : "590px") : "295px"}`} />
             {i === k - 1 && (
               <Link href={galleryHref} className="absolute right-3 top-3 hidden rounded-full bg-paper/95 px-3.5 py-1.5 text-[12.5px] font-bold text-ink shadow hover:bg-paper sm:inline-block">
-                Tüm fotoğraflar{all.length > 1 || g.total ? ` (${Math.max(all.length, own.length + (g.total ?? 0))})` : ""}
+                Tüm fotoğraflar{total > 1 ? ` (${Math.max(all.length, total)})` : ""}
               </Link>
             )}
           </div>
@@ -100,9 +103,8 @@ export function PhotoMosaic({ slug, name, photos, isReal }: { slug: string; name
       <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-[11.5px] text-ink-3">
         <span>
           {own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
-          {hasGoogle && <><span translate="no">Google Maps</span> fotoğrafları canlı gelir, Gidenler&apos;de saklanmaz.</>}
+          {hasGoogle && <><span translate="no">Google Maps</span> fotoğrafları Google kullanıcılarına aittir; canlı gelir, Gidenler&apos;de saklanmaz.</>}
         </span>
-        {!hasGoogle && (g.state === "ready" || g.state === "loading") && googleButton("Google'daki fotoğrafları da göster")}
       </div>
 
       {open !== null && <Lightbox photos={all} index={open} onIndex={setOpen} onClose={() => setOpen(null)} title={name} />}

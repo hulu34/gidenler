@@ -9,7 +9,7 @@ import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
-import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches } from "@/lib/providers/google";
+import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
 import { usageSnapshot, spendReport } from "@/lib/usage/counter";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
@@ -53,6 +53,10 @@ export async function GET(req: Request) {
   if (new URL(req.url).searchParams.get("rapor") === "google") {
     try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot(), spend: await spendReport() }, { headers: H }); }
     catch (e) { return fail(e); }
+  }
+  /* ?rapor=google-slug → Google içeriği gösterilebilen restoranlar (derleme listesi data/real/google.json için) */
+  if (new URL(req.url).searchParams.get("rapor") === "google-slug") {
+    try { return NextResponse.json({ env: envName(), slugs: await googleUsableSlugs() }, { headers: H }); } catch (e) { return fail(e); }
   }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
   if (new URL(req.url).searchParams.get("rapor") === "redis") {

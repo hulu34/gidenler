@@ -315,6 +315,103 @@ export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, pa
   }
 }
 
+/* ──────────────────────────────────────────────────────────────────────────
+   SAYFA GÖRÜNÜMÜ (otomatik) — onaylı/otomatik eşleşmiş restoranda sayfa açılınca TEK istek:
+   · 1 × Place Details (Enterprise + Atmosphere): puan, değerlendirme sayısı, Haritalar bağlantısı, yorumlar,
+     çalışma saatleri ve fotoğraf referansları (en çok 10) aynı istekte — ayrı Essentials/Enterprise isteği yok.
+   · İlk N fotoğraf için Place Photo (her biri 1 istek, paralel). Kalan referanslar istemciye döner; galeri
+     yalnız fotoğraf isteğiyle devam eder (yeniden Details isteği yok).
+   · Aynı sunucu örneğinde aynı mekân için eşzamanlı istekler tek Google isteğinde birleştirilir (yanıt saklanmaz).
+   · Her ücretli istek bütçe sayacından geçer (günlük/aylık sınır + toplam 100 USD tavanı); dolarsa "limit".
+   ────────────────────────────────────────────────────────────────────────── */
+export interface GooglePhotoRef { name: string; w?: number; h?: number; author: string; authorUri?: string; authorPhoto?: string }
+export type GoogleViewResult =
+  | { state: "ok"; data: GooglePlaceView & { refs: GooglePhotoRef[] } }
+  | Exclude<GoogleStatus, { state: "ok" }>;
+
+const inflight = new Map<string, Promise<GoogleViewResult>>();
+type RawPhoto = { name: string; widthPx?: number; heightPx?: number; authorAttributions?: Array<{ displayName: string; uri?: string; photoUri?: string }> };
+const toRef = (ph: RawPhoto): GooglePhotoRef => ({ name: ph.name, w: ph.widthPx, h: ph.heightPx, author: ph.authorAttributions?.[0]?.displayName ?? "Google kullanıcısı", authorUri: ph.authorAttributions?.[0]?.uri, authorPhoto: ph.authorAttributions?.[0]?.photoUri });
+
+async function photoMedia(key: string, refs: GooglePhotoRef[], f: typeof fetch) {
+  /* bütçe her fotoğraf için ÖNCE ayrılır; ayrılamayan fotoğraf hiç istenmez */
+  const allowed: GooglePhotoRef[] = [];
+  for (const r of refs) { const ok = await reserve("google:photo"); if (!ok.ok) break; allowed.push(r); }
+  const got = await Promise.all(allowed.map(async (r) => {
+    const m = await f(`${API}/${r.name}/media?maxWidthPx=1200&skipHttpRedirect=true`, { headers: { "X-Goog-Api-Key": key }, cache: "no-store", signal: AbortSignal.timeout(6000) }).catch(() => null);
+    const j = m && m.ok ? await m.json().catch(() => null) as { photoUri?: string } | null : null;
+    return j?.photoUri ? { src: j.photoUri, author: r.author, authorUri: r.authorUri, authorPhoto: r.authorPhoto, w: r.w, h: r.h } : null;
+  }));
+  return got.filter((x): x is NonNullable<typeof x> => !!x);
+}
+
+export function fetchGoogleView(slug: string, f: typeof fetch = fetch, n = 5): Promise<GoogleViewResult> {
+  const k = `${slug}:${n}`;
+  const running = inflight.get(k);
+  if (running) return running;
+  const p = (async (): Promise<GoogleViewResult> => {
+    const key = process.env.GOOGLE_PLACES_API_KEY;
+    if (!key || !googleEnabled()) return { state: "disabled" };
+    const s = await storedGooglePlaceId(slug).catch(() => null);
+    if (!s) return { state: "error" };
+    if ("none" in s) return { state: "unmatched", reason: s.none };
+    const d0 = await reserve("google:details_atmosphere");
+    if (!d0.ok) return { state: "limit", reason: d0.reason };
+    try {
+      const d = await f(`${API}/places/${encodeURIComponent(s.id)}?languageCode=tr`, {
+        headers: headers(key, "rating,userRatingCount,googleMapsUri,reviews,regularOpeningHours.weekdayDescriptions,photos"), cache: "no-store", signal: AbortSignal.timeout(6000),
+      });
+      if (!d.ok) return { state: "error" };
+      const p = await d.json() as {
+        rating?: number; userRatingCount?: number; googleMapsUri?: string; regularOpeningHours?: { weekdayDescriptions?: string[] }; photos?: RawPhoto[];
+        reviews?: Array<{ authorAttribution?: { displayName?: string; uri?: string; photoUri?: string }; rating?: number; text?: { text?: string }; originalText?: { text?: string }; relativePublishTimeDescription?: string; googleMapsUri?: string }>;
+      };
+      const refs = (p.photos ?? []).slice(0, 10).map(toRef);
+      const first = Math.max(0, Math.min(n, PHOTO_PAGE_MAX));
+      const photos = first ? await photoMedia(key, refs.slice(0, first), f) : [];
+      return {
+        state: "ok",
+        data: {
+          rating: p.rating, count: p.userRatingCount, mapsUri: p.googleMapsUri, hours: p.regularOpeningHours?.weekdayDescriptions ?? [],
+          photos, photoTotal: refs.length, refs: refs.slice(first),
+          reviews: (p.reviews ?? []).slice(0, 5).map((r) => ({
+            author: r.authorAttribution?.displayName ?? "Google kullanıcısı", authorUri: r.authorAttribution?.uri, authorPhoto: r.authorAttribution?.photoUri,
+            rating: r.rating ?? 0, text: r.text?.text ?? r.originalText?.text ?? "", when: r.relativePublishTimeDescription ?? "", uri: r.googleMapsUri,
+          })),
+        },
+      };
+    } catch {
+      return { state: "error" };
+    }
+  })().finally(() => inflight.delete(k));
+  inflight.set(k, p);
+  return p;
+}
+
+/** Galeride kalan fotoğraflar: yalnız Place Photo istekleri (Details yok). Referans bu mekâna ait olmalı. */
+export async function fetchGooglePhotoMedia(slug: string, refs: GooglePhotoRef[], f: typeof fetch = fetch): Promise<GoogleStatus> {
+  const key = process.env.GOOGLE_PLACES_API_KEY;
+  if (!key || !googleEnabled()) return { state: "disabled" };
+  const s = await storedGooglePlaceId(slug).catch(() => null);
+  if (!s) return { state: "error" };
+  if ("none" in s) return { state: "unmatched", reason: s.none };
+  const prefix = `places/${s.id}/photos/`;
+  const mine = refs.filter((r) => typeof r?.name === "string" && r.name.startsWith(prefix) && !r.name.includes("..")).slice(0, PHOTO_PAGE_MAX);
+  if (!mine.length) return { state: "ok", data: { hours: [], reviews: [], photos: [] } };
+  const photos = await photoMedia(key, mine, f);
+  if (!photos.length) return { state: "limit", reason: "photo_budget" };
+  return { state: "ok", data: { hours: [], reviews: [], photos } };
+}
+
+/** Yönetim: Google içeriği gösterilebilen (onaylı ya da otomatik) restoranların slug listesi — derleme listesi için. */
+export async function googleUsableSlugs() {
+  const db = getDb();
+  if (!db) return null;
+  const rows = await db.select({ slug: places.slug }).from(placeIdentifiers).innerJoin(places, eq(places.id, placeIdentifiers.placeId))
+    .where(and(eq(placeIdentifiers.provider, "google"), inArray(placeIdentifiers.status, ["auto", "confirmed"])));
+  return [...new Set(rows.map((r) => r.slug))].sort();
+}
+
 /** Yönetim: bekleyen Google eşleşmeleri. */
 export async function pendingGoogleMatches() {
   const db = getDb();

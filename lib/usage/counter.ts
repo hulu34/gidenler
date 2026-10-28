@@ -25,9 +25,11 @@ export interface Budget { monthly: number; daily: number }
 export const BUDGETS = {
   "google:text_search_pro": { monthly: 8000, daily: 1000 },      // eşleştirme araması
   "google:details_enterprise": { monthly: 3000, daily: 600 },    // eşleştirme doğrulaması (telefon, web)
-  "google:details_atmosphere": { monthly: 2000, daily: 100 },    // sayfa, kullanıcı isteyince: puan, yorum, saatler
+  /* Sayfa açılınca otomatik: görüntüleme başına 1 Details (E+A) + en çok 5 foto ≈ 0,06 USD (ücretsiz kotadan sonra).
+     Tavan 100 USD ⇒ ayda ~2.100 Google'lı görüntüleme; günlük pay ayı bölüştürür, dolunca Gidenler verisi gösterilir. */
+  "google:details_atmosphere": { monthly: 2100, daily: 80 },     // sayfa: puan, sayı, yorum, saatler, foto listesi
   "google:details_essentials": { monthly: 9000, daily: 300 },    // sayfa, kullanıcı isteyince: fotoğraf adları
-  "google:photo": { monthly: 2000, daily: 200 },                 // sayfa, kullanıcı isteyince: fotoğraf başına
+  "google:photo": { monthly: 10500, daily: 400 },                // sayfa ve galeri: fotoğraf başına
 } satisfies Record<string, Budget>;
 export type BudgetKey = keyof typeof BUDGETS;
 

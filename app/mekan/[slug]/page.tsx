@@ -18,7 +18,8 @@ import { ReservationBlock } from "@/components/reservation/ReservationBlock";
 import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
-import { GooglePlace } from "@/components/venue/GooglePlace";
+import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
+import googleList from "@/data/real/google.json";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { parseVideoUrl } from "@/lib/media/embed";
@@ -107,6 +108,9 @@ function railFromMedia(media: import("@/lib/types").MediaLink[] = []): RailVideo
   });
 }
 
+/** Google ile doğrulanmış restoranlar (derleme listesi; sunucu her istekte veritabanından yeniden doğrular). */
+const GOOGLE_MATCHED = new Set<string>(googleList.slugs);
+
 const PRICE = (n?: 1 | 2 | 3 | 4) => (n ? "₺".repeat(n) : undefined);
 
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -143,6 +147,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   /* Kapak fotoğrafı ilk ekrandaki en büyük öğe: HTML ayrıştırılırken hemen, mozaikle aynı boyut kuralıyla iner */
+  const google = !!entity.isReal && GOOGLE_MATCHED.has(entity.slug);
   const cover = entity.photos?.[0];
   if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
     imageSizes: `(max-width: 640px) 60vw, ${(entity.photos?.length ?? 0) === 1 ? "1180px" : "590px"}` });
@@ -175,6 +180,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             {entity.isReal && <span className="ml-1 rounded-full border border-pos px-2 py-px text-[9.5px] tracking-[0.14em] text-pos-ink">Gerçek mekân</span>}
           </p>
           <VenueBadges entityId={entity.id} />
+          {google && <GoogleRatingBadge slug={entity.slug} google />}
           {scored && pulse && (
             <div className="mt-2 flex items-center gap-3 text-[12px] text-ink-3">
               <Pulse pulse={pulse} width={180} height={34} draw />
@@ -213,7 +219,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </header>
 
       {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
-      {(entity.isReal || entity.photos?.length) && <PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} isReal={!!entity.isReal} />}
+      {(entity.isReal || entity.photos?.length) && <PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} />}
 
       {/* ═══════════ BİR BAKIŞTA — yeni ilk kat (mevcut bölümler aynen aşağıda) ═══════════ */}
       {scored && <AtAGlance entityId={entity.id} intel={I} pulse={pulse} />}
@@ -230,7 +236,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       )}
 
       {/* Google: puan, fotoğraf, saatler, yorumlar — temel bilgilerin hemen altında, ekrana girince yüklenir */}
-      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} /></div>}
+      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} google={google} /></div>}
 
       {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
       <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />

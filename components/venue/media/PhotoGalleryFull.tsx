@@ -1,30 +1,54 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
-import { CAT_LABEL, fromVenuePhotos, responsive, SOURCE_LABEL, useGooglePhotos, type PhotoCat, type ViewPhoto } from "./photos";
+import { CAT_LABEL, fromVenuePhotos, responsive, SOURCE_LABEL, type PhotoCat, type ViewPhoto } from "./photos";
+import { loadMoreGooglePhotos, useGoogleView, type GRef } from "./googleView";
 
 /* ──────────────────────────────────────────────────────────────────────────
    FOTOĞRAFLAR SAYFASI — Tabelog'un kategorili fotoğraf sekmeleri, Gidenler'e göre:
    · Sekmeler: Tümü · Yemekler · İç mekân · Dış cephe · Menü · Diğer · Google. Boş sekmeler de görünür (0).
-   · Google fotoğrafları ayrı sekmede, yalnız istenince ve sayfa sayfa; kendi fotoğraflarımızla karışmaz.
+   · Google ile doğrulanmış restoranda Google fotoğrafları kendiliğinden gelir (düğme yok); sayfa sonuna
+     yaklaşıldıkça kalanlar 5'er yüklenir (yalnız Photo isteği). Kaynak her karede yazılı.
    · Her karede kaynak + sahip; tıklayınca tam ekran görüntüleyici.
    ────────────────────────────────────────────────────────────────────────── */
 
 type Tab = "all" | PhotoCat | "google";
 const CATS: PhotoCat[] = ["yemek", "ic", "dis", "menu", "diger"];
 
-export function PhotoGalleryFull({ slug, name, photos, isReal }: { slug: string; name: string; photos?: VenuePhoto[]; isReal: boolean }) {
+export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean }) {
   const own = useMemo(() => fromVenuePhotos(photos), [photos]);
-  const g = useGooglePhotos(slug, isReal);
+  const g = useGoogleView(slug, google);
+  const [extra, setExtra] = useState<ViewPhoto[]>([]);
+  const [refs, setRefs] = useState<GRef[] | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [stopped, setStopped] = useState(false);
+  const sentinel = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState<Tab>("all");
   const [open, setOpen] = useState<number | null>(null);
-  const shown: ViewPhoto[] = tab === "all" ? [...own, ...g.photos] : tab === "google" ? g.photos : own.filter((p) => p.category === tab);
-  const count = (t: Tab) => (t === "all" ? own.length + g.photos.length : t === "google" ? (g.total ?? g.photos.length) : own.filter((p) => p.category === t).length);
-  const googleAvail = g.state !== "none" && g.state !== "check";
+  const gPhotos = g.k === "ok" ? [...g.v.photos, ...extra] : [];
+  const left = refs ?? (g.k === "ok" ? g.v.refs : []);
 
-  const tabs: Tab[] = ["all", ...CATS, ...(googleAvail || g.photos.length ? (["google"] as Tab[]) : [])];
+  /* kalan Google fotoğrafları: sayfa sonuna yaklaşınca, 5'er (düğmesiz) */
+  useEffect(() => {
+    const el = sentinel.current;
+    if (!el || g.k !== "ok" || !left.length || busy || stopped) return;
+    const io = new IntersectionObserver(async (es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      io.disconnect(); setBusy(true);
+      const got = await loadMoreGooglePhotos(slug, left.slice(0, 5));
+      if (got && got.length) { setExtra((x) => [...x, ...got]); setRefs(left.slice(5)); } else setStopped(true);
+      setBusy(false);
+    }, { rootMargin: "800px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [g.k, left, busy, stopped, slug]);
+
+  const shown: ViewPhoto[] = tab === "all" ? [...own, ...gPhotos] : tab === "google" ? gPhotos : own.filter((p) => p.category === tab);
+  const count = (t: Tab) => (t === "all" ? own.length + (g.k === "ok" ? g.v.total : 0) : t === "google" ? (g.k === "ok" ? g.v.total : 0) : own.filter((p) => p.category === t).length);
+  const tabs: Tab[] = ["all", ...CATS, ...(g.k === "ok" && g.v.total ? (["google"] as Tab[]) : [])];
+
   return (
     <div className="flex flex-col gap-5">
       <div role="tablist" aria-label="Fotoğraf türü" className="-mx-5 flex gap-1.5 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
@@ -59,20 +83,16 @@ export function PhotoGalleryFull({ slug, name, photos, isReal }: { slug: string;
         </div>
       ) : null}
 
-      {(tab === "google" || tab === "all") && googleAvail && (
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
-          <p className="max-w-[60ch] text-[12.5px] text-ink-3">
-            <b className="text-ink-2" translate="no">Google Maps</b> fotoğrafları Google kullanıcılarına aittir; yalnız istediğinde canlı yüklenir,
-            Gidenler&apos;de saklanmaz. Her fotoğrafta sahibi ve Google profili bağlantısı yazılıdır.
-          </p>
-          {g.more && (
-            <button type="button" onClick={() => { g.load(5); if (tab === "all" && !g.photos.length) setTab("google"); }} disabled={g.state === "loading"}
-              className="h-10 rounded-full border-2 border-ink px-5 text-[13.5px] font-bold hover:bg-ink hover:text-paper disabled:opacity-60">
-              {g.state === "loading" ? "Google'dan yükleniyor…" : g.photos.length ? "Daha fazla Google fotoğrafı" : "Google'daki fotoğrafları göster"}
-            </button>
-          )}
-          {g.state === "limited" && <span className="text-[12.5px] text-ink-2">Günlük Google sınırı doldu; fotoğraflar Google Haritalar&apos;da görülebilir.</span>}
-        </div>
+      {google && g.k === "loading" && (
+        <div className="columns-2 gap-2 sm:columns-3 lg:columns-4 [&>div]:mb-2" aria-busy="true">{[0, 1, 2, 3].map((i) => <div key={i} className="aspect-[4/3] animate-pulse bg-sheet" />)}</div>
+      )}
+      <div ref={sentinel} aria-hidden className="h-px" />
+      {busy && <p className="text-[12.5px] text-ink-3">Google fotoğrafları yükleniyor…</p>}
+      {gPhotos.length > 0 && (
+        <p className="max-w-[70ch] border-t border-line pt-4 text-[12.5px] text-ink-3">
+          <b className="text-ink-2" translate="no">Google Maps</b> fotoğrafları Google kullanıcılarına aittir; Google&apos;dan canlı gelir, Gidenler&apos;de saklanmaz.
+          Her fotoğrafta sahibi ve Google profili bağlantısı yazılıdır. Google bir mekân için en çok 10 fotoğraf sunar.
+        </p>
       )}
 
       {open !== null && <Lightbox photos={shown} index={open} onIndex={setOpen} onClose={() => setOpen(null)} title={name} />}

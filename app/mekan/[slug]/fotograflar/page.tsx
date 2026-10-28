@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getEntity } from "@/data/entities";
 import { PhotoGalleryFull } from "@/components/venue/media/PhotoGalleryFull";
+import googleList from "@/data/real/google.json";
+
+const GOOGLE_MATCHED = new Set<string>(googleList.slugs);
 
 /* Fotoğraflar sayfası derlemede üretilmez: ilk ziyarette üretilip önbelleğe alınır (dağıtım boyutu büyümez). */
 export const dynamicParams = true;
@@ -26,7 +29,7 @@ export default async function PhotosPage({ params }: { params: Promise<{ slug: s
       </nav>
       <h1 className="mt-2 text-[clamp(1.6rem,5vw,2.4rem)] font-extrabold leading-tight tracking-[-0.04em]">{e.name} · Fotoğraflar</h1>
       <p className="mt-1 max-w-[62ch] text-[13px] text-ink-3">Yalnız izinli kaynaklar: Gidenler kullanıcıları, işletme, açık lisanslı görseller ve Google Maps. Her fotoğrafın kaynağı ve sahibi yazılıdır.</p>
-      <div className="mt-6"><PhotoGalleryFull slug={e.slug} name={e.name} photos={e.photos} isReal={!!e.isReal} /></div>
+      <div className="mt-6"><PhotoGalleryFull slug={e.slug} name={e.name} photos={e.photos} google={!!e.isReal && GOOGLE_MATCHED.has(e.slug)} /></div>
     </div>
   );
 }
