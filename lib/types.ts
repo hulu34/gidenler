@@ -177,6 +177,9 @@ export interface VenuePhoto {
   credit: string;
   license?: string;
   sourceUrl?: string;
+  /** Kendi alan adımızdan sunulan boyut adımları (srcset) ve tam ekran için kırpılmamış sürüm. */
+  srcSet?: string;
+  full?: string;
   addedBy: "işletme" | "kullanıcı" | "commons";
 }
 

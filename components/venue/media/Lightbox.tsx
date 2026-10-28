@@ -47,7 +47,7 @@ export function Lightbox({ photos, index, onIndex, onClose, title }: {
 
   /* komşuları önceden yükle */
   useEffect(() => {
-    for (const d of [1, -1]) { const q = photos[(index + d + n) % n]; if (q) { const im = new Image(); im.src = q.src; } }
+    for (const d of [1, -1]) { const q = photos[(index + d + n) % n]; if (q) { const im = new Image(); im.src = q.full ?? q.src; } }
   }, [index, n, photos]);
 
   if (!p) return null;
@@ -72,7 +72,7 @@ export function Lightbox({ photos, index, onIndex, onClose, title }: {
       <div className="relative flex min-h-0 flex-1 touch-none select-none items-center justify-center"
         onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img key={p.src} src={p.src} alt={p.alt} draggable={false} referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
+        <img key={p.src} src={p.full ?? p.src} alt={p.alt} draggable={false} referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
           className="max-h-full max-w-full object-contain transition-transform duration-75" style={{ transform: `translate(${dx}px, ${dy}px)` }} />
         {n > 1 && (
           <>

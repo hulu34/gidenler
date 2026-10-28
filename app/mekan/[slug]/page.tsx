@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { preload } from "react-dom";
 import type { Metadata } from "next";
 
 import { entities } from "@/data/entities";
@@ -140,6 +141,11 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   ];
   const compareWith = nearby.find((n) => n.score !== null && n.category.id === category.id)
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
+
+  /* Kapak fotoğrafı ilk ekrandaki en büyük öğe: HTML ayrıştırılırken hemen, mozaikle aynı boyut kuralıyla iner */
+  const cover = entity.photos?.[0];
+  if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
+    imageSizes: `(max-width: 640px) 60vw, ${(entity.photos?.length ?? 0) === 1 ? "1180px" : "590px"}` });
 
   return (
     <div className="mx-auto max-w-[1180px] overflow-x-clip px-5 pb-32 sm:px-7 sm:pb-24">

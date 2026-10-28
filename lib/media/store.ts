@@ -31,10 +31,16 @@ async function oembed(platform: VideoPlatform, url: string, f: typeof fetch): Pr
   const endpoint = platform === "youtube" ? `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(url)}`
     : platform === "tiktok" ? `https://www.tiktok.com/oembed?url=${encodeURIComponent(url)}` : null;
   if (!endpoint) return "skip";
-  try {
-    const r = await f(endpoint, { cache: "no-store", signal: AbortSignal.timeout(6000) });
-    return r.ok ? await r.json() as OEmbed : null;
-  } catch { return null; }
+  /* TikTok oEmbed bazı ağlardan ara sıra geçici hata verir: en çok 3 deneme */
+  for (let i = 0; i < 3; i++) {
+    try {
+      const r = await f(endpoint, { cache: "no-store", signal: AbortSignal.timeout(6000) });
+      if (r.ok) return await r.json() as OEmbed;
+      if (r.status === 404 && platform === "youtube") return null;
+    } catch { /* yeniden dene */ }
+    if (i < 2) await new Promise((res) => setTimeout(res, 800 * (i + 1)));
+  }
+  return null;
 }
 
 export type AddVideoResult =

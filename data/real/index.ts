@@ -10,6 +10,12 @@ import raw from "./venues.json";
    · Dosya scripts/import-osm.mjs ile üretilir; elle düzenlenmez.
    ========================================================================== */
 
+/* Açık lisanslı (Commons) kapak fotoğrafları kendi alan adımızdan, WebP boyut adımlarıyla sunulur
+   (public/media/commons): ilk ekrandaki en büyük öğe (LCP) üçüncü taraf bağlantısı beklemeden ve küçük iner.
+   Atıf, lisans ve kaynak bağlantısı korunur; lisans gereği uyarlama ("boyutlandırıldı/kırpıldı") belirtilir. */
+const MEDIA = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/media/commons`;
+const LOCAL_COVER = new Set(["ismet-baba-uskudar", "beyti-lokanta-bakirkoy"]);
+
 export interface RealVenueRecord {
   ref: string;            // "node/123"
   slug: string;
@@ -68,6 +74,9 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   contact: { phone: r.phone, website: r.website, instagram: r.instagram, openingHours: r.openingHours },
   reservation: { mode: "contact" },
   business: { claimed: false },
-  photos: r.image ? [{ src: r.image.src, category: "dis", alt: `${r.name} — dış cephe`, credit: r.image.credit, license: r.image.license, sourceUrl: r.image.sourceUrl, addedBy: "commons" }] : undefined,
-  image: r.image ? { src: r.image.src, alt: r.name, credit: `${r.image.credit} · ${r.image.license}` } : undefined,
+  photos: r.image ? [LOCAL_COVER.has(r.slug)
+    ? { src: `${MEDIA}/${r.slug}-kapak-960.webp`, srcSet: [480, 960, 1440].map((w) => `${MEDIA}/${r.slug}-kapak-${w}.webp ${w}w`).join(", "), full: `${MEDIA}/${r.slug}-1440.webp`,
+        category: "dis" as const, alt: `${r.name} — dış cephe`, credit: r.image.credit, license: `${r.image.license} · boyutlandırıldı/kırpıldı`, sourceUrl: r.image.sourceUrl, addedBy: "commons" as const }
+    : { src: r.image.src, category: "dis" as const, alt: `${r.name} — dış cephe`, credit: r.image.credit, license: r.image.license, sourceUrl: r.image.sourceUrl, addedBy: "commons" as const }] : undefined,
+  image: r.image ? { src: LOCAL_COVER.has(r.slug) ? `${MEDIA}/${r.slug}-kapak-480.webp` : r.image.src, alt: r.name, credit: `${r.image.credit} · ${r.image.license}` } : undefined,
 }));

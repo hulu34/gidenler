@@ -366,6 +366,20 @@ export async function googleMatchStats() {
   return Object.fromEntries(rows.map((r) => [r.status, Number(r.n)]));
 }
 
+/** Yönetim: otomatik eşleşmeyi silmeden bekletmeye alır (auto → pending) ve onay kuyruğuna ekler; içerik gösterilmez.
+    Place ID ve geçmiş korunur. Yalnız "auto" kayıtlar etkilenir (elle onaylılar değil). */
+export async function holdGoogleMatches(slugs: string[], why: string) {
+  const db = getDb();
+  if (!db) return { ok: false as const, error: "no_db" };
+  const rows = await db.select({ id: placeIdentifiers.id, slug: places.slug }).from(placeIdentifiers).innerJoin(places, eq(places.id, placeIdentifiers.placeId))
+    .where(and(eq(placeIdentifiers.provider, "google"), eq(placeIdentifiers.status, "auto"), inArray(places.slug, slugs.slice(0, 50))));
+  for (const r of rows) {
+    await db.update(placeIdentifiers).set({ status: "pending" }).where(eq(placeIdentifiers.id, r.id));
+    await db.insert(moderationQueue).values({ id: uuidv7(), kind: "identifier_match", refTable: "place_identifiers", refId: r.id, reason: `Otomatik eşleşme bekletildi: ${why.slice(0, 200)}` });
+  }
+  return { ok: true as const, held: rows.map((r) => r.slug) };
+}
+
 /** Yönetim: Google onay kuyruğu satırları duruma göre (open = aktif bekleyen; approved/rejected = geçmiş). */
 export async function googleQueueStats() {
   const db = getDb();

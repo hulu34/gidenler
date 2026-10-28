@@ -18,7 +18,7 @@ import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { fetchGooglePlace, googleEnabled, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
+import { fetchGooglePlace, googleEnabled, holdGoogleMatches, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
 import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/match/score";
 import { parseVideoUrl, embedUrl } from "../lib/media/embed";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/store";
@@ -238,6 +238,10 @@ async function main() {
   const m6 = await resolveGooglePlaceId(gelik.slug, K, mkFetch({ name: gelik.name, lat: gelik.lat! + 0.00015, lng: gelik.lng!, web: gelik.website!, id: "GID_C3" }));
   await db.update(schema.places).set({ name: gelik.name, phone: gelik.phone }).where(eq(schema.places.id, gelik.id));
   ok("şube adı bizim kaydımızda (… Ataköy) ve yalnız web eşleşiyorsa → manuel onay", m6.status === "pending" && (m6.branch ?? []).includes("atakoy"), m6);
+  const held = await holdGoogleMatches([c2.slug], "test");
+  const g5 = await fetchGooglePlace(c2.slug, mkFetch({ name: "x", lat: 0, lng: 0 }));
+  const [c2row] = await db.select().from(schema.placeIdentifiers).where(sql`${schema.placeIdentifiers.provider} = 'google' and ${schema.placeIdentifiers.placeId} = ${c2.id}`);
+  ok("bekletilen otomatik eşleşme gösterilmez, Place ID korunur", held.ok && held.held.includes(c2.slug) && g5.state === "unmatched" && c2row?.status === "pending" && c2row.externalId === "GID_C2", { held, g5 });
   ok("karar katmanı: 120 m asla otomatik değil", preDecide({ score: 0.9, name: 1, distanceM: 120, decision: "auto", phone: "unknown", website: "unknown", address: null }, { chain: false, branch: [], rival: false, addrConflict: false }, true).decision !== "auto");
   ok("karar katmanı: kapı no çelişkisi → onay", postDecide({ score: 1, name: 1, distanceM: 10, decision: "auto", phone: "match", website: "match", address: 1 }, { chain: false, branch: [], rival: false, addrConflict: true }).decision === "review");
 

@@ -27,10 +27,16 @@ const nextConfig: NextConfig = {
   // İstemciye giden tek yapılandırma: basePath (gizli değil). API anahtarları ve AI_* değerleri yalnızca sunucuda kalır.
   env: { NEXT_PUBLIC_BASE_PATH: process.env.NEXT_BASE_PATH || "" },
   serverExternalPackages: [],
-  /* Yatırımcı demosu: her yanıtta arama motoru yasağı (meta etiketine ek olarak başlık). */
-  ...(process.env.NEXT_PUBLIC_SHOW_DEMO === "true" && !isExport
-    ? { async headers() { return [{ source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }] }]; } }
-    : {}),
+  ...(!isExport ? {
+    async headers() {
+      return [
+        /* Kendi sunduğumuz görseller içerik adına göre sabit: uzun süreli, değişmez önbellek. */
+        { source: "/media/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
+        /* Yatırımcı demosu: her yanıtta arama motoru yasağı (meta etiketine ek olarak başlık). */
+        ...(process.env.NEXT_PUBLIC_SHOW_DEMO === "true" ? [{ source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }] }] : []),
+      ];
+    },
+  } : {}),
 };
 
 export default nextConfig;
