@@ -16,7 +16,8 @@ concurrency:
 env:
   OLD_HOST: gidenler-3euvpz7id-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
-  TEST_HOST: gidenler-kqxmw0uew-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
+  TEST_HOST: gidenler-8gzgxw6jp-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
+  PREVIEW_HOST: gidenler-lrhikgt30-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
@@ -117,3 +118,13 @@ jobs:
           echo "test dağıtımı HTTP $code"; [ "$code" = 200 ] || { echo "::error::Test dağıtımı ($TEST_HOST) yanıt vermiyor: $code"; exit 1; }
       - run: node ops/saglik.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: "${{ env.TEST_HOST }}" }
+  medya:
+    if: contains(github.event.head_commit.message, '[medya]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/medya.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
