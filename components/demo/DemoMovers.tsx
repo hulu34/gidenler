@@ -64,7 +64,8 @@ export function DemoMovers() {
             <p className="text-[12.5px] text-ink-3">{t.i.timeline.length} aylık grafik · son ay ({periodLabel(t.last.period)}) {t.last.experienceCount} deneyim · toplam {t.i.experienceCount}</p>
             {t.recent && (
               <blockquote className="prose-exp border-l-2 border-line-2 pl-3 text-[14px] leading-[1.5] text-ink-2">
-                “{excerpt(t.recent.body)}” <span className="tnum whitespace-nowrap text-[12px] text-ink-3">· {score1(t.recent.overall)}</span>
+                <span className="mb-0.5 block text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3 not-italic">Örnek deneyim · seçkiden en yeni</span>
+                “{excerpt(t.recent.body)}” <span className="tnum whitespace-nowrap text-[12px] text-ink-3">· bu deneyimin puanı {score1(t.recent.overall)}</span>
               </blockquote>
             )}
             <p className="text-[12.5px] text-ink-2">{t.note}</p>

@@ -27,10 +27,11 @@ export function ExperienceFeed({ experiences, expertIds, schema, showScores, ent
   }, [experiences, f, expert]);
   const counts = { hepsi: experiences.length, dogrulanmis: experiences.filter((e) => e.verification.verified).length, uzman: experiences.filter((e) => expert.has(e.id)).length, yeni: experiences.length };
   const shown = all ? list : list.slice(0, initial);
-  const chips: Array<[Filter, string]> = [["hepsi", "Hepsi"], ["dogrulanmis", "Doğrulanmış"], ["uzman", "Uzmanlar"], ["yeni", "En yeni"]];
+  const chips: Array<[Filter, string]> = [["hepsi", "Seçkinin tümü"], ["dogrulanmis", "Doğrulanmış"], ["uzman", "Uzmanlar"], ["yeni", "En yeni"]];
 
   return (
     <div className="flex flex-col gap-2">
+      <p className="text-[12.5px] text-ink-3">Örnek seçki: {experiences.length} deneyim metni. Puan, {total.toLocaleString("tr-TR")} deneyimin tamamından mevcut ağırlıklandırma kurallarıyla hesaplanır; bu yorumların ortalaması değildir.</p>
       <div className="no-scrollbar flex gap-1.5 overflow-x-auto pb-1">
         {chips.map(([k, l]) => (
           <button key={k} type="button" aria-pressed={f === k} onClick={() => { setF(k); setAll(false); }} disabled={counts[k] === 0}
@@ -49,7 +50,7 @@ export function ExperienceFeed({ experiences, expertIds, schema, showScores, ent
             Tüm deneyimleri gör ({list.length})
           </button>
         )}
-        <span className="text-ink-3">Prototipte {experiences.length} deneyim metni gösteriliyor; puan {total.toLocaleString("tr-TR")} deneyimden hesaplandı.</span>
+        <span className="text-ink-3">Örnek seçki · {experiences.length} / {total.toLocaleString("tr-TR")} deneyim</span>
         <Link href={`/yaz/${entitySlug}/`} className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Deneyimini yaz</Link>
       </p>
     </div>

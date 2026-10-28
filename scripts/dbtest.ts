@@ -35,6 +35,8 @@ import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
 import { entities, DEMO_VISIBLE } from "../data/entities";
 import { gidenler100 } from "../lib/venue";
+import { checkConsistency } from "../lib/consistency";
+import { DEMO_TRIO, restaurantMovers } from "../components/demo/DemoMovers";
 import { evaluate, processEvent, standing, eventId, clampThreshold, withAcc, withDat, noticeText, type ThresholdPref, type ScoreEvent } from "../lib/threshold";
 
 let pass = 0, fail = 0;
@@ -695,6 +697,14 @@ async function main() {
     processEvent([], { ...pref, entityId: "ent.moda-lokantasi" }, { ...e, entityId: "ent.moda-lokantasi" }, venue, "t");
     const after = getTopic("moda-lokantasi")?.intelligence;
     ok("eşik ve bildirim puanı, deneyim sayısını değiştirmez", after?.overallScore === before?.overallScore && after?.experienceCount === before?.experienceCount);
+  }
+
+  if (DEMO_VISIBLE) {
+    console.log("\n10) Deneyim – grafik – puan tutarlılığı (sunum akışı)");
+    const { up, down } = restaurantMovers();
+    const flow = [...new Set([...DEMO_TRIO.map((t) => t.slug), ...up.slice(0, 5).map((r) => r.e.slug), ...down.slice(0, 5).map((r) => r.e.slug), "ates-steak", "balikci-sokagi", "sakura-omakase"])];
+    for (const s of flow) { const r = checkConsistency(s); ok(`${s}: puan, grafik, deneyim sayısı, özet ve yön tutarlı`, r.issues.length === 0, r.issues.map((i) => `${i.rule} ${i.detail}`).join("; ")); }
+    ok("sunum ikilisinin yönü değişmedi (Moda ↑, Köz sabit, Asma ↓)", getTopic("moda-lokantasi")!.intelligence.scoreTrend.direction === "up" && getTopic("koz-durum")!.intelligence.scoreTrend.direction === "flat" && getTopic("asma-teras")!.intelligence.scoreTrend.direction === "down");
   }
 
   console.log(`\nSonuç: ${pass} geçti, ${fail} kaldı`);

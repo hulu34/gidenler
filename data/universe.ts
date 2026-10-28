@@ -1,3 +1,5 @@
+import { score1 } from "@/lib/format";
+
 /* ==========================================================================
    EVREN — deterministik sentetik varlık üreteci
    --------------------------------------------------------------------------
@@ -592,10 +594,16 @@ const GOLDEN: Golden[] = [
       }
       if (tier === "A" && !e.realIdentity) {
         const pos = universePraised[e.id][0]; const neg = universeComplaints[e.id][0];
-        universeSummaries[e.id] = { entityId: e.id, basedOnCount: Math.round(count * 0.6), windowDays: 90, generatedAt: "2026-09-01", sourceExperienceIds: universeExperiences.filter((x) => x.entityId === e.id).slice(0, 3).map((x) => x.id), lines: [
-          `En çok övülen konu ${pos.label.toLocaleLowerCase("tr")}: son 90 günde ${pos.count} deneyim olumlu bahsediyor.`,
-          `En sık eleştirilen konu ${neg.label.toLocaleLowerCase("tr")} (${neg.count} deneyim)${neg.direction === "up" ? "; son dönemde artıyor." : "."}`,
-          delta > 0.3 ? `Puan son 90 günde +${round1(delta)} yükseldi; deneyimler tutarlılaşıyor.` : delta < -0.3 ? `Puan son 90 günde ${round1(delta)} geriledi; düşüş tek bir boyutta değil.` : `Puan son 90 günde stabil; görüşler ${count > 300 ? "geniş bir tabana" : "dar ama tutarlı bir tabana"} dayanıyor.`,
+        /* Özet, sayfadaki grafikle aynı kurallardan: "son 90 gün" = zaman serisinin son 3 ayı; yön = son ay − 3 ay önce, ±0,15
+           (lib/api scoreTrend). Konu sayıları tüm deneyimler içindir; 90 günlük cümlede aynı oranla pencereye indirgenir. */
+        const tl = universeTimelines[e.id]; const nTl = tl.length;
+        const win = tl.slice(-3).reduce((a, p) => a + p.experienceCount, 0);
+        const d90 = nTl >= 4 ? round1(tl[nTl - 1].score - tl[nTl - 4].score) : 0;
+        const inWin = (n: number) => Math.min(win, Math.round((n * win) / count));
+        universeSummaries[e.id] = { entityId: e.id, basedOnCount: win, windowDays: 90, generatedAt: "2026-09-01", sourceExperienceIds: universeExperiences.filter((x) => x.entityId === e.id).slice(0, 3).map((x) => x.id), lines: [
+          `En çok övülen konu ${pos.label.toLocaleLowerCase("tr")}: son 90 günün ${win} deneyiminden ${inWin(pos.count)} tanesi olumlu bahsediyor.`,
+          `En sık eleştirilen konu ${neg.label.toLocaleLowerCase("tr")} (toplamda ${neg.count} deneyim)${neg.direction === "up" ? "; son dönemde artıyor." : "."}`,
+          d90 > 0.15 ? `Puan son 90 günde +${score1(d90)} yükseldi.` : d90 < -0.15 ? `Puan son 90 günde −${score1(-d90)} geriledi.` : `Puan son 90 günde stabil; görüşler ${count > 300 ? "geniş bir tabana" : "dar ama tutarlı bir tabana"} dayanıyor.`,
         ] };
       }
     } else {

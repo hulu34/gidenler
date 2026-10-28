@@ -10,25 +10,25 @@ import { universeSummaries, universePraised, universeComplaints } from "@/data/u
 const baseSummaries: Record<string, AISummary> = {
   "ent.moda-lokantasi": {
     entityId: "ent.moda-lokantasi",
-    basedOnCount: 184,
-    windowDays: 90,
+    basedOnCount: 182,
+    windowDays: 365,
     generatedAt: "2026-09-01",
     lines: [
-      "En çok övülen konu lezzet: 184 deneyimin 151'i yemekten olumlu bahsediyor.",
+      "En çok övülen konu lezzet: son 12 ayın 182 deneyiminin 151'i yemekten olumlu bahsediyor.",
       "En sık eleştirilen konu bekleme süresi; şikayetlerin neredeyse tamamı hafta sonu öğle saatlerine ait.",
-      "Fiyat algısı son 90 günde sertleşti — 'değer' puanı 8.4'ten 8.0'a indi.",
+      "Fiyat algısı son 90 günde sertleşti — 'değer' puanı 8,4'ten 8,0'a indi.",
       "Menü mevsime göre değişiyor; 22 deneyimde aranan yemeğin o gün olmadığı belirtilmiş.",
     ],
     sourceExperienceIds: ["exp.101", "exp.102", "exp.103", "exp.107"],
   },
   "ent.asma-teras": {
     entityId: "ent.asma-teras",
-    basedOnCount: 69,
+    basedOnCount: 55,
     windowDays: 90,
     generatedAt: "2026-09-01",
     lines: [
-      "Puan on iki ayda 8.6'dan 5.4'e düştü; düşüş kesintisiz ve mutfakla ilgili.",
-      "Atmosfer hâlâ en güçlü boyut: manzaradan olumlu bahseden 58 deneyim var.",
+      "Puan on iki ayda 8,6'dan 5,4'e düştü; düşüş kesintisiz ve mutfakla ilgili.",
+      "Atmosfer hâlâ en güçlü boyut: toplamda 58 deneyim manzaradan olumlu bahsediyor.",
       "Fiyat/performans en zayıf boyut ve düşmeye devam ediyor.",
       "Şubat 2026'dan sonra 'eskisi gibi değil' ifadesi 31 ayrı deneyimde geçiyor.",
     ],
@@ -36,9 +36,9 @@ const baseSummaries: Record<string, AISummary> = {
   },
   "ent.sakura-omakase": {
     entityId: "ent.sakura-omakase",
-    basedOnCount: 41, windowDays: 90, generatedAt: "2026-09-01",
+    basedOnCount: 37, windowDays: 90, generatedAt: "2026-09-01",
     lines: [
-      "41 deneyimin 38'i teknik kaliteyi olumlu değerlendirmiş; şikayet mutfağa değil.",
+      "37 deneyimin 34'ü teknik kaliteyi olumlu değerlendirmiş; şikayet mutfağa değil.",
       "En sık eleştirilen konu fiyat: 22 deneyimde 'yılda bir kez' benzeri ifade geçiyor.",
       "Japon mutfağı uzmanlığı yüksek dört kullanıcı da 9 ve üzeri vermiş.",
       "Atmosfer konusunda görüşler ayrışıyor: 'fazla sessiz' ifadesi 9 deneyimde var.",
@@ -47,9 +47,9 @@ const baseSummaries: Record<string, AISummary> = {
   },
   "ent.ates-steak": {
     entityId: "ent.ates-steak",
-    basedOnCount: 76, windowDays: 90, generatedAt: "2026-09-01",
+    basedOnCount: 48, windowDays: 90, generatedAt: "2026-09-01",
     lines: [
-      "Etin kendisi 76 deneyimin 64'ünde olumlu; sorun mutfakta değil salonda.",
+      "Etin kendisi 48 deneyimin 40'ında olumlu; sorun mutfakta değil salonda.",
       "Bekleme süresi ve bilgilendirme eksikliği son 90 günde en hızlı büyüyen şikayet.",
       "Öğle menüsünün akşamla aynı mutfak olduğu 11 ayrı deneyimde belirtilmiş.",
       "Gürültü seviyesi tekrar eden bir konu; 18 deneyimde geçiyor.",
@@ -58,9 +58,9 @@ const baseSummaries: Record<string, AISummary> = {
   },
   "ent.koz-durum": {
     entityId: "ent.koz-durum",
-    basedOnCount: 113, windowDays: 90, generatedAt: "2026-09-01",
+    basedOnCount: 93, windowDays: 90, generatedAt: "2026-09-01",
     lines: [
-      "113 deneyimin 104'ü olumlu; Gidenler'de en yüksek görüş birliğine sahip mekânlardan.",
+      "93 deneyimin 86'sı olumlu; Gidenler'de en yüksek görüş birliğine sahip mekânlardan.",
       "Gece 00.00 sonrası gidenlerin oranı %41 — bu saatte alternatifi az.",
       "Fiyat bu yıl üç kez arttı; 29 deneyimde belirtilmiş ama tekrar gitme oranını düşürmemiş.",
       "Oturma alanı olmaması bir şikayet değil, beklenti olarak kabul edilmiş görünüyor.",
@@ -69,9 +69,9 @@ const baseSummaries: Record<string, AISummary> = {
   },
   "ent.demlik-roastery": {
     entityId: "ent.demlik-roastery",
-    basedOnCount: 58, windowDays: 90, generatedAt: "2026-09-01",
+    basedOnCount: 45, windowDays: 90, generatedAt: "2026-09-01",
     lines: [
-      "Filtre kahve tarafı 58 deneyimin 52'sinde övülmüş; espresso bazlı içecekler ayrışıyor.",
+      "Filtre kahve tarafı 45 deneyimin 40'ında övülmüş; espresso bazlı içecekler ayrışıyor.",
       "Kavurma tarihinin pakete yazılması 14 deneyimde ayrıca not edilmiş.",
       "Fiyat semt ortalamasının üzerinde; 19 deneyimde geçiyor.",
     ],
@@ -79,11 +79,11 @@ const baseSummaries: Record<string, AISummary> = {
   },
   "ent.balikci-sokagi": {
     entityId: "ent.balikci-sokagi",
-    basedOnCount: 47,
+    basedOnCount: 46,
     windowDays: 90,
     generatedAt: "2026-09-01",
     lines: [
-      "Kalabalık grup deneyimi en çok övülen konu: 47 deneyimin 29'u grup halinde gitmiş.",
+      "Kalabalık grup deneyimi en çok övülen konu: 46 deneyimin 28'i grup halinde gitmiş.",
       "Fiyat yüksek bulunuyor ama şeffaf bulunuyor — 'kalem kalem hesap' 12 deneyimde geçiyor.",
       "Son 90 günde belirgin bir değişim yok.",
     ],

@@ -9,7 +9,7 @@ import { NoticeBody, type ThresholdVenue } from "./ThresholdCard";
 
 /* ──────────────────────────────────────────────────────────────────────────
    SUNUM · PUAN DEĞİŞİMİNİ CANLANDIR — yalnız /demo'da.
-   Senaryo restoranın GERÇEK (demo verisindeki) Gidenler puanından başlar ve yalnız bu cihazdaki demo kaydında
+   Senaryo restoranın demo başlangıç puanından (simüle demo verisi) başlar ve yalnız bu cihazdaki demo kaydında
    tutulur: sayfadaki puan, grafik, deneyim sayısı ve sıralama değişmez. Güven koşulu simülasyondur.
    ────────────────────────────────────────────────────────────────────────── */
 
@@ -82,9 +82,9 @@ export function ScoreScenario({ venues }: { venues: ThresholdVenue[] }) {
             </select>
           </label>
           <div className="flex items-end gap-6">
-            <div className="flex flex-col"><span className="text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">Gidenler puanı</span>
+            <div className="flex flex-col"><span className="text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">{shown !== null ? "Senaryo sonucu" : "Demo başlangıç puanı"}</span>
               <span className="tnum text-[34px] font-extrabold leading-none">{s === null ? "—" : score1(shown ?? s)}</span>
-              {shown !== null && <span className="text-[11px] text-ink-3">senaryo · gerçek puan {s === null ? "—" : score1(s)}</span>}</div>
+              {shown !== null && <span className="text-[11px] text-ink-3">demo başlangıç puanı {s === null ? "—" : score1(s)} · sayfada değişmez</span>}</div>
             <div className="flex flex-col"><span className="text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">Eşiğin</span>
               <span className="tnum text-[22px] font-extrabold leading-none">{pref ? score1(pref.threshold) : "—"}</span>
               <span className="text-[11px] text-ink-3">{!pref ? "seçilmedi" : pref.notify ? "takipte" : "takip kapalı"}</span></div>
@@ -92,7 +92,7 @@ export function ScoreScenario({ venues }: { venues: ThresholdVenue[] }) {
           {!pref && <p className="text-[13px] text-ink-2">Önce <Link href={`/mekan/${v.slug}/`} className="font-semibold underline underline-offset-4">{v.name}</Link> sayfasındaki “Deneme eşiğin” kartından bir eşik kaydet; eşik yoksa senaryo bildirim üretmez.</p>}
           {s === null && <p className="text-[13px] text-ink-2">Yeterli deneyim oluşması bekleniyor: bu restoranın henüz Gidenler puanı yok, senaryo çalışmaz.</p>}
           <p className="text-[12px] leading-relaxed text-ink-3">
-            Senaryo gerçek Gidenler puanından başlar; sayfadaki puan, grafik, deneyim sayısı ve sıralama değişmez. Güven koşulu (en az {MIN_NEW_EXPERIENCES} yeni deneyim, en az {MIN_VERIFIED} doğrulanmış ziyaret) simülasyondur; Google ile giriş yapmış olmak ziyaret doğrulaması sayılmaz. Gerçek e-posta, SMS ya da push bildirimi gönderilmez.
+            Senaryo, restoranın demo başlangıç puanından başlar (bu puan da simüle demo verisidir); sayfadaki puan, grafik, deneyim sayısı ve sıralama değişmez. Güven koşulu (en az {MIN_NEW_EXPERIENCES} yeni deneyim, en az {MIN_VERIFIED} doğrulanmış ziyaret) simülasyondur; Google ile giriş yapmış olmak ziyaret doğrulaması sayılmaz. Gerçek e-posta, SMS ya da push bildirimi gönderilmez.
           </p>
         </div>
         <div className="flex flex-col gap-2">

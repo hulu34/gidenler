@@ -93,7 +93,7 @@ function Body({ v }: { v: ThresholdVenue }) {
           {sc && (
             <p className="text-[12px] leading-snug text-ink-3">
               <span className="mr-1 border border-dashed border-line-2 px-1 text-[9.5px] font-bold uppercase tracking-[0.08em]">sunum senaryosu</span>
-              {score1(sc.from)} → {score1(sc.to)} · {sc.state === "asti" ? "eşik aşıldı" : sc.message}
+              Senaryo sonucu <strong className="tnum text-ink-2">{score1(sc.to)}</strong> · {sc.state === "asti" ? "eşik aşıldı" : sc.message} Sayfadaki demo başlangıç puanı ({score1(sc.from)}) değişmez.
             </p>
           )}
           {notice && pref.notify && <div className="border-l-2 border-accent pl-2.5"><NoticeBody n={notice} onGo={() => markNoticeRead(notice.id)} /></div>}
@@ -114,7 +114,7 @@ function Head({ v }: { v: ThresholdVenue }) {
   return (
     <span className="flex min-w-0 items-baseline justify-between gap-3">
       <span className="text-[11px] font-bold uppercase tracking-[0.16em]">Deneme eşiğin</span>
-      <span className="tnum text-[11.5px] text-ink-3">Gidenler {v.score === null ? <span className="text-ink-2">henüz yok</span> : <strong className="text-[14px] font-extrabold text-ink">{score1(v.score)}</strong>}</span>
+      <span className="tnum text-right text-[11px] leading-tight text-ink-3">Demo başlangıç puanı {v.score === null ? <span className="text-ink-2">henüz yok</span> : <strong className="text-[14px] font-extrabold text-ink">{score1(v.score)}</strong>}</span>
     </span>
   );
 }
@@ -142,7 +142,7 @@ export function ThresholdBar({ v }: { v: ThresholdVenue }) {
           <span className="text-[10.5px] font-bold uppercase tracking-[0.16em]">Deneme eşiğin</span>
           <span className="truncate text-[13px] font-semibold">{summary}</span>
         </span>
-        <span className="tnum shrink-0 text-[12px] text-ink-3">Gidenler {v.score === null ? "—" : <strong className="text-ink">{score1(v.score)}</strong>} <span aria-hidden className="ml-1">{open ? "▴" : "▾"}</span></span>
+        <span className="tnum shrink-0 text-[12px] text-ink-3">Demo başlangıç {v.score === null ? "—" : <strong className="text-ink">{score1(v.score)}</strong>} <span aria-hidden className="ml-1">{open ? "▴" : "▾"}</span></span>
       </button>
       {open && <div className="border-t border-line px-3 pb-3 pt-2.5"><Body v={v} /></div>}
     </section>
