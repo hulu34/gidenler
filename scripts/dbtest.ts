@@ -18,7 +18,7 @@ import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { fetchGooglePlace, googleEnabled, matchGoogleBatch, resolveGooglePlaceId, reviewGoogleMatch, rollbackGoogleMatches } from "../lib/providers/google";
+import { fetchGooglePlace, googleEnabled, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
 import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/match/score";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
@@ -246,6 +246,24 @@ async function main() {
   const nb2 = await matchGoogleBatch(3, mkFetch({ name: "Hiç Benzemeyen Ad", lat: 0, lng: 0 }));
   const s1 = nb1.results.map((x) => x.slug), s2 = nb2.results.map((x) => x.slug);
   ok("eşleşmeyen restoran sonraki partide yeniden aranmaz", s1.length === 3 && s2.length === 3 && !s2.some((x) => s1.includes(x)) && nb2.noMatchRecent === 6, { s1, s2, n: nb2.noMatchRecent });
+
+  /* alternatif arama: yalnız 30 gün içinde eşleşmesi bulunamamış olanlar, her biri bir kez; yakın kutu sonra telefon */
+  ok("arama adı genel sözcükleri atar", searchName("Sırdaş Lokanta") === "Sırdaş" && searchName("Restaurant") === "Restaurant");
+  const bodies: string[] = [];
+  const far = (await db.select().from(schema.places).where(sql`${schema.places.phone} is not null and ${schema.places.vertical} = 'restaurant'`).orderBy(schema.places.slug).limit(1))[0];
+  const retryFetch = (async (url: string, init?: RequestInit) => {
+    const h = (init?.headers ?? {}) as Record<string, string>;
+    if (String(url).endsWith(":searchText")) { bodies.push(String(init?.body)); const b = JSON.parse(String(init?.body));
+      return Response.json({ places: b.locationRestriction ? [] : [{ id: "GID_FAR", displayName: { text: far.name }, location: { latitude: far.lat! + 0.02, longitude: far.lng! } }] }); }
+    if (h["X-Goog-FieldMask"] === "nationalPhoneNumber,websiteUri") return Response.json({ nationalPhoneNumber: far.phone });
+    return Response.json({});
+  }) as unknown as typeof fetch;
+  const rt1 = await retryGoogleNoMatch(1, retryFetch);
+  const one = rt1.results[0];
+  ok("önce yakın kutu (locationRestriction, sade ad), sonra telefonla arama", bodies.length === 2 && bodies[0].includes("locationRestriction") && bodies[1].includes(JSON.stringify(far.phone).slice(1, -1)), { bodies, one });
+  ok("telefon birebir ama 2 km uzak → asla otomatik değil, manuel onay", one?.slug === far.slug && one.phone?.status === "pending" && one.phone?.reason === "telefon_eslesti_konum_farkli", one);
+  const rt2 = await retryGoogleNoMatch(15, retryFetch);
+  ok("aynı restoran ikinci kez yeniden denenmez", !rt2.results.some((x) => x.slug === far.slug), rt2.results.map((x) => x.slug));
 
   /* toplu eşleştirme: kota biterse durur, fazla çağrı yapmaz */
   const fake3 = new FakeRedis(); setRedisForTests(fake3 as unknown as RedisLike);

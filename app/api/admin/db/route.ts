@@ -9,7 +9,7 @@ import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
-import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats } from "@/lib/providers/google";
+import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch } from "@/lib/providers/google";
 import { usageSnapshot, spendReport } from "@/lib/usage/counter";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
@@ -119,6 +119,14 @@ export async function POST(req: Request) {
       case "google-review": {
         if (body.confirm !== "EVET" || !body.id || !["confirmed", "rejected"].includes(body.decision ?? "")) break;
         return NextResponse.json({ action: "google-review", ...(await reviewGoogleMatch(body.id, body.decision as "confirmed" | "rejected")) }, { headers: H });
+      }
+      case "google-retry": {
+        /* Ücretli: eşleşmeyenler için alternatif arama; tek seferde en çok 15 restoran, her biri 30 günde bir kez. */
+        if (body.confirm !== "EVET") break;
+        const before = await spendReport();
+        if (!before) return NextResponse.json({ error: "spend_unknown" }, { status: 503, headers: H });
+        const r = await retryGoogleNoMatch(Number(body.limit) || 10);
+        return NextResponse.json({ action: "google-retry", env: envName(), ...r, stats: await googleMatchStats(), spend: await spendReport() }, { headers: H });
       }
       case "google-queue-sync": {
         /* Onaylanmış/reddedilmiş eşleşmelerin açık kuyruk satırlarını kapatır; silmez. */

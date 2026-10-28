@@ -71,7 +71,17 @@ export async function storedGooglePlaceId(slug: string): Promise<{ id: string } 
        telefon/web varsa Place Details Enterprise (yalnız nationalPhoneNumber, websiteUri) ile doğrula.
     3) Zincir / şube adı farkı / yakında rakip aday / kapı no çelişkisi → katı kural ya da manuel onay.
     Saklanan: place_id + sayısal özet. Google'ın ad/adres/telefon metni hiçbir tabloya yazılmaz. */
-export async function resolveGooglePlaceId(slug: string, key: string, f: typeof fetch = fetch, brands?: Map<string, number>): Promise<MatchDiag> {
+/** Eşleşmeyen restoranlar için alternatif arama: genel sözcükleri atılmış ad (en az bir sözcük kalır). */
+const GENERIC = /\b(restaurant|restoran|restorant|cafe|café|kafe|lokantas[ıi]|lokanta|meyhanes[ıi]|meyhane|bistro|bistrot|&|ve|and)\b/giu;
+export function searchName(name: string) {
+  const t = name.replace(GENERIC, " ").replace(/\s+/g, " ").trim();
+  return t.length >= 2 ? t : name;
+}
+
+/** mode: "default" (ad + ilçe, konum yönlendirmesi 200 m) · "near" (sade ad, kayıt noktası çevresinde ~300 m kutuyla
+    SINIRLI) · "phone" (bizdeki telefon numarası; bulunan aday Enterprise ile telefon birebir doğrulanmadan kabul edilmez,
+    konum 200 m'den uzaksa asla otomatik değil, manuel onaya gider). */
+export async function resolveGooglePlaceId(slug: string, key: string, f: typeof fetch = fetch, brands?: Map<string, number>, mode: "default" | "near" | "phone" = "default"): Promise<MatchDiag> {
   const calls = { textSearch: 0, detailsEnterprise: 0 };
   const db = getDb();
   if (!db) return { slug, status: "no_db", calls };
@@ -86,6 +96,7 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
     return { slug, status: usable ? "existing" : ids.some((i) => i.status === "pending") ? "pending" : "no_match", placeId: usable?.externalId, calls };
   }
 
+  if (mode === "phone" && !p.phone) return { slug, status: "no_match", calls, reason: "telefon_yok" };
   const r = await reserve("google:text_search_pro");
   if (!r.ok) return { slug, status: "limit", calls };
   try {
@@ -93,10 +104,13 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
     const res = await f(`${API}/places:searchText`, {
       method: "POST",
       headers: headers(key, "places.id,places.displayName,places.location,places.formattedAddress"),
-      body: JSON.stringify({
-        textQuery: `${p.name} ${p.district ?? ""} ${p.city}`, languageCode: "tr", maxResultCount: 3,
-        locationBias: { circle: { center: { latitude: p.lat, longitude: p.lng }, radius: 200 } },
-      }),
+      body: JSON.stringify(mode === "near"
+        ? { textQuery: searchName(p.name), languageCode: "tr", maxResultCount: 5,
+            locationRestriction: { rectangle: { low: { latitude: p.lat - 0.0027, longitude: p.lng - 0.0036 }, high: { latitude: p.lat + 0.0027, longitude: p.lng + 0.0036 } } } }
+        : mode === "phone"
+          ? { textQuery: p.phone ?? "", languageCode: "tr", maxResultCount: 3, locationBias: { circle: { center: { latitude: p.lat, longitude: p.lng }, radius: 50000 } } }
+          : { textQuery: `${p.name} ${p.district ?? ""} ${p.city}`, languageCode: "tr", maxResultCount: 3,
+              locationBias: { circle: { center: { latitude: p.lat, longitude: p.lng }, radius: 200 } } }),
       cache: "no-store", signal: AbortSignal.timeout(6000),
     });
     if (!res.ok) return { slug, status: "error", calls };
@@ -107,7 +121,7 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
     const ranked = (j.places ?? []).filter((c) => c.location).map((c) => ({ c, m: matchScore(self, asInput(c)) }))
       .sort((a, b) => b.m.score - a.m.score);
     const best = ranked[0];
-    if (!best || best.m.decision === "reject") return { slug, status: "no_match", calls, reason: "puan_dusuk_ya_da_uzak", ...(best ? { score: best.m.score, nameSim: best.m.name, distanceM: best.m.distanceM } : {}) };
+    if (!best || (best.m.decision === "reject" && mode !== "phone")) return { slug, status: "no_match", calls, reason: mode === "near" ? "yakinda_bulunamadi" : mode === "phone" ? "telefonla_bulunamadi" : "puan_dusuk_ya_da_uzak", ...(best ? { score: best.m.score, nameSim: best.m.name, distanceM: best.m.distanceM } : {}) };
 
     /* Zincir: markamız bizde birden çok mekânda var ya da Google aynı markadan birden çok aday döndürdü. */
     const bk = brandKey(p.name);
@@ -120,7 +134,7 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
       addrConflict: houseNoConflict(p.address, best.c.formattedAddress),
     };
     let m = best.m;
-    let dec = preDecide(m, ctx, !!(p.phone || p.website));
+    let dec = mode === "phone" ? { decision: "review" as const, needsVerify: true, reason: "telefon" } : preDecide(m, ctx, !!(p.phone || p.website));
     if (dec.needsVerify) {
       const v = await reserve("google:details_enterprise");
       if (!v.ok) return { slug, status: "limit", calls };
@@ -131,7 +145,17 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
       if (!d.ok) return { slug, status: "error", calls };
       const dj = await d.json() as { nationalPhoneNumber?: string; websiteUri?: string };
       m = matchScore(self, asInput(best.c, { phone: dj.nationalPhoneNumber, website: dj.websiteUri }));
-      dec = postDecide(m, ctx);
+      if (mode === "phone") {
+        /* telefonla bulunan aday: telefon birebir değilse hiç kaydedilmez; birebirse ama konum uzaksa manuel onay */
+        /* matchScore 200 m üstünde telefona bakmadan reddeder; burada telefon doğrudan karşılaştırılır */
+        const tel = (x?: string | null) => (x ?? "").replace(/\D/g, "").slice(-10);
+        if (!tel(p.phone) || tel(p.phone) !== tel(dj.nationalPhoneNumber)) return { slug, status: "no_match", calls, reason: "telefon_eslesmedi", distanceM: best.m.distanceM };
+        m = { ...m, phone: "match" };
+        dec = best.m.distanceM > 200 || m.decision === "reject"
+          ? { decision: "review", needsVerify: false, reason: "telefon_eslesti_konum_farkli" }
+          : postDecide(m, ctx);
+        if (dec.decision === "reject") dec = { decision: "review", needsVerify: false, reason: "telefon_eslesti_konum_farkli" };
+      } else dec = postDecide(m, ctx);
     }
     if (dec.decision === "reject") return { slug, status: "no_match", calls, score: m.score, reason: dec.reason };
 
@@ -198,6 +222,37 @@ export async function matchGoogleBatch(limit: number, f: typeof fetch = fetch) {
   }
   const after = await open();
   return { results, remaining: after.untried.length, noMatchRecent: after.noneRecent };
+}
+
+/** Alternatif arama (yalnız yönetim): son 30 günde eşleşmesi bulunamamış restoranlar için önce "near", sonuç yoksa ve
+    telefon varsa "phone". Her restoran 30 gün içinde yalnız BİR kez yeniden denenir (Redis işareti); kota/tavan/hata
+    olursa durur. */
+const retryKey = (slug: string) => `${redisNs()}:gmatch:retry:${slug}`;
+export async function retryGoogleNoMatch(limit: number, f: typeof fetch = fetch) {
+  const key = process.env.GOOGLE_PLACES_API_KEY;
+  if (!key || !googleEnabled()) return { error: "disabled" as const, results: [] as Array<{ slug: string; near: MatchDiag; phone?: MatchDiag }> };
+  const db = getDb(), redis = getRedis();
+  if (!db || !redis) return { error: "no_db_or_redis" as const, results: [] };
+  const done = db.select({ id: placeIdentifiers.placeId }).from(placeIdentifiers).where(eq(placeIdentifiers.provider, "google"));
+  const pool = await db.select({ slug: places.slug }).from(places)
+    .where(and(eq(places.vertical, "restaurant"), notInArray(places.id, done))).orderBy(places.slug);
+  const flags = pool.length ? await redis.mget<(string | null)[]>(...pool.flatMap((p) => [noneKey(p.slug), retryKey(p.slug)])) : [];
+  const eligible = pool.filter((_, i) => flags[2 * i] && !flags[2 * i + 1]);
+  const brands = new Map<string, number>();
+  for (const r of await db.select({ name: places.name }).from(places)) { const k = brandKey(r.name); if (k) brands.set(k, (brands.get(k) ?? 0) + 1); }
+  const results: Array<{ slug: string; near: MatchDiag; phone?: MatchDiag }> = [];
+  for (const t of eligible.slice(0, Math.max(1, Math.min(limit, 15)))) {
+    const near = await resolveGooglePlaceId(t.slug, key, f, brands, "near");
+    if (near.status === "limit" || near.status === "error") { results.push({ slug: t.slug, near }); break; }
+    let phone: MatchDiag | undefined;
+    if (near.status === "no_match") {
+      phone = await resolveGooglePlaceId(t.slug, key, f, brands, "phone");
+      if (phone.status === "limit" || phone.status === "error") { results.push({ slug: t.slug, near, phone }); break; }
+    }
+    await redis.set(retryKey(t.slug), "1", { ex: NONE_TTL });
+    results.push({ slug: t.slug, near, phone });
+  }
+  return { results, eligibleLeft: Math.max(0, eligible.length - results.length) };
 }
 
 /** Canlı Google bilgisi — YALNIZ kullanıcı istediğinde, yalnız kayıtlı (onaylı/otomatik) kimlik için. Hiçbir şey saklanmaz.
