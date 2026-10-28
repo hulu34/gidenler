@@ -141,7 +141,7 @@ function Viewer({ list, index, onIndex, onClose, name }: { list: AnyVideo[]; ind
         <div className="flex shrink-0 flex-col gap-1 px-3 py-2.5 text-[12px] text-white/75" {...swipe}>
           <span className="text-[14px] font-semibold text-white">{v.title}</span>
           <span>{v.kind} · {v.dish} · {v.creator} (kurgusal üretici)</span>
-          <span>{SIM}: Gidenler içinde oynayan temsili klip; gerçek bir YouTube, Instagram ya da TikTok gönderisi değildir. Klip: {v.clip.author} · {v.clip.license} · <a href={v.clip.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Wikimedia Commons ↗</a></span>
+          <span>{SIM}: Gidenler içinde oynayan temsili klip; gerçek bir YouTube, Instagram ya da TikTok gönderisi değildir. {v.kind === "Fotoğraf klibi" ? "Fotoğraf" : "Klip"}: {v.clip.author} · {v.clip.license} · <a href={v.clip.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Wikimedia Commons ↗</a></span>
         </div>
       ) : (
       <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 px-3 py-2.5 text-[12px] text-white/75" {...swipe}>

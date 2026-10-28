@@ -172,7 +172,26 @@ const baseExternal: ExternalSource[] = [
     attribution: "Yandex Haritalar", lastUpdated: "2026-08-25", isDemo: true, status: "stale" },
 ];
 
-export const externalSources: ExternalSource[] = [...baseExternal, ...universeExternal];
+/* Yatırımcı demosu profilleri: ilk ekrandaki puan şeridinde eksik kalan sağlayıcılar (simülasyon, isDemo). */
+const DEMO_STRIP: Array<[string, "google" | "tripadvisor" | "yandex", number, number]> = [
+  ["tarcin-lokantasi", "yandex", 4.6, 690],
+  ["fistik", "google", 4.4, 412], ["fistik", "tripadvisor", 4.5, 188], ["fistik", "yandex", 4.3, 96],
+  ["sedef-kahvalti", "tripadvisor", 3.9, 521], ["sedef-kahvalti", "yandex", 4.0, 740],
+  ["ayva-firin-pizza", "yandex", 3.4, 210],
+  ["erguvan-lokantasi", "yandex", 4.1, 155],
+  ["ekin-pide", "tripadvisor", 3.5, 96], ["ekin-pide", "yandex", 3.6, 288],
+  ["meyhane-sardunya", "yandex", 4.4, 170],
+  ["iskele-burger", "yandex", 3.5, 2110],
+  ["lokanta-sardunya", "google", 4.0, 860], ["lokanta-sardunya", "tripadvisor", 3.9, 240], ["lokanta-sardunya", "yandex", 4.1, 510],
+  ["meyhane-nar", "google", 4.1, 930], ["meyhane-nar", "tripadvisor", 4.0, 310], ["meyhane-nar", "yandex", 4.2, 280],
+];
+const demoStrip: ExternalSource[] = DEMO_STRIP.map(([slug, provider, score, reviewCount]) => ({
+  id: `ext.d.${slug}.${provider}`, entityId: `ent.u.${slug}`, provider, label: PROVIDERS[provider].label,
+  kind: "score", score, scoreScale: 5, reviewCount, attribution: provider === "yandex" ? "Yandex Haritalar" : PROVIDERS[provider].label,
+  lastUpdated: "2026-08-28", isDemo: true, status: "ok",
+}));
+
+export const externalSources: ExternalSource[] = [...baseExternal, ...universeExternal, ...demoStrip];
 const extByEntity = new Map<string, ExternalSource[]>();
 for (const x of externalSources) { const a = extByEntity.get(x.entityId) ?? []; a.push(x); extByEntity.set(x.entityId, a); }
 export const externalByEntity = (id: string) => extByEntity.get(id) ?? [];

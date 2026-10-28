@@ -109,7 +109,9 @@ const baseEntities: Entity[] = [
 export { DEMO_VISIBLE };
 
 /** El yapımı altın kayıtlar + deterministik evren (demo) + gerçek mekânlar (OSM). */
-export const allEntities: Entity[] = [...baseEntities.map((e) => ({ tier: "A" as const, ...e, ...(DEMO_PHOTOS[e.slug] ? { photos: DEMO_PHOTOS[e.slug] } : {}), ...(DEMO_PROFILES[e.slug] ? { priceBands: DEMO_PROFILES[e.slug].priceBands } : {}) })), ...universeEntities, ...realEntities];
+export const allEntities: Entity[] = [...baseEntities.map((e) => ({ tier: "A" as const, ...e })), ...universeEntities, ...realEntities]
+  /* yatırımcı demosu profilleri: temsili görseller + menüyle tutarlı örnek bütçe (yalnız demo kayıtlar) */
+  .map((e) => (e.isDemo && DEMO_PROFILES[e.slug] ? { ...e, photos: DEMO_PHOTOS[e.slug] ?? e.photos, priceBands: DEMO_PROFILES[e.slug].priceBands } : e));
 /** Uygulamanın gördüğü liste — tek doğruluk kaynağı. */
 export const entities: Entity[] = DEMO_VISIBLE ? allEntities : allEntities.filter((e) => !e.isDemo);
 const bySlug = new Map(entities.map((e) => [e.slug, e]));
