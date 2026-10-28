@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
-import { CAT_LABEL, fromVenuePhotos, SOURCE_LABEL, useGooglePhotos, type PhotoCat, type ViewPhoto } from "./photos";
+import { CAT_LABEL, fromVenuePhotos, responsive, SOURCE_LABEL, useGooglePhotos, type PhotoCat, type ViewPhoto } from "./photos";
 
 /* ──────────────────────────────────────────────────────────────────────────
    FOTOĞRAFLAR SAYFASI — Tabelog'un kategorili fotoğraf sekmeleri, Gidenler'e göre:
@@ -42,7 +42,7 @@ export function PhotoGalleryFull({ slug, name, photos, isReal }: { slug: string;
             <li key={p.src} className="break-inside-avoid">
               <button type="button" onClick={() => setOpen(i)} className="group relative block w-full overflow-hidden bg-sheet" aria-label={`Fotoğrafı büyüt: ${p.alt}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.src} alt={p.alt} loading={i < 4 ? "eager" : "lazy"} decoding="async" referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
+                <img src={p.src} {...responsive(p, "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 295px")} alt={p.alt} loading={i < 4 ? "eager" : "lazy"} decoding="async" referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
                   style={{ aspectRatio: p.w && p.h ? `${p.w} / ${p.h}` : "4 / 3" }} className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                 <span className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col bg-gradient-to-t from-black/75 to-transparent px-2 pb-1.5 pt-6 text-left text-[10.5px] leading-tight text-white">
                   <span className="truncate font-semibold">{p.author ?? "—"}</span>

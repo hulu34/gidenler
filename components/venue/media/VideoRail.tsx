@@ -119,16 +119,21 @@ export function VideoRail({ slug, name, initial = [] }: { slug: string; name: st
     return () => { alive = false; };
   }, [slug]);
   if (!list.length) return null;
+  /* platformlar dönüşümlü: kapaklı YouTube önce, aynı platform arka arkaya yığılmaz */
+  const order: VideoPlatform[] = ["youtube", "instagram", "tiktok"];
+  const buckets = order.map((pl) => list.filter((v) => v.platform === pl));
+  const shown: RailVideo[] = [];
+  for (let i = 0; shown.length < list.length; i++) for (const b of buckets) if (b[i]) shown.push(b[i]);
   return (
     <section id="videolar" aria-labelledby="h-videolar" className="scroll-mt-28 mt-10 sm:scroll-mt-32">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
-        <h2 id="h-videolar" className="text-[13px] font-bold uppercase tracking-[0.2em]">Videolar <span className="tnum font-semibold text-ink-3">{list.length}</span></h2>
+        <h2 id="h-videolar" className="text-[13px] font-bold uppercase tracking-[0.2em]">Videolar <span className="tnum font-semibold text-ink-3">{shown.length}</span></h2>
         <p className="max-w-[56ch] text-[12px] text-ink-3">Shorts, Reels ve TikTok videoları burada, resmî oynatıcılarla oynar. Videolar içerik sahiplerine aittir.</p>
       </div>
       <div className="-mx-5 mt-4 flex snap-x gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:px-0">
-        {list.map((v, i) => <Card key={v.id} v={v} onOpen={() => setOpen(i)} />)}
+        {shown.map((v, i) => <Card key={v.id} v={v} onOpen={() => setOpen(i)} />)}
       </div>
-      {open !== null && <Viewer list={list} index={open} onIndex={setOpen} onClose={() => setOpen(null)} name={name} />}
+      {open !== null && <Viewer list={shown} index={open} onIndex={setOpen} onClose={() => setOpen(null)} name={name} />}
     </section>
   );
 }

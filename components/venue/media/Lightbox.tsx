@@ -64,7 +64,7 @@ export function Lightbox({ photos, index, onIndex, onClose, title }: {
       style={{ opacity: 1 - Math.min(dy / 400, 0.5) }}>
       <div className="flex items-center justify-between gap-3 px-4 py-3 text-[13px]">
         <span className="tnum font-semibold">{index + 1} / {n}</span>
-        <span className="truncate text-white/70">{title} · {CAT_LABEL[p.category]}</span>
+        <span className="truncate text-white/70">{title} · {p.source === "google" ? <span translate="no">Google Maps</span> : CAT_LABEL[p.category]}</span>
         <button ref={closeRef} type="button" onClick={close} aria-label="Kapat (Esc)"
           className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-[20px] hover:bg-white/20">×</button>
       </div>

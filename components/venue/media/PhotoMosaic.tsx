@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
-import { fromVenuePhotos, useGooglePhotos, type ViewPhoto } from "./photos";
+import { fromVenuePhotos, responsive, useGooglePhotos, type ViewPhoto } from "./photos";
 
 /* ──────────────────────────────────────────────────────────────────────────
    KAPAK MOZAİĞİ — başlığın hemen altında: bir büyük kapak + dört küçük kare (Tabelog'un üst şeridi gibi).
@@ -14,12 +14,12 @@ import { fromVenuePhotos, useGooglePhotos, type ViewPhoto } from "./photos";
    · İlk kare yüksek öncelikle, diğerleri geç yüklenir; kareler sabit oranlı (sayfa kayması yok).
    ────────────────────────────────────────────────────────────────────────── */
 
-function Tile({ p, i, onOpen, className, priority }: { p: ViewPhoto; i: number; onOpen: (i: number) => void; className?: string; priority?: boolean }) {
+function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 86vw, 25vw" }: { p: ViewPhoto; i: number; onOpen: (i: number) => void; className?: string; priority?: boolean; sizes?: string }) {
   return (
     <button type="button" onClick={() => onOpen(i)} aria-label={`Fotoğrafı büyüt: ${p.alt}`}
       className={`group relative block h-full w-full overflow-hidden bg-sheet ${className ?? ""}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={p.src} alt={p.alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async"
+      <img src={p.src} {...responsive(p, sizes)} alt={p.alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async"
         referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
       <span className="pointer-events-none absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-2 pb-1 pt-5 text-left text-[10.5px] text-white">
@@ -94,9 +94,9 @@ export function PhotoMosaic({ slug, name, photos, isReal }: { slug: string; name
       <div className={`hidden grid-cols-4 grid-rows-2 gap-1.5 sm:grid ${k === 1 ? "h-[clamp(220px,32vw,380px)]" : "h-[clamp(260px,38vw,440px)]"}`}>
         {shown.map((p, i) => (
           <div key={p.src} className={`relative ${span(i)}`}>
-            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} />
+            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} sizes={i === 0 || k <= 2 ? (k === 1 ? "1180px" : "590px") : "295px"} />
             {i === k - 1 && (
-              <Link href={galleryHref} className="absolute bottom-3 right-3 rounded-full bg-paper/95 px-3.5 py-1.5 text-[12.5px] font-bold text-ink shadow hover:bg-paper">
+              <Link href={galleryHref} className="absolute right-3 top-3 rounded-full bg-paper/95 px-3.5 py-1.5 text-[12.5px] font-bold text-ink shadow hover:bg-paper">
                 Tüm fotoğraflar{all.length > 1 || g.total ? ` (${Math.max(all.length, own.length + (g.total ?? 0))})` : ""}
               </Link>
             )}
