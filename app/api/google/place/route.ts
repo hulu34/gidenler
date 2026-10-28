@@ -43,7 +43,8 @@ export async function GET(req: Request) {
   }
 
   const q = new URL(req.url).searchParams;
-  const r = part === "view" ? await fetchGoogleView(slug, fetch, 5)
+  /* n: ilk istekte kaç fotoğraf (mobil 1 = yalnız görünen kapak; masaüstü 5 = mozaik) */
+  const r = part === "view" ? await fetchGoogleView(slug, fetch, Math.max(1, Math.min(5, Number(q.get("n")) || 5)))
     : await fetchGooglePlace(slug, fetch, part, { from: Number(q.get("from")) || 0, n: Number(q.get("n")) || undefined });
   switch (r.state) {
     case "ok": return NextResponse.json(r.data, { headers: H });
@@ -63,7 +64,8 @@ export async function POST(req: Request) {
   if (BOT.test(req.headers.get("user-agent") ?? "")) return NextResponse.json({ disabled: true }, { headers: H });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "anon";
   const perIp = Math.min(60, Math.max(1, Number(process.env.GOOGLE_PLACES_IP_HOURLY) || 30));
-  if (!(await strictHit(`gp:${hashKey("ip:" + ip)}:h${Math.floor(Date.now() / 3_600_000)}`, perIp, 3700))) {
+  /* galeri/şerit devamı ayrı sayılır (sayfa görünümü payını yemesin); tavanı sayfa payının 3 katı */
+  if (!(await strictHit(`gpm:${hashKey("ip:" + ip)}:h${Math.floor(Date.now() / 3_600_000)}`, perIp * 3, 3700))) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });
   }
   let refs: GooglePhotoRef[] = [];

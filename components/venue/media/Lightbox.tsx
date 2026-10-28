@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CAT_LABEL, SOURCE_LABEL, type ViewPhoto } from "./photos";
+import { GoogleMapsLogo } from "./GoogleAttribution";
 
 /* ──────────────────────────────────────────────────────────────────────────
    TAM EKRAN FOTOĞRAF GÖRÜNTÜLEYİCİ
@@ -64,7 +65,7 @@ export function Lightbox({ photos, index, onIndex, onClose, title }: {
       style={{ opacity: 1 - Math.min(dy / 400, 0.5) }}>
       <div className="flex items-center justify-between gap-3 px-4 py-3 text-[13px]">
         <span className="tnum font-semibold">{index + 1} / {n}</span>
-        <span className="truncate text-white/70">{title} · {p.source === "google" ? <span translate="no">Google Maps</span> : CAT_LABEL[p.category]}</span>
+        <span className="truncate text-white/70">{title}{p.source === "google" ? "" : ` · ${CAT_LABEL[p.category]}`}</span>
         <button ref={closeRef} type="button" onClick={close} aria-label="Kapat (Esc)"
           className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-[20px] hover:bg-white/20">×</button>
       </div>
@@ -95,9 +96,12 @@ export function Lightbox({ photos, index, onIndex, onClose, title }: {
           {p.authorUri ? <a href={p.authorUri} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">{p.author}</a>
             : <span className="font-semibold">{p.author ?? "—"}</span>}
         </span>
-        <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${p.source === "google" ? "bg-white text-black" : "bg-white/15"}`} translate="no">{SOURCE_LABEL[p.source]}</span>
+        {p.source === "google"
+          ? <span className="px-2.5 pb-[5px] pt-2.5"><GoogleMapsLogo tone="white" /></span>
+          : <span className="rounded-full bg-white/15 px-2 py-0.5 text-[11px] font-semibold">{SOURCE_LABEL[p.source]}</span>}
         {p.license && <span className="text-white/70">{p.license}</span>}
-        {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-white/70 underline underline-offset-2">Kaynağında aç ↗</a>}
+        {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-white/80 underline underline-offset-2">{p.source === "google" ? "Google Haritalar'da gör ↗" : "Kaynağında aç ↗"}</a>}
+        {p.flagUri && <a href={p.flagUri} target="_blank" rel="noopener noreferrer" className="text-white/60 underline underline-offset-2">Bildir</a>}
         {p.source === "google" && <span className="text-white/60">Google'dan canlı gelir, Gidenler'de saklanmaz.</span>}
       </div>
 

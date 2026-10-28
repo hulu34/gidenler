@@ -19,7 +19,7 @@ import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
-import googleList from "@/data/real/google.json";
+import { googleUsable, videoCounts } from "@/lib/live";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { parseVideoUrl } from "@/lib/media/embed";
@@ -108,8 +108,9 @@ function railFromMedia(media: import("@/lib/types").MediaLink[] = []): RailVideo
   });
 }
 
-/** Google ile doğrulanmış restoranlar (derleme listesi; sunucu her istekte veritabanından yeniden doğrular). */
-const GOOGLE_MATCHED = new Set<string>(googleList.slugs);
+/* Statik sayfa + saatlik yenileme; Google eşleşmesi ve videolar veritabanından (lib/live), yönetimdeki
+   değişiklik ilgili önbelleği hemen geçersiz kılar — yeni onaylanan restoran için yeniden derleme gerekmez. */
+export const revalidate = 3600;
 
 const PRICE = (n?: 1 | 2 | 3 | 4) => (n ? "₺".repeat(n) : undefined);
 
@@ -147,7 +148,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   /* Kapak fotoğrafı ilk ekrandaki en büyük öğe: HTML ayrıştırılırken hemen, mozaikle aynı boyut kuralıyla iner */
-  const google = !!entity.isReal && GOOGLE_MATCHED.has(entity.slug);
+  const [usable, videos] = entity.isReal ? await Promise.all([googleUsable(), videoCounts()]) : [[], {} as Record<string, number>];
+  const google = !!entity.isReal && usable.includes(entity.slug);
   const cover = entity.photos?.[0];
   if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
     imageSizes: `(max-width: 640px) 60vw, ${(entity.photos?.length ?? 0) === 1 ? "1180px" : "590px"}` });
@@ -241,7 +243,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
       <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />
 
-      {entity.isReal && <DataCompleteness c={completenessOf(entity)} />}
+      {entity.isReal && <DataCompleteness c={completenessOf(entity, { googleMatched: google, videos: videos[entity.slug] ?? 0 })} slug={entity.slug} google={google} />}
 
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
       <TopicNav sections={sections} />

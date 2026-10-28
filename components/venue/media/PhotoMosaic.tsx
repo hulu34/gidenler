@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
 import { fromVenuePhotos, responsive, type ViewPhoto } from "./photos";
-import { useGoogleView } from "./googleView";
+import { loadMoreGooglePhotos, useGoogleView, type GRef } from "./googleView";
+import { GoogleMapsText } from "./GoogleAttribution";
 
 /* ──────────────────────────────────────────────────────────────────────────
    KAPAK MOZAİĞİ — başlığın hemen altında: bir büyük kapak + dört küçük kare (Tabelog'un üst şeridi gibi).
@@ -24,8 +25,8 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
       <img src={p.src} {...responsive(p, sizes)} alt={p.alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async"
         referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-      <span className="pointer-events-none absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-2 pb-1 pt-5 text-left text-[10.5px] text-white">
-        {p.source === "google" ? <><span translate="no">Google Maps</span> · {p.author}</> : <>{p.author}{p.license ? ` · ${p.license}` : ""}</>}
+      <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-baseline gap-1.5 truncate bg-gradient-to-t from-black/75 to-transparent px-2 pb-1 pt-6 text-left text-[11px] text-white">
+        {p.source === "google" ? <><GoogleMapsText tone="white" /><span className="truncate opacity-90">· {p.author}</span></> : <>{p.author}{p.license ? ` · ${p.license}` : ""}</>}
       </span>
     </button>
   );
@@ -34,7 +35,30 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
 export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean }) {
   const own = fromVenuePhotos(photos);
   const g = useGoogleView(slug, google);
-  const gPhotos = g.k === "ok" ? g.v.photos : [];
+  /* mobil şeritte kalan Google kareleri: kullanıcı şeridi kaydırdıkça 2'şer (masaüstünde ilk istek 5'i getirir) */
+  const [more, setMore] = useState<ViewPhoto[]>([]);
+  const [left, setLeft] = useState<GRef[] | null>(null);
+  const [busy, setBusy] = useState(false);
+  const strip = useRef<HTMLDivElement>(null);
+  const pending = left ?? (g.k === "ok" ? g.v.refs : []);
+  const gPhotos = g.k === "ok" ? [...g.v.photos, ...more] : [];
+  const holes = g.k === "ok" && gPhotos.length < 5 ? Math.min(pending.length, 5 - gPhotos.length) : 0;
+  useEffect(() => {
+    const root = strip.current;
+    if (!root || !holes || busy) return;
+    const first = root.querySelector("[data-hole]");
+    if (!first) return;
+    const io = new IntersectionObserver(async (es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      io.disconnect(); setBusy(true);
+      const got = await loadMoreGooglePhotos(slug, pending.slice(0, 2));
+      if (got?.length) { setMore((x) => [...x, ...got]); setLeft(pending.slice(got.length)); } else setLeft([]);
+      setBusy(false);
+      /* ikinci kare açılışta yalnız ucundan görünür: istek ancak kullanıcı şeridi kaydırıp karenin %35'i görününce */
+    }, { root: window.matchMedia("(max-width: 639px)").matches ? root : null, threshold: 0.35 });
+    io.observe(first);
+    return () => io.disconnect();
+  }, [holes, busy, pending, slug]);
   const all = [...own, ...gPhotos];
   const [open, setOpen] = useState<number | null>(null);
   const galleryHref = `/mekan/${slug}/fotograflar/`;
@@ -49,7 +73,7 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
             <div key={i} className={`aspect-[4/3] w-[86%] shrink-0 animate-pulse bg-sheet sm:aspect-auto sm:w-auto ${i === 0 ? "sm:col-span-2 sm:row-span-2" : "sm:col-span-1 sm:row-span-1"}`} />
           ))}
         </div>
-        <p className="mt-2 min-h-[34px] text-[11.5px] text-ink-3 sm:min-h-[18px]"><span translate="no">Google Maps</span> fotoğrafları yükleniyor…</p>
+        <p className="mt-2 min-h-[34px] text-[11.5px] text-ink-3 sm:min-h-[18px]">Fotoğraflar yükleniyor…</p>
       </section>
     );
   }
@@ -101,7 +125,7 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
   return (
     <section aria-label={`${name} fotoğrafları`} className="mt-5">
       {/* TEK yapı: mobilde kaydırmalı şerit, masaüstünde mozaik (aynı <img>; gizli ikinci kopya indirilmez) */}
-      <div className={`-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:overflow-visible sm:px-0 ${k === 1 && !google ? "sm:h-[clamp(220px,32vw,380px)]" : "sm:h-[clamp(260px,38vw,440px)]"}`}>
+      <div ref={strip} className={`-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:overflow-visible sm:px-0 ${k === 1 && !google ? "sm:h-[clamp(220px,32vw,380px)]" : "sm:h-[clamp(260px,38vw,440px)]"}`}>
         {all.map((p, i) => (
           <div key={p.src} className={`relative aspect-[4/3] w-[86%] shrink-0 snap-center sm:aspect-auto sm:w-auto ${i < 5 ? span(i) : "sm:hidden"}`}>
             {/* mobilde kapak 500 px sürümünden (LCP); masaüstünde kareye göre */}
@@ -113,6 +137,9 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
             )}
           </div>
         ))}
+        {Array.from({ length: holes }, (_, i) => (
+          <div key={`hole-${i}`} data-hole aria-hidden className="aspect-[4/3] w-[86%] shrink-0 snap-center animate-pulse bg-sheet sm:hidden" />
+        ))}
         <Link href={galleryHref} className="flex aspect-[4/3] w-[40%] shrink-0 snap-center flex-col items-center justify-center gap-1 border border-line-2 text-[13px] font-semibold sm:hidden">
           <span className="text-[22px]" aria-hidden>▦</span>Tüm fotoğraflar
         </Link>
@@ -122,7 +149,7 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
       <div className={`mt-2 flex flex-wrap items-center justify-between gap-2 text-[11.5px] text-ink-3 ${google ? "min-h-[34px] sm:min-h-[18px]" : ""}`}>
         <span>
           {own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
-          {hasGoogle && <><span translate="no">Google Maps</span> fotoğrafları sahiplerine aittir; canlı gelir, saklanmaz.</>}
+          {hasGoogle && <>Google fotoğrafları sahiplerine aittir; büyütünce sahibi ve Google Haritalar bağlantısı görünür.</>}
         </span>
       </div>
 

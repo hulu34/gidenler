@@ -12,19 +12,22 @@ import type { ViewPhoto } from "./photos";
    ────────────────────────────────────────────────────────────────────────── */
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-export interface GReview { author: string; authorUri?: string; authorPhoto?: string; rating: number; text: string; when: string; uri?: string }
-export interface GRef { name: string; w?: number; h?: number; author: string; authorUri?: string; authorPhoto?: string }
+export interface GReview { author: string; authorUri?: string; authorPhoto?: string; rating: number; text: string; when: string; uri?: string; flagUri?: string; translated?: boolean }
+export interface GRef { name: string; w?: number; h?: number; author: string; authorUri?: string; authorPhoto?: string; mapsUri?: string; flagUri?: string }
 export interface GView { rating?: number; count?: number; mapsUri?: string; hours: string[]; reviews: GReview[]; photos: ViewPhoto[]; refs: GRef[]; total: number }
 export type GState = { k: "loading" } | { k: "ok"; v: GView } | { k: "off" } | { k: "limited" };
 
-type Raw = { src: string; author: string; authorUri?: string; authorPhoto?: string; w?: number; h?: number };
-const toPhoto = (p: Raw): ViewPhoto => ({ src: p.src, alt: "Google Haritalar fotoğrafı", source: "google", category: "diger", author: p.author, authorUri: p.authorUri, authorPhoto: p.authorPhoto, w: p.w, h: p.h });
+type Raw = { src: string; author: string; authorUri?: string; authorPhoto?: string; w?: number; h?: number; mapsUri?: string; flagUri?: string };
+/* sourceUrl = fotoğrafın Google Haritalar'daki kaynağı (zorunlu doğrudan erişim); flagUri = içerik bildirme */
+const toPhoto = (p: Raw): ViewPhoto => ({ src: p.src, alt: "Google Haritalar fotoğrafı", source: "google", category: "diger", author: p.author, authorUri: p.authorUri, authorPhoto: p.authorPhoto, w: p.w, h: p.h, sourceUrl: p.mapsUri, flagUri: p.flagUri });
 
 const cache = new Map<string, Promise<GState>>();
 export function loadGoogleView(slug: string): Promise<GState> {
   let p = cache.get(slug);
   if (!p) {
-    p = fetch(`${BASE}/api/google/place/?slug=${encodeURIComponent(slug)}&part=view`, { cache: "no-store" })
+    /* mobilde yalnız görünen kapak fotoğrafı istenir (her fotoğraf ayrı ücretli istek); diğerleri kaydırınca */
+    const n = typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches ? 1 : 5;
+    p = fetch(`${BASE}/api/google/place/?slug=${encodeURIComponent(slug)}&part=view&n=${n}`, { cache: "no-store" })
       .then(async (r) => ({ status: r.status, j: await r.json().catch(() => null) }))
       .then(({ status, j }): GState => {
         if (status === 200 && j && !j.disabled && !j.error && !j.unmatched) {

@@ -10,6 +10,8 @@ export interface ViewPhoto {
   author?: string; authorUri?: string; authorPhoto?: string; license?: string; sourceUrl?: string; w?: number; h?: number;
   /** hazır boyut adımları (kendi sunduğumuz görseller) ve tam ekran sürümü */
   srcSet?: string; full?: string;
+  /** Google fotoğrafı: içerik bildirme bağlantısı */
+  flagUri?: string;
 }
 
 export const CAT_LABEL: Record<PhotoCat, string> = { yemek: "Yemekler", ic: "İç mekân", dis: "Dış cephe", menu: "Menü", diger: "Diğer" };

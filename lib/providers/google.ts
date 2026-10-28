@@ -30,10 +30,10 @@ export type GoogleStatus =
 
 export interface GooglePlaceView {
   rating?: number; count?: number; mapsUri?: string; hours: string[];
-  photos: Array<{ src: string; author: string; authorUri?: string; authorPhoto?: string; w?: number; h?: number }>;
+  photos: Array<{ src: string; author: string; authorUri?: string; authorPhoto?: string; w?: number; h?: number; mapsUri?: string; flagUri?: string }>;
   /** Google'ın bu mekân için verdiği fotoğraf referansı sayısı (en çok 10). */
   photoTotal?: number;
-  reviews: Array<{ author: string; authorUri?: string; authorPhoto?: string; rating: number; text: string; when: string; uri?: string }>;
+  reviews: Array<{ author: string; authorUri?: string; authorPhoto?: string; rating: number; text: string; when: string; uri?: string; flagUri?: string; translated?: boolean }>;
 }
 
 /** Ücretli Google çağrıları: Production'da anahtar varsa açık; Preview'da yalnız GOOGLE_PLACES_PREVIEW=true
@@ -324,14 +324,14 @@ export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, pa
    · Aynı sunucu örneğinde aynı mekân için eşzamanlı istekler tek Google isteğinde birleştirilir (yanıt saklanmaz).
    · Her ücretli istek bütçe sayacından geçer (günlük/aylık sınır + toplam 100 USD tavanı); dolarsa "limit".
    ────────────────────────────────────────────────────────────────────────── */
-export interface GooglePhotoRef { name: string; w?: number; h?: number; author: string; authorUri?: string; authorPhoto?: string }
+export interface GooglePhotoRef { name: string; w?: number; h?: number; author: string; authorUri?: string; authorPhoto?: string; mapsUri?: string; flagUri?: string }
 export type GoogleViewResult =
   | { state: "ok"; data: GooglePlaceView & { refs: GooglePhotoRef[] } }
   | Exclude<GoogleStatus, { state: "ok" }>;
 
 const inflight = new Map<string, Promise<GoogleViewResult>>();
-type RawPhoto = { name: string; widthPx?: number; heightPx?: number; authorAttributions?: Array<{ displayName: string; uri?: string; photoUri?: string }> };
-const toRef = (ph: RawPhoto): GooglePhotoRef => ({ name: ph.name, w: ph.widthPx, h: ph.heightPx, author: ph.authorAttributions?.[0]?.displayName ?? "Google kullanıcısı", authorUri: ph.authorAttributions?.[0]?.uri, authorPhoto: ph.authorAttributions?.[0]?.photoUri });
+type RawPhoto = { name: string; widthPx?: number; heightPx?: number; googleMapsUri?: string; flagContentUri?: string; authorAttributions?: Array<{ displayName: string; uri?: string; photoUri?: string }> };
+const toRef = (ph: RawPhoto): GooglePhotoRef => ({ name: ph.name, w: ph.widthPx, h: ph.heightPx, author: ph.authorAttributions?.[0]?.displayName ?? "Google kullanıcısı", authorUri: ph.authorAttributions?.[0]?.uri, authorPhoto: ph.authorAttributions?.[0]?.photoUri, mapsUri: ph.googleMapsUri, flagUri: ph.flagContentUri });
 
 async function photoMedia(key: string, refs: GooglePhotoRef[], f: typeof fetch) {
   /* bütçe her fotoğraf için ÖNCE ayrılır; ayrılamayan fotoğraf hiç istenmez */
@@ -340,7 +340,7 @@ async function photoMedia(key: string, refs: GooglePhotoRef[], f: typeof fetch) 
   const got = await Promise.all(allowed.map(async (r) => {
     const m = await f(`${API}/${r.name}/media?maxWidthPx=1200&skipHttpRedirect=true`, { headers: { "X-Goog-Api-Key": key }, cache: "no-store", signal: AbortSignal.timeout(6000) }).catch(() => null);
     const j = m && m.ok ? await m.json().catch(() => null) as { photoUri?: string } | null : null;
-    return j?.photoUri ? { src: j.photoUri, author: r.author, authorUri: r.authorUri, authorPhoto: r.authorPhoto, w: r.w, h: r.h } : null;
+    return j?.photoUri ? { src: j.photoUri, author: r.author, authorUri: r.authorUri, authorPhoto: r.authorPhoto, w: r.w, h: r.h, mapsUri: r.mapsUri, flagUri: r.flagUri } : null;
   }));
   return got.filter((x): x is NonNullable<typeof x> => !!x);
 }
@@ -364,7 +364,7 @@ export function fetchGoogleView(slug: string, f: typeof fetch = fetch, n = 5): P
       if (!d.ok) return { state: "error" };
       const p = await d.json() as {
         rating?: number; userRatingCount?: number; googleMapsUri?: string; regularOpeningHours?: { weekdayDescriptions?: string[] }; photos?: RawPhoto[];
-        reviews?: Array<{ authorAttribution?: { displayName?: string; uri?: string; photoUri?: string }; rating?: number; text?: { text?: string }; originalText?: { text?: string }; relativePublishTimeDescription?: string; googleMapsUri?: string }>;
+        reviews?: Array<{ authorAttribution?: { displayName?: string; uri?: string; photoUri?: string }; rating?: number; text?: { text?: string; languageCode?: string }; originalText?: { text?: string; languageCode?: string }; relativePublishTimeDescription?: string; googleMapsUri?: string; flagContentUri?: string }>;
       };
       const refs = (p.photos ?? []).slice(0, 10).map(toRef);
       const first = Math.max(0, Math.min(n, PHOTO_PAGE_MAX));
@@ -377,6 +377,7 @@ export function fetchGoogleView(slug: string, f: typeof fetch = fetch, n = 5): P
           reviews: (p.reviews ?? []).slice(0, 5).map((r) => ({
             author: r.authorAttribution?.displayName ?? "Google kullanıcısı", authorUri: r.authorAttribution?.uri, authorPhoto: r.authorAttribution?.photoUri,
             rating: r.rating ?? 0, text: r.text?.text ?? r.originalText?.text ?? "", when: r.relativePublishTimeDescription ?? "", uri: r.googleMapsUri,
+            flagUri: r.flagContentUri, translated: !!(r.text?.languageCode && r.originalText?.languageCode && r.text.languageCode !== r.originalText.languageCode),
           })),
         },
       };

@@ -5,6 +5,7 @@ import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
 import { CAT_LABEL, fromVenuePhotos, responsive, SOURCE_LABEL, type PhotoCat, type ViewPhoto } from "./photos";
 import { loadMoreGooglePhotos, useGoogleView, type GRef } from "./googleView";
+import { GoogleMapsText } from "./GoogleAttribution";
 
 /* ──────────────────────────────────────────────────────────────────────────
    FOTOĞRAFLAR SAYFASI — Tabelog'un kategorili fotoğraf sekmeleri, Gidenler'e göre:
@@ -70,7 +71,7 @@ export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string;
                   style={{ aspectRatio: p.w && p.h ? `${p.w} / ${p.h}` : "4 / 3" }} className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                 <span className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col bg-gradient-to-t from-black/75 to-transparent px-2 pb-1.5 pt-6 text-left text-[10.5px] leading-tight text-white">
                   <span className="truncate font-semibold">{p.author ?? "—"}</span>
-                  <span className="truncate opacity-80" translate={p.source === "google" ? "no" : undefined}>{SOURCE_LABEL[p.source]}{p.license ? ` · ${p.license}` : ""}</span>
+                  {p.source === "google" ? <GoogleMapsText tone="white" /> : <span className="truncate opacity-80">{SOURCE_LABEL[p.source]}{p.license ? ` · ${p.license}` : ""}</span>}
                 </span>
               </button>
             </li>
@@ -90,7 +91,7 @@ export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string;
       {busy && <p className="text-[12.5px] text-ink-3">Google fotoğrafları yükleniyor…</p>}
       {gPhotos.length > 0 && (
         <p className="max-w-[70ch] border-t border-line pt-4 text-[12.5px] text-ink-3">
-          <b className="text-ink-2" translate="no">Google Maps</b> fotoğrafları Google kullanıcılarına aittir; Google&apos;dan canlı gelir, Gidenler&apos;de saklanmaz.
+          Google fotoğrafları Google kullanıcılarına aittir; Google&apos;dan canlı gelir, Gidenler&apos;de saklanmaz.
           Her fotoğrafta sahibi ve Google profili bağlantısı yazılıdır. Google bir mekân için en çok 10 fotoğraf sunar.
         </p>
       )}

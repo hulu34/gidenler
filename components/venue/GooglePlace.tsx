@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useGoogleView } from "./media/googleView";
+import { GoogleMapsLogo } from "./media/GoogleAttribution";
 
 /* GOOGLE BÖLÜMÜ — Google Places (New), sunucu vekili üzerinden canlı; hiçbir şey saklanmaz.
    Google ile doğrulanmış (onaylı ya da otomatik eşleşmiş) restoranda kullanıcıdan işlem İSTEMEZ:
@@ -22,14 +23,16 @@ export function GoogleRatingBadge({ slug, google }: { slug: string; google: bool
   if (!google) return null;
   const v = g.k === "ok" ? g.v : null;
   return (
-    <div className="flex h-7 items-center" aria-live="polite">
-      {g.k === "loading" && <span className="h-5 w-48 animate-pulse rounded-sm bg-sheet" aria-label="Google puanı yükleniyor" />}
+    <div className="flex min-h-[38px] items-center" aria-live="polite">
+      {g.k === "loading" && <span className="h-[34px] w-64 animate-pulse rounded-full bg-sheet" aria-label="Google puanı yükleniyor" />}
       {v?.rating ? (
-        <a href={v.mapsUri} target="_blank" rel="noopener noreferrer" className="group inline-flex items-baseline gap-x-2 text-[13px] text-ink-2 hover:text-ink">
+        /* Google içeriği Gidenler içeriğinden ayrışsın: çerçeveli kap + resmî logo aynı kapta */
+        <a href={v.mapsUri} target="_blank" rel="noopener noreferrer"
+          className="group inline-flex items-center gap-x-2.5 rounded-full border border-line-2 bg-sheet py-1 pl-3.5 pr-1 text-[13px] text-ink-2 hover:border-ink">
           <span className="tnum text-[17px] font-extrabold text-ink">{v.rating.toLocaleString("tr-TR", { minimumFractionDigits: 1 })}</span>
           <Stars v={v.rating} />
           {v.count ? <span className="tnum">{v.count.toLocaleString("tr-TR")} değerlendirme</span> : null}
-          <span className="text-[12px] font-medium text-ink-3 group-hover:underline" translate="no">· Google Maps</span>
+          <span className="px-2.5 pb-[5px] pt-2.5"><GoogleMapsLogo /></span>
         </a>
       ) : null}
     </div>
@@ -70,7 +73,7 @@ export function GooglePlace({ slug, name, mapsUrl, google }: { slug: string; nam
             </p>
           ) : <p className="text-[14px] text-ink-2">Google&apos;da henüz puan yok.</p>}
         </div>
-        <span className="text-[12px] font-medium text-ink-3" translate="no">Google Maps</span>
+        <span className="px-2.5 pb-[5px] pt-2.5"><GoogleMapsLogo /></span>
       </div>
 
       {p.hours.length > 0 && (
@@ -97,7 +100,11 @@ export function GooglePlace({ slug, name, mapsUrl, google }: { slug: string; nam
                     <span className="tnum text-ink-3"><Stars v={r.rating} /> · {r.when}</span>
                   </span>
                   <p className="line-clamp-4 text-[13.5px] leading-relaxed text-ink-2">{r.text}</p>
-                  {r.uri && <a href={r.uri} target="_blank" rel="noopener noreferrer" className="text-[11.5px] text-ink-3 underline underline-offset-2">Google&apos;da gör</a>}
+                  <span className="flex flex-wrap gap-x-3 text-[11.5px] text-ink-3">
+                    {r.translated && <span>Google tarafından çevrildi</span>}
+                    {r.uri && <a href={r.uri} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Google Haritalar&apos;da gör{r.translated ? " (orijinali)" : ""}</a>}
+                    {r.flagUri && <a href={r.flagUri} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Bildir</a>}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -106,7 +113,9 @@ export function GooglePlace({ slug, name, mapsUrl, google }: { slug: string; nam
       )}
 
       <p className="text-[11px] leading-snug text-ink-3">
-        Puan, yorumlar ve fotoğraflar Google Maps&apos;ten canlı gelir, Gidenler&apos;de saklanmaz ve Gidenler puanına katılmaz; yorumlar Google&apos;ın alaka sırasıyla gösterilir.{" "}
+        Puan, yorumlar ve fotoğraflar Google Maps&apos;ten canlı gelir, Gidenler&apos;de saklanmaz ve Gidenler puanına katılmaz; yorumlar Google&apos;ın varsayılan sırasıyla
+        (alaka düzeyi) gösterilir, Gidenler süzmez. Yorumlar Google tarafından doğrulanmaz; Google sahte içeriği tespit ettiğinde kaldırır
+        (<a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Google&apos;ın içerik politikası</a>).{" "}
         {(p.mapsUri ?? mapsUrl) && <a href={p.mapsUri ?? mapsUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">Tümü Google Haritalar&apos;da</a>}
       </p>
     </section>

@@ -25,13 +25,24 @@ export interface Budget { monthly: number; daily: number }
 export const BUDGETS = {
   "google:text_search_pro": { monthly: 8000, daily: 1000 },      // eşleştirme araması
   "google:details_enterprise": { monthly: 3000, daily: 600 },    // eşleştirme doğrulaması (telefon, web)
-  /* Sayfa açılınca otomatik: görüntüleme başına 1 Details (E+A) + en çok 5 foto ≈ 0,06 USD (ücretsiz kotadan sonra).
-     Tavan 100 USD ⇒ ayda ~2.100 Google'lı görüntüleme; günlük pay ayı bölüştürür, dolunca Gidenler verisi gösterilir. */
-  "google:details_atmosphere": { monthly: 2100, daily: 80 },     // sayfa: puan, sayı, yorum, saatler, foto listesi
+  /* Sayfa görünümü (otomatik): 1 Details (E+A) + fotoğraflar. Fotoğraf, mobilde yalnız görünen kare için istenir.
+     Aylık sınırlar SKU'ların ayrı ücretsiz kotalarını (1.000 + 1.000) ve 100 USD tavanını birlikte kullanacak biçimde;
+     asıl fren toplam 100 USD tavanıdır. Günlük sınır SABİT DEĞİL: kalan aylık hak / kalan gün × 1,5 (PACED). */
+  "google:details_atmosphere": { monthly: 3200, daily: 0 },      // sayfa: puan, sayı, yorum, saatler, foto listesi (zamanlanmış)
   "google:details_essentials": { monthly: 9000, daily: 300 },    // sayfa, kullanıcı isteyince: fotoğraf adları
-  "google:photo": { monthly: 10500, daily: 400 },                // sayfa ve galeri: fotoğraf başına
+  "google:photo": { monthly: 8000, daily: 0 },                   // sayfa ve galeri: fotoğraf başına (zamanlanmış)
 } satisfies Record<string, Budget>;
 export type BudgetKey = keyof typeof BUDGETS;
+
+/** Günlük payı ay boyunca kendiliğinden ayarlanan kalemler: yoğun bir gün içeriği erken kapatmaz,
+    ayın ilk günleri de bütün ayı tüketemez. Pay = ⌈(aylık sınır − bugünden önce harcanan) / kalan gün × PACE⌉. */
+export const PACED = new Set<BudgetKey>(["google:details_atmosphere", "google:photo"]);
+export const PACE = 1.5;
+export function pacedDaily(monthly: number, usedBeforeToday: number, now = new Date()) {
+  const daysInMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0)).getUTCDate();
+  const daysLeft = daysInMonth - now.getUTCDate() + 1;
+  return Math.max(1, Math.ceil((Math.max(0, monthly - usedBeforeToday) / daysLeft) * PACE));
+}
 
 /** Aylık ücretsiz kota ve ücretsiz kotayı aşan her istek için liste fiyatı (USD / 1.000). */
 export const PRICES: Record<BudgetKey, { free: number; usdPer1000: number }> = {
@@ -95,9 +106,17 @@ export async function reserve(key: BudgetKey, n = 1, now = new Date()): Promise<
   if (!r) return { ok: false, reason: "no_redis" };
   const b = budgetFor(key);
   const k = periodKeys(key, now);
+  /* zamanlanmış kalem: bugünkü pay, ay içindeki gerçek harcamadan hesaplanır (okunamazsa çağrı yapılmaz) */
+  let daily = b.daily;
+  if (PACED.has(key)) {
+    try {
+      const [m, d] = await r.mget<(string | null)[]>(k.month, k.day);
+      daily = pacedDaily(b.monthly, Number(m ?? 0) - Number(d ?? 0), now);
+    } catch { return { ok: false, reason: "error" }; }
+  }
   const all = Object.keys(PRICES) as BudgetKey[];
   const keys = [k.month, k.day, ...all.map((x) => periodKeys(x, now).month)];
-  const args = [String(b.monthly), String(b.daily), String(40 * 86400), String(2 * 86400), String(Math.round(usdCap() * 1e6)),
+  const args = [String(b.monthly), String(daily), String(40 * 86400), String(2 * 86400), String(Math.round(usdCap() * 1e6)),
     ...all.flatMap((x) => [String(PRICES[x].free), String(PRICES[x].usdPer1000 * 1000)])];
   try {
     for (let i = 0; i < n; i++) {
@@ -120,7 +139,8 @@ export async function usageSnapshot(now = new Date()) {
     const flat = keys.flatMap((k) => { const p = periodKeys(k, now); return [p.month, p.day]; });
     const vals = await r.mget<(string | null)[]>(...flat);
     return Object.fromEntries(keys.map((k, i) => [k, {
-      month: Number(vals[2 * i] ?? 0), day: Number(vals[2 * i + 1] ?? 0), budget: budgetFor(k),
+      month: Number(vals[2 * i] ?? 0), day: Number(vals[2 * i + 1] ?? 0),
+      budget: PACED.has(k) ? { ...budgetFor(k), daily: pacedDaily(budgetFor(k).monthly, Number(vals[2 * i] ?? 0) - Number(vals[2 * i + 1] ?? 0), now) } : budgetFor(k),
       free: PRICES[k].free, billable: Math.max(0, Number(vals[2 * i] ?? 0) - PRICES[k].free),
     }]));
   } catch {

@@ -15,7 +15,7 @@ import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
 import { realVenueRecords } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
-import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap } from "../lib/usage/counter";
+import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap, pacedDaily } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
 import { fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, holdGoogleMatches, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
@@ -131,16 +131,24 @@ async function main() {
   ok("Redis yoksa çağrı reddedilir", (await reserve("google:details_atmosphere")).ok === false);
   const fake = new FakeRedis();
   setRedisForTests(fake as unknown as RedisLike);
-  const day = BUDGETS["google:details_atmosphere"].daily;
+  const day = BUDGETS["google:details_enterprise"].daily;
   let granted = 0;
-  for (let i = 0; i < day + 5; i++) if ((await reserve("google:details_atmosphere")).ok) granted++;
+  for (let i = 0; i < day + 5; i++) if ((await reserve("google:details_enterprise")).ok) granted++;
   ok(`günlük sınır tutuyor (${day})`, granted === day, granted);
+  /* zamanlanmış pay: kalan aylık hak / kalan gün × 1,5 */
+  const nov1 = new Date(Date.UTC(2026, 10, 1, 12)), nov30 = new Date(Date.UTC(2026, 10, 30, 12));
+  ok("zamanlanmış pay: ay başı 3.200/30×1,5 = 160", pacedDaily(3200, 0, nov1) === 160, pacedDaily(3200, 0, nov1));
+  ok("zamanlanmış pay: az harcanan ay sonu payı büyür, aylık sınırı aşamaz", pacedDaily(3200, 1000, nov30) === 3300 && pacedDaily(3200, 3300, nov30) === 1);
+  const paceFake = new FakeRedis(); setRedisForTests(paceFake as unknown as RedisLike);
+  let paced = 0; for (let i = 0; i < 200; i++) if ((await reserve("google:details_atmosphere", 1, nov1)).ok) paced++;
+  ok("zamanlanmış pay uygulanır (ay başı 160 sayfa görünümü)", paced === 160, paced);
+  setRedisForTests(fake as unknown as RedisLike);
   fake.broken = true;
   ok("Redis hata verirse çağrı reddedilir", (await reserve("google:photo")).ok === false);
   ok("ücretli yol hız sınırı Redis yokken kapalı", (await strictHit("x", 5, 60)) === false);
   fake.broken = false;
   const snap = await usageSnapshot();
-  ok("kullanım özeti okunur", !!snap && snap["google:details_atmosphere"].day === day);
+  ok("kullanım özeti okunur", !!snap && snap["google:details_enterprise"].day === day);
   /* toplam aylık harcama tavanı (100 USD): ücretsiz kota önce; tavan aşılacaksa HİÇBİR kalem çağrı yapamaz */
   const capFake = new FakeRedis(); setRedisForTests(capFake as unknown as RedisLike);
   capFake.m.set(periodKeys("google:text_search_pro").month, 7000);       // 2.000 × $0,032 = $64

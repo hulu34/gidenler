@@ -1,4 +1,6 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
+import { TAG_GOOGLE, TAG_MEDIA } from "@/lib/live";
 import { getDb } from "@/lib/db/client";
 import { executorFor } from "@/lib/db/executors";
 import { applyMigrations, migrationStatus } from "@/lib/db/migrate";
@@ -28,6 +30,9 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const H = { "Cache-Control": "no-store" };
+/* sayfalarda gösterilen canlı veriyi değiştiren yönetim işlemleri: ilgili önbellek etiketi hemen geçersiz */
+/* yanıt gönderildikten SONRA (veritabanı yazıldıktan sonra) çalışır; arada eski veri önbelleğe girmez */
+const fresh = (tag: string) => { try { after(() => revalidateTag(tag)); } catch { /* istek dışı ortam (test) */ } };
 const nf = () => new NextResponse(null, { status: 404 });
 const envName = () => process.env.VERCEL_ENV ?? "local";
 
@@ -54,7 +59,7 @@ export async function GET(req: Request) {
     try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot(), spend: await spendReport() }, { headers: H }); }
     catch (e) { return fail(e); }
   }
-  /* ?rapor=google-slug → Google içeriği gösterilebilen restoranlar (derleme listesi data/real/google.json için) */
+  /* ?rapor=google-slug → Google içeriği gösterilebilen restoranlar (yalnız okuma; sayfalar lib/live ile dinamik okur) */
   if (new URL(req.url).searchParams.get("rapor") === "google-slug") {
     try { return NextResponse.json({ env: envName(), slugs: await googleUsableSlugs() }, { headers: H }); } catch (e) { return fail(e); }
   }
@@ -113,6 +118,7 @@ export async function POST(req: Request) {
         if (body.confirm !== "GERI-AL") break;
         return NextResponse.json({ action: "rollback-seed", env: envName(), ...(await rollbackSeed(x)) }, { headers: H });
       case "google-match": {
+        fresh(TAG_GOOGLE);
         /* Ücretli: her çağrı Redis kota kontrolünden geçer; tek seferde en çok 25 restoran. */
         if (body.confirm !== "EVET") break;
         /* Harcama takibi okunamıyorsa ücretli toplu iş hiç başlamaz. */
@@ -122,25 +128,30 @@ export async function POST(req: Request) {
         return NextResponse.json({ action: "google-match", env: envName(), ...r, stats: await googleMatchStats(), usage: await usageSnapshot(), spend: await spendReport() }, { headers: H });
       }
       case "google-review": {
+        fresh(TAG_GOOGLE);
         if (body.confirm !== "EVET" || !body.id || !["confirmed", "rejected"].includes(body.decision ?? "")) break;
         return NextResponse.json({ action: "google-review", ...(await reviewGoogleMatch(body.id, body.decision as "confirmed" | "rejected")) }, { headers: H });
       }
       case "google-hold": {
+        fresh(TAG_GOOGLE);
         /* Şüpheli otomatik eşleşmeleri gösterimden çeker (silmez). */
         if (body.confirm !== "EVET" || !Array.isArray(body.slugs) || !body.slugs.length) break;
         return NextResponse.json({ action: "google-hold", env: envName(), ...(await holdGoogleMatches(body.slugs.map(String), body.why ?? "canlı öncesi denetim")), stats: await googleMatchStats() }, { headers: H });
       }
       case "media-add": {
+        fresh(TAG_MEDIA);
         /* Mekâna video bağlantısı (YouTube / Instagram / TikTok). Yalnız kimlik ve atıf saklanır. */
         if (body.confirm !== "EVET" || !body.slug || !body.url) break;
         const r = await addPlaceVideo({ slug: body.slug, url: body.url, credit: body.credit, category: body.category, verifiedElsewhere: body.verifiedElsewhere === true });
         return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "media-remove": {
+        fresh(TAG_MEDIA);
         if (body.confirm !== "EVET" || !body.id) break;
         return NextResponse.json({ action: "media-remove", env: envName(), ...(await removePlaceVideo(body.id)) }, { headers: H });
       }
       case "google-retry": {
+        fresh(TAG_GOOGLE);
         /* Ücretli: eşleşmeyenler için alternatif arama; tek seferde en çok 15 restoran, her biri 30 günde bir kez. */
         if (body.confirm !== "EVET") break;
         const before = await spendReport();
@@ -154,6 +165,7 @@ export async function POST(req: Request) {
         return NextResponse.json({ action: "google-queue-sync", env: envName(), ...(await syncGoogleQueue()), stats: await googleMatchStats() }, { headers: H });
       }
       case "rollback-google": {
+        fresh(TAG_GOOGLE);
         /* Yalnız Google eşleşmeleri (pilot geri alma); başka hiçbir veriye dokunmaz. */
         if (body.confirm !== "GERI-AL") break;
         return NextResponse.json({ action: "rollback-google", env: envName(), ...(await rollbackGoogleMatches()) }, { headers: H });
