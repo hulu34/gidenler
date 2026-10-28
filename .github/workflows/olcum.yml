@@ -16,7 +16,7 @@ concurrency:
 env:
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
-  TEST_HOST: gidenler-eremds0e3-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
+  TEST_HOST: gidenler-907gql7fw-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   PROFIL_HOST: gidenler-cgc161t53-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview, kendi Neon dalı)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
