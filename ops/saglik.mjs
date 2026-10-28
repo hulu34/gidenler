@@ -18,4 +18,9 @@ ok("yönetim raporu", g.s === 200 && g.j?.enabled === true, JSON.stringify({ sta
 const rd = await st("/api/admin/db/?rapor=redis");
 ok("sigorta kapalı", g.j && g.j.pause === null);
 ok("Redis okunuyor", rd.s === 200 && typeof rd.j?.total === "number", `anahtar=${rd.j?.total}`);
+const me = await st("/api/me/places/");
+ok("hesap API: oturumsuz okuma 401", me.s === 401);
+const post = async (h) => { try { const r = await fetch(`https://${HOST}/api/me/places/`, { method: "POST", headers: { ...auth, "content-type": "application/json", ...h }, body: JSON.stringify({ slug: "700-gram-kadikoy", state: "saved" }) }); return r.status; } catch { return 0; } };
+ok("hesap API: başka kökenden yazma 403", (await post({ origin: "https://kotu.example" })) === 403);
+ok("hesap API: aynı kökenden ama oturumsuz yazma 401", (await post({ origin: `https://${HOST}` })) === 401);
 process.exit(checks.every(Boolean) ? 0 : 1);
