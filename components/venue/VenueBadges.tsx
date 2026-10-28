@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Entity } from "@/lib/types";
 import { areaKindRank, g100Rank, G100 } from "@/lib/venue";
+import { PlaceStatusButtons } from "./PlaceStatusButtons";
 
 /* Tabelog'un "Hyakumeiten" ve bölge sıralaması rozetlerinden: kanıta dayalı, satın alınamaz. */
 export function VenueBadges({ entityId }: { entityId: string }) {
@@ -35,6 +36,7 @@ export function RealVenueNotice({ entity }: { entity: Entity }) {
         <a href="#bilgi" className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Bilgi ve rezervasyon</a>
         <a href="#gor" className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">360° gör</a>
       </div>
+      <PlaceStatusButtons entityId={entity.id} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
    ========================================================================== */
 import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
-import { eq, sql } from "drizzle-orm";
+import { eq, inArray, sql } from "drizzle-orm";
 import * as schema from "../lib/db/schema";
 import { setDbForTests, type Db } from "../lib/db/client";
 import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
@@ -23,6 +23,9 @@ import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/
 import { parseVideoUrl, embedUrl } from "../lib/media/embed";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/store";
 import { visitMonths } from "../lib/drafts";
+import { importPlaceStates, listPlaceStates, setPlaceState } from "../lib/community/placeStatus";
+import { planImport, serverToLocal, isAccountEntity } from "../lib/community/sync";
+import { sameOrigin } from "../lib/community/http";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
@@ -133,6 +136,37 @@ async function main() {
   let fkErr = false;
   try { await db.insert(schema.reviews).values({ id: "r2", placeId: "yok", userId: "u1", visitedOn: "2026-10-20", overall: 4, ratings: {}, body: "x" }); } catch { fkErr = true; }
   ok("var olmayan mekâna deneyim yazılamaz (FK)", fkErr);
+
+  console.log("\n3b) Hesap: Kaydet / Gitmek istiyorum / Gittim (user_place_status)");
+  await db.insert(schema.user).values([{ id: "ua", name: "A", email: "a@example.test" }, { id: "ub", name: "B", email: "b@example.test" }]);
+  const sw = await setPlaceState(db, "ua", "ciya-sofrasi-kadikoy", "want_to_go");
+  const sv = await setPlaceState(db, "ua", "ciya-sofrasi-kadikoy", "visited");
+  const la = await listPlaceStates(db, "ua");
+  ok("durum hesaba yazılır; son karar geçerli (Gitmek istiyorum → Gittim)", sw.ok && sv.ok && la.length === 1 && la[0].slug === "ciya-sofrasi-kadikoy" && la[0].state === "visited", la);
+  const [rowA] = await db.select().from(schema.userPlaceStatus).where(eq(schema.userPlaceStatus.userId, "ua"));
+  ok("Gittim: tek satır, bayraklar tutarlı, ziyaret sayısı ≥ 1, doğrulama YOK", rowA.visited && !rowA.wantToGo && !rowA.favorite && rowA.visitCount === 1 && rowA.verificationId === null, rowA);
+  ok("bilinmeyen / demo mekân reddedilir", !(await setPlaceState(db, "ua", "moda-lokantasi", "saved")).ok && !(await setPlaceState(db, "ua", "yok-boyle-bir-yer", "saved")).ok);
+  ok("başka kullanıcının kaydı görünmez", (await listPlaceStates(db, "ub")).length === 0);
+  await setPlaceState(db, "ua", "ciya-sofrasi-kadikoy", "none");
+  const ln = await listPlaceStates(db, "ua");
+  ok("kaldırma satırı silmez, 'none' olarak kalır (yeniden aktarılmaz)", ln.length === 1 && ln[0].state === "none", ln);
+  const other = (await db.select({ slug: schema.places.slug }).from(schema.places).where(sql`${schema.places.slug} <> 'ciya-sofrasi-kadikoy'`).limit(2)).map((r) => r.slug);
+  const added = await importPlaceStates(db, "ua", [{ slug: "ciya-sofrasi-kadikoy", state: "saved" }, { slug: other[0], state: "want_to_go" }, { slug: other[1], state: "visited" }, { slug: "moda-lokantasi", state: "saved" }, { slug: other[0], state: "saved" }]);
+  const li2 = Object.fromEntries((await listPlaceStates(db, "ua")).map((r) => [r.slug, r.state]));
+  ok("ilk giriş aktarımı: yalnız hesapta olmayanlar eklenir; hesap kazanır; demo/bilinmeyen atlanır", added === 2 && li2["ciya-sofrasi-kadikoy"] === "none" && li2[other[0]] === "want_to_go" && li2[other[1]] === "visited" && !("moda-lokantasi" in li2), { added, li2 });
+  const rel = (id: string, state: string) => ({ entityId: id, state, listIds: [], updatedAt: "2026-10-28" }) as never;
+  const plan = planImport({ "ent.r.a": rel("ent.r.a", "saved"), "ent.r.b": rel("ent.r.b", "experienced"), "ent.moda-lokantasi": rel("ent.moda-lokantasi", "visited"), "ent.r.c": rel("ent.r.c", "want_to_go") },
+    [{ slug: "c", state: "none", updatedAt: "" }]);
+  ok("istemci planı: demo kayıt gitmez, 'deneyim yazdım' → Gittim, hesapta olan aktarılmaz", JSON.stringify(plan) === JSON.stringify([{ slug: "a", state: "saved" }, { slug: "b", state: "visited" }]), plan);
+  ok("hesap → yerel eşleme gerçek mekân kimliğiyle", serverToLocal([{ slug: "a", state: "none", updatedAt: "" }])["ent.r.a"] === "none" && isAccountEntity("ent.r.a") && !isAccountEntity("ent.moda-lokantasi") && !isAccountEntity("ent.r.../x"));
+  const rq = (h: Record<string, string>) => new Request("https://www.gidenler.com/api/me/places/", { method: "POST", headers: h });
+  ok("yazma yalnız aynı kökenden (Origin = site)", sameOrigin(rq({ origin: "https://www.gidenler.com", host: "www.gidenler.com" })) && !sameOrigin(rq({ origin: "https://kotu.example", host: "www.gidenler.com" })) && !sameOrigin(rq({ host: "www.gidenler.com" })));
+  const routeSrc = readFileSync(new URL("../app/api/me/places/route.ts", import.meta.url), "utf8");
+  ok("API: kullanıcı kimliği yalnız oturumdan, kimliksiz 401, hız sınırı var", /currentUser\(req\.headers\)/.test(routeSrc) && /status: 401/.test(routeSrc) && /rate_limited/.test(routeSrc) && !/userId["']?\s*:\s*z\./.test(routeSrc));
+  const vb = readFileSync(new URL("../components/venue/VenueBadges.tsx", import.meta.url), "utf8"), psb = readFileSync(new URL("../components/venue/PlaceStatusButtons.tsx", import.meta.url), "utf8");
+  ok("gerçek mekân sayfasında Kaydet / Gitmek istiyorum / Gittim var; 'Gittim' doğrulama iddiası taşımaz", vb.includes("<PlaceStatusButtons") && /"Gittim"/.test(psb) && !/doğrulandı|doğrulanmış/.test(psb));
+  await db.delete(schema.userPlaceStatus).where(inArray(schema.userPlaceStatus.userId, ["ua", "ub"]));
+  await db.delete(schema.user).where(inArray(schema.user.id, ["ua", "ub"]));
 
   console.log("\n4) Ücretli çağrı sayacı (çalışmazsa durdur)");
   /* sayaç artık Neon'daki kalıcı tabanı da kullanır: test veritabanı bu bölümden itibaren bağlı.

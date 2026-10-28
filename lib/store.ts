@@ -135,6 +135,11 @@ const uid = () => Math.random().toString(36).slice(2, 9);
 
 /* ───────────────────────── ilişki durumu ───────────────────────────────── */
 
+/** Hesap eşitlemesi için: bu cihazdaki ilişkiler (salt okuma). */
+export function getRelationships(): Record<string, UserEntityRelationship> {
+  return read().relationships;
+}
+
 export function getEntityState(entityId: string): UserEntityState {
   return read().relationships[entityId]?.state ?? "none";
 }
@@ -149,6 +154,35 @@ export function setEntityState(entityId: string, state: UserEntityState, via?: s
   const relationships = { ...d.relationships };
   if (state === "none") delete relationships[entityId]; else relationships[entityId] = rel;
   write({ ...d, relationships });
+  if (remote && activeKey() === KEY_USER) remote(entityId, state);
+}
+
+/* ───────────────────── hesap eşitlemesi (yalnız gerçek mekânlar) ─────────────────────
+   Giriş yapılmışsa AccountSync bir gönderici bağlar; her durum değişikliği hesaba da yazılır.
+   Sunum (yatırımcı) modunda hiçbir şey hesaba gitmez. */
+let remote: ((entityId: string, state: UserEntityState) => void) | null = null;
+export function setRemoteSync(fn: typeof remote) { remote = fn; }
+
+/** Hesaptaki durumları bu cihaza uygular (hesap kazanır); hesaba geri GÖNDERMEZ. */
+export function applyAccountStates(states: Record<string, UserEntityState>) {
+  if (activeKey() !== KEY_USER) return;
+  const d = read();
+  const relationships = { ...d.relationships };
+  for (const [id, st] of Object.entries(states)) {
+    const prev = relationships[id];
+    if (st === "none") { delete relationships[id]; continue; }
+    /* "Deneyim yazdım" yerel bir ayrıntıdır; hesapta "Gittim" olarak durur — yerelde düşürülmez. */
+    if (prev?.state === st || (st === "visited" && prev?.state === "experienced")) continue;
+    relationships[id] = { entityId: id, state: st, via: prev?.via ?? "account", listIds: prev?.listIds ?? [], updatedAt: TODAY,
+      visitedAt: st === "visited" ? (prev?.visitedAt ?? TODAY) : prev?.visitedAt };
+  }
+  write({ ...d, relationships });
+}
+
+/** Çıkışta: hesaba bağlı (gerçek mekân) durumlar bu cihazdan silinir — ortak cihazda başkası görmesin. */
+export function clearAccountStates(isAccountEntity: (id: string) => boolean) {
+  const d = read();
+  write({ ...d, relationships: Object.fromEntries(Object.entries(d.relationships).filter(([id]) => !isAccountEntity(id))) });
 }
 
 export function markVisited(entityId: string) {

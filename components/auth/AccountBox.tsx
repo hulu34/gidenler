@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { clearAccountStates } from "@/lib/store";
+import { isAccountEntity, writePending } from "@/lib/community/sync";
 
 /* HESAP KUTUSU — Google ile giriş (Better Auth). Sunucuda kimlik yapılandırılmamışsa (503) ya da
-   statik sitede (404) hiç görünmez; site bugünkü gibi hesapsız çalışır. Faz 0'da yalnız giriş/çıkış;
-   Gittim, listeler ve deneyimlerin hesaba bağlanması Faz 1. */
+   statik sitede (404) hiç görünmez; site bugünkü gibi hesapsız çalışır. Girişte Kaydet / Gitmek istiyorum /
+   Gittim hesapta saklanır (bkz. AccountSync); çıkışta bu cihazdan silinir. Deneyim yayınlama sonraki aşama. */
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 type S = { state: "loading" | "off" | "out" } | { state: "in"; name: string; email: string; image?: string | null };
@@ -41,6 +43,7 @@ export function AccountBox() {
   async function signOut() {
     setBusy(true);
     await fetch(`${BASE}/api/auth/sign-out/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: "{}" }).catch(() => null);
+    clearAccountStates(isAccountEntity); writePending({});
     location.reload();
   }
 
@@ -52,13 +55,14 @@ export function AccountBox() {
           <span className="flex items-center gap-3 text-[14px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             {s.image && <img src={s.image} alt="" width={28} height={28} className="h-7 w-7 rounded-full" referrerPolicy="no-referrer" />}
-            <span><b>{s.name}</b> <span className="text-ink-3">· {s.email}</span></span>
+            <span><b>{s.name}</b> <span className="text-ink-3">· {s.email}</span>
+              <span className="block text-[12.5px] text-ink-3">Kaydet, Gitmek istiyorum ve Gittim seçimlerin hesabında saklanıyor.</span></span>
           </span>
           <button type="button" onClick={signOut} disabled={busy} className="h-10 rounded-[3px] border border-line-2 px-4 text-[13px] font-semibold hover:border-ink">Çıkış yap</button>
         </>
       ) : (
         <>
-          <span className="text-[14px] text-ink-2">Kaydettiklerin, Gittim listen ve deneyimlerin hesabında saklansın.</span>
+          <span className="text-[14px] text-ink-2">Kaydettiklerin, Gitmek istediklerin ve Gittim listen hesabında saklansın; her cihazda seninle olsun.</span>
           <button type="button" onClick={signIn} disabled={busy} className="h-11 rounded-[3px] bg-ink px-5 text-[14px] font-semibold text-paper hover:bg-accent">
             {busy ? "Yönlendiriliyor…" : "Google ile giriş yap"}
           </button>
