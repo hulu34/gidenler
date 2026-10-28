@@ -68,3 +68,13 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gorsel-sifreli, path: out/shots.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  onay:
+    if: contains(github.event.head_commit.message, '[onay]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/onay.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
