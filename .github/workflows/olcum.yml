@@ -18,7 +18,7 @@ env:
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-907gql7fw-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
-  PROFIL_HOST: gidenler-cgc161t53-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview, kendi Neon dalı)  # görsel Faz 1 Preview (kendi Neon dalı)
+  PROFIL_HOST: gidenler-oi6222e6f-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview, kendi Neon dalı)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
@@ -61,6 +61,9 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - if: contains(github.event.head_commit.message, '[senaryo]')
+        run: node ops/profil-senaryo.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}" }
       - run: node ops/profil.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}", SHOTS: "1", APPLY: "${{ contains(github.event.head_commit.message, '[uygula]') && '1' || '0' }}" }
       - if: always()
