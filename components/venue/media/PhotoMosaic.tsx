@@ -49,7 +49,7 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
             <div key={i} className={`aspect-[4/3] w-[86%] shrink-0 animate-pulse bg-sheet sm:aspect-auto sm:w-auto ${i === 0 ? "sm:col-span-2 sm:row-span-2" : "sm:col-span-1 sm:row-span-1"}`} />
           ))}
         </div>
-        <p className="mt-2 h-[18px] text-[11.5px] text-ink-3"><span translate="no">Google Maps</span> fotoğrafları yükleniyor…</p>
+        <p className="mt-2 min-h-[34px] text-[11.5px] text-ink-3 sm:min-h-[18px]"><span translate="no">Google Maps</span> fotoğrafları yükleniyor…</p>
       </section>
     );
   }
@@ -83,7 +83,7 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
   return (
     <section aria-label={`${name} fotoğrafları`} className="mt-5">
       {/* TEK yapı: mobilde kaydırmalı şerit, masaüstünde mozaik (aynı <img>; gizli ikinci kopya indirilmez) */}
-      <div className={`-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:overflow-visible sm:px-0 ${k === 1 ? "sm:h-[clamp(220px,32vw,380px)]" : "sm:h-[clamp(260px,38vw,440px)]"}`}>
+      <div className={`-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:overflow-visible sm:px-0 ${k === 1 && !google ? "sm:h-[clamp(220px,32vw,380px)]" : "sm:h-[clamp(260px,38vw,440px)]"}`}>
         {all.map((p, i) => (
           <div key={p.src} className={`relative aspect-[4/3] w-[86%] shrink-0 snap-center sm:aspect-auto sm:w-auto ${i < 5 ? span(i) : "sm:hidden"}`}>
             {/* mobilde kapak 500 px sürümünden (LCP); masaüstünde kareye göre */}
@@ -100,10 +100,11 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
         </Link>
       </div>
 
-      <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-[11.5px] text-ink-3">
+      {/* atıf satırı: yüklenirken ve sonra aynı yükseklik (sayfa kayması yok) */}
+      <div className={`mt-2 flex flex-wrap items-center justify-between gap-2 text-[11.5px] text-ink-3 ${google ? "min-h-[34px] sm:min-h-[18px]" : ""}`}>
         <span>
           {own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
-          {hasGoogle && <><span translate="no">Google Maps</span> fotoğrafları Google kullanıcılarına aittir; canlı gelir, Gidenler&apos;de saklanmaz.</>}
+          {hasGoogle && <><span translate="no">Google Maps</span> fotoğrafları sahiplerine aittir; canlı gelir, saklanmaz.</>}
         </span>
       </div>
 
