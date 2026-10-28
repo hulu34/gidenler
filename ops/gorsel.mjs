@@ -35,6 +35,8 @@ async function open(host, path, kind, { track } = {}) {
 const shot = (page, name, full = false) => page.screenshot({ path: `out/gorsel/${name}.png`, fullPage: full });
 const byText = (page, sel, text) => page.evaluateHandle((sel, text) => [...document.querySelectorAll(sel)].find((e) => e.textContent?.includes(text)) ?? null, sel, text);
 
+const ONLY_LH = process.env.ONLY_LH === "1";   /* yalnız hız ölçümü: tarayıcı kontrolleri ve Google çağrısı yok */
+if (!ONLY_LH) {
 /* ── 1) Preview: Çiya — fotoğrafsız şerit, video şeridi, oynatıcı (masaüstü) ── */
 let p = await open(PRE, "/mekan/ciya-sofrasi-kadikoy/", "d", { track: "ciya_masaustu_acilis" });
 await shot(p, "01-ciya-masaustu-ust");
@@ -109,6 +111,7 @@ const gtab = await byText(p, "button", "Google'daki fotoğrafları göster");
 if (gtab.asElement()) { await gtab.asElement().click(); await sleep(6000); }
 await shot(p, "14-agora-mobil-fotograflar-google");
 await p.close();
+}
 await browser.close();
 
 /* ── 6) Lighthouse mobil: önce (eski Preview, statik) / sonra (Faz 1 Preview) ── */

@@ -17,7 +17,7 @@ env:
   OLD_HOST: gidenler-3euvpz7id-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-noui1vcax-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
-  PREVIEW_HOST: gidenler-bifbtayvx-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
+  PREVIEW_HOST: gidenler-fq8lvqqpm-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
@@ -144,3 +144,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gorsel-sifreli, path: out/gorsel.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  hiz:
+    if: contains(github.event.head_commit.message, '[hiz]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops puppeteer-core@23.11.1 lighthouse@12.8.2 chrome-launcher@1.2.0
+      - run: node ops/gorsel.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", CHROME_PATH: /usr/bin/google-chrome, ONLY_LH: "1" }
