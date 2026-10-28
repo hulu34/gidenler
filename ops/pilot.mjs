@@ -4,7 +4,7 @@
    sınırlarından geçer (günlük + aylık sert sınır); bu betik yalnız N restoranı ister. */
 import { mkdirSync, writeFileSync } from "node:fs";
 
-const BYPASS = process.env.VERCEL_BYPASS, HOST = process.env.PILOT_HOST, N = Number(process.env.PILOT_N);
+const BYPASS = process.env.VERCEL_BYPASS, HOST = process.env.TOPLU_HOST || process.env.PILOT_HOST, N = Number(process.env.PILOT_N);
 const SHOW = Math.max(0, Number(process.env.PILOT_SHOW ?? 2));
 if (!BYPASS || !HOST || !(N >= 0 && N <= 25)) { console.error("VERCEL_BYPASS / PILOT_HOST / PILOT_N (0–25) eksik"); process.exit(2); }
 
@@ -62,6 +62,10 @@ function finish(code) {
   console.log("Redis:", JSON.stringify({ total: out.redis?.total, groups: out.redis?.groups ? Object.keys(out.redis.groups).length : null }));
   console.log("Eşleştirme HTTP:", out.match?.status ?? "-", "· istenen:", N, "· işlenen:", res.length);
   console.log("Sonuç:", JSON.stringify({ auto: cnt((x) => x.status === "auto"), pending: cnt((x) => x.status === "pending"), no_match: cnt((x) => x.status === "no_match"), existing: cnt((x) => x.status === "existing"), limit: cnt((x) => x.status === "limit"), error: cnt((x) => x.status === "error") }));
+  const by = (k) => res.reduce((m, x) => (x[k] ? (m[x[k]] = (m[x[k]] ?? 0) + 1, m) : m), {});
+  console.log("Karar nedenleri:", JSON.stringify(by("reason")));
+  console.log("Zincir / şube adı farkı / yakın rakip:", JSON.stringify({ chain: cnt((x) => x.chain), branch: cnt((x) => x.branch?.length), rival: cnt((x) => x.rival) }));
+  console.log("Kalan (Google kaydı olmayan restoran):", out.match?.body?.remaining ?? "-", "· kuyruk:", JSON.stringify(out.after?.queue ?? null));
   console.log("Sinyaller:", JSON.stringify({ phoneMatch: cnt((x) => x.phone === "match"), phoneConflict: cnt((x) => x.phone === "conflict"), webMatch: cnt((x) => x.website === "match"), webConflict: cnt((x) => x.website === "conflict"), duplicate: cnt((x) => x.duplicate) }));
   console.log("Çağrılar (bu koşu):", JSON.stringify(calls));
   console.log("Veritabanı Google durumları:", JSON.stringify(out.after?.stats ?? null));
