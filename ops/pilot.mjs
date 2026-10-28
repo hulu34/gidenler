@@ -33,8 +33,6 @@ if (N > 0) {
   }));
   out.match = r;
 }
-out.after = (await j(await fetch(`${admin}?rapor=google`, { headers: auth }))).body;
-
 /* 4) Gösterim: otomatik eşleşenlerden SHOW tanesi için canlı Google bölümü verisi (tarayıcı gibi) */
 const autos = (out.match?.body?.results ?? []).filter((x) => x.status === "auto").slice(0, SHOW);
 out.display = [];
@@ -49,6 +47,8 @@ for (const a of autos) {
     photos: p.photos?.length ?? 0, photosWithAuthor: (p.photos ?? []).filter((x) => x.author).length, hours: p.hours?.length ?? 0,
   });
 }
+/* sayaçlar gösterim çağrılarından SONRA okunur */
+out.after = (await j(await fetch(`${admin}?rapor=google`, { headers: auth }))).body;
 finish(0);
 
 function finish(code) {
@@ -57,7 +57,7 @@ function finish(code) {
   const res = out.match?.body?.results ?? [];
   const cnt = (f) => res.filter(f).length;
   const calls = res.reduce((s, x) => ({ ts: s.ts + (x.calls?.textSearch ?? 0), de: s.de + (x.calls?.detailsEnterprise ?? 0) }), { ts: 0, de: 0 });
-  const usage = Object.fromEntries(Object.entries(out.after?.usage ?? {}).map(([k, v]) => [k.replace("google:", ""), `${v.month}/ay · ${v.day}/gün · sınır ${v.budget?.month ?? "?"}/${v.budget?.day ?? "?"}`]));
+  const usage = Object.fromEntries(Object.entries(out.after?.usage ?? {}).map(([k, v]) => [k.replace("google:", ""), `${v.month}/ay · ${v.day}/gün · sınır ${v.budget?.monthly ?? "?"}/${v.budget?.daily ?? "?"}`]));
   console.log("Korumasız istek durumları:", JSON.stringify(out.noAuth));
   console.log("Redis:", JSON.stringify({ total: out.redis?.total, groups: out.redis?.groups ? Object.keys(out.redis.groups).length : null }));
   console.log("Eşleştirme HTTP:", out.match?.status ?? "-", "· istenen:", N, "· işlenen:", res.length);
