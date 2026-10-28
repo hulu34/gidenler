@@ -65,6 +65,17 @@ async function main() {
   const c3 = await counts();
   ok("silinip tohumlanan sayaç her kalemde gerçek kullanımın altında değil", all.every((k) => c3[k] >= real[k]), { sayac: c3, gercek: real });
 
+  /* 3b) yayın öncesi kullanım: Redis'te sayaç var, Neon'da taban yok → ilk istekte aktarılır, sonra Redis silinse de kaybolmaz */
+  const dec = new Date(Date.UTC(2026, 11, 15, 12));
+  await io.flushall(); await clearFloors();
+  const pre: Record<string, number> = { "google:text_search_pro": 447, "google:details_enterprise": 195, "google:details_atmosphere": 52, "google:details_essentials": 7, "google:photo": 245 };
+  for (const [k, v] of Object.entries(pre)) await io.set(periodKeys(k as BudgetKey, dec).month, String(v));
+  const r3b = await Promise.all(Array.from({ length: 20 }, () => reserve("google:photo", 1, dec)));
+  await io.flushall();
+  await reserve("google:details_atmosphere", 1, dec);
+  const after3b = Object.fromEntries(await Promise.all(all.map(async (k) => [k, Number(await io.get(periodKeys(k, dec).month) ?? 0)])));
+  ok("yayın öncesi sayaçlar Neon'a aktarılır; Redis silinince hiçbir kalem eksik kalmaz", r3b.every((r) => r.ok) && all.every((k) => after3b[k] >= (pre[k] ?? 0)), { sonra: after3b });
+
   /* 4) Neon erişilemiyor: soğuk Redis → hiç izin yok */
   await io.flushall();
   setDbForTests(new Proxy({}, { get: () => { throw new Error("neon down"); } }) as unknown as Db);

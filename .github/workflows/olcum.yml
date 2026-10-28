@@ -46,7 +46,7 @@ jobs:
         ports: ["6379:6379"]
     steps:
       - uses: actions/checkout@v4
-        with: { ref: b5809d3e2ae09f05ed445750b51b2364a1ae1d33, fetch-depth: 0 }
+        with: { ref: 756fd136a7bbd1fadc504302e6427752d0e674cb, fetch-depth: 0 }
       - uses: actions/checkout@v4
         with: { path: ops-src }
       - uses: actions/setup-node@v4
