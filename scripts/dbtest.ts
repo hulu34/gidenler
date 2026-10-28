@@ -35,7 +35,7 @@ import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
 import { entities, DEMO_VISIBLE } from "../data/entities";
 import { gidenler100 } from "../lib/venue";
-import { applyProfile, readProfile, ProfileInput } from "../lib/profile";
+import { applyProfile, readProfile, rollbackProfile, ProfileInput } from "../lib/profile";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info?: unknown) => {
@@ -644,26 +644,43 @@ async function main() {
     const input = ProfileInput.parse(raw);
     const nItems = input.menu!.sections.reduce((a, s) => a + s.items.length, 0);
     const placeRow = async () => (await db.select().from(schema.places).where(eq(schema.places.slug, "pandeli-fatih")))[0];
+    const n = async (t: string) => Number((await pg.query<{ n: number }>(`select count(*)::int as n from ${t}`)).rows[0].n);
+    const snap = async () => JSON.stringify({ p: await readProfile(db, "pandeli-fatih"), pl: await placeRow(), m: await n("menu_items"), f: await n("field_provenance") });
     const before = await placeRow();
-    const auditBefore = Number((await pg.query<{ n: number }>("select count(*)::int as n from audit_log")).rows[0].n);
     ok("profil yokken okuma boş", (await readProfile(db, "pandeli-fatih")) === null);
     const a1 = await applyProfile(db, input);
     const pr = await readProfile(db, "pandeli-fatih");
     ok("uygulandı: tanıtım, iletişim, kurallar, olanaklar", a1.ok && !!pr?.description && pr.phone?.value === "+90 212 527 39 09" && pr.notes.length === 2 && pr.amenities?.items.rezervasyon === true);
-    ok(`resmî menü ${nItems} kalem, bölüm sırası korunur, fiyatsız`, pr?.menu?.sections.reduce((a, s) => a + s.items.length, 0) === nItems && pr?.menu?.sections[0].title === "Çorba" && pr?.menu?.pricesPublished === false && pr.menu.sections.every((s) => s.items.every((i) => i.priceTry === undefined)));
+    ok(`resmî menü ${nItems} kalem, bölüm sırası korunur, fiyatsız`, pr?.menu?.sections.reduce((a, s) => a + s.items.length, 0) === nItems && pr?.menu?.sections[0].title === "Çorba" && pr?.menu?.pricesPublished === false);
     ok("kaynak bağlantısı ve kontrol tarihi her alanda", [pr?.description, pr?.address, pr?.phone].every((f) => f?.url.startsWith("https://www.pandeli.com.tr") && f.checkedAt === "2026-10-28") && pr?.menu?.validFrom === "2026-02-01");
     ok("bilinmeyen bilgi uydurulmaz: saat yok", pr?.hours === undefined && (await placeRow()).openingHours === before.openingHours);
-    ok("kimlik alanları kaynaktan güncellendi", (await placeRow()).phone === "+90 212 527 39 09" && (await placeRow()).address!.startsWith("Rüstempaşa"));
+    const m1 = await n("menu_items"), f1 = await n("field_provenance");
     const a2 = await applyProfile(db, input);
-    const menuRows = Number((await pg.query<{ n: number }>("select count(*)::int as n from menu_items")).rows[0].n);
-    ok("aynı gün yeniden uygulama menüyü çoğaltmaz", a2.ok && menuRows === nItems);
-    const later = { ...input, phone: { ...input.phone!, checkedAt: "2026-11-15" }, menu: { ...input.menu!, checkedAt: "2026-11-15", sections: [{ title: "Çorba", items: [{ name: "Günün Çorbası", priceTry: 250 }] }], pricesPublished: true } };
-    await applyProfile(db, later);
-    const pr2 = await readProfile(db, "pandeli-fatih");
-    const kept = Number((await pg.query<{ n: number }>("select count(*)::int as n from menu_items")).rows[0].n);
-    ok("yeni kontrol günü: sayfa en yeni menüyü gösterir, eski kayıt silinmez", pr2?.menu?.checkedAt === "2026-11-15" && pr2.menu.sections[0].items[0].priceTry === 250 && kept === nItems + 1);
-    const auditAfter = Number((await pg.query<{ n: number }>("select count(*)::int as n from audit_log where action = 'profile_apply'")).rows[0].n);
-    ok("her uygulama önceki değerlerle denetim kaydına yazılır", auditAfter === 3 && Number((await pg.query<{ n: number }>("select count(*)::int as n from audit_log")).rows[0].n) === auditBefore + 3);
+    ok("aynı içerik tekrar: menü ve kaynak kaydı çoğalmaz, yalnız denetim kaydı", a2.ok && a2.unchanged === true && (await n("menu_items")) === m1 && (await n("field_provenance")) === f1);
+    /* aynı gün, aynı kaynak bağlantısı, değişmiş menü (yazım düzeltmesi) */
+    const fixed = structuredClone(input); fixed.menu!.sections[1].items[0].name = "Közlenmiş Patlıcan Salatası (düzeltildi)";
+    const a3 = await applyProfile(db, fixed);
+    const pr3 = await readProfile(db, "pandeli-fatih");
+    ok("aynı gün değişen menü uygulanır (yeni sürüm)", a3.ok && a1.ok && a3.menuVersion !== a1.menuVersion && pr3?.menu?.sections[1].items[0].name.endsWith("(düzeltildi)") === true);
+    ok("eski ve yeni sürüm karışmaz; eski sürüm geçmiş olarak durur", pr3?.menu?.sections.reduce((a, s) => a + s.items.length, 0) === nItems && (await n("menu_items")) === m1 + nItems);
+    /* eşzamanlı iki uygulama: sonuç ikisinden biri, karışık değil */
+    const b1 = structuredClone(input); b1.menu!.sections[0].items[0].name = "Günün Çorbası (B1)";
+    const b2 = structuredClone(input); b2.menu!.sections[0].items[0].name = "Günün Çorbası (B2)";
+    const [c1, c2] = await Promise.all([applyProfile(db, b1), applyProfile(db, b2)]);
+    const pr4 = await readProfile(db, "pandeli-fatih");
+    const first = pr4?.menu?.sections[0].items[0].name;
+    ok("eşzamanlı iki uygulama: ikisi de tamamlanır, sayfa tek ve tam bir sürüm gösterir", c1.ok && c2.ok && (first === "Günün Çorbası (B1)" || first === "Günün Çorbası (B2)") && pr4?.menu?.sections.reduce((a, s) => a + s.items.length, 0) === nItems && pr4?.menu?.sections[1].items[0].name === "Közlenmiş Patlıcan Salatası");
+    /* yazımın ortasında zorlanan hata → hiçbir şey değişmez */
+    const s0 = await snap(); const aud0 = await n("audit_log");
+    const broken = structuredClone(input); broken.phone = { ...input.phone!, value: "+90 000 000 00 00" }; broken.menu!.sections[0].items[0].name = "YARIM KALMAMALI";
+    let threw = false; try { await applyProfile(db, broken, { failMidway: true }); } catch { threw = true; }
+    ok("yazım ortasında hata: profil, kimlik alanları, menü, kaynak ve denetim kaydı değişmez", threw && (await snap()) === s0 && (await n("audit_log")) === aud0);
+    /* veri geri dönüşü: son uygulamayı geri al */
+    const last = await applyProfile(db, { ...input, phone: { ...input.phone!, value: "+90 212 999 99 99" } });
+    ok("yeni telefon uygulandı", (await readProfile(db, "pandeli-fatih"))?.phone?.value === "+90 212 999 99 99" && (await placeRow()).phone === "+90 212 999 99 99");
+    ok("eski bir uygulama geri alınamaz (yalnız en son)", (await rollbackProfile(db, a1.ok ? a1.auditId : "")).ok === false);
+    const rb = await rollbackProfile(db, last.ok ? last.auditId : "");
+    ok("son uygulama geri alındı: telefon ve sayfa önceki haline döndü", rb.ok && (await readProfile(db, "pandeli-fatih"))?.phone?.value === "+90 212 527 39 09" && (await placeRow()).phone === "+90 212 527 39 09");
     let bad = false; try { ProfileInput.parse({ ...raw, menu: { ...raw.menu, sections: [{ title: "X", items: [{ name: "Y", priceTry: -5 }] }] } }); } catch { bad = true; }
     ok("geçersiz fiyat / alan reddedilir", bad && ProfileInput.safeParse({ ...raw, hours: { value: "x" } }).success === false);
     ok("başka mekânın profili etkilenmez", (await readProfile(db, "ciya-sofrasi-kadikoy")) === null);

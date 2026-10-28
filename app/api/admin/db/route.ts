@@ -1,7 +1,8 @@
 import { after, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { TAG_GOOGLE, TAG_MEDIA, profileTag } from "@/lib/live";
-import { applyProfile, ProfileInput, readProfile } from "@/lib/profile";
+import { applyProfile, ProfileInput, readProfile, rollbackProfile } from "@/lib/profile";
+import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
 import { executorFor } from "@/lib/db/executors";
 import { applyMigrations, migrationStatus } from "@/lib/db/migrate";
@@ -18,7 +19,7 @@ import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/st
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
 import { and, desc, eq, inArray } from "drizzle-orm";
-import { moderationQueue, reviews } from "@/lib/db/schema";
+import { auditLog, fieldProvenance, menuItems, moderationQueue, places, reviews } from "@/lib/db/schema";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -71,7 +72,12 @@ export async function GET(req: Request) {
   if (new URL(req.url).searchParams.get("rapor") === "profil") {
     const db = getDb(); const slug = new URL(req.url).searchParams.get("slug") ?? "";
     if (!db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
-    try { return NextResponse.json({ env: envName(), slug, profile: await readProfile(db, slug), videos: await listPlaceVideos(slug) }, { headers: H }); } catch (e) { return fail(e); }
+    try {
+      const [pl] = await db.select({ id: places.id, address: places.address, phone: places.phone, website: places.website, instagram: places.instagram, openingHours: places.openingHours }).from(places).where(eq(places.slug, slug)).limit(1);
+      const count = async (t: typeof menuItems | typeof fieldProvenance) => (pl ? (await db.select({ id: t.id }).from(t).where(eq(t.placeId, pl.id))).length : 0);
+      const audits = pl ? await db.select({ id: auditLog.id, action: auditLog.action, at: auditLog.at }).from(auditLog).where(and(eq(auditLog.refId, pl.id), inArray(auditLog.action, ["profile_apply", "profile_rollback"]))).orderBy(desc(auditLog.at)).limit(5) : [];
+      return NextResponse.json({ env: envName(), slug, place: pl ?? null, counts: { menuRows: await count(menuItems), provRows: await count(fieldProvenance) }, audits, profile: await readProfile(db, slug), videos: await listPlaceVideos(slug) }, { headers: H });
+    } catch (e) { return fail(e); }
   }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
   /* ?rapor=yorumlar → açık şikâyet / spam kayıtları ve ilgili deneyimin durumu (metin dahil; yalnız yönetim) */
@@ -110,7 +116,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown> } = {};
+  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; simulateFailure?: boolean; auditId?: string } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -167,17 +173,33 @@ export async function POST(req: Request) {
         return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "profile-apply": {
-        /* Restoran profili: content/profiles/<slug>.json içeriği. Mevcut veriyi silmez; önceki değerler audit_log'da. */
+        /* Restoran profili: content/profiles/<slug>.json. Profil kısmı TEK işlemde yazılır (yarıda kalırsa hiçbiri kalmaz);
+           mevcut veri silinmez, önceki değerler ve eklenen kayıtlar denetim kaydında. Videolar ayrı eklenir ve ayrı raporlanır. */
         if (body.confirm !== "EVET" || !body.profile) break;
         const { videos, _kaynak_notu: _n, ...rest } = body.profile as { videos?: { url: string; credit?: string; category?: string; sponsored?: boolean }[]; _kaynak_notu?: string };
         void _n;
         const parsed = ProfileInput.safeParse(rest);
         if (!parsed.success) return NextResponse.json({ error: "invalid_profile", issues: parsed.error.issues.slice(0, 8).map((i) => `${i.path.join(".")}: ${i.message}`) }, { status: 400, headers: H });
-        const r = await applyProfile(db, parsed.data);
-        const v = [] as unknown[];
+        /* zorlanan hata yalnız test ortamında (Preview / yerel) */
+        const failMidway = body.simulateFailure === true && envName() !== "production";
+        let r;
+        try { r = await applyProfile(db, parsed.data, { failMidway }); }
+        catch (e) { fresh(profileTag(parsed.data.slug)); return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, error: "apply_failed_rolled_back", message: e instanceof Error ? e.message.slice(0, 200) : "error", profile: await readProfile(db, parsed.data.slug) }, { status: 500, headers: H }); }
+        if (!r.ok) return NextResponse.json({ action: "profile-apply", env: envName(), ...r }, { status: 400, headers: H });
+        const v: Awaited<ReturnType<typeof addPlaceVideo>>[] = [];
         for (const it of Array.isArray(videos) ? videos.slice(0, 20) : []) v.push(await addPlaceVideo({ slug: parsed.data.slug, url: it.url, credit: it.credit, category: it.category, sponsored: it.sponsored === true }));
+        const vOk = v.filter((x) => x.ok).length;
+        if (v.length) await db.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "profile_videos", refTable: "places", refId: null, detail: { slug: parsed.data.slug, of: r.auditId, media: v.map((x) => (x.ok ? { id: x.id, created: x.created } : { error: x.error })) } });
         fresh(profileTag(parsed.data.slug)); fresh(TAG_MEDIA);
-        return NextResponse.json({ action: "profile-apply", env: envName(), ...r, videos: v, profile: await readProfile(db, parsed.data.slug) }, { status: r.ok ? 200 : 400, headers: H });
+        const complete = vOk === v.length;
+        return NextResponse.json({ action: "profile-apply", env: envName(), ...r, ok: complete, profileOk: true, videosOk: vOk, videosTotal: v.length, videos: v, profile: await readProfile(db, parsed.data.slug) }, { status: complete ? 200 : 207, headers: H });
+      }
+      case "profile-rollback": {
+        /* Veri geri dönüşü: bir profile_apply kaydını geri alır (kimlik alanları + olanaklar önceki değerine, o uygulamanın kaynak kayıtları kaldırılır). */
+        if (body.confirm !== "GERI-AL" || typeof body.auditId !== "string") break;
+        const r = await rollbackProfile(db, body.auditId);
+        if (r.ok) fresh(profileTag(r.slug));
+        return NextResponse.json({ action: "profile-rollback", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "review-hide":
       case "review-restore": {
