@@ -4,7 +4,7 @@ import { getDb } from "@/lib/db/client";
 import { places, placeIdentifiers, moderationQueue } from "@/lib/db/schema";
 import { reserve } from "@/lib/usage/counter";
 import { getRedis, redisNs } from "@/lib/usage/redis";
-import { matchScore, brandKey, branchDiff, houseNoConflict, preDecide, postDecide, type MatchContext } from "@/lib/match/score";
+import { matchScore, brandKey, branchDiff, BRANCH_WORDS, houseNoConflict, preDecide, postDecide, type MatchContext } from "@/lib/match/score";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GOOGLE PLACES (New) ADAPTÖRÜ — yalnız sunucu.
@@ -114,7 +114,8 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
     const sameBrand = ranked.filter((x) => brandKey(x.c.displayName?.text ?? "") === bk).length;
     const ctx: MatchContext = {
       chain: (brands?.get(bk) ?? 1) > 1 || sameBrand > 1,
-      branch: branchDiff(p.name, best.c.displayName?.text ?? ""),
+      /* iki yönlü: adayda olup bizde olmayan ek ("… Suadiye") ya da bizde olup adayda olmayan şube adı ("Gelik Et Ataköy" ↔ "Gelik Restaurant") */
+      branch: [...new Set([...branchDiff(p.name, best.c.displayName?.text ?? ""), ...branchDiff(best.c.displayName?.text ?? "", p.name).filter((w) => BRANCH_WORDS.has(w))])],
       rival: ranked.slice(1).some((x) => x.m.name >= 0.6 && x.m.distanceM <= 300 && x.c.id !== best.c.id && x.m.score >= best.m.score - 0.1),
       addrConflict: houseNoConflict(p.address, best.c.formattedAddress),
     };

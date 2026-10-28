@@ -231,6 +231,11 @@ async function main() {
   const m5 = await resolveGooglePlaceId(c2.slug, K, mkFetch({ name: c2.name, lat: c2.lat! + 0.00054, lng: c2.lng!, phone: "0212 000 00 00", web: `https://siparis.${site}/`, id: "GID_C2" }));
   ok("alt alan adlı site aynı site sayılır; telefon farkı tek başına engel değil", m5.status === "auto" && m5.website === "match" && m5.phone === "conflict", m5);
   ok("şube eki listede olmasa da işaretlenir (Bambi Cafe ↔ Bambi Cafe Gayrettepe)", branchDiff("Bambi Cafe", "Bambi Cafe Gayrettepe").includes("gayrettepe") && branchDiff("Antiochia", "Antiochia").length === 0);
+  const gelik = (await db.select().from(schema.places).where(sql`${schema.places.website} is not null and ${schema.places.vertical} = 'restaurant' and ${schema.places.slug} not in (${moda.slug}, 'ciya-sofrasi-kadikoy', ${c1.slug}, ${c2.slug})`).limit(1))[0];
+  await db.update(schema.places).set({ name: `${gelik.name} Ataköy`, phone: null }).where(eq(schema.places.id, gelik.id));
+  const m6 = await resolveGooglePlaceId(gelik.slug, K, mkFetch({ name: gelik.name, lat: gelik.lat! + 0.00015, lng: gelik.lng!, web: gelik.website!, id: "GID_C3" }));
+  await db.update(schema.places).set({ name: gelik.name, phone: gelik.phone }).where(eq(schema.places.id, gelik.id));
+  ok("şube adı bizim kaydımızda (… Ataköy) ve yalnız web eşleşiyorsa → manuel onay", m6.status === "pending" && (m6.branch ?? []).includes("atakoy"), m6);
   ok("karar katmanı: 120 m asla otomatik değil", preDecide({ score: 0.9, name: 1, distanceM: 120, decision: "auto", phone: "unknown", website: "unknown", address: null }, { chain: false, branch: [], rival: false, addrConflict: false }, true).decision !== "auto");
   ok("karar katmanı: kapı no çelişkisi → onay", postDecide({ score: 1, name: 1, distanceM: 10, decision: "auto", phone: "match", website: "match", address: 1 }, { chain: false, branch: [], rival: false, addrConflict: true }).decision === "review");
 
