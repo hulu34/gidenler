@@ -10,7 +10,7 @@ import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
 import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats } from "@/lib/providers/google";
-import { usageSnapshot } from "@/lib/usage/counter";
+import { usageSnapshot, spendReport } from "@/lib/usage/counter";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -50,7 +50,7 @@ export async function GET(req: Request) {
   if (!allowed(req)) return nf();
   /* ?rapor=google → eşleşme sayıları, onay bekleyenler (yalnız place_id + bizim kayıtlarımız), SKU bazında kullanım */
   if (new URL(req.url).searchParams.get("rapor") === "google") {
-    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot() }, { headers: H }); }
+    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot(), spend: await spendReport() }, { headers: H }); }
     catch (e) { return fail(e); }
   }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
@@ -110,8 +110,11 @@ export async function POST(req: Request) {
       case "google-match": {
         /* Ücretli: her çağrı Redis kota kontrolünden geçer; tek seferde en çok 25 restoran. */
         if (body.confirm !== "EVET") break;
+        /* Harcama takibi okunamıyorsa ücretli toplu iş hiç başlamaz. */
+        const before = await spendReport();
+        if (!before) return NextResponse.json({ error: "spend_unknown" }, { status: 503, headers: H });
         const r = await matchGoogleBatch(Number(body.limit) || 20);
-        return NextResponse.json({ action: "google-match", env: envName(), ...r, stats: await googleMatchStats(), usage: await usageSnapshot() }, { headers: H });
+        return NextResponse.json({ action: "google-match", env: envName(), ...r, stats: await googleMatchStats(), usage: await usageSnapshot(), spend: await spendReport() }, { headers: H });
       }
       case "google-review": {
         if (body.confirm !== "EVET" || !body.id || !["confirmed", "rejected"].includes(body.decision ?? "")) break;

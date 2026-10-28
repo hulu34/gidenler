@@ -15,7 +15,7 @@ import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
 import { realVenueRecords } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
-import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys } from "../lib/usage/counter";
+import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
 import { fetchGooglePlace, googleEnabled, matchGoogleBatch, resolveGooglePlaceId, reviewGoogleMatch, rollbackGoogleMatches } from "../lib/providers/google";
@@ -38,9 +38,14 @@ class FakeRedis {
   async eval(script: string, keys: string[], args: string[]) {
     this.chk();
     if (script.includes("DECR")) {
-      const [mk, dk] = keys; const mm = (this.m.get(mk) ?? 0) + 1, dd = (this.m.get(dk) ?? 0) + 1;
+      /* counter.ts LUA: kalem sınırları + toplam harcama tavanı (aynı sıra ve anlamla) */
+      const [mk, dk, ...all] = keys; const mm = (this.m.get(mk) ?? 0) + 1, dd = (this.m.get(dk) ?? 0) + 1;
       if (mm > Number(args[0]) || dd > Number(args[1])) return 0;
-      this.m.set(mk, mm); this.m.set(dk, dd); return 1;
+      this.m.set(mk, mm); this.m.set(dk, dd);
+      let spend = 0;
+      all.forEach((k, i) => { const n = this.m.get(k) ?? 0, free = Number(args[5 + i * 2]), micro = Number(args[6 + i * 2]); if (n > free) spend += (n - free) * micro; });
+      if (spend > Number(args[4])) { this.m.set(mk, mm - 1); this.m.set(dk, dd - 1); return -1; }
+      return 1;
     }
     const n = (this.m.get(keys[0]) ?? 0) + 1; this.m.set(keys[0], n); return n;
   }
@@ -134,10 +139,23 @@ async function main() {
   fake.broken = false;
   const snap = await usageSnapshot();
   ok("kullanım özeti okunur", !!snap && snap["google:details_atmosphere"].day === day);
+  /* toplam aylık harcama tavanı (100 USD): ücretsiz kota önce; tavan aşılacaksa HİÇBİR kalem çağrı yapamaz */
+  const capFake = new FakeRedis(); setRedisForTests(capFake as unknown as RedisLike);
+  capFake.m.set(periodKeys("google:text_search_pro").month, 7000);       // 2.000 × $0,032 = $64
+  ok("ücretsiz kota aşılmış ama tavan altında: çağrı yapılır", (await reserve("google:details_atmosphere")).ok);
+  capFake.m.set(periodKeys("google:details_enterprise").month, 2900);    // + 1.900 × $0,02 = $38 → $102
+  const capped = await reserve("google:photo");
+  ok("toplam 100 USD tavanı aşılırsa her kalem durur (spend_cap)", !capped.ok && capped.reason === "spend_cap", capped);
+  ok("reddedilen istek sayacı geri alınır", Number(capFake.m.get(periodKeys("google:photo").month) ?? 0) === 0);
+  const rep = await spendReport();
+  ok("maliyet raporu: kalem bazında USD ve toplam", !!rep && rep.usd === 102 && rep.perSku["google:text_search_pro"].usd === 64 && rep.capUsd === 100, rep);
+  ok("tavan ortam değişkeniyle 100'ün üstüne çıkarılamaz", (process.env.GOOGLE_MONTHLY_USD_CAP = "500", usdCap()) === 100);
+  delete process.env.GOOGLE_MONTHLY_USD_CAP;
+  setRedisForTests(fake as unknown as RedisLike);
   ok("ortam ad alanları ayrı", redisNs("production") === "prod" && redisNs("preview") === "preview" && redisNs(undefined) === "dev");
   ok("sayaç anahtarı ortam önekli", periodKeys("google:photo").month.startsWith(`${redisNs()}:usage:`));
-  ok("Preview payı %10, toplam ücretsiz kotanın altında",
-    (Object.keys(BUDGETS) as (keyof typeof BUDGETS)[]).every((k) => budgetFor(k, "preview").monthly + budgetFor(k, "production").monthly < (k === "google:text_search_pro" ? 5000 : k === "google:details_essentials" ? 10000 : 1000)));
+  ok("Preview payı Production'ın %10'u",
+    (Object.keys(BUDGETS) as (keyof typeof BUDGETS)[]).every((k) => budgetFor(k, "preview").monthly * 10 <= budgetFor(k, "production").monthly));
 
   console.log("\n5) Google adaptörü (sahte API, gerçek çağrı yok)");
   setDbForTests(db);
