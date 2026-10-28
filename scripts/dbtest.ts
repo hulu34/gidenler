@@ -15,7 +15,7 @@ import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
 import { realVenueRecords } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
-import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap, pacedDaily, googlePause } from "../lib/usage/counter";
+import { readFloors as readFloorsT, reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap, pacedDaily, googlePause } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
 import { fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, holdGoogleMatches, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
@@ -40,7 +40,8 @@ class FakeRedis {
   private chk() { if (this.broken) throw new Error("down"); }
   async eval(script: string, keys: string[], args: string[]) {
     this.chk();
-    if (script.includes("DECR")) {
+    if (script.startsWith("-- undo")) { keys.forEach((k) => this.m.set(k, (this.m.get(k) ?? 0) - 1)); return 1; }
+    if (script.includes("local spend")) {
       /* counter.ts LUA: kalem sınırları + toplam harcama tavanı (aynı sıra ve anlamla) */
       const [mk, dk, ...all] = keys; const mm = (this.m.get(mk) ?? 0) + 1, dd = (this.m.get(dk) ?? 0) + 1;
       if (mm > Number(args[0]) || dd > Number(args[1])) return 0;
@@ -48,6 +49,11 @@ class FakeRedis {
       let spend = 0;
       all.forEach((k, i) => { const n = this.m.get(k) ?? 0, free = Number(args[5 + i * 2]), micro = Number(args[6 + i * 2]); if (n > free) spend += (n - free) * micro; });
       if (spend > Number(args[4])) { this.m.set(mk, mm - 1); this.m.set(dk, dd - 1); return -1; }
+      return mm;
+    }
+    if (script.includes("local floor")) {
+      /* counter.ts SEED_LUA: sayaç yoksa ya da tabanın altındaysa tabana çek (asla aşağı değil) */
+      keys.forEach((k, i) => { const f = Number(args[i + 1]); if ((this.m.get(k) ?? -1) < f) this.m.set(k, f); });
       return 1;
     }
     const n = (this.m.get(keys[0]) ?? 0) + 1; this.m.set(keys[0], n); return n;
@@ -129,9 +135,13 @@ async function main() {
   ok("var olmayan mekâna deneyim yazılamaz (FK)", fkErr);
 
   console.log("\n4) Ücretli çağrı sayacı (çalışmazsa durdur)");
+  /* sayaç artık Neon'daki kalıcı tabanı da kullanır: test veritabanı bu bölümden itibaren bağlı.
+     "Yeni Redis" senaryolarında önceki senaryonun tabanı karışmasın diye fresh() tabanı temizler. */
+  setDbForTests(db);
+  const fresh = async () => { await db.delete(schema.auditLog).where(eq(schema.auditLog.action, "usage_floor")); return new FakeRedis(); };
   setRedisForTests(null);
   ok("Redis yoksa çağrı reddedilir", (await reserve("google:details_atmosphere")).ok === false);
-  const fake = new FakeRedis();
+  const fake = await fresh();
   setRedisForTests(fake as unknown as RedisLike);
   const day = BUDGETS["google:details_enterprise"].daily;
   let granted = 0;
@@ -141,7 +151,7 @@ async function main() {
   const nov1 = new Date(Date.UTC(2026, 10, 1, 12)), nov30 = new Date(Date.UTC(2026, 10, 30, 12));
   ok("zamanlanmış pay: ay başı 3.200/30×1,5 = 160", pacedDaily(3200, 0, nov1) === 160, pacedDaily(3200, 0, nov1));
   ok("zamanlanmış pay: az harcanan ay sonu payı büyür, aylık sınırı aşamaz", pacedDaily(3200, 1000, nov30) === 3300 && pacedDaily(3200, 3300, nov30) === 1);
-  const paceFake = new FakeRedis(); setRedisForTests(paceFake as unknown as RedisLike);
+  const paceFake = await fresh(); setRedisForTests(paceFake as unknown as RedisLike);
   let paced = 0; for (let i = 0; i < 200; i++) if ((await reserve("google:details_atmosphere", 1, nov1)).ok) paced++;
   ok("zamanlanmış pay uygulanır (ay başı 160 sayfa görünümü)", paced === 160, paced);
   setRedisForTests(fake as unknown as RedisLike);
@@ -152,7 +162,7 @@ async function main() {
   const snap = await usageSnapshot();
   ok("kullanım özeti okunur", !!snap && snap["google:details_enterprise"].day === day);
   /* toplam aylık harcama tavanı (100 USD): ücretsiz kota önce; tavan aşılacaksa HİÇBİR kalem çağrı yapamaz */
-  const capFake = new FakeRedis(); setRedisForTests(capFake as unknown as RedisLike);
+  const capFake = await fresh(); setRedisForTests(capFake as unknown as RedisLike);
   capFake.m.set(periodKeys("google:text_search_pro").month, 7000);       // 2.000 × $0,032 = $64
   ok("ücretsiz kota aşılmış ama tavan altında: çağrı yapılır", (await reserve("google:details_atmosphere")).ok);
   capFake.m.set(periodKeys("google:details_enterprise").month, 2900);    // + 1.900 × $0,02 = $38 → $102
@@ -163,6 +173,34 @@ async function main() {
   ok("maliyet raporu: kalem bazında USD ve toplam", !!rep && rep.usd === 102 && rep.perSku["google:text_search_pro"].usd === 64 && rep.capUsd === 100, rep);
   ok("tavan ortam değişkeniyle 100'ün üstüne çıkarılamaz", (process.env.GOOGLE_MONTHLY_USD_CAP = "500", usdCap()) === 100);
   delete process.env.GOOGLE_MONTHLY_USD_CAP;
+  /* KALICI TABAN: Redis sayaçları silinirse (flush/tahliye) aylık tavan sıfırlanmaz; Neon yoksa ücretli çağrı durur */
+  const ktOct31 = new Date(Date.UTC(2026, 9, 31, 12)), ktAtm = "google:details_atmosphere" as const;
+  process.env.GOOGLE_MONTHLY_USD_CAP = "1";               // 1 USD tavan: E+A için 1.000 ücretsiz + 40 ücretli istek
+  const ktW1 = await fresh(); setRedisForTests(ktW1 as unknown as RedisLike);
+  let ktG1 = 0; for (let i = 0; i < 1100; i++) if ((await reserve(ktAtm, 1, ktOct31)).ok) ktG1++;
+  const ktW2 = new FakeRedis(); setRedisForTests(ktW2 as unknown as RedisLike);   // Redis silindi; Neon tabanı duruyor
+  let ktG2 = 0; for (let i = 0; i < 300; i++) if ((await reserve(ktAtm, 1, ktOct31)).ok) ktG2++;
+  ok("Redis tavana ulaşmışken silinirse ek harcama yok (tabandan yeniden kurulur)", ktG1 === 1040 && ktG2 === 0 && (ktG1 + ktG2 - 1000) * 0.025 <= 1, { ktG1, ktG2, sayac: ktW2.m.get(periodKeys(ktAtm, ktOct31).month) });
+  delete process.env.GOOGLE_MONTHLY_USD_CAP;
+  const ktW3 = await fresh(); setRedisForTests(ktW3 as unknown as RedisLike);
+  for (let i = 0; i < 25; i++) await reserve("google:photo", 1, ktOct31);
+  const ktW4 = new FakeRedis(); setRedisForTests(ktW4 as unknown as RedisLike);
+  const ktR4 = await reserve("google:photo", 1, ktOct31);
+  const ktAfter4 = ktW4.m.get(periodKeys("google:photo", ktOct31).month) ?? 0;
+  ok("ay ortasında silinen sayaç gerçek kullanımın altına inmez (25 → taban 30 → 31)", ktR4.ok && ktAfter4 === 31 && ktAfter4 > 25, ktAfter4);
+  ok("bütün kalemlerin aylık sayacı birlikte tohumlanır (tavan hesabı eksik kalmaz)", Object.keys(BUDGETS).every((x) => ktW4.m.has(periodKeys(x as keyof typeof BUDGETS, ktOct31).month)));
+  const ktDeaddb = new Proxy({}, { get: () => { throw new Error("neon down"); } }) as unknown as Db;
+  setDbForTests(ktDeaddb);
+  const ktW5 = new FakeRedis(); setRedisForTests(ktW5 as unknown as RedisLike);
+  const ktR5 = await reserve("google:photo", 1, ktOct31);
+  ok("Neon erişilemiyor + sayaç yok → ücretli çağrı durur", !ktR5.ok && ktR5.reason === "error" && !ktW5.m.has(periodKeys("google:photo", ktOct31).month), ktR5);
+  setRedisForTests(ktW4 as unknown as RedisLike);              // sayaç var (31); 39 → 40 serbest, 41. istek eşik
+  let ktG6 = 0; for (let i = 0; i < 9; i++) if ((await reserve("google:photo", 1, ktOct31)).ok) ktG6++;
+  let ktG7 = 0; for (let i = 0; i < 20; i++) if ((await reserve("google:photo", 1, ktOct31)).ok) ktG7++;
+  ok("Neon erişilemiyor → eşikte taban yazılamaz, o kalemde bütün ücretli çağrılar durur", ktG6 === 9 && ktG7 === 0 && ktW4.m.get(periodKeys("google:photo", ktOct31).month) === 40, { ktG6, ktG7, sayac: ktW4.m.get(periodKeys("google:photo", ktOct31).month) });
+  setDbForTests(db);
+  const ktR8 = await reserve("google:photo", 1, ktOct31);
+  ok("Neon dönünce çağrılar sürer ve taban yazılır", ktR8.ok && (await readFloorsT(ktOct31))?.["google:photo"] === 50, await readFloorsT(ktOct31));
   setRedisForTests(fake as unknown as RedisLike);
   ok("ortam ad alanları ayrı", redisNs("production") === "prod" && redisNs("preview") === "preview" && redisNs(undefined) === "dev");
   ok("sayaç anahtarı ortam önekli", periodKeys("google:photo").month.startsWith(`${redisNs()}:usage:`));
@@ -171,7 +209,7 @@ async function main() {
 
   console.log("\n5) Google adaptörü (sahte API, gerçek çağrı yok)");
   setDbForTests(db);
-  const fake2 = new FakeRedis(); setRedisForTests(fake2 as unknown as RedisLike);
+  const fake2 = await fresh(); setRedisForTests(fake2 as unknown as RedisLike);
   process.env.GOOGLE_PLACES_API_KEY = "TEST_KEY_NOT_REAL";
   ok("Preview'da ücretli Google çağrıları varsayılan kapalı", googleEnabled("preview") === false && googleEnabled("production") === true);
   const calls: string[] = []; const masks: string[] = []; let keyInUrl = false;
@@ -220,13 +258,13 @@ async function main() {
   const foreign = await fetchGooglePhotoMedia("ciya-sofrasi-kadikoy", [{ name: "places/BASKA/photos/x", author: "y" }, { name: "places/GID1/photos/../../x", author: "y" }], viewFetch);
   ok("başka mekâna ait ya da bozuk fotoğraf referansı istenmez", foreign.state === "ok" && foreign.data.photos.length === 0 && vCalls.length === 0, { foreign, vCalls });
   /* bütçe dolu: sayfa görünümü Google'a hiç gitmez, "limit" döner (sayfa Gidenler verisine düşer) */
-  const capFake2 = new FakeRedis(); setRedisForTests(capFake2 as unknown as RedisLike);
+  const capFake2 = await fresh(); setRedisForTests(capFake2 as unknown as RedisLike);
   capFake2.m.set(periodKeys("google:details_atmosphere").month, BUDGETS["google:details_atmosphere"].monthly);
   vCalls.length = 0;
   const vLim = await fetchGoogleView("ciya-sofrasi-kadikoy", viewFetch, 5);
   ok("aylık sınır doluysa sayfa görünümü Google'a istek atmaz (limit)", vLim.state === "limit" && vCalls.length === 0, { vLim, vCalls });
   /* sigorta: Google 429/403 verirse bütün Google çağrıları durur, sayfa kendi içeriğine düşer */
-  const tripFake = new FakeRedis(); setRedisForTests(tripFake as unknown as RedisLike);
+  const tripFake = await fresh(); setRedisForTests(tripFake as unknown as RedisLike);
   let gHits = 0;
   const quotaFetch = (async () => { gHits++; return new Response("{}", { status: 429 }); }) as unknown as typeof fetch;
   const t1 = await fetchGoogleView("ciya-sofrasi-kadikoy", quotaFetch, 5);
@@ -235,11 +273,11 @@ async function main() {
   ok("Google 429 → sigorta atar, sonraki görünüm Google'a gitmez (paused)", t1.state === "error" && t2.state === "limit" && t2.reason === "paused" && gHits === 1 && pz?.status === 429, { t1, t2, gHits, pz });
   const rsP = await reserve("google:text_search_pro");
   ok("sigorta açıkken eşleştirme araması da durur", !rsP.ok && rsP.reason === "paused", rsP);
-  const mediaFake = new FakeRedis(); setRedisForTests(mediaFake as unknown as RedisLike);
+  const mediaFake = await fresh(); setRedisForTests(mediaFake as unknown as RedisLike);
   const denyMedia = (async () => new Response("{}", { status: 403 })) as unknown as typeof fetch;
   const mx = await fetchGooglePhotoMedia("ciya-sofrasi-kadikoy", [{ name: "places/GID1/photos/p1", author: "y" }], denyMedia);
   ok("fotoğrafta 403 (faturalama/anahtar) → sigorta atar", mx.state === "limit" && (await googlePause())?.status === 403, mx);
-  const okFake = new FakeRedis(); setRedisForTests(okFake as unknown as RedisLike);
+  const okFake = await fresh(); setRedisForTests(okFake as unknown as RedisLike);
   await fetchGoogleView("ciya-sofrasi-kadikoy", (async () => new Response("{}", { status: 500 })) as unknown as typeof fetch, 5);
   ok("geçici 500 hatası sigortayı atmaz", (await googlePause()) === null);
   setRedisForTests(fake2 as unknown as RedisLike);
@@ -299,7 +337,7 @@ async function main() {
   ok("karar katmanı: kapı no çelişkisi → onay", postDecide({ score: 1, name: 1, distanceM: 10, decision: "auto", phone: "match", website: "match", address: 1 }, { chain: false, branch: [], rival: false, addrConflict: true }).decision === "review");
 
   /* eşleşmesi bulunamayan restoran sonraki partide yeniden aranmaz */
-  const fake4 = new FakeRedis(); setRedisForTests(fake4 as unknown as RedisLike);
+  const fake4 = await fresh(); setRedisForTests(fake4 as unknown as RedisLike);
   calls.length = 0;
   const nb1 = await matchGoogleBatch(3, mkFetch({ name: "Hiç Benzemeyen Ad", lat: 0, lng: 0 }));
   const nb2 = await matchGoogleBatch(3, mkFetch({ name: "Hiç Benzemeyen Ad", lat: 0, lng: 0 }));
@@ -325,7 +363,7 @@ async function main() {
   ok("aynı restoran ikinci kez yeniden denenmez", !rt2.results.some((x) => x.slug === far.slug), rt2.results.map((x) => x.slug));
 
   /* toplu eşleştirme: kota biterse durur, fazla çağrı yapmaz */
-  const fake3 = new FakeRedis(); setRedisForTests(fake3 as unknown as RedisLike);
+  const fake3 = await fresh(); setRedisForTests(fake3 as unknown as RedisLike);
   for (let i = 0; i < BUDGETS["google:text_search_pro"].daily - 2; i++) await reserve("google:text_search_pro");
   calls.length = 0;
   const b = await matchGoogleBatch(25, mkFetch({ name: "Hiç Benzemeyen Ad", lat: 0, lng: 0 }));

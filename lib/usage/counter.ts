@@ -1,11 +1,17 @@
+import { and, eq, like, sql } from "drizzle-orm";
+import { uuidv7 } from "uuidv7";
 import { getRedis, redisNs } from "./redis";
+import { getDb } from "@/lib/db/client";
+import { auditLog } from "@/lib/db/schema";
 
 /* ──────────────────────────────────────────────────────────────────────────
    ÜCRETLİ ÇAĞRI SAYACI — "önce say, sonra çağır".
    · Aylık + günlük sınır tek atomik Redis betiğinde kontrol edilir ve artırılır;
      sınırı aşan istek sayacı geri alır ve REDDEDİLİR.
    · ÇALIŞMAZSA DURDUR: Redis yoksa, yanıt vermezse ya da beklenmedik yanıt verirse çağrı yapılmaz.
-   · Google Cloud günlük kotaları ikinci, bağımsız frendir (bkz. plan).
+   · Google Cloud tarafındaki Places kotaları bu projede düşürülemiyor; asıl fren bu sayaçtır.
+   · KALICI TABAN (Neon): Redis sayaçları silinirse (flush, tahliye, süre dolması) aylık tavan sıfırlanmasın diye
+     her kalemin aylık sayısı Neon'a "en az bu kadar kullanıldı" tabanı olarak yazılır; bkz. FLOOR_STEP.
    · Ay ve gün UTC'dir; sınırlar Google'ın ücretsiz kotasının altında güvenlik payıyla seçilir.
    ────────────────────────────────────────────────────────────────────────── */
 
@@ -72,7 +78,7 @@ export function spendUsd(monthCounts: Partial<Record<BudgetKey, number>>) {
 /* KEYS[1] = bu kalemin aylık, KEYS[2] = günlük sayacı; KEYS[3..] = BÜTÜN kalemlerin aylık sayaçları (bu kalem dahil).
    ARGV: 1 aylık sınır, 2 günlük sınır, 3 aylık TTL, 4 günlük TTL, 5 tavan (mikro-USD), sonra kalem başına
    (ücretsiz adet, istek başı mikro-USD) çiftleri, KEYS[3..] ile aynı sırada.
-   Dönüş: 1 izin, 0 kalem sınırı, -1 toplam harcama tavanı. Reddedilen istek sayacı geri alır. */
+   Dönüş: ≥1 izin (bu kalemin yeni aylık sayısı), 0 kalem sınırı, -1 toplam harcama tavanı. Reddedilen istek sayacı geri alır. */
 export const LUA = `
 local m = redis.call('INCR', KEYS[1]); if m == 1 then redis.call('EXPIRE', KEYS[1], ARGV[3]) end
 local d = redis.call('INCR', KEYS[2]); if d == 1 then redis.call('EXPIRE', KEYS[2], ARGV[4]) end
@@ -89,7 +95,55 @@ end
 if spend > tonumber(ARGV[5]) then
   redis.call('DECR', KEYS[1]); redis.call('DECR', KEYS[2]); return -1
 end
+return m`;
+
+/* Tohum: KEYS = bütün kalemlerin aylık sayaçları; ARGV[1] TTL, ARGV[2..] kalem başına Neon tabanı.
+   Sayaç yoksa ya da tabanın altındaysa tabana çekilir (asla AŞAĞI çekilmez). Eşzamanlı tohumlama zararsızdır. */
+export const SEED_LUA = `
+for i = 1, #KEYS do
+  local cur = tonumber(redis.call('GET', KEYS[i]) or '-1')
+  local floor = tonumber(ARGV[i + 1])
+  if cur < floor then redis.call('SET', KEYS[i], floor, 'EX', ARGV[1]) end
+end
 return 1`;
+
+/* ── KALICI TABAN ─────────────────────────────────────────────────────────────
+   Her FLOOR_STEP istekte bir, Neon'a "bu ay bu kalemden en çok şu kadar kullanılmış olabilir" yazılır:
+   sayaç m'ye ulaştığında (m % STEP === 1) taban = m − 1 + STEP. Böylece taban gerçek kullanımın
+   hep ÜSTÜNDEdir (en çok STEP−1 fazla); Redis silinip tabandan yeniden kurulduğunda eksik sayılmaz.
+   · Aylık sayaçlardan biri bile yoksa önce Neon'dan tohumlanır; Neon okunamazsa ücretli çağrı yapılmaz.
+   · Taban yazılamazsa (Neon erişilemiyor) istek reddedilir ve artış geri alınır: sonraki her istek aynı eşikte
+     yeniden yazmayı dener, yani Neon dönene kadar o kalemde ücretli çağrı durur.
+   · Saklama: mevcut audit_log tablosu (yeni tablo/geçiş yok). ref_id = "<ortam>:<kalem>:<YYYYMM>". */
+export const FLOOR_STEP = 10;
+const FLOOR_ACTION = "usage_floor";
+const UNDO_LUA = `-- undo
+redis.call('DECR', KEYS[1]); redis.call('DECR', KEYS[2]); return 1`;
+const ymOf = (now: Date) => `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}`;
+const floorRef = (key: BudgetKey, ym: string) => `${redisNs()}:${key}:${ym}`;
+
+/** Bu ayın kalem başına Neon tabanı; okunamazsa null (çağıran ücretli işlemi durdurur). */
+export async function readFloors(now = new Date()): Promise<Record<BudgetKey, number> | null> {
+  const db = getDb();
+  if (!db) return null;
+  const ym = ymOf(now);
+  try {
+    const rows = await db.select({ ref: auditLog.refId, n: sql<number>`max((${auditLog.detail}->>'floor')::int)` }).from(auditLog)
+      .where(and(eq(auditLog.action, FLOOR_ACTION), like(auditLog.refId, `${redisNs()}:%:${ym}`))).groupBy(auditLog.refId);
+    const out = Object.fromEntries((Object.keys(PRICES) as BudgetKey[]).map((k) => [k, 0])) as Record<BudgetKey, number>;
+    for (const r of rows) { const k = (Object.keys(PRICES) as BudgetKey[]).find((x) => r.ref === floorRef(x, ym)); if (k) out[k] = Math.max(out[k], Number(r.n) || 0); }
+    return out;
+  } catch { return null; }
+}
+
+async function writeFloor(key: BudgetKey, now: Date, floor: number) {
+  const db = getDb();
+  if (!db) return false;
+  try {
+    await db.insert(auditLog).values({ id: uuidv7(), actor: "system:usage", action: FLOOR_ACTION, refTable: "usage", refId: floorRef(key, ymOf(now)), detail: { floor } });
+    return true;
+  } catch { return false; }
+}
 
 const pad = (n: number) => String(n).padStart(2, "0");
 export function periodKeys(key: string, now = new Date()) {
@@ -117,27 +171,40 @@ export async function googlePause() {
 }
 
 /** `n` adet ücretli çağrı için yer ayırır. ok:false ise çağrı YAPILMAMALI. */
-export async function reserve(key: BudgetKey, n = 1, now = new Date()): Promise<ReserveResult> {
+export async function reserve(key: BudgetKey, n = 1, now = new Date(), opts: { durable?: boolean } = {}): Promise<ReserveResult> {
   const r = getRedis();
   if (!r) return { ok: false, reason: "no_redis" };
+  const durable = opts.durable !== false;           // yalnız Redis öz testi kapatır (2099 anahtarları, Neon'a yazmaz)
   const b = budgetFor(key);
   const k = periodKeys(key, now);
-  /* sigorta + zamanlanmış kalem: bugünkü pay, ay içindeki gerçek harcamadan hesaplanır (okunamazsa çağrı yapılmaz) */
+  const all = Object.keys(PRICES) as BudgetKey[];
+  const monthKeys = all.map((x) => periodKeys(x, now).month);
+  /* sigorta + kalıcı taban + zamanlanmış kalem: bugünkü pay, ay içindeki gerçek harcamadan hesaplanır (okunamazsa çağrı yapılmaz) */
   let daily = b.daily;
   try {
-    const [p, m, d] = await r.mget<(string | null)[]>(pauseKey(), k.month, k.day);
+    const [p, m, d, ...months] = await r.mget<(string | null)[]>(pauseKey(), k.month, k.day, ...monthKeys);
     if (p) return { ok: false, reason: "paused" };
-    if (PACED.has(key)) daily = pacedDaily(b.monthly, Number(m ?? 0) - Number(d ?? 0), now);
+    let used = Number(m ?? 0);
+    if (durable && months.some((v) => v === null)) {
+      const floors = await readFloors(now);
+      if (!floors) return { ok: false, reason: "error" };
+      await r.eval(SEED_LUA, monthKeys, [String(40 * 86400), ...all.map((x) => String(floors[x]))]);
+      used = Math.max(used, floors[key]);
+    }
+    if (PACED.has(key)) daily = pacedDaily(b.monthly, used - Number(d ?? 0), now);
   } catch { return { ok: false, reason: "error" }; }
-  const all = Object.keys(PRICES) as BudgetKey[];
-  const keys = [k.month, k.day, ...all.map((x) => periodKeys(x, now).month)];
+  const keys = [k.month, k.day, ...monthKeys];
   const args = [String(b.monthly), String(daily), String(40 * 86400), String(2 * 86400), String(Math.round(usdCap() * 1e6)),
     ...all.flatMap((x) => [String(PRICES[x].free), String(PRICES[x].usdPer1000 * 1000)])];
   try {
     for (let i = 0; i < n; i++) {
       const v = Number(await r.eval(LUA, keys, args));
       if (v === -1) return { ok: false, reason: "spend_cap" };
-      if (v !== 1) return { ok: false, reason: "limit" };
+      if (!(v >= 1)) return { ok: false, reason: "limit" };
+      if (durable && v % FLOOR_STEP === 1 && !(await writeFloor(key, now, v - 1 + FLOOR_STEP))) {
+        await r.eval(UNDO_LUA, [k.month, k.day], []).catch(() => null);
+        return { ok: false, reason: "error" };
+      }
     }
     return { ok: true };
   } catch {
