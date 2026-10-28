@@ -31,4 +31,6 @@ ok("deneyim API: oturumsuz düzenle/sil/bildir 401", (await req("/api/reviews/11
 ok("deneyim API: oturumsuz 'deneyimlerim' 401", (await st("/api/me/reviews/")).s === 401);
 const yr = await st("/api/admin/db/?rapor=yorumlar");
 ok("moderasyon raporu okunur", yr.s === 200 && Array.isArray(yr.j?.open), `acik=${yr.j?.open?.length}`);
+const hh = await fetch(`https://${HOST}/benim/`, { headers: auth }).then((r) => r.headers).catch(() => null);
+ok("güvenlik başlıkları", !!hh && hh.get("x-frame-options") === "DENY" && /frame-ancestors 'none'/.test(hh.get("content-security-policy") ?? "") && hh.get("x-content-type-options") === "nosniff" && !!hh.get("referrer-policy"));
 process.exit(checks.every(Boolean) ? 0 : 1);
