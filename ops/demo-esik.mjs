@@ -1,0 +1,100 @@
+import { chromium } from "playwright";
+/* Deneme eşiği kabul testi (demo.gidenler.com, korumayı kaldırmadan). Log yalnız doğru/yanlış. */
+const B = `https://${process.env.DEMO_HOST}`;
+const OUT = "/tmp/pwtool/shots";
+const bypass = process.env.VERCEL_BYPASS ? { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS, "x-vercel-set-bypass-cookie": "true" } : undefined;
+const shots = !process.env.VERCEL_BYPASS;
+const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36";
+const b = await chromium.launch({ channel: "chrome" });
+const ctx = await b.newContext({ viewport: { width: 1366, height: 900 }, userAgent: UA, extraHTTPHeaders: bypass });
+const ext = new Set(); ctx.on("request", (r) => { const h = new URL(r.url()).hostname; if (h !== new URL(B).hostname && h !== "vercel.live") ext.add(h); });
+const page = await ctx.newPage(); const errs = []; page.on("pageerror", (e) => errs.push(e.message));
+const res = []; const ok = (n, c, info = "") => { res.push(c); console.log(`${c ? "✓" : "✗"} ${n}${info ? " · " + info : ""}`); };
+const LS = () => page.evaluate(() => JSON.parse(localStorage.getItem("gidenler.demo.esik.v1") ?? "null"));
+const card = () => page.locator("section[aria-label='Deneme eşiğin']").first();
+const go = async (p) => { await page.goto(B + p, { waitUntil: "networkidle" }); await page.waitForTimeout(400); };
+
+await go("/demo/?demo=investor"); await go("/demo/?demo=reset");
+await go("/mekan/moda-lokantasi/");
+const sealGone = await page.locator("text=deneyim mührü").count() === 0;
+const strip0 = await page.locator("[aria-label='Puanlar']").innerText();
+const rel0 = await page.evaluate(() => localStorage.getItem("gidenler.demo"));
+const t0 = await card().innerText();
+ok("mühür yerine kart: başlık, soru, güncel Gidenler puanı", sealGone && t0.includes("DENEME EŞİĞİN") && t0.includes("Kaç puanın üstüne çıkarsa denemek istersin?") && /Gidenler\s*8,7/.test(t0));
+const inp = card().locator("input[aria-label^='Deneme eşiği']");
+await inp.fill("8,9"); await card().locator("button[aria-label='Eşiği 0,1 artır']").click();
+ok("sayı girişi + artı/eksi, 0,1 adım", (await inp.inputValue()) === "9,0" && (await card().locator("button", { hasText: "aşınca haber ver" }).innerText()) === "9,0'ı aşınca haber ver");
+await inp.fill("12"); ok("aralık dışı değer kaydedilemez", await card().locator("button", { hasText: "aşınca haber ver" }).isDisabled());
+await inp.fill("8,9"); await card().locator("button", { hasText: "aşınca haber ver" }).click(); await page.waitForTimeout(200);
+let t = await card().innerText();
+ok("kaydet → \"8,9 üstünü takip ediyorsun\" + eşiğin altında durumu", t.includes("8,9 üstünü takip ediyorsun") && t.includes("Eşiğine 0,2 puan var"));
+await card().locator("button", { hasText: "Eşiği değiştir" }).click(); await inp.fill("8,8"); await card().locator("button", { hasText: "aşınca haber ver" }).click();
+ok("düzenleme", (await card().innerText()).includes("8,8 üstünü takip ediyorsun") && (await LS()).prefs["ent.moda-lokantasi"].threshold === 8.8);
+if (shots) await card().screenshot({ path: `${OUT}/esik-kart-masaustu.png` });
+ok("puan, şerit ve Kaydet/Gitmek istiyorum/Gittim kaydı değişmedi", (await page.locator("[aria-label='Puanlar']").innerText()) === strip0 && (await page.evaluate(() => localStorage.getItem("gidenler.demo"))) === rel0);
+
+await go("/demo/#canlandir");
+const sc = page.locator("#canlandir");
+await sc.locator("select").selectOption("moda-lokantasi"); await page.waitForTimeout(300);
+const play = async (title) => { await sc.locator("button", { hasText: title }).click(); await page.waitForFunction(() => !document.querySelector("#canlandir button[disabled]") || [...document.querySelectorAll("#canlandir button")].every((b) => !b.disabled || /güncel puanın üstünde/.test(b.innerText)), null, { timeout: 15000 }); await page.waitForTimeout(400); return (await sc.locator("ol[role=status]").innerText()); };
+const n = async () => ((await LS())?.notices ?? []).length;
+let l = await play("Artış var ama eşiğin altında kalıyor");
+ok("eşiğin altında kalma: bildirim yok", l.includes("eşiğinin altında kaldı") && await n() === 0, l.split("\n").pop());
+l = await play("güvenilir deneyim yetersiz");
+ok("yeterli deneyim yok: bildirim yok, simülasyon ve doğrulanmamış ayrımı yazılı", l.includes("güven koşulu sağlanmadı") && l.includes("doğrulanmamış") && l.includes("simülasyon") && await n() === 0);
+l = await play("güven koşulu sağlanıyor");
+const toast = page.locator("[role=status][aria-live=polite]");
+const tt = await toast.innerText().catch(() => "");
+ok("eşik aşıldı: tek örnek bildirim, metin ve demo etiketi", await n() === 1 && tt.includes("Beklediğin seviyeye geldi. Bu restoran, seçtiğin 8,8 eşiğini aşarak 8,9'a ulaştı.") && tt.toUpperCase().includes("ÖRNEK BİLDİRİM — DEMO"), tt.replace(/\n/g, " | "));
+ok("bildirimde son deneyimler, menü ve demo rezervasyon bağlantısı", (await toast.locator("a").allInnerTexts()).join("|") === "Son deneyimler|Menü|Demo rezervasyon");
+if (shots) { await toast.screenshot({ path: `${OUT}/esik-bildirim.png` }); await sc.screenshot({ path: `${OUT}/esik-demo-panel.png` }); }
+await page.reload({ waitUntil: "networkidle" }); await page.waitForTimeout(400);
+ok("yenilemede ikinci bildirim yok", await n() === 1);
+await sc.locator("select").selectOption("moda-lokantasi");
+l = await play("güven koşulu sağlanıyor");
+ok("aynı aşım tekrar işlenince ikinci bildirim yok", await n() === 1 && l.includes("zaten oluştu"));
+l = await play("Eşik etrafında dalgalanma");
+ok("eşik etrafında dalgalanma: mesaj yağmuru yok", await n() === 1);
+await toast.locator("a", { hasText: "Menü" }).click(); await page.waitForURL(/moda-lokantasi\/#menu/); await page.waitForTimeout(800);
+ok("bildirimden menüye geçiş, bildirim okundu", page.url().endsWith("/mekan/moda-lokantasi/#menu") && await toast.count() === 0 && (await LS()).notices[0].read === true);
+const cardTxt = await card().innerText();
+ok("kartta bildirim ve sunum senaryosu etiketi; sayfadaki puan değişmedi", cardTxt.includes("Beklediğin seviyeye geldi") && cardTxt.toUpperCase().includes("SUNUM SENARYOSU") && (await page.locator("[aria-label='Puanlar']").innerText()) === strip0);
+await card().locator("a", { hasText: "Demo rezervasyon" }).click(); await page.waitForTimeout(800);
+ok("demo rezervasyona geçiş (gerçek istek yok)", page.url().endsWith("#bilgi") && await page.locator("#bilgi form").count() === 1);
+await card().locator("button", { hasText: "Takibi kapat" }).click();
+ok("takibi kapatma", (await card().innerText()).includes("Takip kapalı") && (await LS()).prefs["ent.moda-lokantasi"].notify === false);
+await card().locator("button", { hasText: "Eşiği değiştir" }).click(); await inp.fill("8,9"); await card().locator("button", { hasText: "aşınca haber ver" }).click();
+await card().locator("button", { hasText: "Takibi kapat" }).click();
+await go("/demo/#canlandir"); await sc.locator("select").selectOption("moda-lokantasi");
+l = await play("güven koşulu sağlanıyor");
+ok("takibi kapatana bildirim oluşmaz", await n() === 1 && l.includes("Takip kapalı"));
+
+await go("/mekan/koz-durum/");
+await inp.fill("8,5"); await card().locator("button", { hasText: "aşınca haber ver" }).click();
+ok("zaten eşiğin üzerinde: \"Bu seviyeyi zaten karşılıyor\"", (await card().innerText()).includes("Bu seviyeyi zaten karşılıyor"));
+await go("/demo/#canlandir"); await sc.locator("select").selectOption("koz-durum");
+l = await play("güven koşulu sağlanıyor");
+ok("zaten karşılıyorken yeni bildirim üretilmez", await n() === 1 && l.includes("zaten karşılıyor"));
+
+await page.locator("button", { hasText: "Sunumu sıfırla" }).click(); await page.waitForTimeout(300);
+ok("sunum sıfırlanınca eşik, senaryo ve bildirimler başlangıca döner", (await LS()) === null);
+ok("dış servis isteği yok (Google / AI)", ext.size === 0, [...ext].join(","));
+ok("sayfa hatası yok", errs.length === 0, errs.join(" | "));
+
+/* mobil */
+const m = await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2, extraHTTPHeaders: bypass,
+  userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1" });
+const mp = await m.newPage();
+await mp.goto(B + "/mekan/sedef-kahvalti/?demo=investor", { waitUntil: "networkidle" }); await mp.waitForTimeout(500);
+const bar = mp.locator("section[aria-label='Deneme eşiğin']:visible");
+const barH = (await bar.boundingBox()).height;
+const photoTop = (await mp.locator("section[aria-label$='fotoğrafları']").boundingBox()).y;
+ok("mobil: tek satır şerit fotoğrafların altında, fotoğraflar ilk ekranda", barH < 70 && photoTop < 844 && (await bar.boundingBox()).y > photoTop, `şerit ${Math.round(barH)}px, fotoğraf ${Math.round(photoTop)}px`);
+await bar.locator("button[aria-expanded]").click();
+await bar.locator("input").fill("7,4"); await bar.locator("button", { hasText: "aşınca haber ver" }).click();
+ok("mobil: kaydet ve durum", (await bar.innerText()).includes("7,4 üstünü takip ediyorsun"));
+if (shots) await bar.screenshot({ path: `${OUT}/esik-kart-mobil.png` });
+await mp.goto(B + "/demo/?demo=reset", { waitUntil: "networkidle" });
+await m.close(); await b.close();
+console.log(`\n${res.filter(Boolean).length}/${res.length} geçti`);
+process.exit(res.every(Boolean) ? 0 : 1);
