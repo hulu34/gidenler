@@ -122,7 +122,12 @@ export function branchDiff(ours: string, theirs: string, extra: Set<string> = ne
   /* normName ilçe adlarını (Kadıköy, Beyoğlu…) attığı için burada ayrı, durak sözcüksüz belirteçleme */
   const toks = (s: string) => s.toLocaleLowerCase("tr").split("").map((ch) => TR[ch] ?? ch).join("").replace(/[^a-z0-9 ]+/g, " ").split(/\s+/);
   const a = new Set(toks(ours)), b = toks(theirs);
-  return b.filter((w) => w && !a.has(w) && (BRANCH_WORDS.has(w) || extra.has(w)));
+  const known = b.filter((w) => w && !a.has(w) && (BRANCH_WORDS.has(w) || extra.has(w)));
+  /* Bizim adımız adayın içinde aynen geçiyor ve aday fazladan sözcük taşıyorsa ("Bambi Cafe" ↔ "Bambi Cafe
+     Gayrettepe") bu ek, listede olmasa da şube işaretidir. Genel sözcükler (restoran, cafe…) sayılmaz. */
+  const core = normName(ours).split(" ").filter(Boolean), cand = new Set(normName(theirs).split(" "));
+  const suffix = core.length && core.every((w) => cand.has(w)) ? [...cand].filter((w) => w.length > 2 && !core.includes(w)) : [];
+  return [...new Set([...known, ...suffix])];
 }
 
 /** Kapı numarası çelişkisi: iki adreste de numara var ve sayısal kısmı farklı (5A ↔ 5 çelişki değildir). */

@@ -19,7 +19,7 @@ import { reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys } from "../lib/u
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
 import { fetchGooglePlace, googleEnabled, matchGoogleBatch, resolveGooglePlaceId, reviewGoogleMatch, rollbackGoogleMatches } from "../lib/providers/google";
-import { matchScore, brandKey, preDecide, postDecide } from "../lib/match/score";
+import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/match/score";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
@@ -212,6 +212,7 @@ async function main() {
   const site = new URL(/^https?:/.test(c2.website!) ? c2.website! : `https://${c2.website}`).hostname.replace(/^www\./, "");
   const m5 = await resolveGooglePlaceId(c2.slug, K, mkFetch({ name: c2.name, lat: c2.lat! + 0.00054, lng: c2.lng!, phone: "0212 000 00 00", web: `https://siparis.${site}/`, id: "GID_C2" }));
   ok("alt alan adlı site aynı site sayılır; telefon farkı tek başına engel değil", m5.status === "auto" && m5.website === "match" && m5.phone === "conflict", m5);
+  ok("şube eki listede olmasa da işaretlenir (Bambi Cafe ↔ Bambi Cafe Gayrettepe)", branchDiff("Bambi Cafe", "Bambi Cafe Gayrettepe").includes("gayrettepe") && branchDiff("Antiochia", "Antiochia").length === 0);
   ok("karar katmanı: 120 m asla otomatik değil", preDecide({ score: 0.9, name: 1, distanceM: 120, decision: "auto", phone: "unknown", website: "unknown", address: null }, { chain: false, branch: [], rival: false, addrConflict: false }, true).decision !== "auto");
   ok("karar katmanı: kapı no çelişkisi → onay", postDecide({ score: 1, name: 1, distanceM: 10, decision: "auto", phone: "match", website: "match", address: 1 }, { chain: false, branch: [], rival: false, addrConflict: true }).decision === "review");
 
