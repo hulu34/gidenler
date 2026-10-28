@@ -116,3 +116,13 @@ jobs:
         with: { node-version: 22 }
       - run: node ops/selftest.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }
+  saglik:
+    if: contains(github.event.head_commit.message, '[saglik]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/saglik.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TOPLU_HOST: gidenler-2vvikc4k6-hulu34.vercel.app }
