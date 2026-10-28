@@ -51,6 +51,8 @@ jobs:
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/demo-esik.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEMO_HOST: "demo.gidenler.com" }
+      - run: node ops/demo-tutarlilik.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEMO_HOST: "demo.gidenler.com" }
   eszaman:
     if: contains(github.event.head_commit.message, '[eszaman]')
     runs-on: ubuntu-latest

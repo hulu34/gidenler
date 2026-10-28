@@ -20,7 +20,7 @@ const sealGone = await page.locator("text=deneyim mührü").count() === 0;
 const strip0 = await page.locator("[aria-label='Puanlar']").innerText();
 const rel0 = await page.evaluate(() => localStorage.getItem("gidenler.demo"));
 const t0 = await card().innerText();
-ok("mühür yerine kart: başlık, soru, güncel Gidenler puanı", sealGone && t0.includes("DENEME EŞİĞİN") && t0.includes("Kaç puanın üstüne çıkarsa denemek istersin?") && /Gidenler\s*8,7/.test(t0));
+ok("mühür yerine kart: başlık, soru, güncel Gidenler puanı", sealGone && t0.includes("DENEME EŞİĞİN") && t0.includes("Kaç puanın üstüne çıkarsa denemek istersin?") && /Demo başlangıç puanı\s*8,7/.test(t0));
 const inp = card().locator("input[aria-label^='Deneme eşiği']");
 await inp.fill("8,9"); await card().locator("button[aria-label='Eşiği 0,1 artır']").click();
 ok("sayı girişi + artı/eksi, 0,1 adım", (await inp.inputValue()) === "9,0" && (await card().locator("button", { hasText: "aşınca haber ver" }).innerText()) === "9,0'ı aşınca haber ver");

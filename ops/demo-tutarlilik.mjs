@@ -1,0 +1,23 @@
+/* Deneyim–grafik–puan tutarlılığı: sayfada görünen özet ve etiketler (demo.gidenler.com, korumayı kaldırmadan). */
+import { chromium } from "playwright";
+const B = `https://${process.env.DEMO_HOST}`;
+const H = process.env.VERCEL_BYPASS ? { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS } : undefined;
+const b = await chromium.launch({ channel: "chrome" });
+const page = await b.newPage({ viewport: { width: 1366, height: 900 }, extraHTTPHeaders: H, userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" });
+const res = []; const ok = (n, c, i = "") => { res.push(c); console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
+const txt = async (p) => { await page.goto(B + p, { waitUntil: "networkidle" }); return page.evaluate(() => document.body.innerText.replace(/\s+/g, " ")); };
+let t = await txt("/mekan/moda-lokantasi/");
+ok("Moda özet: 365 gün / 182 deneyim, grafikle aynı", /Son 365 günde 182 deneyimden/.test(t) && t.includes("son 12 ayın 182 deneyiminin 151'i"));
+ok("Moda: örnek seçki etiketi", t.includes("Örnek seçki: 8 deneyim metni") && t.includes("bu yorumların ortalaması değildir"));
+t = await txt("/mekan/koz-durum/");
+ok("Köz özet: son 90 gün 93 deneyim", /Son 90 günde 93 deneyimden/.test(t) && t.includes("93 deneyimin 86'sı olumlu"));
+t = await txt("/mekan/sedef-kahvalti/"); t = (await page.locator("#ozet").innerText()).replace(/\s+/g, " ");
+ok("Sedef özet: grafikle aynı pencere ve yön (+1,0)", /Son 90 günde 73 deneyimden/.test(t) && t.includes("Puan son 90 günde +1,0 yükseldi.") && !t.includes("200 deneyim"), (t.match(/Son 90 günde[^.]*\./) ?? [""])[0]);
+t = await txt("/mekan/iskele-burger/"); t = (await page.locator("#ozet").innerText()).replace(/\s+/g, " ");
+ok("İskele özet: son 90 gün 167 deneyim, −0,9", /Son 90 günde 167 deneyimden/.test(t) && t.includes("Puan son 90 günde −0,9 geriledi.") && !t.includes("420 deneyim"));
+t = await txt("/mekan/asma-teras/");
+ok("Asma özet: 55 deneyim, manzara toplamda", /Son 90 günde 55 deneyimden/.test(t) && t.includes("toplamda 58 deneyim manzaradan"));
+t = await txt("/demo/");
+ok("/demo: örnek deneyim etiketi ve yükselen/düşen listeleri", (t.match(/ÖRNEK DENEYİM · SEÇKİDEN EN YENİ/gi) ?? []).length === 3 && t.includes("Tarçın Lokantası") && t.includes("Ekin Pide"));
+ok("/demo: senaryo metni \"demo başlangıç puanı\"", t.includes("demo başlangıç puanından") && !/gerçek puan/i.test(t));
+await b.close(); console.log(`${res.filter(Boolean).length}/${res.length}`); process.exit(res.every(Boolean) ? 0 : 1);
