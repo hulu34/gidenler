@@ -19,6 +19,23 @@ env:
   TEST_HOST: gidenler-94y9ylr5l-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
+  eszaman:
+    if: contains(github.event.head_commit.message, '[eszaman]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      redis:
+        image: redis:7.4
+        ports: ["6379:6379"]
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: 5240cdb04148cfd6d308d4f23ee0900a618e9ed6, fetch-depth: 0 }
+      - uses: actions/checkout@v4
+        with: { path: ops-src }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --ignore-scripts && npm i --no-save ioredis@5.4.1
+      - run: npx tsx ops-src/ops/eszaman.ts
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
     runs-on: ubuntu-latest
