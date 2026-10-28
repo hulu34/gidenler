@@ -15,5 +15,6 @@ ok("bilinmeyen mekân 404", s2.s === 404);
 const g = await st("/api/admin/db/?rapor=google");
 ok("yönetim raporu", g.s === 200 && g.j?.enabled === true, JSON.stringify({ stats: g.j?.stats, queue: g.j?.queue, spendUsd: g.j?.spend?.usd }));
 const rd = await st("/api/admin/db/?rapor=redis");
+ok("sigorta kapalı", g.j && g.j.pause === null);
 ok("Redis okunuyor", rd.s === 200 && typeof rd.j?.total === "number", `anahtar=${rd.j?.total}`);
 process.exit(checks.every(Boolean) ? 0 : 1);
