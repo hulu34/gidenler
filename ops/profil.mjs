@@ -27,7 +27,7 @@ const b = await chromium.launch({ channel: "chrome" });
 for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }], ["mobil", { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2, userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1" }]]) {
   const ctx = await b.newContext({ ...o, extraHTTPHeaders: HB, ...(o.userAgent ? {} : { userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" }) });
   const hosts = new Map(); ctx.on("request", (r) => { const h = new URL(r.url()).hostname; hosts.set(h, (hosts.get(h) ?? 0) + 1); });
-  const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(e.message));
+  const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => { const src = (e.stack ?? "").match(/https?:\/\/[^\s)]+/)?.[0] ?? "kaynak yok"; errs.push(`${e.message} @ ${src.replace(/\?.*$/, "").slice(0, 80)}`); });
   const failed = []; p.on("requestfailed", (r) => { const u = new URL(r.url()); failed.push(`${u.hostname}${u.pathname.slice(0, 40)} ${r.failure()?.errorText ?? ""}`); });
   await p.goto(`https://${HOST}/mekan/${SLUG}/`, { waitUntil: "networkidle" }); await p.waitForTimeout(1500);
   await shot(p, `${dev}-1-ilk`);
@@ -62,7 +62,9 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
   ok(`${dev}: Kaydet / Gitmek istiyorum / Gittim düğmeleri`, (await p.getByRole("button", { name: /Kaydet/ }).count()) > 0 && (await p.getByRole("button", { name: /Gitmek istiyorum/ }).count()) > 0);
   const resv = await p.locator("#genel").innerText();
   ok(`${dev}: rezervasyon bloğu iletişimle (ortaklık iddiası yok)`, /Ara|Web sitesi/.test(resv) && !/Masa ayırt/.test(resv));
-  ok(`${dev}: sayfa hatası yok`, errs.length === 0, errs.join(" | ").slice(0, 200));
+  /* vercel.live: Vercel'in yalnız Preview'a eklediği araç çubuğu (üretimde yok) — bizim kodumuzun hatası sayılmaz */
+  const own = errs.filter((e) => !/vercel\.live|\.well-known\/vercel/.test(e));
+  ok(`${dev}: sayfa hatası yok (Preview araç çubuğu hariç)`, own.length === 0, errs.join(" | ").slice(0, 300));
   if (failed.length) console.log(`  ${dev} başarısız istekler: ${[...new Set(failed)].slice(0, 8).join(" · ")}`);
   if (dev === "masaustu") {
     await p.goto(`https://${HOST}/yaz/${SLUG}/`, { waitUntil: "networkidle" });
