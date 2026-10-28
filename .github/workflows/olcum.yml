@@ -16,8 +16,8 @@ concurrency:
 env:
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
-  TEST_HOST: gidenler-ojapk4y0w-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
-  PREVIEW_HOST: gidenler-ojapk4y0w-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
+  TEST_HOST: gidenler-rla1pc9bc-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
+  PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
