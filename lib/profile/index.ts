@@ -78,8 +78,11 @@ export async function applyProfile(db: Db, input: ProfileInput, actor = "admin")
   if (p.menu) row("profile.menu", { value: JSON.stringify({ validFrom: p.menu.validFrom ?? null, pricesPublished: p.menu.pricesPublished }), provider: p.menu.provider, url: p.menu.url, checkedAt: p.menu.checkedAt });
   if (p.amenities) row("profile.amenities", { value: JSON.stringify(p.amenities.items), provider: p.amenities.provider, url: p.amenities.url, checkedAt: p.amenities.checkedAt });
 
-  await db.transaction(async (tx) => {
-    if (prov.length) await tx.insert(fieldProvenance).values(prov);
+  /* Neon HTTP sürücüsü toplu işlem (transaction) desteklemez: sıralı yazılır. Sayfanın neyi göstereceğini belirleyen
+     field_provenance satırları EN SON yazılır; yarıda kalan bir uygulama sayfada yarım içerik göstermez, yeniden
+     uygulamak güvenlidir (aynı günün menüsü tekrar yazılmaz). */
+  {
+    const tx = db;
     /* kimlik alanları: yalnız kaynaklı değer verildiyse */
     const upd: Partial<typeof places.$inferInsert> = {};
     if (p.address) upd.address = p.address.value;
@@ -104,9 +107,10 @@ export async function applyProfile(db: Db, input: ProfileInput, actor = "admin")
         }))));
       }
     }
+    if (prov.length) await tx.insert(fieldProvenance).values(prov);
     await tx.insert(auditLog).values({ id: uuidv7(), actor, action: "profile_apply", refTable: "places", refId: place.id,
       detail: { slug: p.slug, before: { place: { address: place.address, phone: place.phone, website: place.website, instagram: place.instagram, openingHours: place.openingHours }, amenities: vr?.amenities ?? null, profile: before }, fields: prov.map((r) => r.field) } });
-  });
+  }
   return { ok: true as const, fields: prov.length, menuItems: p.menu ? p.menu.sections.reduce((a, s) => a + s.items.length, 0) : 0 };
 }
 
