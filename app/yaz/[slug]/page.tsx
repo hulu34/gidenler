@@ -1,11 +1,14 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { entities } from "@/data/entities";
 import { getEntity, getCategory, getSchema } from "@/lib/api";
 import { WriteForm } from "./WriteForm";
 
+/* Derlemede hiçbir deneyim yazma sayfası önceden üretilmez: sayfa ilk ziyarette sunucuda üretilir ve
+   önbelleğe alınır (ISR, süresiz; yeni dağıtımda tazelenir). Dağıtım boyutu mekân sayısıyla büyümez.
+   Bilinmeyen slug → notFound (404). */
+export const dynamicParams = true;
 export function generateStaticParams() {
-  return entities.map((e) => ({ slug: e.slug }));
+  return [];
 }
 
 export async function generateMetadata({

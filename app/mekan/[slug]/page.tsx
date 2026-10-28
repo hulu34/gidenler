@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-import { entities } from "@/data/entities";
 import { getTopic } from "@/lib/api";
 import { pulseOf } from "@/lib/pulse";
 import { Pulse } from "@/components/viz/Pulse";
@@ -53,8 +52,12 @@ import { talkInsight } from "@/lib/editorial";
 import { consensusLabel } from "@/lib/semantic";
 import { cardOf } from "@/lib/api";
 
+/* Derlemede hiçbir mekân sayfası önceden üretilmez: sayfa ilk ziyarette sunucuda üretilir ve
+   önbelleğe alınır (ISR, süresiz; yeni dağıtımda tazelenir). Dağıtım boyutu mekân sayısıyla büyümez.
+   Bilinmeyen slug → notFound (404). */
+export const dynamicParams = true;
 export function generateStaticParams() {
-  return entities.map((e) => ({ slug: e.slug }));
+  return [];
 }
 
 export async function generateMetadata({
