@@ -49,3 +49,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: pilot-sifreli, path: out/pilot.json.cms, retention-days: 3, if-no-files-found: ignore }
+  gorsel:
+    if: contains(github.event.head_commit.message, '[gorsel]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops puppeteer-core@23.11.1
+      - run: node ops/shot.mjs
+        env:
+          VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}"
+          CHROME_PATH: /usr/bin/google-chrome
+          SHOT_SLUGS: 700-gram-kadikoy,aci-biber-kucukcekmece,adab-eski-usul-meyhane-sariyer
+      - if: always()
+        run: test -d out/shots && tar -C out -czf out/shots.tgz shots && rm -rf out/shots && openssl cms -encrypt -aes256 -binary -in out/shots.tgz -out out/shots.tgz.cms -outform DER ops/olcum.pem && rm out/shots.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gorsel-sifreli, path: out/shots.tgz.cms, retention-days: 1, if-no-files-found: ignore }
