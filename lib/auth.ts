@@ -77,3 +77,15 @@ export async function currentUser(headers: Headers) {
     return null;
   }
 }
+
+/** Sunucu tarafında oturum + kullanıcı (yoksa null). Oturum kimliği "bu cihaz"ı tanımak için. */
+export async function currentSession(headers: Headers) {
+  const a = getAuth();
+  if (!a) return null;
+  try {
+    const s = await a.api.getSession({ headers });
+    return s?.user && s.session ? { user: s.user, session: s.session } : null;
+  } catch {
+    return null;
+  }
+}

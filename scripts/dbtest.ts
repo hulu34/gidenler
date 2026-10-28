@@ -29,6 +29,7 @@ import { createReview, updateReview, deleteReview, reportReview, moderateReview,
 import { INDEPENDENCE } from "../lib/score/weights";
 import { sameOrigin } from "../lib/community/http";
 import { authErrorMessage } from "../lib/community/authErrors";
+import { deviceOf, listSessions, revokeOtherSessions, revokeSession } from "../lib/community/sessions";
 import { assess } from "../lib/visits/verify";
 import { experienceWeight } from "../lib/score/weights";
 import { getTopic } from "../lib/api";
@@ -208,6 +209,33 @@ async function main() {
   ok("Google anahtarları veritabanında şifreli; giriş hatası açıklamalı sayfaya döner", /encryptOAuthTokens: true/.test(authSrc) && /errorURL: "\/benim\/\?giris=hata"/.test(authSrc));
   ok("güvenlik başlıkları: çerçeveleme yasak, nosniff, referrer, izin politikası", ["X-Frame-Options", "frame-ancestors 'none'", "nosniff", "strict-origin-when-cross-origin", "geolocation=()"].every((h) => nextSrc.includes(h)));
   ok("giriş hata kodları anlaşılır mesaja çevrilir (state_mismatch dahil)", /uzun süre beklendi/.test(authErrorMessage("state_mismatch")) && /iptal/.test(authErrorMessage("access_denied")) && /Yeniden dene/.test(authErrorMessage("bilinmeyen")));
+
+  console.log("\n3e) Aktif cihazlar (oturum listesi ve kapatma)");
+  await db.insert(schema.user).values([{ id: "sa", name: "S A", email: "sa@example.test" }, { id: "sb", name: "S B", email: "sb@example.test" }]);
+  const exp = new Date(Date.now() + 86400_000), old = new Date(Date.now() - 1000);
+  await db.insert(schema.session).values([
+    { id: "sesAbuCihaz01", token: "tA1", userId: "sa", expiresAt: exp, userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1", ipAddress: "85.105.1.2" },
+    { id: "sesAdizustu02", token: "tA2", userId: "sa", expiresAt: exp, userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36" },
+    { id: "sesAtablet003", token: "tA3", userId: "sa", expiresAt: exp, userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 Edg/130.0" },
+    { id: "sesAsuresiBit", token: "tA4", userId: "sa", expiresAt: old },
+    { id: "sesBbaskasi01", token: "tB1", userId: "sb", expiresAt: exp },
+  ]);
+  const sl = await listSessions(db, "sa", "sesAbuCihaz01");
+  ok("liste: yalnız kendi, süresi geçmemiş oturumlar; 'bu cihaz' başta; anahtar ve IP gönderilmez", sl.length === 3 && sl[0].current && sl[0].id === "sesAbuCihaz01" && !JSON.stringify(sl).includes("tA1") && !JSON.stringify(sl).includes("85.105"), sl);
+  ok("cihaz özeti: iPhone · Safari, Mac · Chrome, Windows · Edge; bilinmeyen güvenli", deviceOf(sl[0].device === "iPhone · Safari" ? "Mozilla/5.0 (iPhone) Version/18.0 Mobile Safari/604.1" : "") === "iPhone · Safari" && sl.some((x) => x.device === "Mac · Chrome") && sl.some((x) => x.device === "Windows · Edge") && deviceOf(null) === "Bilinmeyen cihaz");
+  ok("bu cihaz bu yolla kapatılamaz (çıkış yap kullanılır)", (await revokeSession(db, "sa", "sesAbuCihaz01", "sesAbuCihaz01")).ok === false);
+  ok("başkasının oturumu kapatılamaz", !(await revokeSession(db, "sa", "sesBbaskasi01", "sesAbuCihaz01")).ok && (await db.select().from(schema.session).where(eq(schema.session.id, "sesBbaskasi01"))).length === 1);
+  const sesOne = await revokeSession(db, "sa", "sesAdizustu02", "sesAbuCihaz01");
+  ok("tek cihaz kapatılır; o oturum veritabanından kalkar (bir sonraki istekte çıkış)", sesOne.ok && (await db.select().from(schema.session).where(eq(schema.session.id, "sesAdizustu02"))).length === 0);
+  const sesClosed = await revokeOtherSessions(db, "sa", "sesAbuCihaz01");
+  const leftA = await db.select({ id: schema.session.id }).from(schema.session).where(eq(schema.session.userId, "sa"));
+  ok("diğer tüm cihazlar: bu cihaz kalır, başka kullanıcıya dokunulmaz", sesClosed === 2 && leftA.length === 1 && leftA[0].id === "sesAbuCihaz01" && (await db.select().from(schema.session).where(eq(schema.session.userId, "sb"))).length === 1, { sesClosed, leftA });
+  const sAudit = await db.select().from(schema.auditLog).where(and(eq(schema.auditLog.action, "session_revoke"), eq(schema.auditLog.actor, "user:sa")));
+  ok("her kapatma güvenlik izine (audit_log) yazılır", sAudit.length === 2);
+  const sesSrc = readFileSync(new URL("../app/api/me/sessions/route.ts", import.meta.url), "utf8");
+  ok("API: oturum + aynı köken + hız sınırı; kullanıcı ve 'bu cihaz' yalnız oturumdan", /currentSession\(req\.headers\)/.test(sesSrc) && /sameOrigin\(req\)/.test(sesSrc) && /rate_limited/.test(sesSrc) && !/userId["']?\s*:\s*z\./.test(sesSrc));
+  await db.delete(schema.auditLog).where(eq(schema.auditLog.action, "session_revoke"));
+  await db.delete(schema.user).where(inArray(schema.user.id, ["sa", "sb"]));
 
   console.log("\n3c) Gidenler deneyimleri (yayınla / düzenle / sil / bildir)");
   const [{ slug: cxSlug }] = await db.select({ slug: schema.places.slug }).from(schema.places).where(sql`${schema.places.slug} not in (${"ciya-sofrasi-kadikoy"}, ${other[0]}, ${other[1]})`).limit(1);
