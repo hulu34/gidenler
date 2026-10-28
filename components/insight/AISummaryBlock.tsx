@@ -1,4 +1,4 @@
-import { nf } from "@/lib/format";
+import { nf, windowIn } from "@/lib/format";
 import type { AISummary } from "@/lib/types";
 
 /**
@@ -15,7 +15,7 @@ export function AISummaryBlock({ summary }: { summary: AISummary }) {
           Gidenler AI özeti
         </h2>
         <span className="text-[12px] text-ink-3">
-          son {summary.windowDays} günde{" "}
+          {windowIn(summary.windowDays)}{" "}
           <strong className="tnum font-semibold text-ink-2">{nf(summary.basedOnCount)}</strong>{" "}
           deneyim okundu
         </span>

@@ -7,7 +7,7 @@ import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { periodLabel, score1 } from "@/lib/format";
 
 /* YATIRIMCI DEMOSU · HAREKET — yalnız /demo sayfasında (demo dağıtımı). Bütün sayılar mekân sayfalarının kullandığı
-   aynı hesaplamadan gelir (getTopicIntelligence): puan, son 90 gün değişimi, aylık grafik ve deneyimler birbirini tutar.
+   aynı hesaplamadan gelir (getTopicIntelligence): puan, son üç ay değişimi, aylık grafik ve deneyimler birbirini tutar.
    Veriler simülasyondur; gerçek bir işletmeye ait değildir. */
 
 export const DEMO_TRIO = [
@@ -21,7 +21,7 @@ const dirLabel = (d: "up" | "down" | "flat") => (d === "up" ? "yükseliyor" : d 
 const excerpt = (s: string, n = 140) => (s.length <= n ? s : `${s.slice(0, s.lastIndexOf(" ", n))}…`);
 const delta = (n: number) => `${n > 0 ? "+" : n < 0 ? "−" : "±"}${score1(Math.abs(n))}`;
 
-/** Restoran kategorisindeki demo mekânlar, son 90 gün değişimine göre. */
+/** Restoran kategorisindeki demo mekânlar, son üç ay değişimine göre. */
 export function restaurantMovers() {
   const rows = entities
     .filter((e) => e.isDemo && e.categoryId === "cat.restaurant")
@@ -45,7 +45,7 @@ export function DemoMovers() {
     <section id="hareket" className="mt-12 scroll-mt-24 border-t-2 border-line-strong pt-7" aria-labelledby="h-hareket">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
         <h2 id="h-hareket" className="label">Üç restoran, üç yön</h2>
-        <span className="text-[12px] text-ink-3">Son 90 gün · simüle edilmiş veri</span>
+        <span className="text-[12px] text-ink-3">Son üç ay · simüle edilmiş veri</span>
       </div>
       <ul className="mt-4 grid gap-4 md:grid-cols-3">
         {trio.map((t) => (
@@ -81,7 +81,7 @@ export function DemoMovers() {
           const rows = list.slice(0, 5).map((r, k) => ({ ...r, k }));
           return (
           <div key={title} className="min-w-0">
-            <h3 className="text-[13px] font-bold uppercase tracking-[0.16em]">{title} <span className="font-semibold normal-case tracking-normal text-ink-3">· son 90 gün · {list.length} restoran içinden</span></h3>
+            <h3 className="text-[13px] font-bold uppercase tracking-[0.16em]">{title} <span className="font-semibold normal-case tracking-normal text-ink-3">· son üç ay · {list.length} restoran içinden</span></h3>
             <ol className="mt-2 flex flex-col">
               {rows.map(({ e, i, k }) => (
                 <li key={e.id} className="flex items-center justify-between gap-3 border-b border-line py-2.5">

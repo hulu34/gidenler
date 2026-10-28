@@ -88,7 +88,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
             </dd>
           </div>
           {[
-            ["Son 30 günde yeni", nf(last30d.newExperiences), "deneyim"],
+            ["Son ayda yeni", nf(last30d.newExperiences), "deneyim"],
             ["Doğrulanmış oran", `%${Math.round(last30d.verifiedShare * 100)}`, "ziyaret"],
             ["Tekrar gelme", `%${Math.round(I.returnRate * 100)}`, schema.returnLabel],
             ["Cevap bekleyen", nf(unanswered.length), "deneyim"],
@@ -173,7 +173,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
 
       {/* ───────── boyutlar + temalar ───────── */}
       <section className="mt-12">
-        <h2 className="label mb-4">Boyut puanları ve 90 günlük yön</h2>
+        <h2 className="label mb-4">Boyut puanları ve üç aylık yön</h2>
         <RatingDimensions dimensions={I.ratingDimensions} />
       </section>
 

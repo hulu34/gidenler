@@ -15,7 +15,7 @@ export function EvidenceStrip({ intel, returnLabel, lastVisitedAt }: { intel: To
     [returnLabel, pct(intel.returnRate * 100)],
     ["Deneyim", nf(intel.experienceCount)],
     ["Doğrulanmış", pct(intel.verifiedRatio * 100)],
-    ["Son 90 gün", `${nf(conf.recent90)} deneyim`],
+    ["Son üç ay", `${nf(conf.recent90)} deneyim`],
   ];
   return (
     <div className="flex flex-col gap-2">

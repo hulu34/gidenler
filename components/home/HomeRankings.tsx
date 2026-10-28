@@ -100,7 +100,7 @@ export function HomeRankings({ data }: { data: HomeData }) {
       {label && cat !== "all" && <p className="sr-only">Seçili kategori: {label}</p>}
       {block && !block.regulated && (
         <p className="max-w-[92ch] text-[11.5px] leading-relaxed text-ink-3">
-          Popülerlik ve konuşulma puan değildir; puan yalnızca deneyimlerden çıkar. En yüksek puanlılar için en az {RANK_CONFIG.topRated.minExperiences} deneyim ve orta güven şartı vardır; yükseliş son 90 günün hareketidir. Uzmanların seçtikleri takipçiye değil, kanıtlanmış uzmanlığa dayanır. Uyum senin zevk profilinle deneyimler arasındaki ilişkidir, Gidenler puanı değildir.
+          Popülerlik ve konuşulma puan değildir; puan yalnızca deneyimlerden çıkar. En yüksek puanlılar için en az {RANK_CONFIG.topRated.minExperiences} deneyim ve orta güven şartı vardır; yükseliş son üç ayın hareketidir. Uzmanların seçtikleri takipçiye değil, kanıtlanmış uzmanlığa dayanır. Uyum senin zevk profilinle deneyimler arasındaki ilişkidir, Gidenler puanı değildir.
         </p>
       )}
     </div>

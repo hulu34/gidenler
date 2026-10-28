@@ -223,7 +223,7 @@ function scoreCandidate(h: SearchHit, intent: AIIntent, personal: ReturnType<typ
   if (intent.hour !== undefined) { const ok = inWindow(hoursWindow(c.entity.hours), intent.hour); if (ok === false) parts.push({ label: "Saat", value: -12, max: 0, note: `istenen saat demo çalışma saatinin dışında (${c.entity.hours})` }); }
 
   /* trend */
-  parts.push({ label: "Trend", value: c.delta90d >= 0.3 ? 4 : c.delta90d <= -0.3 ? -4 : 0, max: 4, note: `son 90 gün ${c.delta90d >= 0 ? "+" : ""}${score1(c.delta90d)}` });
+  parts.push({ label: "Trend", value: c.delta90d >= 0.3 ? 4 : c.delta90d <= -0.3 ? -4 : 0, max: 4, note: `son üç ay ${c.delta90d >= 0 ? "+" : ""}${score1(c.delta90d)}` });
 
   const total = parts.reduce((a, p) => a + p.value, 0);
   const max = parts.reduce((a, p) => a + Math.max(0, p.max), 0);
@@ -250,7 +250,7 @@ function explain(h: SearchHit, intent: AIIntent, sc: ReturnType<typeof scoreCand
   if (intent.context === "friends" && intent.party && (contextFit[e.id]?.friends ?? 0) > 2) reasons.push(`${intent.party} kişilik gruplar için deneyimler olumlu`);
   if (intent.context === "family" && (contextFit[e.id]?.family ?? 0) > 2) reasons.push("Aile bağlamında deneyimler olumlu");
   if (intent.context === "quick" && amb && amb.speed >= 7) reasons.push(`Servis hızı deneyimlerde güçlü (${score1(amb.speed)}/10)`);
-  if (c.delta90d >= 0.3) reasons.push(`Son 90 günde +${score1(c.delta90d)} (${nf(it.experienceCount)} deneyim)`);
+  if (c.delta90d >= 0.3) reasons.push(`Son üç ayda +${score1(c.delta90d)} (${nf(it.experienceCount)} deneyim)`);
   const ex = expertSignal(e.id);
   if (ex && ex.authors >= 1 && reasons.length < 4) reasons.push(`${ex.authors} uzman deneyimi · uzman ortalaması ${score1(ex.avg)}`);
   if (it.returnRate >= 0.7 && reasons.length < 4) reasons.push(`Tekrar gitme niyeti %${Math.round(it.returnRate * 100)}`);
@@ -268,7 +268,7 @@ function explain(h: SearchHit, intent: AIIntent, sc: ReturnType<typeof scoreCand
   if (it.confidence === "low") cautions.push(`Sınırlı veri: ${nf(it.experienceCount)} deneyim`);
   const neg = it.negativeThemes.find((x) => x.direction === "up" && !WAIT_RE.test(x.label));
   if (neg && cautions.length < 2) cautions.push(`${neg.label} şikâyetleri artıyor (${nf(neg.count)} deneyim)`);
-  if (c.delta90d <= -0.3 && cautions.length < 2) cautions.push(`Son 90 günde ${score1(c.delta90d)}`);
+  if (c.delta90d <= -0.3 && cautions.length < 2) cautions.push(`Son üç ayda ${score1(c.delta90d)}`);
 
   const verified = Math.round(it.experienceCount * it.verifiedRatio);
   const hoursNote = e.hours ? `Çalışma saati (${e.isDemo ? "demo veri" : "OpenStreetMap"}): ${e.hours} · canlı uygunluk doğrulanmadı` : "Çalışma saati / canlı uygunluk doğrulanmadı";
@@ -277,7 +277,7 @@ function explain(h: SearchHit, intent: AIIntent, sc: ReturnType<typeof scoreCand
     place: [e.location?.district, e.location?.city].filter(Boolean).join(" · "),
     score: c.score, delta: c.delta90d, confidence: it.confidence,
     match: sc.match, matchParts: sc.parts, reasons: reasons.slice(0, 4), cautions: cautions.slice(0, 2), hoursNote,
-    provenance: `${e.isDemo ? "DEMO KAYIT — deneyimler ve puan sentetiktir; gerçek bir işletme değildir. " : ""}${nf(it.experienceCount)} deneyim, ${nf(verified)} doğrulanmış ziyaret ve son 90 günlük trend analiz edildi.`,
+    provenance: `${e.isDemo ? "DEMO KAYIT — deneyimler ve puan sentetiktir; gerçek bir işletme değildir. " : ""}${nf(it.experienceCount)} deneyim, ${nf(verified)} doğrulanmış ziyaret ve son üç aylük trend analiz edildi.`,
     outside: h.loc === "none" && intent.locations.length > 0,
   };
 }
@@ -326,7 +326,7 @@ export function askAI(text: string, structured: AIStructured = {}, opts: { taste
     intent, items,
     pipeline: { retrieved: hits.length, eligible: cands.length, ranked: scored.length, fallback },
     overallConfidence,
-    provenance: items.length ? `${hits.length} aday arama motorundan geldi, ${cands.length} uygunluk filtresini geçti; ilk ${items.length} için ${nf(totalExp)} deneyim, ${nf(totalVer)} doğrulanmış ziyaret ve son 90 günlük trend analiz edildi.` : "Uygun aday bulunamadı.",
+    provenance: items.length ? `${hits.length} aday arama motorundan geldi, ${cands.length} uygunluk filtresini geçti; ilk ${items.length} için ${nf(totalExp)} deneyim, ${nf(totalVer)} doğrulanmış ziyaret ve son üç aylük trend analiz edildi.` : "Uygun aday bulunamadı.",
     note: fallback ? "Tam eşleşme yok; en yakın adaylar gösteriliyor." : "",
     followUps,
   };

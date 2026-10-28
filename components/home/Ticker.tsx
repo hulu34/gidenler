@@ -2,7 +2,7 @@ import Link from "next/link";
 import { inIstanbul, listCards } from "@/lib/api";
 import { score1 } from "@/lib/format";
 
-/* Borsa bandı: 90 günde en çok değişenler (iki yön). Hover/odakta durur; hareket azaltılmışsa sabit kalır. */
+/* Borsa bandı: üç ayda en çok değişenler (iki yön). Hover/odakta durur; hareket azaltılmışsa sabit kalır. */
 export function Ticker() {
   const movers = listCards()
     .filter((c) => inIstanbul(c) && c.category.compliance.showScores && c.experienceCount >= 40 && Math.abs(c.delta90d) > 0.3)
@@ -17,7 +17,7 @@ export function Ticker() {
     </Link>
   ));
   return (
-    <div className="ticker-wrap relative overflow-hidden border-y border-line-strong bg-paper py-2" aria-label="Son 90 günde en çok değişen mekânlar (demo veri)">
+    <div className="ticker-wrap relative overflow-hidden border-y border-line-strong bg-paper py-2" aria-label="Son üç ayda en çok değişen mekânlar (demo veri)">
       <span className="absolute left-0 top-1/2 z-10 -translate-y-1/2 bg-paper px-2 text-[9.5px] font-bold uppercase tracking-[0.12em] text-ink-3">demo</span>
       <div className="ticker">
         <div className="flex">{items(false)}</div>

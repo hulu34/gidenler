@@ -26,7 +26,7 @@ export default function NowPage() {
           Bu akşam sana göre
         </h1>
         <p className="mt-4 max-w-[56ch] text-[15px] leading-relaxed text-ink-2">
-          Akşam açık olan yerler, senin zevk profilinle ve son 90 günün deneyimleriyle sıralandı.
+          Akşam açık olan yerler, senin zevk profilinle ve son üç ayın deneyimleriyle sıralandı.
         </p>
         <div className="mt-5 flex flex-wrap gap-1.5">
           {contexts.map((c) => (

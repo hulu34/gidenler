@@ -6,7 +6,7 @@ import { enterInvestorDemo, exitInvestorDemo, resetDemo, useUserData } from "@/l
 
 const FLOW: { step: string; href: string; title: string; note: string }[] = [
   { step: "01", href: "/", title: "Ana sayfa", note: "Gidenler puanı neyi ölçer: yalnız gerçek deneyimler. Yükselenler ve 'Sana göre' burada." },
-  { step: "02", href: "/demo/#hareket", title: "Üç restoran, üç yön", note: "Yükselen, sabit, düşen — puan, son 90 gün, aylık grafik ve son deneyim tek bakışta." },
+  { step: "02", href: "/demo/#hareket", title: "Üç restoran, üç yön", note: "Yükselen, sabit, düşen — puan, son üç ay, aylık grafik ve son deneyim tek bakışta." },
   { step: "03", href: "/mekan/moda-lokantasi/", title: "Moda Lokantası · yükselen", note: "Aylık grafik, puan boyutları, deneyimler; baharda inen puanın yazla nasıl toparlandığı." },
   { step: "04", href: "/mekan/koz-durum/", title: "Köz Dürüm · sabit", note: "Yüzlerce deneyimle aylardır aynı bantta kalan puan." },
   { step: "05", href: "/mekan/asma-teras/", title: "Asma Teras · düşen", note: "'Ne oldu?' açık: şef değişimi ve fiyat artışı; deneyimler aynı şeyi söylüyor." },

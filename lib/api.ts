@@ -125,8 +125,8 @@ function consensusOf(entityId: string): Consensus | null {
    ---------------------------------------------------------------------- */
 
 const PERIOD_STEPS: Array<{ period: TrendPeriod; label: string; months: number }> = [
-  { period: "30d", label: "30G", months: 1 },
-  { period: "90d", label: "90G", months: 3 },
+  { period: "30d", label: "1A", months: 1 },
+  { period: "90d", label: "3A", months: 3 },
   { period: "6m", label: "6A", months: 6 },
   { period: "1y", label: "1Y", months: 12 },
   { period: "all", label: "Tümü", months: 999 },
@@ -171,7 +171,7 @@ function volumeOf(tl: TimelinePoint[]): ExperienceVolume {
   const prev = n >= 2 ? tl[n - 2].experienceCount : count;
   const changePct = prev ? Math.round(((count - prev) / prev) * 100) : 0;
   return {
-    period: "30d", label: "Son 30 gün", count, changePct,
+    period: "30d", label: "Son ay", count, changePct,
     direction: changePct > 4 ? "up" : changePct < -4 ? "down" : "flat",
   };
 }

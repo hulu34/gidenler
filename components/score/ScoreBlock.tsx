@@ -31,7 +31,7 @@ export function ScoreBlock({ intel }: { intel: TopicIntelligence }) {
 
       <div className="flex flex-wrap items-end gap-x-8 gap-y-3 pb-1">
         <div>
-          <div className="label">Son 90 gün</div>
+          <div className="label">Son üç ay</div>
           <div className="flex items-center gap-1.5 text-[19px] font-bold tracking-tight">
             <TrendIndicator direction={dir} delta={intel.scoreTrend.delta} showValue />
             <span className={`text-[13px] font-semibold ${dir === "up" ? "text-pos-ink" : dir === "down" ? "text-neg-ink" : "text-ink-3"}`}>

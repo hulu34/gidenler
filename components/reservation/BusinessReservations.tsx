@@ -8,7 +8,7 @@ function hash(s: string): number {
   return h >>> 0;
 }
 
-/* İŞLETME PANELİ · REZERVASYON — son 30 gün özeti ve ay sonu ücret dökümü.
+/* İŞLETME PANELİ · REZERVASYON — örnek bir ayın (simüle) özeti ve ay sonu ücret dökümü.
    Demo işletmede sayılar deterministik örnektir (etiketli); gerçek ortakta rezervasyon kayıtlarından gelir. */
 export function BusinessReservations({ entity }: { entity: Entity }) {
   if (!isPartner(entity)) return null;
@@ -22,7 +22,7 @@ export function BusinessReservations({ entity }: { entity: Entity }) {
   return (
     <section className="mt-11 border-t-2 border-line-strong pt-7" aria-labelledby="h-panel-rz">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 id="h-panel-rz" className="text-[13px] font-bold uppercase tracking-[0.2em]">Gidenler rezervasyonları · son 30 gün</h2>
+        <h2 id="h-panel-rz" className="text-[13px] font-bold uppercase tracking-[0.2em]">Gidenler rezervasyonları · örnek ay (simüle)</h2>
         {entity.isDemo && <span className="text-[11.5px] text-ink-3">demo işletme: örnek sayılar</span>}
       </div>
       <dl className="mt-4 grid grid-cols-2 gap-x-8 gap-y-4 sm:grid-cols-5">

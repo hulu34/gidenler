@@ -5,7 +5,7 @@ import { Pulse } from "@/components/viz/Pulse";
 import { DemoTag } from "@/components/ui/DemoNotice";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   YÜKSELENLER — gazetenin borsa sayfası gibi: ad · semt · nabız · 90 gün değişim · kanıt.
+   YÜKSELENLER — gazetenin borsa sayfası gibi: ad · semt · nabız · üç ay değişim · kanıt.
    Kart ızgarası değil tablo: taranır, karşılaştırılır. Her satır mekâna gider.
    ────────────────────────────────────────────────────────────────────────── */
 
@@ -15,7 +15,7 @@ export function Risers() {
   return (
     <section aria-labelledby="h-risers" className="reveal">
       <div className="kunye">
-        <h2 id="h-risers">Yükselenler · son 90 gün<DemoTag /></h2>
+        <h2 id="h-risers">Yükselenler · son üç ay<DemoTag /></h2>
         <Link href="/kesfet/" className="text-[12px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Tümü →</Link>
       </div>
       <p className="mt-2 max-w-[60ch] font-[family-name:var(--font-read)] text-[17px] leading-snug text-ink-2">
@@ -43,7 +43,7 @@ export function Risers() {
           );
         })}
       </ol>
-      <p className="mt-2 text-[11.5px] text-ink-3">Yalnızca en az 40 deneyimi olan kayıtlar. Değişim, son 90 günün puan farkıdır; demo veri kümesi.</p>
+      <p className="mt-2 text-[11.5px] text-ink-3">Yalnızca en az 40 deneyimi olan kayıtlar. Değişim, son üç ayın puan farkıdır; demo veri kümesi.</p>
     </section>
   );
 }

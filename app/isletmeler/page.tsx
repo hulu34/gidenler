@@ -53,7 +53,7 @@ export default function BusinessesPage() {
       <section className="mt-12 grid gap-x-14 gap-y-8 border-t-2 border-line-strong pt-7 sm:grid-cols-2 lg:grid-cols-3" aria-label="Panel neler gösterir">
         {[
           ["İşletmeniz Gidenler'de", "Sayfanız deneyimlerle zaten oluşur. Sahiplenen işletme, deneyimlere resmî yanıt verir ve paneli görür. Sahiplenmek puanı değiştirmez."],
-          ["Performans", "Gidenler puanı, son 90 gün yönü, boyutlar (lezzet, servis, F/P, atmosfer, temizlik), deneyim hacmi ve doğrulanma oranı — tüketicinin gördüğüyle aynı sayılar."],
+          ["Performans", "Gidenler puanı, son üç ay yönü, boyutlar (lezzet, servis, F/P, atmosfer, temizlik), deneyim hacmi ve doğrulanma oranı — tüketicinin gördüğüyle aynı sayılar."],
           ["Neden değişti?", "Kök neden: hangi boyut, hangi tema, hangi dönem. Şef değişimi, fiyat artışı gibi olaylarla deneyimlerin ilişkisi — nedensellik iddiası değil, zamanlama."],
           ["Kıyas", "Kategori ve semt içinde nerede durduğunuz: servis puanınız Kadıköy lokantalarının ortalamasının ne kadar üstünde ya da altında."],
           ["İnsanlar ne yaşıyor?", "En çok övülen ve en sık şikâyet edilen konular, sayı değil yön olarak. Uzmanların ve doğrulanmış ziyaretçilerin ayrı perspektifi."],

@@ -381,9 +381,9 @@ function reasonFor(h: SearchHit, q: ParsedQuery, d: SearchDoc): string {
     if (k === "value" && d.value !== null) parts.push(`F/P ${score1(d.value)}`);
     if (k === "quiet") parts.push(d.quiet >= 7 ? "sessizlik deneyimlerde güçlü" : d.quiet <= 4 ? "gürültü şikâyeti var" : "sessizlik karışık");
     if (k === "fast") parts.push(d.speed >= 7 ? "hızlı servis" : "tempo orta");
-    if (k === "rising" || (k === "quality" && h.card.delta90d >= 0.3)) parts.push(`son 90 günde +${score1(h.card.delta90d)}`);
+    if (k === "rising" || (k === "quality" && h.card.delta90d >= 0.3)) parts.push(`son üç ayda +${score1(h.card.delta90d)}`);
   }
-  if (!q.qualifiers.length && h.card.delta90d >= 0.4) parts.push(`son 90 günde yükseliyor`);
+  if (!q.qualifiers.length && h.card.delta90d >= 0.4) parts.push(`son üç ayda yükseliyor`);
   return parts.filter(Boolean).slice(0, 3).join(" · ");
 }
 

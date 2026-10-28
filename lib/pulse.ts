@@ -103,14 +103,14 @@ export function cityRidges(limit = 9): { periods: string[]; ridges: Ridge[] } {
   return { periods: ps, ridges: ridges.slice(0, limit) };
 }
 
-/** Son 30 günde (son dönem) kaydedilen deneyim — hero satırı için; demo verisi olarak etiketlenir. */
+/** Son ayda (zaman serisinin son kaydı) yazılan deneyim — hero satırı için; demo verisi olarak etiketlenir. */
 export function lastPeriodVolume(): { period: string; count: number } {
   const { periods, ridges } = cityRidges(50);
   const i = periods.length - 1;
   return { period: periods[i] ?? "", count: ridges.reduce((a, r) => a + (r.values[i] ?? 0), 0) };
 }
 
-/** Yükselenler: yeterli kanıtı olan, 90 günde en çok yükselen İstanbul kayıtları. */
+/** Yükselenler: yeterli kanıtı olan, üç ayda en çok yükselen İstanbul kayıtları. */
 export function risers(n = 8): Array<{ card: EntityCard; pulse: Pulse }> {
   return listCards()
     .filter((c) => inIstanbul(c) && c.category.compliance.showScores && c.score !== null && c.experienceCount >= 40 && c.delta90d > 0.2)

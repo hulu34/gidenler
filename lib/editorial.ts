@@ -41,7 +41,7 @@ export function talkInsight(card: EntityCard, it: TopicIntelligence | null): str
   if (praised && complaint) return `${praised.label} övülüyor; en sık şikâyet ${lower(complaint.label)}.`;
   if (praised) return `${praised.label} en sık övülen konu.`;
   if (complaint) return `En sık konuşulan şikâyet: ${lower(complaint.label)}.`;
-  return `Son 90 günde ${nf(it?.volume.count ?? card.experienceCount)} deneyim; görüşler istikrarlı.`;
+  return it?.volume ? `Son ayda ${nf(it.volume.count)} deneyim; görüşler istikrarlı.` : `${nf(card.experienceCount)} deneyim; görüşler istikrarlı.`;
 }
 
 /** Durum etiketi: kart üstündeki küçük "ne oluyor" kelimesi. Trend rengi ayrı kanaldır. */

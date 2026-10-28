@@ -16,7 +16,7 @@ const baseSummaries: Record<string, AISummary> = {
     lines: [
       "En çok övülen konu lezzet: son 12 ayın 182 deneyiminin 151'i yemekten olumlu bahsediyor.",
       "En sık eleştirilen konu bekleme süresi; şikayetlerin neredeyse tamamı hafta sonu öğle saatlerine ait.",
-      "Fiyat algısı son 90 günde sertleşti — 'değer' puanı 8,4'ten 8,0'a indi.",
+      "Fiyat algısı son üç ayda sertleşti — 'değer' puanı 8,4'ten 8,0'a indi.",
       "Menü mevsime göre değişiyor; 22 deneyimde aranan yemeğin o gün olmadığı belirtilmiş.",
     ],
     sourceExperienceIds: ["exp.101", "exp.102", "exp.103", "exp.107"],
@@ -50,7 +50,7 @@ const baseSummaries: Record<string, AISummary> = {
     basedOnCount: 48, windowDays: 90, generatedAt: "2026-09-01",
     lines: [
       "Etin kendisi 48 deneyimin 40'ında olumlu; sorun mutfakta değil salonda.",
-      "Bekleme süresi ve bilgilendirme eksikliği son 90 günde en hızlı büyüyen şikayet.",
+      "Bekleme süresi ve bilgilendirme eksikliği son üç ayda en hızlı büyüyen şikayet.",
       "Öğle menüsünün akşamla aynı mutfak olduğu 11 ayrı deneyimde belirtilmiş.",
       "Gürültü seviyesi tekrar eden bir konu; 18 deneyimde geçiyor.",
     ],
@@ -85,7 +85,7 @@ const baseSummaries: Record<string, AISummary> = {
     lines: [
       "Kalabalık grup deneyimi en çok övülen konu: 46 deneyimin 28'i grup halinde gitmiş.",
       "Fiyat yüksek bulunuyor ama şeffaf bulunuyor — 'kalem kalem hesap' 12 deneyimde geçiyor.",
-      "Son 90 günde belirgin bir değişim yok.",
+      "Son üç ayda belirgin bir değişim yok.",
     ],
     sourceExperienceIds: ["exp.301", "exp.302"],
   },

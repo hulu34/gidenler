@@ -30,7 +30,7 @@ import { demoProfileOf } from "@/data/demoProfiles";
 import { DemoMenu, DemoOverview, DemoScoreStrip } from "@/components/demo/DemoProfile";
 import { parseVideoUrl } from "@/lib/media/embed";
 import { mapLinks } from "@/lib/venue";
-import { nf, score1 } from "@/lib/format";
+import { nf, score1, windowIn } from "@/lib/format";
 
 import { Badge } from "@/components/ui/Badge";
 import { DemoNotice } from "@/components/ui/DemoNotice";
@@ -339,7 +339,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         <section id="ozet" className="scroll-mt-28 mt-12 sm:scroll-mt-32" aria-labelledby="h-ozet">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
             <h2 id="h-ozet" className="text-[13px] font-bold uppercase tracking-[0.2em]">Özet</h2>
-            <p className="max-w-[48ch] text-[12px] text-ink-3">Son {I.aiSummary.windowDays} günde {nf(I.aiSummary.basedOnCount)} deneyimden; yorumların yerine geçmez.</p>
+            <p className="max-w-[48ch] text-[12px] text-ink-3">{windowIn(I.aiSummary.windowDays).replace(/^s/, "S")} {nf(I.aiSummary.basedOnCount)} deneyimden; yorumların yerine geçmez.</p>
           </div>
           <ul className="mt-4 flex flex-col gap-2.5">
             {I.aiSummary.lines.slice(0, 3).map((line, i) => (
@@ -385,7 +385,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         <section id="trend" className="scroll-mt-28 mt-12 sm:scroll-mt-32" aria-labelledby="h-trend">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
             <h2 id="h-trend" className="text-[13px] font-bold uppercase tracking-[0.2em]">Trend</h2>
-            <p className="max-w-[48ch] text-[12px] text-ink-3">{I.timeline.length} dönem · son 90 gün {I.scoreTrend.delta > 0 ? "+" : ""}{score1(I.scoreTrend.delta)} · {I.momentum === "up" || I.momentum === "strong_up" ? "yükseliyor" : I.momentum === "down" || I.momentum === "strong_down" ? "geriliyor" : "stabil"}</p>
+            <p className="max-w-[48ch] text-[12px] text-ink-3">{I.timeline.length} dönem · son üç ay {I.scoreTrend.delta > 0 ? "+" : ""}{score1(I.scoreTrend.delta)} · {I.momentum === "up" || I.momentum === "strong_up" ? "yükseliyor" : I.momentum === "down" || I.momentum === "strong_down" ? "geriliyor" : "stabil"}</p>
           </div>
           <div className="mt-5">
             <TrendModule name={entity.name} score={I.overallScore!} timeline={I.timeline} periodChanges={I.periodChanges} momentum={I.momentum} volume={I.volume} experienceCount={I.experienceCount} consensusLevel={I.consensus?.level} expertScore={I.perspectives.find((p) => p.segment === "expert")?.score ?? null} verifiedRatio={I.verifiedRatio} />

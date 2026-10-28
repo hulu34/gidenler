@@ -50,7 +50,7 @@ export default function HowItWorksPage() {
           <div>
             <p className="label">02 · Yön</p>
             <h2 id="s2" className="mt-2 text-[clamp(1.5rem,4vw,2.2rem)] font-extrabold leading-tight tracking-[-0.035em]">Nereye gidiyor?</h2>
-            <p className="mt-3 max-w-[46ch] text-[14.5px] leading-relaxed text-ink-2">Bir mekân bugünkü puanı değil, bir eğridir. Gidenler son 90 günün yönünü ayrı gösterir; bozulan bir yeri puanı hâlâ yüksekken, toparlanan bir yeri puanı hâlâ düşükken fark edersin.</p>
+            <p className="mt-3 max-w-[46ch] text-[14.5px] leading-relaxed text-ink-2">Bir mekân bugünkü puanı değil, bir eğridir. Gidenler son üç ayın yönünü ayrı gösterir; bozulan bir yeri puanı hâlâ yüksekken, toparlanan bir yeri puanı hâlâ düşükken fark edersin.</p>
           </div>
           <ul className="grid gap-6 border-t border-line pt-4 sm:grid-cols-2">
             <li className="flex flex-col gap-1"><ScoreNumber score={9.2} size="lg" label trend={{ direction: "down", delta: -0.3 }} /><span className="text-[13px] text-ink-2">Olağanüstü ama geriliyor. Puan rengi yeşil, ok kırmızı — iki ayrı bilgi.</span></li>

@@ -242,7 +242,20 @@ function timelineFor(r: () => number, score: number, delta: number, count: numbe
     const s = round1(clamp(score - delta + drift + noise * (1 - t * 0.5), 1, 10));
     pts.push({ period: MONTHS[MONTHS.length - n + i], score: i === n - 1 ? score : s, experienceCount: Math.max(1, Math.round(perMonth * (0.6 + r() * 0.9))) });
   }
-  return pts;
+  return capMonthly(pts, count);
+}
+
+/* Aylık deneyim sayıları (o ay yazılan) toplam deneyim sayısını (experienceTotal = count) aşamaz.
+   Az deneyimli kayıtta "her aya en az 1" kuralı bunu bozuyordu: toplam aşılırsa sayılar oranla indirilir;
+   artan pay en yakın aylara verilir; bazı aylar 0 deneyimle kalabilir. Puan noktalarına dokunulmaz.
+   Rastgele çekimler değişmez: puan noktaları, yön ve momentum aynı kalır. */
+function capMonthly(pts: TimelinePoint[], count: number): TimelinePoint[] {
+  const sum = pts.reduce((a, p) => a + p.experienceCount, 0);
+  if (sum <= count) return pts;
+  const c = pts.map((p) => Math.floor((p.experienceCount * count) / sum));
+  let left = count - c.reduce((a, x) => a + x, 0);
+  for (let i = c.length - 1; left > 0 && i >= 0; i--, left--) c[i] += 1;
+  return pts.map((p, i) => ({ ...p, experienceCount: c[i] }));
 }
 
 const usedSlugs = new Set<string>();
@@ -526,7 +539,7 @@ const GOLDEN: Golden[] = [
   { name: "İskele Burger", sub: "burger", city: "İstanbul", district: "Kadıköy", hood: "Kadıköy Rıhtım", score: 6.1, delta: -0.9, count: 1376, verified: 0.3, blurb: "Bir zamanlar Kadıköy'ün burgeri; ikinci şubeden sonra tutarlılık düştü, sıra hâlâ uzun.", price: 2 },
   { name: "Reyhan Kahve", sub: "kahve", city: "İstanbul", district: "Beykoz", hood: "Kanlıca", score: 9.4, delta: 0.1, count: 12, verified: 0.5, blurb: "Kanlıca'da altı masalı kahveci. Puan yüksek ama on iki deneyim: sınırlı veri.", price: 1 },
   { name: "Karadeniz Pidecisi", sub: "pide", city: "İstanbul", district: "Kadıköy", hood: "Moda", score: 8.6, delta: 0.3, count: 312, verified: 0.49, blurb: "Moda'nın taş fırınlı pidecisi; kıymalı ve kuşbaşılı iki ana kalem, hamur ince. Cumartesi akşamı sıra normal.", price: 1 },
-  { name: "Moda Pide", sub: "pide", city: "İstanbul", district: "Kadıköy", hood: "Moda", score: 8.7, delta: 0.4, count: 214, verified: 0.52, blurb: "Kaşarlı pide ve ayran; dört kişilik masalar, hızlı fırın. Son 90 günde F/P deneyimleri toparlıyor.", price: 1 },
+  { name: "Moda Pide", sub: "pide", city: "İstanbul", district: "Kadıköy", hood: "Moda", score: 8.7, delta: 0.4, count: 214, verified: 0.52, blurb: "Kaşarlı pide ve ayran; dört kişilik masalar, hızlı fırın. Son üç ayda F/P deneyimleri toparlıyor.", price: 1 },
   { name: "Dönerci Ali", sub: "doner", city: "İstanbul", district: "Kadıköy", hood: "Kadıköy Rıhtım", score: 8.3, delta: 0.2, count: 604, verified: 0.41, blurb: "Rıhtım'ın et dönercisi; dürüm sıkı, fiyat makul. Öğle sırası kapıya taşıyor.", price: 1 },
   { name: "Beşiktaş Dönercisi", sub: "doner", city: "İstanbul", district: "Beşiktaş", hood: "Çarşı", score: 7.8, delta: -0.1, count: 488, verified: 0.37, blurb: "Çarşı'nın tavuk-et dönercisi; porsiyon döner öğle yemeği, oturma yeri az.", price: 1 },
   { name: "Kadıköy Mantı Evi", sub: "manti", city: "İstanbul", district: "Kadıköy", hood: "Bahariye", score: 8.5, delta: 0.1, count: 186, verified: 0.55, blurb: "Ev yapımı mantı, kendi yoğurdu; on masalı sessiz salon. Hafta sonu öğlen dolu.", price: 1 },
@@ -594,16 +607,16 @@ const GOLDEN: Golden[] = [
       }
       if (tier === "A" && !e.realIdentity) {
         const pos = universePraised[e.id][0]; const neg = universeComplaints[e.id][0];
-        /* Özet, sayfadaki grafikle aynı kurallardan: "son 90 gün" = zaman serisinin son 3 ayı; yön = son ay − 3 ay önce, ±0,15
-           (lib/api scoreTrend). Konu sayıları tüm deneyimler içindir; 90 günlük cümlede aynı oranla pencereye indirgenir. */
+        /* Özet, sayfadaki grafikle aynı kurallardan: "son üç ay" = zaman serisinin son 3 ayı; yön = son ay − 3 ay önce, ±0,15
+           (lib/api scoreTrend). Konu sayıları tüm deneyimler içindir; "son üç ay" cümlesinde aynı oranla pencereye indirgenir. */
         const tl = universeTimelines[e.id]; const nTl = tl.length;
         const win = tl.slice(-3).reduce((a, p) => a + p.experienceCount, 0);
         const d90 = nTl >= 4 ? round1(tl[nTl - 1].score - tl[nTl - 4].score) : 0;
         const inWin = (n: number) => Math.min(win, Math.round((n * win) / count));
         universeSummaries[e.id] = { entityId: e.id, basedOnCount: win, windowDays: 90, generatedAt: "2026-09-01", sourceExperienceIds: universeExperiences.filter((x) => x.entityId === e.id).slice(0, 3).map((x) => x.id), lines: [
-          `En çok övülen konu ${pos.label.toLocaleLowerCase("tr")}: son 90 günün ${win} deneyiminden ${inWin(pos.count)} tanesi olumlu bahsediyor.`,
+          `En çok övülen konu ${pos.label.toLocaleLowerCase("tr")}: son üç ayın ${win} deneyiminden ${inWin(pos.count)} tanesi olumlu bahsediyor.`,
           `En sık eleştirilen konu ${neg.label.toLocaleLowerCase("tr")} (toplamda ${neg.count} deneyim)${neg.direction === "up" ? "; son dönemde artıyor." : "."}`,
-          d90 > 0.15 ? `Puan son 90 günde +${score1(d90)} yükseldi.` : d90 < -0.15 ? `Puan son 90 günde −${score1(-d90)} geriledi.` : `Puan son 90 günde stabil; görüşler ${count > 300 ? "geniş bir tabana" : "dar ama tutarlı bir tabana"} dayanıyor.`,
+          d90 > 0.15 ? `Puan son üç ayda +${score1(d90)} yükseldi.` : d90 < -0.15 ? `Puan son üç ayda −${score1(-d90)} geriledi.` : `Puan son üç ayda stabil; görüşler ${count > 300 ? "geniş bir tabana" : "dar ama tutarlı bir tabana"} dayanıyor.`,
         ] };
       }
     } else {

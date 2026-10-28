@@ -1,14 +1,14 @@
 import { getTopic } from "@/lib/api";
 import { pulseOf } from "@/lib/pulse";
-import { score1 } from "@/lib/format";
+import { score1, windowIn } from "@/lib/format";
 
 /* ==========================================================================
    DENEYİM – GRAFİK – PUAN TUTARLILIĞI (denetim; yalnız okur, hiçbir şeyi değiştirmez)
    Mevcut hesaplama kurallarına göre bir mekân sayfasında yan yana görünen sayıların çelişmediğini denetler:
    · aylık grafikteki deneyim sayılarının toplamı toplam deneyim sayısını aşamaz
    · manşet puan = grafiğin son ayı; "son 12 ay · N deneyim" = son 12 ayın toplamı (pulse)
-   · özetteki "son 90 gün" sayısı = grafiğin son 3 ayı; "son 12 ay" = son 12 ayı
-   · özetteki yön cümlesi (yükseldi / geriledi / stabil) = sayfadaki 90 gün yönü (±0,15)
+   · özetteki "son üç ay" sayısı = grafiğin son 3 ayı; "son 12 ay" = son 12 ayı
+   · özetteki yön cümlesi (yükseldi / geriledi / stabil) = sayfadaki son üç ay yönü (±0,15)
    · konu sayıları toplam deneyim sayısını aşamaz
    Gösterilen deneyim metinleri örnek seçkidir; ortalamalarının puana eşit olması BEKLENMEZ (yalnız bilgi olarak raporlanır).
    ========================================================================== */
@@ -30,15 +30,15 @@ export function checkConsistency(slug: string): { issues: ConsistencyIssue[]; in
   if (s && n) {
     const want = s.windowDays === 90 ? sum(tl.slice(-3)) : s.windowDays === 365 ? sum(tl.slice(-12)) : null;
     if (want === null) bad("özet penceresi tanımsız", `${s.windowDays} gün`);
-    else if (s.basedOnCount !== want) bad(`özet "son ${s.windowDays} gün" sayısı ≠ grafik`, `${s.basedOnCount} ≠ ${want}`);
+    else if (s.basedOnCount !== want) bad(`özet "${windowIn(s.windowDays)}" sayısı ≠ grafik`, `${s.basedOnCount} ≠ ${want}`);
     const text = s.lines.join(" ");
     for (const m of text.matchAll(/(\d[\d.]*) deneyim/g)) if (Number(m[1].replace(/\./g, "")) > I.experienceCount) bad("özette toplamdan büyük sayı", m[0]);
     const dir = I.scoreTrend.direction;
-    if (/son 90 günde [+−-]?[\d,.]+ yükseldi/.test(text) && dir !== "up") bad("özet \"yükseldi\" diyor, 90 gün yönü değil", dir);
-    if (/son 90 günde [−-]?[\d,.]+ geriledi/.test(text) && dir !== "down") bad("özet \"geriledi\" diyor, 90 gün yönü değil", dir);
-    if (/son 90 günde stabil/.test(text) && dir !== "flat") bad("özet \"stabil\" diyor, 90 gün yönü değil", dir);
-    const m = text.match(/son 90 günde ([+−-])([\d,.]+) (yükseldi|geriledi)/);
-    if (m && score1(Math.abs(I.scoreTrend.delta)) !== m[2].replace(".", ",")) bad("özetteki 90 gün değişimi ≠ sayfadaki", `${m[1]}${m[2]} ≠ ${I.scoreTrend.delta}`);
+    if (/son üç ayda [+−-]?[\d,.]+ yükseldi/.test(text) && dir !== "up") bad("özet \"yükseldi\" diyor, son üç ay yönü değil", dir);
+    if (/son üç ayda [−-]?[\d,.]+ geriledi/.test(text) && dir !== "down") bad("özet \"geriledi\" diyor, son üç ay yönü değil", dir);
+    if (/son üç ayda stabil/.test(text) && dir !== "flat") bad("özet \"stabil\" diyor, son üç ay yönü değil", dir);
+    const m = text.match(/son üç ayda ([+−-])([\d,.]+) (yükseldi|geriledi)/);
+    if (m && score1(Math.abs(I.scoreTrend.delta)) !== m[2].replace(".", ",")) bad("özetteki üç ay değişimi ≠ sayfadaki", `${m[1]}${m[2]} ≠ ${I.scoreTrend.delta}`);
   }
   for (const th of [...I.positiveThemes, ...I.negativeThemes]) if (th.count > I.experienceCount) bad("konu sayısı > toplam deneyim", `${th.label} ${th.count}`);
   const ex = t.experiences;

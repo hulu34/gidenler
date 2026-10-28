@@ -61,7 +61,7 @@ export function getScoreConfidence(it: TopicIntelligence): ScoreConfidence {
     `${it.experienceCount} deneyim`,
     `${verified} doğrulanmış ziyaret`,
     expert ? `${expert} uzman deneyimi` : "uzman deneyimi yok",
-    recent90 >= 20 ? `son 90 günde yeterli veri (${recent90})` : `son 90 günde az veri (${recent90})`,
+    recent90 >= 20 ? `son üç ayda yeterli veri (${recent90})` : `son üç ayda az veri (${recent90})`,
     dispersion ? `dağılım ${dispersion}` : "dağılım bilinmiyor",
   ];
   return { level: it.confidence, label: CONFIDENCE_LABEL[it.confidence], experienceCount: it.experienceCount, verifiedCount: verified, expertCount: expert, recent90, dispersion, reasons };
@@ -76,7 +76,7 @@ export function freshnessOf(lastVisitedAt: string | undefined, recent90: number)
   const days = Math.max(0, Math.round((+TODAY - +new Date(lastVisitedAt + (lastVisitedAt.length === 10 ? "T00:00:00Z" : ""))) / 86400000));
   const stale = days > 540;
   const when = days <= 1 ? "bugün" : days < 7 ? `${days} gün önce` : days < 30 ? `${Math.round(days / 7)} hafta önce` : days < 365 ? `${Math.round(days / 30)} ay önce` : `${Math.floor(days / 365)} yıl önce`;
-  return { text: stale ? `Güncel veri sınırlı — son deneyim ${when}` : `Son deneyim ${when} · son 90 günde ${recent90} deneyim`, stale };
+  return { text: stale ? `Güncel veri sınırlı — son deneyim ${when}` : `Son deneyim ${when} · son üç ayda ${recent90} deneyim`, stale };
 }
 
 export function consensusLabel(level: "birlik" | "karışık" | "bölünmüş" | undefined): string | null {

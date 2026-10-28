@@ -20,9 +20,9 @@ export const RANK_CONFIG = {
   /** En yüksek puanlılar: bu kadar deneyimden azı ve "sınırlı veri" güveni listeye giremez. */
   topRated: { minExperiences: 60, minConfidence: "medium" as "medium" | "high" },
   /** Yükselişteler: az veriden büyük hareket üretilmez. */
-  rising: { minExperiences: 40, minDelta: 0.2, maxDelta: 1.6, window: "Son 90 gün" },
+  rising: { minExperiences: 40, minDelta: 0.2, maxDelta: 1.6, window: "Son üç ay" },
   /** En çok konuşulanlar: son dönem deneyim etkinliği. */
-  talked: { minExperiences: 20, window: "Son 30 gün" },
+  talked: { minExperiences: 20, window: "Son ay" },
   /** Haftanın popülerleri: son 7 gün etkileşim (demo sinyali). */
   popular: { minExperiences: 20, window: "Son 7 gün" },
   /** Uzmanların seçtikleri: en az bu kadar uzman deneyimi. */
@@ -123,7 +123,7 @@ function balanced(cards: EntityCard[], limit: number, all: boolean): EntityCard[
 /* ───── sinyaller ───── */
 function hash(s: string): number { let h = 2166136261 >>> 0; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h >>> 0; }
 
-/** Son 30 gün deneyim sayısı — zaman çizelgesinin son dönemi. */
+/** Son ayın deneyim sayısı — zaman çizelgesinin son kaydı (tarih filtresi değil). */
 function last30(c: EntityCard): number {
   const it = getTopicIntelligence(c.entity.id);
   const tl = it?.timeline ?? [];
@@ -132,7 +132,7 @@ function last30(c: EntityCard): number {
 
 /**
  * Son 7 gün etkileşimi — DEMO SİNYALİ. Prototipte gerçek telemetri yok; kaydetme / gitmek istiyorum /
- * liste ekleme sayıları kimlikten deterministik türetilir ve son 30 gün deneyim etkinliğiyle harmanlanır.
+ * liste ekleme sayıları kimlikten deterministik türetilir ve son ayın deneyim etkinliğiyle harmanlanır.
  * Popülerlik kalite değildir: 7,4 puanlı bir yer çok popüler olabilir.
  */
 export function weeklySignal(entityId: string, count30: number, score = 7): { saves: number; wants: number; lists: number; experiences7: number; total: number } {
@@ -233,7 +233,7 @@ export function buildRankings(sel: { cats: string[]; subcategory?: string }, opt
     L, opts.all,
   ).map((c) => itemOf(c, talkInsight(c, getTopicIntelligence(c.entity.id)), undefined, c.confidence ? CONFIDENCE_LABEL[c.confidence] : undefined));
 
-  /* 3 · En çok konuşulanlar — son 30 gün deneyim etkinliği */
+  /* 3 · En çok konuşulanlar — son ayın deneyim etkinliği */
   const talked = balanced(
     [...pool].filter((c) => c.experienceCount >= RANK_CONFIG.talked.minExperiences)
       .sort((a, b) => last30(b) - last30(a) || b.experienceCount - a.experienceCount),
@@ -241,7 +241,7 @@ export function buildRankings(sel: { cats: string[]; subcategory?: string }, opt
   ).map((c) => {
     const it = getTopicIntelligence(c.entity.id);
     const verified = Math.round(last30(c) * (it?.verifiedRatio ?? 0));
-    return itemOf(c, talkInsight(c, it), `son 30 günde ${nf(last30(c))} deneyim · ${nf(verified)} doğrulanmış`, `${nf(last30(c))} yeni deneyim`);
+    return itemOf(c, talkInsight(c, it), `son ayda ${nf(last30(c))} deneyim · ${nf(verified)} doğrulanmış`, `${nf(last30(c))} yeni deneyim`);
   });
 
   /* 4 · Yükselişteler — en anlamlı pozitif hareket */
@@ -266,7 +266,7 @@ export function buildRankings(sel: { cats: string[]; subcategory?: string }, opt
   const sections: RankSection[] = [
     { key: "populer", title: "Haftanın popülerleri", hint: "Son 7 günün etkileşimi: kaydetme, gitme niyeti, yeni deneyim. Popülerlik puan değildir.", window: RANK_CONFIG.popular.window, items: popular, seeAll: seeAll(sel, "konusulan") },
     { key: "en-yuksek", title: "En yüksek puanlılar", hint: `Gidenler puanına göre; en az ${RANK_CONFIG.topRated.minExperiences} deneyim ve orta güven şartı. Az veriyle 9,8 burada görünmez.`, items: top, seeAll: seeAll(sel, "puan") },
-    { key: "konusulan", title: "En çok konuşulanlar", hint: "Son 30 günde en çok deneyim yazılanlar; sayfa görüntüleme değil.", window: RANK_CONFIG.talked.window, items: talked, seeAll: seeAll(sel, "konusulan") },
+    { key: "konusulan", title: "En çok konuşulanlar", hint: "Son ayda en çok deneyim yazılanlar; sayfa görüntüleme değil.", window: RANK_CONFIG.talked.window, items: talked, seeAll: seeAll(sel, "konusulan") },
     { key: "yukselen", title: "Yükselişteler", hint: `${RANK_CONFIG.rising.window}de en anlamlı pozitif hareket; en az ${RANK_CONFIG.rising.minExperiences} deneyim.`, window: RANK_CONFIG.rising.window, items: rising, seeAll: seeAll(sel, "yukselen"), signalKind: "trend" as const },
     { key: "uzman", title: "Uzmanların seçtikleri", hint: "Bu alanda uzmanlığı kanıtlanmış kişilerin yazdığı deneyimler. Takipçi sayısı ölçü değildir.", items: experts },
   ]; /* boş bölüm de kolon olarak kalır (board sabit 3+3); UI "yeterli veri yok" yazar */

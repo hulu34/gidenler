@@ -704,6 +704,9 @@ async function main() {
     const { up, down } = restaurantMovers();
     const flow = [...new Set([...DEMO_TRIO.map((t) => t.slug), ...up.slice(0, 5).map((r) => r.e.slug), ...down.slice(0, 5).map((r) => r.e.slug), "ates-steak", "balikci-sokagi", "sakura-omakase"])];
     for (const s of flow) { const r = checkConsistency(s); ok(`${s}: puan, grafik, deneyim sayısı, özet ve yön tutarlı`, r.issues.length === 0, r.issues.map((i) => `${i.rule} ${i.detail}`).join("; ")); }
+    const allDemo = entities.filter((e) => e.isDemo);
+    const badAll = allDemo.map((e) => ({ s: e.slug, r: checkConsistency(e.slug) })).filter((x) => x.r.issues.length);
+    ok(`bütün demo kayıtları (${allDemo.length}) tutarlılık denetiminden geçiyor`, badAll.length === 0, badAll.slice(0, 5).map((b) => `${b.s}: ${b.r.issues.map((i) => i.rule + " " + i.detail).join("; ")}`).join(" | "));
     ok("sunum ikilisinin yönü değişmedi (Moda ↑, Köz sabit, Asma ↓)", getTopic("moda-lokantasi")!.intelligence.scoreTrend.direction === "up" && getTopic("koz-durum")!.intelligence.scoreTrend.direction === "flat" && getTopic("asma-teras")!.intelligence.scoreTrend.direction === "down");
   }
 

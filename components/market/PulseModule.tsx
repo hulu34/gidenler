@@ -19,7 +19,7 @@ export function PulseModule({ city = "İstanbul" }: { city?: string }) {
             Gidenler Pulse
           </h2>
           <p className="max-w-[48ch] text-[12px] text-ink-3">
-            Yukarıdaki deneyimlerden çıkan özet: son 90 günde ağ nereye kıpırdadı?
+            Yukarıdaki deneyimlerden çıkan özet: son üç ayda ağ nereye kıpırdadı?
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export function PulseModule({ city = "İstanbul" }: { city?: string }) {
                         {c.delta90d.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
                       </span>
                     </span>
-                    <span className="text-[11.5px] text-ink-3">son 90 gün</span>
+                    <span className="text-[11.5px] text-ink-3">son üç ay</span>
                   </Link>
                 </dd>
               </div>
@@ -61,7 +61,7 @@ export function PulseModule({ city = "İstanbul" }: { city?: string }) {
                   <span className="tnum text-[26px] font-extrabold leading-none tracking-[-0.045em]">
                     {nf(p.busiestVolume.count)}
                   </span>
-                  <span className="text-[11.5px] text-ink-3">son 30 günde yeni deneyim</span>
+                  <span className="text-[11.5px] text-ink-3">son ayda yeni deneyim</span>
                 </Link>
               </dd>
             </div>

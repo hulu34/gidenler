@@ -55,7 +55,7 @@ export default function ExplorePage() {
       {/* yükselenler + en çok konuşulanlar */}
       <div className="mt-12 grid gap-x-14 gap-y-10 border-t-2 border-line-strong pt-7 lg:grid-cols-2">
         <section className="flex flex-col gap-3" aria-labelledby="yukselen">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1"><h2 id="yukselen" className="label">Yükselenler</h2><span className="text-[12px] text-ink-3">Son 90 günde anlamlı yükseliş. Puan ve yön ayrı.</span></div>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1"><h2 id="yukselen" className="label">Yükselenler</h2><span className="text-[12px] text-ink-3">Son üç ayda anlamlı yükseliş. Puan ve yön ayrı.</span></div>
           <ul className="flex flex-col divide-y divide-line border-t border-line">
             {up.map((c) => (
               <li key={c.entity.id}>

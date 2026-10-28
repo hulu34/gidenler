@@ -43,3 +43,6 @@ export const pct = (n: number) => `%${Math.round(n)}`;
 
 export const priceLabel = (n?: 1 | 2 | 3 | 4) =>
   n ? "₺".repeat(n) : undefined;
+
+/** Özet penceresi: demo özetleri gerçek tarih filtresiyle değil, aylık zaman serisinin son kayıtlarıyla hesaplanır. */
+export const windowIn = (days: number) => (days === 30 ? "son ayda" : days === 90 ? "son üç ayda" : days === 365 ? "son 12 ayda" : `son ${days} günde`);

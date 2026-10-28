@@ -147,14 +147,14 @@ export function getPersonalMatch(
   if (trendEffect !== 0) {
     factors.push({
       key: "trend.momentum", label: "Yön", effect: trendEffect / 5,
-      evidence: trendEffect > 0 ? "Son 90 günde deneyimler yükseliyor" : "Son 90 günde deneyimler geriliyor",
+      evidence: trendEffect > 0 ? "Son üç ayda deneyimler yükseliyor" : "Son üç ayda deneyimler geriliyor",
     });
   }
   const valueDim = it.ratingDimensions.find((d) => d.key === "value");
   let valueTrend = 0;
   if (valueDim?.trend.sufficient && valueDim.trend.direction === "down") {
     valueTrend = -3;
-    factors.push({ key: "trend.value", label: "Fiyat / performans", effect: -0.5, evidence: "F/P algısı son 90 günde zayıflıyor" });
+    factors.push({ key: "trend.value", label: "Fiyat / performans", effect: -0.5, evidence: "F/P algısı son üç ayda zayıflıyor" });
   }
 
   /* 5 — fiyat hassasiyeti */
@@ -261,7 +261,7 @@ export function getDecision(entityId: string, context: DecisionContextKey = "def
   return {
     entityId, context, verdict: verdictOf(m.score, it), verdictText: verdictText(verdictOf(m.score, it), verbsFor(entity)), personalMatch: m.score,
     reasons: reasons.slice(0, 5), warnings: warnings.slice(0, 3), bestFor, avoidIf,
-    confidence: m.confidence, timeContext: "Son 90 günün deneyimlerine göre", isDemo: true,
+    confidence: m.confidence, timeContext: "Son üç ayın deneyimlerine göre", isDemo: true,
   };
 }
 
@@ -287,7 +287,7 @@ export function getTimingVerdict(entityId: string): TimingVerdict | null {
   const join = (xs: string[]) => xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} ve ${xs[xs.length - 1]}`;
   const parts: string[] = [];
   if (!ups.length && !downs.length) {
-    parts.push(it.momentum === "strong_up" ? "Son 90 günde deneyimler hızlanarak yükseliyor." : it.momentum === "up" ? "Son 90 günde deneyimler yükseliyor." : it.momentum === "down" || it.momentum === "strong_down" ? "Son 90 günde deneyimler geriliyor." : "Son 90 günde genel puan dengeli.");
+    parts.push(it.momentum === "strong_up" ? "Son üç ayda deneyimler hızlanarak yükseliyor." : it.momentum === "up" ? "Son üç ayda deneyimler yükseliyor." : it.momentum === "down" || it.momentum === "strong_down" ? "Son üç ayda deneyimler geriliyor." : "Son üç ayda genel puan dengeli.");
   }
   if (ups.length) parts.push(`${join(ups)} son deneyimlerde yükseliyor.`);
   if (easing.length) parts.push(`${join(easing)} şikâyetleri azalıyor.`);
@@ -298,7 +298,7 @@ export function getTimingVerdict(entityId: string): TimingVerdict | null {
     : it.momentum === "up" || it.momentum === "strong_up" ? "Evet" : "Fark etmez";
 
   const s = (t: string) => t.charAt(0).toLocaleUpperCase("tr") + t.slice(1);
-  return { entityId, answer, window: "Son 30 gün", signals: signals.slice(0, 5), explanation: parts.map(s).join(" "), isDemo: true };
+  return { entityId, answer, window: "Son üç ay", signals: signals.slice(0, 5), explanation: parts.map(s).join(" "), isDemo: true };
 }
 
 /* ─────────────────────────────── EVENTS ────────────────────────────────── */
@@ -440,8 +440,8 @@ export function askGidenler(text: string, refine: AskRefine = {}): AskResult {
     }
     const fp = it.ratingDimensions.find((d) => d.key === "value");
     if (fp && fp.value >= 8.5 && !reasons.some((r) => /F\/P|fiyat/i.test(r.text))) reasons.push({ text: `Fiyat/performans güçlü · ${score1(fp.value)}`, kind: "taste" });
-    if (it.momentum === "strong_up" || it.momentum === "up") reasons.push({ text: `Son 90 gün yükseliyor · +${score1(it.scoreTrend.delta)}`, kind: "trend", source: `${nf(it.experienceCount)} deneyim` });
-    else if (it.momentum === "stable") reasons.push({ text: "Son 90 gün istikrarlı", kind: "trend", source: `${nf(it.experienceCount)} deneyim` });
+    if (it.momentum === "strong_up" || it.momentum === "up") reasons.push({ text: `Son üç ay yükseliyor · +${score1(it.scoreTrend.delta)}`, kind: "trend", source: `${nf(it.experienceCount)} deneyim` });
+    else if (it.momentum === "stable") reasons.push({ text: "Son üç ay istikrarlı", kind: "trend", source: `${nf(it.experienceCount)} deneyim` });
     const warnT = it.negativeThemes.find((t) => t.direction === "up");
     const worst = m!.factors.filter((f) => f.effect < -0.3)[0];
     const warning: DecisionWarning | undefined = q.budget && price > q.budget ? { text: `Fiyat seviyesi bütçenin üstünde · ${"₺".repeat(price)}`, severity: "medium" }
@@ -457,7 +457,7 @@ export function askGidenler(text: string, refine: AskRefine = {}): AskResult {
   const cohort = items.reduce((a, i) => a + (similarUsers[i.entityId]?.sampleSize ?? 0), 0);
   return {
     query: q, understood, items,
-    sources: [`${nf(verified)} doğrulanmış deneyim · son 90 gün`, `${nf(cohort)} benzer zevk profili`, "Gidenler uzmanlık grafiği"],
+    sources: [`${nf(verified)} doğrulanmış deneyim · son üç ay`, `${nf(cohort)} benzer zevk profili`, "Gidenler uzmanlık grafiği"],
     isDemo: true,
   };
 }
@@ -475,7 +475,7 @@ export function compareEntities(slugs: string[]): Comparison | null {
   const dim = (i: TopicIntelligence, k: string) => i.ratingDimensions.find((d) => d.key === k)?.value ?? null;
   const rows: ComparisonRow[] = [
     { key: "score", label: "Gidenler puanı", values: intel.map((i) => i.overallScore), higherIsBetter: true, format: "score" },
-    { key: "trend", label: "90 günlük değişim", values: intel.map((i) => i.scoreTrend.delta), higherIsBetter: true, format: "delta" },
+    { key: "trend", label: "Son üç ay değişimi", values: intel.map((i) => i.scoreTrend.delta), higherIsBetter: true, format: "delta" },
     { key: "match", label: "Sana göre", values: matches.map((m) => m!.score), higherIsBetter: true, format: "pct" },
     { key: "taste", label: "Lezzet", values: intel.map((i) => dim(i, "taste")), higherIsBetter: true, format: "score" },
     { key: "service", label: "Servis", values: intel.map((i) => dim(i, "service")), higherIsBetter: true, format: "score" },
@@ -571,7 +571,7 @@ export function getBusinessRootCauses(slug: string): { window: string; from: num
       return {
         dimensionKey: d.key, label: d.label, delta: d.trend.delta,
         theme: theme?.label, themeChangePct: theme ? (theme.direction === "up" ? 22 + (theme.count % 17) : undefined) : undefined,
-        note: d.trend.direction === "down" ? `${d.label} algısı son 90 günde zayıfladı.` : d.trend.direction === "up" ? `${d.label} yükseliyor; koru.` : "Stabil.",
+        note: d.trend.direction === "down" ? `${d.label} algısı son üç ayda zayıfladı.` : d.trend.direction === "up" ? `${d.label} yükseliyor; koru.` : "Stabil.",
       };
     })
     : ROOT_NOTES[e.id] ?? [{ dimensionKey: "overall", label: "Genel", delta: to - from, note: "Boyut bazında yeterli yeni deneyim yok; genel yön gösteriliyor." }];
@@ -626,9 +626,9 @@ export function getBusinessAlerts(slug: string): BusinessAlert[] {
   if (!e || !it || it.overallScore === null) return [];
   const out: BusinessAlert[] = [];
   for (const t of it.negativeThemes.filter((x) => x.direction === "up"))
-    out.push({ id: `al.${t.key}`, title: `${t.label} şikâyetlerinde anlamlı artış`, detail: `${nf(t.count)} deneyimde; son 30 günde yükselen tema.`, severity: t.count >= 40 ? "action" : "watch", at: "2026-08-30" });
+    out.push({ id: `al.${t.key}`, title: `${t.label} şikâyetlerinde anlamlı artış`, detail: `${nf(t.count)} deneyimde; son dönemde yükselen tema.`, severity: t.count >= 40 ? "action" : "watch", at: "2026-08-30" });
   const val = it.ratingDimensions.find((d) => d.key === "value");
-  if (val?.trend.sufficient && val.trend.direction === "down") out.push({ id: "al.value", title: "F/P algısı 90 günlük ortalamanın altında", detail: `Fiyat / performans ${score1(val.value)} — değişim ${val.trend.delta > 0 ? "+" : ""}${score1(val.trend.delta)}.`, severity: "watch", at: "2026-08-28" });
+  if (val?.trend.sufficient && val.trend.direction === "down") out.push({ id: "al.value", title: "F/P algısı son üç ayda önceki döneme göre düştü", detail: `Fiyat / performans ${score1(val.value)} — değişim ${val.trend.delta > 0 ? "+" : ""}${score1(val.trend.delta)}.`, severity: "watch", at: "2026-08-28" });
   const expert = it.perspectives.find((p) => p.segment === "expert"); const comm = it.perspectives.find((p) => p.segment === "community");
   if (expert?.score && comm?.score && Math.abs(expert.score - comm.score) >= 0.4) out.push({ id: "al.expert", title: "Uzman puanı topluluk puanından ayrışıyor", detail: `Uzmanlar ${score1(expert.score)}, topluluk ${score1(comm.score)}.`, severity: "info", at: "2026-08-25" });
   if (it.returnRate < 0.6) out.push({ id: "al.return", title: "Tekrar gitme niyeti düşüyor", detail: `Son deneyimlerin yalnızca ${pctOf(Math.round(it.returnRate * 100))} tekrar giderim diyor.`, severity: "action", at: "2026-08-30" });
@@ -796,9 +796,9 @@ function insightOf(it: TopicIntelligence): string {
   const parts: string[] = [];
   if (taste && taste.value >= 8.5) parts.push("Lezzet güçlü");
   else if (taste && taste.value < 6.5) parts.push("Lezzet zayıf");
-  if (it.momentum === "stable") parts.push("son 90 gün stabil");
-  else if (it.momentum === "up" || it.momentum === "strong_up") parts.push("son 90 gün yükseliyor");
-  else parts.push("son 90 gün geriliyor");
+  if (it.momentum === "stable") parts.push("son üç ay stabil");
+  else if (it.momentum === "up" || it.momentum === "strong_up") parts.push("son üç ay yükseliyor");
+  else parts.push("son üç ay geriliyor");
   if (rising) parts.push(`${lower(rising.label)} şikâyetleri artıyor`);
   return parts.join(", ") + ".";
 }
@@ -831,16 +831,16 @@ export function getNotifications(relationships: Record<string, UserEntityRelatio
     if (!e || !it) continue;
     const V = verbsFor(e); const wantN = `${V.want.split(" ")[0]} istediğin`; /* "Gitmek istediğin" / "İzlemek istediğin" */
     if (rel.state === "want_to_go") {
-      if (it.momentum === "up" || it.momentum === "strong_up") out.push({ id: `n.up.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `${wantN} ${e.name} son 30 günde yükseliyor`, body: `Gidenler ${score1(it.overallScore ?? 0)} · ${it.scoreTrend.delta > 0 ? "+" : ""}${score1(it.scoreTrend.delta)} son 90 gün`, at: "2026-09-02", basedOn: "want_to_go" });
+      if (it.momentum === "up" || it.momentum === "strong_up") out.push({ id: `n.up.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `${wantN} ${e.name} son üç ayda yükseliyor`, body: `Gidenler ${score1(it.overallScore ?? 0)} · ${it.scoreTrend.delta > 0 ? "+" : ""}${score1(it.scoreTrend.delta)} son üç ay`, at: "2026-09-02", basedOn: "want_to_go" });
       const dimUp = it.ratingDimensions.find((d) => d.trend.direction === "up" && d.trend.delta >= 0.2);
-      if (dimUp) out.push({ id: `n.dim.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `${wantN} ${e.name}'da ${lower(dimUp.label)} deneyimleri toparlanıyor`, body: `${dimUp.label} ${score1(dimUp.value)} · +${score1(dimUp.trend.delta)} son 90 gün`, at: "2026-09-01", basedOn: "want_to_go" });
+      if (dimUp) out.push({ id: `n.dim.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `${wantN} ${e.name}'da ${lower(dimUp.label)} deneyimleri toparlanıyor`, body: `${dimUp.label} ${score1(dimUp.value)} · +${score1(dimUp.trend.delta)} son üç ay`, at: "2026-09-01", basedOn: "want_to_go" });
       out.push({ id: `n.went.${e.id}`, kind: "went_yet", entityId: e.id, title: `${e.name} — ${V.didQ.toLocaleLowerCase("tr")}`, body: `${V.want} demiştin. Nasıl geçtiğini iki dokunuşla söyle.`, at: "2026-09-02", basedOn: "want_to_go" });
     }
     if (rel.state === "saved") {
-      if (it.momentum === "up" || it.momentum === "strong_up") out.push({ id: `n.sup.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `Kaydettiğin ${e.name} son 30 günde yükseliyor`, body: `Gidenler ${score1(it.overallScore ?? 0)} · +${score1(it.scoreTrend.delta)} son 90 gün`, at: "2026-09-02", basedOn: "saved" });
+      if (it.momentum === "up" || it.momentum === "strong_up") out.push({ id: `n.sup.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `Kaydettiğin ${e.name} son üç ayda yükseliyor`, body: `Gidenler ${score1(it.overallScore ?? 0)} · +${score1(it.scoreTrend.delta)} son üç ay`, at: "2026-09-02", basedOn: "saved" });
       else { const pt = it.positiveThemes.find((x) => x.direction === "up"); if (pt) out.push({ id: `n.pos.${e.id}`, kind: "want_to_go_rising", entityId: e.id, title: `Kaydettiğin ${e.name}'da ${lower(pt.label)} övgüleri artıyor`, body: `${nf(pt.count)} deneyimde · Gidenler ${score1(it.overallScore ?? 0)} istikrarlı`, at: "2026-09-01", basedOn: "saved" }); }
       const t = it.negativeThemes.find((x) => x.direction === "up");
-      if (t) out.push({ id: `n.cmp.${e.id}`, kind: "saved_complaints_up", entityId: e.id, title: `Kaydettiğin ${e.name}'da ${lower(t.label)} şikâyetleri arttı`, body: `${nf(t.count)} deneyimde; son 30 günde yükselen tema.`, at: "2026-09-01", basedOn: "saved" });
+      if (t) out.push({ id: `n.cmp.${e.id}`, kind: "saved_complaints_up", entityId: e.id, title: `Kaydettiğin ${e.name}'da ${lower(t.label)} şikâyetleri arttı`, body: `${nf(t.count)} deneyimde; son dönemde yükselen tema.`, at: "2026-09-01", basedOn: "saved" });
     }
     if (rel.state === "visited") out.push({ id: `n.write.${e.id}`, kind: "visited_write_experience", entityId: e.id, title: `${e.name} için deneyimini yaz`, body: "Gittiğini söyledin. Yazdığın deneyim bir sonraki kararı besler.", at: "2026-09-02", basedOn: "visited" });
   }
@@ -856,13 +856,13 @@ export function decisionProvenance(entityId: string, m: PersonalMatch | null): P
   return {
     sourceCount: it.experienceCount,
     verifiedCount: Math.round(it.experienceCount * it.verifiedRatio),
-    timeWindow: "Son 90 gün",
+    timeWindow: "Son üç ay",
     confidence: m?.confidence ?? it.confidence,
     lastUpdated: "2026-09-01",
     derivedFrom: [
       "Zevk profilin",
       `${nf(m?.similarity.sampleSize ?? 0)} benzer kullanıcı`,
-      `${nf(it.experienceCount)} deneyim · son 90 gün`,
+      `${nf(it.experienceCount)} deneyim · son üç ay`,
       `${nf(Math.round(it.experienceCount * it.verifiedRatio))} doğrulanmış ziyaret`,
       expert && expert.experienceCount ? `${nf(expert.experienceCount)} uzman deneyimi` : "Uzmanlık grafiği",
     ],

@@ -886,7 +886,7 @@ export interface AskResult {
   query: AskQuery;
   understood: string[];      // "Kadıköy", "sessiz", "4 kişi"
   items: AskResultItem[];
-  sources: string[];         // "34 doğrulanmış deneyim · son 90 gün"
+  sources: string[];         // "34 doğrulanmış deneyim · son üç ay"
   isDemo: boolean;
 }
 
