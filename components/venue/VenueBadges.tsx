@@ -25,11 +25,12 @@ export function VenueBadges({ entityId }: { entityId: string }) {
 }
 
 /* Gerçek mekân, henüz deneyim yok: puan uydurulmaz; ilk deneyime çağrı. */
-export function RealVenueNotice({ entity }: { entity: Entity }) {
+export function RealVenueNotice({ entity, reviewCount = 0 }: { entity: Entity; reviewCount?: number }) {
   return (
     <div className="flex flex-col gap-3 border-l-2 border-pos pl-4">
       <p className="max-w-[62ch] text-[16px] leading-[1.45]">
-        <b>Henüz Gidenler puanı yok.</b> Puan, gerçekten gidenlerin deneyimlerinden oluşur; bu mekân için ilk deneyimler bekleniyor.
+        <b>Henüz Gidenler puanı yok.</b> Puan, gerçekten gidenlerin deneyimlerinden oluşur;{" "}
+        {reviewCount > 0 ? <>şimdiye kadar <a href="#deneyimler" className="font-semibold underline decoration-line-2 underline-offset-4">{reviewCount} deneyim</a> yazıldı, puan yeterli sayıda deneyim birikince oluşur.</> : "bu mekân için ilk deneyimler bekleniyor."}
       </p>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <Link href={`/yaz/${entity.slug}/`} className="h-10 rounded-[3px] bg-accent px-4 text-[14px] font-semibold leading-10 text-on-accent">Gittim, deneyimimi yazayım</Link>

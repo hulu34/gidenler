@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { applyAccountStates, getRelationships, setRemoteSync } from "@/lib/store";
-import { isAccountEntity, planImport, readPending, serverToLocal, slugOf, toServerState, writePending } from "@/lib/community/sync";
+import { applyAccountStates, getRelationships, normalizeLegacyExperienced, setRemoteSync } from "@/lib/store";
+import { isAccountEntity, planImport, pushChange, readPending, replayPending, serverToLocal, slugOf, toServerState, writePending } from "@/lib/community/sync";
 import type { PlaceState, PlaceStateRow } from "@/lib/community/placeStatus";
 import { setAccountStatus } from "@/lib/community/accountState";
 
@@ -18,19 +18,16 @@ const post = (body: unknown) => fetch(API, { method: "POST", credentials: "same-
 export function AccountSync() {
   useEffect(() => {
     let alive = true;
+    /* Eski prototipin yerel "Deneyim yazdım" işaretleri: yalnız "Gittim" (hiçbir zaman yayımlanmış/doğrulanmış deneyim değil). */
+    normalizeLegacyExperienced(isAccountEntity);
     (async () => {
       const res = await fetch(`${BASE}/api/auth/get-session/`, { cache: "no-store", credentials: "same-origin" }).catch(() => null);
       const s = res?.ok ? await res.json().catch(() => null) as { user?: { id: string } } | null : null;
       if (!alive) return;
       if (!res?.ok) { setAccountStatus("off"); return; }
       if (!s?.user) { setAccountStatus("anon"); return; }
-      setAccountStatus("in");
-      const pending = readPending();
-      for (const [slug, state] of Object.entries(pending)) {
-        const r = await post({ slug, state }).catch(() => null);
-        if (r && (r.ok || r.status === 404 || r.status === 400)) delete pending[slug];
-      }
-      writePending(pending);
+      setAccountStatus("in", s.user.id);
+      writePending(await replayPending(post, readPending()));
       const g = await fetch(API, { cache: "no-store", credentials: "same-origin" }).catch(() => null);
       if (!alive || !g?.ok) return;
       let rows = ((await g.json()) as { states: PlaceStateRow[] }).states;
@@ -43,11 +40,7 @@ export function AccountSync() {
       applyAccountStates(serverToLocal(rows));
       setRemoteSync((entityId, state) => {
         if (!isAccountEntity(entityId)) return;
-        const slug = slugOf(entityId), st: PlaceState = toServerState(state);
-        post({ slug, state: st }).then((r) => {
-          if (r.ok || r.status === 404 || r.status === 400) return;
-          if (r.status !== 401) writePending({ ...readPending(), [slug]: st });
-        }).catch(() => writePending({ ...readPending(), [slug]: st }));
+        void pushChange(post, slugOf(entityId), toServerState(state) as PlaceState, new Date().toISOString(), { read: readPending, write: writePending });
       });
     })();
     return () => { alive = false; setRemoteSync(null); };

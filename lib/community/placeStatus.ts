@@ -34,17 +34,26 @@ async function placeIds(db: Db, slugs: string[]) {
   return new Map(rows.map((r) => [r.slug, r.id]));
 }
 
-/** Tek mekânın durumunu yazar (son karar geçerli). Bilinmeyen mekân → unknown_place. */
-export async function setPlaceState(db: Db, userId: string, slug: string, state: PlaceState): Promise<{ ok: true; state: PlaceState } | { ok: false; error: "unknown_place" }> {
+/** Tek mekânın durumunu yazar. `at` = değişikliğin cihazda yapıldığı an (bekleyen/çevrimdışı değişiklik):
+    hesaptaki kayıt bundan YENİYSE (ör. başka cihazdan sonradan değişti) üzerine yazılmaz → `stale`.
+    `at` gelecekte olamaz, 30 günden eskiyse 30 güne çekilir. Bilinmeyen mekân → unknown_place. */
+export async function setPlaceState(db: Db, userId: string, slug: string, state: PlaceState, at?: Date):
+  Promise<{ ok: true; state: PlaceState; stale: boolean } | { ok: false; error: "unknown_place" }> {
   const id = (await placeIds(db, [slug])).get(slug);
   if (!id) return { ok: false, error: "unknown_place" };
+  const now = Date.now();
+  const when = new Date(Math.min(now, Math.max(now - 30 * 86400_000, at?.getTime() ?? now)));
   const f = flagsOf(state);
-  await db.insert(userPlaceStatus).values({ userId, placeId: id, ...f, visitCount: f.visited ? 1 : 0 })
+  const written = await db.insert(userPlaceStatus).values({ userId, placeId: id, ...f, visitCount: f.visited ? 1 : 0, updatedAt: when })
     .onConflictDoUpdate({
       target: [userPlaceStatus.userId, userPlaceStatus.placeId],
-      set: { ...f, visitCount: f.visited ? sql`greatest(${userPlaceStatus.visitCount}, 1)` : userPlaceStatus.visitCount, updatedAt: new Date() },
-    });
-  return { ok: true, state };
+      set: { ...f, visitCount: f.visited ? sql`greatest(${userPlaceStatus.visitCount}, 1)` : userPlaceStatus.visitCount, updatedAt: when },
+      where: sql`${userPlaceStatus.updatedAt} <= ${when.toISOString()}::timestamptz`,
+    }).returning({ placeId: userPlaceStatus.placeId });
+  if (written.length) return { ok: true, state, stale: false };
+  const [cur] = await db.select({ favorite: userPlaceStatus.favorite, wantToGo: userPlaceStatus.wantToGo, visited: userPlaceStatus.visited })
+    .from(userPlaceStatus).where(and(eq(userPlaceStatus.userId, userId), eq(userPlaceStatus.placeId, id)));
+  return { ok: true, state: cur ? stateOf(cur) : state, stale: true };
 }
 
 /** İlk girişte bu cihazdaki seçimleri hesaba aktarır: YALNIZ hesapta hiç kaydı olmayan mekânlar (hesap kazanır).

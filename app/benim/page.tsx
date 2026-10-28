@@ -14,6 +14,7 @@ import { ReputationChip } from "@/components/creator/ReputationChip";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { MyReservations } from "@/components/reservation/MyReservations";
 import { AccountBox } from "@/components/auth/AccountBox";
+import { MyReviews } from "@/components/auth/MyReviews";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /**
@@ -62,6 +63,7 @@ export default function MyPage() {
       </header>
 
       <AccountBox />
+      <MyReviews />
       <MyReservations />
 
       {empty && (

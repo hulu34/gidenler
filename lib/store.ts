@@ -24,7 +24,10 @@ import { DEMO_USER_ID } from "@/data/taste";
 const KEY_USER = "gidenler.v4";
 const KEY_DEMO = "gidenler.demo";
 const KEY_MODE = "gidenler.mode";
-const TODAY = "2026-09-02";
+/** Sunum (yatırımcı) anlık görüntüsünün sabit tarihi — YALNIZ demo ad alanı için. */
+const DEMO_DATE = "2026-09-02";
+/** Gerçek kullanıcı işlemlerinin tarihi: işlemin yapıldığı gün (yerel saat, YYYY-AA-GG). */
+const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
 
 function readMode(): "investor" | null {
   if (typeof window === "undefined") return null;
@@ -58,10 +61,10 @@ export interface RecommendationFeedback { entityId: string; reason: string; surf
 export interface RecentIntent { text: string; createdAt: string }
 
 const DEFAULT_LISTS: PersonalList[] = [
-  { id: "l.week", title: "Bu hafta", entityIds: [], createdAt: TODAY, isDefault: true },
-  { id: "l.date", title: "Date", entityIds: [], createdAt: TODAY, isDefault: true },
-  { id: "l.ist", title: "İstanbul listem", entityIds: [], createdAt: TODAY, isDefault: true },
-  { id: "l.friends", title: "Arkadaşlarla", entityIds: [], createdAt: TODAY, isDefault: true },
+  { id: "l.week", title: "Bu hafta", entityIds: [], createdAt: DEMO_DATE, isDefault: true },
+  { id: "l.date", title: "Date", entityIds: [], createdAt: DEMO_DATE, isDefault: true },
+  { id: "l.ist", title: "İstanbul listem", entityIds: [], createdAt: DEMO_DATE, isDefault: true },
+  { id: "l.friends", title: "Arkadaşlarla", entityIds: [], createdAt: DEMO_DATE, isDefault: true },
 ];
 
 const empty = (): UserData => ({
@@ -148,8 +151,8 @@ export function setEntityState(entityId: string, state: UserEntityState, via?: s
   const d = read();
   const prev = d.relationships[entityId];
   const rel: UserEntityRelationship = {
-    entityId, state, via: via ?? prev?.via, listIds: prev?.listIds ?? [], updatedAt: TODAY,
-    visitedAt: state === "visited" || state === "experienced" ? (prev?.visitedAt ?? TODAY) : prev?.visitedAt,
+    entityId, state, via: via ?? prev?.via, listIds: prev?.listIds ?? [], updatedAt: today(),
+    visitedAt: state === "visited" || state === "experienced" ? (prev?.visitedAt ?? today()) : prev?.visitedAt,
   };
   const relationships = { ...d.relationships };
   if (state === "none") delete relationships[entityId]; else relationships[entityId] = rel;
@@ -171,12 +174,24 @@ export function applyAccountStates(states: Record<string, UserEntityState>) {
   for (const [id, st] of Object.entries(states)) {
     const prev = relationships[id];
     if (st === "none") { delete relationships[id]; continue; }
-    /* "Deneyim yazdım" yerel bir ayrıntıdır; hesapta "Gittim" olarak durur — yerelde düşürülmez. */
-    if (prev?.state === st || (st === "visited" && prev?.state === "experienced")) continue;
-    relationships[id] = { entityId: id, state: st, via: prev?.via ?? "account", listIds: prev?.listIds ?? [], updatedAt: TODAY,
-      visitedAt: st === "visited" ? (prev?.visitedAt ?? TODAY) : prev?.visitedAt };
+    if (prev?.state === st) continue;
+    relationships[id] = { entityId: id, state: st, via: prev?.via ?? "account", listIds: prev?.listIds ?? [], updatedAt: today(),
+      visitedAt: st === "visited" ? (prev?.visitedAt ?? today()) : prev?.visitedAt };
   }
   write({ ...d, relationships });
+}
+
+/** Eski prototipte gerçek mekânlar için yerelde tutulan "Deneyim yazdım" işareti hiçbir yere yayımlanmamıştı:
+    "Gittim" (kişinin beyanı) olarak kalır; yayımlanmış ya da doğrulanmış deneyim SAYILMAZ. Hesaba gönderilmez. */
+export function normalizeLegacyExperienced(isAccountEntity: (id: string) => boolean) {
+  if (activeKey() !== KEY_USER) return 0;
+  const d = read();
+  const fix = Object.entries(d.relationships).filter(([id, r]) => isAccountEntity(id) && r.state === "experienced");
+  if (!fix.length) return 0;
+  const relationships = { ...d.relationships };
+  for (const [id, r] of fix) relationships[id] = { ...r, state: "visited" };
+  write({ ...d, relationships });
+  return fix.length;
 }
 
 /** Çıkışta: hesaba bağlı (gerçek mekân) durumlar bu cihazdan silinir — ortak cihazda başkası görmesin. */
@@ -187,14 +202,14 @@ export function clearAccountStates(isAccountEntity: (id: string) => boolean) {
 
 export function markVisited(entityId: string) {
   const d = read();
-  const visit: VisitSignal = { id: `v.${uid()}`, entityId, userId: DEMO_USER_ID, visitedAt: TODAY, source: "self_report" };
+  const visit: VisitSignal = { id: `v.${uid()}`, entityId, userId: DEMO_USER_ID, visitedAt: today(), source: "self_report" };
   write({ ...d, visits: [...d.visits, visit] });
   setEntityState(entityId, "visited", "visit");
 }
 
 export function submitQuickReaction(entityId: string, mood: ReactionMood, returnIntent: ReturnIntent, note?: string) {
   const d = read();
-  const r: QuickReaction = { id: `r.${uid()}`, entityId, userId: DEMO_USER_ID, mood, returnIntent, note: note?.trim() || undefined, createdAt: TODAY };
+  const r: QuickReaction = { id: `r.${uid()}`, entityId, userId: DEMO_USER_ID, mood, returnIntent, note: note?.trim() || undefined, createdAt: today() };
   write({ ...d, reactions: [...d.reactions.filter((x) => x.entityId !== entityId), r] });
 }
 
@@ -219,7 +234,7 @@ export function toggleInList(listId: string, entityId: string) {
 
 export function createList(title: string, entityId?: string): PersonalList {
   const d = read();
-  const l: PersonalList = { id: `l.${uid()}`, title: title.trim(), entityIds: entityId ? [entityId] : [], createdAt: TODAY };
+  const l: PersonalList = { id: `l.${uid()}`, title: title.trim(), entityIds: entityId ? [entityId] : [], createdAt: today() };
   write({ ...d, lists: [...d.lists, l] });
   return l;
 }
@@ -228,16 +243,16 @@ export function createList(title: string, entityId?: string): PersonalList {
 
 export function updateTasteDimension(key: string, weight: number) {
   const d = read();
-  write({ ...d, taste: { ...d.taste, dimensions: { ...d.taste.dimensions, [key]: Math.max(0, Math.min(100, Math.round(weight))) }, updatedAt: TODAY } });
+  write({ ...d, taste: { ...d.taste, dimensions: { ...d.taste.dimensions, [key]: Math.max(0, Math.min(100, Math.round(weight))) }, updatedAt: today() } });
 }
 export function updateTasteCuisine(key: string, level: TasteLevel) {
   const d = read();
-  write({ ...d, taste: { ...d.taste, cuisines: { ...d.taste.cuisines, [key]: level }, updatedAt: TODAY } });
+  write({ ...d, taste: { ...d.taste, cuisines: { ...d.taste.cuisines, [key]: level }, updatedAt: today() } });
 }
 export function toggleDislike(tag: string) {
   const d = read();
   const dislikes = d.taste.dislikes.includes(tag) ? d.taste.dislikes.filter((x) => x !== tag) : [...d.taste.dislikes, tag];
-  write({ ...d, taste: { ...d.taste, dislikes, updatedAt: TODAY } });
+  write({ ...d, taste: { ...d.taste, dislikes, updatedAt: today() } });
 }
 export function resetTaste() {
   const d = read();
@@ -274,7 +289,7 @@ export function resetDemo() {
 
 export function submitFeedback(entityId: string, reason: string, surface: string) {
   const d = read();
-  write({ ...d, feedback: [...d.feedback.filter((f) => f.entityId !== entityId), { entityId, reason, surface, createdAt: TODAY }] });
+  write({ ...d, feedback: [...d.feedback.filter((f) => f.entityId !== entityId), { entityId, reason, surface, createdAt: today() }] });
 }
 export function clearFeedback(entityId: string) {
   const d = read();
@@ -285,7 +300,7 @@ export function recordIntent(text: string) {
   if (!t) return;
   const d = read();
   if (d.recentIntents[0]?.text === t) return;
-  write({ ...d, recentIntents: [{ text: t, createdAt: TODAY }, ...d.recentIntents.filter((i) => i.text !== t)].slice(0, 5) });
+  write({ ...d, recentIntents: [{ text: t, createdAt: today() }, ...d.recentIntents.filter((i) => i.text !== t)].slice(0, 5) });
 }
 
 /* ─────────────────────────── V5 · sunum (yatırımcı) modu ───────────────── */
@@ -297,7 +312,7 @@ export function recordIntent(text: string) {
 export function investorSnapshot(): UserData {
   const base = empty();
   const rel = (entityId: string, state: UserEntityState, via: string, listIds: string[] = [], visitedAt?: string): UserEntityRelationship =>
-    ({ entityId, state, via, listIds, updatedAt: TODAY, visitedAt });
+    ({ entityId, state, via, listIds, updatedAt: DEMO_DATE, visitedAt });
   const lists = base.lists.map((l) =>
     l.id === "l.week" ? { ...l, entityIds: ["ent.moda-lokantasi"] } :
     l.id === "l.friends" ? { ...l, entityIds: ["ent.koz-durum"] } :
@@ -321,7 +336,7 @@ export function investorSnapshot(): UserData {
       { id: "r.demo2", entityId: "ent.ates-steak", userId: DEMO_USER_ID, mood: "iyi", returnIntent: "emin değil", note: "Et iyi, servis yavaştı.", createdAt: "2026-08-31" },
     ],
     follows: ["u.denizyer"],
-    recentIntents: [{ text: "Bu akşam Kadıköy'de sakin, iyi yemekli bir yer arıyorum.", createdAt: TODAY }],
+    recentIntents: [{ text: "Bu akşam Kadıköy'de sakin, iyi yemekli bir yer arıyorum.", createdAt: DEMO_DATE }],
     demoMode: "investor",
   };
 }

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { clearAccountStates } from "@/lib/store";
-import { isAccountEntity, writePending } from "@/lib/community/sync";
+import { signInWithGoogle } from "@/lib/community/signin";
+import { isAccountEntity, readPending, replayPending, signOutFlow, writePending } from "@/lib/community/sync";
 
 /* HESAP KUTUSU — Google ile giriş (Better Auth). Sunucuda kimlik yapılandırılmamışsa (503) ya da
    statik sitede (404) hiç görünmez; site bugünkü gibi hesapsız çalışır. Girişte Kaydet / Gitmek istiyorum /
@@ -31,22 +32,21 @@ export function AccountBox() {
 
   async function signIn() {
     setBusy(true); setErr(null);
-    try {
-      const r = await fetch(`${BASE}/api/auth/sign-in/social/`, {
-        method: "POST", headers: { "content-type": "application/json" }, credentials: "same-origin",
-        body: JSON.stringify({ provider: "google", callbackURL: `${location.origin}${BASE}/benim/` }),
-      });
-      const j = await r.json().catch(() => null) as { url?: string } | null;
-      if (j?.url) location.href = j.url; else { setErr("Giriş başlatılamadı."); setBusy(false); }
-    } catch { setErr("Giriş başlatılamadı."); setBusy(false); }
+    if (!(await signInWithGoogle("/benim/"))) { setErr("Giriş başlatılamadı."); setBusy(false); }
   }
   async function signOut() {
-    setBusy(true);
-    await fetch(`${BASE}/api/auth/sign-out/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: "{}" }).catch(() => null);
-    clearAccountStates(isAccountEntity); writePending({});
-    location.reload();
+    setBusy(true); setErr(null);
+    const post = (body: unknown) => fetch(`${BASE}/api/me/places/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    const r = await signOutFlow({
+      flush: () => replayPending(post, readPending()).then((left) => { writePending(left); return left; }),
+      confirmLoss: (n) => window.confirm(`${n} değişiklik henüz hesabına gönderilemedi (bağlantı sorunu). Çıkış yaparsan bu cihazdan silinir. Yine de çıkılsın mı?`),
+      signOut: () => fetch(`${BASE}/api/auth/sign-out/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: "{}" }).then((x) => x.ok).catch(() => false),
+      clearLocal: () => { clearAccountStates(isAccountEntity); writePending({}); },
+    });
+    if (r === "signed_out") { location.reload(); return; }
+    setBusy(false);
+    if (r === "failed") setErr("Çıkış yapılamadı (bağlantı sorunu). Hâlâ girişlisin; verilerin bu cihazda duruyor, yeniden dene.");
   }
-
   if (s.state === "loading" || s.state === "off") return null;
   return (
     <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border border-line-2 px-4 py-3">

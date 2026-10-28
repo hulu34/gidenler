@@ -15,6 +15,9 @@ import { googleMatchStats, matchGoogleBatch, pendingGoogleMatches, reviewGoogleM
 import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { moderateReview, reviewsTag } from "@/lib/community/reviews";
+import { and, desc, eq, inArray } from "drizzle-orm";
+import { moderationQueue, reviews } from "@/lib/db/schema";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -64,6 +67,17 @@ export async function GET(req: Request) {
     try { return NextResponse.json({ env: envName(), slugs: await googleUsableSlugs() }, { headers: H }); } catch (e) { return fail(e); }
   }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
+  /* ?rapor=yorumlar → açık şikâyet / spam kayıtları ve ilgili deneyimin durumu (metin dahil; yalnız yönetim) */
+  if (new URL(req.url).searchParams.get("rapor") === "yorumlar") {
+    const db = getDb();
+    if (!db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
+    try {
+      const open = await db.select({ q: moderationQueue, status: reviews.status, body: reviews.body }).from(moderationQueue)
+        .leftJoin(reviews, eq(reviews.id, moderationQueue.refId))
+        .where(and(eq(moderationQueue.status, "open"), inArray(moderationQueue.kind, ["review_report", "review_spam"]))).orderBy(desc(moderationQueue.createdAt)).limit(200);
+      return NextResponse.json({ env: envName(), open }, { headers: H });
+    } catch (e) { return fail(e); }
+  }
   if (new URL(req.url).searchParams.get("rapor") === "redis") {
     try { return NextResponse.json({ env: envName(), ...(await redisAudit()) }, { headers: H }); } catch (e) { return fail(e); }
   }
@@ -144,6 +158,14 @@ export async function POST(req: Request) {
         if (body.confirm !== "EVET" || !body.slug || !body.url) break;
         const r = await addPlaceVideo({ slug: body.slug, url: body.url, credit: body.credit, category: body.category, verifiedElsewhere: body.verifiedElsewhere === true });
         return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "review-hide":
+      case "review-restore": {
+        /* Moderasyon: deneyimi gizle / geri yayınla (silmez). */
+        if (body.confirm !== "EVET" || typeof body.id !== "string") break;
+        const slug = await moderateReview(db, "admin", body.id, body.action === "review-hide" ? "hide" : "restore");
+        if (slug) fresh(reviewsTag(slug));
+        return NextResponse.json({ action: body.action, env: envName(), ok: !!slug }, { headers: H });
       }
       case "media-remove": {
         fresh(TAG_MEDIA);

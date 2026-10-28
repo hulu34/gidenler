@@ -11,6 +11,7 @@ export interface ExperienceDraft {
   body: string;
   month: string;                       // YYYY-MM (ziyaret ayı)
   ratings: Record<string, number>;
+  overall?: number | null;
   returnIntent: ReturnIntent | null;
   relationship: CommercialRelationship;
   savedAt: string;                     // ISO

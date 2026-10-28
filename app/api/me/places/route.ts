@@ -17,7 +17,7 @@ const H = { "cache-control": "no-store" };
 const slug = z.string().min(1).max(120).regex(/^[a-z0-9-]+$/);
 const state = z.enum(PLACE_STATES);
 const Body = z.union([
-  z.object({ slug, state }).strict(),
+  z.object({ slug, state, at: z.string().datetime().optional() }).strict(),
   z.object({ import: z.array(z.object({ slug, state }).strict()).max(500) }).strict(),
 ]);
 
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     const added = await importPlaceStates(w.db, w.user.id, p.data.import);
     return NextResponse.json({ added, states: await listPlaceStates(w.db, w.user.id) }, { headers: H });
   }
-  const r = await setPlaceState(w.db, w.user.id, p.data.slug, p.data.state);
+  const r = await setPlaceState(w.db, w.user.id, p.data.slug, p.data.state, p.data.at ? new Date(p.data.at) : undefined);
   if (!r.ok) return NextResponse.json({ error: r.error }, { status: 404, headers: H });
   return NextResponse.json(r, { headers: H });
 }

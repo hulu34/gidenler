@@ -19,7 +19,8 @@ import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
-import { googleUsable, videoCounts } from "@/lib/live";
+import { googleUsable, placeReviews, videoCounts } from "@/lib/live";
+import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { parseVideoUrl } from "@/lib/media/embed";
@@ -148,7 +149,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   /* Kapak fotoğrafı ilk ekrandaki en büyük öğe: HTML ayrıştırılırken hemen, mozaikle aynı boyut kuralıyla iner */
-  const [usable, videos] = entity.isReal ? await Promise.all([googleUsable(), videoCounts()]) : [[], {} as Record<string, number>];
+  const [usable, videos, realReviews] = entity.isReal ? await Promise.all([googleUsable(), videoCounts(), placeReviews(entity.slug)]) : [[], {} as Record<string, number>, []];
   const google = !!entity.isReal && usable.includes(entity.slug);
   const cover = entity.photos?.[0];
   if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
@@ -214,7 +215,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             )}
           </div>
         ) : entity.isReal && c.showScores ? (
-          <RealVenueNotice entity={entity} />
+          <RealVenueNotice entity={entity} reviewCount={realReviews.length} />
         ) : (
           <ComplianceNotice policy={c} noun={category.noun} />
         )}
@@ -251,11 +252,13 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ═══════════ 1 · DENEYİMLER — insanlar ne diyor? Kahraman burası. ═══════════ */}
       <section id="deneyimler" className="scroll-mt-28 pt-8 sm:scroll-mt-32" aria-labelledby="h-deneyimler">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
-          <h2 id="h-deneyimler" className="text-[13px] font-bold uppercase tracking-[0.2em]">İnsanlar ne diyor?</h2>
-          <p className="max-w-[48ch] text-[12px] text-ink-3">{scored ? `${nf(I.experienceCount)} deneyim · ${Math.round(I.verifiedRatio * 100)}% doğrulanmış ziyaret` : entity.isReal ? "Gerçek mekân · deneyimler gelince burada" : "Bu kategoride puan üretilmez; deneyimler nötr anlatıdır."}</p>
+          <h2 id="h-deneyimler" className="text-[13px] font-bold uppercase tracking-[0.2em]">{entity.isReal ? "Gidenler deneyimleri" : "İnsanlar ne diyor?"}</h2>
+          <p className="max-w-[48ch] text-[12px] text-ink-3">{entity.isReal ? `${realReviews.length ? `${nf(realReviews.length)} deneyim · ` : ""}Gidenler üyelerinin kendi deneyimleri; Google yorumları ayrı bölümde ve Gidenler puanına girmez.` : scored ? `${nf(I.experienceCount)} deneyim · ${Math.round(I.verifiedRatio * 100)}% doğrulanmış ziyaret` : "Bu kategoride puan üretilmez; deneyimler nötr anlatıdır."}</p>
         </div>
         <div className="mt-4">
-          {experiences.length > 0 ? (
+          {entity.isReal ? (
+            <GidenlerExperiences slug={entity.slug} name={entity.name} reviews={realReviews} dimensions={schema.dimensions} showScores={c.showScores} />
+          ) : experiences.length > 0 ? (
             <ExperienceFeed experiences={experiences} expertIds={expertIds} schema={schema} showScores={c.showScores} entitySlug={entity.slug} total={I.experienceCount} />
           ) : (
             <p className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line py-4 text-[13.5px] text-ink-2">

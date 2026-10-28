@@ -3,6 +3,7 @@ import { and, eq, inArray, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { mediaItems, mediaPlaces, places } from "@/lib/db/schema";
 import { googleUsableSlugs } from "@/lib/providers/google";
+import { listPlaceReviews, reviewsTag, type PublicReview } from "@/lib/community/reviews";
 
 /* ──────────────────────────────────────────────────────────────────────────
    CANLI VERİ (sunucu) — yeniden derleme gerektirmeyen, veritabanından okunan sayfa bilgisi.
@@ -30,3 +31,13 @@ export const videoCounts = unstable_cache(async (): Promise<Record<string, numbe
     return Object.fromEntries(rows.map((r) => [r.slug, Number(r.n)]));
   } catch { return {}; }
 }, ["video-counts-v1"], { revalidate: 3600, tags: [TAG_MEDIA] });
+
+/** Mekânın yayındaki Gidenler deneyimleri. Yayın/düzenleme/silme/moderasyon etiketi hemen geçersiz kılar.
+    Veritabanı yoksa ya da hata verirse boş liste (sayfa bozulmaz). */
+export function placeReviews(slug: string): Promise<PublicReview[]> {
+  return unstable_cache(async () => {
+    const db = getDb();
+    if (!db) return [];
+    try { return await listPlaceReviews(db, slug); } catch { return []; }
+  }, ["place-reviews-v1", slug], { revalidate: 3600, tags: [reviewsTag(slug)] })();
+}
