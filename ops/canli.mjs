@@ -21,9 +21,9 @@ let fail = 0;
 for (const [slug, urls] of Object.entries(list)) {
   if (slug.startsWith("_")) continue;
   for (const item of urls) {
-    const { url, credit } = typeof item === "string" ? { url: item, credit: undefined } : item;
+    const { url, credit, verifiedElsewhere } = typeof item === "string" ? { url: item, credit: undefined, verifiedElsewhere: undefined } : item;
     const id = url.match(/shorts\/([\w-]{11})/)?.[1];
-    const r = await post({ action: "media-add", slug, url, credit: credit ?? (id ? CREDIT[id] : undefined) });
+    const r = await post({ action: "media-add", slug, url, credit: credit ?? (id ? CREDIT[id] : undefined), verifiedElsewhere });
     if (!r.j.ok) fail++;
     const v = (r.j.videos ?? []).find((x) => x.externalId === r.j.externalId);
     console.log(slug, r.j.ok ? `${r.j.platform} ${r.j.created ? "eklendi" : "vardı"} · atıf: ${v?.credit ?? "-"}` : `HATA ${r.j.error ?? r.s}`);

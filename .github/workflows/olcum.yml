@@ -14,10 +14,10 @@ concurrency:
   group: olcum
   cancel-in-progress: false
 env:
-  OLD_HOST: gidenler-3euvpz7id-hulu34.vercel.app
+  OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
-  TEST_HOST: gidenler-o37x2czwn-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
-  PREVIEW_HOST: gidenler-fq8lvqqpm-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
+  TEST_HOST: gidenler-ojapk4y0w-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
+  PREVIEW_HOST: gidenler-ojapk4y0w-hulu34.vercel.app  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
@@ -165,3 +165,19 @@ jobs:
         with: { node-version: 22 }
       - run: node ops/canli.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+  oynatma:
+    if: contains(github.event.head_commit.message, '[oynatma]')
+    runs-on: macos-14
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install webkit
+      - run: node ops/oynatma.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: test -d out/oynatma && tar -C out -czf out/oynatma.tgz oynatma && rm -rf out/oynatma && openssl cms -encrypt -aes256 -binary -in out/oynatma.tgz -out out/oynatma.tgz.cms -outform DER ops/olcum.pem && rm out/oynatma.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: oynatma-sifreli, path: out/oynatma.tgz.cms, retention-days: 1, if-no-files-found: ignore }
