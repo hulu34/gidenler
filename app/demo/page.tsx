@@ -2,6 +2,7 @@ import Link from "next/link";
 import { DemoControls } from "@/app/demo/DemoControls";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { notFound } from "next/navigation";
+import { DemoMovers } from "@/components/demo/DemoMovers";
 
 export const metadata = { title: "Yatırımcı demosu" };
 
@@ -21,10 +22,11 @@ export default function DemoPage() {
         </nav>
         <h1 className="max-w-[16ch] text-[clamp(2rem,6.5vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">Sunum modu.</h1>
         <p className="max-w-[60ch] text-[15px] leading-relaxed text-ink-2">
-          Boş bir hesap ürünü anlatmaz. Bu mod, karar → ziyaret → deneyim döngüsünün her aşamasında bir örnek bulunan yaşanmış bir hesap kurar. Sinyaller sahtedir, sözleşmeler gerçektir.
+          Yatırımcı demosu — simüle edilmiş veriler. Bu mod, karar → ziyaret → deneyim döngüsünün her aşamasında bir örnek bulunan yaşanmış bir hesap kurar. Mekânlar, puanlar, deneyimler ve kişiler simülasyondur; puanlama kuralları ve ürün akışı gerçektir.
         </p>
       </header>
       <div className="mt-8 border-t-2 border-line-strong pt-7"><DemoControls /></div>
+      <DemoMovers />
     </div>
   );
 }

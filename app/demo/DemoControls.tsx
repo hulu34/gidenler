@@ -5,14 +5,16 @@ import { useState } from "react";
 import { enterInvestorDemo, exitInvestorDemo, resetDemo, useUserData } from "@/lib/store";
 
 const FLOW: { step: string; href: string; title: string; note: string }[] = [
-  { step: "01", href: "/", title: "Ana sayfa", note: "Devam et + Sana göre. Moda için 'gitmek istiyorum' hâlâ açık." },
-  { step: "02", href: "/sor/", title: "Sor Gidenler", note: "Hazır soru: Sakura %94, Moda, Köz — üç farklı neden. 'Daha ucuz' ve 'Date için' sırayı gerçekten değiştirir." },
-  { step: "03", href: "/mekan/sakura-omakase/", title: "Sakura Omakase · 9,4", note: "Olağanüstü · yükseliyor · %96 uyum. Date %99, Aile %63. 'Neden %96?' açıklar. Sonra: Gitmek istiyorum." },
-  { step: "04", href: "/benim/", title: "Benim Gidenler'im", note: "Devam et: Moda ve Sakura. Gittim → hızlı tepki → deneyim. Döngü burada kapanır." },
-  { step: "05", href: "/@denizyer/", title: "@denizyer", note: "Neyi biliyor, seninle %87 zevk uyumu. Takipçi sayısı güvenin ölçüsü değil." },
-  { step: "06", href: "/birlikte/?g=abc123", title: "Birlikte Nereye?", note: "Dört kişi, tek sonuç; kısıtlar açık." },
-  { step: "07", href: "/isletme/moda-lokantasi/", title: "İşletme paneli", note: "Aynı veri işletmeye 'neden değişti?' sorusunu cevaplar." },
-  { step: "08", href: "/mekan/asma-teras/", title: "Asma Teras · 5,4", note: "Zayıf · geriliyor · düşük uyum. 'Ne oldu?' açık: şef değişimi, fiyat artışı." },
+  { step: "01", href: "/", title: "Ana sayfa", note: "Gidenler puanı neyi ölçer: yalnız gerçek deneyimler. Yükselenler ve 'Sana göre' burada." },
+  { step: "02", href: "/demo/#hareket", title: "Üç restoran, üç yön", note: "Yükselen, sabit, düşen — puan, son 90 gün, aylık grafik ve son deneyim tek bakışta." },
+  { step: "03", href: "/mekan/moda-lokantasi/", title: "Moda Lokantası · yükselen", note: "Aylık grafik, puan boyutları, deneyimler; baharda inen puanın yazla nasıl toparlandığı." },
+  { step: "04", href: "/mekan/koz-durum/", title: "Köz Dürüm · sabit", note: "Yüzlerce deneyimle aylardır aynı bantta kalan puan." },
+  { step: "05", href: "/mekan/asma-teras/", title: "Asma Teras · düşen", note: "'Ne oldu?' açık: şef değişimi ve fiyat artışı; deneyimler aynı şeyi söylüyor." },
+  { step: "06", href: "/karsilastir/?a=moda-lokantasi&b=asma-teras", title: "Karşılaştır", note: "Yükselen ve düşen yan yana: hangi boyutta ayrışıyorlar?" },
+  { step: "07", href: "/gidenler-100/", title: "Gidenler 100", note: "Yıllık sıralamanın önizlemesi; satın alınamaz, ticari ilişkiden bağımsız." },
+  { step: "08", href: "/liste/kadikoy-fiyat-performans/", title: "Koleksiyon", note: "Kullanıcı listeleri: Moda ve Köz aynı koleksiyonda." },
+  { step: "09", href: "/benim/", title: "Benim Gidenler'im", note: "Gitmek istiyorum → Gittim → deneyim. Döngü burada kapanır." },
+  { step: "10", href: "/isletme/moda-lokantasi/", title: "İşletme paneli", note: "Aynı veri işletmeye 'neden değişti?' sorusunu cevaplar." },
 ];
 
 export function DemoControls() {

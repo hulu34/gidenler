@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         {DEMO_VISIBLE && (
           <div role="note" className="sticky top-0 z-[60] bg-ink px-4 py-1.5 text-center text-[11.5px] font-bold uppercase tracking-[0.14em] text-paper">
-            Yatırımcı demosu · puanlar, deneyimler ve kişiler sentetiktir · gerçek bir işletmeye ait değildir
+            Yatırımcı demosu — simüle edilmiş veriler · demo mekânlar, puanlar, deneyimler ve kişiler gerçek değildir
           </div>
         )}
         <DemoBoot />
