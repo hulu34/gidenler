@@ -63,6 +63,8 @@ for (const slug of SLUGS) {
     const miss = items.filter((it, i) => { const r = rows[i] ?? ""; return !r.startsWith(it.name) || (it.priceTry !== undefined && !r.includes(tl(it.priceTry))) || (it.description && !r.includes(it.description)) || (it.priceTry === undefined && /\d ₺$/.test(r) && !(it.description ?? "").endsWith("₺")); });
     ok(`${dev}: menü ${items.length} kalem, ad/fiyat/açıklama dosyayla aynı`, rows.length === items.length && miss.length === 0, `${rows.length} satır${miss.length ? " · farklı: " + miss.slice(0, 3).map((m) => m.name).join(", ") : ""}`);
     ok(`${dev}: menü kaynağı ve tarihleri`, t.includes(`son kontrol ${trDate(pf.menu.checkedAt)}`) && (!pf.menu.validFrom || t.includes(`${trDate(pf.menu.validFrom)} tarihinden itibaren geçerli`)) && t.includes("fiyatlar kaynaktaki gibi"));
+    /* Google fotoğrafları istemcide yüklenir: ilk ziyarette önbellek soğuk olabilir, sayımdan önce bekle */
+    if (CANLI) { await p.locator("#fotograflar").scrollIntoViewIfNeeded().catch(() => {}); await p.locator("#fotograflar img").first().waitFor({ timeout: 12000 }).catch(() => {}); }
     const imgs = await p.locator("#fotograflar img").count();
     ok(`${dev}: fotoğraf alanı${CANLI ? " (Google fotoğrafları)" : ""}`, CANLI ? imgs > 0 : true, `${imgs} görsel`);
     ok(`${dev}: Kaydet ve Gitmek istiyorum düğmeleri`, (await p.getByRole("button", { name: /Kaydet/ }).count()) > 0 && (await p.getByRole("button", { name: /Gitmek istiyorum/ }).count()) > 0);
