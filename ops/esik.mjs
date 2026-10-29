@@ -57,7 +57,7 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
     if (dev !== "masaustu" && visible) { await card.locator("button[aria-expanded]").click(); await p.waitForTimeout(500); }
     const t = (await card.innerText().catch(() => "")).replace(/\s+/g, " ");
     /* restoran başlığındaki puan satırı (kart dışında): "Gidenler puanı 8,9 · gerçekten gidenlerin deneyimlerinden" */
-    const head = (await p.locator("main").first().innerText().catch(() => "")).replace(/\s+/g, " ").match(/Gidenler puanı [0-9],[0-9] · gerçekten gidenlerin[^.]*/)?.[0] ?? "";
+    const head = (await p.locator("main").first().innerText().catch(() => "")).replace(/\s+/g, " ").match(/Gidenler puanı [0-9],[0-9][^·]{0,40}· puana giren [0-9]+ deneyimden/)?.[0] ?? "";
     ok(`${dev} ${slug}: kart görünüyor (Deneme eşiğin, soru, 0,1 adımlı seçici, 'aşınca haber ver')`, visible && t.includes("Kaç puanın üstüne çıkarsa denemek istersin?") && t.includes("aşınca haber ver") && (await card.locator("button[aria-label='Eşiği 0,1 artır']").count()) === 1, t.slice(0, 120));
     if (slug === SLUG && !CANLI) ok(`${dev}: sayfa ve kart aynı yayımlanmış puanı gösteriyor (8,9)`, t.includes("Gidenler puanı 8,9") && head.includes("Gidenler puanı 8,9"), head.slice(0, 120));
     else ok(`${dev} ${slug}: puan yokken 'henüz yok' ve 'Yeterli deneyim oluşması bekleniyor'`, t.includes("Yeterli deneyim oluşması bekleniyor"), t.slice(0, 160));
