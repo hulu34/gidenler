@@ -18,7 +18,7 @@ const res = []; const ok = (n, c, i = "") => { res.push(c); console.log(`${c ? "
 const shot = async (pg, name, sel) => { try { if (sel) await pg.locator(sel).first().screenshot({ path: `${OUT}/${name}.png` }); else await pg.screenshot({ path: `${OUT}/${name}.png` }); } catch { /* yoksay */ } };
 const rapor = async (slug) => (await fetch(`${admin}?rapor=profil&slug=${slug}`, { headers: H })).json().catch(() => ({}));
 const trDate = (d) => d.split("-").reverse().join(".");
-const tl = (n) => `${n.toLocaleString("tr-TR")} ₺`;
+const tl = (n) => `${n.toLocaleString("tr-TR", { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 })} ₺`; /* sayfadaki biçimle aynı (147,90 ₺) */
 const ytId = (u) => u.match(/(?:v=|shorts\/|youtu\.be\/)([\w-]{11})/)?.[1];
 
 if (!CANLI) {
