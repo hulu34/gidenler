@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { getScoreSemantic } from "@/lib/semantic";
-import { PUBLIC_FACTORS, NEVER_AFFECTS, ALGORITHM_VERSION } from "@/lib/score/weights";
+import { PUBLIC_FACTORS, NEVER_AFFECTS } from "@/lib/score/weights";
+import { SCORE_ALGORITHM as ALGORITHM_VERSION } from "@/lib/score/compute";
 import { PUBLIC_VERIFICATION_TEXT } from "@/lib/visits/verify";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 

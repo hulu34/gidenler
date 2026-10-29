@@ -28,6 +28,8 @@ import { importPlaceStates, listPlaceStates, setPlaceState } from "../lib/commun
 import { deleteWatch, getWatch, listNotifications, listWatches, markNotificationsRead, parseThreshold, setWatch, setWatchActive } from "../lib/community/scoreWatch";
 import { publishedScoreBySlug, recordScore } from "../lib/score/published";
 import { runThresholdScenario } from "../lib/community/scoreWatchScenario";
+import { computeFromRows, recomputePlace, reconcileScores, scoreInputs, MIN_AUTHORS, SCORE_ALGORITHM } from "../lib/score/compute";
+import { runScoreScenario } from "../lib/score/scenario";
 import { planImport, serverToLocal, isAccountEntity, replayPending, pushChange, signOutFlow, type PendingChange } from "../lib/community/sync";
 import { createReview, updateReview, deleteReview, reportReview, moderateReview, listPlaceReviews, listUserReviews, validateReview, publicName, type ReviewInput } from "../lib/community/reviews";
 import { INDEPENDENCE } from "../lib/score/weights";
@@ -301,6 +303,65 @@ async function main() {
     /* temizlik: sonraki testler puan/bildirim beklemiyor */
     await db.delete(schema.notifications); await db.delete(schema.scoreWatches); await db.delete(schema.ratingHistory);
     await db.delete(schema.user).where(inArray(schema.user.id, ["test-esik-a", "test-esik-b"]));
+  }
+  {
+    console.log("\n3d) Gerçek Gidenler puanı üretimi (v1-2026-11)");
+    const now = new Date("2026-10-29T12:00:00Z");
+    const row = (u: string, overall: number, visitedOn = "2026-09-01", disclosure = "none", verified = false) => ({ userId: u, overall, visitedOn, disclosure, verified });
+    const four = computeFromRows(["a", "b", "c", "d"].map((u) => row(u, 9)), now);
+    const five = computeFromRows(["a", "b", "c", "d", "e"].map((u, i) => row(u, [8, 9, 9, 8, 9][i])), now);
+    ok(`yayımlanabilirlik: ${MIN_AUTHORS - 1} yazar → puan yok, ${MIN_AUTHORS} yazar → puan (tek ondalık)`, four.score === null && four.confidence === "yetersiz" && five.score === 8.6 && five.confidence === "sinirli", { four: four.score, five: five.score });
+    const inv = computeFromRows([...["a", "b", "c", "d"].map((u) => row(u, 9)), row("e", 1, "2026-09-01", "invited")], now);
+    const ind = computeFromRows([...["a", "b", "c", "d"].map((u) => row(u, 9)), row("e", 1)], now);
+    ok("bağımsızlık: davetli yazarın deneyimi daha az etkili (yayımlanmış ağırlık)", inv.score! > ind.score!, { inv: inv.score, ind: ind.score });
+    const old = computeFromRows([...["a", "b", "c", "d"].map((u) => row(u, 9)), row("e", 1, "2023-01-01")], now);
+    ok("tazelik: eski ziyaret daha az etkili", old.score! > ind.score!);
+    const ten = computeFromRows(Array.from({ length: 10 }, (_, i) => row(`u${i}`, 8)), now);
+    const oldTen = computeFromRows(Array.from({ length: 10 }, (_, i) => row(`u${i}`, 8, "2024-01-01")), now);
+    const many = computeFromRows(Array.from({ length: 30 }, (_, i) => row(`u${i}`, 8, "2026-09-01", "none", i < 20)), now);
+    ok("güven: 10+ yakın tarihli → Orta; çoğu eski → Sınırlı; 30+ ve çoğu doğrulanmış → Yüksek", ten.confidence === "orta" && oldTen.confidence === "sinirli" && many.confidence === "yuksek" && many.verifiedCount === 20);
+    /* veritabanı: izin listesi */
+    const PX = realVenueRecords.filter((r) => r.categoryId === "cat.restaurant").slice(10, 11)[0].slug;
+    const [px] = await db.select({ id: schema.places.id }).from(schema.places).where(eq(schema.places.slug, PX));
+    const U = ["s1", "s2", "s3", "s4", "s5", "s6", "st", "sb", "sp", "sh", "sn"];
+    await db.insert(schema.user).values(U.map((u) => ({ id: u, name: u, email: `${u}@example.test`, kind: u === "st" ? "test" : u === "sb" ? "business" : "user" })));
+    const rv = (u: string, overall: number, extra: Partial<typeof schema.reviews.$inferInsert> = {}) => ({ id: uuidv7(), placeId: px.id, userId: u, visitedOn: "2026-09-01", overall, ratings: {}, body: "x".repeat(50), ...extra });
+    await db.insert(schema.reviews).values([rv("s1", 9), rv("s2", 9), rv("s3", 8), rv("s4", 9),
+      rv("st", 1), rv("sb", 1), rv("sp", 1, { status: "pending" }), rv("sh", 1, { status: "hidden" }), rv("sn", 1, { trust: "not_recommended", disclosure: "owner_related" })]);
+    const inputs = await scoreInputs(db, px.id);
+    ok("izin listesi: yalnız yayında + recommended; test hesabı, işletme hesabı, incelemede, gizli, işletme bağlantılı girmez", inputs.length === 4 && inputs.every((i) => ["s1", "s2", "s3", "s4"].includes(i.userId)), inputs.map((i) => i.userId));
+    const d0 = await recomputePlace(db, px.id, { write: true, now });
+    ok("4 geçerli yazar: puan yok, 'yetersiz' satırı yazılır (ilk kez deneyim var)", d0.action === "written" && d0.result.score === null && (await publishedScoreBySlug(db, PX))?.score === null);
+    ok("aynı sonuç: yeni satır yazılmaz", (await recomputePlace(db, px.id, { write: true, now })).action === "unchanged");
+    await setWatch(db, "s6", PX, 85);
+    const [r5] = await db.insert(schema.reviews).values(rv("s5", 9)).returning({ id: schema.reviews.id });
+    const dry = await recomputePlace(db, px.id, { write: false, now });
+    ok("anahtar kapalı (kuru çalışma): hesaplar ama yazmaz", dry.action === "dry_run" && dry.result.score === 8.8 && (await publishedScoreBySlug(db, PX))?.score === null);
+    delete process.env.SCORE_PUBLISH;
+    ok("SCORE_PUBLISH yokken varsayılan kuru çalışma", (await recomputePlace(db, px.id, { now })).action === "dry_run");
+    const w5 = await recomputePlace(db, px.id, { write: true, now });
+    const nt = (await listNotifications(db, "s6")).items;
+    ok("5. farklı yazar: ilk Gidenler puanı yayımlanır (8,8) ve 8,5 eşiğine 'ilk puan' bildirimi aynı işlemde gelir",
+      w5.action === "written" && (await publishedScoreBySlug(db, PX))?.score === 8.8 && (await publishedScoreBySlug(db, PX))?.algorithmVersion === SCORE_ALGORITHM && nt.length === 1 && nt[0].first && nt[0].score === 8.8, nt);
+    await moderateReview(db, "admin", r5.id, "hide");
+    const hid = await recomputePlace(db, px.id, { write: true, now });
+    ok("moderasyonla gizlenen deneyim: yazar sayısı 4'e iner, puan geri çekilir (null satır), bildirim çoğalmaz", hid.action === "written" && (await publishedScoreBySlug(db, PX))?.score === null && (await listNotifications(db, "s6")).items.length === 1);
+    await moderateReview(db, "admin", r5.id, "restore");
+    const rc1 = await reconcileScores(db, { write: true, now }), rc2 = await reconcileScores(db, { write: true, now });
+    ok("uzlaştırma: geri yayınlanınca puan döner; ikinci çalıştırma hiçbir şey yazmaz (idempotent); takip ateşlendiği için yeni bildirim yok",
+      rc1.some((x) => x.slug === PX && x.action === "written") && rc2.every((x) => x.action !== "written") && (await publishedScoreBySlug(db, PX))?.score === 8.8 && (await listNotifications(db, "s6")).items.length === 1);
+    const h = await pg.query<{ h: string }>("select encode(sha256(convert_to(lower('Test@Example.com'), 'UTF8')), 'hex') as h");
+    ok("test hesabı eşleşmesi e-posta özetiyle (SHA-256, küçük harf) veritabanında hesaplanabilir", h.rows[0].h === "973dfe463ec85785f5f95af5ba3906eedb2d931c24e69824a89ea65dba4e813b", h.rows[0].h);
+    const api = readFileSync(new URL("../lib/community/reviewApi.ts", import.meta.url), "utf8");
+    ok("deneyim yaz/düzenle/sil sonrası puan yeniden hesaplanır (refresh → rescoreSlug)", /refresh = \(slug: string\) => after\(async \(\) => \{ revalidateTag\(reviewsTag\(slug\)\); await rescoreSlug\(slug\)/.test(api));
+    const PS = realVenueRecords.filter((r) => r.categoryId === "cat.restaurant").slice(12, 13)[0].slug;
+    const ss = await runScoreScenario(db, PS), ss2 = await runScoreScenario(db, PS);
+    ok("Preview puan senaryosu (aynı fonksiyonlar) yerelde geçer ve tekrar çalıştırılabilir", ss.ok && ss2.ok, ss.ok ? undefined : ss);
+    ok("puan senaryosu senaryo dışı deneyimi olan mekânda çalışmaz", !(await runScoreScenario(db, PX)).ok);
+    await db.delete(schema.notifications); await db.delete(schema.scoreWatches); await db.delete(schema.ratingHistory);
+    await db.delete(schema.reviews).where(inArray(schema.reviews.placeId, [px.id, (await db.select({ id: schema.places.id }).from(schema.places).where(eq(schema.places.slug, PS)))[0].id]));
+    await db.delete(schema.user).where(inArray(schema.user.id, ["puan-test-w", "puan-test-1", "puan-test-2", "puan-test-3", "puan-test-4", "puan-test-5"]));
+    await db.delete(schema.user).where(inArray(schema.user.id, U));
   }
   await setPlaceState(db, "ua", "ciya-sofrasi-kadikoy", "none");
   const ln = await listPlaceStates(db, "ua");

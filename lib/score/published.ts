@@ -29,6 +29,8 @@ export interface PublishedScore {
   verifiedCount: number;
   computedAt: string;
   algorithmVersion: string;
+  /** güven etiketi kodu (yetersiz | sinirli | orta | yuksek); eski satırlarda serbest metin olabilir */
+  confidence: string;
 }
 
 export async function publishedScore(db: Db, placeId: string): Promise<PublishedScore | null> {
@@ -36,7 +38,7 @@ export async function publishedScore(db: Db, placeId: string): Promise<Published
     .orderBy(desc(ratingHistory.computedAt), desc(ratingHistory.id)).limit(1);
   if (!r) return null;
   return { score: r.score === null ? null : toTenths(r.score) / 10, reviewCount: r.reviewCount, verifiedCount: r.verifiedCount,
-    computedAt: r.computedAt.toISOString(), algorithmVersion: r.algorithmVersion };
+    computedAt: r.computedAt.toISOString(), algorithmVersion: r.algorithmVersion, confidence: r.confidence };
 }
 
 export async function publishedScoreBySlug(db: Db, slug: string) {

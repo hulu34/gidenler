@@ -25,14 +25,16 @@ export function VenueBadges({ entityId }: { entityId: string }) {
 }
 
 /* Gerçek mekân, henüz deneyim yok: puan uydurulmaz; ilk deneyime çağrı. */
-export function RealVenueNotice({ entity, reviewCount = 0, score = null }: { entity: Entity; reviewCount?: number; score?: number | null }) {
+const GUVEN: Record<string, string> = { sinirli: "Sınırlı veri", orta: "Orta güven", yuksek: "Yüksek güven" };
+export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredFrom = null, confidence = null }: { entity: Entity; reviewCount?: number; score?: number | null; scoredFrom?: number | null; confidence?: string | null }) {
   return (
     <div className="flex flex-col gap-3 border-l-2 border-pos pl-4">
       {score !== null ? (
         /* yayımlanmış Gidenler puanı (rating_history) — deneme eşiği bildirimiyle aynı kaynak ve aynı yuvarlama */
         <p className="max-w-[62ch] text-[16px] leading-[1.45]">
-          <b>Gidenler puanı <span className="tnum text-[20px] font-extrabold">{score.toFixed(1).replace(".", ",")}</span></b> · gerçekten gidenlerin deneyimlerinden;{" "}
-          <a href="#deneyimler" className="font-semibold underline decoration-line-2 underline-offset-4">{reviewCount} deneyim</a> yayında.
+          <b>Gidenler puanı <span className="tnum text-[20px] font-extrabold">{score.toFixed(1).replace(".", ",")}</span></b>
+          {confidence && GUVEN[confidence] && <span className="ml-2 inline-flex items-center border border-line-2 px-1.5 py-px align-middle text-[10.5px] font-bold uppercase tracking-[0.1em] text-ink-2">{GUVEN[confidence]}</span>}
+          {" "}· puana giren <a href="#deneyimler" className="font-semibold underline decoration-line-2 underline-offset-4">{scoredFrom ?? reviewCount} deneyimden</a>; yalnız gerçekten gidenlerin Gidenler deneyimleri.
         </p>
       ) : (
       <p className="max-w-[62ch] text-[16px] leading-[1.45]">

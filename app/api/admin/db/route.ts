@@ -2,6 +2,9 @@ import { after, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { TAG_GOOGLE, TAG_MEDIA, profileTag, scoreTag } from "@/lib/live";
 import { runThresholdScenario } from "@/lib/community/scoreWatchScenario";
+import { reconcileScores, scorePublishEnabled, CONFIDENCE_LABEL, MIN_AUTHORS, SCORE_ALGORITHM, type RecomputeResult } from "@/lib/score/compute";
+import { rescoreSlug } from "@/lib/community/reviewApi";
+import { runScoreScenario } from "@/lib/score/scenario";
 import { applyProfile, ProfileInput, readProfile, rollbackProfile } from "@/lib/profile";
 import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
@@ -19,8 +22,8 @@ import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
-import { and, desc, eq, inArray } from "drizzle-orm";
-import { auditLog, fieldProvenance, menuItems, moderationQueue, placeIdentifiers, places, reviews } from "@/lib/db/schema";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
+import { auditLog, fieldProvenance, menuItems, moderationQueue, placeIdentifiers, places, reviews, user } from "@/lib/db/schema";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -70,6 +73,13 @@ export async function GET(req: Request) {
     try { return NextResponse.json({ env: envName(), slugs: await googleUsableSlugs() }, { headers: H }); } catch (e) { return fail(e); }
   }
   /* ?rapor=profil&slug=… → restoran profili (yalnız okuma) */
+  /* ?rapor=puan → bütün deneyimli mekânlar için puan hesabı, YAZMADAN (kuru çalışma) */
+  if (new URL(req.url).searchParams.get("rapor") === "puan") {
+    const db = getDb();
+    if (!db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
+    try { return NextResponse.json({ env: envName(), publish: scorePublishEnabled(), ...puanOzet(await reconcileScores(db, { write: false })) }, { headers: H }); }
+    catch (e) { return fail(e); }
+  }
   if (new URL(req.url).searchParams.get("rapor") === "profil") {
     const db = getDb(); const slug = new URL(req.url).searchParams.get("slug") ?? "";
     if (!db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
@@ -120,7 +130,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; mapsUrls?: Record<string, string>; placeId?: string; identifierId?: string; admin?: string; mode?: string; simulateFailure?: boolean; auditId?: string } = {};
+  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; mapsUrls?: Record<string, string>; emailSha256?: string; placeId?: string; identifierId?: string; admin?: string; mode?: string; simulateFailure?: boolean; auditId?: string } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -216,7 +226,7 @@ export async function POST(req: Request) {
         /* Moderasyon: deneyimi gizle / geri yayınla (silmez). */
         if (body.confirm !== "EVET" || typeof body.id !== "string") break;
         const slug = await moderateReview(db, "admin", body.id, body.action === "review-hide" ? "hide" : "restore");
-        if (slug) fresh(reviewsTag(slug));
+        if (slug) { fresh(reviewsTag(slug)); after(() => rescoreSlug(slug)); }
         return NextResponse.json({ action: body.action, env: envName(), ok: !!slug }, { headers: H });
       }
       case "media-remove": {
@@ -248,6 +258,37 @@ export async function POST(req: Request) {
         const r = await setGoogleMatchActive(mode, body, body.confirm === word);
         if (r.ok && !r.preview) { fresh(TAG_GOOGLE); fresh(profileTag(r.target.slug)); }
         return NextResponse.json({ action: body.action, env: envName(), ...r }, { status: r.ok ? 200 : r.error === "no_db" ? 503 : 400, headers: H });
+      }
+      case "puan-uzlastir": {
+        /* bütün deneyimli mekânlar; yazma yalnız SCORE_PUBLISH=1 iken (değilse kuru çalışma) */
+        if (body.confirm !== "EVET") break;
+        const r = await reconcileScores(db);
+        for (const x of r) if (x.action === "written" && x.slug) fresh(scoreTag(x.slug));
+        return NextResponse.json({ action: "puan-uzlastir", env: envName(), publish: scorePublishEnabled(), ...puanOzet(r) }, { headers: H });
+      }
+      case "hesap-test": {
+        /* test hesabını puan girdilerinden dışlar: user.kind "user" → "test" (ya da mode "geri" ile "test" → "user").
+           Hedef e-postanın SHA-256 özetiyle verilir (depoda e-posta yok); confirm yoksa yalnız eşleşmeyi gösterir. */
+        const h = typeof body.emailSha256 === "string" && /^[0-9a-f]{64}$/.test(body.emailSha256) ? body.emailSha256 : null;
+        if (!h) return NextResponse.json({ error: "hash_required" }, { status: 400, headers: H });
+        const match = sql`encode(sha256(convert_to(lower(${user.email}), 'UTF8')), 'hex') = ${h}`;
+        const found = await db.select({ id: user.id, kind: user.kind }).from(user).where(match);
+        const [from, to] = body.mode === "geri" ? ["test", "user"] : ["user", "test"];
+        if (body.confirm !== "EVET") return NextResponse.json({ action: "hesap-test", env: envName(), preview: true, matched: found.length, kinds: found.map((f) => f.kind) }, { headers: H });
+        if (found.length !== 1 || found[0].kind !== from) return NextResponse.json({ error: "target_mismatch", matched: found.length, kinds: found.map((f) => f.kind) }, { status: 400, headers: H });
+        await db.update(user).set({ kind: to }).where(and(eq(user.id, found[0].id), eq(user.kind, from)));
+        await db.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "user_kind_change", refTable: "user", refId: found[0].id, detail: { from, to, why: "puan girdilerinden test hesabı dışlama" } });
+        const r = await reconcileScores(db);
+        for (const x of r) if (x.action === "written" && x.slug) fresh(scoreTag(x.slug));
+        return NextResponse.json({ action: "hesap-test", env: envName(), changed: 1, from, to, ...puanOzet(r) }, { headers: H });
+      }
+      case "puan-senaryo": {
+        /* yalnız Preview/yerel: gerçek puan üretimi uçtan uca (test kullanıcıları, örnek deneyimler) */
+        if (envName() === "production" || body.confirm !== "EVET") return NextResponse.json({ error: "not_allowed" }, { status: 403, headers: H });
+        const s = typeof body.slug === "string" && /^[a-z0-9-]{1,120}$/.test(body.slug) ? body.slug : "ciya-sofrasi-kadikoy";
+        const r = await runScoreScenario(db, s);
+        fresh(scoreTag(s)); fresh(reviewsTag(s));
+        return NextResponse.json({ action: "puan-senaryo", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "esik-senaryo": {
         /* yalnız Preview/yerel: deneme eşiği uçtan uca (iki test hesabı, örnek puanlar "preview-test") */
@@ -291,4 +332,14 @@ export async function POST(req: Request) {
     }
     return NextResponse.json({ error: "confirm_required" }, { status: 400, headers: H });
   } catch (e) { return fail(e, 409); }
+}
+
+/** Puan raporu özeti: mekân başına sayılar ve sonuç (kişisel veri yok). */
+function puanOzet(r: RecomputeResult[]) {
+  return {
+    algorithm: SCORE_ALGORITHM, minAuthors: MIN_AUTHORS, places: r.length,
+    wouldPublish: r.filter((x) => x.result.score !== null).length,
+    rows: r.map((x) => ({ slug: x.slug ?? x.placeId, authors: x.result.authors, reviews: x.result.reviewCount, verified: x.result.verifiedCount,
+      score: x.result.score, confidence: CONFIDENCE_LABEL[x.result.confidence], previous: x.previous, action: x.action })),
+  };
 }

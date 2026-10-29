@@ -7,6 +7,10 @@ import { getDb } from "@/lib/db/client";
 import { rateStore } from "@/lib/ai/ratelimit";
 import { sameOrigin } from "./http";
 import { DISCLOSURES, RETURN_INTENTS, reviewsTag, type ReviewError } from "./reviews";
+import { eq } from "drizzle-orm";
+import { places } from "@/lib/db/schema";
+import { recomputePlace } from "@/lib/score/compute";
+import { scoreTag } from "@/lib/live";
 export { reviewsTag };
 
 /* Deneyim API'lerinin ortak parçaları: oturum, köken, hız sınırı, gövde şeması, hata metinleri, önbellek. */
@@ -52,4 +56,16 @@ export async function lockOnce(key: string) {
 }
 
 export const fail = (e: ReviewError, status = 400) => NextResponse.json({ error: e, message: MESSAGES[e] }, { status, headers: H });
-export const refresh = (slug: string) => after(() => { revalidateTag(reviewsTag(slug)); });
+/* deneyim değişince: liste önbelleği + mekânın Gidenler puanı yeniden hesaplanır (yanıttan sonra; hata işlemi bozmaz,
+   kaçan olayı günlük uzlaştırma yakalar) */
+export const refresh = (slug: string) => after(async () => { revalidateTag(reviewsTag(slug)); await rescoreSlug(slug); });
+export async function rescoreSlug(slug: string) {
+  const db = getDb();
+  if (!db) return;
+  try {
+    const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, slug)).limit(1);
+    if (!p) return;
+    const r = await recomputePlace(db, p.id);
+    if (r.action === "written") revalidateTag(scoreTag(slug));
+  } catch { /* günlük uzlaştırma telafi eder */ }
+}

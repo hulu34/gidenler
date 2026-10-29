@@ -59,9 +59,9 @@ export function experienceWeight(x: ScoreInput, today: Date): number {
 export const PUBLIC_FACTORS = [
   { key: "recency", title: "Tazelik", text: "Yakın tarihli ziyaretler daha etkili; eski deneyimler zamanla etkisini kaybeder ama silinmez." },
   { key: "verification", title: "Doğrulanmış ziyaret", text: "Ziyareti birden fazla sinyalle doğrulanan deneyimler daha etkilidir. Tek başına rezervasyon kodu yeterli sayılmaz." },
-  { key: "authorTrust", title: "Yazarın güvenilirliği", text: "Düzenli, tutarlı ve faydalı bulunan deneyimler yazan kişilerin etkisi biraz daha yüksektir." },
+  { key: "authorTrust", title: "Yazarın güvenilirliği", text: "Düzenli, tutarlı ve faydalı bulunan deneyimler yazan kişilerin etkisi biraz daha yüksektir. Henüz uygulanmıyor: yazar güveni verisi oluşana kadar her yazarın etkisi eşittir." },
   { key: "independence", title: "Bağımsızlık", text: "Davetli, hediye almış ya da sponsorlu yazarların deneyimi daha az etkilidir; işletme sahibi ve çalışanlarınınki puana hiç girmez." },
-  { key: "evidence", title: "Yeterli kanıt", text: "Az deneyimi olan mekânda puan gösterilmez; puan, yeterli sayıda deneyimden sonra oluşur." },
+  { key: "evidence", title: "Yeterli kanıt", text: "Az deneyimi olan mekânda puan gösterilmez; puan, en az 5 farklı kişinin deneyiminden sonra oluşur. Test hesapları ve işletmeyle bağı olan yazarların deneyimleri puana girmez." },
 ] as const;
 
 export const NEVER_AFFECTS = [

@@ -233,7 +233,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             )}
           </div>
         ) : entity.isReal && c.showScores ? (
-          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} />
+          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} />
         ) : (
           <ComplianceNotice policy={c} noun={category.noun} />
         )}
