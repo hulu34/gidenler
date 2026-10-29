@@ -1,0 +1,155 @@
+{
+ "slug": "serden-erzurum-cag-kebabi-bahcelievler",
+ "description": {
+  "value": "Bahçelievler Şirinevler'de 2011'den beri aynı adreste, tek şube olarak Erzurum cağ kebabı pişiren bir kebapçı.",
+  "provider": "official_site",
+  "url": "https://serdencagkebabi.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Şirinevler Mah. Dereboyu Cad. Bayburt Sk. No:10, 34188 Bahçelievler, İstanbul",
+  "provider": "official_site",
+  "url": "https://serdencagkebabi.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 441 41 57",
+  "provider": "official_site",
+  "url": "https://serdencagkebabi.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://serdencagkebabi.com/",
+  "provider": "official_site",
+  "url": "https://serdencagkebabi.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 12:00-23:00",
+  "provider": "official_site",
+  "url": "https://serdencagkebabi.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Bir porsiyon cağ kebabı iki şiş; ilave şiş istenebiliyor. Cağın yanında soğan söğüş, acılı ezme ve biber turşusu geliyor.",
+   "provider": "official_site",
+   "url": "https://serdencagkebabi.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Alkollü içecek servisi yok; etlerin helal olduğu belirtiliyor.",
+   "provider": "official_site",
+   "url": "https://serdencagkebabi.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Dini bayramlar dışında her gün açık; ön bahçe ve üst kat salonu gruplara göre düzenlenebiliyor.",
+   "provider": "official_site",
+   "url": "https://serdencagkebabi.com/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "alkol": false
+  },
+  "provider": "official_site",
+  "url": "https://serdencagkebabi.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://serdencagkebabi.com/menu",
+  "checkedAt": "2026-10-29",
+  "validFrom": "2026-09-01",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Cağ",
+    "items": [
+     {
+      "name": "Cağ Kebabı",
+      "priceTry": 600,
+      "description": "Porsiyon iki şiş; ilave şiş istenebilir"
+     }
+    ]
+   },
+   {
+    "title": "Yanında",
+    "items": [
+     {
+      "name": "Mercimek Çorbası",
+      "priceTry": 140
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 75
+     }
+    ]
+   },
+   {
+    "title": "Tek kişilik",
+    "items": [
+     {
+      "name": "Manda Yoğurdu",
+      "priceTry": 180
+     }
+    ]
+   },
+   {
+    "title": "Tatlı",
+    "items": [
+     {
+      "name": "Kadayıf Dolması",
+      "priceTry": 160,
+      "description": "Cevizli, Erzurum usulü"
+     }
+    ]
+   },
+   {
+    "title": "İçecek",
+    "items": [
+     {
+      "name": "Açık Ayran",
+      "priceTry": 75
+     },
+     {
+      "name": "Şişe Ayran",
+      "priceTry": 85
+     },
+     {
+      "name": "Şalgam",
+      "priceTry": 80
+     },
+     {
+      "name": "Kola - Fanta",
+      "priceTry": 95
+     },
+     {
+      "name": "Meyve Suları",
+      "priceTry": 95
+     },
+     {
+      "name": "Soda",
+      "priceTry": 60
+     },
+     {
+      "name": "Su",
+      "priceTry": 25
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=EZDd8ERbgsE",
+   "credit": "Soner Arası · Temmuz 2019 · ziyaretçi videosu (fiyatlar o tarihe ait olabilir)",
+   "category": "ziyaretci",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site: adres, her gün 12:00–23:00, telefon, online rezervasyon; menü sayfası: 'Fiyatlar 01.09.2026 tarihinden beri geçerlidir', KDV dahil. Aramadaki 'İşimin Uzmanıyım' videosu başka işletmeye (Cağistan, Eyüpsultan) ait → eklenmedi."
+}

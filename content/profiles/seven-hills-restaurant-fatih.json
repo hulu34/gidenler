@@ -1,0 +1,1120 @@
+{
+ "slug": "seven-hills-restaurant-fatih",
+ "description": {
+  "value": "Sultanahmet'te Seven Hills Hotel'in teras katında, Ayasofya ve Sultanahmet Camii manzaralı deniz ürünleri restoranı; yılın her günü açık.",
+  "provider": "official_site",
+  "url": "https://www.sevenhillsrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Cankurtaran Mah., Tevkifhane Sk. No:8, Kat 3, 34400 Sultanahmet, Fatih, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.sevenhillsrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 516 94 99",
+  "provider": "official_site",
+  "url": "https://www.sevenhillsrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.sevenhillsrestaurant.com/",
+  "provider": "official_site",
+  "url": "https://www.sevenhillsrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Marmara'dan günlük taze balık sunduğunu belirtiyor; 80 kişilik açık ve 120 kişilik kapalı alanı var.",
+   "provider": "official_site",
+   "url": "https://www.sevenhillsrestaurant.com/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "QR menü yalnız İngilizce yayımlanıyor; bazı içeceklerde fiyat aralığı, mevsim balıklarında 'mevsime göre' fiyat var.",
+   "provider": "official_site",
+   "url": "https://sevenhills.gooqr.com/en",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "alkol": true
+  },
+  "provider": "official_site",
+  "url": "https://www.sevenhillsrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://sevenhills.gooqr.com/en",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Breakfast Options",
+    "items": [
+     {
+      "name": "Breakfast",
+      "priceTry": 2020.0
+     },
+     {
+      "name": "Traditional Turkish Breakfast Spread",
+      "priceTry": 1720.0,
+      "description": "Pricing is per person."
+     }
+    ]
+   },
+   {
+    "title": "Soups",
+    "items": [
+     {
+      "name": "Soup of the Day",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Fish Soup",
+      "priceTry": 630.0,
+      "description": "(35 gr)"
+     },
+     {
+      "name": "Vegetables Soup",
+      "priceTry": 630.0,
+      "description": "(40 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Salads",
+    "items": [
+     {
+      "name": "Chef's Grilled Aubergine Salad",
+      "priceTry": 815.0,
+      "description": "(550 gr)"
+     },
+     {
+      "name": "Turkish Style Shepherd Salad",
+      "priceTry": 785.0,
+      "description": "(500 gr)"
+     },
+     {
+      "name": "Arugula Salad",
+      "priceTry": 785.0,
+      "description": "(550 gr)"
+     },
+     {
+      "name": "Tuna Salad",
+      "priceTry": 990.0,
+      "description": "(600 gr)"
+     },
+     {
+      "name": "Sea Bass Salad",
+      "priceTry": 1110.0,
+      "description": "(600 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Cold Appetizers",
+    "items": [
+     {
+      "name": "Salted Bonita in Brine",
+      "priceTry": 915.0,
+      "description": "(320 gr)"
+     },
+     {
+      "name": "Smoked Salmon",
+      "priceTry": 910.0,
+      "description": "(200 gr)"
+     },
+     {
+      "name": "Sea Bass Marine",
+      "priceTry": 990.0,
+      "description": "(300 gr)"
+     },
+     {
+      "name": "Mackerel Marine",
+      "priceTry": 820.0,
+      "description": "(250 gr)"
+     },
+     {
+      "name": "Mix Seafood Plate",
+      "priceTry": 1600.0,
+      "description": "(300 gr)"
+     },
+     {
+      "name": "Hummus",
+      "priceTry": 470.0,
+      "description": "(180 gr)"
+     },
+     {
+      "name": "Hot Spicy Tomato Dip",
+      "priceTry": 470.0,
+      "description": "(180 gr)"
+     },
+     {
+      "name": "Hatçe",
+      "priceTry": 470.0,
+      "description": "(180 gr)"
+     },
+     {
+      "name": "Grilled Aubergine",
+      "priceTry": 470.0,
+      "description": "(180 gr)"
+     },
+     {
+      "name": "Peppers with Yoghurt",
+      "priceTry": 470.0,
+      "description": "(180 gr)"
+     },
+     {
+      "name": "Sea Weed",
+      "priceTry": 470.0,
+      "description": "(180 gr)"
+     },
+     {
+      "name": "Aubergine with Sauce",
+      "priceTry": 470.0,
+      "description": "(180 gr)"
+     },
+     {
+      "name": "Stuffed Vine Leaf",
+      "priceTry": 470.0,
+      "description": "(160 gr)"
+     },
+     {
+      "name": "Girit Paste",
+      "priceTry": 470.0,
+      "description": "(200 gr)"
+     },
+     {
+      "name": "Octopus Salad",
+      "priceTry": 1155.0,
+      "description": "(350 gr)"
+     },
+     {
+      "name": "Mixed Appetizer Plate",
+      "priceTry": 1420.0,
+      "description": "(200 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Hot Starters",
+    "items": [
+     {
+      "name": "Fried Calamari",
+      "priceTry": 1700.0,
+      "description": "(400 gr)"
+     },
+     {
+      "name": "Grilled Calamary",
+      "priceTry": 1700.0,
+      "description": "(400 gr)"
+     },
+     {
+      "name": "Fried Shrimp with Butter",
+      "priceTry": 1590.0,
+      "description": "(140 gr)"
+     },
+     {
+      "name": "Shrimp in Casserole",
+      "priceTry": 1590.0,
+      "description": "(140 gr)"
+     },
+     {
+      "name": "Octopus Casserole with Butter",
+      "priceTry": 1810.0,
+      "description": "(150 gr)"
+     },
+     {
+      "name": "Vegetable Casserole",
+      "priceTry": 1055.0,
+      "description": "(300 gr)"
+     },
+     {
+      "name": "Mushroom Casserole",
+      "priceTry": 1020.0,
+      "description": "(300 gr)"
+     },
+     {
+      "name": "Pachanga Pastry",
+      "priceTry": 825.0,
+      "description": "(175 gr)"
+     },
+     {
+      "name": "Combo Basket",
+      "priceTry": 2045.0,
+      "description": "(300 gr)"
+     },
+     {
+      "name": "Fish Balls",
+      "priceTry": 1860.0,
+      "description": "(200 gr)"
+     },
+     {
+      "name": "Stuffed Mutton Balls",
+      "priceTry": 860.0,
+      "description": "(200 gr)"
+     },
+     {
+      "name": "Chef's Stu\u001bed Chard",
+      "priceTry": 860.0,
+      "description": "(200 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Main Courses",
+    "items": [
+     {
+      "name": "Sea Bass",
+      "priceTry": 1600.0,
+      "description": "(420 gr)"
+     },
+     {
+      "name": "Grilled Salmon",
+      "priceTry": 1665.0,
+      "description": "(350 gr)"
+     },
+     {
+      "name": "Grilled Swordfish or Skewer",
+      "priceTry": 1755.0,
+      "description": "(375 gr)"
+     },
+     {
+      "name": "Bream",
+      "priceTry": 1600.0,
+      "description": "(400 gr)"
+     },
+     {
+      "name": "Bonito",
+      "description": "Fiyat mevsime göre"
+     },
+     {
+      "name": "Blue Fish",
+      "description": "Fiyat mevsime göre"
+     },
+     {
+      "name": "Baked Fish in Salt",
+      "description": "Fiyat mevsime göre"
+     },
+     {
+      "name": "Steamed Fish",
+      "description": "Fiyat mevsime göre"
+     },
+     {
+      "name": "Roasted Fish",
+      "description": "Fiyat mevsime göre"
+     },
+     {
+      "name": "Mixed Fish Plate (for 2 Persons)",
+      "priceTry": 5640.0,
+      "description": "(1350 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Meat Menu",
+    "items": [
+     {
+      "name": "Grilled Beef Tenderloin",
+      "priceTry": 2250.0,
+      "description": "(300 gr)"
+     },
+     {
+      "name": "Fillet of Beef with Mushroom Sauce",
+      "priceTry": 2300.0,
+      "description": "(300 gr)"
+     },
+     {
+      "name": "Grilled Smoked Beef Tenderloin",
+      "priceTry": 2050.0,
+      "description": "(400 gr)"
+     },
+     {
+      "name": "Grilled Lamp Chops",
+      "priceTry": 2080.0,
+      "description": "(300 gr)"
+     },
+     {
+      "name": "Grilled Chicken",
+      "priceTry": 1400.0,
+      "description": "(280 gr)"
+     },
+     {
+      "name": "Seven Hills Meatball",
+      "priceTry": 1480.0,
+      "description": "(200 gr)"
+     },
+     {
+      "name": "Adana Kebab",
+      "priceTry": 1650.0,
+      "description": "(250 gr)"
+     },
+     {
+      "name": "Urfa Kebab",
+      "priceTry": 1650.0,
+      "description": "(250 gr)"
+     },
+     {
+      "name": "Lamb Shish",
+      "priceTry": 1980.0,
+      "description": "(200 gr)"
+     },
+     {
+      "name": "Meat on Cooking Tray (For 2 persons)",
+      "priceTry": 3890.0,
+      "description": "(400 gr)"
+     },
+     {
+      "name": "Mixed Kebab (for 2 Persons)",
+      "priceTry": 5750.0,
+      "description": "(750 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Pastas",
+    "items": [
+     {
+      "name": "Fettucini Alfredo",
+      "priceTry": 1135.0,
+      "description": "(200 gr)"
+     },
+     {
+      "name": "Bonfile Penne",
+      "priceTry": 1320.0,
+      "description": "(250 gr)"
+     },
+     {
+      "name": "Chef’s Special",
+      "priceTry": 1380.0,
+      "description": "(250 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Desserts",
+    "items": [
+     {
+      "name": "Baklava",
+      "priceTry": 930.0
+     },
+     {
+      "name": "Carrot Sliced Baklava",
+      "priceTry": 930.0
+     },
+     {
+      "name": "Banana Crep",
+      "priceTry": 730.0
+     },
+     {
+      "name": "Semolina Turkish Helva with Ice Cream",
+      "priceTry": 730.0
+     },
+     {
+      "name": "Rice Pudding",
+      "priceTry": 730.0
+     },
+     {
+      "name": "Ice Cream",
+      "priceTry": 730.0
+     },
+     {
+      "name": "Mixed Fruit Plate",
+      "priceTry": 1020.0
+     },
+     {
+      "name": "Souffle",
+      "priceTry": 820.0
+     },
+     {
+      "name": "Katmer",
+      "priceTry": 820.0
+     },
+     {
+      "name": "Hagia Sophia Pumpkin Dessert",
+      "priceTry": 820.0
+     }
+    ]
+   },
+   {
+    "title": "Sushi",
+    "items": [
+     {
+      "name": "Crispy Futomaki Roll",
+      "priceTry": 1380.0
+     },
+     {
+      "name": "Vegetable Caterpillar",
+      "priceTry": 1320.0
+     },
+     {
+      "name": "Shrimp Tempura",
+      "priceTry": 1385.0
+     },
+     {
+      "name": "California Roll",
+      "priceTry": 1320.0
+     },
+     {
+      "name": "Sea Bass Truffle",
+      "priceTry": 1380.0
+     },
+     {
+      "name": "Philadelphia Roll",
+      "priceTry": 1350.0
+     },
+     {
+      "name": "Dragon Satsuma",
+      "priceTry": 1430.0
+     },
+     {
+      "name": "Nigai Roll",
+      "priceTry": 1380.0
+     },
+     {
+      "name": "Rainbow Roll",
+      "priceTry": 1380.0
+     },
+     {
+      "name": "Misso Soup",
+      "priceTry": 530.0
+     },
+     {
+      "name": "Wakame Salad",
+      "priceTry": 940.0
+     },
+     {
+      "name": "Noodle",
+      "description": "1.030–1.230 ₺"
+     },
+     {
+      "name": "Ceviche Salad",
+      "priceTry": 1360.0
+     },
+     {
+      "name": "Kappa Maki",
+      "priceTry": 695.0
+     },
+     {
+      "name": "Avocado Maki",
+      "priceTry": 695.0
+     },
+     {
+      "name": "Tuna Maki",
+      "priceTry": 995.0
+     },
+     {
+      "name": "Salmon Maki",
+      "priceTry": 940.0
+     },
+     {
+      "name": "Ebi Maki",
+      "priceTry": 950.0
+     },
+     {
+      "name": "Kani Maki",
+      "priceTry": 920.0
+     },
+     {
+      "name": "Sea Bass Sashimi",
+      "priceTry": 1150.0
+     },
+     {
+      "name": "Salmon Sashimi",
+      "priceTry": 1210.0
+     },
+     {
+      "name": "Tuna Sashimi",
+      "priceTry": 1250.0
+     },
+     {
+      "name": "Shrimp Nigiri",
+      "priceTry": 640.0
+     },
+     {
+      "name": "Sea Bass Nigiri",
+      "priceTry": 640.0
+     },
+     {
+      "name": "Salmon Nigiri",
+      "priceTry": 640.0
+     },
+     {
+      "name": "Eel Nigiri",
+      "priceTry": 780.0
+     },
+     {
+      "name": "Tuna Nigiri",
+      "priceTry": 660.0
+     },
+     {
+      "name": "Maki Roll Set (x12)",
+      "priceTry": 1770.0
+     },
+     {
+      "name": "Sushi-Sashimi Set (x12)",
+      "priceTry": 2235.0
+     },
+     {
+      "name": "Sashimi Set (x9)",
+      "priceTry": 2120.0
+     }
+    ]
+   },
+   {
+    "title": "Soft Drinks",
+    "items": [
+     {
+      "name": "Coke",
+      "priceTry": 290.0
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 290.0
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 290.0
+     },
+     {
+      "name": "Ice Tea",
+      "priceTry": 290.0
+     },
+     {
+      "name": "Fruit Juices",
+      "priceTry": 290.0
+     },
+     {
+      "name": "Orange Juice",
+      "priceTry": 375.0
+     },
+     {
+      "name": "Pomegranate Juice",
+      "priceTry": 375.0
+     },
+     {
+      "name": "Lemonade",
+      "priceTry": 360.0
+     },
+     {
+      "name": "Red Bull",
+      "priceTry": 430.0
+     },
+     {
+      "name": "Sparkling Water",
+      "description": "200–325 ₺"
+     },
+     {
+      "name": "Water (Small)",
+      "priceTry": 125.0
+     },
+     {
+      "name": "Water (Large)",
+      "priceTry": 205.0
+     },
+     {
+      "name": "San Palegrino (250 ml)",
+      "priceTry": 375.0
+     }
+    ]
+   },
+   {
+    "title": "Iced Coffee/Frozen",
+    "items": [
+     {
+      "name": "IcedChocolate",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Iced Cappucino",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Iced White Chocolate Mokka",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Iced Coffee",
+      "priceTry": 480.0
+     },
+     {
+      "name": "Mango Frozen",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Pineapple Frozen",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Passion Fruit Frozen",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Strawberry Frozen",
+      "priceTry": 580.0
+     }
+    ]
+   },
+   {
+    "title": "Mocktails",
+    "items": [
+     {
+      "name": "Strawberry Mojito",
+      "priceTry": 750.0
+     },
+     {
+      "name": "Red Bull Mojito",
+      "priceTry": 800.0
+     },
+     {
+      "name": "Blue World",
+      "priceTry": 800.0
+     },
+     {
+      "name": "Fire of Hell",
+      "priceTry": 800.0
+     }
+    ]
+   },
+   {
+    "title": "Hot Drinks",
+    "items": [
+     {
+      "name": "Tea",
+      "priceTry": 200.0
+     },
+     {
+      "name": "Apple Tea",
+      "priceTry": 200.0
+     },
+     {
+      "name": "Turkish Coffee",
+      "priceTry": 360.0
+     },
+     {
+      "name": "Espresso",
+      "priceTry": 420.0
+     },
+     {
+      "name": "Cappuccino",
+      "priceTry": 430.0
+     },
+     {
+      "name": "Americano",
+      "priceTry": 430.0
+     },
+     {
+      "name": "Hot Chocolate",
+      "priceTry": 430.0
+     },
+     {
+      "name": "Latte",
+      "priceTry": 450.0
+     },
+     {
+      "name": "Natural Herbal Tea",
+      "priceTry": 480.0
+     }
+    ]
+   },
+   {
+    "title": "Local Drinks",
+    "items": [
+     {
+      "name": "Efes Beer",
+      "description": "420–520 ₺"
+     },
+     {
+      "name": "Corona (33 cl)",
+      "priceTry": 560.0
+     },
+     {
+      "name": "Bomonti Filtresiz (50 cl)",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Miller (33 cl)",
+      "priceTry": 500.0
+     },
+     {
+      "name": "Raki",
+      "priceTry": 550.0
+     },
+     {
+      "name": "Wine (Glass)",
+      "description": "780–780 ₺"
+     },
+     {
+      "name": "Chardonnay by the Glass (15 cl)",
+      "priceTry": 1080.0
+     },
+     {
+      "name": "Cabarnet by the Glass (15 cl)",
+      "priceTry": 1080.0
+     }
+    ]
+   },
+   {
+    "title": "Raki by the Bottle",
+    "items": [
+     {
+      "name": "Yeni Raki",
+      "description": "1.505–3.945 ₺"
+     },
+     {
+      "name": "Tekirdağ Rakı",
+      "description": "1.530–3.880 ₺"
+     },
+     {
+      "name": "Efe Raki",
+      "description": "1.500–4.205 ₺"
+     },
+     {
+      "name": "Gold Series",
+      "description": "1.760–4.300 ₺"
+     },
+     {
+      "name": "Beylerbeyi Gobek Raki",
+      "description": "1.850–4.850 ₺"
+     }
+    ]
+   },
+   {
+    "title": "White Wines",
+    "items": [
+     {
+      "name": "Sarafin Chardonnay",
+      "priceTry": 6140.0
+     },
+     {
+      "name": "Sarafin Sauvignon Blanc",
+      "priceTry": 6040.0
+     },
+     {
+      "name": "Sarafin Fume Blanc",
+      "priceTry": 6030.0
+     },
+     {
+      "name": "Kav Narince",
+      "priceTry": 4350.0
+     },
+     {
+      "name": "Egeo Chardonnay",
+      "priceTry": 6040.0
+     },
+     {
+      "name": "Egeo Sauvignon Blanc",
+      "priceTry": 6030.0
+     },
+     {
+      "name": "Kavaklıdere Emir",
+      "priceTry": 5570.0
+     },
+     {
+      "name": "Selection Narince Emir",
+      "priceTry": 4790.0
+     },
+     {
+      "name": "DLC Moscado",
+      "priceTry": 4610.0
+     },
+     {
+      "name": "DLC Sultaniye - Emir",
+      "priceTry": 4420.0
+     },
+     {
+      "name": "Antique White",
+      "priceTry": 3940.0
+     },
+     {
+      "name": "Villa Doluca",
+      "priceTry": 3500.0
+     }
+    ]
+   },
+   {
+    "title": "Champagne",
+    "items": [
+     {
+      "name": "Bianca",
+      "priceTry": 6290.0
+     },
+     {
+      "name": "Altın Köpük",
+      "priceTry": 9760.0
+     },
+     {
+      "name": "Cafe de Paris",
+      "priceTry": 8670.0
+     },
+     {
+      "name": "La Tordera Prosecco",
+      "priceTry": 8820.0
+     },
+     {
+      "name": "Gh. Mumm",
+      "priceTry": 17820.0
+     },
+     {
+      "name": "Moet Chandon",
+      "priceTry": 18770.0
+     },
+     {
+      "name": "Bollinger",
+      "priceTry": 26500.0
+     },
+     {
+      "name": "Dom Perignon",
+      "priceTry": 71500.0
+     }
+    ]
+   },
+   {
+    "title": "Rose Wines",
+    "items": [
+     {
+      "name": "Sarafin Rose",
+      "priceTry": 5875.0
+     },
+     {
+      "name": "Verano Blush",
+      "priceTry": 4320.0
+     },
+     {
+      "name": "Villa Doluca Rose",
+      "priceTry": 3630.0
+     },
+     {
+      "name": "Sartori Pinot Grigio Rose",
+      "priceTry": 4510.0
+     }
+    ]
+   },
+   {
+    "title": "Red Wines",
+    "items": [
+     {
+      "name": "Pendore Syrah",
+      "priceTry": 7220.0
+     },
+     {
+      "name": "Pendore Öküzgözü",
+      "priceTry": 7090.0
+     },
+     {
+      "name": "Prestige Boğazkere",
+      "priceTry": 7190.0
+     },
+     {
+      "name": "Selection Öküzgözü Boğazkere",
+      "priceTry": 6350.0
+     },
+     {
+      "name": "Sarafin Cabernet Sauvignon",
+      "priceTry": 6350.0
+     },
+     {
+      "name": "Sarafin Shiraz",
+      "priceTry": 6145.0
+     },
+     {
+      "name": "Sarafin Merlot",
+      "priceTry": 5900.0
+     },
+     {
+      "name": "Kav Boğazkere Öküzgözü",
+      "priceTry": 4440.0
+     },
+     {
+      "name": "DLC Öküzgözü",
+      "priceTry": 4520.0
+     },
+     {
+      "name": "DLC Kalecik Karası",
+      "priceTry": 4550.0
+     },
+     {
+      "name": "Antique Red",
+      "priceTry": 3900.0
+     },
+     {
+      "name": "Villa Doluca",
+      "priceTry": 3450.0
+     }
+    ]
+   },
+   {
+    "title": "Premium Wines",
+    "items": [
+     {
+      "name": "Domaine Champalou Chenin Blanc",
+      "priceTry": 13060.0
+     },
+     {
+      "name": "Domaine Guerrin et Fils Chardonnay",
+      "priceTry": 12600.0
+     },
+     {
+      "name": "Louis Bernard Chateauneuf-du-Pape",
+      "priceTry": 13400.0
+     },
+     {
+      "name": "Michele Chiarlo Barolo Cannubi",
+      "priceTry": 28600.0
+     }
+    ]
+   },
+   {
+    "title": "Cocktails",
+    "items": [
+     {
+      "name": "Cuba Libre",
+      "priceTry": 1110.0,
+      "description": "(5 cl rom, 3 cl lime juice, 10 cl coke)"
+     },
+     {
+      "name": "7hills Special",
+      "priceTry": 1140.0,
+      "description": "(2 cl apple juice, 5 cl vodka, 2 cl malubu,2 cl lime juice,2 cl vanilla, cinnemon)"
+     },
+     {
+      "name": "Lavender Sour",
+      "priceTry": 1140.0,
+      "description": "(2 cl lavender liqueur, 2 cl citrus blend, 5 cl gin, 2 dash foam)"
+     },
+     {
+      "name": "White Russian",
+      "priceTry": 1140.0,
+      "description": "(3 cl kahlua, 5 cl vodka, 3 cl milk)"
+     },
+     {
+      "name": "Ameretto Sour",
+      "priceTry": 1180.0,
+      "description": "(5 cl ameretto, 5 cl citrus blend,2 dash foam)"
+     },
+     {
+      "name": "Bahama Mama",
+      "priceTry": 1240.0,
+      "description": "(3 cl rom, 3 cl kahlua, 6 cl pineapple juice, 1135 TL 3 cl malibu, 2 cl lime juice)"
+     },
+     {
+      "name": "Black Russian",
+      "priceTry": 1150.0,
+      "description": "(5 cl vodka, 3 cl kahlua)"
+     },
+     {
+      "name": "Whisky Sour",
+      "priceTry": 1120.0,
+      "description": "(5 cl whiskey, 5 cl citrus blend,2 dash angostura)"
+     },
+     {
+      "name": "Cosmopolitan",
+      "priceTry": 1120.0,
+      "description": "(5 cl vodka, 3 cl lime juice,5 cl cranberry juice, 1020 TL 3 cl sugar syrup)"
+     },
+     {
+      "name": "Mojito",
+      "priceTry": 1140.0,
+      "description": "(8 cl rom)"
+     },
+     {
+      "name": "Espresso Martini",
+      "priceTry": 1050.0,
+      "description": "(3 cl kahlua, 5 cl vodka, 5 cl espresso, 955 TL 2 cl sugar syrup,espresso beans"
+     },
+     {
+      "name": "Negroni",
+      "priceTry": 1140.0,
+      "description": "(3 cl campari, 3 cl gin, 3 cl martini rosso)"
+     },
+     {
+      "name": "Long Island Ice Tea",
+      "priceTry": 1130.0,
+      "description": "(3 cl tequila, 3 cl gin, 3 cl vodka, 3 cl liquer)"
+     },
+     {
+      "name": "Margarita",
+      "priceTry": 1170.0,
+      "description": "(8 cl tequila, 7 cl cointreau)"
+     },
+     {
+      "name": "Aperol Spritz",
+      "priceTry": 1170.0,
+      "description": "(8 cl aperol, 8 cl champagne)"
+     },
+     {
+      "name": "Tequila Sunrise",
+      "priceTry": 1170.0,
+      "description": "(8 cl tequila)"
+     },
+     {
+      "name": "Sex on the Beach",
+      "priceTry": 1170.0,
+      "description": "(5 cl tequila, 5 cl vodka)"
+     }
+    ]
+   },
+   {
+    "title": "Import Drinks",
+    "items": [
+     {
+      "name": "Whisky",
+      "description": "835–1.080 ₺"
+     },
+     {
+      "name": "Malt Whisky",
+      "description": "1.265–1.780 ₺"
+     },
+     {
+      "name": "Tequila (5 cl)",
+      "priceTry": 770.0
+     },
+     {
+      "name": "Vodka",
+      "description": "760–1.290 ₺"
+     },
+     {
+      "name": "Gin",
+      "description": "790–910 ₺"
+     },
+     {
+      "name": "Rom",
+      "description": "800–890 ₺"
+     },
+     {
+      "name": "Martini",
+      "description": "825–825 ₺"
+     },
+     {
+      "name": "Digestives",
+      "description": "780–880 ₺"
+     },
+     {
+      "name": "Cognac VSOP",
+      "description": "829–1.490 ₺"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=nmRmKKRUMtQ",
+   "credit": "Seven Hills Hotel (resmî kanal) · Şubat 2021 · teras restoran tanıtımı",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=ZRx8eMslzUo",
+   "credit": "Seven Hills Hotel (resmî kanal) · Haziran 2019 · teras restoran tanıtımı",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site: adres, telefon, rezervasyon, 'open everyday' (saat yok → yazılmadı). Menü resmî siteden bağlanan gooqr QR menüsü (yalnız EN); fiyat aralıkları açıklamaya yazıldı, tek fiyata çevrilmedi."
+}
