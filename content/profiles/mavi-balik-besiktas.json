@@ -1,0 +1,322 @@
+{
+ "slug": "mavi-balik-besiktas",
+ "description": {
+  "value": "Kuruçeşme'de, Muallim Naci Caddesi üzerinde Boğaz'a bakan balık restoranı. Menüde mevsim balıkları, sıcak ve soğuk deniz mezeleri, ızgara etler ve tatlılar var; sitede aylara göre bir balık takvimi de yayımlanıyor. İşletme menüsünde fiyat yayımlamıyor.",
+  "provider": "official_site",
+  "url": "https://www.mavibalik.com/hakkimizda",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Muallim Naci Cad. No:64/A, Kuruçeşme, Beşiktaş, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.mavibalik.com/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 265 54 80",
+  "provider": "official_site",
+  "url": "https://www.mavibalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.mavibalik.com",
+  "provider": "official_site",
+  "url": "https://www.mavibalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "mavibalikrest",
+  "provider": "official_site",
+  "url": "https://www.mavibalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Sitede aylara göre hangi balığın mevsiminde olduğunu gösteren bir balık takvimi var.",
+   "provider": "official_site",
+   "url": "https://www.mavibalik.com/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.mavibalik.com/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": false,
+  "sections": [
+   {
+    "title": "Ana yemekler",
+    "items": [
+     {
+      "name": "Piliç Izgara"
+     },
+     {
+      "name": "Piliç Şiş"
+     },
+     {
+      "name": "Bonfile"
+     },
+     {
+      "name": "Kuzu Pirzola"
+     },
+     {
+      "name": "Karışık Izgara"
+     },
+     {
+      "name": "Çoban Kavurma"
+     }
+    ]
+   },
+   {
+    "title": "Balıklar",
+    "items": [
+     {
+      "name": "Kılıç"
+     },
+     {
+      "name": "Pisi"
+     },
+     {
+      "name": "Dülger"
+     },
+     {
+      "name": "Palamut"
+     },
+     {
+      "name": "Uskumru"
+     },
+     {
+      "name": "Sarıkanat"
+     },
+     {
+      "name": "Mezgit"
+     },
+     {
+      "name": "Minekop"
+     },
+     {
+      "name": "Jumbo Karides"
+     },
+     {
+      "name": "Tekir"
+     },
+     {
+      "name": "Hamsi"
+     },
+     {
+      "name": "Sardalya"
+     },
+     {
+      "name": "Deniz Levreği"
+     },
+     {
+      "name": "Deniz Çuprası"
+     },
+     {
+      "name": "Barbunya Balığı"
+     },
+     {
+      "name": "Mercan"
+     },
+     {
+      "name": "Sinarit"
+     },
+     {
+      "name": "Kalkan"
+     },
+     {
+      "name": "Karagöz"
+     },
+     {
+      "name": "Dil Balığı"
+     },
+     {
+      "name": "Lüfer"
+     },
+     {
+      "name": "Lagos"
+     },
+     {
+      "name": "Kırlangıç"
+     },
+     {
+      "name": "Böcek & Istakoz"
+     }
+    ]
+   },
+   {
+    "title": "Sıcak mezeler",
+    "items": [
+     {
+      "name": "Kalamar Tava"
+     },
+     {
+      "name": "Kalamar Izgara"
+     },
+     {
+      "name": "Karides Tereyağında"
+     },
+     {
+      "name": "Karides Güveç"
+     },
+     {
+      "name": "Deniz Mahsülleri Krep"
+     },
+     {
+      "name": "Balık Köftesi"
+     },
+     {
+      "name": "Paçanga Böreği"
+     },
+     {
+      "name": "Midye Tava"
+     },
+     {
+      "name": "Fener Kavurma"
+     },
+     {
+      "name": "Balık Kokoreç"
+     },
+     {
+      "name": "Ahtapot Izgara"
+     },
+     {
+      "name": "Karides Pane"
+     }
+    ]
+   },
+   {
+    "title": "Soğuk mezeler",
+    "items": [
+     {
+      "name": "Lakerda"
+     },
+     {
+      "name": "Somon Füme"
+     },
+     {
+      "name": "Portakallı Somon Marin"
+     },
+     {
+      "name": "Levrek Marine"
+     },
+     {
+      "name": "Hamsi Marine"
+     },
+     {
+      "name": "Karides Kokteyl"
+     },
+     {
+      "name": "Karides Söğüş"
+     },
+     {
+      "name": "Ahtapot Salatası"
+     },
+     {
+      "name": "Ahtapot Carpaccio"
+     },
+     {
+      "name": "Deniz Mahsülleri Salatası"
+     },
+     {
+      "name": "Midye Dolma"
+     },
+     {
+      "name": "Kabak Çiçeği Dolma"
+     },
+     {
+      "name": "Çiroz Füme"
+     },
+     {
+      "name": "Patlıcan Salatası"
+     },
+     {
+      "name": "Karışık Soğuk Meze Tabağı"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Akdeniz Salatası"
+     },
+     {
+      "name": "Göbek Salata"
+     },
+     {
+      "name": "Karidesli Bahçe Salata"
+     },
+     {
+      "name": "Mavi Balık Salata"
+     },
+     {
+      "name": "Mevsim Salata"
+     },
+     {
+      "name": "Somonlu Yeşil Salata"
+     },
+     {
+      "name": "Peynirli Salata"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Çikolatalı Sufle"
+     },
+     {
+      "name": "Trileçe"
+     },
+     {
+      "name": "Baklava"
+     },
+     {
+      "name": "Fırın Sütlaç"
+     },
+     {
+      "name": "Ekmek Kadayıfı"
+     },
+     {
+      "name": "İrmik Tatlısı"
+     },
+     {
+      "name": "Mavi Balık Kup"
+     },
+     {
+      "name": "Kabak Tatlısı (sezonluk)"
+     },
+     {
+      "name": "Ayva Tatlısı (sezonluk)"
+     },
+     {
+      "name": "Mevsim Meyveleri"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=l7yz8Nx3AkY",
+   "credit": "Mavi Balık Restaurant · Mart 2021 · işletmenin kendi tanıtımı",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=LQVzkdgLtRw",
+   "credit": "Личный Опыт · Nisan 2022 · kısa servis klibi (Rusça)",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=q5PHI-KFPX4",
+   "credit": "Gurmoss · Temmuz 2023 · işletmeci röportajı",
+   "category": "basin",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (mavibalik.com): /menu (fiyatsız, yalnız adlar; 'Karısık', 'Böregi', 'Sögüs', 'Çiçegi' yazımları Türkçe karakterle düzeltildi; 'Yanında Özel Sosu' satırı bir kalemin alt notu olduğu için ayrı kalem sayılmadı), /iletisim (adres), telefon sitedeki tel: bağlantısından. Şarap listesi aktarılmadı. Çalışma saati sitede yok. Videolar: işletmenin kendi kanalı (2021), Gurmoss işletmeci röportajı (2023), Rusça kısa servis klibi (2022). Elenen: 2012–2019 tarihli kısa klipler, düğün organizasyonu videosu, 'Bordo Mavi Balık' (başka mekân)."
+}

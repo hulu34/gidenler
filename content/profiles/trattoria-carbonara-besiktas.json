@@ -1,0 +1,455 @@
+{
+ "slug": "trattoria-carbonara-besiktas",
+ "description": {
+  "value": "Gayrettepe'de İtalyan trattoria. Menüde Napoli usulü 28 cm pizzalar, el yapımı makarnalar, rizottolar ve günlük balık var. İşletme menüsünün mevsime göre değişen kısa bir menü olduğunu belirtiyor.",
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Gayrettepe, Vefabey Sokağı No:25/C, 34349 Beşiktaş, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 274 44 10",
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.carbonararestaurant.com",
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "trattoria.carbonara",
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Sa 12:00-22:00",
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki 'Masa Ayırt' bölümünden, telefonla ya da WhatsApp'tan.",
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Fiyatlara KDV dahil.",
+   "provider": "official_site",
+   "url": "https://www.carbonararestaurant.com/menu/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Mevsime göre değişen tabaklar ve alerjen bilgisi için servis ekibine danışılması isteniyor. Pazar günü için sitede saat yazmıyor.",
+   "provider": "official_site",
+   "url": "https://www.carbonararestaurant.com/menu/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.carbonararestaurant.com/menu/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Minestrone",
+      "priceTry": 305,
+      "description": "15 farklı sebze, parmesan peyniri"
+     },
+     {
+      "name": "Soğan Çorbası",
+      "priceTry": 305,
+      "description": "Soğan, dana ilik suyu, kızarmış ekmek"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Avokado & Keçi Peynirli Salata",
+      "priceTry": 645,
+      "description": "Akdeniz yeşillikleri, avokado dilimleri, keçi peyniri, kırmızı soğan, chia tohumları"
+     },
+     {
+      "name": "Füme Somonlu Salata",
+      "priceTry": 655,
+      "description": "Akdeniz yeşillikleri, füme somon, kapari, dereotu"
+     },
+     {
+      "name": "Tavuklu Sezar Salata",
+      "priceTry": 715,
+      "description": "Yedikule göbek salata, ızgara tavuk göğüs, kruton ve parmesan"
+     }
+    ]
+   },
+   {
+    "title": "Soğuk Başlangıçlar",
+    "items": [
+     {
+      "name": "Burrata",
+      "priceTry": 995,
+      "description": "Cherry domates ve fesleğen salatası, balzamik glaze, el yapımı pesto"
+     },
+     {
+      "name": "Dana Carpaccio",
+      "priceTry": 715,
+      "description": "Dilimli dana carpaccio, roka, parmesan"
+     },
+     {
+      "name": "Mozzarella Caprese",
+      "priceTry": 715,
+      "description": "Roka yatağında domates üzerinde pesto soslu manda mozzarella"
+     },
+     {
+      "name": "Bresaola & Balzamik",
+      "priceTry": 595,
+      "description": "İnce dilimlenmiş dana bresaola, balzamik glaze"
+     }
+    ]
+   },
+   {
+    "title": "Bruschetta",
+    "items": [
+     {
+      "name": "Somon Füme & Avokado",
+      "priceTry": 340,
+      "description": "Avokado püresi, sarımsak, somon füme, kapari ve dereotu"
+     },
+     {
+      "name": "Mozzarella",
+      "priceTry": 305,
+      "description": "Mozzarella, toz parmesan, cherry domates, sarımsaklı ekmek, fesleğen"
+     },
+     {
+      "name": "Klasik",
+      "priceTry": 235,
+      "description": "Sarımsaklı ekmek, taze cherry domates ve fesleğen"
+     },
+     {
+      "name": "Prosciutto",
+      "priceTry": 365,
+      "description": "Sarımsaklı kızarmış ekmek, prosciutto crudo"
+     }
+    ]
+   },
+   {
+    "title": "Sıcak Başlangıçlar",
+    "items": [
+     {
+      "name": "İstiridye kabuğunda karides o’graten",
+      "priceTry": 695,
+      "description": "4 adet"
+     },
+     {
+      "name": "Sicilian rolls",
+      "priceTry": 580,
+      "description": "Alerjen: ceviz ve dolmalık fıstık içerir"
+     },
+     {
+      "name": "Fırında Mozzarella Peynirli Patlıcan",
+      "priceTry": 440,
+      "description": "Kızarmış patlıcan, domates sos, fesleğen, taze mozzarella"
+     }
+    ]
+   },
+   {
+    "title": "Makarnalar",
+    "items": [
+     {
+      "name": "Linguine ai Frutti di Mare",
+      "priceTry": 1050,
+      "description": "Kabuklu jumbo karides, karides, kalamar ve krema"
+     },
+     {
+      "name": "Linguine Frutti di Mare — Acılı",
+      "priceTry": 1050,
+      "description": "Kabuklu jumbo karides, karides, kalamar, sarımsaklı acılı domates sos"
+     },
+     {
+      "name": "Fettucine Carbonara alla Turca",
+      "priceTry": 715,
+      "description": "Fümelenmiş dana etinden carbonara"
+     },
+     {
+      "name": "Fettucine con Guanciale di Vitello",
+      "priceTry": 740,
+      "description": "Dana yanak sosunda fettucine · 85-90 gr"
+     },
+     {
+      "name": "Fettucine ai Funghi Porcini e Olio di Tartufo",
+      "priceTry": 710,
+      "description": "Kremalı porçini mantarlı, trüf yağı soslu fettucine"
+     },
+     {
+      "name": "Pasta Bolognese",
+      "priceTry": 625,
+      "description": "Spaghetti veya penneden bolonez sos"
+     },
+     {
+      "name": "Penne Arrabiata",
+      "priceTry": 475,
+      "description": "Sarımsaklı ve acılı domates sos"
+     },
+     {
+      "name": "Pasta al Salmone",
+      "priceTry": 645,
+      "description": "Norveç somon, cherry domates, kapari ve krema"
+     },
+     {
+      "name": "Tavuklu, Mantarlı Fettucine",
+      "priceTry": 630,
+      "description": "Kremalı mantar sosunda ızgara tavuk"
+     }
+    ]
+   },
+   {
+    "title": "Hamur İşleri",
+    "items": [
+     {
+      "name": "Ravioli ai 5 Formaggi con Salsa Funghi Porcini",
+      "priceTry": 715,
+      "description": "Porcini mantar ve trüf yağı soslu 5 peynir dolgulu ravioli"
+     },
+     {
+      "name": "Lasagna alla Classico",
+      "priceTry": 710,
+      "description": "Lazanya, bolonez sos"
+     },
+     {
+      "name": "Ravioli ai 5 Formaggi con Salsa 4 Formaggi",
+      "priceTry": 680,
+      "description": "4 peynir sosunda 5 peynirli dolgulu ravioli"
+     }
+    ]
+   },
+   {
+    "title": "Pizzalar",
+    "items": [
+     {
+      "name": "Burrata Pizza",
+      "priceTry": 1120,
+      "description": "Soslu pizza üzerine taze burrata, kiraz domates ve fesleğen · 28 cm"
+     },
+     {
+      "name": "Kaburga Pizza",
+      "priceTry": 990,
+      "description": "Domates sos, mozzarella, füme dana kaburga, mantar, zeytin · 28 cm"
+     },
+     {
+      "name": "Porcini & Bresaola Pizza",
+      "priceTry": 990,
+      "description": "Domates sos, mozzarella, porçini mantarı, dana bresaola dilimleri, trüf yağı · 28 cm"
+     },
+     {
+      "name": "Prosciutto Pizza",
+      "priceTry": 1050,
+      "description": "Domates sos, mozzarella, prosciutto dilimleri · 28 cm"
+     },
+     {
+      "name": "Bonfile & Biber Pizza",
+      "priceTry": 995,
+      "description": "Domates sos, mozzarella, dana bonfile dilimleri, köz biber ve kıtır soğan · 80-90 gr · 28 cm"
+     },
+     {
+      "name": "Quattro Formaggi alla Guanciale di Vitello",
+      "priceTry": 920,
+      "description": "Dört peynirli, dana yanaklı pizza · 85-90 gr · 28 cm"
+     },
+     {
+      "name": "Diavola",
+      "priceTry": 830,
+      "description": "Acılı domates sos, mozzarella, dana pepperoni, karamelize soğan · 28 cm"
+     },
+     {
+      "name": "Pizza alla Turca",
+      "priceTry": 830,
+      "description": "Domates sos, mozzarella, dana sucuk, mantar, siyah zeytin, mısır · 28 cm"
+     },
+     {
+      "name": "Funghi con Gorgonzola",
+      "priceTry": 715,
+      "description": "Taze mozzarella, trüf yağlı sote mantar, karamelize soğan, gorgonzola ve roka · 28 cm"
+     },
+     {
+      "name": "Vegetariana",
+      "priceTry": 710,
+      "description": "Domates sos, mozzarella, ızgara kabak, patlıcan, biber, zeytin · 28 cm"
+     },
+     {
+      "name": "Margherita",
+      "priceTry": 640,
+      "description": "Zeytinyağı, domates sosu, mozzarella · 28 cm"
+     }
+    ]
+   },
+   {
+    "title": "Rizottolar",
+    "items": [
+     {
+      "name": "Risotto Frutti di Mare",
+      "priceTry": 1040,
+      "description": "Kalamar, karides ve jumbo karidesli risotto"
+     },
+     {
+      "name": "Risotto ai Funghi Porcini e Olio di Tartufo",
+      "priceTry": 860,
+      "description": "Porcini mantarlı ve trüf yağında rizotto"
+     },
+     {
+      "name": "Risotto Pesto e Burrata",
+      "priceTry": 1110,
+      "description": "Fesleğenli pesto rizotto üzerine taze burrata"
+     }
+    ]
+   },
+   {
+    "title": "Balık",
+    "items": [
+     {
+      "name": "Izgara Somon",
+      "priceTry": 1200,
+      "description": "Izgarada pişmiş somon balığı, patates püresi ve sebze ile · 180-200 gr"
+     }
+    ]
+   },
+   {
+    "title": "Et Menüleri",
+    "items": [
+     {
+      "name": "Guanciale di Vitello",
+      "priceTry": 1490,
+      "description": "Dana yanak, patates püresi yatağında, ızgara sebzeler eşliğinde · 190-210 gr"
+     },
+     {
+      "name": "Osso Buco",
+      "priceTry": 1490,
+      "description": "Osso buco, risotto milanese ile · 200-220 gr"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Semifreddo",
+      "priceTry": 520,
+      "description": "Donuk, beyaz çikolata ve kavrulmuş badem içerikli soğuk tatlı. Portakal havyarı ve eritilmiş çikolata ile servis edilir"
+     },
+     {
+      "name": "Tiramisu Tradizionale Storico",
+      "priceTry": 460,
+      "description": "Mascarpone ve acıbadem şurubu içerir. Espresso havyarı ile servis edilir"
+     },
+     {
+      "name": "Soufflé al Cioccolato",
+      "priceTry": 460,
+      "description": "Dondurma eşliğinde çikolatalı sufle"
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Peach and Orange",
+      "priceTry": 320,
+      "description": "Alkolsüz; taze sıkılmış portakal suyu ve şeftali püresi"
+     },
+     {
+      "name": "Pomegranate and Orange Sour",
+      "priceTry": 320,
+      "description": "Alkolsüz; nar özü ve taze sıkılmış portakal"
+     },
+     {
+      "name": "Limonata",
+      "priceTry": 200,
+      "description": "Ev yapımı, günlük"
+     },
+     {
+      "name": "Taze Sıkılmış Portakal Suyu",
+      "priceTry": 200
+     },
+     {
+      "name": "Uludağ Premium Soda",
+      "priceTry": 300,
+      "description": "750 ml"
+     },
+     {
+      "name": "Uludağ Su",
+      "priceTry": 120,
+      "description": "1 lt"
+     },
+     {
+      "name": "Coca Cola / Sprite / Fanta",
+      "priceTry": 140
+     },
+     {
+      "name": "Fuse Tea",
+      "priceTry": 140,
+      "description": "Şeftali · limon"
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 140
+     },
+     {
+      "name": "Caffè Latte",
+      "priceTry": 190
+     },
+     {
+      "name": "Cappuccino",
+      "priceTry": 190
+     },
+     {
+      "name": "Caffè Americano",
+      "priceTry": 190
+     },
+     {
+      "name": "Espresso Double",
+      "priceTry": 170
+     },
+     {
+      "name": "Espresso Single",
+      "priceTry": 140
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 140
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=Ya5_myunffg",
+   "credit": "Sevimli Gurme · Kasım 2025 · yemek değerlendirmesi",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (carbonararestaurant.com/menu/): menü (fiyatlı, KDV dahil, tarihsiz), adres, telefon, saat (Pazartesi–Cumartesi 12.00–22.00; pazar yazmıyor). Menüdeki 'Vejetaryen/Organik/Glutensiz' etiketleri aktarılmadı. Video: Sevimli Gurme (Kasım 2025, açıklamada '📍 Trattoria Carbonara – Gayrettepe'). Elenen: Ferhat Bora Gayrettepe videosu (vegan/raw başka mekân), Francesco Zini (Roma, ilgisiz)."
+}
