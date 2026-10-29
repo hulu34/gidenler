@@ -1,0 +1,632 @@
+{
+ "slug": "cemil-hoca-beylikduzu",
+ "description": {
+  "value": "Beylikdüzü Gürpınar'da, Cengiz Topel Caddesi'nde bir restoran. Menüde kahvaltı (hafta içi serpme, hafta sonu açık büfe), Karadeniz mezeleri, Akçaabat köfte, ızgara etler ve günlük fiyatlı balık var.",
+  "provider": "official_site",
+  "url": "https://cemilhoca.com.tr/wp-content/uploads/2026/08/menu_10.html",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Gürpınar Mah. Cengiz Topel Cad. No:20, Beylikdüzü, İstanbul",
+  "provider": "official_site",
+  "url": "https://cemilhoca.com.tr/iletisim/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 850 56 61",
+  "provider": "official_site",
+  "url": "https://cemilhoca.com.tr/iletisim/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://cemilhoca.com.tr",
+  "provider": "official_site",
+  "url": "https://cemilhoca.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki 'Rezervasyon' bölümünden ya da telefonla.",
+  "provider": "official_site",
+  "url": "https://cemilhoca.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Menüdeki fiyatlar Türk lirası ve KDV dahil.",
+   "provider": "official_site",
+   "url": "https://cemilhoca.com.tr/wp-content/uploads/2026/08/menu_10.html",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Balık fiyatları günlük belirleniyor ve restoranda ilan ediliyor; menüde balıklar için fiyat yazmıyor. Gramajlar çiğ ürün ağırlığı.",
+   "provider": "official_site",
+   "url": "https://cemilhoca.com.tr/wp-content/uploads/2026/08/menu_10.html",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Kahvaltıda 0–6 yaş ücretsiz, 7–12 yaş %50 indirimli.",
+   "provider": "official_site",
+   "url": "https://cemilhoca.com.tr/wp-content/uploads/2026/08/menu_10.html",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Alerjen ve içerik bilgisi için personele danışılması isteniyor.",
+   "provider": "official_site",
+   "url": "https://cemilhoca.com.tr/wp-content/uploads/2026/08/menu_10.html",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://cemilhoca.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://cemilhoca.com.tr/wp-content/uploads/2026/08/menu_10.html",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Omlet",
+      "priceTry": 315,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Kaşarlı Omlet",
+      "priceTry": 375,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 440,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Kavurmalı Yumurta",
+      "priceTry": 590,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Güveçte Tereyağlı Menemen",
+      "priceTry": 350,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Güveçte Tereyağlı Kaşarlı Menemen",
+      "priceTry": 400,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Kuymak",
+      "priceTry": 490,
+      "description": "270 g"
+     },
+     {
+      "name": "Gözleme",
+      "priceTry": 285,
+      "description": "220 g"
+     },
+     {
+      "name": "Açık Büfe Kahvaltı (Hafta Sonu)",
+      "priceTry": 1200,
+      "description": "Seçme peynir çeşitleri, zeytin, bal, kaymak, reçel vb. masanıza servis edilir. Sıcak lezzetler 24 çeşitten oluşan açık büfede sunulur, dilediğiniz kadar alabilirsiniz. Tatlı ikramı kahvaltı sonrası masanıza servis edilir."
+     },
+     {
+      "name": "Serpme Kahvaltı (Hafta İçi)",
+      "priceTry": 1000,
+      "description": "Peynir, zeytin, reçel çeşitleri, bal, kaymak, sosis, sucuk, bakır tavada tereyağlı yumurta, patates kızartması, soslu kapya ve köy biberi, kızarmış hellim, domates, salatalık, mevsim yeşillikleri, pankek, simit, poğaça, börek ve gözleme çeşitleri."
+     },
+     {
+      "name": "Kahvaltı Tabağı",
+      "priceTry": 710,
+      "description": "1 Porsiyon · Haşlanmış yumurta, peynir çeşitleri, domates, salatalık, simit, poğaça, reçel, tahin, pekmez, bal, kaymak, zeytin, pankek, sosis, patates kızartması."
+     }
+    ]
+   },
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Balık Çorbası",
+      "priceTry": 440,
+      "description": "280 ml"
+     },
+     {
+      "name": "Süzme Mercimek Çorbası",
+      "priceTry": 315,
+      "description": "280 ml"
+     },
+     {
+      "name": "Kara Lahana Çorbası",
+      "priceTry": 385,
+      "description": "280 ml, Mevsiminde"
+     }
+    ]
+   },
+   {
+    "title": "Başlangıçlar & Mezeler",
+    "items": [
+     {
+      "name": "Haydari",
+      "priceTry": 250,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Yaprak Sarma",
+      "priceTry": 250,
+      "description": "6 adet"
+     },
+     {
+      "name": "Yoğurtlu Patlıcan",
+      "priceTry": 275,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Acılı Ezme",
+      "priceTry": 250,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Kuru Cacık",
+      "priceTry": 260,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Erguvan Rüyası",
+      "priceTry": 335,
+      "description": "1 Porsiyon · Pancar, süzme yoğurt ve parmesan ile hazırlanan şefin özel mezesi."
+     },
+     {
+      "name": "Çiğ Köfte (10 Sıkım)",
+      "priceTry": 300
+     },
+     {
+      "name": "Trabzon Usulü Kaygana",
+      "priceTry": 200,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Atom",
+      "priceTry": 290,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Şakşuka",
+      "priceTry": 275,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Havuç Tarator",
+      "priceTry": 270,
+      "description": "1 Porsiyon"
+     }
+    ]
+   },
+   {
+    "title": "Ara Sıcaklar",
+    "items": [
+     {
+      "name": "Güveçte Tereyağlı Karides",
+      "priceTry": 790,
+      "description": "160 g"
+     },
+     {
+      "name": "Güveçte Sebzeli Tereyağlı Karides",
+      "priceTry": 810,
+      "description": "240 g"
+     },
+     {
+      "name": "Kalamar Tava",
+      "priceTry": 780,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "İçli Köfte",
+      "priceTry": 290,
+      "description": "1 adet"
+     },
+     {
+      "name": "Patates Kızartması",
+      "priceTry": 225,
+      "description": "1 Porsiyon"
+     },
+     {
+      "name": "Hamburger",
+      "priceTry": 560,
+      "description": "120 g · Patates kızartmasıyla servis edilir."
+     },
+     {
+      "name": "Cheeseburger",
+      "priceTry": 580,
+      "description": "120 g · Patates kızartmasıyla servis edilir."
+     },
+     {
+      "name": "Kara Lahana Sarması",
+      "priceTry": 385,
+      "description": "1 Porsiyon, Mevsiminde"
+     },
+     {
+      "name": "Tereyağlı Fasulye Turşu Kavurması",
+      "priceTry": 325,
+      "description": "250 g"
+     },
+     {
+      "name": "Levrek Köfte",
+      "priceTry": 220,
+      "description": "50 g / adet"
+     },
+     {
+      "name": "Hamsili Pilav",
+      "priceTry": 565,
+      "description": "Mevsiminde"
+     }
+    ]
+   },
+   {
+    "title": "Balıklar",
+    "items": [
+     {
+      "name": "Güveçte Levrek Buğulama",
+      "description": "400 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Güveçte Tereyağlı Sebzeli Levrek Kavurma",
+      "description": "400 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Güveçte Tereyağlı Fener Kavurma",
+      "description": "350 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Güveçte Tereyağlı Dülger Kavurma",
+      "description": "350 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Lüfer Izgara",
+      "description": "300 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Mezgit Tava",
+      "description": "250 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Mezgit Buğulama",
+      "description": "250 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "İstavrit (Izgara / Tava)",
+      "description": "250 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Levrek (Izgara / Tava)",
+      "description": "350 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Chimichurri Soslu Levrek Izgara",
+      "description": "300 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Levrek Şiş",
+      "description": "350 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Kiloluk Deniz Levreği",
+      "description": "Fiyat kiloya göre · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Kırlangıç Buğulama",
+      "description": "350 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Çipura Izgara",
+      "description": "400 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Sarı Kanat (Izgara / Tava)",
+      "description": "2 adet, 300 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Somon Şiş",
+      "description": "300 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Somon (Izgara / Tava)",
+      "description": "300 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Somon Kavurma",
+      "description": "300 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Kiloluk Çipura",
+      "description": "Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Hamsi (Izgara / Tava)",
+      "description": "250 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Hamsi Çıtlama",
+      "description": "250 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Çinekop (Izgara / Tava)",
+      "description": "Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Palamut (Izgara / Tava)",
+      "description": "Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Ekşili Palamut",
+      "description": "300 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Barbun (Izgara / Tava)",
+      "description": "250 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     },
+     {
+      "name": "Barbun Buğulama",
+      "description": "250 g · Fiyat günlük belirleniyor ve restoranda ilan ediliyor; işletmeye sorun"
+     }
+    ]
+   },
+   {
+    "title": "Et & Izgara Çeşitleri",
+    "items": [
+     {
+      "name": "Cemil Hoca Karışık Izgara Tabağı",
+      "priceTry": 1910,
+      "description": "430 g"
+     },
+     {
+      "name": "Acılı Kebap",
+      "priceTry": 780,
+      "description": "200 g, 1 şiş · Pilav, köz biber ve domates eşliğinde servis edilir."
+     },
+     {
+      "name": "Acısız Kebap",
+      "priceTry": 780,
+      "description": "200 g · Pilav, köz biber ve domates eşliğinde servis edilir."
+     },
+     {
+      "name": "Kuzu Pirzola",
+      "priceTry": 1350,
+      "description": "250 g, 4 parça"
+     },
+     {
+      "name": "Tavuk Pirzola",
+      "priceTry": 695,
+      "description": "200 g"
+     },
+     {
+      "name": "Tavuk Şiş",
+      "priceTry": 695,
+      "description": "200 g"
+     },
+     {
+      "name": "Tavuk Kanat",
+      "priceTry": 695,
+      "description": "200 g"
+     },
+     {
+      "name": "Tereyağlı Bonfile Sac Tava",
+      "priceTry": 1270,
+      "description": "250 g · Dana bonfile, biber, domates ve pilav eşliğinde sıcak bakır sacda servis edilir."
+     },
+     {
+      "name": "Mantar Soslu Bonfile Izgara",
+      "priceTry": 1490,
+      "description": "220 g · Kumpir, pilav, köz biber ve domates eşliğinde servis edilir."
+     },
+     {
+      "name": "Akçaabat Köfte",
+      "priceTry": 440,
+      "description": "135 g, 3 adet"
+     },
+     {
+      "name": "Akçaabat Köfte",
+      "priceTry": 730,
+      "description": "225 g, 5 adet"
+     },
+     {
+      "name": "Akçaabat Köfte — Paylaşımlı Porsiyon (500 g)",
+      "priceTry": 1550
+     },
+     {
+      "name": "Akçaabat Köfte — Paylaşımlı Porsiyon (750 g)",
+      "priceTry": 2250
+     },
+     {
+      "name": "Akçaabat Köfte — Paylaşımlı Porsiyon (1 kg)",
+      "priceTry": 2950
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Akçaabat Piyazı",
+      "priceTry": 360,
+      "description": "Tek porsiyon; çift porsiyon 500 ₺"
+     },
+     {
+      "name": "Cemil Hoca Bahçe Salata",
+      "priceTry": 325,
+      "description": "Akdeniz yeşillikleri, yeşil elma, havuç, mor lahana ve sebze krispileri ile hazırlanır. · Tek porsiyon; çift porsiyon 450 ₺"
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 315,
+      "description": "Tek porsiyon; çift porsiyon 440 ₺"
+     },
+     {
+      "name": "Roka Salatası",
+      "priceTry": 300,
+      "description": "Tek porsiyon; çift porsiyon 430 ₺"
+     },
+     {
+      "name": "İlave Peynir",
+      "priceTry": 50
+     },
+     {
+      "name": "Gavurdağı Salatası",
+      "priceTry": 430,
+      "description": "Tek porsiyon; çift porsiyon 620 ₺"
+     },
+     {
+      "name": "Söğüş Tabağı",
+      "priceTry": 260,
+      "description": "Domates, salatalık, yeşil biber, roka, maydanoz."
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar & Meyveler",
+    "items": [
+     {
+      "name": "Fındıklı Baklava",
+      "priceTry": 310
+     },
+     {
+      "name": "Fırın Sütlaç",
+      "priceTry": 340,
+      "description": "Fındık ile servis edilir."
+     },
+     {
+      "name": "Sıcak Helva",
+      "priceTry": 380
+     },
+     {
+      "name": "Dondurmalı İrmik Helvası",
+      "priceTry": 350
+     },
+     {
+      "name": "Sufle",
+      "priceTry": 360
+     },
+     {
+      "name": "Yaş Pasta Çeşitleri (Tek Kişilik)",
+      "priceTry": 290
+     },
+     {
+      "name": "Yaş Pasta Çeşitleri (8–10 Kişilik)",
+      "priceTry": 1550
+     },
+     {
+      "name": "Karışık Meyve Tabağı",
+      "priceTry": 640
+     },
+     {
+      "name": "Ayva Tatlısı",
+      "priceTry": 385,
+      "description": "Mevsiminde · Kaymak ile servis edilir."
+     },
+     {
+      "name": "Kabak Tatlısı",
+      "priceTry": 385,
+      "description": "Mevsiminde · Ceviz ve tahinle servis edilir."
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Su",
+      "priceTry": 60,
+      "description": "0.33 L"
+     },
+     {
+      "name": "Su",
+      "priceTry": 115,
+      "description": "1 L"
+     },
+     {
+      "name": "Soda / Maden Suyu",
+      "priceTry": 75,
+      "description": "200 ml"
+     },
+     {
+      "name": "Sıkma Limon Soda",
+      "priceTry": 90
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 90,
+      "description": "245 ml"
+     },
+     {
+      "name": "Kola",
+      "priceTry": 145,
+      "description": "300 ml"
+     },
+     {
+      "name": "Meyve Suyu",
+      "priceTry": 145,
+      "description": "330 ml"
+     },
+     {
+      "name": "Sıkma Meyve Suyu (Portakal / Nar)",
+      "priceTry": 210,
+      "description": "330 ml"
+     },
+     {
+      "name": "Şalgam",
+      "priceTry": 95,
+      "description": "250 ml"
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 120
+     },
+     {
+      "name": "Latte / Cappuccino",
+      "priceTry": 170
+     },
+     {
+      "name": "Americano",
+      "priceTry": 145
+     },
+     {
+      "name": "Nescafe",
+      "priceTry": 120
+     },
+     {
+      "name": "Espresso (Tekli)",
+      "priceTry": 120
+     },
+     {
+      "name": "Espresso (İkili)",
+      "priceTry": 150
+     },
+     {
+      "name": "Çay",
+      "priceTry": 100
+     },
+     {
+      "name": "Semaver Çay",
+      "priceTry": 425
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=7S66XDDEz1I",
+   "credit": "Cemil Hoca · Mart 2017 · işletmenin kendi tanıtımı (teras ve manzara)",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (cemilhoca.com.tr): ana sayfa ve /iletisim (adres, telefon; çalışma saati yayımlanmıyor, eklenmedi), menü sayfası /wp-content/uploads/2026/08/menu_10.html (Türkçe/İngilizce, TL, KDV dahil; geçerlilik tarihi yok, yükleme klasörü tarihi geçerlilik olarak kullanılmadı). Menüdeki tahmini kalori değerleri aktarılmadı, gramaj/adet bilgisi tutuldu. 'Piyasa fiyatı' işaretli balıklar fiyatsız. Tek/çift salatalarda tek porsiyon fiyatı fiyat sütununda, çift porsiyon açıklamada. Video: işletmenin kendi kanalı (2017)."
+}
