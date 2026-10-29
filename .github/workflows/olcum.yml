@@ -282,7 +282,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/hidrasyon.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.SECKI_HOST }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.SECKI_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[canli]') && '1' || '0' }}" }
   profil5:
     if: contains(github.event.head_commit.message, '[profil5]')
     runs-on: ubuntu-latest
