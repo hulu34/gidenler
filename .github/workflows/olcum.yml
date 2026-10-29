@@ -266,7 +266,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/seckisi.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.SECKI_HOST }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.SECKI_HOST }}", ARAC: "${{ contains(github.event.head_commit.message, '[arac-kapali]') && '0' || '1' }}" }
       - if: always()
         run: test -d out/seckisi && tar -C out -czf out/seckisi.tgz seckisi && rm -rf out/seckisi && openssl cms -encrypt -aes256 -binary -in out/seckisi.tgz -out out/seckisi.tgz.cms -outform DER ops/olcum.pem && rm out/seckisi.tgz
       - if: always()
