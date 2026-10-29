@@ -35,7 +35,7 @@ function Card({ v, onOpen }: { v: RailVideo; onOpen: () => void }) {
       <span className="absolute inset-0 flex items-center justify-center">
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-paper/90 text-[18px] text-ink shadow-lg transition-transform group-hover:scale-110">{MARK[v.platform]}</span>
       </span>
-      {v.credit && <span className="absolute inset-x-0 bottom-0 line-clamp-5bg-gradient-to-t from-black/85 via-black/70 to-transparent px-2 pb-1.5 pt-6 text-left text-[11px] font-semibold leading-snug">{v.credit}</span>}
+      {v.credit && <span className="absolute inset-x-0 bottom-0 line-clamp-5 bg-gradient-to-t from-black/85 via-black/70 to-transparent px-2 pb-1.5 pt-6 text-left text-[11px] font-semibold leading-snug">{v.credit}</span>}
     </button>
   );
 }
