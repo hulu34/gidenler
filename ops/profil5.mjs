@@ -52,7 +52,7 @@ for (const slug of SLUGS) {
     await p.goto(`https://${HOST}/mekan/${slug}/`, { waitUntil: "networkidle" }); await p.waitForTimeout(1500);
     const t = await p.evaluate(() => document.body.innerText.replace(/\s+/g, " "));
     const nav = await p.evaluate(() => [...document.querySelectorAll("a[href^='#']")].map((a) => a.textContent.trim()));
-    ok(`${dev}: sekmeler`, ["Genel bakış", "Menü", "Fotoğraflar", "Videolar"].every((x) => nav.includes(x)), nav.filter((x) => x.length < 14).join("|"));
+    ok(`${dev}: sekmeler (Videolar yalnız video varsa)`, ["Genel bakış", "Menü", "Fotoğraflar"].every((x) => nav.includes(x)) && nav.includes("Videolar") === pf.videos.length > 0, nav.filter((x) => x.length < 14).join("|"));
     ok(`${dev}: tanıtım, telefon, kaynak ve son kontrol ${trDate(pf.description.checkedAt)}`, t.includes(pf.description.value.slice(0, 40)) && t.includes(pf.phone.value) && t.includes(`son kontrol ${trDate(pf.description.checkedAt)}`));
     ok(`${dev}: saat ${pf.hours ? "resmî kaynaktan" : "uydurulmuyor"}`, pf.hours ? !t.includes("İşletmenin resmî kaynağında yayımlanmıyor") : t.includes("İşletmenin resmî kaynağında yayımlanmıyor"));
     /* başlık CSS ile büyük harf (İ): metin kaynağı textContent'ten okunur */
@@ -62,7 +62,7 @@ for (const slug of SLUGS) {
     const rows = await p.locator("#menu li").evaluateAll((ls) => ls.map((l) => l.innerText.replace(/\s+/g, " ").trim()));
     const miss = items.filter((it, i) => { const r = rows[i] ?? ""; return !r.startsWith(it.name) || (it.priceTry !== undefined && !r.includes(tl(it.priceTry))) || (it.description && !r.includes(it.description)) || (it.priceTry === undefined && /\d ₺$/.test(r) && !(it.description ?? "").endsWith("₺")); });
     ok(`${dev}: menü ${items.length} kalem, ad/fiyat/açıklama dosyayla aynı`, rows.length === items.length && miss.length === 0, `${rows.length} satır${miss.length ? " · farklı: " + miss.slice(0, 3).map((m) => m.name).join(", ") : ""}`);
-    ok(`${dev}: menü kaynağı ve tarihleri`, t.includes(`son kontrol ${trDate(pf.menu.checkedAt)}`) && (!pf.menu.validFrom || t.includes(`${trDate(pf.menu.validFrom)} tarihinden itibaren geçerli`)) && t.includes("fiyatlar kaynaktaki gibi"));
+    ok(`${dev}: menü kaynağı ve tarihleri`, t.includes(`son kontrol ${trDate(pf.menu.checkedAt)}`) && (!pf.menu.validFrom || t.includes(`${trDate(pf.menu.validFrom)} tarihinden itibaren geçerli`)) && (pf.menu.pricesPublished ? t.includes("fiyatlar kaynaktaki gibi") : t.includes("işletme bu menüde fiyat yayımlamıyor")));
     /* Google fotoğrafları istemcide yüklenir: ilk ziyarette önbellek soğuk olabilir, sayımdan önce bekle */
     if (CANLI) { await p.locator("#fotograflar").scrollIntoViewIfNeeded().catch(() => {}); await p.locator("#fotograflar img").first().waitFor({ timeout: 12000 }).catch(() => {}); }
     const imgs = await p.locator("#fotograflar img").count();
