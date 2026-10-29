@@ -18,7 +18,7 @@ env:
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
-  ADAY_HOST: gidenler-94qkxxowv-hulu34.vercel.app    # canlı sürüm (ddcd558, puan üretimi — anahtar kapalı)
+  ADAY_HOST: gidenler-puaf01iqu-hulu34.vercel.app    # canlı sürüm (ddcd558, puan üretimi — SCORE_PUBLISH=1)
   PROFIL_HOST: gidenler-2h5anwthr-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ddcd558, puan üretimi)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
@@ -163,7 +163,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/puan.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}", ADAY_HOST: "${{ env.ADAY_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[puan-canli]') && '1' || '0' }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}", ADAY_HOST: "${{ env.ADAY_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[puan-canli]') && '1' || '0' }}", YAYIN: "${{ contains(github.event.head_commit.message, '[puan-yayin]') && '1' || '0' }}", UZLASTIR: "${{ contains(github.event.head_commit.message, '[puan-uzlastir]') && '1' || '0' }}" }
       - if: always()
         run: test -d out/puan && tar -C out -czf out/puan.tgz puan && rm -rf out/puan && openssl cms -encrypt -aes256 -binary -in out/puan.tgz -out out/puan.tgz.cms -outform DER ops/olcum.pem && rm out/puan.tgz
       - if: always()

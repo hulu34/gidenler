@@ -37,11 +37,20 @@ const rp = await (await fetch(`${admin}?rapor=puan`, { headers: HB })).json().ca
 ok(`kuru rapor okunabildi (algoritma ${rp.algorithm}, en az ${rp.minAuthors} yazar, yazma ${rp.publish ? "AÇIK" : "kapalı"})`, Array.isArray(rp.rows) && rp.algorithm === "v1-2026-11", `mekân=${rp.places} puan çıkacak=${rp.wouldPublish}`);
 for (const r of rp.rows ?? []) console.log(`  rapor: ${r.slug} · yazar ${r.authors} · deneyim ${r.reviews} · doğrulanmış ${r.verified} · hesap ${r.score ?? "puan yok"} (${r.confidence}) · önceki ${r.previous ? (r.previous.score ?? "puan yok") : "-"} · ${r.action}`);
 writeFileSync("out/puan/rapor.json", JSON.stringify(rp, null, 1));
-if (CANLI) ok("canlıda yazma anahtarı KAPALI (yalnız rapor)", rp.publish === false);
+const BEKLENEN = process.env.YAYIN === "1";
+if (CANLI) ok(`canlıda yazma anahtarı ${BEKLENEN ? "AÇIK" : "KAPALI"}`, rp.publish === BEKLENEN);
+if (CANLI && process.env.UZLASTIR === "1") {
+  const u = await post({ action: "puan-uzlastir", confirm: "EVET" });
+  const uj = await u.json().catch(() => ({}));
+  ok("canlı uzlaştırma çalıştı (yazma açık)", u.ok && uj.publish === true, `mekân=${uj.places} puan çıkan=${uj.wouldPublish}`);
+  for (const r of uj.rows ?? []) console.log(`  uzlaştırma: ${r.slug} · yazar ${r.authors} · deneyim ${r.reviews} · ${r.score ?? "puan yok"} (${r.confidence}) · ${r.action}`);
+  const again = await (await fetch(`${admin}?rapor=puan`, { headers: HB })).json().catch(() => ({}));
+  ok("uzlaştırmadan sonra rapor: her mekân 'değişmedi' ya da 'boş' (tekrar yazılacak bir şey yok)", (again.rows ?? []).every((r) => r.action === "unchanged" || r.action === "nothing"), (again.rows ?? []).map((r) => `${r.slug}:${r.action}`).join(" "));
+}
 
 const cr = await fetch(`https://${HOST}/api/cron/puan/`, { headers: HP });
 const cj = await cr.json().catch(() => ({}));
-ok("günlük uzlaştırma ucu yanıt veriyor; yazma kapalıyken hiçbir şey yazmadı", (cr.status === 200 && cj.written === 0 && cj.publish === false) || cr.status === 429, `HTTP ${cr.status} ${JSON.stringify(cj)}`);
+ok("günlük uzlaştırma ucu yanıt veriyor; yazılacak yeni sonuç yok", (cr.status === 200 && cj.written === 0 && cj.publish === (CANLI ? process.env.YAYIN === "1" : false)) || cr.status === 429, `HTTP ${cr.status} ${JSON.stringify(cj)}`);
 
 const yt = (await (await fetch(`https://${HOST}/nasil-calisir/`, { headers: HP })).text());
 ok("yöntem sayfası: sürüm v1-2026-11, 'en az 5 farklı kişinin', yazar güveni 'Henüz uygulanmıyor'", yt.includes("v1-2026-11") && yt.includes("en az 5 farklı kişinin") && yt.includes("Henüz uygulanmıyor"));
