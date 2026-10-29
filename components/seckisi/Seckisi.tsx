@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { realVenueRecords } from "@/data/real";
-import { KIND_LABEL, SECTION_LABEL, fmtDay, fmtStamp, hrefOf, type Article, type Block, type Event, type Lang, type SectionKey } from "@/lib/seckisi";
+import { KIND_LABEL, SECTION_LABEL, labelOf, fmtDay, fmtStamp, hrefOf, type Article, type Block, type Event, type Lang, type SectionKey } from "@/lib/seckisi";
 import { UI, t } from "./ui";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -13,7 +13,7 @@ const venueLine = (a: Article) => a.venues.map((v) => venueOf(v.slug)).filter(Bo
 
 const COVER_TONE: Record<Article["kind"], string> = {
   hikaye: "bg-ink text-paper",
-  "sefin-masasi": "bg-accent text-on-accent",
+  mutfak: "bg-accent text-on-accent",
   kesif: "bg-paper text-ink border border-edit-line",
   semt: "bg-sheet text-ink border border-edit-line",
   puan: "bg-paper text-ink border border-edit-line",
@@ -52,7 +52,7 @@ export function Cover({ a, lang, size = "md" }: { a: Article; lang: Lang; size?:
   const name = a.kind === "semt" ? (a.area?.[lang] ?? "") : (v?.name ?? "");
   return (
     <div aria-hidden className={`relative flex flex-col justify-between overflow-hidden p-5 sm:p-7 ${h} ${COVER_TONE[a.kind]}`}>
-      <span className="text-[10.5px] font-bold uppercase tracking-[0.22em] opacity-80">{KIND_LABEL[a.kind][lang]}</span>
+      <span className="text-[10.5px] font-bold uppercase tracking-[0.22em] opacity-80">{labelOf(a, lang)}</span>
       <span className={`font-[family-name:var(--font-brand)] leading-[0.92] tracking-[-0.02em] ${size === "lg" ? "text-[clamp(3rem,9vw,6.5rem)]" : size === "md" ? "text-[clamp(2.25rem,5vw,3.5rem)]" : "text-[2rem]"}`}>
         {name}
       </span>
@@ -66,9 +66,9 @@ export function Cover({ a, lang, size = "md" }: { a: Article; lang: Lang; size?:
 function Meta({ a, lang }: { a: Article; lang: Lang }) {
   return (
     <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-3">
-      <span>{KIND_LABEL[a.kind][lang]}</span>
+      <span>{labelOf(a, lang)}</span>
       {a.status === "kontrol" && <span className="border border-warn/50 bg-warn-soft px-1.5 py-px text-[9.5px] text-warn">{t(UI.reviewBadge, lang)}</span>}
-      {a.commercial && <span className="border border-line-strong px-1.5 py-px text-[9.5px] text-ink">{a.commercial.label[lang]}</span>}
+      {a.commercial.state === "var" && <span className="border border-line-strong px-1.5 py-px text-[9.5px] text-ink">{a.commercial.label[lang]}</span>}
     </p>
   );
 }
@@ -114,7 +114,6 @@ function Card({ a, lang, wide = false }: { a: Article; lang: Lang; wide?: boolea
           <Link href={hrefOf(lang, a.slug)} className="hover:underline hover:decoration-2 hover:underline-offset-4">{a.title[lang]}</Link>
         </h3>
         <p className="font-[family-name:var(--font-read)] text-[16.5px] leading-[1.45] text-ink-2">{a.dek[lang]}</p>
-        {a.notice && wide && <p className="text-[13px] leading-relaxed text-ink-3">{a.notice[lang]}</p>}
         {a.kind === "semt" ? (
           <ul className="mt-1 flex flex-col divide-y divide-edit-line border-y border-edit-line">
             {a.venues.map((v) => (
@@ -192,7 +191,7 @@ export function SeckiHome({ lang, list, groups, review }: {
                   <li key={a.slug} className="flex gap-3">
                     <span className="tnum font-[family-name:var(--font-brand)] text-[20px] leading-none text-ink-3">{i + 2}</span>
                     <Link href={hrefOf(lang, a.slug)} className="text-[14px] font-semibold leading-snug hover:underline">
-                      <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-ink-3">{KIND_LABEL[a.kind][lang]}</span>
+                      <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-ink-3">{labelOf(a, lang)}</span>
                       {a.title[lang]}
                     </Link>
                   </li>
@@ -254,7 +253,7 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
         <div className="flex items-center justify-between gap-4">
           <nav aria-label="breadcrumb" className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
             <Link href={hrefOf(lang)} className="hover:text-ink">{t(UI.brand, lang)}</Link>
-            <span aria-hidden> / </span>{KIND_LABEL[a.kind][lang]}
+            <span aria-hidden> / </span>{SECTION_LABEL[a.kind === "hikaye" ? "hikaye" : a.kind][lang]}
           </nav>
           <LangSwitch lang={lang} slug={a.slug} />
         </div>
@@ -278,8 +277,11 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
           <figure>
             <Cover a={a} lang={lang} size="md" />
             <figcaption className="mt-2 text-[11.5px] leading-snug text-ink-3">
-              <span className="font-bold">{t(UI.coverCredit, lang)}:</span>{" "}
-              {a.cover.state === "var" ? `${a.cover.credit} · ${a.cover.rights}` : `${t(UI.coverNone, lang)} — ${a.cover.gap[lang]}`}
+              {a.cover.state === "var" ? (
+                <><span className="font-bold">{t(UI.photo, lang)}:</span> {a.cover.credit} ·{" "}
+                  <a href={a.cover.licenseUrl ?? a.cover.sourceUrl} rel="noopener noreferrer license" target="_blank" className="underline underline-offset-2">{a.cover.rightsRef}</a> ·{" "}
+                  <a href={a.cover.sourceUrl} rel="noopener noreferrer" target="_blank" className="underline underline-offset-2">{t(UI.photoSource, lang)}</a>{a.cover.note ? ` · ${a.cover.note[lang]}` : ""}</>
+              ) : <><span className="font-bold">{t(UI.coverCredit, lang)}:</span> {a.cover.gap[lang]}</>}
             </figcaption>
           </figure>
         </header>
@@ -324,25 +326,25 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
               {lang === "en" && <p className="mt-4 border-t border-line pt-3 text-[12px] leading-snug text-ink-3">{UI.profileLangNote.en}</p>}
             </section>
 
-            <section aria-labelledby="h-kaynak">
-              <h2 id="h-kaynak" className="text-[11px] font-bold uppercase tracking-[0.18em]">{t(UI.sources, lang)}</h2>
-              <ol className="mt-3 flex flex-col gap-3 text-[13px] leading-snug">
+            <section aria-labelledby="h-kunye" className="border-t-2 border-line-strong pt-3 text-[12.5px] leading-relaxed text-ink-2">
+              <h2 id="h-kunye" className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink">{t(UI.editorial, lang)}</h2>
+              <p className="mt-2">{a.editorial.desk[lang]} · {a.editorial.visited ? t(UI.visitYes, lang) : t(UI.visitNo, lang)}</p>
+              <p className="mt-1 text-ink-3">{a.editorial.method[lang]}</p>
+              <p className="mt-1">
+                {a.commercial.state === "var" ? <><span className="font-bold">{a.commercial.label[lang]}:</span> {a.commercial.detail[lang]}</>
+                  : a.commercial.state === "yok" ? t(UI.commercialNone, lang).replace("{by}", a.commercial.verifiedBy).replace("{date}", fmtDay(a.commercial.verifiedAt, lang))
+                  : t(UI.commercialUnverified, lang)}
+              </p>
+              {a.ownership && <p className="mt-1"><span className="font-bold">{t(UI.ownership, lang)}:</span> {a.ownership[lang]}</p>}
+              <h3 id="h-kaynak" className="mt-3 text-[10.5px] font-bold uppercase tracking-[0.16em] text-ink">{t(UI.sources, lang)}</h3>
+              <ol className="mt-1.5 flex flex-col gap-2 text-[12.5px] leading-snug">
                 {a.sources.map((s) => (
                   <li key={s.url}>
-                    <a href={s.url} rel="noopener noreferrer" target="_blank" className="font-semibold underline decoration-line-2 underline-offset-2 hover:decoration-ink">{s.title[lang]}</a>
+                    <a href={s.url} rel="noopener noreferrer" target="_blank" className="font-semibold text-ink underline decoration-line-2 underline-offset-2 hover:decoration-ink">{s.title[lang]}</a>
                     <span className="block text-[11.5px] text-ink-3">{s.publisher[lang]} · {t(UI.checked, lang)} {fmtDay(s.checkedAt, lang)}</span>
                   </li>
                 ))}
               </ol>
-            </section>
-
-            <section aria-labelledby="h-kunye" className="border-t border-line pt-4 text-[12.5px] leading-relaxed text-ink-2">
-              <h2 id="h-kunye" className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink">{t(UI.editorial, lang)}</h2>
-              <p className="mt-2"><span className="font-bold">{t(UI.desk, lang)}:</span> {a.editorial.desk[lang]}</p>
-              <p className="mt-1"><span className="font-bold">{t(UI.method, lang)}:</span> {a.editorial.method[lang]}</p>
-              <p className="mt-1">{a.editorial.visited ? t(UI.visitYes, lang) : t(UI.visitNo, lang)}</p>
-              <p className="mt-1">{a.commercial ? <><span className="font-bold">{t(UI.commercial, lang)}:</span> {a.commercial.detail[lang]}</> : t(UI.commercialNone, lang)}</p>
-              {a.ownership && <p className="mt-1"><span className="font-bold">{t(UI.ownership, lang)}:</span> {a.ownership[lang]}</p>}
             </section>
           </aside>
         </div>

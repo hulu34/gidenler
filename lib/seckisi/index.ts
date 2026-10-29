@@ -62,9 +62,9 @@ export function upcomingEvents(now = new Date(), all = ALL_EVENTS) {
     .sort((a, b) => Date.parse(a.startsAt) - Date.parse(b.startsAt));
 }
 
-export type SectionKey = "hikaye" | "puan" | "kesif" | "sefin-masasi" | "deneyimler" | "semt";
+export type SectionKey = "hikaye" | "puan" | "kesif" | "mutfak" | "deneyimler" | "semt";
 /** Bölüm sırası sabittir; içerik yoksa bölüm hiç görünmez (doldurmak için içerik üretilmez). */
-export const SECTION_ORDER: SectionKey[] = ["hikaye", "puan", "kesif", "sefin-masasi", "deneyimler", "semt"];
+export const SECTION_ORDER: SectionKey[] = ["hikaye", "puan", "kesif", "mutfak", "deneyimler", "semt"];
 
 export function sections(list: Article[], events: Event[]) {
   const featured = list.find((a) => a.featured) ?? list.find((a) => a.kind === "hikaye") ?? null;
@@ -85,7 +85,7 @@ export const SECTION_LABEL: Record<SectionKey, Record<Lang, string>> = {
   hikaye: { tr: "Haftanın Hikâyesi", en: "Story of the Week" },
   puan: { tr: "Puanlarda Öne Çıkanlar", en: "Rising in the Scores" },
   kesif: { tr: "Yeni Keşifler", en: "New Finds" },
-  "sefin-masasi": { tr: "Şefin Masasında", en: "At the Chef's Table" },
+  mutfak: { tr: "Mutfaktan", en: "From the Kitchen" },
   deneyimler: { tr: "Yaklaşan Deneyimler", en: "Upcoming Experiences" },
   semt: { tr: "Semtin İçinden", en: "Inside the Neighbourhood" },
 };
@@ -94,9 +94,12 @@ export const KIND_LABEL: Record<Article["kind"], Record<Lang, string>> = {
   hikaye: { tr: "Restoran hikâyesi", en: "Restaurant story" },
   puan: { tr: "Puan hareketi", en: "Score movement" },
   kesif: { tr: "Yeni keşif", en: "New find" },
-  "sefin-masasi": { tr: "Tadım menüsü", en: "Tasting menu" },
+  mutfak: { tr: "Mutfaktan", en: "From the Kitchen" },
   semt: { tr: "Semt rehberi", en: "Neighbourhood guide" },
 };
+
+/** Kartta ve başlıkta gösterilen etiket: yazının kendi biçim etiketi, yoksa türü. */
+export const labelOf = (a: Article, lang: Lang) => a.label?.[lang] ?? KIND_LABEL[a.kind][lang];
 
 export const hrefOf = (lang: Lang, slug?: string) => (lang === "en" ? `/seckisi/en/${slug ? `${slug}/` : ""}` : `/seckisi/${slug ? `${slug}/` : ""}`);
 

@@ -12,6 +12,7 @@ const root = new URL("../", import.meta.url);
 const files = readdirSync(new URL("content/seckisi/yazilar/", root)).filter((f) => f.endsWith(".json"));
 const index = readFileSync(new URL("content/seckisi/index.ts", root), "utf8");
 ok("klasördeki her yazı dizinde", files.every((f) => index.includes(`./yazilar/${f}`)), `${files.length} dosya`);
+const bad0 = (patch: Record<string, unknown>) => !Article.safeParse({ ...structuredClone(ALL_ARTICLES.find((a) => a.kind === "kesif")!), ...patch }).success;
 ok("dosya adı = slug", files.every((f) => ALL_ARTICLES.some((a) => `${a.slug}.json` === f)));
 
 /* 2) Her bağlı restoran gerçek profil */
@@ -22,14 +23,17 @@ for (const a of ALL_ARTICLES) for (const v of a.venues)
 const pkg = ALL_ARTICLES.filter((a) => a.status !== "taslak");
 ok("ilk pakette 6 içerik", pkg.length === 6, pkg.map((a) => a.kind).join(","));
 ok("ilk paket yayımlanmamış (kontrol bekliyor)", pkg.every((a) => a.status === "kontrol" && a.publishedAt === null));
-ok("türler: 1 hikâye, 3 keşif, 1 tadım, 1 semt", ["hikaye:1", "kesif:3", "sefin-masasi:1", "semt:1"].every((k) => { const [kind, n] = k.split(":"); return pkg.filter((a) => a.kind === kind).length === Number(n); }));
+ok("türler: 1 hikâye, 3 keşif, 1 mutfaktan, 1 semt", ["hikaye:1", "kesif:3", "mutfak:1", "semt:1"].every((k) => { const [kind, n] = k.split(":"); return pkg.filter((a) => a.kind === kind).length === Number(n); }));
 ok("ziyaret iddiası yok (hepsi visited=false)", pkg.every((a) => a.editorial.visited === false));
 ok("yeni açılan restoran iddiası yok", pkg.every((a) => a.newOpening === false));
 ok("Japon Erdal ilk pakette değil", pkg.every((a) => a.venues.every((v) => v.slug !== "japon-erdal-beyoglu")));
 ok("her yazıda kaynak ve işletme kaynağı", pkg.every((a) => a.sources.some((s) => s.kind === "isletme")));
 ok("kapak hakkı doğrulanmayanlarda eksik notu var", pkg.every((a) => a.cover.state === "var" || a.cover.gap.tr.length > 10));
 ok("puan bölümü yazısı yok (sıralama verisi yok)", pkg.every((a) => a.kind !== "puan"));
-ok("ticari işbirliği yok ya da etiketli", pkg.every((a) => a.commercial === null || !!a.commercial.label.tr));
+ok("ticari ilişki doğrulanmadan \"yok\" denmiyor", pkg.every((a) => a.commercial.state === "dogrulanmadi"));
+ok("ticari ilişki doğrulanmadan yayımlanamaz", bad0({ status: "yayinda", publishedAt: "2026-11-01" }));
+ok("tadım menüsü \"Mutfaktan\" altında ve etiketi açık", pkg.some((a) => a.kind === "mutfak" && a.label?.tr === "Tadım menüsü" && a.label.en === "Tasting menu"));
+ok("lisanslı kapakta lisans ve kaynak bağlantısı var", pkg.every((a) => a.cover.state === "yok" || (!!a.cover.sourceUrl && (a.cover.rights !== "lisans" || !!a.cover.licenseUrl))));
 
 /* 4) Görünürlük */
 ok("Production'da kontrol bekleyen görünmez", articles(false).length === 0);
@@ -41,7 +45,7 @@ ok("reviewVisible: preview", reviewVisible({ VERCEL_ENV: "preview" }) === true);
 ok("reviewVisible: production", reviewVisible({ VERCEL_ENV: "production", NODE_ENV: "production" }) === false);
 ok("reviewVisible: yerel geliştirme", reviewVisible({ NODE_ENV: "development" }) === true);
 ok("reviewVisible: yerel üretim derlemesi", reviewVisible({ NODE_ENV: "production" }) === false);
-const base = ALL_ARTICLES.find((a) => a.slug === "serden-tek-yemegin-adresi")!;
+const base = ALL_ARTICLES.find((a) => a.slug === "serden-mese-atesinin-karsisinda")!;
 const pub = { ...base, status: "yayinda" as const, publishedAt: "2026-11-01" };
 const arc = { ...base, slug: "arsiv-ornek", status: "arsiv" as const, publishedAt: "2026-11-01" };
 ok("yayındaki yazı Production'da listelenir", listable(pub, false));
@@ -56,12 +60,13 @@ ok("taslakta yayın tarihi olamaz", bad({ status: "taslak", publishedAt: "2026-1
 ok("güncelleme tarihi yayından önce olamaz", bad({ status: "yayinda", publishedAt: "2026-11-02", updatedAt: "2026-11-01" }));
 ok("puan yazısı sıralama kaynağı olmadan reddedilir", bad({ kind: "puan" }));
 ok("kapak görseli hak kaydı olmadan reddedilir", bad({ cover: { state: "var", src: "/seckisi/gorsel/x.jpg", alt: { tr: "a", en: "b" }, credit: "c", depicts: "d" } }));
-ok("dış sunucudaki kapak görseli reddedilir", bad({ cover: { state: "var", src: "https://lh3.googleusercontent.com/x", alt: { tr: "a", en: "b" }, credit: "c", rights: "lisans", rightsRef: "abc", depicts: "d" } }));
+ok("dış sunucudaki kapak görseli reddedilir", bad({ cover: { state: "var", src: "https://lh3.googleusercontent.com/x", alt: { tr: "a", en: "b" }, credit: "c", rights: "lisans", rightsRef: "abc", sourceUrl: "https://example.org/x", licenseUrl: "https://example.org/l", depicts: "d" } }));
+ok("lisanslı kapak lisans bağlantısı olmadan reddedilir", bad({ cover: { state: "var", src: "/seckisi/gorsel/x.jpg", alt: { tr: "a", en: "b" }, credit: "c", rights: "lisans", rightsRef: "CC BY 4.0", sourceUrl: "https://example.org/x", depicts: "d" } }));
 ok("\"en\" slug olarak reddedilir", bad({ slug: "en" }));
 
 /* 6) Bölümler: içerik yoksa bölüm yok; sıra sabit */
 const secs = sections(articles(true), []);
-ok("bölüm sırası", secs.map((s) => s.key).join(",") === "hikaye,kesif,sefin-masasi,semt", secs.map((s) => s.key).join(","));
+ok("bölüm sırası", secs.map((s) => s.key).join(",") === "hikaye,kesif,mutfak,semt", secs.map((s) => s.key).join(","));
 ok("puan ve deneyim bölümleri boşken görünmez", !secs.some((s) => s.key === "puan" || s.key === "deneyimler"));
 ok("Production'da hiç bölüm yok", sections(articles(false), []).length === 0);
 

@@ -146,6 +146,17 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
           </Link>
         </nav>
       </div>
+      {/* Mobil ikinci satır: Seçki, Keşfet ve Sor ilk seviyede; üst satırdaki arama genişliğini korur.
+          Yalnız Seçki açıkken görünür (yayında yazı yoksa mobil başlık eskisi gibi). */}
+      {showSeckisi && (
+        <nav aria-label="Bölümler" className="flex h-9 items-center gap-6 border-t border-line px-5 sm:hidden">
+          {([["/seckisi/", "Seçki"], ["/kesfet/", "Keşfet"], ["/sor/", "Sor"]] as const).map(([href, label]) => (
+            <Link key={href} href={href} className="text-[11.5px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink">
+              {label}
+            </Link>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }

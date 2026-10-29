@@ -20,7 +20,9 @@ const Block = z.union([
 export type Block = z.infer<typeof Block>;
 
 export const STATUSES = ["taslak", "kontrol", "yayinda", "arsiv"] as const;
-export const KINDS = ["hikaye", "puan", "kesif", "sefin-masasi", "semt"] as const;
+/* "mutfak" = Mutfaktan / From the Kitchen (tadım menüsü, mutfak yaklaşımı). Şefin katıldığı gerçek bir şef masası
+   deneyimi ileride ayrı bir türle ve doğrulanmış duyuruyla eklenir; burada vaat edilmez. */
+export const KINDS = ["hikaye", "puan", "kesif", "mutfak", "semt"] as const;
 
 const Source = z.object({
   title: Text,
@@ -47,6 +49,12 @@ const Cover = z.discriminatedUnion("state", [
     rights: z.enum(["izinli-basin", "isletme-izni", "lisans"]),
     /** İznin kaydı: e-posta tarihi, lisans adı/URL'si. */
     rightsRef: z.string().trim().min(3),
+    /** Görselin kaynak sayfası (lisans sayfası, basın kiti, izin e-postasının kaydı). */
+    sourceUrl: z.url({ protocol: /^https$/ }),
+    /** Lisanslı görselde lisans metni. */
+    licenseUrl: z.url({ protocol: /^https$/ }).optional(),
+    /** Kısa bağlam notu (ör. "Cihangir'de bir merdivenli sokak, 2011"). */
+    note: Text.optional(),
     /** Görsel anlatılan restoranın kendisi mi. */
     depicts: z.string().trim().min(1),
   }).strict(),
@@ -70,6 +78,8 @@ export const Article = z.object({
   title: Text,
   /** Semt rehberinde semt adı (kapakta). */
   area: Text.optional(),
+  /** Kartta türün yerine gösterilen biçim etiketi (ör. "Tadım menüsü"). */
+  label: Text.optional(),
   /** Kısa açıklama (dek). */
   dek: Text,
   /** Seçilme gerekçesi. */
@@ -98,7 +108,12 @@ export const Article = z.object({
   /** Restoran yeni açılmış mı (Gidenler'in yeni ele alması değil). Varsayılan hayır. */
   newOpening: z.boolean().default(false),
   /** Ticari işbirliği — varsa sayfada görünür etiketle. */
-  commercial: z.object({ label: Text, detail: Text }).strict().nullable(),
+  /** Ticari ilişki. "yok" yalnız doğrulandığında (kim, ne zaman); boş alan doğrulanmış yokluk sayılmaz. */
+  commercial: z.discriminatedUnion("state", [
+    z.object({ state: z.literal("dogrulanmadi") }).strict(),
+    z.object({ state: z.literal("yok"), verifiedBy: z.string().trim().min(2), verifiedAt: day }).strict(),
+    z.object({ state: z.literal("var"), label: Text, detail: Text }).strict(),
+  ]),
   /** Kurucu/ekiple sahiplik veya yakınlık ilişkisi — varsa görünür. */
   ownership: Text.nullable(),
   ranking: Ranking.optional(),
@@ -111,6 +126,8 @@ export const Article = z.object({
   if (a.updatedAt && (!a.publishedAt || a.updatedAt <= a.publishedAt)) ctx.addIssue({ code: "custom", path: ["updatedAt"], message: "güncelleme tarihi yayından sonra olmalı" });
   if (a.kind === "puan" && !a.ranking) ctx.addIssue({ code: "custom", path: ["ranking"], message: "puan yazısı sıralama kaynağı olmadan açılamaz" });
   if (a.kind === "semt" && !a.area) ctx.addIssue({ code: "custom", path: ["area"], message: "semt rehberinde semt adı yok" });
+  if (a.cover.state === "var" && a.cover.rights === "lisans" && !a.cover.licenseUrl) ctx.addIssue({ code: "custom", path: ["cover"], message: "lisanslı görselde lisans bağlantısı yok" });
+  if (a.status === "yayinda" && a.commercial.state === "dogrulanmadi") ctx.addIssue({ code: "custom", path: ["commercial"], message: "ticari ilişki doğrulanmadan yayımlanamaz" });
   if (a.featured && a.kind !== "hikaye") ctx.addIssue({ code: "custom", path: ["featured"], message: "yalnız hikâye öne çıkar" });
   /* Rakamlar iki dilde aynı olmalı: TR'de geçen her fiyat/tarih/saat rakamı EN'de de geçer (binlik ayırıcı ve saat biçimi fark etmez). */
   const nums = (s: string) => (s.match(/\d[\d.,:]*\d|\d/g) ?? []).map((n) => n.replace(/[.,:]/g, "")).sort().join("|");

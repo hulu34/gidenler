@@ -28,9 +28,10 @@ Production'da yayında yazı yoksa `/seckisi/` 404 verir ve "Seçki" bağlantıs
 ## Yayımlama (editör)
 
 1. Yazıyı oku. Kaynakları aç, rakamları ve tarihleri kaynakla karşılaştır.
-2. Kapak fotoğrafı için hak kaydını ayrıca kontrol et. Kapak yalnız `/seckisi/gorsel/` altındaki izinli dosyadan gelir; `rights` ve `rightsRef` alanları zorunlu.
-3. `status: "yayinda"` yap ve `publishedAt` alanına bugünü yaz. Bu tarih bir daha değişmez.
-4. İçerik gerçekten değişirse `updatedAt` alanını güncelle. Yalnız yeni görünmek için tarih değiştirilmez.
+2. Kapak fotoğrafı için hak kaydını ayrıca kontrol et. Kapak yalnız `public/seckisi/gorsel/` altındaki izinli dosyadan gelir; `rights`, `rightsRef` ve `sourceUrl` zorunlu, lisanslı görselde `licenseUrl` de zorunlu.
+3. Ticari ilişkiyi doğrula ve `commercial` alanını `yok` (doğrulayan, tarih) ya da `var` yap.
+4. `status: "yayinda"` yap ve `publishedAt` alanına bugünü yaz. Bu tarih bir daha değişmez.
+5. İçerik gerçekten değişirse `updatedAt` alanını güncelle. Yalnız yeni görünmek için tarih değiştirilmez.
 
 ## Kurallar (şema denetler)
 
@@ -41,7 +42,7 @@ Production'da yayında yazı yoksa `/seckisi/` 404 verir ve "Seçki" bağlantıs
 - Bitmiş ve iptal edilmiş etkinlikler "Yaklaşan Deneyimler"den çıkar. Sayfa saatte bir yenilenir.
 - `visited: false` olan yazıda sayfa "ziyaret yapılmadı" der. Ziyaret ya da röportaj uydurulmaz.
 - `newOpening` varsayılan olarak `false`. "Yeni keşif", restoranın Gidenler'e yeni eklendiği anlamına gelir; yeni açıldığı anlamına gelmez.
-- `commercial` doluysa sayfada görünür etiket çıkar. `ownership`, kurucu veya ekiple sahiplik ilişkisini yazar; puana ve sıralamaya etkisi yoktur.
+- `commercial.state`: `dogrulanmadi` (varsayılan; sayfada "henüz doğrulanmadı" yazar ve yazı bu durumda yayımlanamaz), `yok` (doğrulayan ve tarih zorunlu) ya da `var` (görünür etiket). `ownership`, kurucu veya ekiple sahiplik ilişkisini yazar; puana ve sıralamaya etkisi yoktur.
 
 ## Dil
 
