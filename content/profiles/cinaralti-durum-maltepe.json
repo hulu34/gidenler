@@ -1,0 +1,381 @@
+{
+ "slug": "cinaralti-durum-maltepe",
+ "description": {
+  "value": "İdealtepe'de 1990'dan beri dürüm, kebap ve ızgara yapan bir dürümcü; ürünlerini kendi kasabında hazırladığını belirtiyor.",
+  "provider": "official_site",
+  "url": "http://www.cinaraltidurum.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 216 399 48 60",
+  "provider": "official_site",
+  "url": "http://www.cinaraltidurum.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "http://www.cinaraltidurum.com/",
+  "provider": "official_site",
+  "url": "http://www.cinaraltidurum.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "cinaralti_durum",
+  "provider": "official_site",
+  "url": "http://www.cinaraltidurum.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 11:30-04:00",
+  "provider": "official_site",
+  "url": "http://www.cinaraltidurum.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Kebap ve ızgaralar közlenmiş biber, domates ve pideyle servis ediliyor.",
+   "provider": "official_site",
+   "url": "http://www.cinaraltidurum.com/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Salonda yeme, al götür ve paket seçenekleri var; fiyatlara KDV dahil.",
+   "provider": "official_site",
+   "url": "http://www.cinaraltidurum.com/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "paket": true
+  },
+  "provider": "official_site",
+  "url": "http://www.cinaraltidurum.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "http://www.cinaraltidurum.com/",
+  "checkedAt": "2026-10-29",
+  "validFrom": "2026-04-28",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Dürümler",
+    "items": [
+     {
+      "name": "Adana Dürüm",
+      "priceTry": 310
+     },
+     {
+      "name": "Urfa Dürüm",
+      "priceTry": 310
+     },
+     {
+      "name": "Köz Kebap Dürüm",
+      "priceTry": 400,
+      "description": "Köz patlıcan, domates ile sunulan Çınaraltı'na özel ürün"
+     },
+     {
+      "name": "Dana Bonfile Şiş Dürüm",
+      "priceTry": 500,
+      "description": "Etin bonfile kısmı ile yapılan Çınaraltı özel ürünü"
+     },
+     {
+      "name": "Kuzu Şiş Dürüm",
+      "priceTry": 390
+     },
+     {
+      "name": "Ciğer Şiş Dürüm",
+      "priceTry": 390
+     },
+     {
+      "name": "Çınar Tavuk Şiş Dürüm",
+      "priceTry": 280,
+      "description": "Tavuğun but kısmından, Çınaraltı'na özel"
+     },
+     {
+      "name": "Tavuk Şiş Dürüm",
+      "priceTry": 270
+     },
+     {
+      "name": "Izgara Köfte Dürüm",
+      "priceTry": 280
+     },
+     {
+      "name": "Kaşarlı Sucuk Dürüm",
+      "priceTry": 300,
+      "description": "Kasap sucuğu"
+     },
+     {
+      "name": "Kaşar Dürüm",
+      "priceTry": 280
+     },
+     {
+      "name": "Sucuk Dürüm",
+      "priceTry": 300,
+      "description": "Kasap sucuğu"
+     }
+    ]
+   },
+   {
+    "title": "Kebaplar & Izgaralar",
+    "items": [
+     {
+      "name": "Adana Kebap (Porsiyon)",
+      "priceTry": 310,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Urfa Kebap (Porsiyon)",
+      "priceTry": 310,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Kuzu Şiş (Porsiyon)",
+      "priceTry": 390,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Ciğer Şiş (Porsiyon)",
+      "priceTry": 390,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Dana Bonfile Şiş (Porsiyon)",
+      "priceTry": 500,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Ali Nazik (Kuzu)",
+      "priceTry": 490,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Ali Nazik (Bonfile)",
+      "priceTry": 600,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Tavuk Karışık (1 Kişilik)",
+      "priceTry": 400,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Çınar Tavuk Şiş (Porsiyon)",
+      "priceTry": 280,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Tavuk Kanat",
+      "priceTry": 310,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Tavuk Şiş (Porsiyon)",
+      "priceTry": 270,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Yaprak Kanat",
+      "priceTry": 350,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Tavuk But",
+      "priceTry": 300,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Karışık Kebap & Izgara (1 Kişilik)",
+      "priceTry": 800,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Karışık Kebap & Izgara (2 Kişilik)",
+      "priceTry": 1600,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Karışık Kebap & Izgara (3 Kişilik)",
+      "priceTry": 2400,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Karışık Kebap & Izgara (4 Kişilik)",
+      "priceTry": 3200,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Patlıcanlı Kebap",
+      "priceTry": 640,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "Domatesli Kebap",
+      "priceTry": 640,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     },
+     {
+      "name": "İskender (Kebaptan)",
+      "priceTry": 640,
+      "description": "Közlenmiş biber, domates, yoğurt ve pide ile servis edilir"
+     },
+     {
+      "name": "Yoğurtlu Kebap",
+      "priceTry": 640,
+      "description": "Közlenmiş biber, domates, yoğurt ve pide ile servis edilir"
+     },
+     {
+      "name": "Sarma Beyti",
+      "priceTry": 640,
+      "description": "Közlenmiş biber, domates, yoğurt ve pide ile servis edilir"
+     },
+     {
+      "name": "Beyti Kebap (Açık)",
+      "priceTry": 640,
+      "description": "Közlenmiş biber, domates, yoğurt ve pide ile servis edilir"
+     },
+     {
+      "name": "Kaşarlı Izgara Sucuk (Porsiyon)",
+      "priceTry": 300,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir; kasap sucuğu"
+     },
+     {
+      "name": "Izgara Sucuk (Porsiyon)",
+      "priceTry": 300,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir; kasap sucuğu"
+     },
+     {
+      "name": "Izgara Köfte (Porsiyon)",
+      "priceTry": 280,
+      "description": "Közlenmiş biber, domates ve pide ile servis edilir"
+     }
+    ]
+   },
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Ezogelin Çorbası",
+      "priceTry": 150
+     },
+     {
+      "name": "Tavuk Suyu Çorbası",
+      "priceTry": 150
+     }
+    ]
+   },
+   {
+    "title": "Mezeler & Yan Lezzetler",
+    "items": [
+     {
+      "name": "İçli Köfte (Adet)",
+      "priceTry": 100,
+      "description": "Kendi mutfaklarında taze üretiliyor"
+     },
+     {
+      "name": "Çiğ Köfte (Porsiyon)",
+      "priceTry": 150,
+      "description": "Her gün kendi mutfaklarında taze üretiliyor"
+     },
+     {
+      "name": "Patlıcan Ezmesi",
+      "priceTry": 120
+     },
+     {
+      "name": "Acılı Ezme",
+      "priceTry": 100
+     },
+     {
+      "name": "Çiğ Köfte Dürüm",
+      "priceTry": 100,
+      "description": "Her gün kendi mutfaklarında taze üretiliyor"
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Coca-Cola",
+      "priceTry": 80
+     },
+     {
+      "name": "Coca-Cola Zero",
+      "priceTry": 80
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 60
+     },
+     {
+      "name": "Açık Ayran",
+      "priceTry": 70
+     },
+     {
+      "name": "Şalgam Suyu",
+      "priceTry": 70
+     },
+     {
+      "name": "Cappy",
+      "priceTry": 80
+     },
+     {
+      "name": "Fuse Tea",
+      "priceTry": 80
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 80
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 80
+     },
+     {
+      "name": "Soda",
+      "priceTry": 50
+     },
+     {
+      "name": "Soda (Limonlu)",
+      "priceTry": 50
+     },
+     {
+      "name": "Su",
+      "priceTry": 30
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Künefe",
+      "priceTry": 200,
+      "description": "Kendi imalatları; Antep fıstığı ve kaymak ile servis edilir"
+     },
+     {
+      "name": "Fırın Sütlaç",
+      "priceTry": 160,
+      "description": "Hamsiköy usulü, fırında pişirilmiş"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=PQYwWxOsMYc",
+   "credit": "Gezeyenti · Ağustos 2022 · mutfak ve hazırlık videosu (fiyatlar o tarihe ait olabilir)",
+   "category": "ziyaretci",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=TOvYHIVJl0w",
+   "credit": "Siyah Adam · Mayıs 2018 · gece ziyareti (fiyatlar o tarihe ait olabilir)",
+   "category": "ziyaretci",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî QR menü sitesi: 'Son fiyat değişikliği tarihi: 28.04.2026' (validFrom), çalışma saati 11:30–04:00, konum yalnız 'İdealtepe-Maltepe' (tam adres yok → yazılmadı), telefon tel: bağlantısından."
+}

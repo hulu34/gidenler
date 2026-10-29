@@ -1,0 +1,601 @@
+{
+ "slug": "isil-garden-rooftop-restaurant-ve-turkish-cuisine-fatih",
+ "description": {
+  "value": "Sultanahmet'te bahçeli bir kafe-restoran; Türk kahvaltısından kebap, güveç, balık ve bifteğe, makarna ve pideye uzanan geniş bir menüsü var.",
+  "provider": "official_site",
+  "url": "https://isilgardenrestaurant.com/tr/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Şehsuvar Bey Mah., Işıl Sk. No:2, Sultanahmet, Fatih, İstanbul",
+  "provider": "official_site",
+  "url": "https://isilgardenrestaurant.com/tr/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 532 596 60 63",
+  "provider": "official_site",
+  "url": "https://isilgardenrestaurant.com/tr/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://isilgardenrestaurant.com/tr/",
+  "provider": "official_site",
+  "url": "https://isilgardenrestaurant.com/tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 08:30-02:00",
+  "provider": "official_site",
+  "url": "https://isilgardenrestaurant.com/tr/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Menü sayfası 'Son güncelleme: Ekim 2026' diyor; fiyatlar TL ve değişebilir, masadaki menüde de yazılı.",
+   "provider": "official_site",
+   "url": "https://isilgardenrestaurant.com/tr/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "'Fiyat sorunuz' yazan ürünlerin fiyatı telefonla ya da WhatsApp'tan soruluyor.",
+   "provider": "official_site",
+   "url": "https://isilgardenrestaurant.com/tr/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Vejetaryen seçenekler var; alerji ve diyet için personele danışılması isteniyor.",
+   "provider": "official_site",
+   "url": "https://isilgardenrestaurant.com/tr/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://isilgardenrestaurant.com/tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://isilgardenrestaurant.com/tr/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Serpme Kahvaltı",
+      "priceTry": 1500
+     },
+     {
+      "name": "Kahvaltı Tabağı",
+      "priceTry": 400
+     },
+     {
+      "name": "Omlet",
+      "priceTry": 200
+     },
+     {
+      "name": "Menemen",
+      "priceTry": 300
+     },
+     {
+      "name": "Sahanda Yumurta",
+      "priceTry": 200
+     },
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 350
+     },
+     {
+      "name": "Sosis Tabağı",
+      "priceTry": 300
+     }
+    ]
+   },
+   {
+    "title": "Çorba ve Soğuk Mezeler",
+    "items": [
+     {
+      "name": "Günün Çorbası — Mercimek",
+      "priceTry": 250
+     },
+     {
+      "name": "Günün Çorbası — Tavuk",
+      "priceTry": 320
+     },
+     {
+      "name": "Günün Çorbası — Balık",
+      "priceTry": 390
+     },
+     {
+      "name": "Yaprak Sarması",
+      "priceTry": 350
+     },
+     {
+      "name": "Şakşuka",
+      "priceTry": 250
+     },
+     {
+      "name": "Haydari",
+      "priceTry": 250
+     },
+     {
+      "name": "Humus",
+      "priceTry": 250
+     },
+     {
+      "name": "Acılı Ezme",
+      "priceTry": 250
+     },
+     {
+      "name": "Patlıcan Salatası",
+      "priceTry": 250
+     },
+     {
+      "name": "Karışık Meze Tabağı (2 kişilik)",
+      "priceTry": 1800
+     },
+     {
+      "name": "Peynir Tabağı",
+      "priceTry": 1300
+     },
+     {
+      "name": "Amerikan Salata",
+      "description": "Fiyatı işletmeye sorun"
+     }
+    ]
+   },
+   {
+    "title": "Ara Sıcaklar",
+    "items": [
+     {
+      "name": "Kalamar",
+      "priceTry": 780
+     },
+     {
+      "name": "Tereyağında Karides",
+      "priceTry": 810
+     },
+     {
+      "name": "Tereyağında Mantar Güveç",
+      "priceTry": 450
+     },
+     {
+      "name": "Sigara Böreği",
+      "priceTry": 450
+     },
+     {
+      "name": "Patates Tava",
+      "priceTry": 380
+     },
+     {
+      "name": "İçli Köfte",
+      "priceTry": 650
+     },
+     {
+      "name": "Izgara Hellim",
+      "priceTry": 510
+     },
+     {
+      "name": "Soğan Halkası",
+      "priceTry": 450
+     },
+     {
+      "name": "Paçanga Böreği",
+      "description": "Fiyatı işletmeye sorun"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Çoban Salata",
+      "priceTry": 450
+     },
+     {
+      "name": "Ton Balıklı Salata",
+      "priceTry": 620
+     },
+     {
+      "name": "Sezar Salata",
+      "priceTry": 650
+     },
+     {
+      "name": "Deniz Ürünleri Salatası",
+      "priceTry": 750
+     },
+     {
+      "name": "Roka Salatası",
+      "priceTry": 450
+     },
+     {
+      "name": "Hellim Salata",
+      "priceTry": 550
+     },
+     {
+      "name": "Yunan Salata",
+      "priceTry": 500
+     },
+     {
+      "name": "Karides Salatası",
+      "priceTry": 750
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler & Kebaplar",
+    "items": [
+     {
+      "name": "Karışık Izgara — 2 kişilik",
+      "priceTry": 3000
+     },
+     {
+      "name": "Karışık Izgara — 3 kişilik",
+      "priceTry": 3750
+     },
+     {
+      "name": "Karışık Izgara — 4 kişilik",
+      "priceTry": 4800
+     },
+     {
+      "name": "Testi Kebabı — Kuzu",
+      "priceTry": 2800
+     },
+     {
+      "name": "Testi Kebabı — Dana",
+      "priceTry": 2700
+     },
+     {
+      "name": "Testi Kebabı — Tavuk",
+      "priceTry": 2500
+     },
+     {
+      "name": "Kuzu Pirzola",
+      "priceTry": 1400
+     },
+     {
+      "name": "Kuzu İncik",
+      "priceTry": 1500
+     },
+     {
+      "name": "Et Döner Kebap",
+      "priceTry": 650
+     },
+     {
+      "name": "Acılı Adana Kebap",
+      "priceTry": 820
+     },
+     {
+      "name": "Patlıcanlı Kebap",
+      "priceTry": 910
+     },
+     {
+      "name": "Izgara Köfte",
+      "priceTry": 750
+     },
+     {
+      "name": "Kuzu Şiş",
+      "priceTry": 1100
+     },
+     {
+      "name": "Tavuk Şiş",
+      "priceTry": 650
+     },
+     {
+      "name": "Tavuk Şinitzel",
+      "priceTry": 650
+     },
+     {
+      "name": "Dana Şiş",
+      "priceTry": 1200
+     },
+     {
+      "name": "Tavuk Döner Kebap",
+      "priceTry": 550
+     },
+     {
+      "name": "Fıstıklı Kebap",
+      "priceTry": 880
+     },
+     {
+      "name": "Tavuk Fileto",
+      "priceTry": 650
+     }
+    ]
+   },
+   {
+    "title": "Güveçler & Osmanlı Lezzetleri",
+    "items": [
+     {
+      "name": "Hünkar Beğendi",
+      "priceTry": 850
+     },
+     {
+      "name": "Ali Nazik Kebabı",
+      "priceTry": 900
+     },
+     {
+      "name": "İskender Kebabı",
+      "priceTry": 750
+     },
+     {
+      "name": "Sac Kebabı",
+      "priceTry": 950
+     },
+     {
+      "name": "Köri Soslu Tavuk",
+      "priceTry": 750
+     },
+     {
+      "name": "Kuzu Güveç",
+      "priceTry": 950
+     },
+     {
+      "name": "Dana Güveç",
+      "priceTry": 900
+     },
+     {
+      "name": "Tavuk Güveç",
+      "priceTry": 800
+     }
+    ]
+   },
+   {
+    "title": "Biftekler",
+    "items": [
+     {
+      "name": "Biber Soslu Biftek",
+      "priceTry": 1500
+     },
+     {
+      "name": "Bonfile",
+      "priceTry": 1400
+     },
+     {
+      "name": "Antrikot",
+      "priceTry": 1400
+     },
+     {
+      "name": "Mantarlı Bonfile",
+      "priceTry": 1500
+     },
+     {
+      "name": "Dallas Biftek",
+      "priceTry": 1700
+     },
+     {
+      "name": "T-bone Biftek",
+      "priceTry": 1700
+     }
+    ]
+   },
+   {
+    "title": "Balıklar & Deniz Ürünleri",
+    "items": [
+     {
+      "name": "Levrek",
+      "priceTry": 800
+     },
+     {
+      "name": "Çupra",
+      "priceTry": 800
+     },
+     {
+      "name": "Somon Izgara",
+      "priceTry": 980
+     },
+     {
+      "name": "Karides Güveç",
+      "priceTry": 800
+     },
+     {
+      "name": "Barbun",
+      "priceTry": 1200
+     },
+     {
+      "name": "Hamsi Tava",
+      "priceTry": 650
+     },
+     {
+      "name": "Ahtapot Izgara",
+      "priceTry": 1400
+     },
+     {
+      "name": "Deniz Mahsulleri Güveci",
+      "priceTry": 950
+     },
+     {
+      "name": "Karışık Balık Tabağı — 2 kişilik",
+      "priceTry": 3100
+     },
+     {
+      "name": "Karışık Balık Tabağı — 3 kişilik",
+      "priceTry": 3900
+     },
+     {
+      "name": "Karışık Balık Tabağı — 4 kişilik",
+      "priceTry": 4800
+     },
+     {
+      "name": "Jumbo Karides",
+      "description": "Fiyatı işletmeye sorun"
+     }
+    ]
+   },
+   {
+    "title": "Özel Balık Yemekleri",
+    "items": [
+     {
+      "name": "Deniz Mahsullü Testi Kebabı",
+      "priceTry": 3100
+     },
+     {
+      "name": "Deniz Levreği",
+      "priceTry": 3300
+     },
+     {
+      "name": "Deniz Çuprası",
+      "priceTry": 3100
+     },
+     {
+      "name": "Kalkan Balığı",
+      "description": "Fiyatı işletmeye sorun"
+     },
+     {
+      "name": "Istakoz",
+      "description": "Fiyatı işletmeye sorun"
+     }
+    ]
+   },
+   {
+    "title": "Vejetaryen",
+    "items": [
+     {
+      "name": "Sebzeli Güveç",
+      "priceTry": 520
+     },
+     {
+      "name": "Karnıyarık",
+      "priceTry": 600
+     },
+     {
+      "name": "Sebze Izgara",
+      "priceTry": 550
+     },
+     {
+      "name": "Vejetaryen Testi Kebabı",
+      "priceTry": 2100
+     }
+    ]
+   },
+   {
+    "title": "Makarnalar",
+    "items": [
+     {
+      "name": "Penne Arabiata",
+      "priceTry": 500
+     },
+     {
+      "name": "Spagetti Bolonez",
+      "priceTry": 550
+     },
+     {
+      "name": "Tavuklu Fettucini Alfredo",
+      "priceTry": 650
+     },
+     {
+      "name": "Spagetti Napoliten",
+      "priceTry": 500
+     },
+     {
+      "name": "Türk Mantısı",
+      "priceTry": 500
+     },
+     {
+      "name": "Deniz Mahsulleri Spagetti",
+      "priceTry": 780
+     },
+     {
+      "name": "Pesto Soslu Spagetti",
+      "priceTry": 500
+     }
+    ]
+   },
+   {
+    "title": "Pizza ve Pide",
+    "items": [
+     {
+      "name": "Margarita Pizza",
+      "priceTry": 550
+     },
+     {
+      "name": "Ton Balıklı Pizza",
+      "priceTry": 600
+     },
+     {
+      "name": "Meksika Pizza",
+      "priceTry": 600
+     },
+     {
+      "name": "Vejetaryen Pizza",
+      "priceTry": 550
+     },
+     {
+      "name": "Karışık Pizza",
+      "priceTry": 650
+     },
+     {
+      "name": "Karışık Pide",
+      "priceTry": 650
+     },
+     {
+      "name": "Kaşarlı Pide",
+      "priceTry": 550
+     },
+     {
+      "name": "Kavurmalı Pide",
+      "priceTry": 700
+     },
+     {
+      "name": "Kıymalı Pide",
+      "priceTry": 650
+     },
+     {
+      "name": "Sebzeli Pide",
+      "priceTry": 550
+     }
+    ]
+   },
+   {
+    "title": "Hamburger",
+    "items": [
+     {
+      "name": "Hamburger",
+      "priceTry": 550
+     },
+     {
+      "name": "Cheeseburger",
+      "priceTry": 550
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Baklava",
+      "priceTry": 300
+     },
+     {
+      "name": "Katmer",
+      "priceTry": 400
+     },
+     {
+      "name": "Künefe",
+      "priceTry": 350
+     },
+     {
+      "name": "Fırın Sütlaç",
+      "priceTry": 350
+     },
+     {
+      "name": "Dondurma",
+      "priceTry": 400
+     },
+     {
+      "name": "Mevsim Meyveleri",
+      "description": "Fiyatı işletmeye sorun"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site menü sayfası (Ekim 2026 güncellemesi; gün belirtilmediği için validFrom yazılmadı). Adres, telefon, her gün 08:30–02:00 aynı sayfanın altında. TripAdvisor/Restaurant Guru rozetleri profile alınmadı."
+}
