@@ -286,7 +286,7 @@ jobs:
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.SECKI_HOST }}" }
       - if: "!contains(github.event.head_commit.message, '[html]')"
         run: node ops/hidrasyon.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.SECKI_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[canli]') && '1' || '0' }}", ESKI: "${{ contains(github.event.head_commit.message, '[eski]') && '1' || '0' }}", PROFIL_HOST: "${{ env.PROFIL_HOST }}", HEDEF_HOST: "${{ contains(github.event.head_commit.message, '[tur1]') && 'gidenler-o80snemih-hulu34.vercel.app' || '' }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.SECKI_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[canli]') && '1' || '0' }}", ESKI: "${{ contains(github.event.head_commit.message, '[eski]') && '1' || '0' }}", PROFIL_HOST: "${{ env.PROFIL_HOST }}", HEDEF_HOST: "${{ contains(github.event.head_commit.message, '[tur1]') && 'gidenler-o80snemih-hulu34.vercel.app' || contains(github.event.head_commit.message, '[taban]') && 'gidenler-13k9nxj7e-hulu34.vercel.app' || '' }}" }
   profil5:
     if: contains(github.event.head_commit.message, '[profil5]')
     runs-on: ubuntu-latest
