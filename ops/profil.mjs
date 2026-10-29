@@ -5,6 +5,7 @@ import { readFileSync, mkdirSync } from "node:fs";
 const SHOTS = process.env.SHOTS === "1"; if (SHOTS) mkdirSync("out/profil", { recursive: true });
 const shot = async (pg, name, sel) => { if (!SHOTS) return; try { if (sel) await pg.locator(sel).first().screenshot({ path: `out/profil/${name}.png` }); else await pg.screenshot({ path: `out/profil/${name}.png` }); } catch { /* yoksay */ } };
 import { chromium } from "playwright";
+import { yetkiliBaslik, baslikSizintisi } from "./yetkili.mjs";
 const HOST = process.env.PREVIEW_HOST, SLUG = process.env.SLUG ?? "pandeli-fatih";
 const H = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS };
 const HB = { ...H, "x-vercel-set-bypass-cookie": "true" }; /* yalnız tarayıcı (çerez kavanozu olan) bağlam için */
@@ -25,7 +26,8 @@ ok("profil okunuyor", !!rp.profile?.description && !!rp.profile?.menu, `menü b�
 
 const b = await chromium.launch({ channel: "chrome" });
 for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }], ["mobil", { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2, userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1" }]]) {
-  const ctx = await b.newContext({ ...o, extraHTTPHeaders: HB, ...(o.userAgent ? {} : { userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" }) });
+  const ctx = await b.newContext({ ...o, ...(o.userAgent ? {} : { userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" }) });
+  await yetkiliBaslik(ctx, HOST, HB); const sizinti = baslikSizintisi(ctx, HOST);
   const hosts = new Map(); ctx.on("request", (r) => { const h = new URL(r.url()).hostname; hosts.set(h, (hosts.get(h) ?? 0) + 1); });
   const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => { const src = (e.stack ?? "").match(/https?:\/\/[^\s)]+/)?.[0] ?? "kaynak yok"; errs.push(`${e.message} @ ${src.replace(/\?.*$/, "").slice(0, 80)}`); });
   const failed = []; p.on("requestfailed", (r) => { const u = new URL(r.url()); failed.push(`${u.hostname}${u.pathname.slice(0, 40)} ${r.failure()?.errorText ?? ""}`); });
@@ -76,6 +78,7 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
     ok("deneyim yazma sayfası açılıyor (yayın için giriş istenir)", /Pandeli/.test(w) && /(Google ile|giriş)/i.test(w));
   }
   console.log(`  ${dev} dış alan adları: ${[...hosts.keys()].filter((h) => h !== HOST).sort().join(", ")}`);
+  ok(`${dev}: test erişim başlığı üçüncü taraflara gitmiyor`, sizinti.size === 0, [...sizinti].join(","));
   await ctx.close();
 }
 await b.close();

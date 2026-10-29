@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-ikxvc46f3-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-ikxvc46f3-hulu34.vercel.app    # canlı sürüm (19ad933)
-  PROFIL_HOST: gidenler-oi6222e6f-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview, kendi Neon dalı)  # görsel Faz 1 Preview (kendi Neon dalı)
+  PROFIL_HOST: gidenler-i4g87byti-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview, kendi Neon dalı)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
@@ -105,7 +105,7 @@ jobs:
   profil5:
     if: contains(github.event.head_commit.message, '[profil5]')
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -178,7 +178,7 @@ jobs:
   olcum:
     if: contains(github.event.head_commit.message, '[olcum]')
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

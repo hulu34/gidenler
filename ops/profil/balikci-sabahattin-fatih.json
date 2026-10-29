@@ -157,31 +157,31 @@
     "items": [
      {
       "name": "Mezgit",
-      "priceTry": 950
+      "description": "Menüde 950 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
      },
      {
       "name": "Tekir",
-      "priceTry": 950
+      "description": "Menüde 950 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
      },
      {
       "name": "Uskumru",
-      "priceTry": 1100
+      "description": "Menüde 1.100 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
      },
      {
       "name": "Lüfer",
-      "priceTry": 1400
+      "description": "Menüde 1.400 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
      },
      {
       "name": "Deniz Levreği",
-      "priceTry": 1200
+      "description": "Menüde 1.200 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
      },
      {
       "name": "Palamut",
-      "priceTry": 950
+      "description": "Menüde 950 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
      },
      {
       "name": "Çipura",
-      "priceTry": 1200
+      "description": "Menüde 1.200 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
      },
      {
       "name": "Dil",
@@ -218,7 +218,7 @@
      },
      {
       "name": "Pavurya",
-      "description": "Kilosu 300 ₺ (menüde böyle yazıyor)"
+      "description": "Menüde kilosu 300 ₺ yazıyor"
      }
     ]
    },
@@ -324,7 +324,7 @@
   },
   {
    "url": "https://www.youtube.com/watch?v=sohVCY5FGyk",
-   "credit": "Turkey Travel Planner · Eylül 2022 · gezi rehberi",
+   "credit": "Turkey Travel Planner · Eylül 2022 · gezi rehberi tanıtımı",
    "category": "influencer",
    "sponsored": false
   },
@@ -336,10 +336,10 @@
   },
   {
    "url": "https://www.youtube.com/watch?v=qNwMZ8Sdon8",
-   "credit": "National Geographic · Mark Wiens · Şubat 2026 · İstanbul turu, 16.20'den itibaren",
+   "credit": "National Geographic · Şubat 2026 · çok mekânlı yemek turu · bölüm 16.20'de",
    "category": "influencer",
    "sponsored": false
   }
  ],
- "_kaynak_notu": "Resmî site (balikcisabahattin.com) ve resmî menü PDF'i (10 sayfa; tarih ve geçerlilik yazmıyor; 5-10. sayfalar alkollü içecek ve şarap listesi, aktarılmadı). Mezeler ve tatlılar iki kişilik / dört kişilik fiyatlı; bu yüzden fiyat açıklamada. Balık fiyatlarının birimi (porsiyon/kilo) menüde yazmıyor; olduğu gibi aktarıldı. Pavurya 'kg 300 TL' yazıyor, düzeltilmedi. Çalışma saati resmî sitede yok. Elenen videolar: 6f2x7W_hEFI (başka restoran), C3GLPjluNxo (festival, mekân değil), KXyB0TmGY-w (çok mekânlı, sponsor ipucu), 9R5bGTv9H3Y (2018, 50 dk Rusça gezi vlogu; eski)."
+ "_kaynak_notu": "Resmî site (balikcisabahattin.com) ve resmî menü PDF'i (10 sayfa; tarih ve geçerlilik yazmıyor; 5-10. sayfalar alkollü içecek ve şarap listesi, aktarılmadı). Mezeler ve tatlılar iki kişilik / dört kişilik fiyatlı; bu yüzden fiyat açıklamada. Yedi balığın fiyatının birimi (porsiyon/kilo) menüde yazmıyor; fiyat sayfada fiyat sütununda değil, bu belirsizliği söyleyen açıklamada gösteriliyor. Pavurya 'kg 300 TL' yazıyor, düzeltilmedi. Çalışma saati resmî sitede yok. Elenen videolar: 6f2x7W_hEFI (başka restoran), C3GLPjluNxo (festival, mekân değil), KXyB0TmGY-w (çok mekânlı, sponsor ipucu), 9R5bGTv9H3Y (2018, 50 dk Rusça gezi vlogu; eski)."
 }
