@@ -18,7 +18,7 @@ env:
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
-  ADAY_HOST: gidenler-j7in50pea-hulu34.vercel.app    # canlı sürüm (fe54958, deneme eşiği)
+  ADAY_HOST: gidenler-94qkxxowv-hulu34.vercel.app    # canlı sürüm (ddcd558, puan üretimi — anahtar kapalı)
   PROFIL_HOST: gidenler-2h5anwthr-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ddcd558, puan üretimi)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
@@ -146,6 +146,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: profil-sifreli, path: out/profil.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  hesap-test:
+    if: contains(github.event.head_commit.message, '[hesap-test]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/hesap-test.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}", MODE: "${{ contains(github.event.head_commit.message, '[hesap-test-uygula]') && 'uygula' || 'once' }}" }
   puan:
     if: contains(github.event.head_commit.message, '[puan]') || contains(github.event.head_commit.message, '[puan-canli]')
     runs-on: ubuntu-latest
