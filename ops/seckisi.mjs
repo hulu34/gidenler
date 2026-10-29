@@ -38,6 +38,7 @@ for (const [dev, o] of DEV) {
   const ctx = await b.newContext(o);
   await yetkiliBaslik(ctx, HOST, HB); const sizinti = baslikSizintisi(ctx, HOST);
   const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(`${new URL(p.url()).pathname} ${e.message.slice(0, 160)}`));
+  p.on("response", (r) => { if (r.status() >= 400) { const u = new URL(r.url()); console.log(`  istek(${dev}) ${new URL(p.url()).pathname} → ${r.status()} ${u.hostname === HOST ? "" : u.hostname}${u.pathname}`); } });
   p.on("console", (m) => { if (m.type() === "error") console.log(`  konsol(${dev}) ${new URL(p.url()).pathname}: ${m.text().slice(0, 300)}`); });
   for (const lang of ["tr", "en"]) {
     console.log(`\n── ${dev} · ${lang}`);
