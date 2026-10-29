@@ -8,12 +8,19 @@ const admin = `https://${HOST}/api/admin/db/`;
 const res = []; const ok = (n, c, i = "") => { res.push(c); console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const rapor = async (s) => (await fetch(`${admin}?rapor=profil&slug=${s}`, { headers: H })).json();
 const post = async (b) => { const r = await fetch(admin, { method: "POST", headers: H, body: JSON.stringify({ target: "preview", ...b }) }); return { status: r.status, j: await r.json().catch(() => ({})) }; };
-const [A, B] = ["efes-pide-ve-lahmacun-sisli", "zennup-1844-fisekhane-zeytinburnu"];
 const icerik = (r) => JSON.stringify({ place: r.place, profile: r.profile, videos: r.videos, counts: r.counts });
+/* örnek için Google kaydı OLMAYAN iki profilli mekân seçilir (varsa öncelik içerik dosyalarındaki restoranlar) */
+const { readdirSync } = await import("node:fs");
+const aday = readdirSync(new URL("./profil/", import.meta.url)).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""))
+  .concat(["ciya-sofrasi-kadikoy", "kronotrop-cihangir-beyoglu", "leb-i-derya-beyoglu", "pandeli-fatih"]);
+const secilen = [];
+for (const s of aday) { const r = await rapor(s); if (r.place && !(r.google?.identifiers ?? []).length) secilen.push(s); if (secilen.length === 2) break; }
+const [A, B] = secilen;
+console.log(`  örnek mekânlar: ${secilen.join(", ")}`);
 
-const a0 = await rapor(A);
+const a0 = await rapor(A ?? aday[0]);
 ok("hedef ortam preview", a0.env === "preview", `env=${a0.env}`);
-if (a0.env !== "preview") process.exit(1);
+if (a0.env !== "preview" || secilen.length < 2) process.exit(1);
 const fx = await post({ action: "google-fixture", confirm: "EVET", slugs: [A, B] });
 const fa = fx.j.made?.find((m) => m.slug === A), fb = fx.j.made?.find((m) => m.slug === B);
 ok("örnek eşleşmeler kuruldu (auto + confirmed)", fx.status === 200 && fa?.status === "auto" && fb?.status === "confirmed", JSON.stringify(fx.j).slice(0, 160));
