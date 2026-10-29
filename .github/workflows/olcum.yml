@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-j7in50pea-hulu34.vercel.app    # canlı sürüm (fe54958, deneme eşiği)
-  PROFIL_HOST: gidenler-hw3dlurjn-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview fe54958, deneme eşiği)  # görsel Faz 1 Preview (kendi Neon dalı)
+  PROFIL_HOST: gidenler-2h5anwthr-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ddcd558, puan üretimi)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
@@ -146,6 +146,21 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: profil-sifreli, path: out/profil.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  puan:
+    if: contains(github.event.head_commit.message, '[puan]') || contains(github.event.head_commit.message, '[puan-canli]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/puan.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}", ADAY_HOST: "${{ env.ADAY_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[puan-canli]') && '1' || '0' }}" }
+      - if: always()
+        run: test -d out/puan && tar -C out -czf out/puan.tgz puan && rm -rf out/puan && openssl cms -encrypt -aes256 -binary -in out/puan.tgz -out out/puan.tgz.cms -outform DER ops/olcum.pem && rm out/puan.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: puan-sifreli, path: out/puan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   puan-veri:
     if: contains(github.event.head_commit.message, '[puan-veri]')
     runs-on: ubuntu-latest
