@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-dhces8uow-hulu34.vercel.app    # canlı sürüm (19ad933)
-  PROFIL_HOST: gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview dal adresi, ff47e1c işletme beyanı kodu)  # görsel Faz 1 Preview (kendi Neon dalı)
+  PROFIL_HOST: gidenler-cgvo63ew1-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ff47e1c, işletme beyanı kodu)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
