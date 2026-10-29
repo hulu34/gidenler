@@ -1,0 +1,682 @@
+{
+ "slug": "amara-sile-ocakbasi-restoran-sile",
+ "description": {
+  "value": "Şile'de, Balibey'de Fener Caddesi üzerinde ocakbaşı, meyhane ve lounge bir arada. Menüde kebaplar, serpme kahvaltı, mezeler, pizza ve burgerler var.",
+  "provider": "official_site",
+  "url": "https://www.amarasile.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Balibey Mah. Fener Cad. No:3, 34980 Şile, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.amarasile.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 216 711 42 36",
+  "provider": "official_site",
+  "url": "https://www.amarasile.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.amarasile.com/",
+  "provider": "official_site",
+  "url": "https://www.amarasile.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "amarasile",
+  "provider": "official_site",
+  "url": "https://www.amarasile.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Fr 09:00-24:00; Sa,Su 09:00-02:00",
+  "provider": "official_site",
+  "url": "https://www.amarasile.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki 'Rezervasyon Oluştur' bölümünden ya da telefonla.",
+  "provider": "official_site",
+  "url": "https://www.amarasile.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Sitede hafta içi 09.00–00.00, hafta sonu 09.00–02.00 yazıyor.",
+   "provider": "official_site",
+   "url": "https://www.amarasile.com/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Serpme kahvaltı kişi başı fiyatlı ve en az 2 kişi için servis ediliyor.",
+   "provider": "official_site",
+   "url": "https://qrmenuapp.akinsoft.com.tr/HS625P/amara/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://www.amarasile.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://qrmenuapp.akinsoft.com.tr/HS625P/amara/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Ocakbaşı · kebaplar",
+    "items": [
+     {
+      "name": "Adana Kebap",
+      "priceTry": 800
+     },
+     {
+      "name": "Alinazik Şiş",
+      "priceTry": 1250
+     },
+     {
+      "name": "Domatesli Kebap",
+      "priceTry": 900
+     },
+     {
+      "name": "Patlıcanlı Kebap",
+      "priceTry": 1150
+     },
+     {
+      "name": "Yoğurtlu Kebap",
+      "priceTry": 1100
+     },
+     {
+      "name": "Fıstıklı Kebap",
+      "priceTry": 1100
+     },
+     {
+      "name": "Urfa Kebap",
+      "priceTry": 800
+     },
+     {
+      "name": "Tavuk Şiş",
+      "priceTry": 730
+     },
+     {
+      "name": "Kuzu Şiş",
+      "priceTry": 1150
+     },
+     {
+      "name": "Çöp Şiş",
+      "priceTry": 1150
+     },
+     {
+      "name": "Çıtır Kanat",
+      "priceTry": 780
+     },
+     {
+      "name": "Tavuk Kanat",
+      "priceTry": 730
+     },
+     {
+      "name": "Karışık Kebap Ve Izgara ( Kişi Başı )",
+      "priceTry": 1400
+     },
+     {
+      "name": "Dana Lokum",
+      "priceTry": 1350
+     },
+     {
+      "name": "Dana Antrikot",
+      "priceTry": 1300
+     },
+     {
+      "name": "Kuzu Kaburğa",
+      "priceTry": 1150
+     },
+     {
+      "name": "Lahmacun Fındık",
+      "priceTry": 100
+     },
+     {
+      "name": "Lahmacun",
+      "priceTry": 320
+     },
+     {
+      "name": "Sarma Beyti",
+      "priceTry": 1150
+     },
+     {
+      "name": "Karışık Et Kbp ( Kişi Başı )",
+      "priceTry": 1500
+     },
+     {
+      "name": "Küşleme",
+      "priceTry": 1350
+     }
+    ]
+   },
+   {
+    "title": "Kahvaltı ve brunch",
+    "items": [
+     {
+      "name": "Serpme Kahvaltı",
+      "priceTry": 950,
+      "description": "Kişi başı fiyat; en az 2 kişi servis ediliyor · Beyaz Peynir, Tulum Peyniri (zeytin yağlı cevizli), Çecil Peyniri, Taze Kaşar, Eski kaşar, Vişneli Lor peynir, Misket peynir, Siyah Zeytin, Yeşil biberli Zeytin, Nutella, Acuka, Yunan Cacığı, Bal - Kaymak, Acuka …"
+     },
+     {
+      "name": "Kahvaltı Tabağı",
+      "priceTry": 950,
+      "description": "Vişne Reçeli, Nutella, Bal-Kaymak, Maydanoz, Domates, Salatalık, Kıl Biber, Eski Kaşar, Taze kaşar, Beyaz Peynir, Misket Peyniri, Çecil peynir, Yumurta (haşlanmış), Yeşil biberli Zeytin, Siyah Zeytin, Fırınlanmış peynirli Ekmek, Soslu sosis, Pişi, Sigara böregi, pastırma, kuru incir …"
+     },
+     {
+      "name": "Beyaz Peynirli Omlet",
+      "priceTry": 400
+     },
+     {
+      "name": "Patates Tava",
+      "priceTry": 250
+     }
+    ]
+   },
+   {
+    "title": "Atıştırmalıklar",
+    "items": [
+     {
+      "name": "Combo Tabağı",
+      "priceTry": 650,
+      "description": "Özel Sosları İle.."
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Roka Domates Salatası",
+      "priceTry": 450
+     },
+     {
+      "name": "Special Tavuklu Salata",
+      "priceTry": 700
+     },
+     {
+      "name": "Sezar Salata",
+      "priceTry": 600
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 400
+     },
+     {
+      "name": "Gavurdağ Salata",
+      "priceTry": 500
+     },
+     {
+      "name": "Mevsim Salata",
+      "priceTry": 400
+     }
+    ]
+   },
+   {
+    "title": "Burgerler",
+    "items": [
+     {
+      "name": "Hamburger",
+      "priceTry": 650
+     },
+     {
+      "name": "Cheesburger",
+      "priceTry": 700
+     }
+    ]
+   },
+   {
+    "title": "Pizza",
+    "items": [
+     {
+      "name": "Anadolu Pizza",
+      "priceTry": 850
+     },
+     {
+      "name": "Karışık Pizza",
+      "priceTry": 850
+     },
+     {
+      "name": "Margherita",
+      "priceTry": 650
+     }
+    ]
+   },
+   {
+    "title": "Ara sıcaklar",
+    "items": [
+     {
+      "name": "Güveç Mantar",
+      "priceTry": 550
+     },
+     {
+      "name": "Pastırmalı Humus",
+      "priceTry": 600
+     },
+     {
+      "name": "İçli Köfte ( Adet )",
+      "priceTry": 200
+     }
+    ]
+   },
+   {
+    "title": "Ana yemekler",
+    "items": [
+     {
+      "name": "AMARA Special Köfte",
+      "priceTry": 800
+     },
+     {
+      "name": "Saç Kavurma Tavuk",
+      "priceTry": 900
+     },
+     {
+      "name": "Saç Kavurma Etli",
+      "priceTry": 1250
+     },
+     {
+      "name": "Izgara Somon",
+      "priceTry": 900
+     },
+     {
+      "name": "Deniz levreği",
+      "description": "Menüde 3.200 ₺ yazıyor; porsiyon mu kilo mu belirtilmiyor, işletmeye sorun"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "San Sebastian Cheesecake ( çikolatalı )",
+      "priceTry": 400
+     },
+     {
+      "name": "Dondurmalı Islak Kek",
+      "priceTry": 400
+     },
+     {
+      "name": "Çikolatalı Sufle",
+      "priceTry": 450,
+      "description": "(Dondurma ile)"
+     },
+     {
+      "name": "Meyve Tabağı",
+      "priceTry": 500,
+      "description": "(Mevsim meyveleri)"
+     },
+     {
+      "name": "Katmer Dondurmalı",
+      "priceTry": 900
+     },
+     {
+      "name": "Künefe",
+      "priceTry": 500
+     },
+     {
+      "name": "Sütlaç",
+      "priceTry": 400
+     }
+    ]
+   },
+   {
+    "title": "Çay ve kahve",
+    "items": [
+     {
+      "name": "Demleme Çay",
+      "priceTry": 50
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 150
+     }
+    ]
+   },
+   {
+    "title": "Meşrubat ve soft içecekler",
+    "items": [
+     {
+      "name": "Coca Cola Kutu 330ML",
+      "priceTry": 150,
+      "description": "Zero"
+     },
+     {
+      "name": "Fanta Kutu 330ML",
+      "priceTry": 150
+     },
+     {
+      "name": "Cappy Meyve Kutu 330ML",
+      "priceTry": 150,
+      "description": "Vişne / Şeftali / Karışık / Portakal"
+     },
+     {
+      "name": "Fuse Tea Kutu 330ML",
+      "priceTry": 150,
+      "description": "Limon / Şeftali"
+     },
+     {
+      "name": "Red Bull Energy Drink",
+      "priceTry": 270
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 150
+     },
+     {
+      "name": "Soda 30 CL",
+      "priceTry": 120
+     },
+     {
+      "name": "Su",
+      "priceTry": 60
+     },
+     {
+      "name": "Sıkma Portakal Suyu",
+      "priceTry": 250
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 130
+     },
+     {
+      "name": "Soda 75 CL",
+      "priceTry": 220
+     },
+     {
+      "name": "Şalgam",
+      "priceTry": 130,
+      "description": "Sade / Acı"
+     },
+     {
+      "name": "Limonata",
+      "priceTry": 160
+     }
+    ]
+   },
+   {
+    "title": "Kırmızı şaraplar",
+    "items": [
+     {
+      "name": "Şarap Kadeh Kırmızı",
+      "priceTry": 550,
+      "description": "(doluca)"
+     },
+     {
+      "name": "Sarafin Merlot",
+      "priceTry": 3500
+     },
+     {
+      "name": "Signium Kırmızı",
+      "priceTry": 3950
+     },
+     {
+      "name": "Sarafin Shiraz",
+      "priceTry": 3500
+     },
+     {
+      "name": "Sarafin Cabernet Sauvignon",
+      "priceTry": 3500
+     },
+     {
+      "name": "Talay Kuntra",
+      "priceTry": 2000
+     },
+     {
+      "name": "Talay Malbec",
+      "priceTry": 2000
+     },
+     {
+      "name": "Talay Cabernet Sauviğnon",
+      "priceTry": 2000
+     },
+     {
+      "name": "Porta Diverti Kırmızı",
+      "priceTry": 2250
+     },
+     {
+      "name": "Porta Caeli Ament",
+      "priceTry": 3500
+     }
+    ]
+   },
+   {
+    "title": "Beyaz şaraplar",
+    "items": [
+     {
+      "name": "Şarap Kadeh Beyaz",
+      "priceTry": 550,
+      "description": "(doluca)"
+     },
+     {
+      "name": "Signium Beyaz",
+      "priceTry": 3500
+     },
+     {
+      "name": "Sarafin Chardonnay",
+      "priceTry": 3500
+     },
+     {
+      "name": "Sarafin Füme Blanc",
+      "priceTry": 3500
+     },
+     {
+      "name": "Talay Assos Chordonay",
+      "priceTry": 2000
+     },
+     {
+      "name": "Talay Çavuş",
+      "priceTry": 2000
+     },
+     {
+      "name": "Talay Dömisek",
+      "priceTry": 2000
+     },
+     {
+      "name": "Porta Caeli Pacem",
+      "priceTry": 2850
+     },
+     {
+      "name": "Porta Diverti S.blanc",
+      "priceTry": 2550
+     },
+     {
+      "name": "Porta Caeli Felici",
+      "priceTry": 2650
+     }
+    ]
+   },
+   {
+    "title": "Roze şaraplar",
+    "items": [
+     {
+      "name": "Şarap Roze Kadeh",
+      "priceTry": 550,
+      "description": "(doluca)"
+     },
+     {
+      "name": "Doluca Klasik Roze 70 Cl",
+      "priceTry": 2000
+     },
+     {
+      "name": "Sarafin Roze",
+      "priceTry": 3500
+     },
+     {
+      "name": "Leona Blush",
+      "priceTry": 2000
+     },
+     {
+      "name": "Talay Blush",
+      "priceTry": 2000
+     },
+     {
+      "name": "Porta Diverti Roze",
+      "priceTry": 2550
+     }
+    ]
+   },
+   {
+    "title": "Bira",
+    "items": [
+     {
+      "name": "Bomonti Filtresiz 50 CL",
+      "priceTry": 350
+     },
+     {
+      "name": "Efes Pilsen 33 CL",
+      "priceTry": 350
+     },
+     {
+      "name": "Miller 33 CL",
+      "priceTry": 350
+     },
+     {
+      "name": "Efes Malt 50 Cl",
+      "priceTry": 350
+     }
+    ]
+   },
+   {
+    "title": "Rakı",
+    "items": [
+     {
+      "name": "Yeni Rakı 35 CL",
+      "priceTry": 1650
+     },
+     {
+      "name": "Yeni Rakı 70 CL",
+      "priceTry": 2800
+     },
+     {
+      "name": "Yeni Rakı Yeni Seri 35 CL",
+      "priceTry": 1650
+     },
+     {
+      "name": "Yeni Rakı Yeni Seri 70 CL",
+      "priceTry": 2800
+     },
+     {
+      "name": "Tekirdağ Altın Seri 35 CL",
+      "priceTry": 2100
+     },
+     {
+      "name": "Tekirdağ Altın Seri 70 CL",
+      "priceTry": 3950
+     },
+     {
+      "name": "Beylerbeyi Göbek 35 CL",
+      "priceTry": 2200
+     },
+     {
+      "name": "Beylerbeyi Göbek 70 CL",
+      "priceTry": 4100
+     },
+     {
+      "name": "Rakı Kadeh Duble",
+      "priceTry": 500
+     },
+     {
+      "name": "Yeni Rakı 50 cl",
+      "priceTry": 2400
+     },
+     {
+      "name": "Yeni Rakı Yeni Seri 50 cl",
+      "priceTry": 2400
+     },
+     {
+      "name": "Tekirdağ Altın Seri 20 cl",
+      "priceTry": 1800
+     },
+     {
+      "name": "Tekirdağ Altın Seri 50 cl",
+      "priceTry": 2800
+     },
+     {
+      "name": "Beylerbeyi Göbek 20 cl",
+      "priceTry": 1650
+     },
+     {
+      "name": "Beylerbeyi Göbek 50 cl",
+      "priceTry": 3200
+     },
+     {
+      "name": "Beylerbeyi Göbek 100 Cl",
+      "priceTry": 5500
+     },
+     {
+      "name": "SARI ZEYBEK 35 Cl",
+      "priceTry": 2300
+     },
+     {
+      "name": "SARI ZEYBEK 70 Cl",
+      "priceTry": 4500
+     },
+     {
+      "name": "Rakı Kadeh Tek",
+      "priceTry": 300
+     }
+    ]
+   },
+   {
+    "title": "Cin",
+    "items": [
+     {
+      "name": "Cin Tonic",
+      "priceTry": 650
+     }
+    ]
+   },
+   {
+    "title": "Votka",
+    "items": [
+     {
+      "name": "Votka Enerji",
+      "priceTry": 650
+     }
+    ]
+   },
+   {
+    "title": "Viski",
+    "items": [
+     {
+      "name": "Viski Kadeh",
+      "priceTry": 750
+     }
+    ]
+   },
+   {
+    "title": "Mezeler",
+    "items": [
+     {
+      "name": "Speciyel Mezeler",
+      "priceTry": 320
+     },
+     {
+      "name": "Klasik Mezeler",
+      "priceTry": 280
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar (teras)",
+    "items": [
+     {
+      "name": "Çikolatalı Pastalar",
+      "priceTry": 300
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site (amarasile.com): adres, telefon, saatler; menü bağlantısı sitedeki QR menü (qrmenuapp.akinsoft.com.tr/HS625P/amara), TL, tarihsiz. 'Deniz levreği' fiyatının birimi yazmıyor → fiyat sütununa yazılmadı, açıklamada. Büyük harfli adlar okunurluk için baş harf büyük yazıldı. Video bulunamadı."
+}

@@ -1,0 +1,383 @@
+{
+ "slug": "konya-mevlana-bahcelievler",
+ "description": {
+  "value": "Bahçelievler'de, Basın Sitesi'nde Konya mutfağı yapan bir restoran. Menüde etli ekmek, bıçak arası ve Mevlana pide, kebaplar, dürümler ve künefe var.",
+  "provider": "official_site",
+  "url": "https://konyamevlana.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Bahçelievler Mah. Elvan Sk. No:1/A, 34180 Bahçelievler, İstanbul",
+  "provider": "official_site",
+  "url": "https://konyamevlana.com.tr/iletisim/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 441 75 59",
+  "provider": "official_site",
+  "url": "https://konyamevlana.com.tr/iletisim/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://konyamevlana.com.tr/",
+  "provider": "official_site",
+  "url": "https://konyamevlana.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "İşletme menüdeki fiyatların paket servis menüsüyle aynı kaynaktan güncellendiğini belirtiyor.",
+   "provider": "official_site",
+   "url": "https://konyamevlana.com.tr/menu/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Pide ve kebaplarda 1,5 porsiyon seçeneği var; fiyatı açıklamada yazıyor.",
+   "provider": "official_site",
+   "url": "https://konyamevlana.com.tr/menu/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://konyamevlana.com.tr/menu/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Tereyağlı Mercimek Çorbası",
+      "priceTry": 150,
+      "description": "Ekmek ile"
+     },
+     {
+      "name": "Bamya Çorbası",
+      "priceTry": 320,
+      "description": "Ekmek ile"
+     }
+    ]
+   },
+   {
+    "title": "Fırın Ürünleri",
+    "items": [
+     {
+      "name": "Lahmacun",
+      "priceTry": 170,
+      "description": "Mevsim salata ile"
+     },
+     {
+      "name": "Etli Ekmek",
+      "priceTry": 410,
+      "description": "İnce bir hamur üzerine kıyma, sebzeler ve baharatların eklenerek fırında pişirildiği bir yemektir. · 1,5 porsiyon 615 ₺"
+     },
+     {
+      "name": "Mevlana Pide",
+      "priceTry": 510,
+      "description": "Kıyma, kaşar peyniri, domates, biber · 1,5 porsiyon 765 ₺"
+     },
+     {
+      "name": "Bıçak Arası Pide",
+      "priceTry": 510,
+      "description": "Konyanın eşsiz lezzeti ve yanında közlenmiş biber ile servis edilir. · 1,5 porsiyon 765 ₺"
+     },
+     {
+      "name": "Bıçak Arası Mevlana Pide",
+      "priceTry": 560,
+      "description": "Mevsim salata ile · 1,5 porsiyon 840 ₺"
+     },
+     {
+      "name": "Sucuklu Kaşarlı Pide",
+      "priceTry": 510,
+      "description": "Sucuk, kaşar peyniri · 1,5 porsiyon 765 ₺"
+     },
+     {
+      "name": "Tulum Peynirli Pide",
+      "priceTry": 380,
+      "description": "1,5 porsiyon 570 ₺"
+     },
+     {
+      "name": "Sebzeli Peynirli Pide",
+      "priceTry": 400,
+      "description": "Domates, yeşil biber · 1,5 porsiyon 600 ₺"
+     },
+     {
+      "name": "Spesiyal Mevlana Pide",
+      "priceTry": 800,
+      "description": "Adet olarak servis edilmektedir. · 1,5 porsiyon 1.200 ₺"
+     },
+     {
+      "name": "Peynirli Kavurmalı Pide",
+      "priceTry": 530,
+      "description": "Peynir, kavurma · 1,5 porsiyon 795 ₺"
+     },
+     {
+      "name": "Tavuklu Pide",
+      "priceTry": 430,
+      "description": "Tavuk · 1,5 porsiyon 645 ₺"
+     },
+     {
+      "name": "Karışık Pide",
+      "priceTry": 710,
+      "description": "Kıyma, kaşar peyniri, kuşbaşı · 1,5 porsiyon 1.065 ₺"
+     },
+     {
+      "name": "Mevlana Special",
+      "priceTry": 800,
+      "description": "1,5 porsiyon 1.200 ₺"
+     },
+     {
+      "name": "Peynirli Yumurtalı Pide",
+      "priceTry": 390,
+      "description": "1,5 porsiyon 585 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Kebaplar",
+    "items": [
+     {
+      "name": "Adana Kebap",
+      "priceTry": 520,
+      "description": "Közlenmiş yeşil biber, közlenmiş domates, bulgur pilavı, lavaş ekmeği · 1,5 porsiyon 780 ₺"
+     },
+     {
+      "name": "Urfa Kebap",
+      "priceTry": 520,
+      "description": "Közlenmiş yeşil biber, közlenmiş domates, bulgur pilavı, lavaş ekmeği · 1,5 porsiyon 780 ₺"
+     },
+     {
+      "name": "Beyti Sarma",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Dana Çöp Şiş",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Dana Saç Kavurma",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Dana Şiş",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Domatesli Kebap",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Fırın Kebap",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Karışık Izgara",
+      "priceTry": 800,
+      "description": "1,5 porsiyon 1.200 ₺"
+     },
+     {
+      "name": "Koalisyon",
+      "priceTry": 800,
+      "description": "1,5 porsiyon 1.200 ₺"
+     },
+     {
+      "name": "Kuzu Çöp Şiş",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Kuzu Saç Kavurma",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Patlıcanlı Kebap",
+      "priceTry": 580,
+      "description": "1,5 porsiyon 870 ₺"
+     },
+     {
+      "name": "Tavuk Kanat",
+      "priceTry": 520,
+      "description": "1,5 porsiyon 780 ₺"
+     },
+     {
+      "name": "Tavuk Saç Kavurma",
+      "priceTry": 480,
+      "description": "1,5 porsiyon 720 ₺"
+     },
+     {
+      "name": "Tavuk Şiş",
+      "priceTry": 520,
+      "description": "1,5 porsiyon 780 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Dürümler",
+    "items": [
+     {
+      "name": "Adana Dürüm",
+      "priceTry": 430
+     },
+     {
+      "name": "Dana Şiş Dürüm",
+      "priceTry": 480
+     },
+     {
+      "name": "Kuzu Şiş Dürüm",
+      "priceTry": 480
+     },
+     {
+      "name": "Saç Kavurma Dürüm",
+      "priceTry": 490
+     },
+     {
+      "name": "Tandır Dürüm",
+      "priceTry": 490
+     },
+     {
+      "name": "Tavuk Saç Kavurma Dürüm",
+      "priceTry": 470
+     },
+     {
+      "name": "Tavuk Şiş Dürüm",
+      "priceTry": 430
+     },
+     {
+      "name": "Urfa Dürüm",
+      "priceTry": 430
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Cacık",
+      "priceTry": 150
+     },
+     {
+      "name": "Çiğ Köfte Porsiyon",
+      "priceTry": 350
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 250
+     },
+     {
+      "name": "Göbek Salata",
+      "priceTry": 250
+     },
+     {
+      "name": "İçli Köfte",
+      "priceTry": 180
+     },
+     {
+      "name": "Mevsim Salata",
+      "priceTry": 250
+     },
+     {
+      "name": "Nur Dağı Salata",
+      "priceTry": 300
+     },
+     {
+      "name": "Söğüş",
+      "priceTry": 200
+     },
+     {
+      "name": "Yoğurt",
+      "priceTry": 170
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Fırın Sütlaç",
+      "priceTry": 180
+     },
+     {
+      "name": "Kadayıf",
+      "priceTry": 260
+     },
+     {
+      "name": "Kaymaklı Kadayıf",
+      "priceTry": 280
+     },
+     {
+      "name": "Kaymaklı Künefe",
+      "priceTry": 280
+     },
+     {
+      "name": "Künefe",
+      "priceTry": 260
+     },
+     {
+      "name": "Saç Arası",
+      "priceTry": 260
+     },
+     {
+      "name": "Saç Arası Kaymaklı",
+      "priceTry": 280
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Ayran",
+      "priceTry": 70
+     },
+     {
+      "name": "Coca Cola",
+      "priceTry": 70
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 80
+     },
+     {
+      "name": "Ice Tea",
+      "priceTry": 80
+     },
+     {
+      "name": "Meyve Suyu",
+      "priceTry": 80
+     },
+     {
+      "name": "Soda",
+      "priceTry": 30
+     },
+     {
+      "name": "Su",
+      "priceTry": 15
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=mkC_NUR1_Vc",
+   "credit": "Hicran Kömürcü · Ocak 2013 · eski tarihli tanıtım klibi",
+   "category": "ziyaretci",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=SxHSTzbnYSk",
+   "credit": "Hicran Kömürcü · Ocak 2013 · eski tarihli tanıtım klibi",
+   "category": "ziyaretci",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (konyamevlana.com.tr, 'Konya Mevlana Basın Sitesi · Bahçelievler'): /menu (63 ürün, TL, tarihsiz; 1,5 porsiyon fiyatları açıklamada), /iletisim (adres, telefon). Çalışma saati yayımlanmıyor. Videolar: 2013 tarihli iki klip; biri açıklamasında şubenin açık adresini (Elvan Sok. No:1/A) veriyor, diğerinin başlığı 'Bahçelievler Basın Sitesi'. Kanalın işletmeyle ilişkisi bilinmiyor → 'ziyaretçi' olarak işaretlendi."
+}

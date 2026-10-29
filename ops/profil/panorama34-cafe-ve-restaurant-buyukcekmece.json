@@ -1,0 +1,1160 @@
+{
+ "slug": "panorama34-cafe-ve-restaurant-buyukcekmece",
+ "description": {
+  "value": "Büyükçekmece'de, göl ve deniz manzaralı bir kafe-restoran. Bahçe, açılır kapanır teras ve kapalı salon var; çocuk oyun parkı ve oyun salonu bulunuyor. Menüde serpme kahvaltı, makarna, pizza, ızgara etler ve tatlılar var.",
+  "provider": "official_site",
+  "url": "https://panorama34cafe.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Cumhuriyet Mah. Yıldıray Çınar Sk. No:45, Büyükçekmece, İstanbul",
+  "provider": "official_site",
+  "url": "https://panorama34cafe.com/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 873 48 37",
+  "provider": "official_site",
+  "url": "https://panorama34cafe.com/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://panorama34cafe.com/",
+  "provider": "official_site",
+  "url": "https://panorama34cafe.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "panorama34cafe_restaurant",
+  "provider": "official_site",
+  "url": "https://panorama34cafe.com/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki 'Rezervasyon' sayfasından ya da telefonla (GSM: +90 555 076 76 34).",
+  "provider": "official_site",
+  "url": "https://panorama34cafe.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Serpme kahvaltı kişi başı fiyatlı.",
+   "provider": "official_site",
+   "url": "https://panorama34cafe.qr-appmenu.com/menu/kahvalti",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Günün çorbası her gün değişiyor; çeşidi işletmeye sorulmalı.",
+   "provider": "official_site",
+   "url": "https://panorama34cafe.qr-appmenu.com/menu/kahvalti",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Mekânda çocuk oyun parkı ve kapalı oyun salonu var.",
+   "provider": "official_site",
+   "url": "https://panorama34cafe.com/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "cocuk_dostu": true
+  },
+  "provider": "official_site",
+  "url": "https://panorama34cafe.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://panorama34cafe.qr-appmenu.com/menu/kahvalti",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 260,
+      "description": "Sahanda veya çırpılmış seçenekleri ile sucuklu yumurta"
+     },
+     {
+      "name": "Sade Yumurta",
+      "priceTry": 190,
+      "description": "Çırpılmış veya Sahanda seçenekleri ile..."
+     },
+     {
+      "name": "Kavurmalı Yumurta",
+      "priceTry": 390,
+      "description": "Dana kavurma ve kaşar peynir ile çırpılmış veya sahanda yumurta"
+     },
+     {
+      "name": "Karışık Tost",
+      "priceTry": 310,
+      "description": "Kaşar ve sucuk, ızgara tost"
+     },
+     {
+      "name": "Peynirli Yumurta",
+      "priceTry": 220,
+      "description": "Sahanda veya çırpılmış seçenekleri ile peynirli yumurta.."
+     },
+     {
+      "name": "Patatesli Gözleme",
+      "priceTry": 310,
+      "description": "İnce hamur, patates dolgu"
+     },
+     {
+      "name": "Peynirli Gözleme",
+      "priceTry": 310,
+      "description": "İnce hamur, beyaz peynir dolgu"
+     },
+     {
+      "name": "Kaşarlı Tost",
+      "priceTry": 230,
+      "description": "Kaşar peynirli ızgara tost"
+     },
+     {
+      "name": "Serpme Kahvaltı - Kişi Başı",
+      "priceTry": 680,
+      "description": "Kişi başı Şeklinde Servis Edilmektedir. Sahanda Yumurta, Yeşil & Siyah Zeytin, Çeçil, Kaşar, Dil, Helim & Tulum Peyniri, Reçel, Bal, Tahin-Pekmez, Kaymak, Nutella, Tereyağ, Ceviz, Patates Kızartması, Ezme, Patlıcan Sosu, Salam, Dana Jambon, Hind Füme, Sigara Böreği, Sucuk, Sosis, Cherry Domates, Sal"
+     },
+     {
+      "name": "Junior Kahvaltı",
+      "priceTry": 570,
+      "description": "Haşlanmış Yumurta, Beyaz Peynir, Kaşar, Çeçil Peyniri, Sigara Böreği, Zeytin, Domates, Salatalık, Reçel, Tereyağ, Bal, Nutella, Salam, Sosis, Parmak Patates"
+     },
+     {
+      "name": "Sucuklu Tost",
+      "priceTry": 280,
+      "description": "Sucuklu ızgara tost"
+     },
+     {
+      "name": "Muhlama - Kuymak",
+      "priceTry": 540,
+      "description": "Müşterilerimiz tarafından oldukça beğenilen hakiki Rize mıhlaması"
+     },
+     {
+      "name": "Menemen",
+      "priceTry": 350,
+      "description": "Mevsiminde toplanmış sulu domatesler, taze yeşil biberler ve çiftlik yumurtası ile hazırlanan geleneksel lezzet. (İsteğe bağlı soğanlı/soğansız)."
+     },
+     {
+      "name": "Kavurmalı Kaşarlı Tost",
+      "priceTry": 350,
+      "description": "Dana kavurma ve kaşar peynirli ızgara tost"
+     },
+     {
+      "name": "Kaşarlı Menemen",
+      "priceTry": 370,
+      "description": "Taze domates, yeşil biber ve yumurta ile kaşar peynirli menemen"
+     },
+     {
+      "name": "Beyaz Peynirli Tost",
+      "priceTry": 230,
+      "description": "Beyaz peynir ve domates ile ızgara tost"
+     },
+     {
+      "name": "Sucuklu Menemen",
+      "priceTry": 400,
+      "description": "Taze domates, yeşil biber, yumurta ve sucuklu menemen"
+     },
+     {
+      "name": "Kaşarlı Sucuklu Menemen",
+      "priceTry": 420,
+      "description": "Taze domates, yeşil biber, yumurta, kaşar peyniri ve sucuklu menemen"
+     },
+     {
+      "name": "Sade Omlet",
+      "priceTry": 210,
+      "description": "Yanında yeşillik ile"
+     },
+     {
+      "name": "Peynirli Omlet",
+      "priceTry": 240,
+      "description": "Beyaz peynir, yanında yeşillik ile"
+     },
+     {
+      "name": "Sucuklu Omlet",
+      "priceTry": 280,
+      "description": "Yanında yeşillik ile"
+     },
+     {
+      "name": "Mantarlı Omlet",
+      "priceTry": 240,
+      "description": "Kültür mantarı, kaşar peyniri, yanında yeşillik ile"
+     },
+     {
+      "name": "Karışık Omlet",
+      "priceTry": 300,
+      "description": "Sucuk, sosis, salam, kaşar peyniri, yanında yeşillik ile"
+     },
+     {
+      "name": "Yumurtalı Ekmek",
+      "priceTry": 180,
+      "description": "Baharatlı yumurta ile marine edilmiş ekmek dilimleri, reçel ve yeşillik ile"
+     }
+    ]
+   },
+   {
+    "title": "Atıştırmalık",
+    "items": [
+     {
+      "name": "Panorama Mix",
+      "priceTry": 550,
+      "description": "Parmak patates üzerine nugget, soğan halkası, sosis, paçanga böreği, çıtır tavuk parçaları"
+     },
+     {
+      "name": "Parmak Patates",
+      "priceTry": 220,
+      "description": "Çıtır parmak patates"
+     },
+     {
+      "name": "Elma Dilim Patates",
+      "priceTry": 240,
+      "description": "Dilim şeklinde fırın patates"
+     },
+     {
+      "name": "Acılı Fırın Patates",
+      "priceTry": 300,
+      "description": "Elma dilim patates, özel acı sos ve kaşar peyniri"
+     },
+     {
+      "name": "Sosis Sepeti",
+      "priceTry": 290,
+      "description": "Kızartılmış kokteyl sosisler, patatesler eşliğinde"
+     },
+     {
+      "name": "Günün Çorbası",
+      "priceTry": 180,
+      "description": "Çorba menümüz günlük değişmektedir. Lütfen sorunuz."
+     },
+     {
+      "name": "Sigara Böreği",
+      "priceTry": 220,
+      "description": "Peynir dolgulu sigara börekleri, domates, salatalık ve söğüş ile"
+     },
+     {
+      "name": "Çıtır Parmak Tavuk",
+      "priceTry": 420,
+      "description": "Panelenmiş çıtır tavuk parçaları, parmak patates eşliğinde"
+     },
+     {
+      "name": "Chicken Nugget's",
+      "priceTry": 340,
+      "description": "Çıtır tavuk nugget, yanında sos ile"
+     },
+     {
+      "name": "Soğan Halkası",
+      "priceTry": 300,
+      "description": "Kızartılmış soğan halkaları 8 adet, parmak patates eşliğinde"
+     },
+     {
+      "name": "Fırın Mantar",
+      "priceTry": 400,
+      "description": "Tereyağlı, kaşarlı fırın mantar"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Köfteli Salata",
+      "priceTry": 480,
+      "description": "Izgara köfte parçaları, karışık yeşillik, dilim zeytin, domates, salatalık, renkli biber"
+     },
+     {
+      "name": "Hellim Peynirli Salata",
+      "priceTry": 380,
+      "description": "Karışık yeşillik, çeri domates, salatalık, dilimli zeytin, mısır, közlenmiş kırmızı biber, hellim peyniri"
+     },
+     {
+      "name": "Ton Balıklı Salata",
+      "priceTry": 390,
+      "description": "Ton balığı, karışık yeşillik, mısır, dilim zeytin, çeri domates, salatalık, yumurta, halka soğan"
+     },
+     {
+      "name": "Sezar Tavuklu Salata",
+      "priceTry": 430,
+      "description": "Izgara tavuk parçaları, göbek marul, sezar sos, kroton ekmek, çeri domates, parmesan peyniri"
+     },
+     {
+      "name": "Roka Salata",
+      "priceTry": 240,
+      "description": "Roka, domates, salatalık, tulum peyniri, ceviz, nar ekşisi, havuç"
+     },
+     {
+      "name": "Yeşil Salata",
+      "priceTry": 240,
+      "description": "Çeri domates, nane, havuç, california biberler, salatalık, yeşil elma, vinegret sos"
+     },
+     {
+      "name": "Akdeniz Salata",
+      "priceTry": 270,
+      "description": "Karışık yeşillik, çeri domates, salatalık, dilim zeytin, mısır,peynir"
+     },
+     {
+      "name": "Izgara Tavuk Salata",
+      "priceTry": 430,
+      "description": "Izgara tavuk dilimleri, karışık akdeniz yeşilliği, domates, salatalık, mısır, zeytin, pesto sos"
+     },
+     {
+      "name": "Bonfile Salata",
+      "priceTry": 600,
+      "description": "Izgara bonfile parçaları, karışık yeşillik, çeri domates, salatalık, zeytin, mısır, yağ ve limon sos eşliğinde"
+     }
+    ]
+   },
+   {
+    "title": "Makarnalar",
+    "items": [
+     {
+      "name": "Chicken Alfredo",
+      "priceTry": 470,
+      "description": "Fettuccine makarna, tavuk parçaları, mantar, pesto sos, krema, parmesan peyniri"
+     },
+     {
+      "name": "Mantarlı Tortellini",
+      "priceTry": 490,
+      "description": "Peynir dolgulu tortellini makarna, mantar, krema, pesto sos, parmesan peyniri"
+     },
+     {
+      "name": "Beef Alfredo",
+      "priceTry": 570,
+      "description": "Fettuccine makarna, et parçaları, mantar, pesto sos, krema, parmesan peyniri"
+     },
+     {
+      "name": "Penne All'Arrabbiata",
+      "priceTry": 350,
+      "description": "Penne makarna, domates sos, dilim zeytin, jalapeño biberi, parmesan peyniri"
+     },
+     {
+      "name": "Köri Soslu Penne",
+      "priceTry": 470,
+      "description": "Penne makarna, tavuk parçaları, mantar, köri baharat, krema, parmesan peyniri"
+     },
+     {
+      "name": "Spaghetti Napolitan",
+      "priceTry": 320,
+      "description": "Spaghetti makarna, domates sos, dilim zeytin, parmesan peyniri"
+     },
+     {
+      "name": "Mantı",
+      "priceTry": 490,
+      "description": "El yapımı özel mantı, yoğurt ve marine edilmiş özel sos ile servis edilir"
+     },
+     {
+      "name": "Etli Noodle",
+      "priceTry": 470,
+      "description": "Et parçaları ile wok usulü hazırlanan noodle"
+     },
+     {
+      "name": "Sebzeli Noodle",
+      "priceTry": 320,
+      "description": "Taze sebzeler ile wok usulü hazırlanan noodle"
+     },
+     {
+      "name": "Tavuklu Noodle",
+      "priceTry": 420,
+      "description": "Tavuk parçaları ile wok usulü hazırlanan noodle"
+     }
+    ]
+   },
+   {
+    "title": "Burgerler ve Sandviçler",
+    "items": [
+     {
+      "name": "Bacon Burger",
+      "priceTry": 530,
+      "description": "180 gr dana köfte, çıtır pastırma, karamelize soğan, cheddar ve burger sosu"
+     },
+     {
+      "name": "Hamburger",
+      "priceTry": 450,
+      "description": "180 gr dana köfte, marul, domates, soğan, kornişon ve özel burger sosu"
+     },
+     {
+      "name": "Club Sandviç",
+      "priceTry": 320,
+      "description": "Tavuk, dana janbon, marul, domates, göz yumurta ve özel sos ile hazırlanan klasik kulüp sandviç"
+     },
+     {
+      "name": "Cheese Burger",
+      "priceTry": 490,
+      "description": "180 gr dana köfte, cheddar peyniri, marul, domates ve burger sosu"
+     },
+     {
+      "name": "Hellim Peynirli Sandviç",
+      "priceTry": 280,
+      "description": "Izgara hellim peyniri, roka, domates ve pesto sos ile servis edilir"
+     },
+     {
+      "name": "Mexicano Burger",
+      "priceTry": 510,
+      "description": "Acı biber sosu, jalapeño, cheddar peyniri ve dana köfte ile ateşli bir lezzet"
+     },
+     {
+      "name": "Ton Balıklı Sandviç",
+      "priceTry": 300,
+      "description": "Akdeniz ton balığı, salatalık turşusu, marul ve mayonez ile"
+     },
+     {
+      "name": "Chicken Sandviç",
+      "priceTry": 320,
+      "description": "Izgara tavuk, marul, domates, kornişon ve ranch sos ile hazırlanır"
+     },
+     {
+      "name": "Chicken Burger",
+      "priceTry": 390,
+      "description": "Crispy tavuk, marul, domates, kornişon turşusu ve özel sos"
+     }
+    ]
+   },
+   {
+    "title": "Dürüm ve Fajitalar",
+    "items": [
+     {
+      "name": "Beef Fajita",
+      "priceTry": 800,
+      "description": "Fajita demiri içinde sotelenmiş soğan, mantar, renkli biber ve jalapeño üzerine bonfile parçaları; özel fajita sosu, baharatlı klasik fajita sosları ve lavaş ile servis edilir"
+     },
+     {
+      "name": "Et Dürüm",
+      "priceTry": 530,
+      "description": "Bonfile parçaları, mantar, renkli biber, jalapeño biberi, soğan, rendelenmiş kaşar peyniri, patates ve karışık salata"
+     },
+     {
+      "name": "Tavuk Dürüm",
+      "priceTry": 420,
+      "description": "Tavuk parçaları, mantar, renkli biber, jalapeño biberi, soğan, rendelenmiş kaşar peyniri, patates ve karışık salata"
+     },
+     {
+      "name": "Chicken Fajita",
+      "priceTry": 600,
+      "description": "Fajita demiri içinde sotelenmiş soğan, mantar, renkli biber ve jalapeño üzerine tavuk parçaları; özel fajita sosu, baharatlı klasik fajita sosları ve lavaş ile servis edilir"
+     },
+     {
+      "name": "Köfteli Dürüm",
+      "priceTry": 470,
+      "description": "Köfte parçaları, mantar, renkli biber, jalapeño biberi, soğan, rendelenmiş kaşar peyniri, patates ve karışık salata"
+     }
+    ]
+   },
+   {
+    "title": "Pizzalar",
+    "items": [
+     {
+      "name": "Special Pizza",
+      "priceTry": 420,
+      "description": "Pizza sosu, mozarella peyniri, sucuk, salam, sosis, renkli biber, mantar, mısır, dilim zeytin"
+     },
+     {
+      "name": "Margarita Pizza",
+      "priceTry": 390,
+      "description": "Pizza sosu, mozarella peyniri, domates"
+     },
+     {
+      "name": "Bisteca Pizza",
+      "priceTry": 680,
+      "description": "Pizza sosu, mozarella peyniri, bonfile parçaları, renkli biber, jalapeño biberi; üzerine roka ve parmesan peyniri"
+     },
+     {
+      "name": "Fungi Pizza",
+      "priceTry": 400,
+      "description": "Pizza sosu, mozarella peyniri, mantar"
+     },
+     {
+      "name": "Tavuklu Pizza",
+      "priceTry": 440,
+      "description": "Pizza sosu, mozarella peyniri, tavuk parçaları, renkli biber, mantar, mısır"
+     },
+     {
+      "name": "Mexican Pizza",
+      "priceTry": 430,
+      "description": "Pizza sosu, mozarella peyniri, sucuk, jalapeño biberi, mısır, renkli biber"
+     },
+     {
+      "name": "Ton Balıklı Pizza",
+      "priceTry": 460,
+      "description": "Pizza sosu, mozarella peyniri, ton balığı, dilim zeytin, mısır, kurutulmuş domates"
+     },
+     {
+      "name": "Akdeniz Pizza",
+      "priceTry": 410,
+      "description": "Pizza sosu, mozarella peyniri, mantar, beyaz peynir, mısır, dilim zeytin, domates"
+     },
+     {
+      "name": "Alaturca Pizza",
+      "priceTry": 500,
+      "description": "Pizza sosu, mozarella peyniri, sucuk, salam, sosis, kavurma, kurutulmuş domates"
+     },
+     {
+      "name": "4 Peynirli Pizza",
+      "priceTry": 450,
+      "description": "Pizza sosu, mozarella peyniri, cheddar peyniri, parmesan peyniri, köy peyniri"
+     }
+    ]
+   },
+   {
+    "title": "Tavuk",
+    "items": [
+     {
+      "name": "Sac Tavuk Sote",
+      "priceTry": 530,
+      "description": "Tavuk dilimleri, renkli biber, jalapeño biberi, domates, domates sosu, sac tavada lavaş ile servis edilir"
+     },
+     {
+      "name": "Mantarlı Tavuk",
+      "priceTry": 450,
+      "description": "Tavuk pirzola üzerine mantar sosu ve rende kaşar peyniri ile fırında pişirilir. Elma dilimli patates ve mini karışık salata ile servis edilir"
+     },
+     {
+      "name": "Tavuk Külbastı",
+      "priceTry": 420,
+      "description": "Özel baharatlı ızgara tavuk bonfile, karışık mini salata, elma dilim patates, köz biber ve domates"
+     },
+     {
+      "name": "Soya Soslu Tavuk",
+      "priceTry": 450,
+      "description": "Tavuk dilimleri, mantar, renkli biber, soya sosu, karışık yeşillik, parmak patates"
+     },
+     {
+      "name": "Köri Soslu Tavuk",
+      "priceTry": 450,
+      "description": "Tavuk pirzola üzerine köri mantar sosu ve rende kaşar peyniri ile fırında pişirilir. Elma dilimli patates ve mini karışık salata ile servis edilir"
+     },
+     {
+      "name": "BBQ Soslu Tavuk",
+      "priceTry": 450,
+      "description": "Tavuk dilimleri üzerine mantar BBQ sosu, karışık yeşillik ve parmak patates ile servis edilir"
+     },
+     {
+      "name": "Mexican Tava",
+      "priceTry": 530,
+      "description": "Tavuk parçaları, renkli biber, jalapeño biberi, mısır, özel acı sosumuz, krema, karışık yeşillik ve parmak patates"
+     },
+     {
+      "name": "Tavuk Dürüm",
+      "priceTry": 420,
+      "description": "Tavuk dilimleri, mantar, mozarella peyniri ve parmak patates ile servis edilir"
+     },
+     {
+      "name": "Tavuklu Quesadilla",
+      "priceTry": 490,
+      "description": "Tavuk parçaları, kaşar peyniri, renkli biberler, jalapeño biberi, cheddar peyniri"
+     }
+    ]
+   },
+   {
+    "title": "Kırmızı Etler",
+    "items": [
+     {
+      "name": "Beğendili Dana Lokum",
+      "priceTry": 1100,
+      "description": "Beğendi yatağında 200 gr lokum bonfile, köz biber, domates ve sos ile servis edilir"
+     },
+     {
+      "name": "Meksika Usulü Bonfile",
+      "priceTry": 1120,
+      "description": "200 gr ızgara dana bonfile üzerine renkli biber, jalapeño biberi, domates sosu, acı sos, sebze garnitürü ile servis edilir"
+     },
+     {
+      "name": "Mantar Soslu Izgara Bonfile",
+      "priceTry": 1150,
+      "description": "Ispanak üzerinde 200 gr dana bonfile, mantar sosu, elma dilim patates ve sebze garnitürü ile servis edilir"
+     },
+     {
+      "name": "Sac Tava",
+      "priceTry": 800,
+      "description": "Antrikot parçaları, renkli biberler, jalapeño biberleri, domates, domates sosu, sac tavada yanında lavaş ile servis edilir"
+     },
+     {
+      "name": "Beğendili Köfte",
+      "priceTry": 650,
+      "description": "Beğendi yatağında izgara köfte, köz biber, domates, domates sosu ve lavaşla servis edilir"
+     },
+     {
+      "name": "Çökertme",
+      "priceTry": 950,
+      "description": "Antrikot parçaları, renkli biberler, yoğurt, kibrit patates, domates sosu ile servis edilir"
+     },
+     {
+      "name": "Karışık Köfte",
+      "priceTry": 650,
+      "description": "Izgara karışık köfte, köz biber, domates, mini salata ve parmak patates ile servis edilir"
+     },
+     {
+      "name": "Izgara Köfte",
+      "priceTry": 590,
+      "description": "Özel yapım köfte, közde domates ve biber, parmak patates ve mini salata ile servis edilir"
+     },
+     {
+      "name": "Izgara Kaşarlı Köfte",
+      "priceTry": 630,
+      "description": "Özel yapım kaşarlı köfte, közde domates ve biber, parmak patates ve mini salata ile servis edilir"
+     },
+     {
+      "name": "BBQ Soslu Beef Tava",
+      "priceTry": 1120,
+      "description": "Bonfile dilimleri, mantar, mısır, BBQ sosu, karışık yeşillik ve parmak patates ile servis edilir"
+     },
+     {
+      "name": "Mexica Beef Tava",
+      "priceTry": 1120,
+      "description": "Bonfile parçaları, renkli biber, jalapeño biberi, mısır, özel acı sos, krema, karışık yeşillik ve parmak patates ile servis edilir"
+     },
+     {
+      "name": "Etli Quesadilla",
+      "priceTry": 530,
+      "description": "Et parçaları, kaşar peyniri, renkli biberler, jalapeño biberi, cheddar peyniri"
+     },
+     {
+      "name": "Izgara Antrikot",
+      "priceTry": 890,
+      "description": "İnce dövülmüş 200 gr ızgara dana antrikot, elma dilim veya parmak patates ve sebze garnitürü ile servis edilir"
+     },
+     {
+      "name": "Izgara Dana Bonfile",
+      "priceTry": 1150,
+      "description": "200 gr ızgara dana bonfile, elma dilim veya parmak patates ve sebze garnitürü ile servis edilir"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Latte Mono",
+      "priceTry": 290,
+      "description": "Kahve aromalı fındıklı pasta"
+     },
+     {
+      "name": "American Brownie",
+      "priceTry": 390,
+      "description": "Çikolatalı yoğun brownie"
+     },
+     {
+      "name": "Fıstık Dalgası",
+      "priceTry": 280,
+      "description": "Antep fıstığı ve çikolata tabanlı katmanlı pasta"
+     },
+     {
+      "name": "Çikolatalı Sufle",
+      "priceTry": 410,
+      "description": "Süt, krema ve dondurma ile servis edilir"
+     },
+     {
+      "name": "Trileçe",
+      "priceTry": 260,
+      "description": "Karamel veya frambuaz soslu"
+     },
+     {
+      "name": "Devil's Pasta",
+      "priceTry": 280,
+      "description": "Yoğun çikolatalı dark pasta"
+     },
+     {
+      "name": "Beyaz Profiterollü Pasta",
+      "priceTry": 250,
+      "description": "Beyaz çikolata soslu profiterol topları ile hazırlanan özel pasta"
+     },
+     {
+      "name": "Meyve Tabağı",
+      "priceTry": 380,
+      "description": "Mevsim Meyvelerine Göre Değişkenlik Gösterebilir"
+     },
+     {
+      "name": "Siyah Profiterollü Pasta",
+      "priceTry": 280,
+      "description": "Çikolata soslu profiterol topları ile hazırlanan özel pasta"
+     },
+     {
+      "name": "Belçika Çikolatalı Pasta",
+      "priceTry": 280,
+      "description": "Belçika çikolatası ile hazırlanan yoğun çikolatalı pasta"
+     },
+     {
+      "name": "Karamelli Yer Fıstıklı Pasta",
+      "priceTry": 280,
+      "description": "Yer fıstığı kremalı özel pasta"
+     },
+     {
+      "name": "Magnolia",
+      "priceTry": 280,
+      "description": "Çilekli veya muzlu magnolia tatlısı"
+     },
+     {
+      "name": "Waffle",
+      "priceTry": 400,
+      "description": "Mevsim meyveleri ile servis edilir"
+     },
+     {
+      "name": "Lotus Bisküvili Pasta",
+      "priceTry": 290,
+      "description": "Lotus bisküvisi ve karamel kremalı katmanlı pasta"
+     },
+     {
+      "name": "Waffle Mix",
+      "priceTry": 450,
+      "description": "Mevsim meyveleri ve dondurma ile servis edilir; meyve çeşidi değişkenlik gösterebilir."
+     },
+     {
+      "name": "Fırın Sütlaç",
+      "priceTry": 250,
+      "description": "Geleneksel Türk fırın sütlacı"
+     },
+     {
+      "name": "Kalp Pasta",
+      "priceTry": 400,
+      "description": "2 kişilik, hindistan cevizi kaplamalı aşk pastası"
+     },
+     {
+      "name": "Siyah veya Beyaz Bella Vista Pasta",
+      "priceTry": 280,
+      "description": "Siyah veya beyaz çikolata ile hazırlanan özel pasta"
+     },
+     {
+      "name": "Italyan Karamelli Dondurma",
+      "priceTry": 80,
+      "description": "Bir top italyan karamelli dondurma"
+     },
+     {
+      "name": "Limonlu Dondurma",
+      "priceTry": 80,
+      "description": "Bir top limonlu dondurma"
+     },
+     {
+      "name": "Vişneli Dondurma",
+      "priceTry": 80,
+      "description": "Bir top vişneli dondurma"
+     },
+     {
+      "name": "Sade Dondurma",
+      "priceTry": 80,
+      "description": "Bir top sade dondurma"
+     },
+     {
+      "name": "Karamelli Dondurma",
+      "priceTry": 80,
+      "description": "Bir top karamelli dondurma"
+     },
+     {
+      "name": "Cup Dondurma",
+      "priceTry": 320,
+      "description": "Karışık çeşit cup dondurma"
+     },
+     {
+      "name": "Çikolatalı Dondurma",
+      "priceTry": 80,
+      "description": "Bir top çikolatalı dondurma"
+     }
+    ]
+   },
+   {
+    "title": "Kahveler",
+    "items": [
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 120,
+      "description": "Geleneksel yöntemle cezve de pişirilmiş, köpüklü Türk kahvesi."
+     },
+     {
+      "name": "Dibek Kahvesi",
+      "priceTry": 130,
+      "description": "Taş dibekte öğütülmüş, kadifemsi ve hafif tatlı geleneksel kahve."
+     },
+     {
+      "name": "Sütlü Türk Kahvesi",
+      "priceTry": 130,
+      "description": "Sütlü olarak hazırlanan geleneksel Türk kahvesi."
+     },
+     {
+      "name": "Double Türk Kahvesi",
+      "priceTry": 150,
+      "description": "Çift porsiyon, yoğun aromalı Türk kahvesi."
+     },
+     {
+      "name": "Double Dibek Kahve",
+      "priceTry": 160,
+      "description": "Çift porsiyon taş dibekte öğütülmüş dibek kahvesi."
+     },
+     {
+      "name": "Double Sütlü Türk Kahve",
+      "priceTry": 180,
+      "description": "Çift porsiyon sütlü Türk kahvesi."
+     },
+     {
+      "name": "Nescafe",
+      "priceTry": 190,
+      "description": "Klasik Nescafe, sıcak servis."
+     },
+     {
+      "name": "Sütlü Nescafe",
+      "priceTry": 210,
+      "description": "Sütlü olarak hazırlanan Nescafe."
+     },
+     {
+      "name": "Menengiç Kahvesi",
+      "priceTry": 130,
+      "description": "Anadolu'ya özgü menengiç (yabani fıstık) ile hazırlanan geleneksel kahve."
+     },
+     {
+      "name": "Osmanlı Kahvesi",
+      "priceTry": 130,
+      "description": "Çeşitli baharatlarla zenginleştirilmiş, geleneksel Osmanlı usulü kahve."
+     },
+     {
+      "name": "Single Espresso",
+      "priceTry": 130,
+      "description": "İtalyan usulü, yoğun ve aromalı tek shot espresso."
+     },
+     {
+      "name": "Double Espresso",
+      "priceTry": 160,
+      "description": "İtalyan usulü, yoğun ve aromalı çift shot espresso."
+     },
+     {
+      "name": "Americano",
+      "priceTry": 170,
+      "description": "Çift çekim espresso, sıcak su ile yumuşatılmış."
+     },
+     {
+      "name": "Cappuccino",
+      "priceTry": 180,
+      "description": "Espresso ve bol süt köpüklü."
+     },
+     {
+      "name": "Aromalı Espresso",
+      "priceTry": 185,
+      "description": "Çikolata, karamel, fındık veya vanilya aroması ile özelleştirilmiş espresso."
+     },
+     {
+      "name": "Cafe Latte",
+      "priceTry": 185,
+      "description": "Espresso, süt ve süt kreması ile hazırlanan yumuşak kahve."
+     },
+     {
+      "name": "Aromalı Latte",
+      "priceTry": 200,
+      "description": "Çikolata, karamel, fındık veya vanilya aroması ile hazırlanan latte."
+     },
+     {
+      "name": "Cafe Mocha",
+      "priceTry": 200,
+      "description": "Çikolata, espresso, süt ve süt köpüğü ile hazırlanan klasik mocha."
+     },
+     {
+      "name": "White Hot Chocolate Mocha",
+      "priceTry": 210,
+      "description": "Beyaz çikolata, süt ve süt köpüğü ile hazırlanan özel mocha."
+     },
+     {
+      "name": "Espresso Macchiato",
+      "priceTry": 200,
+      "description": "Single espresso, süt kreması ile servis edilir."
+     },
+     {
+      "name": "Aromalı Latte Macchiato",
+      "priceTry": 220,
+      "description": "Çikolata, karamel, fındık veya vanilya aroması ile hazırlanan latte macchiato."
+     },
+     {
+      "name": "Chai Tea Latte",
+      "priceTry": 200,
+      "description": "Baharatlı chai çayı ve sütlü köpük ile hazırlanan sıcak içecek."
+     },
+     {
+      "name": "Klasik Filtre Kahve",
+      "priceTry": 190,
+      "description": "Özenle seçilmiş çekirdeklerden demlenmiş klasik filtre kahve."
+     },
+     {
+      "name": "Ice Latte ( Fındıklı, Karamelli, Vanilyalı Seçenekleri)",
+      "priceTry": 220,
+      "description": "Espresso, süt ve buz ile hazırlanan serinletici soğuk latte."
+     },
+     {
+      "name": "Ice Mocha",
+      "priceTry": 240,
+      "description": "Espresso, çikolata, süt ve buz ile hazırlanan soğuk mocha."
+     },
+     {
+      "name": "Ice Americano",
+      "priceTry": 250,
+      "description": "Espresso, süt ve buz ile hazırlanan soğuk americano."
+     },
+     {
+      "name": "Mocha Frappe",
+      "priceTry": 240,
+      "description": "Çikolata, hazır kahve, süt ve buz ile hazırlanan kremalı frappe."
+     },
+     {
+      "name": "White Mocha Frappe",
+      "priceTry": 250,
+      "description": "Beyaz çikolata, hazır kahve, süt ve buz ile hazırlanan kremalı frappe."
+     },
+     {
+      "name": "Karamel Frappe",
+      "priceTry": 250,
+      "description": "Karamel, hazır kahve, süt ve buz ile hazırlanan kremalı frappe."
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Dream Night",
+      "priceTry": 300,
+      "description": "Yenilebilinir Simli, Egzotik meyveler ve özel sos ile hazırlanan gece kokteyli."
+     },
+     {
+      "name": "Smoothies",
+      "priceTry": 300,
+      "description": "Çikolata, çilek, karadut, vanilya veya frambuaz aromasında taze smoothie."
+     },
+     {
+      "name": "Hibiskus",
+      "priceTry": 300,
+      "description": "Canlı kırmızı rengi ve ferahlatıcı aromasıyla sevilen bitki çayı. Hafif ekşimsi soğuk olarak tüketilebilir."
+     },
+     {
+      "name": "Bardak Çay",
+      "priceTry": 60,
+      "description": "Rize'nin dağlarından gelen çay, ince belli bardakta demlenmiş."
+     },
+     {
+      "name": "Oralet ( Kivi, Elma, Limon) Seçenekleri",
+      "priceTry": 70
+     },
+     {
+      "name": "Fincan Çay",
+      "priceTry": 80,
+      "description": "Fincan içinde servis edilen demli Türk çayı."
+     },
+     {
+      "name": "Pot Çay",
+      "priceTry": 400,
+      "description": "Çaydanlıkla servis edilen, 4-6 kişilik büyük boy çay."
+     },
+     {
+      "name": "Sıcak Çikolata",
+      "priceTry": 220,
+      "description": "Kremali sıcak çikolata, bol köpüklü."
+     },
+     {
+      "name": "Beyaz Çikolata",
+      "priceTry": 220,
+      "description": "Beyaz çikolata ile hazırlanan kremali sıcak içecek."
+     },
+     {
+      "name": "Fındıklı Sıcak Çikolata",
+      "priceTry": 230,
+      "description": "Fındık aroması ile zenginleştirilmiş kremali sıcak çikolata."
+     },
+     {
+      "name": "Sahlep",
+      "priceTry": 230,
+      "description": "Geleneksel Türk sahlep içeceği, tarçın ve hindistancevizi ile."
+     },
+     {
+      "name": "Kuşburnu",
+      "priceTry": 160,
+      "description": "C vitamini açısından zengin, ekşimsi aromalı kuşburnu çayı."
+     },
+     {
+      "name": "Yeşil Çay",
+      "priceTry": 200,
+      "description": "Hafif ve ferahlatıcı, antioksidan açısından zengin yeşil çay."
+     },
+     {
+      "name": "Ihlamur Çayı",
+      "priceTry": 200,
+      "description": "Doğal ıhlamur çiçeklerinden hazırlanan, rahatlatıcı bitki çayı."
+     },
+     {
+      "name": "Nane-Limon",
+      "priceTry": 200,
+      "description": "Taze nane yaprakları ve limon dilimleri ile ferahlatıcı sıcak çay."
+     },
+     {
+      "name": "Ada Çayı",
+      "priceTry": 200,
+      "description": "Ege bölgesinden toplanan adaçayı ile hazırlanan aromatik bitki çayı."
+     },
+     {
+      "name": "Cool Lime",
+      "priceTry": 300,
+      "description": "Ferahlatıcı lime, taze nane ve limon aromalarının buz ile buluştuğu serinletici kokteyl."
+     },
+     {
+      "name": "Papatya Çayı",
+      "priceTry": 200,
+      "description": "Doğal papatya çiçeklerinden hazırlanan, sakinleştirici bitki çayı."
+     },
+     {
+      "name": "Kış Çayı",
+      "priceTry": 200,
+      "description": "Tarçın, karanfil ve zencefil ile hazırlanan özel kış karışımı çayı."
+     },
+     {
+      "name": "Mojito",
+      "priceTry": 300,
+      "description": "Taze nane, limon, şeker ve buz ile hazırlanan klasik kokteyl."
+     },
+     {
+      "name": "Su Perisi",
+      "priceTry": 300,
+      "description": "Hafif ve ferahlatıcı, özel karışım meyve kokteyli."
+     },
+     {
+      "name": "Yeşil Elma Frozen",
+      "priceTry": 260,
+      "description": "Yeşil elma aroması ile hazırlanan buzlu frozen içecek."
+     },
+     {
+      "name": "Çilek Frozen",
+      "priceTry": 260,
+      "description": "Taze çilek aroması ile hazırlanan buzlu frozen içecek."
+     },
+     {
+      "name": "Mango Frozen",
+      "priceTry": 260,
+      "description": "Tropikal mango aroması ile hazırlanan buzlu frozen içecek."
+     },
+     {
+      "name": "Ananas Frozen",
+      "priceTry": 260,
+      "description": "Ferahlatıcı ananas aroması ile hazırlanan buzlu frozen içecek."
+     },
+     {
+      "name": "Karadut Frozen",
+      "priceTry": 280,
+      "description": "Karadut aroması ile hazırlanan buzlu frozen içecek."
+     },
+     {
+      "name": "Vanilya Milkshake",
+      "priceTry": 270,
+      "description": "Kremali vanilyalı milkshake."
+     },
+     {
+      "name": "Çikolata Milkshake",
+      "priceTry": 270,
+      "description": "Yoğun çikolatalı kremali milkshake."
+     },
+     {
+      "name": "Çilek Milkshake",
+      "priceTry": 270,
+      "description": "Taze çilekli kremali milkshake."
+     },
+     {
+      "name": "Karamel Milkshake",
+      "priceTry": 270,
+      "description": "Ev yapımı karamel sosu ile kremali milkshake."
+     },
+     {
+      "name": "Muz Milkshake",
+      "priceTry": 270,
+      "description": "Taze muzlu kremali milkshake."
+     },
+     {
+      "name": "Mango Milkshake",
+      "priceTry": 270,
+      "description": "Tropikal mangolu kremali milkshake."
+     },
+     {
+      "name": "Portakal Suyu",
+      "priceTry": 240,
+      "description": "Taze sıkılmış portakal suyu."
+     },
+     {
+      "name": "Churchill",
+      "priceTry": 110,
+      "description": "Özel karışım taze içecek."
+     },
+     {
+      "name": "Naneli Limonata",
+      "priceTry": 180,
+      "description": "Taze nane ve limon ile hazırlanan ferahlatıcı limonata."
+     },
+     {
+      "name": "Çilekli Limonata",
+      "priceTry": 180,
+      "description": "Taze çilek ve limon ile hazırlanan meyveli limonata."
+     },
+     {
+      "name": "Limonata",
+      "priceTry": 160,
+      "description": "Günlük taze sıkılmış limon ile hazırlanan klasik limonata."
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 110,
+      "description": "Ev yapımı yoğurttan çalkılarak hazırlanan geleneksel Türk içeceği."
+     },
+     {
+      "name": "Coca Cola",
+      "priceTry": 130,
+      "description": "Soğuk servis edilen klasik Coca Cola."
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 130,
+      "description": "Soğuk servis edilen portakallı Fanta."
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 130,
+      "description": "Soğuk servis edilen limonlu Sprite."
+     },
+     {
+      "name": "Su",
+      "priceTry": 40,
+      "description": "Doğal kaynak suyu."
+     },
+     {
+      "name": "Büyük Su",
+      "priceTry": 80,
+      "description": "Büyük boy doğal kaynak suyu."
+     },
+     {
+      "name": "Soda",
+      "priceTry": 90,
+      "description": "Soğuk servis edilen sade soda."
+     },
+     {
+      "name": "Meyveli Soda",
+      "priceTry": 100,
+      "description": "Elma, limon, karpuz veya çilek aromasında meyveli soda."
+     },
+     {
+      "name": "Ice Tea",
+      "priceTry": 130,
+      "description": "Şeftali, limon veya ananas aromasında soğuk çay."
+     },
+     {
+      "name": "Cappy Meyve Suyu",
+      "priceTry": 130,
+      "description": "Şeftali, vişne veya karışık aromasında Cappy meyve suyu."
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=tbs3LKeNdrY",
+   "credit": "Panorama34 Cafe & Restaurant · Ağustos 2019 · işletmenin kendi tanıtımı",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=pMI_z2UxdqI",
+   "credit": "Panorama34 Cafe & Restaurant · Aralık 2017 · işletmenin kendi tanıtımı",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (panorama34cafe.com): ana sayfa (alanlar, oyun parkı), /iletisim (adres, telefon, GSM, Instagram); dijital menü panorama34cafe.qr-appmenu.com (sitedeki 'Menü' bağlantısı; 12 kategori, TL, tarihsiz). Nargile bölümü aktarılmadı (tütün ürünü). Çalışma saati yayımlanmıyor. Ramazan iftar menüsü mevsimlik, aktarılmadı. Videolar işletmenin kendi kanalından (2017, 2019)."
+}
