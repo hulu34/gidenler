@@ -20,7 +20,7 @@ let hata = false;
 for (const s of SLUGS) {
   const r0 = await rapor(s);
   if (r0.env === "production" && !r0.place && TOHUM.includes(s) && MODE === "uygula") {
-    const r = await fetch(admin, { method: "POST", headers: H, body: JSON.stringify({ action: "seed", confirm: "EVET", slugs: [s] }) });
+    const r = await fetch(admin, { method: "POST", headers: H, body: JSON.stringify({ action: "seed", confirm: "EVET", target: "production", slugs: [s] }) });
     const j = await r.json().catch(() => ({}));
     writeFileSync(`out/canli5/${s}-tohum.json`, JSON.stringify(j, null, 1));
     const tOk = r.status === 200 && j.inserted === 1 && j.updated === 0;
