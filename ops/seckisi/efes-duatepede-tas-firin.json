@@ -2,49 +2,58 @@
   "slug": "efes-duatepede-tas-firin",
   "kind": "kesif",
   "status": "kontrol",
+  "featured": false,
   "title": {
-    "tr": "Duatepe'de taş fırın: Efes Pide & Lahmacun",
-    "en": "A stone oven in Duatepe: Efes Pide & Lahmacun"
+    "tr": "Mahallenin taş fırını: Duatepe'de Efes Pide & Lahmacun",
+    "en": "The neighbourhood stone oven: Efes Pide & Lahmacun in Duatepe"
   },
   "dek": {
-    "tr": "Şişli Duatepe'de 1998'den beri pide ve lahmacun yapan bir salon. Lahmacun 160 ₺'den, pideler 300 ₺'den başlıyor.",
-    "en": "A pide and lahmacun parlour in Duatepe, Şişli, since 1998. Lahmacun starts at 160 TL, pide at 300 TL."
+    "tr": "Şişli Duatepe'de 1998'den beri yalnız pide ve lahmacun yapan bir salon. Lahmacun 160 ₺'den, pideler 300 ₺'den başlıyor.",
+    "en": "A pide and lahmacun parlour in Duatepe, Şişli, doing nothing else since 1998. Lahmacun starts at 160 TL, pide at 300 TL."
   },
   "why": {
-    "tr": "Seçkinin yalnız pahalı sofralardan oluşmasını istemedik. Efes'in tek işi pide ve lahmacun, menüsünü de fiyatıyla açıkça yayımlıyor. Gidenler için yeni bir keşif; yeni açılmış bir restoran değil.",
-    "en": "We did not want the Edit to be only about expensive tables. Efes does one thing, pide and lahmacun, and publishes its menu with prices. It is a new find for Gidenler, not a new opening."
+    "tr": "İyi bir sofranın her zaman pahalı olması gerekmiyor. Efes'in tek işi taş fırın: dört lahmacun, on bir pide ve bir çorba. Bu kadar kısa bir menü, bir mahalle fırınının neye odaklandığını açıkça gösteriyor. Gidenler için yeni bir keşif; yeni açılmış bir restoran değil.",
+    "en": "A good meal does not have to be an expensive one. Efes does one thing, the stone oven: four lahmacun, eleven pides and a soup. A menu this short shows exactly what a neighbourhood oven focuses on. It is a new find for Gidenler, not a new opening."
   },
   "body": {
     "tr": [
       {
-        "p": "İşletme 1998'den beri taş fırında pişirdiğini söylüyor. Menüde dört lahmacun var: evin adını taşıyan Efes lahmacun 160 ₺; etibol, Antep usulü ve kaşarlı lahmacun 180 ₺."
+        "p": "İşletme 1998'den beri aynı işi yaptığını, ürünlerini kendi ustalarının taş fırında pişirdiğini söylüyor. Menü bilerek dar tutulmuş: lahmacun, pide, bir çorba ve içecekler."
       },
       {
-        "p": "Pidelerde on bir çeşit 300 ile 420 ₺ arasında: kaşarlı ve kıymalı 300 ₺, kuşbaşılı 330 ₺, karışık 380 ₺, pastırmalı kaşarlı 400 ₺. En pahalısı Efes Bomba, 420 ₺. Yanına ezogelin çorbası 100 ₺."
+        "p": "Lahmacunda evin adını taşıyan Efes lahmacunun yanında bol etli etibol, Antep usulü ve kaşarlı seçenekler var. Pidelerde kıymalı ve kuşbaşılıdan pastırmalı kaşarlıya, kavurmalıdan mantarlıya uzanan bir sıra; en dolu olanı yine evin adını taşıyan Efes Bomba. Yanına ezogelin çorbası ve ayran."
       },
       {
-        "p": "Menüde tarih yok; fiyatlar 29 Ekim 2026'da işletmenin sitesinde görüldüğü gibi."
+        "h": "Hangi plan için"
+      },
+      {
+        "p": "Şişli, Bomonti ya da Kurtuluş tarafında hızlı bir öğle yemeği, kalabalık bir masaya birkaç pide söyleyip paylaşmak ya da eve paket için. İşletme geniş salonunu ve hızlı servisini öne çıkarıyor."
       }
     ],
     "en": [
       {
-        "p": "The restaurant says it has been baking in a stone oven since 1998. There are four kinds of lahmacun: the house Efes lahmacun at 160 TL; etibol (extra meat), Antep-style and cheese lahmacun at 180 TL."
+        "p": "The restaurant says it has been doing the same thing since 1998, with its own bakers working a stone oven. The menu is kept deliberately narrow: lahmacun, pide, one soup and drinks."
       },
       {
-        "p": "There are eleven pides between 300 and 420 TL: cheese and minced meat at 300 TL, diced meat at 330 TL, mixed at 380 TL, pastırma with cheese at 400 TL. The most expensive is the Efes Bomba at 420 TL. Ezogelin soup on the side is 100 TL."
+        "p": "Alongside the house Efes lahmacun there are etibol (extra meat), Antep-style and cheese versions. The pides run from minced and diced meat to pastırma with cheese, kavurma and mushroom; the most generously filled is the house Efes Bomba. Ezogelin soup and ayran on the side."
       },
       {
-        "p": "The menu is undated; prices are as shown on the restaurant's website on 29 October 2026."
+        "h": "Who it suits"
+      },
+      {
+        "p": "A quick lunch around Şişli, Bomonti or Kurtuluş, a few pides to share across a big table, or a takeaway for home. The restaurant highlights its roomy dining hall and fast service."
       }
     ]
   },
   "know": {
     "tr": [
+      "Lahmacun 160–180 ₺, pideler 300–420 ₺; ezogelin çorbası 100 ₺. Menüde tarih yok; fiyatlar 29 Ekim 2026'da işletmenin sitesinde görüldüğü gibi.",
       "Gel-al ve paket servis var; site paket servisin Şişli, Feriköy, Bomonti ve Kurtuluş çevresine yapıldığını belirtiyor.",
       "Çalışma saatleri sitede yayımlanmıyor; gitmeden telefonla sorun: +90 212 225 11 79.",
       "Adres: Duatepe, Avukat Cd. 17/B, Şişli."
     ],
     "en": [
+      "Lahmacun 160–180 TL, pide 300–420 TL; ezogelin soup 100 TL. The menu is undated; prices are as shown on the restaurant's website on 29 October 2026.",
       "Takeaway and delivery are available; the website says it delivers around Şişli, Feriköy, Bomonti and Kurtuluş.",
       "Opening hours are not published on the website; call before going: +90 212 225 11 79.",
       "Address: Duatepe, Avukat Cd. 17/B, Şişli."
@@ -66,7 +75,7 @@
         "en": "Efes Pide & Lahmacun (official website)"
       },
       "url": "https://efespidelahmacun.com.tr/",
-      "checkedAt": "2026-10-29",
+      "checkedAt": "2026-10-30",
       "kind": "isletme"
     },
     {
@@ -86,8 +95,8 @@
   "cover": {
     "state": "yok",
     "gap": {
-      "tr": "Kullanım izni doğrulanmış bir fotoğraf yok. İşletmenin sitesindeki görseller izin alınmadan kullanılmadı.",
-      "en": "No photo with verified usage rights yet. Images on the restaurant's website were not used without permission."
+      "tr": "Kapak fotoğrafı yok; izinli görsel bekleniyor.",
+      "en": "No cover photo yet; a cleared image is pending."
     }
   },
   "editorial": {
@@ -96,8 +105,8 @@
       "en": "The Gidenler Edit desk"
     },
     "method": {
-      "tr": "Yayımlanmış resmî kaynaklardan derlendi; yazı için mekân ziyareti yapılmadı. Taslak yapay zekâ yardımıyla hazırlandı ve yayından önce editör kontrolünden geçer.",
-      "en": "Compiled from published official sources; no visit was made for this piece. The draft was prepared with AI assistance and is checked by an editor before publication."
+      "tr": "İşletmenin resmî yayınları, Gidenler profili ve adı geçen basın kaynaklarından derlendi. Taslak yapay zekâ yardımıyla hazırlandı; yayından önce editör kontrolünden geçer.",
+      "en": "Compiled from the restaurant's official publications, its Gidenler profile and the press sources listed. The draft was prepared with AI assistance and is checked by an editor before publication."
     },
     "visited": false
   },
@@ -105,6 +114,8 @@
   "publishedAt": null,
   "updatedAt": null,
   "newOpening": false,
-  "commercial": null,
+  "commercial": {
+    "state": "dogrulanmadi"
+  },
   "ownership": null
 }

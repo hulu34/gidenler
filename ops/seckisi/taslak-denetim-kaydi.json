@@ -76,6 +76,8 @@
   "publishedAt": null,
   "updatedAt": null,
   "newOpening": false,
-  "commercial": null,
+  "commercial": {
+    "state": "dogrulanmadi"
+  },
   "ownership": null
 }

@@ -2,6 +2,7 @@
   "slug": "cihangirde-sabahtan-gece-yarisina",
   "kind": "semt",
   "status": "kontrol",
+  "featured": false,
   "title": {
     "tr": "Cihangir'de sabahtan gece yarısına üç adres",
     "en": "Cihangir from breakfast to midnight: three addresses"
@@ -11,12 +12,12 @@
     "en": "Cihangir"
   },
   "dek": {
-    "tr": "Aralarında yaklaşık 150 metre olan bir konak kahvaltısı ve bir kebapçı, yokuşun öbür yanında da bir lokanta. Gidenler'in kaynaklarını doğruladığı Cihangir ve çevresi.",
-    "en": "A townhouse breakfast and a kebab house about 150 metres apart, and a restaurant on the other side of the hill. Cihangir and its edges, as far as Gidenler has verified the sources."
+    "tr": "Aralarında yaklaşık 150 metre olan bir konak kahvaltısı ve bir kebapçı, yokuşun öbür yanında da bir lokanta: merdivenli sokaklarıyla Cihangir'de günün üç saati için üç sofra.",
+    "en": "A townhouse breakfast and a kebab house about 150 metres apart, and a restaurant on the other side of the hill: three tables for three times of day in stepped, hilly Cihangir."
   },
   "why": {
-    "tr": "Semt rehberini yalnız kaynaklarını doğrulayabildiğimiz yerlerle sınırladık. Bu yüzden kısa; ama günün üç farklı saatini ve üç farklı fiyat düzeyini kapsıyor.",
-    "en": "We limited this guide to places whose sources we could verify. That keeps it short, but it covers three times of day and three price levels."
+    "tr": "Cihangir'in sabahı yavaş, akşamı uzun bir semt. Bu üç adres günün üç farklı saatini ve üç farklı fiyat düzeyini kapsıyor: konakta uzayan bir kahvaltı, gece geç saate kadar açık bir kebapçı ve yokuşun öbür yanında özel bir akşam yemeği.",
+    "en": "Cihangir is a neighbourhood of slow mornings and long evenings. These three addresses cover three times of day and three price levels: a lingering townhouse breakfast, a kebab house open late into the night and a special dinner on the other side of the hill."
   },
   "body": {
     "tr": [
@@ -24,22 +25,22 @@
         "h": "Sabah: Adile Hanım Konağı"
       },
       {
-        "p": "Adile Naşit Sokağı'ndaki tarihî ahşap bir konakta butik bir kahvaltı yeri; konakta konaklama da var. Kahvaltı 08.00–15.00 arası, son sipariş 14.30. İki kişilik konak kahvaltısı 1.750 ₺, tek kişilik konak tabağı 500 ₺; menemenler 320 ile 360 ₺ arasında (çocuk menemeni 200 ₺)."
+        "p": "Adile Naşit Sokağı'ndaki tarihî ahşap bir konakta butik bir kahvaltı yeri; konakta konaklama da var. Menünün merkezinde iki kişilik konak kahvaltısı var; yanında menemenler, sıcak baget ve köy ekmeği, el yapımı reçeller ve konağın kendi limonatası."
       },
       {
         "h": "Gün boyu: Kardeşler Kebap & Cafe"
       },
       {
-        "p": "Konağa yaklaşık 150 metre mesafede, 1998'den beri çalışan bir kebapçı; her gün 09.00–02.00 açık. Menüde kebap gramajları yazıyor: 140 gramlık Adana ya da Urfa 725 ₺. Pideler taş fırında odun ateşinde pişiyor ve 410 ₺'den başlıyor; çıtır lahmacun 210 ₺. Menüde vejetaryen ve vegan işaretli ürünler de var."
+        "p": "Konağa yaklaşık 150 metre mesafede, 1998'den beri çalışan bir kebapçı; sabah kahvaltısından gece yarısını geçen saatlere kadar açık. Adana ve Urfa meşe kömüründe pişiyor, kebaplar menüde gramajlarıyla yazıyor; pideler taş fırında odun ateşinde. Vejetaryen ve vegan işaretli ürünler de var."
       },
       {
         "h": "Akşam: Yeni Lokanta"
       },
       {
-        "p": "Kumbaracı Yokuşu'ndaki lokanta, Cihangir'deki iki adrese kuş uçuşu yaklaşık 600–700 metre. À la carte ana yemekler 2.350 ile 2.900 ₺ arasında; dokuz tabaklık tadım menüsünü ayrı bir yazıda anlattık."
+        "p": "Kumbaracı Yokuşu'ndaki lokanta, Cihangir'deki iki adrese kuş uçuşu yaklaşık 600–700 metre. Anadolu ürünleriyle yeniden yorumlanan ev yemekleri; dokuz tabaklık tadım menüsünü ayrı bir yazıda anlattık."
       },
       {
-        "p": "Mesafeler Gidenler'deki konum noktalarından kuş uçuşu hesaplandı. Cihangir yokuşlu bir semt; yürüyüş daha uzun sürebilir."
+        "p": "Mesafeler Gidenler'deki konum noktalarından kuş uçuşu hesaplandı. Cihangir yokuşlu ve merdivenli bir semt; yürüyüş daha uzun sürebilir."
       }
     ],
     "en": [
@@ -47,35 +48,35 @@
         "h": "Morning: Adile Hanım Konağı"
       },
       {
-        "p": "A boutique breakfast spot in a historic wooden townhouse on Adile Naşit Sokağı, which also has rooms to stay in. Breakfast is served 08:00–15:00, last orders at 14:30. The townhouse breakfast for two is 1,750 TL and the single plate 500 TL; menemen ranges from 320 to 360 TL (200 TL for the children's version)."
+        "p": "A boutique breakfast spot in a historic wooden townhouse on Adile Naşit Sokağı, which also has rooms to stay in. The centrepiece is the townhouse breakfast for two, with menemen, warm baguette and village bread, homemade jams and the house lemonade alongside."
       },
       {
         "h": "All day: Kardeşler Kebap & Cafe"
       },
       {
-        "p": "About 150 metres from the townhouse, a kebab house in business since 1998, open every day 09:00–02:00. The menu gives kebab weights: a 140-gram Adana or Urfa is 725 TL. Pide is baked in a wood-fired stone oven and starts at 410 TL; crisp lahmacun is 210 TL. Vegetarian and vegan items are marked on the menu."
+        "p": "About 150 metres from the townhouse, a kebab house in business since 1998, open from breakfast until well past midnight. The Adana and Urfa kebabs are cooked over oak charcoal, and kebabs are listed with their weights; pide is baked in a wood-fired stone oven. Vegetarian and vegan items are marked on the menu."
       },
       {
         "h": "Evening: Yeni Lokanta"
       },
       {
-        "p": "The restaurant on Kumbaracı Yokuşu is roughly 600–700 metres from the two Cihangir addresses as the crow flies. À la carte mains are 2,350 to 2,900 TL; we cover the nine-plate tasting menu in a separate piece."
+        "p": "The restaurant on Kumbaracı Yokuşu is roughly 600–700 metres from the two Cihangir addresses as the crow flies. Home-style dishes reworked with Anatolian produce; we cover its nine-plate tasting menu in a separate piece."
       },
       {
-        "p": "Distances are straight-line, calculated from the location points on Gidenler. Cihangir is hilly; the walk may take longer."
+        "p": "Distances are straight-line, calculated from the location points on Gidenler. Cihangir is hilly and full of steps; the walk may take longer."
       }
     ]
   },
   "know": {
     "tr": [
-      "Adile Hanım Konağı'nın kapı numarası yayımlanmıyor; masa uygunluğu WhatsApp'tan sorulabiliyor: +90 541 193 99 01.",
-      "Kardeşler telefonla paket sipariş alıyor; kredi kartı, temassız İstanbulkart ve yemek kartları geçiyor. Telefon: +90 212 251 36 96.",
-      "Yeni Lokanta'da rezervasyon sitedeki formdan; gönderilen form talep sayılıyor, kesin rezervasyon değil."
+      "Adile Hanım Konağı: kahvaltı 08.00–15.00, son sipariş 14.30. İki kişilik konak kahvaltısı 1.750 ₺, tek kişilik konak tabağı 500 ₺; menemenler 320–360 ₺ (çocuk menemeni 200 ₺). Kapı numarası yayımlanmıyor; masa uygunluğu WhatsApp'tan sorulabiliyor: +90 541 193 99 01.",
+      "Kardeşler: her gün 09.00–02.00. 140 gramlık Adana ya da Urfa 725 ₺, pideler 410 ₺'den, çıtır lahmacun 210 ₺. Telefonla paket sipariş alıyor; kredi kartı, temassız İstanbulkart ve yemek kartları geçiyor. Telefon: +90 212 251 36 96.",
+      "Yeni Lokanta: à la carte ana yemekler 2.350–2.900 ₺. Rezervasyon sitedeki formdan; gönderilen form talep sayılıyor, kesin rezervasyon değil."
     ],
     "en": [
-      "Adile Hanım Konağı does not publish a street number; table availability can be checked on WhatsApp: +90 541 193 99 01.",
-      "Kardeşler takes takeaway orders by phone and accepts credit cards, contactless İstanbulkart and meal cards. Phone: +90 212 251 36 96.",
-      "Yeni Lokanta takes bookings through the form on its website; a submitted form is a request, not a confirmed booking."
+      "Adile Hanım Konağı: breakfast 08:00–15:00, last orders 14:30. Townhouse breakfast for two 1,750 TL, single plate 500 TL; menemen 320–360 TL (200 TL for the children's version). No street number is published; table availability can be checked on WhatsApp: +90 541 193 99 01.",
+      "Kardeşler: open every day 09:00–02:00. A 140-gram Adana or Urfa kebab is 725 TL, pide from 410 TL, crisp lahmacun 210 TL. Takeaway orders by phone; credit cards, contactless İstanbulkart and meal cards accepted. Phone: +90 212 251 36 96.",
+      "Yeni Lokanta: à la carte mains 2,350–2,900 TL. Book through the website form; a submitted form is a request, not a confirmed booking."
     ]
   },
   "venues": [
@@ -156,10 +157,21 @@
     }
   ],
   "cover": {
-    "state": "yok",
-    "gap": {
-      "tr": "Kullanım izni doğrulanmış bir fotoğraf yok. Üç işletmenin sitelerindeki görseller izin alınmadan kullanılmadı; semt fotoğrafı için de lisansı belli bir görsel bekleniyor.",
-      "en": "No photo with verified usage rights yet. Images on the three restaurants' websites were not used without permission; a properly licensed neighbourhood photo is also pending."
+    "state": "var",
+    "src": "/seckisi/gorsel/cihangir-merdivenli-sokak.jpg",
+    "alt": {
+      "tr": "Cihangir'de iki yanı renkli apartmanlarla çevrili, ortasında çiçek açmış bir ağaç olan merdivenli bir sokak.",
+      "en": "A stepped street in Cihangir lined with colourful apartment buildings, with a flowering tree in the middle."
+    },
+    "credit": "tannaz from los angeles / Wikimedia Commons",
+    "rights": "lisans",
+    "rightsRef": "CC BY-SA 2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stairs_Cihangir.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "depicts": "Cihangir'de merdivenli bir sokak (2011); restoranların kendisi değil, semt",
+    "note": {
+      "tr": "Cihangir'de merdivenli bir sokak, 2011; yeniden boyutlandırıldı",
+      "en": "A stepped street in Cihangir, 2011; resized"
     }
   },
   "editorial": {
@@ -168,8 +180,8 @@
       "en": "The Gidenler Edit desk"
     },
     "method": {
-      "tr": "Yayımlanmış resmî kaynaklardan derlendi; yazı için mekân ziyareti yapılmadı. Taslak yapay zekâ yardımıyla hazırlandı ve yayından önce editör kontrolünden geçer.",
-      "en": "Compiled from published official sources; no visit was made for this piece. The draft was prepared with AI assistance and is checked by an editor before publication."
+      "tr": "İşletmenin resmî yayınları, Gidenler profili ve adı geçen basın kaynaklarından derlendi. Taslak yapay zekâ yardımıyla hazırlandı; yayından önce editör kontrolünden geçer.",
+      "en": "Compiled from the restaurant's official publications, its Gidenler profile and the press sources listed. The draft was prepared with AI assistance and is checked by an editor before publication."
     },
     "visited": false
   },
@@ -177,6 +189,8 @@
   "publishedAt": null,
   "updatedAt": null,
   "newOpening": false,
-  "commercial": null,
+  "commercial": {
+    "state": "dogrulanmadi"
+  },
   "ownership": null
 }

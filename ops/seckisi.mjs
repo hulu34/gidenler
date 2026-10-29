@@ -49,16 +49,20 @@ for (const [dev, o] of DEV) {
       lang: document.querySelector("main [lang]")?.getAttribute("lang"),
       overflow: document.documentElement.scrollWidth - window.innerWidth,
       leadTop: (() => { const h = document.querySelector("article h3"); return h ? h.getBoundingClientRect().top : -1; })(),
-      nav: [...document.querySelectorAll("header a")].map((a) => a.getAttribute("href")),
+      nav: [...document.querySelectorAll("header a")].filter((a) => a.getBoundingClientRect().width > 0).map((a) => a.getAttribute("href")),
+      search: Math.round(document.querySelector("header input")?.getBoundingClientRect().width ?? 0),
+      bolum: document.querySelector("#bolum-mutfak")?.innerText.trim(),
     }));
     ok(`${dev}/${lang}: bölüm adı`, home.text.includes(lang === "tr" ? "Gidenler Seçkisi" : "The Gidenler Edit"));
-    ok(`${dev}/${lang}: açılış metni`, home.text.includes(lang === "tr" ? "İyi bir sofra için yeni fikirler." : "New ideas for a good table."));
-    ok(`${dev}/${lang}: bölüm sırası (puan ve etkinlik verisi yok → kapalı)`, home.sections.join(",") === "bolum-kesif,bolum-sefin-masasi,bolum-semt", home.sections.join(","));
+    ok(`${dev}/${lang}: açılış metni`, home.text.includes(lang === "tr" ? "İyi bir sofra için yeni fikirler." : "Fresh ideas for your next great meal."));
+    ok(`${dev}/${lang}: bölüm sırası (puan ve etkinlik verisi yok → kapalı)`, home.sections.join(",") === "bolum-kesif,bolum-mutfak,bolum-semt", home.sections.join(","));
     ok(`${dev}/${lang}: içerik dili işaretli`, home.lang === lang, String(home.lang));
     ok(`${dev}/${lang}: yatay taşma yok`, home.overflow <= 0, `${home.overflow}px`);
     ok(`${dev}/${lang}: ana hikâye başlığı ilk ekranda`, home.leadTop > 0 && home.leadTop < o.viewport.height, `${Math.round(home.leadTop)}px`);
     ok(`${dev}/${lang}: önizleme uyarısı görünür`, home.text.includes(lang === "tr" ? "editör kontrolü bekliyor" : "awaiting editorial review"));
-    if (dev === "masaustu") ok(`${dev}/${lang}: üst gezinmede Seçki bağlantısı`, home.nav.includes("/seckisi/"));
+    ok(`${dev}/${lang}: üst gezinmede görünür Seçki bağlantısı`, home.nav.includes("/seckisi/"));
+    ok(`${dev}/${lang}: arama kutusu daralmadı`, home.search >= (dev === "masaustu" ? 300 : 60), `${home.search}px`);
+    ok(`${dev}/${lang}: "Mutfaktan" bölümü`, home.bolum === (lang === "tr" ? "Mutfaktan" : "From the Kitchen") || home.bolum?.toLowerCase() === (lang === "tr" ? "mutfaktan" : "from the kitchen"), home.bolum);
     await p.screenshot({ path: `${OUT}/${dev}-${lang}-ana.png` });
     await p.screenshot({ path: `${OUT}/${dev}-${lang}-ana-tam.png`, fullPage: true });
 
@@ -72,6 +76,8 @@ for (const [dev, o] of DEV) {
         switchHref: document.querySelector("a[hreflang]")?.getAttribute("href"),
         overflow: document.documentElement.scrollWidth - window.innerWidth,
         robots: document.querySelector('meta[name="robots"]')?.getAttribute("content"),
+        links: [...document.querySelectorAll("figcaption a")].map((x) => x.getAttribute("href")),
+        img: document.querySelector("header figure img")?.naturalWidth ?? 0,
         alt: [...document.querySelectorAll('link[rel="alternate"][hreflang]')].map((l) => l.getAttribute("hreflang")).sort().join(","),
       }));
       const tag = `${dev}/${lang}/${a.slug}`;
@@ -80,18 +86,21 @@ for (const [dev, o] of DEV) {
       ok(`${tag}: gövde ve "gitmeden bilin" bu dilde`, allText);
       ok(`${tag}: kaynaklar (${a.sources.length})`, JSON.stringify(d.sources) === JSON.stringify(a.sources.map((s) => s.url)));
       ok(`${tag}: kaynak başlıkları bu dilde`, a.sources.every((s) => d.text.includes(s.title[lang])));
-      ok(`${tag}: kapak künyesi (hak yoksa eksik notu)`, a.cover.state === "var" ? d.text.includes(a.cover.credit) : d.text.includes(a.cover.gap[lang]));
-      ok(`${tag}: ziyaret yapılmadı ve ticari ilişki yok notu`, d.text.includes(lang === "tr" ? "mekân ziyareti yapılmadı" : "No visit was made") && d.text.includes(lang === "tr" ? "Ticari ilişki: yok" : "Commercial relationship: none"));
+      ok(`${tag}: kapak künyesi (hak yoksa eksik notu)`, a.cover.state === "var" ? d.text.includes(a.cover.credit) && d.links.includes(a.cover.licenseUrl ?? a.cover.sourceUrl) && d.links.includes(a.cover.sourceUrl) : d.text.includes(a.cover.gap[lang]));
+      if (a.cover.state === "var") ok(`${tag}: kapak fotoğrafı yüklendi`, d.img > 0, `${d.img}px`);
+      if (a.label) ok(`${tag}: biçim etiketi`, d.text.includes(a.label[lang].toUpperCase()) || d.text.includes(a.label[lang]));
+      ok(`${tag}: künyede ziyaret durumu`, d.text.includes(lang === "tr" ? "ziyaret edilmedi" : "not visited"));
+      ok(`${tag}: doğrulanmamış ticari ilişki "yok" diye gösterilmiyor`, a.commercial.state !== "dogrulanmadi" || (d.text.includes(lang === "tr" ? "Ticari ilişki: henüz doğrulanmadı" : "Commercial relationship: not yet verified") && !d.text.includes(lang === "tr" ? "Ticari ilişki: yok" : "Commercial relationship: none")));
       ok(`${tag}: restoran bağlantıları`, a.venues.every((v) => ["", "#menu", "#deneyimler", "#esik"].every((h) => d.venues.includes(`/mekan/${v.slug}/${h}`))));
       ok(`${tag}: dil düğmesi karşı dile`, d.switchHref === (lang === "tr" ? `/seckisi/en/${a.slug}/` : `/seckisi/${a.slug}/`), d.switchHref);
       ok(`${tag}: hreflang tr/en`, d.alt.includes("en") && d.alt.includes("tr"), d.alt);
       ok(`${tag}: noindex`, (d.robots ?? "").includes("noindex"));
       ok(`${tag}: yatay taşma yok`, d.overflow <= 0, `${d.overflow}px`);
       if (lang === "en") ok(`${tag}: profil dili notu`, d.text.includes("Turkish only"));
-      if (lang === "en") ok(`${tag}: Türkçe arayüz etiketi kalmamış`, !/Gitmeden bilin|Kaynaklar|Neden seçtik|Künye/.test(d.text));
+      if (lang === "en") ok(`${tag}: Türkçe arayüz etiketi kalmamış`, !/Gitmeden bilin|Kaynaklar|Neden seçtik|Künye|Mutfaktan|ziyaret edilmedi/.test(d.text));
       if (a.notice) ok(`${tag}: açıklayıcı not`, d.text.includes(a.notice[lang]));
       for (const v of a.venues) linkStatus.set(`/mekan/${v.slug}/`, null);
-      if (a.featured || a.kind === "sefin-masasi") { await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}.png` }); await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}-tam.png`, fullPage: true }); }
+      if (a.featured || a.kind === "mutfak" || a.kind === "semt") { await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}.png` }); await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}-tam.png`, fullPage: true }); }
     }
   }
   ok(`${dev}: sayfa hatası yok`, errs.length === 0, errs.slice(0, 4).join(" | "));
