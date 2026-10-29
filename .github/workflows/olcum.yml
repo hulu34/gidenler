@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-9mflnnz5x-hulu34.vercel.app    # canlı sürüm (2f9a05d, kaynaklı mekân ekleme)
-  PROFIL_HOST: gidenler-6tpwxt1vg-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview 2f9a05d, kaynaklı mekân ekleme)  # görsel Faz 1 Preview (kendi Neon dalı)
+  PROFIL_HOST: gidenler-3tdndgcsg-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview 6890ba8, Google pasifleştirme)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
@@ -146,6 +146,16 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: profil-sifreli, path: out/profil.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  google-pasif:
+    if: contains(github.event.head_commit.message, '[google-pasif]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/google-pasif.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}" }
   google-hedef:
     if: contains(github.event.head_commit.message, '[google-hedef]')
     runs-on: ubuntu-latest
