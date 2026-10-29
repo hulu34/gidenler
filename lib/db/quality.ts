@@ -25,7 +25,8 @@ select
   (select count(distinct rv.place_id) from reviews rv join r on r.id = rv.place_id where rv.status = 'published')::int as reviews,
   (select count(distinct mi.place_id) from menu_items mi join r on r.id = mi.place_id)::int as menu,
   (select count(*) from vertical_restaurant vr join r on r.id = vr.place_id where vr.reservation_mode = 'gidenler')::int as reservation,
-  (select count(*) from places where id is null or name = '' or lat is null or lng is null or district is null)::int as missing_required,
+  (select count(*) from places where id is null or name = '' or district is null or ((lat is null or lng is null) and coalesce(address, '') = ''))::int as missing_required,
+  (select count(*) from places where lat is null or lng is null)::int as missing_map_point,
   (select count(*) from media_items where platform = 'commons' and (credit is null or license is null or external_id is null))::int as photo_attribution_missing`;
 
 type Row = Record<string, number> & { by_vertical: Record<string, number> | null };
@@ -36,7 +37,7 @@ export async function qualityReport(x: Executor) {
   const pct = (v: number) => (n ? Math.round((v / n) * 1000) / 10 : 0);
   const fields = ["photo", "phone", "website", "instagram", "hours", "menu", "video", "google", "reviews", "reservation", "contact", "address"] as const;
   return {
-    placesTotal: r.places_total, byVertical: r.by_vertical ?? {}, restaurants: n, missingRequired: r.missing_required,
+    placesTotal: r.places_total, byVertical: r.by_vertical ?? {}, restaurants: n, missingRequired: r.missing_required, missingMapPoint: r.missing_map_point,
     googlePending: r.google_pending, photoAttributionMissing: r.photo_attribution_missing,
     restaurantFields: Object.fromEntries(fields.map((f) => [f, { count: r[f], pct: pct(r[f]) }])),
   };

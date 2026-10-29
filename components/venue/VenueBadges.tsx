@@ -35,7 +35,7 @@ export function RealVenueNotice({ entity, reviewCount = 0 }: { entity: Entity; r
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <Link href={`/yaz/${entity.slug}/`} className="h-10 rounded-[3px] bg-accent px-4 text-[14px] font-semibold leading-10 text-on-accent">Gittim, deneyimimi yazayım</Link>
         <a href="#bilgi" className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Bilgi ve rezervasyon</a>
-        <a href="#gor" className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">360° gör</a>
+        <a href="#gor" className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">{entity.location?.geo ? "360° gör" : "Konum"}</a>
       </div>
       <PlaceStatusButtons entityId={entity.id} />
     </div>

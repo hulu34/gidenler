@@ -13,12 +13,12 @@ import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migra
 import { MIGRATIONS } from "../lib/db/migrations.generated";
 import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
-import { realVenueRecords } from "../data/real";
+import { realVenueRecords, invalidRecord, mergeRealVenues, type RealVenueRecord } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { readFloors as readFloorsT, reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap, pacedDaily, googlePause } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, holdGoogleMatches, matchGoogleBatch, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
+import { cidFromMapsUrl, fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, holdGoogleMatches, matchGoogleBatch, matchGoogleSlugs, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
 import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/match/score";
 import { parseVideoUrl, embedUrl } from "../lib/media/embed";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/store";
@@ -122,12 +122,50 @@ async function main() {
     ok("seçili tohum yalnız işletme kaydını yazar, diğer mekânın alanı korunur", one.inserted === 0 && one.updated === 1 && o.phone === "+90 000 000 00 00" && bp.vertical === "restaurant" && bi.provider === "business", { one, o, bi });
     await db.update(schema.places).set({ phone: other.phone ?? null }).where(eq(schema.places.slug, other.slug));
   }
+  {
+    /* OSM'siz gerçek kayıt: bağımsız Gidenler kimliği, kaynak zorunlu, konum yalnız kaynaklıysa */
+    const biz = realVenueRecords.find((r) => r.ref.startsWith("isletme/"))!;
+    const osm = realVenueRecords.find((r) => !r.ref.startsWith("isletme/"))!;
+    ok("işletme kaydı kurallar: kaynak sayfası, kaynaklı konum, adres, gerçek OSM biçimi zorunlu; OSM kaydında konum hâlâ zorunlu",
+      invalidRecord(biz) === null
+      && invalidRecord({ ...biz, sourceUrl: undefined }) === "source"
+      && invalidRecord({ ...biz, sourceKind: undefined }) === "source"
+      && invalidRecord({ ...biz, ref: "isletme/baska-slug" }) === "source"
+      && invalidRecord({ ...biz, osmRef: "osm-uydurma" }) === "source"
+      && invalidRecord({ ...biz, lat: 41.02, lng: 28.97 }) === "location"
+      && invalidRecord({ ...biz, lat: 41.02, lng: 28.97, location: { provider: "osm", ref: "node/1", precision: "address" } }) === null
+      && invalidRecord({ ...biz, address: undefined }) === "address"
+      && invalidRecord({ ...osm, lat: undefined }) === "location");
+    const [bp] = await db.select().from(schema.places).where(eq(schema.places.slug, biz.slug));
+    const ids = await db.select().from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.placeId, bp.id));
+    const prov = await db.select().from(schema.fieldProvenance).where(eq(schema.fieldProvenance.placeId, bp.id));
+    ok("OSM'siz kayıt: kendi kimliği (UUIDv7), OSM kimliği yok, konum boş; alan kaynakları resmî site, konum kaynağı uydurulmaz",
+      /^[0-9a-f-]{36}$/.test(bp.id) && bp.lat === null && bp.lng === null && ids.length === 1 && ids[0].provider === "business"
+      && prov.length > 0 && prov.every((r) => r.provider === biz.sourceKind && r.license === null) && !prov.some((r) => r.field === "lat" || r.field === "lng"),
+      { ids: ids.map((i) => i.provider), prov: prov.map((r) => `${r.field}:${r.provider}`) });
+    /* sonradan OSM aktarımı: aynı mekân OSM'de çıkarsa kopya oluşmaz, işletme kaydı korunur */
+    const twin = (o: Partial<RealVenueRecord>): RealVenueRecord => ({ ...osm, ref: "node/999999999", slug: "baska-slug", name: "Başka Mekân", ...o });
+    const m1 = mergeRealVenues([osm, twin({ name: biz.name.toUpperCase(), district: biz.district })], [biz]);
+    const m2 = mergeRealVenues([twin({ slug: biz.slug })], [biz]);
+    const m3 = mergeRealVenues([twin({ ref: "node/42" })], [{ ...biz, osmRef: "node/42" }]);
+    const m4 = mergeRealVenues([twin({ name: biz.name, lat: 41.0, lng: 28.9 })], [{ ...biz, lat: 41.05, lng: 28.95, location: { provider: "osm", ref: "node/7", precision: "address" } }]);
+    ok("mükerrer koruma: aynı ad+semt / aynı slug / osmRef OSM kopyası düşer; uzak aynı adlı mekân ve diğer OSM kayıtları kalır",
+      m1.dropped.length === 1 && m1.records.includes(osm) && m1.records.at(-1) === biz && m2.dropped.length === 1 && m3.dropped.length === 1 && m4.dropped.length === 0,
+      { m1: m1.dropped.length, m2: m2.dropped.length, m3: m3.dropped.length, m4: m4.dropped.length });
+    /* gerçek OSM kimliği sonradan bulunursa ek kimlik olur, mekân çoğalmaz */
+    const [{ n: before }] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places);
+    await seedRealVenues(db, [{ ...biz, osmRef: "node/42" }]);
+    const ids2 = await db.select().from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.placeId, bp.id));
+    const [{ n: after }] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places);
+    ok("osmRef verilince OSM kimliği eklenir, mekân sayısı ve Gidenler kimliği değişmez", Number(before) === Number(after) && ids2.some((i) => i.provider === "osm" && i.externalId === "node/42") && ids2.some((i) => i.provider === "business"));
+    await db.delete(schema.placeIdentifiers).where(and(eq(schema.placeIdentifiers.placeId, bp.id), eq(schema.placeIdentifiers.provider, "osm")));
+  }
   let rejected = false;
   try { await seedRealVenues(db, [{ ...realVenueRecords[0], slug: "bozuk-kayit", ref: "osm-yok", lat: 0 }]); } catch { rejected = true; }
   const [bozuk] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places).where(eq(schema.places.slug, "bozuk-kayit"));
   ok("zorunlu alanı bozuk kayıt reddedilir, hiçbir şey yazılmaz", rejected && Number(bozuk.n) === 0);
   const q = await qualityReport(x);
-  ok("kalite raporu: restoran sayısı ve alan doluluğu", q.restaurants > 0 && q.missingRequired === 0 && q.restaurantFields.address.count <= q.restaurants && q.restaurantFields.google.count === 0, { restaurants: q.restaurants, address: q.restaurantFields.address });
+  ok("kalite raporu: restoran sayısı ve alan doluluğu", q.restaurants > 0 && q.missingRequired === 0 && q.missingMapPoint === realVenueRecords.filter((r) => r.lat === undefined).length && q.restaurantFields.address.count <= q.restaurants && q.restaurantFields.google.count === 0, { restaurants: q.restaurants, address: q.restaurantFields.address });
   ok("Commons görselleri sahibi, lisansı ve kaynak sayfasıyla", q.photoAttributionMissing === 0 && q.restaurantFields.photo.count === realVenueRecords.filter((r) => r.image && r.categoryId === "cat.restaurant").length, { missing: q.photoAttributionMissing, photo: q.restaurantFields.photo });
   const miss = await missingByRestaurant(x);
   ok("restoran başına eksik alan listesi", miss.length === q.restaurants && miss.every((m) => m.missing.includes("google") && m.missing.includes("menu")), miss[0]);
@@ -165,6 +203,14 @@ async function main() {
   ok("Gittim: tek satır, bayraklar tutarlı, ziyaret sayısı ≥ 1, doğrulama YOK", rowA.visited && !rowA.wantToGo && !rowA.favorite && rowA.visitCount === 1 && rowA.verificationId === null, rowA);
   ok("bilinmeyen / demo mekân reddedilir", !(await setPlaceState(db, "ua", "moda-lokantasi", "saved")).ok && !(await setPlaceState(db, "ua", "yok-boyle-bir-yer", "saved")).ok);
   ok("başka kullanıcının kaydı görünmez", (await listPlaceStates(db, "ub")).length === 0);
+  {
+    const biz = realVenueRecords.find((r) => r.ref.startsWith("isletme/"))!.slug;
+    await db.insert(schema.user).values({ id: "uz", name: "Z", email: "z@example.test" });
+    const s1 = await setPlaceState(db, "uz", biz, "saved"), s2 = await setPlaceState(db, "uz", biz, "visited");
+    const [rb] = await db.select().from(schema.userPlaceStatus).innerJoin(schema.places, eq(schema.places.id, schema.userPlaceStatus.placeId)).where(and(eq(schema.userPlaceStatus.userId, "uz"), eq(schema.places.slug, biz)));
+    ok("OSM'siz mekânda Kaydet ve Gittim çalışır; Gittim doğrulanmış ziyaret sayılmaz", s1.ok && s2.ok && rb.user_place_status.visited && rb.user_place_status.verificationId === null);
+    await setPlaceState(db, "uz", biz, "none");
+  }
   await setPlaceState(db, "ua", "ciya-sofrasi-kadikoy", "none");
   const ln = await listPlaceStates(db, "ua");
   ok("kaldırma satırı silmez, 'none' olarak kalır (yeniden aktarılmaz)", ln.length === 1 && ln[0].state === "none", ln);
@@ -396,6 +442,38 @@ async function main() {
   const fake2 = await fresh(); setRedisForTests(fake2 as unknown as RedisLike);
   process.env.GOOGLE_PLACES_API_KEY = "TEST_KEY_NOT_REAL";
   ok("Preview'da ücretli Google çağrıları varsayılan kapalı", googleEnabled("preview") === false && googleEnabled("production") === true);
+  {
+    /* hedefli eşleştirme: OSM'siz (konumsuz) mekân, yöneticinin Haritalar bağlantısıyla; aynı kota koruması, ayrı Redis */
+    setRedisForTests((await fresh()) as unknown as RedisLike);
+    const biz = realVenueRecords.find((r) => r.ref.startsWith("isletme/"))!;
+    const link = "https://www.google.com/maps/place/X/@41.0,28.9,17z/data=!3m1!4b1!4m6!3m5!1s0x14cab9002dec7a4d:0xc8792a43ca1037c7!8m2";
+    const cid = cidFromMapsUrl(link)!;
+    const seen: { mask: string; body: string }[] = [];
+    const gf = (async (_u: string, init?: RequestInit) => {
+      seen.push({ mask: ((init?.headers ?? {}) as Record<string, string>)["X-Goog-FieldMask"] ?? "", body: String(init?.body ?? "") });
+      return Response.json({ places: [
+        { id: "G_YANLIS", displayName: { text: biz.name }, location: { latitude: 41.03, longitude: 28.98 }, googleMapsUri: "https://maps.google.com/?cid=1" },
+        { id: "G_DOGRU", displayName: { text: biz.name }, location: { latitude: 41.03, longitude: 28.98 }, googleMapsUri: `https://maps.google.com/?cid=${cid}` }] });
+    }) as unknown as typeof fetch;
+    const r0 = await matchGoogleSlugs([biz.slug], {}, gf);
+    ok("konumsuz mekân bağlantısız aranmaz (istek yok)", r0.results[0]?.status === "no_match" && r0.results[0]?.reason === "konum_yok" && seen.length === 0, r0);
+    const r1 = await matchGoogleSlugs([biz.slug], { [biz.slug]: link.replace("0xc8792a43ca1037c7", "0xc8792a43ca1037c8") }, gf);
+    const none = await db.select().from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "google"));
+    ok("bağlantıdaki işletme kimliği tutmazsa hiçbir şey yazılmaz", r1.results[0]?.status === "no_match" && r1.results[0]?.reason === "harita_baglantisi_eslesmedi" && none.length === 0, r1);
+    const r2 = await matchGoogleSlugs([biz.slug], { [biz.slug]: link }, gf);
+    const [gi] = await db.select().from(schema.placeIdentifiers).innerJoin(schema.places, eq(schema.places.id, schema.placeIdentifiers.placeId)).where(and(eq(schema.placeIdentifiers.provider, "google"), eq(schema.places.slug, biz.slug)));
+    const lastBody = JSON.parse(seen.at(-1)!.body);
+    ok("bağlantı birebir tutunca doğru aday onaylı yazılır; adresle arama, konum yönlendirmesi yok; googleMapsUri yalnız bu istekte; konum saklanmaz",
+      cid === "14445623750408812487" && r2.results[0]?.status === "confirmed" && gi?.place_identifiers.externalId === "G_DOGRU" && gi.place_identifiers.status === "confirmed"
+      && seen.at(-1)!.mask.includes("places.googleMapsUri") && !lastBody.locationBias && lastBody.textQuery.includes(biz.address!) && gi.places.lat === null,
+      { r2: r2.results[0], cid, mask: seen.at(-1)!.mask });
+    const r3 = await matchGoogleSlugs([biz.slug], { [biz.slug]: link }, gf);
+    ok("kayıtlı eşleşme yeniden aranmaz", r3.results[0]?.status === "existing" && seen.length === 2);
+    await db.delete(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "google"));
+    /* bu senaryonun sayaç tabanı sonraki sayaç testine karışmasın */
+    await db.delete(schema.auditLog).where(eq(schema.auditLog.action, "usage_floor"));
+    setRedisForTests(fake2 as unknown as RedisLike);
+  }
   const calls: string[] = []; const masks: string[] = []; let keyInUrl = false;
   const mkFetch = (cand: { name: string; lat: number; lng: number; phone?: string; web?: string; id?: string }) => (async (url: string, init?: RequestInit) => {
     calls.push(String(url)); if (String(url).includes("TEST_KEY")) keyInUrl = true;

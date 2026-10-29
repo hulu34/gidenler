@@ -50,14 +50,23 @@ const headers = (key: string, mask: string) => ({ "content-type": "application/j
 
 /** Eşleştirme tanısı — yönetim raporu için. Google içeriği (ad, adres) yalnız yanıtta geçer, SAKLANMAZ. */
 export interface MatchDiag {
-  slug: string; status: "auto" | "pending" | "no_match" | "existing" | "limit" | "error" | "no_db";
+  slug: string; status: "auto" | "confirmed" | "pending" | "no_match" | "existing" | "limit" | "error" | "no_db";
   placeId?: string; score?: number; nameSim?: number; distanceM?: number; address?: number | null;
   phone?: "match" | "conflict" | "unknown"; website?: "match" | "conflict" | "unknown"; duplicate?: boolean;
   chain?: boolean; branch?: string[]; rival?: boolean; reason?: string;
   candidate?: { name: string; address?: string }; calls: { textSearch: number; detailsEnterprise: number };
 }
 
-type Cand = { id: string; displayName?: { text?: string }; location?: { latitude: number; longitude: number }; formattedAddress?: string };
+type Cand = { id: string; displayName?: { text?: string }; location?: { latitude: number; longitude: number }; formattedAddress?: string; googleMapsUri?: string };
+
+/** Google Haritalar bağlantısındaki işletme kimliği (CID, ondalık). "…!1s0x…:0x<hex>…" ya da "?cid=<sayı>" biçimi.
+    Yalnız eşleşmeyi doğrulamak için; bağlantıdaki koordinat okunmaz ve saklanmaz. */
+export function cidFromMapsUrl(url: string): string | null {
+  const q = url.match(/[?&]cid=(\d{5,25})/); if (q) return q[1];
+  const h = decodeURIComponent(url).match(/!1s0x[0-9a-f]+:0x([0-9a-f]{1,16})/i);
+  return h ? BigInt(`0x${h[1]}`).toString() : null;
+}
+const cidOf = (c: Cand) => c.googleMapsUri?.match(/[?&]cid=(\d+)/)?.[1] ?? null;
 
 /** Onaylı ya da otomatik eşleşmiş Google kimliği; yoksa null. Google'a hiç istek atmaz. */
 export async function storedGooglePlaceId(slug: string): Promise<{ id: string } | { none: "no_match" | "pending_review" | "rejected" } | null> {
@@ -88,12 +97,14 @@ export function searchName(name: string) {
 /** mode: "default" (ad + ilçe, konum yönlendirmesi 200 m) · "near" (sade ad, kayıt noktası çevresinde ~300 m kutuyla
     SINIRLI) · "phone" (bizdeki telefon numarası; bulunan aday Enterprise ile telefon birebir doğrulanmadan kabul edilmez,
     konum 200 m'den uzaksa asla otomatik değil, manuel onaya gider). */
-export async function resolveGooglePlaceId(slug: string, key: string, f: typeof fetch = fetch, brands?: Map<string, number>, mode: "default" | "near" | "phone" = "default"): Promise<MatchDiag> {
+export async function resolveGooglePlaceId(slug: string, key: string, f: typeof fetch = fetch, brands?: Map<string, number>, mode: "default" | "near" | "phone" = "default", expect?: { cid: string }): Promise<MatchDiag> {
   const calls = { textSearch: 0, detailsEnterprise: 0 };
   const db = getDb();
   if (!db) return { slug, status: "no_db", calls };
   const [p] = await db.select().from(places).where(eq(places.slug, slug)).limit(1);
-  if (!p || p.lat == null || p.lng == null) return { slug, status: "no_match", calls };
+  if (!p) return { slug, status: "no_match", calls };
+  /* Konum noktası olmayan (adresle açılmış) mekân: yalnız yöneticinin verdiği Haritalar bağlantısıyla, adres metniyle aranır. */
+  if ((p.lat == null || p.lng == null) && (!expect || !p.address || mode !== "default")) return { slug, status: "no_match", calls, reason: "konum_yok" };
 
   /* Mevcut kayıt (otomatik, onaylı, bekleyen ya da reddedilmiş) asla yeniden taranmaz. */
   const ids = await db.select().from(placeIdentifiers)
@@ -110,8 +121,11 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
     calls.textSearch++;
     const res = await f(`${API}/places:searchText`, {
       method: "POST",
-      headers: headers(key, "places.id,places.displayName,places.location,places.formattedAddress"),
-      body: JSON.stringify(mode === "near"
+      /* googleMapsUri Text Search Pro alanıdır (aynı SKU); yalnız bağlantıyla doğrulamada istenir */
+      headers: headers(key, `places.id,places.displayName,places.location,places.formattedAddress${expect ? ",places.googleMapsUri" : ""}`),
+      body: JSON.stringify(p.lat == null || p.lng == null
+        ? { textQuery: `${p.name} ${p.address} ${p.city}`, languageCode: "tr", maxResultCount: 3 }
+        : mode === "near"
         ? { textQuery: searchName(p.name), languageCode: "tr", maxResultCount: 5,
             locationRestriction: { rectangle: { low: { latitude: p.lat - 0.0027, longitude: p.lng - 0.0036 }, high: { latitude: p.lat + 0.0027, longitude: p.lng + 0.0036 } } } }
         : mode === "phone"
@@ -122,6 +136,23 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
     });
     if (!res.ok) { await trip(res); return { slug, status: "error", calls }; }
     const j = await res.json() as { places?: Cand[] };
+    if (expect) {
+      /* Yönetici doğrulaması: Haritalar bağlantısındaki işletme kimliği adaylardan biriyle BİREBİR aynı olmalı. Değilse hiçbir şey yazılmaz. */
+      const hit = (j.places ?? []).find((c) => cidOf(c) === expect.cid);
+      if (!hit) return { slug, status: "no_match", calls, reason: "harita_baglantisi_eslesmedi" };
+      const taken = await db.select({ placeId: placeIdentifiers.placeId }).from(placeIdentifiers)
+        .where(and(eq(placeIdentifiers.provider, "google"), eq(placeIdentifiers.externalId, hit.id)));
+      const duplicate = taken.some((t) => t.placeId !== p.id);
+      const status = duplicate ? "pending" : "confirmed";
+      const idRow = uuidv7();
+      await db.insert(placeIdentifiers).values({
+        id: idRow, placeId: p.id, provider: "google", externalId: hit.id, matchScore: 1,
+        matchMethod: `text_search_pro maps_link_cid karar=${duplicate ? "ayni_google_kaydi_baska_mekanda" : "yonetici_baglantisi"}`, status,
+        ...(status === "confirmed" ? { verifiedBy: "admin", verifiedAt: new Date() } : {}),
+      }).onConflictDoNothing();
+      if (duplicate) await db.insert(moderationQueue).values({ id: uuidv7(), kind: "identifier_match", refTable: "place_identifiers", refId: idRow, reason: "Google eşleşmesi onay bekliyor: aynı Google kaydı başka mekânda" });
+      return { slug, status, placeId: hit.id, score: 1, duplicate, reason: duplicate ? "ayni_google_kaydi_baska_mekanda" : "yonetici_baglantisi", candidate: { name: hit.displayName?.text ?? "", address: hit.formattedAddress }, calls };
+    }
     const self = { name: p.name, lat: p.lat!, lng: p.lng!, phone: p.phone, website: p.website, address: p.address };
     const asInput = (c: Cand, extra: { phone?: string; website?: string } = {}) =>
       ({ name: c.displayName?.text ?? "", lat: c.location!.latitude, lng: c.location!.longitude, address: c.formattedAddress, ...extra });
@@ -229,6 +260,27 @@ export async function matchGoogleBatch(limit: number, f: typeof fetch = fetch) {
   }
   const after = await open();
   return { results, remaining: after.untried.length, noMatchRecent: after.noneRecent };
+}
+
+/** Hedefli eşleştirme (yalnız yönetim): seçilen en çok 5 restoran, aynı bütçe/kota korumasıyla (resolveGooglePlaceId).
+    mapsUrls verilen mekânda eşleşme yalnız bağlantıdaki işletme kimliği birebir tutarsa yazılır. */
+export async function matchGoogleSlugs(slugs: string[], mapsUrls: Record<string, string> = {}, f: typeof fetch = fetch) {
+  const key = process.env.GOOGLE_PLACES_API_KEY;
+  if (!key || !googleEnabled()) return { error: "disabled" as const, results: [] as MatchDiag[] };
+  const db = getDb();
+  if (!db) return { error: "no_db" as const, results: [] as MatchDiag[] };
+  const brands = new Map<string, number>();
+  for (const r of await db.select({ name: places.name }).from(places)) { const k = brandKey(r.name); if (k) brands.set(k, (brands.get(k) ?? 0) + 1); }
+  const results: MatchDiag[] = [];
+  for (const slug of slugs.slice(0, 5)) {
+    const u = mapsUrls[slug];
+    const cid = u ? cidFromMapsUrl(u) : null;
+    if (u && !cid) { results.push({ slug, status: "no_match", calls: { textSearch: 0, detailsEnterprise: 0 }, reason: "baglantida_isletme_kimligi_yok" }); continue; }
+    const r = await resolveGooglePlaceId(slug, key, f, brands, "default", cid ? { cid } : undefined);
+    results.push(r);
+    if (r.status === "limit" || r.status === "error") break;
+  }
+  return { results };
 }
 
 /** Alternatif arama (yalnız yönetim): son 30 günde eşleşmesi bulunamamış restoranlar için önce "near", sonuç yoksa ve

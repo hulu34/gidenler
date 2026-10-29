@@ -1,3 +1,3 @@
 [
-{"ref":"isletme/japon-erdal-beyoglu","slug":"japon-erdal-beyoglu","name":"Japon Erdal","categoryId":"cat.restaurant","kind":"Pideci","district":"Beyoğlu","neighborhood":"Hacımimi Mahallesi","lat":41.0268704,"lng":28.9767866,"address":"Dibek Sokağı No:15, Galata, Beyoğlu","website":"https://japonerdal.com/","cuisine":["turkish"],"importedAt":"2026-10-29"}
+{"ref":"isletme/japon-erdal-beyoglu","slug":"japon-erdal-beyoglu","name":"Japon Erdal","categoryId":"cat.restaurant","kind":"Pideci","district":"Beyoğlu","address":"Dibek Sokağı No:15, Galata, Beyoğlu","website":"https://japonerdal.com/","cuisine":["turkish"],"importedAt":"2026-10-29","sourceKind":"official_site","sourceUrl":"https://japonerdal.com/"}
 ]

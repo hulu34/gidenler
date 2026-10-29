@@ -9,8 +9,12 @@ import isletme from "./isletme.json";
    · Puan, trend, yorum, uzman onayı, şikâyet ÜRETİLMEZ. Gidenler puanı gerçek deneyimlerle doğar.
    · Fotoğraf: yalnızca açık lisanslı (Wikimedia Commons) ya da işletme/kullanıcı izniyle.
    · venues.json scripts/import-osm.mjs ile üretilir; elle düzenlenmez.
-   · isletme.json: OSM'de henüz olmayan, bilgisini işletme sahibinin verdiği mekânlar (kaynak "isletme/<slug>").
-     Ad, adres, site işletmeden; konum OSM adres verisinden (sokak düzeyi). OSM'e eklenince oradan alınır, buradan çıkar.
+   · isletme.json: yöneticinin kaynağını kontrol ederek eklediği, OSM'de olmayan mekânlar (kimlik "isletme/<slug>").
+     Kaynak: resmî site ya da işletme beyanı (sourceKind + sourceUrl zorunlu). OSM kimliği yalnız gerçekten varsa (osmRef).
+     Konum ancak açık bir kaynaktan gelirse yazılır (location); yoksa kayıt adresle açılır, harita noktası "yok" gösterilir.
+     Google'dan gelen konum ya da bilgi bu dosyaya yazılmaz.
+   · Mükerrer koruma: aynı mekân sonradan OSM aktarımında gelirse (osmRef, slug ya da ad + 150 m) OSM kopyası listeye
+     alınmaz; Gidenler kimliği (isletme kaydı) korunur, OSM yalnız ek kimlik olur.
    ========================================================================== */
 
 /* Açık lisanslı (Commons) kapak fotoğrafları kendi alan adımızdan, WebP boyut adımlarıyla sunulur
@@ -27,8 +31,9 @@ export interface RealVenueRecord {
   kind: string;           // "Meyhane", "Kahve", "Balık"…
   district: string;
   neighborhood?: string;
-  lat: number;
-  lng: number;
+  /** OSM kaydında zorunlu; işletme kaydında yalnız location kaynağı varsa */
+  lat?: number;
+  lng?: number;
   address?: string;
   phone?: string;
   website?: string;
@@ -41,16 +46,34 @@ export interface RealVenueRecord {
   osmAmenity?: "restaurant" | "cafe" | "bar" | "pub" | "fast_food";
   /** Aktarım dalgası: 0 = Faz 0 (148), 1 = 400, 2 = 700, 3 = 1.000. */
   wave?: number;
+  /** yalnız isletme kaydı: kaynak türü ve kontrol edilen sayfa */
+  sourceKind?: "official_site" | "business";
+  sourceUrl?: string;
+  /** yalnız isletme kaydı: lat/lng'nin kaynağı (ör. OSM'deki bina/adres noktası) */
+  location?: { provider: "osm"; ref: string; precision: "address" | "building" };
+  /** yalnız isletme kaydı: mekânın OSM'de GERÇEKTEN var olan kaydı (sonradan eşleşirse) */
+  osmRef?: string;
 }
 
+const OSM_REF = /^(node|way|relation)\/\d+$/;
 const REF = /^((node|way|relation)\/\d+|isletme\/[a-z0-9-]+)$/;
 /** Kimlik kaynağı: OSM ya da işletmenin kendi beyanı. */
 export const sourceOf = (r: Pick<RealVenueRecord, "ref">): "osm" | "business" => (r.ref.startsWith("isletme/") ? "business" : "osm");
 const CATS = new Set(["cat.restaurant", "cat.cafe", "cat.bar"]);
 /** Zorunlu alanlar: ad, konum (lat/lng + semt, İstanbul içinde), kategori, kaynak (OSM ref ya da işletme), slug. */
+const inIstanbul = (r: RealVenueRecord) => typeof r.lat === "number" && typeof r.lng === "number" && r.lat >= 40.8 && r.lat <= 41.6 && r.lng >= 27.9 && r.lng <= 29.95;
 export function invalidRecord(r: RealVenueRecord): string | null {
   if (!r.name?.trim()) return "name";
-  if (typeof r.lat !== "number" || typeof r.lng !== "number" || r.lat < 40.8 || r.lat > 41.6 || r.lng < 27.9 || r.lng > 29.95) return "location";
+  if (r.ref?.startsWith("isletme/")) {
+    /* işletme kaydı: kaynak sayfası zorunlu; konum ya hiç yok (adres zorunlu) ya da kaynaklı ve İstanbul içinde */
+    if (r.sourceKind !== "official_site" && r.sourceKind !== "business") return "source";
+    if (!/^https:\/\/[^\s]+$/.test(r.sourceUrl ?? "")) return "source";
+    if (r.ref !== `isletme/${r.slug}`) return "source";
+    if (r.osmRef !== undefined && !OSM_REF.test(r.osmRef)) return "source";
+    const hasGeo = r.lat !== undefined || r.lng !== undefined;
+    if (hasGeo && (!inIstanbul(r) || r.location?.provider !== "osm" || !OSM_REF.test(r.location.ref))) return "location";
+    if (!hasGeo && !r.address?.trim()) return "address";
+  } else if (!inIstanbul(r)) return "location";
   if (!r.district) return "district";
   if (!CATS.has(r.categoryId)) return "category";
   if (!REF.test(r.ref)) return "source";
@@ -59,7 +82,28 @@ export function invalidRecord(r: RealVenueRecord): string | null {
 }
 export const isRestaurantTarget = (r: RealVenueRecord) => r.osmAmenity === "restaurant";
 
-export const realVenueRecords = [...raw, ...isletme] as RealVenueRecord[];
+/* mükerrer: aynı mekânın OSM kaydı işletme kaydıyla eşleşiyorsa (osmRef, slug ya da benzer ad + 150 m) */
+const fold = (s: string) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, " ").trim();
+const meters = (a: { lat: number; lng: number }, b: { lat: number; lng: number }) => {
+  const R = 6371000, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+};
+export function duplicateOfBusiness(o: RealVenueRecord, biz: RealVenueRecord[]): RealVenueRecord | null {
+  for (const b of biz) {
+    if (b.osmRef === o.ref || b.slug === o.slug) return b;
+    if (fold(b.name) === fold(o.name)) {
+      if (typeof b.lat === "number" && typeof b.lng === "number" && typeof o.lat === "number" && typeof o.lng === "number") { if (meters(b as { lat: number; lng: number }, o as { lat: number; lng: number }) <= 150) return b; }
+      else if (b.district === o.district) return b;
+    }
+  }
+  return null;
+}
+export function mergeRealVenues(osm: RealVenueRecord[], biz: RealVenueRecord[]) {
+  const dropped = osm.filter((o) => duplicateOfBusiness(o, biz));
+  return { records: [...osm.filter((o) => !dropped.includes(o)), ...biz], dropped };
+}
+export const realVenueRecords = mergeRealVenues(raw as RealVenueRecord[], isletme as RealVenueRecord[]).records;
 
 export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   id: `ent.r.${r.slug}`,
@@ -71,7 +115,7 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   tier: "B",
   subcategory: r.kind,
   experienceTotal: 0,
-  location: { city: "İstanbul", district: r.district, neighborhood: r.neighborhood, geo: { lat: r.lat, lng: r.lng } },
+  location: { city: "İstanbul", district: r.district, neighborhood: r.neighborhood, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
   address: r.address,
   hours: r.openingHours,
   tags: r.cuisine,

@@ -32,7 +32,7 @@ export async function seedRealVenues(db: Db, records: RealVenueRecord[], now = n
   const rows = records.map((r) => ({
     id: uuidv7(), legacyId: legacyOf(r.slug), slug: r.slug, name: r.name, vertical: verticalOf(r.categoryId), categoryId: r.categoryId,
     subcategory: r.kind, city: "İstanbul", district: r.district, neighborhood: r.neighborhood ?? null,
-    lat: r.lat, lng: r.lng, address: r.address ?? null, phone: r.phone ?? null, website: r.website ?? null,
+    lat: r.lat ?? null, lng: r.lng ?? null, address: r.address ?? null, phone: r.phone ?? null, website: r.website ?? null,
     instagram: r.instagram ?? null, openingHours: r.openingHours ?? null, isPilot: PILOT_SLUGS.includes(r.slug),
   }));
   await db.insert(places).values(rows).onConflictDoUpdate({
@@ -48,16 +48,22 @@ export async function seedRealVenues(db: Db, records: RealVenueRecord[], now = n
   const ids = await db.select({ id: places.id, legacyId: places.legacyId, vertical: places.vertical }).from(places).where(inArray(places.legacyId, legacy));
   const idOf = new Map(ids.map((i) => [i.legacyId!, i.id]));
 
-  await db.insert(placeIdentifiers).values(records.map((r) => ({
-    id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, provider: sourceOf(r), externalId: r.ref, matchScore: 1, matchMethod: "source", status: "confirmed", verifiedAt: now,
-  }))).onConflictDoNothing({ target: [placeIdentifiers.placeId, placeIdentifiers.provider, placeIdentifiers.externalId] });
+  /* kaynak kimliği; işletme kaydının OSM'de gerçekten var olan kaydı (osmRef) ek kimlik olarak */
+  await db.insert(placeIdentifiers).values(records.flatMap((r) => [
+    { id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, provider: sourceOf(r), externalId: r.ref, matchScore: 1, matchMethod: "source", status: "confirmed", verifiedAt: now },
+    ...(r.osmRef ? [{ id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, provider: "osm", externalId: r.osmRef, matchScore: 1, matchMethod: "admin_osm_ref", status: "confirmed", verifiedAt: now }] : []),
+  ])).onConflictDoNothing({ target: [placeIdentifiers.placeId, placeIdentifiers.provider, placeIdentifiers.externalId] });
 
-  /* kaynak kaydı: OSM alanlarını tazele. İşletme beyanında yalnız kimlik alanları silinir; profil (profile.*) kayıtlarına dokunulmaz. */
+  /* kaynak kaydı: OSM alanlarını tazele. İşletme kaydında yalnız kimlik alanları (FIELDS) silinip yeniden yazılır;
+     profil (profile.*) kayıtlarına dokunulmaz. Her alan kendi kaynağıyla: konum OSM'den geldiyse "osm" (ODbL). */
   const placeIds = [...idOf.values()];
+  const bizIds = records.filter((r) => sourceOf(r) === "business").map((r) => idOf.get(legacyOf(r.slug))!);
   await db.delete(fieldProvenance).where(and(inArray(fieldProvenance.placeId, placeIds), eq(fieldProvenance.provider, "osm")));
-  await db.delete(fieldProvenance).where(and(inArray(fieldProvenance.placeId, placeIds), eq(fieldProvenance.provider, "business"), inArray(fieldProvenance.field, FIELDS.map(String))));
+  if (bizIds.length) await db.delete(fieldProvenance).where(and(inArray(fieldProvenance.placeId, bizIds), inArray(fieldProvenance.field, FIELDS.map(String))));
+  const provOf = (r: RealVenueRecord, f: keyof RealVenueRecord) =>
+    sourceOf(r) === "osm" ? "osm" : (f === "lat" || f === "lng") ? r.location!.provider : r.sourceKind!;
   const prov = records.flatMap((r) => FIELDS.filter((f) => r[f] !== undefined && r[f] !== null).map((f) => ({
-    id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, field: String(f), value: String(r[f]), provider: sourceOf(r), license: sourceOf(r) === "osm" ? "ODbL-1.0" : null,
+    id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, field: String(f), value: String(r[f]), provider: provOf(r, f), license: provOf(r, f) === "osm" ? "ODbL-1.0" : null,
     fetchedAt: new Date(r.importedAt + "T00:00:00Z"), confidence: 0.8,
   })));
   for (let i = 0; i < prov.length; i += 500) await db.insert(fieldProvenance).values(prov.slice(i, i + 500));
