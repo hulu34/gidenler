@@ -73,7 +73,7 @@ for (const slug of SLUGS) {
     ok(`${dev}: video kartları (${pf.videos.length})`, nv === pf.videos.length, `${nv}`);
     const credits = await p.locator("#videolar button span.line-clamp-5").evaluateAll((ss) => ss.map((s) => ({ t: s.innerText.replace(/\s+/g, " "), clipped: s.scrollHeight > s.clientHeight + 1 })));
     const clipped = credits.filter((c) => c.clipped).map((c) => c.t.slice(0, 30));
-    ok(`${dev}: atıflar (kanal · tarih · tür) kartta kesilmeden görünüyor`, credits.length === pf.videos.length && clipped.length === 0 && pf.videos.every((v) => credits.some((c) => c.t === v.credit)), clipped.join(" | "));
+    ok(`${dev}: atıflar (kanal · tarih · tür) kartta kesilmeden görünüyor`, credits.length === pf.videos.length && clipped.length === 0 && pf.videos.every((v) => credits.some((c) => c.t === v.credit)), `${credits.length} atıf${clipped.length ? " · kesilen: " + clipped.join(" | ") : ""}${pf.videos.filter((v) => !credits.some((c) => c.t === v.credit)).map((v) => " · eksik: " + v.credit + " ≠ " + JSON.stringify(credits.map((c) => c.t))).join("").slice(0, 400)}`);
     ok(`${dev}: işbirliği etiketi yalnız işaretli videoda`, ((await p.locator("#videolar").innerText().catch(() => "")).includes("İşbirliği")) === pf.videos.some((v) => v.sponsored));
     if (dev === "masaustu") { await shot(p, `${slug}-masaustu-genel`, "#genel"); await shot(p, `${slug}-masaustu-menu`, "#menu"); await shot(p, `${slug}-masaustu-videolar`, "#videolar"); }
     else { await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(300); await shot(p, `${slug}-mobil-ilk`); }
