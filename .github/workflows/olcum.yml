@@ -19,6 +19,7 @@ env:
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-puaf01iqu-hulu34.vercel.app    # canlı sürüm (ddcd558, puan üretimi — SCORE_PUBLISH=1)
+  SECKI_HOST: gidenler-o80snemih-hulu34.vercel.app   # Gidenler Seçkisi Preview (gorsel/gidenler-seckisi c3ce023)
   PROFIL_HOST: gidenler-2h5anwthr-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ddcd558, puan üretimi)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
@@ -255,6 +256,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: google-hedef-sifreli, path: out/gh.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  seckisi:
+    if: contains(github.event.head_commit.message, '[seckisi]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/seckisi.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.SECKI_HOST }}" }
+      - if: always()
+        run: test -d out/seckisi && tar -C out -czf out/seckisi.tgz seckisi && rm -rf out/seckisi && openssl cms -encrypt -aes256 -binary -in out/seckisi.tgz -out out/seckisi.tgz.cms -outform DER ops/olcum.pem && rm out/seckisi.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: seckisi-sifreli, path: out/seckisi.tgz.cms, retention-days: 3, if-no-files-found: ignore }
   profil5:
     if: contains(github.event.head_commit.message, '[profil5]')
     runs-on: ubuntu-latest
