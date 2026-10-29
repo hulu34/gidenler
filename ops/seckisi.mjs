@@ -8,10 +8,10 @@ import { yetkiliBaslik, baslikSizintisi } from "./yetkili.mjs";
 const OUT = "out/seckisi"; mkdirSync(OUT, { recursive: true });
 const HOST = process.env.SECKI_HOST;
 const H = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS };
-/* ARAC=0: Vercel'in Preview araç çubuğunu kapat (x-vercel-skip-toolbar). Hidrasyon uyarısının kaynağını ayırmak için. */
+/* ARAC=0: Vercel'in Preview araç çubuğu (vercel.live) engellenir. Hidrasyon uyarısının kaynağını ayırmak için. */
 const ARAC = process.env.ARAC !== "0";
-const HB = { ...H, "x-vercel-set-bypass-cookie": "true", ...(ARAC ? {} : { "x-vercel-skip-toolbar": "1" }) };
-console.log(`  araç çubuğu: ${ARAC ? "açık (varsayılan Preview)" : "kapalı (x-vercel-skip-toolbar)"}`);
+const HB = { ...H, "x-vercel-set-bypass-cookie": "true" };
+console.log(`  araç çubuğu: ${ARAC ? "açık (varsayılan Preview)" : "engellendi (vercel.live istekleri iptal)"}`);
 const res = []; const ok = (n, c, i = "") => { res.push(c); console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const dir = new URL("./seckisi/", import.meta.url);
 const all = readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => JSON.parse(readFileSync(new URL(f, dir), "utf8")));
@@ -40,9 +40,11 @@ const linkStatus = new Map();
 for (const [dev, o] of DEV) {
   const ctx = await b.newContext(o);
   await yetkiliBaslik(ctx, HOST, HB); const sizinti = baslikSizintisi(ctx, HOST);
+  /* ARAC=0: araç çubuğu betiği (vercel.live) tarayıcıda engellenir; sayfa kodu değişmez. */
+  if (!ARAC) await ctx.route((u) => u.hostname === "vercel.live", (r) => r.abort());
   const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(`${new URL(p.url()).pathname} ${e.message.slice(0, 160)}`));
   const toolbar = new Set();
-  p.on("request", (r) => { const u = new URL(r.url()); if (/vercel\.live$|vercel\.com$/.test(u.hostname) || u.pathname.includes("_vercel/")) toolbar.add(`${u.hostname}${u.pathname.split("/").slice(0, 3).join("/")}`); });
+  p.on("requestfinished", (r) => { const u = new URL(r.url()); if (/vercel\.live$|vercel\.com$/.test(u.hostname) || u.pathname.includes("_vercel/")) toolbar.add(`${u.hostname}${u.pathname.split("/").slice(0, 3).join("/")}`); });
   p.on("response", (r) => { if (r.status() >= 400) { const u = new URL(r.url()); console.log(`  istek(${dev}) ${new URL(p.url()).pathname} → ${r.status()} ${u.hostname === HOST ? "" : u.hostname}${u.pathname}`); } });
   p.on("console", (m) => { if (m.type() === "error") console.log(`  konsol(${dev}) ${new URL(p.url()).pathname}: ${m.text().slice(0, 300)}`); });
   for (const lang of ["tr", "en"]) {
