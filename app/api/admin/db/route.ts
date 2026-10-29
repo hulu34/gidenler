@@ -138,7 +138,10 @@ export async function POST(req: Request) {
         if (body.confirm !== "EVET") break;
         const st = await migrationStatus(x);
         if (st.pending.length) return NextResponse.json({ error: "pending_migrations", pending: st.pending }, { status: 409, headers: H });
-        const r = await seedRealVenues(db, realVenueRecords);
+        /* slugs verilirse yalnız o kayıtlar yazılır: tam tohum, profili uygulanmış mekânların kimlik alanlarını kaynak değerine döndürür. */
+        const only = Array.isArray(body.slugs) && body.slugs.length ? realVenueRecords.filter((r) => body.slugs!.includes(r.slug)) : null;
+        if (only && only.length !== new Set(body.slugs).size) return NextResponse.json({ error: "unknown_slug" }, { status: 400, headers: H });
+        const r = await seedRealVenues(db, only ?? realVenueRecords);
         return NextResponse.json({ action: "seed", env: envName(), ...r, integrity: await verifyRealVenues(db, realVenueRecords) }, { headers: H });
       }
       case "rollback-seed":
@@ -237,6 +240,12 @@ export async function POST(req: Request) {
       case "rollback-wave": {
         if (body.confirm !== "GERI-AL") break;
         /* Dalga 0 (ilk 148) bu yolla silinemez; onun için rollback-seed. */
+        /* işletme beyanı kayıtları dalgaya bağlı değil: yalnız onlar için slugs ile geri alınır (kullanıcı verisi varsa durur) */
+        if (Array.isArray(body.slugs) && body.slugs.length) {
+          const biz = new Set(realVenueRecords.filter((r) => r.ref.startsWith("isletme/")).map((r) => r.slug));
+          if (!body.slugs.every((s) => biz.has(s))) return NextResponse.json({ error: "business_slugs_only" }, { status: 400, headers: H });
+          return NextResponse.json({ action: "rollback-wave", slugs: body.slugs, env: envName(), ...(await rollbackWave(x, body.slugs)) }, { headers: H });
+        }
         if (!Number.isInteger(body.wave) || body.wave! < 1) return NextResponse.json({ error: "wave_required" }, { status: 400, headers: H });
         const slugs = realVenueRecords.filter((r) => r.wave === body.wave).map((r) => r.slug);
         return NextResponse.json({ action: "rollback-wave", wave: body.wave, env: envName(), ...(await rollbackWave(x, slugs)) }, { headers: H });

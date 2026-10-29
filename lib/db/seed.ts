@@ -2,7 +2,7 @@ import { and, eq, inArray, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import type { Db } from "./client";
 import { places, placeIdentifiers, fieldProvenance, verticalRestaurant, mediaItems, mediaPlaces } from "./schema";
-import { invalidRecord, isRestaurantTarget, type RealVenueRecord } from "@/data/real";
+import { invalidRecord, isRestaurantTarget, sourceOf, type RealVenueRecord } from "@/data/real";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GERÇEK MEKÂN TOHUMU — data/real/venues.json (OSM, ODbL) → veritabanı.
@@ -49,14 +49,15 @@ export async function seedRealVenues(db: Db, records: RealVenueRecord[], now = n
   const idOf = new Map(ids.map((i) => [i.legacyId!, i.id]));
 
   await db.insert(placeIdentifiers).values(records.map((r) => ({
-    id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, provider: "osm", externalId: r.ref, matchScore: 1, matchMethod: "source", status: "confirmed", verifiedAt: now,
+    id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, provider: sourceOf(r), externalId: r.ref, matchScore: 1, matchMethod: "source", status: "confirmed", verifiedAt: now,
   }))).onConflictDoNothing({ target: [placeIdentifiers.placeId, placeIdentifiers.provider, placeIdentifiers.externalId] });
 
-  /* kaynak kaydı: OSM alanlarını tazele */
+  /* kaynak kaydı: OSM alanlarını tazele. İşletme beyanında yalnız kimlik alanları silinir; profil (profile.*) kayıtlarına dokunulmaz. */
   const placeIds = [...idOf.values()];
   await db.delete(fieldProvenance).where(and(inArray(fieldProvenance.placeId, placeIds), eq(fieldProvenance.provider, "osm")));
+  await db.delete(fieldProvenance).where(and(inArray(fieldProvenance.placeId, placeIds), eq(fieldProvenance.provider, "business"), inArray(fieldProvenance.field, FIELDS.map(String))));
   const prov = records.flatMap((r) => FIELDS.filter((f) => r[f] !== undefined && r[f] !== null).map((f) => ({
-    id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, field: String(f), value: String(r[f]), provider: "osm", license: "ODbL-1.0",
+    id: uuidv7(), placeId: idOf.get(legacyOf(r.slug))!, field: String(f), value: String(r[f]), provider: sourceOf(r), license: sourceOf(r) === "osm" ? "ODbL-1.0" : null,
     fetchedAt: new Date(r.importedAt + "T00:00:00Z"), confidence: 0.8,
   })));
   for (let i = 0; i < prov.length; i += 500) await db.insert(fieldProvenance).values(prov.slice(i, i + 500));
@@ -89,9 +90,12 @@ export async function verifyRealVenues(db: Db, records: RealVenueRecord[]) {
   const count = sql<number>`count(*)::int`;
   const [present] = await db.select({ n: count }).from(places).where(inArray(places.legacyId, legacy));
   const dupSlug = await db.select({ slug: places.slug }).from(places).groupBy(places.slug).having(sql`count(*) > 1`);
+  /* kaynak kimliği: OSM ya da işletme beyanı (isletme/<slug>) */
+  const SOURCES = ["osm", "business"];
   const dupOsm = await db.select({ ext: placeIdentifiers.externalId }).from(placeIdentifiers)
-    .where(eq(placeIdentifiers.provider, "osm")).groupBy(placeIdentifiers.externalId).having(sql`count(*) > 1`);
-  const withOsm = await db.selectDistinct({ placeId: placeIdentifiers.placeId }).from(placeIdentifiers).where(eq(placeIdentifiers.provider, "osm"));
+    .where(inArray(placeIdentifiers.provider, SOURCES)).groupBy(placeIdentifiers.externalId).having(sql`count(*) > 1`);
+  const withOsm = await db.selectDistinct({ placeId: placeIdentifiers.placeId }).from(placeIdentifiers)
+    .where(inArray(placeIdentifiers.provider, SOURCES));
   const present_ids = await db.select({ id: places.id }).from(places).where(inArray(places.legacyId, legacy));
   const osmSet = new Set(withOsm.map((w) => w.placeId));
   const missingOsm = present_ids.filter((p) => !osmSet.has(p.id)).length;

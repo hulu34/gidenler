@@ -103,12 +103,25 @@ async function main() {
   const [pil] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places).where(eq(schema.places.isPilot, true));
   ok("pilot mekân işaretli (Çiya Sofrası)", Number(pil.n) === PILOT_SLUGS.length);
   const [osm] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "osm"));
-  ok("her mekânın OSM kimliği var", Number(osm.n) === realVenueRecords.length);
+  const [biz] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "business"));
+  ok("her mekânın kaynak kimliği var (OSM ya da işletme beyanı)", Number(osm.n) + Number(biz.n) === realVenueRecords.length && Number(biz.n) === realVenueRecords.filter((r) => r.ref.startsWith("isletme/")).length, { osm: osm.n, business: biz.n });
   const [prov] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.fieldProvenance);
   ok("alan kaynakları yazıldı", Number(prov.n) > realVenueRecords.length * 3, prov.n);
   const v = await verifyRealVenues(db, realVenueRecords);
   ok("bütünlük: eksiksiz, tekrarsız, OSM kimlikli", v.ok && v.present === realVenueRecords.length && v.duplicateSlugs === 0 && v.duplicateOsmRefs === 0 && v.missingOsmIdentifier === 0, v);
   ok("restoran hedefi: OSM 'restaurant' kayıtların hepsi restoran olarak var", v.restaurantTarget.present === v.restaurantTarget.expected, v.restaurantTarget);
+  {
+    /* işletme beyanı mekânı: kaynak kimliği "business"; seçili tohum yalnız o kaydı yazar, başka mekânın elle değişmiş alanına dokunmaz */
+    const bizRec = realVenueRecords.find((r) => r.ref.startsWith("isletme/"))!;
+    const other = realVenueRecords.find((r) => !r.ref.startsWith("isletme/"))!;
+    await db.update(schema.places).set({ phone: "+90 000 000 00 00" }).where(eq(schema.places.slug, other.slug));
+    const one = await seedRealVenues(db, [bizRec]);
+    const [o] = await db.select({ phone: schema.places.phone }).from(schema.places).where(eq(schema.places.slug, other.slug));
+    const [bp] = await db.select({ id: schema.places.id, vertical: schema.places.vertical }).from(schema.places).where(eq(schema.places.slug, bizRec.slug));
+    const [bi] = await db.select({ provider: schema.placeIdentifiers.provider }).from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.placeId, bp.id));
+    ok("seçili tohum yalnız işletme kaydını yazar, diğer mekânın alanı korunur", one.inserted === 0 && one.updated === 1 && o.phone === "+90 000 000 00 00" && bp.vertical === "restaurant" && bi.provider === "business", { one, o, bi });
+    await db.update(schema.places).set({ phone: other.phone ?? null }).where(eq(schema.places.slug, other.slug));
+  }
   let rejected = false;
   try { await seedRealVenues(db, [{ ...realVenueRecords[0], slug: "bozuk-kayit", ref: "osm-yok", lat: 0 }]); } catch { rejected = true; }
   const [bozuk] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places).where(eq(schema.places.slug, "bozuk-kayit"));

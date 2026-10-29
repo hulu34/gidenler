@@ -1,5 +1,6 @@
 import type { Entity } from "@/lib/types";
 import raw from "./venues.json";
+import isletme from "./isletme.json";
 
 /* ==========================================================================
    GERÇEK MEKÂNLAR (V8) — kimlik verisi OpenStreetMap'ten (© OpenStreetMap katkıcıları, ODbL).
@@ -7,7 +8,9 @@ import raw from "./venues.json";
    · Yalnızca kaynakta yayımlanmış kimlik bilgisi: ad, tür, konum, adres, iletişim, açılış saatleri.
    · Puan, trend, yorum, uzman onayı, şikâyet ÜRETİLMEZ. Gidenler puanı gerçek deneyimlerle doğar.
    · Fotoğraf: yalnızca açık lisanslı (Wikimedia Commons) ya da işletme/kullanıcı izniyle.
-   · Dosya scripts/import-osm.mjs ile üretilir; elle düzenlenmez.
+   · venues.json scripts/import-osm.mjs ile üretilir; elle düzenlenmez.
+   · isletme.json: OSM'de henüz olmayan, bilgisini işletme sahibinin verdiği mekânlar (kaynak "isletme/<slug>").
+     Ad, adres, site işletmeden; konum OSM adres verisinden (sokak düzeyi). OSM'e eklenince oradan alınır, buradan çıkar.
    ========================================================================== */
 
 /* Açık lisanslı (Commons) kapak fotoğrafları kendi alan adımızdan, WebP boyut adımlarıyla sunulur
@@ -17,7 +20,7 @@ const MEDIA = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/media/commons`;
 const LOCAL_COVER = new Set(["ismet-baba-uskudar", "beyti-lokanta-bakirkoy"]);
 
 export interface RealVenueRecord {
-  ref: string;            // "node/123"
+  ref: string;            // "node/123" ya da işletme beyanı için "isletme/<slug>"
   slug: string;
   name: string;
   categoryId: "cat.restaurant" | "cat.cafe" | "cat.bar";
@@ -40,9 +43,11 @@ export interface RealVenueRecord {
   wave?: number;
 }
 
-const REF = /^(node|way|relation)\/\d+$/;
+const REF = /^((node|way|relation)\/\d+|isletme\/[a-z0-9-]+)$/;
+/** Kimlik kaynağı: OSM ya da işletmenin kendi beyanı. */
+export const sourceOf = (r: Pick<RealVenueRecord, "ref">): "osm" | "business" => (r.ref.startsWith("isletme/") ? "business" : "osm");
 const CATS = new Set(["cat.restaurant", "cat.cafe", "cat.bar"]);
-/** Zorunlu alanlar: ad, konum (lat/lng + semt, İstanbul içinde), kategori, kaynak (OSM ref), slug. */
+/** Zorunlu alanlar: ad, konum (lat/lng + semt, İstanbul içinde), kategori, kaynak (OSM ref ya da işletme), slug. */
 export function invalidRecord(r: RealVenueRecord): string | null {
   if (!r.name?.trim()) return "name";
   if (typeof r.lat !== "number" || typeof r.lng !== "number" || r.lat < 40.8 || r.lat > 41.6 || r.lng < 27.9 || r.lng > 29.95) return "location";
@@ -54,7 +59,7 @@ export function invalidRecord(r: RealVenueRecord): string | null {
 }
 export const isRestaurantTarget = (r: RealVenueRecord) => r.osmAmenity === "restaurant";
 
-export const realVenueRecords = raw as RealVenueRecord[];
+export const realVenueRecords = [...raw, ...isletme] as RealVenueRecord[];
 
 export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   id: `ent.r.${r.slug}`,
@@ -70,7 +75,7 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   address: r.address,
   hours: r.openingHours,
   tags: r.cuisine,
-  source: { provider: "osm", ref: r.ref, importedAt: r.importedAt },
+  source: { provider: sourceOf(r), ref: r.ref, importedAt: r.importedAt },
   contact: { phone: r.phone, website: r.website, instagram: r.instagram, openingHours: r.openingHours },
   reservation: { mode: "contact" },
   business: { claimed: false },

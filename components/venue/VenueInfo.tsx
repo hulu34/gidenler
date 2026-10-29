@@ -45,7 +45,12 @@ export function VenueInfo({ entity }: { entity: Entity }) {
           </div>
         ))}
       </dl>
-      {entity.isReal && entity.source && (
+      {entity.isReal && entity.source?.provider === "business" && (
+        <p className="mt-2 text-[11.5px] leading-snug text-ink-3">
+          Kimlik bilgisi: işletmenin kendi beyanı ve resmî sitesi · {entity.source.importedAt}. Konum OpenStreetMap adres verisinden, sokak düzeyinde (© OpenStreetMap katkıcıları, ODbL).
+        </p>
+      )}
+      {entity.isReal && entity.source && entity.source.provider !== "business" && (
         <p className="mt-2 text-[11.5px] leading-snug text-ink-3">
           Kimlik bilgisi: <a href={`https://www.openstreetmap.org/${entity.source.ref}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-ink">© OpenStreetMap katkıcıları</a> (ODbL) · {entity.source.importedAt}. Bilgi değişmiş olabilir; yanlışsa{" "}
           <a href={`https://www.openstreetmap.org/edit?${entity.source.ref.replace("/", "=")}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-ink">kaynakta düzelt</a>.

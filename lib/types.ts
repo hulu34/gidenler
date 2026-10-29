@@ -137,8 +137,9 @@ export interface Entity {
 }
 
 export interface RealSource {
-  provider: "osm";
-  /** "node/123", "way/456" */
+  /** osm: OpenStreetMap (ODbL) · business: işletme sahibinin beyanı (OSM'de henüz yok) */
+  provider: "osm" | "business";
+  /** "node/123", "way/456", "isletme/<slug>" */
   ref: string;
   importedAt: ISODate;
 }
