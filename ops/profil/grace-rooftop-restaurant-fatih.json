@@ -1,0 +1,547 @@
+{
+ "slug": "grace-rooftop-restaurant-fatih",
+ "description": {
+  "value": "Sultanahmet'te, Binbirdirek'te bir çatı katı restoranı. Menüde çorbalar, mezeler, Türk ızgaraları, saray mutfağından esinlenen ana yemekler, deniz ürünleri, pizza ve makarna var. Menü İngilizce yayımlanıyor.",
+  "provider": "official_site",
+  "url": "https://gracerooftop.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Binbirdirek, Terzihane Sok. No:15, 34122 Fatih, İstanbul",
+  "provider": "official_site",
+  "url": "https://gracerooftop.com/contact/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 542 844 44 73",
+  "provider": "official_site",
+  "url": "https://gracerooftop.com/contact/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://gracerooftop.com",
+  "provider": "official_site",
+  "url": "https://gracerooftop.com",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 08:00-02:00",
+  "provider": "official_site",
+  "url": "https://gracerooftop.com/contact/",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki 'Book a Table' sayfasından ya da telefonla.",
+  "provider": "official_site",
+  "url": "https://gracerooftop.com",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Fiyatlar Türk lirası; menüye göre listelenen fiyatlara %10 vergi dahil değil.",
+   "provider": "official_site",
+   "url": "https://gracerooftop.com/menu/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Fiyatı yazmayan kalemler için ekibe sorulması isteniyor.",
+   "provider": "official_site",
+   "url": "https://gracerooftop.com/menu/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://gracerooftop.com",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://gracerooftop.com/menu/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Çorbalar · Soups",
+    "items": [
+     {
+      "name": "Fish Soup",
+      "priceTry": 475,
+      "description": "Salmon, zucchini, carrots and dill."
+     },
+     {
+      "name": "Soup of the Day",
+      "priceTry": 395,
+      "description": "Please ask our team about today’s soup."
+     },
+     {
+      "name": "Lentil Soup",
+      "priceTry": 395,
+      "description": "Red lentils, onions, carrots and potatoes."
+     }
+    ]
+   },
+   {
+    "title": "Soğuk başlangıçlar · Cold Starters",
+    "items": [
+     {
+      "name": "Mixed Appetizer Plate",
+      "priceTry": 1150,
+      "description": "A selection of meze including hummus, tzatziki and muhammara."
+     },
+     {
+      "name": "Stuffed Grape Leaves",
+      "priceTry": 550,
+      "description": "Grape leaves filled with rice, onions, currants and spices."
+     },
+     {
+      "name": "Salmon Gravlax",
+      "priceTry": 1050,
+      "description": "Salmon with sugar, salt, dill and lemon."
+     },
+     {
+      "name": "Smoked Salmon with Avocado",
+      "priceTry": 995,
+      "description": "Avocado, lemon, smoked salmon, cucumber and apple."
+     },
+     {
+      "name": "Eggplant Wrap with Labneh",
+      "priceTry": 725,
+      "description": "Eggplant, labneh, sun-dried tomatoes and walnuts."
+     },
+     {
+      "name": "Imported Cheese Plate",
+      "priceTry": 995,
+      "description": "A selection of Roquefort, Edam, Gouda, aged Kashar, smoked Circassian cheese and grilled halloumi."
+     },
+     {
+      "name": "Hummus",
+      "priceTry": 460,
+      "description": "Chickpeas, tahini, lemon, cumin, garlic and olive oil."
+     },
+     {
+      "name": "Tzatziki",
+      "priceTry": 460,
+      "description": "Strained yogurt, cucumber, olive oil and garlic."
+     },
+     {
+      "name": "Shakshuka",
+      "priceTry": 460,
+      "description": "Eggplant, peppers, tomato, garlic and olive oil."
+     }
+    ]
+   },
+   {
+    "title": "Sıcak başlangıçlar · Hot Starters",
+    "items": [
+     {
+      "name": "Oyster Mushrooms with Truffle Oil and Ponzu",
+      "priceTry": 795,
+      "description": "Oyster mushrooms, truffle oil, soy sauce, sesame and nigella seeds."
+     },
+     {
+      "name": "Sweet Chilli Tempura Shrimp",
+      "priceTry": 1160,
+      "description": "Tempura shrimp served with sweet chilli sauce."
+     },
+     {
+      "name": "Sea Bass Balls with Saffron Sauce",
+      "priceTry": 1050,
+      "description": "Deep-fried sea bass balls with saffron sauce."
+     },
+     {
+      "name": "Baked Goat Cheese with Sesame",
+      "priceTry": 695,
+      "description": "Baked goat cheese with sesame."
+     },
+     {
+      "name": "Butter Shrimp Casserole",
+      "priceTry": 1075,
+      "description": "Shrimp, shallots, garlic, spices and butter."
+     },
+     {
+      "name": "Kibbeh",
+      "priceTry": 735,
+      "description": "Stuffed meatballs with beef, lamb and walnuts."
+     },
+     {
+      "name": "Pan-fried Halloumi",
+      "priceTry": 695,
+      "description": "Halloumi coated with breadcrumbs and egg."
+     },
+     {
+      "name": "Fried Calamari",
+      "priceTry": 1075,
+      "description": "Squid with a flour and cornmeal coating."
+     }
+    ]
+   },
+   {
+    "title": "Salatalar · Salads",
+    "items": [
+     {
+      "name": "Smoked Salmon, Quinoa and Avocado Salad",
+      "priceTry": 1050,
+      "description": "Mixed greens, smoked salmon, quinoa, cherry tomatoes and avocado."
+     },
+     {
+      "name": "Tuna Salad",
+      "priceTry": 995,
+      "description": "Mixed greens, tuna, corn and onions."
+     },
+     {
+      "name": "Shepherd’s Salad with Ezine Cheese",
+      "priceTry": 850,
+      "description": "Tomatoes, cucumber, onions, peppers, olives and Ezine cheese."
+     },
+     {
+      "name": "Burrata with Pesto",
+      "priceTry": 1100,
+      "description": "Burrata, basil sauce, strawberries and tomatoes."
+     },
+     {
+      "name": "Grilled Chicken Caesar Salad",
+      "priceTry": 990,
+      "description": "Lettuce, grilled chicken, toasted bread, Caesar dressing, cherry tomatoes and Parmesan."
+     },
+     {
+      "name": "Rocket Salad with Strawberries",
+      "priceTry": 850,
+      "description": "Rocket, strawberries, cherry tomatoes and Parmesan."
+     }
+    ]
+   },
+   {
+    "title": "Pizza",
+    "items": [
+     {
+      "name": "Margherita",
+      "priceTry": 995,
+      "description": "Tomato sauce, mozzarella and Parmesan."
+     },
+     {
+      "name": "Anatolian Pizza",
+      "priceTry": 1275,
+      "description": "Tomato sauce, mozzarella, Turkish sausage, pastrami, peppers and dried beef."
+     },
+     {
+      "name": "Four Cheese Pizza",
+      "priceTry": 1150,
+      "description": "A cheese pizza with tomato sauce; see the PDF for the full ingredient list."
+     },
+     {
+      "name": "Seafood Pizza",
+      "priceTry": 1250,
+      "description": "Tomato sauce, mozzarella and mixed seafood."
+     },
+     {
+      "name": "Tuna Pizza",
+      "priceTry": 1200,
+      "description": "Tomato sauce, mozzarella, tuna, onions and corn."
+     },
+     {
+      "name": "Diavola",
+      "priceTry": 1150,
+      "description": "Tomato sauce, mozzarella, sausage and peppers."
+     }
+    ]
+   },
+   {
+    "title": "Makarna · Pasta",
+    "items": [
+     {
+      "name": "Seafood Linguini",
+      "priceTry": 1200,
+      "description": "Linguini with mussels, calamari, shrimp, cream and basil sauce."
+     },
+     {
+      "name": "Fettuccine Alfredo",
+      "priceTry": 1095,
+      "description": "Fettuccine with mushrooms, chicken, cream, basil sauce and Parmesan."
+     },
+     {
+      "name": "Penne Arrabbiata",
+      "priceTry": 995,
+      "description": "Penne with black olives, tomato sauce, hot sauce, basil sauce and Parmesan."
+     },
+     {
+      "name": "Spaghetti Bolognese",
+      "priceTry": 1150,
+      "description": "Spaghetti with ground beef, tomato sauce, basil sauce and Parmesan."
+     },
+     {
+      "name": "Four Cheese Tortellini",
+      "priceTry": 1075,
+      "description": "Tortellini with basil sauce, cream and Parmesan."
+     },
+     {
+      "name": "Spinach and Cheese Ravioli",
+      "priceTry": 995,
+      "description": "Filled ravioli with cream, basil sauce and Parmesan."
+     }
+    ]
+   },
+   {
+    "title": "Güveçler · Casseroles",
+    "items": [
+     {
+      "name": "Vegetarian Casserole",
+      "priceTry": 1275,
+      "description": "Cauliflower, broccoli, baby carrots, baby corn and tomatoes."
+     },
+     {
+      "name": "Shrimp Casserole",
+      "priceTry": 1550,
+      "description": "Shrimp, onions, tomatoes, peppers, spices and mushrooms."
+     },
+     {
+      "name": "Chicken Casserole",
+      "priceTry": 1475,
+      "description": "Chicken, tomatoes, peppers, onions, spices and mushrooms."
+     },
+     {
+      "name": "Beef Casserole",
+      "priceTry": 1650,
+      "description": "Beef, tomatoes, peppers, onions, spices and mushrooms."
+     },
+     {
+      "name": "Poached Sea Bass",
+      "priceTry": 1650,
+      "description": "Sea bass fillet, peppers, lemon, tomato, bay leaf, cream and dill."
+     },
+     {
+      "name": "Chicken with Lemon Sauce",
+      "priceTry": 1475,
+      "description": "Chicken, sun-dried tomatoes, capers, lemon, cream, soy sauce and dill."
+     }
+    ]
+   },
+   {
+    "title": "Izgara ve kebaplar · Grills and Kebabs",
+    "items": [
+     {
+      "name": "Lamb Chops",
+      "priceTry": 1840,
+      "description": "Lamb chops with vegetables and baby potatoes."
+     },
+     {
+      "name": "Beef Skewers",
+      "priceTry": 1395,
+      "description": "Beef skewers with grilled tomatoes and peppers, flatbread and rice."
+     },
+     {
+      "name": "Adana Kebab",
+      "priceTry": 1295,
+      "description": "Beef and lamb kebab with grilled tomatoes, peppers and flatbread."
+     },
+     {
+      "name": "Mixed Grill",
+      "priceTry": 2650,
+      "description": "Chicken, meatballs, beef and Adana kebab with grilled vegetables."
+     },
+     {
+      "name": "Grilled Meatballs",
+      "priceTry": 1275,
+      "description": "Meatballs with strained yogurt, bread and tomato sauce."
+     },
+     {
+      "name": "Chicken Skewers",
+      "priceTry": 1250,
+      "description": "Chicken skewers with grilled vegetables, flatbread and rice."
+     },
+     {
+      "name": "Grilled Tenderloin",
+      "priceTry": 1850,
+      "description": "Beef tenderloin with seasonal vegetables and baby potatoes."
+     },
+     {
+      "name": "Steak with Café de Paris Sauce",
+      "priceTry": 1850,
+      "description": "Beef tenderloin with Café de Paris sauce and French fries."
+     },
+     {
+      "name": "Ribeye with Porcini Mushroom Sauce",
+      "priceTry": 1795,
+      "description": "Grilled ribeye with porcini mushroom sauce."
+     }
+    ]
+   },
+   {
+    "title": "Saray esintili ana yemekler · Palace-inspired",
+    "items": [
+     {
+      "name": "Lamb Ribs with Barbecue Sauce",
+      "priceTry": 1750,
+      "description": "Lamb ribs, peppers, tomatoes, rice stuffing and barbecue sauce."
+     },
+     {
+      "name": "Çökertme Kebab",
+      "priceTry": 1675,
+      "description": "Beef tenderloin, julienne potatoes, yogurt and tomato sauce."
+     },
+     {
+      "name": "Lamb Shank Tirit with Teriyaki Sauce",
+      "priceTry": 1550,
+      "description": "Lamb shank, bread, teriyaki sauce and nigella seeds."
+     },
+     {
+      "name": "Beef Ribs with Keşkek",
+      "priceTry": 1700,
+      "description": "Beef ribs with wheat porridge and spices."
+     },
+     {
+      "name": "Firik Tandoor",
+      "priceTry": 1675,
+      "description": "A tandoor main course served with firik rice. See the PDF menu for details."
+     },
+     {
+      "name": "Sea Bass in Paper",
+      "priceTry": 1600,
+      "description": "Sea bass fillet, peppers, almond, dill, bay leaf, lemon and cream."
+     }
+    ]
+   },
+   {
+    "title": "Grace Specials",
+    "items": [
+     {
+      "name": "Bosphorus Fish Platter",
+      "priceTry": 5500,
+      "description": "A mixed seafood platter with fish, squid and shrimp, served with seasonal greens and sauces."
+     },
+     {
+      "name": "Sultan Kebab",
+      "priceTry": 5500,
+      "description": "A platter of kebabs, chicken, meatballs and pastries with rice, potatoes and seasonal greens."
+     },
+     {
+      "name": "Clay Pot Kebab",
+      "priceTry": 3450,
+      "description": "Beef, tomatoes, peppers, shallots, mushrooms, spices, potatoes and rice."
+     },
+     {
+      "name": "Rack of Lamb",
+      "priceTry": 7500,
+      "description": "Lamb ribs with seasonal vegetables, baby potatoes and Maldon salt."
+     },
+     {
+      "name": "Beef Turkish Delight",
+      "priceTry": 6200,
+      "description": "Beef tenderloin with seasonal vegetables, baby potatoes and Maldon salt."
+     },
+     {
+      "name": "Three-bone Beef Ribs",
+      "priceTry": 5250,
+      "description": "Beef ribs with baby potatoes and seasonal vegetables."
+     },
+     {
+      "name": "Veal Chop (1 )",
+      "description": "Served with seasonal vegetables, baby potatoes and Maldon salt. · Kilosu 4.450 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Deniz ürünleri · Seafood",
+    "items": [
+     {
+      "name": "Grilled Jumbo Shrimp",
+      "priceTry": 1750,
+      "description": "Jumbo shrimp, vegetables, baby potatoes, garlic sauce, lemon and greens."
+     },
+     {
+      "name": "Grilled Octopus",
+      "priceTry": 1695,
+      "description": "Octopus with vegetables, baby potatoes, fish sauce and lemon."
+     },
+     {
+      "name": "Fried Red Mullet",
+      "priceTry": 1495,
+      "description": "Red mullet with baby potatoes, lemon, cherry tomatoes and greens."
+     },
+     {
+      "name": "Grilled Sea Bream Fillet",
+      "priceTry": 1600,
+      "description": "Sea bream with seasonal greens, baby potatoes, onion rings, lemon and fish sauce."
+     },
+     {
+      "name": "Crispy Fried Fish",
+      "priceTry": 1200,
+      "description": "Sea bass fillet with French fries and dipping sauce."
+     },
+     {
+      "name": "Grilled Salmon",
+      "priceTry": 1550,
+      "description": "Salmon with seasonal greens, lemon, baby potatoes, onion and fish sauce."
+     },
+     {
+      "name": "Grilled Sea Bass Fillet",
+      "priceTry": 1600,
+      "description": "Sea bass with cherry tomatoes, baby potatoes, lemon, fish sauce and greens."
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar · Desserts",
+    "items": [
+     {
+      "name": "Künefe",
+      "priceTry": 595,
+      "description": "Shredded pastry, Hatay cheese, syrup and pistachios."
+     },
+     {
+      "name": "Katmer",
+      "priceTry": 625,
+      "description": "Turkish pastry dessert. See the PDF menu for ingredients."
+     },
+     {
+      "name": "Baklava",
+      "priceTry": 695,
+      "description": "Layered pastry dessert with syrup. See the PDF menu for ingredients."
+     },
+     {
+      "name": "Cheesecake",
+      "priceTry": 550,
+      "description": "Cheesecake made with labneh, butter, eggs, sugar and flour."
+     },
+     {
+      "name": "Baked Rice Pudding",
+      "priceTry": 495,
+      "description": "Milk and rice pudding with eggs, starch, flour and sugar."
+     },
+     {
+      "name": "Tiramisu",
+      "priceTry": 550,
+      "description": "Ladyfinger biscuits, coffee, mascarpone, whipped cream and cocoa."
+     },
+     {
+      "name": "Chocolate Soufflé",
+      "priceTry": 625,
+      "description": "Chocolate dessert with butter, sugar, milk, eggs and flour."
+     },
+     {
+      "name": "Fruit Plate",
+      "priceTry": 750,
+      "description": "Seasonal fruit selection."
+     },
+     {
+      "name": "Ice Cream",
+      "priceTry": 495,
+      "description": "Cocoa, strawberry and vanilla flavours."
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=tgJOhk8iLnM",
+   "credit": "London Gentz barber official · Şubat 2024 · kısa ziyaret klibi",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (gracerooftop.com): /menu (İngilizce, TL; 'PDF menüye göre %10 vergi listelenen fiyatlara dahil değil' notu sayfada da var → 'Bilmen gerekenler'de görünür), /contact (adres, telefon, her gün 08.00–02.00). Menü kalemleri İngilizce adlarıyla, çevrilmeden aktarıldı; bölüm başlıklarına Türkçe karşılık eklendi. 'Special Seafood' bölümünde fiyatlı kalem yok, aktarılmadı. Tam PDF menü (~5 MB) okunmadı; HTML menü sayfası esas alındı. Video: tek kısa ziyaret klibi (2024); başka doğrulanmış video yok (aramadaki 'Queb Rooftop' başka mekân)."
+}

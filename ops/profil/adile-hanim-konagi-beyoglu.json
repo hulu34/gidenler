@@ -1,0 +1,360 @@
+{
+ "slug": "adile-hanim-konagi-beyoglu",
+ "description": {
+  "value": "Cihangir'de, Adile Naşit Sokağı'ndaki tarihî ahşap bir konakta butik kahvaltı yeri; konakta konaklama da var. Menüde iki kişilik konak kahvaltısı, tek kişilik tabaklar, yumurta ve menemen çeşitleri ve sıcak ekmekler var.",
+  "provider": "official_site",
+  "url": "https://www.adilehanim.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Adile Naşit Sokağı, Cihangir, Beyoğlu, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.adilehanim.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.adilehanim.com.tr",
+  "provider": "official_site",
+  "url": "https://www.adilehanim.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "adilehanimkonagi",
+  "provider": "official_site",
+  "url": "https://www.adilehanim.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesi masa uygunluğunun gelmeden önce sorulabileceğini belirtiyor; WhatsApp: +90 541 193 99 01.",
+  "provider": "official_site",
+  "url": "https://www.adilehanim.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Kahvaltı 08.00–15.00; son kahvaltı siparişi 14.30. Sitede mekân saati 08.00–23.59 olarak yazıyor; günler belirtilmiyor.",
+   "provider": "official_site",
+   "url": "https://www.adilehanim.com.tr",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Fiyatlar Türk lirası ve KDV dahil.",
+   "provider": "official_site",
+   "url": "https://www.adilehanim.com.tr/qr-adile-menu-2026/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Ürün içerikleri tedarik ve mevsime göre değişebilir; alerjen için siparişten önce ekibe danışılması isteniyor.",
+   "provider": "official_site",
+   "url": "https://www.adilehanim.com.tr/qr-adile-menu-2026/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.adilehanim.com.tr/qr-adile-menu-2026/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Konak kahvaltıları",
+    "items": [
+     {
+      "name": "Adile Hanım’ın Konak Kahvaltısı",
+      "priceTry": 1750,
+      "description": "2 kişilik paylaşım için hazırlanır. 4 çeşit peynir, 3 çeşit zeytin, 3 çeşit ev reçeli, bal ve kaymak, cevizli Cihangir ezmesi, taze yeşillik, domates-salatalık tabağı, sıcak baget, seçmeli sıcak yumurta ve sınırsız çay ile konak kahvaltısı deneyimi olarak sunulur."
+     },
+     {
+      "name": "Tek Kişilik Konak Tabağı",
+      "priceTry": 500,
+      "description": "Tek kişilik ama doyurucu hazırlanır. 2 çeşit peynir, 2 çeşit zeytin, ev reçeli, bal ve kaymak, cevizli Cihangir ezmesi, domates, salatalık, yeşillik, sıcak baget, 1 yumurta seçimi ve 2 adet çay ile servis edilir."
+     },
+     {
+      "name": "Cihangir Kahvaltı Tepsisi",
+      "priceTry": 550,
+      "description": "Süzme yoğurt, ev granolası, bal, mevsim meyvesi, haşlanmış yumurta, zahterli domates, tam tahıllı ekmek ve ev reçeliyle daha hafif bir kahvaltı tepsisi olarak sunulur."
+     }
+    ]
+   },
+   {
+    "title": "Yumurtalar",
+    "items": [
+     {
+      "name": "Tereyağlı Sahanda Yumurta",
+      "priceTry": 280,
+      "description": "Tereyağında sahanda pişirilir; sade ya da seçilen lezzetlerle kişisel kahvaltı ritminize göre hazırlanır."
+     },
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 330,
+      "description": "Tereyağında hafif kızartılmış sucuk, sahanda yumurta ve sıcak ekmekle doyurucu bir kahvaltı klasiği olarak hazırlanır."
+     },
+     {
+      "name": "Kavurmalı Yumurta",
+      "priceTry": 390,
+      "description": "Kavurma ve tereyağında pişmiş yumurta ile hazırlanan doyurucu sıcak kahvaltı lezzeti."
+     },
+     {
+      "name": "Konak Omleti",
+      "priceTry": 300,
+      "description": "3 yumurta ile hazırlanır. Hafif, doyurucu ve sıcak servis edilir."
+     },
+     {
+      "name": "Haşlanmış Yumurta",
+      "priceTry": 90,
+      "description": "Sade kahvaltı tercih eden misafirler için günlük hazırlanır."
+     }
+    ]
+   },
+   {
+    "title": "Menemenler",
+    "items": [
+     {
+      "name": "Klasik Konak Menemeni",
+      "priceTry": 320,
+      "description": "Domates, biber, yumurta ve tereyağı ile hazırlanan klasik Türk menemeni."
+     },
+     {
+      "name": "Tulum Peynirli Menemen",
+      "priceTry": 360,
+      "description": "Domates, biber ve yumurtanın tulum peyniriyle zenginleştiği, daha yoğun lezzetli konak yorumu."
+     },
+     {
+      "name": "Sucuklu Menemen",
+      "priceTry": 360,
+      "description": "Sucuk ilavesiyle hazırlanan doyurucu menemen."
+     },
+     {
+      "name": "Acılı Cihangir Menemeni",
+      "priceTry": 320,
+      "description": "Biber yağı, acı biber ve tereyağı ile hazırlanan karakterli menemen."
+     },
+     {
+      "name": "Çocuk Menemeni",
+      "priceTry": 200,
+      "description": "Acısız, hafif baharatlı ve iyi pişmiş menemen."
+     }
+    ]
+   },
+   {
+    "title": "Sıcak ekmekler",
+    "items": [
+     {
+      "name": "Sıcak Baget",
+      "priceTry": 80,
+      "description": "Günlük sıcak servis edilen baget; kahvaltı tabakları, tereyağı ve ev reçelleriyle uyumlu sade bir eşlikçidir."
+     },
+     {
+      "name": "Tereyağlı Köy Ekmeği",
+      "priceTry": 140,
+      "description": "Kızarmış köy ekmeği, tereyağı ve deniz tuzu ile servis edilir."
+     },
+     {
+      "name": "Konak Tostu",
+      "priceTry": 240,
+      "description": "Eriyen kaşar, isteğe göre sucuk ve sıcak ekmekle hızlı ama doyurucu bir konak tostu olarak hazırlanır."
+     }
+    ]
+   },
+   {
+    "title": "Kızartmalar",
+    "items": [
+     {
+      "name": "Patates Kızartması",
+      "priceTry": 220,
+      "description": "Kahvaltıya uygun çıtır patates; deniz tuzu ve kajun baharatı ile servis edilir."
+     },
+     {
+      "name": "Konak Kızartması",
+      "priceTry": 420,
+      "description": "Patates, biber, kabak ve patlıcan kızartması; yanında sarımsaklı süzme yoğurt ve domates sos ile servis edilir."
+     },
+     {
+      "name": "Cihangir Kızartması",
+      "priceTry": 560,
+      "description": "Çıtır patates, peynirli sigara böreği ve mevsim kızartması; cevizli Cihangir ezmesi eşliğinde paylaşmalık olarak sunulur."
+     },
+     {
+      "name": "Sigara Böreği Sepeti",
+      "priceTry": 280,
+      "description": "İnce yufkaya sarılmış peynirli börekler, sıcak ve çıtır olarak servis edilir."
+     },
+     {
+      "name": "Konak Patso",
+      "priceTry": 260,
+      "description": "Baharatlandırılmış patates kızartması, soslar ve özel ekmeği ile servis edilir."
+     }
+    ]
+   },
+   {
+    "title": "Konak mezeleri ve eşlikçiler",
+    "items": [
+     {
+      "name": "Cevizli Cihangir Ezmesi",
+      "priceTry": 180,
+      "description": "Köz biber, ceviz, zeytinyağı ve nar ekşisiyle hazırlanan; sıcak ekmek ve peynir tabaklarına güçlü eşlik eden ev yapımı ezme."
+     },
+     {
+      "name": "Konak Sarımsak Tereyağı",
+      "priceTry": 160,
+      "description": "Fırınlanmış sarımsak, tereyağı ve deniz tuzuyla hazırlanır; sıcak bagetle paylaşmalık servis edilir."
+     },
+     {
+      "name": "Zahterli Cihangir Domatesi",
+      "priceTry": 160,
+      "description": "Domates, zeytinyağı, zahter, nar ekşisi ve limonla ferah, aromatik bir kahvaltı eşlikçisi olarak hazırlanır."
+     }
+    ]
+   },
+   {
+    "title": "Hafif ve sağlıklı tabaklar",
+    "items": [
+     {
+      "name": "Anadolu Yoğurt Bowl",
+      "priceTry": 290,
+      "description": "Süzme yoğurt, mevsim meyvesi, bal, ceviz ve tahin ile hazırlanır."
+     },
+     {
+      "name": "Cihangir Granola Bowl",
+      "priceTry": 320,
+      "description": "Süzme yoğurt, ev granolası, bal ve mevsim meyvesi ile sunulur."
+     },
+     {
+      "name": "Avokadolu Köy Ekmeği",
+      "priceTry": 360,
+      "description": "Kızarmış köy ekmeği, avokado, yumurta ve roka ile hazırlanır."
+     },
+     {
+      "name": "Tulum Peynirli Domatesli Köy Ekmeği",
+      "priceTry": 290,
+      "description": "Kızarmış köy ekmeği, tulum peyniri, zahterli domates ve zeytinyağı ile hazırlanır."
+     }
+    ]
+   },
+   {
+    "title": "Çocuklar",
+    "items": [
+     {
+      "name": "Çocuk Kahvaltı Tabağı",
+      "priceTry": 260,
+      "description": "Kaşar peyniri, tel peynir, reçel, bal, haşlanmış yumurta, mini baget ve meyve ile hazırlanır."
+     },
+     {
+      "name": "Çocuk Tostu",
+      "priceTry": 220,
+      "description": "Kaşarlı veya sucuklu kaşarlı hazırlanır."
+     },
+     {
+      "name": "Mini Pancake Çocuk",
+      "priceTry": 240,
+      "description": "Mini pancake, bal veya reçel ve meyve ile servis edilir."
+     },
+     {
+      "name": "Çocuk Menemeni",
+      "priceTry": 200,
+      "description": "Acısız, az baharatlı ve iyi pişmiş menemen."
+     }
+    ]
+   },
+   {
+    "title": "Tatlı ve reçel",
+    "items": [
+     {
+      "name": "Günün Tatlısı",
+      "priceTry": 180,
+      "description": "Bugünün tatlısı ve alerjen bilgisi için ekibimize danışabilirsiniz."
+     },
+     {
+      "name": "Kaymaklı Mini Pancake",
+      "priceTry": 330,
+      "description": "Mini pancake, kaymak, bal, mevsim meyvesi ve ceviz ile servis edilir."
+     },
+     {
+      "name": "Konak French Toast",
+      "priceTry": 340,
+      "description": "Yumurtalı köy ekmeği, kaymak, bal ve tarçın ile hazırlanır."
+     },
+     {
+      "name": "Konak Baget Tatlısı",
+      "priceTry": 280,
+      "description": "Sıcak baget, kaymak, bal, ceviz ve tarçın ile tatlı kahvaltı tabağı olarak hazırlanır."
+     },
+     {
+      "name": "Aşko Reçeli",
+      "priceTry": 160,
+      "description": "Hem acı hem tatlı el yapımı reçel."
+     },
+     {
+      "name": "Adile Hanım Reçeli",
+      "priceTry": 180,
+      "description": "Bol ceviz ve incir ile hazırlanmış el yapımı reçel."
+     },
+     {
+      "name": "Süt Karameli Reçeli",
+      "priceTry": 160,
+      "description": "Doğal el yapımı reçel."
+     },
+     {
+      "name": "Bal ve Kaymak",
+      "priceTry": 220,
+      "description": "Doğal Bitlis balı ve manda/inek sütünden üretilen doğal kaymak ile servis edilir."
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Demleme Çay",
+      "priceTry": 40,
+      "description": "Seçenekler:"
+     },
+     {
+      "name": "Filtre Kahve",
+      "priceTry": 150
+     },
+     {
+      "name": "Espresso / Americano",
+      "priceTry": 140,
+      "description": "Seçenekler:"
+     },
+     {
+      "name": "Latte / Cappuccino",
+      "priceTry": 170,
+      "description": "Seçenekler:"
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 140,
+      "description": "Seçenekler:"
+     },
+     {
+      "name": "Portakal Suyu",
+      "priceTry": 180
+     },
+     {
+      "name": "Soda",
+      "priceTry": 80,
+      "description": "Doğal maden suyu."
+     },
+     {
+      "name": "Su 0.5 lt",
+      "priceTry": 40
+     },
+     {
+      "name": "Adile Hanım Limonatası",
+      "priceTry": 160,
+      "description": "Limon, nane ve hafif aromatik dokunuşlarla hazırlanır."
+     },
+     {
+      "name": "Adile Hanım Çayı",
+      "priceTry": 120,
+      "description": "Özel bitkilerin karışımından hazırlanan tatlı sıcak içecek."
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site (adilehanim.com.tr): ana sayfa (adres yalnız sokak adıyla; kapı numarası yayımlanmıyor, uydurulmadı; telefon yok, WhatsApp var) ve QR menü (/qr-adile-menu-2026/, Türkçe bölüm; KDV dahil, tarihsiz; sayfa adında 2026 geçiyor ama geçerlilik tarihi olarak kullanılmadı). Menüdeki alerjen simgeleri aktarılmadı. Diğer dillerdeki tekrarlar atıldı. Video bulunamadı (aramada aynı adı taşıyan sokak ve oyuncu Adile Naşit videoları çıkıyor; ilgisiz)."
+}
