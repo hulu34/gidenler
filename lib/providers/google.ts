@@ -1,7 +1,7 @@
-import { and, eq, inArray, notInArray, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, like, notInArray, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
-import { places, placeIdentifiers, moderationQueue } from "@/lib/db/schema";
+import { places, placeIdentifiers, moderationQueue, auditLog } from "@/lib/db/schema";
 import { reserve, pauseGoogle } from "@/lib/usage/counter";
 
 /** Google 429/403 döndürdüyse sigortayı atar (bkz. pauseGoogle); diğer hatalarda bir şey yapmaz. */
@@ -26,7 +26,7 @@ const PHOTO_PAGE_MAX = 5;
 
 export type GoogleStatus =
   | { state: "disabled" }
-  | { state: "unmatched"; reason: "no_match" | "pending_review" | "rejected" }
+  | { state: "unmatched"; reason: "no_match" | "pending_review" | "rejected" | "disabled" }
   | { state: "limit"; reason: string }
   | { state: "error" }
   | { state: "ok"; data: GooglePlaceView };
@@ -69,7 +69,7 @@ export function cidFromMapsUrl(url: string): string | null {
 const cidOf = (c: Cand) => c.googleMapsUri?.match(/[?&]cid=(\d+)/)?.[1] ?? null;
 
 /** Onaylı ya da otomatik eşleşmiş Google kimliği; yoksa null. Google'a hiç istek atmaz. */
-export async function storedGooglePlaceId(slug: string): Promise<{ id: string } | { none: "no_match" | "pending_review" | "rejected" } | null> {
+export async function storedGooglePlaceId(slug: string): Promise<{ id: string } | { none: "no_match" | "pending_review" | "rejected" | "disabled" } | null> {
   const db = getDb();
   if (!db) return null;
   const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, slug)).limit(1);
@@ -78,6 +78,7 @@ export async function storedGooglePlaceId(slug: string): Promise<{ id: string } 
   const usable = ids.find((i) => i.status === "confirmed" || i.status === "auto");
   if (usable) return { id: usable.externalId };
   if (ids.some((i) => i.status === "pending")) return { none: "pending_review" };
+  if (ids.some((i) => i.status === "disabled")) return { none: "disabled" };
   return { none: ids.length ? "rejected" : "no_match" };
 }
 
@@ -106,10 +107,12 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
   /* Konum noktası olmayan (adresle açılmış) mekân: yalnız yöneticinin verdiği Haritalar bağlantısıyla, adres metniyle aranır. */
   if ((p.lat == null || p.lng == null) && (!expect || !p.address || mode !== "default")) return { slug, status: "no_match", calls, reason: "konum_yok" };
 
-  /* Mevcut kayıt (otomatik, onaylı, bekleyen ya da reddedilmiş) asla yeniden taranmaz. */
+  /* Mevcut kayıt (otomatik, onaylı, bekleyen, reddedilmiş, pasif) otomatik işte asla yeniden taranmaz. İstisna: yalnız
+     pasif/reddedilmiş kayıtlar varsa yöneticinin Haritalar bağlantısıyla (expect) kontrollü düzeltme aranabilir. */
   const ids = await db.select().from(placeIdentifiers)
     .where(and(eq(placeIdentifiers.placeId, p.id), eq(placeIdentifiers.provider, "google")));
-  if (ids.length) {
+  const closedOnly = ids.length > 0 && ids.every((i) => i.status === "disabled" || i.status === "rejected");
+  if (ids.length && !(expect && closedOnly)) {
     const usable = ids.find((i) => i.status === "confirmed" || i.status === "auto");
     return { slug, status: usable ? "existing" : ids.some((i) => i.status === "pending") ? "pending" : "no_match", placeId: usable?.externalId, calls };
   }
@@ -140,6 +143,8 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
       /* Yönetici doğrulaması: Haritalar bağlantısındaki işletme kimliği adaylardan biriyle BİREBİR aynı olmalı. Değilse hiçbir şey yazılmaz. */
       const hit = (j.places ?? []).find((c) => cidOf(c) === expect.cid);
       if (!hit) return { slug, status: "no_match", calls, reason: "harita_baglantisi_eslesmedi" };
+      /* bulunan kayıt zaten pasif/reddedilmiş bağlantıysa kendiliğinden açılmaz: geri etkinleştirme ayrı yönetim kararı */
+      if (ids.some((i) => i.externalId === hit.id)) return { slug, status: "no_match", calls, reason: "kapali_baglanti_ayni_kayit", placeId: hit.id };
       const taken = await db.select({ placeId: placeIdentifiers.placeId }).from(placeIdentifiers)
         .where(and(eq(placeIdentifiers.provider, "google"), eq(placeIdentifiers.externalId, hit.id)));
       const duplicate = taken.some((t) => t.placeId !== p.id);
@@ -546,6 +551,80 @@ export async function googleQueueStats() {
 
 /** Pilot geri alma: YALNIZ Google eşleşme kayıtları ve onların onay kuyruğu satırları silinir.
     Mekânlar, OSM kimlikleri, kullanıcılar, deneyimler ve diğer tablolar değişmez. */
+/* ── Tek eşleşmeyi pasifleştirme / geri etkinleştirme (yönetim) ──────────────────────────────────────────────
+   Kayıt silinmez: durum "disabled" olur, eşleşme geçmişi ve denetim kaydı kalır. Canlı okumalar yalnız auto/confirmed
+   kullandığından pasif bağlantıdan Google'a çağrı gitmez. Hedef iki kimlikle açıkça verilir (Gidenler mekân kimliği +
+   eşleşme kaydı kimliği); eksik ya da uyuşmayan hedefte hiçbir şey değişmez. apply=false yalnız etkilenecek kaydı gösterir.
+   Otomatik işler (toplu/yeniden deneme/inceleme/bekletme) "disabled" durumuna dokunmaz; geri açmak yalnız bu yoldan. */
+const ACTIVE = new Set(["auto", "confirmed"]);
+export interface GoogleToggleInput { placeId?: unknown; identifierId?: unknown; slug?: unknown; why?: unknown; admin?: unknown }
+export async function setGoogleMatchActive(mode: "disable" | "enable", input: GoogleToggleInput, apply: boolean) {
+  const db = getDb();
+  if (!db) return { ok: false as const, error: "no_db" };
+  const str = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
+  const placeId = str(input.placeId, 64), identifierId = str(input.identifierId, 64), slug = str(input.slug, 120);
+  const why = str(input.why, 300), admin = str(input.admin, 60);
+  if (!placeId || !identifierId) return { ok: false as const, error: "target_required" };
+  const [row] = await db.select().from(placeIdentifiers).where(eq(placeIdentifiers.id, identifierId)).limit(1);
+  if (!row || row.provider !== "google" || row.placeId !== placeId) return { ok: false as const, error: "target_mismatch" };
+  const [p] = await db.select({ id: places.id, slug: places.slug }).from(places).where(eq(places.id, placeId)).limit(1);
+  if (!p || (slug && slug !== p.slug)) return { ok: false as const, error: "target_mismatch" };
+  let next: string;
+  if (mode === "disable") {
+    if (!ACTIVE.has(row.status)) return { ok: false as const, error: "not_active", status: row.status };
+    next = "disabled";
+  } else {
+    if (row.status !== "disabled") return { ok: false as const, error: "not_disabled", status: row.status };
+    /* önceki etkin durum, bu kaydın son pasifleştirme denetiminden */
+    const [last] = await db.select().from(auditLog).where(and(eq(auditLog.action, "google_disable"), eq(auditLog.refId, row.id))).orderBy(desc(auditLog.at)).limit(1);
+    const prev = (last?.detail as { before?: string } | null)?.before;
+    if (!prev || !ACTIVE.has(prev)) return { ok: false as const, error: "no_previous_status" };
+    /* mekânda başka etkin Google bağlantısı varsa (ör. sonradan düzeltilmiş doğru kayıt) ikincisi açılmaz */
+    const other = await db.select({ id: placeIdentifiers.id }).from(placeIdentifiers)
+      .where(and(eq(placeIdentifiers.placeId, placeId), eq(placeIdentifiers.provider, "google"), inArray(placeIdentifiers.status, [...ACTIVE])));
+    if (other.length) return { ok: false as const, error: "another_active" };
+    next = prev;
+  }
+  const target = { slug: p.slug, placeId: p.id, identifierId: row.id, externalId: row.externalId, status: row.status, next };
+  if (!apply) return { ok: true as const, preview: true as const, target };
+  if (why.length < 5) return { ok: false as const, error: "why_required", target };
+  if (!admin) return { ok: false as const, error: "admin_required", target };
+  /* koşullu yazım: arada durum değiştiyse hiçbir şey yazılmaz */
+  const upd = await db.update(placeIdentifiers).set({ status: next }).where(and(eq(placeIdentifiers.id, row.id), eq(placeIdentifiers.status, row.status))).returning({ id: placeIdentifiers.id });
+  if (!upd.length) return { ok: false as const, error: "conflict", target };
+  const auditId = uuidv7();
+  try {
+    await db.insert(auditLog).values({ id: auditId, actor: `admin:${admin}`, action: mode === "disable" ? "google_disable" : "google_enable", refTable: "place_identifiers", refId: row.id,
+      detail: { slug: p.slug, placeId: p.id, identifierId: row.id, externalId: row.externalId, why, before: row.status, after: next } });
+  } catch (e) {
+    /* denetim yazılamadıysa durum geri alınır */
+    await db.update(placeIdentifiers).set({ status: row.status }).where(and(eq(placeIdentifiers.id, row.id), eq(placeIdentifiers.status, next)));
+    throw e;
+  }
+  return { ok: true as const, preview: false as const, target: { ...target, status: next }, before: row.status, after: next, auditId };
+}
+
+/** Preview/yerel test: örnek Google eşleşmesi oluşturur ya da yalnız örnekleri kaldırır (externalId "TEST_FIXTURE_…"). Üretimde kapalı. */
+export async function googleTestFixture(mode: "create" | "remove", slugs: string[]) {
+  const db = getDb();
+  if (!db) return { ok: false as const, error: "no_db" };
+  if (mode === "remove") {
+    const rows = await db.delete(placeIdentifiers).where(and(eq(placeIdentifiers.provider, "google"), like(placeIdentifiers.externalId, "TEST_FIXTURE_%"))).returning({ id: placeIdentifiers.id });
+    return { ok: true as const, removed: rows.length };
+  }
+  const made: { slug: string; placeId: string; identifierId: string; status: string }[] = [];
+  for (const [i, slug] of slugs.slice(0, 3).entries()) {
+    const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, slug)).limit(1);
+    if (!p) continue;
+    const has = await db.select({ id: placeIdentifiers.id }).from(placeIdentifiers).where(and(eq(placeIdentifiers.placeId, p.id), eq(placeIdentifiers.provider, "google")));
+    if (has.length) continue;
+    const id = uuidv7(), status = i % 2 ? "confirmed" : "auto";
+    await db.insert(placeIdentifiers).values({ id, placeId: p.id, provider: "google", externalId: `TEST_FIXTURE_${slug}`, status, matchScore: 1, matchMethod: "test_fixture" });
+    made.push({ slug, placeId: p.id, identifierId: id, status });
+  }
+  return { ok: true as const, made };
+}
+
 export async function rollbackGoogleMatches() {
   const db = getDb();
   if (!db) return { ok: false as const, error: "no_db" };

@@ -8,18 +8,18 @@ import { executorFor } from "@/lib/db/executors";
 import { applyMigrations, migrationStatus } from "@/lib/db/migrate";
 import { seedRealVenues, verifyRealVenues } from "@/lib/db/seed";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "@/lib/db/rollback";
-import { realVenueRecords } from "@/data/real";
+import { realVenueRecords, realVenueReview } from "@/data/real";
 import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
-import { googleMatchStats, matchGoogleBatch, matchGoogleSlugs, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
+import { googleMatchStats, matchGoogleBatch, matchGoogleSlugs, setGoogleMatchActive, googleTestFixture, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
 import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
 import { and, desc, eq, inArray } from "drizzle-orm";
-import { auditLog, fieldProvenance, menuItems, moderationQueue, places, reviews } from "@/lib/db/schema";
+import { auditLog, fieldProvenance, menuItems, moderationQueue, placeIdentifiers, places, reviews } from "@/lib/db/schema";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -76,7 +76,10 @@ export async function GET(req: Request) {
       const [pl] = await db.select({ id: places.id, address: places.address, phone: places.phone, website: places.website, instagram: places.instagram, openingHours: places.openingHours }).from(places).where(eq(places.slug, slug)).limit(1);
       const count = async (t: typeof menuItems | typeof fieldProvenance) => (pl ? (await db.select({ id: t.id }).from(t).where(eq(t.placeId, pl.id))).length : 0);
       const audits = pl ? await db.select({ id: auditLog.id, action: auditLog.action, at: auditLog.at }).from(auditLog).where(and(eq(auditLog.refId, pl.id), inArray(auditLog.action, ["profile_apply", "profile_rollback"]))).orderBy(desc(auditLog.at)).limit(5) : [];
-      return NextResponse.json({ env: envName(), slug, place: pl ?? null, counts: { menuRows: await count(menuItems), provRows: await count(fieldProvenance) }, audits, profile: await readProfile(db, slug), videos: await listPlaceVideos(slug) }, { headers: H });
+      /* Google eşleşme kayıtları (kimlik + durum; Google içeriği yok) ve son pasifleştirme/etkinleştirme denetimleri */
+      const gids = pl ? await db.select({ id: placeIdentifiers.id, externalId: placeIdentifiers.externalId, status: placeIdentifiers.status }).from(placeIdentifiers).where(and(eq(placeIdentifiers.placeId, pl.id), eq(placeIdentifiers.provider, "google"))) : [];
+      const gaudits = gids.length ? await db.select({ id: auditLog.id, action: auditLog.action, actor: auditLog.actor, at: auditLog.at, refId: auditLog.refId, detail: auditLog.detail }).from(auditLog).where(and(inArray(auditLog.refId, gids.map((g) => g.id)), inArray(auditLog.action, ["google_disable", "google_enable"]))).orderBy(desc(auditLog.at)).limit(10) : [];
+      return NextResponse.json({ env: envName(), slug, place: pl ?? null, google: { identifiers: gids, audits: gaudits }, counts: { menuRows: await count(menuItems), provRows: await count(fieldProvenance) }, audits, profile: await readProfile(db, slug), videos: await listPlaceVideos(slug) }, { headers: H });
     } catch (e) { return fail(e); }
   }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
@@ -108,7 +111,7 @@ export async function GET(req: Request) {
       waves: Object.fromEntries(await Promise.all(waves.map(async (w) => [w, await rollbackWavePreview(x, realVenueRecords.filter((r) => r.wave === w).map((r) => r.slug))]))),
     } : null;
     const quality = ready ? await qualityReport(x).catch(() => null) : null;
-    return NextResponse.json({ env: envName(), db: { fingerprint: dbFingerprint(dbUrl()), writeGuard: previewWriteGuard(dbUrl()) }, migrations, integrity, rollback, quality }, { headers: H });
+    return NextResponse.json({ env: envName(), db: { fingerprint: dbFingerprint(dbUrl()), writeGuard: previewWriteGuard(dbUrl()) }, migrations, integrity, duplicateReview: realVenueReview, rollback, quality }, { headers: H });
   } catch (e) { return fail(e); }
 }
 
@@ -116,7 +119,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; mapsUrls?: Record<string, string>; simulateFailure?: boolean; auditId?: string } = {};
+  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; mapsUrls?: Record<string, string>; placeId?: string; identifierId?: string; admin?: string; mode?: string; simulateFailure?: boolean; auditId?: string } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -233,6 +236,24 @@ export async function POST(req: Request) {
         /* Onaylanmış/reddedilmiş eşleşmelerin açık kuyruk satırlarını kapatır; silmez. */
         if (body.confirm !== "EVET") break;
         return NextResponse.json({ action: "google-queue-sync", env: envName(), ...(await syncGoogleQueue()), stats: await googleMatchStats() }, { headers: H });
+      }
+      case "google-disable":
+      case "google-enable": {
+        /* Tek eşleşme: hedef placeId + identifierId (+ isteğe bağlı slug). confirm yoksa yalnız etkilenecek kaydı gösterir;
+           uygulamak için confirm "PASIFLESTIR" / "ETKINLESTIR", neden (why) ve yapan yönetici (admin) zorunlu. */
+        const mode = body.action === "google-disable" ? "disable" : "enable";
+        const word = mode === "disable" ? "PASIFLESTIR" : "ETKINLESTIR";
+        if (body.confirm !== undefined && body.confirm !== word) return NextResponse.json({ error: "confirm_mismatch", expected: word }, { status: 400, headers: H });
+        const r = await setGoogleMatchActive(mode, body, body.confirm === word);
+        if (r.ok && !r.preview) { fresh(TAG_GOOGLE); fresh(profileTag(r.target.slug)); }
+        return NextResponse.json({ action: body.action, env: envName(), ...r }, { status: r.ok ? 200 : r.error === "no_db" ? 503 : 400, headers: H });
+      }
+      case "google-fixture": {
+        /* yalnız Preview/yerel: örnek eşleşme oluştur/kaldır (TEST_FIXTURE_…) */
+        if (envName() === "production" || body.confirm !== "EVET") return NextResponse.json({ error: "not_allowed" }, { status: 403, headers: H });
+        const r = await googleTestFixture(body.mode === "remove" ? "remove" : "create", Array.isArray(body.slugs) ? body.slugs.map(String) : []);
+        fresh(TAG_GOOGLE);
+        return NextResponse.json({ action: "google-fixture", env: envName(), ...r }, { headers: H });
       }
       case "rollback-google": {
         fresh(TAG_GOOGLE);

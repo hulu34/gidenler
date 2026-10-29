@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
    Gerçek ağ çağrısı ve gerçek maliyet YOK. Çalıştır: npm run test:db
    ========================================================================== */
 import { PGlite } from "@electric-sql/pglite";
+import { uuidv7 } from "uuidv7";
 import { drizzle } from "drizzle-orm/pglite";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import * as schema from "../lib/db/schema";
@@ -13,12 +14,12 @@ import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migra
 import { MIGRATIONS } from "../lib/db/migrations.generated";
 import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
-import { realVenueRecords, invalidRecord, mergeRealVenues, type RealVenueRecord } from "../data/real";
+import { realVenueRecords, invalidRecord, mergeRealVenues, realVenueReview, type RealVenueRecord } from "../data/real";
 import { setRedisForTests, type RedisLike } from "../lib/usage/redis";
 import { readFloors as readFloorsT, reserve, BUDGETS, usageSnapshot, budgetFor, periodKeys, spendReport, usdCap, pacedDaily, googlePause } from "../lib/usage/counter";
 import { redisNs } from "../lib/usage/redis";
 import { strictHit } from "../lib/usage/rate";
-import { cidFromMapsUrl, fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, holdGoogleMatches, matchGoogleBatch, matchGoogleSlugs, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
+import { cidFromMapsUrl, fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, holdGoogleMatches, matchGoogleBatch, matchGoogleSlugs, setGoogleMatchActive, storedGooglePlaceId, resolveGooglePlaceId, retryGoogleNoMatch, reviewGoogleMatch, rollbackGoogleMatches, searchName } from "../lib/providers/google";
 import { matchScore, brandKey, branchDiff, preDecide, postDecide } from "../lib/match/score";
 import { parseVideoUrl, embedUrl } from "../lib/media/embed";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/store";
@@ -143,15 +144,22 @@ async function main() {
       /^[0-9a-f-]{36}$/.test(bp.id) && bp.lat === null && bp.lng === null && ids.length === 1 && ids[0].provider === "business"
       && prov.length > 0 && prov.every((r) => r.provider === biz.sourceKind && r.license === null) && !prov.some((r) => r.field === "lat" || r.field === "lng"),
       { ids: ids.map((i) => i.provider), prov: prov.map((r) => `${r.field}:${r.provider}`) });
-    /* sonradan OSM aktarımı: aynı mekân OSM'de çıkarsa kopya oluşmaz, işletme kaydı korunur */
+    /* mükerrer: yalnız doğrulanmış dış kimlik (osmRef) birleştirir; ad/semt/yakınlık yalnız inceleme adayı */
     const twin = (o: Partial<RealVenueRecord>): RealVenueRecord => ({ ...osm, ref: "node/999999999", slug: "baska-slug", name: "Başka Mekân", ...o });
-    const m1 = mergeRealVenues([osm, twin({ name: biz.name.toUpperCase(), district: biz.district })], [biz]);
-    const m2 = mergeRealVenues([twin({ slug: biz.slug })], [biz]);
-    const m3 = mergeRealVenues([twin({ ref: "node/42" })], [{ ...biz, osmRef: "node/42" }]);
-    const m4 = mergeRealVenues([twin({ name: biz.name, lat: 41.0, lng: 28.9 })], [{ ...biz, lat: 41.05, lng: 28.95, location: { provider: "osm", ref: "node/7", precision: "address" } }]);
-    ok("mükerrer koruma: aynı ad+semt / aynı slug / osmRef OSM kopyası düşer; uzak aynı adlı mekân ve diğer OSM kayıtları kalır",
-      m1.dropped.length === 1 && m1.records.includes(osm) && m1.records.at(-1) === biz && m2.dropped.length === 1 && m3.dropped.length === 1 && m4.dropped.length === 0,
-      { m1: m1.dropped.length, m2: m2.dropped.length, m3: m3.dropped.length, m4: m4.dropped.length });
+    const ilce = mergeRealVenues([osm, twin({ name: biz.name.toUpperCase(), district: biz.district, slug: "japon-erdal-kadikoy-degil" })], [biz]);
+    const bizGeo = { ...biz, lat: 41.05, lng: 28.95, location: { provider: "osm" as const, ref: "node/7", precision: "address" as const } };
+    const sube = mergeRealVenues([twin({ name: biz.name, lat: 41.0505, lng: 28.9505, slug: "japon-erdal-sube" })], [bizGeo]);
+    const dogru = mergeRealVenues([twin({ ref: "node/42" })], [{ ...biz, osmRef: "node/42" }]);
+    const slugCak = mergeRealVenues([twin({ slug: biz.slug, name: "Bambaşka Ad" })], [biz]);
+    const slugs = slugCak.records.map((r) => r.slug);
+    ok("aynı ilçede aynı adlı farklı işletme: iki kayıt da kalır, inceleme adayı olur",
+      ilce.dropped.length === 0 && ilce.records.length === 3 && ilce.review.length === 1 && ilce.review[0].reason === "ayni_ad_ayni_ilce", ilce.review);
+    ok("150 m içinde aynı adlı iki şube: iki kayıt da kalır, inceleme adayı olur",
+      sube.dropped.length === 0 && sube.records.length === 2 && sube.review[0]?.reason === "ayni_ad_150m", sube.review);
+    ok("doğrulanmış dış kimlik (osmRef) OSM kopyasını birleştirir", dogru.dropped.length === 1 && dogru.records.length === 1 && dogru.review.length === 0);
+    ok("doğrulanmamış slug çakışması: ayrı kayıt korunur, OSM kaydı kaynağa bağlı ayırt edici slug alır",
+      slugCak.dropped.length === 0 && new Set(slugs).size === 2 && slugs.includes(biz.slug) && slugs.includes(`${biz.slug}-node-999999999`) && slugCak.review[0]?.reason === "ayni_slug", slugs);
+    ok("gerçek veride inceleme adayı listesi okunabilir", Array.isArray(realVenueReview));
     /* gerçek OSM kimliği sonradan bulunursa ek kimlik olur, mekân çoğalmaz */
     const [{ n: before }] = await db.select({ n: sql<number>`count(*)::int` }).from(schema.places);
     await seedRealVenues(db, [{ ...biz, osmRef: "node/42" }]);
@@ -453,7 +461,8 @@ async function main() {
       seen.push({ mask: ((init?.headers ?? {}) as Record<string, string>)["X-Goog-FieldMask"] ?? "", body: String(init?.body ?? "") });
       return Response.json({ places: [
         { id: "G_YANLIS", displayName: { text: biz.name }, location: { latitude: 41.03, longitude: 28.98 }, googleMapsUri: "https://maps.google.com/?cid=1" },
-        { id: "G_DOGRU", displayName: { text: biz.name }, location: { latitude: 41.03, longitude: 28.98 }, googleMapsUri: `https://maps.google.com/?cid=${cid}` }] });
+        { id: "G_DOGRU", displayName: { text: biz.name }, location: { latitude: 41.03, longitude: 28.98 }, googleMapsUri: `https://maps.google.com/?cid=${cid}` },
+        { id: "G_YENI", displayName: { text: biz.name }, location: { latitude: 41.03, longitude: 28.98 }, googleMapsUri: "https://maps.google.com/?cid=99999" }] });
     }) as unknown as typeof fetch;
     const r0 = await matchGoogleSlugs([biz.slug], {}, gf);
     ok("konumsuz mekân bağlantısız aranmaz (istek yok)", r0.results[0]?.status === "no_match" && r0.results[0]?.reason === "konum_yok" && seen.length === 0, r0);
@@ -469,6 +478,67 @@ async function main() {
       { r2: r2.results[0], cid, mask: seen.at(-1)!.mask });
     const r3 = await matchGoogleSlugs([biz.slug], { [biz.slug]: link }, gf);
     ok("kayıtlı eşleşme yeniden aranmaz", r3.results[0]?.status === "existing" && seen.length === 2);
+    /* tek eşleşmeyi pasifleştirme / geri etkinleştirme: silinmez, hedef iki kimlikle, denetim kaydıyla */
+    const [oth] = await db.select({ id: schema.places.id }).from(schema.places).where(eq(schema.places.slug, "ciya-sofrasi-kadikoy"));
+    const othId = uuidv7();
+    await db.insert(schema.placeIdentifiers).values({ id: othId, placeId: oth.id, provider: "google", externalId: "G_BASKA", status: "auto", matchScore: 0.9, matchMethod: "test" });
+    const jRow = gi.place_identifiers, jPlace = gi.places;
+    const snap = async () => JSON.stringify({
+      place: (await db.select().from(schema.places).where(eq(schema.places.id, jPlace.id)))[0],
+      prov: (await db.select({ n: sql<number>`count(*)::int` }).from(schema.fieldProvenance).where(eq(schema.fieldProvenance.placeId, jPlace.id)))[0],
+      menu: (await db.select({ n: sql<number>`count(*)::int` }).from(schema.menuItems).where(eq(schema.menuItems.placeId, jPlace.id)))[0],
+      ids: (await db.select({ p: schema.placeIdentifiers.provider, s: schema.placeIdentifiers.status }).from(schema.placeIdentifiers).where(and(eq(schema.placeIdentifiers.placeId, jPlace.id), sql`${schema.placeIdentifiers.provider} <> 'google'`))),
+      users: (await db.select({ n: sql<number>`count(*)::int` }).from(schema.userPlaceStatus).where(eq(schema.userPlaceStatus.placeId, jPlace.id)))[0],
+    });
+    const statusOf = async (id: string) => (await db.select({ s: schema.placeIdentifiers.status }).from(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.id, id)))[0]?.s;
+    const audits = async () => (await db.select().from(schema.auditLog).where(inArray(schema.auditLog.action, ["google_disable", "google_enable"]))).length;
+    const s0 = await snap();
+    const pv = await setGoogleMatchActive("disable", { placeId: jPlace.id, identifierId: jRow.id }, false);
+    ok("önizleme yalnız etkilenecek tek kaydı gösterir, değiştirmez", pv.ok && pv.preview && pv.target.externalId === "G_DOGRU" && pv.target.next === "disabled" && (await statusOf(jRow.id)) === "confirmed" && (await audits()) === 0, pv);
+    const bad = [
+      await setGoogleMatchActive("disable", {}, true),
+      await setGoogleMatchActive("disable", { placeId: jPlace.id }, true),
+      await setGoogleMatchActive("disable", { identifierId: jRow.id }, true),
+      await setGoogleMatchActive("disable", { placeId: oth.id, identifierId: jRow.id, why: "yanlış hedef", admin: "test" }, true),
+      await setGoogleMatchActive("disable", { placeId: jPlace.id, identifierId: jRow.id, slug: "ciya-sofrasi-kadikoy", why: "yanlış hedef", admin: "test" }, true),
+      await setGoogleMatchActive("disable", { placeId: jPlace.id, identifierId: jRow.id, admin: "test" }, true),
+      await setGoogleMatchActive("disable", { placeId: jPlace.id, identifierId: jRow.id, why: "neden yazıldı" }, true),
+    ];
+    ok("eksik / uyuşmayan hedef, eksik neden ya da yönetici: hiçbir şey değişmez (hedefsiz istek 'hepsi' sayılmaz)",
+      bad.map((b) => !b.ok && b.error).join(",") === "target_required,target_required,target_required,target_mismatch,target_mismatch,why_required,admin_required"
+      && (await statusOf(jRow.id)) === "confirmed" && (await statusOf(othId)) === "auto" && (await audits()) === 0, bad.map((b) => !b.ok && b.error));
+    const d1 = await setGoogleMatchActive("disable", { placeId: jPlace.id, identifierId: jRow.id, slug: biz.slug, why: "test: yanlış eşleşme bildirimi", admin: "test" }, true);
+    const [au] = d1.ok && !d1.preview ? await db.select().from(schema.auditLog).where(eq(schema.auditLog.id, d1.auditId)) : [];
+    const ad = au?.detail as { before?: string; after?: string; why?: string; externalId?: string } | undefined;
+    ok("pasifleştirme: yalnız bu bağlantı 'disabled'; diğer eşleşme, restoran, kaynaklar, diğer kimlikler ve kullanıcı kayıtları aynı",
+      d1.ok && (await statusOf(jRow.id)) === "disabled" && (await statusOf(othId)) === "auto" && (await snap()) === s0, d1);
+    ok("denetim: neden, yönetici, zaman, önceki/yeni durum", au?.action === "google_disable" && au.actor === "admin:test" && !!au.at && ad?.before === "confirmed" && ad?.after === "disabled" && ad?.why === "test: yanlış eşleşme bildirimi" && ad?.externalId === "G_DOGRU");
+    const sg = await storedGooglePlaceId(biz.slug); const nCalls = seen.length;
+    const fg = await fetchGooglePlace(biz.slug, gf);
+    ok("pasif bağlantıdan Google içerik çağrısı yapılmaz", "none" in (sg ?? {}) && (sg as { none: string }).none === "disabled" && fg.state === "unmatched" && seen.length === nCalls, fg);
+    const d2 = await setGoogleMatchActive("disable", { placeId: jPlace.id, identifierId: jRow.id, why: "tekrar uygulama", admin: "test" }, true);
+    ok("tekrar uygulama: değişiklik ve yeni denetim yok", !d2.ok && d2.error === "not_active" && (await audits()) === 1);
+    const auto1 = await resolveGooglePlaceId(biz.slug, "TEST_KEY_NOT_REAL", gf);
+    await reviewGoogleMatch(jRow.id, "confirmed"); await holdGoogleMatches([biz.slug], "test");
+    ok("otomatik yollar (bağlantısız arama, inceleme, bekletme) pasif bağlantıyı açmaz ve aramaz",
+      auto1.calls.textSearch === 0 && (await statusOf(jRow.id)) === "disabled" && seen.length === nCalls, auto1);
+    const same = await matchGoogleSlugs([biz.slug], { [biz.slug]: link }, gf);
+    ok("bağlantıyla düzeltme aynı (pasif) kaydı bulursa kendiliğinden açmaz", same.results[0]?.status === "no_match" && same.results[0]?.reason === "kapali_baglanti_ayni_kayit" && (await statusOf(jRow.id)) === "disabled");
+    const fix = await matchGoogleSlugs([biz.slug], { [biz.slug]: "https://maps.google.com/?cid=99999" }, gf);
+    const gAll = await db.select().from(schema.placeIdentifiers).where(and(eq(schema.placeIdentifiers.placeId, jPlace.id), eq(schema.placeIdentifiers.provider, "google")));
+    ok("pasif yanlış bağlantı doğru Place ID ile kontrollü düzeltmeyi kilitlemez; geçmiş kalır",
+      fix.results[0]?.status === "confirmed" && gAll.length === 2 && gAll.some((g) => g.externalId === "G_YENI" && g.status === "confirmed") && gAll.some((g) => g.externalId === "G_DOGRU" && g.status === "disabled"), fix.results[0]);
+    const yeni = gAll.find((g) => g.externalId === "G_YENI")!;
+    const e0 = await setGoogleMatchActive("enable", { placeId: jPlace.id, identifierId: jRow.id, why: "geri açma denemesi", admin: "test" }, true);
+    ok("başka etkin bağlantı varken geri etkinleştirme reddedilir", !e0.ok && e0.error === "another_active" && (await statusOf(jRow.id)) === "disabled");
+    await setGoogleMatchActive("disable", { placeId: jPlace.id, identifierId: yeni.id, why: "test sırası", admin: "test" }, true);
+    const epv = await setGoogleMatchActive("enable", { placeId: jPlace.id, identifierId: jRow.id }, false);
+    const e1 = await setGoogleMatchActive("enable", { placeId: jPlace.id, identifierId: jRow.id, why: "test: yanlış alarm, geri açıldı", admin: "test" }, true);
+    const [ea] = e1.ok && !e1.preview ? await db.select().from(schema.auditLog).where(eq(schema.auditLog.id, e1.auditId)) : [];
+    ok("geri etkinleştirme: önizleme + açık karar; önceki durum (confirmed) geri gelir, denetim yazılır",
+      epv.ok && epv.preview && epv.target.next === "confirmed" && e1.ok && (await statusOf(jRow.id)) === "confirmed" && ea?.action === "google_enable" && (ea.detail as { before?: string }).before === "disabled" && (await snap()) === s0, e1);
+    const e2 = await setGoogleMatchActive("enable", { placeId: jPlace.id, identifierId: jRow.id, why: "tekrar", admin: "test" }, true);
+    ok("etkin kayıtta geri etkinleştirme tekrar uygulanmaz", !e2.ok && e2.error === "not_disabled");
     await db.delete(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.provider, "google"));
     /* bu senaryonun sayaç tabanı sonraki sayaç testine karışmasın */
     await db.delete(schema.auditLog).where(eq(schema.auditLog.action, "usage_floor"));

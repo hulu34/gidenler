@@ -13,8 +13,8 @@ import isletme from "./isletme.json";
      Kaynak: resmî site ya da işletme beyanı (sourceKind + sourceUrl zorunlu). OSM kimliği yalnız gerçekten varsa (osmRef).
      Konum ancak açık bir kaynaktan gelirse yazılır (location); yoksa kayıt adresle açılır, harita noktası "yok" gösterilir.
      Google'dan gelen konum ya da bilgi bu dosyaya yazılmaz.
-   · Mükerrer koruma: aynı mekân sonradan OSM aktarımında gelirse (osmRef, slug ya da ad + 150 m) OSM kopyası listeye
-     alınmaz; Gidenler kimliği (isletme kaydı) korunur, OSM yalnız ek kimlik olur.
+   · Mükerrer koruma: aynı mekân sonradan OSM aktarımında gelirse YALNIZ doğrulanmış dış kimlikle (osmRef) OSM kopyası
+     listeye alınmaz; Gidenler kimliği korunur, OSM ek kimlik olur. Ad/semt/yakınlık benzerliği yalnız inceleme adayıdır.
    ========================================================================== */
 
 /* Açık lisanslı (Commons) kapak fotoğrafları kendi alan adımızdan, WebP boyut adımlarıyla sunulur
@@ -82,28 +82,46 @@ export function invalidRecord(r: RealVenueRecord): string | null {
 }
 export const isRestaurantTarget = (r: RealVenueRecord) => r.osmAmenity === "restaurant";
 
-/* mükerrer: aynı mekânın OSM kaydı işletme kaydıyla eşleşiyorsa (osmRef, slug ya da benzer ad + 150 m) */
+/* mükerrer karşılaştırma yardımcıları */
 const fold = (s: string) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, " ").trim();
 const meters = (a: { lat: number; lng: number }, b: { lat: number; lng: number }) => {
   const R = 6371000, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
   const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2;
   return 2 * R * Math.asin(Math.sqrt(h));
 };
+/** Mükerrer kararı. Yalnız DOĞRULANMIŞ dış kimlik birleştirir: işletme kaydında yöneticinin girdiği osmRef, OSM kaydının
+    kendisiyse OSM kopyası listeye alınmaz. Aynı ad + aynı ilçe ya da aynı ad + 150 m tek başına birleştirme nedeni DEĞİLDİR
+    (aynı adlı farklı işletme ya da yakın iki şube olabilir): iki kayıt da kalır, çift inceleme adayı olarak raporlanır. */
 export function duplicateOfBusiness(o: RealVenueRecord, biz: RealVenueRecord[]): RealVenueRecord | null {
-  for (const b of biz) {
-    if (b.osmRef === o.ref || b.slug === o.slug) return b;
-    if (fold(b.name) === fold(o.name)) {
-      if (typeof b.lat === "number" && typeof b.lng === "number" && typeof o.lat === "number" && typeof o.lng === "number") { if (meters(b as { lat: number; lng: number }, o as { lat: number; lng: number }) <= 150) return b; }
-      else if (b.district === o.district) return b;
-    }
-  }
-  return null;
+  return biz.find((b) => !!b.osmRef && b.osmRef === o.ref) ?? null;
+}
+export function reviewCandidate(o: RealVenueRecord, b: RealVenueRecord): "ayni_slug" | "ayni_ad_150m" | "ayni_ad_ayni_ilce" | null {
+  if (b.slug === o.slug) return "ayni_slug";
+  if (fold(b.name) !== fold(o.name)) return null;
+  if (typeof b.lat === "number" && typeof b.lng === "number" && typeof o.lat === "number" && typeof o.lng === "number"
+    && meters({ lat: b.lat, lng: b.lng }, { lat: o.lat, lng: o.lng }) <= 150) return "ayni_ad_150m";
+  return b.district === o.district ? "ayni_ad_ayni_ilce" : null;
 }
 export function mergeRealVenues(osm: RealVenueRecord[], biz: RealVenueRecord[]) {
   const dropped = osm.filter((o) => duplicateOfBusiness(o, biz));
-  return { records: [...osm.filter((o) => !dropped.includes(o)), ...biz], dropped };
+  const review: { business: string; osm: string; reason: string }[] = [];
+  const kept = osm.filter((o) => !dropped.includes(o)).map((o) => {
+    let rec = o;
+    for (const b of biz) {
+      const why = reviewCandidate(o, b);
+      if (!why) continue;
+      /* ayrı kayıt korunur; slug çakışıyorsa OSM kaydı kaynağına bağlı ayırt edici slug alır */
+      if (why === "ayni_slug") rec = { ...rec, slug: `${o.slug}-${o.ref.replace("/", "-")}` };
+      review.push({ business: b.slug, osm: rec.slug, reason: why });
+    }
+    return rec;
+  });
+  return { records: [...kept, ...biz], dropped, review };
 }
-export const realVenueRecords = mergeRealVenues(raw as RealVenueRecord[], isletme as RealVenueRecord[]).records;
+const merged = mergeRealVenues(raw as RealVenueRecord[], isletme as RealVenueRecord[]);
+/** İnceleme adayı çiftler (otomatik birleştirilmez). */
+export const realVenueReview = merged.review;
+export const realVenueRecords = merged.records;
 
 export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   id: `ent.r.${r.slug}`,
