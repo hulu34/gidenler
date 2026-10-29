@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-6z8ukbsi9-hulu34.vercel.app    # canlı sürüm (6890ba8, Google pasifleştirme)
-  PROFIL_HOST: gidenler-3tdndgcsg-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview 6890ba8, Google pasifleştirme)  # görsel Faz 1 Preview (kendi Neon dalı)
+  PROFIL_HOST: gidenler-hw3dlurjn-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview fe54958, deneme eşiği)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
@@ -146,6 +146,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: profil-sifreli, path: out/profil.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  esik:
+    if: contains(github.event.head_commit.message, '[esik]') || contains(github.event.head_commit.message, '[esik-canli]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/esik.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}", ADAY_HOST: "${{ env.ADAY_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[esik-canli]') && '1' || '0' }}" }
+      - if: always()
+        run: test -d out/esik && tar -C out -czf out/esik.tgz esik && rm -rf out/esik && openssl cms -encrypt -aes256 -binary -in out/esik.tgz -out out/esik.tgz.cms -outform DER ops/olcum.pem && rm out/esik.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: esik-sifreli, path: out/esik.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   google-durum:
     if: contains(github.event.head_commit.message, '[google-durum]')
     runs-on: ubuntu-latest
