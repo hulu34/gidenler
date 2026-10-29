@@ -146,6 +146,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: profil-sifreli, path: out/profil.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  puan-veri:
+    if: contains(github.event.head_commit.message, '[puan-veri]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/puan-veri.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}" }
   canli-gecis:
     if: contains(github.event.head_commit.message, '[canli-gecis]')
     runs-on: ubuntu-latest
