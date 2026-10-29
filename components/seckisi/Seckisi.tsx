@@ -2,6 +2,7 @@ import Link from "next/link";
 import { realVenueRecords } from "@/data/real";
 import { KIND_LABEL, SECTION_LABEL, labelOf, fmtDay, fmtStamp, hrefOf, type Article, type Block, type Event, type Lang, type SectionKey } from "@/lib/seckisi";
 import { UI, t } from "./ui";
+import { SeckiVideos } from "./SeckiVideos";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GİDENLER SEÇKİSİ — dergi görünümü. Sunucu bileşenleri; istemciye JS gitmez.
@@ -73,10 +74,63 @@ function Meta({ a, lang }: { a: Article; lang: Lang }) {
   );
 }
 
+/** Sahiplik/kurucu ilişkisi: karttan yazıya geçmeden görünür. */
+function Disclosure({ a, lang }: { a: Article; lang: Lang }) {
+  return <p role="note" className="border-l-2 border-warn bg-warn-soft px-3 py-2 text-[12.5px] font-semibold leading-snug text-warn">{a.ownership![lang]}</p>;
+}
+
+const PRESS_TYPE: Record<string, Record<Lang, string>> = {
+  rehber: { tr: "Rehber yazısı", en: "Guide" }, liste: { tr: "Liste", en: "List" }, "ticari-blog": { tr: "Şirket blogu", en: "Company blog" },
+  haber: { tr: "Haber", en: "News" }, roportaj: { tr: "Röportaj", en: "Interview" },
+};
+const INDEPENDENCE: Record<string, Record<Lang, string>> = {
+  "bagimsizlik-beyani": { tr: "Ücretli olmadığını beyan ediyor", en: "States it was not paid" },
+  "beyan-yok": { tr: "İşbirliği beyanı yok · bağımsızlık doğrulanmadı", en: "No partnership disclosure · independence not verified" },
+  sponsorlu: { tr: "Sponsorlu", en: "Sponsored" }, davetli: { tr: "Davetli ziyaret", en: "Hosted visit" }, belirsiz: { tr: "Bağımsızlık belirsiz", en: "Independence unclear" },
+};
+const VIDEO_TYPE: Record<string, Record<Lang, string>> = {
+  roportaj: { tr: "Kurucularla röportaj", en: "Interview with the founders" }, ziyaret: { tr: "Ziyaret videosu", en: "Visit video" }, "cok-mekanli": { tr: "Birkaç mekânlı tur", en: "Multi-venue tour" },
+};
+
+/** "Hakkında yayımlananlar": basın/rehber kartları ve videolar. */
+function Media({ a, lang }: { a: Article; lang: Lang }) {
+  if (!a.media || (!a.media.press.length && !a.media.videos.length)) return null;
+  const name = venueOf(a.venues[0].slug)?.name ?? "";
+  return (
+    <section aria-labelledby="h-medya" className="flex flex-col gap-6 border-t-2 border-line-strong pt-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 id="h-medya" className="text-[11px] font-bold uppercase tracking-[0.18em]">{lang === "tr" ? `${name} hakkında yayımlananlar` : `What others have published about ${name}`}</h2>
+        <p className="text-[12px] text-ink-3">{lang === "tr" ? "Bağlantılar özgün yayınlara gider; videolar içerik sahiplerine aittir." : "Links go to the original publications; videos belong to their creators."}</p>
+      </div>
+      {a.media.press.length > 0 && (
+        <ul className="grid gap-px border border-edit-line bg-edit-line sm:grid-cols-3">
+          {a.media.press.map((p) => (
+            <li key={p.url} className="flex flex-col gap-1.5 bg-paper p-4">
+              <p className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-ink-3">{PRESS_TYPE[p.type][lang]} · {fmtDay(p.date, lang)}</p>
+              <a href={p.url} rel="noopener noreferrer" target="_blank" className="text-[15px] font-extrabold leading-snug hover:underline">{p.outlet}</a>
+              <p className="text-[12.5px] leading-snug text-ink-2" translate="no">{p.title}{p.author ? ` · ${p.author}` : ""}</p>
+              <p className="text-[13px] leading-snug text-ink-2">{p.note[lang]}</p>
+              <p className="mt-auto text-[11.5px] text-ink-3">{INDEPENDENCE[p.independence][lang]}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      {a.media.videos.length > 0 && (
+        <SeckiVideos lang={lang} videos={a.media.videos.map((v) => ({
+          youtubeId: v.youtubeId, channel: v.channel, handle: v.handle, title: v.title, start: v.start,
+          date: fmtDay(v.date, lang), label: VIDEO_TYPE[v.type][lang], disclosure: v.disclosure[lang], note: v.note[lang],
+        }))} />
+      )}
+    </section>
+  );
+}
+
 function SectionHead({ k, n, lang }: { k: SectionKey; n: number; lang: Lang }) {
+  /* Ana hikâyeden sonra gelen diğer hikâyeler "Restoran Hikâyeleri" başlığıyla. */
+  const label = k === "hikaye" ? (lang === "tr" ? "Restoran Hikâyeleri" : "Restaurant Stories") : SECTION_LABEL[k][lang];
   return (
     <div className="kunye mb-6 border-t-2">
-      <h2 id={`bolum-${k}`} className="!text-[11px]">{SECTION_LABEL[k][lang]}</h2>
+      <h2 id={`bolum-${k}`} className="!text-[11px]">{label}</h2>
       <span className="tnum font-[family-name:var(--font-brand)] text-[22px] leading-none text-ink-3">{String(n).padStart(2, "0")}</span>
     </div>
   );
@@ -94,6 +148,7 @@ function Lead({ a, lang }: { a: Article; lang: Lang }) {
           <Link href={hrefOf(lang, a.slug)} className="hover:underline hover:decoration-2 hover:underline-offset-4">{a.title[lang]}</Link>
         </h3>
         <p className="font-[family-name:var(--font-read)] text-[19px] leading-[1.45] text-ink-2">{a.dek[lang]}</p>
+        {a.ownership && <Disclosure a={a} lang={lang} />}
         <p className="border-l-2 border-accent pl-3 text-[14px] leading-relaxed text-ink-2">
           <span className="mr-1 font-bold text-ink">{t(UI.why, lang)}.</span>{a.why[lang]}
         </p>
@@ -114,6 +169,7 @@ function Card({ a, lang, wide = false }: { a: Article; lang: Lang; wide?: boolea
           <Link href={hrefOf(lang, a.slug)} className="hover:underline hover:decoration-2 hover:underline-offset-4">{a.title[lang]}</Link>
         </h3>
         <p className="font-[family-name:var(--font-read)] text-[16.5px] leading-[1.45] text-ink-2">{a.dek[lang]}</p>
+        {a.ownership && <Disclosure a={a} lang={lang} />}
         {a.kind === "semt" ? (
           <ul className="mt-1 flex flex-col divide-y divide-edit-line border-y border-edit-line">
             {a.venues.map((v) => (
@@ -165,7 +221,8 @@ export function SeckiHome({ lang, list, groups, review }: {
   groups: Array<{ key: SectionKey; articles: Article[]; events: Event[] }>;
 }) {
   const lead = groups.find((g) => g.key === "hikaye")?.articles[0] ?? null;
-  const index = list.filter((a) => a !== lead);
+  /* "Bu sayıda": sayfadaki bölüm sırasıyla. */
+  const index = groups.flatMap((g) => g.articles).filter((a) => a !== lead);
   return (
     <div lang={lang}>
       {review && <ReviewBanner lang={lang} />}
@@ -253,7 +310,7 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
         <div className="flex items-center justify-between gap-4">
           <nav aria-label="breadcrumb" className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
             <Link href={hrefOf(lang)} className="hover:text-ink">{t(UI.brand, lang)}</Link>
-            <span aria-hidden> / </span>{SECTION_LABEL[a.kind === "hikaye" ? "hikaye" : a.kind][lang]}
+            <span aria-hidden> / </span>{a.kind === "hikaye" && !a.featured ? (lang === "tr" ? "Restoran Hikâyeleri" : "Restaurant Stories") : SECTION_LABEL[a.kind][lang]}
           </nav>
           <LangSwitch lang={lang} slug={a.slug} />
         </div>
@@ -294,6 +351,7 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
               <p className="mt-2 text-[15px] leading-relaxed text-ink-2">{a.why[lang]}</p>
             </section>
             <Body blocks={a.body[lang]} />
+            <Media a={a} lang={lang} />
             <section aria-labelledby="h-bilin" className="border-t-2 border-line-strong pt-4">
               <h2 id="h-bilin" className="text-[11px] font-bold uppercase tracking-[0.18em]">{t(UI.know, lang)}</h2>
               <ul className="mt-3 flex flex-col gap-2.5 text-[15px] leading-relaxed">

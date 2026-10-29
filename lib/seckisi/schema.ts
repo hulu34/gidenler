@@ -69,6 +69,32 @@ const Ranking = z.object({
   algorithmVersion: z.string().min(1),
 }).strict();
 
+/** Başkalarının yayımladıkları: basın/rehber yazıları ve videolar. Bağımsızlık bilinmiyorsa "belirsiz"; beyan yoksa bağımsız sayılmaz. */
+const Press = z.object({
+  outlet: z.string().trim().min(1),
+  title: z.string().trim().min(1),
+  author: z.string().trim().min(1).optional(),
+  url: z.url({ protocol: /^https$/ }),
+  date: day,
+  type: z.enum(["rehber", "liste", "ticari-blog", "haber", "roportaj"]),
+  independence: z.enum(["bagimsizlik-beyani", "beyan-yok", "sponsorlu", "davetli", "belirsiz"]),
+  note: Text,
+}).strict();
+const Video = z.object({
+  youtubeId: z.string().regex(/^[\w-]{11}$/),
+  channel: z.string().trim().min(1),
+  handle: z.string().regex(/^@/),
+  title: z.string().trim().min(1),
+  date: day,
+  /** Restoranın görüldüğü bölümün başlangıcı (saniye). */
+  start: z.number().int().min(0).default(0),
+  type: z.enum(["roportaj", "ziyaret", "cok-mekanli"]),
+  disclosure: Text,
+  note: Text,
+  /** Restoranı gerçekten gösterdiği oynatılarak doğrulandı. */
+  verifiedAt: day,
+}).strict();
+
 export const Article = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).refine((s) => s !== "en", "\"en\" ayrılmış yol"),
   kind: z.enum(KINDS),
@@ -117,6 +143,7 @@ export const Article = z.object({
   /** Kurucu/ekiple sahiplik veya yakınlık ilişkisi — varsa görünür. */
   ownership: Text.nullable(),
   ranking: Ranking.optional(),
+  media: z.object({ press: z.array(Press), videos: z.array(Video) }).strict().optional(),
 }).strict().superRefine((a, ctx) => {
   const shape = (bs: Block[]) => bs.map((b) => ("h" in b ? "h" : "p" in b ? "p" : `list${b.list.length}`)).join(",");
   if (shape(a.body.tr) !== shape(a.body.en)) ctx.addIssue({ code: "custom", path: ["body"], message: "TR ve EN gövde yapısı farklı" });
@@ -128,6 +155,8 @@ export const Article = z.object({
   if (a.kind === "semt" && !a.area) ctx.addIssue({ code: "custom", path: ["area"], message: "semt rehberinde semt adı yok" });
   if (a.cover.state === "var" && a.cover.rights === "lisans" && !a.cover.licenseUrl) ctx.addIssue({ code: "custom", path: ["cover"], message: "lisanslı görselde lisans bağlantısı yok" });
   if (a.status === "yayinda" && a.commercial.state === "dogrulanmadi") ctx.addIssue({ code: "custom", path: ["commercial"], message: "ticari ilişki doğrulanmadan yayımlanamaz" });
+  if (a.ownership && a.commercial.state !== "var") ctx.addIssue({ code: "custom", path: ["commercial"], message: "sahiplik ilişkisi olan yazıda ticari ilişki görünür olmalı" });
+  if (a.ownership && !a.notice) ctx.addIssue({ code: "custom", path: ["notice"], message: "sahiplik ilişkisi yazının başında açıklanmalı" });
   if (a.featured && a.kind !== "hikaye") ctx.addIssue({ code: "custom", path: ["featured"], message: "yalnız hikâye öne çıkar" });
   /* Rakamlar iki dilde aynı olmalı: TR'de geçen her fiyat/tarih/saat rakamı EN'de de geçer (binlik ayırıcı ve saat biçimi fark etmez). */
   const nums = (s: string) => (s.match(/\d[\d.,:]*\d|\d/g) ?? []).map((n) => n.replace(/[.,:]/g, "")).sort().join("|");

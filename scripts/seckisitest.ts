@@ -21,16 +21,20 @@ for (const a of ALL_ARTICLES) for (const v of a.venues)
 
 /* 3) İlk paket: altı içerik, hepsi kontrol bekliyor, hiçbiri otomatik yayında değil */
 const pkg = ALL_ARTICLES.filter((a) => a.status !== "taslak");
-ok("ilk pakette 6 içerik", pkg.length === 6, pkg.map((a) => a.kind).join(","));
+ok("ilk pakette 7 içerik", pkg.length === 7, pkg.map((a) => a.kind).join(","));
 ok("ilk paket yayımlanmamış (kontrol bekliyor)", pkg.every((a) => a.status === "kontrol" && a.publishedAt === null));
-ok("türler: 1 hikâye, 3 keşif, 1 mutfaktan, 1 semt", ["hikaye:1", "kesif:3", "mutfak:1", "semt:1"].every((k) => { const [kind, n] = k.split(":"); return pkg.filter((a) => a.kind === kind).length === Number(n); }));
+ok("türler: 2 hikâye, 3 keşif, 1 mutfaktan, 1 semt", ["hikaye:2", "kesif:3", "mutfak:1", "semt:1"].every((k) => { const [kind, n] = k.split(":"); return pkg.filter((a) => a.kind === kind).length === Number(n); }));
 ok("ziyaret iddiası yok (hepsi visited=false)", pkg.every((a) => a.editorial.visited === false));
 ok("yeni açılan restoran iddiası yok", pkg.every((a) => a.newOpening === false));
-ok("Japon Erdal ilk pakette değil", pkg.every((a) => a.venues.every((v) => v.slug !== "japon-erdal-beyoglu")));
+const je = pkg.find((a) => a.venues.some((v) => v.slug === "japon-erdal-beyoglu"));
+ok("Japon Erdal: sahiplik açıklaması başta, kartta ve künyede", !!je && !!je.ownership && je.notice?.tr === je.ownership.tr && je.ownership.tr.startsWith("Editoryal şeffaflık:") && je.commercial.state === "var");
+ok("Japon Erdal ana hikâye değil (izinli kapak yok)", !!je && !je.featured && je.cover.state === "yok");
+ok("Japon Erdal videoları oynatılarak doğrulanmış", !!je?.media && je.media.videos.length > 0 && je.media.videos.every((v) => !!v.verifiedAt));
+ok("sahiplik ilişkisi ticari ilişki gösterilmeden reddedilir", bad0({ ownership: { tr: "x", en: "y" }, notice: { tr: "x", en: "y" } }));
 ok("her yazıda kaynak ve işletme kaynağı", pkg.every((a) => a.sources.some((s) => s.kind === "isletme")));
 ok("kapak hakkı doğrulanmayanlarda eksik notu var", pkg.every((a) => a.cover.state === "var" || a.cover.gap.tr.length > 10));
 ok("puan bölümü yazısı yok (sıralama verisi yok)", pkg.every((a) => a.kind !== "puan"));
-ok("ticari ilişki doğrulanmadan \"yok\" denmiyor", pkg.every((a) => a.commercial.state === "dogrulanmadi"));
+ok("ticari ilişki doğrulanmadan \"yok\" denmiyor", pkg.every((a) => a.commercial.state !== "yok"));
 ok("ticari ilişki doğrulanmadan yayımlanamaz", bad0({ status: "yayinda", publishedAt: "2026-11-01" }));
 ok("tadım menüsü \"Mutfaktan\" altında ve etiketi açık", pkg.some((a) => a.kind === "mutfak" && a.label?.tr === "Tadım menüsü" && a.label.en === "Tasting menu"));
 ok("lisanslı kapakta lisans ve kaynak bağlantısı var", pkg.every((a) => a.cover.state === "yok" || (!!a.cover.sourceUrl && (a.cover.rights !== "lisans" || !!a.cover.licenseUrl))));
@@ -38,7 +42,7 @@ ok("lisanslı kapakta lisans ve kaynak bağlantısı var", pkg.every((a) => a.co
 /* 4) Görünürlük */
 ok("Production'da kontrol bekleyen görünmez", articles(false).length === 0);
 ok("Production'da Seçki bağlantısı yok (yayında yazı yok)", seckiNavVisible(false) === false);
-ok("Preview'da 6 yazı listelenir", articles(true).length === 6);
+ok("Preview'da 7 yazı listelenir", articles(true).length === 7);
 ok("taslak Preview'da da görünmez", !articles(true).some((a) => a.status === "taslak") && articleBySlug("taslak-denetim-kaydi", true) === null);
 ok("taslak okunabilir listede yok", !readableArticles(true).some((a) => a.slug === "taslak-denetim-kaydi"));
 ok("reviewVisible: preview", reviewVisible({ VERCEL_ENV: "preview" }) === true);
