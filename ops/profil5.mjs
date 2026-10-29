@@ -10,7 +10,7 @@ import { yetkiliBaslik, baslikSizintisi } from "./yetkili.mjs";
 const CANLI = process.env.CANLI === "1";
 const OUT = CANLI ? "out/canli5" : "out/profil"; mkdirSync(OUT, { recursive: true });
 const HOST = CANLI ? "www.gidenler.com" : process.env.PREVIEW_HOST;
-const SLUGS = (process.env.SLUGS ?? "balikci-sabahattin-fatih,yeni-lokanta-beyoglu,filizler-koftecisi-uskudar,del-mare-uskudar,viktor-levi-sarap-evi-kadikoy").split(",");
+const SLUGS = (process.env.SLUGS ?? readFileSync(new URL("./grup.txt", import.meta.url), "utf8")).split(/[\s,]+/).filter(Boolean);
 const H = CANLI ? {} : { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS };
 const HB = CANLI ? {} : { ...H, "x-vercel-set-bypass-cookie": "true" };
 const admin = `https://${HOST}/api/admin/db/`;

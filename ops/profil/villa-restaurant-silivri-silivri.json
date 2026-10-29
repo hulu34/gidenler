@@ -1,0 +1,846 @@
+{
+ "slug": "villa-restaurant-silivri-silivri",
+ "description": {
+  "value": "Silivri Mimarsinan'da kahvaltıdan akşam yemeğine hizmet veren restoran. İşletmenin anlatımına göre 2021'de açıldı. Menüde serpme kahvaltı, mezeler, kebaplar, kuzu ve dana ızgaralar, steak ve tatlılar var.",
+  "provider": "official_site",
+  "url": "https://villarestaurantsilivri.com/hakkimizda/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Mimarsinan, Fahrettin Berktaş Sk. No:3, 34570 Silivri, İstanbul",
+  "provider": "official_site",
+  "url": "https://villarestaurantsilivri.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 532 650 96 96",
+  "provider": "official_site",
+  "url": "https://villarestaurantsilivri.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://villarestaurantsilivri.com",
+  "provider": "official_site",
+  "url": "https://villarestaurantsilivri.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "villarestaurantsilivri",
+  "provider": "official_site",
+  "url": "https://villarestaurantsilivri.com",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "Telefonla (+90 532 650 96 96) ya da sitedeki masa rezervasyonu formundan.",
+  "provider": "official_site",
+  "url": "https://villarestaurantsilivri.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Paket servis hattı: +90 850 259 59 59.",
+   "provider": "official_site",
+   "url": "https://villarestaurantsilivri.com/menu/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "paket": true
+  },
+  "provider": "official_site",
+  "url": "https://villarestaurantsilivri.com/menu/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://villarestaurantsilivri.com/menu/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltılar",
+    "items": [
+     {
+      "name": "Serpme Kahvaltı (2 Kişilik)",
+      "priceTry": 1900,
+      "description": "Sigara böreği, Pastırma, sucuk, patates kızartması, yumurta, beyaz peynir, kaşar peyniri, çeçil, örgü peynir, yeşil zeytin, siyah zeytin, domates, salatalık, bal, reçel, çikolata, kaymak, tereyağ, roka ve maydonoz"
+     },
+     {
+      "name": "Kahvaltı Tabağı",
+      "priceTry": 750,
+      "description": "Bal, reçel, çikolata, beyaz peynir, kaşar, örgü, burgu, çeçil peyniri, siyah zeytin, salam, janbon, yeşillik, domates, salatalık ve yumurta"
+     },
+     {
+      "name": "Sucuk (Kasap)",
+      "priceTry": 570
+     },
+     {
+      "name": "Sosis (Kasap)",
+      "priceTry": 330
+     },
+     {
+      "name": "Menemen",
+      "priceTry": 330,
+      "description": "Domates, Biber, Yumurta"
+     },
+     {
+      "name": "Kavurmalı Yumurta",
+      "priceTry": 500,
+      "description": "Kavurma, Yumurta"
+     },
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 360,
+      "description": "Sucuk, yumurta"
+     },
+     {
+      "name": "Sahanda Yumurta",
+      "priceTry": 200
+     },
+     {
+      "name": "Haşlanmış Yumurta",
+      "priceTry": 120
+     },
+     {
+      "name": "Omlet Çeşitleri",
+      "priceTry": 240,
+      "description": "(Kaşar, Yumurta) (Sucuk, Yumurta) (Mantar, Yumurta) (Sebze, Yumurta)"
+     },
+     {
+      "name": "Villa Omlet",
+      "priceTry": 300,
+      "description": "Tortilla Ekmeği, Pastırma, Kaşar, Kapya Biberi, Maydonoz, Yumurta"
+     },
+     {
+      "name": "Pankek",
+      "priceTry": 220,
+      "description": "Süt, Un, Yumurta"
+     },
+     {
+      "name": "Krep",
+      "priceTry": 220,
+      "description": "Süt, Un, Yumurta"
+     },
+     {
+      "name": "Sigara Böreği",
+      "priceTry": 220,
+      "description": "Yufka, Lor Peyniri"
+     },
+     {
+      "name": "Patates Kızartması",
+      "priceTry": 300
+     }
+    ]
+   },
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Günün Çorbası",
+      "priceTry": 200,
+      "description": "Mercimek, salça, baharatlar"
+     },
+     {
+      "name": "İlik Çorbası",
+      "priceTry": 300,
+      "description": "Kuzu eti, kemik suyu"
+     }
+    ]
+   },
+   {
+    "title": "Başlangıçlar",
+    "items": [
+     {
+      "name": "Peynir Tabağı",
+      "priceTry": 700,
+      "description": "Rokfor, Gouda, Gravyer, İsli Çerkez, Üzüm, Bal, Ceviz, Kayısı"
+     },
+     {
+      "name": "Füme Et",
+      "priceTry": 550,
+      "description": "Füme Et, Yeşillik, Ekşi Krema Sos"
+     },
+     {
+      "name": "Pastırma Tabağı",
+      "priceTry": 600,
+      "description": "Pastırma, Çeri domates, Salatalık, Yeşillik"
+     },
+     {
+      "name": "Mozarella Mimazo",
+      "priceTry": 360,
+      "description": "Mozarella, Fesleğen, Domates, Zeytinyağı"
+     }
+    ]
+   },
+   {
+    "title": "Mezeler",
+    "items": [
+     {
+      "name": "Acılı Ezme",
+      "priceTry": 320,
+      "description": "Soğan, Domates, Biber, Maydanoz, Salça, Baharatlar"
+     },
+     {
+      "name": "Atom",
+      "priceTry": 340,
+      "description": "Süzme Yoğurt, Kuru Biber, Tereyağı"
+     },
+     {
+      "name": "Cevizli Patlıcan",
+      "priceTry": 320,
+      "description": "Patlıcan, Yoğurt, Ceviz, Sarımsak"
+     },
+     {
+      "name": "Çiğ Köfte",
+      "priceTry": 385,
+      "description": "İnce Bulgur, Salça, Nar Ekşisi, Baharatlar, Kıvırcık, Limon"
+     },
+     {
+      "name": "Fava",
+      "priceTry": 320,
+      "description": "İç Bakla, Havuç, Soğan"
+     },
+     {
+      "name": "Havuç Tarator",
+      "priceTry": 320,
+      "description": "Havuç, Pancar, Mayonez, Yoğurt, Sarımsak"
+     },
+     {
+      "name": "Haydari",
+      "priceTry": 320,
+      "description": "Süzme Yoğurt, Sarımsak, Taze nane, Dereotu"
+     },
+     {
+      "name": "Humus",
+      "priceTry": 320,
+      "description": "Nohut, Tahin, Kimyon, Sarımsak"
+     },
+     {
+      "name": "Humus(Avokadolu)",
+      "priceTry": 340,
+      "description": "Nohut, Avakoda, Tahin, Sarımsak, Tuz, Kimyon"
+     },
+     {
+      "name": "Humus(İstridye Mantarlı)",
+      "priceTry": 340,
+      "description": "Nohut, İstiridye Mantar, Tahin, Sarımsak, Tuz, Kimyon"
+     },
+     {
+      "name": "Humus(Karamelize Soğanlı)",
+      "priceTry": 340,
+      "description": "Nohut, Tahin, Tuz, Kimyon, Karamelize Soğan"
+     },
+     {
+      "name": "Humus(Patlıcanlı)",
+      "priceTry": 330,
+      "description": "Nohut, Patlıcan, Maydanoz, Tuz, Kimyon"
+     },
+     {
+      "name": "Közlenmiş Biber",
+      "priceTry": 320,
+      "description": "Kırmızı Kapya, Sirke, Sarımsak, Zeytinyağı"
+     },
+     {
+      "name": "Köpeoğlu",
+      "priceTry": 320,
+      "description": "Patlıcan, Domates, Biber, Yoğurt"
+     },
+     {
+      "name": "Kuru Cacık",
+      "priceTry": 330,
+      "description": "Yoğurt, Salatalık"
+     },
+     {
+      "name": "Kuru Domates (Yoğurtlu)",
+      "priceTry": 320,
+      "description": "Kurutulmuş Domates, Ceviz, Maydanoz, Süzme Yoğurt"
+     },
+     {
+      "name": "Manda Yoğurdu",
+      "priceTry": 320
+     },
+     {
+      "name": "Patlıcan Salatası",
+      "priceTry": 320,
+      "description": "Patlıcan, Kapya Biber, Sarımsak, Maydanoz, Sirke, Zeytinyağı"
+     },
+     {
+      "name": "Patlıcan Salatası(Fesleğenli)",
+      "priceTry": 320,
+      "description": "Patlıcan, Kuru Domates, Sarımsak, Zeytinyağı, Fesleğen"
+     },
+     {
+      "name": "Patlıcan Biber Dolması(Etli)",
+      "priceTry": 385,
+      "description": "Kuru Patlıcan, Zeytinyağlı İç Pilav"
+     },
+     {
+      "name": "Peynir Dolgulu Biber",
+      "priceTry": 320,
+      "description": "Jelopen Biber, Peynir Çeşitleri"
+     },
+     {
+      "name": "Şakşuka",
+      "priceTry": 320,
+      "description": "Patlıcan, Domates, Biber, Sarımsak"
+     },
+     {
+      "name": "Villa Meze",
+      "priceTry": 300,
+      "description": "Kabak, Mayonez, Sarımsak, Havuç, Taze Soğan"
+     },
+     {
+      "name": "Villa Special Semizotu",
+      "priceTry": 330,
+      "description": "Semizotu, Süzme Yoğurt, Sarımsak"
+     },
+     {
+      "name": "Vişneli Yaprak Sarma",
+      "priceTry": 360,
+      "description": "Asma Yaprağı, İç Pilav, Vişne, Zeytinyağı, Limon"
+     },
+     {
+      "name": "Zeytinyağlı Enginar",
+      "priceTry": 400,
+      "description": "Enginar, Patates, Havuç, Bezelye, Zeytinyağı"
+     },
+     {
+      "name": "Zeytinyağlı Pancarlı Enginar",
+      "priceTry": 400,
+      "description": "Enginar, Soğan, Pancar, Taze Soğan, Zeytinyağı"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Akdeniz Salata",
+      "priceTry": 385,
+      "description": "(Palarosa, Lalorosa, endiven, roka, marul, havuç,"
+     },
+     {
+      "name": "Avokadolu Bahçe Salata",
+      "priceTry": 440,
+      "description": "(Avokado, yeşil elma, rokfor peynir, çeri domates,"
+     },
+     {
+      "name": "Çilekli Semizotlu Avokado Salatası",
+      "priceTry": 440,
+      "description": "(semizotu, çilek, avokado, fındık içi, beyaz peynir,"
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 385,
+      "description": "(Domates, salatalık, köy biberi, maydonoz,"
+     },
+     {
+      "name": "Ege Pancar Salata",
+      "priceTry": 440,
+      "description": "(Pancar, lalorosa, palorosa, endiven, roka,"
+     },
+     {
+      "name": "Füme Etli Roka Salatası",
+      "priceTry": 440,
+      "description": "(Roka, soya filizi, eritilmiş cheddar peyniri, füme"
+     },
+     {
+      "name": "Gavurdağı Salata",
+      "priceTry": 400,
+      "description": "(Domates, salatalık, maydonoz, kırmızı soğan,"
+     },
+     {
+      "name": "Tulum Peynirli Roka Salatası",
+      "priceTry": 400,
+      "description": "(Roka, çeri domates, salatalık, havuç, soya filizi,"
+     },
+     {
+      "name": "Yaban Mersinli Semizotu Salata",
+      "priceTry": 440,
+      "description": "(Semizotu, yaban mersini, çeri domates, yeşil"
+     }
+    ]
+   },
+   {
+    "title": "Ara sıcaklar",
+    "items": [
+     {
+      "name": "Avcı Böreği",
+      "priceTry": 450,
+      "description": "Yufka, Kıyma, Kaşar, Cheddar Peynir"
+     },
+     {
+      "name": "Paçanga Böreği",
+      "priceTry": 290,
+      "description": "Yufka, Kaşar, Pastırma, Kapya Biber, Maydanoz"
+     },
+     {
+      "name": "İçli Köfte",
+      "priceTry": 290,
+      "description": "İnce Bulgur, Kıyma, Ceviz, Baharatlar"
+     },
+     {
+      "name": "İstridye Mantarı",
+      "priceTry": 575,
+      "description": "İstridye Mantarı, Taze Soğan, Kapya Biber, Yeşil Biber, Soya Sosu"
+     },
+     {
+      "name": "Pastırmalı Humus",
+      "priceTry": 450,
+      "description": "Nohut, Tahin, Kimyon, Tuz, Sarımsak, Pastırma, Tereyağı"
+     },
+     {
+      "name": "Tereyağlı Yaprak Ciğer",
+      "priceTry": 800,
+      "description": "Kuzu Ciğer, Tereyağ, Soğan, Domates, Jalepon Biber, Baharat"
+     },
+     {
+      "name": "Patates Kızartma",
+      "priceTry": 300
+     },
+     {
+      "name": "Elma Dilim Patates",
+      "priceTry": 300
+     }
+    ]
+   },
+   {
+    "title": "Tavuklar",
+    "items": [
+     {
+      "name": "Barbekü Soslu Tavuk",
+      "priceTry": 630,
+      "description": "(Mantar, pilav, patates kızartması, domates,"
+     },
+     {
+      "name": "Köri Soslu Tavuk",
+      "priceTry": 630,
+      "description": "(Pilav, patates kızartması, domates, biber, köri"
+     },
+     {
+      "name": "Piliç But Izgara",
+      "priceTry": 630,
+      "description": "(Pilav, patates kızartması, domates, biber)"
+     },
+     {
+      "name": "Tavuk But Şiş",
+      "priceTry": 600,
+      "description": "(Pilav, patates püresi, domates, biber)"
+     },
+     {
+      "name": "Kanat",
+      "priceTry": 800,
+      "description": "(Pilav, patates püresi, domates, biber)"
+     },
+     {
+      "name": "Şinitzel(Viyana Usulü)",
+      "priceTry": 650,
+      "description": "(Patates kızartması, akdeniz yeşillik, domates,"
+     }
+    ]
+   },
+   {
+    "title": "Hamburgerler",
+    "items": [
+     {
+      "name": "İstridye Hamburger",
+      "priceTry": 700,
+      "description": "(200gr. Et, cheddar peyniri, patates kızartması,"
+     },
+     {
+      "name": "Mozarella Hamburger",
+      "priceTry": 700,
+      "description": "(200gr. Et, patates kızartması, mozarella peyniri,"
+     },
+     {
+      "name": "Lokum Hamburger",
+      "priceTry": 750,
+      "description": "(140gr. Et, cheddar peyniri, patates kızartması,"
+     },
+     {
+      "name": "Villa Hamburger",
+      "priceTry": 675,
+      "description": "(200gr. Et, cheddar peyniri, patates kızartması,"
+     },
+     {
+      "name": "Tandır Burger",
+      "priceTry": 700,
+      "description": "(200gr. Et, patates kızartması, pastırma"
+     }
+    ]
+   },
+   {
+    "title": "Pizzalar",
+    "items": [
+     {
+      "name": "Villa Pizza",
+      "priceTry": 690,
+      "description": "(Mozarella peyniri, cheddar peyniri, füme et, nar,"
+     }
+    ]
+   },
+   {
+    "title": "Köfteler",
+    "items": [
+     {
+      "name": "Kasap Köfte",
+      "priceTry": 700,
+      "description": "200 gr (Pilav, patates püresi, domates, biber, köfte sos)"
+     },
+     {
+      "name": "Kaşarlı Bohça Köfte",
+      "priceTry": 740,
+      "description": "200 gr (Pilav, patates püresi, domates, biber, köfte sos)"
+     },
+     {
+      "name": "Special Köfte(400gr)",
+      "priceTry": 1200,
+      "description": "(Pilav, patates püresi, domates, biber, köfte sos)"
+     },
+     {
+      "name": "Villa Köfte",
+      "priceTry": 725,
+      "description": "200 gr (Pilav, patates püresi, domates, biber, köfte sos)"
+     },
+     {
+      "name": "Sucuk Kasap",
+      "priceTry": 725,
+      "description": "200 gr (Pilav, patates püresi, domates, biber, köfte sos)"
+     }
+    ]
+   },
+   {
+    "title": "Kebaplar",
+    "items": [
+     {
+      "name": "Adana Kebap",
+      "priceTry": 880,
+      "description": "200 gr (Pilav, patates tava, domates, biber,"
+     },
+     {
+      "name": "Urfa Kebap",
+      "priceTry": 880,
+      "description": "200 gr (Pilav, patates tava, domates, biber,"
+     },
+     {
+      "name": "Sarma Kebap",
+      "priceTry": 990,
+      "description": "(Pilav, patates tava, domates, biber,"
+     },
+     {
+      "name": "Saray Beyti Kebap",
+      "priceTry": 990,
+      "description": "200 gr (Pilav, patates tava, yoğurt, domates,"
+     },
+     {
+      "name": "Fıstıklı Kaşarlı Kebap",
+      "priceTry": 990,
+      "description": "200 gr (Pilav, patates tava, domates, biber,"
+     },
+     {
+      "name": "Patlıcan Kebap",
+      "priceTry": 1100,
+      "description": "(Pilav, patates tava, domates, biber,"
+     },
+     {
+      "name": "Villa Special Kebap",
+      "priceTry": 990,
+      "description": "200 gr (Pilav, patates tava, domates, biber,"
+     },
+     {
+      "name": "Mix Kebap",
+      "priceTry": 3400,
+      "description": "(Pilav, patates tava, domates, biber,"
+     }
+    ]
+   },
+   {
+    "title": "Izgaralar · kuzu",
+    "items": [
+     {
+      "name": "Kuzu Çöp Şiş",
+      "priceTry": 875,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Kuzu Karski",
+      "priceTry": 1200,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Kuzu Newyork",
+      "priceTry": 1000,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Kuzu Pirzola",
+      "priceTry": 1050,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Külbastı",
+      "priceTry": 875,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Küşleme",
+      "priceTry": 1250,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Patlıcan Yatağında Küşleme",
+      "priceTry": 1300,
+      "description": "(Patlıcan, biber közleme, süzme yoğurt)"
+     },
+     {
+      "name": "Karışık Izgara",
+      "priceTry": 1100,
+      "description": "(Mantar sos, pilav, patates püresi"
+     },
+     {
+      "name": "Erik Soslu Kuzu Fileto",
+      "priceTry": 1150,
+      "description": "(Mantar sos, pilav, patates püresi"
+     },
+     {
+      "name": "Kuzu Tandır(300 gr )",
+      "priceTry": 1100,
+      "description": "Mantar sos, pilav, patates püresi"
+     },
+     {
+      "name": "Kuzu Tandır Kilogram",
+      "priceTry": 3000,
+      "description": "Soğan, Pilav, Domates, Közlenmiş Biber"
+     }
+    ]
+   },
+   {
+    "title": "Izgaralar · dana",
+    "items": [
+     {
+      "name": "Antrikot",
+      "priceTry": 1375,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Bonfile",
+      "priceTry": 1375,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Cheddar Peynirli Karamelize Antrikot",
+      "priceTry": 1375,
+      "description": "Karamelize Antrikot"
+     },
+     {
+      "name": "Lokum",
+      "priceTry": 1400,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Tereyağlı Lokum",
+      "priceTry": 1450,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Şaşlık",
+      "priceTry": 1300,
+      "description": "(Mantar sos, pilav, patates püresi)"
+     },
+     {
+      "name": "Villa Bonfile",
+      "priceTry": 1400,
+      "description": "(İstridye mantarı, demi glass sos, bebe domates,"
+     }
+    ]
+   },
+   {
+    "title": "Steak",
+    "items": [
+     {
+      "name": "Kuzu Kafes",
+      "description": "Kaya Tuzu, Kekik · Kilosu 3.000 ₺"
+     },
+     {
+      "name": "Şatobiryan (700gr)",
+      "priceTry": 3300,
+      "description": "Tereyağ, Çeri Domates, Roka, Cheddar sos, Bonfile"
+     },
+     {
+      "name": "Dallas Steak (400gr)",
+      "priceTry": 2390,
+      "description": "(Mantar sos, patates kızartma)"
+     },
+     {
+      "name": "T.Bone Steak (400gr)",
+      "priceTry": 2400,
+      "description": "(Mantar sos, patates kızartma)"
+     },
+     {
+      "name": "Tomahawk Steak (700gr)",
+      "priceTry": 2750,
+      "description": "(Mantar sos, patates kızartma)"
+     },
+     {
+      "name": "New York Steak (350gr)",
+      "priceTry": 1980,
+      "description": "(Mantar sos, patates kızartma)"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Katmer",
+      "priceTry": 450,
+      "description": "Kaymak, Fıstık"
+     },
+     {
+      "name": "Künefe(tek kişilik)",
+      "priceTry": 360,
+      "description": "Kadayıf, Kaymak, Fıstık, Ceviz"
+     },
+     {
+      "name": "Künefe(4kişilik)",
+      "priceTry": 1000
+     },
+     {
+      "name": "Magnolya",
+      "priceTry": 300,
+      "description": "Süt, Yumurta, Un, Şeker, Çilek, Çikolata"
+     },
+     {
+      "name": "Fırın Sütlaç",
+      "priceTry": 300,
+      "description": "Süt, Şeker, Nişasta"
+     },
+     {
+      "name": "Cheesecake Limonlu",
+      "priceTry": 300
+     },
+     {
+      "name": "Cheesecake Frambuazlı",
+      "priceTry": 300
+     },
+     {
+      "name": "Tiramisu",
+      "priceTry": 300
+     }
+    ]
+   },
+   {
+    "title": "Sıcak içecekler",
+    "items": [
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 100
+     },
+     {
+      "name": "Nescafe",
+      "priceTry": 150
+     },
+     {
+      "name": "Espresso",
+      "priceTry": 175
+     },
+     {
+      "name": "Cappuccino",
+      "priceTry": 175
+     },
+     {
+      "name": "Vanilyalı Cappuccino",
+      "priceTry": 200
+     },
+     {
+      "name": "Cafe Latte",
+      "priceTry": 175
+     },
+     {
+      "name": "Çay Bardak",
+      "priceTry": 75
+     },
+     {
+      "name": "Kış Çayı",
+      "priceTry": 150
+     },
+     {
+      "name": "Sıcak Çikolata",
+      "priceTry": 150
+     }
+    ]
+   },
+   {
+    "title": "Soğuk içecekler",
+    "items": [
+     {
+      "name": "Cola",
+      "priceTry": 105
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 105
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 105
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 90
+     },
+     {
+      "name": "Icetea",
+      "priceTry": 105
+     },
+     {
+      "name": "Meyve Suyu",
+      "priceTry": 105
+     },
+     {
+      "name": "Soda",
+      "priceTry": 90
+     },
+     {
+      "name": "Meyveli Soda",
+      "priceTry": 100
+     },
+     {
+      "name": "Şalgam",
+      "priceTry": 110
+     },
+     {
+      "name": "Limonata",
+      "priceTry": 105
+     },
+     {
+      "name": "Portakal Suyu(Sıkma)",
+      "priceTry": 150
+     },
+     {
+      "name": "Smoothie",
+      "priceTry": 100,
+      "description": "Hakkımızda"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=Gz3vX0JAujo",
+   "credit": "Ekonomi Dünyası Sekiz Medya · Mart 2022 · TV programı röportajı",
+   "category": "basin",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=wdP_fVKNlSE",
+   "credit": "Villa Restaurant Silivri · Ağustos 2025 · işletmenin kendi tanıtımı",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (villarestaurantsilivri.com): /menu (fiyatlı, tarihsiz, bölümleri sitedeki galeri gruplarından), /hakkimizda (2021'de kuruldu), iletişim. Menüdeki ürün kodları (V103 vb.) atıldı. Adında (kg) geçen kalemler kilo fiyatı olarak açıklamada. Çalışma saati sitede yayımlanmıyor (rezervasyon formundaki saat seçenekleri çalışma saati sayılmadı). Videolar: işletmenin kendi kanalı (2025) ve TV8,5 'İş ve Başarı' programı röportajı (2022; programın işletmelerle ücretli işbirliği yapıp yapmadığı bilinmiyor). Elenen: 2022 açılış daveti haberi (etkinlik), 2023 kısa tanıtım (aynı kanal), düğün videosu, emlak videoları."
+}

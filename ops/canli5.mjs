@@ -5,7 +5,9 @@
    Önceki menü sürümü ve profil, şifreli yedekteki *-once.json içinde (profile.menu ve kaynak kayıtları). */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 const HOST = process.env.ADAY_HOST, MODE = process.env.MODE;
-const SLUGS = ["balikci-sabahattin-fatih", "yeni-lokanta-beyoglu", "filizler-koftecisi-uskudar", "del-mare-uskudar", "viktor-levi-sarap-evi-kadikoy"];
+/* kapsam: ops/grup.txt (en çok 5 slug) */
+const SLUGS = readFileSync(new URL("./grup.txt", import.meta.url), "utf8").split(/\s+/).filter(Boolean);
+if (SLUGS.length > 5) { console.log("✗ grup 5 restorandan büyük"); process.exit(1); }
 const H = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS, "content-type": "application/json", "sec-fetch-site": "same-origin" };
 const admin = `https://${HOST}/api/admin/db/`;
 const rapor = async (s) => (await fetch(`${admin}?rapor=profil&slug=${s}`, { headers: H })).json();

@@ -1,0 +1,231 @@
+{
+ "slug": "catlatan-lokantasi-pendik",
+ "description": {
+  "value": "Pendik Kurtköy'de, Ankara Caddesi'ndeki Port Opet tesisinin içinde taş fırınlı Türk lokantası. Menüde kuzu kavurma, kuzu incik, Trabzon yağlısı ve kolot peynirli pideler, Antep lahmacunu ve hafta sonu daha uzun süren kahvaltı var. Yemekten önce ekmek, salata, fasulye turşusu ve zeytinyağı ikram ediliyor.",
+  "provider": "official_site",
+  "url": "https://catlatan.com",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Yenişehir, Ankara Cd. No:409/1, 34912 Pendik, İstanbul (Port Opet tesisi içi)",
+  "provider": "official_site",
+  "url": "https://catlatan.com",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 541 120 10 20",
+  "provider": "official_site",
+  "url": "https://catlatan.com",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://catlatan.com",
+  "provider": "official_site",
+  "url": "https://catlatan.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "catlatan.lokanta",
+  "provider": "official_site",
+  "url": "https://catlatan.com",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 09:00-21:30",
+  "provider": "official_site",
+  "url": "https://catlatan.com",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Kahvaltı hafta içi 09.30–11.30, hafta sonu 09.30–14.00.",
+   "provider": "official_site",
+   "url": "https://catlatan.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Siparişten önce masaya ekmek, salata, fasulye turşusu ve sarımsaklı zeytinyağı ikram ediliyor.",
+   "provider": "official_site",
+   "url": "https://catlatan.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Fiyatlara KDV dahil.",
+   "provider": "official_site",
+   "url": "https://catlatan.com/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://catlatan.com/menu",
+  "checkedAt": "2026-10-29",
+  "validFrom": "2026-10-20",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Oduncu Kahvaltı",
+      "priceTry": 1600,
+      "description": "İki kişilik · Trabzon yağlısı, eski kaşar, Ezine peyniri, zeytin, bal, kaymak, kavurmalı yumurta, tulum peyniri, ev patatesi, kıymalı su böreği ve diğerleri"
+     }
+    ]
+   },
+   {
+    "title": "Ana yemekler",
+    "items": [
+     {
+      "name": "Etli Güveç Kuru Fasulye",
+      "priceTry": 390
+     },
+     {
+      "name": "Tereyağlı Pilav",
+      "description": "Bulgur 190 ₺ · pirinç 210 ₺"
+     },
+     {
+      "name": "Oba Pilavlı Kuzu Kavurma",
+      "priceTry": 690,
+      "description": "Sarımsaklı tereyağlı bulgur pilavı ve soğan sarımsak yahnisi ile"
+     },
+     {
+      "name": "Kuzu İncik",
+      "priceTry": 740,
+      "description": "Fırında 9 saat · sarımsaklı tereyağlı bulgur pilavı ve soğan sarımsak yahnisi ile"
+     },
+     {
+      "name": "Adıyaman Besni Tava",
+      "priceTry": 590
+     },
+     {
+      "name": "Kuzu Haşlama",
+      "priceTry": 520
+     }
+    ]
+   },
+   {
+    "title": "Pideler",
+    "items": [
+     {
+      "name": "Trabzon Yağlısı",
+      "priceTry": 440,
+      "description": "Yumurtalı"
+     },
+     {
+      "name": "Kuşbaşılı Kolot Peynirli",
+      "priceTry": 490
+     },
+     {
+      "name": "Kavurmalı Kolot Peynirli",
+      "priceTry": 520,
+      "description": "Yumurtalı"
+     }
+    ]
+   },
+   {
+    "title": "Lahmacun",
+    "items": [
+     {
+      "name": "Antep Lahmacun",
+      "priceTry": 230,
+      "description": "Acılı ya da acısız · patlıcan söğürme ile"
+     },
+     {
+      "name": "Kolot Peynirli Antep Lahmacun",
+      "priceTry": 265,
+      "description": "Patlıcan söğürme ile"
+     }
+    ]
+   },
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Et Sulu Süzme Mercimek Çorbası",
+      "priceTry": 230
+     },
+     {
+      "name": "Etli Nohutlu Yoğurt Çorbası",
+      "priceTry": 260
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Adapazarı Kabak Tatlısı",
+      "priceTry": 265
+     },
+     {
+      "name": "Hamsiköy Sütlacı",
+      "priceTry": 230
+     }
+    ]
+   },
+   {
+    "title": "Yanında",
+    "items": [
+     {
+      "name": "Salata",
+      "priceTry": 120
+     },
+     {
+      "name": "Turşu Kavurma",
+      "priceTry": 90
+     },
+     {
+      "name": "Cacık",
+      "priceTry": 110,
+      "description": "Tam yağlı ev yoğurdu ile"
+     },
+     {
+      "name": "Ev Yoğurdu",
+      "priceTry": 130
+     },
+     {
+      "name": "Ev Patatesi",
+      "priceTry": 220
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Komposto",
+      "priceTry": 105,
+      "description": "Ev yapımı"
+     },
+     {
+      "name": "Açık Ayran",
+      "priceTry": 95
+     },
+     {
+      "name": "Cola",
+      "priceTry": 85
+     },
+     {
+      "name": "Ice Tea",
+      "priceTry": 85
+     },
+     {
+      "name": "Meyve Suyu",
+      "priceTry": 85
+     },
+     {
+      "name": "Su",
+      "priceTry": 55
+     },
+     {
+      "name": "Soda",
+      "priceTry": 60
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site (catlatan.com): /menu ('Fiyatlarımıza K.D.V dahildir · Fiyat değiştirme tarihi 20.10.2026' → validFrom), adres, telefon, saat ve kahvaltı saatleri. Sitede Google puanı gösteriliyor; aktarılmadı. Tereyağlı pilavın iki fiyatı (bulgur/pirinç) açıklamada. Oduncu Kahvaltı iki kişilik fiyat; kişi başına çevrilmedi. Video: Pendik lezzet turu videolarında (Orçun Oran 2025, Fakir Gurme 2026) Çatlatan yok; doğrulanmış video bulunamadı."
+}
