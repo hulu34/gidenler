@@ -1,0 +1,746 @@
+{
+ "slug": "kardesler-kebap-ve-cafe-beyoglu",
+ "description": {
+  "value": "Cihangir'de 1998'den beri kebap, taş fırın pide, lahmacun ve serpme kahvaltı sunan bir kebapçı.",
+  "provider": "official_site",
+  "url": "https://www.kardeslercihangir.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Firuzağa Mah. Firuzağa Camii Sok. No:1A, Cihangir, Beyoğlu, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.kardeslercihangir.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 251 36 96",
+  "provider": "official_site",
+  "url": "https://www.kardeslercihangir.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.kardeslercihangir.com/",
+  "provider": "official_site",
+  "url": "https://www.kardeslercihangir.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 09:00-02:00",
+  "provider": "official_site",
+  "url": "https://www.kardeslercihangir.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Kebap gramajları menüde yazıyor; pideler taş fırında odun ateşinde pişiyor.",
+   "provider": "official_site",
+   "url": "https://www.kardeslercihangir.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Telefonla paket sipariş alınıyor; kredi kartı, temassız İstanbulkart ve yemek kartları geçiyor.",
+   "provider": "official_site",
+   "url": "https://www.kardeslercihangir.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Menüde vejetaryen ve vegan işaretli ürünler var.",
+   "provider": "official_site",
+   "url": "https://www.kardeslercihangir.com/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "paket": true
+  },
+  "provider": "official_site",
+  "url": "https://www.kardeslercihangir.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.kardeslercihangir.com/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Serpme Kahvaltı (2 Kişilik)",
+      "priceTry": 1300,
+      "description": "Peynir tabağı, zeytin çeşitleri, bal kaymak, reçel çeşitleri, hellim peyniri, patates kızartması, çikolata, cevizli helva, yumurta, babagannuş, kuru kayısı ve ceviz, simit."
+     },
+     {
+      "name": "Omlet",
+      "priceTry": 250,
+      "description": "Taze çiftlik yumurtaları ve tereyağlı tavada hafif altın sarısı pişmiş nefis omlet."
+     },
+     {
+      "name": "Menemen",
+      "priceTry": 300,
+      "description": "Közlenmiş biber, sulu domates, halis tereyağı ve yumurta ile bakır sahanda pişen geleneksel lezzet."
+     },
+     {
+      "name": "Sigara Böreği",
+      "priceTry": 250
+     },
+     {
+      "name": "Gözleme Çeşitleri",
+      "priceTry": 450
+     },
+     {
+      "name": "Pastırmalı Yumurta",
+      "priceTry": 350
+     },
+     {
+      "name": "Simitli Yumurta",
+      "priceTry": 280
+     },
+     {
+      "name": "Sahanda Yumurta",
+      "priceTry": 200,
+      "description": "Taze çiftlik yumurtalarının halis köy tereyağında bakır sahanda pişmiş hali."
+     },
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 300,
+      "description": "Baharatlı kasap sucuğu ve taze yumurtaların tereyağlı bakır sahanda muhteşem uyumu."
+     },
+     {
+      "name": "Kavurmalı Yumurta",
+      "priceTry": 350,
+      "description": "Ağır ağır pişmiş özel dana kavurma ve bakır sahanda taze yumurta."
+     },
+     {
+      "name": "Şehriyeli Tavuk Çorbası",
+      "priceTry": 180,
+      "description": "Taze köy tavuğu göğüs eti, tel şehriye ve karabiber aromalı nefis sıcak çorba."
+     },
+     {
+      "name": "Ezogelin / Mercimek Çorbası",
+      "priceTry": 150,
+      "description": "Geleneksel usulde kırmızı mercimek, nane, tereyağı ve limon eşliğinde süzme çorba."
+     }
+    ]
+   },
+   {
+    "title": "Kebap",
+    "items": [
+     {
+      "name": "Adana Kebap (Acılı) veya Urfa Kebap (Acısız)",
+      "priceTry": 725,
+      "description": "140 gr. zırh kıyması meşe kömüründe pişirilir, közlenmiş biber, domates ve sıcak lavaş ile servis edilir"
+     },
+     {
+      "name": "Kuzu Ciğer",
+      "priceTry": 900,
+      "description": "Geleneksel kuzu ciğer şiş"
+     },
+     {
+      "name": "Mardin Kebap",
+      "priceTry": 850,
+      "description": "180 gr. Mardin usulü sarımsak ve özel baharatlarla harmanlanmış zırh kıyması kebabı."
+     },
+     {
+      "name": "Beyti Kebap",
+      "priceTry": 830,
+      "description": "170 gr. Zırh kıymasının çıtır lavaşa sarılıp fırınlanması, domates sosu, tereyağı ve yoğurt ile."
+     },
+     {
+      "name": "Domatesli Kebap",
+      "priceTry": 800,
+      "description": "150 gr. Zırh kıyması ve fırınlanmış sulu domates dilimlerinin kömür ateşinde buluşması."
+     },
+     {
+      "name": "Patlıcanlı Kebap",
+      "priceTry": 800,
+      "description": "160 gr. Kömürde közlenmiş kemer patlıcanlar arasında özel zırh kıyması kebabı."
+     },
+     {
+      "name": "Hünkâr Beğendi",
+      "priceTry": 1500,
+      "description": "170 gr. Kadifemsi közlenmiş patlıcan püresi üzerinde tereyağlı kuzu eti parçaları."
+     },
+     {
+      "name": "Adana & Kuzu Şiş Kebap",
+      "priceTry": 1500,
+      "description": "350 gr. Adana kebap ve kuzu şiş kombinasyonu."
+     },
+     {
+      "name": "Adana & Tavuk Şiş Kebap",
+      "priceTry": 1500,
+      "description": "350 gr. Adana kebap ve tavuk şiş kombinasyonu."
+     },
+     {
+      "name": "Kuzu & Tavuk Şiş Kebap",
+      "priceTry": 1500,
+      "description": "350 gr. Kuzu şiş ve tavuk şiş kombinasyonu."
+     },
+     {
+      "name": "Kuzu Şiş Kebap",
+      "priceTry": 800,
+      "description": "150 gr. Marine edilmiş kuzu but etlerinin şişte kömür ızgarası."
+     },
+     {
+      "name": "Ali Nazik Kebap",
+      "priceTry": 830,
+      "description": "150 gr. Yoğurtlu köz patlıcan yatağında tereyağlı ızgara et parçaları ve köz biber."
+     },
+     {
+      "name": "İnegöl Köfte",
+      "priceTry": 725,
+      "description": "150 gr. İnegöl usulü ızgara köfte."
+     },
+     {
+      "name": "Vali Kebabı",
+      "priceTry": 970,
+      "description": "220 gr. Adana, kuzu şiş, tavuk şiş ve köfte kombinasyonu."
+     },
+     {
+      "name": "Tavuk Şiş Izgara",
+      "priceTry": 675,
+      "description": "150 gr. Marine edilmiş tavuk göğsü, kömür ızgara."
+     },
+     {
+      "name": "Tavuk Kanat",
+      "priceTry": 700,
+      "description": "170 gr. Özel baharat marinesiyle pişmiş tavuk kanatları."
+     },
+     {
+      "name": "Kuzu Lokum",
+      "priceTry": 1200,
+      "description": "220 gr. Dinlendirilmiş kuzu bonfile dilimleri, kömürde."
+     },
+     {
+      "name": "Kuzu Pirzola",
+      "priceTry": 1800,
+      "description": "320 gr. Kömür ateşinde kuzu pirzola."
+     },
+     {
+      "name": "Kiremit Kebap",
+      "priceTry": 900,
+      "description": "160 gr. Toprak kiremitte domates sosu, biber ve eritilmiş kaşar ile fırınlanmış kebap."
+     },
+     {
+      "name": "İskender Kebap",
+      "priceTry": 725,
+      "description": "140 gr. Tırnak pide yatağında zırh eti, domates sosu, tereyağı ve yoğurt."
+     },
+     {
+      "name": "Yoğurtlu Kebap",
+      "priceTry": 725,
+      "description": "140 gr. Pide küpleri üzerine zırh kebabı, salçalı sos ve süzme yoğurt."
+     },
+     {
+      "name": "Altı Ezmeli Kebap",
+      "priceTry": 750,
+      "description": "140 gr. Közlenmiş domates ve biber ezmesi yatağında zırh kıyması kebabı."
+     },
+     {
+      "name": "Dana Bonfile",
+      "priceTry": 1050,
+      "description": "200 gr. Dinlendirilmiş dana bonfile dilimleri."
+     },
+     {
+      "name": "Dana Çöp Şiş",
+      "priceTry": 900,
+      "description": "200 gr. Küçük şişlerde kömürde dana eti."
+     },
+     {
+      "name": "Karışık Kebap 1",
+      "priceTry": 2100,
+      "description": "350 gr. Tavuk şiş, kuzu şiş, Adana kebap, köfte ve meze garnitürleri."
+     },
+     {
+      "name": "Karışık Kebap 2",
+      "priceTry": 3000,
+      "description": "550 gr. Aile boyu karışık kebap (2-3 kişilik)."
+     }
+    ]
+   },
+   {
+    "title": "Özel Menü Kebaplar",
+    "items": [
+     {
+      "name": "Mardin Kebap Menü",
+      "priceTry": 1150,
+      "description": "180 gr. Mardin kebap yanında meze, salata ve soğuk içecek."
+     },
+     {
+      "name": "Tavuk Kanat Menü",
+      "priceTry": 900,
+      "description": "160 gr. Tavuk kanat yanında meze, pilav ve içecek."
+     },
+     {
+      "name": "Kuzu Ciğer Menü",
+      "priceTry": 1000,
+      "description": "170 gr. Kuzu ciğer şiş yanında lavaş, sumaklı soğan ve meze."
+     },
+     {
+      "name": "Kuzu Şiş Kebap Menü",
+      "priceTry": 1100,
+      "description": "140 gr. Kuzu şiş yanında meze tabağı, pilav ve içecek."
+     }
+    ]
+   },
+   {
+    "title": "Mezeli Kebaplar",
+    "items": [
+     {
+      "name": "Mezeli Adana & Urfa Kebap",
+      "priceTry": 825,
+      "description": "140 gr. Adana/Urfa kebabı yanında 4 çeşit meze ve sıcak lavaş."
+     },
+     {
+      "name": "Mezeli Dana Çöp Şiş",
+      "priceTry": 950,
+      "description": "200 gr. Dana çöp şiş yanında meze tabağı ve fırın lavaşı."
+     },
+     {
+      "name": "Mezeli Kuzu Pirzola",
+      "priceTry": 1900,
+      "description": "320 gr. Kuzu pirzola yanında 4 çeşit meze ve fırın lavaşı."
+     },
+     {
+      "name": "Mezeli Kuzu Lokum",
+      "priceTry": 1200,
+      "description": "220 gr. Kuzu lokum yanında meze çeşitleri."
+     },
+     {
+      "name": "Mezeli İnegöl Köfte",
+      "priceTry": 825,
+      "description": "150 gr. İnegöl köfte yanında meze tabağı ve fırın lavaşı."
+     },
+     {
+      "name": "Mezeli Kuzu Şiş",
+      "priceTry": 900,
+      "description": "150 gr. Kuzu şiş yanında meze."
+     },
+     {
+      "name": "Mezeli Dana Bonfile",
+      "priceTry": 1150,
+      "description": "200 gr. Dana bonfile yanında meze çeşitleri."
+     },
+     {
+      "name": "Mezeli Dürüm",
+      "priceTry": 500,
+      "description": "90 gr. Dürüm kebap yanında meze."
+     },
+     {
+      "name": "Mezeli Tavuk Kanat",
+      "priceTry": 825,
+      "description": "150 gr. Tavuk kanat yanında meze."
+     },
+     {
+      "name": "Mezeli Tavuk Şiş",
+      "priceTry": 725,
+      "description": "150 gr. Tavuk şiş yanında meze."
+     }
+    ]
+   },
+   {
+    "title": "Dürümler",
+    "items": [
+     {
+      "name": "Adana Dürüm",
+      "priceTry": 350,
+      "description": "95 gr. Adana kebap fırın lavaşına sarılı, yeşillik ve soğan ile."
+     },
+     {
+      "name": "Urfa Dürüm",
+      "priceTry": 350,
+      "description": "95 gr. Acısız Urfa kebap, fırın lavaşında."
+     },
+     {
+      "name": "Dana Çöp Şiş Dürüm",
+      "priceTry": 400,
+      "description": "95 gr."
+     },
+     {
+      "name": "Tavuk Şiş Dürüm",
+      "priceTry": 330,
+      "description": "95 gr."
+     },
+     {
+      "name": "Kuzu Şiş Dürüm",
+      "priceTry": 400,
+      "description": "95 gr."
+     },
+     {
+      "name": "Kuzu Ciğer Dürüm",
+      "priceTry": 425,
+      "description": "95 gr. Kimyon ve sumaklı soğanlı."
+     },
+     {
+      "name": "Köfte Dürüm",
+      "priceTry": 350,
+      "description": "95 gr."
+     },
+     {
+      "name": "Çiğköfte Dürüm",
+      "priceTry": 270,
+      "description": "Etsiz çiğköfte dürüm, marul ve nar ekşisi ile."
+     }
+    ]
+   },
+   {
+    "title": "Pide",
+    "items": [
+     {
+      "name": "Kaşarlı Pide",
+      "priceTry": 410,
+      "description": "Taş fırında odun ateşinde pişmiş kaşarlı pide."
+     },
+     {
+      "name": "Kaşarlı Yumurtalı Pide",
+      "priceTry": 420
+     },
+     {
+      "name": "Kaşarlı Sucuklu Pide",
+      "priceTry": 450
+     },
+     {
+      "name": "Kaşarlı Sucuklu Yumurtalı Pide",
+      "priceTry": 470
+     },
+     {
+      "name": "Kıymalı Pide",
+      "priceTry": 450,
+      "description": "Kavrulmuş dana kıyması, soğan ve domates harçlı."
+     },
+     {
+      "name": "Kıymalı Kaşarlı Pide",
+      "priceTry": 480
+     },
+     {
+      "name": "Kuşbaşılı Pide",
+      "priceTry": 470,
+      "description": "Dana eti, biber ve domates harçlı."
+     },
+     {
+      "name": "Kuşbaşılı Kaşarlı Pide",
+      "priceTry": 500
+     },
+     {
+      "name": "Kavurmalı Pide",
+      "priceTry": 500
+     },
+     {
+      "name": "Kavurmalı Kaşarlı Pide",
+      "priceTry": 525
+     },
+     {
+      "name": "Pastırma Kavurmalı Kaşarlı Pide",
+      "priceTry": 700,
+      "description": "Kayseri pastırması, Rize kavurması ve kaşar."
+     },
+     {
+      "name": "Ispanaklı Pide",
+      "priceTry": 410
+     },
+     {
+      "name": "Patatesli Pide",
+      "priceTry": 410
+     },
+     {
+      "name": "Beyaz Peynirli Pide",
+      "priceTry": 410,
+      "description": "Ezine beyaz peyniri ve maydanoz harçlı."
+     },
+     {
+      "name": "Kaşarlı Mantarli Sebzeli Pide",
+      "priceTry": 420,
+      "description": "Mantar, renkli biberler, domates ve kaşar."
+     },
+     {
+      "name": "Pastırmalı Kaşarlı Pide",
+      "priceTry": 500
+     },
+     {
+      "name": "Tavuklu Kaşarlı Pide",
+      "priceTry": 470
+     }
+    ]
+   },
+   {
+    "title": "Lahmacun",
+    "items": [
+     {
+      "name": "Etli Konya Pidesi",
+      "priceTry": 430,
+      "description": "Konya usulü incecik kıymalı uzun pide."
+     },
+     {
+      "name": "Etli Ekmek",
+      "priceTry": 460,
+      "description": "Geleneksel ince hamurlu etli ekmek."
+     },
+     {
+      "name": "Çıtır Fırın Lahmacun",
+      "priceTry": 210,
+      "description": "Taş fırın hamuru üzerine zırh kıyması; yeşillik ve limon ile."
+     },
+     {
+      "name": "Özel Lahmacun",
+      "priceTry": 340,
+      "description": "Daha fazla et içeren, soğansız lahmacun."
+     },
+     {
+      "name": "Peymacun",
+      "priceTry": 340,
+      "description": "Lahmacun hamuru üzerinde peynirli ve baharatlı."
+     }
+    ]
+   },
+   {
+    "title": "Meze",
+    "items": [
+     {
+      "name": "Köpoğlu",
+      "priceTry": 180
+     },
+     {
+      "name": "Şakşuka",
+      "priceTry": 180
+     },
+     {
+      "name": "Yoğurtlu Karamelize Soğan",
+      "priceTry": 180
+     },
+     {
+      "name": "Kuru Dolma",
+      "priceTry": 180
+     },
+     {
+      "name": "Vejetaryen & Vegan Tabağı",
+      "priceTry": 600,
+      "description": "Zeytinyağlı mezeler, közlenmiş sebzeler ve garnitürler."
+     },
+     {
+      "name": "Semiz Otu Mezesi",
+      "priceTry": 180
+     },
+     {
+      "name": "Kuru Cacık",
+      "priceTry": 180
+     },
+     {
+      "name": "Mütebbel",
+      "priceTry": 180
+     },
+     {
+      "name": "Otlu Yoğurtlu Meze",
+      "priceTry": 180
+     },
+     {
+      "name": "Havuç Taratör",
+      "priceTry": 180
+     },
+     {
+      "name": "Köz Biberli Yoğurt",
+      "priceTry": 180
+     },
+     {
+      "name": "Babagannuş",
+      "priceTry": 180
+     },
+     {
+      "name": "Acılı Ezme Salata",
+      "priceTry": 180
+     },
+     {
+      "name": "Sıcak/Soğuk Humus",
+      "priceTry": 180
+     },
+     {
+      "name": "Karışık Meze Tabağı",
+      "priceTry": 500,
+      "description": "Günlük hazırlanan 6 çeşit meze."
+     }
+    ]
+   },
+   {
+    "title": "Salata",
+    "items": [
+     {
+      "name": "Mevsim Salatası",
+      "priceTry": 200
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 200
+     },
+     {
+      "name": "Çiğ Köfte Porsiyon",
+      "priceTry": 300,
+      "description": "Etsiz çiğ köfte, nar ekşisi ve marul ile."
+     },
+     {
+      "name": "İçli Köfte (3 Adet/Porsiyon)",
+      "priceTry": 450
+     },
+     {
+      "name": "Cacık",
+      "priceTry": 150
+     },
+     {
+      "name": "Süzme Yoğurt",
+      "priceTry": 120
+     },
+     {
+      "name": "Elma Dilim Patates",
+      "priceTry": 300
+     },
+     {
+      "name": "Kızartması Patates",
+      "priceTry": 250
+     },
+     {
+      "name": "Ton Balıklı Salata",
+      "priceTry": 700
+     },
+     {
+      "name": "Tavuklu Salata",
+      "priceTry": 700
+     },
+     {
+      "name": "Karides Güveç",
+      "priceTry": 700
+     }
+    ]
+   },
+   {
+    "title": "Tatlı",
+    "items": [
+     {
+      "name": "Hatay Künefesi",
+      "priceTry": 250,
+      "description": "Kadayıf, tuzsuz peynir, şerbet ve Antep fıstığı."
+     },
+     {
+      "name": "Fırın Sütlaç",
+      "priceTry": 200
+     },
+     {
+      "name": "Geleneksel Kazandibi",
+      "priceTry": 200
+     },
+     {
+      "name": "Karamelli Trileçe",
+      "priceTry": 200
+     }
+    ]
+   },
+   {
+    "title": "Soğuk İçecek",
+    "items": [
+     {
+      "name": "Coca-Cola (33 cl)",
+      "priceTry": 110
+     },
+     {
+      "name": "Fanta (33 cl)",
+      "priceTry": 110
+     },
+     {
+      "name": "Sprite (33 cl)",
+      "priceTry": 110
+     },
+     {
+      "name": "Çamlıca Gazoz",
+      "priceTry": 110
+     },
+     {
+      "name": "Litrelik Coca-Cola (1 L)",
+      "priceTry": 180
+     },
+     {
+      "name": "Yayık Ayran (Küçük)",
+      "priceTry": 85
+     },
+     {
+      "name": "Yayık Ayran (1 L)",
+      "priceTry": 170
+     },
+     {
+      "name": "Şalgam Suyu",
+      "priceTry": 85,
+      "description": "Acılı veya acısız."
+     },
+     {
+      "name": "Meyve Suları",
+      "priceTry": 110,
+      "description": "Şeftali, vişne, karışık."
+     },
+     {
+      "name": "Ice Tea",
+      "priceTry": 110,
+      "description": "Şeftali veya limon."
+     },
+     {
+      "name": "Taze Sıkma Portakal Suyu",
+      "priceTry": 250
+     },
+     {
+      "name": "Taze Sıkma Nar Suyu",
+      "priceTry": 280
+     },
+     {
+      "name": "Ev Yapımı Limonata",
+      "priceTry": 200
+     },
+     {
+      "name": "Maden Suyu / Soda",
+      "priceTry": 80
+     },
+     {
+      "name": "Su",
+      "priceTry": 30
+     }
+    ]
+   },
+   {
+    "title": "Sıcak İçecekler",
+    "items": [
+     {
+      "name": "Küçük Çay",
+      "priceTry": 30
+     },
+     {
+      "name": "Büyük Çay",
+      "priceTry": 60
+     },
+     {
+      "name": "Ada Çayı",
+      "priceTry": 70
+     },
+     {
+      "name": "Nescafe",
+      "priceTry": 100
+     },
+     {
+      "name": "Kivi",
+      "priceTry": 30,
+      "description": "Kivi Çayı"
+     },
+     {
+      "name": "Oralet",
+      "priceTry": 30
+     },
+     {
+      "name": "Elma Çayı",
+      "priceTry": 30
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 100
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site menü sayfası (sekmeli; kalemler sayfa yapısından okundu), adres, telefon, her gün 09:00–02:00, 1998. Sitedeki müşteri yorumları ve puanları profile alınmadı."
+}

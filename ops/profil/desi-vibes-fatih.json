@@ -1,0 +1,541 @@
+{
+ "slug": "desi-vibes-fatih",
+ "description": {
+  "value": "Fatih Muhsine Hatun'da Güney Asya (Pakistan/Hint) mutfağından samosa, pakora, köri, biryani ve tandır ekmekleri sunan bir restoran.",
+  "provider": "official_site",
+  "url": "http://desivibesrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Muhsine Hatun, Ördekli Bakkal Sk. No:24A, 34130 Fatih, İstanbul",
+  "provider": "official_site",
+  "url": "http://desivibesrestaurant.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 554 341 93 32",
+  "provider": "official_site",
+  "url": "http://desivibesrestaurant.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "http://desivibesrestaurant.com/",
+  "provider": "official_site",
+  "url": "http://desivibesrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Menü İngilizce yayımlanıyor; kahvaltıda halva puri, paratha gibi seçenekler de var.",
+   "provider": "official_site",
+   "url": "http://desivibesrestaurant.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Sitede her gün aile yemeğine açık olduğu belirtiliyor; WhatsApp üzerinden iletişim kurulabiliyor.",
+   "provider": "official_site",
+   "url": "http://desivibesrestaurant.com/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "http://desivibesrestaurant.com/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Appetizers",
+    "items": [
+     {
+      "name": "Aloo Samosa",
+      "priceTry": 220,
+      "description": "Lightly fried pastry with a savory spiced potato filling."
+     },
+     {
+      "name": "Cheese Samosa",
+      "priceTry": 240,
+      "description": "Crispy pastry filled with melted, cheesy goodness."
+     },
+     {
+      "name": "Keema Samosa",
+      "priceTry": 280,
+      "description": "Golden triangle stuffed with flavorful minced meat."
+     },
+     {
+      "name": "Papad",
+      "priceTry": 135,
+      "description": "Thin, crispy lentil wafer, lightly salted and crunchy."
+     },
+     {
+      "name": "Masala Papad",
+      "priceTry": 170,
+      "description": "Crispy lentil wafer topped with fresh spiced vegetables."
+     },
+     {
+      "name": "Veg Pakora",
+      "priceTry": 230,
+      "description": "Mixed veggies, spiced and fried to a golden crunch."
+     },
+     {
+      "name": "Chicken Pakora",
+      "priceTry": 365,
+      "description": "Crispy outside, juicy chicken inside, full of bold flavors."
+     },
+     {
+      "name": "Paneer Pakora",
+      "priceTry": 240,
+      "description": "Soft paneer cubes, dipped in spiced batter and fried golden."
+     },
+     {
+      "name": "Mirch Pakora",
+      "priceTry": 220,
+      "description": "Green chilies stuffed, dipped, and fried to golden perfection."
+     },
+     {
+      "name": "Chicken 65",
+      "priceTry": 400,
+      "description": "Crispy, fiery, and full of desi spice punch!"
+     },
+     {
+      "name": "Chana Chaat",
+      "priceTry": 335,
+      "description": "Spiced chickpeas tossed with fresh veggies, chutneys, and zesty seasoning."
+     },
+     {
+      "name": "Pani Puri",
+      "priceTry": 380,
+      "description": "Crispy puris with spiced filling, served with tangy mint pani."
+     },
+     {
+      "name": "Masala Fries",
+      "priceTry": 150,
+      "description": "Crispy fries tossed in bold desi spices."
+     },
+     {
+      "name": "French Fries",
+      "priceTry": 120,
+      "description": "Crispy fries served with love."
+     },
+     {
+      "name": "Chicken Dynamite",
+      "priceTry": 395,
+      "description": "Crispy chicken bites tossed in a creamy, spicy dynamite sauce."
+     },
+     {
+      "name": "Salad",
+      "priceTry": 240,
+      "description": "Fresh sliced salad with tomatoes, cucumber, onion, lemon and seasoning."
+     },
+     {
+      "name": "Kachumber Salad",
+      "priceTry": 150,
+      "description": "Fresh chopped desi style salad with onions."
+     },
+     {
+      "name": "Chicken Soup",
+      "priceTry": 350,
+      "description": "Freshly made Chicken soup with corns"
+     },
+     {
+      "name": "Achar",
+      "priceTry": 70,
+      "description": "Desi pickles"
+     }
+    ]
+   },
+   {
+    "title": "Breakfast",
+    "items": [
+     {
+      "name": "Halwa Puri",
+      "priceTry": 390,
+      "description": "A classic breakfast of golden fried bread, sweet semolina, and spiced chickpeas."
+     },
+     {
+      "name": "Egg Bhurji",
+      "priceTry": 240,
+      "description": "Soft scrambled eggs cooked with tomatoes, onions, and aromatic spices."
+     },
+     {
+      "name": "Plain Omelette",
+      "priceTry": 200,
+      "description": "Light and fluffy eggs, simply cooked to perfection."
+     },
+     {
+      "name": "Masala Omelette",
+      "priceTry": 220,
+      "description": "Fluffy eggs cooked with onions, tomatoes, and aromatic desi spices."
+     },
+     {
+      "name": "Full/Half Egg Fry",
+      "priceTry": 150,
+      "description": "Fried eggs cooked to your preference with a touch of classic seasoning."
+     },
+     {
+      "name": "Boiled Egg",
+      "priceTry": 100,
+      "description": "Clean, comforting eggs enhanced with subtle, savory flavors."
+     },
+     {
+      "name": "Butter Toast",
+      "priceTry": 120,
+      "description": "Golden, crisp toast slathered with rich, creamy butter."
+     },
+     {
+      "name": "Aloo Paratha",
+      "priceTry": 180,
+      "description": "Soft, layered flatbread stuffed with spiced mashed potatoes."
+     },
+     {
+      "name": "Egg Paratha",
+      "priceTry": 220,
+      "description": "Fluffy paratha packed with flavorful desi-style eggs."
+     },
+     {
+      "name": "Chana Paratha",
+      "priceTry": 400,
+      "description": "Fluffy paratha packed with classic desi-style spiced chickpeas."
+     }
+    ]
+   },
+   {
+    "title": "Curries · Chicken",
+    "items": [
+     {
+      "name": "Chicken Handi",
+      "priceTry": 520,
+      "description": "Tender chicken cooked in a rich, aromatic gravy with traditional spices."
+     },
+     {
+      "name": "Chicken Tikka Masala",
+      "priceTry": 535,
+      "description": "Juicy grilled chicken simmered in a flavorful, aromatic masala sauce."
+     },
+     {
+      "name": "Chicken Achari",
+      "priceTry": 540,
+      "description": "Aromatic chicken cooked in a flavorful, tangy achari sauce."
+     },
+     {
+      "name": "Chicken Kadai",
+      "priceTry": 520,
+      "description": "Juicy chicken pieces sautéed with aromatic desi spices and fresh vegetables."
+     },
+     {
+      "name": "Kali Mirch Kadai",
+      "priceTry": 540,
+      "description": "Classic desi-style chicken in a rich, flavorful black pepper masala."
+     },
+     {
+      "name": "Palak Chicken",
+      "priceTry": 480,
+      "description": "Classic desi-style chicken in a rich, flavorful spinach curry."
+     },
+     {
+      "name": "Butter Chicken",
+      "priceTry": 540,
+      "description": "Juicy chicken cooked to perfection in a smooth, aromatic buttery masala."
+     },
+     {
+      "name": "White Kadai",
+      "priceTry": 545,
+      "description": "Soft chicken pieces in a delicate, creamy spiced gravy."
+     }
+    ]
+   },
+   {
+    "title": "Curries · Mutton",
+    "items": [
+     {
+      "name": "Mutton Kadai",
+      "priceTry": 620,
+      "description": "Tender fresh meat cooked in a rich, aromatic gravy with traditional spices."
+     },
+     {
+      "name": "Mutton Koyla Kadai",
+      "priceTry": 640,
+      "description": "Crispy puris with spiced filling, served with tangy mint pani."
+     },
+     {
+      "name": "Mutton Achari",
+      "priceTry": 635,
+      "description": "Aromatic fresh meat cooked in a flavorful, tangy achari sauce."
+     },
+     {
+      "name": "Junglee Kadai",
+      "priceTry": 640,
+      "description": "A house specialty of tender chicken mix with meat in a robust, aromatic signature masala."
+     },
+     {
+      "name": "Palak Gosht",
+      "priceTry": 630,
+      "description": "Classic desi-style meat in a rich, flavorful spinach curry."
+     },
+     {
+      "name": "Aloo Gosht",
+      "priceTry": 620,
+      "description": "Tender fresh meat cooked in a rich, aromatic gravy with potato."
+     }
+    ]
+   },
+   {
+    "title": "Curries · Daal Sabsi (Lentil & Veg)",
+    "items": [
+     {
+      "name": "Daal Tadka",
+      "priceTry": 370,
+      "description": "Slow-cooked lentils finished with a fragrant tempering of spices."
+     },
+     {
+      "name": "Daal Makhni",
+      "priceTry": 450,
+      "description": "Creamy lentils simmered with butter and aromatic spices."
+     },
+     {
+      "name": "Paneer Makhni",
+      "priceTry": 470,
+      "description": "Tender paneer in a velvety, flavorful butter-spiced curry."
+     },
+     {
+      "name": "Paneer Butter Masala",
+      "priceTry": 470,
+      "description": "Paneer simmered in a smooth, buttery, spiced tomato sauce."
+     },
+     {
+      "name": "Palak Paneer",
+      "priceTry": 450,
+      "description": "Soft paneer cubes cooked in a creamy, spiced spinach gravy."
+     },
+     {
+      "name": "Kadai Paneer",
+      "priceTry": 450,
+      "description": "Classic desi paneer in a bold, flavorful kadai masala."
+     },
+     {
+      "name": "Aloo Palak",
+      "priceTry": 400,
+      "description": "Classic desi potatoes in a flavorful, wholesome spinach curry."
+     },
+     {
+      "name": "Zeera Aloo",
+      "priceTry": 330,
+      "description": "Golden potatoes tossed with roasted cumin and classic desi flavors."
+     },
+     {
+      "name": "Aloo Matter",
+      "priceTry": 380,
+      "description": "Soft potatoes and sweet peas simmered with aromatic desi spices."
+     },
+     {
+      "name": "Kadai Sabzi",
+      "priceTry": 420,
+      "description": "Hearty mixed vegetables cooked with warm spices and fresh herbs."
+     },
+     {
+      "name": "Achari Mix Sabzi",
+      "priceTry": 440,
+      "description": "Seasonal vegetables cooked with tangy, pickling spices for a bold flavor."
+     },
+     {
+      "name": "Chana Masala",
+      "priceTry": 380,
+      "description": "Juicy chickpeas cooked with aromatic desi spices and herbs."
+     }
+    ]
+   },
+   {
+    "title": "Biryani & Rice",
+    "items": [
+     {
+      "name": "Chicken Biryani",
+      "priceTry": 570,
+      "description": "Aromatic basmati rice and tender chicken, slow-cooked with spices for a perfect biryani."
+     },
+     {
+      "name": "Mutton Biryani",
+      "priceTry": 700,
+      "description": "Classic desi-style biryani with flavorful meat and perfectly spiced rice."
+     },
+     {
+      "name": "Plain Biryani Rice",
+      "priceTry": 350,
+      "description": "Fragrant basmati rice, perfectly steamed with subtle spices."
+     },
+     {
+      "name": "Plain Rice",
+      "priceTry": 290,
+      "description": "Fragrant basmati rice, perfectly steamed."
+     },
+     {
+      "name": "Shrimp Biryani",
+      "priceTry": 700,
+      "description": "Juicy shrimp cooked with long-grain rice and a blend of traditional desi spices."
+     },
+     {
+      "name": "Veg Biryani",
+      "priceTry": 450,
+      "description": "Aromatic basmati rice and vegetables, slow-cooked with spices for a perfect biryani."
+     }
+    ]
+   },
+   {
+    "title": "Bread",
+    "items": [
+     {
+      "name": "Roti",
+      "priceTry": 45,
+      "description": "Freshly made, soft flatbread with a subtle, authentic flavor."
+     },
+     {
+      "name": "Butter Roti",
+      "priceTry": 65,
+      "description": "Classic desi flatbread enhanced with buttery richness."
+     },
+     {
+      "name": "Garlic Roti",
+      "priceTry": 65,
+      "description": "Freshly baked roti, soft and flavorful with a garlic twist."
+     },
+     {
+      "name": "Paratha",
+      "priceTry": 75,
+      "description": "Flaky, layered flatbread, lightly toasted to golden perfection."
+     },
+     {
+      "name": "Butter Paratha",
+      "priceTry": 95,
+      "description": "Warm, layered flatbread with a rich buttery taste, perfect with any curry."
+     },
+     {
+      "name": "Cheese Paratha",
+      "priceTry": 175,
+      "description": "Classic desi-style paratha with a luxurious cheesy filling."
+     },
+     {
+      "name": "Aloo Paratha",
+      "priceTry": 200,
+      "description": "Classic desi-style paratha with a rich, spiced potato filling."
+     },
+     {
+      "name": "Naan",
+      "priceTry": 55,
+      "description": "Light, airy flatbread with a soft, comforting texture."
+     },
+     {
+      "name": "Garlic Naan",
+      "priceTry": 70,
+      "description": "Soft, fluffy tandoori bread infused with fresh garlic and aromatic herbs."
+     },
+     {
+      "name": "Butter Naan",
+      "priceTry": 65,
+      "description": "Freshly baked naan, soft and buttery, perfect to pair with any curry."
+     },
+     {
+      "name": "Kalonji Naan",
+      "priceTry": 70,
+      "description": "Warm, pillowy naan enhanced with the nutty, fragrant flavor of kalonji."
+     },
+     {
+      "name": "Sesame Naan",
+      "priceTry": 70,
+      "description": "Soft, fluffy tandoori bread sprinkled with toasted sesame seeds."
+     }
+    ]
+   },
+   {
+    "title": "Cold Beverages",
+    "items": [
+     {
+      "name": "Water",
+      "priceTry": 120
+     },
+     {
+      "name": "Lemonade",
+      "priceTry": 80
+     },
+     {
+      "name": "Roohafza",
+      "priceTry": 120,
+      "description": "Roohafza"
+     },
+     {
+      "name": "Shikanji",
+      "priceTry": 150
+     },
+     {
+      "name": "Roohafza Lassi",
+      "priceTry": 150
+     },
+     {
+      "name": "Namekeen Lassi",
+      "priceTry": 80
+     },
+     {
+      "name": "Meeti Lassi",
+      "priceTry": 120
+     },
+     {
+      "name": "Fresh Orange Juice",
+      "priceTry": 250
+     },
+     {
+      "name": "Pomegranate Juice",
+      "priceTry": 350
+     },
+     {
+      "name": "Sparkling Water",
+      "priceTry": 80
+     },
+     {
+      "name": "Softdrinks",
+      "priceTry": 100
+     }
+    ]
+   },
+   {
+    "title": "Hot Beverages",
+    "items": [
+     {
+      "name": "Doodh Patti (Karak Chai)",
+      "priceTry": 150
+     },
+     {
+      "name": "Massala Chai",
+      "priceTry": 150
+     },
+     {
+      "name": "Sulaimani Chai (Black Tea)",
+      "priceTry": 100
+     },
+     {
+      "name": "Cappuccino",
+      "priceTry": 200
+     },
+     {
+      "name": "Americano Coffee",
+      "priceTry": 150
+     },
+     {
+      "name": "Expresso",
+      "priceTry": 130
+     },
+     {
+      "name": "Kesar Doodh",
+      "priceTry": 180
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=DdgzPvr8jl4",
+   "credit": "FB Riz TV · Ekim 2025 · yemek vlogu",
+   "category": "ziyaretci",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (pxdx altyapısı): menü (₺, tarihsiz, İngilizce), adres No:24A ve telefon sitede (OSM'deki 12A ve +90 539… farklı; sitedeki kullanıldı). Saat yazılı değil."
+}

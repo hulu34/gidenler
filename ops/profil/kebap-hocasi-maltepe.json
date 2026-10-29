@@ -1,0 +1,330 @@
+{
+ "slug": "kebap-hocasi-maltepe",
+ "description": {
+  "value": "Maltepe'de kebap, döner, pide ve lahmacun sunan bir kebapçı; Nida Park Palladium Cadde AVM'de.",
+  "provider": "official_site",
+  "url": "https://www.kebaphocasi.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Çınar Mh. Rıfkı Tongsir Cad. No:113, Nida Park Palladium Cadde AVM, Maltepe, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.kebaphocasi.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 216 388 56 86",
+  "provider": "official_site",
+  "url": "https://www.kebaphocasi.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.kebaphocasi.com/",
+  "provider": "official_site",
+  "url": "https://www.kebaphocasi.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 11:00-22:00",
+  "provider": "official_site",
+  "url": "https://www.kebaphocasi.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Kebap porsiyonlarında gramaj ve yanında gelenler (salata, közlenmiş biber-domates, pilav, soslu kaşarlı pide) menüde ayrıca yazıyor.",
+   "provider": "official_site",
+   "url": "https://www.kebaphocasi.com/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.kebaphocasi.com/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Ara Sıcaklar",
+    "items": [
+     {
+      "name": "Perde Pilavı",
+      "priceTry": 250.0
+     },
+     {
+      "name": "Patates Kızartması",
+      "priceTry": 200.0
+     },
+     {
+      "name": "İçli Köfte",
+      "priceTry": 150.0,
+      "description": "1 Adet"
+     },
+     {
+      "name": "Fırın Şiş",
+      "priceTry": 200.0,
+      "description": "Mini Atıştırmalık Kuşbaşı Kaşarlı Pide Ana Yemek Öncesi Ara Sıcak"
+     }
+    ]
+   },
+   {
+    "title": "Salata Çeşitleri",
+    "items": [
+     {
+      "name": "Göbek Salata",
+      "priceTry": 250.0
+     },
+     {
+      "name": "Çiğ Köfte",
+      "priceTry": 300.0,
+      "description": "1 Porsiyonda 12 Adet"
+     },
+     {
+      "name": "Gavurdağı Salatası",
+      "priceTry": 300.0
+     },
+     {
+      "name": "Mevsim Salatası",
+      "priceTry": 250.0
+     },
+     {
+      "name": "Çoban Salatası",
+      "priceTry": 200.0
+     }
+    ]
+   },
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Ezo Gelin Çorbası",
+      "priceTry": 130.0
+     },
+     {
+      "name": "Mercimek Çorbası",
+      "priceTry": 130.0
+     }
+    ]
+   },
+   {
+    "title": "Döner & İskender",
+    "items": [
+     {
+      "name": "Döner Dürüm",
+      "priceTry": 475.0,
+      "description": "85gr Döner"
+     },
+     {
+      "name": "Tombik Döner",
+      "priceTry": 280.0,
+      "description": "50 gr"
+     },
+     {
+      "name": "Sandviç Döner",
+      "priceTry": 280.0,
+      "description": "50gr."
+     },
+     {
+      "name": "Pilav Üstü Döner",
+      "priceTry": 600.0,
+      "description": "100 Gr. Döner, Pirinç Pilavı, Közlenmiş Domates ve Biber, Patates"
+     },
+     {
+      "name": "Döner Porsiyon",
+      "priceTry": 560.0,
+      "description": "100 Gr. Döner, Pirinç Pilavı, Közlenmiş Domates ve Biber, Patates"
+     },
+     {
+      "name": "İskender",
+      "priceTry": 650.0,
+      "description": "100 Gr. Dana Kıymadan Döner ve Şişten Parça Et, Közlenmiş Domates ve Biber, Gevrek Pide, Sos ve Tereyağ, Yoğurt"
+     },
+     {
+      "name": "Tavuk (Light) İskender",
+      "priceTry": 650.0
+     },
+     {
+      "name": "Hoca Kebabı İskender",
+      "priceTry": 1200.0,
+      "description": "Döner Üzerine Urfa, Tavuk Şiş, Parça Dana Şiş, Közlenmiş Domates ve Biber."
+     }
+    ]
+   },
+   {
+    "title": "Kebaplar & Izgaralar",
+    "items": [
+     {
+      "name": "Kanat Izgara",
+      "priceTry": 580.0,
+      "description": "6 Adet Kanat, Salata Çeşitleri, Kozlenmiş Domates ve Biber, Pilav, Soslu ve Kaşarlı Pide, Maydonoz"
+     },
+     {
+      "name": "Kilis Ali Nazik",
+      "priceTry": 780.0,
+      "description": "160 Gr. Dana Kontrfile, Sarımsaklı Yoğurt ile Közlenmiş Patlıcan Üstü, Közlenmiş Biber, Domates, Soslu ve Kaşarlı Pide"
+     },
+     {
+      "name": "Ali Nazik",
+      "priceTry": 750.0,
+      "description": "160 Gr. Kuzu Kıyma, Yoğurt, Közlenmiş Patlıcan, Sarımsak Üstü Parça Kıyma, Soslu ve Kaşarlı Pide"
+     },
+     {
+      "name": "Beğendili Kebap",
+      "priceTry": 780.0,
+      "description": "160gr Dana Kontrfile, Közlenmiş Patlıcan, Tereyağ ve Süt"
+     },
+     {
+      "name": "Kuzu Şiş",
+      "priceTry": 850.0,
+      "description": "Kuzu Şiş 170 Gr, Pilav, Salat Çeşitleri, Söğüş Soğan, Közlenmiş Domates ve Biber, Soslu ve Kaşarlı Pide, Maydonoz"
+     },
+     {
+      "name": "Çöp Şiş",
+      "priceTry": 850.0,
+      "description": "Çöp Şiş 170 Gr, Pilav, Salat Çeşitleri, Söğüş Soğan, Közlenmiş Domates ve Biber, Soslu ve Kaşarlı Pide, Maydonoz"
+     },
+     {
+      "name": "Kuzu Pirzola",
+      "priceTry": 900.0,
+      "description": "3 Adet Kuzu Pirzola, Salata Çeşitleri, Pilav, Söğüş Soğan, Kozlenmiş Domates ve Biber, Soslu ve Kaşarlı Pide"
+     },
+     {
+      "name": "Izgara Köfte",
+      "priceTry": 550.0,
+      "description": "160 Gr. Dana Kıyma, Salata Çeşitleri, Soslu ve Kaşarlı Pide, Patetes, Közlenmiş Domates ve Biber, Maydonoz, Söğüş Soğan, Pilav"
+     },
+     {
+      "name": "Fıstıklı Kebap",
+      "priceTry": 700.0,
+      "description": "165 Gr. Kuzu Kıyma, Salata Çeşitleri, Kozlenmiş Domates ve Biber, Pilav, Söğüş Soğan, Soslu ve Kaşarlı Pide"
+     },
+     {
+      "name": "Sarma Beyti",
+      "priceTry": 850.0,
+      "description": "160 Gr. Kuzu Kıyma, Yoğurt, Pilav, Kozlenmiş Domates ve Biber, Maydonoz"
+     },
+     {
+      "name": "Adana / Urfa",
+      "priceTry": 650.0,
+      "description": "160 Gr. Kuzu Kıyma (Acılı), Pilav, Közlenmiş Domates ve Biber, Salat Çeşitleri, Maydonoz, Soslu ve Kaşarlı Pide"
+     },
+     {
+      "name": "Hoca Kebabı Tepsisi (3 Kişilik)",
+      "priceTry": 4800.0,
+      "description": "Tek Perde Pilavı, Adana, Kuzu Şiş, Kuzu Pirzola, Tavuk Şiş, Tavuk Kanat, Kaburga, Döner, Patlıcan Kebap, Fındık Lahmacun"
+     },
+     {
+      "name": "Hoca Kebabı Tepsisi (2 Kişilik)",
+      "priceTry": 3250.0,
+      "description": "Perde PilavI (1 Adet), Adana, Kuzu Şiş, Kuzu Pirzola, Tavuk Şiş, Tavuk Kanat, Kaburga, Döner, Patlıcan Kebap, Fındık Lahmacun"
+     },
+     {
+      "name": "Dana Biftek",
+      "priceTry": 700.0
+     },
+     {
+      "name": "Kuzu Kaburga",
+      "priceTry": 825.0
+     },
+     {
+      "name": "Tavuk Pirzola",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Tavuk Şiş",
+      "priceTry": 580.0
+     },
+     {
+      "name": "Dana Şiş",
+      "priceTry": 750.0
+     },
+     {
+      "name": "Fırın Beyti",
+      "priceTry": 845.0
+     },
+     {
+      "name": "Karışık Kebap",
+      "priceTry": 1300.0
+     },
+     {
+      "name": "Patlıcan Kebap",
+      "priceTry": 845.0,
+      "description": "160 Gr Kuzu Kıyma, Patlıcan, Közlenmiş Domates ve Biber, Soğan"
+     }
+    ]
+   },
+   {
+    "title": "Fırın Çeşitleri",
+    "items": [
+     {
+      "name": "Lahmacun",
+      "priceTry": 170.0
+     },
+     {
+      "name": "Sucuklu Kaşarlı Pide",
+      "priceTry": 590.0
+     },
+     {
+      "name": "Kuşbaşılı Kaşarlı Pide",
+      "priceTry": 700.0
+     },
+     {
+      "name": "Karışık Pide",
+      "priceTry": 600.0
+     },
+     {
+      "name": "Kıymalı Kaşarlı Lahmacun",
+      "priceTry": 190.0
+     },
+     {
+      "name": "Peymacun",
+      "priceTry": 170.0
+     },
+     {
+      "name": "Ceviz Lahmacun",
+      "priceTry": 100.0
+     },
+     {
+      "name": "KAŞARLI YUMURTALI PİDE",
+      "priceTry": 540.0
+     },
+     {
+      "name": "KIYMALI PİDE",
+      "priceTry": 500.0
+     },
+     {
+      "name": "KIYMALI KAŞARLI PİDE",
+      "priceTry": 600.0
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Fırında Sütlaç",
+      "priceTry": 220.0
+     },
+     {
+      "name": "Fıstıklı Burma Katmer",
+      "priceTry": 235.0
+     },
+     {
+      "name": "Kadayıf",
+      "priceTry": 235.0
+     },
+     {
+      "name": "Künefe",
+      "priceTry": 220.0
+     },
+     {
+      "name": "Burma Kadayıf",
+      "priceTry": 235.0
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site: kategori sayfaları ve ürün sayfaları (kesik açıklamalar ürün sayfasından tamamlandı), adres, telefon, Pazartesi–Pazar 11:00–22:00. OSM adresi (Bağdat Cad. No:106) siteyle farklı; telefon aynı, sitedeki adres kullanıldı."
+}

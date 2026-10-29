@@ -1,0 +1,1250 @@
+{
+ "slug": "zuga-beach-ve-restaurant-sariyer",
+ "description": {
+  "value": "Sarıyer Kumköy'de plajı da olan bir balık ve et restoranı; ara sıcak, meze, ızgara balık, kahvaltı ve plaj hizmeti sunuyor.",
+  "provider": "official_site",
+  "url": "https://www.zugabeachrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Kumköy, 34450 Sarıyer, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.zugabeachrestaurant.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 532 765 55 41",
+  "provider": "official_site",
+  "url": "https://www.zugabeachrestaurant.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.zugabeachrestaurant.com/",
+  "provider": "official_site",
+  "url": "https://www.zugabeachrestaurant.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Menüde plaj (şezlong) ücretleri de yayımlanıyor; balıkların bir kısmı kilo fiyatıyla.",
+   "provider": "official_site",
+   "url": "https://www.zugabeachrestaurant.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Menü neorda.com dijital menü altyapısıyla yayımlanıyor; tarih belirtilmemiş.",
+   "provider": "official_site",
+   "url": "https://www.zugabeachrestaurant.com/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "alkol": true
+  },
+  "provider": "official_site",
+  "url": "https://www.zugabeachrestaurant.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.zugabeachrestaurant.com/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Ara Sıcak",
+    "items": [
+     {
+      "name": "Patates Tava",
+      "priceTry": 320
+     },
+     {
+      "name": "Sigara Böreği",
+      "priceTry": 300
+     },
+     {
+      "name": "Paçanga Böreği",
+      "priceTry": 350
+     },
+     {
+      "name": "Midye Tava",
+      "priceTry": 700
+     },
+     {
+      "name": "Kalamar",
+      "priceTry": 800
+     },
+     {
+      "name": "T.karides",
+      "priceTry": 800
+     },
+     {
+      "name": "Kaşarlı Mantar",
+      "priceTry": 220
+     },
+     {
+      "name": "Izgara Ahtapot",
+      "priceTry": 1200,
+      "description": "100 Gr."
+     },
+     {
+      "name": "Jumbo Karides",
+      "priceTry": 1000
+     },
+     {
+      "name": "Cips Patates",
+      "priceTry": 320
+     },
+     {
+      "name": "Karides Güveç",
+      "priceTry": 850
+     },
+     {
+      "name": "Izgara Kalamar",
+      "priceTry": 850
+     },
+     {
+      "name": "Kızartma",
+      "priceTry": 400
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemek",
+    "items": [
+     {
+      "name": "Antrikot",
+      "priceTry": 1400
+     },
+     {
+      "name": "Barbun",
+      "priceTry": 1700
+     },
+     {
+      "name": "Hamsi",
+      "priceTry": 750
+     },
+     {
+      "name": "Cupra",
+      "priceTry": 1100
+     },
+     {
+      "name": "Çıtır Kanat",
+      "priceTry": 750
+     },
+     {
+      "name": "Kasap Köfte",
+      "priceTry": 900
+     },
+     {
+      "name": "Tekir",
+      "priceTry": 1400
+     },
+     {
+      "name": "Lüfer",
+      "priceTry": 2500
+     },
+     {
+      "name": "Levrek",
+      "priceTry": 1200
+     },
+     {
+      "name": "Balık Buğlama",
+      "priceTry": 3500
+     },
+     {
+      "name": "Pirzola",
+      "priceTry": 1700
+     },
+     {
+      "name": "Mezgit Tava",
+      "priceTry": 800
+     },
+     {
+      "name": "İstavrit",
+      "priceTry": 750
+     },
+     {
+      "name": "Deniz Levreği",
+      "description": "Kilo fiyatı 2000–2500 ₺ (menüde ayrıca 2500 TL yazıyor)"
+     },
+     {
+      "name": "Sarıkanat",
+      "priceTry": 1700
+     },
+     {
+      "name": "Fener Kavurma",
+      "priceTry": 1400
+     },
+     {
+      "name": "Sardalya",
+      "priceTry": 850
+     },
+     {
+      "name": "MİNAKOP 1kg",
+      "priceTry": 2500
+     },
+     {
+      "name": "Kalkan",
+      "priceTry": 4000
+     },
+     {
+      "name": "Tuzda Balık",
+      "description": "Kilosu 3.000 ₺"
+     },
+     {
+      "name": "Çinekop",
+      "priceTry": 1100
+     },
+     {
+      "name": "Deniz Çuprası",
+      "priceTry": 2000
+     }
+    ]
+   },
+   {
+    "title": "Meze",
+    "items": [
+     {
+      "name": "Acılı Ezme",
+      "priceTry": 320
+     },
+     {
+      "name": "Atom",
+      "priceTry": 320
+     },
+     {
+      "name": "Boranı",
+      "priceTry": 340
+     },
+     {
+      "name": "Cacık",
+      "priceTry": 330
+     },
+     {
+      "name": "Cibez",
+      "priceTry": 350
+     },
+     {
+      "name": "Çiroz",
+      "priceTry": 450
+     },
+     {
+      "name": "Deniz Börülcesi",
+      "priceTry": 330
+     },
+     {
+      "name": "Fava",
+      "priceTry": 340
+     },
+     {
+      "name": "Fesleğen Levrek Marine",
+      "priceTry": 500
+     },
+     {
+      "name": "Grit Ezme",
+      "priceTry": 360
+     },
+     {
+      "name": "Hamsi Ancıyoz",
+      "priceTry": 400
+     },
+     {
+      "name": "Haydari",
+      "priceTry": 320
+     },
+     {
+      "name": "Humus",
+      "priceTry": 420
+     },
+     {
+      "name": "İsli Midye",
+      "priceTry": 450
+     },
+     {
+      "name": "Keçi Peyniri",
+      "priceTry": 170
+     },
+     {
+      "name": "Köpoğlu",
+      "priceTry": 330
+     },
+     {
+      "name": "Köz Biber",
+      "priceTry": 320
+     },
+     {
+      "name": "Köz Patlıcan",
+      "priceTry": 380
+     },
+     {
+      "name": "Levrek Marine",
+      "priceTry": 500
+     },
+     {
+      "name": "Pancar Turşu",
+      "priceTry": 320
+     },
+     {
+      "name": "Patlıcan Ezme",
+      "priceTry": 380
+     },
+     {
+      "name": "Patlıcan Salata",
+      "priceTry": 380
+     },
+     {
+      "name": "Peynir",
+      "priceTry": 170
+     },
+     {
+      "name": "Peynir Tabağı",
+      "priceTry": 750
+     },
+     {
+      "name": "Pilaki",
+      "priceTry": 330
+     },
+     {
+      "name": "Semiz Otu",
+      "priceTry": 320
+     },
+     {
+      "name": "Sıcak Pazı",
+      "priceTry": 350
+     },
+     {
+      "name": "Söğüş Karides",
+      "priceTry": 700
+     },
+     {
+      "name": "Saksuka",
+      "priceTry": 320
+     },
+     {
+      "name": "Turşu",
+      "priceTry": 320
+     },
+     {
+      "name": "Uskumru",
+      "priceTry": 350
+     },
+     {
+      "name": "Yoğurt",
+      "priceTry": 265
+     },
+     {
+      "name": "Yoğurtlu Patlıcan",
+      "priceTry": 285
+     },
+     {
+      "name": "Havuç Tarator",
+      "priceTry": 215
+     }
+    ]
+   },
+   {
+    "title": "Salata",
+    "items": [
+     {
+      "name": "Yeşil Salata",
+      "priceTry": 450
+     },
+     {
+      "name": "İstanbul Salatası",
+      "priceTry": 450
+     },
+     {
+      "name": "Gavurdağ Salata",
+      "priceTry": 500
+     },
+     {
+      "name": "Tonbalıklı Salata",
+      "priceTry": 600
+     },
+     {
+      "name": "Söğüş",
+      "priceTry": 300
+     },
+     {
+      "name": "Peynirli Roka Salata",
+      "priceTry": 500
+     },
+     {
+      "name": "Peynirli Yeşil Salata",
+      "priceTry": 500
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 450
+     },
+     {
+      "name": "Roka Salata",
+      "priceTry": 450
+     },
+     {
+      "name": "Mevsim Salata",
+      "priceTry": 450
+     },
+     {
+      "name": "Peynirli Çoban Salata",
+      "priceTry": 500
+     },
+     {
+      "name": "Peynirli Mevsim Salata",
+      "priceTry": 500
+     },
+     {
+      "name": "Duble Söğüş",
+      "priceTry": 450
+     },
+     {
+      "name": "Roka Söğüş",
+      "priceTry": 250
+     },
+     {
+      "name": "Duble Roka Söğüş",
+      "priceTry": 400
+     }
+    ]
+   },
+   {
+    "title": "Fast Food",
+    "items": [
+     {
+      "name": "Hamburger",
+      "priceTry": 800
+     },
+     {
+      "name": "Midye Ekmek",
+      "priceTry": 750
+     },
+     {
+      "name": "Balık Ekmek",
+      "priceTry": 750
+     },
+     {
+      "name": "Sucuk Ekmek",
+      "priceTry": 750
+     },
+     {
+      "name": "Cheese Burger",
+      "priceTry": 850
+     },
+     {
+      "name": "Köfte Ekmek",
+      "priceTry": 750
+     }
+    ]
+   },
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Serpme Kahvaltı",
+      "priceTry": 1100
+     },
+     {
+      "name": "Kahvaltı Tabağı",
+      "priceTry": 700
+     },
+     {
+      "name": "Menemen",
+      "priceTry": 350
+     },
+     {
+      "name": "Muhlama",
+      "priceTry": 450
+     },
+     {
+      "name": "Kavurmalı Yumurta",
+      "priceTry": 500
+     },
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 450
+     },
+     {
+      "name": "Peynirli Yumurta",
+      "priceTry": 350
+     },
+     {
+      "name": "Omlet",
+      "priceTry": 300
+     },
+     {
+      "name": "Kavurmalı Omlet",
+      "priceTry": 500
+     },
+     {
+      "name": "Sucuklu Omlet",
+      "priceTry": 450
+     },
+     {
+      "name": "Peynirli Omlet",
+      "priceTry": 350
+     },
+     {
+      "name": "Sucuk",
+      "priceTry": 350
+     },
+     {
+      "name": "Sosis Patates",
+      "priceTry": 500
+     },
+     {
+      "name": "Tereyağ",
+      "priceTry": 100
+     }
+    ]
+   },
+   {
+    "title": "Meyve",
+    "items": [
+     {
+      "name": "Meyve Tabağı",
+      "priceTry": 500
+     },
+     {
+      "name": "Serpme Meyve",
+      "priceTry": 600
+     },
+     {
+      "name": "Karpuz",
+      "priceTry": 300
+     },
+     {
+      "name": "Kavun",
+      "priceTry": 300
+     }
+    ]
+   },
+   {
+    "title": "Tatlı",
+    "items": [
+     {
+      "name": "Suffle",
+      "priceTry": 350
+     },
+     {
+      "name": "Kabak Tatlısı",
+      "priceTry": 300
+     },
+     {
+      "name": "Ayva",
+      "priceTry": 300
+     },
+     {
+      "name": "Dondurma",
+      "priceTry": 200
+     },
+     {
+      "name": "Fırın Helva",
+      "priceTry": 350
+     },
+     {
+      "name": "İrmik Dondurma",
+      "priceTry": 350
+     }
+    ]
+   },
+   {
+    "title": "Sıcak İçecek",
+    "items": [
+     {
+      "name": "Nescafe",
+      "priceTry": 250
+     },
+     {
+      "name": "Nescafe Sütlü",
+      "priceTry": 300
+     },
+     {
+      "name": "Sütten Nescafe",
+      "priceTry": 200
+     },
+     {
+      "name": "Çay",
+      "priceTry": 100
+     },
+     {
+      "name": "Duble Çay",
+      "priceTry": 150
+     },
+     {
+      "name": "Duble Türk Kahvesi",
+      "priceTry": 300
+     },
+     {
+      "name": "Latte",
+      "priceTry": 300
+     },
+     {
+      "name": "Mocha Cafe",
+      "priceTry": 350
+     },
+     {
+      "name": "Espresso",
+      "priceTry": 200
+     },
+     {
+      "name": "Macchıato",
+      "priceTry": 250
+     },
+     {
+      "name": "Cappuccıno",
+      "priceTry": 300
+     },
+     {
+      "name": "Pot Çay",
+      "priceTry": 600
+     },
+     {
+      "name": "Bitki Çayı",
+      "priceTry": 250
+     },
+     {
+      "name": "Amerıcano",
+      "priceTry": 250
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 200
+     }
+    ]
+   },
+   {
+    "title": "Soğuk İçecek",
+    "items": [
+     {
+      "name": "Kola",
+      "priceTry": 200
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 200
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 200
+     },
+     {
+      "name": "Meyve Suyu",
+      "priceTry": 200
+     },
+     {
+      "name": "Limonata",
+      "priceTry": 170
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 170
+     },
+     {
+      "name": "Soda",
+      "priceTry": 150
+     },
+     {
+      "name": "Su 500 Ml",
+      "priceTry": 100
+     },
+     {
+      "name": "Su 1.5 Lt",
+      "priceTry": 200
+     },
+     {
+      "name": "Ice Tea Limon",
+      "priceTry": 200
+     },
+     {
+      "name": "Ice Tea Şeftali",
+      "priceTry": 200
+     },
+     {
+      "name": "Redbull",
+      "priceTry": 300
+     },
+     {
+      "name": "Sürahi Şalgam",
+      "priceTry": 350
+     },
+     {
+      "name": "Küçük Şalgam",
+      "priceTry": 100
+     },
+     {
+      "name": "Alkolsüz Mojito",
+      "priceTry": 500
+     },
+     {
+      "name": "Ice Latte",
+      "priceTry": 300
+     },
+     {
+      "name": "Ice Nescafe",
+      "priceTry": 300
+     },
+     {
+      "name": "Ice Mocha",
+      "priceTry": 330
+     },
+     {
+      "name": "Frappacıno",
+      "priceTry": 350
+     },
+     {
+      "name": "Frozen Çilek",
+      "priceTry": 500
+     },
+     {
+      "name": "Frozen Karpuz",
+      "priceTry": 500
+     },
+     {
+      "name": "Frozen Muz Çikolata",
+      "priceTry": 600
+     },
+     {
+      "name": "Mılkshake",
+      "priceTry": 400
+     },
+     {
+      "name": "Portakal Suyu",
+      "priceTry": 250
+     },
+     {
+      "name": "Chıchıll",
+      "priceTry": 200
+     },
+     {
+      "name": "Bardak Şalgam",
+      "priceTry": 60
+     }
+    ]
+   },
+   {
+    "title": "Kokteyl",
+    "items": [
+     {
+      "name": "Margarita",
+      "priceTry": 900
+     },
+     {
+      "name": "Martini",
+      "priceTry": 900
+     },
+     {
+      "name": "Espresso Martını",
+      "priceTry": 950
+     },
+     {
+      "name": "Lyncburg Lemonade",
+      "priceTry": 950
+     },
+     {
+      "name": "Vodka Martini",
+      "priceTry": 900
+     },
+     {
+      "name": "Bloody Mary",
+      "priceTry": 800
+     },
+     {
+      "name": "Virjin Mary",
+      "priceTry": 500
+     },
+     {
+      "name": "Porn Star Martını",
+      "priceTry": 900
+     },
+     {
+      "name": "Cosmpolıtan",
+      "priceTry": 900
+     },
+     {
+      "name": "Aperol Sprıtz",
+      "priceTry": 850
+     },
+     {
+      "name": "Mojıto",
+      "priceTry": 900
+     },
+     {
+      "name": "Mınt Julep",
+      "priceTry": 850
+     },
+     {
+      "name": "Sex On The Beach",
+      "priceTry": 850
+     },
+     {
+      "name": "Log Island Iced Tea",
+      "priceTry": 950
+     },
+     {
+      "name": "Jelly Beans",
+      "priceTry": 900
+     },
+     {
+      "name": "Sun Rise Martini",
+      "priceTry": 900
+     }
+    ]
+   },
+   {
+    "title": "Rakı",
+    "items": [
+     {
+      "name": "YENİ RAKI 20cl",
+      "priceTry": 1500
+     },
+     {
+      "name": "YENİ RAKI 35cl",
+      "priceTry": 2200
+     },
+     {
+      "name": "YENİ RAKI 50cl",
+      "priceTry": 2900
+     },
+     {
+      "name": "YENİ RAKI 70cl",
+      "priceTry": 3700
+     },
+     {
+      "name": "YENİ RAKI 100cl",
+      "priceTry": 4900
+     },
+     {
+      "name": "YENİ SERİ 20cl",
+      "priceTry": 1500
+     },
+     {
+      "name": "YENİ SERİ 35cl",
+      "priceTry": 2200
+     },
+     {
+      "name": "YENİ SERİ 50cl",
+      "priceTry": 2900
+     },
+     {
+      "name": "YENİ SERİ 70cl",
+      "priceTry": 3700
+     },
+     {
+      "name": "YENİ SERİ 100cl",
+      "priceTry": 4900
+     },
+     {
+      "name": "BEYLERBEYİ GÖBEK 20cl",
+      "priceTry": 1650
+     },
+     {
+      "name": "BEYLERBEYİ GÖBEK 35cl",
+      "priceTry": 2450
+     },
+     {
+      "name": "BEYLERBEYİ GÖBEK 50cl",
+      "priceTry": 3200
+     },
+     {
+      "name": "BEYLERBEYİ GÖBEK 70cl",
+      "priceTry": 4150
+     },
+     {
+      "name": "BEYLERBEYİ GÖBEK 100cl",
+      "priceTry": 5400
+     },
+     {
+      "name": "TEKİRDAĞ ALTIN SERİ 20cl",
+      "priceTry": 1650
+     },
+     {
+      "name": "TEKİRDAĞ ALTIN SERİ 35cl",
+      "priceTry": 2450
+     },
+     {
+      "name": "TEKİRDAĞ ALTIN SERİ 70cl",
+      "priceTry": 4150
+     },
+     {
+      "name": "TEKİRDAĞ ALTIN SERİ 100cl",
+      "priceTry": 5400
+     },
+     {
+      "name": "UZUN DEMLEME 20cl",
+      "priceTry": 1600
+     },
+     {
+      "name": "UZUN DEMLEME 35cl",
+      "priceTry": 2400
+     },
+     {
+      "name": "UZUN DEMLEME 50cl",
+      "priceTry": 3200
+     },
+     {
+      "name": "UZUN DEMLEME 70cl",
+      "priceTry": 4050
+     },
+     {
+      "name": "EFE GOLD 20cl",
+      "priceTry": 1400
+     },
+     {
+      "name": "EFE GOLD 35cl",
+      "priceTry": 2150
+     },
+     {
+      "name": "EFE GOLD 50cl",
+      "priceTry": 2850
+     },
+     {
+      "name": "EFE GOLD 70cl",
+      "priceTry": 3600
+     },
+     {
+      "name": "EFE GÖBEK 20cl",
+      "priceTry": 1400
+     },
+     {
+      "name": "EFE GÖBEK 35cl",
+      "priceTry": 2150
+     },
+     {
+      "name": "EFE GÖBEK 50cl",
+      "priceTry": 2850
+     },
+     {
+      "name": "EFE GÖBEK 70cl",
+      "priceTry": 3600
+     },
+     {
+      "name": "Tek Rakı",
+      "priceTry": 450
+     },
+     {
+      "name": "Double Rakı",
+      "priceTry": 650
+     },
+     {
+      "name": "Tekirdağ Altın Seri 50 Cl",
+      "priceTry": 3200
+     },
+     {
+      "name": "Sarı Zeybek 35 Cl",
+      "priceTry": 2450
+     },
+     {
+      "name": "Sarı Zeybek 70 Cl",
+      "priceTry": 4150
+     },
+     {
+      "name": "Beylerbeyi İncirden 70 Cl",
+      "priceTry": 4150
+     },
+     {
+      "name": "Kulüp Rakı 70 Cl",
+      "priceTry": 4150
+     },
+     {
+      "name": "EFE GOLD 100cl",
+      "priceTry": 5400
+     },
+     {
+      "name": "Sarı Zeybek 50cl",
+      "priceTry": 3200
+     }
+    ]
+   },
+   {
+    "title": "Bira",
+    "items": [
+     {
+      "name": "EFES 50cl",
+      "priceTry": 450
+     },
+     {
+      "name": "BOMONTİ 50cl",
+      "priceTry": 450
+     },
+     {
+      "name": "MILLER 33cl",
+      "priceTry": 475
+     },
+     {
+      "name": "AMSTERDAM 50cl",
+      "priceTry": 600
+     },
+     {
+      "name": "Bud",
+      "priceTry": 475
+     },
+     {
+      "name": "Efes Malt",
+      "priceTry": 450
+     },
+     {
+      "name": "Özel Seri Efes",
+      "priceTry": 475
+     },
+     {
+      "name": "Belfast",
+      "priceTry": 475
+     }
+    ]
+   },
+   {
+    "title": "Şarap",
+    "items": [
+     {
+      "name": "Sellectıon Beyaz",
+      "priceTry": 3600
+     },
+     {
+      "name": "K.dere Myrına Beyaz",
+      "priceTry": 2700
+     },
+     {
+      "name": "Leona Blush",
+      "priceTry": 2700
+     },
+     {
+      "name": "Kadeh Kırmızı Şarap",
+      "priceTry": 700
+     },
+     {
+      "name": "Sellectıon Kırmızı",
+      "priceTry": 3600
+     },
+     {
+      "name": "K.dere Myrına Kırmızı",
+      "priceTry": 2700
+     },
+     {
+      "name": "Kadeh Beyaz Şarap",
+      "priceTry": 700
+     },
+     {
+      "name": "Şampanya",
+      "priceTry": 2500
+     },
+     {
+      "name": "Kadeh Blush Şarap",
+      "priceTry": 700
+     },
+     {
+      "name": "Kavaklı Dere Yakut",
+      "priceTry": 3200
+     },
+     {
+      "name": "Kavaklıdere Cankaya",
+      "priceTry": 3300
+     },
+     {
+      "name": "Sarafın Beyaz",
+      "priceTry": 4000
+     },
+     {
+      "name": "Sarafın Kırmızı",
+      "priceTry": 4000
+     },
+     {
+      "name": "Myrına Blush",
+      "priceTry": 2700
+     },
+     {
+      "name": "Ancyra Blanc",
+      "priceTry": 2700
+     }
+    ]
+   },
+   {
+    "title": "Viski",
+    "items": [
+     {
+      "name": "CHIVAS 12 35cl",
+      "priceTry": 4500
+     },
+     {
+      "name": "CHIVAS 12 70cl",
+      "priceTry": 9000
+     },
+     {
+      "name": "Chıvas 18 70cl",
+      "priceTry": 11000
+     },
+     {
+      "name": "JACK DANİELs 70CL",
+      "priceTry": 9000
+     },
+     {
+      "name": "BLACK LABEL 35cl",
+      "priceTry": 4500
+     },
+     {
+      "name": "BLACK LABEL 70cl",
+      "priceTry": 9000
+     },
+     {
+      "name": "SMINROF 35cl",
+      "priceTry": 4500
+     },
+     {
+      "name": "GILBEYS 35cl",
+      "priceTry": 4500
+     },
+     {
+      "name": "GILBEYS 70cl",
+      "priceTry": 8000
+     },
+     {
+      "name": "Duble Vıskı",
+      "priceTry": 1000
+     },
+     {
+      "name": "Ballantınes 70 Cl",
+      "priceTry": 8000
+     },
+     {
+      "name": "Dıple Golden 70 Cl",
+      "priceTry": 9000
+     },
+     {
+      "name": "Jameson Ipa Ed 70 Cl",
+      "priceTry": 9000
+     },
+     {
+      "name": "JB 70cl",
+      "priceTry": 8000
+     },
+     {
+      "name": "Duble Viski",
+      "priceTry": 1000
+     },
+     {
+      "name": "JACK DANİELs 35CL",
+      "priceTry": 4500
+     },
+     {
+      "name": "Jameson",
+      "priceTry": 8000
+     },
+     {
+      "name": "Red Label 35cl",
+      "priceTry": 4500
+     }
+    ]
+   },
+   {
+    "title": "Vodka",
+    "items": [
+     {
+      "name": "ABSOLUT 70cl",
+      "priceTry": 9000
+     },
+     {
+      "name": "Belvedere",
+      "priceTry": 11000
+     },
+     {
+      "name": "Grey Goose",
+      "priceTry": 11000
+     },
+     {
+      "name": "Beluga",
+      "priceTry": 12000
+     },
+     {
+      "name": "Vodka Vişne",
+      "priceTry": 750
+     },
+     {
+      "name": "Vodka Enerji",
+      "priceTry": 900
+     }
+    ]
+   },
+   {
+    "title": "Plaj",
+    "items": [
+     {
+      "name": "Hafta İçi Beach Ücreti",
+      "priceTry": 600
+     },
+     {
+      "name": "Hafta Sonu Beach Ücreti",
+      "priceTry": 1000
+     },
+     {
+      "name": "Hafta İçi Tahta İskele Beach Ücreti",
+      "priceTry": 750
+     },
+     {
+      "name": "Hafta Sonu Tahta İskele Beach Ücreti",
+      "priceTry": 1200
+     }
+    ]
+   },
+   {
+    "title": "Likör",
+    "items": [
+     {
+      "name": "Dısaronno",
+      "priceTry": 8000
+     },
+     {
+      "name": "Safarı",
+      "priceTry": 8000
+     },
+     {
+      "name": "Sambuca",
+      "priceTry": 8000
+     },
+     {
+      "name": "Kahlua",
+      "priceTry": 8000
+     },
+     {
+      "name": "Baıleys",
+      "priceTry": 8000
+     },
+     {
+      "name": "Coıntreau",
+      "priceTry": 10000
+     },
+     {
+      "name": "Cardınal Melon",
+      "priceTry": 8000
+     },
+     {
+      "name": "Ramazottı Sambuca",
+      "priceTry": 8000
+     }
+    ]
+   },
+   {
+    "title": "Tekila",
+    "items": [
+     {
+      "name": "Patron",
+      "priceTry": 12000
+     },
+     {
+      "name": "Olmeca",
+      "priceTry": 9000
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=HYIqN048NIU",
+   "credit": "İFŞALADIK · Mayıs 2026 · ziyaret videosu",
+   "category": "ziyaretci",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site menü sayfası: fiyatlar TL, tarihsiz. 'Extralar' bölümü sigara içerdiği için alınmadı. Saat sitede yok."
+}
