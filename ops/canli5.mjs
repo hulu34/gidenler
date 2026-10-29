@@ -13,9 +13,21 @@ const admin = `https://${HOST}/api/admin/db/`;
 const rapor = async (s) => (await fetch(`${admin}?rapor=profil&slug=${s}`, { headers: H })).json();
 mkdirSync("out/canli5", { recursive: true });
 const ozet = (r) => `profil ${r.profile ? "VAR" : "yok"} · menü kalemi ${r.profile?.menu?.sections?.reduce((a, s) => a + s.items.length, 0) ?? 0} · video ${r.videos?.length ?? 0} [${(r.videos ?? []).map((v) => v.id).join(",")}] · son denetim ${r.audits?.[0]?.id ?? "-"}`;
+/* İşletme beyanı mekânları (ops/tohum.txt): profil uygulamadan önce yalnız bu kayıtlar tohumlanır (seed + slugs).
+   Tam tohum çalıştırılmaz: profili uygulanmış mekânların kimlik alanlarını kaynak değerine döndürürdü. */
+const TOHUM = (() => { try { return readFileSync(new URL("./tohum.txt", import.meta.url), "utf8").split(/\s+/).filter(Boolean); } catch { return []; } })();
 let hata = false;
 for (const s of SLUGS) {
   const r0 = await rapor(s);
+  if (r0.env === "production" && !r0.place && TOHUM.includes(s) && MODE === "uygula") {
+    const r = await fetch(admin, { method: "POST", headers: H, body: JSON.stringify({ action: "seed", confirm: "EVET", slugs: [s] }) });
+    const j = await r.json().catch(() => ({}));
+    writeFileSync(`out/canli5/${s}-tohum.json`, JSON.stringify(j, null, 1));
+    const tOk = r.status === 200 && j.inserted === 1 && j.updated === 0;
+    console.log(`${tOk ? "✓" : "✗"} ${s} işletme beyanı mekânı canlıya eklendi · HTTP ${r.status} eklendi=${j.inserted} güncellendi=${j.updated} toplam=${j.total} ${j.error ?? ""}`);
+    if (!tOk) process.exit(1);
+    Object.assign(r0, await rapor(s));
+  }
   if (r0.env !== "production") { console.log(`✗ ${s}: canlı ortam değil (${r0.env})`); process.exit(1); }
   if (!r0.place) { console.log(`✗ ${s}: restoran canlı veritabanında yok`); process.exit(1); }
   writeFileSync(`out/canli5/${s}-once.json`, JSON.stringify(r0, null, 1));

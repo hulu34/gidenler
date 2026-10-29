@@ -1,0 +1,69 @@
+{
+ "slug": "japon-erdal-beyoglu",
+ "description": {
+  "value": "Galata'da yalnız dört çeşit pide yapan bir pideci. Hamur fırına girmeden önce yaklaşık 36 saat dinlendiriliyor.",
+  "provider": "official_site",
+  "url": "https://japonerdal.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Dibek Sokağı No:15, Galata, Beyoğlu, İstanbul",
+  "provider": "official_site",
+  "url": "https://japonerdal.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://japonerdal.com/",
+  "provider": "official_site",
+  "url": "https://japonerdal.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Hamur yaklaşık 36 saat dinlendiriliyor; site bu yüzden bazı günler hamurun erken bitebildiğini belirtiyor.",
+   "provider": "official_site",
+   "url": "https://japonerdal.com/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Etli pidelerde kaşar kullanılmıyor. Kuşbaşı kontrafileden, pastırma Kastamonu'dan.",
+   "provider": "official_site",
+   "url": "https://japonerdal.com/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://japonerdal.com/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Pide",
+    "items": [
+     {
+      "name": "Kapalı Kıymalı",
+      "priceTry": 580,
+      "description": "Çiğden veya kavrulmuş, az yağlı kıyma ile. 150 g kıyma harcı, 130 g hamur."
+     },
+     {
+      "name": "Kapalı Peynirli",
+      "priceTry": 480,
+      "description": "Lor, kaşar ve Ezine peyniri. 150 g peynir, 130 g hamur."
+     },
+     {
+      "name": "Açık Kuşbaşılı",
+      "priceTry": 720,
+      "description": "Kontrafileden, domates ve biberle. 130 g kontrafile, 130 g hamur."
+     },
+     {
+      "name": "Açık Pastırmalı",
+      "priceTry": 780,
+      "description": "Kastamonu pastırmasından (antrikot ve kontrafile). 70 g pastırma, 130 g hamur."
+     }
+    ]
+   }
+  ]
+ },
+ "videos": []
+}

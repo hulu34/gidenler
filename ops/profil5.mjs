@@ -26,6 +26,15 @@ if (!CANLI) {
   ok("hedef ortam preview (üretime yazılmaz)", env === "preview", `env=${env}`);
   if (env !== "preview") process.exit(1);
 }
+/* İşletme beyanı mekânları (ops/tohum.txt): profil uygulamadan önce yalnız bu kayıtlar tohumlanır (seed + slugs).
+   Tam tohum çalıştırılmaz: profili uygulanmış mekânların kimlik alanlarını kaynak değerine döndürürdü. */
+const TOHUM = (() => { try { return readFileSync(new URL("./tohum.txt", import.meta.url), "utf8").split(/\s+/).filter(Boolean); } catch { return []; } })();
+if (!CANLI && process.env.APPLY === "1" && TOHUM.length) {
+  const r = await fetch(admin, { method: "POST", headers: { ...H, "content-type": "application/json", "sec-fetch-site": "same-origin" }, body: JSON.stringify({ action: "seed", confirm: "EVET", slugs: TOHUM }) });
+  const j = await r.json().catch(() => ({}));
+  ok(`işletme beyanı mekânı tohumlandı (yalnız ${TOHUM.join(",")})`, r.ok && j.inserted + j.updated === TOHUM.length, `HTTP ${r.status} eklendi=${j.inserted} güncellendi=${j.updated} bütünlük=${j.integrity?.ok} ${j.error ?? ""}`);
+  if (!r.ok) process.exit(1);
+}
 const b = await chromium.launch({ channel: "chrome", args: ["--autoplay-policy=no-user-gesture-required"] });
 
 for (const slug of SLUGS) {
