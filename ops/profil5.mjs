@@ -31,11 +31,17 @@ if (!CANLI) {
 /* İşletme beyanı mekânları (ops/tohum.txt): profil uygulamadan önce yalnız bu kayıtlar tohumlanır (seed + slugs).
    Tam tohum çalıştırılmaz: profili uygulanmış mekânların kimlik alanlarını kaynak değerine döndürürdü. */
 const TOHUM = (() => { try { return readFileSync(new URL("./tohum.txt", import.meta.url), "utf8").split(/\s+/).filter(Boolean); } catch { return []; } })();
+const KONTROL = "efes-pide-ve-lahmacun-sisli"; /* profili uygulanmış bir OSM mekânı: seçili tohum ona dokunmamalı */
+const kontrolOnce = !CANLI && TOHUM.length ? await rapor(KONTROL) : null;
 if (!CANLI && process.env.APPLY === "1" && TOHUM.length) {
   const r = await fetch(admin, { method: "POST", headers: { ...H, "content-type": "application/json", "sec-fetch-site": "same-origin" }, body: JSON.stringify({ action: "seed", confirm: "EVET", target: "preview", slugs: TOHUM }) });
   const j = await r.json().catch(() => ({}));
   ok(`işletme beyanı mekânı tohumlandı (yalnız ${TOHUM.join(",")})`, r.ok && j.inserted + j.updated === TOHUM.length, `HTTP ${r.status} eklendi=${j.inserted} güncellendi=${j.updated} bütünlük=${j.integrity?.ok} ${j.error ?? ""}`);
   if (!r.ok) process.exit(1);
+  const kontrolSonra = await rapor(KONTROL);
+  ok(`mevcut OSM mekânı (${KONTROL}) seçili tohumdan etkilenmedi`, JSON.stringify(kontrolOnce?.place) === JSON.stringify(kontrolSonra?.place) && JSON.stringify(kontrolOnce?.profile) === JSON.stringify(kontrolSonra?.profile));
+  const g = j.integrity ?? {};
+  ok("bütünlük: mükerrer slug / kaynak kimliği yok, her mekânın kaynak kimliği var", g.ok === true && g.duplicateSlugs === 0 && g.duplicateOsmRefs === 0 && g.missingOsmIdentifier === 0, JSON.stringify(g).slice(0, 160));
 }
 const b = await chromium.launch({ channel: "chrome", args: ["--autoplay-policy=no-user-gesture-required"] });
 
@@ -120,6 +126,19 @@ for (const slug of SLUGS) {
     }
     const own = errs.slice(0, beforeVideo).filter((e) => !/vercel\.live/.test(e));
     ok(`${dev}: sayfa hatası yok (oynatıcı açılmadan önce)`, own.length === 0, own.join(" | ").slice(0, 200));
+    if (TOHUM.includes(slug)) {
+      /* OSM'siz (işletme kaynaklı) kayıt: kaynaklı konum yoksa harita uydurulmaz; deneyim yazma ve arama yolu açık */
+      const konum = await p.locator("#gor").innerText().catch(() => "");
+      const harita = await p.locator("#gor iframe").count();
+      ok(`${dev}: konum noktası yok → harita yok, adres ve açık uyarı var`, harita === 0 && konum.includes("harita noktası") && konum.includes(pf.address.value.split(",")[0]), konum.replace(/\s+/g, " ").slice(0, 120));
+      ok(`${dev}: Kaydet / Gitmek istiyorum düğmeleri (OSM'siz kayıt)`, (await p.getByRole("button", { name: /Kaydet/ }).count()) > 0);
+      const y = await ctx.newPage(); const yr = await y.goto(`https://${HOST}/yaz/${slug}/`, { waitUntil: "domcontentloaded" });
+      ok(`${dev}: deneyim yazma sayfası açılıyor`, yr?.status() === 200 && (await y.title()).length > 0 && (await y.content()).includes("Japon Erdal") || (yr?.status() === 200 && (await y.content()).includes(pf.slug)), `HTTP ${yr?.status()}`);
+      const name = (await p.locator("h1").first().innerText().catch(() => "")).trim();
+      await y.goto(`https://${HOST}/ara/?q=${encodeURIComponent(name)}`, { waitUntil: "networkidle" }); await y.waitForTimeout(1500);
+      ok(`${dev}: aramada adıyla bulunuyor`, (await y.locator(`a[href*="/mekan/${slug}"]`).count()) > 0, name);
+      await y.close();
+    }
     ok(`${dev}: test erişim başlığı üçüncü taraflara gitmiyor`, sizinti.size === 0, [...sizinti].join(","));
     await ctx.close();
   }

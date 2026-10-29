@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-qz0ianbov-hulu34.vercel.app    # canlı sürüm (ff47e1c, işletme beyanı kodu)
-  PROFIL_HOST: gidenler-cgvo63ew1-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ff47e1c, işletme beyanı kodu)  # görsel Faz 1 Preview (kendi Neon dalı)
+  PROFIL_HOST: gidenler-6tpwxt1vg-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview 2f9a05d, kaynaklı mekân ekleme)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
@@ -146,6 +146,21 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: profil-sifreli, path: out/profil.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  google-hedef:
+    if: contains(github.event.head_commit.message, '[google-hedef]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/google-hedef.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}" }
+      - if: always()
+        run: test -d out/google-hedef && tar -C out -czf out/gh.tgz google-hedef && rm -rf out/google-hedef && openssl cms -encrypt -aes256 -binary -in out/gh.tgz -out out/gh.tgz.cms -outform DER ops/olcum.pem && rm out/gh.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: google-hedef-sifreli, path: out/gh.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   profil5:
     if: contains(github.event.head_commit.message, '[profil5]')
     runs-on: ubuntu-latest

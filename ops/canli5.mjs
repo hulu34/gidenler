@@ -28,12 +28,13 @@ if (TOHUM.length && MODE === "uygula") {
 let hata = false;
 for (const s of SLUGS) {
   const r0 = await rapor(s);
-  if (r0.env === "production" && !r0.place && TOHUM.includes(s) && MODE === "uygula") {
+  if (r0.env === "production" && TOHUM.includes(s) && MODE === "uygula") {
+    if (r0.place) writeFileSync(`out/canli5/${s}-tohum-once.json`, JSON.stringify(r0, null, 1));
     const r = await fetch(admin, { method: "POST", headers: H, body: JSON.stringify({ action: "seed", confirm: "EVET", target: "production", slugs: [s] }) });
     const j = await r.json().catch(() => ({}));
     writeFileSync(`out/canli5/${s}-tohum.json`, JSON.stringify(j, null, 1));
-    const tOk = r.status === 200 && j.inserted === 1 && j.updated === 0;
-    console.log(`${tOk ? "✓" : "✗"} ${s} işletme beyanı mekânı canlıya eklendi · HTTP ${r.status} eklendi=${j.inserted} güncellendi=${j.updated} toplam=${j.total} ${j.error ?? ""}`);
+    const tOk = r.status === 200 && j.inserted + j.updated === 1 && j.integrity?.ok === true;
+    console.log(`${tOk ? "✓" : "✗"} ${s} işletme kaynaklı mekân canlıya yazıldı (yalnız bu kayıt) · HTTP ${r.status} eklendi=${j.inserted} güncellendi=${j.updated} toplam=${j.total} bütünlük=${j.integrity?.ok} ${j.error ?? ""}`);
     if (!tOk) process.exit(1);
     Object.assign(r0, await rapor(s));
   }
