@@ -18,7 +18,7 @@ env:
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
-  ADAY_HOST: gidenler-9mflnnz5x-hulu34.vercel.app    # canlı sürüm (2f9a05d, kaynaklı mekân ekleme)
+  ADAY_HOST: gidenler-6z8ukbsi9-hulu34.vercel.app    # canlı sürüm (6890ba8, Google pasifleştirme)
   PROFIL_HOST: gidenler-3tdndgcsg-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview 6890ba8, Google pasifleştirme)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
@@ -146,6 +146,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: profil-sifreli, path: out/profil.tgz.cms, retention-days: 1, if-no-files-found: ignore }
+  google-durum:
+    if: contains(github.event.head_commit.message, '[google-durum]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/google-durum.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}" }
   google-pasif:
     if: contains(github.event.head_commit.message, '[google-pasif]')
     runs-on: ubuntu-latest
