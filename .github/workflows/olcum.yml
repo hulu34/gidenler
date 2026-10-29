@@ -114,6 +114,19 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: canli5-ekran-sifreli, path: out/canli5e.tgz.cms, retention-days: 3, if-no-files-found: ignore }
+  havuz:
+    if: contains(github.event.head_commit.message, '[havuz]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/havuz.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}" }
+      - run: tar -C out -czf out/havuz.tgz havuz && openssl cms -encrypt -aes256 -binary -in out/havuz.tgz -out out/havuz.tgz.cms -outform DER ops/olcum.pem
+      - uses: actions/upload-artifact@v4
+        with: { name: havuz-sifreli, path: out/havuz.tgz.cms, retention-days: 3 }
   profil:
     if: contains(github.event.head_commit.message, '[profil]')
     runs-on: ubuntu-latest
