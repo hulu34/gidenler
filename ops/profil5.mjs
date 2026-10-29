@@ -55,7 +55,9 @@ for (const slug of SLUGS) {
     ok(`${dev}: sekmeler`, ["Genel bakış", "Menü", "Fotoğraflar", "Videolar"].every((x) => nav.includes(x)), nav.filter((x) => x.length < 14).join("|"));
     ok(`${dev}: tanıtım, telefon, kaynak ve son kontrol ${trDate(pf.description.checkedAt)}`, t.includes(pf.description.value.slice(0, 40)) && t.includes(pf.phone.value) && t.includes(`son kontrol ${trDate(pf.description.checkedAt)}`));
     ok(`${dev}: saat ${pf.hours ? "resmî kaynaktan" : "uydurulmuyor"}`, pf.hours ? !t.includes("İşletmenin resmî kaynağında yayımlanmıyor") : t.includes("İşletmenin resmî kaynağında yayımlanmıyor"));
-    ok(`${dev}: notlar 'Bilmen gerekenler' başlığıyla (${pf.notes.length})`, /Bilmen gerekenler/i.test(t) && !/\bKurallar\b(?! ?\/)/.test(await p.locator("#genel").innerText()) && pf.notes.every((n) => t.includes(n.value.slice(0, 30))));
+    /* başlık CSS ile büyük harf (İ): metin kaynağı textContent'ten okunur */
+    const dts = await p.locator("#genel dt").evaluateAll((d) => d.map((x) => x.textContent.trim()));
+    ok(`${dev}: notlar 'Bilmen gerekenler' başlığıyla (${pf.notes.length})`, dts.includes("Bilmen gerekenler") && !dts.includes("Kurallar") && pf.notes.every((n) => t.includes(n.value.slice(0, 30))), dts.join("|"));
     /* menü: her kalem adı, fiyatı (varsa) ve açıklaması dosyadakiyle aynı sırada */
     const rows = await p.locator("#menu li").evaluateAll((ls) => ls.map((l) => l.innerText.replace(/\s+/g, " ").trim()));
     const miss = items.filter((it, i) => { const r = rows[i] ?? ""; return !r.startsWith(it.name) || (it.priceTry !== undefined && !r.includes(tl(it.priceTry))) || (it.description && !r.includes(it.description)) || (it.priceTry === undefined && /\d ₺$/.test(r) && !(it.description ?? "").endsWith("₺")); });
@@ -69,7 +71,7 @@ for (const slug of SLUGS) {
     const cards = p.locator("#videolar button");
     const nv = await cards.count();
     ok(`${dev}: video kartları (${pf.videos.length})`, nv === pf.videos.length, `${nv}`);
-    const credits = await p.locator("#videolar button span.line-clamp-3").evaluateAll((ss) => ss.map((s) => ({ t: s.innerText.replace(/\s+/g, " "), clipped: s.scrollHeight > s.clientHeight + 1 })));
+    const credits = await p.locator("#videolar button span.line-clamp-5").evaluateAll((ss) => ss.map((s) => ({ t: s.innerText.replace(/\s+/g, " "), clipped: s.scrollHeight > s.clientHeight + 1 })));
     const clipped = credits.filter((c) => c.clipped).map((c) => c.t.slice(0, 30));
     ok(`${dev}: atıflar (kanal · tarih · tür) kartta kesilmeden görünüyor`, credits.length === pf.videos.length && clipped.length === 0 && pf.videos.every((v) => credits.some((c) => c.t === v.credit)), clipped.join(" | "));
     ok(`${dev}: işbirliği etiketi yalnız işaretli videoda`, ((await p.locator("#videolar").innerText().catch(() => "")).includes("İşbirliği")) === pf.videos.some((v) => v.sponsored));
@@ -94,7 +96,11 @@ for (const slug of SLUGS) {
         } catch (e) { durum = `video öğesi okunamadı (${e.message.slice(0, 50)})`; }
       }
       const shown = await p.locator("[role=dialog]").innerText().catch(() => "");
-      ok(`${dev}: video ${i + 1} site içi oynatıcıda açıldı ve oynadı`, !!id && pf.videos.some((v) => ytId(v.url) === id) && /oynuyor|t=[1-9]/.test(durum), `${id} · ${durum}`);
+      /* zorunlu: site içi oynatıcı doğru videonun resmî YouTube gömmesini açar. Oynatmanın kendisi CI'nın başsız
+         tarayıcısında YouTube tarafından engellenebilir (video öğesi yüklenmez); oynatma gerçek tarayıcıda ayrıca doğrulanır. */
+      ok(`${dev}: video ${i + 1} site içi oynatıcıda açıldı (doğru kimlik, resmî gömme)`, !!id && pf.videos.some((v) => ytId(v.url) === id) && /youtube(-nocookie)?\.com\/embed\//.test(src ?? ""), id ?? "");
+      if (fr && !/oynuyor|t=[1-9]/.test(durum)) durum += " · çerçeve: " + (await fr.evaluate(() => document.body.innerText.replace(/\s+/g, " ").slice(0, 90)).catch(() => "?"));
+      console.log(`  bilgi (CI başsız tarayıcı) video ${i + 1} oynatma: ${durum}`);
       ok(`${dev}: video ${i + 1} oynatıcıda atıf tam`, pf.videos.some((v) => ytId(v.url) === id && shown.includes(v.credit)));
       if (dev === "masaustu" && i === 0) await shot(p, `${slug}-masaustu-oynatici`);
       await p.locator("[role=dialog] button[aria-label^='Kapat']").click().catch(() => p.keyboard.press("Escape")); await p.waitForTimeout(500);

@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-ikxvc46f3-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-ikxvc46f3-hulu34.vercel.app    # canlı sürüm (19ad933)
-  PROFIL_HOST: gidenler-i4g87byti-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview, kendi Neon dalı)  # görsel Faz 1 Preview (kendi Neon dalı)
+  PROFIL_HOST: gidenler-qt8ayjqy8-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview, kendi Neon dalı)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
     if: contains(github.event.head_commit.message, '[demo]')
@@ -83,6 +83,37 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: canli-sifreli, path: out/canli.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  canli5:
+    if: contains(github.event.head_commit.message, '[canli5]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/canli5.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}", MODE: "${{ contains(github.event.head_commit.message, '[canli5-uygula]') && 'uygula' || 'once' }}" }
+      - if: always()
+        run: test -d out/canli5 && tar -C out -czf out/canli5.tgz canli5 && rm -rf out/canli5 && openssl cms -encrypt -aes256 -binary -in out/canli5.tgz -out out/canli5.tgz.cms -outform DER ops/olcum.pem && rm out/canli5.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: canli5-sifreli, path: out/canli5.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  canlikontrol5:
+    if: contains(github.event.head_commit.message, '[canlikontrol5]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/profil5.mjs
+        env: { CANLI: "1" }
+      - if: always()
+        run: test -d out/canli5 && tar -C out -czf out/canli5e.tgz canli5 && rm -rf out/canli5 && openssl cms -encrypt -aes256 -binary -in out/canli5e.tgz -out out/canli5e.tgz.cms -outform DER ops/olcum.pem && rm out/canli5e.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: canli5-ekran-sifreli, path: out/canli5e.tgz.cms, retention-days: 3, if-no-files-found: ignore }
   profil:
     if: contains(github.event.head_commit.message, '[profil]')
     runs-on: ubuntu-latest
