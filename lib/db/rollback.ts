@@ -10,6 +10,8 @@ import { MIGRATIONS } from "./migrations.generated";
    Her ikisi de tek işlemde; yarım kalırsa hiçbir şey değişmez. Asıl güvence Neon'daki yedek daldır.
    ────────────────────────────────────────────────────────────────────────── */
 
+/** 0001_deneme_esigi ve sonrası (yeniden eskiye) */
+const LATER_TABLES = ["notifications", "score_watches"];
 const FAZ0_TABLES = [
   "ranking_entries", "rankings", "follows", "list_items", "lists", "user_place_status", "rating_history",
   "reviewer_expertise", "visit_verifications", "review_dishes", "reviews", "dish_media", "media_places",
@@ -79,11 +81,12 @@ export async function rollbackMigrationPreview(x: Executor) {
 export async function rollbackMigration(x: Executor) {
   const p = await rollbackMigrationPreview(x);
   if (!p.safe) throw new Error(`Gerçek kullanıcı (${p.users}) ya da deneyim (${p.reviews}) var — geçiş geri alma durduruldu. Neon yedek dalından geri yükleyin.`);
-  const tag = MIGRATIONS[0].tag.replace(/'/g, "''");
+  /* sonraki geçişlerin tabloları önce (ters sıra), sonra Faz 0; bütün geçiş kayıtları silinir */
+  const tables = [...LATER_TABLES, ...FAZ0_TABLES];
   await x.transaction([
     "SELECT pg_advisory_xact_lock(7302610)",
-    ...FAZ0_TABLES.map((t) => `DROP TABLE IF EXISTS "${t}" CASCADE`),
-    `DELETE FROM "_gidenler_migrations" WHERE tag = '${tag}'`,
+    ...tables.map((t) => `DROP TABLE IF EXISTS "${t}" CASCADE`),
+    ...MIGRATIONS.map((m) => `DELETE FROM "_gidenler_migrations" WHERE tag = '${m.tag.replace(/'/g, "''")}'`),
   ]);
-  return { droppedTables: FAZ0_TABLES.length };
+  return { droppedTables: tables.length };
 }

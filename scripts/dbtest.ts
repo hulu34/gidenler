@@ -25,6 +25,9 @@ import { parseVideoUrl, embedUrl } from "../lib/media/embed";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/store";
 import { visitMonths } from "../lib/drafts";
 import { importPlaceStates, listPlaceStates, setPlaceState } from "../lib/community/placeStatus";
+import { deleteWatch, getWatch, listNotifications, listWatches, markNotificationsRead, parseThreshold, setWatch, setWatchActive } from "../lib/community/scoreWatch";
+import { publishedScoreBySlug, recordScore } from "../lib/score/published";
+import { runThresholdScenario } from "../lib/community/scoreWatchScenario";
 import { planImport, serverToLocal, isAccountEntity, replayPending, pushChange, signOutFlow, type PendingChange } from "../lib/community/sync";
 import { createReview, updateReview, deleteReview, reportReview, moderateReview, listPlaceReviews, listUserReviews, validateReview, publicName, type ReviewInput } from "../lib/community/reviews";
 import { INDEPENDENCE } from "../lib/score/weights";
@@ -218,6 +221,86 @@ async function main() {
     const [rb] = await db.select().from(schema.userPlaceStatus).innerJoin(schema.places, eq(schema.places.id, schema.userPlaceStatus.placeId)).where(and(eq(schema.userPlaceStatus.userId, "uz"), eq(schema.places.slug, biz)));
     ok("OSM'siz mekânda Kaydet ve Gittim çalışır; Gittim doğrulanmış ziyaret sayılmaz", s1.ok && s2.ok && rb.user_place_status.visited && rb.user_place_status.verificationId === null);
     await setPlaceState(db, "uz", biz, "none");
+  }
+  {
+    console.log("\n3c) Deneme eşiği: takip, gerçek puan yayını, site içi bildirim");
+    const P1 = "ciya-sofrasi-kadikoy", P2 = realVenueRecords.find((r) => r.slug !== P1 && r.categoryId === "cat.restaurant")!.slug;
+    const pid = async (slug: string) => (await db.select({ id: schema.places.id }).from(schema.places).where(eq(schema.places.slug, slug)))[0].id;
+    const p1 = await pid(P1), p2 = await pid(P2);
+    const snap = (score: number | null, n = 12) => ({ score, reviewCount: n, verifiedCount: Math.min(3, n), confidence: score === null ? "yetersiz" : "orta", algorithmVersion: "test" });
+    const notes = async (u: string) => (await listNotifications(db, u)).items;
+    const statusRows = async () => JSON.stringify(await db.select().from(schema.userPlaceStatus).orderBy(schema.userPlaceStatus.userId));
+    ok("eşik girişi: virgül ve nokta; 1,0–9,9; en çok bir ondalık; 10 ve üstü yok",
+      parseThreshold("8,3") === 83 && parseThreshold("8.3") === 83 && parseThreshold(8.3) === 83 && parseThreshold("1") === 10 && parseThreshold("9,9") === 99
+      && parseThreshold("10") === null && parseThreshold("0,9") === null && parseThreshold("8,35") === null && parseThreshold("abc") === null && parseThreshold("") === null);
+    const st0 = await statusRows();
+    const w0 = await setWatch(db, "ua", P1, 83);
+    ok("puan yokken takip kaydedilir: 'Yeterli deneyim oluşması bekleniyor'", w0.ok && w0.watch.state === "armed" && w0.watch.standing.code === "bekleniyor" && w0.watch.standing.message.startsWith("Yeterli deneyim oluşması bekleniyor"), w0);
+    await recordScore(db, p1, snap(null, 2));
+    ok("yetersiz deneyim (puan yayımlanmadı): bildirim yok", (await notes("ua")).length === 0 && (await publishedScoreBySlug(db, P1))?.score === null);
+    await recordScore(db, p1, snap(9.1));
+    const n1 = await notes("ua");
+    ok("ilk yayımlanabilir puan eşiğin üstünde: 'İlk Gidenler puanı oluştu' bildirimi (ad, eşik, puan, tarih)",
+      n1.length === 1 && n1[0].first && n1[0].score === 9.1 && n1[0].threshold === 8.3 && n1[0].place.length > 0 && !!n1[0].scoredAt && !n1[0].read && n1[0].text.includes("İlk Gidenler puanı oluştu"), n1);
+    await recordScore(db, p1, snap(9.4)); await recordScore(db, p1, snap(8.0)); await recordScore(db, p1, snap(9.0));
+    ok("aşıldıktan sonra yeni puanlar ve eşik çevresinde dalgalanma ikinci bildirim üretmez", (await notes("ua")).length === 1 && (await getWatch(db, "ua", P1)).watch?.state === "fired");
+    /* eşik altı → eşitlik → aşım */
+    await setWatch(db, "ub", P2, 80);
+    await recordScore(db, p2, snap(7.6));
+    ok("eşik altı: bildirim yok", (await notes("ub")).length === 0);
+    await recordScore(db, p2, snap(7.96));
+    ok("eşitlik (7,96 → ekranda 8,0 = eşik 8,0): bildirim yok", (await notes("ub")).length === 0 && (await getWatch(db, "ub", P2)).watch?.standing.code === "altinda");
+    await recordScore(db, p2, snap(8.05));
+    const nb = await notes("ub");
+    ok("eşik aşımı (8,05 → 8,1 > 8,0): tek bildirim, ilk puan değil", nb.length === 1 && !nb[0].first && nb[0].score === 8.1 && nb[0].text.includes("eşiğini aştı"), nb);
+    /* zaten yüksek */
+    const wm = await setWatch(db, "ua", P2, 75);
+    ok("kurulumda puan zaten eşiğin üstünde: 'Bu seviyeyi zaten karşılıyor', geçmiş bildirim yok", wm.ok && wm.watch.state === "met" && wm.watch.standing.message.startsWith("Bu seviyeyi zaten karşılıyor") && (await notes("ua")).length === 1);
+    await recordScore(db, p2, snap(8.2));
+    ok("zaten karşılarken yeni yüksek puan bildirim üretmez", (await notes("ua")).length === 1);
+    await recordScore(db, p2, snap(7.4)); await recordScore(db, p2, snap(7.9));
+    ok("eşiğin altına inip yeniden gerçek yükselişte bir bildirim", (await notes("ua")).length === 2);
+    /* tercih değişikliği: yeni sürüm yeni alarm */
+    const wc = await setWatch(db, "ub", P2, 85);
+    await recordScore(db, p2, snap(8.6));
+    ok("eşik değişince yeni takip: yeni aşımda bir bildirim daha", wc.ok && wc.watch.state === "armed" && (await notes("ub")).length === 2);
+    /* kapatma */
+    await setWatch(db, "ub", P2, 88); await setWatchActive(db, "ub", P2, false);
+    await recordScore(db, p2, snap(9.2));
+    ok("takip kapalıyken bildirim yok; eşik saklı", (await notes("ub")).length === 2 && (await getWatch(db, "ub", P2)).watch?.active === false && (await getWatch(db, "ub", P2)).watch?.threshold === 8.8);
+    const ra = await setWatchActive(db, "ub", P2, true);
+    ok("yeniden açmak o anki puana göre başlar (zaten üstünde → karşılıyor, bildirim yok)", ra.ok && ra.watch.state === "met" && (await notes("ub")).length === 2);
+    /* tekrar işleme / eşzamanlılık */
+    await setWatch(db, "ub", P2, 95);
+    await Promise.all([recordScore(db, p2, snap(9.6)), recordScore(db, p2, snap(9.7)), recordScore(db, p2, snap(9.6))]);
+    const nRows = await db.select().from(schema.notifications).where(eq(schema.notifications.userId, "ub"));
+    ok("eşzamanlı / tekrarlı puan olayları tek bildirim üretir", nRows.length === 3, nRows.map((r) => r.id));
+    /* iki hesap yetkisi */
+    const aN = (await notes("ua"))[0];
+    const rB = await markNotificationsRead(db, "ub", aN.id);
+    const dB = await deleteWatch(db, "ub", P1);
+    ok("iki hesap: B, A'nın bildirimini okundu yapamaz ve A'nın takibini silemez; listeler ayrı",
+      rB.updated === 0 && !(await notes("ua")).find((x) => x.id === aN.id)!.read && !dB.ok && (await getWatch(db, "ua", P1)).watch !== null
+      && (await listWatches(db, "ua")).every((w) => [P1, P2].includes(w.slug)) && (await listWatches(db, "ub")).length === 1);
+    const rA = await markNotificationsRead(db, "ua", aN.id);
+    ok("okundu/okunmadı: kendi bildirimi okundu olur; sayaç düşer", rA.updated === 1 && (await notes("ua")).find((x) => x.id === aN.id)!.read && (await listNotifications(db, "ua")).unread === 1);
+    ok("deneme eşiği Kaydet/Gitmek istiyorum/Gittim kayıtlarına dokunmaz", (await statusRows()) === st0);
+    const del = await deleteWatch(db, "ua", P1);
+    ok("takip silinebilir; bildirim geçmişi kalır", del.ok && (await getWatch(db, "ua", P1)).watch === null && (await notes("ua")).length === 2);
+    ok("bilinmeyen mekân ve geçersiz eşik reddedilir", !(await setWatch(db, "ua", "yok-boyle-bir-yer", 80)).ok && !(await setWatch(db, "ua", P1, 100)).ok && !(await setWatch(db, "ua", P1, 9)).ok);
+    const P3 = realVenueRecords.filter((r) => r.categoryId === "cat.restaurant" && r.slug !== P1 && r.slug !== P2)[0].slug;
+    const sc = await runThresholdScenario(db, P3), sc2 = await runThresholdScenario(db, P3);
+    ok("Preview uçtan uca senaryosu (aynı fonksiyonlar) yerelde geçer ve tekrar çalıştırılabilir", sc.ok && sc2.ok, sc.ok ? undefined : sc);
+    const guard = await runThresholdScenario(db, P1);
+    ok("senaryo, test dışı puan geçmişi olan mekânda çalışmaz", !guard.ok && "error" in guard && guard.error === "place_has_other_scores");
+    for (const f of ["../app/api/me/esik/route.ts", "../app/api/me/bildirimler/route.ts"]) {
+      const src = readFileSync(new URL(f, import.meta.url), "utf8");
+      ok(`${f.split("/").slice(-2).join("/")}: kimlik yalnız oturumdan, yazma aynı kökenden, gövde katı, hız sınırı`,
+        src.includes("currentUser(req.headers)") && src.includes("sameOrigin(req)") && src.includes(".strict()") && src.includes("rateStore()") && !/userId\s*:/.test(src) && src.includes("w.user.id"));
+    }
+    /* temizlik: sonraki testler puan/bildirim beklemiyor */
+    await db.delete(schema.notifications); await db.delete(schema.scoreWatches); await db.delete(schema.ratingHistory);
+    await db.delete(schema.user).where(inArray(schema.user.id, ["test-esik-a", "test-esik-b"]));
   }
   await setPlaceState(db, "ua", "ciya-sofrasi-kadikoy", "none");
   const ln = await listPlaceStates(db, "ua");

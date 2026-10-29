@@ -1,6 +1,7 @@
 import { after, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
-import { TAG_GOOGLE, TAG_MEDIA, profileTag } from "@/lib/live";
+import { TAG_GOOGLE, TAG_MEDIA, profileTag, scoreTag } from "@/lib/live";
+import { runThresholdScenario } from "@/lib/community/scoreWatchScenario";
 import { applyProfile, ProfileInput, readProfile, rollbackProfile } from "@/lib/profile";
 import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
@@ -247,6 +248,14 @@ export async function POST(req: Request) {
         const r = await setGoogleMatchActive(mode, body, body.confirm === word);
         if (r.ok && !r.preview) { fresh(TAG_GOOGLE); fresh(profileTag(r.target.slug)); }
         return NextResponse.json({ action: body.action, env: envName(), ...r }, { status: r.ok ? 200 : r.error === "no_db" ? 503 : 400, headers: H });
+      }
+      case "esik-senaryo": {
+        /* yalnız Preview/yerel: deneme eşiği uçtan uca (iki test hesabı, örnek puanlar "preview-test") */
+        if (envName() === "production" || body.confirm !== "EVET") return NextResponse.json({ error: "not_allowed" }, { status: 403, headers: H });
+        const s = typeof body.slug === "string" && /^[a-z0-9-]{1,120}$/.test(body.slug) ? body.slug : "leb-i-derya-beyoglu";
+        const r = await runThresholdScenario(db, s);
+        fresh(scoreTag(s));
+        return NextResponse.json({ action: "esik-senaryo", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "google-fixture": {
         /* yalnız Preview/yerel: örnek eşleşme oluştur/kaldır (TEST_FIXTURE_…) */

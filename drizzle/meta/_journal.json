@@ -8,6 +8,13 @@
       "when": 1792924247555,
       "tag": "0000_faz0_init",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793286001647,
+      "tag": "0001_deneme_esigi",
+      "breakpoints": true
     }
   ]
 }

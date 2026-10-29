@@ -102,5 +102,20 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
    "CREATE INDEX \"user_place_status_place_idx\" ON \"user_place_status\" USING btree (\"place_id\");",
    "CREATE INDEX \"visit_verifications_user_place_idx\" ON \"visit_verifications\" USING btree (\"user_id\",\"place_id\");"
   ]
+ },
+ {
+  "tag": "0001_deneme_esigi",
+  "hash": "a07cb10981a7d1dc938dbe1dcde69389a3c01ed1e174fe72f696a3fe715469e8",
+  "statements": [
+   "CREATE TABLE \"notifications\" (\n\t\"id\" text PRIMARY KEY NOT NULL,\n\t\"user_id\" text NOT NULL,\n\t\"kind\" text NOT NULL,\n\t\"place_id\" text,\n\t\"payload\" jsonb NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL,\n\t\"read_at\" timestamp with time zone\n);",
+   "CREATE TABLE \"score_watches\" (\n\t\"id\" text PRIMARY KEY NOT NULL,\n\t\"user_id\" text NOT NULL,\n\t\"place_id\" text NOT NULL,\n\t\"threshold_tenths\" smallint NOT NULL,\n\t\"active\" boolean DEFAULT true NOT NULL,\n\t\"state\" text DEFAULT 'armed' NOT NULL,\n\t\"version\" integer DEFAULT 1 NOT NULL,\n\t\"fired_at\" timestamp with time zone,\n\t\"fired_score\" double precision,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL,\n\t\"updated_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "ALTER TABLE \"notifications\" ADD CONSTRAINT \"notifications_user_id_user_id_fk\" FOREIGN KEY (\"user_id\") REFERENCES \"public\".\"user\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+   "ALTER TABLE \"notifications\" ADD CONSTRAINT \"notifications_place_id_places_id_fk\" FOREIGN KEY (\"place_id\") REFERENCES \"public\".\"places\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+   "ALTER TABLE \"score_watches\" ADD CONSTRAINT \"score_watches_user_id_user_id_fk\" FOREIGN KEY (\"user_id\") REFERENCES \"public\".\"user\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+   "ALTER TABLE \"score_watches\" ADD CONSTRAINT \"score_watches_place_id_places_id_fk\" FOREIGN KEY (\"place_id\") REFERENCES \"public\".\"places\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+   "CREATE INDEX \"notifications_user_idx\" ON \"notifications\" USING btree (\"user_id\",\"created_at\");",
+   "CREATE UNIQUE INDEX \"score_watches_user_place_uq\" ON \"score_watches\" USING btree (\"user_id\",\"place_id\");",
+   "CREATE INDEX \"score_watches_place_idx\" ON \"score_watches\" USING btree (\"place_id\",\"active\",\"state\");"
+  ]
  }
 ];

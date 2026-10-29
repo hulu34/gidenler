@@ -66,7 +66,7 @@ const day = (d: Date | string) => (typeof d === "string" ? d : d.toISOString()).
    Canlıda Neon HTTP sürücüsü: db.batch([...]) tek bir veritabanı işleminde (non-interactive transaction) çalışır;
    biri hata verirse hiçbiri kalmaz. Testte (PGlite) ve yerel pg sürücüsünde aynı sorgular db.transaction içinde. */
 type Q = PromiseLike<unknown>;
-async function atomic(db: Db, build: (q: Db) => Q[]) {
+export async function atomic(db: Db, build: (q: Db) => Q[]) {
   const batch = (db as unknown as { batch?: (qs: Q[]) => Promise<unknown> }).batch;
   if (typeof batch === "function") { await batch.call(db, build(db)); return; }
   await db.transaction(async (tx) => { for (const q of build(tx as unknown as Db)) await q; });

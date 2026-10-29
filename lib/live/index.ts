@@ -5,6 +5,7 @@ import { mediaItems, mediaPlaces, places } from "@/lib/db/schema";
 import { googleUsableSlugs } from "@/lib/providers/google";
 import { listPlaceReviews, reviewsTag, type PublicReview } from "@/lib/community/reviews";
 import { readProfile, type PlaceProfile } from "@/lib/profile";
+import { publishedScoreBySlug, type PublishedScore } from "@/lib/score/published";
 
 /* ──────────────────────────────────────────────────────────────────────────
    CANLI VERİ (sunucu) — yeniden derleme gerektirmeyen, veritabanından okunan sayfa bilgisi.
@@ -52,4 +53,15 @@ export function placeProfile(slug: string): Promise<PlaceProfile | null> {
     if (!db) return null;
     try { return await readProfile(db, slug); } catch { return null; }
   }, ["place-profile-v1", slug], { revalidate: 3600, tags: [profileTag(slug)] })();
+}
+
+export const scoreTag = (slug: string) => `score:${slug}`;
+/** Yayımlanmış Gidenler puanı (rating_history son satırı) — restoran sayfası ve bildirim aynı kaynağı okur.
+    Puan yayını (recordScore çağıran yol) etiketi hemen geçersiz kılar. Hata/tablo yoksa null. */
+export function placeScore(slug: string): Promise<PublishedScore | null> {
+  return unstable_cache(async () => {
+    const db = getDb();
+    if (!db) return null;
+    try { return await publishedScoreBySlug(db, slug); } catch { return null; }
+  }, ["place-score-v1", slug], { revalidate: 3600, tags: [scoreTag(slug)] })();
 }

@@ -19,7 +19,8 @@ import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
-import { googleUsable, placeProfile, placeReviews, videoCounts } from "@/lib/live";
+import { googleUsable, placeProfile, placeReviews, placeScore, videoCounts } from "@/lib/live";
+import { ThresholdBar, ThresholdCard, type ThresholdVenue } from "@/components/venue/ThresholdCard";
 import { ProfileMenu, ProfileOverview, withProfile } from "@/components/venue/profile/ProfileSections";
 import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
@@ -150,7 +151,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   /* Kapak fotoğrafı ilk ekrandaki en büyük öğe: HTML ayrıştırılırken hemen, mozaikle aynı boyut kuralıyla iner */
-  const [usable, videos, realReviews, rp] = entity.isReal ? await Promise.all([googleUsable(), videoCounts(), placeReviews(entity.slug), placeProfile(entity.slug)]) : [[], {} as Record<string, number>, [], null];
+  const [usable, videos, realReviews, rp, ps] = entity.isReal ? await Promise.all([googleUsable(), videoCounts(), placeReviews(entity.slug), placeProfile(entity.slug), placeScore(entity.slug)]) : [[], {} as Record<string, number>, [], null, null];
+  /* Deneme eşiği: yalnız puan gösterilen kategorideki gerçek mekân; kart ve sayfa aynı yayımlanmış Gidenler puanını okur */
+  const esik: ThresholdVenue | null = entity.isReal && c.showScores ? { slug: entity.slug, name: entity.name, score: ps?.score ?? null, menu: !!rp?.menu } : null;
   const google = !!entity.isReal && usable.includes(entity.slug);
   /* Gerçek restoran profili (kaynaklı içerik varsa): içerik odaklı düzen — genel bakış, menü, fotoğraflar, videolar, deneyimler */
   const ent = withProfile(entity, rp);
@@ -204,7 +207,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             </div>
           )}
         </div>
-        {scored && pulse && (
+        {esik ? (
+          <div className="hidden w-[300px] shrink-0 sm:block"><ThresholdCard v={esik} /></div>
+        ) : scored && pulse && (
           <div className="hidden flex-col items-center gap-1 sm:flex">
             <PlaceSeal pulse={pulse} size={132} label={`${entity.name} mührü: son ${pulse.raw.length} ayın puanı ve deneyim hacmi`} />
             <span className="text-[9.5px] font-bold uppercase tracking-[0.16em] text-ink-3">deneyim mührü</span>
@@ -228,7 +233,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             )}
           </div>
         ) : entity.isReal && c.showScores ? (
-          <RealVenueNotice entity={entity} reviewCount={realReviews.length} />
+          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} />
         ) : (
           <ComplianceNotice policy={c} noun={category.noun} />
         )}
@@ -236,6 +241,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
       {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
       {(entity.isReal || entity.photos?.length) && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} /></div>}
+      {esik && <div className="mt-4 sm:hidden"><ThresholdBar v={esik} /></div>}
 
       {rp && (
         <>

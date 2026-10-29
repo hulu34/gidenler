@@ -328,6 +328,38 @@ export const userPlaceStatus = pgTable("user_place_status", {
   updatedAt: updated(),
 }, (t) => [primaryKey({ columns: [t.userId, t.placeId] }), index("user_place_status_place_idx").on(t.placeId)]);
 
+/** Deneme eşiği — "Kaç puanın üstüne çıkarsa denemek istersin?" Kullanıcı + mekân başına tek takip.
+    Kişisel tercih; restoran değerlendirmesi DEĞİL: puan, sıralama, deneyim ve ziyaret sayılarına girmez,
+    Kaydet / Gitmek istiyorum / Gittim'den (user_place_status) bağımsızdır.
+    state: armed (aşınca bildirir) · met (kurulduğunda zaten üstündeydi; puan eşiğe/altına inince armed olur)
+           · fired (bildirim üretildi; yeni bildirim için kullanıcı eşiği değiştirir ya da takibi yeniden başlatır).
+    version her kurulum/değişiklikte artar; bildirim anahtarı (watch, version) olduğu için tekrar işleme çoğaltmaz. */
+export const scoreWatches = pgTable("score_watches", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+  placeId: text("place_id").notNull().references(() => places.id, { onDelete: "cascade" }),
+  /** eşik × 10 (ör. 8,3 → 83); 10–99 */
+  thresholdTenths: smallint("threshold_tenths").notNull(),
+  active: boolean("active").notNull().default(true),
+  state: text("state").notNull().default("armed"),
+  version: integer("version").notNull().default(1),
+  firedAt: ts("fired_at"),
+  firedScore: doublePrecision("fired_score"),
+  createdAt: created(),
+  updatedAt: updated(),
+}, (t) => [uniqueIndex("score_watches_user_place_uq").on(t.userId, t.placeId), index("score_watches_place_idx").on(t.placeId, t.active, t.state)]);
+
+/** Site içi bildirimler (yalnız hesap içi; e-posta/SMS/push yok). id = tekilleştirme anahtarı (ör. "esik:<watch>:v<version>"). */
+export const notifications = pgTable("notifications", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+  kind: text("kind").notNull(),
+  placeId: text("place_id").references(() => places.id, { onDelete: "cascade" }),
+  payload: jsonb("payload").notNull(),
+  createdAt: created(),
+  readAt: ts("read_at"),
+}, (t) => [index("notifications_user_idx").on(t.userId, t.createdAt)]);
+
 export const lists = pgTable("lists", {
   id: text("id").primaryKey(),
   ownerId: text("owner_id").references(() => user.id, { onDelete: "cascade" }),

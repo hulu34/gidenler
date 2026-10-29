@@ -15,6 +15,7 @@ import { DemoNotice } from "@/components/ui/DemoNotice";
 import { MyReservations } from "@/components/reservation/MyReservations";
 import { AccountBox } from "@/components/auth/AccountBox";
 import { MyReviews } from "@/components/auth/MyReviews";
+import { MyNotifications, MyThresholds } from "@/components/auth/MyThresholds";
 import { ActiveSessions } from "@/components/auth/ActiveSessions";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
@@ -64,6 +65,8 @@ export default function MyPage() {
       </header>
 
       <AccountBox />
+      <MyNotifications />
+      <MyThresholds />
       <MyReviews />
       <ActiveSessions />
       <MyReservations />

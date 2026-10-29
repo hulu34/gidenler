@@ -25,13 +25,21 @@ export function VenueBadges({ entityId }: { entityId: string }) {
 }
 
 /* Gerçek mekân, henüz deneyim yok: puan uydurulmaz; ilk deneyime çağrı. */
-export function RealVenueNotice({ entity, reviewCount = 0 }: { entity: Entity; reviewCount?: number }) {
+export function RealVenueNotice({ entity, reviewCount = 0, score = null }: { entity: Entity; reviewCount?: number; score?: number | null }) {
   return (
     <div className="flex flex-col gap-3 border-l-2 border-pos pl-4">
+      {score !== null ? (
+        /* yayımlanmış Gidenler puanı (rating_history) — deneme eşiği bildirimiyle aynı kaynak ve aynı yuvarlama */
+        <p className="max-w-[62ch] text-[16px] leading-[1.45]">
+          <b>Gidenler puanı <span className="tnum text-[20px] font-extrabold">{score.toFixed(1).replace(".", ",")}</span></b> · gerçekten gidenlerin deneyimlerinden;{" "}
+          <a href="#deneyimler" className="font-semibold underline decoration-line-2 underline-offset-4">{reviewCount} deneyim</a> yayında.
+        </p>
+      ) : (
       <p className="max-w-[62ch] text-[16px] leading-[1.45]">
         <b>Henüz Gidenler puanı yok.</b> Puan, gerçekten gidenlerin deneyimlerinden oluşur;{" "}
         {reviewCount > 0 ? <>şimdiye kadar <a href="#deneyimler" className="font-semibold underline decoration-line-2 underline-offset-4">{reviewCount} deneyim</a> yazıldı, puan yeterli sayıda deneyim birikince oluşur.</> : "bu mekân için ilk deneyimler bekleniyor."}
       </p>
+      )}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <Link href={`/yaz/${entity.slug}/`} className="h-10 rounded-[3px] bg-accent px-4 text-[14px] font-semibold leading-10 text-on-accent">Gittim, deneyimimi yazayım</Link>
         <a href="#bilgi" className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Bilgi ve rezervasyon</a>
