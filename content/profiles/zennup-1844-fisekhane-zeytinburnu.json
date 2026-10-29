@@ -1,0 +1,515 @@
+{
+ "slug": "zennup-1844-fisekhane-zeytinburnu",
+ "description": {
+  "value": "Zeytinburnu'nda, Kazlıçeşme'deki Fişekhane'de Anadolu mutfağı yapan bir restoran (merkezi Bursa'da). Menüde yöresel mezeler, taş fırın pideleri, kuzu tandır, keşkek, kokoreç ve saray tatlıları var; kahvaltı da veriliyor.",
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/wp-content/uploads/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Fişekhane, Kazlıçeşme Mahallesi, Zeytinburnu, İstanbul",
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/wp-content/uploads/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 532 419 16 34",
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/istanbul-fisekhane-subesi/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://zennup.com.tr/",
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "zennup1844",
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/wp-content/uploads/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Tu-Su 09:00-21:00; Mo off",
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/istanbul-fisekhane-subesi/",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "Telefonla: +90 532 419 16 34 (şube sayfasında rezervasyon numarası olarak yazıyor).",
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/istanbul-fisekhane-subesi/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Pazartesi kapalı.",
+   "provider": "official_site",
+   "url": "https://zennup.com.tr/istanbul-fisekhane-subesi/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Fiyatlar bir porsiyon için ve KDV dahil. Yalnız tatlı ve çay servisi yapılmıyor; yemek servisi var.",
+   "provider": "official_site",
+   "url": "https://zennup.com.tr/wp-content/uploads/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Kahvaltı hafta içi 09.00–12.00, hafta sonu 09.00–13.00 arası; kahvaltı ve tadım menüsü masadaki herkesin seçimiyle, kişi başı fiyatlanıyor.",
+   "provider": "official_site",
+   "url": "https://zennup.com.tr/wp-content/uploads/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Arap Tava 4 kişi ve üzeri, sütlaç 3 kişi ve üzeri gruplara servis ediliyor.",
+   "provider": "official_site",
+   "url": "https://zennup.com.tr/wp-content/uploads/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Alerjen tablosu menünün son sayfasında.",
+   "provider": "official_site",
+   "url": "https://zennup.com.tr/wp-content/uploads/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/istanbul-fisekhane-subesi/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://zennup.com.tr/wp-content/uploads/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf",
+  "checkedAt": "2026-10-29",
+  "validFrom": "2026-09-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Geleneksel Türk Kahvaltısı (hafta içi)",
+      "priceTry": 1640,
+      "description": "Kişi başı; masadaki tüm misafirlerin seçimiyle servis ediliyor. Peynir tabağı, bal-kaymak, menemen, pişi, Konya sıkması, cantık pide, mevsim meyveleri, demleme çay vb."
+     },
+     {
+      "name": "Geleneksel Türk Kahvaltısı (hafta sonu)",
+      "priceTry": 1925,
+      "description": "Kişi başı; masadaki tüm misafirlerin seçimiyle servis ediliyor. Hafta sonu Rize kavurması ve Susurluk tostu da var; kavurma, sucuk ve peynir tabağı ilaveleri ekstra ücretli."
+     }
+    ]
+   },
+   {
+    "title": "Başlarken ortaya",
+    "items": [
+     {
+      "name": "Ortadoğu Meze 5'lisi",
+      "priceTry": 825,
+      "description": "Mevsimine göre muammara, ayvalı tarator, humus, otlu/vişneli meze, zahter salatası"
+     },
+     {
+      "name": "Vişneli Yaprak Sarma",
+      "priceTry": 725,
+      "description": "Osmanlı saray mutfağı tarifi; tarçın, kuş üzümü, fıstık ve vişne dolgulu"
+     },
+     {
+      "name": "Antep Güneşinde Kurutulmuş Patlıcan ve Biber Dolması",
+      "priceTry": 680
+     },
+     {
+      "name": "Fıstıklı Humus",
+      "priceTry": 870,
+      "description": "Kavrulmuş çam fıstığı, erken hasat zeytinyağı"
+     },
+     {
+      "name": "Fırın Patlıcan",
+      "priceTry": 590,
+      "description": "Özel sos, taze otlar, Antep fıstığı, nar taneleri"
+     },
+     {
+      "name": "Fırın Karnabahar",
+      "priceTry": 575,
+      "description": "Mevsim yeşillikleri, kırmızı soğan, Bergama tulum peyniri, Gökova susamından tahin"
+     },
+     {
+      "name": "Karışık Turşu Tabağı",
+      "priceTry": 520,
+      "description": "Kilis sarımsağı, Gedelek salatalığı, siyah havuç, erik, lahana, domates"
+     },
+     {
+      "name": "Silivri Tava Yoğurdu",
+      "priceTry": 430
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Humus-u Ala",
+      "priceTry": 760,
+      "description": "Taze yeşillikler, turşu, pancar turşusu, kiraz domates, nar taneleri"
+     },
+     {
+      "name": "Manda Lorlu Yeşil Salata",
+      "priceTry": 675,
+      "description": "Taze otlar, bezelye, fırınlanmış pancar, ballı sumaklı sos, kavrulmuş fındık"
+     },
+     {
+      "name": "Gavurdağ Salatası",
+      "priceTry": 690,
+      "description": "Tarla domatesi, Çengelköy salatalığı, ceviz içi, Hatay nar ekşisi"
+     },
+     {
+      "name": "Yemyeşil Salata",
+      "priceTry": 635,
+      "description": "Mevsim yeşillikleri, çiğ badem, kabak çekirdeği, yeşil elma, mandalina sosu"
+     },
+     {
+      "name": "Erzincan Tulum Peynirli Çoban Salata",
+      "priceTry": 675
+     }
+    ]
+   },
+   {
+    "title": "Sıcak sıcak ortaya",
+    "items": [
+     {
+      "name": "Kitel",
+      "priceTry": 690,
+      "description": "Siirt usulü haşlanmış içli köfte, süzme yoğurt, yanık tereyağı"
+     },
+     {
+      "name": "Patates Tava",
+      "priceTry": 775,
+      "description": "14-16 kat çıtır patates, peynir ezmesi, acı-tatlı soğan, aromatik bal"
+     },
+     {
+      "name": "Mersin Patatesi",
+      "priceTry": 590,
+      "description": "Sumaklı, taze otlu kızarmış patates, yoğurt sos"
+     },
+     {
+      "name": "Pastırmalı Humus",
+      "priceTry": 990,
+      "description": "Kayseri pastırması, kavrulmuş susamlı tereyağlı sos"
+     },
+     {
+      "name": "Ballı Tava Böreği",
+      "priceTry": 965,
+      "description": "Bol peynirli çıtır tava böreği, kakuleli bal, susam ve çörekotu"
+     },
+     {
+      "name": "Taze Otlu Mücver Topları",
+      "priceTry": 680,
+      "description": "Süzme yoğurt, limon tozu, kavrulmuş fındık"
+     },
+     {
+      "name": "Mini Kayseri Yağlaması",
+      "priceTry": 1240,
+      "description": "Sarımsaklı yoğurt, maydanoz"
+     },
+     {
+      "name": "Vişneli Köfte",
+      "priceTry": 940,
+      "description": "Kızarmış köfte topları, Antep fıstığı, vişne taneli mayhoş sos"
+     },
+     {
+      "name": "Biber Kızartma",
+      "priceTry": 650,
+      "description": "Acı yağlı ve yoğurtlu köy biberleri, ekşi maya ekmek kıtırları"
+     }
+    ]
+   },
+   {
+    "title": "Taş fırından",
+    "items": [
+     {
+      "name": "Semsek",
+      "priceTry": 910,
+      "description": "Bol yeşillik, taze soğan ve köy peynirli tereyağlı pide"
+     },
+     {
+      "name": "Zahterli Kuşbaşılı Pide",
+      "priceTry": 1265
+     },
+     {
+      "name": "Kıymalı Ordu Pidesi",
+      "priceTry": 1190
+     },
+     {
+      "name": "Kaşarlı Pide",
+      "priceTry": 960
+     }
+    ]
+   },
+   {
+    "title": "Tadım menüsü",
+    "items": [
+     {
+      "name": "Tadım Menüsü",
+      "priceTry": 3740,
+      "description": "Kişi başı; masadaki tüm misafirlerin seçimiyle servis ediliyor. İçeriği menüdeki görsel sayfada; metin olarak yayımlanmıyor."
+     }
+    ]
+   },
+   {
+    "title": "Ana yemekler",
+    "items": [
+     {
+      "name": "Günün Çorbası",
+      "priceTry": 440
+     },
+     {
+      "name": "Acılı Sarma Tenceresi",
+      "priceTry": 1960,
+      "description": "Kuzu kaburga üzerinde odun ateşinde pişirilmiş yaprak sarması"
+     },
+     {
+      "name": "Zahterli Tavuk Tava",
+      "priceTry": 1190,
+      "description": "340 g · kemiksiz tavuk but, köy biberi, tereyağlı pide dilimleri"
+     },
+     {
+      "name": "Pastırmalı İspir Kuru Fasulyesi",
+      "priceTry": 1620,
+      "description": "Bakır kazanda pişirilmiş İspir fasulyesi, Kayseri pastırması · Sınırlı sayıda"
+     },
+     {
+      "name": "Tereyağlı Pirinç Pilavı",
+      "priceTry": 790
+     },
+     {
+      "name": "Lokum Bonfile",
+      "priceTry": 2140,
+      "description": "190 g · tereyağlı patates püresi, köz biber salatası, pazı kavurması"
+     },
+     {
+      "name": "Acılı Tavuk",
+      "priceTry": 1220,
+      "description": "330 g · kemiksiz ızgara tavuk but, patates tandır, tulum peyniri"
+     },
+     {
+      "name": "Sultanahmet Köftesi",
+      "priceTry": 1440,
+      "description": "40 g × 5 · tereyağlı patates püresi, karamelize biber"
+     },
+     {
+      "name": "Bademli Tavuk Pilav",
+      "priceTry": 1440,
+      "description": "200 g · tereyağlı pilav, haşlanmış tavuk, kavrulmuş badem"
+     },
+     {
+      "name": "Tereyağlı Kuzu Ciğer",
+      "priceTry": 1490,
+      "description": "160 g · soğanlı tablacı salatası ile"
+     },
+     {
+      "name": "Alinazik",
+      "priceTry": 1720,
+      "description": "250 g · tereyağında bonfile dilimleri, köz patlıcanlı sarımsaklı yoğurt"
+     },
+     {
+      "name": "Arap Tava",
+      "priceTry": 1790,
+      "description": "310 g · odun ateşinde baharatlı dana bonfile, sebze; 4 kişi ve üzeri gruplara servis ediliyor"
+     },
+     {
+      "name": "Küşleme Tabağı",
+      "priceTry": 2140,
+      "description": "300 g"
+     },
+     {
+      "name": "Kuzu Güveç",
+      "priceTry": 1940,
+      "description": "Odun ateşinde kuzu eti, mevsim sebzeleri · Sınırlı sayıda"
+     },
+     {
+      "name": "İç Pilav Kuzu Tandır",
+      "priceTry": 3290,
+      "description": "350 g · Bursa kestaneli bademli iç pilav, nar taneleri"
+     },
+     {
+      "name": "Kaymaklı Afyon Keşkeği",
+      "priceTry": 1390,
+      "description": "Kuzu incikle dövülmüş"
+     },
+     {
+      "name": "Kavurmalı Kaymaklı Bulgur Pilavı",
+      "priceTry": 1940,
+      "description": "Rize kavurması, tel şehriye, manda kaymağı"
+     },
+     {
+      "name": "Kokoreç",
+      "priceTry": 1490,
+      "description": "Uykuluklu kuzu kokoreci, Zennup ekmeği, biber turşusu"
+     },
+     {
+      "name": "Mantı",
+      "priceTry": 1190
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Cennet Çamuru",
+      "priceTry": 970,
+      "description": "Kilis mutfağından; fıstık, kaymak, tarçın"
+     },
+     {
+      "name": "Helva-i Hakani",
+      "priceTry": 885,
+      "description": "Edirne saray mutfağından bademli helva"
+     },
+     {
+      "name": "Hamsiköy Sütlacı (küçük boy)",
+      "priceTry": 720,
+      "description": "Kavrulmuş Giresun fındığı ile; sütlaç 3 kişi ve üzeri gruplara servis ediliyor"
+     },
+     {
+      "name": "Hamsiköy Sütlacı (büyük boy)",
+      "priceTry": 890,
+      "description": "Kavrulmuş Giresun fındığı ile"
+     },
+     {
+      "name": "Bursa Süt Helvası \"Sütkeri\"",
+      "priceTry": 940,
+      "description": "Tarçın ile"
+     },
+     {
+      "name": "Kuş Yuvası",
+      "priceTry": 790,
+      "description": "Giresun fındık ezmesi ve süt şerbeti ile"
+     },
+     {
+      "name": "Şambali",
+      "priceTry": 820,
+      "description": "Kaymaklı, Antep fıstıklı"
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Filtre Kahve",
+      "priceTry": 270
+     },
+     {
+      "name": "Çay",
+      "priceTry": 95
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 230
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 215,
+      "description": "350 ml"
+     },
+     {
+      "name": "Reyhan Şerbeti (bardak)",
+      "priceTry": 225,
+      "description": "350 ml"
+     },
+     {
+      "name": "Reyhan Şerbeti (sürahi)",
+      "priceTry": 540,
+      "description": "1 lt"
+     },
+     {
+      "name": "Zennup Soda (sürahi)",
+      "priceTry": 440,
+      "description": "750 ml"
+     },
+     {
+      "name": "Zennup Soda (sürahi, 1 lt)",
+      "priceTry": 540,
+      "description": "1 lt"
+     },
+     {
+      "name": "Şalgam",
+      "priceTry": 225,
+      "description": "350 ml"
+     },
+     {
+      "name": "Havuç, Elma, Armut, Limon Suyu (bardak)",
+      "priceTry": 440,
+      "description": "350 ml"
+     },
+     {
+      "name": "Havuç, Elma, Armut, Limon Suyu (sürahi)",
+      "priceTry": 1100,
+      "description": "1 lt"
+     },
+     {
+      "name": "Pancar, Nar, Elma Suyu (bardak)",
+      "priceTry": 460,
+      "description": "350 ml"
+     },
+     {
+      "name": "Pancar, Nar, Elma Suyu (sürahi)",
+      "priceTry": 1150,
+      "description": "1 lt"
+     },
+     {
+      "name": "Pancar Suyu (bardak)",
+      "priceTry": 390,
+      "description": "350 ml"
+     },
+     {
+      "name": "Pancar Suyu (sürahi)",
+      "priceTry": 990,
+      "description": "1 lt"
+     },
+     {
+      "name": "Portakal Suyu",
+      "priceTry": 460,
+      "description": "350 ml"
+     },
+     {
+      "name": "Meşrubat (250 ml)",
+      "priceTry": 220
+     },
+     {
+      "name": "Meşrubat (330 ml)",
+      "priceTry": 240
+     },
+     {
+      "name": "Soda",
+      "priceTry": 195,
+      "description": "200 ml"
+     },
+     {
+      "name": "Şişe Su",
+      "priceTry": 220,
+      "description": "750 ml"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=-izSYLxcPXM",
+   "credit": "Enisece · Ekim 2021 · ziyaret vlogu (videodaki fiyatlar 2021'e ait)",
+   "category": "ziyaretci",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=cyiMsr0Fg8c",
+   "credit": "Mr.Gezenboğa · Aralık 2021 · kısa ziyaret klibi",
+   "category": "ziyaretci",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (zennup.com.tr): İstanbul Fişekhane şube sayfası (telefon/rezervasyon, salı–pazar 09.00–21.00, pazartesi kapalı) ve şube PDF menüsü (/2026/10/ZENNUP-1844-ISTANBUL-Fisekhane-Menu.pdf). PDF'in ilk sayfasında 'Fiyat Değişim Tarihi İST-29.09.26' basılı → validFrom 2026-09-29. Adres ve Instagram PDF'in son sayfasından. Görsel sayfalar (fotoğraflar, tadım menüsü içeriği) aktarılmadı; alerjen tablosu aktarılmadı. Bursa şubesi ayrı menü; kullanılmadı."
+}

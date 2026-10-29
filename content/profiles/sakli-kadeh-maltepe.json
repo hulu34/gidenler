@@ -1,0 +1,511 @@
+{
+ "slug": "sakli-kadeh-maltepe",
+ "description": {
+  "value": "Maltepe Altıntepe'de, Bağdat Caddesi üzerinde, Bostancı'ya yakın bir meyhane. Menüde soğuk mezeler, ara sıcaklar, ızgara etler, tatlılar ve geniş bir rakı listesi var.",
+  "provider": "official_site",
+  "url": "https://saklikadeh.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Altıntepe Mah., Bağdat Cad. No:4G, 34744 Maltepe, İstanbul",
+  "provider": "official_site",
+  "url": "https://saklikadeh.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://saklikadeh.com.tr",
+  "provider": "official_site",
+  "url": "https://saklikadeh.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 12:00-01:30",
+  "provider": "official_site",
+  "url": "https://saklikadeh.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Sitede menünün 18 Ekim 2026'da güncellendiği yazıyor; fiyatlar Türk lirası.",
+   "provider": "official_site",
+   "url": "https://saklikadeh.com.tr",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Etler Günaydın Kasap'tan alınıyor.",
+   "provider": "official_site",
+   "url": "https://saklikadeh.com.tr",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "İçeride servis ve arabaya teslim alma var; adrese servis yok.",
+   "provider": "official_site",
+   "url": "https://saklikadeh.com.tr",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "alkol": true
+  },
+  "provider": "official_site",
+  "url": "https://saklikadeh.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://saklikadeh.com.tr",
+  "checkedAt": "2026-10-29",
+  "validFrom": "2026-10-18",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Mezeler",
+    "items": [
+     {
+      "name": "Beyaz Peynir Dilim",
+      "priceTry": 150
+     },
+     {
+      "name": "Köpoğlu",
+      "priceTry": 310
+     },
+     {
+      "name": "Pancar",
+      "priceTry": 310
+     },
+     {
+      "name": "Atom",
+      "priceTry": 310
+     },
+     {
+      "name": "Pilaki",
+      "priceTry": 310
+     },
+     {
+      "name": "Humus",
+      "priceTry": 310
+     },
+     {
+      "name": "Fava",
+      "priceTry": 310
+     },
+     {
+      "name": "Kuru Cacık",
+      "priceTry": 310
+     },
+     {
+      "name": "Şakşuka (soslu patlıcan)",
+      "priceTry": 310
+     },
+     {
+      "name": "Beyin Söğüş",
+      "priceTry": 550
+     },
+     {
+      "name": "Semizotu",
+      "priceTry": 310
+     },
+     {
+      "name": "Girit Ezmesi",
+      "priceTry": 310
+     },
+     {
+      "name": "Levrek Marin",
+      "priceTry": 550
+     },
+     {
+      "name": "Panço",
+      "priceTry": 310
+     },
+     {
+      "name": "Deniz Börülcesi",
+      "priceTry": 310
+     },
+     {
+      "name": "Kaya Koru Kuru Domates",
+      "priceTry": 310
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Gavurdağı Salatası",
+      "priceTry": 350
+     },
+     {
+      "name": "Çoban Salatası",
+      "priceTry": 320
+     },
+     {
+      "name": "Mevsim Salata",
+      "priceTry": 320
+     },
+     {
+      "name": "Peynirli Roka Salatası",
+      "priceTry": 350
+     }
+    ]
+   },
+   {
+    "title": "Ara Sıcak",
+    "items": [
+     {
+      "name": "Yaprak Ciğer",
+      "priceTry": 750
+     },
+     {
+      "name": "Paçanga Böreği",
+      "priceTry": 250
+     },
+     {
+      "name": "İçli Köfte",
+      "priceTry": 270
+     },
+     {
+      "name": "Tereyağlı Karides",
+      "priceTry": 750
+     },
+     {
+      "name": "Pastırmalı Humus",
+      "priceTry": 550
+     },
+     {
+      "name": "Kaşarlı Mantar",
+      "priceTry": 160
+     },
+     {
+      "name": "Patlıcan Söğürme",
+      "priceTry": 550
+     },
+     {
+      "name": "Patates Kızartması",
+      "priceTry": 350
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler",
+    "items": [
+     {
+      "name": "Adana Kebap",
+      "priceTry": 800,
+      "description": "200 gr"
+     },
+     {
+      "name": "Urfa Kebap",
+      "priceTry": 800,
+      "description": "200 gr"
+     },
+     {
+      "name": "Kuzu Şiş",
+      "priceTry": 900,
+      "description": "200 gr"
+     },
+     {
+      "name": "Çöp Şiş",
+      "priceTry": 900,
+      "description": "200 gr"
+     },
+     {
+      "name": "Tavuk Şiş",
+      "priceTry": 750,
+      "description": "200 gr"
+     },
+     {
+      "name": "Tavuk Kanat",
+      "priceTry": 750,
+      "description": "200 gr"
+     },
+     {
+      "name": "Ciğer Şiş",
+      "priceTry": 950,
+      "description": "200 gr"
+     },
+     {
+      "name": "Köfte",
+      "priceTry": 650,
+      "description": "200 gr"
+     },
+     {
+      "name": "Çoban Kavurma",
+      "priceTry": 950,
+      "description": "270 gr"
+     },
+     {
+      "name": "Et Sote",
+      "priceTry": 950,
+      "description": "270 gr"
+     },
+     {
+      "name": "Karışık Izgara",
+      "priceTry": 2200,
+      "description": "650 gr"
+     }
+    ]
+   },
+   {
+    "title": "Tatlı & Meyve",
+    "items": [
+     {
+      "name": "Ayva Tatlısı",
+      "priceTry": 400
+     },
+     {
+      "name": "İncir Tatlısı",
+      "priceTry": 400
+     },
+     {
+      "name": "Kabak Tatlısı",
+      "priceTry": 400
+     },
+     {
+      "name": "Karpuz",
+      "priceTry": 300
+     },
+     {
+      "name": "Kavun Dilimi",
+      "priceTry": 250
+     },
+     {
+      "name": "Karışık Meyve Tabağı",
+      "priceTry": 500
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Coca-Cola",
+      "priceTry": 150
+     },
+     {
+      "name": "Ice-Tea",
+      "priceTry": 150
+     },
+     {
+      "name": "Şalgam 1 lt (Acılı / Acısız)",
+      "priceTry": 350
+     },
+     {
+      "name": "Şalgam Bardak",
+      "priceTry": 90
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 130
+     },
+     {
+      "name": "Soda",
+      "priceTry": 90
+     },
+     {
+      "name": "Bira",
+      "priceTry": 280
+     },
+     {
+      "name": "Churchill",
+      "priceTry": 120
+     }
+    ]
+   },
+   {
+    "title": "Rakı",
+    "items": [
+     {
+      "name": "Beylerbeyi Göbek 20'lik",
+      "priceTry": 1400
+     },
+     {
+      "name": "Beylerbeyi Göbek 35'lik",
+      "priceTry": 2100
+     },
+     {
+      "name": "Beylerbeyi Göbek 50'lik",
+      "priceTry": 2900
+     },
+     {
+      "name": "Beylerbeyi Göbek 70'lik",
+      "priceTry": 3800
+     },
+     {
+      "name": "Beylerbeyi Göbek 100'lük",
+      "priceTry": 4600
+     },
+     {
+      "name": "Altın Seri 20'lik",
+      "priceTry": 1400
+     },
+     {
+      "name": "Altın Seri 35'lik",
+      "priceTry": 1900
+     },
+     {
+      "name": "Altın Seri 50'lik",
+      "priceTry": 2500
+     },
+     {
+      "name": "Altın Seri 70'lik",
+      "priceTry": 3100
+     },
+     {
+      "name": "Altın Seri 100'lük",
+      "priceTry": 3900
+     },
+     {
+      "name": "Yeni Rakı 20'lik",
+      "priceTry": 1300
+     },
+     {
+      "name": "Yeni Rakı 35'lik",
+      "priceTry": 1600
+     },
+     {
+      "name": "Yeni Rakı 50'lik",
+      "priceTry": 2300
+     },
+     {
+      "name": "Yeni Rakı 70'lik",
+      "priceTry": 2700
+     },
+     {
+      "name": "Yeni Rakı 100'lük",
+      "priceTry": 3300
+     },
+     {
+      "name": "Efe Gold 20'lik",
+      "priceTry": 1400
+     },
+     {
+      "name": "Efe Gold 35'lik",
+      "priceTry": 1800
+     },
+     {
+      "name": "Efe Gold 50'lik",
+      "priceTry": 2450
+     },
+     {
+      "name": "Efe Gold 70'lik",
+      "priceTry": 3100
+     },
+     {
+      "name": "Efe Gold 100'lük",
+      "priceTry": 3900
+     },
+     {
+      "name": "Sarı Zeybek 20'lik",
+      "priceTry": 1450
+     },
+     {
+      "name": "Sarı Zeybek 35'lik",
+      "priceTry": 2250
+     },
+     {
+      "name": "Sarı Zeybek 50'lik",
+      "priceTry": 3000
+     },
+     {
+      "name": "Sarı Zeybek 70'lik",
+      "priceTry": 4000
+     },
+     {
+      "name": "Sarı Zeybek 100'lük",
+      "priceTry": 4900
+     }
+    ]
+   },
+   {
+    "title": "Şaraplar",
+    "items": [
+     {
+      "name": "Yakut",
+      "priceTry": 2200
+     },
+     {
+      "name": "Angora",
+      "priceTry": 2200
+     },
+     {
+      "name": "Çankaya",
+      "priceTry": 2200
+     },
+     {
+      "name": "Selection",
+      "priceTry": 3000
+     },
+     {
+      "name": "Kırmızı Şarap Kadeh",
+      "priceTry": 500
+     },
+     {
+      "name": "Beyaz Şarap Kadeh",
+      "priceTry": 500
+     }
+    ]
+   },
+   {
+    "title": "Vodka & Viski & Cin",
+    "items": [
+     {
+      "name": "Vodka Double",
+      "priceTry": 550
+     },
+     {
+      "name": "Viski Double",
+      "priceTry": 550
+     },
+     {
+      "name": "Cin Double",
+      "priceTry": 550
+     }
+    ]
+   },
+   {
+    "title": "Diğer Rakılar",
+    "items": [
+     {
+      "name": "Yeni Rakı Ala 70'lik",
+      "priceTry": 4400
+     },
+     {
+      "name": "Mercan Rakı 70'lik",
+      "priceTry": 4400
+     },
+     {
+      "name": "Mercan Rakı 50'lik",
+      "priceTry": 3600
+     },
+     {
+      "name": "Mercan Rakı 35'lik",
+      "priceTry": 2500
+     },
+     {
+      "name": "Klüp Rakısı 35'lik",
+      "priceTry": 2400
+     },
+     {
+      "name": "Klüp Rakısı 70'lik",
+      "priceTry": 4000
+     },
+     {
+      "name": "Saki Mor Üzüm 70'lik",
+      "priceTry": 4600
+     },
+     {
+      "name": "Altınbaş Rakı 70'lik",
+      "priceTry": 4600
+     },
+     {
+      "name": "Beylerbeyi Mavi 100'lük",
+      "priceTry": 4500
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site (saklikadeh.com.tr, tek sayfa): adres, her gün 12.00–01.30, servis türleri, menü ('Menü güncelleme: 18 Ekim 2026' → validFrom). Telefon sitede yok, eklenmedi. Menüdeki tahmini kaloriler aktarılmadı, gramaj tutuldu. Sitedeki Google puanı aktarılmadı. Video bulunamadı."
+}
