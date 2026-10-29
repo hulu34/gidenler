@@ -10,3 +10,11 @@ for (const slug of slugs) {
   const say = {}; for (const x of g) say[x.status] = (say[x.status] ?? 0) + 1;
   console.log(`${slug} · env=${r.env} · google=${JSON.stringify(say)} · yöntem=${[...new Set(g.map((x) => x.matchMethod))].join(",") || "-"} · kaynak=${(r.identifiers ?? []).map?.((x) => x.provider).join(",") ?? "-"}`);
 }
+/* Bekleyen eşleşmelerin bizim hesapladığımız özeti (puan, ad benzerliği, mesafe, telefon/web eşleşmesi, karar nedeni) ve harcama.
+   Place ID ve Haritalar bağlantısı loga yazılmaz; şifreli çıktıya gider. */
+import { mkdirSync, writeFileSync } from "node:fs";
+const g = await (await fetch(`${admin}?rapor=google`, { headers: H })).json();
+const mine = (g.pending ?? []).filter((p) => slugs.includes(p.slug));
+for (const p of mine) console.log(`bekleyen · ${p.slug} · puan=${p.score} · ${String(p.method).replace(/^\S+\s/, "")}`);
+console.log(`harcama · ${JSON.stringify(g.spend?.month ?? g.spend ?? {}).slice(0, 300)} · durdurma=${JSON.stringify(g.pause ?? null)} · açık=${g.enabled}`);
+mkdirSync("out/gg", { recursive: true }); writeFileSync("out/gg/bekleyen.json", JSON.stringify(mine, null, 1));

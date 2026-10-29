@@ -217,6 +217,11 @@ jobs:
       - uses: actions/checkout@v4
       - run: node ops/google-grup.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}" }
+      - if: always()
+        run: test -d out/gg && tar -C out -czf out/gg.tgz gg && openssl cms -encrypt -aes256 -binary -in out/gg.tgz -out out/gg.tgz.cms -outform DER ops/olcum.pem && rm -rf out/gg out/gg.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gg-sifreli, path: out/gg.tgz.cms, retention-days: 3, if-no-files-found: ignore }
   google-pasif:
     if: contains(github.event.head_commit.message, '[google-pasif]')
     runs-on: ubuntu-latest
