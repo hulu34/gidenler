@@ -1,0 +1,609 @@
+{
+ "slug": "filizler-koftecisi-uskudar",
+ "description": {
+  "value": "Salacak sahil yolunda, Kız Kulesi'nin karşısında köfte ve ızgara lokantası; sabahları kahvaltı da veriyor. İşletmenin anlatımına göre Filizler 1994'te Tuzla'da açıldı; bu sayfa Üsküdar şubesine ait.",
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Salacak Mah., Harem Sahil Yolu Cd. No:61, 34668 Üsküdar, İstanbul",
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 216 342 00 00",
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://filizler.com/uskudar",
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "filizlerkoftecisi",
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 08:00-22:30",
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "Şubeyi telefonla arayarak ya da WhatsApp'tan yazarak.",
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Helal et kullanılıyor; alkollü içecek servis edilmiyor.",
+   "provider": "official_site",
+   "url": "https://filizler.com/uskudar",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Kahvaltı her gün 08.00'den itibaren.",
+   "provider": "official_site",
+   "url": "https://filizler.com/uskudar",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "1000 kişiye kadar organizasyon (düğün yemeği, özel gün, grup kahvaltısı) yapılıyor.",
+   "provider": "official_site",
+   "url": "https://filizler.com/uskudar",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "alkol": false
+  },
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://filizler.com/uskudar/menu/restoran",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Köfteler",
+    "items": [
+     {
+      "name": "4'lü Filizler",
+      "priceTry": 450,
+      "description": "4 adet mini hamburger"
+     },
+     {
+      "name": "6'lı Filizler",
+      "priceTry": 635,
+      "description": "6 adet mini hamburger"
+     },
+     {
+      "name": "Filizburger",
+      "priceTry": 575,
+      "description": "Özel hazırlanmış hamburger"
+     },
+     {
+      "name": "Kasap Köfte",
+      "priceTry": 655,
+      "description": "Geleneksel Türk usulü ızgara köfte"
+     },
+     {
+      "name": "Kaşarlı Köfte",
+      "priceTry": 655,
+      "description": "Kaşar peynirli ızgara köfte"
+     },
+     {
+      "name": "Acılı Köfte",
+      "priceTry": 655,
+      "description": "Acı soslu ızgara köfte"
+     },
+     {
+      "name": "Karışık Köfte",
+      "priceTry": 870,
+      "description": "Çeşitli köfte çeşitlerinden oluşan tabak"
+     },
+     {
+      "name": "Special Filizler",
+      "priceTry": 1495,
+      "description": "Özel hazırlanmış et tabağı"
+     },
+     {
+      "name": "Steak Köfte",
+      "priceTry": 900,
+      "description": "Steak usulü hazırlanmış köfte"
+     },
+     {
+      "name": "Kaşarlı Steak Köfte",
+      "priceTry": 1000,
+      "description": "Kaşar peynirli steak usulü köfte"
+     }
+    ]
+   },
+   {
+    "title": "Izgaralar",
+    "items": [
+     {
+      "name": "Lokum Filizler",
+      "priceTry": 1500,
+      "description": "Lokum kıvamında pişirilmiş et"
+     },
+     {
+      "name": "Dana Pirzola",
+      "priceTry": 1500,
+      "description": "Izgara dana pirzola"
+     },
+     {
+      "name": "Kuzu Çöp Şiş",
+      "priceTry": 990,
+      "description": "Izgara kuzu çöp şiş"
+     },
+     {
+      "name": "Kuzu Pirzola",
+      "priceTry": 1210,
+      "description": "Izgara kuzu pirzola"
+     },
+     {
+      "name": "Adana Kebap",
+      "priceTry": 980
+     },
+     {
+      "name": "Urfa Kebap",
+      "priceTry": 980
+     },
+     {
+      "name": "Karışık Izgara",
+      "priceTry": 1290,
+      "description": "Çeşitli et ürünlerinden oluşan ızgara tabağı"
+     },
+     {
+      "name": "Dana Çöp Şiş",
+      "priceTry": 845
+     },
+     {
+      "name": "Tavuk But Şiş",
+      "priceTry": 565,
+      "description": "Izgara tavuk but şiş"
+     },
+     {
+      "name": "Tavuk Göğüs",
+      "priceTry": 565,
+      "description": "Izgara tavuk göğüs"
+     },
+     {
+      "name": "Somon",
+      "priceTry": 1200,
+      "description": "Izgara somon balığı"
+     }
+    ]
+   },
+   {
+    "title": "Tavalar",
+    "items": [
+     {
+      "name": "Steak Fajita",
+      "priceTry": 1105,
+      "description": "Bonfile et ile hazırlanmış fajita"
+     },
+     {
+      "name": "Chicken Fajita",
+      "priceTry": 970,
+      "description": "Tavuk eti ile hazırlanmış fajita"
+     },
+     {
+      "name": "Combo Fajita",
+      "priceTry": 1035,
+      "description": "Karışık et ile hazırlanmış fajita"
+     },
+     {
+      "name": "Tortilla",
+      "priceTry": 115,
+      "description": "Meksika usulü yufka ekmeği"
+     }
+    ]
+   },
+   {
+    "title": "Sezar salatalar",
+    "items": [
+     {
+      "name": "Sezar Steak",
+      "priceTry": 900,
+      "description": "Sezar soslu ızgara bonfile"
+     },
+     {
+      "name": "Sezar Chicken",
+      "priceTry": 795,
+      "description": "Sezar soslu ızgara tavuk"
+     },
+     {
+      "name": "Sezar Combo",
+      "priceTry": 870,
+      "description": "Sezar soslu karışık et tabağı"
+     }
+    ]
+   },
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Mercimek Çorbası",
+      "priceTry": 175,
+      "description": "Geleneksel Türk kırmızı mercimek çorbası"
+     },
+     {
+      "name": "Domates Çorbası",
+      "priceTry": 175
+     },
+     {
+      "name": "Tavuk Suyu Çorbası",
+      "priceTry": 225,
+      "description": "Tavuk suyuyla hazırlanmış çorba"
+     },
+     {
+      "name": "Karışık Çorba",
+      "priceTry": 175,
+      "description": "Çeşitli malzemelerle hazırlanmış karışık çorba"
+     }
+    ]
+   },
+   {
+    "title": "Ara sıcaklar",
+    "items": [
+     {
+      "name": "Paçanga Böreği",
+      "priceTry": 225,
+      "description": "Pastırma ve kaşar peyniri ile hazırlanan kızartılmış börek"
+     },
+     {
+      "name": "Çin Böreği",
+      "priceTry": 215,
+      "description": "İnce yufkaya sarılı peynirli börek"
+     },
+     {
+      "name": "Mevsim Böreği",
+      "priceTry": 215,
+      "description": "Mevsim sebzeleriyle hazırlanan börek"
+     },
+     {
+      "name": "Special Börek Tabağı",
+      "priceTry": 610,
+      "description": "Çeşitli böreklerin bir arada sunulduğu özel tabak"
+     },
+     {
+      "name": "Patates Tava",
+      "priceTry": 220,
+      "description": "Kızartılmış patates"
+     },
+     {
+      "name": "Bulgur Porsiyon",
+      "priceTry": 135,
+      "description": "Pilav bulgur porsiyonu"
+     },
+     {
+      "name": "Pilav Porsiyon",
+      "priceTry": 135,
+      "description": "Pirinç pilavı porsiyonu"
+     },
+     {
+      "name": "Püre Porsiyon",
+      "priceTry": 135,
+      "description": "Patates püresi porsiyonu"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar ve zeytinyağlılar",
+    "items": [
+     {
+      "name": "Piyaz",
+      "priceTry": 190,
+      "description": "Soğan ve sumakla hazırlanmış beyaz fasulye salatası"
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 185,
+      "description": "Domates salatalık biber ve soğanla hazırlanan geleneksel Türk salatası"
+     },
+     {
+      "name": "Göbek Salata",
+      "priceTry": 185,
+      "description": "Göbek marulla hazırlanan salata"
+     },
+     {
+      "name": "Peynirli Salata",
+      "priceTry": 210,
+      "description": "Peynir ilaveli karışık salata"
+     },
+     {
+      "name": "Roka Salatası",
+      "priceTry": 210,
+      "description": "Lor peynirli roka salatası"
+     },
+     {
+      "name": "Karışık Zeytinyağlı",
+      "priceTry": 430,
+      "description": "Çeşitli zeytinyağlı mezelerin bir arada sunumu"
+     },
+     {
+      "name": "Special Zeytinyağlı Tabağı",
+      "priceTry": 640,
+      "description": "Seçtiğiniz zeytinyağlı mezeden 6 adet"
+     },
+     {
+      "name": "Zeytinyağlı Porsiyon",
+      "priceTry": 280,
+      "description": "Özel seçilmiş zeytinyağlı mezelerin geniş sunumu"
+     },
+     {
+      "name": "Yoğurt",
+      "priceTry": 160,
+      "description": "Sade yoğurt"
+     },
+     {
+      "name": "Cacık",
+      "priceTry": 185,
+      "description": "Salatalık ve nane ile hazırlanmış yoğurtlu meze"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Künefe Fıstıklı",
+      "priceTry": 430,
+      "description": "Antep fıstığı ile süslenmiş geleneksel tel kadayıf tatlısı"
+     },
+     {
+      "name": "Künefe Kaymaklı",
+      "priceTry": 430,
+      "description": "Kaymak ilaveli geleneksel tel kadayıf tatlısı"
+     },
+     {
+      "name": "Künefe Dondurmalı",
+      "priceTry": 430,
+      "description": "Dondurma ile servis edilen geleneksel tel kadayıf tatlısı"
+     },
+     {
+      "name": "İrmik Helvası",
+      "priceTry": 240,
+      "description": "Geleneksel Türk tatlısı irmik helvası"
+     },
+     {
+      "name": "Dondurmalı İrmik Helvası",
+      "priceTry": 305,
+      "description": "Dondurma ile servis edilen irmik helvası"
+     },
+     {
+      "name": "Tiramisu",
+      "priceTry": 300,
+      "description": "İtalyan usulü kahveli tatlı"
+     },
+     {
+      "name": "Trileçe",
+      "priceTry": 300,
+      "description": "Üç çeşit sütle hazırlanan özel tatlı"
+     },
+     {
+      "name": "Sütlaç",
+      "priceTry": 300,
+      "description": "Geleneksel Türk sütlü tatlısı"
+     },
+     {
+      "name": "Sütlü Kadayıf",
+      "priceTry": 300,
+      "description": "Süt ile hazırlanan kadayıf tatlısı"
+     },
+     {
+      "name": "Dondurma Porsiyon",
+      "priceTry": 350,
+      "description": "Çeşitli aromalarda dondurma porsiyonu"
+     }
+    ]
+   },
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Serpme Kahvaltı",
+      "priceTry": 2100,
+      "description": "Çeşitli Türk kahvaltı lezzetlerini içeren zengin bir sofra"
+     },
+     {
+      "name": "Akdeniz Kahvaltı",
+      "priceTry": 870,
+      "description": "Akdeniz bölgesine özgü lezzetlerle hazırlanmış kahvaltı"
+     },
+     {
+      "name": "İstanbul Kahvaltı",
+      "priceTry": 630,
+      "description": "İstanbul'un yerel lezzetlerini içeren geleneksel kahvaltı"
+     },
+     {
+      "name": "Üsküdar Kahvaltı",
+      "priceTry": 490,
+      "description": "Üsküdar usulü hazırlanmış geleneksel kahvaltı tabağı"
+     }
+    ]
+   },
+   {
+    "title": "Kahvaltı yanına",
+    "items": [
+     {
+      "name": "Peynir Tabağı",
+      "priceTry": 395,
+      "description": "Çeşitli Türk peynirlerinden oluşan tabak"
+     },
+     {
+      "name": "Lor Reçel",
+      "priceTry": 220,
+      "description": "Taze lor peyniri ve reçel"
+     },
+     {
+      "name": "Bal Kaymak",
+      "priceTry": 215,
+      "description": "Doğal bal ve kaymak"
+     },
+     {
+      "name": "Pekmez",
+      "priceTry": 150,
+      "description": "Lezzet ve enerji kaynağı doğal üzüm pekmezi"
+     },
+     {
+      "name": "Reçel",
+      "priceTry": 145,
+      "description": "Çeşit çeşit doğal reçeller"
+     },
+     {
+      "name": "Sahanda Yumurta",
+      "priceTry": 220,
+      "description": "Bakır tavada kızartılmış yumurta"
+     },
+     {
+      "name": "Sahanda Sucuklu Yumurta",
+      "priceTry": 265,
+      "description": "Bakır tavada sucukla kızartılmış yumurta"
+     },
+     {
+      "name": "Menemen",
+      "priceTry": 265,
+      "description": "Domates ve biberle hazırlanmış geleneksel Türk yumurta yemeği"
+     },
+     {
+      "name": "Omlet",
+      "priceTry": 200,
+      "description": "Sade omlet"
+     },
+     {
+      "name": "Kaşarlı Omlet",
+      "priceTry": 250,
+      "description": "Kaşar peynirli omlet"
+     },
+     {
+      "name": "Karışık Omlet",
+      "priceTry": 300,
+      "description": "Çeşitli malzemelerle hazırlanmış karışık omlet"
+     },
+     {
+      "name": "Kaşarlı Tost",
+      "priceTry": 250,
+      "description": "Kaşar peynirli ızgara tost"
+     },
+     {
+      "name": "Sucuklu Tost",
+      "priceTry": 275,
+      "description": "Sucuklu ızgara tost"
+     },
+     {
+      "name": "Karışık Tost",
+      "priceTry": 310,
+      "description": "Çeşitli malzemelerle hazırlanmış karışık ızgara tost"
+     },
+     {
+      "name": "Patates Tava",
+      "priceTry": 220,
+      "description": "Kızartılmış patates"
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Köpüklü Ayran",
+      "priceTry": 105
+     },
+     {
+      "name": "Kutu Ayran",
+      "priceTry": 105
+     },
+     {
+      "name": "Taze Portakal Suyu",
+      "priceTry": 225
+     },
+     {
+      "name": "Acılı Şalgam Suyu",
+      "priceTry": 115
+     },
+     {
+      "name": "Su",
+      "priceTry": 40
+     },
+     {
+      "name": "Soda",
+      "priceTry": 70
+     },
+     {
+      "name": "Limonlu Soda",
+      "priceTry": 75
+     },
+     {
+      "name": "Limonata",
+      "priceTry": 225
+     },
+     {
+      "name": "Kutu Cola",
+      "priceTry": 120
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 120
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 120
+     },
+     {
+      "name": "Fuse Tea Şeftali",
+      "priceTry": 120
+     },
+     {
+      "name": "Cappy Karışık",
+      "priceTry": 120
+     },
+     {
+      "name": "Çay",
+      "priceTry": 40
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 175
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=KiToVYCxryE",
+   "credit": "eniyirestaurantlar.com · Ağustos 2012 · rehber tanıtım klibi",
+   "category": "rehber",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=o4dylZL1sdM",
+   "credit": "WhatEmmanuelleSees · Nisan 2022 · kısa yemek değerlendirmesi",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=j0uTHWTDkTA",
+   "credit": "Kemal Sayan · Ekim 2026 · yemek deneyimi vlogu",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Yalnız Üsküdar (Salacak) şubesinin resmî sayfası ve şube menüsü (filizler.com/uskudar/menu/restoran ve /kahvalti). Tuzla ve Pendik şubelerinin menüsü kullanılmadı. Menüde geçerlilik tarihi yok; sayfa başlığı '2026 (güncel)'. Kafe menüsü aktarılmadı. Menüdeki açıklamalar sitedeki gibi; yalnız yemeğin adını tekrarlayanlar atıldı. Sitedeki misafir yorumları aktarılmadı. Elenen videolar: 2011 tarihli işletme kanalı ve TV kesitleri (eski, şube belirsiz), Yorumluyorum TV 2016 (kurumsal tanıtım, şube belirsiz). Kemal Sayan videosunun açıklamasında 'reklam içerebilir' ibaresi var ama ücretin kendisi tarafından ödendiği ve reklam olmadığı yazıyor; işbirliği olarak işaretlenmedi."
+}

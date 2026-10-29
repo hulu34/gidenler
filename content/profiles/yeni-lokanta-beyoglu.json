@@ -1,0 +1,240 @@
+{
+ "slug": "yeni-lokanta-beyoglu",
+ "description": {
+  "value": "Beyoğlu'nda, Kumbaracı Yokuşu'nda lokanta. Menüde Yeni Lokanta mantısı, fırında ıslama dana kaburga ve kâğıtta levrek gibi yemekler; à la carte'ın yanında tadım ve set menüleri var.",
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Kumbaracı Yokuşu 66/B, 34433 Beyoğlu, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 292 25 50",
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.yenilokanta.com",
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "yeni.lokanta",
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com/_files/ugd/174615_9d7ab86b6d854bf3a87f168beeacf5a5.pdf",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Sa 12:00-16:00,17:00-00:30; Su 13:00-22:00",
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki formdan. Site, formdan gönderilenin talep olduğunu, rezervasyonun kesinleşmiş sayılmadığını belirtiyor. Özel oda için e-posta.",
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "5 kişi ve üzeri gruplara yalnız tadım menüsü servis ediliyor.",
+   "provider": "official_site",
+   "url": "https://www.yenilokanta.com",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Tadım menüsü tüm masaya servis ediliyor.",
+   "provider": "official_site",
+   "url": "https://www.yenilokanta.com/_files/ugd/174615_ba00ef68818d4fa4a09b2e3100521552.pdf",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.yenilokanta.com/_files/ugd/174615_9d7ab86b6d854bf3a87f168beeacf5a5.pdf",
+  "checkedAt": "2026-10-29",
+  "validFrom": "2026-09-07",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Atıştırmalık",
+    "items": [
+     {
+      "name": "Yeni köfte",
+      "priceTry": 650,
+      "description": "80 gr, tek"
+     }
+    ]
+   },
+   {
+    "title": "Başlangıçlar",
+    "items": [
+     {
+      "name": "Pembe domates",
+      "priceTry": 980,
+      "description": "Bursa şeftali, çiğ badem, Arapkir reyhan"
+     },
+     {
+      "name": "Zeytinyağlı kuru vişneli pancar",
+      "priceTry": 980,
+      "description": "Fındık, Ezine peyniri"
+     },
+     {
+      "name": "Enginar",
+      "priceTry": 1100,
+      "description": "Fava, çilek"
+     },
+     {
+      "name": "Közlenmiş patlıcan",
+      "priceTry": 980,
+      "description": "Kuru incir, Erzincan tulum, füme badem, ipek biber"
+     },
+     {
+      "name": "Tuzda sardalya",
+      "priceTry": 1100,
+      "description": "120 gr, közlenmiş incir, kişniş"
+     },
+     {
+      "name": "Çiğ köfte tartar",
+      "priceTry": 1350,
+      "description": "80 gr, kimyon, chili, patates kroket"
+     },
+     {
+      "name": "Irişkit",
+      "priceTry": 1150,
+      "description": "Kendi üretimleri kuzu sucuk, yumurta sarısı"
+     },
+     {
+      "name": "İzmir tulumu",
+      "priceTry": 1250,
+      "description": "100 gr, pazı, yufka, Macahel kestane balı, Kayseri pastırma"
+     },
+     {
+      "name": "Asma yaprağında karides",
+      "priceTry": 1250,
+      "description": "Kişniş, yoğurt, pazı, chili"
+     }
+    ]
+   },
+   {
+    "title": "Ana yemekler",
+    "items": [
+     {
+      "name": "Banduma organik tavuk",
+      "priceTry": 2350,
+      "description": "Ceviz, kıtır dantel"
+     },
+     {
+      "name": "Fırından isotlu ıslama dana kaburga",
+      "priceTry": 2750,
+      "description": "220 gr, yoğurt"
+     },
+     {
+      "name": "Günün kuzusu",
+      "priceTry": 2900,
+      "description": "220 gr, istiridye mantarı, tarhun, tarhana"
+     },
+     {
+      "name": "Kâğıtta deniz levreği",
+      "priceTry": 2900,
+      "description": "200 gr, rakı, Ezine peyniri, rezene, patates"
+     }
+    ]
+   },
+   {
+    "title": "Tadım ve set menüleri (kişi başı)",
+    "items": [
+     {
+      "name": "Tadım menüsü",
+      "priceTry": 7800,
+      "description": "9 tabak, tüm masaya · 5 kadeh şarap eşleşmesi +3.750 ₺"
+     },
+     {
+      "name": "Vejetaryen tadım menüsü",
+      "priceTry": 7800,
+      "description": "9 tabak, tüm masaya · 5 kadeh şarap eşleşmesi +3.750 ₺"
+     },
+     {
+      "name": "Set menü",
+      "priceTry": 6500,
+      "description": "7 tabak · 4 kadeh şarap eşleşmesi +3.150 ₺"
+     },
+     {
+      "name": "Vejetaryen set menü",
+      "priceTry": 6500,
+      "description": "7 tabak · 4 kadeh şarap eşleşmesi +3.150 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar (fiyatlar 05.02.2026'dan geçerli)",
+    "items": [
+     {
+      "name": "Sütlaç",
+      "priceTry": 780,
+      "description": "Safranlı pişmaniye, fındık, frambuaz"
+     },
+     {
+      "name": "Muhallebili kadayıf",
+      "priceTry": 780,
+      "description": "Boz Antep fıstığı, sahlepli dondurma"
+     },
+     {
+      "name": "Tuzlu karamelli pelte",
+      "priceTry": 780,
+      "description": "Fındık, balkabağı"
+     },
+     {
+      "name": "Baked Alaska",
+      "priceTry": 780,
+      "description": "Frambuaz, badem"
+     },
+     {
+      "name": "Bir top dondurma veya sorbe",
+      "priceTry": 240,
+      "description": "Kendi üretimleri: hindistan cevizi, sahlep, frambuaz, vişne"
+     },
+     {
+      "name": "Türk kahvesi",
+      "priceTry": 240
+     },
+     {
+      "name": "Çay",
+      "priceTry": 240,
+      "description": "Taze nane, taze zencefil veya yeşil çay"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=dLQhmTcxS6w",
+   "credit": "Beyoğlu App · Mart 2019 · şehir rehberi tanıtımı",
+   "category": "rehber",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=bFFKpoxBW0s",
+   "credit": "Telescopic Traveller · Kasım 2020 · kısa gezi klibi",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (yenilokanta.com) ve resmî PDF'ler: à la carte ve tadım/set menü 07.09.2026'dan, tatlı menüsü 05.02.2026'dan geçerli (tatlı bölümünün başlığında yazıyor). Fiyatlara KDV dahil. Yemek adları menünün Türkçe sayfasından; alerjen işaretleri aktarılmadı. Şarap ve bar menüleri aktarılmadı. Tadım ve set menülerinin tabak listesi PDF'te. Videolar: yalnız iki kısa ve eski tanıtım klibi bulundu; güncel bir gurme değerlendirmesi bulunamadı."
+}

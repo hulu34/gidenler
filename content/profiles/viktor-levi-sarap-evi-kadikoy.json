@@ -1,0 +1,537 @@
+{
+ "slug": "viktor-levi-sarap-evi-kadikoy",
+ "description": {
+  "value": "Moda'da, Reks Sineması'nın arka sokağında şarap evi ve restoran. Menüde peynir ve şarap tabakları, zeytinyağlılar, makarnalar, balıklar ve et yemekleri var. İşletmenin anlatımına göre adını, sonradan şarap üreticiliğine geçen Gelibolulu bir ailenin oğlu Viktor Levi'nin şaraphanesinden alıyor.",
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Caferağa Mah. Moda Cad. Damacı Sk. No:4, Kadıköy, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 216 449 93 29",
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.viktorlevimoda.com",
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "viktorlevimoda",
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 12:00-01:00",
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "Telefonla: +90 216 449 93 29 veya +90 530 975 75 23.",
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Öğle servisi 12.00–17.30, akşam servisi 17.30–01.00.",
+   "provider": "official_site",
+   "url": "https://www.viktorlevimoda.com",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Menüye göre servis ve kuver ücreti fiyatlara dahil değil.",
+   "provider": "official_site",
+   "url": "https://www.viktorlevimoda.com/menue",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "alkol": true
+  },
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com/menue",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.viktorlevimoda.com/menue",
+  "checkedAt": "2026-10-29",
+  "validFrom": "2026-10-06",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Başlangıçlar",
+    "items": [
+     {
+      "name": "Yerli Peynir Tabağı",
+      "priceTry": 1200,
+      "description": "Eski kaşar, İzmir tulum, isli Çerkez, çörek otlu, kekikli ve sepet peyniri"
+     },
+     {
+      "name": "Karışık Peynir Tabağı",
+      "priceTry": 1450,
+      "description": "Rokfor, gouda, edam, sepet, çörek otlu ve kekikli peynir"
+     },
+     {
+      "name": "İthal Peynir Tabağı",
+      "priceTry": 1650,
+      "description": "Rokfor, gouda, kimyonlu gouda, edam, füme peynir, emmental"
+     },
+     {
+      "name": "Şarap Tabağı",
+      "priceTry": 2150,
+      "description": "Füme et, kurutulmuş et, rokfor, Trakya eski kaşar, İzmir tulum, füme peynir, ceviz, kuru meyve"
+     },
+     {
+      "name": "Mozzarella Caprese",
+      "priceTry": 1250,
+      "description": "Domates, mozzarella, mix yeşillik, fesleğen sos, balsamik glaze"
+     },
+     {
+      "name": "Kuru Et Tabağı",
+      "priceTry": 1600,
+      "description": "120 gr, kurutulmuş dana füme, karışık yeşillik"
+     },
+     {
+      "name": "Buratta",
+      "priceTry": 1450,
+      "description": "Roka, burrata, fesleğen ve domates sos, balsamik glaze"
+     },
+     {
+      "name": "Dana Carpaccio",
+      "priceTry": 1500,
+      "description": "110 gr, roka, parmesan, zeytinyağı, balsamik glaze"
+     },
+     {
+      "name": "Ekmek Üstü Lezzetler",
+      "priceTry": 1150,
+      "description": "Baget üzerinde dört çeşit"
+     },
+     {
+      "name": "Izgara Kuşkonmaz",
+      "priceTry": 950,
+      "description": "Şaraplı parmesan kreması, kıtır parmesan"
+     }
+    ]
+   },
+   {
+    "title": "Zeytinyağlılar ve mezeler",
+    "items": [
+     {
+      "name": "Haydari",
+      "priceTry": 350
+     },
+     {
+      "name": "Humus",
+      "priceTry": 400
+     },
+     {
+      "name": "Bakla Fava",
+      "priceTry": 400
+     },
+     {
+      "name": "Pilaki",
+      "priceTry": 450
+     },
+     {
+      "name": "Vişneli Yaprak Sarma",
+      "priceTry": 500
+     },
+     {
+      "name": "Girit Ezmesi",
+      "priceTry": 450
+     },
+     {
+      "name": "Levrek Marin",
+      "priceTry": 600
+     },
+     {
+      "name": "Köz Biberli Muammara",
+      "priceTry": 450
+     },
+     {
+      "name": "Zeytinyağlı ve Portakallı Kereviz",
+      "priceTry": 400
+     },
+     {
+      "name": "Zeytinyağlı Yabanmersinli Ispanak Kökü",
+      "priceTry": 450
+     }
+    ]
+   },
+   {
+    "title": "Ara sıcaklar",
+    "items": [
+     {
+      "name": "Patates Kızartması",
+      "priceTry": 350
+     },
+     {
+      "name": "Patates Kroket",
+      "priceTry": 350,
+      "description": "Peynirli"
+     },
+     {
+      "name": "Sigara Böreği",
+      "priceTry": 350
+     },
+     {
+      "name": "Mozzarella Çubukları",
+      "priceTry": 450
+     },
+     {
+      "name": "Viktor Levi Böreği",
+      "priceTry": 500,
+      "description": "İstiridye mantarı, bonfile (75 gr), kaşar"
+     },
+     {
+      "name": "Paçanga Böreği",
+      "priceTry": 500
+     },
+     {
+      "name": "Çıtır Tavuk Pane",
+      "priceTry": 700,
+      "description": "150 gr, parmak patates, sweet chili sos"
+     },
+     {
+      "name": "Kalamar Tava",
+      "priceTry": 900,
+      "description": "Tarator sos"
+     },
+     {
+      "name": "Karides ve Kabak Tempura",
+      "priceTry": 1050,
+      "description": "Sweet chili sos"
+     },
+     {
+      "name": "Yaprak Ciğer",
+      "priceTry": 1350,
+      "description": "Kuzu ciğerinden, 170–180 gr, sumaklı soğan"
+     },
+     {
+      "name": "Dana Tandırlı Arancini",
+      "priceTry": 650
+     },
+     {
+      "name": "Karidesli ve Ispanaklı Kiş",
+      "priceTry": 500
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Mevsim Salatası",
+      "priceTry": 500
+     },
+     {
+      "name": "Kinoa Salatası",
+      "priceTry": 650
+     },
+     {
+      "name": "Hellim Peynirli Roka Salatası",
+      "priceTry": 750
+     },
+     {
+      "name": "Tavuklu Sezar Salata",
+      "priceTry": 850,
+      "description": "Izgara tavuk 100–110 gr"
+     },
+     {
+      "name": "Ilık Et Salatası",
+      "priceTry": 1250,
+      "description": "Bonfile 100–110 gr"
+     },
+     {
+      "name": "Domatesli Roka Salatası",
+      "priceTry": 650
+     },
+     {
+      "name": "Izgara Somon Salatası",
+      "priceTry": 1100,
+      "description": "Somon 100–110 gr"
+     },
+     {
+      "name": "Vegan Bowl",
+      "priceTry": 750
+     },
+     {
+      "name": "Keçi Peynirli Pancar Salatası",
+      "priceTry": 850
+     }
+    ]
+   },
+   {
+    "title": "Güveçler",
+    "items": [
+     {
+      "name": "Tereyağlı Mantar",
+      "priceTry": 550,
+      "description": "Kaşar peyniri ile"
+     },
+     {
+      "name": "Gorgonzola Sosunda Mini Köfteler",
+      "priceTry": 900,
+      "description": "175–185 gr"
+     },
+     {
+      "name": "Tereyağlı Karides",
+      "priceTry": 900,
+      "description": "185 gr, sarımsaklı"
+     },
+     {
+      "name": "Güveçte Bonfile",
+      "priceTry": 1500,
+      "description": "130–140 gr, mantar, cheddar"
+     }
+    ]
+   },
+   {
+    "title": "Wraplar",
+    "items": [
+     {
+      "name": "Etli Wrap",
+      "priceTry": 1350,
+      "description": "Jülyen bonfile 120 gr"
+     },
+     {
+      "name": "Karışık Wrap",
+      "priceTry": 1100,
+      "description": "Bonfile 80 gr ve tavuk 100 gr"
+     },
+     {
+      "name": "Tavuklu Wrap",
+      "priceTry": 950,
+      "description": "Tavuk 160 gr"
+     },
+     {
+      "name": "Mantarlı Wrap",
+      "priceTry": 650,
+      "description": "Vejetaryen"
+     }
+    ]
+   },
+   {
+    "title": "Makarnalar",
+    "items": [
+     {
+      "name": "Fettuccine Alfredo",
+      "priceTry": 900,
+      "description": "Tavuklu (100–110 gr)"
+     },
+     {
+      "name": "Dana Tandırlı Fettuccine",
+      "priceTry": 1050,
+      "description": "90–100 gr"
+     },
+     {
+      "name": "Penne Arrabiata",
+      "priceTry": 650
+     },
+     {
+      "name": "Penne Pesto",
+      "priceTry": 650
+     },
+     {
+      "name": "Spaghetti Bolonez",
+      "priceTry": 850,
+      "description": "Dana kıyma 90–100 gr"
+     },
+     {
+      "name": "Karidesli Siyah Spaghetti",
+      "priceTry": 950,
+      "description": "Karides 200–210 gr"
+     },
+     {
+      "name": "Ravioli",
+      "priceTry": 900,
+      "description": "Peynir dolgulu"
+     },
+     {
+      "name": "Tortellini",
+      "priceTry": 850
+     }
+    ]
+   },
+   {
+    "title": "Balıklar",
+    "items": [
+     {
+      "name": "Kajun Baharatlı Levrek Fileto",
+      "priceTry": 1450
+     },
+     {
+      "name": "Somon Special",
+      "priceTry": 1400,
+      "description": "Norveç somonu"
+     },
+     {
+      "name": "Asma Yaprağına Sarılmış Çipura Fileto",
+      "priceTry": 1550
+     },
+     {
+      "name": "Izgara Karides",
+      "priceTry": 1550
+     },
+     {
+      "name": "Kıtır Levrek Fileto",
+      "priceTry": 1500,
+      "description": "Patatese sarılmış"
+     },
+     {
+      "name": "Tarhana Kaplı Dil Fileto",
+      "priceTry": 1250
+     }
+    ]
+   },
+   {
+    "title": "Ana yemekler",
+    "items": [
+     {
+      "name": "Dana Kaburga",
+      "priceTry": 1950,
+      "description": "280 gr"
+     },
+     {
+      "name": "Dana Tandır",
+      "priceTry": 1800,
+      "description": "160 gr"
+     },
+     {
+      "name": "Kuzu Tandır",
+      "priceTry": 1800,
+      "description": "400 gr"
+     },
+     {
+      "name": "Gurme Bonfile",
+      "priceTry": 2250,
+      "description": "190–205 gr"
+     },
+     {
+      "name": "Peynir Soslu Bonfile",
+      "priceTry": 2250,
+      "description": "190–205 gr"
+     },
+     {
+      "name": "Château Brian",
+      "priceTry": 3800,
+      "description": "İki kişilik, 410–420 gr"
+     },
+     {
+      "name": "Izgara Köfte",
+      "priceTry": 1050,
+      "description": "240–250 gr"
+     },
+     {
+      "name": "Dana Pirzola Dry",
+      "priceTry": 2750,
+      "description": "450–500 gr, dinlendirilmiş"
+     },
+     {
+      "name": "Vegan Köfte",
+      "priceTry": 1050,
+      "description": "200 gr"
+     },
+     {
+      "name": "Cafe de Paris Soslu Tavuk",
+      "priceTry": 1050,
+      "description": "180–200 gr"
+     },
+     {
+      "name": "Coconut Soslu Tavuk",
+      "priceTry": 1050,
+      "description": "180–200 gr"
+     },
+     {
+      "name": "Baharatlı Baby Piliç Izgara",
+      "priceTry": 1050,
+      "description": "350 gr"
+     },
+     {
+      "name": "Kızarmış Tavuk",
+      "priceTry": 950,
+      "description": "180–200 gr"
+     },
+     {
+      "name": "Tavuk Şnitzel",
+      "priceTry": 1050,
+      "description": "180–200 gr"
+     },
+     {
+      "name": "Pomodoro Soslu Tavuk But",
+      "priceTry": 1050,
+      "description": "240–250 gr"
+     },
+     {
+      "name": "Asya Usulü Tavuk",
+      "priceTry": 1050,
+      "description": "290–300 gr"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Bal Kabaklı Cheesecake",
+      "priceTry": 550
+     },
+     {
+      "name": "Vişneli Armut Tatlısı",
+      "priceTry": 550
+     },
+     {
+      "name": "Panna Cotta",
+      "priceTry": 500
+     },
+     {
+      "name": "Ananaslı Krem Brule",
+      "priceTry": 550
+     },
+     {
+      "name": "Çikolatalı Sufle",
+      "priceTry": 550
+     },
+     {
+      "name": "Tiramisu",
+      "priceTry": 550
+     },
+     {
+      "name": "Dondurma Kupası",
+      "priceTry": 360,
+      "description": "Çikolatalı, çilekli, kaymaklı, limonlu veya karamelli"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=IEIADtcjmmA",
+   "credit": "ORDANBURDANBURCU · Nisan 2024 · çok mekânlı Kadıköy vlogu · bölüm 5.55'te",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=S1zeVaVc0q0",
+   "credit": "sanaz vlog · Haziran 2024 · kısa kişisel vlog",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (viktorlevimoda.com): adres, telefon ve saat ana sayfada, menü /menue sayfasında 12 görsel olarak (siteye 06.10.2026'da yüklenmiş; sayfalarda 'Fiyat Değişiklik Tarihi: 06.10.2026'). validFrom bu basılı fiyat değişikliği tarihidir; dosyaların siteye yüklenme tarihi değil (o da 06.10.2026, ayrıca kayıtlı). Kontrol tarihi ayrı: 29.10.2026. Yemek menüsü 1-7. sayfalardan aktarıldı; 8-11. sayfalar bira, rakı, şarap ve alkolsüz içecek, 12. sayfa alerjen listesi, aktarılmadı. Fiyatlara KDV dahil, servis ve kuver dahil değil. Hakkımızda metni markanın ilk şaraphanesinin hikâyesini anlatıyor; Moda şubesine ait bilgi gibi yazılmadı. Saat: öğle 12.00-17.30, akşam 17.30-01.00, her gün. ORDANBURDANBURCU videosunda bölüm işareti yok; Viktor Levi bölümünün başlangıcı (yaklaşık 5.55, ~10.10'a kadar) videonun önizleme karelerinden belirlendi. Elenen videolar: Yeliz Arda 2020 vlogu (şube belirtilmiyor), 2008-2013 tarihli eski klipler, içeriği doğrulanamayan Bilgipr 2012 klibi."
+}

@@ -1,0 +1,345 @@
+{
+ "slug": "balikci-sabahattin-fatih",
+ "description": {
+  "value": "Sultanahmet'in arkasında, Cankurtaran'da balık lokantası. İşletmenin anlatımına göre 1927 yapımı ahşap bir konakta hizmet veriyor ve aile kökeni Trilye'ye dayanıyor. Menüde soğuk ve sıcak deniz mezeleri, mevsim balıkları ve kabuklular var.",
+  "provider": "official_site",
+  "url": "https://www.balikcisabahattin.com",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Cankurtaran Mah. Seyit Hasan Kuyu Sk. No:1, 34122 Fatih, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.balikcisabahattin.com",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 458 18 24",
+  "provider": "official_site",
+  "url": "https://www.balikcisabahattin.com",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.balikcisabahattin.com",
+  "provider": "official_site",
+  "url": "https://www.balikcisabahattin.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "balikcisabahattin",
+  "provider": "official_site",
+  "url": "https://www.balikcisabahattin.com",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki rezervasyon sayfasından, telefonla ya da WhatsApp üzerinden.",
+  "provider": "official_site",
+  "url": "https://www.balikcisabahattin.com/reservations",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Öğle menüsü 12.00–16.00 arası, kişi başı 35 €.",
+   "provider": "official_site",
+   "url": "https://www.balikcisabahattin.com",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "İşletmenin belirttiği hizmetler: vale, taksi çağırma, otopark, engelli misafirlere yardım, bebek bakım odası, ücretsiz Wi-Fi.",
+   "provider": "official_site",
+   "url": "https://www.balikcisabahattin.com",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "otopark": true
+  },
+  "provider": "official_site",
+  "url": "https://www.balikcisabahattin.com",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.balikcisabahattin.com/_files/ugd/d39677_7ea27db25672453c8a29faeb650b700d.pdf",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Soğuk mezeler",
+    "items": [
+     {
+      "name": "Midyeli Pilav",
+      "description": "İki kişilik 450 ₺ · dört kişilik 550 ₺"
+     },
+     {
+      "name": "Beyaz Peynir",
+      "description": "İki kişilik 400 ₺ · dört kişilik 800 ₺"
+     },
+     {
+      "name": "Balık Salatası",
+      "description": "İki kişilik 500 ₺ · dört kişilik 800 ₺"
+     },
+     {
+      "name": "Levrek Marin",
+      "description": "İki kişilik 500 ₺ · dört kişilik 800 ₺"
+     },
+     {
+      "name": "Karides",
+      "description": "İki kişilik 500 ₺ · dört kişilik 800 ₺"
+     },
+     {
+      "name": "Deniz Börülcesi",
+      "description": "İki kişilik 330 ₺ · dört kişilik 500 ₺"
+     },
+     {
+      "name": "Patlıcan Salatası",
+      "description": "İki kişilik 330 ₺ · dört kişilik 500 ₺"
+     },
+     {
+      "name": "Çıtır Kabak Kızartma",
+      "description": "İki kişilik 330 ₺ · dört kişilik 500 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Sıcak mezeler",
+    "items": [
+     {
+      "name": "Karides Güveç",
+      "description": "İki kişilik 750 ₺ · dört kişilik 950 ₺"
+     },
+     {
+      "name": "Kalamar",
+      "description": "Izgara veya tava · İki kişilik 450 ₺ · dört kişilik 900 ₺"
+     },
+     {
+      "name": "Jumbo Karides",
+      "description": "İki kişilik 800 ₺ · dört kişilik 1.600 ₺"
+     },
+     {
+      "name": "Balık Böreği",
+      "description": "İki kişilik 400 ₺ · dört kişilik 800 ₺"
+     },
+     {
+      "name": "Fener Kavurma",
+      "description": "İki kişilik 750 ₺ · dört kişilik 1.300 ₺"
+     },
+     {
+      "name": "Izgara Ahtapot",
+      "description": "100 gramı 700 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Sabahattin Salata",
+      "description": "İki kişilik 600 ₺ · dört kişilik 800 ₺"
+     },
+     {
+      "name": "Çoban Salata",
+      "description": "İki kişilik 450 ₺ · dört kişilik 600 ₺"
+     },
+     {
+      "name": "Yeşil Salata",
+      "description": "İki kişilik 450 ₺ · dört kişilik 600 ₺"
+     },
+     {
+      "name": "Karışık Salata",
+      "description": "İki kişilik 450 ₺ · dört kişilik 600 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Balıklar",
+    "items": [
+     {
+      "name": "Mezgit",
+      "description": "Menüde 950 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
+     },
+     {
+      "name": "Tekir",
+      "description": "Menüde 950 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
+     },
+     {
+      "name": "Uskumru",
+      "description": "Menüde 1.100 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
+     },
+     {
+      "name": "Lüfer",
+      "description": "Menüde 1.400 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
+     },
+     {
+      "name": "Deniz Levreği",
+      "description": "Menüde 1.200 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
+     },
+     {
+      "name": "Palamut",
+      "description": "Menüde 950 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
+     },
+     {
+      "name": "Çipura",
+      "description": "Menüde 1.200 ₺ yazıyor; porsiyon mu kilo mu olduğu belirtilmiyor, işletmeye sorun"
+     },
+     {
+      "name": "Dil",
+      "description": "Kiloyla; fiyatı işletmeye sorulur"
+     },
+     {
+      "name": "Kırlangıç",
+      "description": "Kiloyla; fiyatı işletmeye sorulur"
+     },
+     {
+      "name": "Barbunya",
+      "description": "Kiloyla; fiyatı işletmeye sorulur"
+     },
+     {
+      "name": "Kalkan",
+      "description": "Kiloyla; fiyatı işletmeye sorulur"
+     },
+     {
+      "name": "Dülger",
+      "description": "Kiloyla; fiyatı işletmeye sorulur"
+     }
+    ]
+   },
+   {
+    "title": "Kabuklular",
+    "items": [
+     {
+      "name": "Böcek",
+      "description": "Kilosu 6.000 ₺"
+     },
+     {
+      "name": "İstakoz",
+      "description": "Kilosu 6.000 ₺"
+     },
+     {
+      "name": "Pavurya",
+      "description": "Menüde kilosu 300 ₺ yazıyor"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Revani",
+      "description": "İki kişilik 300 ₺ · dört kişilik 400 ₺"
+     },
+     {
+      "name": "İncir Tatlısı",
+      "description": "İki kişilik 300 ₺ · dört kişilik 400 ₺"
+     },
+     {
+      "name": "Helva",
+      "description": "İki kişilik 300 ₺ · dört kişilik 400 ₺"
+     },
+     {
+      "name": "Kabak Tatlısı",
+      "description": "İki kişilik 300 ₺ · dört kişilik 400 ₺"
+     },
+     {
+      "name": "Karışık Meyve",
+      "description": "İki kişilik 400 ₺ · dört kişilik 600 ₺"
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Cola",
+      "priceTry": 150
+     },
+     {
+      "name": "Meyve Suları",
+      "priceTry": 150
+     },
+     {
+      "name": "Taze Portakal Suyu",
+      "priceTry": 300
+     },
+     {
+      "name": "Gazoz",
+      "priceTry": 150
+     },
+     {
+      "name": "Maden Suyu",
+      "priceTry": 90
+     },
+     {
+      "name": "Su",
+      "priceTry": 120
+     },
+     {
+      "name": "Buzlu Çay",
+      "priceTry": 150
+     },
+     {
+      "name": "Çay",
+      "priceTry": 150
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 200
+     },
+     {
+      "name": "Espresso",
+      "priceTry": 200
+     },
+     {
+      "name": "Cappuccino",
+      "priceTry": 200
+     },
+     {
+      "name": "Latte",
+      "priceTry": 200
+     }
+    ]
+   },
+   {
+    "title": "Ek ücretler",
+    "items": [
+     {
+      "name": "Kuver",
+      "priceTry": 150
+     },
+     {
+      "name": "İlave peynir",
+      "priceTry": 150
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=FyiZBRlDDkw",
+   "credit": "EFA Media · Ekim 2021 · ajans tanıtım filmi",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=sohVCY5FGyk",
+   "credit": "Turkey Travel Planner · Eylül 2022 · gezi rehberi tanıtımı",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=prAd82N64bQ",
+   "credit": "까미노부부 · Ocak 2025 · yemek gezisi vlogu",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=qNwMZ8Sdon8",
+   "credit": "National Geographic · Şubat 2026 · çok mekânlı yemek turu · bölüm 16.20'de",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (balikcisabahattin.com) ve resmî menü PDF'i (10 sayfa; tarih ve geçerlilik yazmıyor; 5-10. sayfalar alkollü içecek ve şarap listesi, aktarılmadı). Mezeler ve tatlılar iki kişilik / dört kişilik fiyatlı; bu yüzden fiyat açıklamada. Yedi balığın fiyatının birimi (porsiyon/kilo) menüde yazmıyor; fiyat sayfada fiyat sütununda değil, bu belirsizliği söyleyen açıklamada gösteriliyor. Pavurya 'kg 300 TL' yazıyor, düzeltilmedi. Çalışma saati resmî sitede yok. Elenen videolar: 6f2x7W_hEFI (başka restoran), C3GLPjluNxo (festival, mekân değil), KXyB0TmGY-w (çok mekânlı, sponsor ipucu), 9R5bGTv9H3Y (2018, 50 dk Rusça gezi vlogu; eski)."
+}

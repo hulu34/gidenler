@@ -78,7 +78,7 @@ export function ProfileOverview({ entity, p, googleHours }: { entity: Entity; p:
         )}
         {p.notes.length > 0 && (
           <div className="grid grid-cols-[7.5rem_minmax(0,1fr)] gap-3 py-2.5">
-            <dt className="text-[11.5px] font-semibold uppercase tracking-[0.1em] text-ink-3">Kurallar</dt>
+            <dt className="text-[11.5px] font-semibold uppercase tracking-[0.1em] text-ink-3">Bilmen gerekenler</dt>
             <dd><ul className="flex flex-col gap-1">{p.notes.map((n) => <li key={n.value}>{n.value}</li>)}</ul></dd>
           </div>
         )}

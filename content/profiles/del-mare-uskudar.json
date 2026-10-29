@@ -1,0 +1,515 @@
+{
+ "slug": "del-mare-uskudar",
+ "description": {
+  "value": "Çengelköy'de, Boğaz kıyısında deniz ürünleri restoranı. İşletme; sürdürülebilir, oltayla avlanmış balık ve canlı kabukluları her gün tedarik ettiğini, geniş bir şarap listesi olduğunu belirtiyor. Menüde mezeler, ara sıcaklar, kiloyla satılan mevsim balıkları ve kabuklular var.",
+  "provider": "official_site",
+  "url": "https://www.delmarerestaurant.com",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Çengelköy Mah., Kuleli Cd. No:45/1, 34680 Üsküdar, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.delmarerestaurant.com/contact",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 216 422 57 62",
+  "provider": "official_site",
+  "url": "https://www.delmarerestaurant.com/contact",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.delmarerestaurant.com",
+  "provider": "official_site",
+  "url": "https://www.delmarerestaurant.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "delmare_istanbul",
+  "provider": "official_site",
+  "url": "https://www.delmarerestaurant.com",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "Telefonla ya da işletmenin sitesindeki iletişim formundan.",
+  "provider": "official_site",
+  "url": "https://www.delmarerestaurant.com/contact",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Menüdeki fiyatlara KDV dahil.",
+   "provider": "official_site",
+   "url": "https://www.delmarerestaurant.com/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "alkol": true
+  },
+  "provider": "official_site",
+  "url": "https://www.delmarerestaurant.com/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.delmarerestaurant.com/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Mezeler",
+    "items": [
+     {
+      "name": "Ahtapot Salatası",
+      "priceTry": 1400,
+      "description": "Ahtapot, kaya koruğu"
+     },
+     {
+      "name": "Avokadolu Karides",
+      "priceTry": 500,
+      "description": "Avokado, karides, hardal, bal"
+     },
+     {
+      "name": "Balık Pastırma (adet)",
+      "priceTry": 200,
+      "description": "Akya, çemen"
+     },
+     {
+      "name": "Biber Borani",
+      "priceTry": 430,
+      "description": "Chili biber, badem, soğan"
+     },
+     {
+      "name": "Enginar Kalbi",
+      "priceTry": 400,
+      "description": "Izgara Enginar kalbi"
+     },
+     {
+      "name": "Çıtır Fava (adet)",
+      "priceTry": 150,
+      "description": "Bakla, soğan, kırmızı soğan"
+     },
+     {
+      "name": "Deniz Börülcesi",
+      "priceTry": 450
+     },
+     {
+      "name": "Girit Ezme",
+      "priceTry": 500,
+      "description": "Ezine peyniri, fesleğen, maydanoz"
+     },
+     {
+      "name": "Karides Söğüş",
+      "priceTry": 900,
+      "description": "Karides, zeytinyağı, limon"
+     },
+     {
+      "name": "Kinoa Tabule",
+      "priceTry": 430,
+      "description": "Kinoa, pancar, taze yeşillikler"
+     },
+     {
+      "name": "Köpoğlu",
+      "priceTry": 430,
+      "description": "Patates, kabak, patlıcan, haşhaş"
+     },
+     {
+      "name": "Lakerda (adet)",
+      "priceTry": 575,
+      "description": "Torik, kırmızı soğan, dereotu"
+     },
+     {
+      "name": "Levrek Marin",
+      "priceTry": 650,
+      "description": "Levrek, hardal, yeşil elma"
+     },
+     {
+      "name": "Levrek Ceviche",
+      "priceTry": 1400,
+      "description": "Ananas, şili biberi, levrek, lime suyu, portakal suyu, avakado"
+     },
+     {
+      "name": "Mamzana",
+      "priceTry": 430,
+      "description": "Soğan, patlıcan, kapya, nar pekmezi"
+     },
+     {
+      "name": "Mütebbel",
+      "priceTry": 430,
+      "description": "Nohut, patlıcan, tahin, kimyon"
+     },
+     {
+      "name": "Mozerrella Somon(adet)",
+      "priceTry": 550,
+      "description": "Karides, mozeralla, avakado, somon"
+     },
+     {
+      "name": "Nazuktan",
+      "priceTry": 430,
+      "description": "Patlıcan, soğan, sarımsak, kapya, pancar pekmezi"
+     },
+     {
+      "name": "İsli Kuru Cacık",
+      "priceTry": 430,
+      "description": "Reyhan, salatalık, peynir, nane"
+     },
+     {
+      "name": "Rum Haydarisi",
+      "priceTry": 430,
+      "description": "Enginar, pancar, taze soğan, dereotu"
+     },
+     {
+      "name": "Selanik Mezesi",
+      "priceTry": 430,
+      "description": "İstridye mantarı, karamelize soğan, sarımsak, pul biber, kekik"
+     },
+     {
+      "name": "Sultan Ezme",
+      "priceTry": 430,
+      "description": "Taze soğan, dere otu, nane, maydanoz, isot, ceviz, nar, nar pekmezi"
+     },
+     {
+      "name": "Somon Gravlax (adet)",
+      "priceTry": 470,
+      "description": "Somon, roka, baharatlar"
+     },
+     {
+      "name": "Topik",
+      "priceTry": 300,
+      "description": "Nohut, sarımsak, kimyon, tahin, karabiber, karamelize soğan, kuş üzümü, yenibahar"
+     },
+     {
+      "name": "Zeytinyağlı Çağla",
+      "priceTry": 600
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Çoban Salata",
+      "priceTry": 600,
+      "description": "Domates, salatalık, biber, soğan, maydanoz"
+     },
+     {
+      "name": "Delmare Salata",
+      "priceTry": 600,
+      "description": "Roka, domates, salatalık, peynir, sumak, nar ekşisi, zeytinyağı, limon"
+     },
+     {
+      "name": "Delmare Deniz Ürünleri Salata",
+      "priceTry": 2250,
+      "description": "Roka, domaetes, salatalık, ahtapot, karides, somon gravlax, peynir, zeytinyağı, limon"
+     },
+     {
+      "name": "Dometes Soğan Salata",
+      "priceTry": 600,
+      "description": "Domates, soğan, soya sosu, zeytin yağı, limon, maydanoz"
+     },
+     {
+      "name": "Gavurdağı Salata",
+      "priceTry": 700,
+      "description": "Domates, soğan, biber, ceviz, nar ekşisi, zeytinyağı, limon"
+     },
+     {
+      "name": "Peynirli Roka Domates Salata",
+      "priceTry": 600,
+      "description": "Roka, domates, peynir, zeytinyağı, limon"
+     },
+     {
+      "name": "Yeşil Salata",
+      "priceTry": 600,
+      "description": "Hindibağ, akdeniz yeşilliği, roka, havuç, mor lahana, zeytinyağı, limon"
+     }
+    ]
+   },
+   {
+    "title": "Ara sıcaklar",
+    "items": [
+     {
+      "name": "Ahtapot Izgara",
+      "priceTry": 1400,
+      "description": "Ahtapot ızgara"
+     },
+     {
+      "name": "Balık Adana",
+      "priceTry": 900,
+      "description": "Levrek, acı pul biber"
+     },
+     {
+      "name": "Balık Çorbası",
+      "priceTry": 900,
+      "description": "Bisk sos, yeşil biber, kırmızı biber havuç, karides, levrek"
+     },
+     {
+      "name": "Balık Kokoreç",
+      "priceTry": 900,
+      "description": "Deniz mahsülleri, kimyon, kekik, yeşil-kırmızı biber, soğan"
+     },
+     {
+      "name": "Balıklı Arancini",
+      "priceTry": 750,
+      "description": "Levrek, mantar, arbario pirinci, beyaz şarap"
+     },
+     {
+      "name": "Balık Mantı",
+      "priceTry": 750,
+      "description": "Levrek, yoğurt, domates sos, nane"
+     },
+     {
+      "name": "Balık Köfte (adet)",
+      "priceTry": 350,
+      "description": "Levrek, taze baharatlar, kimyon, kaşar peyniri"
+     },
+     {
+      "name": "Barbun Taco",
+      "priceTry": 400,
+      "description": "Barbun, soğan, marul, kırmızı sos"
+     },
+     {
+      "name": "Çıtır Balık Çoçuk Menü",
+      "priceTry": 1250,
+      "description": "Levrek ve patates tava"
+     },
+     {
+      "name": "Jumbo Karides",
+      "priceTry": 1600,
+      "description": "Izgara Jumbo karides"
+     },
+     {
+      "name": "Kalamar Tava",
+      "priceTry": 1050,
+      "description": "Kalamar, tartar sos, limon"
+     },
+     {
+      "name": "Kalamar Izgara",
+      "priceTry": 1050,
+      "description": "Izgara kalamar, tarator sos"
+     },
+     {
+      "name": "Karides Güveç",
+      "priceTry": 1200,
+      "description": "Karides, domates, biber, kaşar peyniri"
+     },
+     {
+      "name": "Karides Tava",
+      "priceTry": 1050,
+      "description": "Karides, sivri biber, sarımsak, tereyağı"
+     },
+     {
+      "name": "Keşkekli Baby Kalamar",
+      "priceTry": 1200,
+      "description": "Keşkek, baby kalamar, maydanoz yağı"
+     },
+     {
+      "name": "Shot Karides",
+      "priceTry": 1050,
+      "description": "Karides, acılı mayonez, frenk soğan"
+     },
+     {
+      "name": "Sıcak Ot Tabağı",
+      "priceTry": 600,
+      "description": "Cibes, kapya biberi, ıspanak, tereyağı, pul biber, yogurt"
+     },
+     {
+      "name": "Soslu Midye",
+      "priceTry": 1000,
+      "description": "Moules marine"
+     },
+     {
+      "name": "Deniz Mahsüllü Makarna",
+      "priceTry": 3000,
+      "description": "Linguini, sarımsak, maydanoz, karides, vongole midye, beyaz sarap"
+     },
+     {
+      "name": "Paella (2 pax)",
+      "priceTry": 4500,
+      "description": "Alberio, kalamar, karides, vongole, yeşil biber, kırmızı biber, safran, soğan, beyaz şarap"
+     }
+    ]
+   },
+   {
+    "title": "Balıklar",
+    "items": [
+     {
+      "name": "Barbun Tava",
+      "priceTry": 3000,
+      "description": "Barbun, kırmızı soğan, roka, baby patates"
+     },
+     {
+      "name": "Çinekop",
+      "description": "Roka, soğan, baby patates eşliğinde · porsiyon; fiyat menüde yazmıyor"
+     },
+     {
+      "name": "Deniz Çuprası",
+      "description": "Çupra, roka, kırmızı soğan, baby patates · kilosu 3.000 ₺"
+     },
+     {
+      "name": "Dil",
+      "description": "Dil, Roka, soğan, baby patates eşliğinde · kilosu 6.500 ₺"
+     },
+     {
+      "name": "Dülger",
+      "description": "Roka, soğan, baby patates eşliğinde · kilosu 5.000 ₺"
+     },
+     {
+      "name": "Fener",
+      "description": "Fener kavurma, soğan, sarımsak, yeşil biber, kırmızı biberdometes, maydanoz · kilosu 3.000 ₺"
+     },
+     {
+      "name": "Kalkan",
+      "description": "Roka, soğan, baby patates eşliğinde · kilosu 4.000 ₺"
+     },
+     {
+      "name": "Kırlangıç",
+      "description": "Kırlangıç buğulama · kilosu 4.750 ₺"
+     },
+     {
+      "name": "Lagos",
+      "description": "Roka, soğan, baby patates eşliğinde · kilosu 5.000 ₺"
+     },
+     {
+      "name": "Levrek",
+      "description": "Roka, soğan, baby patates eşliğinde · kilosu 4.250 ₺"
+     },
+     {
+      "name": "Izgara Deniz Levreği Porsiyon",
+      "priceTry": 2000,
+      "description": "Roka, soğan, baby patates eşliğinde"
+     },
+     {
+      "name": "Lipsos",
+      "description": "Lipsos kavurma, soğan, sarımsak, yeşil biber, kırmızı biberdometes, maydanoz · kilosu 5.000 ₺"
+     },
+     {
+      "name": "Lüfer",
+      "priceTry": 3000,
+      "description": "Roka, soğan, baby patates eşliğinde"
+     },
+     {
+      "name": "Mercan",
+      "description": "Roka, soğan, baby patates eşliğinde · kilosu 5.000 ₺"
+     },
+     {
+      "name": "Sinarit",
+      "description": "Roka, soğan, baby patates eşliğinde · kilosu 4.500 ₺"
+     },
+     {
+      "name": "Sarı Kanat",
+      "priceTry": 3900,
+      "description": "Roka, soğan, baby patates eşliğinde · porsiyon"
+     }
+    ]
+   },
+   {
+    "title": "Kabuklular",
+    "items": [
+     {
+      "name": "Böcek",
+      "description": "Kilosu 11.000 ₺"
+     },
+     {
+      "name": "Istakoz",
+      "description": "Kilosu 12.000 ₺"
+     },
+     {
+      "name": "İstridye (adet)",
+      "priceTry": 750
+     },
+     {
+      "name": "Kral Yengeç",
+      "description": "Kilosu 10.000 ₺"
+     },
+     {
+      "name": "Vongole",
+      "priceTry": 1000
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Ayva Tatlısı",
+      "priceTry": 500,
+      "description": "Vanilyalı muhallebi, fıstık, hibiskus, tarçın, toz fıstık"
+     },
+     {
+      "name": "Sufle",
+      "priceTry": 700,
+      "description": "Çikolata, kakao, pudra şekeri, dondurma"
+     },
+     {
+      "name": "Dondurmalı İrmik",
+      "priceTry": 550,
+      "description": "İrmik, toz fıstık, dondurma"
+     },
+     {
+      "name": "Kabak Tatlısı",
+      "priceTry": 500,
+      "description": "Tahin ve ceviz ile"
+     },
+     {
+      "name": "Kadayıfa Sarılı Baklava",
+      "priceTry": 500,
+      "description": "Fıstık, kadayıf, dondurma"
+     },
+     {
+      "name": "Krem Karamel",
+      "priceTry": 600
+     },
+     {
+      "name": "Sıcak Helva",
+      "priceTry": 500,
+      "description": "Tahin, süt, tarçın, antep fıstığı, dondurma"
+     },
+     {
+      "name": "Soğuk Kadayıf",
+      "priceTry": 500,
+      "description": "Kadayıf, fıstık, süt"
+     },
+     {
+      "name": "Mousse",
+      "priceTry": 750
+     },
+     {
+      "name": "Meyve Tabağı",
+      "priceTry": 1600,
+      "description": "Mevsim meyveleri"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=95Ut7KbKhHU",
+   "credit": "Pera Property · Mayıs 2022 · emlak firmasının restoran ziyareti",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=Gl77_YaiHOg",
+   "credit": "Del Mare İstanbul · Aralık 2024 · işletmenin kendi tanıtımı",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=_k8OaOe3QBg",
+   "credit": "Foodinlife Magazine · Temmuz 2026 · şef röportajı",
+   "category": "basin",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=MBpvdQtIFyk",
+   "credit": "Gault & Millau Türkiye · Temmuz 2026 · şef röportajı",
+   "category": "basin",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site (delmarerestaurant.com): adres ve telefon /contact, menü /menu. Ana sayfadaki 'degustation' paragrafı başka bir yerden kalmış şablon metni (Bronte'den söz ediyor); tanıtımda kullanılmadı. Menüde geçerlilik tarihi yok. Yemek adları menüdeki Türkçe adlar (yazımı düzeltilmedi); tek dilli İngilizce açıklamalar atıldı. Kiloyla satılan balık ve kabukluların kilo fiyatı açıklamada. Şarap, bira, kokteyl ve soft içecek listesi aktarılmadı. Çalışma saati resmî sitede yok. Elenen videolar: 2010 ve 2018 tarihli eski klipler, Kuzguncuk gezi videoları (restorana değinmiyor)."
+}
