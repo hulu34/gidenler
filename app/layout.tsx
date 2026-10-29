@@ -13,6 +13,7 @@ import { Footer } from "@/components/layout/Footer";
 import { DemoBoot } from "@/components/demo/DemoBoot";
 import { AccountSync } from "@/components/auth/AccountSync";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { seckiNavVisible } from "@/lib/seckisi";
 
 export const metadata: Metadata = {
   title: {
@@ -49,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
         <DemoBoot />
         {!DEMO_VISIBLE && <AccountSync />}
-        <Header />
+        <Header showSeckisi={seckiNavVisible()} />
         <main id="icerik">{children}</main>
         <Footer />
       </body>

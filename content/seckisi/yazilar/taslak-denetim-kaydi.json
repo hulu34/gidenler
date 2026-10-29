@@ -1,0 +1,81 @@
+{
+  "slug": "taslak-denetim-kaydi",
+  "kind": "kesif",
+  "status": "taslak",
+  "title": {
+    "tr": "Taslak denetim kaydı — yayımlanmaz",
+    "en": "Draft check record — never published"
+  },
+  "dek": {
+    "tr": "Bu kayıt yalnız taslakların hiçbir sayfada görünmediğini sınamak için var.",
+    "en": "This record exists only to test that drafts never appear on any page."
+  },
+  "why": {
+    "tr": "Denetim kaydı.",
+    "en": "Check record."
+  },
+  "body": {
+    "tr": [
+      {
+        "p": "Taslak metin."
+      }
+    ],
+    "en": [
+      {
+        "p": "Draft text."
+      }
+    ]
+  },
+  "know": {
+    "tr": [
+      "Yok."
+    ],
+    "en": [
+      "None."
+    ]
+  },
+  "venues": [
+    {
+      "slug": "pandeli-fatih"
+    }
+  ],
+  "sources": [
+    {
+      "title": {
+        "tr": "Gidenler",
+        "en": "Gidenler"
+      },
+      "publisher": {
+        "tr": "Gidenler",
+        "en": "Gidenler"
+      },
+      "url": "https://www.gidenler.com/",
+      "checkedAt": "2026-10-30",
+      "kind": "gidenler"
+    }
+  ],
+  "cover": {
+    "state": "yok",
+    "gap": {
+      "tr": "Denetim kaydı.",
+      "en": "Check record."
+    }
+  },
+  "editorial": {
+    "desk": {
+      "tr": "Gidenler Seçki Masası",
+      "en": "The Gidenler Edit desk"
+    },
+    "method": {
+      "tr": "Denetim kaydı.",
+      "en": "Check record."
+    },
+    "visited": false
+  },
+  "preparedAt": "2026-10-30",
+  "publishedAt": null,
+  "updatedAt": null,
+  "newOpening": false,
+  "commercial": null,
+  "ownership": null
+}

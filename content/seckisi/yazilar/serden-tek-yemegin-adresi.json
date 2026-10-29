@@ -1,0 +1,123 @@
+{
+  "slug": "serden-tek-yemegin-adresi",
+  "kind": "kesif",
+  "status": "kontrol",
+  "title": {
+    "tr": "Tek yemeğin adresi: Şirinevler'de cağ kebabı",
+    "en": "One dish, one address: cağ kebabı in Şirinevler"
+  },
+  "dek": {
+    "tr": "Serden Erzurum Cağ Kebabı 2011'den beri aynı adreste ve tek şube. Menünün merkezinde tek bir yemek var.",
+    "en": "Serden Erzurum Cağ Kebabı has been at the same address since 2011, with no other branches. Its menu is built around a single dish."
+  },
+  "why": {
+    "tr": "Bu kadar kısa bir menü, bir yerin ne yapmak istediğini açıkça söyler. Gidenler bu restoranı yeni ele aldı; restoran yeni açılmış değil.",
+    "en": "A menu this short says plainly what a place is about. This is a new find for Gidenler, not a new opening."
+  },
+  "body": {
+    "tr": [
+      {
+        "p": "Cağ kebabı Erzurum'un yemeği: et yatay bir şişte, ateşin karşısında pişiyor; kesilip küçük şişlere dizilerek servis ediliyor. Serden'de bir porsiyon iki şiş ve 600 ₺; ilave şiş istenebiliyor. Yanında soğan söğüş, acılı ezme ve biber turşusu geliyor."
+      },
+      {
+        "p": "Menünün geri kalanı kısa: mercimek çorbası (140 ₺), çoban salata (75 ₺), manda yoğurdu (180 ₺) ve Erzurum usulü cevizli kadayıf dolması (160 ₺). İçeceklerde açık ayran ve şalgam var; alkollü içecek servis edilmiyor ve etlerin helal olduğu belirtiliyor."
+      },
+      {
+        "p": "Fiyatlar 1 Eylül 2026'dan geçerli ve KDV dahil."
+      }
+    ],
+    "en": [
+      {
+        "p": "Cağ kebabı is a dish from Erzurum: the meat cooks on a horizontal spit facing the fire, then is sliced off and threaded onto small skewers to serve. At Serden a portion is two skewers for 600 TL, and you can ask for extra skewers. It comes with sliced onion, spicy ezme and pickled peppers."
+      },
+      {
+        "p": "The rest of the menu is short: lentil soup (140 TL), shepherd's salad (75 TL), water buffalo yoghurt (180 TL) and kadayıf dolması, an Erzurum-style shredded pastry filled with walnuts (160 TL). To drink there is ayran and şalgam; no alcohol is served, and the restaurant states that its meat is halal."
+      },
+      {
+        "p": "Prices are valid from 1 September 2026 and include VAT."
+      }
+    ]
+  },
+  "know": {
+    "tr": [
+      "Her gün 12.00–23.00 açık; dini bayramlarda kapalı.",
+      "Ön bahçe ve üst kat salonu gruplar için düzenlenebiliyor; sitede online rezervasyon var.",
+      "Adres: Şirinevler Mah., Dereboyu Cad., Bayburt Sk. No:10, Bahçelievler. Telefon: +90 212 441 41 57."
+    ],
+    "en": [
+      "Open every day 12:00–23:00; closed on religious holidays.",
+      "The front garden and the upstairs room can be arranged for groups; the website takes online reservations.",
+      "Address: Şirinevler Mah., Dereboyu Cad., Bayburt Sk. No:10, Bahçelievler. Phone: +90 212 441 41 57."
+    ]
+  },
+  "venues": [
+    {
+      "slug": "serden-erzurum-cag-kebabi-bahcelievler"
+    }
+  ],
+  "sources": [
+    {
+      "title": {
+        "tr": "Serden Cağ Kebabı — menü (1 Eylül 2026'dan geçerli)",
+        "en": "Serden Cağ Kebabı — menu (valid from 1 September 2026)"
+      },
+      "publisher": {
+        "tr": "Serden Cağ Kebabı (resmî site)",
+        "en": "Serden Cağ Kebabı (official website)"
+      },
+      "url": "https://serdencagkebabi.com/menu",
+      "checkedAt": "2026-10-29",
+      "kind": "isletme"
+    },
+    {
+      "title": {
+        "tr": "Serden Cağ Kebabı — adres, saatler ve rezervasyon",
+        "en": "Serden Cağ Kebabı — address, hours and reservations"
+      },
+      "publisher": {
+        "tr": "Serden Cağ Kebabı (resmî site)",
+        "en": "Serden Cağ Kebabı (official website)"
+      },
+      "url": "https://serdencagkebabi.com/",
+      "checkedAt": "2026-10-29",
+      "kind": "isletme"
+    },
+    {
+      "title": {
+        "tr": "Serden Erzurum Cağ Kebabı — Gidenler restoran profili",
+        "en": "Serden Erzurum Cağ Kebabı — Gidenler restaurant profile"
+      },
+      "publisher": {
+        "tr": "Gidenler",
+        "en": "Gidenler"
+      },
+      "url": "https://www.gidenler.com/mekan/serden-erzurum-cag-kebabi-bahcelievler/",
+      "checkedAt": "2026-10-29",
+      "kind": "gidenler"
+    }
+  ],
+  "cover": {
+    "state": "yok",
+    "gap": {
+      "tr": "Kullanım izni doğrulanmış bir fotoğraf yok. İşletmenin sitesindeki görseller izin alınmadan kullanılmadı.",
+      "en": "No photo with verified usage rights yet. Images on the restaurant's website were not used without permission."
+    }
+  },
+  "editorial": {
+    "desk": {
+      "tr": "Gidenler Seçki Masası",
+      "en": "The Gidenler Edit desk"
+    },
+    "method": {
+      "tr": "Yayımlanmış resmî kaynaklardan derlendi; yazı için mekân ziyareti yapılmadı. Taslak yapay zekâ yardımıyla hazırlandı ve yayından önce editör kontrolünden geçer.",
+      "en": "Compiled from published official sources; no visit was made for this piece. The draft was prepared with AI assistance and is checked by an editor before publication."
+    },
+    "visited": false
+  },
+  "preparedAt": "2026-10-30",
+  "publishedAt": null,
+  "updatedAt": null,
+  "newOpening": false,
+  "commercial": null,
+  "ownership": null
+}

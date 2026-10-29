@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { seckiNavVisible } from "@/lib/seckisi";
 
 /* Demo örneklerine giden bağlantılar (uzman profili, liste, işletme paneli) yalnız yatırımcı demosunda. */
 const DEMO_ONLY = new Set(["/@denizyer/", "/liste/istanbulda-japon-mutfagi-2026/", "/isletme/moda-lokantasi/"]);
 const ALL_COLS: Array<[string, Array<[string, string]>]> = [
-  ["Gidenler", [["Keşfet", "/kesfet/"], ["Ara", "/ara/"], ["Sor Gidenler", "/sor/"], ["Nasıl çalışır", "/nasil-calisir/"]]],
+  ["Gidenler", [["Keşfet", "/kesfet/"], ["Seçki", "/seckisi/"], ["Ara", "/ara/"], ["Sor Gidenler", "/sor/"], ["Nasıl çalışır", "/nasil-calisir/"]]],
   ["Topluluk", [["Uzmanlar", "/@denizyer/"], ["Listeler", "/liste/istanbulda-japon-mutfagi-2026/"], ["Benim Gidenler'im", "/benim/"], ["Kurallar", "/kurallar/"]]],
   ["İşletmeler", [["İşletmeler için", "/isletmeler/"], ["İşletme paneli", "/isletme/moda-lokantasi/"]]],
   ["Güven", [["Nasıl çalışır", "/nasil-calisir/"], ["Kurallar", "/kurallar/"], ["Hukuki başvuru", "/hukuki-basvuru/"]]],
 ];
-const COLS = ALL_COLS.map(([t, links]) => [t, links.filter(([, h]) => DEMO_VISIBLE || !DEMO_ONLY.has(h))] as [string, Array<[string, string]>]);
+/* "Seçki" yalnız okunacak yazı varken (yayında; Preview'da kontrol bekleyenler de). */
+const SECKI = new Set(["/seckisi/"]);
+const COLS = ALL_COLS.map(([t, links]) => [t, links.filter(([, h]) => (DEMO_VISIBLE || !DEMO_ONLY.has(h)) && (!SECKI.has(h) || seckiNavVisible()))] as [string, Array<[string, string]>]);
 
 /** Gerçek site mimarisi: her bağlantı bir yere gider. Mobilde iki sütun. */
 export function Footer() {

@@ -1,0 +1,110 @@
+{
+  "slug": "efes-duatepede-tas-firin",
+  "kind": "kesif",
+  "status": "kontrol",
+  "title": {
+    "tr": "Duatepe'de taş fırın: Efes Pide & Lahmacun",
+    "en": "A stone oven in Duatepe: Efes Pide & Lahmacun"
+  },
+  "dek": {
+    "tr": "Şişli Duatepe'de 1998'den beri pide ve lahmacun yapan bir salon. Lahmacun 160 ₺'den, pideler 300 ₺'den başlıyor.",
+    "en": "A pide and lahmacun parlour in Duatepe, Şişli, since 1998. Lahmacun starts at 160 TL, pide at 300 TL."
+  },
+  "why": {
+    "tr": "Seçkinin yalnız pahalı sofralardan oluşmasını istemedik. Efes'in tek işi pide ve lahmacun, menüsünü de fiyatıyla açıkça yayımlıyor. Gidenler için yeni bir keşif; yeni açılmış bir restoran değil.",
+    "en": "We did not want the Edit to be only about expensive tables. Efes does one thing, pide and lahmacun, and publishes its menu with prices. It is a new find for Gidenler, not a new opening."
+  },
+  "body": {
+    "tr": [
+      {
+        "p": "İşletme 1998'den beri taş fırında pişirdiğini söylüyor. Menüde dört lahmacun var: evin adını taşıyan Efes lahmacun 160 ₺; etibol, Antep usulü ve kaşarlı lahmacun 180 ₺."
+      },
+      {
+        "p": "Pidelerde on bir çeşit 300 ile 420 ₺ arasında: kaşarlı ve kıymalı 300 ₺, kuşbaşılı 330 ₺, karışık 380 ₺, pastırmalı kaşarlı 400 ₺. En pahalısı Efes Bomba, 420 ₺. Yanına ezogelin çorbası 100 ₺."
+      },
+      {
+        "p": "Menüde tarih yok; fiyatlar 29 Ekim 2026'da işletmenin sitesinde görüldüğü gibi."
+      }
+    ],
+    "en": [
+      {
+        "p": "The restaurant says it has been baking in a stone oven since 1998. There are four kinds of lahmacun: the house Efes lahmacun at 160 TL; etibol (extra meat), Antep-style and cheese lahmacun at 180 TL."
+      },
+      {
+        "p": "There are eleven pides between 300 and 420 TL: cheese and minced meat at 300 TL, diced meat at 330 TL, mixed at 380 TL, pastırma with cheese at 400 TL. The most expensive is the Efes Bomba at 420 TL. Ezogelin soup on the side is 100 TL."
+      },
+      {
+        "p": "The menu is undated; prices are as shown on the restaurant's website on 29 October 2026."
+      }
+    ]
+  },
+  "know": {
+    "tr": [
+      "Gel-al ve paket servis var; site paket servisin Şişli, Feriköy, Bomonti ve Kurtuluş çevresine yapıldığını belirtiyor.",
+      "Çalışma saatleri sitede yayımlanmıyor; gitmeden telefonla sorun: +90 212 225 11 79.",
+      "Adres: Duatepe, Avukat Cd. 17/B, Şişli."
+    ],
+    "en": [
+      "Takeaway and delivery are available; the website says it delivers around Şişli, Feriköy, Bomonti and Kurtuluş.",
+      "Opening hours are not published on the website; call before going: +90 212 225 11 79.",
+      "Address: Duatepe, Avukat Cd. 17/B, Şişli."
+    ]
+  },
+  "venues": [
+    {
+      "slug": "efes-pide-ve-lahmacun-sisli"
+    }
+  ],
+  "sources": [
+    {
+      "title": {
+        "tr": "Efes Pide & Lahmacun — menü, adres ve paket servis",
+        "en": "Efes Pide & Lahmacun — menu, address and delivery"
+      },
+      "publisher": {
+        "tr": "Efes Pide & Lahmacun (resmî site)",
+        "en": "Efes Pide & Lahmacun (official website)"
+      },
+      "url": "https://efespidelahmacun.com.tr/",
+      "checkedAt": "2026-10-29",
+      "kind": "isletme"
+    },
+    {
+      "title": {
+        "tr": "Efes Pide & Lahmacun — Gidenler restoran profili",
+        "en": "Efes Pide & Lahmacun — Gidenler restaurant profile"
+      },
+      "publisher": {
+        "tr": "Gidenler",
+        "en": "Gidenler"
+      },
+      "url": "https://www.gidenler.com/mekan/efes-pide-ve-lahmacun-sisli/",
+      "checkedAt": "2026-10-29",
+      "kind": "gidenler"
+    }
+  ],
+  "cover": {
+    "state": "yok",
+    "gap": {
+      "tr": "Kullanım izni doğrulanmış bir fotoğraf yok. İşletmenin sitesindeki görseller izin alınmadan kullanılmadı.",
+      "en": "No photo with verified usage rights yet. Images on the restaurant's website were not used without permission."
+    }
+  },
+  "editorial": {
+    "desk": {
+      "tr": "Gidenler Seçki Masası",
+      "en": "The Gidenler Edit desk"
+    },
+    "method": {
+      "tr": "Yayımlanmış resmî kaynaklardan derlendi; yazı için mekân ziyareti yapılmadı. Taslak yapay zekâ yardımıyla hazırlandı ve yayından önce editör kontrolünden geçer.",
+      "en": "Compiled from published official sources; no visit was made for this piece. The draft was prepared with AI assistance and is checked by an editor before publication."
+    },
+    "visited": false
+  },
+  "preparedAt": "2026-10-30",
+  "publishedAt": null,
+  "updatedAt": null,
+  "newOpening": false,
+  "commercial": null,
+  "ownership": null
+}

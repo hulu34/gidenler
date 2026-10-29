@@ -1,0 +1,156 @@
+{
+  "slug": "balikci-sabahattin-menuyu-okumak",
+  "kind": "kesif",
+  "status": "kontrol",
+  "title": {
+    "tr": "Balıkçı Sabahattin'de menüyü okumak",
+    "en": "Reading the menu at Balıkçı Sabahattin"
+  },
+  "dek": {
+    "tr": "Cankurtaran'daki balık lokantasında mezeler iki ve dört kişilik fiyatlanıyor, bazı balıkların fiyat birimi yazmıyor. Menüyü doğru okumak hesabı da önceden netleştiriyor.",
+    "en": "At this fish restaurant in Cankurtaran, meze are priced for two or for four, and some fish are listed without a unit. Reading the menu carefully makes the bill clearer in advance."
+  },
+  "why": {
+    "tr": "Sultanahmet'in hemen arkasındaki bu lokantayı menünün yapısı üzerinden anlattık; burada hesabı belirleyen şey yemekler kadar menünün nasıl yazıldığı. Gidenler için yeni bir keşif; yeni açılmış bir restoran değil.",
+    "en": "We approached this restaurant just behind Sultanahmet through the structure of its menu, because here the way the menu is written shapes the bill as much as the dishes do. It is a new find for Gidenler, not a new opening."
+  },
+  "body": {
+    "tr": [
+      {
+        "p": "İşletmenin anlatımına göre Balıkçı Sabahattin 1927 yapımı ahşap bir konakta hizmet veriyor ve ailenin kökeni Trilye'ye dayanıyor."
+      },
+      {
+        "h": "Mezeler kişi sayısına göre"
+      },
+      {
+        "p": "Soğuk ve sıcak mezeler tabak başına değil, iki ya da dört kişilik fiyatlanıyor. Soğuklarda iki kişilik fiyatlar 330 ile 500 ₺, dört kişilikler 500 ile 800 ₺ arasında. Sıcaklarda karides güveç iki kişilik 750 ₺, dört kişilik 950 ₺; jumbo karides 800 ve 1.600 ₺. Izgara ahtapotun 100 gramı 700 ₺."
+      },
+      {
+        "h": "Balıkta birim sorusu"
+      },
+      {
+        "p": "Mezgit, tekir, palamut, uskumru, levrek, çipura ve lüferin yanında 950 ile 1.400 ₺ arasında fiyatlar yazıyor, ama bunun porsiyon mu kilo mu olduğu belirtilmiyor. Dil, kırlangıç, barbunya, kalkan ve dülger kiloyla satılıyor ve fiyatı soruluyor. Böcek ve istakozun kilosu 6.000 ₺."
+      },
+      {
+        "p": "Menüde 150 ₺ kuver yazıyor. Menüde tarih yok; fiyatlar 29 Ekim 2026'da resmî menü dosyasında görüldüğü gibi."
+      }
+    ],
+    "en": [
+      {
+        "p": "By the restaurant's own account, Balıkçı Sabahattin occupies a wooden house built in 1927, and the family's roots go back to Trilye."
+      },
+      {
+        "h": "Meze priced by the table"
+      },
+      {
+        "p": "Cold and hot meze are priced not per plate but for two or for four. Cold meze run from 330 to 500 TL for two and from 500 to 800 TL for four. Among the hot dishes, prawn güveç is 750 TL for two and 950 TL for four; jumbo prawns are 800 and 1,600 TL. Grilled octopus is 700 TL per 100 grams."
+      },
+      {
+        "h": "The question of units"
+      },
+      {
+        "p": "Whiting, striped red mullet (tekir), bonito, mackerel, sea bass, sea bream and bluefish are listed at between 950 and 1,400 TL, but the menu does not say whether that is per portion or per kilo. Sole, gurnard, red mullet (barbunya), turbot and John Dory are sold by the kilo, price on request. Slipper lobster and lobster are 6,000 TL per kilo."
+      },
+      {
+        "p": "The menu lists a cover charge of 150 TL. It is undated; prices are as shown in the official menu file on 29 October 2026."
+      }
+    ]
+  },
+  "know": {
+    "tr": [
+      "Öğle menüsü 12.00–16.00 arası, kişi başı 35 €.",
+      "Rezervasyon sitedeki rezervasyon sayfasından, telefonla (+90 212 458 18 24) ya da WhatsApp üzerinden.",
+      "İşletme vale, otopark ve engelli misafirlere yardım hizmeti verdiğini belirtiyor; erişim koşullarını gitmeden sorun.",
+      "Adres: Cankurtaran Mah., Seyit Hasan Kuyu Sk. No:1, Fatih."
+    ],
+    "en": [
+      "Lunch menu 12:00–16:00, 35 € per person.",
+      "Book through the reservations page on the website, by phone (+90 212 458 18 24) or on WhatsApp.",
+      "The restaurant says it offers valet service, parking and assistance for guests with disabilities; ask about access before you go.",
+      "Address: Cankurtaran Mah., Seyit Hasan Kuyu Sk. No:1, Fatih."
+    ]
+  },
+  "venues": [
+    {
+      "slug": "balikci-sabahattin-fatih"
+    }
+  ],
+  "sources": [
+    {
+      "title": {
+        "tr": "Balıkçı Sabahattin — menü (PDF, tarihsiz)",
+        "en": "Balıkçı Sabahattin — menu (PDF, undated)"
+      },
+      "publisher": {
+        "tr": "Balıkçı Sabahattin (resmî site)",
+        "en": "Balıkçı Sabahattin (official website)"
+      },
+      "url": "https://www.balikcisabahattin.com/_files/ugd/d39677_7ea27db25672453c8a29faeb650b700d.pdf",
+      "checkedAt": "2026-10-29",
+      "kind": "isletme"
+    },
+    {
+      "title": {
+        "tr": "Balıkçı Sabahattin — hakkında, hizmetler ve öğle menüsü",
+        "en": "Balıkçı Sabahattin — about, services and lunch menu"
+      },
+      "publisher": {
+        "tr": "Balıkçı Sabahattin (resmî site)",
+        "en": "Balıkçı Sabahattin (official website)"
+      },
+      "url": "https://www.balikcisabahattin.com/",
+      "checkedAt": "2026-10-29",
+      "kind": "isletme"
+    },
+    {
+      "title": {
+        "tr": "Balıkçı Sabahattin — rezervasyon",
+        "en": "Balıkçı Sabahattin — reservations"
+      },
+      "publisher": {
+        "tr": "Balıkçı Sabahattin (resmî site)",
+        "en": "Balıkçı Sabahattin (official website)"
+      },
+      "url": "https://www.balikcisabahattin.com/reservations",
+      "checkedAt": "2026-10-29",
+      "kind": "isletme"
+    },
+    {
+      "title": {
+        "tr": "Balıkçı Sabahattin — Gidenler restoran profili",
+        "en": "Balıkçı Sabahattin — Gidenler restaurant profile"
+      },
+      "publisher": {
+        "tr": "Gidenler",
+        "en": "Gidenler"
+      },
+      "url": "https://www.gidenler.com/mekan/balikci-sabahattin-fatih/",
+      "checkedAt": "2026-10-29",
+      "kind": "gidenler"
+    }
+  ],
+  "cover": {
+    "state": "yok",
+    "gap": {
+      "tr": "Kullanım izni doğrulanmış bir fotoğraf yok. İşletmenin sitesindeki görseller izin alınmadan kullanılmadı.",
+      "en": "No photo with verified usage rights yet. Images on the restaurant's website were not used without permission."
+    }
+  },
+  "editorial": {
+    "desk": {
+      "tr": "Gidenler Seçki Masası",
+      "en": "The Gidenler Edit desk"
+    },
+    "method": {
+      "tr": "Yayımlanmış resmî kaynaklardan derlendi; yazı için mekân ziyareti yapılmadı. Taslak yapay zekâ yardımıyla hazırlandı ve yayından önce editör kontrolünden geçer.",
+      "en": "Compiled from published official sources; no visit was made for this piece. The draft was prepared with AI assistance and is checked by an editor before publication."
+    },
+    "visited": false
+  },
+  "preparedAt": "2026-10-30",
+  "publishedAt": null,
+  "updatedAt": null,
+  "newOpening": false,
+  "commercial": null,
+  "ownership": null
+}

@@ -7,7 +7,8 @@ import { searchV3 } from "@/lib/search";
 import { score1 } from "@/lib/format";
 import { DemoIndicator } from "@/components/demo/DemoBoot";
 
-export function Header() {
+/** showSeckisi: "Seçki" bağlantısı yalnız okunacak yazı varken (sunucuda hesaplanır, layout verir). */
+export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
   const router = useRouter();
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
@@ -117,6 +118,14 @@ export function Header() {
           >
             Sor
           </Link>
+          {showSeckisi && (
+            <Link
+              href="/seckisi/"
+              className="hidden text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink sm:block"
+            >
+              Seçki
+            </Link>
+          )}
           <Link
             href="/kesfet/"
             className="hidden text-[12px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink sm:block"
