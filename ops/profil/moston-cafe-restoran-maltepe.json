@@ -1,0 +1,979 @@
+{
+ "slug": "moston-cafe-restoran-maltepe",
+ "description": {
+  "value": "Maltepe'de ev yemekleri, ızgaralar ve zeytinyağlılar sunan bir lokanta; kendi sitesinden adrese teslim ve gel-al sipariş alıyor.",
+  "provider": "official_site",
+  "url": "https://www.mostononline.com/maltepe/Menu",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.mostononline.com/",
+  "provider": "official_site",
+  "url": "https://www.mostononline.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Menü ve fiyatlar Maltepe şubesinin online sipariş sayfasından alındı; restoranda farklı olabilir.",
+   "provider": "official_site",
+   "url": "https://www.mostononline.com/maltepe/Menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Online siparişte adrese teslim ve gel-al seçenekleri var.",
+   "provider": "official_site",
+   "url": "https://www.mostononline.com/maltepe/Menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "paket": true
+  },
+  "provider": "official_site",
+  "url": "https://www.mostononline.com/maltepe/Menu",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.mostononline.com/maltepe/Menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Mercimek Çorbası",
+      "priceTry": 147.9,
+      "description": "Kırmızı mercimekten hazırlanan, besleyici ve lezzetli geleneksel çorba. Sıcak servis edilir. (300gr)"
+     },
+     {
+      "name": "Ezogelin Çorbası",
+      "priceTry": 147.9,
+      "description": "Geleneksel Ezogelin çorbası 300 gram porsiyon ile sunulur. Kırmızı mercimek bulgur ve domates ile hazırlanan bu lezzetli çorba isteğe göre limon ile servis edilir."
+     },
+     {
+      "name": "Domates Çorbası",
+      "priceTry": 147.9,
+      "description": "Domates suyu ile hazırlanan lezzetli çorba 300 gram porsiyon halinde sunulur İsteğe bağlı kaşar peyniri ile servis edilebilir"
+     },
+     {
+      "name": "Köz Patlıcan Çorbası",
+      "priceTry": 174.9,
+      "description": "Közde kavrulmuş patlıcanın lezzetli çorbası. Yumuşak ve kremsi dokusuyla damağınızı okşayan geleneksel bir lezzet. 300 gr olarak servis edilir."
+     },
+     {
+      "name": "Zerdeçallı Sebze Çorbası",
+      "priceTry": 147.9,
+      "description": "Taze sebzeler ve zerdeçal ile hazırlanan lezzetli çorba 300 gr olarak servis edilir Sıcak ve besleyici bir seçim"
+     },
+     {
+      "name": "Brokoli Çorbası",
+      "priceTry": 147.9,
+      "description": "Taze brokoli ile hazırlanan sağlıklı ve lezzetli çorba. Yumuşak brokoli parçaları, sebze suyu ve baharatlarla birleştirilerek oluşturulan bu çorba günlük beslenmeniz için ideal bir seçimdir."
+     },
+     {
+      "name": "Yayla Çorbası",
+      "priceTry": 147.9,
+      "description": "Geleneksel Yayla çorbası, yoğurt, pirinç ve tavuk suyuyla hazırlanan lezzetli ve besleyici bir çorba. Sıcak servis edilir. 300gr"
+     },
+     {
+      "name": "Şehriyeli Tavuk Çorbası",
+      "priceTry": 160.9,
+      "description": "Sıcak ve besleyici şehriyeli tavuk çorbası. 300 gram porsiyon olarak sunulur. İsteğe göre limon ile servis edilir."
+     },
+     {
+      "name": "Kıymalı Tarhana Çorbası",
+      "priceTry": 174.9,
+      "description": "Geleneksel kıymalı tarhana çorbası, tarhana unu ve ince kıymanın mükemmel uyumundan oluşan sıcak ve besleyici bir çorba. Ev yapımı lezzeti ile damak tadını hoşnut edecek."
+     },
+     {
+      "name": "Etli Düğün Çorbası",
+      "priceTry": 405.9,
+      "description": "Geleneksel düğün çorbası et suyu ve ince bulgur ile hazırlanmış lezzetli bir çorba. Sıcak servis edilir ve besleyici içeriği ile özel günlerin vazgeçilmez lezzetidir."
+     },
+     {
+      "name": "Beyran Çorbası",
+      "priceTry": 496.9,
+      "description": "Geleneksel Beyran çorbası et suyu ve baharatlarla hazırlanan sıcak ve besleyici bir çorba. Yumuşak et parçaları ve aromalı baharatlarla zenginleştirilmiş lezzetli bir seçim."
+     },
+     {
+      "name": "İşkembe Çorbası",
+      "priceTry": 335.9,
+      "description": "Geleneksel İşkembe çorbası, taze işkembe ile hazırlanmış, sarımsak ve limon aromasıyla zenginleştirilmiş sıcak ve besleyici bir çorba. Özel baharatlarla tatlandırılarak sunulur."
+     },
+     {
+      "name": "Terbiyeli Kelle Paça Çorbası",
+      "priceTry": 335.9,
+      "description": "Geleneksel Anadolu mutfağının en ünlü çorbalarından biri olan terbiyeli kelle paça çorbası. Uzun saatler boyunca pişirilen kelle ve paçalar yumuşak bir dokuya ulaşır. Terbiye sosu ile zenginleştirilen bu çorba limon ve baharat ile lezzetlendirilir. S"
+     }
+    ]
+   },
+   {
+    "title": "Ev Yemekleri - Sebzeli",
+    "items": [
+     {
+      "name": "Sebzeli Kuru Fasulye",
+      "priceTry": 154.9,
+      "description": "Geleneksel Türk mutfağının vazgeçilmez yemeği olan kuru fasulye, özenle pişirilmiş ve lezzetli sosunda servis edilir. 300 gram olarak sunulur."
+     },
+     {
+      "name": "Nohut",
+      "priceTry": 165.9,
+      "description": "Geleneksel ev yemeği nohut, özenle pişirilmiş ve baharatlarla tatlandırılmış. Besleyici ve lezzetli bir seçim ailece keyifle yenebilir."
+     },
+     {
+      "name": "Fırın Sebze",
+      "priceTry": 152.9,
+      "description": "Mevsimsel sebzeler özenle hazırlanarak fırında yavaş yavaş pişirilir. Zeytinyağı tuz ve baharat ile lezzeti arttırılan bu sağlıklı yemek sıcak olarak servis edilir."
+     },
+     {
+      "name": "Bamya",
+      "priceTry": 203.9,
+      "description": "Taze bamya sebzesi zeytinyağı domates ve soğan ile yavaş yavaş pişirilerek hazırlanan geleneksel bir ev yemeği. Yumuşak ve lezzetli bamya dilimlerinin içinde eriyen domates sosunun tadı damağınızda kalacaktır."
+     },
+     {
+      "name": "Patatesli Ispanaklı Graten",
+      "priceTry": 183.9,
+      "description": "Taze ıspanak ve yumuşak patates katmanlarından oluşan lezzetli graten. Üzeri kaşar peyniri ve krem sosla kaplanarak fırında altın sarısı olana kadar pişirilmiştir. Sağlıklı ve doyurucu bir ev yemeği."
+     },
+     {
+      "name": "Taze Fasulye",
+      "priceTry": 166.9,
+      "description": "Taze fasulye, mevsiminde toplanan en iyi kalitedeki fasulyeler kullanılarak hazırlanır. Zeytinyağı, soğan ve domates ile birlikte pişirilerek lezzetli bir sebze yemeği haline getirilir. 250 gr olarak servis edilir."
+     },
+     {
+      "name": "Sebze Türlü",
+      "priceTry": 152.9,
+      "description": "Mevsimsel taze sebzelerden hazırlanan lezzetli sebze türlüsü. Domates biber patlıcan ve soğan gibi sebzeler özel baharatlarla pişirilerek sunulur. 250 gram olarak servis edilmektedir."
+     },
+     {
+      "name": "Bezelye",
+      "priceTry": 165.9,
+      "description": "Taze bezelye sebzesi özenle hazırlanarak 250 gram olarak sunulmaktadır. Sağlıklı ve besleyici bir sebze yemeği seçeneğidir."
+     }
+    ]
+   },
+   {
+    "title": "Ev Yemekleri - Etli",
+    "items": [
+     {
+      "name": "Arnavut Ciğeri",
+      "priceTry": 436.9,
+      "description": "Taze dana karaciğeri özenle hazırlanmış ve lezzetli baharatlarla tatlandırılmış geleneksel Arnavut ciğeri. 250 gram kaliteli et ürünü sıcak servis edilir."
+     },
+     {
+      "name": "Ekşili Köfte",
+      "priceTry": 308.9,
+      "description": "Lezzetli ekşili köfte, geleneksel ev yemeği usulü hazırlanmış. Baharat ve ekşi sosun mükemmel uyumunun tadını çıkarın. (250 gr)"
+     },
+     {
+      "name": "Et Sote",
+      "priceTry": 448.9,
+      "description": "Taze dana eti ve sebzelerle hazırlanan lezzetli et sote. Soğan, domates ve baharatlarla birlikte pişirilen geleneksel ev yemeği. (230 gr.)"
+     },
+     {
+      "name": "Etli Biber Dolma",
+      "priceTry": 249.9,
+      "description": "Taze yeşil biberlerin içine baharat ve soğanla tatlandırılmış kıyma doldurularak hazırlanan geleneksel Etli Biber Dolma. Domates sosunda pişirilerek servis edilir."
+     },
+     {
+      "name": "Etli Nohut",
+      "priceTry": 218.9,
+      "description": "Geleneksel Türk mutfağının lezzetli etli nohut yemeği. Yumuşak nohutlar ve ince doğranmış et parçaları özel baharatlarla pişirilerek hazırlanmıştır. Sıcak servis edilir. (370 gr)"
+     },
+     {
+      "name": "Etli Kuru Fasulye",
+      "priceTry": 218.9,
+      "description": "Geleneksel Türk mutfağının vazgeçilmez yemeği etli kuru fasulye. Yumuşak pişirilmiş kuru fasulyeler ince kıyılmış et ve baharatlarla harmanlı olarak sunulur. Sağlıklı ve besleyici bir seçenek. (250gr)"
+     },
+     {
+      "name": "Etli Taze Fasulye",
+      "priceTry": 231.9,
+      "description": "Taze fasulye ve ince kıyılmış et ile hazırlanan geleneksel ev yemeği. Domates ve soğan ile tatlandırılarak yavaş ateşte pişirilmiştir. Sağlıklı ve besleyici bir seçim. (250 gr)"
+     },
+     {
+      "name": "Etli Yaprak Sarma",
+      "priceTry": 244.9,
+      "description": "Taze asma yaprağına sarılmış, baharat ve pirinç ile harmanlanmış kıyma dolgusu içeren geleneksel etli yaprak sarması. Yavaş pişirilerek hazırlanır. (6 ad)"
+     },
+     {
+      "name": "İzmir Köfte",
+      "priceTry": 334.9,
+      "description": "Ev usulü tarifle yapılan geleneksel İzmir köftesi özenle hazırlanmış sulu ve lezzetli bir yemektir. (250 gr)"
+     },
+     {
+      "name": "Patlıcan Musakka",
+      "priceTry": 254.9,
+      "description": "Lezzetli patlıcan musakka, katmanlar halinde hazırlanmış taze patlıcan, domates ve kavrulmuş kıymanın mükemmel uyumu. Fırında pişirilmiş, sıcak ve doyurucu bir ev yemeği. (270 gr)"
+     },
+     {
+      "name": "Karnıyarık",
+      "priceTry": 280.9,
+      "description": "Uzun patlıcan yarısına alınan dana kıyması soğan ve baharat ile birlikte pişirilerek sunulan geleneksel Türk yemeği. Sıcak servis edilir."
+     },
+     {
+      "name": "Püreli Karnıyarık",
+      "priceTry": 315.9,
+      "description": "Tereyağlı Patates Püresi yatağında, Uzun patlıcan yarısına alınan dana kıyması soğan ve baharat ile birlikte pişirilerek sunulan geleneksel Türk yemeği. Sıcak servis edilir."
+     },
+     {
+      "name": "Püreli Kadınbudu Köfte",
+      "priceTry": 317.9,
+      "description": "Geleneksel Kadınbudu köfte pirinç ve ince kıyılmış kıyma karışımından yapılmış içinde püre ve lezzetli baharatlar barındıran 2 adet olarak servis edilen enfes bir ana yemek"
+     },
+     {
+      "name": "Kıymalı Patates Oturtma",
+      "priceTry": 252.9,
+      "description": "Yumuşak patates ve baharatlı kıymanın uyumlu birleşiminden oluşan geleneksel bir ana yemek 250 gr olarak sunulur"
+     },
+     {
+      "name": "Sebzeli Köfte",
+      "priceTry": 331.9,
+      "description": "Taze sebzeler ve baharatlarla hazırlanan lezzetli köfte 250 gr olarak sunulur Yumuşak yapısıyla damak tadınızı tatmin edecek geleneksel bir lezzet"
+     },
+     {
+      "name": "Püreli Et Sote",
+      "priceTry": 478.9,
+      "description": "Tereyağlı Patates Püresi yatağında 180gr taze dana eti ve sebzelerle hazırlanan lezzetli et sote. Soğan, domates ve baharatlarla birlikte pişirilen geleneksel ev yemeği."
+     },
+     {
+      "name": "Beğendili Et Sote",
+      "priceTry": 489.9,
+      "description": "Patlıcan Beğendi yatağında 180gr taze dana eti ve sebzelerle hazırlanan lezzetli et sote. Soğan, domates ve baharatlarla birlikte pişirilen geleneksel ev yemeği."
+     },
+     {
+      "name": "Püreli Izgara Köfte",
+      "priceTry": 274.9,
+      "description": "Tereyağlı Patates Püresi yatağında 3 adet (120gr) Izgara Köfte"
+     },
+     {
+      "name": "Beğendili Izgara Köfte",
+      "priceTry": 285.9,
+      "description": "Patlıcan Beğendi Yatağında 3 adet (120gr) Izgara Köfte"
+     },
+     {
+      "name": "Karışık Izgara",
+      "priceTry": 223.9,
+      "description": "Lezzetli karışık ızgaramız 80 gr. sos ve baharatlarla hazırlanmış köfte ile 90 gr. marine edilmiş tavuk çöp şişten oluşmaktadır. Diyet öğünüdür, ancak yanına alacağınız yan lezzetler ile doyurucu hale getirilebilir."
+     }
+    ]
+   },
+   {
+    "title": "Ev Yemekleri - Tavuklu",
+    "items": [
+     {
+      "name": "Acı Soslu Tavuk",
+      "priceTry": 293.9,
+      "description": "Yumuşak tavuk bonfile mevsim sebzeleri ve özel baharatlarla hazırlanan lezzetli ev yemeği Acı ve aromatik sosla sunulan bu yemek damağınızı şenlendirecek. (250 gr.)"
+     },
+     {
+      "name": "Köri Soslu Tavuk",
+      "priceTry": 257.9,
+      "description": "Yumuşak tavuk etinin köri sosunun içinde pişirilmesiyle hazırlanan lezzetli bir ev yemeği. Aromatik baharatlar ve kremsi sosla birlikte sunulan bu yemek pirinç veya naan ekmeğiyle mükemmel bir kombinasyon oluşturur."
+     },
+     {
+      "name": "Dağ Kekikli Tavuk",
+      "priceTry": 276.9,
+      "description": "Taze dağ kekiği ile lezzetlendirilen yumuşak tavuk etinin ev usulü pişirilmiş hali. Aromatik baharatlar ve doğal malzemelerle hazırlanmış geleneksel bir lezzet."
+     },
+     {
+      "name": "Esnaf Usulü Tavuk Haşlama",
+      "priceTry": 242.9,
+      "description": "Geleneksel esnaf usulü hazırlanan tavuk haşlaması. Yumuşak ve sulu tavuk etinin içinde sebzeler ve lezzetli bir buyon ile sunulan, ev yemeğinin en özel halidir. Sıcak servis edilir."
+     },
+     {
+      "name": "Tavuk Baget Sebzeli",
+      "priceTry": 223.9,
+      "description": "Taze tavuk eti ile hazırlanan lezzetli baget ekmek taze sebzeler ve özel soslar ile sunulur. Sağlıklı ve doyurucu bir seçim."
+     },
+     {
+      "name": "Tavuk Sote",
+      "priceTry": 254.9,
+      "description": "Taze tavuk etinin sebzelerle birlikte tavada sotelerek hazırlandığı lezzetli ev yemeği. Soğan domates ve biber ile pişirilen tavuk sote sıcak olarak servis edilir. (220 gr)"
+     },
+     {
+      "name": "Beğendili Tavuk Sote",
+      "priceTry": 295.9,
+      "description": "Patlıcan Beğendi yatağında 180gr taze tavuk etinin sebzelerle birlikte tavada sotelerek hazırlandığı lezzetli ev yemeği. Soğan domates ve biber ile pişirilen tavuk sote sıcak olarak servis edilir."
+     },
+     {
+      "name": "Püreli Tavuk Sote",
+      "priceTry": 285.9,
+      "description": "Tereyağlı Patates Püresi yatağında 180gr taze tavuk etinin sebzelerle birlikte tavada sotelerek hazırlandığı lezzetli ev yemeği. Soğan domates ve biber ile pişirilen tavuk sote sıcak olarak servis edilir."
+     },
+     {
+      "name": "Tavuk Şiş (2 çöp)",
+      "priceTry": 254.9,
+      "description": "2 çöp 160gr Tavuk Kalça Şiş"
+     }
+    ]
+   },
+   {
+    "title": "Set Menüler",
+    "items": [
+     {
+      "name": "Karışık Izgara + Bulgur Pilavı + Salata + Pat. Kızr.",
+      "priceTry": 478.9,
+      "description": "2 ad.=80gr Köfte ve 90gr Tavuk Çöp Şiş, 200gr Bulgur Pilavı, Mevsim Salatası ve Patates Kızartma"
+     },
+     {
+      "name": "Beğendili Izgara Köfte + Bulgur Pilavı + Salata + Pat. Kızr.",
+      "priceTry": 509.9,
+      "description": "Patlıcan Beğendi Yatağında 3 adet (120gr) Izgara Köfte, 250gr Bulgur Pilavı, Mevsim Salatası ve Patates Kızartma"
+     },
+     {
+      "name": "Püreli Izgara Köfte + Bulgur Pilavı + Salata + Soğan Halkası",
+      "priceTry": 495.9,
+      "description": "Tereyağlı Patates Püresi yatağında 3 adet=120gr Izgara Köfte, 250gr Bulgur Pilavı, Mevsim Salatası, 3 ad. Soğan Halkası"
+     },
+     {
+      "name": "Şnitzel + Çıtır Fileto + Makarna Salatası + Kısır + Pat . Kızr.",
+      "priceTry": 488.9,
+      "description": "60gr Şnitzel, 70gr Çıtır fileto, 250gr Makarna Salatası, Kısır, Patates Kızartma"
+     },
+     {
+      "name": "Tavuk Şiş + Bulgur Pilavı + Salata + Pat. Kızr.",
+      "priceTry": 455.9,
+      "description": "2 çöp 160gr Tavuk Kalça Şiş, 250gr Bulgur Pilavı, Mevsim Salatası ve Patates Kızartma"
+     }
+    ]
+   },
+   {
+    "title": "Pilav Üstü Menüler",
+    "items": [
+     {
+      "name": "Pilav Üstü Kuru Fasulye",
+      "priceTry": 335.9,
+      "description": "250 gr Kuru Fasulye, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Etli Kuru Fasulye",
+      "priceTry": 396.9,
+      "description": "250 gr Etli Kuru Fasulye, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Nohut",
+      "priceTry": 343.9,
+      "description": "300 gr Nohut, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Taze Fasulye",
+      "priceTry": 343.9,
+      "description": "250 gr Taze Fasulye, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Etli Taze Fasulye",
+      "priceTry": 408.9,
+      "description": "250 gr Etli Taze Fasulye, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Sebze Türlü",
+      "priceTry": 332.9,
+      "description": "250 gr Sebze Türlü, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Bamya",
+      "priceTry": 380.9,
+      "description": "250 gr Bamya, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Bezelye",
+      "priceTry": 343.9,
+      "description": "250 gr Bezelye, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Patlıcan Musakka",
+      "priceTry": 428.9,
+      "description": "250 gr Patlıcan Muakka, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Patates Oturtma",
+      "priceTry": 425.9,
+      "description": "250 gr Kıymalı patates Oturtma, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Sebzeli Köfte",
+      "priceTry": 500.9,
+      "description": "250 gr Sebzeli Köfte, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Dana Arnavut Ciğeri",
+      "priceTry": 603.9,
+      "description": "170 gr Dana Arnavut Ciğeri, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Et Sote",
+      "priceTry": 614.9,
+      "description": "230 gr Bezelye, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Acı Soslu Tavuk",
+      "priceTry": 464.9,
+      "description": "250 gr acı soslu tavuk, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Dağ Kekikli Tavuk",
+      "priceTry": 451.9,
+      "description": "250 gr Dağ Kekikli Tavuk, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Köri Soslu Tavuk",
+      "priceTry": 469.9,
+      "description": "250 gr Köri Soslu Tavuk, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Tavuk Sote",
+      "priceTry": 430.9,
+      "description": "230 gr Tavuk Sote, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     },
+     {
+      "name": "Pilav Üstü Izgara Tavuk",
+      "priceTry": 440.9,
+      "description": "180 gr Izgara Tavuk Göğüs Bonfile, 250 gr seçeceğiniz pilav veya makarna ile birlikte sunulur. Mevsim salatası eşliğinde lezzetli bir kombinasyon."
+     }
+    ]
+   },
+   {
+    "title": "Yardımcı Yemekler",
+    "items": [
+     {
+      "name": "Şehriyeli Pirinç Pilavı",
+      "priceTry": 127.9,
+      "description": "Taze pirinç pilavı arpa şehriyeli hazırlanmış, hafif ve lezzetli bir yan yemek. Günlük öğünlerinizi tamamlamak için ideal seçim. (250 gr)"
+     },
+     {
+      "name": "Pirinç Pilavı",
+      "priceTry": 116.9,
+      "description": "Uzun taneli pirinçten özenle hazırlanan geleneksel pilav. Tereyağı ve et suyu ile pişirilerek hafif ve lezzetli bir yan yemek elde edilir. Her ısırımda yumuşak ve ağız tadı kaçıran bir deneyim."
+     },
+     {
+      "name": "Bulgur Pilavı",
+      "priceTry": 121.9,
+      "description": "Taze bulgur pilavı özenle hazırlanmış baharatlarla pişirilmiş lezzetli bir yardımcı yemek. (250 gr)"
+     },
+     {
+      "name": "Meyhane Usulü Bulgur Pilavı",
+      "priceTry": 121.9,
+      "description": "Geleneksel bulgur pilavı, ince bulgur taneleri ve aromatik baharatlarla hazırlanarak 250 gr olarak servis edilir"
+     },
+     {
+      "name": "Nohutlu Pilav",
+      "priceTry": 142.9,
+      "description": "Taze nohutlarla hazırlanan geleneksel pilav. Pirinç ve nohutun mükemmel uyumu ile hazırlanmış besleyici ve lezzetli bir yardımcı yemek. (250 gr)"
+     },
+     {
+      "name": "Fırın Makarna",
+      "priceTry": 166.9,
+      "description": "Özenle hazırlanmış fırın makarnası taze malzemelerle yapılmış lezzetli bir kombinasyon Tek kişilik porsiyon olarak sunulan bu yemek sıcak ve besleyici bir seçenektir"
+     },
+     {
+      "name": "Erişte",
+      "priceTry": 111.9,
+      "description": "Geleneksel erişte, ev yapımı taze makarna şeklinde hazırlanmış ve 250 gr olarak sunulur. Yumuşak dokusu ve lezzetli tadı ile her damağa hitap eden bir seçenektir."
+     },
+     {
+      "name": "Spagetti Bolonez (250 gr)",
+      "priceTry": 142.9,
+      "description": "İtalyan klasiği spaghetti bolognese, 250 gr porsiyon. Yumuşak makarna ile zengin domates ve et sosunun mükemmel uyumu. Taze malzemelerle hazırlanmış, lezzetli ve doyurucu bir seçim. (250 gr)"
+     },
+     {
+      "name": "Kıymalı Makarna",
+      "priceTry": 137.9,
+      "description": "Taze makarna ile ince kıymanın lezzetli birleşimi. Domates sosunda pişirilmiş, baharatlandırılmış ve servis için hazır. (250 gr)"
+     },
+     {
+      "name": "Sade Spagetti (Mini)",
+      "priceTry": 121.9,
+      "description": "Taze ve lezzetli sade spagetti 250 gram porsiyon halinde sunulmaktadır. İtalyan usulü hazırlanmış bu klasik makarna çeşidi her türlü sosla uyumludur."
+     },
+     {
+      "name": "Domates Soslu Makarna",
+      "priceTry": 132.9,
+      "description": "Taze domates sosunun içinde pişirilmiş yumuşak makarna. Sağlıklı ve lezzetli bir seçim. (250 gr)"
+     },
+     {
+      "name": "Mevsim Salatası",
+      "priceTry": 81.9,
+      "description": "Taze kıvırcık marul, havuç ve mor lahana ile hazırlanan mevsimlik salata. Hafif ve lezzetli bir yan yemek seçeneği."
+     },
+     {
+      "name": "Makarna Salatası",
+      "priceTry": 142.9,
+      "description": "Taze sebzeler ve hafif sosla hazırlanmış lezzetli makarna salatası. Günlük beslenmeniz için ideal seçim. (250 gr)"
+     },
+     {
+      "name": "Patates Püresi",
+      "priceTry": 152.9,
+      "description": "Yumuşak ve kremsi yapıda hazırlanan patates püresi tereyağ ile zenginleştirilmiş lezzetli bir yardımcı yemek. (220 gr)"
+     },
+     {
+      "name": "Cacık",
+      "priceTry": 106.9,
+      "description": "Taze yoğurt ve salatalık ile hazırlanan geleneksel Cacık. Soğuk olarak servis edilir ve her türlü yemeğin yanında mükemmel bir eşlik eder. (300 gr)"
+     },
+     {
+      "name": "Yoğurt",
+      "priceTry": 96.9,
+      "description": "Tam yağlı ve kaymaksız olarak hazırlanan 250 gramlık taze yoğurt. Sağlıklı ve besleyici bir seçim."
+     },
+     {
+      "name": "Karışık Turşu",
+      "priceTry": 76.9,
+      "description": "Taze sebzelerden hazırlanan lezzetli karışık geleneksel turşu. Her öğünle mükemmel eşlik eden tatlı ekşi lezzetli turşu. (160 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Mezeler",
+    "items": [
+     {
+      "name": "Atom",
+      "priceTry": 178.9,
+      "description": "Lezzetli Atom mezesi 200 gram olarak sunulmaktadır. Geleneksel tarif ile hazırlanan bu özel mezesi tadın ve kalitesi ile öne çıkmaktadır."
+     },
+     {
+      "name": "Şakşuka",
+      "priceTry": 190.9,
+      "description": "Şakşuka, patlıcan domates ve biber gibi sebzelerin zeytinyağında yavaş yavaş pişirilmesiyle hazırlanan lezzetli bir meze. Sıcak veya soğuk olarak servis edilir."
+     },
+     {
+      "name": "Yoğurtlu Köz Biber",
+      "priceTry": 178.9,
+      "description": "Közde kavrulmuş taze biberin üzerine dökülen yoğurt ve sarımsak sosunun lezzetli birleşimi. Zeytinyağı ve biber ile garnish edilerek servis edilir."
+     },
+     {
+      "name": "Yoğurtlu Köz Patlıcan",
+      "priceTry": 178.9,
+      "description": "Közde pişirilmiş yumuşak patlıcan etine sarımsak ve limon aroması katılarak hazırlanan lezzetli meze Üzerine serpilen yoğurt ve dereotu ile sunulur"
+     },
+     {
+      "name": "Amerikan Salatası",
+      "priceTry": 162.9,
+      "description": "Taze patates ve havuçla hazırlanan, turşu salatalık ve kremsi mayonez ile harmanlanan lezzetli Amerikan salatası. Hafif ve pratik bir yan yemek seçeneği. (220 gr)"
+     },
+     {
+      "name": "Acılı Meksika Atom",
+      "priceTry": 178.9,
+      "description": "Acılı Meksika Atom, baharatlı ve lezzetli bir mezedir. 200 gr olarak servis edilir. Taze malzemelerle hazırlanmış bu özel tarif, damağınızı etkileyecek keskin acı ve zengin tatlarla dolu bir deneyim sunar."
+     },
+     {
+      "name": "Acılı Meksika Ezmesi",
+      "priceTry": 178.9,
+      "description": "Taze malzemelerden hazırlanan acılı Meksika ezmesi baharat ve biber ile zenginleştirilmiş lezzetli bir mezedir. 200 gr. olarak servis edilir."
+     },
+     {
+      "name": "Fırın Mücver",
+      "priceTry": 180.9,
+      "description": "Taze kabak ve sebzelerden özenle hazırlanan geleneksel mücver fırında pişirilerek altın sarısı renkte sunulur. Sağlıklı ve lezzetli bir sebze yemeğidir."
+     },
+     {
+      "name": "Babagannuş",
+      "priceTry": 190.9,
+      "description": "Izgara patlıcanların yumuşak iç kısmı zeytinyağı limon ve sarımsakla harmanlanan geleneksel Babagannuş. 200 gr olarak servis edilir."
+     },
+     {
+      "name": "Girit Ezme",
+      "priceTry": 229.9,
+      "description": "Girit ezme, Girit adasının geleneksel lezzetini taşıyan taze domates, salatalık, soğan ve zeytinyağı ile hazırlanan lezzetli bir mezedir. Fesleğen ve limonla tatlandırılan bu dip, sıcak ekmek veya pide ile servis edilir."
+     },
+     {
+      "name": "Hardallı Patates Salatası",
+      "priceTry": 139.9,
+      "description": "Taze patatesler hardal sosu ve salatalık turşusu ile harmanlanan lezzetli bir meze 200 gr olarak sunulur"
+     },
+     {
+      "name": "Kuru Biber Dolması",
+      "priceTry": 193.9,
+      "description": "Lezzetli kuru biber dolması, ince pirinç ve baharat karışımı ile doldurulmuş, zeytinyağında pişirilmiş ve 3 adet olarak servis edilir"
+     },
+     {
+      "name": "Kuru Patlıcan Dolması",
+      "priceTry": 193.9,
+      "description": "Kuru patlıcan dolması zeytinyağı ve baharat ile hazırlanmış geleneksel bir mezedir. 3 adet olarak servis edilir."
+     },
+     {
+      "name": "Köpoğlu",
+      "priceTry": 178.9,
+      "description": "Lezzetli Köpoğlu mezesi 200 gram olarak sunulur. Zeytinyağı ve baharatlarla hazırlanan geleneksel bir tarifle yapılmıştır."
+     },
+     {
+      "name": "Muammara",
+      "priceTry": 164.9,
+      "description": "Muammara Cevizli 200 gr olarak servis edilir Kırmızı biber salçası nar ekşisi ve cevizin mükemmel uyumundan oluşan geleneksel bir meze"
+     },
+     {
+      "name": "Pembe Sultan",
+      "priceTry": 164.9,
+      "description": "Taze pancar, kremsi yoğurt ve aromalı sarımsak ile hazırlanan lezzetli meze Hafif tuzlanmış ve 200 gr olarak servis edilir"
+     },
+     {
+      "name": "Tahinli Köz Patlıcan",
+      "priceTry": 190.9,
+      "description": "Ateşte közlenen patlıcan eti tahin sosla harmanlanan lezzetli bir meze 200 gr olarak servis edilir"
+     },
+     {
+      "name": "Haydari",
+      "priceTry": 178.9,
+      "description": "Haydari, yoğun ve kremsi yapısıyla hazırlanan geleneksel bir meze. Taze yoğurt, dereotu ve sarımsak ile zenginleştirilmiş lezzetli bir tarif. (200 gr)"
+     },
+     {
+      "name": "Havuç Tarator",
+      "priceTry": 164.9,
+      "description": "Taze havuçlar ince dilimler halinde sotelenip yumuşatıldıktan sonra kremsi yoğurt ile harmanlanmış lezzetli bir meze. Soğuk olarak servis edilir."
+     },
+     {
+      "name": "Kısır",
+      "priceTry": 147.9,
+      "description": "Bulgur ve domates salatasından yapılan geleneksel Kısır. Taze biber maydanoz ve soğan ile hazırlanmış lezzetli meze. Limon ve zeytinyağı ile tatlandırılmış."
+     },
+     {
+      "name": "Mercimek Köftesi (6 ad.)",
+      "priceTry": 213.9,
+      "description": "Kırmızı mercimekten yapılan lezzetli köfteler baharat ve bulgurla harmanlanarak pişirilmiş. Soğuk servis edilir."
+     },
+     {
+      "name": "Mercimek Köftesi (3 ad.)",
+      "priceTry": 106.9,
+      "description": "Kırmızı mercimekten yapılan lezzetli köfteler baharat ve bulgurla harmanlanarak pişirilmiş. Soğuk servis edilir."
+     },
+     {
+      "name": "Patlıcan Beğendi",
+      "priceTry": 172.9,
+      "description": "Yumuşak patlıcan püresinden hazırlanan geleneksel Patlıcan Beğendi 150 gr. olarak sunulur Lezzetli ve besleyici bir meze seçeneği"
+     }
+    ]
+   },
+   {
+    "title": "Izgaralar",
+    "items": [
+     {
+      "name": "Izgara Köfte",
+      "priceTry": 547.9,
+      "description": "6 adet=220gr Izgara Köfte, Pirinç Pilavı, Patates Kızartması, Amerikan Salatası, Söğüş"
+     },
+     {
+      "name": "Izgara Tavuk",
+      "priceTry": 470.9,
+      "description": "260gr Tavuk Pirzola, Pirinç Pilavı, Patates Kızartması, Amerikan Salatası, Söğüş"
+     },
+     {
+      "name": "Tavuk Çöp Şiş",
+      "priceTry": 519.9,
+      "description": "3 çöp=240gr Tavuk Kalça Şiş, Pirinç Pilav, Patates Kızartması, Amerikan Salatası, Söğüş"
+     },
+     {
+      "name": "Köri Soslu Tavuk Set",
+      "priceTry": 483.9,
+      "description": "260gr Jülyen Dilimlenmiş Tavuk Pirzola, Köri Sosu, Pirinç Pilavı, Patates Kızartması, Amerikan Salatası, Söğüş"
+     },
+     {
+      "name": "Mantar Soslu Tavuk",
+      "priceTry": 483.9,
+      "description": "260 gr Jülyen Dilimlenmiş Tavuk Pirzola, Mantar Sosu, Pirinç Pilavı, Patates Kızartması, Amerikan Salatası, Söğüş"
+     },
+     {
+      "name": "Körili Mantar Soslu Tavuk",
+      "priceTry": 496.9,
+      "description": "260gr Jülyen Dilimlenmiş Tavuk Pirzola, Köri ve Mantar Sosu, Patates Kızartması ve Amerikan salatası, Söğüş"
+     },
+     {
+      "name": "Barbekü Soslu Tavuk",
+      "priceTry": 472.9,
+      "description": "260 gr Jülyen dilimlenmiş Tavuk Pirzola, Barbekü Sosu, Pirinç Pilavı, Mevsim Salatası"
+     },
+     {
+      "name": "Soslu Tavuk",
+      "priceTry": 472.9,
+      "description": "260gr Jülyen Dilimlenmiş Tavuk Pirzola , Pirinç Pilavı, Patates Kızartması, Amerikan Salatası, Söğüş"
+     }
+    ]
+   },
+   {
+    "title": "Ara Sıcaklar",
+    "items": [
+     {
+      "name": "Tavuk Schnitzel",
+      "priceTry": 468.9,
+      "description": "180gr Tavuk Schnitzel, Pirinç Pilavı, Patates Kızartması, Amerikan Salatası, Söğüş"
+     },
+     {
+      "name": "Tavuk Cordon Bleu",
+      "priceTry": 468.9,
+      "description": "210gr Tavuk Cordon Blue, Pirinç Pilavı, Amerikan Salatası, Patates Kızartması, Söğüş"
+     },
+     {
+      "name": "Tavuk Çıtır Fileto",
+      "priceTry": 468.9,
+      "description": "180gr Tavuk Göğüs Fileto, Pirinç Pilavı, Patates kızartması, Amerikan salatası, Söğüş"
+     },
+     {
+      "name": "Hot Delight",
+      "priceTry": 468.9,
+      "description": "180gr Tavuk Göğüs Parçaları, Pirinç Pilavı, Patates kızartması ve Amerikan salatası, Söğüş"
+     },
+     {
+      "name": "Beyaz Peynirli Kalem Börek",
+      "priceTry": 264.9,
+      "description": "Çıtır hamur içerisine sarılmış taze peynir dolgusu ile hazırlanan lezzetli kalem börek. 10 adet olarak sunulur."
+     },
+     {
+      "name": "Patates Kızartma",
+      "priceTry": 142.9,
+      "description": "Altın sarısı, çıtır dış kabuğu ve yumuşak içi ile hazırlanan taze patates kızartması. Deniz tuzu ile serpilmiş ve sıcak servis edilir. (150 gr)"
+     },
+     {
+      "name": "Soğan Halkası",
+      "priceTry": 152.9,
+      "description": "10 Adet"
+     },
+     {
+      "name": "Patates Kroket",
+      "priceTry": 152.9,
+      "description": "Altın sarısı çıtır dış kabuğu ile hazırlanmış lezzetli patates kroketler. İçi yumuşak ve krema gibi, dışı ise çıtır çıtır. Sıcak servis edilir."
+     }
+    ]
+   },
+   {
+    "title": "Makarnalar & Mantılar",
+    "items": [
+     {
+      "name": "Penne",
+      "priceTry": 350.9,
+      "description": "Lezzetli penne makarnası tavuk, taze mantar, kremamsı sos, mısır ve domates ile hazırlanmış. Fesleğen aroması eklenmiş. (400 gr)"
+     },
+     {
+      "name": "Spagetti Bolonez",
+      "priceTry": 350.9,
+      "description": "Geleneksel İtalyan usulü spaghetti bolonez. Taze kıyma, domates sosu, fesleğen ve özel baharatlarla hazırlanmış lezzetli makarna. (400 gr)"
+     },
+     {
+      "name": "Penne Arrabbiata",
+      "priceTry": 350.9,
+      "description": "Penne Arrabbiata, taze domates sosu, kaşar peyniri, domates, fesleğen ve baharat ile hazırlanmış lezzetli makarna. (400 gr)"
+     },
+     {
+      "name": "Moston Mantı",
+      "priceTry": 372.9,
+      "description": "Haşlanmış mantı, isteğe göre yoğurt ve özel sos ile servis edilir. Lezzetli bir Anadolu klasiği. (320 gr)"
+     },
+     {
+      "name": "Çıtır Mantı",
+      "priceTry": 372.9,
+      "description": "Çıtır Mantı - Kızartılmış mantı, isteğe göre yoğurt ve özel sos ile servis edilir. Lezzetli bir Anadolu klasiği."
+     },
+     {
+      "name": "Gül Mantı",
+      "priceTry": 337.9,
+      "description": "260gr"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Köfteli Salata",
+      "priceTry": 349.9,
+      "description": "Izgara köfte (150 gr.) ile hazırlanan lezzetli salata. Taze marul, havuç, mor lahana, salatalık, domates ve mısırdan oluşan sağlıklı bir karışım. Özel soslu veya sossuz olarak servis edilir."
+     },
+     {
+      "name": "Tavuklu Salata",
+      "priceTry": 346.9,
+      "description": "Izgara tavuk göğüslü lezzetli salata. 180 gr. yumuşak ve sulu tavuk göğüsü ile hazırlanmış, taze marul, havuç, morlahana, salatalık, domates ve mısırın mükemmel kombinasyonu"
+     },
+     {
+      "name": "Körili Duble Tavuklu Salata",
+      "priceTry": 376.9,
+      "description": "200 gr Köri Soslu Duble Izgara Tavuk ile hazırlanan lezzetli salata. 200 gram ızgara tavuk, taze marul, havuç, mor lahana, salatalık, domates ve mısır."
+     },
+     {
+      "name": "Şnitzelli Salata",
+      "priceTry": 311.9,
+      "description": "Çıtır tavuk şnitzel ile hazırlanan lezzetli salata. 120 gr. ince çekilmiş tavuk şnitzel, taze marul, havuç, mor lahana, salatalık, domates ve mısır ile zenginleştirilmiş. Özel ev soslu veya sossuz olarak servis edilir."
+     },
+     {
+      "name": "Çıtır Filetolu Salata",
+      "priceTry": 311.9,
+      "description": "120 gr çıtır tavuk göğüs fileto ile hazırlanan lezzetli salata Taze marul havuç mor lahana salatalık domates ve mısırdan oluşan renkli karışım Özel ev soslu veya sossuz olarak sunulur"
+     },
+     {
+      "name": "Hot Delight'lı Salata",
+      "priceTry": 311.9,
+      "description": "120 gr çıtır tavuk göğüs parçaları ile hazırlanan lezzetli salata. 120 çıtır tavuk, taze marul, havuç, mor lahana, salatalık, domates ve mısır."
+     },
+     {
+      "name": "Ton Balıklı Salata",
+      "priceTry": 336.9,
+      "description": "Ton balığı ile hazırlanan lezzetli salata. 75 gr ton balığı, yeşil marul, portakal renginde havuç, mor lahana, çıtır salatalık, kırmızı domates, tatlı mısır ve özel sosla sunulur"
+     },
+     {
+      "name": "Beyaz Peynirli Salata",
+      "priceTry": 277.9,
+      "description": "Taze marul, havuç, mor lahana, salatalık, domates ve mısırla hazırlanan salataya 110 gr beyaz peynir eklenerek zenginleştirilmiştir. Özel soslu veya sossuz olarak servis edilir."
+     },
+     {
+      "name": "Hellim Peynirli Salata",
+      "priceTry": 305.9,
+      "description": "Izgara Hellim Peyniri, taze marul, havuç, mor lahana, salatalık, domates ve mısır ile hazırlanan lezzetli salata. Özel soslu veya sossuz olarak servis edilir."
+     },
+     {
+      "name": "Sade Salata",
+      "priceTry": 203.9,
+      "description": "Taze marul, havuç, mor lahana, salatalık, domates ve mısırdan oluşan sağlıklı bir salatadır. Özel soslu veya sossuz olarak servis edilir."
+     }
+    ]
+   },
+   {
+    "title": "Zeytinyağlılar",
+    "items": [
+     {
+      "name": "Zeytinyağlı Yaprak Sarma",
+      "priceTry": 252.9,
+      "description": "Taze asma yaprağına sarılı pirinç ve otlar ile hazırlanan geleneksel yaprak sarması. Soğuk servis edilen bu lezzetli meze, kaliteli zeytinyağı ile yapılmıştır. (6 ad)"
+     },
+     {
+      "name": "Zeytinyağlı Taze Fasulye",
+      "priceTry": 178.9,
+      "description": "Taze fasulye zeytinyağında haşlanarak yumuşak dokusu korunmuş şekilde hazırlanmıştır. Soğuk servis edilir. (250 gr)"
+     },
+     {
+      "name": "Zeytinyağlı Biber Dolma",
+      "priceTry": 241.9,
+      "description": "Taze dolma biber zeytinyağı ve baharatlarla doldurularak hazırlanmış geleneksel Anadolu yemeği. Soğuk servis edilir. (2 ad)"
+     },
+     {
+      "name": "Zeytinyağlı Barbunya",
+      "priceTry": 178.9,
+      "description": "Taze barbunya fasulyesi zeytinyağında yavaş pişirilerek hazırlanan geleneksel lezzet. Soğuk olarak servis edilir. (250 gr)"
+     },
+     {
+      "name": "Zeytinyağlı Ispanak",
+      "priceTry": 178.9,
+      "description": "Taze ispanak yaprakları en kaliteli zeytinyağında yavaşça pişirilerek hazırlanan geleneksel tarifle sunulan lezzetli bir yemek. Soğuk olarak servis edilir. (250 gr)"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Şekerpare",
+      "priceTry": 152.9,
+      "description": "Geleneksel şekerpare tatlısı şerbetli ve çıtır dışı ile yumuşak iç yapısı ve üstündeki fındık parçası ile hazırlanmıştır. 2 ad"
+     },
+     {
+      "name": "Portakallı Revani",
+      "priceTry": 241.9,
+      "description": "Hafif ve nemli yapısıyla bilinen geleneksel Portakallı Revani tatlısı. Portakal aroması ve şerbeti ile hazırlanan bu lezzetli tatlı, her lokmada portakalın ferah tadını sunmaktadır."
+     },
+     {
+      "name": "Çikolatalı Brownie",
+      "priceTry": 241.9,
+      "description": "Zengin çikolata aroması ile hazırlanan yumuşak ve nemli brownie. Kaliteli bitter çikolata kullanılarak yapılan bu tatlı, iç kısmı ıslak dış kısmı çıtır bir dokuya sahiptir. Kahve veya sıcak çikolata ile mükemmel uyum sağlar."
+     },
+     {
+      "name": "İrmik Helvası",
+      "priceTry": 141.9,
+      "description": "Geleneksel İrmik Helvası, ince irmiğin tereyağında kavrulması ile hazırlanan lezzetli bir tatlıdır. Şeker şerbeti ile tatlandırılıp üzerine fındık ve çam fıstığı serilerek sunulur."
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Coca-Cola (33 cl.)",
+      "priceTry": 69.9
+     },
+     {
+      "name": "Coca-Cola (20 cl.)",
+      "priceTry": 69.9
+     },
+     {
+      "name": "Coca-Cola Şekersiz (33 cl.)",
+      "priceTry": 69.9
+     },
+     {
+      "name": "Coca-Cola (1 Lt)",
+      "priceTry": 98.9
+     },
+     {
+      "name": "Coca-Cola Şekersiz (1 Lt)",
+      "priceTry": 98.9
+     },
+     {
+      "name": "Fanta (33 cl.)",
+      "priceTry": 69.9
+     },
+     {
+      "name": "Fanta (1 Lt)",
+      "priceTry": 98.9
+     },
+     {
+      "name": "Sprite (33 cl.)",
+      "priceTry": 69.9
+     },
+     {
+      "name": "Cappy (33 cl.)",
+      "priceTry": 69.9,
+      "description": "Şeftali, Vişne, Karışık seçenekleriyle"
+     },
+     {
+      "name": "Lipton Ice Tea (33 cl.)",
+      "priceTry": 69.9,
+      "description": "Şeftali, Limon seçenekleriyle"
+     },
+     {
+      "name": "Lipton Ice Tea (1,5 Lt)",
+      "priceTry": 98.9,
+      "description": "Şeftali, Limon seçenekleriyle"
+     },
+     {
+      "name": "Çamlıca Gazoz (200ml)",
+      "priceTry": 42.9
+     },
+     {
+      "name": "Niğde Gazozu (250ml)",
+      "priceTry": 42.9
+     },
+     {
+      "name": "Doğanay Şalgam Suyu (33 cl.)",
+      "priceTry": 42.9,
+      "description": "Acılı"
+     },
+     {
+      "name": "Adanus Şalgam Suyu (33 cl.)",
+      "priceTry": 42.9,
+      "description": "Acılı"
+     },
+     {
+      "name": "Uludağ Limonata (33 cl.)",
+      "priceTry": 48.9
+     },
+     {
+      "name": "Sade Soda (20 cl.)",
+      "priceTry": 26.9
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 33.9,
+      "description": "285ml SEK"
+     },
+     {
+      "name": "Meyveli Soda (20 cl.)",
+      "priceTry": 32.9,
+      "description": "Uludağ/Kızılay/Sırma"
+     },
+     {
+      "name": "Su (50 cl.)",
+      "priceTry": 19.9
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "mostononline.com/maltepe (tek şube; listedeki mahalleler teslimat bölgeleri). Adres ve telefon sitede yok → profile yazılmadı (OSM kaydı duruyor). Sitedeki 10:30–20:30 sipariş saati; restoran saati olarak yazılmadı. 'Ekstralar' (bahşiş vb.) menüden çıkarıldı. Adisyo POS firmasının işletmeciyle söyleşisi (9J4n4Idm6vw) oynadı ama tanıtım içeriği ve restoranı göstermiyor → eklenmedi."
+}

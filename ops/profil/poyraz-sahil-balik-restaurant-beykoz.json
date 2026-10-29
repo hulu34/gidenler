@@ -1,0 +1,1174 @@
+{
+ "slug": "poyraz-sahil-balik-restaurant-beykoz",
+ "description": {
+  "value": "Poyrazköy sahilinde, Boğaz manzaralı bir balık restoranı.",
+  "provider": "official_site",
+  "url": "https://www.poyrazsahilbalik.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Poyraz Mendirek Yolu No:18/A, Beykoz, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.poyrazsahilbalik.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 216 320 11 00",
+  "provider": "official_site",
+  "url": "https://www.poyrazsahilbalik.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.poyrazsahilbalik.com/",
+  "provider": "official_site",
+  "url": "https://www.poyrazsahilbalik.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 10:00-24:00",
+  "provider": "official_site",
+  "url": "https://www.poyrazsahilbalik.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Menüde fiyatlara KDV dahil; sabah kahvaltılıklar da var.",
+   "provider": "official_site",
+   "url": "https://view.qrall.co/tr/menu?tenantId=3a16f15b-111d-e68a-cca3-8a54cdf482be&channelId=3a16f15b-4e75-a0e9-4e54-e0ba7e2fe9d1&menu=3a1aec5e-95eb-2aa0-a664-2e78e10f60f2",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Çay ve Türk kahvesi menüde fiyatsız görünüyor.",
+   "provider": "official_site",
+   "url": "https://view.qrall.co/tr/menu?tenantId=3a16f15b-111d-e68a-cca3-8a54cdf482be&channelId=3a16f15b-4e75-a0e9-4e54-e0ba7e2fe9d1&menu=3a1aec5e-95eb-2aa0-a664-2e78e10f60f2",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "alkol": true
+  },
+  "provider": "official_site",
+  "url": "https://www.poyrazsahilbalik.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://view.qrall.co/tr/menu?tenantId=3a16f15b-111d-e68a-cca3-8a54cdf482be&channelId=3a16f15b-4e75-a0e9-4e54-e0ba7e2fe9d1&menu=3a1aec5e-95eb-2aa0-a664-2e78e10f60f2",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Çoban Salata",
+      "priceTry": 400
+     },
+     {
+      "name": "Mevsim Salata",
+      "priceTry": 400
+     },
+     {
+      "name": "Roka Salatası",
+      "priceTry": 400
+     },
+     {
+      "name": "Yeşil Salata",
+      "priceTry": 400
+     },
+     {
+      "name": "Göbek Salata",
+      "priceTry": 400
+     },
+     {
+      "name": "Roka Sövüş",
+      "priceTry": 250
+     },
+     {
+      "name": "Domates Salatalık Sövüş",
+      "priceTry": 250
+     },
+     {
+      "name": "Julyen Salata",
+      "priceTry": 450
+     },
+     {
+      "name": "Akdeniz Salatası",
+      "priceTry": 650
+     },
+     {
+      "name": "Gavurdağı Salata",
+      "priceTry": 450
+     }
+    ]
+   },
+   {
+    "title": "Soğuk Mezeler",
+    "items": [
+     {
+      "name": "Levrek Sarma",
+      "priceTry": 550
+     },
+     {
+      "name": "Tahinli Kaya Koru",
+      "priceTry": 350
+     },
+     {
+      "name": "Kalamar Dolma Denız Mahsullu",
+      "priceTry": 800
+     },
+     {
+      "name": "Lagos Sarma",
+      "priceTry": 550
+     },
+     {
+      "name": "Avakadolu Levrek",
+      "priceTry": 600
+     },
+     {
+      "name": "Ahtapot Salatası",
+      "priceTry": 750
+     },
+     {
+      "name": "Atom",
+      "priceTry": 340
+     },
+     {
+      "name": "Börülce",
+      "priceTry": 340
+     },
+     {
+      "name": "Acılı Yengeç Bacağı",
+      "priceTry": 600
+     },
+     {
+      "name": "Cacık",
+      "priceTry": 340
+     },
+     {
+      "name": "Muhammara",
+      "priceTry": 340
+     },
+     {
+      "name": "Cunda Mezesi",
+      "priceTry": 550
+     },
+     {
+      "name": "Enginar Kalbi",
+      "priceTry": 570
+     },
+     {
+      "name": "Çiroz",
+      "priceTry": 500
+     },
+     {
+      "name": "Fava",
+      "priceTry": 340
+     },
+     {
+      "name": "Girit Mezesi",
+      "priceTry": 370
+     },
+     {
+      "name": "Eleni",
+      "priceTry": 450
+     },
+     {
+      "name": "Havuç Tarama",
+      "priceTry": 340
+     },
+     {
+      "name": "Feslegenlı Levrek",
+      "priceTry": 600
+     },
+     {
+      "name": "Humus",
+      "priceTry": 340
+     },
+     {
+      "name": "Kabak Çiçeği Dolma",
+      "priceTry": 360
+     },
+     {
+      "name": "Karides Söğüş",
+      "priceTry": 700
+     },
+     {
+      "name": "Kavun",
+      "priceTry": 300
+     },
+     {
+      "name": "Kaya Koru",
+      "priceTry": 340
+     },
+     {
+      "name": "Köpoğlu",
+      "priceTry": 340
+     },
+     {
+      "name": "Acılı Ezme",
+      "priceTry": 340
+     },
+     {
+      "name": "Köz Biber",
+      "priceTry": 340
+     },
+     {
+      "name": "Lakerda",
+      "priceTry": 600
+     },
+     {
+      "name": "Levrek Marıne",
+      "priceTry": 600
+     },
+     {
+      "name": "Sarma",
+      "priceTry": 340
+     },
+     {
+      "name": "Lagos Sımıt Barbeku Soslu",
+      "priceTry": 600
+     },
+     {
+      "name": "Midye Dolma",
+      "priceTry": 55
+     },
+     {
+      "name": "Ordövr Tabagı",
+      "priceTry": 800
+     },
+     {
+      "name": "Patlıcan Salata",
+      "priceTry": 340
+     },
+     {
+      "name": "Patlıcan Soslu",
+      "priceTry": 340
+     },
+     {
+      "name": "Peynir",
+      "priceTry": 350
+     },
+     {
+      "name": "Kremalı Levrek",
+      "priceTry": 600
+     },
+     {
+      "name": "Pilaki",
+      "priceTry": 340
+     },
+     {
+      "name": "Poyraz Specıal",
+      "priceTry": 450
+     },
+     {
+      "name": "Semizotu",
+      "priceTry": 340
+     },
+     {
+      "name": "Yunan Ezmesi",
+      "priceTry": 450
+     },
+     {
+      "name": "Taze Kızartma",
+      "priceTry": 700
+     },
+     {
+      "name": "Turşu",
+      "priceTry": 340
+     },
+     {
+      "name": "Uskumru",
+      "priceTry": 500
+     },
+     {
+      "name": "Yogurt",
+      "priceTry": 340
+     },
+     {
+      "name": "Zaho Bademli",
+      "priceTry": 450
+     },
+     {
+      "name": "Egeli",
+      "priceTry": 350
+     },
+     {
+      "name": "Cibez Otu",
+      "priceTry": 340
+     }
+    ]
+   },
+   {
+    "title": "Ara Sıcaklar",
+    "items": [
+     {
+      "name": "Rum Böreği",
+      "priceTry": 700
+     },
+     {
+      "name": "Ahtapot Izgara",
+      "priceTry": 900
+     },
+     {
+      "name": "Yunan Boregı",
+      "priceTry": 700
+     },
+     {
+      "name": "Levrek Sarma Chili Soslu",
+      "priceTry": 1000
+     },
+     {
+      "name": "Balık Kokoreç",
+      "priceTry": 900
+     },
+     {
+      "name": "Balık Şaşlık",
+      "priceTry": 1600
+     },
+     {
+      "name": "Balık Köftesi",
+      "priceTry": 250
+     },
+     {
+      "name": "Balık Simidi",
+      "priceTry": 1000
+     },
+     {
+      "name": "Enginar Kalbi Sıcak",
+      "priceTry": 700
+     },
+     {
+      "name": "Humus Pastırmalı",
+      "priceTry": 650
+     },
+     {
+      "name": "Levrek Külbastı",
+      "priceTry": 1200
+     },
+     {
+      "name": "Kadayıflı Karides",
+      "priceTry": 800
+     },
+     {
+      "name": "Kalamar",
+      "priceTry": 850
+     },
+     {
+      "name": "Balık Böreği",
+      "priceTry": 700
+     },
+     {
+      "name": "Kalamar Izgara",
+      "priceTry": 1600
+     },
+     {
+      "name": "Karides Güveç",
+      "priceTry": 870
+     },
+     {
+      "name": "Lezzet Topu",
+      "priceTry": 950
+     },
+     {
+      "name": "Mantar",
+      "priceTry": 500
+     },
+     {
+      "name": "Mantar İstiridye",
+      "priceTry": 750
+     },
+     {
+      "name": "Midye Tava",
+      "priceTry": 450
+     },
+     {
+      "name": "Paçanga",
+      "priceTry": 400
+     },
+     {
+      "name": "Patates Tava",
+      "priceTry": 375
+     },
+     {
+      "name": "Sıcak Ot",
+      "priceTry": 600
+     },
+     {
+      "name": "Sigara Böreği",
+      "priceTry": 350
+     },
+     {
+      "name": "Saganaki",
+      "priceTry": 600
+     },
+     {
+      "name": "T.karides",
+      "priceTry": 850
+     },
+     {
+      "name": "Petso Soslu Girit Böreği",
+      "priceTry": 700
+     },
+     {
+      "name": "Jumbo Karides",
+      "priceTry": 700
+     },
+     {
+      "name": "Pavurya Pane",
+      "priceTry": 600
+     },
+     {
+      "name": "J.karides K.dolma Izg",
+      "priceTry": 1600
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler",
+    "items": [
+     {
+      "name": "Fener Kavurma",
+      "priceTry": 2100
+     },
+     {
+      "name": "Barbun",
+      "priceTry": 1300
+     },
+     {
+      "name": "Buftek",
+      "priceTry": 1500
+     },
+     {
+      "name": "Çinekop",
+      "priceTry": 1400
+     },
+     {
+      "name": "Çupra",
+      "priceTry": 950
+     },
+     {
+      "name": "Deniz Çuprası",
+      "priceTry": 2700
+     },
+     {
+      "name": "Deniz Levreği",
+      "priceTry": 2700
+     },
+     {
+      "name": "Dülger",
+      "priceTry": 2500
+     },
+     {
+      "name": "Fileto Mezgit",
+      "priceTry": 750
+     },
+     {
+      "name": "Gümüş",
+      "priceTry": 650
+     },
+     {
+      "name": "Hamsi",
+      "priceTry": 650
+     },
+     {
+      "name": "İskorpit",
+      "priceTry": 1200
+     },
+     {
+      "name": "İstavrit",
+      "priceTry": 750
+     },
+     {
+      "name": "K.mezgit",
+      "priceTry": 800
+     },
+     {
+      "name": "Kalkan",
+      "priceTry": 3500
+     },
+     {
+      "name": "Kaya Levregı",
+      "priceTry": 2700
+     },
+     {
+      "name": "Kofana",
+      "priceTry": 2500
+     },
+     {
+      "name": "Köfte",
+      "priceTry": 900
+     },
+     {
+      "name": "Levrek",
+      "priceTry": 950
+     },
+     {
+      "name": "Levrek Buğlama",
+      "priceTry": 1400
+     },
+     {
+      "name": "Levrek Şiş",
+      "priceTry": 1000
+     },
+     {
+      "name": "Lüfer Büyük",
+      "priceTry": 2000
+     },
+     {
+      "name": "Lüfer",
+      "priceTry": 1800
+     },
+     {
+      "name": "Minekop",
+      "priceTry": 2700
+     },
+     {
+      "name": "Pirzola",
+      "priceTry": 1500
+     },
+     {
+      "name": "Sardalya",
+      "priceTry": 800
+     },
+     {
+      "name": "Sarıkanat",
+      "priceTry": 1600
+     },
+     {
+      "name": "Somon Balığı",
+      "priceTry": 850
+     },
+     {
+      "name": "Tavuk",
+      "priceTry": 750
+     },
+     {
+      "name": "Tekir",
+      "priceTry": 1100
+     },
+     {
+      "name": "Tavuk Şinitzel",
+      "priceTry": 950
+     },
+     {
+      "name": "Palamut",
+      "priceTry": 750
+     }
+    ]
+   },
+   {
+    "title": "Fıx Menu",
+    "items": [
+     {
+      "name": "Evlilik Teklifi Paketi",
+      "priceTry": 8000
+     },
+     {
+      "name": "Fıx Menu Alkolsüz",
+      "priceTry": 2600
+     },
+     {
+      "name": "Fıx Menu Alkollü",
+      "priceTry": 3500
+     }
+    ]
+   },
+   {
+    "title": "Giriş",
+    "items": [
+     {
+      "name": "Buyuk Su",
+      "priceTry": 150
+     },
+     {
+      "name": "Balık Çorbası",
+      "priceTry": 300
+     },
+     {
+      "name": "Ezogelin",
+      "priceTry": 250
+     },
+     {
+      "name": "Ajda Bardak Cay"
+     },
+     {
+      "name": "Sade Türk Kahvesi"
+     },
+     {
+      "name": "Az Şekerli Türk Kahvesi"
+     },
+     {
+      "name": "Orta Türk Kahvesi"
+     },
+     {
+      "name": "Şekerli Türk Kahvesi"
+     }
+    ]
+   },
+   {
+    "title": "Kahvaltılıklar",
+    "items": [
+     {
+      "name": "Serpme Kahvaltı",
+      "priceTry": 1000
+     },
+     {
+      "name": "Omlet",
+      "priceTry": 200
+     },
+     {
+      "name": "Menemen",
+      "priceTry": 300
+     },
+     {
+      "name": "Sahanda Yumurta",
+      "priceTry": 200
+     },
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 350
+     },
+     {
+      "name": "Muhlama",
+      "priceTry": 300
+     },
+     {
+      "name": "Sosis",
+      "priceTry": 200
+     },
+     {
+      "name": "Sucuk",
+      "priceTry": 300
+     },
+     {
+      "name": "Göz Yumurta",
+      "priceTry": 100
+     },
+     {
+      "name": "Haslanmıs Yumurta",
+      "priceTry": 100
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Meyve",
+      "priceTry": 350
+     },
+     {
+      "name": "Dondurmalı İrmik",
+      "priceTry": 350
+     },
+     {
+      "name": "Karpuz",
+      "priceTry": 350
+     },
+     {
+      "name": "Helva Güveç",
+      "priceTry": 350
+     },
+     {
+      "name": "Kabak",
+      "priceTry": 350
+     },
+     {
+      "name": "İncir",
+      "priceTry": 350
+     },
+     {
+      "name": "Badem Tatlısı",
+      "priceTry": 400
+     },
+     {
+      "name": "Dondurma",
+      "priceTry": 200
+     },
+     {
+      "name": "Sade Helva",
+      "priceTry": 250
+     },
+     {
+      "name": "İrmik",
+      "priceTry": 300
+     },
+     {
+      "name": "Serpme Meyve",
+      "priceTry": 850
+     },
+     {
+      "name": "Baklava",
+      "priceTry": 350
+     },
+     {
+      "name": "Sufle",
+      "priceTry": 500
+     }
+    ]
+   },
+   {
+    "title": "Meşrubatlar",
+    "items": [
+     {
+      "name": "ŞALGAM küçük",
+      "priceTry": 160
+     },
+     {
+      "name": "ŞALGAM büyük",
+      "priceTry": 350
+     },
+     {
+      "name": "Kola",
+      "priceTry": 160
+     },
+     {
+      "name": "Ice Tea",
+      "priceTry": 160
+     },
+     {
+      "name": "Meyve Suyu",
+      "priceTry": 160
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 160
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 160
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 150
+     },
+     {
+      "name": "Soda",
+      "priceTry": 100
+     },
+     {
+      "name": "Lımonlu Soda",
+      "priceTry": 100
+     },
+     {
+      "name": "Kucuk Su",
+      "priceTry": 100
+     }
+    ]
+   },
+   {
+    "title": "Biralar",
+    "items": [
+     {
+      "name": "Efes Lager",
+      "priceTry": 320
+     },
+     {
+      "name": "Stella Bira",
+      "priceTry": 340
+     },
+     {
+      "name": "Efes Malt Bira",
+      "priceTry": 320
+     },
+     {
+      "name": "Efes Özel Seri",
+      "priceTry": 340
+     },
+     {
+      "name": "Bomontı Fıltresız",
+      "priceTry": 320
+     },
+     {
+      "name": "Gold",
+      "priceTry": 320
+     },
+     {
+      "name": "Miller",
+      "priceTry": 340
+     },
+     {
+      "name": "Cerez",
+      "priceTry": 250
+     },
+     {
+      "name": "Carlsberg",
+      "priceTry": 340
+     }
+    ]
+   },
+   {
+    "title": "Rakılar",
+    "items": [
+     {
+      "name": "Beylerbeyi Göbek 20 Cl",
+      "priceTry": 1850
+     },
+     {
+      "name": "Beylerbeyi Göbek 35 Cl",
+      "priceTry": 2650
+     },
+     {
+      "name": "Beylerbeyi Göbek 50cl",
+      "priceTry": 3400
+     },
+     {
+      "name": "Beylerbeyi Göbek 70 Cl",
+      "priceTry": 4200
+     },
+     {
+      "name": "Beylerbeyi Göbek 100 Cl",
+      "priceTry": 4950
+     },
+     {
+      "name": "Tera Gold 70 Cl",
+      "priceTry": 3500
+     },
+     {
+      "name": "Mavi Beylerbeyi 70 Cl",
+      "priceTry": 3200
+     },
+     {
+      "name": "Mercan Göbek 20cl",
+      "priceTry": 1950
+     },
+     {
+      "name": "Mercan Göbek 35cl",
+      "priceTry": 2950
+     },
+     {
+      "name": "Mercan Göbek 50cl",
+      "priceTry": 3800
+     },
+     {
+      "name": "Mercan Göbek 70cl",
+      "priceTry": 4700
+     },
+     {
+      "name": "Mercan Göbek 100cl",
+      "priceTry": 5500
+     },
+     {
+      "name": "Tekirdağ Göbek 20 Cl",
+      "priceTry": 1800
+     },
+     {
+      "name": "Tekirdağ Göbek 35 Cl",
+      "priceTry": 2600
+     },
+     {
+      "name": "Tekirdağ Göbek 50 Cl",
+      "priceTry": 3350
+     },
+     {
+      "name": "Tekirdağ Göbek 70 Cl",
+      "priceTry": 4150
+     },
+     {
+      "name": "Tekirdağ Göbek 100 Cl",
+      "priceTry": 4900
+     },
+     {
+      "name": "Tekirdağ 20 Cl Altın Seri",
+      "priceTry": 1700
+     },
+     {
+      "name": "Tekirdağ 35cl Altın Seri",
+      "priceTry": 2400
+     },
+     {
+      "name": "Tekirdağ 50cl Altın Seri",
+      "priceTry": 3150
+     },
+     {
+      "name": "Tekirdağ 70cl Altın Seri",
+      "priceTry": 3900
+     },
+     {
+      "name": "Tekirdağ 100cl Altın Seri",
+      "priceTry": 4700
+     },
+     {
+      "name": "Efe Gold 20 Cl",
+      "priceTry": 1700
+     },
+     {
+      "name": "Efe Gold 35 Cl",
+      "priceTry": 2400
+     },
+     {
+      "name": "Efe Gold 50 Cl",
+      "priceTry": 3150
+     },
+     {
+      "name": "Efe Gold 70 Cl",
+      "priceTry": 3900
+     },
+     {
+      "name": "Yeni Rakı 20 Cl",
+      "priceTry": 1300
+     },
+     {
+      "name": "Yeni Rakı 35 Cl",
+      "priceTry": 1800
+     },
+     {
+      "name": "Yeni Rakı 50 Cl",
+      "priceTry": 2500
+     },
+     {
+      "name": "Yeni Rakı 70 Cl",
+      "priceTry": 3100
+     },
+     {
+      "name": "Rakı 100 Cl",
+      "priceTry": 4100
+     },
+     {
+      "name": "Yeni Seri 20 Cl",
+      "priceTry": 1450
+     },
+     {
+      "name": "Yeni Seri 35 Cl",
+      "priceTry": 1950
+     },
+     {
+      "name": "Yeni Seri 50 Cl",
+      "priceTry": 2700
+     },
+     {
+      "name": "Yeni Seri 70 Cl",
+      "priceTry": 3350
+     },
+     {
+      "name": "Tekirdağ 20 Cl",
+      "priceTry": 1450
+     },
+     {
+      "name": "Tekirdağ 35 Cl",
+      "priceTry": 1950
+     },
+     {
+      "name": "Tekirdağ 50 Cl",
+      "priceTry": 2700
+     },
+     {
+      "name": "Tekirdağ 70 Cl",
+      "priceTry": 3350
+     },
+     {
+      "name": "Yeşil Efe 20 Cl",
+      "priceTry": 1450
+     },
+     {
+      "name": "Yeşil Efe 35 Cl",
+      "priceTry": 1950
+     },
+     {
+      "name": "Yeşil Efe 50 Cl",
+      "priceTry": 2700
+     },
+     {
+      "name": "Yeşil Efe 70 Cl",
+      "priceTry": 3350
+     },
+     {
+      "name": "Sarı Zeybek Yaş Üzüm 70 Cl",
+      "priceTry": 4000
+     },
+     {
+      "name": "Sarı Zeybek 3 Meşe 20 Cl",
+      "priceTry": 1950
+     },
+     {
+      "name": "Sarı Zeybek 3 Meşe 35 Cl",
+      "priceTry": 2800
+     },
+     {
+      "name": "Sarı Zeybek 3 Meşe 50 Cl",
+      "priceTry": 3500
+     },
+     {
+      "name": "Sarı Zeybek 3 Meşe 70 Cl",
+      "priceTry": 4300
+     },
+     {
+      "name": "Saki Gold 70 Cl",
+      "priceTry": 4000
+     },
+     {
+      "name": "Ala Rakı 20 Cl",
+      "priceTry": 1900
+     },
+     {
+      "name": "Ala Rakı 35 Cl",
+      "priceTry": 2700
+     },
+     {
+      "name": "Ala Rakı 70 Cl",
+      "priceTry": 4300
+     },
+     {
+      "name": "Duble Rakı",
+      "priceTry": 470
+     },
+     {
+      "name": "Duble Rakı Göbek",
+      "priceTry": 500
+     },
+     {
+      "name": "Tek Rakı",
+      "priceTry": 270
+     }
+    ]
+   },
+   {
+    "title": "Şaraplar",
+    "items": [
+     {
+      "name": "Çankaya 20 Cl",
+      "priceTry": 650
+     },
+     {
+      "name": "Çankaya 35 Cl",
+      "priceTry": 1850
+     },
+     {
+      "name": "Çankaya 70 Cl",
+      "priceTry": 2950
+     },
+     {
+      "name": "Yakut 20 Cl",
+      "priceTry": 650
+     },
+     {
+      "name": "Yakut 35 Cl",
+      "priceTry": 1850
+     },
+     {
+      "name": "Yakut 70 Cl",
+      "priceTry": 2950
+     },
+     {
+      "name": "Suvla Chardonnay",
+      "priceTry": 4000
+     },
+     {
+      "name": "Suvla Sauvignon Blanc",
+      "priceTry": 4000
+     },
+     {
+      "name": "Suvla Fume Blanc",
+      "priceTry": 4000
+     },
+     {
+      "name": "Sarafin Chardonnay",
+      "priceTry": 4400
+     },
+     {
+      "name": "Sarafin Sauvignon Blanc",
+      "priceTry": 4400
+     },
+     {
+      "name": "Sarafin Fume Blanc",
+      "priceTry": 4400
+     },
+     {
+      "name": "Sarafin Kırmızı",
+      "priceTry": 4400
+     },
+     {
+      "name": "Egeo Sauvignon Blanc 35 Cl",
+      "priceTry": 2800
+     },
+     {
+      "name": "Egeo Sauvignon Blanc 70 Cl",
+      "priceTry": 3800
+     },
+     {
+      "name": "Dlc Sauvignon Blanc 70 Cl",
+      "priceTry": 3600
+     },
+     {
+      "name": "Selection 70 Cl Beyaz",
+      "priceTry": 4000
+     },
+     {
+      "name": "Selection 70 Cl Kırmızı",
+      "priceTry": 4000
+     },
+     {
+      "name": "Ancyra Blush 70 Cl",
+      "priceTry": 3600
+     },
+     {
+      "name": "Lal Şarap 35 Cl",
+      "priceTry": 2400
+     },
+     {
+      "name": "Lal Şarap 70 Cl",
+      "priceTry": 3400
+     },
+     {
+      "name": "Şarap 70cl Beyaz",
+      "priceTry": 2950
+     },
+     {
+      "name": "Duble Sarap",
+      "priceTry": 650
+     },
+     {
+      "name": "Lal Şarap 20 Cl",
+      "priceTry": 650
+     }
+    ]
+   },
+   {
+    "title": "Viski Ve Votka",
+    "items": [
+     {
+      "name": "Chivas Regal 35 Cl",
+      "priceTry": 3200
+     },
+     {
+      "name": "Chivas Regal 70 Cl",
+      "priceTry": 4800
+     },
+     {
+      "name": "Black Label 35 Cl",
+      "priceTry": 2700
+     },
+     {
+      "name": "Black Label 70 Cl",
+      "priceTry": 4500
+     },
+     {
+      "name": "Votka 35cl",
+      "priceTry": 1400
+     },
+     {
+      "name": "Votka 70cl",
+      "priceTry": 2500
+     },
+     {
+      "name": "Duble Votka",
+      "priceTry": 600
+     },
+     {
+      "name": "Duble Vıskı",
+      "priceTry": 850
+     },
+     {
+      "name": "Red Label 100 Cl",
+      "priceTry": 5000
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site: adres, telefon, her gün 10:00–24:00, rezervasyon, QR menü bağlantısı (qrall). Rakı ve şarap markaları tek bölümde toplandı. Video adayları 2014/2017 ve işletme adı belirsiz → eklenmedi."
+}

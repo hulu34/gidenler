@@ -1,0 +1,242 @@
+{
+ "slug": "elise-pide-lahmacun-besiktas",
+ "description": {
+  "value": "Beşiktaş'ta odun ateşinde pişen Karadeniz pidesi ve lahmacun yapan bir pideci. Paket servis ve online sipariş de var.",
+  "provider": "official_site",
+  "url": "https://elisepidelahmacun.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Eski Bahçe Sk. No:4, 34347 Beşiktaş, İstanbul",
+  "provider": "official_site",
+  "url": "https://elisepidelahmacun.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 260 36 44",
+  "provider": "official_site",
+  "url": "https://elisepidelahmacun.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://elisepidelahmacun.com/",
+  "provider": "official_site",
+  "url": "https://elisepidelahmacun.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Pideler maydanoz ve limonla, lahmacunlar göbek marul, maydanoz ve limonla servis ediliyor.",
+   "provider": "official_site",
+   "url": "https://elisepidelahmacun.com/",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Paket servis ve online sipariş var; WhatsApp üzerinden de sipariş alınıyor.",
+   "provider": "official_site",
+   "url": "https://elisepidelahmacun.com/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "paket": true
+  },
+  "provider": "official_site",
+  "url": "https://elisepidelahmacun.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://elisepidelahmacun.com/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Açık Pideler",
+    "items": [
+     {
+      "name": "Kaşarlı Pide (Açık)",
+      "priceTry": 350.0,
+      "description": "Maydanoz, limon ile"
+     },
+     {
+      "name": "Mantarlı Kaşarlı Pide (Açık)",
+      "priceTry": 410.0,
+      "description": "Maydanoz, limon ile"
+     },
+     {
+      "name": "Kıymalı Pide (Açık)",
+      "priceTry": 475.0,
+      "description": "Maydanoz, limon ile"
+     },
+     {
+      "name": "Kıymalı Kaşarlı Pide (Açık)",
+      "priceTry": 480.0,
+      "description": "Maydanoz, limon ile"
+     },
+     {
+      "name": "Mevlana Pide (Açık)",
+      "priceTry": 510.0,
+      "description": "Kıyma, domates, biber"
+     },
+     {
+      "name": "Pastırmalı Kaşarlı Pide (Açık)",
+      "priceTry": 500.0,
+      "description": "Maydanoz, limon ile"
+     },
+     {
+      "name": "Karışık Pide (Açık)",
+      "priceTry": 450.0,
+      "description": "Kıyma, kuşbaşı, sucuk, kaşar peyniri. Maydanoz, limon ile"
+     },
+     {
+      "name": "Pastırmalı & Kaşarlı & Sucuklu Pide (Açık)",
+      "priceTry": 520.0,
+      "description": "Pastırmalı, Kaşarlı, sucuk, kaşar peyniri. Maydanoz, limon ile"
+     },
+     {
+      "name": "Sucuklu Kaşarlı Pide (Açık)",
+      "priceTry": 420.0,
+      "description": "Sucuklu, Kaşarlı. Maydanoz, limon ile"
+     },
+     {
+      "name": "Kavurmalı & Kaşarlı & Mantarlı Pide (Açık)",
+      "priceTry": 550.0,
+      "description": "Kavurmalı, Kaşarlı, Mantarlı. Maydanoz, limon ile"
+     },
+     {
+      "name": "Kaşarlı & Domatesli & Biberli Pide (Açık)",
+      "priceTry": 440.0,
+      "description": "Maydanoz, limon ile"
+     },
+     {
+      "name": "Ispanaklı Kaşarlı Pide (Açık)",
+      "priceTry": 400.0,
+      "description": "Maydanoz, limon ile"
+     },
+     {
+      "name": "Kuşbaşılı Pide (Açık)",
+      "priceTry": 475.0,
+      "description": "Maydanoz, limon ile"
+     },
+     {
+      "name": "Sebzeli Pide (Açık)",
+      "priceTry": 400.0,
+      "description": "Kaşar peyniri, domates, yeşil biber, kırmızıbiber, mantar. Maydanoz, limon ile"
+     }
+    ]
+   },
+   {
+    "title": "Lahmacunlar",
+    "items": [
+     {
+      "name": "Lahmacun",
+      "priceTry": 210.0,
+      "description": "Göbek Marul, Maydanoz ve Limon ile Service Edilir"
+     },
+     {
+      "name": "Kaşarlı Lahmacun",
+      "priceTry": 250.0,
+      "description": "Göbek Marul, Maydanoz ve Limon ile Service Edilir"
+     },
+     {
+      "name": "Sarımsaklı Lahmacun",
+      "priceTry": 250.0,
+      "description": "Göbek Marul, Maydanoz ve Limon ile Service Edilir"
+     },
+     {
+      "name": "Cevizli Lahmacun",
+      "priceTry": 250.0,
+      "description": "Göbek Marul, Maydanoz ve Limon ile Service Edilir"
+     },
+     {
+      "name": "Soğansız Lahmacun (Etibol)",
+      "priceTry": 275.0,
+      "description": "Göbek Marul, Maydanoz ve Limon ile Service Edilir"
+     }
+    ]
+   },
+   {
+    "title": "Pizzalar",
+    "items": [
+     {
+      "name": "İtalyan Margheritta Pizza",
+      "priceTry": 500.0,
+      "description": "Domates sosu, mozzarella peyniri"
+     }
+    ]
+   },
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Mercimek Çorbası",
+      "priceTry": 180.0,
+      "description": "Kırmızı mercimek, sebzeler ve baharatlarla hazırlanan bir çorbadır."
+     },
+     {
+      "name": "Kavurmalı Mercimek Çorbası",
+      "priceTry": 250.0,
+      "description": "Kırmızı mercimek, sebzeler ve baharatlarla hazırlanan bir çorbadır. 50 gr. Rize kavurması"
+     },
+     {
+      "name": "Kaşarlı Mercimek Çorbası",
+      "priceTry": 220.0,
+      "description": "Kırmızı mercimek, sebzeler ve baharatlarla hazırlanan bir çorbadır. Kasarla ile"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Çoban Salata",
+      "priceTry": 200.0,
+      "description": "Domates, salatalık, biber, isteğe göre soğan"
+     },
+     {
+      "name": "Mevsim Salata",
+      "priceTry": 200.0,
+      "description": "Mevsim yeşillikleri, mevsim sebzeleri"
+     },
+     {
+      "name": "Gavurdağı Salatası",
+      "priceTry": 250.0,
+      "description": "Domates, salatalık, biber, ceviz"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Katmer Tatlısı",
+      "priceTry": 300.0,
+      "description": "İnce hamur içerisine fıstık eklenerek hazırlanan bir tatlı çeşididir."
+     },
+     {
+      "name": "Künefe",
+      "priceTry": 300.0,
+      "description": "Tel kadayıfın içine peynir konularak üzerine şerbet dökülen tatlı çeşididir."
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=ZYHPQAQDmC0",
+   "credit": "Elise Karadeniz Pide & Lahmacun (resmî kanal) · Ekim 2021 · tanıtım",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=Ni1zCc7agJ8",
+   "credit": "Elise Karadeniz Pide & Lahmacun (resmî kanal) · Ocak 2025 · taş fırın mutfağı",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site ana sayfası: adres, telefon, menü (TL, tarihsiz; 'Türkçe Menü' bağlantısı boş). Çalışma saati sitede yok."
+}
