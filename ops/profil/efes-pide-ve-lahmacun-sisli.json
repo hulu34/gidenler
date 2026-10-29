@@ -1,0 +1,153 @@
+{
+ "slug": "efes-pide-ve-lahmacun-sisli",
+ "description": {
+  "value": "Şişli Duatepe'de, 1998'den beri taş fırında pide ve lahmacun yapan bir salon. Gel-al ve paket servis de var.",
+  "provider": "official_site",
+  "url": "https://efespidelahmacun.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Duatepe, Avukat Cd. 17/B, Şişli, İstanbul",
+  "provider": "official_site",
+  "url": "https://efespidelahmacun.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 225 11 79",
+  "provider": "official_site",
+  "url": "https://efespidelahmacun.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://efespidelahmacun.com.tr/",
+  "provider": "official_site",
+  "url": "https://efespidelahmacun.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Gel-al ve paket servis var; site paket servisin Şişli, Feriköy, Bomonti ve Kurtuluş çevresine yapıldığını belirtiyor.",
+   "provider": "official_site",
+   "url": "https://efespidelahmacun.com.tr/",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "paket": true
+  },
+  "provider": "official_site",
+  "url": "https://efespidelahmacun.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://efespidelahmacun.com.tr/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Lahmacun",
+    "items": [
+     {
+      "name": "Efes Lahmacun",
+      "priceTry": 160
+     },
+     {
+      "name": "Etibol Lahmacun",
+      "priceTry": 180
+     },
+     {
+      "name": "Antep Lahmacun",
+      "priceTry": 180
+     },
+     {
+      "name": "Kaşarlı Lahmacun",
+      "priceTry": 180
+     }
+    ]
+   },
+   {
+    "title": "Pide",
+    "items": [
+     {
+      "name": "Kuşbaşı Kaşarlı Pide",
+      "priceTry": 350
+     },
+     {
+      "name": "Kuşbaşılı Pide",
+      "priceTry": 330
+     },
+     {
+      "name": "Kaşarlı Pide",
+      "priceTry": 300
+     },
+     {
+      "name": "Sucuk Kaşar Pide",
+      "priceTry": 350
+     },
+     {
+      "name": "Karışık Pide",
+      "priceTry": 380
+     },
+     {
+      "name": "Pastırma Kaşarlı Pide",
+      "priceTry": 400
+     },
+     {
+      "name": "Kıymalı Pide",
+      "priceTry": 300
+     },
+     {
+      "name": "Kıyma Kaşarlı Pide",
+      "priceTry": 320
+     },
+     {
+      "name": "Kavurma Kaşar Pide",
+      "priceTry": 380
+     },
+     {
+      "name": "Efes Bomba Pide",
+      "priceTry": 420
+     },
+     {
+      "name": "Mantar - Kaşar Pide",
+      "priceTry": 320
+     }
+    ]
+   },
+   {
+    "title": "Çorba",
+    "items": [
+     {
+      "name": "Ezogelin Çorba",
+      "priceTry": 100
+     }
+    ]
+   },
+   {
+    "title": "İçecek",
+    "items": [
+     {
+      "name": "Ayran",
+      "priceTry": 50
+     },
+     {
+      "name": "Kutu İçecekler",
+      "priceTry": 80
+     },
+     {
+      "name": "1 Litre Ayran",
+      "priceTry": 100
+     },
+     {
+      "name": "1 Litre İçecekler",
+      "priceTry": 120
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site (efespidelahmacun.com.tr, tek sayfa): adres, telefon, menü (TL, tarihsiz). Çalışma saati yayımlanmıyor. Aramadaki videolar başka işletmelere ait (Elise, Selçuk Pidecisi) → eklenmedi."
+}
