@@ -53,7 +53,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/mobilhata.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TEST_HOST: "${{ env.TEST_HOST }}", PROFIL_HOST: "${{ env.PROFIL_HOST }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", TEST_HOST: "${{ env.TEST_HOST }}", PROFIL_HOST: "${{ env.PROFIL_HOST }}", HEDEF_HOST: "${{ contains(github.event.head_commit.message, '[tur1]') && 'gidenler-o80snemih-hulu34.vercel.app' || '' }}" }
   canlikontrol:
     if: contains(github.event.head_commit.message, '[canlikontrol]')
     runs-on: ubuntu-latest

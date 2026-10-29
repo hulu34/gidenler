@@ -6,7 +6,7 @@ import { yetkiliBaslik } from "./yetkili.mjs";
 const CANLI = process.env.CANLI === "1";
 /* ESKI=1: Seçki kodu içermeyen eski Preview (PROFIL_HOST), yalnız Seçki dışı sayfalar. */
 const ESKI = process.env.ESKI === "1";
-const HOST = CANLI ? "www.gidenler.com" : ESKI ? process.env.PROFIL_HOST : process.env.SECKI_HOST;
+const HOST = CANLI ? "www.gidenler.com" : process.env.HEDEF_HOST || (ESKI ? process.env.PROFIL_HOST : process.env.SECKI_HOST);
 const HB = CANLI ? {} : { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS, "x-vercel-set-bypass-cookie": "true" };
 const SECKI = CANLI || ESKI ? [] : ["/seckisi/", "/seckisi/pandeli-carsinin-ustundeki-mavi-salon/", "/seckisi/serden-mese-atesinin-karsisinda/", "/seckisi/en/efes-duatepede-tas-firin/"];
 const DIGER = ["/", "/kesfet/", "/mekan/pandeli-fatih/", "/mekan/serden-erzurum-cag-kebabi-bahcelievler/", "/nasil-calisir/"];
@@ -25,6 +25,7 @@ for (const [dev, o] of [["masaustu", { viewport: { width: 1366, height: 900 } }]
 }
 await b.close();
 const toplam = (list) => [...say].filter(([k]) => list.includes(k.split(" ")[1])).reduce((a, [, n]) => a + n, 0);
+console.log(`hedef host: ${HOST.split(".")[0]}`);
 console.log(`hedef: ${CANLI ? "canlı (başlıksız)" : ESKI ? "eski Preview (Seçki kodu yok)" : "Seçki Preview"}`);
 console.log(`ziyaret: her sayfa ${[...ziyaret.values()][0]} kez (2 görünüm × 4 tur)`);
 for (const [k, n] of [...say].sort()) console.log(`  hidrasyon ${k}: ${n}`);
