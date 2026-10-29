@@ -1,0 +1,757 @@
+{
+ "slug": "trakyum-buyukcekmece",
+ "description": {
+  "value": "Büyükçekmece Çakmaklı'da mangalbaşı restoranı. İşletmenin anlatımına göre Çiftçi Grup'a ait. Menüde kahvaltı, ızgara porsiyonlar, kiloyla satılan mangal etleri, kebaplar, mezeler ve zeytinyağlılar var.",
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr/hakkimizda",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Çakmaklı Mah., Behçet Kemal Çağlar Cd. No:134, Büyükçekmece, İstanbul",
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 344 08 80",
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://trakyum.com.tr",
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "trakyum",
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 09:00-01:00",
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "Sitedeki rezervasyon formundan ya da telefonla.",
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Mangal bölümündeki etlerin çoğu kilo fiyatıyla listeleniyor.",
+   "provider": "official_site",
+   "url": "https://trakyum.com.tr/menu",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "alkol": true
+  },
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr/menu",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://trakyum.com.tr/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Serpme Kahvaltı 2 Kişi",
+      "priceTry": 1700
+     },
+     {
+      "name": "Mangal Kahvaltı 2 Kişi",
+      "priceTry": 2200
+     }
+    ]
+   },
+   {
+    "title": "Kahvaltı yanına",
+    "items": [
+     {
+      "name": "Omlet Kaşarlı",
+      "priceTry": 370
+     },
+     {
+      "name": "Omlet Sebzeli",
+      "priceTry": 370
+     },
+     {
+      "name": "Omlet",
+      "priceTry": 300
+     },
+     {
+      "name": "Mıhlama",
+      "priceTry": 300
+     },
+     {
+      "name": "Izgara Sucuk",
+      "priceTry": 500
+     },
+     {
+      "name": "Patates Tava",
+      "priceTry": 350
+     },
+     {
+      "name": "Bazlama",
+      "priceTry": 200
+     },
+     {
+      "name": "Pişi",
+      "priceTry": 250
+     },
+     {
+      "name": "Kaymak",
+      "priceTry": 90
+     },
+     {
+      "name": "Tereyağı",
+      "priceTry": 90
+     },
+     {
+      "name": "Trakyum Ekmek Sepeti",
+      "description": "Menüde fiyat 0 ₺ olarak görünüyor; fiyatı işletmeye sorun"
+     }
+    ]
+   },
+   {
+    "title": "Ara Sıcaklar",
+    "items": [
+     {
+      "name": "Çin Böreği",
+      "priceTry": 250
+     },
+     {
+      "name": "Trakyum Çörek",
+      "priceTry": 480
+     },
+     {
+      "name": "Etli Pazı Sarması 2'li",
+      "priceTry": 450
+     },
+     {
+      "name": "Etli Soğan Dolması - TEK",
+      "priceTry": 220
+     },
+     {
+      "name": "Fırında Kaşarlı Mantar",
+      "priceTry": 475
+     },
+     {
+      "name": "Mini Paçanga Böreği",
+      "priceTry": 260
+     },
+     {
+      "name": "Acılı Patlıcan",
+      "priceTry": 350
+     },
+     {
+      "name": "Elma Dilim Patates",
+      "priceTry": 350
+     },
+     {
+      "name": "Kremalı İstiridye Mantarı",
+      "priceTry": 550
+     },
+     {
+      "name": "Köz Patlıcan Manca",
+      "priceTry": 320
+     },
+     {
+      "name": "Kuru Dolma",
+      "priceTry": 320
+     },
+     {
+      "name": "Pastırmalı Humus",
+      "priceTry": 500
+     },
+     {
+      "name": "Ot Kavurması",
+      "priceTry": 350
+     },
+     {
+      "name": "Yaprak Ciğer",
+      "priceTry": 620
+     },
+     {
+      "name": "Patates Kızartması",
+      "priceTry": 350
+     },
+     {
+      "name": "Et Sote",
+      "description": "Menüde fiyat 0 ₺ olarak görünüyor; fiyatı işletmeye sorun"
+     },
+     {
+      "name": "İstiridye Mantar",
+      "priceTry": 500
+     },
+     {
+      "name": "Fırın Mantar",
+      "priceTry": 475
+     },
+     {
+      "name": "Cheddarlı Füme Sarma",
+      "priceTry": 480
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Tavuklu Çıtır Salata",
+      "priceTry": 550
+     },
+     {
+      "name": "Kuru Etli Yeşil Salata",
+      "priceTry": 650
+     },
+     {
+      "name": "Mangal Salata",
+      "priceTry": 500
+     },
+     {
+      "name": "Arnavut Salatası (Soğanlı Sirkeli)",
+      "priceTry": 350
+     },
+     {
+      "name": "Roka - Domates - Peynir DUBLE",
+      "priceTry": 500
+     },
+     {
+      "name": "Roka - Domates - Peynir TEK",
+      "priceTry": 400
+     },
+     {
+      "name": "Gavurdağ Salata Duble",
+      "priceTry": 520
+     },
+     {
+      "name": "Gavurdağ Salata Tek",
+      "priceTry": 400
+     },
+     {
+      "name": "Çoban Salata Duble",
+      "priceTry": 460
+     },
+     {
+      "name": "Çoban Salata Tek",
+      "priceTry": 360
+     },
+     {
+      "name": "Trako Domates Salatası",
+      "priceTry": 400
+     },
+     {
+      "name": "Bahçe Salata Duble",
+      "priceTry": 450
+     },
+     {
+      "name": "Bahçe Salata Tek",
+      "priceTry": 350
+     }
+    ]
+   },
+   {
+    "title": "Izgara porsiyonlar",
+    "items": [
+     {
+      "name": "Bonfile",
+      "priceTry": 1300
+     },
+     {
+      "name": "Dana Lokum",
+      "priceTry": 1400
+     },
+     {
+      "name": "Antrikot",
+      "priceTry": 1300
+     },
+     {
+      "name": "Yağlı Kara",
+      "priceTry": 1200
+     },
+     {
+      "name": "Külbastı",
+      "priceTry": 1250
+     },
+     {
+      "name": "Beyti Sarma",
+      "priceTry": 1000
+     },
+     {
+      "name": "Kuzu Küşleme",
+      "priceTry": 1350
+     },
+     {
+      "name": "Kuzu Şiş",
+      "priceTry": 1250
+     },
+     {
+      "name": "Kuzu Pirzola",
+      "priceTry": 1200
+     },
+     {
+      "name": "Trakyum Kasap Köfte",
+      "priceTry": 750
+     },
+     {
+      "name": "Cheddarlı Köfte",
+      "priceTry": 750
+     },
+     {
+      "name": "Izgara Sucuk",
+      "priceTry": 700
+     },
+     {
+      "name": "Tavuk Şiş",
+      "priceTry": 750
+     },
+     {
+      "name": "Tavuk Kanat",
+      "priceTry": 750
+     },
+     {
+      "name": "Tavuk Pirzola",
+      "priceTry": 750
+     },
+     {
+      "name": "Kuzu Tandır",
+      "priceTry": 1300
+     },
+     {
+      "name": "Dallas Steak",
+      "description": "Kilosu 3.800 ₺"
+     },
+     {
+      "name": "Rib - Eye Steak",
+      "priceTry": 4200
+     },
+     {
+      "name": "Newyork Steak",
+      "priceTry": 3300
+     },
+     {
+      "name": "Dallas Steak",
+      "priceTry": 1500
+     },
+     {
+      "name": "T-Bone Steak",
+      "priceTry": 3600
+     }
+    ]
+   },
+   {
+    "title": "Kebaplar",
+    "items": [
+     {
+      "name": "Şaşlık (Tek)",
+      "priceTry": 550
+     },
+     {
+      "name": "Urfa",
+      "priceTry": 1000
+     },
+     {
+      "name": "Fıstıklı Kebap",
+      "priceTry": 1100
+     },
+     {
+      "name": "Adana",
+      "priceTry": 1000
+     }
+    ]
+   },
+   {
+    "title": "Mangal",
+    "items": [
+     {
+      "name": "Bonfile",
+      "description": "Kilosu 3.500 ₺"
+     },
+     {
+      "name": "Antrikot",
+      "description": "Kilosu 3.500 ₺"
+     },
+     {
+      "name": "Külbastı",
+      "description": "Kilosu 2.800 ₺"
+     },
+     {
+      "name": "Kuzu Küşleme",
+      "description": "Kilosu 3.000 ₺"
+     },
+     {
+      "name": "Dana Şaşlık",
+      "description": "Kilosu 3.100 ₺"
+     },
+     {
+      "name": "Yağlı Kara",
+      "description": "Kilosu 3.200 ₺"
+     },
+     {
+      "name": "Kuzu Şiş",
+      "description": "Kilosu 3.000 ₺"
+     },
+     {
+      "name": "Kuzu Pirzola",
+      "description": "Kilosu 3.200 ₺"
+     },
+     {
+      "name": "Beyti Sarma",
+      "description": "Kilosu 3.200 ₺"
+     },
+     {
+      "name": "Kasap Köfte",
+      "description": "Kilosu 2.350 ₺"
+     },
+     {
+      "name": "Cheddarlı Köfte",
+      "description": "Kilosu 2.350 ₺"
+     },
+     {
+      "name": "Tavuk Pirzola",
+      "description": "Kilosu 1.900 ₺"
+     },
+     {
+      "name": "Tavuk Kanat",
+      "description": "Kilosu 1.900 ₺"
+     },
+     {
+      "name": "Izgara Sucuk",
+      "description": "Kilosu 2.250 ₺"
+     },
+     {
+      "name": "Izgara Sosis",
+      "description": "Kilosu 2.000 ₺"
+     },
+     {
+      "name": "Madalyon",
+      "description": "Kilosu 2.900 ₺"
+     },
+     {
+      "name": "Kaşarlı Köfte",
+      "description": "Kilosu 2.350 ₺"
+     },
+     {
+      "name": "Kemikli Kaburga",
+      "description": "Kilosu 3.300 ₺"
+     },
+     {
+      "name": "Kaburga",
+      "description": "Kilosu 3.000 ₺"
+     },
+     {
+      "name": "Hellim Sucuk",
+      "description": "Kilosu 2.300 ₺"
+     },
+     {
+      "name": "Fıstıklı Kebap",
+      "description": "Kilosu 2.700 ₺"
+     },
+     {
+      "name": "Çöp Şiş",
+      "description": "Kilosu 2.750 ₺"
+     },
+     {
+      "name": "Cheddarlı Sucuk",
+      "description": "Kilosu 2.300 ₺"
+     },
+     {
+      "name": "Adana",
+      "description": "Kilosu 2.400 ₺"
+     },
+     {
+      "name": "Urfa",
+      "description": "Kilosu 2.400 ₺"
+     },
+     {
+      "name": "Tavuk Şiş",
+      "description": "Kilosu 1.900 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Burger ve Tacos",
+    "items": [
+     {
+      "name": "2'li Trako",
+      "priceTry": 500
+     },
+     {
+      "name": "Mini Burger Köfte Lokum",
+      "priceTry": 520
+     },
+     {
+      "name": "BBQ Tiftik Burger",
+      "priceTry": 840
+     },
+     {
+      "name": "Trakyum Burger",
+      "priceTry": 600
+     }
+    ]
+   },
+   {
+    "title": "Fırın ürünleri",
+    "items": [
+     {
+      "name": "Kuzu Tandır (pişmiş)",
+      "description": "Kilosu 3.000 ₺"
+     },
+     {
+      "name": "Dana Kavurma (pişmiş)",
+      "description": "Kilosu 3.000 ₺"
+     }
+    ]
+   },
+   {
+    "title": "Zeytinyağlılar",
+    "items": [
+     {
+      "name": "Zeytinyağlı Taze Fasulye",
+      "priceTry": 350
+     },
+     {
+      "name": "Zeytinyağlı Enginar",
+      "priceTry": 375
+     },
+     {
+      "name": "Vişneli Zeytinyalı Yaprak Sarma",
+      "priceTry": 420
+     }
+    ]
+   },
+   {
+    "title": "Mezeler",
+    "items": [
+     {
+      "name": "Manda Yoğurdu",
+      "priceTry": 325
+     },
+     {
+      "name": "Kuru Cacık",
+      "priceTry": 325
+     },
+     {
+      "name": "Klasik Grit",
+      "priceTry": 350
+     },
+     {
+      "name": "Karamelize Soğan",
+      "priceTry": 325
+     },
+     {
+      "name": "Fettah",
+      "priceTry": 325
+     },
+     {
+      "name": "Biber Borani",
+      "priceTry": 325
+     },
+     {
+      "name": "Atom",
+      "priceTry": 325
+     },
+     {
+      "name": "Yoğurtlu Biber",
+      "priceTry": 325
+     },
+     {
+      "name": "Semizotu",
+      "priceTry": 325
+     },
+     {
+      "name": "Muhammara",
+      "priceTry": 325
+     },
+     {
+      "name": "Kuru Domates",
+      "priceTry": 325
+     },
+     {
+      "name": "Köz Patlican Ezme",
+      "priceTry": 325
+     },
+     {
+      "name": "Köpoğlu",
+      "priceTry": 325
+     },
+     {
+      "name": "Ispanak Borani",
+      "priceTry": 325
+     },
+     {
+      "name": "2'li Girit Ezme",
+      "priceTry": 350
+     },
+     {
+      "name": "Haydari",
+      "priceTry": 325
+     },
+     {
+      "name": "Havuç Tarator",
+      "priceTry": 325
+     },
+     {
+      "name": "Hardallı Patates",
+      "priceTry": 280
+     },
+     {
+      "name": "Fava",
+      "priceTry": 325
+     },
+     {
+      "name": "Fatma",
+      "priceTry": 350
+     },
+     {
+      "name": "Ekşi Tatlı Kereviz",
+      "priceTry": 300
+     },
+     {
+      "name": "Morgül",
+      "priceTry": 350
+     },
+     {
+      "name": "Acılı Ezme",
+      "priceTry": 325
+     }
+    ]
+   },
+   {
+    "title": "Tatlı ve meyveler",
+    "items": [
+     {
+      "name": "Çikolata Dolgulu Çıtır Muska",
+      "priceTry": 340
+     },
+     {
+      "name": "Simit Katmer",
+      "priceTry": 700
+     },
+     {
+      "name": "Havuç Dilim Baklava",
+      "priceTry": 570
+     },
+     {
+      "name": "Sıcak Çikolatalı Brownie",
+      "priceTry": 550
+     },
+     {
+      "name": "Sufle",
+      "priceTry": 500
+     },
+     {
+      "name": "Çikolatalı Profiterol",
+      "priceTry": 475
+     },
+     {
+      "name": "Serpme Meyve",
+      "priceTry": 450
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Büyük Şalgam",
+      "priceTry": 230
+     },
+     {
+      "name": "Şalgam",
+      "priceTry": 140
+     },
+     {
+      "name": "Soda",
+      "priceTry": 90
+     },
+     {
+      "name": "Sıkma Meyve Suyu",
+      "priceTry": 200
+     },
+     {
+      "name": "Meyveli Soda",
+      "priceTry": 110
+     },
+     {
+      "name": "Meyve Suyu Kayısı",
+      "priceTry": 170
+     },
+     {
+      "name": "Meyve Suyu Vişne",
+      "priceTry": 170
+     },
+     {
+      "name": "Meyve Suyu Şeftali",
+      "priceTry": 170
+     },
+     {
+      "name": "Meyve Suyu Karışık",
+      "priceTry": 170
+     },
+     {
+      "name": "Limonata",
+      "priceTry": 160
+     },
+     {
+      "name": "İce Tea Şeftali",
+      "priceTry": 170
+     },
+     {
+      "name": "İce Tea Limon",
+      "priceTry": 170
+     },
+     {
+      "name": "Gazoz",
+      "priceTry": 170
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 170
+     },
+     {
+      "name": "Enerji İçeceği",
+      "priceTry": 200
+     },
+     {
+      "name": "Cola Şişe",
+      "priceTry": 170
+     },
+     {
+      "name": "Cola Zero",
+      "priceTry": 170
+     },
+     {
+      "name": "Churcill",
+      "priceTry": 120
+     },
+     {
+      "name": "Büyük Su",
+      "priceTry": 120
+     },
+     {
+      "name": "Ayran",
+      "priceTry": 130
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site (trakyum.com.tr): /menu (fiyatlı, tarihsiz), /hakkimizda, iletişim ve saat (her gün 09.00–01.00). Alkollü içecekler bölümü (46 kalem) aktarılmadı. Adında 'KG' geçen kalemler kilo fiyatı olarak açıklamada gösteriliyor; fiyatı 0,00 TL görünen kalemlerde fiyat yazılmadı. Video bulunamadı (YouTube aramasında sonuç yok)."
+}

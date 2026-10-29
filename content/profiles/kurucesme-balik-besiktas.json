@@ -1,0 +1,173 @@
+{
+ "slug": "kurucesme-balik-besiktas",
+ "description": {
+  "value": "Kuruçeşme Caddesi üzerinde, Boğaz kıyısında balık restoranı. Menüde soğuk deniz mezeleri, salatalar, günlük balıklar ve ızgara ahtapot ile geleneksel tatlılar var. İşletme menüsünde fiyat yayımlamıyor.",
+  "provider": "official_site",
+  "url": "https://kurucesmebalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Kuruçeşme, Kuruçeşme Cd. No:9, 34345 Beşiktaş, İstanbul",
+  "provider": "official_site",
+  "url": "https://kurucesmebalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 212 263 44 72",
+  "provider": "official_site",
+  "url": "https://kurucesmebalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://kurucesmebalik.com",
+  "provider": "official_site",
+  "url": "https://kurucesmebalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "kurucesmebalikmusa",
+  "provider": "official_site",
+  "url": "https://kurucesmebalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 12:00-24:00",
+  "provider": "official_site",
+  "url": "https://kurucesmebalik.com",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Özel gün ve grup organizasyonları için işletmeyle iletişime geçilmesi isteniyor.",
+   "provider": "official_site",
+   "url": "https://kurucesmebalik.com",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://kurucesmebalik.com/menu/",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": false,
+  "sections": [
+   {
+    "title": "Mezeler",
+    "items": [
+     {
+      "name": "Palamut Füme"
+     },
+     {
+      "name": "Ahtapot Salatası"
+     },
+     {
+      "name": "Torik Lakerdası"
+     },
+     {
+      "name": "Fesleğen Levrek"
+     },
+     {
+      "name": "Deniz Mahsulleri Salatası"
+     },
+     {
+      "name": "Karides Söğüş"
+     },
+     {
+      "name": "Turşu Çeşitleri"
+     },
+     {
+      "name": "Deniz Börülce"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Çoban Salata"
+     },
+     {
+      "name": "Domates Salata"
+     },
+     {
+      "name": "Gavurdağı Salata"
+     },
+     {
+      "name": "Mevsim Salata"
+     },
+     {
+      "name": "Peynirli Mevsim Salata"
+     },
+     {
+      "name": "Domates Peynirli Roka Salatası"
+     },
+     {
+      "name": "Roka Salata"
+     },
+     {
+      "name": "Greek Salata"
+     }
+    ]
+   },
+   {
+    "title": "Deniz ürünleri",
+    "items": [
+     {
+      "name": "Kalkan Tava"
+     },
+     {
+      "name": "Levrek Deniz"
+     },
+     {
+      "name": "Çupra Deniz"
+     },
+     {
+      "name": "Levrek"
+     },
+     {
+      "name": "Çupra"
+     },
+     {
+      "name": "Tekir"
+     },
+     {
+      "name": "İstavrit"
+     },
+     {
+      "name": "Ahtapot Izgara"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Dondurma"
+     },
+     {
+      "name": "Dondurmalı İrmik"
+     },
+     {
+      "name": "Fırın Helva"
+     },
+     {
+      "name": "Sufle"
+     },
+     {
+      "name": "İncir Tatlısı"
+     },
+     {
+      "name": "Kabak Tatlısı"
+     },
+     {
+      "name": "Ayva Tatlısı"
+     },
+     {
+      "name": "Ev Baklavası"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site (kurucesmebalik.com): /menu (fiyatsız; yalnız yemek adları aktarıldı, sitedeki tanıtım cümleleri aktarılmadı; 'İstarvit' ve 'Aktapot Izgara' yazım hataları İstavrit / Ahtapot Izgara olarak düzeltildi), adres, telefon, saat (Pazartesi–Pazar 12.00–00.00). Sıcak içecek ve alkol bölümleri aktarılmadı. Hakkımızda sayfası 404. Video: 'Kuruçeşme Balık Official Trailer' (DMT Production, 2017) bu restorana ait olduğu doğrulanamadı (açıklama boş); eklenmedi. Aramada çıkan Mavi Balık Kuruçeşme videoları başka restoran."
+}

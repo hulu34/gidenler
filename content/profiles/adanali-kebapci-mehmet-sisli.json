@@ -1,0 +1,290 @@
+{
+ "slug": "adanali-kebapci-mehmet-sisli",
+ "description": {
+  "value": "Esentepe'de, Ecza Sokağı'ndaki Pol Center'da Adana usulü kebapçı. İşletmenin anlatımına göre 1990'dan beri kebap yapıyor; zırhla hazırlanan Adana kebabın yanında ciğer, pide ve lahmacun var. Kebap ve tavuk tabaklarında mezeler fiyata dahil.",
+  "provider": "official_site",
+  "url": "https://www.adanalikebapcimehmet.com",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Esentepe, Ecza Sokağı, Pol Center C Blok No:4, 34394 Şişli, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.adanalikebapcimehmet.com/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 501 262 01 01",
+  "provider": "official_site",
+  "url": "https://www.adanalikebapcimehmet.com",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://www.adanalikebapcimehmet.com",
+  "provider": "official_site",
+  "url": "https://www.adanalikebapcimehmet.com",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "adanalikebapcimehmet",
+  "provider": "official_site",
+  "url": "https://www.adanalikebapcimehmet.com",
+  "checkedAt": "2026-10-29"
+ },
+ "reservation": {
+  "value": "Sitedeki form bilgileri bir WhatsApp mesajına aktarır, mesajı siz gönderirsiniz (+90 501 619 31 21). Site, talebin ekibin yanıtıyla kesinleştiğini belirtiyor. Telefon: +90 501 262 01 01.",
+  "provider": "official_site",
+  "url": "https://www.adanalikebapcimehmet.com",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Kebap, tavuk ve imza tabaklarında 7, lahmacunda 4, pidede 3 çeşit meze fiyata dahil.",
+   "provider": "official_site",
+   "url": "https://www.adanalikebapcimehmet.com",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Fiyatlara KDV dahil.",
+   "provider": "official_site",
+   "url": "https://www.adanalikebapcimehmet.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "İşletme güncel çalışma saatlerini kendi sitesinde değil, Google profilinde yayımlıyor.",
+   "provider": "official_site",
+   "url": "https://www.adanalikebapcimehmet.com/iletisim",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "paket": true
+  },
+  "provider": "official_site",
+  "url": "https://www.adanalikebapcimehmet.com",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.adanalikebapcimehmet.com/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "İmza",
+    "items": [
+     {
+      "name": "Mehmet Usta'nın İmza Kebabı",
+      "priceTry": 1300,
+      "description": "270 g · 7 çeşit meze dahil"
+     }
+    ]
+   },
+   {
+    "title": "Kebaplar",
+    "items": [
+     {
+      "name": "Adana Kebap",
+      "priceTry": 790,
+      "description": "180 g zırh Adana kebabı · 7 çeşit meze dahil"
+     },
+     {
+      "name": "Ciğer Şiş",
+      "priceTry": 900,
+      "description": "8 şiş, 200 g · 7 çeşit meze dahil"
+     },
+     {
+      "name": "Kuşbaşı (Kuzu Şiş)",
+      "priceTry": 900,
+      "description": "2 şiş, 180 g · 7 çeşit meze dahil"
+     },
+     {
+      "name": "Çöp Şiş",
+      "priceTry": 900,
+      "description": "6 şiş, 180 g · 7 çeşit meze dahil"
+     },
+     {
+      "name": "Kaz Başı",
+      "priceTry": 1200,
+      "description": "7 çeşit meze dahil"
+     },
+     {
+      "name": "Yağlı Kara",
+      "priceTry": 1200,
+      "description": "7 çeşit meze dahil"
+     },
+     {
+      "name": "Adana Beyti Kebap",
+      "priceTry": 1200,
+      "description": "Sarımsaklı ve maydanozlu, 270 g · 7 çeşit meze dahil"
+     },
+     {
+      "name": "Pirzola",
+      "priceTry": 1300,
+      "description": "250 g kuzu pirzola · 7 çeşit meze dahil"
+     },
+     {
+      "name": "Patlıcan Kebap",
+      "priceTry": 1200,
+      "description": "250 g, közlenmiş patlıcanla · 7 çeşit meze dahil"
+     }
+    ]
+   },
+   {
+    "title": "Tavuk",
+    "items": [
+     {
+      "name": "Kemiksiz Tavuk Sarma",
+      "priceTry": 790,
+      "description": "Buttan 300 g · 7 çeşit meze dahil"
+     },
+     {
+      "name": "Çıtır Kanat",
+      "priceTry": 790,
+      "description": "300 g · 7 çeşit meze dahil"
+     }
+    ]
+   },
+   {
+    "title": "Dürüm",
+    "items": [
+     {
+      "name": "Dürüm",
+      "priceTry": 690,
+      "description": "180 g; çeşitleri ekibe sorulur"
+     }
+    ]
+   },
+   {
+    "title": "Pide ve lahmacun",
+    "items": [
+     {
+      "name": "Kuşbaşı Kaşarlı Pide",
+      "priceTry": 790,
+      "description": "3 çeşit meze dahil"
+     },
+     {
+      "name": "Kaşarlı Pide",
+      "priceTry": 750,
+      "description": "3 çeşit meze dahil"
+     },
+     {
+      "name": "Kuşbaşılı Pide",
+      "priceTry": 750,
+      "description": "3 çeşit meze dahil"
+     },
+     {
+      "name": "Fındık Lahmacun",
+      "priceTry": 700,
+      "description": "10 adet · 4 çeşit meze dahil"
+     },
+     {
+      "name": "Adana Lahmacun",
+      "priceTry": 700,
+      "description": "5 adet · 4 çeşit meze dahil"
+     }
+    ]
+   },
+   {
+    "title": "Başlangıç",
+    "items": [
+     {
+      "name": "Mercimek Çorbası",
+      "priceTry": 250
+     },
+     {
+      "name": "Çiğ Köfte",
+      "priceTry": 400
+     }
+    ]
+   },
+   {
+    "title": "Tatlı",
+    "items": [
+     {
+      "name": "Dondurma",
+      "priceTry": 250
+     },
+     {
+      "name": "Baklava (porsiyon)",
+      "priceTry": 400,
+      "description": "Fıstıklı"
+     },
+     {
+      "name": "Havuç Dilimi Baklava",
+      "priceTry": 400,
+      "description": "Porsiyon"
+     },
+     {
+      "name": "Havuç Dilim Baklava",
+      "priceTry": 2500,
+      "description": "1 kg paket"
+     },
+     {
+      "name": "Baklava",
+      "priceTry": 2500,
+      "description": "1 kg paket"
+     }
+    ]
+   },
+   {
+    "title": "İçecek",
+    "items": [
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 100
+     },
+     {
+      "name": "Soda",
+      "priceTry": 120
+     },
+     {
+      "name": "Büyük Su",
+      "priceTry": 120
+     },
+     {
+      "name": "Küçük Su",
+      "priceTry": 60
+     },
+     {
+      "name": "Kapalı Ayran",
+      "priceTry": 120
+     },
+     {
+      "name": "Dövme Ayran",
+      "priceTry": 120
+     },
+     {
+      "name": "Meyve Suyu",
+      "priceTry": 140
+     },
+     {
+      "name": "Fuse Tea",
+      "priceTry": 140,
+      "description": "Limon veya şeftali"
+     },
+     {
+      "name": "Fanta",
+      "priceTry": 140
+     },
+     {
+      "name": "Sprite",
+      "priceTry": 140
+     },
+     {
+      "name": "Coca-Cola",
+      "priceTry": 140
+     },
+     {
+      "name": "Şalgam",
+      "priceTry": 120,
+      "description": "Acılı veya acısız"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site (adanalikebapcimehmet.com): ana sayfa, /iletisim, /hakkimizda ve /menu (QR menü, fiyatlı, tarihsiz; 'güncel fiyat için ekibimize danışabilirsiniz'). Yalnız Esentepe'de tek şube. Çalışma saati sitede yok (Google profiline yönlendiriyor). Video: bu şubeyle doğrulanabilen video bulunamadı (Fırat Sobutay 2024 'tüm gün Adana kebap' videosunda hangi mekânlar olduğu açıklamada yazmıyor; doğrulanamadığı için eklenmedi). '1 kg' baklava kalemleri paket ürün; kilo fiyatı olarak değil, kalemin kendi fiyatı olarak menüde yazıyor."
+}
