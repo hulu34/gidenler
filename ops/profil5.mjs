@@ -22,6 +22,8 @@ const tl = (n) => `${n.toLocaleString("tr-TR")} ₺`;
 const ytId = (u) => u.match(/(?:v=|shorts\/|youtu\.be\/)([\w-]{11})/)?.[1];
 
 if (!CANLI) {
+  const pr = await fetch(`${admin}?rapor=profil&slug=${SLUGS[0]}`, { headers: H, redirect: "manual" });
+  console.log(`  tanı: rapor HTTP ${pr.status} ${pr.headers.get("content-type") ?? "-"} konum=${(pr.headers.get("location") ?? "-").replace(/\?.*/, "")}`);
   const env = (await rapor(SLUGS[0])).env;
   ok("hedef ortam preview (üretime yazılmaz)", env === "preview", `env=${env}`);
   if (env !== "preview") process.exit(1);
