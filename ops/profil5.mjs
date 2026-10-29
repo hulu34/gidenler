@@ -53,7 +53,7 @@ for (const slug of SLUGS) {
     const t = await p.evaluate(() => document.body.innerText.replace(/\s+/g, " "));
     const nav = await p.evaluate(() => [...document.querySelectorAll("a[href^='#']")].map((a) => a.textContent.trim()));
     ok(`${dev}: sekmeler (Videolar yalnız video varsa)`, ["Genel bakış", "Menü", "Fotoğraflar"].every((x) => nav.includes(x)) && nav.includes("Videolar") === pf.videos.length > 0, nav.filter((x) => x.length < 14).join("|"));
-    ok(`${dev}: tanıtım, telefon, kaynak ve son kontrol ${trDate(pf.description.checkedAt)}`, t.includes(pf.description.value.slice(0, 40)) && t.includes(pf.phone.value) && t.includes(`son kontrol ${trDate(pf.description.checkedAt)}`));
+    ok(`${dev}: tanıtım, telefon, kaynak ve son kontrol ${trDate(pf.description.checkedAt)}`, t.includes(pf.description.value.slice(0, 40)) && (!pf.phone || t.includes(pf.phone.value)) && t.includes(`son kontrol ${trDate(pf.description.checkedAt)}`));
     ok(`${dev}: saat ${pf.hours ? "resmî kaynaktan" : "uydurulmuyor"}`, pf.hours ? !t.includes("İşletmenin resmî kaynağında yayımlanmıyor") : t.includes("İşletmenin resmî kaynağında yayımlanmıyor"));
     /* başlık CSS ile büyük harf (İ): metin kaynağı textContent'ten okunur */
     const dts = await p.locator("#genel dt").evaluateAll((d) => d.map((x) => x.textContent.trim()));
