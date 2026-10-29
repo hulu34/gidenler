@@ -1,0 +1,487 @@
+{
+ "slug": "muptela-kahvalti-brunch-atasehir",
+ "description": {
+  "value": "Ataşehir Barbaros'ta sınırsız serpme kahvaltı, omlet, sahan, gözleme ve bazlama tostu sunan bir kahvaltı ve brunch mekânı.",
+  "provider": "official_site",
+  "url": "https://muptelakahvalti.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Barbaros Mah. Lale Sok. No:4, 34746 Ataşehir, İstanbul",
+  "provider": "official_site",
+  "url": "https://muptelakahvalti.com.tr/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 541 287 99 34",
+  "provider": "official_site",
+  "url": "https://muptelakahvalti.com.tr/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://muptelakahvalti.com.tr/",
+  "provider": "official_site",
+  "url": "https://muptelakahvalti.com.tr/",
+  "checkedAt": "2026-10-29"
+ },
+ "hours": {
+  "value": "Mo-Su 08:30-19:00",
+  "provider": "official_site",
+  "url": "https://muptelakahvalti.com.tr/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Sınırsız serpme kahvaltı kişi başı; 0-5 yaş çocuklar için ücretsiz, 6-12 yaş için yarı fiyatlı.",
+   "provider": "official_site",
+   "url": "https://muptelakahvalti.com.tr/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Rezervasyon telefonla, WhatsApp'tan ya da e-postayla alınıyor.",
+   "provider": "official_site",
+   "url": "https://muptelakahvalti.com.tr/iletisim",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://muptelakahvalti.com.tr/iletisim",
+  "checkedAt": "2026-10-29"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://muptelakahvalti.com.tr/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     {
+      "name": "Sınırsız Serpme Kahvaltı - Kişi Başı",
+      "priceTry": 1090,
+      "description": "Ezine Peyniri, Tel Peynir, Eski Kaşar, Kırma Yeşil Zeytin, Siyah Zeytin, Tereyağı, Bal-Kaymak, Çikolata, Mevsim Reçeli, Siyah Kuru Üzüm, Taze Meyve Tabağı, Taze Söğüş, Közlenmiş Yoğurtlu Meze, Acuka, Süt Reçeli, Bazlama, Baharatlı Patates Kızartması, Kasap Dana Sucuk, Gözleme, Pişi, Tereyağlı …"
+     },
+     {
+      "name": "Kahvaltı Tabağı",
+      "priceTry": 800,
+      "description": "Ezine Peyniri, Tel Peynir, Eski Kaşar, Kırma Yeşil Zeytin, Siyah Zeytin, Bal-Kaymak, Taze Söğüş, Acuka, Süt Reçeli, Haşlanmış Yumurta, Baharatlı Patates Kızartması, Sigara Böreği, 2 adet Çay. · Tek kişilik porsiyon şeklinde hazırlanmıştır."
+     }
+    ]
+   },
+   {
+    "title": "Omletler",
+    "items": [
+     {
+      "name": "Sade Omlet",
+      "priceTry": 275,
+      "description": "Günlük Yumurta, Tereyağı. Söğüş ile servis edilir."
+     },
+     {
+      "name": "Sucuklu Omlet",
+      "priceTry": 380,
+      "description": "Günlük Yumurta, Tereyağı, Kasap Dana Sucuk."
+     },
+     {
+      "name": "Kavurmalı Omlet",
+      "priceTry": 410,
+      "description": "Günlük Yumurta, Tereyağı, Kavurma."
+     },
+     {
+      "name": "Kavurmalı Kaşarlı Omlet",
+      "priceTry": 450,
+      "description": "Günlük Yumurta, Tereyağı, Kavurma, Taze Kaşar Peyniri."
+     },
+     {
+      "name": "Kavurmalı Patatesli Omlet",
+      "priceTry": 450,
+      "description": "Günlük Yumurta, Tereyağı, Kavurma, Patates."
+     },
+     {
+      "name": "Kaşarlı Omlet",
+      "priceTry": 330,
+      "description": "Günlük Yumurta, Tereyağı, Taze Kaşar Peyniri. Söğüş ile servis edilir."
+     },
+     {
+      "name": "Kaşarlı Sucuklu Omlet",
+      "priceTry": 410,
+      "description": "Günlük Yumurta, Tereyağı, Taze Kaşar Peyniri, Kasap Dana Sucuk."
+     },
+     {
+      "name": "Ezineli Omlet",
+      "priceTry": 330,
+      "description": "Günlük Yumurta, Tereyağı, Ezine Peyniri. Söğüş ile servis edilir."
+     },
+     {
+      "name": "Patatesli Omlet",
+      "priceTry": 330,
+      "description": "Günlük Yumurta, Tereyağı, Patates."
+     }
+    ]
+   },
+   {
+    "title": "Sahanlar",
+    "items": [
+     {
+      "name": "Trabzon Kuymak",
+      "priceTry": 450,
+      "description": "Mısır unu, Tereyağı, Peynir Karışımı."
+     },
+     {
+      "name": "Klasik Menemen",
+      "priceTry": 345,
+      "description": "Günlük Yumurta, Tereyağı, Domates, Yeşil Biber."
+     },
+     {
+      "name": "Sucuklu Menemen",
+      "priceTry": 450,
+      "description": "Günlük Yumurta, Tereyağı, Domates, Yeşil Biber, Kasap Dana Sucuk."
+     },
+     {
+      "name": "Kavurmalı Kaşarlı Menemen",
+      "priceTry": 525,
+      "description": "Günlük Yumurta, Tereyağı, Domates, Yeşil Biber, Kavurma, Taze Kaşar Peyniri."
+     },
+     {
+      "name": "Tereyağlı Kasap Sucuk",
+      "priceTry": 400,
+      "description": "Kasap Dana Sucuk, Tereyağı."
+     },
+     {
+      "name": "Kaşarlı Menemen",
+      "priceTry": 400,
+      "description": "Günlük Yumurta, Tereyağı, Domates, Yeşil Biber, Kaşar Peyniri."
+     },
+     {
+      "name": "Kaşarlı Sucuklu Menemen",
+      "priceTry": 480,
+      "description": "Günlük Yumurta, Tereyağı, Domates, Yeşil Biber, Kaşar Peyniri, Kasap Dana Sucuk."
+     },
+     {
+      "name": "Kavurmalı Menemen",
+      "priceTry": 480,
+      "description": "Günlük Yumurta, Tereyağı, Domates, Yeşil Biber, Kavurma."
+     }
+    ]
+   },
+   {
+    "title": "Göz veya Çırpılmış Sahanlar",
+    "items": [
+     {
+      "name": "Sahanda Yumurta",
+      "priceTry": 220,
+      "description": "Günlük Taze Yumurta, Tereyağı."
+     },
+     {
+      "name": "Sucuklu Yumurta",
+      "priceTry": 330,
+      "description": "Günlük Taze Yumurta, Tereyağı, Kasap Dana Sucuk."
+     },
+     {
+      "name": "Ezineli Yumurta",
+      "priceTry": 275,
+      "description": "Günlük Taze Yumurta, Tereyağı, Ezine Peyniri."
+     },
+     {
+      "name": "Kavurmalı Yumurta",
+      "priceTry": 360,
+      "description": "Günlük Taze Yumurta, Tereyağı, Kavurma."
+     },
+     {
+      "name": "Kavurmalı Kaşarlı Yumurta",
+      "priceTry": 400,
+      "description": "Günlük Yumurta, Tereyağı, Kaşar Peyniri, Kavurma."
+     },
+     {
+      "name": "Kaşarlı Yumurta",
+      "priceTry": 275,
+      "description": "Günlük Taze Yumurta, Tereyağı, Kaşar Peyniri."
+     },
+     {
+      "name": "Kaşarlı Sucuklu Yumurta",
+      "priceTry": 360,
+      "description": "Günlük Yumurta, Tereyağı, Kaşar Peyniri, Kasap Dana Sucuk."
+     },
+     {
+      "name": "Patatesli Yumurta",
+      "priceTry": 275,
+      "description": "Günlük Yumurta, Tereyağı, Patates."
+     },
+     {
+      "name": "Kavurmalı Patatesli Yumurta",
+      "priceTry": 400,
+      "description": "Günlük Yumurta, Tereyağı, Kavurma, Patates."
+     }
+    ]
+   },
+   {
+    "title": "Aperatifler",
+    "items": [
+     {
+      "name": "Soslu Patates Kızartması",
+      "priceTry": 280,
+      "description": "Kızartmalık Patates, Özel Sos."
+     },
+     {
+      "name": "Pişi",
+      "priceTry": 120,
+      "description": "Günlük El Yapımı Mayalı Hamur. · 2 Adet"
+     },
+     {
+      "name": "Peynir Tabağı",
+      "priceTry": 400,
+      "description": "Peynir Çeşitleri."
+     },
+     {
+      "name": "Haşlanmış Yumurta",
+      "priceTry": 80,
+      "description": "Günlük Taze Yumurta."
+     },
+     {
+      "name": "Söğüş Tabağı",
+      "priceTry": 230,
+      "description": "Günlük Taze Domates, Taze Salatalık, Taze Maydanoz."
+     },
+     {
+      "name": "Sigara Böreği",
+      "priceTry": 280,
+      "description": "Günlük Taze Yufka, Özel Peynir Karışımı. · 4 Adet"
+     }
+    ]
+   },
+   {
+    "title": "Gözlemeler",
+    "items": [
+     {
+      "name": "Kavurmalı Kaşarlı Gözleme",
+      "priceTry": 505,
+      "description": "Söğüş ile servis edilir."
+     },
+     {
+      "name": "Patatesli Gözleme",
+      "priceTry": 345,
+      "description": "Söğüş ile servis edilir."
+     },
+     {
+      "name": "Peynirli Gözleme",
+      "priceTry": 410,
+      "description": "Söğüş ile servis edilir."
+     },
+     {
+      "name": "Kıymalı Kaşarlı Gözleme",
+      "priceTry": 505,
+      "description": "Söğüş ile servis edilir."
+     }
+    ]
+   },
+   {
+    "title": "Bazlama Tostları",
+    "items": [
+     {
+      "name": "Kaşarlı Tost",
+      "priceTry": 275,
+      "description": "5 Dilim. Söğüş ile servis edilir."
+     },
+     {
+      "name": "Sade Sucuklu Tost",
+      "priceTry": 345,
+      "description": "Söğüş ile servis edilir."
+     },
+     {
+      "name": "Kavurmalı Tost",
+      "priceTry": 345,
+      "description": "Söğüş ile servis edilir."
+     },
+     {
+      "name": "Ekstra Kaşarlı Tost",
+      "priceTry": 385,
+      "description": "10 Dilim. Söğüş ile servis edilir."
+     },
+     {
+      "name": "Kaşarlı Sucuklu Tost",
+      "priceTry": 410,
+      "description": "Söğüş ile servis edilir."
+     },
+     {
+      "name": "Kavurmalı Kaşarlı Tost",
+      "priceTry": 410,
+      "description": "Söğüş ile servis edilir."
+     }
+    ]
+   },
+   {
+    "title": "Sıcak İçecekler",
+    "items": [
+     {
+      "name": "Bardak Çay",
+      "priceTry": 45,
+      "description": "Yeni Demlenmiş Türk Çayı."
+     },
+     {
+      "name": "Termos Çay",
+      "priceTry": 345,
+      "description": "Yeni Demlenmiş Türk Çayı."
+     },
+     {
+      "name": "Sıcak Çikolata",
+      "priceTry": 190,
+      "description": "Sütlü Çikolata."
+     },
+     {
+      "name": "Bitki Çayları",
+      "priceTry": 155,
+      "description": "Ihlamur, Papatya, Kuşburnu, Adaçayı."
+     },
+     {
+      "name": "Sütlü Filtre Kahve",
+      "priceTry": 210,
+      "description": "Kurukahveci Mehmet Efendi Colombian, Pastörize Süt."
+     },
+     {
+      "name": "Dibek Kahvesi",
+      "priceTry": 105,
+      "description": "Dibek Kahvesi."
+     },
+     {
+      "name": "Americano",
+      "priceTry": 125,
+      "description": "Espresso Kahve."
+     },
+     {
+      "name": "Coffee Latte",
+      "priceTry": 160,
+      "description": "Espresso Kahve, Pastörize Süt."
+     },
+     {
+      "name": "Fincan Çay",
+      "priceTry": 55,
+      "description": "Yeni Demlenmiş Türk Çayı."
+     },
+     {
+      "name": "Süt",
+      "priceTry": 95,
+      "description": "Pastörize süt."
+     },
+     {
+      "name": "Salep",
+      "priceTry": 190,
+      "description": "Pastörize süt, Salep."
+     },
+     {
+      "name": "Filtre Kahve",
+      "priceTry": 165,
+      "description": "Kurukahveci Mehmet Efendi Colombian."
+     },
+     {
+      "name": "Türk Kahvesi",
+      "priceTry": 105,
+      "description": "Kurukahveci Mehmet Efendi."
+     },
+     {
+      "name": "Espresso",
+      "priceTry": 105,
+      "description": "Espresso Kahve."
+     },
+     {
+      "name": "Cappuccino",
+      "priceTry": 160,
+      "description": "Espresso Kahve, Pastörize Süt."
+     },
+     {
+      "name": "Latte Macchiato",
+      "priceTry": 160,
+      "description": "Espresso Kahve, Pastörize Süt."
+     }
+    ]
+   },
+   {
+    "title": "Soğuk İçecekler",
+    "items": [
+     {
+      "name": "Taze Sıkma Portakal Suyu",
+      "priceTry": 210,
+      "description": "Taze Sıkmalık Portakal."
+     },
+     {
+      "name": "Ice Americano",
+      "priceTry": 135,
+      "description": "Granül Kahve."
+     },
+     {
+      "name": "Frappe",
+      "priceTry": 175,
+      "description": "Pastörize Süt, Granül Kahve."
+     },
+     {
+      "name": "Churchill",
+      "priceTry": 100,
+      "description": "Maden Suyu, Limon."
+     },
+     {
+      "name": "Maden Suyu",
+      "priceTry": 55,
+      "description": "Cam Şişe."
+     },
+     {
+      "name": "Su",
+      "priceTry": 50,
+      "description": "Pet Şişe."
+     },
+     {
+      "name": "Limonata",
+      "priceTry": 125,
+      "description": "Taze Limonata."
+     },
+     {
+      "name": "Milkshake",
+      "priceTry": 245,
+      "description": "Pastörize süt, Vanilya."
+     },
+     {
+      "name": "Ice Latte",
+      "priceTry": 160,
+      "description": "Pastörize süt, Granül Kahve, Toz Kakao."
+     },
+     {
+      "name": "Ice Mocha",
+      "priceTry": 160,
+      "description": "Pastörize süt, Granül Kahve, Toz Kakao."
+     },
+     {
+      "name": "Ice White Mocha",
+      "priceTry": 165,
+      "description": "Pastörize süt, Granül Kahve, Toz Kakao."
+     },
+     {
+      "name": "Fuse Tea",
+      "priceTry": 95,
+      "description": "Limon, Şeftali."
+     },
+     {
+      "name": "Coca-Cola & Fanta & Sprite",
+      "priceTry": 95,
+      "description": "Kola, Portakallı Gazoz, Limonlu Gazoz."
+     },
+     {
+      "name": "Cappy Meyve Suyu",
+      "priceTry": 95,
+      "description": "Karışık, Vişne, Şeftali. · × · Ana Sayfa · Menü · İletişim · Instagram"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=jEl8ZeJKWas",
+   "credit": "Müptela Kahvaltı (resmî kanal) · Ocak 2023 · sınırsız serpme kahvaltı tanıtımı",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Resmî site: menü (TL, tarihsiz), iletişim sayfasında adres, her gün 08:30–19:00, telefon, rezervasyon."
+}

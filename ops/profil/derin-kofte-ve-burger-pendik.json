@@ -1,0 +1,240 @@
+{
+ "slug": "derin-kofte-ve-burger-pendik",
+ "description": {
+  "value": "Kurtköy'de ekmek arası köfte, pideli köfte ve burger yapan bir köfteci; Sabiha Gökçen Havalimanı'na yakın.",
+  "provider": "official_site",
+  "url": "https://derinkofteburger.com/bize-ula%C5%9F%C4%B1n",
+  "checkedAt": "2026-10-29"
+ },
+ "address": {
+  "value": "Kurtköy, İmza Sokağı, Pendik, İstanbul",
+  "provider": "official_site",
+  "url": "https://derinkofteburger.com/bize-ula%C5%9F%C4%B1n",
+  "checkedAt": "2026-10-29"
+ },
+ "phone": {
+  "value": "+90 532 206 91 97",
+  "provider": "official_site",
+  "url": "https://derinkofteburger.com/bize-ula%C5%9F%C4%B1n",
+  "checkedAt": "2026-10-29"
+ },
+ "website": {
+  "value": "https://derinkofteburger.com/",
+  "provider": "official_site",
+  "url": "https://derinkofteburger.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "instagram": {
+  "value": "derinkofteburger",
+  "provider": "official_site",
+  "url": "https://derinkofteburger.com/",
+  "checkedAt": "2026-10-29"
+ },
+ "notes": [
+  {
+   "value": "Ekstra ürünler yalnız porsiyonların yanında veriliyor; bazı burgerlerde stok sorulması isteniyor.",
+   "provider": "official_site",
+   "url": "https://derinkofteburger.com/menu",
+   "checkedAt": "2026-10-29"
+  },
+  {
+   "value": "Kurtköy metro durağına 2 dakika, Sabiha Gökçen Havalimanı'na 4 dakika mesafede olduğunu belirtiyor.",
+   "provider": "official_site",
+   "url": "https://derinkofteburger.com/bize-ula%C5%9F%C4%B1n",
+   "checkedAt": "2026-10-29"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://derinkofteburger.com/menu",
+  "checkedAt": "2026-10-29",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Ekmek Arası Köfte",
+    "items": [
+     {
+      "name": "Yarım Ekmek Köfte",
+      "priceTry": 395,
+      "description": "90gr. Köfte, Patates Kızartması, İskender Sosu, Chimmichuri Sos, Köz Biber, Köz Domates, Kırmızı Soğan, Turşu"
+     },
+     {
+      "name": "Üç Çeyrek Ekmek Köfte",
+      "priceTry": 495,
+      "description": "120gr. Köfte, Patates Kızartması, İskender Sosu, Chimichurri Sos, Köz Biber, Domates, Kırmızı Soğan, Turşu"
+     },
+     {
+      "name": "Tam Ekmek Köfte",
+      "priceTry": 595,
+      "description": "150gr. Köfte, Patates Kızartması, İskender Sosu, Chimichurri Sos, Köz Biber, Domates, Kırmızı Soğan, Turşu"
+     }
+    ]
+   },
+   {
+    "title": "Köfte",
+    "items": [
+     {
+      "name": "Pideli Köfte",
+      "priceTry": 695,
+      "description": "170gr. Köfte, Tereyağlı Pide, Köz Patlıcan, Köz Biber, Köz Domates, Dana Füme, Piyaz, Ev Yapımı Turco Acı Sos"
+     },
+     {
+      "name": "Köfte İskender",
+      "priceTry": 695,
+      "description": "140gr. Köfte, Tereyağlı Pide, Tava Yoğurt, Köz Biber, Köz Domates, Dana Füme, Bol Tereyağ, İskender Sosu"
+     },
+     {
+      "name": "Çedarlı Köfte",
+      "priceTry": 745,
+      "description": "170gr. Köfte, Tereyağlı Pide, Eritilmiş Çedar Peyniri, Köz Patlıcan, Köz Biber, Köz Domates, Kırmızı Soğan, Dana Füme, Ev Yapımı Turco Sos"
+     }
+    ]
+   },
+   {
+    "title": "Burger",
+    "items": [
+     {
+      "name": "Cheeseburger",
+      "priceTry": 545,
+      "description": "140gr. Burger Köftesi, Honey Mustard Sos, Çedar Peyniri, Karamelize Soğan, Turşu"
+     },
+     {
+      "name": "Turco Burger",
+      "priceTry": 595,
+      "description": "140gr. Burger Köftesi, Dana Füme, Ev Yapımı Turco Acı Sos, Eritilmiş Eski Kaşar Peyniri, Halka Kırmızı Soğan, Turşu"
+     },
+     {
+      "name": "Lotus Burger",
+      "priceTry": 595,
+      "description": "140gr. Burger Köfte, Lotus Krem Sos, Lotus Biscoff Kırıntısı, Tereyağ, Eritilmiş Kaşar Peyniri, Lotuslu Karamelize Soğan, Kırmızı Soğan · Tatlı ve tuzlu bir arada lezzet!"
+     },
+     {
+      "name": "Çıtır Burger (Stok Sorunuz)",
+      "priceTry": 595,
+      "description": "140gr. Burger Köftesi, Honey Mustard Sos, Çedarlı Püre, Tereyağ, Trüflü Kekikli Mantar Sote, Közlenmiş Jalapeño Turşusu, Kıtır Soğan"
+     },
+     {
+      "name": "Köz Burger (Stok Sorunuz)",
+      "priceTry": 595,
+      "description": "140gr. Burger Köftesi, Honey Mustard Sos, Eritilmiş Eski Kaşar, Turco Sos, Köz Patlıcan, Köz Domates, Köz Biber"
+     },
+     {
+      "name": "derin Special Burger",
+      "priceTry": 595,
+      "description": "140gr. Burger Köftesi, 2X Dana Füme, 4X Eritilmiş Çedar Peyniri, Karamelize Soğan, Chimichurri Sos"
+     }
+    ]
+   },
+   {
+    "title": "Çocuk Menüsü",
+    "items": [
+     {
+      "name": "Çocuk Köfte Menü",
+      "priceTry": 395,
+      "description": "90gr. Köfte, Yarım Pide, Patates Kızartması"
+     }
+    ]
+   },
+   {
+    "title": "Yancılar",
+    "items": [
+     {
+      "name": "Patates Kızartması",
+      "priceTry": 145
+     },
+     {
+      "name": "Baharatlı Patates Kızartması",
+      "priceTry": 145
+     },
+     {
+      "name": "Piyaz",
+      "priceTry": 250
+     }
+    ]
+   },
+   {
+    "title": "Tatlı",
+    "items": [
+     {
+      "name": "Lotus Bisküvili Muhallebi",
+      "priceTry": 250
+     }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     {
+      "name": "Özerhisar Ayran",
+      "priceTry": 95,
+      "description": "300ml."
+     },
+     {
+      "name": "Meyve Suları",
+      "priceTry": 80,
+      "description": "200ml."
+     },
+     {
+      "name": "Usta Şalgam",
+      "priceTry": 65,
+      "description": "330ml."
+     },
+     {
+      "name": "Soda",
+      "priceTry": 50,
+      "description": "200ml."
+     },
+     {
+      "name": "Su",
+      "priceTry": 20,
+      "description": "330ml."
+     },
+     {
+      "name": "Cola/Fanta/Sprite/Gazoz",
+      "priceTry": 80,
+      "description": "200ml."
+     },
+     {
+      "name": "Özerhisar Ayran",
+      "priceTry": 250,
+      "description": "1 litre"
+     },
+     {
+      "name": "Usta Şalgam",
+      "priceTry": 150,
+      "description": "1 litre"
+     },
+     {
+      "name": "Hayrabolu Yayık Ayran",
+      "priceTry": 80,
+      "description": "275ml."
+     }
+    ]
+   },
+   {
+    "title": "İlave Ürünler",
+    "items": [
+     {
+      "name": "Ekstra Köfte / Adet",
+      "priceTry": 95
+     },
+     {
+      "name": "Ekstra Burger Köftesi / Adet",
+      "priceTry": 245
+     },
+     {
+      "name": "Ekstra Soslar",
+      "priceTry": 50
+     },
+     {
+      "name": "Ekstra Pide / Adet",
+      "priceTry": 40,
+      "description": "NOT: Ekstralar Sadece Porsiyonların Yanında Verilmektedir."
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [],
+ "_kaynak_notu": "Resmî site: 'Menü 2026' sayfası (tarihli gün yok), Bize Ulaşın: adres, telefon; yalnız 'bugün 11:00–19:30' görünüyor → haftalık saat yazılmadı."
+}
