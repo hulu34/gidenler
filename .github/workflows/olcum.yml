@@ -18,7 +18,7 @@ env:
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
-  ADAY_HOST: gidenler-dhces8uow-hulu34.vercel.app    # canlı sürüm (19ad933)
+  ADAY_HOST: gidenler-qz0ianbov-hulu34.vercel.app    # canlı sürüm (ff47e1c, işletme beyanı kodu)
   PROFIL_HOST: gidenler-cgvo63ew1-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ff47e1c, işletme beyanı kodu)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:

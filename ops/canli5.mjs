@@ -16,6 +16,15 @@ const ozet = (r) => `profil ${r.profile ? "VAR" : "yok"} · menü kalemi ${r.pro
 /* İşletme beyanı mekânları (ops/tohum.txt): profil uygulamadan önce yalnız bu kayıtlar tohumlanır (seed + slugs).
    Tam tohum çalıştırılmaz: profili uygulanmış mekânların kimlik alanlarını kaynak değerine döndürürdü. */
 const TOHUM = (() => { try { return readFileSync(new URL("./tohum.txt", import.meta.url), "utf8").split(/\s+/).filter(Boolean); } catch { return []; } })();
+/* ön kontrol (yazım yok): sunucu seçili tohumu biliyor mu? Eski kod slugs'ı yok sayıp TAM tohum yapardı.
+   rollback-wave + olmayan slug: yeni kod "business_slugs_only", eski kod "wave_required" döner; ikisi de hiçbir şey silmez. */
+if (TOHUM.length && MODE === "uygula") {
+  const r = await fetch(admin, { method: "POST", headers: H, body: JSON.stringify({ action: "rollback-wave", confirm: "GERI-AL", target: "production", slugs: ["on-kontrol-olmayan-mekan"] }) });
+  const j = await r.json().catch(() => ({}));
+  const yeni = r.status === 400 && j.error === "business_slugs_only";
+  console.log(`${yeni ? "✓" : "✗"} canlı sunucu seçili tohumu destekliyor (ön kontrol, yazım yok) · HTTP ${r.status} ${j.error ?? ""}`);
+  if (!yeni) process.exit(1);
+}
 let hata = false;
 for (const s of SLUGS) {
   const r0 = await rapor(s);
