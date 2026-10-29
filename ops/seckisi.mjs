@@ -37,7 +37,8 @@ const linkStatus = new Map();
 for (const [dev, o] of DEV) {
   const ctx = await b.newContext(o);
   await yetkiliBaslik(ctx, HOST, HB); const sizinti = baslikSizintisi(ctx, HOST);
-  const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(e.message.slice(0, 120)));
+  const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(`${new URL(p.url()).pathname} ${e.message.slice(0, 160)}`));
+  p.on("console", (m) => { if (m.type() === "error") console.log(`  konsol(${dev}) ${new URL(p.url()).pathname}: ${m.text().slice(0, 300)}`); });
   for (const lang of ["tr", "en"]) {
     console.log(`\n── ${dev} · ${lang}`);
     await p.goto(url(lang), { waitUntil: "networkidle" });
@@ -92,7 +93,7 @@ for (const [dev, o] of DEV) {
       if (a.featured || a.kind === "sefin-masasi") { await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}.png` }); await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}-tam.png`, fullPage: true }); }
     }
   }
-  ok(`${dev}: sayfa hatası yok`, errs.length === 0, errs.slice(0, 2).join(" | "));
+  ok(`${dev}: sayfa hatası yok`, errs.length === 0, errs.slice(0, 4).join(" | "));
   ok(`${dev}: test başlığı başka alan adına gitmedi`, sizinti.size === 0, [...sizinti].join(","));
   await ctx.close();
 }
