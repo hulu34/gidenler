@@ -118,13 +118,18 @@ export async function scanVenue(v, seen = {}) {
   return res;
 }
 
+/** Siteler arası kopya: aynı görsel iki ayrı işletmede → şablon ya da stok kuşkusu; puan düşer, editör görür. */
+export function markCopies(result) {
+  const by = new Map(); for (const r of result) for (const a of r.adaylar) by.set(a.hash, [...(by.get(a.hash) ?? []), r.slug]);
+  for (const r of result) for (const a of r.adaylar) if (new Set(by.get(a.hash)).size > 1) { a.kopya = true; a.puan = Math.max(0, a.puan - 40); }
+  return result;
+}
+
 if (process.argv[1]?.endsWith("foto-kesif.mjs")) {
   const [, , inp, out, st] = process.argv;
   const list = JSON.parse(readFileSync(inp, "utf8")); const seen = st && existsSync(st) ? JSON.parse(readFileSync(st, "utf8")) : {};
   const result = [];
   for (const v of list) { const r = await scanVenue(v, seen); result.push(r); if (r.parmakIzi) seen[v.slug] = r.parmakIzi; console.log(`${v.slug} · ${r.durum} · ${r.adaylar.length}`); }
-  /* siteler arası kopya: aynı görsel iki ayrı işletmede → şablon/stok kuşkusu */
-  const by = new Map(); for (const r of result) for (const a of r.adaylar) by.set(a.hash, [...(by.get(a.hash) ?? []), r.slug]);
-  for (const r of result) for (const a of r.adaylar) if (new Set(by.get(a.hash)).size > 1) { a.kopya = true; a.puan = Math.max(0, a.puan - 40); }
+  markCopies(result);
   writeFileSync(out, JSON.stringify(result, null, 1)); if (st) writeFileSync(st, JSON.stringify(seen));
 }

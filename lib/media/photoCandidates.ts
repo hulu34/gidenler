@@ -42,7 +42,7 @@ export async function listPhotoCandidates() {
   if (!db) return null;
   const rows = await db.select({ id: mediaItems.id, url: mediaItems.url, status: mediaItems.status, license: mediaItems.license, credit: mediaItems.credit, category: mediaItems.category, slug: places.slug, name: places.name, placeId: places.id })
     .from(mediaItems).innerJoin(mediaPlaces, eq(mediaPlaces.mediaId, mediaItems.id)).innerJoin(places, eq(places.id, mediaPlaces.placeId))
-    .where(and(eq(mediaItems.type, "photo"), eq(mediaItems.source, "auto"))).orderBy(desc(mediaItems.createdAt));
+    .where(and(eq(mediaItems.type, "photo"), eq(mediaItems.platform, "resmi_site"))).orderBy(desc(mediaItems.createdAt));
   const ids = [...new Set(rows.map((r) => r.placeId))];
   const meta = ids.length ? await db.select({ value: fieldProvenance.value }).from(fieldProvenance).where(and(eq(fieldProvenance.field, "photo.candidate"), inArray(fieldProvenance.placeId, ids))) : [];
   const byId = new Map<string, Record<string, unknown>>();
@@ -63,7 +63,7 @@ export async function decidePhotoCandidate(raw: unknown) {
   const p = Decide.safeParse(raw);
   if (!p.success) return { ok: false as const, error: "invalid", issues: p.error.issues.slice(0, 4).map((i) => `${i.path.join(".")}: ${i.message}`) };
   const i = p.data;
-  const [m] = await db.select().from(mediaItems).where(and(eq(mediaItems.id, i.id), eq(mediaItems.type, "photo"), eq(mediaItems.source, "auto"))).limit(1);
+  const [m] = await db.select().from(mediaItems).where(and(eq(mediaItems.id, i.id), eq(mediaItems.type, "photo"), eq(mediaItems.platform, "resmi_site"))).limit(1);
   if (!m) return { ok: false as const, error: "not_found" };
   const status = i.decision === "approve" ? "approved" : i.decision === "reject" ? "rejected" : "removed";
   await db.update(mediaItems).set(i.decision === "approve" ? { status, license: `${i.rightsType}: ${i.rightsRef}`, credit: i.credit, lastCheckedAt: new Date() } : { status, lastCheckedAt: new Date() }).where(eq(mediaItems.id, i.id));
