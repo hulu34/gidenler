@@ -279,6 +279,21 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: canlid-sifreli, path: out/canlid.tgz.cms, retention-days: 30, if-no-files-found: ignore }
+  canli-dogrula:
+    if: contains(github.event.head_commit.message, '[canli-dogrula]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/canli-dogrula.mjs
+      - if: always()
+        run: test -d out/canlidog && tar -C out -czf out/canlidog.tgz canlidog && rm -rf out/canlidog && openssl cms -encrypt -aes256 -binary -in out/canlidog.tgz -out out/canlidog.tgz.cms -outform DER ops/olcum.pem && rm out/canlidog.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: canlidog-sifreli, path: out/canlidog.tgz.cms, retention-days: 3, if-no-files-found: ignore }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
