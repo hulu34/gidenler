@@ -12,12 +12,8 @@
     "en": "Despite a name that suggests Japanese food, the menu here is Samsun-style pide, the long Black Sea flatbread baked with a filling: four kinds, a dough rested for 36 hours and a door that does not spell out its name."
   },
   "why": {
-    "tr": "Japon Erdal menüsünü dört pideye indiriyor ve her birini gramajı, malzemesi ve yaklaşık kalorisiyle yazıyor. Galata'nın ara sokaklarında Karadeniz pidesini kısa, net bir menüyle ve kendine özgü bir efsaneyle anlatıyor. Kurucu ilişkisi nedeniyle bu yazı bağımsız bir seçim değil, açıkça belirtilmiş bir editoryal yerleşimdir.",
-    "en": "Japon Erdal has cut its menu down to four pides and lists each with its weight, ingredients and approximate calories. In the back streets of Galata it presents Black Sea pide through a short, precise menu and a legend of its own. Because of the founder relationship, this piece is a clearly disclosed editorial placement, not an independent pick."
-  },
-  "notice": {
-    "tr": "Editoryal şeffaflık: Japon Erdal, Gidenler'in kurucusuyla sahiplik ilişkisi bulunan bir işletmedir.",
-    "en": "Editorial transparency: Japon Erdal is a business in which a founder of Gidenler has an ownership interest."
+    "tr": "Japon Erdal menüsünü dört pideye indiriyor ve her birini gramajı, malzemesi ve yaklaşık kalorisiyle yazıyor. Galata'nın ara sokaklarında Karadeniz pidesini kısa, net bir menüyle ve kendine özgü bir efsaneyle anlatıyor.",
+    "en": "Japon Erdal has cut its menu down to four pides and lists each with its weight, ingredients and approximate calories. In the back streets of Galata it presents Black Sea pide through a short, precise menu and a legend of its own."
   },
   "body": {
     "tr": [
@@ -52,6 +48,9 @@
       },
       {
         "p": "Galata ya da Karaköy'de kısa ve doyurucu bir öğle yemeği, yürüyüş arasında paylaşılan iki pide ya da şehre gelen bir misafire Karadeniz pidesini tanıtmak için. Menü kısa olduğu için karar hızlı veriliyor; rezervasyon alınmıyor."
+      },
+      {
+        "p": "Not: Japon Erdal, Gidenler'in kurucusuyla sahiplik ilişkisi bulunan bir işletmedir."
       }
     ],
     "en": [
@@ -86,6 +85,9 @@
       },
       {
         "p": "A quick, filling lunch in Galata or Karaköy, two pides shared on a walk through the neighbourhood, or an easy introduction to Black Sea pide for a visitor. With a menu this short, ordering is quick; there are no reservations."
+      },
+      {
+        "p": "Note: Japon Erdal is a business in which a founder of Gidenler has an ownership interest."
       }
     ]
   },
@@ -257,8 +259,8 @@
       "en": "Founder relationship"
     },
     "detail": {
-      "tr": "Japon Erdal, Gidenler'in kurucusuyla sahiplik ilişkisi bulunan bir işletmedir. Bu yazı editoryal bir yerleşimdir; Gidenler puanını, sıralamayı ya da diğer restoranların görünürlüğünü etkilemez ve doğrulanmış ziyaret ya da bağımsız deneyim sayılmaz.",
-      "en": "Japon Erdal is a business in which a founder of Gidenler has an ownership interest. This piece is an editorial placement; it does not affect the Gidenler score, rankings or the visibility of other restaurants, and it does not count as a verified visit or an independent experience."
+      "tr": "Sahiplik ilişkisi yazının sonunda belirtildi; bu yazı Gidenler puanını ve sıralamayı etkilemez.",
+      "en": "The ownership relationship is noted at the end of the piece; this piece does not affect the Gidenler score or rankings."
     }
   },
   "ownership": {

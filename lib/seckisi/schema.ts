@@ -173,7 +173,9 @@ export const Article = z.object({
   if (a.cover.state === "var" && a.cover.rights === "lisans" && !a.cover.licenseUrl) ctx.addIssue({ code: "custom", path: ["cover"], message: "lisanslı görselde lisans bağlantısı yok" });
   if (a.status === "yayinda" && a.commercial.state === "dogrulanmadi") ctx.addIssue({ code: "custom", path: ["commercial"], message: "ticari ilişki doğrulanmadan yayımlanamaz" });
   if (a.ownership && a.commercial.state !== "var") ctx.addIssue({ code: "custom", path: ["commercial"], message: "sahiplik ilişkisi olan yazıda ticari ilişki görünür olmalı" });
-  if (a.ownership && !a.notice) ctx.addIssue({ code: "custom", path: ["notice"], message: "sahiplik ilişkisi yazının başında açıklanmalı" });
+  /* Sahiplik ilişkisi yazının sonunda, son paragrafta tek cümleyle açıklanır (her iki dilde). */
+  const lastP = (bs: Block[]) => { const l = bs[bs.length - 1]; return l && "p" in l ? l.p : ""; };
+  if (a.ownership && !(lastP(a.body.tr).includes("Gidenler") && lastP(a.body.en).includes("Gidenler"))) ctx.addIssue({ code: "custom", path: ["body"], message: "sahiplik ilişkisi yazının son paragrafında açıklanmalı" });
   if (a.featured && a.cover.state !== "var") ctx.addIssue({ code: "custom", path: ["featured"], message: "ana hikâye hakkı doğrulanmış kapak fotoğrafı olmadan öne çıkamaz" });
   if (a.featured && a.kind !== "hikaye") ctx.addIssue({ code: "custom", path: ["featured"], message: "yalnız hikâye öne çıkar" });
   /* Rakamlar iki dilde aynı olmalı: TR'de geçen her fiyat/tarih/saat rakamı EN'de de geçer (binlik ayırıcı ve saat biçimi fark etmez). */

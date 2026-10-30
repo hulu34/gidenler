@@ -2,7 +2,7 @@
    npx tsx scripts/seckisitest.ts */
 import { readdirSync, existsSync, readFileSync } from "node:fs";
 import { ALL_ARTICLES, articles, articleBySlug, readableArticles, listable, reviewVisible, sections, upcomingEvents, seckiNavVisible } from "../lib/seckisi";
-import { Article, Event } from "../lib/seckisi/schema";
+import { Article, Event, type Block } from "../lib/seckisi/schema";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info = "") => { cond ? pass++ : fail++; console.log(`${cond ? "✓" : "✗"} ${name}${info ? " · " + info : ""}`); };
@@ -27,14 +27,16 @@ ok("türler: 2 hikâye, 3 keşif, 1 mutfaktan, 1 semt", ["hikaye:2", "kesif:3", 
 ok("ziyaret iddiası yok (hepsi visited=false)", pkg.every((a) => a.editorial.visited === false));
 ok("yeni açılan restoran iddiası yok", pkg.every((a) => a.newOpening === false));
 const je = pkg.find((a) => a.venues.some((v) => v.slug === "japon-erdal-beyoglu"));
-ok("Japon Erdal: sahiplik açıklaması başta, kartta ve künyede", !!je && !!je.ownership && je.notice?.tr === je.ownership.tr && je.ownership.tr.startsWith("Editoryal şeffaflık:") && je.commercial.state === "var");
+const last = (bs: Block[]) => { const l = bs[bs.length - 1]; return l && "p" in l ? l.p : ""; };
+ok("Japon Erdal: sahiplik ilişkisi yazının sonunda tek cümle; başta not yok; kartta ve künyede var", !!je && !je.notice && last(je.body.tr).startsWith("Not: Japon Erdal") && last(je.body.en).startsWith("Note: Japon Erdal") && !!je.ownership && je.commercial.state === "var");
+ok("Japon Erdal: ilişki gövdede yalnız bir kez geçiyor", !!je && je.body.tr.filter((b) => "p" in b && b.p.includes("sahiplik")).length === 1 && !je.why.tr.includes("Kurucu"));
 ok("Japon Erdal ana hikâye; kapak hakkı işletme izniyle kayıtlı", !!je && je.featured && je.cover.state === "var" && je.cover.rights === "isletme-izni" && je.cover.credit === "Japon Erdal arşivi");
 ok("tek öne çıkan hikâye", pkg.filter((a) => a.featured).length === 1);
 ok("öne çıkan hikâye kapaksız olamaz", bad0({ kind: "hikaye", featured: true }));
 ok("yazı içi fotoğraflar hak kayıtlı ve kendi sunucumuzda", pkg.every((a) => (a.gallery ?? []).every((g) => g.src.startsWith("/seckisi/gorsel/") && g.rightsRef.length > 3 && existsSync(new URL(`public${g.src}`, root)))));
 ok("kapak dosyaları mevcut", pkg.every((a) => a.cover.state === "yok" || existsSync(new URL(`public${a.cover.src}`, root))));
 ok("Japon Erdal videoları oynatılarak doğrulanmış", !!je?.media && je.media.videos.length > 0 && je.media.videos.every((v) => !!v.verifiedAt));
-ok("sahiplik ilişkisi ticari ilişki gösterilmeden reddedilir", bad0({ ownership: { tr: "x", en: "y" }, notice: { tr: "x", en: "y" } }));
+ok("sahiplik ilişkisi ticari ilişki gösterilmeden reddedilir", bad0({ ownership: { tr: "x", en: "y" } }));
 ok("her yazıda kaynak ve işletme kaynağı", pkg.every((a) => a.sources.some((s) => s.kind === "isletme")));
 ok("kapak hakkı doğrulanmayanlarda eksik notu var", pkg.every((a) => a.cover.state === "var" || a.cover.gap.tr.length > 10));
 ok("puan bölümü yazısı yok (sıralama verisi yok)", pkg.every((a) => a.kind !== "puan"));
