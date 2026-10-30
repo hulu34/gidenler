@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-puaf01iqu-hulu34.vercel.app    # canlı sürüm (ddcd558, puan üretimi — SCORE_PUBLISH=1)
-  SECKI_HOST: gidenler-prdmiuugl-hulu34.vercel.app   # Gidenler Seçkisi Preview 9. tur, Flu videosu
+  SECKI_HOST: gidenler-2ceetqf7b-hulu34.vercel.app   # Gidenler Seçkisi Preview 10. tur, profilde Seçki bölümü (70b1338)
   PROFIL_HOST: gidenler-2h5anwthr-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ddcd558, puan üretimi)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:

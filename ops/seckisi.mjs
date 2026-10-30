@@ -153,6 +153,25 @@ for (const u of dis) {
   if (/oksijen|odatv|gzt\.com|mushaboom|gurmerehber|harbiyiyorum|constantine|youtube/.test(u)) ok(`dış kaynak açılıyor: ${new URL(u).hostname}${new URL(u).pathname.slice(0, 40)}`, okk, String(r.status));
 }
 
+/* 3b) Profilde Seçki bölümü: yazı bağlantısı, basın ve video kartları; ekran görüntüsü */
+const b2 = await chromium.launch({ channel: "chrome" });
+for (const a of pkg.filter((x) => x.media)) {
+  const slug = a.venues[0].slug;
+  for (const [dev, ctx] of Object.entries({ masaustu: { viewport: { width: 1280, height: 900 } }, "mobil-emulasyon": { viewport: { width: 390, height: 844 }, isMobile: true } })) {
+    const c = await b2.newContext(ctx);
+    const p = await c.newPage();
+    await p.route("**/*", (r) => new URL(r.request().url()).hostname === HOST ? r.continue({ headers: { ...r.request().headers(), ...H } }) : r.continue());
+    await p.goto(`https://${HOST}/mekan/${slug}/`, { waitUntil: "load" });
+    const m = await p.evaluate(() => ({ link: document.querySelectorAll("#seckide [data-secki-yazi]").length, press: document.querySelectorAll("#seckide [data-press]").length, video: document.querySelectorAll("#seckide [data-video]").length, sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
+    ok(`${dev} profil ${slug}: yazı ${m.link}, basın ${m.press}, video ${m.video}`, m.link >= 1 && m.press === a.media.press.length && m.video === a.media.videos.length, JSON.stringify(m));
+    ok(`${dev} profil ${slug}: yatay taşma yok`, m.sw <= m.cw, JSON.stringify(m));
+    await p.locator("#seckide").scrollIntoViewIfNeeded(); await p.locator("#seckide").screenshot({ path: `${OUT}/${dev}-profil-${slug}.png` }).catch(() => {});
+    await c.close();
+  }
+}
+
+await b2.close();
+
 /* 4) Canlı: yalnız yayındaki yazı açık, kontrol bekleyen kapalı (başlıksız, yalnız okuma) */
 for (const path of [`/seckisi/${bekleyen.slug}/`]) {
   const r = await fetch(`https://www.gidenler.com${path}`, { redirect: "manual" });
