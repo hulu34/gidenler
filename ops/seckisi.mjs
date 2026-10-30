@@ -111,7 +111,12 @@ for (const [dev, o] of DEV) {
       if (lang === "en") ok(`${tag}: profil dili notu`, d.text.includes("Turkish only"));
       if (lang === "en") ok(`${tag}: Türkçe arayüz etiketi kalmamış`, !/Gitmeden bilin|Kaynaklar|Neden seçtik|Künye|Mutfaktan|ziyaret edilmedi/.test(d.text));
       if (a.notice) ok(`${tag}: açıklayıcı not`, d.text.includes(a.notice[lang]));
-      if (a.ownership) ok(`${tag}: kurucu ilişkisi künyede`, d.text.includes(a.commercial.detail[lang]));
+      if (a.ownership) {
+        ok(`${tag}: kurucu ilişkisi künyede`, d.text.includes(a.commercial.detail[lang]));
+        const fin = a.body[lang][a.body[lang].length - 1].p;
+        const pos = await p.evaluate((f) => { const ps = [...document.querySelectorAll("article p")].map((x) => x.innerText.trim()); const i = ps.indexOf(f); const k = ps.findIndex((x) => x.startsWith("Gitmeden") || x.startsWith("Before you go")); return { i, n: ps.length, top: !!document.querySelector('article p[role="note"]') }; }, fin);
+        ok(`${tag}: sahiplik cümlesi yazının sonunda, başta not yok`, pos.i >= 0 && !pos.top, JSON.stringify(pos));
+      }
       if (a.media) {
         const m = await p.evaluate(() => ({ cards: [...document.querySelectorAll("[data-video]")].map((x) => x.getAttribute("data-video")), press: [...document.querySelectorAll("[data-press] a")].map((x) => x.getAttribute("href")), basin: document.querySelector("#h-basin")?.innerText.trim() }));
         ok(`${tag}: "Basında" başlığı`, m.basin === (lang === "tr" ? "Basında Japon Erdal" : "Japon Erdal in the press"), m.basin);

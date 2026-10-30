@@ -19,7 +19,7 @@ env:
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-puaf01iqu-hulu34.vercel.app    # canlı sürüm (ddcd558, puan üretimi — SCORE_PUBLISH=1)
-  SECKI_HOST: gidenler-4kf519ieo-hulu34.vercel.app   # Gidenler Seçkisi Preview 5. tur, Japon Erdal kapak (1e04cb5)
+  SECKI_HOST: gidenler-2vtwh82ir-hulu34.vercel.app   # Gidenler Seçkisi Preview 6. tur, sahiplik notu sonda (ad50705)
   PROFIL_HOST: gidenler-2h5anwthr-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ddcd558, puan üretimi)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
