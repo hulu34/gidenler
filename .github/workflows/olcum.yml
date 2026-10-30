@@ -210,6 +210,19 @@ jobs:
       - uses: actions/checkout@v4
       - run: node ops/google-durum.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}" }
+  google-rapor:
+    if: contains(github.event.head_commit.message, '[google-rapor]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/google-rapor.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", RAPOR_HOST: gidenler-h314g4e87-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/grapor && tar -C out -czf out/grapor.tgz grapor && openssl cms -encrypt -aes256 -binary -in out/grapor.tgz -out out/grapor.tgz.cms -outform DER ops/olcum.pem && rm -rf out/grapor out/grapor.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: grapor-sifreli, path: out/grapor.tgz.cms, retention-days: 3 }
   google-grup:
     if: contains(github.event.head_commit.message, '[google-grup]')
     runs-on: ubuntu-latest
