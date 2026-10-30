@@ -1,0 +1,80 @@
+[
+{
+"slug": "kanaat-lokantasi-uskudar",
+"adaylar": [
+{
+"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/%C3%9Csk%C3%BCdar_Kanaat_Lokantas%C4%B1_%2834243555222%29.jpg/960px-%C3%9Csk%C3%BCdar_Kanaat_Lokantas%C4%B1_%2834243555222%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+"sayfa": "https://commons.wikimedia.org/wiki/File:%C3%9Csk%C3%BCdar_Kanaat_Lokantas%C4%B1_(34243555222).jpg",
+"alt": "Üsküdar Kanaat Lokantası Object location 41° 01′ 33.07″ N, 29° 00′ 59.64″ E View this and other nearby images on: OpenStreetMap 41.025852; 29.016566",
+"tur": "ic",
+"w": 6000,
+"h": 3376,
+"puan": 86,
+"kaynakTuru": "commons",
+"hak": "acik_lisans",
+"lisans": "CC BY-SA 2.0",
+"yazar": "John Lubbock",
+"yol": "ad",
+"kontrol": "2026-10-30",
+"onInceleme": "uygun: ad tutuyor, tezgâh; arkada şef görünüyor"
+}
+]
+},
+{
+"slug": "nizam-pide-sisli",
+"adaylar": [
+{
+"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Soup_at_Nizam_Pide_during_Gezi_Park_protests.jpg/960px-Soup_at_Nizam_Pide_during_Gezi_Park_protests.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+"sayfa": "https://commons.wikimedia.org/wiki/File:Soup_at_Nizam_Pide_during_Gezi_Park_protests.jpg",
+"alt": "Soup at Nizam Pide during Gezi Park protests Image taken by John Lubbock in Istanbul during the Gezi Park protests, 2013",
+"tur": "yemek",
+"w": 4752,
+"h": 3168,
+"puan": 86,
+"kaynakTuru": "commons",
+"hak": "acik_lisans",
+"lisans": "CC BY-SA 3.0",
+"yazar": "Jwslubbock",
+"yol": "ad",
+"kontrol": "2026-10-30",
+"onInceleme": "koşullu: yemek, şube doğrulanmadı, kişi görünüyor"
+},
+{
+"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Nizam_Pide.jpg/960px-Nizam_Pide.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+"sayfa": "https://commons.wikimedia.org/wiki/File:Nizam_Pide.jpg",
+"alt": "Nizam Pide Galatasaray, Istanbul",
+"tur": "dis",
+"w": 6000,
+"h": 3376,
+"puan": 86,
+"kaynakTuru": "commons",
+"hak": "acik_lisans",
+"lisans": "CC BY-SA 3.0",
+"yazar": "Jwslubbock",
+"yol": "ad",
+"kontrol": "2026-10-30",
+"onInceleme": "koşullu: tabela var, şube doğrulanmadı"
+}
+]
+},
+{
+"slug": "tarihi-eminonu-balik-ekmek-fatih",
+"adaylar": [
+{
+"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Tarihi_emin%C3%B6n%C3%BC_bal%C4%B1k%C3%A7%C4%B1s%C4%B1_-_panoramio.jpg/500px-Tarihi_emin%C3%B6n%C3%BC_bal%C4%B1k%C3%A7%C4%B1s%C4%B1_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+"sayfa": "https://commons.wikimedia.org/wiki/File:Tarihi_emin%C3%B6n%C3%BC_bal%C4%B1k%C3%A7%C4%B1s%C4%B1_-_panoramio.jpg",
+"tur": "dis",
+"w": 1600,
+"h": 1200,
+"puan": 70,
+"kontrol": "2026-10-31",
+"kaynakTuru": "commons",
+"hak": "acik_lisans",
+"lisans": "CC BY 3.0",
+"yazar": "cankurtaran",
+"onInceleme": "koşullu: tabela tutuyor, fotoğraf eski, faaliyet doğrulanmadı",
+"alt": "tarihi eminönü balıkçısı"
+}
+]
+}
+]

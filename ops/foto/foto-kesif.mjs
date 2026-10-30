@@ -55,7 +55,7 @@ export function imageUrls(html, base) {
   return [...out].map(([url, alt]) => ({ url, alt }));
 }
 const WORDS = { yemek: /yemek|food|dish|pide|kebap|kebab|meze|balik|fish|tabak|pizza|lahmacun|tatli|dessert|menu|sushi|burger|kofte|et\b|steak|breakfast|kahvalti|coffee|kahve/, ic: /ic mekan|interior|salon|masa|indoor|atmosfer|ambiance|restoran ici/, dis: /dis cephe|exterior|facade|giris|entrance|tabela|bahce|teras|terrace|storefront/ };
-const BAD = /logo|icon|ikon|favicon|sprite|banner[-_]?ad|placeholder|avatar|flag|bayrak|payment|odeme|visa|mastercard|qr|whatsapp|instagram|facebook|tripadvisor|badge|sertifika|harita|map\b|arrow|bg[-_]|pattern|loading|yukleniyor/;
+const BAD = /menu[-_ ]?(pdf|fiyat)|afis|poster|ramazan|yilbasi|kampanya|logo|icon|ikon|favicon|sprite|banner[-_]?ad|placeholder|avatar|flag|bayrak|payment|odeme|visa|mastercard|qr|whatsapp|instagram|facebook|tripadvisor|badge|sertifika|harita|map\b|arrow|bg[-_]|pattern|loading|yukleniyor/;
 export const guessKind = (t) => { const f = fold(t); for (const [k, re] of Object.entries(WORDS)) if (re.test(f)) return k; return "belirsiz"; };
 
 export async function measure(buf) {
@@ -64,6 +64,7 @@ export async function measure(buf) {
   let bits = ""; for (let y = 0; y < 8; y++) for (let x = 0; x < 8; x++) bits += small[y * 9 + x] < small[y * 9 + x + 1] ? "1" : "0";
   return { w: m.width ?? 0, h: m.height ?? 0, alpha: !!m.hasAlpha, sharp: +(st.sharpness ?? 0).toFixed(2), entropy: +(st.entropy ?? 0).toFixed(2), hash: BigInt("0b" + bits).toString(16).padStart(16, "0"), bright: Math.round(st.channels.slice(0, 3).reduce((a, c) => a + c.mean, 0) / 3) };
 }
+export const hamming = (a, b) => { let x = BigInt("0x" + a) ^ BigInt("0x" + b), n = 0; while (x) { n += Number(x & 1n); x >>= 1n; } return n; };
 /** 0–100. Yüz, filigran ölçülmez. */
 export function score(m, kind) {
   let s = 0;
@@ -110,7 +111,9 @@ export async function scanVenue(v, seen = {}) {
     if (!g.body || !/image/.test(g.type) || g.body.length < 15000) continue;
     let m; try { m = await measure(g.body); } catch { continue; }
     if (m.w < MIN_W || m.w / Math.max(1, m.h) > 3.2 || m.w / Math.max(1, m.h) < 0.45) continue;
-    if (hashes.has(m.hash)) continue; hashes.add(m.hash);
+    /* boş, logo benzeri ve yakın kopya: otomatik elenir */
+    if (m.bright < 20 || m.bright > 248 || m.entropy < 4.2) continue;
+    if ([...hashes].some((h) => hamming(h, m.hash) <= 6)) continue; hashes.add(m.hash);
     const tur = guessKind(`${im.url} ${im.alt} ${im.sayfa}`);
     res.adaylar.push({ url: im.url, sayfa: im.sayfa, alt: im.alt.slice(0, 160), tur, ...m, puan: score(m, tur), kaynakTuru: "resmi_site", hak: "bilinmiyor", kontrol: new Date().toISOString().slice(0, 10) });
   }
@@ -118,13 +121,46 @@ export async function scanVenue(v, seen = {}) {
   return res;
 }
 
+/* Wikimedia Commons: açık lisanslı aday. Ad tam geçmeli ya da konum 80 m içinde ve ad parçası tutmalı. Lisans NC/ND değil. */
+const COMMONS = "https://commons.wikimedia.org/w/api.php?";
+const CMETA = { prop: "imageinfo", iiprop: "url|size|extmetadata|mime", iiurlwidth: "960", iiextmetadatafilter: "LicenseShortName|Artist|ImageDescription" };
+const GEN = new Set(["restaurant", "restoran", "lokanta", "lokantasi", "meyhane", "meyhanesi", "cafe", "kafe", "balik", "balikci", "tarihi", "ocakbasi", "kebap", "kofte", "koftecisi", "bistro", "bar", "coffee", "kahve", "pizza", "burger", "doner", "pide", "istanbul"]);
+export async function commonsCandidates(v) {
+  const ask = async (g) => { const r = await get(COMMONS + new URLSearchParams({ action: "query", format: "json", formatversion: "2", ...g, ...CMETA })); try { return JSON.parse(r.body).query?.pages ?? []; } catch { return []; } };
+  const toks = fold(v.name).split(" ").filter((t) => t.length > 2 && !GEN.has(t));
+  if (!toks.length) return [];
+  const pages = new Map();
+  for (const p of await ask({ generator: "search", gsrsearch: `"${v.name}" filetype:bitmap`, gsrnamespace: "6", gsrlimit: "8" })) pages.set(p.title, { ...p, yol: "ad" });
+  await sleep(350);
+  if (v.lat) for (const p of await ask({ generator: "geosearch", ggscoord: `${v.lat}|${v.lng}`, ggsradius: "80", ggslimit: "15", ggsnamespace: "6" })) pages.set(p.title, { ...p, yol: "konum" });
+  await sleep(350);
+  const out = [];
+  for (const p of pages.values()) {
+    const i = p.imageinfo?.[0]; if (!i || !/jpeg|png|webp/.test(i.mime ?? "")) continue;
+    const m = Array.isArray(i.extmetadata) ? {} : (i.extmetadata ?? {});
+    const lic = m.LicenseShortName?.value ?? ""; if (!/^(CC0|Public domain|CC BY)/i.test(lic) || /NC|ND/.test(lic)) continue;
+    const clean = (s) => (s ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const txt = fold(`${p.title} ${clean(m.ImageDescription?.value)}`);
+    const all = toks.every((t) => txt.includes(t));
+    if (!(all && (p.yol === "konum" || txt.includes(fold(v.district)) || /istanbul/.test(txt)))) continue;
+    const w = i.width ?? 0, h = i.height ?? 0; if (w < MIN_W) continue;
+    out.push({ url: i.thumburl, sayfa: i.descriptionurl, alt: clean(m.ImageDescription?.value).slice(0, 160), tur: guessKind(p.title), w, h, puan: score({ w, h, entropy: 6, sharp: 1, bright: 120 }, "belirsiz"), kaynakTuru: "commons", hak: "acik_lisans", lisans: lic, yazar: clean(m.Artist?.value).slice(0, 100), yol: p.yol, kontrol: new Date().toISOString().slice(0, 10) });
+  }
+  return out;
+}
+
+/** Siteler arası kopya: aynı görsel iki ayrı işletmede → şablon ya da stok kuşkusu; puan düşer, editör görür. */
+export function markCopies(result) {
+  const all = result.flatMap((r) => r.adaylar.filter((a) => a.hash).map((a) => ({ a, slug: r.slug })));
+  for (const x of all) if (all.some((y) => y.slug !== x.slug && hamming(x.a.hash, y.a.hash) <= 6)) { x.a.kopya = true; x.a.puan = Math.max(0, x.a.puan - 40); }
+  return result;
+}
+
 if (process.argv[1]?.endsWith("foto-kesif.mjs")) {
   const [, , inp, out, st] = process.argv;
   const list = JSON.parse(readFileSync(inp, "utf8")); const seen = st && existsSync(st) ? JSON.parse(readFileSync(st, "utf8")) : {};
   const result = [];
-  for (const v of list) { const r = await scanVenue(v, seen); result.push(r); if (r.parmakIzi) seen[v.slug] = r.parmakIzi; console.log(`${v.slug} · ${r.durum} · ${r.adaylar.length}`); }
-  /* siteler arası kopya: aynı görsel iki ayrı işletmede → şablon/stok kuşkusu */
-  const by = new Map(); for (const r of result) for (const a of r.adaylar) by.set(a.hash, [...(by.get(a.hash) ?? []), r.slug]);
-  for (const r of result) for (const a of r.adaylar) if (new Set(by.get(a.hash)).size > 1) { a.kopya = true; a.puan = Math.max(0, a.puan - 40); }
+  for (const v of list) { const r = await scanVenue(v, seen); if (process.env.KESIF_COMMONS !== "0") r.adaylar.push(...(await commonsCandidates(v))); result.push(r); if (r.parmakIzi) seen[v.slug] = r.parmakIzi; console.log(`${v.slug} · ${r.durum} · ${r.adaylar.length}`); }
+  markCopies(result);
   writeFileSync(out, JSON.stringify(result, null, 1)); if (st) writeFileSync(st, JSON.stringify(seen));
 }
