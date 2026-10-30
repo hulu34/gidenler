@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { listCategories, listCards } from "@/lib/api";
 import { getCategory } from "@/data/categories";
+import { publishedScores } from "@/lib/live";
 import { nf } from "@/lib/format";
 import { CategoryList } from "@/app/kategori/[slug]/CategoryList";
 import { ComplianceNotice } from "@/components/ui/ComplianceNotice";
@@ -44,7 +45,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       </header>
 
       <div className="mt-8 border-t-2 border-line-strong pt-6">
-        <CategoryList categoryId={category.id} subs={subs} cities={cities} />
+        <CategoryList categoryId={category.id} subs={subs} cities={cities} published={await publishedScores()} />
       </div>
 
       <nav className="mt-12 flex flex-wrap gap-2 border-t border-line pt-4" aria-label="Diğer kategoriler">

@@ -3,6 +3,8 @@ import { PersonMark } from "@/components/experience/PersonMark";
 import { expertExperiences, featuredLists, listCards, listCategories, rising, trending } from "@/lib/api";
 import { nf } from "@/lib/format";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
+import { publishedScores } from "@/lib/live";
+import { applyPublishedAll } from "@/lib/score/publishedCards";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { ForYouBlock } from "@/app/kesfet/ForYouBlock";
 import { DemoNotice } from "@/components/ui/DemoNotice";
@@ -15,14 +17,15 @@ export const metadata = { title: "Keşfet" };
  * Bağlantı listesi değil: puan + yön + uyum ile karar vermeye başlanan yüzey.
  * Yakınlık: gerçek konum yok → sahte mesafe üretmiyoruz; semte göre gösteriyoruz.
  */
-export default function ExplorePage() {
-  const cards = listCards().filter((c) => c.score !== null && c.category.compliance.showScores);
+export default async function ExplorePage() {
+  const published = await publishedScores();
+  const cards = applyPublishedAll(listCards(), published).filter((c) => c.score !== null && c.category.compliance.showScores);
   /* Öne çıkanlar: tam kanıtlı (A) kayıtlar, farklı dünyalardan — restoran Gidenler'in başlangıcı, sınırı değil. */
   const families = [["cat.restaurant"], ["cat.cafe", "cat.bar"], ["cat.hotel", "cat.travel"], ["cat.culture", "cat.show", "cat.venue", "cat.film"], ["cat.place", "cat.service"]];
   const top: typeof cards = [];
   for (const fam of families) { const best = cards.filter((c) => c.entity.tier === "A" && c.experienceCount >= 50 && fam.includes(c.category.id)).sort((a, b) => (b.score ?? 0) - (a.score ?? 0) || b.experienceCount - a.experienceCount)[0]; if (best) top.push(best); }
   const up = rising().filter((c) => c.category.compliance.showScores && c.experienceCount >= 80 && c.entity.location?.city === "İstanbul").slice(0, 5);
-  const talked = trending().filter((c) => c.score !== null && c.category.compliance.showScores).slice(0, 5);
+  const talked = applyPublishedAll(trending(), published).filter((c) => c.score !== null && c.category.compliance.showScores).slice(0, 5);
   const expert = expertExperiences(3);
   const lists = featuredLists(6);
   const cats = listCategories();

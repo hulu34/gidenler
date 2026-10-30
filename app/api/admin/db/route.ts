@@ -1,6 +1,6 @@
 import { after, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
-import { TAG_GOOGLE, TAG_MEDIA, profileTag, scoreTag } from "@/lib/live";
+import { TAG_GOOGLE, TAG_MEDIA, profileTag, scoreTags } from "@/lib/live";
 import { runThresholdScenario } from "@/lib/community/scoreWatchScenario";
 import { reconcileScores, scorePublishEnabled, CONFIDENCE_LABEL, MIN_AUTHORS, SCORE_ALGORITHM, type RecomputeResult } from "@/lib/score/compute";
 import { rescoreSlug } from "@/lib/community/reviewApi";
@@ -263,7 +263,7 @@ export async function POST(req: Request) {
         /* bütün deneyimli mekânlar; yazma yalnız SCORE_PUBLISH=1 iken (değilse kuru çalışma) */
         if (body.confirm !== "EVET") break;
         const r = await reconcileScores(db);
-        for (const x of r) if (x.action === "written" && x.slug) fresh(scoreTag(x.slug));
+        for (const x of r) if (x.action === "written" && x.slug) scoreTags(x.slug).forEach(fresh);
         return NextResponse.json({ action: "puan-uzlastir", env: envName(), publish: scorePublishEnabled(), ...puanOzet(r) }, { headers: H });
       }
       case "hesap-test": {
@@ -279,7 +279,7 @@ export async function POST(req: Request) {
         await db.update(user).set({ kind: to }).where(and(eq(user.id, found[0].id), eq(user.kind, from)));
         await db.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "user_kind_change", refTable: "user", refId: found[0].id, detail: { from, to, why: "puan girdilerinden test hesabı dışlama" } });
         const r = await reconcileScores(db);
-        for (const x of r) if (x.action === "written" && x.slug) fresh(scoreTag(x.slug));
+        for (const x of r) if (x.action === "written" && x.slug) scoreTags(x.slug).forEach(fresh);
         return NextResponse.json({ action: "hesap-test", env: envName(), changed: 1, from, to, ...puanOzet(r) }, { headers: H });
       }
       case "puan-senaryo": {
@@ -287,7 +287,7 @@ export async function POST(req: Request) {
         if (envName() === "production" || body.confirm !== "EVET") return NextResponse.json({ error: "not_allowed" }, { status: 403, headers: H });
         const s = typeof body.slug === "string" && /^[a-z0-9-]{1,120}$/.test(body.slug) ? body.slug : "ciya-sofrasi-kadikoy";
         const r = await runScoreScenario(db, s);
-        fresh(scoreTag(s)); fresh(reviewsTag(s));
+        scoreTags(s).forEach(fresh); fresh(reviewsTag(s));
         return NextResponse.json({ action: "puan-senaryo", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "esik-senaryo": {
@@ -295,7 +295,7 @@ export async function POST(req: Request) {
         if (envName() === "production" || body.confirm !== "EVET") return NextResponse.json({ error: "not_allowed" }, { status: 403, headers: H });
         const s = typeof body.slug === "string" && /^[a-z0-9-]{1,120}$/.test(body.slug) ? body.slug : "leb-i-derya-beyoglu";
         const r = await runThresholdScenario(db, s);
-        fresh(scoreTag(s));
+        scoreTags(s).forEach(fresh);
         return NextResponse.json({ action: "esik-senaryo", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "google-fixture": {

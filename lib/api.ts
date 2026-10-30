@@ -495,6 +495,8 @@ export interface EntityCard {
   consensus?: Consensus | null;
   /** Puan güveni (kart kanıt satırı için); regüle kategorilerde yok. */
   confidence?: ConfidenceLevel;
+  /** Gerçek mekân: yayımlanmış puanın güven etiketi (lib/score/publishedCards). */
+  publishedConfidence?: string;
 }
 
 export function cardOf(entity: Entity): EntityCard {

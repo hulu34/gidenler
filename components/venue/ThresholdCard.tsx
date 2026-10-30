@@ -152,7 +152,7 @@ function Head({ v }: { v: ThresholdVenue }) {
   return (
     <span className="flex min-w-0 items-baseline justify-between gap-3">
       <span className="text-[11px] font-bold uppercase tracking-[0.16em]">Deneme eşiğin</span>
-      <span className="tnum text-right text-[11px] leading-tight text-ink-3">Gidenler puanı {v.score === null ? <span className="text-ink-2">henüz yok</span> : <strong className="text-[14px] font-extrabold text-ink">{f1(v.score)}</strong>}</span>
+      <span className="tnum text-right text-[11px] leading-tight text-ink-3">Gidenler puanı {v.score === null ? <span className="text-ink-2">için yeterli deneyim bekleniyor</span> : <strong className="text-[14px] font-extrabold text-ink">{f1(v.score)}</strong>}</span>
     </span>
   );
 }

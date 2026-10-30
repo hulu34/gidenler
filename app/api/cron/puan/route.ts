@@ -3,7 +3,7 @@ import { revalidateTag } from "next/cache";
 import { getDb } from "@/lib/db/client";
 import { rateStore } from "@/lib/ai/ratelimit";
 import { reconcileScores, scorePublishEnabled } from "@/lib/score/compute";
-import { scoreTag } from "@/lib/live";
+import { scoreTags } from "@/lib/live";
 
 /* GÜNLÜK PUAN UZLAŞTIRMA (Vercel Cron, günde bir; vercel.json) — yalnız veritabanı, dış servis çağrısı YOK.
    Kaçan olay sonrası telafi ve tazelik etkisi. Yazma yalnız SCORE_PUBLISH=1 iken ve sonuç değiştiyse (recordScore).
@@ -21,7 +21,7 @@ export async function GET(req: Request) {
   if (!db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
   try {
     const r = await reconcileScores(db);
-    for (const x of r) if (x.action === "written" && x.slug) revalidateTag(scoreTag(x.slug));
+    for (const x of r) if (x.action === "written" && x.slug) for (const t of scoreTags(x.slug)) revalidateTag(t);
     const n = (a: string) => r.filter((x) => x.action === a).length;
     return NextResponse.json({ publish: scorePublishEnabled(), places: r.length, written: n("written"), unchanged: n("unchanged"), dryRun: n("dry_run") }, { headers: H });
   } catch { return NextResponse.json({ error: "failed" }, { status: 500, headers: H }); }

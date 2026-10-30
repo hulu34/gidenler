@@ -10,7 +10,7 @@ import { DISCLOSURES, RETURN_INTENTS, reviewsTag, type ReviewError } from "./rev
 import { eq } from "drizzle-orm";
 import { places } from "@/lib/db/schema";
 import { recomputePlace } from "@/lib/score/compute";
-import { scoreTag } from "@/lib/live";
+import { scoreTags } from "@/lib/live";
 export { reviewsTag };
 
 /* Deneyim API'lerinin ortak parçaları: oturum, köken, hız sınırı, gövde şeması, hata metinleri, önbellek. */
@@ -66,6 +66,6 @@ export async function rescoreSlug(slug: string) {
     const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, slug)).limit(1);
     if (!p) return;
     const r = await recomputePlace(db, p.id);
-    if (r.action === "written") revalidateTag(scoreTag(slug));
+    if (r.action === "written") for (const t of scoreTags(slug)) revalidateTag(t);
   } catch { /* günlük uzlaştırma telafi eder */ }
 }

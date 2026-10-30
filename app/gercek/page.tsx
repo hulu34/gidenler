@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { realEntities } from "@/data/real";
+import { publishedScores } from "@/lib/live";
+import { fmtPublished } from "@/lib/score/publishedCards";
 
 export const metadata = { title: "Gerçek mekânlar", description: "Gidenler'e eklenen gerçek İstanbul mekânları — ilk deneyimlerini bekliyorlar." };
 
-export default function RealPage() {
+export default async function RealPage() {
+  const published = await publishedScores();
   const byD = new Map<string, typeof realEntities>();
   for (const e of realEntities) { const d = e.location?.district ?? "Diğer"; (byD.get(d) ?? byD.set(d, []).get(d)!).push(e); }
   const groups = [...byD.entries()].sort((a, b) => b[1].length - a[1].length);
@@ -22,7 +25,7 @@ export default function RealPage() {
               <li key={e.id} className="border-b border-line">
                 <Link href={`/mekan/${e.slug}/`} className="group flex items-baseline justify-between gap-3 py-3">
                   <span className="truncate text-[15.5px] font-bold group-hover:text-accent-ink">{e.name}</span>
-                  <span className="shrink-0 text-[12px] text-ink-3">{e.subcategory}</span>
+                  <span className="tnum shrink-0 text-[12px] text-ink-3">{published[e.slug]?.score != null ? `${fmtPublished(published[e.slug].score!)}/10` : e.subcategory}</span>
                 </Link>
               </li>
             ))}

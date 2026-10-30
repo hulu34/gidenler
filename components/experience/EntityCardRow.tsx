@@ -5,6 +5,7 @@ import { ScoreNumber } from "@/components/score/ScoreNumber";
 import { CategoryGlyph } from "@/components/experience/CategoryGlyph";
 import { nf } from "@/lib/format";
 import { CONFIDENCE_LABEL } from "@/lib/semantic";
+import { SCORE_WAITING } from "@/lib/score/publishedCards";
 import type { EntityCard } from "@/lib/api";
 
 export function placeLine(card: EntityCard) {
@@ -21,7 +22,8 @@ export function evidenceLine(card: EntityCard) {
   if (card.entity.isReal && card.experienceCount === 0) return "henüz deneyim yok";
   /* Demo kayıtların puanı ve deneyim sayısı sentetiktir; her kartta açıkça söylenir. */
   const parts = [`${card.entity.isDemo ? "demo · " : ""}${nf(card.experienceCount)} deneyim`];
-  if (card.confidence && card.score !== null) parts.push(CONFIDENCE_LABEL[card.confidence]);
+  if (card.publishedConfidence) parts.push(card.publishedConfidence);
+  else if (card.confidence && card.score !== null) parts.push(CONFIDENCE_LABEL[card.confidence]);
   return parts.join(" · ");
 }
 
@@ -76,7 +78,7 @@ export function EntityCardRow({ card, rank, match, href, insight, dense = false,
             </>
           ) : (
             entity.isReal
-              ? <span className="max-w-[9rem] text-right text-[11px] font-bold uppercase tracking-[0.12em] text-pos-ink">gerçek mekân · ilk deneyim bekliyor</span>
+              ? <span className="max-w-[10rem] text-right text-[11.5px] font-semibold leading-snug text-pos-ink">{SCORE_WAITING}</span>
               : <span className="max-w-[9rem] text-right text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">puan gösterilmiyor</span>
           )}
         </div>

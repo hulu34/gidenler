@@ -26,7 +26,10 @@ import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "../lib/media/s
 import { visitMonths } from "../lib/drafts";
 import { importPlaceStates, listPlaceStates, setPlaceState } from "../lib/community/placeStatus";
 import { deleteWatch, getWatch, listNotifications, listWatches, markNotificationsRead, parseThreshold, setWatch, setWatchActive } from "../lib/community/scoreWatch";
-import { publishedScoreBySlug, recordScore } from "../lib/score/published";
+import { publishedScoreBySlug, publishedScoresBySlug, recordScore } from "../lib/score/published";
+import { applyPublished, applyPublishedAll } from "../lib/score/publishedCards";
+import { cardOf } from "../lib/api";
+import { getEntity } from "../data/entities";
 import { runThresholdScenario } from "../lib/community/scoreWatchScenario";
 import { computeFromRows, recomputePlace, reconcileScores, scoreInputs, MIN_AUTHORS, SCORE_ALGORITHM } from "../lib/score/compute";
 import { runScoreScenario } from "../lib/score/scenario";
@@ -287,6 +290,19 @@ async function main() {
     const rA = await markNotificationsRead(db, "ua", aN.id);
     ok("okundu/okunmadı: kendi bildirimi okundu olur; sayaç düşer", rA.updated === 1 && (await notes("ua")).find((x) => x.id === aN.id)!.read && (await listNotifications(db, "ua")).unread === 1);
     ok("deneme eşiği Kaydet/Gitmek istiyorum/Gittim kayıtlarına dokunmaz", (await statusRows()) === st0);
+    /* kartlar: toplu okuma, detayla aynı değer */
+    const pm = await publishedScoresBySlug(db);
+    const d1 = await publishedScoreBySlug(db, P1), d2 = await publishedScoreBySlug(db, P2);
+    ok("toplu okuma tek tek okumayla aynı puanı, deneyim sayısını ve güveni verir", pm[P1]?.score === d1?.score && pm[P2]?.score === d2?.score && pm[P1]?.reviewCount === d1?.reviewCount && pm[P2]?.confidence === d2?.confidence);
+    const e1 = getEntity(P1);
+    if (e1) {
+      const c1 = applyPublished(cardOf(e1), pm);
+      ok("gerçek mekân kartı detayla aynı puanı gösterir", c1.score === d1?.score && c1.experienceCount === d1?.reviewCount);
+      ok("kaydı olmayan mekânın kartı değişmez", applyPublished(cardOf(e1), {}).score === cardOf(e1).score);
+    }
+    ok("puan haritası boşken kart listesi aynı dizi kalır (gereksiz kopya yok)", (() => { const l = e1 ? [cardOf(e1)] : []; return applyPublishedAll(l, {}) === l; })());
+    const srcOf = (f: string) => readFileSync(f, "utf8");
+    ok("puan hesabı, yayın ve eşik kodu Google sağlayıcısını içe aktarmaz", !["lib/score/compute.ts", "lib/score/published.ts", "lib/score/publishedCards.ts", "lib/community/scoreWatch.ts"].some((f) => /providers\/google/.test(srcOf(f))));
     const del = await deleteWatch(db, "ua", P1);
     ok("takip silinebilir; bildirim geçmişi kalır", del.ok && (await getWatch(db, "ua", P1)).watch === null && (await notes("ua")).length === 2);
     ok("bilinmeyen mekân ve geçersiz eşik reddedilir", !(await setWatch(db, "ua", "yok-boyle-bir-yer", 80)).ok && !(await setWatch(db, "ua", P1, 100)).ok && !(await setWatch(db, "ua", P1, 9)).ok);

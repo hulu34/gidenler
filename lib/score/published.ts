@@ -41,6 +41,15 @@ export async function publishedScore(db: Db, placeId: string): Promise<Published
     computedAt: r.computedAt.toISOString(), algorithmVersion: r.algorithmVersion, confidence: r.confidence };
 }
 
+/** Bütün mekânların yayımlanmış durumu, TEK sorguda (kart ve listeler için; mekân başına sorgu yok).
+    Puanı null olan ama deneyimi olan mekânlar da döner: "henüz puan yok" ile "hiç deneyim yok" ayrışır. */
+export async function publishedScoresBySlug(db: Db) {
+  const rows = await db.selectDistinctOn([ratingHistory.placeId], { slug: places.slug, score: ratingHistory.score, reviewCount: ratingHistory.reviewCount, confidence: ratingHistory.confidence })
+    .from(ratingHistory).innerJoin(places, eq(places.id, ratingHistory.placeId))
+    .orderBy(ratingHistory.placeId, desc(ratingHistory.computedAt), desc(ratingHistory.id));
+  return Object.fromEntries(rows.map((r) => [r.slug, { score: r.score === null ? null : toTenths(r.score) / 10, reviewCount: r.reviewCount, confidence: r.confidence }]));
+}
+
 export async function publishedScoreBySlug(db: Db, slug: string) {
   const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, slug)).limit(1);
   return p ? publishedScore(db, p.id) : null;

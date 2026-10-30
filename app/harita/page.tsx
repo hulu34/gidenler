@@ -11,6 +11,7 @@ import type { MapFilter } from "@/lib/types";
 import { EntityActions } from "@/components/decision/EntityActions";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { RealMap } from "@/components/map/RealMap";
+import { publishedScores } from "@/lib/live";
 
 /**
  * HARİTADA GİDENLER — harita klonu değil, konum + zevk.
@@ -22,7 +23,7 @@ const BOUNDS = { minLat: 40.970, maxLat: 41.062, minLng: 28.962, maxLng: 29.048 
 const px = (lng: number) => ((lng - BOUNDS.minLng) / (BOUNDS.maxLng - BOUNDS.minLng)) * (W - 80) + 40;
 const py = (lat: number) => H - (((lat - BOUNDS.minLat) / (BOUNDS.maxLat - BOUNDS.minLat)) * (H - 80) + 40);
 
-export default function MapPage() {
+export default async function MapPage() {
   const data = useUserData();
   const [filter, setFilter] = useState<MapFilter>("sana_gore");
   const [active, setActive] = useState<string | null>(null);
@@ -44,7 +45,7 @@ export default function MapPage() {
       </section>
 
       {/* Demo kapalıyken: gerçek mekân haritası (puan ve öneri yok, yalnız konum ve kimlik). */}
-      {!DEMO_VISIBLE && <RealMap />}
+      {!DEMO_VISIBLE && <RealMap published={await publishedScores()} />}
       {DEMO_VISIBLE && results.length > 0 && <div className="mt-6 grid gap-8 lg:grid-cols-[1.5fr_1fr]">
         <div className="overflow-x-auto border-2 border-line-strong bg-sheet">
           <svg viewBox={`0 0 ${W} ${H}`} className="block h-auto w-full min-w-[560px]" role="img" aria-label="Şematik İstanbul haritası, demo konumlar">

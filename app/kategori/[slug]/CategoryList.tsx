@@ -5,15 +5,16 @@ import { listCards } from "@/lib/api";
 import { effectiveProfile, getPersonalMatch } from "@/lib/decision";
 import { useUserData } from "@/lib/store";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
+import { applyPublishedAll, type PublishedMap } from "@/lib/score/publishedCards";
 
 const PAGE = 40;
 type Sort = "puan" | "yukselen" | "konusulan";
 
 /** Kategori listesi — semt, alt tür ve sıralama gerçek çalışır; 1.500 kart aynı anda DOM'a girmez. */
-export function CategoryList({ categoryId, subs, cities }: { categoryId: string; subs: string[]; cities: string[] }) {
+export function CategoryList({ categoryId, subs, cities, published }: { categoryId: string; subs: string[]; cities: string[]; published: PublishedMap }) {
   const data = useUserData();
   const profile = useMemo(() => effectiveProfile(data.taste), [data.taste]);
-  const all = useMemo(() => listCards().filter((c) => c.category.id === categoryId), [categoryId]);
+  const all = useMemo(() => applyPublishedAll(listCards().filter((c) => c.category.id === categoryId), published), [categoryId, published]);
   const [sub, setSub] = useState("hepsi");
   const [city, setCity] = useState("hepsi");
   const [district, setDistrict] = useState("hepsi");

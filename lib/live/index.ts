@@ -5,7 +5,9 @@ import { mediaItems, mediaPlaces, places } from "@/lib/db/schema";
 import { googleUsableSlugs } from "@/lib/providers/google";
 import { listPlaceReviews, reviewsTag, type PublicReview } from "@/lib/community/reviews";
 import { readProfile, type PlaceProfile } from "@/lib/profile";
-import { publishedScoreBySlug, type PublishedScore } from "@/lib/score/published";
+import { publishedScoreBySlug, publishedScoresBySlug, type PublishedScore } from "@/lib/score/published";
+import type { PublishedMap } from "@/lib/score/publishedCards";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /* ──────────────────────────────────────────────────────────────────────────
    CANLI VERİ (sunucu) — yeniden derleme gerektirmeyen, veritabanından okunan sayfa bilgisi.
@@ -56,6 +58,16 @@ export function placeProfile(slug: string): Promise<PlaceProfile | null> {
 }
 
 export const scoreTag = (slug: string) => `score:${slug}`;
+export const TAG_SCORES = "scores";
+/** Bir mekânın puanı yazılınca: o mekânın sayfası ve bütün kart listeleri. */
+export const scoreTags = (slug: string) => [scoreTag(slug), TAG_SCORES];
+/** Kart ve listeler için yayımlanmış puanlar: tek sorgu, ortak önbellek; puan yazılınca etiket hemen geçersiz kılar.
+    Yatırımcı demosunda boş (demo kartlar değişmez). Hata/tablo yoksa boş: kartlar "bekleniyor" der, sayfa bozulmaz. */
+export const publishedScores = unstable_cache(async (): Promise<PublishedMap> => {
+  const db = getDb();
+  if (!db || DEMO_VISIBLE) return {};
+  try { return await publishedScoresBySlug(db); } catch { return {}; }
+}, ["published-scores-v1"], { revalidate: 3600, tags: [TAG_SCORES] });
 /** Yayımlanmış Gidenler puanı (rating_history son satırı) — restoran sayfası ve bildirim aynı kaynağı okur.
     Puan yayını (recordScore çağıran yol) etiketi hemen geçersiz kılar. Hata/tablo yoksa null. */
 export function placeScore(slug: string): Promise<PublishedScore | null> {

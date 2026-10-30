@@ -11,6 +11,8 @@ import { effectiveProfile, getPersonalMatch } from "@/lib/decision";
 import { isInvestorDemo, useUserData } from "@/lib/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
+import { usePublished } from "@/components/score/PublishedProvider";
+import { applyPublished, applyPublishedAll } from "@/lib/score/publishedCards";
 import { ReputationChip } from "@/components/creator/ReputationChip";
 
 const ORNEKLER = DEMO_VISIBLE
@@ -45,7 +47,8 @@ export default function SearchPage() {
     if (p.get("demo") === "1" || isInvestorDemo()) setShowDemo(true);
   }, []);
   /* konum listeleri — gerçek veriden; sahte mesafe yok */
-  const allCards = useMemo(() => listCards().filter((c) => showDemo || !c.entity.isDemo), [showDemo]);
+  const published = usePublished();
+  const allCards = useMemo(() => applyPublishedAll(listCards(), published).filter((c) => showDemo || !c.entity.isDemo), [showDemo, published]);
   /* yalnız kaydı olan kategoriler (demo kapalıyken boş kategori düğmesi gösterilmez) */
   const cats = useMemo(() => { const has = new Set(allCards.map((c) => c.category.id)); return allCats.filter((c) => has.has(c.id)); }, [allCards, allCats]);
   const cities = useMemo(() => Array.from(new Set(allCards.map((c) => c.entity.location?.city).filter(Boolean))) as string[], [allCards]);
@@ -62,7 +65,7 @@ export default function SearchPage() {
       return { entities: all.map((c) => ({ card: c, reason: "" })), adjacent: [] as Array<{ card: EntityCard; reason: string }>, creators: [] as User[], lists: [] as SearchOutput["lists"], understood: [] as string[], corrections: [] as Array<[string, string]> };
     }
     const r = searchV3(qq);
-    const pick = (h: SearchHit) => ({ card: h.card, reason: h.reason });
+    const pick = (h: SearchHit) => ({ card: applyPublished(h.card, published), reason: h.reason });
     return {
       entities: r.exact.filter((h) => keep(h.card)).map(pick),
       adjacent: r.adjacent.filter((h) => keep(h.card)).map(pick),

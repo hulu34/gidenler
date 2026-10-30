@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { realEntities } from "@/data/real";
+import { publishedScores } from "@/lib/live";
+import { SCORE_WAITING, fmtPublished } from "@/lib/score/publishedCards";
 
 /* GERÇEK İSTANBUL — yeni eklenen gerçek mekânlar (OSM). Puan yok; ilk deneyimleri bekliyorlar. */
-export function RealVenues({ limit = 12 }: { limit?: number }) {
+export async function RealVenues({ limit = 12 }: { limit?: number }) {
+  const published = await publishedScores();
   if (!realEntities.length) return null;
   /* semtler arasında dönüşümlü seçim: tek semt vitrini kaplamasın */
   const byD = new Map<string, typeof realEntities>();
@@ -16,7 +19,7 @@ export function RealVenues({ limit = 12 }: { limit?: number }) {
         <Link href="/gercek/" className="text-[12px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Tümü →</Link>
       </div>
       <p className="mt-2 max-w-[62ch] font-[family-name:var(--font-read)] text-[17px] leading-snug text-ink-2">
-        Gerçek mekânlar ekleniyor. Puanları yok, çünkü puanı gidenler verir. Gittiysen ilk deneyimi sen yaz.
+        Gerçek mekânlar ekleniyor. Puanı gidenler verir; yeterli deneyim oluşunca burada görünür. Gittiysen deneyimini yaz.
       </p>
       <ul className="mt-5 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-4">
         {pick.map((e) => (
@@ -24,7 +27,9 @@ export function RealVenues({ limit = 12 }: { limit?: number }) {
             <Link href={`/mekan/${e.slug}/`} className="group flex h-full flex-col gap-1 p-4 transition-colors hover:bg-sheet">
               <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">{e.subcategory} · {e.location?.district}</span>
               <span className="text-[17px] font-bold leading-tight tracking-[-0.015em] group-hover:text-accent-ink">{e.name}</span>
-              <span className="mt-auto pt-2 text-[12px] text-pos-ink">İlk deneyim bekliyor →</span>
+              {published[e.slug]?.score != null
+                ? <span className="tnum mt-auto pt-2 text-[13px] font-semibold">Gidenler puanı {fmtPublished(published[e.slug].score!)}/10 · {published[e.slug].reviewCount} deneyim</span>
+                : <span className="mt-auto pt-2 text-[12px] text-pos-ink">{SCORE_WAITING}</span>}
             </Link>
           </li>
         ))}
