@@ -153,13 +153,13 @@ for (const u of dis) {
   if (/oksijen|odatv|gzt\.com|mushaboom|gurmerehber|harbiyiyorum|constantine|youtube/.test(u)) ok(`dış kaynak açılıyor: ${new URL(u).hostname}${new URL(u).pathname.slice(0, 40)}`, okk, String(r.status));
 }
 
-/* 4) Canlı site etkilenmedi: bölüm yayımlanmadı (başlıksız, yalnız okuma) */
-for (const path of ["/seckisi/", "/seckisi/en/", `/seckisi/${bekleyen.slug}/`]) {
+/* 4) Canlı: yalnız yayındaki yazı açık, kontrol bekleyen kapalı (başlıksız, yalnız okuma) */
+for (const path of [`/seckisi/${bekleyen.slug}/`]) {
   const r = await fetch(`https://www.gidenler.com${path}`, { redirect: "manual" });
   ok(`canlıda kapalı ${path}`, r.status === 404, String(r.status));
 }
 const live = await (await fetch("https://www.gidenler.com/")).text();
-ok("canlı gezinmede Seçki bağlantısı yok", !live.includes('href="/seckisi/"'));
+ok("canlı gezinmede Seçki bağlantısı var", live.includes('href="/seckisi/"'));
 
 console.log(`\nSONUÇ ${res.filter(Boolean).length}/${res.length}`);
 process.exit(res.every(Boolean) ? 0 : 1);
