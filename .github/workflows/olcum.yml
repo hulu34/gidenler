@@ -328,7 +328,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/gorsel-kapali.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-7vuybmv0s-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-bb9clm7e5-hulu34.vercel.app }
       - if: always()
         run: test -d out/gkapali && tar -C out -czf out/gkapali.tgz gkapali && rm -rf out/gkapali && openssl cms -encrypt -aes256 -binary -in out/gkapali.tgz -out out/gkapali.tgz.cms -outform DER ops/olcum.pem && rm out/gkapali.tgz
       - if: always()
