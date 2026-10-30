@@ -44,5 +44,10 @@ for (const [dev, opt] of Object.entries({ masaustu: { viewport: { width: 1280, h
   console.log(`${dev}: sayfa hatası ${errs.length} ${[...new Set(errs)].join(" | ")}; /api/google isteği ${goog}`);
   await c.close(); }
 await b.close();
+{ const { h } = await get("/mekan/maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe/"); ok("Seyirtepe türü Restoran, Burger yok", /<title>[^<]*· Restoran ·/.test(un(h)) && !/<title>[^<]*Burger/.test(h)); }
+{ const { h } = await get("/mekan/durusu-club-restaurant-arnavutkoy/"); ok("Durusu bağlantısı restoran sayfası", h.includes("durusuclubhotel.com/lezzetler/durusu-restaurant")); const L = lds(h)[0]; ok("Durusu koordinat ve telefon yok", L.geo && !L.telephone, `${L.geo?.latitude},${L.geo?.longitude}`); }
+for (const p of P) { const r = await rapor(p.slug); console.log(`Preview denetim ${p.slug}: ${r.audits?.[0]?.id ?? "yok"}`); }
+/* Üretim: yalnız okuma. Yazmaz. */
+for (const p of P) { const r = await (await fetch(`https://${process.env.PROD_HOST}/api/admin/db/?rapor=profil&slug=${p.slug}`, { headers: H })).json().catch(() => ({})); ok(`üretim okuma ${p.slug}: kayıt var, profil yok`, r.env === "production" && !!r.place && !r.profile, `env=${r.env} menü=${r.counts?.menuRows}`); }
 const d = await fetch("https://demo.gidenler.com/", { redirect: "manual" }); ok("demo korumalı", d.status === 302, `HTTP ${d.status}`);
 console.log(`\nSONUÇ ${res.filter(Boolean).length}/${res.length}`); if (res.includes(false)) process.exit(1);
