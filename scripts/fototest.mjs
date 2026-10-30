@@ -1,0 +1,26 @@
+/* Keşif ve uygulama araçları: ağ yok. node scripts/fototest.mjs */
+import { mkdtempSync, mkdirSync, writeFileSync, existsSync } from "node:fs";
+import { tmpdir } from "node:os";
+import sharp from "sharp";
+import { robotsAllows, imageUrls, pageLinks, guessKind, measure, score, scanVenue } from "./foto-kesif.mjs";
+import { apply, remove, readReg } from "./foto-uygula.mjs";
+let pass = 0, fail = 0; const ok = (n, c, i = "") => { c ? pass++ : fail++; console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
+ok("robots engeller", !robotsAllows("User-agent: *\nDisallow: /galeri", "/galeri/1"));
+ok("robots izin", robotsAllows("User-agent: *\nDisallow: /admin", "/galeri"));
+ok("başka bota kural bizi bağlamaz", robotsAllows("User-agent: x\nDisallow: /", "/a"));
+const html = `<meta property="og:image" content="/a.jpg"><img src="/b.png" alt="pide"><img srcset="/s.jpg 400w, /l.jpg 1600w"><img src="/x.svg"><a href="/galeri">g</a><a href="https://diger.com/galeri">d</a>`;
+const u = imageUrls(html, "https://x.com/").map((i) => i.url);
+ok("görseller, en büyük srcset, svg yok", u.includes("https://x.com/a.jpg") && u.includes("https://x.com/l.jpg") && !u.some((x) => x.endsWith(".svg")), u.join());
+ok("yalnız aynı alan adı sayfaları", pageLinks(html, "https://x.com/").join() === "https://x.com/galeri");
+ok("tür tahmini", guessKind("kiymali pide") === "yemek" && guessKind("xx") === "belirsiz");
+const big = await sharp({ create: { width: 1600, height: 1000, channels: 3, background: { r: 120, g: 80, b: 40 }, noise: { type: "gaussian", mean: 120, sigma: 40 } } }).jpeg().toBuffer();
+const m = await measure(big); ok("ölçüm", m.w === 1600 && m.hash.length === 16); ok("puan 0-100", score(m, "yemek") <= 100 && score(m, "yemek") > 50, String(score(m, "yemek")));
+const none = await scanVenue({ slug: "s", name: "S" }); ok("sitesiz mekân: istek yok, adaysız", none.durum === "site_yok" && none.adaylar.length === 0);
+const ig = await scanVenue({ slug: "s", name: "S", website: "https://www.instagram.com/x/" }); ok("sosyal bağlantı site sayılmaz", ig.durum === "site_yok");
+const root = mkdtempSync(`${tmpdir()}/foto-`); mkdirSync(`${root}/data/real`, { recursive: true }); writeFileSync(`${root}/data/real/izinli-fotograflar.json`, "{}");
+const get = async () => new Response(big);
+const bad = await apply(root, [{ slug: "a", url: "https://x/1.jpg", credit: "K", license: "" }], get); ok("hak kaydı yoksa kopyalanmaz", !bad[0].ok && !readReg(root).a && !existsSync(`${root}/public/media/foto`));
+const yes = await apply(root, [{ slug: "a", url: "https://x/1.jpg", sayfa: "https://x/", tur: "yemek", credit: "K", license: "isletme-izni: e-posta 2026-11-01" }], get);
+ok("hak kaydıyla 3 boyut ve kayıt", yes[0].ok && existsSync(`${root}/public${yes[0].src}`) && readReg(root).a[0].rightsRef.includes("restoran profili"));
+ok("tek işlemle kaldırma: kayıt ve dosya gider", remove(root, "a", yes[0].src).ok && !readReg(root).a && !existsSync(`${root}/public${yes[0].src}`));
+console.log(`\nSONUÇ ${pass}/${pass + fail}`); process.exit(fail ? 1 : 0);

@@ -13,6 +13,7 @@
     "qa": "tsx scripts/searchqa.ts && tsx scripts/semqa.ts",
     "test:seckisi": "tsx scripts/seckisitest.ts",
     "test:seo": "tsx scripts/seotest.ts",
+    "test:foto": "node scripts/fototest.mjs",
     "db:generate": "drizzle-kit generate && tsx scripts/db-bundle-migrations.ts",
     "test:db": "tsx scripts/dbtest.ts && NEXT_PUBLIC_SHOW_DEMO=true tsx scripts/dbtest.ts",
     "db:status": "tsx scripts/db-migrate.ts",

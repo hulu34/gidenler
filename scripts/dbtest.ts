@@ -11,6 +11,7 @@ import * as schema from "../lib/db/schema";
 import { setDbForTests, type Db } from "../lib/db/client";
 import { googleCallAllowed, POLICY_FIELD, setGooglePolicy } from "../lib/providers/googlePolicy";
 import { fetchGoogleCover, googleUsableSlugs } from "../lib/providers/google";
+import { decidePhotoCandidate, listPhotoCandidates, loadPhotoCandidates } from "../lib/media/photoCandidates";
 import { dailyUsdCap, daySpendUsd, MONTHLY_USD_CAP } from "../lib/usage/counter";
 import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
 import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
@@ -684,6 +685,22 @@ async function main() {
       const fv = await fetchGoogleView(pB.slug, cf, 0);
       ok("puan ve yorum isteği fotoğraf çekmez", fv.state === "ok" && !seen.slice(2).some((x) => x.u.includes("/media")));
       await setGooglePolicy({ slugs: [pB.slug], mode: "kapali", priority: "C", reason: "bitti", admin: "test" });
+    }
+    /* fotoğraf aday havuzu */
+    {
+      const url = "https://ornek.test/a.jpg"; const v = [{ slug: pA.slug, subeKaniti: true, adaylar: [{ url, sayfa: "https://ornek.test/", tur: "yemek", w: 1600, h: 1000, puan: 80, kontrol: "2026-10-31" }] }];
+      const l1 = await loadPhotoCandidates(v), l2 = await loadPhotoCandidates(v);
+      ok("aday yüklenir, ikinci kez yazılmaz", l1.ok && l1.added === 1 && l2.ok && l2.added === 0 && l2.kept === 1);
+      const row = (await listPhotoCandidates())!.find((r) => r.url === url)!;
+      ok("aday pending, id_only", row.status === "pending" && (await db.select().from(schema.mediaItems).where(eq(schema.mediaItems.id, row.id)))[0].storageClass === "id_only");
+      const noProof = await decidePhotoCandidate({ id: row.id, decision: "approve", admin: "test", rightsType: "isletme-izni", rightsRef: "", credit: "K" });
+      ok("hak kanıtı olmadan onay yok", !noProof.ok);
+      const yesP = await decidePhotoCandidate({ id: row.id, decision: "approve", admin: "test", rightsType: "isletme-izni", rightsRef: "e-posta 2026-11-01", credit: "Künye" });
+      ok("hak kanıtıyla onay, denetim kayıtlı", yesP.ok && (await db.select().from(schema.auditLog).where(and(eq(schema.auditLog.action, "photo_approve"), eq(schema.auditLog.refId, row.id)))).length === 1);
+      await loadPhotoCandidates(v);
+      ok("yeniden tarama kararı bozmaz", (await listPhotoCandidates())!.find((r) => r.url === url)!.status === "approved");
+      ok("kaldırma tek işlem", (await decidePhotoCandidate({ id: row.id, decision: "remove", admin: "test", why: "yanlış şube" })).ok && (await listPhotoCandidates())!.find((r) => r.url === url)!.status === "removed");
+      ok("video listesi fotoğraf adayından etkilenmez", (await listPlaceVideos(pA.slug)).every((x) => x.url !== url));
     }
     /* eski testler için */
     await db.delete(schema.placeIdentifiers).where(inArray(schema.placeIdentifiers.id, ["gp-a", "gp-b", "gp-c"]));

@@ -5,6 +5,7 @@ import { runThresholdScenario } from "@/lib/community/scoreWatchScenario";
 import { reconcileScores, scorePublishEnabled, CONFIDENCE_LABEL, MIN_AUTHORS, SCORE_ALGORITHM, type RecomputeResult } from "@/lib/score/compute";
 import { rescoreSlug } from "@/lib/community/reviewApi";
 import { runScoreScenario } from "@/lib/score/scenario";
+import { decidePhotoCandidate, listPhotoCandidates, loadPhotoCandidates } from "@/lib/media/photoCandidates";
 import { googlePolicyStats, setGooglePolicy } from "@/lib/providers/googlePolicy";
 import { applyProfile, ProfileInput, readProfile, rollbackProfile } from "@/lib/profile";
 import { uuidv7 } from "uuidv7";
@@ -73,6 +74,10 @@ export async function GET(req: Request) {
   if (new URL(req.url).searchParams.get("rapor") === "google-politika") {
     try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), policy: await googlePolicyStats(), topPlaces: await placeUseReport(10), spend: await spendReport() }, { headers: H }); }
     catch (e) { return fail(e); }
+  }
+  /* ?rapor=foto-adaylar → aday havuzu (yalnız okuma) */
+  if (new URL(req.url).searchParams.get("rapor") === "foto-adaylar") {
+    try { return NextResponse.json({ env: envName(), candidates: await listPhotoCandidates() }, { headers: H }); } catch (e) { return fail(e); }
   }
   /* ?rapor=google-slug → Google içeriği gösterilebilen restoranlar (yalnız okuma; sayfalar lib/live ile dinamik okur) */
   if (new URL(req.url).searchParams.get("rapor") === "google-slug") {
@@ -257,6 +262,18 @@ export async function POST(req: Request) {
         const r = await setGooglePolicy({ slugs: b.slugs, mode: b.mode, priority: b.priority, reason: b.why, admin: b.admin, ...(b.estimatedCostUsd !== undefined ? { estimatedCostUsd: b.estimatedCostUsd } : {}), ...(b.allowAuto !== undefined ? { allowAuto: b.allowAuto } : {}) });
         if (r.ok) fresh(TAG_GOOGLE);
         return NextResponse.json({ action: "google-policy-set", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "photo-candidates-load": {
+        /* Aday yükleme: yalnız Preview/yerel. Görsel kopyalamaz, kapağı değiştirmez. */
+        if (body.confirm !== "EVET" || envName() === "production") break;
+        const r = await loadPhotoCandidates((body as unknown as { venues?: unknown }).venues);
+        return NextResponse.json({ action: "photo-candidates-load", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "photo-decide": {
+        if (body.confirm !== "EVET" || envName() === "production") break;
+        const { confirm: _c, target: _t, action: _a, ...rest } = body as unknown as Record<string, unknown>;
+        const r = await decidePhotoCandidate(rest);
+        return NextResponse.json({ action: "photo-decide", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "google-queue-sync": {
         /* Onaylanmış/reddedilmiş eşleşmelerin açık kuyruk satırlarını kapatır; silmez. */
