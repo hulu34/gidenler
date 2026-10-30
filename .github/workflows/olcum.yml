@@ -264,6 +264,21 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: veri42-sifreli, path: out/veri42.tgz.cms, retention-days: 3, if-no-files-found: ignore }
+  canli-dort:
+    if: contains(github.event.head_commit.message, '[canli-dort]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/canli-dort.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: gidenler-itv2usdq1-hulu34.vercel.app, PROD_HOST: gidenler-937jthcsn-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/canlid && tar -C out -czf out/canlid.tgz canlid && rm -rf out/canlid && openssl cms -encrypt -aes256 -binary -in out/canlid.tgz -out out/canlid.tgz.cms -outform DER ops/olcum.pem && rm out/canlid.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: canlid-sifreli, path: out/canlid.tgz.cms, retention-days: 30, if-no-files-found: ignore }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
