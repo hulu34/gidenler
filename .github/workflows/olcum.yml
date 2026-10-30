@@ -302,6 +302,22 @@ jobs:
       - uses: actions/checkout@v4
       - run: node ops/google-denetim.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROD_HOST: gidenler-e3yekh1g7-hulu34.vercel.app }
+  politika:
+    if: contains(github.event.head_commit.message, '[politika]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/politika.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-nb1b4q5lh-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/politika && tar -C out -czf out/politika.tgz politika && rm -rf out/politika && openssl cms -encrypt -aes256 -binary -in out/politika.tgz -out out/politika.tgz.cms -outform DER ops/olcum.pem && rm out/politika.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: politika-sifreli, path: out/politika.tgz.cms, retention-days: 3, if-no-files-found: ignore }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
