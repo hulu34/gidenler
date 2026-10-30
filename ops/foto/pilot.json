@@ -1,0 +1,502 @@
+[
+ {
+  "slug": "japon-erdal-beyoglu",
+  "name": "Japon Erdal",
+  "district": "Beyoğlu",
+  "website": "https://japonerdal.com/",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "pandeli-fatih",
+  "name": "Pandeli",
+  "district": "Fatih",
+  "website": "https://www.pandeli.com.tr",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "yeni-lokanta-beyoglu",
+  "name": "Yeni Lokanta",
+  "district": "Beyoğlu",
+  "website": "https://www.yenilokanta.com",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "balikci-sabahattin-fatih",
+  "name": "Balıkçı Sabahattin",
+  "district": "Fatih",
+  "website": "https://www.balikcisabahattin.com",
+  "siteKaynak": "profil",
+  "instagram": "balikcisabahattin",
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "ciya-sofrasi-kadikoy",
+  "name": "Çiya Sofrası",
+  "district": "Kadıköy",
+  "website": "http://www.ciya.com.tr",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "hayır"
+ },
+ {
+  "slug": "agora-meyhanesi-1890-fatih",
+  "name": "AGORA Meyhanesi 1890",
+  "district": "Fatih",
+  "website": null,
+  "siteKaynak": "yok",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "adanali-kebapci-mehmet-sisli",
+  "name": "Adanalı Kebapçı Mehmet",
+  "district": "Şişli",
+  "website": "https://www.adanalikebapcimehmet.com",
+  "siteKaynak": "profil",
+  "instagram": "adanalikebapcimehmet",
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "adile-hanim-konagi-beyoglu",
+  "name": "Adile Hanım Konağı",
+  "district": "Beyoğlu",
+  "website": "https://www.adilehanim.com.tr",
+  "siteKaynak": "profil",
+  "instagram": "adilemansion",
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "akinti-burnu-balik-restaurant-besiktas",
+  "name": "Akıntı Burnu Balık Restaurant",
+  "district": "Beşiktaş",
+  "website": "https://www.akintiburnu.com",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "ali-ocakbasi-kadikoy",
+  "name": "Ali Ocakbaşı",
+  "district": "Kadıköy",
+  "website": "https://aliocakbasi.com/post/istanbul-suadiye/40.html",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "hayır"
+ },
+ {
+  "slug": "antiochia-beyoglu",
+  "name": "Antiochia",
+  "district": "Beyoğlu",
+  "website": "http://www.antiochiaconcept.com",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "asmali-cavit-beyoglu",
+  "name": "Asmalı Cavit",
+  "district": "Beyoğlu",
+  "website": null,
+  "siteKaynak": "yok",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "baba-sogus-besiktas",
+  "name": "Baba Söğüş",
+  "district": "Beşiktaş",
+  "website": "https://www.shopier.com/s/store/babasakatat",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "bebek-balikci-besiktas",
+  "name": "Bebek Balıkçı",
+  "district": "Beşiktaş",
+  "website": "https://bebekbalikci.net",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "beyti-lokanta-bakirkoy",
+  "name": "Beyti Lokanta",
+  "district": "Bakırköy",
+  "website": "https://www.beyti.com/",
+  "siteKaynak": "elle_aday",
+  "instagram": null,
+  "sinif": "A",
+  "google": "hayır"
+ },
+ {
+  "slug": "del-mare-uskudar",
+  "name": "Del Mare",
+  "district": "Üsküdar",
+  "website": "https://www.delmarerestaurant.com",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "durak-bufe-besiktas",
+  "name": "Durak Büfe",
+  "district": "Beşiktaş",
+  "website": "http://www.durakbufe.com.tr",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "efes-pide-ve-lahmacun-sisli",
+  "name": "Efes Pide & Lahmacun",
+  "district": "Şişli",
+  "website": "https://efespidelahmacun.com.tr/",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "filizler-koftecisi-uskudar",
+  "name": "Filizler Köftecisi",
+  "district": "Üsküdar",
+  "website": "https://filizler.com/uskudar",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "giritli-fatih",
+  "name": "Giritli",
+  "district": "Fatih",
+  "website": "http://www.giritlirestoran.com",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "halil-lahmacun-kadikoy",
+  "name": "Halil Lahmacun",
+  "district": "Kadıköy",
+  "website": null,
+  "siteKaynak": "yok",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "hanedan-et-besiktas",
+  "name": "Hanedan Et",
+  "district": "Beşiktaş",
+  "website": "http://hanedanrestaurant.com/",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "hayır"
+ },
+ {
+  "slug": "hasirli-konya-mutfagi-buyukcekmece",
+  "name": "Hasırlı Konya Mutfağı",
+  "district": "Büyükçekmece",
+  "website": "https://www.hasirli.com/",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "hocapasa-pidecisi-fatih",
+  "name": "Hocapaşa Pidecisi",
+  "district": "Fatih",
+  "website": null,
+  "siteKaynak": "yok",
+  "instagram": null,
+  "sinif": "A",
+  "google": "hayır"
+ },
+ {
+  "slug": "hunkar-sisli",
+  "name": "Hünkar",
+  "district": "Şişli",
+  "website": "https://hunkarlokantasi.com",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "ismet-baba-uskudar",
+  "name": "Ismet Baba",
+  "district": "Üsküdar",
+  "website": "http://ismetbaba.com.tr",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "karakoy-lokantasi-beyoglu",
+  "name": "Karaköy Lokantası",
+  "district": "Beyoğlu",
+  "website": "http://www.karakoylokantasi.com",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "kardesler-kebap-ve-cafe-beyoglu",
+  "name": "Kardesler Kebap & Cafe",
+  "district": "Beyoğlu",
+  "website": "https://www.kardeslercihangir.com/",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "kasap-osman-fatih",
+  "name": "Kasap Osman",
+  "district": "Fatih",
+  "website": null,
+  "siteKaynak": "yok",
+  "instagram": null,
+  "sinif": "A",
+  "google": "evet"
+ },
+ {
+  "slug": "kor-agop-beyoglu",
+  "name": "Kör Agop",
+  "district": "Beyoğlu",
+  "website": "http://www.koragop.com/index_pera.html",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "A",
+  "google": "hayır"
+ },
+ {
+  "slug": "bafetto-pizza-kartal",
+  "name": "Bafetto Pizza",
+  "district": "Kartal",
+  "website": "https://bafetto.com.tr/",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "C",
+  "google": "hayır"
+ },
+ {
+  "slug": "pidem-fatih",
+  "name": "Pidem",
+  "district": "Fatih",
+  "website": "https://www.pidem.com.tr/",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "C",
+  "google": "evet"
+ },
+ {
+  "slug": "sushico-pendik",
+  "name": "SushiCo",
+  "district": "Pendik",
+  "website": "https://www.sushico.com.tr",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "C",
+  "google": "evet"
+ },
+ {
+  "slug": "cantinery-besiktas",
+  "name": "Cantinery",
+  "district": "Beşiktaş",
+  "website": "https://www.cantinery.com",
+  "siteKaynak": "kayit",
+  "instagram": "cantinery",
+  "sinif": "C",
+  "google": "evet"
+ },
+ {
+  "slug": "adile-sultan-ev-yemekleri-uskudar",
+  "name": "Adile Sultan Ev Yemekleri",
+  "district": "Üsküdar",
+  "website": "https://adilesultanevyemekleri.com/",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "C",
+  "google": "evet"
+ },
+ {
+  "slug": "gardas-cag-kebap-pendik",
+  "name": "Gardaş Cag Kebap",
+  "district": "Pendik",
+  "website": "https://gardascagkebap.com/",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "C",
+  "google": "hayır"
+ },
+ {
+  "slug": "ibb-eyupsultan-kent-lokantasi-eyupsultan",
+  "name": "İBB Eyüpsultan Kent Lokantası",
+  "district": "Eyüpsultan",
+  "website": "https://tesislerimiz.ibb.istanbul/tesis/eyupsultan-kent-lokantasi",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "C",
+  "google": "hayır"
+ },
+ {
+  "slug": "maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe",
+  "name": "Maltepe Belediyesi Seyirtepe Sosyal Tesisleri",
+  "district": "Maltepe",
+  "website": "https://maltepematas.com.tr/hizmetlerimiz/seyirtepe-sosyal-tesisleri/",
+  "siteKaynak": "profil",
+  "instagram": null,
+  "sinif": "C",
+  "google": "evet"
+ },
+ {
+  "slug": "bahce-ocakbasi-atasehir",
+  "name": "Bahçe Ocakbaşı",
+  "district": "Ataşehir",
+  "website": "https://bahceocakbasi.com/",
+  "siteKaynak": "profil",
+  "instagram": "bahceocakbasiatasehir",
+  "sinif": "B",
+  "google": "evet"
+ },
+ {
+  "slug": "ekmek-teknesi-uskudar",
+  "name": "Ekmek Teknesi",
+  "district": "Üsküdar",
+  "website": "https://kuzguncukekmekteknesi.com",
+  "siteKaynak": "kayit",
+  "instagram": "kuzguncukekmekteknesi",
+  "sinif": "B",
+  "google": "evet"
+ },
+ {
+  "slug": "elise-pide-lahmacun-besiktas",
+  "name": "Elise Pide Lahmacun",
+  "district": "Beşiktaş",
+  "website": "https://elisepidelahmacun.com/",
+  "siteKaynak": "profil",
+  "instagram": "elisepidelahmacun",
+  "sinif": "B",
+  "google": "evet"
+ },
+ {
+  "slug": "flake-breakfast-ve-more-kadikoy",
+  "name": "Flake Breakfast & More",
+  "district": "Kadıköy",
+  "website": "https://flakebreakfast.com",
+  "siteKaynak": "kayit",
+  "instagram": "flakebreakfast",
+  "sinif": "B",
+  "google": "evet"
+ },
+ {
+  "slug": "gasto-nisantasi-sisli",
+  "name": "Gasto Nişantaşı",
+  "district": "Şişli",
+  "website": "http://www.gasto.com.tr",
+  "siteKaynak": "kayit",
+  "instagram": "gasto_local",
+  "sinif": "B",
+  "google": "evet"
+ },
+ {
+  "slug": "koprualti-sariyer",
+  "name": "Köprüaltı",
+  "district": "Sarıyer",
+  "website": "http://koprualti.kim",
+  "siteKaynak": "kayit",
+  "instagram": "koprualtirumelihisari",
+  "sinif": "B",
+  "google": "evet"
+ },
+ {
+  "slug": "kucuk-ev-sariyer",
+  "name": "Küçük Ev",
+  "district": "Sarıyer",
+  "website": "https://www.kucukev.com/",
+  "siteKaynak": "kayit",
+  "instagram": "kucukev1962",
+  "sinif": "B",
+  "google": "evet"
+ },
+ {
+  "slug": "aga-ocakbasi-beyoglu",
+  "name": "AGA Ocakbaşı",
+  "district": "Beyoğlu",
+  "website": "https://www.agaocakbasi.com/",
+  "siteKaynak": "kayit",
+  "instagram": "agaocakbasibeyoglu",
+  "sinif": "B",
+  "google": "hayır"
+ },
+ {
+  "slug": "ara-gurme-lahmacun-pide-kebap-sisli",
+  "name": "Ara Gurme Lahmacun Pide Kebap",
+  "district": "Şişli",
+  "website": "https://www.aragurme.com/",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "B",
+  "google": "hayır"
+ },
+ {
+  "slug": "arnavutkoy-balikcisi-sariyer",
+  "name": "Arnavutköy Balıkçısı",
+  "district": "Sarıyer",
+  "website": "https://arnavutkoybalikcisi.com",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "B",
+  "google": "hayır"
+ },
+ {
+  "slug": "aslanbey-ciftligi-pendik",
+  "name": "Aslanbey Çiftliği",
+  "district": "Pendik",
+  "website": "https://www.aslanbeyciftligi.com/menu/",
+  "siteKaynak": "kayit",
+  "instagram": "aslanbeyciftligiemirli",
+  "sinif": "B",
+  "google": "hayır"
+ },
+ {
+  "slug": "blak-coffee-co-besiktas",
+  "name": "BLAK Coffee Co.",
+  "district": "Beşiktaş",
+  "website": "https://www.blakcoffee.co",
+  "siteKaynak": "kayit",
+  "instagram": null,
+  "sinif": "B",
+  "google": "hayır"
+ }
+]
