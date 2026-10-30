@@ -20,9 +20,9 @@ export default async function RealPage() {
       {groups.map(([d, arr]) => (
         <section key={d} className="mt-10" aria-labelledby={`h-${d}`}>
           <div className="kunye"><h2 id={`h-${d}`}>{d}</h2><span className="tnum text-[11.5px] text-ink-3">{arr.length} mekân</span></div>
-          <ul className="mt-3 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-3 grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
             {arr.map((e) => (
-              <li key={e.id} className="border-b border-line">
+              <li key={e.id} className="min-w-0 border-b border-line">
                 <Link href={`/mekan/${e.slug}/`} className="group flex items-baseline justify-between gap-3 py-3">
                   <span className="truncate text-[15.5px] font-bold group-hover:text-accent-ink">{e.name}</span>
                   <span className="tnum shrink-0 text-[12px] text-ink-3">{published[e.slug]?.score != null ? `${fmtPublished(published[e.slug].score!)}/10` : e.subcategory}</span>
