@@ -1,0 +1,8 @@
+{
+  "maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe": {
+    "kind": "Restoran",
+    "sourceUrl": "https://maltepematas.com.tr/hizmetlerimiz/seyirtepe-sosyal-tesisleri/",
+    "checkedAt": "2026-10-30",
+    "why": "Resmî sayfa tabldot ve alakart restoran ile kafe/pasta bölümü anlatıyor; OSM'deki burger etiketini desteklemiyor."
+  }
+}

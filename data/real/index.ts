@@ -1,6 +1,7 @@
 import type { Entity } from "@/lib/types";
 import raw from "./venues.json";
 import isletme from "./isletme.json";
+import duzeltmeler from "./duzeltmeler.json";
 
 /* ==========================================================================
    GERÇEK MEKÂNLAR (V8) — kimlik verisi OpenStreetMap'ten (© OpenStreetMap katkıcıları, ODbL).
@@ -121,7 +122,11 @@ export function mergeRealVenues(osm: RealVenueRecord[], biz: RealVenueRecord[]) 
 const merged = mergeRealVenues(raw as RealVenueRecord[], isletme as RealVenueRecord[]);
 /** İnceleme adayı çiftler (otomatik birleştirilmez). */
 export const realVenueReview = merged.review;
-export const realVenueRecords = merged.records;
+/* Kaynağa dayalı elle düzeltmeler (duzeltmeler.json): venues.json elle düzenlenmediği için aktarım yenilense de korunur. Yalnız tür. */
+export const realVenueRecords = merged.records.map((r) => {
+  const fix = (duzeltmeler as Record<string, { kind: string }>)[r.slug];
+  return fix ? { ...r, kind: fix.kind } : r;
+});
 
 export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   id: `ent.r.${r.slug}`,

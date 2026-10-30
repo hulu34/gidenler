@@ -5,6 +5,8 @@ import { articles, ALL_ARTICLES } from "../lib/seckisi";
 import { inVenueSitemap, openingHoursSpec, venueDescription, venueJsonLd } from "../lib/seo";
 import type { Entity } from "../lib/types";
 import noAddressOk from "../data/real/sitemap-adressiz.json";
+import duzeltmeler from "../data/real/duzeltmeler.json";
+import rawVenues from "../data/real/venues.json";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info = "") => { cond ? pass++ : fail++; console.log(`${cond ? "✓" : "✗"} ${name}${info ? " · " + info : ""}`); };
@@ -42,6 +44,13 @@ const scored = venueJsonLd(base, { score: 8.8, reviewCount: 5 }, false) as { agg
 ok("puan varsa gerçek değer, ölçek 10", scored.aggregateRating?.ratingValue === 8.8 && scored.aggregateRating?.bestRating === 10);
 ok("sahiplik ilişkisinde aggregateRating yok", !("aggregateRating" in (venueJsonLd(base, { score: 8.8, reviewCount: 5 }, true) as object)));
 ok("Google alanı yok", !/google/i.test(JSON.stringify(ld)));
+
+/* tür düzeltmesi: yalnız listedeki kayıt değişir */
+const fixed = Object.keys(duzeltmeler);
+const kindChanged = (rawVenues as { slug: string; kind: string }[]).filter((r) => realEntities.find((e) => e.slug === r.slug)?.subcategory !== r.kind).map((r) => r.slug);
+ok("tür yalnız düzeltme listesindekilerde değişir", kindChanged.join() === fixed.join(), kindChanged.join());
+ok("Seyirtepe Restoran, kategori aynı", realEntities.find((e) => e.slug === fixed[0])?.subcategory === "Restoran" && realEntities.find((e) => e.slug === fixed[0])?.categoryId === "cat.restaurant");
+ok("457 kayıt korunur", realEntities.length === 457);
 
 /* site haritası */
 ok("adressiz kayıt girmez", !inVenueSitemap(bare));
