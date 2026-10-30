@@ -173,6 +173,28 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
     imageSizes: `(max-width: 640px) 60vw, ${(entity.photos?.length ?? 0) === 1 ? "1180px" : "590px"}` });
 
+  /* Puan ya da "henüz puan yok" notu ve eylemler. Eşik kartı varken sol sütunda durur; kart ayrı satırda boşluk bırakmaz. */
+  const heroBody = scored ? (
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-end gap-x-8 gap-y-3">
+              <ScoreNumber score={I.overallScore!} size="xl" label trend={{ direction: dir, delta: dir === "flat" ? undefined : I.scoreTrend.delta }} />
+              {c.mode === "standard" && <HeroMatch entityId={entity.id} />}
+            </div>
+            {oneLine && <p className="prose-exp max-w-[60ch] text-[17px] leading-[1.45] text-ink">{oneLine}</p>}
+            {c.mode === "standard" && (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-3">
+                <EntityActions entityId={entity.id} entitySlug={entity.slug} entityName={entity.name} variant="compact" via="topic-hero" />
+                <Link href={`/yaz/${entity.slug}/`} className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Deneyim yaz</Link>
+                {canPanel && <Link href={`/isletme/${entity.slug}/`} className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">İşletme paneli</Link>}
+              </div>
+            )}
+          </div>
+        ) : entity.isReal && c.showScores ? (
+          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} />
+        ) : (
+          <ComplianceNotice policy={c} noun={category.noun} />
+        );
+
   return (
     <div className="mx-auto max-w-[1180px] overflow-x-clip px-5 pb-32 sm:px-7 sm:pb-24">
       {/* ═══════════ HERO — kısa ve güçlü: ad · tür · puan · yön · sana göre · tek cümle · eylem ═══════════ */}
@@ -190,6 +212,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </nav>
 
         <div className="flex items-start justify-between gap-6">
+        <div className="flex min-w-0 flex-1 flex-col gap-4">
         <div className="flex min-w-0 flex-col gap-2">
           <h1 className="max-w-[18ch] text-[clamp(2rem,7vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">{entity.name}</h1>
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
@@ -209,6 +232,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             </div>
           )}
         </div>
+        {esik && heroBody}
+        </div>
         {esik ? (
           <div className="hidden w-[300px] shrink-0 sm:block"><ThresholdCard v={esik} /></div>
         ) : scored && pulse && (
@@ -219,26 +244,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         )}
         </div>
 
-        {scored ? (
-          <div className="flex flex-col gap-3">
-            <div className="flex flex-wrap items-end gap-x-8 gap-y-3">
-              <ScoreNumber score={I.overallScore!} size="xl" label trend={{ direction: dir, delta: dir === "flat" ? undefined : I.scoreTrend.delta }} />
-              {c.mode === "standard" && <HeroMatch entityId={entity.id} />}
-            </div>
-            {oneLine && <p className="prose-exp max-w-[60ch] text-[17px] leading-[1.45] text-ink">{oneLine}</p>}
-            {c.mode === "standard" && (
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-3">
-                <EntityActions entityId={entity.id} entitySlug={entity.slug} entityName={entity.name} variant="compact" via="topic-hero" />
-                <Link href={`/yaz/${entity.slug}/`} className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Deneyim yaz</Link>
-                {canPanel && <Link href={`/isletme/${entity.slug}/`} className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">İşletme paneli</Link>}
-              </div>
-            )}
-          </div>
-        ) : entity.isReal && c.showScores ? (
-          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} />
-        ) : (
-          <ComplianceNotice policy={c} noun={category.noun} />
-        )}
+        {!esik && heroBody}
       </header>
 
       {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
