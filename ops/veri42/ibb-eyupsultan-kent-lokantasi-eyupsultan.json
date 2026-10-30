@@ -1,0 +1,16 @@
+{
+  "slug": "ibb-eyupsultan-kent-lokantasi-eyupsultan",
+  "address": {
+    "value": "White Hill AVM girişi, Mustafa Kemal Bulvarı, Karadolap Mah., Eyüpsultan, İstanbul",
+    "provider": "official_site",
+    "url": "https://tesislerimiz.ibb.istanbul/tesis/eyupsultan-kent-lokantasi",
+    "checkedAt": "2026-10-30"
+  },
+  "website": {
+    "value": "https://tesislerimiz.ibb.istanbul/tesis/eyupsultan-kent-lokantasi",
+    "provider": "official_site",
+    "url": "https://tesislerimiz.ibb.istanbul/tesis/eyupsultan-kent-lokantasi",
+    "checkedAt": "2026-10-30"
+  },
+  "_kaynak_notu": "İBB resmî tesis sayfası. Koordinat White Hill AVM ile yaklaşık 60 m uyumlu. 444 1 034 kurum santrali, yazılmadı. Saat sayfada görülmedi; OSM saati korunur."
+}

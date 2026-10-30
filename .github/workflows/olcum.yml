@@ -248,6 +248,22 @@ jobs:
               curl -s -A "$a" -o x -w "%{http_code} %{content_type} %{size_download} %{time_total}s " "$u"; sha1sum x | cut -c1-10; done; done
           curl -s https://www.gidenler.com/sitemap.xml | grep -c '<loc>'
           for i in 1 2 3 4 5 6 7 8 9 10; do curl -s -o /dev/null -w '%{http_code} ' -A 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' https://www.gidenler.com/sitemap.xml; done; echo
+  veri42:
+    if: contains(github.event.head_commit.message, '[veri42]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/veri42.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app, APPLY: "${{ contains(github.event.head_commit.message, '[uygula]') && '1' || '0' }}" }
+      - if: always()
+        run: test -d out/veri42 && tar -C out -czf out/veri42.tgz veri42 && rm -rf out/veri42 && openssl cms -encrypt -aes256 -binary -in out/veri42.tgz -out out/veri42.tgz.cms -outform DER ops/olcum.pem && rm out/veri42.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: veri42-sifreli, path: out/veri42.tgz.cms, retention-days: 3, if-no-files-found: ignore }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
