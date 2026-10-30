@@ -165,6 +165,7 @@ for (const a of pkg.filter((x) => x.media)) {
     const m = await p.evaluate(() => ({ link: document.querySelectorAll("#seckide [data-secki-yazi]").length, press: document.querySelectorAll("#seckide [data-press]").length, video: document.querySelectorAll("#seckide [data-video]").length, sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
     ok(`${dev} profil ${slug}: yazı ${m.link}, basın ${m.press}, video ${m.video}`, m.link >= 1 && m.press === a.media.press.length && m.video === a.media.videos.length, JSON.stringify(m));
     ok(`${dev} profil ${slug}: yatay taşma yok`, m.sw <= m.cw, JSON.stringify(m));
+    await p.waitForFunction(() => !document.querySelector("header")?.innerText.includes("Yükleniyor"), null, { timeout: 15000 }).catch(() => {});
     const g = await p.evaluate(() => { const h = document.querySelector("header h1")?.closest("header"); const n = [...h.querySelectorAll("a,button")].find((x) => /Gittim, deneyimimi/.test(x.textContent)); const k = [...h.querySelectorAll("h1 ~ *, div")].find((x) => /DENEME EŞİĞİN|Deneme eşiğin/i.test(x.textContent) && x.offsetWidth === 300); const r = (e) => e ? e.getBoundingClientRect() : null; return { h1: r(h.querySelector("h1"))?.bottom, not: r(n)?.top, kart: r(k)?.bottom, header: r(h).bottom }; });
     console.log(`  başlık ölçüsü ${dev}: ${JSON.stringify(g)}`);
     if (dev === "masaustu") ok(`profil ${slug}: not başlığın altında, kartın yanında`, g.not != null && g.kart != null && g.not < g.kart, JSON.stringify(g));
