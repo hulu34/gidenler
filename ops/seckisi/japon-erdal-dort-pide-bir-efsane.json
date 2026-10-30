@@ -44,6 +44,12 @@
         "p": "Hamur fırına girmeden önce yaklaşık 36 saat dinlendiriliyor; işletme bu yüzden bazı günler hamurun erken bittiğini söylüyor. Etli pidelerde kaşar kullanılmıyor; amaç etin tadını öne çıkarmak. Ziyaretçi videolarında ve rehberlerde pastırmalı pideye çiğ yumurta sarısı eklendiği görülüyor; bu seçenek resmî menüde yazmıyor."
       },
       {
+        "h": "Flu'nun masasında"
+      },
+      {
+        "p": "Flu kanalının “Olmaz Öyle Gastronomi” programı Aralık 2025'te pide bölümünün üçüncü durağını burada yaptı. Restorandan bir konuşmacı adı minimalist yaklaşımla açıklıyor; hamurun normalden ince, iç malzemenin bol olduğunu anlatıyor. Masadaki üç kişi Japon Erdal'a 9,5, 10 ve 9 verdi; bölümdeki diğer iki durak en fazla 9 aldı. 10 veren konuşmacı bu puanı şimdiye kadar yediği en lezzetli pide diye açıklıyor, bir başkası açık kuşbaşılı için muhtemelen yediği en iyisi olabileceğini söylüyor. Görüş tek değil: 9 veren konuşmacı Bafra'da yediği pideyi hatırlatıyor, kuşbaşılının pide sayılmasına da itiraz ediliyor. Ekip restorandan reklam almadığını söylüyor; bölümün açıklamasında ise Samsung Wallet bağlantısı var."
+      },
+      {
         "h": "Hangi plan için"
       },
       {
@@ -79,6 +85,12 @@
       },
       {
         "p": "The dough rests for about 36 hours before it goes into the oven, which is why the restaurant says it sometimes runs out early. There is no cheese on the meat pides, so the meat comes first. Visit videos and guides show a raw egg yolk added to the pastırma pide; this option is not on the official menu."
+      },
+      {
+        "h": "At Flu's table"
+      },
+      {
+        "p": "Flu's “Olmaz Öyle Gastronomi” programme made this the third stop of its pide episode in December 2025. A speaker from the restaurant ties the name to a minimalist approach and describes a dough thinner than usual with a generous filling. The three people at the table gave Japon Erdal 9.5, 10 and 9; the episode's other two stops got 9 at most. The speaker who gave 10 explains it as the tastiest pide they have eaten so far, and another says the open diced-beef pide may be the best they have had. Opinion is not unanimous: the speaker who gave 9 recalls a pide eaten in Bafra, and someone objects to diced beef counting as pide at all. The team says it took no advertising from the restaurant; the episode's description does carry a Samsung Wallet link."
       },
       {
         "h": "Who it suits"
@@ -151,6 +163,19 @@
         "en": "ChefStory (YouTube)"
       },
       "url": "https://www.youtube.com/watch?v=L2QSxHdJnig",
+      "checkedAt": "2026-10-30",
+      "kind": "basin"
+    },
+    {
+      "title": {
+        "tr": "Just Pide - Olmaz Öyle Gastronomi (Aralık 2025)",
+        "en": "Just Pide - Olmaz Öyle Gastronomi (December 2025)"
+      },
+      "publisher": {
+        "tr": "Flu (YouTube)",
+        "en": "Flu (YouTube)"
+      },
+      "url": "https://www.youtube.com/watch?v=sQEzys2PNm0",
       "checkedAt": "2026-10-30",
       "kind": "basin"
     },
@@ -394,6 +419,24 @@
       }
     ],
     "videos": [
+      {
+        "youtubeId": "sQEzys2PNm0",
+        "channel": "Flu",
+        "handle": "@cnklgl",
+        "title": "Just Pide - Olmaz Öyle Gastronomi - Şef Sinan Büdeyri - B29",
+        "date": "2025-12-14",
+        "start": 2682,
+        "type": "cok-mekanli",
+        "disclosure": {
+          "tr": "Ekip restorandan reklam almadığını söylüyor; bu doğrulanamıyor. Açıklamada ve bölümde Samsung Wallet yer alıyor.",
+          "en": "The team says it took no advertising from the restaurant; this cannot be verified. Samsung Wallet appears in the description and the episode."
+        },
+        "note": {
+          "tr": "Üç duraklı pide bölümünün son durağı: menü, ince hamur ve puanlar. Konuşmalar otomatik altyazıdan izlendi.",
+          "en": "The last stop of a three-stop pide episode: the menu, the thin dough and the scores. The conversation was followed through automatic captions."
+        },
+        "verifiedAt": "2026-10-30"
+      },
       {
         "youtubeId": "L2QSxHdJnig",
         "channel": "ChefStory",
