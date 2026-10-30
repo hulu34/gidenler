@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { realEntities } from "@/data/real";
-import { SCORE_WAITING, fmtPublished, type PublishedMap } from "@/lib/score/publishedCards";
+import { usePublished } from "@/components/score/PublishedProvider";
+import { SCORE_WAITING, fmtPublished } from "@/lib/score/publishedCards";
 
 /* GERÇEK MEKÂN HARİTASI — 456 gerçek kayıt, OSM koordinatlarıyla. Öneri, kalabalık bilgisi yok;
    konum, tür, kimlik ve yayımlanmış Gidenler puanı. Kullanıcı konumu alınmaz. Altlık şematik (sokak haritası yok), mekân
@@ -13,7 +14,8 @@ const BOX = { minLat: 40.84, maxLat: 41.26, minLng: 28.55, maxLng: 29.45 };
 const px = (lng: number) => ((lng - BOX.minLng) / (BOX.maxLng - BOX.minLng)) * W;
 const py = (lat: number) => H - ((lat - BOX.minLat) / (BOX.maxLat - BOX.minLat)) * H;
 
-export function RealMap({ published }: { published?: PublishedMap }) {
+export function RealMap() {
+  const published = usePublished();
   const pts = useMemo(() => realEntities.filter((e) => e.location?.geo).map((e) => ({ e, lat: e.location!.geo!.lat, lng: e.location!.geo!.lng })), []);
   const kinds = useMemo(() => [...new Set(pts.map((p) => p.e.subcategory ?? ""))].filter(Boolean).sort((a, b) => a.localeCompare(b, "tr")), [pts]);
   const districts = useMemo(() => [...new Set(pts.map((p) => p.e.location?.district ?? ""))].filter(Boolean).sort((a, b) => a.localeCompare(b, "tr")), [pts]);
@@ -57,7 +59,7 @@ export function RealMap({ published }: { published?: PublishedMap }) {
               <p className="mt-1 text-[22px] font-bold leading-tight tracking-[-0.02em]">{s.name}</p>
               {s.address && <p className="mt-1 text-[13.5px] text-ink-2">{s.address}</p>}
               {s.hours && <p className="mt-1 text-[12.5px] text-ink-3">Saatler (OpenStreetMap): {s.hours}</p>}
-              {published?.[s.slug]?.score != null
+              {published[s.slug]?.score != null
                 ? <p className="tnum mt-2 text-[13px] font-semibold">Gidenler puanı {fmtPublished(published[s.slug].score!)}/10 · {published[s.slug].reviewCount} deneyim</p>
                 : <p className="mt-2 text-[12.5px] text-pos-ink">{SCORE_WAITING}</p>}
               <Link href={`/mekan/${s.slug}/`} className="mt-3 inline-flex h-9 items-center rounded-[3px] bg-ink px-3 text-[13px] font-semibold text-paper hover:bg-accent">Mekâna git</Link>
