@@ -4,7 +4,7 @@ import { DEMO_VISIBLE } from "@/data/demoFlag";
 import G100PreviewPage from "./onizleme/page";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
 
-export const metadata = { title: `Gidenler 100 · ${G100.year}`, description: "İstanbul'da gidenlerin en iyi deneyimi yaşadığı 100 yer — satın alınamaz, kanıta dayalı." };
+export const metadata = { title: `Gidenler 100 · ${G100.year}`, description: "İstanbul'da gidenlerin en iyi deneyimi yaşadığı 100 yer — satın alınamaz, kanıta dayalı.", alternates: { canonical: "/gidenler-100/" } };
 
 /* GİDENLER 100 — Tabelog "Hyakumeiten"/Award'dan uyarlama. Kural: yeme-içme, İstanbul, en az 60 deneyim,
    yüksek güven; puana göre ilk 100. Abonelik, reklam, rezervasyon ücreti etkisizdir. */

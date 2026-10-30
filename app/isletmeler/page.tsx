@@ -5,7 +5,7 @@ import { nf } from "@/lib/format";
 import { RESERVATION_FEES } from "@/lib/reservation";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
-export const metadata = { title: "İşletmeler" };
+export const metadata = { title: "İşletmeler", alternates: { canonical: "/isletmeler/" } };
 
 /**
  * İŞLETMELER — sahibine değer önerisi. Tüketiciyle aynı sözlük, aynı puan:

@@ -1,8 +1,9 @@
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 import Link from "next/link";
 import { TasteEditor } from "@/components/decision/TasteEditor";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 
-export const metadata = { title: "Zevkim" };
+export const metadata = { title: "Zevkim", robots: { index: false, follow: !DEMO_VISIBLE } };
 
 export default function TastePage() {
   return (

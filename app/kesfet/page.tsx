@@ -10,7 +10,7 @@ import { ForYouBlock } from "@/app/kesfet/ForYouBlock";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { PulseModule } from "@/components/market/PulseModule";
 
-export const metadata = { title: "Keşfet" };
+export const metadata = { title: "Keşfet", alternates: { canonical: "/kesfet/" } };
 
 /**
  * KEŞFET — "Ne aradığımı bilmiyorum" kullanıcısının başlangıç noktası.

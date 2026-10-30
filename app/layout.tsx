@@ -14,8 +14,10 @@ import { DemoBoot } from "@/components/demo/DemoBoot";
 import { AccountSync } from "@/components/auth/AccountSync";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { seckiNavVisible } from "@/lib/seckisi";
+import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE),
   title: {
     default: "Gidenler — gidenler bilir.",
     template: "%s · Gidenler",

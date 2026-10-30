@@ -3,7 +3,7 @@ import { realEntities } from "@/data/real";
 import { publishedScores } from "@/lib/live";
 import { fmtPublished } from "@/lib/score/publishedCards";
 
-export const metadata = { title: "Gerçek mekânlar", description: "Gidenler'e eklenen gerçek İstanbul mekânları — ilk deneyimlerini bekliyorlar." };
+export const metadata = { title: "Gerçek mekânlar", description: "Gidenler'e eklenen gerçek İstanbul mekânları — ilk deneyimlerini bekliyorlar.", alternates: { canonical: "/gercek/" } };
 
 export default async function RealPage() {
   const published = await publishedScores();

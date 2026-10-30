@@ -26,7 +26,8 @@ import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { VenueSecki } from "@/components/seckisi/Seckisi";
-import { SCORE_WAITING, fmtPublished } from "@/lib/score/publishedCards";
+import { venueDescription, venueJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { articlesForVenue } from "@/lib/seckisi";
 import { parseVideoUrl } from "@/lib/media/embed";
 import { mapLinks } from "@/lib/venue";
@@ -79,8 +80,8 @@ export async function generateMetadata({
   if (e.isDemo) return { title: `${e.name} (demo kayıt)`, description: "Prototip için üretilmiş demo kayıt; gerçek bir işletme değildir.", robots: { index: false, follow: false } };
   if (e.isReal) {
     const where = [e.subcategory, e.location?.district].filter(Boolean).join(" · ");
-    const ps = await placeScore(slug);
-    return { title: `${e.name}${where ? ` · ${where}` : ""}`, description: `${e.name}${where ? ` (${where}, İstanbul)` : ""}: adres, iletişim ve çalışma saatleri. ${ps?.score != null ? `Gidenler puanı ${fmtPublished(ps.score)}/10 (${ps.reviewCount} deneyim).` : SCORE_WAITING}` };
+    const [ps, rp] = await Promise.all([placeScore(slug), placeProfile(slug)]);
+    return { title: `${e.name}${where ? ` · ${where}` : ""}`, description: venueDescription(withProfile(e, rp), ps, !!rp?.menu), alternates: { canonical: `/mekan/${e.slug}/` } };
   }
   const s = t.intelligence.overallScore ? ` — Gidenler ${score1(t.intelligence.overallScore)}` : "";
   return {
@@ -199,6 +200,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   return (
     <div className="mx-auto max-w-[1180px] overflow-x-clip px-5 pb-32 sm:px-7 sm:pb-24">
+      {entity.isReal && <JsonLd data={venueJsonLd(ent, ps, articlesForVenue(entity.slug, false).some((x) => !!x.ownership))} />}
       {/* ═══════════ HERO — kısa ve güçlü: ad · tür · puan · yön · sana göre · tek cümle · eylem ═══════════ */}
       <header className="relative isolate flex flex-col gap-4 pt-7 sm:pt-10">
         {scored && pulse && (

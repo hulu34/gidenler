@@ -6,7 +6,7 @@ import { SCORE_ALGORITHM as ALGORITHM_VERSION } from "@/lib/score/compute";
 import { PUBLIC_VERIFICATION_TEXT } from "@/lib/visits/verify";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
-export const metadata = { title: "Nasıl çalışır" };
+export const metadata = { title: "Nasıl çalışır", alternates: { canonical: "/nasil-calisir/" } };
 
 const SCALE = [[9.4, "9,0 – 10"], [8.5, "8,0 – 8,9"], [7.5, "7,0 – 7,9"], [6.4, "6,0 – 6,9"], [5.4, "5,0 – 5,9"], [4.2, "0 – 4,9"]] as const;
 

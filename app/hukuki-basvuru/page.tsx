@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LegalRequestForm } from "@/app/hukuki-basvuru/LegalRequestForm";
 
-export const metadata = { title: "Hukuki başvuru" };
+export const metadata = { title: "Hukuki başvuru", alternates: { canonical: "/hukuki-basvuru/" } };
 
 /**
  * HUKUKİ BAŞVURU — ciddi ve nötr. Avukat metni gibi davranmaz, süre ya da sonuç

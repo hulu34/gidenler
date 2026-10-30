@@ -14,7 +14,7 @@ export function generateStaticParams() {
 }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params; const c = listCategories().find((x) => x.slug === slug);
-  return { title: c ? c.label : "Kategori" };
+  return { title: c ? c.label : "Kategori", ...(c ? { alternates: { canonical: `/kategori/${c.slug}/` } } : {}) };
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {

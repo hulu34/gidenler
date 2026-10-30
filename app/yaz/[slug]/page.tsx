@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { entities } from "@/data/entities";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { getEntity, getCategory, getSchema } from "@/lib/api";
 import { WriteForm } from "./WriteForm";
 
@@ -13,7 +14,7 @@ export async function generateMetadata({
 }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const e = getEntity(slug);
-  return { title: e ? `${e.name} — deneyim yaz` : "Bulunamadı" };
+  return { title: e ? `${e.name} — deneyim yaz` : "Bulunamadı", robots: { index: false, follow: !DEMO_VISIBLE } };
 }
 
 export default async function WritePage({ params }: { params: Promise<{ slug: string }> }) {

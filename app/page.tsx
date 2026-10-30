@@ -44,6 +44,8 @@ function homeData(): HomeData {
   };
 }
 
+export const metadata = { alternates: { canonical: "/" } };
+
 export default function HomePage() {
   const data = homeData();
   const all = listCards();

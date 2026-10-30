@@ -4,6 +4,7 @@ import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { articleBySlug, articles, hrefOf, readableArticles, reviewVisible, sections, upcomingEvents, type Lang } from "@/lib/seckisi";
 import { SeckiArticle, SeckiHome } from "@/components/seckisi/Seckisi";
 import { UI } from "@/components/seckisi/ui";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 /* /seckisi/ (TR) ve /seckisi/en/ (EN) aynı sayfa kodunu kullanır; dil yoldan gelir.
    Kontrol bekleyen yazılar yalnız Preview'da; her durumda arama motorlarına kapalı. */
@@ -58,5 +59,22 @@ export function ArticleView({ lang, slug }: { lang: Lang; slug: string }) {
   if (!a) notFound();
   /* "Seçkiden": aynı türden olmayanlar önce, en çok üç. */
   const more = articles(review).filter((x) => x.slug !== a.slug).sort((x, y) => Number(x.kind === a.kind) - Number(y.kind === a.kind)).slice(0, 3);
-  return <SeckiArticle a={a} lang={lang} review={review} more={more} />;
+  return (
+    <>
+      {a.status === "yayinda" && <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: a.title[lang],
+        description: a.dek[lang],
+        inLanguage: lang,
+        url: `${SITE}${hrefOf(lang, a.slug)}`,
+        datePublished: a.publishedAt,
+        ...(a.updatedAt ? { dateModified: a.updatedAt } : {}),
+        ...(a.cover.state === "var" ? { image: `${SITE}${a.cover.src}` } : {}),
+        author: { "@type": "Organization", name: a.editorial.desk[lang] },
+        publisher: { "@type": "Organization", name: "Gidenler", url: SITE },
+      }} />}
+      <SeckiArticle a={a} lang={lang} review={review} more={more} />
+    </>
+  );
 }

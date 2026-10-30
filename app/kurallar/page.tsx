@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Kurallar" };
+export const metadata = { title: "Kurallar", alternates: { canonical: "/kurallar/" } };
 
 const RULES: Array<[string, string]> = [
   ["Gerçek deneyim", "Yaşamadığın bir deneyimi yaşamış gibi yazma. \"Gittim\" demek bile bir sinyaldir; doğrulanmış ziyaret daha ağır sayılır."],

@@ -10,5 +10,6 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/demo/", "/gidenler-100/onizleme/", "/isletme/", "/yonetim/"] },
     host: "https://www.gidenler.com",
+    sitemap: "https://www.gidenler.com/sitemap.xml",
   };
 }
