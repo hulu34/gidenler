@@ -40,7 +40,7 @@ for (const [dev, opt] of Object.entries({ masaustu: { viewport: { width: 1280, h
     await pg.screenshot({ path: `${OUT}/${dev}-${p.slug}.png` }); }
   /* puan ve eşik: Preview test puanı değişmemiş */
   await pg.goto(`https://${HOST}/mekan/kronotrop-cihangir-beyoglu/`, { waitUntil: "load", timeout: 60000 }); await pg.waitForTimeout(1500);
-  const t = await pg.evaluate(() => document.body.innerText); await pg.screenshot({ path: `${OUT}/${dev}-kronotrop.png` }); ok(`${dev} puan görünür`, t.includes("8,8")); ok(`${dev} deneme eşiği görünür`, /Eşik|eşiğin/i.test(t), (t.match(/.{0,30}(Eşik|eşiğin).{0,30}/i) ?? [""])[0].replace(/\s+/g, " ")); if (!t.includes("8,8")) console.log("  puan bölgesi:", t.slice(0, 500).replace(/\s+/g, " "));
+  const t = await pg.evaluate(() => document.body.innerText); await pg.screenshot({ path: `${OUT}/${dev}-kronotrop.png` }); ok(`${dev} puan görünür`, t.includes("8,8")); ok(`${dev} deneme eşiği görünür`, /Eşik seç|DENEME EŞİĞİN|Deneme eşiğin/.test(t)); if (!t.includes("8,8")) console.log("  puan bölgesi:", t.slice(0, 500).replace(/\s+/g, " "));
   console.log(`${dev}: sayfa hatası ${errs.length} ${[...new Set(errs)].join(" | ")}; /api/google isteği ${goog}`);
   await c.close(); }
 await b.close();
