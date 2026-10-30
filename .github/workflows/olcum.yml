@@ -210,6 +210,22 @@ jobs:
       - uses: actions/checkout@v4
       - run: node ops/google-durum.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ADAY_HOST: "${{ env.ADAY_HOST }}" }
+  puan-tutarlilik:
+    if: contains(github.event.head_commit.message, '[puan-tutarlilik]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/puan-tutarlilik.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PUAN_HOST: gidenler-hmdqxqyx6-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/puant && tar -C out -czf out/puant.tgz puant && rm -rf out/puant && openssl cms -encrypt -aes256 -binary -in out/puant.tgz -out out/puant.tgz.cms -outform DER ops/olcum.pem && rm out/puant.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: puant-sifreli, path: out/puant.tgz.cms, retention-days: 3 }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
