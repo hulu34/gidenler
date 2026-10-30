@@ -8,7 +8,7 @@ const A = `https://${HOST}/api/admin/db/`, rj = async (q) => (await fetch(`${A}?
 const post = async (b) => { const r = await fetch(A, { method: "POST", headers: { ...H, "content-type": "application/json", "sec-fetch-site": "same-origin" }, body: JSON.stringify({ target: "preview", ...b }) }); return { r, j: await r.json().catch(() => ({})) }; };
 const P0 = await rj("google-politika"); ok("Preview, Google kapalı", P0.env === "preview" && P0.enabled === false); if (P0.env !== "preview") process.exit(1);
 ok("izin listesi boş", P0.policy?.allowedNow === 0, JSON.stringify(P0.policy));
-const st = await post({ action: "redis-selftest" }); for (const c of st.j.checks ?? []) ok(`Redis gerçek: ${c.name}`, c.ok, JSON.stringify(c.info ?? "")); ok("Redis öz testi tamam", st.j.ok === true);
+const st = await post({ action: "redis-selftest", confirm: "EVET" }); for (const c of st.j.checks ?? []) ok(`Redis gerçek: ${c.name}`, c.ok, JSON.stringify(c.info ?? "")); ok("Redis öz testi tamam", st.j.ok === true);
 /* 457 mekân: ilk HTML'de fotoğraf */
 const gr = await (await fetch(`https://${HOST}/gercek/`, { headers: H })).text(); const slugs = [...new Set([...gr.matchAll(/href="\/mekan\/([^"/]+)\/"/g)].map((m) => m[1]))];
 let withPhoto = [], noPhoto = 0, broken = [], box = 0;
