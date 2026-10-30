@@ -109,9 +109,11 @@ for (const [dev, o] of DEV) {
       if (a.notice) ok(`${tag}: açıklayıcı not`, d.text.includes(a.notice[lang]));
       if (a.ownership) ok(`${tag}: kurucu ilişkisi künyede`, d.text.includes(a.commercial.detail[lang]));
       if (a.media) {
-        const m = await p.evaluate(() => ({ cards: [...document.querySelectorAll("[data-video]")].map((x) => x.getAttribute("data-video")), press: [...document.querySelectorAll("section[aria-labelledby=h-medya] a")].map((x) => x.getAttribute("href")) }));
+        const m = await p.evaluate(() => ({ cards: [...document.querySelectorAll("[data-video]")].map((x) => x.getAttribute("data-video")), press: [...document.querySelectorAll("[data-press] a")].map((x) => x.getAttribute("href")), basin: document.querySelector("#h-basin")?.innerText.trim() }));
+        ok(`${tag}: "Basında" başlığı`, m.basin === (lang === "tr" ? "Basında Japon Erdal" : "Japon Erdal in the press"), m.basin);
         ok(`${tag}: video kartları (${a.media.videos.length})`, JSON.stringify(m.cards) === JSON.stringify(a.media.videos.map((v) => v.youtubeId)), m.cards.join(","));
         ok(`${tag}: basın bağlantıları (${a.media.press.length})`, a.media.press.every((x) => m.press.includes(x.url)));
+        if (a.ownership) { await p.locator("#h-basin").scrollIntoViewIfNeeded(); await p.locator("#h-basin").locator("xpath=..").screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}-basin.png` }).catch(() => {}); }
         const v0 = a.media.videos[1] ?? a.media.videos[0];
         await p.click(`[data-video="${v0.youtubeId}"] button`); await p.waitForTimeout(1200);
         const src = await p.evaluate((id) => document.querySelector(`[data-video="${id}"] iframe`)?.getAttribute("src") ?? "", v0.youtubeId);
@@ -130,6 +132,16 @@ await b.close();
 
 /* 3) Bağlı restoran profilleri Preview'da açılıyor */
 for (const path of linkStatus.keys()) { const r = await get(`https://${HOST}${path}`); ok(`restoran profili açılıyor ${path}`, r.status === 200, String(r.status)); }
+
+/* 3b) Dış kaynaklar erişilebilir mi (başlıksız, yalnız GET; test başlığı gönderilmez) */
+const UA = { "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36", "accept-language": "tr-TR,tr;q=0.9" };
+const dis = new Set(); for (const a of pkg) { for (const x of a.sources) dis.add(x.url); for (const x of a.media?.press ?? []) dis.add(x.url); for (const v of a.media?.videos ?? []) dis.add(`https://www.youtube.com/watch?v=${v.youtubeId}`); }
+for (const u of dis) {
+  const r = await fetch(u, { headers: UA, redirect: "follow" }).catch((e) => ({ status: `hata ${e.cause?.code ?? e.message}` }));
+  const okk = typeof r.status === "number" && r.status < 400;
+  console.log(`  dış kaynak ${okk ? "açılıyor" : "AÇILMADI"} ${r.status} ${u.slice(0, 110)}`);
+  if (/oksijen|odatv|gzt\.com|mushaboom|gurmerehber|harbiyiyorum|constantine|youtube/.test(u)) ok(`dış kaynak açılıyor: ${new URL(u).hostname}${new URL(u).pathname.slice(0, 40)}`, okk, String(r.status));
+}
 
 /* 4) Canlı site etkilenmedi: bölüm yayımlanmadı (başlıksız, yalnız okuma) */
 for (const path of ["/seckisi/", "/seckisi/en/", `/seckisi/${pkg[0].slug}/`]) {
