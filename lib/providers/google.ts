@@ -2,7 +2,8 @@ import { and, desc, eq, inArray, like, notInArray, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
 import { places, placeIdentifiers, moderationQueue, auditLog } from "@/lib/db/schema";
-import { reserve, pauseGoogle } from "@/lib/usage/counter";
+import { reserve, pauseGoogle, notePlaceUse } from "@/lib/usage/counter";
+import { allowedGoogleSlugs, googleCallAllowed, googleMatchAllowed, latestPolicies, policyPermits } from "@/lib/providers/googlePolicy";
 
 /** Google 429/403 döndürdüyse sigortayı atar (bkz. pauseGoogle); diğer hatalarda bir şey yapmaz. */
 const trip = async (res: Response | null) => { if (res && (res.status === 429 || res.status === 403)) await pauseGoogle(res.status); };
@@ -12,7 +13,7 @@ import { matchScore, brandKey, branchDiff, BRANCH_WORDS, houseNoConflict, preDec
 /* ──────────────────────────────────────────────────────────────────────────
    GOOGLE PLACES (New) ADAPTÖRÜ — yalnız sunucu.
    · Saklama: yalnız place_id (place_identifiers). Puan, yorum, fotoğraf hiçbir yerde tutulmaz.
-   · Her ücretli çağrıdan ÖNCE sayaç (lib/usage/counter): sınır, Redis yok ya da hata → çağrı yok.
+   · Her ücretli çağrıdan ÖNCE izin kapısı (googlePolicy) ve sayaç (lib/usage/counter): izin yok, sınır, Redis yok ya da hata → çağrı yok.
    · Eşleştirme YALNIZ korumalı toplu işte (matchGoogleBatch): Text Search Pro + katı karar katmanı; belirsiz
      olan manuel onay kuyruğuna (onaylanana kadar Google içeriği gösterilmez). Sayfa görüntülemesi eşleştirmez.
    · Gösterim yalnız kullanıcı isteyince: yorumlar (Enterprise + Atmosphere) ve fotoğraflar (Essentials + Photo) ayrı.
@@ -26,7 +27,7 @@ const PHOTO_PAGE_MAX = 5;
 
 export type GoogleStatus =
   | { state: "disabled" }
-  | { state: "unmatched"; reason: "no_match" | "pending_review" | "rejected" | "disabled" }
+  | { state: "unmatched"; reason: "no_match" | "pending_review" | "rejected" | "disabled" | "policy_closed" | "auto_not_approved" }
   | { state: "limit"; reason: string }
   | { state: "error" }
   | { state: "ok"; data: GooglePlaceView };
@@ -104,6 +105,8 @@ export async function resolveGooglePlaceId(slug: string, key: string, f: typeof 
   if (!db) return { slug, status: "no_db", calls };
   const [p] = await db.select().from(places).where(eq(places.slug, slug)).limit(1);
   if (!p) return { slug, status: "no_match", calls };
+  /* İzin kapısı: politikası izinli olmayan mekân için hiçbir ücretli arama yapılmaz. */
+  if (!(await googleMatchAllowed(slug))) return { slug, status: "no_match", calls, reason: "politika_kapali" };
   /* Konum noktası olmayan (adresle açılmış) mekân: yalnız yöneticinin verdiği Haritalar bağlantısıyla, adres metniyle aranır. */
   if ((p.lat == null || p.lng == null) && (!expect || !p.address || mode !== "default")) return { slug, status: "no_match", calls, reason: "konum_yok" };
 
@@ -238,6 +241,12 @@ const noneKey = (slug: string) => `${redisNs()}:gmatch:none:${slug}`;
 /** Toplu eşleştirme (yalnız yönetim, korumalı uç): henüz HİÇ Google kaydı olmayan ve son 30 günde eşleşmesi
     bulunamamış olmayan restoranlar, sırayla. Onaylı, otomatik, bekleyen ya da reddedilmiş kayıtlar yeniden
     taranmaz. Kota biterse ya da hata olursa durur. */
+/** Toplu işler yalnız politikası izinli mekânları görür. */
+async function allowedPool<T extends { id: string }>(db: NonNullable<ReturnType<typeof getDb>>, pool: T[]) {
+  const pol = await latestPolicies(db);
+  return pool.filter((p) => policyPermits(pol.get(p.id) ?? null));
+}
+
 export async function matchGoogleBatch(limit: number, f: typeof fetch = fetch) {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key || !googleEnabled()) return { error: "disabled" as const, results: [] as MatchDiag[] };
@@ -247,8 +256,8 @@ export async function matchGoogleBatch(limit: number, f: typeof fetch = fetch) {
   if (!redis) return { error: "no_redis" as const, results: [] as MatchDiag[] };
   const open = async () => {
     const done = db.select({ id: placeIdentifiers.placeId }).from(placeIdentifiers).where(eq(placeIdentifiers.provider, "google"));
-    const pool = await db.select({ slug: places.slug }).from(places)
-      .where(and(eq(places.vertical, "restaurant"), notInArray(places.id, done))).orderBy(places.slug);
+    const pool = await allowedPool(db, await db.select({ id: places.id, slug: places.slug }).from(places)
+      .where(and(eq(places.vertical, "restaurant"), notInArray(places.id, done))).orderBy(places.slug));
     const flags = pool.length ? await redis.mget<(string | null)[]>(...pool.map((p) => noneKey(p.slug))) : [];
     return { untried: pool.filter((_, i) => !flags[i]), noneRecent: flags.filter(Boolean).length };
   };
@@ -298,8 +307,8 @@ export async function retryGoogleNoMatch(limit: number, f: typeof fetch = fetch)
   const db = getDb(), redis = getRedis();
   if (!db || !redis) return { error: "no_db_or_redis" as const, results: [] };
   const done = db.select({ id: placeIdentifiers.placeId }).from(placeIdentifiers).where(eq(placeIdentifiers.provider, "google"));
-  const pool = await db.select({ slug: places.slug }).from(places)
-    .where(and(eq(places.vertical, "restaurant"), notInArray(places.id, done))).orderBy(places.slug);
+  const pool = await allowedPool(db, await db.select({ id: places.id, slug: places.slug }).from(places)
+    .where(and(eq(places.vertical, "restaurant"), notInArray(places.id, done))).orderBy(places.slug));
   const flags = pool.length ? await redis.mget<(string | null)[]>(...pool.flatMap((p) => [noneKey(p.slug), retryKey(p.slug)])) : [];
   const eligible = pool.filter((_, i) => flags[2 * i] && !flags[2 * i + 1]);
   const brands = new Map<string, number>();
@@ -325,7 +334,7 @@ export async function retryGoogleNoMatch(limit: number, f: typeof fetch = fetch)
 export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, part: "reviews" | "photos" = "reviews", page: { from?: number; n?: number } = {}): Promise<GoogleStatus> {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key || !googleEnabled()) return { state: "disabled" };
-  const s = await storedGooglePlaceId(slug).catch(() => null);
+  const s = await googleCallAllowed(slug);
   if (!s) return { state: "error" };
   if ("none" in s) return { state: "unmatched", reason: s.none };
   const url = `${API}/places/${encodeURIComponent(s.id)}?languageCode=tr`;
@@ -354,6 +363,7 @@ export async function fetchGooglePlace(slug: string, f: typeof fetch = fetch, pa
     }
     const d0 = await reserve("google:details_atmosphere");
     if (!d0.ok) return { state: "limit", reason: d0.reason };
+    await notePlaceUse(slug, "google:details_atmosphere", 1);
     /* tek istek = Place Details Enterprise + Atmosphere (reviews nedeniyle); saatler aynı SKU içinde */
     const d = await f(url, { headers: headers(key, "rating,userRatingCount,googleMapsUri,reviews,regularOpeningHours.weekdayDescriptions"), cache: "no-store", signal: AbortSignal.timeout(6000) });
     if (!d.ok) { await trip(d); return { state: "error" }; }
@@ -394,10 +404,11 @@ const inflight = new Map<string, Promise<GoogleViewResult>>();
 type RawPhoto = { name: string; widthPx?: number; heightPx?: number; googleMapsUri?: string; flagContentUri?: string; authorAttributions?: Array<{ displayName: string; uri?: string; photoUri?: string }> };
 const toRef = (ph: RawPhoto): GooglePhotoRef => ({ name: ph.name, w: ph.widthPx, h: ph.heightPx, author: ph.authorAttributions?.[0]?.displayName ?? "Google kullanıcısı", authorUri: ph.authorAttributions?.[0]?.uri, authorPhoto: ph.authorAttributions?.[0]?.photoUri, mapsUri: ph.googleMapsUri, flagUri: ph.flagContentUri });
 
-async function photoMedia(key: string, refs: GooglePhotoRef[], f: typeof fetch) {
+async function photoMedia(key: string, refs: GooglePhotoRef[], f: typeof fetch, slug: string) {
   /* bütçe her fotoğraf için ÖNCE ayrılır; ayrılamayan fotoğraf hiç istenmez */
   const allowed: GooglePhotoRef[] = [];
   for (const r of refs) { const ok = await reserve("google:photo"); if (!ok.ok) break; allowed.push(r); }
+  if (allowed.length) await notePlaceUse(slug, "google:photo", allowed.length);
   const got = await Promise.all(allowed.map(async (r) => {
     const m = await f(`${API}/${r.name}/media?maxWidthPx=1200&skipHttpRedirect=true`, { headers: { "X-Goog-Api-Key": key }, cache: "no-store", signal: AbortSignal.timeout(6000) }).catch(() => null);
     if (m && !m.ok) await trip(m);
@@ -414,11 +425,12 @@ export function fetchGoogleView(slug: string, f: typeof fetch = fetch, n = 5): P
   const p = (async (): Promise<GoogleViewResult> => {
     const key = process.env.GOOGLE_PLACES_API_KEY;
     if (!key || !googleEnabled()) return { state: "disabled" };
-    const s = await storedGooglePlaceId(slug).catch(() => null);
+    const s = await googleCallAllowed(slug);
     if (!s) return { state: "error" };
     if ("none" in s) return { state: "unmatched", reason: s.none };
     const d0 = await reserve("google:details_atmosphere");
     if (!d0.ok) return { state: "limit", reason: d0.reason };
+    await notePlaceUse(slug, "google:details_atmosphere", 1);
     try {
       const d = await f(`${API}/places/${encodeURIComponent(s.id)}?languageCode=tr`, {
         headers: headers(key, "rating,userRatingCount,googleMapsUri,reviews,regularOpeningHours.weekdayDescriptions,photos"), cache: "no-store", signal: AbortSignal.timeout(6000),
@@ -430,7 +442,7 @@ export function fetchGoogleView(slug: string, f: typeof fetch = fetch, n = 5): P
       };
       const refs = (p.photos ?? []).slice(0, 10).map(toRef);
       const first = Math.max(0, Math.min(n, PHOTO_PAGE_MAX));
-      const photos = first ? await photoMedia(key, refs.slice(0, first), f) : [];
+      const photos = first ? await photoMedia(key, refs.slice(0, first), f, slug) : [];
       return {
         state: "ok",
         data: {
@@ -455,13 +467,13 @@ export function fetchGoogleView(slug: string, f: typeof fetch = fetch, n = 5): P
 export async function fetchGooglePhotoMedia(slug: string, refs: GooglePhotoRef[], f: typeof fetch = fetch): Promise<GoogleStatus> {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key || !googleEnabled()) return { state: "disabled" };
-  const s = await storedGooglePlaceId(slug).catch(() => null);
+  const s = await googleCallAllowed(slug);
   if (!s) return { state: "error" };
   if ("none" in s) return { state: "unmatched", reason: s.none };
   const prefix = `places/${s.id}/photos/`;
   const mine = refs.filter((r) => typeof r?.name === "string" && r.name.startsWith(prefix) && !r.name.includes("..")).slice(0, PHOTO_PAGE_MAX);
   if (!mine.length) return { state: "ok", data: { hours: [], reviews: [], photos: [] } };
-  const photos = await photoMedia(key, mine, f);
+  const photos = await photoMedia(key, mine, f, slug);
   if (!photos.length) return { state: "limit", reason: "photo_budget" };
   return { state: "ok", data: { hours: [], reviews: [], photos } };
 }
@@ -470,9 +482,7 @@ export async function fetchGooglePhotoMedia(slug: string, refs: GooglePhotoRef[]
 export async function googleUsableSlugs() {
   const db = getDb();
   if (!db) return null;
-  const rows = await db.select({ slug: places.slug }).from(placeIdentifiers).innerJoin(places, eq(places.id, placeIdentifiers.placeId))
-    .where(and(eq(placeIdentifiers.provider, "google"), inArray(placeIdentifiers.status, ["auto", "confirmed"])));
-  return [...new Set(rows.map((r) => r.slug))].sort();
+  return allowedGoogleSlugs(db);
 }
 
 /** Yönetim: bekleyen Google eşleşmeleri. */

@@ -1,19 +1,21 @@
 import { NextResponse } from "next/server";
 import { getEntity } from "@/data/entities";
-import { fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, storedGooglePlaceId, type GooglePhotoRef } from "@/lib/providers/google";
+import { fetchGooglePhotoMedia, fetchGoogleView, googleEnabled, type GooglePhotoRef } from "@/lib/providers/google";
+import { googleCallAllowed } from "@/lib/providers/googlePolicy";
 import { strictHit } from "@/lib/usage/rate";
 import { hashKey } from "@/lib/ai/privacy";
 
 /* GET /api/google/place?slug=…&part=view|media|status — Google Places (New) canlı vekil. YALNIZCA sunucu.
    · part=view (varsayılan): sayfa açılınca TEK istek — puan, sayı, yorumlar, saatler, ilk 5 fotoğraf + kalan referanslar.
    · POST part=media (gövde: { refs }): galeride kalan fotoğraflar; yalnız Photo istekleri.
-   (Eski part=reviews / photos uyumluluk için duruyor.)
+   · Eski part=reviews / photos kapatıldı (410).
+   · Her ücretli çağrı önce izin kapısından geçer (googleCallAllowed): varsayılan kapalı.
    · part=status: Google'a istek ATMAZ; yalnız bu mekânın onaylı/otomatik Google kimliği var mı (düğmeyi göstermek için).
-   · part=reviews / photos: yalnız kullanıcı düğmeye basınca. Eşleştirme burada HİÇ yapılmaz (yalnız toplu iş).
+   · Eşleştirme burada HİÇ yapılmaz (yalnız yönetici işi).
    · Anahtar yoksa / kapalıysa { disabled: true } (bileşen yalnız Google Haritalar bağlantısı gösterir).
    · Yalnız gerçek mekânlar; demo kayıtlar için Google'a sorgu atılmaz.
    · Önbellek YOK (Google kuralı). Maliyet koruması: lib/usage/counter (önce say, sonra çağır; çalışmazsa durdur)
-     + kişi başı saatte 5 istek. Bütçe dolunca { limited: true } → istemci "tıklayınca yükle" kipine düşer. */
+     + kişi başı saatlik sınır. Bütçe dolunca { limited: true } → istemci "tıklayınca yükle" kipine düşer. */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -28,24 +30,24 @@ export async function GET(req: Request) {
 
   const part = new URL(req.url).searchParams.get("part") ?? "view";
   if (part === "status") {
-    const s = await storedGooglePlaceId(slug).catch(() => null);
+    const s = await googleCallAllowed(slug);
     return NextResponse.json({ available: !!s && "id" in s }, { headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" } });
   }
-  if (part !== "view" && part !== "reviews" && part !== "photos") return NextResponse.json({ error: "bad_part" }, { status: 400, headers: H });
+  if (part === "reviews" || part === "photos") return NextResponse.json({ error: "gone" }, { status: 410, headers: H });
+  if (part !== "view") return NextResponse.json({ error: "bad_part" }, { status: 400, headers: H });
 
   /* Arama motoru ve otomasyon botları ücretli çağrı tetiklemez. */
   if (BOT.test(req.headers.get("user-agent") ?? "")) return NextResponse.json({ disabled: true }, { headers: H });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "anon";
-  /* Kişi başı saatlik sınır (sayfa başına 1 istek); varsayılan 30, ortam değişkeniyle en çok 60. Harcama ayrıca 100 USD tavanında. */
-  const perIp = Math.min(60, Math.max(1, Number(process.env.GOOGLE_PLACES_IP_HOURLY) || 30));
+  /* Kişi başı saatlik sınır (sayfa başına 1 istek); varsayılan 10, ortam değişkeniyle en çok 60. Harcama ayrıca 100 USD tavanında. */
+  const perIp = Math.min(60, Math.max(1, Number(process.env.GOOGLE_PLACES_IP_HOURLY) || 10));
   if (!(await strictHit(`gp:${hashKey("ip:" + ip)}:h${Math.floor(Date.now() / 3_600_000)}`, perIp, 3700))) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });
   }
 
   const q = new URL(req.url).searchParams;
   /* n: ilk istekte kaç fotoğraf (mobil 1 = yalnız görünen kapak; masaüstü 5 = mozaik) */
-  const r = part === "view" ? await fetchGoogleView(slug, fetch, Math.max(1, Math.min(5, Number(q.get("n")) || 5)))
-    : await fetchGooglePlace(slug, fetch, part, { from: Number(q.get("from")) || 0, n: Number(q.get("n")) || undefined });
+  const r = await fetchGoogleView(slug, fetch, Math.max(1, Math.min(5, Number(q.get("n")) || 5)));
   switch (r.state) {
     case "ok": return NextResponse.json(r.data, { headers: H });
     case "disabled": return NextResponse.json({ disabled: true }, { headers: H });
@@ -63,7 +65,7 @@ export async function POST(req: Request) {
   if (!e || !e.isReal) return NextResponse.json({ error: "not_found" }, { status: 404, headers: H });
   if (BOT.test(req.headers.get("user-agent") ?? "")) return NextResponse.json({ disabled: true }, { headers: H });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "anon";
-  const perIp = Math.min(60, Math.max(1, Number(process.env.GOOGLE_PLACES_IP_HOURLY) || 30));
+  const perIp = Math.min(60, Math.max(1, Number(process.env.GOOGLE_PLACES_IP_HOURLY) || 10));
   /* galeri/şerit devamı ayrı sayılır (sayfa görünümü payını yemesin); tavanı sayfa payının 3 katı */
   if (!(await strictHit(`gpm:${hashKey("ip:" + ip)}:h${Math.floor(Date.now() / 3_600_000)}`, perIp * 3, 3700))) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });

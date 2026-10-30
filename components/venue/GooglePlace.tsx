@@ -56,7 +56,8 @@ export function GooglePlace({ slug, name, mapsUrl, google }: { slug: string; nam
       <span>{name} — yorumlar ve fotoğraflar Google Haritalar&apos;da</span><span aria-hidden>↗</span>
     </a>
   ) : null;
-  if (!google || g.k === "off" || g.k === "limited") return link;
+  if (g.k === "limited") return <div className="flex flex-col gap-2"><p className="text-[12.5px] text-ink-3">Google bilgileri şu an gösterilemiyor.</p>{link}</div>;
+  if (!google || g.k === "off") return link;
   if (g.k === "loading") return <div className="h-40 animate-pulse border border-line bg-sheet" aria-label="Google bilgisi yükleniyor" />;
 
   const p = g.v;

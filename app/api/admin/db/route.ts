@@ -5,6 +5,7 @@ import { runThresholdScenario } from "@/lib/community/scoreWatchScenario";
 import { reconcileScores, scorePublishEnabled, CONFIDENCE_LABEL, MIN_AUTHORS, SCORE_ALGORITHM, type RecomputeResult } from "@/lib/score/compute";
 import { rescoreSlug } from "@/lib/community/reviewApi";
 import { runScoreScenario } from "@/lib/score/scenario";
+import { googlePolicyStats, setGooglePolicy } from "@/lib/providers/googlePolicy";
 import { applyProfile, ProfileInput, readProfile, rollbackProfile } from "@/lib/profile";
 import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
@@ -18,7 +19,7 @@ import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
 import { googleMatchStats, matchGoogleBatch, matchGoogleSlugs, setGoogleMatchActive, googleTestFixture, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
-import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
+import { usageSnapshot, spendReport, placeUseReport, googlePause } from "@/lib/usage/counter";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
@@ -66,6 +67,11 @@ export async function GET(req: Request) {
   /* ?rapor=google → eşleşme sayıları, onay bekleyenler (yalnız place_id + bizim kayıtlarımız), SKU bazında kullanım */
   if (new URL(req.url).searchParams.get("rapor") === "google") {
     try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot(), spend: await spendReport(), pause: await googlePause() }, { headers: H }); }
+    catch (e) { return fail(e); }
+  }
+  /* ?rapor=google-politika → izin dağılımı ve bu ay en çok maliyet oluşturan mekânlar (yalnız okuma; Google'a istek yok) */
+  if (new URL(req.url).searchParams.get("rapor") === "google-politika") {
+    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), policy: await googlePolicyStats(), topPlaces: await placeUseReport(10), spend: await spendReport() }, { headers: H }); }
     catch (e) { return fail(e); }
   }
   /* ?rapor=google-slug → Google içeriği gösterilebilen restoranlar (yalnız okuma; sayfalar lib/live ile dinamik okur) */
@@ -242,6 +248,15 @@ export async function POST(req: Request) {
         if (!before) return NextResponse.json({ error: "spend_unknown" }, { status: 503, headers: H });
         const r = await retryGoogleNoMatch(Number(body.limit) || 10);
         return NextResponse.json({ action: "google-retry", env: envName(), ...r, stats: await googleMatchStats(), spend: await spendReport() }, { headers: H });
+      }
+      case "google-policy-set": {
+        /* İzin kararı: tek işlem, denetim kayıtlı. Google'a istek atmaz. Bir seferde en çok 500 mekân. */
+        if (body.confirm !== "POLITIKA") break;
+        const b = body as unknown as Record<string, unknown>;
+        if (!Array.isArray(b.slugs) || b.slugs.length > 500) return NextResponse.json({ error: "bad_slugs" }, { status: 400, headers: H });
+        const r = await setGooglePolicy({ slugs: b.slugs, mode: b.mode, priority: b.priority, reason: b.why, admin: b.admin, ...(b.estimatedCostUsd !== undefined ? { estimatedCostUsd: b.estimatedCostUsd } : {}), ...(b.allowAuto !== undefined ? { allowAuto: b.allowAuto } : {}) });
+        if (r.ok) fresh(TAG_GOOGLE);
+        return NextResponse.json({ action: "google-policy-set", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "google-queue-sync": {
         /* Onaylanmış/reddedilmiş eşleşmelerin açık kuyruk satırlarını kapatır; silmez. */
