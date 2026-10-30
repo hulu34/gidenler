@@ -26,6 +26,7 @@ import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { VenueSecki } from "@/components/seckisi/Seckisi";
+import { SCORE_WAITING, fmtPublished } from "@/lib/score/publishedCards";
 import { articlesForVenue } from "@/lib/seckisi";
 import { parseVideoUrl } from "@/lib/media/embed";
 import { mapLinks } from "@/lib/venue";
@@ -78,7 +79,8 @@ export async function generateMetadata({
   if (e.isDemo) return { title: `${e.name} (demo kayıt)`, description: "Prototip için üretilmiş demo kayıt; gerçek bir işletme değildir.", robots: { index: false, follow: false } };
   if (e.isReal) {
     const where = [e.subcategory, e.location?.district].filter(Boolean).join(" · ");
-    return { title: `${e.name}${where ? ` · ${where}` : ""}`, description: `${e.name}${where ? ` (${where}, İstanbul)` : ""}: adres, iletişim ve çalışma saatleri. Henüz Gidenler puanı yok; ilk deneyimi sen yaz.` };
+    const ps = await placeScore(slug);
+    return { title: `${e.name}${where ? ` · ${where}` : ""}`, description: `${e.name}${where ? ` (${where}, İstanbul)` : ""}: adres, iletişim ve çalışma saatleri. ${ps?.score != null ? `Gidenler puanı ${fmtPublished(ps.score)}/10 (${ps.reviewCount} deneyim).` : SCORE_WAITING}` };
   }
   const s = t.intelligence.overallScore ? ` — Gidenler ${score1(t.intelligence.overallScore)}` : "";
   return {
