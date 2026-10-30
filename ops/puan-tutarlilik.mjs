@@ -3,7 +3,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { chromium } from "playwright";
 const HOST = process.env.PUAN_HOST, H = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS }, OUT = "out/puant"; mkdirSync(OUT, { recursive: true });
-const SLUG = "ciya-sofrasi-kadikoy", NAME = "Çiya Sofrası", WAIT = "Gidenler puanı için yeterli deneyim bekleniyor";
+let SLUG, NAME; const WAIT = "Gidenler puanı için yeterli deneyim bekleniyor";
 const res = []; const ok = (n, c, i = "") => { res.push(!!c); console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const admin = `https://${HOST}/api/admin/db/`;
 const post = (b) => fetch(admin, { method: "POST", headers: { ...H, "content-type": "application/json", "sec-fetch-site": "same-origin" }, body: JSON.stringify({ target: "preview", confirm: "EVET", ...b }) });
@@ -11,14 +11,25 @@ const top = await (await fetch(admin, { headers: H })).json();
 ok("Preview, ayrı veritabanı (yazma kilidi açık)", top.env === "preview" && top.db?.writeGuard?.ok, JSON.stringify(top.db?.writeGuard ?? {}).slice(0, 80));
 if (!top.db?.writeGuard?.ok) { console.log("DUR"); process.exit(1); }
 const b = await chromium.launch({ channel: "chrome" });
+/* Önce/sonra için ana sayfada görünen ve hâlâ puansız bir gerçek mekân (Preview dalı önceki senaryoların puanlarını taşıyor). */
+{
+  const c = await b.newContext(); const p = await c.newPage();
+  await p.route("**/*", (r) => new URL(r.request().url()).hostname === HOST ? r.continue({ headers: { ...r.request().headers(), ...H } }) : r.continue());
+  await p.goto(`https://${HOST}/`, { waitUntil: "load", timeout: 60000 });
+  const hit = await p.evaluate((w) => { const a = [...document.querySelectorAll('section[aria-labelledby="h-real"] a[href*="/mekan/"]')].find((x) => x.innerText.includes(w)); if (!a) return null; return { slug: a.getAttribute("href").split("/")[2], name: a.querySelector("span:nth-child(2)").innerText.trim() }; }, WAIT);
+  await c.close();
+  ok("ana sayfada puansız gerçek mekân kartı bekleme metniyle", !!hit, hit?.slug ?? "");
+  if (!hit) process.exit(1);
+  SLUG = hit.slug; NAME = hit.name;
+}
 const ctxs = { masaustu: { viewport: { width: 1280, height: 900 } }, mobil: { viewport: { width: 390, height: 844 }, isMobile: true } };
-const pages = { detay: `/mekan/${SLUG}/`, kategori: "/kategori/restoran/?sirala=puan", arama: `/ara/?q=${encodeURIComponent(NAME)}`, gercek: "/gercek/", kesfet: "/kesfet/", ana: "/" };
+const pagesF = () => ({ detay: `/mekan/${SLUG}/`, kategori: "/kategori/restoran/?sirala=puan", arama: `/ara/?q=${encodeURIComponent(NAME)}`, gercek: "/gercek/", kesfet: "/kesfet/", ana: "/" });
 async function snap(tag, dev, opt) {
   const c = await b.newContext(opt); const p = await c.newPage(); const errs = [];
   p.on("pageerror", (e) => errs.push(e.message.slice(0, 120)));
   await p.route("**/*", (r) => new URL(r.request().url()).hostname === HOST ? r.continue({ headers: { ...r.request().headers(), ...H } }) : r.continue());
   const out = {};
-  for (const [k, path] of Object.entries(pages)) {
+  for (const [k, path] of Object.entries(pagesF())) {
     await p.goto(`https://${HOST}${path}`, { waitUntil: "load", timeout: 60000 }); await p.waitForTimeout(1500);
     out[k] = await p.evaluate(({ NAME, SLUG }) => {
       const a = [...document.querySelectorAll(`a[href*="/mekan/${SLUG}/"]`)].find((x) => x.innerText.includes(NAME)); const li = a?.closest("li") ?? a;
@@ -32,7 +43,7 @@ async function snap(tag, dev, opt) {
 }
 const once = await snap("once", "masaustu", ctxs.masaustu);
 ok("önce: detay bekleme metni", once.detay.body.includes(WAIT));
-ok("önce: kart bekleme metni", (once.arama.card ?? "").includes(WAIT), once.arama.card ?? "");
+ok("önce: arama kartı bekleme metni", (once.arama.card ?? "").includes(WAIT), once.arama.card ?? "");
 ok("önce: 0 veya tahmini puan yok", !/Gidenler puanı\s*0/.test(once.detay.body));
 const sc = await post({ action: "puan-senaryo", slug: SLUG }); const sj = await sc.json();
 ok("puan-senaryo", sc.ok && sj.ok, `${sc.status} ${(sj.results ?? []).filter((x) => !x.ok).map((x) => x.name).join(";")}`);
@@ -51,7 +62,8 @@ for (const [dev, opt] of Object.entries(ctxs)) {
   }
   ok(`${dev} gerçek mekân listesi: aynı puan`, (s.gercek.card ?? "").includes(`${txt}/10`), (s.gercek.card ?? "").slice(0, 90));
   console.log(`  ${dev} keşfet kartı: ${(s.kesfet.card ?? "yok").slice(0, 100)} · ana sayfa: ${(s.ana.card ?? "yok").slice(0, 100)}`);
-  for (const k of ["kesfet", "ana"]) if (s[k].card) ok(`${dev} ${k}: kart çelişmiyor`, !s[k].card.includes(WAIT), s[k].card.slice(0, 100));
+  ok(`${dev} ana sayfa: aynı puan`, (s.ana.card ?? "").includes(`${txt}/10`), (s.ana.card ?? "").slice(0, 110));
+  for (const k of ["kesfet"]) if (s[k].card) ok(`${dev} ${k}: kart çelişmiyor`, !s[k].card.includes(WAIT), s[k].card.slice(0, 100));
   writeFileSync(`${OUT}/sonra-${dev}.json`, JSON.stringify(Object.fromEntries(Object.entries(s).map(([k, v]) => [k, v.card]))));
 }
 await b.close();
