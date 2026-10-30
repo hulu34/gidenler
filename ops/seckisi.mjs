@@ -96,6 +96,10 @@ for (const [dev, o] of DEV) {
       ok(`${tag}: kaynak başlıkları bu dilde`, a.sources.every((s) => d.text.includes(s.title[lang])));
       ok(`${tag}: kapak künyesi (hak yoksa eksik notu)`, a.cover.state === "var" ? d.text.includes(a.cover.credit) && d.links.includes(a.cover.licenseUrl ?? a.cover.sourceUrl) && d.links.includes(a.cover.sourceUrl) : d.text.includes(a.cover.gap[lang]));
       if (a.cover.state === "var") ok(`${tag}: kapak fotoğrafı yüklendi`, d.img > 0, `${d.img}px`);
+      if (a.gallery) {
+        const gl = await p.evaluate(() => [...document.querySelectorAll("[data-photo]")].map((f) => ({ src: f.getAttribute("data-photo"), w: f.querySelector("img")?.naturalWidth ?? 0, credit: f.innerText })));
+        ok(`${tag}: galeri (${a.gallery.length}) künyeli`, gl.length === a.gallery.length && a.gallery.every((g, i) => gl[i]?.src === g.src && gl[i].credit.includes(g.credit)), gl.map((g) => g.src.split("/").pop()).join(","));
+      }
       if (a.label) ok(`${tag}: biçim etiketi`, d.text.includes(a.label[lang].toUpperCase()) || d.text.includes(a.label[lang]));
       ok(`${tag}: künyede ziyaret durumu`, d.text.includes(lang === "tr" ? "ziyaret edilmedi" : "not visited"));
       ok(`${tag}: doğrulanmamış ticari ilişki "yok" diye gösterilmiyor`, a.commercial.state !== "dogrulanmadi" || (d.text.includes(lang === "tr" ? "Ticari ilişki: henüz doğrulanmadı" : "Commercial relationship: not yet verified") && !d.text.includes(lang === "tr" ? "Ticari ilişki: yok" : "Commercial relationship: none")));
