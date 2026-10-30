@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { realVenueRecords } from "@/data/real";
-import { KIND_LABEL, SECTION_LABEL, labelOf, fmtDay, fmtStamp, hrefOf, type Article, type Block, type Event, type Lang, type SectionKey } from "@/lib/seckisi";
+import { KIND_LABEL, SECTION_LABEL, articlesForVenue, labelOf, fmtDay, fmtStamp, hrefOf, type Article, type Block, type Event, type Lang, type SectionKey } from "@/lib/seckisi";
 import { UI, t } from "./ui";
 import { SeckiVideos } from "./SeckiVideos";
 
@@ -144,6 +144,28 @@ function Media({ a, lang }: { a: Article; lang: Lang }) {
           date: fmtDay(v.date, lang), label: VIDEO_TYPE[v.type][lang], disclosure: v.disclosure[lang], note: v.note[lang],
         }))} />
       )}
+    </section>
+  );
+}
+
+/** Restoran profili: bu restoranı konu alan Seçki yazıları ve onların basın ve video kartları. Puanı ve sıralamayı etkilemez. */
+export function VenueSecki({ slug }: { slug: string }) {
+  const list = articlesForVenue(slug);
+  if (!list.length) return null;
+  return (
+    <section id="seckide" aria-labelledby="h-seckide" className="scroll-mt-28 mt-10 flex flex-col gap-8 sm:scroll-mt-32">
+      <div className="border-b-2 border-line-strong pb-2.5">
+        <h2 id="h-seckide" className="text-[13px] font-bold uppercase tracking-[0.2em]">Gidenler Seçkisi'nde</h2>
+      </div>
+      {list.map((a) => (
+        <div key={a.slug} className="flex flex-col gap-8">
+          <Link href={hrefOf("tr", a.slug)} data-secki-yazi={a.slug} className="group flex flex-col gap-1.5">
+            <span className="text-[22px] font-extrabold leading-tight tracking-[-0.02em] group-hover:underline">{a.title.tr}</span>
+            <span className="text-[14px] leading-snug text-ink-2">{a.dek.tr}</span>
+          </Link>
+          {a.venues[0].slug === slug && <Media a={a} lang="tr" />}
+        </div>
+      ))}
     </section>
   );
 }

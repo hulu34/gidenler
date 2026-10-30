@@ -25,6 +25,8 @@ import { ProfileMenu, ProfileOverview, withProfile } from "@/components/venue/pr
 import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
+import { VenueSecki } from "@/components/seckisi/Seckisi";
+import { articlesForVenue } from "@/lib/seckisi";
 import { parseVideoUrl } from "@/lib/media/embed";
 import { mapLinks } from "@/lib/venue";
 import { nf, score1 } from "@/lib/format";
@@ -284,7 +286,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
       <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />
 
-      {entity.isReal && <DataCompleteness c={completenessOf(ent, { googleMatched: google, videos: nVideos, menuItems: rp?.menu?.sections.reduce((a, s) => a + s.items.length, 0) ?? 0 })} slug={entity.slug} google={google} />}
+      {entity.isReal && <DataCompleteness c={completenessOf(ent, { googleMatched: google, videos: nVideos + articlesForVenue(entity.slug).reduce((n, a) => n + (a.media?.videos.length ?? 0), 0), menuItems: rp?.menu?.sections.reduce((a, s) => a + s.items.length, 0) ?? 0 })} slug={entity.slug} google={google} />}
 
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
       {!rp && <TopicNav sections={sections} />}
@@ -427,6 +429,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           {ad && <div className="mt-10"><SponsoredSlot {...ad} /></div>}
         </section>
       )}
+
+      {/* Seçki: bu restoranı konu alan yazı, basın ve videolar; yayında yazı yoksa çizilmez */}
+      {entity.isReal && <VenueSecki slug={entity.slug} />}
 
       {/* ═══════════ SOSYAL MEDYADA — videolar sitede oynar, gönderiler platformunda açılır ═══════════ */}
       <VenueVisuals entity={entity} />

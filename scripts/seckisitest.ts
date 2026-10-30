@@ -1,7 +1,7 @@
 /* GİDENLER SEÇKİSİ — içerik ve görünürlük testleri (veritabanı ve ağ gerektirmez).
    npx tsx scripts/seckisitest.ts */
 import { readdirSync, existsSync, readFileSync } from "node:fs";
-import { ALL_ARTICLES, articles, articleBySlug, readableArticles, listable, reviewVisible, sections, upcomingEvents, seckiNavVisible } from "../lib/seckisi";
+import { ALL_ARTICLES, articles, articleBySlug, articlesForVenue, readableArticles, listable, reviewVisible, sections, upcomingEvents, seckiNavVisible } from "../lib/seckisi";
 import { Article, Event, type Block } from "../lib/seckisi/schema";
 
 let pass = 0, fail = 0;
@@ -79,6 +79,7 @@ ok("\"en\" slug olarak reddedilir", bad({ slug: "en" }));
 const secs = sections(articles(true), []);
 ok("bölüm sırası", secs.map((s) => s.key).join(",") === "hikaye,kesif,mutfak,semt", secs.map((s) => s.key).join(","));
 ok("puan ve deneyim bölümleri boşken görünmez", !secs.some((s) => s.key === "puan" || s.key === "deneyimler"));
+ok("profilde yalnız o restoranın yazısı; Production'da kontrol bekleyen yok", articlesForVenue("japon-erdal-beyoglu", false).length === 1 && articlesForVenue("pandeli-fatih", false).length === 0 && articlesForVenue("pandeli-fatih", true).length === 1);
 ok("Production'da yalnız ana hikâye bölümü var", sections(articles(false), []).map((x) => x.key).join() === "hikaye");
 
 /* 7) Etkinlikler: süresi geçen ve iptal edilen çıkar, ertelenen yeni tarihiyle kalır (test verisi; yayına girmez) */

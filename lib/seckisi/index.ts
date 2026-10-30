@@ -44,6 +44,10 @@ export function articles(review = reviewVisible(), all = ALL_ARTICLES) {
   return all.filter((a) => listable(a, review))
     .sort((x, y) => (y.publishedAt ?? y.preparedAt).localeCompare(x.publishedAt ?? x.preparedAt) || x.slug.localeCompare(y.slug));
 }
+/** Restoran profilindeki Seçki bölümü: o restoranı konu alan, okunabilir yazılar; yatırımcı demosunda yok. */
+export function articlesForVenue(slug: string, review = reviewVisible(), all = ALL_ARTICLES) {
+  return DEMO_VISIBLE ? [] : articles(review, all).filter((a) => a.venues.some((v) => v.slug === slug));
+}
 export function readableArticles(review = reviewVisible(), all = ALL_ARTICLES) {
   return all.filter((a) => readable(a, review));
 }
