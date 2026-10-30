@@ -77,7 +77,7 @@ export default async function ExplorePage() {
               <li key={c.entity.id}>
                 <Link href={`/mekan/${c.entity.slug}/`} className="group flex items-baseline justify-between gap-4 py-3">
                   <span className="flex flex-col gap-0.5"><span className="text-[16px] font-bold group-hover:text-accent-ink">{c.entity.name}</span><span className="tnum text-[12px] text-ink-3">{nf(c.experienceCount)} deneyim · {c.entity.location?.district}</span></span>
-                  <ScoreNumber score={c.score} size="md" trend={{ direction: c.delta90d > 0.15 ? "up" : c.delta90d < -0.15 ? "down" : "flat", delta: c.delta90d }} />
+                  <ScoreNumber score={c.score} size="md" trend={c.entity.isReal ? undefined : { direction: c.delta90d > 0.15 ? "up" : c.delta90d < -0.15 ? "down" : "flat", delta: c.delta90d }} />
                 </Link>
               </li>
             ))}

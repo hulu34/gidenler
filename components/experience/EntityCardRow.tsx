@@ -72,7 +72,7 @@ export function EntityCardRow({ card, rank, match, href, insight, dense = false,
         <div className="flex shrink-0 flex-col items-end gap-1">
           {score !== null ? (
             <>
-              <ScoreNumber score={score} size={dense ? "md" : "lg"} label stack trend={{ direction: dir, delta: dir === "flat" ? undefined : delta90d }} />
+              <ScoreNumber score={score} size={dense ? "md" : "lg"} label stack trend={entity.isReal ? undefined : { direction: dir, delta: dir === "flat" ? undefined : delta90d }} />
               {typeof match === "number" && <span className="tnum text-[12px] font-bold text-accent-ink">%{match} sana göre</span>}
               {pulse && <span className="mt-1 hidden sm:block"><Pulse pulse={pulse} width={104} height={22} band={false} /></span>}
             </>
