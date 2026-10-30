@@ -236,6 +236,18 @@ jobs:
         with: { node-version: 22 }
       - run: node ops/seo-preview.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app" }
+  sitemap-dis:
+    if: contains(github.event.head_commit.message, '[sitemap-dis]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: |
+          curl -s https://ipinfo.io/country || true; echo
+          for a in 'Mozilla/5.0' 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'; do
+            for u in https://www.gidenler.com/sitemap.xml https://www.gidenler.com/robots.txt; do
+              curl -s -A "$a" -o x -w "%{http_code} %{content_type} %{size_download} %{time_total}s " "$u"; sha1sum x | cut -c1-10; done; done
+          curl -s https://www.gidenler.com/sitemap.xml | grep -c '<loc>'
+          for i in 1 2 3 4 5 6 7 8 9 10; do curl -s -o /dev/null -w '%{http_code} ' -A 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' https://www.gidenler.com/sitemap.xml; done; echo
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
