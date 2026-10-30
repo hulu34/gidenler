@@ -258,7 +258,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/veri42.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app, APPLY: "${{ contains(github.event.head_commit.message, '[uygula]') && '1' || '0' }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-qusg7sp7k-hulu34.vercel.app, APPLY: "${{ contains(github.event.head_commit.message, '[uygula]') && '1' || '0' }}" }
       - if: always()
         run: test -d out/veri42 && tar -C out -czf out/veri42.tgz veri42 && rm -rf out/veri42 && openssl cms -encrypt -aes256 -binary -in out/veri42.tgz -out out/veri42.tgz.cms -outform DER ops/olcum.pem && rm out/veri42.tgz
       - if: always()
