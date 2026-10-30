@@ -1,7 +1,7 @@
 /* GİDENLER SEÇKİSİ — içerik ve görünürlük testleri (veritabanı ve ağ gerektirmez).
    npx tsx scripts/seckisitest.ts */
 import { readdirSync, existsSync, readFileSync } from "node:fs";
-import { ALL_ARTICLES, articles, articleBySlug, articlesForVenue, readableArticles, listable, reviewVisible, sections, upcomingEvents, seckiNavVisible } from "../lib/seckisi";
+import { seckiProfilePhotos, ALL_ARTICLES, articles, articleBySlug, articlesForVenue, readableArticles, listable, reviewVisible, sections, upcomingEvents, seckiNavVisible } from "../lib/seckisi";
 import { Article, Event, type Block } from "../lib/seckisi/schema";
 
 let pass = 0, fail = 0;
@@ -102,6 +102,11 @@ ok("kontenjan/satış alanı kabul edilmez", !Event.safeParse({ ...list[4], seat
 ok("bitiş başlangıçtan önce olamaz", !Event.safeParse({ ...list[4], endsAt: "2026-11-25T18:00:00+03:00" }).success);
 ok("bilet bağlantısı https olmalı", !Event.safeParse({ ...list[4], bookingUrl: "http://example.org" }).success);
 ok("Preview/Production'da yaklaşan deneyim kaydı yok (doğrulanmış etkinlik yok)", upcomingEvents().length === 0);
+
+/* profil fotoğrafı: yalnız yayındaki yazıdan ve izin profili kapsıyorsa */
+const je = seckiProfilePhotos("japon-erdal-beyoglu");
+ok("Japon Erdal: izinli 3 fotoğraf profile girer", je.length === 3 && je.every((p) => p.src.startsWith("/seckisi/gorsel/") && p.addedBy === "işletme"));
+ok("yayımlanmamış yazının fotoğrafı profile girmez", seckiProfilePhotos("pandeli-fatih").length === 0);
 
 console.log(`\nSONUÇ ${pass}/${pass + fail}`);
 process.exit(fail ? 1 : 0);

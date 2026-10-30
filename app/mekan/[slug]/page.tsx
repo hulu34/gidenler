@@ -28,7 +28,7 @@ import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { VenueSecki } from "@/components/seckisi/Seckisi";
 import { venueDescription, venueJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { articlesForVenue } from "@/lib/seckisi";
+import { articlesForVenue, seckiProfilePhotos } from "@/lib/seckisi";
 import { parseVideoUrl } from "@/lib/media/embed";
 import { mapLinks } from "@/lib/venue";
 import { nf, score1 } from "@/lib/format";
@@ -163,10 +163,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   /* Gerçek restoran profili (kaynaklı içerik varsa): içerik odaklı düzen — genel bakış, menü, fotoğraflar, videolar, deneyimler */
   const ent = withProfile(entity, rp);
   const nVideos = videos[entity.slug] ?? 0;
+  /* Kendi izinli fotoğraflarımız: kayıttaki görseller + işletme izni profili kapsayan Seçki fotoğrafları */
+  const ownPhotos = [...(entity.photos ?? []), ...(entity.isReal ? seckiProfilePhotos(entity.slug) : [])];
+  /* Koordinatı olmayan mekânda da Haritalar bağlantısı: ücretsiz arama adresi */
+  const mapsUrl = mapLinks(entity)?.googleMaps ?? (entity.isReal ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.location?.district ?? ""} İstanbul`)}` : undefined);
   const profileNav: TopicSection[] = rp ? [
     { id: "genel", label: "Genel bakış" },
     { id: "menu", label: "Menü" },
-    ...(entity.photos?.length || google ? [{ id: "fotograflar", label: "Fotoğraflar" }] : []),
+    ...(ownPhotos.length || google ? [{ id: "fotograflar", label: "Fotoğraflar" }] : []),
     ...(nVideos ? [{ id: "videolar", label: "Videolar" }] : []),
     { id: "deneyimler", label: "Deneyimler" },
     ...(google ? [{ id: "google", label: "Google" }] : []),
@@ -252,7 +256,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </header>
 
       {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
-      {(entity.isReal || entity.photos?.length) && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} mapsUrl={mapLinks(entity)?.googleMaps} /></div>}
+      {(entity.isReal || ownPhotos.length > 0) && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={ownPhotos} google={google} mapsUrl={mapsUrl} /></div>}
       {esik && <div className="mt-4 sm:hidden"><ThresholdBar v={esik} /></div>}
 
       {rp && (
@@ -291,7 +295,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       )}
 
       {/* Google: puan, fotoğraf, saatler, yorumlar — temel bilgilerin hemen altında, ekrana girince yüklenir */}
-      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} google={google} /></div>}
+      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapsUrl} google={google} /></div>}
 
       {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
       <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />
