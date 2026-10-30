@@ -29,7 +29,9 @@ async function snap(tag, dev, opt) {
   p.on("pageerror", (e) => errs.push(e.message.slice(0, 120)));
   await p.route("**/*", (r) => new URL(r.request().url()).hostname === HOST ? r.continue({ headers: { ...r.request().headers(), ...H } }) : r.continue());
   const out = {};
-  for (const [k, path] of Object.entries(pagesF())) {
+  await p.goto(`https://${HOST}/mekan/${SLUG}/`, { waitUntil: "load", timeout: 60000 });
+  const kat = await p.evaluate(() => document.querySelector('header nav a[href^="/kategori/"]')?.getAttribute("href"));
+  for (const [k, path] of Object.entries({ ...pagesF(), kategori: `${kat}?sirala=puan` })) {
     await p.goto(`https://${HOST}${path}`, { waitUntil: "load", timeout: 60000 }); await p.waitForTimeout(1500);
     out[k] = await p.evaluate(({ NAME, SLUG }) => {
       const a = [...document.querySelectorAll(`a[href*="/mekan/${SLUG}/"]`)].find((x) => x.innerText.includes(NAME)); const li = a?.closest("li") ?? a;
