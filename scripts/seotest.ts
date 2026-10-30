@@ -4,6 +4,7 @@ import { realEntities } from "../data/real";
 import { articles, ALL_ARTICLES } from "../lib/seckisi";
 import { inVenueSitemap, openingHoursSpec, venueDescription, venueJsonLd } from "../lib/seo";
 import type { Entity } from "../lib/types";
+import noAddressOk from "../data/real/sitemap-adressiz.json";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info = "") => { cond ? pass++ : fail++; console.log(`${cond ? "✓" : "✗"} ${name}${info ? " · " + info : ""}`); };
@@ -45,6 +46,12 @@ ok("Google alanı yok", !/google/i.test(JSON.stringify(ld)));
 /* site haritası */
 ok("adressiz kayıt girmez", !inVenueSitemap(bare));
 ok("demo girmez", !inVenueSitemap({ ...base, isDemo: true }));
+const bySlug = new Map(realEntities.map((e) => [e.slug, e]));
+ok("adressiz liste 39 tekil gerçek mekân", noAddressOk.length === 39 && new Set(noAddressOk).size === 39 && noAddressOk.every((s) => bySlug.has(s)));
+ok("listedekilerin hepsi haritada", noAddressOk.every((s) => inVenueSitemap(bySlug.get(s)!)));
+ok("listede demo girmez", !inVenueSitemap({ ...bySlug.get(noAddressOk[0])!, isDemo: true }));
+ok("listede olmayan adressiz kayıt girmez", !inVenueSitemap(bySlug.get("barba-yani-adalar")!));
+ok("listedekilerde adres vaadi ve işaretleme yok", noAddressOk.every((s) => { const e = bySlug.get(s)!; return e.address || (venueJsonLd(e, null, false) === null && !venueDescription(e, null, false).includes("adres")); }));
 ok("yalnız yayındaki yazılar", articles(false).every((a) => a.status === "yayinda"));
 ok("kontrol ve taslak yazı listede yok", ALL_ARTICLES.filter((a) => a.status !== "yayinda").every((a) => !articles(false).includes(a)));
 console.log(`\nsitemap mekân: ${realEntities.filter(inVenueSitemap).length}/${realEntities.length}`);

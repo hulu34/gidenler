@@ -1,5 +1,6 @@
 import type { Entity } from "@/lib/types";
 import { SCORE_WAITING, fmtPublished } from "@/lib/score/publishedCards";
+import noAddressOk from "@/data/real/sitemap-adressiz.json";
 
 /* ARAMA MOTORU KURALLARI — saf yardımcılar (veritabanı ve ağ yok).
    · Yalnız sayfada gerçekten bulunan bilgi söylenir ve işaretlenir. Google kaynaklı veri (puan, saat, fotoğraf) buraya girmez;
@@ -79,5 +80,9 @@ export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelat
   };
 }
 
-/** Site haritasına girecek mekân: gerçek ve adresi var. Adressiz kayıt adres tamamlanınca kendiliğinden girer. */
-export const inVenueSitemap = (e: Entity) => !!e.isReal && !e.isDemo && !!e.address;
+/* Adresi olmadığı hâlde site haritasına alınan mekânlar: koordinat, telefon ya da açılan site ve en az bir ek bilgi kontrol edildi
+   (calisma/sitemap-gsc-raporu.md, A sınıfı). Liste elle güncellenir; yapılandırılmış veri adres gerektirdiği için bunlarda üretilmez. */
+const NO_ADDRESS_OK = new Set<string>(noAddressOk);
+
+/** Site haritasına girecek mekân: gerçek, adresi var ya da kontrol edilmiş listede. Adres tamamlanınca kendiliğinden girer. */
+export const inVenueSitemap = (e: Entity) => !!e.isReal && !e.isDemo && (!!e.address || NO_ADDRESS_OK.has(e.slug));
