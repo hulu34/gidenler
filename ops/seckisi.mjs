@@ -15,7 +15,8 @@ console.log(`  araç çubuğu: ${ARAC ? "açık (varsayılan Preview)" : "engell
 const res = []; const ok = (n, c, i = "") => { res.push(c); console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const dir = new URL("./seckisi/", import.meta.url);
 const all = readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => JSON.parse(readFileSync(new URL(f, dir), "utf8")));
-const pkg = all.filter((a) => a.status === "kontrol");
+const pkg = all.filter((a) => a.status === "kontrol" || a.status === "yayinda");
+const bekleyen = all.find((a) => a.status === "kontrol");
 const drafts = all.filter((a) => a.status === "taslak");
 const url = (lang, slug) => `https://${HOST}/seckisi/${lang === "en" ? "en/" : ""}${slug ? `${slug}/` : ""}`;
 const get = (u, h = H) => fetch(u, { headers: h, redirect: "manual" });
@@ -26,7 +27,7 @@ for (const lang of ["tr", "en"]) {
   ok(`${lang}: ana sayfa 200`, r.status === 200, String(r.status));
   ok(`${lang}: arama motorlarına kapalı (noindex)`, /<meta name="robots" content="noindex/.test(h));
   ok(`${lang}: taslak listede yok`, drafts.every((d) => !h.includes(d.slug)));
-  ok(`${lang}: kontrol bekleyen ${pkg.length} yazı listede`, pkg.every((a) => h.includes(`/${a.slug}/`)), `${pkg.length}`);
+  ok(`${lang}: ${pkg.length} yazı listede`, pkg.every((a) => h.includes(`/${a.slug}/`)), `${pkg.length}`);
   for (const d of drafts) { const x = await get(url(lang, d.slug)); ok(`${lang}: taslak adresi 404 (${d.slug})`, x.status === 404, String(x.status)); }
 }
 
@@ -153,7 +154,7 @@ for (const u of dis) {
 }
 
 /* 4) Canlı site etkilenmedi: bölüm yayımlanmadı (başlıksız, yalnız okuma) */
-for (const path of ["/seckisi/", "/seckisi/en/", `/seckisi/${pkg[0].slug}/`]) {
+for (const path of ["/seckisi/", "/seckisi/en/", `/seckisi/${bekleyen.slug}/`]) {
   const r = await fetch(`https://www.gidenler.com${path}`, { redirect: "manual" });
   ok(`canlıda kapalı ${path}`, r.status === 404, String(r.status));
 }
