@@ -7,6 +7,7 @@ import { nf } from "@/lib/format";
 import { CONFIDENCE_LABEL } from "@/lib/semantic";
 import { SCORE_WAITING } from "@/lib/score/publishedCards";
 import type { EntityCard } from "@/lib/api";
+import { VenueCover } from "@/components/venue/VenueCover";
 
 export function placeLine(card: EntityCard) {
   const { entity, category } = card;
@@ -28,9 +29,9 @@ export function evidenceLine(card: EntityCard) {
 }
 
 /**
- * Liste satırı — Gidenler grameri, fotoğrafsız:
+ * Liste satırı — Gidenler grameri; gerçek mekânın kayıtlı kapağı varsa üstte:
  * ad / tür · konum / puan · etiket · trend / tek editoryal cümle / deneyim · güven.
- * Kartın çekiciliği bilginin sunumundan gelir; avatar, baş harf, görsel yok.
+ * Kapak yoksa görsel uydurulmaz; avatar, baş harf, yer tutucu yok.
  */
 export function EntityCardRow({ card, rank, match, href, insight, dense = false, reason }: {
   card: EntityCard; rank?: number; match?: number | null; href?: string;
@@ -54,6 +55,7 @@ export function EntityCardRow({ card, rank, match, href, insight, dense = false,
         className={`group grid grid-cols-[1fr_auto] items-start gap-x-6 ${dense ? "gap-y-1 py-3.5" : "gap-y-1.5 py-5"} transition-colors hover:bg-sheet`}
       >
         <div className="flex min-w-0 flex-col gap-1.5">
+          <VenueCover entity={entity} sizes="320px" className="max-w-[320px]" />
           <span className="flex items-baseline gap-2.5">
             {rank !== undefined && <span className="tnum text-[12px] font-bold text-ink-3">{String(rank).padStart(2, "0")}</span>}
             <span className={`font-bold leading-tight tracking-[-0.02em] group-hover:text-accent-ink ${dense ? "text-[17px]" : "text-[19px] sm:text-[21px]"}`}>{entity.name}</span>

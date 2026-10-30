@@ -463,6 +463,32 @@ export function fetchGoogleView(slug: string, f: typeof fetch = fetch, n = 5): P
   return p;
 }
 
+/** Tek kapak: en ekonomik resmî yol. Details yalnız `photos` alanıyla (Essentials IDs Only, resmî listede ücretsiz ve sınırsız) + 1 Place Photo.
+    Puan, yorum ve saat çekmez (Atmosphere yok). Fotoğraf adı ve adresi saklanmaz; her istekte yeniden alınır. */
+export async function fetchGoogleCover(slug: string, f: typeof fetch = fetch): Promise<GoogleViewResult> {
+  const key = process.env.GOOGLE_PLACES_API_KEY;
+  if (!key || !googleEnabled()) return { state: "disabled" };
+  const s = await googleCallAllowed(slug);
+  if (!s) return { state: "error" };
+  if ("none" in s) return { state: "unmatched", reason: s.none };
+  /* bütçe önce: fotoğraf ayrılamıyorsa Details de çağrılmaz */
+  const budget = await reserve("google:photo");
+  if (!budget.ok) return { state: "limit", reason: budget.reason };
+  try {
+    const d = await f(`${API}/places/${encodeURIComponent(s.id)}`, { headers: headers(key, "photos"), cache: "no-store", signal: AbortSignal.timeout(6000) });
+    if (!d.ok) { await trip(d); return { state: "error" }; }
+    const p = await d.json() as { photos?: RawPhoto[] };
+    const refs = (p.photos ?? []).slice(0, 10).map(toRef);
+    await notePlaceUse(slug, "google:photo", 1);
+    const m = refs[0] ? await f(`${API}/${refs[0].name}/media?maxWidthPx=1200&skipHttpRedirect=true`, { headers: { "X-Goog-Api-Key": key }, cache: "no-store", signal: AbortSignal.timeout(6000) }).catch(() => null) : null;
+    if (m && !m.ok) await trip(m);
+    const j = m && m.ok ? await m.json().catch(() => null) as { photoUri?: string } | null : null;
+    const r = refs[0];
+    const photos = j?.photoUri && r ? [{ src: j.photoUri, author: r.author, authorUri: r.authorUri, authorPhoto: r.authorPhoto, w: r.w, h: r.h, mapsUri: r.mapsUri, flagUri: r.flagUri }] : [];
+    return { state: "ok", data: { hours: [], reviews: [], photos, photoTotal: refs.length, refs: refs.slice(photos.length ? 1 : 0) } };
+  } catch { return { state: "error" }; }
+}
+
 /** Galeride kalan fotoğraflar: yalnız Place Photo istekleri (Details yok). Referans bu mekâna ait olmalı. */
 export async function fetchGooglePhotoMedia(slug: string, refs: GooglePhotoRef[], f: typeof fetch = fetch): Promise<GoogleStatus> {
   const key = process.env.GOOGLE_PLACES_API_KEY;

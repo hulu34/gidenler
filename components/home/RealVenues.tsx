@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { realEntities } from "@/data/real";
+import { coverOf } from "@/lib/media/cover";
+import { VenueCover } from "@/components/venue/VenueCover";
 import { publishedScores } from "@/lib/live";
 import { SCORE_WAITING, fmtPublished } from "@/lib/score/publishedCards";
 
@@ -12,6 +14,8 @@ export async function RealVenues({ limit = 12 }: { limit?: number }) {
   for (const e of realEntities) { const d = e.location?.district ?? ""; (byD.get(d) ?? byD.set(d, []).get(d)!).push(e); }
   const pick: typeof realEntities = [];
   for (let i = 0; pick.length < limit && i < 40; i++) for (const arr of byD.values()) { if (arr[i] && pick.length < limit) pick.push(arr[i]); }
+  /* gerçek kapağı olan mekânlar vitrinde önce */
+  pick.sort((a, b) => Number(!!coverOf(b)) - Number(!!coverOf(a)));
   return (
     <section aria-labelledby="h-real" className="reveal">
       <div className="kunye">
@@ -25,6 +29,7 @@ export async function RealVenues({ limit = 12 }: { limit?: number }) {
         {pick.map((e) => (
           <li key={e.id} className="border-b border-r border-line">
             <Link href={`/mekan/${e.slug}/`} className="group flex h-full flex-col gap-1 p-4 transition-colors hover:bg-sheet">
+              <VenueCover entity={e} className="-mx-4 -mt-4 mb-2" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">{e.subcategory} · {e.location?.district}</span>
               <span className="text-[17px] font-bold leading-tight tracking-[-0.015em] group-hover:text-accent-ink">{e.name}</span>
               {published[e.slug]?.score != null

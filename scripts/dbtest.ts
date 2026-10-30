@@ -10,7 +10,7 @@ import { and, eq, inArray, sql } from "drizzle-orm";
 import * as schema from "../lib/db/schema";
 import { setDbForTests, type Db } from "../lib/db/client";
 import { googleCallAllowed, POLICY_FIELD, setGooglePolicy } from "../lib/providers/googlePolicy";
-import { googleUsableSlugs } from "../lib/providers/google";
+import { fetchGoogleCover, googleUsableSlugs } from "../lib/providers/google";
 import { dailyUsdCap, daySpendUsd, MONTHLY_USD_CAP } from "../lib/usage/counter";
 import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
 import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
@@ -668,6 +668,23 @@ async function main() {
     ok("600 eşzamanlı istekte günlük tavan: 428 izin, fazlası sayaca yazılmaz", dayG === 428 && dayRej === 172 && dayR.m.get(periodKeys("google:photo").day) === 428, `${dayG}/${dayRej}`);
     ok("günlük tavan yalnız bugünkü ücretli kısmı sayar", daySpendUsd({ "google:photo": 1200 }, { "google:photo": 300 }) === 1.4);
     process.env.GOOGLE_DAILY_USD_CAP = "50"; ok("ortam değişkeni günlük tavanı yükseltemez", dailyUsdCap() === 3); delete process.env.GOOGLE_DAILY_USD_CAP;
+    /* tek kapak: kapıdan geçer, Atmosphere yok, Details yalnız photos */
+    {
+      await db.delete(schema.fieldProvenance).where(eq(schema.fieldProvenance.id, "gp-bozuk"));
+      setRedisForTests((await fresh()) as unknown as RedisLike);
+      const seen: { u: string; mask?: string }[] = [];
+      const cf = (async (u: string | URL | Request, o?: RequestInit) => { const url = String(u); seen.push({ u: url, mask: (o?.headers as Record<string, string>)?.["X-Goog-FieldMask"] }); return new Response(JSON.stringify(url.includes("/media") ? { photoUri: "https://x/p.jpg" } : { photos: [{ name: "places/G_B/photos/1" }, { name: "places/G_B/photos/2" }] }), { status: 200 }); }) as typeof fetch;
+      await setGooglePolicy({ slugs: [pB.slug], mode: "kapali", priority: "C", reason: "kapalı", admin: "test" });
+      const closed = await fetchGoogleCover(pB.slug, cf);
+      ok("kapak: izinsiz 0 çağrı", closed.state === "unmatched" && seen.length === 0);
+      await setGooglePolicy({ slugs: [pB.slug], mode: "izinli", priority: "A", reason: "kapak testi", admin: "test" });
+      const before = await usageSnapshot();
+      const cov = await fetchGoogleCover(pB.slug, cf); const after = await usageSnapshot();
+      ok("kapak: 1 Details (yalnız photos) + 1 Photo, Atmosphere sayacı değişmez", cov.state === "ok" && seen.length === 2 && seen[0].mask === "photos" && seen[1].u.includes("/media") && after!["google:photo"].month - (before!["google:photo"].month) === 1 && after!["google:details_atmosphere"].month === before!["google:details_atmosphere"].month, JSON.stringify(seen.map((x) => x.mask ?? "media")));
+      const fv = await fetchGoogleView(pB.slug, cf, 0);
+      ok("puan ve yorum isteği fotoğraf çekmez", fv.state === "ok" && !seen.slice(2).some((x) => x.u.includes("/media")));
+      await setGooglePolicy({ slugs: [pB.slug], mode: "kapali", priority: "C", reason: "bitti", admin: "test" });
+    }
     /* eski testler için */
     await db.delete(schema.placeIdentifiers).where(inArray(schema.placeIdentifiers.id, ["gp-a", "gp-b", "gp-c"]));
     await db.delete(schema.fieldProvenance).where(eq(schema.fieldProvenance.field, POLICY_FIELD));

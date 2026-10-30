@@ -1,14 +1,12 @@
 "use client";
 
 import { COMPLETENESS_KEYS, COMPLETENESS_LABEL, type Completeness } from "@/lib/completeness";
-import { useGoogleView } from "./media/googleView";
 
 /** Gerçek mekân profilinde hangi bilgilerin gerçekten var olduğu — eksik olan gizlenmez, "yok" yazılır.
     Sunucu: Google eşleşmesi (onaylı/otomatik Place ID), gerçek video sayısı, kendi fotoğraflarımız.
     Tarayıcı: Google fotoğrafları sayfanın tek Google isteğinden (ek istek yok) — gerçekten geldiyse "Fotoğraf" var sayılır. */
 export function DataCompleteness({ c, slug, google = false }: { c: Completeness; slug?: string; google?: boolean }) {
-  const g = useGoogleView(slug ?? "", google && !!slug);
-  const have = { ...c.have, photo: c.have.photo || (g.k === "ok" && g.v.total > 0) };
+  const have = { ...c.have, photo: c.have.photo };
   const keys = COMPLETENESS_KEYS.filter((k) => k !== "google" || have.google);
   const filled = keys.filter((k) => have[k]).length;
   return (

@@ -3,7 +3,6 @@ import { Article, Event } from "./schema";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 export type { Article, Event, Block } from "./schema";
-import type { VenuePhoto } from "@/lib/types";
 export type Lang = "tr" | "en";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -49,15 +48,6 @@ export function articles(review = reviewVisible(), all = ALL_ARTICLES) {
 export function articlesForVenue(slug: string, review = reviewVisible(), all = ALL_ARTICLES) {
   return DEMO_VISIBLE ? [] : articles(review, all).filter((a) => a.venues.some((v) => v.slug === slug));
 }
-/** Restoran profilinde gösterilebilecek izinli Seçki fotoğrafları: yalnız yayındaki yazıdan, yalnız işletme izni "restoran profili"ni kapsıyorsa. */
-export function seckiProfilePhotos(slug: string, all = ALL_ARTICLES): VenuePhoto[] {
-  const ok = (rights: string, ref: string) => rights === "isletme-izni" && /restoran profili/i.test(ref);
-  return articlesForVenue(slug, false, all).flatMap((a) => [
-    ...(a.cover.state === "var" && ok(a.cover.rights, a.cover.rightsRef) ? [{ src: a.cover.src, category: "yemek" as const, alt: a.cover.alt.tr, credit: a.cover.credit, sourceUrl: a.cover.sourceUrl, addedBy: "işletme" as const }] : []),
-    ...(a.gallery ?? []).filter((g) => ok(g.rights, g.rightsRef)).map((g) => ({ src: g.src, category: "diger" as const, alt: g.alt.tr, credit: g.credit, sourceUrl: g.sourceUrl, addedBy: "işletme" as const })),
-  ]);
-}
-
 export function readableArticles(review = reviewVisible(), all = ALL_ARTICLES) {
   return all.filter((a) => readable(a, review));
 }

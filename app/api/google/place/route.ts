@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { getEntity } from "@/data/entities";
-import { fetchGooglePhotoMedia, fetchGoogleView, googleEnabled, type GooglePhotoRef } from "@/lib/providers/google";
+import { fetchGoogleCover, fetchGooglePhotoMedia, fetchGoogleView, googleEnabled, type GooglePhotoRef } from "@/lib/providers/google";
 import { googleCallAllowed } from "@/lib/providers/googlePolicy";
 import { strictHit } from "@/lib/usage/rate";
 import { hashKey } from "@/lib/ai/privacy";
 
 /* GET /api/google/place?slug=…&part=view|media|status — Google Places (New) canlı vekil. YALNIZCA sunucu.
-   · part=view (varsayılan): sayfa açılınca TEK istek — puan, sayı, yorumlar, saatler, ilk 5 fotoğraf + kalan referanslar.
+   · part=view: kullanıcı isteyince — puan, sayı, yorumlar, saatler (fotoğraf yok).
+   · part=cover: kullanıcı isteyince — yalnız 1 kapak; puan ve yorum çekilmez.
    · POST part=media (gövde: { refs }): galeride kalan fotoğraflar; yalnız Photo istekleri.
    · Eski part=reviews / photos kapatıldı (410).
    · Her ücretli çağrı önce izin kapısından geçer (googleCallAllowed): varsayılan kapalı.
@@ -34,7 +35,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ available: !!s && "id" in s }, { headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" } });
   }
   if (part === "reviews" || part === "photos") return NextResponse.json({ error: "gone" }, { status: 410, headers: H });
-  if (part !== "view") return NextResponse.json({ error: "bad_part" }, { status: 400, headers: H });
+  if (part !== "view" && part !== "cover") return NextResponse.json({ error: "bad_part" }, { status: 400, headers: H });
 
   /* Arama motoru ve otomasyon botları ücretli çağrı tetiklemez. */
   if (BOT.test(req.headers.get("user-agent") ?? "")) return NextResponse.json({ disabled: true }, { headers: H });
@@ -45,9 +46,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });
   }
 
-  const q = new URL(req.url).searchParams;
-  /* n: ilk istekte kaç fotoğraf (mobil 1 = yalnız görünen kapak; masaüstü 5 = mozaik) */
-  const r = await fetchGoogleView(slug, fetch, Math.max(1, Math.min(5, Number(q.get("n")) || 5)));
+  const r = part === "cover" ? await fetchGoogleCover(slug) : await fetchGoogleView(slug, fetch, 0);
   switch (r.state) {
     case "ok": return NextResponse.json(r.data, { headers: H });
     case "disabled": return NextResponse.json({ disabled: true }, { headers: H });

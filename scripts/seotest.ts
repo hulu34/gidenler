@@ -7,6 +7,9 @@ import type { Entity } from "../lib/types";
 import noAddressOk from "../data/real/sitemap-adressiz.json";
 import duzeltmeler from "../data/real/duzeltmeler.json";
 import rawVenues from "../data/real/venues.json";
+import izinli from "../data/real/izinli-fotograflar.json";
+import { coverOf } from "../lib/media/cover";
+import { existsSync } from "node:fs";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info = "") => { cond ? pass++ : fail++; console.log(`${cond ? "✓" : "✗"} ${name}${info ? " · " + info : ""}`); };
@@ -51,6 +54,15 @@ const kindChanged = (rawVenues as { slug: string; kind: string }[]).filter((r) =
 ok("tür yalnız düzeltme listesindekilerde değişir", kindChanged.join() === fixed.join(), kindChanged.join());
 ok("Seyirtepe Restoran, kategori aynı", realEntities.find((e) => e.slug === fixed[0])?.subcategory === "Restoran" && realEntities.find((e) => e.slug === fixed[0])?.categoryId === "cat.restaurant");
 ok("457 kayıt korunur", realEntities.length === 457);
+
+/* kapak kararı */
+const hasCover = realEntities.filter((e) => coverOf(e));
+ok("kapağı olanlar: Japon Erdal (işletme izni), Beyti ve İsmet Baba (açık lisans)", hasCover.map((e) => e.slug).sort().join() === "beyti-lokanta-bakirkoy,ismet-baba-uskudar,japon-erdal-beyoglu", hasCover.map((e) => e.slug).join());
+ok("Japon Erdal kapağı işletme izni, 3 fotoğraf", coverOf(realEntities.find((e) => e.slug === "japon-erdal-beyoglu")!)?.source === "isletme" && realEntities.find((e) => e.slug === "japon-erdal-beyoglu")!.photos?.length === 3);
+ok("kayıttaki her izin restoran profilini kapsıyor ve kendi sunucumuzda", Object.values(izinli).flat().every((p) => /restoran profili/i.test(p.rightsRef) && p.src.startsWith("/seckisi/gorsel/") && existsSync(new URL(`../public${p.src}`, import.meta.url))));
+ok("Google görseli kapağa giremez", !realEntities.some((e) => e.photos?.some((p) => /googleusercontent|googleapis/.test(p.src))));
+ok("demo kayıtta kapak yok", coverOf({ ...hasCover[0], isDemo: true }) === null);
+ok("fotoğrafsız kayıtta kapak yok", coverOf(bare) === null || !!bare.photos?.length);
 
 /* site haritası */
 ok("adressiz kayıt girmez", !inVenueSitemap(bare));

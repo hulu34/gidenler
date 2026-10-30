@@ -272,7 +272,7 @@ export async function notePlaceUse(slug: string, key: BudgetKey, n: number, now 
   if (!r) return;
   try { await r.hincrby(placeKey(now), `${slug}|${key}`, n); await r.expire(placeKey(now), 40 * 86400); } catch { /* yalnız rapor */ }
 }
-/** Bu ay en çok maliyet oluşturan mekânlar (liste fiyatı, ücretsiz kota düşülmeden). */
+/** Bu ay en çok maliyet oluşturan mekânlar (liste fiyatı, ücretsiz kota düşülmeden). Fotoğraf: google:photo; puan, yorum ve saat aynı istekte: google:details_atmosphere. */
 export async function placeUseReport(top = 10, now = new Date()) {
   const r = getRedis();
   if (!r) return null;

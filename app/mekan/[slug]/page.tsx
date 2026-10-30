@@ -28,7 +28,7 @@ import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { VenueSecki } from "@/components/seckisi/Seckisi";
 import { venueDescription, venueJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { articlesForVenue, seckiProfilePhotos } from "@/lib/seckisi";
+import { articlesForVenue } from "@/lib/seckisi";
 import { parseVideoUrl } from "@/lib/media/embed";
 import { mapLinks } from "@/lib/venue";
 import { nf, score1 } from "@/lib/format";
@@ -163,8 +163,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   /* Gerçek restoran profili (kaynaklı içerik varsa): içerik odaklı düzen — genel bakış, menü, fotoğraflar, videolar, deneyimler */
   const ent = withProfile(entity, rp);
   const nVideos = videos[entity.slug] ?? 0;
-  /* Kendi izinli fotoğraflarımız: kayıttaki görseller + işletme izni profili kapsayan Seçki fotoğrafları */
-  const ownPhotos = [...(entity.photos ?? []), ...(entity.isReal ? seckiProfilePhotos(entity.slug) : [])];
+  const ownPhotos = entity.photos ?? [];
   /* Koordinatı olmayan mekânda da Haritalar bağlantısı: ücretsiz arama adresi */
   const mapsUrl = mapLinks(entity)?.googleMaps ?? (entity.isReal ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.location?.district ?? ""} İstanbul`)}` : undefined);
   const profileNav: TopicSection[] = rp ? [

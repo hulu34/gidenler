@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
 import { fromVenuePhotos, responsive, type ViewPhoto } from "./photos";
-import { loadMoreGooglePhotos, requestGoogleView, useGoogleView, type GRef } from "./googleView";
+import { loadMoreGooglePhotos, useGoogleCover, type GRef } from "./googleView";
 import { GoogleMapsText } from "./GoogleAttribution";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -33,14 +33,15 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
 
 export function PhotoMosaic({ slug, name, photos, google, mapsUrl }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean; mapsUrl?: string }) {
   const own = fromVenuePhotos(photos);
-  const g = useGoogleView(slug, google);
+  /* Kendi kapağı olan mekânda Google fotoğrafı istenmez: düğme de çağrı da yok (galeride isteğe bağlı) */
+  const { state: g, request } = useGoogleCover(slug, google && !own.length);
   /* mobil şeritte kalan Google kareleri: kullanıcı şeridi kaydırdıkça 2'şer (masaüstünde ilk istek 5'i getirir) */
   const [more, setMore] = useState<ViewPhoto[]>([]);
   const [left, setLeft] = useState<GRef[] | null>(null);
   const [busy, setBusy] = useState(false);
   const strip = useRef<HTMLDivElement>(null);
-  const pending = left ?? (g.k === "ok" ? g.v.refs : []);
-  const gPhotos = g.k === "ok" ? [...g.v.photos, ...more] : [];
+  const pending = left ?? (g.k === "ok" ? g.refs : []);
+  const gPhotos = g.k === "ok" ? [...g.photos, ...more] : [];
   const holes = g.k === "ok" && gPhotos.length < 5 ? Math.min(pending.length, 5 - gPhotos.length) : 0;
   useEffect(() => {
     const root = strip.current;
@@ -61,7 +62,7 @@ export function PhotoMosaic({ slug, name, photos, google, mapsUrl }: { slug: str
   const all = [...own, ...gPhotos];
   const [open, setOpen] = useState<number | null>(null);
   const galleryHref = `/mekan/${slug}/fotograflar/`;
-  const total = own.length + (g.k === "ok" ? g.v.total : 0);
+  const total = own.length + (g.k === "ok" ? g.total : 0);
 
   /* Google yükleniyor: mozaiğin yeri baştan ayrılır */
   if (g.k === "loading" && !own.length) {
@@ -78,8 +79,8 @@ export function PhotoMosaic({ slug, name, photos, google, mapsUrl }: { slug: str
   }
 
   /* Google düğmesi: yalnız izinli restoranda, kullanıcı isteyene kadar çağrı yok */
-  const ask = google && g.k === "idle" ? (
-    <button type="button" onClick={() => requestGoogleView(slug)} className="text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Google fotoğraflarını göster</button>
+  const ask = g.k === "idle" ? (
+    <button type="button" onClick={request} className="text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Google kapak fotoğrafını göster</button>
   ) : null;
   const toMaps = mapsUrl ? <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Fotoğrafları Google Haritalar&apos;da gör ↗</a> : null;
 
