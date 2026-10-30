@@ -26,7 +26,6 @@ export const UI = {
   photo: { tr: "Fotoğraf", en: "Photo" },
   photoSource: { tr: "kaynak", en: "source" },
   commercial: { tr: "İşbirliği", en: "Partnership" },
-  ownership: { tr: "Sahiplik ilişkisi", en: "Ownership disclosure" },
   coverCredit: { tr: "Kapak", en: "Cover" },
   coverNone: { tr: "Fotoğraf yok", en: "No photo" },
   prepared: { tr: "Hazırlandı", en: "Prepared" },

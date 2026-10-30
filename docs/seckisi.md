@@ -42,7 +42,7 @@ Production'da yayında yazı yoksa `/seckisi/` 404 verir ve "Seçki" bağlantıs
 - Bitmiş ve iptal edilmiş etkinlikler "Yaklaşan Deneyimler"den çıkar. Sayfa saatte bir yenilenir.
 - `visited: false` olan yazıda sayfa "ziyaret yapılmadı" der. Ziyaret ya da röportaj uydurulmaz.
 - `newOpening` varsayılan olarak `false`. "Yeni keşif", restoranın Gidenler'e yeni eklendiği anlamına gelir; yeni açıldığı anlamına gelmez.
-- `commercial.state`: `dogrulanmadi` (varsayılan; sayfada "henüz doğrulanmadı" yazar ve yazı bu durumda yayımlanamaz), `yok` (doğrulayan ve tarih zorunlu) ya da `var` (görünür etiket). `ownership`, kurucu veya ekiple sahiplik ilişkisini yazar; puana ve sıralamaya etkisi yoktur.
+- `commercial.state`: `dogrulanmadi` (varsayılan; sayfada "henüz doğrulanmadı" yazar ve yazı bu durumda yayımlanamaz), `yok` (doğrulayan ve tarih zorunlu) ya da `var` (görünür etiket). `ownership`, kurucu veya ekiple sahiplik ilişkisini işaretler; açıklama yazının son paragrafında yapılır, kartta ve etikette gösterilmez. Puana ve sıralamaya etkisi yoktur.
 
 ## Dil
 

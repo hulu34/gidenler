@@ -29,7 +29,7 @@ ok("ziyaret iddiası yok (hepsi visited=false)", pkg.every((a) => a.editorial.vi
 ok("yeni açılan restoran iddiası yok", pkg.every((a) => a.newOpening === false));
 const je = pkg.find((a) => a.venues.some((v) => v.slug === "japon-erdal-beyoglu"));
 const last = (bs: Block[]) => { const l = bs[bs.length - 1]; return l && "p" in l ? l.p : ""; };
-ok("Japon Erdal: sahiplik ilişkisi yazının sonunda tek cümle; başta not yok; kartta ve künyede var", !!je && !je.notice && last(je.body.tr).startsWith("Not: Japon Erdal") && last(je.body.en).startsWith("Note: Japon Erdal") && !!je.ownership && je.commercial.state === "var");
+ok("Japon Erdal: sahiplik ilişkisi yazının sonunda tek cümle; başta, kartta ve etikette yok", !!je && !je.notice && last(je.body.tr).startsWith("Not: Japon Erdal") && last(je.body.en).startsWith("Note: Japon Erdal") && !!je.ownership && je.commercial.state === "var");
 ok("Japon Erdal: ilişki gövdede yalnız bir kez geçiyor", !!je && je.body.tr.filter((b) => "p" in b && b.p.includes("sahiplik")).length === 1 && !je.why.tr.includes("Kurucu"));
 ok("Japon Erdal ana hikâye; kapak hakkı işletme izniyle kayıtlı", !!je && je.featured && je.cover.state === "var" && je.cover.rights === "isletme-izni" && je.cover.credit === "Japon Erdal arşivi");
 ok("tek öne çıkan hikâye", pkg.filter((a) => a.featured).length === 1);

@@ -69,16 +69,12 @@ function Meta({ a, lang }: { a: Article; lang: Lang }) {
     <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-3">
       <span>{labelOf(a, lang)}</span>
       {a.status === "kontrol" && <span className="border border-warn/50 bg-warn-soft px-1.5 py-px text-[9.5px] text-warn">{t(UI.reviewBadge, lang)}</span>}
-      {a.commercial.state === "var" && <span className="border border-line-strong px-1.5 py-px text-[9.5px] text-ink">{a.commercial.label[lang]}</span>}
+      {a.commercial.state === "var" && !a.ownership && <span className="border border-line-strong px-1.5 py-px text-[9.5px] text-ink">{a.commercial.label[lang]}</span>}
     </p>
   );
 }
 
 /** Sahiplik/kurucu ilişkisi: karttan yazıya geçmeden görünür. */
-function Disclosure({ a, lang }: { a: Article; lang: Lang }) {
-  return <p role="note" className="border-l-2 border-warn bg-warn-soft px-3 py-2 text-[12.5px] font-semibold leading-snug text-warn">{a.ownership![lang]}</p>;
-}
-
 const RIGHTS_LABEL: Record<"izinli-basin" | "isletme-izni", Record<Lang, string>> = {
   "isletme-izni": { tr: "işletme izniyle", en: "used with the restaurant's permission" },
   "izinli-basin": { tr: "basın görseli, izinle", en: "press image, with permission" },
@@ -175,7 +171,6 @@ function Lead({ a, lang }: { a: Article; lang: Lang }) {
           <Link href={hrefOf(lang, a.slug)} className="hover:underline hover:decoration-2 hover:underline-offset-4">{a.title[lang]}</Link>
         </h3>
         <p className="font-[family-name:var(--font-read)] text-[19px] leading-[1.45] text-ink-2">{a.dek[lang]}</p>
-        {a.ownership && <Disclosure a={a} lang={lang} />}
         <p className="border-l-2 border-accent pl-3 text-[14px] leading-relaxed text-ink-2">
           <span className="mr-1 font-bold text-ink">{t(UI.why, lang)}.</span>{a.why[lang]}
         </p>
@@ -196,7 +191,6 @@ function Card({ a, lang, wide = false }: { a: Article; lang: Lang; wide?: boolea
           <Link href={hrefOf(lang, a.slug)} className="hover:underline hover:decoration-2 hover:underline-offset-4">{a.title[lang]}</Link>
         </h3>
         <p className="font-[family-name:var(--font-read)] text-[16.5px] leading-[1.45] text-ink-2">{a.dek[lang]}</p>
-        {a.ownership && <Disclosure a={a} lang={lang} />}
         {a.kind === "semt" ? (
           <ul className="mt-1 flex flex-col divide-y divide-edit-line border-y border-edit-line">
             {a.venues.map((v) => (
@@ -423,7 +417,6 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
                   : a.commercial.state === "yok" ? t(UI.commercialNone, lang).replace("{by}", a.commercial.verifiedBy).replace("{date}", fmtDay(a.commercial.verifiedAt, lang))
                   : t(UI.commercialUnverified, lang)}
               </p>
-              {a.ownership && <p className="mt-1"><span className="font-bold">{t(UI.ownership, lang)}:</span> {a.ownership[lang]}</p>}
               <h3 id="h-kaynak" className="mt-3 text-[10.5px] font-bold uppercase tracking-[0.16em] text-ink">{t(UI.sources, lang)}</h3>
               <ol className="mt-1.5 flex flex-col gap-2 text-[12.5px] leading-snug">
                 {a.sources.map((s) => (
