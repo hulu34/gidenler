@@ -100,6 +100,17 @@ const Video = z.object({
   verifiedAt: day,
 }).strict();
 
+/** Yazı içi görsel: kapakla aynı hak kuralları. */
+const Photo = z.object({
+  src: z.string().regex(/^\/seckisi\/gorsel\//),
+  alt: Text,
+  caption: Text,
+  credit: z.string().trim().min(1),
+  rights: z.enum(["izinli-basin", "isletme-izni", "lisans"]),
+  rightsRef: z.string().trim().min(3),
+  sourceUrl: z.url({ protocol: /^https$/ }),
+}).strict();
+
 export const Article = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).refine((s) => s !== "en", "\"en\" ayrılmış yol"),
   kind: z.enum(KINDS),
@@ -149,6 +160,7 @@ export const Article = z.object({
   ownership: Text.nullable(),
   ranking: Ranking.optional(),
   media: z.object({ press: z.array(Press), videos: z.array(Video) }).strict().optional(),
+  gallery: z.array(Photo).max(6).optional(),
 }).strict().superRefine((a, ctx) => {
   const shape = (bs: Block[]) => bs.map((b) => ("h" in b ? "h" : "p" in b ? "p" : `list${b.list.length}`)).join(",");
   if (shape(a.body.tr) !== shape(a.body.en)) ctx.addIssue({ code: "custom", path: ["body"], message: "TR ve EN gövde yapısı farklı" });
@@ -162,6 +174,7 @@ export const Article = z.object({
   if (a.status === "yayinda" && a.commercial.state === "dogrulanmadi") ctx.addIssue({ code: "custom", path: ["commercial"], message: "ticari ilişki doğrulanmadan yayımlanamaz" });
   if (a.ownership && a.commercial.state !== "var") ctx.addIssue({ code: "custom", path: ["commercial"], message: "sahiplik ilişkisi olan yazıda ticari ilişki görünür olmalı" });
   if (a.ownership && !a.notice) ctx.addIssue({ code: "custom", path: ["notice"], message: "sahiplik ilişkisi yazının başında açıklanmalı" });
+  if (a.featured && a.cover.state !== "var") ctx.addIssue({ code: "custom", path: ["featured"], message: "ana hikâye hakkı doğrulanmış kapak fotoğrafı olmadan öne çıkamaz" });
   if (a.featured && a.kind !== "hikaye") ctx.addIssue({ code: "custom", path: ["featured"], message: "yalnız hikâye öne çıkar" });
   /* Rakamlar iki dilde aynı olmalı: TR'de geçen her fiyat/tarih/saat rakamı EN'de de geçer (binlik ayırıcı ve saat biçimi fark etmez). */
   const nums = (s: string) => (s.match(/\d[\d.,:]*\d|\d/g) ?? []).map((n) => n.replace(/[.,:]/g, "")).sort().join("|");

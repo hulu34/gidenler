@@ -2,7 +2,7 @@
   "slug": "japon-erdal-dort-pide-bir-efsane",
   "kind": "hikaye",
   "status": "kontrol",
-  "featured": false,
+  "featured": true,
   "title": {
     "tr": "Dört pide ve bir efsane: Galata'da Japon Erdal",
     "en": "Four pides and a legend: Japon Erdal in Galata"
@@ -219,10 +219,20 @@
     }
   ],
   "cover": {
-    "state": "yok",
-    "gap": {
-      "tr": "Kapak fotoğrafı yok; işletmenin sitesindeki fotoğraflar için yazılı kullanım izni ve fotoğrafçı hakları bekleniyor.",
-      "en": "No cover photo yet; written permission and photographer rights are pending for the photos on the restaurant's website."
+    "state": "var",
+    "src": "/seckisi/gorsel/japon-erdal-kapali-pide.jpg",
+    "alt": {
+      "tr": "Kâğıt üzerinde dilimlenmiş kapalı pideler; kenarları fırında kızarmış, aralarından iç harcı görünüyor.",
+      "en": "Sliced closed pides on paper, their edges charred in the oven, the filling showing between the slices."
+    },
+    "credit": "Japon Erdal arşivi",
+    "rights": "isletme-izni",
+    "rightsRef": "İşletme sahibinin 30.10.2026 tarihli yazılı onayı; kapsam: Seçki (TR/EN), restoran profili, editoryal sosyal medya, kırpma ve boyutlandırma; künye: Japon Erdal arşivi",
+    "sourceUrl": "https://www.instagram.com/p/DddzCLKDgK3/",
+    "depicts": "Japon Erdal'ın kapalı pidesi (işletmenin Instagram gönderisi, Eylül 2026)",
+    "note": {
+      "tr": "Dilimlenmiş kapalı pide",
+      "en": "Sliced closed pide"
     }
   },
   "editorial": {
@@ -473,5 +483,37 @@
         "verifiedAt": "2026-10-30"
       }
     ]
-  }
+  },
+  "gallery": [
+    {
+      "src": "/seckisi/gorsel/japon-erdal-hamur.jpg",
+      "alt": {
+        "tr": "Unlu tezgâhta elle açılan pide hamurları.",
+        "en": "Pide dough being stretched by hand on a floured counter."
+      },
+      "caption": {
+        "tr": "Hamur elle açılıyor; işletmeye göre fırına girmeden önce yaklaşık 36 saat dinlendiriliyor.",
+        "en": "The dough is stretched by hand; the restaurant says it rests for about 36 hours before baking."
+      },
+      "credit": "Japon Erdal arşivi",
+      "rights": "isletme-izni",
+      "rightsRef": "İşletme sahibinin 30.10.2026 tarihli yazılı onayı; kapsam: Seçki (TR/EN), restoran profili, editoryal sosyal medya, kırpma ve boyutlandırma; künye: Japon Erdal arşivi",
+      "sourceUrl": "https://www.instagram.com/p/DdvunCTjisU/"
+    },
+    {
+      "src": "/seckisi/gorsel/japon-erdal-havuz.jpg",
+      "alt": {
+        "tr": "Salondaki havuzda yüzen turuncu ve beyaz koi balıkları.",
+        "en": "Orange and white koi swimming in the pool in the dining room."
+      },
+      "caption": {
+        "tr": "Salondaki havuz: rehberlerin ve ziyaret videolarının söz ettiği koi balıkları.",
+        "en": "The pool in the dining room: the koi mentioned by guides and visit videos."
+      },
+      "credit": "Japon Erdal arşivi",
+      "rights": "isletme-izni",
+      "rightsRef": "İşletme sahibinin 30.10.2026 tarihli yazılı onayı; kapsam: Seçki (TR/EN), restoran profili, editoryal sosyal medya, kırpma ve boyutlandırma; künye: Japon Erdal arşivi",
+      "sourceUrl": "https://www.instagram.com/p/DZfMNeGDD3E/"
+    }
+  ]
 }

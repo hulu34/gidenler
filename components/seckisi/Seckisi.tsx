@@ -79,6 +79,33 @@ function Disclosure({ a, lang }: { a: Article; lang: Lang }) {
   return <p role="note" className="border-l-2 border-warn bg-warn-soft px-3 py-2 text-[12.5px] font-semibold leading-snug text-warn">{a.ownership![lang]}</p>;
 }
 
+const RIGHTS_LABEL: Record<"izinli-basin" | "isletme-izni", Record<Lang, string>> = {
+  "isletme-izni": { tr: "işletme izniyle", en: "used with the restaurant's permission" },
+  "izinli-basin": { tr: "basın görseli, izinle", en: "press image, with permission" },
+};
+
+/** Yazı içi fotoğraflar: kapakla aynı hak kuralları, her karede künye. */
+function Gallery({ a, lang }: { a: Article; lang: Lang }) {
+  if (!a.gallery?.length) return null;
+  return (
+    <div className="grid gap-5 sm:grid-cols-2">
+      {a.gallery.map((g) => (
+        <figure key={g.src} data-photo={g.src} className="flex flex-col gap-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={g.src} alt={g.alt[lang]} loading="lazy" decoding="async" className="aspect-[3/4] w-full object-cover" />
+          <figcaption className="text-[13px] leading-snug text-ink-2">
+            {g.caption[lang]}
+            <span className="mt-0.5 block text-[11.5px] text-ink-3">
+              {t(UI.photo, lang)}: {g.credit} · {g.rights === "lisans" ? g.rightsRef : RIGHTS_LABEL[g.rights][lang]} ·{" "}
+              <a href={g.sourceUrl} rel="noopener noreferrer" target="_blank" className="underline underline-offset-2">{t(UI.photoSource, lang)}</a>
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
+
 const PRESS_TYPE: Record<string, Record<Lang, string>> = {
   haber: { tr: "Haber", en: "News" }, kose: { tr: "Köşe yazısı", en: "Column" }, liste: { tr: "Liste", en: "List" },
   blog: { tr: "Blog", en: "Blog" }, rehber: { tr: "Rehber yazısı", en: "Guide" }, "ticari-blog": { tr: "Şirket blogu", en: "Company blog" },
@@ -336,7 +363,9 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
             <figcaption className="mt-2 text-[11.5px] leading-snug text-ink-3">
               {a.cover.state === "var" ? (
                 <><span className="font-bold">{t(UI.photo, lang)}:</span> {a.cover.credit} ·{" "}
-                  <a href={a.cover.licenseUrl ?? a.cover.sourceUrl} rel="noopener noreferrer license" target="_blank" className="underline underline-offset-2">{a.cover.rightsRef}</a> ·{" "}
+                  {a.cover.rights === "lisans"
+                    ? <a href={a.cover.licenseUrl ?? a.cover.sourceUrl} rel="noopener noreferrer license" target="_blank" className="underline underline-offset-2">{a.cover.rightsRef}</a>
+                    : RIGHTS_LABEL[a.cover.rights][lang]} ·{" "}
                   <a href={a.cover.sourceUrl} rel="noopener noreferrer" target="_blank" className="underline underline-offset-2">{t(UI.photoSource, lang)}</a>{a.cover.note ? ` · ${a.cover.note[lang]}` : ""}</>
               ) : <><span className="font-bold">{t(UI.coverCredit, lang)}:</span> {a.cover.gap[lang]}</>}
             </figcaption>
@@ -351,6 +380,7 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
               <p className="mt-2 text-[15px] leading-relaxed text-ink-2">{a.why[lang]}</p>
             </section>
             <Body blocks={a.body[lang]} />
+            <Gallery a={a} lang={lang} />
             <Media a={a} lang={lang} />
             <section aria-labelledby="h-bilin" className="border-t-2 border-line-strong pt-4">
               <h2 id="h-bilin" className="text-[11px] font-bold uppercase tracking-[0.18em]">{t(UI.know, lang)}</h2>
