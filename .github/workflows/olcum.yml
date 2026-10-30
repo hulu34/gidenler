@@ -334,6 +334,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gkapali-sifreli, path: out/gkapali.tgz.cms, retention-days: 3, if-no-files-found: ignore }
+  redis-oz:
+    if: contains(github.event.head_commit.message, '[redis-oz]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/redis-oz.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-bb9clm7e5-hulu34.vercel.app }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
