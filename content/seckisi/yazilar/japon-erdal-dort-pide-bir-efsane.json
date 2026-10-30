@@ -1,7 +1,7 @@
 {
   "slug": "japon-erdal-dort-pide-bir-efsane",
   "kind": "hikaye",
-  "status": "kontrol",
+  "status": "yayinda",
   "featured": true,
   "title": {
     "tr": "Dört pide ve bir efsane: Galata'da Japon Erdal",
@@ -249,7 +249,7 @@
     "visited": false
   },
   "preparedAt": "2026-10-30",
-  "publishedAt": null,
+  "publishedAt": "2026-10-30",
   "updatedAt": null,
   "newOpening": false,
   "commercial": {
