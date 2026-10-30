@@ -1,0 +1,22 @@
+/* Gerçek Redis 7.4 (geçici, Actions hizmeti): counter.ts LUA betiği, 20 bağlantıdan eşzamanlı. Üretim ya da Upstash değil. */
+import Redis from "ioredis";
+const src = await (await fetch("https://raw.githubusercontent.com/hulu34/gidenler/feature/gorsel-altyapi/lib/usage/counter.ts")).text();
+const LUA = src.match(/export const LUA = `([\s\S]*?)`;/)[1];
+const res = []; const ok = (n, c, i = "") => { res.push(!!c); console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
+const P = [["ts", 5000, 32], ["en", 1000, 20], ["at", 1000, 25], ["es", 10000, 5], ["ph", 1000, 7]];
+const conns = Array.from({ length: 20 }, () => new Redis({ port: 6379 })); const r = conns[0]; await r.flushall();
+const args = (daily = 3e6, month = 100e6) => ["1000000", "1000000", "3456000", "172800", String(month), String(daily), ...P.flatMap(([, f, u]) => [String(f), String(u * 1000)])];
+const keys = (k) => [`${k}:m`, `${k}:d`, ...P.map(([x]) => `${x}:m`), ...P.map(([x]) => `${x}:d`)];
+const run = (k, n, a = args()) => Promise.all(Array.from({ length: n }, (_, i) => conns[i % 20].eval(LUA, keys(k).length, ...keys(k), ...a).then(Number)));
+await r.set("ph:m", 1000);
+let v = await run("ph", 600); let g = v.filter((x) => x >= 1).length, d = v.filter((x) => x === -2).length;
+ok("600 eşzamanlı fotoğraf: 3 USD'de tam 428 izin", g === 428 && d === 172, `${g}/${d}`);
+ok("reddedilenler sayaca yazılmadı", Number(await r.get("ph:d")) === 428 && Number(await r.get("ph:m")) === 1428);
+await r.flushall(); await r.set("ph:m", 1000); await r.set("at:m", 1000);
+v = await Promise.all(Array.from({ length: 800 }, (_, i) => { const k = i % 2 ? "ph" : "at"; return conns[i % 20].eval(LUA, keys(k).length, ...keys(k), ...args()).then((x) => [k, Number(x)]); }));
+const ph = Number(await r.get("ph:d")), at = Number(await r.get("at:d")); const usd = (ph * 7000 + at * 25000) / 1e6;
+ok("karışık kalemlerde toplam günlük harcama 3 USD'yi aşmaz", usd <= 3 && usd > 2.9, `$${usd}, foto ${ph}, atmosphere ${at}`);
+await r.flushall(); await r.set("ph:m", 1000 + 14285); 
+v = await run("ph", 50); ok("aylık 100 USD tavanı önce keser", v.filter((x) => x === -1).length === 50 || v.every((x) => x < 1), `${new Set(v)}`.slice(0, 40)); const mm = Number(await r.get("ph:m")); ok("aylık tavanda harcama 100 USD'yi aşmaz", mm * 7000 - 7e6 <= 100e6, `$${((mm - 1000) * 7000) / 1e6}`);
+await r.flushall(); await r.set("es:m", 0); v = await run("es", 100); ok("bedava kotadaki çağrı günlük tavana takılmaz", v.every((x) => x >= 1));
+conns.forEach((c) => c.disconnect()); console.log(`SONUÇ ${res.filter(Boolean).length}/${res.length}`); if (res.includes(false)) process.exit(1);
