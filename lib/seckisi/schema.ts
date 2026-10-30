@@ -76,8 +76,13 @@ const Press = z.object({
   author: z.string().trim().min(1).optional(),
   url: z.url({ protocol: /^https$/ }),
   date: day,
-  type: z.enum(["rehber", "liste", "ticari-blog", "haber", "roportaj"]),
+  type: z.enum(["haber", "kose", "liste", "blog", "rehber", "ticari-blog", "roportaj"]),
   independence: z.enum(["bagimsizlik-beyani", "beyan-yok", "sponsorlu", "davetli", "belirsiz"]),
+  /** Ticari ilişki/işbirliği beyanı ne diyor (yayın ile restoran arasında). */
+  disclosure: Text,
+  /** Tam metin okunabildi mi; abonelik duvarı varsa "kismi". */
+  access: z.enum(["tam", "kismi"]),
+  /** Kısa, özgün özet (kaynağın metni kopyalanmaz). */
   note: Text,
 }).strict();
 const Video = z.object({

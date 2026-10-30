@@ -80,13 +80,9 @@ function Disclosure({ a, lang }: { a: Article; lang: Lang }) {
 }
 
 const PRESS_TYPE: Record<string, Record<Lang, string>> = {
-  rehber: { tr: "Rehber yazısı", en: "Guide" }, liste: { tr: "Liste", en: "List" }, "ticari-blog": { tr: "Şirket blogu", en: "Company blog" },
-  haber: { tr: "Haber", en: "News" }, roportaj: { tr: "Röportaj", en: "Interview" },
-};
-const INDEPENDENCE: Record<string, Record<Lang, string>> = {
-  "bagimsizlik-beyani": { tr: "Ücretli olmadığını beyan ediyor", en: "States it was not paid" },
-  "beyan-yok": { tr: "İşbirliği beyanı yok · bağımsızlık doğrulanmadı", en: "No partnership disclosure · independence not verified" },
-  sponsorlu: { tr: "Sponsorlu", en: "Sponsored" }, davetli: { tr: "Davetli ziyaret", en: "Hosted visit" }, belirsiz: { tr: "Bağımsızlık belirsiz", en: "Independence unclear" },
+  haber: { tr: "Haber", en: "News" }, kose: { tr: "Köşe yazısı", en: "Column" }, liste: { tr: "Liste", en: "List" },
+  blog: { tr: "Blog", en: "Blog" }, rehber: { tr: "Rehber yazısı", en: "Guide" }, "ticari-blog": { tr: "Şirket blogu", en: "Company blog" },
+  roportaj: { tr: "Röportaj", en: "Interview" },
 };
 const VIDEO_TYPE: Record<string, Record<Lang, string>> = {
   roportaj: { tr: "Kurucularla röportaj", en: "Interview with the founders" }, ziyaret: { tr: "Ziyaret videosu", en: "Visit video" }, "cok-mekanli": { tr: "Birkaç mekânlı tur", en: "Multi-venue tour" },
@@ -97,23 +93,27 @@ function Media({ a, lang }: { a: Article; lang: Lang }) {
   if (!a.media || (!a.media.press.length && !a.media.videos.length)) return null;
   const name = venueOf(a.venues[0].slug)?.name ?? "";
   return (
-    <section aria-labelledby="h-medya" className="flex flex-col gap-6 border-t-2 border-line-strong pt-4">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 id="h-medya" className="text-[11px] font-bold uppercase tracking-[0.18em]">{lang === "tr" ? `${name} hakkında yayımlananlar` : `What others have published about ${name}`}</h2>
-        <p className="text-[12px] text-ink-3">{lang === "tr" ? "Bağlantılar özgün yayınlara gider; videolar içerik sahiplerine aittir." : "Links go to the original publications; videos belong to their creators."}</p>
-      </div>
+    <section aria-labelledby="h-medya" className="flex flex-col gap-5 border-t-2 border-line-strong pt-4">
+      <h2 id="h-medya" className="text-[11px] font-bold uppercase tracking-[0.18em]">{lang === "tr" ? "Başkalarının gözünden" : "Through other eyes"}</h2>
+      <p className="text-[12px] text-ink-3">{lang === "tr" ? "Bağlantılar özgün yayınlara gider; özetler bizimdir, metin ve fotoğraflar kopyalanmadı. Videolar içerik sahiplerine aittir. Bu yayınlar Gidenler puanına, sıralamaya ve deneyim sayısına girmez." : "Links go to the original publications; the summaries are ours and no text or photos were copied. Videos belong to their creators. None of this counts toward the Gidenler score, rankings or experience count."}</p>
       {a.media.press.length > 0 && (
-        <ul className="grid gap-px border border-edit-line bg-edit-line sm:grid-cols-3">
-          {a.media.press.map((p) => (
-            <li key={p.url} className="flex flex-col gap-1.5 bg-paper p-4">
-              <p className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-ink-3">{PRESS_TYPE[p.type][lang]} · {fmtDay(p.date, lang)}</p>
-              <a href={p.url} rel="noopener noreferrer" target="_blank" className="text-[15px] font-extrabold leading-snug hover:underline">{p.outlet}</a>
-              <p className="text-[12.5px] leading-snug text-ink-2" translate="no">{p.title}{p.author ? ` · ${p.author}` : ""}</p>
-              <p className="text-[13px] leading-snug text-ink-2">{p.note[lang]}</p>
-              <p className="mt-auto text-[11.5px] text-ink-3">{INDEPENDENCE[p.independence][lang]}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col gap-3">
+          <h3 id="h-basin" className="font-[family-name:var(--font-brand)] text-[30px] leading-none">{lang === "tr" ? `Basında ${name}` : `${name} in the press`}</h3>
+          <ul className="grid gap-px border border-edit-line bg-edit-line sm:grid-cols-2">
+            {a.media.press.map((p) => (
+              <li key={p.url} data-press={p.url} className="flex flex-col gap-1.5 bg-paper p-4 sm:p-5">
+                <p className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-ink-3">{PRESS_TYPE[p.type][lang]} · <time dateTime={p.date}>{fmtDay(p.date, lang)}</time></p>
+                <p className="text-[16px] font-extrabold leading-snug">{p.outlet}{p.author ? <span className="font-semibold text-ink-3"> · {p.author}</span> : null}</p>
+                <a href={p.url} rel="noopener noreferrer" target="_blank" className="font-[family-name:var(--font-read)] text-[16px] leading-snug underline decoration-line-2 underline-offset-2 hover:decoration-ink" translate="no">{p.title} ↗</a>
+                <p className="text-[13px] leading-snug text-ink-2">{p.note[lang]}</p>
+                <p className="mt-auto pt-1 text-[11.5px] leading-snug text-ink-3">{p.disclosure[lang]}{p.access === "kismi" ? (lang === "tr" ? " · Tam metin abonelikle; özet yalnız açık giriş bölümüne dayanıyor." : " · Full text is behind a paywall; the summary relies only on the open introduction.") : ""}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {a.media.videos.length > 0 && (
+        <h3 id="h-video" className="font-[family-name:var(--font-brand)] text-[30px] leading-none">{lang === "tr" ? `Videolarda ${name}` : `${name} on video`}</h3>
       )}
       {a.media.videos.length > 0 && (
         <SeckiVideos lang={lang} videos={a.media.videos.map((v) => ({

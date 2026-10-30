@@ -8,8 +8,8 @@
     "en": "Four pides and a legend: Japon Erdal in Galata"
   },
   "dek": {
-    "tr": "Adı Japon mutfağını çağrıştırsa da burada yalnız Samsun usulü pide var: dört çeşit, 36 saat dinlenen bir hamur ve tabelası olmayan bir kapı.",
-    "en": "Despite a name that suggests Japanese food, the menu here is Samsun-style pide, the long Black Sea flatbread baked with a filling: four kinds, a dough rested for 36 hours and a door with no sign."
+    "tr": "Adı Japon mutfağını çağrıştırsa da burada yalnız Samsun usulü pide var: dört çeşit, 36 saat dinlenen bir hamur ve adını yazmayan bir kapı.",
+    "en": "Despite a name that suggests Japanese food, the menu here is Samsun-style pide, the long Black Sea flatbread baked with a filling: four kinds, a dough rested for 36 hours and a door that does not spell out its name."
   },
   "why": {
     "tr": "Japon Erdal menüsünü dört pideye indiriyor ve her birini gramajı, malzemesi ve yaklaşık kalorisiyle yazıyor. Galata'nın ara sokaklarında Karadeniz pidesini kısa, net bir menüyle ve kendine özgü bir efsaneyle anlatıyor. Kurucu ilişkisi nedeniyle bu yazı bağımsız bir seçim değil, açıkça belirtilmiş bir editoryal yerleşimdir.",
@@ -22,13 +22,16 @@
   "body": {
     "tr": [
       {
-        "p": "Dibek Sokağı'ndaki kapıda tabela yok; rehberlerin aktardığına göre dışarıda yalnız “Pideci” yazıyor. İçeride Japon esintili bir dekor, rehberlerin ve ziyaret videolarının söz ettiği küçük bir havuz ve salondan görülen bir taş fırın var. Siparişler masadaki kâğıda yazılıyor."
+        "p": "Gazete Oksijen'in Ocak 2026 haberine göre Japon Erdal, o tarihten yaklaşık beş ay önce Galata'da, Serdar-ı Ekrem'in bir alt sokağında açıldı. Kapıda restoranın adını yazan bir tabela yok; kırmızı noktalı küçük bir işaret ve köşede “Pideci” yazısı var. Odatv'de Salih Seçkin Sevinç içeriyi bir ramen dükkânına benzetiyor: kapıdan perdeyle giriliyor, logoda bir Japon güneşi var. Rehberler ve ziyaret videoları salonda küçük bir havuzdan ve görünür bir taş fırından söz ediyor."
+      },
+      {
+        "p": "Siparişler masaya serilen beyaz kâğıda yazılıyor; beklerken aynı kâğıda renkli kalemlerle çizim yapılabiliyor. Bir Doz Minik Güzel Şey blogu bu kâğıdı hem masa örtüsü hem adisyon olarak anlatıyor."
       },
       {
         "h": "Adın hikâyesi"
       },
       {
-        "p": "İşletme, sitesinde adını bir masala bağlıyor: Samsun'da yaşamış, yüzünü kimsenin görmediği ama pidesini herkesin bildiği, lakabı “Japon” olan Erdal adında bir usta. Ekip bu ustayı hiç görmediğini, onun yolundan gelen ustalardan öğrendiğini yazıyor. Kurucular Harun Ulu ve Agah Uz da ChefStory'ye verdikleri röportajda Japon Erdal'ın kurgusal bir karakter olduğunu, amaçlarının en iyi Çarşamba pidesini yapmak olduğunu anlatıyor."
+        "p": "İşletme, sitesinde adını bir masala bağlıyor: Samsun'da yaşamış, yüzünü kimsenin görmediği ama pidesini herkesin bildiği, lakabı “Japon” olan Erdal adında bir usta. Ekip bu ustayı hiç görmediğini, onun yolundan gelen ustalardan öğrendiğini yazıyor. Kurucular Harun Ulu ve Agah Uz da ChefStory'ye verdikleri röportajda Japon Erdal'ın kurgusal bir karakter olduğunu, amaçlarının en iyi Çarşamba pidesini yapmak olduğunu anlatıyor. Gazete Oksijen'e verdikleri iddia da aynı yönde: Çarşamba pidesini dünyaya yeniden öğretmek."
       },
       {
         "h": "Dört pide"
@@ -53,13 +56,16 @@
     ],
     "en": [
       {
-        "p": "There is no sign on the door on Dibek Sokağı; according to the guides, the only word outside is “Pideci”. Inside there is Japanese-inspired decor, a small pool mentioned by guides and visit videos, and a stone oven visible from the dining room. Orders are written on the paper covering the table."
+        "p": "According to a January 2026 report in Gazete Oksijen, Japon Erdal had opened in Galata about five months earlier, on a side street just below Serdar-ı Ekrem. No sign on the door gives the restaurant's name; there is a small red-dot mark and the word “Pideci” on the corner. Writing for Odatv, Salih Seçkin Sevinç likens the interior to a ramen shop: you enter through a curtain, and the logo carries a Japanese sun. Guides and visit videos mention a small pool in the dining room and a stone oven in view."
+      },
+      {
+        "p": "Orders are written on the white paper spread over the table, and while you wait you can draw on the same sheet with coloured pencils. The blog Bir Doz Minik Güzel Şey describes the paper as both tablecloth and bill."
       },
       {
         "h": "The story behind the name"
       },
       {
-        "p": "On its website, the restaurant ties its name to a tale: a master baker in Samsun named Erdal, nicknamed “Japon” (Japanese), whose face no one ever saw but whose pide everyone knew. The team writes that they never met him and learned from the bakers who carried on his way. In an interview with ChefStory, the founders Harun Ulu and Agah Uz explain that Japon Erdal is a fictional character and that their aim is to make the best Çarşamba pide, named after a town in Samsun province."
+        "p": "On its website, the restaurant ties its name to a tale: a master baker in Samsun named Erdal, nicknamed “Japon” (Japanese), whose face no one ever saw but whose pide everyone knew. The team writes that they never met him and learned from the bakers who carried on his way. In an interview with ChefStory, the founders Harun Ulu and Agah Uz explain that Japon Erdal is a fictional character and that their aim is to make the best Çarşamba pide, named after a town in Samsun province. They told Gazete Oksijen much the same thing: they want to teach the world Çarşamba pide all over again."
       },
       {
         "h": "Four pides"
@@ -85,19 +91,19 @@
   },
   "know": {
     "tr": [
-      "11.30–21.00 açık, salı günleri kapalı; rezervasyon alınmıyor (işletmenin Instagram hesabına göre).",
+      "11.30–21.00 açık, salı günleri kapalı; rezervasyon alınmıyor. Kaynak: aynı adı ve Dibek Sokak No:15 adresini yazan @japonerdal Instagram hesabı; sitenin Instagram düğmesi şu an hesaba değil Instagram ana sayfasına gidiyor.",
       "Fiyatlar ve gramajlar 30 Ekim 2026'da işletmenin sitesinde görüldüğü gibi. Site her pidenin yaklaşık kalorisini de yazıyor (500–700 kcal).",
       "Hamur bazı günler erken bitebiliyor.",
       "Çiğ yumurta sarısı resmî menüde yok; bulunup bulunmadığını ve fiyatını sorun.",
-      "Rehberlere göre dışarıda tabela yok, yalnız “Pideci” yazıyor.",
+      "Dışarıda restoranın adı yazmıyor; kırmızı noktalı işareti ve “Pideci” yazısını arayın.",
       "Adres: Dibek Sokağı No:15, Galata, Beyoğlu."
     ],
     "en": [
-      "Open 11:30–21:00, closed on Tuesdays; no reservations (according to the restaurant's Instagram account).",
+      "Open 11:30–21:00, closed on Tuesdays; no reservations. Source: the @japonerdal Instagram account, which gives the same name and the Dibek Sokak No:15 address; the website's Instagram button currently leads to Instagram's home page, not the account.",
       "Prices and weights are as shown on the restaurant's website on 30 October 2026. The site also lists approximate calories for each pide (500–700 kcal).",
       "The dough can run out early on some days.",
       "The raw egg yolk is not on the official menu; ask whether it is available and what it costs.",
-      "According to guides, there is no sign outside, only the word “Pideci”.",
+      "The restaurant's name is not written outside; look for the red-dot mark and the word “Pideci”.",
       "Address: Dibek Sokağı No:15, Galata, Beyoğlu."
     ]
   },
@@ -126,8 +132,8 @@
         "en": "Japon Erdal — hours and reservations (Instagram)"
       },
       "publisher": {
-        "tr": "Japon Erdal (resmî Instagram)",
-        "en": "Japon Erdal (official Instagram)"
+        "tr": "@japonerdal (Instagram; aynı ad ve adres)",
+        "en": "@japonerdal (Instagram; same name and address)"
       },
       "url": "https://www.instagram.com/japonerdal/",
       "checkedAt": "2026-10-30",
@@ -143,6 +149,45 @@
         "en": "ChefStory (YouTube)"
       },
       "url": "https://www.youtube.com/watch?v=L2QSxHdJnig",
+      "checkedAt": "2026-10-30",
+      "kind": "basin"
+    },
+    {
+      "title": {
+        "tr": "Bu pidecide klasik müzik eşliğinde ‘date’ mümkün (Ocak 2026; tam metin abonelikle)",
+        "en": "Bu pidecide klasik müzik eşliğinde ‘date’ mümkün (January 2026; full text paywalled)"
+      },
+      "publisher": {
+        "tr": "Gazete Oksijen",
+        "en": "Gazete Oksijen"
+      },
+      "url": "https://gazeteoksijen.com/o2/bu-pidecide-klasik-muzik-esliginde-date-mumkun-262008",
+      "checkedAt": "2026-10-30",
+      "kind": "basin"
+    },
+    {
+      "title": {
+        "tr": "Edirne Ciğercisi'nden Japon Erdal'a… (Ocak 2026)",
+        "en": "Edirne Ciğercisi'nden Japon Erdal'a… (January 2026)"
+      },
+      "publisher": {
+        "tr": "Odatv · Salih Seçkin Sevinç",
+        "en": "Odatv · Salih Seçkin Sevinç"
+      },
+      "url": "https://www.odatv.com/yazarlar/salih-seckin-sevinc/edirne-cigercisinden-japon-erdala-istanbulda-donusum-her-tabakta-bir-hikaye-120132936",
+      "checkedAt": "2026-10-30",
+      "kind": "basin"
+    },
+    {
+      "title": {
+        "tr": "İstanbul'dan notlar: Leziz ve eğlenceli duraklar (Şubat 2026)",
+        "en": "İstanbul'dan notlar: Leziz ve eğlenceli duraklar (February 2026)"
+      },
+      "publisher": {
+        "tr": "Bir Doz Minik Güzel Şey",
+        "en": "Bir Doz Minik Güzel Şey"
+      },
+      "url": "https://mushaboom8.com/2026/02/20/istanbuldan-notlar-leziz-ve-eglenceli-duraklar/",
       "checkedAt": "2026-10-30",
       "kind": "basin"
     },
@@ -213,12 +258,88 @@
   "media": {
     "press": [
       {
+        "outlet": "Gazete Oksijen",
+        "title": "Bu pidecide klasik müzik eşliğinde ‘date’ mümkün",
+        "author": "Berna Abik",
+        "url": "https://gazeteoksijen.com/o2/bu-pidecide-klasik-muzik-esliginde-date-mumkun-262008",
+        "date": "2026-01-09",
+        "type": "haber",
+        "independence": "beyan-yok",
+        "access": "kismi",
+        "disclosure": {
+          "tr": "İşbirliği ya da davet beyanı görünmüyor.",
+          "en": "No partnership or hosted-visit disclosure visible."
+        },
+        "note": {
+          "tr": "Restoranı konu alan bir O2 yazısı: o tarihte beş ay önce açılan bir Samsun–Çarşamba pidecisi, kapıdaki kırmızı noktalı işaret ve kurucuların Çarşamba pidesini yeniden tanıtma iddiası. Başlığa göre yemek klasik müzik eşliğinde.",
+          "en": "An O2 feature devoted to the restaurant: a Samsun–Çarşamba pide shop that had opened five months earlier, the red-dot sign at the door and the founders' ambition to reintroduce Çarşamba pide. The headline mentions classical music with the meal."
+        }
+      },
+      {
+        "outlet": "Odatv",
+        "title": "Edirne Ciğercisi'nden Japon Erdal'a... İstanbul'da dönüşüm: Her tabakta bir hikaye",
+        "author": "Salih Seçkin Sevinç",
+        "url": "https://www.odatv.com/yazarlar/salih-seckin-sevinc/edirne-cigercisinden-japon-erdala-istanbulda-donusum-her-tabakta-bir-hikaye-120132936",
+        "date": "2026-01-25",
+        "type": "kose",
+        "independence": "beyan-yok",
+        "access": "tam",
+        "disclosure": {
+          "tr": "Yazıda işbirliği ya da davet beyanı yok.",
+          "en": "No partnership or hosted-visit disclosure in the column."
+        },
+        "note": {
+          "tr": "Birkaç mekânı anlatan köşe yazısında ayrı bir bölüm: ramen dükkânını andıran salon, inceltilmiş hamurla yeniden düşünülmüş Samsun pidesi, en çok beğenilen çiğden kıymalı kapalı pide ve masadaki kâğıda çizim.",
+          "en": "A dedicated section in a column covering several places: a dining room that recalls a ramen shop, Samsun pide rethought with a thinner dough, the closed raw-minced-beef pide as the standout, and drawing on the table paper."
+        }
+      },
+      {
+        "outlet": "GZT Yemek Tarifleri",
+        "title": "İstanbul'da en iyi pide nerede yenir? Mutlaka uğramanız gereken 8 pideci",
+        "author": "Esra Şen",
+        "url": "https://yemektarifleri.gzt.com/blog/istanbulda-pide-yiyebileceginiz-en-iyi-8-yer-4002327",
+        "date": "2026-01-14",
+        "type": "liste",
+        "independence": "beyan-yok",
+        "access": "tam",
+        "disclosure": {
+          "tr": "Liste için işbirliği beyanı yok; sayfadaki “Reklam” etiketleri reklam alanlarına ait.",
+          "en": "No partnership disclosure for the list; the “Reklam” labels on the page mark ad slots."
+        },
+        "note": {
+          "tr": "Sekiz pidecilik listede Galata durağı: sade menülü, küçük ve iddialı bir yer; adındaki “Japon”un Uzak Doğu mutfağı anlamına gelmediği vurgulanıyor.",
+          "en": "The Galata entry in a list of eight pide shops: a small, confident place with a simple menu; it stresses that “Japon” in the name does not mean Far Eastern food."
+        }
+      },
+      {
+        "outlet": "Bir Doz Minik Güzel Şey",
+        "title": "İstanbul'dan notlar: Leziz ve eğlenceli duraklar",
+        "url": "https://mushaboom8.com/2026/02/20/istanbuldan-notlar-leziz-ve-eglenceli-duraklar/",
+        "date": "2026-02-20",
+        "type": "blog",
+        "independence": "beyan-yok",
+        "access": "tam",
+        "disclosure": {
+          "tr": "Yazıda işbirliği ya da davet beyanı yok.",
+          "en": "No partnership or hosted-visit disclosure in the post."
+        },
+        "note": {
+          "tr": "Bir şehir notları yazısında kısa bir paragraf: Japon disipliniyle eski usul pideci ruhunu birleştiren bir yer ve hem örtü hem adisyon olan beyaz masa kâğıdı.",
+          "en": "A short paragraph in a city-notes post: a place that blends Japanese-style discipline with the spirit of an old-fashioned pide shop, and white table paper that serves as both cloth and bill."
+        }
+      },
+      {
         "outlet": "Gurme Rehber",
         "title": "Japon Erdal",
         "url": "https://www.gurmerehber.com/japon-erdal/",
         "date": "2026-06-30",
         "type": "rehber",
         "independence": "bagimsizlik-beyani",
+        "access": "tam",
+        "disclosure": {
+          "tr": "Yazı, mekânın tanıtım ya da işbirliği için ödeme yapmadığını belirtiyor.",
+          "en": "The post states the venue paid for no promotion or partnership."
+        },
         "note": {
           "tr": "Samsun usulü ince hamurlu pideler, tabelasız kapı, Japon esintili dekor ve havuz, salondan görülen taş fırın; Haziran 2026 fiyatlarıyla açık kuşbaşılı ve pastırmalı.",
           "en": "Thin Samsun-style pide, an unsigned door, Japanese-inspired decor with a pool, a stone oven in view; open diced-beef and pastırma pides with June 2026 prices."
@@ -232,6 +353,11 @@
         "date": "2026-05-30",
         "type": "liste",
         "independence": "beyan-yok",
+        "access": "tam",
+        "disclosure": {
+          "tr": "Bu giriş için işbirliği beyanı yok; site genel olarak reklam ve işbirliği aldığını belirtiyor.",
+          "en": "No partnership disclosure for this entry; the site says in general that it accepts advertising and partnerships."
+        },
         "note": {
           "tr": "Listede ince, kapalı ve çıtır Samsun usulü pideleri ve çiğ kıymalı pidesiyle yer alıyor; iki ortağın kurduğu bir işletme olarak anılıyor.",
           "en": "Included for its thin, closed, crisp Samsun-style pides and its raw minced-beef pide; described as a business founded by two partners."
@@ -244,9 +370,14 @@
         "date": "2026-10-15",
         "type": "ticari-blog",
         "independence": "belirsiz",
+        "access": "tam",
+        "disclosure": {
+          "tr": "Listenin sponsorsuz olduğunu söylüyor; doğrulanamıyor. Yazı bir tekne kiralama şirketinin blogunda.",
+          "en": "Says the list has no sponsors; this cannot be verified. The post is on a boat-charter company's blog."
+        },
         "note": {
-          "tr": "Karaköy iskelesine yürüme mesafesinde, salı kapalı ve rezervasyonsuz bir pideci olarak öneriyor. Yazı bir tekne kiralama şirketinin blogunda.",
-          "en": "Recommends it as a pide shop within walking distance of the Karaköy pier, closed on Tuesdays and without reservations. The post is on a boat-charter company's blog."
+          "tr": "Karaköy iskelesine yürüme mesafesinde, salı kapalı ve rezervasyonsuz bir pideci olarak öneriyor.",
+          "en": "Recommends it as a pide shop within walking distance of the Karaköy pier, closed on Tuesdays and without reservations."
         }
       }
     ],
