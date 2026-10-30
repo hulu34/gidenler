@@ -26,7 +26,7 @@ for (const lang of ["tr", "en"]) {
   ok(`${lang}: ana sayfa 200`, r.status === 200, String(r.status));
   ok(`${lang}: arama motorlarına kapalı (noindex)`, /<meta name="robots" content="noindex/.test(h));
   ok(`${lang}: taslak listede yok`, drafts.every((d) => !h.includes(d.slug)));
-  ok(`${lang}: kontrol bekleyen 6 yazı listede`, pkg.every((a) => h.includes(`/${a.slug}/`)), `${pkg.length}`);
+  ok(`${lang}: kontrol bekleyen ${pkg.length} yazı listede`, pkg.every((a) => h.includes(`/${a.slug}/`)), `${pkg.length}`);
   for (const d of drafts) { const x = await get(url(lang, d.slug)); ok(`${lang}: taslak adresi 404 (${d.slug})`, x.status === 404, String(x.status)); }
 }
 
@@ -62,7 +62,7 @@ for (const [dev, o] of DEV) {
     }));
     ok(`${dev}/${lang}: bölüm adı`, home.text.includes(lang === "tr" ? "Gidenler Seçkisi" : "The Gidenler Edit"));
     ok(`${dev}/${lang}: açılış metni`, home.text.includes(lang === "tr" ? "İyi bir sofra için yeni fikirler." : "Fresh ideas for your next great meal."));
-    ok(`${dev}/${lang}: bölüm sırası (puan ve etkinlik verisi yok → kapalı)`, home.sections.join(",") === "bolum-kesif,bolum-mutfak,bolum-semt", home.sections.join(","));
+    ok(`${dev}/${lang}: bölüm sırası (puan ve etkinlik verisi yok → kapalı)`, home.sections.join(",") === "bolum-hikaye,bolum-kesif,bolum-mutfak,bolum-semt", home.sections.join(","));
     ok(`${dev}/${lang}: içerik dili işaretli`, home.lang === lang, String(home.lang));
     ok(`${dev}/${lang}: yatay taşma yok`, home.overflow <= 0, `${home.overflow}px`);
     ok(`${dev}/${lang}: ana hikâye başlığı ilk ekranda`, home.leadTop > 0 && home.leadTop < o.viewport.height, `${Math.round(home.leadTop)}px`);
@@ -70,6 +70,7 @@ for (const [dev, o] of DEV) {
     ok(`${dev}/${lang}: üst gezinmede görünür Seçki bağlantısı`, home.nav.includes("/seckisi/"));
     ok(`${dev}/${lang}: arama kutusu daralmadı`, home.search >= (dev === "masaustu" ? 300 : 60), `${home.search}px`);
     ok(`${dev}/${lang}: "Mutfaktan" bölümü`, home.bolum === (lang === "tr" ? "Mutfaktan" : "From the Kitchen") || home.bolum?.toLowerCase() === (lang === "tr" ? "mutfaktan" : "from the kitchen"), home.bolum);
+    for (const a of pkg.filter((x) => x.ownership)) ok(`${dev}/${lang}: ana sayfada sahiplik açıklaması (${a.slug})`, home.text.includes(a.ownership[lang]));
     await p.screenshot({ path: `${OUT}/${dev}-${lang}-ana.png` });
     await p.screenshot({ path: `${OUT}/${dev}-${lang}-ana-tam.png`, fullPage: true });
 
@@ -106,8 +107,18 @@ for (const [dev, o] of DEV) {
       if (lang === "en") ok(`${tag}: profil dili notu`, d.text.includes("Turkish only"));
       if (lang === "en") ok(`${tag}: Türkçe arayüz etiketi kalmamış`, !/Gitmeden bilin|Kaynaklar|Neden seçtik|Künye|Mutfaktan|ziyaret edilmedi/.test(d.text));
       if (a.notice) ok(`${tag}: açıklayıcı not`, d.text.includes(a.notice[lang]));
+      if (a.ownership) ok(`${tag}: kurucu ilişkisi künyede`, d.text.includes(a.commercial.detail[lang]));
+      if (a.media) {
+        const m = await p.evaluate(() => ({ cards: [...document.querySelectorAll("[data-video]")].map((x) => x.getAttribute("data-video")), press: [...document.querySelectorAll("section[aria-labelledby=h-medya] a")].map((x) => x.getAttribute("href")) }));
+        ok(`${tag}: video kartları (${a.media.videos.length})`, JSON.stringify(m.cards) === JSON.stringify(a.media.videos.map((v) => v.youtubeId)), m.cards.join(","));
+        ok(`${tag}: basın bağlantıları (${a.media.press.length})`, a.media.press.every((x) => m.press.includes(x.url)));
+        const v0 = a.media.videos[1] ?? a.media.videos[0];
+        await p.click(`[data-video="${v0.youtubeId}"] button`); await p.waitForTimeout(1200);
+        const src = await p.evaluate((id) => document.querySelector(`[data-video="${id}"] iframe`)?.getAttribute("src") ?? "", v0.youtubeId);
+        ok(`${tag}: kart tıklanınca resmî gömme oynatıcı doğru saniyeden açılıyor`, src.startsWith(`https://www.youtube-nocookie.com/embed/${v0.youtubeId}`) && (!v0.start || src.includes(`start=${v0.start}`)), src.replace(/\?.*/, "") + (v0.start ? ` start=${v0.start}` : ""));
+      }
       for (const v of a.venues) linkStatus.set(`/mekan/${v.slug}/`, null);
-      if (a.featured || a.kind === "mutfak" || a.kind === "semt") { await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}.png` }); await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}-tam.png`, fullPage: true }); }
+      if (a.featured || a.ownership || a.kind === "mutfak" || a.kind === "semt") { await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}.png` }); await p.screenshot({ path: `${OUT}/${dev}-${lang}-${a.slug}-tam.png`, fullPage: true }); }
     }
   }
   console.log(`  araç çubuğu istekleri (${dev}): ${[...toolbar].slice(0, 6).join(", ") || "yok"}`);
