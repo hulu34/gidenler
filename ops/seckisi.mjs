@@ -71,7 +71,7 @@ for (const [dev, o] of DEV) {
     ok(`${dev}/${lang}: üst gezinmede görünür Seçki bağlantısı`, home.nav.includes("/seckisi/"));
     ok(`${dev}/${lang}: arama kutusu daralmadı`, home.search >= (dev === "masaustu" ? 300 : 60), `${home.search}px`);
     ok(`${dev}/${lang}: "Mutfaktan" bölümü`, home.bolum === (lang === "tr" ? "Mutfaktan" : "From the Kitchen") || home.bolum?.toLowerCase() === (lang === "tr" ? "mutfaktan" : "from the kitchen"), home.bolum);
-    for (const a of pkg.filter((x) => x.ownership)) ok(`${dev}/${lang}: ana sayfada sahiplik açıklaması (${a.slug})`, home.text.includes(a.ownership[lang]));
+    for (const a of pkg.filter((x) => x.ownership)) ok(`${dev}/${lang}: ana sayfada sahiplik notu ve etiketi yok (${a.slug})`, !home.text.includes(a.ownership[lang]) && !home.text.toLowerCase().includes(a.commercial.label[lang].toLowerCase()));
     await p.screenshot({ path: `${OUT}/${dev}-${lang}-ana.png` });
     await p.screenshot({ path: `${OUT}/${dev}-${lang}-ana-tam.png`, fullPage: true });
 
@@ -113,7 +113,7 @@ for (const [dev, o] of DEV) {
       if (lang === "en") ok(`${tag}: Türkçe arayüz etiketi kalmamış`, !/Gitmeden bilin|Kaynaklar|Neden seçtik|Künye|Mutfaktan|ziyaret edilmedi/.test(d.text));
       if (a.notice) ok(`${tag}: açıklayıcı not`, d.text.includes(a.notice[lang]));
       if (a.ownership) {
-        ok(`${tag}: kurucu ilişkisi künyede`, d.text.includes(a.commercial.detail[lang]));
+        ok(`${tag}: künyede tekrar yok, etiket yok`, !d.text.includes(a.ownership[lang]) && !d.text.toLowerCase().includes(`${a.commercial.label[lang]}\n`.toLowerCase()));
         const fin = a.body[lang][a.body[lang].length - 1].p;
         const pos = await p.evaluate((f) => { const ps = [...document.querySelectorAll("article p")].map((x) => x.innerText.trim()); const i = ps.indexOf(f); const k = ps.findIndex((x) => x.startsWith("Gitmeden") || x.startsWith("Before you go")); return { i, n: ps.length, top: !!document.querySelector('article p[role="note"]') }; }, fin);
         ok(`${tag}: sahiplik cümlesi yazının sonunda, başta not yok`, pos.i >= 0 && !pos.top, JSON.stringify(pos));
