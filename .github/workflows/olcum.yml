@@ -220,7 +220,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/puan-tutarlilik.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PUAN_HOST: gidenler-dnumgm1jf-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PUAN_HOST: gidenler-l3dqgnp5m-hulu34.vercel.app }
       - if: always()
         run: test -d out/puant && tar -C out -czf out/puant.tgz puant && rm -rf out/puant && openssl cms -encrypt -aes256 -binary -in out/puant.tgz -out out/puant.tgz.cms -outform DER ops/olcum.pem && rm out/puant.tgz
       - if: always()

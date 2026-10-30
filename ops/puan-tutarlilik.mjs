@@ -46,6 +46,8 @@ async function snap(tag, dev, opt) {
 const once = await snap("once", "masaustu", ctxs.masaustu);
 ok("önce: detay bekleme metni", once.detay.body.includes(WAIT));
 ok("önce: arama kartı bekleme metni", (once.arama.card ?? "").includes(WAIT), once.arama.card ?? "");
+const meta = async () => { const h = await (await fetch(`https://${HOST}/mekan/${SLUG}/`, { headers: H })).text(); return h.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? ""; };
+{ const m = await meta(); ok("önce: arama açıklaması bekleme metni", m.includes(WAIT) && !m.includes("Henüz"), m.slice(-70)); }
 ok("önce: 0 veya tahmini puan yok", !/Gidenler puanı\s*0/.test(once.detay.body));
 const sc = await post({ action: "puan-senaryo", slug: SLUG }); const sj = await sc.json();
 ok("puan-senaryo", sc.ok && sj.ok, `${sc.status} ${(sj.results ?? []).filter((x) => !x.ok).map((x) => x.name).join(";")}`);
@@ -54,6 +56,8 @@ ok("deneme eşiği senaryosu (alt, eşit, aşım, ilk puan, düşüş, eşzamanl
 const rp = await (await fetch(`${admin}?rapor=puan`, { headers: H })).json();
 const row = rp.rows?.find((r) => r.slug === SLUG); const sc10 = row?.previous?.score ?? row?.score; const txt = sc10?.toFixed(1).replace(".", ",");
 ok("raporda yayımlanmış puan", typeof sc10 === "number", JSON.stringify(row ?? {}).slice(0, 160));
+await fetch(`https://${HOST}/mekan/${SLUG}/`, { headers: H }); await new Promise((r) => setTimeout(r, 3000));
+{ const m = await meta(); ok("sonra: arama açıklaması aynı puan", m.includes(`${txt}/10`) && !m.includes(WAIT), m.slice(-70)); }
 /* tazelik ölçümü: yayından sonra detay ve kart listesi kaç istekte güncelleniyor */
 for (let i = 0; i < 6; i++) {
   const t = async (u) => { const r = await fetch(`https://${HOST}${u}`, { headers: H }); const h = await r.text(); return `${h.includes(`${txt}`) && !h.includes(WAIT) ? "taze" : "eski"} (${r.headers.get("x-vercel-cache")})`; };
