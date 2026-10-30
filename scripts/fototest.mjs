@@ -2,7 +2,7 @@
 import { mkdtempSync, mkdirSync, writeFileSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import sharp from "sharp";
-import { markCopies, robotsAllows, imageUrls, pageLinks, guessKind, measure, score, scanVenue } from "./foto-kesif.mjs";
+import { hamming, markCopies, robotsAllows, imageUrls, pageLinks, guessKind, measure, score, scanVenue } from "./foto-kesif.mjs";
 import { apply, remove, readReg } from "./foto-uygula.mjs";
 let pass = 0, fail = 0; const ok = (n, c, i = "") => { c ? pass++ : fail++; console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 ok("robots engeller", !robotsAllows("User-agent: *\nDisallow: /galeri", "/galeri/1"));
@@ -17,8 +17,10 @@ const big = await sharp({ create: { width: 1600, height: 1000, channels: 3, back
 const m = await measure(big); ok("ölçüm", m.w === 1600 && m.hash.length === 16); ok("puan 0-100", score(m, "yemek") <= 100 && score(m, "yemek") > 50, String(score(m, "yemek")));
 const none = await scanVenue({ slug: "s", name: "S" }); ok("sitesiz mekân: istek yok, adaysız", none.durum === "site_yok" && none.adaylar.length === 0);
 const ig = await scanVenue({ slug: "s", name: "S", website: "https://www.instagram.com/x/" }); ok("sosyal bağlantı site sayılmaz", ig.durum === "site_yok");
-const cp = markCopies([{ slug: "a", adaylar: [{ hash: "h", puan: 90 }] }, { slug: "b", adaylar: [{ hash: "h", puan: 80 }, { hash: "z", puan: 70 }] }]);
+const cp = markCopies([{ slug: "a", adaylar: [{ hash: "0000000000000000", puan: 90 }] }, { slug: "b", adaylar: [{ hash: "0000000000000001", puan: 80 }, { hash: "ffffffffffffffff", puan: 70 }] }]);
 ok("iki işletmede aynı görsel kopya sayılır, puanı düşer", cp[0].adaylar[0].kopya && cp[0].adaylar[0].puan === 50 && !cp[1].adaylar[1].kopya);
+ok("yakın kopya uzaklığı", hamming("ff00", "ff01") === 1 && hamming("0f", "f0") === 8);
+ok("ölçümsüz aday kopya testini bozmaz", markCopies([{ slug: "a", adaylar: [{ puan: 1 }] }, { slug: "b", adaylar: [{ hash: "00", puan: 1 }] }])[0].adaylar[0].puan === 1);
 const root = mkdtempSync(`${tmpdir()}/foto-`); mkdirSync(`${root}/data/real`, { recursive: true }); writeFileSync(`${root}/data/real/izinli-fotograflar.json`, "{}");
 const get = async () => new Response(big);
 const bad = await apply(root, [{ slug: "a", url: "https://x/1.jpg", credit: "K", license: "" }], get); ok("hak kaydı yoksa kopyalanmaz", !bad[0].ok && !readReg(root).a && !existsSync(`${root}/public/media/foto`));

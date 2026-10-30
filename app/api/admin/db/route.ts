@@ -5,7 +5,7 @@ import { runThresholdScenario } from "@/lib/community/scoreWatchScenario";
 import { reconcileScores, scorePublishEnabled, CONFIDENCE_LABEL, MIN_AUTHORS, SCORE_ALGORITHM, type RecomputeResult } from "@/lib/score/compute";
 import { rescoreSlug } from "@/lib/community/reviewApi";
 import { runScoreScenario } from "@/lib/score/scenario";
-import { decidePhotoCandidate, listPhotoCandidates, loadPhotoCandidates } from "@/lib/media/photoCandidates";
+import { approvedPhotoCandidates, decidePhotoCandidate, listPhotoCandidates, loadPhotoCandidates } from "@/lib/media/photoCandidates";
 import { googlePolicyStats, setGooglePolicy } from "@/lib/providers/googlePolicy";
 import { applyProfile, ProfileInput, readProfile, rollbackProfile } from "@/lib/profile";
 import { uuidv7 } from "uuidv7";
@@ -78,6 +78,9 @@ export async function GET(req: Request) {
   /* ?rapor=foto-adaylar → aday havuzu (yalnız okuma) */
   if (new URL(req.url).searchParams.get("rapor") === "foto-adaylar") {
     try { return NextResponse.json({ env: envName(), candidates: await listPhotoCandidates() }, { headers: H }); } catch (e) { return fail(e); }
+  }
+  if (new URL(req.url).searchParams.get("rapor") === "foto-onayli") {
+    try { return NextResponse.json({ env: envName(), approved: await approvedPhotoCandidates() }, { headers: H }); } catch (e) { return fail(e); }
   }
   /* ?rapor=google-slug → Google içeriği gösterilebilen restoranlar (yalnız okuma; sayfalar lib/live ile dinamik okur) */
   if (new URL(req.url).searchParams.get("rapor") === "google-slug") {

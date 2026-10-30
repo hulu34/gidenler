@@ -9,7 +9,7 @@ import { auditLog, fieldProvenance, mediaItems, mediaPlaces, places } from "@/li
    · Onay yalnız hak kaydıyla: izin türü + kanıt metni + editör. Resmî sitede bulunmak izin değildir.
    · Bu havuz kapağı DEĞİŞTİRMEZ: kapak yalnız data/real/izinli-fotograflar.json'dan okunur. Onaylı görsel, scripts/foto-uygula.mjs ile kopyalanıp kayda girer. */
 
-const Cand = z.object({ url: z.string().url().max(800), sayfa: z.string().url().max(800), tur: z.string().max(20), w: z.number(), h: z.number(), puan: z.number(), alt: z.string().max(200).optional(), kopya: z.boolean().optional(), sharp: z.number().optional(), entropy: z.number().optional(), hash: z.string().optional(), kontrol: z.string() }).passthrough();
+const Cand = z.object({ url: z.string().url().max(800), sayfa: z.string().url().max(800), tur: z.string().max(20), w: z.number(), h: z.number(), puan: z.number(), alt: z.string().max(200).optional(), kopya: z.boolean().optional(), sharp: z.number().optional(), entropy: z.number().optional(), hash: z.string().optional(), kontrol: z.string(), kaynakTuru: z.string().optional(), yazar: z.string().optional(), lisans: z.string().optional(), onInceleme: z.string().max(120).optional() }).passthrough();
 const LoadInput = z.array(z.object({ slug: z.string(), subeKaniti: z.boolean().optional(), adaylar: z.array(Cand).max(30) })).max(100);
 const KIND: Record<string, string> = { yemek: "yemek", ic: "ic", dis: "dis" };
 
@@ -25,9 +25,14 @@ export async function loadPhotoCandidates(raw: unknown) {
     if (!pl) { missing++; continue; }
     for (const a of v.adaylar) {
       const [old] = await db.select({ id: mediaItems.id }).from(mediaItems).where(eq(mediaItems.url, a.url)).limit(1);
-      if (old) { kept++; await db.insert(mediaPlaces).values({ mediaId: old.id, placeId: pl.id }).onConflictDoNothing(); continue; }
+      if (old) {
+        kept++; await db.insert(mediaPlaces).values({ mediaId: old.id, placeId: pl.id }).onConflictDoNothing();
+        /* ön inceleme notu sonradan gelebilir: yeni satır, kararı değiştirmez */
+        if (a.onInceleme) await db.insert(fieldProvenance).values({ id: uuidv7(), placeId: pl.id, field: "photo.candidate", value: JSON.stringify({ mediaId: old.id, ...a, subeKaniti: v.subeKaniti ?? null }), provider: "kesif", fetchedAt: now });
+        continue;
+      }
       const id = uuidv7();
-      await db.insert(mediaItems).values({ id, type: "photo", platform: "resmi_site", url: a.url, storageClass: "id_only", category: KIND[a.tur] ?? null, credit: new URL(a.sayfa).host, source: "auto", status: "pending", lastCheckedAt: now });
+      await db.insert(mediaItems).values({ id, type: "photo", platform: a.kaynakTuru === "commons" ? "commons_aday" : "resmi_site", url: a.url, storageClass: "id_only", category: KIND[a.tur] ?? null, credit: a.yazar ?? new URL(a.sayfa).host, source: "auto", status: "pending", lastCheckedAt: now });
       await db.insert(mediaPlaces).values({ mediaId: id, placeId: pl.id });
       await db.insert(fieldProvenance).values({ id: uuidv7(), placeId: pl.id, field: "photo.candidate", value: JSON.stringify({ mediaId: id, ...a, subeKaniti: v.subeKaniti ?? null }), provider: "kesif", fetchedAt: now });
       added++;
@@ -37,14 +42,20 @@ export async function loadPhotoCandidates(raw: unknown) {
   return { ok: true as const, added, kept, missing };
 }
 
+/** Arşive alınacak onaylılar: scripts/foto-uygula.mjs girdisi. */
+export async function approvedPhotoCandidates() {
+  const list = await listPhotoCandidates();
+  return list?.filter((c) => c.status === "approved").map((c) => ({ slug: c.slug, url: c.url, sayfa: c.meta.sayfa, tur: c.meta.tur, credit: c.credit, license: c.license, alt: c.meta.alt })) ?? null;
+}
+
 export async function listPhotoCandidates() {
   const db = getDb();
   if (!db) return null;
   const rows = await db.select({ id: mediaItems.id, url: mediaItems.url, status: mediaItems.status, license: mediaItems.license, credit: mediaItems.credit, category: mediaItems.category, slug: places.slug, name: places.name, placeId: places.id })
     .from(mediaItems).innerJoin(mediaPlaces, eq(mediaPlaces.mediaId, mediaItems.id)).innerJoin(places, eq(places.id, mediaPlaces.placeId))
-    .where(and(eq(mediaItems.type, "photo"), eq(mediaItems.platform, "resmi_site"))).orderBy(desc(mediaItems.createdAt));
+    .where(and(eq(mediaItems.type, "photo"), inArray(mediaItems.platform, ["resmi_site", "commons_aday"]))).orderBy(desc(mediaItems.createdAt));
   const ids = [...new Set(rows.map((r) => r.placeId))];
-  const meta = ids.length ? await db.select({ value: fieldProvenance.value }).from(fieldProvenance).where(and(eq(fieldProvenance.field, "photo.candidate"), inArray(fieldProvenance.placeId, ids))) : [];
+  const meta = ids.length ? await db.select({ value: fieldProvenance.value }).from(fieldProvenance).where(and(eq(fieldProvenance.field, "photo.candidate"), inArray(fieldProvenance.placeId, ids))).orderBy(fieldProvenance.fetchedAt, fieldProvenance.id) : [];
   const byId = new Map<string, Record<string, unknown>>();
   for (const m of meta) { try { const j = JSON.parse(m.value ?? "{}"); byId.set(j.mediaId, j); } catch { /* yok */ } }
   return rows.map(({ placeId: _p, ...r }) => ({ ...r, meta: byId.get(r.id) ?? {} }));
@@ -63,7 +74,7 @@ export async function decidePhotoCandidate(raw: unknown) {
   const p = Decide.safeParse(raw);
   if (!p.success) return { ok: false as const, error: "invalid", issues: p.error.issues.slice(0, 4).map((i) => `${i.path.join(".")}: ${i.message}`) };
   const i = p.data;
-  const [m] = await db.select().from(mediaItems).where(and(eq(mediaItems.id, i.id), eq(mediaItems.type, "photo"), eq(mediaItems.platform, "resmi_site"))).limit(1);
+  const [m] = await db.select().from(mediaItems).where(and(eq(mediaItems.id, i.id), eq(mediaItems.type, "photo"), inArray(mediaItems.platform, ["resmi_site", "commons_aday"]))).limit(1);
   if (!m) return { ok: false as const, error: "not_found" };
   const status = i.decision === "approve" ? "approved" : i.decision === "reject" ? "rejected" : "removed";
   await db.update(mediaItems).set(i.decision === "approve" ? { status, license: `${i.rightsType}: ${i.rightsRef}`, credit: i.credit, lastCheckedAt: new Date() } : { status, lastCheckedAt: new Date() }).where(eq(mediaItems.id, i.id));
