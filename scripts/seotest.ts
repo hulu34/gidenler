@@ -57,9 +57,9 @@ ok("457 kayıt korunur", realEntities.length === 457);
 
 /* kapak kararı */
 const hasCover = realEntities.filter((e) => coverOf(e));
-ok("kapağı olanlar: Japon Erdal (işletme izni), Beyti ve İsmet Baba (açık lisans)", hasCover.map((e) => e.slug).sort().join() === "beyti-lokanta-bakirkoy,ismet-baba-uskudar,japon-erdal-beyoglu", hasCover.map((e) => e.slug).join());
+ok("kapağı olanlar yalnız hak kaydı olan beş mekân", hasCover.map((e) => e.slug).sort().join() === "beyti-lokanta-bakirkoy,ismet-baba-uskudar,japon-erdal-beyoglu,savoy-beyoglu,viktor-levi-sarap-evi-kadikoy", hasCover.map((e) => e.slug).join());
 ok("Japon Erdal kapağı işletme izni, 3 fotoğraf", coverOf(realEntities.find((e) => e.slug === "japon-erdal-beyoglu")!)?.source === "isletme" && realEntities.find((e) => e.slug === "japon-erdal-beyoglu")!.photos?.length === 3);
-ok("kayıttaki her izin restoran profilini kapsıyor ve kendi sunucumuzda", Object.values(izinli).flat().every((p) => /restoran profili/i.test(p.rightsRef) && p.src.startsWith("/seckisi/gorsel/") && existsSync(new URL(`../public${p.src}`, import.meta.url))));
+ok("kayıttaki her görselin hak kaydı var ve kendi sunucumuzda", Object.values(izinli).flat().every((p) => (p.addedBy === "commons" ? /CC BY/.test(p.rightsRef) && !!p.license : /restoran profili/i.test(p.rightsRef)) && p.src.startsWith("/") && existsSync(new URL(`../public${p.src}`, import.meta.url))));
 ok("Google görseli kapağa giremez", !realEntities.some((e) => e.photos?.some((p) => /googleusercontent|googleapis/.test(p.src))));
 ok("demo kayıtta kapak yok", coverOf({ ...hasCover[0], isDemo: true }) === null);
 ok("fotoğrafsız kayıtta kapak yok", coverOf(bare) === null || !!bare.photos?.length);
