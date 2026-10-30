@@ -1,18 +1,17 @@
 /* PREVIEW · pilot: tarar (Actions'tan), iki tur (durum izleme), adayları yalnız Preview havuzuna yükler. Üretime yazmaz. */
-import { execFileSync } from "node:child_process"; import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright";
 const HOST = process.env.SEO_HOST, H = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS }, OUT = "out/foto", A = `https://${HOST}/api/admin/db/`, W = "https://www.gidenler.com"; mkdirSync(OUT, { recursive: true });
 const res = []; const ok = (n, c, i = "") => { res.push(!!c); console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const rj = async (q) => (await fetch(`${A}?rapor=${q}`, { headers: H })).json();
 const env = (await rj("foto-adaylar")).env; ok("hedef preview", env === "preview", env); if (env !== "preview") process.exit(1);
-const run = (o) => execFileSync("node", ["ops/foto/foto-kesif.mjs", "ops/foto/pilot.json", o, `${OUT}/durum.json`], { stdio: "pipe", maxBuffer: 1e8 }).toString();
-const t0 = Date.now(); run(`${OUT}/adaylar.json`); const dk = ((Date.now() - t0) / 60000).toFixed(1);
-const R = JSON.parse(readFileSync(`${OUT}/adaylar.json`, "utf8"));
-const t1 = Date.now(); run(`${OUT}/ikinci.json`); const R2 = JSON.parse(readFileSync(`${OUT}/ikinci.json`, "utf8"));
-console.log(`SURE ilk ${dk} dk, ikinci ${((Date.now() - t1) / 60000).toFixed(1)} dk; ikinci turda değişmeyen ${R2.filter((r) => r.durum === "degismedi").length}`);
+const R = JSON.parse(readFileSync("ops/foto/adaylar.json", "utf8"));
 const c = (f) => R.filter(f).length;
 console.log("OZET", JSON.stringify({ taranan: R.length, sitesi: c((r) => r.website && r.durum !== "site_yok"), erisilen: c((r) => r.sayfa > 0), instagram: c((r) => r.instagramDogrulandi), aday: R.reduce((a, r) => a + r.adaylar.length, 0), adayliMekan: c((r) => r.adaylar.length), kaliteli: c((r) => r.adaylar.some((a) => a.puan >= 65 && !a.kopya)), kopya: R.reduce((a, r) => a + r.adaylar.filter((x) => x.kopya).length, 0), durum: R.reduce((m, r) => (m[r.durum] = (m[r.durum] ?? 0) + 1, m), {}) }));
-for (let i = 0; i < R.length; i += 10) { const venues = R.slice(i, i + 10).map(({ slug, subeKaniti, adaylar }) => ({ slug, subeKaniti, adaylar })); const r = await fetch(A, { method: "POST", headers: { ...H, "content-type": "application/json", "sec-fetch-site": "same-origin" }, body: JSON.stringify({ action: "photo-candidates-load", confirm: "EVET", target: "preview", venues }) }); const j = await r.json().catch(() => ({})); ok(`yükleme ${i}`, r.ok, JSON.stringify({ a: j.added, k: j.kept, m: j.missing, e: j.error, i: j.issues })); }
+const withC = R.filter((r) => r.adaylar.length);
+for (let i = 0; i < withC.length; i += 2) { const venues = withC.slice(i, i + 2).map(({ slug, subeKaniti, adaylar }) => ({ slug, subeKaniti, adaylar }));
+  let r, j = {}; for (let t = 0; t < 3; t++) { try { r = await fetch(A, { method: "POST", headers: { ...H, "content-type": "application/json", "sec-fetch-site": "same-origin", connection: "close" }, body: JSON.stringify({ action: "photo-candidates-load", confirm: "EVET", target: "preview", venues }) }); j = await r.json().catch(() => ({})); if (r.ok) break; } catch (e) { console.log("yeniden", e.message); await new Promise((x) => setTimeout(x, 3000)); } }
+  ok(`yükleme ${i}`, r?.ok, JSON.stringify({ a: j.added, k: j.kept, m: j.missing, e: j.error, i: j.issues, s: r?.status })); }
 const L = (await rj("foto-adaylar")).candidates ?? []; console.log("HAVUZ", L.length, L.filter((x) => x.status === "pending").length);
 ok("havuzda onaylı yok, hepsi bağlantı", L.every((x) => x.status === "pending"));
 const b = await chromium.launch({ channel: "chrome" });
