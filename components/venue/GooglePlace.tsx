@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useGoogleView } from "./media/googleView";
+import { requestGoogleView, useGoogleView } from "./media/googleView";
 import { GoogleMapsLogo } from "./media/GoogleAttribution";
 
 /* GOOGLE BÖLÜMÜ — Google Places (New), sunucu vekili üzerinden canlı; hiçbir şey saklanmaz.
-   Google ile doğrulanmış (onaylı ya da otomatik eşleşmiş) restoranda kullanıcıdan işlem İSTEMEZ:
-   · Puan ve değerlendirme sayısı başlıkta (GoogleRatingBadge) sayfa açılınca görünür.
-   · Yorumlar ve çalışma saatleri bu bölümde kendiliğinden gelir; veriler sayfanın tek isteğinden (googleView),
-     yorum listesi ve yazar fotoğrafları bölüm ekrana yaklaşınca çizilir (ek API isteği yok).
+   Yalnız izinli restoranda ve kullanıcı düğmeye basınca:
+   · Puan ve değerlendirme sayısı başlıkta (GoogleRatingBadge), yorumlar ve saatler bu bölümde görünür.
+   · Veriler tek istekten gelir (googleView); yorum listesi bölüm ekrana yaklaşınca çizilir (ek API isteği yok).
    Google Maps Platform kuralları: içerik canlı · yorum yazarı adı/fotoğrafı/profili · kaynağa bağlantı ·
    "Google Maps" atfı · yorumlar Google'ın sırasıyla · Google içeriği OSM haritasıyla birlikte gösterilmez
    ("gidenler:google" olayı haritayı gizler). Sınır dolarsa ya da hata olursa yalnız Haritalar bağlantısı. */
@@ -20,7 +19,7 @@ const Stars = ({ v }: { v: number }) => (
 /** Başlıktaki Google puanı: yer baştan ayrılır (sayfa kayması yok); veri yoksa boş kalır. */
 export function GoogleRatingBadge({ slug, google }: { slug: string; google: boolean }) {
   const g = useGoogleView(slug, google);
-  if (!google) return null;
+  if (!google || g.k === "idle" || g.k === "off") return null;
   const v = g.k === "ok" ? g.v : null;
   return (
     <div className="flex min-h-[38px] items-center" aria-live="polite">
@@ -58,6 +57,12 @@ export function GooglePlace({ slug, name, mapsUrl, google }: { slug: string; nam
   ) : null;
   if (g.k === "limited") return <div className="flex flex-col gap-2"><p className="text-[12.5px] text-ink-3">Google bilgileri şu an gösterilemiyor.</p>{link}</div>;
   if (!google || g.k === "off") return link;
+  if (g.k === "idle") return (
+    <div className="flex flex-col gap-2">
+      <button type="button" onClick={() => requestGoogleView(slug)} className="self-start border border-line-strong px-4 py-2.5 text-[13.5px] font-bold hover:bg-ink hover:text-paper">Google puanı, yorumları ve saatlerini göster</button>
+      {link}
+    </div>
+  );
   if (g.k === "loading") return <div className="h-40 animate-pulse border border-line bg-sheet" aria-label="Google bilgisi yükleniyor" />;
 
   const p = g.v;

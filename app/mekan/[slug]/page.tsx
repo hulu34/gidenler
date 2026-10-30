@@ -166,7 +166,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const profileNav: TopicSection[] = rp ? [
     { id: "genel", label: "Genel bakış" },
     { id: "menu", label: "Menü" },
-    { id: "fotograflar", label: "Fotoğraflar" },
+    ...(entity.photos?.length || google ? [{ id: "fotograflar", label: "Fotoğraflar" }] : []),
     ...(nVideos ? [{ id: "videolar", label: "Videolar" }] : []),
     { id: "deneyimler", label: "Deneyimler" },
     ...(google ? [{ id: "google", label: "Google" }] : []),
@@ -252,7 +252,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </header>
 
       {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
-      {(entity.isReal || entity.photos?.length) && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} /></div>}
+      {(entity.isReal || entity.photos?.length) && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} mapsUrl={mapLinks(entity)?.googleMaps} /></div>}
       {esik && <div className="mt-4 sm:hidden"><ThresholdBar v={esik} /></div>}
 
       {rp && (

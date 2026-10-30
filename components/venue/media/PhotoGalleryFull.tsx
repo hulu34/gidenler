@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
 import { CAT_LABEL, fromVenuePhotos, responsive, SOURCE_LABEL, type PhotoCat, type ViewPhoto } from "./photos";
-import { loadMoreGooglePhotos, useGoogleView, type GRef } from "./googleView";
+import { loadMoreGooglePhotos, requestGoogleView, useGoogleView, type GRef } from "./googleView";
 import { GoogleMapsText } from "./GoogleAttribution";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -84,6 +84,9 @@ export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string;
         </div>
       ) : null}
 
+      {google && g.k === "idle" && (
+        <button type="button" onClick={() => requestGoogleView(slug)} className="self-start text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Google fotoğraflarını göster</button>
+      )}
       {google && g.k === "loading" && (
         <div className="columns-2 gap-2 sm:columns-3 lg:columns-4 [&>div]:mb-2" aria-busy="true">{[0, 1, 2, 3].map((i) => <div key={i} className="aspect-[4/3] animate-pulse bg-sheet" />)}</div>
       )}

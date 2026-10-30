@@ -5,14 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
 import { fromVenuePhotos, responsive, type ViewPhoto } from "./photos";
-import { loadMoreGooglePhotos, useGoogleView, type GRef } from "./googleView";
+import { loadMoreGooglePhotos, requestGoogleView, useGoogleView, type GRef } from "./googleView";
 import { GoogleMapsText } from "./GoogleAttribution";
 
 /* ──────────────────────────────────────────────────────────────────────────
    KAPAK MOZAİĞİ — başlığın hemen altında: bir büyük kapak + dört küçük kare (Tabelog'un üst şeridi gibi).
-   · Fotoğraf yoksa büyük boş alan YOK: tek satırlık ince şerit.
-   · Google ile doğrulanmış restoranda Google fotoğrafları sayfa açılınca kendiliğinden mozaiğe girer (düğme yok);
-     her karede sahibi ve "Google Maps" atfı yazılır. Yüklenirken mozaik yeri ayrılır (sayfa kayması yok).
+   · Fotoğraf yoksa büyük boş alan YOK: tek satırlık ince şerit ve Google Haritalar bağlantısı (ücretsiz).
+   · Google'a izinli restoranda fotoğraflar yalnız kullanıcı düğmeye basınca gelir; her karede sahibi ve "Google Maps" atfı yazılır.
    · Google sınırı/hatası: yalnız Gidenler fotoğrafları ya da ince şerit — sayfa bozulmaz.
    · İlk kare yüksek öncelikle, diğerleri geç yüklenir; kareler sabit oranlı (sayfa kayması yok).
    ────────────────────────────────────────────────────────────────────────── */
@@ -32,7 +31,7 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
   );
 }
 
-export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean }) {
+export function PhotoMosaic({ slug, name, photos, google, mapsUrl }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean; mapsUrl?: string }) {
   const own = fromVenuePhotos(photos);
   const g = useGoogleView(slug, google);
   /* mobil şeritte kalan Google kareleri: kullanıcı şeridi kaydırdıkça 2'şer (masaüstünde ilk istek 5'i getirir) */
@@ -78,32 +77,20 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
     );
   }
 
-  /* Google'lı restoranda Google içeriği gelmedi (günlük/aylık sınır, kişi başı sınır ya da hata):
-     ayrılan yer korunur, Gidenler bilgisiyle sakin bir kapak — sayfa kaymaz, bozulmaz. */
-  if (!all.length && google) {
-    return (
-      <section aria-label={`${name} fotoğrafları`} className="mt-5">
-        <div className="-mx-5 flex px-5 sm:mx-0 sm:h-[clamp(260px,38vw,440px)] sm:px-0">
-          <div className="relative flex aspect-[4/3] w-[86%] shrink-0 flex-col justify-end gap-2 overflow-hidden border border-line bg-sheet p-5 sm:aspect-auto sm:w-full">
-            <span aria-hidden className="absolute -right-6 -top-10 select-none text-[180px] font-extrabold leading-none text-line">▦</span>
-            <p className="relative text-[20px] font-extrabold tracking-[-0.02em]">{name}</p>
-            <p className="relative max-w-[46ch] text-[13px] text-ink-2">Fotoğraflar şu an yüklenemedi. Henüz Gidenler fotoğrafı yok; fotoğraf yükleme yakında.</p>
-            <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name)}`} target="_blank" rel="noopener noreferrer" className="relative self-start text-[13px] font-semibold underline underline-offset-4">Fotoğraflar Google Haritalar&apos;da ↗</a>
-          </div>
-        </div>
-        <p className="mt-2 min-h-[34px] sm:min-h-[18px]" aria-hidden />
-      </section>
-    );
-  }
+  /* Google düğmesi: yalnız izinli restoranda, kullanıcı isteyene kadar çağrı yok */
+  const ask = google && g.k === "idle" ? (
+    <button type="button" onClick={() => requestGoogleView(slug)} className="text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Google fotoğraflarını göster</button>
+  ) : null;
+  const toMaps = mapsUrl ? <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Fotoğrafları Google Haritalar&apos;da gör ↗</a> : null;
 
-  /* fotoğraf yok: ince şerit */
+  /* fotoğraf yok: ince şerit; boş mozaik ya da yer tutucu görsel yok */
   if (!all.length) {
     return (
       <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-y border-line py-2.5">
         <p className="text-[13px] text-ink-2">
-          <span aria-hidden className="mr-1.5">▦</span>Henüz Gidenler fotoğrafı yok.
-          <span className="text-ink-3"> Fotoğraf yükleme yakında.</span>
+          <span aria-hidden className="mr-1.5">▦</span>{g.k === "limited" ? "Google fotoğrafları şu an gösterilemiyor." : "Henüz Gidenler fotoğrafı yok."}
         </p>
+        <span className="flex flex-wrap items-center gap-x-4 gap-y-1">{ask}{toMaps}</span>
       </div>
     );
   }
@@ -146,11 +133,12 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
       </div>
 
       {/* atıf satırı: yüklenirken ve sonra aynı yükseklik (sayfa kayması yok) */}
-      <div className={`mt-2 flex flex-wrap items-center justify-between gap-2 text-[11.5px] text-ink-3 ${google ? "min-h-[34px] sm:min-h-[18px]" : ""}`}>
+      <div className={`mt-2 flex flex-wrap items-center justify-between gap-2 text-[11.5px] text-ink-3 ${hasGoogle ? "min-h-[34px] sm:min-h-[18px]" : ""}`}>
         <span>
           {own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
           {hasGoogle && <>Google fotoğrafları sahiplerine aittir; büyütünce sahibi ve Google Haritalar bağlantısı görünür.</>}
         </span>
+        {ask}
       </div>
 
       {open !== null && <Lightbox photos={all} index={open} onIndex={setOpen} onClose={() => setOpen(null)} title={name} />}

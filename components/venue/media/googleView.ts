@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import type { ViewPhoto } from "./photos";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   GOOGLE GÖRÜNÜMÜ — sayfa başına TEK istek, sayfadaki bütün parçalar paylaşır.
+   GOOGLE GÖRÜNÜMÜ — yalnız kullanıcı isteyince (requestGoogleView) ve sayfa başına TEK istek; bütün parçalar paylaşır.
+   · Sayfa açılışı ücretli çağrı yapmaz; izinli mekânda bile düğmeye basılana kadar istek yok. Sunucuda izin kapısı ayrıca çalışır.
    · Puan rozeti, kapak mozaiği, yorum bölümü ve fotoğraflar sayfası aynı sözü (promise) kullanır:
      aynı sayfada ikinci istek yok; mekân → fotoğraflar sayfası geçişinde de tekrar istek yok.
    · Bellekte yalnız bu sekmenin ömrü boyunca tutulur (sayfa yenilenince biter); hiçbir yere yazılmaz.
@@ -15,7 +16,7 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export interface GReview { author: string; authorUri?: string; authorPhoto?: string; rating: number; text: string; when: string; uri?: string; flagUri?: string; translated?: boolean }
 export interface GRef { name: string; w?: number; h?: number; author: string; authorUri?: string; authorPhoto?: string; mapsUri?: string; flagUri?: string }
 export interface GView { rating?: number; count?: number; mapsUri?: string; hours: string[]; reviews: GReview[]; photos: ViewPhoto[]; refs: GRef[]; total: number }
-export type GState = { k: "loading" } | { k: "ok"; v: GView } | { k: "off" } | { k: "limited" };
+export type GState = { k: "idle" } | { k: "loading" } | { k: "ok"; v: GView } | { k: "off" } | { k: "limited" };
 
 type Raw = { src: string; author: string; authorUri?: string; authorPhoto?: string; w?: number; h?: number; mapsUri?: string; flagUri?: string };
 /* sourceUrl = fotoğrafın Google Haritalar'daki kaynağı (zorunlu doğrudan erişim); flagUri = içerik bildirme */
@@ -43,18 +44,32 @@ export function loadGoogleView(slug: string): Promise<GState> {
   return p;
 }
 
+/* Kullanıcı isteği: bu sekmede hangi mekân için Google içeriği istendi. Yalnız bu çağrı isteği başlatır. */
+const requested = new Set<string>();
+const listeners = new Set<() => void>();
+export function requestGoogleView(slug: string) {
+  requested.add(slug);
+  listeners.forEach((l) => l());
+}
+
 export function useGoogleView(slug: string, enabled: boolean): GState {
-  const [s, setS] = useState<GState>(enabled ? { k: "loading" } : { k: "off" });
+  const [s, setS] = useState<GState>(enabled ? { k: "idle" } : { k: "off" });
   useEffect(() => {
     if (!enabled) return;
     let alive = true;
-    loadGoogleView(slug).then((r) => {
-      if (!alive) return;
-      setS(r);
-      /* Google içeriği gösteriliyor: Google olmayan harita (OSM) gizlenir */
-      if (r.k === "ok") window.dispatchEvent(new CustomEvent("gidenler:google"));
-    });
-    return () => { alive = false; };
+    const start = () => {
+      if (!requested.has(slug)) return;
+      setS({ k: "loading" });
+      loadGoogleView(slug).then((r) => {
+        if (!alive) return;
+        setS(r);
+        /* Google içeriği gösteriliyor: Google olmayan harita (OSM) gizlenir */
+        if (r.k === "ok") window.dispatchEvent(new CustomEvent("gidenler:google"));
+      });
+    };
+    start();
+    listeners.add(start);
+    return () => { alive = false; listeners.delete(start); };
   }, [slug, enabled]);
   return s;
 }

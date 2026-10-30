@@ -63,12 +63,17 @@ class FakeRedis {
     if (script.startsWith("-- undo")) { keys.forEach((k) => this.m.set(k, (this.m.get(k) ?? 0) - 1)); return 1; }
     if (script.includes("local spend")) {
       /* counter.ts LUA: kalem sınırları + toplam harcama tavanı (aynı sıra ve anlamla) */
-      const [mk, dk, ...all] = keys; const mm = (this.m.get(mk) ?? 0) + 1, dd = (this.m.get(dk) ?? 0) + 1;
+      const [mk, dk, ...rest] = keys; const mm = (this.m.get(mk) ?? 0) + 1, dd = (this.m.get(dk) ?? 0) + 1;
       if (mm > Number(args[0]) || dd > Number(args[1])) return 0;
       this.m.set(mk, mm); this.m.set(dk, dd);
-      let spend = 0;
-      all.forEach((k, i) => { const n = this.m.get(k) ?? 0, free = Number(args[5 + i * 2]), micro = Number(args[6 + i * 2]); if (n > free) spend += (n - free) * micro; });
+      const items = rest.length / 2; let spend = 0, today = 0;
+      for (let i = 0; i < items; i++) {
+        const n = this.m.get(rest[i]) ?? 0, t = this.m.get(rest[items + i]) ?? 0, free = Number(args[6 + i * 2]), micro = Number(args[7 + i * 2]);
+        if (n > free) spend += (n - free) * micro;
+        const before = Math.max(n - t, free); if (n > before) today += (n - before) * micro;
+      }
       if (spend > Number(args[4])) { this.m.set(mk, mm - 1); this.m.set(dk, dd - 1); return -1; }
+      if (today > Number(args[5])) { this.m.set(mk, mm - 1); this.m.set(dk, dd - 1); return -2; }
       return mm;
     }
     if (script.includes("local floor")) {
@@ -657,6 +662,10 @@ async function main() {
     const dayR = (await fresh()) as unknown as RedisLike & { m: Map<string, number> }; setRedisForTests(dayR);
     dayR.m.set(periodKeys("google:photo").month, 1000 + 430); dayR.m.set(periodKeys("google:photo").day, 430);
     ok("günlük tavan dolunca (430 × $0,007 = $3,01) çağrı durur, aylık tavan aynı", (await reserve("google:photo")).ok === false && MONTHLY_USD_CAP === 100 && dailyUsdCap() === 3);
+    dayR.m.set(periodKeys("google:photo").month, 1000); dayR.m.set(periodKeys("google:photo").day, 0);
+    const rs = await Promise.all(Array.from({ length: 600 }, () => reserve("google:photo")));
+    const dayG = rs.filter((r) => r.ok).length, dayRej = rs.filter((r) => !r.ok && r.reason === "day_cap").length;
+    ok("600 eşzamanlı istekte günlük tavan: 428 izin, fazlası sayaca yazılmaz", dayG === 428 && dayRej === 172 && dayR.m.get(periodKeys("google:photo").day) === 428, `${dayG}/${dayRej}`);
     ok("günlük tavan yalnız bugünkü ücretli kısmı sayar", daySpendUsd({ "google:photo": 1200 }, { "google:photo": 300 }) === 1.4);
     process.env.GOOGLE_DAILY_USD_CAP = "50"; ok("ortam değişkeni günlük tavanı yükseltemez", dailyUsdCap() === 3); delete process.env.GOOGLE_DAILY_USD_CAP;
     /* eski testler için */

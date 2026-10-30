@@ -12,7 +12,7 @@ Yeni bir ücretli Google çağrısı bu kapıdan geçmeden eklenmez.
 
 ## Bütçe
 
-Aylık tavan 100 USD, günlük 3 USD. Ortam değişkenleri yalnız aşağı çeker. IP başına saatte 10 sayfa görüntüsü. Google verisi saklanmaz, önbelleğe alınmaz; yalnız `place_id` tutulur.
+Aylık tavan 100 USD, günlük 3 USD; ikisi de aynı atomik Redis betiğinde. Ortam değişkenleri yalnız aşağı çeker. IP başına saatte 10 sayfa görüntüsü. Google içeriği yalnız kullanıcı isteyince yüklenir. Google verisi saklanmaz, önbelleğe alınmaz; yalnız `place_id` tutulur.
 
 ## Zenginleştirmeden önce üç soru
 
