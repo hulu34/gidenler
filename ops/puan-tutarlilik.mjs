@@ -54,7 +54,12 @@ ok("deneme eşiği senaryosu (alt, eşit, aşım, ilk puan, düşüş, eşzamanl
 const rp = await (await fetch(`${admin}?rapor=puan`, { headers: H })).json();
 const row = rp.rows?.find((r) => r.slug === SLUG); const sc10 = row?.previous?.score ?? row?.score; const txt = sc10?.toFixed(1).replace(".", ",");
 ok("raporda yayımlanmış puan", typeof sc10 === "number", JSON.stringify(row ?? {}).slice(0, 160));
-await new Promise((r) => setTimeout(r, 8000));
+/* tazelik ölçümü: yayından sonra detay ve kart listesi kaç istekte güncelleniyor */
+for (let i = 0; i < 6; i++) {
+  const t = async (u) => { const r = await fetch(`https://${HOST}${u}`, { headers: H }); const h = await r.text(); return `${h.includes(`${txt}`) && !h.includes(WAIT) ? "taze" : "eski"} (${r.headers.get("x-vercel-cache")})`; };
+  console.log(`  tazelik ${i * 5}s · detay ${await t(`/mekan/${SLUG}/`)} · gercek ${await t("/gercek/")}`);
+  await new Promise((r) => setTimeout(r, 5000));
+}
 for (const [dev, opt] of Object.entries(ctxs)) {
   const s = await snap("sonra", dev, opt);
   ok(`${dev} detay: ${txt}/10, kaynak Gidenler kullanıcıları`, s.detay.body.includes(`${txt}/10`) && s.detay.body.includes("Gidenler kullanıcılarının"));
