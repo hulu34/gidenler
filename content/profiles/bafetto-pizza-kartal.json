@@ -1,0 +1,34 @@
+{
+  "slug": "bafetto-pizza-kartal",
+  "address": {
+    "value": "Atalar Mah., Halit Paşa Cad. No:84/A, Kartal, İstanbul",
+    "provider": "official_site",
+    "url": "https://bafetto.com.tr/subeler",
+    "checkedAt": "2026-10-30"
+  },
+  "phone": {
+    "value": "+90 216 374 20 20",
+    "provider": "official_site",
+    "url": "https://bafetto.com.tr/subeler",
+    "checkedAt": "2026-10-30"
+  },
+  "website": {
+    "value": "https://bafetto.com.tr/",
+    "provider": "official_site",
+    "url": "https://bafetto.com.tr/subeler",
+    "checkedAt": "2026-10-30"
+  },
+  "instagram": {
+    "value": "bafetto_pizza",
+    "provider": "official_site",
+    "url": "https://bafetto.com.tr/",
+    "checkedAt": "2026-10-30"
+  },
+  "hours": {
+    "value": "Mo-Su 11:00-22:30",
+    "provider": "official_site",
+    "url": "https://bafetto.com.tr/subeler",
+    "checkedAt": "2026-10-30"
+  },
+  "_kaynak_notu": "Şube sayfası: Kartal Şubesi. Koordinat adresle 134 m uyumlu (Nominatim). Menü sayfası var, kalemler aktarılmadı."
+}

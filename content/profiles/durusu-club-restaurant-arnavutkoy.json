@@ -1,0 +1,16 @@
+{
+  "slug": "durusu-club-restaurant-arnavutkoy",
+  "address": {
+    "value": "Durusu Club Hotel, Deli Yunus Çiftliği Mevkii, Boyalık Köyü, Durusu Park, Arnavutköy, İstanbul",
+    "provider": "official_site",
+    "url": "https://www.durusuclubhotel.com/iletisim/iletisim/",
+    "checkedAt": "2026-10-30"
+  },
+  "website": {
+    "value": "https://www.durusuclubhotel.com/",
+    "provider": "official_site",
+    "url": "https://www.durusuclubhotel.com/iletisim/iletisim/",
+    "checkedAt": "2026-10-30"
+  },
+  "_kaynak_notu": "Adres otelin; restoran otel içinde. Koordinat otel kaydıyla 46 m uyumlu. 444 2 874 satış ofisi olduğu için restoran telefonu olarak yazılmadı."
+}

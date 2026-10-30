@@ -1,0 +1,22 @@
+{
+  "slug": "pidem-fatih",
+  "address": {
+    "value": "Historia AVM, Akşemsettin Mah., Adnan Menderes Bulvarı No:2-4, Fatih, İstanbul",
+    "provider": "official_site",
+    "url": "https://www.pidem.com.tr/kurumsal/restoranlarimiz",
+    "checkedAt": "2026-10-30"
+  },
+  "website": {
+    "value": "https://www.pidem.com.tr/",
+    "provider": "official_site",
+    "url": "https://www.pidem.com.tr/kurumsal/restoranlarimiz",
+    "checkedAt": "2026-10-30"
+  },
+  "instagram": {
+    "value": "pidemtr",
+    "provider": "official_site",
+    "url": "https://www.pidem.com.tr/",
+    "checkedAt": "2026-10-30"
+  },
+  "_kaynak_notu": "Resmî restoran listesi. Koordinat Historia AVM ile yaklaşık 30 m uyumlu. Sitede şube telefonu ve saati bulunamadı."
+}
