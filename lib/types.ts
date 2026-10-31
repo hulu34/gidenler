@@ -182,6 +182,8 @@ export interface VenuePhoto {
   srcSet?: string;
   full?: string;
   addedBy: "işletme" | "kullanıcı" | "commons";
+  /** Kırpma odağı, CSS object-position (ör. "50% 70%"). */
+  focus?: string;
 }
 
 export interface EntityImage {

@@ -7,10 +7,10 @@ import { hashKey } from "@/lib/ai/privacy";
 
 /* GET /api/google/place?slug=…&part=view|media|status — Google Places (New) canlı vekil. YALNIZCA sunucu.
    · part=view: kullanıcı isteyince — puan, sayı, yorumlar, saatler (fotoğraf yok).
-   · part=cover: kullanıcı isteyince — yalnız 1 kapak; puan ve yorum çekilmez.
+   · part=cover: kendi kapağı olmayan izinli mekânda sayfa açılınca — yalnız 1 kapak; puan ve yorum çekilmez.
    · POST part=media (gövde: { refs }): galeride kalan fotoğraflar; yalnız Photo istekleri.
    · Eski part=reviews / photos kapatıldı (410).
-   · Her ücretli çağrı önce izin kapısından geçer (googleCallAllowed): varsayılan kapalı.
+   · Her ücretli çağrı önce izin kapısından geçer (googleCallAllowed).
    · part=status: Google'a istek ATMAZ; yalnız bu mekânın onaylı/otomatik Google kimliği var mı (düğmeyi göstermek için).
    · Eşleştirme burada HİÇ yapılmaz (yalnız yönetici işi).
    · Anahtar yoksa / kapalıysa { disabled: true } (bileşen yalnız Google Haritalar bağlantısı gösterir).

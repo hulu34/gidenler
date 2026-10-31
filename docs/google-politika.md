@@ -1,6 +1,6 @@
 # Google Places izin politikası
 
-Her mekân Google'a kapalı doğar. Sınıf izin vermez; ücretli çağrı için açık karar gerekir.
+Sınıf izin vermez. Yeni eşleşme Google'a kapalı doğar; kesim tarihinden (2026-11-01) önceki eşleşmeler geçiş kipinde kapak gösterebilir, canlı kapaklar kaybolmasın diye. `GOOGLE_POLICY_MODE=siki` yalnız izinli kayıtları açar.
 
 ## Kapı
 
@@ -12,7 +12,7 @@ Yeni bir ücretli Google çağrısı bu kapıdan geçmeden eklenmez.
 
 ## Bütçe
 
-Aylık tavan 100 USD, günlük 3 USD; ikisi de aynı atomik Redis betiğinde. Ortam değişkenleri yalnız aşağı çeker. IP başına saatte 10 sayfa görüntüsü. Google içeriği yalnız kullanıcı isteyince yüklenir. Google verisi saklanmaz, önbelleğe alınmaz; yalnız `place_id` tutulur.
+Aylık tavan 100 USD, günlük 3 USD; ikisi de aynı atomik Redis betiğinde. Ortam değişkenleri yalnız aşağı çeker. IP başına saatte 10 sayfa görüntüsü. Sayfa açılışında en çok 1 kapak; puan ve yorum düğmeyle, ek fotoğraf galeride. Google verisi saklanmaz, önbelleğe alınmaz; yalnız `place_id` tutulur.
 
 ## Zenginleştirmeden önce üç soru
 

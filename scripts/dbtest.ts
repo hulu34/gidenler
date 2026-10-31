@@ -9,7 +9,7 @@ import { drizzle } from "drizzle-orm/pglite";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import * as schema from "../lib/db/schema";
 import { setDbForTests, type Db } from "../lib/db/client";
-import { googleCallAllowed, POLICY_FIELD, setGooglePolicy } from "../lib/providers/googlePolicy";
+import { googleCallAllowed, POLICY_FIELD, policyMode, setGooglePolicy } from "../lib/providers/googlePolicy";
 import { fetchGoogleCover, googleUsableSlugs } from "../lib/providers/google";
 import { decidePhotoCandidate, listPhotoCandidates, loadPhotoCandidates } from "../lib/media/photoCandidates";
 import { dailyUsdCap, daySpendUsd, MONTHLY_USD_CAP } from "../lib/usage/counter";
@@ -621,6 +621,7 @@ async function main() {
   ok("Preview'da ücretli Google çağrıları varsayılan kapalı", googleEnabled("preview") === false && googleEnabled("production") === true);
   /* izin kapısı: varsayılan kapalı; bu bölümün eski testleri açık politikayla sürer, kapı ayrıca sınanır */
   {
+    process.env.GOOGLE_POLICY_MODE = "siki";
     const gpFetch = (calls: string[]) => (async (u: string | URL | Request) => { calls.push(String(u)); return new Response("{}", { status: 200 }); }) as typeof fetch;
     setRedisForTests((await fresh()) as unknown as RedisLike);
     const [pA, pB, pC] = (await db.select({ id: schema.places.id, slug: schema.places.slug }).from(schema.places).limit(3));
@@ -685,6 +686,24 @@ async function main() {
       const fv = await fetchGoogleView(pB.slug, cf, 0);
       ok("puan ve yorum isteği fotoğraf çekmez", fv.state === "ok" && !seen.slice(2).some((x) => x.u.includes("/media")));
       await setGooglePolicy({ slugs: [pB.slug], mode: "kapali", priority: "C", reason: "bitti", admin: "test" });
+    }
+    /* geçiş kipi: canlı eşleşmeler korunur, yeni erişim açılmaz */
+    {
+      delete process.env.GOOGLE_POLICY_MODE;
+      ok("varsayılan kip geçiş", policyMode() === "gecis");
+      const [, , , q1, q2, q3] = await db.select({ id: schema.places.id, slug: schema.places.slug }).from(schema.places).limit(6);
+      const old = new Date("2026-10-28T00:00:00Z"), neu = new Date("2026-11-02T00:00:00Z");
+      await db.insert(schema.placeIdentifiers).values([{ id: "gc-1", placeId: q1.id, provider: "google", externalId: "G_ESKI", status: "auto", createdAt: old }, { id: "gc-2", placeId: q2.id, provider: "google", externalId: "G_YENI", status: "auto", createdAt: neu }, { id: "gc-3", placeId: q3.id, provider: "google", externalId: "G_BEKLE", status: "pending", createdAt: old }]);
+      ok("eski eşleşme kayıtsız da açık", (await googleCallAllowed(q1.slug) as { id?: string }).id === "G_ESKI" && !!(await googleUsableSlugs())?.includes(q1.slug));
+      ok("kesimden sonraki eşleşme kapalı", "none" in (await googleCallAllowed(q2.slug))! && !(await googleUsableSlugs())?.includes(q2.slug));
+      ok("bekleyen eşleşme kapalı", "none" in (await googleCallAllowed(q3.slug))!);
+      await setGooglePolicy({ slugs: [q1.slug], mode: "baglanti", priority: "C", reason: "düşük öncelik", admin: "test" });
+      ok("açık kapatma geçiş kipinde de kapatır", "none" in (await googleCallAllowed(q1.slug))! && !(await googleUsableSlugs())?.includes(q1.slug));
+      const mc: string[] = []; const r = await matchGoogleSlugs([q2.slug], {}, gpFetch(mc)); ok("eşleştirme araması geçiş kipinde de izin ister", mc.length === 0 && r.results[0]?.reason === "politika_kapali");
+      setDbForTests(new Proxy({}, { get: () => { throw new Error("neon down"); } }) as unknown as Db); const dn = await googleCallAllowed(q1.slug); setDbForTests(db); ok("geçiş kipinde veritabanı hatası: çağrı yok", dn === null);
+      const off = process.env.GOOGLE_PLACES_ENABLED; process.env.GOOGLE_PLACES_ENABLED = "false"; const oc: string[] = []; const of1 = await fetchGoogleCover(q1.slug, gpFetch(oc)); process.env.GOOGLE_PLACES_ENABLED = off ?? ""; if (off === undefined) delete process.env.GOOGLE_PLACES_ENABLED; ok("Google kapalıyken 0 ücretli çağrı", of1.state === "disabled" && oc.length === 0);
+      process.env.GOOGLE_POLICY_MODE = "siki"; ok("sıkı kipte eski eşleşme de kapalı", "none" in (await googleCallAllowed(q2.slug))!);
+      await db.delete(schema.placeIdentifiers).where(inArray(schema.placeIdentifiers.id, ["gc-1", "gc-2", "gc-3"]));
     }
     /* fotoğraf aday havuzu */
     {

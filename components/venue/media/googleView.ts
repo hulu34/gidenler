@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { ViewPhoto } from "./photos";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -47,7 +47,7 @@ export type CoverState = { k: "idle" | "loading" | "off" | "limited" } | { k: "o
 const coverCache = new Map<string, Promise<CoverState>>();
 export function useGoogleCover(slug: string, enabled: boolean) {
   const [s, setS] = useState<CoverState>({ k: enabled ? "idle" : "off" });
-  const request = () => {
+  const request = useCallback(() => {
     if (!enabled) return;
     setS({ k: "loading" });
     let p = coverCache.get(slug);
@@ -62,7 +62,7 @@ export function useGoogleCover(slug: string, enabled: boolean) {
       coverCache.set(slug, p);
     }
     p.then(setS);
-  };
+  }, [enabled, slug]);
   return { state: s, request };
 }
 

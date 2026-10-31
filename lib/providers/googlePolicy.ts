@@ -7,7 +7,9 @@ import { atomic } from "@/lib/profile";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GOOGLE PLACES İZİN KAPISI — ücretli her çağrıdan önce sunucuda.
-   · Varsayılan KAPALI: politika satırı yoksa, okunamıyorsa ya da veritabanı yoksa çağrı yapılmaz.
+   · İki kip (GOOGLE_POLICY_MODE). "gecis" (varsayılan): canlıda bugün açık eşleşmeler kaybolmasın diye, kesim tarihinden önceki
+     onaylı/otomatik eşleşme kayıt yoksa da içerik çağrısı yapabilir; yeni eşleşme, D ve açıkça kapatılan mekân yapamaz.
+     "siki": yalnız izinli kayıt. Politika okunamıyorsa ya da veritabanı yoksa iki kipte de çağrı yapılmaz. Eşleştirme araması her zaman izinli kayıt ister.
    · Sınıf izin vermez: A da olsa açık "izinli" kaydı gerekir. D sınıfı izinli olamaz.
    · Yer: field_provenance "policy.google" (yeni tablo yok). Ekleme yönlü; en yeni satır geçerlidir, geçmiş kalır.
    · Google verisi burada tutulmaz: yalnız bizim kararımız, gerekçesi ve onayı.
@@ -32,6 +34,14 @@ export function parsePolicy(value: string | null | undefined): GooglePolicy | nu
   try { const r = GooglePolicy.safeParse(JSON.parse(value ?? "")); return r.success ? r.data : null; } catch { return null; }
 }
 
+export const policyMode = () => (process.env.GOOGLE_POLICY_MODE === "siki" ? "siki" : "gecis");
+/** Geçiş kipi yalnız bu tarihten önceki eşleşmeleri korur: yeni erişim açmaz. */
+export const GECIS_KESIM = new Date("2026-11-01T00:00:00Z");
+type MatchRow = { status: string; createdAt: Date | string | null };
+const preCut = (i: MatchRow) => !!i.createdAt && new Date(i.createdAt) < GECIS_KESIM;
+/** Kayıt yokken geçiş kipinde açık mı. Kayıt varsa karar kaydındır. */
+const legacyOpen = (policy: GooglePolicy | null | undefined, hasRow: boolean, i: MatchRow) => policyMode() === "gecis" && !hasRow && !policy && (i.status === "confirmed" || i.status === "auto") && preCut(i);
+
 export const policyPermits = (p: GooglePolicy | null) => !!p && p.mode === "izinli" && p.priority !== "D";
 
 type Db = NonNullable<ReturnType<typeof getDb>>;
@@ -55,9 +65,12 @@ export async function googleCallAllowed(slug: string): Promise<GoogleGate | null
   try {
     const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, slug)).limit(1);
     if (!p) return { none: "no_match" };
-    const policy = (await latestPolicies(db, [p.id])).get(p.id) ?? null;
-    if (!policyPermits(policy)) return { none: "policy_closed" };
+    const pol = await latestPolicies(db, [p.id]);
+    const hasRow = pol.has(p.id), policy = pol.get(p.id) ?? null;
     const ids = await db.select().from(placeIdentifiers).where(and(eq(placeIdentifiers.placeId, p.id), eq(placeIdentifiers.provider, "google")));
+    const old = ids.find((i) => i.status === "confirmed" && legacyOpen(policy, hasRow, i)) ?? ids.find((i) => legacyOpen(policy, hasRow, i));
+    if (old) return { id: old.externalId };
+    if (!policyPermits(policy)) return { none: "policy_closed" };
     const ok = ids.find((i) => i.status === "confirmed") ?? (policy!.allowAuto ? ids.find((i) => i.status === "auto") : undefined);
     if (ok) return { id: ok.externalId };
     if (ids.some((i) => i.status === "auto")) return { none: "auto_not_approved" };
@@ -79,10 +92,10 @@ export async function googleMatchAllowed(slug: string) {
 
 /** Google içeriği sayfada açılacak mekânlar. Hata olursa boş liste. */
 export async function allowedGoogleSlugs(db: Db) {
-  const rows = await db.select({ placeId: places.id, slug: places.slug, status: placeIdentifiers.status }).from(placeIdentifiers).innerJoin(places, eq(places.id, placeIdentifiers.placeId))
+  const rows = await db.select({ placeId: places.id, slug: places.slug, status: placeIdentifiers.status, createdAt: placeIdentifiers.createdAt }).from(placeIdentifiers).innerJoin(places, eq(places.id, placeIdentifiers.placeId))
     .where(and(eq(placeIdentifiers.provider, "google"), inArray(placeIdentifiers.status, ["auto", "confirmed"])));
   const pol = await latestPolicies(db);
-  return [...new Set(rows.filter((r) => { const p = pol.get(r.placeId) ?? null; return policyPermits(p) && (r.status === "confirmed" || p!.allowAuto); }).map((r) => r.slug))].sort();
+  return [...new Set(rows.filter((r) => { const p = pol.get(r.placeId) ?? null; return legacyOpen(p, pol.has(r.placeId), r) || (policyPermits(p) && (r.status === "confirmed" || p!.allowAuto)); }).map((r) => r.slug))].sort();
 }
 
 const SetInput = z.object({
@@ -121,5 +134,5 @@ export async function googlePolicyStats() {
   const byMode: Record<string, number> = {}, byPriority: Record<string, number> = {};
   for (const p of pol.values()) { if (!p) continue; byMode[p.mode] = (byMode[p.mode] ?? 0) + 1; byPriority[p.priority] = (byPriority[p.priority] ?? 0) + 1; }
   const matched = await db.select({ placeId: placeIdentifiers.placeId }).from(placeIdentifiers).where(and(eq(placeIdentifiers.provider, "google"), inArray(placeIdentifiers.status, ["auto", "confirmed"])));
-  return { byMode, byPriority, withPolicy: pol.size, matchedUsable: new Set(matched.map((m) => m.placeId)).size, allowedNow: (await allowedGoogleSlugs(db)).length };
+  return { kip: policyMode(), byMode, byPriority, withPolicy: pol.size, matchedUsable: new Set(matched.map((m) => m.placeId)).size, allowedNow: (await allowedGoogleSlugs(db)).length };
 }
