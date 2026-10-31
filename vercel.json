@@ -17,10 +17,6 @@
     {
       "path": "/api/cron/puan/",
       "schedule": "15 3 * * *"
-    },
-    {
-      "path": "/api/cron/medya/",
-      "schedule": "45 3 * * *"
     }
   ]
 }

@@ -24,6 +24,7 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={p.src} {...responsive(p, sizes)} alt={p.alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async"
         referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
+        style={p.focus ? { objectPosition: p.focus } : undefined}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
       <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-baseline gap-1.5 truncate bg-gradient-to-t from-black/75 to-transparent px-2 pb-1 pt-6 text-left text-[11px] text-white">
         {p.source === "google" ? <><GoogleMapsText tone="white" /><span className="truncate opacity-90">· {p.author}</span></> : <>{p.author}{p.license ? ` · ${p.license}` : ""}</>}
@@ -32,7 +33,7 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
   );
 }
 
-export function PhotoMosaic({ slug, name, photos, google, hasCover, addHref }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean; hasCover?: boolean; addHref?: string }) {
+export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean }) {
   const own = fromVenuePhotos(photos);
   const g = useGoogleView(slug, google);
   /* mobil şeritte kalan Google kareleri: kullanıcı şeridi kaydırdıkça 2'şer (masaüstünde ilk istek 5'i getirir) */
@@ -59,8 +60,7 @@ export function PhotoMosaic({ slug, name, photos, google, hasCover, addHref }: {
     io.observe(first);
     return () => io.disconnect();
   }, [holes, busy, pending, slug]);
-  /* kapak adayı olmayan kullanıcı fotoğrafı Google kapağının önüne geçmez */
-  const all = (hasCover ?? own.length > 0) ? [...own, ...gPhotos] : [...gPhotos, ...own];
+  const all = [...own, ...gPhotos];
   const [open, setOpen] = useState<number | null>(null);
   const galleryHref = `/mekan/${slug}/fotograflar/`;
   const total = own.length + (g.k === "ok" ? g.v.total : 0);
@@ -95,8 +95,7 @@ export function PhotoMosaic({ slug, name, photos, google, hasCover, addHref }: {
       <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-y border-line py-2.5">
         <p className="text-[13px] text-ink-2">
           <span aria-hidden className="mr-1.5">▦</span>Henüz Gidenler fotoğrafı yok.
-        </p>
-        {addHref && <Link href={addHref} className="text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Fotoğraf ekle</Link>}
+                  </p>
       </div>
     );
   }
@@ -144,7 +143,6 @@ export function PhotoMosaic({ slug, name, photos, google, hasCover, addHref }: {
           {own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
           {hasGoogle && <>Google fotoğrafları sahiplerine aittir; büyütünce sahibi ve Google Haritalar bağlantısı görünür.</>}
         </span>
-        {addHref && <Link href={addHref} className="font-bold text-ink-2 underline underline-offset-2 hover:text-accent-ink">Fotoğraf ekle</Link>}
       </div>
 
       {open !== null && <Lightbox photos={all} index={open} onIndex={setOpen} onClose={() => setOpen(null)} title={name} />}
