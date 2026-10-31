@@ -20,7 +20,8 @@ const mg = await admin({ action: "migrate" });
 ok("geçiş 0002 Preview'a uygulandı", mg.s === 200 && (mg.j.status?.pending ?? ["?"]).length === 0, JSON.stringify(mg.j.status?.pending));
 
 const hesap = async (mode) => { const { s, j } = await admin({ action: "medya-test-oturum", mode }); if (s !== 200) throw new Error(`oturum ${s} ${JSON.stringify(j)}`); return j; };
-const [D, I, A, Y, M] = [await hesap(), await hesap(), await hesap(), await hesap(), await hesap("moderator")];
+const [D, I, A, Y, M] = [await hesap(), await hesap(), await hesap(), await hesap(), await hesap("admin")];
+const MOD = await hesap("moderator");
 ok("test hesapları", [D, I, A, Y, M].every((x) => x.cookieName));
 const ck = (u) => `${u.cookieName}=${u.cookieValue}`;
 const api = (path, { u, method = "GET", body, origin = BASE, headers = {} } = {}) => fetch(`${BASE}${path}`, { method, body, redirect: "manual", headers: { ...HB, ...(u ? { cookie: ck(u) } : {}), ...(method !== "GET" && origin ? { origin } : {}), ...headers } });
@@ -77,7 +78,7 @@ for (const [ad, u, o] of CIHAZ) {
   ok(`${ad}: kaldırınca iki önizleme`, (await p.locator('#fotograf img[alt^="Seçilen"]').count()) === 2);
   const yay = p.getByRole("button", { name: "Deneyimi yayınla" });
   ok(`${ad}: hak onayı olmadan yayın kapalı`, await yay.isDisabled());
-  await p.locator('#fotograf input[type="checkbox"]').check();
+  await p.locator('#fotograf input[type="radio"]').first().check();
   await p.locator("#fotograf").scrollIntoViewIfNeeded(); await p.screenshot({ path: `${OUT}/1-onizleme-${ad}.png` });
   ok(`${ad}: yatay kaydırma yok`, await p.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
   await yay.click();
@@ -224,7 +225,7 @@ ok("canonical değişmedi", /rel="canonical" href="[^"]*\/mekan\/pidem-fatih\/"/
   await p.locator('[aria-label="Ziyaret ayı"]').selectOption({ index: 1 });
   await p.locator('[aria-label="Genel puan: 7"]').click(); await p.getByRole("button", { name: "evet", exact: true }).first().click();
   await p.locator('#fotograf input[type="file"]').setInputFiles([{ name: "j.jpg", mimeType: "image/jpeg", buffer: await kare(200, "Japon") }]);
-  await p.locator('#fotograf input[type="checkbox"]').check();
+  await p.locator('#fotograf input[type="radio"]').first().check();
   await p.getByRole("button", { name: "Deneyimi yayınla" }).click();
   await p.getByText(/1 fotoğraf incelemeye alındı/).waitFor({ timeout: 40000 }); await c.close();
   const jid = (await modListe()).find((r) => r.slug === JAPON)?.id;
@@ -246,6 +247,91 @@ await mp.goto(`${BASE}/yonetim/medya-saglik/`, { waitUntil: "networkidle" });
 const sag = (await mp.locator("main").innerText()).replace(/\s+/g, " ");
 ok("sağlık raporu açılır, toplam 457", /Toplam restoran 457/.test(sag), sag.slice(0, 150));
 await mp.screenshot({ path: `${OUT}/7-medya-saglik.png`, fullPage: true }); writeFileSync(`${OUT}/saglik.txt`, sag);
+
+
+/* ── hazırlık turu: roller, izinli fotoğraflar, Japon Erdal ── */
+const FOTO = 'section[aria-label$="fotoğrafları"] button[aria-label^="Fotoğrafı büyüt"] img';
+const reg = (u, b) => { const x = jsonBody(b); return api("/api/moderation/registry/", { u, method: "POST", body: x.body, headers: x.headers }); };
+ok("moderatör kapak seçemez 403", (await (async () => { const b = jsonBody({ id: YOK, action: "cover" }); return api("/api/moderation/photos/", { u: MOD, method: "POST", body: b.body, headers: b.headers }); })()).status === 403);
+ok("moderatör aday işaretleyemez 403", (await (async () => { const b = jsonBody({ id: YOK, action: "candidate" }); return api("/api/moderation/photos/", { u: MOD, method: "POST", body: b.body, headers: b.headers }); })()).status === 403);
+ok("moderatör listeyi görür", (await api("/api/moderation/photos/", { u: MOD })).status === 200);
+ok("izinli karar: oturumsuz 401", (await reg(undefined, { slug: JAPON, src: "/x", action: "hide" })).status === 401);
+ok("izinli karar: kullanıcı 403", (await reg(D, { slug: JAPON, src: "/x", action: "hide" })).status === 403);
+ok("izinli karar: moderatör 403", (await reg(MOD, { slug: JAPON, src: "/x", action: "hide" })).status === 403);
+ok("izinli karar: bilinmeyen fotoğraf 404", (await reg(M, { slug: JAPON, src: "/baska.webp", action: "cover" })).status === 404);
+ok("depolama denemesi: kullanıcı 403", (await api("/api/moderation/storage/", { u: D, method: "POST" })).status === 403);
+ok("depolama denemesi: moderatör 403", (await api("/api/moderation/storage/", { u: MOD, method: "POST" })).status === 403);
+const sc = await (await api("/api/moderation/storage/", { u: M, method: "POST" })).json();
+ok("depolama denemesi test depolamasını gerçek saymaz", sc.provider === "db" && sc.real === false && sc.ok === false, JSON.stringify(sc.steps?.map((x) => [x.step, x.ok])));
+writeFileSync(`${OUT}/depolama-denemesi.json`, JSON.stringify(sc, null, 1));
+ok("editör sayfası: kullanıcıya 404", (await api("/yonetim/medya-editor/", { u: D })).status === 404);
+ok("editör sayfası: moderatöre 404", (await api("/yonetim/medya-editor/", { u: MOD })).status === 404);
+ok("Fotoğraflarım: oturumsuz 401", (await api("/api/photos/mine/")).status === 401);
+const benimJ = await (await api("/api/photos/mine/", { u: D })).json();
+ok("Fotoğraflarım: kendi kayıtları", Array.isArray(benimJ.photos) && benimJ.enabled === true, benimJ.photos?.length);
+ok("Fotoğraflarım: başkasının fotoğrafı yok", (await (await api("/api/photos/mine/", { u: MOD })).json()).photos.length === 0);
+{
+  const c = await baglam(D, { viewport: { width: 390, height: 844 } }); const p = await c.newPage(); await p.goto(`${BASE}/benim/`, { waitUntil: "networkidle" });
+  if (benimJ.photos?.length) ok("Benim sayfasında Fotoğraflarım", await p.locator("[data-my-photos]").count() === 1);
+  await p.locator("[data-my-photos]").scrollIntoViewIfNeeded().catch(() => {}); await p.screenshot({ path: `${OUT}/8-fotograflarim-mobil.png` }); await c.close();
+}
+/* Japon Erdal profili: üç ekran, Google fotoğrafı 0 */
+for (const [ad, vp] of [["mobil", { width: 390, height: 844 }], ["masaustu", { width: 1366, height: 900 }]]) {
+  const c = await baglam(null, { viewport: vp }); const p = await c.newPage(); const ist = []; p.on("request", (r) => { const u = r.url(); if (/api\/google\/place|googleapis|googleusercontent|ggpht/.test(u)) ist.push(u); });
+  await p.goto(adres(JAPON), { waitUntil: "networkidle" }); await p.waitForTimeout(800);
+  const src = await p.locator(FOTO).evaluateAll((x) => x.map((i) => ({ s: i.currentSrc, w: i.naturalWidth, ok: i.complete })));
+  ok(`Japon Erdal ${ad}: ilk kare kendi pide fotoğrafı`, src[0]?.s.includes("japon-erdal-kapali-pide") && src[0].w > 0, src[0]?.s);
+  ok(`Japon Erdal ${ad}: kendi üç fotoğrafı`, ["kapali-pide", "hamur", "havuz"].every((k) => src.some((x) => x.s.includes(k))), src.length);
+  ok(`Japon Erdal ${ad}: Google görseli ve fotoğraf isteği yok`, !ist.some((u) => /part=(cover|media|photos)|googleusercontent|ggpht|\/media\?/.test(u)), ist.length);
+  ok(`Japon Erdal ${ad}: atıf görünür`, (await p.locator("section[aria-label$='fotoğrafları']").innerText()).includes("Japon Erdal arşivi"));
+  ok(`Japon Erdal ${ad}: yatay taşma yok`, await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+  writeFileSync(`${OUT}/japon-${ad}.json`, JSON.stringify({ src, ist }, null, 1));
+  await p.screenshot({ path: `${OUT}/9-japon-${ad}.png` }); await c.close();
+}
+/* Seçki aynı dosyayı kullanır; videolar yerinde */
+{
+  const c = await baglam(null, { viewport: { width: 390, height: 844 } }); const p = await c.newPage(); const r = await p.goto(`${BASE}/seckisi/japon-erdal-dort-pide-bir-efsane/`, { waitUntil: "networkidle" });
+  const html = await p.content();
+  ok("Seçki yazısı açılır, aynı dosyalar", r.status() === 200 && ["kapali-pide-1080", "hamur-720", "havuz-720"].every((k) => html.includes(`/media/foto/japon-erdal-${k}.webp`)) && !html.includes("/seckisi/gorsel/japon-erdal"));
+  const v = await p.locator("[data-video]").count();
+  ok("Seçki videoları korunur: altı video", v === 6, v);
+  ok("Flu 44:42 başlangıcı", html.includes("t=2682s"));
+  const kirik = await p.evaluate(async () => { const im = [...document.querySelectorAll('img[src*="/media/foto/"]')]; im.forEach((i) => { i.loading = "eager"; }); await new Promise((r) => setTimeout(r, 1500)); return im.filter((i) => !i.naturalWidth).length; });
+  ok("Seçki görselleri yüklenir", kirik === 0, kirik); await c.close();
+}
+/* diğer izinli kapaklar */
+for (const [slug, kim] of [["viktor-levi-sarap-evi-kadikoy", "Chromehoney"], ["cukur-meyhane-beyoglu", "Jwslubbock"], ["kanaat-lokantasi-uskudar", "John Lubbock"], ["ismet-baba-uskudar", "Oxorca"], ["beyti-lokanta-bakirkoy", "Nicoleon"]]) {
+  const c = await baglam(null, { viewport: { width: 390, height: 844 } }); const p = await c.newPage(); const ist = []; p.on("request", (r) => { if (/part=(cover|media|photos)|googleusercontent|ggpht/.test(r.url())) ist.push(r.url()); });
+  await p.goto(adres(slug), { waitUntil: "networkidle" });
+  const i = p.locator(FOTO).first();
+  ok(`${slug}: kendi kapağı, atıf, Google fotoğrafı 0`, (await i.getAttribute("src")).startsWith("/media/") && (await p.locator("section[aria-label$='fotoğrafları']").innerText()).includes(kim) && ist.length === 0, ist.length);
+  await p.screenshot({ path: `${OUT}/10-kapak-${slug}.png` }); await c.close();
+}
+{
+  const c = await baglam(null, { viewport: { width: 390, height: 844 } }); const p = await c.newPage(); await p.goto(adres("savoy-beyoglu"), { waitUntil: "networkidle" });
+  ok("Savoy: şube kanıtı olmadan fotoğraf yok", !(await p.content()).includes("media/commons/savoy")); await c.close();
+}
+/* izinli fotoğraf editörü: kapak değişir, geri alınır */
+{
+  const hamur = "/media/foto/japon-erdal-hamur-720.webp", pide = "/media/foto/japon-erdal-kapali-pide-960.webp";
+  const ek = await baglam(M, { viewport: { width: 390, height: 844 } }); const ep = await ek.newPage(); izle(ep, "editör");
+  await ep.goto(`${BASE}/yonetim/medya-editor/`, { waitUntil: "networkidle" });
+  ok("editör: bağlı fotoğraf listesi", await ep.locator("[data-venue]").count() === 6, await ep.locator("[data-venue]").count());
+  ok("editör: hak kaydı görünür", (await ep.locator('[data-venue="japon-erdal-beyoglu"]').innerText()).includes("yazılı onayı"));
+  await ep.locator('[data-venue="japon-erdal-beyoglu"]').scrollIntoViewIfNeeded(); await ep.screenshot({ path: `${OUT}/11-editor-mobil.png` });
+  await ep.locator(`[data-src="${hamur}"]`).getByRole("button", { name: "Kapak yap" }).click(); await ep.getByText("Kaydedildi.").waitFor({ timeout: 15000 });
+  await new Promise((r) => setTimeout(r, 2000));
+  const ilk = async () => { const c = await baglam(null, { viewport: { width: 1366, height: 900 } }); const p = await c.newPage(); await p.goto(`${adres(JAPON)}?v=${Date.now()}`, { waitUntil: "networkidle" }); const s = await p.locator(FOTO).first().getAttribute("src"); await c.close(); return s; };
+  ok("editör: seçilen kapak profilde", (await ilk()).includes("hamur"));
+  await reg(M, { slug: JAPON, src: hamur, action: "hide" }); await new Promise((r) => setTimeout(r, 2000));
+  const gizli = await ilk(); ok("editör: yayından çıkan görünmez", gizli.includes("kapali-pide"), gizli);
+  await reg(M, { slug: JAPON, src: hamur, action: "show" }); await new Promise((r) => setTimeout(r, 2000));
+  const son = await ilk(); ok("editör: eski haline döndü", son.includes("kapali-pide"), son); await ek.close(); void pide;
+}
+await mp.goto(`${BASE}/yonetim/medya-saglik/`, { waitUntil: "networkidle" });
+ok("panel: test depolaması açıkça yazılı", (await mp.locator("[data-storage-state]").innerText()).includes("TEST DEPOLAMASI"));
+ok("panel: moderatörde deneme düğmesi yok", await (async () => { const c = await baglam(MOD); const p = await c.newPage(); await p.goto(`${BASE}/yonetim/medya-saglik/`, { waitUntil: "networkidle" }); const n = await p.locator("[data-storage-check]").count(); await c.close(); return n === 0; })());
+await mp.setViewportSize({ width: 390, height: 844 }); await mp.goto(`${BASE}/yonetim/medya-saglik/`, { waitUntil: "networkidle" }); await mp.screenshot({ path: `${OUT}/12-saglik-mobil.png`, fullPage: true }); await mp.setViewportSize({ width: 1366, height: 1000 });
 
 /* kaldırma */
 await mp.goto(`${BASE}/yonetim/fotograf-moderasyon/`, { waitUntil: "networkidle" }); await mp.getByRole("tab", { name: "Onaylı" }).click(); await kart(x1).waitFor();
