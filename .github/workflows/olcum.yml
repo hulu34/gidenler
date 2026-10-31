@@ -372,6 +372,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: foto-sifreli, path: out/foto.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  kars:
+    if: contains(github.event.head_commit.message, '[kars]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
+      - run: node ops/foto/karsilastir.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-50ktn5sd8-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/kars && tar -C out -czf out/kars.tgz kars && rm -rf out/kars && openssl cms -encrypt -aes256 -binary -in out/kars.tgz -out out/kars.tgz.cms -outform DER ops/olcum.pem && rm out/kars.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: kars-sifreli, path: out/kars.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
