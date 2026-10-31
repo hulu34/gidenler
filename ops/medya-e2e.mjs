@@ -55,7 +55,7 @@ const CIHAZ = [["masaustu", D, { viewport: { width: 1366, height: 900 } }], ["ip
 const hatalar = [];
 const baglam = async (u, o = {}) => { const ctx = await br.newContext(o); await yetkiliBaslik(ctx, HOST, { ...HB, "x-vercel-set-bypass-cookie": "true" }); if (u) await ctx.addCookies([{ name: u.cookieName, value: u.cookieValue, domain: HOST, path: "/", secure: true, httpOnly: true, sameSite: "Lax" }]); return ctx; };
 const izle = (p, ad) => { p.on("pageerror", (e) => hatalar.push(`${ad}: ${e.message.slice(0, 160)}`)); };
-const puanMetni = async (p) => ((await p.locator("main").first().innerText().catch(() => "")).replace(/\s+/g, " ").match(/Gidenler puanı [^·]{0,60}/) ?? [""])[0];
+const puanMetni = async (p) => ((await p.locator("main").first().innerText().catch(() => "")).replace(/\s+/g, " ").match(/Gidenler puanı [^.·]{0,60}/) ?? [""])[0];
 
 const on = await baglam(null); const onP = await on.newPage(); await onP.goto(adres(SLUG), { waitUntil: "networkidle" });
 const puan0 = await puanMetni(onP); await on.close();
@@ -116,15 +116,15 @@ ok("kaynak dosyada iz var (sınama kendisi)", exifli.includes(IZ));
 const ex = await yukle(D, dBen.r, exifli); const exj = await ex.json();
 ok("EXIF'li dosya kabul edildi", ex.status === 201, ex.status);
 const exv = (await (await api(`/api/reviews/${dBen.r}/photos/`, { u: D })).json()).photos.find((x) => x.id === exj.id);
-const exFile = await api(`/api/media/file/${exv.thumb}`, { u: D });
+const exFile = await api(exv.thumb, { u: D });
 const exB = Buffer.from(await exFile.arrayBuffer());
 ok("yükleyen kendi bekleyenini görür; webp", exFile.status === 200 && exB.subarray(8, 12).toString() === "WEBP" && exFile.headers.get("cache-control").includes("no-store"));
 ok("işlenen dosyada EXIF ve konum izi yok", !exB.includes(IZ) && !exB.includes("Exif"));
 ok("aynı dosya tekrar 409", (await yukle(D, dBen.r, exifli)).status === 409);
 ok("başkası aynı dosyayı aynı mekâna 409", (await yukle(I, iBen.r, exifli)).status === 409);
-ok("bekleyen dosya oturumsuz 404", (await api(`/api/media/file/${exv.thumb}`)).status === 404);
-ok("bekleyen dosya başka kullanıcıya 404", (await api(`/api/media/file/${exv.thumb}`, { u: I })).status === 404);
-ok("bekleyen dosya moderatöre 200", (await api(`/api/media/file/${exv.thumb}`, { u: M })).status === 200);
+ok("bekleyen dosya oturumsuz 404", (await api(exv.thumb)).status === 404);
+ok("bekleyen dosya başka kullanıcıya 404", (await api(exv.thumb, { u: I })).status === 404);
+ok("bekleyen dosya moderatöre 200", (await api(exv.thumb, { u: M })).status === 200);
 ok("anahtar kaçışı reddedilir", (await api(`/api/media/file/pending/..%2F..%2Fetc/480.webp`, { u: M })).status === 404);
 const sayfa0 = await (await api(`/mekan/${SLUG}/?v=${Date.now()}`)).text();
 ok("onaysız fotoğraf profilde yok", !bekleyen.some((r) => sayfa0.includes(r.id)));
@@ -190,8 +190,9 @@ ok("aday değilken SEO görseli üretilmez", !og(html0) && !ld(html0)?.image, og
 ok("aday işaretlendi", (await mod(x1, "candidate")).status === 200);
 ok("onaylanmamış kapak olamaz", (await mod(x3, "cover")).status === 409);
 ok("kapak seçildi", (await mod(x1, "cover", { focus: "50% 50%" })).status === 200);
-await new Promise((r) => setTimeout(r, 1500));
-const html1 = await (await api(`/mekan/${SLUG}/?v=${Date.now()}`)).text();
+let html1 = "", bekleme = 0;
+for (; bekleme < 40; bekleme++) { html1 = await (await api(`/mekan/${SLUG}/?v=${Date.now()}`)).text(); if ((og(html1) ?? "").includes(x1)) break; await new Promise((r) => setTimeout(r, 1500)); }
+console.log(`  kapak SEO'ya yansıma: ${(bekleme * 1.5).toFixed(1)} sn`);
 ok("kapak SEO görseli oldu", (og(html1) ?? "").includes(x1), og(html1));
 ok("yapılandırılmış veri image", ld(html1) ? (ld(html1).image ?? "").includes(x1) : true, ld(html1)?.image ?? "kayıt yok");
 ok("canonical değişmedi", /rel="canonical" href="[^"]*\/mekan\/pidem-fatih\/"/.test(html1));

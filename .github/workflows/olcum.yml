@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 env:
   EKRAN_ETIKET: sonra
-  MEDYA_HOST: gidenler-rm5weqc5f-hulu34.vercel.app
+  MEDYA_HOST: gidenler-glpr1t8r2-hulu34.vercel.app
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
@@ -260,7 +260,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/veri42.mjs
-        env: { PROD_HOST: gidenler-937jthcsn-hulu34.vercel.app, VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-itv2usdq1-hulu34.vercel.app, APPLY: "${{ contains(github.event.head_commit.message, '[uygula]') && '1' || '0' }}" }
+        env: { PROD_HOST: gidenler-937jthcsn-hulu34.vercel.app, VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: ${{ env.MEDYA_HOST }}.vercel.app, APPLY: "${{ contains(github.event.head_commit.message, '[uygula]') && '1' || '0' }}" }
       - if: always()
         run: test -d out/veri42 && tar -C out -czf out/veri42.tgz veri42 && rm -rf out/veri42 && openssl cms -encrypt -aes256 -binary -in out/veri42.tgz -out out/veri42.tgz.cms -outform DER ops/olcum.pem && rm out/veri42.tgz
       - if: always()
@@ -314,7 +314,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/politika.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-nb1b4q5lh-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: ${{ env.MEDYA_HOST }}.vercel.app }
       - if: always()
         run: test -d out/politika && tar -C out -czf out/politika.tgz politika && rm -rf out/politika && openssl cms -encrypt -aes256 -binary -in out/politika.tgz -out out/politika.tgz.cms -outform DER ops/olcum.pem && rm out/politika.tgz
       - if: always()
@@ -330,7 +330,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/gorsel-kapali.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-bb9clm7e5-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: ${{ env.MEDYA_HOST }}.vercel.app }
       - if: always()
         run: test -d out/gkapali && tar -C out -czf out/gkapali.tgz gkapali && rm -rf out/gkapali && openssl cms -encrypt -aes256 -binary -in out/gkapali.tgz -out out/gkapali.tgz.cms -outform DER ops/olcum.pem && rm out/gkapali.tgz
       - if: always()
@@ -343,7 +343,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: node ops/redis-oz.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-bb9clm7e5-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: ${{ env.MEDYA_HOST }}.vercel.app }
   lua-atomik:
     if: contains(github.event.head_commit.message, '[lua-atomik]')
     runs-on: ubuntu-latest
@@ -368,7 +368,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 sharp@0.34 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/foto/son.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-728cjovpv-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: ${{ env.MEDYA_HOST }}.vercel.app }
       - if: always()
         run: test -d out/foto && tar -C out -czf out/foto.tgz foto && rm -rf out/foto && openssl cms -encrypt -aes256 -binary -in out/foto.tgz -out out/foto.tgz.cms -outform DER ops/olcum.pem && rm out/foto.tgz
       - if: always()
@@ -384,7 +384,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/foto/karsilastir.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-2afn32ycz-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: ${{ env.MEDYA_HOST }}.vercel.app }
       - if: always()
         run: test -d out/kars && tar -C out -czf out/kars.tgz kars && rm -rf out/kars && openssl cms -encrypt -aes256 -binary -in out/kars.tgz -out out/kars.tgz.cms -outform DER ops/olcum.pem && rm out/kars.tgz
       - if: always()
