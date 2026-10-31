@@ -14,6 +14,7 @@ import { recordIntent, useUserData } from "@/lib/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { searchV3 } from "@/lib/search";
 import { EntityCardRow } from "@/components/experience/EntityCardRow";
+import { SorAsistan } from "@/components/sor/SorAsistan";
 
 /** Sunum modunda hazır soru: sayfa açıldığında sonuç görünür, "Devam et" düğmeleri hemen denenebilir. */
 const DEMO_QUERY = "Bu akşam Kadıköy'de sakin, iyi yemekli bir yer arıyorum.";
@@ -39,7 +40,13 @@ const OVERRIDES = [
  * Gerçek LLM yok: sorgu kurallarla anlaşılır, cevap Decision servisinden
  * gelir ve dayandığı sinyalleri gösterir. Hayali gerçek üretmez.
  */
+/* Gerçek site yeni asistanı kullanır; yatırımcı demosu ve sunum modu eski akışta kalır. */
 export default function AskPage() {
+  const data = useUserData();
+  return DEMO_VISIBLE || data.demoMode === "investor" ? <LegacyAsk /> : <SorAsistan />;
+}
+
+function LegacyAsk() {
   const [q, setQ] = useState("");
   const [asked, setAsked] = useState("");
   const [refine, setRefine] = useState<AskRefine>({});
