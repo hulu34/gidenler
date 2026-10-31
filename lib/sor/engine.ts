@@ -19,7 +19,7 @@ const within1 = (a: string, b: string) => {
   return edits + (a.length - i) + (b.length - j) <= 1;
 };
 /* Türkçe ekler: "Galata'da", "kebapçı", "pidesi" kökünden yakalanır; 5+ harfte tek harf hatası tolerans */
-const tokenHit = (tok: string, term: string) => tok.startsWith(term) || (term.length >= 5 && within1(tok.slice(0, term.length), term)) || (term.length >= 5 && within1(tok, term));
+const tokenHit = (tok: string, term: string) => tok.startsWith(term) || (term.length >= 5 && tok[0] === term[0] && (within1(tok.slice(0, term.length), term) || within1(tok, term)));
 const hasTerm = (q: string, term: string) => {
   const t = fold(term), toks = q.split(" ");
   if (!t.includes(" ")) return toks.some((x) => tokenHit(x, t));
@@ -74,28 +74,35 @@ export const emptyIntent = (): Intent => ({ area: null, district: null, cuisine:
 export const KNOWN = { areas: [...DISTRICTS, ...SUBAREAS.map((a) => a.name)], cuisines: CUISINES.map((c) => c.key), dishes: DISHES.map((d) => d.key), attrs: ATTRS.map((a) => a.key) };
 
 const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "cafe", "kafe", "ve", "the", "bar", "kebap", "balik", "pide", "ocakbasi", "doner", "kebapcisi", "sofrasi", "evi", "et", "iyi", "guzel", "bir"]);
+/* Semt, mutfak ya da tercih sözcüğü tek başına mekân adı sayılmaz: "kebap" Kebap Hocası'nı, "Karaköy" Karaköy Lokantası'nı seçmez. */
+const isGeneric = (t: string) => [...SUBAREAS.map((a) => a.name), ...DISTRICTS, ...CUISINES.flatMap((c) => c.terms), ...DISHES.flatMap((d) => d.terms), ...ATTRS.flatMap((a) => a.terms)].some((term) => { const x = fold(term); return !x.includes(" ") && tokenHit(t, x); });
 function matchName(q: string): Venue | null {
   const toks = q.split(" ").filter((t) => t.length >= 3);
+  const own = toks.filter((t) => !isGeneric(t));
+  if (!own.length) return null;
   let best: { v: Venue; s: number } | null = null;
   for (const v of VENUES) {
     const nt = fold(v.name).split(" ").filter((t) => t.length >= 3 && !NAME_NOISE.has(t));
     /* yazımı bitişik bilinen ad: "nusret" → "Nusr-Et Burger Bebek" */
     const compact = fold(v.name).replace(/ /g, "");
-    if (toks.length <= 3 && toks.some((t) => t.length >= 5 && compact.startsWith(t))) { const s = 50; if (!best || s > best.s) best = { v, s }; continue; }
+    if (toks.length <= 3 && own.some((t) => t.length >= 5 && compact.startsWith(t))) { const s = 50; if (!best || s > best.s) best = { v, s }; continue; }
     if (!nt.length) continue;
     const hits = nt.filter((n) => toks.some((t) => t === n || (n.length >= 4 && t.startsWith(n) && t.length - n.length <= 4) || (n.length >= 5 && within1(t, n))));
-    if (hits.length === nt.length) { const s = hits.join("").length; if (!best || s > best.s) best = { v, s }; }
+    if (hits.length === nt.length && hits.some((n) => own.some((t) => t === n || (n.length >= 4 && t.startsWith(n)) || (n.length >= 5 && within1(t, n))))) { const s = hits.join("").length; if (!best || s > best.s) best = { v, s }; }
   }
   return best && best.s >= 4 ? best.v : null;
 }
 
 /** Yerel yorum. Modelsiz de çalışır; model varsa yalnız boş kalan alanları doldurur. */
 export function parseQuery(query: string): Intent & { confident: boolean } {
-  const q = fold(query);
+  const full = fold(query);
   const i = emptyIntent();
-  const sub = SUBAREAS.find((a) => [a.name, ...(a.aka ?? [])].some((n) => hasTerm(q, n)));
+  const sub = SUBAREAS.find((a) => [a.name, ...(a.aka ?? [])].some((n) => hasTerm(full, n)));
   if (sub) { i.area = sub.name; i.district = sub.district; }
-  else { const d = DISTRICTS.find((x) => fold(x).length >= 4 && hasTerm(q, x)); if (d) { i.area = d; i.district = d; } }
+  else { const d = DISTRICTS.find((x) => fold(x).length >= 4 && hasTerm(full, x)); if (d) { i.area = d; i.district = d; } }
+  /* semt sözcüğü mutfak aramasına girmez: "Adalar" tek harf farkla "adana" sayılmasın */
+  const areaWords = i.area ? fold(i.area).split(" ") : [];
+  const q = full.split(" ").filter((t) => !areaWords.some((w) => tokenHit(t, w))).join(" ");
   i.wholeCity = !i.area && /\bistanbul/.test(q);
   const dish = DISHES.find((d) => d.terms.some((t) => hasTerm(q, t)));
   if (dish) { i.dish = dish.key; i.cuisine = dish.cuisine; }
@@ -103,7 +110,7 @@ export function parseQuery(query: string): Intent & { confident: boolean } {
   i.attrs = ATTRS.filter((a) => a.terms.some((t) => hasTerm(q, t))).map((a) => a.key);
   const pm = q.match(/\b(\d{1,2}) kisi/) ?? q.match(/\bbiz (\d{1,2})\b/);
   if (pm) i.party = Number(pm[1]);
-  const named = matchName(q);
+  const named = matchName(full);
   if (named) i.name = named.slug;
   return { ...i, confident: !!(i.area || i.cuisine || i.name) };
 }
@@ -138,7 +145,7 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
       else if (d != null && d <= 900) { areaFit = "yakin"; s += 40; why.push(`Konum kaydına göre ${i.area} merkezine yaklaşık ${Math.round(d / 50) * 50} m.`); }
       else if (v.district === sub.district) { areaFit = "ilce"; s += 12; caveats.push(`${i.area} içinde olduğu doğrulanmadı; ilçesi ${v.district}.`); }
       else if (i.name !== v.slug) return null;
-    } else if (fold(v.district) === t) { areaFit = "tam"; s += 45; why.push(`${v.district}'de kayıtlı.`); }
+    } else if (fold(v.district) === t) { areaFit = "tam"; s += 45; why.push(`Kayıtlı ilçesi: ${v.district}.`); }
     else if (i.name !== v.slug) return null;
   }
   if (i.dish) {
@@ -150,7 +157,7 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
     if (c) {
       if (c.kinds.includes(v.kind)) { s += 40; why.push(`Türü: ${v.kind}.`); }
       else if ([...c.terms, ...(c.text ?? [])].some((t) => name.includes(fold(t)))) { s += 30; why.push(`Adında ${c.label} geçiyor.`); }
-      else if ((c.text ?? c.terms).some((t) => v.menu.some((m) => fold(m).includes(fold(t))))) { s += 28; why.push(`Menüsünde ${c.label} var.`); }
+      else if ((c.text ?? []).some((t) => v.menu.some((m) => fold(m).includes(fold(t))))) { s += 28; why.push(`Menüsünde ${c.label} var.`); }
       else if (i.name !== v.slug) return null;
     }
   }
@@ -187,6 +194,9 @@ export interface Answered { items: Candidate[]; note: string | null; question: s
 /** Sonuç ve dürüst açıklama. Boş sonuç sessiz kalmaz: neyin bulunmadığı ve neye genişletildiği yazılır. */
 export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
   const cuisineLabel = i.dish ? DISHES.find((d) => d.key === i.dish)!.label : CUISINES.find((c) => c.key === i.cuisine)?.label;
+  /* boş istek ve ad sorusu: ilgisiz liste üretilmez */
+  if (!i.area && !i.cuisine && !i.name && !i.attrs.some((a) => !PROFILE_ONLY.has(a))) return { items: [], note: "Bu istekten semt, mutfak ya da mekân adı çıkaramadım.", question: "Hangi semt ya da hangi mutfak olsun?", relaxed: null };
+  if (i.name && !i.area && !i.cuisine) return { items: findCandidates(i, { ...opts, limit: 1 }), note: null, question: null, relaxed: null };
   let items = findCandidates(i, { ...opts, limit: 8 });
   let relaxed: string | null = null, note: string | null = null, question: string | null = null;
   if (i.dish && !items.some((c) => c.why.some((w) => w.includes("Kaynaklı kaydında")))) note = `Kayıtlarımızda ${cuisineLabel} geçen bir mekân bulamadım; aynı türdeki mekânları gösteriyorum.`;
