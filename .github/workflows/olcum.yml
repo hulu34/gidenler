@@ -168,7 +168,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/puan.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}", ADAY_HOST: "${{ env.ADAY_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[puan-canli]') && '1' || '0' }}", YAYIN: "${{ contains(github.event.head_commit.message, '[puan-yayin]') && '1' || '0' }}", UZLASTIR: "${{ contains(github.event.head_commit.message, '[puan-uzlastir]') && '1' || '0' }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", ADAY_HOST: "${{ env.ADAY_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[puan-canli]') && '1' || '0' }}", YAYIN: "${{ contains(github.event.head_commit.message, '[puan-yayin]') && '1' || '0' }}", UZLASTIR: "${{ contains(github.event.head_commit.message, '[puan-uzlastir]') && '1' || '0' }}" }
       - if: always()
         run: test -d out/puan && tar -C out -czf out/puan.tgz puan && rm -rf out/puan && openssl cms -encrypt -aes256 -binary -in out/puan.tgz -out out/puan.tgz.cms -outform DER ops/olcum.pem && rm out/puan.tgz
       - if: always()
@@ -200,7 +200,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/esik.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.PROFIL_HOST }}", ADAY_HOST: "${{ env.ADAY_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[esik-canli]') && '1' || '0' }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", ADAY_HOST: "${{ env.ADAY_HOST }}", CANLI: "${{ contains(github.event.head_commit.message, '[esik-canli]') && '1' || '0' }}" }
       - if: always()
         run: test -d out/esik && tar -C out -czf out/esik.tgz esik && rm -rf out/esik && openssl cms -encrypt -aes256 -binary -in out/esik.tgz -out out/esik.tgz.cms -outform DER ops/olcum.pem && rm out/esik.tgz
       - if: always()
@@ -224,7 +224,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/puan-tutarlilik.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PUAN_HOST: gidenler-l3dqgnp5m-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PUAN_HOST: "${{ env.MEDYA_HOST }}" }
       - if: always()
         run: test -d out/puant && tar -C out -czf out/puant.tgz puant && rm -rf out/puant && openssl cms -encrypt -aes256 -binary -in out/puant.tgz -out out/puant.tgz.cms -outform DER ops/olcum.pem && rm out/puant.tgz
       - if: always()
@@ -402,7 +402,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: npm ci --no-audit --no-fund
-      - run: docker run -d -p 9000:9000 -e MINIO_ROOT_USER=testkey -e MINIO_ROOT_PASSWORD=testsecret123 minio/minio server /data && sleep 6
+      - run: docker run -d -p 9000:9000 -e MINIO_ROOT_USER=testkey -e MINIO_ROOT_PASSWORD=testsecret123 quay.io/minio/minio server /data && sleep 6
       - run: npx tsx scripts/s3test.ts
         env: { S3_TEST_ENDPOINT: "http://127.0.0.1:9000", S3_TEST_KEY: testkey, S3_TEST_SECRET: testsecret123 }
   karsilastir10:
