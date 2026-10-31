@@ -179,6 +179,12 @@ async function main() {
   t("kapalı deneyime eklenemez", await (async () => { await pg.query(`update reviews set status='removed' where id=$1`, [rv]); return JSON.stringify(await A.addReviewPhoto(db, store, ayse, rv, await uniq(), { confirmed: true })).includes("review_closed"); })());
   await pg.query(`update reviews set status='published' where id=$1`, [rv]);
 
+  /* hesap kapatma: kullanıcı silinince fotoğrafı açıkta kalmaz */
+  { const dU = await mkUser("Silinen Kisi"), dR = await mkReview(dU, placeB); const u = await A.addReviewPhoto(db, store, dU, dR, await uniq(), { confirmed: true }); if (u.ok) await A.approvePhoto(db, store, "user:mod", u.id);
+    t("hesap açıkken görünür", (await A.approvedPhotos(db, store, "mekan-b")).length === 1);
+    await db.delete(schema.user).where(eq(schema.user.id, dU));
+    t("hesap kapanınca görünmez", (await A.approvedPhotos(db, store, "mekan-b")).length === 0); }
+
   /* puan ayrımı: sonra */
   t("deneyim satırı değişmedi", JSON.stringify(await scoreRow()) === before, await scoreRow());
   t("puan aynı", JSON.stringify(await recomputePlace(db, placeA).catch((e) => String(e))) === score0);

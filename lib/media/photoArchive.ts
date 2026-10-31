@@ -207,8 +207,8 @@ const toPublic = (storage: MediaStorage, r: { id: string; variants: AssetRow["va
   return { id: r.id, src: storage.publicUrl(sorted[Math.min(1, sorted.length - 1)].key), srcSet: sorted.map((v) => `${storage.publicUrl(v.key)} ${v.w}w`).join(", "), width: r.width, height: r.height, credit: publicName(r.name), isCover: r.isCover, coverCandidate: r.coverCandidate, focus: r.focus };
 };
 const publicSelect = { id: photoAssets.mediaId, variants: photoAssets.variants, width: photoAssets.width, height: photoAssets.height, name: user.name, isCover: photoAssets.isCover, coverCandidate: photoAssets.coverCandidate, focus: photoAssets.focus, slug: places.slug };
-/* deneyimi gizlenen veya silinen kullanıcının fotoğrafı da görünmez */
-const publicWhere = sql`${mediaItems.status} = 'approved' and (${photoAssets.reviewId} is null or ${reviews.status} = 'published')`;
+/* deneyimi gizlenen ya da silinen, hesabını kapatan kullanıcının fotoğrafı da görünmez */
+const publicWhere = sql`${mediaItems.status} = 'approved' and (${photoAssets.reviewId} is null or ${reviews.status} = 'published') and (${mediaItems.source} <> 'community' or ${photoAssets.uploaderId} is not null)`;
 
 export async function approvedPhotos(db: Db, storage: MediaStorage, slug: string): Promise<PublicPhoto[]> {
   const rows = await db.select(publicSelect).from(photoAssets).innerJoin(mediaItems, eq(mediaItems.id, photoAssets.mediaId)).innerJoin(places, eq(places.id, photoAssets.placeId)).leftJoin(reviews, eq(reviews.id, photoAssets.reviewId)).leftJoin(user, eq(user.id, photoAssets.uploaderId))
