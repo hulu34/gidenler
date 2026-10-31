@@ -19,7 +19,7 @@ export async function apply(root, items, get = fetch) {
     mkdirSync(`${root}/public/media/foto`, { recursive: true });
     const base = `${it.slug}-${id}`; const sizes = [480, 960, 1440];
     for (const w of sizes) await sharp(buf).rotate().resize({ width: w, withoutEnlargement: true }).webp({ quality: 78 }).toFile(`${root}/public/media/foto/${base}-${w}.webp`);
-    const M = "/media/foto"; const photo = { src: `${M}/${base}-960.webp`, srcSet: sizes.map((w) => `${M}/${base}-${w}.webp ${w}w`).join(", "), full: `${M}/${base}-1440.webp`, category: CAT[it.tur] ?? "diger", alt: it.alt || `${it.slug} fotoğrafı`, credit: it.credit, sourceUrl: it.sayfa, addedBy: type === "acik-lisans" ? "commons" : "işletme", ...(type === "acik-lisans" ? { license: ref.join(": ").slice(0, 60) } : {}), rightsRef: `${type}: ${ref.join(": ")}${type === "isletme-izni" && !/restoran profili/i.test(ref.join(": ")) ? " (kapsam: restoran profili)" : ""}` };
+    const M = "/media/foto"; const photo = { src: `${M}/${base}-960.webp`, srcSet: sizes.map((w) => `${M}/${base}-${w}.webp ${w}w`).join(", "), full: `${M}/${base}-1440.webp`, category: CAT[it.tur] ?? "diger", alt: it.alt || `${it.slug} fotoğrafı`, credit: it.credit, sourceUrl: it.sayfa, addedBy: type === "acik-lisans" ? "commons" : "işletme", ...(type === "acik-lisans" ? { license: `${ref[0].slice(0, 40)} · boyutlandırıldı` } : {}), rightsRef: `${type}: ${ref.join(": ")}${type === "isletme-izni" && !/restoran profili/i.test(ref.join(": ")) ? " (kapsam: restoran profili)" : ""}` };
     reg[it.slug] = [...(reg[it.slug] ?? []).filter((p) => p.src !== photo.src), photo]; done.push({ slug: it.slug, ok: true, src: photo.src });
   }
   writeReg(root, reg); return done;
