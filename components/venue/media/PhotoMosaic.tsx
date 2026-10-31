@@ -78,21 +78,13 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
     );
   }
 
-  /* Google'lı restoranda Google içeriği gelmedi (günlük/aylık sınır, kişi başı sınır ya da hata):
-     ayrılan yer korunur, Gidenler bilgisiyle sakin bir kapak — sayfa kaymaz, bozulmaz. */
+  /* Google'lı restoranda Google içeriği gelmedi (sınır ya da hata): ince şerit; karar alanı aşağı itilmez */
   if (!all.length && google) {
     return (
-      <section aria-label={`${name} fotoğrafları`} className="mt-5">
-        <div className="-mx-5 flex px-5 sm:mx-0 sm:h-[clamp(260px,38vw,440px)] sm:px-0">
-          <div className="relative flex aspect-[4/3] w-[86%] shrink-0 flex-col justify-end gap-2 overflow-hidden border border-line bg-sheet p-5 sm:aspect-auto sm:w-full">
-            <span aria-hidden className="absolute -right-6 -top-10 select-none text-[180px] font-extrabold leading-none text-line">▦</span>
-            <p className="relative text-[20px] font-extrabold tracking-[-0.02em]">{name}</p>
-            <p className="relative max-w-[46ch] text-[13px] text-ink-2">Fotoğraflar şu an yüklenemedi. Henüz Gidenler fotoğrafı yok; fotoğraf yükleme yakında.</p>
-            <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name)}`} target="_blank" rel="noopener noreferrer" className="relative self-start text-[13px] font-semibold underline underline-offset-4">Fotoğraflar Google Haritalar&apos;da ↗</a>
-          </div>
-        </div>
-        <p className="mt-2 min-h-[34px] sm:min-h-[18px]" aria-hidden />
-      </section>
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-y border-line py-2.5">
+        <p className="text-[13px] text-ink-2"><span aria-hidden className="mr-1.5">▦</span>Fotoğraflar şu an yüklenemedi.</p>
+        <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name)}`} target="_blank" rel="noopener noreferrer" className="text-[13px] font-bold underline underline-offset-2">Fotoğraflar Google Haritalar&apos;da ↗</a>
+      </div>
     );
   }
 
@@ -102,8 +94,7 @@ export function PhotoMosaic({ slug, name, photos, google }: { slug: string; name
       <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-y border-line py-2.5">
         <p className="text-[13px] text-ink-2">
           <span aria-hidden className="mr-1.5">▦</span>Henüz Gidenler fotoğrafı yok.
-          <span className="text-ink-3"> Fotoğraf yükleme yakında.</span>
-        </p>
+                  </p>
       </div>
     );
   }
