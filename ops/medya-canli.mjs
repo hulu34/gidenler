@@ -7,9 +7,9 @@ const SVG = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.
 const foto = { src: SVG, author: "SAHTE", mapsUri: "https://maps.google.com/" };
 const br = await chromium.launch(); const hatalar = []; const cagrilar = {};
 const CIHAZ = [["mobil", { ...devices["iPhone 14"], defaultBrowserType: undefined }], ["masaustu", { viewport: { width: 1366, height: 900 } }]];
-const ctx = async (o) => { const c = await br.newContext(o); await c.route(/\/api\/google\//, (r) => { const u = new URL(r.request().url()), part = u.searchParams.get("part") ?? "view", n = Number(u.searchParams.get("n") || 0), s = u.searchParams.get("slug"); (cagrilar[s] ??= []).push(`${part}${n ? `:${n}` : ""}`); if (part === "status") return r.fulfill({ json: { available: true } }); return r.fulfill({ json: { rating: 4.2, count: 100, mapsUri: "https://maps.google.com/", hours: [], reviews: [], photos: Array.from({ length: n || 1 }, () => foto), photoTotal: 5, refs: [] } }); }); await c.route(/googleapis|googleusercontent|ggpht/, (r) => r.abort()); return c; };
-const FOTO = 'button[aria-label^="Fotoğrafı büyüt"] img';
 const KENDI = { "japon-erdal-beyoglu": ["kapali-pide", "Japon Erdal arşivi"], "kanaat-lokantasi-uskudar": ["kanaat", "John Lubbock"], "cukur-meyhane-beyoglu": ["cukur", "Jwslubbock"], "viktor-levi-sarap-evi-kadikoy": ["viktor", "Chromehoney"], "beyti-lokanta-bakirkoy": ["beyti", "Nicoleon"], "ismet-baba-uskudar": ["ismet", "Oxorca"] };
+const ctx = async (o) => { const c = await br.newContext(o); await c.route(/\/api\/google\//, (r) => { const u = new URL(r.request().url()), part = u.searchParams.get("part") ?? "view", n = Number(u.searchParams.get("n") || 0), s = u.searchParams.get("slug"); (cagrilar[s] ??= []).push(`${part}${n ? `:${n}` : ""}`); if (part === "status") return r.fulfill({ json: { available: true } }); const kendi = sonra && !!KENDI[s]; return r.fulfill({ json: { rating: 4.2, count: 100, mapsUri: "https://maps.google.com/", hours: [], reviews: [], photos: kendi ? [] : Array.from({ length: n || 1 }, () => foto), photoTotal: kendi ? 0 : 5, refs: [] } }); }); await c.route(/googleapis|googleusercontent|ggpht/, (r) => r.abort()); return c; };
+const FOTO = 'button[aria-label^="Fotoğrafı büyüt"] img';
 const DIGER = ["pandeli-fatih", "yeni-lokanta-beyoglu", "pidem-fatih"];
 for (const [ad, o] of CIHAZ) {
   const c = await ctx(o);
@@ -39,6 +39,8 @@ for (const [ad, o] of CIHAZ) {
 /* kapalı kalması gerekenler */
 { const j = await (await fetch(`${BASE}/api/media/status/`)).json().catch(() => ({})); ok("yükleme kapalı: durum ucu yükleme bilgisi vermez", j.enabled !== true, JSON.stringify(j).slice(0, 60)); }
 for (const u of ["/api/moderation/photos/", "/api/photos/mine/", "/yonetim/fotograf-moderasyon/", "/yonetim/medya-saglik/", "/yonetim/medya-editor/", "/api/moderation/storage/"]) { const s = (await fetch(`${BASE}${u}`, { redirect: "manual" })).status; ok(`kapalı: ${u}`, s === 404 || s === 401 || s === 403, s); }
+/* gerçek sunucu kuralı: Google'a gitmeden 409 döner, ücret doğmaz */
+for (const slug of Object.keys(KENDI)) { const ua = { "user-agent": "Mozilla/5.0 Chrome/131", "content-type": "application/json" }; const r = await fetch(`${BASE}/api/google/place/?slug=${slug}&part=media`, { method: "POST", headers: ua, body: JSON.stringify({ refs: [] }) }); const j = await r.json().catch(() => ({})); ok(`${slug}: doğrudan Google fotoğraf isteği sunucuda reddedilir`, r.status === 409 && j.error === "own_cover", `${r.status} ${JSON.stringify(j).slice(0, 40)}`); }
 { const s = (await fetch(`${BASE}/api/google/place/?slug=pandeli-fatih&part=status`)); const j = await s.json(); ok("Pandeli Google eşleşmesi korunuyor (ücretsiz durum ucu)", j.available === true, JSON.stringify(j)); }
 const sm = await (await fetch(`${BASE}/sitemap.xml`)).text(); const n = (sm.match(/<loc>/g) ?? []).length; ok("sitemap 431", n === 431, n);
 await br.close(); console.log(`JS hataları: ${hatalar.length}`); [...new Set(hatalar)].slice(0, 8).forEach((h) => console.log(" " + h)); writeFileSync(`${OUT}/sonuc.json`, JSON.stringify({ sonuc, hatalar, cagrilar }, null, 1));
