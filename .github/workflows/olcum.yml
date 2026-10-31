@@ -366,7 +366,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 sharp@0.34 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/foto/son.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-3pj7s25pv-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-728cjovpv-hulu34.vercel.app }
       - if: always()
         run: test -d out/foto && tar -C out -czf out/foto.tgz foto && rm -rf out/foto && openssl cms -encrypt -aes256 -binary -in out/foto.tgz -out out/foto.tgz.cms -outform DER ops/olcum.pem && rm out/foto.tgz
       - if: always()
