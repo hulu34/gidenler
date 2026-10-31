@@ -14,6 +14,7 @@ concurrency:
   group: olcum
   cancel-in-progress: false
 env:
+  SURUM_HOST: gidenler-dwey0bqic-hulu34.vercel.app
   EKRAN_ETIKET: sonra
   MEDYA_HOST: gidenler-glpr1t8r2-hulu34.vercel.app
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
@@ -454,6 +455,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: h418, path: out/h418.tgz.cms, if-no-files-found: ignore }
+  surum:
+    if: contains(github.event.head_commit.message, '[surum]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/surum.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SURUM_HOST: "${{ env.SURUM_HOST }}" }
+      - if: always()
+        run: test -d out/surum && tar -C out -czf out/surum.tgz surum && rm -rf out/surum && openssl cms -encrypt -aes256 -binary -outform DER -in out/surum.tgz -out out/surum.tgz.cms ops/olcum.pem && rm out/surum.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: surum, path: out/surum.tgz.cms, if-no-files-found: ignore }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
