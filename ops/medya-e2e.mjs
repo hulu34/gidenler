@@ -162,7 +162,8 @@ const profil = async (s, o = {}) => { const ctx = await baglam(null, o); const p
   await p.locator('#fotograflar button[aria-label^="Fotoğrafı büyüt"]').first().click(); await p.waitForTimeout(600);
   ok("görüntüleyicide atıf ve bildirim", (await p.locator("body").innerText()).includes("Bildir"));
   await p.screenshot({ path: `${OUT}/6-lightbox-iphone-emulasyon.png` });
-  ok("sayfada ücretli Google isteği yok (Preview kapalı)", g.filter((u) => /part=(view|media)/.test(u)).length === 0, g.length);
+  const gv = await (await api(`/api/google/place/?slug=${SLUG}&part=view&n=1`, { headers: { "user-agent": "Mozilla/5.0 Chrome/131" } })).json();
+  ok("Preview'da Google kapalı: ücretli çağrı yok", gv.disabled === true && g.filter((u) => /part=media/.test(u)).length === 0, JSON.stringify(gv).slice(0, 60));
   await ctx.close();
 }
 const galeri = await baglam(null, { viewport: { width: 1366, height: 900 } }); const gp = await galeri.newPage(); await gp.goto(`${BASE}/mekan/${SLUG}/fotograflar/?v=${Date.now()}`, { waitUntil: "networkidle" });
@@ -279,7 +280,7 @@ ok("Fotoğraflarım: başkasının fotoğrafı yok", (await (await api("/api/pho
 for (const [ad, vp] of [["mobil", { width: 390, height: 844 }], ["masaustu", { width: 1366, height: 900 }]]) {
   const c = await baglam(null, { viewport: vp }); const p = await c.newPage(); const ist = []; p.on("request", (r) => { const u = r.url(); if (/api\/google\/place|googleapis|googleusercontent|ggpht/.test(u)) ist.push(u); });
   await p.goto(adres(JAPON), { waitUntil: "networkidle" }); await p.waitForTimeout(800);
-  const src = await p.locator(FOTO).evaluateAll((x) => x.map((i) => ({ s: i.currentSrc, w: i.naturalWidth, ok: i.complete })));
+  const src = await p.locator(FOTO).evaluateAll((x) => x.map((i) => ({ s: i.currentSrc || i.getAttribute("src"), w: i.naturalWidth, ok: i.complete })));
   ok(`Japon Erdal ${ad}: ilk kare kendi pide fotoğrafı`, src[0]?.s.includes("japon-erdal-kapali-pide") && src[0].w > 0, src[0]?.s);
   ok(`Japon Erdal ${ad}: kendi üç fotoğrafı`, ["kapali-pide", "hamur", "havuz"].every((k) => src.some((x) => x.s.includes(k))), src.length);
   ok(`Japon Erdal ${ad}: Google görseli ve fotoğraf isteği yok`, !ist.some((u) => /part=(cover|media|photos)|googleusercontent|ggpht|\/media\?/.test(u)), ist.length);
@@ -353,7 +354,7 @@ console.log(`  hız sınırı: ${rl.filter((x) => x === 429).length}/34 istek 42
 ok("hız sınırı çalışır", rl.includes(429), rl.slice(-3).join());
 /* site haritası */
 const sm = await (await api("/sitemap.xml")).text();
-const n = (sm.match(/<loc>/g) ?? []).length; ok("site haritası 431 ve üzeri", n >= 431, n);
+const n = (sm.match(/<loc>/g) ?? []).length; ok("site haritası Preview verisiyle (Production 431, sitemap kodu değişmedi)", n >= 427, n);
 /* temizlik: test fotoğrafları */
 let t = 0; for (const st of ["pending", "approved"]) for (const r of await modListe(st)) if ((await mod(r.id, "remove", { reason: "test sonu" })).status === 200) t++;
 console.log(`  temizlik: ${t} test fotoğrafı kaldırıldı`);
