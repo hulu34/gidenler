@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { and, desc, eq, inArray, ne, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import type { Db } from "@/lib/db/client";
@@ -107,11 +108,14 @@ export async function createReview(db: Db, author: { id: string; kind?: string |
   if (removed && now.getTime() - removed.updatedAt.getTime() < 24 * 3600_000) return { ok: false, error: "recently_removed" };
   const body = normalizeBody(i.body);
   const status = (await looksDuplicated(db, author.id, place.id, body)) ? "pending" : "published";
-  const id = uuidv7();
-  await db.insert(reviews).values({
+  /* aynı anda gelen gönderimler aynı kimliği üretir, birincil anahtar tek kayda izin verir: Redis kilidi düşse de çift deneyim oluşmaz */
+  const h = createHash("sha256").update(`${author.id}:${place.id}:${mine.length}`).digest("hex");
+  const id = `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20, 32)}`;
+  const won = await db.insert(reviews).values({
     id, placeId: place.id, userId: author.id, visitedOn: `${i.visitMonth}-01`, visitNo: 1, overall: i.overall ?? 0, ratings: i.ratings,
     body, returnIntent: i.returnIntent, disclosure: i.disclosure, status, trust: trustOf(i.disclosure, author.kind ?? "user"),
-  });
+  }).onConflictDoNothing().returning({ id: reviews.id });
+  if (!won.length) return { ok: false, error: "exists", id };
   if (status === "pending") await db.insert(moderationQueue).values({ id: uuidv7(), kind: "review_spam", refTable: "reviews", refId: id, reason: "Aynı metin başka mekânda da yazılmış" });
   await audit(db, `user:${author.id}`, "review_create", id, { place: slug, status });
   return { ok: true, id, status };

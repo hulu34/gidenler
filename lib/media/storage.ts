@@ -18,6 +18,8 @@ export interface MediaStorage {
   publicUrl(key: string): string;
   /** CDN önbelleğinden düşürür. Yalnız yapılandırılmışsa vardır; yoksa genel dosya en çok 1 saat önbellekte kalabilir. */
   purge?(keys: string[]): Promise<void>;
+  /** Özel alan adı yok: onaylı dosyalar uygulama üzerinden sunulur, kova doğrudan açılmaz. */
+  publicViaApp?: boolean;
 }
 const FILE_ROUTE = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/media/file/`;
 const fileUrl = (key: string) => `${FILE_ROUTE}${key.split("/").map(encodeURIComponent).join("/")}`;
@@ -46,7 +48,7 @@ export function dbStorage(): MediaStorage {
   };
 }
 
-export interface S3Config { endpoint: string; accessKeyId: string; secretAccessKey: string; privateBucket: string; publicBucket: string; publicBase: string; region?: string; purge?: { zoneId: string; token: string } }
+export interface S3Config { endpoint: string; accessKeyId: string; secretAccessKey: string; privateBucket: string; publicBucket: string; publicBase?: string; region?: string; purge?: { zoneId: string; token: string } }
 export function s3Storage(c: S3Config, f: typeof fetch = fetch): MediaStorage {
   const client = new AwsClient({ accessKeyId: c.accessKeyId, secretAccessKey: c.secretAccessKey, service: "s3", region: c.region ?? "auto" });
   const url = (key: string) => `${c.endpoint.replace(/\/$/, "")}/${key.startsWith("public/") ? c.publicBucket : c.privateBucket}/${key.split("/").map(encodeURIComponent).join("/")}`;
@@ -66,7 +68,8 @@ export function s3Storage(c: S3Config, f: typeof fetch = fetch): MediaStorage {
     },
     async delete(key) { const r = await send(url(key), { method: "DELETE" }); if (!r.ok && r.status !== 404) throw new Error(`s3_delete_${r.status}`); },
     async move(a, b) { const o = await self.get(a); if (!o) throw new Error("missing"); await self.put(b, o.bytes, o.contentType); await self.delete(a); },
-    publicUrl: (key) => `${c.publicBase.replace(/\/$/, "")}/${key.replace(/^public\//, "").split("/").map(encodeURIComponent).join("/")}`,
+    publicUrl: (key) => (c.publicBase ? `${c.publicBase.replace(/\/$/, "")}/${key.replace(/^public\//, "").split("/").map(encodeURIComponent).join("/")}` : fileUrl(key)),
+    publicViaApp: !c.publicBase,
   };
   if (c.purge) {
     const { zoneId, token } = c.purge;
@@ -84,7 +87,13 @@ export const setStorageForTests = (s: MediaStorage | null | undefined) => { test
 /** Kova güvenliği: Production ve Preview aynı kovayı kullanamaz; özel ve genel kova ayrı olmalı. Sorun varsa yükleme kapanır. */
 export function storageConfigIssue(env: NodeJS.ProcessEnv = process.env): string | null {
   const a = env.MEDIA_S3_PRIVATE_BUCKET, b = env.MEDIA_S3_PUBLIC_BUCKET;
-  if (!a || !b) return null;
+  const required = [env.MEDIA_S3_ENDPOINT, env.MEDIA_S3_KEY, env.MEDIA_S3_SECRET, a, b];
+  if (required.every((v) => !v)) return env.MEDIA_PUBLIC_BASE ? "eksik_degisken" : null;
+  if (required.some((v) => !v)) return "eksik_degisken";
+  if (!/^https:\/\/[^/]+\/?$/.test(env.MEDIA_S3_ENDPOINT!)) return "gecersiz_endpoint";
+  if (env.MEDIA_PUBLIC_BASE && !/^https:\/\/[^/]+\/?$/.test(env.MEDIA_PUBLIC_BASE)) return "gecersiz_genel_adres";
+  if (!!env.MEDIA_CF_ZONE_ID !== !!env.MEDIA_CF_PURGE_TOKEN) return "eksik_cdn_degiskeni";
+  if (a === undefined || b === undefined) return null;
   if (a === b) return "ozel_ve_genel_ayni_kova";
   const names = `${a} ${b}`.toLowerCase();
   if (env.VERCEL_ENV === "production" && /preview|test|dev/.test(names)) return "productionda_test_kovasi";
@@ -98,6 +107,6 @@ export function getStorage(env: NodeJS.ProcessEnv = process.env): MediaStorage |
   const { MEDIA_S3_ENDPOINT: endpoint, MEDIA_S3_KEY: accessKeyId, MEDIA_S3_SECRET: secretAccessKey, MEDIA_S3_PRIVATE_BUCKET: privateBucket, MEDIA_S3_PUBLIC_BUCKET: publicBucket, MEDIA_PUBLIC_BASE: publicBase } = env;
   if (storageConfigIssue(env)) return null;
   const purge = env.MEDIA_CF_ZONE_ID && env.MEDIA_CF_PURGE_TOKEN ? { zoneId: env.MEDIA_CF_ZONE_ID, token: env.MEDIA_CF_PURGE_TOKEN } : undefined;
-  if (endpoint && accessKeyId && secretAccessKey && privateBucket && publicBucket && publicBase) return s3Storage({ endpoint, accessKeyId, secretAccessKey, privateBucket, publicBucket, publicBase, purge });
+  if (endpoint && accessKeyId && secretAccessKey && privateBucket && publicBucket) return s3Storage({ endpoint, accessKeyId, secretAccessKey, privateBucket, publicBucket, publicBase, purge });
   return env.VERCEL_ENV === "production" ? null : dbStorage();
 }

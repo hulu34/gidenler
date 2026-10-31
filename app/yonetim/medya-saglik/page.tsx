@@ -41,7 +41,7 @@ export default async function Page() {
     <div className="mx-auto max-w-[1180px] px-5 pb-24 pt-8 sm:px-7">
       <h1 className="text-[28px] font-extrabold tracking-[-0.03em]">Medya sağlığı</h1>
       <p className="mt-1 text-[13px] text-ink-3">Kayıtlardan hesaplanır. "—" ölçülemedi demektir. </p>
-      <p data-storage-state className="mt-2 text-[14px] font-semibold">Depolama: {issue ? `kapalı, yapılandırma hatası (${issue})` : !storage ? "yapılandırılmamış, yükleme kapalı" : storage.provider === "s3" ? "kalıcı (S3 uyumlu)" : "TEST DEPOLAMASI, kalıcı arşiv değil"}{storage?.provider === "s3" && !storage.purge ? " · CDN temizliği yapılandırılmamış: kaldırılan dosya en çok 1 saat önbellekte kalabilir" : ""}</p>
+      <p data-storage-state className="mt-2 text-[14px] font-semibold">Depolama: {issue ? `kapalı, yapılandırma hatası (${issue})` : !storage ? "yapılandırılmamış, yükleme kapalı" : storage.provider === "s3" ? "kalıcı (S3 uyumlu)" : "TEST DEPOLAMASI, kalıcı arşiv değil"}{storage?.publicViaApp ? " · görseller uygulama üzerinden; kaldırılan dosya en çok 10 dakika önbellekte kalabilir" : storage?.provider === "s3" && !storage.purge ? " · CDN temizliği yapılandırılmamış: kaldırılan dosya en çok 1 saat önbellekte kalabilir" : ""}</p>
       <nav className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[13px] font-bold underline underline-offset-2"><a href="/yonetim/fotograf-moderasyon/">Moderasyon</a>{role === "admin" && <a href="/yonetim/medya-editor/">İzinli fotoğraflar</a>}</nav>
       {role === "admin" && <StorageCheck />}
       <dl className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-4">
