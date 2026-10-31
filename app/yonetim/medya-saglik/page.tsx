@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { currentUser } from "@/lib/auth";
 import { getDb } from "@/lib/db/client";
-import { getStorage } from "@/lib/media/storage";
+import { getStorage, storageConfigIssue } from "@/lib/media/storage";
+import { StorageCheck } from "./StorageCheck";
 import { staffRole } from "@/lib/media/photoArchive";
 import { mediaHealth } from "@/lib/media/health";
 import { opsLastDays } from "@/lib/ops";
@@ -29,32 +30,38 @@ const Stat = ({ k, v, note }: { k: string; v: number | string | null; note?: str
 export default async function Page() {
   const db = getDb();
   const u = db ? await currentUser(await headers()) : null;
-  if (!db || !u || !(await staffRole(db, u.id).catch(() => null))) notFound();
-  const h = await mediaHealth(db, getStorage());
+  const role = db && u ? await staffRole(db, u.id).catch(() => null) : null;
+  if (!db || !u || !role) notFound();
+  const storage = getStorage(), issue = storageConfigIssue();
+  const h = await mediaHealth(db, storage);
   const a = h.archive;
   const ops = await opsLastDays().catch(() => []);
   const spend = await googleSpend();
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 pt-8 sm:px-7">
       <h1 className="text-[28px] font-extrabold tracking-[-0.03em]">Medya sağlığı</h1>
-      <p className="mt-1 text-[13px] text-ink-3">Kayıtlardan hesaplanır. "—" ölçülemedi demektir. Depolama: {h.storage ?? "yapılandırılmamış"}.</p>
+      <p className="mt-1 text-[13px] text-ink-3">Kayıtlardan hesaplanır. "—" ölçülemedi demektir. </p>
+      <p data-storage-state className="mt-2 text-[14px] font-semibold">Depolama: {issue ? `kapalı, yapılandırma hatası (${issue})` : !storage ? "yapılandırılmamış, yükleme kapalı" : storage.provider === "s3" ? "kalıcı (S3 uyumlu)" : "TEST DEPOLAMASI, kalıcı arşiv değil"}{storage?.provider === "s3" && !storage.purge ? " · CDN temizliği yapılandırılmamış: kaldırılan dosya en çok 1 saat önbellekte kalabilir" : ""}</p>
+      <nav className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[13px] font-bold underline underline-offset-2"><a href="/yonetim/fotograf-moderasyon/">Moderasyon</a>{role === "admin" && <a href="/yonetim/medya-editor/">İzinli fotoğraflar</a>}</nav>
+      {role === "admin" && <StorageCheck />}
       <dl className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-4">
         <Stat k="Toplam restoran" v={h.total} />
         <Stat k="Kendi kapağı olan" v={h.ownCover} note={Object.entries(h.ownBySource).map(([k, v]) => `${k}: ${v}`).join(" · ")} />
         <Stat k="Editör seçimi kapak" v={h.selectedCover} />
-        <Stat k="Google izni olan, kapağı yok" v={h.googleOnly} note="Politika sayısı, çağrı değil" />
+        <Stat k="Google'a bağımlı" v={h.googleOnly} note="Eşleşmesi kullanılabilir, kendi kapağı yok; çağrı sayısı değil" />
         <Stat k="Kapağı hiç olmayan" v={h.noCover} />
         <Stat k="Bekleyen" v={a?.pending ?? null} />
         <Stat k="Onaylı" v={a?.approved ?? null} note={a ? Object.entries(a.bySource).map(([k, v]) => `${k}: ${v}`).join(" · ") : undefined} />
-        <Stat k="Galerisi olan restoran" v={a?.withGallery ?? null} />
+        <Stat k="Kullanıcı fotoğrafı olan restoran" v={a?.withGallery ?? null} />
         <Stat k="Reddedilen" v={a?.rejected ?? null} />
         <Stat k="Kaldırılan" v={a?.removed ?? null} />
-        <Stat k="Hak kaydı eksik" v={a?.missingRights ?? null} />
+        <Stat k="Hak kaydı eksik" v={a ? a.missingRights + h.registryMissingRights : h.registryMissingRights} note="Kullanıcı ve izinli fotoğraf" />
+        <Stat k="Depolama hatası" v={ops.find((o) => o.key === "upload:storage_failed")?.n ?? 0} note="Son 7 gün" />
         <Stat k="Kırık dosya" v={a?.broken ?? null} note="Son 50 onaylı" />
         <Stat k="Son 7 gün yüklenen" v={a?.uploadedLast7 ?? null} />
         <Stat k="Silinmeyi bekleyen dosya" v={a?.cleanupOpen ?? null} note={a?.cleanupStuck ? `${a.cleanupStuck} tanesi 3+ denemede` : undefined} />
         <Stat k="Son 7 gün onaylanan" v={a?.approvedLast7 ?? null} />
-        <Stat k="Şüpheli şube eşleşmesi" v={h.suspiciousBranch} note="Bu raporda henüz ölçülmüyor" />
+        <Stat k="Şube kanıtı bekleyen izinli fotoğraf" v={h.heldRegistry} note="Bağlanmadı" />
       </dl>
       <h2 className="mt-10 text-[17px] font-extrabold">Ürün sağlığı · son 7 gün</h2>
       <p className="mt-1 text-[12.5px] text-ink-3">Uygulama içi sayaçlar; kullanıcı ve sorgu metni tutulmaz. Sunucu 5xx sayısı burada yok, Vercel günlüklerindedir.</p>

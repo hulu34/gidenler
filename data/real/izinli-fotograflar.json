@@ -8,30 +8,33 @@
       "sourceUrl": "https://www.instagram.com/p/DddzCLKDgK3/",
       "addedBy": "işletme",
       "rightsRef": "İşletme sahibinin 30.10.2026 tarihli yazılı onayı; kapsam: Seçki (TR/EN), restoran profili, editoryal sosyal medya, kırpma ve boyutlandırma; künye: Japon Erdal arşivi",
-      "srcSet": "/media/foto/japon-erdal-kapali-pide-480.webp 480w, /media/foto/japon-erdal-kapali-pide-960.webp 960w, /media/foto/japon-erdal-kapali-pide-1440.webp 1440w",
-      "full": "/media/foto/japon-erdal-kapali-pide-1440.webp"
+      "srcSet": "/media/foto/japon-erdal-kapali-pide-480.webp 480w, /media/foto/japon-erdal-kapali-pide-960.webp 960w, /media/foto/japon-erdal-kapali-pide-1080.webp 1080w",
+      "full": "/media/foto/japon-erdal-kapali-pide-1080.webp",
+      "focus": "50% 40%"
     },
     {
-      "src": "/media/foto/japon-erdal-hamur-960.webp",
+      "src": "/media/foto/japon-erdal-hamur-720.webp",
       "category": "diger",
       "alt": "Unlu tezgâhta elle açılan pide hamurları.",
       "credit": "Japon Erdal arşivi",
       "sourceUrl": "https://www.instagram.com/p/DdvunCTjisU/",
       "addedBy": "işletme",
       "rightsRef": "İşletme sahibinin 30.10.2026 tarihli yazılı onayı; kapsam: Seçki (TR/EN), restoran profili, editoryal sosyal medya, kırpma ve boyutlandırma; künye: Japon Erdal arşivi",
-      "srcSet": "/media/foto/japon-erdal-hamur-480.webp 480w, /media/foto/japon-erdal-hamur-960.webp 960w, /media/foto/japon-erdal-hamur-1440.webp 1440w",
-      "full": "/media/foto/japon-erdal-hamur-1440.webp"
+      "srcSet": "/media/foto/japon-erdal-hamur-480.webp 480w, /media/foto/japon-erdal-hamur-720.webp 720w",
+      "full": "/media/foto/japon-erdal-hamur-720.webp",
+      "focus": "50% 50%"
     },
     {
-      "src": "/media/foto/japon-erdal-havuz-960.webp",
+      "src": "/media/foto/japon-erdal-havuz-720.webp",
       "category": "diger",
       "alt": "Salondaki havuzda yüzen turuncu ve beyaz koi balıkları.",
       "credit": "Japon Erdal arşivi",
       "sourceUrl": "https://www.instagram.com/p/DZfMNeGDD3E/",
       "addedBy": "işletme",
       "rightsRef": "İşletme sahibinin 30.10.2026 tarihli yazılı onayı; kapsam: Seçki (TR/EN), restoran profili, editoryal sosyal medya, kırpma ve boyutlandırma; künye: Japon Erdal arşivi",
-      "srcSet": "/media/foto/japon-erdal-havuz-480.webp 480w, /media/foto/japon-erdal-havuz-960.webp 960w, /media/foto/japon-erdal-havuz-1440.webp 1440w",
-      "full": "/media/foto/japon-erdal-havuz-1440.webp"
+      "srcSet": "/media/foto/japon-erdal-havuz-480.webp 480w, /media/foto/japon-erdal-havuz-720.webp 720w",
+      "full": "/media/foto/japon-erdal-havuz-720.webp",
+      "focus": "50% 50%"
     }
   ],
   "viktor-levi-sarap-evi-kadikoy": [
@@ -58,21 +61,6 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Viktor_Levi_%C5%9Earap_Evi_2026_(1).jpg",
       "addedBy": "commons",
       "rightsRef": "Wikimedia Commons, CC BY-SA 4.0, kontrol 2026-10-31: https://commons.wikimedia.org/wiki/File:Viktor_Levi_%C5%9Earap_Evi_2026_(1).jpg"
-    }
-  ],
-  "savoy-beyoglu": [
-    {
-      "src": "/media/commons/savoy-beyoglu-960.webp",
-      "srcSet": "/media/commons/savoy-beyoglu-480.webp 480w, /media/commons/savoy-beyoglu-960.webp 960w, /media/commons/savoy-beyoglu-1440.webp 1440w",
-      "full": "/media/commons/savoy-beyoglu-1440.webp",
-      "category": "dis",
-      "alt": "Tarihi Savoy Pastanesi — dış cephe ve masalar",
-      "credit": "Vano111ru",
-      "license": "CC BY-SA 4.0 · boyutlandırıldı",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Savoy_Pastanesi.jpg",
-      "addedBy": "commons",
-      "rightsRef": "Wikimedia Commons, CC BY-SA 4.0, kontrol 2026-10-31: https://commons.wikimedia.org/wiki/File:Savoy_Pastanesi.jpg",
-      "focus": "50% 0%"
     }
   ],
   "cukur-meyhane-beyoglu": [

@@ -247,7 +247,7 @@
   ],
   "cover": {
     "state": "var",
-    "src": "/seckisi/gorsel/japon-erdal-kapali-pide.jpg",
+    "src": "/media/foto/japon-erdal-kapali-pide-1080.webp",
     "alt": {
       "tr": "Kâğıt üzerinde dilimlenmiş kapalı pideler; kenarları fırında kızarmış, aralarından iç harcı görünüyor.",
       "en": "Sliced closed pides on paper, their edges charred in the oven, the filling showing between the slices."
@@ -531,7 +531,7 @@
   },
   "gallery": [
     {
-      "src": "/seckisi/gorsel/japon-erdal-hamur.jpg",
+      "src": "/media/foto/japon-erdal-hamur-720.webp",
       "alt": {
         "tr": "Unlu tezgâhta elle açılan pide hamurları.",
         "en": "Pide dough being stretched by hand on a floured counter."
@@ -546,7 +546,7 @@
       "sourceUrl": "https://www.instagram.com/p/DdvunCTjisU/"
     },
     {
-      "src": "/seckisi/gorsel/japon-erdal-havuz.jpg",
+      "src": "/media/foto/japon-erdal-havuz-720.webp",
       "alt": {
         "tr": "Salondaki havuzda yüzen turuncu ve beyaz koi balıkları.",
         "en": "Orange and white koi swimming in the pool in the dining room."

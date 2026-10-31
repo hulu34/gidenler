@@ -16,6 +16,8 @@ export const MAX_PER_REVIEW = 5;
 export type UploadError = PhotoError | "not_found" | "not_owner" | "review_closed" | "limit" | "duplicate" | "storage_failed" | "rights_required";
 export type PhotoStatus = "uploading" | "pending" | "approved" | "rejected" | "removed";
 export const RIGHTS_STATEMENT_OWN = "Bu fotoğrafı ben çektim; Gidenler'de yayımlanmasına izin veriyorum.";
+export const RIGHTS_STATEMENT_AUTHORIZED = "Bu fotoğrafı kullanma yetkim var; Gidenler'de yayımlanmasına izin veriyorum.";
+export type RightsType = "own" | "authorized";
 export const REPORT_REASONS = ["yanlis_restoran", "telif", "uygunsuz", "kisisel_veri", "diger"] as const;
 export type ReportReason = (typeof REPORT_REASONS)[number];
 
@@ -33,7 +35,7 @@ export async function staffRole(db: Db, userId: string): Promise<"moderator" | "
 async function dropRow(db: Db, id: string) { await db.delete(mediaItems).where(eq(mediaItems.id, id)); }
 
 /** Deneyime fotoğraf ekler. Başarıda durum "pending": herkese açık değildir. */
-export async function addReviewPhoto(db: Db, storage: MediaStorage, uploaderId: string, reviewId: string, input: Buffer, rights: { confirmed: boolean }):
+export async function addReviewPhoto(db: Db, storage: MediaStorage, uploaderId: string, reviewId: string, input: Buffer, rights: { confirmed: boolean; type?: RightsType }):
   Promise<{ ok: true; id: string; status: "pending"; width: number; height: number } | { ok: false; error: UploadError }> {
   const [rv] = await db.select({ userId: reviews.userId, placeId: reviews.placeId, status: reviews.status, slug: places.slug }).from(reviews).innerJoin(places, eq(places.id, reviews.placeId)).where(eq(reviews.id, reviewId)).limit(1);
   if (!rv) return { ok: false, error: "not_found" };
@@ -51,7 +53,7 @@ export async function addReviewPhoto(db: Db, storage: MediaStorage, uploaderId: 
     const row = await db.insert(photoAssets).values({
       mediaId: id, placeId: rv.placeId, reviewId, uploaderId, sha256: photo.sha256, width: photo.width, height: photo.height, bytes: photo.variants.reduce((n, v) => n + v.bytes.length, 0),
       storageProvider: storage.provider, variants: photo.variants.map((v) => ({ w: v.w, h: v.h, key: pendingKey(id, v.w), bytes: v.bytes.length })),
-      rightsType: "own", rightsStatement: RIGHTS_STATEMENT_OWN,
+      rightsType: rights.type ?? "own", rightsStatement: rights.type === "authorized" ? RIGHTS_STATEMENT_AUTHORIZED : RIGHTS_STATEMENT_OWN,
     }).onConflictDoNothing().returning({ id: photoAssets.mediaId });
     if (row.length) return true;
     await dropRow(db, id);
@@ -104,6 +106,8 @@ export async function runCleanup(db: Db, storage: MediaStorage, o: { limit?: num
   for (const r of rows) {
     try {
       await storage.delete(r.key);
+      /* genel dosya CDN'de de kalmamalı: temizleme başarısızsa kayıt kuyrukta kalır */
+      if (r.key.startsWith("public/") && storage.purge) await storage.purge([r.key]);
       await db.update(mediaCleanup).set({ doneAt: now, lastError: null }).where(eq(mediaCleanup.key, r.key));
       done++;
     } catch (e) {
@@ -265,6 +269,12 @@ export async function coverCandidates(db: Db, storage: MediaStorage): Promise<Re
   const out: Record<string, { photo: PublicPhoto; selected: boolean }> = {};
   for (const r of rows) if (!out[r.slug]) out[r.slug] = { photo: toPublic(storage, r), selected: r.isCover };
   return out;
+}
+
+/** Kullanıcının bütün fotoğrafları: durum ve red gerekçesiyle. Yalnız kendi kayıtları; kaldırılanlar listelenmez. */
+export async function myPhotos(db: Db, userId: string, limit = 100) {
+  return db.select({ id: photoAssets.mediaId, status: mediaItems.status, rejectReason: photoAssets.rejectReason, variants: photoAssets.variants, reviewId: photoAssets.reviewId, slug: places.slug, name: places.name, createdAt: photoAssets.createdAt }).from(photoAssets).innerJoin(mediaItems, eq(mediaItems.id, photoAssets.mediaId)).innerJoin(places, eq(places.id, photoAssets.placeId))
+    .where(and(eq(photoAssets.uploaderId, userId), inArray(mediaItems.status, ["pending", "approved", "rejected"]))).orderBy(desc(photoAssets.createdAt)).limit(limit);
 }
 
 export async function myReviewPhotos(db: Db, userId: string, reviewId: string) {

@@ -16,6 +16,8 @@ export interface MediaStorage {
   /** Bir anahtardan diğerine taşır; hedef yazılmadan kaynak silinmez. */
   move(from: string, to: string): Promise<void>;
   publicUrl(key: string): string;
+  /** CDN önbelleğinden düşürür. Yalnız yapılandırılmışsa vardır; yoksa genel dosya en çok 1 saat önbellekte kalabilir. */
+  purge?(keys: string[]): Promise<void>;
 }
 const FILE_ROUTE = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/media/file/`;
 const fileUrl = (key: string) => `${FILE_ROUTE}${key.split("/").map(encodeURIComponent).join("/")}`;
@@ -44,7 +46,7 @@ export function dbStorage(): MediaStorage {
   };
 }
 
-export interface S3Config { endpoint: string; accessKeyId: string; secretAccessKey: string; privateBucket: string; publicBucket: string; publicBase: string; region?: string }
+export interface S3Config { endpoint: string; accessKeyId: string; secretAccessKey: string; privateBucket: string; publicBucket: string; publicBase: string; region?: string; purge?: { zoneId: string; token: string } }
 export function s3Storage(c: S3Config, f: typeof fetch = fetch): MediaStorage {
   const client = new AwsClient({ accessKeyId: c.accessKeyId, secretAccessKey: c.secretAccessKey, service: "s3", region: c.region ?? "auto" });
   const url = (key: string) => `${c.endpoint.replace(/\/$/, "")}/${key.startsWith("public/") ? c.publicBucket : c.privateBucket}/${key.split("/").map(encodeURIComponent).join("/")}`;
@@ -53,7 +55,7 @@ export function s3Storage(c: S3Config, f: typeof fetch = fetch): MediaStorage {
   const self: MediaStorage = {
     provider: "s3",
     async put(key, bytes, contentType) {
-      const r = await send(url(key), { method: "PUT", body: new Uint8Array(bytes), headers: { "content-type": contentType, "cache-control": key.startsWith("public/") ? "public, max-age=31536000, immutable" : "private, no-store" } });
+      const r = await send(url(key), { method: "PUT", body: new Uint8Array(bytes), headers: { "content-type": contentType, "cache-control": !key.startsWith("public/") ? "private, no-store" : c.purge ? "public, max-age=3600, s-maxage=31536000" : "public, max-age=3600" } });
       if (!r.ok) throw new Error(`s3_put_${r.status}`);
     },
     async get(key) {
@@ -66,16 +68,36 @@ export function s3Storage(c: S3Config, f: typeof fetch = fetch): MediaStorage {
     async move(a, b) { const o = await self.get(a); if (!o) throw new Error("missing"); await self.put(b, o.bytes, o.contentType); await self.delete(a); },
     publicUrl: (key) => `${c.publicBase.replace(/\/$/, "")}/${key.replace(/^public\//, "").split("/").map(encodeURIComponent).join("/")}`,
   };
+  if (c.purge) {
+    const { zoneId, token } = c.purge;
+    self.purge = async (keys) => {
+      const r = await f(`https://api.cloudflare.com/client/v4/zones/${zoneId}/purge_cache`, { method: "POST", headers: { authorization: `Bearer ${token}`, "content-type": "application/json" }, body: JSON.stringify({ files: keys.map((k) => self.publicUrl(k)) }), signal: AbortSignal.timeout(10_000) });
+      if (!r.ok) throw new Error(`cdn_purge_${r.status}`);
+    };
+  }
   return self;
 }
 
 let testOverride: MediaStorage | null | undefined;
 export const setStorageForTests = (s: MediaStorage | null | undefined) => { testOverride = s; };
 
+/** Kova güvenliği: Production ve Preview aynı kovayı kullanamaz; özel ve genel kova ayrı olmalı. Sorun varsa yükleme kapanır. */
+export function storageConfigIssue(env: NodeJS.ProcessEnv = process.env): string | null {
+  const a = env.MEDIA_S3_PRIVATE_BUCKET, b = env.MEDIA_S3_PUBLIC_BUCKET;
+  if (!a || !b) return null;
+  if (a === b) return "ozel_ve_genel_ayni_kova";
+  const names = `${a} ${b}`.toLowerCase();
+  if (env.VERCEL_ENV === "production" && /preview|test|dev/.test(names)) return "productionda_test_kovasi";
+  if (env.VERCEL_ENV !== "production" && /prod/.test(names)) return "testte_production_kovasi";
+  return null;
+}
+
 /** Etkin depolama. Production'da yalnız tam S3 yapılandırması; Preview/yerelde yoksa test amaçlı veritabanı. */
 export function getStorage(env: NodeJS.ProcessEnv = process.env): MediaStorage | null {
   if (testOverride !== undefined) return testOverride;
   const { MEDIA_S3_ENDPOINT: endpoint, MEDIA_S3_KEY: accessKeyId, MEDIA_S3_SECRET: secretAccessKey, MEDIA_S3_PRIVATE_BUCKET: privateBucket, MEDIA_S3_PUBLIC_BUCKET: publicBucket, MEDIA_PUBLIC_BASE: publicBase } = env;
-  if (endpoint && accessKeyId && secretAccessKey && privateBucket && publicBucket && publicBase) return s3Storage({ endpoint, accessKeyId, secretAccessKey, privateBucket, publicBucket, publicBase });
+  if (storageConfigIssue(env)) return null;
+  const purge = env.MEDIA_CF_ZONE_ID && env.MEDIA_CF_PURGE_TOKEN ? { zoneId: env.MEDIA_CF_ZONE_ID, token: env.MEDIA_CF_PURGE_TOKEN } : undefined;
+  if (endpoint && accessKeyId && secretAccessKey && privateBucket && publicBucket && publicBase) return s3Storage({ endpoint, accessKeyId, secretAccessKey, privateBucket, publicBucket, publicBase, purge });
   return env.VERCEL_ENV === "production" ? null : dbStorage();
 }

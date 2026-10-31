@@ -29,7 +29,7 @@ import { VenueSecki } from "@/components/seckisi/Seckisi";
 import { absoluteImage, venueDescription, venueJsonLd } from "@/lib/seo";
 import { coverOf, profilePhotos } from "@/lib/media/cover";
 import { getStorage } from "@/lib/media/storage";
-import { liveCovers, placePhotos } from "@/lib/live";
+import { liveCovers, placePhotos, placeRegistry } from "@/lib/live";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { articlesForVenue } from "@/lib/seckisi";
 import { parseVideoUrl } from "@/lib/media/embed";
@@ -169,8 +169,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   /* Gerçek restoran profili (kaynaklı içerik varsa): içerik odaklı düzen — genel bakış, menü, fotoğraflar, videolar, deneyimler */
   const ent = withProfile(entity, rp);
   const nVideos = videos[entity.slug] ?? 0;
+  const registry = entity.isReal ? await placeRegistry(entity.slug) : null;
   const [livePhotos, covers] = entity.isReal ? await Promise.all([placePhotos(entity.slug), liveCovers()]) : [[], {} as Awaited<ReturnType<typeof liveCovers>>];
-  const { photos: ownPhotos, hasCover } = profilePhotos(entity, livePhotos);
+  const { photos: ownPhotos, hasCover } = profilePhotos(entity, livePhotos, registry);
   const seoCover = coverOf(entity, covers[entity.slug]);
   /* Koordinatı olmayan mekânda da Haritalar bağlantısı: ücretsiz arama adresi */
   const mapsUrl = mapLinks(entity)?.googleMaps ?? (entity.isReal ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.location?.district ?? ""} İstanbul`)}` : undefined);

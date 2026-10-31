@@ -17,7 +17,8 @@ const forbidden = () => NextResponse.json({ error: "forbidden" }, { status: 403,
 export async function GET(req: Request) {
   const g = await guard(req, { write: false });
   if (g instanceof NextResponse) return g;
-  if (!(await staffRole(g.db, g.user.id))) return forbidden();
+  const role = await staffRole(g.db, g.user.id);
+  if (!role) return forbidden();
   const sp = new URL(req.url).searchParams;
   const hid = sp.get("history");
   if (hid) return NextResponse.json({ history: (await photoHistory(g.db, hid)).map((h) => ({ ...h, actor: h.actor.startsWith("user:") ? "kullanıcı/personel" : h.actor })) }, { headers: H });
@@ -26,7 +27,7 @@ export async function GET(req: Request) {
   const status = st === "approved" || st === "rejected" || st === "removed" ? st : "pending";
   const rows = await moderationList(g.db, status);
   const storage = getStorage();
-  return NextResponse.json({ status, reported: await openPhotoReports(g.db), rows: rows.map((r) => ({ ...r, currentCover: (() => { const e = getEntity(r.slug); const c = e ? coverOf(e) : null; return c?.src ?? null; })(), preview: storage && r.variants.length ? (r.status === "approved" ? storage.publicUrl(r.variants[r.variants.length - 1].key) : `/api/media/file/${r.variants[r.variants.length - 1].key}`) : null, variants: undefined })) }, { headers: H });
+  return NextResponse.json({ status, role, reported: await openPhotoReports(g.db), rows: rows.map((r) => ({ ...r, currentCover: (() => { const e = getEntity(r.slug); const c = e ? coverOf(e) : null; return c?.src ?? null; })(), preview: storage && r.variants.length ? (r.status === "approved" ? storage.publicUrl(r.variants[r.variants.length - 1].key) : `/api/media/file/${r.variants[r.variants.length - 1].key}`) : null, variants: undefined })) }, { headers: H });
 }
 
 const Body = z.object({ id: z.string().regex(/^[0-9a-f-]{36}$/), action: z.enum(["approve", "reject", "remove", "candidate", "candidate_off", "cover", "cover_clear", "dismiss_reports"]), reason: z.string().max(300).optional(), focus: z.string().regex(/^\d{1,3}% \d{1,3}%$/).nullable().optional() }).strict();
@@ -34,12 +35,15 @@ const Body = z.object({ id: z.string().regex(/^[0-9a-f-]{36}$/), action: z.enum(
 export async function POST(req: Request) {
   const g = await guard(req, { write: true, limit: { key: "pmo", max: 300, windowSec: 3600 } });
   if (g instanceof NextResponse) return g;
-  if (!(await staffRole(g.db, g.user.id))) return forbidden();
+  const role = await staffRole(g.db, g.user.id);
+  if (!role) return forbidden();
   const storage = getStorage();
   if (!storage) return NextResponse.json({ error: "storage_not_configured" }, { status: 503, headers: H });
   const p = Body.safeParse(await req.json().catch(() => null));
   if (!p.success) return NextResponse.json({ error: "invalid_body" }, { status: 400, headers: H });
   const { id, action, reason = "", focus } = p.data;
+  /* kapağa giden her karar yalnız yönetici: aday işaretlemek de kapağı olmayan mekânda kapak yapar */
+  if (["candidate", "candidate_off", "cover", "cover_clear"].includes(action) && role !== "admin") return forbidden();
   const actor = `user:${g.user.id}`;
   let r: Decided | { ok: true; slug?: string };
   switch (action) {

@@ -15,6 +15,7 @@ export function PhotoModeration() {
   const [rows, setRows] = useState<Row[] | null>(null);
   const [reported, setReported] = useState<string[]>([]);
   const [msg, setMsg] = useState<string | null>(null);
+  const [admin, setAdmin] = useState(false);
   const [reason, setReason] = useState<Record<string, string>>({});
   const [focus, setFocus] = useState<Record<string, string>>({});
   const [problems, setProblems] = useState<Problems | null>(null);
@@ -28,7 +29,7 @@ export function PhotoModeration() {
     }
     const r = await fetch(`${API}?status=${tab}`, { credentials: "same-origin" }).catch(() => null);
     if (!r?.ok) { setMsg("Liste alınamadı."); setRows([]); return; }
-    const j = await r.json(); setRows(j.rows); setReported(j.reported);
+    const j = await r.json(); setRows(j.rows); setReported(j.reported); setAdmin(j.role === "admin");
   }, [tab]);
   useEffect(() => { void load(); }, [load]);
   async function act(id: string, action: string, extra: Record<string, unknown> = {}) {
@@ -78,7 +79,7 @@ export function PhotoModeration() {
                 <button className={btn} onClick={() => act(r.id, "approve")}>Onayla</button>
                 <button className={btn} disabled={!reason[r.id]?.trim()} onClick={() => act(r.id, "reject", { reason: reason[r.id] })}>Reddet</button>
               </>}
-              {r.status === "approved" && <>
+              {r.status === "approved" && admin && <>
                 {r.isCover ? <button className={btn} onClick={() => act(r.id, "cover_clear")}>Kapaktan çıkar</button> : (
                   <>
                     <select aria-label="Kırpma odağı" value={focus[r.id] ?? "50% 50%"} onChange={(e) => setFocus({ ...focus, [r.id]: e.target.value })} className="border border-line-strong bg-paper px-2 text-[13px]">
@@ -94,7 +95,7 @@ export function PhotoModeration() {
             </div>
             <button type="button" className="self-start text-[12.5px] font-semibold underline underline-offset-2" onClick={async () => { const j = await fetch(`${API}?history=${r.id}`, { credentials: "same-origin" }).then((x) => x.json()).catch(() => ({ history: [] })); setHistory((h) => ({ ...h, [r.id]: j.history })); }}>İşlem geçmişi</button>
             {history[r.id] && <ol className="text-[12.5px] text-ink-2">{history[r.id].map((h, i) => <li key={i}>{new Date(h.at).toLocaleString("tr-TR")} · {h.action.replace("photo_", "")} · {h.actor}</li>)}</ol>}
-            {r.status === "approved" && !r.isCover && r.preview && (
+            {r.status === "approved" && admin && !r.isCover && r.preview && (
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">Kapak önizleme</p>
                 {/* eslint-disable-next-line @next/next/no-img-element */}

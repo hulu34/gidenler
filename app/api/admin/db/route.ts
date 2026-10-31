@@ -331,7 +331,7 @@ export async function POST(req: Request) {
         if (envName() === "production" || process.env.VERCEL_ENV === "production" || body.confirm !== "EVET") return NextResponse.json({ error: "not_allowed" }, { status: 403, headers: H });
         const secret = process.env.BETTER_AUTH_SECRET;
         if (!secret) return NextResponse.json({ error: "no_secret" }, { status: 503, headers: H });
-        const role = body.mode === "moderator" ? "moderator" : null;
+        const role = body.mode === "moderator" ? "moderator" : body.mode === "admin" ? "admin" : null;
         const id = uuidv7(), token = randomBytes(24).toString("hex");
         await db.insert(user).values({ id, name: role ? "Test Editor" : "Test Kullanici", email: `${id}@example.invalid`, emailVerified: true, kind: "test" });
         await db.insert(session).values({ id: uuidv7(), token, userId: id, expiresAt: new Date(Date.now() + 6 * 3600 * 1000) });

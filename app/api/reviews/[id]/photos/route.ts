@@ -18,7 +18,7 @@ const MESSAGE: Record<UploadError, string> = {
   empty: "Dosya boş.", too_large: "Dosya çok büyük (en çok 4 MB).", bad_type: "Yalnız JPEG, PNG ya da WebP fotoğraf yüklenebilir.", corrupt: "Dosya bozuk; açılamadı.",
   too_small: "Fotoğraf çok küçük (kısa kenar en az 400 piksel).", not_found: "Deneyim bulunamadı.", not_owner: "Yalnız kendi deneyimine fotoğraf ekleyebilirsin.",
   review_closed: "Bu deneyime fotoğraf eklenemez.", limit: `Bir deneyime en çok ${MAX_PER_REVIEW} fotoğraf eklenebilir.`, duplicate: "Bu fotoğraf bu mekân için zaten yüklenmiş.",
-  storage_failed: "Fotoğraf kaydedilemedi; yeniden dene.", rights_required: "Fotoğrafın sana ait olduğunu onaylaman gerekiyor.",
+  storage_failed: "Fotoğraf kaydedilemedi; yeniden dene.", rights_required: "Fotoğrafın sahibi ya da kullanmaya yetkili olduğunu onaylaman gerekiyor.",
 };
 const STATUS: Record<UploadError, number> = { empty: 400, too_large: 413, bad_type: 415, corrupt: 422, too_small: 422, not_found: 404, not_owner: 403, review_closed: 409, limit: 409, duplicate: 409, storage_failed: 502, rights_required: 400 };
 
@@ -36,7 +36,8 @@ export async function POST(req: Request, { params }: Ctx) {
   const file = form.get("file");
   if (!(file instanceof Blob)) return NextResponse.json({ error: "empty", message: MESSAGE.empty }, { status: 400, headers: H });
   if (file.size > MAX_BYTES) return NextResponse.json({ error: "too_large", message: MESSAGE.too_large }, { status: 413, headers: H });
-  const r = await addReviewPhoto(g.db, storage, g.user.id, id, Buffer.from(await file.arrayBuffer()), { confirmed: form.get("rights") === "own" });
+  const rightsField = form.get("rights");
+  const r = await addReviewPhoto(g.db, storage, g.user.id, id, Buffer.from(await file.arrayBuffer()), { confirmed: rightsField === "own" || rightsField === "authorized", type: rightsField === "authorized" ? "authorized" : "own" });
   if (!r.ok) void countOp(`upload:${r.error}`);
   if (!r.ok) return NextResponse.json({ error: r.error, message: MESSAGE[r.error] }, { status: STATUS[r.error], headers: H });
   revalidateTag(TAG_PHOTOS);

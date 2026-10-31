@@ -407,7 +407,7 @@ export function WriteForm({
       {/* ── gönder ── */}
       <div className="sticky bottom-0 mt-12 flex flex-col gap-2 border-t-2 border-line-strong bg-paper/95 py-4 backdrop-blur-sm">
         {error && <p role="alert" className="text-[13px] font-semibold text-neg-ink">{error}</p>}
-        {photos.picks.length > 0 && !photos.rights && <p className="text-[12.5px] text-ink-2">Yayınlamadan önce fotoğrafların sana ait olduğunu onayla ya da fotoğrafları kaldır.</p>}
+        {photos.picks.length > 0 && !photos.rights && <p className="text-[12.5px] text-ink-2">Yayınlamadan önce fotoğraflar için hak beyanını seç ya da fotoğrafları kaldır.</p>}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           {canPublish ? (
             <Button variant="primary" disabled={!canSend} onClick={publish}>{busy ? "Gönderiliyor…" : mine ? "Değişiklikleri kaydet" : "Deneyimi yayınla"}</Button>

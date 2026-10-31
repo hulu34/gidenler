@@ -10,7 +10,9 @@ import type { PublishedMap } from "@/lib/score/publishedCards";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { getStorage } from "@/lib/media/storage";
 import { approvedPhotos, coverCandidates, type PublicPhoto } from "@/lib/media/photoArchive";
-import type { LiveCoverMap } from "@/lib/media/cover";
+import { applyRegistry, type LiveCoverMap, type RegistryState } from "@/lib/media/cover";
+import { readRegistry } from "@/lib/media/registry";
+import { realEntities } from "@/data/real";
 
 /* ──────────────────────────────────────────────────────────────────────────
    CANLI VERİ (sunucu) — yeniden derleme gerektirmeyen, veritabanından okunan sayfa bilgisi.
@@ -91,14 +93,37 @@ export function placePhotos(slug: string): Promise<PublicPhoto[]> {
     try { return await approvedPhotos(db, storage, slug); } catch { return []; }
   }, ["place-photos-v1", slug], { revalidate: 3600, tags: [TAG_PHOTOS] })();
 }
+/** Mekânın izinli fotoğraf kararı (yönetici editörü). */
+export function placeRegistry(slug: string): Promise<RegistryState | null> {
+  return unstable_cache(async () => {
+    const db = getDb();
+    if (!db || DEMO_VISIBLE) return null;
+    try { return (await readRegistry(db, slug)).get(slug) ?? null; } catch { return null; }
+  }, ["place-registry-v1", slug], { revalidate: 3600, tags: [TAG_COVERS] })();
+}
 export const liveCovers = unstable_cache(async (): Promise<LiveCoverMap> => {
   const db = getDb(), storage = getStorage();
-  if (!db || !storage || DEMO_VISIBLE) return {};
+  if (!db || DEMO_VISIBLE) return {};
+  const out: LiveCoverMap = {};
+  if (storage) {
+    try {
+      const m = await coverCandidates(db, storage);
+      for (const [k, v] of Object.entries(m)) out[k] = { src: v.photo.src, srcSet: v.photo.srcSet, credit: v.photo.credit, focus: v.photo.focus, selected: v.selected };
+    } catch { /* tablo yoksa kullanıcı kapağı yok */ }
+  }
   try {
-    const m = await coverCandidates(db, storage);
-    return Object.fromEntries(Object.entries(m).map(([k, v]) => [k, { src: v.photo.src, srcSet: v.photo.srcSet, credit: v.photo.credit, focus: v.photo.focus, selected: v.selected }]));
-  } catch { return {}; }
-}, ["photo-covers-v1"], { revalidate: 3600, tags: [TAG_COVERS] });
+    /* yönetici kararı olan izinli fotoğraflar; kullanıcı fotoğrafından seçilmiş kapak önceliklidir */
+    for (const [slug, st] of (await readRegistry(db))) {
+      if (out[slug]?.selected) continue;
+      const e = realEntities.find((x) => x.slug === slug);
+      if (!e) continue;
+      const first = st.cover || st.hidden.length ? applyRegistry(e.photos ?? [], st)[0] : undefined;
+      if (first) out[slug] = { src: first.src, srcSet: first.srcSet, credit: first.credit, license: first.license, alt: first.alt, focus: first.focus ?? null, selected: true, source: first.addedBy === "işletme" ? "isletme" : first.addedBy === "commons" ? "commons" : "gidenler" };
+      else if (st.hidden.length) out[slug] = { ...(out[slug] ?? { src: "", credit: "", focus: null, selected: false }), hideRegistry: true };
+    }
+  } catch { /* okunamazsa dosyadaki kayıt geçerli */ }
+  return out;
+}, ["photo-covers-v2"], { revalidate: 3600, tags: [TAG_COVERS] });
 
 /** Son deneyim yazılan gerçek mekânlar: yalnız yayında ve gerçek kullanıcı (test hesabı değil). Kimlik ya da metin dönmez. */
 export const recentlyReviewed = unstable_cache(async (): Promise<string[]> => {

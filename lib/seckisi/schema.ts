@@ -42,7 +42,7 @@ const Cover = z.discriminatedUnion("state", [
   }).strict(),
   z.object({
     state: z.literal("var"),
-    src: z.string().regex(/^\/seckisi\/gorsel\//, "yalnız kendi sunucumuzdaki izinli görseller"),
+    src: z.string().regex(/^\/(seckisi\/gorsel|media\/foto)\//, "yalnız kendi sunucumuzdaki izinli görseller"),
     alt: Text,
     credit: z.string().trim().min(1),
     /** "izinli-basin" | "isletme-izni" | "lisans" — serbest metin değil. */
@@ -102,7 +102,7 @@ const Video = z.object({
 
 /** Yazı içi görsel: kapakla aynı hak kuralları. */
 const Photo = z.object({
-  src: z.string().regex(/^\/seckisi\/gorsel\//),
+  src: z.string().regex(/^\/(seckisi\/gorsel|media\/foto)\//),
   alt: Text,
   caption: Text,
   credit: z.string().trim().min(1),

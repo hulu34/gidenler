@@ -144,6 +144,7 @@ export function PhotoMosaic({ slug, name, photos, google, hasCover, addHref }: {
           {own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
           {hasGoogle && <>Google fotoğrafları sahiplerine aittir; büyütünce sahibi ve Google Haritalar bağlantısı görünür.</>}
         </span>
+        {addHref && <Link href={addHref} className="font-bold text-ink-2 underline underline-offset-2 hover:text-accent-ink">Fotoğraf ekle</Link>}
       </div>
 
       {open !== null && <Lightbox photos={all} index={open} onIndex={setOpen} onClose={() => setOpen(null)} title={name} />}

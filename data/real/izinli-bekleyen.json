@@ -1,0 +1,20 @@
+{
+  "savoy-beyoglu": {
+    "neden": "Adres çelişkisi çözülmedi: kaynaklar Sıraselviler 91/A ile 181-183A diyor; şube kanıtı olmadan bağlanmaz. Yerinde ya da işletmeden doğrulanınca izinli-fotograflar.json'a taşınır.",
+    "kayit": [
+      {
+        "src": "/media/commons/savoy-beyoglu-960.webp",
+        "srcSet": "/media/commons/savoy-beyoglu-480.webp 480w, /media/commons/savoy-beyoglu-960.webp 960w, /media/commons/savoy-beyoglu-1440.webp 1440w",
+        "full": "/media/commons/savoy-beyoglu-1440.webp",
+        "category": "dis",
+        "alt": "Tarihi Savoy Pastanesi — dış cephe ve masalar",
+        "credit": "Vano111ru",
+        "license": "CC BY-SA 4.0 · boyutlandırıldı",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Savoy_Pastanesi.jpg",
+        "addedBy": "commons",
+        "rightsRef": "Wikimedia Commons, CC BY-SA 4.0, kontrol 2026-10-31: https://commons.wikimedia.org/wiki/File:Savoy_Pastanesi.jpg",
+        "focus": "50% 0%"
+      }
+    ]
+  }
+}

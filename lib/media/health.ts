@@ -1,6 +1,8 @@
 import { sql } from "drizzle-orm";
 import type { Db } from "@/lib/db/client";
 import { realEntities } from "@/data/real";
+import izinli from "@/data/real/izinli-fotograflar.json";
+import bekleyen from "@/data/real/izinli-bekleyen.json";
 import { coverOf } from "./cover";
 import { googleUsableSlugs } from "@/lib/providers/google";
 import { coverCandidates } from "./photoArchive";
@@ -10,7 +12,7 @@ import type { MediaStorage } from "./storage";
 export interface MediaHealth {
   total: number; ownCover: number; ownBySource: Record<string, number>; selectedCover: number; googleOnly: number | null; noCover: number | null;
   archive: { pending: number; approved: number; rejected: number; removed: number; bySource: Record<string, number>; missingRights: number; approvedLast7: number; uploadedLast7: number; withGallery: number; broken: number | null; cleanupOpen: number; cleanupStuck: number } | null;
-  suspiciousBranch: number | null; topRestaurants: Array<{ slug: string; n: number }>; storage: string | null;
+  registryMissingRights: number; heldRegistry: number; topRestaurants: Array<{ slug: string; n: number }>; storage: string | null;
 }
 
 export async function mediaHealth(db: Db | null, storage: MediaStorage | null): Promise<MediaHealth> {
@@ -24,9 +26,11 @@ export async function mediaHealth(db: Db | null, storage: MediaStorage | null): 
   const allowed = db ? await googleUsableSlugs().catch(() => null) : null;
   const allowedList = allowed ? [...allowed] : null;
   const googleOnly = allowedList ? allowedList.filter((s) => !ownSet.has(s)).length : null;
+  const refs = izinli as unknown as Record<string, Array<{ src: string; rightsRef?: string }>>;
+  const registryMissingRights = realEntities.flatMap((e) => (e.photos ?? []).filter((p) => !p.license && !refs[e.slug]?.find((r) => r.src === p.src)?.rightsRef)).length;
   const out: MediaHealth = {
     total: realEntities.length, ownCover: own.length, ownBySource, selectedCover: Object.values(live).filter((v) => v.selected).length, googleOnly,
-    noCover: googleOnly === null ? null : realEntities.length - own.length - googleOnly, archive: null, suspiciousBranch: null, topRestaurants: [], storage: storage?.provider ?? null,
+    noCover: googleOnly === null ? null : realEntities.length - own.length - googleOnly, archive: null, registryMissingRights, heldRegistry: Object.keys(bekleyen).length, topRestaurants: [], storage: storage?.provider ?? null,
   };
   if (!db) return out;
   try {

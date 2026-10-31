@@ -4,15 +4,17 @@ import { drizzle } from "drizzle-orm/pglite";
 import { eq, sql } from "drizzle-orm";
 import sharp from "sharp";
 import { uuidv7 } from "uuidv7";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import * as schema from "../lib/db/schema";
 import { setDbForTests, type Db } from "../lib/db/client";
 import { applyMigrations, type Executor } from "../lib/db/migrate";
-import { getStorage, memoryStorage, s3Storage } from "../lib/media/storage";
+import { getStorage, memoryStorage, s3Storage, storageConfigIssue } from "../lib/media/storage";
+import { checkStorage } from "../lib/media/storageCheck";
+import { readRegistry, setRegistry } from "../lib/media/registry";
 import { MAX_BYTES, processPhoto, sniffImage } from "../lib/media/photoProcess";
 import * as A from "../lib/media/photoArchive";
 import { recomputePlace } from "../lib/score/compute";
-import { coverOf, profilePhotos, type LiveCover, type LivePhoto } from "../lib/media/cover";
+import { applyRegistry, coverOf, profilePhotos, type LiveCover, type LivePhoto } from "../lib/media/cover";
 import { realEntities } from "../data/real";
 import type { Entity, VenuePhoto } from "../lib/types";
 
@@ -290,8 +292,80 @@ async function main() {
   t("Japon Erdal kapağı yeni fotoğrafla değişmez", !!japon && coverOf(japon, liveC(false))?.src === coverOf(japon)?.src && !!coverOf(japon));
   const order = profilePhotos(venue({ photos: [reg] }), [lp("r"), lp("c", { coverCandidate: true }), lp("s", { isCover: true })]).photos.map((x) => x.src);
   t("profil sırası", order.join() === "/s,/kayit.webp,/c,/r", order);
-  const mosaic = readFileSync("components/venue/media/PhotoMosaic.tsx", "utf8");
-  t("kendi kapağında Google kapağı istenmez", mosaic.includes("useGoogleCover(slug, google && !ownCover)"));
+  const gRoute = readFileSync("app/api/google/place/route.ts", "utf8");
+  t("kendi kapağında sunucu Google fotoğrafı istemez", gRoute.includes("hasOwnCover") && /own_cover/.test(gRoute));
+
+  /* ── kova güvenliği ve CDN ── */
+  const s3base = { MEDIA_S3_ENDPOINT: "https://x.test", MEDIA_S3_KEY: "k", MEDIA_S3_SECRET: "s", MEDIA_PUBLIC_BASE: "https://c.test" };
+  const envOf = (o: Record<string, string>) => ({ ...s3base, ...o }) as unknown as NodeJS.ProcessEnv;
+  t("aynı özel ve genel kova: yükleme kapalı", getStorage(envOf({ VERCEL_ENV: "production", MEDIA_S3_PRIVATE_BUCKET: "a", MEDIA_S3_PUBLIC_BUCKET: "a" })) === null);
+  t("Production test kovası kullanamaz", storageConfigIssue(envOf({ VERCEL_ENV: "production", MEDIA_S3_PRIVATE_BUCKET: "gidenler-preview-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-preview-genel" })) === "productionda_test_kovasi" && getStorage(envOf({ VERCEL_ENV: "production", MEDIA_S3_PRIVATE_BUCKET: "gidenler-preview-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-preview-genel" })) === null);
+  t("Preview Production kovası kullanamaz", getStorage(envOf({ VERCEL_ENV: "preview", MEDIA_S3_PRIVATE_BUCKET: "gidenler-prod-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-prod-genel" })) === null);
+  t("doğru kovalar açık", getStorage(envOf({ VERCEL_ENV: "preview", MEDIA_S3_PRIVATE_BUCKET: "gidenler-preview-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-preview-genel" }))?.provider === "s3");
+  const purges: string[] = []; let purgeUp = true, cc2 = "";
+  const cdnFake = (async (u: Request | string, init?: RequestInit) => {
+    const url = typeof u === "string" ? u : u.url;
+    if (url.includes("purge_cache")) { purges.push(String(init?.body)); return new Response("{}", { status: purgeUp ? 200 : 500 }); }
+    if (typeof u !== "string" && u.method === "PUT") cc2 = u.headers.get("cache-control") ?? "";
+    return new Response(null, { status: 200 });
+  }) as unknown as typeof fetch;
+  const s3p = s3Storage({ endpoint: "https://x.test", accessKeyId: "k", secretAccessKey: "s", privateBucket: "o", publicBucket: "g", publicBase: "https://c.test", purge: { zoneId: "z", token: "t" } }, cdnFake);
+  await s3p.put("public/a/480.webp", Buffer.from("x"), "image/webp");
+  t("temizlemeli CDN uzun, tarayıcı 1 saat", cc2 === "public, max-age=3600, s-maxage=31536000", cc2);
+  const delKey = `public/${uuidv7()}/480.webp`;
+  await db.insert(schema.mediaCleanup).values({ key: delKey, reason: "kaldırma" });
+  purgeUp = false;
+  t("CDN temizlenemezse kayıt kuyrukta kalır", (await A.runCleanup(db, s3p, { keys: [delKey] })).failed === 1);
+  purgeUp = true;
+  t("CDN temizliği sonra tamamlanır", (await A.runCleanup(db, s3p, { keys: [delKey] })).done === 1 && purges.at(-1)!.includes(`https://c.test/${delKey.replace("public/", "")}`));
+  const chk = await checkStorage(memoryStorage());
+  t("deneme: test depolaması gerçek sayılmaz", chk.real === false && chk.provider === "memory");
+  t("deneme: CDN temizliği yoksa başarılı denmez", chk.ok === false && chk.steps.some((x) => x.step === "CDN temizleme" && !x.ok));
+  const chkBad = await checkStorage(memoryStorage({ put: true }));
+  t("deneme: yazamayan depo başarısız", chkBad.ok === false && !chkBad.steps[0].ok);
+
+  /* ── hak beyanı ── */
+  const hu = await mkUser("Hak Test");
+  const rvH = await mkReview(hu, placeA);
+  const yet = await A.addReviewPhoto(db, memoryStorage(), hu, rvH, await uniq(), { confirmed: true, type: "authorized" });
+  t("yetkili beyanı ayrı kaydedilir", yet.ok && (await db.select({ r: schema.photoAssets.rightsType }).from(schema.photoAssets).where(eq(schema.photoAssets.mediaId, yet.id)))[0].r === "authorized");
+  const mine = await A.myPhotos(db, hu);
+  t("Fotoğraflarım yalnız kendi kaydı", mine.length === 1 && mine[0].slug === "mekan-a");
+  t("başka kullanıcının listesi boş", (await A.myPhotos(db, uuidv7())).length === 0);
+
+  /* ── izinli fotoğraflar ── */
+  const je = realEntities.find((e) => e.slug === "japon-erdal-beyoglu")!;
+  t("Japon Erdal: 3 kendi fotoğrafı, kapak pide", je.photos?.length === 3 && coverOf(je)?.src.includes("kapali-pide") === true && coverOf(je)?.source === "isletme", je.photos?.map((p) => p.src));
+  const secki = JSON.parse(readFileSync("content/seckisi/yazilar/japon-erdal-dort-pide-bir-efsane.json", "utf8")) as { cover: { src: string; rightsRef: string }; gallery: Array<{ src: string }> };
+  t("Seçki ve profil aynı dosyaları kullanır", [secki.cover.src, ...secki.gallery.map((g) => g.src)].every((s) => je.photos!.some((p) => p.full === s)), secki.cover.src);
+  t("Seçki kopyaları kaldırıldı", !existsSync("public/seckisi/gorsel/japon-erdal-kapali-pide.jpg"));
+  const izinliK = JSON.parse(readFileSync("data/real/izinli-fotograflar.json", "utf8")) as Record<string, Array<{ src: string; srcSet: string; full: string; rightsRef: string; credit: string; sourceUrl: string }>>;
+  t("izinli kayıtların hepsinde kaynak, yazar, hak", Object.values(izinliK).flat().every((p) => p.rightsRef && p.credit && p.sourceUrl?.startsWith("https://")));
+  t("Japon Erdal izninin kapsamı profili içerir", izinliK["japon-erdal-beyoglu"].every((p) => p.rightsRef.includes("restoran profili")));
+  const dosyalar = realEntities.flatMap((e) => (e.photos ?? []).flatMap((p) => [p.src, p.full, ...(p.srcSet ?? "").split(",").map((x) => x.trim().split(" ")[0])])).filter((x): x is string => !!x && x.startsWith("/"));
+  t("kayıtlı bütün dosyalar diskte", dosyalar.every((f) => existsSync(`public${f}`)), dosyalar.filter((f) => !existsSync(`public${f}`)));
+  const genislik = await Promise.all((je.photos ?? []).flatMap((p) => (p.srcSet ?? "").split(",").map(async (x) => { const [f, w] = x.trim().split(" "); return (await sharp(`public${f}`).metadata()).width === Number(w.replace("w", "")); })));
+  t("srcSet genişlikleri gerçek", genislik.length > 0 && genislik.every(Boolean));
+  t("Savoy şube kanıtı olmadan bağlı değil", !izinliK["savoy-beyoglu"] && !coverOf(realEntities.find((e) => e.slug === "savoy-beyoglu")!));
+  t("kapaklar ve Google ayrı", realEntities.every((e) => !/google|gstatic|ggpht/.test(coverOf(e)?.src ?? "")));
+
+  /* ── izinli fotoğraf kararı ── */
+  const a2 = { ...je.photos![0] }, b2 = { ...je.photos![1] };
+  t("karar yok: sıra aynı", applyRegistry([a2, b2])[0].src === a2.src);
+  t("kapak öne geçer", applyRegistry([a2, b2], { cover: b2.src, hidden: [] })[0].src === b2.src);
+  t("gizlenen listeden çıkar", applyRegistry([a2, b2], { hidden: [a2.src] }).length === 1);
+  t("hepsi gizli: kapak yok", coverOf(venue({ photos: [reg] }), { src: "", credit: "", focus: null, selected: false, hideRegistry: true }) === null);
+  t("gizlenince aday kapak olur", coverOf(venue({ photos: [reg] }), { ...liveC(false), hideRegistry: true })?.src === "/api/m.webp");
+  await ins(placeVals(uuidv7(), je.slug));
+  t("bilinmeyen fotoğraf reddedilir", (await setRegistry(db, "user:a", je.slug, "cover", "/baska.webp")).ok === false);
+  t("kapak kararı yazılır", (await setRegistry(db, "user:a", je.slug, "cover", b2.src)).ok && (await readRegistry(db, je.slug)).get(je.slug)?.cover === b2.src);
+  await setRegistry(db, "user:a", je.slug, "hide", b2.src);
+  const st = (await readRegistry(db, je.slug)).get(je.slug)!;
+  t("gizlenen kapak düşer, geçmiş kalır", st.cover === undefined && st.hidden.includes(b2.src));
+  await setRegistry(db, "user:a", je.slug, "show", b2.src);
+  t("yayına geri alınır", (await readRegistry(db, je.slug)).get(je.slug)?.hidden.length === 0);
+  const yetki = readFileSync("app/api/moderation/photos/route.ts", "utf8"), reg2 = readFileSync("app/api/moderation/registry/route.ts", "utf8");
+  t("kapak kararları yalnız yönetici", yetki.includes(`role !== "admin"`) && /"candidate", "candidate_off", "cover", "cover_clear"/.test(yetki) && (reg2.match(/!== "admin"/g) ?? []).length === 2);
   t("kart Google çağırmaz", !/google/i.test(readFileSync("components/venue/VenueCover.tsx", "utf8")));
 
   console.log(`\nmedya: ${pass} geçti, ${failed} kaldı`);

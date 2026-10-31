@@ -22,10 +22,10 @@ async function shrink(file: File): Promise<Blob> {
   return new Promise((res) => c.toBlob((b) => res(b ?? file), "image/jpeg", 0.88));
 }
 
-function send(reviewId: string, blob: Blob, onProgress: (n: number) => void): Promise<{ ok: boolean; message?: string }> {
+function send(reviewId: string, blob: Blob, rights: string, onProgress: (n: number) => void): Promise<{ ok: boolean; message?: string }> {
   return new Promise((res) => {
     const fd = new FormData();
-    fd.set("file", blob, "foto"); fd.set("rights", "own");
+    fd.set("file", blob, "foto"); fd.set("rights", rights);
     const x = new XMLHttpRequest();
     x.open("POST", `${BASE}/api/reviews/${reviewId}/photos/`);
     x.upload.onprogress = (e) => { if (e.lengthComputable) onProgress(Math.round((e.loaded / e.total) * 100)); };
@@ -43,7 +43,8 @@ export function usePhotoPicks() {
   const [enabled, setEnabled] = useState(false);
   const [max, setMax] = useState(5);
   const [picks, setPicks] = useState<Pick[]>([]);
-  const [rights, setRights] = useState(false);
+  const [rightsType, setRightsType] = useState<"" | "own" | "authorized">("");
+  const rights = rightsType !== "";
   const urls = useRef(new Set<string>());
   useEffect(() => {
     fetch(`${BASE}/api/media/status/`).then((r) => r.json()).then((j) => { setEnabled(!!j.enabled); if (j.max) setMax(j.max); }).catch(() => {});
@@ -62,12 +63,12 @@ export function usePhotoPicks() {
   const patch = (key: string, v: Partial<Pick>) => setPicks((p) => p.map((x) => (x.key === key ? { ...x, ...v } : x)));
   const uploadOne = async (reviewId: string, p: Pick) => {
     patch(p.key, { state: "uploading", progress: 0, error: undefined });
-    const r = await send(reviewId, await shrink(p.file), (n) => patch(p.key, { progress: n }));
+    const r = await send(reviewId, await shrink(p.file), rightsType, (n) => patch(p.key, { progress: n }));
     patch(p.key, r.ok ? { state: "done", progress: 100 } : { state: "error", error: r.message });
   };
   /* sırayla: küçük bellek, okunur ilerleme */
   const uploadAll = async (reviewId: string) => { for (const p of picks) if (p.state !== "done") await uploadOne(reviewId, p); };
-  return { enabled, max, picks, rights, setRights, add, remove, uploadOne, uploadAll };
+  return { enabled, max, picks, rights, rightsType, setRightsType, add, remove, uploadOne, uploadAll };
 }
 export type PhotoPicks = ReturnType<typeof usePhotoPicks>;
 
@@ -124,10 +125,18 @@ export function PhotoPicker({ ctl, entityName, reviewId }: { ctl: PhotoPicks; en
         )}
       </ul>
       {picks.length > 0 && (
-        <label className="mt-3 flex max-w-[60ch] items-start gap-2 text-[13px] text-ink-2">
-          <input type="checkbox" checked={ctl.rights} onChange={(e) => ctl.setRights(e.target.checked)} className="mt-0.5" />
-          <span>Bu fotoğrafları ben çektim ve Gidenler&apos;de yayımlanmasına izin veriyorum. Google, Instagram ya da başka bir siteden alınmadı.</span>
-        </label>
+        <fieldset className="mt-3 flex max-w-[60ch] flex-col gap-2 text-[13px] text-ink-2">
+          <legend className="font-semibold text-ink">Hak beyanı</legend>
+          <label className="flex min-h-11 items-start gap-2 sm:min-h-0">
+            <input type="radio" name="foto-hak" checked={ctl.rightsType === "own"} onChange={() => ctl.setRightsType("own")} className="mt-0.5" />
+            <span>Bu fotoğrafları ben çektim ve Gidenler&apos;de yayımlanmasına izin veriyorum.</span>
+          </label>
+          <label className="flex min-h-11 items-start gap-2 sm:min-h-0">
+            <input type="radio" name="foto-hak" checked={ctl.rightsType === "authorized"} onChange={() => ctl.setRightsType("authorized")} className="mt-0.5" />
+            <span>Fotoğrafları ben çekmedim ama kullanma yetkim var ve yayımlanmasına izin veriyorum.</span>
+          </label>
+          <span className="text-[12px] text-ink-3">Google, Instagram ya da başka bir siteden izinsiz alınan fotoğraf yüklenemez.</span>
+        </fieldset>
       )}
     </section>
   );
