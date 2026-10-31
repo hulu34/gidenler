@@ -421,6 +421,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: kars10, path: out/kars10.tgz.cms, if-no-files-found: ignore }
+  sor-e2e:
+    if: contains(github.event.head_commit.message, '[sor]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/sor-e2e.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-js4z2hfgj-hulu34.vercel.app" }
+      - if: always()
+        run: test -d out/sor && tar -C out -czf out/sor.tgz sor && rm -rf out/sor && openssl cms -encrypt -aes256 -binary -outform DER -in out/sor.tgz -out out/sor.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: sor, path: out/sor.tgz.cms, if-no-files-found: ignore }
   medya-e2e:
     if: contains(github.event.head_commit.message, '[medya-e2e]')
     runs-on: ubuntu-latest

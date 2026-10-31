@@ -45,7 +45,7 @@ async function snap(tag, dev, opt) {
 }
 const once = await snap("once", "masaustu", ctxs.masaustu);
 ok("önce: detay bekleme metni", once.detay.body.includes(WAIT));
-ok("önce: arama kartı bekleme metni", (once.arama.card ?? "").includes(WAIT), once.arama.card ?? "");
+ok("önce: arama kartı bekleme metni, puan yok", /Puan bekleniyor/.test(once.arama.card ?? "") && !/\d[,.]\d/.test(once.arama.card ?? ""), once.arama.card ?? "");
 const meta = async () => { const h = await (await fetch(`https://${HOST}/mekan/${SLUG}/`, { headers: H })).text(); return h.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? ""; };
 { const m = await meta(); ok("önce: arama açıklaması bekleme metni", m.includes(WAIT) && !m.includes("Henüz"), m.slice(-70)); }
 ok("önce: 0 veya tahmini puan yok", !/Gidenler puanı\s*0/.test(once.detay.body));
