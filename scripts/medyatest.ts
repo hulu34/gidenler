@@ -185,6 +185,69 @@ async function main() {
     await db.delete(schema.user).where(eq(schema.user.id, dU));
     t("hesap kapanınca görünmez", (await A.approvedPhotos(db, store, "mekan-b")).length === 0); }
 
+  /* yaşam döngüsü: silme başarısız olursa kayıt kaybolmaz, görev tamamlar */
+  {
+    const u = await mkUser("Silme Deneme"), r = await mkReview(u, placeB);
+    const up3 = await A.addReviewPhoto(db, store, u, r, await uniq(), { confirmed: true });
+    if (!up3.ok) throw new Error("yok");
+    const keys = [...store.m.keys()].filter((k) => k.includes(up3.id));
+    const del = store.delete; let down = true;
+    store.delete = async (k) => { if (down) throw new Error("depo kapalı"); return del(k); };
+    const rm2 = await A.removePhoto(db, store, "user:mod", up3.id, "mahremiyet");
+    t("silinemezse dürüst sonuç", rm2.ok && rm2.filesDeleted === false, rm2);
+    t("yayından yine düşer", !(await A.approvedPhotos(db, store, "mekan-b")).some((x) => x.id === up3.id));
+    const open1 = await db.select().from(schema.mediaCleanup).where(sql`done_at is null and media_id = ${up3.id}`);
+    t("kuyrukta kaldı, hata yazıldı", open1.length === keys.length && open1[0].attempts === 1 && open1[0].lastError === "depo kapalı", open1[0]);
+    t("zamanı gelmeden denenmez", (await A.runCleanup(db, store)).done === 0);
+    const later = new Date(Date.now() + 3 * 3600 * 1000);
+    t("depo kapalıyken tekrar başarısız", (await A.runCleanup(db, store, { now: later })).failed === keys.length);
+    down = false; store.delete = del;
+    const later2 = new Date(Date.now() + 48 * 3600 * 1000);
+    t("depo açılınca tamamlanır", (await A.runCleanup(db, store, { now: later2 })).done === keys.length && keys.every((k) => !store.m.has(k)));
+    t("tekrar çalıştırmak güvenli", (await A.runCleanup(db, store, { now: later2 })).done === 0);
+    t("denetim kaydında dosya içeriği yok", !JSON.stringify(await A.photoHistory(db, up3.id)).includes("base64"));
+    /* hesap kapatma */
+    const u2 = await mkUser("Kapanan Hesap"), r2 = await mkReview(u2, placeB);
+    const a2 = await A.addReviewPhoto(db, store, u2, r2, await uniq(), { confirmed: true });
+    const a3 = await A.addReviewPhoto(db, store, u2, r2, await uniq(), { confirmed: true });
+    if (a2.ok) await A.approvePhoto(db, store, "user:mod", a2.id);
+    t("hesap kapatma iki fotoğrafı kaldırır", (await A.removeUserPhotos(db, store, u2)) === 2);
+    t("dosyaları da silindi", a2.ok && a3.ok && ![...store.m.keys()].some((k) => k.includes(a2.id) || k.includes(a3.id)));
+    /* kullanıcı doğrudan silinse bile tarama yakalar */
+    const u3 = await mkUser("Doğrudan Silinen"), r3 = await mkReview(u3, placeB);
+    const a4 = await A.addReviewPhoto(db, store, u3, r3, await uniq(), { confirmed: true });
+    await db.delete(schema.user).where(eq(schema.user.id, u3));
+    const sw = await A.sweepPhotos(db, store);
+    t("tarama sahipsiz fotoğrafı kaldırır", sw.removed >= 1 && a4.ok && ![...store.m.keys()].some((k) => k.includes(a4.id)), sw);
+    t("tarama tekrar güvenli", (await A.sweepPhotos(db, store)).removed === 0);
+    /* yarım yükleme */
+    const stuckId = uuidv7(); await db.insert(schema.mediaItems).values({ id: stuckId, type: "photo", platform: "upload", url: `upload:${stuckId}`, storageClass: "store", source: "community", status: "uploading", createdAt: new Date(Date.now() - 3600000) });
+    await db.insert(schema.photoAssets).values({ mediaId: stuckId, placeId: placeB, sha256: "x", width: 1, height: 1, bytes: 1, storageProvider: "memory", variants: [{ w: 480, h: 1, key: `pending/${stuckId}/480.webp`, bytes: 1 }], rightsType: "own", rightsStatement: "x" });
+    store.m.set(`pending/${stuckId}/480.webp`, { bytes: Buffer.from("x"), contentType: "image/webp" });
+    t("sorunlu kayıtlarda görünür", (await A.photoProblems(db, store)).stuck.some((s) => s.id === stuckId));
+    t("yarım yükleme temizlenir", (await A.sweepPhotos(db, store)).staleUploads === 1 && !store.m.has(`pending/${stuckId}/480.webp`));
+    /* kapak kaldırılınca aynı mekândan sıradaki aday */
+    const u4 = await mkUser("Kapak Sira"), r4 = await mkReview(u4, placeB);
+    const c1 = await A.addReviewPhoto(db, store, u4, r4, await uniq(), { confirmed: true }), c2 = await A.addReviewPhoto(db, store, u4, r4, await uniq(), { confirmed: true });
+    if (c1.ok && c2.ok) { await A.approvePhoto(db, store, "m", c1.id); await A.approvePhoto(db, store, "m", c2.id); await A.setCover(db, "m", c1.id); await A.setCoverCandidate(db, "m", c2.id, true);
+      t("seçili kapak", (await A.coverCandidates(db, store))["mekan-b"].photo.id === c1.id);
+      await A.removePhoto(db, store, "m", c1.id, "x");
+      const n = (await A.coverCandidates(db, store)); t("sıradaki aday aynı mekândan gelir", n["mekan-b"].photo.id === c2.id && !n["mekan-b"].selected, n);
+      await A.removePhoto(db, store, "m", c2.id, "x"); t("aday kalmazsa kapak yok", !(await A.coverCandidates(db, store))["mekan-b"]); }
+  }
+  /* zararlı ve aşırı dosyalar */
+  {
+    const big = await sharp({ create: { width: 9000, height: 8000, channels: 3, background: "white" } }).png({ compressionLevel: 9 }).toBuffer();
+    t("aşırı çözünürlük (72 MP) reddedilir", big.length < MAX_BYTES && JSON.stringify(await processPhoto(big)).includes("corrupt"), big.length);
+    const html = Buffer.concat([Buffer.from([0xff, 0xd8, 0xff, 0xe0]), Buffer.from("<html><script>alert(1)</script></html>".repeat(40))]);
+    t("jpeg başlıklı html reddedilir", !(await processPhoto(html)).ok);
+    const tail = Buffer.concat([await img(), Buffer.from("<script>alert('poliglot')</script>")]);
+    const pt = await processPhoto(tail);
+    t("sonuna betik eklenmiş jpeg temizlenir", pt.ok && pt.photo.variants.every((v) => !v.bytes.includes("poliglot")));
+    t("php uzantısız içerik", !(await processPhoto(Buffer.from("<?php system($_GET[1]); ?>0000000000"))).ok);
+    t("riff başlıklı sahte webp", !(await processPhoto(Buffer.concat([Buffer.from("RIFF\0\0\0\0WEBP"), Buffer.alloc(100)]))).ok);
+  }
+
   /* puan ayrımı: sonra */
   t("deneyim satırı değişmedi", JSON.stringify(await scoreRow()) === before, await scoreRow());
   t("puan aynı", JSON.stringify(await recomputePlace(db, placeA).catch((e) => String(e))) === score0);

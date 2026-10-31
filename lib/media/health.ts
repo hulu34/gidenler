@@ -9,7 +9,7 @@ import type { MediaStorage } from "./storage";
 /* MEDYA SAĞLIĞI — yalnız okuma; sayılar kayıtlardan hesaplanır, üretilmez. Tablo yoksa ya da depolama yoksa ilgili alan null döner. */
 export interface MediaHealth {
   total: number; ownCover: number; ownBySource: Record<string, number>; selectedCover: number; googleOnly: number | null; noCover: number | null;
-  archive: { pending: number; approved: number; rejected: number; removed: number; bySource: Record<string, number>; missingRights: number; approvedLast7: number; withGallery: number; broken: number | null } | null;
+  archive: { pending: number; approved: number; rejected: number; removed: number; bySource: Record<string, number>; missingRights: number; approvedLast7: number; uploadedLast7: number; withGallery: number; broken: number | null; cleanupOpen: number; cleanupStuck: number } | null;
   suspiciousBranch: number | null; topRestaurants: Array<{ slug: string; n: number }>; storage: string | null;
 }
 
@@ -33,7 +33,7 @@ export async function mediaHealth(db: Db | null, storage: MediaStorage | null): 
     const rows = (await db.execute(sql`select m.status, m.source, count(*)::int n, sum(case when coalesce(a.rights_statement,'')='' then 1 else 0 end)::int nr,
       sum(case when a.approved_at > now() - interval '7 days' and m.status='approved' then 1 else 0 end)::int d7 from photo_assets a join media_items m on m.id=a.media_id group by 1,2`)) as unknown as { rows?: Array<{ status: string; source: string; n: number; nr: number; d7: number }> };
     const list = rows.rows ?? (rows as unknown as Array<{ status: string; source: string; n: number; nr: number; d7: number }>);
-    const a = { pending: 0, approved: 0, rejected: 0, removed: 0, bySource: {} as Record<string, number>, missingRights: 0, approvedLast7: 0, withGallery: 0, broken: null as number | null };
+    const a = { pending: 0, approved: 0, rejected: 0, removed: 0, bySource: {} as Record<string, number>, missingRights: 0, approvedLast7: 0, uploadedLast7: 0, withGallery: 0, broken: null as number | null, cleanupOpen: 0, cleanupStuck: 0 };
     for (const r of list) {
       if (r.status in a) (a as unknown as Record<string, number>)[r.status] += r.n;
       if (r.status === "approved") { a.bySource[r.source] = (a.bySource[r.source] ?? 0) + r.n; a.missingRights += r.nr; }
@@ -43,6 +43,9 @@ export async function mediaHealth(db: Db | null, storage: MediaStorage | null): 
     out.topRestaurants = top.rows ?? (top as unknown as Array<{ slug: string; n: number }>);
     a.withGallery = out.topRestaurants.length === 10
       ? (((await db.execute(sql`select count(distinct a.place_id)::int n from photo_assets a join media_items m on m.id=a.media_id where m.status='approved'`)) as unknown as { rows: Array<{ n: number }> }).rows?.[0]?.n ?? 10) : out.topRestaurants.length;
+    const extra = (await db.execute(sql`select (select count(*)::int from photo_assets where created_at > now() - interval '7 days') up, (select count(*)::int from media_cleanup where done_at is null) co, (select count(*)::int from media_cleanup where done_at is null and attempts >= 3) cs`)) as unknown as { rows?: Array<{ up: number; co: number; cs: number }> };
+    const ex = extra.rows?.[0] ?? (extra as unknown as Array<{ up: number; co: number; cs: number }>)[0];
+    a.uploadedLast7 = ex.up; a.cleanupOpen = ex.co; a.cleanupStuck = ex.cs;
     if (storage) {
       /* kırık: onaylı kaydın en küçük dosyası depoda yok (en çok 50 örnek) */
       const sample = (await db.execute(sql`select a.variants from photo_assets a join media_items m on m.id=a.media_id where m.status='approved' order by a.created_at desc limit 50`)) as unknown as { rows?: Array<{ variants: Array<{ key: string }> }> };

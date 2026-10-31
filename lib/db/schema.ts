@@ -505,3 +505,22 @@ export const mediaBlobs = pgTable("media_blobs", {
   contentType: text("content_type").notNull(),
   createdAt: created(),
 });
+
+/** Silinecek depolama nesneleri: tekrar denenir, sessizce kaybolmaz. Anahtardan başka kişisel veri tutmaz. */
+export const mediaCleanup = pgTable("media_cleanup", {
+  key: text("key").primaryKey(),
+  mediaId: text("media_id"),
+  reason: text("reason").notNull(),
+  attempts: integer("attempts").notNull().default(0),
+  lastError: text("last_error"),
+  nextAttemptAt: ts("next_attempt_at").notNull().defaultNow(),
+  doneAt: ts("done_at"),
+  createdAt: created(),
+}, (t) => [index("media_cleanup_open_idx").on(t.doneAt, t.nextAttemptAt)]);
+
+/** Günlük hata sayaçları. Yalnız sayı: kullanıcı, adres, sorgu metni tutulmaz. */
+export const opsCounters = pgTable("ops_counters", {
+  day: text("day").notNull(),
+  key: text("key").notNull(),
+  n: integer("n").notNull().default(0),
+}, (t) => [primaryKey({ columns: [t.day, t.key] })]);

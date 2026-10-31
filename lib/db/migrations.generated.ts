@@ -136,5 +136,14 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
    "CREATE INDEX \"photo_assets_place_idx\" ON \"photo_assets\" USING btree (\"place_id\");",
    "CREATE UNIQUE INDEX \"photo_assets_one_cover_uq\" ON \"photo_assets\" USING btree (\"place_id\") WHERE \"photo_assets\".\"is_cover\";"
   ]
+ },
+ {
+  "tag": "0003_temizlik_ve_sayac",
+  "hash": "be74ae7147547e43995958ba8118140484addf7d138e17a25cf9bbb5a457bd30",
+  "statements": [
+   "CREATE TABLE \"media_cleanup\" (\n\t\"key\" text PRIMARY KEY NOT NULL,\n\t\"media_id\" text,\n\t\"reason\" text NOT NULL,\n\t\"attempts\" integer DEFAULT 0 NOT NULL,\n\t\"last_error\" text,\n\t\"next_attempt_at\" timestamp with time zone DEFAULT now() NOT NULL,\n\t\"done_at\" timestamp with time zone,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "CREATE TABLE \"ops_counters\" (\n\t\"day\" text NOT NULL,\n\t\"key\" text NOT NULL,\n\t\"n\" integer DEFAULT 0 NOT NULL,\n\tCONSTRAINT \"ops_counters_day_key_pk\" PRIMARY KEY(\"day\",\"key\")\n);",
+   "CREATE INDEX \"media_cleanup_open_idx\" ON \"media_cleanup\" USING btree (\"done_at\",\"next_attempt_at\");"
+  ]
  }
 ];

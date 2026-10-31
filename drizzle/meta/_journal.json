@@ -22,6 +22,13 @@
       "when": 1793409731865,
       "tag": "0002_fotograf_arsivi",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793412104921,
+      "tag": "0003_temizlik_ve_sayac",
+      "breakpoints": true
     }
   ]
 }

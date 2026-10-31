@@ -1,7 +1,7 @@
-import { and, desc, eq, inArray, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, isNull, lte, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import type { Db } from "@/lib/db/client";
-import { auditLog, mediaItems, mediaPlaces, moderationQueue, photoAssets, places, reviews, staffRoles, user } from "@/lib/db/schema";
+import { auditLog, mediaCleanup, mediaItems, mediaPlaces, moderationQueue, photoAssets, places, reviews, staffRoles, user } from "@/lib/db/schema";
 import { publicName } from "@/lib/community/reviews";
 import type { PhotoError } from "./photoProcess";
 import type { MediaStorage } from "./storage";
@@ -88,10 +88,49 @@ async function loadAsset(db: Db, id: string): Promise<AssetRow | null> {
 }
 const closeQueue = (db: Db, id: string, status: "approved" | "rejected", actor: string, kinds = ["media"]) =>
   db.update(moderationQueue).set({ status, decidedBy: actor, decidedAt: new Date() }).where(and(eq(moderationQueue.refId, id), eq(moderationQueue.status, "open"), inArray(moderationQueue.kind, kinds)));
-const dropFiles = async (storage: MediaStorage, a: Pick<AssetRow, "variants">) => {
-  const r = await Promise.allSettled(a.variants.map((v) => storage.delete(v.key)));
-  return r.every((x) => x.status === "fulfilled");
+/* Dosya silme kuyruktan geçer: önce kayıt, sonra deneme. Başarısız olan kuyrukta kalır, görev tekrar dener. */
+const dropKeys = async (db: Db, storage: MediaStorage, mediaId: string, keys: string[], reason: string) => {
+  if (!keys.length) return true;
+  await db.insert(mediaCleanup).values(keys.map((key) => ({ key, mediaId, reason }))).onConflictDoUpdate({ target: mediaCleanup.key, set: { doneAt: null, reason, nextAttemptAt: new Date() } });
+  return (await runCleanup(db, storage, { keys })).failed === 0;
 };
+const dropFiles = (db: Db, storage: MediaStorage, a: Pick<AssetRow, "variants" | "mediaId">, reason: string) => dropKeys(db, storage, a.mediaId, a.variants.map((v) => v.key), reason);
+
+/** Temizleme görevi: idempotent (olmayan dosyayı silmek başarıdır). Hata artan aralıkla yeniden denenir. */
+export async function runCleanup(db: Db, storage: MediaStorage, o: { limit?: number; keys?: string[]; now?: Date } = {}) {
+  const now = o.now ?? new Date();
+  const rows = await db.select().from(mediaCleanup).where(o.keys ? and(inArray(mediaCleanup.key, o.keys), isNull(mediaCleanup.doneAt)) : and(isNull(mediaCleanup.doneAt), lte(mediaCleanup.nextAttemptAt, now))).limit(o.limit ?? 200);
+  let done = 0, failed = 0;
+  for (const r of rows) {
+    try {
+      await storage.delete(r.key);
+      await db.update(mediaCleanup).set({ doneAt: now, lastError: null }).where(eq(mediaCleanup.key, r.key));
+      done++;
+    } catch (e) {
+      const attempts = r.attempts + 1;
+      await db.update(mediaCleanup).set({ attempts, lastError: String((e as Error).message).slice(0, 200), nextAttemptAt: new Date(now.getTime() + Math.min(24, 2 ** attempts) * 3600 * 1000) }).where(eq(mediaCleanup.key, r.key));
+      failed++;
+    }
+  }
+  return { done, failed };
+}
+
+/** Tutarlılık taraması: hesabı kapanmış ya da deneyimi silinmiş fotoğrafı kaldırır, yarım kalan yüklemeyi temizler. Tekrar çalıştırmak güvenlidir. */
+export async function sweepPhotos(db: Db, storage: MediaStorage, now = new Date()) {
+  const lost = await db.select({ id: photoAssets.mediaId }).from(photoAssets).innerJoin(mediaItems, eq(mediaItems.id, photoAssets.mediaId)).leftJoin(reviews, eq(reviews.id, photoAssets.reviewId))
+    .where(sql`${mediaItems.status} in ('pending','approved') and ${mediaItems.source} = 'community' and (${photoAssets.uploaderId} is null or ${reviews.status} = 'removed')`);
+  for (const r of lost) await removePhoto(db, storage, "system:sweep", r.id, "hesap kapandı ya da deneyim silindi");
+  const stale = await db.select({ id: mediaItems.id, variants: photoAssets.variants }).from(mediaItems).innerJoin(photoAssets, eq(mediaItems.id, photoAssets.mediaId)).where(and(eq(mediaItems.status, "uploading"), lte(mediaItems.createdAt, new Date(now.getTime() - STALE_UPLOAD_MS))));
+  for (const r of stale) { await dropKeys(db, storage, r.id, r.variants.map((v) => v.key), "yarım yükleme"); await dropRow(db, r.id); }
+  return { removed: lost.length, staleUploads: stale.length };
+}
+
+/** Hesap kapatma için: kullanıcının bütün fotoğrafları yayından çıkar ve dosyaları silinir. Kullanıcı satırı silinmeden önce çağrılır. */
+export async function removeUserPhotos(db: Db, storage: MediaStorage, userId: string) {
+  const rows = await db.select({ id: photoAssets.mediaId }).from(photoAssets).innerJoin(mediaItems, eq(mediaItems.id, photoAssets.mediaId)).where(and(eq(photoAssets.uploaderId, userId), inArray(mediaItems.status, ["pending", "approved"])));
+  for (const r of rows) await removePhoto(db, storage, `user:${userId}`, r.id, "hesap kapatıldı");
+  return rows.length;
+}
 
 export type DecideError = "not_found" | "bad_state" | "reason_required" | "storage_failed" | "not_approved";
 export type Decided = { ok: true; slug: string; filesDeleted?: boolean } | { ok: false; error: DecideError };
@@ -110,9 +149,9 @@ export async function approvePhoto(db: Db, storage: MediaStorage, actor: string,
     }
   } catch { return { ok: false, error: "storage_failed" }; }
   const won = await db.update(mediaItems).set({ status: "approved" }).where(and(eq(mediaItems.id, id), eq(mediaItems.status, "pending"))).returning({ id: mediaItems.id });
-  if (!won.length) return { ok: false, error: "bad_state" };
+  if (!won.length) { await dropKeys(db, storage, id, next.map((v) => v.key), "onay yarışı: genel kopya"); return { ok: false, error: "bad_state" }; }
   await db.update(photoAssets).set({ variants: next, approvedAt: new Date(), approvedBy: actor }).where(eq(photoAssets.mediaId, id));
-  await dropFiles(storage, a);
+  await dropFiles(db, storage, a, "onay: özel kopya");
   await closeQueue(db, id, "approved", actor);
   await audit(db, actor, "photo_approve", id, { place: a.slug });
   return { ok: true, slug: a.slug };
@@ -126,7 +165,7 @@ export async function rejectPhoto(db: Db, storage: MediaStorage, actor: string, 
   const won = await db.update(mediaItems).set({ status: "rejected" }).where(and(eq(mediaItems.id, id), eq(mediaItems.status, "pending"))).returning({ id: mediaItems.id });
   if (!won.length) return { ok: false, error: "bad_state" };
   await db.update(photoAssets).set({ rejectReason: why }).where(eq(photoAssets.mediaId, id));
-  const filesDeleted = await dropFiles(storage, a);
+  const filesDeleted = await dropFiles(db, storage, a, "red");
   await closeQueue(db, id, "rejected", actor);
   await audit(db, actor, "photo_reject", id, { place: a.slug, reason: why, filesDeleted });
   return { ok: true, slug: a.slug, filesDeleted };
@@ -139,7 +178,7 @@ export async function removePhoto(db: Db, storage: MediaStorage, actor: string, 
   const won = await db.update(mediaItems).set({ status: "removed" }).where(and(eq(mediaItems.id, id), inArray(mediaItems.status, ["pending", "approved"]))).returning({ id: mediaItems.id });
   if (!won.length) return { ok: false, error: "bad_state" };
   await db.update(photoAssets).set({ isCover: false, coverCandidate: false, rejectReason: reason.slice(0, 300) || null }).where(eq(photoAssets.mediaId, id));
-  const filesDeleted = await dropFiles(storage, a);
+  const filesDeleted = await dropFiles(db, storage, a, "kaldırma");
   await closeQueue(db, id, "rejected", actor);
   await closeQueue(db, id, "approved", actor, ["photo_report"]);
   await audit(db, actor, "photo_remove", id, { place: a.slug, reason: reason.slice(0, 300), filesDeleted, wasCover: a.isCover });
@@ -235,6 +274,19 @@ export async function moderationList(db: Db, status: "pending" | "approved" | "r
     .from(photoAssets).innerJoin(mediaItems, eq(mediaItems.id, photoAssets.mediaId)).innerJoin(places, eq(places.id, photoAssets.placeId)).leftJoin(user, eq(user.id, photoAssets.uploaderId)).where(eq(mediaItems.status, status)).orderBy(desc(photoAssets.createdAt)).limit(limit);
   const reports = rows.length ? await db.select({ refId: moderationQueue.refId, reason: moderationQueue.reason }).from(moderationQueue).where(and(eq(moderationQueue.kind, "photo_report"), eq(moderationQueue.status, "open"), inArray(moderationQueue.refId, rows.map((r) => r.id)))) : [];
   return rows.map((r) => ({ ...r, uploader: publicName(r.uploader), reports: reports.filter((x) => x.refId === r.id).map((x) => (x.reason ?? "").replace(/^reporter:\S+ /, "")) }));
+}
+
+/** Yetkili için: tek fotoğrafın işlem geçmişi ve sorunlu kayıtlar. */
+export async function photoHistory(db: Db, id: string) {
+  return db.select({ action: auditLog.action, actor: auditLog.actor, at: auditLog.at, detail: auditLog.detail }).from(auditLog).where(and(eq(auditLog.refTable, "media_items"), eq(auditLog.refId, id))).orderBy(desc(auditLog.at)).limit(30);
+}
+export async function photoProblems(db: Db, storage: MediaStorage) {
+  const cleanup = await db.select({ key: mediaCleanup.key, attempts: mediaCleanup.attempts, lastError: mediaCleanup.lastError, reason: mediaCleanup.reason, createdAt: mediaCleanup.createdAt }).from(mediaCleanup).where(isNull(mediaCleanup.doneAt)).limit(100);
+  const stuck = await db.select({ id: mediaItems.id, createdAt: mediaItems.createdAt }).from(mediaItems).where(and(eq(mediaItems.status, "uploading"), lte(mediaItems.createdAt, new Date(Date.now() - STALE_UPLOAD_MS)))).limit(50);
+  const approved = await db.select({ id: photoAssets.mediaId, slug: places.slug, variants: photoAssets.variants, rights: photoAssets.rightsStatement }).from(photoAssets).innerJoin(mediaItems, eq(mediaItems.id, photoAssets.mediaId)).innerJoin(places, eq(places.id, photoAssets.placeId)).where(eq(mediaItems.status, "approved")).orderBy(desc(photoAssets.approvedAt)).limit(50);
+  const broken: Array<{ id: string; slug: string }> = [];
+  for (const a of approved) if (!(await storage.get(a.variants[0].key).catch(() => null))) broken.push({ id: a.id, slug: a.slug });
+  return { cleanup, stuck, broken, checked: approved.length, missingRights: approved.filter((a) => !a.rights).map((a) => ({ id: a.id, slug: a.slug })) };
 }
 
 export async function openPhotoReports(db: Db) {

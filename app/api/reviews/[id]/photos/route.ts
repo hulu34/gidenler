@@ -5,6 +5,7 @@ import { getStorage } from "@/lib/media/storage";
 import { addReviewPhoto, myReviewPhotos, MAX_PER_REVIEW, type UploadError } from "@/lib/media/photoArchive";
 import { MAX_BYTES } from "@/lib/media/photoProcess";
 import { TAG_PHOTOS } from "@/lib/live";
+import { countOp } from "@/lib/ops";
 
 /* POST /api/reviews/:id/photos — kendi deneyimine fotoğraf ekle. Mekân deneyimden türetilir, istemciden alınmaz.
    GET — kendi deneyiminin fotoğrafları ve durumları. Yüklemek moderasyona düşer; hemen yayımlanmaz. */
@@ -36,6 +37,7 @@ export async function POST(req: Request, { params }: Ctx) {
   if (!(file instanceof Blob)) return NextResponse.json({ error: "empty", message: MESSAGE.empty }, { status: 400, headers: H });
   if (file.size > MAX_BYTES) return NextResponse.json({ error: "too_large", message: MESSAGE.too_large }, { status: 413, headers: H });
   const r = await addReviewPhoto(g.db, storage, g.user.id, id, Buffer.from(await file.arrayBuffer()), { confirmed: form.get("rights") === "own" });
+  if (!r.ok) void countOp(`upload:${r.error}`);
   if (!r.ok) return NextResponse.json({ error: r.error, message: MESSAGE[r.error] }, { status: STATUS[r.error], headers: H });
   revalidateTag(TAG_PHOTOS);
   return NextResponse.json({ ok: true, id: r.id, status: r.status }, { status: 201, headers: H });
@@ -48,5 +50,5 @@ export async function GET(req: Request, { params }: Ctx) {
   if (g instanceof NextResponse) return g;
   if (!getStorage()) return NextResponse.json({ photos: [] }, { headers: H });
   const list = await myReviewPhotos(g.db, g.user.id, id);
-  return NextResponse.json({ photos: list.map((p) => ({ id: p.id, status: p.status, rejectReason: p.rejectReason, thumb: p.variants[0]?.key ?? null })) }, { headers: H });
+  return NextResponse.json({ photos: list.map((p) => ({ id: p.id, status: p.status, rejectReason: p.rejectReason, thumb: p.variants[0] ? `/api/media/file/${p.variants[0].key}` : null })) }, { headers: H });
 }

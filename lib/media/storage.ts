@@ -48,7 +48,8 @@ export interface S3Config { endpoint: string; accessKeyId: string; secretAccessK
 export function s3Storage(c: S3Config, f: typeof fetch = fetch): MediaStorage {
   const client = new AwsClient({ accessKeyId: c.accessKeyId, secretAccessKey: c.secretAccessKey, service: "s3", region: c.region ?? "auto" });
   const url = (key: string) => `${c.endpoint.replace(/\/$/, "")}/${key.startsWith("public/") ? c.publicBucket : c.privateBucket}/${key.split("/").map(encodeURIComponent).join("/")}`;
-  const send = async (u: string, init: RequestInit) => { const s = await client.sign(u, init); return f(s); };
+  /* askıda kalan depolama isteği işlevi bitirmesin: 10 sn sonra hata */
+  const send = async (u: string, init: RequestInit) => { const s = await client.sign(u, init); return f(s, { signal: AbortSignal.timeout(10_000) }); };
   const self: MediaStorage = {
     provider: "s3",
     async put(key, bytes, contentType) {
