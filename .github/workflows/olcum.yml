@@ -14,7 +14,7 @@ concurrency:
   group: olcum
   cancel-in-progress: false
 env:
-  MEDYA_HOST: gidenler-2afn32ycz-hulu34.vercel.app
+  MEDYA_HOST: gidenler-n72evcr0i-hulu34.vercel.app
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
@@ -405,6 +405,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: medya, path: out/medya.tgz.cms, if-no-files-found: ignore }
+  ekran:
+    if: contains(github.event.head_commit.message, '[ekran]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/ekran.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", ETIKET: once }
+      - if: always()
+        run: test -d out/ekran && tar -C out -czf out/ekran.tgz ekran && rm -rf out/ekran && openssl cms -encrypt -aes256 -binary -outform DER -in out/ekran.tgz -out out/ekran.tgz.cms ops/olcum.pem && rm out/ekran.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: ekran, path: out/ekran.tgz.cms, if-no-files-found: ignore }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
