@@ -86,7 +86,7 @@ export function PhotoMosaic({ slug, name, photos, google, mapsUrl }: { slug: str
         {all.map((p, i) => (
           <div key={p.src} className={`relative aspect-[4/3] w-[86%] shrink-0 snap-center sm:aspect-auto sm:w-auto ${i < 5 ? span(i) : "sm:hidden"}`}>
             {/* mobilde kapak 500 px sürümünden (LCP); masaüstünde kareye göre */}
-            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} sizes={`(max-width: 640px) 60vw, ${i === 0 || k <= 2 ? (k === 1 ? "1180px" : "590px") : "295px"}`} />
+            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} sizes={`(max-width: 640px) ${k === 1 ? "90vw" : "60vw"}, ${i === 0 || k <= 2 ? (k === 1 ? "1180px" : "590px") : "295px"}`} />
             {i === k - 1 && (
               <Link href={galleryHref} className="absolute right-3 top-3 hidden rounded-full bg-paper/95 px-3.5 py-1.5 text-[12.5px] font-bold text-ink shadow hover:bg-paper sm:inline-block">
                 Tüm fotoğraflar{total > 1 ? ` (${Math.max(all.length, total)})` : ""}
