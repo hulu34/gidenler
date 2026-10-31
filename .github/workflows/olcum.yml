@@ -383,7 +383,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome
       - run: node ops/foto/karsilastir.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-b9h6s26wl-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: gidenler-2afn32ycz-hulu34.vercel.app }
       - if: always()
         run: test -d out/kars && tar -C out -czf out/kars.tgz kars && rm -rf out/kars && openssl cms -encrypt -aes256 -binary -in out/kars.tgz -out out/kars.tgz.cms -outform DER ops/olcum.pem && rm out/kars.tgz
       - if: always()
