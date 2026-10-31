@@ -14,7 +14,7 @@ concurrency:
   group: olcum
   cancel-in-progress: false
 env:
-  SURUM_HOST: gidenler-mymxrx7ur-hulu34.vercel.app
+  SURUM_HOST: www.gidenler.com
   EKRAN_ETIKET: sonra
   MEDYA_HOST: gidenler-mymxrx7ur-hulu34.vercel.app
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
