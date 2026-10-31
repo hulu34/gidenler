@@ -15,10 +15,12 @@ for (const [ad, o] of [["iphone-emulasyon", { ...devices["iPhone 14"], defaultBr
   await p.screenshot({ path: `${OUT}/ana-${ad}.png` });
   await b.fill("çiya"); await b.press("Enter"); await p.waitForURL(/\/ara\//); await p.waitForTimeout(500);
   ok(`${ad}: çiya → Çiya Sofrası`, (await p.locator('main a[href*="/mekan/"]').first().getAttribute("href")).includes("ciya"));
-  await p.goto(`${BASE}/mekan/japon-erdal-beyoglu/`, { waitUntil: "networkidle" });
+  await p.goto(`${BASE}/mekan/ismet-baba-uskudar/`, { waitUntil: "networkidle" });
   const k = p.locator('#fotograflar button[aria-label^="Fotoğrafı büyüt"] img').first();
-  ok(`${ad}: Japon Erdal kapağı`, await k.evaluate((i) => i.complete && i.naturalWidth > 0));
+  ok(`${ad}: kapak görseli yüklendi`, await k.evaluate((i) => i.complete && i.naturalWidth > 0));
   ok(`${ad}: kapak ilk ekranda`, (await k.boundingBox()).y < (o.viewport?.height ?? 800) * 0.7);
+  await p.screenshot({ path: `${OUT}/kapak-${ad}.png` });
+  await p.goto(`${BASE}/mekan/japon-erdal-beyoglu/`, { waitUntil: "networkidle" });
   ok(`${ad}: Menü kısayolu`, await p.locator('a[href="#menu"]').first().isVisible());
   const t = (await p.locator("main").innerText()).replace(/\s+/g, " ");
   ok(`${ad}: Flu 44:42`, t.includes("44:42")); ok(`${ad}: Seçki bağı`, await p.locator('main a[href*="/seckisi/"]').count() > 0);
