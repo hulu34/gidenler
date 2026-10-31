@@ -1,5 +1,5 @@
 import { getRedis, redisNs } from "./redis";
-import { reserve, periodKeys, budgetFor } from "./counter";
+import { LUA, reserve, reserveScript, periodKeys, budgetFor, dailyUsdCap, MONTHLY_USD_CAP, PRICES } from "./counter";
 import { strictHit } from "./rate";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -20,7 +20,11 @@ export async function redisSelfTest() {
   const key = "google:details_essentials" as const;    // zamanlanmamış kalem: günlük sınır sabit
   const k = periodKeys(key, at);
   const rlKey = `itest-${Date.now()}`;
-  const testKeys = [k.month, k.day, `${ns}:rl:${rlKey}`];
+  /* eşzamanlı tavan testi: ayrı 2099 ayı, gerçek betik, kalem sınırları testi etkilemeyecek kadar yüksek */
+  const capAt = new Date(Date.UTC(2099, 1, 15, 12));
+  const capS = reserveScript("google:photo", 1_000_000, 1_000_000, capAt);
+  const capMonth = periodKeys("google:photo", capAt).month, capDay = periodKeys("google:photo", capAt).day;
+  const testKeys = [k.month, k.day, `${ns}:rl:${rlKey}`, ...capS.keys.slice(2)];
   /* Test anahtarları dışındaki her anahtarın adı + değeri (değerler yanıtta döndürülmez, yalnız karşılaştırılır). */
   const SNAP = `local skip = {} for _, k in ipairs(KEYS) do skip[k] = true end
     local all = redis.call('KEYS', '*') if #all > 10000 then return {'__too_many__'} end
@@ -39,6 +43,18 @@ export async function redisSelfTest() {
     const [m, d] = await r.mget<(string | null)[]>(k.month, k.day);
     checks.push({ name: "reddedilen istek sayaca yazılmadı", ok: Number(d) === day && Number(m) === day });
     checks.push({ name: "anahtar ortam önekli", ok: k.day.startsWith(`${ns}:usage:`) });
+    /* 600 eşzamanlı istek: bedava kota dolu, $0,007 fotoğraf. Günlük 3 USD = tam 428 izin, sayaçta fazlalık yok */
+    await r.set(capMonth, PRICES["google:photo"].free, { ex: 300 });
+    const results = await Promise.all(Array.from({ length: 600 }, () => r.eval(LUA, capS.keys, capS.args).then(Number)));
+    const ok428 = results.filter((v) => v >= 1).length, rejected = results.filter((v) => v === -2).length;
+    const expected = Math.floor((dailyUsdCap() * 1e6) / (PRICES["google:photo"].usdPer1000 * 1000));
+    const [cm, cd] = await r.mget<(string | null)[]>(capMonth, capDay);
+    checks.push({ name: `günlük tavan eşzamanlı istekte atomik (${expected} izin)`, ok: ok428 === expected && rejected === 600 - expected && Number(cd) === expected && Number(cm) === PRICES["google:photo"].free + expected, info: { izin: ok428, red: rejected } });
+    /* aylık tavan: gün sayacı boşken ay zaten doluya yakın */
+    await r.set(capMonth, PRICES["google:photo"].free + Math.floor((MONTHLY_USD_CAP * 1e6) / (PRICES["google:photo"].usdPer1000 * 1000)), { ex: 300 });
+    await r.set(capDay, 0, { ex: 300 });
+    const over = await Promise.all(Array.from({ length: 20 }, () => r.eval(LUA, capS.keys, capS.args).then(Number)));
+    checks.push({ name: "aylık 100 USD tavanı aynı betikte tutuyor", ok: over.every((v) => v === -1), info: over.filter((v) => v === -1).length });
     let allowed = 0;
     for (let i = 0; i < 5; i++) if (await strictHit(rlKey, 3, 60)) allowed++;
     checks.push({ name: "hız sınırı tutuyor (3/5)", ok: allowed === 3, info: allowed });

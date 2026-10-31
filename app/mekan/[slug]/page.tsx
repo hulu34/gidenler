@@ -261,7 +261,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </div>
 
         {/* gerçek mekân: önce fotoğraf, sonra karar (ad → kapak → puan durumu ve eylemler) */}
-        {entity.isReal && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={ownPhotos} google={google} hasCover={hasCover} addHref={entity.isReal && getStorage() ? `/yaz/${entity.slug}/#fotograf` : undefined} /></div>}
+        {entity.isReal && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={ownPhotos} google={google} mapsUrl={mapsUrl} hasCover={hasCover} addHref={entity.isReal && getStorage() ? `/yaz/${entity.slug}/#fotograf` : undefined} /></div>}
         {entity.isReal && (
           <div className="flex items-start justify-between gap-6">
             <div className="min-w-0 flex-1">{heroBody}</div>
@@ -272,7 +272,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </header>
 
       {/* gerçek olmayan kayıtlarda kapak eski yerinde */}
-      {!entity.isReal && ownPhotos.length > 0 && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={ownPhotos} google={google} hasCover={hasCover} addHref={entity.isReal && getStorage() ? `/yaz/${entity.slug}/#fotograf` : undefined} /></div>}
+      {!entity.isReal && ownPhotos.length > 0 && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={ownPhotos} google={google} mapsUrl={mapsUrl} hasCover={hasCover} addHref={entity.isReal && getStorage() ? `/yaz/${entity.slug}/#fotograf` : undefined} /></div>}
       {esik && <div className="mt-4 sm:hidden"><ThresholdBar v={esik} /></div>}
 
       {rp && (

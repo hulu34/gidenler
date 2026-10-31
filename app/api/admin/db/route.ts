@@ -21,7 +21,7 @@ import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
 import { googleMatchStats, matchGoogleBatch, matchGoogleSlugs, setGoogleMatchActive, googleTestFixture, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
-import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
+import { usageSnapshot, spendReport, placeUseReport, googlePause } from "@/lib/usage/counter";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
@@ -73,7 +73,7 @@ export async function GET(req: Request) {
   }
   /* ?rapor=google-politika → izin dağılımı ve bu ay en çok maliyet oluşturan mekânlar (yalnız okuma; Google'a istek yok) */
   if (new URL(req.url).searchParams.get("rapor") === "google-politika") {
-    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), policy: await googlePolicyStats(), spend: await spendReport() }, { headers: H }); }
+    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), policy: await googlePolicyStats(), topPlaces: await placeUseReport(10), spend: await spendReport() }, { headers: H }); }
     catch (e) { return fail(e); }
   }
   /* ?rapor=foto-adaylar → aday havuzu (yalnız okuma) */

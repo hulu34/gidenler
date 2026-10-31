@@ -293,7 +293,8 @@ async function main() {
   const order = profilePhotos(venue({ photos: [reg] }), [lp("r"), lp("c", { coverCandidate: true }), lp("s", { isCover: true })]).photos.map((x) => x.src);
   t("profil sırası", order.join() === "/s,/kayit.webp,/c,/r", order);
   const gRoute = readFileSync("app/api/google/place/route.ts", "utf8");
-  t("kendi kapağında sunucu Google fotoğrafı istemez", gRoute.includes("hasOwnCover") && /own_cover/.test(gRoute));
+  t("kendi kapağında sunucu Google kapağı istemez", gRoute.includes("hasOwnCover") && /own_cover/.test(gRoute));
+  t("kendi kapağında istemci Google kapağı istemez", readFileSync("components/venue/media/PhotoMosaic.tsx", "utf8").includes("useGoogleCover(slug, google && !ownCover)"));
 
   /* ── kova güvenliği ve CDN ── */
   const s3base = { MEDIA_S3_ENDPOINT: "https://x.test", MEDIA_S3_KEY: "k", MEDIA_S3_SECRET: "s", MEDIA_PUBLIC_BASE: "https://c.test" };
