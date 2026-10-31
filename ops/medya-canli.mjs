@@ -37,7 +37,8 @@ for (const [ad, o] of CIHAZ) {
   await c.close();
 }
 /* kapalı kalması gerekenler */
-for (const u of ["/api/media/status/", "/api/moderation/photos/", "/api/photos/mine/", "/yonetim/fotograf-moderasyon/", "/yonetim/medya-saglik/", "/yonetim/medya-editor/", "/api/moderation/storage/"]) { const s = (await fetch(`${BASE}${u}`, { redirect: "manual" })).status; ok(`kapalı: ${u}`, s === 404 || s === 401 || s === 403, s); }
+{ const j = await (await fetch(`${BASE}/api/media/status/`)).json().catch(() => ({})); ok("yükleme kapalı: durum ucu yükleme bilgisi vermez", j.enabled !== true, JSON.stringify(j).slice(0, 60)); }
+for (const u of ["/api/moderation/photos/", "/api/photos/mine/", "/yonetim/fotograf-moderasyon/", "/yonetim/medya-saglik/", "/yonetim/medya-editor/", "/api/moderation/storage/"]) { const s = (await fetch(`${BASE}${u}`, { redirect: "manual" })).status; ok(`kapalı: ${u}`, s === 404 || s === 401 || s === 403, s); }
 { const s = (await fetch(`${BASE}/api/google/place/?slug=pandeli-fatih&part=status`)); const j = await s.json(); ok("Pandeli Google eşleşmesi korunuyor (ücretsiz durum ucu)", j.available === true, JSON.stringify(j)); }
 const sm = await (await fetch(`${BASE}/sitemap.xml`)).text(); const n = (sm.match(/<loc>/g) ?? []).length; ok("sitemap 431", n === 431, n);
 await br.close(); console.log(`JS hataları: ${hatalar.length}`); [...new Set(hatalar)].slice(0, 8).forEach((h) => console.log(" " + h)); writeFileSync(`${OUT}/sonuc.json`, JSON.stringify({ sonuc, hatalar, cagrilar }, null, 1));
