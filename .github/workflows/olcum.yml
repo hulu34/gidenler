@@ -437,6 +437,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: sor, path: out/sor.tgz.cms, if-no-files-found: ignore }
+  medya-canli:
+    if: contains(github.event.head_commit.message, '[medya-canli]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/medya-canli.mjs
+        env: { FAZ: "${{ contains(github.event.head_commit.message, '[once]') && 'once' || 'sonra' }}" }
+      - if: always()
+        run: tar -C out -czf out/c.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out/c.tgz -out c.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: canli, path: c.cms, if-no-files-found: ignore }
   medya-e2e:
     if: contains(github.event.head_commit.message, '[medya-e2e]')
     runs-on: ubuntu-latest

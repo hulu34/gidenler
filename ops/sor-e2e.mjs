@@ -39,6 +39,8 @@ for (const [ad, o] of [["mobil", { ...devices["iPhone 14"], defaultBrowserType: 
   ok(`${ad}: adresten gelen soru`, (await p.locator("[data-sor-kart]").first().getAttribute("data-sor-kart")) === "ciya-sofrasi-kadikoy");
   ok(`${ad}: Google çağrısı yok`, dis.filter((u) => !u.includes("japon-erdal")).length === 0, dis.length);
   await c.close();
+  /* sunucunun dakika sınırı: cihazlar arasında pencere boşalır */
+  await new Promise((r) => setTimeout(r, 65000));
 }
 await br.close(); console.log(`JS hataları: ${hatalar.length}`); hatalar.slice(0, 5).forEach((h) => console.log(" " + h));
 const k = sonuc.filter((x) => !x[1]).length; console.log(`SONUÇ ${sonuc.length - k}/${sonuc.length}`); process.exit(k || hatalar.length ? 1 : 0);
