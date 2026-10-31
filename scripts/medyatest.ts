@@ -12,6 +12,9 @@ import { getStorage, memoryStorage, s3Storage } from "../lib/media/storage";
 import { MAX_BYTES, processPhoto, sniffImage } from "../lib/media/photoProcess";
 import * as A from "../lib/media/photoArchive";
 import { recomputePlace } from "../lib/score/compute";
+import { coverOf, profilePhotos, type LiveCover, type LivePhoto } from "../lib/media/cover";
+import { realEntities } from "../data/real";
+import type { Entity, VenuePhoto } from "../lib/types";
 
 let pass = 0, failed = 0;
 const t = (name: string, ok: unknown, extra?: unknown) => { if (ok) pass++; else { failed++; console.log(`  ✗ ${name}`, extra ?? ""); } };
@@ -192,6 +195,26 @@ async function main() {
   await db.insert(schema.staffRoles).values({ userId: cem, role: "moderator", grantedBy: "test" });
   t("rol moderator", (await A.staffRole(db, cem)) === "moderator");
   await db.execute(sql`select 1`);
+
+  /* kapak önceliği */
+  const venue = (extra: Partial<Entity> = {}) => ({ slug: "v", name: "Örnek", isReal: true, isDemo: false, ...extra }) as unknown as Entity;
+  const reg = { src: "/kayit.webp", alt: "x", category: "ic", credit: "Kayıt", addedBy: "işletme" } as VenuePhoto;
+  const liveC = (selected: boolean): LiveCover => ({ src: "/api/m.webp", srcSet: "/api/m.webp 480w", credit: "Ayşe Y.", focus: null, selected });
+  t("kapak yok → null", coverOf(venue()) === null);
+  t("kayıtlı kapak korunur: aday değiştirmez", coverOf(venue({ photos: [reg] }), liveC(false))?.src === "/kayit.webp");
+  t("editör seçimi kayıtlıyı geçer", coverOf(venue({ photos: [reg] }), liveC(true))?.src === "/api/m.webp");
+  t("kapağı yoksa aday", coverOf(venue(), liveC(false))?.src === "/api/m.webp");
+  t("demo kayıt canlı kapak almaz", coverOf(venue({ isDemo: true }), liveC(true)) === null);
+  const lp = (id: string, o: Partial<LivePhoto> = {}): LivePhoto => ({ id, src: `/${id}`, srcSet: "", credit: "A", isCover: false, coverCandidate: false, focus: null, ...o });
+  t("onaylı ama aday değil: Google kapağı korunur", profilePhotos(venue(), [lp("a")]).hasCover === false && profilePhotos(venue(), [lp("a")]).photos.length === 1);
+  t("aday: kendi kapak", profilePhotos(venue(), [lp("a", { coverCandidate: true })]).hasCover === true);
+  const japon = realEntities.find((e) => e.slug.startsWith("japon-erdal"));
+  t("Japon Erdal kapağı yeni fotoğrafla değişmez", !!japon && coverOf(japon, liveC(false))?.src === coverOf(japon)?.src && !!coverOf(japon));
+  const order = profilePhotos(venue({ photos: [reg] }), [lp("r"), lp("c", { coverCandidate: true }), lp("s", { isCover: true })]).photos.map((x) => x.src);
+  t("profil sırası", order.join() === "/s,/kayit.webp,/c,/r", order);
+  const mosaic = readFileSync("components/venue/media/PhotoMosaic.tsx", "utf8");
+  t("kendi kapağında Google kapağı istenmez", mosaic.includes("useGoogleCover(slug, google && !ownCover)"));
+  t("kart Google çağırmaz", !/google/i.test(readFileSync("components/venue/VenueCover.tsx", "utf8")));
 
   console.log(`\nmedya: ${pass} geçti, ${failed} kaldı`);
   process.exit(failed ? 1 : 0);

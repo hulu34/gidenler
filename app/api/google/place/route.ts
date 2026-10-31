@@ -4,6 +4,15 @@ import { fetchGoogleCover, fetchGooglePhotoMedia, fetchGoogleView, googleEnabled
 import { googleCallAllowed } from "@/lib/providers/googlePolicy";
 import { strictHit } from "@/lib/usage/rate";
 import { hashKey } from "@/lib/ai/privacy";
+import { liveCovers } from "@/lib/live";
+import { coverOf } from "@/lib/media/cover";
+
+async function hasOwnCover(slug: string) {
+  const e = getEntity(slug);
+  if (!e) return false;
+  const live = await liveCovers().catch(() => ({} as Awaited<ReturnType<typeof liveCovers>>));
+  return !!coverOf(e, live[slug]);
+}
 
 /* GET /api/google/place?slug=…&part=view|media|status — Google Places (New) canlı vekil. YALNIZCA sunucu.
    · part=view: kullanıcı isteyince — puan, sayı, yorumlar, saatler (fotoğraf yok).
@@ -46,6 +55,8 @@ export async function GET(req: Request) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });
   }
 
+  /* kendi kapağı olan mekânda doğrudan istek de ücretli çağrı başlatamaz */
+  if (part === "cover" && (await hasOwnCover(slug))) return NextResponse.json({ error: "own_cover" }, { status: 409, headers: H });
   const r = part === "cover" ? await fetchGoogleCover(slug) : await fetchGoogleView(slug, fetch, 0);
   switch (r.state) {
     case "ok": return NextResponse.json(r.data, { headers: H });

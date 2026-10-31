@@ -40,6 +40,9 @@ for (const x of ["08:00-23:00", "24/7", "Salı-Pazar 10:00-20:00", "Tu-Su 10:00-
 /* işaretleme */
 const ld = venueJsonLd(base, null, false) as Record<string, unknown>;
 ok("adres ve ad zorunlu", !!ld.name && !!ld.address);
+ok("image yalnız kapak verilince", !("image" in ld) && (venueJsonLd(base, null, false, "/media/foto/a.webp") as Record<string, unknown>).image === "https://www.gidenler.com/media/foto/a.webp");
+ok("kapak yoksa image üretilmez", realEntities.filter((e) => !coverOf(e)).every((e) => { const x = venueJsonLd(e, null, false, coverOf(e)?.src) as Record<string, unknown> | null; return !x || !("image" in x); }));
+ok("kapak görselinde Google yok", realEntities.every((e) => !/google|gstatic|ggpht/.test(coverOf(e)?.src ?? "")));
 ok("adressiz kayıtta işaretleme yok", venueJsonLd({ ...base, address: undefined }, null, false) === null);
 ok("demo kayıtta işaretleme yok", venueJsonLd({ ...base, isDemo: true }, null, false) === null);
 ok("puan yoksa aggregateRating yok", !("aggregateRating" in ld));

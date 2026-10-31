@@ -16,6 +16,7 @@ import { dailyUsdCap, daySpendUsd, MONTHLY_USD_CAP } from "../lib/usage/counter"
 import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
 import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
 import { MIGRATIONS } from "../lib/db/migrations.generated";
+import { realEntities } from "../data/real";
 import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
 import { realVenueRecords, invalidRecord, mergeRealVenues, realVenueReview, type RealVenueRecord } from "../data/real";
@@ -56,6 +57,7 @@ const ok = (name: string, cond: boolean, info?: unknown) => {
 };
 
 /* ── sahte Redis: yalnız bizim iki Lua betiğimizi ve temel komutları taklit eder ── */
+const realVenueWithCover = () => realEntities.find((e) => (e.photos ?? []).length > 0)?.slug;
 class FakeRedis {
   m = new Map<string, number>(); broken = false;
   private chk() { if (this.broken) throw new Error("down"); }
@@ -685,6 +687,30 @@ async function main() {
       ok("kapak: 1 Details (yalnız photos) + 1 Photo, Atmosphere sayacı değişmez", cov.state === "ok" && seen.length === 2 && seen[0].mask === "photos" && seen[1].u.includes("/media") && after!["google:photo"].month - (before!["google:photo"].month) === 1 && after!["google:details_atmosphere"].month === before!["google:details_atmosphere"].month, JSON.stringify(seen.map((x) => x.mask ?? "media")));
       const fv = await fetchGoogleView(pB.slug, cf, 0);
       ok("puan ve yorum isteği fotoğraf çekmez", fv.state === "ok" && !seen.slice(2).some((x) => x.u.includes("/media")));
+      /* fotoğrafı olmayan yer, Google hatası, Redis arızası: sayfa düşmez, ek çağrı ya da sessiz ödeme yok */
+      const j = (b: unknown, status = 200) => new Response(JSON.stringify(b), { status });
+      const c0: string[] = []; const nop = await fetchGoogleCover(pB.slug, (async (u: string | URL | Request) => { c0.push(String(u)); return j({ photos: [] }); }) as typeof fetch);
+      ok("kapak: fotoğrafı yok → yalnız Details, Photo isteği yok, boş sonuç", nop.state === "ok" && nop.data.photos.length === 0 && c0.length === 1 && !c0[0].includes("/media"));
+      const c1: string[] = []; const err = await fetchGoogleCover(pB.slug, (async (u: string | URL | Request) => { c1.push(String(u)); return j({ error: "x" }, 500); }) as typeof fetch);
+      ok("kapak: API hatası → hata durumu, Photo isteği yok", err.state === "error" && c1.length === 1);
+      const down = (await fresh()) as unknown as RedisLike & { broken: boolean }; down.broken = true; setRedisForTests(down);
+      const c2: string[] = []; const rd = await fetchGoogleCover(pB.slug, (async (u: string | URL | Request) => { c2.push(String(u)); return j({}); }) as typeof fetch);
+      ok("kapak: Redis arızası → 0 ücretli çağrı", rd.state === "limit" && c2.length === 0, rd);
+      setRedisForTests((await fresh()) as unknown as RedisLike);
+      const pS = (await db.select({ id: schema.places.id, slug: schema.places.slug }).from(schema.places).limit(9))[8];
+      await db.insert(schema.placeIdentifiers).values({ id: "gp-supheli", placeId: pS.id, provider: "google", externalId: "G_S", status: "pending" });
+      const c3: string[] = []; const su = await fetchGoogleCover(pS.slug, (async (u: string | URL | Request) => { c3.push(String(u)); return j({}); }) as typeof fetch);
+      ok("kapak: şüpheli/bekleyen eşleşme → 0 çağrı", su.state === "unmatched" && c3.length === 0);
+      await db.delete(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.id, "gp-supheli"));
+      /* doğrudan uç: kendi kapağı olan mekân Google kapağı isteyemez */
+      const own = realVenueWithCover();
+      if (own) {
+        const gf0 = globalThis.fetch; const c4: string[] = []; globalThis.fetch = gpFetch(c4);
+        const { GET: G2 } = await import("../app/api/google/place/route");
+        const res = await G2(new Request(`http://x/api/google/place/?slug=${own}&part=cover`, { headers: { "user-agent": "Mozilla/5.0", "x-forwarded-for": "198.51.100.8" } }));
+        globalThis.fetch = gf0;
+        ok("uç: kendi kapağı varsa doğrudan kapak isteği reddedilir, 0 çağrı", res.status === 409 && c4.length === 0, res.status);
+      }
       await setGooglePolicy({ slugs: [pB.slug], mode: "kapali", priority: "C", reason: "bitti", admin: "test" });
     }
     /* geçiş kipi: canlı eşleşmeler korunur, yeni erişim açılmaz */
