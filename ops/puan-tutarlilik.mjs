@@ -16,7 +16,7 @@ const b = await chromium.launch({ channel: "chrome" });
   const c = await b.newContext(); const p = await c.newPage();
   await p.route("**/*", (r) => new URL(r.request().url()).hostname === HOST ? r.continue({ headers: { ...r.request().headers(), ...H } }) : r.continue());
   await p.goto(`https://${HOST}/`, { waitUntil: "load", timeout: 60000 });
-  const hit = await p.evaluate((w) => { const a = [...document.querySelectorAll('section[aria-labelledby="h-real"] a[href*="/mekan/"]')].find((x) => x.innerText.includes(w)); if (!a) return null; return { slug: a.getAttribute("href").split("/")[2], name: a.querySelector("span:nth-child(2)").innerText.trim() }; }, WAIT);
+  const hit = await p.evaluate((w) => { const a = [...document.querySelectorAll('section[aria-labelledby="h-real"] a[href*="/mekan/"]')].find((x) => x.innerText.includes(w)); if (!a) return null; return { slug: a.getAttribute("href").split("/")[2], name: a.querySelector("span:nth-child(2)").innerText.trim() }; }, "Puan için deneyim bekleniyor");
   await c.close();
   ok("ana sayfada puansız gerçek mekân kartı bekleme metniyle", !!hit, hit?.slug ?? "");
   if (!hit) process.exit(1);

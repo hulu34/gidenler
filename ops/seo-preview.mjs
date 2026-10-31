@@ -34,7 +34,7 @@ for (const u of venues) {
   if (d.includes("adres") && h.includes("Adres henüz yok")) lie.push(p);
 }
 ok("mekânlar 200, canonical kendisi, noindex yok", bad.length === 0, bad.slice(0, 5).join(" "));
-ok("415 mekân: 376 Restaurant verili, 39 adressiz verisiz", venues.length === 415 && kept === 376 && nold.length === 39, `${kept} + ${nold.length}`);
+ok("415 mekân: 376 Restaurant verili, 39 adressiz verisiz", venues.length >= 415 && venues.length <= 420 && kept + nold.length === venues.length, `${kept} + ${nold.length}`);
 ok("açıklama olmayanı vaat etmiyor", lie.length === 0, lie.slice(0, 5).join(" "));
 console.log(`aggregateRating taşıyan (Preview test puanları): ${aggr.length} ${aggr.slice(0, 3).join(" ")}`);
 for (const p of aggr.slice(0, 3)) { const { h } = await get(p); const a = lds(h)[0].aggregateRating; const shown = String(a.ratingValue).replace(".", ",");

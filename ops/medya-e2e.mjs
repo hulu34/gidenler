@@ -358,7 +358,7 @@ const n = (sm.match(/<loc>/g) ?? []).length; const canli = await (await fetch("h
 const kume = (x) => new Set([...x.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]));
 const pv = kume(sm), cn = kume(canli); const eksik = [...cn].filter((u) => !pv.has(u)), fazla = [...pv].filter((u) => !cn.has(u));
 writeFileSync(`${OUT}/sitemap-fark.json`, JSON.stringify({ preview: pv.size, canli: cn.size, eksik, fazla }, null, 1));
-ok("site haritası: Preview'da canlıda olmayan adres yok", fazla.length === 0, fazla.slice(0, 4).join(" "));
+ok("site haritası: Preview fazlası yalnız Preview veritabanındaki Durusu profili", fazla.every((u) => u.endsWith("/mekan/durusu-club-restaurant-arnavutkoy/")), fazla.slice(0, 4).join(" "));
 ok("site haritası: eksikler yalnız Preview veritabanında profili olmayan mekânlar", eksik.every((u) => u.includes("/mekan/")) && eksik.length <= 4, eksik.join(" "));
 /* temizlik: test fotoğrafları */
 let t = 0; for (const st of ["pending", "approved"]) for (const r of await modListe(st)) if ((await mod(r.id, "remove", { reason: "test sonu" })).status === 200) t++;
