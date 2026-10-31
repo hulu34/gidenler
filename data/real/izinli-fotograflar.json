@@ -81,5 +81,19 @@
       "license": "CC BY-SA 3.0 · boyutlandırıldı",
       "rightsRef": "acik-lisans: CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:%C3%87ukur_Meyhane_1.jpg"
     }
+  ],
+  "kanaat-lokantasi-uskudar": [
+    {
+      "src": "/media/foto/kanaat-lokantasi-uskudar-682ce7e845-960.webp",
+      "srcSet": "/media/foto/kanaat-lokantasi-uskudar-682ce7e845-480.webp 480w, /media/foto/kanaat-lokantasi-uskudar-682ce7e845-960.webp 960w, /media/foto/kanaat-lokantasi-uskudar-682ce7e845-1440.webp 1440w",
+      "full": "/media/foto/kanaat-lokantasi-uskudar-682ce7e845-1440.webp",
+      "category": "ic",
+      "alt": "Kanaat Lokantası — yemek tezgâhı",
+      "credit": "John Lubbock",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%C3%9Csk%C3%BCdar_Kanaat_Lokantas%C4%B1_(34243555222).jpg",
+      "addedBy": "commons",
+      "license": "CC BY-SA 2.0 · boyutlandırıldı",
+      "rightsRef": "acik-lisans: CC BY-SA 2.0: https://commons.wikimedia.org/wiki/File:%C3%9Csk%C3%BCdar_Kanaat_Lokantas%C4%B1_(34243555222).jpg"
+    }
   ]
 }
