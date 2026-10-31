@@ -24,7 +24,7 @@ function Card({ e, line }: { e: Entity; line?: string }) {
     </li>
   );
 }
-const Rail = ({ children }: { children: React.ReactNode }) => <ul className="-mx-5 mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-4">{children}</ul>;
+const Rail = ({ children }: { children: React.ReactNode }) => <ul className="-mx-5 mt-4 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-4">{children}</ul>;
 
 export async function RealDiscover() {
   const [published, covers, recent] = await Promise.all([publishedScores(), liveCovers(), recentlyReviewed()]);

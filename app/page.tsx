@@ -60,7 +60,7 @@ export default function HomePage() {
       {/* ───────── hero: manşet + tek soru, arkada İstanbul sismografı (gerçek veri) ───────── */}
       <section className="relative isolate overflow-hidden border-b border-line">
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-full opacity-90 [mask-image:linear-gradient(to_bottom,transparent,black_30%)]">
-          <CityArt />
+          {DEMO_VISIBLE && <CityArt />}
         </div>
         <div className="mx-auto max-w-[1180px] px-5 pb-12 pt-10 sm:px-7 sm:pb-16 sm:pt-16">
           <p className="rise flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">

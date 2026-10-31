@@ -27,7 +27,7 @@ export async function RealVenues({ limit = 12 }: { limit?: number }) {
         <Link href="/gercek/" className="text-[12px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">{realEntities.length} mekânın tümü →</Link>
       </div>
       {withCover.length > 0 && (
-        <ul className="-mx-5 mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-4">
+        <ul className="-mx-5 mt-4 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-4">
           {withCover.map((e) => (
             <li key={e.id} className="w-[78%] shrink-0 snap-start sm:w-auto">
               <Link href={`/mekan/${e.slug}/`} className="group flex h-full flex-col gap-1">
