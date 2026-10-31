@@ -37,11 +37,11 @@ for (const [ad, o] of [["iphone-emulasyon", { ...devices["iPhone 14"], defaultBr
   await c.close();
 }
 const f = (u) => fetch(`${BASE}${u}`, { headers: HB });
-const sm = await (await f("/sitemap.xml")).text(); const n = (sm.match(/<loc>/g) ?? []).length; ok("site haritası", n === 431 || (!CANLI && n >= 431), n);
+const sm = await (await f("/sitemap.xml")).text(); const n = (sm.match(/<loc>/g) ?? []).length; if (CANLI) ok("site haritası 431", n === 431, n); else console.log(`  aday site haritası ${n} (Preview veritabanına bağlı)`);
 const h = await (await f("/mekan/japon-erdal-beyoglu/")).text();
 ok("canonical", /rel="canonical" href="[^"]*\/mekan\/japon-erdal-beyoglu\/"/.test(h));
 ok("ilk HTML'de ad", h.includes("Japon Erdal"));
-ok("yükleme ucu yok", (await f("/api/media/status/")).status === 404);
+ok("Fotoğraf yükleme ucu yok", (await f("/api/reviews/00000000-0000-7000-8000-000000000000/photos/")).status === 404);
 ok("moderasyon sayfası yok", (await f("/yonetim/fotograf-moderasyon/")).status === 404);
 await br.close(); console.log(`JS hataları: ${hatalar.length}`); [...new Set(hatalar)].slice(0, 6).forEach((x) => console.log("  " + x));
 const k = son.filter((x) => !x).length; console.log(`SONUÇ ${son.length - k}/${son.length}`); process.exit(k ? 1 : 0);
