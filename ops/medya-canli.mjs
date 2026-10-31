@@ -1,14 +1,14 @@
 /* Canlı doğrulama · YALNIZ OKUMA. Google uçları tarayıcıda kesilir, hiçbir ücretli çağrı yapılmaz; kare "SAHTE GOOGLE" yazılıdır. Form gönderilmez. */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { chromium, devices } from "playwright";
-const BASE = "https://www.gidenler.com", FAZ = process.env.FAZ ?? "sonra", OUT = `out/canli-${FAZ}`; mkdirSync(OUT, { recursive: true });
+const CANLI = "https://www.gidenler.com", ESKI = process.env.ESKI, BASE = ESKI ? `https://${ESKI}` : CANLI, FAZ = process.env.FAZ ?? "sonra", OUT = `out/canli-${FAZ}`; mkdirSync(OUT, { recursive: true });
 const sonra = FAZ === "sonra"; const sonuc = []; const ok = (n, c, i = "") => { sonuc.push([n, !!c]); console.log(`${c ? "✓" : "✗"} ${n}${i !== "" ? " · " + i : ""}`); };
 const SVG = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="#c33"/><text x="600" y="400" font-size="70" fill="#fff" text-anchor="middle">SAHTE GOOGLE</text></svg>')}`;
 const foto = { src: SVG, author: "SAHTE", mapsUri: "https://maps.google.com/" };
 const br = await chromium.launch(); const hatalar = []; const cagrilar = {};
 const CIHAZ = [["mobil", { ...devices["iPhone 14"], defaultBrowserType: undefined }], ["masaustu", { viewport: { width: 1366, height: 900 } }]];
 const KENDI = { "japon-erdal-beyoglu": ["kapali-pide", "Japon Erdal arşivi"], "kanaat-lokantasi-uskudar": ["kanaat", "John Lubbock"], "cukur-meyhane-beyoglu": ["cukur", "Jwslubbock"], "viktor-levi-sarap-evi-kadikoy": ["viktor", "Chromehoney"], "beyti-lokanta-bakirkoy": ["beyti", "Nicoleon"], "ismet-baba-uskudar": ["ismet", "Oxorca"] };
-const ctx = async (o) => { const c = await br.newContext(o); await c.route(/\/api\/google\//, (r) => { const u = new URL(r.request().url()), part = u.searchParams.get("part") ?? "view", n = Number(u.searchParams.get("n") || 0), s = u.searchParams.get("slug"); (cagrilar[s] ??= []).push(`${part}${n ? `:${n}` : ""}`); if (part === "status") return r.fulfill({ json: { available: true } }); const kendi = sonra && !!KENDI[s]; return r.fulfill({ json: { rating: 4.2, count: 100, mapsUri: "https://maps.google.com/", hours: [], reviews: [], photos: kendi ? [] : Array.from({ length: n || 1 }, () => foto), photoTotal: kendi ? 0 : 5, refs: [] } }); }); await c.route(/googleapis|googleusercontent|ggpht/, (r) => r.abort()); return c; };
+const ctx = async (o) => { const c = await br.newContext(o); if (ESKI) await c.route((u) => u.hostname === ESKI, (r) => r.continue({ headers: { ...r.request().headers(), "x-vercel-protection-bypass": process.env.VERCEL_BYPASS, "x-vercel-set-bypass-cookie": "true" } })); await c.route(/\/api\/google\//, (r) => { const u = new URL(r.request().url()), part = u.searchParams.get("part") ?? "view", n = Number(u.searchParams.get("n") || 0), s = u.searchParams.get("slug"); (cagrilar[s] ??= []).push(`${part}${n ? `:${n}` : ""}`); if (part === "status") return r.fulfill({ json: { available: true } }); const kendi = sonra && !!KENDI[s]; return r.fulfill({ json: { rating: 4.2, count: 100, mapsUri: "https://maps.google.com/", hours: [], reviews: [], photos: kendi ? [] : Array.from({ length: n || 1 }, () => foto), photoTotal: kendi ? 0 : 5, refs: [] } }); }); await c.route(/googleapis|googleusercontent|ggpht/, (r) => r.abort()); return c; };
 const FOTO = 'button[aria-label^="Fotoğrafı büyüt"] img';
 const DIGER = ["pandeli-fatih", "yeni-lokanta-beyoglu", "pidem-fatih"];
 for (const [ad, o] of CIHAZ) {
@@ -18,7 +18,7 @@ for (const [ad, o] of CIHAZ) {
     const r = await p.goto(`${BASE}/mekan/${slug}/`, { waitUntil: "networkidle" }); await p.waitForTimeout(500);
     const d = await p.evaluate((F) => { const m = document.querySelector("section[aria-label$='fotoğrafları']"); return { src: [...document.querySelectorAll(F)].map((i) => i.getAttribute("src")?.slice(0, 70)), yazi: m?.innerText ?? "", can: document.querySelector('link[rel="canonical"]')?.href, tasma: document.documentElement.scrollWidth > innerWidth + 1 }; }, FOTO);
     await p.screenshot({ path: `${OUT}/${slug}-${ad}.png` }); writeFileSync(`${OUT}/${slug}-${ad}.json`, JSON.stringify({ ...d, cagri: cagrilar[slug] ?? [] }, null, 1));
-    ok(`${ad} ${slug}: 200, canonical, taşma yok`, r.status() === 200 && d.can === `${BASE}/mekan/${slug}/` && !d.tasma, d.can);
+    ok(`${ad} ${slug}: 200, canonical, taşma yok`, r.status() === 200 && d.can === `${CANLI}/mekan/${slug}/` && !d.tasma, d.can);
     if (sonra && KENDI[slug]) {
       ok(`${ad} ${slug}: kendi kapağı ve atıf`, d.src[0]?.includes(KENDI[slug][0]) && d.yazi.includes(KENDI[slug][1]), d.src[0]);
       ok(`${ad} ${slug}: ekranda Google karesi yok`, !d.src.some((x) => x?.startsWith("data:")));
@@ -37,11 +37,11 @@ for (const [ad, o] of CIHAZ) {
   await c.close();
 }
 /* kapalı kalması gerekenler */
-{ const j = await (await fetch(`${BASE}/api/media/status/`)).json().catch(() => ({})); ok("yükleme kapalı: durum ucu yükleme bilgisi vermez", j.enabled !== true, JSON.stringify(j).slice(0, 60)); }
-for (const u of ["/api/moderation/photos/", "/api/photos/mine/", "/yonetim/fotograf-moderasyon/", "/yonetim/medya-saglik/", "/yonetim/medya-editor/", "/api/moderation/storage/"]) { const s = (await fetch(`${BASE}${u}`, { redirect: "manual" })).status; ok(`kapalı: ${u}`, s === 404 || s === 401 || s === 403, s); }
+{ const j = await (await fetch(`${CANLI}/api/media/status/`)).json().catch(() => ({})); ok("yükleme kapalı: durum ucu yükleme bilgisi vermez", j.enabled !== true, JSON.stringify(j).slice(0, 60)); }
+for (const u of ["/api/moderation/photos/", "/api/photos/mine/", "/yonetim/fotograf-moderasyon/", "/yonetim/medya-saglik/", "/yonetim/medya-editor/", "/api/moderation/storage/"]) { const s = (await fetch(`${CANLI}${u}`, { redirect: "manual" })).status; ok(`kapalı: ${u}`, s === 404 || s === 401 || s === 403, s); }
 /* gerçek sunucu kuralı: Google'a gitmeden 409 döner, ücret doğmaz */
-for (const slug of Object.keys(KENDI)) { const ua = { "user-agent": "Mozilla/5.0 Chrome/131", "content-type": "application/json" }; const r = await fetch(`${BASE}/api/google/place/?slug=${slug}&part=media`, { method: "POST", headers: ua, body: JSON.stringify({ refs: [] }) }); const j = await r.json().catch(() => ({})); ok(`${slug}: doğrudan Google fotoğraf isteği sunucuda reddedilir`, r.status === 409 && j.error === "own_cover", `${r.status} ${JSON.stringify(j).slice(0, 40)}`); }
-{ const s = (await fetch(`${BASE}/api/google/place/?slug=pandeli-fatih&part=status`)); const j = await s.json(); ok("Pandeli Google eşleşmesi korunuyor (ücretsiz durum ucu)", j.available === true, JSON.stringify(j)); }
-const sm = await (await fetch(`${BASE}/sitemap.xml`)).text(); const n = (sm.match(/<loc>/g) ?? []).length; ok("sitemap 431", n === 431, n);
+if (sonra) for (const slug of Object.keys(KENDI)) { const ua = { "user-agent": "Mozilla/5.0 Chrome/131", "content-type": "application/json" }; const r = await fetch(`${CANLI}/api/google/place/?slug=${slug}&part=media`, { method: "POST", headers: ua, body: JSON.stringify({ refs: [] }) }); const j = await r.json().catch(() => ({})); ok(`${slug}: doğrudan Google fotoğraf isteği sunucuda reddedilir`, r.status === 409 && j.error === "own_cover", `${r.status} ${JSON.stringify(j).slice(0, 40)}`); }
+{ const s = (await fetch(`${CANLI}/api/google/place/?slug=pandeli-fatih&part=status`)); const j = await s.json(); ok("Pandeli Google eşleşmesi korunuyor (ücretsiz durum ucu)", j.available === true, JSON.stringify(j)); }
+const sm = await (await fetch(`${CANLI}/sitemap.xml`)).text(); const n = (sm.match(/<loc>/g) ?? []).length; ok("sitemap 431", n === 431, n);
 await br.close(); console.log(`JS hataları: ${hatalar.length}`); [...new Set(hatalar)].slice(0, 8).forEach((h) => console.log(" " + h)); writeFileSync(`${OUT}/sonuc.json`, JSON.stringify({ sonuc, hatalar, cagrilar }, null, 1));
 const k = sonuc.filter((x) => !x[1]).length; console.log(`SONUÇ ${sonuc.length - k}/${sonuc.length}`); process.exit(k || hatalar.length ? 1 : 0);
