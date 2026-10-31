@@ -14,7 +14,7 @@ concurrency:
   group: olcum
   cancel-in-progress: false
 env:
-  SURUM_HOST: gidenler-dwey0bqic-hulu34.vercel.app
+  SURUM_HOST: gidenler-bdccn6cab-hulu34.vercel.app
   EKRAN_ETIKET: sonra
   MEDYA_HOST: gidenler-glpr1t8r2-hulu34.vercel.app
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
