@@ -16,14 +16,14 @@ concurrency:
 env:
   SURUM_HOST: www.gidenler.com
   EKRAN_ETIKET: sonra
-  MEDYA_HOST: gidenler-gay3qu2xn-hulu34.vercel.app
-  SURUM: A
+  MEDYA_HOST: gidenler-ng64dxtoi-hulu34.vercel.app
+  SURUM: B
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
   PREVIEW_HOST: gidenler-rla1pc9bc-hulu34.vercel.app
   ADAY_HOST: gidenler-puaf01iqu-hulu34.vercel.app    # canlı sürüm (ddcd558, puan üretimi — SCORE_PUBLISH=1)
-  SECKI_HOST: gidenler-gay3qu2xn-hulu34.vercel.app   # Gidenler Seçkisi Preview 11. tur, profil başlığı
+  SECKI_HOST: gidenler-ng64dxtoi-hulu34.vercel.app   # Gidenler Seçkisi Preview 11. tur, profil başlığı
   PROFIL_HOST: gidenler-2h5anwthr-hulu34.vercel.app   # restoran profili V1 test ortamı (Preview ddcd558, puan üretimi)  # görsel Faz 1 Preview (kendi Neon dalı)
 jobs:
   demo:
