@@ -185,6 +185,15 @@ async function main() {
     await db.delete(schema.user).where(eq(schema.user.id, dU));
     t("hesap kapanınca görünmez", (await A.approvedPhotos(db, store, "mekan-b")).length === 0); }
 
+  /* yeniden yükleme */
+  { const u = await mkUser("Yeniden Yukleyen"), r = await mkReview(u, placeB), b = await uniq();
+    const a1x = await A.addReviewPhoto(db, store, u, r, b, { confirmed: true });
+    if (a1x.ok) await A.removeOwnPhoto(db, store, u, a1x.id);
+    const a2x = await A.addReviewPhoto(db, store, u, r, b, { confirmed: true });
+    t("kendi kaldırdığını yeniden yükleyebilir", a2x.ok, a2x);
+    if (a2x.ok) await A.removePhoto(db, store, "user:mod", a2x.id, "telif");
+    t("moderatörün kaldırdığı aynı dosya yüklenemez", JSON.stringify(await A.addReviewPhoto(db, store, u, r, b, { confirmed: true })).includes("duplicate")); }
+
   /* yaşam döngüsü: silme başarısız olursa kayıt kaybolmaz, görev tamamlar */
   {
     const u = await mkUser("Silme Deneme"), r = await mkReview(u, placeB);

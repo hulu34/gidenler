@@ -189,7 +189,10 @@ export async function removePhoto(db: Db, storage: MediaStorage, actor: string, 
 export async function removeOwnPhoto(db: Db, storage: MediaStorage, userId: string, id: string): Promise<Decided> {
   const a = await loadAsset(db, id);
   if (!a || a.uploaderId !== userId) return { ok: false, error: "not_found" };
-  return removePhoto(db, storage, `user:${userId}`, id, "yükleyen kaldırdı");
+  const r = await removePhoto(db, storage, `user:${userId}`, id, "yükleyen kaldırdı");
+  /* kendi kaldırdığını sonra yeniden yükleyebilir; moderatörün kaldırdığı (telif, mahremiyet) aynı dosya ise engelli kalır */
+  if (r.ok) await db.update(photoAssets).set({ sha256: `kaldirildi:${id}` }).where(eq(photoAssets.mediaId, id));
+  return r;
 }
 
 /** Deneyim silinince o deneyimin fotoğrafları da yayından çıkar. */
