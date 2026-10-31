@@ -163,7 +163,7 @@ const profil = async (s, o = {}) => { const ctx = await baglam(null, o); const p
   ok("görüntüleyicide atıf ve bildirim", (await p.locator("body").innerText()).includes("Bildir"));
   await p.screenshot({ path: `${OUT}/6-lightbox-iphone-emulasyon.png` });
   const gv = await (await api(`/api/google/place/?slug=${SLUG}&part=view&n=1`, { headers: { "user-agent": "Mozilla/5.0 Chrome/131" } })).json();
-  ok("Preview'da Google kapalı: ücretli çağrı yok", gv.disabled === true && g.filter((u) => /part=media/.test(u)).length === 0, JSON.stringify(gv).slice(0, 60));
+  ok("Preview'da Google kapalı: ücretli çağrı yok", gv.disabled === true && g.filter((u) => (process.env.SURUM === "B" ? /part=(view|media)/ : /part=media/).test(u)).length === 0, JSON.stringify(gv).slice(0, 60));
   await ctx.close();
 }
 const galeri = await baglam(null, { viewport: { width: 1366, height: 900 } }); const gp = await galeri.newPage(); await gp.goto(`${BASE}/mekan/${SLUG}/fotograflar/?v=${Date.now()}`, { waitUntil: "networkidle" });
@@ -354,7 +354,12 @@ console.log(`  hız sınırı: ${rl.filter((x) => x === 429).length}/34 istek 42
 ok("hız sınırı çalışır", rl.includes(429), rl.slice(-3).join());
 /* site haritası */
 const sm = await (await api("/sitemap.xml")).text();
-const n = (sm.match(/<loc>/g) ?? []).length; ok("site haritası Preview verisiyle (Production 431, sitemap kodu değişmedi)", n >= 427, n);
+const n = (sm.match(/<loc>/g) ?? []).length; const canli = await (await fetch("https://www.gidenler.com/sitemap.xml")).text();
+const kume = (x) => new Set([...x.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]));
+const pv = kume(sm), cn = kume(canli); const eksik = [...cn].filter((u) => !pv.has(u)), fazla = [...pv].filter((u) => !cn.has(u));
+writeFileSync(`${OUT}/sitemap-fark.json`, JSON.stringify({ preview: pv.size, canli: cn.size, eksik, fazla }, null, 1));
+ok("site haritası: Preview'da canlıda olmayan adres yok", fazla.length === 0, fazla.slice(0, 4).join(" "));
+ok("site haritası: eksikler yalnız Preview veritabanında profili olmayan mekânlar", eksik.every((u) => u.includes("/mekan/")) && eksik.length <= 4, eksik.join(" "));
 /* temizlik: test fotoğrafları */
 let t = 0; for (const st of ["pending", "approved"]) for (const r of await modListe(st)) if ((await mod(r.id, "remove", { reason: "test sonu" })).status === 200) t++;
 console.log(`  temizlik: ${t} test fotoğrafı kaldırıldı`);

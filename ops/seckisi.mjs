@@ -166,9 +166,10 @@ for (const a of pkg.filter((x) => x.media)) {
     ok(`${dev} profil ${slug}: yazı ${m.link}, basın ${m.press}, video ${m.video}`, m.link >= 1 && m.press === a.media.press.length && m.video === a.media.videos.length, JSON.stringify(m));
     ok(`${dev} profil ${slug}: yatay taşma yok`, m.sw <= m.cw, JSON.stringify(m));
     await p.waitForFunction(() => !document.querySelector("header")?.innerText.includes("Yükleniyor"), null, { timeout: 15000 }).catch(() => {});
-    const g = await p.evaluate(() => { const h = document.querySelector("header h1")?.closest("header"); const n = [...h.querySelectorAll("a,button")].find((x) => /Gittim, deneyimimi/.test(x.textContent)); const k = [...h.querySelectorAll("h1 ~ *, div")].find((x) => /DENEME EŞİĞİN|Deneme eşiğin/i.test(x.textContent) && x.offsetWidth === 300); const r = (e) => e ? e.getBoundingClientRect() : null; return { h1: r(h.querySelector("h1"))?.bottom, not: r(n)?.top, kart: r(k)?.bottom, header: r(h).bottom }; });
+    const g = await p.evaluate(() => { const h = document.querySelector("header h1")?.closest("header"); const n = [...h.querySelectorAll("a,button")].find((x) => /Deneyim yaz/.test(x.textContent)); const k = [...h.querySelectorAll("h1 ~ *, div")].find((x) => /DENEME EŞİĞİN|Deneme eşiğin/i.test(x.textContent) && x.offsetWidth === 300); const r = (e) => e ? e.getBoundingClientRect() : null; return { h1: r(h.querySelector("h1"))?.bottom, not: r(n)?.top, kart: r(k)?.bottom, header: r(h).bottom }; });
     console.log(`  başlık ölçüsü ${dev}: ${JSON.stringify(g)}`);
-    /* 04ae5e9 ile profil başlığı değişti: "Gittim, deneyimimi" notu canlıda da yok; eski ölçü kaldırıldı */
+    /* d29e08b (canlı 04ae5e9): "Gittim, deneyimimi" düğmesi "Deneyim yaz" oldu; fotoğraf başlığın altına geçti */
+    if (dev === "masaustu") ok(`profil ${slug}: Deneyim yaz başlıkta, kartın üstünde`, g.not != null && g.h1 != null && g.not > g.h1 && (g.kart == null || g.not < g.kart), JSON.stringify(g));
     await p.evaluate(() => scrollTo(0, 0)); await p.screenshot({ path: `${OUT}/${dev}-profil-ust-${slug}.png` });
     await p.locator("#seckide").scrollIntoViewIfNeeded(); await p.locator("#seckide").screenshot({ path: `${OUT}/${dev}-profil-${slug}.png` }).catch(() => {});
     await c.close();

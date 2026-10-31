@@ -19,7 +19,7 @@ const hatalar = [];
 /* A — yeni ziyaretçi */
 for (const [ad2, o] of [["iphone-emulasyon", IP], ["android-emulasyon", AN], ["masaustu", { viewport: { width: 1366, height: 900 } }]]) {
   const c = await ctxOf(null, o), p = await c.newPage(); p.on("pageerror", (e) => hatalar.push(`A ${ad2}: ${e.message.slice(0, 140)}`));
-  const ext = []; p.on("request", (r) => { const u = r.url(); if (/youtube\.com\/embed|googleapis|\/api\/google\/place.*part=media/.test(u)) ext.push(u); });
+  const ext = []; p.on("request", (r) => { const u = r.url(); if (/youtube\.com\/embed|googleapis|\/api\/google\/place.*part=media/.test(u) || (process.env.SURUM === "B" && /\/api\/google\/place.*part=view/.test(u))) ext.push(u); });
   await p.goto(BASE, { waitUntil: "networkidle" });
   const box = p.locator('main input[name="q"]');
   ok(`A ${ad2}: ilk ekranda arama`, await box.isVisible() && (await box.boundingBox()).y < 700);
@@ -35,7 +35,7 @@ for (const [ad2, o] of [["iphone-emulasyon", IP], ["android-emulasyon", AN], ["m
   await p.screenshot({ path: `${OUT}/A-profil-${ad2}.png` });
   const mn = p.locator('a[href="#menu"]').first(); ok(`A ${ad2}: Menü kısayolu`, await mn.isVisible()); await mn.click(); await p.waitForTimeout(500);
   ok(`A ${ad2}: menü bölümüne indi`, await p.locator("#menu").first().isVisible());
-  ok(`A ${ad2}: sayfa açılışında oynatıcı ve Google fotoğraf devamı yok`, ext.length === 0, ext.length);
+  ok(`A ${ad2}: sayfa açılışında oynatıcı yok, Google yalnız sürümün izin verdiği kadar`, ext.length === 0, ext.length);
   const metin = (await p.locator("main").innerText()).replace(/\s+/g, " ");
   ok(`A ${ad2}: Seçki bağlantısı`, await p.locator('main a[href*="/seckisi/"]').count() > 0);
   ok(`A ${ad2}: altı video`, (await p.locator("[data-video], [data-rail-video]").count()) === 6 || (metin.match(/YouTube/g) ?? []).length >= 6, (metin.match(/YouTube/g) ?? []).length);

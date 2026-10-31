@@ -17,6 +17,7 @@ env:
   SURUM_HOST: www.gidenler.com
   EKRAN_ETIKET: sonra
   MEDYA_HOST: gidenler-aeijx4inv-hulu34.vercel.app
+  SURUM: A
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
@@ -238,7 +239,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/seo-preview.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: "${{ env.MEDYA_HOST }}" }
   sitemap-dis:
     if: contains(github.event.head_commit.message, '[sitemap-dis]')
     runs-on: ubuntu-latest
@@ -391,6 +392,35 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: kars-sifreli, path: out/kars.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  s3-entegre:
+    if: contains(github.event.head_commit.message, '[s3]')
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: { ref: [feature/medya-production, feature/medya-google] } }
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: "${{ matrix.ref }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --no-audit --no-fund
+      - run: docker run -d -p 9000:9000 -e MINIO_ROOT_USER=testkey -e MINIO_ROOT_PASSWORD=testsecret123 minio/minio server /data && sleep 6
+      - run: npx tsx scripts/s3test.ts
+        env: { S3_TEST_ENDPOINT: "http://127.0.0.1:9000", S3_TEST_KEY: testkey, S3_TEST_SECRET: testsecret123 }
+  karsilastir10:
+    if: contains(github.event.head_commit.message, '[kars10]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/karsilastir10.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", SURUM: "${{ env.SURUM }}" }
+      - if: always()
+        run: test -d out/kars10 && tar -C out -czf out/kars10.tgz kars10 && rm -rf out/kars10 && openssl cms -encrypt -aes256 -binary -outform DER -in out/kars10.tgz -out out/kars10.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: kars10, path: out/kars10.tgz.cms, if-no-files-found: ignore }
   medya-e2e:
     if: contains(github.event.head_commit.message, '[medya-e2e]')
     runs-on: ubuntu-latest
@@ -401,7 +431,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
       - run: node ops/medya-e2e.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", SURUM: "${{ env.SURUM }}" }
       - if: always()
         run: test -d out/medya && tar -C out -czf out/medya.tgz medya && rm -rf out/medya && openssl cms -encrypt -aes256 -binary -outform DER -in out/medya.tgz -out out/medya.tgz.cms ops/olcum.pem && rm out/medya.tgz
       - if: always()
@@ -417,7 +447,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
       - run: node ops/ekran.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", ETIKET: "${{ env.EKRAN_ETIKET }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", SURUM: "${{ env.SURUM }}", ETIKET: "${{ env.EKRAN_ETIKET }}" }
       - if: always()
         run: test -d out/ekran && tar -C out -czf out/ekran.tgz ekran && rm -rf out/ekran && openssl cms -encrypt -aes256 -binary -outform DER -in out/ekran.tgz -out out/ekran.tgz.cms ops/olcum.pem && rm out/ekran.tgz
       - if: always()
@@ -433,7 +463,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
       - run: node ops/senaryo.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", SURUM: "${{ env.SURUM }}" }
       - if: always()
         run: test -d out/senaryo && tar -C out -czf out/senaryo.tgz senaryo && rm -rf out/senaryo && openssl cms -encrypt -aes256 -binary -outform DER -in out/senaryo.tgz -out out/senaryo.tgz.cms ops/olcum.pem && rm out/senaryo.tgz
       - if: always()
@@ -449,7 +479,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
       - run: node ops/h418.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", SURUM: "${{ env.SURUM }}" }
       - if: always()
         run: test -d out/h418 && tar -C out -czf out/h418.tgz h418 && rm -rf out/h418 && openssl cms -encrypt -aes256 -binary -outform DER -in out/h418.tgz -out out/h418.tgz.cms ops/olcum.pem && rm out/h418.tgz
       - if: always()
