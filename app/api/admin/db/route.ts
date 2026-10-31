@@ -1,3 +1,4 @@
+import { createHmac, randomBytes } from "node:crypto";
 import { after, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { TAG_GOOGLE, TAG_MEDIA, profileTag, scoreTags } from "@/lib/live";
@@ -25,7 +26,7 @@ import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/st
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
 import { and, desc, eq, inArray, sql } from "drizzle-orm";
-import { auditLog, fieldProvenance, menuItems, moderationQueue, placeIdentifiers, places, reviews, user } from "@/lib/db/schema";
+import { auditLog, fieldProvenance, menuItems, moderationQueue, placeIdentifiers, places, reviews, user, session, staffRoles } from "@/lib/db/schema";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -324,6 +325,20 @@ export async function POST(req: Request) {
         const r = await runScoreScenario(db, s);
         scoreTags(s).forEach(fresh); fresh(reviewsTag(s));
         return NextResponse.json({ action: "puan-senaryo", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "medya-test-oturum": {
+        /* yalnız Preview/yerel: uçtan uca fotoğraf testi için örnek hesap ve oturum. Gerçek hesaplara dokunmaz; e-postalar example.invalid. */
+        if (envName() === "production" || process.env.VERCEL_ENV === "production" || body.confirm !== "EVET") return NextResponse.json({ error: "not_allowed" }, { status: 403, headers: H });
+        const secret = process.env.BETTER_AUTH_SECRET;
+        if (!secret) return NextResponse.json({ error: "no_secret" }, { status: 503, headers: H });
+        const role = body.mode === "moderator" ? "moderator" : null;
+        const id = uuidv7(), token = randomBytes(24).toString("hex");
+        await db.insert(user).values({ id, name: role ? "Test Editor" : "Test Kullanici", email: `${id}@example.invalid`, emailVerified: true, kind: "test" });
+        await db.insert(session).values({ id: uuidv7(), token, userId: id, expiresAt: new Date(Date.now() + 6 * 3600 * 1000) });
+        if (role) await db.insert(staffRoles).values({ userId: id, role, grantedBy: "medya-test-oturum" });
+        await db.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "media_test_session", refTable: "user", refId: id, detail: { role } });
+        const sign = createHmac("sha256", secret).update(token).digest("base64");
+        return NextResponse.json({ action: "medya-test-oturum", env: envName(), userId: id, cookieName: `${process.env.NODE_ENV === "production" ? "__Secure-" : ""}better-auth.session_token`, cookieValue: encodeURIComponent(`${token}.${sign}`) }, { headers: H });
       }
       case "esik-senaryo": {
         /* yalnız Preview/yerel: deneme eşiği uçtan uca (iki test hesabı, örnek puanlar "preview-test") */

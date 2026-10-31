@@ -8,6 +8,9 @@ import { readProfile, type PlaceProfile } from "@/lib/profile";
 import { publishedScoreBySlug, publishedScoresBySlug, type PublishedScore } from "@/lib/score/published";
 import type { PublishedMap } from "@/lib/score/publishedCards";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { getStorage } from "@/lib/media/storage";
+import { approvedPhotos, coverCandidates, type PublicPhoto } from "@/lib/media/photoArchive";
+import type { LiveCoverMap } from "@/lib/media/cover";
 
 /* ──────────────────────────────────────────────────────────────────────────
    CANLI VERİ (sunucu) — yeniden derleme gerektirmeyen, veritabanından okunan sayfa bilgisi.
@@ -19,6 +22,8 @@ import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 export const TAG_GOOGLE = "google-usable";
 export const TAG_MEDIA = "media";
+export const TAG_PHOTOS = "photos";
+export const TAG_COVERS = "photo-covers";
 export const profileTag = (slug: string) => `profile:${slug}`;
 
 export const googleUsable = unstable_cache(async (): Promise<string[]> => {
@@ -77,3 +82,20 @@ export function placeScore(slug: string): Promise<PublishedScore | null> {
     try { return await publishedScoreBySlug(db, slug); } catch { return null; }
   }, ["place-score-v1", slug], { revalidate: 3600, tags: [scoreTag(slug)] })();
 }
+
+/** Onaylı kullanıcı fotoğrafları. Depolama yoksa veritabanına hiç gidilmez (bugünkü Production); hata ya da tablo yoksa boş. */
+export function placePhotos(slug: string): Promise<PublicPhoto[]> {
+  return unstable_cache(async () => {
+    const db = getDb(), storage = getStorage();
+    if (!db || !storage || DEMO_VISIBLE) return [];
+    try { return await approvedPhotos(db, storage, slug); } catch { return []; }
+  }, ["place-photos-v1", slug], { revalidate: 3600, tags: [TAG_PHOTOS] })();
+}
+export const liveCovers = unstable_cache(async (): Promise<LiveCoverMap> => {
+  const db = getDb(), storage = getStorage();
+  if (!db || !storage || DEMO_VISIBLE) return {};
+  try {
+    const m = await coverCandidates(db, storage);
+    return Object.fromEntries(Object.entries(m).map(([k, v]) => [k, { src: v.photo.src, srcSet: v.photo.srcSet, credit: v.photo.credit, focus: v.photo.focus, selected: v.selected }]));
+  } catch { return {}; }
+}, ["photo-covers-v1"], { revalidate: 3600, tags: [TAG_COVERS] });

@@ -3,7 +3,7 @@ import { uuidv7 } from "uuidv7";
 import type { Db } from "@/lib/db/client";
 import { auditLog, mediaItems, mediaPlaces, moderationQueue, photoAssets, places, reviews, staffRoles, user } from "@/lib/db/schema";
 import { publicName } from "@/lib/community/reviews";
-import { processPhoto, type PhotoError } from "./photoProcess";
+import type { PhotoError } from "./photoProcess";
 import type { MediaStorage } from "./storage";
 
 /* FOTOĞRAF ARŞİVİ — yükleme, moderasyon, kapak. Kurallar:
@@ -40,6 +40,8 @@ export async function addReviewPhoto(db: Db, storage: MediaStorage, uploaderId: 
   if (rv.userId !== uploaderId) return { ok: false, error: "not_owner" };
   if (rv.status !== "published" && rv.status !== "pending") return { ok: false, error: "review_closed" };
   if (!rights.confirmed) return { ok: false, error: "rights_required" };
+  /* sharp yalnız yüklemede yüklenir: sayfa işlevleri ağırlaşmaz */
+  const { processPhoto } = await import("./photoProcess");
   const processed = await processPhoto(input);
   if (!processed.ok) return { ok: false, error: processed.error };
   const { photo } = processed;

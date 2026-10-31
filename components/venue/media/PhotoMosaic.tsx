@@ -31,19 +31,21 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
   );
 }
 
-export function PhotoMosaic({ slug, name, photos, google, mapsUrl }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean; mapsUrl?: string }) {
+export function PhotoMosaic({ slug, name, photos, google, mapsUrl, hasCover, addHref }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean; mapsUrl?: string; hasCover?: boolean; addHref?: string }) {
   const own = fromVenuePhotos(photos);
   /* Kendi kapağı olan mekânda Google fotoğrafı istenmez: düğme de çağrı da yok (galeride isteğe bağlı) */
-  const { state: g, request } = useGoogleCover(slug, google && !own.length);
+  const ownCover = hasCover ?? own.length > 0;
+  const { state: g, request } = useGoogleCover(slug, google && !ownCover);
   const gPhotos = g.k === "ok" ? g.photos : [];
   useEffect(() => { if (g.k === "idle") request(); }, [g.k, request]);
-  const all = [...own, ...gPhotos];
+  /* kapak adayı olmayan kullanıcı fotoğrafı Google kapağının önüne geçmez */
+  const all = ownCover ? [...own, ...gPhotos] : [...gPhotos, ...own];
   const [open, setOpen] = useState<number | null>(null);
   const galleryHref = `/mekan/${slug}/fotograflar/`;
   const total = own.length + (g.k === "ok" ? g.total : 0);
 
   /* Google kapağı yükleniyor: tek karenin yeri ayrılır (sayfa kayması yok) */
-  if ((g.k === "loading" || g.k === "idle") && !own.length) {
+  if ((g.k === "loading" || g.k === "idle") && google && !ownCover) {
     return (
       <section aria-label={`${name} fotoğrafları yükleniyor`} aria-busy="true" className="mt-5">
         <div className="-mx-5 flex px-5 sm:mx-0 sm:h-[clamp(260px,38vw,440px)] sm:px-0"><div className="aspect-[4/3] w-full animate-pulse bg-sheet sm:aspect-auto" /></div>
@@ -60,7 +62,7 @@ export function PhotoMosaic({ slug, name, photos, google, mapsUrl }: { slug: str
         <p className="text-[13px] text-ink-2">
           <span aria-hidden className="mr-1.5">▦</span>{g.k === "limited" ? "Google fotoğrafları şu an gösterilemiyor." : "Henüz Gidenler fotoğrafı yok."}
         </p>
-        <span className="flex flex-wrap items-center gap-x-4 gap-y-1">{toMaps}</span>
+        <span className="flex flex-wrap items-center gap-x-4 gap-y-1">{addHref && <Link href={addHref} className="text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Fotoğraf ekle</Link>}{toMaps}</span>
       </div>
     );
   }
@@ -105,6 +107,7 @@ export function PhotoMosaic({ slug, name, photos, google, mapsUrl }: { slug: str
           {own.length > 0 && <>Fotoğraf sahipleri her karede yazılı. </>}
           {hasGoogle && <>Google fotoğrafları sahiplerine aittir; büyütünce sahibi ve Google Haritalar bağlantısı görünür.</>}
         </span>
+        {addHref && <Link href={addHref} className="font-bold text-ink-2 underline underline-offset-2 hover:text-accent-ink">Fotoğraf ekle</Link>}
       </div>
 
       {open !== null && <Lightbox photos={all} index={open} onIndex={setOpen} onClose={() => setOpen(null)} title={name} />}
