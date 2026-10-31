@@ -19,7 +19,7 @@ export function PlaceStatusButtons({ entityId }: { entityId: string }) {
   const account = useAccountStatus();
   const raw = data.relationships[entityId]?.state ?? "none";
   const current = raw === "experienced" ? "visited" : raw;
-  const btn = "inline-flex h-10 items-center justify-center gap-1.5 rounded-[3px] border px-3.5 text-[14px] font-semibold whitespace-nowrap transition-colors";
+  const btn = "inline-flex h-11 items-center justify-center gap-1.5 rounded-[3px] border px-3.5 text-[14px] font-semibold whitespace-nowrap transition-colors";
   return (
     <div className="flex flex-col gap-1.5">
       <div role="group" aria-label="Bu mekân için durumun" className="flex flex-wrap gap-2">
@@ -35,6 +35,7 @@ export function PlaceStatusButtons({ entityId }: { entityId: string }) {
         })}
       </div>
       <p className="text-[12px] text-ink-3" aria-live="polite">
+        <span className="block">Bunlar yalnız sana özel listelerdir; puanı etkilemez.</span>
         {account === "in" ? "Hesabında saklanıyor." : account === "anon"
           ? <>Bu cihazda saklanıyor. <Link href="/benim/" className="font-semibold underline decoration-line-2 underline-offset-4 hover:text-ink">Giriş yaparsan</Link> hesabına aktarılır.</>
           : account === "off" ? "Bu cihazda saklanıyor." : " "}

@@ -193,7 +193,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             )}
           </div>
         ) : entity.isReal && c.showScores ? (
-          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} />
+          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} mapsUrl={mapLinks(entity)?.googleMaps} hasMenu={!!rp?.menu} />
         ) : (
           <ComplianceNotice policy={c} noun={category.noun} />
         );
@@ -236,23 +236,31 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             </div>
           )}
         </div>
-        {esik && heroBody}
+        {!entity.isReal && esik && heroBody}
         </div>
-        {esik ? (
+        {!entity.isReal && (esik ? (
           <div className="hidden w-[300px] shrink-0 sm:block"><ThresholdCard v={esik} /></div>
         ) : scored && pulse && (
           <div className="hidden flex-col items-center gap-1 sm:flex">
             <PlaceSeal pulse={pulse} size={132} label={`${entity.name} mührü: son ${pulse.raw.length} ayın puanı ve deneyim hacmi`} />
             <span className="text-[9.5px] font-bold uppercase tracking-[0.16em] text-ink-3">deneyim mührü</span>
           </div>
-        )}
+        ))}
         </div>
 
-        {!esik && heroBody}
+        {/* gerçek mekân: önce fotoğraf, sonra karar (ad → kapak → puan durumu ve eylemler) */}
+        {entity.isReal && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} /></div>}
+        {entity.isReal && (
+          <div className="flex items-start justify-between gap-6">
+            <div className="min-w-0 flex-1">{heroBody}</div>
+            {esik && <div className="hidden w-[300px] shrink-0 sm:block"><ThresholdCard v={esik} /></div>}
+          </div>
+        )}
+        {!entity.isReal && !esik && heroBody}
       </header>
 
-      {/* ═══════════ KAPAK MOZAİĞİ — büyük kapak + küçük kareler; fotoğraf yoksa ince şerit ═══════════ */}
-      {(entity.isReal || entity.photos?.length) && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} /></div>}
+      {/* gerçek olmayan kayıtlarda kapak eski yerinde */}
+      {!entity.isReal && !!entity.photos?.length && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} /></div>}
       {esik && <div className="mt-4 sm:hidden"><ThresholdBar v={esik} /></div>}
 
       {rp && (

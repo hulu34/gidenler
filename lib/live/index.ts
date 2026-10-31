@@ -1,7 +1,7 @@
 import { unstable_cache } from "next/cache";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
-import { mediaItems, mediaPlaces, places } from "@/lib/db/schema";
+import { mediaItems, mediaPlaces, places, reviews, user } from "@/lib/db/schema";
 import { googleUsableSlugs } from "@/lib/providers/google";
 import { listPlaceReviews, reviewsTag, type PublicReview } from "@/lib/community/reviews";
 import { readProfile, type PlaceProfile } from "@/lib/profile";
@@ -77,3 +77,14 @@ export function placeScore(slug: string): Promise<PublishedScore | null> {
     try { return await publishedScoreBySlug(db, slug); } catch { return null; }
   }, ["place-score-v1", slug], { revalidate: 3600, tags: [scoreTag(slug)] })();
 }
+
+/** Son deneyim yazılan gerçek mekânlar: yalnız yayında ve gerçek kullanıcı (test hesabı değil). Kimlik ya da metin dönmez. */
+export const recentlyReviewed = unstable_cache(async (): Promise<string[]> => {
+  const db = getDb();
+  if (!db || DEMO_VISIBLE) return [];
+  try {
+    const rows = await db.select({ slug: places.slug, at: sql<string>`max(${reviews.createdAt})` }).from(reviews).innerJoin(places, eq(places.id, reviews.placeId)).innerJoin(user, eq(user.id, reviews.userId))
+      .where(and(eq(reviews.status, "published"), eq(user.kind, "user"))).groupBy(places.slug).orderBy(sql`max(${reviews.createdAt}) desc`).limit(8);
+    return rows.map((r) => r.slug);
+  } catch { return []; }
+}, ["recently-reviewed-v1"], { revalidate: 600 });

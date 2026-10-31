@@ -13,6 +13,7 @@ import { DemoNotice } from "@/components/ui/DemoNotice";
 import { DEMO_VISIBLE } from "@/data/entities";
 import { isRestaurantTarget, realVenueRecords } from "@/data/real";
 import { AskAI } from "@/components/home/AskAI";
+import { HomeSecki, QuickFind } from "@/components/home/HomeSecki";
 import { ContinueModule } from "@/components/decision/ContinueModule";
 import { HomeRankings, type HomeData } from "@/components/home/HomeRankings";
 import { HOME_CATEGORIES, OTHER_CATEGORIES, buildRankings, buildRegulated, forYouRanking } from "@/lib/rankings";
@@ -59,7 +60,7 @@ export default function HomePage() {
       {/* ───────── hero: manşet + tek soru, arkada İstanbul sismografı (gerçek veri) ───────── */}
       <section className="relative isolate overflow-hidden border-b border-line">
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-full opacity-90 [mask-image:linear-gradient(to_bottom,transparent,black_30%)]">
-          <CityArt />
+          {DEMO_VISIBLE && <CityArt />}
         </div>
         <div className="mx-auto max-w-[1180px] px-5 pb-12 pt-10 sm:px-7 sm:pb-16 sm:pt-16">
           <p className="rise flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
@@ -76,15 +77,15 @@ export default function HomePage() {
               <span className="tnum">{nf(istanbulCount)} gerçek mekân · {nf(realRestaurants)} restoran · kaynak OpenStreetMap</span>
             )}
           </p>
-          <h1 className="rise mt-5 text-[clamp(2.75rem,8.4vw,6.25rem)] font-extrabold leading-[0.9] tracking-[-0.055em]" style={{ animationDelay: "80ms" }}>
+          <h1 className="rise mt-5 text-[clamp(2.5rem,8.4vw,6.25rem)] font-extrabold leading-[0.9] tracking-[-0.055em]" style={{ animationDelay: "80ms" }}>
             Nereye gidelim?<br />
             <span className="font-[family-name:var(--font-brand)] font-normal italic tracking-[-0.02em] text-accent-ink">Gidenler bilir.</span>
           </h1>
           <p className="rise mt-5 max-w-[46ch] font-[family-name:var(--font-read)] text-[clamp(1.0625rem,2.1vw,1.35rem)] leading-[1.42] text-ink-2" style={{ animationDelay: "160ms" }}>
-            Puan değil, son aylarda gidenlerin gerçekte yaşadığı. Koşulunu yaz; deneyim grafiğinden sana uyan üç yeri gerekçesiyle seçelim.
+            {DEMO_VISIBLE ? "Puan değil, son aylarda gidenlerin gerçekte yaşadığı. Koşulunu yaz; deneyim grafiğinden sana uyan üç yeri gerekçesiyle seçelim." : "İstanbul'un restoranları, gidenlerin kendi deneyimleriyle. Puanı yalnız gerçekten gidenlerin yazdıkları belirler."}
           </p>
           <div className="rise mt-8" style={{ animationDelay: "240ms" }}>
-            <AskAI />
+            {DEMO_VISIBLE ? <AskAI /> : <QuickFind />}
           </div>
         </div>
       </section>
@@ -100,9 +101,11 @@ export default function HomePage() {
             <HomeRankings data={data} />
           </section>
         )}
-        <ContinueModule />
-        {!DEMO_VISIBLE && <RealExplore />}
+        {DEMO_VISIBLE && <ContinueModule />}
+        {!DEMO_VISIBLE && <HomeSecki />}
         <RealVenues />
+        {!DEMO_VISIBLE && <RealExplore />}
+        {!DEMO_VISIBLE && <ContinueModule />}
         {DEMO_VISIBLE && <><Risers /><ScoreLies /><Districts /></>}
         <Method />
         {DEMO_VISIBLE && <DemoNotice />}

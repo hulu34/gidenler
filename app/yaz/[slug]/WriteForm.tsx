@@ -161,7 +161,8 @@ export function WriteForm({
             <Link href={live ? `/mekan/${entitySlug}/#deneyimler` : `/mekan/${entitySlug}/`}>
               <Button variant="primary">{live ? "Deneyimimi sayfada gör" : "Sayfaya dön"}</Button>
             </Link>
-            <Link href="/benim/"><Button variant="ghost">Benim Gidenler&apos;im</Button></Link>
+            <Link href="/benim/"><Button variant="ghost">Katkılarım</Button></Link>
+            {live && <Link href="/ara/?yaz=1"><Button variant="ghost">Başka bir yer yaz</Button></Link>}
           </div>
           <p className="mt-6 border-t border-line pt-3 text-[12px] text-ink-3">
             Her deneyim &ldquo;doğrulanmamış ziyaret&rdquo; olarak görünür; ziyaret doğrulama ayrı bir adımdır ve henüz açık değil.
@@ -215,6 +216,8 @@ export function WriteForm({
           Hızlı tepkin: <span className="font-semibold">{quick.mood}</span>{quick.returnIntent === "evet" ? ", tekrar giderim" : quick.returnIntent === "hayır" ? ", tekrar gitmem" : ""}{quick.note ? ` — “${quick.note}”` : ""}. Şimdi olayı anlat; tepki deneyime dönüşsün.
         </p>
       )}
+
+      {isReal && !mine && <p className="mt-4 max-w-[60ch] text-[14px] leading-snug text-ink-2">Bu mekânın puanı yalnız gidenlerin yazdıklarından oluşur. Birkaç cümle bile bir sonraki gidecek kişinin kararına yardım eder.</p>}
 
       {/* ── A. METİN — ekranın merkezi ── */}
       <section className="mt-8 border-t-2 border-line-strong pt-6">
