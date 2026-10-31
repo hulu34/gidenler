@@ -924,6 +924,20 @@ async function main() {
   const used = await usageSnapshot();
   ok("sayaç: 1 arama, 0 doğrulama, 2 sayfa görünümü (eski + yeni; birleşen istek sayılmaz), 1 foto listesi, 10 foto", used?.["google:text_search_pro"].month === 1 && used["google:details_enterprise"].month === 0
     && used["google:details_atmosphere"].month === 2 && used["google:details_essentials"].month === 1 && used["google:photo"].month === 10, used);
+  /* eşzamanlı çift gönderim: Redis kilidi çalışmasa da veritabanı tek deneyime izin verir */
+  {
+    const [pp] = await db.select({ slug: schema.places.slug }).from(schema.places).where(eq(schema.places.slug, "pandeli-fatih")).limit(1);
+    const uid = uuidv7();
+    await db.insert(schema.user).values({ id: uid, name: "Paralel Test", email: `${uid}@example.invalid`, emailVerified: true, kind: "test" });
+    const inp = { body: "Paralel gönderim testi için yazılmış yeterince uzun bir deneyim metni; servis hızlıydı ve yemek sıcaktı.", visitMonth: new Date(Date.now() - 40 * 864e5).toISOString().slice(0, 7), overall: 7, ratings: {}, returnIntent: "evet", disclosure: "none" } as Parameters<typeof createReview>[3];
+    if (pp) {
+      const rs = await Promise.all([1, 2, 3].map(() => createReview(db, { id: uid, kind: "test" }, pp.slug, inp, { allowed: true } as never)));
+      const left = await db.select({ id: schema.reviews.id }).from(schema.reviews).where(eq(schema.reviews.userId, uid));
+      ok("eşzamanlı üç gönderim tek deneyim, ikisi exists", rs.filter((r) => r.ok).length === 1 && rs.filter((r) => !r.ok && r.error === "exists").length === 2 && left.length === 1, rs);
+      await db.delete(schema.reviews).where(eq(schema.reviews.userId, uid));
+      await db.delete(schema.user).where(eq(schema.user.id, uid));
+    } else ok("paralel test mekânı bulunamadı", false);
+  }
 
   const moda = (await db.select().from(schema.places).where(sql`${schema.places.slug} <> 'ciya-sofrasi-kadikoy' and ${schema.places.district} = 'Kadıköy'`).limit(1))[0];
   const m2 = await resolveGooglePlaceId(moda.slug, K, mkFetch({ name: moda.name + " Şubesi", lat: moda.lat! + 0.00135, lng: moda.lng! }));

@@ -303,6 +303,12 @@ async function main() {
   t("Production test kovası kullanamaz", storageConfigIssue(envOf({ VERCEL_ENV: "production", MEDIA_S3_PRIVATE_BUCKET: "gidenler-preview-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-preview-genel" })) === "productionda_test_kovasi" && getStorage(envOf({ VERCEL_ENV: "production", MEDIA_S3_PRIVATE_BUCKET: "gidenler-preview-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-preview-genel" })) === null);
   t("Preview Production kovası kullanamaz", getStorage(envOf({ VERCEL_ENV: "preview", MEDIA_S3_PRIVATE_BUCKET: "gidenler-prod-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-prod-genel" })) === null);
   t("doğru kovalar açık", getStorage(envOf({ VERCEL_ENV: "preview", MEDIA_S3_PRIVATE_BUCKET: "gidenler-preview-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-preview-genel" }))?.provider === "s3");
+  t("eksik değişken: kapalı", storageConfigIssue(envOf({ MEDIA_S3_KEY: "", VERCEL_ENV: "preview", MEDIA_S3_PRIVATE_BUCKET: "a", MEDIA_S3_PUBLIC_BUCKET: "b" })) === "eksik_degisken" && getStorage(envOf({ MEDIA_S3_KEY: "", VERCEL_ENV: "production", MEDIA_S3_PRIVATE_BUCKET: "a", MEDIA_S3_PUBLIC_BUCKET: "b" })) === null);
+  t("eksik değişken Preview'da test depolamasına düşmez", getStorage(envOf({ MEDIA_S3_KEY: "", VERCEL_ENV: "preview", MEDIA_S3_PRIVATE_BUCKET: "a", MEDIA_S3_PUBLIC_BUCKET: "b" })) === null);
+  t("http adres reddedilir", storageConfigIssue(envOf({ MEDIA_S3_ENDPOINT: "http://x.test", VERCEL_ENV: "preview", MEDIA_S3_PRIVATE_BUCKET: "a", MEDIA_S3_PUBLIC_BUCKET: "b" })) === "gecersiz_endpoint");
+  t("yarım CDN değişkeni reddedilir", storageConfigIssue(envOf({ MEDIA_CF_ZONE_ID: "z", VERCEL_ENV: "preview", MEDIA_S3_PRIVATE_BUCKET: "a", MEDIA_S3_PUBLIC_BUCKET: "b" })) === "eksik_cdn_degiskeni");
+  const noDomain = getStorage({ VERCEL_ENV: "production", MEDIA_S3_ENDPOINT: "https://x.test", MEDIA_S3_KEY: "k", MEDIA_S3_SECRET: "s", MEDIA_S3_PRIVATE_BUCKET: "gidenler-prod-ozel", MEDIA_S3_PUBLIC_BUCKET: "gidenler-prod-genel" } as unknown as NodeJS.ProcessEnv);
+  t("özel alan adı olmadan uygulama üzerinden sunum", noDomain?.provider === "s3" && noDomain.publicViaApp === true && noDomain.publicUrl("public/a/480.webp").endsWith("/api/media/file/public/a/480.webp"));
   const purges: string[] = []; let purgeUp = true, cc2 = "";
   const cdnFake = (async (u: Request | string, init?: RequestInit) => {
     const url = typeof u === "string" ? u : u.url;
