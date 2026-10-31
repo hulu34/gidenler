@@ -167,7 +167,7 @@ const galeri = await baglam(null, { viewport: { width: 1366, height: 900 } }); c
 ok("Fotoğraflar sayfasında onaylı", (await gp.content()).includes(x1)); await gp.screenshot({ path: `${OUT}/4-galeri-masaustu.png` }); await galeri.close();
 
 /* bildirim */
-const rep = (u, id, reason) => { const b = jsonBody({ reason }); return api(`/api/media/${id}/report/`, { u, method: "POST", body: b.body, headers: b.headers }); };
+const rep = (u, id, reason) => { const b = jsonBody({ reason }); return api(`/api/photos/${id}/report/`, { u, method: "POST", body: b.body, headers: b.headers }); };
 ok("oturumsuz bildirim 401", (await rep(null, x1, "telif")).status === 401);
 ok("bildirim kaydedildi", (await rep(Y, x1, "telif")).status === 200);
 ok("çift bildirim 409", (await rep(Y, x1, "telif")).status === 409);
