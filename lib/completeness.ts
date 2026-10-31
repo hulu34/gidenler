@@ -32,8 +32,6 @@ export function completenessOf(e: Entity, x: CompletenessExtra = {}): Completene
     contact: !!(e.contact?.phone || e.contact?.website || e.contact?.instagram),
     address: !!e.address,
   };
-  /* Google izni kapalıysa eksik sayılmaz: bu bir mekân eksiği değil, bizim kararımız */
-  const keys = COMPLETENESS_KEYS.filter((k) => k !== "google" || have.google);
-  const filled = keys.filter((k) => have[k]).length;
-  return { have, filled, total: keys.length, score: Math.round((filled / keys.length) * 100) };
+  const filled = COMPLETENESS_KEYS.filter((k) => have[k]).length;
+  return { have, filled, total: COMPLETENESS_KEYS.length, score: Math.round((filled / COMPLETENESS_KEYS.length) * 100) };
 }

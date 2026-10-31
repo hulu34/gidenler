@@ -34,7 +34,7 @@ ok("Japon Erdal: ilişki gövdede yalnız bir kez geçiyor", !!je && je.body.tr.
 ok("Japon Erdal ana hikâye; kapak hakkı işletme izniyle kayıtlı", !!je && je.featured && je.cover.state === "var" && je.cover.rights === "isletme-izni" && je.cover.credit === "Japon Erdal arşivi");
 ok("tek öne çıkan hikâye", pkg.filter((a) => a.featured).length === 1);
 ok("öne çıkan hikâye kapaksız olamaz", bad0({ kind: "hikaye", featured: true }));
-ok("yazı içi fotoğraflar hak kayıtlı ve kendi sunucumuzda", pkg.every((a) => (a.gallery ?? []).every((g) => /^\/(seckisi\/gorsel|media\/foto)\//.test(g.src) && g.rightsRef.length > 3 && existsSync(new URL(`public${g.src}`, root)))));
+ok("yazı içi fotoğraflar hak kayıtlı ve kendi sunucumuzda", pkg.every((a) => (a.gallery ?? []).every((g) => g.src.startsWith("/seckisi/gorsel/") && g.rightsRef.length > 3 && existsSync(new URL(`public${g.src}`, root)))));
 ok("kapak dosyaları mevcut", pkg.every((a) => a.cover.state === "yok" || existsSync(new URL(`public${a.cover.src}`, root))));
 ok("Japon Erdal videoları oynatılarak doğrulanmış", !!je?.media && je.media.videos.length > 0 && je.media.videos.every((v) => !!v.verifiedAt));
 ok("sahiplik ilişkisi ticari ilişki gösterilmeden reddedilir", bad0({ ownership: { tr: "x", en: "y" } }));
@@ -102,7 +102,6 @@ ok("kontenjan/satış alanı kabul edilmez", !Event.safeParse({ ...list[4], seat
 ok("bitiş başlangıçtan önce olamaz", !Event.safeParse({ ...list[4], endsAt: "2026-11-25T18:00:00+03:00" }).success);
 ok("bilet bağlantısı https olmalı", !Event.safeParse({ ...list[4], bookingUrl: "http://example.org" }).success);
 ok("Preview/Production'da yaklaşan deneyim kaydı yok (doğrulanmış etkinlik yok)", upcomingEvents().length === 0);
-
 
 console.log(`\nSONUÇ ${pass}/${pass + fail}`);
 process.exit(fail ? 1 : 0);
