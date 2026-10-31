@@ -103,5 +103,6 @@ ok("bitiş başlangıçtan önce olamaz", !Event.safeParse({ ...list[4], endsAt:
 ok("bilet bağlantısı https olmalı", !Event.safeParse({ ...list[4], bookingUrl: "http://example.org" }).success);
 ok("Preview/Production'da yaklaşan deneyim kaydı yok (doğrulanmış etkinlik yok)", upcomingEvents().length === 0);
 
+
 console.log(`\nSONUÇ ${pass}/${pass + fail}`);
 process.exit(fail ? 1 : 0);

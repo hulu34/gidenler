@@ -60,6 +60,16 @@ export const PRICES: Record<BudgetKey, { free: number; usdPer1000: number }> = {
 };
 /** Toplam aylık harcama tavanı (USD). Ortam değişkeniyle yalnız AŞAĞI çekilebilir; 100'ün üstü sayılmaz. */
 export const MONTHLY_USD_CAP = 100;
+/** Günlük toplam harcama tavanı (USD): ay sonu gevşemesine karşı. Ortam değişkeniyle yalnız AŞAĞI çekilir. */
+export const DAILY_USD_CAP = 3;
+export const dailyUsdCap = () => Math.min(DAILY_USD_CAP, Math.max(0, Number(process.env.GOOGLE_DAILY_USD_CAP ?? DAILY_USD_CAP) || 0));
+/** Bugünkü harcama: yalnız ücretsiz kotayı aşan kısmı. */
+export function daySpendUsd(month: Partial<Record<BudgetKey, number>>, day: Partial<Record<BudgetKey, number>>) {
+  return (Object.keys(PRICES) as BudgetKey[]).reduce((s, k) => {
+    const m = month[k] ?? 0, d = day[k] ?? 0, free = PRICES[k].free;
+    return s + ((Math.max(0, m - free) - Math.max(0, m - d - free)) * PRICES[k].usdPer1000) / 1000;
+  }, 0);
+}
 export const usdCap = () => Math.min(MONTHLY_USD_CAP, Math.max(0, Number(process.env.GOOGLE_MONTHLY_USD_CAP ?? MONTHLY_USD_CAP) || 0));
 
 /** Preview, Production ile aynı Google projesini kullanır: payı %10 ile sınırlanır. (Preview'da Redis yok;
@@ -75,25 +85,35 @@ export function spendUsd(monthCounts: Partial<Record<BudgetKey, number>>) {
   return (Object.keys(PRICES) as BudgetKey[]).reduce((s, k) => s + Math.max(0, (monthCounts[k] ?? 0) - PRICES[k].free) * PRICES[k].usdPer1000 / 1000, 0);
 }
 
-/* KEYS[1] = bu kalemin aylık, KEYS[2] = günlük sayacı; KEYS[3..] = BÜTÜN kalemlerin aylık sayaçları (bu kalem dahil).
-   ARGV: 1 aylık sınır, 2 günlük sınır, 3 aylık TTL, 4 günlük TTL, 5 tavan (mikro-USD), sonra kalem başına
-   (ücretsiz adet, istek başı mikro-USD) çiftleri, KEYS[3..] ile aynı sırada.
-   Dönüş: ≥1 izin (bu kalemin yeni aylık sayısı), 0 kalem sınırı, -1 toplam harcama tavanı. Reddedilen istek sayacı geri alır. */
+/* KEYS[1] = bu kalemin aylık, KEYS[2] = günlük sayacı; sonra BÜTÜN kalemlerin aylık sayaçları, ardından aynı sırada günlük sayaçları.
+   ARGV: 1 aylık sınır, 2 günlük sınır, 3 aylık TTL, 4 günlük TTL, 5 aylık tavan (mikro-USD), 6 günlük tavan (mikro-USD),
+   sonra kalem başına (ücretsiz adet, istek başı mikro-USD) çiftleri.
+   Dönüş: ≥1 izin (bu kalemin yeni aylık sayısı), 0 kalem sınırı, -1 aylık tavan, -2 günlük tavan.
+   Reddedilen istek sayacı geri alır. Betik tek parça çalışır: aynı anda gelen istekler tavanı aşamaz. */
 export const LUA = `
 local m = redis.call('INCR', KEYS[1]); if m == 1 then redis.call('EXPIRE', KEYS[1], ARGV[3]) end
 local d = redis.call('INCR', KEYS[2]); if d == 1 then redis.call('EXPIRE', KEYS[2], ARGV[4]) end
 if m > tonumber(ARGV[1]) or d > tonumber(ARGV[2]) then
   redis.call('DECR', KEYS[1]); redis.call('DECR', KEYS[2]); return 0
 end
+local items = (#KEYS - 2) / 2
 local spend = 0
-for i = 3, #KEYS do
-  local n = tonumber(redis.call('GET', KEYS[i]) or '0')
-  local free = tonumber(ARGV[6 + (i - 3) * 2])
-  local micro = tonumber(ARGV[7 + (i - 3) * 2])
+local today = 0
+for i = 1, items do
+  local n = tonumber(redis.call('GET', KEYS[2 + i]) or '0')
+  local t = tonumber(redis.call('GET', KEYS[2 + items + i]) or '0')
+  local free = tonumber(ARGV[5 + i * 2])
+  local micro = tonumber(ARGV[6 + i * 2])
   if n > free then spend = spend + (n - free) * micro end
+  local before = n - t
+  if before < free then before = free end
+  if n > before then today = today + (n - before) * micro end
 end
 if spend > tonumber(ARGV[5]) then
   redis.call('DECR', KEYS[1]); redis.call('DECR', KEYS[2]); return -1
+end
+if today > tonumber(ARGV[6]) then
+  redis.call('DECR', KEYS[1]); redis.call('DECR', KEYS[2]); return -2
 end
 return m`;
 
@@ -172,7 +192,7 @@ export function periodKeys(key: string, now = new Date()) {
   return { month: `${ns}:usage:${key}:m:${ym}`, day: `${ns}:usage:${key}:d:${ym}${pad(now.getUTCDate())}` };
 }
 
-export type ReserveResult = { ok: true } | { ok: false; reason: "no_redis" | "limit" | "spend_cap" | "paused" | "error" };
+export type ReserveResult = { ok: true } | { ok: false; reason: "no_redis" | "limit" | "spend_cap" | "day_cap" | "paused" | "error" };
 
 /* Sigorta: Google kota/faturalama hatası (429/403) verirse bütün Google çağrıları bir süre durur.
    Google tarafındaki kotalar bu projede düşürülemiyor; tekrar tekrar başarısız istek atılmasın, site kendi içeriğiyle sürsün. */
@@ -190,6 +210,16 @@ export async function googlePause() {
   try { const [v, ttl] = await Promise.all([r.get<string | number>(pauseKey()), r.ttl(pauseKey())]); return v ? { status: Number(v), seconds: ttl } : null; } catch { return null; }
 }
 
+/** LUA için anahtar ve argümanlar (reserve ve Redis öz testi aynısını kullanır). */
+export function reserveScript(key: BudgetKey, monthly: number, daily: number, now = new Date()) {
+  const all = Object.keys(PRICES) as BudgetKey[], k = periodKeys(key, now);
+  return {
+    keys: [k.month, k.day, ...all.map((x) => periodKeys(x, now).month), ...all.map((x) => periodKeys(x, now).day)],
+    args: [String(monthly), String(daily), String(40 * 86400), String(2 * 86400), String(Math.round(usdCap() * 1e6)), String(Math.round(dailyUsdCap() * 1e6)),
+      ...all.flatMap((x) => [String(PRICES[x].free), String(PRICES[x].usdPer1000 * 1000)])],
+  };
+}
+
 /** `n` adet ücretli çağrı için yer ayırır. ok:false ise çağrı YAPILMAMALI. */
 export async function reserve(key: BudgetKey, n = 1, now = new Date(), opts: { durable?: boolean } = {}): Promise<ReserveResult> {
   const r = getRedis();
@@ -204,6 +234,7 @@ export async function reserve(key: BudgetKey, n = 1, now = new Date(), opts: { d
   try {
     const [p, m, d, ...months] = await r.mget<(string | null)[]>(pauseKey(), k.month, k.day, ...monthKeys);
     if (p) return { ok: false, reason: "paused" };
+
     let used = Number(m ?? 0);
     if (durable && months.some((v) => v === null)) {
       const floors = await readFloors(now);
@@ -216,13 +247,12 @@ export async function reserve(key: BudgetKey, n = 1, now = new Date(), opts: { d
     }
     if (PACED.has(key)) daily = pacedDaily(b.monthly, used - Number(d ?? 0), now);
   } catch { return { ok: false, reason: "error" }; }
-  const keys = [k.month, k.day, ...monthKeys];
-  const args = [String(b.monthly), String(daily), String(40 * 86400), String(2 * 86400), String(Math.round(usdCap() * 1e6)),
-    ...all.flatMap((x) => [String(PRICES[x].free), String(PRICES[x].usdPer1000 * 1000)])];
+  const { keys, args } = reserveScript(key, b.monthly, daily, now);
   try {
     for (let i = 0; i < n; i++) {
       const v = Number(await r.eval(LUA, keys, args));
       if (v === -1) return { ok: false, reason: "spend_cap" };
+      if (v === -2) return { ok: false, reason: "day_cap" };
       if (!(v >= 1)) return { ok: false, reason: "limit" };
       if (durable && v % FLOOR_STEP === 1 && !(await writeFloor(key, now, v - 1 + FLOOR_STEP))) {
         await r.eval(UNDO_LUA, [k.month, k.day], []).catch(() => null);
@@ -233,6 +263,25 @@ export async function reserve(key: BudgetKey, n = 1, now = new Date(), opts: { d
   } catch {
     return { ok: false, reason: "error" };
   }
+}
+
+/** Mekân ve kalem kırılımı (yalnız görünürlük): yazılamazsa çağrıyı etkilemez. */
+const placeKey = (now: Date) => `${redisNs()}:usage:place:${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}`;
+export async function notePlaceUse(slug: string, key: BudgetKey, n: number, now = new Date()) {
+  const r = getRedis();
+  if (!r) return;
+  try { await r.hincrby(placeKey(now), `${slug}|${key}`, n); await r.expire(placeKey(now), 40 * 86400); } catch { /* yalnız rapor */ }
+}
+/** Bu ay en çok maliyet oluşturan mekânlar (liste fiyatı, ücretsiz kota düşülmeden). Fotoğraf: google:photo; puan, yorum ve saat aynı istekte: google:details_atmosphere. */
+export async function placeUseReport(top = 10, now = new Date()) {
+  const r = getRedis();
+  if (!r) return null;
+  try {
+    const h = (await r.hgetall<Record<string, number>>(placeKey(now))) ?? {};
+    const by = new Map<string, { usd: number; calls: Partial<Record<BudgetKey, number>> }>();
+    for (const [f, v] of Object.entries(h)) { const [slug, key] = f.split("|") as [string, BudgetKey]; const e = by.get(slug) ?? { usd: 0, calls: {} }; e.calls[key] = Number(v); e.usd += (Number(v) * (PRICES[key]?.usdPer1000 ?? 0)) / 1000; by.set(slug, e); }
+    return [...by.entries()].map(([slug, e]) => ({ slug, ...e })).sort((a, b) => b.usd - a.usd).slice(0, top);
+  } catch { return null; }
 }
 
 /** Yönetim ve sağlık ekranı için: kalem başına bu ay / bugün kullanılan. */

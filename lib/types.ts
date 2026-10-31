@@ -182,6 +182,10 @@ export interface VenuePhoto {
   srcSet?: string;
   full?: string;
   addedBy: "işletme" | "kullanıcı" | "commons";
+  /** Kırpma odağı, CSS object-position (ör. "50% 70%"). */
+  focus?: string;
+  /** Yüklenen fotoğrafın arşiv kimliği (bildirim için). */
+  mediaId?: string;
 }
 
 export interface EntityImage {

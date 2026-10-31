@@ -1,3 +1,4 @@
+import { createHmac, randomBytes } from "node:crypto";
 import { after, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { TAG_GOOGLE, TAG_MEDIA, profileTag, scoreTags } from "@/lib/live";
@@ -5,6 +6,8 @@ import { runThresholdScenario } from "@/lib/community/scoreWatchScenario";
 import { reconcileScores, scorePublishEnabled, CONFIDENCE_LABEL, MIN_AUTHORS, SCORE_ALGORITHM, type RecomputeResult } from "@/lib/score/compute";
 import { rescoreSlug } from "@/lib/community/reviewApi";
 import { runScoreScenario } from "@/lib/score/scenario";
+import { approvedPhotoCandidates, decidePhotoCandidate, listPhotoCandidates, loadPhotoCandidates } from "@/lib/media/photoCandidates";
+import { googlePolicyStats, setGooglePolicy } from "@/lib/providers/googlePolicy";
 import { applyProfile, ProfileInput, readProfile, rollbackProfile } from "@/lib/profile";
 import { uuidv7 } from "uuidv7";
 import { getDb } from "@/lib/db/client";
@@ -18,12 +21,12 @@ import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
 import { googleMatchStats, matchGoogleBatch, matchGoogleSlugs, setGoogleMatchActive, googleTestFixture, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
-import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
+import { usageSnapshot, spendReport, placeUseReport, googlePause } from "@/lib/usage/counter";
 import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
 import { and, desc, eq, inArray, sql } from "drizzle-orm";
-import { auditLog, fieldProvenance, menuItems, moderationQueue, placeIdentifiers, places, reviews, user } from "@/lib/db/schema";
+import { auditLog, fieldProvenance, menuItems, moderationQueue, placeIdentifiers, places, reviews, user, session, staffRoles } from "@/lib/db/schema";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/db — KONTROLLÜ GEÇİŞ, TOHUM VE GERİ DÖNÜŞ (derlemede otomatik çalışmaz).
@@ -67,6 +70,18 @@ export async function GET(req: Request) {
   if (new URL(req.url).searchParams.get("rapor") === "google") {
     try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot(), spend: await spendReport(), pause: await googlePause() }, { headers: H }); }
     catch (e) { return fail(e); }
+  }
+  /* ?rapor=google-politika → izin dağılımı ve bu ay en çok maliyet oluşturan mekânlar (yalnız okuma; Google'a istek yok) */
+  if (new URL(req.url).searchParams.get("rapor") === "google-politika") {
+    try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), policy: await googlePolicyStats(), topPlaces: await placeUseReport(10), spend: await spendReport() }, { headers: H }); }
+    catch (e) { return fail(e); }
+  }
+  /* ?rapor=foto-adaylar → aday havuzu (yalnız okuma) */
+  if (new URL(req.url).searchParams.get("rapor") === "foto-adaylar") {
+    try { return NextResponse.json({ env: envName(), candidates: await listPhotoCandidates() }, { headers: H }); } catch (e) { return fail(e); }
+  }
+  if (new URL(req.url).searchParams.get("rapor") === "foto-onayli") {
+    try { return NextResponse.json({ env: envName(), approved: await approvedPhotoCandidates() }, { headers: H }); } catch (e) { return fail(e); }
   }
   /* ?rapor=google-slug → Google içeriği gösterilebilen restoranlar (yalnız okuma; sayfalar lib/live ile dinamik okur) */
   if (new URL(req.url).searchParams.get("rapor") === "google-slug") {
@@ -243,6 +258,27 @@ export async function POST(req: Request) {
         const r = await retryGoogleNoMatch(Number(body.limit) || 10);
         return NextResponse.json({ action: "google-retry", env: envName(), ...r, stats: await googleMatchStats(), spend: await spendReport() }, { headers: H });
       }
+      case "google-policy-set": {
+        /* İzin kararı: tek işlem, denetim kayıtlı. Google'a istek atmaz. Bir seferde en çok 500 mekân. */
+        if (body.confirm !== "POLITIKA") break;
+        const b = body as unknown as Record<string, unknown>;
+        if (!Array.isArray(b.slugs) || b.slugs.length > 500) return NextResponse.json({ error: "bad_slugs" }, { status: 400, headers: H });
+        const r = await setGooglePolicy({ slugs: b.slugs, mode: b.mode, priority: b.priority, reason: b.why, admin: b.admin, ...(b.estimatedCostUsd !== undefined ? { estimatedCostUsd: b.estimatedCostUsd } : {}), ...(b.allowAuto !== undefined ? { allowAuto: b.allowAuto } : {}) });
+        if (r.ok) fresh(TAG_GOOGLE);
+        return NextResponse.json({ action: "google-policy-set", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "photo-candidates-load": {
+        /* Aday yükleme: yalnız Preview/yerel. Görsel kopyalamaz, kapağı değiştirmez. */
+        if (body.confirm !== "EVET" || envName() === "production") break;
+        const r = await loadPhotoCandidates((body as unknown as { venues?: unknown }).venues);
+        return NextResponse.json({ action: "photo-candidates-load", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "photo-decide": {
+        if (body.confirm !== "EVET" || envName() === "production") break;
+        const { confirm: _c, target: _t, action: _a, ...rest } = body as unknown as Record<string, unknown>;
+        const r = await decidePhotoCandidate(rest);
+        return NextResponse.json({ action: "photo-decide", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
       case "google-queue-sync": {
         /* Onaylanmış/reddedilmiş eşleşmelerin açık kuyruk satırlarını kapatır; silmez. */
         if (body.confirm !== "EVET") break;
@@ -289,6 +325,20 @@ export async function POST(req: Request) {
         const r = await runScoreScenario(db, s);
         scoreTags(s).forEach(fresh); fresh(reviewsTag(s));
         return NextResponse.json({ action: "puan-senaryo", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "medya-test-oturum": {
+        /* yalnız Preview/yerel: uçtan uca fotoğraf testi için örnek hesap ve oturum. Gerçek hesaplara dokunmaz; e-postalar example.invalid. */
+        if (envName() === "production" || process.env.VERCEL_ENV === "production" || body.confirm !== "EVET") return NextResponse.json({ error: "not_allowed" }, { status: 403, headers: H });
+        const secret = process.env.BETTER_AUTH_SECRET;
+        if (!secret) return NextResponse.json({ error: "no_secret" }, { status: 503, headers: H });
+        const role = body.mode === "moderator" ? "moderator" : null;
+        const id = uuidv7(), token = randomBytes(24).toString("hex");
+        await db.insert(user).values({ id, name: role ? "Test Editor" : "Test Kullanici", email: `${id}@example.invalid`, emailVerified: true, kind: "test" });
+        await db.insert(session).values({ id: uuidv7(), token, userId: id, expiresAt: new Date(Date.now() + 6 * 3600 * 1000) });
+        if (role) await db.insert(staffRoles).values({ userId: id, role, grantedBy: "medya-test-oturum" });
+        await db.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "media_test_session", refTable: "user", refId: id, detail: { role } });
+        const sign = createHmac("sha256", secret).update(token).digest("base64");
+        return NextResponse.json({ action: "medya-test-oturum", env: envName(), userId: id, cookieName: `${process.env.NODE_ENV === "production" ? "__Secure-" : ""}better-auth.session_token`, cookieValue: encodeURIComponent(`${token}.${sign}`) }, { headers: H });
       }
       case "esik-senaryo": {
         /* yalnız Preview/yerel: deneme eşiği uçtan uca (iki test hesabı, örnek puanlar "preview-test") */

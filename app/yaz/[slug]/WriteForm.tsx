@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { PhotoPicker, PhotoResults, usePhotoPicks } from "@/components/write/PhotoPicker";
 import { markVisited, setEntityState, useUserData } from "@/lib/store";
 import { useAccountStatus } from "@/lib/community/accountState";
 import { signInWithGoogle } from "@/lib/community/signin";
@@ -53,6 +54,8 @@ export function WriteForm({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const photos = usePhotoPicks();
+  const [savedId, setSavedId] = useState<string | null>(null);
   const account = useAccountStatus();
   const canPublish = isReal && account === "in";
   const [restored, setRestored] = useState<string | null>(null);
@@ -104,15 +107,19 @@ export function WriteForm({
       body: JSON.stringify(mine ? payload() : { slug: entitySlug, ...payload() }) }).catch(() => null);
     const j = r ? await r.json().catch(() => null) as { status?: string; message?: string; error?: string; id?: string } | null : null;
     setBusy(false);
-    if (!r) { keepDraft(); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
+    if (!r) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
     if (r.ok) {
       deleteDraft(entitySlug);
       if (entityId) setEntityState(entityId, "visited", "write");
-      setSent(mine ? "updated" : j?.status === "pending" ? "pending" : "published"); window.scrollTo({ top: 0 }); return;
+      setSent(mine ? "updated" : j?.status === "pending" ? "pending" : "published"); window.scrollTo({ top: 0 });
+      /* deneyim önce kaydedilir; fotoğraf hatası deneyimi geri almaz, sonuç ekranda tek tek yazılır */
+      const rid = mine?.id ?? j?.id;
+      if (rid && photos.picks.length) { setSavedId(rid); void photos.uploadAll(rid); }
+      return;
     }
     if (r.status === 401) { keepDraft(); setError("Oturumun kapanmış. Yazdıkların taslak olarak saklandı; yeniden giriş yapıp yayınla."); return; }
     if (r.status === 409 && j?.error === "exists") { setError(j.message ?? "Bu mekân için zaten bir deneyimin var."); location.reload(); return; }
-    if (r.status >= 500) keepDraft();
+    if (r.status >= 500) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); }
     setError(j?.message ?? "Gönderilemedi; yeniden dene.");
   }
 
@@ -127,7 +134,7 @@ export function WriteForm({
   }
 
   const rated = Object.keys(ratings).length;
-  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy;
+  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy && (!photos.picks.length || photos.rights);
   const userData = useUserData();
   const quick = entityId ? userData.reactions.find((r) => r.entityId === entityId) : undefined;
   const steps: Array<[string, boolean]> = [
@@ -157,6 +164,7 @@ export function WriteForm({
           <span className="label">{label}</span>
           <h1 className="max-w-[18ch] text-[clamp(2rem,6vw,3rem)] font-extrabold leading-none tracking-[-0.045em]">{head}</h1>
           <p className="prose-exp max-w-[52ch] text-ink-2">{text}</p>
+          {savedId && <PhotoResults ctl={photos} reviewId={savedId} />}
           <div className="flex flex-wrap gap-3">
             <Link href={live ? `/mekan/${entitySlug}/#deneyimler` : `/mekan/${entitySlug}/`}>
               <Button variant="primary">{live ? "Deneyimimi sayfada gör" : "Sayfaya dön"}</Button>
@@ -393,9 +401,13 @@ export function WriteForm({
         </ul>
       </section>
 
+      {canPublish && <PhotoPicker ctl={photos} entityName={entityName} reviewId={mine?.id} />}
+      {isReal && account === "anon" && photos.enabled && <p id="fotograf" className="mt-10 border-t border-line pt-4 text-[13px] text-ink-2">Fotoğrafı giriş yaptıktan sonra ekleyebilirsin; yazdıkların korunur.</p>}
+
       {/* ── gönder ── */}
       <div className="sticky bottom-0 mt-12 flex flex-col gap-2 border-t-2 border-line-strong bg-paper/95 py-4 backdrop-blur-sm">
         {error && <p role="alert" className="text-[13px] font-semibold text-neg-ink">{error}</p>}
+        {photos.picks.length > 0 && !photos.rights && <p className="text-[12.5px] text-ink-2">Yayınlamadan önce fotoğrafların sana ait olduğunu onayla ya da fotoğrafları kaldır.</p>}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           {canPublish ? (
             <Button variant="primary" disabled={!canSend} onClick={publish}>{busy ? "Gönderiliyor…" : mine ? "Değişiklikleri kaydet" : "Deneyimi yayınla"}</Button>

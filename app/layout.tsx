@@ -1,3 +1,5 @@
+import { CoverProvider } from "@/components/venue/VenueCover";
+import { liveCovers } from "@/lib/live";
 import type { Metadata, Viewport } from "next";
 
 /* Yazı karakterleri npm üzerinden self-host edilir: üçüncü taraf CDN'e
@@ -35,7 +37,7 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="tr">
       <body>
@@ -53,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DemoBoot />
         {!DEMO_VISIBLE && <AccountSync />}
         <Header showSeckisi={seckiNavVisible()} />
-        <main id="icerik">{children}</main>
+        <main id="icerik"><CoverProvider value={await liveCovers()}>{children}</CoverProvider></main>
         <Footer />
       </body>
     </html>

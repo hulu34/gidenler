@@ -26,7 +26,10 @@ import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { VenueSecki } from "@/components/seckisi/Seckisi";
-import { venueDescription, venueJsonLd } from "@/lib/seo";
+import { absoluteImage, venueDescription, venueJsonLd } from "@/lib/seo";
+import { coverOf, profilePhotos } from "@/lib/media/cover";
+import { getStorage } from "@/lib/media/storage";
+import { liveCovers, placePhotos } from "@/lib/live";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { articlesForVenue } from "@/lib/seckisi";
 import { parseVideoUrl } from "@/lib/media/embed";
@@ -80,8 +83,11 @@ export async function generateMetadata({
   if (e.isDemo) return { title: `${e.name} (demo kayıt)`, description: "Prototip için üretilmiş demo kayıt; gerçek bir işletme değildir.", robots: { index: false, follow: false } };
   if (e.isReal) {
     const where = [e.subcategory, e.location?.district].filter(Boolean).join(" · ");
-    const [ps, rp] = await Promise.all([placeScore(slug), placeProfile(slug)]);
-    return { title: `${e.name}${where ? ` · ${where}` : ""}`, description: venueDescription(withProfile(e, rp), ps, !!rp?.menu), alternates: { canonical: `/mekan/${e.slug}/` } };
+    const [ps, rp, covers] = await Promise.all([placeScore(slug), placeProfile(slug), liveCovers()]);
+    const title = `${e.name}${where ? ` · ${where}` : ""}`, description = venueDescription(withProfile(e, rp), ps, !!rp?.menu);
+    const seoCover = coverOf(e, covers[slug]);
+    return { title, description, alternates: { canonical: `/mekan/${e.slug}/` },
+      ...(seoCover ? { openGraph: { title, description, url: `/mekan/${e.slug}/`, images: [{ url: absoluteImage(seoCover.src), alt: seoCover.alt }] } } : {}) };
   }
   const s = t.intelligence.overallScore ? ` — Gidenler ${score1(t.intelligence.overallScore)}` : "";
   return {
@@ -163,18 +169,23 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   /* Gerçek restoran profili (kaynaklı içerik varsa): içerik odaklı düzen — genel bakış, menü, fotoğraflar, videolar, deneyimler */
   const ent = withProfile(entity, rp);
   const nVideos = videos[entity.slug] ?? 0;
+  const [livePhotos, covers] = entity.isReal ? await Promise.all([placePhotos(entity.slug), liveCovers()]) : [[], {} as Awaited<ReturnType<typeof liveCovers>>];
+  const { photos: ownPhotos, hasCover } = profilePhotos(entity, livePhotos);
+  const seoCover = coverOf(entity, covers[entity.slug]);
+  /* Koordinatı olmayan mekânda da Haritalar bağlantısı: ücretsiz arama adresi */
+  const mapsUrl = mapLinks(entity)?.googleMaps ?? (entity.isReal ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.location?.district ?? ""} İstanbul`)}` : undefined);
   const profileNav: TopicSection[] = rp ? [
     { id: "genel", label: "Genel bakış" },
     { id: "menu", label: "Menü" },
-    { id: "fotograflar", label: "Fotoğraflar" },
+    ...(ownPhotos.length || google ? [{ id: "fotograflar", label: "Fotoğraflar" }] : []),
     ...(nVideos ? [{ id: "videolar", label: "Videolar" }] : []),
     { id: "deneyimler", label: "Deneyimler" },
     ...(google ? [{ id: "google", label: "Google" }] : []),
     { id: "gor", label: "Konum" },
   ] : [];
-  const cover = entity.photos?.[0];
+  const cover = hasCover ? ownPhotos[0] : undefined;
   if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
-    imageSizes: `(max-width: 640px) 60vw, ${(entity.photos?.length ?? 0) === 1 ? "1180px" : "590px"}` });
+    imageSizes: `(max-width: 640px) 60vw, ${ownPhotos.length === 1 ? "1180px" : "590px"}` });
 
   /* Puan ya da "henüz puan yok" notu ve eylemler. Eşik kartı varken sol sütunda durur; kart ayrı satırda boşluk bırakmaz. */
   const heroBody = scored ? (
@@ -193,14 +204,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             )}
           </div>
         ) : entity.isReal && c.showScores ? (
-          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} mapsUrl={mapLinks(entity)?.googleMaps} hasMenu={!!rp?.menu} />
+          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} mapsUrl={mapsUrl} hasMenu={!!rp?.menu} />
         ) : (
           <ComplianceNotice policy={c} noun={category.noun} />
         );
 
   return (
     <div className="mx-auto max-w-[1180px] overflow-x-clip px-5 pb-32 sm:px-7 sm:pb-24">
-      {entity.isReal && <JsonLd data={venueJsonLd(ent, ps, articlesForVenue(entity.slug, false).some((x) => !!x.ownership))} />}
+      {entity.isReal && <JsonLd data={venueJsonLd(ent, ps, articlesForVenue(entity.slug, false).some((x) => !!x.ownership), seoCover?.src)} />}
       {/* ═══════════ HERO — kısa ve güçlü: ad · tür · puan · yön · sana göre · tek cümle · eylem ═══════════ */}
       <header className="relative isolate flex flex-col gap-4 pt-7 sm:pt-10">
         {scored && pulse && (
@@ -249,7 +260,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </div>
 
         {/* gerçek mekân: önce fotoğraf, sonra karar (ad → kapak → puan durumu ve eylemler) */}
-        {entity.isReal && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} /></div>}
+        {entity.isReal && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={ownPhotos} google={google} mapsUrl={mapsUrl} hasCover={hasCover} addHref={entity.isReal && getStorage() ? `/yaz/${entity.slug}/#fotograf` : undefined} /></div>}
         {entity.isReal && (
           <div className="flex items-start justify-between gap-6">
             <div className="min-w-0 flex-1">{heroBody}</div>
@@ -260,7 +271,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </header>
 
       {/* gerçek olmayan kayıtlarda kapak eski yerinde */}
-      {!entity.isReal && !!entity.photos?.length && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={entity.photos} google={google} /></div>}
+      {!entity.isReal && ownPhotos.length > 0 && <div id="fotograflar" className="scroll-mt-28 sm:scroll-mt-32"><PhotoMosaic slug={entity.slug} name={entity.name} photos={ownPhotos} google={google} mapsUrl={mapsUrl} hasCover={hasCover} addHref={entity.isReal && getStorage() ? `/yaz/${entity.slug}/#fotograf` : undefined} /></div>}
       {esik && <div className="mt-4 sm:hidden"><ThresholdBar v={esik} /></div>}
 
       {rp && (
@@ -299,7 +310,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       )}
 
       {/* Google: puan, fotoğraf, saatler, yorumlar — temel bilgilerin hemen altında, ekrana girince yüklenir */}
-      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapLinks(entity)?.googleMaps} google={google} /></div>}
+      {entity.isReal && <div className="mt-8"><GooglePlace slug={entity.slug} name={entity.name} mapsUrl={mapsUrl} google={google} /></div>}
 
       {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
       <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />

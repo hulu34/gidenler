@@ -76,6 +76,12 @@ export default function SearchPage() {
   useEffect(() => setLimit(40), [qq, cat, city, district]);
 
   const total = results.entities.length + results.adjacent.length + results.creators.length + results.lists.length;
+  /* sonuçsuz arama sayacı: sorgu metni gönderilmez */
+  useEffect(() => {
+    if (!qq || total > 0) return;
+    const t = setTimeout(() => { void fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "search:empty" }) }).catch(() => {}); }, 2000);
+    return () => clearTimeout(t);
+  }, [qq, total]);
   const matchOf = (id: string, showScores: boolean) => (showScores ? getPersonalMatch(id, "default", undefined, undefined, profile)?.score ?? null : null);
 
   return (

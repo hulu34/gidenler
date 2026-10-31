@@ -3,7 +3,7 @@ import { realEntities } from "@/data/real";
 import { getEntity } from "@/data/entities";
 import { articles, hrefOf } from "@/lib/seckisi";
 import { coverOf } from "@/lib/media/cover";
-import { publishedScores, recentlyReviewed } from "@/lib/live";
+import { liveCovers, publishedScores, recentlyReviewed } from "@/lib/live";
 import { fmtPublished } from "@/lib/score/publishedCards";
 import { VenueCover } from "@/components/venue/VenueCover";
 import { RealExplore } from "@/components/home/RealExplore";
@@ -27,11 +27,11 @@ function Card({ e, line }: { e: Entity; line?: string }) {
 const Rail = ({ children }: { children: React.ReactNode }) => <ul className="-mx-5 mt-4 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-4">{children}</ul>;
 
 export async function RealDiscover() {
-  const [published, recent] = await Promise.all([publishedScores(), recentlyReviewed()]);
+  const [published, covers, recent] = await Promise.all([publishedScores(), liveCovers(), recentlyReviewed()]);
   const secki = articles().flatMap((a) => a.venues.map((v) => ({ e: getEntity(v.slug), a }))).filter((x) => x.e?.isReal);
   const seen = new Set<string>(); const seckiU = secki.filter((x) => (seen.has(x.e!.slug) ? false : (seen.add(x.e!.slug), true)));
   const scored = realEntities.filter((e) => published[e.slug]?.score != null).sort((a, b) => published[b.slug].score! - published[a.slug].score!);
-  const withCover = realEntities.filter((e) => coverOf(e));
+  const withCover = realEntities.filter((e) => coverOf(e, covers[e.slug]));
   const recentE = recent.map((s) => getEntity(s)).filter((e): e is Entity => !!e?.isReal);
   return (
     <div className="mx-auto flex max-w-[1180px] flex-col gap-14 px-5 pb-24 sm:px-7">

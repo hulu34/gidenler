@@ -9,9 +9,14 @@ import { drizzle } from "drizzle-orm/pglite";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import * as schema from "../lib/db/schema";
 import { setDbForTests, type Db } from "../lib/db/client";
+import { googleCallAllowed, POLICY_FIELD, policyMode, setGooglePolicy } from "../lib/providers/googlePolicy";
+import { fetchGoogleCover, googleUsableSlugs } from "../lib/providers/google";
+import { decidePhotoCandidate, listPhotoCandidates, loadPhotoCandidates } from "../lib/media/photoCandidates";
+import { dailyUsdCap, daySpendUsd, MONTHLY_USD_CAP } from "../lib/usage/counter";
 import { seedRealVenues, verifyRealVenues, PILOT_SLUGS } from "../lib/db/seed";
 import { applyMigrations, migrationStatus, type Executor } from "../lib/db/migrate";
 import { MIGRATIONS } from "../lib/db/migrations.generated";
+import { realEntities } from "../data/real";
 import { qualityReport, missingByRestaurant } from "../lib/db/quality";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "../lib/db/rollback";
 import { realVenueRecords, invalidRecord, mergeRealVenues, realVenueReview, type RealVenueRecord } from "../data/real";
@@ -52,6 +57,7 @@ const ok = (name: string, cond: boolean, info?: unknown) => {
 };
 
 /* ── sahte Redis: yalnız bizim iki Lua betiğimizi ve temel komutları taklit eder ── */
+const realVenueWithCover = () => realEntities.find((e) => (e.photos ?? []).length > 0)?.slug;
 class FakeRedis {
   m = new Map<string, number>(); broken = false;
   private chk() { if (this.broken) throw new Error("down"); }
@@ -60,12 +66,17 @@ class FakeRedis {
     if (script.startsWith("-- undo")) { keys.forEach((k) => this.m.set(k, (this.m.get(k) ?? 0) - 1)); return 1; }
     if (script.includes("local spend")) {
       /* counter.ts LUA: kalem sınırları + toplam harcama tavanı (aynı sıra ve anlamla) */
-      const [mk, dk, ...all] = keys; const mm = (this.m.get(mk) ?? 0) + 1, dd = (this.m.get(dk) ?? 0) + 1;
+      const [mk, dk, ...rest] = keys; const mm = (this.m.get(mk) ?? 0) + 1, dd = (this.m.get(dk) ?? 0) + 1;
       if (mm > Number(args[0]) || dd > Number(args[1])) return 0;
       this.m.set(mk, mm); this.m.set(dk, dd);
-      let spend = 0;
-      all.forEach((k, i) => { const n = this.m.get(k) ?? 0, free = Number(args[5 + i * 2]), micro = Number(args[6 + i * 2]); if (n > free) spend += (n - free) * micro; });
+      const items = rest.length / 2; let spend = 0, today = 0;
+      for (let i = 0; i < items; i++) {
+        const n = this.m.get(rest[i]) ?? 0, t = this.m.get(rest[items + i]) ?? 0, free = Number(args[6 + i * 2]), micro = Number(args[7 + i * 2]);
+        if (n > free) spend += (n - free) * micro;
+        const before = Math.max(n - t, free); if (n > before) today += (n - before) * micro;
+      }
       if (spend > Number(args[4])) { this.m.set(mk, mm - 1); this.m.set(dk, dd - 1); return -1; }
+      if (today > Number(args[5])) { this.m.set(mk, mm - 1); this.m.set(dk, dd - 1); return -2; }
       return mm;
     }
     if (script.includes("local floor")) {
@@ -610,6 +621,139 @@ async function main() {
   const fake2 = await fresh(); setRedisForTests(fake2 as unknown as RedisLike);
   process.env.GOOGLE_PLACES_API_KEY = "TEST_KEY_NOT_REAL";
   ok("Preview'da ücretli Google çağrıları varsayılan kapalı", googleEnabled("preview") === false && googleEnabled("production") === true);
+  /* izin kapısı: varsayılan kapalı; bu bölümün eski testleri açık politikayla sürer, kapı ayrıca sınanır */
+  {
+    process.env.GOOGLE_POLICY_MODE = "siki";
+    const gpFetch = (calls: string[]) => (async (u: string | URL | Request) => { calls.push(String(u)); return new Response("{}", { status: 200 }); }) as typeof fetch;
+    setRedisForTests((await fresh()) as unknown as RedisLike);
+    const [pA, pB, pC] = (await db.select({ id: schema.places.id, slug: schema.places.slug }).from(schema.places).limit(3));
+    await db.insert(schema.placeIdentifiers).values([
+      { id: "gp-a", placeId: pA.id, provider: "google", externalId: "G_A", status: "auto" },
+      { id: "gp-b", placeId: pB.id, provider: "google", externalId: "G_B", status: "confirmed" },
+      { id: "gp-c", placeId: pC.id, provider: "google", externalId: "G_C", status: "pending" },
+    ]);
+    const calls: string[] = []; const gf = gpFetch(calls);
+    const noCall = async (slug: string) => { const a = await fetchGoogleView(slug, gf), b = await fetchGooglePhotoMedia(slug, [{ name: "places/G_A/photos/x" } as never], gf), c = await fetchGooglePlace(slug, gf), d = await resolveGooglePlaceId(slug, "TEST_KEY_NOT_REAL", gf); return [a.state, b.state, c.state, d.status].join(); };
+    ok("politika satırı yok: otomatik eşleşmede bütün yollar 0 çağrı", (await noCall(pA.slug)).includes("unmatched") && calls.length === 0);
+    ok("politika satırı yok: onaylı eşleşmede de 0 çağrı", (await noCall(pB.slug)).includes("unmatched") && calls.length === 0);
+    ok("politikasız mekân sayfada açılmaz", !(await googleUsableSlugs())?.includes(pB.slug));
+    const c1 = await matchGoogleBatch(5, gf), c2 = await retryGoogleNoMatch(5, gf), c3 = await matchGoogleSlugs([pA.slug], {}, gf);
+    ok("toplu ve hedefli eşleştirme izinsiz mekâna 0 çağrı", calls.length === 0 && c1.results.length === 0 && c2.results.length === 0 && c3.results[0]?.reason === "politika_kapali", JSON.stringify(c3.results[0]));
+    const bad = [await setGooglePolicy({ slugs: [pB.slug], mode: "izinli", priority: "D", reason: "denenir", admin: "test" }), await setGooglePolicy({ slugs: [pB.slug, "yok-boyle"], mode: "izinli", priority: "A", reason: "denenir", admin: "test" }), await setGooglePolicy({ slugs: [pB.slug], mode: "izinli", priority: "A", reason: "", admin: "test" })];
+    ok("D izinli olamaz, bilinmeyen slug ve gerekçesiz yazım reddedilir, hiçbiri yazılmaz", bad.every((b) => !b.ok) && (await googleCallAllowed(pB.slug) as { none?: string }).none === "policy_closed");
+    for (const mode of ["kapali", "baglanti"] as const) { await setGooglePolicy({ slugs: [pB.slug], mode, priority: "C", reason: "düşük öncelik", admin: "test" }); await noCall(pB.slug); ok(`${mode}: 0 çağrı`, calls.length === 0); }
+    const yes = await setGooglePolicy({ slugs: [pA.slug, pB.slug], mode: "izinli", priority: "A", reason: "onaylı alt küme", admin: "test", estimatedCostUsd: 1 });
+    ok("izin yazımı denetimli", yes.ok && yes.count === 2 && (await db.select().from(schema.auditLog).where(eq(schema.auditLog.id, yes.ok ? yes.auditId : ""))).length === 1);
+    ok("izinli + onaylı eşleşme: kapı açılır", (await googleCallAllowed(pB.slug) as { id?: string }).id === "G_B");
+    ok("izinli + otomatik eşleşme: allowAuto yoksa kapalı", (await googleCallAllowed(pA.slug) as { none?: string }).none === "auto_not_approved");
+    ok("sayfa listesi kapıyla aynı", !!(await googleUsableSlugs())?.includes(pB.slug) && !(await googleUsableSlugs())?.includes(pA.slug));
+    await setGooglePolicy({ slugs: [pB.slug], mode: "kapali", priority: "B", reason: "geri kapatıldı", admin: "test" });
+    ok("en yeni karar geçerli, geçmiş kalır", (await googleCallAllowed(pB.slug) as { none?: string }).none === "policy_closed" && (await db.select().from(schema.fieldProvenance).where(and(eq(schema.fieldProvenance.placeId, pB.id), eq(schema.fieldProvenance.field, POLICY_FIELD)))).length === 4);
+    await db.insert(schema.fieldProvenance).values({ id: "gp-bozuk", placeId: pB.id, field: POLICY_FIELD, value: "{bozuk", provider: "admin", fetchedAt: new Date(Date.now() + 1000) });
+    ok("bozuk politika kapalı sayılır", (await googleCallAllowed(pB.slug) as { none?: string }).none === "policy_closed");
+    setDbForTests(new Proxy({}, { get: () => { throw new Error("neon down"); } }) as unknown as Db);
+    const down = await googleCallAllowed(pB.slug);
+    setDbForTests(db);
+    ok("veritabanı hatası: kapı karar vermez, çağrı yok", down === null && calls.length === 0);
+    /* yol: doğrudan uç, sahte küresel fetch ile */
+    const gfetch = globalThis.fetch; const routeCalls: string[] = []; globalThis.fetch = gpFetch(routeCalls);
+    const { GET, POST } = await import("../app/api/google/place/route");
+    const ua = { headers: { "user-agent": "Mozilla/5.0", "x-forwarded-for": "198.51.100.7" } };
+    const [g1, g2, g3, p1] = [await GET(new Request(`http://x/api/google/place/?slug=${pC.slug}&part=view`, ua)), await GET(new Request(`http://x/api/google/place/?slug=${pC.slug}&part=reviews`, ua)), await GET(new Request(`http://x/api/google/place/?slug=${pC.slug}&part=status`, ua)), await POST(new Request(`http://x/api/google/place/?slug=${pC.slug}&part=media`, { method: "POST", ...ua, body: JSON.stringify({ refs: [{ name: `places/G_C/photos/x` }] }) }))];
+    globalThis.fetch = gfetch;
+    ok("uç: izinsiz mekân 0 çağrı; eski uç 410; durum kapalı", routeCalls.length === 0 && g1.status !== 200 && g2.status === 410 && (await g3.json()).available === false && p1.status !== 200, `${g1.status}/${g2.status}/${p1.status}`);
+    /* günlük tavan */
+    const dayR = (await fresh()) as unknown as RedisLike & { m: Map<string, number> }; setRedisForTests(dayR);
+    dayR.m.set(periodKeys("google:photo").month, 1000 + 430); dayR.m.set(periodKeys("google:photo").day, 430);
+    ok("günlük tavan dolunca (430 × $0,007 = $3,01) çağrı durur, aylık tavan aynı", (await reserve("google:photo")).ok === false && MONTHLY_USD_CAP === 100 && dailyUsdCap() === 3);
+    dayR.m.set(periodKeys("google:photo").month, 1000); dayR.m.set(periodKeys("google:photo").day, 0);
+    const rs = await Promise.all(Array.from({ length: 600 }, () => reserve("google:photo")));
+    const dayG = rs.filter((r) => r.ok).length, dayRej = rs.filter((r) => !r.ok && r.reason === "day_cap").length;
+    ok("600 eşzamanlı istekte günlük tavan: 428 izin, fazlası sayaca yazılmaz", dayG === 428 && dayRej === 172 && dayR.m.get(periodKeys("google:photo").day) === 428, `${dayG}/${dayRej}`);
+    ok("günlük tavan yalnız bugünkü ücretli kısmı sayar", daySpendUsd({ "google:photo": 1200 }, { "google:photo": 300 }) === 1.4);
+    process.env.GOOGLE_DAILY_USD_CAP = "50"; ok("ortam değişkeni günlük tavanı yükseltemez", dailyUsdCap() === 3); delete process.env.GOOGLE_DAILY_USD_CAP;
+    /* tek kapak: kapıdan geçer, Atmosphere yok, Details yalnız photos */
+    {
+      await db.delete(schema.fieldProvenance).where(eq(schema.fieldProvenance.id, "gp-bozuk"));
+      setRedisForTests((await fresh()) as unknown as RedisLike);
+      const seen: { u: string; mask?: string }[] = [];
+      const cf = (async (u: string | URL | Request, o?: RequestInit) => { const url = String(u); seen.push({ u: url, mask: (o?.headers as Record<string, string>)?.["X-Goog-FieldMask"] }); return new Response(JSON.stringify(url.includes("/media") ? { photoUri: "https://x/p.jpg" } : { photos: [{ name: "places/G_B/photos/1" }, { name: "places/G_B/photos/2" }] }), { status: 200 }); }) as typeof fetch;
+      await setGooglePolicy({ slugs: [pB.slug], mode: "kapali", priority: "C", reason: "kapalı", admin: "test" });
+      const closed = await fetchGoogleCover(pB.slug, cf);
+      ok("kapak: izinsiz 0 çağrı", closed.state === "unmatched" && seen.length === 0);
+      await setGooglePolicy({ slugs: [pB.slug], mode: "izinli", priority: "A", reason: "kapak testi", admin: "test" });
+      const before = await usageSnapshot();
+      const cov = await fetchGoogleCover(pB.slug, cf); const after = await usageSnapshot();
+      ok("kapak: 1 Details (yalnız photos) + 1 Photo, Atmosphere sayacı değişmez", cov.state === "ok" && seen.length === 2 && seen[0].mask === "photos" && seen[1].u.includes("/media") && after!["google:photo"].month - (before!["google:photo"].month) === 1 && after!["google:details_atmosphere"].month === before!["google:details_atmosphere"].month, JSON.stringify(seen.map((x) => x.mask ?? "media")));
+      const fv = await fetchGoogleView(pB.slug, cf, 0);
+      ok("puan ve yorum isteği fotoğraf çekmez", fv.state === "ok" && !seen.slice(2).some((x) => x.u.includes("/media")));
+      /* fotoğrafı olmayan yer, Google hatası, Redis arızası: sayfa düşmez, ek çağrı ya da sessiz ödeme yok */
+      const j = (b: unknown, status = 200) => new Response(JSON.stringify(b), { status });
+      const c0: string[] = []; const nop = await fetchGoogleCover(pB.slug, (async (u: string | URL | Request) => { c0.push(String(u)); return j({ photos: [] }); }) as typeof fetch);
+      ok("kapak: fotoğrafı yok → yalnız Details, Photo isteği yok, boş sonuç", nop.state === "ok" && nop.data.photos.length === 0 && c0.length === 1 && !c0[0].includes("/media"));
+      const c1: string[] = []; const err = await fetchGoogleCover(pB.slug, (async (u: string | URL | Request) => { c1.push(String(u)); return j({ error: "x" }, 500); }) as typeof fetch);
+      ok("kapak: API hatası → hata durumu, Photo isteği yok", err.state === "error" && c1.length === 1);
+      const down = (await fresh()) as unknown as RedisLike & { broken: boolean }; down.broken = true; setRedisForTests(down);
+      const c2: string[] = []; const rd = await fetchGoogleCover(pB.slug, (async (u: string | URL | Request) => { c2.push(String(u)); return j({}); }) as typeof fetch);
+      ok("kapak: Redis arızası → 0 ücretli çağrı", rd.state === "limit" && c2.length === 0, rd);
+      setRedisForTests((await fresh()) as unknown as RedisLike);
+      const pS = (await db.select({ id: schema.places.id, slug: schema.places.slug }).from(schema.places).limit(9))[8];
+      await db.insert(schema.placeIdentifiers).values({ id: "gp-supheli", placeId: pS.id, provider: "google", externalId: "G_S", status: "pending" });
+      const c3: string[] = []; const su = await fetchGoogleCover(pS.slug, (async (u: string | URL | Request) => { c3.push(String(u)); return j({}); }) as typeof fetch);
+      ok("kapak: şüpheli/bekleyen eşleşme → 0 çağrı", su.state === "unmatched" && c3.length === 0);
+      await db.delete(schema.placeIdentifiers).where(eq(schema.placeIdentifiers.id, "gp-supheli"));
+      /* doğrudan uç: kendi kapağı olan mekân Google kapağı isteyemez */
+      const own = realVenueWithCover();
+      if (own) {
+        const gf0 = globalThis.fetch; const c4: string[] = []; globalThis.fetch = gpFetch(c4);
+        const { GET: G2 } = await import("../app/api/google/place/route");
+        const res = await G2(new Request(`http://x/api/google/place/?slug=${own}&part=cover`, { headers: { "user-agent": "Mozilla/5.0", "x-forwarded-for": "198.51.100.8" } }));
+        globalThis.fetch = gf0;
+        ok("uç: kendi kapağı varsa doğrudan kapak isteği reddedilir, 0 çağrı", res.status === 409 && c4.length === 0, res.status);
+      }
+      await setGooglePolicy({ slugs: [pB.slug], mode: "kapali", priority: "C", reason: "bitti", admin: "test" });
+    }
+    /* geçiş kipi: canlı eşleşmeler korunur, yeni erişim açılmaz */
+    {
+      delete process.env.GOOGLE_POLICY_MODE;
+      ok("varsayılan kip geçiş", policyMode() === "gecis");
+      const [, , , q1, q2, q3] = await db.select({ id: schema.places.id, slug: schema.places.slug }).from(schema.places).limit(6);
+      const old = new Date("2026-10-28T00:00:00Z"), neu = new Date("2026-11-02T00:00:00Z");
+      await db.insert(schema.placeIdentifiers).values([{ id: "gc-1", placeId: q1.id, provider: "google", externalId: "G_ESKI", status: "auto", createdAt: old }, { id: "gc-2", placeId: q2.id, provider: "google", externalId: "G_YENI", status: "auto", createdAt: neu }, { id: "gc-3", placeId: q3.id, provider: "google", externalId: "G_BEKLE", status: "pending", createdAt: old }]);
+      ok("eski eşleşme kayıtsız da açık", (await googleCallAllowed(q1.slug) as { id?: string }).id === "G_ESKI" && !!(await googleUsableSlugs())?.includes(q1.slug));
+      ok("kesimden sonraki eşleşme kapalı", "none" in (await googleCallAllowed(q2.slug))! && !(await googleUsableSlugs())?.includes(q2.slug));
+      ok("bekleyen eşleşme kapalı", "none" in (await googleCallAllowed(q3.slug))!);
+      await setGooglePolicy({ slugs: [q1.slug], mode: "baglanti", priority: "C", reason: "düşük öncelik", admin: "test" });
+      ok("açık kapatma geçiş kipinde de kapatır", "none" in (await googleCallAllowed(q1.slug))! && !(await googleUsableSlugs())?.includes(q1.slug));
+      const mc: string[] = []; const r = await matchGoogleSlugs([q2.slug], {}, gpFetch(mc)); ok("eşleştirme araması geçiş kipinde de izin ister", mc.length === 0 && r.results[0]?.reason === "politika_kapali");
+      setDbForTests(new Proxy({}, { get: () => { throw new Error("neon down"); } }) as unknown as Db); const dn = await googleCallAllowed(q1.slug); setDbForTests(db); ok("geçiş kipinde veritabanı hatası: çağrı yok", dn === null);
+      const off = process.env.GOOGLE_PLACES_ENABLED; process.env.GOOGLE_PLACES_ENABLED = "false"; const oc: string[] = []; const of1 = await fetchGoogleCover(q1.slug, gpFetch(oc)); process.env.GOOGLE_PLACES_ENABLED = off ?? ""; if (off === undefined) delete process.env.GOOGLE_PLACES_ENABLED; ok("Google kapalıyken 0 ücretli çağrı", of1.state === "disabled" && oc.length === 0);
+      process.env.GOOGLE_POLICY_MODE = "siki"; ok("sıkı kipte eski eşleşme de kapalı", "none" in (await googleCallAllowed(q2.slug))!);
+      await db.delete(schema.placeIdentifiers).where(inArray(schema.placeIdentifiers.id, ["gc-1", "gc-2", "gc-3"]));
+    }
+    /* fotoğraf aday havuzu */
+    {
+      const url = "https://ornek.test/a.jpg"; const v = [{ slug: pA.slug, subeKaniti: true, adaylar: [{ url, sayfa: "https://ornek.test/", tur: "yemek", w: 1600, h: 1000, puan: 80, kontrol: "2026-10-31" }] }];
+      const l1 = await loadPhotoCandidates(v), l2 = await loadPhotoCandidates(v);
+      ok("aday yüklenir, ikinci kez yazılmaz", l1.ok && l1.added === 1 && l2.ok && l2.added === 0 && l2.kept === 1);
+      const row = (await listPhotoCandidates())!.find((r) => r.url === url)!;
+      ok("aday pending, id_only", row.status === "pending" && (await db.select().from(schema.mediaItems).where(eq(schema.mediaItems.id, row.id)))[0].storageClass === "id_only");
+      const noProof = await decidePhotoCandidate({ id: row.id, decision: "approve", admin: "test", rightsType: "isletme-izni", rightsRef: "", credit: "K" });
+      ok("hak kanıtı olmadan onay yok", !noProof.ok);
+      const yesP = await decidePhotoCandidate({ id: row.id, decision: "approve", admin: "test", rightsType: "isletme-izni", rightsRef: "e-posta 2026-11-01", credit: "Künye" });
+      ok("hak kanıtıyla onay, denetim kayıtlı", yesP.ok && (await db.select().from(schema.auditLog).where(and(eq(schema.auditLog.action, "photo_approve"), eq(schema.auditLog.refId, row.id)))).length === 1);
+      await loadPhotoCandidates(v);
+      ok("yeniden tarama kararı bozmaz", (await listPhotoCandidates())!.find((r) => r.url === url)!.status === "approved");
+      ok("kaldırma tek işlem", (await decidePhotoCandidate({ id: row.id, decision: "remove", admin: "test", why: "yanlış şube" })).ok && (await listPhotoCandidates())!.find((r) => r.url === url)!.status === "removed");
+      ok("video listesi fotoğraf adayından etkilenmez", (await listPlaceVideos(pA.slug)).every((x) => x.url !== url));
+    }
+    /* eski testler için */
+    await db.delete(schema.placeIdentifiers).where(inArray(schema.placeIdentifiers.id, ["gp-a", "gp-b", "gp-c"]));
+    await db.delete(schema.fieldProvenance).where(eq(schema.fieldProvenance.field, POLICY_FIELD));
+    setRedisForTests((await fresh()) as unknown as RedisLike);
+    const allSlugs = (await db.select({ slug: schema.places.slug }).from(schema.places)).map((p) => p.slug);
+    await setGooglePolicy({ slugs: allSlugs, mode: "izinli", priority: "B", reason: "eski testler", admin: "test", allowAuto: true });
+  }
   {
     /* hedefli eşleştirme: OSM'siz (konumsuz) mekân, yöneticinin Haritalar bağlantısıyla; aynı kota koruması, ayrı Redis */
     setRedisForTests((await fresh()) as unknown as RedisLike);

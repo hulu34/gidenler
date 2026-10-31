@@ -7,6 +7,9 @@ import type { Entity } from "../lib/types";
 import noAddressOk from "../data/real/sitemap-adressiz.json";
 import duzeltmeler from "../data/real/duzeltmeler.json";
 import rawVenues from "../data/real/venues.json";
+import izinli from "../data/real/izinli-fotograflar.json";
+import { coverOf } from "../lib/media/cover";
+import { existsSync } from "node:fs";
 
 let pass = 0, fail = 0;
 const ok = (name: string, cond: boolean, info = "") => { cond ? pass++ : fail++; console.log(`${cond ? "✓" : "✗"} ${name}${info ? " · " + info : ""}`); };
@@ -37,6 +40,9 @@ for (const x of ["08:00-23:00", "24/7", "Salı-Pazar 10:00-20:00", "Tu-Su 10:00-
 /* işaretleme */
 const ld = venueJsonLd(base, null, false) as Record<string, unknown>;
 ok("adres ve ad zorunlu", !!ld.name && !!ld.address);
+ok("image yalnız kapak verilince", !("image" in ld) && (venueJsonLd(base, null, false, "/media/foto/a.webp") as Record<string, unknown>).image === "https://www.gidenler.com/media/foto/a.webp");
+ok("kapak yoksa image üretilmez", realEntities.filter((e) => !coverOf(e)).every((e) => { const x = venueJsonLd(e, null, false, coverOf(e)?.src) as Record<string, unknown> | null; return !x || !("image" in x); }));
+ok("kapak görselinde Google yok", realEntities.every((e) => !/google|gstatic|ggpht/.test(coverOf(e)?.src ?? "")));
 ok("adressiz kayıtta işaretleme yok", venueJsonLd({ ...base, address: undefined }, null, false) === null);
 ok("demo kayıtta işaretleme yok", venueJsonLd({ ...base, isDemo: true }, null, false) === null);
 ok("puan yoksa aggregateRating yok", !("aggregateRating" in ld));
@@ -51,6 +57,15 @@ const kindChanged = (rawVenues as { slug: string; kind: string }[]).filter((r) =
 ok("tür yalnız düzeltme listesindekilerde değişir", kindChanged.join() === fixed.join(), kindChanged.join());
 ok("Seyirtepe Restoran, kategori aynı", realEntities.find((e) => e.slug === fixed[0])?.subcategory === "Restoran" && realEntities.find((e) => e.slug === fixed[0])?.categoryId === "cat.restaurant");
 ok("457 kayıt korunur", realEntities.length === 457);
+
+/* kapak kararı */
+const hasCover = realEntities.filter((e) => coverOf(e));
+ok("kapağı olanlar yalnız hak kaydı olan yedi mekân", hasCover.map((e) => e.slug).sort().join() === "beyti-lokanta-bakirkoy,cukur-meyhane-beyoglu,ismet-baba-uskudar,japon-erdal-beyoglu,kanaat-lokantasi-uskudar,savoy-beyoglu,viktor-levi-sarap-evi-kadikoy", hasCover.map((e) => e.slug).join());
+ok("Japon Erdal kapağı işletme izni, 3 fotoğraf", coverOf(realEntities.find((e) => e.slug === "japon-erdal-beyoglu")!)?.source === "isletme" && realEntities.find((e) => e.slug === "japon-erdal-beyoglu")!.photos?.length === 3);
+ok("kayıttaki her görselin hak kaydı var ve kendi sunucumuzda", (Object.values(izinli).flat() as { addedBy: string; rightsRef: string; license?: string; src: string }[]).every((p) => (p.addedBy === "commons" ? /CC BY/.test(p.rightsRef) && !!p.license : /restoran profili/i.test(p.rightsRef)) && p.src.startsWith("/") && existsSync(new URL(`../public${p.src}`, import.meta.url))));
+ok("Google görseli kapağa giremez", !realEntities.some((e) => e.photos?.some((p) => /googleusercontent|googleapis/.test(p.src))));
+ok("demo kayıtta kapak yok", coverOf({ ...hasCover[0], isDemo: true }) === null);
+ok("fotoğrafsız kayıtta kapak yok", coverOf(bare) === null || !!bare.photos?.length);
 
 /* site haritası */
 ok("adressiz kayıt girmez", !inVenueSitemap(bare));
