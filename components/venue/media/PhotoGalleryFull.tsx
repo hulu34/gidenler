@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { VenuePhoto } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
 import { CAT_LABEL, fromVenuePhotos, responsive, SOURCE_LABEL, type PhotoCat, type ViewPhoto } from "./photos";
-import { loadMoreGooglePhotos, useGoogleCover, type GRef } from "./googleView";
+import { loadMoreGooglePhotos, useGoogleView, type GRef } from "./googleView";
 import { GoogleMapsText } from "./GoogleAttribution";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -20,7 +20,7 @@ const CATS: PhotoCat[] = ["yemek", "ic", "dis", "menu", "diger"];
 
 export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string; name: string; photos?: VenuePhoto[]; google: boolean }) {
   const own = useMemo(() => fromVenuePhotos(photos), [photos]);
-  const { state: g, request } = useGoogleCover(slug, google);
+  const g = useGoogleView(slug, google);
   const [extra, setExtra] = useState<ViewPhoto[]>([]);
   const [refs, setRefs] = useState<GRef[] | null>(null);
   const [busy, setBusy] = useState(false);
@@ -28,8 +28,8 @@ export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string;
   const sentinel = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState<Tab>("all");
   const [open, setOpen] = useState<number | null>(null);
-  const gPhotos = g.k === "ok" ? [...g.photos, ...extra] : [];
-  const left = refs ?? (g.k === "ok" ? g.refs : []);
+  const gPhotos = g.k === "ok" ? [...g.v.photos, ...extra] : [];
+  const left = refs ?? (g.k === "ok" ? g.v.refs : []);
 
   /* kalan Google fotoğrafları: sayfa sonuna yaklaşınca, 5'er (düğmesiz) */
   useEffect(() => {
@@ -47,8 +47,8 @@ export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string;
   }, [g.k, left, busy, stopped, slug]);
 
   const shown: ViewPhoto[] = tab === "all" ? [...own, ...gPhotos] : tab === "google" ? gPhotos : own.filter((p) => p.category === tab);
-  const count = (t: Tab) => (t === "all" ? own.length + (g.k === "ok" ? g.total : 0) : t === "google" ? (g.k === "ok" ? g.total : 0) : own.filter((p) => p.category === t).length);
-  const tabs: Tab[] = ["all", ...CATS, ...(g.k === "ok" && g.total ? (["google"] as Tab[]) : [])];
+  const count = (t: Tab) => (t === "all" ? own.length + (g.k === "ok" ? g.v.total : 0) : t === "google" ? (g.k === "ok" ? g.v.total : 0) : own.filter((p) => p.category === t).length);
+  const tabs: Tab[] = ["all", ...CATS, ...(g.k === "ok" && g.v.total ? (["google"] as Tab[]) : [])];
 
   return (
     <div className="flex flex-col gap-5">
@@ -84,9 +84,6 @@ export function PhotoGalleryFull({ slug, name, photos, google }: { slug: string;
         </div>
       ) : null}
 
-      {google && g.k === "idle" && (
-        <button type="button" onClick={request} className="self-start text-[13px] font-bold underline underline-offset-2 hover:text-accent-ink">Google fotoğraflarını göster</button>
-      )}
       {google && g.k === "loading" && (
         <div className="columns-2 gap-2 sm:columns-3 lg:columns-4 [&>div]:mb-2" aria-busy="true">{[0, 1, 2, 3].map((i) => <div key={i} className="aspect-[4/3] animate-pulse bg-sheet" />)}</div>
       )}

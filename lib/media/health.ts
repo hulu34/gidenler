@@ -2,7 +2,7 @@ import { sql } from "drizzle-orm";
 import type { Db } from "@/lib/db/client";
 import { realEntities } from "@/data/real";
 import { coverOf } from "./cover";
-import { allowedGoogleSlugs } from "@/lib/providers/googlePolicy";
+import { googleUsableSlugs } from "@/lib/providers/google";
 import { coverCandidates } from "./photoArchive";
 import type { MediaStorage } from "./storage";
 
@@ -21,7 +21,7 @@ export async function mediaHealth(db: Db | null, storage: MediaStorage | null): 
   const ownBySource: Record<string, number> = {};
   for (const x of own) ownBySource[x.c!.source] = (ownBySource[x.c!.source] ?? 0) + 1;
   const ownSet = new Set(own.map((x) => x.slug));
-  const allowed = db ? await allowedGoogleSlugs(db).catch(() => null) : null;
+  const allowed = db ? await googleUsableSlugs().catch(() => null) : null;
   const allowedList = allowed ? [...allowed] : null;
   const googleOnly = allowedList ? allowedList.filter((s) => !ownSet.has(s)).length : null;
   const out: MediaHealth = {
