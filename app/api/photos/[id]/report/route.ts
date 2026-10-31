@@ -4,7 +4,7 @@ import { H, guard } from "@/lib/community/reviewApi";
 import { getStorage } from "@/lib/media/storage";
 import { REPORT_REASONS, reportPhoto } from "@/lib/media/photoArchive";
 
-/* POST /api/media/:id/report — fotoğrafı bildir: yanlış restoran, telif, uygunsuz, kişisel veri. Giriş zorunlu; günde 20. */
+/* POST /api/photos/:id/report — fotoğrafı bildir: yanlış restoran, telif, uygunsuz, kişisel veri. Giriş zorunlu; günde 20. */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 const Body = z.object({ reason: z.enum(REPORT_REASONS), note: z.string().max(300).optional() }).strict();

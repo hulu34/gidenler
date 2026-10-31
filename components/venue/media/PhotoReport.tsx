@@ -10,7 +10,7 @@ export function PhotoReport({ id }: { id: string }) {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   async function send(reason: string) {
-    const r = await fetch(`${BASE}/api/media/${id}/report/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify({ reason }) }).catch(() => null);
+    const r = await fetch(`${BASE}/api/photos/${id}/report/`, { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify({ reason }) }).catch(() => null);
     const j = r ? await r.json().catch(() => null) as { message?: string } | null : null;
     setOpen(false);
     setMsg(!r ? "Gönderilemedi; bağlantını kontrol et." : r.ok ? "Bildirimin alındı; editör inceleyecek." : r.status === 401 ? "Bildirmek için giriş yapman gerekiyor." : j?.message ?? "Gönderilemedi.");
