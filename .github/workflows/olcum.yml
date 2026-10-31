@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 env:
   EKRAN_ETIKET: sonra
-  MEDYA_HOST: gidenler-pqgfprggo-hulu34.vercel.app
+  MEDYA_HOST: gidenler-rm5weqc5f-hulu34.vercel.app
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)

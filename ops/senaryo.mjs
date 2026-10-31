@@ -80,7 +80,7 @@ ok("D: imzası bozuk çerezle yükleme 401", (await api(`/api/reviews/${yid}/pho
   const c2 = await ctxOf(null, IP), p2 = await c2.newPage(); await p2.route(/\/api\/media\/status/, (r) => r.abort()); await p2.goto(`${BASE}/yaz/pidem-fatih/`, { waitUntil: "networkidle" });
   ok("D: depolama durumu alınamazsa form çalışır, yükleme alanı görünmez", await p2.locator('[aria-label="Deneyim metni"]').isVisible() && !(await p2.locator('#fotograf input[type="file"]').count())); await c2.close();
   const c3 = await ctxOf(null, IP), p3 = await c3.newPage(); await p3.goto(`${BASE}/ara/?q=zzzqqqwww`, { waitUntil: "networkidle" }); ok("D: sonuçsuz arama yol gösterir", (await p3.locator("main").innerText()).includes("eşleşme yok")); await p3.screenshot({ path: `${OUT}/D-bos-arama.png` }); await c3.close();
-  const pl = await (await api("/api/google/place/?slug=pidem-fatih&part=cover", { })).status; ok("D: Google kapalıyken kapak ücretli çağrı yapmaz", pl !== 200 || true, pl);
+  const pl = await api("/api/google/place/?slug=pidem-fatih&part=cover"); console.log(`  Google kapalı/izinsiz kapak yanıtı: ${pl.status}`);
 }
 /* E — puan tutarlılığı */
 {
@@ -103,10 +103,9 @@ ok("D: imzası bozuk çerezle yükleme 401", (await api(`/api/reviews/${yid}/pho
     ok("E: Keşfet aynı puan", await has("/kesfet/", new RegExp(`Çiya Sofrası[\\s\\S]{0,60}${esc}`)));
     ok("E: gerçek mekân listesi aynı puan", await has("/gercek/", new RegExp(`Çiya Sofrası[\\s\\S]{0,30}${esc}`)));
     ok("E: ana sayfa puanı tutarlı (görünüyorsa)", await (async () => { const t = await txt("/"); const x = t.match(/Çiya Sofrası[\s\S]{0,80}?([0-9],[0-9])/); return !x || x[1] === puan; })());
-    ok("E: yapılandırılmış veri aynı puan", (() => { return true; })());
     const h = await (await api(`/mekan/${SS}/?v=${Date.now()}`)).text();
     const ld = [...h.matchAll(/application\/ld\+json">(.*?)<\/script>/gs)].map((x) => { try { return JSON.parse(x[1]); } catch { return null; } }).find((x) => x?.url?.includes("/mekan/"));
-    console.log(`  ld puan ${ld?.aggregateRating?.ratingValue} ekran ${puan}`);
+    ok("E: yapılandırılmış veri aynı puan", String(ld?.aggregateRating?.ratingValue).replace(".", ",") === puan, `${ld?.aggregateRating?.ratingValue}/${puan}`);
   }
   const es = await admin({ action: "esik-senaryo", slug: "leb-i-derya-beyoglu" });
   ok("E: eşik bildirimi senaryosu", es.s === 200 && es.j.ok === true, es.j.error ?? "");
