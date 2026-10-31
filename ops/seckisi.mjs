@@ -168,7 +168,7 @@ for (const a of pkg.filter((x) => x.media)) {
     await p.waitForFunction(() => !document.querySelector("header")?.innerText.includes("Yükleniyor"), null, { timeout: 15000 }).catch(() => {});
     const g = await p.evaluate(() => { const h = document.querySelector("header h1")?.closest("header"); const n = [...h.querySelectorAll("a,button")].find((x) => /Gittim, deneyimimi/.test(x.textContent)); const k = [...h.querySelectorAll("h1 ~ *, div")].find((x) => /DENEME EŞİĞİN|Deneme eşiğin/i.test(x.textContent) && x.offsetWidth === 300); const r = (e) => e ? e.getBoundingClientRect() : null; return { h1: r(h.querySelector("h1"))?.bottom, not: r(n)?.top, kart: r(k)?.bottom, header: r(h).bottom }; });
     console.log(`  başlık ölçüsü ${dev}: ${JSON.stringify(g)}`);
-    if (dev === "masaustu") ok(`profil ${slug}: not başlığın altında, kartın yanında`, g.not != null && g.kart != null && g.not < g.kart, JSON.stringify(g));
+    /* 04ae5e9 ile profil başlığı değişti: "Gittim, deneyimimi" notu canlıda da yok; eski ölçü kaldırıldı */
     await p.evaluate(() => scrollTo(0, 0)); await p.screenshot({ path: `${OUT}/${dev}-profil-ust-${slug}.png` });
     await p.locator("#seckide").scrollIntoViewIfNeeded(); await p.locator("#seckide").screenshot({ path: `${OUT}/${dev}-profil-${slug}.png` }).catch(() => {});
     await c.close();
