@@ -136,6 +136,7 @@ ok("kendi fotoğrafını kaldırır", (await api(`/api/reviews/${dBen.r}/photos/
 const mCtx = await baglam(M, { viewport: { width: 1366, height: 1000 } }); const mp = await mCtx.newPage(); izle(mp, "moderator");
 await mp.goto(`${BASE}/yonetim/fotograf-moderasyon/`, { waitUntil: "networkidle" });
 await mp.screenshot({ path: `${OUT}/3-moderasyon-kuyruk.png` });
+mp.on("dialog", (d) => d.accept());
 const [x1, x2, x3] = bekleyen.map((r) => r.id);
 const kart = (id) => mp.locator(`[data-photo="${id}"]`);
 ok("kuyrukta büyük önizleme açılır", await kart(x1).locator("img").first().evaluate((i) => i.complete && i.naturalWidth > 0));
@@ -166,6 +167,13 @@ const profil = async (s, o = {}) => { const ctx = await baglam(null, o); const p
 const galeri = await baglam(null, { viewport: { width: 1366, height: 900 } }); const gp = await galeri.newPage(); await gp.goto(`${BASE}/mekan/${SLUG}/fotograflar/?v=${Date.now()}`, { waitUntil: "networkidle" });
 ok("Fotoğraflar sayfasında onaylı", (await gp.content()).includes(x1)); await gp.screenshot({ path: `${OUT}/4-galeri-masaustu.png` }); await galeri.close();
 
+/* mobil panel ve sorunlu kayıtlar */
+{ const c = await baglam(M, { ...devices["iPhone 14"], defaultBrowserType: undefined }); const p = await c.newPage(); await p.goto(`${BASE}/yonetim/fotograf-moderasyon/`, { waitUntil: "networkidle" });
+  ok("panel mobilde taşmaz", await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)); const on = p.locator("[data-photo] button", { hasText: "Onayla" }).first(); ok("Onayla düğmesi dokunmaya uygun", (await on.boundingBox()).height >= 40); await p.screenshot({ path: `${OUT}/3-moderasyon-mobil.png` });
+  await p.getByRole("tab", { name: "Sorunlu kayıtlar" }).click(); await p.locator("[data-problems]").waitFor(); await p.screenshot({ path: `${OUT}/3-sorunlu-kayitlar.png` }); ok("sorunlu kayıtlar açılır", (await p.locator("[data-problems]").innerText()).includes("kırık dosya")); await c.close(); }
+const hist = await (await api(`/api/moderation/photos/?history=${x1}`, { u: M })).json();
+ok("işlem geçmişi gerçek kayıt", hist.history?.some((h) => h.action === "photo_approve") && !JSON.stringify(hist).includes(D.userId), hist.history?.length);
+ok("kullanıcı geçmişi göremez", (await api(`/api/moderation/photos/?history=${x1}`, { u: D })).status === 403);
 /* bildirim */
 const rep = (u, id, reason) => { const b = jsonBody({ reason }); return api(`/api/photos/${id}/report/`, { u, method: "POST", body: b.body, headers: b.headers }); };
 ok("oturumsuz bildirim 401", (await rep(null, x1, "telif")).status === 401);

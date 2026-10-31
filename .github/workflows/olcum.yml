@@ -14,7 +14,8 @@ concurrency:
   group: olcum
   cancel-in-progress: false
 env:
-  MEDYA_HOST: gidenler-n72evcr0i-hulu34.vercel.app
+  EKRAN_ETIKET: sonra
+  MEDYA_HOST: gidenler-pqgfprggo-hulu34.vercel.app
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
   TEST_HOST: gidenler-dhces8uow-hulu34.vercel.app     # korumalı staged Production test dağıtımı (Google açık)
@@ -415,12 +416,44 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
       - run: node ops/ekran.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", ETIKET: once }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", ETIKET: "${{ env.EKRAN_ETIKET }}" }
       - if: always()
         run: test -d out/ekran && tar -C out -czf out/ekran.tgz ekran && rm -rf out/ekran && openssl cms -encrypt -aes256 -binary -outform DER -in out/ekran.tgz -out out/ekran.tgz.cms ops/olcum.pem && rm out/ekran.tgz
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: ekran, path: out/ekran.tgz.cms, if-no-files-found: ignore }
+  senaryo:
+    if: contains(github.event.head_commit.message, '[senaryo]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/senaryo.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}" }
+      - if: always()
+        run: test -d out/senaryo && tar -C out -czf out/senaryo.tgz senaryo && rm -rf out/senaryo && openssl cms -encrypt -aes256 -binary -outform DER -in out/senaryo.tgz -out out/senaryo.tgz.cms ops/olcum.pem && rm out/senaryo.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: senaryo, path: out/senaryo.tgz.cms, if-no-files-found: ignore }
+  h418:
+    if: contains(github.event.head_commit.message, '[h418]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/h418.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}" }
+      - if: always()
+        run: test -d out/h418 && tar -C out -czf out/h418.tgz h418 && rm -rf out/h418 && openssl cms -encrypt -aes256 -binary -outform DER -in out/h418.tgz -out out/h418.tgz.cms ops/olcum.pem && rm out/h418.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: h418, path: out/h418.tgz.cms, if-no-files-found: ignore }
   google-rapor:
     if: contains(github.event.head_commit.message, '[google-rapor]')
     runs-on: ubuntu-latest
