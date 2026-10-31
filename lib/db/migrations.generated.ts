@@ -117,5 +117,24 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
    "CREATE UNIQUE INDEX \"score_watches_user_place_uq\" ON \"score_watches\" USING btree (\"user_id\",\"place_id\");",
    "CREATE INDEX \"score_watches_place_idx\" ON \"score_watches\" USING btree (\"place_id\",\"active\",\"state\");"
   ]
+ },
+ {
+  "tag": "0002_fotograf_arsivi",
+  "hash": "8742827e0b19b459faa0a9d8d42165be1dc36db7dacff7fa5ec92fcd9a575c17",
+  "statements": [
+   "CREATE TABLE \"media_blobs\" (\n\t\"key\" text PRIMARY KEY NOT NULL,\n\t\"data\" text NOT NULL,\n\t\"content_type\" text NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "CREATE TABLE \"photo_assets\" (\n\t\"media_id\" text PRIMARY KEY NOT NULL,\n\t\"place_id\" text NOT NULL,\n\t\"review_id\" text,\n\t\"uploader_id\" text,\n\t\"sha256\" text NOT NULL,\n\t\"width\" integer NOT NULL,\n\t\"height\" integer NOT NULL,\n\t\"bytes\" integer NOT NULL,\n\t\"storage_provider\" text NOT NULL,\n\t\"variants\" jsonb NOT NULL,\n\t\"rights_type\" text NOT NULL,\n\t\"rights_statement\" text NOT NULL,\n\t\"source_url\" text,\n\t\"reject_reason\" text,\n\t\"approved_at\" timestamp with time zone,\n\t\"approved_by\" text,\n\t\"cover_candidate\" boolean DEFAULT false NOT NULL,\n\t\"is_cover\" boolean DEFAULT false NOT NULL,\n\t\"focus\" text,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "CREATE TABLE \"staff_roles\" (\n\t\"user_id\" text PRIMARY KEY NOT NULL,\n\t\"role\" text NOT NULL,\n\t\"granted_by\" text NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "ALTER TABLE \"photo_assets\" ADD CONSTRAINT \"photo_assets_media_id_media_items_id_fk\" FOREIGN KEY (\"media_id\") REFERENCES \"public\".\"media_items\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+   "ALTER TABLE \"photo_assets\" ADD CONSTRAINT \"photo_assets_place_id_places_id_fk\" FOREIGN KEY (\"place_id\") REFERENCES \"public\".\"places\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+   "ALTER TABLE \"photo_assets\" ADD CONSTRAINT \"photo_assets_review_id_reviews_id_fk\" FOREIGN KEY (\"review_id\") REFERENCES \"public\".\"reviews\"(\"id\") ON DELETE set null ON UPDATE no action;",
+   "ALTER TABLE \"photo_assets\" ADD CONSTRAINT \"photo_assets_uploader_id_user_id_fk\" FOREIGN KEY (\"uploader_id\") REFERENCES \"public\".\"user\"(\"id\") ON DELETE set null ON UPDATE no action;",
+   "ALTER TABLE \"staff_roles\" ADD CONSTRAINT \"staff_roles_user_id_user_id_fk\" FOREIGN KEY (\"user_id\") REFERENCES \"public\".\"user\"(\"id\") ON DELETE cascade ON UPDATE no action;",
+   "CREATE UNIQUE INDEX \"photo_assets_place_sha_uq\" ON \"photo_assets\" USING btree (\"place_id\",\"sha256\");",
+   "CREATE INDEX \"photo_assets_review_idx\" ON \"photo_assets\" USING btree (\"review_id\");",
+   "CREATE INDEX \"photo_assets_uploader_idx\" ON \"photo_assets\" USING btree (\"uploader_id\");",
+   "CREATE INDEX \"photo_assets_place_idx\" ON \"photo_assets\" USING btree (\"place_id\");",
+   "CREATE UNIQUE INDEX \"photo_assets_one_cover_uq\" ON \"photo_assets\" USING btree (\"place_id\") WHERE \"photo_assets\".\"is_cover\";"
+  ]
  }
 ];

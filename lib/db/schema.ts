@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 /* ==========================================================================
    GİDENLER VERİ MODELİ (Faz 0)
    --------------------------------------------------------------------------
@@ -455,4 +456,52 @@ export const auditLog = pgTable("audit_log", {
   refId: text("ref_id"),
   detail: jsonb("detail"),
   at: ts("at").notNull().defaultNow(),
+});
+
+/* ── FOTOĞRAF ARŞİVİ ────────────────────────────────────────────────────────
+   media_items kaydının dosya ve hak ayrıntısı. Yükleme, deneyimden ve puandan AYRIDIR: bu tablolar puan hesabına girmez,
+   ziyaret doğrulaması değildir. Google içeriği buraya yazılmaz. */
+export const photoAssets = pgTable("photo_assets", {
+  mediaId: text("media_id").primaryKey().references(() => mediaItems.id, { onDelete: "cascade" }),
+  placeId: text("place_id").notNull().references(() => places.id, { onDelete: "cascade" }),
+  reviewId: text("review_id").references(() => reviews.id, { onDelete: "set null" }),
+  uploaderId: text("uploader_id").references(() => user.id, { onDelete: "set null" }),
+  sha256: text("sha256").notNull(),
+  width: integer("width").notNull(),
+  height: integer("height").notNull(),
+  bytes: integer("bytes").notNull(),
+  /** db | s3 */
+  storageProvider: text("storage_provider").notNull(),
+  /** [{ w, h, key, bytes }] */
+  variants: jsonb("variants").$type<Array<{ w: number; h: number; key: string; bytes: number }>>().notNull(),
+  /** own | permission | license */
+  rightsType: text("rights_type").notNull(),
+  rightsStatement: text("rights_statement").notNull(),
+  sourceUrl: text("source_url"),
+  rejectReason: text("reject_reason"),
+  approvedAt: ts("approved_at"),
+  approvedBy: text("approved_by"),
+  coverCandidate: boolean("cover_candidate").notNull().default(false),
+  isCover: boolean("is_cover").notNull().default(false),
+  /** Kırpma odağı (CSS object-position) */
+  focus: text("focus"),
+  createdAt: created(),
+}, (t) => [uniqueIndex("photo_assets_place_sha_uq").on(t.placeId, t.sha256), index("photo_assets_review_idx").on(t.reviewId), index("photo_assets_uploader_idx").on(t.uploaderId), index("photo_assets_place_idx").on(t.placeId), uniqueIndex("photo_assets_one_cover_uq").on(t.placeId).where(sql`${t.isCover}`)]);
+
+/** Personel yetkisi: fotoğraf moderasyonu. user.kind puan girdisini belirler, bu tablo yalnız yönetim yetkisini. */
+export const staffRoles = pgTable("staff_roles", {
+  userId: text("user_id").primaryKey().references(() => user.id, { onDelete: "cascade" }),
+  /** moderator | admin */
+  role: text("role").notNull(),
+  grantedBy: text("granted_by").notNull(),
+  grantedAt: created(),
+});
+
+/** Yalnız Preview/yerel depolama: Production'da kullanılmaz. */
+export const mediaBlobs = pgTable("media_blobs", {
+  key: text("key").primaryKey(),
+  /** base64 */
+  data: text("data").notNull(),
+  contentType: text("content_type").notNull(),
+  createdAt: created(),
 });
