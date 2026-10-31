@@ -107,7 +107,7 @@ export function WriteForm({
       body: JSON.stringify(mine ? payload() : { slug: entitySlug, ...payload() }) }).catch(() => null);
     const j = r ? await r.json().catch(() => null) as { status?: string; message?: string; error?: string; id?: string } | null : null;
     setBusy(false);
-    if (!r) { keepDraft(); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
+    if (!r) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
     if (r.ok) {
       deleteDraft(entitySlug);
       if (entityId) setEntityState(entityId, "visited", "write");
@@ -119,7 +119,7 @@ export function WriteForm({
     }
     if (r.status === 401) { keepDraft(); setError("Oturumun kapanmış. Yazdıkların taslak olarak saklandı; yeniden giriş yapıp yayınla."); return; }
     if (r.status === 409 && j?.error === "exists") { setError(j.message ?? "Bu mekân için zaten bir deneyimin var."); location.reload(); return; }
-    if (r.status >= 500) keepDraft();
+    if (r.status >= 500) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); }
     setError(j?.message ?? "Gönderilemedi; yeniden dene.");
   }
 
@@ -169,7 +169,8 @@ export function WriteForm({
             <Link href={live ? `/mekan/${entitySlug}/#deneyimler` : `/mekan/${entitySlug}/`}>
               <Button variant="primary">{live ? "Deneyimimi sayfada gör" : "Sayfaya dön"}</Button>
             </Link>
-            <Link href="/benim/"><Button variant="ghost">Benim Gidenler&apos;im</Button></Link>
+            <Link href="/benim/"><Button variant="ghost">Katkılarım</Button></Link>
+            {live && <Link href="/ara/?yaz=1"><Button variant="ghost">Başka bir yer yaz</Button></Link>}
           </div>
           <p className="mt-6 border-t border-line pt-3 text-[12px] text-ink-3">
             Her deneyim &ldquo;doğrulanmamış ziyaret&rdquo; olarak görünür; ziyaret doğrulama ayrı bir adımdır ve henüz açık değil.
@@ -223,6 +224,8 @@ export function WriteForm({
           Hızlı tepkin: <span className="font-semibold">{quick.mood}</span>{quick.returnIntent === "evet" ? ", tekrar giderim" : quick.returnIntent === "hayır" ? ", tekrar gitmem" : ""}{quick.note ? ` — “${quick.note}”` : ""}. Şimdi olayı anlat; tepki deneyime dönüşsün.
         </p>
       )}
+
+      {isReal && !mine && <p className="mt-4 max-w-[60ch] text-[14px] leading-snug text-ink-2">Bu mekânın puanı yalnız gidenlerin yazdıklarından oluşur. Birkaç cümle bile bir sonraki gidecek kişinin kararına yardım eder.</p>}
 
       {/* ── A. METİN — ekranın merkezi ── */}
       <section className="mt-8 border-t-2 border-line-strong pt-6">
@@ -398,7 +401,8 @@ export function WriteForm({
         </ul>
       </section>
 
-      {canPublish && <PhotoPicker ctl={photos} entityName={entityName} />}
+      {canPublish && <PhotoPicker ctl={photos} entityName={entityName} reviewId={mine?.id} />}
+      {isReal && account === "anon" && photos.enabled && <p id="fotograf" className="mt-10 border-t border-line pt-4 text-[13px] text-ink-2">Fotoğrafı giriş yaptıktan sonra ekleyebilirsin; yazdıkların korunur.</p>}
 
       {/* ── gönder ── */}
       <div className="sticky bottom-0 mt-12 flex flex-col gap-2 border-t-2 border-line-strong bg-paper/95 py-4 backdrop-blur-sm">

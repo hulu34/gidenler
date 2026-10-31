@@ -11,6 +11,9 @@ import { score1 } from "@/lib/format";
 import { WhyThisResult } from "@/components/decision/WhyThisResult";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { recordIntent, useUserData } from "@/lib/store";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { searchV3 } from "@/lib/search";
+import { EntityCardRow } from "@/components/experience/EntityCardRow";
 
 /** Sunum modunda hazır soru: sayfa açıldığında sonuç görünür, "Devam et" düğmeleri hemen denenebilir. */
 const DEMO_QUERY = "Bu akşam Kadıköy'de sakin, iyi yemekli bir yer arıyorum.";
@@ -54,6 +57,8 @@ export default function AskPage() {
   useEffect(() => { if (asked.trim()) recordIntent(asked); }, [asked]);
 
   const result = useMemo(() => (asked.trim() ? askGidenler(asked, refine) : null), [asked, refine]);
+  /* gerçek veride puan birikene dek karar motoru öneremez: boş ekran yerine eşleşen mekânlar, puan iddiası olmadan */
+  const realHits = useMemo(() => { if (DEMO_VISIBLE || !asked.trim() || result?.items.length) return []; const r = searchV3(asked, { limit: 8 }); return [...r.exact, ...r.adjacent].slice(0, 8); }, [asked, result]);
   /* Takip çipi neyi değiştirdi — sadece sıra değil, ağırlık. Kara kutu değil. */
   const refineNotes: string[] = [];
   if (refine.context === "date") refineNotes.push("Date bağlamında sessizlik ve atmosfer ağırlığı arttı; hız önemsizleşti.");
@@ -104,7 +109,7 @@ export default function AskPage() {
         <section className="mt-10 border-t-2 border-line-strong pt-7" aria-live="polite">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
             <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] font-extrabold leading-none tracking-[-0.04em]">
-              {result.items.length ? `Sana ${result.items.length} yer buldum` : "Bu tarife uyan bir yer bulamadım"}
+              {result.items.length ? `Sana ${result.items.length} yer buldum` : !DEMO_VISIBLE && realHits.length ? "Tarifine uyan gerçek mekânlar" : "Bu tarife uyan bir yer bulamadım"}
             </h2>
             {result.understood.length > 0 && (
               <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-ink-3">
@@ -137,6 +142,12 @@ export default function AskPage() {
           </div>
 
           <ol className="mt-6">
+            {!result.items.length && !DEMO_VISIBLE && realHits.length > 0 && (
+              <div className="col-span-full">
+                <p className="max-w-[60ch] text-[14.5px] text-ink-2">Karşılaştırma ve öneri için puanlı mekân gerekiyor; bunlarda henüz Gidenler puanı yok. Sıra kalite göstermez.</p>
+                <ul className="mt-3">{realHits.map((h) => <EntityCardRow key={h.card.entity.id} card={h.card} dense />)}</ul>
+              </div>
+            )}
             {result.items.map((it, i) => {
               const e = getEntityById(it.entityId)!;
               const intel = getTopicIntelligence(it.entityId)!;

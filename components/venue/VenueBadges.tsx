@@ -26,7 +26,9 @@ export function VenueBadges({ entityId }: { entityId: string }) {
 }
 
 /* Gerçek mekân, henüz deneyim yok: puan uydurulmaz; ilk deneyime çağrı. */
-export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredFrom = null, confidence = null }: { entity: Entity; reviewCount?: number; score?: number | null; scoredFrom?: number | null; confidence?: string | null }) {
+const QUICK = "inline-flex h-11 items-center rounded-[3px] border border-line-2 px-3.5 text-[14px] font-semibold hover:border-ink";
+
+export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredFrom = null, confidence = null, mapsUrl, hasMenu = false }: { mapsUrl?: string; hasMenu?: boolean; entity: Entity; reviewCount?: number; score?: number | null; scoredFrom?: number | null; confidence?: string | null }) {
   return (
     <div className="flex flex-col gap-3 border-l-2 border-pos pl-4">
       {score !== null ? (
@@ -37,15 +39,16 @@ export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredF
           {" "}· puana giren <a href="#deneyimler" className="font-semibold underline decoration-line-2 underline-offset-4">{scoredFrom ?? reviewCount} deneyimden</a>; yalnız Gidenler kullanıcılarının kendi deneyimleri.
         </p>
       ) : (
-      <p className="max-w-[62ch] text-[16px] leading-[1.45]">
-        <b>{SCORE_WAITING}</b> Puan, gerçekten gidenlerin deneyimlerinden oluşur;{" "}
-        {reviewCount > 0 ? <>şimdiye kadar <a href="#deneyimler" className="font-semibold underline decoration-line-2 underline-offset-4">{reviewCount} deneyim</a> yazıldı, puan yeterli sayıda deneyim birikince oluşur.</> : "bu mekân için ilk deneyimler bekleniyor."}
+      <p className="max-w-[62ch] text-[15px] leading-[1.45]">
+        <b>{SCORE_WAITING}</b>{" "}
+        {reviewCount > 0 ? <><a href="#deneyimler" className="font-semibold underline decoration-line-2 underline-offset-4">{reviewCount} deneyim</a> yazıldı.</> : "Henüz deneyim yok; ilkini sen yazabilirsin."}
       </p>
       )}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <Link href={`/yaz/${entity.slug}/`} className="h-10 rounded-[3px] bg-accent px-4 text-[14px] font-semibold leading-10 text-on-accent">Gittim, deneyimimi yazayım</Link>
-        <a href="#bilgi" className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">Bilgi ve rezervasyon</a>
-        <a href="#gor" className="text-[13px] font-semibold text-ink-3 underline decoration-line-2 underline-offset-4 hover:text-ink">{entity.location?.geo ? "360° gör" : "Konum"}</a>
+      <div className="flex flex-wrap items-center gap-2">
+        <Link href={`/yaz/${entity.slug}/`} className="inline-flex h-11 items-center rounded-[3px] bg-accent px-4 text-[14px] font-semibold text-on-accent">Deneyim yaz</Link>
+        {hasMenu && <a href="#menu" className={QUICK}>Menü</a>}
+        {mapsUrl && <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={QUICK}>Yol tarifi</a>}
+        {entity.contact?.phone && <a href={`tel:${entity.contact.phone.replace(/[^+\d]/g, "")}`} className={QUICK}>Ara</a>}
       </div>
       <PlaceStatusButtons entityId={entity.id} />
     </div>

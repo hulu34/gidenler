@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { compareEntities } from "@/lib/decision";
 import { listCards } from "@/lib/api";
+import { usePublished } from "@/components/score/PublishedProvider";
+import { applyPublishedAll } from "@/lib/score/publishedCards";
 import { getEntityById } from "@/data/entities";
 import { score1 } from "@/lib/format";
 import { getScoreSemantic } from "@/lib/semantic";
@@ -28,7 +30,8 @@ function fmt(v: number | string | null, f: ComparisonRow["format"]) {
  * "Hangisine gitmelisin?" + neden + bağlama göre değişen cevap.
  */
 export default function ComparePage() {
-  const cards = useMemo(() => listCards().filter((c) => c.score !== null && c.category.compliance.showScores), []);
+  const published = usePublished();
+  const cards = useMemo(() => applyPublishedAll(listCards(), published).filter((c) => c.score !== null && c.category.compliance.showScores), [published]);
   const [a, setA] = useState(DEMO_VISIBLE ? "sakura-omakase" : "");
   const [b, setB] = useState(DEMO_VISIBLE ? "moda-lokantasi" : "");
 

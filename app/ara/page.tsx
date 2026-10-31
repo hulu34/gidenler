@@ -76,16 +76,22 @@ export default function SearchPage() {
   useEffect(() => setLimit(40), [qq, cat, city, district]);
 
   const total = results.entities.length + results.adjacent.length + results.creators.length + results.lists.length;
+  /* sonuçsuz arama sayacı: sorgu metni gönderilmez */
+  useEffect(() => {
+    if (!qq || total > 0) return;
+    const t = setTimeout(() => { void fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "search:empty" }) }).catch(() => {}); }, 2000);
+    return () => clearTimeout(t);
+  }, [qq, total]);
   const matchOf = (id: string, showScores: boolean) => (showScores ? getPersonalMatch(id, "default", undefined, undefined, profile)?.score ?? null : null);
 
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 sm:px-7">
-      <section className="pt-10 sm:pt-14">
-        <p className="label">{writeMode ? "Deneyim yaz" : "Ara"}</p>
-        <h1 className="mt-2 text-[clamp(2rem,6vw,3rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">
+      <section className={qq && !writeMode ? "pt-4 sm:pt-10" : "pt-10 sm:pt-14"}>
+        <p className={`label ${qq && !writeMode ? "hidden sm:block" : ""}`}>{writeMode ? "Deneyim yaz" : "Ara"}</p>
+        <h1 className={`${qq && !writeMode ? "sr-only sm:not-sr-only" : ""} mt-2 text-[clamp(2rem,6vw,3rem)] font-extrabold leading-[0.98] tracking-[-0.045em]`}>
           {writeMode ? "Nereye gittin?" : "Ne arıyorsun?"}
         </h1>
-        <p className="mt-2 max-w-[56ch] text-[14.5px] text-ink-2">
+        <p className={`${qq && !writeMode ? "hidden sm:block" : ""} mt-2 max-w-[56ch] text-[14.5px] text-ink-2`}>
           {writeMode ? "Deneyimini yazacağın mekânı seç. Bulamazsan ilk deneyimi yazan kişi başlığı açar." : "Mekân, kategori, semt, kişi veya liste ara."}{" "}
           {!writeMode && <>Karar vermek istiyorsan <Link href="/sor/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4 hover:decoration-ink">Sor Gidenler</Link>.</>}
         </p>
@@ -94,26 +100,26 @@ export default function SearchPage() {
           value={q} onChange={(e) => setQ(e.target.value)}
           placeholder={DEMO_VISIBLE ? "Sakura, japon, Kadıköy, @denizyer…" : "balık, kebap, Kadıköy, meyhane…"}
           aria-label="Ara" autoFocus
-          className="mt-6 h-12 w-full border-b-2 border-line-strong bg-transparent pb-1 text-[clamp(1.125rem,3vw,1.5rem)] outline-none placeholder:text-ink-3 focus:border-accent"
+          type="search" enterKeyHint="search" className="mt-2 h-12 w-full border-b-2 sm:mt-6 border-line-strong bg-transparent pb-1 text-[clamp(1.125rem,3vw,1.5rem)] outline-none placeholder:text-ink-3 focus:border-accent"
         />
 
-        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
-          <span className="label">Kategori</span>
+        <div className="-mx-5 mt-2 flex items-center gap-x-5 overflow-x-auto px-5 sm:mx-0 sm:mt-4 sm:flex-wrap sm:px-0 [&>*]:shrink-0">
+          <span className="label hidden sm:inline">Kategori</span>
           <button type="button" aria-pressed={cat === "hepsi"} onClick={() => setCat("hepsi")}
-            className={`text-[12px] font-semibold uppercase tracking-[0.12em] ${cat === "hepsi" ? "border-b-2 border-accent pb-0.5 text-ink" : "text-ink-3 hover:text-ink"}`}>Hepsi</button>
+            className={`min-h-10 text-[12px] font-semibold uppercase tracking-[0.12em] ${cat === "hepsi" ? "border-b-2 border-accent pb-0.5 text-ink" : "text-ink-3 hover:text-ink"}`}>Hepsi</button>
           {cats.map((c) => (
             <button key={c.id} type="button" aria-pressed={cat === c.id} onClick={() => setCat(c.id)}
-              className={`text-[12px] font-semibold uppercase tracking-[0.12em] ${cat === c.id ? "border-b-2 border-accent pb-0.5 text-ink" : "text-ink-3 hover:text-ink"}`}>{c.label}</button>
+              className={`min-h-10 text-[12px] font-semibold uppercase tracking-[0.12em] ${cat === c.id ? "border-b-2 border-accent pb-0.5 text-ink" : "text-ink-3 hover:text-ink"}`}>{c.label}</button>
           ))}
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
-          <span className="label">Konum</span>
-          <select value={city} onChange={(e) => { setCity(e.target.value); setDistrict("hepsi"); }} aria-label="Şehir" className="h-8 border-b-2 border-line-2 bg-transparent text-[13px] font-semibold outline-none focus:border-accent">
+          <span className="label hidden sm:inline">Konum</span>
+          <select value={city} onChange={(e) => { setCity(e.target.value); setDistrict("hepsi"); }} aria-label="Şehir" className="h-10 border-b-2 border-line-2 bg-transparent text-[13px] font-semibold outline-none focus:border-accent">
             <option value="hepsi">Tüm şehirler</option>
             {cities.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
-          <select value={district} onChange={(e) => setDistrict(e.target.value)} aria-label="Semt" className="h-8 border-b-2 border-line-2 bg-transparent text-[13px] font-semibold outline-none focus:border-accent">
+          <select value={district} onChange={(e) => setDistrict(e.target.value)} aria-label="Semt" className="h-10 border-b-2 border-line-2 bg-transparent text-[13px] font-semibold outline-none focus:border-accent">
             <option value="hepsi">Tüm semtler</option>
             {districts.map((d) => <option key={d} value={d}>{d}</option>)}
           </select>
@@ -153,7 +159,7 @@ export default function SearchPage() {
       )}
 
       {results.entities.length > 0 && (
-        <section className="mt-9">
+        <section className="mt-5 sm:mt-9">
           <div className="flex items-baseline justify-between border-b-2 border-line-strong pb-3">
             <h2 className="text-[13px] font-bold uppercase tracking-[0.2em]">{qq ? "Eşleşenler" : "Mekânlar"}</h2>
             <span className="tnum label">{results.entities.length}</span>

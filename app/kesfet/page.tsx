@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { RealDiscover } from "@/components/home/RealDiscover";
 import { PersonMark } from "@/components/experience/PersonMark";
 import { expertExperiences, featuredLists, listCards, listCategories, rising, trending } from "@/lib/api";
 import { nf } from "@/lib/format";
@@ -18,6 +20,7 @@ export const metadata = { title: "Keşfet", alternates: { canonical: "/kesfet/" 
  * Yakınlık: gerçek konum yok → sahte mesafe üretmiyoruz; semte göre gösteriyoruz.
  */
 export default async function ExplorePage() {
+  if (!DEMO_VISIBLE) return <RealDiscover />;
   const published = await publishedScores();
   const cards = applyPublishedAll(listCards(), published).filter((c) => c.score !== null && c.category.compliance.showScores);
   /* Öne çıkanlar: tam kanıtlı (A) kayıtlar, farklı dünyalardan — restoran Gidenler'in başlangıcı, sınırı değil. */

@@ -12,7 +12,7 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
   const router = useRouter();
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(-1);
   const boxRef = useRef<HTMLDivElement>(null);
 
   /* Hızlı öneri: arama motoru v3 (alaka kapısı) — tam eşleşmeler önce, yakın adaylar sonra. */
@@ -26,7 +26,7 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
     return () => document.removeEventListener("click", onDoc);
   }, []);
 
-  useEffect(() => setActive(0), [q]);
+  useEffect(() => setActive(-1), [q]);
 
   function go(slug: string) {
     setOpen(false);
@@ -36,9 +36,10 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
 
   function onKey(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "ArrowDown") { e.preventDefault(); setActive((a) => Math.min(a + 1, results.length - 1)); }
-    else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(a - 1, 0)); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(a - 1, -1)); }
     else if (e.key === "Enter") {
       e.preventDefault();
+      /* Enter sonuç listesine gider; öneri ancak okla seçildiyse açılır ("pide" yazıp Enter rastgele bir pideciye götürmesin) */
       if (results[active]) go(results[active].entity.slug);
       else if (q.trim()) {
         setOpen(false);
@@ -65,10 +66,10 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
             onFocus={() => setOpen(true)}
             onKeyDown={onKey}
             type="search"
-            placeholder="Nereye?"
+            placeholder="Mekân, semt ya da yemek ara"
             aria-label="Mekân, kategori veya semt ara"
             autoComplete="off"
-            className="h-9 w-full border-b-2 border-line-2 bg-transparent pb-1 text-[15px] outline-none placeholder:text-ink-3 focus:border-accent"
+            className="h-10 w-full border-b-2 border-line-2 bg-transparent pb-1 text-[16px] outline-none sm:text-[15px] placeholder:text-ink-3 focus:border-accent"
           />
 
           {open && q.trim().length >= 2 && (
@@ -100,6 +101,7 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
                       </button>
                     </li>
                   ))}
+                  <li><button type="button" onClick={() => { setOpen(false); router.push(`/ara/?q=${encodeURIComponent(q.trim())}`); }} className="flex min-h-11 w-full items-center px-4 py-2 text-left text-[13px] font-bold underline underline-offset-2">&ldquo;{q.trim()}&rdquo; için bütün sonuçlar</button></li>
                 </ul>
               ) : (
                 <p className="px-4 py-3 text-[13px] text-ink-3">
@@ -110,7 +112,7 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
           )}
         </div>
 
-        <nav className="ml-auto flex shrink-0 items-center gap-5">
+        <nav className="ml-auto hidden shrink-0 items-center gap-5 sm:flex">
           <DemoIndicator />
           <Link
             href="/sor/"
@@ -146,17 +148,13 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
           </Link>
         </nav>
       </div>
-      {/* Mobil ikinci satır: Seçki, Keşfet ve Sor ilk seviyede; üst satırdaki arama genişliğini korur.
-          Yalnız Seçki açıkken görünür (yayında yazı yoksa mobil başlık eskisi gibi). */}
-      {showSeckisi && (
-        <nav aria-label="Bölümler" className="flex h-9 items-center gap-6 border-t border-line px-5 sm:hidden">
-          {([["/seckisi/", "Seçki"], ["/kesfet/", "Keşfet"], ["/sor/", "Sor"]] as const).map(([href, label]) => (
-            <Link key={href} href={href} className="text-[11.5px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink">
-              {label}
-            </Link>
-          ))}
-        </nav>
-      )}
+      {/* Mobil ikinci satır: arama üst satırda tam genişlikte kalır, bölümler ve "Deneyim yaz" burada. */}
+      <nav aria-label="Bölümler" className="flex h-11 items-center gap-5 overflow-x-auto border-t border-line px-5 sm:hidden">
+        {([["/kesfet/", "Keşfet"], ...(showSeckisi ? [["/seckisi/", "Seçki"]] : []), ["/sor/", "Sor"], ["/benim/", "Benim"]] as Array<[string, string]>).map(([href, label]) => (
+          <Link key={href} href={href} className="flex h-11 shrink-0 items-center text-[11.5px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink">{label}</Link>
+        ))}
+        <Link href="/ara/?yaz=1" className="ml-auto flex h-11 shrink-0 items-center text-[11.5px] font-bold uppercase tracking-[0.12em] text-accent-ink">Deneyim yaz</Link>
+      </nav>
     </header>
   );
 }
