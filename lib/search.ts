@@ -387,11 +387,37 @@ function reasonFor(h: SearchHit, q: ParsedQuery, d: SearchDoc): string {
   return parts.filter(Boolean).slice(0, 3).join(" · ");
 }
 
+/* AD EŞLEŞMESİ — kullanıcı mekânın adını yazdıysa o mekân en üstte olmalı. Tür ve yemek sıralamasından önce çalışır.
+   Aşamalar: tam ad · boşluksuz ad ("japonerdal", "nusret") · ad başı · bütün kelimeler adda · kelime başı · tek harf hatalı. */
+export function nameMatch(d: Pick<SearchDoc, "name" | "nameWords">, raw: string): number {
+  const f = fold(raw);
+  if (f.length < 2) return 0;
+  const words = f.split(" ").filter(Boolean), compact = f.replace(/ /g, ""), dc = d.name.replace(/ /g, "");
+  if (d.name === f) return 1000;
+  if (dc === compact) return 950;
+  if (d.name.startsWith(`${f} `)) return 900;
+  if (words.every((w) => d.nameWords.includes(w))) return 850 - d.nameWords.length;
+  if (compact.length >= 3 && words.every((w) => w.length >= 3 && d.nameWords.some((n) => n.startsWith(w)))) return 800 - d.nameWords.length;
+  if (compact.length >= 4 && dc.startsWith(compact)) return 780;
+  if (compact.length >= 5 && dc.includes(compact)) return 760;
+  if (compact.length >= 5) {
+    if (damerau(compact, dc, compact.length >= 8 ? 2 : 1) <= (compact.length >= 8 ? 2 : 1)) return 600;
+    if (words.every((w) => w.length >= 4 && d.nameWords.some((n) => damerau(w, n, 1) <= 1)) && words.some((w) => d.nameWords.includes(w) || w.length >= 5)) return 500;
+  }
+  return 0;
+}
+
 export function searchV3(raw: string, opts: { limit?: number; city?: string; categoryId?: string } = {}): SearchOutput {
   const q = parseQuery(raw);
   const empty: SearchOutput = { query: q, exact: [], adjacent: [], creators: [], lists: [] };
-  if (!q.content.length && !q.locations.length && !q.qualifiers.length) return empty;
   const docs = searchDocs();
+  const named = new Map<SearchDoc["card"], number>();
+  for (const d of docs) {
+    if (opts.city && d.card.entity.location?.city !== opts.city) continue;
+    if (opts.categoryId && d.card.entity.categoryId !== opts.categoryId) continue;
+    const n = nameMatch(d, raw); if (n) named.set(d.card, n);
+  }
+  if (!named.size && !q.content.length && !q.locations.length && !q.qualifiers.length) return empty;
   const hits: SearchHit[] = [];
   for (const d of docs) {
     if (opts.city && d.card.entity.location?.city !== opts.city) continue;
@@ -400,7 +426,15 @@ export function searchV3(raw: string, opts: { limit?: number; city?: string; cat
     if (!q.content.length && !q.locations.length && d.card.score === null) continue;
     const h = rankDoc(d, q); if (h) hits.push(h);
   }
-  hits.sort((a, b) => b.score - a.score || (b.card.score ?? 0) - (a.card.score ?? 0) || b.card.experienceCount - a.card.experienceCount);
+  /* ad eşleşmesi: ayrı katman; yakın yazım, kesin ad varken eklenmez */
+  const bestName = Math.max(0, ...named.values());
+  for (const [card, n] of named) {
+    if (bestName >= 700 && n < 700) { named.delete(card); continue; }
+    const h = hits.find((x) => x.card === card);
+    if (h) { h.tier = "exact"; h.matched = [...h.matched, `${fold(raw)}:ad`]; }
+    else hits.push({ card, score: 0, text: 1, loc: "n/a", reason: "", tier: "exact", matched: [`${fold(raw)}:ad`] });
+  }
+  hits.sort((a, b) => (named.get(b.card) ?? 0) - (named.get(a.card) ?? 0) || b.score - a.score || (b.card.score ?? 0) - (a.card.score ?? 0) || b.card.experienceCount - a.card.experienceCount);
   for (const h of hits) h.reason = reasonFor(h, q, docs.find((d) => d.card === h.card)!);
   const limit = opts.limit ?? 200;
   const exact = hits.filter((h) => h.tier === "exact").slice(0, limit);
