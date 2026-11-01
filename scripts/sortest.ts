@@ -102,6 +102,13 @@ async function main() {
   const s4 = await sor({ query: "Fatih'te döner", context: { ...s0.context, attrs: ["sakin"] }, shown: s0.shown });
   ok("yeni konu: eski tercih taşınmaz", s4.understood.area === "Fatih" && !s4.understood.attrs.includes("sakin"));
   ok("kapı: kayıtta olmayan nitelik düşer", unsupported("Çok sakin ve romantik bir yer.", ["Tür: Meyhane"]) && !unsupported("Meyhane türünde, Beyoğlu'nda.", ["Tür: Meyhane", "İlçe: Beyoğlu"]));
+  ok("ad: 'yenir' Yeni Lokanta değildir", !(await sor({ query: "Kadıköy'de döner nerede yenir" })).items.some((i) => i.slug === "yeni-lokanta-beyoglu"));
+  ok("ad: 'boğaz' semt koşulunu delmez", (await sor({ query: "Üsküdar'da boğaz kenarı balık" })).items.every((i) => i.district === "Üsküdar"));
+  const ny = await sor({ query: "Yeni Lokanta kaça kadar açık" });
+  ok("ad: tam ad yalnız o mekânı verir", ny.items.length === 1 && ny.items[0].slug === "yeni-lokanta-beyoglu", ny.items.map((i) => i.slug));
+  ok("semt: listedeki mahalle ilçeye değil kendine bağlanır", (await sor({ query: "Suadiye'de burger" })).understood.area === "Suadiye");
+  const az0 = await sor({ query: "Fatih'te burger" }), az1 = az0.items.length ? await sor({ query: "Başka öner", context: az0.context, shown: VENUES.filter((v) => v.district === "Fatih").map((v) => v.slug).slice(0, 30) }) : az0;
+  ok("takip: tükenince 'kayıt yok' denmez", !/için kayıtlı .* bulamadım/.test(String(az1.relaxed)) || !az0.items.length, az1.relaxed);
   /* harcama freni */
   process.env.VERCEL_ENV = "production"; ok("bütçe: Production'da Redis yoksa model çağrılmaz", !(await reserve(0.001))); delete process.env.VERCEL_ENV;
   resetHarcamaForTests(); process.env.SOR_MONTHLY_BUDGET_USD = "50";

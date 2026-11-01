@@ -35,6 +35,8 @@ const SUBAREAS: Area[] = [
   { name: "Moda", district: "Kadıköy", lat: 40.9840, lng: 29.0270 }, { name: "Bağdat Caddesi", district: "Kadıköy", lat: 40.9640, lng: 29.0680 }, { name: "Fenerbahçe", district: "Kadıköy", lat: 40.9690, lng: 29.0350 },
   { name: "Sultanahmet", district: "Fatih", lat: 41.0055, lng: 28.9770 }, { name: "Eminönü", district: "Fatih", lat: 41.0170, lng: 28.9720 }, { name: "Balat", district: "Fatih", lat: 41.0290, lng: 28.9480 }, { name: "Kumkapı", district: "Fatih", lat: 41.0040, lng: 28.9610 },
   { name: "Kuzguncuk", district: "Üsküdar", lat: 41.0350, lng: 29.0330 }, { name: "Çengelköy", district: "Üsküdar", lat: 41.0520, lng: 29.0520 }, { name: "Yeniköy", district: "Sarıyer", lat: 41.1200, lng: 29.0680 }, { name: "Tarabya", district: "Sarıyer", lat: 41.1400, lng: 29.0560 }, { name: "Emirgan", district: "Sarıyer", lat: 41.1090, lng: 29.0550 },
+  { name: "Bostancı", district: "Kadıköy", lat: 40.9530, lng: 29.0950 }, { name: "Suadiye", district: "Kadıköy", lat: 40.9610, lng: 29.0830 }, { name: "Caddebostan", district: "Kadıköy", lat: 40.9690, lng: 29.0620 }, { name: "Göztepe", district: "Kadıköy", lat: 40.9780, lng: 29.0640 }, { name: "Erenköy", district: "Kadıköy", lat: 40.9720, lng: 29.0760 },
+  { name: "Mecidiyeköy", district: "Şişli", lat: 41.0670, lng: 28.9950 }, { name: "Osmanbey", district: "Şişli", lat: 41.0520, lng: 28.9870 }, { name: "Kurtuluş", district: "Şişli", lat: 41.0480, lng: 28.9820 }, { name: "Tophane", district: "Beyoğlu", lat: 41.0280, lng: 28.9810 }, { name: "Beyazıt", district: "Fatih", lat: 41.0100, lng: 28.9640 }, { name: "Aksaray", district: "Fatih", lat: 41.0120, lng: 28.9520 }, { name: "Yeşilköy", district: "Bakırköy", lat: 40.9630, lng: 28.8250 }, { name: "Ataköy", district: "Bakırköy", lat: 40.9840, lng: 28.8560 }, { name: "Arnavutköy Boğaz", district: "Beşiktaş", lat: 41.0680, lng: 29.0430 },
 ];
 const DISTRICTS = [...new Set(VENUES.map((v) => v.district).filter(Boolean))];
 const CAFE_LIKE = ["Kahveci", "Kafe", "Pastane", "Tatlıcı", "Fırın", "Kahvaltı"];
@@ -78,6 +80,8 @@ export const emptyIntent = (): Intent => ({ area: null, district: null, cuisine:
 export const KNOWN = { areas: [...DISTRICTS, ...SUBAREAS.map((a) => a.name)], cuisines: CUISINES.map((c) => c.key), dishes: DISHES.map((d) => d.key), attrs: ATTRS.map((a) => a.key) };
 const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax);
 
+/* Sıradan sözcük tek başına ad sayılmaz: "pide nerede yenir" Yeni Lokanta'yı bulmaz; adın tamamı yazılmalı. */
+const COMMON_NAME = new Set(["yeni", "eski", "buyuk", "kucuk", "tarihi", "meshur", "bizim", "kardesler", "ortaklar", "asmali", "ev", "ana", "usta", "lezzet", "aile", "sofra", "kent", "merkez"]);
 const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "cafe", "kafe", "ve", "the", "bar", "kebap", "balik", "pide", "ocakbasi", "doner", "kebapcisi", "sofrasi", "evi", "et", "iyi", "guzel", "bir"]);
 /* Semt, mutfak ya da tercih sözcüğü tek başına mekân adı sayılmaz: "kebap" Kebap Hocası'nı, "Karaköy" Karaköy Lokantası'nı seçmez. */
 const isGeneric = (t: string) => [...SUBAREAS.map((a) => a.name), ...DISTRICTS, ...CUISINES.flatMap((c) => c.terms), ...DISHES.flatMap((d) => d.terms), ...ATTRS.flatMap((a) => a.terms)].some((term) => { const x = fold(term); return !x.includes(" ") && tokenHit(t, x); });
@@ -92,8 +96,11 @@ function matchName(q: string): Venue | null {
     const compact = fold(v.name).replace(/ /g, "");
     if (toks.length <= 3 && own.some((t) => t.length >= 5 && compact.startsWith(t))) { const s = 50; if (!best || s > best.s) best = { v, s }; continue; }
     if (!nt.length) continue;
-    const hits = nt.filter((n) => toks.some((t) => t === n || (n.length >= 4 && t.startsWith(n) && t.length - n.length <= 4) || (n.length >= 5 && within1(t, n))));
-    if (hits.length === nt.length && hits.some((n) => own.some((t) => t === n || (n.length >= 4 && t.startsWith(n)) || (n.length >= 5 && within1(t, n))))) { const s = hits.join("").length; if (!best || s > best.s) best = { v, s }; }
+    if (nt.every((n) => COMMON_NAME.has(n)) && !q.includes(fold(v.name))) continue;
+    /* ek toleransı 6+ harfte: "boğaz" Boga, "yenir" Yeni değildir */
+    const near = (t: string, n: string) => t === n || (n.length >= 6 && t.startsWith(n) && t.length - n.length <= 4) || (n.length >= 5 && within1(t, n));
+    const hits = nt.filter((n) => toks.some((t) => near(t, n) || q.includes(`${n} `) && t === n));
+    if (hits.length === nt.length && hits.some((n) => own.some((t) => near(t, n)))) { const s = hits.join("").length; if (!best || s > best.s) best = { v, s }; }
   }
   return best && best.s >= 4 ? best.v : null;
 }
@@ -108,7 +115,9 @@ export function parseQuery(query: string): Intent & { confident: boolean } {
   else { const d = DISTRICTS.find((x) => fold(x).length >= 4 && hasTerm(full, x)); if (d) { i.area = d; i.district = d; } }
   /* semt sözcüğü mutfak aramasına girmez: "Adalar" tek harf farkla "adana" sayılmasın */
   const areaWords = i.area ? fold(i.area).split(" ") : [];
-  const q = full.split(" ").filter((t) => !areaWords.some((w) => tokenHit(t, w))).join(" ");
+  /* adı sorulan mekânın adındaki sözcük ayrıca mutfak koşulu olmaz: "Yeni Lokanta'da 6 kişi" esnaf araması değildir */
+  const named = matchName(full), nameWords = named ? fold(named.name).split(" ") : [];
+  const q = full.split(" ").filter((t) => !areaWords.some((w) => tokenHit(t, w)) && !nameWords.includes(t) && !nameWords.some((w) => w.length >= 4 && t.startsWith(w))).join(" ");
   i.wholeCity = !i.area && /\bistanbul/.test(q);
   const toks = q.split(" ");
   const negated = (terms: string[]) => terms.some((t) => { const f = fold(t); const n = toks.findIndex((x) => tokenHit(x, f)); return n >= 0 && NEG.test(toks[n + 1] ?? ""); });
@@ -121,7 +130,6 @@ export function parseQuery(query: string): Intent & { confident: boolean } {
   if (pm) i.party = Number(pm[1]);
   const bm = q.match(/\b(\d{2,6}) ?(tl|lira|₺)/);
   if (bm) { i.budgetMax = Number(bm[1]); if (!i.attrs.includes("ekonomik")) i.attrs.push("ekonomik"); }
-  const named = matchName(full);
   if (named) i.name = named.slug;
   return { ...i, confident: !!(i.area || i.cuisine || i.name) };
 }
@@ -261,6 +269,7 @@ export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
     if (!known.length && pool.length) { alternatives = pool.slice(0, 5); altLabel = "Fiyatı kayıtlı değil; bütçene uyduğu doğrulanmadı"; relaxed = `${i.budgetMax} TL altında fiyatı doğrulanmış mekân bulamadım.`; pool = []; }
     else pool = known;
   }
+  if (!pool.length && !all.length && opts.exclude?.length && findCandidates(i, { limit: 1 }).length) return { ...NONE, note: "Bu koşullarda gösterilmemiş başka kayıtlı mekân kalmadı.", question: "Başka semt ya da mutfak deneyelim mi?" };
   if (!pool.length && !all.length) {
     const wide = (i.area || i.areaText) && (i.cuisine || i.term) ? findCandidates({ ...i, area: null, district: null, areaText: null }, { ...opts, limit: 5 }) : [];
     const where = i.area ?? i.areaText;
