@@ -447,6 +447,21 @@ jobs:
         with: { node-version: 22 }
       - run: node ops/sor-durum.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOSTS: '{"cli":"gidenler-lx1v3l4l6-hulu34.vercel.app","git":"gidenler-lx1v3l4l6-hulu34.vercel.app"}' }
+  sor-gercek:
+    if: contains(github.event.head_commit.message, '[sor-gercek]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/sor-gercek.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-lx1v3l4l6-hulu34.vercel.app", ETIKET: "veri" }
+      - if: always()
+        run: test -d out && tar -C out -czf out-sorai.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sorai.tgz -out sorai.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: sorai, path: sorai.cms, if-no-files-found: ignore }
   medya-canli:
     if: contains(github.event.head_commit.message, '[medya-canli]')
     runs-on: ubuntu-latest
