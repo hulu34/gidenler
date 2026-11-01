@@ -113,6 +113,9 @@ async function main() {
   const old = { e: process.env.VERCEL_ENV, f: process.env.PRODUCTION_DB_FINGERPRINT };
   process.env.VERCEL_ENV = "preview"; process.env.PRODUCTION_DB_FINGERPRINT = dbFingerprint("postgres://u:p@uretim.neon.tech/db")!;
   ok("yalıtım: Preview üretim adresine bağlanamaz", !previewWriteGuard("postgres://u:p@uretim.neon.tech/db").ok);
+  ok("yalıtım: havuzlu adres aynı veritabanı sayılır", !previewWriteGuard("postgres://u:p@uretim-pooler.neon.tech/db").ok);
+  process.env.PRODUCTION_DB_FINGERPRINT = dbFingerprint("postgres://u:p@ep-a-pooler.neon.tech/db")!;
+  ok("yalıtım: iz havuzlu adresten alınmışsa doğrudan adres de reddedilir", !previewWriteGuard("postgres://u:p@ep-a.neon.tech/db").ok);
   ok("yalıtım: Preview dal veritabanına bağlanabilir", previewWriteGuard("postgres://u:p@dal.neon.tech/db").ok);
   delete process.env.PRODUCTION_DB_FINGERPRINT; ok("yalıtım: parmak izi yoksa kapalı", !previewWriteGuard("postgres://u:p@dal.neon.tech/db").ok);
   if (old.e) process.env.VERCEL_ENV = old.e; else delete process.env.VERCEL_ENV; if (old.f) process.env.PRODUCTION_DB_FINGERPRINT = old.f;
