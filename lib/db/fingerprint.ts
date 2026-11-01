@@ -8,12 +8,17 @@ export function dbFingerprint(url?: string | null) {
   catch { return null; }
 }
 
+/* Neon aynı veritabanına iki adres verir: havuzlu (ep-x-pooler…) ve doğrudan (ep-x…). İz hangisinden alınmış olursa olsun aynı sayılır. */
+function hostVariants(url?: string | null) {
+  try { const h = new URL(url!).hostname.toLowerCase(), base = h.replace("-pooler.", "."), [first, ...rest] = base.split("."); return [h, base, [`${first}-pooler`, ...rest].join(".")]; }
+  catch { return []; }
+}
+
 /** Yazma kilidi: Preview yalnız üretimden FARKLI bir veritabanına yazabilir; üretim parmak izi bilinmiyorsa yazamaz. */
 export function previewWriteGuard(url?: string | null): { ok: true } | { ok: false; reason: string } {
   if (process.env.VERCEL_ENV !== "preview") return { ok: true };
   const prod = process.env.PRODUCTION_DB_FINGERPRINT;
-  const mine = dbFingerprint(url);
   if (!prod) return { ok: false, reason: "PRODUCTION_DB_FINGERPRINT tanımlı değil — Preview yazması kilitli." };
-  if (!mine || mine === prod) return { ok: false, reason: "Preview üretim veritabanına bağlı görünüyor — yazma reddedildi." };
+  if (!dbFingerprint(url) || hostVariants(url).some((h) => dbFingerprint(`postgres://${h}`) === prod)) return { ok: false, reason: "Preview üretim veritabanına bağlı görünüyor — yazma reddedildi." };
   return { ok: true };
 }

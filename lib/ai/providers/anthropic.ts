@@ -2,6 +2,13 @@ import { providerKey } from "../config";
 import type { ChatRequest, ChatResponse, ModelProvider } from "../types";
 import { now, postJson } from "./http";
 
+/* 5.x Haiku ve Sonnet: temperature gönderilirse 400. Düşünme varsayılan açık ve max_tokens'tan yer: kısa JSON işinde kapalı, efor düşük. */
+function modelParams(model: string, temperature?: number) {
+  if (model.startsWith("claude-haiku-5")) return { thinking: { type: "disabled" }, output_config: { effort: "low" } };
+  if (model.startsWith("claude-sonnet-5")) return { thinking: { type: "between_tools" }, output_config: { effort: "low" } };
+  return { temperature: temperature ?? 0.2 };
+}
+
 /** Anthropic Messages API — SDK'sız. system ayrı alan; JSON istenirse yönergeye eklenir. */
 export const anthropicProvider: ModelProvider = {
   id: "anthropic",
@@ -13,7 +20,7 @@ export const anthropicProvider: ModelProvider = {
     const data = await postJson<{ content: Array<{ type: string; text?: string }>; usage: { input_tokens: number; output_tokens: number }; stop_reason?: string }>(
       "anthropic", (process.env.ANTHROPIC_BASE_URL ?? "https://api.anthropic.com").replace(/\/$/, "") + "/v1/messages",
       { "x-api-key": providerKey("anthropic")!, "anthropic-version": "2023-06-01" },
-      { model: req.model, max_tokens: req.maxTokens ?? 1200, temperature: req.temperature ?? 0.2, system: system || undefined, messages },
+      { model: req.model, max_tokens: req.maxTokens ?? 1200, ...modelParams(req.model, req.temperature), system: system || undefined, messages },
       req.timeoutMs ?? 18000, req.signal,
     );
     const text = data.content.filter((c) => c.type === "text").map((c) => c.text ?? "").join("");

@@ -15,7 +15,7 @@ export const geminiProvider: ModelProvider = {
     const data = await postJson<{ candidates?: Array<{ content?: { parts?: Array<{ text?: string }> }; finishReason?: string }>; usageMetadata?: { promptTokenCount?: number; candidatesTokenCount?: number } }>(
       "gemini", `${GEMINI_BASE()}/v1beta/models/${encodeURIComponent(req.model)}:generateContent`,
       { "x-goog-api-key": providerKey("gemini")! },
-      { ...(system ? { systemInstruction: { parts: [{ text: system }] } } : {}), contents, generationConfig: { temperature: req.temperature ?? 0.2, maxOutputTokens: req.maxTokens ?? 1200, ...(req.json ? { responseMimeType: "application/json" } : {}) } },
+      { ...(system ? { systemInstruction: { parts: [{ text: system }] } } : {}), contents, generationConfig: { temperature: req.temperature ?? 0.2, maxOutputTokens: req.maxTokens ?? 1200, ...(req.model.startsWith("gemini-2.5-flash") ? { thinkingConfig: { thinkingBudget: 0 } } : {}), ...(req.json ? { responseMimeType: "application/json" } : {}) } },
       req.timeoutMs ?? 18000, req.signal,
     );
     const c = data.candidates?.[0];

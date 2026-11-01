@@ -1,12 +1,23 @@
 import { NextResponse } from "next/server";
 import { checkRate } from "@/lib/ai/ratelimit";
 import { RequestSchema, sor } from "@/lib/sor/ask";
+import { sorCapUsd, spentUsd } from "@/lib/sor/harcama";
+import { isRoleAvailable, candidatesFor } from "@/lib/ai/router";
+import { previewWriteGuard } from "@/lib/db/fingerprint";
 
 /* POST /api/sor — Sor Gidenler. Anahtarlar yalnız sunucuda; hesap ve profil modele gönderilmez. Hata boş sonuç gibi gösterilmez. */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 20;
 const H = { "Cache-Control": "no-store" };
+
+/* Durum: yalnız Preview ve yerel; değer ya da anahtar içermez. Üretimde yok. */
+export async function GET() {
+  if (process.env.VERCEL_ENV === "production") return NextResponse.json({ error: "not_found" }, { status: 404, headers: H });
+  const url = process.env.DATABASE_URL;
+  const c = candidatesFor("primary")[0] ?? null;
+  return NextResponse.json({ env: process.env.VERCEL_ENV ?? "dev", db: !url ? "yok" : previewWriteGuard(url).ok ? "yalitilmis" : "kapali", ai: isRoleAvailable("primary"), provider: c?.provider ?? null, model: c?.model ?? null, fast: candidatesFor("fast")[0]?.model ?? null, capUsd: sorCapUsd(), spentUsd: await spentUsd() }, { headers: H });
+}
 
 export async function POST(req: Request) {
   const site = req.headers.get("sec-fetch-site");
