@@ -8,7 +8,7 @@ Anahtar sohbete, GitHub'a ya da bir dosyaya yazılmaz.
 4. API Keys → "gidenler-sor-preview" adıyla anahtar oluştur, kopyala.
 5. Vercel → gidenler → Settings → Environment Variables → Add:
    - Key: `ANTHROPIC_API_KEY`, Value: anahtar, **Sensitive** açık
-   - Environments: yalnız **Preview**; Git Branch: `gorsel/sor-gercek-ai`
+   - Environments: yalnız **Preview**; Git Branch: `gorsel/restoran-profil-v1`
 6. Production ve "All Preview Branches" seçme. Yatırımcı demosu ve canlı site anahtarı görmez.
 
 Dalın diğer ayarları (sağlayıcı, model) kodla değil bu dala özel ortam değişkenleriyle verilir.
