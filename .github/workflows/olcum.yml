@@ -446,7 +446,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/sor-durum.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOSTS: '{"cli":"gidenler-q4qwuhjvw-hulu34.vercel.app","git":"gidenler-o8cbtcfh6-hulu34.vercel.app"}' }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOSTS: '{"cli":"gidenler-lx1v3l4l6-hulu34.vercel.app","git":"gidenler-lx1v3l4l6-hulu34.vercel.app"}' }
   medya-canli:
     if: contains(github.event.head_commit.message, '[medya-canli]')
     runs-on: ubuntu-latest
