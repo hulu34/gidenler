@@ -7,10 +7,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
    Model devre dışıysa bu açıkça yazılır; hata "sonuç yok" gibi gösterilmez. */
 const API = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/sor/`;
 type Item = { slug: string; name: string; kind: string; district: string; address: string | null; href: string; why: string[]; caveats: string[]; areaFit: string | null };
-type Res = { mode: "ai" | "veri"; reason: string | null; understood: Record<string, unknown>; items: Item[]; note: string | null; question: string | null; relaxed: string | null; context: unknown; shown: string[] };
+type Res = { mode: "ai" | "veri"; reason: string | null; understood: Record<string, unknown>; items: Item[]; alternatives: Item[]; altLabel: string | null; note: string | null; question: string | null; relaxed: string | null; context: unknown; shown: string[] };
 type Turn = { q: string; res?: Res; error?: string };
 const ORNEKLER = ["Galata'da iyi bir Samsun pidesi yemek istiyorum.", "Ataşehir'de kebap", "Balık yiyebileceğimiz sakin bir restoran?", "Uygun fiyatlı ama kaliteli bir esnaf lokantası öner."];
-const REFINE: Array<[string, string]> = [["cheaper", "Daha ekonomik olsun"], ["other_area", "Başka semtte olsun"], ["quieter", "Daha sakin bir yer öner"]];
+const REFINE: Array<[string, string]> = [["cheaper", "Daha ekonomik olsun"], ["other_area", "Başka semtte olsun"], ["quieter", "Daha sakin bir yer öner"], ["another", "Başka öner"]];
 const REASON: Record<string, string> = {
   not_configured: "AI yorumu şu an kapalı. Öneriler kayıtlı verilerden kurallarla seçildi.",
   budget: "AI bütçe sınırına ulaştı. Öneriler kayıtlı verilerden kurallarla seçildi.",
@@ -81,6 +81,7 @@ export function SorAsistan() {
                 {t.res.relaxed && <p className="text-[14px] font-semibold">{t.res.relaxed}</p>}
                 {t.res.note && <p className="text-[14px] text-ink-2">{t.res.note}</p>}
                 {t.res.items.length > 0 && <ol className="flex flex-col">{t.res.items.map((c, i) => <Card key={c.slug} c={c} i={i} />)}</ol>}
+                {t.res.alternatives?.length > 0 && <div data-sor-alternatif className="flex flex-col gap-1 pt-2"><p className="text-[12.5px] font-semibold uppercase tracking-[0.08em] text-ink-3">Koşulunu tam karşılamıyor · {t.res.altLabel}</p><ol className="flex flex-col">{t.res.alternatives.map((c, i) => <Card key={c.slug} c={c} i={i} />)}</ol></div>}
                 {t.res.question && <p className="text-[14.5px] font-semibold">{t.res.question}</p>}
               </div>
             )}

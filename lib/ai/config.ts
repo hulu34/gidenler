@@ -105,6 +105,7 @@ const DEFAULT_PRICES: Record<ProviderId, { in: number; out: number }> = {
 };
 const KNOWN_PRICES: Record<string, { in: number; out: number }> = {
   // İsimler eşleşmezse varsayılan devreye girer; tablo env ile güncellenir, kod değişmez.
+  "anthropic:claude-haiku-5-5": { in: 0.1, out: 0.5 }, "anthropic:claude-sonnet-5-5": { in: 2, out: 10 }, "gemini:gemini-2.5-flash-lite": { in: 0.1, out: 0.4 }, "gemini:gemini-3.8-flash": { in: 0.75, out: 3.75 },
   "anthropic:claude-sonnet": { in: 3, out: 15 }, "anthropic:claude-haiku": { in: 0.8, out: 4 }, "anthropic:claude-opus": { in: 15, out: 75 },
   "openai:gpt-4o": { in: 2.5, out: 10 }, "openai:gpt-4o-mini": { in: 0.15, out: 0.6 }, "openai:gpt-4.1": { in: 2, out: 8 }, "openai:gpt-4.1-mini": { in: 0.4, out: 1.6 },
   "gemini:gemini-2.5-pro": { in: 1.25, out: 10 }, "gemini:gemini-2.5-flash": { in: 0.3, out: 2.5 }, "gemini:gemini-2.0-flash": { in: 0.1, out: 0.4 },
@@ -113,7 +114,8 @@ const KNOWN_PRICES: Record<string, { in: number; out: number }> = {
 export function priceFor(provider: ProviderId, model: string): { in: number; out: number } {
   const env = process.env[`AI_PRICE_${provider.toUpperCase()}_${model.replace(/[^a-zA-Z0-9]/g, "_").toUpperCase()}`];
   if (env) { const [i, o] = env.split(",").map(Number); if (Number.isFinite(i) && Number.isFinite(o)) return { in: i, out: o }; }
-  const key = Object.keys(KNOWN_PRICES).find((k) => k.startsWith(provider + ":") && model.startsWith(k.split(":")[1]));
+  /* en uzun önek kazanır: claude-haiku-5-5, claude-haiku'dan önce */
+  const key = Object.keys(KNOWN_PRICES).filter((k) => k.startsWith(provider + ":") && model.startsWith(k.split(":")[1])).sort((a, b) => b.length - a.length)[0];
   return key ? KNOWN_PRICES[key] : DEFAULT_PRICES[provider];
 }
 export const costOf = (provider: ProviderId, model: string, inTok: number, outTok: number) => {

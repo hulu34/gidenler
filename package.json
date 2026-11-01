@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "tsx scripts/sor-index.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

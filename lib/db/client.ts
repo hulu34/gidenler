@@ -5,6 +5,7 @@ import { Pool } from "pg";
 import type { PgDatabase, PgQueryResultHKT } from "drizzle-orm/pg-core";
 import * as schema from "./schema";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { previewWriteGuard } from "./fingerprint";
 
 /* ──────────────────────────────────────────────────────────────────────────
    VERİTABANI İSTEMCİSİ — yalnız sunucu.
@@ -25,6 +26,8 @@ export function getDb(): Db | null {
   /* Yatırımcı demosu (NEXT_PUBLIC_SHOW_DEMO=true) hiçbir veritabanına bağlanmaz: gerçek kullanıcı verisinden izole. */
   const url = DEMO_VISIBLE ? undefined : process.env.DATABASE_URL;
   if (!url) return (cached = null);
+  /* Preview, üretim veritabanına hiç bağlanmaz (okuma dahil). CLI ile açılan Preview ortak DATABASE_URL'i alır; parmak izi tutmazsa ya da bilinmiyorsa veritabanı yok sayılır. */
+  if (!previewWriteGuard(url).ok) return (cached = null);
   /* DB_DRIVER=pg yalnız yerel test içindir (gömülü Postgres soketi); Vercel'de her zaman Neon HTTP. */
   cached = (process.env.DB_DRIVER === "pg" && !process.env.VERCEL
     ? drizzlePg(new Pool({ connectionString: url, max: 3 }), { schema })
