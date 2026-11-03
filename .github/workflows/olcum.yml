@@ -453,6 +453,37 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: sorai-ekran, path: out/sorai-ekran.tgz.cms, if-no-files-found: ignore }
+  sor-son:
+    if: contains(github.event.head_commit.message, '[sor-son]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env: { DAL: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome chromium
+      # Sor son commit'i: SEO, Seçki, puan tutarlılığı aynı Preview'da (kendi Neon dalı); demo yalnız okuma
+      - id: seo
+        run: node ops/seo-preview.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: "${{ env.DAL }}" }
+      - id: secki
+        if: always()
+        run: node ops/seckisi.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.DAL }}", ARAC: "1" }
+      - id: demo
+        if: always()
+        run: node ops/demo.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEMO_HOST: "demo.gidenler.com" }
+      - id: puan
+        if: always()
+        run: node ops/puan-tutarlilik.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PUAN_HOST: "${{ env.DAL }}" }
+      - if: always()
+        run: mkdir -p out && tar -C out -czf sorson.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in sorson.tgz -out sorson.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: sorson, path: sorson.cms, if-no-files-found: ignore }
   sor-durum:
     if: contains(github.event.head_commit.message, '[sor-durum]')
     runs-on: ubuntu-latest

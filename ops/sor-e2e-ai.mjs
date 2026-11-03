@@ -9,7 +9,8 @@ const sonuc = []; const ok = (n, c, i = "") => { sonuc.push([n, !!c]); console.l
 const br = await chromium.launch(); const hatalar = [];
 for (const [ad, o] of [["mobil", { ...devices["iPhone 14"], defaultBrowserType: undefined }], ["masaustu", { viewport: { width: 1366, height: 900 } }]]) {
   const c = await br.newContext(o); await yetkiliBaslik(c, HOST, H); const p = await c.newPage(); const dis = [];
-  p.on("pageerror", (e) => hatalar.push(`${ad}: ${e.message.slice(0, 160)}`)); p.on("request", (r) => { if (/googleapis|api\/google/.test(r.url())) dis.push(r.url()); });
+  p.on("pageerror", (e) => hatalar.push(`${ad}: ${e.message.slice(0, 160)}`)); const groq = [], js = []; p.on("request", (r) => { if (/googleapis|api\/google/.test(r.url())) dis.push(r.url()); if (/groq\.com/.test(r.url())) groq.push(r.url()); });
+  p.on("response", async (r) => { if (/\.js(\?|$)/.test(r.url()) || r.url().includes("/api/sor")) { try { js.push(await r.text()); } catch { /* akış */ } } });
   await p.goto(`${BASE}/sor/`, { waitUntil: "networkidle" });
   const sor = async (q) => { const n = await p.locator("[data-sor-tur]").count(); await p.getByLabel("Sorun").fill(q); await p.getByRole("button", { name: "Sor", exact: true }).click(); await p.locator("[data-sor-tur]").nth(n).locator("[data-sor-mod], [role=alert]").waitFor({ timeout: 45000 }); return p.locator("[data-sor-tur]").nth(n); };
   const rapor = async (t, etiket) => {
@@ -28,6 +29,13 @@ for (const [ad, o] of [["mobil", { ...devices["iPhone 14"], defaultBrowserType: 
   await p.screenshot({ path: `${OUT}/${ad}-2-takip.png`, fullPage: true });
   await rapor(await sor("Beşiktaş'ta kahvaltı"), "beşiktaş");
   await p.screenshot({ path: `${OUT}/${ad}-3-besiktas.png`, fullPage: true });
+  /* kapaklı kart: kayıtlı fotoğrafı olan mekân */
+  await rapor(await sor("Galata'da Samsun pidesi"), "samsun");
+  ok(`${ad}: kayıtlı kapak kartta görünür`, (await p.locator("[data-sor-kart=japon-erdal-beyoglu] [data-sor-kapak] img").count()) > 0);
+  ok(`${ad}: puan uydurulmaz (yayımlanmış puan yoksa puan satırı yok)`, (await p.locator("[data-sor-puan]").count()) === 0 || /Gidenler puanı \d/.test(await p.locator("[data-sor-puan]").first().innerText()));
+  await p.screenshot({ path: `${OUT}/${ad}-4-samsun.png`, fullPage: true });
+  ok(`${ad}: tarayıcı Groq'a doğrudan istek atmaz`, groq.length === 0, groq.length);
+  ok(`${ad}: sayfada, JS'te ve API yanıtında anahtar biçimi yok`, !js.some((t) => /gsk_[A-Za-z0-9]{20,}/.test(t)) && !/gsk_[A-Za-z0-9]{20,}/.test(await p.content()), js.length);
   ok(`${ad}: yatay taşma yok`, await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
   ok(`${ad}: Google çağrısı yok`, dis.length === 0, dis.length);
   await c.close();
