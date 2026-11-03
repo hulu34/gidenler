@@ -47,7 +47,7 @@ const TAKIP1 = [
   [["Beşiktaş'ta kebap", {}], ["Başka öner", { d: "Beşiktaş", fresh: 1 }], ["Peki aynısı Şişli'de", { d: "Şişli" }]],
   [["Bakırköy'de kebap", {}], ["Bunun yerine burger olsun", { d: "Bakırköy", k: ["Burger"] }]],
 ];
-const v2 = process.env.SET === "v2" ? await import("./sor-soru-v2.mjs") : null;
+const v2 = process.env.SET ? await import(`./sor-soru-${process.env.SET}.mjs`) : null;
 const SORU = v2 ? v2.SORU : SORU1, TAKIP = v2 ? v2.TAKIP : TAKIP1;
 const HONEST = /doğrulan|kayıtlı değil|kayıtlarımızda|bilgi(si)? yok|bilmiyoruz|ipucu/i;
 const denetle = (r, b, shown, prev) => { const e = [];
@@ -63,6 +63,8 @@ const denetle = (r, b, shown, prev) => { const e = [];
   if (b.d0 && its.some((i) => i.district !== b.d0)) e.push("semt0");
   if (b.notK && its.some((i) => b.notK.includes(i.kind))) e.push("olumsuz");
   if (b.noJE && its.some((i) => i.slug === JE)) e.push("JE");
+  if (b.notD && its.some((i) => i.district === b.notD)) e.push("semt-olumsuz");
+  if (b.min && its.length + (r.alternatives ?? []).length < b.min) e.push("boş");
   if (b.none && its.length) e.push("alakasız");
   if (b.first && its[0]?.slug !== b.first) e.push("ad");
   if (b.fresh && its.some((i) => shown.includes(i.slug))) e.push("tekrar");
