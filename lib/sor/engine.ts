@@ -76,8 +76,10 @@ const ATTRS: Array<{ key: string; label: string; terms: string[]; evidence: stri
   { key: "turist", label: "misafire uygunluk", terms: ["turist", "yabanci arkadas", "misafir", "yurt disindan"], evidence: ["turist"] },
   { key: "aksam", label: "akşam yemeği", terms: ["aksam yemegi", "aksam", "dinner"], evidence: [] },
   { key: "kalite", label: "kalite", terms: ["iyi bir", "kaliteli", "guzel bir"], evidence: [] },
+  /* Gidenler puanı ve popülerlik sıralaması henüz yok: istenirse açıkça söylenir, sıralama uydurulmaz */
+  { key: "populer", label: "puan ya da popülerlik sıralaması", terms: ["populer", "en iyi", "en cok", "meshur", "en yuksek puan", "puanli", "puani yuksek"], evidence: [] },
 ];
-const PROFILE_ONLY = new Set(["aksam", "kalite"]);
+const PROFILE_ONLY = new Set(["aksam", "kalite", "populer"]);
 
 export const IntentSchema = z.object({
   area: z.string().max(40).nullable(), district: z.string().max(40).nullable(), cuisine: z.string().max(20).nullable(), dish: z.string().max(20).nullable(),
@@ -96,13 +98,15 @@ export const KNOWN = { areas: [...DISTRICTS, ...SUBAREAS.map((a) => a.name)], cu
 const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax || i.notArea);
 
 /* Sıradan sözcük tek başına ad sayılmaz: "pide nerede yenir" Yeni Lokanta'yı bulmaz; adın tamamı yazılmalı. */
-const COMMON_NAME = new Set(["yeni", "eski", "buyuk", "kucuk", "tarihi", "meshur", "bizim", "kardesler", "ortaklar", "asmali", "ev", "ana", "usta", "lezzet", "aile", "sofra", "kent", "merkez"]);
+const QUERY_NOISE = new Set(["istanbul", "misin", "musun", "misiniz", "musunuz", "miyiz", "miyim", "nerede", "neresi", "hangi", "hangisi", "var", "yok", "lazim", "oner", "onerir", "onerin", "soyle", "bana", "bize"]);
+const COMMON_NAME = new Set(["yeni", "eski", "buyuk", "kucuk", "tarihi", "meshur", "bizim", "kardesler", "ortaklar", "asmali", "ev", "ana", "usta", "lezzet", "aile", "sofra", "kent", "merkez", "istanbul"]);
 const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "cafe", "kafe", "ve", "the", "bar", "kebap", "balik", "pide", "ocakbasi", "doner", "kebapcisi", "sofrasi", "evi", "et", "iyi", "guzel", "bir"]);
 /* Semt, mutfak ya da tercih sözcüğü tek başına mekân adı sayılmaz: "kebap" Kebap Hocası'nı, "Karaköy" Karaköy Lokantası'nı seçmez. */
 const isGeneric = (t: string) => [...SUBAREAS.map((a) => a.name), ...DISTRICTS, ...CUISINES.flatMap((c) => c.terms), ...DISHES.flatMap((d) => d.terms), ...ATTRS.flatMap((a) => a.terms)].some((term) => { const x = fold(term); return !x.includes(" ") && tokenHit(t, x); });
 function matchName(q: string): Venue | null {
   const toks = q.split(" ").filter((t) => t.length >= 3);
-  const own = toks.filter((t) => !isGeneric(t));
+  /* soru ekleri ve şehir adı mekân adı değildir: "önerir misin" Misina, "İstanbul'da" İstanbul Emniyet... değildir */
+  const own = toks.filter((t) => !isGeneric(t) && !QUERY_NOISE.has(t));
   if (!own.length) return null;
   let best: { v: Venue; s: number } | null = null;
   for (const v of VENUES) {
@@ -137,14 +141,19 @@ export function parseQuery(query: string): Intent & { confident: boolean } {
   const q = full.split(" ").filter((t) => !areaWords.some((w) => tokenHit(t, w)) && !nameWords.includes(t) && !nameWords.some((w) => w.length >= 4 && t.startsWith(w))).join(" ");
   i.wholeCity = !i.area && /\bistanbul/.test(q);
   const toks = q.split(" ");
-  const negated = (terms: string[]) => terms.some((t) => { const f = fold(t); const n = toks.findIndex((x) => tokenHit(x, f)); return n >= 0 && NEG.test(toks[n + 1] ?? ""); });
+  /* "pizza ya da burger dışında": olumsuzluk listenin bütün öğelerine uygulanır */
+  const LINK = new Set(["ya", "da", "de", "veya", "ve", "yada", "ile", "ne"]);
+  const isCuisineTok = (x: string) => CUISINES.some((c) => c.terms.some((t) => !fold(t).includes(" ") && tokenHit(x, fold(t))));
+  const negated = (terms: string[]) => terms.some((t) => { const f = fold(t); const n = toks.findIndex((x) => tokenHit(x, f)); if (n < 0) return false;
+    for (let k = n + 1; k < Math.min(toks.length, n + 6); k++) { if (NEG.test(toks[k])) return true; if (!LINK.has(toks[k]) && !isCuisineTok(toks[k]) && !/^(bir|sey|yer|mekan)$/.test(toks[k])) return false; }
+    return false; });
   for (const c of CUISINES) if (c.terms.some((t) => hasTerm(q, t)) && negated(c.terms)) i.notCuisines.push(c.key);
   const dish = DISHES.find((d) => d.terms.some((t) => hasTerm(q, t)) && !negated(d.terms));
   if (dish) { i.dish = dish.key; i.cuisine = dish.cuisine; }
   else { const c = CUISINES.find((x) => !i.notCuisines.includes(x.key) && x.terms.some((t) => hasTerm(q, t))); if (c) i.cuisine = c.key; }
   i.attrs = ATTRS.filter((a) => a.terms.some((t) => hasTerm(q, t))).map((a) => a.key);
-  const pm = q.match(/\b(\d{1,2}) kisi/) ?? q.match(/\bbiz (\d{1,2})\b/);
-  if (pm) i.party = Number(pm[1]);
+  const pm = q.match(/\b(\d{1,2}) kisi/) ?? q.match(/\bbiz (\d{1,2})\b/), pw = q.match(/\b(iki|uc|dort|bes|alti|yedi|sekiz|dokuz|on) ?(kisi|kisiyiz)/);
+  if (pm) i.party = Number(pm[1]); else if (pw) i.party = ["iki", "uc", "dort", "bes", "alti", "yedi", "sekiz", "dokuz", "on"].indexOf(pw[1]) + 2;
   const bm = q.match(/\b(\d{2,6}) ?(tl|lira|₺)/);
   if (bm) { i.budgetMax = Number(bm[1]); if (!i.attrs.includes("ekonomik")) i.attrs.push("ekonomik"); }
   if (named) i.name = named.slug;
@@ -168,6 +177,8 @@ export function detectRefine(query: string): Refine | null {
 export function mergeIntent(prev: Intent | null | undefined, next: Intent, refine?: Refine | null): Intent {
   const fresh = !prev || (!refine && !!(next.area || next.areaText) && !!(next.cuisine || next.term)) || (!refine && !!next.name);
   const m: Intent = fresh ? { ...next } : { ...prev, attrs: [...new Set([...prev.attrs, ...next.attrs])], area: next.area ?? (next.areaText ? null : prev.area), district: next.area ? next.district : next.areaText ? null : prev.district, areaText: next.areaText ?? (next.area ? null : prev.areaText), cuisine: next.cuisine ?? (next.term ? null : prev.cuisine), term: next.term ?? (next.cuisine ? null : prev.term), dish: next.dish ?? (next.cuisine || next.term ? null : prev.dish), party: next.party ?? prev.party, name: null, wholeCity: next.wholeCity || prev.wholeCity, budgetMax: next.budgetMax ?? prev.budgetMax, notCuisines: [...new Set([...prev.notCuisines, ...next.notCuisines])], notArea: next.area ? null : next.notArea ?? prev.notArea ?? null };
+  /* "kebap olmasın" önceki kebabı siler; "aslında kebap olsun" önceki olumsuzluğu kaldırır */
+  if (!fresh) { if (next.cuisine) m.notCuisines = m.notCuisines.filter((c) => c !== next.cuisine); if (m.cuisine && next.notCuisines.includes(m.cuisine)) { m.cuisine = null; m.dish = null; } }
   if (refine === "cheaper" && !m.attrs.includes("ekonomik")) m.attrs = [...m.attrs, "ekonomik"];
   if (refine === "quieter" && !m.attrs.includes("sakin")) m.attrs = [...m.attrs, "sakin"];
   if (refine === "other_area") { m.area = null; m.district = null; m.areaText = null; }
@@ -289,6 +300,7 @@ export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
   if (!hasHardFilter(i)) {
     const verified = asked.length ? findCandidates(i, { ...opts, limit: 5 }).filter((c) => c.why.some((w) => w.startsWith("Kaydında "))) : [];
     if (verified.length) return { ...NONE, items: verified, note: null, question: "Semt ya da mutfak söylersen daraltayım." };
+    if (i.attrs.includes("populer") && !asked.length) return { ...NONE, note: "Gidenler puanı ya da popülerlik sıralaması henüz yayımlanmadı; \"en iyi\" diye bir mekân seçemem.", question: "Semt ya da mutfak söylersen kayıtlı bilgilerle önereyim." };
     return { ...NONE, note: asked.length ? `${up(asked.map((a) => a.label).join(" ve "))} kayıtlarımızda doğrulanmış değil; bu yüzden doğrudan mekân önermiyorum.` : "Bu istekten semt, mutfak ya da mekân adı çıkaramadım.", question: "Hangi semt ya da hangi mutfak olsun?" };
   }
   if (i.name && !i.area && !i.cuisine) return { ...NONE, items: findCandidates(i, { ...opts, limit: 1 }), note: null, question: null };
@@ -311,7 +323,17 @@ export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
     relaxed = where && label ? `${where} için kayıtlı ${label} mekânı bulamadım.` : where ? `${where} için kayıtlı mekân bulamadım.` : `${up(label ?? "Bu istek")} için kayıtlı mekân bulamadım.`;
     if (wide.length) { alternatives = wide; altLabel = `İstanbul'un başka semtlerinden ${label}; ${where} değil`; question = "Başka semt de olur mu?"; }
   }
+  /* uygun fiyat isteğinde fiyatı kayıtlı mekânların ortasının üstündeki mekân öneri olmaz; ayrı ve etiketli kalır */
+  if (i.attrs.includes("ekonomik") && !i.budgetMax && PRICE_MID != null) {
+    const pricey = pool.filter((c) => { const p = VENUES.find((v) => v.slug === c.slug)!.priceMedian; return p != null && p > PRICE_MID; });
+    if (pricey.length && pricey.length < pool.length) { pool = pool.filter((c) => !pricey.includes(c)); if (!alternatives.length) { alternatives = pricey.slice(0, 3); altLabel = "Fiyatı kayıtlı mekânların ortasının üstünde; uygun fiyat isteğine uymuyor"; } }
+  }
   const unverified = asked.filter((a) => a.key !== "ekonomik" && !pool.some((c) => verified(VENUES.find((v) => v.slug === c.slug)!, a)));
+  for (const a of asked.filter((x) => x.key !== "ekonomik" && !unverified.includes(x))) {
+    const yes = pool.filter((c) => verified(VENUES.find((v) => v.slug === c.slug)!, a));
+    if (yes.length < Math.min(pool.length, 5)) notes.push(`${up(a.label)} yalnız ${yes.slice(0, 3).map((c) => c.name).join(", ")} kaydında geçiyor; diğerlerinde doğrulanmadı.`);
+  }
+  if (i.attrs.includes("populer")) notes.push("Gidenler puanı ya da popülerlik sıralaması henüz yayımlanmadı; seçimi kayıtlı bilgilere göre yaptım, sıralama bir beğeni ölçüsü değil.");
   if (pool.length && (i.party ?? 0) >= 5) notes.push(`${i.party} kişilik grup için yer ve rezervasyon durumu kayıtlarımızda yok; gitmeden mekânı aramanı öneririm.`);
   if (pool.length && unverified.length) notes.push(`${up(unverified.map((a) => a.label).join(" ve "))} kayıtlarımızla doğrulanamadı; bu niteliğe göre eleme yapmadım.`);
   if (pool.length && i.attrs.includes("ekonomik") && !i.budgetMax && !pool.some((c) => evidenceOf(VENUES.find((v) => v.slug === c.slug)!, ATTRS.find((a) => a.key === "ekonomik")!.evidence))) notes.push("Uygun fiyat yargısı kayıtlarımızda yok; fiyatı kayıtlı olanlarda ucuzdan pahalıya sıraladım; kayıtlı mekânların ortasının üstündekileri geriye aldım.");

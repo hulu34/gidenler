@@ -88,8 +88,9 @@ function applyModel(i: Intent, d: z.infer<typeof ModelIntent>, query: string, dr
   const area = KNOWN.areas.find((a) => a === d.area) ?? null;
   const viaArea = area ? parseQuery(area) : null;
   const out: Intent = { ...i };
-  if (!out.area && !out.areaText) { if (area) { out.area = area; out.district = viaArea?.district ?? null; } else if (said(d.area_text)) out.areaText = d.area_text!.trim().slice(0, 40); }
-  if (!out.cuisine && !out.term) { if (KNOWN.cuisines.includes(d.cuisine ?? "")) out.cuisine = d.cuisine!; else if (said(d.term)) out.term = d.term!.trim().slice(0, 40); }
+  if (!out.area && !out.areaText && !out.notArea && !/\b(disinda|haric|olmasin|degil)/.test(fold(d.area_text ?? ""))) { if (area) { out.area = area; out.district = viaArea?.district ?? null; } else if (said(d.area_text)) out.areaText = d.area_text!.trim().slice(0, 40); }
+  /* yereldeki olumsuzluk ("kebap olmasın") modelin mutfağından önce gelir */
+  if (!out.cuisine && !out.term) { if (KNOWN.cuisines.includes(d.cuisine ?? "") && !out.notCuisines.includes(d.cuisine!)) out.cuisine = d.cuisine!; else if (said(d.term)) out.term = d.term!.trim().slice(0, 40); }
   if (!out.dish && KNOWN.dishes.includes(d.dish ?? "") && said(d.dish)) out.dish = d.dish!;
   out.attrs = [...new Set([...out.attrs, ...(d.attrs ?? []).filter((x) => KNOWN.attrs.includes(x) && !drop.includes(x))])];
   out.party = out.party ?? d.party ?? null;
@@ -180,7 +181,8 @@ export async function sor(req: SorRequest): Promise<SorResult> {
     /* model hiç seçmedi: koşulu sağlayan kayıtlı adaylar kurallı sırayla, bu açıkça yazılarak gösterilir */
     if (!items.length && !parsedAnswer.data.picks.length) { logFail("answer", r, "model seçim yapmadı (0)"); return finish("veri", "ai_no_pick", a); }
     if (!items.length) { logFail("answer", r, `seçimlerin hiçbiri aday listesinde değil (${parsedAnswer.data.picks.length})`); return finish("veri", "invalid_output", a); }
-    const modelNote = sanitizeUntrusted(parsedAnswer.data.note ?? "", 200);
+    /* modelin notu mekân hakkında yargı taşıyamaz ("X pide sunmuyor"): aday adı geçen not düşer */
+    const rawNote = sanitizeUntrusted(parsedAnswer.data.note ?? "", 200), modelNote = pool.some((c) => fold(rawNote).includes(fold(c.name))) ? "" : rawNote;
     const noteFacts = pool.flatMap((c) => c.facts);
     const out = finish("ai", null, { ...a, note: a.note ?? (modelNote && !unsupported(modelNote, noteFacts) ? modelNote : null) }, items.slice(0, 5), gated, r.model);
     await cache<SorResult>().set(key, out, 900);

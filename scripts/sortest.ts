@@ -19,6 +19,13 @@ const first = (r: R, s: string) => r.items[0]?.slug === s;
 const has = (r: R, re: RegExp) => re.test(JSON.stringify(r));
 
 const CASES: Array<[string, string, (r: R) => unknown]> = [
+  ["Uygun fiyatlı lokanta, Beyoğlu", "fiyatı ortanın üstündeki mekân öneri değil, etiketli alternatif", (r) => r.items.length > 0 && r.items.every((i) => i.slug !== "yeni-lokanta-beyoglu") && dist(r, "Beyoğlu")],
+  ["Bir kebapçı önerir misin", "soru eki ('misin') mekân adı sayılmaz", (r) => r.items.length > 0 && r.items.every((i) => !i.why.includes("Adını sorduğun mekân."))],
+  ["İstanbul'da güzel bir lahmacun", "'İstanbul' sözcüğü mekân adı sayılmaz", (r) => r.items.every((i) => !i.why.includes("Adını sorduğun mekân."))],
+  ["Kadıköy'de pizza ya da burger dışında bir şey", "olumsuzluk listenin bütün öğelerine uygulanır", (r) => r.understood.notCuisines.includes("pizza") && r.understood.notCuisines.includes("burger") && r.items.every((i) => !["Pizza", "Burger"].includes(i.kind))],
+  ["Ataşehir'de beş kişilik kebap", "sayı sözcükle yazılınca kişi sayısı anlaşılır", (r) => r.understood.party === 5],
+  ["En yüksek puanlı restoran hangisi", "puan sıralaması yokken uydurulmaz, açıkça söylenir", (r) => r.items.length === 0 && has(r, /popülerlik sıralaması henüz yayımlanmadı/)],
+  ["Kadıköy'de en popüler kebapçı", "popülerlik istenince sıralamanın beğeni ölçüsü olmadığı söylenir", (r) => dist(r, "Kadıköy") && has(r, /popülerlik sıralaması henüz yayımlanmadı/)],
   ["Kebap yiyelim ama Kadıköy dışında olsun", "semt dışlama: o ilçeden öneri yok", (r) => r.understood.notArea === "Kadıköy" && r.items.length > 0 && r.items.every((i) => i.district !== "Kadıköy")],
   ["Şişli'de Japon mutfağı", "Japon mutfağı Japon Erdal'ı ad eşleşmesiyle getirmez", (r) => r.items.every((i) => i.slug !== "japon-erdal-beyoglu") && r.understood.cuisine === "sushi"],
   ["Kadıköy'de gece geç saate kadar açık bir yer", "geç saat yalnız kayıtlı açılış saatiyle", (r) => r.items.length > 0 && dist(r, "Kadıköy") && (has(r, /açılış saati/) || has(r, /doğrulanamadı/))],
@@ -83,6 +90,11 @@ async function main() {
   /* takip soruları */
   const a1 = await sor({ query: "Ataşehir'de kebap" });
   const a2 = await sor({ query: "Daha ekonomik olsun", context: a1.context, refine: "cheaper", shown: a1.shown });
+  { const k1 = await sor({ query: "Beşiktaş'ta kebap" }); const k2 = await sor({ query: "kebap olmasın", context: k1.context, shown: k1.shown }); const k3 = await sor({ query: "aslında kebap olsun", context: k2.context, shown: k2.shown });
+    ok("takip: 'kebap olmasın' önceki kebabı siler, semt kalır", k2.understood.cuisine === null && k2.understood.notCuisines.includes("kebap") && dist(k2, "Beşiktaş") && k2.items.every((i) => i.kind !== "Kebapçı / Ocakbaşı"), k2.understood);
+    ok("takip: 'aslında kebap olsun' olumsuzluğu kaldırır", k3.understood.cuisine === "kebap" && !k3.understood.notCuisines.includes("kebap") && k3.items.length > 0, k3.understood); }
+  { const m1 = await sor({ query: "Boğaz manzaralı balık restoranı" });
+    ok("nitelik kısmen doğrulanınca hangi kayıtta geçtiği söylenir", m1.items.length > 0 && (has(m1, /yalnız .* kaydında geçiyor/) || m1.items.every((i) => i.why.some((w) => /manzara/.test(w)))), m1.note); }
   ok("takip: bağlam korunur", a2.understood.area === "Ataşehir" && a2.understood.cuisine === "kebap" && a2.understood.attrs.includes("ekonomik") && dist(a2, "Ataşehir"));
   const a3 = await sor({ query: "Başka semtte olsun", context: a2.context, refine: "other_area", shown: a2.shown });
   ok("takip: başka semt, mutfak aynı, gösterilenler tekrar etmez", a3.understood.area === null && a3.understood.cuisine === "kebap" && a3.items.every((i) => !a2.shown.includes(i.slug)) && a3.items.length > 0, a3.items.map((i) => i.slug));
@@ -201,6 +213,10 @@ async function main() {
   globalThis.fetch = (async () => new Response("{}", { status: 500 })) as unknown as typeof fetch;
   const m4 = await sor({ query: "Galata'da Samsun pidesi ai5" });
   ok("AI: servis hatasında gerçek veri, sessiz boşluk yok", m4.mode === "veri" && m4.reason === "provider_error" && first(m4, "japon-erdal-beyoglu"), m4.reason);
+  /* zaman aşımı: sağlayıcı yanıt vermezse 15 sn sonra kesilir, gerçek veri ve açık etiket */
+  globalThis.fetch = ((_u: string, init?: RequestInit) => new Promise((_r, rej) => init?.signal?.addEventListener("abort", () => rej(new DOMException("aborted", "AbortError"))))) as unknown as typeof fetch;
+  const t0 = Date.now(), to = await sor({ query: "Galata'da Samsun pidesi zamanasimi" });
+  ok("AI: zaman aşımında gerçek veri, etiket timeout, 20 sn içinde", to.mode === "veri" && to.reason === "timeout" && first(to, "japon-erdal-beyoglu") && Date.now() - t0 < 20000, { r: to.reason, ms: Date.now() - t0 });
   say({ picks: [{ slug: "japon-erdal-beyoglu", why: "uygun" }] }); calls = 0;
   await sor({ query: "önbellek galata pide" }); const c1 = calls; await sor({ query: "önbellek galata pide" });
   ok("AI: aynı soru ikinci kez model çağırmaz", c1 === 1 && calls === 1, { c1, calls });
