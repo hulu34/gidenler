@@ -92,12 +92,14 @@ function applyModel(i: Intent, d: z.infer<typeof ModelIntent>, query: string, dr
   /* yereldeki olumsuzluk ("kebap olmasın") modelin mutfağından önce gelir */
   if (!out.cuisine && !out.term) { if (KNOWN.cuisines.includes(d.cuisine ?? "") && !out.notCuisines.includes(d.cuisine!)) out.cuisine = d.cuisine!; else if (said(d.term)) out.term = d.term!.trim().slice(0, 40); }
   if (!out.dish && KNOWN.dishes.includes(d.dish ?? "") && said(d.dish)) out.dish = d.dish!;
-  out.attrs = [...new Set([...out.attrs, ...(d.attrs ?? []).filter((x) => KNOWN.attrs.includes(x) && !drop.includes(x))])];
+  /* saat, beslenme ve popülerlik yalnız kullanıcı açıkça yazdıysa: "akşam yemeği" geç saat değildir */
+  out.attrs = [...new Set([...out.attrs, ...(d.attrs ?? []).filter((x) => KNOWN.attrs.includes(x) && !drop.includes(x) && !EXPLICIT_ONLY.has(x))])];
   out.party = out.party ?? d.party ?? null;
   if (!out.budgetMax && d.budget_max && q.includes(String(Math.trunc(d.budget_max)))) out.budgetMax = Math.trunc(d.budget_max);
   out.notCuisines = [...new Set([...out.notCuisines, ...(d.not_cuisines ?? []).filter((x) => KNOWN.cuisines.includes(x))])].filter((x) => x !== out.cuisine);
   return out;
 }
+const EXPLICIT_ONLY = new Set(["gec", "vejetaryen", "populer", "aksam", "kalite"]);
 const REFINE_ACTIONS: Record<string, Refine> = { another: "another", cheaper: "cheaper", quieter: "quieter", other_area: "other_area" };
 
 /** Hata nedeni loga yazılır; kullanıcı metni ve model çıktısı yazılmaz (gizlilik). */

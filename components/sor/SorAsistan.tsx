@@ -23,8 +23,13 @@ const REASON: Record<string, string> = {
   ai_no_pick: "AI bu adaylardan birini öne çıkarmadı. Aşağıdakiler koşulunu sağlayan kayıtlı mekânlar; kurallarla sıralandı.",
 };
 
+/* iç anahtar yerine okunur ad */
+const AD: Record<string, string> = { samsun: "Samsun pidesi", lahmacun: "lahmacun", iskender: "İskender", "kuru-fasulye": "kuru fasulye", karniyarik: "karnıyarık", "etli-nohut": "etli nohut", hunkar: "hünkâr beğendi", menemen: "menemen",
+  pide: "pide", kebap: "kebap", doner: "döner", balik: "balık", meyhane: "meyhane", esnaf: "esnaf lokantası", sushi: "sushi / Japon", pizza: "pizza", burger: "burger", steak: "et / steak", kahvalti: "kahvaltı", kahve: "kahve", tatli: "tatlı", manti: "mantı", kofte: "köfte",
+  sakin: "sakin", romantik: "romantik", gosterissiz: "gösterişsiz", ekonomik: "uygun fiyat", manzara: "manzara", cocuk: "çocuklu", turist: "misafir", aksam: "akşam yemeği", gec: "geç saat", vejetaryen: "vejetaryen", populer: "popüler" };
+const ad = (k: unknown) => (typeof k === "string" ? AD[k] ?? k : null);
 function Understood({ u }: { u: Record<string, unknown> }) {
-  const parts = [u.area, u.notArea ? `${u.notArea} dışı` : null, u.dish === "samsun" ? "Samsun pidesi" : u.dish ?? u.cuisine, ...((u.notCuisines as string[]) ?? []).map((c) => `${c} değil`), ...((u.attrs as string[]) ?? []).filter((a) => a !== "kalite"), u.party ? `${u.party} kişi` : null].filter(Boolean) as string[];
+  const parts = [u.area, u.notArea ? `${u.notArea} dışı` : null, ad(u.dish ?? u.cuisine), u.term, ...((u.notCuisines as string[]) ?? []).map((c) => `${ad(c)} olmasın`), ...((u.attrs as string[]) ?? []).filter((a) => a !== "kalite").map(ad), u.party ? `${u.party} kişi` : null].filter(Boolean) as string[];
   return parts.length ? <p className="text-[12.5px] text-ink-3">Anladığım: {parts.join(" · ")}</p> : null;
 }
 
