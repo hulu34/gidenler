@@ -83,7 +83,8 @@ async function call(role: "fast" | "primary", system: string, user: string, base
 
 /** Model yorumu yerel yorumun üstüne yalnız ekler. Kullanıcının metninde geçmeyen serbest semt, yemek ya da tutar kabul edilmez. */
 function applyModel(i: Intent, d: z.infer<typeof ModelIntent>, query: string): Intent {
-  const q = fold(query), said = (s: string | null | undefined) => !!s && fold(s).length >= 3 && q.includes(fold(s));
+  /* serbest metin kısa bir ad olmalı: cümlenin tamamı ya da yarısı semt/yemek sayılmaz */
+  const q = fold(query), said = (s: string | null | undefined) => { const f = s ? fold(s) : ""; return f.length >= 3 && q.includes(f) && f.split(" ").length <= 3 && f.length <= 30 && f.length <= q.length * 0.6; };
   const area = KNOWN.areas.find((a) => a === d.area) ?? null;
   const viaArea = area ? parseQuery(area) : null;
   const out: Intent = { ...i };
@@ -98,6 +99,15 @@ function applyModel(i: Intent, d: z.infer<typeof ModelIntent>, query: string): I
 }
 const REFINE_ACTIONS: Record<string, Refine> = { another: "another", cheaper: "cheaper", quieter: "quieter", other_area: "other_area" };
 
+/** Hata nedeni loga yazılır; kullanıcı metni ve model çıktısı yazılmaz (gizlilik). */
+function logFail(step: "intent" | "answer", r: { finishReason?: string; text: string; model: string } | null, e: unknown) {
+  const why = e instanceof z.ZodError ? e.issues.slice(0, 3).map((x) => `${x.path.join(".")}:${x.code}`).join(",") : e instanceof ProviderError ? `${e.status ?? ""} ${e.message}`.slice(0, 160) : e instanceof Error ? e.message.slice(0, 160) : String(e).slice(0, 160);
+  console.warn(`[sor] ${step} başarısız · ${r ? `model=${r.model} bitiş=${r.finishReason ?? "?"} uzunluk=${r.text.length} json=${r.text.trim().startsWith("{")}` : "yanıt yok"} · ${why}`);
+}
+const hasFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax);
+/* yalnız bulunma ekiyle: "İzmir'de", "Bodrum'daki"; "Adana kebap", "Bursa usulü" şehir sorusu değildir */
+const OTHER_CITIES = /\b(izmir|ankara|antalya|bursa|bodrum|eskisehir|adana|gaziantep|trabzon|mersin|konya|kapadokya|cesme|alacati|fethiye|ayvalik) ?(de|da|te|ta|deki|daki|teki|taki)\b/;
+
 export async function sor(req: SorRequest): Promise<SorResult> {
   const { text: query } = sanitizeUserInput(scrubPII(req.query), aiConfig().maxInputChars);
   const { confident, ...parsed } = parseQuery(query);
@@ -109,7 +119,12 @@ export async function sor(req: SorRequest): Promise<SorResult> {
     const list = items ?? a.items.slice(0, 5).map(strip);
     return { mode, reason, understood: intent, items: list, alternatives: a.alternatives.slice(0, 5).map(strip), altLabel: a.altLabel, note: a.note, question: a.question, relaxed: a.relaxed, context: intent, shown: [...new Set([...(req.shown ?? []), ...list.map((x) => x.slug)])].slice(-30), gated, model };
   };
-  if (!sorAvailable("primary")) return finish("veri", "not_configured", answer(intent, { exclude: excl() }));
+  /* kapsam dışı: tarif ve İstanbul dışı; model çağrılmaz */
+  const fq = fold(query), none = { items: [], alternatives: [], altLabel: null, relaxed: null };
+  const scope: Answered | null = /\btarif/.test(fq) && !parsed.name ? { ...none, note: "Tarif vermiyorum; İstanbul'da o yemeği yiyebileceğin kayıtlı yerleri önerebilirim.", question: "Hangi semtte arayalım?" }
+    : OTHER_CITIES.test(fq) && !parsed.area && !parsed.name ? { ...none, note: "Gidenler şimdilik yalnız İstanbul'daki mekânları kapsıyor.", question: "İstanbul'da bir semt söylersen bakayım." } : null;
+  if (!sorAvailable("primary")) return finish("veri", "not_configured", scope ?? answer(intent, { exclude: excl() }));
+  if (scope) return finish("veri", null, scope);
   if ((await budgetStatus()).level === "critical") return finish("veri", "budget", answer(intent, { exclude: excl() }));
 
   const key = cacheKey({ v: "sor2", query, context: req.context ?? null, refine: req.refine ?? null, shown: req.shown ?? [] });
@@ -117,7 +132,7 @@ export async function sor(req: SorRequest): Promise<SorResult> {
   if (hit) return hit;
 
   const ctrl = new AbortController(); const timer = setTimeout(() => ctrl.abort(), 15_000);
-  let usedModel: string | null = null;
+  let usedModel: string | null = null, intentFail: Reason = null;
   try {
     if (sorAvailable("fast")) {
       try {
@@ -126,18 +141,27 @@ export async function sor(req: SorRequest): Promise<SorResult> {
         if (p.success) {
           usedModel = r.model;
           if (req.context && !refine && p.data.action && REFINE_ACTIONS[p.data.action]) { refine = REFINE_ACTIONS[p.data.action]; intent = mergeIntent(req.context, parsed, refine); }
-          intent = applyModel(p.data.action === "new" ? mergeIntent(null, parsed) : intent, p.data, query);
-        }
-      } catch (e) { if (e instanceof BudgetExceededError || e instanceof NotConfiguredError || e instanceof QuotaError) throw e; /* yorum isteğe bağlı; yerel yorumla devam */ }
+          /* "yeni konu" yalnız yeni bir mutfak, yemek ya da mekân söylendiyse: "Beykoz tarafı olsun" kahvaltıyı silmez */
+          const fresh = applyModel(mergeIntent(null, parsed), p.data, query);
+          const isNew = p.data.action === "new" && !!(fresh.cuisine || fresh.dish || fresh.term || fresh.name);
+          intent = isNew ? fresh : applyModel(intent, p.data, query);
+        } else { intentFail = "invalid_output"; logFail("intent", r, p.error); }
+      } catch (e) { if (e instanceof BudgetExceededError || e instanceof NotConfiguredError || e instanceof QuotaError) throw e; intentFail = "provider_error"; logFail("intent", null, e); /* yorum isteğe bağlı; yerel yorumla devam */ }
     }
-    const a = answer(intent, { exclude: excl() });
+    let a = answer(intent, { exclude: excl() });
+    /* Modelin eklediği koşul sonucu boşaltırsa yerel yoruma dönülür ve bu açıkça yazılır: "kuru fasulye pilav" Fatih'i boş bırakmaz. */
+    if (usedModel && !a.items.length && !a.alternatives.length) {
+      const local = mergeIntent(req.context, parsed, refine), b = answer(local, { exclude: excl() });
+      const extra = intent.term ?? intent.areaText;
+      if (b.items.length || b.alternatives.length || !hasFilter(local)) { intent = local; a = { ...b, relaxed: b.relaxed ?? (extra && b.items.length ? `Kayıtlarımızda "${extra}" geçen mekân bulamadım; aşağıdakiler isteğin geri kalanına uyuyor.` : null) }; }
+    }
     /* aday yoksa modele gidilmez: yazacak gerçek bilgi yok */
-    if (!a.items.length) { const out = finish(usedModel ? "ai" : "veri", usedModel ? null : "provider_error", a, undefined, 0, usedModel); return out; }
+    if (!a.items.length) return finish(usedModel ? "ai" : "veri", usedModel ? null : intentFail ?? "provider_error", a, undefined, 0, usedModel);
     const pool = a.items.slice(0, MAX_POOL);
     const payload = pool.map((c) => ({ slug: c.slug, name: c.name, facts: c.facts.map((f) => sanitizeUntrusted(f, 220)), caveats: c.caveats }));
     const r = await call("primary", SYSTEM_ANSWER, [dataBlock("user_query", { text: query, understood: intent }), dataBlock("candidates", payload)].join("\n"), MAX_TOKENS_ANSWER, "recommend", ctrl.signal);
     const parsedAnswer = AnswerSchema.safeParse(extractJson(r.text));
-    if (!parsedAnswer.success) return finish("veri", "invalid_output", a);
+    if (!parsedAnswer.success) { logFail("answer", r, parsedAnswer.error); return finish("veri", "invalid_output", a); }
     const seen = new Set<string>(); const items: Public[] = []; let gated = 0;
     for (const p of parsedAnswer.data.picks) {
       const c = pool.find((x) => x.slug === p.slug);
@@ -150,7 +174,7 @@ export async function sor(req: SorRequest): Promise<SorResult> {
       if (bad) gated++;
       items.push({ ...strip(c), why: bad ? c.why : [why, ...c.why.slice(0, 2)] });
     }
-    if (!items.length) return finish("veri", "invalid_output", a);
+    if (!items.length) { logFail("answer", r, `seçimlerin hiçbiri aday listesinde değil (${parsedAnswer.data.picks.length})`); return finish("veri", "invalid_output", a); }
     const modelNote = sanitizeUntrusted(parsedAnswer.data.note ?? "", 200);
     const noteFacts = pool.flatMap((c) => c.facts);
     const out = finish("ai", null, { ...a, note: a.note ?? (modelNote && !unsupported(modelNote, noteFacts) ? modelNote : null) }, items.slice(0, 5), gated, r.model);
@@ -161,6 +185,7 @@ export async function sor(req: SorRequest): Promise<SorResult> {
     if (e instanceof NotConfiguredError) return finish("veri", "not_configured", a);
     if (e instanceof BudgetExceededError) return finish("veri", "budget", a);
     if (e instanceof QuotaError) return finish("veri", "quota", a);
+    logFail("answer", null, e);
     return finish("veri", ctrl.signal.aborted ? "timeout" : "provider_error", a);
   } finally { clearTimeout(timer); }
 }

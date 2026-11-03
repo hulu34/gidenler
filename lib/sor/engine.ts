@@ -49,10 +49,17 @@ const CUISINES: Cuisine[] = [
   { key: "sushi", label: "sushi", terms: ["sushi", "susi", "japon mutfagi", "ramen"], kinds: ["Sushi / Japon"] }, { key: "pizza", label: "pizza", terms: ["pizza", "pizzaci"], kinds: ["Pizza"] }, { key: "burger", label: "burger", terms: ["burger", "hamburger"], kinds: ["Burger"] },
   { key: "steak", label: "et", terms: ["steak", "biftek", "et restoran", "antrikot"], kinds: ["Steakhouse"] }, { key: "kahvalti", label: "kahvaltı", terms: ["kahvalti", "brunch", "serpme"], kinds: ["Kahvaltı"] }, { key: "kahve", label: "kahve", terms: ["kahve", "kafe", "cafe", "espresso"], kinds: ["Kahveci", "Kafe"] },
   { key: "tatli", label: "tatlı", terms: ["tatli", "baklava", "kunefe", "pastane"], kinds: ["Tatlıcı", "Pastane"] }, { key: "manti", label: "mantı", terms: ["manti"], kinds: ["Mantıcı"] },
+  /* köftecinin ayrı türü yok: adında ya da menüsünde köfte geçen kayıt */
+  { key: "kofte", label: "köfte", terms: ["kofte"], kinds: [], text: ["kofte"] },
 ];
 /* Yemek adı: kayıtta aynen geçmeli. Geçmiyorsa mutfak türüne düşülür ve bu açıkça yazılır. */
 const DISHES: Array<{ key: string; label: string; terms: string[]; cuisine: string; text: string[] }> = [
   { key: "samsun", label: "Samsun pidesi", terms: ["samsun"], cuisine: "pide", text: ["samsun"] }, { key: "lahmacun", label: "lahmacun", terms: ["lahmacun"], cuisine: "pide", text: ["lahmacun"] }, { key: "iskender", label: "İskender", terms: ["iskender"], cuisine: "doner", text: ["iskender"] },
+  /* esnaf lokantası yemekleri: kayıtta geçmiyorsa lokanta türüne düşülür ve bu açıkça yazılır */
+  { key: "kuru-fasulye", label: "kuru fasulye", terms: ["kuru fasulye", "kuru fasulya"], cuisine: "esnaf", text: ["kuru fasulye"] },
+  { key: "karniyarik", label: "karnıyarık", terms: ["karniyarik"], cuisine: "esnaf", text: ["karniyarik"] },
+  { key: "etli-nohut", label: "etli nohut", terms: ["etli nohut", "nohut pilav"], cuisine: "esnaf", text: ["nohut"] },
+  { key: "hunkar", label: "hünkâr beğendi", terms: ["hunkar"], cuisine: "esnaf", text: ["hunkar"] },
 ];
 /* Nitelik yalnız kaynaklı metinde AÇIKÇA geçiyorsa doğrulanmış sayılır; çağrışım (tarihi → turiste uygun) kanıt değildir. */
 const ATTRS: Array<{ key: string; label: string; terms: string[]; evidence: string[] }> = [
@@ -171,6 +178,9 @@ const tie = (seed: string, slug: string) => { let h = 2166136261; for (const c o
 export interface Candidate { slug: string; name: string; kind: string; district: string; address: string | null; href: string; facts: string[]; why: string[]; caveats: string[]; score: number; sourced: boolean; areaFit: "tam" | "yakin" | "ilce" | "yok" | null; dishHit: boolean }
 
 const GENERIC_KINDS = new Set(["Restoran"]);
+/* "uygun fiyat" ölçütü: fiyatı kayıtlı mekânların ortancası. Fiyatı bilinmesi ucuz olduğunu göstermez. */
+const PRICES = VENUES.map((v) => v.priceMedian).filter((p): p is number => p != null).sort((a, b) => a - b);
+export const PRICE_MID = PRICES.length ? PRICES[Math.floor(PRICES.length / 2)] : null;
 function scoreVenue(v: Venue, i: Intent): Candidate | null {
   const name = fold(v.name), addr = fold(`${v.address ?? ""} ${v.neighborhood ?? ""}`), menu = fold(v.menu.join(" ")), hay = fold(`${textOf(v)} ${v.menu.join(" ")}`);
   const why: string[] = [], caveats: string[] = []; let s = 0;
@@ -225,6 +235,7 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
     const a = ATTRS.find((x) => x.key === key); if (!a || PROFILE_ONLY.has(key)) continue;
     const ev = evidenceOf(v, a.evidence);
     if (ev) { s += 30; why.push(`Kaydında ${a.label} için geçen ifade: "${ev}"`); }
+    else if (key === "ekonomik" && !i.budgetMax && v.priceMedian != null && PRICE_MID != null && v.priceMedian > PRICE_MID) { s -= 15; caveats.push(`Menüdeki orta fiyat yaklaşık ${v.priceMedian} TL; kayıtlı mekânların ortasının üstünde.`); }
     else if (key === "ekonomik" && !i.budgetMax && v.priceMedian != null) { s += 20 - Math.min(19, Math.floor(v.priceMedian / 100)); caveats.push(`Menüdeki orta fiyat yaklaşık ${v.priceMedian} TL; "uygun" yargısı sana kalmış.`); }
     else if (key === "ekonomik" && !i.budgetMax) caveats.push("Fiyat bilgisi kayıtlı değil.");
   }
@@ -278,7 +289,7 @@ export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
   }
   const unverified = asked.filter((a) => a.key !== "ekonomik" && !pool.some((c) => evidenceOf(VENUES.find((v) => v.slug === c.slug)!, a.evidence)));
   if (pool.length && unverified.length) notes.push(`${up(unverified.map((a) => a.label).join(" ve "))} kayıtlarımızla doğrulanamadı; bu niteliğe göre eleme yapmadım.`);
-  if (pool.length && i.attrs.includes("ekonomik") && !i.budgetMax && !pool.some((c) => evidenceOf(VENUES.find((v) => v.slug === c.slug)!, ATTRS.find((a) => a.key === "ekonomik")!.evidence))) notes.push("Uygun fiyat yargısı kayıtlarımızda yok; fiyatı bilinenleri düşükten başlayarak öne aldım.");
+  if (pool.length && i.attrs.includes("ekonomik") && !i.budgetMax && !pool.some((c) => evidenceOf(VENUES.find((v) => v.slug === c.slug)!, ATTRS.find((a) => a.key === "ekonomik")!.evidence))) notes.push("Uygun fiyat yargısı kayıtlarımızda yok; fiyatı kayıtlı olanlarda ucuzdan pahalıya sıraladım; kayıtlı mekânların ortasının üstündekileri geriye aldım.");
   return { items: pool.slice(0, 12), alternatives, altLabel, note: notes.join(" ") || null, question, relaxed };
 }
 export const REFINE_LABELS = REFINES;
