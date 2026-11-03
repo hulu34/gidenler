@@ -201,6 +201,10 @@ async function main() {
   globalThis.fetch = (async () => new Response("{}", { status: 500 })) as unknown as typeof fetch;
   const m4 = await sor({ query: "Galata'da Samsun pidesi ai5" });
   ok("AI: servis hatasında gerçek veri, sessiz boşluk yok", m4.mode === "veri" && m4.reason === "provider_error" && first(m4, "japon-erdal-beyoglu"), m4.reason);
+  /* zaman aşımı: sağlayıcı yanıt vermezse 15 sn sonra kesilir, gerçek veri ve açık etiket */
+  globalThis.fetch = ((_u: string, init?: RequestInit) => new Promise((_r, rej) => init?.signal?.addEventListener("abort", () => rej(new DOMException("aborted", "AbortError"))))) as unknown as typeof fetch;
+  const t0 = Date.now(), to = await sor({ query: "Galata'da Samsun pidesi zamanasimi" });
+  ok("AI: zaman aşımında gerçek veri, etiket timeout, 20 sn içinde", to.mode === "veri" && to.reason === "timeout" && first(to, "japon-erdal-beyoglu") && Date.now() - t0 < 20000, { r: to.reason, ms: Date.now() - t0 });
   say({ picks: [{ slug: "japon-erdal-beyoglu", why: "uygun" }] }); calls = 0;
   await sor({ query: "önbellek galata pide" }); const c1 = calls; await sor({ query: "önbellek galata pide" });
   ok("AI: aynı soru ikinci kez model çağırmaz", c1 === 1 && calls === 1, { c1, calls });
