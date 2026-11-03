@@ -4,7 +4,9 @@ let bad = 0;
 for (const [ad, host] of Object.entries(JSON.parse(process.env.HOSTS))) {
   const r = await fetch(`https://${host}/api/sor/`, { headers: H }); const j = await r.json().catch(() => null);
   console.log(ad, r.status, JSON.stringify(j));
-  if (!j || j.db === "kapali" && ad !== "cli") bad++;
+  /* CLI dağıtımı üretim veritabanına bağlıdır; orada "kapali" beklenen güvenli durumdur */
+  if (!j || j.db === "kapali" && !ad.startsWith("cli")) bad++;
+  if (ad.startsWith("cli") && j?.db !== "kapali" && j?.db !== "yalitilmis") bad++;
   if (ad === "cli" && j?.db === "yalitilmis") console.log("bilgi: CLI dağıtımı üretim dışı veritabanında");
 }
 const p = await fetch("https://www.gidenler.com/api/sor/"); console.log("production GET durum", p.status, p.status === 405 || p.status === 404 ? "kapalı" : "açık");

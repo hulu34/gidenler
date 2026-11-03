@@ -65,6 +65,8 @@ const denetle = (r, b, shown, prev) => { const e = [];
   if (b.noJE && its.some((i) => i.slug === JE)) e.push("JE");
   if (b.notD && its.some((i) => i.district === b.notD)) e.push("semt-olumsuz");
   if (b.min && its.length + (r.alternatives ?? []).length < b.min) e.push("boş");
+  if (b.attrKeep && !(r.understood?.attrs ?? []).includes(b.attrKeep)) e.push("bağlam-nitelik");
+  if (b.party && r.understood?.party !== b.party) e.push("kişi");
   if (b.none && its.length) e.push("alakasız");
   if (b.first && its[0]?.slug !== b.first) e.push("ad");
   if (b.fresh && its.some((i) => shown.includes(i.slug))) e.push("tekrar");
