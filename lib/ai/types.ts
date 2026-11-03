@@ -4,7 +4,7 @@
    ayrıntıları `providers/` altında kalır ve SDK'sız (fetch) konuşulur.
    ────────────────────────────────────────────────────────────────────────── */
 
-export type ProviderId = "anthropic" | "openai" | "gemini" | "mistral" | "none";
+export type ProviderId = "anthropic" | "openai" | "gemini" | "mistral" | "groq" | "none";
 export type ModelRole = "primary" | "fast" | "judge" | "grounding";
 
 export interface ChatMessage {
@@ -60,7 +60,8 @@ export interface CallRecord {
 }
 
 export class ProviderError extends Error {
-  constructor(message: string, public readonly provider: ProviderId, public readonly status?: number, public readonly retryable = false) {
+  /** retryAfterSec: 429'da sağlayıcının bildirdiği bekleme (saniye), yoksa undefined. */
+  constructor(message: string, public readonly provider: ProviderId, public readonly status?: number, public readonly retryable = false, public readonly retryAfterSec?: number) {
     super(message);
     this.name = "ProviderError";
   }

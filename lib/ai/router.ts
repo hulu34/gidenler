@@ -8,7 +8,7 @@ import { ProviderError, type ChatMessage, type ChatResponse, type ModelRole, typ
    Çağıran kod sağlayıcı bilmez: `route("primary", messages, {json:true})`.
    ────────────────────────────────────────────────────────────────────────── */
 
-export interface RouteOptions { json?: boolean; maxTokens?: number; temperature?: number; kind: string; signal?: AbortSignal }
+export interface RouteOptions { json?: boolean; maxTokens?: number; temperature?: number; kind: string; signal?: AbortSignal; /** Yalnız bu sağlayıcılar denenir (ör. ücretsiz olanlar); yedek zincir bunun dışına çıkamaz. */ only?: ProviderId[] }
 
 export class NotConfiguredError extends Error { constructor(role: ModelRole) { super(`AI provider yapılandırılmamış (${role})`); this.name = "NotConfiguredError"; } }
 export class BudgetExceededError extends Error { constructor() { super("Aylık AI bütçesi doldu"); this.name = "BudgetExceededError"; } }
@@ -35,7 +35,7 @@ export const isRoleAvailable = (role: ModelRole) => candidatesFor(role).length >
  */
 export async function route(role: ModelRole, messages: ChatMessage[], opts: RouteOptions): Promise<ChatResponse> {
   const cfg = aiConfig();
-  const cands = candidatesFor(role);
+  const cands = candidatesFor(role).filter((c) => !opts.only || opts.only.includes(c.provider));
   if (!cands.length) throw new NotConfiguredError(role);
   const b = await budgetStatus();
   if (b.level === "critical" && role !== "fast") throw new BudgetExceededError();

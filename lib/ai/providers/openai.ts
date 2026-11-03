@@ -2,8 +2,8 @@ import { providerKey } from "../config";
 import type { ChatRequest, ChatResponse, ModelProvider } from "../types";
 import { now, postJson } from "./http";
 
-/** OpenAI Chat Completions — SDK'sız; JSON modu `response_format`. Mistral da aynı biçimi konuşur (aşağıda). */
-function openAICompatible(id: "openai" | "mistral", defaultUrl: string): ModelProvider {
+/** OpenAI Chat Completions — SDK'sız; JSON modu `response_format`. Mistral ve Groq da aynı biçimi konuşur (aşağıda). */
+function openAICompatible(id: "openai" | "mistral" | "groq", defaultUrl: string, extra?: (req: ChatRequest) => Record<string, unknown>): ModelProvider {
   /* Taban URL env ile değiştirilebilir → self-hosted / OpenAI uyumlu uç noktalar (vLLM, Ollama, proxy). */
   const url = () => (process.env[`${id.toUpperCase()}_BASE_URL`] ?? defaultUrl.replace(/\/chat\/completions$/, "")).replace(/\/$/, "") + "/chat/completions";
   return {
@@ -13,7 +13,7 @@ function openAICompatible(id: "openai" | "mistral", defaultUrl: string): ModelPr
       const t0 = now();
       const data = await postJson<{ choices: Array<{ message: { content: string | null }; finish_reason?: string }>; usage?: { prompt_tokens: number; completion_tokens: number } }>(
         id, url(), { authorization: `Bearer ${providerKey(id)}` },
-        { model: req.model, messages: req.messages, temperature: req.temperature ?? 0.2, max_tokens: req.maxTokens ?? 1200, ...(req.json ? { response_format: { type: "json_object" } } : {}) },
+        { model: req.model, messages: req.messages, temperature: req.temperature ?? 0.2, max_tokens: req.maxTokens ?? 1200, ...(req.json ? { response_format: { type: "json_object" } } : {}), ...extra?.(req) },
         req.timeoutMs ?? 18000, req.signal,
       );
       const c = data.choices?.[0];
@@ -23,3 +23,8 @@ function openAICompatible(id: "openai" | "mistral", defaultUrl: string): ModelPr
 }
 export const openaiProvider = openAICompatible("openai", "https://api.openai.com/v1");
 export const mistralProvider = openAICompatible("mistral", "https://api.mistral.ai/v1");
+/* Groq: gpt-oss düşünme tokenı üretir ve bunlar yanıt sınırından düşer; kısa düşünme, düşünce metni yanıta eklenmez. */
+export const groqProvider = openAICompatible("groq", "https://api.groq.com/openai/v1", (req) => {
+  const oss = req.model.startsWith("openai/gpt-oss");
+  return { max_tokens: undefined, max_completion_tokens: req.maxTokens ?? 1200, ...(oss ? { reasoning_effort: "low", include_reasoning: false } : {}) };
+});
