@@ -198,6 +198,9 @@ async function main() {
   say({ action: "cheaper", area: "Beşiktaş", cuisine: "kebap", attrs: ["ekonomik"], not_cuisines: [], picks: [] });
   const fb2 = await sor({ query: "Beşiktaş'ta kebap ai13", context: fb1.context, shown: fb1.shown });
   ok("AI: semt ve mutfak birlikte yeni ise önceki 'ekonomik' taşınmaz", fb2.understood.area === "Beşiktaş" && fb2.understood.cuisine === "kebap" && !fb2.understood.attrs.includes("ekonomik"), fb2.understood);
+  say({ action: "new", area: "Kadıköy", cuisine: null, attrs: ["aksam", "gec", "vejetaryen"], not_cuisines: [], picks: [] });
+  const gx = await sor({ query: "Kadıköy'de arkadaşlarla akşam yemeği ai16" });
+  ok("AI: model kullanıcının yazmadığı geç saat ya da vejetaryen tercihini ekleyemez", !gx.understood.attrs.includes("gec") && !gx.understood.attrs.includes("vejetaryen"), gx.understood.attrs);
   delete process.env.AI_FAST_PROVIDER; delete process.env.AI_FAST_MODEL; resetAIConfig();
   say({ picks: [], note: "Hiçbiri tam uymuyor." });
   const np = await sor({ query: "Galata'da Samsun pidesi ai14" });
