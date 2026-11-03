@@ -19,6 +19,13 @@ const first = (r: R, s: string) => r.items[0]?.slug === s;
 const has = (r: R, re: RegExp) => re.test(JSON.stringify(r));
 
 const CASES: Array<[string, string, (r: R) => unknown]> = [
+  ["Kebap yiyelim ama Kadıköy dışında olsun", "semt dışlama: o ilçeden öneri yok", (r) => r.understood.notArea === "Kadıköy" && r.items.length > 0 && r.items.every((i) => i.district !== "Kadıköy")],
+  ["Şişli'de Japon mutfağı", "Japon mutfağı Japon Erdal'ı ad eşleşmesiyle getirmez", (r) => r.items.every((i) => i.slug !== "japon-erdal-beyoglu") && r.understood.cuisine === "sushi"],
+  ["Kadıköy'de gece geç saate kadar açık bir yer", "geç saat yalnız kayıtlı açılış saatiyle", (r) => r.items.length > 0 && dist(r, "Kadıköy") && (has(r, /açılış saati/) || has(r, /doğrulanamadı/))],
+  ["vegan yemek yiyebileceğim yer", "vejetaryen: yalnız kayıtta ya da adında geçen", (r) => r.items.length > 0 && r.items.every((i) => i.why.some((w) => /vejetaryen/.test(w)))],
+  ["Ataşehir'de 7 kişilik akşam yemeği", "kalabalık grup: yer durumu bilinmiyor diye açıkça söylenir", (r) => dist(r, "Ataşehir") && has(r, /7 kişilik grup için yer/)],
+  ["menemen nasıl yapılır", "tarif kapsam dışı, menemenci adı eşleşmez", (r) => r.items.length === 0 && has(r, /Tarif vermiyorum/)],
+  ["Beşiktaş'ta balık ama çok pahalı olmasın", "pahalı olmasın = uygun fiyat isteği", (r) => r.understood.attrs.includes("ekonomik") && dist(r, "Beşiktaş")],
   ["Uygun fiyatlı bir esnaf lokantası arıyorum", "fiyatı ortanın üstündeki lokanta 'uygun' diye öne çıkmaz", (r) => r.items.length > 0 && r.items[0].slug !== "yeni-lokanta-beyoglu"],
   ["Fatih'te köfte yiyelim", "köfte mutfak olarak tanınır, Fatih", (r) => r.understood.cuisine === "kofte" && dist(r, "Fatih")],
   ["Fatih'te kuru fasulye", "esnaf yemeği: kayıtta yoksa açıkça lokanta türüne düşer", (r) => r.understood.dish === "kuru-fasulye" && (r.items.length > 0 || r.alternatives.length > 0) && [...r.items, ...r.alternatives].every((i) => i.district === "Fatih")],
@@ -171,7 +178,20 @@ async function main() {
   say({ action: "new", area: "Fatih", area_text: null, cuisine: null, dish: null, term: "zırzop", attrs: [], picks: [] });
   const zz = await sor({ query: "Fatih'te zırzop ai11" });
   ok("AI: modelin eklediği terim sonucu boşaltırsa yerel yoruma dönülür ve söylenir", zz.items.length > 0 && dist(zz, "Fatih") && /zırzop/.test(zz.relaxed ?? ""), { u: zz.understood, r: zz.relaxed });
+  say({ action: "new", area: "Maltepe", cuisine: null, dish: null, term: "akşam yemeği", attrs: null, not_cuisines: null, picks: [] });
+  const mt = await sor({ query: "Maltepe'de akşam yemeği ai12" });
+  ok("AI: yorumda boş dizi yerine null kabul edilir, bilinen sözcük terim olmaz", mt.understood.term === null && mt.items.length > 0 && dist(mt, "Maltepe"), { u: mt.understood, r: mt.reason });
+  say({ action: "refine", picks: [] }); const fb0 = await sor({ query: "Fatih'te balık ai13" });
+  const fb1 = await sor({ query: "daha ekonomik olsun ai13", context: fb0.context, refine: "cheaper", shown: fb0.shown });
+  say({ action: "cheaper", area: "Beşiktaş", cuisine: "kebap", attrs: ["ekonomik"], not_cuisines: [], picks: [] });
+  const fb2 = await sor({ query: "Beşiktaş'ta kebap ai13", context: fb1.context, shown: fb1.shown });
+  ok("AI: semt ve mutfak birlikte yeni ise önceki 'ekonomik' taşınmaz", fb2.understood.area === "Beşiktaş" && fb2.understood.cuisine === "kebap" && !fb2.understood.attrs.includes("ekonomik"), fb2.understood);
   delete process.env.AI_FAST_PROVIDER; delete process.env.AI_FAST_MODEL; resetAIConfig();
+  say({ picks: [], note: "Hiçbiri tam uymuyor." });
+  const np = await sor({ query: "Galata'da Samsun pidesi ai14" });
+  ok("AI: model seçim yapmazsa kayıtlı adaylar ve açık etiket", np.mode === "veri" && np.reason === "ai_no_pick" && np.items.length > 0, np.reason);
+  say({ picks: [{ slug: "japon-erdal-beyoglu", why: "Geniş grup için uygun, deniz kenarı atmosferiyle merkezi konumda." }] });
+  ok("AI: grup, atmosfer, konum övgüsü kayıtsızsa atılır", !has(await sor({ query: "Galata'da Samsun pidesi ai15" }), /Geniş grup|atmosfer/));
   say("bu json değil");
   const warns: string[] = [], cw = console.warn; console.warn = (...a: unknown[]) => { warns.push(a.join(" ")); };
   const m3 = await sor({ query: "Galata'da Samsun pidesi ai4" });
