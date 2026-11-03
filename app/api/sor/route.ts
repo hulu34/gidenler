@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { checkRate } from "@/lib/ai/ratelimit";
-import { RequestSchema, sor } from "@/lib/sor/ask";
+import { RequestSchema, sor, sorAvailable } from "@/lib/sor/ask";
 import { sorCapUsd, spentUsd } from "@/lib/sor/harcama";
-import { isRoleAvailable, candidatesFor } from "@/lib/ai/router";
+import { candidatesFor } from "@/lib/ai/router";
+import { allowedProviders, kotaDurum } from "@/lib/sor/kota";
 import { previewWriteGuard } from "@/lib/db/fingerprint";
 
 /* POST /api/sor — Sor Gidenler. Anahtarlar yalnız sunucuda; hesap ve profil modele gönderilmez. Hata boş sonuç gibi gösterilmez. */
@@ -15,8 +16,9 @@ const H = { "Cache-Control": "no-store" };
 export async function GET() {
   if (process.env.VERCEL_ENV === "production") return NextResponse.json({ error: "not_found" }, { status: 404, headers: H });
   const url = process.env.DATABASE_URL;
-  const c = candidatesFor("primary")[0] ?? null;
-  return NextResponse.json({ env: process.env.VERCEL_ENV ?? "dev", db: !url ? "yok" : previewWriteGuard(url).ok ? "yalitilmis" : "kapali", ai: isRoleAvailable("primary"), provider: c?.provider ?? null, model: c?.model ?? null, fast: candidatesFor("fast")[0]?.model ?? null, capUsd: sorCapUsd(), spentUsd: await spentUsd() }, { headers: H });
+  const only = allowedProviders(), pick = (r: "primary" | "fast") => candidatesFor(r).find((c) => !only || only.includes(c.provider)) ?? null;
+  const c = pick("primary"), f = pick("fast");
+  return NextResponse.json({ env: process.env.VERCEL_ENV ?? "dev", db: !url ? "yok" : previewWriteGuard(url).ok ? "yalitilmis" : "kapali", ai: sorAvailable("primary"), yalnizUcretsiz: !!only, provider: c?.provider ?? null, model: c?.model ?? null, fast: f?.model ?? null, kota: c ? await kotaDurum(c.provider, c.model) : null, capUsd: sorCapUsd(), spentUsd: await spentUsd() }, { headers: H });
 }
 
 export async function POST(req: Request) {

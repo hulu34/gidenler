@@ -11,7 +11,8 @@ export async function postJson<T>(provider: ProviderId, url: string, headers: Re
     if (!res.ok) {
       const text = (await res.text().catch(() => "")).slice(0, 300);
       const retryable = res.status === 429 || res.status >= 500;
-      throw new ProviderError(`${provider} HTTP ${res.status}: ${text.replace(/[A-Za-z0-9_-]{24,}/g, "[redacted]")}`, provider, res.status, retryable);
+      const ra = Number(res.headers.get("retry-after"));
+      throw new ProviderError(`${provider} HTTP ${res.status}: ${text.replace(/[A-Za-z0-9_-]{24,}/g, "[redacted]")}`, provider, res.status, retryable, Number.isFinite(ra) && ra > 0 ? ra : undefined);
     }
     return (await res.json()) as T;
   } catch (e) {

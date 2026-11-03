@@ -14,6 +14,7 @@ const REFINE: Array<[string, string]> = [["cheaper", "Daha ekonomik olsun"], ["o
 const REASON: Record<string, string> = {
   not_configured: "AI yorumu şu an kapalı. Öneriler kayıtlı verilerden kurallarla seçildi.",
   budget: "AI bütçe sınırına ulaştı. Öneriler kayıtlı verilerden kurallarla seçildi.",
+  quota: "AI desteği şu an geçici olarak sınırlı. Öneriler kayıtlı verilerden kurallarla seçildi; biraz sonra yeniden deneyebilirsin.",
   timeout: "AI zamanında yanıt vermedi. Öneriler kayıtlı verilerden kurallarla seçildi.",
   provider_error: "AI servisine ulaşılamadı. Öneriler kayıtlı verilerden kurallarla seçildi.",
   invalid_output: "AI yanıtı kullanılamadı. Öneriler kayıtlı verilerden kurallarla seçildi.",

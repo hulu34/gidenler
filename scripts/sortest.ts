@@ -6,6 +6,7 @@ import { reserve, resetHarcamaForTests, sorCapUsd } from "../lib/sor/harcama";
 import { dbFingerprint, previewWriteGuard } from "../lib/db/fingerprint";
 import { spawnSync } from "node:child_process";
 import { priceFor, resetAIConfig } from "../lib/ai/config";
+import { resetKotaForTests, reserveKota } from "../lib/sor/kota";
 
 let pass = 0, fail = 0; const rows: string[] = [];
 const ok = (n: string, c: unknown, x?: unknown) => { if (c) pass++; else { fail++; console.log(`✗ ${n}`, x === undefined ? "" : JSON.stringify(x).slice(0, 400)); } };
@@ -131,21 +132,21 @@ async function main() {
   ok("dizin: güncel", spawnSync("npx", ["tsx", "scripts/sor-index.ts", "--check"]).status === 0);
 
   /* sahte sağlayıcı: AI katmanı kapıları. Gerçek model testi DEĞİL. */
-  process.env.AI_PRIMARY_PROVIDER = "openai"; process.env.AI_PRIMARY_MODEL = "mock"; process.env.OPENAI_API_KEY = "test"; delete process.env.AI_FAST_PROVIDER; process.env.AI_MONTHLY_BUDGET_USD = "100"; resetAIConfig();
+  process.env.AI_PRIMARY_PROVIDER = "groq"; process.env.AI_PRIMARY_MODEL = "openai/gpt-oss-120b"; process.env.GROQ_API_KEY = "test"; delete process.env.AI_FAST_PROVIDER; process.env.AI_MONTHLY_BUDGET_USD = "100"; resetAIConfig();
   const real = globalThis.fetch; let calls = 0, sent = "";
   const say = (o: unknown, st = 200) => { globalThis.fetch = (async (_u: string, init?: RequestInit) => { calls++; sent = String(init?.body); return new Response(JSON.stringify({ choices: [{ message: { content: typeof o === "string" ? o : JSON.stringify(o) } }], usage: { prompt_tokens: 100, completion_tokens: 50 } }), { status: st, headers: { "content-type": "application/json" } }); }) as unknown as typeof fetch; };
   say({ picks: [{ slug: "japon-erdal-beyoglu", why: "Samsun usulü kapalı pidesiyle Galata'da tam aradığın yer." }, { slug: "yok-boyle-mekan", why: "uydurma" }, { slug: "ciya-sofrasi-kadikoy", why: "koşul dışı" }], note: null });
   const m1 = await sor({ query: "Galata'da Samsun pidesi ai1" });
   ok("AI: model metni kullanılır, mod ai", m1.mode === "ai" && m1.items[0].why[0].includes("kapalı pidesiyle"), m1);
   ok("AI: var olmayan mekân atılır", m1.items.every((i) => SLUGS.has(i.slug)) && m1.items.length === 1);
-  ok("AI: token sınırı gönderilir", /"max(_completion)?_tokens":600/.test(sent), sent.slice(0, 200));
+  ok("AI: token sınırı gönderilir, düşünme kısa", /"max_completion_tokens":1300/.test(sent) && /"reasoning_effort":"low"/.test(sent) && !/"max_tokens"/.test(sent), sent.slice(0, 300));
   ok("AI: telefon modele gitmez", (await (say({ picks: [{ slug: "japon-erdal-beyoglu", why: "uygun" }] }), sor({ query: "Galata pide 05321112233 ai2" }))) && !sent.includes("05321112233"));
   say({ picks: [{ slug: "japon-erdal-beyoglu", why: "Gidenler puanı 9,5/10, fiyatı 300 TL." }] });
   const m2 = await sor({ query: "Galata'da Samsun pidesi ai3" });
   ok("AI: rakam ve puan uyduran cümle atılır", !has(m2, /9,5|300 TL/) && m2.items.length > 0);
   say({ picks: [{ slug: "japon-erdal-beyoglu", why: "Sakin ve romantik bir yer, çok ünlü." }] });
   ok("AI: kayıtta olmayan nitelik cümlesi atılır", !has(await sor({ query: "Galata'da Samsun pidesi ai6" }), /Sakin ve romantik/));
-  process.env.AI_FAST_PROVIDER = "openai"; process.env.AI_FAST_MODEL = "mock"; resetAIConfig();
+  process.env.AI_FAST_PROVIDER = "groq"; process.env.AI_FAST_MODEL = "openai/gpt-oss-20b"; resetAIConfig();
   say({ action: "new", area: "Kadıköy", area_text: "Marsilya", term: "ejderha eti", cuisine: null, dish: null, attrs: [], party: null, budget_max: 5, not_cuisines: [], picks: [] });
   const hl = await sor({ query: "Bostancı'da mantı ai7" });
   ok("AI: model kullanıcının yazmadığı koşul ekleyemez", hl.understood.term !== "ejderha eti" && hl.understood.areaText !== "Marsilya" && hl.understood.budgetMax === null, hl.understood);
@@ -162,13 +163,39 @@ async function main() {
   say({ picks: [{ slug: "japon-erdal-beyoglu", why: "uygun" }] }); calls = 0;
   await sor({ query: "önbellek galata pide" }); const c1 = calls; await sor({ query: "önbellek galata pide" });
   ok("AI: aynı soru ikinci kez model çağırmaz", c1 === 1 && calls === 1, { c1, calls });
+  /* ücretsiz kota: 429 ücret değil red; veri modu, dürüst etiket, bekleme süresince sağlayıcıya gidilmez */
+  globalThis.fetch = (async () => { calls++; return new Response('{"error":{"message":"rate limit"}}', { status: 429, headers: { "retry-after": "30" } }); }) as unknown as typeof fetch;
+  calls = 0; const q1 = await sor({ query: "Galata'da Samsun pidesi kota1" });
+  ok("kota: 429'da gerçek veri, etiket quota", q1.mode === "veri" && q1.reason === "quota" && first(q1, "japon-erdal-beyoglu"), q1.reason);
+  say({ picks: [{ slug: "japon-erdal-beyoglu", why: "uygun" }] }); calls = 0;
+  const q2 = await sor({ query: "Galata'da Samsun pidesi kota2" });
+  ok("kota: bekleme süresinde model çağrılmaz", calls === 0 && q2.reason === "quota", { calls, r: q2.reason });
+  resetKotaForTests();
+  let n = 0; while ((await reserveKota("groq", "openai/gpt-oss-120b", 7000)).ok && n < 100) n++;
+  ok("kota: ücretsiz dakika token sınırının altında kesilir", n === 1, n);
+  resetKotaForTests();
+  for (let i = 0; i < 29; i++) await reserveKota("groq", "openai/gpt-oss-20b", 10);
+  ok("kota: dakikada 27 istekten sonra durur (30'un %90'ı)", !(await reserveKota("groq", "openai/gpt-oss-20b", 10)).ok);
+  ok("kota: sınırı bilinmeyen model çağrılmaz", (await reserveKota("groq", "llama-bilinmeyen", 10)).ok === false);
+  resetKotaForTests();
+  /* ücretli sağlayıcı: açık izin olmadan çağrılmaz, ücretsiz kota dolunca da ona geçilmez */
+  process.env.AI_PRIMARY_PROVIDER = "openai"; process.env.AI_PRIMARY_MODEL = "gpt-4.1-mini"; process.env.OPENAI_API_KEY = "test"; resetAIConfig();
+  calls = 0; const pd = await sor({ query: "Galata'da Samsun pidesi ucretli" });
+  ok("ücret: ücretli sağlayıcı izinsiz çağrılmaz", calls === 0 && pd.mode === "veri" && pd.reason === "not_configured", { calls, r: pd.reason });
+  process.env.AI_PRIMARY_PROVIDER = "groq"; process.env.AI_PRIMARY_MODEL = "openai/gpt-oss-120b"; process.env.AI_FALLBACK_CHAIN = "openai"; process.env.AI_FALLBACK_MODEL_OPENAI = "gpt-4.1-mini"; resetAIConfig();
+  const hosts: string[] = [];
+  globalThis.fetch = (async (u: string) => { hosts.push(new URL(u).host); return new Response("{}", { status: 429 }); }) as unknown as typeof fetch;
+  const fb = await sor({ query: "Galata'da Samsun pidesi yedek" });
+  ok("ücret: ücretsiz kota dolunca ücretli yedeğe geçilmez", !hosts.includes("api.openai.com") && fb.reason === "quota", { hosts, r: fb.reason });
+  delete process.env.AI_FALLBACK_CHAIN; delete process.env.AI_FALLBACK_MODEL_OPENAI; delete process.env.OPENAI_API_KEY; resetAIConfig(); resetKotaForTests();
   globalThis.fetch = real;
 
   const src = readFileSync("lib/sor/ask.ts", "utf8") + readFileSync("lib/sor/engine.ts", "utf8") + readFileSync("app/api/sor/route.ts", "utf8");
   ok("Google çağrısı yok", !/googleapis|providers\/google|fetchGoogle/.test(src));
   ok("hesap verisi yok", !/currentUser|user\.email|summarizeProfile/.test(src));
   const client = readFileSync("components/sor/SorAsistan.tsx", "utf8");
-  ok("istemcide anahtar ve sağlayıcı yok", !/API_KEY|lib\/ai\/config/.test(client));
+  ok("istemcide anahtar ve sağlayıcı yok", !/API_KEY|lib\/ai\/config|lib\/sor\/kota/.test(client));
+  ok("kota: ücretsiz sınır ortamla yükseltilemez", !/process\.env\.[A-Z_]*(LIMIT|KOTA)/.test(readFileSync("lib/sor/kota.ts", "utf8")));
   if (process.env.SOR_TABLO) console.log(rows.join("\n"));
   console.log(`\nSor Gidenler: ${pass} geçti, ${fail} kaldı (${CASES.length} sorgu)`);
   process.exit(fail ? 1 : 0);

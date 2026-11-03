@@ -13,7 +13,7 @@ if (typeof window !== "undefined") throw new Error("lib/ai/config yalnızca sunu
    AI_GROUNDING_PROVIDER                    → dış kaynak doğrulama (şimdilik yalnızca "gemini" ya da "none")
    ────────────────────────────────────────────────────────────────────────── */
 
-const PROVIDERS: ProviderId[] = ["anthropic", "openai", "gemini", "mistral", "none"];
+const PROVIDERS: ProviderId[] = ["anthropic", "openai", "gemini", "mistral", "groq", "none"];
 const num = (v: string | undefined, d: number) => { const n = Number(v); return Number.isFinite(n) && v !== undefined && v !== "" ? n : d; };
 const providerOf = (v: string | undefined): ProviderId => (PROVIDERS.includes((v ?? "") as ProviderId) ? (v as ProviderId) : "none");
 
@@ -92,6 +92,7 @@ export function providerKey(p: ProviderId): string | undefined {
     case "openai": return process.env.OPENAI_API_KEY || undefined;
     case "gemini": return process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || undefined;
     case "mistral": return process.env.MISTRAL_API_KEY || undefined;
+    case "groq": return process.env.GROQ_API_KEY || undefined;
     default: return undefined;
   }
 }
@@ -99,9 +100,10 @@ export function providerKey(p: ProviderId): string | undefined {
 /**
  * Maliyet tablosu (USD / 1M token). Env ile geçersiz kılınabilir: AI_PRICE_<provider>_<model>="in,out".
  * Bilinmeyen model → sağlayıcının muhafazakâr varsayılanı (bütçeyi olduğundan düşük göstermemek için).
+ * groq: 0 — yalnız ücretsiz planla kullanılır; harcama yerine lib/sor/kota.ts ücretsiz kotanın altında tutar.
  */
 const DEFAULT_PRICES: Record<ProviderId, { in: number; out: number }> = {
-  anthropic: { in: 3, out: 15 }, openai: { in: 2.5, out: 10 }, gemini: { in: 1.25, out: 10 }, mistral: { in: 2, out: 6 }, none: { in: 0, out: 0 },
+  anthropic: { in: 3, out: 15 }, openai: { in: 2.5, out: 10 }, gemini: { in: 1.25, out: 10 }, mistral: { in: 2, out: 6 }, groq: { in: 0, out: 0 }, none: { in: 0, out: 0 },
 };
 const KNOWN_PRICES: Record<string, { in: number; out: number }> = {
   // İsimler eşleşmezse varsayılan devreye girer; tablo env ile güncellenir, kod değişmez.
