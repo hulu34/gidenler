@@ -431,7 +431,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
       - run: node ops/sor-e2e.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-es9eknoca-hulu34.vercel.app" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-rkctmkxb7-hulu34.vercel.app" }
       - if: always()
         run: test -d out/sor && tar -C out -czf out/sor.tgz sor && rm -rf out/sor && openssl cms -encrypt -aes256 -binary -outform DER -in out/sor.tgz -out out/sor.tgz.cms ops/olcum.pem
       - if: always()
@@ -484,6 +484,24 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: sorson, path: sorson.cms, if-no-files-found: ignore }
+  sor-r1:
+    if: contains(github.event.head_commit.message, '[sor-r1]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # yalnız regresyon seti; ücretsiz günlük kota yolda dolabilir (gerçek 429 davranışı da ölçülür)
+      - run: node ops/sor-gercek.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-r1", SET: "r1", GAP: "25000" }
+      - run: node ops/sor-gercek.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-rkctmkxb7-hulu34.vercel.app", ETIKET: "veri-r1", SET: "r1", GAP: "2000" }
+      - if: always()
+        run: test -d out && tar -C out -czf out-sorr1.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sorr1.tgz -out sorr1.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: sorr1, path: sorr1.cms, if-no-files-found: ignore }
   sor-durum:
     if: contains(github.event.head_commit.message, '[sor-durum]')
     runs-on: ubuntu-latest
@@ -493,7 +511,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/sor-durum.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOSTS: '{"cli":"gidenler-ch7t009bv-hulu34.vercel.app","git":"gidenler-lcdirpgip-hulu34.vercel.app","git-ucretsiz":"gidenler-bdqga2r3z-hulu34.vercel.app","dal":"gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app","cli-yeni":"gidenler-es9eknoca-hulu34.vercel.app"}' }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOSTS: '{"cli":"gidenler-ch7t009bv-hulu34.vercel.app","git":"gidenler-lcdirpgip-hulu34.vercel.app","git-ucretsiz":"gidenler-bdqga2r3z-hulu34.vercel.app","dal":"gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app","cli-yeni":"gidenler-rkctmkxb7-hulu34.vercel.app"}' }
   sor-gercek:
     if: contains(github.event.head_commit.message, '[sor-gercek]')
     runs-on: ubuntu-latest
@@ -506,12 +524,12 @@ jobs:
       - run: node ops/sor-gercek.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model", SET: "v3", GAP: "25000" }
       - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-es9eknoca-hulu34.vercel.app", ETIKET: "veri", SET: "v3", GAP: "2000" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-rkctmkxb7-hulu34.vercel.app", ETIKET: "veri", SET: "v3", GAP: "2000" }
       # regresyon seti r1: aynı son commit, AI açık ve kapalı
       - run: node ops/sor-gercek.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-r1", SET: "r1", GAP: "25000" }
       - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-es9eknoca-hulu34.vercel.app", ETIKET: "veri-r1", SET: "r1", GAP: "2000" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-rkctmkxb7-hulu34.vercel.app", ETIKET: "veri-r1", SET: "r1", GAP: "2000" }
       - if: always()
         run: test -d out && tar -C out -czf out-sorai.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sorai.tgz -out sorai.cms ops/olcum.pem
       - if: always()
