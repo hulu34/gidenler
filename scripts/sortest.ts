@@ -19,6 +19,12 @@ const first = (r: R, s: string) => r.items[0]?.slug === s;
 const has = (r: R, re: RegExp) => re.test(JSON.stringify(r));
 
 const CASES: Array<[string, string, (r: R) => unknown]> = [
+  ["Uygun fiyatlı bir esnaf lokantası arıyorum", "fiyatı ortanın üstündeki lokanta 'uygun' diye öne çıkmaz", (r) => r.items.length > 0 && r.items[0].slug !== "yeni-lokanta-beyoglu"],
+  ["Fatih'te köfte yiyelim", "köfte mutfak olarak tanınır, Fatih", (r) => r.understood.cuisine === "kofte" && dist(r, "Fatih")],
+  ["Fatih'te kuru fasulye", "esnaf yemeği: kayıtta yoksa açıkça lokanta türüne düşer", (r) => r.understood.dish === "kuru-fasulye" && (r.items.length > 0 || r.alternatives.length > 0) && [...r.items, ...r.alternatives].every((i) => i.district === "Fatih")],
+  ["bana mercimek çorbası tarifi ver", "tarif kapsam dışı, mekân uydurmaz", (r) => r.items.length === 0 && has(r, /Tarif vermiyorum/)],
+  ["Ankara'da döner nerede yenir", "İstanbul dışı açıkça söylenir", (r) => r.items.length === 0 && has(r, /yalnız İstanbul/)],
+  ["Beyoğlu'nda Adana kebap", "Adana kebap şehir sorusu değildir", (r) => dist(r, "Beyoğlu") && !has(r, /yalnız İstanbul/)],
   ["Galata'da iyi bir Samsun pidesi yemek istiyorum.", "ana test: Japon Erdal ilk, Samsun gerekçesiyle", (r) => first(r, "japon-erdal-beyoglu") && r.items[0].why.some((w) => /Samsun/.test(w))],
   ["Ataşehir'de kebap", "Ataşehir ve kebap", (r) => dist(r, "Ataşehir") && kind(r, "Kebapçı / Ocakbaşı") && r.items.length >= 3],
   ["İstanbul'da iyi bir Samsun pidesi yemek istiyorum.", "semtsiz Samsun", (r) => first(r, "japon-erdal-beyoglu")],
@@ -155,10 +161,23 @@ async function main() {
   say({ action: "refine", area: null, cuisine: null, dish: null, term: null, attrs: [], picks: [{ slug: "ciya-sofrasi-kadikoy", why: "koşul dışı" }] });
   const dr = await sor({ query: "Ataşehir'de kebap ai8" });
   ok("AI: model zorunlu koşulu silemez, koşul dışı mekân seçemez", dr.understood.area === "Ataşehir" && dr.understood.cuisine === "kebap" && dr.items.every((i) => i.district === "Ataşehir"), dr.items);
+  say({ action: "new", area: null, area_text: "Deniz ürünü yiyebileceğimiz iyi bir yer", cuisine: null, dish: null, term: "deniz ürünü yiyebileceğimiz iyi", attrs: [], picks: [] });
+  const ft = await sor({ query: "Deniz ürünü yiyebileceğimiz iyi bir yer ai9" });
+  ok("AI: cümlenin tamamı semt ya da terim sayılmaz", ft.understood.areaText === null && ft.understood.term === null && ft.items.length > 0 && ft.items.every((i) => i.kind === "Balık restoranı"), ft.understood);
+  say({ action: "refine", picks: [] }); const bx = await sor({ query: "Sarıyer'de balık ai10" });
+  say({ action: "new", area: "Beykoz", area_text: null, cuisine: null, dish: null, term: null, attrs: [], picks: [] });
+  const bk = await sor({ query: "Beykoz tarafı olsun ai10", context: bx.context, shown: bx.shown });
+  ok("AI: yalnız semt değişince 'yeni konu' mutfağı silmez", bk.understood.area === "Beykoz" && bk.understood.cuisine === "balik", bk.understood);
+  say({ action: "new", area: "Fatih", area_text: null, cuisine: null, dish: null, term: "zırzop", attrs: [], picks: [] });
+  const zz = await sor({ query: "Fatih'te zırzop ai11" });
+  ok("AI: modelin eklediği terim sonucu boşaltırsa yerel yoruma dönülür ve söylenir", zz.items.length > 0 && dist(zz, "Fatih") && /zırzop/.test(zz.relaxed ?? ""), { u: zz.understood, r: zz.relaxed });
   delete process.env.AI_FAST_PROVIDER; delete process.env.AI_FAST_MODEL; resetAIConfig();
   say("bu json değil");
+  const warns: string[] = [], cw = console.warn; console.warn = (...a: unknown[]) => { warns.push(a.join(" ")); };
   const m3 = await sor({ query: "Galata'da Samsun pidesi ai4" });
+  console.warn = cw;
   ok("AI: bozuk yanıtta gerçek veri ve açık uyarı", m3.mode === "veri" && m3.reason === "invalid_output" && first(m3, "japon-erdal-beyoglu"), m3.reason);
+  ok("AI: hata nedeni loglanır, kullanıcı metni ve model çıktısı loglanmaz", warns.some((w) => w.includes("[sor] answer başarısız")) && !warns.some((w) => /Samsun|ai4|json değil/.test(w)), warns);
   globalThis.fetch = (async () => new Response("{}", { status: 500 })) as unknown as typeof fetch;
   const m4 = await sor({ query: "Galata'da Samsun pidesi ai5" });
   ok("AI: servis hatasında gerçek veri, sessiz boşluk yok", m4.mode === "veri" && m4.reason === "provider_error" && first(m4, "japon-erdal-beyoglu"), m4.reason);
