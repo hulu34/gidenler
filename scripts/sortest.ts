@@ -102,6 +102,8 @@ async function main() {
   ok("takip: 'Kadıköy'de olsun' mutfağı korur", s3.understood.area === "Kadıköy" && s3.understood.cuisine === "kebap" && dist(s3, "Kadıköy"));
   const s4 = await sor({ query: "Fatih'te döner", context: { ...s0.context, attrs: ["sakin"] }, shown: s0.shown });
   ok("yeni konu: eski tercih taşınmaz", s4.understood.area === "Fatih" && !s4.understood.attrs.includes("sakin"));
+  ok("kapı: fiyat yokluğundan ucuzluk çıkarımı düşer", unsupported("Restoran, Kadıköy'de, fiyat bilgisi bulunmadığı için bütçeye uygun olma ihtimali yüksek.", ["Tür: Restoran", "İlçe: Kadıköy"]) && unsupported("Kebapçı, fiyat kaydı bulunmadığı için bütçe dostu olabilir.", ["Tür: Kebapçı / Ocakbaşı"]));
+  ok("kapı: kayıtsız kalite ve rahatlık düşer", unsupported("Akşam yemeği için geniş menüsüyle kalite arayanlara uygun.", ["Tür: Restoran"]) && unsupported("Pub ortamı, arkadaş grubu için rahat bir seçenek.", ["Tür: Pub"]));
   ok("kapı: kayıtta olmayan nitelik düşer", unsupported("Çok sakin ve romantik bir yer.", ["Tür: Meyhane"]) && !unsupported("Meyhane türünde, Beyoğlu'nda.", ["Tür: Meyhane", "İlçe: Beyoğlu"]));
   ok("ad: 'yenir' Yeni Lokanta değildir", !(await sor({ query: "Kadıköy'de döner nerede yenir" })).items.some((i) => i.slug === "yeni-lokanta-beyoglu"));
   ok("ad: 'boğaz' semt koşulunu delmez", (await sor({ query: "Üsküdar'da boğaz kenarı balık" })).items.every((i) => i.district === "Üsküdar"));

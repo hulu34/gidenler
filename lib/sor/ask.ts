@@ -43,8 +43,10 @@ const ModelIntent = z.object({ action: z.string().nullable().optional(), area: z
 /* gerekçede sayı ya da puan: kaynakta olsa da yazılmaz */
 const INVENTED = /\d|puan|yıldız|⭐|\/10/i;
 /* Kayıtta geçmeyen değer yargısı cümleyi düşürür. */
-const CLAIMS = ["sakin", "sessiz", "huzurlu", "romantik", "samimi", "ucuz", "uygun fiyat", "ekonomik", "hesapli", "manzara", "teras", "lezzet", "en iyi", "unlu", "kaliteli", "taze", "nefis", "harika", "mukemmel", "meshur", "populer", "otantik", "keyifli", "sicak bir", "cocuk", "aile", "gosterissiz", "misafir", "turist"];
-export const unsupported = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); return INVENTED.test(text) || CLAIMS.some((c) => t.includes(c) && !f.includes(c)); };
+const CLAIMS = ["sakin", "sessiz", "huzurlu", "romantik", "samimi", "ucuz", "uygun fiyat", "ekonomik", "hesapli", "manzara", "teras", "lezzet", "en iyi", "unlu", "kaliteli", "taze", "nefis", "harika", "mukemmel", "meshur", "populer", "otantik", "keyifli", "sicak bir", "cocuk", "aile", "gosterissiz", "misafir", "turist", "butce", "fiyat", "kalite", "rahat", "ferah", "genis menu"];
+/* Tahmin kanıt değildir: "fiyatı yok, ucuz olabilir" türü çıkarım her durumda düşer. */
+const GUESS = /\b(olabilir|ihtimal|muhtemel|tahmin)/;
+export const unsupported = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); return INVENTED.test(text) || GUESS.test(t) || CLAIMS.some((c) => t.includes(c) && !f.includes(c)); };
 
 export const RequestSchema = z.object({
   query: z.string().trim().min(1).max(600), context: IntentSchema.nullable().optional(), refine: z.enum(["cheaper", "quieter", "other_area", "another"]).nullable().optional(),
