@@ -780,6 +780,26 @@ async function main() {
   const used = await usageSnapshot();
   ok("sayaç: 1 arama, 0 doğrulama, 2 sayfa görünümü (eski + yeni; birleşen istek sayılmaz), 1 foto listesi, 10 foto", used?.["google:text_search_pro"].month === 1 && used["google:details_enterprise"].month === 0
     && used["google:details_atmosphere"].month === 2 && used["google:details_essentials"].month === 1 && used["google:photo"].month === 10, used);
+  /* kendi kapağı olan mekân: sunucu Place Photo çağırmaz; kapağı olmayan mekânın akışı aynı (sahte Google, ücret yok) */
+  {
+    const realFetch = globalThis.fetch; const before = vCalls.length;
+    const [je] = await db.select({ id: schema.places.id }).from(schema.places).where(eq(schema.places.slug, "japon-erdal-beyoglu")).limit(1);
+    await db.insert(schema.placeIdentifiers).values({ id: uuidv7(), placeId: je.id, provider: "google", externalId: "GID_JE", status: "confirmed" }).onConflictDoNothing();
+    globalThis.fetch = viewFetch;
+    try {
+      const { GET, POST } = await import("../app/api/google/place/route");
+      const ua = { "user-agent": "Mozilla/5.0 test" };
+      const rj = await GET(new Request("https://x.test/api/google/place/?slug=japon-erdal-beyoglu&part=view&n=5", { headers: ua }));
+      const j = await rj.json() as { photos?: unknown[]; refs?: unknown[]; rating?: number };
+      const jeCalls = vCalls.slice(before);
+      ok("Japon Erdal: Place Photo 0, tek Details, puan akışı yerinde", rj.status === 200 && jeCalls.filter((c) => c === "media").length === 0 && jeCalls.filter((c) => c.startsWith("details")).length === 1 && j.rating === 4.4 && !j.photos?.length && !j.refs?.length, { s: rj.status, jeCalls });
+      const pm = await POST(new Request("https://x.test/api/google/place/?slug=japon-erdal-beyoglu&part=media", { method: "POST", headers: ua, body: JSON.stringify({ refs: [{ name: "places/GID_JE/photos/p0", author: "a" }] }) }));
+      ok("Japon Erdal: doğrudan fotoğraf isteği de reddedilir", pm.status === 409 && vCalls.slice(before).filter((c) => c === "media").length === 0, pm.status);
+      const m0 = vCalls.length;
+      const rc = await GET(new Request("https://x.test/api/google/place/?slug=ciya-sofrasi-kadikoy&part=view&n=5", { headers: ua }));
+      ok("kapağı olmayan mekânda canlı akış aynı: 5 Photo", rc.status === 200 && vCalls.slice(m0).filter((c) => c === "media").length === 5, vCalls.slice(m0));
+    } finally { globalThis.fetch = realFetch; }
+  }
 
   const moda = (await db.select().from(schema.places).where(sql`${schema.places.slug} <> 'ciya-sofrasi-kadikoy' and ${schema.places.district} = 'Kadıköy'`).limit(1))[0];
   const m2 = await resolveGooglePlaceId(moda.slug, K, mkFetch({ name: moda.name + " Şubesi", lat: moda.lat! + 0.00135, lng: moda.lng! }));

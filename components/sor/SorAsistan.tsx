@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { fmtPublished } from "@/lib/score/publishedCards";
 
 /* SOR GİDENLER — soru görünür kalır, kartlar profile gider, takip soruları önceki isteği korur.
    Model devre dışıysa bu açıkça yazılır; hata "sonuç yok" gibi gösterilmez. */
 const API = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/sor/`;
-type Item = { slug: string; name: string; kind: string; district: string; address: string | null; href: string; why: string[]; caveats: string[]; areaFit: string | null };
+type Item = { slug: string; name: string; kind: string; district: string; address: string | null; href: string; why: string[]; caveats: string[]; areaFit: string | null;
+  cover?: { src: string; srcSet?: string; alt: string; credit: string; license?: string } | null; puan?: { score: number; count: number; confidence: string | null } | null };
 type Res = { mode: "ai" | "veri"; reason: string | null; understood: Record<string, unknown>; items: Item[]; alternatives: Item[]; altLabel: string | null; note: string | null; question: string | null; relaxed: string | null; context: unknown; shown: string[] };
 type Turn = { q: string; res?: Res; error?: string };
 const ORNEKLER = ["Galata'da iyi bir Samsun pidesi yemek istiyorum.", "Ataşehir'de kebap", "Balık yiyebileceğimiz sakin bir restoran?", "Uygun fiyatlı ama kaliteli bir esnaf lokantası öner."];
@@ -18,10 +20,11 @@ const REASON: Record<string, string> = {
   timeout: "AI zamanında yanıt vermedi. Öneriler kayıtlı verilerden kurallarla seçildi.",
   provider_error: "AI servisine ulaşılamadı. Öneriler kayıtlı verilerden kurallarla seçildi.",
   invalid_output: "AI yanıtı kullanılamadı. Öneriler kayıtlı verilerden kurallarla seçildi.",
+  ai_no_pick: "AI bu adaylardan birini öne çıkarmadı. Aşağıdakiler koşulunu sağlayan kayıtlı mekânlar; kurallarla sıralandı.",
 };
 
 function Understood({ u }: { u: Record<string, unknown> }) {
-  const parts = [u.area, u.dish === "samsun" ? "Samsun pidesi" : u.dish ?? u.cuisine, ...((u.attrs as string[]) ?? []).filter((a) => a !== "kalite"), u.party ? `${u.party} kişi` : null].filter(Boolean) as string[];
+  const parts = [u.area, u.notArea ? `${u.notArea} dışı` : null, u.dish === "samsun" ? "Samsun pidesi" : u.dish ?? u.cuisine, ...((u.notCuisines as string[]) ?? []).map((c) => `${c} değil`), ...((u.attrs as string[]) ?? []).filter((a) => a !== "kalite"), u.party ? `${u.party} kişi` : null].filter(Boolean) as string[];
   return parts.length ? <p className="text-[12.5px] text-ink-3">Anladığım: {parts.join(" · ")}</p> : null;
 }
 
@@ -29,8 +32,16 @@ function Card({ c, i }: { c: Item; i: number }) {
   return (
     <li data-sor-kart={c.slug}>
       <Link href={c.href} className="group flex flex-col gap-1.5 border-t border-line py-4">
+        {c.cover && (
+          <span data-sor-kapak className="relative block aspect-[16/9] max-h-56 overflow-hidden bg-sheet">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={c.cover.src} srcSet={c.cover.srcSet} sizes="(max-width: 640px) 92vw, 700px" alt={c.cover.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+            <span className="absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-2 pb-1 pt-4 text-[10px] text-white">{c.cover.credit}{c.cover.license ? ` · ${c.cover.license}` : ""}</span>
+          </span>
+        )}
         <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">{i + 1} · {c.kind} · {c.district}</span>
         <span className="text-[19px] font-extrabold leading-tight tracking-[-0.02em] group-hover:text-accent-ink">{c.name}</span>
+        {c.puan && <span data-sor-puan className="text-[13px] font-semibold">Gidenler puanı {fmtPublished(c.puan.score)} · {c.puan.count} deneyim{c.puan.confidence ? ` · ${c.puan.confidence}` : ""}</span>}
         <span className="flex flex-col gap-0.5 text-[14px] leading-snug text-ink-2">{c.why.slice(0, 3).map((w) => <span key={w}>{w}</span>)}</span>
         {c.caveats.length > 0 && <span className="text-[12.5px] leading-snug text-ink-3">{c.caveats.join(" ")}</span>}
         <span className="text-[13px] font-bold underline underline-offset-2">Profili aç</span>

@@ -46,7 +46,7 @@ const CUISINES: Cuisine[] = [
   { key: "pide", label: "pide", terms: ["pide", "lahmacun"], kinds: ["Pideci"], text: ["pide"] }, { key: "kebap", label: "kebap", terms: ["kebap", "kebab", "ocakbasi", "mangal", "adana", "urfa"], kinds: ["Kebapçı / Ocakbaşı"] },
   { key: "doner", label: "döner", terms: ["doner", "iskender"], kinds: ["Dönerci"] }, { key: "balik", label: "balık", terms: ["balik", "deniz urun", "levrek", "cupra"], kinds: ["Balık restoranı"] },
   { key: "meyhane", label: "meyhane", terms: ["meyhane", "rakili", "rakı"], kinds: ["Meyhane"] }, { key: "esnaf", label: "esnaf lokantası", terms: ["esnaf", "lokanta", "ev yemegi", "sulu yemek"], kinds: ["Lokanta"] },
-  { key: "sushi", label: "sushi", terms: ["sushi", "susi", "japon mutfagi", "ramen"], kinds: ["Sushi / Japon"] }, { key: "pizza", label: "pizza", terms: ["pizza", "pizzaci"], kinds: ["Pizza"] }, { key: "burger", label: "burger", terms: ["burger", "hamburger"], kinds: ["Burger"] },
+  { key: "sushi", label: "sushi", terms: ["sushi", "susi", "japon", "ramen"], kinds: ["Sushi / Japon"] }, { key: "pizza", label: "pizza", terms: ["pizza", "pizzaci"], kinds: ["Pizza"] }, { key: "burger", label: "burger", terms: ["burger", "hamburger"], kinds: ["Burger"] },
   { key: "steak", label: "et", terms: ["steak", "biftek", "et restoran", "antrikot"], kinds: ["Steakhouse"] }, { key: "kahvalti", label: "kahvaltı", terms: ["kahvalti", "brunch", "serpme"], kinds: ["Kahvaltı"] }, { key: "kahve", label: "kahve", terms: ["kahve", "kafe", "cafe", "espresso"], kinds: ["Kahveci", "Kafe"] },
   { key: "tatli", label: "tatlı", terms: ["tatli", "baklava", "kunefe", "pastane"], kinds: ["Tatlıcı", "Pastane"] }, { key: "manti", label: "mantı", terms: ["manti"], kinds: ["Mantıcı"] },
   /* köftecinin ayrı türü yok: adında ya da menüsünde köfte geçen kayıt */
@@ -60,13 +60,17 @@ const DISHES: Array<{ key: string; label: string; terms: string[]; cuisine: stri
   { key: "karniyarik", label: "karnıyarık", terms: ["karniyarik"], cuisine: "esnaf", text: ["karniyarik"] },
   { key: "etli-nohut", label: "etli nohut", terms: ["etli nohut", "nohut pilav"], cuisine: "esnaf", text: ["nohut"] },
   { key: "hunkar", label: "hünkâr beğendi", terms: ["hunkar"], cuisine: "esnaf", text: ["hunkar"] },
+  { key: "menemen", label: "menemen", terms: ["menemen"], cuisine: "kahvalti", text: ["menemen"] },
 ];
 /* Nitelik yalnız kaynaklı metinde AÇIKÇA geçiyorsa doğrulanmış sayılır; çağrışım (tarihi → turiste uygun) kanıt değildir. */
 const ATTRS: Array<{ key: string; label: string; terms: string[]; evidence: string[] }> = [
   { key: "sakin", label: "sakinlik", terms: ["sakin", "sessiz", "gurultulu olmasin", "gurultusuz", "kalabalik olmasin", "kalabalik istemiyorum"], evidence: ["sakin", "sessiz", "huzurlu"] },
   { key: "romantik", label: "romantik atmosfer", terms: ["romantik", "ilk bulusma", "first date", "sevgili"], evidence: ["romantik"] },
   { key: "gosterissiz", label: "gösterişsiz olması", terms: ["gosterisli olmayan", "gosterissiz", "sade", "abartisiz"], evidence: ["gosterissiz", "mutevazi", "tabela yok"] },
-  { key: "ekonomik", label: "uygun fiyat", terms: ["uygun fiyat", "ucuz", "ekonomik", "hesapli", "butce"], evidence: ["uygun fiyat", "ekonomik", "hesapli"] },
+  { key: "ekonomik", label: "uygun fiyat", terms: ["uygun fiyat", "ucuz", "ekonomik", "hesapli", "butce", "pahali olmasin", "pahali olmayan"], evidence: ["uygun fiyat", "ekonomik", "hesapli"] },
+  /* saat yalnız kayıtlı açılış saatinden; vejetaryen yalnız kayıtta ya da adda açıkça geçiyorsa */
+  { key: "gec", label: "geç saate kadar açık olması", terms: ["gece gec", "gec saat", "gece acik", "gece yarisi", "sabaha kadar", "24 saat"], evidence: [] },
+  { key: "vejetaryen", label: "vejetaryen seçenek", terms: ["vejetaryen", "vegan", "etsiz"], evidence: ["vegan", "vejetaryen", "etsiz"] },
   { key: "manzara", label: "manzara", terms: ["manzara", "teras", "bogaz gor", "deniz gor"], evidence: ["manzara", "teras", "rooftop"] },
   { key: "cocuk", label: "çocuğa uygunluk", terms: ["cocuk", "aile ile", "ailece"], evidence: ["cocuk"] },
   { key: "turist", label: "misafire uygunluk", terms: ["turist", "yabanci arkadas", "misafir", "yurt disindan"], evidence: ["turist"] },
@@ -81,11 +85,15 @@ export const IntentSchema = z.object({
   /* kayıtlı listede olmayan semt ya da yemek: yalnız kayıt metninde aranır, bulunmazsa "yok" denir */
   areaText: z.string().max(40).nullable().default(null), term: z.string().max(40).nullable().default(null),
   budgetMax: z.number().int().min(1).max(100000).nullable().default(null), notCuisines: z.array(z.string().max(20)).max(5).default([]),
+  /* "Beyoğlu dışında": bu semt/ilçedeki mekân önerilmez */
+  notArea: z.string().max(40).nullable().default(null),
 }).strict();
 export type Intent = z.infer<typeof IntentSchema>;
-export const emptyIntent = (): Intent => ({ area: null, district: null, cuisine: null, dish: null, attrs: [], party: null, name: null, wholeCity: false, areaText: null, term: null, budgetMax: null, notCuisines: [] });
+export const emptyIntent = (): Intent => ({ area: null, district: null, cuisine: null, dish: null, attrs: [], party: null, name: null, wholeCity: false, areaText: null, term: null, budgetMax: null, notCuisines: [], notArea: null });
+/** Bilinen semt, mutfak, yemek ya da tercih sözcüğü: serbest metin (term) olarak ayrıca aranmaz. */
+export const isVocab = (s: string) => { const f = fold(s); return [...DISTRICTS, ...SUBAREAS.map((a) => a.name), ...CUISINES.flatMap((c) => c.terms), ...DISHES.flatMap((d) => d.terms), ...ATTRS.flatMap((a) => a.terms), "yemek", "yemegi", "yer", "mekan", "restoran", "ogle", "aksam"].some((t) => { const x = fold(t); return f === x || f.split(" ").every((w) => x.split(" ").includes(w) || ["yemegi", "yemek", "yer", "bir", "icin"].includes(w)); }); };
 export const KNOWN = { areas: [...DISTRICTS, ...SUBAREAS.map((a) => a.name)], cuisines: CUISINES.map((c) => c.key), dishes: DISHES.map((d) => d.key), attrs: ATTRS.map((a) => a.key) };
-const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax);
+const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax || i.notArea);
 
 /* Sıradan sözcük tek başına ad sayılmaz: "pide nerede yenir" Yeni Lokanta'yı bulmaz; adın tamamı yazılmalı. */
 const COMMON_NAME = new Set(["yeni", "eski", "buyuk", "kucuk", "tarihi", "meshur", "bizim", "kardesler", "ortaklar", "asmali", "ev", "ana", "usta", "lezzet", "aile", "sofra", "kent", "merkez"]);
@@ -122,6 +130,8 @@ export function parseQuery(query: string): Intent & { confident: boolean } {
   else { const d = DISTRICTS.find((x) => fold(x).length >= 4 && hasTerm(full, x)); if (d) { i.area = d; i.district = d; } }
   /* semt sözcüğü mutfak aramasına girmez: "Adalar" tek harf farkla "adana" sayılmasın */
   const areaWords = i.area ? fold(i.area).split(" ") : [];
+  /* "Beyoğlu dışında", "Kadıköy olmasın": semt koşul değil, dışlamadır */
+  if (i.area) { const ft = full.split(" "), at = ft.findIndex((t) => tokenHit(t, areaWords[areaWords.length - 1])); if (at >= 0 && NEG.test(ft[at + 1] ?? "")) { i.notArea = i.area; i.area = null; i.district = null; } }
   /* adı sorulan mekânın adındaki sözcük ayrıca mutfak koşulu olmaz: "Yeni Lokanta'da 6 kişi" esnaf araması değildir */
   const named = matchName(full), nameWords = named ? fold(named.name).split(" ") : [];
   const q = full.split(" ").filter((t) => !areaWords.some((w) => tokenHit(t, w)) && !nameWords.includes(t) && !nameWords.some((w) => w.length >= 4 && t.startsWith(w))).join(" ");
@@ -157,7 +167,7 @@ export function detectRefine(query: string): Refine | null {
 /** Takip sorusu: yeni istekte söylenmeyen alanlar önceki bağlamdan gelir. Semt ve mutfak birlikte yenilenirse yeni konudur. */
 export function mergeIntent(prev: Intent | null | undefined, next: Intent, refine?: Refine | null): Intent {
   const fresh = !prev || (!refine && !!(next.area || next.areaText) && !!(next.cuisine || next.term)) || (!refine && !!next.name);
-  const m: Intent = fresh ? { ...next } : { ...prev, attrs: [...new Set([...prev.attrs, ...next.attrs])], area: next.area ?? (next.areaText ? null : prev.area), district: next.area ? next.district : next.areaText ? null : prev.district, areaText: next.areaText ?? (next.area ? null : prev.areaText), cuisine: next.cuisine ?? (next.term ? null : prev.cuisine), term: next.term ?? (next.cuisine ? null : prev.term), dish: next.dish ?? (next.cuisine || next.term ? null : prev.dish), party: next.party ?? prev.party, name: null, wholeCity: next.wholeCity || prev.wholeCity, budgetMax: next.budgetMax ?? prev.budgetMax, notCuisines: [...new Set([...prev.notCuisines, ...next.notCuisines])] };
+  const m: Intent = fresh ? { ...next } : { ...prev, attrs: [...new Set([...prev.attrs, ...next.attrs])], area: next.area ?? (next.areaText ? null : prev.area), district: next.area ? next.district : next.areaText ? null : prev.district, areaText: next.areaText ?? (next.area ? null : prev.areaText), cuisine: next.cuisine ?? (next.term ? null : prev.cuisine), term: next.term ?? (next.cuisine ? null : prev.term), dish: next.dish ?? (next.cuisine || next.term ? null : prev.dish), party: next.party ?? prev.party, name: null, wholeCity: next.wholeCity || prev.wholeCity, budgetMax: next.budgetMax ?? prev.budgetMax, notCuisines: [...new Set([...prev.notCuisines, ...next.notCuisines])], notArea: next.area ? null : next.notArea ?? prev.notArea ?? null };
   if (refine === "cheaper" && !m.attrs.includes("ekonomik")) m.attrs = [...m.attrs, "ekonomik"];
   if (refine === "quieter" && !m.attrs.includes("sakin")) m.attrs = [...m.attrs, "sakin"];
   if (refine === "other_area") { m.area = null; m.district = null; m.areaText = null; }
@@ -170,6 +180,19 @@ const distM = (a: Area, v: Venue) => { if (a.lat == null || v.lat == null || v.l
 const NEGATIVE = /\b(degil|yok|edilmez|edilmiyor|giremez|olmaz|bulunmuyor)\b/;
 function evidenceOf(v: Venue, terms: string[]) {
   for (const s of textOf(v).split(/[.!?\n]+/)) { const f = fold(s); if (terms.some((t) => f.includes(fold(t))) && !NEGATIVE.test(f)) return s.trim().slice(0, 160); }
+  return null;
+}
+/* Gece yarısından sonra kapanış (00:30–05:59) ya da 24 saat: kayıtlı açılış saatinden. */
+export function lateHours(h: string | null) {
+  if (!h) return false;
+  if (/24\/7|00:00\s*-\s*24:00/.test(h)) return true;
+  return [...h.matchAll(/-\s*(\d{1,2})[:.](\d{2})/g)].some(([, hh, mm]) => { const x = Number(hh), y = Number(mm); return (x === 0 && y >= 30) || (x >= 1 && x <= 5) || x === 24; });
+}
+function verified(v: Venue, a: { key: string; evidence: string[] }): string | null {
+  if (a.key === "gec") return lateHours(v.hours) ? `açılış saati ${v.hours}` : null;
+  const ev = evidenceOf(v, a.evidence);
+  if (ev) return `"${ev}"`;
+  if (a.key === "vejetaryen" && a.evidence.some((t) => fold(v.name).includes(t))) return `adı ${v.name}`;
   return null;
 }
 /* Sabit ama mekâna göre dağılan sıra: eşit adaylarda hep aynı mekân öne çıkmaz, aynı soru aynı sonucu verir. */
@@ -188,6 +211,7 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
   const named = i.name === v.slug;
   if (named) { s += 200; why.push("Adını sorduğun mekân."); }
   if (!named) for (const k of i.notCuisines) { const c = CUISINES.find((x) => x.key === k); if (c?.kinds.includes(v.kind)) return null; }
+  if (!named && i.notArea) { const sub = SUBAREAS.find((a) => a.name === i.notArea); if (sub ? fold(`${v.address ?? ""} ${v.neighborhood ?? ""}`).includes(fold(sub.name)) || ((d) => d != null && d <= 900)(distM(sub, v)) : fold(v.district) === fold(i.notArea)) return null; }
   if (i.area) {
     const sub = SUBAREAS.find((a) => a.name === i.area), t = fold(i.area);
     if (sub) {
@@ -233,8 +257,8 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
   if (!i.cuisine && !i.term && !named && CAFE_LIKE.includes(v.kind)) s -= 20;
   for (const key of i.attrs) {
     const a = ATTRS.find((x) => x.key === key); if (!a || PROFILE_ONLY.has(key)) continue;
-    const ev = evidenceOf(v, a.evidence);
-    if (ev) { s += 30; why.push(`Kaydında ${a.label} için geçen ifade: "${ev}"`); }
+    const ev = verified(v, a);
+    if (ev) { s += 30; why.push(`Kaydında ${a.label} için: ${ev}`); }
     else if (key === "ekonomik" && !i.budgetMax && v.priceMedian != null && PRICE_MID != null && v.priceMedian > PRICE_MID) { s -= 15; caveats.push(`Menüdeki orta fiyat yaklaşık ${v.priceMedian} TL; kayıtlı mekânların ortasının üstünde.`); }
     else if (key === "ekonomik" && !i.budgetMax && v.priceMedian != null) { s += 20 - Math.min(19, Math.floor(v.priceMedian / 100)); caveats.push(`Menüdeki orta fiyat yaklaşık ${v.priceMedian} TL; "uygun" yargısı sana kalmış.`); }
     else if (key === "ekonomik" && !i.budgetMax) caveats.push("Fiyat bilgisi kayıtlı değil.");
@@ -287,7 +311,8 @@ export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
     relaxed = where && label ? `${where} için kayıtlı ${label} mekânı bulamadım.` : where ? `${where} için kayıtlı mekân bulamadım.` : `${up(label ?? "Bu istek")} için kayıtlı mekân bulamadım.`;
     if (wide.length) { alternatives = wide; altLabel = `İstanbul'un başka semtlerinden ${label}; ${where} değil`; question = "Başka semt de olur mu?"; }
   }
-  const unverified = asked.filter((a) => a.key !== "ekonomik" && !pool.some((c) => evidenceOf(VENUES.find((v) => v.slug === c.slug)!, a.evidence)));
+  const unverified = asked.filter((a) => a.key !== "ekonomik" && !pool.some((c) => verified(VENUES.find((v) => v.slug === c.slug)!, a)));
+  if (pool.length && (i.party ?? 0) >= 5) notes.push(`${i.party} kişilik grup için yer ve rezervasyon durumu kayıtlarımızda yok; gitmeden mekânı aramanı öneririm.`);
   if (pool.length && unverified.length) notes.push(`${up(unverified.map((a) => a.label).join(" ve "))} kayıtlarımızla doğrulanamadı; bu niteliğe göre eleme yapmadım.`);
   if (pool.length && i.attrs.includes("ekonomik") && !i.budgetMax && !pool.some((c) => evidenceOf(VENUES.find((v) => v.slug === c.slug)!, ATTRS.find((a) => a.key === "ekonomik")!.evidence))) notes.push("Uygun fiyat yargısı kayıtlarımızda yok; fiyatı kayıtlı olanlarda ucuzdan pahalıya sıraladım; kayıtlı mekânların ortasının üstündekileri geriye aldım.");
   return { items: pool.slice(0, 12), alternatives, altLabel, note: notes.join(" ") || null, question, relaxed };

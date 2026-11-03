@@ -6,6 +6,7 @@ import type { VenuePhoto } from "@/lib/types";
 export type PhotoSource = "gidenler" | "isletme" | "commons" | "google";
 export type PhotoCat = "yemek" | "ic" | "dis" | "menu" | "diger";
 export interface ViewPhoto {
+  focus?: string;
   src: string; alt: string; source: PhotoSource; category: PhotoCat;
   author?: string; authorUri?: string; authorPhoto?: string; license?: string; sourceUrl?: string; w?: number; h?: number;
   /** hazır boyut adımları (kendi sunduğumuz görseller) ve tam ekran sürümü */
@@ -30,6 +31,6 @@ export function fromVenuePhotos(list: VenuePhoto[] = []): ViewPhoto[] {
   return list.map((p) => ({
     src: p.src, alt: p.alt, category: p.category === "icecek" ? "diger" : p.category,
     source: p.addedBy === "commons" ? "commons" : p.addedBy === "işletme" ? "isletme" : "gidenler",
-    author: p.credit, license: p.license, sourceUrl: p.sourceUrl, srcSet: p.srcSet, full: p.full,
+    author: p.credit, license: p.license, sourceUrl: p.sourceUrl, srcSet: p.srcSet, full: p.full, focus: p.focus,
   }));
 }
