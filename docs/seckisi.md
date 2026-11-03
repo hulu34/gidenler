@@ -28,7 +28,7 @@ Production'da yayında yazı yoksa `/seckisi/` 404 verir ve "Seçki" bağlantıs
 ## Yayımlama (editör)
 
 1. Yazıyı oku. Kaynakları aç, rakamları ve tarihleri kaynakla karşılaştır.
-2. Kapak fotoğrafı için hak kaydını ayrıca kontrol et. Kapak yalnız `public/seckisi/gorsel/` altındaki izinli dosyadan gelir; `rights`, `rightsRef` ve `sourceUrl` zorunlu, lisanslı görselde `licenseUrl` de zorunlu.
+2. Kapak fotoğrafı için hak kaydını ayrıca kontrol et. Kapak yalnız `public/seckisi/gorsel/` ya da restoran profiliyle paylaşılan `public/media/foto/` altındaki izinli dosyadan gelir; `rights`, `rightsRef` ve `sourceUrl` zorunlu, lisanslı görselde `licenseUrl` de zorunlu.
 3. Ticari ilişkiyi doğrula ve `commercial` alanını `yok` (doğrulayan, tarih) ya da `var` yap.
 4. `status: "yayinda"` yap ve `publishedAt` alanına bugünü yaz. Bu tarih bir daha değişmez.
 5. İçerik gerçekten değişirse `updatedAt` alanını güncelle. Yalnız yeni görünmek için tarih değiştirilmez.

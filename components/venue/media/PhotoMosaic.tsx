@@ -24,6 +24,7 @@ function Tile({ p, i, onOpen, className, priority, sizes = "(max-width: 640px) 8
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={p.src} {...responsive(p, sizes)} alt={p.alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async"
         referrerPolicy={p.source === "google" ? "no-referrer" : undefined}
+        style={p.focus ? { objectPosition: p.focus } : undefined}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
       <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-baseline gap-1.5 truncate bg-gradient-to-t from-black/75 to-transparent px-2 pb-1 pt-6 text-left text-[11px] text-white">
         {p.source === "google" ? <><GoogleMapsText tone="white" /><span className="truncate opacity-90">· {p.author}</span></> : <>{p.author}{p.license ? ` · ${p.license}` : ""}</>}

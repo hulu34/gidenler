@@ -1,7 +1,8 @@
-import type { Entity } from "@/lib/types";
+import type { Entity, VenuePhoto } from "@/lib/types";
 import raw from "./venues.json";
 import isletme from "./isletme.json";
 import duzeltmeler from "./duzeltmeler.json";
+import izinliFotograflar from "./izinli-fotograflar.json";
 
 /* ==========================================================================
    GERÇEK MEKÂNLAR (V8) — kimlik verisi OpenStreetMap'ten (© OpenStreetMap katkıcıları, ODbL).
@@ -128,6 +129,12 @@ export const realVenueRecords = merged.records.map((r) => {
   return fix ? { ...r, kind: fix.kind } : r;
 });
 
+/* İzinli fotoğraf kaydı (izinli-fotograflar.json): kaynak ve hak kaydıyla, kendi sunucumuzda. Yalnız kapsamı restoran profilini içeren izin.
+   Sıra: işletme izni kayıtlı olan, sonra açık lisanslı. Google görseli buraya asla girmez. */
+const PERMITTED = izinliFotograflar as Record<string, (VenuePhoto & { rightsRef: string })[]>;
+const withPermitted = (slug: string, list?: VenuePhoto[]) => { const own = PERMITTED[slug] ?? []; const all = [...own.map(({ rightsRef: _r, ...p }) => p), ...(list ?? [])]; return all.length ? all : undefined; };
+const permittedImage = (slug: string) => { const c = PERMITTED[slug]?.[0]; return c ? { src: c.src, alt: c.alt, credit: c.credit } : undefined; };
+
 export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   id: `ent.r.${r.slug}`,
   slug: r.slug,
@@ -146,9 +153,9 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   contact: { phone: r.phone, website: r.website, instagram: r.instagram, openingHours: r.openingHours },
   reservation: { mode: "contact" },
   business: { claimed: false },
-  photos: r.image ? [LOCAL_COVER.has(r.slug)
+  photos: withPermitted(r.slug, r.image ? [LOCAL_COVER.has(r.slug)
     ? { src: `${MEDIA}/${r.slug}-kapak-960.webp`, srcSet: [480, 960, 1440].map((w) => `${MEDIA}/${r.slug}-kapak-${w}.webp ${w}w`).join(", "), full: `${MEDIA}/${r.slug}-1440.webp`,
         category: "dis" as const, alt: `${r.name} — dış cephe`, credit: r.image.credit, license: `${r.image.license} · boyutlandırıldı/kırpıldı`, sourceUrl: r.image.sourceUrl, addedBy: "commons" as const }
-    : { src: r.image.src, category: "dis" as const, alt: `${r.name} — dış cephe`, credit: r.image.credit, license: r.image.license, sourceUrl: r.image.sourceUrl, addedBy: "commons" as const }] : undefined,
-  image: r.image ? { src: LOCAL_COVER.has(r.slug) ? `${MEDIA}/${r.slug}-kapak-480.webp` : r.image.src, alt: r.name, credit: `${r.image.credit} · ${r.image.license}` } : undefined,
+    : { src: r.image.src, category: "dis" as const, alt: `${r.name} — dış cephe`, credit: r.image.credit, license: r.image.license, sourceUrl: r.image.sourceUrl, addedBy: "commons" as const }] : undefined),
+  image: permittedImage(r.slug) ?? (r.image ? { src: LOCAL_COVER.has(r.slug) ? `${MEDIA}/${r.slug}-kapak-480.webp` : r.image.src, alt: r.name, credit: `${r.image.credit} · ${r.image.license}` } : undefined),
 }));
