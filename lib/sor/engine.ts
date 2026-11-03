@@ -277,7 +277,7 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
   const sourced = !!(v.description || v.secki);
   /* Yazı ve profil sıralamaya puan katmaz: yalnız istekle ilgili olduğunda gerekçe olur */
   if (v.secki && (dishHit || named)) why.push(`Gidenler Seçkisi'nde yazısı var: "${v.secki.title}".`);
-  const facts = [`Tür: ${v.kind}`, `İlçe: ${v.district}`, v.address ? `Adres: ${v.address}` : null, v.description, ...v.notes.slice(0, 3), v.menu.length ? `Menüden: ${v.menu.slice(0, 15).join(", ")}` : null, v.secki ? `Seçki yazısı: ${v.secki.title}` : null].filter((x): x is string => !!x);
+  const facts = [`Tür: ${v.kind}`, `İlçe: ${v.district}`, v.address ? `Adres: ${v.address}` : null, v.hours ? `Açılış saati: ${v.hours}` : null, v.description, ...v.notes.slice(0, 3), v.menu.length ? `Menüden: ${v.menu.slice(0, 15).join(", ")}` : null, v.secki ? `Seçki yazısı: ${v.secki.title}` : null].filter((x): x is string => !!x);
   if (!why.length) why.push(`${v.kind}, ${v.district}.`);
   return { slug: v.slug, name: v.name, kind: v.kind, district: v.district, address: v.address, href: `/mekan/${v.slug}/`, facts, why: why.slice(0, 3), caveats: caveats.slice(0, 2), score: s, sourced, areaFit, dishHit };
 }

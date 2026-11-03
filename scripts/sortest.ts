@@ -201,11 +201,17 @@ async function main() {
   say({ action: "new", area: "Kadıköy", cuisine: null, attrs: ["aksam", "gec", "vejetaryen"], not_cuisines: [], picks: [] });
   const gx = await sor({ query: "Kadıköy'de arkadaşlarla akşam yemeği ai16" });
   ok("AI: model kullanıcının yazmadığı geç saat ya da vejetaryen tercihini ekleyemez", !gx.understood.attrs.includes("gec") && !gx.understood.attrs.includes("vejetaryen"), gx.understood.attrs);
+  say({ action: "refine", picks: [] }); const p0 = await sor({ query: "Beşiktaş'ta pizza ai17" });
+  say({ action: "another", area: null, cuisine: null, attrs: ["romantik"], not_cuisines: [], picks: [] });
+  const p1 = await sor({ query: "Başka öner ai17", context: p0.context, shown: p0.shown });
+  ok("AI: takipte model yeni nitelik uyduramaz", !p1.understood.attrs.includes("romantik") && p1.understood.cuisine === "pizza", p1.understood);
   delete process.env.AI_FAST_PROVIDER; delete process.env.AI_FAST_MODEL; resetAIConfig();
   say({ picks: [], note: "Hiçbiri tam uymuyor." });
   const np = await sor({ query: "Galata'da Samsun pidesi ai14" });
   ok("AI: model seçim yapmazsa kayıtlı adaylar ve açık etiket", np.mode === "veri" && np.reason === "ai_no_pick" && np.items.length > 0, np.reason);
   say({ picks: [{ slug: "japon-erdal-beyoglu", why: "Geniş grup için uygun, deniz kenarı atmosferiyle merkezi konumda." }] });
+  say({ picks: [{ slug: "japon-erdal-beyoglu", why: "Pideci, Beyoğlu." }], note: "Saat bilgisi facts içinde yer almıyor." });
+  ok("AI: iç terim geçen model notu kullanıcıya gösterilmez", !has(await sor({ query: "Galata'da Samsun pidesi ai18" }), /facts/));
   ok("AI: grup, atmosfer, konum övgüsü kayıtsızsa atılır", !has(await sor({ query: "Galata'da Samsun pidesi ai15" }), /Geniş grup|atmosfer/));
   say("bu json değil");
   const warns: string[] = [], cw = console.warn; console.warn = (...a: unknown[]) => { warns.push(a.join(" ")); };
