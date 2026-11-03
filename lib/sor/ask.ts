@@ -150,7 +150,8 @@ export async function sor(req: SorRequest): Promise<SorResult> {
           /* "yeni konu" yalnız yeni bir mutfak, yemek ya da mekân söylendiyse: "Beykoz tarafı olsun" kahvaltıyı silmez */
           const fresh = applyModel(mergeIntent(null, parsed), p.data, query, drop);
           const isNew = localNew || (p.data.action === "new" && !!(fresh.cuisine || fresh.dish || fresh.term || fresh.name));
-          intent = isNew ? fresh : applyModel(intent, p.data, query);
+          /* takip ("başka öner", "daha ekonomik") yeni nitelik getirmez: modelin uydurduğu "romantik" eklenmez */
+          intent = isNew ? fresh : applyModel(intent, p.data, query, refine ? KNOWN.attrs.filter((x) => !parsed.attrs.includes(x)) : []);
         } else { intentFail = "invalid_output"; logFail("intent", r, p.error); }
       } catch (e) { if (e instanceof BudgetExceededError || e instanceof NotConfiguredError || e instanceof QuotaError) throw e; intentFail = "provider_error"; logFail("intent", null, e); /* yorum isteğe bağlı; yerel yorumla devam */ }
     }
@@ -184,7 +185,7 @@ export async function sor(req: SorRequest): Promise<SorResult> {
     if (!items.length && !parsedAnswer.data.picks.length) { logFail("answer", r, "model seçim yapmadı (0)"); return finish("veri", "ai_no_pick", a); }
     if (!items.length) { logFail("answer", r, `seçimlerin hiçbiri aday listesinde değil (${parsedAnswer.data.picks.length})`); return finish("veri", "invalid_output", a); }
     /* modelin notu mekân hakkında yargı taşıyamaz ("X pide sunmuyor"): aday adı geçen not düşer */
-    const rawNote = sanitizeUntrusted(parsedAnswer.data.note ?? "", 200), modelNote = pool.some((c) => fold(rawNote).includes(fold(c.name))) ? "" : rawNote;
+    const rawNote = sanitizeUntrusted(parsedAnswer.data.note ?? "", 200), modelNote = pool.some((c) => fold(rawNote).includes(fold(c.name))) || /\b(facts|aday|candidate|json|slug)\b/i.test(rawNote) ? "" : rawNote;
     const noteFacts = pool.flatMap((c) => c.facts);
     const out = finish("ai", null, { ...a, note: a.note ?? (modelNote && !unsupported(modelNote, noteFacts) ? modelNote : null) }, items.slice(0, 5), gated, r.model);
     await cache<SorResult>().set(key, out, 900);
