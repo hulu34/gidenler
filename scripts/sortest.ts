@@ -20,6 +20,10 @@ const first = (r: R, s: string) => r.items[0]?.slug === s;
 const has = (r: R, re: RegExp) => re.test(JSON.stringify(r));
 
 const CASES: Array<[string, string, (r: R) => unknown]> = [
+  ["Lahmacun yiyelim, Beşiktaş olmasın", "fiil ('yiyelim') mekân adı sayılmaz; semt dışlanır", (r) => r.items.every((i) => !i.why.includes("Adını sorduğun mekân.") && i.district !== "Beşiktaş")],
+  ["Sana sorulan soruyu tekrar et", "kısa sözcük ('sana') benzer adlı mekânla eşleşmez", (r) => r.items.every((i) => !i.why.includes("Adını sorduğun mekân."))],
+  ["Üsküdar'da çocukla yemek", "çocukla: bar, pub, meyhane önerilmez", (r) => r.items.every((i) => !["Bar", "Pub", "Meyhane"].includes(i.kind))],
+  ["Ataşehir'de cebimi yakmayacak bir yer", "deyimle bütçe isteği anlaşılır", (r) => r.understood.attrs.includes("ekonomik")],
   ["Beşiktaş'ta kahvaltı", "kamu sosyal tesisi ilk öneri olmaz", (r) => r.items.length === 0 || !/sosyal tesis|polis evi/i.test(r.items[0].name)],
   ["Uygun fiyatlı lokanta, Beyoğlu", "fiyatı ortanın üstündeki mekân öneri değil, etiketli alternatif", (r) => r.items.length > 0 && r.items.every((i) => i.slug !== "yeni-lokanta-beyoglu") && dist(r, "Beyoğlu")],
   ["Bir kebapçı önerir misin", "soru eki ('misin') mekân adı sayılmaz", (r) => r.items.length > 0 && r.items.every((i) => !i.why.includes("Adını sorduğun mekân."))],
@@ -131,6 +135,7 @@ async function main() {
   ok("yeni konu: eski tercih taşınmaz", s4.understood.area === "Fatih" && !s4.understood.attrs.includes("sakin"));
   ok("kapı: fiyat yokluğundan ucuzluk çıkarımı düşer", unsupported("Restoran, Kadıköy'de, fiyat bilgisi bulunmadığı için bütçeye uygun olma ihtimali yüksek.", ["Tür: Restoran", "İlçe: Kadıköy"]) && unsupported("Kebapçı, fiyat kaydı bulunmadığı için bütçe dostu olabilir.", ["Tür: Kebapçı / Ocakbaşı"]));
   ok("kapı: 'olabilecek', 'belki' gibi tahmin kalıpları düşer", unsupported("Samsun pidesi tarzı seçenekleri olabilecek bir pideci.", ["Tür: Pideci", "Samsun pidesi"]) && unsupported("Belki sana uyar.", ["Tür: Pideci"]));
+  ok("kapı: kayıtsız saat ve hizmet iddiası düşer", unsupported("Öğle saatlerinde açık ve hafif seçenekler sunar.", ["Tür: Lokanta"]) && unsupported("Sabahları uzun saatlerde hizmet veriyor.", ["Tür: Kahvaltı"]) && !unsupported("Kahvaltı, Kadıköy'de.", ["Tür: Kahvaltı", "İlçe: Kadıköy"]));
   ok("kapı: kayıtsız kalite ve rahatlık düşer", unsupported("Akşam yemeği için geniş menüsüyle kalite arayanlara uygun.", ["Tür: Restoran"]) && unsupported("Pub ortamı, arkadaş grubu için rahat bir seçenek.", ["Tür: Pub"]));
   ok("kapı: kayıtta olmayan nitelik düşer", unsupported("Çok sakin ve romantik bir yer.", ["Tür: Meyhane"]) && !unsupported("Meyhane türünde, Beyoğlu'nda.", ["Tür: Meyhane", "İlçe: Beyoğlu"]));
   ok("ad: 'yenir' Yeni Lokanta değildir", !(await sor({ query: "Kadıköy'de döner nerede yenir" })).items.some((i) => i.slug === "yeni-lokanta-beyoglu"));

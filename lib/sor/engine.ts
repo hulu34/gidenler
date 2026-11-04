@@ -67,7 +67,7 @@ const ATTRS: Array<{ key: string; label: string; terms: string[]; evidence: stri
   { key: "sakin", label: "sakinlik", terms: ["sakin", "sessiz", "gurultulu olmasin", "gurultusuz", "kalabalik olmasin", "kalabalik istemiyorum"], evidence: ["sakin", "sessiz", "huzurlu"] },
   { key: "romantik", label: "romantik atmosfer", terms: ["romantik", "ilk bulusma", "first date", "sevgili"], evidence: ["romantik"] },
   { key: "gosterissiz", label: "gösterişsiz olması", terms: ["gosterisli olmayan", "gosterissiz", "sade", "abartisiz"], evidence: ["gosterissiz", "mutevazi", "tabela yok"] },
-  { key: "ekonomik", label: "uygun fiyat", terms: ["uygun fiyat", "ucuz", "ekonomik", "hesapli", "butce", "pahali olmasin", "pahali olmayan"], evidence: ["uygun fiyat", "ekonomik", "hesapli"] },
+  { key: "ekonomik", label: "uygun fiyat", terms: ["uygun fiyat", "ucuz", "ekonomik", "hesapli", "butce", "pahali olmasin", "pahali olmayan", "cebimi yakmayacak", "cep dostu", "fiyati uygun"], evidence: ["uygun fiyat", "ekonomik", "hesapli"] },
   /* saat yalnız kayıtlı açılış saatinden; vejetaryen yalnız kayıtta ya da adda açıkça geçiyorsa */
   { key: "gec", label: "geç saate kadar açık olması", terms: ["gece gec", "gec saat", "gece acik", "gece yarisi", "sabaha kadar", "24 saat"], evidence: [] },
   { key: "vejetaryen", label: "vejetaryen seçenek", terms: ["vejetaryen", "vegan", "etsiz"], evidence: ["vegan", "vejetaryen", "etsiz"] },
@@ -98,7 +98,8 @@ export const KNOWN = { areas: [...DISTRICTS, ...SUBAREAS.map((a) => a.name)], cu
 const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax || i.notArea);
 
 /* Sıradan sözcük tek başına ad sayılmaz: "pide nerede yenir" Yeni Lokanta'yı bulmaz; adın tamamı yazılmalı. */
-const QUERY_NOISE = new Set(["istanbul", "misin", "musun", "misiniz", "musunuz", "miyiz", "miyim", "nerede", "neresi", "hangi", "hangisi", "var", "yok", "lazim", "oner", "onerir", "onerin", "soyle", "bana", "bize"]);
+const QUERY_NOISE = new Set(["istanbul", "misin", "musun", "misiniz", "musunuz", "miyiz", "miyim", "nerede", "neresi", "hangi", "hangisi", "var", "yok", "lazim", "oner", "onerir", "onerin", "soyle", "bana", "bize", "sana", "size", "goster", "verilen", "kural", "kurallari",
+  /* fiil: "Burger yiyelim" Burger Yiyelim zinciri değildir */ "yiyelim", "yiyecek", "yiyebilecegim", "yemek", "gidelim", "gidecek", "icelim", "oturalim", "bakalim", "olsun", "olmasin"]);
 const COMMON_NAME = new Set(["yeni", "eski", "buyuk", "kucuk", "tarihi", "meshur", "bizim", "kardesler", "ortaklar", "asmali", "ev", "ana", "usta", "lezzet", "aile", "sofra", "kent", "merkez", "istanbul"]);
 const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "cafe", "kafe", "ve", "the", "bar", "kebap", "balik", "pide", "ocakbasi", "doner", "kebapcisi", "sofrasi", "evi", "et", "iyi", "guzel", "bir"]);
 /* Semt, mutfak ya da tercih sözcüğü tek başına mekân adı sayılmaz: "kebap" Kebap Hocası'nı, "Karaköy" Karaköy Lokantası'nı seçmez. */
@@ -117,7 +118,7 @@ function matchName(q: string): Venue | null {
     if (!nt.length) continue;
     if (nt.every((n) => COMMON_NAME.has(n)) && !q.includes(fold(v.name))) continue;
     /* ek toleransı 6+ harfte: "boğaz" Boga, "yenir" Yeni değildir */
-    const near = (t: string, n: string) => t === n || (n.length >= 6 && t.startsWith(n) && t.length - n.length <= 4) || (n.length >= 5 && within1(t, n));
+    const near = (t: string, n: string) => t === n || (n.length >= 6 && t.startsWith(n) && t.length - n.length <= 4) || (n.length >= 5 && t.length >= 5 && within1(t, n));
     const hits = nt.filter((n) => toks.some((t) => near(t, n) || q.includes(`${n} `) && t === n));
     if (hits.length === nt.length && hits.some((n) => own.some((t) => near(t, n)))) { const s = hits.join("").length; if (!best || s > best.s) best = { v, s }; }
   }
@@ -268,6 +269,8 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
   }
   if (!i.cuisine && !i.term && !named && i.attrs.includes("aksam") && CAFE_LIKE.includes(v.kind)) return null;
   if (!i.cuisine && !i.term && !named && CAFE_LIKE.includes(v.kind)) s -= 20;
+  /* çocukla: bar, pub ve meyhane önerilmez */
+  if (!named && i.attrs.includes("cocuk") && ["Bar", "Pub", "Meyhane"].includes(v.kind)) return null;
   for (const key of i.attrs) {
     const a = ATTRS.find((x) => x.key === key); if (!a || PROFILE_ONLY.has(key)) continue;
     const ev = verified(v, a);
