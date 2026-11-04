@@ -138,6 +138,12 @@ async function main() {
   ok("kapı: kayıtsız saat ve hizmet iddiası düşer", unsupported("Öğle saatlerinde açık ve hafif seçenekler sunar.", ["Tür: Lokanta"]) && unsupported("Sabahları uzun saatlerde hizmet veriyor.", ["Tür: Kahvaltı"]) && !unsupported("Kahvaltı, Kadıköy'de.", ["Tür: Kahvaltı", "İlçe: Kadıköy"]));
   ok("kapı: kayıtsız kalite ve rahatlık düşer", unsupported("Akşam yemeği için geniş menüsüyle kalite arayanlara uygun.", ["Tür: Restoran"]) && unsupported("Pub ortamı, arkadaş grubu için rahat bir seçenek.", ["Tür: Pub"]));
   ok("kapı: kayıtta olmayan nitelik düşer", unsupported("Çok sakin ve romantik bir yer.", ["Tür: Meyhane"]) && !unsupported("Meyhane türünde, Beyoğlu'nda.", ["Tür: Meyhane", "İlçe: Beyoğlu"]));
+  ok("kapı: kayıtla çelişen yokluk iddiası düşer", unsupported("Samsun pidesi özel olarak belirtilmemiş, ancak genel pideci olduğu için seçildi.", ["Tür: Pideci", "Kaynaklı kaydında Samsun pidesi geçiyor"]) && unsupported("Menüde kuru fasulye geçmiyor.", ["Tür: Lokanta", "Kuru fasulye"]));
+  ok("kapı: kayıtla uyumlu yokluk notu kalır", !unsupported("Samsun pidesi özel olarak belirtilmemiş, genel bir pideci.", ["Tür: Pideci", "İlçe: Beyoğlu"]) && !unsupported("Kebap yok, yalnız pide.", ["Tür: Pideci"]));
+  {
+    const a = await sor({ query: "Fatih'te köfte" }), b = await sor({ query: "Bodrum'da balık", context: a.context, shown: a.shown });
+    ok("başka şehir: önceki semt 'Anladığım' satırına taşınmaz", b.items.length === 0 && /yalnız İstanbul/.test(b.note ?? "") && !b.understood.area && !b.understood.district && b.understood.cuisine !== null, JSON.stringify({ area: b.understood.area, d: b.understood.district, c: b.understood.cuisine }));
+  }
   ok("ad: 'yenir' Yeni Lokanta değildir", !(await sor({ query: "Kadıköy'de döner nerede yenir" })).items.some((i) => i.slug === "yeni-lokanta-beyoglu"));
   ok("ad: 'boğaz' semt koşulunu delmez", (await sor({ query: "Üsküdar'da boğaz kenarı balık" })).items.every((i) => i.district === "Üsküdar"));
   const ny = await sor({ query: "Yeni Lokanta kaça kadar açık" });

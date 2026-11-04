@@ -57,7 +57,11 @@ const CLAIMS = ["sakin", "sessiz", "huzurlu", "romantik", "samimi", "ucuz", "uyg
 const TIME = /\b(saat|sabah|ogle|aksamlari|gece|hafta sonu|her gun|acik)/;
 /* Tahmin kanıt değildir: "fiyatı yok, ucuz olabilir" türü çıkarım her durumda düşer. */
 const GUESS = /\b(olabil|ihtimal|muhtemel|tahmin|belki|sanirim|gibi gorun)/;
-export const unsupported = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); return INVENTED.test(text) || GUESS.test(t) || (TIME.test(t) && !/acilis saati/.test(f)) || CLAIMS.some((c) => t.includes(c) && !f.includes(c)); };
+/* Kayıtla çelişen yokluk iddiası: "Samsun pidesi belirtilmemiş" derken facts'te Samsun pidesi varsa cümle düşer. */
+const ABSENT = /([a-z ]{3,40}?) (?:(?:ozel olarak|acikca|kayitta|kayitlarda|bilgisi|bilgide) )*(?:belirtilmemis|belirtilmiyor|gecmiyor|gecmemis|yer almiyor|bulunmuyor|kayitli degil|yok)\b/g;
+const STOP = new Set(["ancak", "fakat", "ama", "icin", "olarak", "ozel", "burada", "mekanda", "menude", "menusunde", "kaydinda", "bilgisi", "hakkinda", "konusunda"]);
+export const contradicts = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); for (const m of t.matchAll(ABSENT)) { const w = m[1].split(" ").filter((x) => x.length >= 4 && !STOP.has(x)).slice(-2); if (w.length && w.every((x) => f.includes(x.replace(/(si|su|i|u)$/, "")))) return true; } return false; };
+export const unsupported = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); return INVENTED.test(text) || GUESS.test(t) || (TIME.test(t) && !/acilis saati/.test(f)) || CLAIMS.some((c) => t.includes(c) && !f.includes(c)) || contradicts(text, facts); };
 
 export const RequestSchema = z.object({
   query: z.string().trim().min(1).max(600), context: IntentSchema.nullable().optional(), refine: z.enum(["cheaper", "quieter", "other_area", "another"]).nullable().optional(),
@@ -137,6 +141,8 @@ export async function sor(req: SorRequest, ctx: { kullanici?: string | null } = 
   const fq = fold(query), none = { items: [], alternatives: [], altLabel: null, relaxed: null };
   const scope: Answered | null = /\b(tarif|nasil yapilir|nasil pisirilir)/.test(fq) && !parsed.name ? { ...none, note: "Tarif vermiyorum; İstanbul'da o yemeği yiyebileceğin kayıtlı yerleri önerebilirim.", question: "Hangi semtte arayalım?" }
     : OTHER_CITIES.test(fq) && !parsed.area && !parsed.name ? { ...none, note: "Gidenler şimdilik yalnız İstanbul'daki mekânları kapsıyor.", question: "İstanbul'da bir semt söylersen bakayım." } : null;
+  /* başka şehir sorusunda önceki semt "Anladığım" satırına taşınmaz */
+  if (scope && OTHER_CITIES.test(fq)) { intent = mergeIntent(null, parsed, null); refine = null; }
   if (!sorAvailable("primary")) return finish("veri", "not_configured", scope ?? answer(intent, { exclude: excl() }));
   if (scope) return finish("veri", null, scope);
   if ((await budgetStatus()).level === "critical") return finish("veri", "budget", answer(intent, { exclude: excl() }));
