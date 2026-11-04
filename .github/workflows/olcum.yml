@@ -538,6 +538,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: sorv5, path: sorv5.cms, if-no-files-found: ignore }
+  sor-d1:
+    if: contains(github.event.head_commit.message, '[sor-d1]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # d966b95 düzeltmesi: Preview dalı, AI açık, küçük set (kota Production ile ortak)
+      - run: node ops/sor-gercek.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-d1", SET: "d1", GAP: "15000" }
+      - if: always()
+        run: test -d out && tar -C out -czf out-sord1.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sord1.tgz -out sord1.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: sord1, path: sord1.cms, if-no-files-found: ignore }
   sor-canli:
     if: contains(github.event.head_commit.message, '[sor-canli]')
     runs-on: ubuntu-latest
