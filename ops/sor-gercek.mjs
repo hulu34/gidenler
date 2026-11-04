@@ -47,6 +47,7 @@ const TAKIP1 = [
   [["Beşiktaş'ta kebap", {}], ["Başka öner", { d: "Beşiktaş", fresh: 1 }], ["Peki aynısı Şişli'de", { d: "Şişli" }]],
   [["Bakırköy'de kebap", {}], ["Bunun yerine burger olsun", { d: "Bakırköy", k: ["Burger"] }]],
 ];
+const FIYAT = JSON.parse(readFileSync(new URL("./sor-fiyat.json", import.meta.url), "utf8"));
 const v2 = process.env.SET ? await import(`./sor-soru-${process.env.SET}.mjs`) : null;
 const SORU = v2 ? v2.SORU : SORU1, TAKIP = v2 ? v2.TAKIP : TAKIP1;
 const HONEST = /doğrulan|kayıtlı değil|kayıtlarımızda|bilgi(si)? yok|bilmiyoruz|ipucu/i;
@@ -66,6 +67,8 @@ const denetle = (r, b, shown, prev) => { const e = [];
   if (b.notD && its.some((i) => i.district === b.notD)) e.push("semt-olumsuz");
   if (b.min && its.length + (r.alternatives ?? []).length < b.min) e.push("boş");
   if (b.attrKeep && !(r.understood?.attrs ?? []).includes(b.attrKeep)) e.push("bağlam-nitelik");
+  if (b.butce && its.some((i) => (FIYAT[i.slug] ?? 0) > b.butce)) e.push("bütçe");
+  if (b.notSosyal && /sosyal tesis|polis evi|orduevi/i.test(its[0]?.name ?? "")) e.push("sosyal");
   if (b.party && r.understood?.party !== b.party) e.push("kişi");
   if (b.none && its.length) e.push("alakasız");
   if (b.first && its[0]?.slug !== b.first) e.push("ad");
