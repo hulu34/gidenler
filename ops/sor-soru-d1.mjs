@@ -4,6 +4,7 @@ export const SORU = [
   ["Galata'da Samsun pidesi", { d: "Beyoğlu", k: ["Pideci"], noJE: 0 }],
   ["Fatih'te kuru fasulye", { d: "Fatih", noJE: 1 }],
   ["Kadıköy'de mantı", { d: "Kadıköy", noJE: 1 }],
+  ["Sultanahmet'te köfte", { d: "Fatih", noJE: 1 }],
 ];
 export const TAKIP = [
   [["Fatih'te köfte", { d: "Fatih" }], ["Bodrum'da balık", { none: 1 }]],
