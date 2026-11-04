@@ -45,7 +45,7 @@ const INVENTED = /\d|puan|yıldız|⭐|\/10/i;
 /* Kayıtta geçmeyen değer yargısı cümleyi düşürür. */
 const CLAIMS = ["sakin", "sessiz", "huzurlu", "romantik", "samimi", "ucuz", "uygun fiyat", "ekonomik", "hesapli", "manzara", "teras", "lezzet", "en iyi", "unlu", "kaliteli", "taze", "nefis", "harika", "mukemmel", "meshur", "populer", "otantik", "keyifli", "sicak bir", "cocuk", "aile", "gosterissiz", "misafir", "turist", "butce", "fiyat", "kalite", "rahat", "ferah", "genis", "grup", "kalabalik", "atmosfer", "ortam", "deniz kenari", "merkezi", "taninan", "bilinen", "uzman", "tarihi"];
 /* Tahmin kanıt değildir: "fiyatı yok, ucuz olabilir" türü çıkarım her durumda düşer. */
-const GUESS = /\b(olabilir|ihtimal|muhtemel|tahmin)/;
+const GUESS = /\b(olabil|ihtimal|muhtemel|tahmin|belki|sanirim|gibi gorun)/;
 export const unsupported = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); return INVENTED.test(text) || GUESS.test(t) || CLAIMS.some((c) => t.includes(c) && !f.includes(c)); };
 
 export const RequestSchema = z.object({
