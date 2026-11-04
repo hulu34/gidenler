@@ -58,8 +58,8 @@ const TIME = /\b(saat|sabah|ogle|aksamlari|gece|hafta sonu|her gun|acik)/;
 /* Tahmin kanıt değildir: "fiyatı yok, ucuz olabilir" türü çıkarım her durumda düşer. */
 const GUESS = /\b(olabil|ihtimal|muhtemel|tahmin|belki|sanirim|gibi gorun)/;
 /* Kayıtla çelişen yokluk iddiası: "Samsun pidesi belirtilmemiş" derken facts'te Samsun pidesi varsa cümle düşer. */
-const ABSENT = /([a-z ]{3,40}?) (?:(?:ozel olarak|acikca|kayitta|kayitlarda|bilgisi|bilgide) )*(?:belirtilmemis|belirtilmiyor|gecmiyor|gecmemis|yer almiyor|bulunmuyor|kayitli degil|yok)\b/g;
-const STOP = new Set(["ancak", "fakat", "ama", "icin", "olarak", "ozel", "burada", "mekanda", "menude", "menusunde", "kaydinda", "bilgisi", "hakkinda", "konusunda"]);
+const ABSENT = /([a-z ]{3,40}?) (?:(?:ozel olarak|acikca|kayitta|kayitlarda|bilgisi|bilgide) )*(?:belirtilme[a-z]*|gecmiyor|gecmemis|gecmese|yer almiyor|yer almasa|yer almamis|bulunmuyor|bulunmasa|bulunmamis|icermiyor|icermese|sunmuyor|sunmasa|sunmadig[a-z]*|olmasa|kayitli degil|degil|yok)\b/g;
+const STOP = new Set(["ancak", "fakat", "ama", "icin", "olarak", "ozel", "burada", "mekanda", "menude", "menusunde", "kaydinda", "bilgisi", "hakkinda", "konusunda", "listede", "kayitta", "acikca"]);
 export const contradicts = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); for (const m of t.matchAll(ABSENT)) { const w = m[1].split(" ").filter((x) => x.length >= 4 && !STOP.has(x)).slice(-2); if (w.length && w.every((x) => f.includes(x.replace(/(si|su|i|u)$/, "")))) return true; } return false; };
 export const unsupported = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); return INVENTED.test(text) || GUESS.test(t) || (TIME.test(t) && !/acilis saati/.test(f)) || CLAIMS.some((c) => t.includes(c) && !f.includes(c)) || contradicts(text, facts); };
 
@@ -210,7 +210,7 @@ export async function sor(req: SorRequest, ctx: { kullanici?: string | null } = 
     if (!items.length && !parsedAnswer.data.picks.length) { logFail("answer", r, "model seçim yapmadı (0)"); return finish("veri", "ai_no_pick", a); }
     if (!items.length) { logFail("answer", r, `seçimlerin hiçbiri aday listesinde değil (${parsedAnswer.data.picks.length})`); return finish("veri", "invalid_output", a); }
     /* modelin notu mekân hakkında yargı taşıyamaz ("X pide sunmuyor"): aday adı geçen not düşer */
-    const rawNote = sanitizeUntrusted(parsedAnswer.data.note ?? "", 200), modelNote = pool.some((c) => fold(rawNote).includes(fold(c.name))) || /\b(facts|aday|candidate|json|slug)\b/i.test(rawNote) ? "" : rawNote;
+    const rawNote = sanitizeUntrusted(parsedAnswer.data.note ?? "", 200), modelNote = pool.some((c) => fold(rawNote).includes(fold(c.name))) || /\b(facts|aday\w*|candidate|json|slug)\b/i.test(rawNote) ? "" : rawNote;
     const noteFacts = pool.flatMap((c) => c.facts);
     const out = finish("ai", null, { ...a, note: a.note ?? (modelNote && !unsupported(modelNote, noteFacts) ? modelNote : null) }, items.slice(0, 5), gated, r.model);
     await cache<SorResult>().set(key, out, 900);

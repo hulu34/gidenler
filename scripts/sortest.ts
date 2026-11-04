@@ -139,6 +139,7 @@ async function main() {
   ok("kapı: kayıtsız kalite ve rahatlık düşer", unsupported("Akşam yemeği için geniş menüsüyle kalite arayanlara uygun.", ["Tür: Restoran"]) && unsupported("Pub ortamı, arkadaş grubu için rahat bir seçenek.", ["Tür: Pub"]));
   ok("kapı: kayıtta olmayan nitelik düşer", unsupported("Çok sakin ve romantik bir yer.", ["Tür: Meyhane"]) && !unsupported("Meyhane türünde, Beyoğlu'nda.", ["Tür: Meyhane", "İlçe: Beyoğlu"]));
   ok("kapı: kayıtla çelişen yokluk iddiası düşer", unsupported("Samsun pidesi özel olarak belirtilmemiş, ancak genel pideci olduğu için seçildi.", ["Tür: Pideci", "Kaynaklı kaydında Samsun pidesi geçiyor"]) && unsupported("Menüde kuru fasulye geçmiyor.", ["Tür: Lokanta", "Kuru fasulye"]));
+  ok("kapı: 'yer almasa da', 'sunmadığı' kalıpları da düşer", unsupported("Galata’da pide sunan bir pideci; Samsun pidesi menüsünde yer almasa da bölgeyle uyumlu.", ["Tür: Pideci", "Kaynaklı kaydında Samsun pidesi geçiyor"]) && unsupported("Köfte sunmadığı için seçilmedi.", ["Menüsünde köfte var"]));
   ok("kapı: kayıtla uyumlu yokluk notu kalır", !unsupported("Samsun pidesi özel olarak belirtilmemiş, genel bir pideci.", ["Tür: Pideci", "İlçe: Beyoğlu"]) && !unsupported("Kebap yok, yalnız pide.", ["Tür: Pideci"]));
   {
     const a = await sor({ query: "Fatih'te köfte" }), b = await sor({ query: "Bodrum'da balık", context: a.context, shown: a.shown });
