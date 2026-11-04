@@ -22,6 +22,8 @@ for (const [ad, o] of [["mobil", { ...devices["iPhone 14"], defaultBrowserType: 
   };
   const m1 = await rapor(await sor("Kadıköy'de arkadaşlarla akşam yemeği için iyi bir yer"), "kadıköy");
   ok(`${ad}: AI modu`, m1 === "ai", m1);
+  ok(`${ad}: Beta etiketi ve açıklaması görünür`, (await p.locator("[data-sor-beta]").count()) > 0 && (await p.locator("[data-sor-beta-not]").count()) > 0);
+  ok(`${ad}: AI yanıtı "AI destekli · Beta" diye işaretli`, (await p.locator("[data-sor-tur]").first().locator("[data-sor-ai-etiket]").count()) === 1);
   await p.screenshot({ path: `${OUT}/${ad}-1-kadikoy.png` });
   await p.getByLabel("Sorun").fill("Daha ekonomik olsun"); await p.getByRole("button", { name: "Sor", exact: true }).click();
   await p.locator("[data-sor-tur]").nth(1).locator("[data-sor-mod], [role=alert]").waitFor({ timeout: 45000 });

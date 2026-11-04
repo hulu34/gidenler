@@ -431,7 +431,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
       - run: node ops/sor-e2e.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-btwsic3l6-hulu34.vercel.app" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-kmgpca6vh-hulu34.vercel.app" }
       - if: always()
         run: test -d out/sor && tar -C out -czf out/sor.tgz sor && rm -rf out/sor && openssl cms -encrypt -aes256 -binary -outform DER -in out/sor.tgz -out out/sor.tgz.cms ops/olcum.pem
       - if: always()
@@ -538,6 +538,23 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: sorv5, path: sorv5.cms, if-no-files-found: ignore }
+  sor-canli:
+    if: contains(github.event.head_commit.message, '[sor-canli]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      # canlı: yazım yok, Google uçları engelli; ölçüm yalnız anahtarla
+      - run: node ops/sor-canli.mjs
+        env: { SOR_OLCUM_TOKEN: "${{ secrets.SOR_OLCUM_TOKEN }}" }
+      - if: always()
+        run: test -d out/sorcanli && tar -C out -czf out/sorcanli.tgz sorcanli && openssl cms -encrypt -aes256 -binary -outform DER -in out/sorcanli.tgz -out out/sorcanli.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: sorcanli, path: out/sorcanli.tgz.cms, if-no-files-found: ignore }
   sor-durum:
     if: contains(github.event.head_commit.message, '[sor-durum]')
     runs-on: ubuntu-latest
