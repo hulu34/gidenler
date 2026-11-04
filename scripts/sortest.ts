@@ -7,6 +7,7 @@ import { dbFingerprint, previewWriteGuard } from "../lib/db/fingerprint";
 import { spawnSync } from "node:child_process";
 import { priceFor, resetAIConfig } from "../lib/ai/config";
 import { resetKotaForTests, reserveKota } from "../lib/sor/kota";
+import { hakAyir, hakIade, kullaniciAnahtari, olay, olcumOku, resetBetaForTests, GUNLUK_AI, KULLANICI_AI } from "../lib/sor/beta";
 
 let pass = 0, fail = 0; const rows: string[] = [];
 const ok = (n: string, c: unknown, x?: unknown) => { if (c) pass++; else { fail++; console.log(`✗ ${n}`, x === undefined ? "" : JSON.stringify(x).slice(0, 400)); } };
@@ -19,6 +20,7 @@ const first = (r: R, s: string) => r.items[0]?.slug === s;
 const has = (r: R, re: RegExp) => re.test(JSON.stringify(r));
 
 const CASES: Array<[string, string, (r: R) => unknown]> = [
+  ["Beşiktaş'ta kahvaltı", "kamu sosyal tesisi ilk öneri olmaz", (r) => r.items.length === 0 || !/sosyal tesis|polis evi/i.test(r.items[0].name)],
   ["Uygun fiyatlı lokanta, Beyoğlu", "fiyatı ortanın üstündeki mekân öneri değil, etiketli alternatif", (r) => r.items.length > 0 && r.items.every((i) => i.slug !== "yeni-lokanta-beyoglu") && dist(r, "Beyoğlu")],
   ["Bir kebapçı önerir misin", "soru eki ('misin') mekân adı sayılmaz", (r) => r.items.length > 0 && r.items.every((i) => !i.why.includes("Adını sorduğun mekân."))],
   ["İstanbul'da güzel bir lahmacun", "'İstanbul' sözcüğü mekân adı sayılmaz", (r) => r.items.every((i) => !i.why.includes("Adını sorduğun mekân."))],
@@ -255,6 +257,36 @@ async function main() {
   const fb = await sor({ query: "Galata'da Samsun pidesi yedek" });
   ok("ücret: ücretsiz kota dolunca ücretli yedeğe geçilmez", !hosts.includes("api.openai.com") && fb.reason === "quota", { hosts, r: fb.reason });
   delete process.env.AI_FALLBACK_CHAIN; delete process.env.AI_FALLBACK_MODEL_OPENAI; delete process.env.OPENAI_API_KEY; resetAIConfig(); resetKotaForTests();
+  /* Beta: günde 40 AI yanıtı, kullanıcı başına 5; sınır ortam değişkeniyle yükseltilemez; AI yanıtı olmazsa hak geri verilir */
+  resetBetaForTests(); resetKotaForTests();
+  { let n = 0; for (let i = 0; i < 60; i++) if ((await hakAyir(`k${i}`)).ok) n++;
+    ok("beta: site genelinde günde en çok 40 AI yanıtı", n === GUNLUK_AI && GUNLUK_AI === 40, n); }
+  resetBetaForTests();
+  { let n = 0; for (let i = 0; i < 9; i++) if ((await hakAyir("ayni")).ok) n++;
+    ok("beta: kullanıcı başına günde en çok 5 AI yanıtı", n === KULLANICI_AI && KULLANICI_AI === 5, n); }
+  resetBetaForTests(); process.env.SOR_GUNLUK_AI = "500";
+  { let n = 0; for (let i = 0; i < 60; i++) if ((await hakAyir(`y${i}`)).ok) n++;
+    ok("beta: sınır ortam değişkeniyle yükseltilemez, yalnız düşürülebilir", n === 40, n); }
+  resetBetaForTests(); process.env.SOR_GUNLUK_AI = "2";
+  { let n = 0; for (let i = 0; i < 5; i++) if ((await hakAyir(`z${i}`)).ok) n++; ok("beta: sınır düşürülebilir", n === 2, n); }
+  delete process.env.SOR_GUNLUK_AI; resetBetaForTests();
+  { const h = await hakAyir("iade"); await hakIade(h); let n = 0; for (let i = 0; i < 9; i++) if ((await hakAyir("iade")).ok) n++; ok("beta: AI yanıtı üretilemezse hak geri verilir", n === 5, n); }
+  { process.env.SOR_OLCUM_TUZ = "test-tuz"; const a = kullaniciAnahtari("85.10.20.30"), b = kullaniciAnahtari("85.10.20.31");
+    ok("beta: kullanıcı anahtarı düz IP değil, tuzlu özet", !!a && a !== b && !a.includes("85") && a.length === 22, a);
+    delete process.env.SOR_OLCUM_TUZ; ok("beta: tuz yoksa kullanıcı anahtarı üretilmez", kullaniciAnahtari("85.10.20.30") === null); }
+  resetBetaForTests();
+  { await olay("istek", "ai", "veri_quota"); const o = JSON.stringify(await olcumOku(1));
+    ok("ölçüm: yalnız sayaç, kişisel veri ve sorgu yok", /"istek":1/.test(o) && /"veri_quota":1/.test(o) && !/85\.|Samsun|query/.test(o), o); }
+  /* Sor kendi ayarıyla: ortak AI_* ayarı başka sağlayıcıyı gösterse de Sor yalnız SOR_AI_* ile Groq'u kullanır */
+  resetBetaForTests(); resetKotaForTests();
+  process.env.AI_PRIMARY_PROVIDER = "openai"; process.env.AI_PRIMARY_MODEL = "gpt-4.1-mini"; process.env.OPENAI_API_KEY = "test";
+  process.env.SOR_AI_PROVIDER = "groq"; process.env.SOR_AI_MODEL = "openai/gpt-oss-120b"; resetAIConfig();
+  { const hosts: string[] = []; globalThis.fetch = (async (u: string, init?: RequestInit) => { hosts.push(new URL(u).host); return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify({ picks: [{ slug: "japon-erdal-beyoglu", why: "Pideci, Beyoğlu." }] }) } }], usage: { prompt_tokens: 10, completion_tokens: 5 } }), { status: 200 }); }) as unknown as typeof fetch;
+    const so = await sor({ query: "Galata'da Samsun pidesi sorayar" }, { kullanici: "t1" });
+    ok("ayar: Sor yalnız SOR_AI_* sağlayıcısını çağırır, ortak AI_* ayarına dokunmaz", so.mode === "ai" && hosts.length > 0 && hosts.every((h) => h === "api.groq.com"), { hosts, m: so.mode }); }
+  { let n = 0; for (let i = 0; i < 6; i++) { const r = await sor({ query: `Galata'da Samsun pidesi kul${i}` }, { kullanici: "t2" }); if (r.mode === "ai") n++; else ok("beta: hak dolunca açık etiket user_limit", r.reason === "user_limit" && r.items.length > 0, r.reason); }
+    ok("beta: aynı kullanıcı 5 AI yanıtından sonra kurallı moda geçer", n === 5, n); }
+  delete process.env.SOR_AI_PROVIDER; delete process.env.SOR_AI_MODEL; delete process.env.OPENAI_API_KEY; process.env.AI_PRIMARY_PROVIDER = "groq"; process.env.AI_PRIMARY_MODEL = "openai/gpt-oss-120b"; resetAIConfig(); resetBetaForTests();
   globalThis.fetch = real;
 
   const src = readFileSync("lib/sor/ask.ts", "utf8") + readFileSync("lib/sor/engine.ts", "utf8") + readFileSync("app/api/sor/route.ts", "utf8");

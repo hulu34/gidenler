@@ -10,6 +10,7 @@ import { coverOf } from "@/lib/media/cover";
 import { publishedScores } from "@/lib/live";
 import { CONFIDENCE_TEXT } from "@/lib/score/publishedCards";
 import type { SorResult } from "@/lib/sor/ask";
+import { kullaniciAnahtari, olay, type Olay } from "@/lib/sor/beta";
 
 /* POST /api/sor — Sor Gidenler. Anahtarlar yalnız sunucuda; hesap ve profil modele gönderilmez. Hata boş sonuç gibi gösterilmez. */
 export const runtime = "nodejs";
@@ -46,6 +47,12 @@ export async function POST(req: Request) {
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || null;
   const rl = await checkRate(ip, null);
   if (!rl.allowed) return NextResponse.json({ error: "rate_limited", message: "Çok hızlı soruyorsun; biraz sonra yeniden dene." }, { status: 429, headers: { ...H, "Retry-After": "60" } });
-  try { return NextResponse.json(await ekle(await sor(p.data)), { headers: H }); }
-  catch { return NextResponse.json({ error: "internal", message: "Sor Gidenler şu an yanıt veremedi; yeniden dene." }, { status: 500, headers: H }); }
+  const t0 = Date.now();
+  try {
+    const r = await sor(p.data, { kullanici: kullaniciAnahtari(ip) });
+    const ms = Date.now() - t0, ev: Olay[] = ["istek", r.mode === "ai" ? "ai" : r.reason ? (`veri_${r.reason === "daily_limit" ? "gunluk" : r.reason === "user_limit" ? "kullanici" : r.reason}` as Olay) : "kapsam_disi", ms < 2000 ? "sure_2s" : ms < 5000 ? "sure_5s" : "sure_uzun"];
+    if (!r.items.length) ev.push("kart_yok"); if (r.gated > 0) ev.push("kapi_dusurdu");
+    await olay(...ev);
+    return NextResponse.json(await ekle(r), { headers: H });
+  } catch { await olay("istek", "hata"); return NextResponse.json({ error: "internal", message: "Sor Gidenler şu an yanıt veremedi; yeniden dene." }, { status: 500, headers: H }); }
 }

@@ -13,14 +13,18 @@ type Res = { mode: "ai" | "veri"; reason: string | null; understood: Record<stri
 type Turn = { q: string; res?: Res; error?: string };
 const ORNEKLER = ["Galata'da iyi bir Samsun pidesi yemek istiyorum.", "Ataşehir'de kebap", "Balık yiyebileceğimiz sakin bir restoran?", "Uygun fiyatlı ama kaliteli bir esnaf lokantası öner."];
 const REFINE: Array<[string, string]> = [["cheaper", "Daha ekonomik olsun"], ["other_area", "Başka semtte olsun"], ["quieter", "Daha sakin bir yer öner"], ["another", "Başka öner"]];
+/* Kurallı yanıtın her nedeninde aynı açık cümle: bu bir AI yanıtı değil. */
+const KURAL = "Bu bir AI yanıtı değil: öneriler Gidenler'deki kayıtlı mekân bilgilerinden kurallarla seçildi.";
 const REASON: Record<string, string> = {
-  not_configured: "AI yorumu şu an kapalı. Öneriler kayıtlı verilerden kurallarla seçildi.",
-  budget: "AI bütçe sınırına ulaştı. Öneriler kayıtlı verilerden kurallarla seçildi.",
-  quota: "AI desteği şu an geçici olarak sınırlı. Öneriler kayıtlı verilerden kurallarla seçildi; biraz sonra yeniden deneyebilirsin.",
-  timeout: "AI zamanında yanıt vermedi. Öneriler kayıtlı verilerden kurallarla seçildi.",
-  provider_error: "AI servisine ulaşılamadı. Öneriler kayıtlı verilerden kurallarla seçildi.",
-  invalid_output: "AI yanıtı kullanılamadı. Öneriler kayıtlı verilerden kurallarla seçildi.",
-  ai_no_pick: "AI bu adaylardan birini öne çıkarmadı. Aşağıdakiler koşulunu sağlayan kayıtlı mekânlar; kurallarla sıralandı.",
+  not_configured: `AI yorumu şu an kapalı. ${KURAL}`,
+  budget: `AI şu an kullanılamıyor. ${KURAL}`,
+  quota: `AI desteği şu an geçici olarak sınırlı. ${KURAL} Biraz sonra yeniden deneyebilirsin.`,
+  daily_limit: `Bugünkü AI yanıt sınırı doldu (Beta). ${KURAL} AI yarın yeniden açılır.`,
+  user_limit: `Bugünkü AI hakkını kullandın (Beta). ${KURAL} AI yarın yeniden açılır.`,
+  timeout: `AI zamanında yanıt vermedi. ${KURAL}`,
+  provider_error: `AI servisine ulaşılamadı. ${KURAL}`,
+  invalid_output: `AI yanıtı kullanılamadı. ${KURAL}`,
+  ai_no_pick: `AI bu adaylardan birini öne çıkarmadı. ${KURAL}`,
 };
 
 /* iç anahtar yerine okunur ad */
@@ -80,9 +84,10 @@ export function SorAsistan() {
   return (
     <div className="mx-auto flex max-w-[760px] flex-col gap-6 px-5 pb-24 pt-8 sm:px-7 sm:pt-14">
       <header className="flex flex-col gap-2">
-        <p className="label">Sor Gidenler</p>
+        <p className="label">Sor Gidenler <span data-sor-beta className="ml-1 rounded-full border border-line-strong px-2 py-0.5 align-middle text-[10.5px] font-bold tracking-[0.08em]">BETA</span></p>
         <h1 className="text-[clamp(1.9rem,6vw,3rem)] font-extrabold leading-[1] tracking-[-0.04em]">Nereye gidelim?</h1>
         <p className="max-w-[58ch] text-[14.5px] leading-relaxed text-ink-2">Ne istediğini yaz: semt, yemek, ortam. Yalnız Gidenler&apos;de kayıtlı mekânları, kayıtlı bilgilerle öneririm; bilmediğimi söylerim.</p>
+        <p data-sor-beta-not className="max-w-[58ch] text-[12.5px] leading-relaxed text-ink-3">Beta: Sor Gidenler henüz öğreniyor ve yanılabilir. AI yanıtları günlük sınırlıdır; sınır dolunca öneriler kayıtlı bilgilerden kurallarla gelir. Gitmeden önce mekânın profilini kontrol et.</p>
       </header>
       {!turns.length && <ul className="flex flex-wrap gap-2">{ORNEKLER.map((o) => <li key={o}><button type="button" onClick={() => void send(o, null, undefined)} className="min-h-11 rounded-full border border-line-2 px-3.5 py-1.5 text-left text-[13px] font-semibold hover:bg-sheet">{o}</button></li>)}</ul>}
       <div className="flex flex-col gap-8" aria-live="polite">
@@ -94,6 +99,7 @@ export function SorAsistan() {
             {t.res && (
               <div className="flex flex-col gap-2" data-sor-mod={t.res.mode}>
                 <Understood u={t.res.understood} />
+                {t.res.mode === "ai" && <p data-sor-ai-etiket className="text-[12px] font-semibold text-ink-3">AI destekli öneri · Beta · yalnız kayıtlı bilgilerle</p>}
                 {t.res.mode === "veri" && t.res.reason && <p data-sor-uyari className="border-l-2 border-line-strong pl-3 text-[13px] text-ink-2">{REASON[t.res.reason]}</p>}
                 {t.res.relaxed && <p className="text-[14px] font-semibold">{t.res.relaxed}</p>}
                 {t.res.note && <p className="text-[14px] text-ink-2">{t.res.note}</p>}

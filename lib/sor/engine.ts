@@ -212,6 +212,8 @@ const tie = (seed: string, slug: string) => { let h = 2166136261; for (const c o
 export interface Candidate { slug: string; name: string; kind: string; district: string; address: string | null; href: string; facts: string[]; why: string[]; caveats: string[]; score: number; sourced: boolean; areaFit: "tam" | "yakin" | "ilce" | "yok" | null; dishHit: boolean }
 
 const GENERIC_KINDS = new Set(["Restoran"]);
+const SOSYAL = /\b(sosyal tesis|polis evi|orduevi|ordu evi|askeri gazino|belediyesi .*tesis|ogretmenevi|ogretmen evi)/;
+/* kent lokantası herkese açık belediye lokantasıdır: sosyal tesis sayılmaz */
 /* "uygun fiyat" ölçütü: fiyatı kayıtlı mekânların ortancası. Fiyatı bilinmesi ucuz olduğunu göstermez. */
 const PRICES = VENUES.map((v) => v.priceMedian).filter((p): p is number => p != null).sort((a, b) => a - b);
 export const PRICE_MID = PRICES.length ? PRICES[Math.floor(PRICES.length / 2)] : null;
@@ -274,6 +276,8 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
     else if (key === "ekonomik" && !i.budgetMax && v.priceMedian != null) { s += 20 - Math.min(19, Math.floor(v.priceMedian / 100)); caveats.push(`Menüdeki orta fiyat yaklaşık ${v.priceMedian} TL; "uygun" yargısı sana kalmış.`); }
     else if (key === "ekonomik" && !i.budgetMax) caveats.push("Fiyat bilgisi kayıtlı değil.");
   }
+  /* Kamu kurumu sosyal tesisi (polis evi, orduevi, belediye tesisi): kayıt gerçek ama herkese açık bir restoran önerisi gibi öne çıkmaz */
+  if (!named && SOSYAL.test(name)) { s -= 35; caveats.push("Kamu kurumuna ait sosyal tesis; giriş koşulunu gitmeden kontrol et."); }
   const sourced = !!(v.description || v.secki);
   /* Yazı ve profil sıralamaya puan katmaz: yalnız istekle ilgili olduğunda gerekçe olur */
   if (v.secki && (dishHit || named)) why.push(`Gidenler Seçkisi'nde yazısı var: "${v.secki.title}".`);
