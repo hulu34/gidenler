@@ -520,6 +520,24 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: sorv4, path: sorv4.cms, if-no-files-found: ignore }
+  sor-v5:
+    if: contains(github.event.head_commit.message, '[sor-v5]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # yayın öncesi son doğrulama: görülmemiş v5 seti, aynı commit AI açık (dal) ve AI kapalı (CLI)
+      - run: node ops/sor-gercek.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-v5", SET: "v5", GAP: "25000" }
+      - run: node ops/sor-gercek.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-kmgpca6vh-hulu34.vercel.app", ETIKET: "veri-v5", SET: "v5", GAP: "2000" }
+      - if: always()
+        run: test -d out && tar -C out -czf out-sorv5.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sorv5.tgz -out sorv5.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: sorv5, path: sorv5.cms, if-no-files-found: ignore }
   sor-durum:
     if: contains(github.event.head_commit.message, '[sor-durum]')
     runs-on: ubuntu-latest
@@ -529,7 +547,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/sor-durum.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOSTS: '{"cli":"gidenler-ch7t009bv-hulu34.vercel.app","git":"gidenler-lcdirpgip-hulu34.vercel.app","git-ucretsiz":"gidenler-bdqga2r3z-hulu34.vercel.app","dal":"gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app","cli-yeni":"gidenler-ihbwxfvh0-hulu34.vercel.app"}' }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOSTS: '{"cli":"gidenler-ch7t009bv-hulu34.vercel.app","git":"gidenler-lcdirpgip-hulu34.vercel.app","git-ucretsiz":"gidenler-bdqga2r3z-hulu34.vercel.app","dal":"gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app","cli-yeni":"gidenler-kmgpca6vh-hulu34.vercel.app"}' }
   sor-gercek:
     if: contains(github.event.head_commit.message, '[sor-gercek]')
     runs-on: ubuntu-latest
