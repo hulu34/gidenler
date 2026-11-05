@@ -13,11 +13,13 @@ import type { RankItem, RankSection } from "@/lib/rankings";
      Gidenler puanına katılmaz. Sekme açılmadan Google'a istek gitmez. */
 export interface GoogleTheme { key: string; label: string; items: Array<{ slug: string; name: string; place: string }> }
 type Rated = { slug: string; rating?: number; count?: number; mapsUri?: string };
+/** Sıralamaya girmek için en az bu kadar Google değerlendirmesi; azı ayrı satırda, sırasız gösterilir. */
+export const MIN_GOOGLE_REVIEWS = 100;
 
 export function TopRated({ section, note, themes }: { section: RankSection; note?: string | null; themes: GoogleTheme[] }) {
   const [tab, setTab] = useState<"gidenler" | "google">("gidenler");
   const [theme, setTheme] = useState<string | null>(null);
-  const [state, setState] = useState<{ k: "idle" | "loading" | "ok" | "limited" | "off" | "error"; list?: Rated[] }>({ k: "idle" });
+  const [state, setState] = useState<{ k: "idle" | "loading" | "ok" | "limited" | "off" | "error"; list?: Rated[]; few?: Rated[] }>({ k: "idle" });
   const load = async (key: string) => {
     const t = themes.find((x) => x.key === key); if (!t) return;
     setTheme(key); setState({ k: "loading" });
@@ -26,7 +28,10 @@ export function TopRated({ section, note, themes }: { section: RankSection; note
       const j = await r.json().catch(() => ({}));
       if (j.disabled) return setState({ k: "off" });
       if (r.status === 429 || (j.limited && !j.ratings?.length)) return setState({ k: "limited" });
-      setState({ k: "ok", list: (j.ratings as Rated[]).filter((x) => typeof x.rating === "number").sort((a, b) => b.rating! - a.rating! || (b.count ?? 0) - (a.count ?? 0)) });
+      const all = (j.ratings as Rated[]).filter((x) => typeof x.rating === "number");
+      const ranked = all.filter((x) => (x.count ?? 0) >= MIN_GOOGLE_REVIEWS).sort((a, b) => b.rating! - a.rating! || (b.count ?? 0) - (a.count ?? 0));
+      const few = all.filter((x) => (x.count ?? 0) < MIN_GOOGLE_REVIEWS).sort((a, b) => (b.count ?? 0) - (a.count ?? 0));
+      setState({ k: "ok", list: ranked, few });
     } catch { setState({ k: "error" }); }
   };
   const tabs = (
@@ -85,10 +90,22 @@ export function TopRated({ section, note, themes }: { section: RankSection; note
           })}
         </ol>
       )}
+      {state.k === "ok" && state.few!.length > 0 && (
+        <div className="pt-2" data-google-az>
+          <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">{MIN_GOOGLE_REVIEWS}&apos;den az değerlendirme · sıralamaya girmez</p>
+          <ul className="divide-y divide-line">
+            {state.few!.map((r) => { const it = byslug.get(r.slug); return (
+              <li key={r.slug} className="flex items-baseline justify-between gap-3 py-2">
+                <Link href={`/mekan/${r.slug}/`} className="min-w-0 truncate text-[14px] font-semibold hover:text-accent-ink">{it?.name}</Link>
+                <a href={r.mapsUri} target="_blank" rel="noopener noreferrer" className="tnum shrink-0 text-[12px] text-ink-3 hover:underline">★ {r.rating!.toLocaleString("tr-TR", { minimumFractionDigits: 1 })}/5 · {(r.count ?? 0).toLocaleString("tr-TR")} değerlendirme</a>
+              </li>); })}
+          </ul>
+        </div>
+      )}
       {state.k === "ok" && (
         <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] leading-snug text-ink-3">
           <GoogleMapsLogo />
-          <span>Puanlar Google Maps&apos;ten canlı gelir, saklanmaz ve Gidenler puanı değildir. Yalnız bu türden Google ile eşleşmiş {state.list!.length} mekân kendi arasında sıralandı.</span>
+          <span>Puanlar Google Maps&apos;ten canlı gelir, saklanmaz ve Gidenler puanı değildir. Bu türden Google ile eşleşmiş {state.list!.length + state.few!.length} mekân sorgulandı; en az {MIN_GOOGLE_REVIEWS} değerlendirmesi olanlar kendi arasında sıralandı.</span>
         </p>
       )}
       {tabs}

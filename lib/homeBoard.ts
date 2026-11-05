@@ -81,12 +81,13 @@ const G_THEMES: Array<{ key: string; label: string; re: RegExp }> = [
   { key: "kebap", label: "Kebap", re: /^Kebapçı \/ Ocakbaşı$/ }, { key: "lokanta", label: "Lokanta", re: /^Lokanta$/ },
   { key: "pide", label: "Pide", re: /^Pideci$/ }, { key: "kahvalti", label: "Kahvaltı", re: /^Kahvaltı$/ },
 ];
-function googleThemes(usable: string[]): GoogleTheme[] {
+/** shown: ana sayfada (vitrin + pano) zaten görünen mekânlar — Google sekmesinde tekrar edilmez. */
+export function googleThemes(usable: string[], shown: Set<string> = new Set()): GoogleTheme[] {
   const u = new Set(usable);
   return G_THEMES.map((t) => {
     const out: GoogleTheme["items"] = [], ds = new Set<string>();
     for (const e of realEntities) {
-      if (out.length >= 5 || !u.has(e.slug) || HOME_EXCLUDE.has(e.slug) || /sosyal tesis/i.test(e.name) || !t.re.test(e.subcategory ?? "")) continue;
+      if (out.length >= 5 || !u.has(e.slug) || HOME_EXCLUDE.has(e.slug) || shown.has(e.slug) || /sosyal tesis/i.test(e.name) || !t.re.test(e.subcategory ?? "")) continue;
       const d = e.location?.district ?? ""; if (ds.has(d)) continue; ds.add(d);
       out.push({ slug: e.slug, name: e.name, place: [e.subcategory, d].filter(Boolean).join(" · ") });
     }
@@ -112,7 +113,7 @@ export async function realBoard(): Promise<RealBoard> {
   const profilePick = once(balancedProfiles(profiles.filter((x) => !used.has(x.slug)), L).map((s) => itemOf(s, "kaynaklı profil")).filter(ok));
   return {
     measuredDays: b?.days ?? 0,
-    googleThemes: googleThemes(usable),
+    googleThemes: googleThemes(usable, used),
     sections: [
       { key: "popular", title: "Haftanın popülerleri", window: "Son 7 gün", hint: "Gidenler'deki gerçek ziyaret, kaydetme ve yönlendirmeler; aynı kişinin tekrarı tek sayılır.", items: popular, signalKind: "text",
         note: popular.length ? null : b?.reason.popular ?? "Etkileşim ölçümü bu sürümle başlıyor; yeterli gerçek veri oluşunca liste açılır." },

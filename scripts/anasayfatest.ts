@@ -4,6 +4,7 @@ import { realEntities } from "../data/real";
 import { pickDiverse, HOME_EXCLUDE } from "../components/home/HomeDiscover";
 import { sor as soru } from "../lib/sor/ask";
 import { coverOf } from "../lib/media/cover";
+import { googleThemes } from "../lib/homeBoard";
 import { computeBoards, countable, visitorOf, type SignalRow } from "../lib/signals";
 let ok = 0, bad = 0; const t = (n: string, c: boolean, i = "") => { if (c) ok++; else bad++; console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const p = pickDiverse(realEntities, {});
@@ -35,6 +36,13 @@ const fx = JSON.parse(readFileSync("data/real/duzeltmeler.json", "utf8")) as Rec
 const webFix = Object.entries(fx).filter(([, f]) => "website" in f);
 t("düzeltme: ölü web siteleri kayıttan kalktı", webFix.filter(([, f]) => f.website === null).every(([s]) => !realEntities.find((e) => e.slug === s)?.contact?.website), String(webFix.filter(([, f]) => f.website === null).length));
 t("düzeltme: taşınan sayfa aynı alan adının ana sayfasına çevrildi", webFix.filter(([, f]) => f.website).every(([s, f]) => realEntities.find((e) => e.slug === s)?.contact?.website === f.website), String(webFix.filter(([, f]) => f.website).length));
+/* Google sekmesi havuzu: vitrin/panoda görünen mekân tekrar edilmez; kurucuyla ilişkili ve sosyal tesis alınmaz */
+const allSlugs = realEntities.map((e) => e.slug);
+const shown = new Set(pickDiverse(realEntities, {}).map((e) => e.slug));
+const gt = googleThemes(allSlugs, shown).flatMap((t) => t.items.map((i) => i.slug));
+t("Google sekmesi: vitrindeki mekân tekrar etmez", !gt.some((s) => shown.has(s)) && shown.has("ismet-baba-uskudar"), `${gt.length} aday`);
+t("Google sekmesi: Japon Erdal ve sosyal tesis yok", !gt.includes("japon-erdal-beyoglu") && !gt.some((s) => /sosyal-tesis/.test(s)));
+t("Google sekmesi: az değerlendirme eşiği kodda", /MIN_GOOGLE_REVIEWS = 100/.test(readFileSync("components/home/TopRated.tsx", "utf8")));
 const page = readFileSync("app/page.tsx", "utf8");
 t("gerçek ana sayfada tek Seçki yazısı vitrini yok", !/<HomeSecki/.test(page));
 t("ana sayfa soru alanı gerçek /sor'a gider", /sorHref|\/sor\/\?q=/.test(readFileSync("components/home/HomeSor.tsx", "utf8")));
