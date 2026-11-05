@@ -160,5 +160,18 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
    "CREATE TABLE \"signal_events\" (\n\t\"day\" text NOT NULL,\n\t\"slug\" text NOT NULL,\n\t\"kind\" text NOT NULL,\n\t\"visitor\" text NOT NULL,\n\tCONSTRAINT \"signal_events_day_slug_kind_visitor_pk\" PRIMARY KEY(\"day\",\"slug\",\"kind\",\"visitor\")\n);",
    "CREATE INDEX \"signal_events_day_idx\" ON \"signal_events\" USING btree (\"day\");"
   ]
+ },
+ {
+  "tag": "0006_google_puan",
+  "hash": "c40086b9cfbea3371a9705dcdb81ddf85ca2fadaf943e4fb3a4c636437be4598",
+  "statements": [
+   "CREATE TABLE \"google_rating_files\" (\n\t\"id\" text PRIMARY KEY NOT NULL,\n\t\"kind\" text NOT NULL,\n\t\"run\" text,\n\t\"sha256\" text NOT NULL,\n\t\"size\" integer NOT NULL,\n\t\"rows\" integer NOT NULL,\n\t\"data\" text NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "CREATE TABLE \"google_rating_history\" (\n\t\"id\" text PRIMARY KEY NOT NULL,\n\t\"slug\" text NOT NULL,\n\t\"rating\" double precision NOT NULL,\n\t\"review_count\" integer NOT NULL,\n\t\"checked_at\" timestamp with time zone NOT NULL,\n\t\"source\" text NOT NULL,\n\t\"import_id\" text NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "CREATE TABLE \"google_rating_imports\" (\n\t\"id\" text PRIMARY KEY NOT NULL,\n\t\"file_id\" text NOT NULL,\n\t\"actor\" text NOT NULL,\n\t\"status\" text NOT NULL,\n\t\"detail\" jsonb NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "CREATE TABLE \"google_rating_lock\" (\n\t\"name\" text PRIMARY KEY NOT NULL,\n\t\"holder\" text NOT NULL,\n\t\"expires_at\" timestamp with time zone NOT NULL\n);",
+   "CREATE TABLE \"google_ratings\" (\n\t\"slug\" text PRIMARY KEY NOT NULL,\n\t\"place_id\" text NOT NULL,\n\t\"rating\" double precision NOT NULL,\n\t\"review_count\" integer NOT NULL,\n\t\"maps_url\" text,\n\t\"checked_at\" timestamp with time zone NOT NULL,\n\t\"source\" text NOT NULL,\n\t\"confidence\" text NOT NULL,\n\t\"import_id\" text NOT NULL,\n\t\"updated_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "CREATE INDEX \"google_rating_files_created_idx\" ON \"google_rating_files\" USING btree (\"created_at\");",
+   "CREATE INDEX \"google_rating_history_slug_idx\" ON \"google_rating_history\" USING btree (\"slug\",\"checked_at\");"
+  ]
  }
 ];

@@ -11,7 +11,7 @@ import { MIGRATIONS } from "./migrations.generated";
    ────────────────────────────────────────────────────────────────────────── */
 
 /** 0001_deneme_esigi ve sonrası (yeniden eskiye) */
-const LATER_TABLES = ["signal_events", "notifications", "score_watches", "photo_assets", "staff_roles", "media_blobs", "media_cleanup", "ops_counters"];
+const LATER_TABLES = ["google_ratings", "google_rating_history", "google_rating_imports", "google_rating_files", "google_rating_lock", "signal_events", "notifications", "score_watches", "photo_assets", "staff_roles", "media_blobs", "media_cleanup", "ops_counters"];
 const FAZ0_TABLES = [
   "ranking_entries", "rankings", "follows", "list_items", "lists", "user_place_status", "rating_history",
   "reviewer_expertise", "visit_verifications", "review_dishes", "reviews", "dish_media", "media_places",

@@ -537,3 +537,58 @@ export const signalEvents = pgTable("signal_events", {
   kind: text("kind").notNull(),
   visitor: text("visitor").notNull(),
 }, (t) => [primaryKey({ columns: [t.day, t.slug, t.kind, t.visitor] }), index("signal_events_day_idx").on(t.day)]);
+
+/* ── GOOGLE PUAN TABLOSU (Excel → doğrulama → burası) ───────────────────────
+   Google kaynaklı puan (5 üzerinden). Gidenler deneyim puanından (10 üzerinden) TAMAMEN ayrıdır: hiçbir puan hesabı,
+   Popülerler ya da Yükselenler bu tablolara bakmaz. Satırlar yalnız doğrulanmış toplu aktarımla değişir; başarısız
+   kontrol satırı silmez. */
+export const googleRatings = pgTable("google_ratings", {
+  slug: text("slug").primaryKey(),
+  placeId: text("place_id").notNull(),
+  rating: doublePrecision("rating").notNull(),
+  reviewCount: integer("review_count").notNull(),
+  mapsUrl: text("maps_url"),
+  checkedAt: ts("checked_at").notNull(),
+  source: text("source").notNull(),
+  confidence: text("confidence").notNull(),
+  importId: text("import_id").notNull(),
+  updatedAt: updated(),
+});
+export const googleRatingHistory = pgTable("google_rating_history", {
+  id: text("id").primaryKey(),
+  slug: text("slug").notNull(),
+  rating: doublePrecision("rating").notNull(),
+  reviewCount: integer("review_count").notNull(),
+  checkedAt: ts("checked_at").notNull(),
+  source: text("source").notNull(),
+  importId: text("import_id").notNull(),
+  createdAt: created(),
+}, (t) => [index("google_rating_history_slug_idx").on(t.slug, t.checkedAt)]);
+/** Her aktarım denemesi (kabul ya da ret) kayıt altında. */
+export const googleRatingImports = pgTable("google_rating_imports", {
+  id: text("id").primaryKey(),
+  fileId: text("file_id").notNull(),
+  actor: text("actor").notNull(),
+  /** applied | rejected */
+  status: text("status").notNull(),
+  detail: jsonb("detail").notNull(),
+  createdAt: created(),
+});
+/** Excel sürümleri (yalnız yönetim indirir). kind: taslak (çalışma ortası kayıt) | son (çalışma sonu) | elle (yönetici yüklemesi) */
+export const googleRatingFiles = pgTable("google_rating_files", {
+  id: text("id").primaryKey(),
+  kind: text("kind").notNull(),
+  run: text("run"),
+  sha256: text("sha256").notNull(),
+  size: integer("size").notNull(),
+  rows: integer("rows").notNull(),
+  /** base64 .xlsx */
+  data: text("data").notNull(),
+  createdAt: created(),
+}, (t) => [index("google_rating_files_created_idx").on(t.createdAt)]);
+/** Tek güncelleyici kilidi: süresi dolan kilit devralınabilir; kilidi tutmayan çalışma dosya yükleyemez ve aktaramaz. */
+export const googleRatingLock = pgTable("google_rating_lock", {
+  name: text("name").primaryKey(),
+  holder: text("holder").notNull(),
+  expiresAt: ts("expires_at").notNull(),
+});
