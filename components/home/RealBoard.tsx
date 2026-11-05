@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Column } from "@/components/home/HomeRankings";
 import { RealForYou } from "@/components/home/RealForYou";
 import { realBoard } from "@/lib/homeBoard";
+import { TopRated } from "@/components/home/TopRated";
 
 /* GERÇEK PANO — demodaki kompakt board (aynı kolon, satır ve ızgara), gerçek veriyle. "demo" etiketi yok.
    Veri yetmeyen kolon boş liste uydurmaz: nedenini yazar; Popülerler kolonunda yerine kaynaklı profil önerir. */
@@ -10,7 +11,7 @@ export async function RealBoard() {
   return (
     <section aria-label="Keşif ve sıralamalar" className="flex flex-col gap-6" data-ana-pano>
       <div className="home-board">
-        {b.sections.map((s) => (
+        {b.sections.map((s) => s.key === "top" ? <TopRated key="top" section={s} note={s.note} themes={b.googleThemes} /> : (
           <Column key={s.key} section={s} demo={false}
             empty={
               <div key={`bos-${s.key}`} className="flex flex-col gap-3 pt-4" data-pano-bos={s.key}>

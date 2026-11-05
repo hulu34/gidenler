@@ -636,3 +636,25 @@ export async function rollbackGoogleMatches() {
   }
   return { ok: true as const, removedIdentifiers: list.length };
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   GOOGLE PUANI (yalnız puan) — ana sayfadaki "Google puanı" sekmesi, KULLANICI tıklayınca.
+   · Tek istek = Place Details, alan maskesi yalnız rating, userRatingCount, googleMapsUri (Enterprise kademesi;
+     yorum ve fotoğraf İSTENMEZ). Bütçe: google:details_enterprise sayacı + toplam 100 USD tavanı.
+   · Yanıt SAKLANMAZ, önbelleğe alınmaz (Google kuralı: yalnız place ID saklanabilir). Gidenler puanına katılmaz.
+   ────────────────────────────────────────────────────────────────────────── */
+export type GoogleRating = { slug: string; rating?: number; count?: number; mapsUri?: string };
+export async function fetchGoogleRating(slug: string, f: typeof fetch = fetch): Promise<{ state: "ok"; data: GoogleRating } | { state: "disabled" | "unmatched" | "error" } | { state: "limit"; reason: string }> {
+  const key = process.env.GOOGLE_PLACES_API_KEY;
+  if (!key || !googleEnabled()) return { state: "disabled" };
+  try {
+    const s = await storedGooglePlaceId(slug);
+    if (!s || !("id" in s)) return { state: "unmatched" };
+    const ok = await reserve("google:details_enterprise");
+    if (!ok.ok) return { state: "limit", reason: ok.reason };
+    const d = await f(`${API}/places/${encodeURIComponent(s.id)}`, { headers: headers(key, "rating,userRatingCount,googleMapsUri"), cache: "no-store", signal: AbortSignal.timeout(6000) });
+    if (!d.ok) { await trip(d); return { state: "error" }; }
+    const p = await d.json() as { rating?: number; userRatingCount?: number; googleMapsUri?: string };
+    return { state: "ok", data: { slug, rating: p.rating, count: p.userRatingCount, mapsUri: p.googleMapsUri } };
+  } catch { return { state: "error" }; }
+}
