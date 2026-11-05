@@ -13,7 +13,9 @@ import { DemoNotice } from "@/components/ui/DemoNotice";
 import { DEMO_VISIBLE } from "@/data/entities";
 import { isRestaurantTarget, realVenueRecords } from "@/data/real";
 import { AskAI } from "@/components/home/AskAI";
-import { HomeSecki, QuickFind } from "@/components/home/HomeSecki";
+import { QuickFind } from "@/components/home/HomeSecki";
+import { HomeSor } from "@/components/home/HomeSor";
+import { HomeDiscover } from "@/components/home/HomeDiscover";
 import { ContinueModule } from "@/components/decision/ContinueModule";
 import { HomeRankings, type HomeData } from "@/components/home/HomeRankings";
 import { HOME_CATEGORIES, OTHER_CATEGORIES, buildRankings, buildRegulated, forYouRanking } from "@/lib/rankings";
@@ -57,38 +59,60 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ───────── hero: manşet + tek soru, arkada İstanbul sismografı (gerçek veri) ───────── */}
-      <section className="relative isolate overflow-hidden border-b border-line">
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-full opacity-90 [mask-image:linear-gradient(to_bottom,transparent,black_30%)]">
-          {DEMO_VISIBLE && <CityArt />}
-        </div>
-        <div className="mx-auto max-w-[1180px] px-5 pb-12 pt-10 sm:px-7 sm:pb-16 sm:pt-16">
-          <p className="rise flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
-            <span className="inline-flex items-center gap-1.5"><i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />İstanbul</span>
-            <span aria-hidden>·</span>
-            {DEMO_VISIBLE ? (
-              <>
-                <span className="tnum">{periodLabel(last.period)}: {nf(last.count)} deneyim</span>
-                <span aria-hidden>·</span>
-                <span className="tnum">{nf(istanbulCount)} kayıt · {creators.length} doğrulanmış üretici</span>
-                <span className="rounded-full border border-line-2 px-2 py-px text-[9.5px] tracking-[0.14em]">demo veri</span>
-              </>
-            ) : (
-              <span className="tnum">{nf(istanbulCount)} gerçek mekân · {nf(realRestaurants)} restoran · kaynak OpenStreetMap</span>
-            )}
-          </p>
-          <h1 className="rise mt-5 text-[clamp(2.5rem,8.4vw,6.25rem)] font-extrabold leading-[0.9] tracking-[-0.055em]" style={{ animationDelay: "80ms" }}>
-            Nereye gidelim?<br />
-            <span className="font-[family-name:var(--font-brand)] font-normal italic tracking-[-0.02em] text-accent-ink">Gidenler bilir.</span>
-          </h1>
-          <p className="rise mt-5 max-w-[46ch] font-[family-name:var(--font-read)] text-[clamp(1.0625rem,2.1vw,1.35rem)] leading-[1.42] text-ink-2" style={{ animationDelay: "160ms" }}>
-            {DEMO_VISIBLE ? "Puan değil, son aylarda gidenlerin gerçekte yaşadığı. Koşulunu yaz; deneyim grafiğinden sana uyan üç yeri gerekçesiyle seçelim." : "İstanbul'un restoranları, gidenlerin kendi deneyimleriyle. Puanı yalnız gerçekten gidenlerin yazdıkları belirler."}
-          </p>
-          <div className="rise mt-8" style={{ animationDelay: "240ms" }}>
-            {DEMO_VISIBLE ? <AskAI /> : <QuickFind />}
+      {/* ───────── hero ───────── */}
+      {DEMO_VISIBLE ? (
+        /* demo: manşet + tek soru, arkada İstanbul sismografı (yatırımcı demosu, değişmedi) */
+        <section className="relative isolate overflow-hidden border-b border-line">
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-full opacity-90 [mask-image:linear-gradient(to_bottom,transparent,black_30%)]">
+            {DEMO_VISIBLE && <CityArt />}
           </div>
-        </div>
-      </section>
+          <div className="mx-auto max-w-[1180px] px-5 pb-12 pt-10 sm:px-7 sm:pb-16 sm:pt-16">
+            <p className="rise flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
+              <span className="inline-flex items-center gap-1.5"><i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />İstanbul</span>
+              <span aria-hidden>·</span>
+              {DEMO_VISIBLE ? (
+                <>
+                  <span className="tnum">{periodLabel(last.period)}: {nf(last.count)} deneyim</span>
+                  <span aria-hidden>·</span>
+                  <span className="tnum">{nf(istanbulCount)} kayıt · {creators.length} doğrulanmış üretici</span>
+                  <span className="rounded-full border border-line-2 px-2 py-px text-[9.5px] tracking-[0.14em]">demo veri</span>
+                </>
+              ) : (
+                <span className="tnum">{nf(istanbulCount)} gerçek mekân · {nf(realRestaurants)} restoran · kaynak OpenStreetMap</span>
+              )}
+            </p>
+            <h1 className="rise mt-5 text-[clamp(2.5rem,8.4vw,6.25rem)] font-extrabold leading-[0.9] tracking-[-0.055em]" style={{ animationDelay: "80ms" }}>
+              Nereye gidelim?<br />
+              <span className="font-[family-name:var(--font-brand)] font-normal italic tracking-[-0.02em] text-accent-ink">Gidenler bilir.</span>
+            </h1>
+            <p className="rise mt-5 max-w-[46ch] font-[family-name:var(--font-read)] text-[clamp(1.0625rem,2.1vw,1.35rem)] leading-[1.42] text-ink-2" style={{ animationDelay: "160ms" }}>
+              {DEMO_VISIBLE ? "Puan değil, son aylarda gidenlerin gerçekte yaşadığı. Koşulunu yaz; deneyim grafiğinden sana uyan üç yeri gerekçesiyle seçelim." : "İstanbul'un restoranları, gidenlerin kendi deneyimleriyle. Puanı yalnız gerçekten gidenlerin yazdıkları belirler."}
+            </p>
+            <div className="rise mt-8" style={{ animationDelay: "240ms" }}>
+              {DEMO_VISIBLE ? <AskAI /> : <QuickFind />}
+            </div>
+          </div>
+        </section>
+      ) : (
+        /* GERÇEK SİTE: ilk ekranın merkezi Sor Gidenler (gerçek /sor, Groq Beta). Tek mekân vitrini yok. */
+        <section className="relative isolate overflow-hidden border-b border-line" data-ana-hero>
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_60%_at_50%_0%,var(--accent-soft),transparent_70%)] opacity-70" />
+          <div className="mx-auto flex max-w-[1180px] flex-col items-center px-4 pb-10 pt-8 text-center sm:px-7 sm:pb-16 sm:pt-20">
+            <p className="rise inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-ink-3">
+              <i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />Sor Gidenler · İstanbul
+            </p>
+            <h1 className="rise mt-3 text-[clamp(2.6rem,9vw,5.75rem)] font-extrabold leading-[0.92] tracking-[-0.055em] sm:mt-4" style={{ animationDelay: "60ms" }}>
+              Nereye gitsek?
+            </h1>
+            <p className="rise mt-3 max-w-[44ch] font-[family-name:var(--font-read)] text-[clamp(1rem,2vw,1.25rem)] leading-[1.4] text-ink-2 sm:mt-4" style={{ animationDelay: "120ms" }}>
+              Ne istediğini kendi cümlenle yaz; {nf(realRestaurants)} gerçek restoran arasından sana uyanları gerekçesiyle önerelim.
+            </p>
+            <div className="rise mt-5 flex w-full flex-col items-center gap-5 text-left sm:mt-8" style={{ animationDelay: "180ms" }}>
+              <HomeSor />
+            </div>
+          </div>
+        </section>
+      )}
 
       {DEMO_VISIBLE && <Ticker />}
 
@@ -102,8 +126,8 @@ export default function HomePage() {
           </section>
         )}
         {DEMO_VISIBLE && <ContinueModule />}
-        {!DEMO_VISIBLE && <HomeSecki />}
-        <RealVenues />
+        {/* Seçki ana sayfada tek yazıyla öne çıkarılmaz (yalnız birden çok yayımlanmış yazı olunca); /seckisi/ aynen kalır. */}
+        {DEMO_VISIBLE ? <RealVenues /> : <HomeDiscover />}
         {!DEMO_VISIBLE && <RealExplore />}
         {!DEMO_VISIBLE && <ContinueModule />}
         {DEMO_VISIBLE && <><Risers /><ScoreLies /><Districts /></>}
