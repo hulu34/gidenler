@@ -12,7 +12,7 @@ const b = await chromium.launch();
 async function open(host, path, o, mockGoogle) {
   const ctx = await b.newContext(o); if (host !== LIVE) await yetkiliBaslik(ctx, host, HB);
   const g = { n: 0 };
-  if (mockGoogle) await ctx.route(/\/api\/google\/puanlar/, async (r) => { const sl = JSON.parse(r.request().postData() ?? "{}").slugs ?? []; await r.fulfill({ json: { ratings: sl.map((s, i) => ({ slug: s, rating: [4.1, 4.7, 4.4, 3.9, 4.6][i % 5], count: 100 * (i + 1), mapsUri: "https://maps.google.com/?cid=1" })), limited: false } }); });
+  if (mockGoogle) await ctx.route(/\/api\/google\/puanlar/, async (r) => { const sl = JSON.parse(r.request().postData() ?? "{}").slugs ?? []; await r.fulfill({ json: { ratings: sl.map((s, i) => ({ slug: s, rating: [4.1, 4.7, 4.4, 3.9, 4.6][i % 5], count: [2600, 40, 900, 3000, 150][i % 5], mapsUri: "https://maps.google.com/?cid=1" })), limited: false } }); });
   await ctx.route(/googleapis\.com|\/api\/google\/place/, (r) => { g.n++; return r.abort(); });
   const p = await ctx.newPage(); const errs = []; p.on("pageerror", (e) => errs.push(e.message.slice(0, 80)));
   const r = await p.goto(`https://${host}${path}`, { waitUntil: "networkidle" }).catch(() => null); await p.waitForTimeout(1500);
@@ -64,6 +64,11 @@ for (const [dev, o] of [["masaustu", DESK], ["mobil", MOB]]) {
   const gl = await h.p.locator("[data-google-liste] li").allInnerTexts();
   const gtxt = await h.p.locator("[data-google-siralama]").innerText().catch(() => "");
   ok(`${dev}: Google sekmesi: 5 üzerinden, değerlendirme sayısı, Google Maps atfı, 'Gidenler puanı değildir'`, gl.length >= 3 && gl.every((t) => /\/5/.test(t) && /değerlendirme/.test(t)) && /Gidenler puanı değildir/.test(gtxt) && (await h.p.locator("[data-google-siralama] img, [data-google-siralama] svg").count()) > 0, `${gl.length} satır (SAHTE yanıt)`);
+  const az = await h.p.locator("[data-google-az] li").count();
+  ok(`${dev}: Google sekmesi: 100'den az değerlendirmeli mekân sıralamaya girmez, ayrı gösterilir`, gl.length === 4 && az === 1, `sıralı ${gl.length}, az ${az} (SAHTE yanıt)`);
+  const gHref = await h.p.locator("[data-google-siralama] a[href^='/mekan/']").evaluateAll((xs) => xs.map((a) => a.getAttribute("href")));
+  const vHref = await h.p.locator("[data-ana-kesif] a[href^='/mekan/']").evaluateAll((xs) => xs.map((a) => a.getAttribute("href")));
+  ok(`${dev}: Google listesinde vitrindeki mekân yok`, gHref.length > 0 && !gHref.some((x) => vHref.includes(x)), `${gHref.length} Google, ${vHref.length} vitrin`);
   const sorted = gl.map((t) => Number((t.match(/★\s*([\d,]+)/) ?? [])[1]?.replace(",", "."))); ok(`${dev}: Google listesi puana göre sıralı`, sorted.every((v, i) => i === 0 || v <= sorted[i - 1]), sorted.join(" "));
   await h.p.locator("[data-google-siralama]").scrollIntoViewIfNeeded(); await h.p.screenshot({ path: `${OUT}/sonra-google-sekmesi-${dev}-SAHTE.png` });
   ok(`${dev}: sayfa hatası yok, gerçek Google isteği yok`, h.errs.length === 0 && h.g.n === 0, `${h.errs.join("|")} g=${h.g.n}`);
