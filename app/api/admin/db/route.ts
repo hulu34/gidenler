@@ -10,6 +10,7 @@ import { approvedPhotoCandidates, decidePhotoCandidate, listPhotoCandidates, loa
 import { googlePolicyStats, setGooglePolicy } from "@/lib/providers/googlePolicy";
 import { applyProfile, ProfileInput, readProfile, rollbackProfile } from "@/lib/profile";
 import { uuidv7 } from "uuidv7";
+import { computeBoards, dayOf, loadSignalRows } from "@/lib/signals";
 import { getDb } from "@/lib/db/client";
 import { executorFor } from "@/lib/db/executors";
 import { applyMigrations, migrationStatus } from "@/lib/db/migrate";
@@ -106,6 +107,16 @@ export async function GET(req: Request) {
       const gids = pl ? await db.select({ id: placeIdentifiers.id, externalId: placeIdentifiers.externalId, status: placeIdentifiers.status }).from(placeIdentifiers).where(and(eq(placeIdentifiers.placeId, pl.id), eq(placeIdentifiers.provider, "google"))) : [];
       const gaudits = gids.length ? await db.select({ id: auditLog.id, action: auditLog.action, actor: auditLog.actor, at: auditLog.at, refId: auditLog.refId, detail: auditLog.detail }).from(auditLog).where(and(inArray(auditLog.refId, gids.map((g) => g.id)), inArray(auditLog.action, ["google_disable", "google_enable"]))).orderBy(desc(auditLog.at)).limit(10) : [];
       return NextResponse.json({ env: envName(), slug, place: pl ?? null, google: { identifiers: gids, audits: gaudits }, counts: { menuRows: await count(menuItems), provRows: await count(fieldProvenance) }, audits, profile: await readProfile(db, slug), videos: await listPlaceVideos(slug) }, { headers: H });
+    } catch (e) { return fail(e); }
+  }
+  /* ?rapor=sinyal → yalnız okuma: son 14 günün keşif sinyali sayıları ve hesaplanan listeler (ziyaretçi özeti dönmez) */
+  if (new URL(req.url).searchParams.get("rapor") === "sinyal") {
+    const db = getDb();
+    if (!db) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
+    try {
+      const rows = await loadSignalRows(db); const today = dayOf(new Date());
+      const byKind = rows.reduce<Record<string, number>>((m, r) => ((m[r.kind] = (m[r.kind] ?? 0) + r.n), m), {});
+      return NextResponse.json({ env: envName(), today, rows: rows.length, byKind, boards: computeBoards(rows, today) }, { headers: H });
     } catch (e) { return fail(e); }
   }
   /* ?rapor=redis → yalnız okuma: önek grubu başına anahtar sayısı (değer yok) */
