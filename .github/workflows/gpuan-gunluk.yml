@@ -1,0 +1,43 @@
+# GOOGLE PUAN · GÜNLÜK GÜNCELLEME — her gün 06:00 (Türkiye, UTC+3) ve elle tetikleme.
+# Zamanlanmış iş yalnız varsayılan daldan (main) çalışır: bu dosya main'e alınınca etkinleşir (Production adımı).
+# Akış: Excel (sunucudaki son sürüm) → kaynak adaptörü → Excel → sağlamlık → güvenli depo → doğrulama → veritabanı → önbellek.
+# Depo herkese açık: logda yalnız sayılar. Excel ve rapor ops/gpuan-yedek.pem (açık anahtar) ile şifreli yedeklenir;
+# çözme anahtarı yalnız proje sahibinde. Asıl Excel sürümleri veritabanında, yalnız korumalı yönetim adresinden indirilir.
+name: Google puan gunluk
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      max: { description: "En çok kaç mekân", required: false, default: "500" }
+      slugs: { description: "Yalnız bu mekânlar (virgüllü, isteğe bağlı)", required: false, default: "" }
+permissions:
+  contents: read
+concurrency:
+  group: gpuan-gunluk
+  cancel-in-progress: false
+env:
+  HOST: gidenler-git-feature-investor-v1-hulu34.vercel.app   # Production dalının korumalı kalıcı adresi
+  HEDEF: production
+jobs:
+  guncelle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: feature/investor-v1 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: npx tsx scripts/gpuan-guncelle.ts
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          MAX: ${{ github.event.inputs.max || '500' }}
+          SLUGS: ${{ github.event.inputs.slugs || '' }}
+          BEKLEME_MS: "6000"
+          CIKTI: out/gpuan
+      - if: always()
+        run: test -d out/gpuan && tar -C out -czf out/gpuan.tgz gpuan && rm -rf out/gpuan && openssl cms -encrypt -aes256 -binary -outform DER -in out/gpuan.tgz -out out/gpuan.tgz.cms ops/gpuan-yedek.pem && rm out/gpuan.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpuan-gunluk-sifreli, path: out/gpuan.tgz.cms, retention-days: 30, if-no-files-found: ignore }
