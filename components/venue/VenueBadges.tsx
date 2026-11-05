@@ -47,8 +47,10 @@ export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredF
       <div className="flex flex-wrap items-center gap-2">
         <Link href={`/yaz/${entity.slug}/`} className="inline-flex h-11 items-center rounded-[3px] bg-accent px-4 text-[14px] font-semibold text-on-accent">Deneyim yaz</Link>
         {hasMenu && <a href="#menu" className={QUICK}>Menü</a>}
-        {mapsUrl && <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={QUICK}>Yol tarifi</a>}
-        {entity.contact?.phone && <a href={`tel:${entity.contact.phone.replace(/[^+\d]/g, "")}`} className={QUICK}>Ara</a>}
+        {mapsUrl && <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={QUICK} data-aksiyon="harita">Haritada aç</a>}
+        {entity.contact?.phone && <a href={`tel:${entity.contact.phone.replace(/[^+\d]/g, "")}`} className={QUICK} data-aksiyon="ara">Ara</a>}
+        {/* yalnız bağlantı denetiminden geçen (çalışan) web sitesi; rezervasyon sağlayıcısı olmadığı için "rezervasyon yap" denmez */}
+        {entity.contact?.website && <a href={entity.contact.website} target="_blank" rel="noopener noreferrer" data-sinyal="outbound" className={QUICK} data-aksiyon="web">Web sitesi ↗</a>}
       </div>
       <PlaceStatusButtons entityId={entity.id} />
     </div>

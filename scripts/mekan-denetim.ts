@@ -8,7 +8,10 @@ import { realEntities } from "../data/real";
 import { coverOf } from "../lib/media/cover";
 
 const OUT = process.env.MEKAN_DENETIM_OUT ?? "../calisma";
-const google = new Set<string>(process.env.GOOGLE_SLUGS && existsSync(process.env.GOOGLE_SLUGS) ? JSON.parse(readFileSync(process.env.GOOGLE_SLUGS, "utf8")) : []);
+/* AG_JSON: ops/mekan-ag çıktısı (Production Google eşleşme durumu + web sitesi bağlantı kontrolü) */
+const ag = process.env.AG_JSON && existsSync(process.env.AG_JSON) ? JSON.parse(readFileSync(process.env.AG_JSON, "utf8")) as { googleUsable: string[]; googlePending: string[]; links: Record<string, { url: string; status: number; error?: string }> } : null;
+const google = new Set<string>(ag?.googleUsable ?? []);
+const gPending = new Set<string>(ag?.googlePending ?? []);
 const fold = (s: string) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, " ").trim();
 const meters = (a: RealVenueRecord, b: RealVenueRecord) => {
   if (typeof a.lat !== "number" || typeof b.lat !== "number" || typeof a.lng !== "number" || typeof b.lng !== "number") return Infinity;
@@ -25,7 +28,7 @@ const NAME_KIND: Array<[RegExp, RegExp, string]> = [
 const RESTRICTED = /sosyal tesis|polis evi|orduevi|ordu evi|askeri|kulubu|kulub|lokali|ogretmenevi|ogretmen evi|mensuplari/;
 
 type Grp = "A" | "B" | "C" | "D";
-interface Row { slug: string; name: string; district: string; kind: string; group: Grp; issues: string[]; missing: string[]; photo: string; google: boolean | null; contact: string; map: string; source: string }
+interface Row { slug: string; name: string; district: string; kind: string; group: Grp; durum: "Tamamlandı" | "Eksik" | "Doğrulama gerekiyor"; issues: string[]; missing: string[]; photo: string; google: string; site: string; contact: string; map: string; source: string }
 const rows: Row[] = [];
 const bySlug = new Map<string, number>();
 for (const r of realVenueRecords) bySlug.set(r.slug, (bySlug.get(r.slug) ?? 0) + 1);
@@ -59,9 +62,22 @@ for (const r of realVenueRecords) {
   const e = ent.get(r.slug);
   const cover = e ? coverOf(e, undefined) : null;
   if (!cover) missing.push("izinli fotoğraf");
+  /* Google eşleşmesi (Production): kullanılabilir / onay bekliyor / yok */
+  const gState = !ag ? "bilinmiyor" : google.has(r.slug) ? "eşleşmiş" : gPending.has(r.slug) ? "onay bekliyor" : "yok";
+  if (gState === "onay bekliyor") { issues.push("Google eşleşmesi yönetici onayı bekliyor"); c = true; }
+  /* web sitesi: düzeltme sonrası kayıttaki adres; ilk taramadaki sonuç */
+  const lk = ag?.links[r.slug];
+  let site = r.website ? "var" : "yok";
+  if (lk && r.website) {
+    if (r.website !== lk.url) site = "düzeltildi (ana sayfaya)";
+    else if (lk.status >= 200 && lk.status < 400) site = "çalışıyor";
+    else if (lk.status === 403) site = "bot engelli (403), elle bakılmalı";
+    else { site = `sorunlu (${lk.error ?? lk.status})`; issues.push(`web sitesi açılmıyor: ${lk.error ?? lk.status}`); c = true; }
+  } else if (lk && !r.website) site = "kaldırıldı (ölü bağlantı)";
   const g: Grp = d ? "D" : c ? "C" : missing.filter((x) => x !== "izinli fotoğraf" && x !== "mutfak etiketi").length ? "B" : "A";
-  rows.push({ slug: r.slug, name: r.name, district: r.district, kind: r.kind, group: g, issues, missing,
-    photo: cover ? `${cover.source} · ${cover.credit}` : "yok", google: google.size ? google.has(r.slug) : null,
+  const durum = g === "A" ? "Tamamlandı" : g === "B" ? "Eksik" : "Doğrulama gerekiyor";
+  rows.push({ slug: r.slug, name: r.name, district: r.district, kind: r.kind, group: g, durum, issues, missing, site,
+    photo: cover ? `${cover.source} · ${cover.credit}` : "yok", google: gState,
     contact: [r.phone && "telefon", r.website && "web", r.instagram && "instagram"].filter(Boolean).join(", ") || "yok",
     map: typeof r.lat === "number" ? "koordinat" : r.address ? "adresle arama" : "yok", source: r.ref.startsWith("isletme/") ? `işletme (${r.sourceUrl})` : `OSM ${r.ref}` });
 }
@@ -69,16 +85,16 @@ const count = (g: Grp) => rows.filter((x) => x.group === g).length;
 const cats = realVenueRecords.reduce<Record<string, number>>((m, r) => ((m[r.categoryId] = (m[r.categoryId] ?? 0) + 1), m), {});
 const amen = realVenueRecords.reduce<Record<string, number>>((m, r) => ((m[r.osmAmenity ?? "işletme"] = (m[r.osmAmenity ?? "işletme"] ?? 0) + 1), m), {});
 const miss = rows.flatMap((r) => r.missing).reduce<Record<string, number>>((m, k) => ((m[k] = (m[k] ?? 0) + 1), m), {});
-const sum = { toplam: rows.length, A: count("A"), B: count("B"), C: count("C"), D: count("D"), kategori: cats, osmTuru: amen, eksikler: miss, incelemeCiftleri: realVenueReview.length, googleBilgisi: google.size ? `${rows.filter((r) => r.google).length} eşleşmiş` : "verilmedi" };
+const sum = { toplam: rows.length, A: count("A"), B: count("B"), C: count("C"), D: count("D"), kategori: cats, osmTuru: amen, eksikler: miss, incelemeCiftleri: realVenueReview.length, google: ag ? { eslesmis: rows.filter((r) => r.google === "eşleşmiş").length, onayBekliyor: rows.filter((r) => r.google === "onay bekliyor").length, yok: rows.filter((r) => r.google === "yok").length } : "verilmedi", site: rows.reduce<Record<string, number>>((m, r) => ((m[r.site.replace(/ \(.*$/, "")] = (m[r.site.replace(/ \(.*$/, "")] ?? 0) + 1), m), {}), durum: { tamamlandi: rows.filter((r) => r.durum === "Tamamlandı").length, eksik: rows.filter((r) => r.durum === "Eksik").length, dogrulama: rows.filter((r) => r.durum === "Doğrulama gerekiyor").length } };
 mkdirSync(OUT, { recursive: true });
 writeFileSync(`${OUT}/mekan-denetim.json`, JSON.stringify({ ozet: sum, kayitlar: rows }, null, 1));
-const line = (r: Row) => `| ${r.group} | [${r.name}](/mekan/${r.slug}/) | ${r.district} | ${r.kind} | ${r.issues.join("; ") || "—"} | ${r.missing.join(", ") || "—"} |`;
+const line = (r: Row) => `| ${r.durum} | [${r.name}](https://www.gidenler.com/mekan/${r.slug}/) | ${r.district} | ${r.kind} | ${r.google} | ${r.site} | ${r.photo === "yok" ? "yok" : "izinli"} | ${r.issues.join("; ") || "—"} | ${r.missing.filter((x) => x !== "izinli fotoğraf").join(", ") || "—"} |`;
 writeFileSync(`${OUT}/mekan-denetim.md`, [
-  `# Mekân kalite denetimi`, ``, `Toplam ${sum.toplam}: **A ${sum.A}** · **B ${sum.B}** · **C ${sum.C}** · **D ${sum.D}**`, ``,
+  `# Mekân kalite denetimi`, ``, `Toplam ${sum.toplam}: **Tamamlandı ${sum.durum.tamamlandi}** · **Eksik ${sum.durum.eksik}** · **Doğrulama gerekiyor ${sum.durum.dogrulama}** (A ${sum.A} · B ${sum.B} · C ${sum.C} · D ${sum.D})`, ``, `Google: ${JSON.stringify(sum.google)} · Web sitesi: ${JSON.stringify(sum.site)}`, ``,
   `Kategori: ${JSON.stringify(cats)} · OSM türü: ${JSON.stringify(amen)}`, ``, `Eksikler: ${Object.entries(miss).map(([k, v]) => `${k} ${v}`).join(" · ")}`, ``,
-  `## D ve C (önce bunlar)`, ``, `| Grup | Mekân | Semt | Tür | Sorun | Eksik |`, `|---|---|---|---|---|---|`,
+  `## Doğrulama gerekiyor`, ``, `| Durum | Mekân | Semt | Tür | Google | Web sitesi | Fotoğraf | Sorun | Eksik |`, `|---|---|---|---|---|---|---|---|---|`,
   ...rows.filter((r) => r.group === "D" || r.group === "C").map(line), ``,
-  `## B (eksikleri var)`, ``, `| Grup | Mekân | Semt | Tür | Sorun | Eksik |`, `|---|---|---|---|---|---|`, ...rows.filter((r) => r.group === "B").map(line), ``,
-  `## A (kullanıma hazır)`, ``, ...rows.filter((r) => r.group === "A").map((r) => `- [${r.name}](/mekan/${r.slug}/) · ${r.kind} · ${r.district}`),
+  `## Eksik`, ``, `| Durum | Mekân | Semt | Tür | Google | Web sitesi | Fotoğraf | Sorun | Eksik |`, `|---|---|---|---|---|---|---|---|---|`, ...rows.filter((r) => r.group === "B").map(line), ``,
+  `## Tamamlandı`, ``, `| Durum | Mekân | Semt | Tür | Google | Web sitesi | Fotoğraf | Sorun | Eksik |`, `|---|---|---|---|---|---|---|---|---|`, ...rows.filter((r) => r.group === "A").map(line),
 ].join("\n"));
 console.log(JSON.stringify(sum, null, 1));

@@ -124,9 +124,15 @@ const merged = mergeRealVenues(raw as RealVenueRecord[], isletme as RealVenueRec
 /** İnceleme adayı çiftler (otomatik birleştirilmez). */
 export const realVenueReview = merged.review;
 /* Kaynağa dayalı elle düzeltmeler (duzeltmeler.json): venues.json elle düzenlenmediği için aktarım yenilense de korunur. Yalnız tür. */
+/* Web sitesi düzeltmesi: bağlantı denetiminde ölü (DNS yok / 404) çıkan adres kaldırılır (null) ya da aynı alan adının
+   çalışan ana sayfasına çevrilir. Neden ve tarih websiteWhy alanında; başka alan değişmez. */
+type Fix = { kind?: string; website?: string | null; websiteWhy?: string };
 export const realVenueRecords = merged.records.map((r) => {
-  const fix = (duzeltmeler as Record<string, { kind: string }>)[r.slug];
-  return fix ? { ...r, kind: fix.kind } : r;
+  const fix = (duzeltmeler as Record<string, Fix>)[r.slug];
+  if (!fix) return r;
+  let out = fix.kind ? { ...r, kind: fix.kind } : r;
+  if ("website" in fix) out = { ...out, website: fix.website ?? undefined };
+  return out;
 });
 
 /* İzinli fotoğraf kaydı (izinli-fotograflar.json): kaynak ve hak kaydıyla, kendi sunucumuzda. Yalnız kapsamı restoran profilini içeren izin.

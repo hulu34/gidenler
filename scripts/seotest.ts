@@ -52,7 +52,7 @@ ok("sahiplik ilişkisinde aggregateRating yok", !("aggregateRating" in (venueJso
 ok("Google alanı yok", !/google/i.test(JSON.stringify(ld)));
 
 /* tür düzeltmesi: yalnız listedeki kayıt değişir */
-const fixed = Object.keys(duzeltmeler);
+const fixed = Object.entries(duzeltmeler as Record<string, { kind?: string }>).filter(([, f]) => f.kind).map(([k]) => k);
 const kindChanged = (rawVenues as { slug: string; kind: string }[]).filter((r) => realEntities.find((e) => e.slug === r.slug)?.subcategory !== r.kind).map((r) => r.slug);
 ok("tür yalnız düzeltme listesindekilerde değişir", [...kindChanged].sort().join() === [...fixed].sort().join(), kindChanged.join());
 ok("Seyirtepe Restoran, kategori aynı", realEntities.find((e) => e.slug === fixed[0])?.subcategory === "Restoran" && realEntities.find((e) => e.slug === fixed[0])?.categoryId === "cat.restaurant");

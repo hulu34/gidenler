@@ -30,6 +30,11 @@ t("sinyal: bot ve otomasyon sayılmaz", !countable(h("Googlebot/2.1")) && !count
 t("sinyal: test erişim başlığı sayılmaz", !countable(h("Mozilla/5.0 (iPhone)", { "x-vercel-protection-bypass": "x" })));
 t("sinyal: gerçek tarayıcı sayılır", countable(h("Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) Safari/604.1")));
 t("sinyal: ziyaretçi özeti günden güne değişir, ham IP içermez", visitorOf("2026-11-01", ["1.2.3.4", "ua"]) !== visitorOf("2026-11-02", ["1.2.3.4", "ua"]) && !visitorOf("2026-11-01", ["1.2.3.4", "ua"]).includes("1.2.3.4"));
+/* kayıt düzeltmeleri: ölü web sitesi profilde görünmez, ana sayfaya çevrilen çalışan adresi taşır */
+const fx = JSON.parse(readFileSync("data/real/duzeltmeler.json", "utf8")) as Record<string, { website?: string | null }>;
+const webFix = Object.entries(fx).filter(([, f]) => "website" in f);
+t("düzeltme: ölü web siteleri kayıttan kalktı", webFix.filter(([, f]) => f.website === null).every(([s]) => !realEntities.find((e) => e.slug === s)?.contact?.website), String(webFix.filter(([, f]) => f.website === null).length));
+t("düzeltme: taşınan sayfa aynı alan adının ana sayfasına çevrildi", webFix.filter(([, f]) => f.website).every(([s, f]) => realEntities.find((e) => e.slug === s)?.contact?.website === f.website), String(webFix.filter(([, f]) => f.website).length));
 const page = readFileSync("app/page.tsx", "utf8");
 t("gerçek ana sayfada tek Seçki yazısı vitrini yok", !/<HomeSecki/.test(page));
 t("ana sayfa soru alanı gerçek /sor'a gider", /sorHref|\/sor\/\?q=/.test(readFileSync("components/home/HomeSor.tsx", "utf8")));

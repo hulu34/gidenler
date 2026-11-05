@@ -4,12 +4,12 @@ import { getDb } from "@/lib/db/client";
 import { auditLog, menuItems, places, reviews, user } from "@/lib/db/schema";
 import { realEntities } from "@/data/real";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
-import { liveCovers, publishedScores, recentlyReviewed } from "@/lib/live";
-import { coverOf } from "@/lib/media/cover";
+import { googleUsable, liveCovers, publishedScores } from "@/lib/live";
 import { computeBoards, dayOf, loadSignalRows, SIGNAL_RULES, type Boards } from "@/lib/signals";
 import type { RankItem, RankSection } from "@/lib/rankings";
 import { placeOf } from "@/lib/rankings";
-import { HOME_EXCLUDE } from "@/components/home/HomeDiscover";
+import { HOME_EXCLUDE, pickDiverse } from "@/components/home/HomeDiscover";
+import type { GoogleTheme } from "@/components/home/TopRated";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GERÇEK ANA SAYFA PANOSU — demodaki "board" tasarımı, gerçek veriyle.
@@ -74,55 +74,56 @@ function balancedProfiles(list: Array<{ slug: string; fields: number }>, n: numb
   return out;
 }
 
-/* Kaynaklı keşif seçkisi (veri yetmeyen kolonun yerine): bir türden, her biri farklı semtte gerçek mekânlar.
-   Sıralama değildir; kapağı olan önce, sonra kayıt sırası. Sosyal tesis ve kurucuyla ilişkili mekân alınmaz. */
-const KIND_THEMES: Array<{ title: string; re: RegExp }> = [
-  { title: "Esnaf lokantaları · farklı semtlerden", re: /^Lokanta$/ },
-  { title: "Balık · farklı semtlerden", re: /^Balık restoranı$/ },
-  { title: "Kebap ve ocakbaşı · farklı semtlerden", re: /^Kebapçı \/ Ocakbaşı$/ },
-  { title: "Meyhaneler · farklı semtlerden", re: /^Meyhane$/ },
-  { title: "Kahvaltı · farklı semtlerden", re: /^Kahvaltı$/ },
+/* Google sekmesi havuzu: Google ile eşleşmiş (onaylı/otomatik) gerçek restoranlar, tür başına farklı semtlerden en çok 5.
+   Sunucu Google'a İSTEK ATMAZ; yalnız hangi mekânların sorgulanabileceğini bilir (place ID veritabanında). */
+const G_THEMES: Array<{ key: string; label: string; re: RegExp }> = [
+  { key: "balik", label: "Balık", re: /^Balık restoranı$/ }, { key: "meyhane", label: "Meyhane", re: /^Meyhane$/ },
+  { key: "kebap", label: "Kebap", re: /^Kebapçı \/ Ocakbaşı$/ }, { key: "lokanta", label: "Lokanta", re: /^Lokanta$/ },
+  { key: "pide", label: "Pide", re: /^Pideci$/ }, { key: "kahvalti", label: "Kahvaltı", re: /^Kahvaltı$/ },
 ];
-function themed(i: number, covers: Record<string, unknown>, n = 4): { title: string; items: RankItem[] } {
-  const t = KIND_THEMES[i % KIND_THEMES.length];
-  const pool = realEntities.filter((e) => e.categoryId === "cat.restaurant" && t.re.test(e.subcategory ?? "") && !HOME_EXCLUDE.has(e.slug) && !/sosyal tesis/i.test(e.name));
-  const ordered = [...pool.filter((e) => coverOf(e, covers[e.slug] as never)), ...pool.filter((e) => !coverOf(e, covers[e.slug] as never))];
-  const out: RankItem[] = [], ds = new Set<string>();
-  for (const e of ordered) { const d = e.location?.district ?? ""; if (out.length >= n || ds.has(d)) continue; ds.add(d); const it = itemOf(e.slug, ""); if (it) out.push({ ...it, signal: undefined }); }
-  return { title: t.title, items: out };
+function googleThemes(usable: string[]): GoogleTheme[] {
+  const u = new Set(usable);
+  return G_THEMES.map((t) => {
+    const out: GoogleTheme["items"] = [], ds = new Set<string>();
+    for (const e of realEntities) {
+      if (out.length >= 5 || !u.has(e.slug) || HOME_EXCLUDE.has(e.slug) || /sosyal tesis/i.test(e.name) || !t.re.test(e.subcategory ?? "")) continue;
+      const d = e.location?.district ?? ""; if (ds.has(d)) continue; ds.add(d);
+      out.push({ slug: e.slug, name: e.name, place: [e.subcategory, d].filter(Boolean).join(" · ") });
+    }
+    return { key: t.key, label: t.label, items: out };
+  }).filter((t) => t.items.length >= 3);
 }
 
-export interface RealBoard { sections: Array<RankSection & { note?: string | null; fallback?: { title: string; items: RankItem[] } }>; measuredDays: number }
+export interface RealBoard { sections: Array<RankSection & { note?: string | null; fallback?: { title: string; items: RankItem[] } }>; measuredDays: number; googleThemes: GoogleTheme[] }
 
 export async function realBoard(): Promise<RealBoard> {
-  const [b, scores, talked, profiles, recent, covers] = await Promise.all([signalBoards(), publishedScores(), talked30(), sourcedProfiles(), recentlyReviewed(), liveCovers()]);
-  const recentItems = recent.map((s) => itemOf(s, "deneyim yazıldı")).filter(ok).slice(0, 4);
+  const [b, scores, talked, profiles, covers, usable] = await Promise.all([signalBoards(), publishedScores(), talked30(), sourcedProfiles(), liveCovers(), googleUsable()]);
+  /* aynı mekân ana sayfada iki kez görünmez: fotoğraflı vitrindekiler panoya, panodakiler birbirine tekrar girmez */
+  const used = new Set(pickDiverse(realEntities, covers).map((e) => e.slug));
+  const once = (xs: RankItem[]) => xs.filter((x) => (used.has(x.slug) ? false : (used.add(x.slug), true)));
   const L = SIGNAL_RULES.limit;
-  const profilePick = balancedProfiles(profiles, L).map((s) => itemOf(s, "kaynaklı profil")).filter(ok);
-  const popular = (b?.popular ?? []).map((x) => itemOf(x.slug, `${x.visitors} ziyaretçi`, scores[x.slug]?.score ?? null)).filter(ok);
-  const rising = (b?.rising ?? []).map((x) => itemOf(x.slug, `▲ ${x.points - (x.prev ?? 0)} sinyal`, scores[x.slug]?.score ?? null)).filter(ok);
-  const top = Object.entries(scores).filter(([s, v]) => v?.score != null && BY_SLUG.has(s) && !HOME_EXCLUDE.has(s))
+  
+  const popular = once((b?.popular ?? []).map((x) => itemOf(x.slug, `${x.visitors} ziyaretçi`, scores[x.slug]?.score ?? null)).filter(ok));
+  const rising = once((b?.rising ?? []).map((x) => itemOf(x.slug, `▲ ${x.points - (x.prev ?? 0)} sinyal`, scores[x.slug]?.score ?? null)).filter(ok));
+  const top = once(Object.entries(scores).filter(([s, v]) => v?.score != null && BY_SLUG.has(s) && !HOME_EXCLUDE.has(s))
     .sort((a, b) => b[1].score! - a[1].score! || b[1].reviewCount - a[1].reviewCount).slice(0, L)
-    .map(([s, v]) => itemOf(s, `${v.reviewCount} deneyim`, v.score, v.reviewCount)).filter(ok);
-  const talk = talked.filter((x) => x.n >= 2).slice(0, L).map((x) => itemOf(x.slug, `${x.n} deneyim · 30 gün`, scores[x.slug]?.score ?? null, x.n)).filter(ok);
+    .map(([s, v]) => itemOf(s, `${v.reviewCount} deneyim`, v.score, v.reviewCount)).filter(ok));
+  const talk = once(talked.filter((x) => x.n >= 2).slice(0, L).map((x) => itemOf(x.slug, `${x.n} deneyim · 30 gün`, scores[x.slug]?.score ?? null, x.n)).filter(ok));
+  const profilePick = once(balancedProfiles(profiles.filter((x) => !used.has(x.slug)), L).map((s) => itemOf(s, "kaynaklı profil")).filter(ok));
   return {
     measuredDays: b?.days ?? 0,
+    googleThemes: googleThemes(usable),
     sections: [
       { key: "popular", title: "Haftanın popülerleri", window: "Son 7 gün", hint: "Gidenler'deki gerçek ziyaret, kaydetme ve yönlendirmeler; aynı kişinin tekrarı tek sayılır.", items: popular, signalKind: "text",
-        note: popular.length ? null : b?.reason.popular ?? "Etkileşim ölçümü bu sürümle başlıyor; yeterli gerçek veri oluşunca liste açılır.",
-        fallback: popular.length ? undefined : themed(0, covers) },
+        note: popular.length ? null : b?.reason.popular ?? "Etkileşim ölçümü bu sürümle başlıyor; yeterli gerçek veri oluşunca liste açılır." },
       { key: "top", title: "En yüksek puanlılar", window: "Gidenler puanı", hint: "Yalnız gerçek deneyimlerden, yayın eşiğini geçen Gidenler puanı (10 üzerinden). Google puanı buraya katılmaz.", items: top, signalKind: "text",
-        note: top.length ? null : "Henüz yayın eşiğini geçen Gidenler puanı yok. Google puanı mekân profilinde, kaynağıyla ayrı gösterilir.",
-        fallback: top.length ? undefined : recentItems.length >= 2 ? { title: "Son deneyim yazılanlar", items: recentItems } : themed(1, covers) },
+        note: top.length ? null : "Henüz yayın eşiğini geçen Gidenler puanı yok. Google puanını görmek için aşağıdaki Google sekmesini aç; iki puan karışmaz." },
       { key: "talked", title: "En çok konuşulanlar", window: "Son 30 gün", hint: "Son 30 günde yayımlanan gerçek Gidenler deneyimi sayısı.", items: talk, signalKind: "text",
-        note: talk.length ? null : "Son 30 günde iki ya da daha çok deneyim yazılan mekân henüz yok.",
-        fallback: talk.length ? undefined : themed(2, covers) },
+        note: talk.length ? null : "Son 30 günde iki ya da daha çok deneyim yazılan mekân henüz yok." },
       { key: "rising", title: "Yükselenler", window: "7 gün ↔ önceki 7", hint: "Son 7 günün etkileşimi, önceki 7 günle karşılaştırılır; az veriden yükseliş üretilmez.", items: rising, signalKind: "text",
-        note: rising.length ? null : b?.reason.rising ?? "Yükseliş için iki tam haftalık gerçek veri gerekir.",
-        fallback: rising.length ? undefined : themed(3, covers) },
+        note: rising.length ? null : b?.reason.rising ?? "Yükseliş için iki tam haftalık gerçek veri gerekir." },
       { key: "profiles", title: "Kaynaklı profiller", window: "Editoryal keşif", hint: "Tanıtımı, menüsü ya da kuralları kaynağıyla kayıtlı mekânlar. Sıralama değildir; reklam değildir.", items: profilePick, signalKind: "text",
-        note: profilePick.length ? null : "Kaynaklı profil henüz yok.",
-        fallback: profilePick.length ? undefined : themed(4, covers) },
+        note: profilePick.length ? null : "Kaynaklı profil henüz yok." },
     ],
   };
 }
