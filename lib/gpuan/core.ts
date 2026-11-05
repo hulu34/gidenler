@@ -145,9 +145,11 @@ export function applyResult(row: Row, v: Venue | undefined, res: SourceResult, a
   };
 }
 
+/** Satır verilen Türkiye gününde denendi mi (deneme zamanı UTC ISO olarak saklanır). */
+export const attemptedOn = (r: Pick<Row, "attemptAt">, day: string) => !!r.attemptAt && !Number.isNaN(Date.parse(r.attemptAt)) && trDay(new Date(r.attemptAt)) === day;
 /** Bugün denenecek satırlar: aktif, place ID'li; en eski kontrol önce. Kesinti sonrası aynı gün denenmiş satır atlanır. */
 export function dueRows(rows: Row[], today: string, max: number): Row[] {
-  return rows.filter((r) => r.record === "Aktif" && r.placeId && r.confidence !== CONFIDENCE.rejected && !r.attemptAt.startsWith(today))
+  return rows.filter((r) => r.record === "Aktif" && r.placeId && r.confidence !== CONFIDENCE.rejected && !attemptedOn(r, today))
     .sort((a, b) => (a.checkedAt || "").localeCompare(b.checkedAt || "") || a.slug.localeCompare(b.slug)).slice(0, max);
 }
 

@@ -22,7 +22,8 @@
     "db:generate": "drizzle-kit generate && tsx scripts/db-bundle-migrations.ts",
     "test:db": "tsx scripts/dbtest.ts && NEXT_PUBLIC_SHOW_DEMO=true tsx scripts/dbtest.ts",
     "db:status": "tsx scripts/db-migrate.ts",
-    "db:apply": "tsx scripts/db-migrate.ts --apply"
+    "db:apply": "tsx scripts/db-migrate.ts --apply",
+    "test:gpuan": "tsx scripts/gpuantest.ts"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.7.12",

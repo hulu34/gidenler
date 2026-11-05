@@ -20,6 +20,7 @@ import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
 import { googleUsable, placeProfile, placeReviews, placeScore, videoCounts } from "@/lib/live";
+import { googleRatingOf } from "@/lib/gpuan/read";
 import { ThresholdBar, ThresholdCard, type ThresholdVenue } from "@/components/venue/ThresholdCard";
 import { ProfileMenu, ProfileOverview, withProfile } from "@/components/venue/profile/ProfileSections";
 import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
@@ -163,7 +164,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     ?? (entity.slug === "sakura-omakase" ? { entity: { slug: "moda-lokantasi", name: "Moda Lokantası" } } : entity.slug === "moda-lokantasi" ? { entity: { slug: "sakura-omakase", name: "Sakura Omakase" } } : undefined);
 
   /* Kapak fotoğrafı ilk ekrandaki en büyük öğe: HTML ayrıştırılırken hemen, mozaikle aynı boyut kuralıyla iner */
-  const [usable, videos, realReviews, rp, ps] = entity.isReal ? await Promise.all([googleUsable(), videoCounts(), placeReviews(entity.slug), placeProfile(entity.slug), placeScore(entity.slug)]) : [[], {} as Record<string, number>, [], null, null];
+  const [usable, videos, realReviews, rp, ps, gStored] = entity.isReal ? await Promise.all([googleUsable(), videoCounts(), placeReviews(entity.slug), placeProfile(entity.slug), placeScore(entity.slug), googleRatingOf(entity.slug)]) : [[], {} as Record<string, number>, [], null, null, null];
   /* Deneme eşiği: yalnız puan gösterilen kategorideki gerçek mekân; kart ve sayfa aynı yayımlanmış Gidenler puanını okur */
   const esik: ThresholdVenue | null = entity.isReal && c.showScores ? { slug: entity.slug, name: entity.name, score: ps?.score ?? null, menu: !!rp?.menu } : null;
   const google = !!entity.isReal && usable.includes(entity.slug);
@@ -245,7 +246,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             {entity.isReal && <span className="ml-1 rounded-full border border-pos px-2 py-px text-[9.5px] tracking-[0.14em] text-pos-ink">Gerçek mekân</span>}
           </p>
           <VenueBadges entityId={entity.id} />
-          {google && <GoogleRatingBadge slug={entity.slug} google />}
+          {(google || gStored) && <GoogleRatingBadge slug={entity.slug} google={google} stored={gStored} />}
           {scored && pulse && (
             <div className="mt-2 flex items-center gap-3 text-[12px] text-ink-3">
               <Pulse pulse={pulse} width={180} height={34} draw />

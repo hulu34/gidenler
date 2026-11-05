@@ -18,8 +18,22 @@ const Stars = ({ v }: { v: number }) => (
 );
 
 /** Başlıktaki Google puanı: yer baştan ayrılır (sayfa kayması yok); veri yoksa boş kalır. */
-export function GoogleRatingBadge({ slug, google }: { slug: string; google: boolean }) {
-  const g = useGoogleView(slug, google);
+export function GoogleRatingBadge({ slug, google, stored }: { slug: string; google: boolean; stored?: { rating: number; count: number; checkedAt: string; mapsUrl: string | null } | null }) {
+  /* Günlük aktarımdan gelen kayıtlı puan varsa o gösterilir (anında, ek istek yok); yoksa önceki canlı davranış. */
+  const g = useGoogleView(slug, google && !stored);
+  if (stored) return (
+    <div className="flex min-h-[38px] items-center" data-google-puan data-google-kayitli>
+      <a href={stored.mapsUrl ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(slug)}`} target="_blank" rel="noopener noreferrer"
+        className="group inline-flex flex-wrap items-center gap-x-2.5 rounded-full border border-line-2 bg-sheet py-1 pl-3.5 pr-1 text-[13px] text-ink-2 hover:border-ink"
+        title={`Son kontrol ${new Date(stored.checkedAt).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Istanbul" })}. Gidenler puanı değildir.`}>
+        <span className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Google puanı</span>
+        <span className="tnum text-[17px] font-extrabold text-ink">{stored.rating.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}<span className="text-[12px] font-semibold text-ink-3">/5</span></span>
+        <Stars v={stored.rating} />
+        <span className="tnum">{stored.count.toLocaleString("tr-TR")} değerlendirme</span>
+        <span className="px-2.5 pb-[5px] pt-2.5"><GoogleMapsLogo /></span>
+      </a>
+    </div>
+  );
   if (!google) return null;
   const v = g.k === "ok" ? g.v : null;
   /* puan gelmediyse (sınır, hata, puansız işletme) yer ayrılmaz: başlık ile fotoğraf arasında boşluk kalmaz */

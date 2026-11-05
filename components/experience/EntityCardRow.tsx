@@ -2,6 +2,7 @@ import Link from "next/link";
 import { pulseOf } from "@/lib/pulse";
 import { Pulse } from "@/components/viz/Pulse";
 import { ScoreNumber } from "@/components/score/ScoreNumber";
+import { GoogleChip } from "@/components/google/GoogleRatings";
 import { CategoryGlyph } from "@/components/experience/CategoryGlyph";
 import { nf } from "@/lib/format";
 import { CONFIDENCE_LABEL } from "@/lib/semantic";
@@ -83,6 +84,7 @@ export function EntityCardRow({ card, rank, match, href, insight, dense = false,
               ? <span title={SCORE_WAITING} className="max-w-[6rem] text-right text-[11.5px] font-semibold leading-snug text-ink-3">Puan bekleniyor</span>
               : <span className="max-w-[9rem] text-right text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">puan gösterilmiyor</span>
           )}
+          {entity.isReal && <GoogleChip slug={entity.slug} className="mt-1" />}
         </div>
       </Link>
     </li>

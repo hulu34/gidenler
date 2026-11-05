@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { and, eq, gte, inArray } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
+import { getDb, type Db } from "@/lib/db/client";
 import { googleRatings, placeIdentifiers, places } from "@/lib/db/schema";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
@@ -17,17 +17,20 @@ export const STALE_DAYS = 45;
 export interface GRating { rating: number; count: number; checkedAt: string; mapsUrl: string | null }
 export type GRatingMap = Record<string, GRating>;
 
-export const googleRatingMap = unstable_cache(async (): Promise<GRatingMap> => {
-  const db = getDb();
-  if (!db || DEMO_VISIBLE) return {};
-  try {
+/** Doğrudan okuma (önbelleksiz; testler ve yönetim). */
+export async function loadGoogleRatings(db: Db): Promise<GRatingMap> {
     const rows = await db.select({ slug: googleRatings.slug, rating: googleRatings.rating, count: googleRatings.reviewCount, checkedAt: googleRatings.checkedAt, mapsUrl: googleRatings.mapsUrl })
       .from(googleRatings)
       .innerJoin(places, eq(places.slug, googleRatings.slug))
       .innerJoin(placeIdentifiers, and(eq(placeIdentifiers.placeId, places.id), eq(placeIdentifiers.provider, "google"), eq(placeIdentifiers.externalId, googleRatings.placeId), inArray(placeIdentifiers.status, ["auto", "confirmed"])))
       .where(gte(googleRatings.checkedAt, new Date(Date.now() - STALE_DAYS * 864e5)));
     return Object.fromEntries(rows.map((r) => [r.slug, { rating: r.rating, count: r.count, checkedAt: r.checkedAt.toISOString(), mapsUrl: r.mapsUrl }]));
-  } catch { return {}; }
+}
+
+export const googleRatingMap = unstable_cache(async (): Promise<GRatingMap> => {
+  const db = getDb();
+  if (!db || DEMO_VISIBLE) return {};
+  try { return await loadGoogleRatings(db); } catch { return {}; }
 }, ["google-ratings-v1"], { revalidate: 3600, tags: [TAG_GPUAN] });
 
 export async function googleRatingOf(slug: string): Promise<GRating | null> {

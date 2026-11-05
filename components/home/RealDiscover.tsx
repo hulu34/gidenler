@@ -7,11 +7,14 @@ import { liveCovers, publishedScores, recentlyReviewed } from "@/lib/live";
 import { fmtPublished } from "@/lib/score/publishedCards";
 import { VenueCover } from "@/components/venue/VenueCover";
 import { RealExplore } from "@/components/home/RealExplore";
+import { GoogleTopList } from "@/components/google/GoogleTopList";
+import { googleRatingMap } from "@/lib/gpuan/read";
 import { WantList } from "@/components/home/WantList";
 import type { Entity } from "@/lib/types";
 
 /* KEŞFET · gerçek veri. Her bölüm yalnız kendi gerçek verisinden oluşur; yoksa bölüm yerine dürüst bir cümle.
-   Popülerlik, sosyal kanıt ya da Google puanı kullanılmaz. Puanı olmayan mekân puanlı gibi sıralanmaz. */
+   Popülerlik ya da sosyal kanıt kullanılmaz. Google puanı yalnız kendi ayrı bölümünde (5 üzerinden, kaynağıyla);
+   Gidenler puanıyla birleşmez. Puanı olmayan mekân puanlı gibi sıralanmaz. */
 function Card({ e, line }: { e: Entity; line?: string }) {
   return (
     <li className="w-[72%] shrink-0 snap-start sm:w-auto">
@@ -27,7 +30,7 @@ function Card({ e, line }: { e: Entity; line?: string }) {
 const Rail = ({ children }: { children: React.ReactNode }) => <ul className="-mx-5 mt-4 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-4">{children}</ul>;
 
 export async function RealDiscover() {
-  const [published, covers, recent] = await Promise.all([publishedScores(), liveCovers(), recentlyReviewed()]);
+  const [published, covers, recent, gmap] = await Promise.all([publishedScores(), liveCovers(), recentlyReviewed(), googleRatingMap()]);
   const secki = articles().flatMap((a) => a.venues.map((v) => ({ e: getEntity(v.slug), a }))).filter((x) => x.e?.isReal);
   const seen = new Set<string>(); const seckiU = secki.filter((x) => (seen.has(x.e!.slug) ? false : (seen.add(x.e!.slug), true)));
   const scored = realEntities.filter((e) => published[e.slug]?.score != null).sort((a, b) => published[b.slug].score! - published[a.slug].score!);
@@ -52,6 +55,7 @@ export async function RealDiscover() {
         {scored.length ? <Rail>{scored.slice(0, 8).map((e) => <Card key={e.slug} e={e} line={`Gidenler puanı ${fmtPublished(published[e.slug].score!)}/10 · ${published[e.slug].reviewCount} deneyim`} />)}</Rail>
           : <p className="mt-3 max-w-[58ch] text-[14.5px] text-ink-2">Henüz yayımlanmış Gidenler puanı yok. Puan, yeterli deneyim birikince burada görünür. <Link href="/ara/?yaz=1" className="font-semibold underline decoration-line-2 underline-offset-4">Gittiğin bir yeri yaz</Link></p>}
       </section>
+      <GoogleTopList map={gmap} />
       {recentE.length > 0 && (
         <section aria-labelledby="k-yeni">
           <div className="kunye"><h2 id="k-yeni">Yeni deneyim yazılanlar</h2></div>
