@@ -6,6 +6,7 @@ import { yetkiliBaslik, baslikSizintisi } from "./yetkili.mjs";
 const HOST = process.env.PREVIEW_HOST, B = `https://${HOST}`, OUT = "out/anasayfa"; mkdirSync(OUT, { recursive: true });
 const HB = { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS };
 const res = []; const ok = (n, c, i = "") => { res.push(!!c); console.log(`${c ? "✓" : "✗"} ${n}${i !== "" ? " · " + i : ""}`); };
+const SORU = process.env.SORU !== "0"; /* yeniden koşuda Groq kotası harcanmasın */
 const b = await chromium.launch();
 const CIHAZ = [
   ["masaustu", { viewport: { width: 1440, height: 900 } }, "Kadıköy'de uygun fiyatlı balık yiyebileceğimiz bir yer"],
@@ -38,7 +39,7 @@ for (const [dev, o, soru] of CIHAZ) {
   ok(`${dev}: üst menü araması duruyor`, (await p.locator('header form[action*="/ara"], header input[type=search]').count()) > 0);
   await p.locator("[data-ana-kesif]").scrollIntoViewIfNeeded(); await p.waitForTimeout(500);
   await p.screenshot({ path: `${OUT}/${dev}-2-kesif.png` });
-  if (soru) {
+  if (soru && SORU) {
     await p.evaluate(() => scrollTo(0, 0));
     let gonderilen;
     if (soru === "ornek") { const l = p.locator("[data-ana-sor-ornek]").nth(1); gonderilen = (await l.innerText()).trim(); await l.click(); }
@@ -57,16 +58,18 @@ for (const [dev, o, soru] of CIHAZ) {
   }
   if (dev === "masaustu") {
     const g = await p.goto(`${B}/mekan/japon-erdal-beyoglu/`, { waitUntil: "networkidle" }); await p.waitForTimeout(800);
-    const t = await p.evaluate(() => document.body.innerText);
-    ok("Japon Erdal profili açılıyor, fotoğraf ve video duruyor", g.status() === 200 && (await p.locator("#videolar button").count()) > 0 && (await p.locator("img").count()) > 2);
+    const t = await p.evaluate(() => document.body.innerText); const html = await p.content();
+    ok("Japon Erdal profili açılıyor, kendi fotoğrafları duruyor", g.status() === 200 && ["kapali-pide", "hamur", "havuz"].every((k) => html.includes(`/media/foto/japon-erdal-${k}`)));
     ok("Japon Erdal profilinde kurucu ilişkisi açıklaması duruyor", /kurucu/i.test(t));
+    const sy = await p.goto(`${B}/seckisi/japon-erdal-dort-pide-bir-efsane/`, { waitUntil: "networkidle" });
+    ok("Seçki yazısı ve altı video duruyor", sy.status() === 200 && (await p.locator("[data-video]").count()) === 6, await p.locator("[data-video]").count());
     const s = await p.goto(`${B}/seckisi/`, { waitUntil: "networkidle" });
     ok("Seçki sayfası ve yazı bağlantısı duruyor", s.status() === 200 && (await p.locator('a[href*="japon-erdal-dort-pide"]').count()) > 0);
     const a = await p.goto(`${B}/ara/?q=pide`, { waitUntil: "networkidle" });
     ok("arama çalışıyor (/ara?q=pide)", a.status() === 200 && /pide/i.test(await p.evaluate(() => document.body.innerText)));
     const k = await p.goto(`${B}/kesfet/`, { waitUntil: "networkidle" }); ok("Keşfet açılıyor", k.status() === 200);
-    const sm = await (await ctx.request.get(`${B}/sitemap.xml`)).text(); ok("site haritası", (sm.match(/<loc>/g) ?? []).length >= 400, (sm.match(/<loc>/g) ?? []).length);
-    const home = await (await ctx.request.get(`${B}/`)).text();
+    const sm = await (await p.goto(`${B}/sitemap.xml`)).text(); ok("site haritası", (sm.match(/<loc>/g) ?? []).length >= 400, (sm.match(/<loc>/g) ?? []).length);
+    const home = await (await p.goto(`${B}/`)).text();
     ok("SEO: tek h1, canonical ve title", (home.match(/<h1/g) ?? []).length === 1 && /rel="canonical"/.test(home) && /<title>[^<]+<\/title>/.test(home));
   }
   ok(`${dev}: sayfa hatası yok`, errs.length === 0, errs.join(" | "));
