@@ -28,7 +28,7 @@ async function main() {
   type Db = import("../lib/db/client").Db;
 
   /* kovalar */
-  const s3admin = new AwsClient({ accessKeyId, secretAccessKey, service: "s3", region: "us-east-1" });
+  const s3admin = new AwsClient({ accessKeyId: accessKeyId!, secretAccessKey: secretAccessKey!, service: "s3", region: "us-east-1" });
   const conf = { endpoint: endpoint!, accessKeyId: accessKeyId!, secretAccessKey: secretAccessKey!, privateBucket: "gidenler-preview-ozel", publicBucket: "gidenler-preview-genel", region: "us-east-1" };
   for (const b of [conf.privateBucket, conf.publicBucket]) await s3admin.fetch(`${endpoint}/${b}`, { method: "PUT" });
   const raw = async (bucket: string, key: string, signed = true) => signed ? s3admin.fetch(`${endpoint}/${bucket}/${key}`) : fetch(`${endpoint}/${bucket}/${key}`);
