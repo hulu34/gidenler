@@ -3,10 +3,16 @@ import { getEntity } from "@/data/entities";
 import { fetchGooglePhotoMedia, fetchGooglePlace, fetchGoogleView, googleEnabled, storedGooglePlaceId, type GooglePhotoRef } from "@/lib/providers/google";
 import { strictHit } from "@/lib/usage/rate";
 import { hashKey } from "@/lib/ai/privacy";
+import { liveCovers } from "@/lib/live";
 import { coverOf } from "@/lib/media/cover";
 
-/* Kendi izinli kapağı olan mekânda Google fotoğrafı istenmez (Place Photo 0). Puan ve yorum akışı aynı kalır. */
-const hasOwnCover = (slug: string) => { const e = getEntity(slug); return !!e && !!coverOf(e); };
+/* Kendi kapağı olan mekânda Google fotoğrafı istenmez (Place Photo 0). Puan ve yorum akışı aynı kalır. */
+async function hasOwnCover(slug: string) {
+  const e = getEntity(slug);
+  if (!e) return false;
+  const live = await liveCovers().catch(() => ({} as Awaited<ReturnType<typeof liveCovers>>));
+  return !!coverOf(e, live[slug]);
+}
 
 /* GET /api/google/place?slug=…&part=view|media|status — Google Places (New) canlı vekil. YALNIZCA sunucu.
    · part=view (varsayılan): sayfa açılınca TEK istek — puan, sayı, yorumlar, saatler, ilk 5 fotoğraf + kalan referanslar.
@@ -48,7 +54,7 @@ export async function GET(req: Request) {
 
   const q = new URL(req.url).searchParams;
   /* n: ilk istekte kaç fotoğraf (mobil 1 = yalnız görünen kapak; masaüstü 5 = mozaik) */
-  const own = hasOwnCover(slug);
+  const own = await hasOwnCover(slug);
   if (own && part === "photos") return NextResponse.json({ error: "own_cover" }, { status: 409, headers: H });
   const r = part === "view" ? await fetchGoogleView(slug, fetch, own ? 0 : Math.max(1, Math.min(5, Number(q.get("n")) || 5)))
     : await fetchGooglePlace(slug, fetch, part, { from: Number(q.get("from")) || 0, n: Number(q.get("n")) || undefined });
@@ -74,7 +80,7 @@ export async function POST(req: Request) {
   if (!(await strictHit(`gpm:${hashKey("ip:" + ip)}:h${Math.floor(Date.now() / 3_600_000)}`, perIp * 3, 3700))) {
     return NextResponse.json({ limited: true, reason: "rate" }, { status: 429, headers: H });
   }
-  if (hasOwnCover(slug)) return NextResponse.json({ error: "own_cover" }, { status: 409, headers: H });
+  if (await hasOwnCover(slug)) return NextResponse.json({ error: "own_cover" }, { status: 409, headers: H });
   let refs: GooglePhotoRef[] = [];
   try { const b = await req.json(); refs = Array.isArray(b?.refs) ? b.refs : []; } catch { /* boş */ }
   const r = await fetchGooglePhotoMedia(slug, refs);

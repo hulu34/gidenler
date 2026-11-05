@@ -1,3 +1,7 @@
+import { revalidateTag } from "next/cache";
+import { getStorage } from "@/lib/media/storage";
+import { removeReviewPhotos } from "@/lib/media/photoArchive";
+import { TAG_COVERS, TAG_PHOTOS } from "@/lib/live";
 import { NextResponse } from "next/server";
 import { and, eq } from "drizzle-orm";
 import { deleteReview, updateReview } from "@/lib/community/reviews";
@@ -44,5 +48,8 @@ export async function DELETE(req: Request, { params }: Ctx) {
   const r = await deleteReview(g.db, g.user.id, id);
   if (!r.ok) return fail(r.error, 404);
   if (slug) refresh(slug);
+  /* deneyim silinince fotoğrafları da yayından çıkar */
+  const storage = getStorage();
+  if (storage) { await removeReviewPhotos(g.db, storage, g.user.id, id).catch(() => {}); revalidateTag(TAG_PHOTOS); revalidateTag(TAG_COVERS); }
   return NextResponse.json({ ok: true }, { headers: H });
 }

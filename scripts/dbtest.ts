@@ -780,6 +780,66 @@ async function main() {
   const used = await usageSnapshot();
   ok("sayaç: 1 arama, 0 doğrulama, 2 sayfa görünümü (eski + yeni; birleşen istek sayılmaz), 1 foto listesi, 10 foto", used?.["google:text_search_pro"].month === 1 && used["google:details_enterprise"].month === 0
     && used["google:details_atmosphere"].month === 2 && used["google:details_essentials"].month === 1 && used["google:photo"].month === 10, used);
+  /* ÇİFT GÖNDERİM: Redis kilidi hiç çalışmasa da veritabanı tek deneyime izin verir (kilit bu testte devre dışı: createReview doğrudan) */
+  {
+    const [pp] = await db.select({ id: schema.places.id, slug: schema.places.slug }).from(schema.places).where(eq(schema.places.slug, "pandeli-fatih")).limit(1);
+    const uid = uuidv7();
+    await db.insert(schema.user).values({ id: uid, name: "Paralel Test", email: `${uid}@example.invalid`, emailVerified: true, kind: "test" });
+    const m1 = new Date(Date.now() - 40 * 864e5).toISOString().slice(0, 7), m2 = new Date(Date.now() - 100 * 864e5).toISOString().slice(0, 7);
+    const inp = { body: "Paralel gönderim testi için yazılmış yeterince uzun bir deneyim metni; servis hızlıydı ve yemek sıcaktı.", visitMonth: m1, overall: 7, ratings: {}, returnIntent: "evet", disclosure: "none" } as Parameters<typeof createReview>[3];
+    if (pp) {
+      const audits0 = (await db.select({ id: schema.auditLog.id }).from(schema.auditLog).where(and(eq(schema.auditLog.action, "review_create"), eq(schema.auditLog.actor, `user:${uid}`)))).length;
+      const rs = await Promise.all(Array.from({ length: 100 }, () => createReview(db, { id: uid, kind: "test" }, pp.slug, inp, { allowed: true } as never)));
+      const left = await db.select({ id: schema.reviews.id }).from(schema.reviews).where(eq(schema.reviews.userId, uid));
+      const created = rs.filter((r) => r.ok && !r.replay).length, replays = rs.filter((r) => r.ok && r.replay).length, exists = rs.filter((r) => !r.ok && r.error === "exists").length;
+      const auditN = (await db.select({ id: schema.auditLog.id }).from(schema.auditLog).where(and(eq(schema.auditLog.action, "review_create"), eq(schema.auditLog.actor, `user:${uid}`)))).length - audits0;
+      console.log(`  · 100 eşzamanlı aynı gönderim: kayıt ${left.length}, yeni ${created}, tekrar ${replays}, exists ${exists}, diğer ${100 - created - replays - exists}; puan yeniden hesabı tetikleyen (yeni) ${created}; denetim kaydı ${auditN}`);
+      ok("100 eşzamanlı aynı gönderim → tek gerçek kayıt, 99'u tekrar sayılır, tek puan hesabı", left.length === 1 && created === 1 && replays + exists === 99 && auditN === 1, { created, replays, exists, n: left.length });
+      ok("eşzamanlı tekrarların hepsi aynı kaydı gösterir", rs.every((r) => r.id === left[0].id), rs.map((r) => r.id).filter((x, k, a) => a.indexOf(x) === k));
+      const again = await createReview(db, { id: uid, kind: "test" }, pp.slug, inp, { allowed: true } as never);
+      ok("zaman aşımı sonrası aynı gönderim: başarı (tekrar), yeni kayıt yok", again.ok && again.replay === true && again.id === left[0].id && (await db.select({ id: schema.reviews.id }).from(schema.reviews).where(eq(schema.reviews.userId, uid))).length === 1, again);
+      const diffBody = await createReview(db, { id: uid, kind: "test" }, pp.slug, { ...inp, body: inp.body + " Tatlı da iyiydi, yine gelirim." }, { allowed: true } as never);
+      ok("aynı ay, farklı metin: ikinci kayıt değil, düzenle uyarısı", !diffBody.ok && diffBody.error === "exists", diffBody);
+      {
+        const m3 = new Date(Date.now() - 160 * 864e5).toISOString().slice(0, 7);
+        const withR = { ...inp, visitMonth: m3, body: "Boyut puanlı bir ziyaret; lezzet çok iyiydi, servis ortalama, fiyat makuldü ve yine gelirim.", ratings: { taste: 9, service: 5 } };
+        const first = await createReview(db, { id: uid, kind: "test" }, pp.slug, withR, cxRULES);
+        const rep = await createReview(db, { id: uid, kind: "test" }, pp.slug, { ...withR, ratings: { service: 5, taste: 9 } }, cxRULES);
+        const diffScore = await createReview(db, { id: uid, kind: "test" }, pp.slug, { ...withR, overall: 9 }, cxRULES);
+        ok("boyut puanları farklı sırayla gelse de tekrar tanınır; aynı metin farklı puanla tekrar sayılmaz", first.ok && rep.ok && rep.replay === true && !diffScore.ok && diffScore.error === "exists", { first, rep, diffScore });
+        if (first.ok) await db.delete(schema.reviews).where(eq(schema.reviews.id, first.id));
+      }
+      const visit2 = await createReview(db, { id: uid, kind: "test" }, pp.slug, { ...inp, visitMonth: m2, body: "Önceki bir ziyaretim; o gün kalabalıktı ama mezeler yine iyiydi, servis biraz yavaştı." }, { allowed: true } as never);
+      const all2 = await db.select({ id: schema.reviews.id }).from(schema.reviews).where(eq(schema.reviews.userId, uid));
+      ok("farklı aydaki ziyaret ayrı ve gerçek bir deneyim olarak yazılabilir", visit2.ok && !visit2.replay && all2.length === 2, visit2);
+      const par2 = await Promise.all(Array.from({ length: 20 }, () => createReview(db, { id: uid, kind: "test" }, pp.slug, { ...inp, visitMonth: m2, body: "Önceki bir ziyaretim; o gün kalabalıktı ama mezeler yine iyiydi, servis biraz yavaştı." }, { allowed: true } as never)));
+      ok("ikinci ziyaretin tekrarları da tek kayıt", par2.every((r) => r.ok && r.replay) && (await db.select({ id: schema.reviews.id }).from(schema.reviews).where(eq(schema.reviews.userId, uid))).length === 2);
+      if (visit2.ok) {
+        const mv = await updateReview(db, { id: uid, kind: "test" }, visit2.id, { ...inp, body: "Önceki ziyaret metni düzenlendi, aynı aya taşınmak isteniyor; bu olmamalı ve uyarı vermeli." }, { allowed: true } as never);
+        ok("düzenleme başka etkin deneyimin ayına taşınamaz", !mv.ok && mv.error === "exists", mv);
+      }
+      let dbBlocked = false;
+      try { await db.insert(schema.reviews).values({ id: uuidv7(), placeId: pp.id, userId: uid, visitedOn: `${m1}-01`, visitNo: 1, overall: 5, ratings: {}, body: "Kod atlanarak doğrudan yazılan çift kayıt denemesi; veritabanı reddetmeli.", returnIntent: "evet", disclosure: "none", status: "published", trust: "recommended" }); } catch { dbBlocked = true; }
+      ok("kod atlanıp doğrudan yazılsa bile veritabanı kısıtı çift kaydı reddeder", dbBlocked);
+      /* silinen deneyimin yerine aynı ay için 24 saat sonra yeniden yazılabilir */
+      await deleteReview(db, uid, left[0].id, new Date(Date.now() - 25 * 3600_000));
+      await db.update(schema.reviews).set({ updatedAt: new Date(Date.now() - 25 * 3600_000) }).where(eq(schema.reviews.id, left[0].id));
+      const re = await createReview(db, { id: uid, kind: "test" }, pp.slug, inp, { allowed: true } as never);
+      ok("silinen deneyimden sonra aynı ay için yeniden yazılabilir (yeni kimlik)", re.ok && !re.replay && re.id !== left[0].id, re);
+      await db.delete(schema.reviews).where(eq(schema.reviews.userId, uid));
+      await db.delete(schema.user).where(eq(schema.user.id, uid));
+    } else ok("paralel test mekânı bulunamadı", false);
+  }
+  /* puan: aynı kişinin birden çok ziyareti kişi başına bir kez sayılır (en son ziyaret) */
+  {
+    const now = new Date("2026-11-05T00:00:00Z");
+    const rows = [1, 2, 3, 4, 5].map((k) => ({ userId: `u${k}`, overall: 8, visitedOn: "2026-10-01", disclosure: "none", verified: false }));
+    const base = computeFromRows(rows, now);
+    const twice = computeFromRows([...rows, { userId: "u1", overall: 2, visitedOn: "2026-06-01", disclosure: "none", verified: false }], now);
+    const later = computeFromRows([...rows, { userId: "u1", overall: 2, visitedOn: "2026-10-20", disclosure: "none", verified: false }], now);
+    ok("puan: aynı kişinin eski ikinci deneyimi puanı ve sayıyı değiştirmez", twice.score === base.score && twice.reviewCount === base.reviewCount && twice.authors === 5, { base: base.score, twice: twice.score });
+    ok("puan: aynı kişinin daha yeni ziyareti eskisinin yerine geçer, ağırlık ikiye katlanmaz", later.reviewCount === 5 && later.authors === 5 && later.score !== base.score, { later: later.score, n: later.reviewCount });
+  }
   /* kendi kapağı olan mekân: sunucu Place Photo çağırmaz; kapağı olmayan mekânın akışı aynı (sahte Google, ücret yok) */
   {
     const realFetch = globalThis.fetch; const before = vCalls.length;

@@ -30,7 +30,11 @@ export const CONFIDENCE_LABEL: Record<Confidence, string> = { yetersiz: "Yeterli
 export interface ScoreInputRow { userId: string; overall: number; visitedOn: string; disclosure: string; verified: boolean }
 
 /** Saf hesap (test edilebilir): girdi satırları zaten izin listesinden geçmiş olmalı. */
-export function computeFromRows(rows: ScoreInputRow[], now: Date): ScoreSnapshot & { confidence: Confidence; authors: number } {
+export function computeFromRows(all: ScoreInputRow[], now: Date): ScoreSnapshot & { confidence: Confidence; authors: number } {
+  /* aynı kişinin aynı mekâna farklı aylardaki deneyimleri ayrı kayıttır; puanda kişi başına yalnız EN SON ziyaret sayılır */
+  const latest = new Map<string, ScoreInputRow>();
+  for (const r of all) { const p = latest.get(r.userId); if (!p || r.visitedOn > p.visitedOn) latest.set(r.userId, r); }
+  const rows = [...latest.values()];
   const authors = new Set(rows.map((r) => r.userId)).size;
   const w = rows.map((r) => ({ r, w: experienceWeight({ visitedAt: r.visitedOn, verified: r.verified, authorReputation: undefined, authorDisclosure: (r.disclosure as CommercialRelationship) }, now) }));
   const used = w.filter((x) => x.w > 0);

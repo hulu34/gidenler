@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "reviews_user_place_visit_active_uq" ON "reviews" USING btree ("user_id","place_id","visited_on") WHERE "reviews"."status" in ('published','pending','hidden');

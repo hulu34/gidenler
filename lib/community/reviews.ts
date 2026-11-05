@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { and, desc, eq, inArray, ne, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import type { Db } from "@/lib/db/client";
@@ -93,25 +94,49 @@ async function looksDuplicated(db: Db, userId: string, placeId: string, body: st
   return rows.some((r) => fingerprint(r.body) === fp);
 }
 
+/* jsonb anahtar sırasını değiştirir: karşılaştırma sıradan bağımsız */
+const sortedJson = (o: unknown) => JSON.stringify(Object.entries((o ?? {}) as Record<string, unknown>).sort(([a], [b]) => a.localeCompare(b)));
+
+/* ÇİFT GÖNDERİM KORUMASI (Redis kilidinden bağımsız, üç katman):
+   1) Kayıt kimliği kullanıcı + mekân + ziyaret ayı (+ o ay için silinmiş deneyim sayısı) karmasıdır: eşzamanlı ve tekrarlanan
+      gönderimler aynı kimliği üretir, birincil anahtar tek kayda izin verir.
+   2) Veritabanı kısıtı reviews_user_place_visit_active_uq: aynı kullanıcı, aynı mekân, aynı ziyaret ayı için tek etkin deneyim.
+   3) Zaman aşımından sonra AYNI metin yeniden gelirse bu hata değil tekrar sayılır: mevcut kayıt döner (replay), puan yeniden hesaplanmaz.
+   Farklı aydaki ziyaret ayrı ve gerçek bir deneyimdir; engellenmez. Puan her yazarın yalnız en son ziyaretini sayar (lib/score/compute). */
 export async function createReview(db: Db, author: { id: string; kind?: string | null }, slug: string, i: ReviewInput, rules: PlaceRules, now = new Date()):
-  Promise<{ ok: true; id: string; status: string } | { ok: false; error: ReviewError; id?: string }> {
+  Promise<{ ok: true; id: string; status: string; replay?: boolean } | { ok: false; error: ReviewError; id?: string }> {
   const err = validateReview(i, rules, now);
   if (err) return { ok: false, error: err };
   const place = await placeBySlug(db, slug);
   if (!place) return { ok: false, error: "unknown_place" };
-  const mine = await db.select({ id: reviews.id, status: reviews.status, updatedAt: reviews.updatedAt }).from(reviews)
+  const visitedOn = `${i.visitMonth}-01`;
+  const body = normalizeBody(i.body);
+  const mineFor = () => db.select({ id: reviews.id, status: reviews.status, updatedAt: reviews.updatedAt, visitedOn: reviews.visitedOn, body: reviews.body, overall: reviews.overall, ratings: reviews.ratings, returnIntent: reviews.returnIntent, disclosure: reviews.disclosure }).from(reviews)
     .where(and(eq(reviews.userId, author.id), eq(reviews.placeId, place.id))).orderBy(desc(reviews.updatedAt));
-  const active = mine.find((r) => ACTIVE.includes(r.status));
-  if (active) return { ok: false, error: "exists", id: active.id };
+  const sameVisit = (rows: Awaited<ReturnType<typeof mineFor>>) => rows.find((r) => ACTIVE.includes(r.status) && String(r.visitedOn).slice(0, 10) === visitedOn);
+  /* tekrar sayılması için gönderimin TAMAMI aynı olmalı; aynı metin farklı puanla gelirse sessizce yutulmaz, düzenleme istenir */
+  const same = (r: { body: string; overall: number; ratings: unknown; returnIntent: string | null; disclosure: string }) =>
+    r.body === body && r.overall === (i.overall ?? 0) && sortedJson(r.ratings) === sortedJson(i.ratings) && (r.returnIntent ?? null) === (i.returnIntent ?? null) && r.disclosure === i.disclosure;
+  const replayOrExists = (r: { id: string; status: string; body: string; overall: number; ratings: unknown; returnIntent: string | null; disclosure: string }) =>
+    same(r) ? { ok: true as const, id: r.id, status: r.status, replay: true } : { ok: false as const, error: "exists" as const, id: r.id };
+  const mine = await mineFor();
+  const prior = sameVisit(mine);
+  if (prior) return replayOrExists(prior);
   const removed = mine.find((r) => r.status === "removed");
   if (removed && now.getTime() - removed.updatedAt.getTime() < 24 * 3600_000) return { ok: false, error: "recently_removed" };
-  const body = normalizeBody(i.body);
   const status = (await looksDuplicated(db, author.id, place.id, body)) ? "pending" : "published";
-  const id = uuidv7();
-  await db.insert(reviews).values({
-    id, placeId: place.id, userId: author.id, visitedOn: `${i.visitMonth}-01`, visitNo: 1, overall: i.overall ?? 0, ratings: i.ratings,
+  const gen = mine.filter((r) => r.status === "removed" && String(r.visitedOn).slice(0, 10) === visitedOn).length;
+  const h = createHash("sha256").update(`${author.id}:${place.id}:${visitedOn}:${gen}`).digest("hex");
+  const id = `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20, 32)}`;
+  const won = await db.insert(reviews).values({
+    id, placeId: place.id, userId: author.id, visitedOn, visitNo: 1, overall: i.overall ?? 0, ratings: i.ratings,
     body, returnIntent: i.returnIntent, disclosure: i.disclosure, status, trust: trustOf(i.disclosure, author.kind ?? "user"),
-  });
+  }).onConflictDoNothing().returning({ id: reviews.id });
+  if (!won.length) {
+    /* yarışı kaybeden istek: kazananın kaydı aynı metinse tekrar sayılır */
+    const winner = sameVisit(await mineFor());
+    return winner ? replayOrExists(winner) : { ok: false, error: "exists", id };
+  }
   if (status === "pending") await db.insert(moderationQueue).values({ id: uuidv7(), kind: "review_spam", refTable: "reviews", refId: id, reason: "Aynı metin başka mekânda da yazılmış" });
   await audit(db, `user:${author.id}`, "review_create", id, { place: slug, status });
   return { ok: true, id, status };
@@ -126,6 +151,10 @@ export async function updateReview(db: Db, author: { id: string; kind?: string |
   if (err) return { ok: false, error: err };
   const body = normalizeBody(i.body);
   const visitedOn = `${i.visitMonth}-01`;
+  if (visitedOn !== String(r.visitedOn).slice(0, 10)) {
+    const clash = await db.select({ id: reviews.id }).from(reviews).where(and(eq(reviews.userId, author.id), eq(reviews.placeId, r.placeId), ne(reviews.id, id), inArray(reviews.status, ACTIVE), eq(reviews.visitedOn, visitedOn))).limit(1);
+    if (clash.length) return { ok: false, error: "exists" };
+  }
   const visitNo = visitedOn > r.visitedOn ? r.visitNo + 1 : r.visitNo;
   const status = r.status === "pending" || (await looksDuplicated(db, author.id, r.placeId, body)) ? "pending" : "published";
   /* Önceki sürüm moderasyon izi için saklanır (puana girmez). */

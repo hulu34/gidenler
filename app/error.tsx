@@ -10,6 +10,7 @@ import { useEffect } from "react";
  */
 export default function ErrorPage({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   useEffect(() => {
+    void fetch("/api/ops/event/", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "page:error" }) }).catch(() => {});
     const chunk = /ChunkLoadError|Loading chunk|Failed to fetch dynamically imported module|Importing a module script failed/i.test(`${error?.name} ${error?.message}`);
     if (!chunk) return;
     try {

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { PhotoPicker, PhotoResults, usePhotoPicks } from "@/components/write/PhotoPicker";
 import { markVisited, setEntityState, useUserData } from "@/lib/store";
 import { useAccountStatus } from "@/lib/community/accountState";
 import { signInWithGoogle } from "@/lib/community/signin";
@@ -50,9 +51,13 @@ export function WriteForm({
   const [overall, setOverall] = useState<number | null>(null);
   const [sent, setSent] = useState<Sent | null>(null);
   const [mine, setMine] = useState<Mine | null>(null);
+  /* aynı mekâna başka bir ziyaret: mevcut deneyim düzenlenmez, ayrı deneyim açılır (farklı ay zorunlu) */
+  const [prevVisits, setPrevVisits] = useState<Mine[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const photos = usePhotoPicks();
+  const [savedId, setSavedId] = useState<string | null>(null);
   const account = useAccountStatus();
   const canPublish = isReal && account === "in";
   const [restored, setRestored] = useState<string | null>(null);
@@ -87,6 +92,7 @@ export function WriteForm({
       .then((r) => (r.ok ? r.json() : null)).then((j: { reviews?: Mine[] } | null) => {
         const r = j?.reviews?.[0];
         if (!alive || !r) return;
+        setPrevVisits(j?.reviews ?? []);
         setMine(r); setBody(r.body); setRatings(r.ratings ?? {}); setOverall(r.overall > 0 ? r.overall : null);
         setRet((r.returnIntent as ReturnIntent) ?? null); setRel((r.disclosure as CommercialRelationship) ?? "none");
         const m = r.visitedOn.slice(0, 7); setMonths((ms) => (ms.some(([k]) => k === m) ? ms : [...ms, [m, m]])); setMonth(m); setRestored(null);
@@ -104,15 +110,19 @@ export function WriteForm({
       body: JSON.stringify(mine ? payload() : { slug: entitySlug, ...payload() }) }).catch(() => null);
     const j = r ? await r.json().catch(() => null) as { status?: string; message?: string; error?: string; id?: string } | null : null;
     setBusy(false);
-    if (!r) { keepDraft(); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
+    if (!r) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
     if (r.ok) {
       deleteDraft(entitySlug);
       if (entityId) setEntityState(entityId, "visited", "write");
-      setSent(mine ? "updated" : j?.status === "pending" ? "pending" : "published"); window.scrollTo({ top: 0 }); return;
+      setSent(mine ? "updated" : j?.status === "pending" ? "pending" : "published"); window.scrollTo({ top: 0 });
+      /* deneyim önce kaydedilir; fotoğraf hatası deneyimi geri almaz, sonuç ekranda tek tek yazılır */
+      const rid = mine?.id ?? j?.id;
+      if (rid && photos.picks.length) { setSavedId(rid); void photos.uploadAll(rid); }
+      return;
     }
     if (r.status === 401) { keepDraft(); setError("Oturumun kapanmış. Yazdıkların taslak olarak saklandı; yeniden giriş yapıp yayınla."); return; }
-    if (r.status === 409 && j?.error === "exists") { setError(j.message ?? "Bu mekân için zaten bir deneyimin var."); location.reload(); return; }
-    if (r.status >= 500) keepDraft();
+    if (r.status === 409 && j?.error === "exists") { setError(j.message ?? "Bu ay için bu mekâna zaten bir deneyimin var."); if (!prevVisits.length) location.reload(); return; }
+    if (r.status >= 500) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); }
     setError(j?.message ?? "Gönderilemedi; yeniden dene.");
   }
 
@@ -127,7 +137,7 @@ export function WriteForm({
   }
 
   const rated = Object.keys(ratings).length;
-  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy;
+  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy && (!photos.picks.length || photos.rights);
   const userData = useUserData();
   const quick = entityId ? userData.reactions.find((r) => r.entityId === entityId) : undefined;
   const steps: Array<[string, boolean]> = [
@@ -157,6 +167,7 @@ export function WriteForm({
           <span className="label">{label}</span>
           <h1 className="max-w-[18ch] text-[clamp(2rem,6vw,3rem)] font-extrabold leading-none tracking-[-0.045em]">{head}</h1>
           <p className="prose-exp max-w-[52ch] text-ink-2">{text}</p>
+          {savedId && <PhotoResults ctl={photos} reviewId={savedId} />}
           <div className="flex flex-wrap gap-3">
             <Link href={live ? `/mekan/${entitySlug}/#deneyimler` : `/mekan/${entitySlug}/`}>
               <Button variant="primary">{live ? "Deneyimimi sayfada gör" : "Sayfaya dön"}</Button>
@@ -188,7 +199,14 @@ export function WriteForm({
         </p>
         <p role="note" className="max-w-[62ch] border-l-2 border-accent pl-3 text-[13px] leading-relaxed text-ink-2">
           {canPublish ? (mine
-            ? <>Bu mekân için deneyimin {mine.status === "pending" ? "incelemede" : mine.status === "hidden" ? "moderasyonla gizlendi" : "yayında"}. Yeni bir ziyaret yaptıysan ayını güncelle; mekân başına tek deneyim tutulur.</>
+            ? <>Bu mekân için {mine.visitedOn.slice(0, 7)} ziyaretine ait deneyimin {mine.status === "pending" ? "incelemede" : mine.status === "hidden" ? "moderasyonla gizlendi" : "yayında"}. Aynı ziyareti burada düzeltebilirsin.{" "}
+              <button type="button" data-yeni-ziyaret className="font-semibold text-accent-ink underline decoration-line-2 underline-offset-4 hover:text-ink" onClick={() => {
+                setMine(null); setBody(""); setRatings({}); setOverall(null); setRet(null); setRel("none"); setError(null);
+                const used = new Set(prevVisits.map((v) => v.visitedOn.slice(0, 7))); const ms = visitMonths(); setMonths(ms); setMonth((ms.find(([k]) => !used.has(k)) ?? ms[0])[0]);
+              }}>Başka bir ziyareti ayrı deneyim olarak yaz</button>{" "}
+              Gidenler puanında her kişinin yalnız en son ziyareti sayılır.</>
+            : prevVisits.length
+            ? <>Yeni ziyaretin ayrı bir deneyim olarak yayınlanır. Daha önce yazdığın ziyaretlerden ({prevVisits.map((v) => v.visitedOn.slice(0, 7)).join(", ")}) farklı bir ay seç; puanda yalnız en son ziyaretin sayılır.</>
             : <>Deneyimin Gidenler hesabınla yayınlanır; adın &ldquo;Ad S.&rdquo; biçiminde görünür. Ziyaretin <strong className="font-semibold">doğrulanmamış</strong> olarak işaretlenir.</>)
             : isReal && account === "anon"
               ? <>Yayınlamak için Google ile giriş yap. Yazdıkların o sırada <strong className="font-semibold">bu cihazda taslak</strong> olarak korunur.</>
@@ -393,9 +411,13 @@ export function WriteForm({
         </ul>
       </section>
 
+      {canPublish && <PhotoPicker ctl={photos} entityName={entityName} reviewId={mine?.id} />}
+      {isReal && account === "anon" && photos.enabled && <p id="fotograf" className="mt-10 border-t border-line pt-4 text-[13px] text-ink-2">Fotoğrafı giriş yaptıktan sonra ekleyebilirsin; yazdıkların korunur.</p>}
+
       {/* ── gönder ── */}
       <div className="sticky bottom-0 mt-12 flex flex-col gap-2 border-t-2 border-line-strong bg-paper/95 py-4 backdrop-blur-sm">
         {error && <p role="alert" className="text-[13px] font-semibold text-neg-ink">{error}</p>}
+        {photos.picks.length > 0 && !photos.rights && <p className="text-[12.5px] text-ink-2">Yayınlamadan önce fotoğraflar için hak beyanını seç ya da fotoğrafları kaldır.</p>}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           {canPublish ? (
             <Button variant="primary" disabled={!canSend} onClick={publish}>{busy ? "Gönderiliyor…" : mine ? "Değişiklikleri kaydet" : "Deneyimi yayınla"}</Button>
