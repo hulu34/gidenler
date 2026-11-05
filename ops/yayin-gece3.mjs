@@ -7,7 +7,7 @@ const st = async () => { const r = await fetch(A, { headers: H }); return { s: r
 const s1 = await st(); const pend = s1.j.migrations?.pending ?? null;
 console.log("ortam", s1.j.env, "http", s1.s, "bekleyen", JSON.stringify(pend));
 if (s1.j.env !== "production") { console.log("DUR: hedef üretim değil"); process.exit(1); }
-const exp = ["0002_fotograf_arsivi", "0003_temizlik_ve_sayac", "0004_cift_gonderim"];
+const exp = (process.env.EXPECT ?? "0002_fotograf_arsivi,0003_temizlik_ve_sayac,0004_cift_gonderim").split(",");
 if (pend && pend.length) {
   if (JSON.stringify(pend) !== JSON.stringify(exp)) { console.log("DUR: beklenmeyen geçiş listesi"); process.exit(1); }
   const r = await fetch(A, { method: "POST", headers: { ...H, "content-type": "application/json", "sec-fetch-site": "same-origin" }, body: JSON.stringify({ target: "production", confirm: "EVET", action: "migrate" }) });
@@ -24,5 +24,13 @@ ok("yükleme kapalı (depolama yok)", ms.enabled === false, JSON.stringify(ms));
 const hs = await (await fetch(`${B}/api/me/hesap/`, { headers: H })).json().catch(() => ({}));
 ok("hesap kapatma kapalı", hs.enabled === false, JSON.stringify(hs.enabled));
 const md = await get("/api/media/japon-erdal-beyoglu/"); ok("Japon Erdal medya ucu", md.s === 200, `${md.s} ${md.t.slice(0, 0)}`);
+if (process.env.EXPECT?.includes("0005")) {
+  const h = await get("/"); ok("ana sayfa panosu ve fotoğraflı vitrin", h.s === 200 && h.t.includes("data-ana-pano") && (h.t.match(/data-ana-kesif-kart=/g) ?? []).length >= 4 && !/Japon Erdal/.test(h.t));
+  const je = await get("/mekan/japon-erdal-beyoglu/"); ok("JE profili dikey mozaik, taş fırın yok", je.s === 200 && je.t.includes('data-mozaik="dikey"') && !/taş fırın/i.test(je.t));
+  const sy = await get("/seckisi/japon-erdal-dort-pide-bir-efsane/"); ok("Seçki yazısında taş fırın yok", sy.s === 200 && !/taş fırın/i.test(sy.t));
+  const sn = await fetch(`${B}/api/sinyal/`, { method: "POST", headers: { ...H, origin: B, "content-type": "text/plain", "user-agent": "Mozilla/5.0" }, body: JSON.stringify({ slug: "kanaat-lokantasi-uskudar", kind: "view" }) });
+  const rs = await (await fetch(`${A}?rapor=sinyal`, { headers: H })).json().catch(() => ({}));
+  ok("sinyal ucu 204, test isteği sayılmadı", sn.status === 204 && (rs.byKind?.view ?? 0) === 0, `${sn.status} view=${rs.byKind?.view ?? "?"} rows=${rs.rows}`);
+}
 const mod = await get("/yonetim/fotograf-moderasyon/"); ok("moderasyon paneli girişsiz açılmıyor", !/data-cover-compare|Onayla/.test(mod.t), mod.s);
 const k = res.filter((x) => !x).length; console.log(`SONUÇ ${res.length - k}/${res.length}`); process.exit(k ? 1 : 0);

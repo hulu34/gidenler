@@ -347,6 +347,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: anasayfa-sifreli, path: out/anasayfa.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  yayin-birlesim:
+    if: contains(github.event.head_commit.message, '[yayin-birlesim]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/yayin-gece3.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROD_HOST: gidenler-me8co4qgj-hulu34.vercel.app, EXPECT: "0005_sinyal" }
   yayin-gece3:
     if: contains(github.event.head_commit.message, '[yayin-gece3]')
     runs-on: ubuntu-latest
