@@ -299,6 +299,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: canlidog-sifreli, path: out/canlidog.tgz.cms, retention-days: 3, if-no-files-found: ignore }
+  kesif-sprint:
+    if: contains(github.event.head_commit.message, '[kesif-sprint]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/kesif-sprint.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: gidenler-otfco4j9z-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/sprint && tar -C out -czf out/sprint.tgz sprint && rm -rf out/sprint && openssl cms -encrypt -aes256 -binary -outform DER -in out/sprint.tgz -out out/sprint.tgz.cms ops/olcum.pem && rm out/sprint.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: sprint-sifreli, path: out/sprint.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   mekan-ag:
     if: contains(github.event.head_commit.message, '[mekan-ag]')
     runs-on: ubuntu-latest
