@@ -19,8 +19,25 @@ async function open(host, path, o, mockGoogle) {
   return { ctx, p, status: r?.status(), errs, g };
 }
 /* sayfadaki en büyük dikey boşluk (görünür bloklar arası) */
-const gap = (p) => p.evaluate(() => { const els = [...document.querySelectorAll("main > *, main section, main header, header + * > *")].map((e) => e.getBoundingClientRect()).filter((r) => r.height > 8 && r.width > 200).map((r) => [r.top + scrollY, r.bottom + scrollY]).sort((a, b) => a[0] - b[0]);
-  let max = 0, at = 0, end = els[0]?.[1] ?? 0; for (const [t, bt] of els.slice(1)) { if (t - end > max) { max = t - end; at = end; } end = Math.max(end, bt); } return { max: Math.round(max), at: Math.round(at) }; });
+/* en büyük boş dikey şerit: sayfa 8 px adımlarla taranır; bir satırda içerikli (metin, görsel, düğme, çerçeveli kutu) hiçbir öğe yoksa boş sayılır.
+   Başlık ile altbilgi arası ölçülür; altbilgi ve sayfa sonu hariç. */
+const gap = (p) => p.evaluate(() => {
+  const H = document.documentElement.scrollHeight, foot = document.querySelector("footer")?.getBoundingClientRect().top + scrollY || H;
+  const top = (document.querySelector("header")?.getBoundingClientRect().bottom ?? 0) + scrollY;
+  const filled = new Uint8Array(Math.ceil(H / 8));
+  const all = document.querySelectorAll("body *");
+  for (const el of all) {
+    const cs = getComputedStyle(el); if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity === 0) continue;
+    const r = el.getBoundingClientRect(); if (r.width < 4 || r.height < 2) continue;
+    const content = el.matches("img,svg,video,iframe,button,input,textarea,canvas,hr") || [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) || (cs.borderTopWidth !== "0px" && cs.borderTopStyle !== "none") || (cs.backgroundColor !== "rgba(0, 0, 0, 0)" && el !== document.body && r.height < 2000 && !/^(MAIN|DIV)$/.test(el.tagName) );
+    if (!content) continue;
+    const a = Math.floor((r.top + scrollY) / 8), b = Math.ceil((r.bottom + scrollY) / 8);
+    for (let i = Math.max(0, a); i < Math.min(filled.length, b); i++) filled[i] = 1;
+  }
+  let max = 0, at = 0, run = 0;
+  for (let i = Math.floor(top / 8); i < Math.floor(foot / 8); i++) { if (filled[i]) run = 0; else { run++; if (run * 8 > max) { max = run * 8; at = (i - run + 1) * 8; } } }
+  return { max, at };
+});
 for (const [dev, o] of [["masaustu", DESK], ["mobil", MOB]]) {
   /* ÖNCE: canlı */
   for (const [ad, path] of [["ana", "/"], ["je", "/mekan/japon-erdal-beyoglu/"], ["fotosuz", "/mekan/halil-lahmacun-kadikoy/"], ["beny", "/mekan/beny-burger-house-ve-cafeteria-besiktas/"]]) {
@@ -32,7 +49,9 @@ for (const [dev, o] of [["masaustu", DESK], ["mobil", MOB]]) {
   const h = await open(PH, "/", o, true);
   ok(`${dev}: ana sayfa 200, Sor ilk ekranda`, h.status === 200 && (await h.p.locator("[data-ana-sor] textarea").boundingBox())?.y < o.viewport.height);
   await h.p.screenshot({ path: `${OUT}/sonra-ana-${dev}.png` });
-  const hrefs = await h.p.locator("[data-ana-pano] [data-pano-kolon], [data-ana-pano] section, [data-ana-kesif]").evaluateAll((xs) => xs.filter((x) => !/Sana göre/i.test(x.querySelector("h2")?.textContent ?? "")).flatMap((x) => [...x.querySelectorAll("a[href^='/mekan/']")].map((a) => a.getAttribute("href"))));
+  const hrefs = await h.p.evaluate(() => { const cols = [...document.querySelectorAll("[data-ana-pano] .home-board > *"), ...document.querySelectorAll("[data-ana-kesif]")];
+    return cols.filter((x) => !/Sana göre/i.test(x.querySelector("h2")?.textContent ?? "")).flatMap((x) => [...x.querySelectorAll("a[href^='/mekan/']")].map((a) => a.getAttribute("href"))); });
+  console.log("  · ana sayfa mekân bağlantıları:", JSON.stringify(hrefs));
   const uniq = new Set(hrefs);
   ok(`${dev}: ana sayfada aynı mekân iki kez yok (pano + vitrin)`, uniq.size === hrefs.length, `${hrefs.length} bağlantı, ${uniq.size} farklı`);
   const bos = await h.p.evaluate(() => ["popular", "rising", "talked"].map((k) => { const el = document.querySelector(`[data-pano-bos="${k}"]`); const col = el?.closest("section"); return [k, !!el, col ? col.querySelectorAll("a[href^='/mekan/']").length : -1]; }));
