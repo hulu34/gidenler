@@ -6,7 +6,7 @@ import { coverOf } from "@/lib/media/cover";
 import { H, guard } from "@/lib/community/reviewApi";
 import { getStorage } from "@/lib/media/storage";
 import { approvePhoto, clearCover, dismissPhotoReports, moderationList, openPhotoReports, photoHistory, photoProblems, rejectPhoto, removePhoto, setCover, setCoverCandidate, staffRole, type Decided } from "@/lib/media/photoArchive";
-import { TAG_COVERS, TAG_PHOTOS } from "@/lib/live";
+import { TAG_COVERS, TAG_PHOTOS, liveCovers } from "@/lib/live";
 import { countOp } from "@/lib/ops";
 
 /* MODERASYON — yetki her istekte sunucuda: oturum + staff_roles. İstemcinin söylediği rol okunmaz. */
@@ -27,7 +27,9 @@ export async function GET(req: Request) {
   const status = st === "approved" || st === "rejected" || st === "removed" ? st : "pending";
   const rows = await moderationList(g.db, status);
   const storage = getStorage();
-  return NextResponse.json({ status, role, reported: await openPhotoReports(g.db), rows: rows.map((r) => ({ ...r, currentCover: (() => { const e = getEntity(r.slug); const c = e ? coverOf(e) : null; return c?.src ?? null; })(), preview: storage && r.variants.length ? (r.status === "approved" ? storage.publicUrl(r.variants[r.variants.length - 1].key) : `/api/media/file/${r.variants[r.variants.length - 1].key}`) : null, variants: undefined })) }, { headers: H });
+  /* karşılaştırma için mekânın ŞU ANKİ kapağı: editörün seçtiği Gidenler kapağı ya da hak kayıtlı kapak (sitede görünenle aynı karar) */
+  const live = await liveCovers().catch(() => ({} as Awaited<ReturnType<typeof liveCovers>>));
+  return NextResponse.json({ status, role, reported: await openPhotoReports(g.db), rows: rows.map((r) => ({ ...r, currentCover: (() => { const e = getEntity(r.slug); const c = e ? coverOf(e, live[r.slug]) : null; return c?.src ?? null; })(), preview: storage && r.variants.length ? (r.status === "approved" ? storage.publicUrl(r.variants[r.variants.length - 1].key) : `/api/media/file/${r.variants[r.variants.length - 1].key}`) : null, variants: undefined })) }, { headers: H });
 }
 
 const Body = z.object({ id: z.string().regex(/^[0-9a-f-]{36}$/), action: z.enum(["approve", "reject", "remove", "candidate", "candidate_off", "cover", "cover_clear", "dismiss_reports"]), reason: z.string().max(300).optional(), focus: z.string().regex(/^\d{1,3}% \d{1,3}%$/).nullable().optional() }).strict();

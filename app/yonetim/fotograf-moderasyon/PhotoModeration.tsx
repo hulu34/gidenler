@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 const API = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/moderation/photos/`;
-type Row = { id: string; status: string; slug: string; name: string; uploader: string; preview: string | null; width: number; height: number; rightsStatement: string; sourceUrl: string | null; source: string; isCover: boolean; coverCandidate: boolean; rejectReason: string | null; createdAt: string; reports: string[]; currentCover: string | null };
+type Row = { id: string; status: string; slug: string; name: string; uploader: string; reviewId: string | null; reviewBody: string | null; reviewMonth: string | null; reviewStatus: string | null; preview: string | null; width: number; height: number; rightsStatement: string; sourceUrl: string | null; source: string; isCover: boolean; coverCandidate: boolean; rejectReason: string | null; createdAt: string; reports: string[]; currentCover: string | null };
 type Tab = "pending" | "approved" | "rejected" | "removed" | "problems";
 type Problems = { cleanup: Array<{ key: string; attempts: number; lastError: string | null; reason: string }>; stuck: Array<{ id: string }>; broken: Array<{ id: string; slug: string }>; checked: number; missingRights: Array<{ id: string; slug: string }> };
 const TABS: Array<[Tab, string]> = [["pending", "Bekleyen"], ["approved", "Onaylı"], ["rejected", "Reddedilen"], ["removed", "Kaldırılan"], ["problems", "Sorunlu kayıtlar"]];
@@ -67,6 +67,7 @@ export function PhotoModeration() {
             <p className="text-[15px] font-extrabold"><a href={`/mekan/${r.slug}/`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">{r.name}</a></p>
             <p className="text-[12.5px] text-ink-2">Yükleyen: {r.uploader} · Kaynak: {r.source} · {r.width}×{r.height} · {new Date(r.createdAt).toLocaleDateString("tr-TR")}</p>
             <p className="text-[12.5px] text-ink-2">Hak beyanı: {r.rightsStatement}{r.sourceUrl ? ` · ${r.sourceUrl}` : ""}</p>
+            {r.reviewId && <p className="text-[12.5px] text-ink-2" data-review-link>Bağlı deneyim ({r.reviewMonth ?? "?"}{r.reviewStatus && r.reviewStatus !== "published" ? `, ${r.reviewStatus}` : ""}): <a href={`/mekan/${r.slug}/#deneyimler`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">&ldquo;{r.reviewBody}{(r.reviewBody?.length ?? 0) >= 160 ? "…" : ""}&rdquo;</a></p>}
             {r.rejectReason && <p className="text-[12.5px] text-neg-ink">Gerekçe: {r.rejectReason}</p>}
             {reported.includes(r.id) && <p className="text-[12.5px] font-bold text-neg-ink">Bildirim: {r.reports.join(" · ")}</p>}
             {r.status === "approved" && <p className="text-[12.5px] text-ink-2">Mekânın kayıtlı kapağı: {r.currentCover ? "var; seçmezsen o kalır" : "yok"}.</p>}
@@ -96,10 +97,19 @@ export function PhotoModeration() {
             <button type="button" className="self-start text-[12.5px] font-semibold underline underline-offset-2" onClick={async () => { const j = await fetch(`${API}?history=${r.id}`, { credentials: "same-origin" }).then((x) => x.json()).catch(() => ({ history: [] })); setHistory((h) => ({ ...h, [r.id]: j.history })); }}>İşlem geçmişi</button>
             {history[r.id] && <ol className="text-[12.5px] text-ink-2">{history[r.id].map((h, i) => <li key={i}>{new Date(h.at).toLocaleString("tr-TR")} · {h.action.replace("photo_", "")} · {h.actor}</li>)}</ol>}
             {r.status === "approved" && admin && !r.isCover && r.preview && (
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">Kapak önizleme</p>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={r.preview} alt="" style={{ objectPosition: focus[r.id] ?? "50% 50%" }} className="mt-1 aspect-[16/10] w-[240px] object-cover" />
+              <div className="flex flex-wrap gap-3" data-cover-compare>
+                <figure>
+                  <figcaption className="text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">Şu anki kapak</figcaption>
+                  {r.currentCover
+                    // eslint-disable-next-line @next/next/no-img-element
+                    ? <img src={r.currentCover} alt="" className="mt-1 aspect-[16/10] w-[200px] object-cover" />
+                    : <span className="mt-1 flex aspect-[16/10] w-[200px] items-center justify-center bg-sheet text-[12px] text-ink-3">Kendi kapağı yok</span>}
+                </figure>
+                <figure>
+                  <figcaption className="text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">Bu fotoğraf kapak olursa</figcaption>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={r.preview} alt="" style={{ objectPosition: focus[r.id] ?? "50% 50%" }} className="mt-1 aspect-[16/10] w-[200px] object-cover" />
+                </figure>
               </div>
             )}
           </li>
