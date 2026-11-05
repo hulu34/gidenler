@@ -27,12 +27,339 @@
   "kind": "Balık restoranı",
   "sourceUrl": "https://www.openstreetmap.org/way/288171468",
   "checkedAt": "2026-11-05",
-  "why": "Adı \"Balık Restaurant\"; OSM'de yalnız turkish etiketi var, tür boş kalmıştı."
+  "why": "Adı \"Balık Restaurant\"; OSM'de yalnız turkish etiketi var, tür boş kalmıştı.",
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.dodomarin.com/"
  },
  "nusr-et-burger-bebek-besiktas": {
   "kind": "Burger",
   "sourceUrl": "https://www.openstreetmap.org/node/5780443054",
   "checkedAt": "2026-11-05",
   "why": "Adı \"Burger\"; OSM'de mutfak etiketi yok, tür boş kalmıştı."
+ },
+ "haci-ali-ocakbasi-kadikoy": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.hacialiocakbasi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "bebek-balikci-besiktas": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://bebekbalikci.net",
+  "checkedAt": "2026-11-05"
+ },
+ "sultanahmet-koftecisi-kadikoy": {
+  "website": "https://sultanahmetkoftesi.com/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://sultanahmetkoftesi.com/subelerimiz); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "sur-balik-restoran-arnavutkoy-besiktas": {
+  "website": "https://surbalik.com/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://surbalik.com); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "curtis-restaurant-ve-bar-besiktas": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://curtisistanbul.com",
+  "checkedAt": "2026-11-05"
+ },
+ "frontiere-istanbul-besiktas": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.frontiereistanbul.com",
+  "checkedAt": "2026-11-05"
+ },
+ "dragon-restaurant-sisli": {
+  "website": null,
+  "websiteWhy": "Sayfa ve alan adının kökü yanıt vermiyor/404 (05.11.2026): http://dragonrest.wpengine.com",
+  "checkedAt": "2026-11-05"
+ },
+ "dubb-indian-bosphorus-restaurant-sisli": {
+  "website": null,
+  "websiteWhy": "Sayfa ve alan adının kökü yanıt vermiyor/404 (05.11.2026): http://bosphorus.dubbindian.com",
+  "checkedAt": "2026-11-05"
+ },
+ "ekmek-teknesi-uskudar": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://kuzguncukekmekteknesi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "katibim-uskudar": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.katibim.com.tr/tr/katibim-menu",
+  "checkedAt": "2026-11-05"
+ },
+ "rice-house-uskudar": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.ricehousee.com",
+  "checkedAt": "2026-11-05"
+ },
+ "koprualti-sariyer": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://koprualti.kim",
+  "checkedAt": "2026-11-05"
+ },
+ "deniz-park-sariyer": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.alekodenizpark.com",
+  "checkedAt": "2026-11-05"
+ },
+ "fiko-ocakbasi-sariyer": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://fikoocakbasi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "kiraz-cafe-ve-pastane-uskudar": {
+  "website": "https://www.kirazpasta.com.tr/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://www.kirazpasta.com.tr); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "birecikli-bakirkoy": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.birecikli.com.tr",
+  "checkedAt": "2026-11-05"
+ },
+ "hot-pot-king-atasehir": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://hotpotking.ist",
+  "checkedAt": "2026-11-05"
+ },
+ "bisiklet-kafe-beykoz": {
+  "website": "https://beykoz.bel.tr/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://beykoz.bel.tr/sayfa/95/474/bisiklet-kafe); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "nuvo-firin-ve-cafe-kartal": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://nuvofirin.com.tr",
+  "checkedAt": "2026-11-05"
+ },
+ "doga-kir-lokantasi-arnavutkoy": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://dogakirlokantasi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "ono-restaurant-basaksehir": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://onorestoran.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "boga-kagithane": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.bogastekhous.com",
+  "checkedAt": "2026-11-05"
+ },
+ "cooskun-balik-kucukcekmece": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.coskunbalik.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "olden-1772-fatih": {
+  "website": "https://olden1772.com/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://olden1772.com/qr-menu/); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "doga-cafe-restaurant-alev-hanim-in-mutfagi-catalca": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.dogacaferestaurant.com.tr/",
+  "checkedAt": "2026-11-05"
+ },
+ "ala-turk-mutfagi-umraniye": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://alaturkmutfagi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "durusu-club-restaurant-arnavutkoy": {
+  "website": "https://www.durusuclubhotel.com/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://www.durusuclubhotel.com/en/restaurant); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "benusen-restoran-kadikoy": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://benusenesnaflokantasi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "zeytindali-kir-bahcesi-silivri": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://zeytindalikirbahcesi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "kuzguncuk-burger-cafe-uskudar": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.kuzguncuksteakhouse.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "hukumdar-sofrasi-atasehir": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.hukumdarsofrasi.com/atasehir.aspx",
+  "checkedAt": "2026-11-05"
+ },
+ "34-restaurant-sisli": {
+  "website": "https://www.hyattrestaurants.com/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://www.hyattrestaurants.com/en/dining/turkey/istanbul/turkish-restaurant-in-harbiye-34-restaurant-istanbul); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "sirtaki-meyhanesi-beylikduzu": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.sirtakimeyhanesi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "byzantion-bistro-ve-restaurant-fatih": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.byzantionbistro.com",
+  "checkedAt": "2026-11-05"
+ },
+ "meshur-rumeli-pilavcisi-maltepe": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.meshurrumelipilavcisi.com.tr/",
+  "checkedAt": "2026-11-05"
+ },
+ "catalca-gizli-bahce-catalca": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.catalcagizlibahce.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "sehzadem-arnavutkoy": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://sehzademdoner.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "gelik-et-atakoy-istanbul-bakirkoy": {
+  "website": "https://www.gelik.com.tr/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://www.gelik.com.tr/EN/index.html); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "cabra-loca-coffee-fatih": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://cabraloca.istanbul",
+  "checkedAt": "2026-11-05"
+ },
+ "selim-kebap-kucukcekmece": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.selimkebap.com",
+  "checkedAt": "2026-11-05"
+ },
+ "m-point-cafe-and-restaurant-zeytinburnu": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.m-point.com.tr",
+  "checkedAt": "2026-11-05"
+ },
+ "suna-nin-yeri-uskudar": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.sunaninyeri.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "cookshop-bayrampasa": {
+  "website": "https://www.cookshop.com.tr/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://www.cookshop.com.tr/tr); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "gospoda-1882-beykoz": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://gospodapolonezkoy.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "constantine-s-ark-fatih": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.constantinesark.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "lunchbox-bayrampasa": {
+  "website": "https://www.cookshop.com.tr/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://www.cookshop.com.tr/tr); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "lipari-besiktas": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.arnavutkoylipari.com",
+  "checkedAt": "2026-11-05"
+ },
+ "park-balik-cekmekoy-umraniye": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.parkbalikcekmekoy.com",
+  "checkedAt": "2026-11-05"
+ },
+ "foca-balik-restaurant-atasehir": {
+  "website": null,
+  "websiteWhy": "Sayfa ve alan adının kökü yanıt vermiyor/404 (05.11.2026): https://www.focafishgourmet.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "sandal-balik-sariyer": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://yenikoysandalbalik.com.tr",
+  "checkedAt": "2026-11-05"
+ },
+ "isola-sisli": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://isolabomonto.com",
+  "checkedAt": "2026-11-05"
+ },
+ "misina-kadikoy": {
+  "website": "https://www.misina.com.tr/",
+  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://www.misina.com.tr/goztepe.asp); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "checkedAt": "2026-11-05"
+ },
+ "ara-gurme-lahmacun-pide-kebap-sisli": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.aragurme.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "olivia-s-pizzeria-kadikoy": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.olivi.as",
+  "checkedAt": "2026-11-05"
+ },
+ "vagabondo-s-pizzeria-sariyer": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://vagabondosrest.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "yenikoy-kavak-balikcisi-sariyer": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://kavakbalikcisi.com",
+  "checkedAt": "2026-11-05"
+ },
+ "zhu-istanbul-sisli": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.zhuistanbul.com",
+  "checkedAt": "2026-11-05"
+ },
+ "whisper-kitchen-bar-besiktas": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://whisperistanbul.com",
+  "checkedAt": "2026-11-05"
+ },
+ "miss-pizza-sishane-beyoglu": {
+  "website": null,
+  "websiteWhy": "Sayfa ve alan adının kökü yanıt vermiyor/404 (05.11.2026): http://www.misspizza.com.tr/en",
+  "checkedAt": "2026-11-05"
+ },
+ "gunaydin-kofte-doner-pendik": {
+  "website": null,
+  "websiteWhy": "Sayfa ve alan adının kökü yanıt vermiyor/404 (05.11.2026): https://www.gunaydinet.com",
+  "checkedAt": "2026-11-05"
+ },
+ "sinop-manti-besiktas": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.sinopmanti.com",
+  "checkedAt": "2026-11-05"
+ },
+ "hanedan-et-besiktas": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://hanedanrestaurant.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "le-mejnun-ocakbasi-atasehir": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://mejnunocakbasi.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "pide-nova-kadikoy": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): http://www.novapide.com/",
+  "checkedAt": "2026-11-05"
+ },
+ "komun-beyoglu": {
+  "website": null,
+  "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.komunistanbul.com/",
+  "checkedAt": "2026-11-05"
  }
 }
