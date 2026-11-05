@@ -11,7 +11,7 @@ const ORNEKLER = [
   "Kadıköy'de sakin bir akşam yemeği",
   "Uygun fiyatlı, iyi bir esnaf lokantası",
   "Balık yiyebileceğimiz sakin bir yer",
-  "Beşiktaş'ta kahvaltı",
+  "Beyoğlu'nda meyhane",
 ];
 const sorHref = (q: string) => `/sor/?q=${encodeURIComponent(q)}`;
 
