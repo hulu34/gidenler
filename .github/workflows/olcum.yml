@@ -299,6 +299,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: canlidog-sifreli, path: out/canlidog.tgz.cms, retention-days: 3, if-no-files-found: ignore }
+  demo-birlesim:
+    if: contains(github.event.head_commit.message, '[demo-birlesim]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/demo-birlesim.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: gidenler-mjwt6lsro-hulu34.vercel.app, LIVE_HOST: www.gidenler.com, PROD_DEPLOY: gidenler-inmwg5yym-hulu34.vercel.app, DEMO_HOST: demo.gidenler.com }
+      - if: always()
+        run: test -d out/birlesim && tar -C out -czf out/birlesim.tgz birlesim && rm -rf out/birlesim && openssl cms -encrypt -aes256 -binary -outform DER -in out/birlesim.tgz -out out/birlesim.tgz.cms ops/olcum.pem && rm out/birlesim.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: birlesim-sifreli, path: out/birlesim.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   je-karsilastir:
     if: contains(github.event.head_commit.message, '[je-karsilastir]')
     runs-on: ubuntu-latest
