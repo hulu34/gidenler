@@ -28,7 +28,7 @@ export const MESSAGES: Record<ReviewError, string> = {
   body_short: "En az bir paragraf yaz (40 karakter).", body_long: "Metin çok uzun (en çok 5.000 karakter).",
   contact_info: "Bağlantı, e-posta ya da telefon numarası paylaşılamaz.", repetitive: "Metin tekrar eden karakterlerden oluşuyor; olayı anlat.",
   month_invalid: "Ziyaret ayı son 24 ay içinde olmalı.", overall_required: "Genel puanı seç (1–10).", overall_invalid: "Genel puan 1–10 arası olmalı.",
-  rating_invalid: "Puanlar 1–10 arası olmalı.", unknown_place: "Mekân bulunamadı.", exists: "Bu mekân için zaten bir deneyimin var; onu düzenleyebilirsin.",
+  rating_invalid: "Puanlar 1–10 arası olmalı.", unknown_place: "Mekân bulunamadı.", exists: "Bu ay için bu mekâna zaten bir deneyimin var; onu düzenleyebilirsin.",
   recently_removed: "Bu mekân için deneyimini yeni sildin; 24 saat sonra yeniden yazabilirsin.", not_found: "Deneyim bulunamadı.",
   moderated: "Bu deneyim moderasyon nedeniyle gizlendi; düzenlenemez.", own_review: "Kendi deneyimini bildiremezsin.", already_reported: "Bu deneyimi zaten bildirdin.",
 };
