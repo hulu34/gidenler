@@ -54,7 +54,7 @@ ok("Google alanı yok", !/google/i.test(JSON.stringify(ld)));
 /* tür düzeltmesi: yalnız listedeki kayıt değişir */
 const fixed = Object.keys(duzeltmeler);
 const kindChanged = (rawVenues as { slug: string; kind: string }[]).filter((r) => realEntities.find((e) => e.slug === r.slug)?.subcategory !== r.kind).map((r) => r.slug);
-ok("tür yalnız düzeltme listesindekilerde değişir", kindChanged.join() === fixed.join(), kindChanged.join());
+ok("tür yalnız düzeltme listesindekilerde değişir", [...kindChanged].sort().join() === [...fixed].sort().join(), kindChanged.join());
 ok("Seyirtepe Restoran, kategori aynı", realEntities.find((e) => e.slug === fixed[0])?.subcategory === "Restoran" && realEntities.find((e) => e.slug === fixed[0])?.categoryId === "cat.restaurant");
 ok("457 kayıt korunur", realEntities.length === 457);
 

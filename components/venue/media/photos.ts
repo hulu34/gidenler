@@ -33,6 +33,6 @@ export function fromVenuePhotos(list: VenuePhoto[] = []): ViewPhoto[] {
   return list.map((p) => ({
     src: p.src, alt: p.alt, category: p.category === "icecek" ? "diger" : p.category,
     source: p.addedBy === "commons" ? "commons" : p.addedBy === "işletme" ? "isletme" : "gidenler",
-    author: p.credit, license: p.license, sourceUrl: p.sourceUrl, srcSet: p.srcSet, full: p.full, focus: p.focus, mediaId: p.mediaId,
+    author: p.credit, license: p.license, sourceUrl: p.sourceUrl, srcSet: p.srcSet, full: p.full, focus: p.focus, mediaId: p.mediaId, w: p.w, h: p.h,
   }));
 }

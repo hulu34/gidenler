@@ -23,6 +23,7 @@ import { googleUsable, placeProfile, placeReviews, placeScore, videoCounts } fro
 import { ThresholdBar, ThresholdCard, type ThresholdVenue } from "@/components/venue/ThresholdCard";
 import { ProfileMenu, ProfileOverview, withProfile } from "@/components/venue/profile/ProfileSections";
 import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
+import { SignalBeacon } from "@/components/venue/SignalBeacon";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
 import { VideoRail, type RailVideo } from "@/components/venue/media/VideoRail";
 import { VenueSecki } from "@/components/seckisi/Seckisi";
@@ -185,8 +186,11 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     { id: "gor", label: "Konum" },
   ] : [];
   const cover = hasCover ? ownPhotos[0] : undefined;
+  /* önyükleme, mozaikteki ilk karenin sizes değeriyle aynı olmalı (yoksa aynı fotoğraf iki boyda iner) */
+  const firstFive = ownPhotos.slice(0, 5), kOwn = firstFive.length;
+  const portraitOwn = firstFive.filter((p) => p.w && p.h && p.h > p.w * 1.1).length > kOwn / 2;
   if (cover?.srcSet) preload(cover.src, { as: "image", imageSrcSet: cover.srcSet, fetchPriority: "high",
-    imageSizes: `(max-width: 640px) 60vw, ${ownPhotos.length === 1 ? "1180px" : "590px"}` });
+    imageSizes: portraitOwn ? `(max-width: 640px) 72vw, ${Math.round(1180 / Math.min(kOwn, 4))}px` : `(max-width: 640px) 86vw, ${kOwn === 1 ? "1180px" : "590px"}` });
 
   /* Puan ya da "henüz puan yok" notu ve eylemler. Eşik kartı varken sol sütunda durur; kart ayrı satırda boşluk bırakmaz. */
   const heroBody = scored ? (
@@ -212,6 +216,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   return (
     <div className="mx-auto max-w-[1180px] overflow-x-clip px-5 pb-32 sm:px-7 sm:pb-24">
+      {entity.isReal && <SignalBeacon slug={entity.slug} />}
       {entity.isReal && <JsonLd data={venueJsonLd(ent, ps, articlesForVenue(entity.slug, false).some((x) => !!x.ownership), seoCover?.src)} />}
       {/* ═══════════ HERO — kısa ve güçlü: ad · tür · puan · yön · sana göre · tek cümle · eylem ═══════════ */}
       <header className="relative isolate flex flex-col gap-4 pt-7 sm:pt-10">
@@ -316,7 +321,6 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* ═══════════ VİDEOLAR — Shorts · Reels · TikTok, resmî oynatıcılarla sitede; video yoksa çizilmez ═══════════ */}
       <VideoRail slug={entity.slug} name={entity.name} initial={railFromMedia(entity.media)} />
 
-      {entity.isReal && <DataCompleteness c={completenessOf(ent, { googleMatched: google, videos: nVideos + articlesForVenue(entity.slug).reduce((n, a) => n + (a.media?.videos.length ?? 0), 0), menuItems: rp?.menu?.sections.reduce((a, s) => a + s.items.length, 0) ?? 0 })} slug={entity.slug} google={google} />}
 
       {/* ═══════════ YAPIŞKAN GEZİNTİ ═══════════ */}
       {!rp && <TopicNav sections={sections} />}
@@ -462,6 +466,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
       {/* Seçki: bu restoranı konu alan yazı, basın ve videolar; yayında yazı yoksa çizilmez */}
       {entity.isReal && <VenueSecki slug={entity.slug} />}
+      {/* profil tamlığı: kullanıcı içeriğinden sonra (deneyim ve Seçki önce gelir) */}
+      {entity.isReal && <DataCompleteness c={completenessOf(ent, { googleMatched: google, videos: nVideos + articlesForVenue(entity.slug).reduce((n, a) => n + (a.media?.videos.length ?? 0), 0), menuItems: rp?.menu?.sections.reduce((a, s) => a + s.items.length, 0) ?? 0 })} slug={entity.slug} google={google} />}
 
       {/* ═══════════ SOSYAL MEDYADA — videolar sitede oynar, gönderiler platformunda açılır ═══════════ */}
       <VenueVisuals entity={entity} />

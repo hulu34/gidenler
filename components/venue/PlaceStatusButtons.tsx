@@ -26,7 +26,7 @@ export function PlaceStatusButtons({ entityId }: { entityId: string }) {
         {OPTIONS.map((o) => {
           const on = current === o.state;
           return (
-            <button key={o.state} type="button" aria-pressed={on}
+            <button key={o.state} type="button" aria-pressed={on} data-sinyal={o.state === "visited" ? undefined : "save"}
               onClick={() => setEntityState(entityId, on ? "none" : o.state, "venue")}
               className={`${btn} ${on ? "border-pos bg-pos/10 text-pos-ink" : "border-line-2 text-ink hover:border-ink"}`}>
               {on && <span aria-hidden>✓</span>}{o.label}

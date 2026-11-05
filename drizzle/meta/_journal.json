@@ -36,6 +36,13 @@
       "when": 1793840917576,
       "tag": "0004_cift_gonderim",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1793880995155,
+      "tag": "0005_sinyal",
+      "breakpoints": true
     }
   ]
 }

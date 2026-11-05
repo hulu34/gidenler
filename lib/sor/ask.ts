@@ -57,11 +57,13 @@ const CLAIMS = ["sakin", "sessiz", "huzurlu", "romantik", "samimi", "ucuz", "uyg
 const TIME = /\b(saat|sabah|ogle|aksamlari|gece|hafta sonu|her gun|acik)/;
 /* Tahmin kanıt değildir: "fiyatı yok, ucuz olabilir" türü çıkarım her durumda düşer. */
 const GUESS = /\b(olabil|ihtimal|muhtemel|tahmin|belki|sanirim|gibi gorun)/;
+/* Boş uygunluk cümlesi ("isteğe uygun", "talebinizi karşılıyor"): neden uyduğunu söylemez; düşer, kartta kayıtlı bilgiler kalır. */
+const FILLER = /\b(istege|isteginize|istegine|istenen [a-z]+ (?:cesidine|turune)|talebinize|talebi|talebe|aramaniza|aramana|ihtiyaciniza|beklentinize)\b.{0,30}\b(uygun|uyuyor|uyumlu|karsiliyor|cevap veriyor)|\bsecenek cesitliligi|\bkonumu ve menusuyle\b/;
 /* Kayıtla çelişen yokluk iddiası: "Samsun pidesi belirtilmemiş" derken facts'te Samsun pidesi varsa cümle düşer. */
 const ABSENT = /([a-z ]{3,40}?) (?:(?:ozel olarak|acikca|kayitta|kayitlarda|bilgisi|bilgide) )*(?:belirtilme[a-z]*|gecmiyor|gecmemis|gecmese|yer almiyor|yer almasa|yer almamis|bulunmuyor|bulunmasa|bulunmamis|icermiyor|icermese|sunmuyor|sunmasa|sunmadig[a-z]*|olmasa|kayitli degil|degil|yok)\b/g;
 const STOP = new Set(["ancak", "fakat", "ama", "icin", "olarak", "ozel", "burada", "mekanda", "menude", "menusunde", "kaydinda", "bilgisi", "hakkinda", "konusunda", "listede", "kayitta", "acikca"]);
 export const contradicts = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); for (const m of t.matchAll(ABSENT)) { const w = m[1].split(" ").filter((x) => x.length >= 4 && !STOP.has(x)).slice(-2); if (w.length && w.every((x) => f.includes(x.replace(/(si|su|i|u)$/, "")))) return true; } return false; };
-export const unsupported = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); return INVENTED.test(text) || GUESS.test(t) || (TIME.test(t) && !/acilis saati/.test(f)) || CLAIMS.some((c) => t.includes(c) && !f.includes(c)) || contradicts(text, facts); };
+export const unsupported = (text: string, facts: string[]) => { const t = fold(text), f = fold(facts.join(" ")); return INVENTED.test(text) || GUESS.test(t) || FILLER.test(t) || (TIME.test(t) && !/acilis saati/.test(f)) || CLAIMS.some((c) => t.includes(c) && !f.includes(c)) || contradicts(text, facts); };
 
 export const RequestSchema = z.object({
   query: z.string().trim().min(1).max(600), context: IntentSchema.nullable().optional(), refine: z.enum(["cheaper", "quieter", "other_area", "another"]).nullable().optional(),

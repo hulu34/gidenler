@@ -1,8 +1,38 @@
 {
-  "maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe": {
-    "kind": "Restoran",
-    "sourceUrl": "https://maltepematas.com.tr/hizmetlerimiz/seyirtepe-sosyal-tesisleri/",
-    "checkedAt": "2026-10-30",
-    "why": "Resmî sayfa tabldot ve alakart restoran ile kafe/pasta bölümü anlatıyor; OSM'deki burger etiketini desteklemiyor."
-  }
+ "maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe": {
+  "kind": "Restoran",
+  "sourceUrl": "https://maltepematas.com.tr/hizmetlerimiz/seyirtepe-sosyal-tesisleri/",
+  "checkedAt": "2026-10-30",
+  "why": "Resmî sayfa tabldot ve alakart restoran ile kafe/pasta bölümü anlatıyor; OSM'deki burger etiketini desteklemiyor."
+ },
+ "beny-burger-house-ve-cafeteria-besiktas": {
+  "kind": "Burger",
+  "sourceUrl": "https://www.openstreetmap.org/way/699951119",
+  "checkedAt": "2026-11-05",
+  "why": "OSM mutfak etiketlerinin ilki burger; adı \"Burger House\". Aktarım, sondaki breakfast etiketini tür seçmişti."
+ },
+ "usturmaca-balik-restorant-beylikduzu": {
+  "kind": "Balık restoranı",
+  "sourceUrl": "https://www.openstreetmap.org/node/6130401289",
+  "checkedAt": "2026-11-05",
+  "why": "Adı \"Balık Restorant\"; OSM etiketi mediterranean. Aktarım breakfast etiketini tür seçmişti."
+ },
+ "bes-bicak-steak-house-kasap-esenyurt": {
+  "kind": "Steakhouse",
+  "sourceUrl": "https://www.openstreetmap.org/node/5310556605",
+  "checkedAt": "2026-11-05",
+  "why": "OSM mutfak etiketlerinin ilki steak_house; adı \"Steak House\". Aktarım ikinci etiketi (burger) seçmişti."
+ },
+ "dodo-balik-restaurant-tuzla": {
+  "kind": "Balık restoranı",
+  "sourceUrl": "https://www.openstreetmap.org/way/288171468",
+  "checkedAt": "2026-11-05",
+  "why": "Adı \"Balık Restaurant\"; OSM'de yalnız turkish etiketi var, tür boş kalmıştı."
+ },
+ "nusr-et-burger-bebek-besiktas": {
+  "kind": "Burger",
+  "sourceUrl": "https://www.openstreetmap.org/node/5780443054",
+  "checkedAt": "2026-11-05",
+  "why": "Adı \"Burger\"; OSM'de mutfak etiketi yok, tür boş kalmıştı."
+ }
 }
