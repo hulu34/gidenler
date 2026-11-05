@@ -298,6 +298,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: canlidog-sifreli, path: out/canlidog.tgz.cms, retention-days: 3, if-no-files-found: ignore }
+  ana-sayfa:
+    if: contains(github.event.head_commit.message, '[ana-sayfa]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/ana-sayfa.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: gidenler-4sv0babe0-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/anasayfa && tar -C out -czf out/anasayfa.tgz anasayfa && rm -rf out/anasayfa && openssl cms -encrypt -aes256 -binary -outform DER -in out/anasayfa.tgz -out out/anasayfa.tgz.cms ops/olcum.pem && rm out/anasayfa.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: anasayfa-sifreli, path: out/anasayfa.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   yayin-gece3:
     if: contains(github.event.head_commit.message, '[yayin-gece3]')
     runs-on: ubuntu-latest
