@@ -2,6 +2,7 @@
 import { readFileSync } from "node:fs";
 import { realEntities } from "../data/real";
 import { pickDiverse, HOME_EXCLUDE } from "../components/home/HomeDiscover";
+import { sor as soru } from "../lib/sor/ask";
 let ok = 0, bad = 0; const t = (n: string, c: boolean, i = "") => { if (c) ok++; else bad++; console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const p = pickDiverse(realEntities, {});
 t("4–6 mekân", p.length >= 4 && p.length <= 6, String(p.length));
@@ -13,6 +14,15 @@ t("seçim deterministik", JSON.stringify(pickDiverse(realEntities, {}).map((e) =
 const page = readFileSync("app/page.tsx", "utf8");
 t("gerçek ana sayfada tek Seçki yazısı vitrini yok", !/<HomeSecki/.test(page));
 t("ana sayfa soru alanı gerçek /sor'a gider", /sorHref|\/sor\/\?q=/.test(readFileSync("components/home/HomeSor.tsx", "utf8")));
+/* örnek sorular kural motorunda da en az iki ilgili sonuç vermeli (AI kapalıyken de vitrin zayıf görünmesin) */
+const src = readFileSync("components/home/HomeSor.tsx", "utf8");
+const ornek = [...src.slice(src.indexOf("const ORNEKLER"), src.indexOf("];", src.indexOf("const ORNEKLER"))).matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+t("ana sayfada 4 örnek soru", ornek.length === 4, ornek.join(" | "));
+t("zayıf sonuç veren örnek yok (Beşiktaş kahvaltı)", !ornek.some((o) => /Beşiktaş'ta kahvaltı/.test(o)));
 const sor = ["lib/sor/engine.ts", "lib/sor/ask.ts"].map((f) => readFileSync(f, "utf8")).join("\n");
 t("Sor motorunda mekâna özel ayrıcalık/ceza yok", !/japon-erdal|HOME_EXCLUDE/i.test(sor));
+(async () => {
+delete process.env.GROQ_API_KEY; delete process.env.SOR_AI_PROVIDER;
+for (const o of ornek) { const r = await soru({ query: o } as never); t(`örnek "${o}": kurallı yanıtta en az 2 sonuç, sosyal tesis yok`, r.items.length >= 2 && !r.items.some((i) => /sosyal tesis/i.test(i.name)), r.items.map((i) => i.name).slice(0, 3).join(", ")); }
 console.log(`ana sayfa: ${ok} geçti, ${bad} kaldı`); process.exit(bad ? 1 : 0);
+})();
