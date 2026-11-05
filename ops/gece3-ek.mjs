@@ -91,7 +91,10 @@ ok("hesap kapatma: yabancı köken reddedilir", (await fetch(`${BASE}/api/me/hes
 ok("kapanan hesabın oturumu geçersiz", (await api("/api/me/reviews/", { u: K })).status === 401);
 const sonraGaleri = await (await api(`/mekan/${SL}/fotograflar/?v=${Date.now()}`)).text();
 ok("kapanan hesabın fotoğrafı galeriden kalktı", !sonraGaleri.includes(up.id));
-ok("kapanan hesabın fotoğraf dosyası açılmaz", dosya ? (await api(dosya)).status === 404 : false);
+/* kenar önbellek 60 sn (2df8b3e): uzaktan temizlenemeyen tek kopya; 65 sn sonra dosya hiçbir yoldan açılmamalı */
+await new Promise((r) => setTimeout(r, 65000));
+const dosyaSon = dosya ? (await api(`${dosya}`)).status : 0;
+ok("kapanan hesabın fotoğraf dosyası 60 sn içinde açılmaz olur (kenar önbellek dahil)", dosyaSon === 404, dosyaSon);
 ok("kapanan hesabın deneyimi sayfada yok", !(await (await api(`/mekan/${SL}/?v=${Date.now()}`)).text()).includes("Gece üç ek denetimi"));
 /* 4) G — mevcut site: ana sayfa → arama → Japon Erdal → Seçki → Sor (soru sorulmaz: Groq kotası canlıyla ortak) */
 {

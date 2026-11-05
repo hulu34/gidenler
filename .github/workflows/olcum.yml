@@ -16,7 +16,7 @@ concurrency:
 env:
   SURUM_HOST: www.gidenler.com
   EKRAN_ETIKET: sonra
-  MEDYA_HOST: gidenler-i2g2zytn9-hulu34.vercel.app   # gece 3: feature/gece3-medya 4e0e12d (Preview, izole Neon)
+  MEDYA_HOST: gidenler-4zkaocx8g-hulu34.vercel.app   # gece 3: feature/gece3-medya 2df8b3e (Preview, izole Neon)
   SURUM: A
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
