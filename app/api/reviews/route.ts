@@ -4,7 +4,7 @@ import { createReview } from "@/lib/community/reviews";
 import { rulesFor } from "@/lib/community/reviewRules";
 import { H, ReviewBody, fail, guard, lockOnce, refresh } from "@/lib/community/reviewApi";
 
-/* POST /api/reviews — deneyim yayınla. Giriş zorunlu; kullanıcı başına saatte 5, aynı mekân için tek etkin deneyim. */
+/* POST /api/reviews — deneyim yayınla. Giriş zorunlu; kullanıcı başına saatte 5, aynı mekân ve aynı ziyaret ayı için tek etkin deneyim; aynı gönderimin tekrarı tek kayıt. */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -22,7 +22,9 @@ export async function POST(req: Request) {
   if (!rules) return fail("unknown_place", 404);
   if (!(await lockOnce(`${g.user.id}:${slug}`))) return NextResponse.json({ error: "busy", message: "Deneyimin zaten gönderiliyor." }, { status: 409, headers: H });
   const r = await createReview(g.db, g.user, slug, input, rules);
-  if (!r.ok) return r.error === "exists" ? NextResponse.json({ error: "exists", id: r.id, message: "Bu mekân için zaten bir deneyimin var; onu düzenleyebilirsin." }, { status: 409, headers: H }) : fail(r.error, r.error === "unknown_place" ? 404 : 400);
+  if (!r.ok) return r.error === "exists" ? NextResponse.json({ error: "exists", id: r.id, message: "Bu ay için bu mekâna zaten bir deneyimin var; onu düzenleyebilirsin. Başka bir ziyaret için farklı ayı seç." }, { status: 409, headers: H }) : fail(r.error, r.error === "unknown_place" ? 404 : 400);
+  /* aynı gönderimin tekrarı: yeni kayıt yok, puan yeniden hesaplanmaz */
+  if (r.replay) return NextResponse.json(r, { status: 200, headers: H });
   refresh(slug);
   return NextResponse.json(r, { status: 201, headers: H });
 }

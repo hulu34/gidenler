@@ -51,6 +51,8 @@ export function WriteForm({
   const [overall, setOverall] = useState<number | null>(null);
   const [sent, setSent] = useState<Sent | null>(null);
   const [mine, setMine] = useState<Mine | null>(null);
+  /* aynı mekâna başka bir ziyaret: mevcut deneyim düzenlenmez, ayrı deneyim açılır (farklı ay zorunlu) */
+  const [prevVisits, setPrevVisits] = useState<Mine[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -90,6 +92,7 @@ export function WriteForm({
       .then((r) => (r.ok ? r.json() : null)).then((j: { reviews?: Mine[] } | null) => {
         const r = j?.reviews?.[0];
         if (!alive || !r) return;
+        setPrevVisits(j?.reviews ?? []);
         setMine(r); setBody(r.body); setRatings(r.ratings ?? {}); setOverall(r.overall > 0 ? r.overall : null);
         setRet((r.returnIntent as ReturnIntent) ?? null); setRel((r.disclosure as CommercialRelationship) ?? "none");
         const m = r.visitedOn.slice(0, 7); setMonths((ms) => (ms.some(([k]) => k === m) ? ms : [...ms, [m, m]])); setMonth(m); setRestored(null);
@@ -118,7 +121,7 @@ export function WriteForm({
       return;
     }
     if (r.status === 401) { keepDraft(); setError("Oturumun kapanmış. Yazdıkların taslak olarak saklandı; yeniden giriş yapıp yayınla."); return; }
-    if (r.status === 409 && j?.error === "exists") { setError(j.message ?? "Bu mekân için zaten bir deneyimin var."); location.reload(); return; }
+    if (r.status === 409 && j?.error === "exists") { setError(j.message ?? "Bu ay için bu mekâna zaten bir deneyimin var."); if (!prevVisits.length) location.reload(); return; }
     if (r.status >= 500) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); }
     setError(j?.message ?? "Gönderilemedi; yeniden dene.");
   }
@@ -196,7 +199,14 @@ export function WriteForm({
         </p>
         <p role="note" className="max-w-[62ch] border-l-2 border-accent pl-3 text-[13px] leading-relaxed text-ink-2">
           {canPublish ? (mine
-            ? <>Bu mekân için deneyimin {mine.status === "pending" ? "incelemede" : mine.status === "hidden" ? "moderasyonla gizlendi" : "yayında"}. Yeni bir ziyaret yaptıysan ayını güncelle; mekân başına tek deneyim tutulur.</>
+            ? <>Bu mekân için {mine.visitedOn.slice(0, 7)} ziyaretine ait deneyimin {mine.status === "pending" ? "incelemede" : mine.status === "hidden" ? "moderasyonla gizlendi" : "yayında"}. Aynı ziyareti burada düzeltebilirsin.{" "}
+              <button type="button" data-yeni-ziyaret className="font-semibold text-accent-ink underline decoration-line-2 underline-offset-4 hover:text-ink" onClick={() => {
+                setMine(null); setBody(""); setRatings({}); setOverall(null); setRet(null); setRel("none"); setError(null);
+                const used = new Set(prevVisits.map((v) => v.visitedOn.slice(0, 7))); const ms = visitMonths(); setMonths(ms); setMonth((ms.find(([k]) => !used.has(k)) ?? ms[0])[0]);
+              }}>Başka bir ziyareti ayrı deneyim olarak yaz</button>{" "}
+              Gidenler puanında her kişinin yalnız en son ziyareti sayılır.</>
+            : prevVisits.length
+            ? <>Yeni ziyaretin ayrı bir deneyim olarak yayınlanır. Daha önce yazdığın ziyaretlerden ({prevVisits.map((v) => v.visitedOn.slice(0, 7)).join(", ")}) farklı bir ay seç; puanda yalnız en son ziyaretin sayılır.</>
             : <>Deneyimin Gidenler hesabınla yayınlanır; adın &ldquo;Ad S.&rdquo; biçiminde görünür. Ziyaretin <strong className="font-semibold">doğrulanmamış</strong> olarak işaretlenir.</>)
             : isReal && account === "anon"
               ? <>Yayınlamak için Google ile giriş yap. Yazdıkların o sırada <strong className="font-semibold">bu cihazda taslak</strong> olarak korunur.</>

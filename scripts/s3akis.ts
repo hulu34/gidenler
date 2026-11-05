@@ -66,7 +66,7 @@ async function main() {
   const keys = asset.variants.map((x) => x.key);
   /* 2) gerçekten saklandı mı */
   const stored = await Promise.all(keys.map(async (k) => { const r = await raw(conf.privateBucket, k); return { s: r.status, b: Buffer.from(await r.arrayBuffer()) }; }));
-  t("2 · her boyut özel kovada duruyor", stored.every((x) => x.s === 200 && x.b.length > 500), stored.map((x) => x.s));
+  t("2 · her boyut özel kovada, bayt sayısı veritabanı kaydıyla birebir", stored.every((x, k) => x.s === 200 && x.b.length === asset.variants[k].bytes && x.b.length > 0), stored.map((x, k) => [x.s, x.b.length, asset.variants[k].bytes]));
   const meta = await sharp(stored[0].b).metadata();
   t("2 · saklanan dosya WebP ve EXIF/GPS yok", meta.format === "webp" && !meta.exif && !meta.icc && !meta.xmp, meta.format);
   t("2 · onaylanmamış dosya genel kovaya hiç yazılmadı", (await Promise.all(keys.map(async (k) => (await raw(conf.publicBucket, k)).status))).every((s) => s === 404));

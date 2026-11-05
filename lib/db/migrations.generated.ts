@@ -145,5 +145,12 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
    "CREATE TABLE \"ops_counters\" (\n\t\"day\" text NOT NULL,\n\t\"key\" text NOT NULL,\n\t\"n\" integer DEFAULT 0 NOT NULL,\n\tCONSTRAINT \"ops_counters_day_key_pk\" PRIMARY KEY(\"day\",\"key\")\n);",
    "CREATE INDEX \"media_cleanup_open_idx\" ON \"media_cleanup\" USING btree (\"done_at\",\"next_attempt_at\");"
   ]
+ },
+ {
+  "tag": "0004_cift_gonderim",
+  "hash": "0ded7748f466dfc5d849cf8388dc02609b7da5ac4dc826712f0592b98414384c",
+  "statements": [
+   "CREATE UNIQUE INDEX \"reviews_user_place_visit_active_uq\" ON \"reviews\" USING btree (\"user_id\",\"place_id\",\"visited_on\") WHERE \"reviews\".\"status\" in ('published','pending','hidden');"
+  ]
  }
 ];

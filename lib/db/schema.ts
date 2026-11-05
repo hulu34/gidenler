@@ -265,7 +265,9 @@ export const reviews = pgTable("reviews", {
   trust: text("trust").notNull().default("recommended"),
   createdAt: created(),
   updatedAt: updated(),
-}, (t) => [index("reviews_place_idx").on(t.placeId, t.status), index("reviews_user_idx").on(t.userId)]);
+}, (t) => [index("reviews_place_idx").on(t.placeId, t.status), index("reviews_user_idx").on(t.userId),
+  /* çift gönderim koruması: aynı kullanıcı + mekân + ziyaret ayı için tek etkin deneyim (0004) */
+  uniqueIndex("reviews_user_place_visit_active_uq").on(t.userId, t.placeId, t.visitedOn).where(sql`${t.status} in ('published','pending','hidden')`)]);
 
 export const reviewDishes = pgTable("review_dishes", {
   reviewId: text("review_id").notNull().references(() => reviews.id, { onDelete: "cascade" }),
