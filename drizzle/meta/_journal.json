@@ -43,6 +43,13 @@
       "when": 1793880995155,
       "tag": "0005_sinyal",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793920944849,
+      "tag": "0006_google_puan",
+      "breakpoints": true
     }
   ]
 }
