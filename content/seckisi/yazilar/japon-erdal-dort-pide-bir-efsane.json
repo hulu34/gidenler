@@ -18,7 +18,7 @@
   "body": {
     "tr": [
       {
-        "p": "Gazete Oksijen'in Ocak 2026 haberine göre Japon Erdal, o tarihten yaklaşık beş ay önce Galata'da, Serdar-ı Ekrem'in bir alt sokağında açıldı. Kapıda restoranın adını yazan bir tabela yok; kırmızı noktalı küçük bir işaret ve köşede “Pideci” yazısı var. Odatv'de Salih Seçkin Sevinç içeriyi bir ramen dükkânına benzetiyor: kapıdan perdeyle giriliyor, logoda bir Japon güneşi var. Rehberler ve ziyaret videoları salonda küçük bir havuzdan ve görünür bir taş fırından söz ediyor."
+        "p": "Gazete Oksijen'in Ocak 2026 haberine göre Japon Erdal, o tarihten yaklaşık beş ay önce Galata'da, Serdar-ı Ekrem'in bir alt sokağında açıldı. Kapıda restoranın adını yazan bir tabela yok; kırmızı noktalı küçük bir işaret ve köşede “Pideci” yazısı var. Odatv'de Salih Seçkin Sevinç içeriyi bir ramen dükkânına benzetiyor: kapıdan perdeyle giriliyor, logoda bir Japon güneşi var. Rehberler ve ziyaret videoları salondaki küçük bir havuzdan söz ediyor."
       },
       {
         "p": "Siparişler masaya serilen beyaz kâğıda yazılıyor; beklerken aynı kâğıda renkli kalemlerle çizim yapılabiliyor. Bir Doz Minik Güzel Şey blogu bu kâğıdı hem masa örtüsü hem adisyon olarak anlatıyor."
@@ -61,7 +61,7 @@
     ],
     "en": [
       {
-        "p": "According to a January 2026 report in Gazete Oksijen, Japon Erdal had opened in Galata about five months earlier, on a side street just below Serdar-ı Ekrem. No sign on the door gives the restaurant's name; there is a small red-dot mark and the word “Pideci” on the corner. Writing for Odatv, Salih Seçkin Sevinç likens the interior to a ramen shop: you enter through a curtain, and the logo carries a Japanese sun. Guides and visit videos mention a small pool in the dining room and a stone oven in view."
+        "p": "According to a January 2026 report in Gazete Oksijen, Japon Erdal had opened in Galata about five months earlier, on a side street just below Serdar-ı Ekrem. No sign on the door gives the restaurant's name; there is a small red-dot mark and the word “Pideci” on the corner. Writing for Odatv, Salih Seçkin Sevinç likens the interior to a ramen shop: you enter through a curtain, and the logo carries a Japanese sun. Guides and visit videos mention a small pool in the dining room."
       },
       {
         "p": "Orders are written on the white paper spread over the table, and while you wait you can draw on the same sheet with coloured pencils. The blog Bir Doz Minik Güzel Şey describes the paper as both tablecloth and bill."
@@ -275,7 +275,7 @@
   },
   "preparedAt": "2026-10-30",
   "publishedAt": "2026-10-30",
-  "updatedAt": null,
+  "updatedAt": "2026-11-05",
   "newOpening": false,
   "commercial": {
     "state": "var",
@@ -378,8 +378,8 @@
           "en": "The post states the venue paid for no promotion or partnership."
         },
         "note": {
-          "tr": "Samsun usulü ince hamurlu pideler, tabelasız kapı, Japon esintili dekor ve havuz, salondan görülen taş fırın; Haziran 2026 fiyatlarıyla açık kuşbaşılı ve pastırmalı.",
-          "en": "Thin Samsun-style pide, an unsigned door, Japanese-inspired decor with a pool, a stone oven in view; open diced-beef and pastırma pides with June 2026 prices."
+          "tr": "Samsun usulü ince hamurlu pideler, tabelasız kapı, Japon esintili dekor ve havuz; Haziran 2026 fiyatlarıyla açık kuşbaşılı ve pastırmalı.",
+          "en": "Thin Samsun-style pide, an unsigned door, Japanese-inspired decor with a pool; open diced-beef and pastırma pides with June 2026 prices."
         }
       },
       {
