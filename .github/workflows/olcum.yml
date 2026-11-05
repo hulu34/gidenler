@@ -395,220 +395,29 @@ jobs:
   s3-entegre:
     if: contains(github.event.head_commit.message, '[s3]')
     runs-on: ubuntu-latest
-    strategy: { fail-fast: false, matrix: { ref: [feature/gece3-medya] } }
+    timeout-minutes: 25
+    # dl.min.io hazır program dağıtmıyor (410). Sunucu: MinIO kaynaktan derlenir; yedek olarak Docker imajı. Sahte depo yok.
+    strategy: { fail-fast: false, matrix: { sunucu: [minio-kaynak, minio-docker] } }
     steps:
       - uses: actions/checkout@v4
-        with: { ref: "${{ matrix.ref }}" }
+        with: { ref: feature/gece3-medya }
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
+      - if: matrix.sunucu == 'minio-kaynak'
+        uses: actions/setup-go@v5
+        with: { go-version: "1.24", cache: false }
+      - if: matrix.sunucu == 'minio-kaynak'
+        run: GOBIN=/tmp go install github.com/minio/minio@latest && /tmp/minio --version | head -2 && (MINIO_ROOT_USER=testkey MINIO_ROOT_PASSWORD=testsecret123 nohup /tmp/minio server /tmp/d --address :9000 >/tmp/m.log 2>&1 &)
+      - if: matrix.sunucu == 'minio-docker'
+        run: docker run -d --name s3 -p 9000:9000 -e MINIO_ROOT_USER=testkey -e MINIO_ROOT_PASSWORD=testsecret123 minio/minio server /data && docker exec s3 minio --version | head -2
+      - run: for i in $(seq 1 60); do curl -fs http://127.0.0.1:9000/minio/health/live && echo "S3 hazır" && break; sleep 2; done
       - run: npm ci --no-audit --no-fund
-      - run: curl -fsSL -o /tmp/minio https://dl.min.io/server/minio/release/linux-amd64/minio && chmod +x /tmp/minio && (MINIO_ROOT_USER=testkey MINIO_ROOT_PASSWORD=testsecret123 nohup /tmp/minio server /tmp/d --address :9000 >/tmp/m.log 2>&1 &) && sleep 6
-      - run: /tmp/minio --version | head -1
       - run: npx tsx scripts/s3test.ts
         env: { S3_TEST_ENDPOINT: "http://127.0.0.1:9000", S3_TEST_KEY: testkey, S3_TEST_SECRET: testsecret123 }
-      # uygulamanın kendi fotoğraf servisi ve dosya ucu, gerçek MinIO'ya bağlı (sahte depo yok)
+      # uygulamanın kendi fotoğraf servisi ve dosya ucu, gerçek MinIO'ya bağlı
       - if: always()
         run: npx tsx scripts/s3akis.ts
         env: { S3_TEST_ENDPOINT: "http://127.0.0.1:9000", S3_TEST_KEY: testkey, S3_TEST_SECRET: testsecret123 }
-  karsilastir10:
-    if: contains(github.event.head_commit.message, '[kars10]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
-      - run: node ops/karsilastir10.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}", SURUM: "${{ env.SURUM }}" }
-      - if: always()
-        run: test -d out/kars10 && tar -C out -czf out/kars10.tgz kars10 && rm -rf out/kars10 && openssl cms -encrypt -aes256 -binary -outform DER -in out/kars10.tgz -out out/kars10.tgz.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: kars10, path: out/kars10.tgz.cms, if-no-files-found: ignore }
-  sor-e2e:
-    if: contains(github.event.head_commit.message, '[sor]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
-      - run: node ops/sor-e2e.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-kmgpca6vh-hulu34.vercel.app" }
-      - if: always()
-        run: test -d out/sor && tar -C out -czf out/sor.tgz sor && rm -rf out/sor && openssl cms -encrypt -aes256 -binary -outform DER -in out/sor.tgz -out out/sor.tgz.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sor, path: out/sor.tgz.cms, if-no-files-found: ignore }
-  sor-e2e-ai:
-    if: contains(github.event.head_commit.message, '[sor-e2e-ai]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
-      - run: node ops/sor-e2e-ai.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app" }
-      - if: always()
-        run: test -d out/sorai-ekran && tar -C out -czf out/sorai-ekran.tgz sorai-ekran && rm -rf out/sorai-ekran && openssl cms -encrypt -aes256 -binary -outform DER -in out/sorai-ekran.tgz -out out/sorai-ekran.tgz.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sorai-ekran, path: out/sorai-ekran.tgz.cms, if-no-files-found: ignore }
-  sor-son:
-    if: contains(github.event.head_commit.message, '[sor-son]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env: { DAL: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app" }
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chrome chromium
-      # Sor son commit'i: SEO, Seçki, puan tutarlılığı aynı Preview'da (kendi Neon dalı); demo yalnız okuma
-      - id: seo
-        run: node ops/seo-preview.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SEO_HOST: "${{ env.DAL }}" }
-      - id: secki
-        if: always()
-        run: node ops/seckisi.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SECKI_HOST: "${{ env.DAL }}", ARAC: "1" }
-      - id: demo
-        if: always()
-        run: node ops/demo.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", DEMO_HOST: "demo.gidenler.com" }
-      - id: puan
-        if: always()
-        run: node ops/puan-tutarlilik.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PUAN_HOST: "${{ env.DAL }}" }
-      - if: always()
-        run: mkdir -p out && tar -C out -czf sorson.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in sorson.tgz -out sorson.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sorson, path: sorson.cms, if-no-files-found: ignore }
-  sor-r1:
-    if: contains(github.event.head_commit.message, '[sor-r1]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      # yalnız regresyon seti; ücretsiz günlük kota yolda dolabilir (gerçek 429 davranışı da ölçülür)
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-r1", SET: "r1", GAP: "25000" }
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-btwsic3l6-hulu34.vercel.app", ETIKET: "veri-r1", SET: "r1", GAP: "2000" }
-      - if: always()
-        run: test -d out && tar -C out -czf out-sorr1.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sorr1.tgz -out sorr1.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sorr1, path: sorr1.cms, if-no-files-found: ignore }
-  sor-v4:
-    if: contains(github.event.head_commit.message, '[sor-v4]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      # yayın öncesi son doğrulama: görülmemiş v4 seti, aynı commit AI açık (dal) ve AI kapalı (CLI)
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-v4", SET: "v4", GAP: "25000" }
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-ihbwxfvh0-hulu34.vercel.app", ETIKET: "veri-v4", SET: "v4", GAP: "2000" }
-      - if: always()
-        run: test -d out && tar -C out -czf out-sorv4.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sorv4.tgz -out sorv4.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sorv4, path: sorv4.cms, if-no-files-found: ignore }
-  sor-v5:
-    if: contains(github.event.head_commit.message, '[sor-v5]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      # yayın öncesi son doğrulama: görülmemiş v5 seti, aynı commit AI açık (dal) ve AI kapalı (CLI)
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-v5", SET: "v5", GAP: "25000" }
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-kmgpca6vh-hulu34.vercel.app", ETIKET: "veri-v5", SET: "v5", GAP: "2000" }
-      - if: always()
-        run: test -d out && tar -C out -czf out-sorv5.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sorv5.tgz -out sorv5.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sorv5, path: sorv5.cms, if-no-files-found: ignore }
-  sor-d1:
-    if: contains(github.event.head_commit.message, '[sor-d1]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      # d966b95 düzeltmesi: Preview dalı, AI açık, küçük set (kota Production ile ortak)
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-d1", SET: "d1", GAP: "15000" }
-      - if: always()
-        run: test -d out && tar -C out -czf out-sord1.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sord1.tgz -out sord1.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sord1, path: sord1.cms, if-no-files-found: ignore }
-  sor-canli:
-    if: contains(github.event.head_commit.message, '[sor-canli]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
-      # canlı: yazım yok, Google uçları engelli; ölçüm yalnız anahtarla
-      - run: node ops/sor-canli.mjs
-        env: { SOR_OLCUM_TOKEN: "${{ secrets.SOR_OLCUM_TOKEN }}" }
-      - if: always()
-        run: test -d out/sorcanli && tar -C out -czf out/sorcanli.tgz sorcanli && openssl cms -encrypt -aes256 -binary -outform DER -in out/sorcanli.tgz -out out/sorcanli.tgz.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sorcanli, path: out/sorcanli.tgz.cms, if-no-files-found: ignore }
-  sor-durum:
-    if: contains(github.event.head_commit.message, '[sor-durum]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: node ops/sor-durum.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOSTS: '{"cli":"gidenler-ch7t009bv-hulu34.vercel.app","git":"gidenler-lcdirpgip-hulu34.vercel.app","git-ucretsiz":"gidenler-bdqga2r3z-hulu34.vercel.app","dal":"gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app","cli-yeni":"gidenler-kmgpca6vh-hulu34.vercel.app"}' }
-  sor-gercek:
-    if: contains(github.event.head_commit.message, '[sor-gercek]')
-    runs-on: ubuntu-latest
-    timeout-minutes: 90
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      # model: dalın en yeni dağıtımı (anahtar eklenip yeniden dağıtılınca AI açık); veri: aynı kodun anahtarsız dağıtımı
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model", SET: "v3", GAP: "25000" }
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-btwsic3l6-hulu34.vercel.app", ETIKET: "veri", SET: "v3", GAP: "2000" }
-      # regresyon seti r1: aynı son commit, AI açık ve kapalı
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app", ETIKET: "model-r1", SET: "r1", GAP: "25000" }
-      - run: node ops/sor-gercek.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SOR_HOST: "gidenler-btwsic3l6-hulu34.vercel.app", ETIKET: "veri-r1", SET: "r1", GAP: "2000" }
-      - if: always()
-        run: test -d out && tar -C out -czf out-sorai.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in out-sorai.tgz -out sorai.cms ops/olcum.pem
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with: { name: sorai, path: sorai.cms, if-no-files-found: ignore }
   medya-canli:
     if: contains(github.event.head_commit.message, '[medya-canli]')
     runs-on: ubuntu-latest
