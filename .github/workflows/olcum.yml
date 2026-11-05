@@ -315,6 +315,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: sprint-sifreli, path: out/sprint.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  gpuan-preview:
+    if: contains(github.event.head_commit.message, '[gpuan-preview]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/gpuan-preview.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: gidenler-5fii08x8q-hulu34.vercel.app, PROD_DEPLOY: gidenler-ntr5yu9tn-hulu34.vercel.app,
+               SLUGS: "adile-sultan-ev-yemekleri-umraniye-restorani-umraniye,akinti-burnu-balik-restaurant-besiktas,altinkapi-restaurant-fatih,etci-mehmet-bakirkoy,nelipide-kadikoy,pizza-lazza-sancaktepe,adab-eski-usul-meyhane-sariyer,adile-hanim-konagi-beyoglu,antula-gurme-beykoz,baklava-hanem-sisli,bay-manti-uskudar,cekmekoy-nefist-doner-cekmekoy,irem-et-lokantasi-kagithane,niwa-tuzla,adile-sultan-ev-yemekleri-uskudar,altin-sini-avcilar,asmali-durumcu-beyoglu,cinaralti-mangalbasi-atasehir,desi-vibes-fatih,kronotrop-cihangir-beyoglu" }
+      - if: always()
+        run: test -d out/gpv && tar -C out -czf out/gpv.tgz gpv && rm -rf out/gpv && openssl cms -encrypt -aes256 -binary -outform DER -in out/gpv.tgz -out out/gpv.tgz.cms ops/olcum.pem && rm out/gpv.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpv-sifreli, path: out/gpv.tgz.cms, retention-days: 3, if-no-files-found: ignore }
   gpuan-pilot:
     if: contains(github.event.head_commit.message, '[gpuan-pilot]')
     runs-on: ubuntu-latest
