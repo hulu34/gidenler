@@ -444,6 +444,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gkapali-sifreli, path: out/gkapali.tgz.cms, retention-days: 3, if-no-files-found: ignore }
+  redis-durum:
+    if: contains(github.event.head_commit.message, '[redis-durum]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/redis-durum.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROD_DEPLOY: gidenler-ntr5yu9tn-hulu34.vercel.app }
   redis-oz:
     if: contains(github.event.head_commit.message, '[redis-oz]')
     runs-on: ubuntu-latest
