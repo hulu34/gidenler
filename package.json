@@ -15,6 +15,7 @@
     "test:seckisi": "tsx scripts/seckisitest.ts",
     "test:sor": "tsx scripts/sortest.ts",
     "test:arama": "tsx scripts/aramatest.ts",
+    "test:anasayfa": "tsx scripts/anasayfatest.ts",
     "test:seo": "tsx scripts/seotest.ts",
     "test:foto": "node scripts/fototest.mjs",
     "test:medya": "tsx scripts/medyatest.ts",

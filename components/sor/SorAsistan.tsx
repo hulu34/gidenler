@@ -78,8 +78,11 @@ export function SorAsistan() {
     setTurns((x) => [...x.slice(0, -1), turn]); setBusy(false);
   }, []);
 
-  useEffect(() => { const p = new URLSearchParams(window.location.search).get("q"); if (p) void send(p, null, undefined); }, [send]);
-  useEffect(() => { if (turns.length) end.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, [turns, busy]);
+  /* adresle gelen soru (ör. ana sayfadan) bir kez gönderilir: çift istek Beta kotasını harcamasın */
+  const fromUrl = useRef(false);
+  useEffect(() => { if (fromUrl.current) return; fromUrl.current = true; const p = new URLSearchParams(window.location.search).get("q"); if (p) void send(p, null, undefined); }, [send]);
+  /* ilk soruda sayfa başta kalır (soru ve yanıtın başı görünür); takip sorularında yeni yanıta kayar */
+  useEffect(() => { if (turns.length > 1) end.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, [turns, busy]);
 
   return (
     <div className="mx-auto flex max-w-[760px] flex-col gap-6 px-5 pb-24 pt-8 sm:px-7 sm:pt-14">
