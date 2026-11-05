@@ -22,7 +22,7 @@ export async function checkStorage(storage: MediaStorage, f: typeof fetch = fetc
   }
   await run("silme", async () => { await storage.delete(priv); await storage.delete(pub); return !(await storage.get(priv)) && !(await storage.get(pub)); });
   if (storage.purge) await run("CDN temizleme", async () => { await storage.purge!([pub]); });
-  else if (storage.publicViaApp) steps.push({ step: "CDN temizleme", ok: true, note: "özel alan adı yok; dosya uygulamadan sunulur, kaldırılan dosya en çok 10 dakika önbellekte kalabilir" });
+  else if (storage.publicViaApp) steps.push({ step: "CDN temizleme", ok: true, note: "özel alan adı yok; dosya uygulamadan sunulur, kaldırılan dosya en çok 60 saniye önbellekte kalabilir" });
   else steps.push({ step: "CDN temizleme", ok: false, note: "yapılandırılmamış; kaldırılan dosya en çok 1 saat önbellekte kalabilir" });
   if (isCdn) await run("silinen dosya genel adreste yok", async () => (await f(`${storage.publicUrl(pub)}?k=${id}`, { cache: "no-store" })).status === 404);
   return { provider: storage.provider, real: isReal, ok: steps.every((s) => s.ok), steps };
