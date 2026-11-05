@@ -4,7 +4,7 @@ import { realEntities } from "../data/real";
 import { pickDiverse, HOME_EXCLUDE } from "../components/home/HomeDiscover";
 import { sor as soru } from "../lib/sor/ask";
 import { coverOf } from "../lib/media/cover";
-import { googleThemes } from "../lib/homeBoard";
+import { googleRankedThemes } from "../lib/homeBoard";
 import { computeBoards, countable, visitorOf, type SignalRow } from "../lib/signals";
 let ok = 0, bad = 0; const t = (n: string, c: boolean, i = "") => { if (c) ok++; else bad++; console.log(`${c ? "✓" : "✗"} ${n}${i ? " · " + i : ""}`); };
 const p = pickDiverse(realEntities, {});
@@ -39,9 +39,11 @@ t("düzeltme: taşınan sayfa aynı alan adının ana sayfasına çevrildi", web
 /* Google sekmesi havuzu: vitrin/panoda görünen mekân tekrar edilmez; kurucuyla ilişkili ve sosyal tesis alınmaz */
 const allSlugs = realEntities.map((e) => e.slug);
 const shown = new Set(pickDiverse(realEntities, {}).map((e) => e.slug));
-const gt = googleThemes(allSlugs, shown).flatMap((t) => t.items.map((i) => i.slug));
+const gmap = Object.fromEntries(allSlugs.map((s, i) => [s, { rating: 3.5 + (i % 15) / 10, count: 50 + i * 3, checkedAt: new Date().toISOString(), mapsUrl: null }]));
+const gt = googleRankedThemes(gmap, shown).flatMap((t) => [...t.items, ...t.few].map((i) => i.slug));
 t("Google sekmesi: vitrindeki mekân tekrar etmez", !gt.some((s) => shown.has(s)) && shown.has("ismet-baba-uskudar"), `${gt.length} aday`);
 t("Google sekmesi: Japon Erdal ve sosyal tesis yok", !gt.includes("japon-erdal-beyoglu") && !gt.some((s) => /sosyal-tesis/.test(s)));
+t("Google sekmesi: sayfa açılışında Google isteği yok", !/fetch\(/.test(readFileSync("components/home/TopRated.tsx", "utf8")));
 t("Google sekmesi: az değerlendirme eşiği kodda", /MIN_GOOGLE_REVIEWS = 100/.test(readFileSync("components/home/TopRated.tsx", "utf8")));
 const page = readFileSync("app/page.tsx", "utf8");
 t("gerçek ana sayfada tek Seçki yazısı vitrini yok", !/<HomeSecki/.test(page));

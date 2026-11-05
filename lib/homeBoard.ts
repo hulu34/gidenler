@@ -4,7 +4,8 @@ import { getDb } from "@/lib/db/client";
 import { auditLog, menuItems, places, reviews, user } from "@/lib/db/schema";
 import { realEntities } from "@/data/real";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
-import { googleUsable, liveCovers, publishedScores } from "@/lib/live";
+import { liveCovers, publishedScores } from "@/lib/live";
+import { googleRatingMap, MIN_RANK_REVIEWS, type GRatingMap } from "@/lib/gpuan/read";
 import { computeBoards, dayOf, loadSignalRows, SIGNAL_RULES, type Boards } from "@/lib/signals";
 import type { RankItem, RankSection } from "@/lib/rankings";
 import { placeOf } from "@/lib/rankings";
@@ -74,31 +75,34 @@ function balancedProfiles(list: Array<{ slug: string; fields: number }>, n: numb
   return out;
 }
 
-/* Google sekmesi havuzu: Google ile eşleşmiş (onaylı/otomatik) gerçek restoranlar, tür başına farklı semtlerden en çok 5.
-   Sunucu Google'a İSTEK ATMAZ; yalnız hangi mekânların sorgulanabileceğini bilir (place ID veritabanında). */
+/* Google sekmesi: Google puanı tablosundan (günlük Excel aktarımı) tür başına sıralama. Sayfa açılışında Google'a
+   istek GİTMEZ, kullanıcı sorgu sınırına takılmaz. Google puanı 5 üzerinden; Gidenler puanına katılmaz.
+   En az MIN_RANK_REVIEWS değerlendirmesi olan sıralanır; azı ayrı ve sırasız gösterilir. */
 const G_THEMES: Array<{ key: string; label: string; re: RegExp }> = [
+  { key: "hepsi", label: "Tümü", re: /./ },
   { key: "balik", label: "Balık", re: /^Balık restoranı$/ }, { key: "meyhane", label: "Meyhane", re: /^Meyhane$/ },
   { key: "kebap", label: "Kebap", re: /^Kebapçı \/ Ocakbaşı$/ }, { key: "lokanta", label: "Lokanta", re: /^Lokanta$/ },
   { key: "pide", label: "Pide", re: /^Pideci$/ }, { key: "kahvalti", label: "Kahvaltı", re: /^Kahvaltı$/ },
 ];
+const G_TOP = 5;
 /** shown: ana sayfada (vitrin + pano) zaten görünen mekânlar — Google sekmesinde tekrar edilmez. */
-export function googleThemes(usable: string[], shown: Set<string> = new Set()): GoogleTheme[] {
-  const u = new Set(usable);
+export function googleRankedThemes(map: GRatingMap, shown: Set<string> = new Set()): GoogleTheme[] {
+  const item = (e: (typeof realEntities)[number]) => {
+    const g = map[e.slug]!;
+    return { slug: e.slug, name: e.name, place: [e.subcategory, e.location?.district].filter(Boolean).join(" · "), rating: g.rating, count: g.count, mapsUrl: g.mapsUrl, checkedAt: g.checkedAt };
+  };
   return G_THEMES.map((t) => {
-    const out: GoogleTheme["items"] = [], ds = new Set<string>();
-    for (const e of realEntities) {
-      if (out.length >= 5 || !u.has(e.slug) || HOME_EXCLUDE.has(e.slug) || shown.has(e.slug) || /sosyal tesis/i.test(e.name) || !t.re.test(e.subcategory ?? "")) continue;
-      const d = e.location?.district ?? ""; if (ds.has(d)) continue; ds.add(d);
-      out.push({ slug: e.slug, name: e.name, place: [e.subcategory, d].filter(Boolean).join(" · ") });
-    }
-    return { key: t.key, label: t.label, items: out };
-  }).filter((t) => t.items.length >= 3);
+    const pool = realEntities.filter((e) => map[e.slug] && !HOME_EXCLUDE.has(e.slug) && !shown.has(e.slug) && !/sosyal tesis/i.test(e.name) && t.re.test(e.subcategory ?? ""));
+    const ranked = pool.filter((e) => map[e.slug]!.count >= MIN_RANK_REVIEWS).map(item).sort((a, b) => b.rating - a.rating || b.count - a.count || a.slug.localeCompare(b.slug)).slice(0, G_TOP);
+    const few = pool.filter((e) => map[e.slug]!.count < MIN_RANK_REVIEWS).map(item).sort((a, b) => b.count - a.count).slice(0, 3);
+    return { key: t.key, label: t.label, items: ranked, few, pool: pool.length };
+  }).filter((t) => t.items.length >= (t.key === "hepsi" ? 1 : 3));
 }
 
 export interface RealBoard { sections: Array<RankSection & { note?: string | null; fallback?: { title: string; items: RankItem[] } }>; measuredDays: number; googleThemes: GoogleTheme[] }
 
 export async function realBoard(): Promise<RealBoard> {
-  const [b, scores, talked, profiles, covers, usable] = await Promise.all([signalBoards(), publishedScores(), talked30(), sourcedProfiles(), liveCovers(), googleUsable()]);
+  const [b, scores, talked, profiles, covers, gmap] = await Promise.all([signalBoards(), publishedScores(), talked30(), sourcedProfiles(), liveCovers(), googleRatingMap()]);
   /* aynı mekân ana sayfada iki kez görünmez: fotoğraflı vitrindekiler panoya, panodakiler birbirine tekrar girmez */
   const used = new Set(pickDiverse(realEntities, covers).map((e) => e.slug));
   const once = (xs: RankItem[]) => xs.filter((x) => (used.has(x.slug) ? false : (used.add(x.slug), true)));
@@ -113,12 +117,12 @@ export async function realBoard(): Promise<RealBoard> {
   const profilePick = once(balancedProfiles(profiles.filter((x) => !used.has(x.slug)), L).map((s) => itemOf(s, "kaynaklı profil")).filter(ok));
   return {
     measuredDays: b?.days ?? 0,
-    googleThemes: googleThemes(usable, used),
+    googleThemes: googleRankedThemes(gmap, used),
     sections: [
       { key: "popular", title: "Haftanın popülerleri", window: "Son 7 gün", hint: "Gidenler'deki gerçek ziyaret, kaydetme ve yönlendirmeler; aynı kişinin tekrarı tek sayılır.", items: popular, signalKind: "text",
         note: popular.length ? null : b?.reason.popular ?? "Etkileşim ölçümü bu sürümle başlıyor; yeterli gerçek veri oluşunca liste açılır." },
       { key: "top", title: "En yüksek puanlılar", window: "Gidenler puanı", hint: "Yalnız gerçek deneyimlerden, yayın eşiğini geçen Gidenler puanı (10 üzerinden). Google puanı buraya katılmaz.", items: top, signalKind: "text",
-        note: top.length ? null : "Henüz yayın eşiğini geçen Gidenler puanı yok. Google puanını görmek için aşağıdaki Google sekmesini aç; iki puan karışmaz." },
+        note: top.length ? null : "Henüz yayın eşiğini geçen Gidenler puanı yok. Google puanları aşağıdaki Google sekmesinde; iki puan karışmaz." },
       { key: "talked", title: "En çok konuşulanlar", window: "Son 30 gün", hint: "Son 30 günde yayımlanan gerçek Gidenler deneyimi sayısı.", items: talk, signalKind: "text",
         note: talk.length ? null : "Son 30 günde iki ya da daha çok deneyim yazılan mekân henüz yok." },
       { key: "rising", title: "Yükselenler", window: "7 gün ↔ önceki 7", hint: "Son 7 günün etkileşimi, önceki 7 günle karşılaştırılır; az veriden yükseliş üretilmez.", items: rising, signalKind: "text",

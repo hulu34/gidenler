@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { compareEntities } from "@/lib/decision";
 import { listCards } from "@/lib/api";
 import { usePublished } from "@/components/score/PublishedProvider";
+import { useGoogleRatings } from "@/components/google/GoogleRatings";
 import { applyPublishedAll } from "@/lib/score/publishedCards";
 import { getEntityById } from "@/data/entities";
 import { score1 } from "@/lib/format";
@@ -31,6 +32,7 @@ function fmt(v: number | string | null, f: ComparisonRow["format"]) {
  */
 export default function ComparePage() {
   const published = usePublished();
+  const gmap = useGoogleRatings();
   const cards = useMemo(() => applyPublishedAll(listCards(), published).filter((c) => c.score !== null && c.category.compliance.showScores), [published]);
   const [a, setA] = useState(DEMO_VISIBLE ? "sakura-omakase" : "");
   const [b, setB] = useState(DEMO_VISIBLE ? "moda-lokantasi" : "");
@@ -147,6 +149,13 @@ export default function ComparePage() {
                       </tr>
                     );
                   })}
+                  {ents.some((e) => gmap[e.slug]) && (
+                    <tr className="border-t border-line" data-google-karsilastir>
+                      <td className="py-2.5 pr-4 text-ink-2">Google puanı <span className="text-[11px] text-ink-3">(5 üzerinden · Gidenler puanı değildir)</span></td>
+                      {ents.map((e) => { const g = gmap[e.slug]; return (
+                        <td key={e.id} className="tnum py-2.5 text-right font-semibold">{g ? <>★ {g.rating.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}/5 <span className="text-[12px] font-normal text-ink-3">· {g.count.toLocaleString("tr-TR")}</span></> : <span className="text-ink-3">—</span>}</td>); })}
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
