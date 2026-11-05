@@ -213,6 +213,8 @@ const tie = (seed: string, slug: string) => { let h = 2166136261; for (const c o
 export interface Candidate { slug: string; name: string; kind: string; district: string; address: string | null; href: string; facts: string[]; why: string[]; caveats: string[]; score: number; sourced: boolean; areaFit: "tam" | "yakin" | "ilce" | "yok" | null; dishHit: boolean }
 
 const GENERIC_KINDS = new Set(["Restoran"]);
+/* yalnız yemek adları: "Japon Erdal", "Adana Sofrası" gibi köken sözcükleri mutfak çelişkisi sayılmaz */
+const NAME_DISH = ["burger", "pizza", "sushi", "doner", "kebap", "kebab", "lahmacun", "kofte", "manti", "steak", "biftek", "ramen", "waffle", "tantuni", "kumpir", "cigkofte"];
 const SOSYAL = /\b(sosyal tesis|polis evi|orduevi|ordu evi|askeri gazino|belediyesi .*tesis|ogretmenevi|ogretmen evi)/;
 /* kent lokantası herkese açık belediye lokantasıdır: sosyal tesis sayılmaz */
 /* "uygun fiyat" ölçütü: fiyatı kayıtlı mekânların ortancası. Fiyatı bilinmesi ucuz olduğunu göstermez. */
@@ -255,6 +257,11 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
   if (i.cuisine) {
     const c = CUISINES.find((x) => x.key === i.cuisine);
     if (c) {
+      /* adı başka bir mutfağı açıkça söyleyen kayıt (ör. kahvaltı isteğinde "Burger House"): tür etiketi tek başına yetmez;
+         adında ya da menüsünde istenen mutfak yoksa önerilmez (adıyla sorulduysa gösterilir) */
+      const nameOther = !named && !c.terms.some((t) => name.includes(fold(t))) && !(c.text ?? []).some((t) => menu.includes(fold(t)))
+        && NAME_DISH.some((t) => t !== c.key && !c.terms.includes(t) && new RegExp(`\\b${t}`).test(name));
+      if (nameOther) return null;
       if (c.kinds.includes(v.kind)) { s += 40; why.push(`Türü: ${v.kind}.`); }
       /* "lokanta" sözcüğü yalnız türü belirsiz kayıtta geçerli: Steakhouse, adında lokanta var diye esnaf lokantası olmaz */
       else if ((c.key !== "esnaf" || GENERIC_KINDS.has(v.kind)) && [...c.terms, ...(c.text ?? [])].some((t) => name.includes(fold(t)))) { s += 30; why.push(`Adında ${c.label} geçiyor.`); }
@@ -339,6 +346,12 @@ export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
   for (const a of asked.filter((x) => x.key !== "ekonomik" && !unverified.includes(x))) {
     const yes = pool.filter((c) => verified(VENUES.find((v) => v.slug === c.slug)!, a));
     if (yes.length < Math.min(pool.length, 5)) notes.push(`${up(a.label)} yalnız ${yes.slice(0, 3).map((c) => c.name).join(", ")} kaydında geçiyor; diğerlerinde doğrulanmadı.`);
+  }
+  /* kamu kurumu sosyal tesisi tek başına kaldıysa ana öneri olmaz: uyarısıyla etiketli alternatif */
+  if (pool.length && pool.every((c) => SOSYAL.test(fold(c.name))) && !i.name) {
+    if (!alternatives.length) { alternatives = pool.slice(0, 3); altLabel = "Kamu kurumuna ait sosyal tesis; herkese açık olmayabilir, giriş koşulunu gitmeden kontrol et"; }
+    relaxed = relaxed ?? `${i.area ?? i.areaText ?? "Bu istek"} için herkese açık kayıtlı ${label ?? "mekân"} bulamadım.`;
+    pool = [];
   }
   if (i.attrs.includes("populer")) notes.push("Gidenler puanı ya da popülerlik sıralaması henüz yayımlanmadı; seçimi kayıtlı bilgilere göre yaptım, sıralama bir beğeni ölçüsü değil.");
   if (pool.length && (i.party ?? 0) >= 5) notes.push(`${i.party} kişilik grup için yer ve rezervasyon durumu kayıtlarımızda yok; gitmeden mekânı aramanı öneririm.`);

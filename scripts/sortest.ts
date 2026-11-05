@@ -140,6 +140,15 @@ async function main() {
   ok("kapı: kayıtta olmayan nitelik düşer", unsupported("Çok sakin ve romantik bir yer.", ["Tür: Meyhane"]) && !unsupported("Meyhane türünde, Beyoğlu'nda.", ["Tür: Meyhane", "İlçe: Beyoğlu"]));
   ok("kapı: kayıtla çelişen yokluk iddiası düşer", unsupported("Samsun pidesi özel olarak belirtilmemiş, ancak genel pideci olduğu için seçildi.", ["Tür: Pideci", "Kaynaklı kaydında Samsun pidesi geçiyor"]) && unsupported("Menüde kuru fasulye geçmiyor.", ["Tür: Lokanta", "Kuru fasulye"]));
   ok("kapı: 'yer almasa da', 'sunmadığı' kalıpları da düşer", unsupported("Galata’da pide sunan bir pideci; Samsun pidesi menüsünde yer almasa da bölgeyle uyumlu.", ["Tür: Pideci", "Kaynaklı kaydında Samsun pidesi geçiyor"]) && unsupported("Köfte sunmadığı için seçilmedi.", ["Menüsünde köfte var"]));
+  ok("kapı: boş uygunluk cümlesi düşer ('isteğe uygun')", unsupported("Kadıköy'de pideci, istenen pide çeşidine uygun.", ["Tür: Pideci"]) && unsupported("Kadıköy'de pideci, konumu ve menüsüyle isteğe uygun.", ["Tür: Pideci"]) && unsupported("Pide odaklı menüsü talebi karşılıyor.", ["Tür: Pideci"]) && unsupported("Kahvaltı sunan bir diğer Beşiktaş lokasyonu, seçenek çeşitliliği sağlar.", ["Tür: Kahvaltı"]));
+  ok("kapı: somut gerekçe kalır", !unsupported("Menüsünde Samsun pidesi var, Galata'da.", ["Tür: Pideci", "Menüden: Samsun pidesi", "Adres: Galata"]) && !unsupported("Pideci, Kadıköy'de.", ["Tür: Pideci", "İlçe: Kadıköy"]));
+  {
+    const k = await sor({ query: "Beşiktaş'ta kahvaltı" });
+    ok("ad-mutfak çelişkisi: kahvaltı isteğinde adı burger olan yer önerilmez", !k.items.some((x) => /burger/i.test(x.name)) && !k.alternatives.some((x) => /burger/i.test(x.name)), k.items.map((x) => x.name).join(", "));
+    /* tam adla: çelişki kuralı adıyla sorulan yere uygulanmaz. (Kısmi ad "Beny Burger House" önceden de burger mutfağı sayılıyordu: açık konu) */
+    const n = await sor({ query: "Beny Burger House & Cafeteria" });
+    ok("ad-mutfak çelişkisi: adıyla sorulan yer yine bulunur", n.items.some((x) => /beny burger/i.test(x.name)), n.items.map((x) => x.name).join(", "));
+  }
   ok("kapı: kayıtla uyumlu yokluk notu kalır", !unsupported("Samsun pidesi özel olarak belirtilmemiş, genel bir pideci.", ["Tür: Pideci", "İlçe: Beyoğlu"]) && !unsupported("Kebap yok, yalnız pide.", ["Tür: Pideci"]));
   {
     const a = await sor({ query: "Fatih'te köfte" }), b = await sor({ query: "Bodrum'da balık", context: a.context, shown: a.shown });
