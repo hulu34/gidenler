@@ -4,7 +4,8 @@ import { getStorage } from "@/lib/media/storage";
 import { assetAccess, staffRole } from "@/lib/media/photoArchive";
 
 /* GET /api/media/file/<anahtar> — Dosya sunumu. public/ yalnız onaylı fotoğraf; pending/ yalnız yükleyen ve personel.
-   Özel alan adı varsa onaylı dosyalar CDN'den gelir; yoksa onaylı dosyalar da bu uçtan 10 dakika önbellekle sunulur. */
+   Özel alan adı varsa onaylı dosyalar CDN'den gelir; yoksa onaylı dosyalar da bu uçtan 60 saniye önbellekle sunulur:
+   kaldırılan ya da hesabı kapanan fotoğraf en geç 60 sn içinde kenar önbellekten de düşer (uzaktan temizlenemeyen tek kopya budur). */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 const nf = () => new Response("Not found", { status: 404, headers: { "cache-control": "no-store" } });
@@ -26,7 +27,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ key: str
   if (!o) return nf();
   return new Response(new Uint8Array(o.bytes), { headers: {
     "content-type": "image/webp", "x-content-type-options": "nosniff", "content-security-policy": "default-src 'none'; sandbox",
-    "cache-control": isPublic ? "public, max-age=600, s-maxage=600" : "private, no-store",
+    "cache-control": isPublic ? "public, max-age=60, s-maxage=60" : "private, no-store",
     ...(isPublic ? {} : { "x-robots-tag": "noindex" }),
   } });
 }

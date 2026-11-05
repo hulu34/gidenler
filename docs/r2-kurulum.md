@@ -11,11 +11,11 @@ Fiyat ve kurallar 31 Ekim 2026'da okundu, 5 Kasım 2026'da `developers.cloudflar
 | Silme | Ücretsiz | Ücretsiz |
 | Çıkış | Ücretsiz | Ücretsiz |
 
-**5.000 restoran tahmini** (fatura değil): mekân başına ortalama 20 onaylı fotoğraf, fotoğraf başına üç boyut toplam ~400 KB → 100.000 fotoğraf ≈ 40 GB → depolama ≈ (40 − 10) × 0,015 ≈ **0,45 USD/ay**. Yükleme başına 3 PUT + onayda 3 kopya: 100.000 fotoğraf ≈ 600.000 Class A, ücretsiz katmanda kalır. Görüntüleme: özel alan adı yokken her görsel isteği uygulamadan geçer ve 10 dakika önbellekte kalır; önbellek dışı istek R2'de 1 Class B'dir. Ayda 10 milyon önbellek dışı görsel isteğine kadar ücretsiz.
+**5.000 restoran tahmini** (fatura değil): mekân başına ortalama 20 onaylı fotoğraf, fotoğraf başına üç boyut toplam ~400 KB → 100.000 fotoğraf ≈ 40 GB → depolama ≈ (40 − 10) × 0,015 ≈ **0,45 USD/ay**. Yükleme başına 3 PUT + onayda 3 kopya: 100.000 fotoğraf ≈ 600.000 Class A, ücretsiz katmanda kalır. Görüntüleme: özel alan adı yokken her görsel isteği uygulamadan geçer ve 60 saniye önbellekte kalır; önbellek dışı istek R2'de 1 Class B'dir. Ayda 10 milyon önbellek dışı görsel isteğine kadar ücretsiz.
 
 ## Görsel adresi: DNS değişmeden başlanır
 Özel alan adı zorunlu değildir. `MEDIA_PUBLIC_BASE` boşsa onaylı dosyalar uygulamanın `/api/media/file/` ucundan, `www.gidenler.com` üzerinden sunulur. Kova herkese kapalı kalır, DNS değişmez.
-- **Bedeli:** görsel trafiği Vercel'den geçer. Kaldırılan dosya en çok 10 dakika önbellekte kalabilir.
+- **Bedeli:** görsel trafiği Vercel'den geçer. Kaldırılan dosya en çok 60 saniye önbellekte kalabilir (5 Kasım'da 10 dakikadan indirildi; kısa süre, kaldırılan fotoğrafın açık kalmaması için).
 - **Ne zaman geçilir:** Vercel kullanım panosunda görsel trafiği belirginleşince. O zaman R2 özel alan adı gerekir; bu, alan adının Cloudflare'de bölge olmasını ister. `gidenler.com` GoDaddy'de ve kısmi kurulum yalnız Business ve Enterprise planında var, bu yüzden o aşamada ayrı bir görsel alan adı ya da ad sunucusu taşıma kararı verilir. `r2.dev` üretim için önerilmez.
 
 ## Sizin yapacaklarınız
