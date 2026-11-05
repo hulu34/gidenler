@@ -16,7 +16,7 @@ concurrency:
 env:
   SURUM_HOST: www.gidenler.com
   EKRAN_ETIKET: sonra
-  MEDYA_HOST: gidenler-ihcfdrom5-hulu34.vercel.app
+  MEDYA_HOST: gidenler-iz23iy3cy-hulu34.vercel.app   # gece 3: feature/gece3-medya (Preview, izole Neon)
   SURUM: A
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
   NEW_HOST: gidenler-etjppcktn-hulu34.vercel.app
@@ -418,6 +418,16 @@ jobs:
       - if: always()
         run: npx tsx scripts/s3akis.ts
         env: { S3_TEST_ENDPOINT: "http://127.0.0.1:9000", S3_TEST_KEY: testkey, S3_TEST_SECRET: testsecret123 }
+  cift:
+    if: contains(github.event.head_commit.message, '[cift]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/cift-gonderim.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: "${{ env.MEDYA_HOST }}" }
   medya-canli:
     if: contains(github.event.head_commit.message, '[medya-canli]')
     runs-on: ubuntu-latest

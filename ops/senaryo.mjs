@@ -63,7 +63,9 @@ const gov = { body: "Senaryo testi için yazılmış örnek deneyim metni; öğl
 const SL = "efes-pide-ve-lahmacun-sisli";
 const par = await Promise.all([1, 2, 3].map(() => api("/api/reviews/", { u: U, method: "POST", body: JSON.stringify({ slug: SL, ...gov }) })));
 const st = par.map((r) => r.status);
-ok("B: çift gönderimde tek deneyim", st.filter((x) => x === 200 || x === 201).length === 1, st.join());
+/* tekrar artık 200 replay ile aynı kaydı döner (a93b3c3): tek yeni kayıt (201) ve bütün başarılı yanıtlar aynı kimlik */
+const pj = await Promise.all(par.map((r) => r.clone().json().catch(() => ({}))));
+ok("B: çift gönderimde tek deneyim", st.filter((x) => x === 201).length === 1 && new Set(pj.filter((j) => j.id).map((j) => j.id)).size === 1, st.join());
 const yid = (await Promise.all(par.map((r) => r.json().catch(() => ({}))))).find((j) => j.id)?.id;
 ok("B: başkası deneyimi değiştiremez", [403, 404].includes((await api(`/api/reviews/${yid}/`, { u: V, method: "PATCH", body: JSON.stringify(gov) })).status));
 ok("B: başkası deneyimi silemez", [403, 404].includes((await api(`/api/reviews/${yid}/`, { u: V, method: "DELETE" })).status));
