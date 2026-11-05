@@ -526,3 +526,14 @@ export const opsCounters = pgTable("ops_counters", {
   key: text("key").notNull(),
   n: integer("n").notNull().default(0),
 }, (t) => [primaryKey({ columns: [t.day, t.key] })]);
+
+/* KEŞİF SİNYALLERİ — Haftanın Popülerleri ve Yükselenler için gerçek etkileşim (0005).
+   Satır = (gün, mekân, tür, ziyaretçi özeti). Ziyaretçi özeti: o güne özgü tuzla HMAC (ham IP/kimlik saklanmaz,
+   günler arasında eşleştirilemez). Aynı kişinin aynı gün aynı mekândaki tekrarı tek satırdır (birincil anahtar).
+   35 günden eski satırlar yazma sırasında silinir. */
+export const signalEvents = pgTable("signal_events", {
+  day: text("day").notNull(),
+  slug: text("slug").notNull(),
+  kind: text("kind").notNull(),
+  visitor: text("visitor").notNull(),
+}, (t) => [primaryKey({ columns: [t.day, t.slug, t.kind, t.visitor] }), index("signal_events_day_idx").on(t.day)]);

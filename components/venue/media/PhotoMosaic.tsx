@@ -115,16 +115,26 @@ export function PhotoMosaic({ slug, name, photos, google, hasCover, addHref }: {
     return "sm:col-span-1 sm:row-span-1";
   };
   const hasGoogle = gPhotos.length > 0;
+  /* DİKEY FOTOĞRAFLAR (ör. telefonla çekilmiş 3:4 işletme arşivi): yatay kutuya kırpılıp büyütülmez.
+     Kareler kendi oranına yakın yan yana dizilir; tarayıcıya gerçek kare genişliği bildirilir (doğru dosya iner). */
+  const portrait = shown.filter((p) => p.w && p.h && p.h > p.w * 1.1).length > k / 2;
+  const PCOLS = ["", "sm:grid-cols-[minmax(0,460px)]", "sm:grid-cols-2", "sm:grid-cols-3", "sm:grid-cols-4", "sm:grid-cols-4"];
+  /* yatay düzende her karenin masaüstü genişliği (sizes): yanlış küçük değer bulanık büyütmeye yol açar */
+  const deskW = (i: number) => (k === 1 ? 1180 : k === 2 || i === 0 || k === 3 || (k === 4 && i === 1) ? 590 : 295);
 
   return (
-    <section aria-label={`${name} fotoğrafları`} className="mt-5">
+    <section aria-label={`${name} fotoğrafları`} className="mt-5" data-mozaik={portrait ? "dikey" : "yatay"}>
       {/* TEK yapı: mobilde kaydırmalı şerit, masaüstünde mozaik (aynı <img>; gizli ikinci kopya indirilmez) */}
-      <div ref={strip} className={`-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:overflow-visible sm:px-0 ${k === 1 && !google ? "sm:h-[clamp(220px,32vw,380px)]" : "sm:h-[clamp(260px,38vw,440px)]"}`}>
+      <div ref={strip} className={portrait
+        ? `-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:mx-0 sm:grid sm:h-[clamp(340px,40vw,520px)] sm:gap-2 sm:overflow-visible sm:px-0 ${PCOLS[Math.min(k, 5)]}`
+        : `-mx-5 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-4 sm:grid-rows-2 sm:overflow-visible sm:px-0 ${k === 1 && !google ? "sm:h-[clamp(220px,32vw,380px)]" : "sm:h-[clamp(260px,38vw,440px)]"}`}>
         {all.map((p, i) => (
-          <div key={p.src} className={`relative aspect-[4/3] w-[86%] shrink-0 snap-center sm:aspect-auto sm:w-auto ${i < 5 ? span(i) : "sm:hidden"}`}>
-            {/* mobilde kapak 500 px sürümünden (LCP); masaüstünde kareye göre */}
-            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0} sizes={`(max-width: 640px) 60vw, ${i === 0 || k <= 2 ? (k === 1 ? "1180px" : "590px") : "295px"}`} />
-            {i === k - 1 && (
+          <div key={p.src} className={portrait
+            ? `relative aspect-[4/5] w-[72%] shrink-0 snap-center sm:aspect-auto sm:w-auto ${i < 5 ? "" : "sm:hidden"} ${i === 4 ? "sm:hidden" : ""}`
+            : `relative aspect-[4/3] w-[86%] shrink-0 snap-center sm:aspect-auto sm:w-auto ${i < 5 ? span(i) : "sm:hidden"}`}>
+            <Tile p={p} i={i} onOpen={setOpen} priority={i === 0}
+              sizes={portrait ? `(max-width: 640px) 72vw, ${Math.round(1180 / Math.min(k, 4))}px` : `(max-width: 640px) 86vw, ${deskW(i)}px`} />
+            {i === Math.min(k, portrait ? 4 : 5) - 1 && (
               <Link href={galleryHref} className="absolute right-3 top-3 hidden rounded-full bg-paper/95 px-3.5 py-1.5 text-[12.5px] font-bold text-ink shadow hover:bg-paper sm:inline-block">
                 Tüm fotoğraflar{total > 1 ? ` (${Math.max(all.length, total)})` : ""}
               </Link>
@@ -132,9 +142,9 @@ export function PhotoMosaic({ slug, name, photos, google, hasCover, addHref }: {
           </div>
         ))}
         {Array.from({ length: holes }, (_, i) => (
-          <div key={`hole-${i}`} data-hole aria-hidden className="aspect-[4/3] w-[86%] shrink-0 snap-center animate-pulse bg-sheet sm:hidden" />
+          <div key={`hole-${i}`} data-hole aria-hidden className={`${portrait ? "aspect-[4/5] w-[72%]" : "aspect-[4/3] w-[86%]"} shrink-0 snap-center animate-pulse bg-sheet sm:hidden`} />
         ))}
-        <Link href={galleryHref} className="flex aspect-[4/3] w-[40%] shrink-0 snap-center flex-col items-center justify-center gap-1 border border-line-2 text-[13px] font-semibold sm:hidden">
+        <Link href={galleryHref} className={`flex ${portrait ? "aspect-[4/5] w-[36%]" : "aspect-[4/3] w-[40%]"} shrink-0 snap-center flex-col items-center justify-center gap-1 border border-line-2 text-[13px] font-semibold sm:hidden`}>
           <span className="text-[22px]" aria-hidden>▦</span>Tüm fotoğraflar
         </Link>
       </div>

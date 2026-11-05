@@ -22,14 +22,17 @@ export function GoogleRatingBadge({ slug, google }: { slug: string; google: bool
   const g = useGoogleView(slug, google);
   if (!google) return null;
   const v = g.k === "ok" ? g.v : null;
+  /* puan gelmediyse (sınır, hata, puansız işletme) yer ayrılmaz: başlık ile fotoğraf arasında boşluk kalmaz */
+  if (g.k !== "loading" && !v?.rating) return null;
   return (
-    <div className="flex min-h-[38px] items-center" aria-live="polite">
+    <div className="flex min-h-[38px] items-center" aria-live="polite" data-google-puan>
       {g.k === "loading" && <span className="h-[34px] w-64 animate-pulse rounded-full bg-sheet" aria-label="Google puanı yükleniyor" />}
       {v?.rating ? (
         /* Google içeriği Gidenler içeriğinden ayrışsın: çerçeveli kap + resmî logo aynı kapta */
         <a href={v.mapsUri} target="_blank" rel="noopener noreferrer"
           className="group inline-flex items-center gap-x-2.5 rounded-full border border-line-2 bg-sheet py-1 pl-3.5 pr-1 text-[13px] text-ink-2 hover:border-ink">
-          <span className="tnum text-[17px] font-extrabold text-ink">{v.rating.toLocaleString("tr-TR", { minimumFractionDigits: 1 })}</span>
+          <span className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Google puanı</span>
+          <span className="tnum text-[17px] font-extrabold text-ink">{v.rating.toLocaleString("tr-TR", { minimumFractionDigits: 1 })}<span className="text-[12px] font-semibold text-ink-3">/5</span></span>
           <Stars v={v.rating} />
           {v.count ? <span className="tnum">{v.count.toLocaleString("tr-TR")} değerlendirme</span> : null}
           <span className="px-2.5 pb-[5px] pt-2.5"><GoogleMapsLogo /></span>

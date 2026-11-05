@@ -3,6 +3,7 @@ import { z } from "zod";
 import { createReview } from "@/lib/community/reviews";
 import { rulesFor } from "@/lib/community/reviewRules";
 import { H, ReviewBody, fail, guard, lockOnce, refresh } from "@/lib/community/reviewApi";
+import { countable, recordSignal } from "@/lib/signals";
 
 /* POST /api/reviews — deneyim yayınla. Giriş zorunlu; kullanıcı başına saatte 5, aynı mekân ve aynı ziyaret ayı için tek etkin deneyim; aynı gönderimin tekrarı tek kayıt. */
 export const runtime = "nodejs";
@@ -26,5 +27,8 @@ export async function POST(req: Request) {
   /* aynı gönderimin tekrarı: yeni kayıt yok, puan yeniden hesaplanmaz */
   if (r.replay) return NextResponse.json(r, { status: 200, headers: H });
   refresh(slug);
+  /* keşif sinyali: yalnız yayımlanan deneyim, gerçek kullanıcı (test/işletme hesabı değil), test isteği değil */
+  if (r.status === "published" && (g.user as { kind?: string | null }).kind !== "test" && (g.user as { kind?: string | null }).kind !== "business" && countable(req.headers))
+    await recordSignal(g.db, { slug, kind: "review", who: [`kullanici:${g.user.id}`] }).catch(() => {});
   return NextResponse.json(r, { status: 201, headers: H });
 }

@@ -16,6 +16,7 @@ import { AskAI } from "@/components/home/AskAI";
 import { QuickFind } from "@/components/home/HomeSecki";
 import { HomeSor } from "@/components/home/HomeSor";
 import { HomeDiscover } from "@/components/home/HomeDiscover";
+import { RealBoard } from "@/components/home/RealBoard";
 import { ContinueModule } from "@/components/decision/ContinueModule";
 import { HomeRankings, type HomeData } from "@/components/home/HomeRankings";
 import { HOME_CATEGORIES, OTHER_CATEGORIES, buildRankings, buildRegulated, forYouRanking } from "@/lib/rankings";
@@ -127,6 +128,8 @@ export default function HomePage() {
         )}
         {DEMO_VISIBLE && <ContinueModule />}
         {/* Seçki ana sayfada tek yazıyla öne çıkarılmaz (yalnız birden çok yayımlanmış yazı olunca); /seckisi/ aynen kalır. */}
+        {/* gerçek site: demodaki pano tasarımı gerçek veriyle (popüler, en yüksek puan, konuşulan, yükselen, kaynaklı, sana göre) */}
+        {!DEMO_VISIBLE && <RealBoard />}
         {DEMO_VISIBLE ? <RealVenues /> : <HomeDiscover />}
         {!DEMO_VISIBLE && <RealExplore />}
         {!DEMO_VISIBLE && <ContinueModule />}

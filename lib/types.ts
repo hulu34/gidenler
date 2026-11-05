@@ -184,6 +184,8 @@ export interface VenuePhoto {
   addedBy: "işletme" | "kullanıcı" | "commons";
   /** Kırpma odağı, CSS object-position (ör. "50% 70%"). */
   focus?: string;
+  /** Asıl dosyanın piksel boyutu (oran: dikey/yatay yerleşim seçimi için). */
+  w?: number; h?: number;
   /** Yüklenen fotoğrafın arşiv kimliği (bildirim için). */
   mediaId?: string;
 }

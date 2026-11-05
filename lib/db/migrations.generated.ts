@@ -152,5 +152,13 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
   "statements": [
    "CREATE UNIQUE INDEX \"reviews_user_place_visit_active_uq\" ON \"reviews\" USING btree (\"user_id\",\"place_id\",\"visited_on\") WHERE \"reviews\".\"status\" in ('published','pending','hidden');"
   ]
+ },
+ {
+  "tag": "0005_sinyal",
+  "hash": "dcdd330f7bbfc32c32f2f90c38d9ced45c89822f70596df65806b29469a5cfa5",
+  "statements": [
+   "CREATE TABLE \"signal_events\" (\n\t\"day\" text NOT NULL,\n\t\"slug\" text NOT NULL,\n\t\"kind\" text NOT NULL,\n\t\"visitor\" text NOT NULL,\n\tCONSTRAINT \"signal_events_day_slug_kind_visitor_pk\" PRIMARY KEY(\"day\",\"slug\",\"kind\",\"visitor\")\n);",
+   "CREATE INDEX \"signal_events_day_idx\" ON \"signal_events\" USING btree (\"day\");"
+  ]
  }
 ];
