@@ -61,7 +61,10 @@ export function openingHoursSpec(raw?: string | null) {
 const TYPE: Record<string, string> = { "cat.restaurant": "Restaurant", "cat.cafe": "CafeOrCoffeeShop", "cat.bar": "BarOrPub" };
 
 /** Restoran işaretlemesi. Google'ın zorunlu alanı adres: adresi olmayan kayıtta üretilmez. */
-export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelated: boolean) {
+export const absoluteImage = (src: string) => (src.startsWith("http") ? src : `${SITE}${src}`);
+
+/** image yalnız gerçek, hak kaydı olan kapaktan gelir; Google görseli ve yer tutucu asla. */
+export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelated: boolean, image?: string | null) {
   if (!e.isReal || e.isDemo || !e.address || !TYPE[e.categoryId]) return null;
   const geo = e.location?.geo;
   const hours = openingHoursSpec(e.contact?.openingHours ?? e.hours);
@@ -70,6 +73,7 @@ export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelat
     "@type": TYPE[e.categoryId],
     name: e.name,
     url: `${SITE}/mekan/${e.slug}/`,
+    ...(image ? { image: absoluteImage(image) } : {}),
     address: { "@type": "PostalAddress", streetAddress: e.address, addressLocality: e.location?.district, addressRegion: "İstanbul", addressCountry: "TR" },
     ...(geo ? { geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng } } : {}),
     ...(e.contact?.phone ? { telephone: e.contact.phone } : {}),

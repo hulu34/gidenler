@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CAT_LABEL, SOURCE_LABEL, type ViewPhoto } from "./photos";
 import { GoogleMapsLogo } from "./GoogleAttribution";
+import { PhotoReport } from "./PhotoReport";
 
 /* ──────────────────────────────────────────────────────────────────────────
    TAM EKRAN FOTOĞRAF GÖRÜNTÜLEYİCİ
@@ -101,6 +102,7 @@ export function Lightbox({ photos, index, onIndex, onClose, title }: {
           : <span className="rounded-full bg-white/15 px-2 py-0.5 text-[11px] font-semibold">{SOURCE_LABEL[p.source]}</span>}
         {p.license && <span className="text-white/70">{p.license}</span>}
         {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-white/80 underline underline-offset-2">{p.source === "google" ? "Google Haritalar'da gör ↗" : "Kaynağında aç ↗"}</a>}
+        {p.mediaId && <PhotoReport key={p.mediaId} id={p.mediaId} />}
         {p.flagUri && <a href={p.flagUri} target="_blank" rel="noopener noreferrer" className="text-white/60 underline underline-offset-2">Bildir</a>}
         {p.source === "google" && <span className="text-white/60">Google'dan canlı gelir, Gidenler'de saklanmaz.</span>}
       </div>
