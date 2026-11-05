@@ -830,6 +830,30 @@ async function main() {
       await db.delete(schema.user).where(eq(schema.user.id, uid));
     } else ok("paralel test mekânı bulunamadı", false);
   }
+  /* HESAP KAPATMA: kullanıcının deneyim, oturum ve listeleri gider; başkasının verisi kalır; denetim kaydı kalır; puan yeniden hesaplanır */
+  {
+    const { closeAccount, accountDeleteEnabled } = await import("../lib/community/account");
+    const { memoryStorage } = await import("../lib/media/storage");
+    const [pp] = await db.select({ id: schema.places.id, slug: schema.places.slug }).from(schema.places).where(eq(schema.places.slug, "pandeli-fatih")).limit(1);
+    const mk = async (n: string) => { const id = uuidv7(); await db.insert(schema.user).values({ id, name: n, email: `${id}@example.invalid`, emailVerified: true, kind: "test" }); await db.insert(schema.session).values({ id: uuidv7(), token: uuidv7(), userId: id, expiresAt: new Date(Date.now() + 3600_000) }); return id; };
+    const gid = await mk("Giden Kisi"), kal = await mk("Kalan Kisi");
+    const inpA = { body: "Hesap kapatma testi için yazılmış yeterince uzun bir deneyim metni; servis hızlıydı ve yemek sıcaktı.", visitMonth: new Date(Date.now() - 50 * 864e5).toISOString().slice(0, 7), overall: 7, ratings: {}, returnIntent: "evet", disclosure: "none" } as Parameters<typeof createReview>[3];
+    const ra = await createReview(db, { id: gid, kind: "test" }, pp.slug, inpA, { allowed: true } as never);
+    const rb = await createReview(db, { id: kal, kind: "test" }, pp.slug, { ...inpA, body: inpA.body + " Kalan kişinin deneyimi." }, { allowed: true } as never);
+    const res = await closeAccount(db, memoryStorage(), gid);
+    const leftU = await db.select({ id: schema.user.id }).from(schema.user).where(eq(schema.user.id, gid));
+    const leftR = await db.select({ id: schema.reviews.id }).from(schema.reviews).where(eq(schema.reviews.userId, gid));
+    const leftS = await db.select({ id: schema.session.id }).from(schema.session).where(eq(schema.session.userId, gid));
+    const other = await db.select({ id: schema.reviews.id }).from(schema.reviews).where(eq(schema.reviews.userId, kal));
+    const aud = await db.select({ d: schema.auditLog.detail }).from(schema.auditLog).where(and(eq(schema.auditLog.action, "account_close"), eq(schema.auditLog.refId, gid)));
+    ok("hesap kapatma: kullanıcı, deneyim ve oturum silinir", ra.ok && res.ok && leftU.length === 0 && leftR.length === 0 && leftS.length === 0, res);
+    ok("hesap kapatma: başka kullanıcının deneyimi kalır", rb.ok && other.length === 1);
+    ok("hesap kapatma: denetim kaydı kalır, e-posta ve metin içermez", aud.length === 1 && !JSON.stringify(aud).includes("example.invalid") && !JSON.stringify(aud).includes("deneyim metni"));
+    ok("hesap kapatma: etkilenen mekân puanı yeniden hesaplandı", res.ok && res.rescored === 1 && res.places.includes(pp.slug), res);
+    ok("hesap kapatma: ikinci çağrı güvenli (not_found)", !(await closeAccount(db, memoryStorage(), gid)).ok);
+    ok("hesap kapatma: Production'da bayraksız kapalı, Preview'da açık", !accountDeleteEnabled({ VERCEL: "1", VERCEL_ENV: "production" } as never) && accountDeleteEnabled({ VERCEL: "1", VERCEL_ENV: "production", ACCOUNT_DELETE_ENABLED: "1" } as never) && accountDeleteEnabled({ VERCEL: "1", VERCEL_ENV: "preview" } as never));
+    await db.delete(schema.reviews).where(eq(schema.reviews.userId, kal)); await db.delete(schema.user).where(eq(schema.user.id, kal));
+  }
   /* puan: aynı kişinin birden çok ziyareti kişi başına bir kez sayılır (en son ziyaret) */
   {
     const now = new Date("2026-11-05T00:00:00Z");

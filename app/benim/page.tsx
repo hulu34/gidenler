@@ -16,6 +16,7 @@ import { MyReservations } from "@/components/reservation/MyReservations";
 import { AccountBox } from "@/components/auth/AccountBox";
 import { MyReviews } from "@/components/auth/MyReviews";
 import { MyPhotos } from "@/components/auth/MyPhotos";
+import { CloseAccount } from "@/components/auth/CloseAccount";
 import { MyNotifications, MyThresholds } from "@/components/auth/MyThresholds";
 import { ActiveSessions } from "@/components/auth/ActiveSessions";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
@@ -72,6 +73,7 @@ export default function MyPage() {
       <MyPhotos />
       <ActiveSessions />
       <MyReservations />
+      <CloseAccount />
 
       {empty && (
         <section className="mt-8 border-t-2 border-line-strong pt-7">

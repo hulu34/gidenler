@@ -51,15 +51,22 @@ export function usePhotoPicks() {
     const u = urls.current;
     return () => { u.forEach((x) => URL.revokeObjectURL(x)); };
   }, []);
-  const add = (files: FileList | null) => {
+  /* room: deneyimde zaten duran (reddedilmemiş) fotoğraflar düşülerek kalan yer */
+  const add = (files: FileList | null, room = max) => {
     if (!files) return;
-    const next = [...files].slice(0, Math.max(0, max - picks.length)).map((file, i) => {
+    const next = [...files].slice(0, Math.max(0, room - picks.length)).map((file, i) => {
       const url = URL.createObjectURL(file); urls.current.add(url);
       return { key: `${Date.now()}-${i}-${file.name}`, file, url, state: "ready" as const, progress: 0 };
     });
     setPicks((p) => [...p, ...next]);
   };
   const remove = (key: string) => setPicks((p) => p.filter((x) => x.key !== key));
+  /* değiştir: aynı yerde yeni dosya; önceki önizleme bırakılır */
+  const replace = (key: string, file: File | undefined) => {
+    if (!file) return;
+    const url = URL.createObjectURL(file); urls.current.add(url);
+    setPicks((p) => p.map((x) => (x.key === key ? { key: `${Date.now()}-r-${file.name}`, file, url, state: "ready", progress: 0 } : x)));
+  };
   const patch = (key: string, v: Partial<Pick>) => setPicks((p) => p.map((x) => (x.key === key ? { ...x, ...v } : x)));
   const uploadOne = async (reviewId: string, p: Pick) => {
     patch(p.key, { state: "uploading", progress: 0, error: undefined });
@@ -68,7 +75,7 @@ export function usePhotoPicks() {
   };
   /* sırayla: küçük bellek, okunur ilerleme */
   const uploadAll = async (reviewId: string) => { for (const p of picks) if (p.state !== "done") await uploadOne(reviewId, p); };
-  return { enabled, max, picks, rights, rightsType, setRightsType, add, remove, uploadOne, uploadAll };
+  return { enabled, max, picks, rights, rightsType, setRightsType, add, remove, replace, uploadOne, uploadAll };
 }
 export type PhotoPicks = ReturnType<typeof usePhotoPicks>;
 
@@ -113,13 +120,17 @@ export function PhotoPicker({ ctl, entityName, reviewId }: { ctl: PhotoPicks; en
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={p.url} alt="Seçilen fotoğrafın önizlemesi" className="h-full w-full object-cover" />
             <button type="button" onClick={() => ctl.remove(p.key)} aria-label="Bu fotoğrafı kaldır" className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 text-[14px] text-white">×</button>
+            <label className="absolute inset-x-0 bottom-0 flex min-h-8 cursor-pointer items-center justify-center bg-black/60 text-[11px] font-bold text-white focus-within:outline focus-within:outline-2">
+              Değiştir
+              <input type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" aria-label="Bu fotoğrafı başka bir fotoğrafla değiştir" onChange={(e) => { ctl.replace(p.key, e.target.files?.[0]); e.target.value = ""; }} />
+            </label>
           </li>
         ))}
         {picks.length < max && (
           <li>
             <label className="flex h-24 w-24 cursor-pointer flex-col items-center justify-center gap-1 border border-dashed border-line-strong text-[12px] font-semibold text-ink-2 hover:bg-sheet focus-within:outline focus-within:outline-2">
               <span aria-hidden className="text-[20px]">+</span>Fotoğraf seç
-              <input type="file" accept="image/jpeg,image/png,image/webp" multiple className="sr-only" onChange={(e) => { ctl.add(e.target.files); e.target.value = ""; }} />
+              <input type="file" accept="image/jpeg,image/png,image/webp" multiple className="sr-only" onChange={(e) => { ctl.add(e.target.files, max); e.target.value = ""; }} />
             </label>
           </li>
         )}
@@ -168,6 +179,7 @@ export function PhotoResults({ ctl, reviewId }: { ctl: PhotoPicks; reviewId: str
           </li>
         ))}
       </ul>
+      {!busy && done > 0 && <p className="mt-3 text-[12.5px] text-ink-3">Fotoğrafların bu deneyime bağlı. Durumlarını <a href={`${BASE}/benim/#fotograflarim`} className="font-semibold underline underline-offset-2">Benim Gidenler&apos;im → Fotoğraflarım</a> bölümünden görebilir, kaldırabilirsin.</p>}
     </section>
   );
 }
