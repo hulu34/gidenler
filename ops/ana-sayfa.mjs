@@ -29,7 +29,7 @@ for (const [dev, o, soru] of CIHAZ) {
   ok(`${dev}: soru alanı ve Sor düğmesi ilk ekranda`, box && btn && box.y + box.height <= vh && btn.y + btn.height <= vh, `alan alt=${Math.round(box?.y + box?.height)} / ${vh}`);
   const orn = await p.locator("[data-ana-sor-ornek]").count();
   const ornGor = await p.locator("[data-ana-sor-ornek]").first().boundingBox();
-  ok(`${dev}: örnek sorular (${orn}), ilki ilk ekranda`, orn >= 3 && ornGor && ornGor.y + ornGor.height <= vh);
+  ok(`${dev}: örnek sorular (${orn}), ilki ilk ekranda; zayıf örnek yok`, orn >= 3 && ornGor && ornGor.y + ornGor.height <= vh && !(await p.locator("[data-ana-sor-ornek]").allInnerTexts()).some((x) => /Beşiktaş.ta kahvaltı/.test(x)));
   const txt = await p.evaluate(() => document.body.innerText);
   ok(`${dev}: ana sayfada Japon Erdal yok (metin ve bağlantı)`, !/Japon Erdal/i.test(txt) && (await p.locator('a[href*="japon-erdal"]').count()) === 0);
   ok(`${dev}: Seçki yazısı ana sayfada tekil vitrin değil`, (await p.locator('a[href*="/seckisi/"]:not([href$="/seckisi/"])').count()) === 0);
@@ -39,10 +39,10 @@ for (const [dev, o, soru] of CIHAZ) {
   ok(`${dev}: üst menü araması duruyor`, (await p.locator('header form[action*="/ara"], header input[type=search]').count()) > 0);
   await p.locator("[data-ana-kesif]").scrollIntoViewIfNeeded(); await p.waitForTimeout(500);
   await p.screenshot({ path: `${OUT}/${dev}-2-kesif.png` });
-  if (soru && SORU) {
+  if (soru && SORU && !(process.env.ORNEK && soru !== "ornek")) {
     await p.evaluate(() => scrollTo(0, 0));
     let gonderilen;
-    if (soru === "ornek") { const l = p.locator("[data-ana-sor-ornek]").nth(1); gonderilen = (await l.innerText()).trim(); await l.click(); }
+    if (soru === "ornek") { const l = p.locator("[data-ana-sor-ornek]").nth(Number(process.env.ORNEK ?? 1)); gonderilen = (await l.innerText()).trim(); await l.click(); }
     else { gonderilen = soru; await p.locator("[data-ana-sor] textarea").fill(soru); await p.screenshot({ path: `${OUT}/${dev}-3-yazildi.png` }); await p.locator("[data-ana-sor] textarea").press("Enter"); }
     await p.waitForURL(/\/sor\/\?q=/, { timeout: 15000 });
     ok(`${dev}: gönderim gerçek /sor'a gider, soru adreste`, new URL(p.url()).searchParams.get("q") === gonderilen);

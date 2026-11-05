@@ -308,7 +308,7 @@ jobs:
         with: { node-version: 22 }
       - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
       - run: node ops/ana-sayfa.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: gidenler-4sv0babe0-hulu34.vercel.app, SORU: "${{ contains(github.event.head_commit.message, '[soru-yok]') && '0' || '1' }}" }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PREVIEW_HOST: gidenler-n5kon2ict-hulu34.vercel.app, ORNEK: "3", SORU: "${{ contains(github.event.head_commit.message, '[soru-yok]') && '0' || '1' }}" }
       - if: always()
         run: test -d out/anasayfa && tar -C out -czf out/anasayfa.tgz anasayfa && rm -rf out/anasayfa && openssl cms -encrypt -aes256 -binary -outform DER -in out/anasayfa.tgz -out out/anasayfa.tgz.cms ops/olcum.pem && rm out/anasayfa.tgz
       - if: always()
