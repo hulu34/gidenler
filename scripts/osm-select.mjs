@@ -43,21 +43,25 @@ export function classify(t) {
     if (any("bakery") || /fırın|börek/.test(n)) return { categoryId: "cat.cafe", kind: "Fırın" };
     return { categoryId: "cat.cafe", kind: "Kafe" };
   }
-  /* restaurant / fast_food */
-  if (/meyhane/.test(n) || any("meyhane")) return { categoryId: "cat.restaurant", kind: "Meyhane" };
-  if (any("fish", "seafood") || /balık|balikci|balıkçı/.test(n)) return { categoryId: "cat.restaurant", kind: "Balık restoranı" };
-  if (any("kebab") || /kebap|ocakbaşı|ocakbasi/.test(n)) return { categoryId: "cat.restaurant", kind: "Kebapçı / Ocakbaşı" };
-  if (any("doner", "döner") || /döner|doner/.test(n)) return { categoryId: "cat.restaurant", kind: "Dönerci" };
-  if (any("pide", "lahmacun") || /pide|lahmacun/.test(n)) return { categoryId: "cat.restaurant", kind: "Pideci" };
-  if (any("manti") || /mantı/.test(n)) return { categoryId: "cat.restaurant", kind: "Mantıcı" };
-  if (any("breakfast") || /kahvaltı/.test(n)) return { categoryId: "cat.restaurant", kind: "Kahvaltı" };
-  if (any("burger")) return { categoryId: "cat.restaurant", kind: "Burger" };
-  if (any("pizza", "italian")) return { categoryId: "cat.restaurant", kind: "Pizza" };
-  if (any("sushi", "japanese")) return { categoryId: "cat.restaurant", kind: "Sushi / Japon" };
-  if (any("ramen")) return { categoryId: "cat.restaurant", kind: "Ramen" };
-  if (any("steak_house", "steak")) return { categoryId: "cat.restaurant", kind: "Steakhouse" };
-  if (any("ice_cream", "dessert") || /tatlı|baklava|muhallebi/.test(n)) return { categoryId: "cat.restaurant", kind: "Tatlıcı" };
-  if (/lokanta|esnaf/.test(n)) return { categoryId: "cat.restaurant", kind: "Lokanta" };
+  /* restaurant / fast_food — önce ADDAKİ açık tür (ASCII yazımlar dahil), sonra mutfak etiketleri.
+     "breakfast" yan etikettir: burger, pizza, steak, sushi gibi asıl türün önüne geçmez (Beny Burger, Usturmaca Balık hatası). */
+  const nn = n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ı/g, "i");
+  if (/meyhane/.test(nn) || any("meyhane")) return { categoryId: "cat.restaurant", kind: "Meyhane" };
+  if (/\bburger/.test(nn)) return { categoryId: "cat.restaurant", kind: "Burger" };
+  if (/\bpizz/.test(nn)) return { categoryId: "cat.restaurant", kind: "Pizza" };
+  if (/steak/.test(nn)) return { categoryId: "cat.restaurant", kind: "Steakhouse" };
+  if (/\bsushi/.test(nn)) return { categoryId: "cat.restaurant", kind: "Sushi / Japon" };
+  if (any("fish", "seafood") || /\bbalik|balikci|\bfish\b/.test(nn)) return { categoryId: "cat.restaurant", kind: "Balık restoranı" };
+  if (any("kebab") || /kebap|kebab|ocakbasi/.test(nn)) return { categoryId: "cat.restaurant", kind: "Kebapçı / Ocakbaşı" };
+  if (any("doner", "döner") || /doner/.test(nn)) return { categoryId: "cat.restaurant", kind: "Dönerci" };
+  if (any("pide", "lahmacun") || /pide|lahmacun/.test(nn)) return { categoryId: "cat.restaurant", kind: "Pideci" };
+  if (any("manti") || /manti/.test(nn)) return { categoryId: "cat.restaurant", kind: "Mantıcı" };
+  /* adda ipucu yoksa: mutfak etiketlerinin SIRASI belirleyicidir (ilk tanınan etiket) */
+  const BY_TAG = [["burger", "Burger"], ["pizza", "Pizza"], ["italian", "Pizza"], ["sushi", "Sushi / Japon"], ["japanese", "Sushi / Japon"], ["ramen", "Ramen"], ["steak_house", "Steakhouse"], ["steak", "Steakhouse"], ["breakfast", "Kahvaltı"], ["ice_cream", "Tatlıcı"], ["dessert", "Tatlıcı"]];
+  for (const tag of c) { const hit = BY_TAG.find(([k]) => k === tag); if (hit) return { categoryId: "cat.restaurant", kind: hit[1] }; }
+  if (/kahvalti/.test(nn)) return { categoryId: "cat.restaurant", kind: "Kahvaltı" };
+  if (/tatli|baklava|muhallebi|kunefe|kadayif|dondurma|gelato/.test(nn)) return { categoryId: "cat.restaurant", kind: "Tatlıcı" };
+  if (/lokanta|esnaf/.test(nn)) return { categoryId: "cat.restaurant", kind: "Lokanta" };
   return { categoryId: "cat.restaurant", kind: "Restoran" };
 }
 
