@@ -40,12 +40,17 @@ const again = await api2("/api/reviews/", { method: "POST", body: JSON.stringify
 const aj = await again.json().catch(() => ({}));
 ok("E: zaman aşımından sonra aynı gönderim başarı (tekrar) döner, yeni kayıt yok", first2.status === 201 && again.status === 200 && aj.replay === true && aj.id === f2.id, `${first2.status} → ${again.status} ${aj.replay ?? aj.error ?? ""}`);
 ok("E: tekrardan sonra tek deneyim", (await say2()).length === 1);
+/* gönderim kilidi 15 sn: aynı kullanıcı + mekân için ardışık istekler arasında beklenir (kilit "busy" döner, kayıt kararı değildir) */
+const kilit = () => new Promise((r) => setTimeout(r, 16000));
+await kilit();
 const diff = await api2("/api/reviews/", { method: "POST", body: JSON.stringify({ slug: SL, ...g, body: g.body + " Tatlı da güzeldi." }) });
 ok("E: aynı ay, farklı metin ikinci kayıt açmaz (409 exists)", diff.status === 409 && (await diff.json().catch(() => ({}))).error === "exists", diff.status);
+await kilit();
 const diffScore = await api2("/api/reviews/", { method: "POST", body: JSON.stringify({ slug: SL, ...g, overall: 3 }) });
-ok("E: aynı metin farklı puanla tekrar sayılmaz (409, puan sessizce yutulmaz)", diffScore.status === 409, diffScore.status);
+ok("E: aynı metin farklı puanla tekrar sayılmaz (409 exists, puan sessizce yutulmaz)", diffScore.status === 409 && (await diffScore.json().catch(() => ({}))).error === "exists", diffScore.status);
 /* farklı ay: ayrı ve gerçek ikinci deneyim (ayrı hesap) */
 const v1 = await api3("/api/reviews/", { method: "POST", body: JSON.stringify({ slug: SL, ...g }) });
+await kilit();
 const v2 = await api3("/api/reviews/", { method: "POST", body: JSON.stringify({ slug: SL, ...g, visitMonth: m2, body: "Daha önceki bir ziyaretim; akşamüstü gittik, kuru fasulye iyiydi ama salon kalabalıktı." }) });
 const son3 = await say3();
 ok("E: farklı aydaki ziyaret ayrı deneyim olarak yazılır", v1.status === 201 && v2.status === 201 && son3.length === 2, `${v1.status} ${v2.status} n=${son3.length}`);
