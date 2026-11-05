@@ -16,6 +16,7 @@ concurrency:
 env:
   SURUM_HOST: www.gidenler.com
   EKRAN_ETIKET: sonra
+  JE_SURUMLER: "1-c23yim45m=gidenler-c23yim45m-hulu34.vercel.app,2-js3xkzf2z=gidenler-js3xkzf2z-hulu34.vercel.app,3-2ibic9hs4=gidenler-2ibic9hs4-hulu34.vercel.app,4-simdi=gidenler-inmwg5yym-hulu34.vercel.app"
   MEDYA_HOST: gidenler-4zkaocx8g-hulu34.vercel.app   # gece 3: feature/gece3-medya 2df8b3e (Preview, izole Neon)
   SURUM: A
   OLD_HOST: gidenler-7ba3pfswn-hulu34.vercel.app
@@ -298,6 +299,22 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: canlidog-sifreli, path: out/canlidog.tgz.cms, retention-days: 3, if-no-files-found: ignore }
+  je-karsilastir:
+    if: contains(github.event.head_commit.message, '[je-karsilastir]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --prefix ops playwright@1.49.1 && npx --prefix ops playwright install --with-deps chromium
+      - run: node ops/je-karsilastir.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", SURUMLER: "${{ env.JE_SURUMLER }}" }
+      - if: always()
+        run: test -d out/je && tar -C out -czf out/je.tgz je && rm -rf out/je && openssl cms -encrypt -aes256 -binary -outform DER -in out/je.tgz -out out/je.tgz.cms ops/olcum.pem && rm out/je.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: je-sifreli, path: out/je.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   ana-sayfa:
     if: contains(github.event.head_commit.message, '[ana-sayfa]')
     runs-on: ubuntu-latest
