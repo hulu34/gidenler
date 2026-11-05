@@ -57,8 +57,9 @@ for (const [dev, o] of [["masaustu", DESK], ["mobil", MOB]]) {
   const nw = await shoot(PH, "/mekan/japon-erdal-beyoglu/", o, `je-yeni-${dev}`);
   const m = await nw.p.evaluate(() => { const s = document.querySelector("[data-mozaik]"); return { mod: s?.getAttribute("data-mozaik"), imgs: [...(s?.querySelectorAll("img") ?? [])].slice(0, 3).map((i) => { const r = i.getBoundingClientRect(); return { w: r.width, h: r.height, nw: i.naturalWidth, nh: i.naturalHeight, src: (i.currentSrc || "").split("/").pop() }; }), dpr: devicePixelRatio }; });
   ok(`${dev}: JE fotoğrafları dikey düzende`, m.mod === "dikey", m.mod);
-  const vis = m.imgs.filter((x) => x.nw > 0);
-  ok(`${dev}: JE görünen karelerde büyütme yok (dosya ≥ ekran × dpr × 0,8)`, vis.length >= 1 && vis.every((x) => x.nw >= x.w * m.dpr * 0.8 || x.nw >= 1000), vis.map((x) => `${x.src} ${Math.round(x.w)}px←${x.nw}`).join(", "));
+  /* naturalWidth srcset'te yoğunluğa bölünmüş gelir; dosyanın gerçek genişliği adındaki boyuttan (…-960.webp) okunur */
+  const vis = m.imgs.filter((x) => x.nw > 0).map((x) => ({ ...x, fw: Number((x.src.match(/-(\d+)\.webp$/) ?? [])[1] ?? 0) }));
+  ok(`${dev}: JE görünen karelerde büyütme yok (dosya ≥ ekran × dpr × 0,8)`, vis.length >= 1 && vis.every((x) => x.fw >= x.w * m.dpr * 0.8), vis.map((x) => `${x.src} ${Math.round(x.w)}px×${m.dpr}←${x.fw}`).join(", "));
   ok(`${dev}: JE kare oranı fotoğrafa yakın (aşırı kırpma yok)`, vis.every((x) => Math.abs(x.w / x.h - x.nw / x.nh) < 0.25), vis.map((x) => `${(x.w / x.h).toFixed(2)}/${(x.nw / x.nh).toFixed(2)}`).join(" "));
   const t = await nw.p.evaluate(() => document.body.innerText);
   ok(`${dev}: JE kurucu açıklaması, Seçki, basın ve 6 video duruyor`, /kurucu/i.test(t) && (await nw.p.locator("#seckide").count()) === 1 && (await nw.p.locator("#h-basin").count()) === 1 && (await nw.p.locator("#seckide iframe, #seckide [data-video], #seckide button").count()) >= 6);
@@ -68,7 +69,7 @@ for (const [dev, o] of [["masaustu", DESK], ["mobil", MOB]]) {
   await nw.ctx.close();
 }
 /* 3) Google puanı ↔ Gidenler puanı: canlı JE profili, Google açık (tek görünüm, ücretsiz kota içinde) */
-{
+if (process.env.LIVE_GOOGLE !== "0") {
   const live = await shoot(LIVE, "/mekan/japon-erdal-beyoglu/", DESK, "puan-ayrimi-canli", { googleOpen: true });
   await live.p.waitForTimeout(2500); await live.p.screenshot({ path: `${OUT}/puan-ayrimi-canli-ilk.png` });
   const t = await live.p.evaluate(() => document.body.innerText);
