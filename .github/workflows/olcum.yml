@@ -315,6 +315,23 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: sprint-sifreli, path: out/sprint.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  google-kimlik:
+    if: contains(github.event.head_commit.message, '[google-kimlik]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/kesif-sprint, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/google-kimlik.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROD_DEPLOY: gidenler-ntr5yu9tn-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/kimlik && tar -C out -czf out/kimlik.tgz kimlik && rm -rf out/kimlik && openssl cms -encrypt -aes256 -binary -outform DER -in out/kimlik.tgz -out out/kimlik.tgz.cms ops/olcum.pem && rm out/kimlik.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: kimlik-sifreli, path: out/kimlik.tgz.cms, retention-days: 3, if-no-files-found: ignore }
   mekan-ag:
     if: contains(github.event.head_commit.message, '[mekan-ag]')
     runs-on: ubuntu-latest
