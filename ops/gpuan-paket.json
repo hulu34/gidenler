@@ -1,0 +1,326 @@
+{
+ "onay": [
+  {
+   "slug": "kizilkayalar-beyoglu",
+   "placeId": "ChIJlzC3FxW3yhQRQKoIQ3yskKY",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 34 m · ad 0.92 · adres 0 · tür Restaurant"
+  },
+  {
+   "slug": "ciya-sofrasi-kadikoy",
+   "placeId": "ChIJhToLome4yhQRE1EMuLSuqlg",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 23 m · ad 1 · adres 0.5 · tür Turkish restaurant · önceki çelişki: kapı numarası farklı"
+  },
+  {
+   "slug": "sultanahmet-koftecisi-kadikoy",
+   "placeId": "ChIJD9IBkYHHyhQRhvp_BzVcTtA",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 11 m · ad 0.92 · adres 0 · tür Kofta restaurant · önceki çelişki: kapı numarası farklı"
+  },
+  {
+   "slug": "beyzade-kunefe-eyupsultan",
+   "placeId": "ChIJgZ4tbtewyhQR0ZUO9BGANSw",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 1 m · ad 0.92 · adres 0.75 · tür Turkish restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "cardak-adalar",
+   "placeId": "ChIJL4__elrByhQRu0oJG_Bd87g",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 10 m · ad 0.92 · tür Fish restaurant"
+  },
+  {
+   "slug": "sehzadem-arnavutkoy",
+   "placeId": "ChIJ-1FuY22ryhQRlOUlPjlKLW4",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 7 m · ad 0.92 · adres 1 · tür Doner kebab restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "awina-restaurant-atasehir",
+   "placeId": "ChIJGdynlvrFyhQRL--_rOwHVCc",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 12 m · ad 0.92 · adres 1 · tür Restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "cajun-corner-sariyer",
+   "placeId": "ChIJqdEzAgC1yhQRtK-OSo_a6nU",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 23 m · ad 1 · tür Fast food restaurant"
+  },
+  {
+   "slug": "yildiz-konyali-sisli",
+   "placeId": "ChIJVaxgHAC3yhQRckY9YI64a84",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 4 m · ad 0.92 · tür Sfiha restaurant"
+  },
+  {
+   "slug": "burger-hopdaddy-sariyer",
+   "placeId": "ChIJeedYtvTKyhQRksA7XsIFeeY",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 14 m · ad 0.86 · adres 1 · tür Hamburger restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "beyti-lokanta-bakirkoy",
+   "placeId": "ChIJR4bvpbajyhQRYr6SoFMs7zc",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 29 m · ad 1 · tür Fine dining restaurant"
+  },
+  {
+   "slug": "ideal-adalar",
+   "placeId": "ChIJf-v7i2rAyhQR25Pq7ulXSLs",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 10 m · ad 0.92 · tür Meyhane"
+  },
+  {
+   "slug": "boga-kagithane",
+   "placeId": "ChIJIyIVRdm2yhQRTqf6zkUpRb8",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 1 m · ad 0.92 · adres 1 · tür Steak house · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "dodo-balik-restaurant-tuzla",
+   "placeId": "ChIJJ6CNeabdyhQRUsxfjrMqt1o",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 19 m · ad 1 · adres 0.67 · tür Fish restaurant · önceki çelişki: telefon çelişiyor · kapı numarası farklı"
+  },
+  {
+   "slug": "benusen-restoran-kadikoy",
+   "placeId": "ChIJrTEXrVO5yhQR8xBPxZxvdp8",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 9 m · ad 0.92 · adres 1 · tür Meyhane · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "ezme-durum-evi-bayrampasa",
+   "placeId": "ChIJ2VbvUnu6yhQRswiBgVLyRvw",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 5 m · ad 1 · adres 1 · tür Durum restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "polat-iskembe-esenyurt",
+   "placeId": "ChIJfSy1v0WnyhQRUu7L5qOqvhY",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 15 m · ad 0.92 · adres 0.5 · tür Restaurant · önceki çelişki: kapı numarası farklı"
+  },
+  {
+   "slug": "gunesin-sofrasi-kadikoy",
+   "placeId": "ChIJt0tpimW4yhQR-eBASF0iO5I",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 22 m · ad 0.92 · adres 0 · tür Meyhane · önceki çelişki: kapı numarası farklı"
+  },
+  {
+   "slug": "ficcin-beyoglu",
+   "placeId": "ChIJbyzm-1-3yhQREwcDH9vdbWY",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 21 m · ad 1 · adres 1 · tür Caucasian restaurant · önceki çelişki: kapı numarası farklı"
+  },
+  {
+   "slug": "nezih-kebap-yuvalama-sariyer",
+   "placeId": "ChIJqVNa1KjHyhQRDkDpVQM8CEg",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 26 m · ad 1 · adres 1 · tür Breakfast restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "cihangir-sosyal-tesisleri-beyoglu",
+   "placeId": "ChIJhUu00di5yhQRNHkU_ET8E9A",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 21 m · ad 0.82 · adres 1 · tür Restaurant"
+  },
+  {
+   "slug": "huqqa-uskudar",
+   "placeId": "ChIJ-6AXt9_HyhQR-LHjLaY3p58",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 11 m · ad 0.92 · adres 0.75 · tür Hookah bar · önceki çelişki: kapı numarası farklı"
+  },
+  {
+   "slug": "safran-pide-borek-salonu-umraniye",
+   "placeId": "ChIJBdDA3_rIyhQROMY8Cb7_cSI",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 6 m · ad 0.92 · adres 1 · tür Pie shop · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "ara-gurme-lahmacun-pide-kebap-sisli",
+   "placeId": "ChIJKRLLQAC3yhQR5FKJShKHHgw",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 11 m · ad 1 · adres 0.83 · tür Turkish restaurant · önceki çelişki: kapı numarası farklı"
+  },
+  {
+   "slug": "hook-balik-pendik",
+   "placeId": "ChIJg5vsDD3byhQRHx5GDW3Pc8w",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 21 m · ad 0.92 · tür Fish restaurant"
+  },
+  {
+   "slug": "tokyoya-japanese-cafe-ve-bistro-umraniye",
+   "placeId": "ChIJGWfCusXJyhQRyrBLhNDIMa4",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 4 m · ad 0.83 · adres 1 · tür Cafe · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "bolpi-gurme-pide-ve-lahmacun-sisli",
+   "placeId": "ChIJF0C3xQG3yhQRDkeFjnw90Yo",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 7 m · ad 0.86 · tür Sfiha restaurant"
+  },
+  {
+   "slug": "hidden-garden-sultanat-fatih",
+   "placeId": "ChIJG2RjnWy5yhQRZj8hMugPem0",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 6 m · ad 0.89 · adres 0.67 · tür Restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "asya-pide-kebap-salonu-pendik",
+   "placeId": "ChIJESjMW3XcyhQRbEUyw38wbfc",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 8 m · ad 0.92 · adres 1 · tür Restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "bysteak-sariyer",
+   "placeId": "ChIJjxoEZPW1yhQRm9inzWol-6Y",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 3 m · ad 0.92 · adres 0.67 · tür French steakhouse restaurant · önceki çelişki: telefon çelişiyor"
+  },
+  {
+   "slug": "hocapasa-pidecisi-fatih",
+   "placeId": "ChIJHV68rOq5yhQRFra9jK9MHqc",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 5 m · ad 1 · adres 0.75 · tür Sfiha restaurant · önceki çelişki: kapı numarası farklı"
+  },
+  {
+   "slug": "big-slice-pizza-sariyer",
+   "placeId": "ChIJuQRTQIW1yhQR91xi8l4-juw",
+   "note": "Sahip onayı bekleniyor · yeniden ölçüm (tam doğrulama): konum 6 m · ad 0.92 · adres 0.33 · tür Pizza restaurant"
+  }
+ ],
+ "yeni": [
+  {
+   "slug": "geyik-beyoglu",
+   "placeId": "ChIJsxGbEmK3yhQRREziS-iU51g",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Geyik Beyoğlu İstanbul\": konum 3 m · ad 1 · adres 0.67 · tür Bar"
+  },
+  {
+   "slug": "mandabatmaz-beyoglu",
+   "placeId": "ChIJey_CUGS3yhQR8We58TT5ifM",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Mandabatmaz Beyoğlu İstanbul\": konum 6 m · ad 1 · adres 0.67 · tür Cafe"
+  },
+  {
+   "slug": "savoy-beyoglu",
+   "placeId": "ChIJU5-EPGK3yhQRpZgAGcjwheo",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Savoy Beyoğlu İstanbul\": konum 12 m · ad 0.92 · tür Breakfast restaurant"
+  },
+  {
+   "slug": "federal-coffee-galata-beyoglu",
+   "placeId": "ChIJFRCRBOe5yhQRHp-GIttVB-k",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Federal Coffee Galata Beyoğlu İstanbul\": konum 2 m · ad 0.79 · adres 1 · tür Coffee shop"
+  },
+  {
+   "slug": "gramaj-beyoglu",
+   "placeId": "ChIJ0f1F1Nq3yhQRGjo-lodmECU",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Gramaj Beyoğlu İstanbul\": konum 5 m · ad 0.92 · adres 0.25 · tür Cafe"
+  },
+  {
+   "slug": "walter-s-coffee-roastery-kadikoy",
+   "placeId": "ChIJ1QbFIWG4yhQRZre_Qwdk7po",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Walter's Coffee Roastery Kadıköy İstanbul\": konum 9 m · ad 1 · adres 1 · tür Coffee shop"
+  },
+  {
+   "slug": "maybe-kadikoy",
+   "placeId": "ChIJ__PijHu4yhQRVkBPxjL6JhM",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Maybe Kadıköy İstanbul\": konum 10 m · ad 1 · adres 1 · tür Brunch restaurant"
+  },
+  {
+   "slug": "6-45-public-house-kadikoy",
+   "placeId": "ChIJ-w3ATwG4yhQR8ZuNPa68_Vk",
+   "note": "Sahip onayı bekleniyor · Maps araması \"6:45 Public House Kadıköy İstanbul\": konum 2 m · ad 1 · adres 1 · tür Bar"
+  },
+  {
+   "slug": "kont-moda-kadikoy",
+   "placeId": "ChIJ3UWl1rm5yhQRwfkxvKW3KzM",
+   "note": "Sahip onayı bekleniyor · Maps araması \"KONT Moda Kadıköy İstanbul\": konum 15 m · ad 1 · adres 1 · tür Coffee shop"
+  },
+  {
+   "slug": "lucio-coffee-kadikoy",
+   "placeId": "ChIJ_aUBUtDHyhQRkC11YkmQ9Rs",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Lucio Coffee Kadıköy İstanbul\": konum 10 m · ad 1 · adres 0.5 · tür Cafe"
+  },
+  {
+   "slug": "lucca-besiktas",
+   "placeId": "ChIJX2Ug_v-3yhQR_ewLcNyaTuc",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Lucca Beşiktaş İstanbul\": konum 5 m · ad 1 · adres 0.67 · tür Mediterranean restaurant"
+  },
+  {
+   "slug": "summit-bar-ve-terrace-besiktas",
+   "placeId": "ChIJ3bvxlaS3yhQRiCGuRu2NFFs",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Summit Bar & Terrace Beşiktaş İstanbul\": konum 50 m · ad 1 · adres 1 · tür Bar"
+  },
+  {
+   "slug": "petra-roasting-co-besiktas",
+   "placeId": "ChIJVSwUZwK2yhQRjO_5P2a4TVc",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Petra Roasting Co. Küçükbebek Caddesi\": konum 9 m · ad 0.92 · adres 0.5 · tür Cafe"
+  },
+  {
+   "slug": "kir-kahvesi-besiktas",
+   "placeId": "ChIJfwtedrC3yhQRxQsqvtmoGLc",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Kır Kahvesi Beşiktaş İstanbul\": konum 14 m · ad 0.92 · tür Cafe"
+  },
+  {
+   "slug": "kurukahveci-fuat-bey-sisli",
+   "placeId": "ChIJMXozBk63yhQRWz6Ofx9Ol8Y",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Kurukahveci Fuat bey Şişli İstanbul\": konum 13 m · ad 1 · adres 0.67 · tür Coffee shop"
+  },
+  {
+   "slug": "coffee-department-sisli",
+   "placeId": "ChIJxSMSiXa3yhQRPmj3Qr0lw98",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Coffee Department Şişli İstanbul\": konum 3 m · ad 0.92 · tür Coffee shop"
+  },
+  {
+   "slug": "chops-cafe-ve-pub-sisli",
+   "placeId": "ChIJlQtLc1a2yhQRr8z34b2JEAY",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Chops Cafe & Pub Şişli İstanbul\": konum 5 m · ad 1 · tür Pub"
+  },
+  {
+   "slug": "the-hill-cafe-sisli",
+   "placeId": "ChIJF-Lu1tu3yhQRRoPgCRBupHs",
+   "note": "Sahip onayı bekleniyor · Maps araması \"The Hill Cafe Şişli İstanbul\": konum 28 m · ad 1 · adres 1 · tür Cafe"
+  },
+  {
+   "slug": "balkaya-pastanesi-erol-usta-sisli",
+   "placeId": "ChIJE7-zJvG2yhQR4DF6uce4KVk",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Balkaya Pastanesi Erol Usta Şişli İstanbul\": konum 5 m · ad 1 · adres 0.71 · tür Patisserie"
+  },
+  {
+   "slug": "vefa-bozacisi-1876-fatih",
+   "placeId": "ChIJNRVgoIy5yhQRdNH4KPnjiTo",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Vefa Bozacısı 1876 Fatih İstanbul\": konum 1 m · ad 0.92 · adres 1 · tür Cafe"
+  },
+  {
+   "slug": "kuzguncuk-cinaralti-uskudar",
+   "placeId": "ChIJY0hRa8K3yhQRVGuwTAT2dz8",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Kuzguncuk Çınaraltı Üsküdar İstanbul\": konum 7 m · ad 1 · adres 0.67 · tür Cafe"
+  },
+  {
+   "slug": "asiyan-books-and-coffee-uskudar",
+   "placeId": "ChIJwVPLpI63yhQRSPwmOtP7HDA",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Aşiyan Books And Coffee Üsküdar İstanbul\": konum 6 m · ad 1 · adres 0.25 · tür Cafe"
+  },
+  {
+   "slug": "katibim-uskudar",
+   "placeId": "ChIJ-eXz7Yi3yhQRC3ES5dv-exE",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Katibim Üsküdar İstanbul\": konum 6 m · ad 1 · adres 1 · tür Mediterranean restaurant"
+  },
+  {
+   "slug": "kiraz-cafe-ve-pastane-uskudar",
+   "placeId": "ChIJzZo-HmfJyhQRXVW32VWkl0U",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Kiraz Cafe & Pastane Üsküdar İstanbul\": konum 15 m · ad 1 · adres 1 · tür Dessert shop"
+  },
+  {
+   "slug": "nevmekan-selimiye-uskudar",
+   "placeId": "ChIJz7ew9wS5yhQR4nXB1bcU9ls",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Nevmekan Selimiye Üsküdar İstanbul\": konum 9 m · ad 1 · adres 1 · tür Cafe"
+  },
+  {
+   "slug": "uskudar-sahne-uskudar",
+   "placeId": "ChIJfUHS-zm3yhQR8l73aQGTNOM",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Üsküdar Sahne Üsküdar İstanbul\": konum 5 m · ad 1 · adres 1 · tür Cafe"
+  },
+  {
+   "slug": "sariyer-hunkar-borekcisi-sariyer",
+   "placeId": "ChIJlQRh1-Lfn0ARP_wt9LmwZaU",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Sarıyer Hünkar Börekçisi Sarıyer İstanbul\": konum 9 m · ad 1 · tür Pie shop"
+  },
+  {
+   "slug": "moc-coffee-roastery-sariyer",
+   "placeId": "ChIJnTl1dmy1yhQRf8pbEfFSfEA",
+   "note": "Sahip onayı bekleniyor · Maps araması \"MOC Coffee Roastery Sarıyer İstanbul\": konum 6 m · ad 1 · tür Coffee shop"
+  },
+  {
+   "slug": "mizu-bakirkoy",
+   "placeId": "ChIJ0b0o0c6jyhQRyyrnIGSLeiM",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Mizu Bakırköy İstanbul\": konum 19 m · ad 1 · adres 0.83 · tür Eclectic restaurant"
+  },
+  {
+   "slug": "d-orient-buyukada-adalar",
+   "placeId": "ChIJBTgZeJfByhQRT3rcg7zx3Tk",
+   "note": "Sahip onayı bekleniyor · Maps araması \"d'Orient Büyükada Adalar İstanbul\": konum 16 m · ad 1 · adres 1 · tür Ice cream shop"
+  },
+  {
+   "slug": "halic-kahve-eyupsultan",
+   "placeId": "ChIJq5GyPU6xyhQRqVK1nLLCBC4",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Haliç Kahve Eyüpsultan İstanbul\": konum 4 m · ad 1 · adres 1 · tür Coffee shop"
+  },
+  {
+   "slug": "suna-nin-yeri-uskudar",
+   "placeId": "ChIJmR56_e_JyhQRAPWJVwzn-vk",
+   "note": "Sahip onayı bekleniyor · Maps araması \"Suna'nın Yeri Üsküdar İstanbul\": konum 4 m · ad 1 · adres 0.75 · tür Seafood restaurant"
+  }
+ ]
+}

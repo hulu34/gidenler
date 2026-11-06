@@ -340,6 +340,33 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-ek-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  gpuan-paket:
+    if: contains(github.event.head_commit.message, '[gpuan-paket]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env: { HOST: gidenler-fb7qwm803-hulu34.vercel.app, HEDEF: preview }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/gpuan-tamamla, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: mkdir -p out && node ops/gpuan-paket.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", NOT_ONEKI: "Preview denemesi · " }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: mkdir -p out/gpuan && cd app && SLUGS="$(cat ../out/paket-slugs.txt)" npx tsx scripts/gpuan-guncelle.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", YENIDEN: "1", BEKLEME_MS: "5000", CIKTI: ../out/gpuan, MAX: "100" }
+      - if: always()
+        run: node ops/gpuan-paket-sonra.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ORNEK: "mandabatmaz-beyoglu,walter-s-coffee-roastery-kadikoy,ciya-sofrasi-kadikoy,beyti-lokanta-bakirkoy,savoy-beyoglu,benusen-restoran-kadikoy" }
+      - if: always()
+        run: cp ops/gpuan-ekran.mjs app/gpuan-ekran.mjs && PREVIEW_HOST=$HOST node app/gpuan-ekran.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROFIL: "mandabatmaz-beyoglu,ciya-sofrasi-kadikoy,savoy-beyoglu", ARAMA: "kahve" }
+      - if: always()
+        run: test -d out/gpuan && tar -C out -czf out/gpuan.tgz gpuan && rm -rf out/gpuan && openssl cms -encrypt -aes256 -binary -outform DER -in out/gpuan.tgz -out out/gpuan.tgz.cms ops/olcum.pem && rm out/gpuan.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpuan-paket-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   gpuan-arama:
     if: contains(github.event.head_commit.message, '[gpuan-arama]')
     runs-on: ubuntu-latest
