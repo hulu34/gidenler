@@ -24,7 +24,9 @@ const FINAL_FILL: Record<string, string> = {
 
 export interface Change { at: string; slug: string; name: string; from: number | null; to: number; fromN: number | null; toN: number | null }
 export interface ClosureInfo { state: string; checkedAt: string; google: string; match: string; official: string; confidence: string; note: string }
-export interface Meta { generatedAt: string; run?: string; note?: string; decisions?: Map<string, Decision>; closures?: Record<string, ClosureInfo>; site?: { shown: number; hidden: number } | null }
+export interface Meta { generatedAt: string; run?: string; note?: string; decisions?: Map<string, Decision>; closures?: Record<string, ClosureInfo>; site?: { shown: number; hidden: number } | null;
+  /** isteğe bağlı: bekleyen eşleşmelerin kanıt seviyesi (A güçlü · B orta · C zayıf/çelişkili) — karar değildir */
+  evidence?: Record<string, { tier: string; why: string; matcher?: string }> }
 
 type Col = { header: string; key: string; width: number };
 function sheet(wb: ExcelJS.Workbook, name: string, cols: Col[], rows: object[], freeze = 1) {
@@ -58,7 +60,9 @@ export async function writeWorkbook(rowsIn: Row[], meta: Meta, changes: Change[]
   const ok = sheet(wb, "Puanı Doğrulananlar", [...base, { header: "Google puanı (5 üzerinden)", key: "rating", width: 12 }, { header: "Değerlendirme sayısı", key: "reviews", width: 12 }, { header: "Eşleşme güveni", key: "confidence", width: 14 }, { header: "Google'daki tür", key: "seenCategory", width: 22 }, { header: "Son kontrol", key: "checkedAt", width: 20 }, { header: "Not", key: "finalReason", width: 50 }, { header: "Google Maps", key: "mapsUrl", width: 30 }, { header: "Gidenler profili", key: "profileUrl", width: 30 }], by(FINAL.shown));
   ok.getColumn("rating").numFmt = "0.0"; link(ok, "mapsUrl"); link(ok, "profileUrl");
   /* 3 · Aktarım Bekleyenler */
-  const wait = sheet(wb, "Aktarım Bekleyenler", [...base, { header: "Nihai durum", key: "finalState", width: 30 }, { header: "Neden", key: "finalReason", width: 60 }, { header: "Okunan puan", key: "rating", width: 10 }, { header: "Eşleşme güveni", key: "confidence", width: 14 }, { header: "Google'da görünen ad", key: "seenName", width: 30 }, { header: "Google'daki tür", key: "seenCategory", width: 20 }, { header: "Konum farkı (m)", key: "distance", width: 10 }, { header: "Ad benzerliği", key: "nameSim", width: 10 }, { header: "Google Maps", key: "mapsUrl", width: 30 }], by(FINAL.awaitingMatch, FINAL.typeReview, FINAL.readError, FINAL.notTried, FINAL.other));
+  const ev = meta.evidence ?? {};
+  const TIER: Record<string, string> = { A: "A · güçlü kanıt — onay önerilir", B: "B · orta — elle bakılmalı", C: "C · zayıf/çelişkili — onaylanmamalı" };
+  const wait = sheet(wb, "Aktarım Bekleyenler", [...base, { header: "Nihai durum", key: "finalState", width: 30 }, { header: "Neden", key: "finalReason", width: 60 }, { header: "Kanıt seviyesi", key: "tier", width: 30 }, { header: "Kanıt", key: "evWhy", width: 60 }, { header: "Okunan puan", key: "rating", width: 10 }, { header: "Eşleşme güveni", key: "confidence", width: 14 }, { header: "Google'da görünen ad", key: "seenName", width: 30 }, { header: "Google'daki tür", key: "seenCategory", width: 20 }, { header: "Konum farkı (m)", key: "distance", width: 10 }, { header: "Ad benzerliği", key: "nameSim", width: 10 }, { header: "Google Maps", key: "mapsUrl", width: 30 }], by(FINAL.awaitingMatch, FINAL.typeReview, FINAL.readError, FINAL.notTried, FINAL.other).map((r) => ({ ...r, tier: ev[r.slug] ? TIER[ev[r.slug].tier] ?? ev[r.slug].tier : "", evWhy: ev[r.slug]?.why ?? "" })));
   tint(wait, "finalState", FINAL_FILL); link(wait, "mapsUrl");
   /* 4 · Yanlış Eşleşmeler */
   const bad = sheet(wb, "Yanlış Eşleşmeler", [...base, { header: "Sorun", key: "finalState", width: 26 }, { header: "Açıklama", key: "finalReason", width: 60 }, { header: "Gidenler'deki adres", key: "address", width: 36 }, { header: "Google'da görünen ad", key: "seenName", width: 30 }, { header: "Google'da görünen adres", key: "seenAddress", width: 40 }, { header: "Google'daki tür", key: "seenCategory", width: 22 }, { header: "Konum farkı (m)", key: "distance", width: 10 }, { header: "Ad benzerliği", key: "nameSim", width: 10 }, { header: "Google Maps", key: "mapsUrl", width: 30 }], by(FINAL.branch, FINAL.location, FINAL.wrongType, FINAL.rejected).concat(act.filter((r) => r.finalState === FINAL.typeReview && r.status === STATUS.typeSuspect)));
@@ -93,6 +97,7 @@ export async function writeWorkbook(rowsIn: Row[], meta: Meta, changes: Change[]
     ["Kesin kapalı (kapanış kaydı)", Object.values(closures).filter((c) => c.state === "closed_confirmed").length],
     ["Kapanması şüpheli (kapanış kaydı)", Object.values(closures).filter((c) => c.state === "closed_suspected").length],
     ["Yönetici kararı olan", [...decisions.values()].length],
+    ...(Object.keys(ev).length ? (["A", "B", "C"].map((t) => [`Bekleyen eşleşme · kanıt ${TIER[t]}`, Object.values(ev).filter((x) => x.tier === t).length]) as Array<[string, number]>) : []),
     ...(meta.site ? [["Sitede gösterilen (veritabanı)", meta.site.shown] as [string, number], ["Sitede gizlenen (veritabanı)", meta.site.hidden] as [string, number]] : []),
     ...(meta.note ? [["Not", meta.note] as [string, string]] : []),
   ];

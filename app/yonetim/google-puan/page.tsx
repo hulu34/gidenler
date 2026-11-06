@@ -41,8 +41,8 @@ export default async function Page() {
         Son çalışma: {tr(r.lastRun.at)} · aktarım {r.lastImport ? (r.lastImport.status === "applied" ? "uygulandı" : "REDDEDİLDİ — site verisi değişmedi") : "yok"} ({tr(r.lastImport?.at)})
       </p>
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Tile k="Denenen" v={r.lastRun.attempted} />
-        <Tile k="Güncellenen puan" v={r.lastRun.updated} />
+        <Tile k="Bugün denenen (TR günü)" v={r.lastRun.attempted} />
+        <Tile k="Bugün güncellenen puan" v={r.lastRun.updated} />
         <Tile k="Hata / engel" v={`${r.lastRun.errors} / ${r.lastRun.blocked}`} tone={r.lastRun.blocked ? "bad" : r.lastRun.errors ? "warn" : "ok"} />
         <Tile k="İnceleme bekleyen" v={r.review.length + r.wrong.length} tone={r.review.length ? "warn" : "ok"} />
         <Tile k="Sitede gösterilen" v={r.site.shown} />

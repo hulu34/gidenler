@@ -171,15 +171,16 @@ export async function ratingStats(db: Db) {
 
 /* ── Günlük yönetici raporu: son çalışmanın tek bakışta özeti (yalnız sayılar ve mekân listeleri; Google'a istek yok) ── */
 export async function dailyReport(db: Db) {
-  const { withDerived, FINAL, STATUS } = await import("./core");
+  const { withDerived, FINAL, STATUS, trDay } = await import("./core");
   const { CLOSURES } = await import("@/lib/closure");
   const [imports, f, stats, decisions] = await Promise.all([importsLog(db, 7), getFile(db, "son"), ratingStats(db), latestDecisions(db)]);
   const last = imports[0] ?? null;
   const parsed = f ? await readWorkbook(f.buf) : null;
   const rows = parsed && !parsed.errors.length ? withDerived(parsed.rows, decisions).filter((r) => r.record === "Aktif") : [];
   const lastRun = rows.reduce((m, r) => (r.attemptAt > m ? r.attemptAt : m), "");
-  const runDay = lastRun.slice(0, 10);
-  const today = rows.filter((r) => r.attemptAt && r.attemptAt.slice(0, 10) === runDay);
+  /* Türkiye günü: günde bir zamanlanmış çalışma olduğundan "bugün denenen" = son günlük çalışma (+ aynı gün elle yapılanlar) */
+  const runDay = lastRun ? trDay(new Date(lastRun)) : "";
+  const today = rows.filter((r) => r.attemptAt && !Number.isNaN(Date.parse(r.attemptAt)) && trDay(new Date(r.attemptAt)) === runDay);
   const final: Record<string, number> = Object.fromEntries(Object.values(FINAL).map((x) => [x, rows.filter((r) => r.finalState === x).length]));
   const pick = (st: string[]) => rows.filter((r) => st.includes(r.finalState)).map((r) => ({ slug: r.slug, placeId: r.placeId, name: r.name, district: r.district, state: r.finalState, reason: r.finalReason.slice(0, 160) }));
   const detail = (last?.detail ?? {}) as { written?: number; changed?: number; hidden?: number; unhidden?: number; kept?: number; errors?: string[] };
@@ -187,7 +188,7 @@ export async function dailyReport(db: Db) {
     file: f ? { id: f.id, kind: f.kind, createdAt: f.createdAt.toISOString(), rows: f.rows } : null,
     lastImport: last ? { at: last.createdAt.toISOString(), status: last.status, written: detail.written ?? 0, changed: detail.changed ?? 0, hidden: detail.hidden ?? 0, unhidden: detail.unhidden ?? 0, kept: detail.kept ?? 0, errors: (detail.errors ?? []).slice(0, 5) } : null,
     recentImports: imports.map((i) => ({ at: i.createdAt.toISOString(), status: i.status, written: (i.detail as { written?: number }).written ?? 0, hidden: (i.detail as { hidden?: number }).hidden ?? 0 })),
-    lastRun: { at: lastRun || null, attempted: today.length, updated: today.filter((r) => r.status === STATUS.fresh).length, unchanged: today.filter((r) => r.status === STATUS.same).length,
+    lastRun: { at: lastRun || null, day: runDay || null, attempted: today.length, updated: today.filter((r) => r.status === STATUS.fresh).length, unchanged: today.filter((r) => r.status === STATUS.same).length,
       errors: today.filter((r) => [STATUS.error, STATUS.blocked, STATUS.deferred].includes(r.status as never)).length, blocked: today.filter((r) => r.status === STATUS.blocked).length,
       limitedView: today.filter((r) => r.view === "Sınırlı").length },
     site: { shown: stats.ratings - stats.hidden, hidden: stats.hidden, stale: stats.stale, newest: stats.newest },
