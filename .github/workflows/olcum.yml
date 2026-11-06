@@ -340,6 +340,35 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-ek-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  gpuan-kalite:
+    if: contains(github.event.head_commit.message, '[gpuan-kalite]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env: { PREVIEW_HOST: gidenler-aqwfzcf54-hulu34.vercel.app }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/gpuan-kalite, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: |
+          curl -s -o /dev/null -w "migrate %{http_code}\n" -X POST "https://$PREVIEW_HOST/api/admin/db/" -H "x-vercel-protection-bypass: $VERCEL_BYPASS" -H "sec-fetch-site: same-origin" -H "content-type: application/json" -d '{"target":"preview","confirm":"EVET","action":"migrate"}'
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: mkdir -p out/gpuan && cd app && npx tsx scripts/gpuan-guncelle.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOST: "${{ env.PREVIEW_HOST }}", HEDEF: preview, YENIDEN: "1", BEKLEME_MS: "6000", CIKTI: ../out/gpuan,
+               SLUGS: "adile-hanim-konagi-beyoglu,nostalji-cafe-ve-restaurant-sile,hacibasar-kebap-atasehir,filizler-koftecisi-uskudar,sultan-s-inn-fatih,nabu-karakoy-beyoglu,millet-sofrasi-beykoz,mihrabat-beykoz,kilisli-omer-usta-atasehir,pandeli-fatih,kronotrop-cihangir-beyoglu,etci-mehmet-bakirkoy,palulu-cumali-adana-kebapcisi-kadikoy,duru-et-izgara-kartal,villa-park-istanbul-beylikduzu,gasto-nisantasi-sisli" }
+      - if: always()
+        run: cp ops/gpuan-kalite.mjs app/gpuan-kalite.mjs && node app/gpuan-kalite.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", KARAR_SLUG: pandeli-fatih, KARAR_PID: ChIJP2joPWa3yhQR-5rFKbT0saE, ONAY_SLUG: mihrabat-beykoz, ONAY_PID: ChIJ5xjOhRXKyhQRi0MHnFdFv5A, KAPALI_SLUG: gasto-nisantasi-sisli }
+      - if: always()
+        run: cp ops/gpuan-ekran.mjs app/gpuan-ekran.mjs && node app/gpuan-ekran.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROFIL: "pandeli-fatih,mihrabat-beykoz,hacibasar-kebap-atasehir", ARAMA: "balık" }
+      - if: always()
+        run: test -d out/gpuan && tar -C out -czf out/gpuan.tgz gpuan && rm -rf out/gpuan && openssl cms -encrypt -aes256 -binary -outform DER -in out/gpuan.tgz -out out/gpuan.tgz.cms ops/olcum.pem && rm out/gpuan.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpuan-kalite-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   gpuan-bekleyen:
     if: contains(github.event.head_commit.message, '[gpuan-bekleyen]')
     runs-on: ubuntu-latest
