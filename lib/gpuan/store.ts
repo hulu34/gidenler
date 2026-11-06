@@ -127,7 +127,10 @@ export async function importFile(db: Db, fileId: string, venues: Venue[], actor:
     take.push(r);
   }
   /* yalnız değişen ya da daha yeni kontrol tarihi taşıyan satırlar yazılır; eski tarihli dosya yeni veriyi ezemez */
-  const write = take.filter((r) => { const c = cur.get(r.slug); return !c || Date.parse(r.checkedAt) > c.checkedAt.getTime() || c.placeId !== r.placeId || c.hiddenReason != null; });
+  /* aynı gözlemin bugünkü kurallarla yeniden değerlendirilmesi (ör. sınırlı görünüm sayısının boşaltılması) de yazılır;
+     daha ESKİ tarihli dosya ise yeni veriyi ezemez */
+  const write = take.filter((r) => { const c = cur.get(r.slug); if (!c) return true; const t = Date.parse(r.checkedAt), ct = c.checkedAt.getTime();
+    return t > ct || c.placeId !== r.placeId || c.hiddenReason != null || (t === ct && (c.rating !== r.rating || c.reviewCount !== (r.reviews ?? null))); });
   /* Olumsuz kanıt (yanlış tür/şube, kapalı, ret) sitede önceden gösterilen puanı gizler; satır ve geçmiş silinmez. */
   const hide: Array<{ slug: string; why: string }> = [];
   for (const r of parsed.rows) {
@@ -171,12 +174,14 @@ export async function ratingStats(db: Db) {
 
 /* ── Günlük yönetici raporu: son çalışmanın tek bakışta özeti (yalnız sayılar ve mekân listeleri; Google'a istek yok) ── */
 export async function dailyReport(db: Db) {
-  const { withDerived, FINAL, STATUS, trDay } = await import("./core");
+  const { withDerived, FINAL, STATUS, trDay, reclassify } = await import("./core");
+  const { sheetVenues } = await import("./venues");
   const { CLOSURES } = await import("@/lib/closure");
   const [imports, f, stats, decisions] = await Promise.all([importsLog(db, 7), getFile(db, "son"), ratingStats(db), latestDecisions(db)]);
   const last = imports[0] ?? null;
   const parsed = f ? await readWorkbook(f.buf) : null;
-  const rows = parsed && !parsed.errors.length ? withDerived(parsed.rows, decisions).filter((r) => r.record === "Aktif") : [];
+  const vmap = new Map(sheetVenues().map((v) => [v.slug, v]));
+  const rows = parsed && !parsed.errors.length ? withDerived(parsed.rows.map((r) => reclassify(r, vmap.get(r.slug))), decisions).filter((r) => r.record === "Aktif") : [];
   const lastRun = rows.reduce((m, r) => (r.attemptAt > m ? r.attemptAt : m), "");
   /* Türkiye günü: günde bir zamanlanmış çalışma olduğundan "bugün denenen" = son günlük çalışma (+ aynı gün elle yapılanlar) */
   const runDay = lastRun ? trDay(new Date(lastRun)) : "";

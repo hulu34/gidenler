@@ -262,6 +262,13 @@ async function main() {
   ok("ret anında gizler (sonraki aktarım beklenmez)", !(await loadGoogleRatings(db))[shownSlug]);
   const dr = await dailyReport(db);
   ok("günlük yönetici raporu sayıları üretir", dr.lastImport?.status === "applied" && typeof dr.site.shown === "number" && Object.keys(dr.final).length === Object.keys(FINAL).length);
+  { const c0 = (await db.select().from(schema.googleRatings).where(eq(schema.googleRatings.slug, Object.keys(await loadGoogleRatings(db))[0])))[0];
+    const lim = (await readWorkbook((await getFile(db, "son"))!.buf)).rows.map((r) => (r.slug === c0.slug ? { ...r, view: "", status: STATUS.fresh, reviews: 6, checkedAt: c0.checkedAt.toISOString() } : r));
+    await db.update(schema.googleRatings).set({ reviewCount: 6 }).where(eq(schema.googleRatings.slug, c0.slug));
+    const lf = await saveFile(db, await writeWorkbook(lim, { generatedAt: new Date().toISOString() }), "elle", h2);
+    const lr = await importFile(db, (lf as { id: string }).id, venues, "test");
+    const after0 = (await db.select().from(schema.googleRatings).where(eq(schema.googleRatings.slug, c0.slug)))[0];
+    ok("aynı gözlemin yeniden değerlendirmesi veritabanına yazılır (sınırlı görünüm sayısı boşalır)", lr.status === "applied" && after0.reviewCount === null, { st: lr.status, n: after0.reviewCount }); }
   await releaseLock(db, h2);
 
   console.log("\n12) Kapanma kaydı: kesin kapalı mekân önerilerde ve Sor'da yok, profil korunur");
