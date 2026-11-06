@@ -3,7 +3,7 @@ import { revalidateTag } from "next/cache";
 import { getDb } from "@/lib/db/client";
 import { previewWriteGuard } from "@/lib/db/fingerprint";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
-import { acquireLock, getFile, googleIds, holdsLock, importFile, importsLog, listFiles, ratingStats, releaseLock, saveFile } from "@/lib/gpuan/store";
+import { acquireLock, dailyReport, getFile, googleIds, holdsLock, importFile, importsLog, latestDecisions, listFiles, ratingStats, recordDecision, releaseLock, saveFile } from "@/lib/gpuan/store";
 import { sheetVenues } from "@/lib/gpuan/venues";
 import { TAG_GPUAN } from "@/lib/gpuan/read";
 
@@ -48,6 +48,8 @@ export async function GET(req: Request) {
         "Content-Disposition": `attachment; filename="gidenler-mekan-puanlari-${day}-${f.kind}.xlsx"`, "X-Dosya-Id": f.id, "X-Dosya-Sha256": f.sha256, "X-Robots-Tag": "noindex" } });
     }
     if (u.searchParams.get("rapor") === "kimlik") return NextResponse.json({ env: envName(), ids: await googleIds(db) }, { headers: H });
+    if (u.searchParams.get("rapor") === "kararlar") return NextResponse.json({ env: envName(), decisions: [...(await latestDecisions(db)).values()] }, { headers: H });
+    if (u.searchParams.get("rapor") === "gunluk") return NextResponse.json({ env: envName(), ...(await dailyReport(db)) }, { headers: H });
     return NextResponse.json({ env: envName(), venues: sheetVenues().length, stats: await ratingStats(db), files: await listFiles(db), imports: await importsLog(db) }, { headers: H });
   } catch (e) { return fail(e); }
 }
@@ -72,6 +74,13 @@ export async function POST(req: Request) {
         const r = await acquireLock(db, holder, Number(body.ttl) || 1800);
         return NextResponse.json({ op: body.op, ...r }, { status: r.ok ? 200 : 409, headers: H });
       }
+      case "karar": {
+        /* yönetici kararı: gerekçe zorunlu, denetim kaydına yazılır; ret puanı hemen gizler */
+        const b = body as unknown as { slug?: string; placeId?: string; decision?: string; note?: string; evidence?: unknown };
+        const r = await recordDecision(db, { slug: String(b.slug ?? ""), placeId: String(b.placeId ?? ""), decision: b.decision as "onay" | "ret", note: String(b.note ?? ""), evidence: b.evidence, actor: `yonetim:${holder}` });
+        if (r.ok) { try { after(() => revalidateTag(TAG_GPUAN)); } catch { /* test */ } }
+        return NextResponse.json({ op: body.op, ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
       case "kilit-birak":
         await releaseLock(db, holder);
         return NextResponse.json({ op: body.op, ok: true }, { headers: H });
@@ -87,7 +96,7 @@ export async function POST(req: Request) {
         if (!(await holdsLock(db, holder))) return NextResponse.json({ error: "lock_not_held" }, { status: 409, headers: H });
         const rep = await importFile(db, String(body.fileId ?? ""), sheetVenues(), `gpuan:${holder}`);
         /* veritabanı yazıldıktan SONRA önbellek yenilenir; ret durumunda site verisi ve önbellek değişmez */
-        if (rep.status === "applied" && rep.written) { try { after(() => revalidateTag(TAG_GPUAN)); } catch { /* test */ } }
+        if (rep.status === "applied" && (rep.written || rep.hidden || rep.unhidden)) { try { after(() => revalidateTag(TAG_GPUAN)); } catch { /* test */ } }
         return NextResponse.json({ op: body.op, ...rep }, { status: rep.status === "applied" ? 200 : 422, headers: H });
       }
     }

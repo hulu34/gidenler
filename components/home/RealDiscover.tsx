@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { realEntities } from "@/data/real";
+import { activeEntities, realEntities } from "@/data/real";
 import { getEntity } from "@/data/entities";
 import { articles, hrefOf } from "@/lib/seckisi";
 import { coverOf } from "@/lib/media/cover";
@@ -33,8 +33,8 @@ export async function RealDiscover() {
   const [published, covers, recent, gmap] = await Promise.all([publishedScores(), liveCovers(), recentlyReviewed(), googleRatingMap()]);
   const secki = articles().flatMap((a) => a.venues.map((v) => ({ e: getEntity(v.slug), a }))).filter((x) => x.e?.isReal);
   const seen = new Set<string>(); const seckiU = secki.filter((x) => (seen.has(x.e!.slug) ? false : (seen.add(x.e!.slug), true)));
-  const scored = realEntities.filter((e) => published[e.slug]?.score != null).sort((a, b) => published[b.slug].score! - published[a.slug].score!);
-  const withCover = realEntities.filter((e) => coverOf(e, covers[e.slug]));
+  const scored = activeEntities.filter((e) => published[e.slug]?.score != null).sort((a, b) => published[b.slug].score! - published[a.slug].score!);
+  const withCover = activeEntities.filter((e) => coverOf(e, covers[e.slug]));
   const recentE = recent.map((s) => getEntity(s)).filter((e): e is Entity => !!e?.isReal);
   return (
     <div className="mx-auto flex max-w-[1180px] flex-col gap-14 px-5 pb-24 sm:px-7">

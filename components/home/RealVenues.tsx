@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { realEntities } from "@/data/real";
+import { activeEntities, realEntities } from "@/data/real";
 import { coverOf } from "@/lib/media/cover";
 import { VenueCover } from "@/components/venue/VenueCover";
 import { liveCovers, publishedScores } from "@/lib/live";
@@ -11,11 +11,11 @@ export async function RealVenues({ limit = 12 }: { limit?: number }) {
   if (!realEntities.length) return null;
   /* semtler arasında dönüşümlü seçim: tek semt vitrini kaplamasın */
   const byD = new Map<string, typeof realEntities>();
-  for (const e of realEntities) { const d = e.location?.district ?? ""; (byD.get(d) ?? byD.set(d, []).get(d)!).push(e); }
+  for (const e of activeEntities) { const d = e.location?.district ?? ""; (byD.get(d) ?? byD.set(d, []).get(d)!).push(e); }
   const pick: typeof realEntities = [];
   for (let i = 0; pick.length < limit && i < 40; i++) for (const arr of byD.values()) { if (arr[i] && pick.length < limit) pick.push(arr[i]); }
   /* gerçek kapağı olan mekânlar vitrinde önce: bütün kapaklılar, sonra semtlere dengeli seçim */
-  const withCover = realEntities.filter((e) => coverOf(e, covers[e.slug]));
+  const withCover = activeEntities.filter((e) => coverOf(e, covers[e.slug]));
   const rest = pick.filter((e) => !coverOf(e, covers[e.slug])).slice(0, Math.max(0, limit - withCover.length));
   const line = (e: (typeof realEntities)[number]) => published[e.slug]?.score != null
     ? <span className="tnum mt-auto pt-2 text-[13px] font-semibold">Gidenler puanı {fmtPublished(published[e.slug].score!)}/10 · {published[e.slug].reviewCount} deneyim</span>

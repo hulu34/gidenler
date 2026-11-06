@@ -49,9 +49,10 @@ export function classifyUrl(u: string): "consent" | "sorry" | "login" | "ok" {
 /** Sayfadan ayrıştırılmış ham alanlar → gözlem (test edilebilir saf kısım). */
 export function parseRaw(raw: { name: string; ratingLabel: string | null; ratingText: string | null; reviewsLabel: string | null; reviewsText: string | null; address: string | null; closed: boolean; limited?: boolean; category?: string }, url: string): Observation {
   const rating = num(raw.ratingLabel) ?? num(raw.ratingText);
-  const reviews = int(raw.reviewsLabel) ?? int(raw.reviewsText);
+  /* sınırlı görünümde sayı okunmaz (Google göstermez; okunan sayı başka bir alana ait olur) */
+  const reviews = raw.limited ? null : int(raw.reviewsLabel) ?? int(raw.reviewsText);
   const c = coordsFromUrl(url);
-  return { name: raw.name.trim(), address: (raw.address ?? "").replace(/^(Address|Adres):\s*/i, "").trim(), rating, reviews, lat: c?.lat ?? null, lng: c?.lng ?? null, closed: raw.closed, category: (raw.category ?? "").trim() };
+  return { name: raw.name.trim(), address: (raw.address ?? "").replace(/^(Address|Adres):\s*/i, "").trim(), rating, reviews, lat: c?.lat ?? null, lng: c?.lng ?? null, closed: raw.closed, category: (raw.category ?? "").trim(), limited: !!raw.limited };
 }
 
 /* Sayfa içinde çalışan kod DÜZ METİN olarak gönderilir: derleyicinin (tsx/esbuild) eklediği yardımcılar tarayıcıda tanımsızdır. */
@@ -63,8 +64,14 @@ const READ_JS = `(() => {
   const leaves = Array.from(main.querySelectorAll("span, div")).filter((el) => el.children.length === 0 && after(el)).slice(0, 400);
   const star = Array.from(main.querySelectorAll('[role="img"][aria-label]')).find((el) => /\\d[.,]\\d\\s*(star|yıldız)/i.test(el.getAttribute("aria-label") || ""));
   const ratingLeaf = leaves.find((el) => /^[1-5][.,]\\d$/.test((el.textContent || "").trim()));
-  const revLabel = Array.from(main.querySelectorAll("[aria-label]")).map((el) => el.getAttribute("aria-label") || "").find((l) => /^\\s*[\\d.,]+\\s*(reviews?|yorum|değerlendirme)/i.test(l));
-  const revLeaf = leaves.find((el) => /^\\(\\d[\\d.,]*\\)$/.test((el.textContent || "").trim()));
+  /* Değerlendirme sayısı YALNIZ puanın yanındaki başlık kutusundan okunur ("4,5 ★★★★★ (6.764)").
+     Sayfanın başka yerindeki sayılar (yorum yazarının "12 yorum"u, sekme sayıları) alınmaz. */
+  let box = ratingLeaf || (star && star.parentElement), revLeaf = null, revLabel = null;
+  for (let i = 0; box && i < 4 && !revLeaf; i++) {
+    box = box.parentElement; if (!box) break;
+    revLeaf = Array.from(box.querySelectorAll("span, div")).find((el) => el.children.length === 0 && /^\\(\\d[\\d.,]*\\)$/.test((el.textContent || "").trim())) || null;
+    revLabel = Array.from(box.querySelectorAll("[aria-label]")).map((el) => el.getAttribute("aria-label") || "").find((l) => /^\\s*[\\d.,]+\\s*(reviews?|yorum|değerlendirme)\\s*$/i.test(l)) || null;
+  }
   const addr = main.querySelector('button[data-item-id="address"]') || Array.from(main.querySelectorAll("[aria-label]")).find((el) => /^(Address|Adres):/i.test(el.getAttribute("aria-label") || ""));
   return {
     name: ((h1 && h1.textContent) || "").trim(),

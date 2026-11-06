@@ -3,6 +3,7 @@ import raw from "./venues.json";
 import isletme from "./isletme.json";
 import duzeltmeler from "./duzeltmeler.json";
 import izinliFotograflar from "./izinli-fotograflar.json";
+import { CLOSED_CONFIRMED } from "@/lib/closure";
 
 /* ==========================================================================
    GERÇEK MEKÂNLAR (V8) — kimlik verisi OpenStreetMap'ten (© OpenStreetMap katkıcıları, ODbL).
@@ -165,3 +166,5 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
     : { src: r.image.src, category: "dis" as const, alt: `${r.name} — dış cephe`, credit: r.image.credit, license: r.image.license, sourceUrl: r.image.sourceUrl, addedBy: "commons" as const }] : undefined),
   image: permittedImage(r.slug) ?? (r.image ? { src: LOCAL_COVER.has(r.slug) ? `${MEDIA}/${r.slug}-kapak-480.webp` : r.image.src, alt: r.name, credit: `${r.image.credit} · ${r.image.license}` } : undefined),
 }));
+/** Aktif öneri havuzu: kalıcı kapandığı doğrulanan mekânlar (lib/closure.ts) çıkarılır. Profil ve arama realEntities'i kullanır. */
+export const activeEntities: Entity[] = realEntities.filter((e) => !CLOSED_CONFIRMED.has(e.slug));

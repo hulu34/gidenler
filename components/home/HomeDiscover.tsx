@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { realEntities } from "@/data/real";
+import { CLOSED_CONFIRMED } from "@/lib/closure";
 import { coverOf, type LiveCoverMap } from "@/lib/media/cover";
 import { VenueCover } from "@/components/venue/VenueCover";
 import { liveCovers, publishedScores } from "@/lib/live";
@@ -11,13 +12,15 @@ import type { Entity } from "@/lib/types";
    Kurucuyla ilişkili mekân ana sayfa vitrinine alınmaz (tarafsızlık). Bu yalnız vitrin kuralıdır:
    arama ve Sor Gidenler sonuçlarında bu mekâna ayrıcalık ya da ceza uygulanmaz. Görsel yalnız mekânın kendi kapağıdır. */
 export const HOME_EXCLUDE = new Set(["japon-erdal-beyoglu"]);
+/** Ana sayfa panoları ve vitrinine girmeyenler: vitrin kuralı (HOME_EXCLUDE) + kalıcı kapandığı doğrulananlar. */
+export const HOME_SKIP: ReadonlySet<string> = new Set([...HOME_EXCLUDE, ...CLOSED_CONFIRMED]);
 const GENERIC = new Set(["Restoran", ""]);
 
 /** Fotoğraflı vitrin: YALNIZ kendi izinli kapağı olan gerçek restoranlar. Önce her tür ve semt bir kez (katı);
     4 karta yetmezse semt tekrarına izin verilir (tür yine tekrarlanmaz). 4'ten az kart çıkarsa vitrin hiç çizilmez:
     fotoğrafsız mekân bu vitrine yazı karosu olarak konmaz (onlar panoda ve semt keşfinde). */
 export function pickDiverse(list: Entity[], covers: LiveCoverMap, n = 6, min = 4): Entity[] {
-  const pool = list.filter((e) => e.categoryId === "cat.restaurant" && !HOME_EXCLUDE.has(e.slug) && !GENERIC.has(e.subcategory ?? "") && coverOf(e, covers[e.slug]));
+  const pool = list.filter((e) => e.categoryId === "cat.restaurant" && !HOME_SKIP.has(e.slug) && !GENERIC.has(e.subcategory ?? "") && coverOf(e, covers[e.slug]));
   const out: Entity[] = [], kinds = new Set<string>(), districts = new Set<string>();
   for (const strictDistrict of [true, false]) {
     if (!strictDistrict && out.length >= min) break;

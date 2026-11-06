@@ -19,6 +19,7 @@ import { canReserve } from "@/lib/reservation";
 import { completenessOf } from "@/lib/completeness";
 import { DataCompleteness } from "@/components/venue/DataCompleteness";
 import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
+import { closureOf, isClosed } from "@/lib/closure";
 import { googleUsable, placeProfile, placeReviews, placeScore, videoCounts } from "@/lib/live";
 import { googleRatingOf } from "@/lib/gpuan/read";
 import { ThresholdBar, ThresholdCard, type ThresholdVenue } from "@/components/venue/ThresholdCard";
@@ -246,6 +247,11 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             {entity.isReal && <span className="ml-1 rounded-full border border-pos px-2 py-px text-[9.5px] tracking-[0.14em] text-pos-ink">Gerçek mekân</span>}
           </p>
           <VenueBadges entityId={entity.id} />
+          {entity.isReal && isClosed(entity.slug) && (
+            <p className="mt-2 max-w-[60ch] text-[13px] text-ink-2" data-kapanis="kesin">
+              <strong className="font-semibold text-ink">Kalıcı olarak kapandı.</strong> Son kontrol {new Date(closureOf(entity.slug)!.checkedAt).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}. Önerilerde gösterilmiyor; geçmiş deneyimler ve bilgiler korunuyor.
+            </p>
+          )}
           {(google || gStored) && <GoogleRatingBadge slug={entity.slug} google={google} stored={gStored} />}
           {scored && pulse && (
             <div className="mt-2 flex items-center gap-3 text-[12px] text-ink-3">

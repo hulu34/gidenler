@@ -9,7 +9,7 @@ import { googleRatingMap, MIN_RANK_REVIEWS, type GRatingMap } from "@/lib/gpuan/
 import { computeBoards, dayOf, loadSignalRows, SIGNAL_RULES, type Boards } from "@/lib/signals";
 import type { RankItem, RankSection } from "@/lib/rankings";
 import { placeOf } from "@/lib/rankings";
-import { HOME_EXCLUDE, pickDiverse } from "@/components/home/HomeDiscover";
+import { HOME_SKIP as HOME_EXCLUDE, pickDiverse } from "@/components/home/HomeDiscover";
 import type { GoogleTheme } from "@/components/home/TopRated";
 
 /* ──────────────────────────────────────────────────────────────────────────
