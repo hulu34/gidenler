@@ -8,4 +8,5 @@ if (g.env !== "production") { console.log("✗ ortam", g.env); process.exit(1); 
 writeFileSync("out/bek/bekleyen.json", JSON.stringify({ pending: g.pending, stats: g.stats }, null, 1));
 const x = await fetch(`${B}/api/admin/google-puan/?dosya=son`, { headers: H });
 writeFileSync("out/bek/son.xlsx", Buffer.from(await x.arrayBuffer()));
+const sp = g.spend ?? {}; console.log("harcama", JSON.stringify({ spend: sp, usage: g.usage, pause: g.pause }).slice(0, 1500));
 console.log("bekleyen", (g.pending ?? []).length, "istatistik", JSON.stringify(g.stats), "excel", x.status);
