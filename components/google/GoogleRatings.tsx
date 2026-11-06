@@ -15,10 +15,10 @@ export function GoogleChip({ slug, className = "" }: { slug: string; className?:
   const g = useGoogleRatings()[slug];
   if (!g) return null;
   return (
-    <span className={`tnum inline-flex items-baseline gap-1 whitespace-nowrap text-[11.5px] text-ink-3 ${className}`} data-google-chip title={`Google puanı ${f1(g.rating)}/5, ${g.count.toLocaleString("tr-TR")} Google değerlendirmesi. Gidenler puanı değildir.`}>
+    <span className={`tnum inline-flex items-baseline gap-1 whitespace-nowrap text-[11.5px] text-ink-3 ${className}`} data-google-chip title={`Google puanı ${f1(g.rating)}/5${g.count != null ? `, ${g.count.toLocaleString("tr-TR")} Google değerlendirmesi` : ""}. Gidenler puanı değildir.`}>
       <span className="text-[10px] font-bold uppercase tracking-[0.1em]">Google</span>
       <span className="font-bold text-ink-2">★ {f1(g.rating)}<span className="font-semibold text-ink-3">/5</span></span>
-      <span>· {g.count.toLocaleString("tr-TR")}</span>
+      {g.count != null && <span>· {g.count.toLocaleString("tr-TR")}</span>}
     </span>
   );
 }

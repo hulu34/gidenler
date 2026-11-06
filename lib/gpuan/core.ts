@@ -1,4 +1,4 @@
-import { addressSimilarity, branchDiff, distanceM, nameSimilarity } from "@/lib/match/score";
+import { addressSimilarity, branchDiff, distanceM, houseNoConflict, nameSimilarity } from "@/lib/match/score";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GOOGLE PUAN TABLOSU — çekirdek kurallar (saf; ağ, dosya ve veritabanı yok).
@@ -112,17 +112,29 @@ export function checkConsistency(v: Pick<Venue, "name" | "address" | "lat" | "ln
   const name = nameSimilarity(v.name, seen.name);
   const dist = seen.lat != null && seen.lng != null && Number.isFinite(seen.lat) && Number.isFinite(seen.lng) ? Math.round(distanceM(v, { lat: seen.lat, lng: seen.lng })) : null;
   const addr = addressSimilarity(v.address, seen.address);
+  const houseClash = houseNoConflict(v.address, seen.address);
   const branch = branchDiff(v.name, seen.name);
   const r = (ok: boolean, reason: string): Consistency => ({ ok, reason, name: +name.toFixed(2), distanceM: dist, address: addr == null ? null : +addr.toFixed(2) });
   if (!seen.name) return r(false, "Sayfada mekân adı okunamadı");
-  if (dist != null && dist > 400) return r(false, `Konum ${dist} m uzakta (başka şube olabilir)`);
-  if (branch.length && (dist == null || dist > 120)) return r(false, `Ad farklı şubeyi gösteriyor: ${branch.join(", ")}`);
+  /* 1 · konum biliniyorsa asıl şube kanıtı konumdur */
+  if (dist != null) {
+    if (dist > 400) return r(false, `Konum ${dist} m uzakta (başka şube olabilir)`);
+    if (dist > 150 && (branch.length || name < 0.7)) return r(false, `Konum ${dist} m uzakta ve ad farklı${branch.length ? ` (${branch.join(", ")})` : ""}`);
+    if (name < 0.4 && (addr == null || addr < 0.5)) return r(false, `Ad tutmuyor (benzerlik ${name.toFixed(2)})`);
+    return r(true, "");
+  }
+  /* 2 · konum yoksa adres: sokak/cadde örtüşmesi ve kapı numarası çelişmemeli */
+  const addrOk = addr != null && addr >= 0.5 && !houseClash;
+  if (houseClash) return r(false, "Kapı numarası farklı (başka şube olabilir)");
+  if (addrOk && name >= 0.4) return r(true, "");
+  if (!addrOk && branch.length) return r(false, `Adres doğrulanamadı ve ad farklı şubeyi gösteriyor: ${branch.join(", ")}`);
+  if (!addrOk && name < 0.9) return r(false, "Konum yok; adres ve ad birlikte doğrulanamadı");
   if (name < 0.55) return r(false, `Ad tutmuyor (benzerlik ${name.toFixed(2)})`);
-  if (dist == null && (addr == null || addr < 0.34) && name < 0.9) return r(false, "Konum yok, adres ve ad birlikte doğrulanamadı");
   return r(true, "");
 }
 
 /* ── Bir denemenin satıra uygulanması ── */
+export const NO_COUNT = "Değerlendirme sayısı herkese açık sayfada görünmüyor; puan sıralamaya girmez";
 export function validRating(x: unknown): x is number { return typeof x === "number" && Number.isFinite(x) && x >= 1 && x <= 5; }
 export function validCount(x: unknown): x is number { return typeof x === "number" && Number.isInteger(x) && x >= 0 && x < 10_000_000; }
 
@@ -137,11 +149,14 @@ export function applyResult(row: Row, v: Venue | undefined, res: SourceResult, a
   const c = v ? checkConsistency(v, s) : { ok: false, reason: "Mekân listede yok" } as Consistency;
   if (!c.ok) return failWith(STATUS.branch, c.reason);
   if (s.closed) return failWith(STATUS.error, "Google'da kalıcı olarak kapalı görünüyor; puan aktarılmadı");
-  if (!validRating(s.rating) || !validCount(s.reviews)) return failWith(STATUS.error, "Sayfada geçerli puan ya da değerlendirme sayısı yok");
-  const same = row.rating === s.rating && row.reviews === s.reviews;
+  if (!validRating(s.rating)) return failWith(STATUS.error, "Sayfada geçerli puan yok");
+  /* değerlendirme sayısı herkese açık (oturumsuz) sayfada gösterilmeyebilir: uydurulmaz, boş kalır */
+  const reviews = validCount(s.reviews) ? s.reviews : null;
+  const same = row.rating === s.rating && row.reviews === reviews;
   return {
     ...r, prevRating: same ? row.prevRating : row.rating, prevReviews: same ? row.prevReviews : row.reviews,
-    rating: s.rating, reviews: s.reviews, checkedAt: at, source: source.label, status: same ? STATUS.same : STATUS.fresh, error: "",
+    rating: s.rating, reviews, checkedAt: at, source: source.label, status: same ? STATUS.same : STATUS.fresh,
+    error: reviews == null ? NO_COUNT : "",
   };
 }
 
@@ -170,7 +185,8 @@ export function importable(r: Row): { ok: boolean; why?: string } {
   if (r.record !== "Aktif") return { ok: false, why: "kaldırıldı" };
   if (!IMPORTABLE_CONFIDENCE.has(r.confidence)) return { ok: false, why: "eşleşme doğrulanmamış" };
   if (!validPlaceId(r.placeId)) return { ok: false, why: "place ID yok" };
-  if (!validRating(r.rating) || !validCount(r.reviews)) return { ok: false, why: "puan yok" };
+  if (!validRating(r.rating)) return { ok: false, why: "puan yok" };
+  if (r.reviews != null && !validCount(r.reviews)) return { ok: false, why: "geçersiz değerlendirme sayısı" };
   if (!r.checkedAt || Number.isNaN(Date.parse(r.checkedAt))) return { ok: false, why: "kontrol tarihi yok" };
   if (Date.parse(r.checkedAt) > Date.now() + 36e5) return { ok: false, why: "kontrol tarihi gelecekte" };
   if (r.status === STATUS.branch) return { ok: false, why: "şube uyuşmazlığı" };
@@ -179,7 +195,7 @@ export function importable(r: Row): { ok: boolean; why?: string } {
 
 export interface FileCheck { ok: boolean; errors: string[]; warnings: string[] }
 /** Dosya bütünüyle kabul ya da ret: eksik, bozuk ya da şüpheli dosya çalışan veriye dokunmaz. */
-export function checkFile(rows: Row[], venues: Venue[], current: Map<string, { rating: number; reviews: number }>): FileCheck {
+export function checkFile(rows: Row[], venues: Venue[], current: Map<string, { rating: number; reviews: number | null }>): FileCheck {
   const errors: string[] = [], warnings: string[] = [];
   const slugs = new Set<string>(); const known = new Set(venues.map((v) => v.slug));
   for (const r of rows) { if (slugs.has(r.slug)) errors.push(`Tekrarlanan Gidenler ID: ${r.slug}`); slugs.add(r.slug); }
@@ -197,7 +213,7 @@ export function checkFile(rows: Row[], venues: Venue[], current: Map<string, { r
   const ok = rows.filter((r) => known.has(r.slug) && importable(r).ok);
   const jumps = ok.filter((r) => { const c = current.get(r.slug); return c && Math.abs(c.rating - r.rating!) > 0.5; }).length;
   if (ok.length >= 20 && jumps > ok.length * 0.2) errors.push(`${jumps}/${ok.length} puan 0,5'ten fazla değişmiş; toplu okuma hatası şüphesi`);
-  const drops = ok.filter((r) => { const c = current.get(r.slug); return c && c.reviews > 50 && r.reviews! < c.reviews * 0.5; }).length;
+  const drops = ok.filter((r) => { const c = current.get(r.slug); return c && c.reviews != null && r.reviews != null && c.reviews > 50 && r.reviews < c.reviews * 0.5; }).length;
   if (ok.length >= 20 && drops > ok.length * 0.1) errors.push(`${drops} mekânda değerlendirme sayısı yarıdan aza düşmüş; dosya şüpheli`);
   return { ok: errors.length === 0, errors: errors.slice(0, 50), warnings };
 }

@@ -18,7 +18,7 @@ const Stars = ({ v }: { v: number }) => (
 );
 
 /** Başlıktaki Google puanı: yer baştan ayrılır (sayfa kayması yok); veri yoksa boş kalır. */
-export function GoogleRatingBadge({ slug, google, stored }: { slug: string; google: boolean; stored?: { rating: number; count: number; checkedAt: string; mapsUrl: string | null } | null }) {
+export function GoogleRatingBadge({ slug, google, stored }: { slug: string; google: boolean; stored?: { rating: number; count: number | null; checkedAt: string; mapsUrl: string | null } | null }) {
   /* Günlük aktarımdan gelen kayıtlı puan varsa o gösterilir (anında, ek istek yok); yoksa önceki canlı davranış. */
   const g = useGoogleView(slug, google && !stored);
   if (stored) return (
@@ -29,7 +29,7 @@ export function GoogleRatingBadge({ slug, google, stored }: { slug: string; goog
         <span className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">Google puanı</span>
         <span className="tnum text-[17px] font-extrabold text-ink">{stored.rating.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}<span className="text-[12px] font-semibold text-ink-3">/5</span></span>
         <Stars v={stored.rating} />
-        <span className="tnum">{stored.count.toLocaleString("tr-TR")} değerlendirme</span>
+        {stored.count != null && <span className="tnum">{stored.count.toLocaleString("tr-TR")} değerlendirme</span>}
         <span className="px-2.5 pb-[5px] pt-2.5"><GoogleMapsLogo /></span>
       </a>
     </div>
