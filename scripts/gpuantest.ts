@@ -224,6 +224,11 @@ async function main() {
   ok("ayrıştırıcı sınırlı görünümde sayıyı atar", parseRaw({ name: "A", ratingLabel: "4.5 stars", ratingText: null, reviewsLabel: "6 reviews", reviewsText: null, address: null, closed: false, limited: true }, "https://x/").reviews === null);
   const cl = applyResult({ ...row0, rating: 4.1, checkedAt: at }, v0, seenOk({ closed: true }), at, src);
   ok("kalıcı kapalı: ayrı durum, eski puan silinmez, sitede gizlenir", cl.status === STATUS.closed && cl.rating === 4.1 && !importable(cl).ok && hideReason(cl) === "Google'da kalıcı kapalı" && finalState(cl).state === FINAL.closed);
+  const clNext = applyResult(cl, v0, { kind: "error", reason: "Sayfa 30 sn içinde açılmadı" }, at, src);
+  const tsNext = applyResult(ts, v0, { kind: "blocked", reason: "CAPTCHA" }, at, src);
+  ok("geçici hata kanıtlı hükmü silmez (kapalı ve otel kaydı ertesi gün de gizli kalır)", clNext.status === STATUS.closed && tsNext.status === STATUS.typeSuspect && !importable(clNext).ok && !importable(tsNext).ok && /son deneme başarısız/.test(tsNext.error));
+  const tsOk = applyResult(ts, v0, seenOk({}), at, src);
+  ok("başarılı okuma hükmü günceller (Google kaydı düzelirse puan açılır)", [STATUS.fresh, STATUS.same].includes(tsOk.status as never) && importable(tsOk).ok, { st: tsOk.status, why: importable(tsOk).why });
   const pend = { ...full, confidence: CONFIDENCE.pending };
   const dec = (d: "onay" | "ret", placeId = pend.placeId) => ({ slug: pend.slug, placeId, decision: d, note: "elle bakıldı, adres ve ad aynı", actor: "test", at });
   ok("bekleyen eşleşme yönetici onayı olmadan aktarılmaz", !importable(pend).ok && finalState(pend).state === FINAL.awaitingMatch);
@@ -238,11 +243,13 @@ async function main() {
   const h2 = "kalite-test"; await acquireLock(db, h2);
   const cur = (await readWorkbook((await getFile(db, "son"))!.buf)).rows;
   const shownSlug = Object.keys(await loadGoogleRatings(db))[0];
-  const tampered = cur.map((r) => (r.slug === shownSlug ? { ...r, status: STATUS.typeSuspect, error: "Google'daki ad otel", checkedAt: new Date(Date.now() - 6e4).toISOString() } : r));
+  const tampered = cur.map((r) => (r.slug === shownSlug ? { ...r, seenName: `${r.name} Butik Otel`, checkedAt: new Date(Date.now() - 6e4).toISOString() } : r));
   const tf = await saveFile(db, await writeWorkbook(tampered, { generatedAt: new Date().toISOString() }), "elle", h2);
   const repH = await importFile(db, (tf as { id: string }).id, venues, "test");
   const mapH = await loadGoogleRatings(db);
   ok("olumsuz kanıt sitedeki eski puanı gizler (satır silinmez)", repH.status === "applied" && repH.hidden === 1 && !mapH[shownSlug] && (await db.select().from(schema.googleRatings).where(eq(schema.googleRatings.slug, shownSlug))).length === 1, { hidden: repH.hidden });
+  const forged = await saveFile(db, await writeWorkbook(cur.map((r) => (r.slug === shownSlug ? { ...r, seenName: `${r.name} Hotel`, status: STATUS.fresh } : r)), { generatedAt: new Date().toISOString() }), "elle", h2);
+  ok("Excel'de durum elle 'Güncel' yapılsa da sunucu kuralı yeniden uygular", (await importFile(db, (forged as { id: string }).id, venues, "test")).status === "applied" && !(await loadGoogleRatings(db))[shownSlug]);
   const row = tampered.find((r) => r.slug === shownSlug)!;
   const bad1 = await recordDecision(db, { slug: shownSlug, placeId: row.placeId, decision: "onay", note: "kısa", actor: "test" });
   ok("gerekçesiz karar kabul edilmez", !bad1.ok);

@@ -187,12 +187,16 @@ export const NO_COUNT = "Değerlendirme sayısı herkese açık sayfada görünm
 export function validRating(x: unknown): x is number { return typeof x === "number" && Number.isFinite(x) && x >= 1 && x <= 5; }
 export function validCount(x: unknown): x is number { return typeof x === "number" && Number.isInteger(x) && x >= 0 && x < 10_000_000; }
 
+/** Kanıta dayalı hükümler: geçici hatada korunur. */
+export const VERDICT: ReadonlySet<string> = new Set([STATUS.closed, STATUS.typeMismatch, STATUS.typeSuspect, STATUS.typeUnknown, STATUS.branch]);
 export function applyResult(row: Row, v: Venue | undefined, res: SourceResult, at: string, source: RatingSource): Row {
   const r: Row = { ...row, attemptAt: at };
   const failWith = (status: Status, error: string) => ({ ...r, status, error }); // puan, sayı ve son kontrol tarihi OLDUĞU GİBİ kalır
-  if (res.kind === "blocked") return failWith(STATUS.blocked, `Erişim engeli: ${res.reason}`);
-  if (res.kind === "not_found") return failWith(STATUS.error, res.reason);
-  if (res.kind === "error") return failWith(STATUS.error, res.reason);
+  /* Geçici hata (ağ, engel, okunamayan sayfa) önceki KANITLI hükmü (kapalı, yanlış tür/şube) silmez: hüküm ancak başarılı okumayla değişir. */
+  const transient = (status: Status, error: string) => (VERDICT.has(row.status) ? { ...r, status: row.status, error: `${row.error.split(" · son deneme")[0]} · son deneme başarısız: ${error}`.slice(0, 400) } : failWith(status, error));
+  if (res.kind === "blocked") return transient(STATUS.blocked, `Erişim engeli: ${res.reason}`);
+  if (res.kind === "not_found") return transient(STATUS.error, res.reason);
+  if (res.kind === "error") return transient(STATUS.error, res.reason);
   const s = res.seen;
   const c = v ? checkConsistency(v, s) : { ok: false, reason: "Mekân listede yok", name: 0, distanceM: null, address: null } as Consistency;
   Object.assign(r, { seenName: s.name.slice(0, 200), seenAddress: s.address.slice(0, 300), seenCategory: (s.category ?? "").slice(0, 80),
@@ -222,6 +226,12 @@ export function reclassify(r: Row, v?: Venue): Row {
   if (r.record !== "Aktif" || !r.placeId) return r;
   const x: Row = { ...r };
   if (x.status === STATUS.error && /kalıcı olarak kapalı/i.test(x.error)) x.status = STATUS.closed;
+  /* durum sütunu elle değiştirilse ya da gün geçici hatayla bitse de kayıtlı gözlemdeki tür kanıtı yeniden uygulanır */
+  const passive = !([STATUS.closed, STATUS.branch, STATUS.typeMismatch, STATUS.removed, STATUS.noMatch, STATUS.fresh, STATUS.same, STATUS.typeSuspect, STATUS.typeUnknown] as string[]).includes(x.status);
+  if (passive && x.seenName) {
+    const tv = typeCheck({ name: x.seenName, category: x.seenCategory }, v?.name ?? x.name);
+    if (tv && tv.status !== STATUS.typeUnknown) { x.status = tv.status; x.error = tv.why; }
+  }
   if (x.status === STATUS.fresh || x.status === STATUS.same || x.status === STATUS.typeSuspect || x.status === STATUS.typeUnknown) {
     if (x.view !== "Tam") { x.view = "Sınırlı"; if (x.reviews != null) { x.prevReviews = x.reviews; x.reviews = null; } }
     const tv = typeCheck({ name: x.seenName, category: x.seenCategory }, v?.name ?? x.name);
