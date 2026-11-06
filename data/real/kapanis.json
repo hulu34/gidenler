@@ -18,14 +18,41 @@
   "confidence": "orta",
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
- "bishop-bakirkoy": {
+ "artlocalist-fatih": {
   "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Mekânın konumunda (4 m, ad 1) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
+ },
+ "bes-bicak-steak-house-kasap-esenyurt": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Mekânın konumunda (18 m, ad 0.94) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
+ },
+ "bishop-bakirkoy": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-07",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
   "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Eşleşme yeniden ölçüldü (konum 4 m, ad 0.92): doğru işletmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "blak-coffee-co-besiktas": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
   "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "note": "Mekânın konumunda (11 m, ad 0.92) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
  },
  "cabra-loca-coffee-fatih": {
   "state": "closed_suspected",
@@ -46,13 +73,13 @@
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "cluster-society-kadikoy": {
-  "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-07",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
   "official": "Kayıtlı resmî site yok",
-  "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "confidence": "orta",
+  "note": "Eşleşme yeniden ölçüldü (konum 17 m, ad 0.92): doğru işletmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "coffeeboss-istanbul-maltepe": {
   "state": "closed_confirmed",
@@ -72,14 +99,41 @@
   "confidence": "orta",
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
- "dubb-indian-bosphorus-restaurant-sisli": {
+ "dem-karakoy-beyoglu": {
   "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Mekânın konumunda (14 m, ad 1) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
+ },
+ "dubb-indian-bosphorus-restaurant-sisli": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-07",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
   "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Eşleşme yeniden ölçüldü (konum 49 m, ad 1): doğru işletmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "emirgan-sutis-besiktas": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
   "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "note": "Mekânın konumunda (6 m, ad 0.92) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
+ },
+ "ercan-burger-pendik": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Mekânın konumunda (17 m, ad 1) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
  },
  "et-inn-kebap-ve-steak-kadikoy": {
   "state": "closed_suspected",
@@ -89,6 +143,15 @@
   "official": "Tek şubeli işletmenin resmî sitesi hâlâ açık; kapanma çelişkili",
   "confidence": "düşük",
   "note": "Çelişen kanıt var — elle incelenmeli"
+ },
+ "fish-var-sariyer": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Mekânın konumunda (2 m, ad 1) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
  },
  "frontiere-istanbul-besiktas": {
   "state": "closed_confirmed",
@@ -118,13 +181,13 @@
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "gospoda-1882-beykoz": {
-  "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-07",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
   "official": "Kayıtlı resmî site yok",
-  "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "confidence": "orta",
+  "note": "Eşleşme yeniden ölçüldü (konum 17 m, ad 1): doğru işletmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "gram-sisli": {
   "state": "closed_confirmed",
@@ -134,6 +197,15 @@
   "official": "Kayıtlı resmî site yok",
   "confidence": "orta",
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "haci-ali-ocakbasi-kadikoy": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Mekânın konumunda (17 m, ad 1) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
  },
  "hanedan-et-besiktas": {
   "state": "closed_suspected",
@@ -162,6 +234,15 @@
   "confidence": "yüksek",
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
+ "komun-beyoglu": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Mekânın konumunda (5 m, ad 1) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
+ },
  "koprualti-sariyer": {
   "state": "closed_confirmed",
   "checkedAt": "2026-11-06",
@@ -179,6 +260,15 @@
   "official": "Otel restoranı; otelin sitesi otomatik isteğe kapalı, doğrulanamadı",
   "confidence": "orta",
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "lunchbox-bayrampasa": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-07",
+  "google": "Kalıcı olarak kapalı (otomatik okuma, sınırlı görünüm)",
+  "match": "Eşleşme yok (aramada bulundu)",
+  "official": "İkinci kaynakla doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Mekânın konumunda (27 m, ad 0.8) kalıcı kapalı bir Google kaydı var; aynı işletmenin açık başka kaydı bulunamadı — elle doğrulanmalı"
  },
  "mama-bowl-kozyatagi-kadikoy": {
   "state": "closed_confirmed",
@@ -235,13 +325,13 @@
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "ono-restaurant-basaksehir": {
-  "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-07",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
   "official": "Kayıtlı resmî site yok",
-  "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "confidence": "orta",
+  "note": "Eşleşme yeniden ölçüldü (konum 21 m, ad 0.92): doğru işletmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "oz-pide-kartal": {
   "state": "closed_confirmed",
@@ -325,13 +415,13 @@
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "usturmaca-balik-restorant-beylikduzu": {
-  "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-07",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
   "official": "Kayıtlı resmî site yok",
-  "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "confidence": "orta",
+  "note": "Eşleşme yeniden ölçüldü (konum 14 m, ad 0.92): doğru işletmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "vagabondo-s-pizzeria-sariyer": {
   "state": "closed_confirmed",
@@ -370,12 +460,12 @@
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "zoom-bahce-cafe-restaurant-sisli": {
-  "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-07",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
   "official": "Kayıtlı resmî site yok",
-  "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "confidence": "orta",
+  "note": "Eşleşme yeniden ölçüldü (konum 5 m, ad 1): doğru işletmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  }
 }

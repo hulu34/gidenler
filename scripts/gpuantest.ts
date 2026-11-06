@@ -296,7 +296,7 @@ async function main() {
   ok("kesin kapalı kayıt onayla bile aktarılmaz", !importable({ ...full, status: STATUS.closed }, { ...dec("onay"), placeId: full.placeId }).ok && mainStatus(full, null, { state: "closed_confirmed" }).main === MAIN.closed);
 
   console.log("\n12) Kapanma kaydı: kesin kapalı mekân önerilerde ve Sor'da yok, profil korunur");
-  ok("kapanış kaydı 42 mekân (26 kesin, 16 şüpheli)", Object.keys(CLOSURES).length === 42 && CLOSED_CONFIRMED.size === 26, { n: Object.keys(CLOSURES).length, c: CLOSED_CONFIRMED.size });
+  ok("kapanış kaydı 52 mekân (33 kesin, 19 şüpheli)", Object.keys(CLOSURES).length === 52 && CLOSED_CONFIRMED.size === 33, { n: Object.keys(CLOSURES).length, c: CLOSED_CONFIRMED.size });
   ok("kesin kapalılar aktif öneri havuzunda yok, profil kaydı duruyor", activeEntities.length === realEntities.length - CLOSED_CONFIRMED.size && [...CLOSED_CONFIRMED].every((s) => realEntities.some((e) => e.slug === s)));
   ok("kesin kapalılar Sor Gidenler adaylarında yok", !SOR_VENUES.some((v) => CLOSED_CONFIRMED.has(v.slug)));
   ok("şüpheli kapanmalar sitede değişiklik yapmaz", Object.entries(CLOSURES).filter(([, c]) => c.state === "closed_suspected").every(([s]) => activeEntities.some((e) => e.slug === s)));
