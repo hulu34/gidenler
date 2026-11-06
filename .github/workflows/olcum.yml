@@ -340,6 +340,24 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-ek-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  gpuan-arama:
+    if: contains(github.event.head_commit.message, '[gpuan-arama]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/gpuan-tamamla, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: mkdir -p out/arama && cd app && npx tsx scripts/gpuan-arama.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", HOST: gidenler-iu6h2twiw-hulu34.vercel.app, LISTE: ../ops/arama-liste.json, CIKTI: ../out/arama, BEKLEME_MS: "4000" }
+      - if: always()
+        run: test -d out/arama && tar -C out -czf out/arama.tgz arama && rm -rf out/arama && openssl cms -encrypt -aes256 -binary -outform DER -in out/arama.tgz -out out/arama.tgz.cms ops/olcum.pem && rm out/arama.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpuan-arama-sifreli, path: out/arama.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   gpuan-onay-a:
     if: contains(github.event.head_commit.message, '[gpuan-onay-a]')
     runs-on: ubuntu-latest
