@@ -93,10 +93,11 @@ export function googleRankedThemes(map: GRatingMap, shown: Set<string> = new Set
   };
   return G_THEMES.map((t) => {
     const pool = realEntities.filter((e) => map[e.slug] && !HOME_EXCLUDE.has(e.slug) && !shown.has(e.slug) && !/sosyal tesis/i.test(e.name) && t.re.test(e.subcategory ?? ""));
-    const ranked = pool.filter((e) => map[e.slug]!.count >= MIN_RANK_REVIEWS).map(item).sort((a, b) => b.rating - a.rating || b.count - a.count || a.slug.localeCompare(b.slug)).slice(0, G_TOP);
-    const few = pool.filter((e) => map[e.slug]!.count < MIN_RANK_REVIEWS).map(item).sort((a, b) => b.count - a.count).slice(0, 3);
+    const ranked = pool.filter((e) => (map[e.slug]!.count ?? 0) >= MIN_RANK_REVIEWS).map(item).sort((a, b) => b.rating - a.rating || (b.count ?? 0) - (a.count ?? 0) || a.slug.localeCompare(b.slug)).slice(0, G_TOP);
+    /* sayısı az ya da görünmeyenler: sıralama izlenimi vermesin diye ADA göre */
+    const few = pool.filter((e) => (map[e.slug]!.count ?? 0) < MIN_RANK_REVIEWS).map(item).sort((a, b) => a.name.localeCompare(b.name, "tr")).slice(0, 5);
     return { key: t.key, label: t.label, items: ranked, few, pool: pool.length };
-  }).filter((t) => t.items.length >= (t.key === "hepsi" ? 1 : 3));
+  }).filter((t) => t.items.length + t.few.length >= (t.key === "hepsi" ? 1 : 3));
 }
 
 export interface RealBoard { sections: Array<RankSection & { note?: string | null; fallback?: { title: string; items: RankItem[] } }>; measuredDays: number; googleThemes: GoogleTheme[] }

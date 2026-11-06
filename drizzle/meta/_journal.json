@@ -50,6 +50,13 @@
       "when": 1793920944849,
       "tag": "0006_google_puan",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1793923101026,
+      "tag": "0007_google_puan_sayi_bos",
+      "breakpoints": true
     }
   ]
 }

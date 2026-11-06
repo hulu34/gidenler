@@ -153,7 +153,7 @@ export default function ComparePage() {
                     <tr className="border-t border-line" data-google-karsilastir>
                       <td className="py-2.5 pr-4 text-ink-2">Google puanı <span className="text-[11px] text-ink-3">(5 üzerinden · Gidenler puanı değildir)</span></td>
                       {ents.map((e) => { const g = gmap[e.slug]; return (
-                        <td key={e.id} className="tnum py-2.5 text-right font-semibold">{g ? <>★ {g.rating.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}/5 <span className="text-[12px] font-normal text-ink-3">· {g.count.toLocaleString("tr-TR")}</span></> : <span className="text-ink-3">—</span>}</td>); })}
+                        <td key={e.id} className="tnum py-2.5 text-right font-semibold">{g ? <>★ {g.rating.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}/5 {g.count != null && <span className="text-[12px] font-normal text-ink-3">· {g.count.toLocaleString("tr-TR")}</span>}</> : <span className="text-ink-3">—</span>}</td>); })}
                     </tr>
                   )}
                 </tbody>

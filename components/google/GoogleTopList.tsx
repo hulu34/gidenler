@@ -7,8 +7,8 @@ import { MIN_RANK_REVIEWS, type GRatingMap } from "@/lib/gpuan/read";
    Google puanı 5 üzerinden, kaynak ve son kontrol tarihi görünür; Gidenler puanı değildir. */
 const f1 = (x: number) => x.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 export function GoogleTopList({ map, n = 10, exclude = new Set<string>(), id = "k-google" }: { map: GRatingMap; n?: number; exclude?: Set<string>; id?: string }) {
-  const list = realEntities.filter((e) => map[e.slug] && map[e.slug].count >= MIN_RANK_REVIEWS && !exclude.has(e.slug) && !/sosyal tesis/i.test(e.name))
-    .sort((a, b) => map[b.slug].rating - map[a.slug].rating || map[b.slug].count - map[a.slug].count || a.slug.localeCompare(b.slug)).slice(0, n);
+  const list = realEntities.filter((e) => map[e.slug] && (map[e.slug].count ?? 0) >= MIN_RANK_REVIEWS && !exclude.has(e.slug) && !/sosyal tesis/i.test(e.name))
+    .sort((a, b) => map[b.slug].rating - map[a.slug].rating || (map[b.slug].count ?? 0) - (map[a.slug].count ?? 0) || a.slug.localeCompare(b.slug)).slice(0, n);
   if (!list.length) return null;
   const newest = Object.values(map).reduce((m, g) => (g.checkedAt > m ? g.checkedAt : m), "");
   return (
@@ -24,7 +24,7 @@ export function GoogleTopList({ map, n = 10, exclude = new Set<string>(), id = "
             </Link>
             <a href={g.mapsUrl ?? undefined} target="_blank" rel="noopener noreferrer" className="flex shrink-0 flex-col items-end gap-0.5 hover:underline" aria-label={`${e.name}: Google puanı ${f1(g.rating)} / 5, Google Haritalar'da aç`}>
               <span className="tnum text-[15px] font-extrabold">★ {f1(g.rating)}<span className="text-[11px] font-semibold text-ink-3">/5</span></span>
-              <span className="tnum text-[11px] text-ink-3">{g.count.toLocaleString("tr-TR")} değerlendirme</span>
+              <span className="tnum text-[11px] text-ink-3">{(g.count ?? 0).toLocaleString("tr-TR")} değerlendirme</span>
             </a>
           </li>); })}
       </ol>

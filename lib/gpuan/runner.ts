@@ -55,7 +55,7 @@ export async function runDaily(run: string, venues: Venue[], api: RunnerApi, sou
       try { res = await source.fetch({ placeId: row.placeId, name: row.name, mapsUrl: row.mapsUrl }); }
       catch (e) { res = { kind: "error" as const, reason: `Kaynak hatası: ${e instanceof Error ? e.message.slice(0, 120) : "bilinmiyor"}` }; }
       const next = applyResult(row, byslug.get(row.slug), res, at, source);
-      if (next.status === STATUS.fresh && next.rating != null) changes.push({ at, slug: next.slug, name: next.name, from: row.rating, to: next.rating, fromN: row.reviews, toN: next.reviews! });
+      if (next.status === STATUS.fresh && next.rating != null) changes.push({ at, slug: next.slug, name: next.name, from: row.rating, to: next.rating, fromN: row.reviews, toN: next.reviews });
       rows[idx.get(row.slug)!] = next; attempted++;
       consecutiveBlocks = res.kind === "blocked" ? consecutiveBlocks + 1 : 0;
       if (consecutiveBlocks >= (o.blockStop ?? 3)) {

@@ -546,7 +546,8 @@ export const googleRatings = pgTable("google_ratings", {
   slug: text("slug").primaryKey(),
   placeId: text("place_id").notNull(),
   rating: doublePrecision("rating").notNull(),
-  reviewCount: integer("review_count").notNull(),
+  /** herkese açık sayfada görünmüyorsa boş (uydurulmaz); boşsa mekân sıralamaya girmez */
+  reviewCount: integer("review_count"),
   mapsUrl: text("maps_url"),
   checkedAt: ts("checked_at").notNull(),
   source: text("source").notNull(),
@@ -558,7 +559,7 @@ export const googleRatingHistory = pgTable("google_rating_history", {
   id: text("id").primaryKey(),
   slug: text("slug").notNull(),
   rating: doublePrecision("rating").notNull(),
-  reviewCount: integer("review_count").notNull(),
+  reviewCount: integer("review_count"),
   checkedAt: ts("checked_at").notNull(),
   source: text("source").notNull(),
   importId: text("import_id").notNull(),

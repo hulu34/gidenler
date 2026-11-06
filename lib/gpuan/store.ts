@@ -104,14 +104,14 @@ export async function importFile(db: Db, fileId: string, venues: Venue[], actor:
   }
   /* yalnız değişen ya da daha yeni kontrol tarihi taşıyan satırlar yazılır; eski tarihli dosya yeni veriyi ezemez */
   const write = take.filter((r) => { const c = cur.get(r.slug); return !c || Date.parse(r.checkedAt) > c.checkedAt.getTime() || c.placeId !== r.placeId; });
-  const changedRows = write.filter((r) => { const c = cur.get(r.slug); return !c || c.rating !== r.rating || c.reviewCount !== r.reviews || c.placeId !== r.placeId; });
+  const changedRows = write.filter((r) => { const c = cur.get(r.slug); return !c || c.rating !== r.rating || c.reviewCount !== (r.reviews ?? null) || c.placeId !== r.placeId; });
   const rep: ImportReport = {
     ...base, status: "applied", rows: parsed.rows.length, importable: take.length, written: write.length, changed: changedRows.length,
     unchanged: write.length - changedRows.length, kept: [...cur.keys()].filter((s) => !write.some((w) => w.slug === s)).length,
     skipped, errors: [], warnings: check.warnings, changedSlugs: changedRows.map((r) => r.slug).slice(0, 200),
   };
-  const values = write.map((r) => ({ slug: r.slug, placeId: r.placeId, rating: r.rating!, reviewCount: r.reviews!, mapsUrl: r.mapsUrl || null, checkedAt: new Date(r.checkedAt), source: r.source || "bilinmiyor", confidence: r.confidence, importId }));
-  const hist = changedRows.map((r) => ({ id: uuidv7(), slug: r.slug, rating: r.rating!, reviewCount: r.reviews!, checkedAt: new Date(r.checkedAt), source: r.source || "bilinmiyor", importId }));
+  const values = write.map((r) => ({ slug: r.slug, placeId: r.placeId, rating: r.rating!, reviewCount: r.reviews ?? null, mapsUrl: r.mapsUrl || null, checkedAt: new Date(r.checkedAt), source: r.source || "bilinmiyor", confidence: r.confidence, importId }));
+  const hist = changedRows.map((r) => ({ id: uuidv7(), slug: r.slug, rating: r.rating!, reviewCount: r.reviews ?? null, checkedAt: new Date(r.checkedAt), source: r.source || "bilinmiyor", importId }));
   const chunks = <T,>(xs: T[]) => Array.from({ length: Math.ceil(xs.length / CHUNK) }, (_, i) => xs.slice(i * CHUNK, (i + 1) * CHUNK));
   await atomic(db, (q) => [
     ...chunks(values).map((c) => q.insert(googleRatings).values(c).onConflictDoUpdate({ target: googleRatings.slug, set: {

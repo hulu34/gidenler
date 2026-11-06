@@ -173,5 +173,13 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
    "CREATE INDEX \"google_rating_files_created_idx\" ON \"google_rating_files\" USING btree (\"created_at\");",
    "CREATE INDEX \"google_rating_history_slug_idx\" ON \"google_rating_history\" USING btree (\"slug\",\"checked_at\");"
   ]
+ },
+ {
+  "tag": "0007_google_puan_sayi_bos",
+  "hash": "f5cb9823825ff9e34cfe79cb6c29183e9f62ac67b512f6bcf05e16cc0e78288a",
+  "statements": [
+   "ALTER TABLE \"google_rating_history\" ALTER COLUMN \"review_count\" DROP NOT NULL;",
+   "ALTER TABLE \"google_ratings\" ALTER COLUMN \"review_count\" DROP NOT NULL;"
+  ]
  }
 ];

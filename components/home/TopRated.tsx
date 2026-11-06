@@ -11,7 +11,7 @@ import type { RankItem, RankSection } from "@/lib/rankings";
    · Google: günlük güncellenen Google puanı tablosundan (sunucuda hazır), tür başına sıralı. Sekme açılınca
      Google'a istek GİTMEZ, sorgu sınırı yoktur. 5 üzerinden, değerlendirme sayısı ve Google Maps atfıyla;
      Gidenler puanına katılmaz. */
-type GItem = { slug: string; name: string; place: string; rating: number; count: number; mapsUrl: string | null; checkedAt: string };
+type GItem = { slug: string; name: string; place: string; rating: number; count: number | null; mapsUrl: string | null; checkedAt: string };
 export interface GoogleTheme { key: string; label: string; items: GItem[]; few: GItem[]; pool: number }
 /** Sıralamaya girmek için en az bu kadar Google değerlendirmesi; azı ayrı satırda, sırasız gösterilir. */
 export const MIN_GOOGLE_REVIEWS = 100;
@@ -64,7 +64,7 @@ export function TopRated({ section, note, themes }: { section: RankSection; note
               </Link>
               <a href={r.mapsUrl ?? undefined} target="_blank" rel="noopener noreferrer" className="flex shrink-0 flex-col items-end gap-0.5 hover:underline" aria-label={`${r.name}: Google puanı ${f1(r.rating)} / 5, Google Haritalar'da aç`}>
                 <span className="tnum text-[15px] font-extrabold">★ {f1(r.rating)}<span className="text-[11px] font-semibold text-ink-3">/5</span></span>
-                <span className="tnum text-[11px] text-ink-3">{r.count.toLocaleString("tr-TR")} değerlendirme</span>
+                <span className="tnum text-[11px] text-ink-3">{(r.count ?? 0).toLocaleString("tr-TR")} değerlendirme</span>
               </a>
             </div>
           </li>
@@ -72,19 +72,19 @@ export function TopRated({ section, note, themes }: { section: RankSection; note
       </ol>
       {t.few.length > 0 && (
         <div className="pt-2" data-google-az>
-          <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">{MIN_GOOGLE_REVIEWS}&apos;den az değerlendirme · sıralamaya girmez</p>
+          <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">{MIN_GOOGLE_REVIEWS}&apos;den az ya da görünmeyen değerlendirme sayısı · sıralamaya girmez, ada göre</p>
           <ul className="divide-y divide-line">
             {t.few.map((r) => (
               <li key={r.slug} className="flex items-baseline justify-between gap-3 py-2">
                 <Link href={`/mekan/${r.slug}/`} className="min-w-0 truncate text-[14px] font-semibold hover:text-accent-ink">{r.name}</Link>
-                <a href={r.mapsUrl ?? undefined} target="_blank" rel="noopener noreferrer" className="tnum shrink-0 text-[12px] text-ink-3 hover:underline">★ {f1(r.rating)}/5 · {r.count.toLocaleString("tr-TR")} değerlendirme</a>
+                <a href={r.mapsUrl ?? undefined} target="_blank" rel="noopener noreferrer" className="tnum shrink-0 text-[12px] text-ink-3 hover:underline">★ {f1(r.rating)}/5{r.count != null ? ` · ${r.count.toLocaleString("tr-TR")} değerlendirme` : ""}</a>
               </li>))}
           </ul>
         </div>
       )}
       <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] leading-snug text-ink-3">
         <GoogleMapsLogo />
-        <span>Kaynak: Google Maps. Gidenler puanı değildir. Bu türde Google puanı olan {t.pool} mekân arasından en az {MIN_GOOGLE_REVIEWS} değerlendirmesi olanlar sıralandı; ana sayfada yukarıda görünenler tekrarlanmaz.{newest ? ` Son kontrol ${day(newest)}.` : ""}</span>
+        <span>Kaynak: Google Maps. Gidenler puanı değildir. Bu türde Google puanı olan {t.pool} mekân var; yalnız değerlendirme sayısı görünen ve en az {MIN_GOOGLE_REVIEWS} olanlar sıralanır. Ana sayfada yukarıda görünenler tekrarlanmaz.{newest ? ` Son kontrol ${day(newest)}.` : ""}</span>
       </p>
       </>)}
       {tabs}

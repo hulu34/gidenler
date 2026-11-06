@@ -80,6 +80,11 @@ async function main() {
     ok(`${name} eski puan korunur, sıfırlanmaz, başarılı gösterilmez`, r.rating === 4.2 && r.reviews === 800 && r.checkedAt === row0.checkedAt && r.status === st && !!r.error, r);
   }
   ok("başarısız satır siteye aktarılabilir sayılmaz (şube)", !importable({ ...row0, status: STATUS.branch }).ok);
+  const nc = applyResult(row0, v0, { kind: "ok", seen: { name: v0.name, address: "", rating: 4.3, reviews: null, lat: v0.lat, lng: v0.lng } }, new Date(Date.now() - 36e5).toISOString(), src);
+  ok("değerlendirme sayısı görünmüyorsa uydurulmaz: puan güncel, sayı boş, not düşülür", nc.rating === 4.3 && nc.reviews === null && nc.status === STATUS.fresh && /görünmüyor/.test(nc.error) && importable(nc).ok);
+  const ak = { name: "Akıntı Burnu", address: "Bebek Arnavutköy Caddesi No:115, Arnavutköy, Beşiktaş", lat: 41.07, lng: 29.04 };
+  ok("konum yoksa adres doğrularsa şube eki engel olmaz", checkConsistency(ak, { name: "AkıntıBurnu Balık Restoranı | Arnavutköy", address: "Arnavutköy, Bebek Arnavutköy Cd No:115, 34345 Beşiktaş/İstanbul, Türkiye", rating: 4.2, reviews: null }).ok);
+  ok("konum yoksa kapı numarası farklıysa engellenir", !checkConsistency(ak, { name: "Akıntı Burnu", address: "Bebek Arnavutköy Cd No:42, Beşiktaş", rating: 4.2, reviews: null }).ok);
 
   console.log("\n4) Yeni mekân, kaldırılan mekân, değişen place ID");
   const withNew = [...venues, { slug: "yeni-mekan-test", name: "Yeni Mekân", categoryId: "cat.restaurant", kind: "Lokanta", district: "Kadıköy", address: "Test Sk. No:1", lat: 41, lng: 29 } as Venue].filter((v) => v.slug !== venues[3].slug);

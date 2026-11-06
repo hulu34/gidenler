@@ -13,7 +13,7 @@ const FILL: Record<string, string> = {
   [STATUS.deferred]: "FFFFF2B3", [STATUS.removed]: "FFD0D0D0",
 };
 
-export interface Change { at: string; slug: string; name: string; from: number | null; to: number; fromN: number | null; toN: number }
+export interface Change { at: string; slug: string; name: string; from: number | null; to: number; fromN: number | null; toN: number | null }
 export interface Meta { generatedAt: string; run?: string; note?: string }
 
 export async function writeWorkbook(rows: Row[], meta: Meta, changes: Change[] = []): Promise<Buffer> {
@@ -120,7 +120,7 @@ export async function readWorkbook(buf: Buffer | Uint8Array): Promise<ReadResult
     if (i === 1) return;
     const v = (row.values as ExcelJS.CellValue[]).slice(1).map(cellText);
     const num = (s: string) => (s === "" ? null : Number(s));
-    if (v[1]) changes.push({ at: v[0], slug: v[1], name: v[2], from: num(v[3]), to: Number(v[4]), fromN: num(v[5]), toN: Number(v[6]) });
+    if (v[1]) changes.push({ at: v[0], slug: v[1], name: v[2], from: num(v[3]), to: Number(v[4]), fromN: num(v[5]), toN: num(v[6]) });
   });
   return { rows, changes, format: String(fmt), errors };
 }

@@ -14,7 +14,7 @@ import { DEMO_VISIBLE } from "@/data/demoFlag";
    ────────────────────────────────────────────────────────────────────────── */
 export const TAG_GPUAN = "google-ratings";
 export const STALE_DAYS = 45;
-export interface GRating { rating: number; count: number; checkedAt: string; mapsUrl: string | null }
+export interface GRating { rating: number; count: number | null; checkedAt: string; mapsUrl: string | null }
 export type GRatingMap = Record<string, GRating>;
 
 /** Doğrudan okuma (önbelleksiz; testler ve yönetim). */
