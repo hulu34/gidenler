@@ -18,7 +18,7 @@ export interface RunnerApi {
   upload(buf: Buffer, kind: "taslak" | "son"): Promise<{ ok: boolean; id?: string; errors?: string[] }>;
   importFile(fileId: string): Promise<Record<string, unknown> & { status: string }>;
 }
-export interface RunOptions { max: number; only?: string[]; checkpoint?: number; blockStop?: number; delayMs?: number; now?: () => Date; log?: (s: string) => void; sleep?: (ms: number) => Promise<void> }
+export interface RunOptions { max: number; /** bugün denenmiş satırları da yeniden dene (elle tetikleme) */ force?: boolean; only?: string[]; checkpoint?: number; blockStop?: number; delayMs?: number; now?: () => Date; log?: (s: string) => void; sleep?: (ms: number) => Promise<void> }
 export interface RunReport {
   run: string; startedAt: string; finishedAt: string; venues: number; rows: number; added: number; removed: number; changed: number;
   attempted: number; fresh: number; same: number; failed: number; blocked: number; branch: number; deferred: number; stoppedEarly: string | null;
@@ -41,7 +41,7 @@ export async function runDaily(run: string, venues: Venue[], api: RunnerApi, sou
     const changes: Change[] = [...(prev?.changes ?? [])];
     const byslug = new Map(venues.map((v) => [v.slug, v]));
     const today = trDay(now());
-    let due = dueRows(rows, today, o.max);
+    let due = dueRows(rows, today, o.max, o.force);
     if (o.only?.length) { const s = new Set(o.only); due = rows.filter((r) => s.has(r.slug) && r.placeId && r.record === "Aktif" && !attemptedOn(r, today)).slice(0, o.max); }
     log(`liste ${venues.length} · satır ${rows.length} · yeni ${rec.added.length} · kaldırılan ${rec.removed.length} · değişen ${rec.changed.length} · bugün denenecek ${due.length}`);
 

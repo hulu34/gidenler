@@ -10,7 +10,7 @@ import type { Db } from "../lib/db/client";
 import { applyMigrations, type Executor } from "../lib/db/migrate";
 import { seedRealVenues } from "../lib/db/seed";
 import { realVenueRecords } from "../data/real";
-import { applyResult, baseRow, trDay, checkConsistency, checkFile, CONFIDENCE, dueRows, HEADERS, importable, pickGoogleId, reconcile, STATUS, type GoogleId, type RatingSource, type Row, type SourceResult, type Venue } from "../lib/gpuan/core";
+import { applyResult, baseRow, trDay, typeMismatch, checkConsistency, checkFile, CONFIDENCE, dueRows, HEADERS, importable, pickGoogleId, reconcile, STATUS, type GoogleId, type RatingSource, type Row, type SourceResult, type Venue } from "../lib/gpuan/core";
 import { readWorkbook, writeWorkbook } from "../lib/gpuan/excel";
 import { sheetVenues } from "../lib/gpuan/venues";
 import { acquireLock, holdsLock, importFile, releaseLock, saveFile, getFile, googleIds } from "../lib/gpuan/store";
@@ -44,6 +44,8 @@ async function main() {
   ok("ilk karşılaştırmada 456 yeni satır", first.rows.length === 456 && first.added.length === 456 && !first.removed.length);
   const buf = await writeWorkbook(first.rows, { generatedAt: new Date().toISOString() });
   const back = await readWorkbook(buf);
+  { const wb0 = new ExcelJS.Workbook(); await wb0.xlsx.load(buf as unknown as ArrayBuffer); const w0 = wb0.getWorksheet("Mekânlar")!; w0.spliceColumns(HEADERS.indexOf("Google'daki tür") + 1, 1); const old = await readWorkbook(Buffer.from(await wb0.xlsx.writeBuffer()));
+    ok("yeni sütunu olmayan eski Excel de okunur", old.rows.length === 456 && !old.errors.length && old.rows[0].seenCategory === "", old.errors); }
   ok("Excel geri okununca 456 satır, hata yok", back.rows.length === 456 && !back.errors.length, back.errors);
   ok("bütün Gidenler ID'leri eksiksiz ve aynı sırada", back.rows.every((r, i) => r.slug === first.rows[i].slug));
   ok("Eşleşme yoksa place ID boş", back.rows.filter((r) => r.confidence === CONFIDENCE.none).every((r) => r.placeId === "" && r.mapsUrl === ""));
@@ -84,6 +86,8 @@ async function main() {
   ok("değerlendirme sayısı görünmüyorsa uydurulmaz: puan güncel, sayı boş, not düşülür", nc.rating === 4.3 && nc.reviews === null && nc.status === STATUS.fresh && /görünmüyor/.test(nc.error) && importable(nc).ok);
   const ak = { name: "Akıntı Burnu", address: "Bebek Arnavutköy Caddesi No:115, Arnavutköy, Beşiktaş", lat: 41.07, lng: 29.04 };
   ok("konum yoksa adres doğrularsa şube eki engel olmaz", checkConsistency(ak, { name: "AkıntıBurnu Balık Restoranı | Arnavutköy", address: "Arnavutköy, Bebek Arnavutköy Cd No:115, 34345 Beşiktaş/İstanbul, Türkiye", rating: 4.2, reviews: null }).ok);
+  ok("Google'da otel olarak kayıtlı eşleşme aktarılmaz", (() => { const t = applyResult(row0, v0, { kind: "ok", seen: { name: v0.name, address: "", rating: 5, reviews: null, lat: v0.lat, lng: v0.lng, category: "Hotel" } }, new Date(Date.now() - 36e5).toISOString(), src); return t.status === STATUS.typeMismatch && t.rating === 4.2 && !importable(t).ok; })());
+  ok("yeme-içme türleri tür uyuşmazlığı sayılmaz", ["Coffee shop", "Fish restaurant", "Meat dish restaurant", "Fast food restaurant", "Pastry shop", "Hotel restaurant", "Fish market"].every((c) => typeMismatch(c) === null) && ["Hotel", "Mosque", "Barber shop", "Supermarket"].every((c) => typeMismatch(c) !== null));
   ok("konum yoksa kapı numarası farklıysa engellenir", !checkConsistency(ak, { name: "Akıntı Burnu", address: "Bebek Arnavutköy Cd No:42, Beşiktaş", rating: 4.2, reviews: null }).ok);
 
   console.log("\n4) Yeni mekân, kaldırılan mekân, değişen place ID");

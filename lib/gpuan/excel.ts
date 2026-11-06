@@ -1,5 +1,5 @@
 import ExcelJS from "exceljs";
-import { COLUMNS, HEADERS, OK_STATUS, STATUS, summarize, type ColKey, type Row } from "./core";
+import { COLUMNS, HEADERS, OK_STATUS, OPTIONAL_HEADERS, STATUS, summarize, type ColKey, type Row } from "./core";
 
 /* Excel okuma/yazma. Dosya biçimi: "Mekânlar" (veri), "Özet", "Hatalar", "Değişimler", "Açıklama", gizli "_bicim".
    Okuyucu başlıkları ADLA eşler ve biçim sürümünü kontrol eder; başlığı bozulmuş dosya reddedilir. */
@@ -10,7 +10,7 @@ const NUM: ReadonlySet<ColKey> = new Set(["rating", "reviews", "prevRating", "pr
 const FILL: Record<string, string> = {
   [STATUS.fresh]: "FFD9F2D9", [STATUS.same]: "FFEAF6EA", [STATUS.waiting]: "FFF2F2F2", [STATUS.isNew]: "FFDDEBFF",
   [STATUS.error]: "FFFDE2C8", [STATUS.blocked]: "FFF8CBCB", [STATUS.branch]: "FFFBD3E9", [STATUS.noMatch]: "FFEDEDED",
-  [STATUS.deferred]: "FFFFF2B3", [STATUS.removed]: "FFD0D0D0",
+  [STATUS.deferred]: "FFFFF2B3", [STATUS.removed]: "FFD0D0D0", [STATUS.typeMismatch]: "FFFBD3E9",
 };
 
 export interface Change { at: string; slug: string; name: string; from: number | null; to: number; fromN: number | null; toN: number | null }
@@ -101,14 +101,14 @@ export async function readWorkbook(buf: Buffer | Uint8Array): Promise<ReadResult
   if (!ws) return { rows: [], changes: [], format: fmt ? String(fmt) : null, errors: [...errors, `"${SHEET}" sayfası yok`] };
   const head = (ws.getRow(1).values as ExcelJS.CellValue[]).slice(1).map(cellText);
   const idx = new Map(head.map((h, i) => [h, i + 1]));
-  const missing = HEADERS.filter((h) => !idx.has(h));
+  const missing = HEADERS.filter((h) => !idx.has(h) && !OPTIONAL_HEADERS.has(h));
   if (missing.length) return { rows: [], changes: [], format: String(fmt), errors: [...errors, `Eksik başlık: ${missing.join(", ")}`] };
   const rows: Row[] = [];
   ws.eachRow((row, i) => {
     if (i === 1) return;
     const r: Record<string, unknown> = {};
     for (const [k, h] of COLUMNS) {
-      const raw = cellText(row.getCell(idx.get(h)!).value);
+      const raw = idx.has(h) ? cellText(row.getCell(idx.get(h)!).value) : "";
       if (NUM.has(k)) { const n = raw === "" ? null : Number(raw.replace(",", ".")); r[k] = n != null && Number.isFinite(n) ? n : raw === "" ? null : NaN; }
       else r[k] = raw;
     }
