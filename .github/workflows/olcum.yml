@@ -347,7 +347,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: node ops/gpuan-bekleyen.mjs
-        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROD_HOST: gidenler-git-feature-investor-v1-hulu34.vercel.app }
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROD_HOST: gidenler-3zu20vjfb-hulu34.vercel.app }
       - if: always()
         run: test -d out/bek && tar -C out -czf out/bek.tgz bek && rm -rf out/bek && openssl cms -encrypt -aes256 -binary -outform DER -in out/bek.tgz -out out/bek.tgz.cms ops/olcum.pem && rm out/bek.tgz
       - if: always()
