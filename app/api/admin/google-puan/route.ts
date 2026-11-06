@@ -3,7 +3,7 @@ import { revalidateTag } from "next/cache";
 import { getDb } from "@/lib/db/client";
 import { previewWriteGuard } from "@/lib/db/fingerprint";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
-import { acquireLock, dailyReport, getFile, googleIds, holdsLock, importFile, importsLog, latestDecisions, listFiles, ratingStats, recordDecision, releaseLock, saveFile } from "@/lib/gpuan/store";
+import { acquireLock, addMatch, dailyReport, getFile, googleIds, holdsLock, importFile, importsLog, latestDecisions, listFiles, ratingStats, recordDecision, releaseLock, saveFile } from "@/lib/gpuan/store";
 import { sheetVenues } from "@/lib/gpuan/venues";
 import { TAG_GPUAN } from "@/lib/gpuan/read";
 
@@ -79,6 +79,12 @@ export async function POST(req: Request) {
         const b = body as unknown as { slug?: string; placeId?: string; decision?: string; note?: string; evidence?: unknown };
         const r = await recordDecision(db, { slug: String(b.slug ?? ""), placeId: String(b.placeId ?? ""), decision: b.decision as "onay" | "ret", note: String(b.note ?? ""), evidence: b.evidence, actor: `yonetim:${holder}` });
         if (r.ok) { try { after(() => revalidateTag(TAG_GPUAN)); } catch { /* test */ } }
+        return NextResponse.json({ op: body.op, ...r }, { status: r.ok ? 200 : 400, headers: H });
+      }
+      case "eslesme-ekle": {
+        /* arama ile bulunan Google adayı: kimlik "pending" + gerekçeli puan onayı (fotoğraf/ayrıntı açılmaz) */
+        const b = body as unknown as { slug?: string; placeId?: string; note?: string; evidence?: unknown; replaceExternalId?: string };
+        const r = await addMatch(db, { slug: String(b.slug ?? ""), placeId: String(b.placeId ?? ""), note: String(b.note ?? ""), evidence: b.evidence, replaceExternalId: b.replaceExternalId, actor: `yonetim:${holder}` });
         return NextResponse.json({ op: body.op, ...r }, { status: r.ok ? 200 : 400, headers: H });
       }
       case "kilit-birak":

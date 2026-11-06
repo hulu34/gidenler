@@ -24,13 +24,14 @@ export const COLUMNS = [
   ["seenCategory", "Google'daki tür", 22],
   ["view", "Google görünümü", 12], ["distance", "Konum farkı (m)", 10], ["nameSim", "Ad benzerliği", 10],
   ["decision", "Yönetici kararı", 16], ["finalState", "Nihai durum", 28], ["finalReason", "Gerekçe", 60],
+  ["mainState", "Ana durum", 30], ["subReasons", "Alt nedenler", 50], ["level", "Güven seviyesi", 22], ["evidence", "Kanıt", 60], ["nextAction", "Sonraki işlem", 50],
 ] as const;
 export type ColKey = (typeof COLUMNS)[number][0];
 export const HEADERS = COLUMNS.map((c) => c[1]);
 /** Sonradan eklenen sütunlar: eski dosyada yoksa boş okunur (dosya reddedilmez). */
-export const OPTIONAL_HEADERS: ReadonlySet<string> = new Set(["Google'daki tür", "Google görünümü", "Konum farkı (m)", "Ad benzerliği", "Yönetici kararı", "Nihai durum", "Gerekçe"]);
+export const OPTIONAL_HEADERS: ReadonlySet<string> = new Set(["Google'daki tür", "Google görünümü", "Konum farkı (m)", "Ad benzerliği", "Yönetici kararı", "Nihai durum", "Gerekçe", "Ana durum", "Alt nedenler", "Güven seviyesi", "Kanıt", "Sonraki işlem"]);
 /** Excel'e yalnız bilgi için yazılan, okunurken yok sayılan sütunlar (her yazımda yeniden hesaplanır). */
-export const DERIVED: ReadonlySet<string> = new Set(["decision", "finalState", "finalReason"]);
+export const DERIVED: ReadonlySet<string> = new Set(["decision", "finalState", "finalReason", "mainState", "subReasons", "level", "evidence", "nextAction"]);
 
 export const CONFIDENCE = { confirmed: "Onaylı", auto: "Otomatik", pending: "Onay bekliyor", none: "Eşleşme yok", rejected: "Reddedildi" } as const;
 export type Confidence = (typeof CONFIDENCE)[keyof typeof CONFIDENCE];
@@ -56,6 +57,7 @@ export interface Row {
   view: string; distance: number | null; nameSim: number | null;
   /** türetilmiş, bilgi amaçlı: yönetici kararı ve nihai durum (okunurken yok sayılır) */
   decision: string; finalState: string; finalReason: string;
+  mainState: string; subReasons: string; level: string; evidence: string; nextAction: string;
 }
 
 /** Yönetici kararı (veritabanında, denetim kaydıyla). Excel'deki "Yönetici kararı" sütunu yalnız gösterimdir; aktarım kararı veritabanından okur. */
@@ -90,6 +92,7 @@ export function baseRow(v: Venue, g: { placeId: string; confidence: Confidence }
     status: g.placeId ? STATUS.waiting : STATUS.noMatch, error: g.placeId ? "" : g.confidence === CONFIDENCE.rejected ? "Google eşleşmesi reddedilmiş" : "Doğrulanmış Google eşleşmesi yok",
     profileUrl: `${SITE}/mekan/${v.slug}/`, attemptAt: "", seenName: "", seenAddress: "", prevRating: null, prevReviews: null, record: "Aktif", seenCategory: "",
     view: "", distance: null, nameSim: null, decision: "", finalState: "", finalReason: "",
+    mainState: "", subReasons: "", level: "", evidence: "", nextAction: "",
   };
 }
 
@@ -330,9 +333,62 @@ export function finalState(r: Row, dec?: Decision | null): { state: string; reas
   if (r.status === STATUS.waiting || r.status === STATUS.isNew || !r.attemptAt) return { state: FINAL.notTried, reason: "Sonraki günlük çalışmada denenecek" };
   return { state: FINAL.other, reason: imp.why ?? r.error ?? "" };
 }
+/* ── Mutabakat: her mekâna TEK ana durum (toplam = mekân sayısı) ve gerekirse birden çok alt neden ── */
+export const MAIN = {
+  shown: "Puanı doğrulandı ve gösteriliyor",
+  pending: "Puan okundu, onay bekliyor",
+  notFound: "Doğru Google işletme kaydı bulunamadı",
+  branch: "İşletme/şube uyuşmazlığı",
+  type: "İşletme türü uyuşmazlığı",
+  closed: "Kapanma (doğrulandı ya da doğrulama gerekiyor)",
+  noRating: "Google kaynağı puan vermiyor",
+  error: "Veri okuma veya aktarım hatası",
+  other: "Diğer",
+} as const;
+export interface MainStatus { main: string; subs: string[]; next: string; confidence: string }
+export function mainStatus(r: Row, dec?: Decision | null, closure?: { state: string } | null): MainStatus {
+  const f = finalState(r, dec); const d = decisionFor(r, dec);
+  const subs: string[] = [];
+  if (r.confidence === CONFIDENCE.pending && f.state !== FINAL.awaitingMatch) subs.push("eşleşme onay bekliyor");
+  if (r.reviews == null && validRating(r.rating)) subs.push("değerlendirme sayısı yok (sıralamaya girmez)");
+  if (r.view === "Sınırlı") subs.push("Google sınırlı görünüm");
+  if (d) subs.push(`yönetici kararı: ${d.decision}`);
+  const conf = d?.decision === "onay" ? "Yönetici onaylı" : r.confidence;
+  const M = (main: string, next: string, extra: string[] = []): MainStatus => ({ main, subs: [...extra, ...subs], next, confidence: conf });
+  if (closure?.state === "closed_confirmed") return M(MAIN.closed, "Önerilerden çıkarıldı; yeniden açılırsa kapanış kaydı güncellenir", ["kesin kapalı (closed_confirmed)"]);
+  if (closure?.state === "closed_suspected" || f.state === FINAL.closed) return M(MAIN.closed, "Doğru eşleşme ve ikinci kaynakla kapanma doğrulanmalı", ["kapanma şüphesi"]);
+  switch (f.state) {
+    case FINAL.shown: return M(MAIN.shown, "Günlük kontrolle güncel tutulur");
+    case FINAL.awaitingMatch: return M(MAIN.pending, "Kanıt incelenip yönetici onayı/reddi verilmeli");
+    case FINAL.noPlaceId: return M(MAIN.notFound, "Google'da aranmalı; doğru şube bulunursa eşleşme onaya sunulur", [f.reason]);
+    case FINAL.branch: case FINAL.location: return M(MAIN.branch, "Şube/konum elle doğrulanmalı; doğruysa onay, değilse ret", [f.reason]);
+    case FINAL.wrongType: case FINAL.typeReview: return M(MAIN.type, "Tür elle doğrulanmalı; otel/hizmet binasıysa ret", [f.reason]);
+    case FINAL.rejected: return M(MAIN.other, "Yönetici reddetti; yeni eşleşme aranabilir", [f.reason]);
+    case FINAL.readError: return /geçerli puan yok/i.test(r.error) ? M(MAIN.noRating, "Google sayfasında puan yok; tekrar denenir", [r.error]) : M(MAIN.error, "Sonraki günlük çalışmada yeniden denenir", [f.reason]);
+    case FINAL.notTried: return M(MAIN.error, "Sonraki günlük çalışmada denenecek", ["henüz denenmedi"]);
+    default: return M(MAIN.other, f.reason || "Elle incelenmeli", [f.reason]);
+  }
+}
+/** Aynı Google kaydına bağlı birden çok Gidenler mekânı (ikinci kayıt ya da şube karışıklığı). */
+export function duplicatePlaceIds(rows: Row[]): Map<string, string[]> {
+  const m = new Map<string, string[]>();
+  for (const r of rows) if (r.record === "Aktif" && r.placeId) m.set(r.placeId, [...(m.get(r.placeId) ?? []), r.slug]);
+  return new Map([...m].filter(([, v]) => v.length > 1));
+}
+
 /** Yazmadan önce türetilmiş sütunları doldurur. */
-export function withDerived(rows: Row[], decisions: Map<string, Decision>): Row[] {
-  return rows.map((r) => { const d = decisionFor(r, decisions.get(r.slug)); const f = finalState(r, d); return { ...r, decision: d ? `${d.decision === "onay" ? "Onay" : "Ret"} · ${d.at.slice(0, 10)}` : "", finalState: f.state, finalReason: f.reason }; });
+export interface Evidence { level: string; why: string }
+/** Yazmadan önce türetilmiş sütunları doldurur: nihai durum, ana durum + alt nedenler, kanıt, güven, sonraki işlem. */
+export function withDerived(rows: Row[], decisions: Map<string, Decision>, closures: Record<string, { state: string }> = {}, evidence: Record<string, Evidence> = {}): Row[] {
+  const dup = duplicatePlaceIds(rows);
+  return rows.map((r) => {
+    const d = decisionFor(r, decisions.get(r.slug)); const f = finalState(r, d); const m = mainStatus(r, d, closures[r.slug] ?? null);
+    const subs = dup.has(r.placeId) ? [...m.subs, `aynı Place ID ${dup.get(r.placeId)!.filter((x) => x !== r.slug).join(", ")} kaydında da var`] : m.subs;
+    const e = evidence[r.slug];
+    const auto = r.placeId ? `eşleşme ${r.confidence}${r.distance != null ? ` · konum ${r.distance} m` : ""}${r.nameSim != null ? ` · ad ${r.nameSim}` : ""}${r.seenCategory ? ` · tür ${r.seenCategory}` : ""}` : "";
+    return { ...r, decision: d ? `${d.decision === "onay" ? "Onay" : "Ret"} · ${d.at.slice(0, 10)}` : "", finalState: f.state, finalReason: f.reason,
+      mainState: m.main, subReasons: subs.filter(Boolean).join(" · "), level: e?.level ?? m.confidence, evidence: e?.why ?? auto, nextAction: m.next };
+  });
 }
 
 export interface FileCheck { ok: boolean; errors: string[]; warnings: string[] }

@@ -1,5 +1,5 @@
 import ExcelJS from "exceljs";
-import { COLUMNS, DERIVED, FINAL, HEADERS, OPTIONAL_HEADERS, STATUS, summarize, withDerived, type ColKey, type Decision, type Row } from "./core";
+import { COLUMNS, DERIVED, FINAL, HEADERS, MAIN, OPTIONAL_HEADERS, STATUS, summarize, withDerived, type ColKey, type Decision, type Evidence, type Row } from "./core";
 
 /* Excel okuma/yazma. Biçim 2 (8 sayfa):
    1 Tüm Mekânlar (veri, okunan sayfa) · 2 Puanı Doğrulananlar · 3 Aktarım Bekleyenler · 4 Yanlış Eşleşmeler · 5 Kapalı Mekânlar
@@ -25,8 +25,10 @@ const FINAL_FILL: Record<string, string> = {
 export interface Change { at: string; slug: string; name: string; from: number | null; to: number; fromN: number | null; toN: number | null }
 export interface ClosureInfo { state: string; checkedAt: string; google: string; match: string; official: string; confidence: string; note: string }
 export interface Meta { generatedAt: string; run?: string; note?: string; decisions?: Map<string, Decision>; closures?: Record<string, ClosureInfo>; site?: { shown: number; hidden: number } | null;
-  /** isteğe bağlı: bekleyen eşleşmelerin kanıt seviyesi (A güçlü · B orta · C zayıf/çelişkili) — karar değildir */
-  evidence?: Record<string, { tier: string; why: string; matcher?: string }> }
+  /** isteğe bağlı: kanıt seviyesi ve kanıt metni (bekleyen eşleşme ölçümü, eşleşmesiz mekân araması) — karar değildir */
+  evidence?: Record<string, Evidence>;
+  /** isteğe bağlı: eşleşmesi olmayan mekân için bulunan Google adayı */
+  candidates?: Record<string, { level: string; placeId: string; name: string; address: string; why: string }> }
 
 type Col = { header: string; key: string; width: number };
 function sheet(wb: ExcelJS.Workbook, name: string, cols: Col[], rows: object[], freeze = 1) {
@@ -45,64 +47,73 @@ const pct = (a: number, b: number) => (b ? `%${((a / b) * 100).toLocaleString("t
 export async function writeWorkbook(rowsIn: Row[], meta: Meta, changes: Change[] = []): Promise<Buffer> {
   const decisions = meta.decisions ?? new Map<string, Decision>();
   const closures = meta.closures ?? {};
-  const rows = withDerived(rowsIn, decisions);
+  const rows = withDerived(rowsIn, decisions, closures, meta.evidence ?? {});
   const act = rows.filter((r) => r.record === "Aktif");
+  const cands = meta.candidates ?? {};
   const wb = new ExcelJS.Workbook();
   wb.creator = "Gidenler"; wb.created = new Date(meta.generatedAt);
 
-  /* 1 · Tüm Mekânlar */
+  /* 1 · Tüm Mekânlar — her satırda kaynak, kanıt, güven, son kontrol, sonraki işlem */
   const ws = sheet(wb, SHEET, COLUMNS.map(([key, header, width]) => ({ key, header, width })), rows.map((r) => Object.fromEntries(COLUMNS.map(([k]) => [k, r[k] ?? null]))), 2);
   ws.getColumn("rating").numFmt = "0.0"; tint(ws, "status", FILL); tint(ws, "finalState", FINAL_FILL); link(ws, "mapsUrl"); link(ws, "profileUrl");
 
   const base: Col[] = [{ header: "Gidenler ID", key: "slug", width: 34 }, { header: "Mekân adı", key: "name", width: 30 }, { header: "İlçe", key: "district", width: 13 }];
-  const by = (...states: string[]) => act.filter((r) => states.includes(r.finalState));
-  /* 2 · Puanı Doğrulananlar */
-  const ok = sheet(wb, "Puanı Doğrulananlar", [...base, { header: "Google puanı (5 üzerinden)", key: "rating", width: 12 }, { header: "Değerlendirme sayısı", key: "reviews", width: 12 }, { header: "Eşleşme güveni", key: "confidence", width: 14 }, { header: "Google'daki tür", key: "seenCategory", width: 22 }, { header: "Son kontrol", key: "checkedAt", width: 20 }, { header: "Not", key: "finalReason", width: 50 }, { header: "Google Maps", key: "mapsUrl", width: 30 }, { header: "Gidenler profili", key: "profileUrl", width: 30 }], by(FINAL.shown));
+  const tail: Col[] = [{ header: "Kaynak", key: "source", width: 24 }, { header: "Kanıt", key: "evidence", width: 60 }, { header: "Güven seviyesi", key: "level", width: 22 }, { header: "Son kontrol", key: "checkedAt", width: 20 }, { header: "Sonraki işlem", key: "nextAction", width: 50 }];
+  const main = (...m: string[]) => act.filter((r) => m.includes(r.mainState));
+  /* 2 · Google Puanı Aktif */
+  const ok = sheet(wb, "Google Puanı Aktif", [...base, { header: "Google puanı (5 üzerinden)", key: "rating", width: 12 }, { header: "Değerlendirme sayısı", key: "reviews", width: 12 }, { header: "Eşleşme güveni", key: "confidence", width: 14 }, { header: "Google'daki tür", key: "seenCategory", width: 22 }, { header: "Alt nedenler", key: "subReasons", width: 40 }, ...tail, { header: "Google Maps", key: "mapsUrl", width: 30 }, { header: "Gidenler profili", key: "profileUrl", width: 30 }], main(MAIN.shown));
   ok.getColumn("rating").numFmt = "0.0"; link(ok, "mapsUrl"); link(ok, "profileUrl");
-  /* 3 · Aktarım Bekleyenler */
-  const ev = meta.evidence ?? {};
-  const TIER: Record<string, string> = { A: "A · güçlü kanıt — onay önerilir", B: "B · orta — elle bakılmalı", C: "C · zayıf/çelişkili — onaylanmamalı" };
-  const wait = sheet(wb, "Aktarım Bekleyenler", [...base, { header: "Nihai durum", key: "finalState", width: 30 }, { header: "Neden", key: "finalReason", width: 60 }, { header: "Kanıt seviyesi", key: "tier", width: 30 }, { header: "Kanıt", key: "evWhy", width: 60 }, { header: "Okunan puan", key: "rating", width: 10 }, { header: "Eşleşme güveni", key: "confidence", width: 14 }, { header: "Google'da görünen ad", key: "seenName", width: 30 }, { header: "Google'daki tür", key: "seenCategory", width: 20 }, { header: "Konum farkı (m)", key: "distance", width: 10 }, { header: "Ad benzerliği", key: "nameSim", width: 10 }, { header: "Google Maps", key: "mapsUrl", width: 30 }], by(FINAL.awaitingMatch, FINAL.typeReview, FINAL.readError, FINAL.notTried, FINAL.other).map((r) => ({ ...r, tier: ev[r.slug] ? TIER[ev[r.slug].tier] ?? ev[r.slug].tier : "", evWhy: ev[r.slug]?.why ?? "" })));
-  tint(wait, "finalState", FINAL_FILL); link(wait, "mapsUrl");
-  /* 4 · Yanlış Eşleşmeler */
-  const bad = sheet(wb, "Yanlış Eşleşmeler", [...base, { header: "Sorun", key: "finalState", width: 26 }, { header: "Açıklama", key: "finalReason", width: 60 }, { header: "Gidenler'deki adres", key: "address", width: 36 }, { header: "Google'da görünen ad", key: "seenName", width: 30 }, { header: "Google'da görünen adres", key: "seenAddress", width: 40 }, { header: "Google'daki tür", key: "seenCategory", width: 22 }, { header: "Konum farkı (m)", key: "distance", width: 10 }, { header: "Ad benzerliği", key: "nameSim", width: 10 }, { header: "Google Maps", key: "mapsUrl", width: 30 }], by(FINAL.branch, FINAL.location, FINAL.wrongType, FINAL.rejected).concat(act.filter((r) => r.finalState === FINAL.typeReview && r.status === STATUS.typeSuspect)));
-  tint(bad, "finalState", FINAL_FILL); link(bad, "mapsUrl");
-  /* 5 · Kapalı Mekânlar */
-  const closedRows = act.filter((r) => r.status === STATUS.closed || closures[r.slug]).map((r) => {
+  /* 3 · Onay Bekleyenler */
+  const wait = sheet(wb, "Onay Bekleyenler", [...base, { header: "Okunan puan", key: "rating", width: 10 }, { header: "Google'da görünen ad", key: "seenName", width: 30 }, { header: "Google'da görünen adres", key: "seenAddress", width: 40 }, { header: "Gidenler'deki adres", key: "address", width: 36 }, { header: "Google'daki tür", key: "seenCategory", width: 20 }, { header: "Konum farkı (m)", key: "distance", width: 10 }, { header: "Ad benzerliği", key: "nameSim", width: 10 }, { header: "Google Place ID", key: "placeId", width: 30 }, { header: "Alt nedenler", key: "subReasons", width: 40 }, ...tail, { header: "Google Maps", key: "mapsUrl", width: 30 }], main(MAIN.pending));
+  link(wait, "mapsUrl");
+  /* 4 · Eşleşmesi Olmayanlar (arama adayıyla) */
+  sheet(wb, "Eşleşmesi Olmayanlar", [...base, { header: "Adres", key: "address", width: 40 }, { header: "Arama sonucu", key: "cLevel", width: 16 }, { header: "Bulunan Google adı", key: "cName", width: 30 }, { header: "Bulunan Google adresi", key: "cAddress", width: 40 }, { header: "Aday Place ID", key: "cPid", width: 30 }, { header: "Aday kanıtı / ret nedeni", key: "cWhy", width: 60 }, { header: "Sonraki işlem", key: "nextAction", width: 50 }, { header: "Gidenler profili", key: "profileUrl", width: 30 }],
+    main(MAIN.notFound).map((r) => { const c = cands[r.slug]; return { ...r, cLevel: c?.level ?? "aranmadı", cName: c?.name ?? "", cAddress: c?.address ?? "", cPid: c?.placeId ?? "", cWhy: c?.why ?? "",
+      nextAction: c?.level === "güçlü" ? "Güçlü aday: onay paketinde" : c?.level === "orta" ? "Orta aday: elle doğrulanmalı" : c ? "Doğru kayıt bulunamadı; elle aranmalı ya da kapanmış olabilir" : r.nextAction }; }));
+  /* 5 · Yanlış Şube ve Tür Eşleşmeleri */
+  const bad = sheet(wb, "Yanlış Şube ve Tür", [...base, { header: "Ana durum", key: "mainState", width: 26 }, { header: "Açıklama", key: "finalReason", width: 60 }, { header: "Gidenler'deki adres", key: "address", width: 36 }, { header: "Google'da görünen ad", key: "seenName", width: 30 }, { header: "Google'da görünen adres", key: "seenAddress", width: 40 }, { header: "Google'daki tür", key: "seenCategory", width: 22 }, { header: "Konum farkı (m)", key: "distance", width: 10 }, { header: "Ad benzerliği", key: "nameSim", width: 10 }, ...tail, { header: "Google Maps", key: "mapsUrl", width: 30 }], main(MAIN.branch, MAIN.type));
+  link(bad, "mapsUrl");
+  /* 6 · Kapanma İncelemesi */
+  const closedRows = main(MAIN.closed).map((r) => {
     const c = closures[r.slug];
     return { ...r, cState: c ? (c.state === "closed_confirmed" ? "Kesin kapalı (closed_confirmed)" : c.state === "reopened" ? "Yeniden açıldı" : "Şüpheli (elle inceleme)") : "Denetlenmedi (yalnız otomatik okuma)",
       cGoogle: c?.google ?? "Kalıcı kapalı (otomatik okuma)", cMatch: c?.match ?? r.confidence, cOfficial: c?.official ?? "", cConf: c?.confidence ?? "", cAt: c?.checkedAt ?? r.attemptAt.slice(0, 10), cNote: c?.note ?? "" };
   });
-  sheet(wb, "Kapalı Mekânlar", [...base, { header: "Kapanma durumu", key: "cState", width: 30 }, { header: "Google'ın gösterdiği durum", key: "cGoogle", width: 36 }, { header: "Eşleşme", key: "cMatch", width: 14 }, { header: "Gidenler'deki adres", key: "address", width: 36 }, { header: "Resmî kaynak kontrolü", key: "cOfficial", width: 50 }, { header: "Güven", key: "cConf", width: 10 }, { header: "Kontrol tarihi", key: "cAt", width: 14 }, { header: "Not", key: "cNote", width: 50 }, { header: "Google Maps", key: "mapsUrl", width: 30 }], closedRows);
-  /* 6 · Place ID Eksikleri */
-  sheet(wb, "Place ID Eksikleri", [...base, { header: "Kategori", key: "category", width: 11 }, { header: "Adres", key: "address", width: 40 }, { header: "Eşleşme durumu", key: "confidence", width: 16 }, { header: "Açıklama", key: "finalReason", width: 60 }, { header: "Gidenler profili", key: "profileUrl", width: 30 }], by(FINAL.noPlaceId));
-  /* 7 · Güncelleme Geçmişi */
+  sheet(wb, "Kapanma İncelemesi", [...base, { header: "Kapanma durumu", key: "cState", width: 30 }, { header: "Google'ın gösterdiği durum", key: "cGoogle", width: 36 }, { header: "Eşleşme", key: "cMatch", width: 14 }, { header: "Gidenler'deki adres", key: "address", width: 36 }, { header: "İkinci kaynak (resmî site)", key: "cOfficial", width: 50 }, { header: "Güven", key: "cConf", width: 10 }, { header: "Kontrol tarihi", key: "cAt", width: 14 }, { header: "Not", key: "cNote", width: 50 }, { header: "Sonraki işlem", key: "nextAction", width: 50 }, { header: "Google Maps", key: "mapsUrl", width: 30 }], closedRows);
+  /* 7 · Değerlendirme Sayısı Eksikleri */
+  sheet(wb, "Değerlendirme Sayısı Eksik", [...base, { header: "Google puanı", key: "rating", width: 10 }, { header: "Google görünümü", key: "view", width: 12 }, { header: "Neden", key: "why", width: 60 }, { header: "Son kontrol", key: "checkedAt", width: 20 }],
+    act.filter((r) => r.mainState === MAIN.shown && r.reviews == null).map((r) => ({ ...r, why: r.view === "Tam" ? "Tam görünümde sayı okunamadı" : "Google sınırlı görünüm verdi: sayı gösterilmiyor (uydurulmaz); mekân Google sıralamasına girmez" })));
+  /* 8 · Güncelleme Geçmişi */
   const hist = sheet(wb, "Güncelleme Geçmişi", [...base, { header: "Son deneme", key: "attemptAt", width: 20 }, { header: "Son başarılı kontrol", key: "checkedAt", width: 20 }, { header: "Güncelleme durumu", key: "status", width: 18 }, { header: "Google görünümü", key: "view", width: 10 }, { header: "Hata / not", key: "error", width: 60 }, { header: "Önceki puan", key: "prevRating", width: 10 }, { header: "Puan", key: "rating", width: 10 }], act.filter((r) => r.placeId).sort((a, b) => (b.attemptAt || "").localeCompare(a.attemptAt || "")));
   tint(hist, "status", FILL);
 
-  /* 8 · Yönetici Özeti */
+  /* 9 · Yönetici Özeti — 456 mekânın tamamı ana duruma göre (toplam = aktif mekân) */
   const s = summarize(rowsIn);
-  const count = (st: string) => act.filter((r) => r.finalState === st).length;
-  const shown = count(FINAL.shown);
+  const cnt = (m: string) => act.filter((r) => r.mainState === m).length;
+  const shown = cnt(MAIN.shown);
+  const subCount = (needle: RegExp) => act.filter((r) => needle.test(r.subReasons)).length;
   const lines: Array<[string, string | number]> = [
     ["Oluşturma (UTC)", meta.generatedAt], ...(meta.run ? [["Çalışma", meta.run] as [string, string]] : []),
-    ["Aktif mekân", s.active], ["Google Place ID'si olan", s.withPlaceId], ["Google puanı okunmuş (herhangi bir zamanda)", s.withRating],
-    ["— Nihai durum —", ""],
-    ...Object.values(FINAL).map((f) => [f, count(f)] as [string, number]),
+    ["— 456 mekân mutabakatı (her mekân tek ana durumda) —", ""],
+    ...Object.values(MAIN).map((m) => [m, cnt(m)] as [string, number]),
+    ["TOPLAM (ana durumlar)", Object.values(MAIN).reduce((a, m) => a + cnt(m), 0)],
+    ["Aktif mekân (kontrol)", s.active],
+    ["— Alt nedenler (bir mekânda birden çok olabilir) —", ""],
+    ["Eşleşme onay bekliyor (alt neden)", subCount(/eşleşme onay bekliyor/)],
+    ["Değerlendirme sayısı yok", subCount(/değerlendirme sayısı yok/)],
+    ["Google sınırlı görünüm", subCount(/sınırlı görünüm/)],
+    ["Kesin kapalı", subCount(/kesin kapalı/)],
+    ["Kapanma şüphesi", subCount(/kapanma şüphesi/)],
+    ["Aynı Place ID birden çok mekânda", subCount(/aynı Place ID/)],
     ["— Tamamlanma —", ""],
-    ["Puanı doğrulanıp sitede gösterilebilen", `${shown} / ${s.active} (${pct(shown, s.active)})`],
-    ["Place ID'si olanlar içinde", `${shown} / ${s.withPlaceId} (${pct(shown, s.withPlaceId)})`],
-    ["Değerlendirme sayısı da bilinen (sıralamaya girebilen)", act.filter((r) => r.finalState === FINAL.shown && r.reviews != null).length],
-    ["Elle inceleme bekleyen (eşleşme + tür)", count(FINAL.awaitingMatch) + count(FINAL.typeReview)],
-    ["Kesin kapalı (kapanış kaydı)", Object.values(closures).filter((c) => c.state === "closed_confirmed").length],
-    ["Kapanması şüpheli (kapanış kaydı)", Object.values(closures).filter((c) => c.state === "closed_suspected").length],
+    ["Google puanı gösterilen", `${shown} / ${s.active} (${pct(shown, s.active)})`],
+    ["Eşleşmesiz mekânda arama adayı: güçlü / orta / yok", `${Object.values(cands).filter((c) => c.level === "güçlü").length} / ${Object.values(cands).filter((c) => c.level === "orta").length} / ${Object.values(cands).filter((c) => !["güçlü", "orta"].includes(c.level)).length}`],
     ["Yönetici kararı olan", [...decisions.values()].length],
-    ...(Object.keys(ev).length ? (["A", "B", "C"].map((t) => [`Bekleyen eşleşme · kanıt ${TIER[t]}`, Object.values(ev).filter((x) => x.tier === t).length]) as Array<[string, number]>) : []),
     ...(meta.site ? [["Sitede gösterilen (veritabanı)", meta.site.shown] as [string, number], ["Sitede gizlenen (veritabanı)", meta.site.hidden] as [string, number]] : []),
     ...(meta.note ? [["Not", meta.note] as [string, string]] : []),
   ];
-  const sum = sheet(wb, "Yönetici Özeti", [{ header: "Gösterge", key: "k", width: 52 }, { header: "Değer", key: "v", width: 26 }], lines.map(([k, v]) => ({ k, v })));
-  sum.eachRow((row) => { if (String(row.getCell(1).value).startsWith("—")) row.font = { bold: true }; });
+  const sum = sheet(wb, "Yönetici Özeti", [{ header: "Gösterge", key: "k", width: 58 }, { header: "Değer", key: "v", width: 26 }], lines.map(([k, v]) => ({ k, v })));
+  sum.eachRow((row) => { if (String(row.getCell(1).value).startsWith("—") || String(row.getCell(1).value).startsWith("TOPLAM")) row.font = { bold: true }; });
 
   const ch = sheet(wb, "Değişimler", [{ header: "Tarih", key: "at", width: 20 }, { header: "Gidenler ID", key: "slug", width: 34 }, { header: "Mekân adı", key: "name", width: 30 }, { header: "Önceki puan", key: "from", width: 12 }, { header: "Yeni puan", key: "to", width: 12 }, { header: "Önceki sayı", key: "fromN", width: 12 }, { header: "Yeni sayı", key: "toN", width: 12 }], changes);
   void ch;

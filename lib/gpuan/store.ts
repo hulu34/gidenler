@@ -4,7 +4,7 @@ import { uuidv7 } from "uuidv7";
 import type { Db } from "@/lib/db/client";
 import { atomic } from "@/lib/profile";
 import { auditLog, googleRatingDecisions, googleRatingFiles, googleRatingHistory, googleRatingImports, googleRatingLock, googleRatings, placeIdentifiers, places } from "@/lib/db/schema";
-import { checkFile, decisionFor, hideReason, importable, reclassify, type Decision, type GoogleId, type Row, type Venue } from "./core";
+import { checkFile, decisionFor, duplicatePlaceIds, hideReason, importable, reclassify, type Decision, type GoogleId, type Row, type Venue } from "./core";
 import { readWorkbook } from "./excel";
 import { latestDecisions } from "./decisions";
 export { latestDecisions };
@@ -86,6 +86,35 @@ export async function recordDecision(db: Db, d: { slug: string; placeId: string;
   return { ok: true as const, id };
 }
 
+/* ── Yeni Google eşleşmesi (arama ile bulunan aday): place_identifiers'a "pending" olarak eklenir + gerekçeli puan onayı.
+   "pending" kalması bilinçlidir: Google fotoğraf/ayrıntı (ücretli) özellikleri yalnız auto/confirmed kimlikle açılır;
+   bu işlem YALNIZ Google puanının gösterilmesine izin verir. Aynı Google kaydı başka bir mekâna bağlıysa reddedilir.
+   Mekânın başka bekleyen kimliği varsa yalnız replaceExternalId verilirse o kimlik "rejected" yapılır (silinmez). ── */
+export async function addMatch(db: Db, m: { slug: string; placeId: string; note: string; evidence?: unknown; actor: string; replaceExternalId?: string }) {
+  if (!/^ChIJ[A-Za-z0-9_-]{10,300}$/.test(m.placeId)) return { ok: false as const, error: "bad_place_id" };
+  if ((m.note ?? "").trim().length < DECISION_NOTE_MIN) return { ok: false as const, error: "note_required" };
+  const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, m.slug)).limit(1);
+  if (!p) return { ok: false as const, error: "unknown_slug" };
+  const same = await db.select({ placeId: placeIdentifiers.placeId, status: placeIdentifiers.status }).from(placeIdentifiers)
+    .where(and(eq(placeIdentifiers.provider, "google"), eq(placeIdentifiers.externalId, m.placeId)));
+  if (same.some((x) => x.placeId !== p.id && x.status !== "rejected")) return { ok: false as const, error: "place_id_on_other_venue" };
+  const mine = await db.select({ id: placeIdentifiers.id, ext: placeIdentifiers.externalId, status: placeIdentifiers.status }).from(placeIdentifiers)
+    .where(and(eq(placeIdentifiers.provider, "google"), eq(placeIdentifiers.placeId, p.id)));
+  const others = mine.filter((x) => x.ext !== m.placeId && x.status !== "rejected");
+  if (others.some((x) => x.status === "auto" || x.status === "confirmed")) return { ok: false as const, error: "venue_has_confirmed_match" };
+  if (others.length && (others.length > 1 || others[0].ext !== m.replaceExternalId)) return { ok: false as const, error: "venue_has_other_pending", other: others.map((x) => x.ext) };
+  const exists = mine.find((x) => x.ext === m.placeId);
+  const id = exists?.id ?? uuidv7();
+  await atomic(db, (q) => [
+    ...others.map((o) => q.update(placeIdentifiers).set({ status: "rejected", verifiedBy: m.actor, verifiedAt: new Date() }).where(eq(placeIdentifiers.id, o.id))),
+    ...(exists ? (exists.status === "rejected" ? [q.update(placeIdentifiers).set({ status: "pending" }).where(eq(placeIdentifiers.id, id))] : [])
+      : [q.insert(placeIdentifiers).values({ id, placeId: p.id, provider: "google", externalId: m.placeId, matchScore: null, matchMethod: `gpuan-arama ${m.note.slice(0, 200)}`, status: "pending" })]),
+    q.insert(auditLog).values({ id: uuidv7(), actor: m.actor, action: "google_match_added", refTable: "place_identifiers", refId: id, detail: { slug: m.slug, placeId: m.placeId, replaced: others.map((o) => o.ext), note: m.note.slice(0, 300) } }),
+  ]);
+  const d = await recordDecision(db, { slug: m.slug, placeId: m.placeId, decision: "onay", note: m.note, evidence: m.evidence, actor: m.actor });
+  return d.ok ? { ok: true as const, identifierId: id, replaced: others.length } : d;
+}
+
 export interface ImportReport { importId: string; status: "applied" | "rejected"; fileId: string; rows: number; importable: number; written: number; changed: number; unchanged: number; kept: number; hidden: number; unhidden: number; skipped: Record<string, number>; errors: string[]; warnings: string[]; changedSlugs: string[]; hiddenSlugs: string[] }
 
 /**
@@ -120,19 +149,26 @@ export async function importFile(db: Db, fileId: string, venues: Venue[], actor:
   const known = new Set(venues.map((v) => v.slug));
   const skipped: Record<string, number> = {};
   const take: Row[] = [];
+  /* aynı Google kaydı birden çok Gidenler mekânında: hiçbirine aktarılmaz (yönetici hangisinin doğru olduğuna karar verene dek) */
+  const dups = duplicatePlaceIds(parsed.rows);
+  if (dups.size) check.warnings.push(`${dups.size} Google kaydı birden çok mekâna bağlı: ${[...dups.values()].map((v) => v.join("+")).slice(0, 10).join(", ")}`);
   for (const r of parsed.rows) {
     if (!known.has(r.slug)) { skipped["listede yok"] = (skipped["listede yok"] ?? 0) + 1; continue; }
+    if (dups.has(r.placeId)) { skipped["aynı Place ID birden çok mekânda"] = (skipped["aynı Place ID birden çok mekânda"] ?? 0) + 1; continue; }
     const i = importable(r, decisions.get(r.slug));
     if (!i.ok) { skipped[i.why!] = (skipped[i.why!] ?? 0) + 1; continue; }
     take.push(r);
   }
   /* yalnız değişen ya da daha yeni kontrol tarihi taşıyan satırlar yazılır; eski tarihli dosya yeni veriyi ezemez */
-  const write = take.filter((r) => { const c = cur.get(r.slug); return !c || Date.parse(r.checkedAt) > c.checkedAt.getTime() || c.placeId !== r.placeId || c.hiddenReason != null; });
+  /* aynı gözlemin bugünkü kurallarla yeniden değerlendirilmesi (ör. sınırlı görünüm sayısının boşaltılması) de yazılır;
+     daha ESKİ tarihli dosya ise yeni veriyi ezemez */
+  const write = take.filter((r) => { const c = cur.get(r.slug); if (!c) return true; const t = Date.parse(r.checkedAt), ct = c.checkedAt.getTime();
+    return t > ct || c.placeId !== r.placeId || c.hiddenReason != null || (t === ct && (c.rating !== r.rating || c.reviewCount !== (r.reviews ?? null))); });
   /* Olumsuz kanıt (yanlış tür/şube, kapalı, ret) sitede önceden gösterilen puanı gizler; satır ve geçmiş silinmez. */
   const hide: Array<{ slug: string; why: string }> = [];
   for (const r of parsed.rows) {
     const c = cur.get(r.slug); if (!c || c.placeId !== r.placeId || !known.has(r.slug)) continue;
-    const why = hideReason(r, decisionFor(r, decisions.get(r.slug)));
+    const why = dups.has(r.placeId) ? "aynı Google kaydı birden çok mekânda" : hideReason(r, decisionFor(r, decisions.get(r.slug)));
     if (why && c.hiddenReason !== why) hide.push({ slug: r.slug, why });
   }
   const unhide = write.filter((r) => cur.get(r.slug)?.hiddenReason != null).map((r) => r.slug);
@@ -171,12 +207,14 @@ export async function ratingStats(db: Db) {
 
 /* ── Günlük yönetici raporu: son çalışmanın tek bakışta özeti (yalnız sayılar ve mekân listeleri; Google'a istek yok) ── */
 export async function dailyReport(db: Db) {
-  const { withDerived, FINAL, STATUS, trDay } = await import("./core");
+  const { withDerived, FINAL, STATUS, trDay, reclassify } = await import("./core");
+  const { sheetVenues } = await import("./venues");
   const { CLOSURES } = await import("@/lib/closure");
   const [imports, f, stats, decisions] = await Promise.all([importsLog(db, 7), getFile(db, "son"), ratingStats(db), latestDecisions(db)]);
   const last = imports[0] ?? null;
   const parsed = f ? await readWorkbook(f.buf) : null;
-  const rows = parsed && !parsed.errors.length ? withDerived(parsed.rows, decisions).filter((r) => r.record === "Aktif") : [];
+  const vmap = new Map(sheetVenues().map((v) => [v.slug, v]));
+  const rows = parsed && !parsed.errors.length ? withDerived(parsed.rows.map((r) => reclassify(r, vmap.get(r.slug))), decisions).filter((r) => r.record === "Aktif") : [];
   const lastRun = rows.reduce((m, r) => (r.attemptAt > m ? r.attemptAt : m), "");
   /* Türkiye günü: günde bir zamanlanmış çalışma olduğundan "bugün denenen" = son günlük çalışma (+ aynı gün elle yapılanlar) */
   const runDay = lastRun ? trDay(new Date(lastRun)) : "";
