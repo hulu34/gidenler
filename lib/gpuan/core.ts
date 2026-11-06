@@ -330,6 +330,49 @@ export function finalState(r: Row, dec?: Decision | null): { state: string; reas
   if (r.status === STATUS.waiting || r.status === STATUS.isNew || !r.attemptAt) return { state: FINAL.notTried, reason: "Sonraki günlük çalışmada denenecek" };
   return { state: FINAL.other, reason: imp.why ?? r.error ?? "" };
 }
+/* ── Mutabakat: her mekâna TEK ana durum (toplam = mekân sayısı) ve gerekirse birden çok alt neden ── */
+export const MAIN = {
+  shown: "Puanı doğrulandı ve gösteriliyor",
+  pending: "Puan okundu, onay bekliyor",
+  notFound: "Doğru Google işletme kaydı bulunamadı",
+  branch: "İşletme/şube uyuşmazlığı",
+  type: "İşletme türü uyuşmazlığı",
+  closed: "Kapanma (doğrulandı ya da doğrulama gerekiyor)",
+  noRating: "Google kaynağı puan vermiyor",
+  error: "Veri okuma veya aktarım hatası",
+  other: "Diğer",
+} as const;
+export interface MainStatus { main: string; subs: string[]; next: string; confidence: string }
+export function mainStatus(r: Row, dec?: Decision | null, closure?: { state: string } | null): MainStatus {
+  const f = finalState(r, dec); const d = decisionFor(r, dec);
+  const subs: string[] = [];
+  if (r.confidence === CONFIDENCE.pending && f.state !== FINAL.awaitingMatch) subs.push("eşleşme onay bekliyor");
+  if (r.reviews == null && validRating(r.rating)) subs.push("değerlendirme sayısı yok (sıralamaya girmez)");
+  if (r.view === "Sınırlı") subs.push("Google sınırlı görünüm");
+  if (d) subs.push(`yönetici kararı: ${d.decision}`);
+  const conf = d?.decision === "onay" ? "Yönetici onaylı" : r.confidence;
+  const M = (main: string, next: string, extra: string[] = []): MainStatus => ({ main, subs: [...extra, ...subs], next, confidence: conf });
+  if (closure?.state === "closed_confirmed") return M(MAIN.closed, "Önerilerden çıkarıldı; yeniden açılırsa kapanış kaydı güncellenir", ["kesin kapalı (closed_confirmed)"]);
+  if (closure?.state === "closed_suspected" || f.state === FINAL.closed) return M(MAIN.closed, "Doğru eşleşme ve ikinci kaynakla kapanma doğrulanmalı", ["kapanma şüphesi"]);
+  switch (f.state) {
+    case FINAL.shown: return M(MAIN.shown, "Günlük kontrolle güncel tutulur");
+    case FINAL.awaitingMatch: return M(MAIN.pending, "Kanıt incelenip yönetici onayı/reddi verilmeli");
+    case FINAL.noPlaceId: return M(MAIN.notFound, "Google'da aranmalı; doğru şube bulunursa eşleşme onaya sunulur", [f.reason]);
+    case FINAL.branch: case FINAL.location: return M(MAIN.branch, "Şube/konum elle doğrulanmalı; doğruysa onay, değilse ret", [f.reason]);
+    case FINAL.wrongType: case FINAL.typeReview: return M(MAIN.type, "Tür elle doğrulanmalı; otel/hizmet binasıysa ret", [f.reason]);
+    case FINAL.rejected: return M(MAIN.other, "Yönetici reddetti; yeni eşleşme aranabilir", [f.reason]);
+    case FINAL.readError: return /geçerli puan yok/i.test(r.error) ? M(MAIN.noRating, "Google sayfasında puan yok; tekrar denenir", [r.error]) : M(MAIN.error, "Sonraki günlük çalışmada yeniden denenir", [f.reason]);
+    case FINAL.notTried: return M(MAIN.error, "Sonraki günlük çalışmada denenecek", ["henüz denenmedi"]);
+    default: return M(MAIN.other, f.reason || "Elle incelenmeli", [f.reason]);
+  }
+}
+/** Aynı Google kaydına bağlı birden çok Gidenler mekânı (ikinci kayıt ya da şube karışıklığı). */
+export function duplicatePlaceIds(rows: Row[]): Map<string, string[]> {
+  const m = new Map<string, string[]>();
+  for (const r of rows) if (r.record === "Aktif" && r.placeId) m.set(r.placeId, [...(m.get(r.placeId) ?? []), r.slug]);
+  return new Map([...m].filter(([, v]) => v.length > 1));
+}
+
 /** Yazmadan önce türetilmiş sütunları doldurur. */
 export function withDerived(rows: Row[], decisions: Map<string, Decision>): Row[] {
   return rows.map((r) => { const d = decisionFor(r, decisions.get(r.slug)); const f = finalState(r, d); return { ...r, decision: d ? `${d.decision === "onay" ? "Onay" : "Ret"} · ${d.at.slice(0, 10)}` : "", finalState: f.state, finalReason: f.reason }; });

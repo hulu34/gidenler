@@ -31,6 +31,16 @@ const int = (s: string | null | undefined) => {
   return d ? Number(d) : null;
 };
 
+/** Google Maps bağlantısındaki işletme kimliğinden ("!1s0x…:0x…") Place ID: ikisi aynı kimliğin iki yazımıdır
+    (Place ID = protobuf{ fixed64 ×2 } base64url). Ağ yok, ücretli çağrı yok. */
+export function placeIdFromFtid(ftid: string): string | null {
+  const m = ftid.match(/^0x([0-9a-f]{1,16}):0x([0-9a-f]{1,16})$/i);
+  if (!m) return null;
+  const b = Buffer.alloc(20); b[0] = 0x0a; b[1] = 0x12; b[2] = 0x09; b.writeBigUInt64LE(BigInt(`0x${m[1]}`), 3); b[11] = 0x11; b.writeBigUInt64LE(BigInt(`0x${m[2]}`), 12);
+  return b.toString("base64url"); // "ChIJ…" ile başlar
+}
+export const ftidFromUrl = (u: string) => (decodeURIComponent(u).match(/!1s(0x[0-9a-f]+:0x[0-9a-f]+)/i) ?? [])[1] ?? null;
+
 /** Sayfa adresinden koordinat: önce mekân işaretçisi (!3d…!4d…), yoksa görünüm merkezi (@lat,lng). */
 export function coordsFromUrl(u: string): { lat: number; lng: number } | null {
   const pin = u.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
@@ -86,7 +96,8 @@ const READ_JS = `(() => {
   };
 })()`;
 
-export async function mapsPageSource(): Promise<RatingSource> {
+export type MapsSource = RatingSource & { search(query: string, max?: number): Promise<{ kind: "ok"; candidates: Array<{ placeId: string; seen: Observation }> } | { kind: "blocked" | "error"; reason: string }> };
+export async function mapsPageSource(): Promise<MapsSource> {
   const mod = "playwright";
   const { chromium } = (await import(/* webpackIgnore: true */ mod)) as { chromium: { launch(o: object): Promise<{ newContext(o: object): Promise<{ newPage(): Promise<Page> }>; close(): Promise<void> }> } };
   const browser = await chromium.launch({ channel: "chrome", headless: true });
@@ -131,5 +142,35 @@ export async function mapsPageSource(): Promise<RatingSource> {
     return { kind: "ok", seen };
   }
 
-  return { id: "maps-sayfa", label: MAPS_PAGE_LABEL, fetch: fetchOne, close: () => browser.close() };
+  /* ARAMA (eşleşmesi olmayan mekân için aday bulma): Maps'in herkese açık arama sayfası. Tek sonuçsa doğrudan mekân sayfası açılır;
+     liste gelirse ilk birkaç sonucun bağlantısındaki işletme kimliği ve koordinatı alınır, sonra her aday kendi sayfasından okunur.
+     Engel/CAPTCHA aşılmaz; ücretli çağrı yok. Karar VERMEZ: adayları kontrol için döndürür. */
+  async function search(query: string, max = 3): Promise<{ kind: "ok"; candidates: Array<{ placeId: string; seen: Observation }> } | { kind: "blocked" | "error"; reason: string }> {
+    const url = `https://www.google.com/maps/search/${encodeURIComponent(query)}?hl=en`;
+    try { await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 }); } catch { return { kind: "error", reason: "Arama sayfası açılmadı" }; }
+    let cls = classifyUrl(page.url());
+    if (cls === "consent" && (await handleConsent())) cls = "ok";
+    if (cls !== "ok") return { kind: "blocked", reason: `Google ${cls} sayfası` };
+    if (await page.evaluate<boolean>(CAPTCHA_JS)) return { kind: "blocked", reason: "CAPTCHA görüntülendi" };
+    await page.waitForSelector('div[role="feed"], div[role="main"] h1', { timeout: 15000 }).catch(() => {});
+    for (let i = 0; i < 12; i++) { if (/!1s0x/.test(decodeURIComponent(page.url())) || (await page.evaluate<boolean>(`!!document.querySelector('div[role="feed"]')`))) break; await page.waitForTimeout(500); }
+    const links = await page.evaluate<string[]>(`Array.from(document.querySelectorAll('div[role="feed"] a[href*="/maps/place/"]')).map((a) => a.href).slice(0, ${max})`);
+    const targets = links.length ? links : [page.url()];
+    const out: Array<{ placeId: string; seen: Observation }> = [];
+    for (const href of targets) {
+      const ftid = ftidFromUrl(href); const pid = ftid ? placeIdFromFtid(ftid) : null;
+      if (!pid) continue;
+      const r = href === page.url() && !links.length ? null : await fetchOne({ placeId: pid });
+      if (r === null) {
+        for (let i = 0; i < 10 && !/!3d-?\d/.test(page.url()); i++) await page.waitForTimeout(500);
+        const raw = await page.evaluate<Parameters<typeof parseRaw>[0]>(READ_JS);
+        const seen = parseRaw(raw, page.url()); if (seen.name) out.push({ placeId: pid, seen });
+      } else if (r.kind === "ok") out.push({ placeId: pid, seen: r.seen });
+      else if (r.kind === "blocked") return { kind: "blocked", reason: r.reason };
+      await page.waitForTimeout(2500);
+    }
+    return { kind: "ok", candidates: out };
+  }
+
+  return { id: "maps-sayfa", label: MAPS_PAGE_LABEL, fetch: fetchOne, search, close: () => browser.close() };
 }
