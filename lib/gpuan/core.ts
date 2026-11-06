@@ -1,5 +1,9 @@
 import { addressSimilarity, branchDiff, distanceM, houseNoConflict, nameSimilarity } from "@/lib/match/score";
 
+const TRF: Record<string, string> = { ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u", â: "a", î: "i", û: "u" };
+/** Türkçe harfleri sadeleştirip boşluk ve noktalamayı atar ("Ataşehir" → "atasehir"). */
+const fold = (x: string) => x.toLocaleLowerCase("tr").split("").map((c) => TRF[c] ?? c).join("").replace(/[^a-z0-9]+/g, "");
+
 /* ──────────────────────────────────────────────────────────────────────────
    GOOGLE PUAN TABLOSU — çekirdek kurallar (saf; ağ, dosya ve veritabanı yok).
    Akış: venues.json → Excel satırları → kaynak adaptörü (değiştirilebilir) → Excel → doğrulama → veritabanı.
@@ -112,12 +116,14 @@ export interface RatingSource { id: string; label: string; fetch(target: { place
 
 /* ── Doğru mekân / doğru şube kontrolü ── */
 export interface Consistency { ok: boolean; reason: string; name: number; distanceM: number | null; address: number | null }
-export function checkConsistency(v: Pick<Venue, "name" | "address" | "lat" | "lng">, seen: Observation): Consistency {
+export function checkConsistency(v: Pick<Venue, "name" | "address" | "lat" | "lng"> & { district?: string | null }, seen: Observation): Consistency {
   const name = nameSimilarity(v.name, seen.name);
   const dist = seen.lat != null && seen.lng != null && Number.isFinite(seen.lat) && Number.isFinite(seen.lng) ? Math.round(distanceM(v, { lat: seen.lat, lng: seen.lng })) : null;
   const addr = addressSimilarity(v.address, seen.address);
   const houseClash = houseNoConflict(v.address, seen.address);
-  const branch = branchDiff(v.name, seen.name);
+  /* mekânın kendi ilçesinin adı ("Alaçatı Balıkçısı Ataşehir") şube eki sayılmaz */
+  const own = new Set([v.district, ...(v.address ?? "").split(/[,/]/)].map((x) => fold(x ?? "")).filter(Boolean));
+  const branch = branchDiff(v.name, seen.name).filter((w) => !own.has(fold(w)));
   const r = (ok: boolean, reason: string): Consistency => ({ ok, reason, name: +name.toFixed(2), distanceM: dist, address: addr == null ? null : +addr.toFixed(2) });
   if (!seen.name) return r(false, "Sayfada mekân adı okunamadı");
   /* 1 · konum biliniyorsa asıl şube kanıtı konumdur */
@@ -139,7 +145,7 @@ export function checkConsistency(v: Pick<Venue, "name" | "address" | "lat" | "ln
 
 /* ── Tür kontrolü: Google'da yeme-içme dışı bir yer (otel, cami, mağaza…) olarak kayıtlıysa eşleşme şüphelidir ── */
 const FOOD = /restaurant|restoran|lokanta|caf[eé]|kafe|coffee|kahve|bar\b|pub|bistro|bakery|f[ıi]r[ıi]n|pastry|pastane|dessert|tatl[ıi]|kebab|kebap|meyhane|tavern|diner|food|grill|steak|pizza|burger|sushi|patisserie|tea house|çay|breakfast|kahvalt|wine|winery|brewery|ice cream|dondurma|baklava|börek|pide|döner|doner|köfte|kofte|seafood|balık|fish|buffet|büfe|eatery|canteen|cafeteria/i;
-const NON_FOOD = /hotel|otel|hostel|motel|guest ?house|pansiyon|apartment|lodging|bed (&|and) breakfast|mosque|cami|church|kilise|museum|müze|\bpark\b|school|okul|university|üniversite|hospital|hastane|office|ofis|real estate|emlak|car (dealer|rental|repair)|gas station|pharmacy|eczane|\bbank\b|supermarket|market\b|grocery|clothing|giyim|shopping mall|avm|gym|spor salonu|beauty|kuaför|barber/i;
+const NON_FOOD = /hotel|otel|hostel|motel|guest ?house|pansiyon|apartment|lodging|bed (&|and) breakfast|mosque|cami|church|kilise|museum|müze|\bpark\b|school|okul|university|üniversite|hospital|hastane|office|ofis|real estate|emlak|car (dealer|rental|repair)|gas station|pharmacy|eczane|\bbank\b|supermarket|market\b|grocery|clothing|giyim|shopping mall|avm|gym|spor salonu|beauty|kuaför|barber|community center|municipal|belediye binası|administration/i;
 export function typeMismatch(category: string | undefined | null): string | null {
   const c = (category ?? "").trim();
   if (!c || FOOD.test(c)) return null;

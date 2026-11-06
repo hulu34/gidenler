@@ -88,6 +88,9 @@ async function main() {
   ok("konum yoksa adres doğrularsa şube eki engel olmaz", checkConsistency(ak, { name: "AkıntıBurnu Balık Restoranı | Arnavutköy", address: "Arnavutköy, Bebek Arnavutköy Cd No:115, 34345 Beşiktaş/İstanbul, Türkiye", rating: 4.2, reviews: null }).ok);
   ok("Google'da otel olarak kayıtlı eşleşme aktarılmaz", (() => { const t = applyResult(row0, v0, { kind: "ok", seen: { name: v0.name, address: "", rating: 5, reviews: null, lat: v0.lat, lng: v0.lng, category: "Hotel" } }, new Date(Date.now() - 36e5).toISOString(), src); return t.status === STATUS.typeMismatch && t.rating === 4.2 && !importable(t).ok; })());
   ok("yeme-içme türleri tür uyuşmazlığı sayılmaz", ["Coffee shop", "Fish restaurant", "Meat dish restaurant", "Fast food restaurant", "Pastry shop", "Hotel restaurant", "Fish market"].every((c) => typeMismatch(c) === null) && ["Hotel", "Mosque", "Barber shop", "Supermarket"].every((c) => typeMismatch(c) !== null));
+  const al = V("alacati-balikcisi-atasehir");
+  ok("adındaki ilçe adı şube eki sayılmaz (170 m)", !!al && checkConsistency(al, { name: "Alaçatı Balıkçısı Ataşehir", address: "", rating: 4.4, reviews: null, lat: al.lat + 0.0015, lng: al.lng }).ok);
+  ok("başka semt adı taşıyan uzak aday yine engellenir", !!al && !checkConsistency(al, { name: "Alaçatı Balıkçısı Suadiye", address: "", rating: 4.4, reviews: null, lat: al.lat + 0.0015, lng: al.lng }).ok);
   ok("konum yoksa kapı numarası farklıysa engellenir", !checkConsistency(ak, { name: "Akıntı Burnu", address: "Bebek Arnavutköy Cd No:42, Beşiktaş", rating: 4.2, reviews: null }).ok);
 
   console.log("\n4) Yeni mekân, kaldırılan mekân, değişen place ID");
