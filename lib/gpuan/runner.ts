@@ -42,7 +42,7 @@ export async function runDaily(run: string, venues: Venue[], api: RunnerApi, sou
     const byslug = new Map(venues.map((v) => [v.slug, v]));
     const today = trDay(now());
     let due = dueRows(rows, today, o.max, o.force);
-    if (o.only?.length) { const s = new Set(o.only); due = rows.filter((r) => s.has(r.slug) && r.placeId && r.record === "Aktif" && !attemptedOn(r, today)).slice(0, o.max); }
+    if (o.only?.length) { const s = new Set(o.only); due = rows.filter((r) => s.has(r.slug) && r.placeId && r.record === "Aktif" && (o.force || !attemptedOn(r, today))).slice(0, o.max); }
     log(`liste ${venues.length} · satır ${rows.length} · yeni ${rec.added.length} · kaldırılan ${rec.removed.length} · değişen ${rec.changed.length} · bugün denenecek ${due.length}`);
 
     const idx = new Map(rows.map((r, i) => [r.slug, i]));
