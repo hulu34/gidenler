@@ -1,4 +1,4 @@
-import { applyResult, attemptedOn, dueRows, FINAL, reconcile, STATUS, summarize, trDay, withDerived, type Decision, type GoogleId, type RatingSource, type Row, type Venue } from "./core";
+import { applyResult, attemptedOn, dueRows, FINAL, VERDICT, reconcile, STATUS, summarize, trDay, withDerived, type Decision, type GoogleId, type RatingSource, type Row, type Venue } from "./core";
 import { CLOSURES } from "@/lib/closure";
 import { readWorkbook, writeWorkbook, type Change } from "./excel";
 
@@ -67,7 +67,7 @@ export async function runDaily(run: string, venues: Venue[], api: RunnerApi, sou
       consecutiveBlocks = res.kind === "blocked" ? consecutiveBlocks + 1 : 0;
       if (consecutiveBlocks >= (o.blockStop ?? 3)) {
         stoppedEarly = `Arka arkaya ${consecutiveBlocks} erişim engeli; güvenlik önlemi aşılmadan çalışma durduruldu`;
-        for (const d of due.slice(k + 1)) { const i = idx.get(d.slug)!; rows[i] = { ...rows[i], status: STATUS.deferred, error: "Çalışma erişim engeli nedeniyle durduruldu; sonraki çalışmada denenecek" }; }
+        for (const d of due.slice(k + 1)) { const i = idx.get(d.slug)!; if (VERDICT.has(rows[i].status)) continue; rows[i] = { ...rows[i], status: STATUS.deferred, error: "Çalışma erişim engeli nedeniyle durduruldu; sonraki çalışmada denenecek" }; }
         break;
       }
       if (attempted % checkpoint === 0) {

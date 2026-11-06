@@ -4,7 +4,7 @@ import { uuidv7 } from "uuidv7";
 import type { Db } from "@/lib/db/client";
 import { atomic } from "@/lib/profile";
 import { auditLog, googleRatingDecisions, googleRatingFiles, googleRatingHistory, googleRatingImports, googleRatingLock, googleRatings, placeIdentifiers, places } from "@/lib/db/schema";
-import { checkFile, decisionFor, hideReason, importable, type Decision, type GoogleId, type Row, type Venue } from "./core";
+import { checkFile, decisionFor, hideReason, importable, reclassify, type Decision, type GoogleId, type Row, type Venue } from "./core";
 import { readWorkbook } from "./excel";
 import { latestDecisions } from "./decisions";
 export { latestDecisions };
@@ -106,8 +106,12 @@ export async function importFile(db: Db, fileId: string, venues: Venue[], actor:
     return rep;
   };
   if (!f) return reject(["Dosya bulunamadı"]);
-  const parsed = await readWorkbook(f.buf);
-  if (parsed.errors.length) return reject(parsed.errors);
+  const read = await readWorkbook(f.buf);
+  if (read.errors.length) return reject(read.errors);
+  /* Sunucu, dosyadaki durum sütununa güvenmez: kayıtlı gözlem bugünkü kurallarla yeniden değerlendirilir
+     (tür/konaklama kontrolü, sınırlı görünüm sayısı). Elle düzenlenmiş Excel bu kuralları aşamaz. */
+  const vmap = new Map(venues.map((v) => [v.slug, v]));
+  const parsed = { ...read, rows: read.rows.map((r) => reclassify(r, vmap.get(r.slug))) };
   const cur = await currentRatings(db);
   const decisions = await latestDecisions(db);
   const check = checkFile(parsed.rows, venues, new Map([...cur].map(([s, r]) => [s, { rating: r.rating, reviews: r.reviewCount }])));
