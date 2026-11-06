@@ -340,6 +340,19 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-ek-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  gpuan-bekleyen:
+    if: contains(github.event.head_commit.message, '[gpuan-bekleyen]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/gpuan-bekleyen.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROD_HOST: gidenler-git-feature-investor-v1-hulu34.vercel.app }
+      - if: always()
+        run: test -d out/bek && tar -C out -czf out/bek.tgz bek && rm -rf out/bek && openssl cms -encrypt -aes256 -binary -outform DER -in out/bek.tgz -out out/bek.tgz.cms ops/olcum.pem && rm out/bek.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpuan-bekleyen-sifreli, path: out/bek.tgz.cms, retention-days: 7, if-no-files-found: ignore }
   yayin-gpuan:
     if: contains(github.event.head_commit.message, '[yayin-gpuan]')
     runs-on: ubuntu-latest
