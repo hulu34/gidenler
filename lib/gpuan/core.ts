@@ -17,9 +17,12 @@ export const COLUMNS = [
   ["profileUrl", "Gidenler profil bağlantısı", 44],
   ["attemptAt", "Son deneme tarihi", 18], ["seenName", "Google'da görünen ad", 28], ["seenAddress", "Google'da görünen adres", 40],
   ["prevRating", "Önceki puan", 10], ["prevReviews", "Önceki değerlendirme sayısı", 12], ["record", "Kayıt durumu", 12],
+  ["seenCategory", "Google'daki tür", 22],
 ] as const;
 export type ColKey = (typeof COLUMNS)[number][0];
 export const HEADERS = COLUMNS.map((c) => c[1]);
+/** Sonradan eklenen sütunlar: eski dosyada yoksa boş okunur (dosya reddedilmez). */
+export const OPTIONAL_HEADERS: ReadonlySet<string> = new Set(["Google'daki tür"]);
 
 export const CONFIDENCE = { confirmed: "Onaylı", auto: "Otomatik", pending: "Onay bekliyor", none: "Eşleşme yok", rejected: "Reddedildi" } as const;
 export type Confidence = (typeof CONFIDENCE)[keyof typeof CONFIDENCE];
@@ -28,7 +31,7 @@ export const IMPORTABLE_CONFIDENCE: ReadonlySet<string> = new Set([CONFIDENCE.co
 
 export const STATUS = {
   fresh: "Güncel", same: "Değişmedi", waiting: "Bekliyor", error: "Hata", blocked: "Engellendi", branch: "Şube uyuşmazlığı",
-  noMatch: "Eşleşme yok", deferred: "Ertelendi", removed: "Kaldırıldı", isNew: "Yeni",
+  noMatch: "Eşleşme yok", deferred: "Ertelendi", removed: "Kaldırıldı", isNew: "Yeni", typeMismatch: "Tür uyuşmazlığı",
 } as const;
 export type Status = (typeof STATUS)[keyof typeof STATUS];
 export const OK_STATUS: ReadonlySet<string> = new Set([STATUS.fresh, STATUS.same]);
@@ -39,6 +42,7 @@ export interface Row {
   source: string; confidence: Confidence; status: Status; error: string; profileUrl: string;
   attemptAt: string; seenName: string; seenAddress: string; prevRating: number | null; prevReviews: number | null;
   record: "Aktif" | "Kaldırıldı";
+  seenCategory: string;
 }
 
 export interface Venue { slug: string; name: string; categoryId: string; kind?: string | null; cuisine?: string[] | null; district?: string | null; address?: string | null; lat: number; lng: number }
@@ -68,7 +72,7 @@ export function baseRow(v: Venue, g: { placeId: string; confidence: Confidence }
     district: v.district ?? "", address: v.address ?? "", placeId: g.placeId, mapsUrl: mapsUrlFor(v.name, g.placeId),
     rating: null, reviews: null, checkedAt: "", source: "", confidence: g.confidence,
     status: g.placeId ? STATUS.waiting : STATUS.noMatch, error: g.placeId ? "" : g.confidence === CONFIDENCE.rejected ? "Google eşleşmesi reddedilmiş" : "Doğrulanmış Google eşleşmesi yok",
-    profileUrl: `${SITE}/mekan/${v.slug}/`, attemptAt: "", seenName: "", seenAddress: "", prevRating: null, prevReviews: null, record: "Aktif",
+    profileUrl: `${SITE}/mekan/${v.slug}/`, attemptAt: "", seenName: "", seenAddress: "", prevRating: null, prevReviews: null, record: "Aktif", seenCategory: "",
   };
 }
 
@@ -98,7 +102,7 @@ export function reconcile(prev: Row[], venues: Venue[], ids: Map<string, GoogleI
 }
 
 /* ── Kaynak adaptörü sözleşmesi ── */
-export interface Observation { name: string; address: string; rating: number | null; reviews: number | null; lat?: number | null; lng?: number | null; closed?: boolean }
+export interface Observation { name: string; address: string; rating: number | null; reviews: number | null; lat?: number | null; lng?: number | null; closed?: boolean; category?: string }
 export type SourceResult =
   | { kind: "ok"; seen: Observation }
   | { kind: "blocked"; reason: string }     // CAPTCHA, olağandışı trafik, giriş zorunluluğu — aşılmaz
@@ -133,6 +137,15 @@ export function checkConsistency(v: Pick<Venue, "name" | "address" | "lat" | "ln
   return r(true, "");
 }
 
+/* ── Tür kontrolü: Google'da yeme-içme dışı bir yer (otel, cami, mağaza…) olarak kayıtlıysa eşleşme şüphelidir ── */
+const FOOD = /restaurant|restoran|lokanta|caf[eé]|kafe|coffee|kahve|bar\b|pub|bistro|bakery|f[ıi]r[ıi]n|pastry|pastane|dessert|tatl[ıi]|kebab|kebap|meyhane|tavern|diner|food|grill|steak|pizza|burger|sushi|patisserie|tea house|çay|breakfast|kahvalt|wine|winery|brewery|ice cream|dondurma|baklava|börek|pide|döner|doner|köfte|kofte|seafood|balık|fish|buffet|büfe|eatery|canteen|cafeteria/i;
+const NON_FOOD = /hotel|otel|hostel|motel|guest ?house|pansiyon|apartment|lodging|bed (&|and) breakfast|mosque|cami|church|kilise|museum|müze|\bpark\b|school|okul|university|üniversite|hospital|hastane|office|ofis|real estate|emlak|car (dealer|rental|repair)|gas station|pharmacy|eczane|\bbank\b|supermarket|market\b|grocery|clothing|giyim|shopping mall|avm|gym|spor salonu|beauty|kuaför|barber/i;
+export function typeMismatch(category: string | undefined | null): string | null {
+  const c = (category ?? "").trim();
+  if (!c || FOOD.test(c)) return null;
+  return NON_FOOD.test(c) ? `Google'da "${c.slice(0, 60)}" olarak kayıtlı; yeme-içme yeri değil` : null;
+}
+
 /* ── Bir denemenin satıra uygulanması ── */
 export const NO_COUNT = "Değerlendirme sayısı herkese açık sayfada görünmüyor; puan sıralamaya girmez";
 export function validRating(x: unknown): x is number { return typeof x === "number" && Number.isFinite(x) && x >= 1 && x <= 5; }
@@ -145,10 +158,12 @@ export function applyResult(row: Row, v: Venue | undefined, res: SourceResult, a
   if (res.kind === "not_found") return failWith(STATUS.error, res.reason);
   if (res.kind === "error") return failWith(STATUS.error, res.reason);
   const s = res.seen;
-  Object.assign(r, { seenName: s.name.slice(0, 200), seenAddress: s.address.slice(0, 300) });
+  Object.assign(r, { seenName: s.name.slice(0, 200), seenAddress: s.address.slice(0, 300), seenCategory: (s.category ?? "").slice(0, 80) });
   const c = v ? checkConsistency(v, s) : { ok: false, reason: "Mekân listede yok" } as Consistency;
   if (!c.ok) return failWith(STATUS.branch, c.reason);
   if (s.closed) return failWith(STATUS.error, "Google'da kalıcı olarak kapalı görünüyor; puan aktarılmadı");
+  const tm = typeMismatch(s.category);
+  if (tm) return failWith(STATUS.typeMismatch, tm);
   if (!validRating(s.rating)) return failWith(STATUS.error, "Sayfada geçerli puan yok");
   /* değerlendirme sayısı herkese açık (oturumsuz) sayfada gösterilmeyebilir: uydurulmaz, boş kalır */
   const reviews = validCount(s.reviews) ? s.reviews : null;
@@ -163,8 +178,8 @@ export function applyResult(row: Row, v: Venue | undefined, res: SourceResult, a
 /** Satır verilen Türkiye gününde denendi mi (deneme zamanı UTC ISO olarak saklanır). */
 export const attemptedOn = (r: Pick<Row, "attemptAt">, day: string) => !!r.attemptAt && !Number.isNaN(Date.parse(r.attemptAt)) && trDay(new Date(r.attemptAt)) === day;
 /** Bugün denenecek satırlar: aktif, place ID'li; en eski kontrol önce. Kesinti sonrası aynı gün denenmiş satır atlanır. */
-export function dueRows(rows: Row[], today: string, max: number): Row[] {
-  return rows.filter((r) => r.record === "Aktif" && r.placeId && r.confidence !== CONFIDENCE.rejected && !attemptedOn(r, today))
+export function dueRows(rows: Row[], today: string, max: number, force = false): Row[] {
+  return rows.filter((r) => r.record === "Aktif" && r.placeId && r.confidence !== CONFIDENCE.rejected && (force || !attemptedOn(r, today)))
     .sort((a, b) => (a.checkedAt || "").localeCompare(b.checkedAt || "") || a.slug.localeCompare(b.slug)).slice(0, max);
 }
 
@@ -190,6 +205,7 @@ export function importable(r: Row): { ok: boolean; why?: string } {
   if (!r.checkedAt || Number.isNaN(Date.parse(r.checkedAt))) return { ok: false, why: "kontrol tarihi yok" };
   if (Date.parse(r.checkedAt) > Date.now() + 36e5) return { ok: false, why: "kontrol tarihi gelecekte" };
   if (r.status === STATUS.branch) return { ok: false, why: "şube uyuşmazlığı" };
+  if (r.status === STATUS.typeMismatch) return { ok: false, why: "tür uyuşmazlığı" };
   return { ok: true };
 }
 

@@ -28,7 +28,7 @@ async function main() {
   const source = await mapsPageSource();
   const only = (process.env.SLUGS ?? "").split(",").map((s) => s.trim()).filter(Boolean);
   const { report, workbook } = await runDaily(run, sheetVenues(), api, source, {
-    max: Number(process.env.MAX) || 500, only: only.length ? only : undefined, delayMs: Number(process.env.BEKLEME_MS ?? 5000),
+    max: Number(process.env.MAX) || 500, force: process.env.YENIDEN === "1", only: only.length ? only : undefined, delayMs: Number(process.env.BEKLEME_MS ?? 5000),
     log: (s) => console.log(`[gpuan] ${s}`),
   });
   const out = process.env.CIKTI ?? "out/gpuan";

@@ -47,11 +47,11 @@ export function classifyUrl(u: string): "consent" | "sorry" | "login" | "ok" {
 }
 
 /** Sayfadan ayrıştırılmış ham alanlar → gözlem (test edilebilir saf kısım). */
-export function parseRaw(raw: { name: string; ratingLabel: string | null; ratingText: string | null; reviewsLabel: string | null; reviewsText: string | null; address: string | null; closed: boolean; limited?: boolean }, url: string): Observation {
+export function parseRaw(raw: { name: string; ratingLabel: string | null; ratingText: string | null; reviewsLabel: string | null; reviewsText: string | null; address: string | null; closed: boolean; limited?: boolean; category?: string }, url: string): Observation {
   const rating = num(raw.ratingLabel) ?? num(raw.ratingText);
   const reviews = int(raw.reviewsLabel) ?? int(raw.reviewsText);
   const c = coordsFromUrl(url);
-  return { name: raw.name.trim(), address: (raw.address ?? "").replace(/^(Address|Adres):\s*/i, "").trim(), rating, reviews, lat: c?.lat ?? null, lng: c?.lng ?? null, closed: raw.closed };
+  return { name: raw.name.trim(), address: (raw.address ?? "").replace(/^(Address|Adres):\s*/i, "").trim(), rating, reviews, lat: c?.lat ?? null, lng: c?.lng ?? null, closed: raw.closed, category: (raw.category ?? "").trim() };
 }
 
 /* Sayfa içinde çalışan kod DÜZ METİN olarak gönderilir: derleyicinin (tsx/esbuild) eklediği yardımcılar tarayıcıda tanımsızdır. */
@@ -75,6 +75,7 @@ const READ_JS = `(() => {
     address: addr ? addr.getAttribute("aria-label") : null,
     closed: /permanently closed|kalıcı olarak kapalı/i.test(main.innerText || ""),
     limited: /limited view|sınırlı görünüm/i.test(document.body.innerText || ""),
+    category: (() => { const c = main.querySelector('button[jsaction*=".category"]'); return c ? (c.textContent || "").trim() : ""; })(),
   };
 })()`;
 
