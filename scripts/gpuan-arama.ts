@@ -7,12 +7,15 @@ import { mapsPageSource } from "../lib/gpuan/sources/mapsPage";
 import { sheetVenues } from "../lib/gpuan/venues";
 import { realVenueRecords } from "../data/real";
 import { checkConsistency, typeCheck, STATUS, type GoogleId } from "../lib/gpuan/core";
-import { nameSimilarity } from "../lib/match/score";
+import { houseNoConflict, nameSimilarity } from "../lib/match/score";
 
 const TRF: Record<string, string> = { ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u", Ç: "C", Ğ: "G", İ: "I", Ö: "O", Ş: "S", Ü: "U" };
 const plain = (x: string) => x.split("").map((c) => TRF[c] ?? c).join("");
 async function main() {
-  const slugs = process.env.LISTE ? (JSON.parse(readFileSync(process.env.LISTE, "utf8")) as string[]) : (process.env.SLUGS ?? "").split(",").filter(Boolean);
+  /* LISTE öğesi slug ise ad varyasyonlarıyla ARAR; { slug, placeId } ise o kaydı doğrudan açıp kanıtını yeniden ölçer */
+  const items = (process.env.LISTE ? JSON.parse(readFileSync(process.env.LISTE, "utf8")) : (process.env.SLUGS ?? "").split(",").filter(Boolean)) as Array<string | { slug: string; placeId: string }>;
+  const slugs = items.map((x) => (typeof x === "string" ? x : x.slug));
+  const fixed = new Map(items.filter((x): x is { slug: string; placeId: string } => typeof x !== "string").map((x) => [x.slug, x.placeId]));
   const vs = new Map(sheetVenues().map((v) => [v.slug, v]));
   const recs = new Map(realVenueRecords.map((r) => [r.slug, r]));
   let taken = new Map<string, string>();
@@ -30,8 +33,10 @@ async function main() {
       const street = (v.address ?? "").split(",")[0].replace(/\s+No:.*$/i, "").trim();
       const queries = [...new Set([`${v.name} ${v.district ?? ""} İstanbul`, `${plain(v.name)} ${v.district ?? ""}`, rec?.neighborhood ? `${v.name} ${rec.neighborhood}` : "", street ? `${v.name} ${street}` : ""].map((q) => q.replace(/\s+/g, " ").trim()).filter(Boolean))];
       const tried: object[] = []; let best: Record<string, unknown> | null = null;
-      for (const q of queries) {
-        const r = await src.search(q, 3);
+      for (const q of fixed.has(slug) ? ["(kayıtlı place ID)"] : queries) {
+        const r = fixed.has(slug)
+          ? await src.fetch({ placeId: fixed.get(slug)!, name: v.name, mapsUrl: "" }).then((x) => (x.kind === "ok" ? { kind: "ok" as const, candidates: [{ placeId: fixed.get(slug)!, seen: x.seen }] } : x.kind === "blocked" ? { kind: "blocked" as const, reason: x.reason } : { kind: "error" as const, reason: x.reason }))
+          : await src.search(q, 3);
         if (r.kind === "blocked") { blocked++; tried.push({ q, blocked: r.reason }); break; }
         if (r.kind !== "ok") { tried.push({ q, error: r.reason }); continue; }
         for (const c of r.candidates) {
@@ -43,7 +48,11 @@ async function main() {
           if (tv && tv.status !== STATUS.typeUnknown) why.push(tv.why);
           if (other && other !== slug) why.push(`bu Google kaydı başka mekâna bağlı (${other})`);
           const nm = nameSimilarity(v.name, c.seen.name);
-          const level = why.length ? "uygun değil" : con.distanceM != null && con.distanceM <= 50 && nm >= 0.85 && !tv ? "güçlü" : "orta";
+          /* güçlü: (a) konum ≤ 50 m ve ad ≥ 0,85, ya da (b) konum ≤ 30 m ve aynı cadde/sokak + aynı kapı numarası ve ad ≥ 0,6.
+             (b) eşiği gevşetmek değil, bağımsız ikinci kimlik kanıtıdır (adres birebir). Tür okunamadıysa güçlü sayılmaz. */
+          const sameDoor = !!v.address && !!c.seen.address && (con.address ?? 0) >= 0.8 && !houseNoConflict(v.address, c.seen.address) && /\d/.test(v.address) && /\d/.test(c.seen.address);
+          const strong = !tv && con.distanceM != null && ((con.distanceM <= 50 && nm >= 0.85) || (con.distanceM <= 30 && sameDoor && nm >= 0.6));
+          const level = why.length ? "uygun değil" : strong ? "güçlü" : "orta";
           const cand = { q, placeId: c.placeId, name: c.seen.name, address: c.seen.address, category: c.seen.category ?? "", rating: c.seen.rating, closed: !!c.seen.closed, limited: !!c.seen.limited,
             distanceM: con.distanceM, nameSim: +nm.toFixed(2), addressSim: con.address, level, why: why.join(" · ") || (tv ? tv.why : "") };
           tried.push(cand);
