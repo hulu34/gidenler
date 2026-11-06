@@ -10,10 +10,13 @@ import type { Db } from "../lib/db/client";
 import { applyMigrations, type Executor } from "../lib/db/migrate";
 import { seedRealVenues } from "../lib/db/seed";
 import { realVenueRecords } from "../data/real";
-import { applyResult, baseRow, trDay, typeMismatch, checkConsistency, checkFile, CONFIDENCE, dueRows, HEADERS, importable, pickGoogleId, reconcile, STATUS, type GoogleId, type RatingSource, type Row, type SourceResult, type Venue } from "../lib/gpuan/core";
+import { applyResult, baseRow, trDay, typeMismatch, typeCheck, finalState, hideReason, FINAL, withDerived, checkConsistency, checkFile, CONFIDENCE, dueRows, HEADERS, importable, pickGoogleId, reconcile, STATUS, type GoogleId, type RatingSource, type Row, type SourceResult, type Venue } from "../lib/gpuan/core";
 import { readWorkbook, writeWorkbook } from "../lib/gpuan/excel";
 import { sheetVenues } from "../lib/gpuan/venues";
-import { acquireLock, holdsLock, importFile, releaseLock, saveFile, getFile, googleIds } from "../lib/gpuan/store";
+import { acquireLock, holdsLock, importFile, releaseLock, saveFile, getFile, googleIds, recordDecision, latestDecisions, dailyReport } from "../lib/gpuan/store";
+import { CLOSED_CONFIRMED, CLOSURES } from "../lib/closure";
+import { activeEntities, realEntities } from "../data/real";
+import { VENUES as SOR_VENUES } from "../lib/sor/engine";
 import { loadGoogleRatings } from "../lib/gpuan/read";
 import { runDaily, type RunnerApi } from "../lib/gpuan/runner";
 import { classifyUrl, coordsFromUrl, parseRaw } from "../lib/gpuan/sources/mapsPage";
@@ -31,7 +34,7 @@ function fakeSource(over: Record<string, SourceResult | "throw"> = {}, calls: st
     calls.push(t.placeId);
     const o = over[t.placeId]; if (o === "throw") throw new Error("ağ koptu"); if (o) return o;
     const v = venues.find((x) => x.name === t.name)!;
-    return { kind: "ok", seen: { name: v.name, address: v.address ?? "", rating: 4.5, reviews: 200, lat: v.lat + 0.0002, lng: v.lng } };
+    return { kind: "ok", seen: { name: v.name, address: v.address ?? "", rating: 4.5, reviews: 200, lat: v.lat + 0.0002, lng: v.lng, category: "Restaurant" } };
   } };
 }
 
@@ -44,16 +47,16 @@ async function main() {
   ok("ilk karşılaştırmada 456 yeni satır", first.rows.length === 456 && first.added.length === 456 && !first.removed.length);
   const buf = await writeWorkbook(first.rows, { generatedAt: new Date().toISOString() });
   const back = await readWorkbook(buf);
-  { const wb0 = new ExcelJS.Workbook(); await wb0.xlsx.load(buf as unknown as ArrayBuffer); const w0 = wb0.getWorksheet("Mekânlar")!; w0.spliceColumns(HEADERS.indexOf("Google'daki tür") + 1, 1); const old = await readWorkbook(Buffer.from(await wb0.xlsx.writeBuffer()));
+  { const wb0 = new ExcelJS.Workbook(); await wb0.xlsx.load(buf as unknown as ArrayBuffer); const w0 = wb0.getWorksheet("Tüm Mekânlar")!; w0.spliceColumns(HEADERS.indexOf("Google'daki tür") + 1, 7); w0.name = "Mekânlar"; const old = await readWorkbook(Buffer.from(await wb0.xlsx.writeBuffer()));
     ok("yeni sütunu olmayan eski Excel de okunur", old.rows.length === 456 && !old.errors.length && old.rows[0].seenCategory === "", old.errors); }
   ok("Excel geri okununca 456 satır, hata yok", back.rows.length === 456 && !back.errors.length, back.errors);
   ok("bütün Gidenler ID'leri eksiksiz ve aynı sırada", back.rows.every((r, i) => r.slug === first.rows[i].slug));
   ok("Eşleşme yoksa place ID boş", back.rows.filter((r) => r.confidence === CONFIDENCE.none).every((r) => r.placeId === "" && r.mapsUrl === ""));
   const wb = new ExcelJS.Workbook(); await wb.xlsx.load(buf as unknown as ArrayBuffer);
-  const ws = wb.getWorksheet("Mekânlar")!;
+  const ws = wb.getWorksheet("Tüm Mekânlar")!;
   ok("başlıklar istenen alanları içeriyor", HEADERS.slice(0, 16).every((h, i) => ws.getRow(1).getCell(i + 1).value === h));
   ok("filtre ve sabit başlık var", !!ws.autoFilter && ws.views[0]?.state === "frozen" && (ws.views[0] as { ySplit?: number }).ySplit === 1);
-  ok("özet, hatalar, değişimler, açıklama sayfaları", ["Özet", "Hatalar", "Değişimler", "Açıklama"].every((n) => !!wb.getWorksheet(n)));
+  ok("istenen 8 sayfa + değişimler ve açıklama", ["Tüm Mekânlar", "Puanı Doğrulananlar", "Aktarım Bekleyenler", "Yanlış Eşleşmeler", "Kapalı Mekânlar", "Place ID Eksikleri", "Güncelleme Geçmişi", "Yönetici Özeti", "Değişimler", "Açıklama"].every((n) => !!wb.getWorksheet(n)), wb.worksheets.map((w) => w.name));
   const statusCol = HEADERS.indexOf("Güncelleme durumu") + 1;
   ok("durum hücreleri renkli", (ws.getRow(2).getCell(statusCol).fill as { fgColor?: { argb?: string } })?.fgColor?.argb?.length === 8);
 
@@ -62,27 +65,27 @@ async function main() {
   ok("reddedilmiş kimlik kullanılmaz", pickGoogleId([{ externalId: pid(1), status: "rejected" }]).placeId === "" && pickGoogleId([{ externalId: pid(1), status: "rejected" }]).confidence === CONFIDENCE.rejected);
   ok("aynı mekânda iki farklı onaylı kimlik → hiçbiri", pickGoogleId([{ externalId: pid(1), status: "confirmed" }, { externalId: pid(2), status: "confirmed" }]).placeId === "");
   const v0 = V("nelipide-kadikoy");
-  ok("doğru mekân geçer", checkConsistency(v0, { name: v0.name, address: v0.address!, rating: 4.4, reviews: 900, lat: v0.lat, lng: v0.lng }).ok);
+  ok("doğru mekân geçer", checkConsistency(v0, { name: v0.name, address: v0.address!, rating: 4.4, reviews: 900, lat: v0.lat, lng: v0.lng, category: "Restaurant" }).ok);
   ok("1 km uzaktaki aynı adlı şube engellenir", !checkConsistency(v0, { name: v0.name, address: "", rating: 4.4, reviews: 900, lat: v0.lat + 0.01, lng: v0.lng }).ok);
-  ok("ad tutmayan mekân engellenir", !checkConsistency(v0, { name: "Tamamen Başka Kebap", address: "", rating: 4.4, reviews: 900, lat: v0.lat, lng: v0.lng }).ok);
+  ok("ad tutmayan mekân engellenir", !checkConsistency(v0, { name: "Tamamen Başka Kebap", address: "", rating: 4.4, reviews: 900, lat: v0.lat, lng: v0.lng, category: "Restaurant" }).ok);
   const cv = V("donerci-celal-usta-umraniye-atakent-subesi-umraniye");
   ok("adı farklı şube söyleyen ve konumu uzak aday engellenir", !checkConsistency({ ...cv, name: "Dönerci Celal Usta" }, { name: "Dönerci Celal Usta Suadiye", address: "", rating: 4.4, reviews: 900, lat: cv.lat + 0.003, lng: cv.lng }).ok);
 
   console.log("\n3) Güncelleme kuralları");
   const src = fakeSource();
   const row0 = { ...baseRow(v0, { placeId: pid(9), confidence: CONFIDENCE.auto }), rating: 4.2, reviews: 800, checkedAt: "2026-11-01T03:00:00.000Z" };
-  const up = applyResult(row0, v0, { kind: "ok", seen: { name: v0.name, address: "", rating: 4.4, reviews: 900, lat: v0.lat, lng: v0.lng } }, "2026-11-06T03:00:00.000Z", src);
+  const up = applyResult(row0, v0, { kind: "ok", seen: { name: v0.name, address: "", rating: 4.4, reviews: 900, lat: v0.lat, lng: v0.lng, category: "Restaurant" } }, "2026-11-06T03:00:00.000Z", src);
   ok("puan güncellenir, önceki değer saklanır", up.rating === 4.4 && up.reviews === 900 && up.prevRating === 4.2 && up.status === STATUS.fresh && up.checkedAt.startsWith("2026-11-06"));
   for (const [name, res, st] of [
     ["veri bulunamazsa", { kind: "not_found", reason: "yok" }, STATUS.error], ["erişim engelinde", { kind: "blocked", reason: "CAPTCHA" }, STATUS.blocked],
     ["şube uyuşmazsa", { kind: "ok", seen: { name: v0.name, address: "", rating: 3.1, reviews: 10, lat: v0.lat + 0.02, lng: v0.lng } }, STATUS.branch],
-    ["puan okunamazsa", { kind: "ok", seen: { name: v0.name, address: "", rating: null, reviews: null, lat: v0.lat, lng: v0.lng } }, STATUS.error],
+    ["puan okunamazsa", { kind: "ok", seen: { name: v0.name, address: "", rating: null, reviews: null, lat: v0.lat, lng: v0.lng, category: "Restaurant" } }, STATUS.error],
   ] as const) {
     const r = applyResult(row0, v0, res as SourceResult, "2026-11-06T03:00:00.000Z", src);
     ok(`${name} eski puan korunur, sıfırlanmaz, başarılı gösterilmez`, r.rating === 4.2 && r.reviews === 800 && r.checkedAt === row0.checkedAt && r.status === st && !!r.error, r);
   }
   ok("başarısız satır siteye aktarılabilir sayılmaz (şube)", !importable({ ...row0, status: STATUS.branch }).ok);
-  const nc = applyResult(row0, v0, { kind: "ok", seen: { name: v0.name, address: "", rating: 4.3, reviews: null, lat: v0.lat, lng: v0.lng } }, new Date(Date.now() - 36e5).toISOString(), src);
+  const nc = applyResult(row0, v0, { kind: "ok", seen: { name: v0.name, address: "", rating: 4.3, reviews: null, lat: v0.lat, lng: v0.lng, category: "Restaurant" } }, new Date(Date.now() - 36e5).toISOString(), src);
   ok("değerlendirme sayısı görünmüyorsa uydurulmaz: puan güncel, sayı boş, not düşülür", nc.rating === 4.3 && nc.reviews === null && nc.status === STATUS.fresh && /görünmüyor/.test(nc.error) && importable(nc).ok);
   const ak = { name: "Akıntı Burnu", address: "Bebek Arnavutköy Caddesi No:115, Arnavutköy, Beşiktaş", lat: 41.07, lng: 29.04 };
   ok("konum yoksa adres doğrularsa şube eki engel olmaz", checkConsistency(ak, { name: "AkıntıBurnu Balık Restoranı | Arnavutköy", address: "Arnavutköy, Bebek Arnavutköy Cd No:115, 34345 Beşiktaş/İstanbul, Türkiye", rating: 4.2, reviews: null }).ok);
@@ -204,6 +207,61 @@ async function main() {
   ok("CAPTCHA / izin / giriş sayfası tanınır", classifyUrl("https://www.google.com/sorry/index?continue=") === "sorry" && classifyUrl("https://consent.google.com/m?x") === "consent" && classifyUrl("https://accounts.google.com/v3/signin") === "login");
   const p = parseRaw({ name: " Nelipide ", ratingLabel: "4.6 stars ", ratingText: null, reviewsLabel: "1,234 reviews", reviewsText: null, address: "Address: Moda Cd. No:5, Kadıköy", closed: false }, "https://www.google.com/maps/place/@41,29,17z/data=!3d40.99!4d29.02");
   ok("puan, sayı ve adres ayrıştırılır", p.rating === 4.6 && p.reviews === 1234 && p.address === "Moda Cd. No:5, Kadıköy" && p.name === "Nelipide" && p.lat === 40.99);
+
+  console.log("\n11) Veri kalitesi: tür, konaklama, sınırlı görünüm, kapanma, yönetici kararı");
+  const at = new Date(Date.now() - 36e5).toISOString();
+  const seenOk = (o: object) => ({ kind: "ok" as const, seen: { name: v0.name, address: "", rating: 4.6, reviews: 351, lat: v0.lat, lng: v0.lng, category: "Restaurant", ...o } });
+  const tu = applyResult(row0, v0, seenOk({ category: "" }), at, src);
+  ok("türü okunamayan kayıt: puan saklanır ama aktarılmaz (Adile Hanım Konağı vakası)", tu.status === STATUS.typeUnknown && tu.rating === 4.6 && !importable(tu).ok && !!hideReason(tu));
+  const ts = applyResult(row0, v0, seenOk({ name: `Ağva ${v0.name} Butik Otel Cafe & Restaurant`, category: "" }), at, src);
+  ok("Google'daki ad otel gösteriyorsa tür şüphesi (Nostalji vakası)", ts.status === STATUS.typeSuspect && !importable(ts).ok && /konaklama/.test(ts.error), ts.error);
+  ok("mekânın kendi adında otel geçiyorsa şüphe yok", typeCheck({ name: "Pera Palace Hotel", category: "Restaurant" }, "Pera Palace Hotel Agatha") === null);
+  ok("düğün salonu / kasap türü elle onaya kalır", typeCheck({ name: "X", category: "Wedding venue" }, "X")?.status === STATUS.typeSuspect && typeCheck({ name: "X", category: "Butcher shop" }, "X")?.status === STATUS.typeSuspect);
+  const lim = applyResult(row0, v0, seenOk({ limited: true, reviews: 6 }), at, src);
+  ok("sınırlı görünümde değerlendirme sayısı okunmaz (6.764 → 6 hatası)", lim.reviews === null && lim.view === "Sınırlı" && lim.rating === 4.6 && importable(lim).ok);
+  const full = applyResult(row0, v0, seenOk({ reviews: 6764 }), at, src);
+  ok("tam görünümde sayı alınır", full.reviews === 6764 && full.view === "Tam");
+  ok("ayrıştırıcı sınırlı görünümde sayıyı atar", parseRaw({ name: "A", ratingLabel: "4.5 stars", ratingText: null, reviewsLabel: "6 reviews", reviewsText: null, address: null, closed: false, limited: true }, "https://x/").reviews === null);
+  const cl = applyResult({ ...row0, rating: 4.1, checkedAt: at }, v0, seenOk({ closed: true }), at, src);
+  ok("kalıcı kapalı: ayrı durum, eski puan silinmez, sitede gizlenir", cl.status === STATUS.closed && cl.rating === 4.1 && !importable(cl).ok && hideReason(cl) === "Google'da kalıcı kapalı" && finalState(cl).state === FINAL.closed);
+  const pend = { ...full, confidence: CONFIDENCE.pending };
+  const dec = (d: "onay" | "ret", placeId = pend.placeId) => ({ slug: pend.slug, placeId, decision: d, note: "elle bakıldı, adres ve ad aynı", actor: "test", at });
+  ok("bekleyen eşleşme yönetici onayı olmadan aktarılmaz", !importable(pend).ok && finalState(pend).state === FINAL.awaitingMatch);
+  ok("aynı place ID için onay → aktarılır; farklı place ID'ye verilen onay geçmez", importable(pend, dec("onay")).ok && !importable(pend, dec("onay", "ChIJbaskabirkimlik000")).ok);
+  ok("tür şüphesi yalnız onayla açılır", importable(ts, { ...dec("onay"), slug: ts.slug, placeId: ts.placeId }).ok);
+  ok("yönetici reddi aktarımı keser ve gizler", !importable(full, { ...dec("ret"), placeId: full.placeId }).ok && hideReason(full, { ...dec("ret"), placeId: full.placeId }) === "yönetici reddetti");
+  ok("her satıra nihai durum ve gerekçe yazılır", withDerived([full, pend, cl, tu, baseRow(v0, { placeId: "", confidence: CONFIDENCE.none })], new Map()).every((r) => r.finalState && r.finalReason));
+  const due2 = dueRows([{ ...row0, slug: "b", attemptAt: "2026-11-05T03:00:00Z", checkedAt: "" }, { ...row0, slug: "a", attemptAt: "2026-11-01T03:00:00Z", checkedAt: "2026-11-01T03:00:00Z" }, { ...row0, slug: "c", attemptAt: "" }], "2026-11-06", 10);
+  ok("yeniden deneme sırası: hiç denenmemiş, sonra en eski deneme", due2.map((r) => r.slug).join() === "c,a,b", due2.map((r) => r.slug));
+
+  /* veritabanı: önce gösterilen puan, olumsuz kanıt gelince gizlenir; karar denetim kaydına yazılır */
+  const h2 = "kalite-test"; await acquireLock(db, h2);
+  const cur = (await readWorkbook((await getFile(db, "son"))!.buf)).rows;
+  const shownSlug = Object.keys(await loadGoogleRatings(db))[0];
+  const tampered = cur.map((r) => (r.slug === shownSlug ? { ...r, status: STATUS.typeSuspect, error: "Google'daki ad otel", checkedAt: new Date(Date.now() - 6e4).toISOString() } : r));
+  const tf = await saveFile(db, await writeWorkbook(tampered, { generatedAt: new Date().toISOString() }), "elle", h2);
+  const repH = await importFile(db, (tf as { id: string }).id, venues, "test");
+  const mapH = await loadGoogleRatings(db);
+  ok("olumsuz kanıt sitedeki eski puanı gizler (satır silinmez)", repH.status === "applied" && repH.hidden === 1 && !mapH[shownSlug] && (await db.select().from(schema.googleRatings).where(eq(schema.googleRatings.slug, shownSlug))).length === 1, { hidden: repH.hidden });
+  const row = tampered.find((r) => r.slug === shownSlug)!;
+  const bad1 = await recordDecision(db, { slug: shownSlug, placeId: row.placeId, decision: "onay", note: "kısa", actor: "test" });
+  ok("gerekçesiz karar kabul edilmez", !bad1.ok);
+  const good = await recordDecision(db, { slug: shownSlug, placeId: row.placeId, decision: "onay", note: "Google'da açtım: aynı adres, restoran bölümü", actor: "test" });
+  const repU = await importFile(db, (tf as { id: string }).id, venues, "test");
+  ok("onaydan sonra aynı dosya yeniden aktarılınca puan geri gelir", good.ok && repU.unhidden === 1 && !!(await loadGoogleRatings(db))[shownSlug], { unhidden: repU.unhidden });
+  const audit = await pg.query<{ n: number }>("select count(*)::int n from audit_log where action in ('google_rating_onay','google_rating_ret')");
+  ok("karar denetim kaydında", Number(audit.rows[0].n) === 1 && (await latestDecisions(db)).get(shownSlug)?.decision === "onay");
+  await recordDecision(db, { slug: shownSlug, placeId: row.placeId, decision: "ret", note: "ikinci bakış: puan otelin tamamına ait", actor: "test" });
+  ok("ret anında gizler (sonraki aktarım beklenmez)", !(await loadGoogleRatings(db))[shownSlug]);
+  const dr = await dailyReport(db);
+  ok("günlük yönetici raporu sayıları üretir", dr.lastImport?.status === "applied" && typeof dr.site.shown === "number" && Object.keys(dr.final).length === Object.keys(FINAL).length);
+  await releaseLock(db, h2);
+
+  console.log("\n12) Kapanma kaydı: kesin kapalı mekân önerilerde ve Sor'da yok, profil korunur");
+  ok("kapanış kaydı 42 mekân (26 kesin, 16 şüpheli)", Object.keys(CLOSURES).length === 42 && CLOSED_CONFIRMED.size === 26, { n: Object.keys(CLOSURES).length, c: CLOSED_CONFIRMED.size });
+  ok("kesin kapalılar aktif öneri havuzunda yok, profil kaydı duruyor", activeEntities.length === realEntities.length - CLOSED_CONFIRMED.size && [...CLOSED_CONFIRMED].every((s) => realEntities.some((e) => e.slug === s)));
+  ok("kesin kapalılar Sor Gidenler adaylarında yok", !SOR_VENUES.some((v) => CLOSED_CONFIRMED.has(v.slug)));
+  ok("şüpheli kapanmalar sitede değişiklik yapmaz", Object.entries(CLOSURES).filter(([, c]) => c.state === "closed_suspected").every(([s]) => activeEntities.some((e) => e.slug === s)));
 
   console.log("\n10) Sıralama (Google verisi, 100+ değerlendirme)");
   const fake: Record<string, { rating: number; count: number; checkedAt: string; mapsUrl: string | null }> = {};

@@ -1,0 +1,381 @@
+{
+ "_aciklama": "Kalıcı kapanma denetimi. closed_confirmed: aktif önerilerde, Sor sonuçlarında ve popüler listelerde gösterilmez; profil, yorumlar ve bağlantılar korunur. closed_suspected: sitede değişiklik yok, elle inceleme listesinde. Yeniden açıldığı doğrulanan mekânın satırı silinir ya da state \"reopened\" yapılır.",
+ "aci-biber-kucukcekmece": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "ala-turk-mutfagi-umraniye": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "bishop-bakirkoy": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "cabra-loca-coffee-fatih": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "cekmekoy-nefist-doner-cekmekoy": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "cluster-society-kadikoy": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "coffeeboss-istanbul-maltepe": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "curtis-restaurant-ve-bar-besiktas": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "dubb-indian-bosphorus-restaurant-sisli": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "et-inn-kebap-ve-steak-kadikoy": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Tek şubeli işletmenin resmî sitesi hâlâ açık; kapanma çelişkili",
+  "confidence": "düşük",
+  "note": "Çelişen kanıt var — elle incelenmeli"
+ },
+ "frontiere-istanbul-besiktas": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "gardas-cag-kebap-atasehir": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onaylı",
+  "official": "Markanın sitesi açık; şube bilgisi sitede yok (yalnız bu şube kapanmış olabilir)",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "gasto-nisantasi-sisli": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Resmî site yalnız sunucu varsayılan sayfasını gösteriyor (içerik kaldırılmış)",
+  "confidence": "yüksek",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "gospoda-1882-beykoz": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "gram-sisli": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "hanedan-et-besiktas": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "hira-han-beykoz": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "kiss-the-frog-seafood-brasserie-sariyer": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Resmî site yanıt vermiyor",
+  "confidence": "yüksek",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "koprualti-sariyer": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "lalezar-meyhanesi-sisli": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Otel restoranı; otelin sitesi otomatik isteğe kapalı, doğrulanamadı",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "mama-bowl-kozyatagi-kadikoy": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Markanın sitesi açık; şube bilgisi sitede yok (yalnız bu şube kapanmış olabilir)",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "marmaris-expres-atasehir": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "memnun-doner-avcilar": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "İşletmenin resmî sitesinde Avcılar adresi hâlâ yayında; eşleşen Google kaydı adı farklı başka bir işletmeye ait olabilir",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "niwa-tuzla": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Resmî alan adı ilgisiz bir yurt dışı siteye yönleniyor (alan adı bırakılmış)",
+  "confidence": "yüksek",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "nusr-et-burger-bebek-besiktas": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Eşleşen Google kaydı aynı markanın et lokantası; burger şubesiyle aynı işletme olduğu doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "olivia-s-pizzeria-kadikoy": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "ono-restaurant-basaksehir": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "oz-pide-kartal": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "palulu-cumali-adana-kebapcisi-kadikoy": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "pidepark-besiktas": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "refik-beyoglu": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Eşleşen Google kaydının adı farklı; Gidenler'deki Refik ile aynı işletme olduğu doğrulanmadı",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "rice-house-uskudar": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "ringa-sea-food-besiktas": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Resmî site yanıt vermiyor",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "tahtalikoy-catalca": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Resmî site hâlâ açık; eşleşme de onay bekliyor",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "tepsi-et-basaksehir-basaksehir": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Markanın sitesi açık; şube bilgisi sitede yok (yalnız bu şube kapanmış olabilir)",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "the-hunger-umraniye-limonlu-cadde-umraniye": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Markanın sitesi açık; şube bilgisi sitede yok (yalnız bu şube kapanmış olabilir)",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "usturmaca-balik-restorant-beylikduzu": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ },
+ "vagabondo-s-pizzeria-sariyer": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "whisper-kitchen-bar-besiktas": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "yako-balik-kadikoy": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "yenikoy-kavak-balikcisi-sariyer": {
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Otomatik",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "orta",
+  "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "zoom-bahce-cafe-restaurant-sisli": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-06",
+  "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
+  "match": "Onay bekliyor",
+  "official": "Kayıtlı resmî site yok",
+  "confidence": "düşük",
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+ }
+}

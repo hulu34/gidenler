@@ -553,8 +553,21 @@ export const googleRatings = pgTable("google_ratings", {
   source: text("source").notNull(),
   confidence: text("confidence").notNull(),
   importId: text("import_id").notNull(),
+  /** Doluysa puan sitede GÖSTERİLMEZ (yanlış tür/şube, kalıcı kapalı, yönetici reddi). Satır ve geçmiş silinmez; kanıt düzelince boşalır. */
+  hiddenReason: text("hidden_reason"),
   updatedAt: updated(),
 });
+/** Google puanı için yönetici kararları: onay (bekleyen eşleşme / tür şüphesi elle doğrulandı) ya da ret. Silinmez; son karar geçerlidir. */
+export const googleRatingDecisions = pgTable("google_rating_decisions", {
+  id: text("id").primaryKey(),
+  slug: text("slug").notNull(),
+  placeId: text("place_id").notNull(),
+  decision: text("decision").notNull(),
+  note: text("note").notNull(),
+  evidence: jsonb("evidence"),
+  actor: text("actor").notNull(),
+  createdAt: created(),
+}, (t) => [index("google_rating_decisions_slug_idx").on(t.slug, t.createdAt)]);
 export const googleRatingHistory = pgTable("google_rating_history", {
   id: text("id").primaryKey(),
   slug: text("slug").notNull(),

@@ -1,8 +1,9 @@
 import { unstable_cache } from "next/cache";
-import { and, eq, gte, inArray } from "drizzle-orm";
+import { and, eq, gte, inArray, isNull } from "drizzle-orm";
 import { getDb, type Db } from "@/lib/db/client";
 import { googleRatings, placeIdentifiers, places } from "@/lib/db/schema";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
+import { latestDecisions } from "./decisions";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GÖRÜNTÜLEME KATMANI — sitenin Google puanı için tek okuma noktası.
@@ -17,21 +18,31 @@ export const STALE_DAYS = 45;
 export interface GRating { rating: number; count: number | null; checkedAt: string; mapsUrl: string | null }
 export type GRatingMap = Record<string, GRating>;
 
-/** Doğrudan okuma (önbelleksiz; testler ve yönetim). */
+/** Doğrudan okuma (önbelleksiz; testler ve yönetim).
+    Gösterim: gizlenmemiş (hidden_reason boş), 45 günden taze, ve place ID bugün de onaylı/otomatik eşleşme —
+    ya da eşleşme onay bekliyorsa aynı place ID için son yönetici kararı "onay". */
 export async function loadGoogleRatings(db: Db): Promise<GRatingMap> {
-    const rows = await db.select({ slug: googleRatings.slug, rating: googleRatings.rating, count: googleRatings.reviewCount, checkedAt: googleRatings.checkedAt, mapsUrl: googleRatings.mapsUrl })
+    const rows = await db.select({ slug: googleRatings.slug, placeId: googleRatings.placeId, rating: googleRatings.rating, count: googleRatings.reviewCount, checkedAt: googleRatings.checkedAt, mapsUrl: googleRatings.mapsUrl, idStatus: placeIdentifiers.status })
       .from(googleRatings)
       .innerJoin(places, eq(places.slug, googleRatings.slug))
-      .innerJoin(placeIdentifiers, and(eq(placeIdentifiers.placeId, places.id), eq(placeIdentifiers.provider, "google"), eq(placeIdentifiers.externalId, googleRatings.placeId), inArray(placeIdentifiers.status, ["auto", "confirmed"])))
-      .where(gte(googleRatings.checkedAt, new Date(Date.now() - STALE_DAYS * 864e5)));
-    return Object.fromEntries(rows.map((r) => [r.slug, { rating: r.rating, count: r.count, checkedAt: r.checkedAt.toISOString(), mapsUrl: r.mapsUrl }]));
+      .innerJoin(placeIdentifiers, and(eq(placeIdentifiers.placeId, places.id), eq(placeIdentifiers.provider, "google"), eq(placeIdentifiers.externalId, googleRatings.placeId), inArray(placeIdentifiers.status, ["auto", "confirmed", "pending"])))
+      .where(and(gte(googleRatings.checkedAt, new Date(Date.now() - STALE_DAYS * 864e5)), isNull(googleRatings.hiddenReason)));
+    const decided = await latestDecisions(db);
+    const out: GRatingMap = {};
+    for (const r of rows) {
+      const d = decided.get(r.slug); const dec = d && d.placeId === r.placeId ? d.decision : null;
+      if (dec === "ret") continue;
+      if (r.idStatus === "pending" && dec !== "onay") continue;
+      out[r.slug] = { rating: r.rating, count: r.count, checkedAt: r.checkedAt.toISOString(), mapsUrl: r.mapsUrl };
+    }
+    return out;
 }
 
 export const googleRatingMap = unstable_cache(async (): Promise<GRatingMap> => {
   const db = getDb();
   if (!db || DEMO_VISIBLE) return {};
   try { return await loadGoogleRatings(db); } catch { return {}; }
-}, ["google-ratings-v1"], { revalidate: 3600, tags: [TAG_GPUAN] });
+}, ["google-ratings-v2"], { revalidate: 3600, tags: [TAG_GPUAN] });
 
 export async function googleRatingOf(slug: string): Promise<GRating | null> {
   return (await googleRatingMap())[slug] ?? null;

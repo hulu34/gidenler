@@ -1,4 +1,5 @@
-import { applyResult, attemptedOn, dueRows, reconcile, STATUS, summarize, trDay, type GoogleId, type RatingSource, type Row, type Venue } from "./core";
+import { applyResult, attemptedOn, dueRows, FINAL, reconcile, STATUS, summarize, trDay, withDerived, type Decision, type GoogleId, type RatingSource, type Row, type Venue } from "./core";
+import { CLOSURES } from "@/lib/closure";
 import { readWorkbook, writeWorkbook, type Change } from "./excel";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -17,12 +18,16 @@ export interface RunnerApi {
   ids(): Promise<Record<string, GoogleId[]>>;
   upload(buf: Buffer, kind: "taslak" | "son"): Promise<{ ok: boolean; id?: string; errors?: string[] }>;
   importFile(fileId: string): Promise<Record<string, unknown> & { status: string }>;
+  /** yönetici kararları (yalnız Excel gösterimi için; aktarım kararı sunucuda yeniden okur) */
+  decisions?(): Promise<Decision[]>;
 }
 export interface RunOptions { max: number; /** bugün denenmiş satırları da yeniden dene (elle tetikleme) */ force?: boolean; only?: string[]; checkpoint?: number; blockStop?: number; delayMs?: number; now?: () => Date; log?: (s: string) => void; sleep?: (ms: number) => Promise<void> }
 export interface RunReport {
   run: string; startedAt: string; finishedAt: string; venues: number; rows: number; added: number; removed: number; changed: number;
   attempted: number; fresh: number; same: number; failed: number; blocked: number; branch: number; deferred: number; stoppedEarly: string | null;
   fileId: string | null; import: Record<string, unknown> | null; failures: Array<{ slug: string; status: string; error: string }>; summary: ReturnType<typeof summarize>;
+  /** nihai durum sayıları (her mekân için tek cevap) */
+  final: Record<string, number>; closedRead: number; typeReview: number; limitedView: number;
 }
 
 export async function runDaily(run: string, venues: Venue[], api: RunnerApi, source: RatingSource, o: RunOptions): Promise<{ report: RunReport; workbook: Buffer }> {
@@ -36,6 +41,8 @@ export async function runDaily(run: string, venues: Venue[], api: RunnerApi, sou
     const prev = prevBuf ? await readWorkbook(prevBuf) : null;
     if (prev?.errors.length) throw new Error(`Son Excel okunamadı: ${prev.errors.join("; ")}`);
     const ids = new Map(Object.entries(await api.ids()));
+    const decisions = new Map(((await api.decisions?.().catch(() => [])) ?? []).map((d) => [d.slug, d]));
+    const meta = (note?: string) => ({ generatedAt: now().toISOString(), run, note, decisions, closures: CLOSURES });
     const rec = reconcile(prev?.rows ?? [], venues, ids);
     let rows = rec.rows;
     const changes: Change[] = [...(prev?.changes ?? [])];
@@ -65,7 +72,7 @@ export async function runDaily(run: string, venues: Venue[], api: RunnerApi, sou
       }
       if (attempted % checkpoint === 0) {
         if (!(await api.lock("al", 1800))) { stoppedEarly = "Kilit kaybedildi; başka çalışmayla çakışmamak için durduruldu"; break; }
-        const up = await api.upload(await writeWorkbook(rows, { generatedAt: now().toISOString(), run, note: `Ara kayıt: ${attempted}/${due.length}` }, changes.slice(-5000)), "taslak");
+        const up = await api.upload(await writeWorkbook(rows, meta(`Ara kayıt: ${attempted}/${due.length}`), changes.slice(-5000)), "taslak");
         if (!up.ok) throw new Error(`Ara kayıt yüklenemedi: ${(up.errors ?? []).join("; ")}`);
         log(`ara kayıt ${attempted}/${due.length}`);
       }
@@ -73,7 +80,7 @@ export async function runDaily(run: string, venues: Venue[], api: RunnerApi, sou
     }
 
     /* 9 · sağlamlık: yazılan dosya geri okunup satır sayısı ve kimlikler karşılaştırılır */
-    const workbook = await writeWorkbook(rows, { generatedAt: now().toISOString(), run }, changes.slice(-5000));
+    const workbook = await writeWorkbook(rows, meta(), changes.slice(-5000));
     const back = await readWorkbook(workbook);
     if (back.errors.length || back.rows.length !== rows.length || back.rows.some((r, i) => r.slug !== rows[i].slug || r.rating !== rows[i].rating))
       throw new Error("Excel sağlamlık kontrolü başarısız; dosya kaydedilmedi");
@@ -89,6 +96,9 @@ export async function runDaily(run: string, venues: Venue[], api: RunnerApi, sou
       stoppedEarly, fileId: up.id, import: imp,
       failures: due.map((d) => rows[idx.get(d.slug)!]).filter((r) => r.status !== STATUS.fresh && r.status !== STATUS.same).map((r) => ({ slug: r.slug, status: r.status, error: r.error })),
       summary: summarize(rows),
+      final: Object.fromEntries(Object.values(FINAL).map((f) => [f, withDerived(rows, decisions).filter((r) => r.record === "Aktif" && r.finalState === f).length])),
+      closedRead: st(STATUS.closed), typeReview: st(STATUS.typeSuspect) + st(STATUS.typeUnknown) + st(STATUS.typeMismatch),
+      limitedView: due.filter((d) => rows[idx.get(d.slug)!].view === "Sınırlı").length,
     };
     return { report, workbook };
   } finally { await api.lock("birak").catch(() => {}); await source.close?.().catch(() => {}); }

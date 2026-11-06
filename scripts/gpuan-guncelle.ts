@@ -7,7 +7,8 @@ import { randomBytes } from "node:crypto";
 import { runDaily, type RunnerApi } from "../lib/gpuan/runner";
 import { sheetVenues } from "../lib/gpuan/venues";
 import { mapsPageSource } from "../lib/gpuan/sources/mapsPage";
-import type { GoogleId } from "../lib/gpuan/core";
+import type { Decision, GoogleId } from "../lib/gpuan/core";
+import { appendFileSync } from "node:fs";
 
 async function main() {
   const HOST = process.env.HOST!, TARGET = process.env.HEDEF ?? "preview";
@@ -23,6 +24,7 @@ async function main() {
     async latest() { const r = await fetch(`${base}?dosya=en-yeni`, { headers: H }); if (r.status === 404) return null; if (!r.ok) throw new Error(`Son Excel indirilemedi: ${r.status}`); return Buffer.from(await r.arrayBuffer()); },
     async ids() { const r = await fetch(`${base}?rapor=kimlik`, { headers: H }); if (!r.ok) throw new Error(`Kimlikler alınamadı: ${r.status}`); return ((await r.json()) as { ids: Record<string, GoogleId[]> }).ids; },
     async upload(buf, kind) { const r = await post("dosya-yukle", { kind, data: buf.toString("base64") }); return { ok: r.status === 200, id: r.j.id as string | undefined, errors: (r.j.errors as string[]) ?? [String(r.j.error ?? r.status)] }; },
+    async decisions() { const r = await fetch(`${base}?rapor=kararlar`, { headers: H }); if (!r.ok) return []; return ((await r.json()) as { decisions: Decision[] }).decisions ?? []; },
     async importFile(fileId) { const r = await post("aktar", { fileId }); return { ...(r.j as object), status: String(r.j.status ?? `http_${r.status}`) }; },
   };
   const source = await mapsPageSource();
@@ -39,6 +41,22 @@ async function main() {
   console.log(`[gpuan] denenen ${report.attempted} · güncel ${report.fresh} · değişmedi ${report.same} · hata ${report.failed} · engel ${report.blocked} · şube ${report.branch} · ertelenen ${report.deferred}`);
   console.log(`[gpuan] aktarım ${imp?.status} · yazılan ${imp?.written ?? 0} · değişen ${imp?.changed ?? 0} · korunan ${imp?.kept ?? 0}${imp?.errors?.length ? ` · ret nedeni sayısı ${imp.errors.length}` : ""}`);
   if (report.stoppedEarly) console.log(`[gpuan] erken durdu: ${report.stoppedEarly}`);
+  /* Tek bakışta sabah raporu: GitHub Actions özet sayfası (depo herkese açık → yalnız sayılar, mekân adı yok) */
+  const ok = report.attempted === 0 || report.fresh + report.same > 0;
+  const applied = imp?.status === "applied";
+  const md = [
+    `## Google puan · günlük güncelleme ${ok && applied ? "✅ başarılı" : "❌ BAŞARISIZ"}`,
+    ``, `| | Sayı |`, `|---|---|`,
+    `| Denenen mekân | ${report.attempted} |`, `| Puanı güncellenen | ${report.fresh} |`, `| Değişmeyen | ${report.same} |`,
+    `| Hata (okuma) | ${report.failed} |`, `| Erişim engeli | ${report.blocked} |`, `| Kalıcı kapalı okunan | ${report.closedRead} |`,
+    `| Şube uyuşmazlığı | ${report.branch} |`, `| Tür sorunu (elle inceleme) | ${report.typeReview} |`, `| Ertelenen | ${report.deferred} |`,
+    `| Sınırlı Google görünümü (sayı okunmadı) | ${report.limitedView} |`,
+    `| Siteye yazılan / gizlenen | ${imp?.written ?? 0} / ${(imp as { hidden?: number } | null)?.hidden ?? 0} |`,
+    ``, `**Nihai durum (456 mekân):** ${Object.entries(report.final).filter(([, n]) => n).map(([k, n]) => `${k}: ${n}`).join(" · ")}`,
+    ``, report.stoppedEarly ? `⚠️ Erken durdu: ${report.stoppedEarly}` : ``,
+    `Mekân bazlı ayrıntı: yönetim ekranı (/yonetim/google-puan) ve şifreli yedek.`,
+  ].join("\n");
+  if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, md + "\n");
   /* gerçek puan alınamadıysa iş başarılı görünmez */
   if (report.attempted > 0 && report.fresh + report.same === 0) { console.log("[gpuan] HİÇBİR mekândan puan alınamadı"); process.exit(2); }
   if (imp?.status !== "applied") process.exit(3);

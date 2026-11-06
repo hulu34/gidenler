@@ -1,10 +1,12 @@
 import { z } from "zod";
 import raw from "@/data/real/sor-index.json";
+import { CLOSED_CONFIRMED } from "@/lib/closure";
 
 /* SOR GİDENLER · VERİ MOTORU — yalnız sunucu. İsteği yapılandırır, kayıtlı mekânlardan aday bulur, kanıtla gerekçelendirir.
    Kurallar: yalnız dizindeki mekân; puan uydurulmaz; doğrulanamayan özellik (sakin, romantik, ucuz…) gerçekmiş gibi yazılmaz, açıkça söylenir. */
 export interface Venue { slug: string; name: string; kind: string; district: string; neighborhood: string | null; address: string | null; lat: number | null; lng: number | null; hours: string | null; description: string | null; notes: string[]; menu: string[]; priceRange: [number, number] | null; priceMedian?: number | null; secki: { title: string; slug: string; text: string } | null }
-export const VENUES = raw as unknown as Venue[];
+/* kalıcı kapandığı doğrulanan mekânlar Sor sonuçlarına girmez (lib/closure.ts) */
+export const VENUES = (raw as unknown as Venue[]).filter((v) => !CLOSED_CONFIRMED.has(v.slug));
 
 export const fold = (s: string) => s.toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/ş/g, "s").replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ö/g, "o").replace(/ç/g, "c").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/['’`]/g, " ").replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
 const within1 = (a: string, b: string) => {

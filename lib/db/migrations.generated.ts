@@ -181,5 +181,14 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
    "ALTER TABLE \"google_rating_history\" ALTER COLUMN \"review_count\" DROP NOT NULL;",
    "ALTER TABLE \"google_ratings\" ALTER COLUMN \"review_count\" DROP NOT NULL;"
   ]
+ },
+ {
+  "tag": "0008_google_puan_karar",
+  "hash": "4d004eed01d4ce3b9465091fccd7ba13363f57e9d6437833344c5e89a0c1d610",
+  "statements": [
+   "CREATE TABLE \"google_rating_decisions\" (\n\t\"id\" text PRIMARY KEY NOT NULL,\n\t\"slug\" text NOT NULL,\n\t\"place_id\" text NOT NULL,\n\t\"decision\" text NOT NULL,\n\t\"note\" text NOT NULL,\n\t\"evidence\" jsonb,\n\t\"actor\" text NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "ALTER TABLE \"google_ratings\" ADD COLUMN \"hidden_reason\" text;",
+   "CREATE INDEX \"google_rating_decisions_slug_idx\" ON \"google_rating_decisions\" USING btree (\"slug\",\"created_at\");"
+  ]
  }
 ];

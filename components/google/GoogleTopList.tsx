@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { realEntities } from "@/data/real";
+import { activeEntities } from "@/data/real";
 import { GoogleMapsLogo } from "@/components/venue/media/GoogleAttribution";
 import { MIN_RANK_REVIEWS, type GRatingMap } from "@/lib/gpuan/read";
 
@@ -7,7 +7,7 @@ import { MIN_RANK_REVIEWS, type GRatingMap } from "@/lib/gpuan/read";
    Google puanı 5 üzerinden, kaynak ve son kontrol tarihi görünür; Gidenler puanı değildir. */
 const f1 = (x: number) => x.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 export function GoogleTopList({ map, n = 10, exclude = new Set<string>(), id = "k-google" }: { map: GRatingMap; n?: number; exclude?: Set<string>; id?: string }) {
-  const list = realEntities.filter((e) => map[e.slug] && (map[e.slug].count ?? 0) >= MIN_RANK_REVIEWS && !exclude.has(e.slug) && !/sosyal tesis/i.test(e.name))
+  const list = activeEntities.filter((e) => map[e.slug] && (map[e.slug].count ?? 0) >= MIN_RANK_REVIEWS && !exclude.has(e.slug) && !/sosyal tesis/i.test(e.name))
     .sort((a, b) => map[b.slug].rating - map[a.slug].rating || (map[b.slug].count ?? 0) - (map[a.slug].count ?? 0) || a.slug.localeCompare(b.slug)).slice(0, n);
   if (!list.length) return null;
   const newest = Object.values(map).reduce((m, g) => (g.checkedAt > m ? g.checkedAt : m), "");
