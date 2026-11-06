@@ -10,16 +10,16 @@ import type { Db } from "../lib/db/client";
 import { applyMigrations, type Executor } from "../lib/db/migrate";
 import { seedRealVenues } from "../lib/db/seed";
 import { realVenueRecords } from "../data/real";
-import { applyResult, baseRow, trDay, typeMismatch, typeCheck, finalState, hideReason, FINAL, withDerived, checkConsistency, checkFile, CONFIDENCE, dueRows, HEADERS, importable, pickGoogleId, reconcile, STATUS, type GoogleId, type RatingSource, type Row, type SourceResult, type Venue } from "../lib/gpuan/core";
+import { applyResult, baseRow, trDay, typeMismatch, typeCheck, finalState, hideReason, FINAL, withDerived, MAIN, mainStatus, duplicatePlaceIds, checkConsistency, checkFile, CONFIDENCE, dueRows, HEADERS, importable, pickGoogleId, reconcile, STATUS, type GoogleId, type RatingSource, type Row, type SourceResult, type Venue } from "../lib/gpuan/core";
 import { readWorkbook, writeWorkbook } from "../lib/gpuan/excel";
 import { sheetVenues } from "../lib/gpuan/venues";
-import { acquireLock, holdsLock, importFile, releaseLock, saveFile, getFile, googleIds, recordDecision, latestDecisions, dailyReport } from "../lib/gpuan/store";
+import { acquireLock, holdsLock, importFile, releaseLock, saveFile, getFile, googleIds, recordDecision, latestDecisions, dailyReport, addMatch } from "../lib/gpuan/store";
 import { CLOSED_CONFIRMED, CLOSURES } from "../lib/closure";
 import { activeEntities, realEntities } from "../data/real";
 import { VENUES as SOR_VENUES } from "../lib/sor/engine";
 import { loadGoogleRatings } from "../lib/gpuan/read";
 import { runDaily, type RunnerApi } from "../lib/gpuan/runner";
-import { classifyUrl, coordsFromUrl, parseRaw } from "../lib/gpuan/sources/mapsPage";
+import { classifyUrl, coordsFromUrl, parseRaw, placeIdFromFtid, ftidFromUrl } from "../lib/gpuan/sources/mapsPage";
 import { googleRankedThemes } from "../lib/homeBoard";
 
 let pass = 0, fail = 0;
@@ -56,7 +56,7 @@ async function main() {
   const ws = wb.getWorksheet("Tüm Mekânlar")!;
   ok("başlıklar istenen alanları içeriyor", HEADERS.slice(0, 16).every((h, i) => ws.getRow(1).getCell(i + 1).value === h));
   ok("filtre ve sabit başlık var", !!ws.autoFilter && ws.views[0]?.state === "frozen" && (ws.views[0] as { ySplit?: number }).ySplit === 1);
-  ok("istenen 8 sayfa + değişimler ve açıklama", ["Tüm Mekânlar", "Puanı Doğrulananlar", "Aktarım Bekleyenler", "Yanlış Eşleşmeler", "Kapalı Mekânlar", "Place ID Eksikleri", "Güncelleme Geçmişi", "Yönetici Özeti", "Değişimler", "Açıklama"].every((n) => !!wb.getWorksheet(n)), wb.worksheets.map((w) => w.name));
+  ok("istenen 9 sayfa + değişimler ve açıklama", ["Tüm Mekânlar", "Google Puanı Aktif", "Onay Bekleyenler", "Eşleşmesi Olmayanlar", "Yanlış Şube ve Tür", "Kapanma İncelemesi", "Değerlendirme Sayısı Eksik", "Güncelleme Geçmişi", "Yönetici Özeti", "Değişimler", "Açıklama"].every((n) => !!wb.getWorksheet(n)), wb.worksheets.map((w) => w.name));
   const statusCol = HEADERS.indexOf("Güncelleme durumu") + 1;
   ok("durum hücreleri renkli", (ws.getRow(2).getCell(statusCol).fill as { fgColor?: { argb?: string } })?.fgColor?.argb?.length === 8);
 
@@ -270,6 +270,30 @@ async function main() {
     const after0 = (await db.select().from(schema.googleRatings).where(eq(schema.googleRatings.slug, c0.slug)))[0];
     ok("aynı gözlemin yeniden değerlendirmesi veritabanına yazılır (sınırlı görünüm sayısı boşalır)", lr.status === "applied" && after0.reviewCount === null, { st: lr.status, n: after0.reviewCount }); }
   await releaseLock(db, h2);
+
+  console.log("\n13) Tamamlama: yeni eşleşme, yinelenen Place ID, mutabakat");
+  ok("Maps işletme kimliğinden Place ID (Hacıbaşar örneği birebir)", placeIdFromFtid("0x14cac63a39a60665:0xccfdc60afd25b2e2") === "ChIJZQamOTrGyhQR4rIl_QrG_cw" && ftidFromUrl("https://www.google.com/maps/place/X/data=!4m6!3m5!1s0x14cac63a39a60665:0xccfdc60afd25b2e2!8m2") === "0x14cac63a39a60665:0xccfdc60afd25b2e2");
+  const h3 = "tamamla-test"; await acquireLock(db, h3);
+  const noId = venues.find((v) => !ids.get(v.slug)?.length)!;
+  const newPid = "ChIJyeniaday000000000001";
+  const usedPid = [...ids.values()].flat().find((g) => g.status === "auto")!.externalId;
+  const bad2 = await addMatch(db, { slug: noId.slug, placeId: usedPid, note: "başka mekânın kaydını bağlamayı dene", actor: "test" });
+  ok("başka mekâna bağlı Google kaydı yeni eşleşme olarak eklenemez", !bad2.ok && (bad2 as { error: string }).error === "place_id_on_other_venue");
+  const add = await addMatch(db, { slug: noId.slug, placeId: newPid, note: "arama: konum 6 m, ad 1,00, aynı adres", actor: "test" });
+  const st = await pg.query<{ status: string }>(`select pi.status from place_identifiers pi join places p on p.id = pi.place_id where p.slug = '${noId.slug}' and pi.provider='google'`);
+  ok("yeni eşleşme 'pending' kimlik + onay kararı olarak eklenir (ücretli Google özellikleri açılmaz)", add.ok && st.rows.length === 1 && st.rows[0].status === "pending" && (await latestDecisions(db)).get(noId.slug)?.placeId === newPid);
+  const again = await addMatch(db, { slug: noId.slug, placeId: "ChIJbaskaaday00000000002", note: "ikinci aday, değiştirme yok", actor: "test" });
+  ok("mekânın bekleyen başka kimliği varken değiştirme izni olmadan ikinci aday eklenmez", !again.ok);
+  await releaseLock(db, h3);
+  const rNew = await runDaily("calisma-yeni", venues, mkApi("calisma-yeni"), fakeSource(), { max: 500, only: [noId.slug], force: true });
+  ok("sonraki günlük çalışma yeni eşleşmeyi okur ve onaylı puanı sitede gösterir", rNew.report.attempted === 1 && !!(await loadGoogleRatings(db))[noId.slug], rNew.report.attempted);
+  const dupRows = [{ ...row0, slug: "a", placeId: "ChIJortak00000000000001" }, { ...row0, slug: "b", placeId: "ChIJortak00000000000001" }, { ...row0, slug: "c" }];
+  ok("aynı Place ID iki mekânda: denetimde yakalanır ve alt nedene yazılır", duplicatePlaceIds(dupRows).size === 1 && withDerived(dupRows, new Map())[0].subReasons.includes("aynı Place ID"));
+  const allRows = (await readWorkbook(rNew.workbook)).rows;
+  const der = withDerived(allRows, await latestDecisions(db), CLOSURES);
+  const byMain: Record<string, number> = {}; for (const r of der.filter((x) => x.record === "Aktif")) byMain[r.mainState] = (byMain[r.mainState] ?? 0) + 1;
+  ok("mutabakat: her mekân tek ana durumda, toplam 456", Object.values(byMain).reduce((a, b) => a + b, 0) === 456 && der.every((r) => (Object.values(MAIN) as string[]).includes(r.mainState)), byMain);
+  ok("kesin kapalı kayıt onayla bile aktarılmaz", !importable({ ...full, status: STATUS.closed }, { ...dec("onay"), placeId: full.placeId }).ok && mainStatus(full, null, { state: "closed_confirmed" }).main === MAIN.closed);
 
   console.log("\n12) Kapanma kaydı: kesin kapalı mekân önerilerde ve Sor'da yok, profil korunur");
   ok("kapanış kaydı 42 mekân (26 kesin, 16 şüpheli)", Object.keys(CLOSURES).length === 42 && CLOSED_CONFIRMED.size === 26, { n: Object.keys(CLOSURES).length, c: CLOSED_CONFIRMED.size });

@@ -24,13 +24,14 @@ export const COLUMNS = [
   ["seenCategory", "Google'daki tür", 22],
   ["view", "Google görünümü", 12], ["distance", "Konum farkı (m)", 10], ["nameSim", "Ad benzerliği", 10],
   ["decision", "Yönetici kararı", 16], ["finalState", "Nihai durum", 28], ["finalReason", "Gerekçe", 60],
+  ["mainState", "Ana durum", 30], ["subReasons", "Alt nedenler", 50], ["level", "Güven seviyesi", 22], ["evidence", "Kanıt", 60], ["nextAction", "Sonraki işlem", 50],
 ] as const;
 export type ColKey = (typeof COLUMNS)[number][0];
 export const HEADERS = COLUMNS.map((c) => c[1]);
 /** Sonradan eklenen sütunlar: eski dosyada yoksa boş okunur (dosya reddedilmez). */
-export const OPTIONAL_HEADERS: ReadonlySet<string> = new Set(["Google'daki tür", "Google görünümü", "Konum farkı (m)", "Ad benzerliği", "Yönetici kararı", "Nihai durum", "Gerekçe"]);
+export const OPTIONAL_HEADERS: ReadonlySet<string> = new Set(["Google'daki tür", "Google görünümü", "Konum farkı (m)", "Ad benzerliği", "Yönetici kararı", "Nihai durum", "Gerekçe", "Ana durum", "Alt nedenler", "Güven seviyesi", "Kanıt", "Sonraki işlem"]);
 /** Excel'e yalnız bilgi için yazılan, okunurken yok sayılan sütunlar (her yazımda yeniden hesaplanır). */
-export const DERIVED: ReadonlySet<string> = new Set(["decision", "finalState", "finalReason"]);
+export const DERIVED: ReadonlySet<string> = new Set(["decision", "finalState", "finalReason", "mainState", "subReasons", "level", "evidence", "nextAction"]);
 
 export const CONFIDENCE = { confirmed: "Onaylı", auto: "Otomatik", pending: "Onay bekliyor", none: "Eşleşme yok", rejected: "Reddedildi" } as const;
 export type Confidence = (typeof CONFIDENCE)[keyof typeof CONFIDENCE];
@@ -56,6 +57,7 @@ export interface Row {
   view: string; distance: number | null; nameSim: number | null;
   /** türetilmiş, bilgi amaçlı: yönetici kararı ve nihai durum (okunurken yok sayılır) */
   decision: string; finalState: string; finalReason: string;
+  mainState: string; subReasons: string; level: string; evidence: string; nextAction: string;
 }
 
 /** Yönetici kararı (veritabanında, denetim kaydıyla). Excel'deki "Yönetici kararı" sütunu yalnız gösterimdir; aktarım kararı veritabanından okur. */
@@ -90,6 +92,7 @@ export function baseRow(v: Venue, g: { placeId: string; confidence: Confidence }
     status: g.placeId ? STATUS.waiting : STATUS.noMatch, error: g.placeId ? "" : g.confidence === CONFIDENCE.rejected ? "Google eşleşmesi reddedilmiş" : "Doğrulanmış Google eşleşmesi yok",
     profileUrl: `${SITE}/mekan/${v.slug}/`, attemptAt: "", seenName: "", seenAddress: "", prevRating: null, prevReviews: null, record: "Aktif", seenCategory: "",
     view: "", distance: null, nameSim: null, decision: "", finalState: "", finalReason: "",
+    mainState: "", subReasons: "", level: "", evidence: "", nextAction: "",
   };
 }
 
@@ -374,8 +377,18 @@ export function duplicatePlaceIds(rows: Row[]): Map<string, string[]> {
 }
 
 /** Yazmadan önce türetilmiş sütunları doldurur. */
-export function withDerived(rows: Row[], decisions: Map<string, Decision>): Row[] {
-  return rows.map((r) => { const d = decisionFor(r, decisions.get(r.slug)); const f = finalState(r, d); return { ...r, decision: d ? `${d.decision === "onay" ? "Onay" : "Ret"} · ${d.at.slice(0, 10)}` : "", finalState: f.state, finalReason: f.reason }; });
+export interface Evidence { level: string; why: string }
+/** Yazmadan önce türetilmiş sütunları doldurur: nihai durum, ana durum + alt nedenler, kanıt, güven, sonraki işlem. */
+export function withDerived(rows: Row[], decisions: Map<string, Decision>, closures: Record<string, { state: string }> = {}, evidence: Record<string, Evidence> = {}): Row[] {
+  const dup = duplicatePlaceIds(rows);
+  return rows.map((r) => {
+    const d = decisionFor(r, decisions.get(r.slug)); const f = finalState(r, d); const m = mainStatus(r, d, closures[r.slug] ?? null);
+    const subs = dup.has(r.placeId) ? [...m.subs, `aynı Place ID ${dup.get(r.placeId)!.filter((x) => x !== r.slug).join(", ")} kaydında da var`] : m.subs;
+    const e = evidence[r.slug];
+    const auto = r.placeId ? `eşleşme ${r.confidence}${r.distance != null ? ` · konum ${r.distance} m` : ""}${r.nameSim != null ? ` · ad ${r.nameSim}` : ""}${r.seenCategory ? ` · tür ${r.seenCategory}` : ""}` : "";
+    return { ...r, decision: d ? `${d.decision === "onay" ? "Onay" : "Ret"} · ${d.at.slice(0, 10)}` : "", finalState: f.state, finalReason: f.reason,
+      mainState: m.main, subReasons: subs.filter(Boolean).join(" · "), level: e?.level ?? m.confidence, evidence: e?.why ?? auto, nextAction: m.next };
+  });
 }
 
 export interface FileCheck { ok: boolean; errors: string[]; warnings: string[] }
