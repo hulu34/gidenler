@@ -340,6 +340,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-ek-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  gpuan-onay-a:
+    if: contains(github.event.head_commit.message, '[gpuan-onay-a]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/gpuan-onay-a.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROD_HOST: gidenler-git-feature-investor-v1-hulu34.vercel.app }
   yayin-kalite:
     if: contains(github.event.head_commit.message, '[yayin-kalite]')
     runs-on: ubuntu-latest
