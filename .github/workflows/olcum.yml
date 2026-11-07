@@ -399,6 +399,27 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-mutabakat-sifreli, path: out/mutabakat.json.cms, retention-days: 30, if-no-files-found: ignore }
+  gpuan-104:
+    if: contains(github.event.head_commit.message, '[gpuan-104]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env: { HOST: gidenler-git-feature-investor-v1-hulu34.vercel.app }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/buyume-hazirlik, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: mkdir -p out && node ops/gpuan-104-liste.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: mkdir -p out/arama && cp out/liste-meta.json out/arama/ && cd app && npx tsx scripts/gpuan-arama.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", LISTE: ../out/liste.json, CIKTI: ../out/arama, BEKLEME_MS: "4000" }
+      - if: always()
+        run: test -d out/arama && tar -C out -czf out/arama.tgz arama && rm -rf out/arama && openssl cms -encrypt -aes256 -binary -outform DER -in out/arama.tgz -out out/arama.tgz.cms ops/olcum.pem && rm out/arama.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpuan-104-sifreli, path: out/arama.tgz.cms, retention-days: 30, if-no-files-found: ignore }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest
