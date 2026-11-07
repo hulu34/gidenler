@@ -380,6 +380,25 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-paket-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  gpuan-mutabakat:
+    if: contains(github.event.head_commit.message, '[gpuan-mutabakat]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env: { HOST: gidenler-git-feature-investor-v1-hulu34.vercel.app }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/investor-v1, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund
+      - run: cp ops/gpuan-mutabakat.ts app/gpuan-mutabakat.ts && cd app && npx tsx gpuan-mutabakat.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: test -f out/mutabakat.json && openssl cms -encrypt -aes256 -binary -outform DER -in out/mutabakat.json -out out/mutabakat.json.cms ops/olcum.pem && rm out/mutabakat.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpuan-mutabakat-sifreli, path: out/mutabakat.json.cms, retention-days: 30, if-no-files-found: ignore }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest
