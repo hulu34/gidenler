@@ -420,6 +420,30 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-104-sifreli, path: out/arama.tgz.cms, retention-days: 30, if-no-files-found: ignore }
+  preview-buyume:
+    if: contains(github.event.head_commit.message, '[preview-buyume]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env: { HOST: gidenler-a6k1l2lsp-hulu34.vercel.app }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/buyume-hazirlik, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/preview-buyume.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: cp ops/gpuan-mutabakat.ts app/gpuan-mutabakat.ts && cd app && npx tsx gpuan-mutabakat.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: cp ops/gpuan-ekran.mjs app/gpuan-ekran.mjs && PREVIEW_HOST=$HOST node app/gpuan-ekran.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROFIL: "mandabatmaz-beyoglu,ciya-sofrasi-kadikoy,yako-balik-kadikoy", ARAMA: "balık" }
+      - if: always()
+        run: rm -f out/mutabakat.json; ls out || true; test -d out && tar -C out -czf ekran.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in ekran.tgz -out ekran.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: preview-buyume-sifreli, path: ekran.tgz.cms, retention-days: 14, if-no-files-found: ignore }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest
