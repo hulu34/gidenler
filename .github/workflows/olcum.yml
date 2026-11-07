@@ -468,6 +468,32 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-paket2-canli-sifreli, path: out/gpuan.tgz.cms, retention-days: 30, if-no-files-found: ignore }
+  yayin-buyume:
+    if: contains(github.event.head_commit.message, '[yayin-buyume]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env: { PROD_HOST: gidenler-co364bqj8-hulu34.vercel.app, HOST: gidenler-co364bqj8-hulu34.vercel.app }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/buyume-hazirlik, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/yayin-gece3.mjs && node ops/gpuan-yayin.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", EXPECT: "" }
+      - run: |
+          c=$(curl -s -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$PROD_HOST/mekan/bishop-bakirkoy/" | grep -c 'data-kapanis="kesin"'); echo "bishop kapanış notu $c"; test "$c" = "1"
+          s=$(curl -s -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$PROD_HOST/api/admin/google-puan/?rapor=gunluk" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{const j=JSON.parse(d);console.log(j.env,j.site.shown,j.site.hidden)})'); echo "rapor $s"; echo "$s" | grep -q "^production 331 4$"
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - run: node ops/preview-buyume.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund
+      - run: |
+          cp ops/gpuan-mutabakat.ts app/gpuan-mutabakat.ts && cd app && npx tsx gpuan-mutabakat.ts | tee ../out-m.txt
+          grep -q '"onlyExcel":0,"onlySite":0,"ratingDiff":0,"dupIds":0' ../out-m.txt
+          grep -q '"withRating":0,"leaks":{"/ (200)":0,"/kesfet/ (200)":0,"/kategori/restoran/ (200)":0,"/gidenler-100/ (200)":0}' ../out-m.txt
+          grep -q '"profiles":456,"non200":0' ../out-m.txt
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest
