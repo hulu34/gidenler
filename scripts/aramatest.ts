@@ -1,5 +1,6 @@
 /* ARAMA — gerçek 457 mekân üzerinde. Aranan mekân varken bulunamaması en yüksek öncelikli hatadır. npx tsx scripts/aramatest.ts */
 import { nameMatch, searchV3 } from "../lib/search";
+import { CLOSED_CONFIRMED } from "@/lib/closure";
 import { realEntities } from "../data/real";
 let pass = 0, fail = 0;
 const t = (n: string, c: unknown, x?: unknown) => { if (c) pass++; else { fail++; console.log(`  ✗ ${n}`, x ?? ""); } };
@@ -20,9 +21,10 @@ let own = 0, asc = 0, typo = 0; const miss: string[] = [], typoMiss: string[] = 
 for (const e of realEntities) {
   if (inTop(e.name, e.name, 5)) own++; else miss.push(e.name);
   if (inTop(fold(e.name), e.name, 5)) asc++;
-  if (e.name.length > 6) { const m = Math.floor(e.name.length / 2); const q = e.name.slice(0, m) + e.name.slice(m + 1); if (inTop(q, e.name, 5)) typo++; else typoMiss.push(`${e.name}→${q}`); }
+  /* kesin kapalı işletme yazım hatasıyla önerilmez (yalnız tam adla bulunur); yazım toleransı açık mekânlarda ölçülür */
+  if (e.name.length > 6 && !CLOSED_CONFIRMED.has(e.slug)) { const m = Math.floor(e.name.length / 2); const q = e.name.slice(0, m) + e.name.slice(m + 1); if (inTop(q, e.name, 5)) typo++; else typoMiss.push(`${e.name}→${q}`); }
 }
-const nTypo = realEntities.filter((e) => e.name.length > 6).length;
+const nTypo = realEntities.filter((e) => e.name.length > 6 && !CLOSED_CONFIRMED.has(e.slug)).length;
 console.log(`kendi adı ${own}/${realEntities.length}, ascii ${asc}/${realEntities.length}, tek harf eksik ${typo}/${nTypo}`, miss.slice(0, 10), typoMiss.slice(0, 12));
 t("her mekân kendi adıyla ilk 5'te", own === realEntities.length, miss);
 t("her mekân ASCII yazımla ilk 5'te", asc === realEntities.length);
