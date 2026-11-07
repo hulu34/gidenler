@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { activeEntities, realEntities } from "@/data/real";
 import { getEntity } from "@/data/entities";
+import { isClosed } from "@/lib/closure";
 import { articles, hrefOf } from "@/lib/seckisi";
 import { coverOf } from "@/lib/media/cover";
 import { liveCovers, publishedScores, recentlyReviewed } from "@/lib/live";
@@ -35,7 +36,8 @@ export async function RealDiscover() {
   const seen = new Set<string>(); const seckiU = secki.filter((x) => (seen.has(x.e!.slug) ? false : (seen.add(x.e!.slug), true)));
   const scored = activeEntities.filter((e) => published[e.slug]?.score != null).sort((a, b) => published[b.slug].score! - published[a.slug].score!);
   const withCover = activeEntities.filter((e) => coverOf(e, covers[e.slug]));
-  const recentE = recent.map((s) => getEntity(s)).filter((e): e is Entity => !!e?.isReal);
+  /* kesin kapalı işletme öneri şeridinde gösterilmez; deneyimi profilinde korunur */
+  const recentE = recent.map((s) => getEntity(s)).filter((e): e is Entity => !!e?.isReal && !isClosed(e.slug));
   return (
     <div className="mx-auto flex max-w-[1180px] flex-col gap-14 px-5 pb-24 sm:px-7">
       <header className="flex flex-col gap-3 pt-8 sm:pt-14">

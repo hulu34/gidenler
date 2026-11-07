@@ -1,6 +1,7 @@
 /* GOOGLE PUAN EXCEL SİSTEMİ TESTLERİ — gömülü Postgres (PGlite) + sahte kaynak. Ağ yok, Google yok.
    Çalıştır: npm run test:gpuan */
 import { PGlite } from "@electric-sql/pglite";
+import { isClosed } from "../lib/closure";
 import { drizzle } from "drizzle-orm/pglite";
 import { eq, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
@@ -148,8 +149,11 @@ async function main() {
   ok("bir kayıt engellense de diğerlerine devam edilir", r1.report.attempted === withPid && r1.report.blocked === 1 && r1.report.fresh === withPid - 1, r1.report);
   ok("aktarım uygulandı", (r1.report.import as { status: string }).status === "applied", r1.report.import);
   const m1 = await loadGoogleRatings(db);
-  const expectSite = venues.filter((v) => { const g = ids.get(v.slug)?.[0]; return g && g.status !== "pending" && g.externalId !== blockedPid; }).length;
+  const writtenAll = venues.filter((v) => { const g = ids.get(v.slug)?.[0]; return g && g.status !== "pending" && g.externalId !== blockedPid; });
+  /* kesin kapalı işletmede puan yazılmış olsa da sitede gösterilmez */
+  const expectSite = writtenAll.filter((v) => !isClosed(v.slug)).length;
   ok("sitede yalnız onaylı/otomatik eşleşmenin puanı görünür (bekleyen görünmez)", Object.keys(m1).length === expectSite, { got: Object.keys(m1).length, expectSite });
+  ok("kesin kapalı işletmenin puanı sitede yok", writtenAll.some((v) => isClosed(v.slug)) && !Object.keys(m1).some((s) => isClosed(s)));
   ok("Google puanı Gidenler puan tablosuna yazılmaz", Number((await pg.query<{ n: number }>("select count(*)::int n from rating_history")).rows[0].n) === 0);
 
   console.log("\n6) Kesinti ve kaldığı yerden devam");
@@ -189,7 +193,7 @@ async function main() {
   ok("eski tarihli dosya yeni veriyi ezemez", repOld.status === "applied" && repOld.written === 0, { status: repOld.status, written: repOld.written });
   await releaseLock(db, holder);
   const hist = await pg.query<{ n: number }>("select count(*)::int n from google_rating_history");
-  ok("değişen puanlar geçmiş tablosunda", Number(hist.rows[0].n) >= expectSite);
+  ok("değişen puanlar geçmiş tablosunda", Number(hist.rows[0].n) >= writtenAll.length);
 
   console.log("\n8) Arka arkaya engelde nazikçe durma");
   const day3 = () => new Date(BASE - 36e5);
