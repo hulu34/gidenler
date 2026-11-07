@@ -444,6 +444,30 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: preview-buyume-sifreli, path: ekran.tgz.cms, retention-days: 14, if-no-files-found: ignore }
+  gpuan-paket2-canli:
+    if: contains(github.event.head_commit.message, '[gpuan-paket2-canli]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env: { HOST: gidenler-git-feature-investor-v1-hulu34.vercel.app, HEDEF: production }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/investor-v1, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: mkdir -p out && node ops/gpuan-paket.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PAKET: ops/gpuan-paket-2.json, NOT_ONEKI: "Sahip onayı 2026-11-08 · " }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: mkdir -p out/gpuan && cd app && SLUGS="$(cat ../out/paket-slugs.txt)" npx tsx scripts/gpuan-guncelle.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", YENIDEN: "1", BEKLEME_MS: "5000", CIKTI: ../out/gpuan, MAX: "100" }
+      - if: always()
+        run: node ops/gpuan-paket-sonra.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", ORNEK: "bambi-cafe-sisli,dragon-restaurant-sisli,arnavutkoy-balikcisi-sariyer,van-kahvalti-sofrasi-beykoz,diyarzade-kunefe-katmer-baklava-ve-tatli-gungoren,cooskun-balik-kucukcekmece" }
+      - if: always()
+        run: test -d out/gpuan && tar -C out -czf out/gpuan.tgz gpuan && rm -rf out/gpuan && openssl cms -encrypt -aes256 -binary -outform DER -in out/gpuan.tgz -out out/gpuan.tgz.cms ops/olcum.pem && rm out/gpuan.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gpuan-paket2-canli-sifreli, path: out/gpuan.tgz.cms, retention-days: 30, if-no-files-found: ignore }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest

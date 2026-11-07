@@ -8,7 +8,7 @@ const J = { ...H, "content-type": "application/json", "sec-fetch-site": "same-or
 const A = `${B}/api/admin/google-puan/`;
 const pre = process.env.NOT_ONEKI ?? ""; const clean = (n) => n.replace(/^Sahip onayı bekleniyor · /, "");
 const post = async (o) => { const r = await fetch(A, { method: "POST", headers: J, body: JSON.stringify({ target: T, confirm: "EVET", holder: "tamamlama-paketi", ...o }) }); return { s: r.status, j: await r.json().catch(() => ({})) }; };
-const P = JSON.parse(readFileSync("ops/gpuan-paket.json", "utf8"));
+const P = JSON.parse(readFileSync(process.env.PAKET ?? "ops/gpuan-paket.json", "utf8"));
 const r0 = await (await fetch(`${A}?rapor=gunluk`, { headers: H })).json();
 if (r0.env !== T) { console.log("✗ ortam", r0.env, "beklenen", T); process.exit(1); }
 console.log("önce", JSON.stringify({ shown: r0.site?.shown, hidden: r0.site?.hidden }));
