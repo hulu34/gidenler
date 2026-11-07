@@ -340,6 +340,19 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gpuan-ek-sifreli, path: out/gpuan.tgz.cms, retention-days: 7, if-no-files-found: ignore }
+  yayin-tamamla:
+    if: contains(github.event.head_commit.message, '[yayin-tamamla]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env: { PROD_HOST: gidenler-gjz4rsxsj-hulu34.vercel.app }
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/yayin-gece3.mjs && node ops/gpuan-yayin.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", EXPECT: "" }
+      - run: |
+          c=$(curl -s -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$PROD_HOST/mekan/bishop-bakirkoy/" | grep -c 'data-kapanis="kesin"'); echo "bishop kapanış notu $c"; test "$c" = "1"
+          s=$(curl -s -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$PROD_HOST/api/admin/google-puan/?rapor=gunluk" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{const j=JSON.parse(d);console.log(j.env,j.site.shown,j.site.hidden)})'); echo "rapor $s"; echo "$s" | grep -q "^production 255 3$"
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
   gpuan-paket:
     if: contains(github.event.head_commit.message, '[gpuan-paket]')
     runs-on: ubuntu-latest
