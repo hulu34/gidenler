@@ -1,4 +1,5 @@
 import { unstable_cache } from "next/cache";
+import { isClosed } from "@/lib/closure";
 import { and, eq, gte, inArray, isNull } from "drizzle-orm";
 import { getDb, type Db } from "@/lib/db/client";
 import { googleRatings, placeIdentifiers, places } from "@/lib/db/schema";
@@ -32,6 +33,7 @@ export async function loadGoogleRatings(db: Db): Promise<GRatingMap> {
     for (const r of rows) {
       const d = decided.get(r.slug); const dec = d && d.placeId === r.placeId ? d.decision : null;
       if (dec === "ret") continue;
+      if (isClosed(r.slug)) continue;   // kesin kapalı işletmede Google puanı gösterilmez (kapanış notu yeterli)
       if (r.idStatus === "pending" && dec !== "onay") continue;
       out[r.slug] = { rating: r.rating, count: r.count, checkedAt: r.checkedAt.toISOString(), mapsUrl: r.mapsUrl };
     }
