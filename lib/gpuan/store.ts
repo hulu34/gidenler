@@ -210,11 +210,12 @@ export async function dailyReport(db: Db) {
   const { withDerived, FINAL, STATUS, trDay, reclassify } = await import("./core");
   const { sheetVenues } = await import("./venues");
   const { CLOSURES } = await import("@/lib/closure");
-  const [imports, f, stats, decisions] = await Promise.all([importsLog(db, 7), getFile(db, "son"), ratingStats(db), latestDecisions(db)]);
+  const { loadGoogleRatings } = await import("./read");
+  const [imports, f, stats, decisions, live] = await Promise.all([importsLog(db, 7), getFile(db, "son"), ratingStats(db), latestDecisions(db), loadGoogleRatings(db)]);
   const last = imports[0] ?? null;
   const parsed = f ? await readWorkbook(f.buf) : null;
   const vmap = new Map(sheetVenues().map((v) => [v.slug, v]));
-  const rows = parsed && !parsed.errors.length ? withDerived(parsed.rows.map((r) => reclassify(r, vmap.get(r.slug))), decisions).filter((r) => r.record === "Aktif") : [];
+  const rows = parsed && !parsed.errors.length ? withDerived(parsed.rows.map((r) => reclassify(r, vmap.get(r.slug))), decisions, CLOSURES).filter((r) => r.record === "Aktif") : [];
   const lastRun = rows.reduce((m, r) => (r.attemptAt > m ? r.attemptAt : m), "");
   /* Türkiye günü: günde bir zamanlanmış çalışma olduğundan "bugün denenen" = son günlük çalışma (+ aynı gün elle yapılanlar) */
   const runDay = lastRun ? trDay(new Date(lastRun)) : "";
@@ -229,7 +230,8 @@ export async function dailyReport(db: Db) {
     lastRun: { at: lastRun || null, day: runDay || null, attempted: today.length, updated: today.filter((r) => r.status === STATUS.fresh).length, unchanged: today.filter((r) => r.status === STATUS.same).length,
       errors: today.filter((r) => [STATUS.error, STATUS.blocked, STATUS.deferred].includes(r.status as never)).length, blocked: today.filter((r) => r.status === STATUS.blocked).length,
       limitedView: today.filter((r) => r.view === "Sınırlı").length },
-    site: { shown: stats.ratings - stats.hidden, hidden: stats.hidden, stale: stats.stale, newest: stats.newest },
+    /* sitede gösterilen = sitenin kullandığı okuma (onay, gizleme, 45 gün, kesin kapalı kuralları dahil) */
+    site: { shown: Object.keys(live).length, hidden: stats.hidden, stale: stats.stale, newest: stats.newest },
     final,
     review: pick([FINAL.awaitingMatch, FINAL.typeReview]),
     wrong: pick([FINAL.branch, FINAL.location, FINAL.wrongType]),

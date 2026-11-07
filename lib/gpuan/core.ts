@@ -382,7 +382,10 @@ export interface Evidence { level: string; why: string }
 export function withDerived(rows: Row[], decisions: Map<string, Decision>, closures: Record<string, { state: string }> = {}, evidence: Record<string, Evidence> = {}): Row[] {
   const dup = duplicatePlaceIds(rows);
   return rows.map((r) => {
-    const d = decisionFor(r, decisions.get(r.slug)); const f = finalState(r, d); const m = mainStatus(r, d, closures[r.slug] ?? null);
+    const d = decisionFor(r, decisions.get(r.slug)); const m = mainStatus(r, d, closures[r.slug] ?? null);
+    let f = finalState(r, d);
+    /* Gidenler kapanış kaydında kesin kapalı: puan okunmuş olsa da sitede gösterilmez (site ile aynı kural) */
+    if (f.state === FINAL.shown && closures[r.slug]?.state === "closed_confirmed") f = { state: FINAL.closed, reason: "Gidenler kapanış kaydında kesin kapalı; Google puanı gösterilmez" };
     const subs = dup.has(r.placeId) ? [...m.subs, `aynı Place ID ${dup.get(r.placeId)!.filter((x) => x !== r.slug).join(", ")} kaydında da var`] : m.subs;
     const e = evidence[r.slug];
     const auto = r.placeId ? `eşleşme ${r.confidence}${r.distance != null ? ` · konum ${r.distance} m` : ""}${r.nameSim != null ? ` · ad ${r.nameSim}` : ""}${r.seenCategory ? ` · tür ${r.seenCategory}` : ""}` : "";

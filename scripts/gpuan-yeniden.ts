@@ -7,6 +7,8 @@ import { MAIN, reclassify, withDerived, type Decision, type Evidence } from "../
 import { sheetVenues } from "../lib/gpuan/venues";
 import { CLOSURES } from "../lib/closure";
 
+/* telefon / alan adı kanıtı (8 Kasım ölçümü) */
+const idv = (c: object) => { const x = c as { phoneMatch?: boolean; webMatch?: boolean; phoneConflict?: boolean }; return [x.phoneMatch ? " · telefon birebir" : "", x.webMatch ? " · alan adı birebir" : "", x.phoneConflict ? " · TELEFON FARKLI" : ""].join(""); };
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
 const TIER: Record<string, string> = { A: "A · güçlü kanıt", B: "B · orta kanıt", C: "C · zayıf/çelişkili" };
 type Cand = { level: string; placeId: string; name: string; address: string; why: string; distanceM?: number | null; nameSim?: number };
@@ -20,13 +22,13 @@ async function main() {
   const olcum = arg("--olcum");
   if (olcum) for (const o of JSON.parse(readFileSync(olcum, "utf8")) as Array<{ slug: string; result: string; best: Cand | null; tried: Cand[] }>) {
     const c = o.best ?? o.tried?.[0]; if (!c) continue;
-    evidence[o.slug] = { level: o.result === "güçlü" ? "Güçlü (yeniden ölçüldü)" : o.result === "orta" ? "Orta (yeniden ölçüldü)" : "Zayıf / uygun değil (yeniden ölçüldü)", why: `konum ${c.distanceM ?? "?"} m · ad ${c.nameSim ?? "?"}${c.why ? ` · ${c.why}` : ""}` };
+    evidence[o.slug] = { level: o.result === "güçlü" ? "Güçlü (yeniden ölçüldü)" : o.result === "orta" ? "Orta (yeniden ölçüldü)" : "Zayıf / uygun değil (yeniden ölçüldü)", why: `konum ${c.distanceM ?? "?"} m · ad ${c.nameSim ?? "?"}${idv(c)}${c.why ? ` · ${c.why}` : ""}` };
   }
   const candidates: Record<string, Cand> = {};
   const arama = arg("--arama");
   if (arama) for (const o of JSON.parse(readFileSync(arama, "utf8")) as Array<{ slug: string; result: string; best: Cand | null; tried: Cand[] }>) {
     const c = o.best ?? (o.tried ?? []).find((t) => t.placeId) ?? null;
-    candidates[o.slug] = c ? { level: o.best ? o.result : "uygun değil", placeId: c.placeId, name: c.name, address: c.address, why: `konum ${c.distanceM ?? "?"} m · ad ${c.nameSim ?? "?"}${c.why ? ` · ${c.why}` : ""}` } : { level: "bulunamadı", placeId: "", name: "", address: "", why: "Aramada aday çıkmadı" };
+    candidates[o.slug] = c ? { level: o.best ? o.result : "uygun değil", placeId: c.placeId, name: c.name, address: c.address, why: `konum ${c.distanceM ?? "?"} m · ad ${c.nameSim ?? "?"}${idv(c)}${c.why ? ` · ${c.why}` : ""}` } : { level: "bulunamadı", placeId: "", name: "", address: "", why: "Aramada aday çıkmadı" };
   }
   const decisions = new Map<string, Decision>();
   const kf = arg("--kararlar");
