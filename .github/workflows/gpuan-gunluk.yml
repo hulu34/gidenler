@@ -7,6 +7,8 @@ name: Google puan gunluk
 on:
   schedule:
     - cron: "0 3 * * *"
+    # Yedek: 06:00 tetiklenmezse 08:30 TR. Bugün denenen mekânlar yeniden denenmez; ana iş çalıştıysa yedek boş geçer.
+    - cron: "30 5 * * *"
   workflow_dispatch:
     inputs:
       max: { description: "En çok kaç mekân", required: false, default: "500" }
