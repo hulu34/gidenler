@@ -33,22 +33,30 @@ export default async function Page() {
   if (!db || (!role && !protectedHost(h))) notFound();
   const r = await dailyReport(db);
   const failed = r.lastImport?.status === "rejected";
+  /* Her sabah 06:00 ana + 08:30 yedek çalışma; ikisi de kaçarsa son aktarım 27 saatten eski olur */
+  const lateHours = r.lastImport ? Math.floor((Date.now() - Date.parse(r.lastImport.at)) / 3.6e6) : null;
+  const late = lateHours === null || lateHours > 27;
   return (
     <div className="mx-auto max-w-[1180px] px-5 pb-24 pt-8 sm:px-7" data-gpuan-rapor>
       <h1 className="text-[28px] font-extrabold tracking-[-0.03em]">Google puanı · günlük rapor</h1>
-      <p className="mt-1 max-w-[75ch] text-[13px] text-ink-3">Her sabah 06:00 çalışmasının sonucu. Google puanı 5 üzerindendir, Gidenler puanı değildir. Kaynak geçicidir (Google Maps herkese açık sayfası; hizmet şartları riski raporda).</p>
+      <p className="mt-1 max-w-[75ch] text-[13px] text-ink-3">Her sabah 06:00 çalışmasının (tetiklenmezse 08:30 yedeğinin) sonucu. Google puanı 5 üzerindendir, Gidenler puanı değildir. Kaynak geçicidir (Google Maps herkese açık sayfası; hizmet şartları riski raporda).</p>
       <p className={`mt-4 text-[14px] font-semibold ${failed ? "text-neg" : "text-ink"}`}>
         Son çalışma: {tr(r.lastRun.at)} · aktarım {r.lastImport ? (r.lastImport.status === "applied" ? "uygulandı" : "REDDEDİLDİ — site verisi değişmedi") : "yok"} ({tr(r.lastImport?.at)})
       </p>
+      {late ? <p className="mt-2 text-[14px] font-semibold text-neg" data-gecikme>Günlük çalışma gecikti: son aktarım {lateHours === null ? "hiç yok" : `${lateHours} saat önce`}. Site son doğru veriyi göstermeye devam ediyor; 45 günü geçen puanlar kendiliğinden gizlenir.</p> : null}
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Tile k="Bugün denenen (TR günü)" v={r.lastRun.attempted} />
         <Tile k="Bugün güncellenen puan" v={r.lastRun.updated} />
+        <Tile k="Bugün değişmeyen puan" v={r.lastRun.unchanged} />
         <Tile k="Hata / engel" v={`${r.lastRun.errors} / ${r.lastRun.blocked}`} tone={r.lastRun.blocked ? "bad" : r.lastRun.errors ? "warn" : "ok"} />
-        <Tile k="İnceleme bekleyen" v={r.review.length + r.wrong.length} tone={r.review.length ? "warn" : "ok"} />
+        <Tile k="İnceleme bekleyen" v={r.review.length} tone={r.review.length ? "warn" : "ok"} />
+        <Tile k="Şüpheli eşleşme" v={r.wrong.length} tone={r.wrong.length ? "warn" : "ok"} />
         <Tile k="Sitede gösterilen" v={r.site.shown} />
         <Tile k="Sitede gizlenen" v={r.site.hidden} />
         <Tile k="Kesin kapalı" v={r.closures.confirmed} />
         <Tile k="Kapanma şüphesi" v={r.closures.suspected.length} />
+        <Tile k="45 günü geçen (gizli)" v={r.site.stale} tone={r.site.stale ? "warn" : "ok"} />
+        <Tile k="Son Excel sürümü" v={r.file ? tr(r.file.createdAt) : "yok"} tone={r.file ? "ok" : "bad"} />
       </div>
       {r.lastImport?.errors?.length ? <ul className="mt-3 list-disc pl-5 text-[13px] text-neg">{r.lastImport.errors.map((e) => <li key={e}>{e}</li>)}</ul> : null}
 

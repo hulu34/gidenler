@@ -6,7 +6,8 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { mapsPageSource } from "../lib/gpuan/sources/mapsPage";
 import { sheetVenues } from "../lib/gpuan/venues";
 import { realVenueRecords } from "../data/real";
-import { checkConsistency, typeCheck, STATUS, type GoogleId } from "../lib/gpuan/core";
+import { checkConsistency, typeCheck, idEvidence, STATUS, type GoogleId } from "../lib/gpuan/core";
+import rawVenues from "../data/real/venues.json";
 import { houseNoConflict, nameSimilarity } from "../lib/match/score";
 
 const TRF: Record<string, string> = { ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u", Ç: "C", Ğ: "G", İ: "I", Ö: "O", Ş: "S", Ü: "U" };
@@ -18,6 +19,7 @@ async function main() {
   const fixed = new Map(items.filter((x): x is { slug: string; placeId: string } => typeof x !== "string").map((x) => [x.slug, x.placeId]));
   const vs = new Map(sheetVenues().map((v) => [v.slug, v]));
   const recs = new Map(realVenueRecords.map((r) => [r.slug, r]));
+  const contact = new Map((rawVenues as Array<{ slug: string; phone?: string | null; website?: string | null }>).map((r) => [r.slug, r]));
   let taken = new Map<string, string>();
   if (process.env.HOST) {
     const r = await fetch(`https://${process.env.HOST}/api/admin/google-puan/?rapor=kimlik`, { headers: { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS ?? "" } });
@@ -51,10 +53,14 @@ async function main() {
           /* güçlü: (a) konum ≤ 50 m ve ad ≥ 0,85, ya da (b) konum ≤ 30 m ve aynı cadde/sokak + aynı kapı numarası ve ad ≥ 0,6.
              (b) eşiği gevşetmek değil, bağımsız ikinci kimlik kanıtıdır (adres birebir). Tür okunamadıysa güçlü sayılmaz. */
           const sameDoor = !!v.address && !!c.seen.address && (con.address ?? 0) >= 0.8 && !houseNoConflict(v.address, c.seen.address) && /\d/.test(v.address) && /\d/.test(c.seen.address);
-          const strong = !tv && con.distanceM != null && ((con.distanceM <= 50 && nm >= 0.85) || (con.distanceM <= 30 && sameDoor && nm >= 0.6));
+          /* (c) telefon ya da işletmenin kendi alan adı birebir + konum ≤ 300 m + ad ≥ 0,6 (bağımsız kimlik kanıtı).
+             Telefonlar ikisinde de var ve FARKLIYSA güçlü sayılmaz (şube/başka işletme işareti). */
+          const idv = idEvidence(contact.get(slug) ?? {}, c.seen);
+          const byContact = (idv.phone || idv.web) && con.distanceM != null && con.distanceM <= 300 && nm >= 0.6;
+          const strong = !tv && !idv.phoneConflict && con.distanceM != null && ((con.distanceM <= 50 && nm >= 0.85) || (con.distanceM <= 30 && sameDoor && nm >= 0.6) || byContact);
           const level = why.length ? "uygun değil" : strong ? "güçlü" : "orta";
           const cand = { q, placeId: c.placeId, name: c.seen.name, address: c.seen.address, category: c.seen.category ?? "", rating: c.seen.rating, closed: !!c.seen.closed, limited: !!c.seen.limited,
-            distanceM: con.distanceM, nameSim: +nm.toFixed(2), addressSim: con.address, level, why: why.join(" · ") || (tv ? tv.why : "") };
+            distanceM: con.distanceM, nameSim: +nm.toFixed(2), addressSim: con.address, phoneMatch: idv.phone, webMatch: idv.web, phoneConflict: idv.phoneConflict, level, why: why.join(" · ") || (tv ? tv.why : "") };
           tried.push(cand);
           if (level !== "uygun değil" && (!best || (best.level === "orta" && level === "güçlü"))) best = cand;
         }

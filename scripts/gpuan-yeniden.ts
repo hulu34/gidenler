@@ -31,6 +31,12 @@ async function main() {
   const decisions = new Map<string, Decision>();
   const kf = arg("--kararlar");
   if (kf) for (const d of JSON.parse(readFileSync(kf, "utf8")) as Decision[]) decisions.set(d.slug, d);
+  const pk = arg("--paket");
+  if (pk) {
+    const P = JSON.parse(readFileSync(pk, "utf8")) as { onay: Array<{ slug: string }>; yeni: Array<{ slug: string }> };
+    for (const x of P.onay) evidence[x.slug] = { level: `${evidence[x.slug]?.level ?? "Güçlü"} · ONAY PAKETİNDE`, why: evidence[x.slug]?.why ?? "" };
+    for (const x of P.yeni) if (candidates[x.slug]) candidates[x.slug].level = "güçlü · ONAY PAKETİNDE";
+  }
   const vs = new Map(sheetVenues().map((v) => [v.slug, v]));
   const next = rows.map((r) => reclassify(r, vs.get(r.slug)));
   writeFileSync(out, await writeWorkbook(next, { generatedAt: new Date().toISOString(), note: "Yeniden sınıflandırma (ağsız) + kanıt dosyaları", closures: CLOSURES, evidence, candidates, decisions }, changes));

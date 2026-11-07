@@ -123,7 +123,7 @@ export function reconcile(prev: Row[], venues: Venue[], ids: Map<string, GoogleI
 }
 
 /* ── Kaynak adaptörü sözleşmesi ── */
-export interface Observation { name: string; address: string; rating: number | null; reviews: number | null; lat?: number | null; lng?: number | null; closed?: boolean; category?: string; /** Google sayfayı sınırlı görünümde verdi */ limited?: boolean }
+export interface Observation { name: string; address: string; rating: number | null; reviews: number | null; lat?: number | null; lng?: number | null; closed?: boolean; category?: string; /** Google sayfayı sınırlı görünümde verdi */ limited?: boolean; /** kimlik kanıtı, saklanmaz */ phone?: string; website?: string }
 export type SourceResult =
   | { kind: "ok"; seen: Observation }
   | { kind: "blocked"; reason: string }     // CAPTCHA, olağandışı trafik, giriş zorunluluğu — aşılmaz
@@ -418,3 +418,13 @@ export function checkFile(rows: Row[], venues: Venue[], current: Map<string, { r
 
 /** Türkiye saatiyle bugünün tarihi (YYYY-AA-GG). */
 export const trDay = (d = new Date()) => new Date(d.getTime() + 3 * 36e5).toISOString().slice(0, 10);
+
+/* TELEFON / WEB KANITI — bağımsız ikinci kimlik kanıtı (yalnız eşleştirme; değer siteye yazılmaz).
+   Telefon: son 10 hane aynı. Web: aynı alan adı (sosyal ağ, bağlantı toplayıcı, rezervasyon sitesi sayılmaz). */
+export const phoneKey = (p?: string | null) => { const d = (p ?? "").replace(/\D/g, ""); return d.length >= 10 ? d.slice(-10) : ""; };
+const SHARED_HOSTS = /(^|\.)(instagram|facebook|linktr|linktree|bit|wa|whatsapp|google|goo|tripadvisor|yemeksepeti|getir|trendyol|menu|qr|sites|business|wixsite|blogspot)\./i;
+export const webKey = (u?: string | null) => { try { const h = new URL(/^https?:/i.test(u ?? "") ? u! : `https://${u}`).hostname.toLowerCase().replace(/^www\./, ""); return !h || SHARED_HOSTS.test(`.${h}`) ? "" : h; } catch { return ""; } };
+export function idEvidence(v: { phone?: string | null; website?: string | null }, seen: { phone?: string; website?: string }) {
+  const p = phoneKey(v.phone), q = phoneKey(seen.phone), a = webKey(v.website), b = webKey(seen.website);
+  return { phone: !!p && p === q, web: !!a && a === b, phoneConflict: !!p && !!q && p !== q };
+}

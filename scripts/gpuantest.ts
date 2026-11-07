@@ -308,6 +308,19 @@ async function main() {
   const th = googleRankedThemes(fake, new Set()).find((t) => t.key === "balik");
   ok("tür içinde yüksek puan önde, 100'den az değerlendirme sıralamaya girmez", !!th && th.items[0].slug === balik[4] && !th.items.some((i) => i.slug === balik[5]) && th.few.some((i) => i.slug === balik[5]), th);
 
+  /* telefon / web kimlik kanıtı */
+  {
+    const { phoneKey, webKey, idEvidence } = await import("../lib/gpuan/core");
+    ok("telefon: +90 ve 0 önekleri aynı anahtar", phoneKey("+90 212 555 44 33") === phoneKey("0212 555 4433") && phoneKey("+90 212 555 44 33") === "2125554433");
+    ok("telefon: kısa numara anahtar üretmez", phoneKey("444 1 234") === "");
+    ok("web: www ve yol yok sayılır", webKey("https://www.ornek.com.tr/menu") === "ornek.com.tr" && webKey("ornek.com.tr") === "ornek.com.tr");
+    ok("web: sosyal ağ / toplayıcı kanıt sayılmaz", webKey("https://instagram.com/ornek") === "" && webKey("https://linktr.ee/ornek") === "" && webKey("https://www.tripadvisor.com.tr/x") === "");
+    const e1 = idEvidence({ phone: "0216 336 30 13" }, { phone: "+90 216 336 30 13" });
+    const e2 = idEvidence({ phone: "0216 336 30 13" }, { phone: "+90 216 111 22 33" });
+    ok("aynı telefon kanıt, farklı telefon çelişki", e1.phone && !e1.phoneConflict && !e2.phone && e2.phoneConflict);
+    ok("parseRaw telefon/web taşır", (() => { const o = parseRaw({ name: "X", ratingLabel: null, ratingText: "4,5", reviewsLabel: null, reviewsText: null, address: null, closed: false, phone: "+90 212 1", website: "https://x.com" }, "https://www.google.com/maps/place/x/@41,29,17z"); return o.phone === "+90 212 1" && o.website === "https://x.com"; })());
+  }
+
   console.log(`\n${pass} geçti, ${fail} başarısız`);
   process.exit(fail ? 1 : 0);
 }

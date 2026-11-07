@@ -4,7 +4,8 @@ import { lists } from "@/data/lists";
 import { blurbs } from "@/data/blurbs";
 import { ambientSignals } from "@/data/taste";
 import { slugify } from "@/data/universe";
-import { getTopicIntelligence, listCards, type EntityCard } from "@/lib/api";
+import { getTopicIntelligence, listAllCards, type EntityCard } from "@/lib/api";
+import { CLOSED_CONFIRMED } from "@/lib/closure";
 import { score1 } from "@/lib/format";
 import type { CuratedList, User } from "@/lib/types";
 
@@ -180,7 +181,7 @@ function buildDocs(): SearchDoc[] {
   const expertiseByFacet = new Map<string, string[]>();
   for (const u of users) for (const x of u.expertise) if (x.scope === "facet" || x.scope === "category") expertiseByFacet.set(fold(x.label), [...(expertiseByFacet.get(fold(x.label)) ?? []), `@${u.handle}`]);
 
-  return listCards().map((card) => {
+  return listAllCards().map((card) => {
     const e = card.entity; const sub = e.subcategory ?? card.category.label;
     const it = getTopicIntelligence(e.id);
     const dishTags = [...new Set([...(DISH_BY_SUB[sub] ?? []), ...(e.tags ?? []), ...(e.facets ?? [])].map(fold))];
@@ -424,18 +425,22 @@ export function searchV3(raw: string, opts: { limit?: number; city?: string; cat
     if (opts.categoryId && d.card.entity.categoryId !== opts.categoryId) continue;
     /* yalnızca nitelik sorgusu ("sakin", "ucuz"): puanlı kayıtlar arasında nitelik sıralaması */
     if (!q.content.length && !q.locations.length && d.card.score === null) continue;
+    /* kesin kapalı işletme genel sorguda önerilmez (yalnız adıyla aranınca bulunur) */
+    if (CLOSED_CONFIRMED.has(d.card.entity.slug)) continue;
     const h = rankDoc(d, q); if (h) hits.push(h);
   }
   /* ad eşleşmesi: ayrı katman; yakın yazım, kesin ad varken eklenmez */
   const bestName = Math.max(0, ...named.values());
   for (const [card, n] of named) {
     if (bestName >= 700 && n < 700) { named.delete(card); continue; }
+    /* kesin kapalı: yalnız tam ad (ya da adın başı) yazılınca, kapanış notuyla */
+    if (CLOSED_CONFIRMED.has(card.entity.slug) && n < 900) { named.delete(card); continue; }
     const h = hits.find((x) => x.card === card);
     if (h) { h.tier = "exact"; h.matched = [...h.matched, `${fold(raw)}:ad`]; }
     else hits.push({ card, score: 0, text: 1, loc: "n/a", reason: "", tier: "exact", matched: [`${fold(raw)}:ad`] });
   }
   hits.sort((a, b) => (named.get(b.card) ?? 0) - (named.get(a.card) ?? 0) || b.score - a.score || (b.card.score ?? 0) - (a.card.score ?? 0) || b.card.experienceCount - a.card.experienceCount);
-  for (const h of hits) h.reason = reasonFor(h, q, docs.find((d) => d.card === h.card)!);
+  for (const h of hits) h.reason = CLOSED_CONFIRMED.has(h.card.entity.slug) ? "Kalıcı olarak kapandı · profil ve geçmiş deneyimler korunuyor" : reasonFor(h, q, docs.find((d) => d.card === h.card)!);
   const limit = opts.limit ?? 200;
   const exact = hits.filter((h) => h.tier === "exact").slice(0, limit);
   const adjacent = hits.filter((h) => h.tier === "adjacent").slice(0, Math.max(6, Math.min(limit, 24)));

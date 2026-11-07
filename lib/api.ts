@@ -8,6 +8,7 @@
 
 import { categories, getCategory, getSchema } from "@/data/categories";
 import { entities, getEntity, getEntityById } from "@/data/entities";
+import { CLOSED_CONFIRMED } from "@/lib/closure";
 import { experiences, visits, type RawExperience } from "@/data/experiences";
 import { users, getUser, getUserByHandle, creators } from "@/data/users";
 import { lists, getList, listsByAuthor } from "@/data/lists";
@@ -514,8 +515,12 @@ export function cardOf(entity: Entity): EntityCard {
   };
 }
 
-let cardsCache: EntityCard[] | null = null;
-export const listCards = (): EntityCard[] => (cardsCache ??= entities.map(cardOf));
+let cardsCache: EntityCard[] | null = null, allCardsCache: EntityCard[] | null = null;
+/** Tüm kartlar (kesin kapalılar dahil) — yalnız ad ile aramada profili bulmak için. */
+export const listAllCards = (): EntityCard[] => (allCardsCache ??= entities.map(cardOf));
+/** Öneri havuzu: kesin kapalı (closed_confirmed) işletmeler genel listelerde, sıralamalarda ve aramada önerilmez;
+    profilleri silinmez, adresleri ve geçmiş deneyimleri korunur. */
+export const listCards = (): EntityCard[] => (cardsCache ??= listAllCards().filter((c) => !CLOSED_CONFIRMED.has(c.entity.slug)));
 export const rising = () => listCards().filter((c) => c.delta90d > 0.15).sort((a, b) => b.delta90d - a.delta90d);
 export const falling = () => listCards().filter((c) => c.delta90d < -0.15).sort((a, b) => a.delta90d - b.delta90d);
 export const trending = () => [...listCards()].sort((a, b) => b.experienceCount - a.experienceCount);
