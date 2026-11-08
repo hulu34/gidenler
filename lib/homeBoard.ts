@@ -28,7 +28,8 @@ const BY_SLUG = new Map(realEntities.map((e) => [e.slug, e]));
 let GMAP: GRatingMap = {};
 const itemOf = (slug: string, signal: string, score: number | null = null, count = 0): RankItem | null => {
   const e = BY_SLUG.get(slug);
-  if (!e || HOME_EXCLUDE.has(slug)) return null;
+  /* vitrin kuralı + kesin kapalı: hiçbir ana sayfa listesine girmez (deneyimi profilde korunur) */
+  if (!e || HOME_SKIP.has(slug)) return null;
   const g = GMAP[slug];
   return { slug, name: e.name, kind: e.subcategory ?? "Restoran", where: e.location?.district ?? "", place: [e.subcategory, e.location?.district].filter(Boolean).join(" · ") || placeOf(e.location), categoryId: e.categoryId, score, delta: 0, count, reason: signal, signal, google: g ? { rating: g.rating, checkedAt: g.checkedAt } : null };
 };
@@ -85,7 +86,7 @@ const sourcedProfiles = unstable_cache(async (): Promise<Array<{ slug: string; f
 
 /** Kaynaklı profillerden tür ve semt dengeli, deterministik seçim (sıralama değil). */
 function balancedProfiles(list: Array<{ slug: string; fields: number }>, n: number) {
-  const sorted = [...list].filter((x) => BY_SLUG.has(x.slug) && !HOME_EXCLUDE.has(x.slug)).sort((a, b) => b.fields - a.fields || a.slug.localeCompare(b.slug));
+  const sorted = [...list].filter((x) => BY_SLUG.has(x.slug) && !HOME_SKIP.has(x.slug)).sort((a, b) => b.fields - a.fields || a.slug.localeCompare(b.slug));
   const out: string[] = [], kinds = new Set<string>(), ds = new Set<string>();
   for (const strict of [true, false]) for (const x of sorted) {
     if (out.length >= n || out.includes(x.slug)) continue;
@@ -158,6 +159,12 @@ export async function realBoard(): Promise<RealBoard> {
   const fbHype = hype.length ? [] : fb(sourcedHigh);
   const fbPopular = popular.length ? [] : fb(profilePick);
   const fbDistrict = gUp.length ? [] : fb(perDistrict);
+  /* Düşenler boşken: her türün en yüksek Google puanlısı (tür başına bir; tekrarsız) */
+  const perKind = (() => { const seen = new Set<string>(); return activeEntities.filter((e) => gmap[e.slug] && e.categoryId === "cat.restaurant" && !HOME_SKIP.has(e.slug) && !/sosyal tesis/i.test(e.name) && (e.subcategory ?? "Restoran") !== "Restoran")
+    .sort((a, c) => gmap[c.slug]!.rating - gmap[a.slug]!.rating || a.name.localeCompare(c.name, "tr"))
+    .filter((e) => { const k = e.subcategory ?? ""; if (seen.has(k)) return false; seen.add(k); return true; })
+    .map((e) => itemOf(e.slug, "türünün en yüksek Google puanlısı")).filter(ok); })();
+  const fbKind = gDown.length ? [] : fb(perKind);
   const readyDay = changes.readyAt ? dShort(changes.readyAt) : null;
   const gNote = `Google puanı değişimi için aynı mekânın en az 7 gün arayla iki doğrulanmış okuması gerekir. Geçmiş ${changes.firstAt ? `${dShort(changes.firstAt)} tarihinde başladı; ilk karşılaştırma ${readyDay}` : "henüz yok"}.`;
   const newest = Object.values(gmap).reduce<string | null>((m, g) => (!m || g.checkedAt > m ? g.checkedAt : m), null);
@@ -180,7 +187,7 @@ export async function realBoard(): Promise<RealBoard> {
           { key: "i", label: "Gidenler ilgisi", items: interest, note: interest.length ? null : b?.reason.rising ?? "İlgi artışı için iki tam haftalık gerçek etkileşim verisi gerekir." },
         ] },
       { key: "falling", title: "Düşenler", window: "Google puanı", hint: "Google puanındaki gerçek düşüş (iki doğrulanmış okuma, en az 7 gün arayla).", items: gDown, signalKind: "trend",
-        note: gDown.length ? null : gNote },
+        note: gDown.length ? null : gNote, fallback: gDown.length ? null : { title: "Her türün en yüksek Google puanlısı", items: fbKind } },
     ],
   };
 }
