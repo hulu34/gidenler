@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { searchV3 } from "@/lib/search";
 import { score1 } from "@/lib/format";
 import { DemoIndicator } from "@/components/demo/DemoBoot";
 
@@ -15,8 +14,24 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
   const [active, setActive] = useState(-1);
   const boxRef = useRef<HTMLDivElement>(null);
 
-  /* Hızlı öneri: arama motoru v3 (alaka kapısı) — tam eşleşmeler önce, yakın adaylar sonra. */
-  const results = q.trim().length >= 2 ? (() => { const r = searchV3(q, { limit: 6 }); return [...r.exact, ...r.adjacent].slice(0, 6).map((h) => h.card); })() : [];
+  /* Hızlı öneri: arama motoru v3 SUNUCUDA (/api/ara) — tam eşleşmeler önce, yakın adaylar sonra.
+     Mekân verisi her sayfanın paketine girmez (1.000+ mekânda sayfa ağırlaşmasın). Kısa bekleme + önbellek. */
+  type Hit = { slug: string; name: string; category: string; district: string | null; score: number | null };
+  const [results, setResults] = useState<Hit[]>([]);
+  const cache = useRef(new Map<string, Hit[]>());
+  useEffect(() => {
+    const k = q.trim().toLocaleLowerCase("tr");
+    if (k.length < 2) { setResults([]); return; }
+    const hit = cache.current.get(k); if (hit) { setResults(hit); return; }
+    const ac = new AbortController();
+    const t = setTimeout(() => {
+      fetch(`/api/ara/?q=${encodeURIComponent(k)}&limit=6`, { signal: ac.signal })
+        .then((r) => (r.ok ? r.json() : { items: [] }))
+        .then((j: { items: Hit[] }) => { cache.current.set(k, j.items); setResults(j.items); })
+        .catch(() => {});
+    }, 120);
+    return () => { clearTimeout(t); ac.abort(); };
+  }, [q]);
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
@@ -40,7 +55,7 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
     else if (e.key === "Enter") {
       e.preventDefault();
       /* Enter sonuç listesine gider; öneri ancak okla seçildiyse açılır ("pide" yazıp Enter rastgele bir pideciye götürmesin) */
-      if (results[active]) go(results[active].entity.slug);
+      if (results[active]) go(results[active].slug);
       else if (q.trim()) {
         setOpen(false);
         const natural = q.trim().split(/\s+/).length >= 3 || /\?/.test(q);
@@ -77,25 +92,25 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
               {results.length > 0 ? (
                 <ul role="listbox">
                   {results.map((r, i) => (
-                    <li key={r.entity.id}>
+                    <li key={r.slug}>
                       <button
                         type="button"
                         onMouseEnter={() => setActive(i)}
-                        onClick={() => go(r.entity.slug)}
+                        onClick={() => go(r.slug)}
                         className={`flex w-full items-baseline justify-between gap-4 border-b border-line px-4 py-2.5 text-left last:border-b-0 ${
                           i === active ? "bg-sunk" : ""
                         }`}
                       >
                         <span className="min-w-0">
                           <span className="block truncate text-[15px] font-semibold">
-                            {r.entity.name}
+                            {r.name}
                           </span>
                           <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-3">
-                            {r.category.label}
-                            {r.entity.location?.district ? ` · ${r.entity.location.district}` : ""}
+                            {r.category}
+                            {r.district ? ` · ${r.district}` : ""}
                           </span>
                         </span>
-                        {r.score !== null && (
+                        {r.score != null && (
                           <span className="tnum shrink-0 text-[17px] font-bold">{score1(r.score)}</span>
                         )}
                       </button>

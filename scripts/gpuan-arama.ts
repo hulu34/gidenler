@@ -18,8 +18,14 @@ async function main() {
   const slugs = items.map((x) => (typeof x === "string" ? x : x.slug));
   const fixed = new Map(items.filter((x): x is { slug: string; placeId: string } => typeof x !== "string").map((x) => [x.slug, x.placeId]));
   const vs = new Map(sheetVenues().map((v) => [v.slug, v]));
+  /* ADAYLAR: henüz listede olmayan yeni mekân adayları (osm-aday çıktısı) — aynı kurallarla doğrulanır */
+  const adaylar = process.env.ADAYLAR ? (JSON.parse(readFileSync(process.env.ADAYLAR, "utf8")) as Array<{ slug: string; name: string; categoryId: string; kind?: string; cuisine?: string[]; district: string; neighborhood?: string; address?: string; lat: number; lng: number; phone?: string; website?: string }>) : [];
+  for (const a of adaylar) { vs.set(a.slug, { slug: a.slug, name: a.name, categoryId: a.categoryId, kind: a.kind ?? null, cuisine: a.cuisine ?? [], district: a.district, address: a.address ?? null, lat: a.lat, lng: a.lng }); slugs.push(a.slug); }
+  /* HARIC: { slug: placeId } — reddedilen Google kaydı yeniden aday gösterilmez */
+  const haric = new Map(Object.entries(process.env.HARIC ? (JSON.parse(readFileSync(process.env.HARIC, "utf8")) as Record<string, string>) : {}));
   const recs = new Map(realVenueRecords.map((r) => [r.slug, r]));
   const contact = new Map((rawVenues as Array<{ slug: string; phone?: string | null; website?: string | null }>).map((r) => [r.slug, r]));
+  for (const a of adaylar) contact.set(a.slug, { slug: a.slug, phone: a.phone ?? null, website: a.website ?? null });
   let taken = new Map<string, string>();
   if (process.env.HOST) {
     const r = await fetch(`https://${process.env.HOST}/api/admin/google-puan/?rapor=kimlik`, { headers: { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS ?? "" } });
@@ -49,6 +55,7 @@ async function main() {
           if (c.seen.closed) why.push("Google'da kalıcı kapalı");
           if (tv && tv.status !== STATUS.typeUnknown) why.push(tv.why);
           if (other && other !== slug) why.push(`bu Google kaydı başka mekâna bağlı (${other})`);
+          if (haric.get(slug) === c.placeId) why.push("bu Google kaydı reddedildi (yanlış işletme türü)");
           const nm = nameSimilarity(v.name, c.seen.name);
           /* güçlü: (a) konum ≤ 50 m ve ad ≥ 0,85, ya da (b) konum ≤ 30 m ve aynı cadde/sokak + aynı kapı numarası ve ad ≥ 0,6.
              (b) eşiği gevşetmek değil, bağımsız ikinci kimlik kanıtıdır (adres birebir). Tür okunamadıysa güçlü sayılmaz. */
