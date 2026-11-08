@@ -518,6 +518,12 @@ jobs:
       - run: KAPALI="$(node -e 'const k=JSON.parse(require("fs").readFileSync("ops/kapali.json","utf8"));console.log(k.join(","))')" ETIKET=sonra ETKILESIM=1 CIKTI=out/ana node ops/ana-ekran.mjs
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
       - if: always()
+        run: |
+          for p in / /ara/ /kesfet/ /sor/ /seckisi/ /seckisi/japon-erdal-dort-pide-bir-efsane/ /mekan/japon-erdal-beyoglu/ /mekan/ciya-sofrasi-kadikoy/ /sitemap.xml /demo/ /api/ara/?q=kebap; do echo "$(curl -s -o /dev/null -w '%{http_code}' -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$HOST$p") $p"; done
+          h=$(curl -s -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$HOST/mekan/japon-erdal-beyoglu/"); echo "erdal foto $(echo "$h" | grep -o '<img' | wc -l) rezervasyon/yon $(echo "$h" | grep -oiE 'yol tarifi|rezervasyon|ara</' | wc -l)"
+          a=$(curl -s -H "x-vercel-protection-bypass: $VERCEL_BYPASS" "https://$HOST/"); echo "ana erdal-baglanti $(echo "$a" | grep -c 'japon-erdal-beyoglu')"
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
         run: test -d out/ana && tar -C out -czf ana.tgz ana && openssl cms -encrypt -aes256 -binary -outform DER -in ana.tgz -out ana.tgz.cms ops/olcum.pem
       - if: always()
         uses: actions/upload-artifact@v4
