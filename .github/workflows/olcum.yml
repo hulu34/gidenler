@@ -505,6 +505,23 @@ jobs:
       - run: mkdir -p out/osm && node ops/osm-fetch.mjs out/osm && ls out/osm | wc -l
       - uses: actions/upload-artifact@v4
         with: { name: osm-ham, path: out/osm, retention-days: 14 }
+  ana-ekran:
+    if: contains(github.event.head_commit.message, '[ana-ekran]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env: { HOST: gidenler-git-gorsel-restoran-profil-v1-hulu34.vercel.app }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: KAPALI="$(node -e 'const k=JSON.parse(require("fs").readFileSync("ops/kapali.json","utf8"));console.log(k.join(","))')" ETIKET=sonra ETKILESIM=1 CIKTI=out/ana node ops/ana-ekran.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: test -d out/ana && tar -C out -czf ana.tgz ana && openssl cms -encrypt -aes256 -binary -outform DER -in ana.tgz -out ana.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: ana-ekran-sifreli, path: ana.tgz.cms, retention-days: 14, if-no-files-found: ignore }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest
