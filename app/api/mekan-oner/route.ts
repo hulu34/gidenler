@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { z } from "zod";
 import { sameOrigin } from "@/lib/community/http";
-import { strictHit } from "@/lib/usage/rate";
+import { softHit } from "@/lib/usage/rate";
 import { hashKey } from "@/lib/ai/privacy";
 import { getDb } from "@/lib/db/client";
 import { currentUser } from "@/lib/auth";
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
   if (b.district !== "Bilmiyorum" && !DISTRICTS.includes(b.district)) return NextResponse.json({ error: "invalid", message: "İlçeyi listeden seç." }, { status: 400, headers: H });
   if (CONTACT.test(`${b.name} ${b.locationNote ?? ""}`)) return NextResponse.json({ error: "invalid", message: "Bağlantı, kullanıcı adı ya da telefon numarası yazma; mekânın adı ve semti yeter." }, { status: 400, headers: H });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
-  if (!(await strictHit(`oner:${hashKey(ip)}`, 6, 3600).catch(() => true))) return NextResponse.json({ error: "rate", message: "Kısa sürede çok öneri gönderildi; biraz sonra yeniden dene." }, { status: 429, headers: H });
+  if (!(await softHit(`oner:${hashKey(ip)}`, 6, 3600))) return NextResponse.json({ error: "rate", message: "Kısa sürede çok öneri gönderildi; biraz sonra yeniden dene." }, { status: 429, headers: H });
   const db = getDb();
   if (!db) return NextResponse.json({ error: "unavailable", message: "Öneri şu an kaydedilemiyor; biraz sonra yeniden dene." }, { status: 503, headers: H });
   const u = await currentUser(await headers()).catch(() => null);

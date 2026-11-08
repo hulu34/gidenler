@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { sameOrigin } from "@/lib/community/http";
-import { strictHit } from "@/lib/usage/rate";
+import { softHit } from "@/lib/usage/rate";
 import { hashKey } from "@/lib/ai/privacy";
 import { getDb } from "@/lib/db/client";
 import { CLIENT_STEPS, isCode } from "@/lib/kampanya";
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   const b = await req.json().catch(() => null) as { code?: unknown; step?: unknown } | null;
   if (!b || !isCode(b.code) || !(CLIENT_STEPS as unknown[]).includes(b.step)) return new NextResponse(null, { status: 400 });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
-  if (!(await strictHit(`kmp:${hashKey(ip)}`, 60, 3600).catch(() => true))) return new NextResponse(null, { status: 429 });
+  if (!(await softHit(`kmp:${hashKey(ip)}`, 60, 3600))) return new NextResponse(null, { status: 429 });
   const db = getDb();
   if (db) await recordCampaign(db, b.code, b.step as (typeof CLIENT_STEPS)[number], req.headers).catch(() => false);
   return new NextResponse(null, { status: 204 });

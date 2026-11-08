@@ -29,3 +29,18 @@ export async function strictHit(key: string, limit: number, ttlSec: number): Pro
     return false;
   }
 }
+
+/** Ücretsiz yollar için (kampanya sayacı, mekân önerisi): Redis varsa ortak sayaç; Redis yoksa ya da hata verirse
+ *  bu sunucu örneğinin belleğinde sayılır (sınır yine uygulanır, yalnız örnekler arası paylaşılmaz). Ücretli yolda KULLANMA. */
+const mem = new Map<string, { n: number; until: number }>();
+export async function softHit(key: string, limit: number, ttlSec: number): Promise<boolean> {
+  try {
+    return (await new RedisRateStore().incr(key, ttlSec)) <= limit;
+  } catch {
+    const now = Date.now();
+    const e = mem.get(key);
+    if (!e || e.until < now) { mem.set(key, { n: 1, until: now + ttlSec * 1000 }); if (mem.size > 5000) mem.clear(); return 1 <= limit; }
+    e.n++;
+    return e.n <= limit;
+  }
+}
