@@ -1,16 +1,18 @@
 import { unstable_cache } from "next/cache";
 import { and, eq, gte, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
-import { auditLog, menuItems, places, reviews, user } from "@/lib/db/schema";
-import { realEntities } from "@/data/real";
+import { auditLog, googleRatingHistory, menuItems, places, reviews, user } from "@/lib/db/schema";
+import { activeEntities, realEntities } from "@/data/real";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { liveCovers, publishedScores } from "@/lib/live";
-import { googleRatingMap, MIN_RANK_REVIEWS, type GRatingMap } from "@/lib/gpuan/read";
+import { googleRatingMap, MIN_RANK_REVIEWS, TAG_GPUAN, type GRatingMap } from "@/lib/gpuan/read";
 import { computeBoards, dayOf, loadSignalRows, SIGNAL_RULES, type Boards } from "@/lib/signals";
 import type { RankItem, RankSection } from "@/lib/rankings";
 import { placeOf } from "@/lib/rankings";
-import { HOME_SKIP as HOME_EXCLUDE, pickDiverse } from "@/components/home/HomeDiscover";
+import { HOME_EXCLUDE, HOME_SKIP, pickDiverse } from "@/components/home/HomeDiscover";
 import type { GoogleTheme } from "@/components/home/TopRated";
+import { HOME_LIST } from "@/lib/homeConfig";
+import { computeHype, googleCategories, googleChanges, type GCategory, type GChanges, type HistRow, type HypeItem } from "@/lib/homeRank";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GERÇEK ANA SAYFA PANOSU — demodaki "board" tasarımı, gerçek veriyle.
@@ -23,18 +25,37 @@ import type { GoogleTheme } from "@/components/home/TopRated";
    ────────────────────────────────────────────────────────────────────────── */
 
 const BY_SLUG = new Map(realEntities.map((e) => [e.slug, e]));
+let GMAP: GRatingMap = {};
 const itemOf = (slug: string, signal: string, score: number | null = null, count = 0): RankItem | null => {
   const e = BY_SLUG.get(slug);
   if (!e || HOME_EXCLUDE.has(slug)) return null;
-  return { slug, name: e.name, kind: e.subcategory ?? "Restoran", where: e.location?.district ?? "", place: [e.subcategory, e.location?.district].filter(Boolean).join(" · ") || placeOf(e.location), categoryId: e.categoryId, score, delta: 0, count, reason: signal, signal };
+  const g = GMAP[slug];
+  return { slug, name: e.name, kind: e.subcategory ?? "Restoran", where: e.location?.district ?? "", place: [e.subcategory, e.location?.district].filter(Boolean).join(" · ") || placeOf(e.location), categoryId: e.categoryId, score, delta: 0, count, reason: signal, signal, google: g ? { rating: g.rating, checkedAt: g.checkedAt } : null };
 };
 const ok = <T,>(x: T | null): x is T => x !== null;
 
-const signalBoards = unstable_cache(async (): Promise<Boards | null> => {
+/* gerçek etkileşim: Popülerler + İlgisi artanlar (computeBoards) ve En Hype (niyet sinyalleri) aynı satırlardan */
+const signalBoards = unstable_cache(async (): Promise<(Boards & { hype: HypeItem[]; hypeReason: string | null }) | null> => {
   const db = getDb();
   if (!db || DEMO_VISIBLE) return null;
-  try { return computeBoards(await loadSignalRows(db), dayOf(new Date()), (s) => BY_SLUG.has(s) && !HOME_EXCLUDE.has(s)); } catch { return null; }
-}, ["home-signal-boards-v1"], { revalidate: 600 });
+  try {
+    const rows = await loadSignalRows(db), today = dayOf(new Date());
+    const real = (s: string) => BY_SLUG.has(s) && !HOME_SKIP.has(s);
+    const h = computeHype(rows, today, real);
+    return { ...computeBoards(rows, today, real), hype: h.items, hypeReason: h.reason };
+  } catch { return null; }
+}, ["home-signal-boards-v2"], { revalidate: 600 });
+
+/* Google puanı geçmişi (günlük Excel aktarımlarının değişen değerleri) → yükselen / düşen */
+const googleHistory = unstable_cache(async (): Promise<HistRow[]> => {
+  const db = getDb();
+  if (!db || DEMO_VISIBLE) return [];
+  try {
+    const rows = await db.select({ slug: googleRatingHistory.slug, rating: googleRatingHistory.rating, checkedAt: googleRatingHistory.checkedAt }).from(googleRatingHistory)
+      .where(gte(googleRatingHistory.checkedAt, new Date(Date.now() - 120 * 864e5)));
+    return rows.map((r) => ({ slug: r.slug, rating: r.rating, checkedAt: r.checkedAt.toISOString() }));
+  } catch { return []; }
+}, ["home-google-history-v1"], { revalidate: 3600, tags: [TAG_GPUAN] });
 
 const talked30 = unstable_cache(async (): Promise<Array<{ slug: string; n: number }>> => {
   const db = getDb();
@@ -84,7 +105,7 @@ const G_THEMES: Array<{ key: string; label: string; re: RegExp }> = [
   { key: "kebap", label: "Kebap", re: /^Kebapçı \/ Ocakbaşı$/ }, { key: "lokanta", label: "Lokanta", re: /^Lokanta$/ },
   { key: "pide", label: "Pide", re: /^Pideci$/ }, { key: "kahvalti", label: "Kahvaltı", re: /^Kahvaltı$/ },
 ];
-const G_TOP = 5;
+const G_TOP = HOME_LIST.size;
 /** shown: ana sayfada (vitrin + pano) zaten görünen mekânlar — Google sekmesinde tekrar edilmez. */
 export function googleRankedThemes(map: GRatingMap, shown: Set<string> = new Set()): GoogleTheme[] {
   const item = (e: (typeof realEntities)[number]) => {
@@ -100,36 +121,58 @@ export function googleRankedThemes(map: GRatingMap, shown: Set<string> = new Set
   }).filter((t) => t.items.length + t.few.length >= (t.key === "hepsi" ? 1 : 3));
 }
 
-export interface RealBoard { sections: Array<RankSection & { note?: string | null; fallback?: { title: string; items: RankItem[] } }>; measuredDays: number; googleThemes: GoogleTheme[] }
+export interface BoardSection extends RankSection { note?: string | null; fallback?: { title: string; items: RankItem[] } | null; tabs?: Array<{ key: string; label: string; items: RankItem[]; note?: string | null; fallback?: { title: string; items: RankItem[] } | null }> }
+export interface RealBoard { sections: BoardSection[]; measuredDays: number; googleThemes: GoogleTheme[]; top: GCategory[]; changes: GChanges; googleTotal: number; newest: string | null }
+
+const f1 = (x: number) => x.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const dShort = (iso: string) => new Date(iso).toLocaleDateString("tr-TR", { day: "numeric", month: "short", timeZone: "Europe/Istanbul" });
 
 export async function realBoard(): Promise<RealBoard> {
-  const [b, scores, talked, profiles, covers, gmap] = await Promise.all([signalBoards(), publishedScores(), talked30(), sourcedProfiles(), liveCovers(), googleRatingMap()]);
-  /* aynı mekân ana sayfada iki kez görünmez: fotoğraflı vitrindekiler panoya, panodakiler birbirine tekrar girmez */
-  const used = new Set(pickDiverse(realEntities, covers).map((e) => e.slug));
+  const [b, scores, talked, profiles, covers, gmap, hist] = await Promise.all([signalBoards(), publishedScores(), talked30(), sourcedProfiles(), liveCovers(), googleRatingMap(), googleHistory()]);
+  GMAP = gmap;
+  const L = HOME_LIST.size;
+  /* En İyiler: aktif (kesin kapalı hariç) mekânlar, doğrulanmış Google puanı, vitrin kuralı */
+  const top = googleCategories(activeEntities, gmap, HOME_SKIP);
+  const changes = googleChanges(hist, (s) => !!gmap[s] && BY_SLUG.has(s) && !HOME_SKIP.has(s));
+  /* aynı mekân aynı ETKİLEŞİM panosunda iki kez görünmez (En İyiler kategori listesi ayrı bir sıralamadır) */
+  const used = new Set<string>();
   const once = (xs: RankItem[]) => xs.filter((x) => (used.has(x.slug) ? false : (used.add(x.slug), true)));
-  const L = SIGNAL_RULES.limit;
-  
-  const popular = once((b?.popular ?? []).map((x) => itemOf(x.slug, `${x.visitors} ziyaretçi`, scores[x.slug]?.score ?? null)).filter(ok));
-  const rising = once((b?.rising ?? []).map((x) => itemOf(x.slug, `▲ ${x.points - (x.prev ?? 0)} sinyal`, scores[x.slug]?.score ?? null)).filter(ok));
-  const top = once(Object.entries(scores).filter(([s, v]) => v?.score != null && BY_SLUG.has(s) && !HOME_EXCLUDE.has(s))
-    .sort((a, b) => b[1].score! - a[1].score! || b[1].reviewCount - a[1].reviewCount).slice(0, L)
-    .map(([s, v]) => itemOf(s, `${v.reviewCount} deneyim`, v.score, v.reviewCount)).filter(ok));
+  const popular = once((b?.popular ?? []).map((x) => itemOf(x.slug, `${x.visitors} ziyaretçi · 7 gün`, scores[x.slug]?.score ?? null)).filter(ok));
+  const hype = once((b?.hype ?? []).map((x) => itemOf(x.slug, [x.saves ? `${x.saves} kaydetme` : "", x.outbound ? `${x.outbound} yol tarifi/arama` : "", x.reviews ? `${x.reviews} deneyim` : ""].filter(Boolean).join(" · "), scores[x.slug]?.score ?? null)).filter(ok));
+  const interest = (b?.rising ?? []).map((x) => itemOf(x.slug, `▲ ${x.points - (x.prev ?? 0)} sinyal`, scores[x.slug]?.score ?? null)).filter(ok);
   const talk = once(talked.filter((x) => x.n >= 2).slice(0, L).map((x) => itemOf(x.slug, `${x.n} deneyim · 30 gün`, scores[x.slug]?.score ?? null, x.n)).filter(ok));
-  const profilePick = once(balancedProfiles(profiles.filter((x) => !used.has(x.slug)), L).map((s) => itemOf(s, "kaynaklı profil")).filter(ok));
+  const gUp = changes.rising.map((c) => itemOf(c.slug, `▲ ${f1(c.from)} → ${f1(c.to)} · ${c.days} gün`)).filter(ok).map((x) => ({ ...x, delta: 1 }));
+  const gDown = changes.falling.map((c) => itemOf(c.slug, `▼ ${f1(c.from)} → ${f1(c.to)} · ${c.days} gün`)).filter(ok).map((x) => ({ ...x, delta: -1 }));
+  /* yedek keşif listeleri — SIRALAMA DEĞİL, açıkça etiketli */
+  const profilePick = balancedProfiles(profiles, L).map((s) => itemOf(s, "kaynaklı profil")).filter(ok);
+  const perDistrict = (() => { const seen = new Set<string>(); return (top.find((c) => c.key === "hepsi")?.items ?? []).length ? activeEntities.filter((e) => gmap[e.slug] && e.categoryId === "cat.restaurant" && !HOME_SKIP.has(e.slug) && !/sosyal tesis/i.test(e.name))
+    .sort((a, c) => gmap[c.slug]!.rating - gmap[a.slug]!.rating || a.name.localeCompare(c.name, "tr"))
+    .filter((e) => { const d = e.location?.district ?? ""; if (seen.has(d)) return false; seen.add(d); return true; }).slice(0, L)
+    .map((e) => itemOf(e.slug, "semtinin en yüksek Google puanlısı")).filter(ok) : []; })();
+  const sourcedHigh = profilePick.filter((x) => (x.google?.rating ?? 0) >= 4.3);
+  const readyDay = changes.readyAt ? dShort(changes.readyAt) : null;
+  const gNote = `Google puanı değişimi için aynı mekânın en az 7 gün arayla iki doğrulanmış okuması gerekir. Geçmiş ${changes.firstAt ? `${dShort(changes.firstAt)} tarihinde başladı; ilk karşılaştırma ${readyDay}` : "henüz yok"}.`;
+  const newest = Object.values(gmap).reduce<string | null>((m, g) => (!m || g.checkedAt > m ? g.checkedAt : m), null);
   return {
     measuredDays: b?.days ?? 0,
-    googleThemes: googleRankedThemes(gmap, used),
+    googleThemes: googleRankedThemes(gmap, new Set(pickDiverse(realEntities, covers).map((e) => e.slug))),
+    top, changes, googleTotal: Object.keys(gmap).filter((s) => BY_SLUG.has(s)).length, newest,
     sections: [
-      { key: "popular", title: "Haftanın popülerleri", window: "Son 7 gün", hint: "Gidenler'deki gerçek ziyaret, kaydetme ve yönlendirmeler; aynı kişinin tekrarı tek sayılır.", items: popular, signalKind: "text",
-        note: popular.length ? null : b?.reason.popular ?? "Etkileşim ölçümü bu sürümle başlıyor; yeterli gerçek veri oluşunca liste açılır." },
-      { key: "top", title: "En yüksek puanlılar", window: "Gidenler puanı", hint: "Yalnız gerçek deneyimlerden, yayın eşiğini geçen Gidenler puanı (10 üzerinden). Google puanı buraya katılmaz.", items: top, signalKind: "text",
-        note: top.length ? null : "Henüz yayın eşiğini geçen Gidenler puanı yok. Google puanları aşağıdaki Google sekmesinde; iki puan karışmaz." },
+      { key: "popular", title: "Haftanın popülerleri", window: "Son 7 gün", hint: "Gidenler'deki gerçek profil ziyareti, kaydetme ve yönlendirmeler; aynı kişinin aynı gün tekrarı tek sayılır.", items: popular, signalKind: "text",
+        note: popular.length ? null : b?.reason.popular ?? "Etkileşim ölçümü yeni başladı; yeterli gerçek veri oluşunca liste açılır.",
+        fallback: popular.length ? null : { title: "Kaynaklı profiller", items: profilePick } },
+      { key: "hype", title: "En hype mekânlar", window: "Niyet · 7 gün", hint: "Kaydetme / gitmek istiyorum, yol tarifi ve arama, yayımlanan deneyim — profil bakışı değil, gitme niyeti. Google'ın toplam değerlendirme sayısı hype değildir.", items: hype, signalKind: "text",
+        note: hype.length ? null : b?.hypeReason ?? "Gitme niyeti sinyalleri yeterli olunca liste açılır.",
+        fallback: hype.length ? null : { title: "Kaynaklı ve Google'da 4,3+", items: sourcedHigh.length >= 3 ? sourcedHigh : profilePick } },
       { key: "talked", title: "En çok konuşulanlar", window: "Son 30 gün", hint: "Son 30 günde yayımlanan gerçek Gidenler deneyimi sayısı.", items: talk, signalKind: "text",
-        note: talk.length ? null : "Son 30 günde iki ya da daha çok deneyim yazılan mekân henüz yok." },
-      { key: "rising", title: "Yükselenler", window: "7 gün ↔ önceki 7", hint: "Son 7 günün etkileşimi, önceki 7 günle karşılaştırılır; az veriden yükseliş üretilmez.", items: rising, signalKind: "text",
-        note: rising.length ? null : b?.reason.rising ?? "Yükseliş için iki tam haftalık gerçek veri gerekir." },
-      { key: "profiles", title: "Kaynaklı profiller", window: "Editoryal keşif", hint: "Tanıtımı, menüsü ya da kuralları kaynağıyla kayıtlı mekânlar. Sıralama değildir; reklam değildir.", items: profilePick, signalKind: "text",
-        note: profilePick.length ? null : "Kaynaklı profil henüz yok." },
+        note: talk.length ? null : "Son 30 günde iki ya da daha çok deneyim yazılan mekân henüz yok. İlk deneyimi sen yaz." },
+      { key: "rising", title: "Yükselenler", window: "Google puanı", hint: "Google puanındaki gerçek değişim (iki doğrulanmış okuma, en az 7 gün arayla). Gidenler ilgisi ayrı sekmede.", items: gUp, signalKind: "trend",
+        tabs: [
+          { key: "g", label: "Google puanı", items: gUp, note: gUp.length ? null : gNote, fallback: gUp.length ? null : { title: "Her semtin en yüksek Google puanlısı", items: perDistrict } },
+          { key: "i", label: "Gidenler ilgisi", items: interest, note: interest.length ? null : b?.reason.rising ?? "İlgi artışı için iki tam haftalık gerçek etkileşim verisi gerekir." },
+        ] },
+      { key: "falling", title: "Düşenler", window: "Google puanı", hint: "Google puanındaki gerçek düşüş (iki doğrulanmış okuma, en az 7 gün arayla).", items: gDown, signalKind: "trend",
+        note: gDown.length ? null : gNote },
     ],
   };
 }
