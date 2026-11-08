@@ -104,7 +104,7 @@ export default async function HomePage() {
            Sor ilk ekranı doldurmaz; masaüstünde ilk ekranda En İyiler başlar. */
         <section className="relative isolate border-b border-line" data-ana-hero>
           <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_90%_at_0%_0%,var(--accent-soft),transparent_65%)] opacity-60" />
-          <div className="mx-auto grid max-w-[1180px] items-end gap-x-12 gap-y-5 px-5 pb-6 pt-6 sm:px-7 sm:pb-8 sm:pt-9 lg:grid-cols-[1.08fr_1fr]">
+          <div className="mx-auto grid max-w-[1180px] grid-cols-[minmax(0,1fr)] items-end gap-x-12 gap-y-5 px-5 pb-6 pt-6 sm:px-7 sm:pb-8 sm:pt-9 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)]">
             <div className="min-w-0">
               <p className="tnum flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-3">
                 <span className="inline-flex items-center gap-1.5"><i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />İstanbul</span>
