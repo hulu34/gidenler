@@ -42,6 +42,12 @@ for (const [k, w, h] of SIZES) {
     const closed = (process.env.KAPALI ?? "").split(",").filter(Boolean);
     const html = await p.content();
     res.kapaliSizinti = closed.filter((s) => html.includes(`/mekan/${s}/`));
+    /* yedek (sıralama değil) listeler En İyiler'i ve birbirini tekrar etmez */
+    res.yedekTekrar = await p.evaluate(() => {
+      const top = [...document.querySelectorAll("[data-top10] li")].map((x) => x.getAttribute("data-top10-satir"));
+      const fb = [...document.querySelectorAll("[data-pano-yedek] a")].map((a) => a.getAttribute("href"));
+      const seen = new Set(top.map((s) => `/mekan/${s}/`)); let d = 0; for (const h of fb) { if (seen.has(h)) d++; seen.add(h); } return d;
+    });
     await (await p.$("[data-ana-pano]")).screenshot({ path: `${OUT}/${TAG}-1440-pano.png` });
     /* Sor: soru eksiksiz /sor/?q= ile aktarılır */
     const q = "Kadıköy'de sakin bir akşam yemeği, 2 kişi";
@@ -51,7 +57,7 @@ for (const [k, w, h] of SIZES) {
   if (k === "390") {
     const btn = await p.$("[data-siralama] button[aria-expanded]");
     res.mobilOnce = await p.$$eval("[data-top10] li", (xs) => xs.filter((x) => getComputedStyle(x).display !== "none").length);
-    if (btn) { await btn.click(); await p.waitForTimeout(150); }
+    if (btn) { await btn.evaluate((b) => b.click()); await p.waitForTimeout(200); }
     res.mobilSonra = await p.$$eval("[data-top10] li", (xs) => xs.filter((x) => getComputedStyle(x).display !== "none").length);
     await (await p.$("[data-siralama]")).screenshot({ path: `${OUT}/${TAG}-390-eniyiler-acik.png` });
   }
