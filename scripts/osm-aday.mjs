@@ -41,9 +41,12 @@ const dupOf = (v) => {
 };
 
 const today = new Date().toISOString().slice(0, 10);
+/* OSM doluluk puanı alt sınırı: kalite kapısı asıl olarak Google doğrulamasıdır (ad + konum + tür + kapanma);
+   burada en az bir ek bilgi (saat, mutfak, telefon ya da adres) istenir. */
+const MIN_SCORE = Number(process.env.MIN_SCORE ?? 5);
 const per = raws.map(({ district, elements }) => {
   const rest = elements.filter((e) => e.tags?.amenity === "restaurant");
-  return { district, cands: selectVenues([{ district, elements: rest }], { quotas: { [district]: rest.length }, importedAt: today }) };
+  return { district, cands: selectVenues([{ district, elements: rest }], { quotas: { [district]: rest.length }, importedAt: today, minScore: MIN_SCORE }) };
 }).filter((d) => d.cands.length);
 
 const rejected = { otel: 0, kurum: 0, bilgiYok: 0, konum: 0, turTavani: 0, semtTavani: 0 }; const dups = [];
@@ -60,6 +63,7 @@ for (let round = 0; picked.length < SIZE; round++) {
       if (HOTEL.test(v.name)) { rejected.otel++; continue; }
       if (NOT_PUBLIC.test(v.name)) { rejected.kurum++; continue; }
       if (!v.address && !v.phone && !webKey(v.website)) { rejected.bilgiYok++; continue; }
+      if (pool.some((e) => e.ref === v.ref)) continue;   // zaten Gidenler'de (mükerrer sayılmaz)
       if (!IN_IST(v.lat, v.lng)) { rejected.konum++; continue; }
       if ((kindCount.get(v.kind) ?? 0) >= KIND_CAP) { rejected.turTavani++; continue; }
       const dup = dupOf(v); if (dup) { dups.push({ name: v.name, district: v.district, ...dup }); continue; }

@@ -41,7 +41,8 @@ async function main() {
       const street = (v.address ?? "").split(",")[0].replace(/\s+No:.*$/i, "").trim();
       const queries = [...new Set([`${v.name} ${v.district ?? ""} İstanbul`, `${plain(v.name)} ${v.district ?? ""}`, rec?.neighborhood ? `${v.name} ${rec.neighborhood}` : "", street ? `${v.name} ${street}` : ""].map((q) => q.replace(/\s+/g, " ").trim()).filter(Boolean))];
       const tried: object[] = []; let best: Record<string, unknown> | null = null;
-      for (const q of fixed.has(slug) ? ["(kayıtlı place ID)"] : queries) {
+      /* MAX_SORGU: aday doğrulamasında sorgu sayısı sınırı (Google'a giden istek azalsın) */
+      for (const q of fixed.has(slug) ? ["(kayıtlı place ID)"] : queries.slice(0, Number(process.env.MAX_SORGU ?? 9))) {
         const r = fixed.has(slug)
           ? await src.fetch({ placeId: fixed.get(slug)!, name: v.name, mapsUrl: "" }).then((x) => (x.kind === "ok" ? { kind: "ok" as const, candidates: [{ placeId: fixed.get(slug)!, seen: x.seen }] } : x.kind === "blocked" ? { kind: "blocked" as const, reason: x.reason } : { kind: "error" as const, reason: x.reason }))
           : await src.search(q, 3);
