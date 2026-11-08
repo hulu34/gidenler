@@ -494,6 +494,17 @@ jobs:
           grep -q '"withRating":0,"leaks":{"/ (200)":0,"/kesfet/ (200)":0,"/kategori/restoran/ (200)":0,"/gidenler-100/ (200)":0}' ../out-m.txt
           grep -q '"profiles":456,"non200":0' ../out-m.txt
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+  osm-indir:
+    if: contains(github.event.head_commit.message, '[osm-indir]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: mkdir -p out/osm && node ops/osm-fetch.mjs out/osm && ls out/osm | wc -l
+      - uses: actions/upload-artifact@v4
+        with: { name: osm-ham, path: out/osm, retention-days: 14 }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest
