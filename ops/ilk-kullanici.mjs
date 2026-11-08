@@ -13,7 +13,9 @@ const ok = (n, c, i = "") => { sonuc.push([n, !!c]); console.log(`${c ? "✓" : 
 const admin = async (b) => { const r = await fetch(`${B}/api/admin/db/`, { method: "POST", headers: { ...HB, "content-type": "application/json", "sec-fetch-site": "same-origin" }, body: JSON.stringify({ target: "preview", confirm: "EVET", ...b }) }); return { s: r.status, j: await r.json().catch(() => ({})) }; };
 
 /* 0) izolasyon — Production veritabanına asla yazılmaz */
-const d = await (await fetch(`${B}/api/admin/db/`, { headers: HB })).json().catch(() => ({}));
+const d0 = await fetch(`${B}/api/admin/db/`, { headers: HB });
+const d = await d0.json().catch(() => ({}));
+if (d.env !== "preview") console.log("admin/db", d0.status, Object.keys(d).join(","), d.error ?? "", JSON.stringify(d.db ?? {}).slice(0, 300));
 ok("izolasyon: Preview ortamı ve üretim dışı veritabanı", d.env === "preview" && d.db?.writeGuard?.ok === true, `env=${d.env}`);
 if (d.env !== "preview" || d.db?.writeGuard?.ok !== true) process.exit(1);
 const mg = await admin({ action: "migrate" });
