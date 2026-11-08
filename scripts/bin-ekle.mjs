@@ -62,7 +62,7 @@ const all = [...existing, ...rows];
 const dup = (k) => all.length - new Set(all.map(k)).size;
 if (dup((v) => v.slug) || dup((v) => v.ref)) { console.error("tekrarlı slug/ref", dup((v) => v.slug), dup((v) => v.ref)); process.exit(1); }
 writeFileSync(venuesUrl, "[\n" + all.map((v) => JSON.stringify(v)).join(",\n") + "\n]\n");
-const pack = { yeni: picked.map(({ v, b }) => ({ slug: v.slug, placeId: b.placeId, note: `Sahip onayı bekleniyor · yeni mekân (dalga ${WAVE}) doğrulaması: ${ev(b)}` })) };
+const pack = { yeni: picked.map(({ v, b }) => ({ slug: v.slug, name: v.name, placeId: b.placeId, note: `Sahip onayı bekleniyor · yeni mekân (dalga ${WAVE}) doğrulaması: ${ev(b)}` })) };
 writeFileSync(packFile, JSON.stringify(pack, null, 1));
 report.eklenen = rows.length;
 const count = (xs, k) => Object.fromEntries([...xs.reduce((m, x) => m.set(k(x), (m.get(k(x)) ?? 0) + 1), new Map())].sort((a, b) => b[1] - a[1]));
