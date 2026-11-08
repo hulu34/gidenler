@@ -202,7 +202,9 @@ await c5.close();
 
 /* 10) REGRESYON + puan ayrımı + performans */
 for (const p of ["/", "/ara/?q=kebap", "/kesfet/", "/sor/", "/seckisi/", "/mekan/ciya-sofrasi-kadikoy/", "/mekan/pandeli-fatih/", "/sitemap.xml", "/demo/", "/nerede-yedin/", "/nerede-yedin/oner/", "/kategori/kebap/"]) {
-  const r = await fetch(B + p, { headers: HB }); console.log(`${r.status} ${p}`); sonuc.push([`sayfa ${p}`, r.status === 200 || (p.startsWith("/kategori") && r.status === 404)]);
+  const r = await fetch(B + p, { headers: HB }); console.log(`${r.status} ${p}`);
+  /* /demo/ gerçek sitede bilinçli 404 (yatırımcı demosu ayrı dağıtım; canlıda da 404) */
+  sonuc.push([`sayfa ${p}`, r.status === 200 || ((p.startsWith("/kategori") || p === "/demo/") && r.status === 404)]);
 }
 const ana = await (await fetch(`${B}/`, { headers: HB })).text();
 ok("ana sayfada Google rozeti '/5' ve Google etiketi; Gidenler puanı uydurulmuyor", /data-gpuan/.test(ana) && /\/5/.test(ana) && !/data-score-hero/.test(ana));

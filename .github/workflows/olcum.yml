@@ -532,7 +532,7 @@ jobs:
     if: contains(github.event.head_commit.message, '[ilk-kullanici]')
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env: { HOST: gidenler-129lenh18-hulu34.vercel.app }   # feature/ilk-kullanici 98c1845 (Preview, izole Neon)
+    env: { HOST: gidenler-zzkh83koc-hulu34.vercel.app }   # feature/ilk-kullanici ff517d2 (Preview, izole Neon)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -545,6 +545,23 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: ilk-kullanici-sifreli, path: ilk.tgz.cms, retention-days: 14, if-no-files-found: ignore }
+  ilk-906:
+    if: contains(github.event.head_commit.message, '[ilk-906]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env: { HOST: gidenler-g8mhulhty-hulu34.vercel.app }   # feature/yayin-906 3dac69a (Preview, izole Neon)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: CIKTI=out/ilk906 node ops/ilk-906.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: test -d out/ilk906 && tar -C out -czf ilk906.tgz ilk906 && openssl cms -encrypt -aes256 -binary -outform DER -in ilk906.tgz -out ilk906.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: ilk-906-sifreli, path: ilk906.tgz.cms, retention-days: 14, if-no-files-found: ignore }
   preview-bin:
     if: contains(github.event.head_commit.message, '[preview-bin]')
     runs-on: ubuntu-latest
