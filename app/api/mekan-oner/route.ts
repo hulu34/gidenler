@@ -16,7 +16,10 @@ import { recordCampaign } from "@/lib/kampanya/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 const H = { "cache-control": "no-store" };
-const CONTACT = /(https?:\/\/|www\.|@[a-z0-9_]{3,}|\b\d{3}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}\b)/i;
+const LINK = /(https?:\/\/|www\.|\.(com|net|org|tr)\b|@[a-z0-9_.]{3,})/i;
+/** telefon: boşluk/tire/parantezle bölünmüş olsa da 10+ rakamlık dizi */
+const hasPhone = (t: string) => (t.match(/[\d\s().+-]{10,}/g) ?? []).some((x) => x.replace(/\D/g, "").length >= 10);
+const contact = (t: string) => LINK.test(t) || hasPhone(t);
 const Body = z.object({
   name: z.string().trim().min(2).max(80),
   district: z.string().min(2).max(40),
@@ -33,7 +36,7 @@ export async function POST(req: Request) {
   const b = p.data;
   if (b.website) return NextResponse.json({ ok: true, id: "x", merged: false }, { status: 202, headers: H });
   if (b.district !== "Bilmiyorum" && !DISTRICTS.includes(b.district)) return NextResponse.json({ error: "invalid", message: "İlçeyi listeden seç." }, { status: 400, headers: H });
-  if (CONTACT.test(`${b.name} ${b.locationNote ?? ""}`)) return NextResponse.json({ error: "invalid", message: "Bağlantı, kullanıcı adı ya da telefon numarası yazma; mekânın adı ve semti yeter." }, { status: 400, headers: H });
+  if (contact(`${b.name} ${b.locationNote ?? ""}`)) return NextResponse.json({ error: "invalid", message: "Bağlantı, kullanıcı adı ya da telefon numarası yazma; mekânın adı ve semti yeter." }, { status: 400, headers: H });
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
   if (!(await softHit(`oner:${hashKey(ip)}`, 6, 3600))) return NextResponse.json({ error: "rate", message: "Kısa sürede çok öneri gönderildi; biraz sonra yeniden dene." }, { status: 429, headers: H });
   const db = getDb();
