@@ -100,7 +100,7 @@ export const KNOWN = { areas: [...DISTRICTS, ...SUBAREAS.map((a) => a.name)], cu
 const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax || i.notArea);
 
 /* Sıradan sözcük tek başına ad sayılmaz: "pide nerede yenir" Yeni Lokanta'yı bulmaz; adın tamamı yazılmalı. */
-const QUERY_NOISE = new Set(["istanbul", "misin", "musun", "misiniz", "musunuz", "miyiz", "miyim", "nerede", "neresi", "hangi", "hangisi", "var", "yok", "lazim", "oner", "onerir", "onerin", "soyle", "bana", "bize", "sana", "size", "goster", "verilen", "kural", "kurallari",
+const QUERY_NOISE = new Set(["istanbul", "misin", "musun", "misiniz", "musunuz", "miyiz", "miyim", "nerede", "neresi", "nasil", "nasildir", "nasilsin", "neden", "nicin", "kimdir", "yapilir", "yapilmaz", "hangi", "hangisi", "var", "yok", "lazim", "oner", "onerir", "onerin", "soyle", "bana", "bize", "sana", "size", "goster", "verilen", "kural", "kurallari",
   /* fiil: "Burger yiyelim" Burger Yiyelim zinciri değildir */ "yiyelim", "yiyecek", "yiyebilecegim", "yemek", "gidelim", "gidecek", "icelim", "oturalim", "bakalim", "olsun", "olmasin"]);
 const COMMON_NAME = new Set(["yeni", "eski", "buyuk", "kucuk", "tarihi", "meshur", "bizim", "kardesler", "ortaklar", "asmali", "ev", "ana", "usta", "lezzet", "aile", "sofra", "kent", "merkez", "istanbul"]);
 const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "cafe", "kafe", "ve", "the", "bar", "kebap", "balik", "pide", "ocakbasi", "doner", "kebapcisi", "sofrasi", "evi", "et", "iyi", "guzel", "bir"]);
@@ -111,20 +111,22 @@ function matchName(q: string): Venue | null {
   /* soru ekleri ve şehir adı mekân adı değildir: "önerir misin" Misina, "İstanbul'da" İstanbul Emniyet... değildir */
   const own = toks.filter((t) => !isGeneric(t) && !QUERY_NOISE.has(t));
   if (!own.length) return null;
-  let best: { v: Venue; s: number } | null = null;
+  let best: { v: Venue; s: number; raw: number } | null = null;
   for (const v of VENUES) {
     const nt = fold(v.name).split(" ").filter((t) => t.length >= 3 && !NAME_NOISE.has(t));
     /* yazımı bitişik bilinen ad: "nusret" → "Nusr-Et Burger Bebek" */
     const compact = fold(v.name).replace(/ /g, "");
-    if (toks.length <= 3 && own.some((t) => t.length >= 5 && compact.startsWith(t))) { const s = 50; if (!best || s > best.s) best = { v, s }; continue; }
+    if (toks.length <= 3 && own.some((t) => t.length >= 5 && compact.startsWith(t))) { const s = 50; if (!best || s > best.s) best = { v, s, raw: s }; continue; }
     if (!nt.length) continue;
     if (nt.every((n) => COMMON_NAME.has(n)) && !q.includes(fold(v.name))) continue;
     /* ek toleransı 6+ harfte: "boğaz" Boga, "yenir" Yeni değildir */
     const near = (t: string, n: string) => t === n || (n.length >= 6 && t.startsWith(n) && t.length - n.length <= 4) || (n.length >= 5 && t.length >= 5 && within1(t, n));
     const hits = nt.filter((n) => toks.some((t) => near(t, n) || q.includes(`${n} `) && t === n));
-    if (hits.length === nt.length && hits.some((n) => own.some((t) => near(t, n)))) { const s = hits.join("").length; if (!best || s > best.s) best = { v, s }; }
+    /* birebir yazılan ad, yakın yazımdan üstün: "ciya" (birebir) "nasil"≈"nasip"ten (yakın) önce gelir */
+    if (hits.length === nt.length && hits.some((n) => own.some((t) => near(t, n)))) { const raw = hits.join("").length, s = hits.reduce((a, n) => a + n.length * (toks.includes(n) ? 2 : 1), 0); if (!best || s > best.s) best = { v, s, raw }; }
   }
-  return best && best.s >= 4 ? best.v : null;
+  /* eşik ham ad uzunluğuyla (birebir ağırlığı yalnız adaylar arası seçimde) */
+  return best && best.raw >= 4 ? best.v : null;
 }
 
 const NEG = /^(olmasin|olmayan|istemiyorum|haric|disinda|degil|yok)/;

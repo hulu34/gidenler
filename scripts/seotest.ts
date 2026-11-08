@@ -56,7 +56,7 @@ const fixed = Object.entries(duzeltmeler as Record<string, { kind?: string }>).f
 const kindChanged = (rawVenues as { slug: string; kind: string }[]).filter((r) => realEntities.find((e) => e.slug === r.slug)?.subcategory !== r.kind).map((r) => r.slug);
 ok("tür yalnız düzeltme listesindekilerde değişir", [...kindChanged].sort().join() === [...fixed].sort().join(), kindChanged.join());
 ok("Seyirtepe Restoran, kategori aynı", realEntities.find((e) => e.slug === fixed[0])?.subcategory === "Restoran" && realEntities.find((e) => e.slug === fixed[0])?.categoryId === "cat.restaurant");
-ok("457 kayıt korunur", realEntities.length === 457);
+ok("ilk 457 kayıt korunur, yeni dalgalar eklenir", realEntities.length === (rawVenues as unknown[]).length + 1 && (rawVenues as Array<{ wave?: number }>).filter((v) => (v.wave ?? 0) < 2).length === 456);
 
 /* kapak kararı */
 const hasCover = realEntities.filter((e) => coverOf(e));
