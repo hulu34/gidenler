@@ -23,7 +23,6 @@ jobs:
       - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
       - run: |
           mkdir -p out/arama
-          if [ "${{ matrix.parca }}" = "0" ]; then export SLUGS="nabu-karakoy-beyoglu,sultan-s-inn-fatih,durusu-club-restaurant-arnavutkoy,villa-park-istanbul-beylikduzu,beykoz-belediyesi-ortacesme-lokantasi-beykoz,nostalji-cafe-ve-restaurant-sile,memnun-doner-avcilar"; export HARIC=../ops/haric.json; fi
           cd app && ADAYLAR=../ops/aday-${{ matrix.parca }}.json npx tsx scripts/gpuan-arama.ts
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", CIKTI: ../out/arama, BEKLEME_MS: "4000", MAX_SORGU: "2" }
       - if: always()
