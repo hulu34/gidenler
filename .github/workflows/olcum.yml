@@ -560,6 +560,14 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: preview-bin-sifreli, path: bin.tgz.cms, retention-days: 14, if-no-files-found: ignore }
+  kontrol-db:
+    if: contains(github.event.head_commit.message, '[kontrol-db]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node ops/kontrol-db.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest
