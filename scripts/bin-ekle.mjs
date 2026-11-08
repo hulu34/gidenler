@@ -21,7 +21,10 @@ const today = new Date().toISOString().slice(0, 10);
 
 const report = { havuz: pool.size, dogrulanan: 0, guclu: 0, orta: 0, bulunamadi: 0, engel: 0, kapali: 0, baskaMekanda: 0, turUygunDegil: 0, adresYok: 0, ayniGoogleIki: 0, eklenen: 0 };
 /* kurum tesisi / kapalı devre yemekhane: herkese açık restoran değil → eklenmez, elle incelemeye */
-const INSTITUTION = /belediye|dining hall|üniversite|universite|kampüs|kampus|öğrenci|ogrenci|\byurdu?\b|hastane|kafeterya|cafeteria|yemekhane|orduevi|askeri|personel/i;
+const INSTITUTION = /belediye|dining hall|üniversite|universite|kampüs|kampus|öğrenci|ogrenci|\byurdu?\b|hastane|kafeterya|cafeteria|yemekhane|orduevi|askeri|personel|lokali\b|sosyal tesis/i;
+/* Google türü yeme-içme olmalı (beyaz liste): "Watch store", "Meat wholesaler", "Recreation center" gibi türler eklenmez */
+const FOOD = /restaurant|restoran|cafe|café|coffee|\bbar\b|pub|bistro|grill|kebab|kebap|pizza|bakery|patisserie|pastry|dessert|ice cream|food|kitchen|eatery|diner|buffet|steak|sushi|seafood|fish|meyhane|tavern|brasserie|lokanta|pide|döner|doner|tea house|breakfast|brunch|deli|sandwich|burger|chicken|noodle|ramen|dumpling|confectionery|creperie|bagel|juice|wine|beer|cocktail|lounge|gastro|meze|meatball|köfte|kofte|pie shop|rice shop|soup|börek|borek/i;
+report.turBeyazListe = 0;
 report.kurum = 0;
 const strong = [];
 const have = new Set(existing.map((e) => e.slug));
@@ -37,6 +40,7 @@ for (const o of results) {
   if (o.result !== "güçlü" || !o.best || o.best.closed) continue;
   if (!v.address) { report.adresYok++; continue; }
   if (INSTITUTION.test(v.name)) { report.kurum++; continue; }
+  if (!FOOD.test(o.best.category ?? "")) { report.turBeyazListe++; continue; }
   strong.push({ v, b: o.best });
 }
 /* önceki dalgaların paketlerinde kullanılan Google kayıtları (ESKI_PAKET=a.json,b.json) yeni adaya verilmez */
@@ -51,7 +55,7 @@ const ok = strong.filter((s) => byPid.get(s.b.placeId).length === 1);
 
 const need = Math.max(0, TARGET - existing.length);
 const byD = new Map(); for (const s of ok) byD.set(s.v.district, [...(byD.get(s.v.district) ?? []), s]);
-const kindCount = new Map(), KIND_CAP = Math.max(8, Math.ceil(need * 0.25));
+const kindCount = new Map(), KIND_CAP = Math.max(8, Math.ceil(need * Number(process.env.KIND_CAP_PCT ?? 0.25)));
 const picked = [];
 for (let round = 0; picked.length < need; round++) {
   let progressed = false;
