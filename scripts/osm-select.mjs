@@ -95,7 +95,7 @@ function score(t) {
 const GENERIC = /^(cafe|kafe|restaurant|restoran|bar|pub|büfe|kahve|lokanta|kebap|döner|pide)$/i;
 
 /** @param {{district: string, elements: any[]}[]} results */
-export function selectVenues(results, { quotas = DISTRICT_QUOTAS, importedAt = new Date().toISOString().slice(0, 10) } = {}) {
+export function selectVenues(results, { quotas = DISTRICT_QUOTAS, importedAt = new Date().toISOString().slice(0, 10), minScore = 25 } = {}) {
   const out = [];
   const seenNames = new Set();
   for (const { district, elements } of results) {
@@ -109,7 +109,7 @@ export function selectVenues(results, { quotas = DISTRICT_QUOTAS, importedAt = n
       .filter((e) => e.tags.disused !== "yes" && !has(e.tags, "disused:amenity"))
       .filter((e) => e.tags.amenity !== "fast_food" || score(e.tags) >= 40)
       .map((e) => ({ e, s: score(e.tags), c: classify(e.tags) }))
-      .filter((x) => x.s >= 25)
+      .filter((x) => x.s >= minScore)
       .sort((a, b) => b.s - a.s || a.e.tags.name.localeCompare(b.e.tags.name, "tr"));
     const perKind = new Map();
     const maxKind = Math.max(2, Math.ceil(quota * 0.35));

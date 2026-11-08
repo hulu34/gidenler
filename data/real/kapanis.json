@@ -137,12 +137,12 @@
  },
  "et-inn-kebap-ve-steak-kadikoy": {
   "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "checkedAt": "2026-11-08",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Otomatik",
   "official": "Tek şubeli işletmenin resmî sitesi hâlâ açık; kapanma çelişkili",
   "confidence": "düşük",
-  "note": "Çelişen kanıt var — elle incelenmeli"
+  "note": "Çelişen kanıt var — elle incelenmeli · 8 Kasım: kapandığına dair bağımsız kaynak bulunamadı; şüphe olarak kalıyor"
  },
  "fish-var-sariyer": {
   "state": "closed_suspected",
@@ -289,13 +289,16 @@
   "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
  },
  "memnun-doner-avcilar": {
-  "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "state": "reopened",
+  "checkedAt": "2026-11-08",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
-  "official": "İşletmenin resmî sitesinde Avcılar adresi hâlâ yayında; eşleşen Google kaydı adı farklı başka bir işletmeye ait olabilir",
-  "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "official": "Resmî site (memnundoner.com) aynı telefonla (0212 421 31 31) Avcılar'da açık adres veriyor: Cihangir, D-100 Güney Yanyolu No:257",
+  "confidence": "yüksek",
+  "note": "Kapalı DEĞİL: Google'daki kalıcı kapalı kayıt eski konuma ait olmalı; eşleşme reddedilmeli, adres resmî siteye göre düzeltilmeli, yeni Google kaydı aranmalı",
+  "sources": [
+   "http://www.memnundoner.com/"
+  ]
  },
  "niwa-tuzla": {
   "state": "closed_confirmed",
@@ -361,13 +364,18 @@
   "note": "Doğru eşleşmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
  },
  "refik-beyoglu": {
-  "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-08",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
-  "official": "Eşleşen Google kaydının adı farklı; Gidenler'deki Refik ile aynı işletme olduğu doğrulanmadı",
-  "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "official": "Bağımsız kaynaklar: Turizm Günlüğü (5 Eylül 2020, 'Asmalımescit'teki Refik kapandı'), Bianet (2020 sonbaharı), Mes Prestiges ('1954-2020')",
+  "confidence": "yüksek",
+  "note": "Kesin kapalı (sahip kararıyla uygulanacak): Google kalıcı kapalı + bağımsız haber kaynakları",
+  "closedAt": "2020-09",
+  "sources": [
+   "https://bianet.org/yazi/neyhane-244051",
+   "https://mesprestiges.com/en/istanbul/places/refik"
+  ]
  },
  "rice-house-uskudar": {
   "state": "closed_confirmed",
@@ -380,21 +388,25 @@
  },
  "ringa-sea-food-besiktas": {
   "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "checkedAt": "2026-11-08",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
   "official": "Resmî site yanıt vermiyor",
   "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli · 8 Kasım: kapandığına dair bağımsız kaynak bulunamadı; şüphe olarak kalıyor"
  },
  "tahtalikoy-catalca": {
-  "state": "closed_suspected",
-  "checkedAt": "2026-11-06",
+  "state": "closed_confirmed",
+  "checkedAt": "2026-11-08",
   "google": "Kalıcı olarak kapalı (tam görünüm, elle bakıldı)",
   "match": "Onay bekliyor",
-  "official": "Resmî site hâlâ açık; eşleşme de onay bekliyor",
-  "confidence": "düşük",
-  "note": "Eşleşme onay bekliyor: kapanma bu işletmeye ait olmayabilir — elle incelenmeli"
+  "official": "Resmî alan adı (tahtalikoy.com.tr) artık işletmeye ait değil: 30/10/2024 tarihli BTK kararıyla yasa dışı bahis gerekçesiyle erişime kapatılmış; alan adı sahipsiz kalmış",
+  "confidence": "orta-yüksek",
+  "note": "Kesin kapalı (sahip kararıyla uygulanacak): Google kalıcı kapalı + tam ad 47 m + resmî alan adının düşmesi. Kapanma tarihi bilinmiyor",
+  "closedAt": null,
+  "sources": [
+   "http://www.tahtalikoy.com.tr/"
+  ]
  },
  "tepsi-et-basaksehir-basaksehir": {
   "state": "closed_confirmed",
@@ -467,5 +479,14 @@
   "official": "Kayıtlı resmî site yok",
   "confidence": "orta",
   "note": "Eşleşme yeniden ölçüldü (konum 5 m, ad 1): doğru işletmenin Google kaydı kalıcı kapalı; çelişen kanıt yok"
+ },
+ "arda-ocakbasi-umraniye": {
+  "state": "closed_suspected",
+  "checkedAt": "2026-11-08",
+  "google": "Kalıcı olarak kapalı (7 Kasım günlük çalışma, sınırlı görünüm)",
+  "match": "Otomatik",
+  "official": "İkinci kaynak aranmadı",
+  "confidence": "düşük",
+  "note": "Günlük çalışmada yeni kapanma şüphesi; puanı otomatik gizlendi. Sitede başka değişiklik yok"
  }
 }

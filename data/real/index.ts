@@ -56,6 +56,10 @@ export interface RealVenueRecord {
   location?: { provider: "osm"; ref: string; precision: "address" | "building" };
   /** yalnız isletme kaydı: mekânın OSM'de GERÇEKTEN var olan kaydı (sonradan eşleşirse) */
   osmRef?: string;
+  /** yeni mekân doğrulaması (1.000 operasyonu): tarih, güven ve kanıt özeti (Google içeriği saklanmaz; yalnız ölçüm) */
+  verifiedAt?: string;
+  confidence?: "güçlü" | "orta";
+  verification?: string;
 }
 
 const OSM_REF = /^(node|way|relation)\/\d+$/;

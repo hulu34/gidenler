@@ -9,7 +9,7 @@ import raw from "@/data/real/kapanis.json";
    · Yeniden açıldığı doğrulanırsa satır "reopened" yapılır ya da silinir; mekân kendiliğinden listelere döner.
    ────────────────────────────────────────────────────────────────────────── */
 export type ClosureState = "closed_confirmed" | "closed_suspected" | "reopened";
-export interface Closure { state: ClosureState; checkedAt: string; google: string; match: string; official: string; confidence: string; note: string }
+export interface Closure { state: ClosureState; checkedAt: string; google: string; match: string; official: string; confidence: string; note: string; /** bilinen kapanma tarihi (YYYY-AA) */ closedAt?: string | null; /** ikinci kaynak bağlantıları */ sources?: string[] }
 const ALL = Object.fromEntries(Object.entries(raw as Record<string, unknown>).filter(([k]) => !k.startsWith("_"))) as Record<string, Closure>;
 export const CLOSURES: Readonly<Record<string, Closure>> = ALL;
 export const CLOSED_CONFIRMED: ReadonlySet<string> = new Set(Object.entries(ALL).filter(([, v]) => v.state === "closed_confirmed").map(([k]) => k));

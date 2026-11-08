@@ -1,6 +1,7 @@
 /* GOOGLE PUAN EXCEL SİSTEMİ TESTLERİ — gömülü Postgres (PGlite) + sahte kaynak. Ağ yok, Google yok.
    Çalıştır: npm run test:gpuan */
 import { PGlite } from "@electric-sql/pglite";
+import rawVenues from "../data/real/venues.json";
 import { isClosed } from "../lib/closure";
 import { drizzle } from "drizzle-orm/pglite";
 import { eq, sql } from "drizzle-orm";
@@ -34,23 +35,28 @@ function fakeSource(over: Record<string, SourceResult | "throw"> = {}, calls: st
   return { id: "sahte", label: "Sahte kaynak (test)", async fetch(t) {
     calls.push(t.placeId);
     const o = over[t.placeId]; if (o === "throw") throw new Error("ağ koptu"); if (o) return o;
-    const v = venues.find((x) => x.name === t.name)!;
+    /* aynı adlı farklı şubeler (ör. iki semtte aynı ad) karışmasın: test kimliği pid(i) → venues[i], yoksa ad */
+    const m = /^ChIJtest(\d{12})$/.exec(t.placeId); const vi = m ? venues[Number(m[1])] : undefined;
+    const v = vi && vi.name === t.name ? vi : venues.find((x) => x.name === t.name)!;
     return { kind: "ok", seen: { name: v.name, address: v.address ?? "", rating: 4.5, reviews: 200, lat: v.lat + 0.0002, lng: v.lng, category: "Restaurant" } };
   } };
 }
 
 async function main() {
-  console.log("\n1) Excel oluşturma ve 456 satır");
-  ok("venues.json'dan 456 mekân (414 restoran, 38 kafe, 4 bar)", venues.length === 456
-    && venues.filter((v) => v.categoryId === "cat.restaurant").length === 414 && venues.filter((v) => v.categoryId === "cat.cafe").length === 38 && venues.filter((v) => v.categoryId === "cat.bar").length === 4, venues.length);
+  /* mekân sayısı veriden: büyüme (dalga 2+) eklendikçe testler kendiliğinden genişler; ilk 456 kayıt korunur */
+  const N = venues.length;
+  console.log(`\n1) Excel oluşturma ve ${N} satır`);
+  const base456 = (rawVenues as Array<{ slug: string; wave?: number }>).filter((v) => (v.wave ?? 0) < 2).map((v) => v.slug);
+  ok("ilk 456 mekân (dalga 0–1) korunur ve Excel listesinde", base456.length === 456 && base456.every((s) => venues.some((v) => v.slug === s)), base456.length);
+  ok("Excel listesi venues.json ile aynı boyda", N === (rawVenues as unknown[]).length, N);
   const ids = new Map<string, GoogleId[]>(venues.map((v, i) => [v.slug, i % 5 === 0 ? [] : [{ externalId: pid(i), status: i % 5 === 1 ? "pending" : i % 7 === 0 ? "confirmed" : "auto" }]]));
   const first = reconcile([], venues, ids);
-  ok("ilk karşılaştırmada 456 yeni satır", first.rows.length === 456 && first.added.length === 456 && !first.removed.length);
+  ok(`ilk karşılaştırmada ${N} yeni satır`, first.rows.length === N && first.added.length === N && !first.removed.length);
   const buf = await writeWorkbook(first.rows, { generatedAt: new Date().toISOString() });
   const back = await readWorkbook(buf);
   { const wb0 = new ExcelJS.Workbook(); await wb0.xlsx.load(buf as unknown as ArrayBuffer); const w0 = wb0.getWorksheet("Tüm Mekânlar")!; w0.spliceColumns(HEADERS.indexOf("Google'daki tür") + 1, 7); w0.name = "Mekânlar"; const old = await readWorkbook(Buffer.from(await wb0.xlsx.writeBuffer()));
-    ok("yeni sütunu olmayan eski Excel de okunur", old.rows.length === 456 && !old.errors.length && old.rows[0].seenCategory === "", old.errors); }
-  ok("Excel geri okununca 456 satır, hata yok", back.rows.length === 456 && !back.errors.length, back.errors);
+    ok("yeni sütunu olmayan eski Excel de okunur", old.rows.length === N && !old.errors.length && old.rows[0].seenCategory === "", old.errors); }
+  ok(`Excel geri okununca ${N} satır, hata yok`, back.rows.length === N && !back.errors.length, back.errors);
   ok("bütün Gidenler ID'leri eksiksiz ve aynı sırada", back.rows.every((r, i) => r.slug === first.rows[i].slug));
   ok("Eşleşme yoksa place ID boş", back.rows.filter((r) => r.confidence === CONFIDENCE.none).every((r) => r.placeId === "" && r.mapsUrl === ""));
   const wb = new ExcelJS.Workbook(); await wb.xlsx.load(buf as unknown as ArrayBuffer);
@@ -107,7 +113,7 @@ async function main() {
   ok("listeden çıkan mekân silinmez, işaretlenir", rec.removed.includes(venues[3].slug) && rec.rows.find((r) => r.slug === venues[3].slug)?.record === "Kaldırıldı");
   const ch = rec.rows.find((r) => r.slug === changedId)!;
   ok("place ID değişince eski puan aktarılmaz, yeniden kontrol beklenir", ch.placeId === pid(777) && ch.rating === null && ch.prevRating === 4.1);
-  ok("Excel otomatik genişler (457 satır)", rec.rows.length === 457);
+  ok(`Excel otomatik genişler (${N + 1} satır)`, rec.rows.length === N + 1);
 
   console.log("\n5) Veritabanı: kilit, dosya, atomik aktarım (PGlite)");
   const pg = new PGlite();
@@ -144,7 +150,7 @@ async function main() {
   const day1 = () => new Date(BASE - 2 * 864e5);
   const calls1: string[] = [];
   const blockedPid = [...ids.entries()].find(([, g]) => g[0]?.status === "auto")![1][0].externalId;
-  const r1 = await runDaily("calisma-1", venues, mkApi("calisma-1"), fakeSource({ [blockedPid]: { kind: "blocked", reason: "CAPTCHA" } }, calls1), { max: 500, checkpoint: 50, now: day1 });
+  const r1 = await runDaily("calisma-1", venues, mkApi("calisma-1"), fakeSource({ [blockedPid]: { kind: "blocked", reason: "CAPTCHA" } }, calls1), { max: 5000, checkpoint: 50, now: day1 });
   const withPid = venues.filter((v) => ids.get(v.slug)?.length).length;
   ok("bir kayıt engellense de diğerlerine devam edilir", r1.report.attempted === withPid && r1.report.blocked === 1 && r1.report.fresh === withPid - 1, r1.report);
   ok("aktarım uygulandı", (r1.report.import as { status: string }).status === "applied", r1.report.import);
@@ -160,11 +166,11 @@ async function main() {
   const day2 = () => new Date(BASE - 864e5);
   const calls2: string[] = [];
   let crashed = false;
-  try { await runDaily("calisma-2", venues, mkApi("calisma-2", { failUploadAt: 3 }), fakeSource({}, calls2), { max: 500, checkpoint: 50, now: day2 }); } catch { crashed = true; }
+  try { await runDaily("calisma-2", venues, mkApi("calisma-2", { failUploadAt: 3 }), fakeSource({}, calls2), { max: 5000, checkpoint: 50, now: day2 }); } catch { crashed = true; }
   ok("ikinci ara kayıttan sonra çalışma kesildi", crashed && calls2.length >= 100);
   ok("kesilen çalışmanın kilidi bırakıldı", !(await db.select().from(schema.googleRatingLock)).length);
   const calls3: string[] = [];
-  const r3 = await runDaily("calisma-3", venues, mkApi("calisma-3"), fakeSource({}, calls3), { max: 500, checkpoint: 50, now: day2 });
+  const r3 = await runDaily("calisma-3", venues, mkApi("calisma-3"), fakeSource({}, calls3), { max: 5000, checkpoint: 50, now: day2 });
   ok("devam eden çalışma bugün denenmiş satırları atlar", calls3.length === withPid - 100 && r3.report.attempted === withPid - 100, { calls3: calls3.length });
 
   console.log("\n7) Bozuk, eksik ya da şüpheli Excel çalışan veriyi silmez");
@@ -188,7 +194,7 @@ async function main() {
   const rej = await pg.query<{ n: number }>("select count(*)::int n from audit_log where action='google_rating_import_rejected'");
   ok("ret kararları denetim kaydında", Number(rej.rows[0].n) === 3);
   const old = latest.map((r) => (r.rating != null ? { ...r, checkedAt: new Date(BASE - 30 * 864e5).toISOString() } : r));
-  const o = await saveFile(db, await writeWorkbook(old.slice(0, 456), { generatedAt: new Date().toISOString() }), "elle", holder);
+  const o = await saveFile(db, await writeWorkbook(old.slice(0, N), { generatedAt: new Date().toISOString() }), "elle", holder);
   const repOld = await importFile(db, (o as { id: string }).id, venues, "test");
   ok("eski tarihli dosya yeni veriyi ezemez", repOld.status === "applied" && repOld.written === 0, { status: repOld.status, written: repOld.written });
   await releaseLock(db, holder);
@@ -200,7 +206,7 @@ async function main() {
   const allBlocked: Record<string, SourceResult> = Object.fromEntries([...ids.values()].flat().map((g) => [g.externalId, { kind: "blocked", reason: "olağandışı trafik" } as SourceResult]));
   const siteBefore = Object.keys(await loadGoogleRatings(db)).length;
   const callsB: string[] = [];
-  const rb = await runDaily("calisma-4", venues, mkApi("calisma-4"), fakeSource(allBlocked, callsB), { max: 500, now: day3 });
+  const rb = await runDaily("calisma-4", venues, mkApi("calisma-4"), fakeSource(allBlocked, callsB), { max: 5000, now: day3 });
   ok("3 engelden sonra durur, kalanlar ertelenir, puan silinmez", callsB.length === 3 && rb.report.deferred === withPid - 3 && rb.report.stoppedEarly !== null && Object.keys(await loadGoogleRatings(db)).length === siteBefore, { calls: callsB.length, deferred: rb.report.deferred, stopped: rb.report.stoppedEarly, site: Object.keys(await loadGoogleRatings(db)).length, expectSite });
   ok("hiç puan alınamayan çalışma başarılı sayılmaz", rb.report.fresh + rb.report.same === 0);
   const rowsB = (await readWorkbook(rb.workbook)).rows;
@@ -289,18 +295,18 @@ async function main() {
   const again = await addMatch(db, { slug: noId.slug, placeId: "ChIJbaskaaday00000000002", note: "ikinci aday, değiştirme yok", actor: "test" });
   ok("mekânın bekleyen başka kimliği varken değiştirme izni olmadan ikinci aday eklenmez", !again.ok);
   await releaseLock(db, h3);
-  const rNew = await runDaily("calisma-yeni", venues, mkApi("calisma-yeni"), fakeSource(), { max: 500, only: [noId.slug], force: true });
+  const rNew = await runDaily("calisma-yeni", venues, mkApi("calisma-yeni"), fakeSource(), { max: 5000, only: [noId.slug], force: true });
   ok("sonraki günlük çalışma yeni eşleşmeyi okur ve onaylı puanı sitede gösterir", rNew.report.attempted === 1 && !!(await loadGoogleRatings(db))[noId.slug], rNew.report.attempted);
   const dupRows = [{ ...row0, slug: "a", placeId: "ChIJortak00000000000001" }, { ...row0, slug: "b", placeId: "ChIJortak00000000000001" }, { ...row0, slug: "c" }];
   ok("aynı Place ID iki mekânda: denetimde yakalanır ve alt nedene yazılır", duplicatePlaceIds(dupRows).size === 1 && withDerived(dupRows, new Map())[0].subReasons.includes("aynı Place ID"));
   const allRows = (await readWorkbook(rNew.workbook)).rows;
   const der = withDerived(allRows, await latestDecisions(db), CLOSURES);
   const byMain: Record<string, number> = {}; for (const r of der.filter((x) => x.record === "Aktif")) byMain[r.mainState] = (byMain[r.mainState] ?? 0) + 1;
-  ok("mutabakat: her mekân tek ana durumda, toplam 456", Object.values(byMain).reduce((a, b) => a + b, 0) === 456 && der.every((r) => (Object.values(MAIN) as string[]).includes(r.mainState)), byMain);
+  ok(`mutabakat: her mekân tek ana durumda, toplam ${N}`, Object.values(byMain).reduce((a, b) => a + b, 0) === N && der.every((r) => (Object.values(MAIN) as string[]).includes(r.mainState)), byMain);
   ok("kesin kapalı kayıt onayla bile aktarılmaz", !importable({ ...full, status: STATUS.closed }, { ...dec("onay"), placeId: full.placeId }).ok && mainStatus(full, null, { state: "closed_confirmed" }).main === MAIN.closed);
 
   console.log("\n12) Kapanma kaydı: kesin kapalı mekân önerilerde ve Sor'da yok, profil korunur");
-  ok("kapanış kaydı 52 mekân (33 kesin, 19 şüpheli)", Object.keys(CLOSURES).length === 52 && CLOSED_CONFIRMED.size === 33, { n: Object.keys(CLOSURES).length, c: CLOSED_CONFIRMED.size });
+  ok("kapanış kaydı 53 mekân (35 kesin, 16 şüpheli, 1 yeniden açık)", Object.keys(CLOSURES).length === 53 && CLOSED_CONFIRMED.size === 35 && Object.values(CLOSURES).filter((c) => c.state === "reopened").length === 1, { n: Object.keys(CLOSURES).length, c: CLOSED_CONFIRMED.size });
   ok("kesin kapalılar aktif öneri havuzunda yok, profil kaydı duruyor", activeEntities.length === realEntities.length - CLOSED_CONFIRMED.size && [...CLOSED_CONFIRMED].every((s) => realEntities.some((e) => e.slug === s)));
   ok("kesin kapalılar Sor Gidenler adaylarında yok", !SOR_VENUES.some((v) => CLOSED_CONFIRMED.has(v.slug)));
   ok("şüpheli kapanmalar sitede değişiklik yapmaz", Object.entries(CLOSURES).filter(([, c]) => c.state === "closed_suspected").every(([s]) => activeEntities.some((e) => e.slug === s)));

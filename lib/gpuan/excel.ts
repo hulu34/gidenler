@@ -47,7 +47,10 @@ const pct = (a: number, b: number) => (b ? `%${((a / b) * 100).toLocaleString("t
 export async function writeWorkbook(rowsIn: Row[], meta: Meta, changes: Change[] = []): Promise<Buffer> {
   const decisions = meta.decisions ?? new Map<string, Decision>();
   const closures = meta.closures ?? {};
-  const rows = withDerived(rowsIn, decisions, closures, meta.evidence ?? {});
+  /* mekân kaynağı: data/real kaydından (OSM ref / işletme beyanı, dalga, yeni mekân doğrulaması) */
+  const { realVenueRecords } = await import("@/data/real");
+  const origins = Object.fromEntries(realVenueRecords.map((r) => [r.slug, [r.ref.startsWith("isletme/") ? "İşletme beyanı" : `OSM ${r.ref}`, `dalga ${r.wave ?? 0}`, r.verifiedAt ? `doğrulandı ${r.verifiedAt} (${r.confidence ?? ""})` : ""].filter(Boolean).join(" · ")]));
+  const rows = withDerived(rowsIn, decisions, closures, meta.evidence ?? {}, origins);
   const act = rows.filter((r) => r.record === "Aktif");
   const cands = meta.candidates ?? {};
   const wb = new ExcelJS.Workbook();
