@@ -126,7 +126,7 @@ export default async function HomePage() {
                 <a href="#h-explore" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Semtler</a>
               </nav>
               <a href="#nerede-yedin" data-hero-deneyim className="group mt-3.5 inline-flex max-w-full items-center gap-2 rounded-full border border-ink py-1.5 pl-3.5 pr-1.5 text-[13.5px] font-semibold hover:bg-ink hover:text-paper">
-                <span className="truncate">İstanbul&apos;da en son nerede yemek yedin?</span>
+                <span className="truncate"><span className="hidden sm:inline">İstanbul&apos;da en son</span><span className="sm:hidden">En son</span> nerede yemek yedin?</span>
                 <span className="shrink-0 rounded-full bg-accent px-2.5 py-1 text-[12px] font-bold text-on-accent">Paylaş →</span>
               </a>
             </div>

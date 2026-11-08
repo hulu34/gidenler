@@ -144,7 +144,7 @@ const STEPS_UI: Array<[string, string]> = [
 /** Ana sayfa bölümü. */
 export function SonYemekBolum() {
   return (
-    <section id="nerede-yedin" aria-labelledby="nerede-yedin-baslik" className="scroll-mt-24 border-y-2 border-ink py-8 sm:py-10" data-ana-son-yemek>
+    <section id="nerede-yedin" aria-labelledby="nerede-yedin-baslik" className="scroll-mt-24 border-t-2 border-ink pt-8 sm:pt-10" data-ana-son-yemek>
       <div className="grid grid-cols-[minmax(0,1fr)] gap-x-12 gap-y-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
         <div className="min-w-0">
           <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
