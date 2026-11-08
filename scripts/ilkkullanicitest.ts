@@ -12,6 +12,7 @@ import { ALL_CODES, CLIENT_STEPS, CREATOR_CODES, campaignLink, isCode } from "..
 import { candidatesFor, decideSuggestion, suggestVenue, suggestionQueue, DISTRICTS } from "../lib/oneri";
 import { nameKey } from "../lib/oneri/key";
 import { activeEntities, realEntities } from "../data/real";
+import { softHit } from "../lib/usage/rate";
 
 let pass = 0, fail = 0;
 const ok = (n: string, c: boolean, info?: unknown) => { if (c) { pass++; console.log(`  ✓ ${n}`); } else { fail++; console.log(`  ✗ ${n}`, info ?? ""); } };
@@ -74,6 +75,11 @@ async function main() {
   ok("karar bir kez verilir (açık olmayan öneri değişmez)", d1.ok && !d2.ok);
   const audit = await db.select().from(schema.auditLog).where(eq(schema.auditLog.refTable, "venue_suggestions"));
   ok("karar denetim kaydına yazılır", audit.length === 1 && audit[0].action === "venue_suggestion:accepted");
+
+  const hits: boolean[] = []; for (let i = 0; i < 8; i++) hits.push(await softHit("test:oner", 6, 3600));
+  ok("Redis yokken ücretsiz yollarda bellek içi sınır: 6 geçer, 7. reddedilir", hits.slice(0, 6).every(Boolean) && !hits[6] && !hits[7]);
+  const or = src("app/api/mekan-oner/route.ts");
+  ok("öneri API'si hız sınırından önce bağlantı/telefon reddeder; ücretli strictHit kullanılmaz", or.indexOf("contact(") < or.indexOf("softHit(") && !/strictHit/.test(or));
 
   console.log("\n4) Akış ve kurallar (kaynak kod)");
   const wf = src("app/yaz/[slug]/WriteForm.tsx");
