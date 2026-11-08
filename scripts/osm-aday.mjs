@@ -28,6 +28,8 @@ const HOTEL = /\b(hotel|otel|hostel|pansiyon|suites?|apart|resort)\b/i;
 const NOT_PUBLIC = /\b(yemekhane|kantin|catering|düğün salonu|dugun salonu|sosyal tesis|orduevi|polisevi|öğretmenevi|ogretmenevi|misafirhane|dining hall|kafeterya|cafeteria)\b|belediye|üniversite|universite|kampüs|kampus|hastane/i;
 
 const pool = [...existing];
+/* HARIC_HAVUZ: önceki aday havuzu (zaten doğrulandı) — aynı kayıt yeniden önerilmez */
+const triedRefs = new Set(process.env.HARIC_HAVUZ ? JSON.parse(readFileSync(process.env.HARIC_HAVUZ, "utf8")).map((v) => v.ref) : []);
 const dupOf = (v) => {
   const n = fold(v.name), p = phoneKey(v.phone), w = webKey(v.website);
   for (const e of pool) {
@@ -51,7 +53,7 @@ const per = raws.map(({ district, elements }) => {
 
 const rejected = { otel: 0, kurum: 0, bilgiYok: 0, konum: 0, turTavani: 0, semtTavani: 0 }; const dups = [];
 const kindCount = new Map(), distCount = new Map();
-const KIND_CAP = Math.ceil(SIZE * 0.22), DIST_CAP = Math.max(6, Math.ceil(SIZE * 0.08));
+const KIND_CAP = Math.ceil(SIZE * Number(process.env.KIND_CAP_PCT ?? 0.22)), DIST_CAP = Math.max(6, Math.ceil(SIZE * Number(process.env.DIST_CAP_PCT ?? 0.08)));
 const picked = [];
 for (let round = 0; picked.length < SIZE; round++) {
   let progressed = false;
@@ -63,7 +65,7 @@ for (let round = 0; picked.length < SIZE; round++) {
       if (HOTEL.test(v.name)) { rejected.otel++; continue; }
       if (NOT_PUBLIC.test(v.name)) { rejected.kurum++; continue; }
       if (!v.address && !v.phone && !webKey(v.website)) { rejected.bilgiYok++; continue; }
-      if (pool.some((e) => e.ref === v.ref)) continue;   // zaten Gidenler'de (mükerrer sayılmaz)
+      if (pool.some((e) => e.ref === v.ref) || triedRefs.has(v.ref)) continue;   // zaten Gidenler'de ya da önceki havuzda denendi
       if (!IN_IST(v.lat, v.lng)) { rejected.konum++; continue; }
       if ((kindCount.get(v.kind) ?? 0) >= KIND_CAP) { rejected.turTavani++; continue; }
       const dup = dupOf(v); if (dup) { dups.push({ name: v.name, district: v.district, ...dup }); continue; }
