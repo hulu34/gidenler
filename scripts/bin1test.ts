@@ -9,7 +9,7 @@ import { inVenueSitemap } from "../lib/seo";
 let pass = 0, fail = 0;
 const ok = (n: string, c: boolean, info?: unknown) => { if (c) { pass++; console.log(`  ✓ ${n}`); } else { fail++; console.log(`  ✗ ${n}`, info ?? ""); } };
 type R = { slug: string; ref: string; name: string; district: string; kind: string; address?: string; phone?: string; wave?: number; verifiedAt?: string; confidence?: string; verification?: string };
-const all = raw as R[]; const w2 = all.filter((v) => v.wave === 2);
+const all = raw as R[]; const w2 = all.filter((v) => (v.wave ?? 0) >= 2);
 const fold = (s: string) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, " ").trim();
 
 ok("ilk 456 kayıt korunur (dalga 0–1)", all.filter((v) => (v.wave ?? 0) < 2).length === 456);

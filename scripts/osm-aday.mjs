@@ -25,7 +25,7 @@ const webKey = (u) => { try { const h = new URL(/^https?:/i.test(u ?? "") ? u : 
 const distM = (a, b) => { const R = 6371000, r = Math.PI / 180, dLa = (b.lat - a.lat) * r, dLo = (b.lng - a.lng) * r; const x = Math.sin(dLa / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLo / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(x)); };
 const HOTEL = /\b(hotel|otel|hostel|pansiyon|suites?|apart|resort)\b/i;
 /* kamu/kurum yemekhanesi, düğün salonu, catering: restoran hedefi değil */
-const NOT_PUBLIC = /\b(yemekhane|kantin|catering|düğün salonu|dugun salonu|sosyal tesis|orduevi|polisevi|öğretmenevi|ogretmenevi|misafirhane)\b/i;
+const NOT_PUBLIC = /\b(yemekhane|kantin|catering|düğün salonu|dugun salonu|sosyal tesis|orduevi|polisevi|öğretmenevi|ogretmenevi|misafirhane|dining hall|kafeterya|cafeteria)\b|belediye|üniversite|universite|kampüs|kampus|hastane/i;
 
 const pool = [...existing];
 const dupOf = (v) => {

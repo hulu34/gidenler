@@ -20,9 +20,13 @@ const results = resFiles.flatMap((f) => JSON.parse(readFileSync(f, "utf8")));
 const today = new Date().toISOString().slice(0, 10);
 
 const report = { havuz: pool.size, dogrulanan: 0, guclu: 0, orta: 0, bulunamadi: 0, engel: 0, kapali: 0, baskaMekanda: 0, turUygunDegil: 0, adresYok: 0, ayniGoogleIki: 0, eklenen: 0 };
+/* kurum tesisi / kapalı devre yemekhane: herkese açık restoran değil → eklenmez, elle incelemeye */
+const INSTITUTION = /belediye|dining hall|üniversite|universite|kampüs|kampus|öğrenci|ogrenci|\byurdu?\b|hastane|kafeterya|cafeteria|yemekhane|orduevi|askeri|personel/i;
+report.kurum = 0;
 const strong = [];
+const have = new Set(existing.map((e) => e.slug));
 for (const o of results) {
-  const v = pool.get(o.slug); if (!v) continue;
+  const v = pool.get(o.slug); if (!v || have.has(o.slug)) continue;   // önceki dalgada eklenenler tekrar sayılmaz
   report.dogrulanan++;
   const tried = o.tried ?? [];
   if (tried.some((t) => t.blocked)) report.engel++;
@@ -32,6 +36,7 @@ for (const o of results) {
   if (o.result === "güçlü") report.guclu++; else if (o.result === "orta") report.orta++; else report.bulunamadi++;
   if (o.result !== "güçlü" || !o.best || o.best.closed) continue;
   if (!v.address) { report.adresYok++; continue; }
+  if (INSTITUTION.test(v.name)) { report.kurum++; continue; }
   strong.push({ v, b: o.best });
 }
 /* aynı Google kaydı iki adayda → ikisi de elle incelemeye */
@@ -57,7 +62,7 @@ for (let round = 0; picked.length < need; round++) {
   if (!progressed) break;
 }
 const ev = (b) => [b.phoneMatch ? "telefon birebir" : "", b.webMatch ? "alan adı birebir" : "", `konum ${b.distanceM} m`, `ad ${b.nameSim}`].filter(Boolean).join(" · ");
-const rows = picked.map(({ v, b }) => ({ ...v, wave: WAVE, verifiedAt: today, confidence: "güçlü", verification: `Google sayfası (${today}): ${ev(b)}; kalıcı kapalı değil` }));
+const rows = picked.map(({ v, b }) => ({ ...v, wave: WAVE, verifiedAt: today, confidence: "güçlü", verification: `Google sayfası (${today}): ${ev(b)}; kalıcı kapalı değil${v.addressSource ? `; adres: ${v.addressSource}` : ""}` }));
 const all = [...existing, ...rows];
 const dup = (k) => all.length - new Set(all.map(k)).size;
 if (dup((v) => v.slug) || dup((v) => v.ref)) { console.error("tekrarlı slug/ref", dup((v) => v.slug), dup((v) => v.ref)); process.exit(1); }
