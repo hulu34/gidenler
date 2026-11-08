@@ -532,7 +532,7 @@ jobs:
     if: contains(github.event.head_commit.message, '[ilk-kullanici]')
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env: { HOST: gidenler-qeutmu2td-hulu34.vercel.app }   # feature/ilk-kullanici 88ff053 (Preview, izole Neon)
+    env: { HOST: gidenler-jezff27zs-hulu34.vercel.app }   # feature/ilk-kullanici 4251e29 (Preview, izole Neon)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

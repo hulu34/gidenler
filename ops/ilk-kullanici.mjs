@@ -104,8 +104,8 @@ const api = apiAs(U);
 const mine = (await (await api(`/api/me/reviews/?slug=${SL}`)).json().catch(() => ({}))).reviews ?? [];
 ok(`çift tıklama tek kayıt oluşturdu (${mine.length})`, mine.length === 1);
 ok("kayıt 'doğrulanmamış' (ziyaret doğrulaması yok)", !(await p1.content()).includes("ziyaretin doğrulandı"));
-const draftLeft = await p1.evaluate(() => Object.keys(localStorage).filter((k) => k.includes("taslak") || k.includes("draft")).length);
-ok("başarıdan sonra taslak silindi", draftLeft === 0, draftLeft);
+const draftLeft = await p1.evaluate((sl) => { try { return Object.keys(JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}")).includes(sl); } catch { return true; } }, SL);
+ok("başarıdan sonra bu mekânın taslağı silindi", draftLeft === false);
 const prof = await (await fetch(`${B}/mekan/${SL}/`, { headers: HB })).text();
 ok("deneyim profil sayfasında görünüyor", prof.includes(METIN.slice(0, 40)));
 ok("tek deneyimle Gidenler puanı uydurulmadı (eşik 5 yazar)", !/data-score-hero/.test(prof));
@@ -113,6 +113,7 @@ ok("tek deneyimle Gidenler puanı uydurulmadı (eşik 5 yazar)", !/data-score-he
 /* 5) AYNI KULLANICININ FARKLI ZİYARETİ / AYNI AY */
 const ay = (n) => new Date(Date.now() - n * 864e5).toISOString().slice(0, 7);
 const g = (m) => JSON.stringify({ slug: SL, body: "İkinci ziyaret: akşam saatinde gittik, sulu yemekler yine sıcaktı ama tatlılar bitmişti; garsonlar ilgiliydi.", visitMonth: m, overall: 7, ratings: {}, returnIntent: "evet", disclosure: "none" });
+await new Promise((r) => setTimeout(r, 16000)); /* gönderim kilidi 15 sn (aynı kullanıcı + mekân) */
 const r2 = await api("/api/reviews/", { method: "POST", body: g(ay(140)) });
 const r3 = await api("/api/reviews/", { method: "POST", body: JSON.stringify({ ...JSON.parse(g(mine[0]?.visitedOn?.slice(0, 7) ?? ay(1))), body: "Aynı ay için ikinci kez yazma denemesi; bu kayıt reddedilmeli çünkü aynı ziyaret ayına zaten deneyim var." }) });
 ok(`farklı ay ayrı deneyim (${r2.status}), aynı ay reddedilir (${r3.status})`, r2.status === 201 && r3.status === 409);
@@ -136,7 +137,7 @@ await c2.close();
 /* 7) BULUNAMADI → MEKÂN ÖNER (+ mükerrer) */
 const c3 = await ctxOf(390, 844, true); const p3 = await c3.newPage();
 await p3.goto(`${B}/nerede-yedin/?k=ic05`, { waitUntil: "networkidle" });
-const yok = `Test Lokantasi ${Date.now().toString(36)}`;
+const yok = `Zqvx Brtm ${Date.now().toString(36)}`;
 await p3.fill("[data-son-yemek-girdi]", yok); await p3.waitForTimeout(1000);
 ok("bulunamadı: dürüst mesaj + Mekân öner", (await p3.locator("[data-son-yemek-yok]").count()) === 1);
 await shot(p3, "bulunamadi-390");
@@ -144,11 +145,13 @@ await Promise.all([p3.waitForURL("**/nerede-yedin/oner/**"), p3.click("[data-son
 ok("öneri formu aranan adla dolu açılır", (await p3.inputValue("[data-oneri-ad]")) === yok);
 await p3.selectOption("[data-oneri-ilce]", "Üsküdar"); await p3.fill("[data-oneri-konum]", "İskele yakını");
 await shot(p3, "oneri-390-form");
-await p3.click("button:has-text('Öneriyi gönder')"); await p3.waitForSelector("[data-oneri-alindi]", { timeout: 15000 }).catch(() => {});
+const [resp] = await Promise.all([p3.waitForResponse((r) => r.url().includes("/api/mekan-oner/"), { timeout: 15000 }).catch(() => null), p3.click("button:has-text('Öneriyi gönder')")]);
+if (resp && resp.status() !== 201) console.log("öneri yanıtı", resp.status(), (await resp.text().catch(() => "")).slice(0, 200));
+await p3.waitForSelector("[data-oneri-alindi]", { timeout: 15000 }).catch(() => {});
 const alindi = await p3.locator("[data-oneri-alindi]").innerText().catch(() => "");
 ok("öneri alındı mesajı dürüst: yayımlanmaz, Google puanı almaz", alindi.includes("yayımlanmaz") && alindi.includes("Google puanı almaz"));
-await p3.fill("textarea[aria-label='Deneyim taslağı']", "Önerdiğim yer için şimdiden yazdığım kısa deneyim taslağı.");
-await p3.click("button:has-text('Bu cihazda sakla')");
+if (alindi) await p3.fill("textarea[aria-label='Deneyim taslağı']", "Önerdiğim yer için şimdiden yazdığım kısa deneyim taslağı.");
+if (alindi) await p3.click("button:has-text('Bu cihazda sakla')");
 ok("öneri sırasında deneyim taslağı yalnız bu cihazda saklandı", (await p3.locator("[data-oneri-taslak]").count()) === 1);
 await shot(p3, "oneri-390-alindi");
 await p3.goto(`${B}/nerede-yedin/oner/?ad=${encodeURIComponent("Çiya Sofrası")}`, { waitUntil: "networkidle" });
