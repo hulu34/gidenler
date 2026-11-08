@@ -143,13 +143,21 @@ export async function realBoard(): Promise<RealBoard> {
   const talk = once(talked.filter((x) => x.n >= 2).slice(0, L).map((x) => itemOf(x.slug, `${x.n} deneyim · 30 gün`, scores[x.slug]?.score ?? null, x.n)).filter(ok));
   const gUp = changes.rising.map((c) => itemOf(c.slug, `▲ ${f1(c.from)} → ${f1(c.to)} · ${c.days} gün`)).filter(ok).map((x) => ({ ...x, delta: 1 }));
   const gDown = changes.falling.map((c) => itemOf(c.slug, `▼ ${f1(c.from)} → ${f1(c.to)} · ${c.days} gün`)).filter(ok).map((x) => ({ ...x, delta: -1 }));
-  /* yedek keşif listeleri — SIRALAMA DEĞİL, açıkça etiketli */
+  /* yedek keşif listeleri — SIRALAMA DEĞİL, açıkça etiketli. Doluymuş izlenimi vermesin: En İyiler'deki mekânları ve
+     birbirini TEKRAR ETMEZ, en çok FALLBACK_N kayıt. */
+  const FALLBACK_N = HOME_LIST.mobileCollapsed;
+  const fbUsed = new Set<string>([...(top.find((c) => c.key === "hepsi")?.items ?? []).map((x) => x.slug), ...used]);
+  const fb = (xs: RankItem[]) => xs.filter((x) => (fbUsed.has(x.slug) ? false : (fbUsed.add(x.slug), true))).slice(0, FALLBACK_N);
   const profilePick = balancedProfiles(profiles, L).map((s) => itemOf(s, "kaynaklı profil")).filter(ok);
   const perDistrict = (() => { const seen = new Set<string>(); return (top.find((c) => c.key === "hepsi")?.items ?? []).length ? activeEntities.filter((e) => gmap[e.slug] && e.categoryId === "cat.restaurant" && !HOME_SKIP.has(e.slug) && !/sosyal tesis/i.test(e.name))
     .sort((a, c) => gmap[c.slug]!.rating - gmap[a.slug]!.rating || a.name.localeCompare(c.name, "tr"))
     .filter((e) => { const d = e.location?.district ?? ""; if (seen.has(d)) return false; seen.add(d); return true; }).slice(0, L)
     .map((e) => itemOf(e.slug, "semtinin en yüksek Google puanlısı")).filter(ok) : []; })();
   const sourcedHigh = profilePick.filter((x) => (x.google?.rating ?? 0) >= 4.3);
+  /* sıra önemli: önce Hype (kaynaklı + yüksek), sonra Popüler (kalan kaynaklı), sonra semt listesi — hiçbiri tekrar etmez */
+  const fbHype = hype.length ? [] : fb(sourcedHigh);
+  const fbPopular = popular.length ? [] : fb(profilePick);
+  const fbDistrict = gUp.length ? [] : fb(perDistrict);
   const readyDay = changes.readyAt ? dShort(changes.readyAt) : null;
   const gNote = `Google puanı değişimi için aynı mekânın en az 7 gün arayla iki doğrulanmış okuması gerekir. Geçmiş ${changes.firstAt ? `${dShort(changes.firstAt)} tarihinde başladı; ilk karşılaştırma ${readyDay}` : "henüz yok"}.`;
   const newest = Object.values(gmap).reduce<string | null>((m, g) => (!m || g.checkedAt > m ? g.checkedAt : m), null);
@@ -160,15 +168,15 @@ export async function realBoard(): Promise<RealBoard> {
     sections: [
       { key: "popular", title: "Haftanın popülerleri", window: "Son 7 gün", hint: "Gidenler'deki gerçek profil ziyareti, kaydetme ve yönlendirmeler; aynı kişinin aynı gün tekrarı tek sayılır.", items: popular, signalKind: "text",
         note: popular.length ? null : b?.reason.popular ?? "Etkileşim ölçümü yeni başladı; yeterli gerçek veri oluşunca liste açılır.",
-        fallback: popular.length ? null : { title: "Kaynaklı profiller", items: profilePick } },
+        fallback: popular.length ? null : { title: "Kaynaklı profiller", items: fbPopular } },
       { key: "hype", title: "En hype mekânlar", window: "Niyet · 7 gün", hint: "Kaydetme / gitmek istiyorum, yol tarifi ve arama, yayımlanan deneyim — profil bakışı değil, gitme niyeti. Google'ın toplam değerlendirme sayısı hype değildir.", items: hype, signalKind: "text",
         note: hype.length ? null : b?.hypeReason ?? "Gitme niyeti sinyalleri yeterli olunca liste açılır.",
-        fallback: hype.length ? null : { title: "Kaynaklı ve Google'da 4,3+", items: sourcedHigh.length >= 3 ? sourcedHigh : profilePick } },
+        fallback: hype.length ? null : { title: "Kaynaklı ve Google'da 4,3+", items: fbHype } },
       { key: "talked", title: "En çok konuşulanlar", window: "Son 30 gün", hint: "Son 30 günde yayımlanan gerçek Gidenler deneyimi sayısı.", items: talk, signalKind: "text",
         note: talk.length ? null : "Son 30 günde iki ya da daha çok deneyim yazılan mekân henüz yok. İlk deneyimi sen yaz." },
       { key: "rising", title: "Yükselenler", window: "Google puanı", hint: "Google puanındaki gerçek değişim (iki doğrulanmış okuma, en az 7 gün arayla). Gidenler ilgisi ayrı sekmede.", items: gUp, signalKind: "trend",
         tabs: [
-          { key: "g", label: "Google puanı", items: gUp, note: gUp.length ? null : gNote, fallback: gUp.length ? null : { title: "Her semtin en yüksek Google puanlısı", items: perDistrict } },
+          { key: "g", label: "Google puanı", items: gUp, note: gUp.length ? null : gNote, fallback: gUp.length ? null : { title: "Her semtin en yüksek Google puanlısı", items: fbDistrict } },
           { key: "i", label: "Gidenler ilgisi", items: interest, note: interest.length ? null : b?.reason.rising ?? "İlgi artışı için iki tam haftalık gerçek etkileşim verisi gerekir." },
         ] },
       { key: "falling", title: "Düşenler", window: "Google puanı", hint: "Google puanındaki gerçek düşüş (iki doğrulanmış okuma, en az 7 gün arayla).", items: gDown, signalKind: "trend",

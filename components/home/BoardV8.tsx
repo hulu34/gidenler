@@ -58,10 +58,8 @@ function List({ items, trend = false, plain = false }: { items: RankItem[]; tren
               <span className="tnum text-[11.5px] font-bold text-ink-3">{plain ? "·" : String(i + 1).padStart(2, "0")}</span>
               <span className="flex min-w-0 flex-col gap-0.5">
                 <span className="truncate text-[15px] font-semibold leading-tight tracking-[-0.015em] group-hover:text-accent-ink">{it.name}</span>
-                <span className="truncate text-[11px] leading-tight text-ink-3">
-                  {it.place}
-                  {it.signal && !plain ? <span className={`tnum ml-1.5 font-semibold ${trend ? (it.delta > 0 ? "text-pos-ink" : it.delta < 0 ? "text-neg-ink" : "") : "text-ink-2"}`}>· {it.signal}</span> : null}
-                </span>
+                <span className="truncate text-[11px] leading-tight text-ink-3">{it.place}</span>
+                {it.signal && !plain ? <span className={`tnum truncate text-[11px] font-semibold leading-tight ${trend ? (it.delta > 0 ? "text-pos-ink" : it.delta < 0 ? "text-neg-ink" : "text-ink-2") : "text-ink-2"}`}>{it.signal}</span> : null}
               </span>
               <span className="flex shrink-0 items-center gap-3">
                 {it.score != null && <span className="flex flex-col items-end leading-none"><ScoreNumber score={it.score} size="sm" /><span className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em] text-ink-3">Gidenler</span></span>}

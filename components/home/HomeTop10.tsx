@@ -21,7 +21,7 @@ export function HomeTop10({ cats, total, newest }: { cats: GCategory[]; total: n
   const c = cats.find((x) => x.key === key) ?? cats[0];
   if (!c) return null;
   return (
-    <section aria-labelledby="h-eniyiler" data-siralama data-ana-siralama className="flex flex-col">
+    <section aria-labelledby="h-eniyiler" data-siralama data-ana-siralama className="flex min-w-0 flex-col">
       <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-t-2 border-line-strong pt-3">
         <div className="min-w-0">
           <p className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-ink-3">En iyiler · Top {HOME_LIST.size}</p>
