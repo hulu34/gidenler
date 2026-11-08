@@ -92,6 +92,12 @@ export function SonYemekArama({ variant, autoFocus = false }: { variant: "home" 
         {q && <button type="button" aria-label="Temizle" onClick={() => { setQ(""); setHits(null); }} className="h-9 w-9 shrink-0 rounded-full text-[18px] text-ink-3 hover:text-ink">×</button>}
       </div>
 
+      {open && hits.length > 0 && (
+        <p className="mt-2 flex items-center justify-between gap-3 px-1 text-[12.5px] text-ink-2">
+          <span>{hits.length} sonuç · gittiğin yeri seç</span>
+          <Link href={suggestHref} data-son-yemek-oner-ust className="font-semibold underline decoration-line-2 underline-offset-4 hover:decoration-ink">Listede yok mu? Mekân öner</Link>
+        </p>
+      )}
       <div aria-live="polite" className="sr-only">{open ? (hits.length ? `${hits.length} restoran bulundu` : "Restoran bulunamadı") : ""}</div>
       {open && (
         <div className="mt-2 overflow-hidden rounded-[14px] border border-line-strong bg-paper" data-son-yemek-sonuc>
