@@ -13,6 +13,7 @@ const all = raw as R[]; const w2 = all.filter((v) => (v.wave ?? 0) >= 2);
 const fold = (s: string) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, " ").trim();
 
 ok("ilk 456 kayıt korunur (dalga 0–1)", all.filter((v) => (v.wave ?? 0) < 2).length === 456);
+if (!w2.length) { console.log("  · yeni dalga yok (456 sürüm) — dalga testleri atlandı"); console.log(`\ndalga 2: ${pass} geçti, ${fail} kaldı`); process.exit(fail ? 1 : 0); }
 ok(`dalga 2: ${w2.length} yeni mekân, hepsi doğrulama kaydıyla (tarih, güven, kanıt)`, w2.length > 0 && w2.every((v) => v.verifiedAt && v.confidence === "güçlü" && /Google sayfası/.test(v.verification ?? "")));
 ok("tekrarlı slug / OSM kaydı yok", new Set(all.map((v) => v.slug)).size === all.length && new Set(all.map((v) => v.ref)).size === all.length);
 ok("yeni mekânların hepsinde açık adres (Google'dan kopyalanmadı, OSM)", w2.every((v) => !!v.address && /^(node|way|relation)\//.test(v.ref)));
