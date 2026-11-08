@@ -14,7 +14,9 @@ import { DEMO_VISIBLE } from "@/data/entities";
 import { isRestaurantTarget, realVenueRecords } from "@/data/real";
 import { AskAI } from "@/components/home/AskAI";
 import { QuickFind } from "@/components/home/HomeSecki";
-import { HomeSor } from "@/components/home/HomeSor";
+import { HomeSorCompact } from "@/components/home/HomeSor";
+import { googleRatingMap } from "@/lib/gpuan/read";
+import { activeEntities } from "@/data/real";
 import { HomeDiscover } from "@/components/home/HomeDiscover";
 import { RealBoard } from "@/components/home/RealBoard";
 import { ContinueModule } from "@/components/decision/ContinueModule";
@@ -50,13 +52,16 @@ function homeData(): HomeData {
 
 export const metadata = { alternates: { canonical: "/" } };
 
-export default function HomePage() {
+export default async function HomePage() {
   const data = homeData();
   const all = listCards();
   const istanbulCount = all.filter(inIstanbul).length;
   const realRestaurants = realVenueRecords.filter(isRestaurantTarget).length;
   const creators = listCreators();
   const last = lastPeriodVolume();
+  const gmap = DEMO_VISIBLE ? {} : await googleRatingMap();
+  const gCount = activeEntities.filter((e) => gmap[e.slug]).length;
+  const dCount = new Set(activeEntities.map((e) => e.location?.district).filter(Boolean)).size;
 
   return (
     <>
@@ -95,29 +100,39 @@ export default function HomePage() {
           </div>
         </section>
       ) : (
-        /* GERÇEK SİTE: ilk ekranın merkezi Sor Gidenler (gerçek /sor, Groq Beta). Tek mekân vitrini yok. */
-        <section className="relative isolate overflow-hidden border-b border-line" data-ana-hero>
-          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_60%_at_50%_0%,var(--accent-soft),transparent_70%)] opacity-70" />
-          <div className="mx-auto flex max-w-[1180px] flex-col items-center px-4 pb-10 pt-8 text-center sm:px-7 sm:pb-16 sm:pt-20">
-            <p className="rise inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-ink-3">
-              <i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />Sor Gidenler · İstanbul
-            </p>
-            <h1 className="rise mt-3 text-[clamp(2.6rem,9vw,5.75rem)] font-extrabold leading-[0.92] tracking-[-0.055em] sm:mt-4" style={{ animationDelay: "60ms" }}>
-              Nereye gitsek?
-            </h1>
-            <p className="rise mt-3 max-w-[44ch] font-[family-name:var(--font-read)] text-[clamp(1rem,2vw,1.25rem)] leading-[1.4] text-ink-2 sm:mt-4" style={{ animationDelay: "120ms" }}>
-              Ne istediğini kendi cümlenle yaz; {nf(realRestaurants)} gerçek restoran arasından sana uyanları gerekçesiyle önerelim.
-            </p>
-            <div className="rise mt-5 flex w-full flex-col items-center gap-5 text-left sm:mt-8" style={{ animationDelay: "180ms" }}>
-              <HomeSor />
+        /* GERÇEK SİTE (V8): kompakt üst alan — marka + gerçek sayılar solda, tek satır Sor Gidenler sağda.
+           Sor ilk ekranı doldurmaz; masaüstünde ilk ekranda En İyiler başlar. */
+        <section className="relative isolate border-b border-line" data-ana-hero>
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_90%_at_0%_0%,var(--accent-soft),transparent_65%)] opacity-60" />
+          <div className="mx-auto grid max-w-[1180px] items-end gap-x-12 gap-y-5 px-5 pb-6 pt-6 sm:px-7 sm:pb-8 sm:pt-9 lg:grid-cols-[1.08fr_1fr]">
+            <div className="min-w-0">
+              <p className="tnum flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-3">
+                <span className="inline-flex items-center gap-1.5"><i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />İstanbul</span>
+                <span aria-hidden>·</span><span>{nf(activeEntities.length)} gerçek mekân</span>
+                <span aria-hidden>·</span><span>{nf(gCount)} Google puanı</span>
+                <span aria-hidden>·</span><span>{dCount} semt</span>
+              </p>
+              <h1 className="mt-2.5 text-[clamp(2.1rem,4.9vw,3.6rem)] font-extrabold leading-[0.95] tracking-[-0.05em]">
+                Nereye gidelim? <span className="font-[family-name:var(--font-brand)] font-normal italic tracking-[-0.02em] text-accent-ink">Gidenler bilir.</span>
+              </h1>
+              <p className="mt-2.5 max-w-[52ch] font-[family-name:var(--font-read)] text-[clamp(1rem,1.6vw,1.15rem)] leading-[1.4] text-ink-2">
+                İstanbul&apos;un restoranları: sıralamalar, doğrulanmış Google puanları ve gidenlerin kendi deneyimleri.
+              </p>
+              <nav aria-label="Bölümler" className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[12.5px] font-semibold">
+                <a href="#h-eniyiler" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">En iyiler</a>
+                <a href="#h-popular" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Popülerler</a>
+                <a href="#h-rising" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Yükselenler</a>
+                <a href="#h-explore" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Semtler</a>
+              </nav>
             </div>
+            <HomeSorCompact />
           </div>
         </section>
       )}
 
       {DEMO_VISIBLE && <Ticker />}
 
-      <div className="mx-auto flex max-w-[1180px] flex-col gap-20 px-5 pb-20 pt-14 sm:px-7">
+      <div className={`mx-auto flex max-w-[1180px] flex-col px-5 pb-20 sm:px-7 ${DEMO_VISIBLE ? "gap-20 pt-14" : "gap-14 pt-6 sm:gap-16 sm:pt-8"}`}>
         {/* en iyiler · en çok konuşulanlar · yükselişte… — önceki sürümün kalbi, aynen ve en üstte */}
         {/* Demo kapalıyken (varsayılan) yalnız gerçek veriye dayanan modüller; sıralama, yükselenler, semt hacmi
             gerçek deneyimler biriktiğinde açılır. */}
@@ -130,8 +145,8 @@ export default function HomePage() {
         {/* Seçki ana sayfada tek yazıyla öne çıkarılmaz (yalnız birden çok yayımlanmış yazı olunca); /seckisi/ aynen kalır. */}
         {/* gerçek site: demodaki pano tasarımı gerçek veriyle (popüler, en yüksek puan, konuşulan, yükselen, kaynaklı, sana göre) */}
         {!DEMO_VISIBLE && <RealBoard />}
-        {DEMO_VISIBLE ? <RealVenues /> : <HomeDiscover />}
         {!DEMO_VISIBLE && <RealExplore />}
+        {DEMO_VISIBLE ? <RealVenues /> : <HomeDiscover />}
         {!DEMO_VISIBLE && <ContinueModule />}
         {DEMO_VISIBLE && <><Risers /><ScoreLies /><Districts /></>}
         <Method />

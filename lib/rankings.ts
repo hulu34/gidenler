@@ -78,6 +78,8 @@ export interface RankItem {
   score: number | null; delta: number; count: number; confidence?: string;
   /** Tek neden — kartın cümlesi. */
   reason: string;
+  /** Ana sayfa V8: doğrulanmış Google puanı (5 üzerinden). Gidenler puanından (score, 10 üzerinden) AYRIDIR. */
+  google?: { rating: number; checkedAt: string } | null;
   /** Uzman/popüler gibi bölümlere özel küçük kanıt ("3 uzman deneyimi", "son 7 günde 41 kaydetme"). */
   evidence?: string;
   /** Kompakt board için TEK destekleyici sinyal — sıralamanın nedenini söyler ("125 etkileşim", "Yüksek güven"). */

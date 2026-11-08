@@ -2,6 +2,7 @@ import { createHmac } from "node:crypto";
 import { and, gte, lt, sql } from "drizzle-orm";
 import type { Db } from "@/lib/db/client";
 import { signalEvents } from "@/lib/db/schema";
+import { HOME_LIST } from "@/lib/homeConfig";
 
 /* ──────────────────────────────────────────────────────────────────────────
    KEŞİF SİNYALLERİ — Haftanın Popülerleri ve Yükselenler yalnız GERÇEK Gidenler etkileşiminden.
@@ -23,7 +24,8 @@ export const SIGNAL_RULES = {
   minItems: 3,
   /** Yükseliş: iki tam hafta veri, önceki haftada en az bu kadar ağırlıklı sinyal, en az bu oranda ve farkta artış. */
   risingMinPrev: 3, risingMinRatio: 1.5, risingMinGain: 3,
-  limit: 5,
+  /** liste boyu: ana sayfa merkezi ayarı (Top 10) */
+  limit: HOME_LIST.size,
   keepDays: 35,
 };
 
