@@ -1,0 +1,33 @@
+# Yeni mekân adaylarını Google sayfasında doğrulama (salt okuma; hiçbir veritabanına yazmaz). 3 parça paralel.
+name: aday dogrula
+on:
+  push:
+    branches: [ops/olcum]
+permissions:
+  contents: read
+jobs:
+  dogrula:
+    if: contains(github.event.head_commit.message, '[aday-dogrula]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix: { parca: [0, 1, 2] }
+    env: { HOST: gidenler-git-feature-investor-v1-hulu34.vercel.app }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/bin-mekan, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: |
+          mkdir -p out/arama
+          if [ "${{ matrix.parca }}" = "0" ]; then export SLUGS="nabu-karakoy-beyoglu,sultan-s-inn-fatih,durusu-club-restaurant-arnavutkoy,villa-park-istanbul-beylikduzu,beykoz-belediyesi-ortacesme-lokantasi-beykoz,nostalji-cafe-ve-restaurant-sile,memnun-doner-avcilar"; export HARIC=../ops/haric.json; fi
+          cd app && ADAYLAR=../ops/aday-${{ matrix.parca }}.json npx tsx scripts/gpuan-arama.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", CIKTI: ../out/arama, BEKLEME_MS: "4000", MAX_SORGU: "2" }
+      - if: always()
+        run: test -d out/arama && tar -C out -czf out/arama.tgz arama && openssl cms -encrypt -aes256 -binary -outform DER -in out/arama.tgz -out out/arama.tgz.cms ops/olcum.pem && rm -rf out/arama out/arama.tgz
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: "aday-${{ matrix.parca }}-sifreli", path: out/arama.tgz.cms, retention-days: 30, if-no-files-found: ignore }

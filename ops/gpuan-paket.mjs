@@ -23,6 +23,12 @@ for (const x of P.yeni) {
   const r = await post({ op: "eslesme-ekle", slug: x.slug, placeId: x.placeId, note: (pre + clean(x.note)).slice(0, 500) });
   if (r.s === 200 && r.j.ok) t.yeni++; else { const e = r.j.error ?? `http_${r.s}`; t.yeniRet[e] = (t.yeniRet[e] ?? 0) + 1; }
 }
+/* ret: yanlış eşleşmenin gerekçeli reddi — mekân kaydı silinmez, Google puanı gizlenir */
+t.ret = 0;
+for (const x of P.ret ?? []) {
+  const r = await post({ op: "karar", slug: x.slug, placeId: x.placeId, decision: "ret", note: (pre + clean(x.note)).slice(0, 500) });
+  r.s === 200 && r.j.ok ? t.ret++ : t.hata++;
+}
 console.log("paket", JSON.stringify(t));
 writeFileSync("out/paket-slugs.txt", [...P.onay, ...P.yeni].map((x) => x.slug).join(","));
 process.exit(t.hata ? 1 : 0);

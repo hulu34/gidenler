@@ -1,0 +1,41 @@
+{
+ "onay": [],
+ "yeni": [],
+ "ret": [
+  {
+   "slug": "nabu-karakoy-beyoglu",
+   "placeId": "ChIJyfXzR9y5yhQRDxxnC4fVD_Q",
+   "note": "Ret (yanlış işletme türü, 8 Kasım denetimi): Google kaydı aynı adresteki otelin kaydı (ad 0,4); restoran ayrı doğrulanmalı. Mekân kaydı silinmez; doğru Google kaydı ayrıca aranır"
+  },
+  {
+   "slug": "sultan-s-inn-fatih",
+   "placeId": "ChIJKUMJAg25yhQRO0vdvEGjibc",
+   "note": "Ret (yanlış işletme türü, 8 Kasım denetimi): Google kaydı başka bir butik otel: 69 m, ad 0,45. Mekân kaydı silinmez; doğru Google kaydı ayrıca aranır"
+  },
+  {
+   "slug": "durusu-club-restaurant-arnavutkoy",
+   "placeId": "ChIJG98LgKMAoEAR12s6cY0_NF4",
+   "note": "Ret (yanlış işletme türü, 8 Kasım denetimi): Google kaydı otel/kamp tesisinin kaydı (ad 0,46), restoranın değil. Mekân kaydı silinmez; doğru Google kaydı ayrıca aranır"
+  },
+  {
+   "slug": "villa-park-istanbul-beylikduzu",
+   "placeId": "ChIJPWCOAENhtRQRib4wtDgKG1o",
+   "note": "Ret (yanlış işletme türü, 8 Kasım denetimi): Google türü düğün salonu; telefon iki kaynakta farklı. Mekân kaydı silinmez; doğru Google kaydı ayrıca aranır"
+  },
+  {
+   "slug": "beykoz-belediyesi-ortacesme-lokantasi-beykoz",
+   "placeId": "ChIJ9ec27NPKyhQRpwY-nHSZiqs",
+   "note": "Ret (yanlış işletme türü, 8 Kasım denetimi): Google kaydı belediye hizmet binası (tür belediye ofisi), 89 m. Mekân kaydı silinmez; doğru Google kaydı ayrıca aranır"
+  },
+  {
+   "slug": "nostalji-cafe-ve-restaurant-sile",
+   "placeId": "ChIJJTjdw2c7nkARnsXzWk2QImo",
+   "note": "Ret (yanlış işletme türü, 8 Kasım denetimi): Google kaydı butik otelin kaydı; puan konaklamayı da kapsar, restoran puanı olarak gösterilemez. Mekân kaydı silinmez; doğru Google kaydı ayrıca aranır"
+  },
+  {
+   "slug": "memnun-doner-avcilar",
+   "placeId": "ChIJV1wBxlegyhQRHHZbmourNrM",
+   "note": "Ret (8 Kasım denetimi): kalıcı kapalı Google kaydı eski konuma ait; işletmenin resmî sitesi aynı telefonla Avcılar da açık adres veriyor. Mekân kapalı sayılmaz"
+  }
+ ]
+}
