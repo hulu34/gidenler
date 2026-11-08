@@ -36,13 +36,13 @@ export function HomeTop10({ cats, total, newest }: { cats: GCategory[]; total: n
       <div role="tablist" aria-label="Kategori" className="no-scrollbar -mx-5 mt-3 flex gap-1.5 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
         {cats.map((x) => (
           <button key={x.key} role="tab" type="button" aria-selected={x.key === c.key} onClick={() => choose(x.key)} data-kategori={x.key}
-            className={`h-9 shrink-0 whitespace-nowrap rounded-full border px-3.5 text-[13px] font-semibold transition-colors ${x.key === c.key ? "border-ink bg-ink text-paper" : "border-line-2 text-ink-2 hover:border-ink hover:text-ink"}`}>
+            className={`h-9 shrink-0 whitespace-nowrap rounded-full border px-3 text-[12.5px] font-semibold sm:h-8 transition-colors ${x.key === c.key ? "border-ink bg-ink text-paper" : "border-line-2 text-ink-2 hover:border-ink hover:text-ink"}`}>
             {x.label} <span className={`tnum ${x.key === c.key ? "text-paper/70" : "text-ink-3"}`}>{x.pool}</span>
           </button>
         ))}
       </div>
 
-      <ol data-top10={c.key} className="mt-3 grid grid-cols-1 md:grid-flow-col md:grid-cols-2 md:grid-rows-5 md:gap-x-10">
+      <ol data-top10={c.key} className="mt-3 grid grid-cols-1 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-5 lg:gap-x-10">
         {c.items.map((r, i) => (
           <li key={r.slug} className={`border-b border-line ${i >= HOME_LIST.mobileCollapsed && !open ? "hidden md:block" : ""}`} data-top10-satir={r.slug}>
             <Link href={`/mekan/${r.slug}/`} className="group grid grid-cols-[2.4rem_minmax(0,1fr)_auto] items-center gap-x-3 py-3 transition-colors hover:bg-sheet sm:-mx-2 sm:px-2">

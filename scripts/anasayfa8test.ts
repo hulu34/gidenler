@@ -74,6 +74,8 @@ for (const N of [2000, 5000]) {
 }
 
 /* kaynak kodu kuralları */
+const hb = readFileSync("lib/homeBoard.ts", "utf8");
+ok("pano satırları (popüler, hype, konuşulan, değişim, yedek) kesin kapalıyı dışlar: itemOf HOME_SKIP", /if \(!e \|\| HOME_SKIP\.has\(slug\)\) return null;/.test(hb) && !/HOME_EXCLUDE\.has\(slug\)/.test(hb));
 const page = readFileSync("app/page.tsx", "utf8"), sor = readFileSync("components/home/HomeSor.tsx", "utf8");
 ok("kompakt Sor: aynı /sor/?q= adresine gider (ikinci motor yok, soru korunur)", /sorHref\(t\)/.test(sor) && /HomeSorCompact/.test(page) && !/fetch\(["'`]\/api\/sor/.test(sor));
 ok("demo hero (AskAI) değişmedi", /DEMO_VISIBLE \? <AskAI \/> : <QuickFind \/>/.test(page));
