@@ -1,0 +1,850 @@
+{
+ "yeni": [
+  {
+   "slug": "bi-iskembe-bayrampasa",
+   "name": "Bi' İşkembe",
+   "placeId": "ChIJB3JMfke7yhQRqK6ZGCjx7ws",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 19 m · ad 0.92"
+  },
+  {
+   "slug": "cemile-sultan-ev-yemekleri-sultanbeyli",
+   "name": "Cemile Sultan Ev Yemekleri",
+   "placeId": "ChIJPzMJJJoznkARg5rlYSDT0Qo",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 87 m · ad 1"
+  },
+  {
+   "slug": "shyra-rooftop-restaurant-fatih",
+   "name": "Shyra Rooftop Restaurant",
+   "placeId": "ChIJn5p1bvi5yhQRhAWMMN-DXVk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 3 m · ad 0.92"
+  },
+  {
+   "slug": "shvili-georgian-bistro-kadikoy",
+   "name": "Shvili - Georgian Bistro",
+   "placeId": "ChIJof2Q-aG5yhQRum7dBZ0RQp0",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 3 m · ad 1"
+  },
+  {
+   "slug": "emirgan-sutis-sariyer",
+   "name": "Emirgan Sütiş",
+   "placeId": "ChIJ-0PuY3LKyhQRwcqqzp35zfM",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 6 m · ad 1"
+  },
+  {
+   "slug": "ora-s-steak-ve-burger-uskudar",
+   "name": "Ora's Steak & Burger",
+   "placeId": "ChIJ-xextvy3yhQR4asAgEGwDTk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 9 m · ad 0.92"
+  },
+  {
+   "slug": "kuftece-beykoz",
+   "name": "Küftece",
+   "placeId": "ChIJUzrezUrKyhQRCTX8mojxjSY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 32 m · ad 0.92"
+  },
+  {
+   "slug": "tahtasaray-besiktas",
+   "name": "Tahtasaray",
+   "placeId": "ChIJncPkIGW2yhQRQ5FeEvHDXTs",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 6 m · ad 1"
+  },
+  {
+   "slug": "qubba-esenyurt",
+   "name": "Qubba",
+   "placeId": "ChIJYRAJKlKnyhQROi2m3VTNIJQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 15 m · ad 0.92"
+  },
+  {
+   "slug": "ortaklar-restoran-zeytinburnu",
+   "name": "Ortaklar Restoran",
+   "placeId": "ChIJKfqQ7SG7yhQR0-uT2aH_7WA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 13 m · ad 0.92"
+  },
+  {
+   "slug": "tarihi-cinaralti-piknik-alani-ve-restaurant-catalca",
+   "name": "Tarihi Çınaraltı Piknik Alanı & Restaurant",
+   "placeId": "ChIJKUfLup5FtRQRoeoGS_c_W3U",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 19 m · ad 0.7"
+  },
+  {
+   "slug": "kardesler-durum-bagcilar",
+   "name": "Kardeşler Dürüm",
+   "placeId": "ChIJzdhzCTqlyhQR7AXJyHLAVTk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 6 m · ad 0.92"
+  },
+  {
+   "slug": "anadolu-lokantasi-gaziosmanpasa",
+   "name": "Anadolu Lokantası",
+   "placeId": "ChIJMQ-4YISwyhQRhIae8RQkZj0",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 3 m · ad 1"
+  },
+  {
+   "slug": "abant-kahvalti-cafe-tuzla",
+   "name": "Abant Kahvaltı Cafe",
+   "placeId": "ChIJwxbkaIDZyhQRLA4sXNl3WTQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 9 m · ad 1"
+  },
+  {
+   "slug": "donerci-seyithan-usta-pendik",
+   "name": "Dönerci Seyithan Usta",
+   "placeId": "ChIJRZXy5dndyhQRVABoAtK_k4Y",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 16 m · ad 1"
+  },
+  {
+   "slug": "hakki-karakas-manti-sisli",
+   "name": "Hakkı Karakaş Mantı",
+   "placeId": "ChIJ10olVVC2yhQRfRdsh2jMv4U",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 11 m · ad 1"
+  },
+  {
+   "slug": "gorele-sakir-usta-pide-beyoglu",
+   "name": "Görele Şakir Usta Pide",
+   "placeId": "ChIJtSsTkFe3yhQRcUb3GC6jfS4",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 6 m · ad 1"
+  },
+  {
+   "slug": "fauna-atasehir",
+   "name": "Fauna",
+   "placeId": "ChIJJzwEPzvGyhQRg_Cak_PTszw",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 1"
+  },
+  {
+   "slug": "efsane-esenler",
+   "name": "Efsane",
+   "placeId": "ChIJwddU-cu6yhQRXYrtIWuDwIM",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 12 m · ad 1"
+  },
+  {
+   "slug": "durumcu-sait-usta-silivri",
+   "name": "Dürümcü Sait Usta",
+   "placeId": "ChIJVyR2BYIVtRQRL1siTtfPzEE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 43 m · ad 0.92"
+  },
+  {
+   "slug": "bizim-durum-maltepe",
+   "name": "Bizim Dürüm",
+   "placeId": "ChIJm1BuKAfHyhQRxcAs8xJmxho",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 9 m · ad 1"
+  },
+  {
+   "slug": "umut-kebap-sile",
+   "name": "Umut Kebap",
+   "placeId": "ChIJZ4E2Wk8znkAROp6FepvUgjY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 30 m · ad 1"
+  },
+  {
+   "slug": "dostlar-kebap-salonu-kartal",
+   "name": "Dostlar Kebap Salonu",
+   "placeId": "ChIJqwshDXfDyhQR8Ig24-pGz0U",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 11 m · ad 1"
+  },
+  {
+   "slug": "agababa-doner-ve-yemek-restaurant-umraniye",
+   "name": "Ağababa Döner & Yemek Restaurant",
+   "placeId": "ChIJh3iiD-PIyhQRLw_lBHCqsmA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 20 m · ad 1"
+  },
+  {
+   "slug": "mersin-tantuni-bahcelievler",
+   "name": "Mersin Tantuni",
+   "placeId": "ChIJA6hrZVijyhQR0_Bv_6lndWE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 10 m · ad 0.92"
+  },
+  {
+   "slug": "sushi-g-asian-restaurant-ve-market-sancaktepe-sancaktepe",
+   "name": "Sushi-G Asian Restaurant & Market Sancaktepe",
+   "placeId": "ChIJg1fhCT7PyhQR8MPG0NaUW9Q",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 1"
+  },
+  {
+   "slug": "avliya-bosnak-mutfagi-bayrampasa",
+   "name": "Avliya Boşnak Mutfağı",
+   "placeId": "ChIJr44gyHawyhQRxpQOEUKON_Y",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 8 m · ad 1"
+  },
+  {
+   "slug": "abooov-kebap-taner-usta-sultanbeyli",
+   "name": "Abooov kebap taner usta",
+   "placeId": "ChIJGadxP3XayhQR-9NTztiYUfQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 11 m · ad 1"
+  },
+  {
+   "slug": "karadeniz-pide-vefa-fatih",
+   "name": "Karadeniz Pide Vefa",
+   "placeId": "ChIJuQ32n4y5yhQR0r4_xiYZeyY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 6 m · ad 1"
+  },
+  {
+   "slug": "mujgan-kadikoy",
+   "name": "Müjgan",
+   "placeId": "ChIJ85_mQmy4yhQRfmlXXt9DJqQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 3 m · ad 0.92"
+  },
+  {
+   "slug": "selim-kebap-sariyer",
+   "name": "Selim Kebap",
+   "placeId": "ChIJJacP-_C1yhQRdET3pz-KucE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 137 m · ad 1"
+  },
+  {
+   "slug": "chacha-balik-uskudar",
+   "name": "Chacha Balık",
+   "placeId": "ChIJMZy0aC_JyhQR0lcxvLVhinU",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 4 m · ad 1"
+  },
+  {
+   "slug": "pasa-sofrasi-beykoz",
+   "name": "Paşa Sofrası",
+   "placeId": "ChIJDcat6xzJyhQRHfUEweWzx1M",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 2 m · ad 1"
+  },
+  {
+   "slug": "ulus-29-besiktas",
+   "name": "Ulus 29",
+   "placeId": "ChIJaxEd8Dq2yhQRsY7w6pRBbcA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 23 m · ad 1"
+  },
+  {
+   "slug": "cadde-doner-esenyurt",
+   "name": "Cadde Döner",
+   "placeId": "ChIJqyZ3BGGnyhQRDfTRoZhIkXE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 18 m · ad 0.92"
+  },
+  {
+   "slug": "serotonin-waffle-ve-sutlu-tatli-zeytinburnu",
+   "name": "Serotonin Waffle ve Sütlü Tatlı",
+   "placeId": "ChIJ5cSYVAC7yhQRc93XS9JIl98",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 8 m · ad 1"
+  },
+  {
+   "slug": "onur-pide-ve-borek-bagcilar",
+   "name": "Onur Pide & Börek",
+   "placeId": "ChIJkSbHIoqlyhQRABct3ssyrE8",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 42 m · ad 1"
+  },
+  {
+   "slug": "filizler-koftecisi-tuzla",
+   "name": "Filizler Köftecisi",
+   "placeId": "ChIJ58Dyk1fdyhQR0juVZymzoIY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 26 m · ad 0.92"
+  },
+  {
+   "slug": "kurtkoy-et-lokantasi-pendik",
+   "name": "Kurtköy Et Lokantası",
+   "placeId": "ChIJh_xoP0vbyhQR8CGWBCobsTQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 11 m · ad 1"
+  },
+  {
+   "slug": "meat-ve-meet-sisli",
+   "name": "Meat & Meet",
+   "placeId": "ChIJl9CvkBC3yhQRywUydsKHjNY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 13 m · ad 0.92"
+  },
+  {
+   "slug": "guney-beyoglu",
+   "name": "Güney",
+   "placeId": "ChIJ5TYgDOe5yhQRPTJJA3k02mE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 6 m · ad 1"
+  },
+  {
+   "slug": "sapa-atasehir",
+   "name": "Sapa",
+   "placeId": "ChIJ7z-nJN3HyhQRLfUgrxL0xHg",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 11 m · ad 1"
+  },
+  {
+   "slug": "tadi-bafra-maltepe",
+   "name": "Tadı Bafra",
+   "placeId": "ChIJmd_gjznHyhQRibigThVuVoY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 13 m · ad 0.92"
+  },
+  {
+   "slug": "koz-kanat-kartal",
+   "name": "Köz Kanat",
+   "placeId": "ChIJ96JAtZHDyhQRNx_fxkh0S2E",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 7 m · ad 1"
+  },
+  {
+   "slug": "avliya-bosnak-mutfagi-2-bayrampasa",
+   "name": "Avliya Boşnak Mutfağı 2",
+   "placeId": "ChIJw5ZjYb6xyhQRsJ8sWQazQt8",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 1 m · ad 1"
+  },
+  {
+   "slug": "diyar-lokantasi-sultanbeyli",
+   "name": "Diyar Lokantası",
+   "placeId": "ChIJT0BNfZLQyhQRiOf_463hATg",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 7 m · ad 1"
+  },
+  {
+   "slug": "buryan-kebap-ve-izgara-salonu-fatih",
+   "name": "Buryan Kebap Ve Izgara Salonu",
+   "placeId": "ChIJHemr9ri7yhQRjXhEMPwfKik",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 14 m · ad 1"
+  },
+  {
+   "slug": "sushico-kalamis-kadikoy",
+   "name": "SushiCo Kalamış",
+   "placeId": "ChIJA8plA364yhQR0vqovx7QR-M",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 7 m · ad 0.92"
+  },
+  {
+   "slug": "by-balikci-sariyer",
+   "name": "By Balıkçı",
+   "placeId": "ChIJr-TJMVW1yhQRS_dwgcKW4VM",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 13 m · ad 0.92"
+  },
+  {
+   "slug": "atistir-1989-besiktas",
+   "name": "Atıştır 1989",
+   "placeId": "ChIJnWs5ZHW3yhQRSSoozKAXwns",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 4 m · ad 0.92"
+  },
+  {
+   "slug": "lezzethane-esenyurt",
+   "name": "Lezzethane",
+   "placeId": "ChIJsyrqgXmhyhQRk4Z1tVjuzOE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 1 m · ad 0.92"
+  },
+  {
+   "slug": "akcay-doner-zeytinburnu",
+   "name": "Akçay Döner",
+   "placeId": "ChIJG4cAqny7yhQRsvJP3Yk1XEU",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 40 m · ad 1"
+  },
+  {
+   "slug": "cotanak-pide-bagcilar",
+   "name": "Çotanak pide",
+   "placeId": "ChIJE0HEdyilyhQRtV8bEj91Iys",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 1"
+  },
+  {
+   "slug": "yesilim-lahmacun-kebap-pendik",
+   "name": "Yeşilim Lahmacun kebap",
+   "placeId": "ChIJ0XJuYa3cyhQRZNGJUCd6mtI",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 0.95"
+  },
+  {
+   "slug": "kristal-ocakbasi-sisli",
+   "name": "Kristal Ocakbaşı",
+   "placeId": "ChIJkW_6FBK3yhQRiJOln-bYbEw",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 80 m · ad 1"
+  },
+  {
+   "slug": "novas-hagiasophia-beyoglu",
+   "name": "Novas Hagiasophia",
+   "placeId": "ChIJGY03yYndyhQRwVpIlVEXQKo",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 7 m · ad 1"
+  },
+  {
+   "slug": "the-hunger-atasehir",
+   "name": "The Hunger",
+   "placeId": "ChIJf6gu_WXJyhQRjN_EJwxXHLg",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 19 m · ad 1"
+  },
+  {
+   "slug": "selami-karakelle-altin-eldiven-balik-ve-durum-evi-maltepe",
+   "name": "Selami Karakelle Altın Eldiven Balık ve Dürüm Evi",
+   "placeId": "ChIJ1Xu-HuPGyhQRn4yUCyNSKZU",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 9 m · ad 0.95"
+  },
+  {
+   "slug": "mis-doner-kartal",
+   "name": "Mis Döner",
+   "placeId": "ChIJzUD4JLTEyhQRxWrQIADr5Rk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 20 m · ad 1"
+  },
+  {
+   "slug": "tiryaki-kebap-sultanbeyli",
+   "name": "Tiryaki kebap",
+   "placeId": "ChIJe5iloZ_QyhQRq-VRm-4AAxU",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 6 m · ad 1"
+  },
+  {
+   "slug": "akcicek-doner-fatih",
+   "name": "Akçiçek doner",
+   "placeId": "ChIJH8YtihC6yhQRtLPdVSPCQcA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 1 m · ad 0.88"
+  },
+  {
+   "slug": "yeni-meyhane-kadikoy",
+   "name": "Yeni Meyhane",
+   "placeId": "ChIJdyPCGma4yhQRKGW0zo5pgKM",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 2 m · ad 1"
+  },
+  {
+   "slug": "oz-doydum-kebap-sariyer",
+   "name": "Öz Doydum Kebap",
+   "placeId": "ChIJ5UHcB9e1yhQRsfO3POkOPt4",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 13 m · ad 1"
+  },
+  {
+   "slug": "sanda-tiryaki-ocakbasi-restaurant-besiktas",
+   "name": "Şanda Tiryaki Ocakbaşı Restaurant",
+   "placeId": "ChIJwejoKCS2yhQRZup-O8wQqDQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 193 m · ad 0.9"
+  },
+  {
+   "slug": "gencler-kebab-zeytinburnu",
+   "name": "Gencler kebab",
+   "placeId": "ChIJG_l72527yhQRBPD0EKE8IwA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 21 m · ad 0.92"
+  },
+  {
+   "slug": "meydan-pide-bagcilar",
+   "name": "Meydan pide",
+   "placeId": "ChIJgSmkDGClyhQRPwHQht46Dcg",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 6 m · ad 0.92"
+  },
+  {
+   "slug": "ozgun-kokorec-pendik",
+   "name": "Özgün Kokoreç",
+   "placeId": "ChIJWz71kkHbyhQRlmsZYeS-PW0",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 56 m · ad 1"
+  },
+  {
+   "slug": "adana-dostlar-kebap-atasehir",
+   "name": "Adana Dostlar Kebap",
+   "placeId": "ChIJDz_8WDHGyhQRtFwVYvkh8_c",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 16 m · ad 0.92"
+  },
+  {
+   "slug": "turuncu-doner-salonu-sultanbeyli",
+   "name": "Turuncu Döner Salonu",
+   "placeId": "ChIJxbp982DQyhQR9DnqEhJBcWY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 34 m · ad 0.92"
+  },
+  {
+   "slug": "cagdash-lokanta-fatih",
+   "name": "Çagdash lokanta",
+   "placeId": "ChIJ2aTLdCS6yhQRPBkjG00Pigk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 37 m · ad 0.92"
+  },
+  {
+   "slug": "fornello-pizzeria-kadikoy",
+   "name": "Fornello Pizzeria",
+   "placeId": "ChIJm38uvWe4yhQRua6qqHi9qgA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 3 m · ad 0.83"
+  },
+  {
+   "slug": "sezen-meyhanesi-besiktas",
+   "name": "Sezen Meyhanesi",
+   "placeId": "ChIJhfwwH5m3yhQRhdsTd5cxfzc",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 10 m · ad 0.92"
+  },
+  {
+   "slug": "ezgim-et-zeytinburnu",
+   "name": "Ezgim Et",
+   "placeId": "ChIJl7Kq4_66yhQRcua-6E-SD5k",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 4 m · ad 1"
+  },
+  {
+   "slug": "salkim-doner-bagcilar",
+   "name": "Salkım döner",
+   "placeId": "ChIJW433KNukyhQRFc728ZqUL_M",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 8 m · ad 1"
+  },
+  {
+   "slug": "dream-lounge-pendik",
+   "name": "Dream Lounge",
+   "placeId": "ChIJF_raNOLDyhQRn8i-01VgS6o",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 13 m · ad 1"
+  },
+  {
+   "slug": "bizim-lokanta-atasehir",
+   "name": "Bizim Lokanta",
+   "placeId": "ChIJ1W3U9lzHyhQRIPHqXdtqtnU",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 8 m · ad 1"
+  },
+  {
+   "slug": "bereket-li-pide-sultanbeyli",
+   "name": "Bereket'li Pide",
+   "placeId": "ChIJsW_oIUXQyhQRqVD87CsVC74",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 7 m · ad 1"
+  },
+  {
+   "slug": "yesilkoy-tavuk-ve-tavuk-fatih",
+   "name": "Yeşilköy Tavuk&Tavuk",
+   "placeId": "ChIJr3BJufa5yhQRkREPoI-Avs0",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 5 m · ad 1"
+  },
+  {
+   "slug": "ken-sushi-kadikoy",
+   "name": "Ken Sushi",
+   "placeId": "ChIJJ-0KUjDHyhQRiIj4mhw6TaM",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 6 m · ad 0.92"
+  },
+  {
+   "slug": "sans-besiktas",
+   "name": "Sans",
+   "placeId": "ChIJi8SzOmm2yhQRPaPBOZdbL7I",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 3 m · ad 1"
+  },
+  {
+   "slug": "gumussuyu-et-lokantasi-zeytinburnu",
+   "name": "Gümüşsuyu Et Lokantası",
+   "placeId": "ChIJQe9TbFe6yhQRXO4B-CrXgw0",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 11 m · ad 0.92"
+  },
+  {
+   "slug": "aziz-usta-bagcilar",
+   "name": "Aziz usta",
+   "placeId": "ChIJvbzQzGGlyhQRbAMVdT4BDfc",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 2 m · ad 0.92"
+  },
+  {
+   "slug": "dayi-kurek-lahmacun-pendik",
+   "name": "Dayı Kürek Lahmacun",
+   "placeId": "ChIJhed0EhHayhQRcbSHJHTeG9M",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 10 m · ad 0.92"
+  },
+  {
+   "slug": "isot-lahmacun-ve-kebap-atasehir",
+   "name": "İsot Lahmacun & Kebap",
+   "placeId": "ChIJ6wB_0EnGyhQRZqf2dFVFOJ4",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 1 m · ad 0.92"
+  },
+  {
+   "slug": "alioglu-doner-evi-sultanbeyli",
+   "name": "Alioğlu döner evi",
+   "placeId": "ChIJOwWS4xLQyhQRpwztW9ZOJvY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 40 m · ad 0.76"
+  },
+  {
+   "slug": "fasuli-fatih",
+   "name": "Fasuli",
+   "placeId": "ChIJj5MQ0dK7yhQRtiynUUVOJAg",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 8 m · ad 0.92"
+  },
+  {
+   "slug": "reis-doner-kadikoy",
+   "name": "Reis Döner",
+   "placeId": "ChIJK5n95dTHyhQRRnwtUj34RLY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 34 m · ad 0.92"
+  },
+  {
+   "slug": "white-pepper-besiktas",
+   "name": "White Pepper",
+   "placeId": "ChIJ7UQ0AwC3yhQRPIHJNx1nFqg",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 27 m · ad 1"
+  },
+  {
+   "slug": "konak-bagcilar",
+   "name": "Konak",
+   "placeId": "ChIJ2eWy-U2lyhQR4k-ht9VEjQ8",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 10 m · ad 0.92"
+  },
+  {
+   "slug": "gaziburma-pendik",
+   "name": "Gaziburma",
+   "placeId": "ChIJ14MLW63cyhQRNClEEFnI1Io",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 2 m · ad 0.92"
+  },
+  {
+   "slug": "saray-muhallebicisi-atasehir",
+   "name": "Saray Muhallebicisi",
+   "placeId": "ChIJEf2aDTHGyhQRA21pFXg_2K0",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 75 m · ad 0.92"
+  },
+  {
+   "slug": "kadioglu-yemek-doner-sultanbeyli",
+   "name": "Kadıoğlu yemek . döner",
+   "placeId": "ChIJBQPZC2_QyhQRAA-NDD2wgak",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 6 m · ad 0.92"
+  },
+  {
+   "slug": "ewan-restaurant-fatih",
+   "name": "Ewan Restaurant",
+   "placeId": "ChIJczCF0Si6yhQRNfa9p0DEwM4",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 4 m · ad 0.92"
+  },
+  {
+   "slug": "adana-ocakbasi-suadiye-kadikoy",
+   "name": "Adana Ocakbaşı Suadiye",
+   "placeId": "ChIJa9050Q_HyhQRzw2nRXiLFhQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 12 m · ad 1"
+  },
+  {
+   "slug": "star-kofte-besiktas",
+   "name": "Star Köfte",
+   "placeId": "ChIJV1y2Q1G2yhQRSBNmcdneejY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 9 m · ad 1"
+  },
+  {
+   "slug": "bagdatli-ocakbasi-bagcilar",
+   "name": "Bağdatli ocakbaşı",
+   "placeId": "ChIJt8kXiNO6yhQRgEkpZ0b2W9s",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 7 m · ad 0.92"
+  },
+  {
+   "slug": "intiba-doner-pendik",
+   "name": "İntiba Döner",
+   "placeId": "ChIJzSY5x6vZyhQR3U_8jHB2dOI",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 11 m · ad 0.92"
+  },
+  {
+   "slug": "nfc-pide-ve-borek-atasehir",
+   "name": "NFC Pide & Börek",
+   "placeId": "ChIJiYxXbuHHyhQR9O-N4tuvFrk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 10 m · ad 0.92"
+  },
+  {
+   "slug": "nasip-et-kebap-fatih",
+   "name": "Nasip-Et kebap",
+   "placeId": "ChIJpyrFG1C5yhQRxRnbpsbrHc4",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 4 m · ad 0.89"
+  },
+  {
+   "slug": "bedri-usta-ciftehavuzlar-pide-ve-lahmacun-kadikoy",
+   "name": "Bedri Usta Çiftehavuzlar Pide & Lahmacun",
+   "placeId": "ChIJU0li0nPHyhQR5TSBFl0GyuY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 7 m · ad 0.97"
+  },
+  {
+   "slug": "arnavutkoy-balikcisi-besiktas",
+   "name": "Arnavutköy Balıkçısı",
+   "placeId": "ChIJvwSAow6ryhQRNN72GlRFtrY",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 13 m · ad 1"
+  },
+  {
+   "slug": "baba-doner-bagcilar",
+   "name": "Baba doner",
+   "placeId": "ChIJZ35iOTulyhQRpZtlzzas-qw",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 8 m · ad 0.92"
+  },
+  {
+   "slug": "hot-doner-pendik",
+   "name": "Hot Döner",
+   "placeId": "ChIJgcKFdm3byhQRasEwdHFsYM4",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 6 m · ad 0.92"
+  },
+  {
+   "slug": "cihan-derya-balik-fatih",
+   "name": "Cihan Derya Balık",
+   "placeId": "ChIJk5JMcDa6yhQRQNBslnqhIrM",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 7 m · ad 1"
+  },
+  {
+   "slug": "koyum-pide-kadikoy",
+   "name": "Köyüm Pide",
+   "placeId": "ChIJj4n6A2C4yhQRNYeYa66zayE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 10 m · ad 1"
+  },
+  {
+   "slug": "donerci-serkan-usta-besiktas",
+   "name": "Dönerci Serkan Usta",
+   "placeId": "ChIJ_TxdZtG3yhQROC1SnoI15TE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 20 m · ad 1"
+  },
+  {
+   "slug": "deliorman-kebapcisi-bagcilar",
+   "name": "Deliorman Kebapçısı",
+   "placeId": "ChIJGT1HjeWkyhQRWCKjI7V4X8g",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 28 m · ad 1"
+  },
+  {
+   "slug": "carsi-ocakbasi-fatih",
+   "name": "Çarşı Ocakbaşı",
+   "placeId": "ChIJ8VH3xJO5yhQRR55acY9etcA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 29 m · ad 1"
+  },
+  {
+   "slug": "sinop-manti-kadikoy",
+   "name": "Sinop Mantı",
+   "placeId": "ChIJI0jH3X_HyhQR54XTYBElnJk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 3 m · ad 1"
+  },
+  {
+   "slug": "diva-kebap-bagcilar",
+   "name": "Diva kebap",
+   "placeId": "ChIJyYcHGM66yhQRSGinnIa2NAA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 13 m · ad 0.92"
+  },
+  {
+   "slug": "demet-lahmacun-kebap-fatih",
+   "name": "Demet lahmacun kebap",
+   "placeId": "ChIJN0Cr5ca7yhQReQkrEY_LM64",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 14 m · ad 0.92"
+  },
+  {
+   "slug": "zeytin-ocakbasi-kadikoy",
+   "name": "Zeytin Ocakbaşı",
+   "placeId": "ChIJLZsI_YHHyhQRtKAzDWv0XNs",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 27 m · ad 0.76"
+  },
+  {
+   "slug": "fatih-citir-pide-fatih",
+   "name": "Fatih Çitir Pide",
+   "placeId": "ChIJsciEMvW5yhQR3cK45sz0104",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 15 m · ad 0.92"
+  },
+  {
+   "slug": "sushico-kadikoy",
+   "name": "SushiCo",
+   "placeId": "ChIJV-q1tODHyhQRXPH3N3v2n70",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 10 m · ad 1"
+  },
+  {
+   "slug": "karadeniz-pide-borek-salonu-fatih",
+   "name": "Karadeniz Pide-Börek Salonu",
+   "placeId": "ChIJqbuxQEq6yhQRQBEB-ohcKdc",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 38 m · ad 1"
+  },
+  {
+   "slug": "yanyali-fehmi-lokantasi-kadikoy",
+   "name": "Yanyalı Fehmi Lokantası",
+   "placeId": "ChIJgeqzQgbHyhQRKNemA3B4KoU",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 1"
+  },
+  {
+   "slug": "selam-et-lokantasi-fatih",
+   "name": "Selam Et Lokantası",
+   "placeId": "ChIJWaRRmyG6yhQR5i4n7ZAp6Vo",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 5 m · ad 1"
+  },
+  {
+   "slug": "house-of-b-kadikoy",
+   "name": "House of B",
+   "placeId": "ChIJlfKMKL3HyhQRGzxSxI6_WlA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 11 m · ad 0.92"
+  },
+  {
+   "slug": "osman-oglu-kebap-fatih",
+   "name": "Osman Oglu Kebap",
+   "placeId": "ChIJscKMa_G5yhQRIi2-GiMaVG8",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 22 m · ad 0.9"
+  },
+  {
+   "slug": "mezze-house-kadikoy",
+   "name": "Mezze House",
+   "placeId": "ChIJIQK4P37HyhQRyTQIq_gvgeA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 13 m · ad 1"
+  },
+  {
+   "slug": "cemberlitas-aksoy-donercisi-fatih",
+   "name": "Çemberlitaş Aksoy Dönercisi",
+   "placeId": "ChIJ6XHYJZG5yhQRlAdhhUyOZTs",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 0.92"
+  },
+  {
+   "slug": "saca-ocakbasi-kadikoy",
+   "name": "Saca Ocakbaşı",
+   "placeId": "ChIJaTm313_HyhQRjSZMmnq4zZI",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 15 m · ad 1"
+  },
+  {
+   "slug": "meydan-kahvalti-fatih",
+   "name": "Meydan Kahvaltı",
+   "placeId": "ChIJb2fddDW6yhQRbK6AeMUd4OU",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 9 m · ad 1"
+  },
+  {
+   "slug": "murat-kebap-kadikoy",
+   "name": "Murat Kebap",
+   "placeId": "ChIJ4wBou3XHyhQReTL-p3TOXNE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 7 m · ad 0.92"
+  },
+  {
+   "slug": "can-pide-ve-lahmacun-firini-fatih",
+   "name": "Can Pide Ve Lahmacun Fırını",
+   "placeId": "ChIJNSyj6Sy6yhQRoNMxQnlfSXQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 9 m · ad 1"
+  },
+  {
+   "slug": "bap-kadikoy",
+   "name": "Bap",
+   "placeId": "ChIJ3Q5IhbvHyhQRRISm5DZR2fA",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 0.92"
+  },
+  {
+   "slug": "cesme-doner-bufe-fatih",
+   "name": "Çeşme Döner Büfe",
+   "placeId": "ChIJS5jIQ5S5yhQRRgZqGhXmBWg",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 1"
+  },
+  {
+   "slug": "cesme-bazlama-kahvalti-kadikoy",
+   "name": "Çeşme Bazlama Kahvaltı",
+   "placeId": "ChIJWbt6HVzHyhQR2_DwbbWCoLk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 18 m · ad 0.92"
+  },
+  {
+   "slug": "kozde-kebap-fatih",
+   "name": "Kozde kebap",
+   "placeId": "ChIJufsvryS6yhQR5TyOOJVG-FI",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 1"
+  },
+  {
+   "slug": "intiba-doner-kadikoy",
+   "name": "İntiba Döner",
+   "placeId": "ChIJuU3lR4K5yhQRfnhxbSNbcLg",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 5 m · ad 0.92"
+  },
+  {
+   "slug": "serpmekoy-trabzon-koy-kahvaltisi-kadikoy",
+   "name": "Serpmeköy Trabzon Köy Kahvaltısı",
+   "placeId": "ChIJ4XJL7zXHyhQRdzSfW7r8xHE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 16 m · ad 1"
+  },
+  {
+   "slug": "valibey-kebap-ve-kunefe-kadikoy",
+   "name": "Valibey Kebap & Künefe",
+   "placeId": "ChIJtXjrGU7GyhQRxxTDmXvK-f0",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 12 m · ad 0.92"
+  },
+  {
+   "slug": "yerinde-pide-kadikoy",
+   "name": "Yerinde Pide",
+   "placeId": "ChIJF5a3QanHyhQRkAV1guLwxew",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 4 m · ad 1"
+  },
+  {
+   "slug": "perran-ocakbasi-kadikoy",
+   "name": "Perran Ocakbaşı",
+   "placeId": "ChIJL8ozwbq5yhQR_7A-YJFfVQ4",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · alan adı birebir · konum 26 m · ad 0.92"
+  },
+  {
+   "slug": "adam-s-pizza-kadikoy",
+   "name": "Adam's Pizza",
+   "placeId": "ChIJD85lpoLHyhQRdfiu8ltHEVM",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 10 m · ad 1"
+  },
+  {
+   "slug": "koco-kadikoy",
+   "name": "Koço",
+   "placeId": "ChIJ8_vWw4q4yhQRplrrbmSbCIE",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: alan adı birebir · konum 11 m · ad 1"
+  },
+  {
+   "slug": "nello-s-kadikoy",
+   "name": "Nello's",
+   "placeId": "ChIJzdocIz7HyhQRwG1JxeXuDZM",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 7 m · ad 0.92"
+  },
+  {
+   "slug": "samsun-pide-evi-kadikoy",
+   "name": "Samsun Pide Evi",
+   "placeId": "ChIJS2uz1KnHyhQRXhjsWlJNUug",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 2 m · ad 1"
+  },
+  {
+   "slug": "bafra-pide-kadikoy",
+   "name": "Bafra Pide",
+   "placeId": "ChIJ5fZFZEzGyhQRx0nzpmlJMOo",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 11 m · ad 0.92"
+  },
+  {
+   "slug": "nakkas-kebap-kadikoy",
+   "name": "Nakkaş Kebap",
+   "placeId": "ChIJ8V5xEGjHyhQR3-DY0sz1PwQ",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: konum 5 m · ad 0.92"
+  },
+  {
+   "slug": "the-wokshop-kadikoy",
+   "name": "The Wokshop",
+   "placeId": "ChIJ6cEhYyi5yhQRzvLataEwiDk",
+   "note": "Sahip onayı bekleniyor · yeni mekân (dalga 2) doğrulaması: telefon birebir · konum 4 m · ad 1"
+  }
+ ]
+}

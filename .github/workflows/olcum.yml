@@ -528,6 +528,38 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: ana-ekran-sifreli, path: ana.tgz.cms, retention-days: 14, if-no-files-found: ignore }
+  preview-bin:
+    if: contains(github.event.head_commit.message, '[preview-bin]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env: { HOST: gidenler-c54v05xgg-hulu34.vercel.app, HEDEF: preview, PAKET: ops/gpuan-paket-bin.json }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: feature/bin-mekan, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: mkdir -p out && ADIM=tohum node ops/preview-bin.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - run: node ops/gpuan-paket.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", NOT_ONEKI: "Preview (1.000 operasyonu) · " }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund && npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: mkdir -p out/gpuan && cd app && SLUGS="$(cat ../out/paket-slugs.txt)" npx tsx scripts/gpuan-guncelle.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", YENIDEN: "1", BEKLEME_MS: "4000", CIKTI: ../out/gpuan, MAX: "400" }
+      - if: always()
+        run: ADIM=denetim node ops/preview-bin.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: cp ops/gpuan-mutabakat.ts app/gpuan-mutabakat.ts && cd app && npx tsx gpuan-mutabakat.ts
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: cp ops/gpuan-ekran.mjs app/gpuan-ekran.mjs && PREVIEW_HOST=$HOST node app/gpuan-ekran.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", PROFIL: "intiba-doner-kadikoy,sinop-manti-kadikoy,emirgan-sutis-sariyer", ARAMA: "intiba" }
+      - if: always()
+        run: rm -f out/mutabakat.json; test -d out && tar -C out -czf bin.tgz . && openssl cms -encrypt -aes256 -binary -outform DER -in bin.tgz -out bin.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: preview-bin-sifreli, path: bin.tgz.cms, retention-days: 14, if-no-files-found: ignore }
   gpuan-paket-canli:
     if: contains(github.event.head_commit.message, '[gpuan-paket-canli]')
     runs-on: ubuntu-latest
