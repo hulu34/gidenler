@@ -528,6 +528,23 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: ana-ekran-sifreli, path: ana.tgz.cms, retention-days: 14, if-no-files-found: ignore }
+  ilk-kullanici:
+    if: contains(github.event.head_commit.message, '[ilk-kullanici]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env: { HOST: gidenler-llnm0qlto-hulu34.vercel.app }   # feature/ilk-kullanici 88ff053 (Preview, izole Neon)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: CIKTI=out/ilk node ops/ilk-kullanici.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: test -d out/ilk && tar -C out -czf ilk.tgz ilk && openssl cms -encrypt -aes256 -binary -outform DER -in ilk.tgz -out ilk.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: ilk-kullanici-sifreli, path: ilk.tgz.cms, retention-days: 14, if-no-files-found: ignore }
   preview-bin:
     if: contains(github.event.head_commit.message, '[preview-bin]')
     runs-on: ubuntu-latest
