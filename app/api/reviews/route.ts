@@ -4,12 +4,15 @@ import { createReview } from "@/lib/community/reviews";
 import { rulesFor } from "@/lib/community/reviewRules";
 import { H, ReviewBody, fail, guard, lockOnce, refresh } from "@/lib/community/reviewApi";
 import { countable, recordSignal } from "@/lib/signals";
+import { isCode } from "@/lib/kampanya";
+import { recordCampaign } from "@/lib/kampanya/server";
 
 /* POST /api/reviews — deneyim yayınla. Giriş zorunlu; kullanıcı başına saatte 5, aynı mekân ve aynı ziyaret ayı için tek etkin deneyim; aynı gönderimin tekrarı tek kayıt. */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const Body = ReviewBody.extend({ slug: z.string().min(1).max(120).regex(/^[a-z0-9-]+$/) }).strict();
+/* kaynak: "en son nerede yemek yedin?" akışının kampanya kodu (isteğe bağlı) — yalnız toplu sayaç; deneyime ve puana yazılmaz */
+const Body = ReviewBody.extend({ slug: z.string().min(1).max(120).regex(/^[a-z0-9-]+$/), kaynak: z.string().max(24).optional() }).strict();
 
 export async function POST(req: Request) {
   const g = await guard(req, { write: true, limit: { key: "rvc", max: 5, windowSec: 3600 } });
@@ -18,7 +21,7 @@ export async function POST(req: Request) {
   try { raw = await req.json(); } catch { return NextResponse.json({ error: "invalid_json" }, { status: 400, headers: H }); }
   const p = Body.safeParse(raw);
   if (!p.success) return NextResponse.json({ error: "invalid_body", message: "Form eksik ya da hatalı." }, { status: 400, headers: H });
-  const { slug, ...input } = p.data;
+  const { slug, kaynak, ...input } = p.data;
   const rules = rulesFor(slug);
   if (!rules) return fail("unknown_place", 404);
   if (!(await lockOnce(`${g.user.id}:${slug}`))) return NextResponse.json({ error: "busy", message: "Deneyimin zaten gönderiliyor." }, { status: 409, headers: H });
@@ -27,6 +30,10 @@ export async function POST(req: Request) {
   /* aynı gönderimin tekrarı: yeni kayıt yok, puan yeniden hesaplanmaz */
   if (r.replay) return NextResponse.json(r, { status: 200, headers: H });
   refresh(slug);
+  /* dönüşüm: yalnız sunucuda gerçekten oluşan yeni kayıt sayılır (tekrar gönderim değil); üretimde test/işletme hesabı sayılmaz */
+  const kind = (g.user as { kind?: string | null }).kind;
+  if (kaynak && isCode(kaynak) && (process.env.VERCEL_ENV !== "production" || (kind !== "test" && kind !== "business")))
+    await recordCampaign(g.db, kaynak, "tamam", req.headers).catch(() => false);
   /* keşif sinyali: yalnız yayımlanan deneyim, gerçek kullanıcı (test/işletme hesabı değil), test isteği değil */
   if (r.status === "published" && (g.user as { kind?: string | null }).kind !== "test" && (g.user as { kind?: string | null }).kind !== "business" && countable(req.headers))
     await recordSignal(g.db, { slug, kind: "review", who: [`kullanici:${g.user.id}`] }).catch(() => {});

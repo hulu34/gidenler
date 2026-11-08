@@ -606,3 +606,33 @@ export const googleRatingLock = pgTable("google_rating_lock", {
   holder: text("holder").notNull(),
   expiresAt: ts("expires_at").notNull(),
 });
+
+/* ── KAMPANYA ÖLÇÜMÜ (0009) — "İstanbul'da en son nerede yemek yedin?" akışının toplu dönüşüm sayacı.
+   Satır = (gün, kampanya kodu, adım, ziyaretçi özeti). Ziyaretçi özeti o güne özgü tuzla HMAC'tir (ham IP, kullanıcı kimliği,
+   arama metni ya da mekân saklanmaz; günler arasında eşleştirilemez). Aynı kişinin aynı gün aynı adımı tek satırdır.
+   Bu tablo hiçbir sıralamaya, sinyale ya da Gidenler puanına girmez. 120 günden eski satırlar yazma sırasında silinir. */
+export const campaignEvents = pgTable("campaign_events", {
+  day: text("day").notNull(),
+  code: text("code").notNull(),
+  step: text("step").notNull(),
+  visitor: text("visitor").notNull(),
+}, (t) => [primaryKey({ columns: [t.day, t.code, t.step, t.visitor] }), index("campaign_events_day_idx").on(t.day)]);
+
+/* ── MEKÂN ÖNERİLERİ (0009) — kullanıcı aradığı yeri bulamadığında. Öneri YAYIMLANMAZ, Google puanı almaz;
+   yönetici inceler. Aynı ad + ilçe için açık öneri varsa yeni satır açılmaz, `requests` artar.
+   status: open | accepted (doğrulama listesine alındı) | duplicate (var olan mekân) | rejected */
+export const venueSuggestions = pgTable("venue_suggestions", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  nameKey: text("name_key").notNull(),
+  district: text("district").notNull(),
+  locationNote: text("location_note"),
+  userId: text("user_id"),
+  requests: integer("requests").notNull().default(1),
+  candidates: jsonb("candidates").notNull(),
+  status: text("status").notNull().default("open"),
+  matchedSlug: text("matched_slug"),
+  decidedBy: text("decided_by"),
+  decidedAt: ts("decided_at"),
+  createdAt: created(),
+}, (t) => [index("venue_suggestions_status_idx").on(t.status, t.createdAt), index("venue_suggestions_key_idx").on(t.nameKey, t.district)]);

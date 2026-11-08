@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { searchV3 } from "@/lib/search";
+import { CLOSED_CONFIRMED } from "@/lib/closure";
 
 /* SUNUCU TARAFI ARAMA — aynı arama motoru (searchV3: Türkçe/ASCII, yazım hatası, semt, tür, ad katmanı),
    tarayıcıya bütün mekân verisi gönderilmeden. Üst menü hızlı önerisi bunu kullanır; sayfalama: offset + limit.
@@ -16,7 +17,9 @@ export function GET(req: Request) {
   const all = [...r.exact, ...r.adjacent];
   const items = all.slice(offset, offset + limit).map((h) => ({
     slug: h.card.entity.slug, name: h.card.entity.name, category: h.card.category.label,
-    district: h.card.entity.location?.district ?? null, score: h.card.score, tier: h.tier, reason: h.reason,
+    district: h.card.entity.location?.district ?? null, area: h.card.entity.location?.neighborhood ?? null,
+    address: h.card.entity.address ?? null, closed: CLOSED_CONFIRMED.has(h.card.entity.slug) || undefined,
+    score: h.card.score, tier: h.tier, reason: h.reason,
   }));
   return NextResponse.json({ q, total: all.length, offset, items }, { headers: { "cache-control": "public, s-maxage=300, stale-while-revalidate=3600" } });
 }

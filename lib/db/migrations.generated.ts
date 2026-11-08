@@ -190,5 +190,16 @@ export const MIGRATIONS: Array<{ tag: string; hash: string; statements: string[]
    "ALTER TABLE \"google_ratings\" ADD COLUMN \"hidden_reason\" text;",
    "CREATE INDEX \"google_rating_decisions_slug_idx\" ON \"google_rating_decisions\" USING btree (\"slug\",\"created_at\");"
   ]
+ },
+ {
+  "tag": "0009_kampanya_oneri",
+  "hash": "de137ee29b64f8b8589a0d65fc71ebf6256f0d83f9e822e45b1e35a18b74ac55",
+  "statements": [
+   "CREATE TABLE \"campaign_events\" (\n\t\"day\" text NOT NULL,\n\t\"code\" text NOT NULL,\n\t\"step\" text NOT NULL,\n\t\"visitor\" text NOT NULL,\n\tCONSTRAINT \"campaign_events_day_code_step_visitor_pk\" PRIMARY KEY(\"day\",\"code\",\"step\",\"visitor\")\n);",
+   "CREATE TABLE \"venue_suggestions\" (\n\t\"id\" text PRIMARY KEY NOT NULL,\n\t\"name\" text NOT NULL,\n\t\"name_key\" text NOT NULL,\n\t\"district\" text NOT NULL,\n\t\"location_note\" text,\n\t\"user_id\" text,\n\t\"requests\" integer DEFAULT 1 NOT NULL,\n\t\"candidates\" jsonb NOT NULL,\n\t\"status\" text DEFAULT 'open' NOT NULL,\n\t\"matched_slug\" text,\n\t\"decided_by\" text,\n\t\"decided_at\" timestamp with time zone,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);",
+   "CREATE INDEX \"campaign_events_day_idx\" ON \"campaign_events\" USING btree (\"day\");",
+   "CREATE INDEX \"venue_suggestions_status_idx\" ON \"venue_suggestions\" USING btree (\"status\",\"created_at\");",
+   "CREATE INDEX \"venue_suggestions_key_idx\" ON \"venue_suggestions\" USING btree (\"name_key\",\"district\");"
+  ]
  }
 ];

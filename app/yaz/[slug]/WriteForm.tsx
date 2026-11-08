@@ -8,6 +8,8 @@ import { useAccountStatus } from "@/lib/community/accountState";
 import { signInWithGoogle } from "@/lib/community/signin";
 import { authErrorMessage } from "@/lib/community/authErrors";
 import { deleteDraft, loadDraft, saveDraft, visitMonths } from "@/lib/drafts";
+import { flowCode, track } from "@/lib/kampanya/client";
+import { dropSuggestionDraft, takeSuggestionDraft, type SuggestionDraft } from "@/lib/oneri/key";
 import { Button } from "@/components/ui/Button";
 import type { CommercialRelationship, RatingDimensionDef, ReturnIntent } from "@/lib/types";
 
@@ -63,6 +65,12 @@ export function WriteForm({
   const [restored, setRestored] = useState<string | null>(null);
   /* Ay listesi tarayıcıda, bugünün tarihinden kurulur (sayfa önceden derlendiği için sunucuda kurulursa eskir). */
   const [months, setMonths] = useState<Array<[string, string]>>([]);
+  /* yazarken otomatik taslak (yalnız bu cihaz) — girişe giderken ya da sayfa kapanırsa kaybolmasın */
+  const [autoSaved, setAutoSaved] = useState<string | null>(null);
+  const [touched, setTouched] = useState(false);
+  const [sugDraft, setSugDraft] = useState<SuggestionDraft | null>(null);
+  const [showDims, setShowDims] = useState(false);
+  const [code, setCode] = useState<string | null>(null);
 
   useEffect(() => {
     const ms = visitMonths();
@@ -72,8 +80,23 @@ export function WriteForm({
       setBody(d.body); setRatings(d.ratings ?? {}); setRet(d.returnIntent ?? null); setRel(d.relationship ?? "none"); setOverall(d.overall ?? null);
       setMonth(ms.some(([k]) => k === d.month) ? d.month : ms[0][0]);
       setRestored(d.savedAt);
-    } else setMonth(ms[0][0]);
-  }, [entitySlug]);
+      if (d.ratings && Object.keys(d.ratings).length) setShowDims(true);
+    } else {
+      setMonth(ms[0][0]);
+      /* bu mekânı daha önce "Mekân öner" ile bildirip taslak yazdıysa: önerilir, kendiliğinden doldurulmaz */
+      setSugDraft(takeSuggestionDraft(entityName, district));
+    }
+    const c = flowCode(); setCode(c); track("form", c);
+  }, [entitySlug, entityName, district]);
+
+  useEffect(() => {
+    if (!touched || mine || sent) return;
+    const id = setTimeout(() => {
+      if (!body.trim() && overall === null) return;
+      if (saveDraft(entitySlug, { body, month, ratings, returnIntent: ret, relationship: rel, overall })) setAutoSaved(new Date().toISOString());
+    }, 700);
+    return () => clearTimeout(id);
+  }, [touched, mine, sent, body, month, ratings, ret, rel, overall, entitySlug]);
 
   /* Google girişi hata ile döndüyse (ör. süre aşımı): açıklama + taslağın korunduğu bilgisi; yeniden deneme düğmesi aynı. */
   useEffect(() => {
@@ -101,15 +124,18 @@ export function WriteForm({
   }, [canPublish, entitySlug]);
 
   const payload = () => ({ body, visitMonth: month, overall: regulated ? null : overall, ratings: regulated ? {} : ratings, returnIntent: ret, disclosure: rel });
+  const edit = <T,>(set: (v: T) => void) => (v: T) => { set(v); setTouched(true); };
   const keepDraft = () => saveDraft(entitySlug, { body, month, ratings, returnIntent: ret, relationship: rel, overall });
 
   async function publish() {
     setBusy(true); setError(null);
+    track("gonderim", code);
     const url = mine ? `${BASE}/api/reviews/${mine.id}/` : `${BASE}/api/reviews/`;
     const r = await fetch(url, { method: mine ? "PATCH" : "POST", credentials: "same-origin", headers: { "content-type": "application/json" },
-      body: JSON.stringify(mine ? payload() : { slug: entitySlug, ...payload() }) }).catch(() => null);
+      body: JSON.stringify(mine ? payload() : { slug: entitySlug, ...payload(), ...(code ? { kaynak: code } : {}) }) }).catch(() => null);
     const j = r ? await r.json().catch(() => null) as { status?: string; message?: string; error?: string; id?: string } | null : null;
     setBusy(false);
+    if (!r || !r.ok) track("hata", code);
     if (!r) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
     if (r.ok) {
       deleteDraft(entitySlug);
@@ -143,10 +169,8 @@ export function WriteForm({
   const steps: Array<[string, boolean]> = [
     ["Ne yaşadın", body.trim().length >= 40],
     ...(regulated ? [] : [["Genel puan", overall !== null] as [string, boolean]]),
-    ["Boyutlar", rated >= Math.min(3, dimensions.length)],
     ["Ne zaman", !!month],
     ["Tekrar", ret !== null],
-    ["Şeffaflık", true],
   ];
   const doneCount = steps.filter((x) => x[1]).length;
 
@@ -173,7 +197,7 @@ export function WriteForm({
               <Button variant="primary">{live ? "Deneyimimi sayfada gör" : "Sayfaya dön"}</Button>
             </Link>
             <Link href="/benim/"><Button variant="ghost">Katkılarım</Button></Link>
-            {live && <Link href="/ara/?yaz=1"><Button variant="ghost">Başka bir yer yaz</Button></Link>}
+            {live && <Link href="/nerede-yedin/"><Button variant="ghost">Başka bir yer yaz</Button></Link>}
           </div>
           <p className="mt-6 border-t border-line pt-3 text-[12px] text-ink-3">
             Her deneyim &ldquo;doğrulanmamış ziyaret&rdquo; olarak görünür; ziyaret doğrulama ayrı bir adımdır ve henüz açık değil.
@@ -214,10 +238,17 @@ export function WriteForm({
         </p>
         {restored && (
           <p className="flex flex-wrap items-center gap-x-3 text-[12.5px] text-ink-3">
-            <span>Kaydettiğin taslak yüklendi.</span>
+            <span data-taslak-yuklendi>{canPublish && !mine ? "Giriş yapıldı; yazdıkların yüklendi. Kontrol edip yayınla." : "Kaydettiğin taslak yüklendi."}</span>
             <button type="button" className="underline decoration-line-2 underline-offset-4 hover:text-ink" onClick={() => {
               deleteDraft(entitySlug); setRestored(null); setBody(""); setRatings({}); setRet(null); setRel("none");
             }}>Taslağı sil</button>
+          </p>
+        )}
+        {sugDraft && !restored && !mine && (
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 border-l-2 border-accent pl-3 text-[13px] text-ink-2" data-oneri-taslagi>
+            <span>Bu mekânı önerirken bu cihazda bir taslak yazmıştın.</span>
+            <button type="button" className="font-semibold text-accent-ink underline decoration-line-2 underline-offset-4" onClick={() => { setBody(sugDraft.body); setTouched(true); dropSuggestionDraft(sugDraft); setSugDraft(null); }}>Taslağı yükle</button>
+            <button type="button" className="underline decoration-line-2 underline-offset-4" onClick={() => { dropSuggestionDraft(sugDraft); setSugDraft(null); }}>Sil</button>
           </p>
         )}
       </header>
@@ -241,15 +272,16 @@ export function WriteForm({
       <section className="mt-8 border-t-2 border-line-strong pt-6">
         <textarea
           value={body}
-          onChange={(e) => setBody(e.target.value)}
-          rows={9}
+          onChange={(e) => edit(setBody)(e.target.value)}
+          rows={7}
+          data-deneyim-metin
           placeholder="Ne zaman gittin, ne sipariş ettin, ne oldu? Yıldız değil, olay anlat. Bir sonraki gidecek kişiye ne söylerdin?"
           aria-label="Deneyim metni"
           className="w-full resize-y border-b-2 border-line-2 bg-transparent pb-3 font-[family-name:var(--font-read)] text-[clamp(1.0625rem,2.4vw,1.375rem)] leading-[1.55] outline-none placeholder:text-ink-3 focus:border-accent"
         />
         <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[12.5px] text-ink-3" aria-label="Yardımcı sorular">
           {["Ne sipariş ettin?", "Ne zaman gittin?", "En iyi neydi?", "Ne kötüydü?", "Tekrar gider misin?"].map((q) => (
-            <li key={q}><button type="button" onClick={() => setBody((b) => (b.trim() ? `${b.trimEnd()}\n\n` : "") + q + " ")} className="underline decoration-line-2 underline-offset-4 hover:text-ink hover:decoration-ink">{q}</button></li>
+            <li key={q}><button type="button" onClick={() => { setTouched(true); setBody((b) => (b.trim() ? `${b.trimEnd()}\n\n` : "") + q + " "); }} className="underline decoration-line-2 underline-offset-4 hover:text-ink hover:decoration-ink">{q}</button></li>
           ))}
         </ul>
         <p className="mt-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-1 text-[12px] text-ink-3">
@@ -258,7 +290,8 @@ export function WriteForm({
             moderasyondan geçmez.
           </span>
           <span className={`tnum ${body.trim().length >= 40 ? "text-pos-ink" : ""}`}>
-            {body.trim().length} karakter
+            {body.trim().length < 40 ? `${body.trim().length}/40 karakter` : `${body.trim().length} karakter`}
+            {autoSaved && !mine && <span className="ml-2 text-ink-3" data-otomatik-taslak>· taslak bu cihazda kaydedildi</span>}
           </span>
         </p>
       </section>
@@ -269,7 +302,7 @@ export function WriteForm({
         <div className="flex flex-wrap items-center gap-4">
           <select
             value={month}
-            onChange={(e) => setMonth(e.target.value)}
+            onChange={(e) => edit(setMonth)(e.target.value)}
             aria-label="Ziyaret ayı"
             className="h-10 border-b-2 border-line-2 bg-transparent px-1 text-[17px] font-semibold outline-none focus:border-accent"
           >
@@ -290,14 +323,15 @@ export function WriteForm({
             <h2 className="label">Genel puanın</h2>
             <span className="text-[12px] text-ink-3">Zorunlu · 1 (çok kötü) – 10 (olağanüstü)</span>
           </div>
-          <div role="radiogroup" aria-label="Genel puan" className="mt-3 flex flex-wrap gap-1.5">
+          <div role="radiogroup" aria-label="Genel puan" className="mt-3 grid max-w-[520px] grid-cols-10 gap-1 sm:gap-1.5" data-genel-puan>
             {Array.from({ length: 10 }, (_, i) => i + 1).map((v) => (
-              <button key={v} type="button" role="radio" aria-checked={overall === v} aria-label={`Genel puan: ${v}`} onClick={() => setOverall(v)}
-                className={`tnum h-11 w-11 border text-[15px] font-bold ${overall === v ? "border-accent bg-accent text-on-accent" : overall && v < overall ? "border-line-2 bg-accent-soft text-ink-2" : "border-line-2 text-ink-3 hover:border-ink hover:text-ink"}`}>
+              <button key={v} type="button" role="radio" aria-checked={overall === v} aria-label={`Genel puan: ${v}`} onClick={() => edit(setOverall)(v)}
+                className={`tnum h-11 w-full min-w-0 border text-[15px] font-bold ${overall === v ? "border-accent bg-accent text-on-accent" : overall && v < overall ? "border-line-2 bg-accent-soft text-ink-2" : "border-line-2 text-ink-3 hover:border-ink hover:text-ink"}`}>
                 {v}
               </button>
             ))}
           </div>
+          <div className="mt-1.5 flex max-w-[520px] justify-between text-[11px] text-ink-3"><span>1 · çok kötü</span><span>{overall ? `Seçimin: ${overall}/10` : "Gidenler puanı 10 üzerinden"}</span><span>10 · olağanüstü</span></div>
         </section>
       )}
 
@@ -310,7 +344,13 @@ export function WriteForm({
               İsteğe bağlı · <span className="tnum">{rated}</span>/{dimensions.length} verildi
             </span>
           </div>
-          <ul className="mt-4 flex flex-col gap-5">
+          {!showDims && (
+            <button type="button" onClick={() => setShowDims(true)} aria-expanded={false} data-ayrinti-ac
+              className="mt-3 inline-flex h-10 items-center rounded-[8px] border border-line-2 px-3 text-[13.5px] font-semibold hover:border-ink">
+              Ayrıntılı puan ver ({dimensions.map((d) => d.label.toLocaleLowerCase("tr")).slice(0, 3).join(", ")}…) +
+            </button>
+          )}
+          {showDims && <ul className="mt-4 flex flex-col gap-5">
             {dimensions.map((d) => (
               <li key={d.key} className="flex flex-col gap-2">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -327,7 +367,7 @@ export function WriteForm({
                     <button
                       key={v}
                       type="button"
-                      onClick={() => setRatings((r) => ({ ...r, [d.key]: v }))}
+                      onClick={() => { setTouched(true); setRatings((r) => ({ ...r, [d.key]: v })); }}
                       aria-label={`${d.label}: ${v}`}
                       aria-pressed={ratings[d.key] === v}
                       className={`tnum h-9 w-9 border text-[13px] font-semibold transition-colors ${
@@ -344,7 +384,7 @@ export function WriteForm({
                 </div>
               </li>
             ))}
-          </ul>
+          </ul>}
         </section>
       )}
 
@@ -356,7 +396,7 @@ export function WriteForm({
             <button
               key={v}
               type="button"
-              onClick={() => setRet(v)}
+              onClick={() => edit(setRet)(v)}
               aria-pressed={ret === v}
               className={`h-10 border px-4 text-[14px] font-semibold capitalize ${
                 ret === v ? "border-accent bg-accent text-on-accent" : "border-line-2 hover:border-ink"
@@ -389,7 +429,7 @@ export function WriteForm({
             <li key={r.key}>
               <button
                 type="button"
-                onClick={() => setRel(r.key)}
+                onClick={() => edit(setRel)(r.key)}
                 aria-pressed={rel === r.key}
                 className={`flex w-full items-baseline gap-3 border-b py-2.5 text-left ${
                   rel === r.key ? "border-accent" : "border-line hover:border-line-2"
@@ -425,7 +465,7 @@ export function WriteForm({
             <Button variant="primary" disabled={!canSend} onClick={async () => {
               const ok = keepDraft();
               if (!ok) { setError("Tarayıcının yerel kaydı kapalı; giriş dönüşünde taslak korunamaz. Metni kopyala, sonra giriş yap."); return; }
-              setBusy(true);
+              setBusy(true); track("giris", code);
               if (!(await signInWithGoogle(`/yaz/${entitySlug}/`))) { setBusy(false); setError("Giriş başlatılamadı; taslağın bu cihazda saklandı."); }
             }}>{busy ? "Yönlendiriliyor…" : "Google ile giriş yap ve yayınla"}</Button>
           ) : (

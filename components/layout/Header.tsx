@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { score1 } from "@/lib/format";
 import { DemoIndicator } from "@/components/demo/DemoBoot";
+import { DEMO_VISIBLE } from "@/data/demoFlag";
+
+/* "Deneyim yaz": gerçek sitede "En son nerede yemek yedin?" akışına; demoda eski mekân seçme kipi (demo değişmez) */
+const YAZ_HREF = DEMO_VISIBLE ? "/ara/?yaz=1" : "/nerede-yedin/";
 
 /** showSeckisi: "Seçki" bağlantısı yalnız okunacak yazı varken (sunucuda hesaplanır, layout verir). */
 export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
@@ -156,7 +160,7 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
             Benim
           </Link>
           <Link
-            href="/ara/?yaz=1"
+            href={YAZ_HREF}
             className="border-b-2 border-accent pb-0.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-ink"
           >
             Deneyim yaz
@@ -168,7 +172,7 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
         {([["/kesfet/", "Keşfet"], ...(showSeckisi ? [["/seckisi/", "Seçki"]] : []), ["/sor/", "Sor"], ["/benim/", "Benim"]] as Array<[string, string]>).map(([href, label]) => (
           <Link key={href} href={href} className="flex h-11 shrink-0 items-center text-[11.5px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink">{label}</Link>
         ))}
-        <Link href="/ara/?yaz=1" className="ml-auto flex h-11 shrink-0 items-center text-[11.5px] font-bold uppercase tracking-[0.12em] text-accent-ink">Deneyim yaz</Link>
+        <Link href={YAZ_HREF} className="ml-auto flex h-11 shrink-0 items-center text-[11.5px] font-bold uppercase tracking-[0.12em] text-accent-ink">Deneyim yaz</Link>
       </nav>
     </header>
   );

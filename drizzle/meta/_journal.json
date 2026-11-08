@@ -64,6 +64,13 @@
       "when": 1793965282807,
       "tag": "0008_google_puan_karar",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1794138196644,
+      "tag": "0009_kampanya_oneri",
+      "breakpoints": true
     }
   ]
 }

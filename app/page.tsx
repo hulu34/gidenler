@@ -19,6 +19,7 @@ import { googleRatingMap } from "@/lib/gpuan/read";
 import { activeEntities } from "@/data/real";
 import { HomeDiscover } from "@/components/home/HomeDiscover";
 import { RealBoard } from "@/components/home/RealBoard";
+import { SonYemekBolum } from "@/components/deneyim/SonYemek";
 import { ContinueModule } from "@/components/decision/ContinueModule";
 import { HomeRankings, type HomeData } from "@/components/home/HomeRankings";
 import { HOME_CATEGORIES, OTHER_CATEGORIES, buildRankings, buildRegulated, forYouRanking } from "@/lib/rankings";
@@ -124,6 +125,10 @@ export default async function HomePage() {
                 <a href="#h-rising" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Yükselenler</a>
                 <a href="#h-explore" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Semtler</a>
               </nav>
+              <a href="#nerede-yedin" data-hero-deneyim className="group mt-3.5 inline-flex max-w-full items-center gap-2 rounded-full border border-ink py-1.5 pl-3.5 pr-1.5 text-[13.5px] font-semibold hover:bg-ink hover:text-paper">
+                <span className="truncate">İstanbul&apos;da en son nerede yemek yedin?</span>
+                <span className="shrink-0 rounded-full bg-accent px-2.5 py-1 text-[12px] font-bold text-on-accent">Paylaş →</span>
+              </a>
             </div>
             <HomeSorCompact />
           </div>
@@ -145,8 +150,10 @@ export default async function HomePage() {
         {/* Seçki ana sayfada tek yazıyla öne çıkarılmaz (yalnız birden çok yayımlanmış yazı olunca); /seckisi/ aynen kalır. */}
         {/* gerçek site: demodaki pano tasarımı gerçek veriyle (popüler, en yüksek puan, konuşulan, yükselen, kaynaklı, sana göre) */}
         {!DEMO_VISIBLE && <RealBoard />}
-        {!DEMO_VISIBLE && <RealExplore />}
+        {/* İLK KULLANICI: sıralamalardan sonra deneyim çağrısı → fotoğraflı keşif → semt/kategori araçları */}
+        {!DEMO_VISIBLE && <SonYemekBolum />}
         {DEMO_VISIBLE ? <RealVenues /> : <HomeDiscover />}
+        {!DEMO_VISIBLE && <RealExplore />}
         {!DEMO_VISIBLE && <ContinueModule />}
         {DEMO_VISIBLE && <><Risers /><ScoreLies /><Districts /></>}
         <Method />
