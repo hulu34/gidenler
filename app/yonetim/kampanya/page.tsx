@@ -47,7 +47,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ g
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-[12px] text-ink-3">Yarım kalan akış = formu açıp kayda ulaşmayanlar ({Math.max(0, (r.total.form ?? 0) - (r.total.tamam ?? 0))}). Başarısız kayıt denemeleri &ldquo;Kayıt başarısız&rdquo; sütununda.</p>
+      <p className="mt-2 text-[12px] text-ink-3">Yarım kalan akış = formu açıp kayda ulaşmayanlar ({Math.max(0, (r.total.form ?? 0) - (r.total.tamam ?? 0))}). Başarısız kayıt denemeleri &ldquo;Kayıt başarısız&rdquo; sütununda. Oranlar günlük tekil sayılardan hesaplanır: aynı kişi bir gün bağlantıyı görüp başka gün kaydederse oran %100&apos;ü geçebilir; bu bir hata değildir, kişiler günler arasında bilinçli olarak eşleştirilmez.</p>
 
       <h2 className="mt-12 text-[18px] font-extrabold">İçerik üreticisi bağlantıları</h2>
       <p className="mt-1 max-w-[80ch] text-[13px] text-ink-3">Her üreticiye kendi bağlantısını ver. Bağlantı doğrudan deneyim akışını açar. Kod–kişi eşleşmesini depoda değil, kendi notunda tut. Önerilen metin: &ldquo;{CAMPAIGN_MESSAGE}&rdquo;</p>
