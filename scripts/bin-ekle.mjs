@@ -39,6 +39,10 @@ for (const o of results) {
   if (INSTITUTION.test(v.name)) { report.kurum++; continue; }
   strong.push({ v, b: o.best });
 }
+/* önceki dalgaların paketlerinde kullanılan Google kayıtları (ESKI_PAKET=a.json,b.json) yeni adaya verilmez */
+const usedPid = new Set((process.env.ESKI_PAKET ?? "").split(",").filter(Boolean).flatMap((f) => JSON.parse(readFileSync(f, "utf8")).yeni.map((x) => x.placeId)));
+report.oncekiDalgadaGoogle = 0;
+for (let i = strong.length - 1; i >= 0; i--) if (usedPid.has(strong[i].b.placeId)) { strong.splice(i, 1); report.oncekiDalgadaGoogle++; }
 /* aynı Google kaydı iki adayda → ikisi de elle incelemeye */
 const byPid = new Map(); for (const s of strong) byPid.set(s.b.placeId, [...(byPid.get(s.b.placeId) ?? []), s]);
 const twice = [...byPid.values()].filter((x) => x.length > 1).flat();
