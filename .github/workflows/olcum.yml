@@ -532,7 +532,7 @@ jobs:
     if: contains(github.event.head_commit.message, '[ilk-kullanici]')
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env: { HOST: gidenler-zzkh83koc-hulu34.vercel.app }   # feature/ilk-kullanici ff517d2 (Preview, izole Neon)
+    env: { HOST: gidenler-ghtmxafqy-hulu34.vercel.app }   # feature/ilk-kullanici 7f4755b (Preview, izole Neon)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -549,7 +549,7 @@ jobs:
     if: contains(github.event.head_commit.message, '[ilk-906]')
     runs-on: ubuntu-latest
     timeout-minutes: 25
-    env: { HOST: gidenler-g8mhulhty-hulu34.vercel.app }   # feature/yayin-906 3dac69a (Preview, izole Neon)
+    env: { HOST: gidenler-3zmsovoot-hulu34.vercel.app }   # feature/yayin-906 b5c39e1 (Preview, izole Neon)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
