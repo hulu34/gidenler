@@ -28,5 +28,5 @@ const g = JSON.parse((await get("/api/admin/google-puan/?rapor=gunluk")).t || "{
 console.log("google puan sitede", g.site?.shown, "gizli", g.site?.hidden);
 ok("Google puanı raporu üretimde", g.env === "production" && g.site?.shown > 300);
 
-const ms = JSON.parse((await get("/api/media/status")).t || "{}"); ok("fotoğraf yükleme kapalı", ms.enabled === false);
+const ms = JSON.parse((await get("/api/media/status/")).t || "{}"); ok("fotoğraf yükleme kapalı", ms.enabled === false);
 const k = res.filter((x) => !x).length; console.log(`SONUÇ ${res.length - k}/${res.length}`); process.exit(k ? 1 : 0);
