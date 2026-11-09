@@ -494,6 +494,26 @@ jobs:
           grep -q '"withRating":0,"leaks":{"/ (200)":0,"/kesfet/ (200)":0,"/kategori/restoran/ (200)":0,"/gidenler-100/ (200)":0}' ../out-m.txt
           grep -q '"profiles":456,"non200":0' ../out-m.txt
         env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+  yayin-ilk:
+    if: contains(github.event.head_commit.message, '[yayin-ilk]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env: { PROD_HOST: gidenler-rh6ks3812-hulu34.vercel.app, HOST: gidenler-rh6ks3812-hulu34.vercel.app }   # yayin/ilk-asama-1-2 e49e43a, alan adı atanmamış
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: yayin/ilk-asama-1-2, path: app }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/yayin-gece3.mjs && node ops/gpuan-yayin.mjs && node ops/yayin-ilk.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}", EXPECT: "0009_kampanya_oneri" }
+      - run: cd app && npm ci --ignore-scripts --no-audit --no-fund
+      - run: |
+          cp ops/gpuan-mutabakat.ts app/gpuan-mutabakat.ts && cd app && npx tsx gpuan-mutabakat.ts | tee ../out-m.txt
+          grep -q '"onlyExcel":0,"onlySite":0,"ratingDiff":0,"dupIds":0' ../out-m.txt
+          grep -q '"withRating":0,"leaks":{"/ (200)":0,"/kesfet/ (200)":0,"/kategori/restoran/ (200)":0,"/gidenler-100/ (200)":0}' ../out-m.txt
+          grep -q '"profiles":456,"non200":0' ../out-m.txt
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
   osm-indir:
     if: contains(github.event.head_commit.message, '[osm-indir]')
     runs-on: ubuntu-latest
