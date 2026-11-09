@@ -9,6 +9,8 @@ import { sheetVenues } from "../lib/gpuan/venues";
 import { mapsPageSource } from "../lib/gpuan/sources/mapsPage";
 import type { Decision, GoogleId } from "../lib/gpuan/core";
 import { appendFileSync } from "node:fs";
+import { stopIfScrapingDisabled } from "../lib/gpuan/policy";
+stopIfScrapingDisabled("gpuan-guncelle");
 
 async function main() {
   const HOST = process.env.HOST!, TARGET = process.env.HEDEF ?? "preview";

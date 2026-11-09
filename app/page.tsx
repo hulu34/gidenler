@@ -110,17 +110,17 @@ export default async function HomePage() {
               <p className="tnum flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-3">
                 <span className="inline-flex items-center gap-1.5"><i aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />İstanbul</span>
                 <span aria-hidden>·</span><span>{nf(activeEntities.length)} gerçek mekân</span>
-                <span aria-hidden>·</span><span>{nf(gCount)} Google puanı</span>
+                {gCount > 0 && <><span aria-hidden>·</span><span>{nf(gCount)} Google puanı</span></>}
                 <span aria-hidden>·</span><span>{dCount} semt</span>
               </p>
               <h1 className="mt-2.5 text-[clamp(2.1rem,4.2vw,3.15rem)] font-extrabold leading-[0.98] tracking-[-0.05em]">
                 Nereye gidelim? <span className="font-[family-name:var(--font-brand)] font-normal italic tracking-[-0.02em] text-accent-ink">Gidenler bilir.</span>
               </h1>
               <p className="mt-2.5 max-w-[52ch] font-[family-name:var(--font-read)] text-[clamp(1rem,1.6vw,1.15rem)] leading-[1.4] text-ink-2">
-                İstanbul&apos;un restoranları: sıralamalar, doğrulanmış Google puanları ve gidenlerin kendi deneyimleri.
+                {gCount > 0 ? <>İstanbul&apos;un restoranları: sıralamalar, doğrulanmış Google puanları ve gidenlerin kendi deneyimleri.</> : <>İstanbul&apos;un restoranları: gidenlerin kendi deneyimleri, Gidenler puanı ve gerçek etkileşimden doğan listeler.</>}
               </p>
               <nav aria-label="Bölümler" className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[12.5px] font-semibold">
-                <a href="#h-eniyiler" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">En iyiler</a>
+                {gCount > 0 && <a href="#h-eniyiler" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">En iyiler</a>}
                 <a href="#h-popular" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Popülerler</a>
                 <a href="#h-rising" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Yükselenler</a>
                 <a href="#h-explore" className="underline decoration-line-2 underline-offset-4 hover:decoration-ink">Semtler</a>

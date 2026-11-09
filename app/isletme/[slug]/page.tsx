@@ -18,10 +18,15 @@ import { Button } from "@/components/ui/Button";
 import { getBusinessAlerts, getBusinessBenchmarks, getBusinessRecommendations, getBusinessRootCauses } from "@/lib/decision";
 import { Alerts, Benchmarks, Recommendations, RootCauses } from "@/components/decision/BusinessIntelligence";
 import { BusinessReservations } from "@/components/reservation/BusinessReservations";
+import { businessPanelAllowed } from "@/lib/business/access";
 
 export const dynamicParams = false;
 
+/* YETKİ (Aşama 0): Bu panel yalnız yatırımcı demosunda, sahte veriyle ve salt okunur vardır. Gerçek işletme hesabı,
+   oturum ve sahiplik kontrolü Gidenler kurumsal v2'de gelecek; o zamana kadar demo dışındaki her ortamda (Production,
+   Preview) panel sayfası HİÇ üretilmez ve istek 404 döner. Ara katman yönlendirmesine (middleware) güvenilmez. */
 export function generateStaticParams() {
+  if (!businessPanelAllowed()) return [];
   return entities
     .filter((e) => e.business?.claimed && !["cat.physician", "cat.lawyer", "cat.dentist"].includes(e.categoryId))
     .map((e) => ({ slug: e.slug }));
@@ -31,12 +36,13 @@ export async function generateMetadata({
   params,
 }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const d = getBusinessDashboard(slug);
+  const d = businessPanelAllowed() ? getBusinessDashboard(slug) : null;
   return { title: d ? `${d.entity.name} — işletme paneli` : "Bulunamadı", robots: { index: false, follow: false } };
 }
 
 export default async function BusinessPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (!businessPanelAllowed()) notFound();
   const d = getBusinessDashboard(slug);
   /* Panel yalnızca sahiplenilmiş işletmede var; gerçek ama sahiplenilmemiş mekân için uydurma panel gösterilmez. */
   if (!d || !d.entity.business?.claimed) notFound();
