@@ -1,0 +1,87 @@
+{
+ "osmTarihi": "2026-11-10T20:20:48Z",
+ "havuz_yeni": 11179,
+ "ret": 1346,
+ "A": 117,
+ "B": 365,
+ "B_kanitli": 365,
+ "C": 9351,
+ "ret_nedenleri": {
+  "zincir_marka_etiketi": 1119,
+  "aday_ici_cift": 187,
+  "restoran_disi_ya_da_kapali_alan": 47,
+  "genel_ad": 56,
+  "osm_kapali_isareti": 3
+ },
+ "C_nedenleri": {
+  "faaliyet_kaniti_yok": 9233,
+  "mukerrer_suphesi": 179,
+  "fast_food_turu_belirsiz": 1433,
+  "zincir_suphesi_ad": 1168,
+  "zincir_suphesi_site": 143,
+  "nargile_kafe_kapsam_disi_olabilir": 45,
+  "paket_ici_ayni_bina_ya_da_ad": 4
+ },
+ "B_eksikleri": {
+  "addaki tür ipucu doğrulanmadı: tatli": 10,
+  "çalışma saatleri": 324,
+  "sokak adresi": 284,
+  "telefon": 339,
+  "mutfak türü (kaynakta yok)": 127,
+  "addaki tür ipucu doğrulanmadı: esnaf": 4,
+  "kapı numarası": 30,
+  "addaki tür ipucu doğrulanmadı: balik, kebap, kahvalti": 1,
+  "addaki tür ipucu doğrulanmadı: kebap": 9,
+  "addaki tür ipucu doğrulanmadı: balik": 2,
+  "addaki tür ipucu doğrulanmadı: sokak": 6,
+  "addaki tür ipucu doğrulanmadı: doner": 2,
+  "addaki tür ipucu doğrulanmadı: kahvalti": 3,
+  "addaki tür ipucu doğrulanmadı: asya, et": 1,
+  "addaki tür ipucu doğrulanmadı: balik, kebap": 2,
+  "addaki tür ipucu doğrulanmadı: kebap, pide": 2,
+  "addaki tür ipucu doğrulanmadı: pide": 2,
+  "addaki tür ipucu doğrulanmadı: doner, sokak": 1,
+  "addaki tür ipucu doğrulanmadı: vegan": 1,
+  "addaki tür ipucu doğrulanmadı: meyhane": 2
+ },
+ "A_ilce": {
+  "Ataşehir": 2,
+  "Beşiktaş": 5,
+  "Beykoz": 1,
+  "Beyoğlu": 34,
+  "Fatih": 11,
+  "Kadıköy": 52,
+  "Maltepe": 1,
+  "Pendik": 2,
+  "Sarıyer": 1,
+  "Şişli": 4,
+  "Üsküdar": 4
+ },
+ "A_tur": {
+  "Kahveci": 64,
+  "Türk mutfağı": 11,
+  "Pizza": 7,
+  "Bar": 7,
+  "Dünya mutfağı": 5,
+  "Kebapçı / Ocakbaşı": 4,
+  "Tavuk": 1,
+  "Balık restoranı": 3,
+  "Tatlıcı": 6,
+  "Kahvaltı": 3,
+  "Asya mutfağı": 2,
+  "Sokak lezzeti": 1,
+  "Burger": 3
+ },
+ "A_kategori": {
+  "cat.cafe": 76,
+  "cat.restaurant": 34,
+  "cat.bar": 7
+ },
+ "karsilastirma": {
+  "karsilastirilan": 915,
+  "slug": 0,
+  "ref": 0,
+  "yakinAyniAd": 0,
+  "yakin50m": 19
+ }
+}
