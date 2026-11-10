@@ -27,7 +27,7 @@ const apiAs = (u) => (p, { method = "GET", body } = {}) => fetch(`${B}${p}`, { m
 
 const browser = await chromium.launch({ channel: "chrome" });
 const shot = async (page, name, full = false) => page.screenshot({ path: `${OUT}/${name}.png`, fullPage: full }).catch(() => {});
-const ctxOf = async (w, h, mobile) => browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: mobile ? 2 : 1, isMobile: mobile, hasTouch: mobile, extraHTTPHeaders: HB, locale: "tr-TR", userAgent: mobile ? "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1 Instagram 350.0" : undefined });
+const ctxOf = async (w, h, mobile) => browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: mobile ? 2 : 1, isMobile: mobile, hasTouch: mobile, extraHTTPHeaders: HB, locale: "tr-TR", userAgent: mobile ? (process.env.MOBIL_UA ?? "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1 Instagram 350.0") : undefined });
 
 /* 1) ANA SAYFA — hiyerarşi ve görüntüler */
 for (const [w, h, m] of [[1440, 900, false], [1280, 800, false], [768, 1024, true], [390, 844, true], [375, 812, true]]) {

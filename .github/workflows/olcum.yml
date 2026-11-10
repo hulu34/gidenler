@@ -548,6 +548,26 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: ana-ekran-sifreli, path: ana.tgz.cms, retention-days: 14, if-no-files-found: ignore }
+  gece:
+    if: contains(github.event.head_commit.message, '[gece]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env: { HOST: gidenler-33mellice-hulu34.vercel.app }   # gece/10-kasim 10313bb (Preview, izole Neon)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i --no-save --no-package-lock --ignore-scripts playwright@1.49.1 && npx playwright install --with-deps chrome
+      - run: CIKTI=out/gece node ops/gece.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: CIKTI=out/gece/ilk MOBIL_UA="Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1" HOST=$HOST node ops/ilk-kullanici.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
+      - if: always()
+        run: test -d out/gece && tar -C out -czf gece.tgz gece && openssl cms -encrypt -aes256 -binary -outform DER -in gece.tgz -out gece.tgz.cms ops/olcum.pem
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: gece-sifreli, path: gece.tgz.cms, retention-days: 14, if-no-files-found: ignore }
   ilk-kullanici:
     if: contains(github.event.head_commit.message, '[ilk-kullanici]')
     runs-on: ubuntu-latest
