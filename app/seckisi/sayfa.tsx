@@ -22,6 +22,7 @@ export function homeMetadata(lang: Lang): Metadata {
     title: UI.brand[lang],
     description: UI.intro[lang],
     alternates: { ...alternates(), canonical: hrefOf(lang) },
+    openGraph: { siteName: "Gidenler", locale: lang === "en" ? "en_US" : "tr_TR", type: "website" },
     metadataBase: new URL(SITE),
     /* Yayında yazı yoksa ya da önizlemedeyse dizine eklenmez. */
     ...(review || !any || DEMO_VISIBLE ? { robots: { index: false, follow: false } } : {}),
@@ -34,7 +35,8 @@ export function HomeView({ lang }: { lang: Lang }) {
   const list = articles(review);
   if (!list.length) notFound();
   const events = upcomingEvents();
-  return <SeckiHome lang={lang} list={list} groups={sections(list, events)} review={review && list.some((a) => a.status === "kontrol")} />;
+  /* kök <html lang="tr"> tek; İngilizce sürümde içerik dili sarmalayıcıda bildirilir (ekran okuyucu + arama motoru) */
+  return <div lang={lang}><SeckiHome lang={lang} list={list} groups={sections(list, events)} review={review && list.some((a) => a.status === "kontrol")} /></div>;
 }
 
 export const staticParams = () => readableArticles().map((a) => ({ slug: a.slug }));
@@ -46,6 +48,7 @@ export function articleMetadata(lang: Lang, slug: string): Metadata {
     title: `${a.title[lang]} · ${UI.brand[lang]}`,
     description: a.dek[lang],
     alternates: { ...alternates(a.slug), canonical: hrefOf(lang, a.slug) },
+    openGraph: { siteName: "Gidenler", locale: lang === "en" ? "en_US" : "tr_TR", type: "article" },
     metadataBase: new URL(SITE),
     ...(a.publishedAt ? { other: { "article:published_time": a.publishedAt, ...(a.updatedAt ? { "article:modified_time": a.updatedAt } : {}) } } : {}),
     ...(a.status !== "yayinda" || reviewVisible() || DEMO_VISIBLE ? { robots: { index: false, follow: false } } : {}),
@@ -74,7 +77,7 @@ export function ArticleView({ lang, slug }: { lang: Lang; slug: string }) {
         author: { "@type": "Organization", name: a.editorial.desk[lang] },
         publisher: { "@type": "Organization", name: "Gidenler", url: SITE },
       }} />}
-      <SeckiArticle a={a} lang={lang} review={review} more={more} />
+      <div lang={lang}><SeckiArticle a={a} lang={lang} review={review} more={more} /></div>
     </>
   );
 }
