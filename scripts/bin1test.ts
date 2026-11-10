@@ -14,7 +14,10 @@ const fold = (s: string) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/
 
 ok("ilk 456 kayıt korunur (dalga 0–1)", all.filter((v) => (v.wave ?? 0) < 2).length === 456);
 if (!w2.length) { console.log("  · yeni dalga yok (456 sürüm) — dalga testleri atlandı"); console.log(`\ndalga 2: ${pass} geçti, ${fail} kaldı`); process.exit(fail ? 1 : 0); }
-ok(`dalga 2: ${w2.length} yeni mekân, hepsi doğrulama kaydıyla (tarih, güven, kanıt)`, w2.length > 0 && w2.every((v) => v.verifiedAt && v.confidence === "güçlü" && /Google sayfası/.test(v.verification ?? "")));
+/* dalga 2–4: Google sayfasında güçlü doğrulama; dalga 5 (seyrek ilçe paketi): Google'sız — işletme sitesi / OSM yerinde kontrol / sipariş platformu */
+ok(`dalga 2+: ${w2.length} yeni mekân, hepsi doğrulama kaydıyla (tarih, güven, kanıt)`, w2.length > 0 && w2.every((v) => v.verifiedAt && ((v.wave ?? 0) >= 5
+  ? (v.confidence === "güçlü" || v.confidence === "orta") && /web sitesi|yerinde kontrol|Sipariş platform/i.test(v.verification ?? "") && !/Google sayfası/.test(v.verification ?? "")
+  : v.confidence === "güçlü" && /Google sayfası/.test(v.verification ?? ""))));
 ok("tekrarlı slug / OSM kaydı yok", new Set(all.map((v) => v.slug)).size === all.length && new Set(all.map((v) => v.ref)).size === all.length);
 ok("yeni mekânların hepsinde açık adres (Google'dan kopyalanmadı, OSM)", w2.every((v) => !!v.address && /^(node|way|relation)\//.test(v.ref)));
 const near = (a: R & { lat?: number; lng?: number }, b: R & { lat?: number; lng?: number }) => { const r = Math.PI / 180; const x = Math.sin(((b.lat! - a.lat!) * r) / 2) ** 2 + Math.cos(a.lat! * r) * Math.cos(b.lat! * r) * Math.sin(((b.lng! - a.lng!) * r) / 2) ** 2; return 2 * 6371000 * Math.asin(Math.sqrt(x)); };
@@ -31,8 +34,9 @@ ok(`her yeni mekân kendi adıyla ilk 5'te (${found.length}/${w2.length})`, foun
 const brands = Object.values(all.reduce<Record<string, R[]>>((m, v) => ((m[fold(v.name)] ??= []).push(v), m), {})).filter((xs) => xs.length > 1 && xs.some((x) => x.wave === 2));
 const brandOk = brands.filter((xs) => { const r = searchV3(xs[0].name, { limit: 20 }).exact.map((h) => h.card.entity.slug); return xs.every((x) => r.includes(x.slug)); });
 ok(`çok şubeli markalar: aramada bütün şubeler (${brandOk.length}/${brands.length})`, brandOk.length === brands.length);
-const asciiOk = w2.slice(0, 60).filter((v) => searchV3(fold(v.name), { limit: 10 }).exact.slice(0, 5).some((h) => h.card.entity.slug === v.slug));
-ok(`ASCII yazımla bulunur (${asciiOk.length}/60)`, asciiOk.length >= 57);
+const sample = w2.slice(0, 60);
+const asciiOk = sample.filter((v) => searchV3(fold(v.name), { limit: 10 }).exact.slice(0, 5).some((h) => h.card.entity.slug === v.slug));
+ok(`ASCII yazımla bulunur (${asciiOk.length}/${sample.length})`, asciiOk.length >= Math.ceil(sample.length * 0.95));
 /* Sor Gidenler */
 const inSor = w2.filter((v) => VENUES.some((x) => x.slug === v.slug));
 ok(`Sor dizininde yeni mekânlar (${inSor.length}/${w2.length})`, inSor.length === w2.length);
