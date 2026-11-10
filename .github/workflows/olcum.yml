@@ -618,6 +618,28 @@ jobs:
           NEXT_PUBLIC_SEHIR_PILOT=1 npx next build && (NEXT_PUBLIC_SEHIR_PILOT=1 npx next start -p 3457 > /tmp/p.log 2>&1 &) && sleep 8
           BASE=http://localhost:3457 node scripts/katalog/onizleme-denetim.mjs data/sehir-pilot/ankara/venues-dalga7.json pilot
         env: { NEXT_TELEMETRY_DISABLED: "1" }
+  paket-kod:
+    if: contains(github.event.head_commit.message, '[paket]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env: { REF: paket/istanbul-7, SHA: "835d058", PAKET: data/paket/istanbul-7 }
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: "${{ env.REF }}", fetch-depth: 0 }
+      - run: test "$(git rev-parse --short HEAD)" = "$SHA"
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx tsc --noEmit
+      - run: |
+          set -o pipefail
+          git show origin/feature/yayin-906:data/real/venues.json > /tmp/v906.json
+          git show origin/paket/seyrek-ilceler:data/real/venues.json > /tmp/seyrek.json
+          git diff --quiet origin/veri/istanbul-genisleme HEAD -- data/real && echo "data/real değişmedi (venues.json'a ekleme yok)"
+          KARSILASTIR=/tmp/v906.json,/tmp/seyrek.json npx tsx scripts/restoranpakettest.ts | tail -3
+          for t in katalogtest bin1test aramatest sortest seotest dbtest; do echo "== $t"; npx tsx scripts/$t.ts | tail -1 || exit 1; done
+      - run: npx next build
+        env: { NEXT_TELEMETRY_DISABLED: "1" }
   osm-seyrek:
     if: contains(github.event.head_commit.message, '[osm-seyrek]')
     runs-on: ubuntu-latest
