@@ -168,11 +168,11 @@ export function Header({ showSeckisi = false }: { showSeckisi?: boolean }) {
         </nav>
       </div>
       {/* Mobil ikinci satır: arama üst satırda tam genişlikte kalır, bölümler ve "Deneyim yaz" burada. */}
-      <nav aria-label="Bölümler" className="flex h-11 items-center gap-5 overflow-x-auto border-t border-line px-5 sm:hidden">
+      <nav aria-label="Bölümler" className="flex h-11 items-center gap-3.5 overflow-x-auto border-t border-line px-5 min-[390px]:gap-5 sm:hidden">
         {([["/kesfet/", "Keşfet"], ...(showSeckisi ? [["/seckisi/", "Seçki"]] : []), ["/sor/", "Sor"], ["/benim/", "Benim"]] as Array<[string, string]>).map(([href, label]) => (
-          <Link key={href} href={href} className="flex h-11 shrink-0 items-center text-[11.5px] font-semibold uppercase tracking-[0.12em] text-ink-3 hover:text-ink">{label}</Link>
+          <Link key={href} href={href} className="flex h-11 shrink-0 items-center text-[11.5px] font-semibold uppercase tracking-[0.06em] text-ink-3 hover:text-ink min-[390px]:tracking-[0.12em]">{label}</Link>
         ))}
-        <Link href={YAZ_HREF} className="ml-auto flex h-11 shrink-0 items-center text-[11.5px] font-bold uppercase tracking-[0.12em] text-accent-ink">Deneyim yaz</Link>
+        <Link href={YAZ_HREF} className="ml-auto flex h-11 shrink-0 items-center text-[11.5px] font-bold uppercase tracking-[0.06em] text-accent-ink min-[390px]:tracking-[0.12em]">Deneyim yaz</Link>
       </nav>
     </header>
   );
