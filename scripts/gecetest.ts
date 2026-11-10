@@ -53,7 +53,7 @@ ok("'tamam' ve 'oneri' hâlâ yalnız sunucuda", !CLIENT_STEPS.includes("tamam")
 const src = (p: string) => readFileSync(p, "utf8");
 ok("/gizlilik/ ve /kullanim-kosullari/ sayfaları var", existsSync("app/gizlilik/page.tsx") && existsSync("app/kullanim-kosullari/page.tsx"));
 const gz = src("app/gizlilik/page.tsx");
-ok("gizlilik metni gerçek işlemeyi anlatır (Ad S., 120 gün, 14 gün, oturumda IP, KVKK 11)", ["Ad S.", "120 gün", "14 gün", "IP adresi ve tarayıcı bilgisi", "11. maddesi"].every((x) => gz.includes(x)));
+ok("gizlilik metni gerçek işlemeyi anlatır (Ad S., 120 gün, 14 gün, oturumda IP, KVKK 11)", ["Ad S.", "120 günden", "35 günden", "14 gün", "IP adresi ve tarayıcı bilgisi", "11. maddesi"].every((x) => gz.includes(x)));
 ok("altbilgide iki yasal bağlantı", src("components/layout/Footer.tsx").includes('"/gizlilik/"') && src("components/layout/Footer.tsx").includes('"/kullanim-kosullari/"'));
 ok("altbilgi artık 'henüz puanları yoktur' demiyor", !src("components/layout/Footer.tsx").includes("henüz puanları yoktur"));
 ok("sitemap iki yasal sayfayı içerir", src("app/sitemap.ts").includes('"/gizlilik/"') && src("app/sitemap.ts").includes('"/kullanim-kosullari/"'));
@@ -87,5 +87,6 @@ ok("form: seçim ekranı ve bozuk bağlantı uyarısı var", wf2.includes("data-
 ok("form: 6.000 üstü metin aktarmadan önce uyarılır", wf2.includes("tooLong={body.length > HANDOFF_MAX ? HANDOFF_MAX : 0}") && readFileSync("components/deneyim/InAppNotice.tsx", "utf8").includes("data-uygulama-ici-uzun"));
 ok("yerel taslak API sınırıyla aynı (5.000'de sessiz kesme yok)", readFileSync("lib/drafts.ts", "utf8").includes("d.body.slice(0, 6000)"));
 
+ok("gizlilik: veri sorumlusu bölümü ve # aktarımının gerçek davranışı (sunucuya gitmez, paylaşma uyarısı, seçim)", (() => { const g = readFileSync("app/gizlilik/page.tsx", "utf8"); return g.includes('["sorumlu", "Veri sorumlusu"') && g.includes("sunucuya gönderilmez") && g.includes("bu bağlantıyı başkasıyla paylaşma") && g.includes("hangisiyle devam edeceğini sen seçersin"); })());
 console.log(`\ngece: ${pass} geçti, ${fail} kaldı`);
 process.exit(fail ? 1 : 0);

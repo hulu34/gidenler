@@ -13,6 +13,9 @@ export const metadata = {
 const UPDATED = "10 Kasım 2026";
 
 const SECTIONS: Array<[string, string, Array<React.ReactNode>]> = [
+  ["sorumlu", "Veri sorumlusu", [
+    <>Bu sitedeki kişisel verilerin veri sorumlusu <b>Gidenler</b>&apos;dir. Resmî unvan ve adres bilgileri bu sayfaya eklenecektir; o zamana kadar kişisel verilerinle ilgili her başvuruyu <Link href="/hukuki-basvuru/" className="font-semibold text-ink underline decoration-line-2 underline-offset-4">Hukuki Başvuru</Link> sayfasından iletebilirsin.</>,
+  ]],
   ["hesap", "Google ile giriş", [
     <>Deneyim yayınlamak için Google hesabınla giriş yaparsın. Google bize yalnız <b>adını, e-posta adresini, profil fotoğrafını</b> ve hesabın için bir kimlik numarası iletir. Gidenler şifre almaz ve saklamaz; Google hesabındaki başka hiçbir veriye (kişiler, takvim, Drive vb.) erişmez.</>,
     <>Girişte tarayıcına bir <b>oturum çerezi</b> yazılır. Oturum kaydında güvenlik için <b>IP adresi ve tarayıcı bilgisi</b> tutulur; oturum kapandığında ya da süresi dolduğunda bu kayıt geçerliliğini yitirir.</>,
@@ -21,13 +24,14 @@ const SECTIONS: Array<[string, string, Array<React.ReactNode>]> = [
     <>Yayınladığın deneyimin metni, puanları ve ziyaret ayı <b>herkese açık</b> olarak ilgili mekân sayfasında görünür. Adın <b>&ldquo;Ad S.&rdquo;</b> biçiminde kısaltılır; e-posta adresin ve fotoğrafın deneyimde gösterilmez.</>,
     <>Deneyimini istediğin zaman düzenleyebilir ya da silebilirsin. Kurallara aykırı içerik moderasyonla gizlenebilir; moderasyon kararları denetim kaydında tutulur.</>,
     <>Yayınlamadan önce yazdıkların <b>yalnız bu cihazda</b> taslak olarak saklanır (tarayıcı depolaması). Taslak sunucuya gönderilmez; Google girişinden dönüşte formu yeniden doldurmak için kullanılır.</>,
+    <>Instagram gibi bir uygulamanın kendi tarayıcısındaysan (Google orada girişe izin vermez), taslağın ayrıca sayfa adresinin <b>&ldquo;#&rdquo; ile başlayan bölümüne</b> yazılır; böylece sayfayı Safari ya da Chrome&apos;da açtığında yazdıkların seninle gelir. Bu bölüm sunucuya gönderilmez. &ldquo;Bağlantıyı kopyala&rdquo; ile kopyaladığın bağlantı da taslağını içerir; <b>bu bağlantıyı başkasıyla paylaşma</b>. Yeni tarayıcıda açılınca taslak o cihaza kaydedilir ve &ldquo;#&rdquo; bölümü adresten silinir; o cihazda aynı mekân için başka bir taslağın varsa hangisiyle devam edeceğini sen seçersin.</>,
   ]],
   ["oneri", "Mekân önerisi", [
     <>Listede olmayan bir mekânı önerirken yazdığın <b>mekân adı, ilçe ve konum notu</b> yönetici kuyruğuna kaydedilir. Giriş yaptıysan öneri hesabınla ilişkilendirilir. Öneriler yayımlanmaz; yalnız ekip tarafından incelenir. Konum notuna kişisel bilgi, telefon veya bağlantı yazılamaz.</>,
   ]],
   ["olcum", "Ziyaret ölçümü", [
     <>Hangi mekânların ilgi gördüğünü ve paylaşım bağlantılarının işe yarayıp yaramadığını anlamak için sayfa ziyaretlerini <b>toplu olarak</b> sayarız. Bunun için IP adresin ve tarayıcı bilgin, <b>her gün değişen bir anahtarla geri döndürülemez bir özete</b> çevrilir; ham IP adresi, adın ya da e-postan bu sayımlara yazılmaz ve iki farklı gün birbirine bağlanamaz.</>,
-    <>Bir paylaşım bağlantısıyla geldiysen (ör. <code>?k=ic01</code>), bağlantının kodu <b>14 gün</b> bu tarayıcıda tutulur. Kod yalnız &ldquo;bu bağlantıdan kaç kişi geldi, kaçı deneyim yazdı&rdquo; sayımı için kullanılır; sıralamaya ve Gidenler puanına hiçbir etkisi yoktur. Bu sayımlar <b>120 gün</b> sonra silinir.</>,
+    <>Bir paylaşım bağlantısıyla geldiysen (ör. <code>?k=ic01</code>), bağlantının kodu <b>14 gün</b> bu tarayıcıda tutulur. Kod yalnız &ldquo;bu bağlantıdan kaç kişi geldi, kaçı deneyim yazdı&rdquo; sayımı için kullanılır; sıralamaya ve Gidenler puanına hiçbir etkisi yoktur. Bağlantı sayımları <b>120 günden</b>, genel sayfa ziyareti sayımları <b>35 günden</b> eskiyse düzenli olarak silinir.</>,
     <>Reklam veya analiz amaçlı üçüncü taraf çerezi ya da izleme kodu kullanmıyoruz.</>,
   ]],
   ["sor", "Sor Gidenler", [
