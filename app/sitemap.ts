@@ -7,7 +7,7 @@ import { SITE, inVenueSitemap } from "@/lib/seo";
 
 /* Yeni mekân ve yayımlanan yazı derlemede kendiliğinden girer. Taslak, kontrol bekleyen yazı ve demo girmez.
    Mekânlarda lastmod yok: gerçek içerik güncelleme tarihi tutulmuyor, aktarım tarihi onun yerine geçmez. */
-const STATIC = ["/", "/gercek/", "/kesfet/", "/kategori/restoran/", "/kategori/kafe/", "/kategori/bar/", "/nasil-calisir/", "/kurallar/"];
+const STATIC = ["/", "/gercek/", "/kesfet/", "/kategori/restoran/", "/kategori/kafe/", "/kategori/bar/", "/nasil-calisir/", "/kurallar/", "/gizlilik/", "/kullanim-kosullari/"];
 
 export const revalidate = 3600;
 

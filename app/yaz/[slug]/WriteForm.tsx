@@ -8,7 +8,9 @@ import { useAccountStatus } from "@/lib/community/accountState";
 import { signInWithGoogle } from "@/lib/community/signin";
 import { authErrorMessage } from "@/lib/community/authErrors";
 import { deleteDraft, loadDraft, saveDraft, visitMonths } from "@/lib/drafts";
-import { flowCode, track } from "@/lib/kampanya/client";
+import { captureCampaign, flowCode, track } from "@/lib/kampanya/client";
+import { decodeHandoff, encodeHandoff } from "@/lib/inapp";
+import { InAppNotice, useInApp } from "@/components/deneyim/InAppNotice";
 import { dropSuggestionDraft, takeSuggestionDraft, type SuggestionDraft } from "@/lib/oneri/key";
 import { Button } from "@/components/ui/Button";
 import type { CommercialRelationship, RatingDimensionDef, ReturnIntent } from "@/lib/types";
@@ -71,10 +73,24 @@ export function WriteForm({
   const [sugDraft, setSugDraft] = useState<SuggestionDraft | null>(null);
   const [showDims, setShowDims] = useState(false);
   const [code, setCode] = useState<string | null>(null);
+  const inApp = useInApp();
 
   useEffect(() => {
     const ms = visitMonths();
     setMonths(ms);
+    /* uygulama içi tarayıcıdan "tarayıcıda aç" ile gelindiyse: taslak ve kampanya kodu # parçasında (sunucuya gitmez).
+       Yerel taslağa yazılır, # adres çubuğundan hemen silinir. */
+    const h = decodeHandoff(location.hash);
+    if (h) {
+      if (h.k) captureCampaign(`?k=${h.k}`, "dogrudan");
+      const rels = RELATIONSHIPS.map((x) => x.key) as string[];
+      if (h.b || h.o) saveDraft(entitySlug, {
+        body: h.b ?? "", month: h.m ?? ms[0][0], ratings: h.r ?? {}, overall: h.o ?? null,
+        returnIntent: (["evet", "hayır", "emin değil"].includes(h.ri ?? "") ? h.ri : null) as ReturnIntent | null,
+        relationship: (rels.includes(h.rel ?? "") ? h.rel : "none") as CommercialRelationship,
+      });
+      history.replaceState(null, "", location.pathname + location.search);
+    }
     const d = loadDraft(entitySlug);
     if (d) {
       setBody(d.body); setRatings(d.ratings ?? {}); setRet(d.returnIntent ?? null); setRel(d.relationship ?? "none"); setOverall(d.overall ?? null);
@@ -97,6 +113,16 @@ export function WriteForm({
     }, 700);
     return () => clearTimeout(id);
   }, [touched, mine, sent, body, month, ratings, ret, rel, overall, entitySlug]);
+
+  /* uygulama içi tarayıcıda (girişsiz): taslak adres çubuğundaki # parçasında da tutulur — Instagram'ın "tarayıcıda aç"
+     menüsü ve "Bağlantıyı kopyala" aynı adresi açar; yeni tarayıcıda form kaldığı yerden devam eder. */
+  const handoff = inApp && isReal && account === "anon" && (body.trim() || overall !== null)
+    ? encodeHandoff({ b: body, m: month, o: overall, r: ratings, ri: ret, rel, k: code }) : "";
+  useEffect(() => {
+    if (!inApp || !isReal || account !== "anon") return;
+    const id = setTimeout(() => history.replaceState(null, "", location.pathname + location.search + handoff), 400);
+    return () => clearTimeout(id);
+  }, [inApp, isReal, account, handoff]);
 
   /* Google girişi hata ile döndüyse (ör. süre aşımı): açıklama + taslağın korunduğu bilgisi; yeniden deneme düğmesi aynı. */
   useEffect(() => {
@@ -236,6 +262,9 @@ export function WriteForm({
               ? <>Yayınlamak için Google ile giriş yap. Yazdıkların o sırada <strong className="font-semibold">bu cihazda taslak</strong> olarak korunur.</>
               : <>Yazdıkların <strong className="font-semibold">yalnız bu cihazda taslak</strong> olarak saklanır; kimse göremez, puana girmez.</>}
         </p>
+        {isReal && account === "anon" && inApp && (
+          <div id="tarayicida-ac" className="scroll-mt-24"><InAppNotice app={inApp} context="form" hash={handoff || (code ? encodeHandoff({ k: code }) : "")} /></div>
+        )}
         {restored && (
           <p className="flex flex-wrap items-center gap-x-3 text-[12.5px] text-ink-3">
             <span data-taslak-yuklendi>{canPublish && !mine ? "Giriş yapıldı; yazdıkların yüklendi. Kontrol edip yayınla." : "Kaydettiğin taslak yüklendi."}</span>
@@ -461,6 +490,8 @@ export function WriteForm({
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           {canPublish ? (
             <Button variant="primary" disabled={!canSend} onClick={publish}>{busy ? "Gönderiliyor…" : mine ? "Değişiklikleri kaydet" : "Deneyimi yayınla"}</Button>
+          ) : isReal && account === "anon" && inApp ? (
+            <button type="button" data-uygulama-ici-alt onClick={() => document.getElementById("tarayicida-ac")?.scrollIntoView({ behavior: "smooth", block: "center" })} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[14px] font-bold text-paper">Yayınlamak için tarayıcıda aç ↑</button>
           ) : isReal && account === "anon" ? (
             <Button variant="primary" disabled={!canSend} onClick={async () => {
               const ok = keepDraft();
