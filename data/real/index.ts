@@ -4,6 +4,7 @@ import isletme from "./isletme.json";
 import duzeltmeler from "./duzeltmeler.json";
 import izinliFotograflar from "./izinli-fotograflar.json";
 import { CLOSED_CONFIRMED } from "@/lib/closure";
+import { sehirOf, sehirAdi, inCity, pilotAcik } from "@/lib/sehir";
 
 /* ==========================================================================
    GERÇEK MEKÂNLAR (V8) — kimlik verisi OpenStreetMap'ten (© OpenStreetMap katkıcıları, ODbL).
@@ -30,6 +31,8 @@ export interface RealVenueRecord {
   ref: string;            // "node/123" ya da işletme beyanı için "isletme/<slug>"
   slug: string;
   name: string;
+  /** İl kimliği (lib/sehir.ts). Yoksa İstanbul — mevcut kayıtlar değişmez. */
+  city?: string;
   categoryId: "cat.restaurant" | "cat.cafe" | "cat.bar";
   kind: string;           // "Meyhane", "Kahve", "Balık"…
   district: string;
@@ -68,7 +71,8 @@ const REF = /^((node|way|relation)\/\d+|isletme\/[a-z0-9-]+)$/;
 export const sourceOf = (r: Pick<RealVenueRecord, "ref">): "osm" | "business" => (r.ref.startsWith("isletme/") ? "business" : "osm");
 const CATS = new Set(["cat.restaurant", "cat.cafe", "cat.bar"]);
 /** Zorunlu alanlar: ad, konum (lat/lng + semt, İstanbul içinde), kategori, kaynak (OSM ref ya da işletme), slug. */
-const inIstanbul = (r: RealVenueRecord) => typeof r.lat === "number" && typeof r.lng === "number" && r.lat >= 40.8 && r.lat <= 41.6 && r.lng >= 27.9 && r.lng <= 29.95;
+/* koordinat kaydın ilinin sınır kutusunda olmalı (city yoksa İstanbul; bilinmeyen il geçersiz) */
+const inIstanbul = (r: RealVenueRecord) => inCity(r.lat, r.lng, sehirOf(r.city));
 export function invalidRecord(r: RealVenueRecord): string | null {
   if (!r.name?.trim()) return "name";
   if (r.ref?.startsWith("isletme/")) {
@@ -125,7 +129,12 @@ export function mergeRealVenues(osm: RealVenueRecord[], biz: RealVenueRecord[]) 
   });
   return { records: [...kept, ...biz], dropped, review };
 }
-const merged = mergeRealVenues(raw as RealVenueRecord[], isletme as RealVenueRecord[]);
+/* pilot şehir kayıtları yalnız pilot derlemede (Preview) eklenir; Production derlemesinde dizi boştur */
+/* NEXT_PUBLIC_ bayrağı derlemede sabitlenir; kapalıyken require dalı derlemeden düşer ve pilot verisi pakete hiç girmez */
+export const pilotRecords: RealVenueRecord[] = process.env.NEXT_PUBLIC_SEHIR_PILOT === "1" && pilotAcik()
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  ? (require("../sehir-pilot/ankara/venues-dalga7.json") as RealVenueRecord[]) : [];
+const merged = mergeRealVenues([...(raw as RealVenueRecord[]), ...pilotRecords], isletme as RealVenueRecord[]);
 /** İnceleme adayı çiftler (otomatik birleştirilmez). */
 export const realVenueReview = merged.review;
 /* Kaynağa dayalı elle düzeltmeler (duzeltmeler.json): venues.json elle düzenlenmediği için aktarım yenilense de korunur. Yalnız tür. */
@@ -156,7 +165,7 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   tier: "B",
   subcategory: r.kind,
   experienceTotal: 0,
-  location: { city: "İstanbul", district: r.district, neighborhood: r.neighborhood, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
+  location: { city: sehirAdi(r.city), district: r.district, neighborhood: r.neighborhood, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
   address: r.address,
   hours: r.openingHours,
   tags: r.cuisine,
@@ -171,4 +180,5 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   image: permittedImage(r.slug) ?? (r.image ? { src: LOCAL_COVER.has(r.slug) ? `${MEDIA}/${r.slug}-kapak-480.webp` : r.image.src, alt: r.name, credit: `${r.image.credit} · ${r.image.license}` } : undefined),
 }));
 /** Aktif öneri havuzu: kalıcı kapandığı doğrulanan mekânlar (lib/closure.ts) çıkarılır. Profil ve arama realEntities'i kullanır. */
-export const activeEntities: Entity[] = realEntities.filter((e) => !CLOSED_CONFIRMED.has(e.slug));
+/* Öneri havuzu (ana sayfa, Keşfet, sıralamalar) bugün İstanbul'dur: pilot şehir kaydı profil, arama ve şehir sayfasında görünür, İstanbul listelerine karışmaz. */
+export const activeEntities: Entity[] = realEntities.filter((e) => !CLOSED_CONFIRMED.has(e.slug) && (e.location?.city ?? "İstanbul") === "İstanbul");

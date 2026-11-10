@@ -50,7 +50,7 @@ export function VenueVisuals({ entity }: { entity: Entity }) {
             <div className="border border-line bg-sheet p-4 text-[13.5px]">
               {entity.address && <p className="text-ink">{entity.address}</p>}
               <p className="mt-1 text-[12px] text-ink-3">Bu mekânın harita noktası açık bir kaynakta henüz doğrulanmadı; yerini adresle ara.</p>
-              <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.address ?? entity.location?.district ?? ""} İstanbul`)}`} target="_blank" rel="noopener noreferrer"
+              <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.address ?? entity.location?.district ?? ""} ${entity.location?.city ?? "İstanbul"}`)}`} target="_blank" rel="noopener noreferrer"
                 className="mt-3 inline-flex h-11 items-center justify-center rounded-[3px] border border-line-2 px-4 text-[13px] font-semibold hover:border-ink">Google Haritalar&apos;da adresle ara</a>
             </div>
           )}

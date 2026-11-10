@@ -178,7 +178,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const { photos: ownPhotos, hasCover } = profilePhotos(entity, livePhotos, registry);
   const seoCover = coverOf(entity, covers[entity.slug]);
   /* Koordinatı olmayan mekânda da Haritalar bağlantısı: ücretsiz arama adresi */
-  const mapsUrl = mapLinks(entity)?.googleMaps ?? (entity.isReal ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.location?.district ?? ""} İstanbul`)}` : undefined);
+  const mapsUrl = mapLinks(entity)?.googleMaps ?? (entity.isReal ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.location?.district ?? ""} ${entity.location?.city ?? "İstanbul"}`)}` : undefined);
   const profileNav: TopicSection[] = rp ? [
     { id: "genel", label: "Genel bakış" },
     { id: "menu", label: "Menü" },

@@ -1,0 +1,7 @@
+{
+ "_aciklama": "Gidenler'in açık ve hazırlanan şehirleri. Sıra burada sabit değil: plan sırası iller-tuik-2025.json'daki nüfusla hesaplanır. durum: yayinda (Production'da görünür) · pilot (yalnız NEXT_PUBLIC_SEHIR_PILOT=1 ile derlenen Preview'da; Production'da hiçbir koşulda yüklenmez) · plan.",
+ "sehirler": [
+  { "id": "istanbul", "ad": "İstanbul", "plaka": 34, "durum": "yayinda", "bbox": [40.8, 27.9, 41.6, 29.95], "sinir": "data/katalog/istanbul-ilceler.json" },
+  { "id": "ankara", "ad": "Ankara", "plaka": 6, "durum": "pilot", "bbox": [38.95, 30.95, 40.85, 33.95], "sinir": "data/katalog/ankara-ilceler.json", "pilotVeri": "data/sehir-pilot/ankara/venues-dalga7.json" }
+ ]
+}
