@@ -1,6 +1,7 @@
 /* GECE OPERASYONU (10 Kasım) birim testleri — uygulama içi tarayıcı, # aktarımı, yasal sayfalar, kampanya adımı.
    Çalıştır: npx tsx scripts/gecetest.ts */
 import { readFileSync, existsSync } from "node:fs";
+import { sessionStatus } from "../lib/community/accountState";
 import { HANDOFF_MAX, androidIntent, decodeHandoff, encodeHandoff, handoffPlan, inAppBrowser, isHandoffHash, sameDraft } from "../lib/inapp";
 import { CLIENT_STEPS, STEPS } from "../lib/kampanya";
 
@@ -90,6 +91,11 @@ ok("form: seçim ekranı ve bozuk bağlantı uyarısı var", wf2.includes("data-
 ok("form: 6.000 üstü metin aktarmadan önce uyarılır", wf2.includes("tooLong={body.length > HANDOFF_MAX ? HANDOFF_MAX : 0}") && readFileSync("components/deneyim/InAppNotice.tsx", "utf8").includes("data-uygulama-ici-uzun"));
 ok("form: aynı sekme bağlantısı düzenleme kipinde 'hold' alır; sonradan anlaşılan düzenleme kipi gelen taslağı bekletir", wf2.includes("handoffPlan(location.hash, local, months[0][0], !!mine)") && wf2.includes('if (plan.kind === "hold") { setHeld(plan.draft);') && wf2.includes('if ((plan.kind === "apply" || plan.kind === "choose") && !decided) { setWaitHash(location.hash); return; }'));
 ok("form: ilk açılışta gelen taslak oturum ve deneyim sorgusu sonuçlanana kadar bekler (forma / yerel depoya yazılmaz)", wf2.includes('if (plan.kind === "apply" || plan.kind === "choose") setWaitHash(location.hash);') && wf2.includes('const decided = !isReal || account === "off" || account === "anon" || (account === "in" && mineState === "done");') && wf2.includes("if (!waitHash || !decided || !months.length) return;") && !/persist\(plan\.draft\)/.test(wf2));
+{
+  ok("oturum sorgusu: yalnız 503 auth_not_configured 'off'; ağ hatası, 500, 502 ve başka 503 'error' (geçici)", sessionStatus({ ok: false, status: 503 }, { error: "auth_not_configured" }) === "off" && sessionStatus(null, null) === "error" && sessionStatus({ ok: false, status: 500 }, {}) === "error" && sessionStatus({ ok: false, status: 502 }, null) === "error" && sessionStatus({ ok: false, status: 503 }, { error: "x" }) === "error" && sessionStatus({ ok: true, status: 200 }, {}) === null);
+  const as = readFileSync("components/auth/AccountSync.tsx", "utf8");
+  ok("AccountSync: geçici hata 'off' sayılmaz, yeniden deneme kaydı var; form 'error'ü karar saymaz", as.includes("const bad = sessionStatus(res, body);") && as.includes("setAccountRetry(() => { void run(); });") && !as.includes('if (!res?.ok) { setAccountStatus("off")') && wf2.includes('account === "error" ? retryAccountStatus() : setMineTry'));
+}
 ok("form: deneyim sorgusu hata verirse bekleme sürer, 'Yeniden dene' + 'Metni kopyala'", wf2.includes('if (alive) setMineState("error")') && wf2.includes("data-aktarim-kontrol-yeniden") && wf2.includes("data-aktarim-bekleyen-kopyala") && wf2.includes("[canPublish, entitySlug, mineTry]"));
 ok("form: bekleyen taslak kutusu (ayrı ziyaret / kopyala / bırak); bırakınca yalnız # silinir", wf2.includes("data-aktarim-duzenleme") && wf2.includes("data-aktarim-ayri") && wf2.includes("data-aktarim-gelen-kopyala") && wf2.includes("data-aktarim-birak") && wf2.includes("const dropHeld = () => { setHeld(null); history.replaceState"));
 ok("yerel taslak API sınırıyla aynı (5.000'de sessiz kesme yok)", readFileSync("lib/drafts.ts", "utf8").includes("d.body.slice(0, 6000)"));

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { applyAccountStates, getRelationships, normalizeLegacyExperienced, setRemoteSync } from "@/lib/store";
 import { isAccountEntity, planImport, pushChange, readPending, replayPending, serverToLocal, slugOf, toServerState, writePending } from "@/lib/community/sync";
 import type { PlaceState, PlaceStateRow } from "@/lib/community/placeStatus";
-import { setAccountStatus } from "@/lib/community/accountState";
+import { sessionStatus, setAccountRetry, setAccountStatus } from "@/lib/community/accountState";
 
 /* HESAP EŞİTLEMESİ — giriş yapılmışsa Kaydet / Gitmek istiyorum / Gittim hesapta saklanır.
    Sayfa açılınca: bekleyen değişiklikler gönderilir → hesaptaki durumlar alınır → hesapta olmayan yerel
@@ -20,11 +20,14 @@ export function AccountSync() {
     let alive = true;
     /* Eski prototipin yerel "Deneyim yazdım" işaretleri: yalnız "Gittim" (hiçbir zaman yayımlanmış/doğrulanmış deneyim değil). */
     normalizeLegacyExperienced(isAccountEntity);
-    (async () => {
+    const run = async () => {
       const res = await fetch(`${BASE}/api/auth/get-session/`, { cache: "no-store", credentials: "same-origin" }).catch(() => null);
-      const s = res?.ok ? await res.json().catch(() => null) as { user?: { id: string } } | null : null;
+      const body = res ? await res.json().catch(() => null) : null;
+      const s = res?.ok ? body as { user?: { id: string } } | null : null;
       if (!alive) return;
-      if (!res?.ok) { setAccountStatus("off"); return; }
+      /* kimlik kapalı (503 auth_not_configured) ile geçici hata (ağ, 5xx) AYRI: geçici hatada durum bilinmiyor, yeniden denenebilir */
+      const bad = sessionStatus(res, body);
+      if (bad) { setAccountStatus(bad); return; }
       if (!s?.user) { setAccountStatus("anon"); return; }
       setAccountStatus("in", s.user.id);
       writePending(await replayPending(post, readPending()));
@@ -42,8 +45,10 @@ export function AccountSync() {
         if (!isAccountEntity(entityId)) return;
         void pushChange(post, slugOf(entityId), toServerState(state) as PlaceState, new Date().toISOString(), { read: readPending, write: writePending });
       });
-    })();
-    return () => { alive = false; setRemoteSync(null); };
+    };
+    setAccountRetry(() => { void run(); });
+    void run();
+    return () => { alive = false; setRemoteSync(null); setAccountRetry(null); };
   }, []);
   return null;
 }

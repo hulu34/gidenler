@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { PhotoPicker, PhotoResults, usePhotoPicks } from "@/components/write/PhotoPicker";
 import { markVisited, setEntityState, useUserData } from "@/lib/store";
-import { useAccountStatus } from "@/lib/community/accountState";
+import { retryAccountStatus, useAccountStatus } from "@/lib/community/accountState";
 import { signInWithGoogle } from "@/lib/community/signin";
 import { authErrorMessage } from "@/lib/community/authErrors";
 import { deleteDraft, loadDraft, saveDraft, visitMonths } from "@/lib/drafts";
@@ -89,7 +89,9 @@ export function WriteForm({
   const [waitHash, setWaitHash] = useState<string | null>(null);
   const [mineState, setMineState] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [mineTry, setMineTry] = useState(0);
+  /* "off" yalnız kimlik YAPILANDIRILMAMIŞSA; geçici oturum hatası ("error") ve "unknown" karar değildir: taslak bekler */
   const decided = !isReal || account === "off" || account === "anon" || (account === "in" && mineState === "done");
+  const checkFailed = account === "error" || (account === "in" && mineState === "error");
 
   useEffect(() => {
     const ms = visitMonths();
@@ -394,11 +396,11 @@ export function WriteForm({
           </div>
         )}
         {waitHash && waitDraft && (
-          <div role="status" aria-live="polite" data-aktarim-bekliyor={mineState === "error" ? "hata" : "kontrol"} className="flex flex-col gap-2 rounded-[14px] border-2 border-ink p-4">
-            <p className="text-[14px] font-bold">{mineState === "error" ? "Bu mekândaki deneyimlerin kontrol edilemedi." : "Bu mekân için yayımlanmış bir deneyimin olup olmadığına bakılıyor…"}</p>
-            <p className="text-[12.5px] text-ink-2">Bağlantıyla getirdiğin taslak ({waitDraft.body.trim().length} karakter) bu sırada <strong className="font-semibold">hiçbir yere yazılmadı</strong>; adres çubuğunda bekliyor, sayfayı yenilesen de kaybolmaz.{mineState === "error" ? " Bağlantını kontrol edip yeniden dene ya da metni kopyala." : ""}</p>
+          <div role="status" aria-live="polite" data-aktarim-bekliyor={checkFailed ? "hata" : "kontrol"} data-aktarim-hata={account === "error" ? "oturum" : mineState === "error" ? "deneyim" : undefined} className="flex flex-col gap-2 rounded-[14px] border-2 border-ink p-4">
+            <p className="text-[14px] font-bold">{account === "error" ? "Oturumun kontrol edilemedi." : mineState === "error" ? "Bu mekândaki deneyimlerin kontrol edilemedi." : "Bu mekân için yayımlanmış bir deneyimin olup olmadığına bakılıyor…"}</p>
+            <p className="text-[12.5px] text-ink-2">Bağlantıyla getirdiğin taslak ({waitDraft.body.trim().length} karakter) bu sırada <strong className="font-semibold">hiçbir yere yazılmadı</strong>; adres çubuğunda bekliyor, sayfayı yenilesen de kaybolmaz.{checkFailed ? " Bağlantını kontrol edip yeniden dene ya da metni kopyala." : ""}</p>
             <div className="flex flex-wrap gap-2">
-              {mineState === "error" && <button type="button" data-aktarim-kontrol-yeniden onClick={() => setMineTry((n) => n + 1)} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">Yeniden dene</button>}
+              {checkFailed && <button type="button" data-aktarim-kontrol-yeniden onClick={() => (account === "error" ? retryAccountStatus() : setMineTry((n) => n + 1))} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">Yeniden dene</button>}
               <button type="button" data-aktarim-bekleyen-kopyala onClick={copyWaiting} className="inline-flex min-h-11 items-center rounded-[10px] border-2 border-ink bg-paper px-4 text-[13.5px] font-bold">{copiedHeld ? "Metin kopyalandı" : "Metni kopyala"}</button>
             </div>
           </div>
