@@ -179,14 +179,14 @@ const anonKarar = await fetch(`${B}/api/admin/mekan-oner/`, { method: "POST", he
 const userKarar = await apiAs(U)("/api/admin/mekan-oner/", { method: "POST", body: JSON.stringify({ id: "oneri_00000000-0000-0000-0000-000000000000", decision: "rejected" }) });
 ok(`oturumsuz (${anonKarar.status}) ve yetkisiz kullanıcı (${userKarar.status}) karar veremez`, anonKarar.status === 401 && userKarar.status === 403);
 await p4.goto(`${B}/yonetim/kampanya/?gun=7`, { waitUntil: "networkidle" });
-const row = await p4.$$eval("[data-kampanya-satir='ic03'] td", (t) => t.map((x) => x.textContent.trim()));
-const ad = ["ziyaret", "arama", "secim", "form", "giris", "gonderim", "tamam", "hata", "bulunamadi", "oneri"];
-const ic03 = Object.fromEntries(ad.map((k, i) => [k, Number(row[i + 1] ?? 0)]));
+/* hücreler adım anahtarıyla (data-adim) okunur; sütun eklenince test kaymaz */
+const stepsOf = (code) => p4.$$eval(`[data-kampanya-satir='${code}'] td[data-adim]`, (t) => Object.fromEntries(t.map((x) => [x.dataset.adim, Number(x.textContent.trim())])));
+const ic03 = await stepsOf("ic03");
 console.log("ic03", JSON.stringify(ic03));
 ok("kampanya ic03: ziyaret → arama → seçim → form → gönderim → kaydedildi ölçüldü", ic03.ziyaret >= 1 && ic03.arama >= 1 && ic03.secim >= 1 && ic03.form >= 1 && ic03.gonderim >= 1 && ic03.tamam >= 1);
 ok("kampanya ic03: başarısız kayıt ölçüldü", ic03.hata >= 1);
-const row5 = await p4.$$eval("[data-kampanya-satir='ic05'] td", (t) => t.map((x) => x.textContent.trim()));
-ok("kampanya ic05: bulunamadı ve öneri ölçüldü", Number(row5[9]) >= 1 && Number(row5[10]) >= 1, row5.slice(1, 11).join(","));
+const ic05 = await stepsOf("ic05");
+ok("kampanya ic05: bulunamadı ve öneri ölçüldü", ic05.bulunamadi >= 1 && ic05.oneri >= 1, JSON.stringify(ic05));
 ok("10 içerik üreticisi bağlantısı listeleniyor", (await p4.locator("[data-kampanya-baglanti]").count()) === 10);
 await shot(p4, "yonetim-kampanya", true);
 await c4.close();

@@ -93,7 +93,7 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
   const href = await p.getAttribute("[data-uygulama-ici-ac]", "href").catch(() => null);
   ok("Instagram Android: 'Chrome'da aç' intent bağlantısı, kod korunur", !!href && href.startsWith(`intent://${HOST}/nerede-yedin/?k=ic06#Intent;scheme=https;`), href?.slice(0, 60));
   await shot(p, "ig-android-acilis");
-  await p.goto(`${B}/benim/`, { waitUntil: "networkidle" }); await p.waitForTimeout(800);
+  await p.goto(`${B}/benim/`, { waitUntil: "load" }); await p.waitForSelector("[data-uygulama-ici]", { timeout: 10000 }).catch(() => {});
   ok("Benim: uygulama içinde Google düğmesi yerine uyarı", (await p.locator("[data-uygulama-ici]").count()) === 1 && (await p.locator("button:has-text('Google ile giriş yap')").count()) === 0);
   await c.close();
 }
@@ -135,7 +135,7 @@ const matrix = [];
 {
   const c = await ctx({ w: 390, h: 844 }); const p = await c.newPage();
   for (const s of PROF) {
-    const r0 = await p.goto(`${B}/mekan/${s}/`, { waitUntil: "networkidle" }).catch(() => null);
+    const r0 = await p.goto(`${B}/mekan/${s}/`, { waitUntil: "load" }).catch(() => null); await p.waitForTimeout(1200);
     const m = await p.evaluate((slug) => {
       const T = document.body.innerText;
       const links = [...document.querySelectorAll("main a[href]")].map((a) => a.getAttribute("href"));
