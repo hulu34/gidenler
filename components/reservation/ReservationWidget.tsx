@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { Entity } from "@/lib/types";
 import { AVAIL_MARK, availabilityOf, reservationCode, slotOpen, type StoredReservation } from "@/lib/reservation";
 import { saveReservation } from "./store";
+import { reservationErrorText } from "@/lib/reservationDelivery";
 
 /* ──────────────────────────────────────────────────────────────────────────
    REZERVASYON — Tabelog'un "boş yer takvimi" (○ △ ×) + tek ekranda talep.
@@ -51,14 +52,20 @@ export function ReservationWidget({ venue, slots, maxParty }: { venue: V; slots:
     try {
       const r = await fetch(`${BASE}/api/rezervasyon/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ entitySlug: venue.slug, date, time, party, name, phone, note: note || undefined, consent: true }) });
       if (r.status === 404 || r.status === 405) throw new Error("api_yok");
-      const j = await r.json();
-      if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      const accepted = r.ok && (j.status === "önizleme" || (j.status === "talep" && j.forwarded === true));
+      if (!accepted) {
         setBusy(false);
-        setErr(j.error === "slot_unavailable" ? "Bu saat az önce doldu, başka bir saat seç." : j.error === "rate_limited" ? "Çok fazla deneme; biraz sonra tekrar dene." : j.error === "invalid_request" ? "Ad ve telefonu kontrol et (telefon en az 10 hane)." : "Talep gönderilemedi, tekrar dene.");
+        setErr(reservationErrorText(j.error));
         return;
       }
       code = j.code; status = j.status;
-    } catch {
+    } catch (x) {
+      if (!(x instanceof Error && x.message === "api_yok")) {
+        setBusy(false);
+        setErr(reservationErrorText("network"));
+        return;
+      }
       /* statik önizleme (API yok): talep iletilmez, yalnızca akış gösterilir */
       code = reservationCode(); status = "önizleme";
     }
