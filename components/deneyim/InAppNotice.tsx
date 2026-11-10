@@ -16,7 +16,7 @@ export function useInApp(): InApp | null {
  * `hash`: taslak ve kampanya kodunu taşıyan # parçası (form verir; arama sayfasında yok). Kopyalanan bağlantı ve
  * Android'deki "Chrome'da aç" aynı adresi açar; Instagram'ın kendi "tarayıcıda aç" menüsü de adres çubuğundaki # ile açar.
  */
-export function InAppNotice({ app, context, hash = "" }: { app: InApp; context: "arama" | "form" | "giris"; hash?: string }) {
+export function InAppNotice({ app, context, hash = "", tooLong = 0 }: { app: InApp; context: "arama" | "form" | "giris"; hash?: string; tooLong?: number }) {
   const [copied, setCopied] = useState(false);
   useEffect(() => { track("uygulamaici"); }, []);
   const href = () => `${location.origin}${location.pathname}${location.search}${hash}`;
@@ -33,6 +33,7 @@ export function InAppNotice({ app, context, hash = "" }: { app: InApp; context: 
     <div role="note" data-uygulama-ici={app.name} className="flex flex-col gap-2.5 rounded-[14px] border-2 border-ink bg-[var(--accent-soft)] p-4 text-left">
       <p className="text-[14px] font-bold leading-snug">{app.name} içinden açtın</p>
       <p className="text-[13.5px] leading-relaxed text-ink-2">{lead}</p>
+      {tooLong > 0 && <p role="alert" data-uygulama-ici-uzun className="text-[13px] font-semibold text-neg-ink">Metnin {tooLong.toLocaleString("tr-TR")} karakteri aşıyor. Bağlantıyla yalnız ilk {tooLong.toLocaleString("tr-TR")} karakter taşınır ve daha uzun bir deneyim yayınlanamaz; aktarmadan önce kısalt.</p>}
       <ol className="flex flex-col gap-1 text-[13px] leading-relaxed text-ink-2">
         <li>1. {app.ios ? "Sağ üstteki ••• menüsüne dokun." : "Sağ üstteki ⋮ menüsüne dokun."}</li>
         <li>2. &ldquo;Tarayıcıda aç&rdquo; ({app.ios ? "Safari" : "Chrome"}) seçeneğini seç.</li>

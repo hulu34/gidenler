@@ -1,7 +1,7 @@
 /* GECE OPERASYONU (10 Kasım) birim testleri — uygulama içi tarayıcı, # aktarımı, yasal sayfalar, kampanya adımı.
    Çalıştır: npx tsx scripts/gecetest.ts */
 import { readFileSync, existsSync } from "node:fs";
-import { androidIntent, decodeHandoff, encodeHandoff, inAppBrowser } from "../lib/inapp";
+import { HANDOFF_MAX, androidIntent, decodeHandoff, encodeHandoff, handoffPlan, inAppBrowser, isHandoffHash, sameDraft } from "../lib/inapp";
 import { CLIENT_STEPS, STEPS } from "../lib/kampanya";
 
 let pass = 0, fail = 0;
@@ -35,7 +35,11 @@ const enc = encodeHandoff(h);
 ok("# parçası #aktar= ile başlar, adres güvenli karakterler", enc.startsWith("#aktar=") && /^[#A-Za-z0-9_=-]+$/.test(enc));
 const dec = decodeHandoff(enc);
 ok("Türkçe metin ve puanlar gidip gelir", dec?.b === h.b && dec?.o === 9 && dec?.r?.service === 8 && dec?.r?.["front-desk"] === 7 && dec?.k === "ic07" && dec?.m === "2026-11" && dec?.ri === "evet");
-ok("uzun metin 3.000 karakterde kesilir", (decodeHandoff(encodeHandoff({ b: "x".repeat(9000) }))?.b ?? "").length === 3000);
+ok("sınır = deneyim API sınırı (6.000)", HANDOFF_MAX === 6000 && readFileSync("lib/community/reviewApi.ts", "utf8").includes("body: z.string().max(6000)"));
+const longTr = "Şişli'deki ğüçlü İskender, ılık şöbiyet ve çay. ".repeat(200).slice(0, 6000);
+ok("6.000 karakterlik Türkçe metin eksiksiz taşınır", decodeHandoff(encodeHandoff({ b: longTr }))?.b === longTr);
+ok("6.000 üstü metin 6.000'de kesilir (form bunu aktarmadan önce söyler)", (decodeHandoff(encodeHandoff({ b: "ş".repeat(9000) }))?.b ?? "").length === 6000);
+ok("6.000 karakterlik aktarım adresi Safari/Chrome sınırlarının çok altında (<20 bin)", encodeHandoff({ b: longTr, r: { service: 8 }, k: "ic01" }).length < 20000);
 ok("yalnız kod taşınabilir", decodeHandoff(encodeHandoff({ k: "ic01" }))?.k === "ic01" && decodeHandoff(encodeHandoff({ k: "ic01" }))?.b === undefined);
 ok("bozuk # → null", decodeHandoff("#aktar=%%%") === null && decodeHandoff("#esik") === null && decodeHandoff("") === null);
 const evil = "#aktar=" + Buffer.from(JSON.stringify({ b: 5, o: 99, r: { "<script>": 3, ok: 50 }, k: "../../x", m: "yarın", ri: "x".repeat(40) })).toString("base64url");
@@ -63,6 +67,25 @@ ok("kampanya sayfası paylaşım görselini açıkça verir", src("app/nerede-ye
 ok("Seçki paylaşım kartında görsel (kapak ya da site kartı)", src("app/seckisi/sayfa.tsx").includes('"/opengraph-image"'));
 ok("form: uygulama içindeyken üst metin Google girişi istemez", wf.includes('account === "anon" && inApp\n              ? <>Yazmaya başlayabilirsin.') || wf.includes("Yazmaya başlayabilirsin. Yayınlamak için sayfayı tarayıcında açıp"));
 ok("kampanya panosu hücreleri adım anahtarlı (data-adim)", src("app/yonetim/kampanya/page.tsx").includes("data-adim={c.k}"));
+
+/* hedef tarayıcıda karar: aktarım mevcut taslağın ÜZERİNE YAZMAZ */
+const M = "2026-11";
+const L = { body: "Bu cihazda yazdığım farklı bir metin, kırk karakteri rahatça geçiyor.", month: M, ratings: {}, overall: 6, returnIntent: "hayır", relationship: "none" };
+const H = encodeHandoff({ b: "Instagram'da yazdığım metin; şöbiyet ve İskender çok iyiydi, servis hızlıydı.", m: M, o: 9, ri: "evet", k: "ic02" });
+ok("adreste aktarım yok → none", handoffPlan("", L, M).kind === "none" && handoffPlan("#esik", L, M).kind === "none");
+ok("hedefte taslak yok → tek adımda uygula", handoffPlan(H, null, M).kind === "apply");
+ok("hedefte boş taslak → uygula", handoffPlan(H, { ...L, body: "  ", overall: null }, M).kind === "apply");
+ok("hedefte FARKLI taslak → seçim sorulur (üzerine yazılmaz)", handoffPlan(H, L, M).kind === "choose");
+const same = handoffPlan(H, null, M); 
+ok("hedefte AYNI taslak → seçim sorulmaz", same.kind === "apply" && handoffPlan(H, { ...same.draft, body: same.draft.body + "  " }, M).kind === "apply");
+ok("bozuk / yarım kopyalanmış bağlantı → broken (mevcut taslak değişmez)", handoffPlan("#aktar=%%%", L, M).kind === "broken" && handoffPlan(H.slice(0, 25), L, M).kind === "broken" && isHandoffHash("#aktar=x"));
+ok("yalnız kampanya kodu → code (taslağa dokunulmaz)", handoffPlan(encodeHandoff({ k: "ic01" }), L, M).kind === "code");
+ok("sameDraft: puan farkı farklı sayılır", !sameDraft(L, { ...L, overall: 7 }) && sameDraft(L, { ...L, body: ` ${L.body}\n` }));
+const wf2 = readFileSync("app/yaz/[slug]/WriteForm.tsx", "utf8");
+ok("form: seçim beklerken otomatik kayıt ve # güncellemesi durur, yayın kapalı", wf2.includes("if (!touched || mine || sent || incoming) return;") && wf2.includes('account !== "anon" || incoming) return;') && wf2.includes("!busy && !incoming &&"));
+ok("form: seçim ekranı ve bozuk bağlantı uyarısı var", wf2.includes("data-taslak-secim") && wf2.includes("data-taslak-gelen") && wf2.includes("data-taslak-mevcut") && wf2.includes("data-aktarim-bozuk"));
+ok("form: 6.000 üstü metin aktarmadan önce uyarılır", wf2.includes("tooLong={body.length > HANDOFF_MAX ? HANDOFF_MAX : 0}") && readFileSync("components/deneyim/InAppNotice.tsx", "utf8").includes("data-uygulama-ici-uzun"));
+ok("yerel taslak API sınırıyla aynı (5.000'de sessiz kesme yok)", readFileSync("lib/drafts.ts", "utf8").includes("d.body.slice(0, 6000)"));
 
 console.log(`\ngece: ${pass} geçti, ${fail} kaldı`);
 process.exit(fail ? 1 : 0);

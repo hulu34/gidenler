@@ -9,7 +9,7 @@ import { signInWithGoogle } from "@/lib/community/signin";
 import { authErrorMessage } from "@/lib/community/authErrors";
 import { deleteDraft, loadDraft, saveDraft, visitMonths } from "@/lib/drafts";
 import { captureCampaign, flowCode, track } from "@/lib/kampanya/client";
-import { decodeHandoff, encodeHandoff } from "@/lib/inapp";
+import { HANDOFF_MAX, decodeHandoff, encodeHandoff, handoffPlan, type DraftLike } from "@/lib/inapp";
 import { InAppNotice, useInApp } from "@/components/deneyim/InAppNotice";
 import { dropSuggestionDraft, takeSuggestionDraft, type SuggestionDraft } from "@/lib/oneri/key";
 import { Button } from "@/components/ui/Button";
@@ -74,23 +74,27 @@ export function WriteForm({
   const [showDims, setShowDims] = useState(false);
   const [code, setCode] = useState<string | null>(null);
   const inApp = useInApp();
+  /* başka tarayıcıdan gelen taslak, bu cihazdaki FARKLI taslakla çakışınca: seçim yapılana kadar burada bekler */
+  const [incoming, setIncoming] = useState<{ from: DraftLike; local: DraftLike & { savedAt: string } } | null>(null);
+  const [handoffBroken, setHandoffBroken] = useState(false);
 
   useEffect(() => {
     const ms = visitMonths();
     setMonths(ms);
     /* uygulama içi tarayıcıdan "tarayıcıda aç" ile gelindiyse: taslak ve kampanya kodu # parçasında (sunucuya gitmez).
-       Yerel taslağa yazılır, # adres çubuğundan hemen silinir. */
-    const h = decodeHandoff(location.hash);
-    if (h) {
-      if (h.k) captureCampaign(`?k=${h.k}`, "dogrudan");
-      const rels = RELATIONSHIPS.map((x) => x.key) as string[];
-      if (h.b || h.o) saveDraft(entitySlug, {
-        body: h.b ?? "", month: h.m ?? ms[0][0], ratings: h.r ?? {}, overall: h.o ?? null,
-        returnIntent: (["evet", "hayır", "emin değil"].includes(h.ri ?? "") ? h.ri : null) as ReturnIntent | null,
-        relationship: (rels.includes(h.rel ?? "") ? h.rel : "none") as CommercialRelationship,
-      });
+       Bu cihazda aynı mekân için taslak YOKSA (ya da aynısıysa) tek adımda yüklenir. FARKLI bir taslak varsa ÜZERİNE
+       YAZILMAZ: kullanıcı hangisiyle devam edeceğini seçer; seçene kadar # adreste, mevcut taslak yerinde kalır. */
+    const local = loadDraft(entitySlug);
+    const plan = handoffPlan(location.hash, local, ms[0][0]);
+    const h = plan.kind === "none" || plan.kind === "broken" ? null : decodeHandoff(location.hash);
+    if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
+    if (plan.kind === "broken") { setHandoffBroken(true); history.replaceState(null, "", location.pathname + location.search); }
+    if (plan.kind === "code") history.replaceState(null, "", location.pathname + location.search);
+    if (plan.kind === "apply") {
+      saveDraft(entitySlug, { ...plan.draft, returnIntent: plan.draft.returnIntent as ReturnIntent | null, relationship: plan.draft.relationship as CommercialRelationship });
       history.replaceState(null, "", location.pathname + location.search);
     }
+    if (plan.kind === "choose" && local) setIncoming({ from: plan.draft, local });
     const d = loadDraft(entitySlug);
     if (d) {
       setBody(d.body); setRatings(d.ratings ?? {}); setRet(d.returnIntent ?? null); setRel(d.relationship ?? "none"); setOverall(d.overall ?? null);
@@ -106,23 +110,39 @@ export function WriteForm({
   }, [entitySlug, entityName, district]);
 
   useEffect(() => {
-    if (!touched || mine || sent) return;
+    if (!touched || mine || sent || incoming) return;
     const id = setTimeout(() => {
       if (!body.trim() && overall === null) return;
       if (saveDraft(entitySlug, { body, month, ratings, returnIntent: ret, relationship: rel, overall })) setAutoSaved(new Date().toISOString());
     }, 700);
     return () => clearTimeout(id);
-  }, [touched, mine, sent, body, month, ratings, ret, rel, overall, entitySlug]);
+  }, [touched, mine, sent, incoming, body, month, ratings, ret, rel, overall, entitySlug]);
 
   /* uygulama içi tarayıcıda (girişsiz): taslak adres çubuğundaki # parçasında da tutulur — Instagram'ın "tarayıcıda aç"
      menüsü ve "Bağlantıyı kopyala" aynı adresi açar; yeni tarayıcıda form kaldığı yerden devam eder. */
   const handoff = inApp && isReal && account === "anon" && (body.trim() || overall !== null)
     ? encodeHandoff({ b: body, m: month, o: overall, r: ratings, ri: ret, rel, k: code }) : "";
   useEffect(() => {
-    if (!inApp || !isReal || account !== "anon") return;
+    if (!inApp || !isReal || account !== "anon" || incoming) return;
     const id = setTimeout(() => history.replaceState(null, "", location.pathname + location.search + handoff), 400);
     return () => clearTimeout(id);
-  }, [inApp, isReal, account, handoff]);
+  }, [inApp, isReal, account, handoff, incoming]);
+
+  const applyDraft = (d: DraftLike) => {
+    setBody(d.body); setRatings(d.ratings ?? {}); setRet((d.returnIntent as ReturnIntent) ?? null);
+    setRel((d.relationship as CommercialRelationship) ?? "none"); setOverall(d.overall ?? null);
+    setMonth(months.some(([k]) => k === d.month) ? d.month : (months[0]?.[0] ?? d.month));
+    if (d.ratings && Object.keys(d.ratings).length) setShowDims(true);
+  };
+  /* seçim: getirilen taslakla devam → bu cihazdakinin yerine kaydedilir; bu cihazdakiyle devam → getirilen bırakılır */
+  const chooseIncoming = () => {
+    if (!incoming) return;
+    const d = incoming.from;
+    saveDraft(entitySlug, { ...d, returnIntent: d.returnIntent as ReturnIntent | null, relationship: d.relationship as CommercialRelationship });
+    applyDraft(d); setRestored(new Date().toISOString()); setIncoming(null);
+    history.replaceState(null, "", location.pathname + location.search);
+  };
+  const chooseLocal = () => { setIncoming(null); history.replaceState(null, "", location.pathname + location.search); };
 
   /* Google girişi hata ile döndüyse (ör. süre aşımı): açıklama + taslağın korunduğu bilgisi; yeniden deneme düğmesi aynı. */
   useEffect(() => {
@@ -189,7 +209,7 @@ export function WriteForm({
   }
 
   const rated = Object.keys(ratings).length;
-  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy && (!photos.picks.length || photos.rights);
+  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy && !incoming && (!photos.picks.length || photos.rights);
   const userData = useUserData();
   const quick = entityId ? userData.reactions.find((r) => r.entityId === entityId) : undefined;
   const steps: Array<[string, boolean]> = [
@@ -264,8 +284,28 @@ export function WriteForm({
               ? <>Yayınlamak için Google ile giriş yap. Yazdıkların o sırada <strong className="font-semibold">bu cihazda taslak</strong> olarak korunur.</>
               : <>Yazdıkların <strong className="font-semibold">yalnız bu cihazda taslak</strong> olarak saklanır; kimse göremez, puana girmez.</>}
         </p>
+        {incoming && (
+          <div role="group" aria-labelledby="taslak-secim-baslik" data-taslak-secim className="flex flex-col gap-3 rounded-[14px] border-2 border-ink bg-[var(--accent-soft)] p-4">
+            <p id="taslak-secim-baslik" className="text-[14px] font-bold">Bu mekân için iki farklı taslak var. Hangisiyle devam edelim?</p>
+            <p className="text-[12.5px] text-ink-2">Sen seçene kadar bu cihazdaki taslağın olduğu gibi korunur; hiçbir şey yayınlanmaz.</p>
+            {([["gelen", "Bağlantıyla getirdiğin", incoming.from, null], ["mevcut", "Bu cihazda kayıtlı olan", incoming.local, incoming.local.savedAt]] as const).map(([k, t, d, at]) => (
+              <div key={k} data-taslak-aday={k} className="rounded-[10px] border border-line-2 bg-paper p-3">
+                <p className="text-[12px] font-bold uppercase tracking-[0.08em] text-ink-3">{t}{at ? ` · ${new Date(at).toLocaleString("tr-TR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}` : ""}</p>
+                <p className="mt-1 line-clamp-3 text-[13.5px] leading-relaxed text-ink">{d.body.trim() ? d.body.trim().slice(0, 220) : <i className="text-ink-3">Metin yok</i>}</p>
+                <p className="mt-1 text-[12px] text-ink-3">{d.body.trim().length} karakter{d.overall ? ` · genel puan ${d.overall}/10` : ""}</p>
+              </div>
+            ))}
+            <div className="flex flex-wrap gap-2">
+              <button type="button" data-taslak-gelen onClick={chooseIncoming} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">Getirdiğimle devam et</button>
+              <button type="button" data-taslak-mevcut onClick={chooseLocal} className="inline-flex min-h-11 items-center rounded-[10px] border-2 border-ink bg-paper px-4 text-[13.5px] font-bold">Bu cihazdakiyle devam et</button>
+            </div>
+          </div>
+        )}
+        {handoffBroken && (
+          <p role="alert" data-aktarim-bozuk className="text-[13px] font-semibold text-neg-ink">Bağlantıdaki taslak okunamadı (eksik ya da bozuk kopyalanmış olabilir). Bu cihazdaki taslağın değişmedi; metni Instagram&apos;daki sayfadan yeniden kopyalayabilirsin.</p>
+        )}
         {isReal && account === "anon" && inApp && (
-          <div id="tarayicida-ac" className="scroll-mt-24"><InAppNotice app={inApp} context="form" hash={handoff || (code ? encodeHandoff({ k: code }) : "")} /></div>
+          <div id="tarayicida-ac" className="scroll-mt-24"><InAppNotice app={inApp} context="form" hash={handoff || (code ? encodeHandoff({ k: code }) : "")} tooLong={body.length > HANDOFF_MAX ? HANDOFF_MAX : 0} /></div>
         )}
         {restored && (
           <p className="flex flex-wrap items-center gap-x-3 text-[12.5px] text-ink-3">
@@ -321,7 +361,7 @@ export function WriteForm({
             moderasyondan geçmez.
           </span>
           <span className={`tnum ${body.trim().length >= 40 ? "text-pos-ink" : ""}`}>
-            {body.trim().length < 40 ? `${body.trim().length}/40 karakter` : `${body.trim().length} karakter`}
+            {body.trim().length < 40 ? `${body.trim().length}/40 karakter` : body.length > HANDOFF_MAX ? `${body.length}/${HANDOFF_MAX} karakter — sınırı aştın, kısaltman gerekiyor` : `${body.trim().length} karakter`}
             {autoSaved && !mine && <span className="ml-2 text-ink-3" data-otomatik-taslak>· taslak bu cihazda kaydedildi</span>}
           </span>
         </p>
