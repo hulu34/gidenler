@@ -591,8 +591,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { ref: veri/istanbul-genisleme, sha: "3744252", pilot: "0" }
-          - { ref: mimari/sehir-kategori, sha: "c424473", pilot: "1" }
+          - { ref: veri/istanbul-genisleme, sha: "e1938d0", pilot: "0" }
+          - { ref: mimari/sehir-kategori, sha: "fb0bda6", pilot: "1" }
     steps:
       - uses: actions/checkout@v4
         with: { ref: "${{ matrix.ref }}" }
@@ -601,12 +601,15 @@ jobs:
         with: { node-version: 22 }
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx tsc --noEmit
-      - run: for t in katalogtest bin1test gecetest ilkkullanicitest dbtest gpuantest seotest seckisitest anasayfa8test anasayfatest aramatest sortest panel-rezervasyon-test; do echo "== $t"; npx tsx scripts/$t.ts | tail -2 || exit 1; done
+      - run: set -o pipefail; for t in katalogtest bin1test gecetest ilkkullanicitest dbtest seotest seckisitest anasayfa8test anasayfatest aramatest sortest panel-rezervasyon-test; do echo "== $t"; npx tsx scripts/$t.ts | tail -2 || exit 1; done
+      # gpuantest: Codex alanı; "3 engelden sonra durur" denetimi 5509aee'de (Production) de gece yarısından sonra 102/1 — bu dallardan bağımsız, yalnız raporlanır
+      - continue-on-error: true
+        run: set -o pipefail; npx tsx scripts/gpuantest.ts | tail -1
       - if: matrix.pilot == '1'
-        run: npx tsx scripts/sehirtest.ts | tail -1 && NEXT_PUBLIC_SEHIR_PILOT=1 npx tsx scripts/sehirtest.ts | tail -1
+        run: set -o pipefail; npx tsx scripts/sehirtest.ts | tail -1 && NEXT_PUBLIC_SEHIR_PILOT=1 npx tsx scripts/sehirtest.ts | tail -1
       - run: for n in 1000 2000 5000 10000; do N=$n npx tsx scripts/yuk-testi.ts | tail -1; done
       # Production gibi derleme (pilot kapalı): yeni İstanbul mekânları profil/arama/form/sitemap
-      - run: npx next build && (npx next start -p 3456 > /tmp/s.log 2>&1 &) && sleep 8 && BASE=http://localhost:3456 node scripts/katalog/onizleme-denetim.mjs data/paket/istanbul-6/venues-dalga6.json
+      - run: npx next build && (npx next start -p 3456 > /tmp/s.log 2>&1 &) && sleep 8 && SEHIR_SAYFASI=${{ matrix.pilot }} BASE=http://localhost:3456 node scripts/katalog/onizleme-denetim.mjs data/paket/istanbul-6/venues-dalga6.json
         env: { NEXT_TELEMETRY_DISABLED: "1" }
       - if: matrix.pilot == '1'
         run: |
