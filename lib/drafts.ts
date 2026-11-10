@@ -46,7 +46,7 @@ export function loadDraft(slug: string): ExperienceDraft | null {
 export function saveDraft(slug: string, d: Omit<ExperienceDraft, "savedAt">): boolean {
   try {
     const all = readAll();
-    all[slug] = { ...d, body: d.body.slice(0, 5000), savedAt: new Date().toISOString() };
+    all[slug] = { ...d, body: d.body.slice(0, 6000), savedAt: new Date().toISOString() };
     window.localStorage.setItem(KEY, JSON.stringify(all));
     return true;
   } catch { return false; }

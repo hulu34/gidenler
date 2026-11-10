@@ -35,6 +35,11 @@ export function androidIntent(href: string): string {
 /* ── # ile aktarım: taslak + kampanya kodu ───────────────────────────────── */
 export interface Handoff { b?: string; m?: string; o?: number | null; r?: Record<string, number>; ri?: string | null; rel?: string; k?: string | null }
 const HKEY = "aktar=";
+/** Taşınabilen en uzun metin = deneyim API'sinin sınırı (lib/community/reviewApi.ts body.max). Yayınlanabilen her metin
+    eksiksiz taşınır; daha uzunu zaten yayınlanamaz ve kullanıcı aktarmadan önce uyarılır. */
+export const HANDOFF_MAX = 6000;
+/** Adreste aktarım parçası var mı (çözülebilir olsun olmasın) — bozuk bağlantıyı ayırt etmek için. */
+export const isHandoffHash = (hash: string) => hash.includes(HKEY);
 
 function b64urlEncode(s: string): string {
   const bytes = new TextEncoder().encode(s); let bin = "";
@@ -46,9 +51,9 @@ function b64urlDecode(s: string): string {
   return new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
 }
 
-/** "#aktar=…" parçası (metin 3.000 karakterle sınırlı: adres uzunluğu sınırları). Boş taslakta yalnız kod taşınır. */
+/** "#aktar=…" parçası (metin HANDOFF_MAX ile sınırlı). Boş taslakta yalnız kod taşınır. */
 export function encodeHandoff(h: Handoff): string {
-  const v: Handoff = { ...h, b: h.b?.slice(0, 3000) };
+  const v: Handoff = { ...h, b: h.b?.slice(0, HANDOFF_MAX) };
   for (const k of Object.keys(v) as Array<keyof Handoff>) if (v[k] === undefined || v[k] === null || v[k] === "") delete v[k];
   return `#${HKEY}${b64urlEncode(JSON.stringify(v))}`;
 }
@@ -61,7 +66,7 @@ export function decodeHandoff(hash: string): Handoff | null {
     const raw = JSON.parse(b64urlDecode(hash.slice(i + HKEY.length))) as Record<string, unknown>;
     if (!raw || typeof raw !== "object") return null;
     const out: Handoff = {};
-    if (typeof raw.b === "string") out.b = raw.b.slice(0, 3000);
+    if (typeof raw.b === "string") out.b = raw.b.slice(0, HANDOFF_MAX);
     if (typeof raw.m === "string" && /^\d{4}-\d{2}$/.test(raw.m)) out.m = raw.m;
     if (typeof raw.o === "number" && raw.o >= 1 && raw.o <= 10) out.o = Math.round(raw.o);
     if (raw.r && typeof raw.r === "object") {
@@ -74,4 +79,43 @@ export function decodeHandoff(hash: string): Handoff | null {
     if (typeof raw.k === "string" && /^[a-z0-9-]{1,24}$/.test(raw.k)) out.k = raw.k;
     return out;
   } catch { return null; }
+}
+
+/* ── hedef tarayıcıda karar: aktarım mevcut taslağın üzerine YAZMAZ ───────── */
+export interface DraftLike { body: string; month: string; ratings: Record<string, number>; overall?: number | null; returnIntent: string | null; relationship: string }
+const RETURNS = ["evet", "hayır", "emin değil"];
+const RELS = ["none", "invited", "gifted", "sponsored", "owner_related"];
+
+/** Aktarım → taslak alanları (bilinmeyen dönüş/ilişki değerleri varsayılana düşer). */
+export function handoffToDraft(h: Handoff, defaultMonth: string): DraftLike {
+  return {
+    body: h.b ?? "", month: h.m ?? defaultMonth, ratings: h.r ?? {}, overall: h.o ?? null,
+    returnIntent: RETURNS.includes(h.ri ?? "") ? (h.ri as string) : null,
+    relationship: RELS.includes(h.rel ?? "") ? (h.rel as string) : "none",
+  };
+}
+
+/** İçerik aynı mı (boşluk farkı yok sayılır): aynıysa seçim sorulmaz. */
+export function sameDraft(a: DraftLike, b: DraftLike): boolean {
+  const n = (s: string) => s.replace(/\s+/g, " ").trim();
+  return n(a.body) === n(b.body) && (a.overall ?? null) === (b.overall ?? null) && a.month === b.month
+    && a.returnIntent === b.returnIntent && a.relationship === b.relationship
+    && JSON.stringify(Object.entries(a.ratings ?? {}).sort()) === JSON.stringify(Object.entries(b.ratings ?? {}).sort());
+}
+
+export type HandoffPlan =
+  | { kind: "none" }                       // adreste aktarım yok
+  | { kind: "broken" }                     // aktarım var ama okunamadı → mevcut taslak olduğu gibi kalır
+  | { kind: "code" }                       // yalnız kampanya kodu (taslak içeriği yok)
+  | { kind: "apply"; draft: DraftLike }    // hedefte taslak yok ya da aynısı → tek adımda uygula
+  | { kind: "choose"; draft: DraftLike };  // hedefte FARKLI taslak var → kullanıcı seçer; seçene kadar mevcut korunur
+
+export function handoffPlan(hash: string, local: DraftLike | null, defaultMonth: string): HandoffPlan {
+  if (!isHandoffHash(hash)) return { kind: "none" };
+  const h = decodeHandoff(hash);
+  if (!h) return { kind: "broken" };
+  if (!h.b?.trim() && !h.o) return { kind: "code" };
+  const draft = handoffToDraft(h, defaultMonth);
+  if (!local || (!local.body.trim() && local.overall == null) || sameDraft(local, draft)) return { kind: "apply", draft };
+  return { kind: "choose", draft };
 }
