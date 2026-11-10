@@ -23,7 +23,7 @@ export function venueDescription(e: Entity, ps: PublishedScore | null, hasMenu: 
     ...(e.contact?.phone || e.contact?.website ? ["iletişim"] : []),
     ...(e.contact?.openingHours ?? e.hours ? ["çalışma saatleri"] : []),
   ];
-  const head = `${e.name}${where ? ` (${where}, İstanbul)` : ""}`;
+  const head = `${e.name}${where ? ` (${where}, ${e.location?.city ?? "İstanbul"})` : ""}`;
   const score = ps?.score != null ? `Gidenler puanı ${fmtPublished(ps.score)}/10 (${ps.reviewCount} deneyim).` : SCORE_WAITING;
   return `${head}${has.length ? `: ${joinTr(has)} bilgisi` : ""}. ${score}`;
 }
@@ -74,7 +74,7 @@ export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelat
     name: e.name,
     url: `${SITE}/mekan/${e.slug}/`,
     ...(image ? { image: absoluteImage(image) } : {}),
-    address: { "@type": "PostalAddress", streetAddress: e.address, addressLocality: e.location?.district, addressRegion: "İstanbul", addressCountry: "TR" },
+    address: { "@type": "PostalAddress", streetAddress: e.address, addressLocality: e.location?.district, addressRegion: e.location?.city ?? "İstanbul", addressCountry: "TR" },
     ...(geo ? { geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng } } : {}),
     ...(e.contact?.phone ? { telephone: e.contact.phone } : {}),
     ...(hours ? { openingHoursSpecification: hours } : {}),

@@ -25,7 +25,9 @@ const nextConfig: NextConfig = {
   // Sunucu modunda varsayılan uzantılar (Vercel'in Next.js derleyicisi özel "api.ts" uzantısını izleyemiyor).
   pageExtensions: isExport ? ["tsx", "js"] : ["tsx", "ts"],
   // İstemciye giden tek yapılandırma: basePath (gizli değil). API anahtarları ve AI_* değerleri yalnızca sunucuda kalır.
-  env: { NEXT_PUBLIC_BASE_PATH: process.env.NEXT_BASE_PATH || "" },
+  // NEXT_PUBLIC_SEHIR_PILOT her derlemede tanımlıdır (varsayılan "0"): kapalıyken pilot şehir verisi derlemede düşer, pakete girmez.
+  // Production'da ayrıca lib/sehir.ts pilotAcik() VERCEL_ENV=production iken her zaman kapalıdır.
+  env: { NEXT_PUBLIC_BASE_PATH: process.env.NEXT_BASE_PATH || "", NEXT_PUBLIC_SEHIR_PILOT: process.env.NEXT_PUBLIC_SEHIR_PILOT === "1" && process.env.VERCEL_ENV !== "production" ? "1" : "0" },
   serverExternalPackages: [],
   ...(!isExport ? {
     async headers() {

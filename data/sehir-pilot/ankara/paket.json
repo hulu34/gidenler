@@ -1,0 +1,996 @@
+{
+ "_aciklama": "İstanbul yeni mekân paketi. Yalnız A sınıfı. Kaynak: OpenStreetMap (© OpenStreetMap katkıcıları, ODbL) + işletmelerin resmî siteleri (yalnız eşleşme ölçümü; içerik kopyalanmadı). Google verisi kullanılmadı.",
+ "osmTarihi": "2026-11-10T20:39:06Z",
+ "kontrolTarihi": "2026-11-10",
+ "eklenen": [
+  {
+   "slug": "bogazici-lokantasi-altindag-ankara",
+   "ref": "node/12057076369",
+   "ad": "Bogazici Lokantasi",
+   "ilce": "Altındağ",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12057076369",
+    "https://bogazicilokantasi.com.tr/"
+   ],
+   "osmSonDuzenleme": "2025-10-03",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "ade-miel-coffee-shop-cankaya-ankara",
+   "ref": "node/13570517040",
+   "ad": "Ade Miel Coffee Shop",
+   "ilce": "Çankaya",
+   "mahalle": "Kocatepe",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13570517040",
+    "https://www.ademielcoffee.com/"
+   ],
+   "osmSonDuzenleme": "2026-02-16",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "bagel-i-manyak-cankaya-ankara",
+   "ref": "node/12539033009",
+   "ad": "Bagel-i Manyak",
+   "ilce": "Çankaya",
+   "mahalle": "Güvenevler Mahallesi",
+   "tur": "Fırın",
+   "mutfak": [
+    {
+     "id": "firin",
+     "ad": "Fırın ve börek",
+     "kaynak": "osm_cuisine",
+     "deger": "bagel"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-28"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12539033009"
+   ],
+   "osmSonDuzenleme": "2025-01-28",
+   "osmKontrol": "2025-01-28",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "biso-cafe-cankaya-ankara",
+   "ref": "node/13899078401",
+   "ad": "Biso Cafe",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-31"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13899078401"
+   ],
+   "osmSonDuzenleme": "2026-05-31",
+   "osmKontrol": "2026-05-31",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "cafe-bianca-cankaya-ankara",
+   "ref": "node/11896469969",
+   "ad": "Cafe Bianca",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-08-03"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11896469969"
+   ],
+   "osmSonDuzenleme": "2026-08-03",
+   "osmKontrol": "2026-08-03",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "cofengo-cafe-cankaya-ankara",
+   "ref": "node/13633490201",
+   "ad": "Cofengo Cafe",
+   "ilce": "Çankaya",
+   "mahalle": "Ayrancı Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-03-10"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13633490201"
+   ],
+   "osmSonDuzenleme": "2026-03-10",
+   "osmKontrol": "2026-03-10",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "cozy-vintage-coffee-cankaya-ankara",
+   "ref": "node/13607928701",
+   "ad": "Cozy Vintage Coffee",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Tatlıcı",
+   "mutfak": [
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "cake"
+    },
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-02-28"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13607928701"
+   ],
+   "osmSonDuzenleme": "2026-03-21",
+   "osmKontrol": "2026-02-28",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "cigkoftesim-cankaya-ankara",
+   "ref": "node/14093582340",
+   "ad": "Çiğköftesim",
+   "ilce": "Çankaya",
+   "mahalle": "Muhsin Ertuğrul",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14093582340",
+    "https://www.cigkoftesim.com"
+   ],
+   "osmSonDuzenleme": "2026-08-14",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "dayi-nin-yeri-cankaya-ankara",
+   "ref": "node/12672592439",
+   "ad": "Dayı'nın Yeri",
+   "ilce": "Çankaya",
+   "mahalle": "Aşağı Öveçler",
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12672592439",
+    "https://dayininyeriankara.com/"
+   ],
+   "osmSonDuzenleme": "2025-03-17",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "duveroglu-cankaya-ankara",
+   "ref": "node/1432430838",
+   "ad": "Düveroğlu",
+   "ilce": "Çankaya",
+   "mahalle": "Üniversiteler Mahallesi",
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/1432430838",
+    "https://www.duveroglu.com.tr/"
+   ],
+   "osmSonDuzenleme": "2024-07-11",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "elizinn-cankaya-ankara",
+   "ref": "node/4617717381",
+   "ad": "Elizinn",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4617717381",
+    "https://www.elizinn.com.tr/"
+   ],
+   "osmSonDuzenleme": "2025-04-16",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "freedom-pub-cankaya-ankara",
+   "ref": "node/13792809901",
+   "ad": "Freedom Pub",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "bar"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-04"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13792809901"
+   ],
+   "osmSonDuzenleme": "2026-05-04",
+   "osmKontrol": "2026-05-04",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "granma-pub-cankaya-ankara",
+   "ref": "node/9321286534",
+   "ad": "Granma Pub",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "bar"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-04"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9321286534"
+   ],
+   "osmSonDuzenleme": "2026-05-13",
+   "osmKontrol": "2026-05-04",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "greenwich-coffee-cankaya-ankara",
+   "ref": "node/13286045853",
+   "ad": "Greenwich Coffee",
+   "ilce": "Çankaya",
+   "mahalle": "Çukurambar",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13286045853",
+    "https://greenwichcoffee.com/"
+   ],
+   "osmSonDuzenleme": "2025-11-08",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "gusgana-kebap-cankaya-ankara",
+   "ref": "node/13930532401",
+   "ad": "Guşgana Kebap",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti",
+    "OSM yerinde kontrol tarihi 2026-03-25"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13930532401",
+    "https://www.gusgana.com/"
+   ],
+   "osmSonDuzenleme": "2026-06-12",
+   "osmKontrol": "2026-03-25",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kalender-zebra-cankaya-ankara",
+   "ref": "node/12942427410",
+   "ad": "Kalender Zebra",
+   "ilce": "Çankaya",
+   "mahalle": "Güvenevler Mahallesi",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12942427410",
+    "https://kalenderzebra.com/"
+   ],
+   "osmSonDuzenleme": "2025-08-11",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kayf-coffee-cankaya-ankara",
+   "ref": "node/13527373901",
+   "ad": "Kayf Coffee",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Tatlıcı",
+   "mutfak": [
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "cake"
+    },
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-13"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13527373901",
+    "https://kayfcoffee.com"
+   ],
+   "osmSonDuzenleme": "2026-10-13",
+   "osmKontrol": "2026-10-13",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kitir-cankaya-ankara",
+   "ref": "node/1706279072",
+   "ad": "Kıtır",
+   "ilce": "Çankaya",
+   "mahalle": "Remzi Oğuz Arık Mahallesi",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "local"
+    },
+    {
+     "id": "tavuk",
+     "ad": "Tavuk",
+     "kaynak": "osm_cuisine",
+     "deger": "chicken"
+    },
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "fish"
+    },
+    {
+     "id": "et",
+     "ad": "Et ve steakhouse",
+     "kaynak": "osm_cuisine",
+     "deger": "meat"
+    },
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    },
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "pub"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-02"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/1706279072"
+   ],
+   "osmSonDuzenleme": "2026-09-02",
+   "osmKontrol": "2026-09-02",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kozname-tepe-prime-cankaya-ankara",
+   "ref": "node/13641193660",
+   "ad": "Közname - Tepe Prime",
+   "ilce": "Çankaya",
+   "mahalle": "Mustafa Kemal Mahallesi",
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "regional"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13641193660",
+    "https://kozname.com/"
+   ],
+   "osmSonDuzenleme": "2026-03-12",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "leyla-coffee-cankaya-ankara",
+   "ref": "node/14264918801",
+   "ad": "Leyla Coffee",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti",
+    "OSM yerinde kontrol tarihi 2026-10-08"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14264918801",
+    "https://leyla.coffee/"
+   ],
+   "osmSonDuzenleme": "2026-10-08",
+   "osmKontrol": "2026-10-08",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "liman-kitap-kafe-cankaya-ankara",
+   "ref": "node/7272936085",
+   "ad": "Liman Kitap Kafe",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7272936085",
+    "https://www.limankitap.com/",
+    "https://www.limankitap.com/sayfa/hakkimizda",
+    "https://www.limankitap.com/iletisim"
+   ],
+   "osmSonDuzenleme": "2025-10-03",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "main-coffee-cankaya-ankara",
+   "ref": "node/14318767403",
+   "ad": "Main Coffee",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-25"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14318767403"
+   ],
+   "osmSonDuzenleme": "2026-10-25",
+   "osmKontrol": "2026-10-25",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "meshur-ozcelik-aspava-cankaya-ankara",
+   "ref": "node/4620215909",
+   "ad": "Meşhur Özçelik Aspava",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "regional"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4620215909",
+    "https://ozcelikaspava.com/"
+   ],
+   "osmSonDuzenleme": "2025-11-04",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "mikado-ramen-cankaya-ankara",
+   "ref": "node/13827563501",
+   "ad": "Mikado Ramen",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Asya mutfağı",
+   "mutfak": [
+    {
+     "id": "asya",
+     "ad": "Çin, Kore, Tayland ve diğer Asya",
+     "kaynak": "osm_cuisine",
+     "deger": "asian"
+    },
+    {
+     "id": "japon",
+     "ad": "Japon, sushi ve ramen",
+     "kaynak": "osm_cuisine",
+     "deger": "ramen"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-14"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13827563501"
+   ],
+   "osmSonDuzenleme": "2026-05-14",
+   "osmKontrol": "2026-05-14",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "route-selanik-cankaya-ankara",
+   "ref": "node/6908297130",
+   "ad": "Route Selanik",
+   "ilce": "Çankaya",
+   "mahalle": "Meşrutiyet Mahallesi",
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "bar"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-04"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6908297130"
+   ],
+   "osmSonDuzenleme": "2026-10-04",
+   "osmKontrol": "2026-10-04",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "sanat-edebiyat-kafe-cankaya-ankara",
+   "ref": "node/10690451705",
+   "ad": "Sanat Edebiyat Kafe",
+   "ilce": "Çankaya",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-08"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10690451705"
+   ],
+   "osmSonDuzenleme": "2026-07-24",
+   "osmKontrol": "2026-04-08",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "sofa-coffee-house-cankaya-ankara",
+   "ref": "node/13564052401",
+   "ad": "Sofa Coffee House",
+   "ilce": "Çankaya",
+   "mahalle": "Güvenevler Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-02-14"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13564052401"
+   ],
+   "osmSonDuzenleme": "2026-02-14",
+   "osmKontrol": "2026-02-14",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "verte-coffee-house-cankaya-ankara",
+   "ref": "node/14112675401",
+   "ad": "Verte Coffee House",
+   "ilce": "Çankaya",
+   "mahalle": "Kızılay",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    },
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    },
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "dessert"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14112675401",
+    "https://www.vertecoffeehouse.com/"
+   ],
+   "osmSonDuzenleme": "2026-08-22",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "ateshan-et-kebap-doner-yenimahalle-ankara",
+   "ref": "way/1391176010",
+   "ad": "ATEŞHAN ET KEBAP DÖNER",
+   "ilce": "Yenimahalle",
+   "mahalle": "YENİ BATI MAHALLESİ",
+   "tur": "Tavuk",
+   "mutfak": [
+    {
+     "id": "tavuk",
+     "ad": "Tavuk",
+     "kaynak": "osm_cuisine",
+     "deger": "chicken"
+    },
+    {
+     "id": "et",
+     "ad": "Et ve steakhouse",
+     "kaynak": "osm_cuisine",
+     "deger": "barbecue"
+    },
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1391176010",
+    "https://www.ateshan.com.tr/"
+   ],
+   "osmSonDuzenleme": "2025-05-31",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "doy-doy-pide-ve-kebap-salonu-yenimahalle-ankara",
+   "ref": "node/4564575694",
+   "ad": "Doy Doy Pide & Kebap Salonu",
+   "ilce": "Yenimahalle",
+   "mahalle": "Demetevler Mahallesi",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-03-10"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4564575694"
+   ],
+   "osmSonDuzenleme": "2025-04-03",
+   "osmKontrol": "2025-03-10",
+   "kontrolTarihi": "2026-11-10"
+  }
+ ]
+}

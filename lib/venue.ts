@@ -80,7 +80,7 @@ export function g100Rank(entityId: string): number | null {
 export function mapLinks(e: Entity) {
   const g = e.location?.geo;
   if (!g) return null;
-  const q = encodeURIComponent(`${e.name} ${e.location?.district ?? ""} İstanbul`);
+  const q = encodeURIComponent(`${e.name} ${e.location?.district ?? ""} ${e.location?.city ?? "İstanbul"}`);
   return {
     osmEmbed: `https://www.openstreetmap.org/export/embed.html?bbox=${g.lng - 0.004},${g.lat - 0.0025},${g.lng + 0.004},${g.lat + 0.0025}&layer=mapnik&marker=${g.lat},${g.lng}`,
     osm: `https://www.openstreetmap.org/?mlat=${g.lat}&mlon=${g.lng}#map=18/${g.lat}/${g.lng}`,

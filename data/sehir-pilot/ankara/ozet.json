@@ -1,0 +1,65 @@
+{
+ "osmTarihi": "2026-11-10T20:39:06Z",
+ "havuz_yeni": 2367,
+ "ret": 348,
+ "A": 30,
+ "B": 32,
+ "B_kanitli": 32,
+ "C": 1957,
+ "ret_nedenleri": {
+  "zincir_marka_etiketi": 294,
+  "genel_ad": 13,
+  "restoran_disi_ya_da_kapali_alan": 27,
+  "aday_ici_cift": 30,
+  "osm_kapali_isareti": 1
+ },
+ "C_nedenleri": {
+  "faaliyet_kaniti_yok": 1926,
+  "zincir_suphesi_ad": 237,
+  "fast_food_turu_belirsiz": 291,
+  "zincir_suphesi_site": 24,
+  "nargile_kafe_kapsam_disi_olabilir": 1,
+  "paket_ici_ayni_bina_ya_da_ad": 4
+ },
+ "B_eksikleri": {
+  "sokak adresi": 19,
+  "mutfak türü (kaynakta yok)": 14,
+  "telefon": 22,
+  "çalışma saatleri": 21,
+  "addaki tür ipucu doğrulanmadı: kebap": 2,
+  "kapı numarası": 4,
+  "addaki tür ipucu doğrulanmadı: esnaf": 1,
+  "addaki tür ipucu doğrulanmadı: sokak": 1,
+  "addaki tür ipucu doğrulanmadı: pide": 1,
+  "addaki tür ipucu doğrulanmadı: burger": 1,
+  "addaki tür ipucu doğrulanmadı: doner, sokak": 1,
+  "addaki tür ipucu doğrulanmadı: tatli": 1
+ },
+ "A_ilce": {
+  "Altındağ": 1,
+  "Çankaya": 27,
+  "Yenimahalle": 2
+ },
+ "A_tur": {
+  "Türk mutfağı": 7,
+  "Kahveci": 12,
+  "Fırın": 1,
+  "Tatlıcı": 2,
+  "Kebapçı / Ocakbaşı": 3,
+  "Bar": 3,
+  "Asya mutfağı": 1,
+  "Tavuk": 1
+ },
+ "A_kategori": {
+  "cat.restaurant": 12,
+  "cat.cafe": 14,
+  "cat.bar": 4
+ },
+ "karsilastirma": {
+  "karsilastirilan": 574,
+  "slug": 0,
+  "ref": 0,
+  "yakinAyniAd": 0,
+  "yakin50m": 0
+ }
+}
