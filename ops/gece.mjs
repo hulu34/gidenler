@@ -1,5 +1,5 @@
 /* GECE OPERASYONU 10 KASIM · UÇTAN UCA (YALNIZ PREVIEW, izole Neon dalı; Production'a yazmaz).
-   A4) Yayımlanmış deneyim + taslak bağlantısı: doğrudan/aynı sekme/gecikmeli/hatalı sorgu/yenileme; PATCH ve ayrı ziyaret POST.
+   A4) Yayımlanmış deneyim + taslak bağlantısı: doğrudan/aynı sekme/gecikmeli/hatalı deneyim sorgusu/oturum sorgusu hatası/yenileme; PATCH ve ayrı ziyaret POST.
    A5) Arama → mekân → düzenleme: iOS Safari, Android Chrome, masaüstü Chrome (benzetim).
    A) Instagram uygulama içi tarayıcı: kampanya bağlantısı → uyarı → arama → form → taslak # ile taşınır → Safari'de açılır →
       taslak geri gelir → (test oturumu) yayınla → tek kayıt → kampanya 'tamam' doğru koda yazılır.
@@ -263,7 +263,22 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
   fail = false; await d3.click("[data-aktarim-kontrol-yeniden]"); await d3.waitForSelector("[data-aktarim-duzenleme]", { timeout: 15000 }).catch(() => {});
   ok("'Yeniden dene' başarılı: bekleyen kutu, formda yayımlanmış metin", (await has(d3, "[data-aktarim-duzenleme]")) && (await val(d3)) === TXT && (await stored(d3)) === null);
   await d3.close();
-  ok("(1)–(3) boyunca hiç POST/PATCH/DELETE yok, sunucudaki deneyim aynen", writes.length === 0 && (await myReviews())[0]?.body === TXT, writes.join(","));
+  /* (3b) OTURUM sorgusu (get-session) geçici hata: 500, sonra ağ hatası; kimlik kapalı ("off") sayılmaz, taslak bekler */
+  const d4 = await s.newPage();
+  let sess = "500";
+  await d4.route("**/api/auth/get-session**", (r) => (sess === "500" ? r.fulfill({ status: 500, contentType: "application/json", body: "{}" }) : sess === "ag" ? r.abort("failed") : r.continue()));
+  await d4.goto(LINK, { waitUntil: "load" }); await d4.waitForSelector("[data-aktarim-hata='oturum']", { timeout: 10000 }).catch(() => {});
+  ok("get-session 500: 'Oturumun kontrol edilemedi' + 'Yeniden dene'; taslak uygulanmadı", (await has(d4, "[data-aktarim-hata='oturum']")) && (await has(d4, "[data-aktarim-kontrol-yeniden]")) && (await val(d4)) !== INC4);
+  ok("get-session 500: depoya yazılmadı, # adreste, yayınla kapalı", (await stored(d4)) === null && (await hashOf(d4)).startsWith("#aktar=") && (await d4.locator("button:has-text('Deneyimi yayınla'), button:has-text('Google ile giriş yap')").first().isDisabled().catch(() => true)));
+  await shot(d4, "a4-oturum-hatasi-390");
+  sess = "ag"; await d4.reload({ waitUntil: "load" }); await d4.waitForSelector("[data-aktarim-hata='oturum']", { timeout: 10000 }).catch(() => {});
+  ok("get-session ağ hatası + yenileme: taslak yine bekliyor, hiçbir yere yazılmadı", (await has(d4, "[data-aktarim-hata='oturum']")) && (await stored(d4)) === null && (await hashOf(d4)).startsWith("#aktar=") && (await val(d4)) !== INC4);
+  await d4.click("[data-aktarim-kontrol-yeniden]"); await d4.waitForTimeout(1500);
+  ok("hata sürerken 'Yeniden dene': yine bekliyor, taslak uygulanmadı", (await has(d4, "[data-aktarim-hata='oturum']")) && (await stored(d4)) === null && (await val(d4)) !== INC4);
+  sess = "ok"; await d4.click("[data-aktarim-kontrol-yeniden]"); await d4.waitForSelector("[data-aktarim-duzenleme]", { timeout: 15000 }).catch(() => {});
+  ok("oturum gelince 'Yeniden dene': deneyim sorgulandı, bekleyen kutu, formda yayımlanmış metin", (await has(d4, "[data-aktarim-duzenleme]")) && !(await has(d4, "[data-aktarim-bekliyor]")) && (await val(d4)) === TXT && (await stored(d4)) === null && (await hashOf(d4)).startsWith("#aktar="));
+  await d4.close();
+  ok("(1)–(3b) boyunca hiç POST/PATCH/DELETE yok, sunucudaki deneyim aynen", writes.length === 0 && (await myReviews())[0]?.body === TXT, writes.join(","));
 
   /* (4) aynı sekme: düzenlerken bağlantı yapıştırılır (yalnız # değişir) */
   const q = await s.newPage();
