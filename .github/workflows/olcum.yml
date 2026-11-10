@@ -592,7 +592,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node ops/osm-seyrek.mjs
-        env: { ILCELER: "Esenler,Güngören,Kağıthane,Sultangazi,Çekmeköy,Sancaktepe,Silivri,Esenyurt,Bahçelievler,Büyükçekmece,Çatalca,Gaziosmanpaşa,Arnavutköy,Avcılar,Başakşehir,Küçükçekmece,Şile,Adalar" }
+        env: { ILCELER: "Kâğıthane,Bayrampaşa,Beylikdüzü,Zeytinburnu,Eyüpsultan,Bağcılar,Tuzla,Sultanbeyli" }
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: osm-seyrek, path: out/seyrek, retention-days: 14, if-no-files-found: ignore }
