@@ -14,9 +14,14 @@ export const sehirOf = (id?: string | null): Sehir | null => SEHIRLER.find((s) =
 export const sehirAdi = (id?: string | null) => sehirOf(id)?.ad ?? "İstanbul";
 
 /** Pilot şehirler bu derlemede açık mı? Production'da (VERCEL_ENV / NEXT_PUBLIC_VERCEL_ENV = production) her zaman kapalı. */
-export function pilotAcik(env: Record<string, string | undefined> = process.env): boolean {
-  if (env.VERCEL_ENV === "production" || env.NEXT_PUBLIC_VERCEL_ENV === "production") return false;
-  return env.NEXT_PUBLIC_SEHIR_PILOT === "1";
+export function pilotAcik(env?: Record<string, string | undefined>): boolean {
+  /* `process.env.NEXT_PUBLIC_SEHIR_PILOT` doğrudan yazılır: derlemede sabitlenir (next.config env), sunucu çalışma anında da
+     derlemedeki değer geçerli olur — profil (derlemede üretilen) ile arama API'si (çalışma anı) aynı veriyi görür. */
+  const flag = env ? env.NEXT_PUBLIC_SEHIR_PILOT : process.env.NEXT_PUBLIC_SEHIR_PILOT;
+  const vEnv = env ? env.VERCEL_ENV : process.env.VERCEL_ENV;
+  const pEnv = env ? env.NEXT_PUBLIC_VERCEL_ENV : process.env.NEXT_PUBLIC_VERCEL_ENV;
+  if (vEnv === "production" || pEnv === "production") return false;
+  return flag === "1";
 }
 export const gorunur = (s: Sehir | null, env?: Record<string, string | undefined>) => !!s && (s.durum === "yayinda" || (s.durum === "pilot" && pilotAcik(env)));
 
