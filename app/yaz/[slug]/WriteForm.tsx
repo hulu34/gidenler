@@ -9,7 +9,7 @@ import { signInWithGoogle } from "@/lib/community/signin";
 import { authErrorMessage } from "@/lib/community/authErrors";
 import { deleteDraft, loadDraft, saveDraft, visitMonths } from "@/lib/drafts";
 import { captureCampaign, flowCode, track } from "@/lib/kampanya/client";
-import { HANDOFF_MAX, decodeHandoff, encodeHandoff, handoffPlan, type DraftLike } from "@/lib/inapp";
+import { HANDOFF_MAX, decodeHandoff, encodeHandoff, handoffPlan, sameDraft, type DraftLike } from "@/lib/inapp";
 import { InAppNotice, useInApp } from "@/components/deneyim/InAppNotice";
 import { dropSuggestionDraft, takeSuggestionDraft, type SuggestionDraft } from "@/lib/oneri/key";
 import { Button } from "@/components/ui/Button";
@@ -77,6 +77,9 @@ export function WriteForm({
   /* başka tarayıcıdan gelen taslak, bu cihazdaki FARKLI taslakla çakışınca: seçim yapılana kadar burada bekler */
   const [incoming, setIncoming] = useState<{ from: DraftLike; local: DraftLike & { savedAt: string } } | null>(null);
   const [handoffBroken, setHandoffBroken] = useState(false);
+  /* tarayıcı depolaması yazmayı reddettiyse (gizli sekme, dolu depo): gelen metin ekranda kalır, # adreste bekler */
+  const [unsaved, setUnsaved] = useState(false);
+  const [copiedText, setCopiedText] = useState(false);
 
   useEffect(() => {
     const ms = visitMonths();
@@ -91,8 +94,18 @@ export function WriteForm({
     if (plan.kind === "broken") { setHandoffBroken(true); history.replaceState(null, "", location.pathname + location.search); }
     if (plan.kind === "code") history.replaceState(null, "", location.pathname + location.search);
     if (plan.kind === "apply") {
-      saveDraft(entitySlug, { ...plan.draft, returnIntent: plan.draft.returnIntent as ReturnIntent | null, relationship: plan.draft.relationship as CommercialRelationship });
-      history.replaceState(null, "", location.pathname + location.search);
+      if (persist(plan.draft)) history.replaceState(null, "", location.pathname + location.search);
+      else {
+        /* kayıt reddedildi: metni doğrudan forma koy (kaybolmasın), # adreste kalsın (yeniden yüklemede yine gelir) */
+        const d = plan.draft;
+        setBody(d.body); setRatings(d.ratings ?? {}); setRet((d.returnIntent as ReturnIntent) ?? null);
+        setRel((d.relationship as CommercialRelationship) ?? "none"); setOverall(d.overall ?? null);
+        setMonth(ms.some(([k]) => k === d.month) ? d.month : ms[0][0]);
+        if (d.ratings && Object.keys(d.ratings).length) setShowDims(true);
+        setUnsaved(true);
+        const c = flowCode(); setCode(c); track("form", c);
+        return;
+      }
     }
     if (plan.kind === "choose" && local) setIncoming({ from: plan.draft, local });
     const d = loadDraft(entitySlug);
@@ -128,6 +141,26 @@ export function WriteForm({
     return () => clearTimeout(id);
   }, [inApp, isReal, account, handoff, incoming]);
 
+  /** Taslağı bu cihaza kaydet; tarayıcı reddederse false. */
+  function persist(d: DraftLike): boolean {
+    return saveDraft(entitySlug, { ...d, returnIntent: d.returnIntent as ReturnIntent | null, relationship: d.relationship as CommercialRelationship });
+  }
+  /* aktarılan taslağı uygula: kaydedilebildiyse # silinir; kaydedilemediyse metin ekranda, # adreste, uyarı açık */
+  const takeOver = (d: DraftLike) => {
+    applyDraft(d); setRestored(new Date().toISOString());
+    if (persist(d)) { setUnsaved(false); history.replaceState(null, "", location.pathname + location.search); }
+    else setUnsaved(true);
+  };
+  const retrySave = () => {
+    if (persist({ body, month, ratings, overall, returnIntent: ret, relationship: rel })) {
+      setUnsaved(false); setAutoSaved(new Date().toISOString());
+      history.replaceState(null, "", location.pathname + location.search);
+    }
+  };
+  const copyText = async () => {
+    try { await navigator.clipboard.writeText(body); setCopiedText(true); }
+    catch { window.prompt("Metni kopyala:", body); }
+  };
   const applyDraft = (d: DraftLike) => {
     setBody(d.body); setRatings(d.ratings ?? {}); setRet((d.returnIntent as ReturnIntent) ?? null);
     setRel((d.relationship as CommercialRelationship) ?? "none"); setOverall(d.overall ?? null);
@@ -138,9 +171,7 @@ export function WriteForm({
   const chooseIncoming = () => {
     if (!incoming) return;
     const d = incoming.from;
-    saveDraft(entitySlug, { ...d, returnIntent: d.returnIntent as ReturnIntent | null, relationship: d.relationship as CommercialRelationship });
-    applyDraft(d); setRestored(new Date().toISOString()); setIncoming(null);
-    history.replaceState(null, "", location.pathname + location.search);
+    setIncoming(null); takeOver(d);
   };
   const chooseLocal = () => { setIncoming(null); history.replaceState(null, "", location.pathname + location.search); };
 
@@ -149,17 +180,17 @@ export function WriteForm({
   useEffect(() => {
     const onHash = () => {
       if (!months.length) return;
-      const local = loadDraft(entitySlug);
+      /* karşılaştırma FORMDAKİ güncel metinle: otomatik kayıt (700 ms) henüz çalışmamış olsa bile yazılan kaybolmaz */
+      const stored = loadDraft(entitySlug);
+      const onForm: DraftLike | null = !mine && (body.trim() || overall !== null) ? { body, month, ratings, overall, returnIntent: ret, relationship: rel } : null;
+      const local = onForm ? { ...onForm, savedAt: stored && sameDraft(stored, onForm) ? stored.savedAt : "" } : stored;
       const plan = handoffPlan(location.hash, local, months[0][0]);
       if (plan.kind === "none") return;
       const h = plan.kind === "broken" ? null : decodeHandoff(location.hash);
       if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
       if (plan.kind === "choose" && local) { setIncoming({ from: plan.draft, local }); return; }
       if (plan.kind === "broken") setHandoffBroken(true);
-      if (plan.kind === "apply") {
-        saveDraft(entitySlug, { ...plan.draft, returnIntent: plan.draft.returnIntent as ReturnIntent | null, relationship: plan.draft.relationship as CommercialRelationship });
-        applyDraft(plan.draft); setRestored(new Date().toISOString());
-      }
+      if (plan.kind === "apply") { takeOver(plan.draft); return; }
       history.replaceState(null, "", location.pathname + location.search);
     };
     window.addEventListener("hashchange", onHash);
@@ -310,7 +341,7 @@ export function WriteForm({
           <div role="group" aria-labelledby="taslak-secim-baslik" data-taslak-secim className="flex flex-col gap-3 rounded-[14px] border-2 border-ink bg-[var(--accent-soft)] p-4">
             <p id="taslak-secim-baslik" className="text-[14px] font-bold">Bu mekân için iki farklı taslak var. Hangisiyle devam edelim?</p>
             <p className="text-[12.5px] text-ink-2">Sen seçene kadar bu cihazdaki taslağın olduğu gibi korunur; hiçbir şey yayınlanmaz.</p>
-            {([["gelen", "Bağlantıyla getirdiğin", incoming.from, null], ["mevcut", "Bu cihazda kayıtlı olan", incoming.local, incoming.local.savedAt]] as const).map(([k, t, d, at]) => (
+            {([["gelen", "Bağlantıyla getirdiğin", incoming.from, null], ["mevcut", incoming.local.savedAt ? "Bu cihazda kayıtlı olan" : "Bu sayfada şu an yazılı olan", incoming.local, incoming.local.savedAt || null]] as const).map(([k, t, d, at]) => (
               <div key={k} data-taslak-aday={k} className="rounded-[10px] border border-line-2 bg-paper p-3">
                 <p className="text-[12px] font-bold uppercase tracking-[0.08em] text-ink-3">{t}{at ? ` · ${new Date(at).toLocaleString("tr-TR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}` : ""}</p>
                 <p className="mt-1 line-clamp-3 text-[13.5px] leading-relaxed text-ink">{d.body.trim() ? d.body.trim().slice(0, 220) : <i className="text-ink-3">Metin yok</i>}</p>
@@ -320,6 +351,16 @@ export function WriteForm({
             <div className="flex flex-wrap gap-2">
               <button type="button" data-taslak-gelen onClick={chooseIncoming} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">Getirdiğimle devam et</button>
               <button type="button" data-taslak-mevcut onClick={chooseLocal} className="inline-flex min-h-11 items-center rounded-[10px] border-2 border-ink bg-paper px-4 text-[13.5px] font-bold">Bu cihazdakiyle devam et</button>
+            </div>
+          </div>
+        )}
+        {unsaved && (
+          <div role="alert" data-aktarim-kaydedilemedi className="flex flex-col gap-2 rounded-[14px] border-2 border-neg-ink p-4">
+            <p className="text-[13.5px] font-semibold text-neg-ink">Bu tarayıcı taslağı kaydetmeye izin vermedi (gizli sekme ya da dolu depolama olabilir).</p>
+            <p className="text-[13px] text-ink-2">Getirdiğin metin aşağıda, ekranda duruyor. Sayfayı kapatmadan önce kopyala ya da kaydetmeyi yeniden dene. Google girişine gideceksen önce metni kopyala: bu tarayıcı girişten dönüşte taslağı tutamaz.</p>
+            <div className="flex flex-wrap gap-2">
+              <button type="button" data-aktarim-kopyala onClick={copyText} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">{copiedText ? "Metin kopyalandı" : "Metni kopyala"}</button>
+              <button type="button" data-aktarim-yeniden onClick={retrySave} className="inline-flex min-h-11 items-center rounded-[10px] border-2 border-ink bg-paper px-4 text-[13.5px] font-bold">Kaydetmeyi yeniden dene</button>
             </div>
           </div>
         )}

@@ -89,5 +89,8 @@ ok("yerel taslak API sınırıyla aynı (5.000'de sessiz kesme yok)", readFileSy
 
 ok("gizlilik: veri sorumlusu bölümü ve # aktarımının gerçek davranışı (sunucuya gitmez, paylaşma uyarısı, seçim)", (() => { const g = readFileSync("app/gizlilik/page.tsx", "utf8"); return g.includes('["sorumlu", "Veri sorumlusu"') && g.includes("sunucuya gönderilmez") && g.includes("bu bağlantıyı başkasıyla paylaşma") && g.includes("hangisiyle devam edeceğini sen seçersin"); })());
 ok("form: sayfa açıkken yapıştırılan bağlantı (yalnız # değişimi) da işlenir", readFileSync("app/yaz/[slug]/WriteForm.tsx", "utf8").includes('window.addEventListener("hashchange", onHash)'));
+const wf3 = readFileSync("app/yaz/[slug]/WriteForm.tsx", "utf8");
+ok("depolama reddederse: metin forma konur, # adreste kalır, kopyala + yeniden dene", wf3.includes("data-aktarim-kaydedilemedi") && wf3.includes("data-aktarim-kopyala") && wf3.includes("data-aktarim-yeniden") && /if \(persist\(plan\.draft\)\) history\.replaceState[\s\S]{0,120}else \{/.test(wf3));
+ok("aynı sekme: formdaki kaydedilmemiş metin karşılaştırmaya girer", wf3.includes("const onForm: DraftLike | null = !mine && (body.trim() || overall !== null)") && wf3.includes("Bu sayfada şu an yazılı olan"));
 console.log(`\ngece: ${pass} geçti, ${fail} kaldı`);
 process.exit(fail ? 1 : 0);
