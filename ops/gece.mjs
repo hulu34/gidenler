@@ -1,4 +1,5 @@
 /* GECE OPERASYONU 10 KASIM · UÇTAN UCA (YALNIZ PREVIEW, izole Neon dalı; Production'a yazmaz).
+   A4) Yayımlanmış deneyim düzenlenirken aynı sekmede/yeni sekmede taslak bağlantısı: forma uygulanmaz.
    A) Instagram uygulama içi tarayıcı: kampanya bağlantısı → uyarı → arama → form → taslak # ile taşınır → Safari'de açılır →
       taslak geri gelir → (test oturumu) yayınla → tek kayıt → kampanya 'tamam' doğru koda yazılır.
    B) Ana sayfa 375/390/768/1280/1440: yatay taşma, kesik başlık, küçük dokunma alanı, düşük çözünürlüklü görsel.
@@ -200,6 +201,56 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
   await r.click("[data-taslak-mevcut]"); await r.waitForTimeout(1200);
   ok("'Bu sayfadakiyle devam': formdaki metin korundu ve kaydedildi", (await r.inputValue("[data-deneyim-metin]")) === TYPED && (await r.evaluate((sl) => JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}")[sl]?.body, SL3)) === TYPED);
   await c2.close();
+}
+/* ── A4) Yayımlanmış deneyim düzenlenirken aynı sekmede taslak bağlantısı: düzenleme formuna UYGULANMAZ ── */
+{
+  const auth = { ...HB, cookie: `${U.cookieName}=${U.cookieValue}` };
+  const pub0 = ((await (await fetch(`${B}/api/me/reviews/?slug=${SL}`, { headers: auth })).json().catch(() => ({}))).reviews ?? [])[0];
+  ok("A4 ön koşul: test kullanıcısının bu mekânda yayımlanmış deneyimi var", !!pub0 && pub0.body === TXT, pub0?.status);
+  const INC4 = "Instagram'da yeni yazdığım başka bir ziyaret: bu kez akşam gittik, mercimek ve karnıyarık çok iyiydi, servis biraz yavaştı.";
+  const ig = await ctx({ ua: IG }); const p = await ig.newPage();
+  await p.goto(`${B}/yaz/${SL}/`, { waitUntil: "load" }); await p.waitForSelector("[data-deneyim-metin]");
+  await p.fill("[data-deneyim-metin]", INC4); await p.click("[data-genel-puan] [aria-label='Genel puan: 5']"); await p.waitForTimeout(900);
+  const LINK = `${B}/yaz/${SL}/${await p.evaluate(() => location.hash)}`;
+  await ig.close();
+  const s = await ctx({ ua: SAFARI }); await s.addCookies(cookieOf(U));
+  const writes = []; s.on("request", (r) => { if (r.url().includes("/api/reviews") && r.method() !== "GET") writes.push(r.method()); });
+  const q = await s.newPage();
+  await q.goto(`${B}/yaz/${SL}/`, { waitUntil: "load" }); await q.waitForSelector("[data-yeni-ziyaret]", { timeout: 15000 }).catch(() => {});
+  ok("düzenleme kipi açıldı: formda yayımlanmış metin", (await q.locator("[data-yeni-ziyaret]").count()) === 1 && (await q.inputValue("[data-deneyim-metin]")) === TXT);
+  const EDITED = TXT + " Düzenleme: tatlı olarak kazandibi de denedik.";
+  await q.fill("[data-deneyim-metin]", EDITED); await q.waitForTimeout(300);
+  const stored = () => q.evaluate((sl) => JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}")[sl]?.body ?? null, SL);
+  const st0 = await stored();
+  /* aynı sekmeye yapıştırma: yalnız # değişir, sayfa yeniden yüklenmez */
+  await q.goto(LINK, { waitUntil: "load" }); await q.waitForSelector("[data-aktarim-duzenleme]", { timeout: 6000 }).catch(() => {});
+  ok("aynı sekme + düzenleme kipi: gelen taslak kutusu görünüyor", (await q.locator("[data-aktarim-duzenleme]").count()) === 1);
+  ok("düzenleme formu DEĞİŞMEDİ (gelen metin uygulanmadı)", (await q.inputValue("[data-deneyim-metin]")) === EDITED && (await q.locator("[data-genel-puan] [aria-label='Genel puan: 5'][aria-checked='true']").count()) === 0);
+  ok("düzenleme kipi korunuyor, seçim ekranı ve kayıt uyarısı yok", (await q.locator("[data-yeni-ziyaret]").count()) === 1 && (await q.locator("[data-taslak-secim]").count()) === 0 && (await q.locator("[data-aktarim-kaydedilemedi]").count()) === 0);
+  ok("kutuda gelen metin gösteriliyor; # adreste bekliyor; yerel depo değişmedi", (await q.locator("[data-aktarim-bekleyen]").innerText()).includes(INC4.slice(0, 60)) && (await q.evaluate(() => location.hash)).startsWith("#aktar=") && (await stored()) === st0);
+  await q.waitForTimeout(1200);
+  ok("bekleme sırasında otomatik kayıt / istek yok; sunucudaki deneyim aynen", writes.length === 0 && (((await (await fetch(`${B}/api/me/reviews/?slug=${SL}`, { headers: auth })).json().catch(() => ({}))).reviews ?? [])[0]?.body === TXT));
+  await shot(q, "duzenleme-aktarim-390", true);
+  await q.click("[data-aktarim-gelen-kopyala]"); await q.waitForTimeout(300);
+  ok("'Metni kopyala' gelen metni panoya koyar", (await q.evaluate(() => navigator.clipboard.readText().catch(() => ""))) === INC4);
+  await q.click("[data-aktarim-birak]"); await q.waitForTimeout(400);
+  ok("'Bırak': kutu kapandı, # silindi, düzenleme metni aynen", (await q.locator("[data-aktarim-duzenleme]").count()) === 0 && (await q.evaluate(() => location.hash)) === "" && (await q.inputValue("[data-deneyim-metin]")) === EDITED);
+  /* yeniden yapıştır → 'Ayrı ziyaret olarak yaz' */
+  await q.goto(LINK, { waitUntil: "load" }); await q.waitForSelector("[data-aktarim-ayri]", { timeout: 6000 }).catch(() => {});
+  await q.click("[data-aktarim-ayri]"); await q.waitForTimeout(800);
+  const m4 = await q.inputValue("select[aria-label='Ziyaret ayı']");
+  ok("'Ayrı ziyaret olarak yaz': yeni deneyim formu gelen taslakla, farklı ay, düzenleme kipi kapalı", (await q.inputValue("[data-deneyim-metin]")) === INC4 && (await q.locator("[data-genel-puan] [aria-label='Genel puan: 5'][aria-checked='true']").count()) === 1 && (await q.locator("[data-yeni-ziyaret]").count()) === 0 && m4 !== pub0?.visitedOn?.slice(0, 7), `ay ${m4}`);
+  ok("ayrı ziyaret taslağı bu cihaza kaydedildi, # silindi; hiçbir şey yayınlanmadı", (await stored()) === INC4 && (await q.evaluate(() => location.hash)) === "" && writes.length === 0);
+  await q.evaluate((sl) => { const a = JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}"); delete a[sl]; localStorage.setItem("gidenler.taslak.v1", JSON.stringify(a)); }, SL);
+  /* yeni sekmede açılış: sayfa baştan yüklenir, düzenleme kipi sunucu yanıtıyla sonradan anlaşılır */
+  const q2 = await s.newPage();
+  await q2.goto(LINK, { waitUntil: "load" }); await q2.waitForSelector("[data-aktarim-duzenleme]", { timeout: 15000 }).catch(() => {});
+  ok("yeni sekme + düzenleme kipi: formda sunucudaki metin, gelen taslak kutuda", (await q2.locator("[data-aktarim-duzenleme]").count()) === 1 && (await q2.inputValue("[data-deneyim-metin]")) === TXT && (await q2.locator("[data-taslak-secim]").count()) === 0);
+  await q2.reload({ waitUntil: "load" }); await q2.waitForSelector("[data-aktarim-duzenleme]", { timeout: 15000 }).catch(() => {});
+  ok("yeniden yükleme: gelen taslak kaybolmadı, form yine sunucudaki metin", (await q2.locator("[data-aktarim-duzenleme]").count()) === 1 && (await q2.inputValue("[data-deneyim-metin]")) === TXT);
+  const pub1 = ((await (await fetch(`${B}/api/me/reviews/?slug=${SL}`, { headers: auth })).json().catch(() => ({}))).reviews ?? []);
+  ok("A4 sonunda yayımlanmış deneyim tek ve değişmemiş", pub1.length === 1 && pub1[0].body === TXT && writes.length === 0, `istek=${writes.length}`);
+  await s.close();
 }
 const rep = await (await fetch(`${B}/yonetim/kampanya/`, { headers: HB })).text();
 ok("kampanya panosunda 'Uygulama içi tarayıcıda açtı' sütunu", rep.includes("Uygulama içi tarayıcıda açtı"));

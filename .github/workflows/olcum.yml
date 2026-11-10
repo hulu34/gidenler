@@ -552,7 +552,7 @@ jobs:
     if: contains(github.event.head_commit.message, '[gece]')
     runs-on: ubuntu-latest
     timeout-minutes: 40
-    env: { HOST: gidenler-b04abn47y-hulu34.vercel.app }   # gece/10-kasim a04bd6f (Preview, izole Neon)
+    env: { HOST: gidenler-n5ooxsick-hulu34.vercel.app }   # gece/10-kasim 69ceca9 (Preview, izole Neon)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -575,7 +575,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { ref: gece/10-kasim }
-      - run: test "$(git rev-parse --short HEAD)" = "a04bd6f"
+      - run: test "$(git rev-parse --short HEAD)" = "69ceca9"
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: npm ci --ignore-scripts --no-audit --no-fund
