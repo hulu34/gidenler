@@ -108,14 +108,17 @@ export type HandoffPlan =
   | { kind: "broken" }                     // aktarım var ama okunamadı → mevcut taslak olduğu gibi kalır
   | { kind: "code" }                       // yalnız kampanya kodu (taslak içeriği yok)
   | { kind: "apply"; draft: DraftLike }    // hedefte taslak yok ya da aynısı → tek adımda uygula
-  | { kind: "choose"; draft: DraftLike };  // hedefte FARKLI taslak var → kullanıcı seçer; seçene kadar mevcut korunur
+  | { kind: "choose"; draft: DraftLike }   // hedefte FARKLI taslak var → kullanıcı seçer; seçene kadar mevcut korunur
+  | { kind: "hold"; draft: DraftLike };   // kullanıcı YAYIMLANMIŞ deneyimini düzenliyor → gelen taslak forma uygulanmaz, ayrı bekler
 
-export function handoffPlan(hash: string, local: DraftLike | null, defaultMonth: string): HandoffPlan {
+/** editing: form yayımlanmış bir deneyimin düzenleme kipinde. O zaman gelen taslak hiçbir koşulda forma yazılmaz. */
+export function handoffPlan(hash: string, local: DraftLike | null, defaultMonth: string, editing = false): HandoffPlan {
   if (!isHandoffHash(hash)) return { kind: "none" };
   const h = decodeHandoff(hash);
   if (!h) return { kind: "broken" };
   if (!h.b?.trim() && !h.o) return { kind: "code" };
   const draft = handoffToDraft(h, defaultMonth);
+  if (editing) return { kind: "hold", draft };
   if (!local || (!local.body.trim() && local.overall == null) || sameDraft(local, draft)) return { kind: "apply", draft };
   return { kind: "choose", draft };
 }

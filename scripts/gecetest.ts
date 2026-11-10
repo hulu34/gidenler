@@ -80,11 +80,16 @@ const same = handoffPlan(H, null, M);
 ok("hedefte AYNI taslak → seçim sorulmaz", same.kind === "apply" && handoffPlan(H, { ...same.draft, body: same.draft.body + "  " }, M).kind === "apply");
 ok("bozuk / yarım kopyalanmış bağlantı → broken (mevcut taslak değişmez)", handoffPlan("#aktar=%%%", L, M).kind === "broken" && handoffPlan(H.slice(0, 25), L, M).kind === "broken" && isHandoffHash("#aktar=x"));
 ok("yalnız kampanya kodu → code (taslağa dokunulmaz)", handoffPlan(encodeHandoff({ k: "ic01" }), L, M).kind === "code");
+const hold = handoffPlan(H, null, M, true);
+ok("yayımlanmış deneyim düzenlenirken → hold (taslak yok, farklı ya da aynı taslak fark etmez; forma uygulanmaz)", hold.kind === "hold" && hold.draft.overall === 9 && handoffPlan(H, L, M, true).kind === "hold" && handoffPlan(H, hold.draft, M, true).kind === "hold");
+ok("düzenleme kipinde de bozuk bağlantı / yalnız kod → aynı kural (broken / code)", handoffPlan("#aktar=%%%", null, M, true).kind === "broken" && handoffPlan(encodeHandoff({ k: "ic01" }), null, M, true).kind === "code" && handoffPlan("", null, M, true).kind === "none");
 ok("sameDraft: puan farkı farklı sayılır", !sameDraft(L, { ...L, overall: 7 }) && sameDraft(L, { ...L, body: ` ${L.body}\n` }));
 const wf2 = readFileSync("app/yaz/[slug]/WriteForm.tsx", "utf8");
 ok("form: seçim beklerken otomatik kayıt ve # güncellemesi durur, yayın kapalı", wf2.includes("if (!touched || mine || sent || incoming) return;") && wf2.includes('account !== "anon" || incoming) return;') && wf2.includes("!busy && !incoming &&"));
 ok("form: seçim ekranı ve bozuk bağlantı uyarısı var", wf2.includes("data-taslak-secim") && wf2.includes("data-taslak-gelen") && wf2.includes("data-taslak-mevcut") && wf2.includes("data-aktarim-bozuk"));
 ok("form: 6.000 üstü metin aktarmadan önce uyarılır", wf2.includes("tooLong={body.length > HANDOFF_MAX ? HANDOFF_MAX : 0}") && readFileSync("components/deneyim/InAppNotice.tsx", "utf8").includes("data-uygulama-ici-uzun"));
+ok("form: aynı sekme bağlantısı düzenleme kipinde 'hold' alır; sonradan anlaşılan düzenleme kipi gelen taslağı bekletir", wf2.includes("handoffPlan(location.hash, local, months[0][0], !!mine)") && wf2.includes('if (plan.kind === "hold") { setHeld(plan.draft);') && wf2.includes("if (arrived.current) { setHeld(arrived.current); setIncoming(null); setUnsaved(false); }"));
+ok("form: bekleyen taslak kutusu (ayrı ziyaret / kopyala / bırak); yayın ve silmede bekleyen taslak silinmez", wf2.includes("data-aktarim-duzenleme") && wf2.includes("data-aktarim-ayri") && wf2.includes("data-aktarim-gelen-kopyala") && wf2.includes("data-aktarim-birak") && (wf2.match(/if \(!held\) deleteDraft\(entitySlug\)/g) ?? []).length === 2);
 ok("yerel taslak API sınırıyla aynı (5.000'de sessiz kesme yok)", readFileSync("lib/drafts.ts", "utf8").includes("d.body.slice(0, 6000)"));
 
 ok("gizlilik: veri sorumlusu bölümü ve # aktarımının gerçek davranışı (sunucuya gitmez, paylaşma uyarısı, seçim)", (() => { const g = readFileSync("app/gizlilik/page.tsx", "utf8"); return g.includes('["sorumlu", "Veri sorumlusu"') && g.includes("sunucuya gönderilmez") && g.includes("bu bağlantıyı başkasıyla paylaşma") && g.includes("hangisiyle devam edeceğini sen seçersin"); })());

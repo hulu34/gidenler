@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PhotoPicker, PhotoResults, usePhotoPicks } from "@/components/write/PhotoPicker";
 import { markVisited, setEntityState, useUserData } from "@/lib/store";
 import { useAccountStatus } from "@/lib/community/accountState";
@@ -80,6 +80,11 @@ export function WriteForm({
   /* tarayıcı depolaması yazmayı reddettiyse (gizli sekme, dolu depo): gelen metin ekranda kalır, # adreste bekler */
   const [unsaved, setUnsaved] = useState(false);
   const [copiedText, setCopiedText] = useState(false);
+  /* YAYIMLANMIŞ deneyim düzenlenirken gelen taslak: düzenleme formuna yazılmaz, burada bekler (kopyala / ayrı ziyaret / bırak) */
+  const [held, setHeld] = useState<DraftLike | null>(null);
+  const [copiedHeld, setCopiedHeld] = useState(false);
+  /* bu sayfada bağlantıyla gelen son taslak: düzenleme kipi (sunucudaki deneyim) sonradan anlaşılırsa held'e taşınır */
+  const arrived = useRef<DraftLike | null>(null);
 
   useEffect(() => {
     const ms = visitMonths();
@@ -91,6 +96,7 @@ export function WriteForm({
     const plan = handoffPlan(location.hash, local, ms[0][0]);
     const h = plan.kind === "none" || plan.kind === "broken" ? null : decodeHandoff(location.hash);
     if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
+    if (plan.kind === "apply" || plan.kind === "choose") arrived.current = plan.draft;
     if (plan.kind === "broken") { setHandoffBroken(true); history.replaceState(null, "", location.pathname + location.search); }
     if (plan.kind === "code") history.replaceState(null, "", location.pathname + location.search);
     if (plan.kind === "apply") {
@@ -175,6 +181,23 @@ export function WriteForm({
   };
   const chooseLocal = () => { setIncoming(null); history.replaceState(null, "", location.pathname + location.search); };
 
+  /* aynı mekâna başka bir ziyaret: yayımlanmış deneyim düzenlenmez, ayrı deneyim açılır (yazılmamış bir ay seçilir).
+     d verilirse (bekleyen gelen taslak) form onunla başlar. */
+  const newVisit = (d?: DraftLike) => {
+    const used = new Set(prevVisits.map((v) => v.visitedOn.slice(0, 7))); const ms = visitMonths();
+    const free = (ms.find(([k]) => !used.has(k)) ?? ms[0])[0];
+    setMine(null); setError(null); setHeld(null); setMonths(ms);
+    if (!d) { setBody(""); setRatings({}); setOverall(null); setRet(null); setRel("none"); setMonth(free); return; }
+    const m = ms.some(([k]) => k === d.month) && !used.has(d.month) ? d.month : free;
+    takeOver({ ...d, month: m }); setMonth(m);
+  };
+  const copyHeld = async () => {
+    if (!held) return;
+    try { await navigator.clipboard.writeText(held.body); setCopiedHeld(true); }
+    catch { window.prompt("Metni kopyala:", held.body); }
+  };
+  const dropHeld = () => { setHeld(null); arrived.current = null; history.replaceState(null, "", location.pathname + location.search); };
+
   /* sayfa zaten açıkken bağlantı aynı sekmeye yapıştırılırsa yalnız # değişir (sayfa yeniden yüklenmez):
      aynı kararı burada da uygula — uygula / seçtir / bozuk uyarısı. */
   useEffect(() => {
@@ -184,10 +207,13 @@ export function WriteForm({
       const stored = loadDraft(entitySlug);
       const onForm: DraftLike | null = !mine && (body.trim() || overall !== null) ? { body, month, ratings, overall, returnIntent: ret, relationship: rel } : null;
       const local = onForm ? { ...onForm, savedAt: stored && sameDraft(stored, onForm) ? stored.savedAt : "" } : stored;
-      const plan = handoffPlan(location.hash, local, months[0][0]);
+      /* yayımlanmış deneyim düzenleniyorsa gelen taslak forma UYGULANMAZ (hold); # adreste kalır, yenilemede kaybolmaz */
+      const plan = handoffPlan(location.hash, local, months[0][0], !!mine);
       if (plan.kind === "none") return;
       const h = plan.kind === "broken" ? null : decodeHandoff(location.hash);
       if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
+      if (plan.kind === "hold") { setHeld(plan.draft); setCopiedHeld(false); return; }
+      if (plan.kind === "apply" || plan.kind === "choose") arrived.current = plan.draft;
       if (plan.kind === "choose" && local) { setIncoming({ from: plan.draft, local }); return; }
       if (plan.kind === "broken") setHandoffBroken(true);
       if (plan.kind === "apply") { takeOver(plan.draft); return; }
@@ -215,6 +241,9 @@ export function WriteForm({
         const r = j?.reviews?.[0];
         if (!alive || !r) return;
         setPrevVisits(j?.reviews ?? []);
+        /* bağlantıyla taslak geldiyse ve kullanıcının bu mekânda yayımlanmış deneyimi varsa: taslak düzenleme formuna
+           geçmez (sunucudaki sürüm yüklenir), seçim/kayıt uyarısı kapanır, gelen metin ayrı bir kutuda bekler */
+        if (arrived.current) { setHeld(arrived.current); setIncoming(null); setUnsaved(false); }
         setMine(r); setBody(r.body); setRatings(r.ratings ?? {}); setOverall(r.overall > 0 ? r.overall : null);
         setRet((r.returnIntent as ReturnIntent) ?? null); setRel((r.disclosure as CommercialRelationship) ?? "none");
         const m = r.visitedOn.slice(0, 7); setMonths((ms) => (ms.some(([k]) => k === m) ? ms : [...ms, [m, m]])); setMonth(m); setRestored(null);
@@ -237,7 +266,7 @@ export function WriteForm({
     if (!r || !r.ok) track("hata", code);
     if (!r) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
     if (r.ok) {
-      deleteDraft(entitySlug);
+      if (!held) deleteDraft(entitySlug); /* bekleyen gelen taslak varsa bu cihazdaki kopyası silinmez */
       if (entityId) setEntityState(entityId, "visited", "write");
       setSent(mine ? "updated" : j?.status === "pending" ? "pending" : "published"); window.scrollTo({ top: 0 });
       /* deneyim önce kaydedilir; fotoğraf hatası deneyimi geri almaz, sonuç ekranda tek tek yazılır */
@@ -256,7 +285,7 @@ export function WriteForm({
     setBusy(true); setError(null);
     const r = await fetch(`${BASE}/api/reviews/${mine.id}/`, { method: "DELETE", credentials: "same-origin" }).catch(() => null);
     setBusy(false);
-    if (r?.ok) { deleteDraft(entitySlug); setSent("deleted"); window.scrollTo({ top: 0 }); return; }
+    if (r?.ok) { if (!held) deleteDraft(entitySlug); setSent("deleted"); window.scrollTo({ top: 0 }); return; }
     const j = r ? await r.json().catch(() => null) as { message?: string } | null : null;
     setError(j?.message ?? "Silinemedi (bağlantı sorunu); yeniden dene.");
   }
@@ -323,10 +352,7 @@ export function WriteForm({
         <p role="note" className="max-w-[62ch] border-l-2 border-accent pl-3 text-[13px] leading-relaxed text-ink-2">
           {canPublish ? (mine
             ? <>Bu mekân için {mine.visitedOn.slice(0, 7)} ziyaretine ait deneyimin {mine.status === "pending" ? "incelemede" : mine.status === "hidden" ? "moderasyonla gizlendi" : "yayında"}. Aynı ziyareti burada düzeltebilirsin.{" "}
-              <button type="button" data-yeni-ziyaret className="font-semibold text-accent-ink underline decoration-line-2 underline-offset-4 hover:text-ink" onClick={() => {
-                setMine(null); setBody(""); setRatings({}); setOverall(null); setRet(null); setRel("none"); setError(null);
-                const used = new Set(prevVisits.map((v) => v.visitedOn.slice(0, 7))); const ms = visitMonths(); setMonths(ms); setMonth((ms.find(([k]) => !used.has(k)) ?? ms[0])[0]);
-              }}>Başka bir ziyareti ayrı deneyim olarak yaz</button>{" "}
+              <button type="button" data-yeni-ziyaret className="font-semibold text-accent-ink underline decoration-line-2 underline-offset-4 hover:text-ink" onClick={() => newVisit()}>Başka bir ziyareti ayrı deneyim olarak yaz</button>{" "}
               Gidenler puanında her kişinin yalnız en son ziyareti sayılır.</>
             : prevVisits.length
             ? <>Yeni ziyaretin ayrı bir deneyim olarak yayınlanır. Daha önce yazdığın ziyaretlerden ({prevVisits.map((v) => v.visitedOn.slice(0, 7)).join(", ")}) farklı bir ay seç; puanda yalnız en son ziyaretin sayılır.</>
@@ -351,6 +377,22 @@ export function WriteForm({
             <div className="flex flex-wrap gap-2">
               <button type="button" data-taslak-gelen onClick={chooseIncoming} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">Getirdiğimle devam et</button>
               <button type="button" data-taslak-mevcut onClick={chooseLocal} className="inline-flex min-h-11 items-center rounded-[10px] border-2 border-ink bg-paper px-4 text-[13.5px] font-bold">Bu cihazdakiyle devam et</button>
+            </div>
+          </div>
+        )}
+        {held && mine && (
+          <div role="group" aria-labelledby="aktarim-duzenleme-baslik" data-aktarim-duzenleme className="flex flex-col gap-3 rounded-[14px] border-2 border-ink bg-[var(--accent-soft)] p-4">
+            <p id="aktarim-duzenleme-baslik" className="text-[14px] font-bold">Bağlantıyla bir taslak getirdin; ama şu an yayımlanmış deneyimini düzenliyorsun.</p>
+            <p className="text-[12.5px] text-ink-2">Getirdiğin taslak aşağıdaki düzenleme formuna <strong className="font-semibold">uygulanmadı</strong>; yayımlanmış deneyimin olduğu gibi duruyor. Taslağı ayrı bir ziyaret olarak yazabilir, metni kopyalayabilir ya da bırakabilirsin.</p>
+            <div data-aktarim-bekleyen className="rounded-[10px] border border-line-2 bg-paper p-3">
+              <p className="text-[12px] font-bold uppercase tracking-[0.08em] text-ink-3">Bağlantıyla getirdiğin</p>
+              <p className="mt-1 line-clamp-3 text-[13.5px] leading-relaxed text-ink">{held.body.trim() ? held.body.trim().slice(0, 220) : <i className="text-ink-3">Metin yok</i>}</p>
+              <p className="mt-1 text-[12px] text-ink-3">{held.body.trim().length} karakter{held.overall ? ` · genel puan ${held.overall}/10` : ""}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button type="button" data-aktarim-ayri onClick={() => newVisit(held)} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">Ayrı ziyaret olarak yaz</button>
+              <button type="button" data-aktarim-gelen-kopyala onClick={copyHeld} className="inline-flex min-h-11 items-center rounded-[10px] border-2 border-ink bg-paper px-4 text-[13.5px] font-bold">{copiedHeld ? "Metin kopyalandı" : "Metni kopyala"}</button>
+              <button type="button" data-aktarim-birak onClick={dropHeld} className="inline-flex min-h-11 items-center rounded-[10px] px-3 text-[13.5px] font-semibold underline decoration-line-2 underline-offset-4">Bırak, düzenlemeye devam et</button>
             </div>
           </div>
         )}
