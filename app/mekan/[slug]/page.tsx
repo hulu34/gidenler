@@ -22,7 +22,6 @@ import { GooglePlace, GoogleRatingBadge } from "@/components/venue/GooglePlace";
 import { closureOf, isClosed } from "@/lib/closure";
 import { googleUsable, placeProfile, placeReviews, placeScore, videoCounts } from "@/lib/live";
 import { googleRatingOf } from "@/lib/gpuan/read";
-import { businessPanelAllowed } from "@/lib/business/access";
 import { ThresholdBar, ThresholdCard, type ThresholdVenue } from "@/components/venue/ThresholdCard";
 import { ProfileMenu, ProfileOverview, withProfile } from "@/components/venue/profile/ProfileSections";
 import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
@@ -141,7 +140,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const c = category.compliance;
   const ad = c.allowAdvertising ? ADS[category.id] : undefined;
   const district = entity.location?.district;
-  const canPanel = businessPanelAllowed() && entity.business?.claimed && c.mode !== "regulated";
+  const canPanel = entity.business?.claimed && c.mode !== "regulated";
   const similar = c.showScores ? getSimilarUsersPerspective(entity.id) : null;
   const events = getEntityEvents(entity.id);
   const V = verbsFor(entity);

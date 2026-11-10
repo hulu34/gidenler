@@ -5,7 +5,6 @@ import { getDb, type Db } from "@/lib/db/client";
 import { googleRatings, placeIdentifiers, places } from "@/lib/db/schema";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { latestDecisions } from "./decisions";
-import { STORED_GOOGLE_RATINGS_DISPLAY } from "./policy";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GÖRÜNTÜLEME KATMANI — sitenin Google puanı için tek okuma noktası.
@@ -41,18 +40,11 @@ export async function loadGoogleRatings(db: Db): Promise<GRatingMap> {
     return out;
 }
 
-const cachedGoogleRatingMap = unstable_cache(async (): Promise<GRatingMap> => {
+export const googleRatingMap = unstable_cache(async (): Promise<GRatingMap> => {
   const db = getDb();
   if (!db || DEMO_VISIBLE) return {};
   try { return await loadGoogleRatings(db); } catch { return {}; }
-}, ["google-ratings-v3"], { revalidate: 3600, tags: [TAG_GPUAN] });
-
-/** Sitenin tek okuma noktası. Aşama 0: saklanan Google okumaları gösterilmez (lib/gpuan/policy.ts) —
-    önbelleğe bile bakılmaz, böylece eski dağıtımdan kalan önbellek de sızmaz. */
-export async function googleRatingMap(): Promise<GRatingMap> {
-  if (!STORED_GOOGLE_RATINGS_DISPLAY) return {};
-  return cachedGoogleRatingMap();
-}
+}, ["google-ratings-v2"], { revalidate: 3600, tags: [TAG_GPUAN] });
 
 export async function googleRatingOf(slug: string): Promise<GRating | null> {
   return (await googleRatingMap())[slug] ?? null;

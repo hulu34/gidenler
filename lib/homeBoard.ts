@@ -6,7 +6,6 @@ import { activeEntities, realEntities } from "@/data/real";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { liveCovers, publishedScores } from "@/lib/live";
 import { googleRatingMap, MIN_RANK_REVIEWS, TAG_GPUAN, type GRatingMap } from "@/lib/gpuan/read";
-import { STORED_GOOGLE_RATINGS_DISPLAY } from "@/lib/gpuan/policy";
 import { computeBoards, dayOf, loadSignalRows, SIGNAL_RULES, type Boards } from "@/lib/signals";
 import type { RankItem, RankSection } from "@/lib/rankings";
 import { placeOf } from "@/lib/rankings";
@@ -35,7 +34,6 @@ const itemOf = (slug: string, signal: string, score: number | null = null, count
   return { slug, name: e.name, kind: e.subcategory ?? "Restoran", where: e.location?.district ?? "", place: [e.subcategory, e.location?.district].filter(Boolean).join(" · ") || placeOf(e.location), categoryId: e.categoryId, score, delta: 0, count, reason: signal, signal, google: g ? { rating: g.rating, checkedAt: g.checkedAt } : null };
 };
 const ok = <T,>(x: T | null): x is T => x !== null;
-const secs = (xs: BoardSection[]) => xs;
 
 /* gerçek etkileşim: Popülerler + İlgisi artanlar (computeBoards) ve En Hype (niyet sinyalleri) aynı satırlardan */
 const signalBoards = unstable_cache(async (): Promise<(Boards & { hype: HypeItem[]; hypeReason: string | null }) | null> => {
@@ -52,14 +50,13 @@ const signalBoards = unstable_cache(async (): Promise<(Boards & { hype: HypeItem
 /* Google puanı geçmişi (günlük Excel aktarımlarının değişen değerleri) → yükselen / düşen */
 const googleHistory = unstable_cache(async (): Promise<HistRow[]> => {
   const db = getDb();
-  /* Aşama 0: eski Google okumaları yükselen/düşen hesabına girmez (lib/gpuan/policy.ts) */
-  if (!db || DEMO_VISIBLE || !STORED_GOOGLE_RATINGS_DISPLAY) return [];
+  if (!db || DEMO_VISIBLE) return [];
   try {
     const rows = await db.select({ slug: googleRatingHistory.slug, rating: googleRatingHistory.rating, checkedAt: googleRatingHistory.checkedAt }).from(googleRatingHistory)
       .where(gte(googleRatingHistory.checkedAt, new Date(Date.now() - 120 * 864e5)));
     return rows.map((r) => ({ slug: r.slug, rating: r.rating, checkedAt: r.checkedAt.toISOString() }));
   } catch { return []; }
-}, ["home-google-history-v2"], { revalidate: 3600, tags: [TAG_GPUAN] });
+}, ["home-google-history-v1"], { revalidate: 3600, tags: [TAG_GPUAN] });
 
 const talked30 = unstable_cache(async (): Promise<Array<{ slug: string; n: number }>> => {
   const db = getDb();
@@ -181,11 +178,9 @@ export async function realBoard(): Promise<RealBoard> {
         fallback: popular.length ? null : { title: "Kaynaklı profiller", items: fbPopular } },
       { key: "hype", title: "En hype mekânlar", window: "Niyet · 7 gün", hint: "Kaydetme / gitmek istiyorum, yol tarifi ve arama, yayımlanan deneyim — profil bakışı değil, gitme niyeti. Google'ın toplam değerlendirme sayısı hype değildir.", items: hype, signalKind: "text",
         note: hype.length ? null : b?.hypeReason ?? "Gitme niyeti sinyalleri yeterli olunca liste açılır.",
-        fallback: hype.length || !fbHype.length ? null : { title: "Kaynaklı ve Google'da 4,3+", items: fbHype } },
+        fallback: hype.length ? null : { title: "Kaynaklı ve Google'da 4,3+", items: fbHype } },
       { key: "talked", title: "En çok konuşulanlar", window: "Son 30 gün", hint: "Son 30 günde yayımlanan gerçek Gidenler deneyimi sayısı.", items: talk, signalKind: "text",
         note: talk.length ? null : "Son 30 günde iki ya da daha çok deneyim yazılan mekân henüz yok. İlk deneyimi sen yaz." },
-      ...(!STORED_GOOGLE_RATINGS_DISPLAY ? secs([{ key: "rising", title: "Yükselenler", window: "Gidenler ilgisi", hint: "Gidenler'deki gerçek etkileşimin iki haftalık değişimi. Google puanı kullanılmaz.", items: interest, signalKind: "trend",
-        note: interest.length ? null : b?.reason.rising ?? "İlgi artışı için iki tam haftalık gerçek etkileşim verisi gerekir." }]) : secs([
       { key: "rising", title: "Yükselenler", window: "Google puanı", hint: "Google puanındaki gerçek değişim (iki doğrulanmış okuma, en az 7 gün arayla). Gidenler ilgisi ayrı sekmede.", items: gUp, signalKind: "trend",
         tabs: [
           { key: "g", label: "Google puanı", items: gUp, note: gUp.length ? null : gNote, fallback: gUp.length ? null : { title: "Her semtin en yüksek Google puanlısı", items: fbDistrict } },
@@ -193,7 +188,6 @@ export async function realBoard(): Promise<RealBoard> {
         ] },
       { key: "falling", title: "Düşenler", window: "Google puanı", hint: "Google puanındaki gerçek düşüş (iki doğrulanmış okuma, en az 7 gün arayla).", items: gDown, signalKind: "trend",
         note: gDown.length ? null : gNote, fallback: gDown.length ? null : { title: "Her türün en yüksek Google puanlısı", items: fbKind } },
-      ])),
     ],
   };
 }

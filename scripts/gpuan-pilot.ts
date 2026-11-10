@@ -6,8 +6,6 @@ import { runDaily, type RunnerApi } from "../lib/gpuan/runner";
 import { sheetVenues } from "../lib/gpuan/venues";
 import { mapsPageSource } from "../lib/gpuan/sources/mapsPage";
 import type { GoogleId } from "../lib/gpuan/core";
-import { stopIfScrapingDisabled } from "../lib/gpuan/policy";
-stopIfScrapingDisabled("gpuan-pilot");
 
 async function main() {
   const slugs = (process.env.SLUGS ?? "").split(",").map((s) => s.trim()).filter(Boolean);

@@ -6,7 +6,6 @@ import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { acquireLock, addMatch, dailyReport, getFile, googleIds, holdsLock, importFile, importsLog, latestDecisions, listFiles, ratingStats, recordDecision, releaseLock, saveFile } from "@/lib/gpuan/store";
 import { sheetVenues } from "@/lib/gpuan/venues";
 import { TAG_GPUAN } from "@/lib/gpuan/read";
-import { GOOGLE_SCRAPING_ENABLED } from "@/lib/gpuan/policy";
 
 /* ──────────────────────────────────────────────────────────────────────────
    /api/admin/google-puan — Google puan Excel'i: yükleme, indirme, kilit ve Excel → veritabanı aktarımı.
@@ -57,8 +56,6 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   if (!allowed(req)) return nf();
-  /* Aşama 0: Google puanı yazma yolları kapalı (lib/gpuan/policy.ts). Eski kayıtlar yalnız okunur (hukuki inceleme). */
-  if (!GOOGLE_SCRAPING_ENABLED) return NextResponse.json({ error: "google_ratings_disabled" }, { status: 410, headers: H });
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
   let body: { target?: string; confirm?: string; op?: string; holder?: string; ttl?: number; kind?: string; data?: string; fileId?: string } = {};

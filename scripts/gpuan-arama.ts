@@ -9,8 +9,6 @@ import { realVenueRecords } from "../data/real";
 import { checkConsistency, typeCheck, idEvidence, STATUS, type GoogleId } from "../lib/gpuan/core";
 import rawVenues from "../data/real/venues.json";
 import { houseNoConflict, nameSimilarity } from "../lib/match/score";
-import { stopIfScrapingDisabled } from "../lib/gpuan/policy";
-stopIfScrapingDisabled("gpuan-arama");
 
 const TRF: Record<string, string> = { ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u", Ç: "C", Ğ: "G", İ: "I", Ö: "O", Ş: "S", Ü: "U" };
 const plain = (x: string) => x.split("").map((c) => TRF[c] ?? c).join("");

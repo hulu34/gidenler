@@ -10,8 +10,7 @@
       "demo/yatirimci": true,
       "feature/faz1-data": true,
       "perf/**": true,
-      "gorsel/**": true,
-      "guvenlik/**": true
+      "gorsel/**": true
     }
   },
   "crons": [

@@ -1,5 +1,4 @@
 import type { Observation, RatingSource, SourceResult } from "../core";
-import { GOOGLE_SCRAPING_ENABLED } from "../policy";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GEÇİCİ KAYNAK ADAPTÖRÜ — Google Maps'in herkese açık mekân sayfasında görünen puan ve değerlendirme sayısı.
@@ -103,8 +102,6 @@ const READ_JS = `(() => {
 
 export type MapsSource = RatingSource & { search(query: string, max?: number): Promise<{ kind: "ok"; candidates: Array<{ placeId: string; seen: Observation }> } | { kind: "blocked" | "error"; reason: string }> };
 export async function mapsPageSource(): Promise<MapsSource> {
-  /* Aşama 0: Google Maps otomatik okuma kalıcı olarak kapalı — tarayıcı açılmaz. */
-  if (!GOOGLE_SCRAPING_ENABLED) throw new Error("google_scraping_disabled");
   const mod = "playwright";
   const { chromium } = (await import(/* webpackIgnore: true */ mod)) as { chromium: { launch(o: object): Promise<{ newContext(o: object): Promise<{ newPage(): Promise<Page> }>; close(): Promise<void> }> } };
   const browser = await chromium.launch({ channel: "chrome", headless: true });

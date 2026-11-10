@@ -5,7 +5,6 @@ import { H, guard } from "@/lib/community/reviewApi";
 import { staffRole } from "@/lib/media/photoArchive";
 import { dailyReport, recordDecision } from "@/lib/gpuan/store";
 import { TAG_GPUAN } from "@/lib/gpuan/read";
-import { GOOGLE_SCRAPING_ENABLED } from "@/lib/gpuan/policy";
 
 /* YÖNETİM · GOOGLE PUANI — yetki her istekte sunucuda: oturum + staff_roles. Karar gerekçesiyle denetim kaydına yazılır. */
 export const runtime = "nodejs";
@@ -23,8 +22,6 @@ const Body = z.object({ slug: z.string().regex(/^[a-z0-9-]{2,120}$/), placeId: z
 export async function POST(req: Request) {
   const g = await guard(req, { write: true, limit: { key: "gpk", max: 200, windowSec: 3600 } });
   if (g instanceof NextResponse) return g;
-  /* Aşama 0: Google puanı yazma yolları kapalı (lib/gpuan/policy.ts). Eski kayıtlar yalnız okunur (hukuki inceleme). */
-  if (!GOOGLE_SCRAPING_ENABLED) return NextResponse.json({ error: "google_ratings_disabled" }, { status: 410, headers: H });
   const role = await staffRole(g.db, g.user.id);
   if (role !== "admin") return forbidden();
   const p = Body.safeParse(await req.json().catch(() => null));
