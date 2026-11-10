@@ -24,6 +24,7 @@ const NOT_RESTAURANT = new Set(["kafe", "bar", "tatli", "firin"]);
 const PRIORITY = new Set(["turk", "esnaf", "kebap", "doner", "pide", "balik", "meyhane", "pizza", "japon", "asya", "et", "kahvalti", "dunya", "burger", "sokak", "tavuk", "vegan"]);
 const ONSITE = /^(StreetComplete|Every ?Door)/i, MOBILE = /^(Organic ?Maps|CoMaps|OsmAnd|Go ?Map|Vespucci|MAPS\.ME)/i;
 const KIND = { turk: "Türk mutfağı", esnaf: "Lokanta", kebap: "Kebapçı / Ocakbaşı", doner: "Dönerci", pide: "Pideci", balik: "Balık restoranı", meyhane: "Meyhane", et: "Steakhouse", burger: "Burger", pizza: "Pizza", japon: "Sushi / Japon", asya: "Asya mutfağı", kahvalti: "Kahvaltı", dunya: "Dünya mutfağı", vegan: "Vegan", tavuk: "Tavuk", sokak: "Sokak lezzeti" };
+const cnt = (arr) => arr.reduce((m, k) => (m[k] = (m[k] ?? 0) + 1, m), {});
 const clean = (h) => (h ?? "").replace(/^no\s*[:.]?\s*/i, "").trim();
 const out = { A: [], B: [], C: [] }; const ret = []; const kafeBar = { kafe: 0, bar: 0, tatli_firin: 0, ornek: [] }; const zincirOzet = { dogrulanan: [], kanitsiz: 0, kapsamDisi: {} };
 for (const a of H.adaylar) {
@@ -125,8 +126,46 @@ writeFileSync(`${dir}/ret.json`, lines(ret));
 const B1 = out.B.filter((x) => x.kanit.length && x.a.mutfak.labels.length && x.eksik.every((k) => ["kapı numarası", "sokak adresi", "telefon", "çalışma saatleri"].includes(k)) && (x.a.street || T[x.a.ref]?.road))
   .map((x) => ({ ref: x.a.ref, ad: x.a.name, ilce: x.a.district, mahalle: x.a.neighbourhood ?? T[x.a.ref]?.suburb ?? null, sokak: x.a.street ?? T[x.a.ref]?.road, tur: KIND[x.a.mutfak.labels[0].id] ?? null, kanit: x.kanit, eksik: x.eksik }));
 writeFileSync(`${dir}/b1-yalniz-kapi-no-eksik.json`, lines(B1));
+/* B1 PAKETİ (sahip onayı 2026-11-11: kapı numarası olmayan, sokak düzeyinde adresli yayın). A DEĞİLDİR: kaliteSinifi "B1",
+   adresDuzeyi "sokak", güven "orta". Yalnız B1_DIR verilince üretilir. */
+if (process.env.B1_DIR) {
+  const bd = process.env.B1_DIR, bw = Number(process.env.B1_DALGA ?? wave + 1);
+  const B1x = out.B.filter((x) => x.kanit.length && x.a.mutfak.labels.length && x.eksik.every((k) => ["kapı numarası", "sokak adresi", "telefon", "çalışma saatleri"].includes(k)) && (x.a.street || T[x.a.ref]?.road));
+  const pool = [...recs, ...EX];
+  const keep = [], drop = [];
+  for (const x of B1x) {
+    const st = x.a.street ?? T[x.a.ref].road, hood = x.a.neighbourhood ?? T[x.a.ref]?.suburb ?? null;
+    const cx = fold(x.a.name).replace(/\s+/g, "");
+    const twin = [...pool, ...keep.map((k) => k.v)].find((o) => typeof o.lat === "number" && meters(x.a, o) < 150 && (fold(o.name) === fold(x.a.name) || editDistance(cx, fold(o.name).replace(/\s+/g, "")) <= 1));
+    const inPkg = B1x.find((y) => y !== x && meters(x.a, y.a) < 150 && editDistance(cx, fold(y.a.name).replace(/\s+/g, "")) <= 1);
+    if (twin || inPkg) { drop.push({ ref: x.a.ref, ad: x.a.name, neden: twin ? `yakın_ayni_ad:${twin.slug ?? twin.ref}` : "paket_ici_ayni_ad" }); continue; }
+    let slug = x.isChain ? `${slugify(x.a.name)}-${slugify(hood ?? st)}-${slugify(x.a.district)}`.replace(/--+/g, "-") : `${slugify(x.a.name)}-${slugify(x.a.district)}`;
+    if (taken.has(slug)) slug = `${slugify(x.a.name)}-${slugify(hood ?? st)}-${slugify(x.a.district)}`.replace(/--+/g, "-");
+    if (taken.has(slug)) slug = `${slug}-${x.a.ref.replace("/", "-")}`;
+    taken.add(slug);
+    const m = x.a.mutfak.labels;
+    const v = { ref: x.a.ref, slug, name: x.a.name, categoryId: "cat.restaurant", kind: KIND[m.find((l) => !NOT_RESTAURANT.has(l.id))?.id ?? m[0].id] ?? "Restoran", district: x.a.district,
+      ...(hood ? { neighborhood: hood } : {}), lat: x.a.lat, lng: x.a.lng, address: `${st}${hood ? `, ${hood}` : ""}, ${x.a.district}`,
+      ...(x.a.phone ? { phone: x.a.phone } : {}), ...(x.a.website ? { website: x.a.website } : {}), ...(x.a.openingHours ? { openingHours: x.a.openingHours } : {}),
+      cuisine: (x.a.cuisine ?? "").split(/[;,]/).map((q) => q.trim().toLowerCase()).filter(Boolean), importedAt: tarih,
+      osmAmenity: x.a.amenity === "fast_food" ? "fast_food" : "restaurant", wave: bw, verifiedAt: tarih, confidence: "orta", kaliteSinifi: "B1", adresDuzeyi: "sokak",
+      verification: [...x.kanit, `adres: sokak${hood ? " + mahalle" : ""} düzeyi, kapı numarası yok (${x.a.street ? "OSM kaydı" : `OSM ters konum ${T[x.a.ref].tarih}`}; sahip onayı 2026-11-11)`].join(" · ") };
+    if (!v.cuisine.length) delete v.cuisine;
+    keep.push({ v, x, hood, st });
+  }
+  mkdirSync(bd, { recursive: true });
+  writeFileSync(`${bd}/kayitlar.json`, lines(keep.map((k) => k.v)));
+  writeFileSync(`${bd}/paket.json`, JSON.stringify({ _aciklama: `İstanbul restoran B1 paketi (dalga ${bw}). A DEĞİL: faaliyet güçlü kanıtlı ve tür kaynaklı; adres sokak (+ mahalle) düzeyinde, kapı numarası yok. Sahip onayı 2026-11-11. venues.json'a eklenmedi. Kaynak: OpenStreetMap (© OpenStreetMap katkıcıları, ODbL). Google verisi kullanılmadı.`, osmTarihi: H.ozet.osm_tarihi, kontrolTarihi: tarih,
+    eklenen: keep.map(({ v, x, hood, st }) => ({ slug: v.slug, ref: v.ref, ad: v.name, zincir: x.isChain ? x.brand : null, sube: x.isChain ? hood : null, ilce: v.district, mahalle: hood, sokak: st, adres: v.address, koordinat: [v.lat, v.lng], tur: v.kind,
+      mutfak: x.a.mutfak.labels.map((l) => ({ id: l.id, ad: MUTFAK[l.id].ad, kaynak: l.kaynak, deger: l.deger })), faaliyet: "açık (kanıt tarihli)", sinif: "B1", adresDuzeyi: "sokak", kanit: x.kanit, eksik: x.eksik,
+      kaynak: [`https://www.openstreetmap.org/${v.ref}`, ...(CS[x.e.changeset] ? [`https://www.openstreetmap.org/changeset/${x.e.changeset}`] : [])], kontrolTarihi: tarih })) }, null, 1));
+  const ex2 = new Set(EX.map((o) => o.slug)), exr2 = new Set(EX.map((o) => o.ref)), a7 = new Set(recs.map((r) => r.ref));
+  const bo = { dalga: bw, sinif: "B1", kayit: keep.length, elenen: drop, mahalleli: keep.filter((k) => k.hood).length, ilce: cnt(keep.map((k) => k.v.district)), tur: cnt(keep.map((k) => k.v.kind)),
+    karsilastirma: { slug: keep.filter((k) => ex2.has(k.v.slug)).length, ref: keep.filter((k) => exr2.has(k.v.ref) || a7.has(k.v.ref)).length } };
+  writeFileSync(`${bd}/ozet.json`, JSON.stringify(bo, null, 1));
+  console.error("B1 paketi:", JSON.stringify({ ...bo, elenen: drop.length }));
+}
 writeFileSync(`${dir}/zincir.json`, JSON.stringify(zincirOzet, null, 1));
-const cnt = (arr) => arr.reduce((m, k) => (m[k] = (m[k] ?? 0) + 1, m), {});
 const exSlug = new Set(EX.map((v) => v.slug));
 const kars = { karsilastirilan: exSlug.size, slug: recs.filter((v) => exSlug.has(v.slug)).length, ref: recs.filter((v) => exRef.has(v.ref)).length,
   yakinAyniAd: recs.filter((v) => EX.some((o) => typeof o.lat === "number" && fold(o.name) === fold(v.name) && meters(v, o) < 150)).length,

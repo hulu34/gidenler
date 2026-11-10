@@ -100,7 +100,9 @@ export const KNOWN = { areas: [...DISTRICTS, ...SUBAREAS.map((a) => a.name)], cu
 const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax || i.notArea);
 
 /* Sıradan sözcük tek başına ad sayılmaz: "pide nerede yenir" Yeni Lokanta'yı bulmaz; adın tamamı yazılmalı. */
-const QUERY_NOISE = new Set(["istanbul", "misin", "musun", "misiniz", "musunuz", "miyiz", "miyim", "nerede", "neresi", "nasil", "nasildir", "nasilsin", "neden", "nicin", "kimdir", "yapilir", "yapilmaz", "hangi", "hangisi", "var", "yok", "lazim", "oner", "onerir", "onerin", "soyle", "bana", "bize", "sana", "size", "goster", "verilen", "kural", "kurallari",
+/* başka şehir adları tek başına mekân adı sayılmaz: "Bodrum'da balık" Bodrum Mantı değildir (tam adla yazılınca yine bulunur) */
+const OTHER_CITY_WORDS = ["izmir", "ankara", "antalya", "bursa", "bodrum", "eskisehir", "adana", "gaziantep", "trabzon", "mersin", "konya", "kapadokya", "cesme", "alacati", "fethiye", "ayvalik"];
+const QUERY_NOISE = new Set([...OTHER_CITY_WORDS, "istanbul", "misin", "musun", "misiniz", "musunuz", "miyiz", "miyim", "nerede", "neresi", "nasil", "nasildir", "nasilsin", "neden", "nicin", "kimdir", "yapilir", "yapilmaz", "hangi", "hangisi", "var", "yok", "lazim", "oner", "onerir", "onerin", "soyle", "bana", "bize", "sana", "size", "goster", "verilen", "kural", "kurallari",
   /* fiil: "Burger yiyelim" Burger Yiyelim zinciri değildir */ "yiyelim", "yiyecek", "yiyebilecegim", "yemek", "gidelim", "gidecek", "icelim", "oturalim", "bakalim", "olsun", "olmasin"]);
 const COMMON_NAME = new Set(["yeni", "eski", "buyuk", "kucuk", "tarihi", "meshur", "bizim", "kardesler", "ortaklar", "asmali", "ev", "ana", "usta", "lezzet", "aile", "sofra", "kent", "merkez", "istanbul"]);
 const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "cafe", "kafe", "ve", "the", "bar", "kebap", "balik", "pide", "ocakbasi", "doner", "kebapcisi", "sofrasi", "evi", "et", "iyi", "guzel", "bir",
@@ -112,7 +114,8 @@ function matchName(q: string): Venue | null {
   const toks = q.split(" ").filter((t) => t.length >= 3);
   /* soru ekleri ve şehir adı mekân adı değildir: "önerir misin" Misina, "İstanbul'da" İstanbul Emniyet... değildir */
   const own = toks.filter((t) => !isGeneric(t) && !QUERY_NOISE.has(t));
-  if (!own.length) return null;
+  /* adın tamamı yazıldıysa (≥ 8 harf) sözcükleri genel olsa da o mekândır: "Bodrum Mantı" */
+  if (!own.length) { const full = VENUES.filter((v) => { const f = fold(v.name).replace(/\b(ve|cafe|kafe)\b/g, " ").replace(/\s+/g, " ").trim(); return f.length >= 8 && (` ${q} `).includes(` ${f} `); }).sort((a, b) => b.name.length - a.name.length)[0]; return full ?? null; }
   let best: { v: Venue; s: number; raw: number } | null = null;
   for (const v of VENUES) {
     const nt = fold(v.name).split(" ").filter((t) => t.length >= 3 && !NAME_NOISE.has(t));
@@ -188,7 +191,8 @@ export function mergeIntent(prev: Intent | null | undefined, next: Intent, refin
   if (!fresh) { if (next.cuisine) m.notCuisines = m.notCuisines.filter((c) => c !== next.cuisine); if (m.cuisine && next.notCuisines.includes(m.cuisine)) { m.cuisine = null; m.dish = null; } }
   if (refine === "cheaper" && !m.attrs.includes("ekonomik")) m.attrs = [...m.attrs, "ekonomik"];
   if (refine === "quieter" && !m.attrs.includes("sakin")) m.attrs = [...m.attrs, "sakin"];
-  if (refine === "other_area") { m.area = null; m.district = null; m.areaText = null; }
+  /* "başka semtte": önceki semt dışlanır (yalnız kaldırılmaz), ki aynı semtten öneri gelmesin */
+  if (refine === "other_area") { if (prev?.area && !m.notArea) m.notArea = prev.area; m.area = null; m.district = null; m.areaText = null; }
   return m;
 }
 
