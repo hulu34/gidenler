@@ -596,6 +596,17 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: osm-seyrek, path: out/seyrek, retention-days: 14, if-no-files-found: ignore }
+  seyrek-preview:
+    if: contains(github.event.head_commit.message, '[seyrek-preview]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env: { HOST: gidenler-kswnrh2uv-hulu34.vercel.app }   # paket/seyrek-ilceler 5564b3a (Preview, izole Neon: yayin-906 dalı)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/seyrek-preview.mjs
+        env: { VERCEL_BYPASS: "${{ secrets.VERCEL_BYPASS }}" }
   ilk-kullanici:
     if: contains(github.event.head_commit.message, '[ilk-kullanici]')
     runs-on: ubuntu-latest
