@@ -156,6 +156,51 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
   await shot(p, "uzun-metin-uyari-390");
   await s2.close(); await ig.close(); await s.close();
 }
+/* ── A3) Depolama reddi + aynı sekmede kaydedilmemiş form metni ───────────── */
+{
+  const SL3 = "ali-ocakbasi-kadikoy";
+  const TX = "Instagram'dan taşınan metin: Adana ve ezme çok iyiydi, servis hızlıydı; akşam kalabalıktı ama masamız çabuk hazırlandı.";
+  const ig = await ctx({ ua: IG }); const p = await ig.newPage();
+  await p.goto(`${B}/yaz/${SL3}/`, { waitUntil: "load" }); await p.waitForSelector("[data-deneyim-metin]");
+  await p.fill("[data-deneyim-metin]", TX); await p.click("[data-genel-puan] [aria-label='Genel puan: 7']"); await p.waitForTimeout(900);
+  const LINK = `${B}/yaz/${SL3}/${await p.evaluate(() => location.hash)}`;
+  await ig.close();
+  /* (1) tarayıcı taslak kaydını reddediyor (gizli sekme / dolu depo benzetimi) */
+  const c = await ctx({ ua: SAFARI });
+  await c.addInitScript(() => { const o = Storage.prototype.setItem; Storage.prototype.setItem = function (k, v) { if (k === "gidenler.taslak.v1" && !window.__izin) throw new DOMException("dolu", "QuotaExceededError"); return o.call(this, k, v); }; });
+  const q = await c.newPage();
+  await q.goto(LINK, { waitUntil: "load" }); await q.waitForSelector("[data-deneyim-metin]"); await q.waitForTimeout(700);
+  ok("kayıt reddedildi: gelen metin ve puan ekranda", (await q.inputValue("[data-deneyim-metin]")) === TX && (await q.locator("[data-genel-puan] [aria-label='Genel puan: 7'][aria-checked='true']").count()) === 1);
+  ok("kayıt reddedildi: uyarı + 'Metni kopyala' + 'Yeniden dene' görünüyor", (await q.locator("[data-aktarim-kaydedilemedi]").count()) === 1 && (await q.locator("[data-aktarim-kopyala]").count()) === 1 && (await q.locator("[data-aktarim-yeniden]").count()) === 1);
+  ok("kayıt reddedildi: # adreste duruyor (yeniden yüklemede kaybolmasın)", (await q.evaluate(() => location.hash)).startsWith("#aktar="));
+  await shot(q, "kayit-reddedildi-390");
+  await q.reload({ waitUntil: "load" }); await q.waitForSelector("[data-deneyim-metin]"); await q.waitForTimeout(700);
+  ok("yeniden yükleme: metin yine ekranda", (await q.inputValue("[data-deneyim-metin]")) === TX && (await q.locator("[data-aktarim-kaydedilemedi]").count()) === 1);
+  await q.click("[data-aktarim-kopyala]"); await q.waitForTimeout(300);
+  ok("'Metni kopyala' metni panoya koyar", (await q.evaluate(() => navigator.clipboard.readText().catch(() => ""))) === TX);
+  await q.click("[data-aktarim-yeniden]"); await q.waitForTimeout(400);
+  ok("depo hâlâ kapalıyken 'Yeniden dene': uyarı kalır, metin kaybolmaz", (await q.locator("[data-aktarim-kaydedilemedi]").count()) === 1 && (await q.inputValue("[data-deneyim-metin]")) === TX);
+  await q.evaluate(() => { window.__izin = true; });
+  await q.click("[data-aktarim-yeniden]"); await q.waitForTimeout(500);
+  ok("depo açılınca 'Yeniden dene': kaydedildi, uyarı kalktı, # silindi", (await q.locator("[data-aktarim-kaydedilemedi]").count()) === 0 && (await q.evaluate((sl) => JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}")[sl]?.body, SL3)) === TX && (await q.evaluate(() => location.hash)) === "");
+  await c.close();
+  /* (2) aynı sekme: form yazıldı, otomatik kayıt (700 ms) çalışmadan bağlantı yapıştırıldı */
+  const c2 = await ctx({ ua: SAFARI }); const r = await c2.newPage();
+  await r.goto(`${B}/yaz/${SL3}/`, { waitUntil: "load" }); await r.waitForSelector("[data-deneyim-metin]");
+  const TYPED = "Bu sayfada az önce yazdığım ama henüz kaydedilmemiş farklı bir metin; kırk karakteri geçiyor.";
+  await r.fill("[data-deneyim-metin]", TYPED);
+  await r.goto(LINK, { waitUntil: "load" });
+  await r.waitForSelector("[data-taslak-secim]", { timeout: 6000 }).catch(() => {});
+  const stored0 = await r.evaluate((sl) => JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}")[sl]?.body ?? null, SL3);
+  ok("aynı sekme, kaydedilmemiş form metni: seçim ekranı açıldı", (await r.locator("[data-taslak-secim]").count()) === 1, `depoda=${stored0 === null ? "yok" : "var"}`);
+  const mevcut = await r.locator("[data-taslak-aday='mevcut']").innerText().catch(() => "");
+  ok("seçimde 'Bu sayfada şu an yazılı olan' = formdaki metin", mevcut.includes("ŞU AN YAZILI") || mevcut.toLocaleLowerCase("tr").includes("şu an yazılı") ? mevcut.includes(TYPED.slice(0, 40)) : false);
+  ok("seçim beklerken formdaki metin duruyor", (await r.inputValue("[data-deneyim-metin]")) === TYPED);
+  await shot(r, "ayni-sekme-secim-390");
+  await r.click("[data-taslak-mevcut]"); await r.waitForTimeout(1200);
+  ok("'Bu sayfadakiyle devam': formdaki metin korundu ve kaydedildi", (await r.inputValue("[data-deneyim-metin]")) === TYPED && (await r.evaluate((sl) => JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}")[sl]?.body, SL3)) === TYPED);
+  await c2.close();
+}
 const rep = await (await fetch(`${B}/yonetim/kampanya/`, { headers: HB })).text();
 ok("kampanya panosunda 'Uygulama içi tarayıcıda açtı' sütunu", rep.includes("Uygulama içi tarayıcıda açtı"));
 const cell = (code, step) => Number(rep.match(new RegExp(`data-kampanya-satir="${code}"[\\s\\S]*?data-adim="${step}"[^>]*>(\\d+)<`))?.[1] ?? -1);
