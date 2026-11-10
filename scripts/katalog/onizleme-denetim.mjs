@@ -1,5 +1,5 @@
 /* PAKET ÖNİZLEME DENETİMİ — yeni mekânların profil, arama, deneyim formu ve sitemap'te gerçekten çalıştığını ölçer.
-   Yalnız GET (veritabanına yazmaz). Kullanım: BASE=http://localhost:3456 node scripts/katalog/onizleme-denetim.mjs <venues-dalga.json> [pilot]
+   Yalnız GET (veritabanına yazmaz). Kullanım: BASE=http://localhost:3456 [SEHIR_SAYFASI=1] node scripts/katalog/onizleme-denetim.mjs <venues-dalga.json> [pilot]
    Korumalı Preview için HB başlığı: VERCEL_BYPASS ortam değişkeni. Log yalnız sayı/durum. */
 import { readFileSync } from "node:fs";
 const B = process.env.BASE, HB = process.env.VERCEL_BYPASS ? { "x-vercel-protection-bypass": process.env.VERCEL_BYPASS } : {};
@@ -21,9 +21,12 @@ const sm = await (await fetch(`${B}/sitemap.xml`, { headers: HB })).text();
 const inSm = P.filter((v) => sm.includes(`/mekan/${v.slug}/`)).length;
 ok(`sitemap ${inSm}/${P.length}`, mode === "pilot" ? true : inSm === P.length);
 ok("ana sayfa 200", (await fetch(`${B}/`, { headers: HB })).status === 200);
-const si = await fetch(`${B}/sehir/istanbul/`, { headers: HB }); ok("şehir sayfası /sehir/istanbul/ 200", si.status === 200);
-const sa = await fetch(`${B}/sehir/ankara/`, { headers: HB }); const sab = await sa.text();
-ok(mode === "pilot" ? "pilot: /sehir/ankara/ 200 ve noindex" : "pilot kapalı: /sehir/ankara/ 404", mode === "pilot" ? sa.status === 200 && /noindex/.test(sab) : sa.status === 404, sa.status);
+/* şehir sayfası yalnız çok şehirli dalda (mimari/sehir-kategori) var: SEHIR_SAYFASI=1 ile denetlenir */
+if (process.env.SEHIR_SAYFASI === "1" || mode === "pilot") {
+  const si = await fetch(`${B}/sehir/istanbul/`, { headers: HB }); ok("şehir sayfası /sehir/istanbul/ 200", si.status === 200);
+  const sa = await fetch(`${B}/sehir/ankara/`, { headers: HB }); const sab = await sa.text();
+  ok(mode === "pilot" ? "pilot: /sehir/ankara/ 200 ve noindex" : "pilot kapalı: /sehir/ankara/ 404", mode === "pilot" ? sa.status === 200 && /noindex/.test(sab) : sa.status === 404, sa.status);
+}
 const s = [...t0].sort((a, b) => a - b), pct = (p) => Math.round(s[Math.min(s.length - 1, Math.floor(p * s.length))]);
 console.log(JSON.stringify({ kayit: P.length, profil: prof, arama_ilk8: ara, form: yaz, sitemap: inSm, profil_ms: { p50: pct(0.5), p95: pct(0.95) } }));
 const k = res.filter((x) => !x).length; console.log(`ÖNİZLEME: ${res.length - k}/${res.length}`); process.exit(k ? 1 : 0);
