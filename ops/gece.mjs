@@ -266,7 +266,7 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
   /* (3b) OTURUM sorgusu (get-session) geçici hata: 500, sonra ağ hatası; kimlik kapalı ("off") sayılmaz, taslak bekler */
   const d4 = await s.newPage();
   let sess = "500";
-  await d4.route("**/api/auth/get-session**", (r) => (sess === "500" ? r.fulfill({ status: 500, contentType: "application/json", body: "{}" }) : sess === "ag" ? r.abort("failed") : r.continue()));
+  await d4.route((u) => u.pathname.startsWith("/api/auth/get-session"), (r) => (sess === "500" ? r.fulfill({ status: 500, contentType: "application/json", body: "{}" }) : sess === "ag" ? r.abort("failed") : r.continue()));
   await d4.goto(LINK, { waitUntil: "load" }); await d4.waitForSelector("[data-aktarim-hata='oturum']", { timeout: 10000 }).catch(() => {});
   ok("get-session 500: 'Oturumun kontrol edilemedi' + 'Yeniden dene'; taslak uygulanmadı", (await has(d4, "[data-aktarim-hata='oturum']")) && (await has(d4, "[data-aktarim-kontrol-yeniden]")) && (await val(d4)) !== INC4);
   ok("get-session 500: depoya yazılmadı, # adreste, yayınla kapalı", (await stored(d4)) === null && (await hashOf(d4)).startsWith("#aktar=") && (await d4.locator("button:has-text('Deneyimi yayınla'), button:has-text('Google ile giriş yap')").first().isDisabled().catch(() => true)));
