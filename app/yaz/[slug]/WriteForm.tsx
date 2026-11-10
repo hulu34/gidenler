@@ -85,6 +85,7 @@ export function WriteForm({
   const [copiedHeld, setCopiedHeld] = useState(false);
   /* bu sayfada bağlantıyla gelen son taslak: düzenleme kipi (sunucudaki deneyim) sonradan anlaşılırsa held'e taşınır */
   const arrived = useRef<DraftLike | null>(null);
+  const arrivedHash = useRef("");
 
   useEffect(() => {
     const ms = visitMonths();
@@ -96,7 +97,7 @@ export function WriteForm({
     const plan = handoffPlan(location.hash, local, ms[0][0]);
     const h = plan.kind === "none" || plan.kind === "broken" ? null : decodeHandoff(location.hash);
     if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
-    if (plan.kind === "apply" || plan.kind === "choose") arrived.current = plan.draft;
+    if (plan.kind === "apply" || plan.kind === "choose") { arrived.current = plan.draft; arrivedHash.current = location.hash; }
     if (plan.kind === "broken") { setHandoffBroken(true); history.replaceState(null, "", location.pathname + location.search); }
     if (plan.kind === "code") history.replaceState(null, "", location.pathname + location.search);
     if (plan.kind === "apply") {
@@ -196,7 +197,13 @@ export function WriteForm({
     try { await navigator.clipboard.writeText(held.body); setCopiedHeld(true); }
     catch { window.prompt("Metni kopyala:", held.body); }
   };
-  const dropHeld = () => { setHeld(null); arrived.current = null; history.replaceState(null, "", location.pathname + location.search); };
+  /* bırak: gelen taslak bırakılır; baştan açılışta bu cihaza yazılmış AYNI kopyası da silinir (farklı bir taslağa dokunulmaz) */
+  const dropHeld = () => {
+    const st = loadDraft(entitySlug);
+    if (held && st && sameDraft(st, held)) deleteDraft(entitySlug);
+    setHeld(null); arrived.current = null; arrivedHash.current = "";
+    history.replaceState(null, "", location.pathname + location.search);
+  };
 
   /* sayfa zaten açıkken bağlantı aynı sekmeye yapıştırılırsa yalnız # değişir (sayfa yeniden yüklenmez):
      aynı kararı burada da uygula — uygula / seçtir / bozuk uyarısı. */
@@ -213,7 +220,7 @@ export function WriteForm({
       const h = plan.kind === "broken" ? null : decodeHandoff(location.hash);
       if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
       if (plan.kind === "hold") { setHeld(plan.draft); setCopiedHeld(false); return; }
-      if (plan.kind === "apply" || plan.kind === "choose") arrived.current = plan.draft;
+      if (plan.kind === "apply" || plan.kind === "choose") { arrived.current = plan.draft; arrivedHash.current = location.hash; }
       if (plan.kind === "choose" && local) { setIncoming({ from: plan.draft, local }); return; }
       if (plan.kind === "broken") setHandoffBroken(true);
       if (plan.kind === "apply") { takeOver(plan.draft); return; }
@@ -243,7 +250,11 @@ export function WriteForm({
         setPrevVisits(j?.reviews ?? []);
         /* bağlantıyla taslak geldiyse ve kullanıcının bu mekânda yayımlanmış deneyimi varsa: taslak düzenleme formuna
            geçmez (sunucudaki sürüm yüklenir), seçim/kayıt uyarısı kapanır, gelen metin ayrı bir kutuda bekler */
-        if (arrived.current) { setHeld(arrived.current); setIncoming(null); setUnsaved(false); }
+        if (arrived.current) {
+          setHeld(arrived.current); setIncoming(null); setUnsaved(false);
+          /* # baştan açılışta silinmiş olabilir: karar verilene kadar geri yazılır (yenilemede kutu yine gelir) */
+          if (arrivedHash.current && !location.hash) history.replaceState(null, "", location.pathname + location.search + arrivedHash.current);
+        }
         setMine(r); setBody(r.body); setRatings(r.ratings ?? {}); setOverall(r.overall > 0 ? r.overall : null);
         setRet((r.returnIntent as ReturnIntent) ?? null); setRel((r.disclosure as CommercialRelationship) ?? "none");
         const m = r.visitedOn.slice(0, 7); setMonths((ms) => (ms.some(([k]) => k === m) ? ms : [...ms, [m, m]])); setMonth(m); setRestored(null);
