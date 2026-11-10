@@ -621,8 +621,8 @@ jobs:
   paket-kod:
     if: contains(github.event.head_commit.message, '[paket]')
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env: { REF: paket/istanbul-7, SHA: "835d058", PAKET: data/paket/istanbul-7 }
+    timeout-minutes: 40
+    env: { REF: paket/istanbul-8-b1, SHA: "b05b478" }
     steps:
       - uses: actions/checkout@v4
         with: { ref: "${{ env.REF }}", fetch-depth: 0 }
@@ -631,14 +631,27 @@ jobs:
         with: { node-version: 22 }
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx tsc --noEmit
-      - run: |
+      - name: paketler (venues.json'a ekleme yok)
+        run: |
           set -o pipefail
           git show origin/feature/yayin-906:data/real/venues.json > /tmp/v906.json
           git show origin/paket/seyrek-ilceler:data/real/venues.json > /tmp/seyrek.json
-          git diff --quiet origin/veri/istanbul-genisleme HEAD -- data/real && echo "data/real değişmedi (venues.json'a ekleme yok)"
-          KARSILASTIR=/tmp/v906.json,/tmp/seyrek.json npx tsx scripts/restoranpakettest.ts | tail -3
-          for t in katalogtest bin1test aramatest sortest seotest dbtest; do echo "== $t"; npx tsx scripts/$t.ts | tail -1 || exit 1; done
-      - run: npx next build
+          git diff --quiet origin/veri/istanbul-genisleme HEAD -- data/real && echo "data/real değişmedi"
+          PAKET=data/paket/istanbul-7 KARSILASTIR=/tmp/v906.json,/tmp/seyrek.json npx tsx scripts/restoranpakettest.ts | tail -1
+          PAKET=data/paket/istanbul-8-b1 ADRES_DUZEYI=sokak KARSILASTIR=/tmp/v906.json,/tmp/seyrek.json,data/paket/istanbul-7/kayitlar.json npx tsx scripts/restoranpakettest.ts | tail -1
+          for t in katalogtest bin1test sortest dbtest; do echo "== $t"; npx tsx scripts/$t.ts | tail -1 || exit 1; done
+      - name: yayın benzetimi (yalnız CI çalışma kopyasında; push yok)
+        run: |
+          set -o pipefail
+          node scripts/katalog/pakete-ekle.mjs data/paket/istanbul-7/kayitlar.json
+          node scripts/katalog/pakete-ekle.mjs data/paket/istanbul-8-b1/kayitlar.json
+          npx tsx scripts/sor-index.ts | tail -1
+          for t in bin1test katalogtest aramatest seotest anasayfatest anasayfa8test sortest; do echo "== $t"; npx tsx scripts/$t.ts | tail -1 || exit 1; done
+          npx next build > /tmp/build.log 2>&1 || (tail -30 /tmp/build.log; exit 1)
+          (npx next start -p 3456 > /tmp/s.log 2>&1 &) && sleep 8
+          BASE=http://localhost:3456 node scripts/katalog/onizleme-denetim.mjs data/paket/istanbul-7/kayitlar.json
+          BASE=http://localhost:3456 node scripts/katalog/onizleme-denetim.mjs data/paket/istanbul-8-b1/kayitlar.json
+          BASE=http://localhost:3456 node scripts/katalog/onizleme-denetim.mjs data/paket/istanbul-6/venues-dalga6.json
         env: { NEXT_TELEMETRY_DISABLED: "1" }
   osm-seyrek:
     if: contains(github.event.head_commit.message, '[osm-seyrek]')
