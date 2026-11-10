@@ -583,6 +583,19 @@ jobs:
       - run: for t in gecetest ilkkullanicitest dbtest gpuantest seotest seckisitest anasayfa8test anasayfatest aramatest sortest panel-rezervasyon-test; do echo "== $t"; npx tsx scripts/$t.ts | tail -2 || exit 1; done
       - run: npx next build
         env: { NEXT_TELEMETRY_DISABLED: "1" }
+  osm-seyrek:
+    if: contains(github.event.head_commit.message, '[osm-seyrek]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node ops/osm-seyrek.mjs
+        env: { ILCELER: "Esenler,Güngören,Kağıthane,Sultangazi,Çekmeköy,Sancaktepe,Silivri,Esenyurt,Bahçelievler,Büyükçekmece,Çatalca,Gaziosmanpaşa,Arnavutköy,Avcılar,Başakşehir,Küçükçekmece,Şile,Adalar" }
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: osm-seyrek, path: out/seyrek, retention-days: 14, if-no-files-found: ignore }
   ilk-kullanici:
     if: contains(github.event.head_commit.message, '[ilk-kullanici]')
     runs-on: ubuntu-latest
