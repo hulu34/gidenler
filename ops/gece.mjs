@@ -120,8 +120,9 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
     return `${B}/yaz/${SL2}/${await p.evaluate(() => location.hash)}`;
   };
   const L1 = await linkOf(INC);
+  /* (a) Safari'de sayfa zaten açıkken bağlantı aynı sekmeye yapıştırılır: yalnız # değişir */
   await q.goto(L1, { waitUntil: "load" }); await q.waitForSelector("[data-taslak-secim]", { timeout: 8000 }).catch(() => {});
-  ok("iki farklı taslak → seçim ekranı", (await q.locator("[data-taslak-secim]").count()) === 1);
+  ok("iki farklı taslak → seçim ekranı (aynı sekmeye yapıştırma)", (await q.locator("[data-taslak-secim]").count()) === 1);
   ok("seçim beklerken yerel taslak korunuyor (depoda ve formda)", (await localDraft()) === LOCAL && (await q.inputValue("[data-deneyim-metin]")) === LOCAL);
   ok("seçim beklerken yayınla kapalı", (await q.locator("button:has-text('Google ile giriş yap')").isDisabled().catch(() => true)));
   await q.waitForTimeout(1500);
@@ -131,12 +132,18 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
   ok("iptal (bu cihazdakiyle devam): yerel taslak aynen kaldı, # silindi", (await localDraft()) === LOCAL && (await q.inputValue("[data-deneyim-metin]")) === LOCAL && (await q.evaluate(() => location.hash)) === "" && (await q.locator("[data-taslak-secim]").count()) === 0);
   await q.reload({ waitUntil: "load" }); await q.waitForSelector("[data-deneyim-metin]"); await q.waitForTimeout(500);
   ok("yeniden yüklemede seçim tekrar sorulmuyor, yerel taslak geliyor", (await q.locator("[data-taslak-secim]").count()) === 0 && (await q.inputValue("[data-deneyim-metin]")) === LOCAL);
-  await q.goto(L1, { waitUntil: "load" }); await q.waitForSelector("[data-taslak-secim]");
-  await q.click("[data-taslak-gelen]"); await q.waitForTimeout(800);
-  ok("getirdiğimle devam: metin ve puan gelen taslaktan, depoya yazıldı, # silindi", (await q.inputValue("[data-deneyim-metin]")) === INC && (await localDraft()) === INC && (await q.locator("[data-genel-puan] [aria-label='Genel puan: 9'][aria-checked='true']").count()) === 1 && (await q.evaluate(() => location.hash)) === "");
-  /* bozuk bağlantı */
-  await q.goto(`${B}/yaz/${SL2}/${L1.split("#")[1] ? "#" + L1.split("#")[1].slice(0, 30) : "#aktar=%%"}`, { waitUntil: "load" }); await q.waitForSelector("[data-deneyim-metin]"); await q.waitForTimeout(600);
-  ok("bozuk/yarım bağlantı: uyarı var, yerel taslak değişmedi, # silindi", (await q.locator("[data-aktarim-bozuk]").count()) === 1 && (await localDraft()) === INC && (await q.evaluate(() => location.hash)) === "");
+  /* (b) yeni sekmede açılış (sayfa baştan yüklenir) */
+  const q2 = await s.newPage();
+  await q2.goto(L1, { waitUntil: "load" }); await q2.waitForSelector("[data-taslak-secim]", { timeout: 8000 }).catch(() => {});
+  ok("iki farklı taslak → seçim ekranı (yeni sekme)", (await q2.locator("[data-taslak-secim]").count()) === 1 && (await localDraft()) === LOCAL);
+  await q2.click("[data-taslak-gelen]"); await q2.waitForTimeout(800);
+  ok("getirdiğimle devam: metin ve puan gelen taslaktan, depoya yazıldı, # silindi", (await q2.inputValue("[data-deneyim-metin]")) === INC && (await localDraft()) === INC && (await q2.locator("[data-genel-puan] [aria-label='Genel puan: 9'][aria-checked='true']").count()) === 1 && (await q2.evaluate(() => location.hash)) === "");
+  /* bozuk bağlantı: yeni sekmede ve açık sayfaya yapıştırınca */
+  const BAD = `${B}/yaz/${SL2}/#${L1.split("#")[1].slice(0, 30)}`;
+  const q3 = await s.newPage(); await q3.goto(BAD, { waitUntil: "load" }); await q3.waitForSelector("[data-deneyim-metin]"); await q3.waitForTimeout(700);
+  ok("bozuk/yarım bağlantı (yeni sekme): uyarı var, yerel taslak değişmedi, # silindi", (await q3.locator("[data-aktarim-bozuk]").count()) === 1 && (await localDraft()) === INC && (await q3.evaluate(() => location.hash)) === "");
+  await q2.goto(BAD, { waitUntil: "load" }); await q2.waitForTimeout(700);
+  ok("bozuk bağlantı (açık sayfaya yapıştırma): uyarı var, metin değişmedi", (await q2.locator("[data-aktarim-bozuk]").count()) === 1 && (await q2.inputValue("[data-deneyim-metin]")) === INC);
   /* uzun Türkçe metin */
   const LONG = "Şişli'de ğüçlü İskender; ılık şöbiyet, çıtır pide ve köpüklü ayran. ".repeat(90).slice(0, 5900);
   const L2 = await linkOf(LONG);
