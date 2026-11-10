@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "İstanbul'da en son nerede yemek yedin?",
   description: "Gittiğin restoranı bul, deneyimini paylaş. Gidenler puanı yalnız gerçek deneyimlerden oluşur.",
   alternates: { canonical: "/nerede-yedin/" },
-  openGraph: { title: "İstanbul'da en son nerede yemek yedin?", description: "Gidenler'de deneyimini paylaş." },
+  openGraph: { title: "İstanbul'da en son nerede yemek yedin?", description: "Gidenler'de deneyimini paylaş.", siteName: "Gidenler", locale: "tr_TR", type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Gidenler — İstanbul'da en son nerede yemek yedin?" }] },
 };
 
 export default function NeredeYedinPage() {

@@ -258,6 +258,8 @@ export function WriteForm({
             : prevVisits.length
             ? <>Yeni ziyaretin ayrı bir deneyim olarak yayınlanır. Daha önce yazdığın ziyaretlerden ({prevVisits.map((v) => v.visitedOn.slice(0, 7)).join(", ")}) farklı bir ay seç; puanda yalnız en son ziyaretin sayılır.</>
             : <>Deneyimin Gidenler hesabınla yayınlanır; adın &ldquo;Ad S.&rdquo; biçiminde görünür. Ziyaretin <strong className="font-semibold">doğrulanmamış</strong> olarak işaretlenir.</>)
+            : isReal && account === "anon" && inApp
+              ? <>Yazmaya başlayabilirsin. Yayınlamak için sayfayı tarayıcında açıp Google ile giriş yapacaksın; yazdıkların <strong className="font-semibold">bağlantıyla birlikte taşınır</strong>.</>
             : isReal && account === "anon"
               ? <>Yayınlamak için Google ile giriş yap. Yazdıkların o sırada <strong className="font-semibold">bu cihazda taslak</strong> olarak korunur.</>
               : <>Yazdıkların <strong className="font-semibold">yalnız bu cihazda taslak</strong> olarak saklanır; kimse göremez, puana girmez.</>}

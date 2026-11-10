@@ -58,5 +58,11 @@ ok("form: uygulama içinde Google düğmesi yerine tarayıcıda aç", wf.include
 ok("form: # aktarımı okunduktan sonra adresten silinir", wf.includes("decodeHandoff(location.hash)") && wf.includes("history.replaceState(null, \"\", location.pathname + location.search)"));
 ok("Benim ve eşik kartı da uygulama içinde Google'a yönlendirmez", src("components/auth/AccountBox.tsx").includes("InAppNotice") && src("components/venue/ThresholdCard.tsx").includes("inAppBrowser(navigator.userAgent)"));
 
+ok("ana sayfa üst çağrısı marka mesajını kısaltmaz (İstanbul'da … en son … nerede yemek yedin?)", (() => { const h = src("app/page.tsx"); const i = h.indexOf("data-hero-deneyim"); const seg = h.slice(i, i + 900); return seg.includes("İstanbul&apos;da") && seg.includes("en son") && seg.includes("nerede yemek yedin?") && !seg.includes('sm:hidden">En son'); })());
+ok("kampanya sayfası paylaşım görselini açıkça verir", src("app/nerede-yedin/page.tsx").includes('url: "/opengraph-image"'));
+ok("Seçki paylaşım kartında görsel (kapak ya da site kartı)", src("app/seckisi/sayfa.tsx").includes('"/opengraph-image"'));
+ok("form: uygulama içindeyken üst metin Google girişi istemez", wf.includes('account === "anon" && inApp\n              ? <>Yazmaya başlayabilirsin.') || wf.includes("Yazmaya başlayabilirsin. Yayınlamak için sayfayı tarayıcında açıp"));
+ok("kampanya panosu hücreleri adım anahtarlı (data-adim)", src("app/yonetim/kampanya/page.tsx").includes("data-adim={c.k}"));
+
 console.log(`\ngece: ${pass} geçti, ${fail} kaldı`);
 process.exit(fail ? 1 : 0);

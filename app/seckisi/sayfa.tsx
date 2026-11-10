@@ -22,7 +22,7 @@ export function homeMetadata(lang: Lang): Metadata {
     title: UI.brand[lang],
     description: UI.intro[lang],
     alternates: { ...alternates(), canonical: hrefOf(lang) },
-    openGraph: { siteName: "Gidenler", locale: lang === "en" ? "en_US" : "tr_TR", type: "website" },
+    openGraph: { siteName: "Gidenler", locale: lang === "en" ? "en_US" : "tr_TR", type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630 }] },
     metadataBase: new URL(SITE),
     /* Yayında yazı yoksa ya da önizlemedeyse dizine eklenmez. */
     ...(review || !any || DEMO_VISIBLE ? { robots: { index: false, follow: false } } : {}),
@@ -48,7 +48,7 @@ export function articleMetadata(lang: Lang, slug: string): Metadata {
     title: `${a.title[lang]} · ${UI.brand[lang]}`,
     description: a.dek[lang],
     alternates: { ...alternates(a.slug), canonical: hrefOf(lang, a.slug) },
-    openGraph: { siteName: "Gidenler", locale: lang === "en" ? "en_US" : "tr_TR", type: "article" },
+    openGraph: { siteName: "Gidenler", locale: lang === "en" ? "en_US" : "tr_TR", type: "article", images: [{ url: a.cover.state === "var" ? a.cover.src : "/opengraph-image" }] },
     metadataBase: new URL(SITE),
     ...(a.publishedAt ? { other: { "article:published_time": a.publishedAt, ...(a.updatedAt ? { "article:modified_time": a.updatedAt } : {}) } } : {}),
     ...(a.status !== "yayinda" || reviewVisible() || DEMO_VISIBLE ? { robots: { index: false, follow: false } } : {}),
