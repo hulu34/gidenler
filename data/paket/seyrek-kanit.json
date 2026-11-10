@@ -1,0 +1,16 @@
+{
+ "_aciklama": "Seyrek ilçe paketi · elle bulunan EK kanıtlar (10 Kasım 2026). 'orta' = işletme bir sipariş platformunda aynı ad ve aynı mahalle/caddeyle listeleniyor (açık olduğunun dolaylı kanıtı; yalnız bağlantı tutulur, platformdaki puan/yorum/fotoğraf alınmaz). 'zincir' = işletmenin sitesinde şube/franchise var → inceleme listesine.",
+ "kanit": {
+  "devran-doner-sancaktepe": { "seviye": "orta", "not": "Sipariş platformlarında Atatürk Mah., Demokrasi Cad. adresiyle listeleniyor (kapı no platformda 34/A, OSM'de 42A)", "kaynak": ["https://www.yemeksepeti.com/devran-doner-sancaktepe-ataturk-mah-istanbul", "https://getir.com/yemek/restoran/devran-doner-ataturk-mah-sancaktepe-istanbul/"] },
+  "maris-kebap-lahmacun-gungoren": { "seviye": "orta", "not": "Sipariş platformunda Tozkoparan Mah., Davutpaşa metrosu yanında listeleniyor", "kaynak": ["https://www.yemeksepeti.com/restaurant/pfml/maris-kebap-and-lahmacun-salonu-toz-koparan"] },
+  "pacaci-yasar-esenyurt": { "seviye": "orta", "not": "Sipariş platformunda Turgut Özal Mah. 68. Sk. No:30 adresiyle (OSM ile birebir) listeleniyor", "kaynak": ["https://www.yemeksepeti.com/restaurant/hm9s/pacaci-yasar"] },
+  "nur-pasta-borek-cafe-kagithane": { "seviye": "orta", "not": "Sipariş platformunda Kağıthane, Hamidiye Mah. ile listeleniyor", "kaynak": ["https://www.migros.com.tr/yemek/nur-pasta-borek-cafe-kagithane-hamidiye-mah-st-308a0"] },
+  "tadinda-kucukcekmece": { "seviye": "orta", "not": "Sipariş platformunda Kemalpaşa Mah. ile 'Tadında Döner' adıyla listeleniyor", "kaynak": ["https://www.yemeksepeti.com/tadinda-doner-kucukcekmece-kemalpasa-mah-istanbul"] },
+  "etchef-gaziosmanpasa": { "seviye": "orta", "not": "Sipariş platformlarında Gaziosmanpaşa, Merkez Mah. ile 'EtChef Kasap & Steakhouse' adıyla listeleniyor", "kaynak": ["https://www.yemeksepeti.com/etchef-kasap-steakhouse-gaziosmanpasa-merkez-mah-istanbul", "https://www.migros.com.tr/yemek/et-chef-kasap-steakhouse-gaziosmanpasa-merkez-mah-st-19b5b"] }
+ },
+ "zincir": {
+  "sampi-pide-cekmekoy": "İşletmenin sitesinde 'Franchise' ve 'Şubelerimiz' bölümleri var — şubenin açık olduğu ayrıca doğrulanmalı",
+  "donerci-celal-usta-beylikduzu": "İşletmenin sitesinde 'Şubelerimiz' ve 'Franchise' bölümleri var — şubenin açık olduğu ayrıca doğrulanmalı",
+  "enbey-doner-basaksehir": "Sipariş platformlarında birden çok İstanbul şubesi var"
+ }
+}
