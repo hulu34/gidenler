@@ -4,11 +4,13 @@ import { getEntity } from "@/data/entities";
 import { feeFor, isPartner, mealOf, reservationCode, slotOpen, slotsOf } from "@/lib/reservation";
 import { rateStore } from "@/lib/ai/ratelimit";
 import { hashKey } from "@/lib/ai/privacy";
+import { forwardReservation, reservationResponse } from "@/lib/reservationDelivery";
 
 /* POST /api/rezervasyon — Gidenler üzerinden rezervasyon TALEBİ (yalnızca sunucu modunda; statik önizlemede yok).
    · Kişisel veri (ad, telefon) yalnızca işletmeye iletilmek için alınır; sunucu günlüğüne YAZILMAZ.
-   · İletim: RESERVATION_WEBHOOK_URL tanımlıysa oraya (işletme paneli / e-posta / tablo otomasyonu); yoksa talep reddedilmez,
-     "işletmeye iletilecek" durumunda kalır — iletim kanalı kurulana kadar yalnızca kayıt kodu üretilir.
+   · İletim: RESERVATION_WEBHOOK_URL (işletme paneli / e-posta / tablo otomasyonu). YALNIZ alıcı 2xx döndürürse başarıdır (201).
+     Kanal yoksa 503 reservation_unavailable, alıcı hata/zaman aşımı verirse 502 delivery_failed: kullanıcıya "iletildi"
+     denmez, kod üretilmez. Demo kayıtta talep hiç iletilmez ve yanıt açıkça "önizleme"dir.
    · Ücret işletmeye aittir; yanıt kullanıcıya ücret göstermez. */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -56,19 +58,13 @@ export async function POST(req: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  let forwarded = false;
-  const hook = process.env.RESERVATION_WEBHOOK_URL;
-  if (hook && !e.isDemo) {
-    try {
-      const res = await fetch(hook, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(record), signal: AbortSignal.timeout(8000) });
-      forwarded = res.ok;
-    } catch { forwarded = false; }
-  }
-  /* Günlükte kişisel veri yok: yalnızca kod, mekân, kişi sayısı. */
-  console.info(JSON.stringify({ evt: "reservation_request", code, venue: e.slug, party: r.party, meal: record.meal, forwarded, demo: !!e.isDemo }));
+  const NS = { "Cache-Control": "no-store" };
+  const log = (outcome: string) =>
+    /* Günlükte kişisel veri yok: yalnızca kod, mekân, kişi sayısı, sonuç. */
+    console.info(JSON.stringify({ evt: "reservation_request", code, venue: e.slug, party: r.party, meal: record.meal, outcome, demo: !!e.isDemo }));
 
-  return NextResponse.json(
-    { code, status: e.isDemo ? "önizleme" : "talep", forwarded },
-    { status: 201, headers: { "Cache-Control": "no-store" } },
-  );
+  const outcome = e.isDemo ? null : await forwardReservation(process.env.RESERVATION_WEBHOOK_URL, record);
+  log(outcome ?? "preview");
+  const out = reservationResponse(!!e.isDemo, outcome, code);
+  return NextResponse.json(out.body, { status: out.status, headers: NS });
 }
