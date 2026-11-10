@@ -88,5 +88,6 @@ ok("form: 6.000 üstü metin aktarmadan önce uyarılır", wf2.includes("tooLong
 ok("yerel taslak API sınırıyla aynı (5.000'de sessiz kesme yok)", readFileSync("lib/drafts.ts", "utf8").includes("d.body.slice(0, 6000)"));
 
 ok("gizlilik: veri sorumlusu bölümü ve # aktarımının gerçek davranışı (sunucuya gitmez, paylaşma uyarısı, seçim)", (() => { const g = readFileSync("app/gizlilik/page.tsx", "utf8"); return g.includes('["sorumlu", "Veri sorumlusu"') && g.includes("sunucuya gönderilmez") && g.includes("bu bağlantıyı başkasıyla paylaşma") && g.includes("hangisiyle devam edeceğini sen seçersin"); })());
+ok("form: sayfa açıkken yapıştırılan bağlantı (yalnız # değişimi) da işlenir", readFileSync("app/yaz/[slug]/WriteForm.tsx", "utf8").includes('window.addEventListener("hashchange", onHash)'));
 console.log(`\ngece: ${pass} geçti, ${fail} kaldı`);
 process.exit(fail ? 1 : 0);

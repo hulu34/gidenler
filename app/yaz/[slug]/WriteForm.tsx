@@ -144,6 +144,28 @@ export function WriteForm({
   };
   const chooseLocal = () => { setIncoming(null); history.replaceState(null, "", location.pathname + location.search); };
 
+  /* sayfa zaten açıkken bağlantı aynı sekmeye yapıştırılırsa yalnız # değişir (sayfa yeniden yüklenmez):
+     aynı kararı burada da uygula — uygula / seçtir / bozuk uyarısı. */
+  useEffect(() => {
+    const onHash = () => {
+      if (!months.length) return;
+      const local = loadDraft(entitySlug);
+      const plan = handoffPlan(location.hash, local, months[0][0]);
+      if (plan.kind === "none") return;
+      const h = plan.kind === "broken" ? null : decodeHandoff(location.hash);
+      if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
+      if (plan.kind === "choose" && local) { setIncoming({ from: plan.draft, local }); return; }
+      if (plan.kind === "broken") setHandoffBroken(true);
+      if (plan.kind === "apply") {
+        saveDraft(entitySlug, { ...plan.draft, returnIntent: plan.draft.returnIntent as ReturnIntent | null, relationship: plan.draft.relationship as CommercialRelationship });
+        applyDraft(plan.draft); setRestored(new Date().toISOString());
+      }
+      history.replaceState(null, "", location.pathname + location.search);
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  });
+
   /* Google girişi hata ile döndüyse (ör. süre aşımı): açıklama + taslağın korunduğu bilgisi; yeniden deneme düğmesi aynı. */
   useEffect(() => {
     const q = new URLSearchParams(location.search);
