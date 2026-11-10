@@ -23,6 +23,7 @@ export const isCode = (c: unknown): c is string => typeof c === "string" && CODE
 /** Akış adımları — sırası huni sırasıdır. */
 export const STEPS = [
   ["ziyaret", "Bölümü / bağlantıyı gördü"],
+  ["uygulamaici", "Uygulama içi tarayıcıda açtı"],
   ["arama", "Restoran aradı"],
   ["secim", "Restoran seçti"],
   ["form", "Deneyim formunu açtı"],
@@ -35,7 +36,7 @@ export const STEPS = [
 ] as const;
 export type Step = (typeof STEPS)[number][0];
 /** İstemcinin bildirebileceği adımlar. "tamam" ve "oneri" yalnız sunucuda, gerçek kayıt oluştuğunda yazılır. */
-export const CLIENT_STEPS: Step[] = ["ziyaret", "arama", "secim", "form", "giris", "gonderim", "hata", "bulunamadi"];
+export const CLIENT_STEPS: Step[] = ["ziyaret", "uygulamaici", "arama", "secim", "form", "giris", "gonderim", "hata", "bulunamadi"];
 
 export function campaignLink(code: string, origin = "https://www.gidenler.com") {
   return `${origin}${CAMPAIGN_PATH}?k=${encodeURIComponent(code)}`;

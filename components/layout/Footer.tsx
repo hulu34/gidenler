@@ -8,7 +8,7 @@ const ALL_COLS: Array<[string, Array<[string, string]>]> = [
   ["Gidenler", [["Keşfet", "/kesfet/"], ["Seçki", "/seckisi/"], ["Ara", "/ara/"], ["Sor Gidenler", "/sor/"], ["Nasıl çalışır", "/nasil-calisir/"]]],
   ["Topluluk", [["Uzmanlar", "/@denizyer/"], ["Listeler", "/liste/istanbulda-japon-mutfagi-2026/"], ["Benim Gidenler'im", "/benim/"], ["Kurallar", "/kurallar/"]]],
   ["İşletmeler", [["İşletmeler için", "/isletmeler/"], ["İşletme paneli", "/isletme/moda-lokantasi/"]]],
-  ["Güven", [["Nasıl çalışır", "/nasil-calisir/"], ["Kurallar", "/kurallar/"], ["Hukuki başvuru", "/hukuki-basvuru/"]]],
+  ["Güven", [["Nasıl çalışır", "/nasil-calisir/"], ["Kurallar", "/kurallar/"], ["Gizlilik ve KVKK", "/gizlilik/"], ["Kullanım koşulları", "/kullanim-kosullari/"], ["Hukuki başvuru", "/hukuki-basvuru/"]]],
 ];
 /* "Seçki" yalnız okunacak yazı varken (yayında; Preview'da kontrol bekleyenler de). */
 const SECKI = new Set(["/seckisi/"]);
@@ -43,9 +43,9 @@ export function Footer() {
               işletmeye veya kişiye ait değildir.
             </>
           ) : (
-            <>Mekânların kimlik bilgisi © OpenStreetMap katkıcıları (ODbL); henüz puanları yoktur, puan gerçek deneyimlerle oluşur.</>
+            <>Mekânların kimlik bilgisi © OpenStreetMap katkıcıları (ODbL). Mekân sayfalarındaki Google puanı Google&apos;a aittir ve 5 üzerindendir.</>
           )}{" "}
-          Gidenler puanı yalnızca Gidenler&apos;e
+          Gidenler puanı 10 üzerindendir ve yalnızca Gidenler&apos;e
           yazılan deneyimlerden hesaplanır — dış kaynak puanlarının ortalaması değildir.
           Hekim ve avukat gibi meslek mevzuatı kısıtlı kategorilerde platform puan üretmez,
           özet cümlesi kurmaz ve reklam göstermez.

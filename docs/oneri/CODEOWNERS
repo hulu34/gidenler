@@ -1,0 +1,25 @@
+# ÖNERİ — etkin değil. Etkinleştirmek için .github/CODEOWNERS olarak kopyalanır ve kural setinde
+# "Require review from Code Owners" açılır. Ajanlar ayrı GitHub kimliğine geçmeden ajanları ayıramaz (docs/YONETISIM.md §4).
+
+# Google günlük puan sistemi (sorumlu: Codex; onay: depo sahibi)
+/.github/workflows/gpuan-*.yml      @hulu34
+/lib/gpuan/                         @hulu34
+/scripts/gpuan*                     @hulu34
+/app/api/admin/google-puan/         @hulu34
+/app/api/cron/                      @hulu34
+/app/api/google/                    @hulu34
+
+# Panel ve rezervasyon güvenliği (sorumlu: Codex)
+/app/api/rezervasyon/               @hulu34
+/lib/reservationDelivery.ts         @hulu34
+/lib/business/                      @hulu34
+/components/reservation/            @hulu34
+/app/isletme/                       @hulu34
+
+# Veritabanı geçişleri ve Production yapılandırması (yalnız depo sahibi)
+/drizzle/                           @hulu34
+/lib/db/schema.ts                   @hulu34
+/lib/db/migrations.generated.ts     @hulu34
+/lib/auth.ts                        @hulu34
+/vercel.json                        @hulu34
+/.github/                           @hulu34

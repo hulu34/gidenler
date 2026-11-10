@@ -38,7 +38,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ g
             {rows.map((o) => (
               <tr key={o.code} className="border-b border-line" data-kampanya-satir={o.code}>
                 <td className="py-2 pr-3"><span className="font-semibold">{o.label}</span> <span className="text-ink-3">· {o.code}</span></td>
-                {cols.map((c) => <td key={c.k} className="px-2 py-2 text-right">{o.steps[c.k] ?? 0}</td>)}
+                {cols.map((c) => <td key={c.k} data-adim={c.k} className="px-2 py-2 text-right">{o.steps[c.k] ?? 0}</td>)}
                 <td className="px-2 py-2 text-right font-semibold">{pct(o.steps.tamam, o.steps.ziyaret)}</td>
                 <td className="px-2 py-2 text-right">{pct(o.steps.tamam, o.steps.form)}</td>
               </tr>
@@ -47,7 +47,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ g
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-[12px] text-ink-3">Yarım kalan akış = formu açıp kayda ulaşmayanlar ({Math.max(0, (r.total.form ?? 0) - (r.total.tamam ?? 0))}). Başarısız kayıt denemeleri &ldquo;Kayıt başarısız&rdquo; sütununda. Oranlar günlük tekil sayılardan hesaplanır: aynı kişi bir gün bağlantıyı görüp başka gün kaydederse oran %100&apos;ü geçebilir; bu bir hata değildir, kişiler günler arasında bilinçli olarak eşleştirilmez.</p>
+      <p className="mt-2 text-[12px] text-ink-3">Yarım kalan akış = formu açıp kayda ulaşmayanlar ({Math.max(0, (r.total.form ?? 0) - (r.total.tamam ?? 0))}). Başarısız kayıt denemeleri &ldquo;Kayıt başarısız&rdquo; sütununda. Oranlar günlük tekil sayılardan hesaplanır: aynı kişi bir gün bağlantıyı görüp başka gün kaydederse oran %100&apos;ü geçebilir; bu bir hata değildir, kişiler günler arasında bilinçli olarak eşleştirilmez. &ldquo;Uygulama içi tarayıcıda açtı&rdquo;: Instagram gibi uygulamaların kendi tarayıcısında açanlar; bunlar giriş için sayfayı Safari/Chrome&apos;da açınca tarayıcı imzası değiştiğinden aynı kişi ikinci kez &ldquo;ziyaret&rdquo; sayılabilir (oranlar bu nedenle temkinli okunmalı).</p>
 
       <h2 className="mt-12 text-[18px] font-extrabold">İçerik üreticisi bağlantıları</h2>
       <p className="mt-1 max-w-[80ch] text-[13px] text-ink-3">Her üreticiye kendi bağlantısını ver. Bağlantı doğrudan deneyim akışını açar. Kod–kişi eşleşmesini depoda değil, kendi notunda tut. Önerilen metin: &ldquo;{CAMPAIGN_MESSAGE}&rdquo;</p>

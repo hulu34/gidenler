@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { clearAccountStates } from "@/lib/store";
 import { signInWithGoogle } from "@/lib/community/signin";
+import { InAppNotice, useInApp } from "@/components/deneyim/InAppNotice";
 import { authErrorMessage } from "@/lib/community/authErrors";
 import { isAccountEntity, readPending, replayPending, signOutFlow, writePending } from "@/lib/community/sync";
 
@@ -40,6 +41,7 @@ export function AccountBox() {
     return () => { alive = false; };
   }, []);
 
+  const inApp = useInApp();
   async function signIn() {
     setBusy(true); setErr(null);
     if (!(await signInWithGoogle("/benim/"))) { setErr("Giriş başlatılamadı."); setBusy(false); }
@@ -73,9 +75,10 @@ export function AccountBox() {
       ) : (
         <>
           <span className="text-[14px] text-ink-2">Kaydettiklerin, Gitmek istediklerin ve Gittim listen hesabında saklansın; her cihazda seninle olsun.</span>
+          {inApp ? <div className="w-full"><InAppNotice app={inApp} context="giris" /></div> : (
           <button type="button" onClick={signIn} disabled={busy} className="h-11 rounded-[3px] bg-ink px-5 text-[14px] font-semibold text-paper hover:bg-accent">
             {busy ? "Yönlendiriliyor…" : "Google ile giriş yap"}
-          </button>
+          </button>)}
         </>
       )}
       {err && <p role="alert" className="w-full text-[12.5px] text-neg-ink">{err}</p>}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { captureCampaign, track } from "@/lib/kampanya/client";
+import { InAppNotice, useInApp } from "./InAppNotice";
 
 /* "İSTANBUL'DA EN SON NEREDE YEMEK YEDİN?" — deneyim paylaşımının giriş kapısı.
    Gerçek restoran dizini (/api/ara, sunucu tarafı arama) → seçim → /yaz/<slug>/ (mevcut deneyim formu ve API'si).
@@ -24,6 +25,7 @@ export function SonYemekArama({ variant, autoFocus = false }: { variant: "home" 
   const box = useRef<HTMLDivElement>(null);
   const seen = useRef(false);
   const listId = useId();
+  const inApp = useInApp();
 
   /* kaynak: kampanya bağlantısı (?k=) ya da ana sayfa bölümü; bölüm ekrana girince "ziyaret" sayılır */
   useEffect(() => {
@@ -73,6 +75,7 @@ export function SonYemekArama({ variant, autoFocus = false }: { variant: "home" 
 
   return (
     <div ref={box} className="w-full min-w-0" data-son-yemek={variant}>
+      {inApp && <div className="mb-3"><InAppNotice app={inApp} context="arama" /></div>}
       <div role="combobox" aria-expanded={open} aria-owns={listId} aria-haspopup="listbox"
         className="flex h-14 items-center gap-2 rounded-[14px] border-2 border-ink bg-paper pl-4 pr-2 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.55)] focus-within:shadow-[0_0_0_4px_var(--accent-soft)]">
         <svg aria-hidden viewBox="0 0 20 20" className="h-5 w-5 shrink-0 text-ink-3"><path fill="none" stroke="currentColor" strokeWidth="2" d="M8.5 3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zM13 13l4.5 4.5" /></svg>

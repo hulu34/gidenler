@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { useAccountStatus } from "@/lib/community/accountState";
 import { signInWithGoogle } from "@/lib/community/signin";
+import { inAppBrowser } from "@/lib/inapp";
 
 /* ──────────────────────────────────────────────────────────────────────────
    DENEME EŞİĞİN (gerçek mekân) — demodaki kart ve mobil şeridin görünümü; veri hesapta (/api/me/esik).
@@ -102,6 +103,8 @@ function useWatch(v: ThresholdVenue) {
   const save = async (t: number) => {
     if (account === "in") return call("POST", { threshold: t });
     writePending({ slug: v.slug, threshold: t }); setDraft(t);
+    const ia = inAppBrowser(navigator.userAgent);
+    if (ia) { setMsg(`Google, ${ia.name} içindeki tarayıcıda girişe izin vermiyor. Sağ üstteki menüden sayfayı tarayıcında aç; seçimin orada yeniden yapılabilir.`); return false; }
     if (!(await signInWithGoogle(`/mekan/${v.slug}/#esik`))) setMsg("Giriş başlatılamadı; seçimin bu cihazda bekliyor. Yeniden dene.");
     return false;
   };

@@ -24,9 +24,12 @@ export const metadata: Metadata = {
     default: "Gidenler — gidenler bilir.",
     template: "%s · Gidenler",
   },
-  description:
-    "Gidenler, dağınık deneyim sinyallerini karara dönüştürür. Restoran, kafe, otel, film ve daha fazlası için gerçek deneyimlerden üretilmiş puanlar.",
+  description: DEMO_VISIBLE
+    ? "Gidenler, dağınık deneyim sinyallerini karara dönüştürür. Restoran, kafe, otel, film ve daha fazlası için gerçek deneyimlerden üretilmiş puanlar."
+    : "İstanbul'da nerede yemek yenir? Gerçek deneyimler, Google puanı ve Gidenler puanıyla restoran ve kafe keşfi. Gidenler bilir.",
   applicationName: "Gidenler",
+  /* paylaşım kartı (WhatsApp, Instagram DM, X): görsel app/opengraph-image.tsx */
+  openGraph: { siteName: "Gidenler", locale: "tr_TR", type: "website" },
   /* Yatırımcı demosu arama motorlarına tamamen kapalı. */
   ...(DEMO_VISIBLE ? { robots: { index: false, follow: false, nocache: true } } : {}),
 };
