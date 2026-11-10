@@ -103,6 +103,52 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
   ok("normal Safari: uyarı yok, Google ile giriş düğmesi var", (await p.locator("[data-uygulama-ici]").count()) === 0 && (await p.locator("button:has-text('Google ile giriş yap')").count()) === 1);
   await c.close();
 }
+/* ── A2) Taslak çakışması: aktarım hedefteki FARKLI taslağın üzerine yazmaz ── */
+{
+  const SL2 = "karakoy-lokantasi-beyoglu";
+  const LOCAL = "Safari'de daha önce yazdığım taslak: öğle menüsü iyiydi, tatlıyı beğenmedik; yine de tekrar gideriz.";
+  const INC = "Instagram'da yazdığım YENİ taslak: akşam gittik, mezeler ve ızgara çok iyiydi; şöbiyet hafifti, servis özenliydi.";
+  const s = await ctx({ ua: SAFARI }); const q = await s.newPage();
+  await q.goto(`${B}/yaz/${SL2}/`, { waitUntil: "load" }); await q.waitForSelector("[data-deneyim-metin]");
+  await q.fill("[data-deneyim-metin]", LOCAL); await q.click("[data-genel-puan] [aria-label='Genel puan: 6']"); await q.waitForTimeout(1200);
+  const localDraft = () => q.evaluate((sl) => JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}")[sl]?.body ?? null, SL2);
+  ok("Safari'de yerel taslak kaydedildi", (await localDraft()) === LOCAL);
+  const ig = await ctx({ ua: IG }); const p = await ig.newPage();
+  const linkOf = async (text) => {
+    await p.goto(`${B}/yaz/${SL2}/`, { waitUntil: "load" }); await p.waitForSelector("[data-deneyim-metin]");
+    await p.fill("[data-deneyim-metin]", text); await p.click("[data-genel-puan] [aria-label='Genel puan: 9']"); await p.waitForTimeout(900);
+    return `${B}/yaz/${SL2}/${await p.evaluate(() => location.hash)}`;
+  };
+  const L1 = await linkOf(INC);
+  await q.goto(L1, { waitUntil: "load" }); await q.waitForSelector("[data-taslak-secim]", { timeout: 8000 }).catch(() => {});
+  ok("iki farklı taslak → seçim ekranı", (await q.locator("[data-taslak-secim]").count()) === 1);
+  ok("seçim beklerken yerel taslak korunuyor (depoda ve formda)", (await localDraft()) === LOCAL && (await q.inputValue("[data-deneyim-metin]")) === LOCAL);
+  ok("seçim beklerken yayınla kapalı", (await q.locator("button:has-text('Google ile giriş yap')").isDisabled().catch(() => true)));
+  await q.waitForTimeout(1500);
+  ok("seçim beklerken otomatik kayıt üzerine yazmadı", (await localDraft()) === LOCAL);
+  await shot(q, "taslak-secim-390", true);
+  await q.click("[data-taslak-mevcut]"); await q.waitForTimeout(500);
+  ok("iptal (bu cihazdakiyle devam): yerel taslak aynen kaldı, # silindi", (await localDraft()) === LOCAL && (await q.inputValue("[data-deneyim-metin]")) === LOCAL && (await q.evaluate(() => location.hash)) === "" && (await q.locator("[data-taslak-secim]").count()) === 0);
+  await q.reload({ waitUntil: "load" }); await q.waitForSelector("[data-deneyim-metin]"); await q.waitForTimeout(500);
+  ok("yeniden yüklemede seçim tekrar sorulmuyor, yerel taslak geliyor", (await q.locator("[data-taslak-secim]").count()) === 0 && (await q.inputValue("[data-deneyim-metin]")) === LOCAL);
+  await q.goto(L1, { waitUntil: "load" }); await q.waitForSelector("[data-taslak-secim]");
+  await q.click("[data-taslak-gelen]"); await q.waitForTimeout(800);
+  ok("getirdiğimle devam: metin ve puan gelen taslaktan, depoya yazıldı, # silindi", (await q.inputValue("[data-deneyim-metin]")) === INC && (await localDraft()) === INC && (await q.locator("[data-genel-puan] [aria-label='Genel puan: 9'][aria-checked='true']").count()) === 1 && (await q.evaluate(() => location.hash)) === "");
+  /* bozuk bağlantı */
+  await q.goto(`${B}/yaz/${SL2}/${L1.split("#")[1] ? "#" + L1.split("#")[1].slice(0, 30) : "#aktar=%%"}`, { waitUntil: "load" }); await q.waitForSelector("[data-deneyim-metin]"); await q.waitForTimeout(600);
+  ok("bozuk/yarım bağlantı: uyarı var, yerel taslak değişmedi, # silindi", (await q.locator("[data-aktarim-bozuk]").count()) === 1 && (await localDraft()) === INC && (await q.evaluate(() => location.hash)) === "");
+  /* uzun Türkçe metin */
+  const LONG = "Şişli'de ğüçlü İskender; ılık şöbiyet, çıtır pide ve köpüklü ayran. ".repeat(90).slice(0, 5900);
+  const L2 = await linkOf(LONG);
+  ok("5.900 karakterlik Türkçe metinde uyarı yok", (await p.locator("[data-uygulama-ici-uzun]").count()) === 0);
+  const s2 = await ctx({ ua: SAFARI }); const r = await s2.newPage();
+  await r.goto(L2, { waitUntil: "load" }); await r.waitForSelector("[data-deneyim-metin]"); await r.waitForTimeout(700);
+  ok("5.900 karakterlik Türkçe metin yeni tarayıcıda eksiksiz", (await r.inputValue("[data-deneyim-metin]")) === LONG, `adres ${L2.length} karakter`);
+  await p.fill("[data-deneyim-metin]", LONG + " ek ".repeat(80)); await p.waitForTimeout(900);
+  ok("6.000 üstü metin: aktarmadan önce uyarı görünüyor", (await p.locator("[data-uygulama-ici-uzun]").count()) === 1);
+  await shot(p, "uzun-metin-uyari-390");
+  await s2.close(); await ig.close(); await s.close();
+}
 const rep = await (await fetch(`${B}/yonetim/kampanya/`, { headers: HB })).text();
 ok("kampanya panosunda 'Uygulama içi tarayıcıda açtı' sütunu", rep.includes("Uygulama içi tarayıcıda açtı"));
 const cell = (code, step) => Number(rep.match(new RegExp(`data-kampanya-satir="${code}"[\\s\\S]*?data-adim="${step}"[^>]*>(\\d+)<`))?.[1] ?? -1);

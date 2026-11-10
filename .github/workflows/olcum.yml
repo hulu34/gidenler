@@ -552,7 +552,7 @@ jobs:
     if: contains(github.event.head_commit.message, '[gece]')
     runs-on: ubuntu-latest
     timeout-minutes: 40
-    env: { HOST: gidenler-85mtin71m-hulu34.vercel.app }   # gece/10-kasim 28a5876 (Preview, izole Neon)
+    env: { HOST: gidenler-kd0c9bhq0-hulu34.vercel.app }   # gece/10-kasim 426885b (Preview, izole Neon)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -568,6 +568,21 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v4
         with: { name: gece-sifreli, path: gece.tgz.cms, retention-days: 14, if-no-files-found: ignore }
+  gece-kod:
+    if: contains(github.event.head_commit.message, '[gece]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: gece/10-kasim }
+      - run: test "$(git rev-parse --short HEAD)" = "426885b"
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx tsc --noEmit
+      - run: for t in gecetest ilkkullanicitest dbtest gpuantest seotest seckisitest anasayfa8test anasayfatest aramatest sortest panel-rezervasyon-test; do echo "== $t"; npx tsx scripts/$t.ts | tail -2 || exit 1; done
+      - run: npx next build
+        env: { NEXT_TELEMETRY_DISABLED: "1" }
   ilk-kullanici:
     if: contains(github.event.head_commit.message, '[ilk-kullanici]')
     runs-on: ubuntu-latest
