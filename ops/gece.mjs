@@ -124,12 +124,14 @@ for (const [w, h, m] of [[375, 812, true], [390, 844, true], [768, 1024, true], 
     const lowres = [...document.querySelectorAll("main img")].filter((i) => vis(i) && i.complete && i.naturalWidth > 0 && i.naturalWidth < i.getBoundingClientRect().width * devicePixelRatio * 0.75).map((i) => `${i.naturalWidth}<${Math.round(i.getBoundingClientRect().width * devicePixelRatio)}`);
     const broken = [...document.querySelectorAll("main img")].filter((i) => i.complete && i.naturalWidth === 0 && vis(i)).length;
     const order = ["[data-ana-hero]", "#h-eniyiler", "[data-ana-pano]", "[data-ana-son-yemek]", "[data-ana-kesif]", "[data-ana-sor]", "#h-explore"].map((s) => { const e = document.querySelector(s); return e ? Math.round(e.getBoundingClientRect().top + scrollY) : -1; });
+    const navFits = (() => { const e = [...document.querySelectorAll("nav[aria-label='Bölümler'] a")].pop(); return !e || getComputedStyle(e.parentElement).display === "none" || e.getBoundingClientRect().right <= innerWidth - 4; })();
     const ctaInFirst = (() => { const e = document.querySelector("[data-hero-deneyim]"); return e ? e.getBoundingClientRect().bottom <= innerHeight : false; })();
-    return { overflow, clipped, small, lowres, broken, order, ctaInFirst, height: document.documentElement.scrollHeight };
+    return { overflow, clipped, small, lowres, broken, order, ctaInFirst, navFits, height: document.documentElement.scrollHeight };
   });
   homeIssues[w] = r;
   ok(`ana ${w}: yatay taşma yok, kesik başlık yok, kırık görsel yok`, !r.overflow && r.clipped.length === 0 && r.broken === 0, `kesik=${r.clipped.length} küçük=${r.small.length} düşükçöz=${r.lowres.length}`);
   ok(`ana ${w}: deneyim çağrısı ilk ekranda`, r.ctaInFirst);
+  ok(`ana ${w}: üst menüde 'Deneyim yaz' ekranda, kesik değil`, r.navFits);
   await c.close();
 }
 
