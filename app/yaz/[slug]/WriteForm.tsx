@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { PhotoPicker, PhotoResults, usePhotoPicks } from "@/components/write/PhotoPicker";
 import { markVisited, setEntityState, useUserData } from "@/lib/store";
 import { useAccountStatus } from "@/lib/community/accountState";
@@ -83,9 +83,13 @@ export function WriteForm({
   /* YAYIMLANMIŞ deneyim düzenlenirken gelen taslak: düzenleme formuna yazılmaz, burada bekler (kopyala / ayrı ziyaret / bırak) */
   const [held, setHeld] = useState<DraftLike | null>(null);
   const [copiedHeld, setCopiedHeld] = useState(false);
-  /* bu sayfada bağlantıyla gelen son taslak: düzenleme kipi (sunucudaki deneyim) sonradan anlaşılırsa held'e taşınır */
-  const arrived = useRef<DraftLike | null>(null);
-  const arrivedHash = useRef("");
+  /* Bağlantıyla gelen taslak, oturum ve bu mekândaki kendi deneyimi ANLAŞILANA kadar bekler: forma da yerel taslağa da
+     yazılmaz, # adreste kalır. Girişliyse /api/me/reviews yanıtı beklenir; gecikir ya da hata verirse taslak beklemeye
+     devam eder (kopyala / yeniden dene). waitHash: bekleyen # parçası. */
+  const [waitHash, setWaitHash] = useState<string | null>(null);
+  const [mineState, setMineState] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [mineTry, setMineTry] = useState(0);
+  const decided = !isReal || account === "off" || account === "anon" || (account === "in" && mineState === "done");
 
   useEffect(() => {
     const ms = visitMonths();
@@ -97,25 +101,12 @@ export function WriteForm({
     const plan = handoffPlan(location.hash, local, ms[0][0]);
     const h = plan.kind === "none" || plan.kind === "broken" ? null : decodeHandoff(location.hash);
     if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
-    if (plan.kind === "apply" || plan.kind === "choose") { arrived.current = plan.draft; arrivedHash.current = location.hash; }
     if (plan.kind === "broken") { setHandoffBroken(true); history.replaceState(null, "", location.pathname + location.search); }
     if (plan.kind === "code") history.replaceState(null, "", location.pathname + location.search);
-    if (plan.kind === "apply") {
-      if (persist(plan.draft)) history.replaceState(null, "", location.pathname + location.search);
-      else {
-        /* kayıt reddedildi: metni doğrudan forma koy (kaybolmasın), # adreste kalsın (yeniden yüklemede yine gelir) */
-        const d = plan.draft;
-        setBody(d.body); setRatings(d.ratings ?? {}); setRet((d.returnIntent as ReturnIntent) ?? null);
-        setRel((d.relationship as CommercialRelationship) ?? "none"); setOverall(d.overall ?? null);
-        setMonth(ms.some(([k]) => k === d.month) ? d.month : ms[0][0]);
-        if (d.ratings && Object.keys(d.ratings).length) setShowDims(true);
-        setUnsaved(true);
-        const c = flowCode(); setCode(c); track("form", c);
-        return;
-      }
-    }
-    if (plan.kind === "choose" && local) setIncoming({ from: plan.draft, local });
-    const d = loadDraft(entitySlug);
+    /* taslaklı bağlantı: karar (uygula / seçtir / beklet) oturum ve deneyim durumu anlaşılınca verilir; o zamana kadar
+       form bu cihazdaki taslakla (varsa) açılır, gelen içerik hiçbir yere yazılmaz */
+    if (plan.kind === "apply" || plan.kind === "choose") setWaitHash(location.hash);
+    const d = local;
     if (d) {
       setBody(d.body); setRatings(d.ratings ?? {}); setRet(d.returnIntent ?? null); setRel(d.relationship ?? "none"); setOverall(d.overall ?? null);
       setMonth(ms.some(([k]) => k === d.month) ? d.month : ms[0][0]);
@@ -128,6 +119,16 @@ export function WriteForm({
     }
     const c = flowCode(); setCode(c); track("form", c);
   }, [entitySlug, entityName, district]);
+
+  /* karar anı: oturum/deneyim anlaşıldı → yayımlanmış deneyim varsa beklet (hold), yoksa formdaki güncel metinle karşılaştır */
+  useEffect(() => {
+    if (!waitHash || !decided || !months.length) return;
+    setWaitHash(null);
+    const plan = handoffPlan(waitHash, formLocal(), months[0][0], !!mine);
+    if (plan.kind === "hold") { setHeld(plan.draft); setCopiedHeld(false); return; }
+    if (plan.kind === "choose") { const l = formLocal(); if (l) setIncoming({ from: plan.draft, local: l }); return; }
+    if (plan.kind === "apply") takeOver(plan.draft);
+  });
 
   useEffect(() => {
     if (!touched || mine || sent || incoming) return;
@@ -143,11 +144,17 @@ export function WriteForm({
   const handoff = inApp && isReal && account === "anon" && (body.trim() || overall !== null)
     ? encodeHandoff({ b: body, m: month, o: overall, r: ratings, ri: ret, rel, k: code }) : "";
   useEffect(() => {
-    if (!inApp || !isReal || account !== "anon" || incoming) return;
+    if (!inApp || !isReal || account !== "anon" || incoming || waitHash) return;
     const id = setTimeout(() => history.replaceState(null, "", location.pathname + location.search + handoff), 400);
     return () => clearTimeout(id);
-  }, [inApp, isReal, account, handoff, incoming]);
+  }, [inApp, isReal, account, handoff, incoming, waitHash]);
 
+  /** Karşılaştırma FORMDAKİ güncel metinle: otomatik kayıt (700 ms) henüz çalışmamış olsa bile yazılan kaybolmaz. */
+  function formLocal(): (DraftLike & { savedAt: string }) | null {
+    const stored = loadDraft(entitySlug);
+    const onForm: DraftLike | null = !mine && (body.trim() || overall !== null) ? { body, month, ratings, overall, returnIntent: ret, relationship: rel } : null;
+    return onForm ? { ...onForm, savedAt: stored && sameDraft(stored, onForm) ? stored.savedAt : "" } : stored;
+  }
   /** Taslağı bu cihaza kaydet; tarayıcı reddederse false. */
   function persist(d: DraftLike): boolean {
     return saveDraft(entitySlug, { ...d, returnIntent: d.returnIntent as ReturnIntent | null, relationship: d.relationship as CommercialRelationship });
@@ -197,12 +204,13 @@ export function WriteForm({
     try { await navigator.clipboard.writeText(held.body); setCopiedHeld(true); }
     catch { window.prompt("Metni kopyala:", held.body); }
   };
-  /* bırak: gelen taslak bırakılır; baştan açılışta bu cihaza yazılmış AYNI kopyası da silinir (farklı bir taslağa dokunulmaz) */
-  const dropHeld = () => {
-    const st = loadDraft(entitySlug);
-    if (held && st && sameDraft(st, held)) deleteDraft(entitySlug);
-    setHeld(null); arrived.current = null; arrivedHash.current = "";
-    history.replaceState(null, "", location.pathname + location.search);
+  /* bırak: gelen taslak bırakılır (hiçbir yere yazılmamıştı), # silinir; düzenleme formu olduğu gibi kalır */
+  const dropHeld = () => { setHeld(null); history.replaceState(null, "", location.pathname + location.search); };
+  const waitDraft = waitHash ? (() => { const p = handoffPlan(waitHash, null, months[0]?.[0] ?? ""); return p.kind === "apply" ? p.draft : null; })() : null;
+  const copyWaiting = async () => {
+    if (!waitDraft) return;
+    try { await navigator.clipboard.writeText(waitDraft.body); setCopiedHeld(true); }
+    catch { window.prompt("Metni kopyala:", waitDraft.body); }
   };
 
   /* sayfa zaten açıkken bağlantı aynı sekmeye yapıştırılırsa yalnız # değişir (sayfa yeniden yüklenmez):
@@ -210,17 +218,15 @@ export function WriteForm({
   useEffect(() => {
     const onHash = () => {
       if (!months.length) return;
-      /* karşılaştırma FORMDAKİ güncel metinle: otomatik kayıt (700 ms) henüz çalışmamış olsa bile yazılan kaybolmaz */
-      const stored = loadDraft(entitySlug);
-      const onForm: DraftLike | null = !mine && (body.trim() || overall !== null) ? { body, month, ratings, overall, returnIntent: ret, relationship: rel } : null;
-      const local = onForm ? { ...onForm, savedAt: stored && sameDraft(stored, onForm) ? stored.savedAt : "" } : stored;
+      const local = formLocal();
       /* yayımlanmış deneyim düzenleniyorsa gelen taslak forma UYGULANMAZ (hold); # adreste kalır, yenilemede kaybolmaz */
       const plan = handoffPlan(location.hash, local, months[0][0], !!mine);
       if (plan.kind === "none") return;
       const h = plan.kind === "broken" ? null : decodeHandoff(location.hash);
       if (h?.k) captureCampaign(`?k=${h.k}`, "dogrudan");
       if (plan.kind === "hold") { setHeld(plan.draft); setCopiedHeld(false); return; }
-      if (plan.kind === "apply" || plan.kind === "choose") { arrived.current = plan.draft; arrivedHash.current = location.hash; }
+      /* oturum ya da deneyim sorgusu henüz sonuçlanmadıysa: karar sonuca kadar bekler */
+      if ((plan.kind === "apply" || plan.kind === "choose") && !decided) { setWaitHash(location.hash); return; }
       if (plan.kind === "choose" && local) { setIncoming({ from: plan.draft, local }); return; }
       if (plan.kind === "broken") setHandoffBroken(true);
       if (plan.kind === "apply") { takeOver(plan.draft); return; }
@@ -243,24 +249,20 @@ export function WriteForm({
   useEffect(() => {
     if (!canPublish) return;
     let alive = true;
+    setMineState("loading");
     fetch(`${BASE}/api/me/reviews/?slug=${encodeURIComponent(entitySlug)}`, { cache: "no-store", credentials: "same-origin" })
-      .then((r) => (r.ok ? r.json() : null)).then((j: { reviews?: Mine[] } | null) => {
+      .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); }).then((j: { reviews?: Mine[] } | null) => {
+        if (!alive) return;
+        setMineState("done");
         const r = j?.reviews?.[0];
-        if (!alive || !r) return;
+        if (!r) return;
         setPrevVisits(j?.reviews ?? []);
-        /* bağlantıyla taslak geldiyse ve kullanıcının bu mekânda yayımlanmış deneyimi varsa: taslak düzenleme formuna
-           geçmez (sunucudaki sürüm yüklenir), seçim/kayıt uyarısı kapanır, gelen metin ayrı bir kutuda bekler */
-        if (arrived.current) {
-          setHeld(arrived.current); setIncoming(null); setUnsaved(false);
-          /* # baştan açılışta silinmiş olabilir: karar verilene kadar geri yazılır (yenilemede kutu yine gelir) */
-          if (arrivedHash.current && !location.hash) history.replaceState(null, "", location.pathname + location.search + arrivedHash.current);
-        }
         setMine(r); setBody(r.body); setRatings(r.ratings ?? {}); setOverall(r.overall > 0 ? r.overall : null);
         setRet((r.returnIntent as ReturnIntent) ?? null); setRel((r.disclosure as CommercialRelationship) ?? "none");
         const m = r.visitedOn.slice(0, 7); setMonths((ms) => (ms.some(([k]) => k === m) ? ms : [...ms, [m, m]])); setMonth(m); setRestored(null);
-      }).catch(() => null);
+      }).catch(() => { if (alive) setMineState("error"); });
     return () => { alive = false; };
-  }, [canPublish, entitySlug]);
+  }, [canPublish, entitySlug, mineTry]);
 
   const payload = () => ({ body, visitMonth: month, overall: regulated ? null : overall, ratings: regulated ? {} : ratings, returnIntent: ret, disclosure: rel });
   const edit = <T,>(set: (v: T) => void) => (v: T) => { set(v); setTouched(true); };
@@ -277,7 +279,7 @@ export function WriteForm({
     if (!r || !r.ok) track("hata", code);
     if (!r) { keepDraft(); void fetch(`${BASE}/api/ops/event/`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: "review:send_failed" }) }).catch(() => {}); setError("Bağlantı sorunu: deneyimin gönderilemedi. Yazdıkların bu cihazda taslak olarak saklandı; yeniden dene."); return; }
     if (r.ok) {
-      if (!held) deleteDraft(entitySlug); /* bekleyen gelen taslak varsa bu cihazdaki kopyası silinmez */
+      deleteDraft(entitySlug);
       if (entityId) setEntityState(entityId, "visited", "write");
       setSent(mine ? "updated" : j?.status === "pending" ? "pending" : "published"); window.scrollTo({ top: 0 });
       /* deneyim önce kaydedilir; fotoğraf hatası deneyimi geri almaz, sonuç ekranda tek tek yazılır */
@@ -296,13 +298,13 @@ export function WriteForm({
     setBusy(true); setError(null);
     const r = await fetch(`${BASE}/api/reviews/${mine.id}/`, { method: "DELETE", credentials: "same-origin" }).catch(() => null);
     setBusy(false);
-    if (r?.ok) { if (!held) deleteDraft(entitySlug); setSent("deleted"); window.scrollTo({ top: 0 }); return; }
+    if (r?.ok) { deleteDraft(entitySlug); setSent("deleted"); window.scrollTo({ top: 0 }); return; }
     const j = r ? await r.json().catch(() => null) as { message?: string } | null : null;
     setError(j?.message ?? "Silinemedi (bağlantı sorunu); yeniden dene.");
   }
 
   const rated = Object.keys(ratings).length;
-  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy && !incoming && (!photos.picks.length || photos.rights);
+  const canSend = body.trim().length >= 40 && ret !== null && (regulated || overall !== null) && !busy && !incoming && !waitHash && (!photos.picks.length || photos.rights);
   const userData = useUserData();
   const quick = entityId ? userData.reactions.find((r) => r.entityId === entityId) : undefined;
   const steps: Array<[string, boolean]> = [
@@ -388,6 +390,16 @@ export function WriteForm({
             <div className="flex flex-wrap gap-2">
               <button type="button" data-taslak-gelen onClick={chooseIncoming} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">Getirdiğimle devam et</button>
               <button type="button" data-taslak-mevcut onClick={chooseLocal} className="inline-flex min-h-11 items-center rounded-[10px] border-2 border-ink bg-paper px-4 text-[13.5px] font-bold">Bu cihazdakiyle devam et</button>
+            </div>
+          </div>
+        )}
+        {waitHash && waitDraft && (
+          <div role="status" aria-live="polite" data-aktarim-bekliyor={mineState === "error" ? "hata" : "kontrol"} className="flex flex-col gap-2 rounded-[14px] border-2 border-ink p-4">
+            <p className="text-[14px] font-bold">{mineState === "error" ? "Bu mekândaki deneyimlerin kontrol edilemedi." : "Bu mekân için yayımlanmış bir deneyimin olup olmadığına bakılıyor…"}</p>
+            <p className="text-[12.5px] text-ink-2">Bağlantıyla getirdiğin taslak ({waitDraft.body.trim().length} karakter) bu sırada <strong className="font-semibold">hiçbir yere yazılmadı</strong>; adres çubuğunda bekliyor, sayfayı yenilesen de kaybolmaz.{mineState === "error" ? " Bağlantını kontrol edip yeniden dene ya da metni kopyala." : ""}</p>
+            <div className="flex flex-wrap gap-2">
+              {mineState === "error" && <button type="button" data-aktarim-kontrol-yeniden onClick={() => setMineTry((n) => n + 1)} className="inline-flex min-h-11 items-center rounded-[10px] bg-ink px-4 text-[13.5px] font-bold text-paper">Yeniden dene</button>}
+              <button type="button" data-aktarim-bekleyen-kopyala onClick={copyWaiting} className="inline-flex min-h-11 items-center rounded-[10px] border-2 border-ink bg-paper px-4 text-[13.5px] font-bold">{copiedHeld ? "Metin kopyalandı" : "Metni kopyala"}</button>
             </div>
           </div>
         )}
