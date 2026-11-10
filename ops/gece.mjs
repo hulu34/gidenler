@@ -248,6 +248,11 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
   ok("yeni sekme + düzenleme kipi: formda sunucudaki metin, gelen taslak kutuda", (await q2.locator("[data-aktarim-duzenleme]").count()) === 1 && (await q2.inputValue("[data-deneyim-metin]")) === TXT && (await q2.locator("[data-taslak-secim]").count()) === 0);
   await q2.reload({ waitUntil: "load" }); await q2.waitForSelector("[data-aktarim-duzenleme]", { timeout: 15000 }).catch(() => {});
   ok("yeniden yükleme: gelen taslak kaybolmadı, form yine sunucudaki metin", (await q2.locator("[data-aktarim-duzenleme]").count()) === 1 && (await q2.inputValue("[data-deneyim-metin]")) === TXT);
+  const st2 = () => q2.evaluate((sl) => JSON.parse(localStorage.getItem("gidenler.taslak.v1") ?? "{}")[sl]?.body ?? null, SL);
+  await q2.click("[data-aktarim-birak]").catch(() => {}); await q2.waitForTimeout(400);
+  ok("yeni sekmede 'Bırak': kutu kapandı, # silindi, bu cihaza yazılan aynı kopya da silindi", (await q2.locator("[data-aktarim-duzenleme]").count()) === 0 && (await q2.evaluate(() => location.hash)) === "" && (await st2()) === null);
+  await q2.reload({ waitUntil: "load" }); await q2.waitForSelector("[data-yeni-ziyaret]", { timeout: 15000 }).catch(() => {}); await q2.waitForTimeout(500);
+  ok("'Bırak' sonrası yenileme: kutu yok, form sunucudaki metin", (await q2.locator("[data-aktarim-duzenleme]").count()) === 0 && (await q2.inputValue("[data-deneyim-metin]")) === TXT);
   const pub1 = ((await (await fetch(`${B}/api/me/reviews/?slug=${SL}`, { headers: auth })).json().catch(() => ({}))).reviews ?? []);
   ok("A4 sonunda yayımlanmış deneyim tek ve değişmemiş", pub1.length === 1 && pub1[0].body === TXT && writes.length === 0, `istek=${writes.length}`);
   await s.close();
