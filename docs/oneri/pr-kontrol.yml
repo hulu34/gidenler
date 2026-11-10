@@ -1,0 +1,37 @@
+# ÖNERİ — etkin değil. Etkinleştirmek için .github/workflows/pr-kontrol.yml olarak kopyalanır ve kural setinde
+# zorunlu durum denetimi yapılır. Production dalına giden her PR'da çalışır.
+name: pr-kontrol
+on:
+  pull_request:
+    branches: [feature/investor-v1, main]
+permissions: { contents: read, pull-requests: read }
+jobs:
+  kontrol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npx tsc --noEmit
+      - run: npx tsx scripts/dbtest.ts && npx tsx scripts/gpuantest.ts && npx tsx scripts/ilkkullanicitest.ts && npx tsx scripts/seotest.ts && npx tsx scripts/gecetest.ts
+      - run: npm run build
+        env: { NEXT_TELEMETRY_DISABLED: "1" }
+  kritik-yol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Kritik yol bekçisi
+        env:
+          ETIKET: ${{ contains(github.event.pull_request.labels.*.name, 'alan-sahibi-onayi') }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          degisen=$(git diff --name-only "$BASE"...HEAD)
+          kritik=$(echo "$degisen" | grep -E '^(\.github/|lib/gpuan/|scripts/gpuan|app/api/admin/google-puan/|app/api/cron/|app/api/google/|app/api/rezervasyon/|lib/reservationDelivery\.ts|lib/business/|components/reservation/|app/isletme/|drizzle/|lib/db/schema\.ts|lib/auth\.ts|vercel\.json)' || true)
+          if [ -n "$kritik" ] && [ "$ETIKET" != "true" ]; then
+            echo "Kritik yollar değişti; 'alan-sahibi-onayi' etiketi gerekli:"; echo "$kritik"; exit 1
+          fi
+          echo "kritik yol: ${kritik:-yok}"
