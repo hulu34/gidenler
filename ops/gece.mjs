@@ -105,6 +105,10 @@ const TXT = "Instagram'dan geldim: kuru fasulye ve pilav çok iyiydi, servis hı
 }
 const rep = await (await fetch(`${B}/yonetim/kampanya/`, { headers: HB })).text();
 ok("kampanya panosunda 'Uygulama içi tarayıcıda açtı' sütunu", rep.includes("Uygulama içi tarayıcıda açtı"));
+const cell = (code, step) => Number(rep.match(new RegExp(`data-kampanya-satir="${code}"[\\s\\S]*?data-adim="${step}"[^>]*>(\\d+)<`))?.[1] ?? -1);
+ok("ic05: uygulama içi açılış ve SUNUCUDA kaydedilen deneyim ayrı ayrı sayıldı", cell("ic05", "uygulamaici") >= 1 && cell("ic05", "tamam") >= 1, `uygulamaici=${cell("ic05", "uygulamaici")} tamam=${cell("ic05", "tamam")} ziyaret=${cell("ic05", "ziyaret")}`);
+const prof = await (await fetch(`${B}/mekan/${SL}/`, { headers: HB })).text();
+ok("Instagram'dan başlayan deneyim restoranın profilinde görünüyor", prof.includes("Instagram'dan geldim") || prof.includes("Instagram&#x27;dan geldim"));
 
 /* ── B) Ana sayfa genişlikleri ─────────────────────────────────────── */
 const homeIssues = {};
