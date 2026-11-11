@@ -1,0 +1,84 @@
+{
+ "dalga": 18,
+ "A": 34,
+ "sinif": {
+  "A-konumsuz": 20,
+  "A": 14
+ },
+ "osmKaydi": 14,
+ "isletmeKaydi": 20,
+ "uygunAday": 814,
+ "secilen": 250,
+ "onEleme": {
+  "kanitsiz": 903,
+  "spamPark": 476,
+  "kafeBar": 84,
+  "acilmadi": 2042
+ },
+ "inceleme": {
+  "906": 9,
+  "B": 197,
+  "C": 10
+ },
+ "incelemeNeden": {
+  "adres resmî kaynakta doğrulanmadı": 68,
+  "kapı numarası resmî kaynakta doğrulanmadı": 57,
+  "tür belirsiz": 6,
+  "resmî site başka işletmenin": 1,
+  "kaynaklı tür yok": 84,
+  "çiğ köfte": 2,
+  "resmî site yalnız http": 4,
+  "906 havuzundaki kayıtla ortak": 9,
+  "yemek kursu; restoran değil": 1,
+  "tür yalnız Overture kategorisinde": 51,
+  "resmî site catering firması": 1,
+  "resmî site bağlantısı başka işletmenin sayfası": 1,
+  "zincir": 3,
+  "ilçe resmî sitede geçmiyor": 3,
+  "kafe/brasserie markası": 1,
+  "ad ev ürünleri dükkânını gösteriyor; restoran olduğu belirsiz": 1,
+  "resmî site \"Polonezköy Et Mangal\"; tür": 1,
+  "Overture adı ile resmî sitedeki ad": 1
+ },
+ "turKaynagi": {
+  "resmî site": 33,
+  "OSM": 1
+ },
+ "ilce": {
+  "Şişli": 3,
+  "Sancaktepe": 1,
+  "Maltepe": 2,
+  "Silivri": 1,
+  "Beyoğlu": 8,
+  "Beşiktaş": 2,
+  "Fatih": 3,
+  "Kadıköy": 3,
+  "Üsküdar": 1,
+  "Sarıyer": 4,
+  "Beykoz": 1,
+  "Bakırköy": 2,
+  "Pendik": 1,
+  "Ümraniye": 1,
+  "Ataşehir": 1
+ },
+ "tur": {
+  "Kebapçı / Ocakbaşı": 3,
+  "Mantıcı": 1,
+  "Meyhane": 2,
+  "Steakhouse": 2,
+  "İtalyan": 4,
+  "Pizza": 2,
+  "Sushi / Japon": 1,
+  "Türk mutfağı": 3,
+  "Balık restoranı": 1,
+  "Dönerci": 6,
+  "Karadeniz mutfağı": 1,
+  "Burger": 1,
+  "Ciğerci": 1,
+  "Kahvaltı": 3,
+  "Pideci": 1,
+  "Asya mutfağı": 2
+ },
+ "zincirSube": 5,
+ "v906Eslesen": 0
+}
