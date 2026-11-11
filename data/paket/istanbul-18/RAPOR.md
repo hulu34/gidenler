@@ -16,7 +16,6 @@ Kontrol: 2026-11-11 · Dal: `paket/istanbul-18-overture` (taban: paket 17) · Ka
 - Cecconi's
 - Pera Thai
 - Molto Bene Galata
-- Meşhur Arnavut Ciğercisi
 - Babacan Et Lokantası (1978)
 - Kolcuoğlu Bomonti
 
