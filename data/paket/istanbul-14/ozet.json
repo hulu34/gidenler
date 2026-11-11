@@ -1,0 +1,22 @@
+{
+ "dalga": 14,
+ "A": 7,
+ "osmKaydi": 7,
+ "isletmeKaydi": 0,
+ "elenen": 0,
+ "turKanitDuzeyi": {
+  "marka": 1,
+  "şube": 6
+ },
+ "ilce": {
+  "Ataşehir": 2,
+  "Kadıköy": 4,
+  "Pendik": 1
+ },
+ "tur": {
+  "Karadeniz mutfağı": 1,
+  "Hatay mutfağı": 1,
+  "Pideci": 1,
+  "Kebapçı / Ocakbaşı": 4
+ }
+}
