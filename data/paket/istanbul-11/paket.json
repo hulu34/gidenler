@@ -1,0 +1,206 @@
+{
+ "_aciklama": "İstanbul ikonik restoran paketi (dalga 11): Michelin dışı, adı bilinen restoranlardan katalogda olmayan ve kanıtı tam olanlar. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json (yayın paketinde). Konum: OSM (© OpenStreetMap katkıcıları, ODbL). Kanıt resmî sitelerden ölçüldü; sayfa içeriği saklanmadı. Google verisi kullanılmadı.",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "haci-abdullah-beyoglu",
+   "ref": "isletme/haci-abdullah-beyoglu",
+   "tip": "isletme_kaydi",
+   "ad": "Hacı Abdullah",
+   "ilce": "Beyoğlu",
+   "adres": "Atıf Yılmaz Caddesi No:9/A, Beyoğlu",
+   "koordinat": [
+    41.035429,
+    28.980202
+   ],
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site haciabdullah.com.tr (iletişim sayfasında ad + sokak + kapı no + telefon)",
+    "konum: OSM adres noktası Atıf Yılmaz Caddesi 9 — node/1915390157 (adres düzeyi)",
+    "tür: resmî site \"Osmanlı Saray Mutfağı\" (şube düzeyi kanıt)",
+    "OSM'de aynı adlı restoran noktası (node/4545698295) Beşiktaş'ta, resmî adresten 4,7 km uzakta; resmî site yalnız Beyoğlu adresini veriyor. O nokta kullanılmadı."
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/1915390157",
+    "https://haciabdullah.com.tr/iletisim/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "matbah-fatih",
+   "ref": "node/5113620603",
+   "tip": "osm_kaydi",
+   "ad": "Matbah",
+   "ilce": "Fatih",
+   "adres": "Caferiye Sokak No:6/1, Fatih",
+   "koordinat": [
+    41.009301,
+    28.979203
+   ],
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site matbahrestaurant.com (ana sayfada ad + sokak + kapı no + telefon; OSM adres noktası way/530509374 Caferiye Sokağı 6, 7 m)",
+    "konum: OSM restoran kaydı node/5113620603",
+    "tür: resmî site \"royal Ottoman cuisine\" (şube düzeyi kanıt)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5113620603",
+    "https://www.matbahrestaurant.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "lacivert-beykoz",
+   "ref": "node/1768294237",
+   "tip": "osm_kaydi",
+   "ad": "Lacivert",
+   "ilce": "Beykoz",
+   "adres": "Körfez Caddesi No:57/A, Anadolu Hisarı Mahallesi, Beykoz",
+   "koordinat": [
+    41.091311,
+    29.06667
+   ],
+   "tur": "Akdeniz mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site lacivertrestaurant.com (ana sayfada ad + sokak + kapı no + telefon; OSM ters konum Körfez Caddesi)",
+    "konum: OSM restoran kaydı node/1768294237",
+    "tür: resmî site \"Akdeniz mutfağının en seçkin lezzetleri · Deniz Ürünleri\" (şube düzeyi kanıt)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/1768294237",
+    "https://www.lacivertrestaurant.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "develi-samatya-fatih",
+   "ref": "node/11793844469",
+   "tip": "osm_kaydi",
+   "ad": "Develi Samatya",
+   "ilce": "Fatih",
+   "adres": "Gümüşyüzük Sokak No:5/A, Koca Mustafa Paşa Mahallesi, Fatih",
+   "koordinat": [
+    40.999992,
+    28.931937
+   ],
+   "tur": "Antep mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "Develi",
+   "sube": "Samatya",
+   "kanit": [
+    "resmî şube sayfası develi1912.com (resmî şube sayfasında ad + sokak + kapı no + telefon; OSM kaydında Gümüş Yüksük Sokağı 5)",
+    "konum: OSM restoran kaydı node/11793844469",
+    "tür: resmî site \"Antep ve Türk mutfağının ... temsilcisi Develi Samatya\" (şube düzeyi kanıt)",
+    "OSM'de aynı restoran için ikinci nokta var (node/5088190875 \"Develi\", 10 m, aynı telefon); kullanılmadı."
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11793844469",
+    "https://www.develi1912.com/content/restaurant2/samatya.html"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "develi-florya-bakirkoy",
+   "ref": "node/4514250191",
+   "tip": "osm_kaydi",
+   "ad": "Develi Florya",
+   "ilce": "Bakırköy",
+   "adres": "Yeşilköy Halkalı Caddesi No:85, Yeşilköy Mahallesi, Bakırköy",
+   "koordinat": [
+    40.962399,
+    28.807198
+   ],
+   "tur": "Antep mutfağı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "Develi",
+   "sube": "Florya",
+   "kanit": [
+    "resmî şube sayfası develi1912.com (resmî şube sayfasında ad + sokak + kapı no + telefon; OSM ters konum Yeşilköy Halkalı Caddesi)",
+    "konum: OSM restoran kaydı node/4514250191",
+    "tür: resmî site \"marka: Antep ve Türk mutfağı, kebapçılık (develi1912.com)\" (marka düzeyi kanıt, tek konseptli markada bu şubeye uygulandı)",
+    "Marka tek konseptli (Antep/kebap restoranı); Develi Balık ve Flora by Develi ayrı konseptler olduğu için bu pakete alınmadı."
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4514250191",
+    "https://www.develi1912.com/content/restaurant2/florya.html"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hayvore-beyoglu",
+   "ref": "node/14309116117",
+   "tip": "osm_kaydi",
+   "ad": "Hayvore",
+   "ilce": "Beyoğlu",
+   "adres": "Turnacıbaşı Sokak No:4, Beyoğlu",
+   "koordinat": [
+    41.033924,
+    28.978808
+   ],
+   "tur": "Karadeniz mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site hayvore.com.tr (iletişim sayfasında ad + sokak + kapı no + telefon; OSM kaydında aynı telefon)",
+    "konum: OSM restoran kaydı node/14309116117",
+    "tür: resmî site \"2009'dan bu güne Beyoğlu'nda Karadeniz lezzetleri\" (şube düzeyi kanıt)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14309116117",
+    "https://www.hayvore.com.tr/iletisim/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hatay-medeniyetler-sofrasi-taksim-beyoglu",
+   "ref": "node/2380564071",
+   "tip": "osm_kaydi",
+   "ad": "Hatay Medeniyetler Sofrası Taksim",
+   "ilce": "Beyoğlu",
+   "adres": "İstiklal Caddesi No:39, Katip Çelebi Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.035732,
+    28.983531
+   ],
+   "tur": "Hatay mutfağı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "Hatay Medeniyetler Sofrası",
+   "sube": "Taksim",
+   "kanit": [
+    "resmî şube sayfası hataymedeniyetlersofrasi.com.tr (resmî şube sayfasında Taksim şubesi ad + sokak + kapı no + telefon)",
+    "konum: OSM restoran kaydı node/2380564071",
+    "tür: resmî site \"marka: Hatay Mutfağı Bizim İşimiz\" (marka düzeyi kanıt, tek konseptli markada bu şubeye uygulandı)",
+    "Markanın iki şubesi var (Taksim, Etiler); ikisi de aynı konsept. OSM'de Taksim için ikinci nokta (node/5710046238, 20 m) kullanılmadı. Fatih Horhor noktası resmî listede yok, alınmadı."
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/2380564071",
+    "https://www.hataymedeniyetlersofrasi.com.tr/tr/iletisim-bilgileri"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  }
+ ]
+}

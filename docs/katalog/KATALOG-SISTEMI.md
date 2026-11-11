@@ -102,6 +102,11 @@ C nedenleri:
 - gösterilen tür addan türemiş ve kaynakla çelişiyor.
 
 ## Mutfak kuralları
+- **Tür kanıtının düzeyi ayrı yazılır** (paket 11+, `turKanitDuzeyi`):
+  - **şube:** türü o şubenin ya da tek konumun kendi sayfası söylüyor.
+  - **marka:** markanın resmî sitesindeki genel tanım. Yalnız tek konseptli markada ve resmî şube listesindeki şubeye uygulanır.
+  - Yetersiz kanıtlı kayıt A'ya yükseltilmez.
+  - Resmî sitesine istenmeyen reklam metinleri sızdırılmış ya da alan adı park edilmiş işletmede site, faaliyet kanıtı sayılmaz.
 - **Etiket yalnız kaynaktan gelir.** Mekânın adı etiket üretmez.
   - Örnek: Japon Erdal'ın adında "Japon" geçer ama kaynakta türk + pide yazar. Japon etiketi verilmez; çelişki rapora not düşülür.
 - **Fine dining, popüler, ödüllü gibi nitelikler OSM'den hiç üretilmez.** Yalnız elle ve yazılı kaynakla verilir.
