@@ -1,3 +1,4 @@
 [
-{"ref":"isletme/japon-erdal-beyoglu","slug":"japon-erdal-beyoglu","name":"Japon Erdal","categoryId":"cat.restaurant","kind":"Pideci","district":"Beyoğlu","address":"Dibek Sokağı No:15, Galata, Beyoğlu","website":"https://japonerdal.com/","cuisine":["turkish"],"importedAt":"2026-10-29","sourceKind":"official_site","sourceUrl":"https://japonerdal.com/"}
+{"ref":"isletme/japon-erdal-beyoglu","slug":"japon-erdal-beyoglu","name":"Japon Erdal","categoryId":"cat.restaurant","kind":"Pideci","district":"Beyoğlu","address":"Dibek Sokağı No:15, Galata, Beyoğlu","website":"https://japonerdal.com/","cuisine":["turkish"],"importedAt":"2026-10-29","sourceKind":"official_site","sourceUrl":"https://japonerdal.com/"},
+{"ref":"isletme/menemen-besiktas","slug":"menemen-besiktas","name":"Menemen","categoryId":"cat.restaurant","kind":"Kahvaltıcı","district":"Beşiktaş","address":"Şair Veysi Sokağı No:31/A, Sinanpaşa, Beşiktaş","phone":"+90 532 676 31 96","website":"https://www.instagram.com/menemenbreakfast/","cuisine":["turkish"],"importedAt":"2026-11-11","sourceKind":"business","sourceUrl":"https://www.instagram.com/menemenbreakfast/"}
 ]
