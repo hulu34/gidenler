@@ -13,6 +13,11 @@ Aday bulmaktan Codex'e teslime kadar 10 adım. Hepsi yeniden çalıştırılabil
   - Yalnız ölçüm yapılır: sayfada ad, sokak, mahalle/ilçe ve telefon geçiyor mu.
   - Sayfa içeriği saklanmaz.
   - Sosyal medya ve sipariş platformları resmî site sayılmaz.
+- **MICHELIN Rehberi (resmî rehber sayfası, paket 10+):**
+  - Yalnız ayrım (yıldız / Bib Gourmand / seçki), mutfak kategorisi ve rehber bağlantısı tutulur (`data/katalog/michelin-istanbul-2026.json`).
+  - Rehber metni, fotoğrafı ve koordinatı kopyalanmaz. Koordinat yine yalnız OSM'den gelir.
+  - Faaliyet kanıtı sayılır; tek başına A yapmaz. Ayrıca resmî sitede ad + telefon/sokak ya da OSM kaydında tam adres aranır.
+  - Yıldızsız restoran yıldızlı gösterilmez; ayrım test edilir (`restoranpakettest`).
 - **Google:**
   - Google içeriği bu sistemde hiç kullanılmaz: puan, yorum, fotoğraf, adres yok.
   - Ücretli API çağrısı yok.
