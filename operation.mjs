@@ -69,6 +69,8 @@ assert.ok(top.length > 0, "Top 10 is missing");
 const topHash = createHash("sha256").update(JSON.stringify(top)).digest("hex");
 console.log(JSON.stringify({ phase: plan.phase, existing: integrity.present, checkedAbsent: checked, duplicates: 0, topItems: top.length, topHash, googleShown: google.site?.shown }));
 if (plan.phase === "seed") {
+  assert.equal(topHash, plan.baselineTop, "Top 10 differs from the production baseline");
+  assert.equal(google.site?.shown, plan.baselineGoogle, "Google visibility differs from the production baseline");
   const result = await admin(dbPath, { target: "production", confirm: "EVET", action: "seed", slugs });
   console.log(JSON.stringify({ inserted: result.inserted, updated: result.updated, total: result.total, integrity: result.integrity }));
   assert.equal(result.inserted, 117);
