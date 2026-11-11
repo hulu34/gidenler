@@ -1,12 +1,12 @@
 {
  "dalga": 16,
- "A": 77,
+ "A": 68,
  "sinif": {
-  "A": 25,
-  "A-konumsuz": 52
+  "A": 19,
+  "A-konumsuz": 49
  },
- "osmKaydi": 25,
- "isletmeKaydi": 52,
+ "osmKaydi": 19,
+ "isletmeKaydi": 49,
  "uygunAday": 775,
  "secilen": 200,
  "onEleme": {
@@ -17,22 +17,23 @@
  },
  "inceleme": {
   "906": 6,
-  "B": 111,
+  "B": 120,
   "C": 6
  },
  "incelemeNeden": {
-  "kapı numarası resmî kaynakta doğrulanmadı": 39,
+  "tür yalnız Overture kategorisinde": 42,
+  "kapı numarası resmî kaynakta doğrulanmadı": 31,
   "kaynaklı tür yok": 22,
-  "ilçe resmî sitede geçmiyor": 7,
   "906 havuzundaki kayıtla ortak": 6,
   "işletme türü belirsiz": 2,
+  "tür": 10,
   "tür belirsiz": 9,
   "çiğ köfte": 2,
-  "resmî site yalnız http": 3,
   "tür çelişkili": 3,
   "resmî site gıda firması": 1,
   "çok konseptli grubun canlı müzik şubesi; bu şubenin türü belirsiz": 1,
   "adres resmî kaynakta doğrulanmadı": 34,
+  "ilçe resmî sitede geçmiyor": 4,
   "resmî site \"Olive Hill Village\"; restoran mı yaşam alanı mı belirsiz": 1,
   "otel kafesi; resmî site otel sitesi, restoran kimliği yok": 1,
   "balıkçı/su ürünleri satışı; restoran olduğu doğrulanmadı": 1,
@@ -41,52 +42,52 @@
   "sitede eğlence mekânı tanımı": 1
  },
  "turKaynagi": {
-  "Overture kategorisi": 34,
-  "OSM": 6,
-  "resmî site": 37
+  "resmî site": 62,
+  "OSM": 6
  },
  "ilce": {
   "Esenyurt": 1,
   "Sultangazi": 2,
   "Gaziosmanpaşa": 1,
   "Büyükçekmece": 2,
-  "Bakırköy": 14,
-  "Bahçelievler": 5,
+  "Bakırköy": 13,
+  "Bahçelievler": 6,
   "Küçükçekmece": 4,
   "Avcılar": 1,
   "Beylikdüzü": 4,
   "Bağcılar": 1,
   "Eyüpsultan": 1,
   "Başakşehir": 3,
-  "Fatih": 11,
-  "Beşiktaş": 6,
+  "Beşiktaş": 5,
+  "Fatih": 7,
   "Kadıköy": 5,
   "Silivri": 1,
   "Üsküdar": 3,
   "Çatalca": 2,
-  "Kartal": 1,
   "Güngören": 1,
-  "Kağıthane": 2,
   "Şişli": 2,
   "Maltepe": 1,
-  "Beyoğlu": 2,
-  "Sancaktepe": 1
+  "Sancaktepe": 1,
+  "Kağıthane": 1
  },
  "tur": {
-  "Türk mutfağı": 34,
-  "Balık restoranı": 12,
+  "Türk mutfağı": 15,
+  "Balık restoranı": 11,
   "Pideci": 1,
   "Meyhane": 2,
-  "Dönerci": 1,
-  "Kebapçı / Ocakbaşı": 11,
+  "Kebapçı / Ocakbaşı": 13,
+  "Tantuni": 1,
+  "Dönerci": 3,
+  "Köfteci": 3,
+  "Mantıcı": 2,
   "Steakhouse": 3,
   "Çorbacı": 2,
   "Pizza": 6,
+  "Kahvaltı": 2,
   "Burger": 2,
-  "Kahvaltı": 1,
-  "Mantıcı": 1,
-  "Lokanta": 1
+  "Lokanta": 1,
+  "Karadeniz mutfağı": 1
  },
- "zincirSube": 6,
+ "zincirSube": 5,
  "v906Eslesen": 0
 }

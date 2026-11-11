@@ -8,7 +8,7 @@
    "site": "https://www.imparatorchef.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site imparatorchef.com: ad + telefon + sokak (https://www.imparatorchef.com/)",
@@ -48,11 +48,15 @@
    "gersId": "c0011140-c83d-4ba4-bcc6-6f367b8f7ada",
    "ad": "Gunesli Iskembe",
    "ilce": "Bağcılar",
+   "site": "http://www.gunesliiskembe.com/",
    "sinif": "B",
    "eksik": [
-    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
-   "neden": []
+   "neden": [],
+   "kimlik": "resmî site gunesliiskembe.com: ad + telefon + sokak + kapı no (http://www.gunesliiskembe.com/)",
+   "osm": "node/5667687538",
+   "puan": 12
   },
   {
    "gersId": "494faac6-6177-4184-a591-a35f966c668b",
@@ -70,7 +74,7 @@
    "site": "https://www.iskelerestaurant.com.tr/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "tür yalnız Overture kategorisinde (\"seafood_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site iskelerestaurant.com.tr: ad + telefon + sokak (https://www.iskelerestaurant.com.tr/)",
@@ -84,7 +88,8 @@
    "site": "http://www.gorkemkilissofrasi.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site gorkemkilissofrasi.com: ad + telefon + sokak + kapı no (http://www.gorkemkilissofrasi.com/)",
@@ -118,6 +123,18 @@
    "puan": 11
   },
   {
+   "gersId": "900ffc07-0559-4f8b-a88a-98b2aa29327c",
+   "ad": "The Food Clan",
+   "ilce": "Bakırköy",
+   "site": "https://www.thefoodclantr.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî sitede tür tanımı yok (menüde pizza ve burger karışık); yalnız Overture kategorisi"
+   ],
+   "neden": [],
+   "elle": true
+  },
+  {
    "gersId": "a832f160-5f32-4aec-af7e-b56daa60cf8e",
    "ad": "Akdoğan Pasta & Kebap Restoran",
    "ilce": "Küçükçekmece",
@@ -147,11 +164,15 @@
    "gersId": "dc82c45f-55c7-4797-a93d-200c8b7d07d4",
    "ad": "Halil İbrahim Sofrası",
    "ilce": "Bağcılar",
+   "site": "http://www.halilibrahimsofrasi.com/",
    "sinif": "B",
    "eksik": [
-    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
-   "neden": []
+   "neden": [],
+   "kimlik": "resmî site halilibrahimsofrasi.com: ad + telefon + sokak + kapı no (http://www.halilibrahimsofrasi.com/iletisim)",
+   "osm": null,
+   "puan": 11
   },
   {
    "gersId": "5bf3d9be-f36a-4d8a-b4ba-f92b56d879e5",
@@ -212,7 +233,8 @@
    "site": "https://www.golkoyrestaurant.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"barbecue_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site golkoyrestaurant.com: ad + telefon + sokak (https://www.golkoyrestaurant.com/)",
@@ -226,7 +248,7 @@
    "site": "http://www.atakoysarksofrasi.com.tr/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site atakoysarksofrasi.com.tr: ad + telefon + sokak (http://www.atakoysarksofrasi.com.tr/)",
@@ -240,7 +262,8 @@
    "site": "https://trabzonsofrasi.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site trabzonsofrasi.com: ad + telefon + sokak (https://trabzonsofrasi.com/)",
@@ -278,27 +301,14 @@
    ]
   },
   {
-   "gersId": "e8016f9c-7b46-4690-9bc1-7fc98d151239",
-   "ad": "Ayvaz Döner İskender",
-   "ilce": "Bahçelievler",
-   "site": "https://ayvazdoner.com/",
-   "sinif": "B",
-   "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site ayvazdoner.com: ad + telefon + sokak (https://ayvazdoner.com/)",
-   "osm": null,
-   "puan": 10
-  },
-  {
    "gersId": "52fdab0a-c2c3-431b-b9c5-f615657f2706",
    "ad": "Pirpirim Gaziantep Mutfağı",
    "ilce": "Zeytinburnu",
    "site": "https://www.pirpirim.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site pirpirim.com: ad + telefon + sokak (https://www.pirpirim.com/)",
@@ -312,7 +322,8 @@
    "site": "https://aliogluiskender.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site aliogluiskender.com: ad + telefon (https://aliogluiskender.com/)",
@@ -375,21 +386,29 @@
    "gersId": "dd4a5673-5ca8-488a-8bb7-5407ee6b463d",
    "ad": "Mis Kofte",
    "ilce": "Arnavutköy",
+   "site": "http://www.miskofte.com/",
    "sinif": "B",
    "eksik": [
-    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
-   "neden": []
+   "neden": [],
+   "kimlik": "resmî site miskofte.com: ad + telefon + sokak + kapı no (http://www.miskofte.com/)",
+   "osm": null,
+   "puan": 10
   },
   {
    "gersId": "593d4143-2f40-48a7-96d5-1fb9aa757fbc",
    "ad": "Makriköy",
    "ilce": "Bakırköy",
+   "site": "http://www.makrikoy.com.tr/",
    "sinif": "B",
    "eksik": [
-    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
-   "neden": []
+   "neden": [],
+   "kimlik": "resmî site makrikoy.com.tr: ad + telefon + sokak + kapı no (http://www.makrikoy.com.tr/)",
+   "osm": null,
+   "puan": 10
   },
   {
    "gersId": "e2e14cd0-172d-40be-8479-e7466e71f56e",
@@ -398,7 +417,8 @@
    "site": "http://www.batigarden.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"barbecue_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site batigarden.com: ad + telefon (http://www.batigarden.com/)",
@@ -426,7 +446,7 @@
    "site": "https://enyakinnerde.com/ticket/detay/trabzon-yore-evi",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site enyakinnerde.com: ad + sokak (https://enyakinnerde.com/ticket/detay/trabzon-yore-evi)",
@@ -454,7 +474,8 @@
    "site": "http://okkesdemir.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site okkesdemir.com: ad + telefon + sokak (http://okkesdemir.com/iletisim.html)",
@@ -496,7 +517,8 @@
    "site": "http://www.guvecustasi.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site guvecustasi.com: ad + telefon + sokak (http://www.guvecustasi.com/)",
@@ -510,7 +532,6 @@
    "site": "https://www.hazkebap.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı",
     "tür belirsiz (sitede birden çok tür: Kebapçı / Ocakbaşı, Pideci)"
    ],
    "neden": [],
@@ -525,7 +546,8 @@
    "site": "https://www.antiklounge.com.tr/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"seafood_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site antiklounge.com.tr: ad + telefon + sokak (https://www.antiklounge.com.tr/)",
@@ -560,6 +582,18 @@
    "kimlik": "resmî site anadolusarkrestorant.com: ad + telefon (https://www.anadolusarkrestorant.com/)",
    "osm": null,
    "puan": 9
+  },
+  {
+   "gersId": "7a466301-a080-4f33-bd42-1f8ba0902267",
+   "ad": "House of Medusa Restaurant",
+   "ilce": "Fatih",
+   "site": "https://medusarestaurant.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî sitede tür tanımı yok; yalnız Overture kategorisi"
+   ],
+   "neden": [],
+   "elle": true
   },
   {
    "gersId": "4246144b-774c-4cd5-b23d-56906b2f3ab7",
@@ -683,7 +717,8 @@
    "site": "https://www.babadostu.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site babadostu.com: ad + telefon (https://www.babadostu.com/subelerimiz/)",
@@ -697,7 +732,8 @@
    "site": "http://www.cinaraltimangalbasi.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"barbecue_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site cinaraltimangalbasi.com: ad + telefon (http://www.cinaraltimangalbasi.com/)",
@@ -753,7 +789,7 @@
    "site": "https://kisiklifasulyecisi.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site kisiklifasulyecisi.com: ad + telefon + sokak (https://kisiklifasulyecisi.com/)",
@@ -820,7 +856,8 @@
    "site": "https://www.papuli.com.tr/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site papuli.com.tr: ad + telefon (https://www.papuli.com.tr/)",
@@ -834,7 +871,8 @@
    "site": "https://bonet.com.tr/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site bonet.com.tr: ad + telefon (https://bonet.com.tr/)",
@@ -880,6 +918,18 @@
    "kimlik": "resmî site yurtkonserve.com.tr: ad + telefon + sokak + kapı no (https://yurtkonserve.com.tr/iletisim)",
    "osm": null,
    "puan": 9
+  },
+  {
+   "gersId": "fbdbd50e-9c09-427c-841f-0037d2f98bf8",
+   "ad": "Intiba",
+   "ilce": "Kartal",
+   "site": "https://www.intiba.com.tr/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî site çok kısa, tür tanımı yok; yalnız Overture kategorisi"
+   ],
+   "neden": [],
+   "elle": true
   },
   {
    "gersId": "867b8392-fdf2-4837-b728-3bbf3cb1579a",
@@ -944,7 +994,8 @@
    "site": "https://cundaliyesilkoy.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"seafood_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site cundaliyesilkoy.com: ad + telefon + sokak (https://cundaliyesilkoy.com/rezervasyon)",
@@ -970,7 +1021,8 @@
    "site": "https://borankonyamutfagi.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site boranetliekmek.com: ad + telefon (https://borankonyamutfagi.com/)",
@@ -984,7 +1036,8 @@
    "site": "https://www.pasagarden.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site pasagarden.com: ad + sokak (https://www.pasagarden.com/)",
@@ -998,7 +1051,8 @@
    "site": "http://efulimerolusta.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site efulimerolusta.com: ad + telefon (http://efulimerolusta.com/iletisim.html)",
@@ -1024,7 +1078,8 @@
    "site": "https://www.karanliktayemek.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site karanliktayemek.com: ad + telefon (https://www.karanliktayemek.com/)",
@@ -1078,7 +1133,8 @@
    "site": "https://www.illakimeyhane.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"middle_eastern_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site illakimeyhane.com: ad + telefon (https://www.illakimeyhane.com/)",
@@ -1104,7 +1160,8 @@
    "site": "https://kandillirestaurant.wixsite.com/sitem",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"seafood_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site kandillirestaurant.wixsite.com: ad + telefon (https://kandillirestaurant.wixsite.com/sitem)",
@@ -1130,7 +1187,8 @@
    "site": "https://www.durumcumusausta.com.tr/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site durumcumusausta.com.tr: ad + telefon + sokak (https://www.durumcumusausta.com.tr/iletisim.php)",
@@ -1198,7 +1256,8 @@
    "site": "https://omurrestaurant.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"seafood_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site omurrestaurant.net: ad + telefon (https://omurrestaurant.com/)",
@@ -1322,11 +1381,15 @@
    "gersId": "764b0ed1-a45e-4548-8722-ba65f4ff317f",
    "ad": "Hazar Kanat",
    "ilce": "Bağcılar",
+   "site": "http://hazarkanat.com/",
    "sinif": "B",
    "eksik": [
-    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
-   "neden": []
+   "neden": [],
+   "kimlik": "resmî site hazarkanat.com: ad + telefon + sokak + kapı no (http://hazarkanat.com/)",
+   "osm": null,
+   "puan": 9
   },
   {
    "gersId": "e7c9fa69-3cea-47b4-99c8-8443d52285cf",
@@ -1349,7 +1412,8 @@
    "site": "http://www.lezzet-kebap.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site lezzet-kebap.com: ad + telefon (http://www.lezzet-kebap.com/iletisim)",
@@ -1363,12 +1427,25 @@
    "site": "https://bizee.com.tr/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site bizee.com.tr: ad + telefon (https://bizee.com.tr/)",
    "osm": null,
    "puan": 9
+  },
+  {
+   "gersId": "4fecae5e-0db8-4066-a37f-0c5d212c640d",
+   "ad": "Trio Steakboard",
+   "ilce": "Kağıthane",
+   "site": "https://www.ettahtasi.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî site menüsü karışık (pide, pizza, et); tür belirsiz"
+   ],
+   "neden": [],
+   "elle": true
   },
   {
    "gersId": "676f934c-2a63-4fab-8a3c-30772e7ea0d9",
@@ -1377,7 +1454,8 @@
    "site": "https://www.zambakbosnakborekcisi.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site zambakbosnakborekcisi.com: ad + telefon (https://www.zambakbosnakborekcisi.com/)",
@@ -1391,7 +1469,8 @@
    "site": "https://kardeslerlokantasi.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site kardeslerlokantasi.com: ad + telefon + sokak (https://kardeslerlokantasi.com/)",
@@ -1408,13 +1487,38 @@
    ]
   },
   {
+   "gersId": "daba22d4-1aa9-41a8-a00c-0ce7dd5691b5",
+   "ad": "Arch Bistro",
+   "ilce": "Fatih",
+   "site": "https://archbistro.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî site menüsü karışık (balık, meze, et); tür tanımı yok"
+   ],
+   "neden": [],
+   "elle": true
+  },
+  {
+   "gersId": "e78da72b-5869-4788-b42f-b596fc4370fa",
+   "ad": "Albura Kathisma",
+   "ilce": "Fatih",
+   "site": "https://alburakathisma.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî sitede tür tanımı yok; menü karışık"
+   ],
+   "neden": [],
+   "elle": true
+  },
+  {
    "gersId": "93cfada1-9803-4bf2-9ced-f541ec86e9a6",
    "ad": "Kuzu Sofrası",
    "ilce": "Arnavutköy",
    "site": "https://www.kuzusofrasi.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site kuzusofrasi.com: ad + sokak (https://www.kuzusofrasi.com/)",
@@ -1425,11 +1529,15 @@
    "gersId": "7c074fe7-ed88-4e7f-b20f-7daf3d02f49b",
    "ad": "Nişantaşı Başköşe",
    "ilce": "Şişli",
+   "site": "http://www.nisantasibaskose.com/",
    "sinif": "B",
    "eksik": [
-    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
-   "neden": []
+   "neden": [],
+   "kimlik": "resmî site nisantasibaskose.com: ad + telefon + sokak + kapı no (http://www.nisantasibaskose.com/)",
+   "osm": null,
+   "puan": 8
   },
   {
    "gersId": "03bebdc4-03f1-457f-91dc-fefaf51bf96c",
@@ -1438,7 +1546,8 @@
    "site": "https://www.kanatcimuhtarinyeri.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"chicken_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site kanatcimuhtarinyeri.com: ad + telefon + sokak (https://www.kanatcimuhtarinyeri.com/)",
@@ -1478,12 +1587,25 @@
    "site": "https://esenbahceetmangal.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site esenbahceetmangal.com: ad + telefon (https://esenbahceetmangal.com/iletisim/)",
    "osm": null,
    "puan": 8
+  },
+  {
+   "gersId": "f5c24267-210f-4ece-85b4-52a6b80e2dfa",
+   "ad": "O Maestros",
+   "ilce": "Beşiktaş",
+   "site": "https://www.omaestros.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî sitede tür tanımı yok (meze ağırlıklı, balık belirsiz)"
+   ],
+   "neden": [],
+   "elle": true
   },
   {
    "gersId": "f751a2a3-6eae-4e6f-b10f-4999113caa51",
@@ -1500,6 +1622,18 @@
    "puan": 8
   },
   {
+   "gersId": "3cbd44da-f592-4672-8a9f-194fc555b74f",
+   "ad": "Moise Karaköy",
+   "ilce": "Beyoğlu",
+   "site": "https://moisekarakoy.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî site çok kısa, tür tanımı yok"
+   ],
+   "neden": [],
+   "elle": true
+  },
+  {
    "gersId": "99dca767-8b82-4b5b-a65e-f8dadf0def69",
    "ad": "Tella Kebap",
    "ilce": "Başakşehir",
@@ -1512,6 +1646,18 @@
    "kimlik": "resmî şube sayfası tellakebap.com: ad + telefon + sokak + kapı no (https://www.tellakebap.com/)",
    "osm": null,
    "puan": 8
+  },
+  {
+   "gersId": "5227e8e3-aeaf-4ff3-abe7-f5d0bf31c758",
+   "ad": "Pudding Shop Lale Restaurant",
+   "ilce": "Fatih",
+   "site": "https://www.puddingshop.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî sitede mutfak türü yazmıyor; ünü tür kaynağı sayılmaz"
+   ],
+   "neden": [],
+   "elle": true
   },
   {
    "gersId": "a81121ff-8afb-451f-b751-da1337b313e4",
@@ -1545,12 +1691,25 @@
    "site": "http://www.serradurum.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site serradurum.com: ad + telefon (http://www.serradurum.com/)",
    "osm": null,
    "puan": 8
+  },
+  {
+   "gersId": "bb450cdb-1719-46b1-a93f-a683a923d6a4",
+   "ad": "Sehzade Taksim Arabic Restaurant",
+   "ilce": "Beyoğlu",
+   "site": "http://www.sehzadetaksim.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür: resmî sitede tür tanımı yok"
+   ],
+   "neden": [],
+   "elle": true
   },
   {
    "gersId": "d49f0801-c03e-4b00-8639-034e569b7aa0",
@@ -1601,7 +1760,6 @@
    "site": "https://www.karsigdirlokantasi.com/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı",
     "kaynaklı tür yok"
    ],
    "neden": [],
@@ -1616,7 +1774,8 @@
    "site": "https://www.bellacostacafe.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
    ],
    "neden": [],
    "kimlik": "resmî site bellacostacafe.com: ad + telefon (https://www.bellacostacafe.com/)",

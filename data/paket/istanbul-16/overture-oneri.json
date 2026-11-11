@@ -206,6 +206,23 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
+   "slug": "ayvaz-doner-iskender-bahcelievler",
+   "gersId": "e8016f9c-7b46-4690-9bc1-7fc98d151239",
+   "lat": 40.995247,
+   "lng": 28.847422,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bahçelievler",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
    "slug": "ozel-kofte-bakirkoy",
    "gersId": "9915ef8a-ede5-4b1f-a1fe-e8d3195833b9",
    "lat": 40.995247,
@@ -580,23 +597,6 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
-   "slug": "trio-steakboard-kagithane",
-   "gersId": "4fecae5e-0db8-4066-a37f-0c5d212c640d",
-   "lat": 41.076912,
-   "lng": 28.973356,
-   "guven": 0.92,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Kağıthane",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
    "slug": "besler-soguk-meze-evi-kucukcekmece",
    "gersId": "6f8d90b9-e29d-4ee0-bdb3-80c9bdc53190",
    "lat": 41.004181,
@@ -733,40 +733,6 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
-   "slug": "o-maestros-besiktas",
-   "gersId": "f5c24267-210f-4ece-85b4-52a6b80e2dfa",
-   "lat": 41.067383,
-   "lng": 29.043278,
-   "guven": 1,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Beşiktaş",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
-   "slug": "moise-karakoy-beyoglu",
-   "gersId": "3cbd44da-f592-4672-8a9f-194fc555b74f",
-   "lat": 41.024117,
-   "lng": 28.974478,
-   "guven": 1,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Beyoğlu",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
    "slug": "pizza-grande-bakirkoy",
    "gersId": "e6fe1ab3-b5c2-40e3-b37d-4e535b4a915e",
    "lat": 40.958225,
@@ -816,23 +782,6 @@
    "ilceSiniri": "Küçükçekmece",
    "telefonEslesmesi": false,
    "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
-  },
-  {
-   "slug": "sehzade-taksim-arabic-restaurant-beyoglu",
-   "gersId": "bb450cdb-1719-46b1-a93f-a683a923d6a4",
-   "lat": 41.039757,
-   "lng": 28.983326,
-   "guven": 0.99,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Beyoğlu",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
    "slug": "nur-abla-karadeniz-supper-basaksehir",

@@ -17,7 +17,7 @@ const argv = process.argv.slice(2); const sep = argv.indexOf("--");
 const [dir, waveS, tarih, adayP, olcP, ilceP, nS, osmP] = argv.slice(0, sep); const existing = argv.slice(sep + 1);
 const wave = Number(waveS), N = Number(nS); const J = (p) => JSON.parse(readFileSync(p, "utf8"));
 const F = J("data/katalog/istanbul-ilceler.json"); const ILCE = J(ilceP);
-const A = J(adayP), O = J(olcP); const HTTPS = process.env.HTTPS_MAP ? J(process.env.HTTPS_MAP) : {};
+const A = J(adayP), O = J(olcP); const HTTPS = process.env.HTTPS_MAP ? J(process.env.HTTPS_MAP) : {}; const ADRK = process.env.ADRES_KURTARMA ? J(process.env.ADRES_KURTARMA) : {};
 const YER = new Set([...F.ilceler.map((d) => fold(d.ad)), ..."kumkapi karakoy galata taksim nisantasi bebek ortakoy kurucesme arnavutkoy emirgan yenikoy tarabya sultanahmet eminonu sirkeci balat fener moda caddebostan suadiye bostanci kalamis florya yesilkoy atakoy kozyatagi levent etiler maslak mecidiyekoy cihangir kuzguncuk cengelkoy beylerbeyi kandilli anadoluhisari rumelihisari istinye sariyer".split(" ")]);
 const tok = (s) => fold(s).split(" ").filter((w) => w.length >= 3 && !GEN.has(w) && !YER.has(w));
 const GEN = new Set(["restaurant", "restoran", "restorant", "restourant", "lokantasi", "lokanta", "cafe", "kafe", "ve", "the", "istanbul", "by", "salonu", "evi", "and", "bar", "balik", "kebap", "kebab", "grill", "et"]); const EX = existing.flatMap(J);
@@ -55,8 +55,9 @@ const GASTRO = U(/\b([şs]ef|chef|fine dining|tad[ıi]m men[üu]|tasting menu|ga
 const IKON = U(/\b(lokanta|ocakba[şs][ıi]|bal[ıi]k|meyhane|kebap|esnaf|tarihi|since|18\d\d|19\d\d|kurulu[şs]|ustas[ıi]|usta)\b/i);
 
 /* 1–3: uygunluk ve seçim */
+const HARIC = new Set(process.env.HARIC ? J(process.env.HARIC) : []); /* önceki paketlerde incelenmiş adaylar (sonuçları ne olursa olsun) yeniden seçilmez */
 const elig = [], skip = { kanitsiz: 0, spamPark: 0, kafeBar: 0, acilmadi: 0 };
-for (const a of A) { const o = O[a.id]; if (!o) continue;
+for (const a of A) { const o = O[a.id]; if (!o || HARIC.has(a.id)) continue;
   if (!o.status || o.status >= 400) { skip.acilmadi++; continue; }
   if (o.spam || o.park) { skip.spamPark++; continue; }
   if (!(o.nameOk && (o.telOk || o.streetOk))) { skip.kanitsiz++; continue; }
@@ -73,6 +74,7 @@ for (const x of elig) { if (secim.length >= N) break; const h = x.a.host; if ((p
 
 /* 4: derin sınıflandırma */
 const taken = new Set(EX.map((v) => v.slug)), exRef = new Set(EX.map((v) => v.ref)), exTel = new Set(EX.map((v) => tel(v.phone)).filter((t) => t.length === 10));
+const TURK = (() => { try { return J(`${dir}/tur-karar.json`).kararlar; } catch { return {}; } })();
 const ELLE = (() => { try { return J(`${dir}/elle-karar.json`).kararlar; } catch { return {}; } })();
 const recs = [], rows = [], inceleme = [], oneri = [];
 /* görünen ad: Overture adı SEO ekiyle uzunsa ilk anlamlı parça; tamamen küçük harfse baş harfler büyük (yeni ad üretilmez) */
@@ -105,13 +107,22 @@ for (const { a: a0, o, puan } of secim) { const a = { ...a0, ad: cleanName(a0.ad
     const seg = ovAdr.split(",").map((x) => x.trim()).find((x) => /(cad|cd|sok|sk|bulvar|blv|yolu|yokuş|meydan|sokağı|caddesi)/i.test(x) && /\d/.test(x));
     const m = seg && seg.match(/^(.*?)(?:\s*No\s*[:.]?\s*|\s+)(\d+[A-Za-z]?(?:\s*\/\s*[0-9A-Za-z]+)?)\b.*$/i);
     if (m && m[1].trim().length >= 4) { adres = `${m[1].trim().replace(/[,.]$/, "")} No:${m[2].replace(/\s+/g, "")}`; adresKaynak = "resmî sitede sokak + kapı no (adres metni Overture)"; } }
+  /* adres kurtarma: resmî sitede yapılandırılmış adres (schema.org) ya da iletişim bloğunda "No <kapı>" ile aynı sokak */
+  if (!adres && o.streetOk && ADRK[a.id] && (ADRK[a.id].ld || ADRK[a.id].blok)) {
+    const seg = ovAdr.split(",").map((x) => x.trim()).find((x) => /(cad|cd|sok|sk|bulvar|blv|yolu|yokuş|meydan|sokağı|caddesi)/i.test(x) && /\d/.test(x));
+    const m = seg && seg.match(/^(.*?)(?:\s*No\s*[:.]?\s*|\s+)(\d+[A-Za-z]?(?:\s*\/\s*[0-9A-Za-z]+)?)\b.*$/i);
+    if (m && m[1].trim().length >= 4) { adres = `${m[1].trim().replace(/[,.]$/, "")} No:${m[2].replace(/\s+/g, "")}`; adresKaynak = ADRK[a.id].ld ? `resmî sitede yapılandırılmış adres (schema.org PostalAddress, ${ADRK[a.id].ld.sayfa})` : `resmî sitede iletişim bloğunda sokak + "No ${m[2]}" (${ADRK[a.id].blok.sayfa})`; } }
   if (!adres) eksik.push(o.streetOk ? "kapı numarası resmî kaynakta doğrulanmadı" : "adres resmî kaynakta doğrulanmadı");
   /* tür */
   let tur = null;
   const fam = AILE.filter(([, , re]) => re.test(self)); if (fam.length === 1) tur = { kind: fam[0][0], cuisine: fam[0][1], ifade: `resmî site başlığı/açıklaması: "${(self.match(fam[0][2]) || [""])[0]}"`, duzey: a.zincirAlan ? "marka" : "şube" };
   if (!tur && osmOk && osmE.tags.cuisine) { const c0 = osmE.tags.cuisine.split(";")[0].trim(); if (OSMK[c0]) tur = { kind: OSMK[c0], cuisine: osmE.tags.cuisine.split(";").map((x) => x.trim()), ifade: `OSM cuisine "${osmE.tags.cuisine}"`, duzey: "şube" }; }
-  if (!tur && OVK[a.takson]) tur = { kind: OVK[a.takson][0], cuisine: OVK[a.takson][1], ifade: `Overture kategorisi "${a.takson}" (işletmenin platform beyanı; kaynak ${a.kaynak.filter((k) => k !== "Overture").join("/")})`, duzey: "şube" };
-  if (!tur) eksik.push(fam.length > 1 ? `tür belirsiz (sitede birden çok tür: ${fam.map((f) => f[0]).join(", ")})` : "kaynaklı tür yok");
+  /* elle doğrulanmış tür (resmî site başlık/açıklama/menü) her şeyden önce gelir */
+  if (TURK[a.id]) tur = { kind: TURK[a.id].kind, cuisine: TURK[a.id].cuisine, ifade: TURK[a.id].ifade, duzey: a.zincirAlan ? "marka" : "şube" };
+  /* Overture kategorisi tek başına tür kanıtı DEĞİLDİR (paket 16 kalite turu); yalnız B gerekçesinde not edilir */
+  if (!tur && OVK[a.takson]) eksik.push(`tür yalnız Overture kategorisinde ("${a.takson}"); resmî kaynakta doğrulanmadı`);
+  if (false) tur = { kind: OVK[a.takson][0], cuisine: OVK[a.takson][1], ifade: `Overture kategorisi "${a.takson}" (işletmenin platform beyanı; kaynak ${a.kaynak.filter((k) => k !== "Overture").join("/")})`, duzey: "şube" };
+  if (!tur && !OVK[a.takson]) eksik.push(fam.length > 1 ? `tür belirsiz (sitede birden çok tür: ${fam.map((f) => f[0]).join(", ")})` : "kaynaklı tür yok");
   /* mükerrer (son kontrol) */
   const t = tel(a.telefonlar[0]); const p = { lat: a.lat, lng: a.lng };
   const dup = EX.find((v) => (t.length === 10 && tel(v.phone) === t) || (fold(v.name) === fold(a.ad) && v.district === a.ilce) || (typeof v.lat === "number" && meters(v, p) < 100 && fold(v.name).split(" ")[0] === fold(a.ad).split(" ")[0]));

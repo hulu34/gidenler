@@ -81,6 +81,56 @@
    "ad": "Avan Büfe",
    "sinif": "B",
    "neden": "tür belirsiz: ıslak hamburger + tost + kahvaltı birlikte"
+  },
+  "900ffc07-0559-4f8b-a88a-98b2aa29327c": {
+   "ad": "The Food Clan",
+   "sinif": "B",
+   "neden": "tür: resmî sitede tür tanımı yok (menüde pizza ve burger karışık); yalnız Overture kategorisi"
+  },
+  "7a466301-a080-4f33-bd42-1f8ba0902267": {
+   "ad": "House of Medusa Restaurant",
+   "sinif": "B",
+   "neden": "tür: resmî sitede tür tanımı yok; yalnız Overture kategorisi"
+  },
+  "fbdbd50e-9c09-427c-841f-0037d2f98bf8": {
+   "ad": "Intiba",
+   "sinif": "B",
+   "neden": "tür: resmî site çok kısa, tür tanımı yok; yalnız Overture kategorisi"
+  },
+  "4fecae5e-0db8-4066-a37f-0c5d212c640d": {
+   "ad": "Trio Steakboard",
+   "sinif": "B",
+   "neden": "tür: resmî site menüsü karışık (pide, pizza, et); tür belirsiz"
+  },
+  "daba22d4-1aa9-41a8-a00c-0ce7dd5691b5": {
+   "ad": "Arch Bistro",
+   "sinif": "B",
+   "neden": "tür: resmî site menüsü karışık (balık, meze, et); tür tanımı yok"
+  },
+  "e78da72b-5869-4788-b42f-b596fc4370fa": {
+   "ad": "Albura Kathisma",
+   "sinif": "B",
+   "neden": "tür: resmî sitede tür tanımı yok; menü karışık"
+  },
+  "f5c24267-210f-4ece-85b4-52a6b80e2dfa": {
+   "ad": "O Maestros",
+   "sinif": "B",
+   "neden": "tür: resmî sitede tür tanımı yok (meze ağırlıklı, balık belirsiz)"
+  },
+  "3cbd44da-f592-4672-8a9f-194fc555b74f": {
+   "ad": "Moise Karaköy",
+   "sinif": "B",
+   "neden": "tür: resmî site çok kısa, tür tanımı yok"
+  },
+  "5227e8e3-aeaf-4ff3-abe7-f5d0bf31c758": {
+   "ad": "Pudding Shop Lale Restaurant",
+   "sinif": "B",
+   "neden": "tür: resmî sitede mutfak türü yazmıyor; ünü tür kaynağı sayılmaz"
+  },
+  "bb450cdb-1719-46b1-a93f-a683a923d6a4": {
+   "ad": "Sehzade Taksim Arabic Restaurant",
+   "sinif": "B",
+   "neden": "tür: resmî sitede tür tanımı yok"
   }
  }
 }
