@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { articles, hrefOf } from "@/lib/seckisi";
 import { SECKI_RESTAURANTS } from "@/content/seckisi/restoranlar";
+import { CoverPhoto } from "@/components/seckisi/CoverPhoto";
 
 /* Ana sayfa: doğrudan bulma (sık aranan türler ve semtler) ve Seçki'nin öne çıkan yazısı. Veri yoksa bölüm çizilmez. */
 const HIZLI: Array<[string, string]> = [["Pide", "pide"], ["Kebap", "kebap"], ["Balık", "balık"], ["Meyhane", "meyhane"], ["Ocakbaşı", "ocakbaşı"], ["Esnaf lokantası", "esnaf lokantası"], ["Kadıköy", "Kadıköy"], ["Beyoğlu", "Beyoğlu"], ["Fatih", "Fatih"]];
@@ -37,8 +38,7 @@ export function HomeSecki() {
       {a?.cover.state === "var" && (
         <Link href={hrefOf("tr", a.slug)} className="group mt-8 grid gap-4 border-t border-line-2 pt-6 sm:grid-cols-[1fr_1.25fr] sm:items-center">
           <span className="relative block aspect-[16/10] overflow-hidden bg-sheet">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={a.cover.src} alt={a.cover.alt.tr} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+            <CoverPhoto cover={a.cover} lang="tr" lazy />
           </span>
           <span className="flex flex-col gap-2">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">Haftanın hikâyesi</span>

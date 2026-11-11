@@ -3,6 +3,7 @@ import { realVenueRecords } from "@/data/real";
 import { KIND_LABEL, SECTION_LABEL, articlesForVenue, labelOf, fmtDay, fmtStamp, hrefOf, type Article, type Block, type Event, type Lang, type SectionKey } from "@/lib/seckisi";
 import { UI, t } from "./ui";
 import { SeckiVideos } from "./SeckiVideos";
+import { CoverPhoto } from "./CoverPhoto";
 import { RestaurantPickGrid } from "@/components/home/HomeSecki";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -44,9 +45,8 @@ export function Cover({ a, lang, size = "md" }: { a: Article; lang: Lang; size?:
   const h = size === "lg" ? "min-h-[200px] sm:min-h-[460px]" : size === "md" ? "min-h-[220px] sm:min-h-[300px]" : "min-h-[150px]";
   if (a.cover.state === "var") {
     return (
-      <figure className={`relative overflow-hidden ${h}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={a.cover.src} alt={a.cover.alt[lang]} className="absolute inset-0 h-full w-full object-cover" />
+      <figure className={`relative overflow-hidden ${a.cover.leadingPhoto ? "aspect-[31/20]" : h}`}>
+        <CoverPhoto cover={a.cover} lang={lang} />
       </figure>
     );
   }
@@ -398,6 +398,9 @@ export function SeckiArticle({ a, lang, review, more }: { a: Article; lang: Lang
                     : RIGHTS_LABEL[a.cover.rights][lang]} ·{" "}
                   <a href={a.cover.sourceUrl} rel="noopener noreferrer" target="_blank" className="underline underline-offset-2">{t(UI.photoSource, lang)}</a>{a.cover.note ? ` · ${a.cover.note[lang]}` : ""}</>
               ) : <><span className="font-bold">{t(UI.coverCredit, lang)}:</span> {a.cover.gap[lang]}</>}
+              {a.cover.state === "var" && a.cover.leadingPhoto && (
+                <span className="mt-1 block">{a.cover.leadingPhoto.sourceNote[lang]} · {a.cover.leadingPhoto.credit} · {RIGHTS_LABEL[a.cover.leadingPhoto.rights][lang]}</span>
+              )}
             </figcaption>
           </figure>
         </header>
