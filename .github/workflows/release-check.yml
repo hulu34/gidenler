@@ -1,0 +1,75 @@
+name: Independent release 792 checks
+on:
+  push:
+    branches: [ops/paket-7-14-kontrol]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: isolated-test-only
+        ports: [5432:5432]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:isolated-test-only@localhost:5432/postgres
+      DB_DRIVER: pg
+      DB_ADMIN_LOCAL: '1'
+      BETTER_AUTH_SECRET: isolated-release-test-only-secret-at-least-32-chars
+      BETTER_AUTH_URL: http://localhost:3141
+      GOOGLE_CLIENT_ID: isolated-invalid
+      GOOGLE_CLIENT_SECRET: isolated-invalid
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 471e9128f6822581fd27155cd4df64ecdbc7a407
+          path: reviewed
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+        working-directory: reviewed
+      - name: PostgreSQL 17 atomic append and replay
+        run: |
+          cp postgres-test.ts reviewed/scripts/.ci-postgres-test.ts
+          cd reviewed
+          npx tsx scripts/.ci-postgres-test.ts
+      - name: Candidate critical suites
+        working-directory: reviewed
+        run: |
+          npx tsc --noEmit
+          npx tsx scripts/dbtest.ts
+          NEXT_PUBLIC_SHOW_DEMO=true npx tsx scripts/dbtest.ts
+          npx tsx scripts/sortest.ts
+          npx tsx scripts/aramatest.ts
+          npx tsx scripts/seotest.ts
+          npx tsx scripts/b1-konum-test.ts
+          npx tsx scripts/panel-rezervasyon-test.ts
+          npx tsx scripts/gpuantest.ts
+          npx tsx scripts/gecetest.ts
+          npx tsx scripts/ilkkullanicitest.ts
+      - name: Build exact release and HTTP smoke
+        working-directory: reviewed
+        run: |
+          npm run build > build-evidence.log 2>&1
+          npm run start -- -p 3141 > server-evidence.log 2>&1 &
+          for attempt in $(seq 1 30); do curl -fsS http://localhost:3141/ > /dev/null && break; sleep 1; done
+          node ../http-check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-471e912-evidence
+          path: |
+            reviewed/build-evidence.log
+            reviewed/server-evidence.log
+            reviewed/http-evidence.json
