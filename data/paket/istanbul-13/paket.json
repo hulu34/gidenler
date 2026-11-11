@@ -1,0 +1,653 @@
+{
+ "_aciklama": "İstanbul restoran paketi (dalga 13). Yalnız A sınıfı restoran. venues.json'a eklenmedi; birleştirme yayın paketinde yapılır. Kaynak: OpenStreetMap (© OpenStreetMap katkıcıları, ODbL), İBB Açık Veri Portalı (İstanbul Büyükşehir Belediyesi, İBB Açık Veri Lisansı: Kent Lokantaları ve Sosyal Tesis Konumları), işletmelerin ve markaların resmî siteleri (yalnız eşleşme ölçümü). Google verisi kullanılmadı.",
+ "osmTarihi": "2026-11-10T20:20:48Z",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "tahtasaray-besiktas",
+   "ref": "node/7515907235",
+   "ad": "Tahtasaray",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Beşiktaş",
+   "mahalle": "Yenilevent Konaklar",
+   "adres": "Meşeli Sokağı No:25, Yenilevent Konaklar, Beşiktaş",
+   "koordinat": [
+    41.087897,
+    29.011843
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak + telefon eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7515907235",
+    "https://tahtasaray.com"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "tike-restoran-besiktas",
+   "ref": "node/11132410605",
+   "ad": "Tike Restoran",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Beşiktaş",
+   "mahalle": null,
+   "adres": "Tepecik Yolu No:13, Beşiktaş",
+   "koordinat": [
+    41.086812,
+    29.031883
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11132410605",
+    "https://tike.com.tr/",
+    "https://tike.com.tr/contact"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "guney-beyoglu",
+   "ref": "node/3188737190",
+   "ad": "Güney",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "adres": "Kuledibi Şah Kapısı No:2B, Beyoğlu",
+   "koordinat": [
+    41.02601,
+    28.974564
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + telefon eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3188737190",
+    "https://www.guneyrestaurant.com/",
+    "https://guneyrestaurant.com/hakkimizda/",
+    "https://guneyrestaurant.com/iletisim/"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "no-19-dining-beyoglu",
+   "ref": "node/3325111908",
+   "ad": "No:19 Dining",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "adres": "Faik Paşa Caddesi No:6, Beyoğlu",
+   "koordinat": [
+    41.03297,
+    28.98135
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak eşleşti",
+    "OSM yerinde kontrol tarihi 2025-10-31",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-10-31, changeset 174026275)"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3325111908",
+    "http://no19dining.com/",
+    "https://www.openstreetmap.org/changeset/174026275"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "adam-s-pizza-kadikoy",
+   "ref": "node/10597098752",
+   "ad": "Adam's Pizza",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Feneryolu Mahallesi",
+   "adres": "Mazhar Osman Sokağı No:8/C, Feneryolu Mahallesi, Kadıköy",
+   "koordinat": [
+    40.981301,
+    29.050095
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10597098752",
+    "https://www.adamspizza.com",
+    "https://www.adamspizza.com/sayfa.asp?Tur=Hakkimizda",
+    "https://www.adamspizza.com/sayfa.asp?Tur=Iletisim"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hacapuri-kadikoy",
+   "ref": "node/11841781670",
+   "ad": "Haçapuri",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "adres": "Fahrettin Kerim Gökay Caddesi No:11, Kadıköy",
+   "koordinat": [
+    40.993698,
+    29.038232
+   ],
+   "tur": "Dünya mutfağı",
+   "mutfak": [
+    {
+     "id": "dunya",
+     "ad": "Diğer dünya mutfakları",
+     "kaynak": "osm_cuisine",
+     "deger": "georgian"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-07-07",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-07-07, changeset 185285534)"
+   ],
+   "zayifKanit": [],
+   "eksik": [],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11841781670",
+    "https://www.openstreetmap.org/changeset/185285534"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "house-of-b-kadikoy",
+   "ref": "node/10770972406",
+   "ad": "House of B",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "adres": "Bağdat Caddesi No:435, Suadiye Mahallesi, Kadıköy",
+   "koordinat": [
+    40.96022,
+    29.082212
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10770972406",
+    "https://houseofbturkey.com"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "koco-kadikoy",
+   "ref": "node/12710222661",
+   "ad": "Koço",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "adres": "Moda Caddesi No:171, Caferağa Mahallesi, Kadıköy",
+   "koordinat": [
+    40.980044,
+    29.024664
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    },
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak + telefon eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12710222661",
+    "https://www.kocorestaurant.com/",
+    "https://www.openstreetmap.org/changeset/191691321"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "leylak-kadikoy",
+   "ref": "node/9786517771",
+   "ad": "Leylak",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "adres": "Karakolhane Caddesi No:32, Kadıköy",
+   "koordinat": [
+    40.994554,
+    29.029773
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak eşleşti",
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "zayifKanit": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-10-20)"
+   ],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9786517771",
+    "https://www.leylakkitchen.com/",
+    "https://www.leylakkitchen.com/contact-us",
+    "https://www.openstreetmap.org/changeset/190772968"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "perran-ocakbasi-kadikoy",
+   "ref": "node/14205781778",
+   "ad": "Perran Ocakbaşı",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Fenerbahçe Mahallesi",
+   "adres": "Fener Kalamış Caddesi No:38, Fenerbahçe Mahallesi, Kadıköy",
+   "koordinat": [
+    40.977304,
+    29.041797
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    },
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + telefon eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14205781778",
+    "https://www.perranocakbasi.com.tr/tr/",
+    "https://www.openstreetmap.org/changeset/189383123"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "vefali-kofteci-kadikoy",
+   "ref": "node/10271725130",
+   "ad": "Vefalı Köfteci",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Caddebostan Mahallesi",
+   "adres": "Bilim Sokağı No:14, Caddebostan Mahallesi, Kadıköy",
+   "koordinat": [
+    40.964783,
+    29.075038
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10271725130",
+    "http://vefalikofteci.com.tr/",
+    "http://vefalikofteci.com/contact.html",
+    "https://www.openstreetmap.org/changeset/175617542"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "yerinde-pide-kadikoy",
+   "ref": "node/5296377545",
+   "ad": "Yerinde Pide",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "adres": "Şemsettin Günaltay Caddesi No:91, Suadiye Mahallesi, Kadıköy",
+   "koordinat": [
+    40.96497,
+    29.087893
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5296377545",
+    "https://yerindepide.com/",
+    "https://www.openstreetmap.org/changeset/154087090"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "koz-kanat-kartal",
+   "ref": "node/586452166",
+   "ad": "Köz Kanat",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kartal",
+   "mahalle": "Koydonboyu Mahallesi",
+   "adres": "Turgut Özal Bulvarı No:55, Koydonboyu Mahallesi, Kartal",
+   "koordinat": [
+    40.893613,
+    29.170843
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-11): ad + sokak eşleşti"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/586452166",
+    "https://kozkanat.com/kartal",
+    "https://www.openstreetmap.org/changeset/191310455"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "bestra-kitchen-sariyer",
+   "ref": "node/10788836727",
+   "ad": "Bestra Kitchen",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Sarıyer",
+   "mahalle": "Reşitpaşa Mahallesi",
+   "adres": "Katar Caddesi No:2/28, Reşitpaşa Mahallesi, Sarıyer",
+   "koordinat": [
+    41.103379,
+    29.022473
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    },
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    },
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    },
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    },
+    {
+     "id": "tavuk",
+     "ad": "Tavuk",
+     "kaynak": "osm_cuisine",
+     "deger": "chicken"
+    },
+    {
+     "id": "kahvalti",
+     "ad": "Kahvaltı ve brunch",
+     "kaynak": "osm_cuisine",
+     "deger": "breakfast"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-11-07"
+   ],
+   "zayifKanit": [],
+   "eksik": [],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-11)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10788836727",
+    "https://www.openstreetmap.org/changeset/191581796"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hakki-karakas-manti-sisli",
+   "ref": "node/14072207736",
+   "ad": "Hakkı Karakaş Mantı",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Şişli",
+   "mahalle": "Esentepe Mahallesi",
+   "adres": "Tevfik Erdönmez Paşa Sokağı No:10, Esentepe Mahallesi, Şişli",
+   "koordinat": [
+    41.067278,
+    29.008021
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-24"
+   ],
+   "zayifKanit": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-10-24)"
+   ],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-11)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14072207736",
+    "https://www.openstreetmap.org/changeset/190965723"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  }
+ ]
+}
