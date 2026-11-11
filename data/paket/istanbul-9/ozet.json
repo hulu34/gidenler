@@ -1,0 +1,148 @@
+{
+ "dalga": 9,
+ "A": 25,
+ "osmSubesi": 9,
+ "isletmeKaydi": 16,
+ "elenen": 30,
+ "elenenNeden": {
+  "tür kaynakta yok": 1,
+  "katalogda ya da havuzda yok": 1,
+  "kapı no OSM adresinde yok": 12,
+  "OSM sokağı listedekiyle uyuşmuyor": 1,
+  "markanın OSM şubelerinde ortak tür yok": 15
+ },
+ "marka": {
+  "HD İskender": 7,
+  "Etiler Marmaris": 2,
+  "Pidem": 1,
+  "Cookshop": 3,
+  "Burger Yiyelim": 10,
+  "Bursa Kebap Evi": 1,
+  "Usta Dönerci": 1
+ },
+ "ilce": {
+  "Esenyurt": 1,
+  "Başakşehir": 3,
+  "Ataşehir": 2,
+  "Kadıköy": 2,
+  "Maltepe": 2,
+  "Avcılar": 1,
+  "Beşiktaş": 2,
+  "Sultangazi": 1,
+  "Eyüpsultan": 2,
+  "Bakırköy": 4,
+  "Ümraniye": 1,
+  "Üsküdar": 1,
+  "Zeytinburnu": 1,
+  "Bayrampaşa": 1,
+  "Beyoğlu": 1
+ },
+ "tur": {
+  "Kebapçı / Ocakbaşı": 10,
+  "Türk mutfağı": 2,
+  "Dünya mutfağı": 3,
+  "Burger": 10
+ },
+ "markaListeleri": {
+  "hd iskender": {
+   "kok": "https://www.hdiskender.com/",
+   "sayfa": 3,
+   "istanbulAdres": 33
+  },
+  "etiler marmaris": {
+   "kok": "https://etilermarmaris.com.tr/",
+   "sayfa": 3,
+   "istanbulAdres": 36
+  },
+  "bigchefs": {
+   "kok": "https://bigchefs.com.tr/",
+   "sayfa": 4,
+   "istanbulAdres": 1
+  },
+  "pizzabulls": {
+   "kok": "https://pizzabulls.com/",
+   "sayfa": 2,
+   "istanbulAdres": 1
+  },
+  "mevlana pide": {
+   "kok": "https://mevlanapide.com/",
+   "sayfa": 2,
+   "istanbulAdres": 1
+  },
+  "hacioglu": {
+   "kok": "https://hacioglu.com.tr/",
+   "sayfa": 1,
+   "istanbulAdres": 0
+  },
+  "pizza lazza": {
+   "kok": "https://pizzalazza.com.tr/",
+   "sayfa": 2,
+   "istanbulAdres": 0
+  },
+  "bursa kebap evi": {
+   "kok": "https://www.bursakebapevi.com/",
+   "sayfa": 3,
+   "istanbulAdres": 37
+  },
+  "usta donerci": {
+   "kok": "https://www.ustadonerci.com/",
+   "sayfa": 2,
+   "istanbulAdres": 1
+  },
+  "pidem": {
+   "kok": "https://www.pidem.com.tr/",
+   "sayfa": 3,
+   "istanbulAdres": 58
+  },
+  "green salads": {
+   "kok": "https://www.greensalads.com.tr/",
+   "sayfa": 6,
+   "istanbulAdres": 1
+  },
+  "cookshop": {
+   "kok": "https://www.cookshop.com.tr/tr/index",
+   "sayfa": 137,
+   "istanbulAdres": 14
+  },
+  "durumle": {
+   "kok": "https://durumle.com/",
+   "sayfa": 3,
+   "istanbulAdres": 0
+  },
+  "happy moon s": {
+   "kok": "https://www.happygroup.com.tr/",
+   "sayfa": 7,
+   "istanbulAdres": 36
+  },
+  "gala kokorec": {
+   "kok": "https://www.galakokorec.com/",
+   "sayfa": 1,
+   "istanbulAdres": 1
+  },
+  "burger yiyelim": {
+   "kok": "https://www.burgeryiyelim.com/",
+   "sayfa": 3,
+   "istanbulAdres": 61
+  },
+  "baydoner": {
+   "kok": "https://www.baydoner.com/",
+   "sayfa": 3,
+   "istanbulAdres": 0
+  },
+  "balkan lokantasi": {
+   "kok": "https://www.balkanlokantasi.com.tr/",
+   "sayfa": 2,
+   "istanbulAdres": 0
+  },
+  "bereket doner": {
+   "kok": "https://www.bereketdoner.com.tr/",
+   "sayfa": 6,
+   "istanbulAdres": 1
+  },
+  "kofteci ramiz": {
+   "kok": "https://www.kofteciramiz.com/",
+   "sayfa": 6,
+   "istanbulAdres": 0
+  }
+ }
+}
