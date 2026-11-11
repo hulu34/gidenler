@@ -1,0 +1,420 @@
+{
+ "_aciklama": "İstanbul yüksek profil paketi (dalga 15): MICHELIN Rehberi 2026 İstanbul seçkisinden katalogda olmayan, kanıtı tam restoranlar. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json (yayın paketinde). Konum: OSM (© OpenStreetMap katkıcıları, ODbL). Michelin ayrımı rehberin resmî sayfasından; rehber metni/fotoğrafı/koordinatı kopyalanmadı. Google verisi kullanılmadı.",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "araf-istanbul-kadikoy",
+   "ref": "isletme/araf-istanbul-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Araf İstanbul",
+   "ilce": "Kadıköy",
+   "adres": "Sümer Sokak, Sümko N Blok No:1, AG/E İç Kapı No:2, 19 Mayıs Mahallesi, Kadıköy",
+   "koordinat": null,
+   "tur": "Çağdaş mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Bir Yıldız",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bir Yıldız (resmî rehber sayfası, 2026-11-11) · resmî site arafistanbul.com (ad + telefon eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Contemporary\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul",
+    "https://www.arafistanbul.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "araka-sariyer",
+   "ref": "isletme/araka-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Araka",
+   "ilce": "Sarıyer",
+   "adres": "Kapalı Bakkal Sokak No:8, Yeniköy, Sarıyer",
+   "koordinat": null,
+   "tur": "Yaratıcı mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Bir Yıldız",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bir Yıldız (resmî rehber sayfası, 2026-11-11) · resmî site araka.com.tr (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Creative\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka",
+    "https://araka.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "arkestra-besiktas",
+   "ref": "isletme/arkestra-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Arkestra",
+   "ilce": "Beşiktaş",
+   "adres": "Dilhayat Sokak No:28, Etiler, Beşiktaş",
+   "koordinat": null,
+   "tur": "Füzyon",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Bir Yıldız",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bir Yıldız (resmî rehber sayfası, 2026-11-11) · resmî site arkestra.com.tr (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Fusion\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra",
+    "https://arkestra.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "casa-lavanda-sile",
+   "ref": "isletme/casa-lavanda-sile",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Casa Lavanda",
+   "ilce": "Şile",
+   "adres": "Seçilmiş Sokak No:2, Ulupelit Köyü, Şile",
+   "koordinat": null,
+   "tur": "Geleneksel mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Bir Yıldız",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bir Yıldız (resmî rehber sayfası, 2026-11-11) · resmî site casalavanda.com.tr (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Traditional Cuisine\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda",
+    "https://www.casalavanda.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sankai-by-nagaya-besiktas",
+   "ref": "isletme/sankai-by-nagaya-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Sankai by Nagaya",
+   "ilce": "Beşiktaş",
+   "adres": "Cevdet Paşa Caddesi No:34, Bebek, Beşiktaş",
+   "koordinat": null,
+   "tur": "Sushi / Japon",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Bir Yıldız",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bir Yıldız (resmî rehber sayfası, 2026-11-11) · resmî site sankai.com.tr (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Japanese Contemporary\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya",
+    "https://sankai.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "parvus-kalamis-kadikoy",
+   "ref": "isletme/parvus-kalamis-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Parvus Kalamış",
+   "ilce": "Kadıköy",
+   "adres": "Rüştiye Sokak No:4/A, Zühtüpaşa Mahallesi, Kadıköy",
+   "koordinat": null,
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Bib Gourmand",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bib Gourmand (resmî rehber sayfası, 2026-11-11) · resmî site parvus.com.tr (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Turkish\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/parvus-kalam%C4%B1s",
+    "https://parvus.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "tershane-beyoglu",
+   "ref": "isletme/tershane-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Tershane",
+   "ilce": "Beyoğlu",
+   "adres": "Tersane Caddesi No:24, Hotel Momento 8. kat, Karaköy, Arap Cami Mahallesi, Beyoğlu",
+   "koordinat": null,
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Bib Gourmand",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bib Gourmand (resmî rehber sayfası, 2026-11-11) · resmî site tershanerestaurant.com (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Turkish\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tershane",
+    "https://www.tershanerestaurant.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "aila-sisli",
+   "ref": "isletme/aila-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Aila",
+   "ilce": "Şişli",
+   "adres": "Büyükdere Caddesi No:76/B, Fairmont Quasar, Mecidiyeköy, Şişli",
+   "koordinat": null,
+   "tur": "Modern mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site fairmontquasaristanbul.com (ad + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Modern Cuisine\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aila",
+    "https://fairmontquasaristanbul.com/restaurant/aila/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "eleos-yesilkoy-bakirkoy",
+   "ref": "isletme/eleos-yesilkoy-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Eleos Yeşilköy",
+   "ilce": "Bakırköy",
+   "adres": "Yeşilbahçe Sokak No:9, Yeşilköy Mahallesi, Bakırköy",
+   "koordinat": null,
+   "tur": "Balık restoranı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site eleosrestaurant.com (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Fish and Seafood\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/eleos-yesilkoy",
+    "https://www.eleosrestaurant.com/yesilkoy"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "herise-istanbul-sariyer",
+   "ref": "isletme/herise-istanbul-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Herise İstanbul",
+   "ilce": "Sarıyer",
+   "adres": "Kongre Caddesi No:15/A, Reşitpaşa Mahallesi, Sarıyer",
+   "koordinat": null,
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site heriseistanbul.com.tr (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Turkish\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/herise-istanbul",
+    "https://www.heriseistanbul.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "kiyi-sariyer",
+   "ref": "isletme/kiyi-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Kıyı",
+   "ilce": "Sarıyer",
+   "adres": "Haydar Aliyev Caddesi No:186/A, Tarabya, Sarıyer",
+   "koordinat": null,
+   "tur": "Balık restoranı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site kiyi.com.tr (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Fish and Seafood\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/k%C4%B1y%C4%B1",
+    "https://www.kiyi.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "lokanta-limu-sariyer",
+   "ref": "isletme/lokanta-limu-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Lokanta Limu",
+   "ilce": "Sarıyer",
+   "adres": "Köybaşı Caddesi No:158 D:B, Yeniköy, Sarıyer",
+   "koordinat": null,
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site lokantalimu.com (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Turkish\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-limu",
+    "https://www.lokantalimu.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ruby-besiktas",
+   "ref": "isletme/ruby-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Ruby",
+   "ilce": "Beşiktaş",
+   "adres": "Ortaköy Salhanesi Sokak No:5, Yıldız Mahallesi, Beşiktaş",
+   "koordinat": null,
+   "tur": "Akdeniz mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site rubyistanbul.com (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Mediterranean Cuisine\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/ruby",
+    "https://www.rubyistanbul.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "spago-istanbul-by-wolfgang-puck-sisli",
+   "ref": "isletme/spago-istanbul-by-wolfgang-puck-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Spago Istanbul by Wolfgang Puck",
+   "ilce": "Şişli",
+   "adres": "Mim Kemal Öke Caddesi No:35, The St. Regis Istanbul, Şişli",
+   "koordinat": null,
+   "tur": "Uluslararası mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site marriott.com (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"International\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/spago-1195842",
+    "https://www.marriott.com/en-us/hotels/istxr-the-st-regis-istanbul/dining/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "st-regis-brasserie-sisli",
+   "ref": "isletme/st-regis-brasserie-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "St. Regis Brasserie",
+   "ilce": "Şişli",
+   "adres": "Mim Kemal Öke Caddesi No:35, The St. Regis Istanbul, Şişli",
+   "koordinat": null,
+   "tur": "Uluslararası mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site marriott.com (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"International\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/st-regis-brasserie",
+    "https://www.marriott.com/en-us/hotels/istxr-the-st-regis-istanbul/dining/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "telezzuz-uskudar",
+   "ref": "isletme/telezzuz-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Telezzüz",
+   "ilce": "Üsküdar",
+   "adres": "Kuşbakışı Caddesi No:16, Koç Topluluğu Spor Kulübü, Kuzguncuk, Üsküdar",
+   "koordinat": null,
+   "tur": "Vegan",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site telezzuz.com (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Vegan\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/telezzuz",
+    "https://www.telezzuz.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "the-barn-silivri",
+   "ref": "isletme/the-barn-silivri",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "The BARN",
+   "ilce": "Silivri",
+   "adres": "Akören Caddesi No:114, Ören Çiftliği, Gazitepe Mahallesi, Silivri",
+   "koordinat": null,
+   "tur": "Avrupa bölge mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site grandmaswonderland.com (ad + telefon eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Regional European\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/the-barn-1215529",
+    "https://www.grandmaswonderland.com/en/the-barn/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "the-red-balloon-beyoglu",
+   "ref": "isletme/the-red-balloon-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "The Red Balloon",
+   "ilce": "Beyoğlu",
+   "adres": "İstiklal Caddesi No:153/4, Kuloğlu Mahallesi, Beyoğlu",
+   "koordinat": null,
+   "tur": "Akdeniz mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site)",
+   "sinif": "A-konumsuz",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site theredballoon.com.tr (ad + telefon eşleşti (2026-11-11)) · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi \"Mediterranean Cuisine\" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/the-red-balloon",
+    "https://theredballoon.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  }
+ ]
+}
