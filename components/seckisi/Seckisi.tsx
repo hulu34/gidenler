@@ -3,6 +3,7 @@ import { realVenueRecords } from "@/data/real";
 import { KIND_LABEL, SECTION_LABEL, articlesForVenue, labelOf, fmtDay, fmtStamp, hrefOf, type Article, type Block, type Event, type Lang, type SectionKey } from "@/lib/seckisi";
 import { UI, t } from "./ui";
 import { SeckiVideos } from "./SeckiVideos";
+import { RestaurantPickGrid } from "@/components/home/HomeSecki";
 
 /* ──────────────────────────────────────────────────────────────────────────
    GİDENLER SEÇKİSİ — dergi görünümü. Sunucu bileşenleri; istemciye JS gitmez.
@@ -280,6 +281,19 @@ export function SeckiHome({ lang, list, groups, review }: {
           </h1>
           <p className="mt-4 text-[clamp(1.35rem,3vw,2rem)] font-extrabold leading-tight tracking-[-0.03em]">{t(UI.tagline, lang)}</p>
           <p className="mt-3 max-w-[52ch] font-[family-name:var(--font-read)] text-[18px] leading-[1.45] text-ink-2">{t(UI.intro, lang)}</p>
+
+          {lang === "tr" && (
+            <section aria-labelledby="h-restoran-seckisi" className="mt-8 border-t-2 border-line-strong pt-6 sm:mt-10">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <p className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-accent-ink">Şimdi radarımızda</p>
+                  <h2 id="h-restoran-seckisi" className="mt-1 text-[clamp(1.7rem,4vw,2.6rem)] font-extrabold leading-none tracking-[-0.035em]">6 restoran, 6 ayrı İstanbul hali</h2>
+                </div>
+                <p className="max-w-[38ch] text-[12px] leading-snug text-ink-3">Gerçek işletme profilleri ve 11 Kasım 2026'da kontrol edilen resmî kaynaklar.</p>
+              </div>
+              <RestaurantPickGrid className="mt-5" />
+            </section>
+          )}
 
           {lead && <div className="mt-8 border-t-2 sm:mt-10 border-line-strong pt-6"><p className="mb-5 text-[11px] font-bold uppercase tracking-[0.2em]">{SECTION_LABEL.hikaye[lang]}</p><Lead a={lead} lang={lang} /></div>}
 
