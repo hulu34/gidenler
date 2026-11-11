@@ -1,0 +1,4194 @@
+{
+ "_aciklama": "İstanbul restoran B1 paketi (dalga 8). A DEĞİL: faaliyet güçlü kanıtlı ve tür kaynaklı; adres sokak (+ mahalle) düzeyinde, kapı numarası yok. Sahip onayı 2026-11-11. venues.json'a eklenmedi. Kaynak: OpenStreetMap (© OpenStreetMap katkıcıları, ODbL). Google verisi kullanılmadı.",
+ "osmTarihi": "2026-11-10T20:20:48Z",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "sultan-kosesi-fatih",
+   "ref": "node/3090816363",
+   "ad": "Sultan Köşesi",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Sultan Ahmet Mahallesi",
+   "sokak": "Küçük Ayasofya Caddesi",
+   "adres": "Küçük Ayasofya Caddesi, Sultan Ahmet Mahallesi, Fatih",
+   "koordinat": [
+    41.004157,
+    28.976353
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-09-30",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-10-01, changeset 172727626)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3090816363",
+    "https://www.openstreetmap.org/changeset/172727626"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burgerlab-beyoglu",
+   "ref": "node/3453711783",
+   "ad": "Burgerlab",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Dericiler Sokağı",
+   "adres": "Dericiler Sokağı, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.02553,
+    28.979827
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3453711783",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "etiler-marmaris-levent-mahallesi-besiktas",
+   "ref": "node/4053740055",
+   "ad": "Etiler Marmaris",
+   "zincir": "etiler marmaris",
+   "sube": "Levent Mahallesi",
+   "ilce": "Beşiktaş",
+   "mahalle": "Levent Mahallesi",
+   "sokak": "Nisbetiye Caddesi",
+   "adres": "Nisbetiye Caddesi, Levent Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.075709,
+    29.019275
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle aynı bölümde"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4053740055",
+    "https://www.openstreetmap.org/changeset/185772983"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "paps-beyoglu",
+   "ref": "node/4157059692",
+   "ad": "Paps",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Karatavuk Sokak",
+   "adres": "Karatavuk Sokak, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.024596,
+    28.978737
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "italian"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4157059692",
+    "https://www.openstreetmap.org/changeset/182009047"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "midyeci-sukru-usta-sancaktepe",
+   "ref": "node/4567390808",
+   "ad": "Midyeci Şükrü Usta",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Sancaktepe",
+   "mahalle": "İnönü Mahallesi",
+   "sokak": "Demokrasi Caddesi",
+   "adres": "Demokrasi Caddesi, İnönü Mahallesi, Sancaktepe",
+   "koordinat": [
+    41.008698,
+    29.214053
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-10-27, changeset 191108827)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4567390808",
+    "https://www.openstreetmap.org/changeset/191108827"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "bilakis-sisli",
+   "ref": "node/4580182353",
+   "ad": "Bilakis",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Şişli",
+   "mahalle": "Esentepe Mahallesi",
+   "sokak": "Dede Korkut Sokağı",
+   "adres": "Dede Korkut Sokağı, Esentepe Mahallesi, Şişli",
+   "koordinat": [
+    41.077318,
+    29.013036
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-08-02"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4580182353",
+    "https://www.openstreetmap.org/changeset/186791275"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "kilciksiz-balik-beyoglu",
+   "ref": "node/4736291422",
+   "ad": "Kılçıksız Balık",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Kemankeş Caddesi",
+   "adres": "Kemankeş Caddesi, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.021927,
+    28.976133
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "fish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4736291422",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "napoli-gusto-beyoglu",
+   "ref": "node/4883625122",
+   "ad": "Napoli Gusto",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Tomtom",
+   "sokak": "Boğazkesen Caddesi",
+   "adres": "Boğazkesen Caddesi, Tomtom, Beyoğlu",
+   "koordinat": [
+    41.029647,
+    28.979367
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "italian"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-23",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-23, changeset 190919624)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4883625122",
+    "https://www.openstreetmap.org/changeset/190919624"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "pizza-vegas-beyoglu",
+   "ref": "node/4889069521",
+   "ad": "Pizza Vegas",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kuloğlu",
+   "sokak": "Adile Naşit Çıkmazı Sokağı",
+   "adres": "Adile Naşit Çıkmazı Sokağı, Kuloğlu, Beyoğlu",
+   "koordinat": [
+    41.032467,
+    28.98234
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-05",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-04-05, changeset 164554749)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4889069521",
+    "https://www.openstreetmap.org/changeset/164554749"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "turgut-fatih",
+   "ref": "node/5108836414",
+   "ad": "Turgut",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Hocapaşa Mahallesi",
+   "sokak": "Hoca Paşa Sokak",
+   "adres": "Hoca Paşa Sokak, Hocapaşa Mahallesi, Fatih",
+   "koordinat": [
+    41.013611,
+    28.975528
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-21",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-12-23, changeset 176290757)"
+   ],
+   "eksik": [
+    "kapı numarası",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5108836414",
+    "https://www.openstreetmap.org/changeset/176290757"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "etiler-marmaris-mimar-sinan-mahallesi-cekmekoy",
+   "ref": "node/5289269967",
+   "ad": "Etiler Marmaris",
+   "zincir": "etiler marmaris",
+   "sube": "Mimar Sinan Mahallesi",
+   "ilce": "Çekmeköy",
+   "mahalle": "Mimar Sinan Mahallesi",
+   "sokak": "Mimar Sinan Caddesi",
+   "adres": "Mimar Sinan Caddesi, Mimar Sinan Mahallesi, Çekmeköy",
+   "koordinat": [
+    41.031154,
+    29.183466
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle aynı bölümde"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5289269967",
+    "https://www.openstreetmap.org/changeset/179852434"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-tuzla-kent-lokantasi-postane-tuzla",
+   "ref": "node/5313431486",
+   "ad": "İBB Tuzla Kent Lokantası",
+   "zincir": "ibb",
+   "sube": "Postane",
+   "ilce": "Tuzla",
+   "mahalle": "Postane",
+   "sokak": "Erman Aydıner Sokağı",
+   "adres": "Erman Aydıner Sokağı, Postane, Tuzla",
+   "koordinat": [
+    40.819546,
+    29.305449
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"TUZLA KENT LOKANTASI\", 13 m"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5313431486"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "fatih-belediyesi-catladikapi-sosyal-tesisi-fatih",
+   "ref": "node/6662592985",
+   "ad": "Fatih Belediyesi çatladikapi sosyal tesisi",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Küçük Ayasofya Mahallesi",
+   "sokak": "Avrasya",
+   "adres": "Avrasya, Küçük Ayasofya Mahallesi, Fatih",
+   "koordinat": [
+    41.001667,
+    28.973533
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-09-30",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-10-01, changeset 172727626)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6662592985",
+    "https://www.openstreetmap.org/changeset/172727626"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "cafe-berry-beyoglu",
+   "ref": "node/7087535985",
+   "ad": "Cafe Berry",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kalyoncu Kulluğu",
+   "sokak": "Ömer Hayyam Caddesi",
+   "adres": "Ömer Hayyam Caddesi, Kalyoncu Kulluğu, Beyoğlu",
+   "koordinat": [
+    41.036279,
+    28.975306
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-11-26",
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-11-26, changeset 175143377)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7087535985",
+    "https://www.openstreetmap.org/changeset/175143377"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "bitlisli-fatih",
+   "ref": "node/7896553385",
+   "ad": "Bitlisli",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Hocapaşa Mahallesi",
+   "sokak": "Hoca Paşa Sokağı",
+   "adres": "Hoca Paşa Sokağı, Hocapaşa Mahallesi, Fatih",
+   "koordinat": [
+    41.013711,
+    28.975576
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "regional"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-12",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-13, changeset 181273498)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7896553385",
+    "https://www.openstreetmap.org/changeset/181273498"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "dubb-ethnic-fatih",
+   "ref": "node/7906079586",
+   "ad": "Dubb Ethnic",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Cankurtaran Mahallesi",
+   "sokak": "Amiral Tafdil Sokağı",
+   "adres": "Amiral Tafdil Sokağı, Cankurtaran Mahallesi, Fatih",
+   "koordinat": [
+    41.004345,
+    28.98001
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-22",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-23, changeset 190919624)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7906079586",
+    "https://www.openstreetmap.org/changeset/190919624"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "olimpiyat-restaurant-beyoglu",
+   "ref": "node/8324180074",
+   "ad": "Olimpiyat Restaurant",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Kemankeş Caddesi",
+   "adres": "Kemankeş Caddesi, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.021909,
+    28.976014
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "local"
+    },
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/8324180074",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hacia-munir-bey-fatih",
+   "ref": "node/8839753117",
+   "ad": "Hacia Münir Bey",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Hobyar Mahallesi",
+   "sokak": "Hamidiye Türbesi Sokağı",
+   "adres": "Hamidiye Türbesi Sokağı, Hobyar Mahallesi, Fatih",
+   "koordinat": [
+    41.01535,
+    28.974288
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-22",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-23, changeset 190919624)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/8839753117",
+    "https://www.openstreetmap.org/changeset/190919624"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-cihannuma-mahallesi-besiktas",
+   "ref": "node/9255321591",
+   "ad": "HD İskender",
+   "zincir": "hd iskender",
+   "sube": "Cihannüma Mahallesi",
+   "ilce": "Beşiktaş",
+   "mahalle": "Cihannüma Mahallesi",
+   "sokak": "Barbaros Bulvarı",
+   "adres": "Barbaros Bulvarı, Cihannüma Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.044067,
+    29.006852
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle aynı bölümde"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9255321591",
+    "https://www.openstreetmap.org/changeset/161254992"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "keniya-cafe-kadikoy",
+   "ref": "node/9697360118",
+   "ad": "Keniya cafe",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Rasimpaşa Mahallesi",
+   "sokak": "Yavuztürk Sokak",
+   "adres": "Yavuztürk Sokak, Rasimpaşa Mahallesi, Kadıköy",
+   "koordinat": [
+    40.992249,
+    29.031289
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-11-01",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-11-01, changeset 174061568)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9697360118",
+    "https://www.openstreetmap.org/changeset/174061568"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "kudus-seka-beyoglu",
+   "ref": "node/9928413717",
+   "ad": "Kudus Seka",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Hüseyinağa",
+   "sokak": "Atıf Yılmaz Caddesi",
+   "adres": "Atıf Yılmaz Caddesi, Hüseyinağa, Beyoğlu",
+   "koordinat": [
+    41.035338,
+    28.980409
+   ],
+   "tur": "Dünya mutfağı",
+   "mutfak": [
+    {
+     "id": "dunya",
+     "ad": "Diğer dünya mutfakları",
+     "kaynak": "osm_cuisine",
+     "deger": "arab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-21",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-22, changeset 190864529)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9928413717",
+    "https://www.openstreetmap.org/changeset/190864529"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sabirtasi-restoran-beyoglu",
+   "ref": "node/9950496818",
+   "ad": "Sabirtaşi restoran",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Asmalı Mescit",
+   "sokak": "İstiklal Caddesi",
+   "adres": "İstiklal Caddesi, Asmalı Mescit, Beyoğlu",
+   "koordinat": [
+    41.0331,
+    28.976617
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "eksik": [
+    "kapı numarası",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9950496818",
+    "https://www.openstreetmap.org/changeset/152992211"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "nizam-pide-beyoglu",
+   "ref": "node/9950496821",
+   "ad": "Nizam Pide",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Katip Mustafa Çelebi Mahallesi",
+   "sokak": "Büyük Parmakkapı Sokağı",
+   "adres": "Büyük Parmakkapı Sokağı, Katip Mustafa Çelebi Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.034888,
+    28.982313
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "regional"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-15",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-15, changeset 181381000)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9950496821",
+    "https://www.openstreetmap.org/changeset/181381000"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "capari-fatih",
+   "ref": "node/10178438647",
+   "ad": "Çapari",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Şehsuvar Bey Mahallesi",
+   "sokak": "Kömürcü Mustafa Sokağı",
+   "adres": "Kömürcü Mustafa Sokağı, Şehsuvar Bey Mahallesi, Fatih",
+   "koordinat": [
+    41.003616,
+    28.965053
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-10-24, changeset 173728175)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10178438647",
+    "https://www.openstreetmap.org/changeset/173728175"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-suadiye-mahallesi-kadikoy",
+   "ref": "node/10291621610",
+   "ad": "Burger Yiyelim",
+   "zincir": "burger yiyelim",
+   "sube": "Suadiye Mahallesi",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "sokak": "Bağdat Caddesi",
+   "adres": "Bağdat Caddesi, Suadiye Mahallesi, Kadıköy",
+   "koordinat": [
+    40.959281,
+    29.082308
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle aynı bölümde"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10291621610",
+    "https://www.openstreetmap.org/changeset/190417616"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "eagle-chinese-gastro-ve-sushi-sisli",
+   "ref": "node/10925711787",
+   "ad": "Eagle chinese gastro & sushi",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Şişli",
+   "mahalle": "Bomonti",
+   "sokak": "Kazım Orbay Caddesi",
+   "adres": "Kazım Orbay Caddesi, Bomonti, Şişli",
+   "koordinat": [
+    41.06089,
+    28.983477
+   ],
+   "tur": "Asya mutfağı",
+   "mutfak": [
+    {
+     "id": "asya",
+     "ad": "Çin, Kore, Tayland ve diğer Asya",
+     "kaynak": "osm_cuisine",
+     "deger": "asian"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10925711787",
+    "https://www.openstreetmap.org/changeset/182577967"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "anka-mutfagi-sancaktepe",
+   "ref": "node/11506468662",
+   "ad": "Anka Mutfağı",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Sancaktepe",
+   "mahalle": "Akpınar Mahallesi",
+   "sokak": "Gülhane Caddesi",
+   "adres": "Gülhane Caddesi, Akpınar Mahallesi, Sancaktepe",
+   "koordinat": [
+    40.965337,
+    29.234973
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-01-11",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-01-11, changeset 177091749)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11506468662",
+    "https://www.openstreetmap.org/changeset/177091749"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-bagcilar-kent-lokantasi-cinar-mahallesi-bagcilar",
+   "ref": "node/11528657994",
+   "ad": "İBB Bağcılar Kent Lokantası",
+   "zincir": "ibb",
+   "sube": "Çınar Mahallesi",
+   "ilce": "Bağcılar",
+   "mahalle": "Çınar Mahallesi",
+   "sokak": "Osman Gazi Caddesi",
+   "adres": "Osman Gazi Caddesi, Çınar Mahallesi, Bağcılar",
+   "koordinat": [
+    41.037343,
+    28.859051
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"BAĞCILAR KENT LOKANTASI\", 4 m"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528657994"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-kucukcekmece-kent-lokantasi-gultepe-mahallesi-kucukcekmece",
+   "ref": "node/11528657997",
+   "ad": "İBB Küçükçekmece Kent Lokantası",
+   "zincir": "ibb",
+   "sube": "Gültepe Mahallesi",
+   "ilce": "Küçükçekmece",
+   "mahalle": "Gültepe Mahallesi",
+   "sokak": "Şehit Mahmut Ergül Sokağı",
+   "adres": "Şehit Mahmut Ergül Sokağı, Gültepe Mahallesi, Küçükçekmece",
+   "koordinat": [
+    40.994702,
+    28.794579
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"KÜÇÜKÇEKMECE KENT LOKANTASI\", 3 m"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528657997"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-uskudar-kent-lokantasi-mimar-sinan-mahallesi-uskudar",
+   "ref": "node/11528658001",
+   "ad": "İBB Üsküdar Kent Lokantası",
+   "zincir": "ibb",
+   "sube": "Mimar Sinan Mahallesi",
+   "ilce": "Üsküdar",
+   "mahalle": "Mimar Sinan Mahallesi",
+   "sokak": "Büyük Hamam Sokağı",
+   "adres": "Büyük Hamam Sokağı, Mimar Sinan Mahallesi, Üsküdar",
+   "koordinat": [
+    41.023413,
+    29.017097
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"ÜSKÜDAR KENT LOKANTASI\", 71 m"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528658001"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "yakamoz-balik-beyoglu",
+   "ref": "node/11948392714",
+   "ad": "Yakamoz Balık",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Arap Cami",
+   "sokak": "Dikişçi Sokağı",
+   "adres": "Dikişçi Sokağı, Arap Cami, Beyoğlu",
+   "koordinat": [
+    41.022201,
+    28.971713
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11948392714",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-ataturk-mahallesi-umraniye",
+   "ref": "node/12055675511",
+   "ad": "Burger Yiyelim",
+   "zincir": "burger yiyelim",
+   "sube": "Atatürk Mahallesi",
+   "ilce": "Ümraniye",
+   "mahalle": "Atatürk Mahallesi",
+   "sokak": "Alemdağ Caddesi",
+   "adres": "Alemdağ Caddesi, Atatürk Mahallesi, Ümraniye",
+   "koordinat": [
+    41.024592,
+    29.086515
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle aynı bölümde"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12055675511",
+    "https://www.openstreetmap.org/changeset/153982076"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-yenisehir-mahallesi-pendik",
+   "ref": "node/12137419646",
+   "ad": "HD İskender",
+   "zincir": "hd iskender",
+   "sube": "Yenişehir Mahallesi",
+   "ilce": "Pendik",
+   "mahalle": "Yenişehir Mahallesi",
+   "sokak": "Dedepaşa Bulvarı",
+   "adres": "Dedepaşa Bulvarı, Yenişehir Mahallesi, Pendik",
+   "koordinat": [
+    40.938713,
+    29.323551
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle aynı bölümde"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12137419646",
+    "https://www.openstreetmap.org/changeset/166245930"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hemserim-durum-evi-pendik",
+   "ref": "node/12163107677",
+   "ad": "Hemşerim Dürüm Evi",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Pendik",
+   "mahalle": "Yeni Mahallesi",
+   "sokak": "Abdülhalik Renda Caddesi",
+   "adres": "Abdülhalik Renda Caddesi, Yeni Mahallesi, Pendik",
+   "koordinat": [
+    40.881078,
+    29.232765
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-07",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-09-07, changeset 188666667)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12163107677",
+    "https://www.openstreetmap.org/changeset/188666667"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-caferaga-mahallesi-kadikoy",
+   "ref": "node/12486812659",
+   "ad": "HD İskender",
+   "zincir": "hd iskender",
+   "sube": "Caferağa Mahallesi",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "sokak": "Mühürdar Caddesi",
+   "adres": "Mühürdar Caddesi, Caferağa Mahallesi, Kadıköy",
+   "koordinat": [
+    40.989262,
+    29.023631
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle aynı bölümde"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12486812659",
+    "https://www.openstreetmap.org/changeset/165958342"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "akoguz-izgara-ve-ev-yemekleri-kadikoy",
+   "ref": "node/12504254170",
+   "ad": "Akoğuz Izgara ve Ev Yemekleri",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Rasimpaşa Mahallesi",
+   "sokak": "Yurttaş Sokağı",
+   "adres": "Yurttaş Sokağı, Rasimpaşa Mahallesi, Kadıköy",
+   "koordinat": [
+    40.994786,
+    29.029655
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-24",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-25, changeset 190998919)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12504254170",
+    "https://www.openstreetmap.org/changeset/190998919"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "taebaek-beyoglu",
+   "ref": "node/12510989012",
+   "ad": "Taebaek",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kocatepe Mahallesi",
+   "sokak": "Lamartin Caddesi",
+   "adres": "Lamartin Caddesi, Kocatepe Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.040518,
+    28.984437
+   ],
+   "tur": "Asya mutfağı",
+   "mutfak": [
+    {
+     "id": "asya",
+     "ad": "Çin, Kore, Tayland ve diğer Asya",
+     "kaynak": "osm_cuisine",
+     "deger": "korean"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-17",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-17, changeset 161471815)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12510989012",
+    "https://www.openstreetmap.org/changeset/161471815"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "taksim-gece-donercisi-beyoglu",
+   "ref": "node/12510989043",
+   "ad": "Taksim Gece Dönercisi",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Şehit Muhtar",
+   "sokak": "Feridiye Caddesi",
+   "adres": "Feridiye Caddesi, Şehit Muhtar, Beyoğlu",
+   "koordinat": [
+    41.03798,
+    28.983575
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-17",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-17, changeset 161471815)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12510989043",
+    "https://www.openstreetmap.org/changeset/161471815"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "may-doner-hatay-usulu-beyoglu",
+   "ref": "node/12510989044",
+   "ad": "May Döner Hatay Usulü",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kocatepe Mahallesi",
+   "sokak": "Feridiye Caddesi",
+   "adres": "Feridiye Caddesi, Kocatepe Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.038256,
+    28.983558
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-17",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-17, changeset 161471815)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12510989044",
+    "https://www.openstreetmap.org/changeset/161471815"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "34-istanbul-doner-beyoglu",
+   "ref": "node/12512830899",
+   "ad": "34 İstanbul Döner",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Havyar Han İçi Sokağı",
+   "adres": "Havyar Han İçi Sokağı, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.022584,
+    28.975447
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512830899",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "san-marino-balik-durum-beyoglu",
+   "ref": "node/12512830900",
+   "ad": "San Marino Balık Dürüm",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Havyar Han İçi Sokağı",
+   "adres": "Havyar Han İçi Sokağı, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.022529,
+    28.975452
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    },
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512830900",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "kilavuz-doner-beyoglu",
+   "ref": "node/12512834707",
+   "ad": "Kılavuz Döner",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Gümrük Sokağı",
+   "adres": "Gümrük Sokağı, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.023051,
+    28.97641
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834707",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "dem-balik-beyoglu",
+   "ref": "node/12512834715",
+   "ad": "Dem Balık",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Arap Cami",
+   "sokak": "Fermeneciler Caddesi",
+   "adres": "Fermeneciler Caddesi, Arap Cami, Beyoğlu",
+   "koordinat": [
+    41.022275,
+    28.972124
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834715",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "pera-port-lounge-beyoglu",
+   "ref": "node/12512834723",
+   "ad": "Pera Port Lounge",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Ali Paşa Değirmeni Sokağı",
+   "adres": "Ali Paşa Değirmeni Sokağı, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.025826,
+    28.979956
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-23",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-23, changeset 190919624)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834723",
+    "https://www.openstreetmap.org/changeset/190919624"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "homeless-chef-beyoglu",
+   "ref": "node/12512834731",
+   "ad": "Homeless Chef",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Mumhane Caddesi",
+   "adres": "Mumhane Caddesi, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.025562,
+    28.980179
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834731",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "chuck-beyoglu",
+   "ref": "node/12512834732",
+   "ad": "Chuck",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Mumhane Caddesi",
+   "adres": "Mumhane Caddesi, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.02549,
+    28.9801
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834732",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ocean-fish-house-beyoglu",
+   "ref": "node/12512834756",
+   "ad": "Ocean Fish House",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Mumhane Caddesi",
+   "adres": "Mumhane Caddesi, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.024126,
+    28.978185
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834756",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "galata-rihtim-balikcisi-beyoglu",
+   "ref": "node/12512834757",
+   "ad": "Galata Rıhtım Balıkçısı",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Galata Sarap İskelesi Sokağı",
+   "adres": "Galata Sarap İskelesi Sokağı, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.023887,
+    28.978296
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834757",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "assaggio-beyoglu",
+   "ref": "node/12512834761",
+   "ad": "Assaggio",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Hoca Tahsin Sokağı",
+   "adres": "Hoca Tahsin Sokağı, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.025059,
+    28.978758
+   ],
+   "tur": "Sokak lezzeti",
+   "mutfak": [
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834761",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "meshur-karakoy-balik-durumcusu-beyoglu",
+   "ref": "node/12512834766",
+   "ad": "Meşhur Karaköy Balık Dürümcüsü",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Kemankeş Caddesi",
+   "adres": "Kemankeş Caddesi, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.022464,
+    28.976967
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-20",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-12-23, changeset 176290757)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834766",
+    "https://www.openstreetmap.org/changeset/176290757"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "yelkenci-karakoy-beyoglu",
+   "ref": "node/12512834774",
+   "ad": "Yelkenci Karaköy",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Arap Cami",
+   "sokak": "Fermeneciler Caddesi",
+   "adres": "Fermeneciler Caddesi, Arap Cami, Beyoğlu",
+   "koordinat": [
+    41.022269,
+    28.97263
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834774",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "baracuda-beyoglu",
+   "ref": "node/12512834775",
+   "ad": "Baracuda",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Arap Cami",
+   "sokak": "Fermeneciler Caddesi",
+   "adres": "Fermeneciler Caddesi, Arap Cami, Beyoğlu",
+   "koordinat": [
+    41.02227,
+    28.972539
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834775",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "liman-karakoy-beyoglu",
+   "ref": "node/12512834776",
+   "ad": "Liman Karaköy",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Arap Cami",
+   "sokak": "Fermeneciler Caddesi",
+   "adres": "Fermeneciler Caddesi, Arap Cami, Beyoğlu",
+   "koordinat": [
+    41.022266,
+    28.97246
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834776",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "fish-house-karakoy-beyoglu",
+   "ref": "node/12512834777",
+   "ad": "Fish House Karaköy",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Arap Cami",
+   "sokak": "Fermeneciler Caddesi",
+   "adres": "Fermeneciler Caddesi, Arap Cami, Beyoğlu",
+   "koordinat": [
+    41.022269,
+    28.972371
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834777",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "street-food-karakoy-beyoglu",
+   "ref": "node/12512834778",
+   "ad": "Street Food Karaköy",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Arap Cami",
+   "sokak": "Fermeneciler Caddesi",
+   "adres": "Fermeneciler Caddesi, Arap Cami, Beyoğlu",
+   "koordinat": [
+    41.022273,
+    28.972288
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834778",
+    "https://www.openstreetmap.org/changeset/161503474"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "pasa-atasehir",
+   "ref": "node/12666715276",
+   "ad": "Paşa",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Ataşehir",
+   "mahalle": "Fetih Mahallesi",
+   "sokak": "Eski Çiftlik Yolu Caddesi",
+   "adres": "Eski Çiftlik Yolu Caddesi, Fetih Mahallesi, Ataşehir",
+   "koordinat": [
+    41.002002,
+    29.076331
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-03-15, changeset 163652130)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12666715276",
+    "https://www.openstreetmap.org/changeset/163652130"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "firinda-pizza-atasehir",
+   "ref": "node/12666735718",
+   "ad": "Fırında Pizza",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Ataşehir",
+   "mahalle": "Esatpaşa Mahallesi",
+   "sokak": "Regaip Sokağı",
+   "adres": "Regaip Sokağı, Esatpaşa Mahallesi, Ataşehir",
+   "koordinat": [
+    41.006652,
+    29.08121
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-03-15, changeset 163652130)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12666735718",
+    "https://www.openstreetmap.org/changeset/163652130"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "yunus-un-yeri-sancaktepe",
+   "ref": "node/12676959695",
+   "ad": "Yunus'un Yeri",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Sancaktepe",
+   "mahalle": "Eyüp Sultan Mahallesi",
+   "sokak": "Osmangazi Caddesi",
+   "adres": "Osmangazi Caddesi, Eyüp Sultan Mahallesi, Sancaktepe",
+   "koordinat": [
+    40.98544,
+    29.228969
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-03-18, changeset 163782457)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12676959695",
+    "https://www.openstreetmap.org/changeset/163782457"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "davuuk-durum-sancaktepe",
+   "ref": "node/12676979386",
+   "ad": "Davuuk Dürüm",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Sancaktepe",
+   "mahalle": "Abdurrahmangazi Mahallesi",
+   "sokak": "Aydemir Sokağı",
+   "adres": "Aydemir Sokağı, Abdurrahmangazi Mahallesi, Sancaktepe",
+   "koordinat": [
+    40.988269,
+    29.228452
+   ],
+   "tur": "Tavuk",
+   "mutfak": [
+    {
+     "id": "tavuk",
+     "ad": "Tavuk",
+     "kaynak": "osm_cuisine",
+     "deger": "chicken"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-03-18, changeset 163782457)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12676979386",
+    "https://www.openstreetmap.org/changeset/163782457"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "cunda-balik-kadikoy",
+   "ref": "node/12677573284",
+   "ad": "Cunda Balık",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Bostancı Mahallesi",
+   "sokak": "Yazmacı Tahir Sokağı",
+   "adres": "Yazmacı Tahir Sokağı, Bostancı Mahallesi, Kadıköy",
+   "koordinat": [
+    40.953427,
+    29.093822
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-03-18, changeset 163795553)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12677573284",
+    "https://www.openstreetmap.org/changeset/163795553"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "port-cafe-beyoglu",
+   "ref": "node/12723319914",
+   "ad": "Port Cafe",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Pürtelaş Hasan Efendi",
+   "sokak": "Tekke Yokuşu Sokağı",
+   "adres": "Tekke Yokuşu Sokağı, Pürtelaş Hasan Efendi, Beyoğlu",
+   "koordinat": [
+    41.030773,
+    28.988536
+   ],
+   "tur": "Dönerci",
+   "mutfak": [
+    {
+     "id": "doner",
+     "ad": "Döner",
+     "kaynak": "osm_cuisine",
+     "deger": "doner"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-02",
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-04-08, changeset 164665891)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12723319914",
+    "https://www.openstreetmap.org/changeset/164665891"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "derya-fatih",
+   "ref": "node/12729221281",
+   "ad": "Derya",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Rüstempaşa Mahallesi",
+   "sokak": "Kızılhan Sokağı",
+   "adres": "Kızılhan Sokağı, Rüstempaşa Mahallesi, Fatih",
+   "koordinat": [
+    41.018528,
+    28.970745
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "fish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-04",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-04-04, changeset 164515856)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12729221281",
+    "https://www.openstreetmap.org/changeset/164515856"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "nori-beyoglu",
+   "ref": "node/12731365450",
+   "ad": "Nori",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kuloğlu",
+   "sokak": "Altıpatlar Sokağı",
+   "adres": "Altıpatlar Sokağı, Kuloğlu, Beyoğlu",
+   "koordinat": [
+    41.032165,
+    28.981814
+   ],
+   "tur": "Sushi / Japon",
+   "mutfak": [
+    {
+     "id": "japon",
+     "ad": "Japon, sushi ve ramen",
+     "kaynak": "osm_cuisine",
+     "deger": "sushi"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-05",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-04-05, changeset 164554598)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12731365450",
+    "https://www.openstreetmap.org/changeset/164554598"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ulas-balikciluk-beyoglu",
+   "ref": "node/12731459849",
+   "ad": "Ulas Balikciluk",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kuloğlu",
+   "sokak": "Liva Sokağı",
+   "adres": "Liva Sokağı, Kuloğlu, Beyoğlu",
+   "koordinat": [
+    41.032968,
+    28.982393
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "fish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-05",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-04-05, changeset 164557842)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12731459849",
+    "https://www.openstreetmap.org/changeset/164557842"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "anadolu-lokantasi-tuzla",
+   "ref": "node/12792305427",
+   "ad": "Anadolu Lokantası",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Tuzla",
+   "mahalle": "Orhanlı",
+   "sokak": "Anadolu Otoyolu",
+   "adres": "Anadolu Otoyolu, Orhanlı, Tuzla",
+   "koordinat": [
+    40.919147,
+    29.350601
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    },
+    {
+     "id": "kahvalti",
+     "ad": "Kahvaltı ve brunch",
+     "kaynak": "osm_cuisine",
+     "deger": "breakfast"
+    },
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "tea"
+    },
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "dessert"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-27",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-04-27, changeset 165519593)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12792305427",
+    "https://www.openstreetmap.org/changeset/165519593"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "gurme-kofte-izgara-tuzla",
+   "ref": "node/12792305428",
+   "ad": "Gurme Köfte Izgara",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Tuzla",
+   "mahalle": "Orhanlı",
+   "sokak": "Anadolu Otoyolu",
+   "adres": "Anadolu Otoyolu, Orhanlı, Tuzla",
+   "koordinat": [
+    40.919239,
+    29.350574
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    },
+    {
+     "id": "vegan",
+     "ad": "Vegan / vejetaryen",
+     "kaynak": "osm_cuisine",
+     "deger": "salad"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-27",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-04-27, changeset 165519593)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12792305428",
+    "https://www.openstreetmap.org/changeset/165519593"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hero-s-pizza-uskudar",
+   "ref": "node/12809540191",
+   "ad": "Hero's Pizza",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Mimar Sinan Mahallesi",
+   "sokak": "Doktor Fahri Atabey Caddesi",
+   "adres": "Doktor Fahri Atabey Caddesi, Mimar Sinan Mahallesi, Üsküdar",
+   "koordinat": [
+    41.019348,
+    29.019435
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-05-04, changeset 165801644)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12809540191",
+    "https://www.openstreetmap.org/changeset/165801644"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ha-bu-doner-gece-donercisi-kadikoy",
+   "ref": "node/12817709773",
+   "ad": "Ha Bu Döner Gece Dönercisi",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Sahrayıcedit Mahallesi",
+   "sokak": "Halk Sokağı",
+   "adres": "Halk Sokağı, Sahrayıcedit Mahallesi, Kadıköy",
+   "koordinat": [
+    40.983051,
+    29.092577
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-05-07",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-05-07, changeset 165950553)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12817709773",
+    "https://www.openstreetmap.org/changeset/165950553"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hunkar-pide-ve-borek-uskudar",
+   "ref": "node/12826155787",
+   "ad": "Hünkar Pide&Börek",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Mimar Sinan Mahallesi",
+   "sokak": "Tembel Hacı Mehmet Sokağı",
+   "adres": "Tembel Hacı Mehmet Sokağı, Mimar Sinan Mahallesi, Üsküdar",
+   "koordinat": [
+    41.024797,
+    29.01762
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-05-10, changeset 166078072)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12826155787",
+    "https://www.openstreetmap.org/changeset/166078072"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hunburger-uskudar",
+   "ref": "node/12828689378",
+   "ad": "Hunburger",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Valide-i Atik Mahallesi",
+   "sokak": "Tabaklar Meydanı Sokağı",
+   "adres": "Tabaklar Meydanı Sokağı, Valide-i Atik Mahallesi, Üsküdar",
+   "koordinat": [
+    41.018758,
+    29.020635
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-05-11, changeset 166116035)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12828689378",
+    "https://www.openstreetmap.org/changeset/166116035"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "furkan-patso-ve-burger-uskudar",
+   "ref": "node/12840385507",
+   "ad": "Furkan Patso&Burger",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Bulgurlu Mahallesi",
+   "sokak": "Birinci Sokağı",
+   "adres": "Birinci Sokağı, Bulgurlu Mahallesi, Üsküdar",
+   "koordinat": [
+    41.016837,
+    29.078836
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-05-15, changeset 166314745)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12840385507",
+    "https://www.openstreetmap.org/changeset/166314745"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-kent-lokantasi-incirtepe-mahallesi-esenyurt",
+   "ref": "node/12978271761",
+   "ad": "İBB Kent Lokantası",
+   "zincir": "ibb",
+   "sube": "İncirtepe Mahallesi",
+   "ilce": "Esenyurt",
+   "mahalle": "İncirtepe Mahallesi",
+   "sokak": "Doğan Araslı Bulvarı",
+   "adres": "Doğan Araslı Bulvarı, İncirtepe Mahallesi, Esenyurt",
+   "koordinat": [
+    41.019192,
+    28.688925
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"ESENYURT KENT LOKANTASI\", 7 m"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12978271761"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "carluccio-s-arnavutkoy",
+   "ref": "node/13202550550",
+   "ad": "Carluccio's",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Arnavutköy",
+   "mahalle": "Tayakadın Mahallesi",
+   "sokak": "Terminal Caddesi",
+   "adres": "Terminal Caddesi, Tayakadın Mahallesi, Arnavutköy",
+   "koordinat": [
+    41.26108,
+    28.740846
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "italian"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-10-08",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-10-08, changeset 173000135)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13202550550",
+    "https://www.openstreetmap.org/changeset/173000135"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "skin-chickens-arnavutkoy",
+   "ref": "node/13202550552",
+   "ad": "Skin Chickens",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Arnavutköy",
+   "mahalle": "Tayakadın Mahallesi",
+   "sokak": "Terminal Caddesi",
+   "adres": "Terminal Caddesi, Tayakadın Mahallesi, Arnavutköy",
+   "koordinat": [
+    41.261112,
+    28.741137
+   ],
+   "tur": "Tavuk",
+   "mutfak": [
+    {
+     "id": "tavuk",
+     "ad": "Tavuk",
+     "kaynak": "osm_cuisine",
+     "deger": "chicken"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-10-08",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-10-08, changeset 173000135)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13202550552",
+    "https://www.openstreetmap.org/changeset/173000135"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "guneli-firin-kadikoy",
+   "ref": "node/13305852360",
+   "ad": "Güneli Fırın",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Osmanağa Mahallesi",
+   "sokak": "Kıvanç Sokağı",
+   "adres": "Kıvanç Sokağı, Osmanağa Mahallesi, Kadıköy",
+   "koordinat": [
+    40.992026,
+    29.028906
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-11-15",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-11-15, changeset 174676242)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13305852360",
+    "https://www.openstreetmap.org/changeset/174676242"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "eski-usul-hamburger-doner-uskudar",
+   "ref": "node/13356060633",
+   "ad": "Eski Usul Hamburger Döner",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Aziz Mahmut Hüdayi Mahallesi",
+   "sokak": "Uncular Caddesi",
+   "adres": "Uncular Caddesi, Aziz Mahmut Hüdayi Mahallesi, Üsküdar",
+   "koordinat": [
+    41.023987,
+    29.015517
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-12-05, changeset 175557841)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13356060633",
+    "https://www.openstreetmap.org/changeset/175557841"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sushi-palace-fatih",
+   "ref": "node/13396860943",
+   "ad": "Sushi Palace",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Fatih",
+   "mahalle": "Cankurtaran Mahallesi",
+   "sokak": "İshakpaşa Caddesi",
+   "adres": "İshakpaşa Caddesi, Cankurtaran Mahallesi, Fatih",
+   "koordinat": [
+    41.006518,
+    28.981897
+   ],
+   "tur": "Sushi / Japon",
+   "mutfak": [
+    {
+     "id": "japon",
+     "ad": "Japon, sushi ve ramen",
+     "kaynak": "osm_cuisine",
+     "deger": "sushi"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-21",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-12-23, changeset 176290757)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13396860943",
+    "https://www.openstreetmap.org/changeset/176290757"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "azurro-pizza-napoletana-sisli",
+   "ref": "node/13776063921",
+   "ad": "Azurro Pizza Napoletana",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Şişli",
+   "mahalle": "Nişantaşı",
+   "sokak": "Kuyumcu İrfan Sokak",
+   "adres": "Kuyumcu İrfan Sokak, Nişantaşı, Şişli",
+   "koordinat": [
+    41.051598,
+    28.989851
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-04-29, changeset 181997652)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13776063921",
+    "https://www.openstreetmap.org/changeset/181997652"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "enda-cafe-sisli",
+   "ref": "node/13778985898",
+   "ad": "Enda Cafe",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Şişli",
+   "mahalle": "Nişantaşı",
+   "sokak": "Süleyman Nazif Sokağı",
+   "adres": "Süleyman Nazif Sokağı, Nişantaşı, Şişli",
+   "koordinat": [
+    41.052165,
+    28.989074
+   ],
+   "tur": "Sokak lezzeti",
+   "mutfak": [
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-04-30, changeset 182017500)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13778985898",
+    "https://www.openstreetmap.org/changeset/182017500"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "limandere-gurme-kasap-sariyer",
+   "ref": "node/13824774476",
+   "ad": "Limandere Gurme Kasap",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Sarıyer",
+   "mahalle": "Bahçeköy Kemer Mahallesi",
+   "sokak": "Mareşal Fevzi Çakmak Caddesi",
+   "adres": "Mareşal Fevzi Çakmak Caddesi, Bahçeköy Kemer Mahallesi, Sarıyer",
+   "koordinat": [
+    41.167786,
+    28.990475
+   ],
+   "tur": "Steakhouse",
+   "mutfak": [
+    {
+     "id": "et",
+     "ad": "Et ve steakhouse",
+     "kaynak": "osm_cuisine",
+     "deger": "steak_house"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-13"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13824774476",
+    "https://www.openstreetmap.org/changeset/182987874"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "zarif-doner-beyoglu",
+   "ref": "node/13897109002",
+   "ad": "Zarif Döner",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Fetihtepe",
+   "sokak": "Fatih Sultan Caddesi",
+   "adres": "Fatih Sultan Caddesi, Fetihtepe, Beyoğlu",
+   "koordinat": [
+    41.049734,
+    28.959058
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-05-30, changeset 183408956)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13897109002",
+    "https://www.openstreetmap.org/changeset/183408956"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hunzur-baba-kebapcisi-beyoglu",
+   "ref": "node/13899195945",
+   "ad": "Hunzur Baba Kebapçısı",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Fetihtepe",
+   "sokak": "Eser Sokağı",
+   "adres": "Eser Sokağı, Fetihtepe, Beyoğlu",
+   "koordinat": [
+    41.050022,
+    28.95865
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-05-31, changeset 183456605)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13899195945",
+    "https://www.openstreetmap.org/changeset/183456605"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "durumcu-mehmet-usta-beyoglu",
+   "ref": "node/13904872087",
+   "ad": "Dürümcü Mehmet Usta",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Fetihtepe",
+   "sokak": "Keskin Sokağı",
+   "adres": "Keskin Sokağı, Fetihtepe, Beyoğlu",
+   "koordinat": [
+    41.048452,
+    28.958253
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-06-02, changeset 183553280)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13904872087",
+    "https://www.openstreetmap.org/changeset/183553280"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ada-m-tantuni-2-maltepe",
+   "ref": "node/13976879353",
+   "ad": "Ada'm Tantuni 2",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Maltepe",
+   "mahalle": "Altıntepe Mahallesi",
+   "sokak": "Bağdat Caddesi",
+   "adres": "Bağdat Caddesi, Altıntepe Mahallesi, Maltepe",
+   "koordinat": [
+    40.953003,
+    29.099764
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-06-30",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-06-30, changeset 184835745)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13976879353",
+    "https://www.openstreetmap.org/changeset/184835745"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "india-gate-beyoglu",
+   "ref": "node/14041084402",
+   "ad": "India Gate",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Cihangir Mahallesi",
+   "sokak": "Sıraselviler Caddesi",
+   "adres": "Sıraselviler Caddesi, Cihangir Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.035207,
+    28.984797
+   ],
+   "tur": "Asya mutfağı",
+   "mutfak": [
+    {
+     "id": "asya",
+     "ad": "Çin, Kore, Tayland ve diğer Asya",
+     "kaynak": "osm_cuisine",
+     "deger": "indian"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-07-23"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14041084402",
+    "https://www.openstreetmap.org/changeset/186221350"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "kaizen-ramen-besiktas",
+   "ref": "node/14041084601",
+   "ad": "Kaizen Ramen",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beşiktaş",
+   "mahalle": "Vişnezade Mahallesi",
+   "sokak": "Kireçhane Sokağı",
+   "adres": "Kireçhane Sokağı, Vişnezade Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.044245,
+    29.00025
+   ],
+   "tur": "Sushi / Japon",
+   "mutfak": [
+    {
+     "id": "japon",
+     "ad": "Japon, sushi ve ramen",
+     "kaynak": "osm_cuisine",
+     "deger": "japanese"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-07-23"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14041084601",
+    "https://www.openstreetmap.org/changeset/186221350"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sancak-pizza-sancaktepe",
+   "ref": "node/14212304086",
+   "ad": "Sancak Pizza",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Sancaktepe",
+   "mahalle": "Kemal Türkler Mahallesi",
+   "sokak": "Vurgun Sokağı",
+   "adres": "Vurgun Sokağı, Kemal Türkler Mahallesi, Sancaktepe",
+   "koordinat": [
+    41.002984,
+    29.217329
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-09-24, changeset 189506300)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14212304086",
+    "https://www.openstreetmap.org/changeset/189506300"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "elit-cafe-kahvalti-ev-yemekleri-beyoglu",
+   "ref": "node/14229459601",
+   "ad": "Elit cafe kahvaltı ev yemekleri",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kalyoncu Kulluğu",
+   "sokak": "Kalyoncu Kulluğu Caddesi",
+   "adres": "Kalyoncu Kulluğu Caddesi, Kalyoncu Kulluğu, Beyoğlu",
+   "koordinat": [
+    41.036586,
+    28.97714
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-09-29, changeset 189715848)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14229459601",
+    "https://www.openstreetmap.org/changeset/189715848"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "jack-arnavutkoy",
+   "ref": "node/14244335290",
+   "ad": "Jack",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Arnavutköy",
+   "mahalle": "Tayakadın Mahallesi",
+   "sokak": "Terminal Caddesi",
+   "adres": "Terminal Caddesi, Tayakadın Mahallesi, Arnavutköy",
+   "koordinat": [
+    41.261788,
+    28.738408
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-10-02, changeset 189899485)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14244335290",
+    "https://www.openstreetmap.org/changeset/189899485"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "bodrum-manti-ve-cafe-uskudar",
+   "ref": "node/14279872440",
+   "ad": "Bodrum Mantı&Cafe",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Acıbadem Mahallesi",
+   "sokak": "Çeçen Sokağı",
+   "adres": "Çeçen Sokağı, Acıbadem Mahallesi, Üsküdar",
+   "koordinat": [
+    41.00155,
+    29.054991
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-10-13, changeset 190443546)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14279872440",
+    "https://www.openstreetmap.org/changeset/190443546"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "kaburgaci-ziyafettin-usta-esenyurt",
+   "ref": "node/14289681074",
+   "ad": "Kaburgacı Ziyafettin Usta",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Esenyurt",
+   "mahalle": "Barbaros Hayrettin Paşa Mahallesi",
+   "sokak": "1993. Sokak",
+   "adres": "1993. Sokak, Barbaros Hayrettin Paşa Mahallesi, Esenyurt",
+   "koordinat": [
+    41.017264,
+    28.63878
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-16",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-16, changeset 190599376)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14289681074",
+    "https://www.openstreetmap.org/changeset/190599376"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "the-upper-crust-besiktas",
+   "ref": "node/14308130824",
+   "ad": "The Upper Crust",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beşiktaş",
+   "mahalle": "Bebek Mahallesi",
+   "sokak": "Küçükbebek Caddesi",
+   "adres": "Küçükbebek Caddesi, Bebek Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.078938,
+    29.045237
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-21",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-22, changeset 190864516)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14308130824",
+    "https://www.openstreetmap.org/changeset/190864516"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "yuzu-fried-chicken-beyoglu",
+   "ref": "node/14311971192",
+   "ad": "Yuzu Fried Chicken",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "sokak": "Mumhane Caddesi",
+   "adres": "Mumhane Caddesi, Kemankeş Karamustafa Paşa, Beyoğlu",
+   "koordinat": [
+    41.025831,
+    28.98032
+   ],
+   "tur": "Tavuk",
+   "mutfak": [
+    {
+     "id": "tavuk",
+     "ad": "Tavuk",
+     "kaynak": "osm_cuisine",
+     "deger": "chicken"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-23",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-23, changeset 190919624)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14311971192",
+    "https://www.openstreetmap.org/changeset/190919624"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "karacol-sancaktepe",
+   "ref": "node/14323489845",
+   "ad": "Karaçöl",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Sancaktepe",
+   "mahalle": "İnönü Mahallesi",
+   "sokak": "Demokrasi Caddesi",
+   "adres": "Demokrasi Caddesi, İnönü Mahallesi, Sancaktepe",
+   "koordinat": [
+    41.00895,
+    29.214371
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-10-27, changeset 191108827)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14323489845",
+    "https://www.openstreetmap.org/changeset/191108827"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "karaburun-bizim-balik-arnavutkoy",
+   "ref": "node/14338650401",
+   "ad": "Karaburun Bizim Balik",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Arnavutköy",
+   "mahalle": "Karaburun Mahallesi",
+   "sokak": "İskele Caddesi",
+   "adres": "İskele Caddesi, Karaburun Mahallesi, Arnavutköy",
+   "koordinat": [
+    41.345137,
+    28.685973
+   ],
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "fish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-11-01"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14338650401",
+    "https://www.openstreetmap.org/changeset/191324058"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "fethipasa-sosyal-tesisleri-uskudar",
+   "ref": "way/224944681",
+   "ad": "Fethipaşa Sosyal Tesisleri",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Kuzguncuk Mahallesi",
+   "sokak": "Nacak Sokağı",
+   "adres": "Nacak Sokağı, Kuzguncuk Mahallesi, Üsküdar",
+   "koordinat": [
+    41.032586,
+    29.026147
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-08-18, changeset 170623212)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/224944681",
+    "https://www.openstreetmap.org/changeset/170623212"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "tandogan-bufe-uskudar",
+   "ref": "way/837138577",
+   "ad": "Tandogan Büfe",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Mimar Sinan Mahallesi",
+   "sokak": "Üsküdar Harem Sahil Yolu",
+   "adres": "Üsküdar Harem Sahil Yolu, Mimar Sinan Mahallesi, Üsküdar",
+   "koordinat": [
+    41.027254,
+    29.015288
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    },
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    },
+    {
+     "id": "tavuk",
+     "ad": "Tavuk",
+     "kaynak": "osm_cuisine",
+     "deger": "chicken"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2026-10-08, changeset 190206303)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/837138577",
+    "https://www.openstreetmap.org/changeset/190206303"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "cem-bufe-uskudar",
+   "ref": "way/837138581",
+   "ad": "Cem Büfe",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Üsküdar",
+   "mahalle": "Mimar Sinan Mahallesi",
+   "sokak": "Paşalimanı Caddesi",
+   "adres": "Paşalimanı Caddesi, Mimar Sinan Mahallesi, Üsküdar",
+   "koordinat": [
+    41.02777,
+    29.015827
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "regional"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-06-16, changeset 167694267)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/837138581",
+    "https://www.openstreetmap.org/changeset/167694267"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "park-adana-atasehir",
+   "ref": "way/866653467",
+   "ad": "Park Adana",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Ataşehir",
+   "mahalle": "Atatürk Mahallesi",
+   "sokak": "Şifa Sokağı",
+   "adres": "Şifa Sokağı, Atatürk Mahallesi, Ataşehir",
+   "koordinat": [
+    40.991145,
+    29.117769
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-20"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/866653467",
+    "https://www.openstreetmap.org/changeset/176708246"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "nazenin-atasehir",
+   "ref": "way/866661194",
+   "ad": "Nazenin",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Ataşehir",
+   "mahalle": "Küçükbakkalköy Mahallesi",
+   "sokak": "Emel Sokağı",
+   "adres": "Emel Sokağı, Küçükbakkalköy Mahallesi, Ataşehir",
+   "koordinat": [
+    40.987961,
+    29.124485
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-05-19, changeset 182896226)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/866661194",
+    "https://www.openstreetmap.org/changeset/182896226"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "tepe-sariyer",
+   "ref": "way/954527982",
+   "ad": "Tepe",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Sarıyer",
+   "mahalle": "Baltalimanı Mahallesi",
+   "sokak": "2. Çevre Yolu",
+   "adres": "2. Çevre Yolu, Baltalimanı Mahallesi, Sarıyer",
+   "koordinat": [
+    41.092088,
+    29.050747
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-03-10",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-03-10, changeset 179617352)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/954527982",
+    "https://www.openstreetmap.org/changeset/179617352"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "elif-in-yeri-sile",
+   "ref": "way/1373822110",
+   "ad": "Elif'in Yeri",
+   "zincir": null,
+   "sube": null,
+   "ilce": "Şile",
+   "mahalle": "Artvinler Mahallesi",
+   "sokak": "Kervansaray Caddesi",
+   "adres": "Kervansaray Caddesi, Artvinler Mahallesi, Şile",
+   "koordinat": [
+    41.070454,
+    29.461466
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "regional"
+    },
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "tea"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "B1",
+   "adresDuzeyi": "sokak",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-04-03, changeset 164476524)"
+   ],
+   "eksik": [
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1373822110",
+    "https://www.openstreetmap.org/changeset/164476524"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  }
+ ]
+}

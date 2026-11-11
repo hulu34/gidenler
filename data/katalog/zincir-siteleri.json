@@ -1,0 +1,28 @@
+{
+ "_aciklama": "OSM'de resmî sitesi yazılı olmayan zincir markalarının resmî siteleri. Kabul şartı: ana sayfa 200 döner ve marka adının bütün sözcükleri sayfada geçer. Yalnız şube sayfası keşfi için kök adres; şube kanıtı ayrıca şube bazında (zincir-dogrula.mjs) aranır.",
+ "kontrolTarihi": "2026-11-11",
+ "erisimEngeli": {
+  "kofteci yusuf": "Cloudflare 403 — otomatik istek engelleniyor; atlatılmadı",
+  "sushico": "403",
+  "kasap doner": "403"
+ },
+ "siteler": {
+  "pizzabulls": "https://pizzabulls.com/",
+  "mevlana pide": "https://mevlanapide.com/",
+  "hacioglu": "https://hacioglu.com.tr/",
+  "pizza lazza": "https://pizzalazza.com.tr/",
+  "bursa kebap evi": "https://www.bursakebapevi.com/",
+  "usta donerci": "https://www.ustadonerci.com/",
+  "pidem": "https://www.pidem.com.tr/",
+  "green salads": "https://www.greensalads.com.tr/",
+  "cookshop": "https://www.cookshop.com.tr/",
+  "durumle": "https://durumle.com/",
+  "happy moon s": "https://www.happygroup.com.tr/",
+  "gala kokorec": "https://www.galakokorec.com/",
+  "burger yiyelim": "https://www.burgeryiyelim.com/",
+  "baydoner": "https://www.baydoner.com/",
+  "balkan lokantasi": "https://www.balkanlokantasi.com.tr/",
+  "bereket doner": "https://www.bereketdoner.com.tr/",
+  "kofteci ramiz": "https://www.kofteciramiz.com/"
+ }
+}

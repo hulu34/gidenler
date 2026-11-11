@@ -133,7 +133,8 @@ export async function sor(req: SorRequest, ctx: { kullanici?: string | null } = 
   const { confident, ...parsed } = parseQuery(query);
   let refine: Refine | null = (req.refine as Refine | null | undefined) ?? (req.context ? detectRefine(query) : null);
   let intent = mergeIntent(req.context, parsed, refine);
-  const excl = () => (refine === "another" ? req.shown ?? [] : []);
+  /* "başka öner" ve "başka semtte": gösterilenler tekrar önerilmez */
+  const excl = () => (refine === "another" || refine === "other_area" ? req.shown ?? [] : []);
 
   const finish = (mode: Mode, reason: Reason, a: Answered, items?: Public[], gated = 0, model: string | null = null): SorResult => {
     const list = items ?? a.items.slice(0, 5).map(strip);

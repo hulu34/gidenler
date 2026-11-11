@@ -943,7 +943,10 @@ async function main() {
   /* alternatif arama: yalnız 30 gün içinde eşleşmesi bulunamamış olanlar, her biri bir kez; yakın kutu sonra telefon */
   ok("arama adı genel sözcükleri atar", searchName("Sırdaş Lokanta") === "Sırdaş" && searchName("Restaurant") === "Restaurant");
   const bodies: string[] = [];
-  const far = (await db.select().from(schema.places).where(sql`${schema.places.phone} is not null and ${schema.places.vertical} = 'restaurant'`).orderBy(schema.places.slug).limit(1))[0];
+  // Yeniden deneme ilk no_match kaydını seçer; katalog sırası ve telefon varlığı testin önkoşulu değildir.
+  const farOriginal = (await db.select().from(schema.places).where(eq(schema.places.slug, s1[0])))[0];
+  const far = { ...farOriginal, phone: farOriginal.phone ?? "0212 555 01 99" };
+  await db.update(schema.places).set({ phone: far.phone }).where(eq(schema.places.id, far.id));
   const retryFetch = (async (url: string, init?: RequestInit) => {
     const h = (init?.headers ?? {}) as Record<string, string>;
     if (String(url).endsWith(":searchText")) { bodies.push(String(init?.body)); const b = JSON.parse(String(init?.body));
@@ -957,6 +960,8 @@ async function main() {
   ok("telefon birebir ama 2 km uzak → asla otomatik değil, manuel onay", one?.slug === far.slug && one.phone?.status === "pending" && one.phone?.reason === "telefon_eslesti_konum_farkli", one);
   const rt2 = await retryGoogleNoMatch(15, retryFetch);
   ok("aynı restoran ikinci kez yeniden denenmez", !rt2.results.some((x) => x.slug === far.slug), rt2.results.map((x) => x.slug));
+
+  await db.update(schema.places).set({ phone: farOriginal.phone }).where(eq(schema.places.id, far.id));
 
   /* toplu eşleştirme: kota biterse durur, fazla çağrı yapmaz */
   const fake3 = await fresh(); setRedisForTests(fake3 as unknown as RedisLike);

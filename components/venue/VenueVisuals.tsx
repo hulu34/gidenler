@@ -14,27 +14,29 @@ export function VenueVisuals({ entity }: { entity: Entity }) {
   if (!entity.isReal) return null;
   const m = mapLinks(entity);
   const ig = entity.contact?.instagram;
+  const approximate = entity.location?.precision === "street";
   return (
     <section id="gor" aria-labelledby="h-gor" className="scroll-mt-28 mt-12 sm:scroll-mt-32">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
-        <h2 id="h-gor" className="text-[13px] font-bold uppercase tracking-[0.2em]">Konum</h2>
+        <h2 id="h-gor" className="text-[13px] font-bold uppercase tracking-[0.2em]">{approximate ? "Yaklaşık konum" : "Konum"}</h2>
         <p className="max-w-[52ch] text-[12px] text-ink-3">{m ? "Harita, 360° sokak görünümü ve yol tarifi." : "Adres; harita noktası henüz yok."}</p>
       </div>
 
       <div className="mt-5">
         <div className="flex max-w-[720px] flex-col gap-3">
+          {approximate && <p data-location-precision="street" className="border border-line bg-sheet p-3 text-[13px] text-ink-2">Harita sokak çevresini gösterir; işletmenin giriş noktası doğrulanmadı. Gitmeden önce adresi işletmeyle teyit et.</p>}
           {m && (
             <>
               <OsmMapUnlessGoogle>
                 <div className="relative aspect-[4/3] w-full overflow-hidden border border-line bg-sheet">
-                  <iframe title={`${entity.name} haritada`} src={m.osmEmbed} loading="lazy" className="absolute inset-0 h-full w-full" referrerPolicy="no-referrer" />
+                  <iframe title={`${entity.name}${approximate ? " yaklaşık konum" : ""} haritada`} src={m.osmEmbed} loading="lazy" className="absolute inset-0 h-full w-full" referrerPolicy="no-referrer" />
                 </div>
               </OsmMapUnlessGoogle>
               <div className="grid grid-cols-2 gap-2 text-[13px] font-semibold">
                 <a href={m.streetView} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center gap-2 rounded-[3px] bg-ink text-paper transition-colors hover:bg-accent">
                   <span aria-hidden>◎</span> 360° sokak görünümü
                 </a>
-                <a href={m.directions} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center rounded-[3px] border border-line-2 hover:border-ink">Yol tarifi</a>
+                <a href={m.directions} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center rounded-[3px] border border-line-2 hover:border-ink">{approximate ? "Adresi haritada ara" : "Yol tarifi"}</a>
                 <a href={m.googleMaps} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center rounded-[3px] border border-line-2 hover:border-ink">Google Haritalar</a>
                 {ig ? (
                   <a href={`https://www.instagram.com/${ig}/`} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center rounded-[3px] border border-line-2 hover:border-ink">Instagram @{ig.length > 14 ? ig.slice(0, 13) + "…" : ig}</a>

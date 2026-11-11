@@ -47,7 +47,7 @@ export function RealMap() {
               <circle key={p.e.id} cx={px(p.lng)} cy={py(p.lat)} r={sel === p.e.id ? 7 : 3.6}
                 className={`cursor-pointer ${sel === p.e.id ? "fill-accent" : p.e.categoryId === "cat.restaurant" ? "fill-ink" : "fill-ink-3"}`}
                 onClick={() => setSel(p.e.id)}>
-                <title>{`${p.e.name} · ${p.e.subcategory} · ${p.e.location?.district}`}</title>
+                <title>{`${p.e.name} · ${p.e.subcategory} · ${p.e.location?.district}${p.e.location?.precision === "street" ? " · yaklaşık konum" : ""}`}</title>
               </circle>
             ))}
           </svg>
@@ -57,6 +57,7 @@ export function RealMap() {
             <div className="border-2 border-line-strong p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">{s.subcategory} · {s.location?.district}</p>
               <p className="mt-1 text-[22px] font-bold leading-tight tracking-[-0.02em]">{s.name}</p>
+              {s.location?.precision === "street" && <p data-location-precision="street" className="mt-2 text-[13px] text-ink-2">Konum yaklaşık; kapı numarası doğrulanmadı. Giriş adresini işletmeyle teyit et.</p>}
               {s.address && <p className="mt-1 text-[13.5px] text-ink-2">{s.address}</p>}
               {s.hours && <p className="mt-1 text-[12.5px] text-ink-3">Saatler (OpenStreetMap): {s.hours}</p>}
               {published[s.slug]?.score != null
