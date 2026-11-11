@@ -622,7 +622,7 @@ jobs:
     if: contains(github.event.head_commit.message, '[paket]')
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    env: { REF: paket/istanbul-9, SHA: "8bb4e8e" }
+    env: { REF: paket/istanbul-9, SHA: "f27cb07" }
     steps:
       - uses: actions/checkout@v4
         with: { ref: "${{ env.REF }}", fetch-depth: 0 }
