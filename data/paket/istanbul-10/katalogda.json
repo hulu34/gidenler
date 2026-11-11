@@ -1,0 +1,107 @@
+{
+ "_aciklama": "Michelin İstanbul 2026 seçkisinden Gidenler Production kataloğunda (feature/investor-v1 b95d284) zaten bulunanlar. Kayıtlar değiştirilmedi.",
+ "kayitlar": [
+  {
+   "ad": "Mikla",
+   "michelin": "Bir Yıldız",
+   "slug": "mikla-turkey-fusion-beyoglu",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Neolokal",
+   "michelin": "Bir Yıldız",
+   "slug": "neolokal-beyoglu",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Nicole",
+   "michelin": "Bir Yıldız",
+   "slug": "nicole-beyoglu",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Casius Antioch Kitchen",
+   "michelin": "Bib Gourmand",
+   "slug": "casius-beyoglu",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Karaköy Lokantası",
+   "michelin": "Bib Gourmand",
+   "slug": "karakoy-lokantasi-beyoglu",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Pandeli",
+   "michelin": "Bib Gourmand",
+   "slug": "pandeli-fatih",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "AZUR",
+   "michelin": "Rehber seçkisi",
+   "slug": "azur-sariyer",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Beyti",
+   "michelin": "Rehber seçkisi",
+   "slug": "beyti-lokanta-bakirkoy",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Giritli",
+   "michelin": "Rehber seçkisi",
+   "slug": "giritli-fatih",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Lokanta by Divan",
+   "michelin": "Rehber seçkisi",
+   "slug": "lokanta-by-divan-sisli",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Lokanta Feriye",
+   "michelin": "Rehber seçkisi",
+   "slug": "feriye-besiktas",
+   "durum": "Production kataloğunda"
+  },
+  {
+   "ad": "Yeni Lokanta",
+   "michelin": "Rehber seçkisi",
+   "slug": "yeni-lokanta-beyoglu",
+   "durum": "Production kataloğunda"
+  }
+ ],
+ "ayniOsm906Dalinda": [
+  {
+   "ad": "GALLADA by Fatih Tutak",
+   "dal906": "gallada-by-fatih-tutak-beyoglu"
+  },
+  {
+   "ad": "Sapa",
+   "dal906": "sapa-atasehir"
+  },
+  {
+   "ad": "Şans Restaurant",
+   "dal906": "sans-besiktas"
+  },
+  {
+   "ad": "Mutfakkoz",
+   "dal906": "mutfak-koz-kadikoy"
+  },
+  {
+   "ad": "Yanyalı Fehmi Lokantası",
+   "dal906": "yanyali-fehmi-lokantasi-kadikoy"
+  },
+  {
+   "ad": "Fauna",
+   "dal906": "fauna-atasehir"
+  },
+  {
+   "ad": "Ulus 29",
+   "dal906": "ulus-29-besiktas"
+  }
+ ]
+}

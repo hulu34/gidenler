@@ -1,0 +1,356 @@
+{
+ "_aciklama": "Michelin İstanbul 2026 seçkisinde olup A şartını henüz karşılamayanlar (çoğu: açık kaynakta koordinat yok). Otomatik A yapılmaz.",
+ "kayitlar": [
+  {
+   "ad": "Araf İstanbul",
+   "michelin": "Bir Yıldız",
+   "ilce": "Kadıköy",
+   "mutfak": "Contemporary",
+   "neden": "OSM'de nokta yok (Sümko N Blok, Kadıköy); resmî site ad+telefon ✓",
+   "resmiSite": "https://www.arafistanbul.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul"
+  },
+  {
+   "ad": "Araka",
+   "michelin": "Bir Yıldız",
+   "ilce": "Sarıyer",
+   "mutfak": "Creative",
+   "neden": "OSM'de nokta yok (Kapalı Bakkal Sokak 8, Yeniköy); resmî site ✓",
+   "resmiSite": "https://araka.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka"
+  },
+  {
+   "ad": "Arkestra",
+   "michelin": "Bir Yıldız",
+   "ilce": "Beşiktaş",
+   "mutfak": "Fusion",
+   "neden": "OSM'de restoran ya da bina/adres noktası yok (Dilhayat Sokak 28); resmî site ad+telefon+sokak ✓ — konum için OSM katkısı ya da yerinde kontrol gerekir",
+   "resmiSite": "https://arkestra.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra"
+  },
+  {
+   "ad": "Casa Lavanda",
+   "michelin": "Bir Yıldız",
+   "ilce": "Şile",
+   "mutfak": "Traditional Cuisine",
+   "neden": "OSM'de nokta yok (Ulupelit Köyü, Şile); resmî site ✓",
+   "resmiSite": "https://www.casalavanda.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda"
+  },
+  {
+   "ad": "Sankai by Nagaya",
+   "michelin": "Bir Yıldız",
+   "ilce": "Beşiktaş",
+   "mutfak": "Japanese Contemporary",
+   "neden": "OSM'de restoran ve Bebek Hotel binası yok (Cevdet Paşa Caddesi 34); resmî site ✓",
+   "resmiSite": "https://sankai.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya"
+  },
+  {
+   "ad": "Ahmet Ustam Ocakbaşı",
+   "michelin": "Bib Gourmand",
+   "ilce": "Sarıyer",
+   "mutfak": "Turkish",
+   "neden": "resmî site yok; OSM'de nokta yok",
+   "resmiSite": null,
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/ahmet-ustam-ocakbas%C4%B1"
+  },
+  {
+   "ad": "Ali Ocakbaşı Karaköy",
+   "michelin": "Bib Gourmand",
+   "ilce": "Beyoğlu",
+   "mutfak": "Turkish",
+   "neden": "OSM'de nokta yok (Kardeşim Sokak 45 Kat 4); sitede yalnız ad",
+   "resmiSite": "https://www.aliocakbasi.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1"
+  },
+  {
+   "ad": "Foxy Nişantaşı",
+   "michelin": "Bib Gourmand",
+   "ilce": "Şişli",
+   "mutfak": "Contemporary",
+   "neden": "resmî site zaman aşımı; OSM'de nokta yok",
+   "resmiSite": "https://www.followthefoxy.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/foxy-nisantas%C4%B1"
+  },
+  {
+   "ad": "Nazende Cadde",
+   "michelin": "Bib Gourmand",
+   "ilce": "Kadıköy",
+   "mutfak": "Turkish",
+   "neden": "resmî site yok; OSM'de nokta yok",
+   "resmiSite": null,
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nazende-cadde"
+  },
+  {
+   "ad": "Parvus Kalamış",
+   "michelin": "Bib Gourmand",
+   "ilce": "Kadıköy",
+   "mutfak": "Turkish",
+   "neden": "OSM'de nokta yok (Rüştiye Sokak 4/A); resmî site ✓",
+   "resmiSite": "https://parvus.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/parvus-kalam%C4%B1s"
+  },
+  {
+   "ad": "SADE \"Beş Denizler Mutfağı\"",
+   "michelin": "Bib Gourmand",
+   "ilce": "Şişli",
+   "mutfak": "Traditional Cuisine",
+   "neden": "OSM'de nokta yok (Akkavak Sokak 36); resmî site ✓",
+   "resmiSite": "https://sadebesdenizler.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sade-bes-denizler-mutfag%C4%B1"
+  },
+  {
+   "ad": "Tatbak",
+   "michelin": "Bib Gourmand",
+   "ilce": "Şişli",
+   "mutfak": "Turkish",
+   "neden": "OSM'de nokta yok (Akkavak Sokak 38/B); resmî site ad+telefon ✓",
+   "resmiSite": "https://www.tatbak.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tatbak"
+  },
+  {
+   "ad": "Tershane",
+   "michelin": "Bib Gourmand",
+   "ilce": "Hotel Momento 8th Floor (8. kat)",
+   "mutfak": "Turkish",
+   "neden": "OSM'de Hotel Momento Karaköy binası yok (Tersane Caddesi 24); resmî site ✓",
+   "resmiSite": "https://www.tershanerestaurant.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tershane"
+  },
+  {
+   "ad": "Aila",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Şişli",
+   "mutfak": "Modern Cuisine",
+   "neden": "OSM'de Fairmont Quasar binası/adres noktası yok (Büyükdere Caddesi 76/B)",
+   "resmiSite": "https://fairmontquasaristanbul.com/restaurant/aila/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aila"
+  },
+  {
+   "ad": "Akira Back İstanbul",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Bakırköy",
+   "mutfak": "Japanese",
+   "neden": "resmî sayfa 403 — atlatılmadı; OSM'de restoran noktası yok (JW Marriott binası var)",
+   "resmiSite": "https://www.istanbulakiraback.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/akira-back-istanbul"
+  },
+  {
+   "ad": "Apartıman Yeniköy",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Sarıyer",
+   "mutfak": "Turkish",
+   "neden": "resmî site yok; OSM'de nokta yok",
+   "resmiSite": null,
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/apart%C4%B1man-yenikoy"
+  },
+  {
+   "ad": "AQUA",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beşiktaş",
+   "mutfak": "Fish and Seafood",
+   "neden": "resmî sayfa (fourseasons.com) otomatik isteğe 403 — atlatılmadı; OSM'de restoran noktası yok (yalnız otel binası)",
+   "resmiSite": "https://www.fourseasons.com/bosphorus/dining/restaurants/aqua/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aqua-1202450"
+  },
+  {
+   "ad": "Avlu Restaurant",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Fatih",
+   "mutfak": "Contemporary",
+   "neden": "resmî sayfa 403 — atlatılmadı; OSM'de restoran noktası yok (yalnız otel binası)",
+   "resmiSite": "https://www.fourseasons.com/istanbul/dining/restaurants/avlu-restaurant/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/avlu-restaurant"
+  },
+  {
+   "ad": "Balıkçı Kahraman",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Sarıyer",
+   "mutfak": "Fish and Seafood",
+   "neden": "OSM'de nokta yok (İskele Caddesi 15/1, Rumelikavağı); sitede telefon/sokak eşleşmedi",
+   "resmiSite": "https://www.balikcikahraman.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/bal%C4%B1kc%C4%B1-kahraman"
+  },
+  {
+   "ad": "Basta Neo Bistro",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Kadıköy",
+   "mutfak": "European Contemporary",
+   "neden": "resmî site yok; konum yalnız adres noktası (kimlik yalnız rehberde)",
+   "resmiSite": null,
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/basta-neo-bistro"
+  },
+  {
+   "ad": "Eleos Yeşilköy",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Bakırköy",
+   "mutfak": "Fish and Seafood",
+   "neden": "OSM'de nokta yok (Yeşilbahçe Sokak 9); resmî site ✓",
+   "resmiSite": "https://www.eleosrestaurant.com/yesilkoy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/eleos-yesilkoy"
+  },
+  {
+   "ad": "Gün Lokantası",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beyoğlu",
+   "mutfak": "Modern Cuisine",
+   "neden": "resmî site 404; OSM'de nokta yok",
+   "resmiSite": "https://www.gunlokantasi.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/gun-lokantas%C4%B1"
+  },
+  {
+   "ad": "Havuş Lokantası",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Bakırköy",
+   "mutfak": "Turkish",
+   "neden": "resmî site yok; OSM'de nokta yok",
+   "resmiSite": null,
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/havus-lokantas%C4%B1"
+  },
+  {
+   "ad": "Herise İstanbul",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Sarıyer",
+   "mutfak": "Turkish",
+   "neden": "OSM'de nokta yok (Kongre Caddesi 15/A); resmî site ✓",
+   "resmiSite": "https://www.heriseistanbul.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/herise-istanbul"
+  },
+  {
+   "ad": "Itsumi",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beşiktaş",
+   "mutfak": "Japanese",
+   "neden": "sitede yalnız ad; OSM'de restoran noktası yok (İş Kuleleri binası var)",
+   "resmiSite": "https://www.itsumijp.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/itsumi"
+  },
+  {
+   "ad": "Kıyı Restaurant",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Sarıyer",
+   "mutfak": "Fish and Seafood",
+   "neden": "OSM'de nokta yok (Haydar Aliyev Caddesi 186/A, Tarabya); resmî site ✓",
+   "resmiSite": "https://www.kiyi.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/k%C4%B1y%C4%B1"
+  },
+  {
+   "ad": "Lokanta Limu",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Sarıyer",
+   "mutfak": "Turkish",
+   "neden": "OSM'de nokta yok (Köybaşı Caddesi 158); resmî site ✓",
+   "resmiSite": "https://www.lokantalimu.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-limu"
+  },
+  {
+   "ad": "Monteverdi Ristorante",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beşiktaş",
+   "mutfak": "Italian",
+   "neden": "resmî site yok; konum Conrad binası (Saray Caddesi 5) bulunuyor ama kimlik yalnız rehberde",
+   "resmiSite": null,
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/monteverdi-ristorante"
+  },
+  {
+   "ad": "Muutto Anatolian Tapas Bar",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beyoğlu",
+   "mutfak": "Contemporary",
+   "neden": "resmî site yok; OSM'deki muutto başka yerde (Kadıköy, kafe)",
+   "resmiSite": null,
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/muutto-anatolian-tapas-bar"
+  },
+  {
+   "ad": "Park Fora Balık ve Deniz Ürünleri Restoranı",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beşiktaş",
+   "mutfak": "Fish and Seafood",
+   "neden": "OSM'de nokta yok (Cemil Topuzlu Parkı); resmî site ✓",
+   "resmiSite": "https://www.parkfora.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/park-fora"
+  },
+  {
+   "ad": "ROKA",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beyoğlu",
+   "mutfak": "Japanese Contemporary",
+   "neden": "resmî sayfa 403 — atlatılmadı; OSM'de nokta yok",
+   "resmiSite": "https://www.rokarestaurant.com/restaurant/roka-istanbul/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/roka-1204963"
+  },
+  {
+   "ad": "Ruby",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beşiktaş",
+   "mutfak": "Mediterranean Cuisine",
+   "neden": "OSM'de nokta yok (Ortaköy Salhanesi Sokak 5); resmî site ✓",
+   "resmiSite": "https://www.rubyistanbul.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/ruby"
+  },
+  {
+   "ad": "Seraf Mahmutbey",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Bağcılar",
+   "mutfak": "Turkish",
+   "neden": "OSM'de nokta yok; sitede şube telefonu/sokağı eşleşmedi",
+   "resmiSite": "https://www.seraf.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/seraf-mahmutbey"
+  },
+  {
+   "ad": "Seraf Vadi",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Sarıyer",
+   "mutfak": "Turkish",
+   "neden": "OSM'de nokta yok; sitede şube telefonu/sokağı eşleşmedi",
+   "resmiSite": "https://www.seraf.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/seraf-vadi"
+  },
+  {
+   "ad": "Spago Istanbul by Wolfgang Puck",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Şişli",
+   "mutfak": "International",
+   "neden": "OSM'de St. Regis otel binası/adres noktası yok (Mim Kemal Öke Caddesi 35); resmî sayfa ✓",
+   "resmiSite": "https://www.marriott.com/en-us/hotels/istxr-the-st-regis-istanbul/dining/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/spago-1195842"
+  },
+  {
+   "ad": "St. Regis Brasserie",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Şişli",
+   "mutfak": "International",
+   "neden": "OSM'de St. Regis otel binası/adres noktası yok; resmî sayfa ✓",
+   "resmiSite": "https://www.marriott.com/en-us/hotels/istxr-the-st-regis-istanbul/dining/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/st-regis-brasserie"
+  },
+  {
+   "ad": "telezzüz",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Üsküdar",
+   "mutfak": "Vegan",
+   "neden": "OSM'de nokta yok (Koç Spor Kulübü, Kuzguncuk); resmî site ✓",
+   "resmiSite": "https://www.telezzuz.com/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/telezzuz"
+  },
+  {
+   "ad": "The BARN",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Silivri",
+   "mutfak": "Regional European",
+   "neden": "OSM'de nokta yok (Ören Çiftliği, Silivri); resmî site ✓",
+   "resmiSite": "https://www.grandmaswonderland.com/en/the-barn/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/the-barn-1215529"
+  },
+  {
+   "ad": "The Red Balloon",
+   "michelin": "Rehber seçkisi",
+   "ilce": "Beyoğlu",
+   "mutfak": "Mediterranean Cuisine",
+   "neden": "OSM'de nokta yok (İstiklal 153); yakındaki iş merkezinin aynı bina olduğu doğrulanamadı",
+   "resmiSite": "https://theredballoon.com.tr/",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/the-red-balloon"
+  }
+ ]
+}
