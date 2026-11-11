@@ -1,7 +1,5 @@
 name: Deploy preview to GitHub Pages
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,6 +10,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
+    if: startsWith(github.ref, 'refs/heads/preview/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,14 +23,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx tsc --noEmit
-      - run: npm run build
-        env:
-          NEXT_BASE_PATH: /gidenler
-          NEXT_OUTPUT: export
-      - run: touch out/.nojekyll
+      - run: npm run build:pages-preview
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: preview-pages
   deploy:
     needs: build
     runs-on: ubuntu-latest

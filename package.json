@@ -5,6 +5,7 @@
     "dev": "next dev",
     "prebuild": "tsx scripts/sor-index.ts",
     "build": "next build",
+    "build:pages-preview": "node scripts/pages-preview.mjs",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
