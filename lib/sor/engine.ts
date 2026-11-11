@@ -103,7 +103,9 @@ const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.t
 const QUERY_NOISE = new Set(["istanbul", "misin", "musun", "misiniz", "musunuz", "miyiz", "miyim", "nerede", "neresi", "nasil", "nasildir", "nasilsin", "neden", "nicin", "kimdir", "yapilir", "yapilmaz", "hangi", "hangisi", "var", "yok", "lazim", "oner", "onerir", "onerin", "soyle", "bana", "bize", "sana", "size", "goster", "verilen", "kural", "kurallari",
   /* fiil: "Burger yiyelim" Burger Yiyelim zinciri değildir */ "yiyelim", "yiyecek", "yiyebilecegim", "yemek", "gidelim", "gidecek", "icelim", "oturalim", "bakalim", "olsun", "olmasin"]);
 const COMMON_NAME = new Set(["yeni", "eski", "buyuk", "kucuk", "tarihi", "meshur", "bizim", "kardesler", "ortaklar", "asmali", "ev", "ana", "usta", "lezzet", "aile", "sofra", "kent", "merkez", "istanbul"]);
-const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "cafe", "kafe", "ve", "the", "bar", "kebap", "balik", "pide", "ocakbasi", "doner", "kebapcisi", "sofrasi", "evi", "et", "iyi", "guzel", "bir"]);
+const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "cafe", "kafe", "ve", "the", "bar", "kebap", "balik", "pide", "ocakbasi", "doner", "kebapcisi", "sofrasi", "evi", "et", "iyi", "guzel", "bir",
+  /* İngilizce tür sözcükleri de ad değildir: "Blum Coffee House" Coffee Department değildir (katalog genişlemesi, kafeler) */
+  "coffee", "coffe", "caffe", "caffee", "house", "roastery", "roasters", "roasting", "company", "brasserie", "bistro", "kitchen", "bakery", "pizza", "burger", "grill", "lounge", "pub"]);
 /* Semt, mutfak ya da tercih sözcüğü tek başına mekân adı sayılmaz: "kebap" Kebap Hocası'nı, "Karaköy" Karaköy Lokantası'nı seçmez. */
 const isGeneric = (t: string) => [...SUBAREAS.map((a) => a.name), ...DISTRICTS, ...CUISINES.flatMap((c) => c.terms), ...DISHES.flatMap((d) => d.terms), ...ATTRS.flatMap((a) => a.terms)].some((term) => { const x = fold(term); return !x.includes(" ") && tokenHit(t, x); });
 function matchName(q: string): Venue | null {
@@ -116,7 +118,7 @@ function matchName(q: string): Venue | null {
     const nt = fold(v.name).split(" ").filter((t) => t.length >= 3 && !NAME_NOISE.has(t));
     /* yazımı bitişik bilinen ad: "nusret" → "Nusr-Et Burger Bebek" */
     const compact = fold(v.name).replace(/ /g, "");
-    if (toks.length <= 3 && own.some((t) => t.length >= 5 && compact.startsWith(t))) { const s = 50; if (!best || s > best.s) best = { v, s, raw: s }; continue; }
+    if (toks.length <= 3 && own.some((t) => t.length >= 5 && !NAME_NOISE.has(t) && compact.startsWith(t))) { const s = 50; if (!best || s > best.s) best = { v, s, raw: s }; continue; }
     if (!nt.length) continue;
     if (nt.every((n) => COMMON_NAME.has(n)) && !q.includes(fold(v.name))) continue;
     /* ek toleransı 6+ harfte: "boğaz" Boga, "yenir" Yeni değildir */

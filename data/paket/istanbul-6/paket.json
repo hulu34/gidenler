@@ -1,0 +1,3708 @@
+{
+ "_aciklama": "İstanbul yeni mekân paketi. Yalnız A sınıfı. Kaynak: OpenStreetMap (© OpenStreetMap katkıcıları, ODbL) + işletmelerin resmî siteleri (yalnız eşleşme ölçümü; içerik kopyalanmadı). Google verisi kullanılmadı.",
+ "osmTarihi": "2026-11-10T20:20:48Z",
+ "kontrolTarihi": "2026-11-10",
+ "eklenen": [
+  {
+   "slug": "crust-ve-creme-atasehir",
+   "ref": "node/14078848801",
+   "ad": "Crust & Creme",
+   "ilce": "Ataşehir",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-08-07"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14078848801"
+   ],
+   "osmSonDuzenleme": "2026-08-07",
+   "osmKontrol": "2026-08-07",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "seo-kaos-atasehir",
+   "ref": "node/11411057221",
+   "ad": "SEO KAOS",
+   "ilce": "Ataşehir",
+   "mahalle": "Küçükbakkalköy",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11411057221",
+    "https://www.seokaos.com"
+   ],
+   "osmSonDuzenleme": "2024-03-21",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "ab-bas-waffle-besiktas",
+   "ref": "node/7542312114",
+   "ad": "Ab'bas Waffle",
+   "ilce": "Beşiktaş",
+   "mahalle": "Bebek",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7542312114",
+    "https://abbaswaffle.com.tr"
+   ],
+   "osmSonDuzenleme": "2026-03-01",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "blum-coffee-house-besiktas",
+   "ref": "node/10297834409",
+   "ad": "Blum Coffee House",
+   "ilce": "Beşiktaş",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10297834409",
+    "https://www.blumcoffeehouse.com/"
+   ],
+   "osmSonDuzenleme": "2023-10-31",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "oligark-istanbul-besiktas",
+   "ref": "way/1106158077",
+   "ad": "Oligark İstanbul",
+   "ilce": "Beşiktaş",
+   "mahalle": "Kuruçeşme",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1106158077",
+    "https://oligarkistanbul.com/"
+   ],
+   "osmSonDuzenleme": "2022-10-22",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "ora-coffee-besiktas",
+   "ref": "node/13370332490",
+   "ad": "Ora Coffee",
+   "ilce": "Beşiktaş",
+   "mahalle": "Mecidiye",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13370332490",
+    "https://oracoffee.co"
+   ],
+   "osmSonDuzenleme": "2025-12-11",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "tarhun-firin-besiktas",
+   "ref": "node/8504040819",
+   "ad": "Tarhun fırın",
+   "ilce": "Beşiktaş",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/8504040819",
+    "https://tarhunfirin.com/anasayfa/"
+   ],
+   "osmSonDuzenleme": "2024-11-18",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "habil-pizza-beykoz",
+   "ref": "node/4581125972",
+   "ad": "Habil Pizza",
+   "ilce": "Beykoz",
+   "mahalle": "Kavacık Mahallesi",
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4581125972",
+    "http://www.habilpizza.com/"
+   ],
+   "osmSonDuzenleme": "2025-01-20",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "1kahve-beyoglu",
+   "ref": "node/3761372057",
+   "ad": "1Kahve",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-03"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3761372057"
+   ],
+   "osmSonDuzenleme": "2025-04-03",
+   "osmKontrol": "2025-04-03",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "360-istanbul-beyoglu",
+   "ref": "node/1000033444",
+   "ad": "360 Istanbul",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "bar"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/1000033444",
+    "https://360istanbul.com/"
+   ],
+   "osmSonDuzenleme": "2026-05-15",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "anthony-karakoy-beyoglu",
+   "ref": "node/4977947721",
+   "ad": "Anthony Karaköy",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4977947721"
+   ],
+   "osmSonDuzenleme": "2025-01-18",
+   "osmKontrol": "2025-01-18",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "arash-cafe-restaurant-beyoglu",
+   "ref": "node/9969509617",
+   "ad": "Arash Cafe Restaurant",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Dünya mutfağı",
+   "mutfak": [
+    {
+     "id": "dunya",
+     "ad": "Diğer dünya mutfakları",
+     "kaynak": "osm_cuisine",
+     "deger": "persian"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9969509617"
+   ],
+   "osmSonDuzenleme": "2025-01-18",
+   "osmKontrol": "2025-01-18",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "caf-de-noix-beyoglu",
+   "ref": "node/14312017005",
+   "ad": "Café de Noix",
+   "ilce": "Beyoğlu",
+   "mahalle": "Firuzağa",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-23"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14312017005"
+   ],
+   "osmSonDuzenleme": "2026-10-23",
+   "osmKontrol": "2026-10-23",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "caf-salve-beyoglu",
+   "ref": "node/14313619175",
+   "ad": "Cafè Salve",
+   "ilce": "Beyoğlu",
+   "mahalle": "Müeyyedzade",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-23"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14313619175"
+   ],
+   "osmSonDuzenleme": "2026-10-23",
+   "osmKontrol": "2026-10-23",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "casius-beyoglu",
+   "ref": "node/3878343272",
+   "ad": "Casius",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-10-26"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3878343272"
+   ],
+   "osmSonDuzenleme": "2025-12-12",
+   "osmKontrol": "2025-10-26",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "chicken-plus-beyoglu",
+   "ref": "node/5720977424",
+   "ad": "Chicken Plus",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-17"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5720977424"
+   ],
+   "osmSonDuzenleme": "2025-01-17",
+   "osmKontrol": "2025-01-17",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "coffee-sapiens-beyoglu",
+   "ref": "node/5640069828",
+   "ad": "Coffee Sapiens",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5640069828",
+    "https://www.coffeesapiens.com/"
+   ],
+   "osmSonDuzenleme": "2022-12-10",
+   "osmKontrol": "2022-12-10",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "doyum-cafe-changhir-beyoglu",
+   "ref": "node/13612631604",
+   "ad": "Doyum Cafe Changhir",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-03-02"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13612631604"
+   ],
+   "osmSonDuzenleme": "2026-03-02",
+   "osmKontrol": "2026-03-02",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "esmer-cafe-beyoglu",
+   "ref": "node/4744505421",
+   "ad": "Esmer Cafe",
+   "ilce": "Beyoğlu",
+   "mahalle": "Asmalı Mescit",
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pasta"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-25"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4744505421"
+   ],
+   "osmSonDuzenleme": "2026-10-30",
+   "osmKontrol": "2026-10-25",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "falafel-house-beyoglu",
+   "ref": "node/5735358321",
+   "ad": "Falafel House",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Tavuk",
+   "mutfak": [
+    {
+     "id": "tavuk",
+     "ad": "Tavuk",
+     "kaynak": "osm_cuisine",
+     "deger": "chicken"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    },
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-17"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5735358321"
+   ],
+   "osmSonDuzenleme": "2025-01-17",
+   "osmKontrol": "2025-01-17",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "fanus-beyoglu",
+   "ref": "node/12512834779",
+   "ad": "Fanus",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834779"
+   ],
+   "osmSonDuzenleme": "2025-01-18",
+   "osmKontrol": "2025-01-18",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "galata-da-beyoglu",
+   "ref": "node/12974799536",
+   "ad": "Galata'da",
+   "ilce": "Beyoğlu",
+   "mahalle": "Bereketzade Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-07-03"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12974799536"
+   ],
+   "osmSonDuzenleme": "2025-07-03",
+   "osmKontrol": "2025-07-03",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "ground-coffee-co-beyoglu",
+   "ref": "node/2536055268",
+   "ad": "Ground Coffee co.",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-01"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/2536055268"
+   ],
+   "osmSonDuzenleme": "2026-01-21",
+   "osmKontrol": "2025-04-01",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "halic-pizza-doner-beyoglu",
+   "ref": "node/9968264265",
+   "ad": "Haliç Pizza Döner",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    },
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-16"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9968264265"
+   ],
+   "osmSonDuzenleme": "2026-09-20",
+   "osmKontrol": "2026-09-16",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "hero-s-pizza-beyoglu",
+   "ref": "node/12510989105",
+   "ad": "Hero's Pizza",
+   "ilce": "Beyoğlu",
+   "mahalle": "Kocatepe Mahallesi",
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-16"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12510989105"
+   ],
+   "osmSonDuzenleme": "2026-09-20",
+   "osmKontrol": "2026-09-16",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "homevibe-beyoglu",
+   "ref": "node/13621003801",
+   "ad": "homevibe",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Tatlıcı",
+   "mutfak": [
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "cake"
+    },
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    },
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-03-05"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13621003801"
+   ],
+   "osmSonDuzenleme": "2026-03-05",
+   "osmKontrol": "2026-03-05",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "jasmin-highheels-beyoglu",
+   "ref": "node/12726317161",
+   "ad": "jasmin highheels",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "bar"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-03"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12726317161"
+   ],
+   "osmSonDuzenleme": "2025-04-03",
+   "osmKontrol": "2025-04-03",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kavacoffee-beyoglu",
+   "ref": "node/5753798522",
+   "ad": "KAVACOFFEE",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-23"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5753798522"
+   ],
+   "osmSonDuzenleme": "2026-10-23",
+   "osmKontrol": "2026-10-23",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "lulu-bosphorus-beyoglu",
+   "ref": "node/10240490009",
+   "ad": "Lulu Bosphorus",
+   "ilce": "Beyoğlu",
+   "mahalle": "Pürtelaş Hasan Efendi",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-05"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10240490009"
+   ],
+   "osmSonDuzenleme": "2026-10-28",
+   "osmKontrol": "2026-04-05",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "mom-s-kitchen-cafe-beyoglu",
+   "ref": "node/10913617405",
+   "ad": "Mom's Kitchen Cafe",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-23"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10913617405"
+   ],
+   "osmSonDuzenleme": "2026-10-23",
+   "osmKontrol": "2026-10-23",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "ops-cafe-beyoglu",
+   "ref": "node/5908008788",
+   "ad": "Ops Cafe",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5908008788"
+   ],
+   "osmSonDuzenleme": "2025-01-18",
+   "osmKontrol": "2025-01-18",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "peyra-gelato-beyoglu",
+   "ref": "node/13836980801",
+   "ad": "Peyra Gelato",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Tatlıcı",
+   "mutfak": [
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_amenity",
+     "deger": "ice_cream"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13836980801",
+    "https://www.peyragalata.com"
+   ],
+   "osmSonDuzenleme": "2026-05-16",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "postane-cafe-beyoglu",
+   "ref": "node/13050297710",
+   "ad": "Postane Cafe",
+   "ilce": "Beyoğlu",
+   "mahalle": "Bereketzade",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13050297710",
+    "https://postane.co/mekanlar/cafe"
+   ],
+   "osmSonDuzenleme": "2025-08-05",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "prince-coffee-house-beyoglu",
+   "ref": "node/9524261417",
+   "ad": "Prince Coffee House",
+   "ilce": "Beyoğlu",
+   "mahalle": "Kılıçali Paşa",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-10-24"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9524261417"
+   ],
+   "osmSonDuzenleme": "2025-10-24",
+   "osmKontrol": "2025-10-24",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "qzey-beyoglu",
+   "ref": "node/4357242201",
+   "ad": "Qzey",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-07-10"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4357242201"
+   ],
+   "osmSonDuzenleme": "2026-07-10",
+   "osmKontrol": "2026-07-10",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "small-turkish-coffee-beyoglu",
+   "ref": "node/12510989125",
+   "ad": "Small Turkish Coffee",
+   "ilce": "Beyoğlu",
+   "mahalle": "Kocatepe Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-17"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12510989125"
+   ],
+   "osmSonDuzenleme": "2025-01-17",
+   "osmKontrol": "2025-01-17",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "son-osmanli-knafeh-beyoglu",
+   "ref": "node/12510989090",
+   "ad": "Son Osmanlı Knafeh",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-17"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12510989090"
+   ],
+   "osmSonDuzenleme": "2025-01-17",
+   "osmKontrol": "2025-01-17",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "tahin-beyoglu",
+   "ref": "node/6850781285",
+   "ad": "Tahin",
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "tur": "Dünya mutfağı",
+   "mutfak": [
+    {
+     "id": "dunya",
+     "ad": "Diğer dünya mutfakları",
+     "kaynak": "osm_cuisine",
+     "deger": "lebanese"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6850781285"
+   ],
+   "osmSonDuzenleme": "2025-01-18",
+   "osmKontrol": "2025-01-18",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "turkuaz-balik-durum-beyoglu",
+   "ref": "node/12512834751",
+   "ad": "Turkuaz Balık Dürüm",
+   "ilce": "Beyoğlu",
+   "mahalle": "Kemankeş Karamustafa Paşa",
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "seafood"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adNotu": "addaki \"sokak\" kaynakla uyuşmuyor; kaynak esas alındı",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12512834751"
+   ],
+   "osmSonDuzenleme": "2025-01-18",
+   "osmKontrol": "2025-01-18",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "varuna-gezgin-beyoglu",
+   "ref": "node/4889958231",
+   "ad": "Varuna Gezgin",
+   "ilce": "Beyoğlu",
+   "mahalle": "Şahkulu",
+   "tur": "Dünya mutfağı",
+   "mutfak": [
+    {
+     "id": "dunya",
+     "ad": "Diğer dünya mutfakları",
+     "kaynak": "osm_cuisine",
+     "deger": "international"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4889958231",
+    "https://varunagezgin.com/",
+    "https://varunagezgin.com/hakkimizda",
+    "https://varunagezgin.com/subeler"
+   ],
+   "osmSonDuzenleme": "2026-06-08",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "wama-s-beyoglu",
+   "ref": "node/7948536809",
+   "ad": "Wama's",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    },
+    {
+     "id": "dunya",
+     "ad": "Diğer dünya mutfakları",
+     "kaynak": "osm_cuisine",
+     "deger": "international"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-06"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7948536809"
+   ],
+   "osmSonDuzenleme": "2026-09-12",
+   "osmKontrol": "2026-09-06",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "yigit-sofram-beyoglu",
+   "ref": "node/10156169117",
+   "ad": "Yiğit Sofram",
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "tur": "Kahvaltı",
+   "mutfak": [
+    {
+     "id": "kahvalti",
+     "ad": "Kahvaltı ve brunch",
+     "kaynak": "osm_cuisine",
+     "deger": "breakfast"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10156169117",
+    "https://yigitsoframkahvalti.com"
+   ],
+   "osmSonDuzenleme": "2026-09-17",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "aga-kapisi-fatih",
+   "ref": "node/5110344556",
+   "ad": "Ağa kapısı",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5110344556",
+    "https://agakapisi.com.tr/"
+   ],
+   "osmSonDuzenleme": "2026-10-13",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "arc-co-coffee-roastery-fatih",
+   "ref": "node/13666863302",
+   "ad": "Arc Co Coffee Roastery",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-03-21"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13666863302"
+   ],
+   "osmSonDuzenleme": "2026-03-21",
+   "osmKontrol": "2026-03-21",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "ayasofia-donercisi-fatih",
+   "ref": "node/1000022724",
+   "ad": "Ayasofia Dönercisi",
+   "ilce": "Fatih",
+   "mahalle": "Sultanahmet",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-06"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/1000022724"
+   ],
+   "osmSonDuzenleme": "2025-12-15",
+   "osmKontrol": "2025-04-06",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "biryani-palace-fatih",
+   "ref": "node/13396860930",
+   "ad": "Biryani Palace",
+   "ilce": "Fatih",
+   "mahalle": "Hobyar Mahallesi",
+   "tur": "Asya mutfağı",
+   "mutfak": [
+    {
+     "id": "asya",
+     "ad": "Çin, Kore, Tayland ve diğer Asya",
+     "kaynak": "osm_cuisine",
+     "deger": "indian"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-23"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13396860930"
+   ],
+   "osmSonDuzenleme": "2025-12-23",
+   "osmKontrol": "2025-12-23",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "buyruk-esnaf-lokantasi-fatih",
+   "ref": "node/13396860948",
+   "ad": "Buyruk Esnaf Lokantasi",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-21"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13396860948"
+   ],
+   "osmSonDuzenleme": "2025-12-23",
+   "osmKontrol": "2025-12-21",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kaffa-miro-fatih",
+   "ref": "node/13738064850",
+   "ad": "Kaffa Miro",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "regional"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-17"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13738064850"
+   ],
+   "osmSonDuzenleme": "2026-04-17",
+   "osmKontrol": "2026-04-17",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kavurmaci-efe-kemal-fatih",
+   "ref": "node/13735215640",
+   "ad": "Kavurmaci Efe Kemal",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "tur": "Sokak lezzeti",
+   "mutfak": [
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-16"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13735215640"
+   ],
+   "osmSonDuzenleme": "2026-04-16",
+   "osmKontrol": "2026-04-16",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "sah-sultan-fatih",
+   "ref": "node/13186922865",
+   "ad": "Sah Sultan",
+   "ilce": "Fatih",
+   "mahalle": "Binbirdirek Mahallesi",
+   "tur": "Tatlıcı",
+   "mutfak": [
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_amenity",
+     "deger": "ice_cream"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-09-30"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13186922865"
+   ],
+   "osmSonDuzenleme": "2025-10-01",
+   "osmKontrol": "2025-09-30",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "semaver-fatih",
+   "ref": "node/12496720445",
+   "ad": "Semaver",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12496720445",
+    "https://semavercafe.com/"
+   ],
+   "osmSonDuzenleme": "2025-12-15",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "safak-pub-fatih",
+   "ref": "node/5244803033",
+   "ad": "Şafak Pub",
+   "ilce": "Fatih",
+   "mahalle": "Küçük Ayasofya Mahallesi",
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "pub"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-09-30"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5244803033"
+   ],
+   "osmSonDuzenleme": "2025-12-15",
+   "osmKontrol": "2025-09-30",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "zen-balat-fatih",
+   "ref": "node/14180397575",
+   "ad": "Zen Balat",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-13"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14180397575"
+   ],
+   "osmSonDuzenleme": "2026-09-14",
+   "osmKontrol": "2026-09-13",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "altkat-lokal-kadikoy",
+   "ref": "node/9823730533",
+   "ad": "Altkat Lokal",
+   "ilce": "Kadıköy",
+   "mahalle": "Rasimpaşa Mahallesi",
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "bar"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-24"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9823730533"
+   ],
+   "osmSonDuzenleme": "2026-10-25",
+   "osmKontrol": "2026-10-24",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "artisan-craft-kadikoy",
+   "ref": "node/9691771717",
+   "ad": "Artisan craft",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-19"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9691771717"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-19",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "arzen-factory-kadikoy",
+   "ref": "node/14302332561",
+   "ad": "Arzen Factory",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14302332561"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "benazio-coffee-kadikoy",
+   "ref": "node/5450459409",
+   "ad": "Benazio Coffee",
+   "ilce": "Kadıköy",
+   "mahalle": "Rasimpaşa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5450459409"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "berti-coffee-kadikoy",
+   "ref": "node/14302332564",
+   "ad": "Berti Coffee",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14302332564"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "black-swan-coffee-kadikoy",
+   "ref": "node/12149272001",
+   "ad": "Black Swan Coffee",
+   "ilce": "Kadıköy",
+   "mahalle": "Kozyatağı Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12149272001",
+    "https://blackswancoffeetr.com/"
+   ],
+   "osmSonDuzenleme": "2026-03-29",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "books-ve-coffe-kadikoy",
+   "ref": "node/14068432801",
+   "ad": "Books & Coffe",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14068432801"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "brasserie-prime-kadikoy",
+   "ref": "node/5805037492",
+   "ad": "Brasserie Prime",
+   "ilce": "Kadıköy",
+   "mahalle": "Caddebostan Mahallesi",
+   "tur": "Dünya mutfağı",
+   "mutfak": [
+    {
+     "id": "dunya",
+     "ad": "Diğer dünya mutfakları",
+     "kaynak": "osm_cuisine",
+     "deger": "international"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5805037492",
+    "https://brasserieprime.com.tr/"
+   ],
+   "osmSonDuzenleme": "2022-10-28",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "cafe-neva-kadikoy",
+   "ref": "node/12270656701",
+   "ad": "Cafe Neva",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Kahvaltı",
+   "mutfak": [
+    {
+     "id": "kahvalti",
+     "ad": "Kahvaltı ve brunch",
+     "kaynak": "osm_cuisine",
+     "deger": "breakfast"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-24"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12270656701"
+   ],
+   "osmSonDuzenleme": "2026-06-10",
+   "osmKontrol": "2026-05-24",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "caff-mood-kadikoy",
+   "ref": "node/5895957485",
+   "ad": "Caffè|Mood",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-05-19"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5895957485"
+   ],
+   "osmSonDuzenleme": "2025-12-30",
+   "osmKontrol": "2025-05-19",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "carbo-smash-burger-kadikoy",
+   "ref": "node/9786517777",
+   "ad": "Carbo Smash Burger",
+   "ilce": "Kadıköy",
+   "mahalle": "Rasimpaşa Mahallesi",
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-24"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9786517777"
+   ],
+   "osmSonDuzenleme": "2026-10-25",
+   "osmKontrol": "2026-10-24",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "carmelo-kadikoy",
+   "ref": "node/7789509846",
+   "ad": "Carmelo",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7789509846",
+    "https://coffeecarmelo.com/locations/carmelo-coffee-istanbul-kadikoy-muhurdar-cadde"
+   ],
+   "osmSonDuzenleme": "2024-12-25",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "char-me-kadikoy",
+   "ref": "node/7198157492",
+   "ad": "Char-Me",
+   "ilce": "Kadıköy",
+   "mahalle": "Kozyatağı",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-11-15"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7198157492"
+   ],
+   "osmSonDuzenleme": "2025-12-13",
+   "osmKontrol": "2025-11-15",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "coffee-manifesto-kadikoy",
+   "ref": "node/10221471760",
+   "ad": "Coffee Manifesto",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Kahvaltı",
+   "mutfak": [
+    {
+     "id": "kahvalti",
+     "ad": "Kahvaltı ve brunch",
+     "kaynak": "osm_cuisine",
+     "deger": "breakfast"
+    },
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10221471760"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "concetto-di-caffe-kadikoy",
+   "ref": "node/12804047734",
+   "ad": "Concetto Di Caffe",
+   "ilce": "Kadıköy",
+   "mahalle": "19 Mayıs Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12804047734",
+    "https://www.concettodicaffe.com.tr/"
+   ],
+   "osmSonDuzenleme": "2025-05-02",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "damla-pide-kebap-kadikoy",
+   "ref": "node/8321884002",
+   "ad": "Damla Pide Kebap",
+   "ilce": "Kadıköy",
+   "mahalle": "Rasimpaşa Mahallesi",
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-24"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/8321884002"
+   ],
+   "osmSonDuzenleme": "2026-10-25",
+   "osmKontrol": "2026-10-24",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "fein-kadikoy",
+   "ref": "node/13895777443",
+   "ad": "fein",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-30"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13895777443"
+   ],
+   "osmSonDuzenleme": "2026-05-30",
+   "osmKontrol": "2026-05-30",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "gg-pizza-kadikoy",
+   "ref": "node/14302332556",
+   "ad": "GG Pizza",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-19"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14302332556"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-19",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "gizia-brasserie-kadikoy",
+   "ref": "node/5284690854",
+   "ad": "Gizia Brasserie",
+   "ilce": "Kadıköy",
+   "mahalle": "Bostancı Mahallesi",
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "bar"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5284690854",
+    "https://www.giziabrasserie.com/tr/lokasyonlar/suadiye/"
+   ],
+   "osmSonDuzenleme": "2025-08-20",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "glowing-forest-shop-ve-coffee-kadikoy",
+   "ref": "node/12653338700",
+   "ad": "Glowing Forest Shop&Coffee",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12653338700",
+    "https://www.glowingforest.com/"
+   ],
+   "osmSonDuzenleme": "2026-06-10",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "goblin-oyun-kulubu-kadikoy",
+   "ref": "node/10556468224",
+   "ad": "Goblin Oyun Kulübü",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10556468224",
+    "https://www.goblin-store.com/"
+   ],
+   "osmSonDuzenleme": "2025-04-03",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "grandma-suadiye-kadikoy",
+   "ref": "node/13266952371",
+   "ad": "Grandma Suadiye",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13266952371",
+    "https://www.grandma.com.tr/",
+    "https://www.grandma.com.tr/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.0.6",
+    "https://www.grandma.com.tr/subelerimiz/"
+   ],
+   "osmSonDuzenleme": "2025-10-29",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "hugg-coffee-kadikoy",
+   "ref": "node/12803912101",
+   "ad": "Hugg Coffee",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12803912101",
+    "https://www.huggcoffee.co/"
+   ],
+   "osmSonDuzenleme": "2025-05-02",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "j-burger-kadikoy",
+   "ref": "node/6116124386",
+   "ad": "J Burger",
+   "ilce": "Kadıköy",
+   "mahalle": "Caddebostan Mahallesi",
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6116124386",
+    "https://jburger.com.tr/"
+   ],
+   "osmSonDuzenleme": "2025-07-12",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "javel-kadikoy-kadikoy",
+   "ref": "node/5450459399",
+   "ad": "Javel Kadıköy",
+   "ilce": "Kadıköy",
+   "mahalle": "Ferah Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-19"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5450459399"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-19",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "john-s-coffee-kadikoy",
+   "ref": "node/6551610785",
+   "ad": "JOHN’S COFFEE",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Tatlıcı",
+   "mutfak": [
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "cake"
+    },
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    },
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    },
+    {
+     "id": "sokak",
+     "ad": "Sokak lezzetleri (köfte, kokoreç, dürüm…)",
+     "kaynak": "osm_cuisine",
+     "deger": "sandwich"
+    },
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pasta"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-11-15"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6551610785"
+   ],
+   "osmSonDuzenleme": "2025-11-15",
+   "osmKontrol": "2025-11-15",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "juan-valdez-coffee-kadikoy",
+   "ref": "node/12151125435",
+   "ad": "Juan Valdez Coffee",
+   "ilce": "Kadıköy",
+   "mahalle": "Sahrayıcedit Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12151125435",
+    "https://www.juanvaldezcoffee.com.tr/sahrayicedit-subesi"
+   ],
+   "osmSonDuzenleme": "2024-09-02",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "juugo-coffee-kadikoy",
+   "ref": "node/14303695463",
+   "ad": "Juugo Coffee",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14303695463"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kawaii-cafe-kadikoy",
+   "ref": "node/9821259935",
+   "ad": "Kawaii Cafe",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9821259935"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "kernel-coffee-roasters-kadikoy",
+   "ref": "node/11941900169",
+   "ad": "Kernel Coffee Roasters",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11941900169",
+    "https://kernelcoffee.co",
+    "https://kernelcoffee.co/pages/iletisim"
+   ],
+   "osmSonDuzenleme": "2024-05-29",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "mabel-cikolata-kadikoy",
+   "ref": "node/3218509784",
+   "ad": "Mabel Çikolata",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "tur": "Tatlıcı",
+   "mutfak": [
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "chocolate"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3218509784",
+    "https://www.mabel.com.tr/tr/magazalarimiz"
+   ],
+   "osmSonDuzenleme": "2023-05-03",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "mantimia-kadikoy",
+   "ref": "node/12568904625",
+   "ad": "Mantımia",
+   "ilce": "Kadıköy",
+   "mahalle": "Erenköy Mahallesi",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12568904625",
+    "https://www.mantimia.com",
+    "https://www.mantimia.com/subeler.php"
+   ],
+   "osmSonDuzenleme": "2025-02-08",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "minor-kadikoy",
+   "ref": "node/11381893120",
+   "ad": "Minor",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11381893120"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "moda-cikolatacisi-kadikoy",
+   "ref": "node/9066640518",
+   "ad": "Moda Çikolatacısı",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9066640518",
+    "https://modacikolatacisi.com/",
+    "https://modacikolatacisi.com/pages/iletisim"
+   ],
+   "osmSonDuzenleme": "2025-02-03",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "muhit-kadikoy-kadikoy",
+   "ref": "node/13695783401",
+   "ad": "Muhit Kadıköy",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "bar"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-03-31"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13695783401"
+   ],
+   "osmSonDuzenleme": "2026-03-31",
+   "osmKontrol": "2026-03-31",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "narin-yemek-kadikoy",
+   "ref": "node/14270723001",
+   "ad": "Narin Yemek",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-09"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14270723001"
+   ],
+   "osmSonDuzenleme": "2026-10-10",
+   "osmKontrol": "2026-10-09",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "noir-pitt-kadikoy",
+   "ref": "node/9697333717",
+   "ad": "Noir pitt",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9697333717"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "piya-thai-kadikoy",
+   "ref": "node/13133184160",
+   "ad": "Piya Thai",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Asya mutfağı",
+   "mutfak": [
+    {
+     "id": "asya",
+     "ad": "Çin, Kore, Tayland ve diğer Asya",
+     "kaynak": "osm_cuisine",
+     "deger": "thai"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-09-10"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13133184160"
+   ],
+   "osmSonDuzenleme": "2025-09-10",
+   "osmKontrol": "2025-09-10",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "pizza-2-go-kadikoy",
+   "ref": "node/6531752236",
+   "ad": "Pizza 2 Go",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-19"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6531752236"
+   ],
+   "osmSonDuzenleme": "2026-09-23",
+   "osmKontrol": "2026-09-19",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "puu-fu-kadikoy",
+   "ref": "node/14303695462",
+   "ad": "Puu Fu",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14303695462"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "rafine-espresso-bar-kadikoy",
+   "ref": "node/5688825824",
+   "ad": "Rafine Espresso Bar",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5688825824",
+    "https://www.rafineespressobar.com/",
+    "https://www.rafineespressobar.com/hakkimizda"
+   ],
+   "osmSonDuzenleme": "2019-09-11",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "rucio-cafe-kadikoy",
+   "ref": "node/5257977654",
+   "ad": "Rucio Cafe",
+   "ilce": "Kadıköy",
+   "mahalle": "Rasimpaşa Mahallesi",
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5257977654"
+   ],
+   "osmSonDuzenleme": "2026-10-20",
+   "osmKontrol": "2026-10-20",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "rust-kadikoy",
+   "ref": "node/13891120859",
+   "ad": "Rust",
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-28"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13891120859"
+   ],
+   "osmSonDuzenleme": "2026-05-28",
+   "osmKontrol": "2026-05-28",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "sagra-kadikoy",
+   "ref": "node/10853354628",
+   "ad": "Sagra",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10853354628",
+    "https://sagra.com.tr"
+   ],
+   "osmSonDuzenleme": "2025-10-26",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "santral-coffee-house-kadikoy",
+   "ref": "node/7740541130",
+   "ad": "Santral Coffee House",
+   "ilce": "Kadıköy",
+   "mahalle": "Erenköy Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7740541130",
+    "http://www.santralcoffee.com/"
+   ],
+   "osmSonDuzenleme": "2024-09-24",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "selfish-tapas-food-ve-wine-kadikoy",
+   "ref": "node/11999327569",
+   "ad": "Selfish Tapas Food & Wine",
+   "ilce": "Kadıköy",
+   "mahalle": null,
+   "tur": "Balık restoranı",
+   "mutfak": [
+    {
+     "id": "balik",
+     "ad": "Balık ve deniz ürünleri",
+     "kaynak": "osm_cuisine",
+     "deger": "fish"
+    },
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-11-03"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11999327569"
+   ],
+   "osmSonDuzenleme": "2025-11-03",
+   "osmKontrol": "2025-11-03",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "square-coffee-ve-bowl-kadikoy",
+   "ref": "node/12281743823",
+   "ad": "Square Coffee & Bowl",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    },
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "dessert"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-03-28"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12281743823"
+   ],
+   "osmSonDuzenleme": "2026-03-28",
+   "osmKontrol": "2026-03-28",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "superr-taco-kadikoy",
+   "ref": "node/10911047488",
+   "ad": "Superr Taco",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "tur": "Dünya mutfağı",
+   "mutfak": [
+    {
+     "id": "dunya",
+     "ad": "Diğer dünya mutfakları",
+     "kaynak": "osm_cuisine",
+     "deger": "mexican"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10911047488",
+    "https://superrtaco.com.tr/"
+   ],
+   "osmSonDuzenleme": "2023-05-19",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "vardarli-dondurma-kadikoy",
+   "ref": "node/10833857152",
+   "ad": "Vardarlı Dondurma",
+   "ilce": "Kadıköy",
+   "mahalle": "Sahrayıcedit Mahallesi",
+   "tur": "Tatlıcı",
+   "mutfak": [
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_amenity",
+     "deger": "ice_cream"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10833857152",
+    "http://www.vardarlidondurma.com/",
+    "http://www.vardarlidondurma.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.5",
+    "http://www.vardarlidondurma.com/iletisim/"
+   ],
+   "osmSonDuzenleme": "2025-05-24",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "voi-cadde-kadikoy",
+   "ref": "node/7544799076",
+   "ad": "voi cadde",
+   "ilce": "Kadıköy",
+   "mahalle": "Suadiye Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    },
+    {
+     "id": "tatli",
+     "ad": "Pastane ve tatlıcı",
+     "kaynak": "osm_cuisine",
+     "deger": "ice_cream"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7544799076",
+    "https://www.voi.com.tr"
+   ],
+   "osmSonDuzenleme": "2023-01-22",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "yana-cafe-kadikoy",
+   "ref": "node/14317767307",
+   "ad": "Yana Cafe",
+   "ilce": "Kadıköy",
+   "mahalle": "Rasimpaşa Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-24"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14317767307"
+   ],
+   "osmSonDuzenleme": "2026-10-25",
+   "osmKontrol": "2026-10-24",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "youme-smash-burgers-kadikoy",
+   "ref": "node/13249332130",
+   "ad": "youme smash burgers",
+   "ilce": "Kadıköy",
+   "mahalle": "Caddebostan Mahallesi",
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13249332130",
+    "https://youmecadde.com"
+   ],
+   "osmSonDuzenleme": "2025-10-22",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "rune-coffee-roastery-maltepe",
+   "ref": "way/1232714826",
+   "ad": "Rune Coffee Roastery",
+   "ilce": "Maltepe",
+   "mahalle": "Feyzullah Mah, Mimar Sinan Cd. No:11/A, 34843 Maltepe/İstanbul",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak + telefon eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1232714826",
+    "https://www.runecoffeeroastery.com/"
+   ],
+   "osmSonDuzenleme": "2026-07-18",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "brothers-coffee-pendik",
+   "ref": "node/10223917363",
+   "ad": "Brothers Coffee",
+   "ilce": "Pendik",
+   "mahalle": "Batı Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-07"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10223917363"
+   ],
+   "osmSonDuzenleme": "2026-09-07",
+   "osmKontrol": "2026-09-07",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "parfe-pendik",
+   "ref": "node/14315053601",
+   "ad": "Parfe",
+   "ilce": "Pendik",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-24"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14315053601"
+   ],
+   "osmSonDuzenleme": "2026-10-24",
+   "osmKontrol": "2026-10-24",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "pardon-boulangerie-sariyer",
+   "ref": "node/12912965201",
+   "ad": "Pardon Boulangerie",
+   "ilce": "Sarıyer",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12912965201",
+    "https://pardonboulangerie.com.tr/",
+    "https://pardonboulangerie.com.tr/hakkimizda",
+    "https://pardonboulangerie.com.tr/subeler"
+   ],
+   "osmSonDuzenleme": "2026-05-15",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "bosphorus-brewing-company-sisli",
+   "ref": "node/3260790922",
+   "ad": "Bosphorus Brewing Company",
+   "ilce": "Şişli",
+   "mahalle": null,
+   "tur": "Bar",
+   "mutfak": [
+    {
+     "id": "bar",
+     "ad": "Bar",
+     "kaynak": "osm_amenity",
+     "deger": "pub"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3260790922",
+    "https://bbcist.com/"
+   ],
+   "osmSonDuzenleme": "2025-04-26",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "cafe-pont-sisli",
+   "ref": "node/13740886000",
+   "ad": "Cafe Pont",
+   "ilce": "Şişli",
+   "mahalle": "Halaskargazi Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13740886000",
+    "https://cafepont.com"
+   ],
+   "osmSonDuzenleme": "2026-04-18",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "mios-cafe-sisli",
+   "ref": "node/14279314542",
+   "ad": "Mios Cafe",
+   "ilce": "Şişli",
+   "mahalle": "Harbiye Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-13"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14279314542"
+   ],
+   "osmSonDuzenleme": "2026-10-13",
+   "osmKontrol": "2026-10-13",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "norr-kaffe-sisli",
+   "ref": "node/13903897517",
+   "ad": "Norr Kaffe",
+   "ilce": "Şişli",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_cuisine",
+     "deger": "coffee_shop"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-06-02"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13903897517"
+   ],
+   "osmSonDuzenleme": "2026-06-02",
+   "osmKontrol": "2026-06-02",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "anstella-pizza-uskudar",
+   "ref": "node/14310418137",
+   "ad": "Anstella Pizza",
+   "ilce": "Üsküdar",
+   "mahalle": null,
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-22"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14310418137"
+   ],
+   "osmSonDuzenleme": "2026-10-22",
+   "osmKontrol": "2026-10-22",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "askin-cafe-uskup-trilece-uskudar",
+   "ref": "node/14309308022",
+   "ad": "Askin Cafe - Uskup Trilece",
+   "ilce": "Üsküdar",
+   "mahalle": null,
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-22"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14309308022"
+   ],
+   "osmSonDuzenleme": "2026-10-24",
+   "osmKontrol": "2026-10-22",
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "hakiki-kebap-uskudar",
+   "ref": "node/6190676774",
+   "ad": "Hakiki Kebap",
+   "ilce": "Üsküdar",
+   "mahalle": "İcadiye Mahallesi",
+   "tur": "Kebapçı / Ocakbaşı",
+   "mutfak": [
+    {
+     "id": "kebap",
+     "ad": "Kebap ve ocakbaşı",
+     "kaynak": "osm_cuisine",
+     "deger": "kebab"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6190676774",
+    "https://www.hakikikebap.com/"
+   ],
+   "osmSonDuzenleme": "2023-09-17",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  },
+  {
+   "slug": "monstera-coffee-company-uskudar",
+   "ref": "node/11362638734",
+   "ad": "Monstera Coffee Company",
+   "ilce": "Üsküdar",
+   "mahalle": "Acıbadem Mahallesi",
+   "tur": "Kahveci",
+   "mutfak": [
+    {
+     "id": "kafe",
+     "ad": "Kafe",
+     "kaynak": "osm_amenity",
+     "deger": "cafe"
+    }
+   ],
+   "sinif": "A",
+   "kanit": [
+    "resmî site (2026-11-10): ad + sokak eşleşti"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11362638734",
+    "https://menum.co/MONSTERA-COFFEE-COMPANY"
+   ],
+   "osmSonDuzenleme": "2023-11-19",
+   "osmKontrol": null,
+   "kontrolTarihi": "2026-11-10"
+  }
+ ]
+}
