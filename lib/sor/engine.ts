@@ -111,6 +111,11 @@ const NAME_NOISE = new Set(["restoran", "restaurant", "lokanta", "lokantasi", "c
 /* Semt, mutfak ya da tercih sözcüğü tek başına mekân adı sayılmaz: "kebap" Kebap Hocası'nı, "Karaköy" Karaköy Lokantası'nı seçmez. */
 const isGeneric = (t: string) => [...SUBAREAS.map((a) => a.name), ...DISTRICTS, ...CUISINES.flatMap((c) => c.terms), ...DISHES.flatMap((d) => d.terms), ...ATTRS.flatMap((a) => a.terms)].some((term) => { const x = fold(term); return !x.includes(" ") && tokenHit(t, x); });
 function matchName(q: string): Venue | null {
+  /* Tam ad, bir sözcüğü aynı olan başka mekânın kısmi/bitişik ad eşleşmesinden önce gelir.
+     Örn. Develi Samatya, Samatya Cafe ya da yalnız Develi ile yer değiştiremez. */
+  const full = VENUES.filter(v => { const name = fold(v.name); return name.length >= 8 && (q === name || name.split(" ").some(t => t.length >= 3 && !isGeneric(t) && !QUERY_NOISE.has(t) && !NAME_NOISE.has(t))) && (` ${q} `).includes(` ${name} `); })
+    .sort((a,b) => fold(b.name).length - fold(a.name).length)[0];
+  if (full) return full;
   const toks = q.split(" ").filter((t) => t.length >= 3);
   /* soru ekleri ve şehir adı mekân adı değildir: "önerir misin" Misina, "İstanbul'da" İstanbul Emniyet... değildir */
   const own = toks.filter((t) => !isGeneric(t) && !QUERY_NOISE.has(t));
