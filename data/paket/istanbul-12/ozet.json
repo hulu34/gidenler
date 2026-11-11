@@ -1,0 +1,22 @@
+{
+ "dalga": 12,
+ "A": 5,
+ "osmKaydi": 4,
+ "isletmeKaydi": 1,
+ "elenen": 0,
+ "michelin": {
+  "secki": 2,
+  "bib_gourmand": 3
+ },
+ "ilce": {
+  "Beşiktaş": 2,
+  "Şişli": 2,
+  "Beyoğlu": 1
+ },
+ "tur": {
+  "Balık restoranı": 1,
+  "Geleneksel mutfak": 1,
+  "Türk mutfağı": 2,
+  "Sushi / Japon": 1
+ }
+}

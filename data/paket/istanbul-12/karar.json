@@ -1,0 +1,21 @@
+{
+ "_aciklama": "Paket 12: paket 10 inceleme havuzunun (39) yeniden değerlendirmesi. Yeni kanıt kaynağı: taze OSM (Overpass, 2026-11-11T14:45Z). OSM'de yalnız name:en etiketli (name etiketi olmayan) restoran kayıtları ve adres noktaları rehber noktasının çevresinde arandı. Rehber koordinatı yalnız eşleştirme için kullanıldı, kayda yazılmadı. Koordinat yalnız OSM'den.",
+ "kontrolTarihi": "2026-11-11",
+ "kayitlar": [
+  { "m": "park-fora", "tip": "osm", "ref": "node/4779993130", "ad": "Park Fora", "adres": "Muallim Naci Caddesi No:54/A", "mahalle": null,
+    "site": "https://www.parkfora.com/", "telefon": "+90 212 265 50 63", "kanit": "ad + telefon + sokak; OSM kaydında Muallim Naci Caddesi 54, aynı telefon ve site",
+    "not": "OSM kaydında name etiketi yok, yalnız name:en \"Park Fora\"; önceki ad aramaları bu yüzden bulamamıştı." },
+  { "m": "sade-bes-denizler-mutfagı", "tip": "osm", "ref": "node/6831046889", "ad": "Sade Beş Denizler Mutfağı", "adres": "Akkavak Sokak No:36", "mahalle": "Teşvikiye",
+    "site": "https://sadebesdenizler.com/", "telefon": "+90 212 234 01 34", "kanit": "ad + telefon + sokak",
+    "not": "OSM kaydında yalnız name:en \"Sade 5 continents food\"; rehber noktasına 2 m. Resmî ad kullanıldı." },
+  { "m": "tatbak", "tip": "osm", "ref": "node/6831047086", "ad": "Tatbak", "adres": "Akkavak Sokak No:38/B", "mahalle": "Teşvikiye",
+    "site": "https://www.tatbak.com/", "telefon": "+90 212 248 04 25", "kanit": "ad + telefon",
+    "not": "OSM kaydında yalnız name:en \"Tatbak 1960\"; rehber noktasına 3 m. Kapı numarası rehberden." },
+  { "m": "ali-ocakbası", "tip": "osm", "ref": "node/9517184617", "ad": "Ali Ocakbaşı Karaköy", "adres": "Kardeşim Sokak No:45, Kat 4", "mahalle": "Arap Cami",
+    "site": "https://www.aliocakbasi.com/post/istanbul-karakoy/38.html", "telefon": "+90 212 293 10 11", "kanit": "resmî şube sayfasında Karaköy şubesi adı + telefon (rehberle aynı)", "sube": "Karaköy",
+    "not": "OSM kaydında yalnız name:en \"Ali Ocakbasi Karakoy\"; rehber noktasına 11 m. Markanın Gümüşsuyu şubesi (node/6425793485, 906 dalında) ayrı şubedir; resmî sayfada adresi yok, bu pakete alınmadı. Suadiye şubesi Production'da." },
+  { "m": "itsumi", "tip": "isletme", "konum": "way/156828999", "hassasiyet": "building", "konumNot": "OSM bina kaydı İş Kuleleri", "ad": "Itsumi", "adres": "İş Kuleleri Kule 2, Giriş Kat No:43, 4. Levent", "mahalle": null,
+    "site": "https://www.itsumijp.com/contact/", "telefon": "+90 534 946 48 48", "kanit": "iletişim sayfasında Itsumi Levent (merkez şube) ad + İş Kuleleri Kule 2 No:43 + telefon", "sube": "Levent",
+    "not": "Markanın Etiler (Itsumi SO) ve Bodrum şubeleri ayrı; rehberdeki kayıt Levent. Konum kompleks düzeyinde (3 kule), kule ayrımı OSM'de yok." }
+ ]
+}
