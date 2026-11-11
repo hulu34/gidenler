@@ -9,7 +9,7 @@ for(const r of b1){
  const e=realEntities.find(e=>e.slug===r.slug)!;
  assert.equal(e.location?.precision,"street");
  const m=mapLinks(e)!;assert.ok(m);assert.ok(!m.osmEmbed.includes("marker="));assert.ok(!m.osm.includes("mlat="));assert.ok(!m.directions.includes("destination="));assert.ok(m.directions.includes("/search/"));
- assert.ok(!venueJsonLd(e,null,false)?.geo);
+ assert.equal(m.streetView,null);assert.ok(!venueJsonLd(e,null,false)?.geo);
 }
 console.log("✓ 102/102 B1: sokak düzeyi taşınır; kesin harita işareti ve kapıya rota yok; SEO kesin koordinat vermez");
 const a=realEntities.find(e=>e.slug==="ciya-sofrasi-kadikoy")!;assert.ok(mapLinks(a)?.directions.includes("destination="));assert.ok(venueJsonLd(a,null,false)?.geo);console.log("✓ A kaydının mevcut konum davranışı korunur");

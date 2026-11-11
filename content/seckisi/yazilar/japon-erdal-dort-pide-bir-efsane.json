@@ -247,19 +247,33 @@
   ],
   "cover": {
     "state": "var",
-    "src": "/media/foto/japon-erdal-kapali-pide-1080.webp",
+    "src": "/media/foto/japon-erdal-cift-yumurtali-1206.jpg",
     "alt": {
-      "tr": "Kâğıt üzerinde dilimlenmiş kapalı pideler; kenarları fırında kızarmış, aralarından iç harcı görünüyor.",
-      "en": "Sliced closed pides on paper, their edges charred in the oven, the filling showing between the slices."
+      "tr": "Japon Erdal'ın üzerinde iki yumurta sarısı bulunan açık kuşbaşılı pidesi.",
+      "en": "Japon Erdal's open diced-beef pide topped with two egg yolks."
     },
     "credit": "Japon Erdal arşivi",
     "rights": "isletme-izni",
-    "rightsRef": "İşletme sahibinin 30.10.2026 tarihli yazılı onayı; kapsam: Seçki (TR/EN), restoran profili, editoryal sosyal medya, kırpma ve boyutlandırma; künye: Japon Erdal arşivi",
-    "sourceUrl": "https://www.instagram.com/p/DddzCLKDgK3/",
-    "depicts": "Japon Erdal'ın kapalı pidesi (işletmenin Instagram gönderisi, Eylül 2026)",
+    "rightsRef": "İşletme sahibinin 11.11.2026 tarihli Seçki kapak talebi: resmî sitedeki çift yumurtalı pide fotoğrafının, sağladığı dış cephe fotoğrafıyla aynı çerçevede kullanımı (TR/EN ve ana sayfa).",
+    "sourceUrl": "https://japonerdal.com/",
+    "depicts": "Japon Erdal'ın çift yumurta sarılı açık kuşbaşılı pidesi; resmî site fotoğraf arşivi, kontrol 11.11.2026",
     "note": {
-      "tr": "Dilimlenmiş kapalı pide",
-      "en": "Sliced closed pide"
+      "tr": "Çift yumurta sarılı açık kuşbaşılı pide",
+      "en": "Open diced-beef pide with two egg yolks"
+    },
+    "leadingPhoto": {
+      "src": "/media/foto/japon-erdal-dis-cephe-1246.jpg",
+      "alt": {
+        "tr": "Japon Erdal'ın Dibek Sokağı'ndaki dış cephesi; kırmızı Pide tabelası, çelik saçak ve açık giriş.",
+        "en": "Japon Erdal's storefront on Dibek Sokağı, with a red Pide sign, steel canopy and open entrance."
+      },
+      "credit": "Japon Erdal arşivi",
+      "rights": "isletme-izni",
+      "rightsRef": "İşletme sahibinin 11.11.2026 tarihinde bu sohbet üzerinden sağladığı WhatsApp Image 2026-11-11 at 19.57.12.jpeg; dış cephe ve çift yumurtalı pideyi aynı Seçki kapağında kullanma talebi.",
+      "sourceNote": {
+        "tr": "Dış cephe fotoğrafı işletme tarafından 11 Kasım 2026'da sağlandı",
+        "en": "Storefront photo supplied by the restaurant on 11 November 2026"
+      }
     }
   },
   "editorial": {
@@ -275,7 +289,7 @@
   },
   "preparedAt": "2026-10-30",
   "publishedAt": "2026-10-30",
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-11",
   "newOpening": false,
   "commercial": {
     "state": "var",

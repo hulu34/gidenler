@@ -18,14 +18,15 @@ async function main() {
     const dir = `data/paket/istanbul-${n}${n===8?"-b1":""}`;
     for (const f of ["kayitlar.json","isletme-kayitlari.json"]) try { additions.push(...JSON.parse(readFileSync(`${dir}/${f}`,"utf8"))); } catch (e) { if (f==="kayitlar.json") throw e; }
   }
-  assert.equal(additions.length,218);
+  additions.push(realVenueRecords.find(r=>r.slug==="menemen-besiktas")!);
+  assert.equal(additions.length,219);
   const addedSlugs = new Set(additions.map(r=>r.slug));
   const baseline = realVenueRecords.filter(r=>!addedSlugs.has(r.slug));
   assert.equal(baseline.length,574);
   await applyMigrations(x); await seedRealVenues(db,baseline);
   const snapshot = async () => (await pg.query("SELECT (SELECT jsonb_agg(to_jsonb(p) ORDER BY id) FROM places p) places, (SELECT jsonb_agg(to_jsonb(i) ORDER BY id) FROM place_identifiers i) identifiers, (SELECT jsonb_agg(to_jsonb(f) ORDER BY id) FROM field_provenance f) provenance, (SELECT jsonb_agg(to_jsonb(v) ORDER BY place_id) FROM vertical_restaurant v) verticals")).rows;
   const old = await snapshot();
-  const result = await appendRealVenues(x,additions,574);assert.equal(result.total,792);console.log("✓ 218 eklendi; toplam 792");
+  const result = await appendRealVenues(x,additions,574);assert.equal(result.total,793);console.log("✓ 219 eklendi; toplam 793");
   const after = await snapshot();
   for (const k of ["places","identifiers","provenance","verticals"]) {
     const rows=(after[0] as Record<string, unknown[]>)[k];

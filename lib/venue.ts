@@ -86,7 +86,7 @@ export function mapLinks(e: Entity) {
     osmEmbed: `https://www.openstreetmap.org/export/embed.html?bbox=${g.lng - 0.004},${g.lat - 0.0025},${g.lng + 0.004},${g.lat + 0.0025}&layer=mapnik${approximate ? "" : `&marker=${g.lat},${g.lng}`}`,
     osm: `https://www.openstreetmap.org/${approximate ? "" : `?mlat=${g.lat}&mlon=${g.lng}`}#map=18/${g.lat}/${g.lng}`,
     googleMaps: `https://www.google.com/maps/search/?api=1&query=${q}`,
-    streetView: `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${g.lat},${g.lng}`,
+    streetView: approximate ? null : `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${g.lat},${g.lng}`,
     directions: approximate ? `https://www.google.com/maps/search/?api=1&query=${q}` : `https://www.google.com/maps/dir/?api=1&destination=${g.lat},${g.lng}`,
   };
 }
