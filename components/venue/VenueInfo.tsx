@@ -47,7 +47,9 @@ export function VenueInfo({ entity }: { entity: Entity }) {
       </dl>
       {entity.isReal && entity.source?.provider === "business" && (
         <p className="mt-2 text-[11.5px] leading-snug text-ink-3">
-          Kimlik bilgisi: işletmenin kendi beyanı ve resmî sitesi · {entity.source.importedAt}. Konum OpenStreetMap adres verisinden, sokak düzeyinde (© OpenStreetMap katkıcıları, ODbL).
+          Kimlik bilgisi: işletmenin kendi beyanı ve resmî sitesi · {entity.source.importedAt}.{entity.location?.geo
+            ? " Konum OpenStreetMap adres verisinden, sokak düzeyinde (© OpenStreetMap katkıcıları, ODbL)."
+            : " Doğrulanmış harita konumu yok; adres resmî kaynaktan, harita noktası gösterilmez."}
         </p>
       )}
       {entity.isReal && entity.source && entity.source.provider !== "business" && (
