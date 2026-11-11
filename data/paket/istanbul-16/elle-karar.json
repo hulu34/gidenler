@@ -1,0 +1,86 @@
+{
+ "_aciklama": "Paket 16 elle denetim: otomatik sınıflandırmada A/A-konumsuz çıkan ama kanıtı yetersiz ya da kapsam dışı adaylar. Overture GERS kimliğine göre.",
+ "tarih": "2026-11-11",
+ "kararlar": {
+  "8ca1d861-0497-4c2e-8019-f6ba4e2c5368": {
+   "ad": "Flamingo Köy",
+   "sinif": "B",
+   "neden": "işletme türü belirsiz (köy/etkinlik alanı); sitede restoran tanımı yok"
+  },
+  "f31a61c4-ceaf-4582-a14e-88aac1dd96de": {
+   "ad": "Ahmet Mehmet Balıkçılık ve Su Ürünleri",
+   "sinif": "C",
+   "neden": "balıkçı/su ürünleri satışı; restoran olduğu doğrulanmadı"
+  },
+  "e8d9c7a8-ccc8-4e46-8cd4-15d663425694": {
+   "ad": "Çiğköfte Dükkanı Ömer Usta",
+   "sinif": "C",
+   "neden": "çiğ köfte: kapsam dışı; Overture türü (Akdeniz) yanlış"
+  },
+  "5bf3d9be-f36a-4d8a-b4ba-f92b56d879e5": {
+   "ad": "ÇKS Tarihi Çatalca Köfte",
+   "sinif": "B",
+   "neden": "tür çelişkili: Overture \"burger\", sitede tür tanımı yok"
+  },
+  "dc197afa-efce-4a15-a1f0-49d05ceaa753": {
+   "ad": "Demsu",
+   "sinif": "C",
+   "neden": "resmî site gıda firması (Demsu Gıda); restoran olduğu doğrulanmadı"
+  },
+  "fd3632c6-d08e-4955-8c0a-522ceeabe042": {
+   "ad": "Olive Hill",
+   "sinif": "B",
+   "neden": "resmî site \"Olive Hill Village\"; restoran mı yaşam alanı mı belirsiz"
+  },
+  "8b13c6be-e0b5-4726-a028-5438fdb51448": {
+   "ad": "Doğaköyü Çatalca",
+   "sinif": "B",
+   "neden": "işletme türü belirsiz (doğa köyü); sitede restoran tanımı yok"
+  },
+  "ac5af56a-c2c1-4232-ae1c-72ebfddba2ec": {
+   "ad": "Şırdancı Paçacı Remzi",
+   "sinif": "B",
+   "neden": "tür çelişkili: Overture \"middle_eastern\", sitede tür tanımı yok"
+  },
+  "bc6741e0-6434-4e41-bb4b-16e6ccaa237e": {
+   "ad": "Le Marde Cafe",
+   "sinif": "C",
+   "neden": "otel kafesi; resmî site otel sitesi, restoran kimliği yok"
+  },
+  "58467604-5557-4847-898c-0130cccde8bc": {
+   "ad": "Battalbey Cigkofte",
+   "sinif": "C",
+   "neden": "çiğ köfte: kapsam dışı; Overture türü (Akdeniz) yanlış"
+  },
+  "83560484-e795-4c1b-ab5f-dd3117fa8fbe": {
+   "ad": "Canpi Karadeniz Pide",
+   "sinif": "B",
+   "neden": "tür çelişkili: Overture \"mediterranean\", sitede tür tanımı yok (addan tür üretilmez)"
+  },
+  "aaafd3f7-3fed-4403-bfd7-6d5593acd673": {
+   "ad": "Asi Hatay Sofrası",
+   "sinif": "B",
+   "neden": "resmî site künefe markası (Asi Künefe); tür (steakhouse) çelişkili"
+  },
+  "e3492193-93a9-4273-a797-6afb52002358": {
+   "ad": "Civarda Kuruçeşme",
+   "sinif": "B",
+   "neden": "sitede eğlence mekânı tanımı (müzik, eğlence); restoran mı bar mı belirsiz"
+  },
+  "622bc245-3f72-4abc-a451-675a54fa1d8f": {
+   "ad": "Mifas Lounge",
+   "sinif": "C",
+   "neden": "resmî site kendini nargile kafe ve okey salonu olarak tanıtıyor: kapsam dışı"
+  },
+  "c0ef9b7d-4322-4d60-a8d3-ce67d1f7fc7e": {
+   "ad": "Boâz Live",
+   "sinif": "B",
+   "neden": "çok konseptli grubun canlı müzik şubesi; bu şubenin türü belirsiz"
+  },
+  "c3c36397-f961-41f2-9c14-da28276cdb0e": {
+   "ad": "Avan Büfe",
+   "sinif": "B",
+   "neden": "tür belirsiz: ıslak hamburger + tost + kahvaltı birlikte"
+  }
+ }
+}

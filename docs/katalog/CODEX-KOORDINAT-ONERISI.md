@@ -76,3 +76,18 @@ location?:
 ## 4. Hazır veri
 - `data/paket/istanbul-15/overture-oneri.json`: 18 kayıt için GERS ID, nokta, güven, kaynak ve lisans, ilçe kontrolü, uyum mesafesi, öneri (16 kullanılabilir).
 - Şema desteği gelirse bu 16 kaydın konumu tek adımda eklenebilir. O zamana kadar kayıtlar A-konumsuz kalır.
+
+## 5. Sor Gidenler ad eşleşmesi (paket 16 benzetiminde bulundu)
+**Belirti:** katalogda "Yüksel Balık" varken `scripts/sortest.ts` içindeki "En yüksek puanlı restoran hangisi" sorgusu "puan sıralaması yokken uydurulmaz" beklentisini bozuyor.
+- **Neden:** `matchName`, sorudaki "yuksek" kelimesini bir harf farkla (`within1`) "yuksel" adına eşliyor.
+- **Önerilen düzeltme** (`lib/sor/engine.ts`, `QUERY_NOISE`): sıralama sözcükleri ad sayılmasın.
+  ```ts
+  "verilen", "kural", "kurallari",
+  /* sıralama sözcükleri ad değildir: "en yüksek puanlı" Yüksel Balık değildir */ "yuksek", "puan", "puanli", "puani",
+  ```
+- **Doğrulama:** yalnız yerel benzetimde uygulandı. 887 mekânla sortest 322/322; düzeltmesiz 321/322.
+- **Çakışma:** PR #18 aynı dosyayı değiştirdiği için Claude bu dosyaya dokunmadı. Düzeltme PR #18'e ya da sonrasına eklenmeli; paket 16'nın yayını buna bağlı.
+
+## 6. PR #14 ile PR #18 aynı dosyada
+- `components/venue/VenueInfo.tsx`: PR #18 B1 için "Adres (sokak düzeyi)" satırı ve uyarı ekliyor; PR #14 işletme atfı satırını değiştiriyor.
+- Mantıksal çakışma yok; değişiklikler bitişik satırlarda, birleştirme sırasında elle çözüm gerekebilir.
