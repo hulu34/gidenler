@@ -1,0 +1,25 @@
+name: Gidenler PR 4 operation
+on:
+  push:
+    branches: [ops/codex-pr4-db]
+permissions:
+  contents: read
+concurrency:
+  group: gidenler-codex-pr4-db
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: e1938d005085026ec4bdb45e8b53c2b10508090c
+          path: reviewed
+          persist-credentials: false
+      - run: node operation.mjs
+        env:
+          GIDENLER_ADMIN_ACCESS: ${{ secrets.VERCEL_BYPASS }}
