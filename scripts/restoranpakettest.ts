@@ -25,7 +25,11 @@ type B1Rec = RealVenueRecord & { kaliteSinifi?: string; adresDuzeyi?: string };
 
 ok(`${D}: ${W.length} kayıt = paket satırı = özet`, W.length > 0 && W.length === P.eklenen.length && W.length === (O.A ?? O.kayit));
 ok("venues.json / isletme.json'a eklenmemiş (bağımsız paket)", !W.some((w) => cat.some((c) => c.ref === w.ref)));
-const BIZ = W.filter((v) => v.ref.startsWith("isletme/"));
+/* KONUMSUZ İŞLETME KAYDI (paket 15+): koordinatı doğrulanamayan, kimliği/adresi/türü doğrulanmış restoran; sınıf "A-konumsuz", A DEĞİLDİR */
+type KRec = RealVenueRecord & { kaliteSinifi?: string; kalite?: { koordinat?: string } };
+const KZ = (W as KRec[]).filter((v) => v.kaliteSinifi === "A-konumsuz");
+const geoW = W.filter((v) => !KZ.includes(v as KRec));
+const BIZ = geoW.filter((v) => v.ref.startsWith("isletme/"));
 if (BIZ.length) {
   ok(`işletme kayıtları (${BIZ.length}): resmî site/şube sayfası kaynaklı, konum yalnız OSM adres/bina noktası`, BIZ.every((v) => v.sourceKind === "official_site" && /^https:\/\//.test(v.sourceUrl ?? "") && v.location?.provider === "osm" && /^(node|way|relation)\/\d+$/.test(v.location.ref) && v.ref === `isletme/${v.slug}`));
   /* zincir şubesi (resmî şube listesi) slug'ında şube ayrımı zorunlu; tek konumlu işletmede ad-ilçe yeterli */
@@ -33,7 +37,14 @@ if (BIZ.length) {
 }
 ok("hepsi restoran (cat.restaurant); kafe/bar yok", W.every((v) => v.categoryId === "cat.restaurant"));
 ok("mevcut doğrulayıcıdan geçer", W.every((v) => invalidRecord(v) === null), W.find((v) => invalidRecord(v)));
-ok("koordinat kendi ilçe sınırında", W.every((v) => districtOf(v.lat!, v.lng!, IST) === v.district), W.filter((v) => districtOf(v.lat!, v.lng!, IST) !== v.district).map((v) => v.slug));
+if (KZ.length) {
+  ok(`konumsuz kayıtlar (${KZ.length}): işletme kaydı, resmî site kaynaklı, lat/lng ve location YOK`, KZ.every((v) => v.ref === `isletme/${v.slug}` && v.sourceKind === "official_site" && /^https:\/\//.test(v.sourceUrl ?? "") && v.lat === undefined && v.lng === undefined && v.location === undefined && v.kalite?.koordinat === "yok"));
+  ok("konumsuz kayıtlar: ilçe geçerli İstanbul ilçesi, kapı numaralı adres ilçeyle biter", KZ.every((v) => IST.ilceler.some((d) => d.ad === v.district) && hasHouseNo(v.address) && (v.address ?? "").endsWith(v.district)));
+  ok("konumsuz kayıtlar: kanıtta koordinatın neden yazılmadığı açık", KZ.every((v) => /koordinat yazılmadı/.test(v.verification ?? "")));
+  ok("konumsuz kayıtlar: paket satırında sınıf A-konumsuz, koordinat null (A gibi gösterilmez)", P.eklenen.filter((e: { sinif: string }) => e.sinif === "A-konumsuz").length === KZ.length && P.eklenen.every((e: { sinif: string; koordinat: unknown }) => e.sinif !== "A-konumsuz" || e.koordinat === null));
+  ok("konumsuz kayıtlar: aynı ilçede aynı adlı ikinci kayıt yok", KZ.every((v) => ![...all, ...W].some((o) => o !== v && fold(o.name) === fold(v.name) && o.district === v.district)));
+}
+ok("koordinat kendi ilçe sınırında", geoW.every((v) => districtOf(v.lat!, v.lng!, IST) === v.district), geoW.filter((v) => districtOf(v.lat!, v.lng!, IST) !== v.district).map((v) => v.slug));
 if (B1) {
   ok("B1: hepsi kaliteSinifi B1, adresDuzeyi sokak, güven orta (A değil)", (W as B1Rec[]).every((v) => v.kaliteSinifi === "B1" && v.adresDuzeyi === "sokak" && v.confidence === "orta"));
   ok("B1: adreste sokak + mahalle + ilçe var, kapı numarası yok", W.every((v) => !hasHouseNo(v.address) && !!v.neighborhood && (v.address ?? "").split(",").length >= 3 && (v.address ?? "").endsWith(v.district)));
@@ -43,7 +54,7 @@ if (B1) {
 ok("kaynaklı tür (genel 'Restoran' yok)", W.every((v) => v.kind !== "Restoran" && v.kind !== "Kahveci" && v.kind !== "Bar"));
 ok("kanıt tarihli, Google yok; güven A'da güçlü, B1'de orta", W.every((v) => v.confidence === (B1 ? "orta" : "güçlü") && !!v.verifiedAt && !/google/i.test(v.verification ?? "")));
 ok("kanıt türü tanımlı (site / yerinde kontrol / anket uygulaması / şube sayfası / resmî işletmeci listesi / Michelin Rehberi)", W.every((v) => /resmî site|yerinde kontrol|yerinde anket|resmî şube sayfası|resmî şube listesi|resmî işletmeci listesi|Michelin Rehberi 2026/.test(v.verification ?? "")));
-ok("her satırda ad, ilçe, adres, koordinat, tür, faaliyet, kaynak, kontrol tarihi, sınıf A", P.eklenen.every((e: Record<string, unknown>) => e.ad && e.ilce && e.adres && Array.isArray(e.koordinat) && e.tur && e.faaliyet && (e.kaynak as string[]).some((u) => u.startsWith("https://www.openstreetmap.org/")) && e.kontrolTarihi && (e.sinif === "A" || (B1 && e.sinif === "B1"))));
+ok("her satırda ad, ilçe, adres, koordinat, tür, faaliyet, kaynak, kontrol tarihi, sınıf A", P.eklenen.every((e: Record<string, unknown>) => e.ad && e.ilce && e.adres && (Array.isArray(e.koordinat) || (e.sinif === "A-konumsuz" && e.koordinat === null)) && e.tur && e.faaliyet && ((e.kaynak as string[]).some((u) => u.startsWith("https://www.openstreetmap.org/")) || e.sinif === "A-konumsuz") && e.kontrolTarihi && (e.sinif === "A" || e.sinif === "A-konumsuz" || (B1 && e.sinif === "B1"))));
 ok("kaynaklarda Google bağlantısı yok", P.eklenen.every((e: { kaynak: string[] }) => e.kaynak.every((u) => !/google\.|goo\.gl/i.test(u))));
 ok("slug ve OSM kaydı paket içinde tekil", new Set(W.map((v) => v.slug)).size === W.length && new Set(W.map((v) => v.ref)).size === W.length);
 ok("katalog + karşılaştırma paketleriyle slug/OSM çakışması yok", W.every((v) => !all.some((o) => o.slug === v.slug || o.ref === v.ref)));
