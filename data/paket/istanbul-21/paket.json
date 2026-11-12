@@ -115,10 +115,10 @@
    "oncelikPuani": 10
   },
   {
-   "slug": "cekmekoy-sinop-manti-el-acmasi-manti-cekmekoy",
-   "ref": "isletme/cekmekoy-sinop-manti-el-acmasi-manti-cekmekoy",
+   "slug": "cekmekoy-sinop-manti-cekmekoy",
+   "ref": "isletme/cekmekoy-sinop-manti-cekmekoy",
    "tip": "isletme_kaydi_konumsuz",
-   "ad": "Çekmeköy Sinop Mantı | El Açması Mantı",
+   "ad": "Çekmeköy Sinop Mantı",
    "ilce": "Çekmeköy",
    "adres": "Sultan Murat Cd No:49, Çekmeköy",
    "koordinat": null,
@@ -140,7 +140,8 @@
     "overture:713a8fc2-fb16-472e-98f1-51b593b36d14"
    ],
    "kontrolTarihi": "2026-11-12",
-   "oncelikPuani": 9
+   "oncelikPuani": 9,
+   "adOverture": "Çekmeköy Sinop Mantı | El Açması Mantı"
   },
   {
    "slug": "kazanci-iskembe-bagcilar",

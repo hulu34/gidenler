@@ -71,7 +71,7 @@ Bu havuzdan paket çıkmadı. Kafe, bar ve büfe restoranlarla karıştırılmad
 | White Burger | Ümraniye | Burger | A-konumsuz | yok (Overture önerisi ayrı) | [whiteburger.com](https://www.whiteburger.com/) |
 | Karadeniz Mutfağı Erol Usta Efulim Çayeli kuru fasulye | Güngören | Karadeniz mutfağı | A-konumsuz | yok (Overture önerisi ayrı) | [efulimerolusta.com](https://www.efulimerolusta.com/) |
 | Kebap dünyası | Beylikdüzü | Kebapçı / Ocakbaşı | A-konumsuz | yok (Overture önerisi ayrı) | [kebapdunyasi.com.tr](https://kebapdunyasi.com.tr/) |
-| Çekmeköy Sinop Mantı | El Açması Mantı | Çekmeköy | Mantıcı | A-konumsuz | yok (Overture önerisi ayrı) | [cekmekoysinopmanti.com](https://www.cekmekoysinopmanti.com/) |
+| Çekmeköy Sinop Mantı | Çekmeköy | Mantıcı | A-konumsuz | yok (Overture önerisi ayrı) | [cekmekoysinopmanti.com](https://www.cekmekoysinopmanti.com/) |
 | Kazancı İşkembe | Bağcılar | Çorbacı | A-konumsuz | yok (Overture önerisi ayrı) | [kazanciiskembe.com](https://kazanciiskembe.com/) |
 | Usul Döner | Silivri | Dönerci | A-konumsuz | yok (Overture önerisi ayrı) | [usuldoner.com](https://usuldoner.com/) |
 | Gönen Rooftop Ocakbaşı Terrace Restaurant & Roof Bar | Beyoğlu | Kebapçı / Ocakbaşı | A | OSM restoran kaydı | [gonenrooftop.com](https://gonenrooftop.com/) |
