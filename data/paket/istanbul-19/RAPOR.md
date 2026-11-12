@@ -10,6 +10,7 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-19-b-yukseltme` (taban: paket 18) ·
 - Adres:
   - Overture metninden çıkan "sokak + kapı no" resmî sitede birlikte arandı (`adres-dogrula.mjs`).
   - Overture adresi sitede yoksa, sitenin kendi iletişim satırı kullanıldı: telefonla aynı sayfada ya da schema.org kaydında, ilçe adıyla (20 karar). Yanlış şubeyi gösteren 3 öneri elendi.
+- Yalnız http sitesi olan 3 aday (Seviç, Limanda Balık, Türkan Meyhanesi) https bağlantısıyla doğrulandı.
 - Elle karar (`elle-karar.json`): 42 C (dizin/Linktree sitesi, kafe, bar, büfe, catering, düğün/piknik alanı, gıda üreticisi, ilgisiz firma, çiğ köfte) ve 5 B (eski içerik, ad uyuşmazlığı, şablon site).
 
 **Bulunan hata ve düzeltme:** Eski adres ayrıştırıcısı Overture metnindeki ilk sayıyı kapı numarası sanabiliyordu ("Başakşehir 1. Etap ..." → "Başakşehir No:1"). Ayrıca eski kuralda sitede aranan "sokak", bazen adresin ilk parçasındaki mahalle adıydı. Düzeltme:
@@ -34,20 +35,20 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-19-b-yukseltme` (taban: paket 18) ·
 - Filika Meyhane
 
 **Başarı göstergeleri:**
-- İncelenen adaylardan doğrulananlar: 50/250 (%20,0)
-- Restoran başına doğrulanmış veri alanı: %84,4 (5 eksen: kimlik, faaliyet, adres, tür, koordinat; A = 5/5, A-konumsuz = 4/5)
+- İncelenen adaylardan doğrulananlar: 53/250 (%21,2)
+- Restoran başına doğrulanmış veri alanı: %84,2 (5 eksen: kimlik, faaliyet, adres, tür, koordinat; A = 5/5, A-konumsuz = 4/5)
 - Az temsil edilen ilçelere (katalogda < 25 mekân) kazandırılan: 30
 
 **Tablo 1 — Genel durum**
 
 | Gösterge | Önceki durum | Yeni durum | Değişim |
 |---|---:|---:|---:|
-| Production mekân sayısı | 574 | 574 | 0 |
-| Yayını bekleyen benzersiz kayıtlar | 409 | 459 | +50 |
-| Yeni A sınıfı (bekleyen toplam) | 174 | 185 | +11 |
-| Yeni A-konumsuz (bekleyen toplam) | 133 | 172 | +39 |
-| Toplam yayın adayı (A + B1 + A-konumsuz) | 409 | 459 | +50 |
-| Yayın sonrası hedef mekân sayısı | 983 | 1033 | +50 |
+| Production mekân sayısı | 792 | 792 | 0 |
+| Yayını bekleyen benzersiz kayıtlar | 191 | 244 | +53 |
+| Yeni A sınıfı (bekleyen toplam) | 58 | 69 | +11 |
+| Yeni A-konumsuz (bekleyen toplam) | 133 | 175 | +42 |
+| Toplam yayın adayı (A + B1 + A-konumsuz) | 191 | 244 | +53 |
+| Yayın sonrası hedef mekân sayısı | 983 | 1036 | +53 |
 
 **Tablo 2 — Araştırma ve doğrulama sonuçları (250 aday, birbirini dışlayan)**
 
@@ -58,8 +59,8 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-19-b-yukseltme` (taban: paket 18) ·
 | Açık PR'larda mevcut | 2 | %0,8 |
 | 906 havuzuyla ortak | 0 | %0,0 |
 | Yeni A | 11 | %4,4 |
-| Yeni A-konumsuz | 39 | %15,6 |
-| B — eksik kanıt | 156 | %62,4 |
+| Yeni A-konumsuz | 42 | %16,8 |
+| B — eksik kanıt | 153 | %61,2 |
 | C — güvenilir değil / kapsam dışı | 42 | %16,8 |
 | Diğer elenenler | 0 | %0,0 |
 
@@ -92,9 +93,9 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-19-b-yukseltme` (taban: paket 18) ·
 
 | Sorun | Etkilenen kayıt | Önem derecesi | Çözüm / sonraki işlem |
 |---|---:|---|---|
-| Koordinat doğrulanamadı | 39 | Orta | A-konumsuz; Overture noktası yalnız öneri dosyasında, şema kararı Codex'te |
+| Koordinat doğrulanamadı | 42 | Orta | A-konumsuz; Overture noktası yalnız öneri dosyasında, şema kararı Codex'te |
 | Tam adres eksik | 75 | Yüksek (B) | iletişim sayfası derin tarama, schema.org PostalAddress |
-| Resmî site doğrulanamadı | 10 | Orta (B) | https / ilçe kanıtı bulunursa yeniden ölçüm |
+| Resmî site doğrulanamadı | 7 | Orta (B) | https / ilçe kanıtı bulunursa yeniden ölçüm |
 | Mutfak türü belirsiz | 75 | Orta (B) | menü sayfası; Overture kategorisi tek başına kabul edilmez |
 | Mükerrer şüphesi | 2 | Düşük | yeni kayıt açılmadı; 906 kimliği korunur |
 | Sor ad eşleşmesi ("yüksek" → Yüksel Balık) | 1 test | Yüksek (yayın engeli) | Codex: QUERY_NOISE'a sıralama sözcükleri (CODEX-SOR-ONERISI.md); PR #22'de de yok |
@@ -105,25 +106,25 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-19-b-yukseltme` (taban: paket 18) ·
 | Test | Sonuç | Başarılı / Toplam | Açıklama |
 |---|---|---|---|
 | TypeScript | Geçti | 1/1 | tsc --noEmit, paket 19 dalında |
-| Katalog | Geçti | 52/52 | katalogtest; benzetim (Production + paket 7–20) |
+| Katalog | Geçti | 52/52 | katalogtest; benzetim (Production + paket 7–21) |
 | Mükerrer kontrolü | Geçti | 28/28 | restoranpakettest (paket 20 dalının ucunda): Production, PR #6–15 paketleri, paket 16–20'nin diğerleri, 906, seyrek, PR #17 Menemen |
 | Arama | Geçti | 49/49 | aramatest + önizlemede her kayıt kendi adıyla ilk 8'de |
 | Sor Gidenler | Başarısız | 321/322 | "Yüksel Balık" ad eşleşmesi (paket 16 kaydı); Codex önerisiyle 322/322 (docs/katalog/CODEX-SOR-ONERISI.md) |
 | SEO / Sitemap | Geçti | 49/49 | seotest; önizlemede hepsi sitemap'te |
-| Mobil / Masaüstü | Geçti | 4/4 | 375 px: Sait (koordinatsız), Asitane (OSM); 1024 px: Pepo's Galata (OSM), Sait; yatay taşma yok, koordinatsız profilde harita noktası iddiası yok |
-| Next build | Geçti | 1/1 | benzetim kopyası (Production + paket 7–20) |
-| Yerel yayın benzetimi | Geçti | 35/35 + 119/119 | önizleme denetimi (profil, arama, form, sitemap); Production değildir |
+| Mobil / Masaüstü | Geçti | 4/4 | 375 px: Sait (koordinatsız), Asitane (OSM); 1024 px: Pepo's Galata (OSM), Sait; yatay taşma yok, koordinatsız profilde harita noktası iddiası yok; paket 21 aynı iki profil türünü kullanır (önizleme denetiminde profil + arama + form) |
+| Next build | Geçti | 1/1 | benzetim kopyası (Production + paket 7–21) |
+| Yerel yayın benzetimi | Geçti | 35/35 + 128/128 | önizleme denetimi (profil, arama, form, sitemap); Production değildir |
 | Gerçek Vercel Preview | Engelli | 0/1 | Neon Preview veritabanı dal sınırı (PR #22'de de 10/10 dolu); yeniden denenmedi |
 
 **Tablo 6 — GitHub teslim bilgileri**
 
 | Alan | Değer |
 |---|---|
-| Production dalı / SHA | feature/investor-v1 @ b95d284 (574 mekân, değişmedi) |
+| Production dalı / SHA | feature/investor-v1 @ 721b1a1 (PR #18 birleşti; dalda 792 kayıt; bu çalışmada dokunulmadı) |
 | Geliştirme dalı | paket/istanbul-19-b-yukseltme |
 | Paket numarası | 19 |
 | PR bağlantısı / Commit SHA | PR açıklamasında (dosya kendi commit SHA'sını içeremez) |
-| Yeni benzersiz kayıt sayısı | 50 |
+| Yeni benzersiz kayıt sayısı | 53 |
 | Preview bağlantısı / engel | Engelli: Neon dal sınırı |
 | Production durumu | Dokunulmadı |
 | Yayına engel olan konu | PR #14 + Codex Sor düzeltmesi |
@@ -132,11 +133,12 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-19-b-yukseltme` (taban: paket 18) ·
 
 | Paket | Yeni A | Yeni A-konumsuz | Yeni B1 | Kümülatif hedef | Yayın durumu |
 |---|---:|---:|---:|---:|---|
-| Production (gerçek) | — | — | — | 574 | Canlı |
-| Paket 7–15 (PR #6–15; 7–14 PR #22 birleşik adayında) | 116 | 18 | 102 | 810 | Bekliyor |
+| Production (feature/investor-v1 @ 721b1a1; paket 7–14 dahil) | — | — | — | 792 | Canlı (PR #18 birleşti) |
+| Paket 15 (PR #15) | 0 | 18 | 0 | 810 | Bekliyor (PR #14 düzeltmesine bağlı) |
 | Paket 16 (PR #19) | 16 | 45 | 0 | 871 | Hazır |
 | Paket 17 (PR #20) | 28 | 52 | 0 | 951 | Hazır |
 | Paket 18 (PR #21) | 14 | 18 | 0 | 983 | Hazır |
-| Paket 19 (yeni PR) | 11 | 39 | 0 | 1033 | Hazır |
-| Paket 20 (yeni PR) | 19 | 0 | 0 | 1052 | Hazır |
+| Paket 19 (PR #23) | 11 | 42 | 0 | 1036 | Hazır |
+| Paket 20 (PR #24) | 19 | 0 | 0 | 1055 | Hazır |
+| Paket 21 (yeni PR) | 4 | 44 | 0 | 1103 | Hazır |
 

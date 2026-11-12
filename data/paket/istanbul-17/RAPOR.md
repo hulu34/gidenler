@@ -2,7 +2,7 @@
 
 Kontrol: 2026-11-11 · Dal: `paket/istanbul-17-overture` (taban: paket 16) · Kataloğa eklenmedi.
 
-**Kalite düzeltmesi (2026-11-12):** Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (`scripts/katalog/adres-dogrula.mjs`). Bulunamayan 6 A-konumsuz kayıt B'ye indi; ayrıntı `paket.json` → `kaliteDuzeltmesi` ve `inceleme.json`.
+**Kalite düzeltmesi (2026-11-12):** Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (`scripts/katalog/adres-dogrula.mjs`, PR #23). Bulunamayan 6 A-konumsuz kayıt B'ye indi; ayrıntı `paket.json` → `kaliteDuzeltmesi` ve `inceleme.json`.
 
 **Havuz:**
 - Paket 16'da incelenmeyen ve kimliği eşleşen adaylar.
@@ -49,11 +49,11 @@ Eksenler ayrı değerlendirilir (kimlik, faaliyet, adres, tür, koordinat):
 
 | Gösterge | Önceki durum | Yeni durum | Değişim |
 |---|---:|---:|---:|
-| Production mekân sayısı | 574 | 574 | 0 |
-| Yayını bekleyen benzersiz kayıtlar | 297 | 377 | +80 |
-| Yeni A sınıfı (bekleyen toplam) | 132 | 160 | +28 |
+| Production mekân sayısı | 792 | 792 | 0 |
+| Yayını bekleyen benzersiz kayıtlar | 79 | 159 | +80 |
+| Yeni A sınıfı (bekleyen toplam) | 16 | 44 | +28 |
 | Yeni A-konumsuz (bekleyen toplam) | 63 | 115 | +52 |
-| Toplam yayın adayı (A + B1 + A-konumsuz) | 297 | 377 | +80 |
+| Toplam yayın adayı (A + B1 + A-konumsuz) | 79 | 159 | +80 |
 | Yayın sonrası hedef mekân sayısı | 871 | 951 | +80 |
 
 **Tablo 2 — Araştırma ve doğrulama sonuçları (250 aday, birbirini dışlayan)**
@@ -112,13 +112,13 @@ Eksenler ayrı değerlendirilir (kimlik, faaliyet, adres, tür, koordinat):
 | Test | Sonuç | Başarılı / Toplam | Açıklama |
 |---|---|---|---|
 | TypeScript | Geçti | 1/1 | tsc --noEmit, paket 19 dalında |
-| Katalog | Geçti | 52/52 | katalogtest; benzetim (Production + paket 7–20) |
+| Katalog | Geçti | 52/52 | katalogtest; benzetim (Production + paket 7–21) |
 | Mükerrer kontrolü | Geçti | 28/28 | restoranpakettest (paket 20 dalının ucunda): Production, PR #6–15 paketleri, paket 16–20'nin diğerleri, 906, seyrek, PR #17 Menemen |
 | Arama | Geçti | 49/49 | aramatest + önizlemede her kayıt kendi adıyla ilk 8'de |
 | Sor Gidenler | Başarısız | 321/322 | "Yüksel Balık" ad eşleşmesi (paket 16 kaydı); Codex önerisiyle 322/322 (docs/katalog/CODEX-SOR-ONERISI.md) |
 | SEO / Sitemap | Geçti | 49/49 | seotest; önizlemede hepsi sitemap'te |
-| Mobil / Masaüstü | Geçti | 4/4 | 375 px: Sait (koordinatsız), Asitane (OSM); 1024 px: Pepo's Galata (OSM), Sait; yatay taşma yok, koordinatsız profilde harita noktası iddiası yok |
-| Next build | Geçti | 1/1 | benzetim kopyası (Production + paket 7–20) |
+| Mobil / Masaüstü | Geçti | 4/4 | 375 px: Sait (koordinatsız), Asitane (OSM); 1024 px: Pepo's Galata (OSM), Sait; yatay taşma yok, koordinatsız profilde harita noktası iddiası yok; paket 21 aynı iki profil türünü kullanır (önizleme denetiminde profil + arama + form) |
+| Next build | Geçti | 1/1 | benzetim kopyası (Production + paket 7–21) |
 | Yerel yayın benzetimi | Geçti | 86/86 + 158/158 | önizleme denetimi (profil, arama, form, sitemap); Production değildir |
 | Gerçek Vercel Preview | Engelli | 0/1 | Neon Preview veritabanı dal sınırı (PR #22'de de 10/10 dolu); yeniden denenmedi |
 
@@ -126,7 +126,7 @@ Eksenler ayrı değerlendirilir (kimlik, faaliyet, adres, tür, koordinat):
 
 | Alan | Değer |
 |---|---|
-| Production dalı / SHA | feature/investor-v1 @ b95d284 (574 mekân, değişmedi) |
+| Production dalı / SHA | feature/investor-v1 @ 721b1a1 (PR #18 birleşti; dalda 792 kayıt; bu çalışmada dokunulmadı) |
 | Geliştirme dalı | paket/istanbul-17-overture |
 | Paket numarası | 17 |
 | PR bağlantısı / Commit SHA | PR açıklamasında (dosya kendi commit SHA'sını içeremez) |
@@ -139,11 +139,12 @@ Eksenler ayrı değerlendirilir (kimlik, faaliyet, adres, tür, koordinat):
 
 | Paket | Yeni A | Yeni A-konumsuz | Yeni B1 | Kümülatif hedef | Yayın durumu |
 |---|---:|---:|---:|---:|---|
-| Production (gerçek) | — | — | — | 574 | Canlı |
-| Paket 7–15 (PR #6–15; 7–14 PR #22 birleşik adayında) | 116 | 18 | 102 | 810 | Bekliyor |
+| Production (feature/investor-v1 @ 721b1a1; paket 7–14 dahil) | — | — | — | 792 | Canlı (PR #18 birleşti) |
+| Paket 15 (PR #15) | 0 | 18 | 0 | 810 | Bekliyor (PR #14 düzeltmesine bağlı) |
 | Paket 16 (PR #19) | 16 | 45 | 0 | 871 | Hazır |
 | Paket 17 (PR #20) | 28 | 52 | 0 | 951 | Hazır |
 | Paket 18 (PR #21) | 14 | 18 | 0 | 983 | Hazır |
-| Paket 19 (yeni PR) | 11 | 39 | 0 | 1033 | Hazır |
-| Paket 20 (yeni PR) | 19 | 0 | 0 | 1052 | Hazır |
+| Paket 19 (PR #23) | 11 | 42 | 0 | 1036 | Hazır |
+| Paket 20 (PR #24) | 19 | 0 | 0 | 1055 | Hazır |
+| Paket 21 (yeni PR) | 4 | 44 | 0 | 1103 | Hazır |
 
