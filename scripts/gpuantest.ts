@@ -202,7 +202,8 @@ async function main() {
   ok("değişen puanlar geçmiş tablosunda", Number(hist.rows[0].n) >= writtenAll.length);
 
   console.log("\n8) Arka arkaya engelde nazikçe durma");
-  const day3 = () => new Date(BASE - 36e5);
+  /* Gece yarısından sonraki ilk saatte de day2'den farklı İstanbul günü. */
+  const day3 = () => new Date(BASE);
   const allBlocked: Record<string, SourceResult> = Object.fromEntries([...ids.values()].flat().map((g) => [g.externalId, { kind: "blocked", reason: "olağandışı trafik" } as SourceResult]));
   const siteBefore = Object.keys(await loadGoogleRatings(db)).length;
   const callsB: string[] = [];

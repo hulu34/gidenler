@@ -57,6 +57,15 @@ const Cover = z.discriminatedUnion("state", [
     note: Text.optional(),
     /** Görsel anlatılan restoranın kendisi mi. */
     depicts: z.string().trim().min(1),
+    /** Aynı çerçevede solda yer alan, işletmenin sağladığı ikinci gerçek fotoğraf. */
+    leadingPhoto: z.object({
+      src: z.string().regex(/^\/(seckisi\/gorsel|media\/foto)\//),
+      alt: Text,
+      credit: z.string().trim().min(1),
+      rights: z.literal("isletme-izni"),
+      rightsRef: z.string().trim().min(3),
+      sourceNote: Text,
+    }).strict().optional(),
   }).strict(),
 ]);
 

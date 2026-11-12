@@ -19,7 +19,7 @@ export function VenueVisuals({ entity }: { entity: Entity }) {
     <section id="gor" aria-labelledby="h-gor" className="scroll-mt-28 mt-12 sm:scroll-mt-32">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-line-strong pb-2.5">
         <h2 id="h-gor" className="text-[13px] font-bold uppercase tracking-[0.2em]">{approximate ? "Yaklaşık konum" : "Konum"}</h2>
-        <p className="max-w-[52ch] text-[12px] text-ink-3">{m ? "Harita, 360° sokak görünümü ve yol tarifi." : "Adres; harita noktası henüz yok."}</p>
+        <p className="max-w-[52ch] text-[12px] text-ink-3">{m ? approximate ? "Sokak çevresi ve adresle arama." : "Harita, 360° sokak görünümü ve yol tarifi." : "Adres; harita noktası henüz yok."}</p>
       </div>
 
       <div className="mt-5">
@@ -33,9 +33,9 @@ export function VenueVisuals({ entity }: { entity: Entity }) {
                 </div>
               </OsmMapUnlessGoogle>
               <div className="grid grid-cols-2 gap-2 text-[13px] font-semibold">
-                <a href={m.streetView} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center gap-2 rounded-[3px] bg-ink text-paper transition-colors hover:bg-accent">
+                {m.streetView && <a href={m.streetView} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center gap-2 rounded-[3px] bg-ink text-paper transition-colors hover:bg-accent">
                   <span aria-hidden>◎</span> 360° sokak görünümü
-                </a>
+                </a>}
                 <a href={m.directions} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center rounded-[3px] border border-line-2 hover:border-ink">{approximate ? "Adresi haritada ara" : "Yol tarifi"}</a>
                 <a href={m.googleMaps} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center rounded-[3px] border border-line-2 hover:border-ink">Google Haritalar</a>
                 {ig ? (
@@ -44,7 +44,7 @@ export function VenueVisuals({ entity }: { entity: Entity }) {
                   <a href={m.osm} target="_blank" rel="noopener noreferrer" className="flex h-11 items-center justify-center rounded-[3px] border border-line-2 hover:border-ink">OpenStreetMap</a>
                 )}
               </div>
-              <OsmMapUnlessGoogle><p className="text-[11px] text-ink-3">Harita © OpenStreetMap katkıcıları. 360° görünüm ve yol tarifi Google Haritalar&apos;da açılır.</p></OsmMapUnlessGoogle>
+              <OsmMapUnlessGoogle><p className="text-[11px] text-ink-3">Harita © OpenStreetMap katkıcıları. {approximate ? "Adresle arama Google Haritalar’da açılır." : "360° görünüm ve yol tarifi Google Haritalar’da açılır."}</p></OsmMapUnlessGoogle>
             </>
           )}
           {!m && (
