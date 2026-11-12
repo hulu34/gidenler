@@ -5,7 +5,7 @@ import {execFileSync} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 const require=createRequire(process.env.HOSTED_BROWSER_PACKAGE_JSON);
 const {chromium,webkit,expect}=require('@playwright/test');
-const origin='https://gidenler-6an65m3je-hulu34.vercel.app';
+const origin='https://gidenler-n70ke3cx2-hulu34.vercel.app';
 const sha='1e5670453d2897ded4466954fd872089a6487a0d';
 const out='hosted-preview-evidence'; mkdirSync(out,{recursive:true});
 assert.equal(execFileSync('git',['-C','../candidate','rev-parse','HEAD'],{encoding:'utf8'}).trim(),sha);
