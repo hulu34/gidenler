@@ -42,7 +42,7 @@ async function main(){
     assert.ok(!r.understood.attrs.includes("gosterissiz"));if(!ai)assert.equal(calls,0);
   });
   await test(`${ai?"AI":"kurallı"}: gerçek hata ve itiraz`,async()=>{await reset(ai);const a=await sor({query:realQuery});const b=await sor({query:"Balık sevmiyor dedim, neden balık önerdin?",context:a.context,shown:a.shown});
-    for(const r of [a,b]){assert.ok(r.understood.notCuisines.includes("balik"));assert.deepEqual(r.understood.notFoods,["kirmizi-et"]);assert.deepEqual(r.understood.drinks,["viski"]);assert.equal(r.understood.occasion,"ozel-gun");assert.ok(!r.understood.attrs.includes("gosterissiz"));assert.equal(r.items.length,0);assert.equal(r.alternatives.length,0);safe(r);}
+    for(const r of [a,b]){assert.ok(r.understood.notCuisines.includes("balik"));assert.deepEqual(r.understood.notFoods,["kirmizi-et"]);assert.deepEqual(r.understood.drinks,["viski"]);assert.equal(r.understood.occasion,"ozel-gun");assert.deepEqual(r.understood.attrs,[]);assert.equal(r.items.length,0);assert.equal(r.alternatives.length,0);safe(r);}
     evidence.push({path:ai?"controlled-ai":"rules",query:realQuery,first:a,correction:b});
   });
   await test(`${ai?"AI":"kurallı"}: yeni semt ve yemek güvenlik tercihlerini silmez`,async()=>{await reset(ai);const a=await sor({query:realQuery});const b=await sor({query:"Kadıköy'de pizza olsun",context:a.context});assert.ok(b.understood.notCuisines.includes("balik"));assert.deepEqual(b.understood.notFoods,["kirmizi-et"]);assert.deepEqual(b.understood.drinks,["viski"]);});

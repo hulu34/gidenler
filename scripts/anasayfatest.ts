@@ -1,6 +1,7 @@
 /* Ana sayfa vitrini: çeşitlilik ve tarafsızlık kuralları (yalnız veri; ağ yok). */
 import { readFileSync } from "node:fs";
 import { realEntities } from "../data/real";
+import { SECKI_RESTAURANTS } from "../content/seckisi/restoranlar";
 import { pickDiverse, HOME_EXCLUDE } from "../components/home/HomeDiscover";
 import { sor as soru } from "../lib/sor/ask";
 import { coverOf } from "../lib/media/cover";
@@ -46,7 +47,7 @@ t("Google sekmesi: Japon Erdal ve sosyal tesis yok", !gt.includes("japon-erdal-b
 t("Google sekmesi: sayfa açılışında Google isteği yok", !/fetch\(/.test(readFileSync("components/home/TopRated.tsx", "utf8")));
 t("Google sekmesi: az değerlendirme eşiği kodda", /MIN_GOOGLE_REVIEWS = 100/.test(readFileSync("components/home/TopRated.tsx", "utf8")));
 const page = readFileSync("app/page.tsx", "utf8");
-t("gerçek ana sayfada tek Seçki yazısı vitrini yok", !/<HomeSecki/.test(page));
+t("ana sayfa Seçkisi altı farklı gerçek restoran içerir", /<HomeSecki/.test(page) && SECKI_RESTAURANTS.length===6 && new Set(SECKI_RESTAURANTS.map(r=>r.slug)).size===6 && SECKI_RESTAURANTS.every(r=>realEntities.some(e=>e.slug===r.slug&&e.isReal&&!e.isDemo&&e.categoryId==="cat.restaurant")));
 t("ana sayfa soru alanı gerçek /sor'a gider", /sorHref|\/sor\/\?q=/.test(readFileSync("components/home/HomeSor.tsx", "utf8")));
 /* örnek sorular kural motorunda da en az iki ilgili sonuç vermeli (AI kapalıyken de vitrin zayıf görünmesin) */
 const src = readFileSync("components/home/HomeSor.tsx", "utf8");

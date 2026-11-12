@@ -342,8 +342,15 @@ async function main() {
   /* ── izinli fotoğraflar ── */
   const je = realEntities.find((e) => e.slug === "japon-erdal-beyoglu")!;
   t("Japon Erdal: 3 kendi fotoğrafı, kapak pide", je.photos?.length === 3 && coverOf(je)?.src.includes("kapali-pide") === true && coverOf(je)?.source === "isletme", je.photos?.map((p) => p.src));
-  const secki = JSON.parse(readFileSync("content/seckisi/yazilar/japon-erdal-dort-pide-bir-efsane.json", "utf8")) as { cover: { src: string; rightsRef: string }; gallery: Array<{ src: string }> };
-  t("Seçki ve profil aynı dosyaları kullanır", [secki.cover.src, ...secki.gallery.map((g) => g.src)].every((s) => je.photos!.some((p) => p.full === s)), secki.cover.src);
+  type SeckiPhoto = { src:string; rights:string; rightsRef:string; credit:string };
+  const secki = JSON.parse(readFileSync("content/seckisi/yazilar/japon-erdal-dort-pide-bir-efsane.json", "utf8")) as { cover:SeckiPhoto & { leadingPhoto?:SeckiPhoto }; gallery:SeckiPhoto[] };
+  // PR #27 is already Production: its two-photo cover has separate Seçki/home permission.
+  // The existing shared gallery must still reuse the profile files; cover permission must not expand to the profile.
+  t("ortak Seçki galerisi profil dosyalarını yeniden kullanır", secki.gallery.length===2 && secki.gallery.every(g=>je.photos!.some(p=>p.full===g.src)));
+  const coverPhotos=[secki.cover,secki.cover.leadingPhoto].filter((p):p is SeckiPhoto=>!!p);
+  t("Seçki'ye özel iki kapak profil arşivine taşınmaz", coverPhotos.length===2 && coverPhotos.every(p=>!je.photos!.some(q=>q.full===p.src)));
+  t("iki kapağın ayrı Seçki izin kaydı ve künyesi var", coverPhotos.length===2 && coverPhotos.every(p=>p.rights==="isletme-izni"&&p.rightsRef.includes("11.11.2026")&&p.rightsRef.includes("Seçki")&&p.credit==="Japon Erdal arşivi"));
+  for(const photo of coverPhotos){const m=await sharp(`public${photo.src}`).metadata();t(`izinli Seçki kapağı gerçek JPEG: ${photo.src}`,m.format==="jpeg"&&(m.width??0)>=500&&(m.height??0)>=500);}
   t("Seçki kopyaları kaldırıldı", !existsSync("public/seckisi/gorsel/japon-erdal-kapali-pide.jpg"));
   const izinliK = JSON.parse(readFileSync("data/real/izinli-fotograflar.json", "utf8")) as Record<string, Array<{ src: string; srcSet: string; full: string; rightsRef: string; credit: string; sourceUrl: string }>>;
   t("izinli kayıtların hepsinde kaynak, yazar, hak", Object.values(izinliK).flat().every((p) => p.rightsRef && p.credit && p.sourceUrl?.startsWith("https://")));

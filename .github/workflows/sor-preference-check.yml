@@ -54,6 +54,8 @@ jobs:
           npx tsx scripts/gecetest.ts
           npx tsx scripts/ilkkullanicitest.ts
           npx tsx scripts/medyatest.ts
+          npx tsx scripts/seckisitest.ts
+          npx tsx scripts/anasayfatest.ts
       - name: Atomic append, rollback and replay in isolated PostgreSQL
         run: npx tsx scripts/night-postgres-test.ts
       - name: Build and serve isolated application with controlled AI
@@ -70,6 +72,7 @@ jobs:
           npm run start -- -p 3150 > night-server.log 2>&1 &
           for attempt in $(seq 1 40); do curl -fsS http://localhost:3150/ > /dev/null && break; sleep 1; done
           node scripts/night-http-check.mjs
+          SECKI_TEST_ORIGIN=http://localhost:3150 SECKI_HTTP_EVIDENCE_PATH=night-secki-preservation.json DB_DRIVER= npx tsx scripts/secki-http-test.ts
       - name: Install browser QA tools outside the application
         run: |
           npm install --prefix "$RUNNER_TEMP/gidenler-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
@@ -86,6 +89,7 @@ jobs:
             night-evidence/
             night-http-evidence.json
             night-preference-evidence.json
+            night-secki-preservation.json
             night-build.log
             night-server.log
             night-fixture.log
