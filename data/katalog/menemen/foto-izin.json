@@ -1,0 +1,24 @@
+{
+ "_aciklama": "Menemen Beşiktaş galerisi — yazılı fotoğraf izni ve görsel kayıtları. 'izin' boşken hiçbir görsel eklenmez (scripts/katalog/menemen-foto.mjs reddeder). Yalnız hak sahibi işletme olan ve izin kapsamına giren ORİJİNAL dosyalar eklenir. İçerik üreticilerinin kendi fotoğraf/videoları işletmenin izniyle eklenmez; üreticinin ayrı yazılı izni gerekir. Öncelik: dış cephe, iç mekân, imza menemen çeşitleri, kahvaltı sunumları.",
+ "slug": "menemen-besiktas",
+ "isletme": "Menemen",
+ "izin": null,
+ "izinSablonu": {
+  "tarih": "YYYY-AA-GG",
+  "veren": "yetkilinin adı ve unvanı",
+  "belge": "yazılı iznin kaydı (ör. e-posta konusu ve tarihi, imzalı form dosya adı)",
+  "kapsam": ["restoran profili", "Seçki (TR/EN)", "editoryal sosyal medya", "kırpma ve boyutlandırma"],
+  "kunye": "Menemen arşivi"
+ },
+ "gorselSablonu": {
+  "dosya": "işletmenin gönderdiği orijinal dosyanın yolu (depoya eklenmez; yalnız işlenmiş WebP'ler eklenir)",
+  "oncelik": "dis | ic | menemen | kahvalti | servis | diger",
+  "kaynak": "dosyanın geldiği yer (ör. işletmenin e-postası) ya da aynı görselin resmî Instagram gönderisi",
+  "hakSahibi": "Menemen",
+  "ceken": "fotoğrafı çeken kişi/ajans (biliniyorsa)",
+  "icerikUretici": false,
+  "izinKapsaminda": true,
+  "alt": "görseli anlatan kısa Türkçe metin"
+ },
+ "gorseller": []
+}

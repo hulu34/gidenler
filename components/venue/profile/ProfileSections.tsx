@@ -99,9 +99,11 @@ export function ProfileMenu({ m }: { m: NonNullable<PlaceProfile["menu"]> }) {
   return (
     <div className="flex flex-col gap-6">
       <p className="border-l-2 border-accent pl-3 text-[13px] leading-snug text-ink-2">
-        <strong className="font-semibold text-ink">Resmî menü</strong> · {n} kalem
+        <strong className="font-semibold text-ink">{m.archivedAt ? "Resmî menü · arşiv kopyası" : "Resmî menü"}</strong> · {n} kalem
         {m.validFrom && <> · menüye göre {trDate(m.validFrom)} tarihinden itibaren geçerli</>}
-        {" · "}{m.pricesPublished ? <>fiyatlar kaynaktaki gibi; son kontrol {trDate(m.checkedAt)}</> : <>işletme bu menüde fiyat yayımlamıyor</>}.
+        {m.archivedAt
+          ? <> · işletmenin resmî sitesinin {trDate(m.archivedAt)} tarihli arşiv kopyasından alındı; güncel menü ve fiyat olarak doğrulanmadı, ürünler değişmiş olabilir. Arşivdeki fiyatlar güncel olmadığı için gösterilmiyor</>
+          : <>{" · "}{m.pricesPublished ? <>fiyatlar kaynaktaki gibi; son kontrol {trDate(m.checkedAt)}</> : <>işletme bu menüde fiyat yayımlamıyor</>}</>}.
         <br />
         <span className="text-[11.5px] text-ink-3">
           Kaynak: <a href={m.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line-2 underline-offset-2 hover:text-ink">{PROVIDER[m.provider] ?? m.provider} — menü ({host(m.url)})</a> · son kontrol {trDate(m.checkedAt)}. Günün durumu ve fiyat için işletmeye danış.

@@ -32,6 +32,7 @@ const items = p.menu!.sections.flatMap((s) => s.items);
 t("slug", p.slug === "menemen-besiktas");
 t("kaynak notu var", typeof _kaynak_notu === "string" && /Google verisi kullanılmadı/.test(_kaynak_notu));
 t("fiyat yayımlanmıyor", p.menu!.pricesPublished === false && items.every((i) => i.priceTry === undefined));
+t("menü arşiv tarihi arşiv kopyasıyla aynı", p.menu!.archivedAt === ARSIV.arsivTarihi && p.menu!.url.includes(ARSIV.arsivTarihi.replace(/-/g, "")));
 t("menü 6 bölüm, 45 ürün", p.menu!.sections.length === 6 && items.length === 45, `${p.menu!.sections.length} / ${items.length}`);
 t("adres ve telefon alanı yok (çelişkili/aynı bilgi profile yazılmaz)", !("address" in raw) && !("phone" in raw) && !("website" in raw));
 t("kaynaklar resmî: site arşivi ya da resmî Instagram", [p.description, p.instagram, p.hours, ...(p.notes ?? []), p.menu].every((f) => f && ((f.provider === "official_site" && f.url === ARSIV.kaynak) || (f.provider === "official_social" && f.url === "https://www.instagram.com/menemenbreakfast/"))));
@@ -60,7 +61,7 @@ for (const v of videos ?? []) {
 
 /* 6. katalog ve Seçki tabanla aynı */
 const BASE = "9a11a3b";
-for (const f of ["data/real/venues.json", "data/real/isletme.json", "data/real/duzeltmeler.json", "data/real/kapanis.json", "data/real/izinli-fotograflar.json", "content/seckisi/restoranlar.ts", "lib/profile/index.ts", "components/venue/profile/ProfileSections.tsx"]) {
+for (const f of ["data/real/venues.json", "data/real/isletme.json", "data/real/duzeltmeler.json", "data/real/kapanis.json", "content/seckisi/restoranlar.ts"]) {
   t(`${f} tabanla aynı`, readFileSync(f, "utf8") === execFileSync("git", ["show", `${BASE}:${f}`], { encoding: "utf8" }));
 }
 t("katalog 793 kayıt, Menemen bir kez", realVenueRecords.length === 793 && realVenueRecords.filter((r) => r.slug === "menemen-besiktas").length === 1);
@@ -94,6 +95,25 @@ async function main() {
     t("bileşen bütün ürünleri gösteriyor", items.every((i) => metin.includes(i.name)), items.filter((i) => !metin.includes(i.name)).map((i) => i.name).join(", "));
     t("bileşende fiyat yok", !/₺/.test(metin));
     t("bileşende kaynak bağlantısı", metin.includes("web.archive.org"));
+    t("arşiv tarihi okunuyor", pr?.menu?.archivedAt === "2024-01-20");
+    t("bileşen menünün 20.01.2024 arşivinden geldiğini söylüyor", metin.includes("arşiv kopyası") && metin.includes("20.01.2024 tarihli arşiv kopyasından") && metin.includes("güncel menü ve fiyat olarak doğrulanmadı"));
+    t("bileşen 'işletme fiyat yayımlamıyor' demiyor (yanlış olurdu)", !metin.includes("işletme bu menüde fiyat yayımlamıyor"));
+    /* geriye uyum: arşiv alanı olmayan profiller aynı görünür ve aynı sürüm özetini alır */
+    const { readdirSync } = await import("node:fs");
+    const { menuVersion } = await import("../lib/profile");
+    const { createHash } = await import("node:crypto");
+    const eskiSurum = (placeId: string, m: any) => `mv_${createHash("sha256").update(JSON.stringify({ placeId, url: m.url, checkedAt: m.checkedAt, validFrom: m.validFrom ?? null, prices: m.pricesPublished, sections: m.sections })).digest("hex").slice(0, 24)}`;
+    let digerMenu = 0;
+    for (const f of readdirSync("content/profiles").filter((x) => x.endsWith(".json") && x !== "menemen-besiktas.json")) {
+      const { videos: _v, _kaynak_notu: _k, ...r } = JSON.parse(readFileSync(`content/profiles/${f}`, "utf8")); void _v; void _k;
+      const q = ProfileInput.parse(r); if (!q.menu) continue; digerMenu++;
+      t(`${f}: arşiv alanı yok`, q.menu.archivedAt === undefined);
+      t(`${f}: menü sürüm özeti değişmedi`, menuVersion("x", q.menu) === eskiSurum("x", q.menu));
+      const h2 = unescape(renderToStaticMarkup(createElement(ProfileMenu, { m: { ...q.menu, sections: q.menu.sections } as any })));
+      t(`${f}: arşiv uyarısı görünmüyor`, !h2.includes("arşiv kopyası"));
+      if (!q.menu.pricesPublished) t(`${f}: eski fiyat cümlesi korunuyor`, h2.includes("işletme bu menüde fiyat yayımlamıyor"));
+    }
+    t("diğer menülü profiller denetlendi", digerMenu >= 10, `${digerMenu}`);
   } finally { await pg.close(); }
   console.log(`Menemen profili: ${ok} geçti, ${fail} kaldı`); process.exit(fail ? 1 : 0);
 }

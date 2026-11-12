@@ -41,6 +41,9 @@ export const ProfileInput = z.object({
   menu: Source.extend({
     /** menüdeki "… tarihinden itibaren geçerlidir" ibaresi (varsa) */
     validFrom: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    /** menü bugün yayında olmayan resmî kaynağın ARŞİV kopyasından alındıysa arşivin tarihi (YYYY-AA-GG);
+        sayfa menüyü güncel değil arşiv olarak gösterir ve fiyat göstermez. Yoksa alan hiç yazılmaz (mevcut kayıtlar değişmez). */
+    archivedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
     pricesPublished: z.boolean(),
     sections: z.array(z.object({
       title: z.string().trim().min(1).max(80),
@@ -56,7 +59,7 @@ export interface PlaceProfile {
   hours?: ProfileField; reservation?: ProfileField;
   notes: ProfileField[];
   amenities: { items: Record<string, boolean>; provider: string; url: string; checkedAt: string } | null;
-  menu: { url: string; provider: string; checkedAt: string; validFrom?: string; pricesPublished: boolean; sections: { title: string; items: { name: string; description?: string; priceTry?: number }[] }[] } | null;
+  menu: { url: string; provider: string; checkedAt: string; validFrom?: string; archivedAt?: string; pricesPublished: boolean; sections: { title: string; items: { name: string; description?: string; priceTry?: number }[] }[] } | null;
 }
 
 const SINGLE = ["description", "address", "phone", "website", "instagram", "hours", "reservation"] as const;
@@ -75,7 +78,7 @@ export async function atomic(db: Db, build: (q: Db) => Q[]) {
 /** Menü sürümü: içerikten türetilen belirleyici kimlik. Aynı içerik → aynı kimlik (tekrar yazılmaz, eşzamanlı ikinci
     uygulama birincil anahtarda çakışır ve atlanır); aynı gün değişen menü → yeni sürüm. */
 export function menuVersion(placeId: string, m: NonNullable<ProfileInput["menu"]>) {
-  const body = JSON.stringify({ placeId, url: m.url, checkedAt: m.checkedAt, validFrom: m.validFrom ?? null, prices: m.pricesPublished, sections: m.sections });
+  const body = JSON.stringify({ placeId, url: m.url, checkedAt: m.checkedAt, validFrom: m.validFrom ?? null, prices: m.pricesPublished, ...(m.archivedAt ? { archivedAt: m.archivedAt } : {}), sections: m.sections });
   return `mv_${createHash("sha256").update(body).digest("hex").slice(0, 24)}`;
 }
 
@@ -97,7 +100,7 @@ export async function applyProfile(db: Db, input: ProfileInput, opts: ApplyOptio
   if (p.notes?.length) p.notes.forEach((n, i) => row(`profile.note.${String(i).padStart(2, "0")}`, n));
   if (p.notes) row("profile.notes", { value: String(p.notes.length), provider: "official_site", url: p.notes[0]?.url ?? "https://gidenler.com", checkedAt: p.notes[0]?.checkedAt ?? day(new Date()) });
   const mv = p.menu ? menuVersion(place.id, p.menu) : null;
-  if (p.menu) row("profile.menu", { value: JSON.stringify({ validFrom: p.menu.validFrom ?? null, pricesPublished: p.menu.pricesPublished, version: mv }), provider: p.menu.provider, url: p.menu.url, checkedAt: p.menu.checkedAt });
+  if (p.menu) row("profile.menu", { value: JSON.stringify({ validFrom: p.menu.validFrom ?? null, pricesPublished: p.menu.pricesPublished, version: mv, ...(p.menu.archivedAt ? { archivedAt: p.menu.archivedAt } : {}) }), provider: p.menu.provider, url: p.menu.url, checkedAt: p.menu.checkedAt });
   if (p.amenities) row("profile.amenities", { value: JSON.stringify(p.amenities.items), provider: p.amenities.provider, url: p.amenities.url, checkedAt: p.amenities.checkedAt });
 
   /* aynı içerik tekrar gönderildiyse kaynak kayıtları çoğalmaz: alan başına en yeni kayıtla aynı olanlar yazılmaz */
@@ -172,7 +175,7 @@ export async function readProfile(db: Db, slug: string): Promise<PlaceProfile | 
   if (am) { try { out.amenities = { items: JSON.parse(am.value), provider: am.provider, url: am.url, checkedAt: am.checkedAt }; } catch { /* yoksay */ } }
   const mm = f("profile.menu");
   if (mm) {
-    const meta = JSON.parse(mm.value) as { validFrom: string | null; pricesPublished: boolean; version?: string };
+    const meta = JSON.parse(mm.value) as { validFrom: string | null; pricesPublished: boolean; version?: string; archivedAt?: string };
     /* yalnız bu kaynak kaydının işaret ettiği menü sürümü (aynı gün başka sürümler karışmaz) */
     const items = meta.version
       ? await db.select().from(menuItems).where(and(eq(menuItems.placeId, place.id), like(menuItems.id, `${meta.version}.%`))).orderBy(menuItems.id)
@@ -183,7 +186,7 @@ export async function readProfile(db: Db, slug: string): Promise<PlaceProfile | 
       let s = sections.find((x) => x.title === title); if (!s) sections.push(s = { title, items: [] });
       s.items.push({ name: it.rawName, ...(it.description ? { description: it.description } : {}), ...(it.priceMinor ? { priceTry: it.priceMinor / 100 } : {}) });
     }
-    if (sections.length) out.menu = { url: mm.url, provider: mm.provider, checkedAt: mm.checkedAt, ...(meta.validFrom ? { validFrom: meta.validFrom } : {}), pricesPublished: meta.pricesPublished, sections };
+    if (sections.length) out.menu = { url: mm.url, provider: mm.provider, checkedAt: mm.checkedAt, ...(meta.validFrom ? { validFrom: meta.validFrom } : {}), ...(meta.archivedAt ? { archivedAt: meta.archivedAt } : {}), pricesPublished: meta.pricesPublished, sections };
   }
   return out;
 }

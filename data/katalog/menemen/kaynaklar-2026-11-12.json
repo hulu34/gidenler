@@ -6,7 +6,12 @@
   "adres": "Şair Veysi Sokağı No:31/A, Sinanpaşa, Beşiktaş",
   "resmiInstagram": "https://www.instagram.com/menemenbreakfast/",
   "instagramBiyografi": "📍Beşiktaş 09:00-16:00 · 📍Galata 09:00-16:00 (12.11.2026)",
-  "resmiSite": { "alan": "menemenbesiktas.com", "durum": "yayında değil; GoDaddy park sayfasına yönleniyor (12.11.2026)", "arsiv": "https://web.archive.org/web/20240120112231/https://menemenbesiktas.com/", "arsivTarihi": "2024-01-20" },
+  "resmiSite": {
+   "alan": "menemenbesiktas.com",
+   "durum": "yayında değil; GoDaddy park sayfasına yönleniyor (12.11.2026)",
+   "arsiv": "https://web.archive.org/web/20240120112231/https://menemenbesiktas.com/",
+   "arsivTarihi": "2024-01-20"
+  },
   "celiskiler": [
    "Telefon: katalog +90 532 676 31 96, resmî site arşivi 0533 284 74 08 — profile yazılmadı; işletmeden teyit edilmeli",
    "Saat: resmî site arşivi (2024) 08:30–16:30, resmî Instagram (2026) 09:00–16:00 — Instagram kullanıldı",
@@ -18,30 +23,99 @@
   "kapsam": "6 bölüm, 45 ürün: Kahvaltı 5, Menemen Çeşitleri 5, Yumurta Çeşitleri 3, Tost Çeşitleri 4, Ekstralar 13, İçecekler 15",
   "fiyat": "gösterilmiyor — arşivdeki fiyatlar 2024 tarihli, güncel fiyat resmî kaynakta doğrulanamadı",
   "guncelTeyit": "2026 Instagram açıklamaları menüyle uyumlu: Tokat bez sucuğu ve Kars kaşarıyla tost (24.10.2026), pastırma (27.10.2026), menemen (09.10.2026). Tam menünün bugünkü hâli işletmeden teyit edilmeli.",
-  "isletmeyeSorulacak": ["Güncel fiyat listesi", "\"Kahvaltı Yumurta\" ürün adı (arşivde açıklaması Çamlıdağ kavurma, köy yumurtası)", "Menüden çıkan ya da eklenen ürünler", "Güncel telefon"]
+  "isletmeyeSorulacak": [
+   "Güncel fiyat listesi",
+   "\"Kahvaltı Yumurta\" ürün adı (arşivde açıklaması Çamlıdağ kavurma, köy yumurtası)",
+   "Menüden çıkan ya da eklenen ürünler",
+   "Güncel telefon"
+  ],
+  "sayfadaGorunum": "Menü başlığı 'Resmî menü · arşiv kopyası'; altında: 'işletmenin resmî sitesinin 20.01.2024 tarihli arşiv kopyasından alındı; güncel menü ve fiyat olarak doğrulanmadı, ürünler değişmiş olabilir. Arşivdeki fiyatlar güncel olmadığı için gösterilmiyor.' (menu.archivedAt = 2024-01-20; 13.11.2026)"
  },
  "fotograflar": {
   "yayimlanan": 0,
   "neden": "Menemen'e ait fotoğrafların hepsi işletmenin Instagram hesabında ve eski sitesinde; açık lisanslı (Commons vb.) Menemen fotoğrafı bulunamadı. Katalog kuralı: lisanssız restoran görseli eklenmez. Emsal (Japon Erdal): işletme sahibinin yazılı onayı ve rightsRef kaydıyla izinli-fotograflar.json.",
   "izinIcinAday": [
-   { "url": "https://www.instagram.com/menemenbreakfast/p/Dfb_br0kcFg/", "tarih": "2026-11-07", "tur": "fotoğraf", "aciklama": "Bazı sabahların planı sadece güzel bir kahvaltıdır." },
-   { "url": "https://www.instagram.com/menemenbreakfast/p/DfG-F0XDv_H/", "tarih": "2026-10-29", "tur": "fotoğraf", "aciklama": "Sıcak yumurta, taze ürünler ve güzel bir kahvaltı." },
-   { "url": "https://www.instagram.com/menemenbreakfast/p/Dev1EJVDgrn/", "tarih": "2026-10-21", "tur": "fotoğraf", "aciklama": "Menemen'de gün güzel başlar!" },
-   { "url": "https://www.instagram.com/menemenbreakfast/p/DbyMvQADfHX/", "tarih": "2026-08-08", "tur": "fotoğraf", "aciklama": "Kahvaltının en sevilen hali!" },
-   { "url": "https://www.instagram.com/menemenbreakfast/reel/DelvMJchVsS/", "tarih": "2026-10-16", "tur": "video", "aciklama": "Menemen in details." },
-   { "url": "https://www.instagram.com/menemenbreakfast/reel/DeTtjUTBWpx/", "tarih": "2026-10-09", "tur": "video", "aciklama": "Şehrin en iyi menemeni!" },
-   { "url": "https://www.instagram.com/menemenbreakfast/reel/De30rQARAsO/", "tarih": "2026-10-24", "tur": "video", "aciklama": "Tokat bez sucuğu ve Kars kaşarı ile benzersiz bir tost!" },
-   { "url": "https://www.instagram.com/menemenbreakfast/reel/De_3X8vOHIJ/", "tarih": "2026-10-27", "tur": "video", "aciklama": "Kahvaltının favorilerinden biri: iyi pastırma." }
+   {
+    "url": "https://www.instagram.com/menemenbreakfast/p/Dfb_br0kcFg/",
+    "tarih": "2026-11-07",
+    "tur": "fotoğraf",
+    "aciklama": "Bazı sabahların planı sadece güzel bir kahvaltıdır."
+   },
+   {
+    "url": "https://www.instagram.com/menemenbreakfast/p/DfG-F0XDv_H/",
+    "tarih": "2026-10-29",
+    "tur": "fotoğraf",
+    "aciklama": "Sıcak yumurta, taze ürünler ve güzel bir kahvaltı."
+   },
+   {
+    "url": "https://www.instagram.com/menemenbreakfast/p/Dev1EJVDgrn/",
+    "tarih": "2026-10-21",
+    "tur": "fotoğraf",
+    "aciklama": "Menemen'de gün güzel başlar!"
+   },
+   {
+    "url": "https://www.instagram.com/menemenbreakfast/p/DbyMvQADfHX/",
+    "tarih": "2026-08-08",
+    "tur": "fotoğraf",
+    "aciklama": "Kahvaltının en sevilen hali!"
+   },
+   {
+    "url": "https://www.instagram.com/menemenbreakfast/reel/DelvMJchVsS/",
+    "tarih": "2026-10-16",
+    "tur": "video",
+    "aciklama": "Menemen in details."
+   },
+   {
+    "url": "https://www.instagram.com/menemenbreakfast/reel/DeTtjUTBWpx/",
+    "tarih": "2026-10-09",
+    "tur": "video",
+    "aciklama": "Şehrin en iyi menemeni!"
+   },
+   {
+    "url": "https://www.instagram.com/menemenbreakfast/reel/De30rQARAsO/",
+    "tarih": "2026-10-24",
+    "tur": "video",
+    "aciklama": "Tokat bez sucuğu ve Kars kaşarı ile benzersiz bir tost!"
+   },
+   {
+    "url": "https://www.instagram.com/menemenbreakfast/reel/De_3X8vOHIJ/",
+    "tarih": "2026-10-27",
+    "tur": "video",
+    "aciklama": "Kahvaltının favorilerinden biri: iyi pastırma."
+   }
   ],
   "izinMetniOnerisi": "Menemen, aşağıdaki fotoğrafların (ve toplantıda ileteceği yüksek çözünürlüklü özgün dosyaların) Gidenler'de restoran profilinde, Seçki'de (TR/EN) ve Gidenler'in editoryal sosyal medya paylaşımlarında, kırpılarak ve boyutlandırılarak kullanılmasına izin verir. Künye: \"Menemen arşivi\". Tarih ve yetkili adı:",
-  "kategoriNotu": "Dış cephe, iç mekân, imza kahvaltılıklar ve servis ayrımı görsellere bakılarak yapılacak; tarayıcı paneli gizli olduğu ve izin bulunmadığı için bu oturumda görseller incelenmedi."
+  "kategoriNotu": "Dış cephe, iç mekân, imza kahvaltılıklar ve servis ayrımı görsellere bakılarak yapılacak; tarayıcı paneli gizli olduğu ve izin bulunmadığı için bu oturumda görseller incelenmedi.",
+  "izinSureci": {
+   "durum": "yazılı izin henüz gelmedi (13.11.2026); galeri boş",
+   "kayit": "data/katalog/menemen/foto-izin.json (izin, hak sahibi, kapsam, künye, kaynak; görsel başına)",
+   "arac": "scripts/katalog/menemen-foto.mjs — izinsiz, hak sahibi işletme olmayan, içerik üreticisine ait ya da kapsam dışı görseli reddeder; sıra: dış cephe, iç mekân, menemen, kahvaltı",
+   "icerikUretici": "İçerik üreticilerinin fotoğraf ve videoları için işletmenin izni tek başına yeterli sayılmaz; üreticinin ayrı yazılı izni gerekir"
+  }
  },
  "videolar": [
-  { "icerikUretici": "Ayaküstü Lezzetler", "kanal": "https://www.youtube.com/@AyakustuLezzetler", "url": "https://www.youtube.com/watch?v=e6OmpzizSoo", "baslik": "İSTANBUL KAHVALTI VLOG (Çakallı menemeni, Göçmen böreği, Focaccia sandviç)", "yayinTarihi": "2024-06-28",
-    "eslesme": "Açıklamada \"Günün ilk durağı olarak Menemen Beşiktaş'a giden ekip, sade ve pastırmalı çakallı menemeni deneyerek…\" ve bölüm \"Menemen Beşiktaş: (04:22)\"; ad ve ürünler uyumlu, adres videoda yazılı değil", "eslesmeGuveni": "orta-yüksek",
-    "gomme": "izinli — YouTube oEmbed 200, playableInEmbed=true", "isbirligi": "açıklamada #reklam etiketi", "profilde": "evet (videos, sponsored=true)" },
-  { "icerikUretici": "beIN SPORTS Türkiye (Deplasman Gurmesi)", "url": "https://www.youtube.com/watch?v=yfPpncK4x4Q", "baslik": "Deplasman Gurmesi | Bölüm 27: Beşiktaş - Menemen & Pişi", "yayinTarihi": "2025-03-28",
-    "eslesme": "Açıklamada yalnız \"Beşiktaş'ta menemen ve pişi\"; mekân adı geçmiyor — Menemen Beşiktaş ile eşleşmesi doğrulanmadı", "eslesmeGuveni": "doğrulanmadı", "gomme": "izinli (oEmbed 200)", "profilde": "hayır" }
+  {
+   "icerikUretici": "Ayaküstü Lezzetler",
+   "kanal": "https://www.youtube.com/@AyakustuLezzetler",
+   "url": "https://www.youtube.com/watch?v=e6OmpzizSoo",
+   "baslik": "İSTANBUL KAHVALTI VLOG (Çakallı menemeni, Göçmen böreği, Focaccia sandviç)",
+   "yayinTarihi": "2024-06-28",
+   "eslesme": "Açıklamada \"Günün ilk durağı olarak Menemen Beşiktaş'a giden ekip, sade ve pastırmalı çakallı menemeni deneyerek…\" ve bölüm \"Menemen Beşiktaş: (04:22)\"; ad ve ürünler uyumlu, adres videoda yazılı değil",
+   "eslesmeGuveni": "orta-yüksek",
+   "gomme": "izinli — YouTube oEmbed 200, playableInEmbed=true",
+   "isbirligi": "açıklamada #reklam etiketi",
+   "profilde": "evet — Videolar bölümünde YouTube resmî oynatıcısı, 'İşbirliği' rozeti ve 'reklam etiketli' künyesiyle (yerel görünüm denetimi 13.11.2026)"
+  },
+  {
+   "icerikUretici": "beIN SPORTS Türkiye (Deplasman Gurmesi)",
+   "url": "https://www.youtube.com/watch?v=yfPpncK4x4Q",
+   "baslik": "Deplasman Gurmesi | Bölüm 27: Beşiktaş - Menemen & Pişi",
+   "yayinTarihi": "2025-03-28",
+   "eslesme": "Açıklamada yalnız \"Beşiktaş'ta menemen ve pişi\"; mekân adı geçmiyor — Menemen Beşiktaş ile eşleşmesi doğrulanmadı",
+   "eslesmeGuveni": "doğrulanmadı",
+   "gomme": "izinli (oEmbed 200)",
+   "profilde": "hayır"
+  }
  ],
  "videoAramaSiniri": "Instagram'da etiketlenen gönderiler ve öne çıkan hikâyeler giriş istiyor; giriş yapılmadı. TikTok ve Instagram içerik üretici videoları bu nedenle bulunamadı."
 }
