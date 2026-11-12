@@ -2175,6 +2175,84 @@
    "kimlik": "resmî site gazicigkofte.com: ad + sokak (https://www.gazicigkofte.com/iletisim)",
    "osm": "node/9654484433",
    "puan": 8
+  },
+  {
+   "gersId": "636fc99e-31a5-4abe-8201-54813e90cf31",
+   "ad": "Kurufasulye Diyari",
+   "ilce": "Ataşehir",
+   "site": "https://kurufasulyediyari.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): adres Overture metninden güvenilir biçimde çıkarılamadı (\"Ataşehir Blv. ATA No:3\"); resmî sitede doğrulanmadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "e3e094df-369f-4a85-9f43-12b96cbc112e",
+   "ad": "Pizzeria Capra",
+   "ilce": "Çekmeköy",
+   "site": "https://www.pizzeriacapra.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): yazılan sokak + kapı no (\"Piri Reis Cd No:24/B\") resmî sitede birlikte bulunamadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "ea51405e-3e65-4f1b-baa7-33f6e3c6d5c0",
+   "ad": "Arada Bir Tantuni",
+   "ilce": "Sarıyer",
+   "site": "https://www.aradabirtantuni.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): yazılan sokak + kapı no (\"Şht. Mithat Yılmaz Cd No:58\") resmî sitede birlikte bulunamadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "f0c4a2b0-f07e-4cee-ada3-2a678d37fcb4",
+   "ad": "Cağistan Erzurum Cağ Kebabı",
+   "ilce": "Eyüpsultan",
+   "site": "https://www.cagistan.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): yazılan sokak + kapı no (\"Eyüp Sultan Blv No:81\") resmî sitede birlikte bulunamadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "c6a6512a-5f6f-439d-88dc-64457d7e6529",
+   "ad": "Kebap-ci Mecidiyeköy",
+   "ilce": "Şişli",
+   "site": "https://kebap-ci.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): yazılan sokak + kapı no (\"Şht. Er Cihan Namlı Cd No:3/D\") resmî sitede birlikte bulunamadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "17e4bbd4-0728-4b1b-a02f-9aca0cef34a7",
+   "ad": "Adana İl Sınırı Nişantaşı",
+   "ilce": "Şişli",
+   "site": "https://adanailsiniriocakbasi.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): adres Overture metninden güvenilir biçimde çıkarılamadı (\"Mim Kemal Öke Cd. İkizler Apt. Bodrum Kat No:14A\"); resmî sitede doğrulanmadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
   }
  ]
 }

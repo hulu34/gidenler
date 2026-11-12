@@ -410,62 +410,11 @@
    "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
   },
   {
-   "slug": "kurufasulye-diyari-atasehir",
-   "gersId": "636fc99e-31a5-4abe-8201-54813e90cf31",
-   "lat": 40.992538,
-   "lng": 29.122238,
-   "guven": 1,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Ataşehir",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
-   "slug": "pizzeria-capra-cekmekoy",
-   "gersId": "e3e094df-369f-4a85-9f43-12b96cbc112e",
-   "lat": 41.033672,
-   "lng": 29.172174,
-   "guven": 0.97,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Çekmeköy",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
    "slug": "guvenbey-doner-sariyer",
    "gersId": "e0c69b4c-efbd-4ca5-9413-304575345798",
    "lat": 41.186306,
    "lng": 29.042126,
    "guven": 0.97,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Sarıyer",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
-   "slug": "arada-bir-tantuni-sariyer",
-   "gersId": "ea51405e-3e65-4f1b-baa7-33f6e3c6d5c0",
-   "lat": 41.169933,
-   "lng": 29.054892,
-   "guven": 0.96,
    "kaynaklar": [
     "meta",
     "Overture"
@@ -644,23 +593,6 @@
     "CDLA-Permissive-2.0"
    ],
    "ilceSiniri": "Beyoğlu",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
-   "slug": "cagistan-erzurum-cag-kebabi-eyupsultan",
-   "gersId": "f0c4a2b0-f07e-4cee-ada3-2a678d37fcb4",
-   "lat": 41.041012,
-   "lng": 28.927443,
-   "guven": 1,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Eyüpsultan",
    "telefonEslesmesi": true,
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
@@ -869,23 +801,6 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
-   "slug": "kebap-ci-mecidiyekoy-sisli",
-   "gersId": "c6a6512a-5f6f-439d-88dc-64457d7e6529",
-   "lat": 41.068016,
-   "lng": 28.998594,
-   "guven": 0.98,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Şişli",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
    "slug": "kiliza-kebap-besiktas",
    "gersId": "7c5ad5d0-9648-4704-b2ad-916c19563cda",
    "lat": 41.087509,
@@ -899,23 +814,6 @@
     "CDLA-Permissive-2.0"
    ],
    "ilceSiniri": "Beşiktaş",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
-   "slug": "adana-il-siniri-nisantasi-sisli",
-   "gersId": "17e4bbd4-0728-4b1b-a02f-9aca0cef34a7",
-   "lat": 41.048973,
-   "lng": 28.991146,
-   "guven": 0.98,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Şişli",
    "telefonEslesmesi": true,
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },

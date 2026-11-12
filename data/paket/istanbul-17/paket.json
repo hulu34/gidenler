@@ -1251,34 +1251,6 @@
    "oncelikPuani": 9
   },
   {
-   "slug": "kurufasulye-diyari-atasehir",
-   "ref": "isletme/kurufasulye-diyari-atasehir",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Kurufasulye Diyari",
-   "ilce": "Ataşehir",
-   "adres": "Ataşehir Blv. ATA No:3, Ataşehir",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Lokanta",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site kurufasulyediyari.com: ad + telefon + sokak + kapı no (https://kurufasulyediyari.com/menu-restaurant/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı: \"Kuru Fasülyeden Fazlası\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://kurufasulyediyari.com/",
-    "overture:636fc99e-31a5-4abe-8201-54813e90cf31"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 9
-  },
-  {
    "slug": "kadikoy-midyecisi-kadikoy",
    "ref": "node/10799745560",
    "tip": "osm_kaydi",
@@ -1407,34 +1379,6 @@
    "oncelikPuani": 9
   },
   {
-   "slug": "pizzeria-capra-cekmekoy",
-   "ref": "isletme/pizzeria-capra-cekmekoy",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Pizzeria Capra",
-   "ilce": "Çekmeköy",
-   "adres": "Piri Reis Cd No:24/B, Çekmeköy",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Pizza",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site pizzeriacapra.com: ad + telefon + sokak + kapı no (https://www.pizzeriacapra.com/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı/açıklaması: \"Pizzeria\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://www.pizzeriacapra.com/",
-    "overture:e3e094df-369f-4a85-9f43-12b96cbc112e"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 9
-  },
-  {
    "slug": "guvenbey-doner-sariyer",
    "ref": "isletme/guvenbey-doner-sariyer",
    "tip": "isletme_kaydi_konumsuz",
@@ -1458,34 +1402,6 @@
    "kaynak": [
     "https://guvenbeydoner.com.tr/",
     "overture:e0c69b4c-efbd-4ca5-9413-304575345798"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 9
-  },
-  {
-   "slug": "arada-bir-tantuni-sariyer",
-   "ref": "isletme/arada-bir-tantuni-sariyer",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Arada Bir Tantuni",
-   "ilce": "Sarıyer",
-   "adres": "Şht. Mithat Yılmaz Cd No:58, Sarıyer",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Tantuni",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site aradabirtantuni.com: ad + telefon + sokak + kapı no (https://www.aradabirtantuni.com/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site sayfası: tantuni (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://www.aradabirtantuni.com/",
-    "overture:ea51405e-3e65-4f1b-baa7-33f6e3c6d5c0"
    ],
    "kontrolTarihi": "2026-11-11",
    "oncelikPuani": 9
@@ -1862,34 +1778,6 @@
    "kaynak": [
     "https://laleiskembecisi.com/",
     "overture:e2b8a8a6-c71e-4c43-826b-9a7df268cb78"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 8
-  },
-  {
-   "slug": "cagistan-erzurum-cag-kebabi-eyupsultan",
-   "ref": "isletme/cagistan-erzurum-cag-kebabi-eyupsultan",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Cağistan Erzurum Cağ Kebabı",
-   "ilce": "Eyüpsultan",
-   "adres": "Eyüp Sultan Blv No:81, Eyüpsultan",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Kebapçı / Ocakbaşı",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site cagistan.com: ad + telefon + sokak + kapı no (https://www.cagistan.com/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı: \"Erzurum Cağ Kebabı\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://www.cagistan.com/",
-    "overture:f0c4a2b0-f07e-4cee-ada3-2a678d37fcb4"
    ],
    "kontrolTarihi": "2026-11-11",
    "oncelikPuani": 8
@@ -2327,34 +2215,6 @@
    "oncelikPuani": 8
   },
   {
-   "slug": "kebap-ci-mecidiyekoy-sisli",
-   "ref": "isletme/kebap-ci-mecidiyekoy-sisli",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Kebap-ci Mecidiyeköy",
-   "ilce": "Şişli",
-   "adres": "Şht. Er Cihan Namlı Cd No:3/D, Şişli",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Kebapçı / Ocakbaşı",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site kebap-ci.com: ad + telefon + sokak + kapı no (https://kebap-ci.com/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı/açıklaması: \"Kebap\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://kebap-ci.com/",
-    "overture:c6a6512a-5f6f-439d-88dc-64457d7e6529"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 8
-  },
-  {
    "slug": "kiliza-kebap-besiktas",
    "ref": "isletme/kiliza-kebap-besiktas",
    "tip": "isletme_kaydi_konumsuz",
@@ -2378,34 +2238,6 @@
    "kaynak": [
     "https://www.kiliza.com.tr/",
     "overture:7c5ad5d0-9648-4704-b2ad-916c19563cda"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 8
-  },
-  {
-   "slug": "adana-il-siniri-nisantasi-sisli",
-   "ref": "isletme/adana-il-siniri-nisantasi-sisli",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Adana İl Sınırı Nişantaşı",
-   "ilce": "Şişli",
-   "adres": "Mim Kemal Öke Cd. İkizler Apt. Bodrum Kat No:14A, Şişli",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Kebapçı / Ocakbaşı",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site adanailsiniriocakbasi.com: ad + telefon + sokak + kapı no (https://adanailsiniriocakbasi.com/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı/açıklaması: \"Kebap\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://adanailsiniriocakbasi.com/",
-    "overture:17e4bbd4-0728-4b1b-a02f-9aca0cef34a7"
    ],
    "kontrolTarihi": "2026-11-11",
    "oncelikPuani": 8
@@ -2522,5 +2354,17 @@
    "kontrolTarihi": "2026-11-11",
    "oncelikPuani": 8
   }
- ]
+ ],
+ "kaliteDuzeltmesi": {
+  "tarih": "2026-11-12",
+  "aciklama": "Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (scripts/katalog/adres-dogrula.mjs); bulunamayanlar B'ye indi.",
+  "inenler": [
+   "kurufasulye-diyari-atasehir",
+   "pizzeria-capra-cekmekoy",
+   "arada-bir-tantuni-sariyer",
+   "cagistan-erzurum-cag-kebabi-eyupsultan",
+   "kebap-ci-mecidiyekoy-sisli",
+   "adana-il-siniri-nisantasi-sisli"
+  ]
+ }
 }
