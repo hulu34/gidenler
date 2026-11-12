@@ -33,6 +33,7 @@ jobs:
         env:
           HOSTED_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/hosted-browser/package.json
           VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          HOSTED_TEST_PHASE: ui
         run: node scripts/pr37-hosted-preview-check.mjs
       - uses: actions/upload-artifact@v4
         if: always()
