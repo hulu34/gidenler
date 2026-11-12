@@ -30,7 +30,10 @@ const PROFILES = new Set(existsSync("content/profiles") ? readdirSync("content/p
 
 /* FAALIYET=<faaliyet-kaniti.json>: faaliyet kanıtı paketi uygulanmış gibi bellekte birleştirilir (dosyalar değişmez; öngörü ölçümü) */
 const FA = process.env.FAALIYET ? new Map((J(process.env.FAALIYET).uygulanan as { slug: string; alanlar: Record<string, string> }[]).map((x) => [x.slug, x.alanlar])) : null;
-const all: (RealVenueRecord & Record<string, any>)[] = [...V, ...I].map((r) => ({ ...r, ...(FA && !r.verifiedAt ? FA.get(r.slug) : undefined), kind: FIX[r.slug]?.kind ?? r.kind }));
+/* TUR=<tur-kategori.json>: tür ve kategori paketi uygulanmış gibi bellekte birleştirilir (tür yalnız elle tür düzeltmesi olmayan kayda) */
+const TU = process.env.TUR ? J(process.env.TUR) as { tur: { slug: string; alanlar: { kind: string } }[]; kategori: { slug: string; alanlar: { categoryId: RealVenueRecord["categoryId"] } }[] } : null;
+const TK = new Map(TU?.tur.map((x) => [x.slug, x.alanlar.kind]) ?? []), TC = new Map(TU?.kategori.map((x) => [x.slug, x.alanlar.categoryId]) ?? []);
+const all: (RealVenueRecord & Record<string, any>)[] = [...V, ...I].map((r) => ({ ...r, ...(FA && !r.verifiedAt ? FA.get(r.slug) : undefined), categoryId: TC.get(r.slug) ?? r.categoryId, kind: FIX[r.slug]?.kind ?? TK.get(r.slug) ?? r.kind }));
 const GENERIC_KIND = new Set(["Restoran", "Kafe", "Bar"]);
 const CAFE_KINDS = new Set(["Kahveci", "Kafe", "Pastane", "Fırın", "Tatlıcı"]), BAR_KINDS = new Set(["Bar", "Pub"]);
 const tel = (p?: string) => phoneKey(p) ?? "";

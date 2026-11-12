@@ -1,0 +1,2480 @@
+{
+ "_aciklama": "Tür ve kategori düzeltme paketi (2026-11-12): katalog denetiminde genel türlü ya da kategori çelişkili 172 kayıt. Kaynak: OpenStreetMap API'nin bugünkü etiketleri (© OpenStreetMap katkıcıları, ODbL) ve işletmelerin resmî sitelerindeki kendi tanımları (yalnız kısa ifade). Google verisi kullanılmadı; addan tür üretilmedi. Dosyalar değiştirilmedi: tür duzeltmeler.json'a, kategori venues.json'a yayın sırasında tur-uygula.mjs ile yazılır.",
+ "tarih": "2026-11-12",
+ "osmTarihi": "2026-11-12",
+ "ozet": {
+  "hedef": 172,
+  "turSorunu": 159,
+  "kategoriSorunu": 13,
+  "turUygulanan": 86,
+  "turKaynak": {
+   "OSM": 73,
+   "resmî site": 13
+  },
+  "yeniTur": {
+   "Türk mutfağı": 59,
+   "Kahveci": 1,
+   "Dünya mutfağı": 5,
+   "Asya mutfağı": 7,
+   "Kebapçı / Ocakbaşı": 1,
+   "Tatlıcı": 1,
+   "Karadeniz mutfağı": 1,
+   "Lokanta": 3,
+   "Kahvaltı": 1,
+   "Dönerci": 1,
+   "Pideci": 1,
+   "Meyhane": 2,
+   "Sokak lezzeti": 1,
+   "Pub": 2
+  },
+  "eskiTur": {
+   "Restoran": 82,
+   "Kafe": 2,
+   "Bar": 2
+  },
+  "kategoriUygulanan": 5,
+  "turUygulanmayan": 73,
+  "turUygulanmayanNeden": {
+   "OSM amenity=bar, mutfak/alt tür etiketi yok": 5,
+   "OSM'de mutfak etiketi yok": 31,
+   "kapanış kaydı": 20,
+   "JSON-LD Restaurant + BarOrPub ve dünya mutfağı": 1,
+   "kafe kategorisinde restoran mutfağı": 4,
+   "Markanın genel tanımı": 1,
+   "Resmî site yalnız Esenyurt ve Bahçeşehir şubelerini sayıyor": 1,
+   "OSM mutfak etiketi belirsiz": 1,
+   "Ad eşleşmedi": 2,
+   "Paylaşılan site": 1,
+   "Sitede yalnız ad": 1,
+   "Site kendini \"En İyi Nargile & En İyi Kahvaltı\" diye tanıtıyor": 1,
+   "türü daha önce elle düzeltilmiş": 1,
+   "Marka tanımı nargile kültürünü öne çıkarıyor": 1,
+   "Site kendini \"Rooftop Restaurant & Club\" diye tanıtıyor": 1,
+   "Site açıklaması \"restaurant\"": 1
+  },
+  "kategoriUygulanmayan": 8,
+  "sahip": 15
+ },
+ "tur": [
+  {
+   "slug": "privato-cafe-beyoglu",
+   "ad": "Privato Cafe",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 7, 2025-12-15)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/5370651424",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 7, 2025-12-15). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "antiochia-beyoglu",
+   "ad": "Antiochia",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=mediterranean;turkish (turkish → Türk mutfağı; sürüm 2, 2025-03-31)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/4429005176",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=mediterranean;turkish (turkish → Türk mutfağı; sürüm 2, 2025-03-31). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "kor-agop-beyoglu",
+   "ad": "Kör Agop",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 2, 2025-12-12)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/3197916262",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 2, 2025-12-12). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "neolokal-beyoglu",
+   "ad": "Neolokal",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 4, 2025-01-14)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/6376832586",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 4, 2025-01-14). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "tarihi-kalkanoglu-pilavcisi-beyoglu",
+   "ad": "Tarihi Kalkanoğlu Pilavcısı",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 3, 2026-04-15)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/5060349825",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 3, 2026-04-15). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "ciya-sofrasi-kadikoy",
+   "ad": "Çiya Sofrası",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2026-10-20)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/9869626517",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2026-10-20). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "sultanahmet-koftecisi-kadikoy",
+   "ad": "Sultanahmet Köftecisi",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 4, 2022-10-15)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/4100479626",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 4, 2022-10-15). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "erkonyalilar-kadikoy",
+   "ad": "Erkonyalılar",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2017-12-08)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/5272473027",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2017-12-08). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "petra-roasting-co-besiktas",
+   "ad": "Petra Roasting Co.",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "yeni": "Kahveci",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa açıklaması): \"taze kavrulmuş çekirdekleriyle başka yerde bulunamayacak bir kahve deneyimi\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Kahveci",
+    "sourceUrl": "https://www.petracoffee.com/",
+    "why": "Genel tür \"Kafe\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa açıklaması): \"taze kavrulmuş çekirdekleriyle başka yerde bulunamayacak bir kahve deneyimi\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "cantinery-besiktas",
+   "ad": "Cantinery",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2026-09-28)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/14228962496",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2026-09-28). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "baba-sogus-besiktas",
+   "ad": "Baba Söğüş",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 4, 2025-12-23)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/12737564495",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 4, 2025-12-23). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "cozy-etiler-besiktas",
+   "ad": "Cozy Etiler",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Dünya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=international (international → Dünya mutfağı; sürüm 2, 2025-01-13)",
+   "alanlar": {
+    "kind": "Dünya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/12436904028",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=international (international → Dünya mutfağı; sürüm 2, 2025-01-13). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "hunkar-sisli",
+   "ad": "Hünkar",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2023-11-05)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/5511821197",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2023-11-05). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "yildiz-konyali-sisli",
+   "ad": "Yıldız Konyalı",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2019-01-10)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/6197867032",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2019-01-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "dragon-restaurant-sisli",
+   "ad": "Dragon Restaurant",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Asya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=chinese (chinese → Asya mutfağı; sürüm 3, 2025-12-16)",
+   "alanlar": {
+    "kind": "Asya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/5953958065",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=chinese (chinese → Asya mutfağı; sürüm 3, 2025-12-16). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "giritli-fatih",
+   "ad": "Giritli",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=greek;turkish (turkish → Türk mutfağı; sürüm 3, 2024-09-25)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/1808533830",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=greek;turkish (turkish → Türk mutfağı; sürüm 3, 2024-09-25). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "tarihi-sultanahmet-koftecisi-selim-usta-fatih",
+   "ad": "Tarihi Sultanahmet Köftecisi Selim Usta",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2025-10-01)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/4790800225",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2025-10-01). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "pandeli-fatih",
+   "ad": "Pandeli",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2019-03-24)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/3079823142",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2019-03-24). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "ekmek-teknesi-uskudar",
+   "ad": "Ekmek Teknesi",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2025-09-03)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13115766701",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2025-09-03). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "filizler-koftecisi-uskudar",
+   "ad": "Filizler Köftecisi",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 8, 2026-09-25)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/310112375",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 8, 2026-09-25). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "durumcu-baba-bakirkoy",
+   "ad": "Dürümcü Baba",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2024-09-27)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/1248104201",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2024-09-27). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "birecikli-bakirkoy",
+   "ad": "Birecikli",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish;asian (turkish → Türk mutfağı; sürüm 3, 2026-03-08)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/5752427724",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish;asian (turkish → Türk mutfağı; sürüm 3, 2026-03-08). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "cinaralti-mangalbasi-atasehir",
+   "ad": "Çınaraltı Mangalbaşı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Kebapçı / Ocakbaşı",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa açıklaması): \"Restoranımızda özenle hazırlanan ızgara çeşitleri, mezeler ve salatalarla\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Kebapçı / Ocakbaşı",
+    "sourceUrl": "https://www.cinaraltimangalbasi.com.tr/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa açıklaması): \"Restoranımızda özenle hazırlanan ızgara çeşitleri, mezeler ve salatalarla\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "hot-pot-king-atasehir",
+   "ad": "Hot Pot King",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Asya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=chinese (chinese → Asya mutfağı; sürüm 3, 2022-02-14)",
+   "alanlar": {
+    "kind": "Asya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/8871767970",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=chinese (chinese → Asya mutfağı; sürüm 3, 2022-02-14). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "d-orient-buyukada-adalar",
+   "ad": "d'Orient Büyükada",
+   "ilce": "Adalar",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "yeni": "Tatlıcı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=dondurma;pizza;kahve;tatlı (dondurma → Tatlıcı; sürüm 1, 2022-07-19)",
+   "alanlar": {
+    "kind": "Tatlıcı",
+    "sourceUrl": "https://www.openstreetmap.org/node/9897855978",
+    "why": "Genel tür \"Kafe\" kaynaklı türle değiştirildi: OSM cuisine=dondurma;pizza;kahve;tatlı (dondurma → Tatlıcı; sürüm 1, 2022-07-19). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "kalpazankaya-restaurant-adalar",
+   "ad": "Kalpazankaya Restaurant",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2026-06-10)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/1578095840",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2026-06-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "meshur-sultanahmet-koftecisi-eyupsultan",
+   "ad": "Meşhur Sultanahmet Köftecisi",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2024-01-25)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/8554024645",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2024-01-25). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "istek-borek-kartal",
+   "ad": "İstek Börek",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 8, 2024-03-21)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/6080200757",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 8, 2024-03-21). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "muhlama-karadeniz-mutfagi-atasehir",
+   "ad": "Muhlama Karadeniz Mutfağı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Karadeniz mutfağı",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa açıklaması (JSON-LD servesCuisine: Karadeniz Mutfağı)): \"Karadeniz Mutfağının En İyi Temsilcisi\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Karadeniz mutfağı",
+    "sourceUrl": "https://www.muhlama.com.tr/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa açıklaması (JSON-LD servesCuisine: Karadeniz Mutfağı)): \"Karadeniz Mutfağının En İyi Temsilcisi\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "by-arnavut-kofte-ve-piyaz-bayrampasa",
+   "ad": "By Arnavut Köfte & Piyaz",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2024-07-11)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/8403443816",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2024-07-11). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "colakoglu-simit-bagcilar",
+   "ad": "Çolakoğlu Simit",
+   "ilce": "Bağcılar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish;sandwich;tea (turkish → Türk mutfağı; sürüm 4, 2023-04-07)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/4950668933",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish;sandwich;tea (turkish → Türk mutfağı; sürüm 4, 2023-04-07). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "panorama34-cafe-ve-restaurant-buyukcekmece",
+   "ad": "Panorama34 Cafe & Restaurant",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2025-03-20)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/1369654435",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2025-03-20). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "manzaram-eyupsultan-eyupsultan",
+   "ad": "Manzaram Eyüpsultan",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2024-10-22)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/1327384738",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2024-10-22). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "olden-1772-fatih",
+   "ad": "Olden 1772",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2024-10-31)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/12301074673",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2024-10-31). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "gungor-iskembe-gaziosmanpasa",
+   "ad": "Güngör İşkembe",
+   "ilce": "Gaziosmanpaşa",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2024-05-11)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/1282039247",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2024-05-11). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "moston-cafe-restoran-maltepe",
+   "ad": "Moston Cafe Restoran",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Lokanta",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, Maltepe menü sayfası başlığı): \"Moston Ev Yemekleri & Zeytinyağlılar\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Lokanta",
+    "sourceUrl": "https://www.mostononline.com/maltepe/Menu",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, Maltepe menü sayfası başlığı): \"Moston Ev Yemekleri & Zeytinyağlılar\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "kucuk-ev-sariyer",
+   "ad": "Küçük Ev",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2026-04-18)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/10568782449",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2026-04-18). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "doga-cafe-restaurant-alev-hanim-in-mutfagi-catalca",
+   "ad": "Doğa Cafe Restaurant - Alev Hanım'ın Mutfağı",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 2, 2026-06-10)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/11479354384",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 2, 2026-06-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "durusu-club-restaurant-arnavutkoy",
+   "ad": "Durusu Club Restaurant",
+   "ilce": "Arnavutköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2019-04-07)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/682229103",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2019-04-07). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "sushico-zen-atasehir",
+   "ad": "SushiCo zen",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Asya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=asian (asian → Asya mutfağı; sürüm 3, 2026-06-10)",
+   "alanlar": {
+    "kind": "Asya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/11279285879",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=asian (asian → Asya mutfağı; sürüm 3, 2026-06-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "samsaland-bahcelievler",
+   "ad": "Samsaland",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Dünya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=uzbek (uzbek → Dünya mutfağı; sürüm 3, 2026-03-03)",
+   "alanlar": {
+    "kind": "Dünya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13569577801",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=uzbek (uzbek → Dünya mutfağı; sürüm 3, 2026-03-03). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "pilavci-islam-usta-buyukcekmece",
+   "ad": "Pilavcı İslam Usta",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2025-03-20)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/1369654431",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2025-03-20). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "kaan-cafe-restaurant-esenyurt",
+   "ad": "Kaan Cafe Restaurant",
+   "ilce": "Esenyurt",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Asya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=indian;curry (indian → Asya mutfağı; sürüm 2, 2025-09-24)",
+   "alanlar": {
+    "kind": "Asya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/11005564084",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=indian;curry (indian → Asya mutfağı; sürüm 2, 2025-09-24). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "ibb-altinboynuz-sosyal-tesisi-eyupsultan",
+   "ad": "İBB Altınboynuz Sosyal Tesisi",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2026-06-10)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/1098835407",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2026-06-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "cantinery-istinye-park-sariyer",
+   "ad": "Cantinery İstinye Park",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Dünya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=international;european (international → Dünya mutfağı; sürüm 2, 2024-12-07)",
+   "alanlar": {
+    "kind": "Dünya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/12393159449",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=international;european (international → Dünya mutfağı; sürüm 2, 2024-12-07). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "kocakus-mesire-sile",
+   "ad": "Kocakuş Mesire",
+   "ilce": "Şile",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2024-07-11)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/8543387712",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2024-07-11). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "34-restaurant-sisli",
+   "ad": "34 Restaurant",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 4, 2026-03-23)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/3905961583",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 4, 2026-03-23). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "hukumdar-sofrasi-atasehir",
+   "ad": "Hükümdar Sofrası",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2024-12-25)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/6151764085",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2024-12-25). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "bitas-ev-yemekleri-bahcelievler",
+   "ad": "BiTas Ev Yemekleri",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2026-06-10)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13276506301",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2026-06-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "fusion-indian-bakirkoy",
+   "ad": "Fusion Indian",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Asya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=indian (indian → Asya mutfağı; sürüm 1, 2023-01-09)",
+   "alanlar": {
+    "kind": "Asya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/10316977903",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=indian (indian → Asya mutfağı; sürüm 1, 2023-01-09). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "ezme-durum-evi-bayrampasa",
+   "ad": "Ezme Dürüm Evi",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2024-02-14)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/8827090500",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2024-02-14). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "polat-iskembe-esenyurt",
+   "ad": "Polat Işkembe",
+   "ilce": "Esenyurt",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2024-07-11)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/10874116506",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2024-07-11). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "chef-taus-kadikoy",
+   "ad": "Chef Taus",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Dünya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=mexican;asian (mexican → Dünya mutfağı; sürüm 3, 2026-08-10)",
+   "alanlar": {
+    "kind": "Dünya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/694947321",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=mexican;asian (mexican → Dünya mutfağı; sürüm 3, 2026-08-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "meshur-rumeli-pilavcisi-maltepe",
+   "ad": "Meşhur Rumeli Pilavcısı",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish;pilav;chicken;tavuklu (turkish → Türk mutfağı; sürüm 1, 2025-03-17)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/12673497544",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish;pilav;chicken;tavuklu (turkish → Türk mutfağı; sürüm 1, 2025-03-17). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "menemenci-haydar-cakalli-menemeni-silivri",
+   "ad": "Menemenci Haydar Çakallı Menemeni",
+   "ilce": "Silivri",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Kahvaltı",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa açıklaması): \"Çakallı menemen, serpme kahvaltı ve doğal kahvaltı tabağıyla\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Kahvaltı",
+    "sourceUrl": "https://menemencihaydar.com/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa açıklaması): \"Çakallı menemen, serpme kahvaltı ve doğal kahvaltı tabağıyla\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "lagos-tuzla",
+   "ad": "Lagos",
+   "ilce": "Tuzla",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2026-09-13)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/11279806832",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2026-09-13). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "zennup-1844-fisekhane-zeytinburnu",
+   "ad": "Zennup 1844 Fişekhane",
+   "ilce": "Zeytinburnu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, Fişekhane şube menüsü sayfası açıklaması): \"Zennup Fişekhane Şube Menüsü; Buram buram Anadolu kokan sofralarıyla geleneksel Türk mutfağı\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://zennup.com.tr/fisekhane-sube-menu/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, Fişekhane şube menüsü sayfası açıklaması): \"Zennup Fişekhane Şube Menüsü; Buram buram Anadolu kokan sofralarıyla geleneksel Türk mutfağı\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "adile-sultan-ev-yemekleri-uskudar",
+   "ad": "Adile Sultan Ev Yemekleri",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2026-07-20)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13358291421",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2026-07-20). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "sofular-koftecisi-sile",
+   "ad": "Sofular Köftecisi",
+   "ilce": "Şile",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 2, 2022-10-27)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/10132320239",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 2, 2022-10-27). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "awina-restaurant-atasehir",
+   "ad": "Awina Restaurant",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2026-04-16)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13735825081",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2026-04-16). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "haznedar-meydan-gece-cigercisi-bahcelievler",
+   "ad": "Haznedar Meydan Gece Ciğercisi",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2026-06-10)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13276503802",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2026-06-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "nano-durum-bayrampasa",
+   "ad": "Nano Dürüm",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2023-07-20)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/11057601896",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2023-07-20). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "heybet-basaksehir",
+   "ad": "Heybet",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Dönerci",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa başlığı (h1: %100 GERÇEK ET DÖNER)): \"Heybet Döner Lokantası\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Dönerci",
+    "sourceUrl": "https://heybet.com.tr/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa başlığı (h1: %100 GERÇEK ET DÖNER)): \"Heybet Döner Lokantası\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "villa-park-istanbul-beylikduzu",
+   "ad": "Villa Park İstanbul",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2024-06-24)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/way/1110607715",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 2, 2024-06-24). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "leb-i-derya-beyoglu",
+   "ad": "Leb-i derya",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 4, 2025-12-15)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/5894690486",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 4, 2025-12-15). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "griffin-bomonti-sisli",
+   "ad": "Griffin Bomonti",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2025-12-15)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13181302952",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2025-12-15). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "baskent-aspava-atasehir",
+   "ad": "Başkent Aspava",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2026-07-05)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13990770807",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2026-07-05). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "amazon-avcilar",
+   "ad": "Amazon",
+   "ilce": "Avcılar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Dünya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=international (international → Dünya mutfağı; sürüm 1, 2025-02-10)",
+   "alanlar": {
+    "kind": "Dünya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/12574039392",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=international (international → Dünya mutfağı; sürüm 1, 2025-02-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "konya-mevlana-bahcelievler",
+   "ad": "Konya Mevlana",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Pideci",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, hakkımızda sayfası açıklaması): \"Konya mutfağının etli ekmek, pide ve kebap lezzetlerini Bahçelievler'de sunan restoranımız\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Pideci",
+    "sourceUrl": "https://konyamevlana.com.tr/hakkimizda/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, hakkımızda sayfası açıklaması): \"Konya mutfağının etli ekmek, pide ve kebap lezzetlerini Bahçelievler'de sunan restoranımız\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "constantine-s-ark-fatih",
+   "ad": "Constantine's Ark",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2024-11-17)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/4195110891",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 5, 2024-11-17). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "gunesin-sofrasi-kadikoy",
+   "ad": "Güneşin Sofrası",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Meyhane",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa başlığı): \"Guneşin Sofrası – Meyhane\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Meyhane",
+    "sourceUrl": "http://gunesinsofrasi.com/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa başlığı): \"Guneşin Sofrası – Meyhane\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "nebras-pendik",
+   "ad": "Nebras",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Lokanta",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa açıklaması): \"açık büfe yemek, kahvaltı ve ev yemekleri konseptiyle hizmet veren\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Lokanta",
+    "sourceUrl": "https://www.nebrasyemekmarket.com/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa açıklaması): \"açık büfe yemek, kahvaltı ve ev yemekleri konseptiyle hizmet veren\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "desi-vibes-fatih",
+   "ad": "Desi vibes",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Asya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=indian (indian → Asya mutfağı; sürüm 1, 2026-04-30)",
+   "alanlar": {
+    "kind": "Asya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13781655287",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=indian (indian → Asya mutfağı; sürüm 1, 2026-04-30). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "hane-kadikoy",
+   "ad": "Hane",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 7, 2025-11-02)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/9866939004",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 7, 2025-11-02). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "sakli-kadeh-maltepe",
+   "ad": "Saklı Kadeh",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Meyhane",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa başlığı): \"Saklı Kadeh Meyhane | Altıntepe Bostancı\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Meyhane",
+    "sourceUrl": "https://saklikadeh.com.tr/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa başlığı): \"Saklı Kadeh Meyhane | Altıntepe Bostancı\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "vagon-tantuni-beylikduzu",
+   "ad": "Vagon Tantuni",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2024-11-14)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/12339800128",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2024-11-14). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "asmali-durumcu-beyoglu",
+   "ad": "Asmalı Dürümcü",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2026-09-13)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/9950496918",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 3, 2026-09-13). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "kavurmaci-efe-kemal-kadikoy",
+   "ad": "Kavurmacı Efe Kemal",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Sokak lezzeti",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=sandwich;turkish (sandwich → Sokak lezzeti; sürüm 1, 2026-07-08)",
+   "alanlar": {
+    "kind": "Sokak lezzeti",
+    "sourceUrl": "https://www.openstreetmap.org/node/13998128401",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=sandwich;turkish (sandwich → Sokak lezzeti; sürüm 1, 2026-07-08). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "adile-sultan-ev-yemekleri-umraniye-restorani-umraniye",
+   "ad": "Adile Sultan Ev Yemekleri - Ümraniye Restoranı",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Lokanta",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, Ümraniye şube sayfası başlığı): \"Ümraniye Restoran Şube | Adile Sultan Ev Yemekleri\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Lokanta",
+    "sourceUrl": "https://adilesultanevyemekleri.com/sube/umraniye/",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: resmî site (2026-11-12, Ümraniye şube sayfası başlığı): \"Ümraniye Restoran Şube | Adile Sultan Ev Yemekleri\". Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "noodle-house-sisli",
+   "ad": "Noodle House",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Asya mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=chinese (chinese → Asya mutfağı; sürüm 4, 2026-05-15)",
+   "alanlar": {
+    "kind": "Asya mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/7569249980",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=chinese (chinese → Asya mutfağı; sürüm 4, 2026-05-15). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "nevale-mutfak-besiktas",
+   "ad": "Nevale Mutfak",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 2, 2025-08-10)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/9199628839",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 2, 2025-08-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "glutensiz-ada-maltepe",
+   "ad": "Glutensiz Ada",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 4, 2023-05-17)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/4961833721",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 4, 2023-05-17). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "cihangir-sosyal-tesisleri-beyoglu",
+   "ad": "Cihangir sosyal tesisleri",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=regional (regional → Türk mutfağı; sürüm 4, 2026-06-10)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/6731291717",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=regional (regional → Türk mutfağı; sürüm 4, 2026-06-10). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "kilisli-omer-usta-atasehir",
+   "ad": "Kilisli Ömer Usta",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "yeni": "Türk mutfağı",
+   "kaynak": "OSM",
+   "kanit": "OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2025-10-28)",
+   "alanlar": {
+    "kind": "Türk mutfağı",
+    "sourceUrl": "https://www.openstreetmap.org/node/13264590147",
+    "why": "Genel tür \"Restoran\" kaynaklı türle değiştirildi: OSM cuisine=turkish (turkish → Türk mutfağı; sürüm 1, 2025-10-28). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "safak-pub-fatih",
+   "ad": "Şafak Pub",
+   "ilce": "Fatih",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "yeni": "Pub",
+   "kaynak": "OSM",
+   "kanit": "OSM amenity=pub (sürüm 4, 2025-12-15)",
+   "alanlar": {
+    "kind": "Pub",
+    "sourceUrl": "https://www.openstreetmap.org/node/5244803033",
+    "why": "Genel tür \"Bar\" kaynaklı türle değiştirildi: OSM amenity=pub (sürüm 4, 2025-12-15). Kontrol 2026-11-12."
+   }
+  },
+  {
+   "slug": "bosphorus-brewing-company-sisli",
+   "ad": "Bosphorus Brewing Company",
+   "ilce": "Şişli",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "yeni": "Pub",
+   "kaynak": "resmî site",
+   "kanit": "resmî site (2026-11-12, ana sayfa açıklaması (OSM amenity=pub ile aynı)): \"Ingiliz Pub atmosferinde\"",
+   "duzey": "şube",
+   "alanlar": {
+    "kind": "Pub",
+    "sourceUrl": "https://bbcist.com/",
+    "why": "Genel tür \"Bar\" kaynaklı türle değiştirildi: resmî site (2026-11-12, ana sayfa açıklaması (OSM amenity=pub ile aynı)): \"Ingiliz Pub atmosferinde\". Kontrol 2026-11-12."
+   }
+  }
+ ],
+ "kategori": [
+  {
+   "slug": "700-gram-kadikoy",
+   "ad": "700 Gram",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Kahvaltı",
+   "dalga": 0,
+   "yeni": "cat.cafe",
+   "kanit": "OSM amenity=cafe, cuisine=breakfast (sürüm 2, 2025-06-03); katalogda amenity=cafe olan 3 Kahvaltı kaydı kafe kategorisinde",
+   "alanlar": {
+    "categoryId": "cat.cafe"
+   }
+  },
+  {
+   "slug": "flake-breakfast-ve-more-kadikoy",
+   "ad": "Flake Breakfast & More",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Kahvaltı",
+   "dalga": 0,
+   "yeni": "cat.cafe",
+   "kanit": "OSM amenity=cafe, cuisine=breakfast;turkish (sürüm 4, 2026-10-10); katalogda amenity=cafe olan 3 Kahvaltı kaydı kafe kategorisinde",
+   "alanlar": {
+    "categoryId": "cat.cafe"
+   }
+  },
+  {
+   "slug": "samatya-cafe-ve-van-kahvalti-salonu-fatih",
+   "ad": "Samatya Cafe ve Van Kahvaltı Salonu",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Kahvaltı",
+   "dalga": 0,
+   "yeni": "cat.cafe",
+   "kanit": "OSM amenity=cafe (sürüm 3, 2026-03-06); katalogda amenity=cafe olan 3 Kahvaltı kaydı kafe kategorisinde",
+   "alanlar": {
+    "categoryId": "cat.cafe"
+   }
+  },
+  {
+   "slug": "viva-gelateria-di-roma-bakirkoy",
+   "ad": "Viva Gelateria di Roma",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 0,
+   "yeni": "cat.cafe",
+   "kanit": "OSM amenity=cafe, cuisine=ice_cream;coffee_shop (sürüm 2, 2026-06-10); katalogda amenity=cafe olan 6 Tatlıcı kaydı kafe kategorisinde",
+   "alanlar": {
+    "categoryId": "cat.cafe"
+   }
+  },
+  {
+   "slug": "antepli-hunkar-kunefe-kartal",
+   "ad": "Antepli Hünkar Künefe",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 0,
+   "yeni": "cat.cafe",
+   "kanit": "OSM amenity=cafe (sürüm 1, 2020-06-03); katalogda amenity=cafe olan 6 Tatlıcı kaydı kafe kategorisinde",
+   "alanlar": {
+    "categoryId": "cat.cafe"
+   }
+  }
+ ],
+ "uygulanmayan": [
+  {
+   "slug": "geyik-beyoglu",
+   "ad": "Geyik",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM amenity=bar, mutfak/alt tür etiketi yok; sitede açık bar türü tanımı yok"
+  },
+  {
+   "slug": "savoy-beyoglu",
+   "ad": "Savoy",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "mikla-turkey-fusion-beyoglu",
+   "ad": "Mikla - Turkey fusion",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "asmali-cavit-beyoglu",
+   "ad": "Asmalı Cavit",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "dem-karakoy-beyoglu",
+   "ad": "Dem Karaköy",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_suspected)"
+  },
+  {
+   "slug": "gramaj-beyoglu",
+   "ad": "Gramaj",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "kizilkayalar-beyoglu",
+   "ad": "Kızılkayalar",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "konyalilar-etli-ekmek-kadikoy",
+   "ad": "Konyalılar Etli Ekmek",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "kont-moda-kadikoy",
+   "ad": "KONT Moda",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "emirgan-sutis-besiktas",
+   "ad": "Emirgan Sütiş",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_suspected)"
+  },
+  {
+   "slug": "feriye-besiktas",
+   "ad": "Feriye",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "lucca-besiktas",
+   "ad": "Lucca",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "JSON-LD Restaurant + BarOrPub ve dünya mutfağı; bar alt türü belirsiz."
+  },
+  {
+   "slug": "summit-bar-ve-terrace-besiktas",
+   "ad": "Summit Bar & Terrace",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM amenity=bar, mutfak/alt tür etiketi yok; sitede açık bar türü tanımı yok"
+  },
+  {
+   "slug": "curtis-restaurant-ve-bar-besiktas",
+   "ad": "Curtis Restaurant&Bar",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "gram-sisli",
+   "ad": "Gram",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "kantin-sisli",
+   "ad": "Kantin",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kafe kategorisinde restoran mutfağı (OSM cuisine=chicken;sandwich;turkish;juice;regional;burger); kafe türü yazılmadı"
+  },
+  {
+   "slug": "chops-cafe-ve-pub-sisli",
+   "ad": "Chops Cafe & Pub",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "dubb-indian-bosphorus-restaurant-sisli",
+   "ad": "Dubb Indian Bosphorus Restaurant",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "the-hill-cafe-sisli",
+   "ad": "The Hill Cafe",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kafe kategorisinde restoran mutfağı (OSM cuisine=burger;pizza;turkish); kafe türü yazılmadı"
+  },
+  {
+   "slug": "vefa-bozacisi-1876-fatih",
+   "ad": "Vefa Bozacısı 1876",
+   "ilce": "Fatih",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "kasap-osman-fatih",
+   "ad": "Kasap Osman",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "sultan-s-inn-fatih",
+   "ad": "Sultan’s Inn",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "artlocalist-fatih",
+   "ad": "Artlocalist",
+   "ilce": "Fatih",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_suspected)"
+  },
+  {
+   "slug": "kucuk-camlica-kosku-uskudar",
+   "ad": "Küçük Çamlıca Köşkü",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "kuzguncuk-cinaralti-uskudar",
+   "ad": "Kuzguncuk Çınaraltı",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kafe kategorisinde restoran mutfağı (OSM cuisine=regional); kafe türü yazılmadı"
+  },
+  {
+   "slug": "katibim-uskudar",
+   "ad": "Katibim",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kafe kategorisinde restoran mutfağı (OSM cuisine=turkish); kafe türü yazılmadı"
+  },
+  {
+   "slug": "rice-house-uskudar",
+   "ad": "Rice House",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "kale-cafe-cay-bahcesi-sariyer",
+   "ad": "Kale cafe Çay Bahçesi",
+   "ilce": "Sarıyer",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "cajun-corner-sariyer",
+   "ad": "Cajun Corner",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "Markanın genel tanımı (\"Çıtır Tavuk ve Burger\"); Sarıyer şubesi resmî şube listesinde doğrulanmadı, marka düzeyi uygulanmadı."
+  },
+  {
+   "slug": "develi-atasehir",
+   "ad": "Develi",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "barba-yani-adalar",
+   "ad": "Barba Yani",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 0,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "beyzade-kunefe-eyupsultan",
+   "ad": "Beyzade Künefe",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 0,
+   "eksen": "kategori",
+   "neden": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "saray-muhallebicisi-bakirkoy",
+   "ad": "Saray Muhallebicisi",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 1,
+   "eksen": "kategori",
+   "neden": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "nicole-beyoglu",
+   "ad": "Nicole",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "diyarzade-kunefe-katmer-baklava-ve-tatli-gungoren",
+   "ad": "Diyarzade Künefe, Katmer, Baklava, ve Tatlı",
+   "ilce": "Güngören",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 1,
+   "eksen": "kategori",
+   "neden": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "boga-kagithane",
+   "ad": "Boga",
+   "ilce": "Kağıthane",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "ala-turk-mutfagi-umraniye",
+   "ad": "Ala Türk Mutfagi",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "gasto-nisantasi-sisli",
+   "ad": "Gasto Nişantaşı",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "yucetepe-kir-gazinosu-adalar",
+   "ad": "Yücetepe Kır Gazinosu",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "tepsi-et-basaksehir-basaksehir",
+   "ad": "Tepsi Et Başakşehir",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "refik-beyoglu",
+   "ad": "Refik",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "zeytindali-kir-bahcesi-silivri",
+   "ad": "ZeytinDalı Kır Bahçesi",
+   "ilce": "Silivri",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "hasirli-konya-mutfagi-buyukcekmece",
+   "ad": "Hasırlı Konya Mutfağı",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "Resmî site yalnız Esenyurt ve Bahçeşehir şubelerini sayıyor; Büyükçekmece kaydı şube listesinde yok."
+  },
+  {
+   "slug": "ali-baba-et-mangal-sancaktepe",
+   "ad": "Ali Baba Et Mangal",
+   "ilce": "Sancaktepe",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM mutfak etiketi belirsiz (meat), sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "catalca-gizli-bahce-catalca",
+   "ad": "Catalca Gizli Bahce",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "sehzadem-arnavutkoy",
+   "ad": "Sehzadem",
+   "ilce": "Arnavutköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "altin-sini-avcilar",
+   "ad": "Altın Sini",
+   "ilce": "Avcılar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "gelik-et-atakoy-istanbul-bakirkoy",
+   "ad": "Gelik ET Ataköy Istanbul",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "Ad eşleşmedi; açık tür tanımı yok."
+  },
+  {
+   "slug": "cabra-loca-coffee-fatih",
+   "ad": "Cabra Loca Coffee",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_suspected)"
+  },
+  {
+   "slug": "pasahan-kunefe-maltepe",
+   "ad": "Paşahan Künefe",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 1,
+   "eksen": "kategori",
+   "neden": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "m-point-cafe-and-restaurant-zeytinburnu",
+   "ad": "M-Point Cafe and restaurant",
+   "ilce": "Zeytinburnu",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "antik-koy-catalca",
+   "ad": "Antik Köy",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "Ad eşleşmedi; site bir doğa/eğlence tesisini anlatıyor (kahvaltı, mangal, hayvanat bahçesi)."
+  },
+  {
+   "slug": "nostalji-cafe-ve-restaurant-sile",
+   "ad": "Nostalji Cafe & Restaurant",
+   "ilce": "Şile",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "bishop-bakirkoy",
+   "ad": "Bishop",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "cookshop-bayrampasa",
+   "ad": "Cookshop",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "Paylaşılan site (Cookshop ve Lunchbox); menü sayfasındaki \"dünya mutfağı\" marka geneli, şube bölümü yok."
+  },
+  {
+   "slug": "gospoda-1882-beykoz",
+   "ad": "Gospoda 1882",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "trakyum-buyukcekmece",
+   "ad": "Trakyum",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "Sitede yalnız ad (\"Trakyum Mangalbaşı\") ve belirsiz tanım (\"Ezber Bozan … Konsept\"); addan tür üretilmez."
+  },
+  {
+   "slug": "aci-biber-kucukcekmece",
+   "ad": "Acı Biber",
+   "ilce": "Küçükçekmece",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "tahtalikoy-catalca",
+   "ad": "Tahtalıköy",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "le-pere-bistrot-atasehir",
+   "ad": "Le Pere Bistrot",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; kayıtlı resmî site yok"
+  },
+  {
+   "slug": "lunchbox-bayrampasa",
+   "ad": "Lunchbox",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_suspected)"
+  },
+  {
+   "slug": "huqqabaz-mall-of-istanbul-basaksehir",
+   "ad": "HuQQabaz Mall Of İstanbul",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "Site kendini \"En İyi Nargile & En İyi Kahvaltı\" diye tanıtıyor; nargile kafe kapsam kararı sahipte."
+  },
+  {
+   "slug": "ghalia-launge-beykoz",
+   "ad": "Ghalia Launge",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "sefa-restaurant-uskudar",
+   "ad": "Sefa Restaurant",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "sazeli-florya-bakirkoy",
+   "ad": "Sazeli Florya",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "hira-han-beykoz",
+   "ad": "Hira Han",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "millet-sofrasi-beykoz",
+   "ad": "Millet Sofrası",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "mama-bowl-kozyatagi-kadikoy",
+   "ad": "Mama Bowl Kozyatağı",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "the-hunger-umraniye-limonlu-cadde-umraniye",
+   "ad": "The Hunger Ümraniye Limonlu Cadde",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "kapanış kaydı (closed_confirmed)"
+  },
+  {
+   "slug": "maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe",
+   "ad": "Maltepe Belediyesi Seyirtepe Sosyal Tesisleri",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "türü daha önce elle düzeltilmiş (duzeltmeler.json, 2026-10-30): Resmî sayfa tabldot ve alakart restoran ile kafe/pasta bölümü anlatıyor; OSM'deki burger etiketini desteklemiyor."
+  },
+  {
+   "slug": "aslanbey-ciftligi-pendik",
+   "ad": "Aslanbey Çiftliği",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "OSM'de mutfak etiketi yok; sitede açık tür tanımı yok"
+  },
+  {
+   "slug": "huqqa-uskudar",
+   "ad": "Huqqa",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "tür",
+   "neden": "Marka tanımı nargile kültürünü öne çıkarıyor; tek konsept değil, şube doğrulanmadı."
+  },
+  {
+   "slug": "baklava-hanem-sisli",
+   "ad": "Baklava Hanem",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 1,
+   "eksen": "kategori",
+   "neden": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "360-istanbul-beyoglu",
+   "ad": "360 Istanbul",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "eksen": "tür",
+   "neden": "Site kendini \"Rooftop Restaurant & Club\" diye tanıtıyor; bar ↔ restoran kategori kararı sahipte."
+  },
+  {
+   "slug": "jasmin-highheels-beyoglu",
+   "ad": "jasmin highheels",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "eksen": "tür",
+   "neden": "OSM amenity=bar, mutfak/alt tür etiketi yok; sitede açık bar türü tanımı yok"
+  },
+  {
+   "slug": "kaffa-miro-fatih",
+   "ad": "Kaffa Miro",
+   "ilce": "Fatih",
+   "kategori": "cat.cafe",
+   "tur": "Türk mutfağı",
+   "dalga": 6,
+   "eksen": "kategori",
+   "neden": "kafe kategorisinde restoran türü: Türk mutfağı; OSM amenity cafe, mutfak regional"
+  },
+  {
+   "slug": "altkat-lokal-kadikoy",
+   "ad": "Altkat Lokal",
+   "ilce": "Kadıköy",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "eksen": "tür",
+   "neden": "OSM amenity=bar, mutfak/alt tür etiketi yok; sitede açık bar türü tanımı yok"
+  },
+  {
+   "slug": "artisan-craft-kadikoy",
+   "ad": "Artisan craft",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "tur": "Pizza",
+   "dalga": 6,
+   "eksen": "kategori",
+   "neden": "kafe kategorisinde restoran türü: Pizza; OSM amenity cafe, mutfak pizza"
+  },
+  {
+   "slug": "gizia-brasserie-kadikoy",
+   "ad": "Gizia Brasserie",
+   "ilce": "Kadıköy",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "eksen": "tür",
+   "neden": "Site açıklaması \"restaurant\"; OSM amenity=bar. Kategori kararı sahipte."
+  },
+  {
+   "slug": "muhit-kadikoy-kadikoy",
+   "ad": "Muhit Kadıköy",
+   "ilce": "Kadıköy",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "eksen": "tür",
+   "neden": "OSM amenity=bar, mutfak/alt tür etiketi yok; sitede açık bar türü tanımı yok"
+  },
+  {
+   "slug": "rucio-cafe-kadikoy",
+   "ad": "Rucio Cafe",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "tur": "Türk mutfağı",
+   "dalga": 6,
+   "eksen": "kategori",
+   "neden": "kafe kategorisinde restoran türü: Türk mutfağı; OSM amenity cafe, mutfak turkish"
+  }
+ ],
+ "sahip": [
+  {
+   "slug": "kantin-sisli",
+   "ad": "Kantin",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "kategori",
+   "soru": "kafe kategorisinde, OSM amenity cafe, mutfak chicken;sandwich;turkish;juice;regional;burger"
+  },
+  {
+   "slug": "the-hill-cafe-sisli",
+   "ad": "The Hill Cafe",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "kategori",
+   "soru": "kafe kategorisinde, OSM amenity cafe, mutfak burger;pizza;turkish"
+  },
+  {
+   "slug": "kuzguncuk-cinaralti-uskudar",
+   "ad": "Kuzguncuk Çınaraltı",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "kategori",
+   "soru": "kafe kategorisinde, OSM amenity cafe, mutfak regional"
+  },
+  {
+   "slug": "katibim-uskudar",
+   "ad": "Katibim",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "tur": "Kafe",
+   "dalga": 0,
+   "eksen": "kategori",
+   "soru": "kafe kategorisinde, OSM amenity cafe, mutfak turkish"
+  },
+  {
+   "slug": "beyzade-kunefe-eyupsultan",
+   "ad": "Beyzade Künefe",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 0,
+   "eksen": "kategori",
+   "soru": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "saray-muhallebicisi-bakirkoy",
+   "ad": "Saray Muhallebicisi",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 1,
+   "eksen": "kategori",
+   "soru": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "diyarzade-kunefe-katmer-baklava-ve-tatli-gungoren",
+   "ad": "Diyarzade Künefe, Katmer, Baklava, ve Tatlı",
+   "ilce": "Güngören",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 1,
+   "eksen": "kategori",
+   "soru": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "pasahan-kunefe-maltepe",
+   "ad": "Paşahan Künefe",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 1,
+   "eksen": "kategori",
+   "soru": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "huqqabaz-mall-of-istanbul-basaksehir",
+   "ad": "HuQQabaz Mall Of İstanbul",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "tur": "Restoran",
+   "dalga": 1,
+   "eksen": "kapsam",
+   "soru": "Site kendini \"En İyi Nargile & En İyi Kahvaltı\" diye tanıtıyor; nargile kafe kapsam kararı sahipte."
+  },
+  {
+   "slug": "baklava-hanem-sisli",
+   "ad": "Baklava Hanem",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "tur": "Tatlıcı",
+   "dalga": 1,
+   "eksen": "kategori",
+   "soru": "tatlıcı restoran kategorisinde (kafe/tatlı olmalı); OSM amenity restaurant, mutfak turkish"
+  },
+  {
+   "slug": "360-istanbul-beyoglu",
+   "ad": "360 Istanbul",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "eksen": "kategori",
+   "soru": "Site kendini \"Rooftop Restaurant & Club\" diye tanıtıyor; bar ↔ restoran kategori kararı sahipte."
+  },
+  {
+   "slug": "kaffa-miro-fatih",
+   "ad": "Kaffa Miro",
+   "ilce": "Fatih",
+   "kategori": "cat.cafe",
+   "tur": "Türk mutfağı",
+   "dalga": 6,
+   "eksen": "kategori",
+   "soru": "kafe kategorisinde restoran türü: Türk mutfağı; OSM amenity cafe, mutfak regional"
+  },
+  {
+   "slug": "artisan-craft-kadikoy",
+   "ad": "Artisan craft",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "tur": "Pizza",
+   "dalga": 6,
+   "eksen": "kategori",
+   "soru": "kafe kategorisinde restoran türü: Pizza; OSM amenity cafe, mutfak pizza"
+  },
+  {
+   "slug": "gizia-brasserie-kadikoy",
+   "ad": "Gizia Brasserie",
+   "ilce": "Kadıköy",
+   "kategori": "cat.bar",
+   "tur": "Bar",
+   "dalga": 6,
+   "eksen": "kategori",
+   "soru": "Site açıklaması \"restaurant\"; OSM amenity=bar. Kategori kararı sahipte."
+  },
+  {
+   "slug": "rucio-cafe-kadikoy",
+   "ad": "Rucio Cafe",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "tur": "Türk mutfağı",
+   "dalga": 6,
+   "eksen": "kategori",
+   "soru": "kafe kategorisinde restoran türü: Türk mutfağı; OSM amenity cafe, mutfak turkish"
+  }
+ ]
+}
