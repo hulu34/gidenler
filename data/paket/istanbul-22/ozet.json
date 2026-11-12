@@ -1,0 +1,74 @@
+{
+ "dalga": 22,
+ "A": 19,
+ "sinif": {
+  "A-konumsuz": 17,
+  "A": 2
+ },
+ "osmKaydi": 2,
+ "isletmeKaydi": 17,
+ "uygunAday": 196,
+ "secilen": 196,
+ "onEleme": {
+  "kanitsiz": 0,
+  "spamPark": 0,
+  "kafeBar": 0,
+  "acilmadi": 0
+ },
+ "inceleme": {
+  "B": 166,
+  "çakışma": 2,
+  "C": 9
+ },
+ "incelemeNeden": {
+  "kapı numarası resmî kaynakta doğrulanmadı": 73,
+  "tür yalnız Overture kategorisinde": 81,
+  "resmî site yalnız http": 4,
+  "adres resmî kaynakta doğrulanmadı": 57,
+  "kaynaklı tür yok": 59,
+  "tür belirsiz": 5,
+  "mevcut kayıtla eşleşiyor": 2,
+  "ilçe resmî sitede geçmiyor": 6,
+  "ev aletleri firması sitesi; restoran değil": 1,
+  "çiğ köfteci; kapsam dışı": 1,
+  "diş kliniği sitesi; restoran değil": 1,
+  "site başka bir firmaya": 1,
+  "büfe; restoran kapsamı dışı": 1,
+  "kasap / et satışı; restoran değil": 1,
+  "akşam yemekli gösteri mekânı; restoran kapsamı dışı": 1,
+  "otomotiv ekipman üreticisi; restoran değil": 1,
+  "düğün ve organizasyon salonu; restoran değil": 1
+ },
+ "turKaynagi": {
+  "resmî site": 19
+ },
+ "ilce": {
+  "Kartal": 1,
+  "Maltepe": 2,
+  "Büyükçekmece": 1,
+  "Sarıyer": 3,
+  "Çekmeköy": 2,
+  "Küçükçekmece": 1,
+  "Eyüpsultan": 1,
+  "Beyoğlu": 4,
+  "Kadıköy": 1,
+  "Beşiktaş": 1,
+  "Esenler": 1,
+  "Kağıthane": 1
+ },
+ "tur": {
+  "Pideci": 3,
+  "Balık restoranı": 1,
+  "Türk mutfağı": 3,
+  "Burger": 1,
+  "Pizza": 1,
+  "Dönerci": 2,
+  "Kebapçı / Ocakbaşı": 3,
+  "Meyhane": 1,
+  "Steakhouse": 2,
+  "Tantuni": 1,
+  "Karadeniz mutfağı": 1
+ },
+ "zincirSube": 2,
+ "v906Eslesen": 0
+}
