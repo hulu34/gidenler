@@ -1,0 +1,21 @@
+{
+ "_aciklama": "Paket 23 (güven 0,75–0,9 havuzunun kalanı): tür restoranın kendi resmî sitesindeki öz tanımdan (2026-11-12).",
+ "kararlar": {
+  "e11a88b5-b6e3-4203-988c-497c5cb82895": {
+   "ad": "SushiCo",
+   "kind": "Sushi / Japon",
+   "cuisine": [
+    "japanese"
+   ],
+   "ifade": "resmî site başlığı: \"İstanbul Sushi Restoranı\""
+  },
+  "f63e8f74-dd38-45c2-bd43-143bb6bc954b": {
+   "ad": "Cluster",
+   "kind": "Burger",
+   "cuisine": [
+    "burger"
+   ],
+   "ifade": "resmî site menü başlıkları: \"Burgers\", \"Sides\", \"Fries\""
+  }
+ }
+}

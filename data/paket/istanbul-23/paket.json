@@ -1,0 +1,126 @@
+{
+ "_aciklama": "İstanbul Overture keşif paketi (dalga 23). Aday Overture Maps Places'ten (© Overture Maps Foundation; kaynak başına lisans: Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0); kimlik, faaliyet, adres ve tür restoranın resmî sitesinden ölçüldü (sayfa içeriği saklanmadı). Koordinat yalnız OSM restoran kaydından (© OpenStreetMap katkıcıları, ODbL); OSM'si olmayanlar A-konumsuz. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json. Google verisi yok.",
+ "kontrolTarihi": "2026-11-12",
+ "eklenen": [
+  {
+   "slug": "sushico-tuzla",
+   "ref": "isletme/sushico-tuzla",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "SushiCo",
+   "ilce": "Tuzla",
+   "adres": "Cami Mah. Balıkçılar Sok No:20C/69, Tuzla",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Sushi / Japon",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "sushico.com.tr",
+   "sube": "Tuzla",
+   "kanit": [
+    "resmî şube sayfası sushico.com.tr: ad + telefon (https://www.sushico.com.tr/tr/contact-us.php)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.sushico.com.tr/tr/subeler/tuzla-marina; adres metni Overture)",
+    "tür: resmî site başlığı: \"İstanbul Sushi Restoranı\" (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.sushico.com.tr/tr/",
+    "overture:e11a88b5-b6e3-4203-988c-497c5cb82895"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 4
+  },
+  {
+   "slug": "pizza-v-bostanci-kadikoy",
+   "ref": "node/13945726128",
+   "tip": "osm_kaydi",
+   "ad": "Pizza V Bostancı",
+   "ilce": "Kadıköy",
+   "adres": "Papatya Sk No:1/A, Kadıköy",
+   "koordinat": [
+    40.962381,
+    29.105441
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Pizza",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "v.pizza",
+   "sube": "Kadıköy",
+   "kanit": [
+    "resmî şube sayfası v.pizza: ad + telefon + sokak + kapı no (https://v.pizza/subelerimiz/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://v.pizza/subelerimiz/; adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Pizza\" (marka düzeyi)",
+    "konum: OSM restoran kaydı node/13945726128 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13945726128",
+    "https://v.pizza/",
+    "overture:d0e9df72-5398-4525-a5e7-96eb5251571d"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 4
+  },
+  {
+   "slug": "cluster-sisli",
+   "ref": "isletme/cluster-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Cluster",
+   "ilce": "Şişli",
+   "adres": "Hacı Emin Efendi Sok No:19/B, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Burger",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "clusterftb.com",
+   "sube": "Şişli",
+   "kanit": [
+    "resmî şube sayfası clusterftb.com: ad + telefon + sokak (https://www.clusterftb.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.clusterftb.com/; adres metni Overture)",
+    "tür: resmî site menü başlıkları: \"Burgers\", \"Sides\", \"Fries\" (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.clusterftb.com/",
+    "overture:f63e8f74-dd38-45c2-bd43-143bb6bc954b"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 2
+  },
+  {
+   "slug": "sushi-lab-besiktas",
+   "ref": "node/6329569586",
+   "tip": "osm_kaydi",
+   "ad": "Sushi Lab",
+   "ilce": "Beşiktaş",
+   "adres": "Nüzhetiye Caddesi No:37/A, Beşiktaş",
+   "koordinat": [
+    41.047521,
+    29.000015
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Sushi / Japon",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "sushilab.com.tr",
+   "sube": "Beşiktaş",
+   "kanit": [
+    "resmî şube sayfası sushilab.com.tr: ad + telefon (https://www.sushilab.com.tr/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber)",
+    "tür: resmî site başlığı/açıklaması: \"Sushi\" (marka düzeyi)",
+    "konum: OSM restoran kaydı node/6329569586 (Overture noktasına 11 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6329569586",
+    "https://www.sushilab.com.tr/",
+    "overture:082dc694-c036-4a7f-bd16-4c0eb5bac028"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 2
+  }
+ ]
+}
