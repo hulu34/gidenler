@@ -35,12 +35,12 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-20-906-ortak` (taban: paket 19) · K
 
 | Gösterge | Önceki durum | Yeni durum | Değişim |
 |---|---:|---:|---:|
-| Production mekân sayısı | 574 | 574 | 0 |
-| Yayını bekleyen benzersiz kayıtlar | 459 | 478 | +19 |
-| Yeni A sınıfı (bekleyen toplam) | 185 | 204 | +19 |
-| Yeni A-konumsuz (bekleyen toplam) | 172 | 172 | +0 |
-| Toplam yayın adayı (A + B1 + A-konumsuz) | 459 | 478 | +19 |
-| Yayın sonrası hedef mekân sayısı | 1033 | 1052 | +19 |
+| Production mekân sayısı | 792 | 792 | 0 |
+| Yayını bekleyen benzersiz kayıtlar | 244 | 263 | +19 |
+| Yeni A sınıfı (bekleyen toplam) | 69 | 88 | +19 |
+| Yeni A-konumsuz (bekleyen toplam) | 175 | 175 | +0 |
+| Toplam yayın adayı (A + B1 + A-konumsuz) | 244 | 263 | +19 |
+| Yayın sonrası hedef mekân sayısı | 1036 | 1055 | +19 |
 
 **Tablo 2 — Araştırma ve doğrulama sonuçları (32 aday, birbirini dışlayan)**
 
@@ -97,13 +97,13 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-20-906-ortak` (taban: paket 19) · K
 | Test | Sonuç | Başarılı / Toplam | Açıklama |
 |---|---|---|---|
 | TypeScript | Geçti | 1/1 | tsc --noEmit, paket 19 dalında |
-| Katalog | Geçti | 52/52 | katalogtest; benzetim (Production + paket 7–20) |
+| Katalog | Geçti | 52/52 | katalogtest; benzetim (Production + paket 7–21) |
 | Mükerrer kontrolü | Geçti | 24/24 | 906 kimlik denetimi dahil (slug, OSM kaydı, ilçe 906 ile aynı); diğer paketlerle çakışma yok |
 | Arama | Geçti | 49/49 | aramatest + önizlemede her kayıt kendi adıyla ilk 8'de |
 | Sor Gidenler | Başarısız | 321/322 | "Yüksel Balık" ad eşleşmesi (paket 16 kaydı); Codex önerisiyle 322/322 (docs/katalog/CODEX-SOR-ONERISI.md) |
 | SEO / Sitemap | Geçti | 49/49 | seotest; önizlemede hepsi sitemap'te |
-| Mobil / Masaüstü | Geçti | 4/4 | 375 px: Sait (koordinatsız), Asitane (OSM); 1024 px: Pepo's Galata (OSM), Sait; yatay taşma yok, koordinatsız profilde harita noktası iddiası yok |
-| Next build | Geçti | 1/1 | benzetim kopyası (Production + paket 7–20) |
+| Mobil / Masaüstü | Geçti | 4/4 | 375 px: Sait (koordinatsız), Asitane (OSM); 1024 px: Pepo's Galata (OSM), Sait; yatay taşma yok, koordinatsız profilde harita noktası iddiası yok; paket 21 aynı iki profil türünü kullanır (önizleme denetiminde profil + arama + form) |
+| Next build | Geçti | 1/1 | benzetim kopyası (Production + paket 7–21) |
 | Yerel yayın benzetimi | Geçti | 59/59 | önizleme denetimi (profil, arama, form, sitemap); Production değildir |
 | Gerçek Vercel Preview | Engelli | 0/1 | Neon Preview veritabanı dal sınırı (PR #22'de de 10/10 dolu); yeniden denenmedi |
 
@@ -111,7 +111,7 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-20-906-ortak` (taban: paket 19) · K
 
 | Alan | Değer |
 |---|---|
-| Production dalı / SHA | feature/investor-v1 @ b95d284 (574 mekân, değişmedi) |
+| Production dalı / SHA | feature/investor-v1 @ 721b1a1 (PR #18 birleşti; dalda 792 kayıt; bu çalışmada dokunulmadı) |
 | Geliştirme dalı | paket/istanbul-20-906-ortak |
 | Paket numarası | 20 |
 | PR bağlantısı / Commit SHA | PR açıklamasında (dosya kendi commit SHA'sını içeremez) |
@@ -124,11 +124,12 @@ Kontrol: 2026-11-12 · Dal: `paket/istanbul-20-906-ortak` (taban: paket 19) · K
 
 | Paket | Yeni A | Yeni A-konumsuz | Yeni B1 | Kümülatif hedef | Yayın durumu |
 |---|---:|---:|---:|---:|---|
-| Production (gerçek) | — | — | — | 574 | Canlı |
-| Paket 7–15 (PR #6–15; 7–14 PR #22 birleşik adayında) | 116 | 18 | 102 | 810 | Bekliyor |
+| Production (feature/investor-v1 @ 721b1a1; paket 7–14 dahil) | — | — | — | 792 | Canlı (PR #18 birleşti) |
+| Paket 15 (PR #15) | 0 | 18 | 0 | 810 | Bekliyor (PR #14 düzeltmesine bağlı) |
 | Paket 16 (PR #19) | 16 | 45 | 0 | 871 | Hazır |
 | Paket 17 (PR #20) | 28 | 52 | 0 | 951 | Hazır |
 | Paket 18 (PR #21) | 14 | 18 | 0 | 983 | Hazır |
-| Paket 19 (yeni PR) | 11 | 39 | 0 | 1033 | Hazır |
-| Paket 20 (yeni PR) | 19 | 0 | 0 | 1052 | Hazır |
+| Paket 19 (PR #23) | 11 | 42 | 0 | 1036 | Hazır |
+| Paket 20 (PR #24) | 19 | 0 | 0 | 1055 | Hazır |
+| Paket 21 (yeni PR) | 4 | 44 | 0 | 1103 | Hazır |
 
