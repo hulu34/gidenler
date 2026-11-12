@@ -1,0 +1,32 @@
+name: Secki 172 exact release preflight and Menemen only append
+on:
+  push:
+    branches: [ops/secki-172-release-20261112]
+permissions:
+  contents: read
+jobs:
+  guarded-release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 172e9392b6da07ab63f36833501a73ec953471cc
+          path: reviewed
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Exact source, Production fingerprint and single-record plan
+        run: node release.mjs
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          GITHUB_TOKEN: ${{ github.token }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: secki-172-release-evidence
+          path: evidence/

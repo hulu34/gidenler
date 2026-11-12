@@ -1,0 +1,12 @@
+{
+  "mode": "preflight",
+  "candidate": "172e9392b6da07ab63f36833501a73ec953471cc",
+  "baselineCommit": "721b1a1a3280b2f08141af2629d322cf5c9a2e11",
+  "productionCommit": "721b1a1a3280b2f08141af2629d322cf5c9a2e11",
+  "host": "gidenler-e3dsrf0gs-hulu34.vercel.app",
+  "fingerprint": "37811a6487ca5441",
+  "baselineCount": 792,
+  "expectedCount": 793,
+  "slugs": ["menemen-besiktas"],
+  "approvedByUser": true
+}
