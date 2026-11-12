@@ -125,7 +125,9 @@ for (const { a: a0, o, puan } of secim) { const a = { ...a0, ad: cleanName(a0.ad
   if (!tur && !OVK[a.takson]) eksik.push(fam.length > 1 ? `tür belirsiz (sitede birden çok tür: ${fam.map((f) => f[0]).join(", ")})` : "kaynaklı tür yok");
   /* mükerrer (son kontrol) */
   const t = tel(a.telefonlar[0]); const p = { lat: a.lat, lng: a.lng };
-  const dup = EX.find((v) => (t.length === 10 && tel(v.phone) === t) || (fold(v.name) === fold(a.ad) && v.district === a.ilce) || (typeof v.lat === "number" && meters(v, p) < 100 && fold(v.name).split(" ")[0] === fold(a.ad).split(" ")[0]));
+  /* aynı resmî site alanı + aynı ilçe = aynı işletme (Overture'da aynı restoranın ikinci POI'si; ör. Urfa'dan / Urfadan Kebapçı). Zincir alanlarında şube ayrımı telefon/adresle yapılır. */
+  const hostOf = (u) => { try { return new URL(u).host.replace(/^www\./, ""); } catch { return null; } };
+  const dup = EX.find((v) => (!a.zincirAlan && v.website && hostOf(v.website) === a.host && v.district === a.ilce) || (t.length === 10 && tel(v.phone) === t) || (fold(v.name) === fold(a.ad) && v.district === a.ilce) || (typeof v.lat === "number" && meters(v, p) < 100 && fold(v.name).split(" ")[0] === fold(a.ad).split(" ")[0]));
   if (dup) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "çakışma", neden: [`mevcut kayıtla eşleşiyor: ${dup.slug}`] }); continue; }
   if (eksik.length || neden.length) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, site: o.final, sinif: neden.length ? "C" : "B", eksik, neden, kimlik, osm: a.osm?.ref ?? null, puan }); continue; }
   /* kayıt */
