@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {mkdirSync,readFileSync,writeFileSync} from 'node:fs';
+import {existsSync,mkdirSync,readFileSync,writeFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {execFileSync} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
@@ -59,8 +59,15 @@ try {
  evidence.security={anonymousReview:401,crossOriginReview:403,crossSiteSor:403,wrongTargetRejected:400};
  const sitemap=await request('/sitemap.xml');assert.equal(sitemap.status,200);const xml=await sitemap.text();
  const catalog=[...JSON.parse(readFileSync('../candidate/data/real/venues.json')),...JSON.parse(readFileSync('../candidate/data/real/isletme.json'))];
- assert.equal(catalog.length,793);for(const v of catalog)assert.ok(xml.includes('/mekan/'+v.slug+'/'),v.slug+' sitemap');
- evidence.sitemap={catalog:catalog.length,allPresent:true};save();
+ assert.equal(catalog.length,793);
+ // Published SEO policy excludes unverified addressless records; their profiles still exist.
+ const approvedAddressless=new Set(JSON.parse(readFileSync('../candidate/data/real/sitemap-adressiz.json')));
+ const qualified=catalog.filter(v=>{const f='../candidate/content/profiles/'+v.slug+'.json';return !!v.address||approvedAddressless.has(v.slug)||(existsSync(f)&&!!JSON.parse(readFileSync(f)).address?.value);});
+ for(const v of qualified)assert.ok(xml.includes('/mekan/'+v.slug+'/'),v.slug+' qualified sitemap');
+ const realSlugs=new Set(catalog.map(v=>v.slug));const listed=[...xml.matchAll(/<loc>https:\/\/www\.gidenler\.com\/mekan\/([^/]+)\/<\/loc>/g)].map(m=>m[1]);
+ assert.ok(listed.length>=qualified.length);assert.ok(listed.every(s=>realSlugs.has(s)),'Unknown or demo venue in sitemap');assert.equal(new Set(listed).size,listed.length);
+ assert.ok(!xml.includes('/mekan/gunaydin-beyoglu/'),'Unverified addressless venue must remain excluded');
+ evidence.sitemap={catalog:catalog.length,qualified:qualified.length,listed:listed.length,qualifiedPresent:true,unknownOrDuplicate:0,unverifiedAddresslessExcluded:true};save();
  for(const [engine,width] of [['chromium',375],['chromium',390],['chromium',1440],['webkit',390]]){
   const browser=await({chromium,webkit}[engine]).launch();const c=await browser.newContext({viewport:{width,height:width<600?844:1000},isMobile:width<600,hasTouch:width<600});
   await c.route('**/*',async route=>{const req=route.request();if(new URL(req.url()).origin!==origin)return route.abort();if(req.method()==='POST'&&new URL(req.url()).pathname==='/api/sor/')await pace();return route.continue({headers:{...req.headers(),...headers}});});
