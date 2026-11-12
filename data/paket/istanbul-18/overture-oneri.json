@@ -172,23 +172,6 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
-   "slug": "gurkan-sef-vadistanbul-sariyer",
-   "gersId": "81b53bef-5c02-4344-af92-d3bc55cf4a5e",
-   "lat": 41.108425,
-   "lng": 28.986609,
-   "guven": 0.98,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Sarıyer",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
    "slug": "umit-usta-tarihi-adana-metrelik-kebap-kadikoy",
    "gersId": "d04e38c3-5751-4f6a-9214-b44372974f32",
    "lat": 40.968636,
@@ -204,23 +187,6 @@
    "ilceSiniri": "Kadıköy",
    "telefonEslesmesi": false,
    "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
-  },
-  {
-   "slug": "poyraz-karadeniz-pidecisi-bakirkoy",
-   "gersId": "15a036a9-78c7-44dd-bced-d23b43ee6218",
-   "lat": 40.97937,
-   "lng": 28.8552,
-   "guven": 0.97,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Bakırköy",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
    "slug": "lider-doner-umraniye",

@@ -3013,6 +3013,32 @@
    "kimlik": "resmî şube sayfası jashistanbul.com: ad + telefon (http://www.jashistanbul.com/reservations/)",
    "osm": null,
    "puan": 6
+  },
+  {
+   "gersId": "81b53bef-5c02-4344-af92-d3bc55cf4a5e",
+   "ad": "Gürkan Şef Vadistanbul",
+   "ilce": "Sarıyer",
+   "site": "https://www.gurkansef.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): adres Overture metninden güvenilir biçimde çıkarılamadı (\"Azerbaycan Cd. Vadistanbul No:3\"); resmî sitede doğrulanmadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "15a036a9-78c7-44dd-bced-d23b43ee6218",
+   "ad": "Poyraz Karadeniz Pidecisi",
+   "ilce": "Bakırköy",
+   "site": "https://poyrazpide.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): adres Overture metninden güvenilir biçimde çıkarılamadı (\"Ataköy No:2\"); resmî sitede doğrulanmadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
   }
  ]
 }

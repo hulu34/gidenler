@@ -1,12 +1,12 @@
 {
  "dalga": 18,
- "A": 34,
+ "A": 32,
  "sinif": {
-  "A-konumsuz": 20,
+  "A-konumsuz": 18,
   "A": 14
  },
  "osmKaydi": 14,
- "isletmeKaydi": 20,
+ "isletmeKaydi": 18,
  "uygunAday": 814,
  "secilen": 250,
  "onEleme": {
@@ -17,7 +17,7 @@
  },
  "inceleme": {
   "906": 9,
-  "B": 197,
+  "B": 199,
   "C": 10
  },
  "incelemeNeden": {
@@ -45,40 +45,47 @@
   "OSM": 1
  },
  "ilce": {
-  "Şişli": 3,
-  "Sancaktepe": 1,
-  "Maltepe": 2,
-  "Silivri": 1,
   "Beyoğlu": 8,
   "Beşiktaş": 2,
   "Fatih": 3,
   "Kadıköy": 3,
+  "Şişli": 3,
+  "Sarıyer": 3,
+  "Sancaktepe": 1,
+  "Maltepe": 2,
+  "Silivri": 1,
   "Üsküdar": 1,
-  "Sarıyer": 4,
   "Beykoz": 1,
-  "Bakırköy": 2,
+  "Bakırköy": 1,
   "Pendik": 1,
   "Ümraniye": 1,
   "Ataşehir": 1
  },
  "tur": {
-  "Kebapçı / Ocakbaşı": 3,
-  "Mantıcı": 1,
-  "Meyhane": 2,
-  "Steakhouse": 2,
-  "İtalyan": 4,
   "Pizza": 2,
   "Sushi / Japon": 1,
   "Türk mutfağı": 3,
+  "Meyhane": 2,
   "Balık restoranı": 1,
   "Dönerci": 6,
-  "Karadeniz mutfağı": 1,
   "Burger": 1,
-  "Ciğerci": 1,
+  "İtalyan": 4,
   "Kahvaltı": 3,
-  "Pideci": 1,
-  "Asya mutfağı": 2
+  "Asya mutfağı": 2,
+  "Kebapçı / Ocakbaşı": 3,
+  "Mantıcı": 1,
+  "Steakhouse": 1,
+  "Karadeniz mutfağı": 1,
+  "Ciğerci": 1
  },
  "zincirSube": 5,
- "v906Eslesen": 0
+ "v906Eslesen": 0,
+ "kaliteDuzeltmesi": {
+  "tarih": "2026-11-12",
+  "aciklama": "Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (scripts/katalog/adres-dogrula.mjs); bulunamayanlar B'ye indi.",
+  "inenler": [
+   "gurkan-sef-vadistanbul-sariyer",
+   "poyraz-karadeniz-pidecisi-bakirkoy"
+  ]
+ }
 }
