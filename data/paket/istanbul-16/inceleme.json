@@ -1791,6 +1791,97 @@
     "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
    ],
    "neden": []
+  },
+  {
+   "gersId": "a197a49b-bc9b-488b-b160-56062a78bbbd",
+   "ad": "Sürmene Pide",
+   "ilce": "Bahçelievler",
+   "site": "https://surmenepide.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): yazılan sokak + kapı no (\"Dereboyu Cd No:5\") resmî sitede birlikte bulunamadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "d6250dae-aaa0-4597-8056-7bcb1f62aa94",
+   "ad": "Porto Balık",
+   "ilce": "Bakırköy",
+   "site": "https://portobalik.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): yazılan sokak + kapı no (\"Yeşilköy İskele Caddesi No:20\") resmî sitede birlikte bulunamadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A"
+  },
+  {
+   "gersId": "3ab38fcc-3c37-415c-ba61-d25199c9ed65",
+   "ad": "Kolcuoğlu Ocakbaşı Göktürk",
+   "ilce": "Eyüpsultan",
+   "site": "https://www.kolcuoglu.org/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): adres Overture metninden güvenilir biçimde çıkarılamadı (\"Telekom Sk. Sinasos İş Merkezi No:2/11\"); resmî sitede doğrulanmadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "3c112018-9c06-44a4-8945-0021d4a53bd2",
+   "ad": "Pizzeria La Vista",
+   "ilce": "Bahçelievler",
+   "site": "https://www.pizzerialavista.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): adres Overture metninden güvenilir biçimde çıkarılamadı (\"Çobançeşme mahallesi sanayi caddesi nish istanbul sitesi No:44\"); resmî sitede doğrulanmadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "8f7a3b27-e40e-4017-8ceb-d8eec8db1c2b",
+   "ad": "Pizza Cotta & Coffee",
+   "ilce": "Başakşehir",
+   "site": "https://www.pizzacotta.com.tr/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): adres Overture metninden güvenilir biçimde çıkarılamadı (\"Adnan Menderes Bulvari A2 Blok No:6\"); resmî sitede doğrulanmadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A-konumsuz"
+  },
+  {
+   "gersId": "79441279-cd0c-4233-bafc-69dc3180fb70",
+   "ad": "Dönerci Ali Usta",
+   "ilce": "Maltepe",
+   "site": "https://www.donercialiusta.com/iletisim.php",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): yazılan sokak + kapı no (\"Zuhal Cd No:59\") resmî sitede birlikte bulunamadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A"
+  },
+  {
+   "gersId": "892f4788-e26f-4074-bcde-3b11714479c6",
+   "ad": "Donerci Celal Usta",
+   "ilce": "Sancaktepe",
+   "site": "https://www.donercicelalusta.com/",
+   "sinif": "B",
+   "eksik": [
+    "kalite düzeltmesi (2026-11-12): yazılan sokak + kapı no (\"Osmangazi Cd No:20\") resmî sitede birlikte bulunamadı"
+   ],
+   "neden": [],
+   "duzeltme": "2026-11-12",
+   "oncekiSinif": "A"
   }
  ]
 }
