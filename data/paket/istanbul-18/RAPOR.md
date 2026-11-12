@@ -2,6 +2,8 @@
 
 Kontrol: 2026-11-11 · Dal: `paket/istanbul-18-overture` (taban: paket 17) · Kataloğa eklenmedi.
 
+**Kalite düzeltmesi (2026-11-12):** Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (`scripts/katalog/adres-dogrula.mjs`). Bulunamayan 2 A-konumsuz kayıt B'ye indi; ayrıntı `paket.json` → `kaliteDuzeltmesi` ve `inceleme.json`.
+
 **Verim düştü (%13,6).** Alt sıralardaki adayların çoğunda kapı numarası resmî kaynakta yok (141 aday).
 
 **Uygulananlar:**
@@ -19,7 +21,7 @@ Kontrol: 2026-11-11 · Dal: `paket/istanbul-18-overture` (taban: paket 17) · Ka
 - Babacan Et Lokantası (1978)
 - Kolcuoğlu Bomonti
 
-**Not:** 906 dahil testte 1 fark var. Miyabi Sushi ile 906'daki "Elbet" aynı binada ama ayrı bölümlerde (Yaren Sokak 6/14-15 ve 6/21). Ayrı işletmeler; 906 yayın adayı değil.
+**Not:** Miyabi Sushi ile 906'daki "Elbet" aynı binada, ayrı bağımsız bölümlerde (Yaren Sokak No:6/14-15 ve No:6/21; iki ayrı OSM öğesi, farklı adlar). Paket 20'deki iç kapı numarası kuralıyla 906 dahil test 28/28.
 
 **Yöntem:** Tekrar kullanılabilir döngü:
 `overture-cek.py` → `overture-aday.ts` → `overture-site-olc.mjs` → `paket-overture.mjs` (+ `elle-karar.json`, `tur-karar.json`, adres kurtarma) → `paket-rapor.mjs`
@@ -31,20 +33,20 @@ Eksenler ayrı değerlendirilir (kimlik, faaliyet, adres, tür, koordinat):
 - Her kayıtta Overture GERS kimliği, sürüm, kaynak ve lisans var.
 
 **Başarı göstergeleri:**
-- İncelenen adaylardan doğrulananlar: 34/250 (%13,6)
-- Restoran başına doğrulanmış veri alanı: %88,2 (5 eksen: kimlik, faaliyet, adres, tür, koordinat; A = 5/5, A-konumsuz = 4/5)
-- Az temsil edilen ilçelere (katalogda < 25 mekân) kazandırılan: 8
+- İncelenen adaylardan doğrulananlar: 32/250 (%12,8)
+- Restoran başına doğrulanmış veri alanı: %88,8 (5 eksen: kimlik, faaliyet, adres, tür, koordinat; A = 5/5, A-konumsuz = 4/5)
+- Az temsil edilen ilçelere (katalogda < 25 mekân) kazandırılan: 7
 
 **Tablo 1 — Genel durum**
 
 | Gösterge | Önceki durum | Yeni durum | Değişim |
 |---|---:|---:|---:|
 | Production mekân sayısı | 574 | 574 | 0 |
-| Yayını bekleyen benzersiz kayıtlar | 390 | 424 | +34 |
-| Yeni A sınıfı (bekleyen toplam) | 163 | 177 | +14 |
-| Yeni A-konumsuz (bekleyen toplam) | 125 | 145 | +20 |
-| Toplam yayın adayı (A + B1 + A-konumsuz) | 390 | 424 | +34 |
-| Yayın sonrası hedef mekân sayısı | 964 | 998 | +34 |
+| Yayını bekleyen benzersiz kayıtlar | 377 | 409 | +32 |
+| Yeni A sınıfı (bekleyen toplam) | 160 | 174 | +14 |
+| Yeni A-konumsuz (bekleyen toplam) | 115 | 133 | +18 |
+| Toplam yayın adayı (A + B1 + A-konumsuz) | 377 | 409 | +32 |
+| Yayın sonrası hedef mekân sayısı | 951 | 983 | +32 |
 
 **Tablo 2 — Araştırma ve doğrulama sonuçları (250 aday, birbirini dışlayan)**
 
@@ -55,8 +57,8 @@ Eksenler ayrı değerlendirilir (kimlik, faaliyet, adres, tür, koordinat):
 | Açık PR'larda mevcut | 0 | %0,0 |
 | 906 havuzuyla ortak | 9 | %3,6 |
 | Yeni A | 14 | %5,6 |
-| Yeni A-konumsuz | 20 | %8,0 |
-| B — eksik kanıt | 197 | %78,8 |
+| Yeni A-konumsuz | 18 | %7,2 |
+| B — eksik kanıt | 199 | %79,6 |
 | C — güvenilir değil / kapsam dışı | 10 | %4,0 |
 | Diğer elenenler | 0 | %0,0 |
 
@@ -89,38 +91,38 @@ Eksenler ayrı değerlendirilir (kimlik, faaliyet, adres, tür, koordinat):
 
 | Sorun | Etkilenen kayıt | Önem derecesi | Çözüm / sonraki işlem |
 |---|---:|---|---|
-| Koordinat doğrulanamadı | 20 | Orta | A-konumsuz; Overture noktası yalnız öneri dosyasında, şema kararı Codex'te |
-| Tam adres eksik | 125 | Yüksek (B) | iletişim sayfası derin tarama, schema.org PostalAddress |
+| Koordinat doğrulanamadı | 18 | Orta | A-konumsuz; Overture noktası yalnız öneri dosyasında, şema kararı Codex'te |
+| Tam adres eksik | 127 | Yüksek (B) | iletişim sayfası derin tarama, schema.org PostalAddress |
 | Resmî site doğrulanamadı | 7 | Orta (B) | https / ilçe kanıtı bulunursa yeniden ölçüm |
 | Mutfak türü belirsiz | 142 | Orta (B) | menü sayfası; Overture kategorisi tek başına kabul edilmez |
 | Mükerrer şüphesi | 9 | Düşük | yeni kayıt açılmadı; 906 kimliği korunur |
-| Sor ad eşleşmesi ("yüksek" → Yüksel Balık) | 1 test | Yüksek (yayın engeli) | Codex: QUERY_NOISE'a sıralama sözcükleri (CODEX-SOR-ONERISI.md) |
+| Sor ad eşleşmesi ("yüksek" → Yüksel Balık) | 1 test | Yüksek (yayın engeli) | Codex: QUERY_NOISE'a sıralama sözcükleri (CODEX-SOR-ONERISI.md); PR #22'de de yok |
 | Lisans / kaynak sorunu | 0 | — | kayıt düzeyinde Overture GERS, sürüm, kaynak, lisans; OSM atfı |
 
 **Tablo 5 — Test ve yayın hazırlığı**
 
 | Test | Sonuç | Başarılı / Toplam | Açıklama |
 |---|---|---|---|
-| TypeScript | Geçti | 1/1 | tsc --noEmit, paket 18 dalında (16–18 kodu) |
-| Katalog | Geçti | 52/52 | katalogtest; benzetim 998 mekân |
-| Mükerrer kontrolü | Geçti | 28/28 (906 dahil 27/28: aynı binada ayrı bölüm, Elbet) | restoranpakettest: Production, PR #6–17 paketleri, 906, seyrek, PR #17 Menemen; aynı site alanı + ilçe kuralı |
-| Arama | Geçti | 49/49 | aramatest; önizlemede 34 kaydın hepsi ilk 8'de |
-| Sor Gidenler | Başarısız | 321/322 | "Yüksel Balık" ad eşleşmesi; Codex önerisiyle 322/322 (docs/katalog/CODEX-SOR-ONERISI.md) |
+| TypeScript | Geçti | 1/1 | tsc --noEmit, paket 19 dalında |
+| Katalog | Geçti | 52/52 | katalogtest; benzetim (Production + paket 7–20) |
+| Mükerrer kontrolü | Geçti | 28/28 | restoranpakettest (paket 20 dalının ucunda): Production, PR #6–15 paketleri, paket 16–20'nin diğerleri, 906, seyrek, PR #17 Menemen; Miyabi–Elbet iç kapı numarası kuralıyla (paket 19 dalında) |
+| Arama | Geçti | 49/49 | aramatest + önizlemede her kayıt kendi adıyla ilk 8'de |
+| Sor Gidenler | Başarısız | 321/322 | "Yüksel Balık" ad eşleşmesi (paket 16 kaydı); Codex önerisiyle 322/322 (docs/katalog/CODEX-SOR-ONERISI.md) |
 | SEO / Sitemap | Geçti | 49/49 | seotest; önizlemede hepsi sitemap'te |
-| Mobil / Masaüstü | Geçti | 4/4 | 375 px + 1024 px; koordinatlı ve koordinatsız profil (paket 17–18 örnekleri; paket 16 ayrıca 4/4) |
-| Next build | Geçti | 1/1 | benzetim kopyası (Production + paket 7–18) |
-| Yerel yayın benzetimi | Geçti | 44/44 + 62/62 | önizleme denetimi (profil, arama, form, sitemap); Production değildir |
-| Gerçek Vercel Preview | Engelli | 0/1 | Neon Preview veritabanı dal sınırı; talimat gereği yeniden denenmedi |
+| Mobil / Masaüstü | Geçti | 4/4 | 375 px: Sait (koordinatsız), Asitane (OSM); 1024 px: Pepo's Galata (OSM), Sait; yatay taşma yok, koordinatsız profilde harita noktası iddiası yok |
+| Next build | Geçti | 1/1 | benzetim kopyası (Production + paket 7–20) |
+| Yerel yayın benzetimi | Geçti | 44/44 + 56/56 | önizleme denetimi (profil, arama, form, sitemap); Production değildir |
+| Gerçek Vercel Preview | Engelli | 0/1 | Neon Preview veritabanı dal sınırı (PR #22'de de 10/10 dolu); yeniden denenmedi |
 
 **Tablo 6 — GitHub teslim bilgileri**
 
 | Alan | Değer |
 |---|---|
-| Production dalı / SHA | feature/investor-v1 @ b95d284 |
+| Production dalı / SHA | feature/investor-v1 @ b95d284 (574 mekân, değişmedi) |
 | Geliştirme dalı | paket/istanbul-18-overture |
 | Paket numarası | 18 |
 | PR bağlantısı / Commit SHA | PR açıklamasında (dosya kendi commit SHA'sını içeremez) |
-| Yeni benzersiz kayıt sayısı | 34 |
+| Yeni benzersiz kayıt sayısı | 32 |
 | Preview bağlantısı / engel | Engelli: Neon dal sınırı |
 | Production durumu | Dokunulmadı |
 | Yayına engel olan konu | PR #14 + Codex Sor düzeltmesi |
@@ -129,10 +131,11 @@ Eksenler ayrı değerlendirilir (kimlik, faaliyet, adres, tür, koordinat):
 
 | Paket | Yeni A | Yeni A-konumsuz | Yeni B1 | Kümülatif hedef | Yayın durumu |
 |---|---:|---:|---:|---:|---|
-| Production | — | — | — | 574 | Canlı |
-| Paket 7–15 (PR #6–15) | 116 | 18 | 102 | 810 | Bekliyor |
-| Paket 16 (PR #19) | 19 | 49 | 0 | 878 | Hazır |
-| Paket 17 | 28 | 58 | 0 | 964 | Hazır |
-| Paket 18 | 14 | 20 | 0 | 998 | Hazır |
-| Paket 19 (planlanan) | — | — | 0 | — | Planlanıyor |
+| Production (gerçek) | — | — | — | 574 | Canlı |
+| Paket 7–15 (PR #6–15; 7–14 PR #22 birleşik adayında) | 116 | 18 | 102 | 810 | Bekliyor |
+| Paket 16 (PR #19) | 16 | 45 | 0 | 871 | Hazır |
+| Paket 17 (PR #20) | 28 | 52 | 0 | 951 | Hazır |
+| Paket 18 (PR #21) | 14 | 18 | 0 | 983 | Hazır |
+| Paket 19 (yeni PR) | 11 | 39 | 0 | 1033 | Hazır |
+| Paket 20 (yeni PR) | 19 | 0 | 0 | 1052 | Hazır |
 
