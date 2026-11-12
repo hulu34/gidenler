@@ -60,13 +60,16 @@ ok("slug ve OSM kaydı paket içinde tekil", new Set(W.map((v) => v.slug)).size 
 ok("katalog + karşılaştırma paketleriyle slug/OSM çakışması yok", W.every((v) => !all.some((o) => o.slug === v.slug || o.ref === v.ref)));
 ok("aynı ad 150 m içinde ikinci kayıt yok", W.every((v) => ![...all, ...W].some((o) => o !== v && typeof o.lat === "number" && fold(o.name) === fold(v.name) && meters(v as { lat: number; lng: number }, o as { lat: number; lng: number }) < 150)));
 /* AVM / yemek katı: iki FARKLI markanın kendi resmî şube listesinden gelen şubeleri aynı binada olabilir; aynı marka aynı binada olamaz */
+const tel = (p?: string) => (p ?? "").replace(/\D/g, "").slice(-10);
 const listed = (x: RealVenueRecord) => /resmî şube listesi/.test(x.verification ?? "");
 /* aynı otel/kompleks: iki FARKLI restoranın ikisi de MICHELIN Rehberi 2026 seçkisinde ayrı kayıtsa (ör. Divan İstanbul'da Lokanta by Divan + Maromi) ayrı mekândır */
 const MICH = new Set((JSON.parse(readFileSync("data/katalog/michelin-istanbul-2026.json", "utf8")).restoranlar as { ad: string }[]).map((r) => fold(r.ad)));
 const michelinPair = (v: RealVenueRecord, o: RealVenueRecord) => MICH.has(fold(v.name)) && MICH.has(fold(o.name)) && fold(v.name) !== fold(o.name);
-const mallOk = (v: RealVenueRecord, o: RealVenueRecord) => (listed(v) && listed(o) && fold(v.name).split(" ")[0] !== fold(o.name).split(" ")[0]) || michelinPair(v, o);
+/* aynı otel/kompleks içinde ayrı restoranlar (ör. Wyndham Grand Kalamış: Perran Ocakbaşı + Ouzo Roof): ad, telefon ve resmî site alanı ÜÇÜ de farklıysa ayrı mekândır */
+const host = (u?: string) => { try { return new URL(u!).host.replace(/^www\./, ""); } catch { return null; } };
+const separateBiz = (v: RealVenueRecord, o: RealVenueRecord) => fold(v.name).split(" ")[0] !== fold(o.name).split(" ")[0] && !!v.phone && !!o.phone && tel(v.phone) !== tel(o.phone) && !!host(v.website) && !!host(o.website) && host(v.website) !== host(o.website);
+const mallOk = (v: RealVenueRecord, o: RealVenueRecord) => (listed(v) && listed(o) && fold(v.name).split(" ")[0] !== fold(o.name).split(" ")[0]) || michelinPair(v, o) || separateBiz(v, o);
 if (!B1) ok("aynı bina adresinde (60 m) ikinci kayıt yok (farklı markaların resmî listeli AVM şubeleri hariç)", W.every((v) => ![...all, ...W].some((o) => o !== v && typeof o.lat === "number" && meters(v as { lat: number; lng: number }, o as { lat: number; lng: number }) < 60 && addressKey(undefined, undefined, o.address) === addressKey(undefined, undefined, v.address) && !mallOk(v, o))));
-const tel = (p?: string) => (p ?? "").replace(/\D/g, "").slice(-10);
 ok("aynı telefonla ikinci kayıt yok", W.every((v) => tel(v.phone).length < 10 || ![...all, ...W].some((o) => o !== v && tel(o.phone) === tel(v.phone))));
 const chains = P.eklenen.filter((e: { zincir: string | null }) => e.zincir);
 ok(`zincir şubeleri (${chains.length}): her biri resmî şube sayfası kanıtlı ve slug'ında şube ayrımı`, chains.every((e: { kanit: string[]; slug: string; sube: string | null }) => e.kanit.some((k) => k.startsWith("resmî şube sayfası") || k.startsWith("resmî şube listesi") || k.startsWith("resmî işletmeci listesi")) && !!e.sube && e.slug.includes(e.sube.toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, "-").split("-")[0])));
@@ -77,6 +80,16 @@ const MW = (W as MRec[]).filter((v) => v.michelin);
 if (MW.length) {
   ok(`Michelin kayıtları (${MW.length}): ayrım ve Yeşil Yıldız rehber dosyasıyla birebir`, MW.every((v) => { const r = MR.get(v.michelin!.url); return !!r && r.ayrim === v.michelin!.ayrim && !!r.yesilYildiz === !!v.michelin!.yesilYildiz && v.michelin!.yil === 2026; }));
   ok("yıldız ifadesi yalnız yıldızlı restoranın kanıtında", MW.every((v) => /Yıldız/.test((v.verification ?? "").split("·")[0]) === ["iki_yildiz", "bir_yildiz"].includes(v.michelin!.ayrim) || !!v.michelin!.yesilYildiz));
+}
+/* OVERTURE kaynaklı kayıtlar (paket 16+): kayıt düzeyinde kaynak, lisans ve atıf korunur; Overture koordinatı kayda yazılmaz */
+type ORec = RealVenueRecord & { overture?: { gersId: string; release: string; lisans: string[]; kaynaklar: string[]; guven: number }; kaliteSinifi?: string };
+const OW = (W as ORec[]).filter((v) => v.overture);
+if (OW.length) {
+  ok(`Overture kayıtları (${OW.length}): GERS kimliği, sürüm, kaynak ve lisans var`, OW.every((v) => /^[0-9a-f-]{20,}$/i.test(v.overture!.gersId) && !!v.overture!.release && v.overture!.lisans.length > 0 && v.overture!.lisans.every((l) => ["CDLA-Permissive-2.0", "Apache-2.0", "CC0-1.0"].includes(l)) && v.overture!.kaynaklar.length > 0));
+  ok("Overture kimliği paket içinde tekil", new Set(OW.map((v) => v.overture!.gersId)).size === OW.length);
+  ok("Overture güveni tek başına kanıt değil: her kayıtta resmî site ölçümü var", OW.every((v) => /resmî (site|şube sayfası) [^ ]+: ad \+ (telefon|sokak)/.test(v.verification ?? "")));
+  ok("koordinat yalnız OSM kaydından (Overture noktası kayda yazılmadı)", OW.every((v) => (v.kaliteSinifi === "A" && /^(node|way|relation)\/\d+$/.test(v.ref) && typeof v.lat === "number") || (v.kaliteSinifi === "A-konumsuz" && v.lat === undefined && v.location === undefined)));
+  ok("paket açıklamasında Overture ve OSM atfı var", /Overture Maps Foundation/.test(P._aciklama ?? "") && /OpenStreetMap/.test(P._aciklama ?? ""));
 }
 ok("ilk 456 kayıt değişmedi", (venues as RealVenueRecord[]).filter((v) => (v.wave ?? 0) < 2).length === 456);
 console.log(`\nrestoran paketi ${D}: ${pass} geçti, ${fail} kaldı`);

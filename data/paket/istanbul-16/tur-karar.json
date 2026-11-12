@@ -1,0 +1,205 @@
+{
+ "_aciklama": "Paket 16 kalite turu: türü yalnız Overture kategorisinden gelen 34 kayıt resmî sitenin başlık/açıklama/menüsüyle yeniden doğrulandı (2026-11-11). Kısa ifade ölçümdür; sayfa içeriği saklanmadı.",
+ "kararlar": {
+  "15be6591-0c3d-4d1f-b46f-06c47dee19f8": {
+   "ad": "Saraykapı Restoran",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site açıklaması: \"Sac Tava, Döner, Lahmacun\""
+  },
+  "7d45d9c3-b11c-4b47-a9b6-de279c58f399": {
+   "ad": "Şanlıurfa Gül",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Adana & Urfa Kebap ve Lahmacun\""
+  },
+  "e5ae7663-606b-4902-ae28-937224a50fda": {
+   "ad": "Mmy Tantuni",
+   "kind": "Tantuni",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Tantuni Tutkusu\""
+  },
+  "a4eee865-8c72-4968-9357-707a4783d4f3": {
+   "ad": "Beykent Saray Sac Tava",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site menüsü: sac tava, kebap, pide, döner"
+  },
+  "3f6aaebe-c8f7-4908-ad84-42bcd6f19567": {
+   "ad": "Baykuru",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"çayeli fasülye\""
+  },
+  "c3bd2a25-e2bb-4eff-9fde-bfc0b6b293dd": {
+   "ad": "Sosta Restaurant Mangalbaşı",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Sosta Mangalbaşı\"; menü: et, ızgara"
+  },
+  "d8aaf7e0-758c-4b44-bf06-3f44e62d989f": {
+   "ad": "Aydınlar İskender",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site menüsü: iskender, döner, köfte, pide"
+  },
+  "1af70c3e-3257-4623-97e8-48a7862d2482": {
+   "ad": "Köftecibo",
+   "kind": "Köfteci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Yenibosna Köfteci\""
+  },
+  "9915ef8a-ede5-4b1f-a1fe-e8d3195833b9": {
+   "ad": "Özel Köfte",
+   "kind": "Köfteci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site menüsü: köfte"
+  },
+  "8b9abb96-e0b7-407c-9866-c4aad09a74e5": {
+   "ad": "Bakirkoy Koftecisi",
+   "kind": "Köfteci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Köfte Bizde Yenir\""
+  },
+  "ab89be4e-d511-4e52-a651-387d465810b6": {
+   "ad": "Anam Mantı",
+   "kind": "Mantıcı",
+   "cuisine": [
+    "turkish",
+    "dumplings"
+   ],
+   "ifade": "resmî site başlığı: \"El Açması Mantı, Gözleme & Ev Yemekleri\""
+  },
+  "a4531f0d-12eb-4e32-ba0c-4d0505f2e57e": {
+   "ad": "Konyalı Ferdi Usta Ortaköy",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Konya’dan Ortaköy’e Bir Lezzet Hikâyesi\"; menü: kebap"
+  },
+  "23793cd1-b1c3-4933-8f4a-8db82d74faf9": {
+   "ad": "Antakya Restaurant",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Türk Mutfağı, Beyazıt\""
+  },
+  "15708614-0d1a-424c-a4e4-627d0a13732e": {
+   "ad": "The Dubai Et Mangal",
+   "kind": "Steakhouse",
+   "cuisine": [
+    "steak_house"
+   ],
+   "ifade": "resmî site başlığı: \"İstanbul’un En İyi Et Restaurant’ı\""
+  },
+  "cf251245-3bdb-4fa0-be32-7e2a26787cd4": {
+   "ad": "Gürem İşkembe",
+   "kind": "Çorbacı",
+   "cuisine": [
+    "soup"
+   ],
+   "ifade": "resmî site başlığı: \"Bir kase çorba. Koca bir gelenek.\""
+  },
+  "baaaddfc-3a45-4f4f-b853-13e612384bad": {
+   "ad": "Çeşmidil Cafe & Restaurant",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site başlığı: \"Çeşmidil Kahvaltı\""
+  },
+  "540c2371-13d9-4854-b6ff-914bfd95c208": {
+   "ad": "Hükümran Sofrası",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Aile Mangalbaşı / Restaurant\""
+  },
+  "c8340415-2d35-4dd8-9632-019055d8b8ba": {
+   "ad": "Bi'tas Çorba",
+   "kind": "Çorbacı",
+   "cuisine": [
+    "soup"
+   ],
+   "ifade": "resmî site başlığı: \"Sultangazi’nin meşhur çorbacısı\""
+  },
+  "0da820a7-e297-404d-99d1-70186065016f": {
+   "ad": "Sütis",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site menüsü: kebap, kahvaltı, döner, pide"
+  },
+  "79441279-cd0c-4233-bafc-69dc3180fb70": {
+   "ad": "Dönerci Ali Usta",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site menüsü: döner"
+  },
+  "e6fe1ab3-b5c2-40e3-b37d-4e535b4a915e": {
+   "ad": "Pizza Grande",
+   "kind": "Pizza",
+   "cuisine": [
+    "pizza"
+   ],
+   "ifade": "resmî site başlığı: \"Pizza Grande, Ekşi Maya\""
+  },
+  "f9918ff1-08d5-4942-ae87-8534cc3c08e6": {
+   "ad": "Nur Abla Karadeniz Supper",
+   "kind": "Karadeniz mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Gerçek Karadeniz Sofrası\""
+  },
+  "874a4088-8116-4eec-8073-52b03c889873": {
+   "ad": "Urfa'dan Kebapcı",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Kebap, Lahmacun ve Pide\""
+  },
+  "e3b4fd59-15cd-4664-9770-291601e64549": {
+   "ad": "Esto Restaurant",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Authentic Turkish Dining\""
+  }
+ }
+}
