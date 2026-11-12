@@ -29,7 +29,6 @@ jobs:
       BETTER_AUTH_URL: http://localhost:3150
       GOOGLE_CLIENT_ID: isolated-invalid
       GOOGLE_CLIENT_SECRET: isolated-invalid
-      NIGHT_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/gidenler-browser/package.json
     steps:
       - uses: actions/checkout@v4
         with:
@@ -74,6 +73,8 @@ jobs:
           npm install --prefix "$RUNNER_TEMP/gidenler-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
           "$RUNNER_TEMP/gidenler-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
       - name: Chromium and WebKit mobile simulations
+        env:
+          NIGHT_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/gidenler-browser/package.json
         run: node scripts/night-browser-check.mjs
       - uses: actions/upload-artifact@v4
         if: always()
