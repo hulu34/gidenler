@@ -1,0 +1,127 @@
+{
+ "slug": "menemen-besiktas",
+ "_kaynak_notu": "Kaynaklar: işletmenin resmî Instagram hesabı (@menemenbreakfast; biyografi ve gönderi açıklamaları, 12.11.2026) ve işletmenin resmî sitesinin (menemenbesiktas.com) Internet Archive'daki 20.01.2024 kopyası. Site bugün yayında değil (alan adı park sayfasına yönleniyor). Menü ürünleri, kategorileri ve açıklamaları arşiv kopyasından; arşivdeki fiyatlar 2024 tarihli olduğu için yazılmadı. Telefon ve adres eklenmedi: arşivdeki telefon (0533 284 74 08) katalogdakiyle (0532 676 31 96) çelişiyor; adres katalogdaki kayıtla aynı. Fotoğraf yok: işletmenin yazılı onayı olmadan Instagram ya da site görselleri kopyalanmaz. Video: YouTube oEmbed ile doğrulandı, gömmeye açık; açıklamada #reklam etiketi var. Google verisi kullanılmadı.",
+ "description": {
+  "value": "Beşiktaş Sinanpaşa'da, Şair Veysi Sokağı'nda bir kahvaltıcı. Menünün merkezinde Samsun usulü çakallı menemen ve çeşitleri var; yanında kahvaltı ve peynir tabakları, yumurta ve tost çeşitleri sunuluyor.",
+  "provider": "official_site",
+  "url": "https://web.archive.org/web/20240120112231/https://menemenbesiktas.com/",
+  "checkedAt": "2026-11-12"
+ },
+ "instagram": {
+  "value": "menemenbreakfast",
+  "provider": "official_social",
+  "url": "https://www.instagram.com/menemenbreakfast/",
+  "checkedAt": "2026-11-12"
+ },
+ "hours": {
+  "value": "09:00-16:00",
+  "provider": "official_social",
+  "url": "https://www.instagram.com/menemenbreakfast/",
+  "checkedAt": "2026-11-12"
+ },
+ "notes": [
+  {
+   "value": "Menü, işletmenin resmî sitesinin 20 Ocak 2024 tarihli arşiv kopyasından alındı; site şu an yayında değil. Fiyatlar güncel olarak doğrulanamadığı için gösterilmiyor.",
+   "provider": "official_site",
+   "url": "https://web.archive.org/web/20240120112231/https://menemenbesiktas.com/",
+   "checkedAt": "2026-11-12"
+  },
+  {
+   "value": "Resmî Instagram hesabına göre Galata'da da şubesi var; iki şube de 09:00-16:00 arası açık.",
+   "provider": "official_social",
+   "url": "https://www.instagram.com/menemenbreakfast/",
+   "checkedAt": "2026-11-12"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://web.archive.org/web/20240120112231/https://menemenbesiktas.com/",
+  "checkedAt": "2026-11-12",
+  "pricesPublished": false,
+  "sections": [
+   {
+    "title": "Kahvaltı",
+    "items": [
+     { "name": "Kahvaltı Tabağı", "description": "Katırlıköyü siyah zeytin, yeşil zeytin, özel yardımcı beyaz peynir, tel peynir, kaşar peyniri, bal, tereyağı, Nutella, 2 çeşit reçel, turşu, yumurta (tercihinize göre göz göz veya çırpılmış)." },
+     { "name": "Peynir Tabağı", "description": "Özel yardımcı beyaz peynir, tel peynir, eski kaşar, kaşar peyniri." },
+     { "name": "Tatlı Tabağı", "description": "Fıstık ezmesi, Nutella, bal, tereyağı, seçeceğiniz 2 çeşit reçel." },
+     { "name": "Söğüş", "description": "Domates, salatalık, sivri biber, maydanoz; isteğe göre nar ekşisi ve zeytinyağı ile servis edilir." },
+     { "name": "Sahanda Sucuk", "description": "Tereyağında özel Tokat bez sucuk." }
+    ]
+   },
+   {
+    "title": "Menemen Çeşitleri",
+    "items": [
+     { "name": "Menemen", "description": "Klasik Samsun çakallı menemen. Beyaz peynir, siyah/yeşil zeytin ve turşu ile servis edilir." },
+     { "name": "Sucuklu Menemen", "description": "Beyaz peynir, siyah/yeşil zeytin ve turşu ile servis edilir." },
+     { "name": "Kavurmalı Menemen", "description": "Beyaz peynir, siyah/yeşil zeytin ve turşu ile servis edilir." },
+     { "name": "Pastırmalı Menemen", "description": "Beyaz peynir, siyah/yeşil zeytin ve turşu ile servis edilir." },
+     { "name": "Yumurtasız Menemen", "description": "Beyaz peynir, siyah/yeşil zeytin ve turşu ile servis edilir." }
+    ]
+   },
+   {
+    "title": "Yumurta Çeşitleri",
+    "items": [
+     { "name": "Peynirli Yumurta", "description": "Özel yardımcı beyaz peynir, parmesan, köy yumurtası." },
+     { "name": "Kahvaltı Yumurta", "description": "Çamlıdağ kavurma, köy yumurtası." },
+     { "name": "Sucuklu Yumurta", "description": "Özel Tokat bez sucuk, köy yumurtası." }
+    ]
+   },
+   {
+    "title": "Tost Çeşitleri",
+    "items": [
+     { "name": "Bol Kaşarlı Tost" },
+     { "name": "Sucuk Kaşarlı Tost" },
+     { "name": "Kavurma Kaşarlı Tost" },
+     { "name": "Beyaz Peynir Domatesli Tost" }
+    ]
+   },
+   {
+    "title": "Ekstralar",
+    "items": [
+     { "name": "Katırlıköyü siyah zeytin" },
+     { "name": "Yeşil zeytin" },
+     { "name": "Yardımcı beyaz peynir" },
+     { "name": "Kaşar peyniri" },
+     { "name": "Nutella" },
+     { "name": "Bal" },
+     { "name": "Tereyağı" },
+     { "name": "Fıstık ezmesi" },
+     { "name": "Vişne reçeli" },
+     { "name": "Portakal reçeli" },
+     { "name": "Kayısı reçeli" },
+     { "name": "Çilek reçeli" },
+     { "name": "Süt reçeli" }
+    ]
+   },
+   {
+    "title": "İçecekler",
+    "items": [
+     { "name": "Kestane Su 33 cl" },
+     { "name": "Kestane Su 75 cl" },
+     { "name": "Özerhisar Ayran" },
+     { "name": "Coca-Cola" },
+     { "name": "Fanta" },
+     { "name": "Sprite" },
+     { "name": "Soda" },
+     { "name": "Schweppes" },
+     { "name": "Taze sıkılmış portakal suyu" },
+     { "name": "Limonata" },
+     { "name": "Küçük çay" },
+     { "name": "Büyük çay" },
+     { "name": "Türk kahvesi" },
+     { "name": "Filtre kahve" },
+     { "name": "Termos çay" }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=e6OmpzizSoo",
+   "credit": "Ayaküstü Lezzetler · Haziran 2024 · Menemen bölümü 04:22 · reklam etiketli",
+   "category": "influencer",
+   "sponsored": true
+  }
+ ]
+}
