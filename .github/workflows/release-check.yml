@@ -1,13 +1,13 @@
-name: Approved 824613e Production append and verification
+name: Production public 792 venue browser verification
 on:
   push:
-    branches: [ops/paket-7-14-yayin]
+    branches: [ops/paket-7-14-canli-kontrol]
 permissions:
   contents: read
 jobs:
-  publish:
+  public-site:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,13 +20,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Exact approved tree and guarded INSERT ONLY Production append
-        run: node production-publish.mjs
-        env:
-          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
-          GITHUB_TOKEN: ${{ github.token }}
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Public live catalog and mobile desktop verification
+        run: node live-check.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: production-721b1a1-release-evidence
-          path: publish-evidence/
+          name: live-721b1a1-public-site
+          path: live-evidence/
