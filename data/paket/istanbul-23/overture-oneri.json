@@ -1,0 +1,40 @@
+{
+ "_aciklama": "A-konumsuz kayıtlar için Overture Maps Places noktası (sürüm 2026-10-21.0). KAYDA YAZILMADI. Atıf: © Overture Maps Foundation; kaynak başına lisans (Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0).",
+ "oneriler": [
+  {
+   "slug": "sushico-tuzla",
+   "gersId": "e11a88b5-b6e3-4203-988c-497c5cb82895",
+   "lat": 40.816456,
+   "lng": 29.315407,
+   "guven": 0.77,
+   "kaynaklar": [
+    "Foursquare",
+    "Overture"
+   ],
+   "lisans": [
+    "Apache-2.0",
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Tuzla",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "cluster-sisli",
+   "gersId": "f63e8f74-dd38-45c2-bd43-143bb6bc954b",
+   "lat": 41.051086,
+   "lng": 28.995903,
+   "guven": 0.8,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "dalga": 23,
+ "A": 4,
+ "sinif": {
+  "A-konumsuz": 2,
+  "A": 2
+ },
+ "osmKaydi": 2,
+ "isletmeKaydi": 2,
+ "uygunAday": 68,
+ "secilen": 68,
+ "onEleme": {
+  "kanitsiz": 0,
+  "spamPark": 0,
+  "kafeBar": 0,
+  "acilmadi": 0
+ },
+ "inceleme": {
+  "C": 23,
+  "B": 41
+ },
+ "incelemeNeden": {
+  "kapı numarası resmî kaynakta doğrulanmadı": 27,
+  "kaynaklı tür yok": 30,
+  "zincir": 20,
+  "tür yalnız Overture kategorisinde": 13,
+  "adres resmî kaynakta doğrulanmadı": 30,
+  "tür belirsiz": 2,
+  "ilçe resmî sitede geçmiyor": 1,
+  "üniversite kafeteryası": 1,
+  "yazılım firması sitesi; restoran değil": 1,
+  "büfe; restoran kapsamı dışı": 1
+ },
+ "turKaynagi": {
+  "resmî site": 4
+ },
+ "ilce": {
+  "Tuzla": 1,
+  "Kadıköy": 1,
+  "Şişli": 1,
+  "Beşiktaş": 1
+ },
+ "tur": {
+  "Sushi / Japon": 2,
+  "Pizza": 1,
+  "Burger": 1
+ },
+ "zincirSube": 4,
+ "v906Eslesen": 0
+}

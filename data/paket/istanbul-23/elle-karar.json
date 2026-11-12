@@ -1,0 +1,20 @@
+{
+ "_aciklama": "Paket 23 elle kararlar (2026-11-12).",
+ "kararlar": {
+  "b3986847-5804-4f55-b457-2897f814aed6": {
+   "ad": "Galatasaray Üniversitesi Kafeterya",
+   "sinif": "C",
+   "neden": "üniversite kafeteryası (kurum sitesi); restoran kapsamı dışı"
+  },
+  "a9e3e3c9-323a-43bb-89fe-a62eaa7eef50": {
+   "ad": "Sumo Yazılım ve Danışmanlık",
+   "sinif": "C",
+   "neden": "yazılım firması sitesi; restoran değil"
+  },
+  "3ca167f3-c03d-4a99-b814-ebb979bd7c95": {
+   "ad": "Marmaris Büfe",
+   "sinif": "C",
+   "neden": "büfe; restoran kapsamı dışı"
+  }
+ }
+}
