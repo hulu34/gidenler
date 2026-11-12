@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { fold, meters, siteKey } from "../../lib/katalog/aday.ts";
 import { districtOf } from "../../lib/katalog/geo.ts";
 import { slugify } from "../osm-select.mjs";
+import { ovParse, ovAdres } from "./ov-adres.mjs";
 const argv = process.argv.slice(2); const sep = argv.indexOf("--");
 const [dir, waveS, tarih, adayP, olcP, ilceP, nS, osmP] = argv.slice(0, sep); const existing = argv.slice(sep + 1);
 const wave = Number(waveS), N = Number(nS); const J = (p) => JSON.parse(readFileSync(p, "utf8"));
@@ -55,9 +56,15 @@ const GASTRO = U(/\b([şs]ef|chef|fine dining|tad[ıi]m men[üu]|tasting menu|ga
 const IKON = U(/\b(lokanta|ocakba[şs][ıi]|bal[ıi]k|meyhane|kebap|esnaf|tarihi|since|18\d\d|19\d\d|kurulu[şs]|ustas[ıi]|usta)\b/i);
 
 /* 1–3: uygunluk ve seçim */
-const HARIC = new Set(process.env.HARIC ? J(process.env.HARIC) : []); /* önceki paketlerde incelenmiş adaylar (sonuçları ne olursa olsun) yeniden seçilmez */
+const HARIC = new Set(process.env.HARIC ? J(process.env.HARIC) : []);
+/* SECIM (paket 19+): yalnız bu gersId listesi yeniden değerlendirilir (B havuzu yükseltme); HARIC uygulanmaz */
+const SECIM = process.env.SECIM ? new Set(J(process.env.SECIM)) : null;
+/* V906 (paket 20+): 906 dalıyla ortak adaylar 906 kimliği (slug + OSM ref) KORUNARAK yeniden doğrulanır; ikinci profil açılmaz */
+const V906M = process.env.V906 ? new Map(J(process.env.V906).map((v) => [v.slug, v])) : null; /* önceki paketlerde incelenmiş adaylar (sonuçları ne olursa olsun) yeniden seçilmez */
 const elig = [], skip = { kanitsiz: 0, spamPark: 0, kafeBar: 0, acilmadi: 0 };
-for (const a of A) { const o = O[a.id]; if (!o || HARIC.has(a.id)) continue;
+for (const a of A) { const o0 = O[a.id]; if (!o0 || (SECIM ? !SECIM.has(a.id) : HARIC.has(a.id))) continue;
+  /* derin ölçüm (b-derin-olc.mjs): iletişim/hakkımızda sayfalarında telefon ya da ilçe bulunduysa ölçüme eklenir */
+  const dz = ADRK[a.id]?.derin; const o = dz ? { ...o0, telOk: o0.telOk || !!dz.telSayfa, ilceOk: o0.ilceOk || !!dz.ilceSayfa } : o0;
   if (!o.status || o.status >= 400) { skip.acilmadi++; continue; }
   if (o.spam || o.park) { skip.spamPark++; continue; }
   if (!(o.nameOk && (o.telOk || o.streetOk))) { skip.kanitsiz++; continue; }
@@ -72,6 +79,10 @@ elig.sort((x, y) => y.puan - x.puan || y.a.guven - x.a.guven);
 const perHost = {}; const secim = [];
 for (const x of elig) { if (secim.length >= N) break; const h = x.a.host; if ((perHost[h] = (perHost[h] ?? 0) + 1) > 3) continue; secim.push(x); }
 
+/* Overture adres metninden sokak + kapı no (paket 19 düzeltmesi): sokak türü sözcüğü (Cad./Sok./Bulvar/Yolu/Asf....) kapı numarasından HEMEN önce gelmeli.
+   Eski tembel desen "Başakşehir 1. Etap ... No:54" metninden "Başakşehir No:1" üretebiliyordu.
+   ADRES_DOGRULAMA verilirse yazılacak sokak + kapı no resmî sitede BİRLİKTE aranmış olmalı (adres-dogrula.mjs); bulunmazsa adres yazılmaz. */
+const ADRD = process.env.ADRES_DOGRULAMA ? J(process.env.ADRES_DOGRULAMA) : null;
 /* 4: derin sınıflandırma */
 const taken = new Set(EX.map((v) => v.slug)), exRef = new Set(EX.map((v) => v.ref)), exTel = new Set(EX.map((v) => tel(v.phone)).filter((t) => t.length === 10));
 const TURK = (() => { try { return J(`${dir}/tur-karar.json`).kararlar; } catch { return {}; } })();
@@ -88,30 +99,35 @@ for (const { a: a0, o, puan } of secim) { const a = { ...a0, ad: cleanName(a0.ad
   const subeDuzeyi = !a.zincirAlan || o.telOk || (o.streetOk && o.noOk);
   if (!subeDuzeyi) neden.push("zincir: şube düzeyinde telefon/kapı no eşleşmesi yok");
   /* koordinat: yalnız OSM kaydı (restoran/fast food) */
-  const osmE0 = a.osm && OSMR.get(a.osm.ref);
+  const v9 = a.v906 && V906M ? V906M.get(a.v906) : null;
+  const v9Ok = v9 && v9.district === a.ilce && /^(node|way)\//.test(v9.ref) && (v9.ref === a.osm?.ref || (tel(v9.phone).length === 10 && a.telefonlar.some((x) => tel(x) === tel(v9.phone))));
+  const osmE0 = v9Ok ? OSMR.get(v9.ref) : a.osm && OSMR.get(a.osm.ref);
   /* OSM eşleşmesi sıkı: telefon aynı ya da yer adı/genel kelime dışında ortak ad kelimesi (ör. yalnız "Kumkapı" ortaklığı yetmez) */
   const osmName = osmE0 ? (osmE0.tags.name ?? osmE0.tags["name:en"] ?? "") : ""; const ta = tok(a.ad), to = tok(osmName);
   const osmTelOk = osmE0 && tel(osmE0.tags.phone ?? osmE0.tags["contact:phone"]) === tel(a.telefonlar[0]) && tel(a.telefonlar[0]).length === 10;
   const osmNameOk = ta.length > 0 && to.length > 0 && ta.filter((w) => to.includes(w)).length >= Math.min(2, ta.length, to.length);
-  const osmE = osmE0 && (osmTelOk || osmNameOk) ? osmE0 : null;
+  const osmE = osmE0 && (v9Ok || osmTelOk || osmNameOk) ? osmE0 : null;
+  const osmRef = v9Ok ? v9.ref : a.osm?.ref;
   const osmOk = osmE && ["restaurant", "fast_food"].includes(osmE.tags.amenity);
   if (ELLE[a.id]) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, site: o.final, sinif: ELLE[a.id].sinif, eksik: ELLE[a.id].sinif === "B" ? [ELLE[a.id].neden] : [], neden: ELLE[a.id].sinif === "C" ? [ELLE[a.id].neden] : [], elle: true }); continue; }
-  if (a.v906) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "906", neden: [`906 havuzundaki kayıtla ortak: ${a.v906} (mevcut kimliği koruyarak paket 13 yöntemiyle yeniden doğrulanmalı)`] }); continue; }
-  if (osmOk && exRef.has(a.osm.ref)) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "çakışma", neden: [`OSM kaydı katalogda/pakette: ${a.osm.ref}`] }); continue; }
+  if (a.v906 && V906M && !v9Ok) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "B", eksik: [`906 eşleşmesi doğrulanmadı (${a.v906}: ilçe ya da OSM kaydı/telefon uyuşmuyor); ayrı işletme olabilir, elle bakılmalı`], neden: [], v906: a.v906 }); continue; }
+  if (v9Ok && !osmOk) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "B", eksik: [`906 kimliğinin OSM öğesi (${v9.ref}) güncel OSM çekiminde restoran olarak yok; kimlik korunarak yazılamaz`], neden: [], v906: a.v906 }); continue; }
+  if (a.v906 && !V906M) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "906", neden: [`906 havuzundaki kayıtla ortak: ${a.v906} (mevcut kimliği koruyarak paket 13 yöntemiyle yeniden doğrulanmalı)`] }); continue; }
+  if (osmOk && exRef.has(osmRef)) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "çakışma", neden: [`OSM kaydı katalogda/pakette: ${osmRef}`] }); continue; }
   /* adres */
   let adres = null, adresKaynak = null;
   const ovAdr = (a.adres ?? "").replace(/\s+/g, " ").trim();
   const noNorm = (s) => s.replace(/\bNo\s*[:.]?\s*/i, "No:").replace(/^(.*?)(\d+[A-Za-z]?(?:\/\d+[A-Za-z]?)?)$/, (m, p1, p2) => /No:/.test(m) ? m : `${p1}No:${p2}`);
   if (osmOk && osmE.tags["addr:street"] && /\d/.test(osmE.tags["addr:housenumber"] ?? "")) { adres = `${osmE.tags["addr:street"]} No:${osmE.tags["addr:housenumber"]}`; adresKaynak = "OSM kaydı (addr:street + addr:housenumber)" + (o.streetOk ? " + resmî sitede sokak" : ""); }
-  else if (o.streetOk && o.noOk) {
-    const seg = ovAdr.split(",").map((x) => x.trim()).find((x) => /(cad|cd|sok|sk|bulvar|blv|yolu|yokuş|meydan|sokağı|caddesi)/i.test(x) && /\d/.test(x));
-    const m = seg && seg.match(/^(.*?)(?:\s*No\s*[:.]?\s*|\s+)(\d+[A-Za-z]?(?:\s*\/\s*[0-9A-Za-z]+)?)\b.*$/i);
-    if (m && m[1].trim().length >= 4) { adres = `${m[1].trim().replace(/[,.]$/, "")} No:${m[2].replace(/\s+/g, "")}`; adresKaynak = "resmî sitede sokak + kapı no (adres metni Overture)"; } }
+  else if ((o.streetOk && o.noOk) || ADRD?.[a.id]?.ok) { /* ADRES_DOGRULAMA: yazılacak sokak + kapı no sitede birlikte bulunduysa eski ölçümün sokak/kapı işareti gerekmez */
+    const m = ovParse(ovAdr);
+    if (m && m[1].trim().length >= 4) { adres = `${m[1].trim().replace(/[,.]$/, "")} No:${m[2].replace(/\s+/g, "")}`; adresKaynak = "resmî sitede sokak + kapı no (adres metni Overture)"; if (ADRD && !ADRD[a.id]?.ok) { adres = null; adresKaynak = null; } else if (ADRD) adresKaynak = `resmî sitede yazılan sokak + kapı no birlikte (${ADRD[a.id].sayfa}; adres metni Overture)`; } }
   /* adres kurtarma: resmî sitede yapılandırılmış adres (schema.org) ya da iletişim bloğunda "No <kapı>" ile aynı sokak */
   if (!adres && o.streetOk && ADRK[a.id] && (ADRK[a.id].ld || ADRK[a.id].blok)) {
-    const seg = ovAdr.split(",").map((x) => x.trim()).find((x) => /(cad|cd|sok|sk|bulvar|blv|yolu|yokuş|meydan|sokağı|caddesi)/i.test(x) && /\d/.test(x));
-    const m = seg && seg.match(/^(.*?)(?:\s*No\s*[:.]?\s*|\s+)(\d+[A-Za-z]?(?:\s*\/\s*[0-9A-Za-z]+)?)\b.*$/i);
-    if (m && m[1].trim().length >= 4) { adres = `${m[1].trim().replace(/[,.]$/, "")} No:${m[2].replace(/\s+/g, "")}`; adresKaynak = ADRK[a.id].ld ? `resmî sitede yapılandırılmış adres (schema.org PostalAddress, ${ADRK[a.id].ld.sayfa})` : `resmî sitede iletişim bloğunda sokak + "No ${m[2]}" (${ADRK[a.id].blok.sayfa})`; } }
+    const m = ovParse(ovAdr);
+    if (m && m[1].trim().length >= 4) { adres = `${m[1].trim().replace(/[,.]$/, "")} No:${m[2].replace(/\s+/g, "")}`; adresKaynak = ADRK[a.id].ld ? `resmî sitede yapılandırılmış adres (schema.org PostalAddress, ${ADRK[a.id].ld.sayfa})` : `resmî sitede iletişim bloğunda sokak + "No ${m[2]}" (${ADRK[a.id].blok.sayfa})`; if (ADRD && !ADRD[a.id]?.ok) { adres = null; adresKaynak = null; } } }
+  /* site adresi (paket 19+): Overture adresi sitede yoksa, restoranın KENDİ sitesindeki adres satırı (telefonla aynı sayfada ya da schema.org işletme kaydında, ilçe adıyla) */
+  if (!adres && ADRK[a.id]?.site) { const sa = ADRK[a.id].site; adres = sa.adres; adresKaynak = `resmî sitede ${sa.kanit} (${sa.sayfa})`; }
   if (!adres) eksik.push(o.streetOk ? "kapı numarası resmî kaynakta doğrulanmadı" : "adres resmî kaynakta doğrulanmadı");
   /* tür */
   let tur = null;
@@ -134,25 +150,25 @@ for (const { a: a0, o, puan } of secim) { const a = { ...a0, ad: cleanName(a0.ad
   const ilce = osmOk ? districtOf(osmE.lat ?? osmE.center?.lat, osmE.lon ?? osmE.center?.lon, F) : a.ilce;
   if (ilce !== a.ilce) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "B", eksik: [`OSM noktası ilçesi (${ilce}) Overture ile uyuşmuyor`], neden: [] }); continue; }
   if (!osmOk && !o.ilceOk) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "B", eksik: ["ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"], neden: [] }); continue; }
-  let slug = `${slugify(a.ad)}-${slugify(ilce)}`.replace(/--+/g, "-"); if (taken.has(slug)) { inceleme.push({ gersId: a.id, ad: a.ad, ilce, sinif: "çakışma", neden: [`slug çakışması: ${slug}`] }); continue; } taken.add(slug);
+  let slug = v9Ok ? v9.slug : `${slugify(a.ad)}-${slugify(ilce)}`.replace(/--+/g, "-"); if (taken.has(slug)) { inceleme.push({ gersId: a.id, ad: a.ad, ilce, sinif: "çakışma", neden: [`slug çakışması: ${slug}`] }); continue; } taken.add(slug);
   const address = `${adres}, ${ilce}`; const phone = fmtTel(a.telefonlar[0]);
   const resmi = /^https:/.test(o.final) ? o.final : HTTPS[a.id] ?? null;
   if (!osmOk && !resmi) { inceleme.push({ gersId: a.id, ad: a.ad, ilce, sinif: "B", eksik: ["resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"], neden: [] }); taken.delete(slug); continue; }
   /* paket içi mükerrer: aynı OSM kaydı, aynı telefon, aynı site, 40 m içinde aynı ad kelimesi */
-  const twin = recs.find((r) => (osmOk && r.ref === a.osm.ref) || (phone && r.phone === phone) || new URL(r.website).host === new URL(resmi ?? o.final).host);
+  const twin = recs.find((r) => (osmOk && r.ref === osmRef) || (phone && r.phone === phone) || new URL(r.website).host === new URL(resmi ?? o.final).host);
   if (twin) { inceleme.push({ gersId: a.id, ad: a.ad, ilce, sinif: "çakışma", neden: [`paket içinde aynı işletme: ${twin.slug}`] }); taken.delete(slug); continue; }
   const turTxt = `tür: ${tur.ifade} (${tur.duzey === "marka" ? "marka düzeyi" : "şube düzeyi"})`;
-  const konumTxt = osmOk ? `konum: OSM restoran kaydı ${a.osm.ref} (Overture noktasına ${a.osm.d} m)` : "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez";
+  const konumTxt = osmOk ? `konum: OSM restoran kaydı ${osmRef} (${v9Ok ? "906 dalındaki kimlik korundu: " + v9.slug : `Overture noktasına ${a.osm.d} m`})` : "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez";
   const verification = `${kimlik} · faaliyet: resmî sitede güncel iletişim bilgisi (${o.tarih}) · adres: ${adresKaynak} · ${turTxt} · ${konumTxt} · aday kaynağı: Overture Maps ${a.id}`;
   const kalite = { kimlik: subeDuzeyi ? "resmî site, şube düzeyi" : "resmî site, marka düzeyi", faaliyet: "resmî site (güncel iletişim)", adres: "kapı numaralı", tur: tur.duzey === "marka" ? "kaynaklı, marka düzeyi" : "kaynaklı", koordinat: osmOk ? "OSM restoran kaydı" : "yok" };
-  const base = { slug, name: a.ad, categoryId: "cat.restaurant", kind: tur.kind, district: ilce, address, ...(phone ? { phone } : {}), website: resmi ?? o.final, cuisine: tur.cuisine, importedAt: tarih };
+  const base = { slug, name: v9Ok ? v9.name : a.ad, categoryId: "cat.restaurant", kind: tur.kind, district: ilce, address, ...(phone ? { phone } : {}), website: resmi ?? o.final, cuisine: tur.cuisine, importedAt: tarih };
   const v = osmOk
-    ? { ref: a.osm.ref, ...base, lat: Math.round((osmE.lat ?? osmE.center.lat) * 1e6) / 1e6, lng: Math.round((osmE.lon ?? osmE.center.lon) * 1e6) / 1e6, osmAmenity: osmE.tags.amenity, wave, verifiedAt: tarih, confidence: "güçlü", verification, overture: ov, kaliteSinifi: "A", kalite }
+    ? { ref: osmRef, ...base, lat: Math.round((osmE.lat ?? osmE.center.lat) * 1e6) / 1e6, lng: Math.round((osmE.lon ?? osmE.center.lon) * 1e6) / 1e6, osmAmenity: osmE.tags.amenity, wave, verifiedAt: tarih, confidence: "güçlü", verification, overture: ov, kaliteSinifi: "A", kalite }
     : { ref: `isletme/${slug}`, ...base, sourceKind: "official_site", sourceUrl: resmi, wave, verifiedAt: tarih, confidence: "güçlü", verification, overture: ov, kaliteSinifi: "A-konumsuz", kalite };
   recs.push(v);
   rows.push({ slug, ref: v.ref, tip: osmOk ? "osm_kaydi" : "isletme_kaydi_konumsuz", ad: a.ad, ilce, adres: address, koordinat: osmOk ? [v.lat, v.lng] : null, koordinatGuveni: osmOk ? "OSM restoran kaydı" : "yok (Overture önerisi ayrı)", tur: tur.kind, turKanitDuzeyi: tur.duzey === "marka" ? "marka" : "şube",
     faaliyet: "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)", sinif: osmOk ? "A" : "A-konumsuz", zincir: a.zincirAlan ? a.host : null, sube: a.zincirAlan ? (a.ilce) : null,
-    kanit: [kimlik, `adres: ${adresKaynak}`, turTxt, konumTxt], kaynak: [...(osmOk ? [`https://www.openstreetmap.org/${a.osm.ref}`] : []), resmi ?? o.final, `overture:${a.id}`], kontrolTarihi: tarih, oncelikPuani: puan, ...(a.adOverture !== a.ad ? { adOverture: a.adOverture } : {}), ...(a.v906 ? { v906: a.v906 } : {}) });
+    kanit: [kimlik, `adres: ${adresKaynak}`, turTxt, konumTxt], kaynak: [...(osmOk ? [`https://www.openstreetmap.org/${osmRef}`] : []), resmi ?? o.final, `overture:${a.id}`], kontrolTarihi: tarih, oncelikPuani: puan, ...(a.adOverture !== a.ad ? { adOverture: a.adOverture } : {}), ...(a.v906 ? { v906: a.v906 } : {}) });
   if (!osmOk) oneri.push({ slug, gersId: a.id, lat: Math.round(a.lat * 1e6) / 1e6, lng: Math.round(a.lng * 1e6) / 1e6, guven: ov.guven, kaynaklar: a.kaynak, lisans: ov.lisans, ilceSiniri: districtOf(a.lat, a.lng, F), telefonEslesmesi: !!o.telOk,
     koordinatGuveni: o.telOk ? "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)" : "KO3 değil (telefon eşleşmesi yok)" });
 }
@@ -160,7 +176,7 @@ mkdirSync(dir, { recursive: true });
 const lines = (arr) => "[\n" + arr.map((r) => JSON.stringify(r)).join(",\n") + "\n]\n";
 writeFileSync(`${dir}/kayitlar.json`, lines(recs.filter((v) => !v.ref.startsWith("isletme/"))));
 writeFileSync(`${dir}/isletme-kayitlari.json`, lines(recs.filter((v) => v.ref.startsWith("isletme/"))));
-writeFileSync(`${dir}/inceleme.json`, JSON.stringify({ _aciklama: "Paket 16 seçiminden A ya da A-konumsuz olamayanlar; her satırda eksik ya da neden.", kayitlar: inceleme }, null, 1));
+writeFileSync(`${dir}/inceleme.json`, JSON.stringify({ _aciklama: `Paket ${wave} seçiminden A ya da A-konumsuz olamayanlar; her satırda eksik ya da neden.`, kayitlar: inceleme }, null, 1));
 writeFileSync(`${dir}/overture-oneri.json`, JSON.stringify({ _aciklama: "A-konumsuz kayıtlar için Overture Maps Places noktası (sürüm 2026-10-21.0). KAYDA YAZILMADI. Atıf: © Overture Maps Foundation; kaynak başına lisans (Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0).", oneriler: oneri }, null, 1));
 writeFileSync(`${dir}/paket.json`, JSON.stringify({ _aciklama: `İstanbul Overture keşif paketi (dalga ${wave}). Aday Overture Maps Places'ten (© Overture Maps Foundation; kaynak başına lisans: Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0); kimlik, faaliyet, adres ve tür restoranın resmî sitesinden ölçüldü (sayfa içeriği saklanmadı). Koordinat yalnız OSM restoran kaydından (© OpenStreetMap katkıcıları, ODbL); OSM'si olmayanlar A-konumsuz. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json. Google verisi yok.`, kontrolTarihi: tarih, eklenen: rows }, null, 1));
 const cnt = (a) => a.reduce((m, x) => (m[x] = (m[x] ?? 0) + 1, m), {});
