@@ -1,0 +1,90 @@
+{
+ "_aciklama": "Kabul edilen resmî site kanıtlarından tohumlu rastgele 12 örnek; sayfa elle açılıp eşleşen satır okundu (içerik saklanmadı). Resmî site dışındaki kanıtlar (OSM etiketleri) yapısal veridir, örneklenmedi.",
+ "tarih": "2026-11-12",
+ "ornek": [
+  {
+   "slug": "biget-avcilar",
+   "ad": "Biget",
+   "kanit": "resmî site (2026-11-12): ad + telefon eşleşti",
+   "sonuc": "Geçti",
+   "not": "Avcılar şubesinin telefonu markanın şube menü sayfasında"
+  },
+  {
+   "slug": "adile-hanim-konagi-beyoglu",
+   "ad": "Adile Hanım Konağı",
+   "kanit": "resmî site (2026-11-12): ad + telefon eşleşti",
+   "sonuc": "Geçti",
+   "not": "telefon schema.org kaydında"
+  },
+  {
+   "slug": "beeves-steakhouse-atasehir",
+   "ad": "Beeves Steakhouse",
+   "kanit": "resmî site (2026-11-12): ad + sokak eşleşti",
+   "sonuc": "Geçti",
+   "not": "Ihlamur Bv. No:1/A, Ataşehir"
+  },
+  {
+   "slug": "ercan-pizza-pendik",
+   "ad": "Ercan Pizza",
+   "kanit": "resmî site (2026-11-12): ad + sokak eşleşti",
+   "sonuc": "Geçti",
+   "not": "Kurtköy şubesi: Osmanlı Blv., Lens İstanbul AVM"
+  },
+  {
+   "slug": "pandeli-fatih",
+   "ad": "Pandeli",
+   "kanit": "resmî site (2026-11-12): ad + sokak eşleşti",
+   "sonuc": "Geçti",
+   "not": "Mısır Çarşısı adresi ana sayfada"
+  },
+  {
+   "slug": "mizu-bakirkoy",
+   "ad": "Mizu",
+   "kanit": "resmî site (2026-11-12): ad + sokak + telefon eşleşti",
+   "sonuc": "Geçti",
+   "not": "iletişim bölümünde sokak + kapı no + telefon"
+  },
+  {
+   "slug": "beny-burger-house-ve-cafeteria-besiktas",
+   "ad": "Beny Burger House & Cafeteria",
+   "kanit": "resmî site (2026-11-12): ad + sokak + telefon eşleşti",
+   "sonuc": "Geçti",
+   "not": "başlık ve alt bilgi Beny Burger House; Şair Nedim Cd. No:49/A, telefon"
+  },
+  {
+   "slug": "mahmut-bey-doner-pendik",
+   "ad": "Mahmut Bey Döner",
+   "kanit": "resmî site (2026-11-12): ad + sokak + telefon eşleşti",
+   "sonuc": "Geçti",
+   "not": "Kurtköy Mah. Ankara Cad. No:289/1"
+  },
+  {
+   "slug": "antula-gurme-beykoz",
+   "ad": "Antula Gurme",
+   "kanit": "resmî site (2026-11-12): ad + telefon eşleşti",
+   "sonuc": "Geçti",
+   "not": "iletişim satırında telefon"
+  },
+  {
+   "slug": "tuzla-balikcisi-basaksehir-basaksehir",
+   "ad": "Tuzla Balıkçısı Başakşehir",
+   "kanit": "resmî site (2026-11-12): ad + sokak + telefon eşleşti",
+   "sonuc": "Geçti",
+   "not": "şube e-postası ve Atatürk Blv. No:98"
+  },
+  {
+   "slug": "chn-doner-pendik",
+   "ad": "CHN Döner",
+   "kanit": "resmî site (2026-11-12): ad + sokak eşleşti",
+   "sonuc": "Geçti",
+   "not": "Kurtköy, Ankara Cd. No:460"
+  },
+  {
+   "slug": "pizzeria-il-pellicano-kadikoy",
+   "ad": "Pizzeria Il Pellicano",
+   "kanit": "resmî site (2026-11-12): ad + sokak + telefon eşleşti",
+   "sonuc": "Geçti",
+   "not": "Keresteci Aziz Sok. No:36b, telefon"
+  }
+ ]
+}

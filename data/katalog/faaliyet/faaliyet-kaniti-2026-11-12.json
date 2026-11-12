@@ -1,0 +1,7152 @@
+{
+ "_aciklama": "Tarihli faaliyet kanıtı olmayan 456 kayıt (dalga 0–1) için 2026-11-12 kanıt toplaması. Kaynak: OpenStreetMap API (© OpenStreetMap katkıcıları, ODbL; yalnız etiket ve sürüm bilgisi), işletmelerin resmî siteleri (yalnız eşleşme ölçümü, içerik saklanmadı). Google verisi kullanılmadı. venues.json değiştirilmedi; uygulanan satırların alanları yayın sırasında faaliyet-uygula.mjs ile yazılır.",
+ "tarih": "2026-11-12",
+ "osmTarihi": "2026-11-12",
+ "ozet": {
+  "hedef": 456,
+  "uygulanan": 145,
+  "uygulanmayan": 311,
+  "kanitTuru": {
+   "E1 resmî site": 112,
+   "E2 OSM yerinde kontrol": 32,
+   "E3 OSM yerinde anket": 21,
+   "E4 resmî şube sayfası": 4
+  },
+  "uygulanmayanNeden": {
+   "güçlü faaliyet kanıtı bulunamadı": 258,
+   "kapanış kaydı": 52,
+   "OSM öğesi silinmiş": 1,
+   "OSM adı değişmiş": 1
+  },
+  "siteDurumu": {
+   "site açıldı, ad bulunamadı": 52,
+   "site park/satış alanına yönleniyor": 3,
+   "site açılmadı": 21,
+   "site açıldı, ad var; sokak ve telefon yok": 30,
+   "kayıtlı resmî site yok": 142,
+   "paylaşılan site": 8,
+   "kayıtlı bağlantı resmî site değil": 2
+  },
+  "zayifKanitli": 26,
+  "isaretli": 18,
+  "kategori": {
+   "cat.restaurant": 134,
+   "cat.cafe": 11
+  }
+ },
+ "uygulanan": [
+  {
+   "slug": "antiochia-beyoglu",
+   "ad": "Antiochia",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (OsmAnd~, 2025-03-31)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "yeni-lokanta-beyoglu",
+   "ad": "Yeni Lokanta",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "nabu-karakoy-beyoglu",
+   "ad": "Nabu Karakoy",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-01-18"
+   }
+  },
+  {
+   "slug": "mandabatmaz-beyoglu",
+   "ad": "Mandabatmaz",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-15",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-15, changeset 181381000)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-04-15 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-15, changeset 181381000)"
+   }
+  },
+  {
+   "slug": "tarihi-kalkanoglu-pilavcisi-beyoglu",
+   "ad": "Tarihi Kalkanoğlu Pilavcısı",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-15",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-15, changeset 181381000)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-04-15 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-15, changeset 181381000)"
+   }
+  },
+  {
+   "slug": "kizilkayalar-beyoglu",
+   "ad": "Kızılkayalar",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-17",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-17, changeset 161471815)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-01-17 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-17, changeset 161471815)"
+   }
+  },
+  {
+   "slug": "ciya-sofrasi-kadikoy",
+   "ad": "Çiya Sofrası",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-19",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-20, changeset 190779153)",
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-10-19 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-20, changeset 190779153) · resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "borsa-lokantasi-caddebostan-kadikoy",
+   "ad": "Borsa Lokantası Caddebostan",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "kosebasi-kadikoy",
+   "ad": "Köşebaşı",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "flake-breakfast-ve-more-kadikoy",
+   "ad": "Flake Breakfast & More",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "kont-moda-kadikoy",
+   "ad": "KONT Moda",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-08-30"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-08-30)"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-08-30"
+   }
+  },
+  {
+   "slug": "lucio-coffee-kadikoy",
+   "ad": "Lucio Coffee",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "feriye-besiktas",
+   "ad": "Feriye",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "cantinery-besiktas",
+   "ad": "Cantinery",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî şube sayfası (2026-11-12): ad + sokak + ilçe/mahalle aynı bölümde + telefon"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî şube sayfası (2026-11-12): ad + sokak + ilçe/mahalle aynı bölümde + telefon"
+   }
+  },
+  {
+   "slug": "elise-pide-lahmacun-besiktas",
+   "ad": "Elise Pide Lahmacun",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "kurukahveci-fuat-bey-sisli",
+   "ad": "Kurukahveci Fuat bey",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "coffee-department-sisli",
+   "ad": "Coffee Department",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-10-10, changeset 190293539)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-10-10, changeset 190293539)"
+   }
+  },
+  {
+   "slug": "adanali-kebapci-mehmet-sisli",
+   "ad": "Adanalı Kebapçı Mehmet",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "the-hill-cafe-sisli",
+   "ad": "The Hill Cafe",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "giritli-fatih",
+   "ad": "Giritli",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "tarihi-sultanahmet-koftecisi-selim-usta-fatih",
+   "ad": "Tarihi Sultanahmet Köftecisi Selim Usta",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-09-30",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-10-01, changeset 172727626)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-09-30 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-10-01, changeset 172727626)"
+   }
+  },
+  {
+   "slug": "pandeli-fatih",
+   "ad": "Pandeli",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "sehzade-cag-kebap-fatih",
+   "ad": "Şehzade Cağ Kebap",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-22",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-12-23, changeset 176290757)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-12-22 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-12-23, changeset 176290757)"
+   }
+  },
+  {
+   "slug": "balikci-sabahattin-fatih",
+   "ad": "Balıkçı Sabahattin",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Organic, 2025-07-12)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "last-ottoman-cafe-ve-restaurant-fatih",
+   "ad": "Last Ottoman Cafe & Restaurant",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-11",
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-10-11)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-10-11 · resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "my-home-doner-fatih",
+   "ad": "My Home Döner",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "ismet-baba-uskudar",
+   "ad": "Ismet Baba",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (ismetbaba.com.tr → ismetbaba.com)"
+   ],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "asiyan-books-and-coffee-uskudar",
+   "ad": "Aşiyan Books And Coffee",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-04-07, changeset 164641937)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-04-07, changeset 164641937)"
+   }
+  },
+  {
+   "slug": "del-mare-uskudar",
+   "ad": "Del Mare",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "filizler-koftecisi-uskudar",
+   "ad": "Filizler Köftecisi",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "kiraz-cafe-ve-pastane-uskudar",
+   "ad": "Kiraz Cafe & Pastane",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "nevmekan-selimiye-uskudar",
+   "ad": "Nevmekan Selimiye",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "moc-coffee-roastery-sariyer",
+   "ad": "MOC Coffee Roastery",
+   "ilce": "Sarıyer",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-04",
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-12-04 · resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "cajun-corner-sariyer",
+   "ad": "Cajun Corner",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-12-04"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-12-04"
+   }
+  },
+  {
+   "slug": "emek-manti-evi-sariyer",
+   "ad": "Emek Mantı Evi",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "efe-ocakbasi-yesilkoy-bakirkoy",
+   "ad": "Efe Ocakbaşı Yeşilköy",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "mizu-bakirkoy",
+   "ad": "Mizu",
+   "ilce": "Bakırköy",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "etci-mehmet-bakirkoy",
+   "ad": "Etci Mehmet",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "develi-atasehir",
+   "ad": "Develi",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî şube sayfası (2026-11-12): ad + sokak + ilçe/mahalle aynı bölümde + telefon"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî şube sayfası (2026-11-12): ad + sokak + ilçe/mahalle aynı bölümde + telefon"
+   }
+  },
+  {
+   "slug": "cinaralti-mangalbasi-atasehir",
+   "ad": "Çınaraltı Mangalbaşı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "zubeyir-ocakbasi-atasehir",
+   "ad": "Zübeyir Ocakbaşı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "bahce-ocakbasi-atasehir",
+   "ad": "Bahçe Ocakbaşı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "kalpazankaya-restaurant-adalar",
+   "ad": "Kalpazankaya Restaurant",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "beyzade-kunefe-eyupsultan",
+   "ad": "Beyzade Künefe",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "toros-tantuni-kartal",
+   "ad": "Toros Tantuni",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "muhlama-karadeniz-mutfagi-atasehir",
+   "ad": "Muhlama Karadeniz Mutfağı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "memnun-doner-avcilar",
+   "ad": "Memnun Döner",
+   "ilce": "Avcılar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "serden-erzurum-cag-kebabi-bahcelievler",
+   "ad": "Serden Erzurum Cağ Kebabı",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-15",
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-10-15 · resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "saray-muhallebicisi-bakirkoy",
+   "ad": "Saray Muhallebicisi",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (saraymuhallebicisi.com → online.saraymuhallebicisi.com)"
+   ],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "cemil-hoca-beylikduzu",
+   "ad": "Cemil Hoca",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "panorama34-cafe-ve-restaurant-buyukcekmece",
+   "ad": "Panorama34 Cafe & Restaurant",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "olden-1772-fatih",
+   "ad": "Olden 1772",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "moston-cafe-restoran-maltepe",
+   "ad": "Moston Cafe Restoran",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "catlatan-lokantasi-pendik",
+   "ad": "Çatlatan Lokantası",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "pelikan-balik-ve-restaurant-sancaktepe",
+   "ad": "Pelikan Balık & Restaurant",
+   "ilce": "Sancaktepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "kucuk-ev-sariyer",
+   "ad": "Küçük Ev",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "villa-restaurant-silivri-silivri",
+   "ad": "Villa Restaurant Silivri",
+   "ilce": "Silivri",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "basri-baba-istanbul-zeytinburnu",
+   "ad": "Basri Baba İstanbul",
+   "ilce": "Zeytinburnu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "maydonoz-doner-cekmekoy",
+   "ad": "Maydonoz Döner",
+   "ilce": "Çekmeköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "bay-manti-uskudar",
+   "ad": "Bay Mantı",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "amara-sile-ocakbasi-restoran-sile",
+   "ad": "Amara Şile Ocakbaşı Restoran",
+   "ilce": "Şile",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "sushico-zen-atasehir",
+   "ad": "SushiCo zen",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-09-26"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-09-26"
+   }
+  },
+  {
+   "slug": "biget-avcilar",
+   "ad": "Biget",
+   "ilce": "Avcılar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "poyraz-sahil-balik-restaurant-beykoz",
+   "ad": "Poyraz Sahil Balık Restaurant",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "kanatci-haydar-beylikduzu",
+   "ad": "Kanatçı Haydar",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-08-03",
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Vespucci, 2026-10-12)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-08-03 · resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "beny-burger-house-ve-cafeteria-besiktas",
+   "ad": "Beny Burger House & Cafeteria",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "pilavci-islam-usta-buyukcekmece",
+   "ad": "Pilavcı İslam Usta",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "eta-bakery-arena-park-2-kucukcekmece",
+   "ad": "Eta Bakery Arena Park 2",
+   "ilce": "Küçükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "bayindir-restoran-pendik",
+   "ad": "Bayındır Restoran",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "irmak-et-doner-zeytinburnu",
+   "ad": "İrmak Et Döner",
+   "ilce": "Zeytinburnu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "ezme-durum-evi-bayrampasa",
+   "ad": "Ezme Dürüm Evi",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "tuzla-balikcisi-basaksehir-basaksehir",
+   "ad": "Tuzla Balıkçısı Başakşehir",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "adile-hanim-konagi-beyoglu",
+   "ad": "Adile Hanım Konağı",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "hasirli-konya-mutfagi-buyukcekmece",
+   "ad": "Hasırlı Konya Mutfağı",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-03-16"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-03-16"
+   }
+  },
+  {
+   "slug": "chef-taus-kadikoy",
+   "ad": "Chef Taus",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "ali-baba-et-mangal-sancaktepe",
+   "ad": "Ali Baba Et Mangal",
+   "ilce": "Sancaktepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-11-11, changeset 191803278)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-11-11, changeset 191803278)"
+   }
+  },
+  {
+   "slug": "zennup-1844-fisekhane-zeytinburnu",
+   "ad": "Zennup 1844 Fişekhane",
+   "ilce": "Zeytinburnu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "efes-pide-ve-lahmacun-sisli",
+   "ad": "Efes Pide & Lahmacun",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "altin-sini-avcilar",
+   "ad": "Altın Sini",
+   "ilce": "Avcılar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-23"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-05-23"
+   }
+  },
+  {
+   "slug": "heybet-basaksehir",
+   "ad": "Heybet",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "antula-gurme-beykoz",
+   "ad": "Antula Gurme",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "remzi-et-mangal-eyupsultan",
+   "ad": "Remzi Et Mangal",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "nostalji-cafe-ve-restaurant-sile",
+   "ad": "Nostalji Cafe & Restaurant",
+   "ilce": "Şile",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "konya-mevlana-bahcelievler",
+   "ad": "Konya Mevlana",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "sushi-days-beylikduzu",
+   "ad": "Sushi Days",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-08-03"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-08-03)"
+   ],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-08-03"
+   }
+  },
+  {
+   "slug": "aga-ocakbasi-beyoglu",
+   "ad": "AGA Ocakbaşı",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-23",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-23, changeset 190919624)",
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-10-23 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-23, changeset 190919624) · resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "trakyum-buyukcekmece",
+   "ad": "Trakyum",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "doner-deryasi-eyupsultan",
+   "ad": "Döner Deryası",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-04-22, changeset 165304707)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-04-22, changeset 165304707)"
+   }
+  },
+  {
+   "slug": "nebras-pendik",
+   "ad": "Nebras",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "keyf-i-ala-kokorec-umraniye",
+   "ad": "Keyf-i Ala kokoreç",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "kanaat-lokantasi-uskudar",
+   "ad": "Kanaat Lokantası",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2025-09-22)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "pizzaci-musti-sile",
+   "ad": "Pizzacı Musti",
+   "ilce": "Şile",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-04-03, changeset 164470910)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2025-04-03, changeset 164470910)"
+   }
+  },
+  {
+   "slug": "guler-ocakbasi-restaurant-sisli",
+   "ad": "Güler Ocakbaşı Restaurant",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "huqqabaz-mall-of-istanbul-basaksehir",
+   "ad": "HuQQabaz Mall Of İstanbul",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "ficcin-beyoglu",
+   "ad": "Fıccın",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (OsmAnd~, 2025-03-24)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "desi-vibes-fatih",
+   "ad": "Desi vibes",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-10-29",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-30, changeset 182041940)"
+   ],
+   "zayif": [],
+   "isaret": [
+    "site park/satış alanına yönleniyor (desivibesrestaurant.com → sa.pxdx.co)"
+   ],
+   "site": "site park/satış alanına yönleniyor (desivibesrestaurant.com → sa.pxdx.co)",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-10-29 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-30, changeset 182041940)"
+   }
+  },
+  {
+   "slug": "hane-kadikoy",
+   "ad": "Hane",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-11-02",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-11-02, changeset 174103107)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-11-02 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-11-02, changeset 174103107)"
+   }
+  },
+  {
+   "slug": "lokanta-by-divan-sisli",
+   "ad": "Lokanta by Divan",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî şube sayfası (2026-11-12): ad + sokak + ilçe/mahalle aynı bölümde + telefon"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî şube sayfası (2026-11-12): ad + sokak + ilçe/mahalle aynı bölümde + telefon"
+   }
+  },
+  {
+   "slug": "beeves-steakhouse-atasehir",
+   "ad": "Beeves Steakhouse",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "asmali-durumcu-beyoglu",
+   "ad": "Asmalı Dürümcü",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-09-13"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-09-13"
+   }
+  },
+  {
+   "slug": "mavi-balik-besiktas",
+   "ad": "Mavi Balık",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "grace-rooftop-restaurant-fatih",
+   "ad": "Grace Rooftop Restaurant",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "kavurmaci-efe-kemal-kadikoy",
+   "ad": "Kavurmacı Efe Kemal",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-07-08",
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-07-08)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-07-08 · resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "kebap-hocasi-maltepe",
+   "ad": "Kebap Hocası",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "onda-marina-sariyer",
+   "ad": "Onda Marina",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-21"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-10-21)"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-10-21"
+   }
+  },
+  {
+   "slug": "dayi-kurek-lahmacun-uskudar",
+   "ad": "Dayı Kürek Lahmacun",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "baran-lahmacun-beyoglu",
+   "ad": "Baran Lahmacun",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-08-22",
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-08-22)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-08-22 · resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "tuzdan-balik-restaurant-pendik",
+   "ad": "Tuzdan Balık Restaurant",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "hacibasar-kebap-atasehir",
+   "ad": "Hacıbaşar Kebap",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2025-10-31)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "bayramoglu-doner-beykoz",
+   "ad": "Bayramoğlu Döner",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "misina-kadikoy",
+   "ad": "Misina",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "tarsus-ocakbasi-taksim-sisli",
+   "ad": "Tarsus Ocakbaşı / Taksim",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-11",
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-10-11)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-10-11 · resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "octo-beyoglu",
+   "ad": "Octo",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-01-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-01-18 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-01-18, changeset 161503474)"
+   }
+  },
+  {
+   "slug": "tiryaki-restorant-sariyer",
+   "ad": "Tiryaki Restorant",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (tiryakikebap.com → tiryakiyenikoy.com)"
+   ],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "pecenek-doner-atasehir",
+   "ad": "Peçenek Döner",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-18",
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2026-10-18)"
+   ],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-10-18 · resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "sakhalin-istanbul-besiktas",
+   "ad": "Sakhalin İstanbul",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "tokyoya-japanese-cafe-ve-bistro-umraniye",
+   "ad": "Tokyoya Japanese Cafe & Bistro",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-11-09, changeset 191706386)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-11-09, changeset 191706386)"
+   }
+  },
+  {
+   "slug": "baklava-hanem-sisli",
+   "ad": "Baklava Hanem",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "pizzeria-pera-beyoglu",
+   "ad": "Pizzeria Pera",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "seven-hills-restaurant-fatih",
+   "ad": "Seven Hills Restaurant",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "intiba-doner-maltepe",
+   "ad": "İntiba Döner",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "atasehir-erzurum-cag-kebap-atasehir",
+   "ad": "Ataşehir Erzurum Cağ Kebap",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-09-26",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-09-26, changeset 172485329)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-09-26 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-09-26, changeset 172485329)"
+   }
+  },
+  {
+   "slug": "trattoria-carbonara-besiktas",
+   "ad": "Trattoria Carbonara",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "pizza-pieza-by-divan-kadikoy",
+   "ad": "Pizza Pieza by Divan",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî şube sayfası (2026-11-12): ad + sokak + ilçe/mahalle aynı bölümde + telefon"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî şube sayfası (2026-11-12): ad + sokak + ilçe/mahalle aynı bölümde + telefon"
+   }
+  },
+  {
+   "slug": "ercan-pizza-pendik",
+   "ad": "Ercan Pizza",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "nizam-pide-sisli",
+   "ad": "Nizam Pide",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "pizza-v-kadikoy",
+   "ad": "Pizza V",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-03-15",
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-03-15 · resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "karkas-ocakbasi-sariyer",
+   "ad": "Karkas Ocakbaşı",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "vegan-dukkan-lokanta-beyoglu",
+   "ad": "Vegan Dukkan Lokanta",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-04-26, changeset 181856267)"
+   ],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-04-26, changeset 181856267)"
+   }
+  },
+  {
+   "slug": "pizzeria-il-pellicano-kadikoy",
+   "ad": "Pizzeria Il Pellicano",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "adab-eski-usul-meyhane-sariyer",
+   "ad": "ADAB Eski Usûl Meyhane",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "uzunlar-kebap-atasehir",
+   "ad": "Uzunlar Kebap",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "sa-va-anatolian-breakfast-house-beyoglu",
+   "ad": "Sa Va Anatolian Breakfast House",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "kurucesme-balik-besiktas",
+   "ad": "Kuruçeşme Balık",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "tatar-salim-kadikoy",
+   "ad": "Tatar Salim",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "asya-pide-kebap-salonu-pendik",
+   "ad": "Asya Pide Kebap Salonu",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-05-12"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-05-12"
+   }
+  },
+  {
+   "slug": "mahmut-bey-doner-pendik",
+   "ad": "Mahmut Bey Döner",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "big-slice-pizza-sariyer",
+   "ad": "Big Slice Pizza",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-05-18, changeset 182822636)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-05-18, changeset 182822636)"
+   }
+  },
+  {
+   "slug": "karakoy-gumruk-beyoglu",
+   "ad": "Karaköy Gümrük",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-04-18",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-18, changeset 181483114)"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2026-04-18 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-04-18, changeset 181483114)"
+   }
+  },
+  {
+   "slug": "nelipide-kadikoy",
+   "ad": "Nelipide",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "sanat-ocakbasi-atasehir",
+   "ad": "Sanat Ocakbaşı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "kardesler-kebap-ve-cafe-beyoglu",
+   "ad": "Kardesler Kebap & Cafe",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2025-04-01",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-04-01, changeset 164390294)"
+   ],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "OSM yerinde kontrol tarihi 2025-04-01 · OSM son düzenleme yerinde anket uygulamasıyla (Every, 2025-04-01, changeset 164390294)"
+   }
+  },
+  {
+   "slug": "chn-doner-pendik",
+   "ad": "CHN Döner",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  },
+  {
+   "slug": "zuga-beach-ve-restaurant-sariyer",
+   "ad": "Zuğa Beach & Restaurant",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + telefon eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + telefon eşleşti"
+   }
+  },
+  {
+   "slug": "pizzateo-kadikoy",
+   "ad": "PizzaTeo",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [
+    "resmî site (2026-11-12): ad + sokak eşleşti"
+   ],
+   "zayif": [],
+   "isaret": [],
+   "site": null,
+   "alanlar": {
+    "verifiedAt": "2026-11-12",
+    "confidence": "güçlü",
+    "verification": "resmî site (2026-11-12): ad + sokak eşleşti"
+   }
+  }
+ ],
+ "uygulanmayan": [
+  {
+   "slug": "kronotrop-cihangir-beyoglu",
+   "ad": "Kronotrop Cihangir",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "privato-cafe-beyoglu",
+   "ad": "Privato Cafe",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site park/satış alanına yönleniyor (privatocafe.com → hugedomains.com)"
+   ],
+   "site": "site park/satış alanına yönleniyor (privatocafe.com → hugedomains.com)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sofyali-9-restoran-beyoglu",
+   "ad": "Sofyalı 9 Restoran",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / ENOTFOUND)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kor-agop-beyoglu",
+   "ad": "Kör Agop",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / UND_ERR_CONNECT_TIMEOUT)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gunaydin-beyoglu",
+   "ad": "Günaydın",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "karakoy-lokantasi-beyoglu",
+   "ad": "Karaköy Lokantası",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (OsmAnd~, 2025-04-11)"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "neolokal-beyoglu",
+   "ad": "Neolokal",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "49-cukurcuma-beyoglu",
+   "ad": "49 Çukurcuma",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cukur-meyhane-beyoglu",
+   "ad": "Çukur Meyhane",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "geyik-beyoglu",
+   "ad": "Geyik",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.bar",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "savoy-beyoglu",
+   "ad": "Savoy",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "mikla-turkey-fusion-beyoglu",
+   "ad": "Mikla - Turkey fusion",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "asmali-cavit-beyoglu",
+   "ad": "Asmalı Cavit",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "dem-karakoy-beyoglu",
+   "ad": "Dem Karaköy",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "federal-coffee-galata-beyoglu",
+   "ad": "Federal Coffee Galata",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gramaj-beyoglu",
+   "ad": "Gramaj",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "viktor-levi-sarap-evi-kadikoy",
+   "ad": "Viktor Levi Şarap Evi",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "fazil-bey-in-turk-kahvesi-kadikoy",
+   "ad": "Fazıl Bey'in Türk Kahvesi",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sultanahmet-koftecisi-kadikoy",
+   "ad": "Sultanahmet Köftecisi",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ali-ocakbasi-kadikoy",
+   "ad": "Ali Ocakbaşı",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "700-gram-kadikoy",
+   "ad": "700 Gram",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "brops-world-cuisine-kadikoy",
+   "ad": "Brops World Cuisine",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "haci-ali-ocakbasi-kadikoy",
+   "ad": "Hacı Ali Ocakbaşı",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "erkonyalilar-kadikoy",
+   "ad": "Erkonyalılar",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "konyalilar-etli-ekmek-kadikoy",
+   "ad": "Konyalılar Etli Ekmek",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "palulu-cumali-adana-kebapcisi-kadikoy",
+   "ad": "Palulu Cumali Adana Kebapçısı",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "walter-s-coffee-roastery-kadikoy",
+   "ad": "Walter's Coffee Roastery",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "donerci-hamdi-usta-kadikoy",
+   "ad": "Dönerci Hamdi Usta",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "halil-lahmacun-kadikoy",
+   "ad": "Halil Lahmacun",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "tarihi-eminonu-balikcisi-kadikoy",
+   "ad": "Tarihi Eminönü Balıkçısı",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (OsmAnd~, 2026-04-13)"
+   ],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "maybe-kadikoy",
+   "ad": "Maybe",
+   "ilce": "Kadıköy",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "6-45-public-house-kadikoy",
+   "ad": "6:45 Public House",
+   "ilce": "Kadıköy",
+   "kategori": "cat.bar",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bebek-balikci-besiktas",
+   "ad": "Bebek Balıkçı",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "emirgan-sutis-besiktas",
+   "ad": "Emirgan Sütiş",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "sur-balik-restoran-arnavutkoy-besiktas",
+   "ad": "Sur Balık Restoran Arnavutköy",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "lucca-besiktas",
+   "ad": "Lucca",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.bar",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + mahalle"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "summit-bar-ve-terrace-besiktas",
+   "ad": "Summit Bar & Terrace",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.bar",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (conradhotels3.hilton.com → hilton.com)"
+   ],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "petra-roasting-co-besiktas",
+   "ad": "Petra Roasting Co.",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kir-kahvesi-besiktas",
+   "ad": "Kır Kahvesi",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "mehmet-namli-kebap-ve-durum-ve-lahmacun-besiktas",
+   "ad": "Mehmet Namlı Kebap & Dürüm & Lahmacun",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "nusr-et-burger-bebek-besiktas",
+   "ad": "Nusr-Et Burger Bebek",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "akinti-burnu-balik-restaurant-besiktas",
+   "ad": "Akıntı Burnu Balık Restaurant",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "baba-sogus-besiktas",
+   "ad": "Baba Söğüş",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "blak-coffee-co-besiktas",
+   "ad": "BLAK Coffee Co.",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "cozy-etiler-besiktas",
+   "ad": "Cozy Etiler",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "curtis-restaurant-ve-bar-besiktas",
+   "ad": "Curtis Restaurant&Bar",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "durak-bufe-besiktas",
+   "ad": "Durak Büfe",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "frontiere-istanbul-besiktas",
+   "ad": "Frontiere İstanbul",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "lalezar-meyhanesi-sisli",
+   "ad": "Lalezar Meyhanesi",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (www3.hilton.com → hilton.com)"
+   ],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "bambi-cafe-sisli",
+   "ad": "Bambi Cafe",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Organic, 2026-09-09)",
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "hunkar-sisli",
+   "ad": "Hünkar",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gram-sisli",
+   "ad": "Gram",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "kantin-sisli",
+   "ad": "Kantin",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "yildiz-konyali-sisli",
+   "ad": "Yıldız Konyalı",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "chops-cafe-ve-pub-sisli",
+   "ad": "Chops Cafe & Pub",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "dragon-restaurant-sisli",
+   "ad": "Dragon Restaurant",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "dubb-indian-bosphorus-restaurant-sisli",
+   "ad": "Dubb Indian Bosphorus Restaurant",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "balkaya-pastanesi-erol-usta-sisli",
+   "ad": "Balkaya Pastanesi Erol Usta",
+   "ilce": "Şişli",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "vefa-bozacisi-1876-fatih",
+   "ad": "Vefa Bozacısı 1876",
+   "ilce": "Fatih",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "tarihi-eminonu-balik-ekmek-fatih",
+   "ad": "Tarihi Eminönü Balık Ekmek",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kasap-osman-fatih",
+   "ad": "Kasap Osman",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sultan-s-inn-fatih",
+   "ad": "Sultan’s Inn",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR / ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "samatya-cafe-ve-van-kahvalti-salonu-fatih",
+   "ad": "Samatya Cafe ve Van Kahvaltı Salonu",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "artlocalist-fatih",
+   "ad": "Artlocalist",
+   "ilce": "Fatih",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "altinkapi-restaurant-fatih",
+   "ad": "Altınkapı Restaurant",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site park/satış alanına yönleniyor (altinkapiiskender.com → expireddomains.com)"
+   ],
+   "site": "site park/satış alanına yönleniyor (altinkapiiskender.com → expireddomains.com)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kucuk-camlica-kosku-uskudar",
+   "ad": "Küçük Çamlıca Köşkü",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kuzguncuk-cinaralti-uskudar",
+   "ad": "Kuzguncuk Çınaraltı",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ekmek-teknesi-uskudar",
+   "ad": "Ekmek Teknesi",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "katibim-uskudar",
+   "ad": "Katibim",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "rice-house-uskudar",
+   "ad": "Rice House",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "uskudar-sahne-uskudar",
+   "ad": "Üsküdar Sahne",
+   "ilce": "Üsküdar",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "arnavutkoy-balikcisi-sariyer",
+   "ad": "Arnavutköy Balıkçısı",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kale-cafe-cay-bahcesi-sariyer",
+   "ad": "Kale cafe Çay Bahçesi",
+   "ilce": "Sarıyer",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sariyer-hunkar-borekcisi-sariyer",
+   "ad": "Sarıyer Hünkar Börekçisi",
+   "ilce": "Sarıyer",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "koprualti-sariyer",
+   "ad": "Köprüaltı",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "azur-sariyer",
+   "ad": "Azur",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "brio-italian-istanbul-sariyer",
+   "ad": "Brio İtalian İstanbul",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "burger-hopdaddy-sariyer",
+   "ad": "Burger Hopdaddy",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site park/satış alanına yönleniyor (hopdaddyburger.com → hopdaddy-burger.higgsfield.app)"
+   ],
+   "site": "site park/satış alanına yönleniyor (hopdaddyburger.com → hopdaddy-burger.higgsfield.app)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "deniz-park-sariyer",
+   "ad": "Deniz Park",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "fiko-ocakbasi-sariyer",
+   "ad": "Fiko Ocakbaşı",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "beyti-lokanta-bakirkoy",
+   "ad": "Beyti Lokanta",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "coffee-noche-bakirkoy",
+   "ad": "Coffee Noche",
+   "ilce": "Bakırköy",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / 200)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "durumcu-baba-bakirkoy",
+   "ad": "Dürümcü Baba",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "viva-gelateria-di-roma-bakirkoy",
+   "ad": "Viva Gelateria di Roma",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "birecikli-bakirkoy",
+   "ad": "Birecikli",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bafetto-atasehir",
+   "ad": "Bafetto",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "hot-pot-king-atasehir",
+   "ad": "Hot Pot King",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "barba-yani-adalar",
+   "ad": "Barba Yani",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "d-orient-buyukada-adalar",
+   "ad": "d'Orient Büyükada",
+   "ilce": "Adalar",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (vitavien.com.tr → vitavien.com)"
+   ],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ideal-adalar",
+   "ad": "İdeal",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sahil-adalar",
+   "ad": "Sahil",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "yasemin-adalar",
+   "ad": "Yasemin",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "mihrabat-beykoz",
+   "ad": "Mihrabat",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "van-kahvalti-sofrasi-beykoz",
+   "ad": "Van Kahvaltı Sofrası",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "beykoz-belediyesi-ortacesme-lokantasi-beykoz",
+   "ad": "Beykoz Belediyesi Ortaçeşme Lokantası",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Organic, 2026-07-13)"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bisiklet-kafe-beykoz",
+   "ad": "Bisiklet Kafe",
+   "ilce": "Beykoz",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "buselik-meyhane-anadolu-hisari-beykoz",
+   "ad": "Buselik Meyhane - Anadolu Hisarı",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "meshur-sultanahmet-koftecisi-eyupsultan",
+   "ad": "Meşhur Sultanahmet Köftecisi",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pierre-loti-kahvehanesi-eyupsultan",
+   "ad": "Pierre Loti Kahvehanesi",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "halic-kahve-eyupsultan",
+   "ad": "Haliç Kahve",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "antepli-hunkar-kunefe-kartal",
+   "ad": "Antepli Hünkar Künefe",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "istek-borek-kartal",
+   "ad": "İstek Börek",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "nuvo-firin-ve-cafe-kartal",
+   "ad": "Nuvo Fırın & Cafe",
+   "ilce": "Kartal",
+   "kategori": "cat.cafe",
+   "dalga": 0,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cardak-adalar",
+   "ad": "Çardak",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "doga-kir-lokantasi-arnavutkoy",
+   "ad": "Doğa kır lokantası",
+   "ilce": "Arnavutköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "by-arnavut-kofte-ve-piyaz-bayrampasa",
+   "ad": "By Arnavut Köfte & Piyaz",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "colakoglu-simit-bagcilar",
+   "ad": "Çolakoğlu Simit",
+   "ilce": "Bağcılar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ono-restaurant-basaksehir",
+   "ad": "Ono Restaurant",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "beykoz-belediyesi-gumussuyu-kent-lokantasi-beykoz",
+   "ad": "Beykoz Belediyesi Gümüşsuyu Kent Lokantası",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Organic, 2026-07-13)"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "nicole-beyoglu",
+   "ad": "Nicole",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bes-bicak-steak-house-kasap-esenyurt",
+   "ad": "Beş Bıçak Steak House - Kasap",
+   "ilce": "Esenyurt",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / UND_ERR_CONNECT_TIMEOUT)",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "manzaram-eyupsultan-eyupsultan",
+   "ad": "Manzaram Eyüpsultan",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gungor-iskembe-gaziosmanpasa",
+   "ad": "Güngör İşkembe",
+   "ilce": "Gaziosmanpaşa",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "diyarzade-kunefe-katmer-baklava-ve-tatli-gungoren",
+   "ad": "Diyarzade Künefe, Katmer, Baklava, ve Tatlı",
+   "ilce": "Güngören",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "razaki-kadikoy",
+   "ad": "Razaki",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (restaurantguru.com → tr.restaurantguru.com)"
+   ],
+   "site": "kayıtlı bağlantı resmî site değil (tr.restaurantguru.com)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bafetto-pizza-kartal",
+   "ad": "Bafetto Pizza",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "boga-kagithane",
+   "ad": "Boga",
+   "ilce": "Kağıthane",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cooskun-balik-kucukcekmece",
+   "ad": "Cooşkun Balık",
+   "ilce": "Küçükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kismet-kebap-sultanbeyli",
+   "ad": "Kısmet Kebap",
+   "ilce": "Sultanbeyli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "dodo-balik-restaurant-tuzla",
+   "ad": "Dodo Balik Restaurant",
+   "ilce": "Tuzla",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "doga-cafe-restaurant-alev-hanim-in-mutfagi-catalca",
+   "ad": "Doğa Cafe Restaurant - Alev Hanım'ın Mutfağı",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ala-turk-mutfagi-umraniye",
+   "ad": "Ala Türk Mutfagi",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "gasto-nisantasi-sisli",
+   "ad": "Gasto Nişantaşı",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "yucetepe-kir-gazinosu-adalar",
+   "ad": "Yücetepe Kır Gazinosu",
+   "ilce": "Adalar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "durusu-club-restaurant-arnavutkoy",
+   "ad": "Durusu Club Restaurant",
+   "ilce": "Arnavutköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "samsaland-bahcelievler",
+   "ad": "Samsaland",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Organic, 2026-03-03)",
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ziya-sark-sofrasi-bakirkoy",
+   "ad": "Ziya Şark Sofrası",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "chefet-bayrampasa",
+   "ad": "Chefet",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (ECONNREFUSED / ECONNREFUSED)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "tepsi-et-basaksehir-basaksehir",
+   "ad": "Tepsi Et Başakşehir",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "refik-beyoglu",
+   "ad": "Refik",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-08)"
+   ]
+  },
+  {
+   "slug": "kaan-cafe-restaurant-esenyurt",
+   "ad": "Kaan Cafe Restaurant",
+   "ilce": "Esenyurt",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ibb-altinboynuz-sosyal-tesisi-eyupsultan",
+   "ad": "İBB Altınboynuz Sosyal Tesisi",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (503 / 503)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "beso-restaurant-bistro-fatih",
+   "ad": "Beso Restaurant Bistro",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (restaurantbeso.com → steak-okinawa.com)"
+   ],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "guven-et-lokantasi-gaziosmanpasa",
+   "ad": "Güven Et Lokantası",
+   "ilce": "Gaziosmanpaşa",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "benusen-restoran-kadikoy",
+   "ad": "Benusen Restoran",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "duru-et-izgara-kartal",
+   "ad": "Duru Et Izgara",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "irem-et-lokantasi-kagithane",
+   "ad": "İrem Et Lokantası",
+   "ilce": "Kağıthane",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cinaralti-durum-maltepe",
+   "ad": "Çınaraltı Dürüm",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pizza-lazza-sancaktepe",
+   "ad": "Pizza Lazza",
+   "ilce": "Sancaktepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cantinery-istinye-park-sariyer",
+   "ad": "Cantinery İstinye Park",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "zeytindali-kir-bahcesi-silivri",
+   "ad": "ZeytinDalı Kır Bahçesi",
+   "ilce": "Silivri",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "niwa-tuzla",
+   "ad": "Niwa",
+   "ilce": "Tuzla",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "kasap-istanbul-catalca",
+   "ad": "Kasap İstanbul",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "manakin-restoran-cekmekoy",
+   "ad": "Manakin Restoran",
+   "ilce": "Çekmeköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "arda-ocakbasi-umraniye",
+   "ad": "Arda Ocakbaşı",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (ardaocakbasi.com → aseocakbasi.com)"
+   ],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-08)"
+   ]
+  },
+  {
+   "slug": "kuzguncuk-burger-cafe-uskudar",
+   "ad": "Kuzguncuk Burger Cafe",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kocakus-mesire-sile",
+   "ad": "Kocakuş Mesire",
+   "ilce": "Şile",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "34-restaurant-sisli",
+   "ad": "34 Restaurant",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "erzurum-cag-kebap-tesisi-arnavutkoy",
+   "ad": "Erzurum Cağ Kebap Tesisi",
+   "ilce": "Arnavutköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "hukumdar-sofrasi-atasehir",
+   "ad": "Hükümdar Sofrası",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "enbey-doner-avcilar",
+   "ad": "Enbey Döner",
+   "ilce": "Avcılar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (ENOTFOUND / ENOTFOUND)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bitas-ev-yemekleri-bahcelievler",
+   "ad": "BiTas Ev Yemekleri",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "fusion-indian-bakirkoy",
+   "ad": "Fusion Indian",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sembol-ocakbasi-bosphorus-beykoz",
+   "ad": "Sembol Ocakbaşı Bosphorus",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sirtaki-meyhanesi-beylikduzu",
+   "ad": "Sirtaki Meyhanesi",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ist-too-besiktas",
+   "ad": "Ist Too",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "polat-iskembe-esenyurt",
+   "ad": "Polat Işkembe",
+   "ilce": "Esenyurt",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ibb-eyupsultan-kent-lokantasi-eyupsultan",
+   "ad": "İBB Eyüpsultan Kent Lokantası",
+   "ilce": "Eyüpsultan",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (503 / 503)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "byzantion-bistro-ve-restaurant-fatih",
+   "ad": "Byzantion Bistro & Restaurant",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "oz-pide-kartal",
+   "ad": "Öz Pide",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "altin-sofra-kucukcekmece",
+   "ad": "Altın Sofra",
+   "ilce": "Küçükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "meshur-rumeli-pilavcisi-maltepe",
+   "ad": "Meşhur Rumeli Pilavcısı",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "derin-kofte-ve-burger-pendik",
+   "ad": "Derin Köfte&Burger",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "fish-var-sariyer",
+   "ad": "Fish Var",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "menemenci-haydar-cakalli-menemeni-silivri",
+   "ad": "Menemenci Haydar Çakallı Menemeni",
+   "ilce": "Silivri",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "lagos-tuzla",
+   "ad": "Lagos",
+   "ilce": "Tuzla",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / UND_ERR_CONNECT_TIMEOUT)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "catalca-gizli-bahce-catalca",
+   "ad": "Catalca Gizli Bahce",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cekmekoy-nefist-doner-cekmekoy",
+   "ad": "Çekmeköy Nefist Döner",
+   "ilce": "Çekmeköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "burger-yiyelim-serifali-umraniye",
+   "ad": "Burger Yiyelim - Şerifali",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "adile-sultan-ev-yemekleri-uskudar",
+   "ad": "Adile Sultan Ev Yemekleri",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sofular-koftecisi-sile",
+   "ad": "Sofular Köftecisi",
+   "ilce": "Şile",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sehzadem-arnavutkoy",
+   "ad": "Sehzadem",
+   "ilce": "Arnavutköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "awina-restaurant-atasehir",
+   "ad": "Awina Restaurant",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "haznedar-meydan-gece-cigercisi-bahcelievler",
+   "ad": "Haznedar Meydan Gece Ciğercisi",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gelik-et-atakoy-istanbul-bakirkoy",
+   "ad": "Gelik ET Ataköy Istanbul",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "nano-durum-bayrampasa",
+   "ad": "Nano Dürüm",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "villa-park-istanbul-beylikduzu",
+   "ad": "Villa Park İstanbul",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / UND_ERR_CONNECT_TIMEOUT)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "leb-i-derya-beyoglu",
+   "ad": "Leb-i derya",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (AbortError / UND_ERR_CONNECT_TIMEOUT)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "istanbul-emniyet-mudurlugu-polis-evi-ortakoy-sosyal-tesisleri-besiktas",
+   "ad": "İstanbul Emniyet Müdürlüğü Polis Evi Ortaköy Sosyal Tesisleri",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (ENOTFOUND / ENOTFOUND)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "buket-pide-buyukcekmece",
+   "ad": "Buket Pide",
+   "ilce": "Büyükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cabra-loca-coffee-fatih",
+   "ad": "Cabra Loca Coffee",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "et-inn-kebap-ve-steak-kadikoy",
+   "ad": "Et-Inn Kebap&Steak",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-08)"
+   ]
+  },
+  {
+   "slug": "donerci-celal-usta-kartal",
+   "ad": "Dönerci Celal Usta",
+   "ilce": "Kartal",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "selim-kebap-kucukcekmece",
+   "ad": "Selim Kebap",
+   "ilce": "Küçükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pasahan-kunefe-maltepe",
+   "ad": "Paşahan Künefe",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kabadayi-burger-pendik",
+   "ad": "Kabadayı Burger",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gecci-maslak-sariyer",
+   "ad": "Geççi Maslak",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (ECONNREFUSED / ECONNREFUSED)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "m-point-cafe-and-restaurant-zeytinburnu",
+   "ad": "M-Point Cafe and restaurant",
+   "ilce": "Zeytinburnu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "antik-koy-catalca",
+   "ad": "Antik Köy",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cc-lider-pide-tepeustu-otoparkli-sube-umraniye",
+   "ad": "ÇC Lider Pide Tepeüstü Otoparklı Şube",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "suna-nin-yeri-uskudar",
+   "ad": "Suna'nın Yeri",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "griffin-bomonti-sisli",
+   "ad": "Griffin Bomonti",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "botanik-caf-ve-restaurant-arnavutkoy",
+   "ad": "Botanik Café & Restaurant",
+   "ilce": "Arnavutköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Organic, 2025-04-29)"
+   ],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "baskent-aspava-atasehir",
+   "ad": "Başkent Aspava",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + mahalle"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "amazon-avcilar",
+   "ad": "Amazon",
+   "ilce": "Avcılar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bishop-bakirkoy",
+   "ad": "Bishop",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "cookshop-bayrampasa",
+   "ad": "Cookshop",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "hero-s-pizza-basaksehir-subesi-basaksehir",
+   "ad": "Hero's Pizza Başakşehir Şubesi",
+   "ilce": "Başakşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gospoda-1882-beykoz",
+   "ad": "Gospoda 1882",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "just-pizza-gayrettepe-besiktas",
+   "ad": "Just Pizza Gayrettepe",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "constantine-s-ark-fatih",
+   "ad": "Constantine's Ark",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gunesin-sofrasi-kadikoy",
+   "ad": "Güneşin Sofrası",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "aci-biber-kucukcekmece",
+   "ad": "Acı Biber",
+   "ilce": "Küçükçekmece",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "poyraz-balik-maltepe",
+   "ad": "Poyraz Balık",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (CERT_HAS_EXPIRED / CERT_HAS_EXPIRED)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kiss-the-frog-seafood-brasserie-sariyer",
+   "ad": "Kiss The Frog Seafood Brasserie",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / AbortError)",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "ronesans-pilavcisi-zeytinburnu",
+   "ad": "Rönesans Pilavcısı",
+   "ilce": "Zeytinburnu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "tahtalikoy-catalca",
+   "ad": "Tahtalıköy",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-08)"
+   ]
+  },
+  {
+   "slug": "le-pere-bistrot-atasehir",
+   "ad": "Le Pere Bistrot",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "baba-doner-avcilar",
+   "ad": "Baba Döner",
+   "ilce": "Avcılar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "tarihi-iskender-kebapcisi-bahcelievler",
+   "ad": "Tarihi İskender Kebapçısı",
+   "ilce": "Bahçelievler",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "leziz-esnaf-lokantasi-bakirkoy",
+   "ad": "Leziz Esnaf Lokantası",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "lunchbox-bayrampasa",
+   "ad": "Lunchbox",
+   "ilce": "Bayrampaşa",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "ghalia-launge-beykoz",
+   "ad": "Ghalia Launge",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "usturmaca-balik-restorant-beylikduzu",
+   "ad": "Usturmaca Balik Restorant",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "lipari-besiktas",
+   "ad": "Lipari",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sakli-kadeh-maltepe",
+   "ad": "Saklı Kadeh",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + mahalle"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "otto-restoran-pendik",
+   "ad": "Otto Restoran",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "nezih-kebap-yuvalama-sariyer",
+   "ad": "Nezih Kebap-Yuvalama",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / UND_ERR_CONNECT_TIMEOUT)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pecka-et-ve-mangal-kahvalti-catalca",
+   "ad": "Peçka Et & Mangal Kahvaltı",
+   "ilce": "Çatalca",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (ENOTFOUND / ENOTFOUND)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "park-balik-cekmekoy-umraniye",
+   "ad": "Park Balık Çekmeköy",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sefa-restaurant-uskudar",
+   "ad": "Sefa Restaurant",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sazeli-florya-bakirkoy",
+   "ad": "Sazeli Florya",
+   "ilce": "Bakırköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "hira-han-beykoz",
+   "ad": "Hira Han",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "vagon-tantuni-beylikduzu",
+   "ad": "Vagon Tantuni",
+   "ilce": "Beylikdüzü",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pizza-bulls-pendik",
+   "ad": "Pizza Bulls",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "adile-sultan-ev-yemekleri-umraniye-restorani-umraniye",
+   "ad": "Adile Sultan Ev Yemekleri - Ümraniye Restoranı",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "noodle-house-sisli",
+   "ad": "Noodle House",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "foca-balik-restaurant-atasehir",
+   "ad": "Foça Balık Restaurant",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Organic, 2025-03-16)"
+   ],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "millet-sofrasi-beykoz",
+   "ad": "Millet Sofrası",
+   "ilce": "Beykoz",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (ENOTFOUND / ENOTFOUND)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "nevale-mutfak-besiktas",
+   "ad": "Nevale Mutfak",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (nevalemutfak.dijital.menu → dijital.menu)"
+   ],
+   "site": "kayıtlı bağlantı resmî site değil (dijital.menu)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "isil-garden-rooftop-restaurant-ve-turkish-cuisine-fatih",
+   "ad": "Işıl Garden Rooftop Restaurant & Turkish Cuisine",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "mama-bowl-kozyatagi-kadikoy",
+   "ad": "Mama Bowl Kozyatağı",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2025-06-14)"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "glutensiz-ada-maltepe",
+   "ad": "Glutensiz Ada",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sandal-balik-sariyer",
+   "ad": "Sandal Balık",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "the-hunger-umraniye-limonlu-cadde-umraniye",
+   "ad": "The Hunger Ümraniye Limonlu Cadde",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "et-dunyasi-uskudar",
+   "ad": "Et Dünyası",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "isola-sisli",
+   "ad": "Isola",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cihangir-sosyal-tesisleri-beyoglu",
+   "ad": "Cihangir sosyal tesisleri",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "revma-balik-besiktas",
+   "ad": "Revma Balık",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "mandi-sebam-fatih",
+   "ad": "Mandı Sebam",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / AbortError)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe",
+   "ad": "Maltepe Belediyesi Seyirtepe Sosyal Tesisleri",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "aslanbey-ciftligi-pendik",
+   "ad": "Aslanbey Çiftliği",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "takanik-balik-park-sariyer",
+   "ad": "Takanik Balık Park",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / AbortError)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "donerci-celal-usta-umraniye-atakent-subesi-umraniye",
+   "ad": "Dönerci Celal Usta - Ümraniye (Atakent) Şubesi",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "huqqa-uskudar",
+   "ad": "Huqqa",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "muptela-kahvalti-brunch-atasehir",
+   "ad": "Müptela Kahvaltı Brunch",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (muptelakahvalti.com → muptelakahvalti.com.tr)"
+   ],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ringa-sea-food-besiktas",
+   "ad": "Ringa Sea Food",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-08)"
+   ]
+  },
+  {
+   "slug": "massa-bistro-turkish-kitchen-fatih",
+   "ad": "Massa Bistro Turkish Kitchen",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Organic, 2026-10-15)"
+   ],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "musaade-meyhane-kadikoy",
+   "ad": "Müsaade Meyhane",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "mintika-kebap-ve-pide-ve-lahmacun-ve-meze-maltepe",
+   "ad": "MINTIKA Kebap & Pide & Lahmacun & Meze",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gardas-cag-kebap-pendik",
+   "ad": "Gardaş Cag Kebap",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "safran-pide-borek-salonu-umraniye",
+   "ad": "Safran Pide Börek Salonu",
+   "ilce": "Ümraniye",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "tugbis-manti-uskudar",
+   "ad": "Tuğbiş Mantı",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ara-gurme-lahmacun-pide-kebap-sisli",
+   "ad": "Ara Gurme Lahmacun Pide Kebap",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pizeria-quattro-beyoglu",
+   "ad": "Pizeria Quattro",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "OSM öğesi silinmiş (2026-11-12)"
+   ],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "OSM öğesi silinmiş"
+   ]
+  },
+  {
+   "slug": "ortaklar-kebab-lahmacun-fatih",
+   "ad": "Ortaklar Kebab Lahmacun",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "olivia-s-pizzeria-kadikoy",
+   "ad": "Olivia's Pizzeria",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "coffeeboss-istanbul-maltepe",
+   "ad": "CoffeeBoss Istanbul",
+   "ilce": "Maltepe",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "hook-balik-pendik",
+   "ad": "Hook Balık",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + mahalle"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "vagabondo-s-pizzeria-sariyer",
+   "ad": "Vagabondo's Pizzeria",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "zeynel-gulkardesler-kebap-salonu-uskudar",
+   "ad": "Zeynel Gülkardeşler Kebap Salonu",
+   "ilce": "Üsküdar",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "alacati-balikcisi-atasehir",
+   "ad": "Alaçatı Balıkçısı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sushi-ve-spice-besiktas",
+   "ad": "Sushi & Spice",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (AbortError / AbortError)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "onurbalaban-kadikoy",
+   "ad": "OnurBalaban",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ercan-burger-pendik",
+   "ad": "Ercan Burger",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (UND_ERR_CONNECT_TIMEOUT / AbortError)",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "yenikoy-kavak-balikcisi-sariyer",
+   "ad": "Yeniköy Kavak Balıkçısı",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "zhu-istanbul-sisli",
+   "ad": "Zhû İstanbul",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "miss-pizza-sishane-beyoglu",
+   "ad": "Miss Pizza Şişhane",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sirdas-lokanta-fatih",
+   "ad": "Sırdaş Lokanta",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "yenikoy-lokantasi-sariyer",
+   "ad": "Yeniköy Lokantası",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "ethem-efendi-kahvalti-atasehir",
+   "ad": "Ethem Efendi Kahvaltı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + mahalle"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "mrjade-italy-istanbul-beyoglu",
+   "ad": "mrJADE Italy İstanbul",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "whisper-kitchen-bar-besiktas",
+   "ad": "Whisper Kitchen Bar",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "divella-bistro-restaurant-fatih",
+   "ad": "Divella Bistro Restaurant",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gunaydin-kofte-doner-pendik",
+   "ad": "Günaydın Köfte Döner",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bolpi-gurme-pide-ve-lahmacun-sisli",
+   "ad": "Bolpi Gurme Pide & Lahmacun",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "marmaris-expres-atasehir",
+   "ad": "Marmaris Expres",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "sinop-manti-besiktas",
+   "ad": "Sinop Mantı",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "fener-restaurant-fatih",
+   "ad": "Fener Restaurant",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pizza-rucola-pendik",
+   "ad": "Pizza Rucola",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + mahalle"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "catcat-nisantasi-sisli",
+   "ad": "ÇATÇAT Nişantaşı",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "hidden-garden-sultanat-fatih",
+   "ad": "Hidden Garden Sultanat",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "bysteak-sariyer",
+   "ad": "Bysteak",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açılmadı (ENOTFOUND / ENOTFOUND)",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kartal-kozde-doner-sisli",
+   "ad": "Kartal Közde Döner",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (Vespucci, 2025-04-13)"
+   ],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "donerci-ali-usta-atasehir-atasehir",
+   "ad": "Dönerci Ali Usta Ataşehir",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "site başka alana yönleniyor (aliusta.com.tr → donercialiusta.com)"
+   ],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "antakya-kebap-asmali-beyoglu",
+   "ad": "Antakya Kebap Asmalı",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "vira-vira-balik-besiktas",
+   "ad": "Vira Vira Balık",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "hocapasa-pidecisi-fatih",
+   "ad": "Hocapaşa Pidecisi",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "yako-balik-kadikoy",
+   "ad": "Yako Balık",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [
+    "OSM adı değişmiş: \"Yako Balık\" → \"Kalis Lokanta\" (sürüm 2, 2026-10-29)"
+   ],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "OSM adı değişmiş",
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "burger-yiyelim-pendik",
+   "ad": "Burger Yiyelim",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pide-ban-sariyer",
+   "ad": "Pide Ban",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sisli-balikcisi-sisli",
+   "ad": "Şişli Balıkçısı",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "gardas-cag-kebap-atasehir",
+   "ad": "Gardaş Cağ Kebap",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "paylaşılan site (2 kayıt): şube bölümü bulunamadı",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "bursa-kebapcisi-beyoglu",
+   "ad": "Bursa Kebapçisi",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "hanedan-et-besiktas",
+   "ad": "Hanedan Et",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "pidem-fatih",
+   "ad": "Pidem",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "cluster-society-kadikoy",
+   "ad": "Cluster Society",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "zoom-bahce-cafe-restaurant-sisli",
+   "ad": "Zoom Bahçe Cafe Restaurant",
+   "ilce": "Şişli",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "le-mejnun-ocakbasi-atasehir",
+   "ad": "Le'Mejnun Ocakbaşı",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kurucesme-aybalik-besiktas",
+   "ad": "Kuruçeşme AYBALIK",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "queb-lounge-fatih",
+   "ad": "Queb Lounge",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "sushico-pendik",
+   "ad": "SushiCo",
+   "ilce": "Pendik",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "site açıldı, ad bulunamadı",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "uzunya-sariyer",
+   "ad": "Uzunya",
+   "ilce": "Sarıyer",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "resmî site (2026-11-12): ad + ilçe"
+   ],
+   "isaret": [],
+   "site": "site açıldı, ad var; sokak ve telefon yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "mercan-kebap-salonu-besiktas",
+   "ad": "Mercan Kebap Salonu",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [
+    "OSM son düzenleme mobil uygulamadan (CoMaps, 2025-10-12)"
+   ],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "agora-meyhanesi-1890-fatih",
+   "ad": "AGORA Meyhanesi 1890",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "pide-nova-kadikoy",
+   "ad": "Pide Nova",
+   "ilce": "Kadıköy",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "tasfirin-atasehir",
+   "ad": "TaşFırın",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "komun-beyoglu",
+   "ad": "Komün",
+   "ilce": "Beyoğlu",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_suspected, 2026-11-07)"
+   ]
+  },
+  {
+   "slug": "pidepark-besiktas",
+   "ad": "Pidepark",
+   "ilce": "Beşiktaş",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "kapanış kaydı (closed_confirmed, 2026-11-06)"
+   ]
+  },
+  {
+   "slug": "aksaray-restaurant-fatih",
+   "ad": "Aksaray Restaurant",
+   "ilce": "Fatih",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  },
+  {
+   "slug": "kilisli-omer-usta-atasehir",
+   "ad": "Kilisli Ömer Usta",
+   "ilce": "Ataşehir",
+   "kategori": "cat.restaurant",
+   "dalga": 1,
+   "kanit": [],
+   "zayif": [],
+   "isaret": [],
+   "site": "kayıtlı resmî site yok",
+   "neden": [
+    "güçlü faaliyet kanıtı bulunamadı"
+   ]
+  }
+ ]
+}
