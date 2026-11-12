@@ -35,7 +35,10 @@ ok("Japon Erdal ana hikâye; kapak hakkı işletme izniyle kayıtlı", !!je && j
 ok("tek öne çıkan hikâye", pkg.filter((a) => a.featured).length === 1);
 ok("öne çıkan hikâye kapaksız olamaz", bad0({ kind: "hikaye", featured: true }));
 ok("yazı içi fotoğraflar hak kayıtlı ve kendi sunucumuzda", pkg.every((a) => (a.gallery ?? []).every((g) => /^\/(seckisi\/gorsel|media\/foto)\//.test(g.src) && g.rightsRef.length > 3 && existsSync(new URL(`public${g.src}`, root)))));
-ok("kapak dosyaları mevcut", pkg.every((a) => a.cover.state === "yok" || existsSync(new URL(`public${a.cover.src}`, root))));
+ok("kapak dosyaları mevcut", pkg.every((a) => a.cover.state === "yok" || (
+  existsSync(new URL(`public${a.cover.src}`, root)) &&
+  (!a.cover.leadingPhoto || existsSync(new URL(`public${a.cover.leadingPhoto.src}`, root)))
+)));
 ok("Japon Erdal videoları oynatılarak doğrulanmış", !!je?.media && je.media.videos.length > 0 && je.media.videos.every((v) => !!v.verifiedAt));
 ok("sahiplik ilişkisi ticari ilişki gösterilmeden reddedilir", bad0({ ownership: { tr: "x", en: "y" } }));
 ok("her yazıda kaynak ve işletme kaynağı", pkg.every((a) => a.sources.some((s) => s.kind === "isletme")));
