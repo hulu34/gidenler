@@ -28,7 +28,9 @@ const ER = erisimP && existsSync(erisimP) ? J(erisimP) as Record<string, { statu
 const GR = gorunumP && existsSync(gorunumP) ? J(gorunumP) as Record<string, Record<string, boolean | number | string>> : null;
 const PROFILES = new Set(existsSync("content/profiles") ? readdirSync("content/profiles").map((f) => f.replace(/\.json$/, "")) : []);
 
-const all: (RealVenueRecord & Record<string, any>)[] = [...V, ...I].map((r) => ({ ...r, kind: FIX[r.slug]?.kind ?? r.kind }));
+/* FAALIYET=<faaliyet-kaniti.json>: faaliyet kanıtı paketi uygulanmış gibi bellekte birleştirilir (dosyalar değişmez; öngörü ölçümü) */
+const FA = process.env.FAALIYET ? new Map((J(process.env.FAALIYET).uygulanan as { slug: string; alanlar: Record<string, string> }[]).map((x) => [x.slug, x.alanlar])) : null;
+const all: (RealVenueRecord & Record<string, any>)[] = [...V, ...I].map((r) => ({ ...r, ...(FA && !r.verifiedAt ? FA.get(r.slug) : undefined), kind: FIX[r.slug]?.kind ?? r.kind }));
 const GENERIC_KIND = new Set(["Restoran", "Kafe", "Bar"]);
 const CAFE_KINDS = new Set(["Kahveci", "Kafe", "Pastane", "Fırın", "Tatlıcı"]), BAR_KINDS = new Set(["Bar", "Pub"]);
 const tel = (p?: string) => phoneKey(p) ?? "";
