@@ -33,7 +33,8 @@ const denetle = (s, x, sonuc) => {
   if (sonuc === "reopened" && !(x.kanitlar ?? []).some((k) => k.sinyal === "açık" && k.guc === "güçlü" && /Resmî/.test(k.kaynak))) hata.push(`${s}: yeniden açık için resmî güçlü açık sinyali yok`);
 };
 const kural = E.kural.map((x) => { denetle(x.slug, x, x.islem === "yeni-supheli" ? x.kayit.state : null); /* kural satırı durum değiştirmez */ return { ...x, kimlik: kimlikOf(x.slug) }; });
-const sahip = E.sahip.map((x) => { denetle(x.slug, x, x.yama.state); if (!x.kimlikKaniti) hata.push(`${x.slug}: kimlik kanıtı yok`); return { ...x, kimlik: kimlikOf(x.slug) }; });
+const sahip = E.sahip.map((x) => { denetle(x.slug, x, x.yama.state); if (!x.kimlikKaniti) hata.push(`${x.slug}: kimlik kanıtı yok`);
+  if (x.onay && !(x.onay.karar === "onaylandı" && /^\d{4}-\d\d-\d\d$/.test(x.onay.tarih ?? "") && x.onay.kaynak)) hata.push(`${x.slug}: onay kaydı eksik`); return { ...x, kimlik: kimlikOf(x.slug) }; });
 const kalsin = Object.fromEntries(Object.entries(E.kalsin).map(([s, x]) => { denetle(s, x, "closed_suspected"); return [s, { ...x, kimlik: kimlikOf(s) }]; }));
 const acikIsaret = Object.fromEntries(Object.entries(E.acikIsaret).map(([s, x]) => { denetle(s, x, null); return [s, { ...x, kimlik: kimlikOf(s) }]; }));
 /* kapsam: bütün şüpheli kayıtlar karar almalı */

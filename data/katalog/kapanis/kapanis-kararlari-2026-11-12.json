@@ -371,6 +371,13 @@
      "https://aseocakbasi.com/"
     ]
    },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu",
+    "kapsamDisi": "Profil adının \"Ase Ocakbaşı\" yapılması bu onaya dahil değil; ayrı sahip kararı"
+   },
    "kimlik": {
     "ad": "Arda Ocakbaşı",
     "sube": null,
@@ -425,6 +432,12 @@
      "https://www.openstreetmap.org/changeset/184309885"
     ]
    },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu"
+   },
    "kimlik": {
     "ad": "The Hunger Ümraniye Limonlu Cadde",
     "sube": null,
@@ -469,6 +482,12 @@
     "sources": [
      "https://www.sutis.com.tr/subeler/"
     ]
+   },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu"
    },
    "kimlik": {
     "ad": "Emirgan Sütiş",

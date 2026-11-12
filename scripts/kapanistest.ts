@@ -98,6 +98,17 @@ for (const x of K.kural) {
 { const d = kopya(); calis(d); const out = J(join(d, "data/real/kapanis.json"));
   for (const x of K.sahip) t(`${x.slug}: varsayılan çalıştırmada sahip kararı uygulanmadı`, JSON.stringify(out[x.slug]) === JSON.stringify(KAP[x.slug]));
   const r = calis(d, "--sahip=bilinmeyen-slug"); t("bilinmeyen onay raporlanıyor, hiçbir şey uygulanmıyor", r.sahip === 0 && r.bilinmeyenOnay.includes("bilinmeyen-slug")); }
+/* sahip onayları (2026-11-12, "Üçü de onay"): kayıtlı; --sahip=onayli yalnız onaylıları uygular; Arda'da ad değişmez */
+for (const x of K.sahip) t(`${x.slug}: onay kaydı (karar, tarih, kaynak)`, x.onay?.karar === "onaylandı" && x.onay.tarih === "2026-11-12" && !!x.onay.kaynak);
+t("Arda onayı ad değişikliğini kapsamıyor", /ayrı sahip kararı/.test(K.sahip.find((x: any) => x.slug === "arda-ocakbasi-umraniye").onay.kapsamDisi ?? ""));
+{ const d = kopya(); const r = calis(d, "--sahip=onayli"); const out = J(join(d, "data/real/kapanis.json"));
+  const onayli = K.sahip.filter((x: any) => x.onay?.karar === "onaylandı").map((x: any) => x.slug);
+  t("--sahip=onayli: onaylıların hepsi ve yalnız onlar", r.sahip === onayli.length && JSON.stringify(r.sahipOnayli) === JSON.stringify(onayli) && r.atlanan.length === 0, JSON.stringify(r));
+  for (const x of K.sahip) t(`[onayli] ${x.slug}: durum ${x.yama.state}`, out[x.slug].state === x.yama.state);
+  const v2 = J(join(d, "data/real/venues.json")) as Record<string, any>[]; t("[onayli] Arda'nın katalog adı değişmedi", v2.find((v) => v.slug === "arda-ocakbasi-umraniye")?.name === bySlug.get("arda-ocakbasi-umraniye")?.name);
+  t("[onayli] kesin kapalı sayısı 35 (The Hunger çıkar, Emirgan girer)", Object.values(out).filter((v: any) => v?.state === "closed_confirmed").length === 35);
+  const h1 = hash(join(d, "data/real/kapanis.json")); const r2 = calis(d, "--sahip=onayli");
+  t("[onayli] tekrar çalıştırma: 0 değişiklik, dosya bayt bayt aynı", r2.kural === 0 && r2.sahip === 0 && hash(join(d, "data/real/kapanis.json")) === h1); }
 for (const x of K.sahip) {
   const d = kopya(); const r = calis(d, `--sahip=${x.slug}`); const out = J(join(d, "data/real/kapanis.json"));
   t(`[${x.slug}] tek onay yalnız onu uygular`, r.sahip === 1);

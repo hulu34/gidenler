@@ -6,7 +6,7 @@ Dal: `veri/kapanis-isaretleri`. Taban Production kodu: `feature/investor-v1` @ 7
 
 | Durum | Ne |
 |---|---|
-| Planlanan | 7 kural değişikliği + 3 sahip kararı |
+| Planlanan | 7 kural değişikliği + 3 sahip kararı (üçü de 12.11.2026'da onaylandı) |
 | Yerelde hazırlanan | karar dosyası, uygulama betiği, testler; yerelde uygulanıp ölçüldü, sonra geri alındı |
 | Preview'da doğrulanan | yok (Neon dal sınırı, Engelli) |
 | Production'da yayımlanan | yok |
@@ -14,10 +14,11 @@ Dal: `veri/kapanis-isaretleri`. Taban Production kodu: `feature/investor-v1` @ 7
 **Uygulama** (Codex, yayın sırasında):
 ```
 node scripts/katalog/kapanis-uygula.mjs data/katalog/kapanis/kapanis-kararlari-2026-11-12.json --yaz
-node scripts/katalog/kapanis-uygula.mjs data/katalog/kapanis/kapanis-kararlari-2026-11-12.json --yaz --sahip=<onaylanan slug'lar>
+node scripts/katalog/kapanis-uygula.mjs data/katalog/kapanis/kapanis-kararlari-2026-11-12.json --yaz --sahip=onayli
 ```
 - İlk komut yalnız görünür etkisi olmayan 7 kural değişikliğini yazar.
-- 3 sahip kararı yalnız `--sahip=` ile, onay verilen kayıt için uygulanır. Betik bunları kendiliğinden uygulamaz.
+- **3 sahip kararı onaylandı** (12.11.2026, "Üçü de onay"). Onaylar karar dosyasında kayıtlı (`sahip[].onay`). `--sahip=onayli` yalnız onay kaydı olanları uygular; düz `--yaz` hâlâ hiçbir sahip kararını uygulamaz.
+- **Arda Ocakbaşı:** Onay yalnız kapanış durumunu kapsıyor. Profil adının "Ase Ocakbaşı" yapılması ayrı sahip kararı.
 
 **Kurallar** (kararlar `scripts/katalog/kapanis-karar.mjs` tarafından denetlenir; ihlalde çıktı yazılmaz):
 - **Kesin kapanış:** En az iki bağımsız kapanış sinyali gerekir ve en az biri Google dışı ve güçlü olmalı. Tek bir Google ya da tek bir OSM sinyali yetmez.
@@ -81,11 +82,11 @@ Mevcut 35 kesin kapanışın Google dışı ikinci kaynağı:
 | Et-Inn Kebap & Steak | şüpheli | Google (çelişkili) | Site yanıt veriyor (içerik okunamadı); sipariş platformunda listeli | düşük | **Kural:** yalnız not; şüphe kalıyor |
 | Blak Coffee Co. | şüpheli | Google (eşleşme yok) | Sipariş platformunda Cihannüma şubesi | düşük | **Kural:** yalnız not; şüphe kalıyor |
 
-## 5. Sahip kararı bekleyen işletmeler
+## 5. Sahip kararları (üçü de onaylandı, 12.11.2026)
 
-| Mekân | Tür | Öneri | Görünür etki |
+| Mekân | Tür | Onaylanan karar | Görünür etki |
 |---|---|---|---|
-| Arda Ocakbaşı | isim değişikliği | şüpheli → yeniden açık; ad "Ase Ocakbaşı" ayrı karar | Yok; kalite sınıfı A'ya çıkar |
+| Arda Ocakbaşı | isim değişikliği | şüpheli → yeniden açık. **Bekleyen:** ad "Ase Ocakbaşı" ayrı karar | Yok; kalite sınıfı A'ya çıkar |
 | The Hunger Ümraniye Limonlu Cadde | çelişkili kanıt | kesin kapalı → şüpheli | **Var:** kapanış notu kalkar, listelere ve Sor'a döner, Google puanı varsa görünür |
 | Emirgan Sütiş (Arnavutköy kaydı) | şube kapanışı (marka açık) | şüpheli → kesin kapalı. Sinyaller: resmî şube listesinde Arnavutköy yok (güçlü) + konumdaki kapalı Google kaydı (zayıf) | **Var:** kapanış notu, listelerden ve Sor'dan çıkar, Google puanı gizlenir |
 
@@ -131,12 +132,14 @@ Hiçbirinde `state` ya da `checkedAt` değişmiyor. Kesin kapalı sayısı 35 ka
 
 | Test | Sonuç | Başarılı / Toplam |
 |---|---|---|
-| kapanistest | Geçti | 479/479 |
+| kapanistest | Geçti | 490/490 |
 | … 7 kural değişikliği ayrı ayrı: yalnız o kayıt, yalnız note/sources, beklenen değer, diğer veri dosyaları bayt bayt aynı, tekrar çalıştırma 0 | Geçti | 7/7 kayıt |
 | … sahip kararları varsayılan çalıştırmada uygulanmıyor; tek onay yalnız o kaydı uyguluyor | Geçti | 3/3 kayıt |
 | … 792 kaydın kimliği tekil; veri dosyaları bayt bayt aynı; kapanış kaydı yalnız hedeflerde değişiyor (kural ve kural + sahip) | Geçti | 2/2 durum |
 | … tam tekrar çalıştırma: 0 değişiklik, dosya bayt bayt aynı | Geçti | 2/2 durum |
 | … sahip kararı: 27 tek sinyalli kesin kapanış kayıtlı, kesin kapalı ve pakette dokunulmamış | Geçti | 27/27 kayıt |
+| … onaylı kip (`--sahip=onayli`): yalnız onaylı 3 kayıt; Arda'nın katalog adı değişmiyor; kesin kapalı 35; tekrar çalıştırma 0 | Geçti | 1/1 |
+| Onaylı kipte Katalog / Arama / Sor + dizin / Google puanı / Ana sayfa | Geçti | 52/52 · 49/49 · 322/322 · 103/103 · 31/31 |
 | kapanistest bozuk girdi denemeleri (tek sinyalle kesinleştirme; checkedAt'i değiştiren betik) | Geçti (hata yakalandı) | 2/2 |
 | Katalog / Arama / SEO (kural ve kural + sahip) | Geçti | 52/52 · 49/49 · 49/49 |
 | Ana sayfa / V8 | Geçti | 31/31 · 33/33 |

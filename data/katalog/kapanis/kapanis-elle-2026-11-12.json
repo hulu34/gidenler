@@ -282,6 +282,13 @@
     "sources": [
      "https://aseocakbasi.com/"
     ]
+   },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu",
+    "kapsamDisi": "Profil adının \"Ase Ocakbaşı\" yapılması bu onaya dahil değil; ayrı sahip kararı"
    }
   },
   {
@@ -327,6 +334,12 @@
      "https://thehunger.com.tr/subeler",
      "https://www.openstreetmap.org/changeset/184309885"
     ]
+   },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu"
    }
   },
   {
@@ -363,6 +376,12 @@
     "sources": [
      "https://www.sutis.com.tr/subeler/"
     ]
+   },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu"
    }
   }
  ],

@@ -4,6 +4,7 @@
    - "sahip" satırları (profil ve listeleri etkileyebilir) yalnız --sahip=<slug,slug|hepsi> ile, sahip onayı verilenler uygulanır;
      yama alanları kayda yazılır, eski not korunur ve yeninin önüne eklenir.
    Kayıt beklenen durumda değilse (state değişmiş, yeni şüphe zaten var) atlanır ve raporlanır. Production veritabanına bir şey yazmaz.
+   --sahip=onayli: karar dosyasında sahip onayı (onay.karar = "onaylandı") kayıtlı olanların hepsi uygulanır (yayın komutu).
    --yalniz=<slug>: yalnız o kaydın kural satırı (ve onaylıysa sahip satırı) uygulanır; tek tek test için.
    Kullanım: node scripts/katalog/kapanis-uygula.mjs <kapanis-kararlari.json> [--yaz] [--sahip=a,b|hepsi] [--yalniz=slug] */
 import { readFileSync, writeFileSync } from "node:fs";
@@ -12,7 +13,7 @@ const yaz = args.includes("--yaz"); const sahipArg = args.find((a) => a.startsWi
 const K = JSON.parse(readFileSync(kp, "utf8"));
 const P = "data/real/kapanis.json"; const KAP = JSON.parse(readFileSync(P, "utf8"));
 const yalniz = args.find((a) => a.startsWith("--yalniz="))?.slice(9) ?? null;
-const onayli = new Set(sahipArg === "hepsi" ? K.sahip.map((x) => x.slug) : sahipArg.split(",").filter(Boolean));
+const onayli = new Set(sahipArg === "hepsi" ? K.sahip.map((x) => x.slug) : sahipArg === "onayli" ? K.sahip.filter((x) => x.onay?.karar === "onaylandı").map((x) => x.slug) : sahipArg.split(",").filter(Boolean));
 const rapor = { kural: 0, sahip: 0, atlanan: [], bilinmeyenOnay: [...onayli].filter((s) => !K.sahip.some((x) => x.slug === s)) };
 const kaynakEkle = (r, s) => { if (!s?.length) return r; const eski = r.sources ?? []; return { ...r, sources: [...eski, ...s.filter((u) => !eski.includes(u))] }; };
 for (const x of K.kural) {
