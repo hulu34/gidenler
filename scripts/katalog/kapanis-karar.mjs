@@ -50,6 +50,13 @@ const kesin = Object.entries(KAP).filter(([s, r]) => !s.startsWith("_") && r.sta
 });
 if (hata.length) { console.error(hata.join("\n")); process.exit(1); }
 const say = (a, f) => a.reduce((m, x) => ((m[f(x)] = (m[f(x)] ?? 0) + 1), m), {});
+/* sahip kararları: kapsamı üretilen listeden çözülür (karar metni değil, kayıt listesi saklanır) */
+const sahipKararlari = (E.sahipKararlari ?? []).map((k) => {
+  const kayit = /tek sinyal/.test(k.konu) ? kesin.filter((x) => x.sinif === "yalnız Google (tek sinyal)").map((x) => x.slug) : [];
+  if (!kayit.length) hata.push(`sahip kararı kapsamı boş: ${k.konu}`);
+  return { ...k, kayitSayisi: kayit.length, kayitlar: kayit };
+});
+if (hata.length) { console.error(hata.join("\n")); process.exit(1); }
 const ozet = { kural: kural.length, sahip: sahip.length, kalsin: Object.keys(kalsin).length, acikIsaret: Object.keys(acikIsaret).length, tur: say([...kural, ...sahip, ...Object.values(kalsin)], (x) => x.tur.replace(/ \(.*$/, "")), kesinKapanis: say(kesin, (x) => x.sinif) };
-writeFileSync(out, JSON.stringify({ _aciklama: `${E._aciklama} Bu dosya kapanis-karar.mjs çıktısıdır; data/real/kapanis.json'a kapanis-uygula.mjs yazar (sahip kararları yalnız --sahip ile).`, tarih: E.tarih, ozet, kural, sahip, kalsin, acikIsaret, kesinKapanis: kesin }, null, 1) + "\n");
+writeFileSync(out, JSON.stringify({ _aciklama: `${E._aciklama} Bu dosya kapanis-karar.mjs çıktısıdır; data/real/kapanis.json'a kapanis-uygula.mjs yazar (sahip kararları yalnız --sahip ile).`, tarih: E.tarih, ozet, kural, sahip, kalsin, acikIsaret, kesinKapanis: kesin.map((x) => ({ ...x, sahipKarari: sahipKararlari.find((k) => k.kayitlar.includes(x.slug))?.karar ?? null })), sahipKararlari }, null, 1) + "\n");
 console.log(JSON.stringify(ozet, null, 1));

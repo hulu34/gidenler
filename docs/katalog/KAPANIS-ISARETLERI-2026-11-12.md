@@ -51,11 +51,12 @@ Mevcut 35 kesin kapanışın Google dışı ikinci kaynağı:
 | Çelişkili kanıt | 2 | The Hunger Ümraniye (güçlü), Mama Bowl (zayıf) (§4) |
 | **Yalnız Google (tek sinyal)** | **27** | aşağıda |
 
-**Yeni kurala uymayan 27 kesin kapanış:** Bu kayıtlar önceki denetimde tek bir Google görünümüyle kesinleştirilmiş.
+**Tek Google sinyaline dayanan 27 kesin kapanış — sahip kararı: kesin kalsın (12.11.2026).**
 - **Kayıtlar:** Acı Biber, Ala Türk Mutfağı, Bishop, Çekmeköy Nefist Döner, Cluster Society, CoffeeBoss, Curtis, Dubb Indian, Frontiere, Gardaş Cağ Kebap, Gospoda 1882, Gram, Hira Han, Köprüaltı, Lalezar Meyhanesi, Olivia's Pizzeria, Ono, Öz Pide, Palulu Cumali, Pidepark, Rice House, Tepsi Et Başakşehir, Usturmaca Balık, Vagabondo's, Whisper Kitchen Bar, Yeniköy Kavak Balıkçısı, Zoom Bahçe.
-- **OSM durumu:** OSM'de bu kayıtlar için ne kapanış ne açılış izi var.
-- **Bu pakette:** Hiçbiri değiştirilmedi.
-- **Seçenekler:** Şüpheye indirmek bu mekânları listelere ve Sor'a geri getirir. Kesin bırakmak yeni kurala aykırı kalır. Bu sahip kararı.
+- **Dayanak:** Önceki denetimde tek bir Google görünümüyle kesinleştirildiler; OSM'de ne kapanış ne açılış izi var.
+- **Karar:** Kayıtlar değişmiyor, kesin kapalı kalıyorlar. Karar `kapanis-elle` dosyasında (`sahipKararlari`) ve üretilen kararlarda kayıt bazında (`kesinKapanis[].sahipKarari`) yazılı.
+- **Kuralın kapsamı:** İki bağımsız sinyal kuralı yeni kesinleştirmelere uygulanıyor; bu 27 kayda geriye dönük uygulanmadı.
+- **Yeniden inceleme:** Bu kayıtlardan birinde Google dışı bir açık sinyali (resmî site, OSM yerinde kontrol, sahadan not) çıkarsa o kayıt ayrıca incelenir.
 
 ## 2. İsim değişikliği
 
@@ -87,7 +88,6 @@ Mevcut 35 kesin kapanışın Google dışı ikinci kaynağı:
 | Arda Ocakbaşı | isim değişikliği | şüpheli → yeniden açık; ad "Ase Ocakbaşı" ayrı karar | Yok; kalite sınıfı A'ya çıkar |
 | The Hunger Ümraniye Limonlu Cadde | çelişkili kanıt | kesin kapalı → şüpheli | **Var:** kapanış notu kalkar, listelere ve Sor'a döner, Google puanı varsa görünür |
 | Emirgan Sütiş (Arnavutköy kaydı) | şube kapanışı (marka açık) | şüpheli → kesin kapalı. Sinyaller: resmî şube listesinde Arnavutköy yok (güçlü) + konumdaki kapalı Google kaydı (zayıf) | **Var:** kapanış notu, listelerden ve Sor'dan çıkar, Google puanı gizlenir |
-| 27 tek sinyalli kesin kapanış | — | §1 | Şüpheye inerlerse **var** |
 
 **Ayrıca, kayıt düzeltmesi gerekenler** (bu pakette yok, ayrı küçük veri işi):
 - **Site bağlantısı kaldırılmalı:** Privato Cafe (alan adı satışta), Altınkapı (alan adının süresi dolmuş), Burger Hopdaddy (otomatik üretilmiş sayfa), Desi Vibes (park alanı; OSM'ye göre açık).
@@ -131,11 +131,12 @@ Hiçbirinde `state` ya da `checkedAt` değişmiyor. Kesin kapalı sayısı 35 ka
 
 | Test | Sonuç | Başarılı / Toplam |
 |---|---|---|
-| kapanistest | Geçti | 423/423 |
+| kapanistest | Geçti | 479/479 |
 | … 7 kural değişikliği ayrı ayrı: yalnız o kayıt, yalnız note/sources, beklenen değer, diğer veri dosyaları bayt bayt aynı, tekrar çalıştırma 0 | Geçti | 7/7 kayıt |
 | … sahip kararları varsayılan çalıştırmada uygulanmıyor; tek onay yalnız o kaydı uyguluyor | Geçti | 3/3 kayıt |
 | … 792 kaydın kimliği tekil; veri dosyaları bayt bayt aynı; kapanış kaydı yalnız hedeflerde değişiyor (kural ve kural + sahip) | Geçti | 2/2 durum |
 | … tam tekrar çalıştırma: 0 değişiklik, dosya bayt bayt aynı | Geçti | 2/2 durum |
+| … sahip kararı: 27 tek sinyalli kesin kapanış kayıtlı, kesin kapalı ve pakette dokunulmamış | Geçti | 27/27 kayıt |
 | kapanistest bozuk girdi denemeleri (tek sinyalle kesinleştirme; checkedAt'i değiştiren betik) | Geçti (hata yakalandı) | 2/2 |
 | Katalog / Arama / SEO (kural ve kural + sahip) | Geçti | 52/52 · 49/49 · 49/49 |
 | Ana sayfa / V8 | Geçti | 31/31 · 33/33 |

@@ -890,7 +890,8 @@
    "ilce": "Küçükçekmece",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "ala-turk-mutfagi-umraniye",
@@ -898,7 +899,8 @@
    "ilce": "Ümraniye",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "bishop-bakirkoy",
@@ -906,7 +908,8 @@
    "ilce": "Bakırköy",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-07"
+   "checkedAt": "2026-11-07",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "cekmekoy-nefist-doner-cekmekoy",
@@ -914,7 +917,8 @@
    "ilce": "Çekmeköy",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "cluster-society-kadikoy",
@@ -922,7 +926,8 @@
    "ilce": "Kadıköy",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-07"
+   "checkedAt": "2026-11-07",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "coffeeboss-istanbul-maltepe",
@@ -930,7 +935,8 @@
    "ilce": "Maltepe",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "curtis-restaurant-ve-bar-besiktas",
@@ -938,7 +944,8 @@
    "ilce": "Beşiktaş",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "dubb-indian-bosphorus-restaurant-sisli",
@@ -946,7 +953,8 @@
    "ilce": "Şişli",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-07"
+   "checkedAt": "2026-11-07",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "frontiere-istanbul-besiktas",
@@ -954,7 +962,8 @@
    "ilce": "Beşiktaş",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "gardas-cag-kebap-atasehir",
@@ -962,7 +971,8 @@
    "ilce": "Ataşehir",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Markanın sitesi açık; şube bilgisi sitede yok (yalnız bu şube kapanmış olabilir)",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "gasto-nisantasi-sisli",
@@ -970,7 +980,8 @@
    "ilce": "Şişli",
    "sinif": "Google dışı zayıf ikinci kaynak",
    "official": "Resmî site yalnız sunucu varsayılan sayfasını gösteriyor (içerik kaldırılmış)",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": null
   },
   {
    "slug": "gospoda-1882-beykoz",
@@ -978,7 +989,8 @@
    "ilce": "Beykoz",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-07"
+   "checkedAt": "2026-11-07",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "gram-sisli",
@@ -986,7 +998,8 @@
    "ilce": "Şişli",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "hira-han-beykoz",
@@ -994,7 +1007,8 @@
    "ilce": "Beykoz",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "kiss-the-frog-seafood-brasserie-sariyer",
@@ -1002,7 +1016,8 @@
    "ilce": "Sarıyer",
    "sinif": "Google dışı güçlü ikinci kaynak",
    "official": "Resmî site yanıt vermiyor",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": null
   },
   {
    "slug": "koprualti-sariyer",
@@ -1010,7 +1025,8 @@
    "ilce": "Sarıyer",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "lalezar-meyhanesi-sisli",
@@ -1018,7 +1034,8 @@
    "ilce": "Şişli",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Otel restoranı; otelin sitesi otomatik isteğe kapalı, doğrulanamadı",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "mama-bowl-kozyatagi-kadikoy",
@@ -1026,7 +1043,8 @@
    "ilce": "Kadıköy",
    "sinif": "çelişkili (zayıf)",
    "official": "Markanın sitesi açık; şube bilgisi sitede yok (yalnız bu şube kapanmış olabilir)",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": null
   },
   {
    "slug": "niwa-tuzla",
@@ -1034,7 +1052,8 @@
    "ilce": "Tuzla",
    "sinif": "Google dışı zayıf ikinci kaynak",
    "official": "Resmî alan adı ilgisiz bir yurt dışı siteye yönleniyor (alan adı bırakılmış)",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": null
   },
   {
    "slug": "olivia-s-pizzeria-kadikoy",
@@ -1042,7 +1061,8 @@
    "ilce": "Kadıköy",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "ono-restaurant-basaksehir",
@@ -1050,7 +1070,8 @@
    "ilce": "Başakşehir",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-07"
+   "checkedAt": "2026-11-07",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "oz-pide-kartal",
@@ -1058,7 +1079,8 @@
    "ilce": "Kartal",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "palulu-cumali-adana-kebapcisi-kadikoy",
@@ -1066,7 +1088,8 @@
    "ilce": "Kadıköy",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "pidepark-besiktas",
@@ -1074,7 +1097,8 @@
    "ilce": "Beşiktaş",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "refik-beyoglu",
@@ -1082,7 +1106,8 @@
    "ilce": "Beyoğlu",
    "sinif": "Google dışı güçlü ikinci kaynak",
    "official": "Bağımsız kaynaklar: Turizm Günlüğü (5 Eylül 2020, 'Asmalımescit'teki Refik kapandı'), Bianet (2020 sonbaharı), Mes Prestiges ('1954-2020')",
-   "checkedAt": "2026-11-08"
+   "checkedAt": "2026-11-08",
+   "sahipKarari": null
   },
   {
    "slug": "rice-house-uskudar",
@@ -1090,7 +1115,8 @@
    "ilce": "Üsküdar",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "tahtalikoy-catalca",
@@ -1098,7 +1124,8 @@
    "ilce": "Çatalca",
    "sinif": "Google dışı güçlü ikinci kaynak",
    "official": "Resmî alan adı (tahtalikoy.com.tr) artık işletmeye ait değil: 30/10/2024 tarihli BTK kararıyla yasa dışı bahis gerekçesiyle erişime kapatılmış; alan adı sahipsiz kalmış",
-   "checkedAt": "2026-11-08"
+   "checkedAt": "2026-11-08",
+   "sahipKarari": null
   },
   {
    "slug": "tepsi-et-basaksehir-basaksehir",
@@ -1106,7 +1133,8 @@
    "ilce": "Başakşehir",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Markanın sitesi açık; şube bilgisi sitede yok (yalnız bu şube kapanmış olabilir)",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "the-hunger-umraniye-limonlu-cadde-umraniye",
@@ -1114,7 +1142,8 @@
    "ilce": "Ümraniye",
    "sinif": "çelişkili (güçlü)",
    "official": "Markanın sitesi açık; şube bilgisi sitede yok (yalnız bu şube kapanmış olabilir)",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": null
   },
   {
    "slug": "usturmaca-balik-restorant-beylikduzu",
@@ -1122,7 +1151,8 @@
    "ilce": "Beylikdüzü",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-07"
+   "checkedAt": "2026-11-07",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "vagabondo-s-pizzeria-sariyer",
@@ -1130,7 +1160,8 @@
    "ilce": "Sarıyer",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "whisper-kitchen-bar-besiktas",
@@ -1138,7 +1169,8 @@
    "ilce": "Beşiktaş",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "yako-balik-kadikoy",
@@ -1146,7 +1178,8 @@
    "ilce": "Kadıköy",
    "sinif": "isim değişikliği ya da yeni işletme (ikinci kaynak sayılmadı)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": null
   },
   {
    "slug": "yenikoy-kavak-balikcisi-sariyer",
@@ -1154,7 +1187,8 @@
    "ilce": "Sarıyer",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-06"
+   "checkedAt": "2026-11-06",
+   "sahipKarari": "kesin kalsın"
   },
   {
    "slug": "zoom-bahce-cafe-restaurant-sisli",
@@ -1162,7 +1196,49 @@
    "ilce": "Şişli",
    "sinif": "yalnız Google (tek sinyal)",
    "official": "Kayıtlı resmî site yok",
-   "checkedAt": "2026-11-07"
+   "checkedAt": "2026-11-07",
+   "sahipKarari": "kesin kalsın"
+  }
+ ],
+ "sahipKararlari": [
+  {
+   "konu": "yalnız Google (tek sinyal) dayanaklı 27 kesin kapanış",
+   "karar": "kesin kalsın",
+   "tarih": "2026-11-12",
+   "kaynak": "sahip (sohbet yanıtı: \"Kesin kalsın\")",
+   "kapsam": "kapanis-karar.mjs çıktısındaki kesinKapanis listesinde sinif = \"yalnız Google (tek sinyal)\" olan kayıtlar",
+   "etki": "kapanis.json değişmez; kayıtlar kesin kapalı kalır. İki bağımsız sinyal kuralı yeni kesinleştirmelere uygulanır, bu kayıtlara geriye dönük uygulanmadı.",
+   "yenidenDegerlendirme": "Kayıtlardan birinde Google dışı açık sinyali (resmî site, OSM yerinde kontrol, sahadan not) çıkarsa o kayıt ayrıca incelenir.",
+   "kayitSayisi": 27,
+   "kayitlar": [
+    "aci-biber-kucukcekmece",
+    "ala-turk-mutfagi-umraniye",
+    "bishop-bakirkoy",
+    "cekmekoy-nefist-doner-cekmekoy",
+    "cluster-society-kadikoy",
+    "coffeeboss-istanbul-maltepe",
+    "curtis-restaurant-ve-bar-besiktas",
+    "dubb-indian-bosphorus-restaurant-sisli",
+    "frontiere-istanbul-besiktas",
+    "gardas-cag-kebap-atasehir",
+    "gospoda-1882-beykoz",
+    "gram-sisli",
+    "hira-han-beykoz",
+    "koprualti-sariyer",
+    "lalezar-meyhanesi-sisli",
+    "olivia-s-pizzeria-kadikoy",
+    "ono-restaurant-basaksehir",
+    "oz-pide-kartal",
+    "palulu-cumali-adana-kebapcisi-kadikoy",
+    "pidepark-besiktas",
+    "rice-house-uskudar",
+    "tepsi-et-basaksehir-basaksehir",
+    "usturmaca-balik-restorant-beylikduzu",
+    "vagabondo-s-pizzeria-sariyer",
+    "whisper-kitchen-bar-besiktas",
+    "yenikoy-kavak-balikcisi-sariyer",
+    "zoom-bahce-cafe-restaurant-sisli"
+   ]
   }
  ]
 }

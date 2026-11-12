@@ -55,6 +55,15 @@ t("kural satırlarında kesin kapanış üretilmiyor", K.kural.every((x: any) =>
 t("isim/yeni işletme sinyali kapanış sayılmıyor (Yako)", K.kesinKapanis.find((x: any) => x.slug === "yako-balik-kadikoy")?.sinif.startsWith("isim"));
 t("yeni işletme eski profile yazılmıyor (Kalis Lokanta)", !JSON.stringify(K.kural.concat(K.sahip)).includes('"name":') && /dönüştürülmez/.test(K.kural.find((x: any) => x.slug === "yako-balik-kadikoy").ek));
 t("35 kesin kapanış sınıflandı", K.kesinKapanis.length === kayitlar.filter(([, r]) => r.state === "closed_confirmed").length);
+/* sahip kararı (2026-11-12): tek Google sinyalli kesin kapanışlar kesin kalır; paket bunlara dokunmaz */
+const tekSinyal = K.kesinKapanis.filter((x: any) => x.sinif === "yalnız Google (tek sinyal)").map((x: any) => x.slug);
+const kk = K.sahipKararlari?.find((k: any) => /tek sinyal/.test(k.konu));
+t("sahip kararı kayıtlı: tek sinyalli kesin kapanışlar kesin kalsın", kk?.karar === "kesin kalsın" && kk.tarih === "2026-11-12" && !!kk.kaynak);
+t("sahip kararının kapsamı listeyle aynı (27)", tekSinyal.length === 27 && JSON.stringify(kk?.kayitlar) === JSON.stringify(tekSinyal));
+for (const s of tekSinyal) {
+  t(`${s}: kesin kapalı ve sahip kararı işli`, KAP[s]?.state === "closed_confirmed" && K.kesinKapanis.find((x: any) => x.slug === s).sahipKarari === "kesin kalsın");
+  t(`${s}: pakette bu kayda değişiklik yok`, !K.kural.some((x: any) => x.slug === s) && !K.sahip.some((x: any) => x.slug === s));
+}
 
 /* geçici kopya: data/real tamamı + betik */
 const hash = (p: string) => createHash("sha256").update(readFileSync(p)).digest("hex");

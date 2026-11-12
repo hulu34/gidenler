@@ -614,5 +614,16 @@
     }
    ]
   }
- }
+ },
+ "sahipKararlari": [
+  {
+   "konu": "yalnız Google (tek sinyal) dayanaklı 27 kesin kapanış",
+   "karar": "kesin kalsın",
+   "tarih": "2026-11-12",
+   "kaynak": "sahip (sohbet yanıtı: \"Kesin kalsın\")",
+   "kapsam": "kapanis-karar.mjs çıktısındaki kesinKapanis listesinde sinif = \"yalnız Google (tek sinyal)\" olan kayıtlar",
+   "etki": "kapanis.json değişmez; kayıtlar kesin kapalı kalır. İki bağımsız sinyal kuralı yeni kesinleştirmelere uygulanır, bu kayıtlara geriye dönük uygulanmadı.",
+   "yenidenDegerlendirme": "Kayıtlardan birinde Google dışı açık sinyali (resmî site, OSM yerinde kontrol, sahadan not) çıkarsa o kayıt ayrıca incelenir."
+  }
+ ]
 }
