@@ -47,16 +47,30 @@ await pool.query('INSERT INTO session(id,token,user_id,expires_at) VALUES ($1,$2
 const cookie2='__Secure-better-auth.session_token='+encodeURIComponent(token2+'.'+createHmac('sha256',secret).update(token2).digest('base64'));
 const session2=await fetch(origin+'/api/auth/get-session/',{headers:{Cookie:cookie2}}).then(r=>r.json());assert.equal(session2.user?.id,uid2);
 const beforeSecurity=(await pool.query('SELECT to_jsonb(r) AS row FROM reviews r ORDER BY id')).rows;
-const valid={slug:selected[0].slug,body:'Bu yalnız izole yetki testi için kullanılan geçerli bir deneyim metnidir.',visitMonth:new Date().toISOString().slice(0,7),overall:8,ratings:{},returnIntent:'evet',disclosure:'none'};
+// PATCH accepts ReviewBody only; POST separately accepts the venue slug.
+const valid={body:'Bu yalnız izole yetki testi için kullanılan geçerli bir deneyim metnidir.',visitMonth:new Date().toISOString().slice(0,7),overall:8,ratings:{},returnIntent:'evet',disclosure:'none'};
 for(const method of ['PATCH','DELETE']){const r=await fetch(origin+'/api/reviews/'+savedIds[0]+'/',{method,headers:{Cookie:cookie2,Origin:origin,'Content-Type':'application/json'},...(method==='PATCH'?{body:JSON.stringify(valid)}:{})});assert.equal(r.status,404,'Other user '+method);}
 for(const path of ['/api/moderation/photos/','/api/moderation/google-puan/']){const r=await fetch(origin+path,{headers:{Cookie:cookie2}});assert.equal(r.status,403,'Normal user moderation');const a=await fetch(origin+path);assert.equal(a.status,401,'Anonymous moderation');}
 const invalid=await fetch(origin+'/api/reviews/',{method:'POST',headers:{Cookie:cookie,Origin:origin,'Content-Type':'application/json'},body:'{}'});assert.equal(invalid.status,400);
 const badOrigin=await fetch(origin+'/api/reviews/'+savedIds[0]+'/',{method:'PATCH',headers:{Cookie:cookie,Origin:'https://untrusted.invalid','Content-Type':'application/json'},body:JSON.stringify(valid)});assert.equal(badOrigin.status,403);
 const tampered=await fetch(origin+'/api/auth/get-session/',{headers:{Cookie:cookie+'tampered'}}).then(r=>r.json());assert.equal(tampered?.user??null,null);
+await pool.query('UPDATE session SET expires_at=$1 WHERE user_id=$2',[new Date(Date.now()-60000),uid2]);
+const expired=await fetch(origin+'/api/auth/get-session/',{headers:{Cookie:cookie2}}).then(r=>r.json());assert.equal(expired?.user??null,null);
 assert.deepEqual((await pool.query('SELECT to_jsonb(r) AS row FROM reviews r ORDER BY id')).rows,beforeSecurity,'Rejected operations changed reviews');
 assert.equal((await fetch(origin+'/mekan/this-venue-does-not-exist/')).status,404);
-console.log('HTTP PASS: cross-account PATCH/DELETE denied; moderation 401/403; CSRF, invalid body, tampered session denied; review rows unchanged');
+// Exercise only the local OAuth initiation endpoint, never Google's servers or callback exchange.
+const identitiesBefore=(await pool.query('SELECT (SELECT count(*) FROM "user") AS users, (SELECT count(*) FROM account) AS accounts')).rows;
+const oauthStart=(requestOrigin,callbackURL)=>fetch(origin+'/api/auth/sign-in/social/',{method:'POST',headers:{Origin:requestOrigin,'Content-Type':'application/json'},body:JSON.stringify({provider:'google',callbackURL,disableRedirect:true})});
+const oauth=await oauthStart(origin,origin+'/benim/');assert.equal(oauth.status,200,'Local OAuth initiation');
+const authorization=new URL((await oauth.json()).url);assert.equal(authorization.origin,'https://accounts.google.com');assert.equal(authorization.searchParams.get('redirect_uri'),origin+'/api/auth/callback/google');assert.equal(authorization.searchParams.get('prompt'),'select_account');
+assert.deepEqual(authorization.searchParams.get('scope').split(/\s+/).sort(),['email','openid','profile']);assert.ok(authorization.searchParams.get('state'));
+const oauthCookies=oauth.headers.getSetCookie();assert.ok(oauthCookies.length);for(const c of oauthCookies){assert.match(c,/HttpOnly/i);assert.match(c,/Secure/i);assert.match(c,/SameSite=Lax/i);}
+assert.equal((await oauthStart('https://untrusted.invalid',origin+'/benim/')).status,403,'OAuth untrusted origin');
+assert.equal((await oauthStart(origin,'https://untrusted.invalid/')).status,403,'OAuth external return address');
+assert.deepEqual((await pool.query('SELECT (SELECT count(*) FROM "user") AS users, (SELECT count(*) FROM account) AS accounts')).rows,identitiesBefore,'OAuth initiation created an account');
+console.log('HTTP PASS: cross-account PATCH/DELETE denied; moderation 401/403; CSRF, invalid body, tampered/expired session denied; review rows unchanged');
+console.log('HTTP PASS: LOCAL OAuth initiation URI/scopes/cookie flags and origin/return-address guards; no Google exchange and no account created');
 await pool.end();
 console.log('HTTP PASS: append endpoint replay and target guard; prepared session + 3 reviews (A/OSM, A/business, B1) linked correctly; NOT Google OAuth');
-writeFileSync('night-http-evidence.json',JSON.stringify({sha:process.env.GITHUB_SHA??'local-uncommitted',postgres:17,catalog:expectedCatalog,newProfiles:218,newForms:218,b1Warnings:102,sitemapNew:218,anonymousRejected:true,csrfRejected:true,googleOAuthTested:false,preparedSessionReviews:3,appendEndpointReplay:true,crossAccountEditDenied:true,crossAccountDeleteDenied:true,moderationAccessDenied:true,tamperedSessionRejected:true,rejectedOperationsPreserveReviews:true,results},null,2));
+writeFileSync('night-http-evidence.json',JSON.stringify({sha:process.env.GITHUB_SHA??'local-uncommitted',postgres:17,catalog:expectedCatalog,newProfiles:218,newForms:218,b1Warnings:102,sitemapNew:218,anonymousRejected:true,csrfRejected:true,googleOAuthTested:false,localOAuthInitiationOnly:{redirectUri:origin+'/api/auth/callback/google',scopes:['email','openid','profile'],secureHttpOnlySameSiteLax:true,untrustedOriginDenied:true,externalReturnAddressDenied:true,createdAccounts:0},preparedSessionReviews:3,appendEndpointReplay:true,crossAccountEditDenied:true,crossAccountDeleteDenied:true,moderationAccessDenied:true,tamperedSessionRejected:true,expiredSessionRejected:true,rejectedOperationsPreserveReviews:true,results},null,2));
 console.log('HTTP PASS: 218 profile + 218 form, 102 B1 warning, 218 sitemap, auth/CSRF guards; real Google sign-in NOT tested');
