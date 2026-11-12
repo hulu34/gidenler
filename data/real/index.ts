@@ -4,6 +4,7 @@ import isletme from "./isletme.json";
 import duzeltmeler from "./duzeltmeler.json";
 import izinliFotograflar from "./izinli-fotograflar.json";
 import { CLOSED_CONFIRMED } from "@/lib/closure";
+import neolokalProfile from "@/content/profiles/neolokal-beyoglu.json";
 
 /* ==========================================================================
    GERÇEK MEKÂNLAR (V8) — kimlik verisi OpenStreetMap'ten (© OpenStreetMap katkıcıları, ODbL).
@@ -147,6 +148,8 @@ export const realVenueRecords = merged.records.map((r) => {
 const PERMITTED = izinliFotograflar as Record<string, (VenuePhoto & { rightsRef: string })[]>;
 const withPermitted = (slug: string, list?: VenuePhoto[]) => { const own = PERMITTED[slug] ?? []; const all = [...own.map(({ rightsRef: _r, ...p }) => p), ...(list ?? [])]; return all.length ? all : undefined; };
 const permittedImage = (slug: string) => { const c = PERMITTED[slug]?.[0]; return c ? { src: c.src, alt: c.alt, credit: c.credit } : undefined; };
+/* Gösterim düzeltmesi; tohum/ekleme girdisi olan realVenueRecords ve mevcut DB satırı değişmez. */
+const VERIFIED_ADDRESSES: Record<string, typeof neolokalProfile.address> = { [neolokalProfile.slug]: neolokalProfile.address };
 
 export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   id: `ent.r.${r.slug}`,
@@ -159,10 +162,10 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   subcategory: r.kind,
   experienceTotal: 0,
   location: { city: "İstanbul", district: r.district, neighborhood: r.neighborhood, precision: r.adresDuzeyi === "sokak" ? "street" : r.location?.precision, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
-  address: r.address,
+  address: VERIFIED_ADDRESSES[r.slug]?.value ?? r.address,
   hours: r.openingHours,
   tags: r.cuisine,
-  source: { provider: sourceOf(r), ref: r.ref, importedAt: r.importedAt },
+  source: { provider: sourceOf(r), ref: r.ref, importedAt: r.importedAt, ...(VERIFIED_ADDRESSES[r.slug] ? { address: VERIFIED_ADDRESSES[r.slug] } : {}) },
   contact: { phone: r.phone, website: r.website, instagram: r.instagram, openingHours: r.openingHours },
   reservation: { mode: "contact" },
   business: { claimed: false },

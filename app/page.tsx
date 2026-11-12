@@ -13,7 +13,7 @@ import { DemoNotice } from "@/components/ui/DemoNotice";
 import { DEMO_VISIBLE } from "@/data/entities";
 import { isRestaurantTarget, realVenueRecords } from "@/data/real";
 import { AskAI } from "@/components/home/AskAI";
-import { QuickFind } from "@/components/home/HomeSecki";
+import { HomeSecki, QuickFind } from "@/components/home/HomeSecki";
 import { HomeSorCompact } from "@/components/home/HomeSor";
 import { googleRatingMap } from "@/lib/gpuan/read";
 import { activeEntities } from "@/data/real";
@@ -148,9 +148,9 @@ export default async function HomePage() {
           </section>
         )}
         {DEMO_VISIBLE && <ContinueModule />}
-        {/* Seçki ana sayfada tek yazıyla öne çıkarılmaz (yalnız birden çok yayımlanmış yazı olunca); /seckisi/ aynen kalır. */}
         {/* gerçek site: demodaki pano tasarımı gerçek veriyle (popüler, en yüksek puan, konuşulan, yükselen, kaynaklı, sana göre) */}
         {!DEMO_VISIBLE && <RealBoard />}
+        {!DEMO_VISIBLE && <HomeSecki />}
         {/* İLK KULLANICI: sıralamalardan sonra deneyim çağrısı → fotoğraflı keşif → semt/kategori araçları */}
         {!DEMO_VISIBLE && <SonYemekBolum />}
         {DEMO_VISIBLE ? <RealVenues /> : <HomeDiscover />}

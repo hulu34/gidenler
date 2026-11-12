@@ -144,6 +144,8 @@ export interface RealSource {
   /** "node/123", "way/456", "isletme/<slug>" */
   ref: string;
   importedAt: ISODate;
+  /** Kimlik kaydı korunurken gösterimde kullanılan, resmî siteden doğrulanmış adres. */
+  address?: { value: string; url: string; checkedAt: ISODate };
 }
 
 export interface VenueContact {
