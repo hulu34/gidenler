@@ -19,11 +19,25 @@ for(const [engine,width] of profiles){
   await p.reload({waitUntil:'networkidle'});await p.locator('[data-sor-kart="develi-samatya-fatih"]').waitFor();assert.equal(await p.getByText('Anladığım: Üsküdar',{exact:true}).count(),0);
   await p.goto(origin+'/sor/?q='+encodeURIComponent("Üsküdar'da Develi Samatya'ya alternatif kebapçı öner"),{waitUntil:'networkidle'});
   await p.locator('[data-sor-kart]').first().waitFor();assert.equal(await p.locator('[data-sor-kart="develi-samatya-fatih"]').count(),0);await expect(p.getByText('Anladığım: Üsküdar · kebap',{exact:true})).toBeVisible();
+  const actual="9. ay sevgililik ayı kutlamasına gidecem. erkek arkadasımla. balık sevmiyor kırmızı et yemiyor ve sadece viski içiyor. onu nereye goturebilirim";
+  await p.goto(origin+'/sor/?q='+encodeURIComponent(actual),{waitUntil:'networkidle'});
+  await expect(p.getByText('Bu kriterlerin tamamına uyan doğrulanmış mekân bulamadım.',{exact:false})).toBeVisible();
+  assert.equal(await p.locator('[data-sor-kart]').count(),0);
+  await expect(p.getByText(/Anladığım:.*balık olmasın.*kırmızı et olmasın.*viski.*özel gün/)).toBeVisible();
+  assert.equal(await p.getByText(/Anladığım:.*gösterişsiz/).count(),0);await fit();
+  await p.getByRole('textbox',{name:'Sorun',exact:true}).fill('Balık sevmiyor dedim, neden balık önerdin?');
+  await p.getByRole('button',{name:'Sor',exact:true}).click();
+  await expect(p.locator('[data-sor-tur]').last().getByText(/Anladığım:.*kırmızı et olmasın.*viski.*özel gün/)).toBeVisible();
+  assert.equal(await p.locator('[data-sor-kart]').count(),0);await fit();
+  await p.screenshot({path:`night-evidence/preferences-${engine}-${width}.png`});
+  await p.reload({waitUntil:'networkidle'});await expect(p.getByText(/Anladığım:.*viski/)).toBeVisible();
+  // Reload replays only the URL question, never the prior tab's history.
+  assert.equal(await p.locator('[data-sor-tur]').count(),1);
   await p.goto(origin+'/mekan/sultan-kosesi-fatih/#bilgi',{waitUntil:'networkidle'});assert.equal(await p.locator('[data-location-precision="street"]').count(),2);assert.ok(!(await p.locator('iframe[title*="yaklaşık konum"]').getAttribute('src')).includes('marker='));await fit();
   await p.goto(origin+'/yaz/sultan-kosesi-fatih/',{waitUntil:'networkidle'});const draft='Türkçe taslak kontrolü: çığ, öğün, ışık, şef, İstanbul. '.repeat(100);
   await p.getByRole('textbox',{name:'Deneyim metni',exact:true}).fill(draft);await p.locator('[data-otomatik-taslak]').waitFor();await p.reload({waitUntil:'networkidle'});await expect(p.getByRole('textbox',{name:'Deneyim metni',exact:true})).toHaveValue(draft);await fit();
   await p.goto(origin+'/mekan/develi-samatya-fatih/',{waitUntil:'networkidle'});assert.ok((await p.getByRole('link',{name:'Web sitesi ↗',exact:true}).getAttribute('href')).startsWith('https://www.develi1912.com/'));await fit();
-  rows.push({engine,width,controlledAi:true,wrongDistrictRejected:true,explicitAlternativeDistrict:true,reload:true,turkishDraftChars:draft.length,b1Map:true,externalWebsiteLink:true});await browser.close();console.log('PASS browser',engine,width);
+  rows.push({engine,width,controlledAi:true,wrongDistrictRejected:true,explicitAlternativeDistrict:true,negativePreferences:true,correctionPreserved:true,whiskyUnverifiedNoCards:true,conversationReloadIsolation:true,reload:true,turkishDraftChars:draft.length,b1Map:true,externalWebsiteLink:true});await browser.close();console.log('PASS browser',engine,width);
 }
 // Instagram UA is simulated Chromium; it is not a physical Instagram browser.
 const browser=await chromium.launch();const c=await browser.newContext({viewport:{width:390,height:844},isMobile:true,userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Instagram 390.0'});
