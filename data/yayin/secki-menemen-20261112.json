@@ -1,0 +1,7 @@
+{
+  "purpose": "secki-menemen-only",
+  "baselineCommit": "721b1a1a3280b2f08141af2629d322cf5c9a2e11",
+  "baselineCount": 792,
+  "expectedCount": 793,
+  "slugs": ["menemen-besiktas"]
+}

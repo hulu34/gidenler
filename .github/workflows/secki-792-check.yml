@@ -1,0 +1,67 @@
+name: Secki after 792 isolated checks
+on:
+  push:
+    branches: [gorsel/secki-792-sonrasi-20261112]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: isolated-secki-only
+        ports: [5432:5432]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:isolated-secki-only@localhost:5432/postgres
+      DB_DRIVER: pg
+      DB_ADMIN_LOCAL: '1'
+      BETTER_AUTH_SECRET: isolated-secki-test-only-secret-at-least-32-chars
+      BETTER_AUTH_URL: http://localhost:3154
+      GOOGLE_CLIENT_ID: isolated-invalid
+      GOOGLE_CLIENT_SECRET: isolated-invalid
+      SECKI_TEST_ORIGIN: http://localhost:3154
+      SECKI_EVIDENCE_PATH: ${{ runner.temp }}/secki-append-evidence.json
+      SECKI_HTTP_EVIDENCE_PATH: ${{ runner.temp }}/secki-http-evidence.json
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Types and relevant regressions
+        run: |
+          npm run typecheck
+          npm run test:seckisi
+          npx tsx scripts/katalogtest.ts
+          npm run test:arama
+          npm run test:seo
+          npm run test:db
+          npm run test:gpuan
+      - name: PostgreSQL 17 single Menemen append
+        run: npx tsx scripts/secki-menemen-test.ts
+      - name: Build and isolated HTTP flows
+        run: |
+          npm run build > build-secki.log 2>&1
+          npm run start -- -p 3154 > server-secki.log 2>&1 &
+          for attempt in $(seq 1 30); do curl -fsS http://localhost:3154/ > /dev/null && break; sleep 1; done
+          npx tsx scripts/secki-http-test.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: secki-792-isolated-evidence
+          path: |
+            ${{ runner.temp }}/secki-append-evidence.json
+            ${{ runner.temp }}/secki-http-evidence.json
+            build-secki.log
+            server-secki.log
