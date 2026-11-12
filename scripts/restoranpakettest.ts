@@ -95,6 +95,10 @@ if (OW.length) {
   ok("koordinat yalnız OSM kaydından (Overture noktası kayda yazılmadı)", OW.every((v) => (v.kaliteSinifi === "A" && /^(node|way|relation)\/\d+$/.test(v.ref) && typeof v.lat === "number") || (v.kaliteSinifi === "A-konumsuz" && v.lat === undefined && v.location === undefined)));
   ok("paket açıklamasında Overture ve OSM atfı var", /Overture Maps Foundation/.test(P._aciklama ?? "") && /OpenStreetMap/.test(P._aciklama ?? ""));
 }
+/* 906 KİMLİĞİ (paket 20+): 906 dalıyla ortak kayıt ikinci profil açmaz; slug ve OSM kaydı 906'dakiyle aynıdır (V906=<v906.json>) */
+const V9 = process.env.V906 && existsSync(process.env.V906) ? new Map((JSON.parse(readFileSync(process.env.V906, "utf8")) as RealVenueRecord[]).map((v) => [v.slug, v])) : null;
+const R9 = P.eklenen.filter((e: { v906?: string }) => e.v906);
+if (V9 && R9.length) ok(`906 ortak kayıtlar (${R9.length}): slug, OSM kaydı ve ilçe 906 kimliğiyle aynı; Overture kimliği ve resmî site kanıtı var`, R9.every((e: { v906: string; slug: string }) => { const v = W.find((x) => x.slug === e.slug) as ORec | undefined; const o = V9.get(e.v906); return !!v && !!o && v.slug === o.slug && v.ref === o.ref && v.district === o.district && /906 dalındaki kimlik korundu/.test(v.verification ?? "") && !!v.overture; }));
 ok("ilk 456 kayıt değişmedi", (venues as RealVenueRecord[]).filter((v) => (v.wave ?? 0) < 2).length === 456);
 console.log(`\nrestoran paketi ${D}: ${pass} geçti, ${fail} kaldı`);
 process.exit(fail ? 1 : 0);
