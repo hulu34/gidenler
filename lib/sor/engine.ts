@@ -24,6 +24,7 @@ const within1 = (a: string, b: string) => {
 const tokenHit = (tok: string, term: string) => tok.startsWith(term) || (term.length >= 5 && tok[0] === term[0] && (within1(tok.slice(0, term.length), term) || within1(tok, term)));
 const hasTerm = (q: string, term: string) => {
   const t = fold(term), toks = q.split(" ");
+  if (t === "sade") return toks.includes("sade"); // "sadece" bir atmosfer tercihi değildir.
   if (!t.includes(" ")) return toks.some((x) => tokenHit(x, t));
   return q.includes(t) || t.split(" ").every((p) => toks.some((x) => tokenHit(x, p)));
 };
@@ -93,16 +94,19 @@ export const IntentSchema = z.object({
   attrs: z.array(z.string().max(20)).max(10), party: z.number().int().min(1).max(50).nullable(), name: z.string().max(80).nullable(), wholeCity: z.boolean(),
   /* kayıtlı listede olmayan semt ya da yemek: yalnız kayıt metninde aranır, bulunmazsa "yok" denir */
   areaText: z.string().max(40).nullable().default(null), term: z.string().max(40).nullable().default(null),
-  budgetMax: z.number().int().min(1).max(100000).nullable().default(null), notCuisines: z.array(z.string().max(20)).max(5).default([]),
+  budgetMax: z.number().int().min(1).max(100000).nullable().default(null), notCuisines: z.array(z.string().max(20)).max(15).default([]),
+  notFoods: z.array(z.enum(["kirmizi-et"])).max(1).default([]),
+  drinks: z.array(z.enum(["viski"])).max(1).default([]),
+  occasion: z.enum(["ozel-gun"]).nullable().default(null),
   /* "Beyoğlu dışında": bu semt/ilçedeki mekân önerilmez */
   notArea: z.string().max(40).nullable().default(null),
 }).strict();
 export type Intent = z.infer<typeof IntentSchema>;
-export const emptyIntent = (): Intent => ({ area: null, district: null, cuisine: null, dish: null, attrs: [], party: null, name: null, wholeCity: false, areaText: null, term: null, budgetMax: null, notCuisines: [], notArea: null });
+export const emptyIntent = (): Intent => ({ area: null, district: null, cuisine: null, dish: null, attrs: [], party: null, name: null, wholeCity: false, areaText: null, term: null, budgetMax: null, notCuisines: [], notArea: null, notFoods: [], drinks: [], occasion: null });
 /** Bilinen semt, mutfak, yemek ya da tercih sözcüğü: serbest metin (term) olarak ayrıca aranmaz. */
-export const isVocab = (s: string) => { const f = fold(s); return [...DISTRICTS, ...SUBAREAS.map((a) => a.name), ...CUISINES.flatMap((c) => c.terms), ...DISHES.flatMap((d) => d.terms), ...ATTRS.flatMap((a) => a.terms), "yemek", "yemegi", "yer", "mekan", "restoran", "ogle", "aksam"].some((t) => { const x = fold(t); return f === x || f.split(" ").every((w) => x.split(" ").includes(w) || ["yemegi", "yemek", "yer", "bir", "icin"].includes(w)); }); };
+export const isVocab = (s: string) => { const f = fold(s); return [...DISTRICTS, ...SUBAREAS.map((a) => a.name), ...CUISINES.flatMap((c) => c.terms), ...DISHES.flatMap((d) => d.terms), ...ATTRS.flatMap((a) => a.terms), "yemek", "yemegi", "yer", "mekan", "restoran", "ogle", "aksam", "viski", "whisky", "whiskey", "kirmizi et"].some((t) => { const x = fold(t); return f === x || f.split(" ").every((w) => x.split(" ").includes(w) || ["yemegi", "yemek", "yer", "bir", "icin"].includes(w)); }); };
 export const KNOWN = { areas: [...DISTRICTS, ...SUBAREAS.map((a) => a.name)], cuisines: CUISINES.map((c) => c.key), dishes: DISHES.map((d) => d.key), attrs: ATTRS.map((a) => a.key) };
-const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax || i.notArea);
+const hasHardFilter = (i: Intent) => !!(i.area || i.areaText || i.cuisine || i.term || i.name || i.budgetMax || i.notArea || i.notCuisines.length || i.notFoods.length || i.drinks.length);
 
 /* Sıradan sözcük tek başına ad sayılmaz: "pide nerede yenir" Yeni Lokanta'yı bulmaz; adın tamamı yazılmalı. */
 /* başka şehir adları tek başına mekân adı sayılmaz: "Bodrum'da balık" Bodrum Mantı değildir (tam adla yazılınca yine bulunur) */
@@ -144,7 +148,29 @@ function matchName(q: string): Venue | null {
   return best && best.raw >= 4 ? best.v : null;
 }
 
-const NEG = /^(olmasin|olmayan|istemiyorum|haric|disinda|degil|yok)/;
+const NEG = /^(olmasin|olmayan|istemiyor|istemem|istemez|istemeyen|sevmiyor|sevmem|sevmez|sevmeyen|sevmedi|yemiyor|yemem|yemez|yemeyen|yemedi|tuketmiyor|haric|disinda|degil|yok)/;
+const RED_MEAT_TERMS = ["kirmizi et", "et", "dana", "sigir", "kuzu", "koyun"];
+/** Scope negation to a food phrase; a partner's implicit refusal can refer to the previous clause. */
+function foodNegated(query: string, terms: string[]) {
+  const clauses = query.toLocaleLowerCase("tr").split(/[,;.!?]+|\b(?:ama|fakat|ancak)\b/).map(fold).filter(Boolean);
+  const allTerms = [...CUISINES.flatMap(c => c.terms), ...RED_MEAT_TERMS];
+  const cuisineWord = (x:string) => allTerms.some(t => fold(t).split(" ").some(w => tokenHit(x,w)));
+  return clauses.some((clause, index) => {
+    const toks = clause.split(" ");
+    const direct = terms.some(term => {
+      const words = fold(term).split(" ");
+      return toks.some((_, n) => words.every((w,k) => tokenHit(toks[n+k] ?? "",w)) && (() => {
+        for(let k=n+words.length;k<Math.min(toks.length,n+words.length+12);k++) {
+          if(NEG.test(toks[k]))return true;
+          if(!/^(ya|da|de|veya|ve|yada|ile|ne|bir|sey|yer|mekan|restoran[a-z]*|lokanta[a-z]*)$/.test(toks[k])&&!cuisineWord(toks[k]))return false;
+        }
+        return false;
+      })());
+    });
+    if(direct)return true;
+    return index>0 && !allTerms.some(t=>hasTerm(clause,t)) && /\b(sevgil[a-z]*|arkadas[a-z]*|esim|partner[a-z]*)\b/.test(clause) && toks.some(t=>NEG.test(t)) && terms.some(t=>hasTerm(clauses[index-1],t));
+  });
+}
 /** Yerel yorum. Modelsiz de çalışır; model yalnız ekleyebilir, yereldeki koşulu silemez. */
 export function parseQuery(query: string): Intent & { confident: boolean } {
   const full = fold(query);
@@ -161,16 +187,14 @@ export function parseQuery(query: string): Intent & { confident: boolean } {
   const q = full.split(" ").filter((t) => !areaWords.some((w) => tokenHit(t, w)) && !nameWords.includes(t) && !nameWords.some((w) => w.length >= 4 && t.startsWith(w))).join(" ");
   i.wholeCity = !i.area && /\bistanbul/.test(q);
   const toks = q.split(" ");
-  /* "pizza ya da burger dışında": olumsuzluk listenin bütün öğelerine uygulanır */
-  const LINK = new Set(["ya", "da", "de", "veya", "ve", "yada", "ile", "ne"]);
-  const isCuisineTok = (x: string) => CUISINES.some((c) => c.terms.some((t) => !fold(t).includes(" ") && tokenHit(x, fold(t))));
-  const negated = (terms: string[]) => terms.some((t) => { const f = fold(t); const n = toks.findIndex((x) => tokenHit(x, f)); if (n < 0) return false;
-    for (let k = n + 1; k < Math.min(toks.length, n + 6); k++) { if (NEG.test(toks[k])) return true; if (!LINK.has(toks[k]) && !isCuisineTok(toks[k]) && !/^(bir|sey|yer|mekan)$/.test(toks[k])) return false; }
-    return false; });
+  const negated = (terms:string[]) => foodNegated(query,terms);
   for (const c of CUISINES) if (c.terms.some((t) => hasTerm(q, t)) && negated(c.terms)) i.notCuisines.push(c.key);
   const dish = DISHES.find((d) => d.terms.some((t) => hasTerm(q, t)) && !negated(d.terms));
   if (dish) { i.dish = dish.key; i.cuisine = dish.cuisine; }
   else { const c = CUISINES.find((x) => !i.notCuisines.includes(x.key) && x.terms.some((t) => hasTerm(q, t))); if (c) i.cuisine = c.key; }
+  if (foodNegated(query, RED_MEAT_TERMS)) i.notFoods = ["kirmizi-et"];
+  if (["viski","whisky","whiskey"].some(t=>hasTerm(full,t)) && !foodNegated(query,["viski","whisky","whiskey"])) i.drinks = ["viski"];
+  if (/\b(kutlama[a-z]*|yildonum[a-z]*|donum[a-z]*|dogum gun[a-z]*)\b/.test(full)) i.occasion="ozel-gun";
   i.attrs = ATTRS.filter((a) => a.terms.some((t) => hasTerm(q, t))).map((a) => a.key);
   const pm = q.match(/\b(\d{1,2}) kisi/) ?? q.match(/\bbiz (\d{1,2})\b/), pw = q.match(/\b(iki|uc|dort|bes|alti|yedi|sekiz|dokuz|on) ?(kisi|kisiyiz)/);
   if (pm) i.party = Number(pm[1]); else if (pw) i.party = ["iki", "uc", "dort", "bes", "alti", "yedi", "sekiz", "dokuz", "on"].indexOf(pw[1]) + 2;
@@ -194,6 +218,12 @@ export function detectRefine(query: string): Refine | null {
   return null;
 }
 
+/** Dietary exclusions and a specified drink survive topic/area changes within this conversation. */
+export function carryFoodPreferences(prev: Intent | null | undefined, next: Intent): Intent {
+  const out = { ...next, notCuisines: [...new Set([...(prev?.notCuisines ?? []), ...next.notCuisines])].filter(c=>c!==next.cuisine), notFoods: [...new Set([...(prev?.notFoods ?? []), ...next.notFoods])], drinks: next.drinks.length ? [...next.drinks] : [...(prev?.drinks ?? [])], occasion: next.occasion ?? prev?.occasion ?? null };
+  return out;
+}
+
 /** Takip sorusu: yeni istekte söylenmeyen alanlar önceki bağlamdan gelir. Semt ve mutfak birlikte yenilenirse yeni konudur. */
 export function mergeIntent(prev: Intent | null | undefined, next: Intent, refine?: Refine | null): Intent {
   const fresh = !prev || (!refine && !!(next.area || next.areaText) && !!(next.cuisine || next.term)) || (!refine && !!next.name);
@@ -204,13 +234,13 @@ export function mergeIntent(prev: Intent | null | undefined, next: Intent, refin
   if (refine === "quieter" && !m.attrs.includes("sakin")) m.attrs = [...m.attrs, "sakin"];
   /* "başka semtte": önceki semt dışlanır (yalnız kaldırılmaz), ki aynı semtten öneri gelmesin */
   if (refine === "other_area") { if (prev?.area && !m.notArea) m.notArea = prev.area; m.area = null; m.district = null; m.areaText = null; }
-  return m;
+  return carryFoodPreferences(prev,{...m,notFoods:next.notFoods,drinks:next.drinks,occasion:next.occasion});
 }
 
 const textOf = (v: Venue) => [v.description, ...v.notes, v.secki?.text].filter(Boolean).join(". ");
 const distM = (a: Area, v: Venue) => { if (a.lat == null || v.lat == null || v.lng == null) return null; const dy = (v.lat - a.lat) * 111000, dx = (v.lng - a.lng!) * 111000 * Math.cos((a.lat * Math.PI) / 180); return Math.round(Math.hypot(dx, dy)); };
 /* olumsuz cümle kanıt değildir: "teras yok", "çocuk kabul edilmiyor" */
-const NEGATIVE = /\b(degil|yok|edilmez|edilmiyor|giremez|olmaz|bulunmuyor)\b/;
+const NEGATIVE = /\b(degil|yok|edilmez|edilmiyor|giremez|olmaz|bulunmuyor|sunulmuyor|dogrulanmadi|dogrulanmamis|belirsiz)\b/;
 function evidenceOf(v: Venue, terms: string[]) {
   for (const s of textOf(v).split(/[.!?\n]+/)) { const f = fold(s); if (terms.some((t) => f.includes(fold(t))) && !NEGATIVE.test(f)) return s.trim().slice(0, 160); }
   return null;
@@ -241,13 +271,30 @@ const SOSYAL = /\b(sosyal tesis|polis evi|orduevi|ordu evi|askeri gazino|belediy
 /* "uygun fiyat" ölçütü: fiyatı kayıtlı mekânların ortancası. Fiyatı bilinmesi ucuz olduğunu göstermez. */
 const PRICES = VENUES.map((v) => v.priceMedian).filter((p): p is number => p != null).sort((a, b) => a - b);
 export const PRICE_MID = PRICES.length ? PRICES[Math.floor(PRICES.length / 2)] : null;
+const RED_MEAT_KINDS = new Set(["Steakhouse","Kebapçı / Ocakbaşı","Dönerci","Burger","Köfteci","Tantunici","Ciğerci","Kokoreççi","Izgara"]);
+export function drinkEvidence(v: Venue): string | null {
+  // Only an explicit positive source/menu statement, never a venue category or general alcohol tag.
+  const rows=v.menu; // Genel içki grubu, fiyat araştırması veya belirsiz not servis kanıtı değildir.
+  return rows.find(row=>/\b(viski|whisky|whiskey)\b/.test(fold(row))&&!NEGATIVE.test(fold(row))) ?? null;
+}
+export function allowedByPreferences(v: Venue, i: Intent): boolean {
+  const name=fold(v.name);
+  for(const key of i.notCuisines){
+    const c=CUISINES.find(x=>x.key===key);
+    if(c && (c.kinds.includes(v.kind) || ((key!=="esnaf"||GENERIC_KINDS.has(v.kind)) && [...c.terms,...(c.text??[])].some(t=>hasTerm(name,t))) || (c.text??[]).some(t=>v.menu.some(m=>hasTerm(fold(m),t)))))return false;
+  }
+  if(i.notFoods.includes("kirmizi-et") && (RED_MEAT_KINDS.has(v.kind)||/\b(steak[a-z]*|biftek[a-z]*|kebap[a-z]*|kebab[a-z]*|ocakbasi|doner[a-z]*|burger[a-z]*|kofte[a-z]*|ciger[a-z]*|kokorec[a-z]*|tantuni[a-z]*|etci[a-z]*|et (?:lokant|restoran|mangal)[a-z]*|nusr et)\b/.test(name)))return false;
+  if(i.drinks.includes("viski")&&!drinkEvidence(v))return false;
+  return true;
+}
 function scoreVenue(v: Venue, i: Intent): Candidate | null {
+  if (!allowedByPreferences(v,i)) return null;
+  if(i.drinks.length && i.attrs.some(key=>{const a=ATTRS.find(a=>a.key===key);return a&&!PROFILE_ONLY.has(key)&&key!=="ekonomik"&&!verified(v,a);}))return null;
   const name = fold(v.name), addr = fold(`${v.address ?? ""} ${v.neighborhood ?? ""}`), menu = fold(v.menu.join(" ")), hay = fold(`${textOf(v)} ${v.menu.join(" ")}`);
   const why: string[] = [], caveats: string[] = []; let s = 0;
   let areaFit: Candidate["areaFit"] = null, dishHit = false;
   const named = i.name === v.slug;
   if (named) { s += 200; why.push("Adını sorduğun mekân."); }
-  if (!named) for (const k of i.notCuisines) { const c = CUISINES.find((x) => x.key === k); if (c?.kinds.includes(v.kind)) return null; }
   if (!named && i.notArea) { const sub = SUBAREAS.find((a) => a.name === i.notArea); if (sub ? fold(`${v.address ?? ""} ${v.neighborhood ?? ""}`).includes(fold(sub.name)) || ((d) => d != null && d <= 900)(distM(sub, v)) : fold(v.district) === fold(i.notArea)) return null; }
   if (i.area) {
     const sub = SUBAREAS.find((a) => a.name === i.area), t = fold(i.area);
@@ -309,6 +356,7 @@ function scoreVenue(v: Venue, i: Intent): Candidate | null {
   }
   /* Kamu kurumu sosyal tesisi (polis evi, orduevi, belediye tesisi): kayıt gerçek ama herkese açık bir restoran önerisi gibi öne çıkmaz */
   if (!named && SOSYAL.test(name)) { s -= 35; caveats.push("Kamu kurumuna ait sosyal tesis; giriş koşulunu gitmeden kontrol et."); }
+  if(i.drinks.includes("viski"))why.push(`Kaynaklı kaydında viski: ${drinkEvidence(v)}`);
   const sourced = !!(v.description || v.secki);
   /* Yazı ve profil sıralamaya puan katmaz: yalnız istekle ilgili olduğunda gerekçe olur */
   if (v.secki && (dishHit || named)) why.push(`Gidenler Seçkisi'nde yazısı var: "${v.secki.title}".`);
@@ -330,6 +378,7 @@ const up = (s: string) => s[0].toLocaleUpperCase("tr") + s.slice(1);
 /** Zorunlu koşullar burada uygulanır. Koşulu sağlamayan mekân öneri olarak dönmez; ayrı ve açıkça etiketli "alternatif"tir. */
 export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
   const label = i.dish ? DISHES.find((d) => d.key === i.dish)!.label : i.term ?? CUISINES.find((c) => c.key === i.cuisine)?.label;
+  if(i.drinks.length && !findCandidates(i,{...opts,limit:1}).length)return {...NONE,note:"Bu kriterlerin tamamına uyan doğrulanmış mekân bulamadım. Bu koşulları sağlayan kayıtlarda viski servisini doğrulayamadım.",question:"İçecek tercihini koruyarak farklı bir semt veya mutfakla bakalım mı?"};
   const asked = i.attrs.filter((a) => !PROFILE_ONLY.has(a)).map((k) => ATTRS.find((a) => a.key === k)!).filter(Boolean);
   /* yalnız nitelik: dayanak yoksa tahmini liste yok, tek soru */
   if (!hasHardFilter(i)) {
@@ -338,7 +387,10 @@ export function answer(i: Intent, opts: { exclude?: string[] } = {}): Answered {
     if (i.attrs.includes("populer") && !asked.length) return { ...NONE, note: "Gidenler puanı ya da popülerlik sıralaması henüz yayımlanmadı; \"en iyi\" diye bir mekân seçemem.", question: "Semt ya da mutfak söylersen kayıtlı bilgilerle önereyim." };
     return { ...NONE, note: asked.length ? `${up(asked.map((a) => a.label).join(" ve "))} kayıtlarımızda doğrulanmış değil; bu yüzden doğrudan mekân önermiyorum.` : "Bu istekten semt, mutfak ya da mekân adı çıkaramadım.", question: "Hangi semt ya da hangi mutfak olsun?" };
   }
-  if (i.name && !i.area && !i.cuisine) return { ...NONE, items: findCandidates(i, { ...opts, limit: 1 }), note: null, question: null };
+  if (i.name && !i.area && !i.cuisine) {
+    const items=findCandidates(i,{...opts,limit:1});
+    return {...NONE,items,note:items.length?null:"Bu kriterlerin tamamına uyan doğrulanmış mekân bulamadım.",question:null};
+  }
   const all = findCandidates(i, { ...opts, limit: 40 });
   let pool = all.filter((c) => c.areaFit !== "ilce");
   let alternatives: Candidate[] = [], altLabel: string | null = null, relaxed: string | null = null, question: string | null = null;

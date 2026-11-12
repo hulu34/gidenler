@@ -33,7 +33,7 @@ const AD: Record<string, string> = { samsun: "Samsun pidesi", lahmacun: "lahmacu
   sakin: "sakin", romantik: "romantik", gosterissiz: "gösterişsiz", ekonomik: "uygun fiyat", manzara: "manzara", cocuk: "çocuklu", turist: "misafir", aksam: "akşam yemeği", gec: "geç saat", vejetaryen: "vejetaryen", populer: "popüler" };
 const ad = (k: unknown) => (typeof k === "string" ? AD[k] ?? k : null);
 function Understood({ u }: { u: Record<string, unknown> }) {
-  const parts = [u.area, u.notArea ? `${u.notArea} dışı` : null, ad(u.dish ?? u.cuisine), u.term, ...((u.notCuisines as string[]) ?? []).map((c) => `${ad(c)} olmasın`), ...((u.attrs as string[]) ?? []).filter((a) => a !== "kalite").map(ad), u.party ? `${u.party} kişi` : null].filter(Boolean) as string[];
+  const parts = [u.area, u.notArea ? `${u.notArea} dışı` : null, ad(u.dish ?? u.cuisine), u.term, ...((u.notCuisines as string[]) ?? []).map((c) => `${ad(c)} olmasın`), ...((u.attrs as string[]) ?? []).filter((a) => a !== "kalite").map(ad), ...((u.notFoods as string[]) ?? []).map((f)=>f==="kirmizi-et"?"kırmızı et olmasın":null), ...((u.drinks as string[]) ?? []).map((d)=>d==="viski"?"viski":null), u.occasion==="ozel-gun"?"özel gün":null, u.party ? `${u.party} kişi` : null].filter(Boolean) as string[];
   return parts.length ? <p className="text-[12.5px] text-ink-3">Anladığım: {parts.join(" · ")}</p> : null;
 }
 

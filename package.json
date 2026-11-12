@@ -24,7 +24,8 @@
     "db:status": "tsx scripts/db-migrate.ts",
     "db:apply": "tsx scripts/db-migrate.ts --apply",
     "test:gpuan": "tsx scripts/gpuantest.ts",
-    "test:panel-rezervasyon": "tsx scripts/panel-rezervasyon-test.ts"
+    "test:panel-rezervasyon": "tsx scripts/panel-rezervasyon-test.ts",
+    "test:sor-tercih": "tsx scripts/sor-tercih-test.ts"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.7.12",

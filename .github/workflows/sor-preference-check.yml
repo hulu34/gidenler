@@ -1,0 +1,91 @@
+name: Sor preference safety and isolated acceptance
+on:
+  push:
+    branches: [duzeltme/sor-negatif-tercihler-v1]
+permissions:
+  contents: read
+concurrency:
+  group: sor-preference-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  isolated:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: isolated-night-only
+          POSTGRES_DB: gidenler_night
+        ports: [5432:5432]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:isolated-night-only@localhost:5432/gidenler_night
+      DB_DRIVER: pg
+      DB_ADMIN_LOCAL: '1'
+      GIDENLER_ISOLATED_TEST_DB: night-25
+      BETTER_AUTH_SECRET: isolated-night-only-secret-at-least-32-chars
+      BETTER_AUTH_URL: http://localhost:3150
+      GOOGLE_CLIENT_ID: isolated-invalid
+      GOOGLE_CLIENT_SECRET: isolated-invalid
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - name: Regression, existing logic and safety suites
+        run: |
+          npx tsc --noEmit
+          SOR_PREFERENCE_EVIDENCE=night-preference-evidence.json npx tsx scripts/sor-tercih-test.ts
+          npx tsx scripts/sor-ilce-test.ts
+          npx tsx scripts/sortest.ts
+          npx tsx scripts/sor-yayin-test.ts
+          npx tsx scripts/aramatest.ts
+          npx tsx scripts/seotest.ts
+          npx tsx scripts/b1-konum-test.ts
+          npx tsx scripts/dbtest.ts
+          NEXT_PUBLIC_SHOW_DEMO=true npx tsx scripts/dbtest.ts
+          npx tsx scripts/gpuantest.ts
+          npx tsx scripts/panel-rezervasyon-test.ts
+          npx tsx scripts/gecetest.ts
+          npx tsx scripts/ilkkullanicitest.ts
+          npx tsx scripts/medyatest.ts
+      - name: Atomic append, rollback and replay in isolated PostgreSQL
+        run: npx tsx scripts/night-postgres-test.ts
+      - name: Build and serve isolated application with controlled AI
+        env:
+          AI_PRIMARY_PROVIDER: groq
+          AI_PRIMARY_MODEL: openai/gpt-oss-120b
+          AI_FAST_PROVIDER: groq
+          AI_FAST_MODEL: openai/gpt-oss-20b
+          GROQ_API_KEY: isolated-fake-fixture
+          GROQ_BASE_URL: http://127.0.0.1:3152/v1
+        run: |
+          node scripts/night-ai-fixture.mjs > night-fixture.log 2>&1 &
+          npm run build > night-build.log 2>&1
+          npm run start -- -p 3150 > night-server.log 2>&1 &
+          for attempt in $(seq 1 40); do curl -fsS http://localhost:3150/ > /dev/null && break; sleep 1; done
+          node scripts/night-http-check.mjs
+      - name: Install browser QA tools outside the application
+        run: |
+          npm install --prefix "$RUNNER_TEMP/gidenler-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/gidenler-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Chromium and WebKit mobile simulations
+        env:
+          NIGHT_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/gidenler-browser/package.json
+        run: node scripts/night-browser-check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sor-preference-isolated-evidence
+          path: |
+            night-evidence/
+            night-http-evidence.json
+            night-preference-evidence.json
+            night-build.log
+            night-server.log
+            night-fixture.log
