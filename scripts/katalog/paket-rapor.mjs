@@ -31,7 +31,7 @@ L.push(`**Tablo 2 — Araştırma ve doğrulama sonuçları (${n} aday, birbirin
   `| B — eksik kanıt | ${B} | ${pct(B)} |`, `| C — güvenilir değil / kapsam dışı | ${C} | ${pct(C)} |`, `| Diğer elenenler | ${diger} | ${pct(diger)} |`, "");
 const top = P.slice().sort((a, b) => b.oncelikPuani - a.oncelikPuani).slice(0, 20);
 L.push(`**Tablo 3 — Yeni restoranlar (öncelik sırasına göre ilk ${top.length}; tam liste paket.json)**`, "", "| Restoran | İlçe | Mutfak | Kalite | Konum güveni | Kanıt |", "|---|---|---|---|---|---|",
-  ...top.map((r) => { const u = r.kaynak.find((k) => /^https?:/.test(k) && !k.includes("openstreetmap")); return `| ${r.ad} | ${r.ilce} | ${r.tur} | ${r.sinif} | ${r.sinif === "A" ? "OSM restoran kaydı" : "yok (Overture önerisi ayrı)"} | [${new URL(u).host.replace(/^www\./, "")}](${u}) |`; }), "");
+  ...top.map((r) => { const u = r.kaynak.find((k) => /^https?:/.test(k) && !k.includes("openstreetmap")); const esc = (x) => String(x).replace(/\|/g, "\\|"); return `| ${esc(r.ad)} | ${r.ilce} | ${esc(r.tur)} | ${r.sinif} | ${r.sinif === "A" ? "OSM restoran kaydı" : "yok (Overture önerisi ayrı)"} | [${new URL(u).host.replace(/^www\./, "")}](${u}) |`; }), "");
 const cnt = (re) => I.filter((x) => [...(x.eksik ?? []), ...(x.neden ?? [])].some((s) => re.test(s))).length;
 L.push("**Tablo 4 — Eksikler ve riskler**", "", "| Sorun | Etkilenen kayıt | Önem derecesi | Çözüm / sonraki işlem |", "|---|---:|---|---|",
   `| Koordinat doğrulanamadı | ${AK} | Orta | A-konumsuz; Overture noktası yalnız öneri dosyasında, şema kararı Codex'te |`,

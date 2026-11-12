@@ -89,7 +89,7 @@ const TURK = (() => { try { return J(`${dir}/tur-karar.json`).kararlar; } catch 
 const ELLE = (() => { try { return J(`${dir}/elle-karar.json`).kararlar; } catch { return {}; } })();
 const recs = [], rows = [], inceleme = [], oneri = [];
 /* görünen ad: Overture adı SEO ekiyle uzunsa ilk anlamlı parça; tamamen küçük harfse baş harfler büyük (yeni ad üretilmez) */
-const cleanName = (n) => { let x = n.trim(); if (x.length > 40) x = x.split(/\s+[–|-]\s+|\s*\|\s*|,\s+/)[0].trim(); if (x === x.toLocaleLowerCase("tr")) x = x.split(" ").map((w) => w.charAt(0).toLocaleUpperCase("tr") + w.slice(1)).join(" "); return x; };
+const cleanName = (n) => { let x = n.trim(); /* "|" her zaman SEO ayracıdır (paket 21: "Çekmeköy Sinop Mantı | El Açması Mantı") */ x = x.split(/\s*\|\s*/)[0].trim(); if (x.length > 40) x = x.split(/\s+[–|-]\s+|\s*\|\s*|,\s+/)[0].trim(); if (x === x.toLocaleLowerCase("tr")) x = x.split(" ").map((w) => w.charAt(0).toLocaleUpperCase("tr") + w.slice(1)).join(" "); return x; };
 for (const { a: a0, o, puan } of secim) { const a = { ...a0, ad: cleanName(a0.ad), adOverture: a0.ad };
   const self = `${o.baslik} ${o.aciklama}`;
   const ov = { gersId: a.id, release: "2026-10-21.0", guven: Math.round(a.guven * 100) / 100, kaynaklar: a.kaynak, lisans: [...new Set(a.kaynak.map((k) => k === "Foursquare" ? "Apache-2.0" : k === "AllThePlaces" ? "CC0-1.0" : "CDLA-Permissive-2.0"))] };
