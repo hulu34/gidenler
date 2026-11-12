@@ -288,7 +288,7 @@
     "tarih": "2026-11-12",
     "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
     "kapsam": "yalnız yama'daki kapanış durumu",
-    "kapsamDisi": "Profil adının \"Ase Ocakbaşı\" yapılması bu onaya dahil değil; ayrı sahip kararı"
+    "kapsamDisi": "Profil adının \"Ase Ocakbaşı\" yapılması bu onaya dahil değildi; ayrı onaylandı (adDuzeltme)"
    }
   },
   {
@@ -643,6 +643,42 @@
    "kapsam": "kapanis-karar.mjs çıktısındaki kesinKapanis listesinde sinif = \"yalnız Google (tek sinyal)\" olan kayıtlar",
    "etki": "kapanis.json değişmez; kayıtlar kesin kapalı kalır. İki bağımsız sinyal kuralı yeni kesinleştirmelere uygulanır, bu kayıtlara geriye dönük uygulanmadı.",
    "yenidenDegerlendirme": "Kayıtlardan birinde Google dışı açık sinyali (resmî site, OSM yerinde kontrol, sahadan not) çıkarsa o kayıt ayrıca incelenir."
+  }
+ ],
+ "adDuzeltme": [
+  {
+   "slug": "arda-ocakbasi-umraniye",
+   "eskiAd": "Arda Ocakbaşı",
+   "yeniAd": "Ase Ocakbaşı",
+   "tur": "isim değişikliği",
+   "guven": "yüksek",
+   "kimlikKaniti": "aynı adres (Baraj Yolu No:44, Ümraniye), kayıttaki telefon (0532 178 27 32) ve ardaocakbasi.com e-postası yeni adlı sitede; eski alan adı yeni siteye yönleniyor",
+   "kanitlar": [
+    {
+     "sinyal": "isim",
+     "kaynak": "Resmî site",
+     "url": "https://aseocakbasi.com/",
+     "tarih": "2026-11-12",
+     "guc": "güçlü",
+     "not": "ardaocakbasi.com → aseocakbasi.com yönlendirmesi; \"Ase Ocakbaşı\" adı"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "Resmî site",
+     "url": "https://aseocakbasi.com/",
+     "tarih": "2026-11-12",
+     "guc": "güçlü",
+     "not": "aynı adres, aynı telefon, info@ardaocakbasi.com"
+    }
+   ],
+   "korunan": "slug (profil adresi), OSM ref, adres, telefon, koordinat, tür, kategori ve diğer bütün alanlar; aynı profil, ikinci profil açılmaz",
+   "etki": "Profil başlığı, arama, Sor ve SEO başlığı yeni adı gösterir. Eski adla (\"Arda\") aramada profil bulunmaz; eski profil adresi çalışır. Google puanı günlük kontrolünde ad benzerliği düşeceği için eşleşme yeniden onaya düşebilir (otomasyon değişmedi). OSM öğesinde ad hâlâ \"Arda Ocakbaşı\".",
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Evet, adı değiştir\")",
+    "kapsam": "yalnız venues.json'daki name alanı"
+   }
   }
  ]
 }

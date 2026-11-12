@@ -5,6 +5,8 @@
      yama alanları kayda yazılır, eski not korunur ve yeninin önüne eklenir.
    Kayıt beklenen durumda değilse (state değişmiş, yeni şüphe zaten var) atlanır ve raporlanır. Production veritabanına bir şey yazmaz.
    --sahip=onayli: karar dosyasında sahip onayı (onay.karar = "onaylandı") kayıtlı olanların hepsi uygulanır (yayın komutu).
+   - "adDuzeltme" satırları: sahip onayı kayıtlıysa ve kayıt --sahip ile seçildiyse data/real/venues.json'da yalnız o kaydın
+     name alanı yazılır (satır başına bir kayıt; başka satır ve alan değişmez). Katalogdaki ad eskiAd değilse atlanır.
    --yalniz=<slug>: yalnız o kaydın kural satırı (ve onaylıysa sahip satırı) uygulanır; tek tek test için.
    Kullanım: node scripts/katalog/kapanis-uygula.mjs <kapanis-kararlari.json> [--yaz] [--sahip=a,b|hepsi] [--yalniz=slug] */
 import { readFileSync, writeFileSync } from "node:fs";
@@ -35,5 +37,15 @@ for (const x of K.sahip) {
   const { sources, note, ...alan } = x.yama;
   KAP[x.slug] = kaynakEkle({ ...r, ...alan, note: `${note} · önceki kayıt (${r.checkedAt}, ${r.state}): ${r.note}` }, sources); rapor.sahip++;
 }
-if (yaz) writeFileSync(P, JSON.stringify(KAP, null, 1) + "\n");
+const VP = "data/real/venues.json"; const satirlar = readFileSync(VP, "utf8").split("\n"); rapor.ad = 0; let vDegisti = false;
+for (const x of K.adDuzeltme ?? []) {
+  if (!onayli.has(x.slug) || (yalniz && x.slug !== yalniz) || x.onay?.karar !== "onaylandı") continue;
+  const i = satirlar.findIndex((l) => l.includes(`"slug":"${x.slug}"`)); const m = i >= 0 ? /^(\{.*\})(,?)$/.exec(satirlar[i]) : null;
+  if (!m) { rapor.atlanan.push(`${x.slug}: katalog satırı yok`); continue; }
+  const r = JSON.parse(m[1]);
+  if (r.name === x.yeniAd) { rapor.atlanan.push(`${x.slug}: ad zaten "${x.yeniAd}"`); continue; }
+  if (r.name !== x.eskiAd) { rapor.atlanan.push(`${x.slug}: katalogdaki ad "${r.name}" (beklenen ${x.eskiAd})`); continue; }
+  satirlar[i] = JSON.stringify({ ...r, name: x.yeniAd }) + m[2]; rapor.ad++; vDegisti = true;
+}
+if (yaz) { writeFileSync(P, JSON.stringify(KAP, null, 1) + "\n"); if (vDegisti) writeFileSync(VP, satirlar.join("\n")); }
 console.log(JSON.stringify({ kip: yaz ? "yazıldı" : "yalnız denetim", yalniz, sahipOnayli: [...onayli], ...rapor }, null, 1));

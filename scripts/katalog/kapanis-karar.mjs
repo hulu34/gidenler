@@ -51,6 +51,16 @@ const kesin = Object.entries(KAP).filter(([s, r]) => !s.startsWith("_") && r.sta
 });
 if (hata.length) { console.error(hata.join("\n")); process.exit(1); }
 const say = (a, f) => a.reduce((m, x) => ((m[f(x)] = (m[f(x)] ?? 0) + 1), m), {});
+/* ad düzeltmesi: yalnız isim değişikliği, güçlü resmî isim sinyali, kayıtlı sahip onayı ve katalogdaki eski adla birebir */
+const adDuzeltme = (E.adDuzeltme ?? []).map((x) => {
+  const v = bySlug.get(x.slug);
+  if (!v || v.name !== x.eskiAd) hata.push(`${x.slug}: eski ad katalogla aynı değil`);
+  if (!x.yeniAd?.trim() || x.yeniAd === x.eskiAd) hata.push(`${x.slug}: yeni ad geçersiz`);
+  if (!(x.kanitlar ?? []).some((k) => k.sinyal === "isim" && k.guc === "güçlü" && /Resmî/.test(k.kaynak))) hata.push(`${x.slug}: ad düzeltmesi için resmî güçlü isim sinyali yok`);
+  if (!(x.onay?.karar === "onaylandı" && x.onay.tarih && x.onay.kaynak)) hata.push(`${x.slug}: ad düzeltmesi sahip onayı olmadan`);
+  denetle(x.slug, x, null);
+  return { ...x, kimlik: kimlikOf(x.slug) };
+});
 /* sahip kararları: kapsamı üretilen listeden çözülür (karar metni değil, kayıt listesi saklanır) */
 const sahipKararlari = (E.sahipKararlari ?? []).map((k) => {
   const kayit = /tek sinyal/.test(k.konu) ? kesin.filter((x) => x.sinif === "yalnız Google (tek sinyal)").map((x) => x.slug) : [];
@@ -59,5 +69,5 @@ const sahipKararlari = (E.sahipKararlari ?? []).map((k) => {
 });
 if (hata.length) { console.error(hata.join("\n")); process.exit(1); }
 const ozet = { kural: kural.length, sahip: sahip.length, kalsin: Object.keys(kalsin).length, acikIsaret: Object.keys(acikIsaret).length, tur: say([...kural, ...sahip, ...Object.values(kalsin)], (x) => x.tur.replace(/ \(.*$/, "")), kesinKapanis: say(kesin, (x) => x.sinif) };
-writeFileSync(out, JSON.stringify({ _aciklama: `${E._aciklama} Bu dosya kapanis-karar.mjs çıktısıdır; data/real/kapanis.json'a kapanis-uygula.mjs yazar (sahip kararları yalnız --sahip ile).`, tarih: E.tarih, ozet, kural, sahip, kalsin, acikIsaret, kesinKapanis: kesin.map((x) => ({ ...x, sahipKarari: sahipKararlari.find((k) => k.kayitlar.includes(x.slug))?.karar ?? null })), sahipKararlari }, null, 1) + "\n");
+writeFileSync(out, JSON.stringify({ _aciklama: `${E._aciklama} Bu dosya kapanis-karar.mjs çıktısıdır; data/real/kapanis.json'a kapanis-uygula.mjs yazar (sahip kararları yalnız --sahip ile).`, tarih: E.tarih, ozet, kural, sahip, kalsin, acikIsaret, kesinKapanis: kesin.map((x) => ({ ...x, sahipKarari: sahipKararlari.find((k) => k.kayitlar.includes(x.slug))?.karar ?? null })), sahipKararlari, adDuzeltme }, null, 1) + "\n");
 console.log(JSON.stringify(ozet, null, 1));

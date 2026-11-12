@@ -15,10 +15,11 @@ Dal: `veri/kapanis-isaretleri`. Taban Production kodu: `feature/investor-v1` @ 7
 ```
 node scripts/katalog/kapanis-uygula.mjs data/katalog/kapanis/kapanis-kararlari-2026-11-12.json --yaz
 node scripts/katalog/kapanis-uygula.mjs data/katalog/kapanis/kapanis-kararlari-2026-11-12.json --yaz --sahip=onayli
+npx tsx scripts/sor-index.ts   # ad değiştiği için Sor dizini yeniden üretilir
 ```
 - İlk komut yalnız görünür etkisi olmayan 7 kural değişikliğini yazar.
 - **3 sahip kararı onaylandı** (12.11.2026, "Üçü de onay"). Onaylar karar dosyasında kayıtlı (`sahip[].onay`). `--sahip=onayli` yalnız onay kaydı olanları uygular; düz `--yaz` hâlâ hiçbir sahip kararını uygulamaz.
-- **Arda Ocakbaşı:** Onay yalnız kapanış durumunu kapsıyor. Profil adının "Ase Ocakbaşı" yapılması ayrı sahip kararı.
+- **Arda Ocakbaşı → Ase Ocakbaşı:** Ad değişikliği ayrıca onaylandı (12.11.2026, "Evet, adı değiştir"; `adDuzeltme`). `--sahip=onayli` `venues.json`'da yalnız bu kaydın `name` alanını yazar. Profil adresi (`/mekan/arda-ocakbasi-umraniye`), OSM ref, adres, telefon ve diğer alanlar korunur; ikinci profil açılmaz.
 
 **Kurallar** (kararlar `scripts/katalog/kapanis-karar.mjs` tarafından denetlenir; ihlalde çıktı yazılmaz):
 - **Kesin kapanış:** En az iki bağımsız kapanış sinyali gerekir ve en az biri Google dışı ve güçlü olmalı. Tek bir Google ya da tek bir OSM sinyali yetmez.
@@ -63,7 +64,7 @@ Mevcut 35 kesin kapanışın Google dışı ikinci kaynağı:
 
 | Mekân | Bugün | Bulgu | Kimlik kanıtı | Güven | Karar |
 |---|---|---|---|---|---|
-| Arda Ocakbaşı (Ümraniye) | şüpheli | Resmî alan adı aseocakbasi.com'a yönleniyor; site "Ase Ocakbaşı" adını kullanıyor | Aynı adres (Baraj Yolu No:44), kayıttaki telefon (0532 178 27 32), info@ardaocakbasi.com | yüksek | **Sahip:** yeniden açık. Ad düzeltmesi ayrı karar; ikinci profil açılmaz |
+| Arda Ocakbaşı (Ümraniye) | şüpheli | Resmî alan adı aseocakbasi.com'a yönleniyor; site "Ase Ocakbaşı" adını kullanıyor | Aynı adres (Baraj Yolu No:44), kayıttaki telefon (0532 178 27 32), info@ardaocakbasi.com | yüksek | **Onaylandı:** yeniden açık + profil adı "Ase Ocakbaşı" (aynı profil) |
 | Yako Balık (Kadıköy) | kesin kapalı | OSM öğesi 29.10.2026'da "Kalis Lokanta" adına çevrilmiş | Yok: aynı işletmenin yeni adı mı, yeni işletme mi bilinmiyor | düşük | **Kural:** yalnız not. Kapanışın ikinci kaynağı sayılmadı. Kalis Lokanta bu profile dönüştürülmez; ayrı aday |
 
 ## 3. Taşınma (olası)
@@ -86,7 +87,7 @@ Mevcut 35 kesin kapanışın Google dışı ikinci kaynağı:
 
 | Mekân | Tür | Onaylanan karar | Görünür etki |
 |---|---|---|---|
-| Arda Ocakbaşı | isim değişikliği | şüpheli → yeniden açık. **Bekleyen:** ad "Ase Ocakbaşı" ayrı karar | Yok; kalite sınıfı A'ya çıkar |
+| Arda Ocakbaşı | isim değişikliği | şüpheli → yeniden açık; profil adı "Ase Ocakbaşı" (ayrı onay) | Ad: profil başlığı, arama, Sor ve SEO başlığı yeni adı gösterir; "Arda" aramasıyla bulunmaz, eski profil adresi çalışır. Kalite sınıfı A'ya çıkar |
 | The Hunger Ümraniye Limonlu Cadde | çelişkili kanıt | kesin kapalı → şüpheli | **Var:** kapanış notu kalkar, listelere ve Sor'a döner, Google puanı varsa görünür |
 | Emirgan Sütiş (Arnavutköy kaydı) | şube kapanışı (marka açık) | şüpheli → kesin kapalı. Sinyaller: resmî şube listesinde Arnavutköy yok (güçlü) + konumdaki kapalı Google kaydı (zayıf) | **Var:** kapanış notu, listelerden ve Sor'dan çıkar, Google puanı gizlenir |
 
@@ -94,6 +95,12 @@ Mevcut 35 kesin kapanışın Google dışı ikinci kaynağı:
 - **Site bağlantısı kaldırılmalı:** Privato Cafe (alan adı satışta), Altınkapı (alan adının süresi dolmuş), Burger Hopdaddy (otomatik üretilmiş sayfa), Desi Vibes (park alanı; OSM'ye göre açık).
 - **Beso Restaurant Bistro:** Alan adı başka işletmeye yönleniyor; Byzantion Bistro ile olası mükerrer.
 - **Ercan Burger (Pendik):** Ercan Pizza ile aynı adreste; olası mükerrer.
+
+**Ad değişikliğinin yan etkileri (Arda → Ase):**
+- **Arama:** Arama yalnız güncel addan takma ad üretiyor. Eski adla bulunabilmesi için kodda bir takma ad alanı gerekir; bu Codex'in alanı ve bu pakette yok.
+- **Google puanı:** Günlük kontrol, kayıtlı Google kaydının adını ("Arda") yeni adla karşılaştıracak. Ad benzerliği düşeceği için eşleşme yeniden onaya düşebilir. Otomasyon ve zamanlama değişmedi.
+- **OSM:** Öğede ad hâlâ "Arda Ocakbaşı".
+- **Web sitesi:** Kayıttaki site (ardaocakbasi.com) yeni siteye yönleniyor ve çalışıyor; değiştirilmedi.
 
 ## 6. Şüphe olarak kalan 11 kayıt (yeni güçlü kanıt yok)
 
@@ -132,14 +139,19 @@ Hiçbirinde `state` ya da `checkedAt` değişmiyor. Kesin kapalı sayısı 35 ka
 
 | Test | Sonuç | Başarılı / Toplam |
 |---|---|---|
-| kapanistest | Geçti | 490/490 |
+| kapanistest | Geçti | 523/523 |
 | … 7 kural değişikliği ayrı ayrı: yalnız o kayıt, yalnız note/sources, beklenen değer, diğer veri dosyaları bayt bayt aynı, tekrar çalıştırma 0 | Geçti | 7/7 kayıt |
 | … sahip kararları varsayılan çalıştırmada uygulanmıyor; tek onay yalnız o kaydı uyguluyor | Geçti | 3/3 kayıt |
 | … 792 kaydın kimliği tekil; veri dosyaları bayt bayt aynı; kapanış kaydı yalnız hedeflerde değişiyor (kural ve kural + sahip) | Geçti | 2/2 durum |
 | … tam tekrar çalıştırma: 0 değişiklik, dosya bayt bayt aynı | Geçti | 2/2 durum |
 | … sahip kararı: 27 tek sinyalli kesin kapanış kayıtlı, kesin kapalı ve pakette dokunulmamış | Geçti | 27/27 kayıt |
 | … onaylı kip (`--sahip=onayli`): yalnız onaylı 3 kayıt; Arda'nın katalog adı değişmiyor; kesin kapalı 35; tekrar çalıştırma 0 | Geçti | 1/1 |
-| Onaylı kipte Katalog / Arama / Sor + dizin / Google puanı / Ana sayfa | Geçti | 52/52 · 49/49 · 322/322 · 103/103 · 31/31 |
+| … ad düzeltmesi: yalnız onaylı kayıtta, yalnız `name` alanı; diğer 791 kayıt ve bütün satırlar aynı; tekrar çalıştırma 0 | Geçti | 1/1 kayıt |
+| kapanistest bozuk girdi denemesi: adla birlikte başka alan yazan betik | Geçti (hata yakalandı) | 1/1 |
+| Onaylı kip + ad (Sor dizini yeniden üretildi): Katalog / Arama / SEO / Ana sayfa / V8 | Geçti | 52/52 · 49/49 · 49/49 · 31/31 · 33/33 |
+| Onaylı kip + ad: B1 / Yayın ekleme / bin1 / Sor + dizin / Google puanı / tsc | Geçti | 104+3 · 8/8 · 18/18 · 322/322 · 103/103 · 1/1 |
+| Onaylı kip + ad: next build | Geçti (derleme içi tip kontrolü kapalı) | 1/1 (1.633 sayfa) |
+| Yerel profil: başlık, sayfa başlığı ve JSON-LD "Ase Ocakbaşı"; kapanış notu yok; arama "Ase Ocakbaşı" 1. sırada, "Arda Ocakbaşı" bulmuyor (beklenen); 5 profilde kapanış notu doğru | Geçti | 1/1 + 5/5 |
 | kapanistest bozuk girdi denemeleri (tek sinyalle kesinleştirme; checkedAt'i değiştiren betik) | Geçti (hata yakalandı) | 2/2 |
 | Katalog / Arama / SEO (kural ve kural + sahip) | Geçti | 52/52 · 49/49 · 49/49 |
 | Ana sayfa / V8 | Geçti | 31/31 · 33/33 |
@@ -152,6 +164,10 @@ Hiçbirinde `state` ya da `checkedAt` değişmiyor. Kesin kapalı sayısı 35 ka
 | Vercel Preview | Engelli | Neon dal sınırı |
 
 - **Görsel inceleme yapılmadı:** Profiller HTML olarak denetlendi.
+- **Ortam notu (ad düzeltmesi turu):**
+  - Bu çalışma klasöründeki `node_modules`, ana proje klasörüne (`gidenler/node_modules`) giden bir kısayol. O klasör 15:59'da boşaldı ve 5 dakikada dolmadı. Ana klasöre dokunulmadı.
+  - Paketler kilit dosyasıyla bu klasöre ayrı kuruldu (`npm ci --ignore-scripts`). Testlerden sonra kurulum silindi ve kısayol geri kondu.
+  - `next build` tip kontrolü adımında bellek yetmediği için düştü. Tip kontrolü `tsc` ile ayrıca geçti. Derleme, yalnız yerelde `next.config.ts`'e geçici olarak eklenen derleme içi tip ve lint atlamasıyla geçti; değişiklik hemen geri alındı ve commit'e girmedi.
 - **Google puanı:** Otomasyonu ve 06.00/08.30 zamanlaması değişmedi.
 - **Dosyalar:**
   - `data/katalog/kapanis/`: elle kanıt dosyası, üretilmiş kararlar, OSM özeti.

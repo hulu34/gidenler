@@ -16,6 +16,7 @@ const kp = process.argv[2] ?? "data/katalog/kapanis/kapanis-kararlari-2026-11-12
 const J = (p: string) => JSON.parse(readFileSync(p, "utf8"));
 const K = J(kp), KAP = J("data/real/kapanis.json"), V = J("data/real/venues.json") as Record<string, any>[];
 const bySlug = new Map(V.map((v) => [v.slug, v]));
+const AD = new Map((K.adDuzeltme ?? []).map((x: any) => [x.slug, x]));
 let ok = 0, fail = 0; const t = (ad: string, kosul: boolean, not = "") => { if (kosul) ok++; else { fail++; console.log("KALDI:", ad, not); } };
 const kayitlar = Object.entries(KAP).filter(([k]) => !k.startsWith("_")) as [string, any][];
 const GOOGLE_URL = /google\.|goo\.gl|maps\.app/i;
@@ -65,13 +66,40 @@ for (const s of tekSinyal) {
   t(`${s}: pakette bu kayda değişiklik yok`, !K.kural.some((x: any) => x.slug === s) && !K.sahip.some((x: any) => x.slug === s));
 }
 
+/* ad düzeltmesi: yalnız onaylı isim değişikliği; slug/ref korunur; yeni işletme eski profile yazılmaz */
+t("ad düzeltmesi tek kayıt (Arda)", AD.size === 1 && AD.has("arda-ocakbasi-umraniye"));
+for (const x of AD.values() as any) {
+  t(`${x.slug}: ad düzeltmesi isim değişikliği türünde`, x.tur === "isim değişikliği");
+  t(`${x.slug}: eski ad katalogla aynı`, bySlug.get(x.slug)?.name === x.eskiAd);
+  t(`${x.slug}: ad düzeltmesi onaylı (tarih, kaynak)`, x.onay?.karar === "onaylandı" && x.onay.tarih === "2026-11-12" && !!x.onay.kaynak);
+  t(`${x.slug}: resmî güçlü isim sinyali ve kimlik kanıtı`, x.kanitlar.some((k: any) => k.sinyal === "isim" && k.guc === "güçlü" && /Resmî/.test(k.kaynak)) && !!x.kimlikKaniti);
+  t(`${x.slug}: aynı kayıt yeniden açık (kapanmamış)`, K.sahip.find((y: any) => y.slug === x.slug)?.yama.state === "reopened");
+}
+t("Yako için ad düzeltmesi yok (yeni işletme eski profile yazılmaz)", !AD.has("yako-balik-kadikoy"));
+
 /* geçici kopya: data/real tamamı + betik */
 const hash = (p: string) => createHash("sha256").update(readFileSync(p)).digest("hex");
 const kopya = () => { const d = mkdtempSync(join(tmpdir(), "kapanistest-")); cpSync("data/real", join(d, "data/real"), { recursive: true }); cpSync("scripts/katalog/kapanis-uygula.mjs", join(d, "scripts/katalog/kapanis-uygula.mjs")); cpSync(kp, join(d, "k.json")); return d; };
 const calis = (d: string, ...ek: string[]) => JSON.parse(execFileSync("node", ["scripts/katalog/kapanis-uygula.mjs", "k.json", "--yaz", ...ek], { cwd: d, encoding: "utf8" }));
 const veriDosyalari = readdirSync("data/real").filter((f) => f !== "kapanis.json" && !f.endsWith(".ts"));
+const digerDosyalar = veriDosyalari.filter((f) => f !== "venues.json");
 const onceHash = Object.fromEntries(veriDosyalari.map((f) => [f, hash(`data/real/${f}`)]));
-const farkli = (a: any, b: any) => Object.keys({ ...a, ...b }).filter((k) => JSON.stringify(a?.[k]) !== JSON.stringify(b?.[k]));
+/* venues.json karşılaştırması: beklenen ad düzeltmeleri dışında 792 kayıt alan alan aynı */
+const venuesKontrol = (ad: string, d: string, adBekle: boolean) => {
+  const v2 = J(join(d, "data/real/venues.json")) as Record<string, any>[];
+  t(`(${ad}) venues: kayıt sayısı ve sıra aynı`, v2.length === V.length && v2.every((r, i) => r.slug === V[i].slug && r.ref === V[i].ref));
+  let degisen = 0;
+  for (let i = 0; i < V.length; i++) {
+    const f = farkliF(V[i], v2[i]); if (!f.length) continue; degisen++;
+    const x = AD.get(V[i].slug) as any;
+    t(`(${ad}) ${V[i].slug}: yalnız beklenen ad değişti`, adBekle && !!x && JSON.stringify(f) === '["name"]' && V[i].name === x.eskiAd && v2[i].name === x.yeniAd, f.join(","));
+  }
+  t(`(${ad}) venues: değişen kayıt sayısı`, degisen === (adBekle ? AD.size : 0), `${degisen}`);
+  const ham1 = readFileSync("data/real/venues.json", "utf8").split("\n"), ham2 = readFileSync(join(d, "data/real/venues.json"), "utf8").split("\n");
+  t(`(${ad}) venues: değişen satır yalnız hedef`, ham1.length === ham2.length && ham1.every((l, i) => l === ham2[i] || [...AD.keys()].some((sl) => l.includes(`"slug":"${sl}"`))));
+};
+function farkliF(a: any, b: any) { return Object.keys({ ...a, ...b }).filter((k) => JSON.stringify(a?.[k]) !== JSON.stringify(b?.[k])); }
+const farkli = farkliF;
 
 /* 3. yedi kural değişikliği ayrı ayrı */
 t("kural değişikliği sayısı 7", K.kural.length === 7);
@@ -100,18 +128,20 @@ for (const x of K.kural) {
   const r = calis(d, "--sahip=bilinmeyen-slug"); t("bilinmeyen onay raporlanıyor, hiçbir şey uygulanmıyor", r.sahip === 0 && r.bilinmeyenOnay.includes("bilinmeyen-slug")); }
 /* sahip onayları (2026-11-12, "Üçü de onay"): kayıtlı; --sahip=onayli yalnız onaylıları uygular; Arda'da ad değişmez */
 for (const x of K.sahip) t(`${x.slug}: onay kaydı (karar, tarih, kaynak)`, x.onay?.karar === "onaylandı" && x.onay.tarih === "2026-11-12" && !!x.onay.kaynak);
-t("Arda onayı ad değişikliğini kapsamıyor", /ayrı sahip kararı/.test(K.sahip.find((x: any) => x.slug === "arda-ocakbasi-umraniye").onay.kapsamDisi ?? ""));
+t("Arda kapanış onayı adı değiştirmiyor; ad ayrı onaylı kayıtta", !("name" in K.sahip.find((x: any) => x.slug === "arda-ocakbasi-umraniye").yama) && /adDuzeltme/.test(K.sahip.find((x: any) => x.slug === "arda-ocakbasi-umraniye").onay.kapsamDisi ?? "") && (K.adDuzeltme ?? []).some((x: any) => x.slug === "arda-ocakbasi-umraniye" && x.onay?.karar === "onaylandı"));
 { const d = kopya(); const r = calis(d, "--sahip=onayli"); const out = J(join(d, "data/real/kapanis.json"));
   const onayli = K.sahip.filter((x: any) => x.onay?.karar === "onaylandı").map((x: any) => x.slug);
   t("--sahip=onayli: onaylıların hepsi ve yalnız onlar", r.sahip === onayli.length && JSON.stringify(r.sahipOnayli) === JSON.stringify(onayli) && r.atlanan.length === 0, JSON.stringify(r));
   for (const x of K.sahip) t(`[onayli] ${x.slug}: durum ${x.yama.state}`, out[x.slug].state === x.yama.state);
-  const v2 = J(join(d, "data/real/venues.json")) as Record<string, any>[]; t("[onayli] Arda'nın katalog adı değişmedi", v2.find((v) => v.slug === "arda-ocakbasi-umraniye")?.name === bySlug.get("arda-ocakbasi-umraniye")?.name);
+  venuesKontrol("onayli", d, true);
+  for (const f of digerDosyalar) t(`[onayli] ${f} bayt bayt aynı`, hash(join(d, "data/real", f)) === onceHash[f]);
   t("[onayli] kesin kapalı sayısı 35 (The Hunger çıkar, Emirgan girer)", Object.values(out).filter((v: any) => v?.state === "closed_confirmed").length === 35);
   const h1 = hash(join(d, "data/real/kapanis.json")); const r2 = calis(d, "--sahip=onayli");
   t("[onayli] tekrar çalıştırma: 0 değişiklik, dosya bayt bayt aynı", r2.kural === 0 && r2.sahip === 0 && hash(join(d, "data/real/kapanis.json")) === h1); }
 for (const x of K.sahip) {
   const d = kopya(); const r = calis(d, `--sahip=${x.slug}`); const out = J(join(d, "data/real/kapanis.json"));
-  t(`[${x.slug}] tek onay yalnız onu uygular`, r.sahip === 1);
+  t(`[${x.slug}] tek onay yalnız onu uygular`, r.sahip === 1 && r.ad === (AD.has(x.slug) ? 1 : 0));
+  venuesKontrol(`tek onay ${x.slug}`, d, AD.has(x.slug));
   const digerSahip = K.sahip.filter((y: any) => y.slug !== x.slug); for (const y of digerSahip) t(`[${x.slug}] ${y.slug} değişmedi`, JSON.stringify(out[y.slug]) === JSON.stringify(KAP[y.slug]));
   t(`[${x.slug}] yama uygulandı, Google alanı ve eski not korundu`, out[x.slug].state === x.yama.state && out[x.slug].google === KAP[x.slug].google && out[x.slug].note.includes(KAP[x.slug].note));
   const r2 = calis(d, `--sahip=${x.slug}`); t(`[${x.slug}] sahip kararı tekrar çalıştırmada değişmiyor`, r2.sahip === 0 && r2.kural === 0 && JSON.stringify(J(join(d, "data/real/kapanis.json"))) === JSON.stringify(out));
@@ -124,7 +154,9 @@ t("kimlikler tekil", new Set(realEntities.map((e) => e.id)).size === 792 && new 
 for (const mod of [[], ["--sahip=hepsi"]]) {
   const d = kopya(); calis(d, ...mod); const out = J(join(d, "data/real/kapanis.json")); const h1 = hash(join(d, "data/real/kapanis.json"));
   const ad = mod.length ? "kural + sahip" : "kural";
-  for (const f of veriDosyalari) t(`(${ad}) ${f} bayt bayt aynı`, hash(join(d, "data/real", f)) === onceHash[f]);
+  for (const f of digerDosyalar) t(`(${ad}) ${f} bayt bayt aynı`, hash(join(d, "data/real", f)) === onceHash[f]);
+  venuesKontrol(ad, d, mod.length > 0);
+  const hv = hash(join(d, "data/real/venues.json"));
   const hedef = new Set([...K.kural.map((x: any) => x.slug), ...(mod.length ? K.sahip.map((x: any) => x.slug) : [])]);
   let degisenKayit = 0, beklenmeyen: string[] = [];
   for (const e of realEntities) { const a = KAP[e.slug], b = out[e.slug]; if (JSON.stringify(a) !== JSON.stringify(b)) { degisenKayit++; if (!hedef.has(e.slug)) beklenmeyen.push(e.slug); } }
@@ -133,6 +165,7 @@ for (const mod of [[], ["--sahip=hepsi"]]) {
   t(`(${ad}) açıklama alanı korundu`, out._aciklama === KAP._aciklama);
   const r2 = calis(d, ...mod); t(`(${ad}) tekrar çalıştırma: 0 değişiklik`, r2.kural === 0 && r2.sahip === 0, JSON.stringify(r2));
   t(`(${ad}) tekrar çalıştırma: dosya bayt bayt aynı`, hash(join(d, "data/real/kapanis.json")) === h1);
+  t(`(${ad}) tekrar çalıştırma: venues bayt bayt aynı, ad değişikliği 0`, hash(join(d, "data/real/venues.json")) === hv && (r2.ad ?? 0) === 0);
 }
 const ent2 = realEntities.map(kimlik); t("792 kaydın kimlik alanları okunabilir ve tam", ent2.every((s) => s.length > 10));
 console.log(`kapanış: ${ok} geçti, ${fail} kaldı`); process.exit(fail ? 1 : 0);
