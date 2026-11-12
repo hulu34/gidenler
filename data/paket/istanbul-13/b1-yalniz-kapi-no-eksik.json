@@ -1,0 +1,5 @@
+[
+{"ref":"node/2547264076","ad":"Çin Büfe","ilce":"Beyoğlu","mahalle":"Kuloğlu","sokak":"Turnacıbaşı Sokağı","tur":"Türk mutfağı","kanit":["resmî site (2026-11-11): ad + telefon eşleşti"],"eksik":["sokak adresi","çalışma saatleri"]},
+{"ref":"node/14002213816","ad":"Il Sorrisino","ilce":"Kadıköy","mahalle":"Osmanağa Mahallesi","sokak":"Özpark Çıkmazı Sokağı","tur":"Pizza","kanit":["OSM yerinde kontrol tarihi 2026-07-09","OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-07-10, changeset 185463536)"],"eksik":["sokak adresi","telefon","çalışma saatleri"]},
+{"ref":"node/14109226667","ad":"Urfalı Ciğerci Memet","ilce":"Pendik","mahalle":"Doğu Mahallesi","sokak":"Aydınlı Yolu Caddesi","tur":"Türk mutfağı","kanit":["OSM yerinde kontrol tarihi 2026-09-07","OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-09-07, changeset 188666667)"],"eksik":["sokak adresi","telefon","çalışma saatleri"]}
+]

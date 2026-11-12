@@ -1,0 +1,24 @@
+{
+ "dalga": 11,
+ "A": 7,
+ "osmKaydi": 6,
+ "isletmeKaydi": 1,
+ "elenen": 0,
+ "turKanitDuzeyi": {
+  "şube": 5,
+  "marka": 2
+ },
+ "ilce": {
+  "Beyoğlu": 3,
+  "Fatih": 2,
+  "Beykoz": 1,
+  "Bakırköy": 1
+ },
+ "tur": {
+  "Türk mutfağı": 2,
+  "Akdeniz mutfağı": 1,
+  "Antep mutfağı": 2,
+  "Karadeniz mutfağı": 1,
+  "Hatay mutfağı": 1
+ }
+}

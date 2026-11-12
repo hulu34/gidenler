@@ -1,0 +1,917 @@
+{
+ "_aciklama": "İstanbul restoran paketi (dalga 7). Yalnız A sınıfı restoran. venues.json'a eklenmedi; birleştirme yayın paketinde yapılır. Kaynak: OpenStreetMap (© OpenStreetMap katkıcıları, ODbL), İBB Açık Veri Portalı (İstanbul Büyükşehir Belediyesi, İBB Açık Veri Lisansı: Kent Lokantaları ve Sosyal Tesis Konumları), işletmelerin ve markaların resmî siteleri (yalnız eşleşme ölçümü). Google verisi kullanılmadı.",
+ "osmTarihi": "2026-11-10T20:20:48Z",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "ibb-arnavutkoy-kent-lokantasi-demircan-sokak-arnavutkoy",
+   "ref": "node/12978271757",
+   "ad": "İBB Arnavutköy Kent Lokantası",
+   "sube": "DEMİRCAN SOKAK",
+   "zincir": "ibb",
+   "ilce": "Arnavutköy",
+   "mahalle": null,
+   "adres": "DEMİRCAN SOKAK No:6, Arnavutköy",
+   "koordinat": [
+    41.183479,
+    28.739188
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"ARNAVUTKÖY KENT LOKANTASI\", 13 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12978271757",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-avcilar-kent-lokantasi-samli-sokak-avcilar",
+   "ref": "node/11528657993",
+   "ad": "İBB Avcılar Kent Lokantası",
+   "sube": "ŞAMLI SOKAK",
+   "zincir": "ibb",
+   "ilce": "Avcılar",
+   "mahalle": null,
+   "adres": "ŞAMLI SOKAK No:33, Avcılar",
+   "koordinat": [
+    40.981047,
+    28.720682
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"AVCILAR KENT LOKANTASI\", 46 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528657993",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "arnavutkoy-sosyal-tesisi-besiktas",
+   "ref": "way/1105929382",
+   "ad": "Arnavutköy Sosyal Tesisi",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Beşiktaş",
+   "mahalle": "Arnavutköy",
+   "adres": "Bebek Arnavutköy Caddesi No:72, Arnavutköy, Beşiktaş",
+   "koordinat": [
+    41.067524,
+    29.045016
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Sosyal Tesis Konumları (2026-04-06) — \"ARNAVUTKÖY SOSYAL TESİSİ\", 11 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1105929382",
+    "https://data.ibb.gov.tr/dataset/6e9b0cf3-d756-4301-8c5e-a6e3a223ed6d"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "play-pizza-beyoglu",
+   "ref": "way/502126076",
+   "ad": "Play Pizza",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "adres": "Ensiz Sokağı No:4, Beyoğlu",
+   "koordinat": [
+    41.028868,
+    28.973681
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-05-02, changeset 182118581)"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/way/502126076",
+    "https://www.openstreetmap.org/changeset/182118581"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sofram-beyoglu",
+   "ref": "node/8013727385",
+   "ad": "Sofram",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Beyoğlu",
+   "mahalle": null,
+   "adres": "Pelesenk Sokağı No:1, Beyoğlu",
+   "koordinat": [
+    41.036924,
+    28.981755
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete_ee, 2026-09-20, changeset 189297237)"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/8013727385",
+    "https://www.openstreetmap.org/changeset/189297237"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-catalca-kent-lokantasi-ataturk-caddesi-catalca",
+   "ref": "node/12978271760",
+   "ad": "İBB Çatalca Kent Lokantası",
+   "sube": "ATATÜRK CADDESİ",
+   "zincir": "ibb",
+   "ilce": "Çatalca",
+   "mahalle": null,
+   "adres": "ATATÜRK CADDESİ No:55, Çatalca",
+   "koordinat": [
+    41.139445,
+    28.464174
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"ÇATALCA KENT LOKANTASI\", 19 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12978271760",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-capa-kent-lokantasi-capa-sehremini-mahallesi-turgut-ozal-millet-caddesi-fatih",
+   "ref": "node/11528657995",
+   "ad": "İBB Çapa Kent Lokantası",
+   "sube": "ÇAPA ŞEHREMİNİ MAHALLESİ TURGUT ÖZAL MİLLET CADDESİ",
+   "zincir": "ibb",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "adres": "ÇAPA ŞEHREMİNİ MAHALLESİ TURGUT ÖZAL MİLLET CADDESİ No:109, Fatih",
+   "koordinat": [
+    41.014432,
+    28.934424
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"ÇAPA KENT LOKANTASI\", 17 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528657995",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-sultanahmet-kent-lokantasi-salkim-sogut-sk-fatih",
+   "ref": "node/11528657999",
+   "ad": "İBB Sultanahmet Kent Lokantası",
+   "sube": "Salkım Söğüt Sk.",
+   "zincir": "ibb",
+   "ilce": "Fatih",
+   "mahalle": null,
+   "adres": "Salkım Söğüt Sk. No:11, Fatih",
+   "koordinat": [
+    41.009599,
+    28.977531
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"SULTANAHMET KENT LOKANTASI\", 7 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528657999",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-caddebostan-mahallesi-kadikoy",
+   "ref": "node/14277790196",
+   "ad": "Burger Yiyelim",
+   "sube": "Caddebostan Mahallesi",
+   "zincir": "burger yiyelim",
+   "ilce": "Kadıköy",
+   "mahalle": "Caddebostan Mahallesi",
+   "adres": "Bağdat Caddesi No:303, Caddebostan Mahallesi, Kadıköy",
+   "koordinat": [
+    40.96742,
+    29.067894
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle aynı bölümde"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14277790196",
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/changeset/190417616"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "miso-ramen-kadikoy",
+   "ref": "node/11366737593",
+   "ad": "Miso Ramen",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Kadıköy",
+   "mahalle": "Caferağa Mahallesi",
+   "adres": "Şevki Bey Sokağı No:31, Caferağa Mahallesi, Kadıköy",
+   "koordinat": [
+    40.984092,
+    29.02941
+   ],
+   "tur": "Sushi / Japon",
+   "mutfak": [
+    {
+     "id": "japon",
+     "ad": "Japon, sushi ve ramen",
+     "kaynak": "osm_cuisine",
+     "deger": "ramen"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-10-20",
+    "OSM son düzenleme yerinde anket uygulamasıyla (Every, 2026-10-20, changeset 190798363)"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11366737593",
+    "https://www.openstreetmap.org/changeset/190798363"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-kucukcekmece-sosyal-tesisleri-kucukcekmece",
+   "ref": "way/342543166",
+   "ad": "İBB Küçükçekmece Sosyal Tesisleri",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Küçükçekmece",
+   "mahalle": null,
+   "adres": "Altın Sk. No:16, Küçükçekmece",
+   "koordinat": [
+    40.999943,
+    28.76527
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Sosyal Tesis Konumları (2026-04-06) — \"KÜÇÜKÇEKMECE SOSYAL TESİSİ\", 14 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Sosyal Tesis Konumları (2026-04-06))",
+   "kaynak": [
+    "https://www.openstreetmap.org/way/342543166",
+    "https://data.ibb.gov.tr/dataset/6e9b0cf3-d756-4301-8c5e-a6e3a223ed6d"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-erol-kaya-caddesi-pendik",
+   "ref": "node/12163120218",
+   "ad": "Burger Yiyelim",
+   "sube": "Erol Kaya Caddesi",
+   "zincir": "burger yiyelim",
+   "ilce": "Pendik",
+   "mahalle": null,
+   "adres": "Erol Kaya Caddesi No:135, Pendik",
+   "koordinat": [
+    40.876804,
+    29.234493
+   ],
+   "tur": "Burger",
+   "mutfak": [
+    {
+     "id": "burger",
+     "ad": "Burger",
+     "kaynak": "osm_cuisine",
+     "deger": "burger"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube sayfası (2026-11-10): sokak + ilçe/mahalle + kapı no aynı bölümde"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM kaydı (addr:street + addr:housenumber)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12163120218",
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/changeset/156340256"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-pendik-kent-lokantasi-bati-mah-sabri-taskin-cad-pendik",
+   "ref": "node/11528657998",
+   "ad": "İBB Pendik Kent Lokantası",
+   "sube": "BATI MAH. SABRİ TAŞKIN CAD.",
+   "zincir": "ibb",
+   "ilce": "Pendik",
+   "mahalle": null,
+   "adres": "BATI MAH. SABRİ TAŞKIN CAD. No:19, Pendik",
+   "koordinat": [
+    40.877487,
+    29.230188
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"PENDİK KENT LOKANTASI\", 5 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528657998",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "guido-pizza-ve-bakery-sancaktepe",
+   "ref": "node/12730486076",
+   "ad": "Guido Pizza & Bakery",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Sancaktepe",
+   "mahalle": "Abdurrahmangazi Mahallesi",
+   "adres": "Alparslan Caddesi No:2, Abdurrahmangazi Mahallesi, Sancaktepe",
+   "koordinat": [
+    40.991418,
+    29.230724
+   ],
+   "tur": "Pizza",
+   "mutfak": [
+    {
+     "id": "pizza",
+     "ad": "Pizza ve İtalyan",
+     "kaynak": "osm_cuisine",
+     "deger": "pizza"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2025-04-05, changeset 164540389)"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12730486076",
+    "https://www.openstreetmap.org/changeset/164540389"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-safa-tepesi-sosyal-tesisleri-mevlana-cd-sancaktepe",
+   "ref": "node/4535633095",
+   "ad": "İBB Safa Tepesi Sosyal Tesisleri",
+   "sube": "Mevlana Cd.",
+   "zincir": "ibb safa tepesi sosyal tesisleri",
+   "ilce": "Sancaktepe",
+   "mahalle": null,
+   "adres": "Mevlana Cd. No:69, Sancaktepe",
+   "koordinat": [
+    41.013635,
+    29.254831
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Sosyal Tesis Konumları (2026-04-06) — \"SAFA TEPESİ SOSYAL TESİSİ\", 13 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Sosyal Tesis Konumları (2026-04-06))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4535633095",
+    "https://data.ibb.gov.tr/dataset/6e9b0cf3-d756-4301-8c5e-a6e3a223ed6d"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-sancaktepe-kent-lokantasi-termal-sk-sancaktepe",
+   "ref": "way/1261407328",
+   "ad": "İBB Sancaktepe Kent Lokantası",
+   "sube": "Termal Sk.",
+   "zincir": "ibb",
+   "ilce": "Sancaktepe",
+   "mahalle": null,
+   "adres": "Termal Sk. No:7, Sancaktepe",
+   "koordinat": [
+    41.010114,
+    29.212805
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM yerinde kontrol tarihi 2026-07-16",
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"SANCAKTEPE KENT LOKANTASI\", 31 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1261407328",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "masal-zurna-durum-sancaktepe",
+   "ref": "node/14177694766",
+   "ad": "Masal Zurna Dürüm",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Sancaktepe",
+   "mahalle": "Sarıgazi Mahallesi",
+   "adres": "Namık Kemal Caddesi No:35, Sarıgazi Mahallesi, Sancaktepe",
+   "koordinat": [
+    41.006533,
+    29.208359
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-09-13, changeset 188956269)"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14177694766",
+    "https://www.openstreetmap.org/changeset/188956269"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-hisarustu-kent-lokantasi-hisarustu-nispetiye-caddesi-sariyer",
+   "ref": "node/11528657996",
+   "ad": "İBB Hisarüstü Kent Lokantası",
+   "sube": "HİSARÜSTÜ NİSPETİYE CADDESİ",
+   "zincir": "ibb",
+   "ilce": "Sarıyer",
+   "mahalle": null,
+   "adres": "HİSARÜSTÜ NİSPETİYE CADDESİ No:27, Sarıyer",
+   "koordinat": [
+    41.085509,
+    29.047196
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"HİSARÜSTÜ KENT LOKANTASI\", 7 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528657996",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-sultanbeyli-kent-lokantasi-ataturk-cd-sultanbeyli",
+   "ref": "node/11528657992",
+   "ad": "İBB Sultanbeyli Kent Lokantası",
+   "sube": "Atatürk Cd.",
+   "zincir": "ibb",
+   "ilce": "Sultanbeyli",
+   "mahalle": null,
+   "adres": "Atatürk Cd. No:104, Sultanbeyli",
+   "koordinat": [
+    40.965901,
+    29.271887
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"SULTANBEYLİ KENT LOKANTASI\", 28 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528657992",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-sultangazi-kent-lokantasi-ugur-mumcu-mah-hoca-ahmet-yesevi-cad-sultangazi",
+   "ref": "node/12978271766",
+   "ad": "İBB Sultangazi Kent Lokantası",
+   "sube": "UĞUR MUMCU MAH. HOCA AHMET YESEVİ CAD.",
+   "zincir": "ibb",
+   "ilce": "Sultangazi",
+   "mahalle": null,
+   "adres": "UĞUR MUMCU MAH. HOCA AHMET YESEVİ CAD. No:57, Sultangazi",
+   "koordinat": [
+    41.100135,
+    28.874205
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"SULTANGAZİ KENT LOKANTASI\", 15 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12978271766",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "miso-ramen-sisli",
+   "ref": "node/13779063784",
+   "ad": "Miso Ramen",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Şişli",
+   "mahalle": "Pangaltı",
+   "adres": "Halaskargazi Caddesi No:38-66, Pangaltı, Şişli",
+   "koordinat": [
+    41.05209,
+    28.988339
+   ],
+   "tur": "Sushi / Japon",
+   "mutfak": [
+    {
+     "id": "japon",
+     "ad": "Japon, sushi ve ramen",
+     "kaynak": "osm_cuisine",
+     "deger": "japanese"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-04-30, changeset 182017502)"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13779063784",
+    "https://www.openstreetmap.org/changeset/182017502"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "otooto-sushi-sisli",
+   "ref": "node/13779801411",
+   "ad": "Otooto Sushi",
+   "sube": null,
+   "zincir": null,
+   "ilce": "Şişli",
+   "mahalle": "Nişantaşı",
+   "adres": "Süleyman Nazif Sokağı No:9, Nişantaşı, Şişli",
+   "koordinat": [
+    41.050526,
+    28.98905
+   ],
+   "tur": "Sushi / Japon",
+   "mutfak": [
+    {
+     "id": "japon",
+     "ad": "Japon, sushi ve ramen",
+     "kaynak": "osm_cuisine",
+     "deger": "japanese"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "OSM son düzenleme yerinde anket uygulamasıyla (StreetComplete, 2026-05-18, changeset 182843661)"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "adresKaynagi": "OSM bina adresi (ters konum 2026-11-10)",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13779801411",
+    "https://www.openstreetmap.org/changeset/182843661"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ibb-umraniye-kent-lokantasi-natoyolu-caddesi-umraniye",
+   "ref": "node/11528658000",
+   "ad": "İBB Ümraniye Kent Lokantası",
+   "sube": "NATOYOLU CADDESİ",
+   "zincir": "ibb",
+   "ilce": "Ümraniye",
+   "mahalle": null,
+   "adres": "NATOYOLU CADDESİ No:201, Ümraniye",
+   "koordinat": [
+    41.006142,
+    29.164615
+   ],
+   "tur": "Türk mutfağı",
+   "mutfak": [
+    {
+     "id": "turk",
+     "ad": "Türk mutfağı",
+     "kaynak": "osm_cuisine",
+     "deger": "turkish"
+    }
+   ],
+   "faaliyet": "açık (kanıt tarihli)",
+   "sinif": "A",
+   "kanit": [
+    "resmî işletmeci listesi: İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03) — \"ÜMRANİYE KENT LOKANTASI\", 18 m"
+   ],
+   "zayifKanit": [],
+   "eksik": [
+    "telefon"
+   ],
+   "adresKaynagi": "İBB Açık Veri adresi (İBB Açık Veri: Kent Lokantaları Konumları (2026-04-03))",
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11528658000",
+    "https://data.ibb.gov.tr/dataset/8f9c7ad2-9fc2-4f7a-ad59-a8c6fc9a2489"
+   ],
+   "mukerrer": "yok (Production, PR #4, 906, seyrek; aynı OSM kaydı, ad 150 m, yazım farkı, aynı bina, telefon, site alanı)",
+   "kontrolTarihi": "2026-11-11"
+  }
+ ]
+}

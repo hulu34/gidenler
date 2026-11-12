@@ -1,0 +1,631 @@
+{
+ "_aciklama": "İstanbul zincir şube paketi (dalga 9). Her şube ayrı kimlik; kaynak markanın resmî şube listesi. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json (yayın paketinde). Konum: OSM (© OpenStreetMap katkıcıları, ODbL; Nominatim). Google verisi kullanılmadı.",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "hd-iskender-mevlana-esenyurt",
+   "ref": "node/2282194184",
+   "tip": "osm_subesi",
+   "marka": "HD İskender",
+   "sube": "Esenyurt",
+   "ad": "HD İskender",
+   "ilce": "Esenyurt",
+   "adres": "Çelebi Mehmet Caddesi No:33A, Mevlana Mahallesi, Esenyurt",
+   "koordinat": [
+    41.009754,
+    28.658565
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 65 m uyumlu (bina düzeyi konum) · tür: OSM şube etiketi · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/2282194184",
+    "https://www.hdiskender.com/restoranlarimiz"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "etiler-marmaris-basaksehir-basaksehir",
+   "ref": "node/8306930597",
+   "tip": "osm_subesi",
+   "marka": "Etiler Marmaris",
+   "sube": "Başakşehir",
+   "ad": "Etiler Marmaris",
+   "ilce": "Başakşehir",
+   "adres": "Ertuğrul Gazi Caddesi No:21, Başakşehir Mahallesi, Başakşehir",
+   "koordinat": [
+    41.097206,
+    28.805647
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 7 m uyumlu (sokak düzeyi konum) · tür: OSM şube etiketi · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/8306930597",
+    "https://etilermarmaris.com.tr/subeler"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "etiler-marmaris-barbaros-atasehir",
+   "ref": "node/6089536353",
+   "tip": "osm_subesi",
+   "marka": "Etiler Marmaris",
+   "sube": "Ataşehir",
+   "ad": "Etiler Marmaris",
+   "ilce": "Ataşehir",
+   "adres": "Mor Sümbül Sk. No:8, Barbaros Mahallesi, Ataşehir",
+   "koordinat": [
+    40.997708,
+    29.098546
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 43 m uyumlu (sokak düzeyi konum) · tür: OSM şube etiketi · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6089536353",
+    "https://etilermarmaris.com.tr/subeler"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "pidem-muhurdar-caddesi-kadikoy",
+   "ref": "node/12848824040",
+   "tip": "osm_subesi",
+   "marka": "Pidem",
+   "sube": "Kadıköy",
+   "ad": "Pidem",
+   "ilce": "Kadıköy",
+   "adres": "Mühürdar caddesi No:60, Kadıköy",
+   "koordinat": [
+    40.991004,
+    29.023767
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 183 m uyumlu (sokak düzeyi konum) · tür: OSM şube etiketi · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12848824040",
+    "https://www.pidem.com.tr/kurumsal/restoranlarimiz"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "cookshop-caddebostan-kadikoy",
+   "ref": "node/5805037488",
+   "tip": "osm_subesi",
+   "marka": "Cookshop",
+   "sube": "Caddebostan Mahallesi",
+   "ad": "Cookshop",
+   "ilce": "Kadıköy",
+   "adres": "Bağdat Cd. No:271, Caddebostan Mahallesi, Kadıköy",
+   "koordinat": [
+    40.969231,
+    29.06443
+   ],
+   "tur": "Dünya mutfağı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 11 m uyumlu (bina düzeyi konum) · tür: OSM şube etiketi · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5805037488",
+    "https://www.cookshop.com.tr/tr/subeler/caddebostan"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "cookshop-cevizli-maltepe",
+   "ref": "node/7590663247",
+   "tip": "osm_subesi",
+   "marka": "Cookshop",
+   "sube": "Cevizli Mah.",
+   "ad": "Cookshop",
+   "ilce": "Maltepe",
+   "adres": "Tugay Yolu Cd. No:67, Cevizli Mahallesi, Maltepe",
+   "koordinat": [
+    40.918611,
+    29.164728
+   ],
+   "tur": "Dünya mutfağı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 105 m uyumlu (bina düzeyi konum) · tür: OSM şube etiketi · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7590663247",
+    "https://www.cookshop.com.tr/tr/subeler/maltepepark-avm"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-merkez-avcilar",
+   "ref": "node/9455382293",
+   "tip": "osm_subesi",
+   "marka": "Burger Yiyelim",
+   "sube": "Avcılar",
+   "ad": "Burger Yiyelim",
+   "ilce": "Avcılar",
+   "adres": "Marmara Caddesi No:26, Merkez Mahallesi, Avcılar",
+   "koordinat": [
+    40.981955,
+    28.722521
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 69 m uyumlu (sokak düzeyi konum) · tür: markanın OSM şubeleri (14/14) · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9455382293",
+    "https://www.burgeryiyelim.com/restoranlar"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-cihannuma-besiktas",
+   "ref": "node/9255339927",
+   "tip": "osm_subesi",
+   "marka": "Burger Yiyelim",
+   "sube": "Beşiktaş",
+   "ad": "Burger Yiyelim",
+   "ilce": "Beşiktaş",
+   "adres": "Barbaros Bulvarı No:3, Cihannüma Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.043521,
+    29.006736
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 88 m uyumlu (sokak düzeyi konum) · tür: markanın OSM şubeleri (14/14) · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9255339927",
+    "https://www.burgeryiyelim.com/restoranlar"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-cebeci-sultangazi",
+   "ref": "node/9100235898",
+   "tip": "osm_subesi",
+   "marka": "Burger Yiyelim",
+   "sube": "Sultangazi",
+   "ad": "Burger Yiyelim",
+   "ilce": "Sultangazi",
+   "adres": "P Caddesi No:35, Cebeci Mahallesi, Sultangazi",
+   "koordinat": [
+    41.107767,
+    28.860451
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): adres kapı no dahil ve OSM şubesiyle 298 m uyumlu (sokak düzeyi konum) · tür: OSM şube etiketi · adres: resmî şube listesi"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9100235898",
+    "https://www.burgeryiyelim.com/restoranlar"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-topcular-eyupsultan",
+   "ref": "isletme/hd-iskender-topcular-eyupsultan",
+   "tip": "isletme_kaydi",
+   "marka": "HD İskender",
+   "sube": "Topçular",
+   "ad": "HD İskender",
+   "ilce": "Eyüpsultan",
+   "adres": "Osmangazi Caddesi No:2, Topçular Mahallesi, Eyüpsultan",
+   "koordinat": [
+    41.035359,
+    28.920594
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/495821207 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (9/9)"
+   ],
+   "kaynak": [
+    "https://www.hdiskender.com/restoranlarimiz",
+    "https://www.openstreetmap.org/way/495821207"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-fisekhane-caddesi-bakirkoy",
+   "ref": "isletme/hd-iskender-fisekhane-caddesi-bakirkoy",
+   "tip": "isletme_kaydi",
+   "marka": "HD İskender",
+   "sube": "Fişekhane Caddesi",
+   "ad": "HD İskender",
+   "ilce": "Bakırköy",
+   "adres": "Fişekhane Caddesi No:2, Bakırköy",
+   "koordinat": [
+    40.978495,
+    28.874173
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/1123022164 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (9/9)"
+   ],
+   "kaynak": [
+    "https://www.hdiskender.com/restoranlarimiz",
+    "https://www.openstreetmap.org/way/1123022164"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-suleyman-demirel-bulvari-basaksehir",
+   "ref": "isletme/hd-iskender-suleyman-demirel-bulvari-basaksehir",
+   "tip": "isletme_kaydi",
+   "marka": "HD İskender",
+   "sube": "Süleyman Demirel Bulvarı",
+   "ad": "HD İskender",
+   "ilce": "Başakşehir",
+   "adres": "Süleyman Demirel Bulvarı No:7, Başakşehir",
+   "koordinat": [
+    41.063723,
+    28.804996
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/773665007 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (9/9)"
+   ],
+   "kaynak": [
+    "https://www.hdiskender.com/restoranlarimiz",
+    "https://www.openstreetmap.org/way/773665007"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-cobancesme-kosuyolu-bulvari-bakirkoy",
+   "ref": "isletme/hd-iskender-cobancesme-kosuyolu-bulvari-bakirkoy",
+   "tip": "isletme_kaydi",
+   "marka": "HD İskender",
+   "sube": "Çobançeşme Koşuyolu Bulvarı",
+   "ad": "HD İskender",
+   "ilce": "Bakırköy",
+   "adres": "Çobançeşme Koşuyolu Bulvarı No:3, Bakırköy",
+   "koordinat": [
+    40.996776,
+    28.88591
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/1273541163 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (9/9)"
+   ],
+   "kaynak": [
+    "https://www.hdiskender.com/restoranlarimiz",
+    "https://www.openstreetmap.org/way/1273541163"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-fatih-sultan-mehmet-umraniye",
+   "ref": "isletme/hd-iskender-fatih-sultan-mehmet-umraniye",
+   "tip": "isletme_kaydi",
+   "marka": "HD İskender",
+   "sube": "Fatih Sultan Mehmet",
+   "ad": "HD İskender",
+   "ilce": "Ümraniye",
+   "adres": "Balkan Caddesi No:62, Fatih Sultan Mehmet Mahallesi, Ümraniye",
+   "koordinat": [
+    41.0254,
+    29.124992
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/160467586 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (9/9)"
+   ],
+   "kaynak": [
+    "https://www.hdiskender.com/restoranlarimiz",
+    "https://www.openstreetmap.org/way/160467586"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hd-iskender-mimar-sinan-uskudar",
+   "ref": "isletme/hd-iskender-mimar-sinan-uskudar",
+   "tip": "isletme_kaydi",
+   "marka": "HD İskender",
+   "sube": "Mimar Sinan",
+   "ad": "HD İskender",
+   "ilce": "Üsküdar",
+   "adres": "Çavuşdere Caddesi No:35, Mimar Sinan Mahallesi, Üsküdar",
+   "koordinat": [
+    41.020658,
+    29.019588
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası relation/13668167 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (9/9)"
+   ],
+   "kaynak": [
+    "https://www.hdiskender.com/restoranlarimiz",
+    "https://www.openstreetmap.org/relation/13668167"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "bursa-kebap-evi-sehit-metin-kaya-sk-eyupsultan",
+   "ref": "isletme/bursa-kebap-evi-sehit-metin-kaya-sk-eyupsultan",
+   "tip": "isletme_kaydi",
+   "marka": "Bursa Kebap Evi",
+   "sube": "ŞEHİT METİN KAYA SK.",
+   "ad": "Bursa Kebap Evi",
+   "ilce": "Eyüpsultan",
+   "adres": "ŞEHİT METİN KAYA SK. No:11, Eyüpsultan",
+   "koordinat": [
+    41.074122,
+    28.923409
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası node/11022039176 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (2/2)"
+   ],
+   "kaynak": [
+    "https://www.bursakebapevi.com/restoranlar/",
+    "https://www.openstreetmap.org/node/11022039176"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "usta-donerci-dikilitas-besiktas",
+   "ref": "isletme/usta-donerci-dikilitas-besiktas",
+   "tip": "isletme_kaydi",
+   "marka": "Usta Dönerci",
+   "sube": "Dikilitaş",
+   "ad": "Usta Dönerci",
+   "ilce": "Beşiktaş",
+   "adres": "Emirhan Caddesi No:109, Dikilitaş Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.058463,
+    29.007387
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası node/1656017526 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (8/8)"
+   ],
+   "kaynak": [
+    "https://www.ustadonerci.com/tr/iletisim/",
+    "https://www.openstreetmap.org/node/1656017526"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "cookshop-kennedy-caddesi-zeytinburnu",
+   "ref": "isletme/cookshop-kennedy-caddesi-zeytinburnu",
+   "tip": "isletme_kaydi",
+   "marka": "Cookshop",
+   "sube": "Kennedy Caddesi",
+   "ad": "Cookshop",
+   "ilce": "Zeytinburnu",
+   "adres": "Kennedy Caddesi No:52V, Zeytinburnu",
+   "koordinat": [
+    40.983352,
+    28.90546
+   ],
+   "tur": "Dünya mutfağı",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/539673047 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (2/3)"
+   ],
+   "kaynak": [
+    "https://www.cookshop.com.tr/tr/subeler/fisekhane",
+    "https://www.openstreetmap.org/way/539673047"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-atakoy-1-kisim-bakirkoy",
+   "ref": "isletme/burger-yiyelim-atakoy-1-kisim-bakirkoy",
+   "tip": "isletme_kaydi",
+   "marka": "Burger Yiyelim",
+   "sube": "Ataköy 1.Kısım",
+   "ad": "Burger Yiyelim",
+   "ilce": "Bakırköy",
+   "adres": "Fişekhane Caddesi No:7, Ataköy 1.Kısım Mahallesi, Bakırköy",
+   "koordinat": [
+    40.977501,
+    28.87129
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/957439942 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (14/14)"
+   ],
+   "kaynak": [
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/way/957439942"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-kocatepe-bayrampasa",
+   "ref": "isletme/burger-yiyelim-kocatepe-bayrampasa",
+   "tip": "isletme_kaydi",
+   "marka": "Burger Yiyelim",
+   "sube": "Kocatepe",
+   "ad": "Burger Yiyelim",
+   "ilce": "Bayrampaşa",
+   "adres": "Paşa Caddesi No:3, Kocatepe Mahallesi, Bayrampaşa",
+   "koordinat": [
+    41.044692,
+    28.896395
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/501910446 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (14/14)"
+   ],
+   "kaynak": [
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/way/501910446"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-ikitelli-osb-basaksehir",
+   "ref": "isletme/burger-yiyelim-ikitelli-osb-basaksehir",
+   "tip": "isletme_kaydi",
+   "marka": "Burger Yiyelim",
+   "sube": "İkitelli OSB",
+   "ad": "Burger Yiyelim",
+   "ilce": "Başakşehir",
+   "adres": "Süleyman Demirel Bulvarı No:7, İkitelli OSB Mahallesi, Başakşehir",
+   "koordinat": [
+    41.063723,
+    28.804996
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası way/773665007 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (14/14)"
+   ],
+   "kaynak": [
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/way/773665007"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-baglarbasi-maltepe",
+   "ref": "isletme/burger-yiyelim-baglarbasi-maltepe",
+   "tip": "isletme_kaydi",
+   "marka": "Burger Yiyelim",
+   "sube": "Bağlarbaşı",
+   "ad": "Burger Yiyelim",
+   "ilce": "Maltepe",
+   "adres": "Bağdat Caddesi No:354, Bağlarbaşı Mahallesi, Maltepe",
+   "koordinat": [
+    40.924193,
+    29.131947
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası node/12753747337 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (14/14)"
+   ],
+   "kaynak": [
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/node/12753747337"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-osmaniye-bakirkoy",
+   "ref": "isletme/burger-yiyelim-osmaniye-bakirkoy",
+   "tip": "isletme_kaydi",
+   "marka": "Burger Yiyelim",
+   "sube": "Osmaniye",
+   "ad": "Burger Yiyelim",
+   "ilce": "Bakırköy",
+   "adres": "Çobançeşme Koşuyolu Bulvarı No:5, Osmaniye Mahallesi, Bakırköy",
+   "koordinat": [
+    40.999657,
+    28.884674
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası node/5436623097 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (14/14)"
+   ],
+   "kaynak": [
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/node/5436623097"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-ferhatpasa-atasehir",
+   "ref": "isletme/burger-yiyelim-ferhatpasa-atasehir",
+   "tip": "isletme_kaydi",
+   "marka": "Burger Yiyelim",
+   "sube": "Ferhatpaşa",
+   "ad": "Burger Yiyelim",
+   "ilce": "Ataşehir",
+   "adres": "Samandıra Caddesi No:78, Ferhatpaşa Mahallesi, Ataşehir",
+   "koordinat": [
+    40.988789,
+    29.191659
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası node/13073825102 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (14/14)"
+   ],
+   "kaynak": [
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/node/13073825102"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "burger-yiyelim-tomtom-beyoglu",
+   "ref": "isletme/burger-yiyelim-tomtom-beyoglu",
+   "tip": "isletme_kaydi",
+   "marka": "Burger Yiyelim",
+   "sube": "Tomtom",
+   "ad": "Burger Yiyelim",
+   "ilce": "Beyoğlu",
+   "adres": "İstiklal Caddesi No:162, Tomtom Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.030331,
+    28.97551
+   ],
+   "tur": "Burger",
+   "faaliyet": "açık (resmî şube listesinde, kontrol tarihi)",
+   "sinif": "A",
+   "kanit": [
+    "resmî şube listesi (2026-11-11): şube adresi kapı no dahil; konum OSM adres noktası node/7988234785 (sokak ve kapı no birebir) · tür: markanın OSM şubeleri (14/14)"
+   ],
+   "kaynak": [
+    "https://www.burgeryiyelim.com/restoranlar",
+    "https://www.openstreetmap.org/node/7988234785"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  }
+ ]
+}

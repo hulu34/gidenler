@@ -1,0 +1,93 @@
+{
+ "dogrulanan": [
+  {
+   "slug": "ibb-arnavutkoy-kent-lokantasi-demircan-sokak-arnavutkoy",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-avcilar-kent-lokantasi-samli-sokak-avcilar",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-catalca-kent-lokantasi-ataturk-caddesi-catalca",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-capa-kent-lokantasi-capa-sehremini-mahallesi-turgut-ozal-millet-caddesi-fatih",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-sultanahmet-kent-lokantasi-salkim-sogut-sk-fatih",
+   "marka": "ibb"
+  },
+  {
+   "slug": "burger-yiyelim-caddebostan-mahallesi-kadikoy",
+   "marka": "burger yiyelim",
+   "sayfa": "https://www.burgeryiyelim.com/restoranlar"
+  },
+  {
+   "slug": "burger-yiyelim-erol-kaya-caddesi-pendik",
+   "marka": "burger yiyelim",
+   "sayfa": "https://www.burgeryiyelim.com/restoranlar"
+  },
+  {
+   "slug": "ibb-pendik-kent-lokantasi-bati-mah-sabri-taskin-cad-pendik",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-safa-tepesi-sosyal-tesisleri-mevlana-cd-sancaktepe",
+   "marka": "ibb safa tepesi sosyal tesisleri"
+  },
+  {
+   "slug": "ibb-sancaktepe-kent-lokantasi-termal-sk-sancaktepe",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-hisarustu-kent-lokantasi-hisarustu-nispetiye-caddesi-sariyer",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-sultanbeyli-kent-lokantasi-ataturk-cd-sultanbeyli",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-sultangazi-kent-lokantasi-ugur-mumcu-mah-hoca-ahmet-yesevi-cad-sultangazi",
+   "marka": "ibb"
+  },
+  {
+   "slug": "ibb-umraniye-kent-lokantasi-natoyolu-caddesi-umraniye",
+   "marka": "ibb"
+  }
+ ],
+ "kanitsiz": 572,
+ "kapsamDisi": {
+  "mcdonald s": 87,
+  "burger king": 115,
+  "sbarro": 9,
+  "little caesars": 25,
+  "popeyes": 31,
+  "can u can": 1,
+  "domino s": 60,
+  "subway": 20,
+  "papa john s": 10,
+  "cigkoftem": 10,
+  "komagene": 58,
+  "wagamama": 1,
+  "carl s jr": 7,
+  "oses cig": 4,
+  "oses cigkofte": 4,
+  "simit sarayi": 4,
+  "tavuk dunyasi": 27,
+  "oses": 4,
+  "arby s": 10,
+  "totalenergies": 1,
+  "shake shack": 6,
+  "waffle house": 1,
+  "pizza hut": 4,
+  "yo sushi": 1,
+  "olive garden": 1,
+  "kfc": 7,
+  "greenpeace": 1,
+  "karafirin": 1
+ }
+}

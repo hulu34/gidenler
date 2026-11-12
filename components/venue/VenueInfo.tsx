@@ -20,7 +20,7 @@ export function VenueInfo({ entity }: { entity: Entity }) {
   const c = entity.contact;
   const rows: Array<[string, React.ReactNode]> = [];
   rows.push(["Tür", entity.subcategory ?? "—"]);
-  if (entity.address) rows.push(["Adres", entity.address]);
+  if (entity.address) rows.push([entity.location?.precision === "street" ? "Adres (sokak düzeyi)" : "Adres", entity.address]);
   else if (entity.location?.district) rows.push(["Semt", [entity.location.neighborhood, entity.location.district].filter(Boolean).join(", ")]);
   if (entity.hours) rows.push(["Saatler", <span key="h" className="tnum">{entity.isReal ? trHours(entity.hours) : entity.hours}</span>]);
   if (b && (b.lunch || b.dinner)) rows.push(["Bütçe (kişi başı)", (
@@ -45,6 +45,7 @@ export function VenueInfo({ entity }: { entity: Entity }) {
           </div>
         ))}
       </dl>
+      {entity.location?.precision === "street" && <p data-location-precision="street" className="mt-3 border border-line bg-sheet p-3 text-[13px] text-ink-2">Konum yaklaşık; kapı numarası henüz doğrulanmadı. Gitmeden önce giriş adresini işletmeyle teyit et.</p>}
       {entity.isReal && entity.source?.provider === "business" && (
         <p className="mt-2 text-[11.5px] leading-snug text-ink-3">
           Kimlik bilgisi: işletmenin kendi beyanı ve resmî sitesi · {entity.source.importedAt}. Konum OpenStreetMap adres verisinden, sokak düzeyinde (© OpenStreetMap katkıcıları, ODbL).

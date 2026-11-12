@@ -66,7 +66,7 @@ export const absoluteImage = (src: string) => (src.startsWith("http") ? src : `$
 /** image yalnız gerçek, hak kaydı olan kapaktan gelir; Google görseli ve yer tutucu asla. */
 export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelated: boolean, image?: string | null) {
   if (!e.isReal || e.isDemo || !e.address || !TYPE[e.categoryId]) return null;
-  const geo = e.location?.geo;
+  const geo = e.location?.precision === "street" ? undefined : e.location?.geo;
   const hours = openingHoursSpec(e.contact?.openingHours ?? e.hours);
   return {
     "@context": "https://schema.org",

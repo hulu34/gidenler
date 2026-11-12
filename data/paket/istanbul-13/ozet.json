@@ -1,0 +1,81 @@
+{
+ "dalga": 13,
+ "osmTarihi": "2026-11-10T20:20:48Z",
+ "kontrolTarihi": "2026-11-11",
+ "B1_yalniz_kapi_no": 3,
+ "restoran_adayi": 438,
+ "A": 15,
+ "B": 66,
+ "B_kanitli": 66,
+ "C": 355,
+ "ret": 2,
+ "kafeBarHavuzu": {
+  "kafe": 1,
+  "bar": 0,
+  "tatli_firin": 2,
+  "ornek": []
+ },
+ "A_kanit": {
+  "resmî": 12,
+  "OSM kontrol": 5,
+  "OSM anket": 2
+ },
+ "A_ilce": {
+  "Beşiktaş": 2,
+  "Beyoğlu": 2,
+  "Kadıköy": 8,
+  "Kartal": 1,
+  "Sarıyer": 1,
+  "Şişli": 1
+ },
+ "A_tur": {
+  "Türk mutfağı": 11,
+  "Pizza": 2,
+  "Dünya mutfağı": 1,
+  "Burger": 1
+ },
+ "A_zincir": {},
+ "B_ilce": {
+  "Ümraniye": 3,
+  "Beyoğlu": 4,
+  "Ataşehir": 12,
+  "Kadıköy": 23,
+  "Fatih": 3,
+  "Pendik": 8,
+  "Beşiktaş": 4,
+  "Maltepe": 2,
+  "Arnavutköy": 2,
+  "Üsküdar": 2,
+  "Eyüpsultan": 1,
+  "Sarıyer": 1,
+  "Avcılar": 1
+ },
+ "B_eksik": {
+  "sokak adresi": 21,
+  "telefon": 57,
+  "çalışma saatleri": 50,
+  "mutfak türü (kaynakta yok)": 53,
+  "kapı numarası": 6
+ },
+ "C_neden": {
+  "mukerrer_suphesi": 32,
+  "zincir_suphesi_kanitsiz": 68,
+  "faaliyet_kaniti_yok": 338
+ },
+ "ret_neden": {
+  "aday_ici_cift": 1,
+  "restoran_disi_ya_da_kapali_alan": 1
+ },
+ "zincir": {
+  "dogrulanan": 0,
+  "kanitsiz": 68,
+  "kapsamDisi": {}
+ },
+ "karsilastirma": {
+  "karsilastirilan": 778,
+  "slug": 0,
+  "ref": 0,
+  "yakinAyniAd": 0,
+  "ayniBina": 0
+ }
+}

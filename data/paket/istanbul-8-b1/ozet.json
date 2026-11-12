@@ -1,0 +1,46 @@
+{
+ "dalga": 8,
+ "sinif": "B1",
+ "kayit": 102,
+ "elenen": [],
+ "mahalleli": 102,
+ "ilce": {
+  "Fatih": 9,
+  "Beyoğlu": 39,
+  "Beşiktaş": 4,
+  "Sancaktepe": 6,
+  "Şişli": 4,
+  "Çekmeköy": 1,
+  "Tuzla": 3,
+  "Kadıköy": 7,
+  "Bağcılar": 1,
+  "Küçükçekmece": 1,
+  "Üsküdar": 10,
+  "Ümraniye": 1,
+  "Pendik": 2,
+  "Ataşehir": 4,
+  "Esenyurt": 2,
+  "Arnavutköy": 4,
+  "Sarıyer": 2,
+  "Maltepe": 1,
+  "Şile": 1
+ },
+ "tur": {
+  "Türk mutfağı": 34,
+  "Burger": 7,
+  "Kebapçı / Ocakbaşı": 22,
+  "Pizza": 9,
+  "Balık restoranı": 16,
+  "Dünya mutfağı": 1,
+  "Asya mutfağı": 3,
+  "Sokak lezzeti": 2,
+  "Tavuk": 3,
+  "Dönerci": 1,
+  "Sushi / Japon": 3,
+  "Steakhouse": 1
+ },
+ "karsilastirma": {
+  "slug": 0,
+  "ref": 0
+ }
+}

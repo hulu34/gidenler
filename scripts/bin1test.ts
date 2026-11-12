@@ -16,12 +16,13 @@ ok("ilk 456 kayıt korunur (dalga 0–1)", all.filter((v) => (v.wave ?? 0) < 2).
 if (!w2.length) { console.log("  · yeni dalga yok (456 sürüm) — dalga testleri atlandı"); console.log(`\ndalga 2: ${pass} geçti, ${fail} kaldı`); process.exit(fail ? 1 : 0); }
 /* dalga 2–4: Google sayfasında güçlü doğrulama; dalga 5+ (seyrek ilçe, İstanbul paket 6): Google'sız — resmî site / OSM yerinde kontrol */
 ok(`dalga 2+: ${w2.length} yeni mekân, hepsi doğrulama kaydıyla (tarih, güven, kanıt)`, w2.length > 0 && w2.every((v) => v.verifiedAt && ((v.wave ?? 0) >= 5
-  ? (v.confidence === "güçlü" || v.confidence === "orta") && /web sitesi|resmî site|yerinde kontrol|Sipariş platform/i.test(v.verification ?? "") && !/Google/i.test(v.verification ?? "")
+  ? (v.confidence === "güçlü" || v.confidence === "orta") && /web sitesi|resmî site|yerinde kontrol|yerinde anket|resmî şube sayfası|resmî şube listesi|resmî işletmeci listesi|Michelin Rehberi 2026|Sipariş platform/i.test(v.verification ?? "") && !/Google/i.test(v.verification ?? "")
   : v.confidence === "güçlü" && /Google sayfası/.test(v.verification ?? ""))));
 ok("tekrarlı slug / OSM kaydı yok", new Set(all.map((v) => v.slug)).size === all.length && new Set(all.map((v) => v.ref)).size === all.length);
 ok("yeni mekânların hepsinde açık adres (Google'dan kopyalanmadı, OSM)", w2.every((v) => !!v.address && /^(node|way|relation)\//.test(v.ref)));
 const near = (a: R & { lat?: number; lng?: number }, b: R & { lat?: number; lng?: number }) => { const r = Math.PI / 180; const x = Math.sin(((b.lat! - a.lat!) * r) / 2) ** 2 + Math.cos(a.lat! * r) * Math.cos(b.lat! * r) * Math.sin(((b.lng! - a.lng!) * r) / 2) ** 2; return 2 * 6371000 * Math.asin(Math.sqrt(x)); };
-const dupNear = w2.filter((v) => all.some((e) => e !== v && fold(e.name) === fold(v.name) && (e.district === v.district || near(e, v) <= 150)));
+/* aynı ad: 150 m içinde ya da aynı ilçede 1 km içinde → mükerrer. Daha uzaktaki aynı adlı kayıt ayrı şubedir (zincir şubesi resmî listeyle doğrulanır; paket 7+) */
+const dupNear = w2.filter((v) => all.some((e) => e !== v && fold(e.name) === fold(v.name) && (near(e, v) <= 150 || (e.district === v.district && near(e, v) <= 1000))));
 ok("aynı ad aynı semtte ya da 150 m içinde iki kayıt yok (mükerrer)", dupNear.length === 0, dupNear.map((v) => v.slug));
 const tel = (p?: string) => (p ?? "").replace(/\D/g, "").slice(-10);
 const dupTel = w2.filter((v) => tel(v.phone).length === 10 && all.some((e) => e !== v && tel(e.phone) === tel(v.phone)));
@@ -29,7 +30,9 @@ ok("aynı telefonla iki kayıt yok", dupTel.length === 0, dupTel.map((v) => v.sl
 ok("yeni mekânların hiçbiri kesin kapalı listesinde değil", !w2.some((v) => CLOSED_CONFIRMED.has(v.slug)));
 ok("otel/kurum yemekhanesi adı yok", !w2.some((v) => /\b(hotel|otel|hostel|pansiyon|yemekhane|kantin|sosyal tesis)\b/i.test(v.name)));
 /* arama */
-const found = w2.filter((v) => searchV3(v.name, { limit: 10 }).exact.slice(0, 5).some((h) => h.card.entity.slug === v.slug));
+/* çok şubeli marka (adı 5'ten fazla kayıtta): kendi adıyla aranınca bütün şubeler ilk 20'de olmalı; tek şubelide ilk 5 */
+const sameName = (v: R) => all.filter((e) => fold(e.name) === fold(v.name)).length;
+const found = w2.filter((v) => searchV3(v.name, { limit: 30 }).exact.slice(0, sameName(v) > 5 ? 20 : 5).some((h) => h.card.entity.slug === v.slug));
 ok(`her yeni mekân kendi adıyla ilk 5'te (${found.length}/${w2.length})`, found.length === w2.length, w2.filter((v) => !found.includes(v)).map((v) => v.name).slice(0, 8));
 const brands = Object.values(all.reduce<Record<string, R[]>>((m, v) => ((m[fold(v.name)] ??= []).push(v), m), {})).filter((xs) => xs.length > 1 && xs.some((x) => x.wave === 2));
 const brandOk = brands.filter((xs) => { const r = searchV3(xs[0].name, { limit: 20 }).exact.map((h) => h.card.entity.slug); return xs.every((x) => r.includes(x.slug)); });

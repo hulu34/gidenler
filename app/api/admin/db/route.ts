@@ -14,6 +14,7 @@ import { computeBoards, dayOf, loadSignalRows } from "@/lib/signals";
 import { getDb } from "@/lib/db/client";
 import { executorFor } from "@/lib/db/executors";
 import { applyMigrations, migrationStatus } from "@/lib/db/migrate";
+import { appendRealVenues } from "@/lib/db/appendVenues";
 import { seedRealVenues, verifyRealVenues } from "@/lib/db/seed";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "@/lib/db/rollback";
 import { realVenueRecords, realVenueReview } from "@/data/real";
@@ -156,7 +157,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; mapsUrls?: Record<string, string>; emailSha256?: string; placeId?: string; identifierId?: string; admin?: string; mode?: string; simulateFailure?: boolean; auditId?: string } = {};
+  let body: { baselineCount?: number; action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; mapsUrls?: Record<string, string>; emailSha256?: string; placeId?: string; identifierId?: string; admin?: string; mode?: string; simulateFailure?: boolean; auditId?: string } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -183,6 +184,16 @@ export async function POST(req: Request) {
         if (only && only.length !== new Set(body.slugs).size) return NextResponse.json({ error: "unknown_slug" }, { status: 400, headers: H });
         const r = await seedRealVenues(db, only ?? realVenueRecords);
         return NextResponse.json({ action: "seed", env: envName(), ...r, integrity: await verifyRealVenues(db, realVenueRecords) }, { headers: H });
+      }
+      case "seed-add-only": {
+        if (body.confirm !== "EVET") break;
+        if (!Array.isArray(body.slugs) || !body.slugs.length || !Number.isInteger(body.baselineCount)) return NextResponse.json({ error: "explicit_append_plan_required" }, { status: 400, headers: H });
+        const only = realVenueRecords.filter(r => body.slugs!.includes(r.slug));
+        if (only.length !== body.slugs.length) return NextResponse.json({ error: "unknown_or_duplicate_slug" }, { status: 400, headers: H });
+        const st = await migrationStatus(x);
+        if (st.pending.length || st.drift.length || st.unknown.length) return NextResponse.json({ error: "migration_mismatch" }, { status: 409, headers: H });
+        const r = await appendRealVenues(x, only, body.baselineCount!);
+        return NextResponse.json({ action: "seed-add-only", env: envName(), ...r, integrity: await verifyRealVenues(db, realVenueRecords) }, { headers: H });
       }
       case "rollback-seed":
         if (body.confirm !== "GERI-AL") break;

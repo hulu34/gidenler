@@ -1,0 +1,926 @@
+{
+ "_aciklama": "İstanbul yüksek profil paketi (dalga 10): MICHELIN Rehberi 2026 İstanbul seçkisinden katalogda olmayan, kanıtı tam restoranlar. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json (yayın paketinde). Konum: OSM (© OpenStreetMap katkıcıları, ODbL). Michelin ayrımı rehberin resmî sayfasından; rehber metni/fotoğrafı/koordinatı kopyalanmadı. Google verisi kullanılmadı.",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "turk-fatih-tutak-sisli",
+   "ref": "node/11076786700",
+   "tip": "osm_kaydi",
+   "ad": "TURK Fatih Tutak",
+   "ilce": "Şişli",
+   "adres": "Yeniyol Sokak No:2, Şişli",
+   "koordinat": [
+    41.058273,
+    28.977646
+   ],
+   "tur": "Modern mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "İki Yıldız + Yeşil Yıldız",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: İki Yıldız + Yeşil Yıldız (resmî rehber sayfası, 2026-11-11) · resmî site turkft.com (ad+telefon+sokak) · konum: OSM restoran kaydı node/11076786700 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Modern Cuisine\"",
+    "OSM adı yazım hatalı (\"Turk Fatik Tutak\"); resmî ad kullanıldı"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11076786700",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak",
+    "https://www.turkft.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "gallada-by-fatih-tutak-beyoglu",
+   "ref": "node/13630093542",
+   "tip": "osm_kaydi",
+   "ad": "GALLADA by Fatih Tutak",
+   "ilce": "Beyoğlu",
+   "adres": "Kemankeş Caddesi No:34, Kemankeş Karamustafa Paşa Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.022857,
+    28.978053
+   ],
+   "tur": "Asya etkili mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site galladaistanbul.com (site 403 (otomatik istek kapalı; atlatılmadı) — OSM ad+adres+telefon+site) · konum: OSM restoran kaydı node/13630093542 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Asian Influences\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13630093542",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/gallada",
+    "https://www.galladaistanbul.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "cuma-beyoglu",
+   "ref": "way/247448173",
+   "tip": "osm_kaydi",
+   "ad": "Cuma",
+   "ilce": "Beyoğlu",
+   "adres": "Çukur Cuma Caddesi No:53/A, Firuzağa Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.032141,
+    28.980789
+   ],
+   "tur": "Akdeniz mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Bib Gourmand",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bib Gourmand (resmî rehber sayfası, 2026-11-11) · resmî site cuma.cc (ad+telefon+sokak) · konum: OSM restoran kaydı way/247448173 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Mediterranean Cuisine\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/247448173",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/cuma",
+    "https://cuma.cc/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sapa-atasehir",
+   "ref": "node/9895157019",
+   "tip": "osm_kaydi",
+   "ad": "Sapa",
+   "ilce": "Ataşehir",
+   "adres": "Rüya Sokak No:12/18A, Küçükbakkalköy Mahallesi, Ataşehir",
+   "koordinat": [
+    40.981376,
+    29.107408
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site yok (resmî site yok — OSM adres (Rüya Sokağı 12) + Michelin 2026) · konum: OSM restoran kaydı node/9895157019 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9895157019",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sapa-istanbul"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "aida-vino-e-cucina-kadikoy",
+   "ref": "node/6318384785",
+   "tip": "osm_kaydi",
+   "ad": "Aida - vino e cucina",
+   "ilce": "Kadıköy",
+   "adres": "Ressam Şeref Akdik Sokak No:10, Caferağa Mahallesi, Kadıköy",
+   "koordinat": [
+    40.985518,
+    29.02545
+   ],
+   "tur": "İtalyan",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site aidavinoecucina.com (ad+telefon+sokak) · konum: OSM restoran kaydı node/6318384785 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Italian\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6318384785",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aida-vino-e-cucina",
+    "https://aidavinoecucina.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sans-restaurant-besiktas",
+   "ref": "node/5523700462",
+   "tip": "osm_kaydi",
+   "ad": "Şans Restaurant",
+   "ilce": "Beşiktaş",
+   "adres": "Palmiye Sokak No:1, Levent Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.080991,
+    29.014929
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site sansrestaurant.com (sitede ad; OSM adres + telefon (rehberle aynı)) · konum: OSM restoran kaydı node/5523700462 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5523700462",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sans",
+    "https://www.sansrestaurant.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "alaf-besiktas",
+   "ref": "node/10734920205",
+   "tip": "osm_kaydi",
+   "ad": "Alaf",
+   "ilce": "Beşiktaş",
+   "adres": "Kuruçeşme Caddesi No:19, Arnavutköy Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.060357,
+    29.036665
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site alafkurucesme.com (ad+telefon+sokak) · konum: OSM restoran kaydı node/10734920205 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\"",
+    "OSM adı \"Alaf 2 Tek\"; resmî ad kullanıldı"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10734920205",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/alaf",
+    "https://www.alafkurucesme.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "deraliye-fatih",
+   "ref": "node/5108843074",
+   "tip": "osm_kaydi",
+   "ad": "Deraliye",
+   "ilce": "Fatih",
+   "adres": "Ticarethane Sokak No:10, Alemdar Mahallesi, Fatih",
+   "koordinat": [
+    41.008843,
+    28.97591
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site deraliyerestaurant.com (ad+telefon+sokak) · konum: OSM restoran kaydı node/5108843074 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5108843074",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/deraliye",
+    "https://deraliyerestaurant.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "1924-istanbul-beyoglu",
+   "ref": "node/6311562615",
+   "tip": "osm_kaydi",
+   "ad": "1924 İstanbul",
+   "ilce": "Beyoğlu",
+   "adres": "İstiklal Caddesi, Olivya Geçidi No:7, Beyoğlu",
+   "koordinat": [
+    41.032858,
+    28.976133
+   ],
+   "tur": "Rus mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site 1924istanbul.com (sitede ad; OSM yerinde kontrol 2024-06-06) · konum: OSM restoran kaydı node/6311562615 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Russian\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6311562615",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/1924-istanbul",
+    "https://www.1924istanbul.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sunset-grill-ve-bar-besiktas",
+   "ref": "node/1768294289",
+   "tip": "osm_kaydi",
+   "ad": "Sunset Grill & Bar",
+   "ilce": "Beşiktaş",
+   "adres": "Yol Sokak No:2, Kuruçeşme Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.063969,
+    29.033019
+   ],
+   "tur": "Uluslararası mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site sunsetgrillbar.com (ad+telefon) · konum: OSM restoran kaydı node/1768294289 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"International\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/1768294289",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sunset-grill-bar",
+    "https://www.sunsetgrillbar.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "murver-beyoglu",
+   "ref": "node/9171087887",
+   "tip": "osm_kaydi",
+   "ad": "Mürver",
+   "ilce": "Beyoğlu",
+   "adres": "Kemankeş Caddesi No:57-59, Beyoğlu",
+   "koordinat": [
+    41.024672,
+    28.980018
+   ],
+   "tur": "Izgara",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site murverrestaurant.com (ad+telefon+sokak) · konum: OSM restoran kaydı node/9171087887 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Grills\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9171087887",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/murver",
+    "https://www.murverrestaurant.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "aseka-beyoglu",
+   "ref": "node/10086548323",
+   "tip": "osm_kaydi",
+   "ad": "AŞEKA",
+   "ilce": "Beyoğlu",
+   "adres": "Arap Oğlan Sokak No:6, Müeyyedzade Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.024987,
+    28.977465
+   ],
+   "tur": "Mevsimsel mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site aseka.co (ad+telefon+sokak) · konum: OSM restoran kaydı node/10086548323 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Seasonal Cuisine\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10086548323",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aseka",
+    "https://www.aseka.co/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "terrazza-italia-besiktas",
+   "ref": "node/9547768317",
+   "tip": "osm_kaydi",
+   "ad": "Terrazza Italia",
+   "ilce": "Beşiktaş",
+   "adres": "Koru Sokak No:2, Zorlu Center, Levazım Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.06539,
+    29.016796
+   ],
+   "tur": "İtalyan",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site eataly.com.tr (ad+telefon+sokak) · konum: OSM restoran kaydı node/9547768317 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Italian\"",
+    "OSM adı \"Terezza italia\"; resmî ad kullanıldı"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9547768317",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/terrazza-italia",
+    "https://www.eataly.com.tr/tr/terrazza-italia"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "mutfakkoz-kadikoy",
+   "ref": "node/12063475848",
+   "tip": "osm_kaydi",
+   "ad": "Mutfakkoz",
+   "ilce": "Kadıköy",
+   "adres": "Kaya Sultan Sokak No:27B, Kozyatağı Mahallesi, Kadıköy",
+   "koordinat": [
+    40.965951,
+    29.091124
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Bib Gourmand",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bib Gourmand (resmî rehber sayfası, 2026-11-11) · resmî site mutfakkoz.com (ad+telefon+sokak) · konum: OSM restoran kaydı node/12063475848 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12063475848",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mutfakkoz",
+    "https://mutfakkoz.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "tavaci-recep-usta-bostanci-maltepe",
+   "ref": "node/4416261601",
+   "tip": "osm_kaydi",
+   "ad": "Tavacı Recep Usta Bostancı",
+   "ilce": "Maltepe",
+   "adres": "Bağdat Caddesi No:6, Altıntepe Mahallesi, Maltepe",
+   "koordinat": [
+    40.952137,
+    29.097047
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Bib Gourmand",
+   "zincir": null,
+   "sube": "Bostancı",
+   "kanit": [
+    "Michelin Rehberi 2026: Bib Gourmand (resmî rehber sayfası, 2026-11-11) · resmî site tavacirecepusta.com.tr (ad+telefon+sokak) · konum: OSM restoran kaydı node/4416261601 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4416261601",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tavac%C4%B1-recep-usta-bostanc%C4%B1",
+    "https://tavacirecepusta.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "mahir-lokantasi-sisli",
+   "ref": "node/6290893686",
+   "tip": "osm_kaydi",
+   "ad": "Mahir Lokantası",
+   "ilce": "Şişli",
+   "adres": "Tavukçu Fethi Sokak No:28/B, Cumhuriyet Mahallesi, Şişli",
+   "koordinat": [
+    41.052884,
+    28.987094
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Bib Gourmand",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bib Gourmand (resmî rehber sayfası, 2026-11-11) · resmî site yok (resmî site yok — OSM adres (Tavukçu Fethi Sk. 28b) + Michelin 2026) · konum: OSM restoran kaydı node/6290893686 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6290893686",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mahir-lokantas%C4%B1"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "yanyali-fehmi-lokantasi-kadikoy",
+   "ref": "node/11335161041",
+   "tip": "osm_kaydi",
+   "ad": "Yanyalı Fehmi Lokantası",
+   "ilce": "Kadıköy",
+   "adres": "Yağlıkçı İsmail Sokak No:1, Osmanağa Mahallesi, Kadıköy",
+   "koordinat": [
+    40.990765,
+    29.025509
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Bib Gourmand",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Bib Gourmand (resmî rehber sayfası, 2026-11-11) · resmî site fehmilokantasi.com (site açılmadı — OSM adres + site kaydı + Michelin 2026) · konum: OSM restoran kaydı node/11335161041 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11335161041",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/yanyal%C4%B1-fehmi-lokantas%C4%B1",
+    "https://www.fehmilokantasi.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "calipso-fish-maltepe",
+   "ref": "way/549550513",
+   "tip": "osm_kaydi",
+   "ad": "Calipso Fish",
+   "ilce": "Maltepe",
+   "adres": "Cumhuriyet Caddesi No:2, Küçükyalı Mahallesi, Maltepe",
+   "koordinat": [
+    40.945848,
+    29.105776
+   ],
+   "tur": "Balık restoranı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site calipsorestaurant.com (ad+telefon+sokak) · konum: OSM restoran kaydı way/549550513 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Fish and Seafood\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/549550513",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/calipso-fish",
+    "https://www.calipsorestaurant.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "rumelihisari-iskele-sariyer",
+   "ref": "node/2773225859",
+   "tip": "osm_kaydi",
+   "ad": "Rumelihisarı İskele",
+   "ilce": "Sarıyer",
+   "adres": "Yahya Kemal Caddesi No:1, Rumelihisarı Mahallesi, Sarıyer",
+   "koordinat": [
+    41.088254,
+    29.056824
+   ],
+   "tur": "Balık restoranı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site iskelerumelihisari.com (ad+telefon+sokak) · konum: OSM restoran kaydı node/2773225859 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Fish and Seafood\"",
+    "OSM adı \"Iskele\" (10 m); resmî ad kullanıldı"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/2773225859",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/rumelihisari-iskele",
+    "https://iskelerumelihisari.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "fauna-atasehir",
+   "ref": "node/4419337509",
+   "tip": "osm_kaydi",
+   "ad": "Fauna",
+   "ilce": "Ataşehir",
+   "adres": "Ahmet Muhip Dranas Sokak No:9/A, Küçükbakkalköy Mahallesi, Ataşehir",
+   "koordinat": [
+    40.984446,
+    29.109875
+   ],
+   "tur": "İtalyan",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site fauna.com.tr (ad+telefon+sokak) · konum: OSM restoran kaydı node/4419337509 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Italian\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4419337509",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/fauna",
+    "https://www.fauna.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "sirali-kebap-etiler-besiktas",
+   "ref": "node/13970002243",
+   "tip": "osm_kaydi",
+   "ad": "Sıralı Kebap Etiler",
+   "ilce": "Beşiktaş",
+   "adres": "Nispetiye Caddesi No:74, Beşiktaş",
+   "koordinat": [
+    41.078606,
+    29.030648
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": "Etiler",
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site siralikebap.com (ad+telefon+sokak) · konum: OSM restoran kaydı node/13970002243 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13970002243",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/s%C4%B1ral%C4%B1-kebap",
+    "https://www.siralikebap.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "maromi-istanbul-sisli",
+   "ref": "node/4111163118",
+   "tip": "osm_kaydi",
+   "ad": "Maromi İstanbul",
+   "ilce": "Şişli",
+   "adres": "Asker Ocağı Caddesi No:1, Divan İstanbul, Şişli",
+   "koordinat": [
+    41.040881,
+    28.986996
+   ],
+   "tur": "Sushi / Japon",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site divan.com.tr (ad+telefon+sokak) · konum: OSM restoran kaydı node/4111163118 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Sushi\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4111163118",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/maromi-istanbul",
+    "https://www.divan.com.tr/restoran/maromi-istanbul"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "ulus-29-besiktas",
+   "ref": "node/2773225752",
+   "tip": "osm_kaydi",
+   "ad": "Ulus 29",
+   "ilce": "Beşiktaş",
+   "adres": "Ahmet Adnan Saygun Caddesi No:71/1, Ulus Mahallesi, Beşiktaş",
+   "koordinat": [
+    41.064506,
+    29.031933
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site ulus29.com (sitede telefon; OSM ad+adres+telefon) · konum: OSM restoran kaydı node/2773225752 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/2773225752",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/29-1195533",
+    "https://ulus29.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "khorasani-fatih",
+   "ref": "node/5108843059",
+   "tip": "osm_kaydi",
+   "ad": "Khorasani",
+   "ilce": "Fatih",
+   "adres": "Ticarethane Sokak No:9/B, Alemdar Mahallesi, Fatih",
+   "koordinat": [
+    41.008548,
+    28.976074
+   ],
+   "tur": "Geleneksel mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site khorasanikebab.com (sitede ad; OSM ad+sokak + Michelin 2026) · konum: OSM restoran kaydı node/5108843059 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Traditional Cuisine\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5108843059",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/khorasani",
+    "https://www.khorasanikebab.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "aheste-beyoglu",
+   "ref": "node/3880755031",
+   "tip": "osm_kaydi",
+   "ad": "Aheste",
+   "ilce": "Beyoğlu",
+   "adres": "Meşrutiyet Caddesi No:107/F, Asmalı Mescit Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.029119,
+    28.973078
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site ahesterestaurant.com (ad+telefon) · konum: OSM restoran kaydı node/3880755031 · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/3880755031",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aheste",
+    "https://ahesterestaurant.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "topaz-beyoglu",
+   "ref": "isletme/topaz-beyoglu",
+   "tip": "isletme_kaydi",
+   "ad": "Topaz",
+   "ilce": "Beyoğlu",
+   "adres": "İnönü Caddesi No:42, Ömer Avni Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.036937,
+    28.992166
+   ],
+   "tur": "Akdeniz mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site topazistanbul.com (ad+telefon+sokak) · konum: OSM adres noktası İnönü Caddesi 42 (kapı no birebir) — node/12180166901 (adres düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Mediterranean Cuisine\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12180166901",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/topaz-1202702",
+    "https://www.topazistanbul.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "nobu-istanbul-sisli",
+   "ref": "isletme/nobu-istanbul-sisli",
+   "tip": "isletme_kaydi",
+   "ad": "Nobu İstanbul",
+   "ilce": "Şişli",
+   "adres": "Asker Ocağı Caddesi No:6, Süzer Plaza, Şişli",
+   "koordinat": [
+    41.040179,
+    28.992215
+   ],
+   "tur": "Sushi / Japon",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site noburestaurants.com (ad+telefon+sokak) · konum: OSM bina Süzer Plaza, Asker Ocağı Caddesi 6 (kapı no birebir) — way/166702635 (adres düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Japanese\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/166702635",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nobu-1202792",
+    "https://www.noburestaurants.com/istanbul/nobu-istanbul-japanese-restaurant-bar-and-lounge/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "okra-istanbul-beyoglu",
+   "ref": "isletme/okra-istanbul-beyoglu",
+   "tip": "isletme_kaydi",
+   "ad": "Okra İstanbul",
+   "ilce": "Beyoğlu",
+   "adres": "Osmanlı Sokak No:1/B, The Marmara Taksim, Beyoğlu",
+   "koordinat": [
+    41.036437,
+    28.986344
+   ],
+   "tur": "Çağdaş mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site okraistanbul.com (ad+telefon+sokak) · konum: OSM otel binası The Marmara Taksim (rehber konumuna 6 m) — node/2329194005 (bina düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Contemporary\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/2329194005",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/okra-istanbul",
+    "https://www.okraistanbul.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "lokanta-1741-fatih",
+   "ref": "isletme/lokanta-1741-fatih",
+   "tip": "isletme_kaydi",
+   "ad": "Lokanta 1741",
+   "ilce": "Fatih",
+   "adres": "Profesör Kazım İsmail Gürkan Caddesi No:34, Cağaloğlu Hamamı, Alemdar Mahallesi, Fatih",
+   "koordinat": [
+    41.0107,
+    28.975683
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site lokanta1741.com (ad+telefon+sokak) · konum: OSM bina Cağaloğlu Hamamı (rehber konumuna 21 m) — way/311662190 (bina düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/311662190",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-1741",
+    "https://lokanta1741.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "zuma-istanbul-sariyer",
+   "ref": "isletme/zuma-istanbul-sariyer",
+   "tip": "isletme_kaydi",
+   "ad": "Zuma İstanbul",
+   "ilce": "Sarıyer",
+   "adres": "İstinye Park No:461, Sarıyer",
+   "koordinat": [
+    41.110321,
+    29.03263
+   ],
+   "tur": "Sushi / Japon",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site zumarestaurant.com (ad+telefon) · konum: OSM AVM binası İstinyePark — way/163625174 (bina düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Japanese Contemporary\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/163625174",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/zuma-1202456",
+    "https://zumarestaurant.com/locations/istanbul/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "liman-istanbul-beyoglu",
+   "ref": "isletme/liman-istanbul-beyoglu",
+   "tip": "isletme_kaydi",
+   "ad": "Liman İstanbul",
+   "ilce": "Beyoğlu",
+   "adres": "Meclis-i Mebusan Sokak No:8, Galataport O2 Blok, Kılıçali Paşa Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.028251,
+    28.986567
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site limanistanbul.com (ad+telefon+sokak) · konum: OSM bina Galataport — way/1343181477 (bina düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1343181477",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/liman-istanbul",
+    "https://www.limanistanbul.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "biz-istanbul-beyoglu",
+   "ref": "isletme/biz-istanbul-beyoglu",
+   "tip": "isletme_kaydi",
+   "ad": "BİZ İstanbul",
+   "ilce": "Beyoğlu",
+   "adres": "Mete Caddesi No:2, Atatürk Kültür Merkezi, Gümüşsuyu Mahallesi, Beyoğlu",
+   "koordinat": [
+    41.036565,
+    28.988246
+   ],
+   "tur": "Çağdaş mutfak",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site bizistanbul.com.tr (ad+telefon+sokak) · konum: OSM bina Atatürk Kültür Merkezi — way/1033333873 (bina düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Contemporary\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1033333873",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/biz-istanbul",
+    "https://www.bizistanbul.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "tugra-restaurant-besiktas",
+   "ref": "isletme/tugra-restaurant-besiktas",
+   "tip": "isletme_kaydi",
+   "ad": "Tuğra Restaurant",
+   "ilce": "Beşiktaş",
+   "adres": "Çırağan Caddesi No:32, Çırağan Sarayı, Beşiktaş",
+   "koordinat": [
+    41.044459,
+    29.016857
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site tugrarestaurant.com.tr (ad+sokak) · konum: OSM otel binası Çırağan Sarayı Kempinski — way/498861863 (bina düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/498861863",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tugra",
+    "https://tugrarestaurant.com.tr/en/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "borsa-restaurant-adile-sultan-uskudar",
+   "ref": "isletme/borsa-restaurant-adile-sultan-uskudar",
+   "tip": "isletme_kaydi",
+   "ad": "Borsa Restaurant Adile Sultan",
+   "ilce": "Üsküdar",
+   "adres": "Vaniköy Caddesi No:12, Adile Sultan Sarayı, Üsküdar",
+   "koordinat": [
+    41.072145,
+    29.058123
+   ],
+   "tur": "Türk mutfağı",
+   "faaliyet": "açık (Michelin Rehberi 2026 seçkisinde; resmî site/OSM)",
+   "sinif": "A",
+   "michelin": "Rehber seçkisi",
+   "zincir": null,
+   "sube": "Adile Sultan",
+   "kanit": [
+    "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site borsarestaurants.com (ad+telefon+sokak) · konum: OSM bina Adile Sultan Sarayı — way/403116671 (bina düzeyi) · adres: rehber + resmî site/OSM · tür: rehber mutfak kategorisi \"Turkish\""
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/403116671",
+    "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/borsa-restaurant",
+    "https://www.borsarestaurants.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  }
+ ]
+}

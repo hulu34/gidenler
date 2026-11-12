@@ -38,6 +38,8 @@ export interface RealVenueRecord {
   lat?: number;
   lng?: number;
   address?: string;
+  adresDuzeyi?: "sokak";
+  kaliteSinifi?: "A" | "B1";
   phone?: string;
   website?: string;
   instagram?: string;
@@ -156,7 +158,7 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   tier: "B",
   subcategory: r.kind,
   experienceTotal: 0,
-  location: { city: "İstanbul", district: r.district, neighborhood: r.neighborhood, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
+  location: { city: "İstanbul", district: r.district, neighborhood: r.neighborhood, precision: r.adresDuzeyi === "sokak" ? "street" : r.location?.precision, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
   address: r.address,
   hours: r.openingHours,
   tags: r.cuisine,
