@@ -1,13 +1,30 @@
 {
- "_aciklama": "Menemen Beşiktaş galerisi — yazılı fotoğraf izni ve görsel kayıtları. 'izin' boşken hiçbir görsel eklenmez (scripts/katalog/menemen-foto.mjs reddeder). Yalnız hak sahibi işletme olan ve izin kapsamına giren ORİJİNAL dosyalar eklenir. İçerik üreticilerinin kendi fotoğraf/videoları işletmenin izniyle eklenmez; üreticinin ayrı yazılı izni gerekir. Öncelik: dış cephe, iç mekân, imza menemen çeşitleri, kahvaltı sunumları.",
+ "_aciklama": "Menemen Beşiktaş galerisi — kullanım onayı ve görsel kayıtları. 'izin' boşken hiçbir görsel eklenmez (scripts/katalog/menemen-foto.mjs reddeder). Yalnız hak sahibi işletme olan ve onay kapsamına giren görseller eklenir. Onayın türü ve belgesi olduğu gibi yazılır: yazılı belge yoksa 'yazılı belge yok' denir. İçerik üreticilerinin ve görselde yüzü tanınan kişilerin fotoğrafları işletmenin onayıyla eklenmez. Öncelik: dış cephe, iç mekân, imza menemen çeşitleri, kahvaltı sunumları. Orijinal dosyalar depoya eklenmez; yalnız işlenmiş WebP'ler (EXIF silinmiş) eklenir.",
  "slug": "menemen-besiktas",
  "isletme": "Menemen",
- "izin": null,
+ "izin": {
+  "tarih": "2026-11-13",
+  "tur": "doğrudan onay — yazılı belge yok",
+  "veren": "Menemen işletme sahibi; onay Gidenler sahibi aracılığıyla bildirildi",
+  "belge": "Yazılı belge yok; Gidenler sahibinin 13.11.2026 tarihli sohbet beyanı (işletme sahibiyle doğrudan çalışılıyor; işletmenin kendisine ait görsellerin kullanımına onay)",
+  "kapsam": [
+   "restoran profili ve fotoğraf galerisi",
+   "profil kapağı: ana sayfa ve Keşfet kartları, bağlantı önizlemesi (og:image), arama motoru yapılandırılmış verisi (JSON-LD)",
+   "kırpma ve boyutlandırma"
+  ],
+  "kunye": "Menemen",
+  "kapsamNotu": "Kapsam, sitenin bu görselleri fiilen kullandığı yerlerdir (13.11.2026 yerel denetim). Seçki'de kullanılmıyor."
+ },
  "izinSablonu": {
   "tarih": "YYYY-AA-GG",
   "veren": "yetkilinin adı ve unvanı",
   "belge": "yazılı iznin kaydı (ör. e-posta konusu ve tarihi, imzalı form dosya adı)",
-  "kapsam": ["restoran profili", "Seçki (TR/EN)", "editoryal sosyal medya", "kırpma ve boyutlandırma"],
+  "kapsam": [
+   "restoran profili",
+   "Seçki (TR/EN)",
+   "editoryal sosyal medya",
+   "kırpma ve boyutlandırma"
+  ],
   "kunye": "Menemen arşivi"
  },
  "gorselSablonu": {
@@ -20,5 +37,91 @@
   "izinKapsaminda": true,
   "alt": "görseli anlatan kısa Türkçe metin"
  },
- "gorseller": []
+ "gorseller": [
+  {
+   "dosya": "yerel orijinal (depoya eklenmedi): site-dis-cephe.jpg",
+   "oncelik": "dis",
+   "kaynak": "https://web.archive.org/web/20240120112231/https://menemenbesiktas.com/",
+   "hakSahibi": "Menemen",
+   "icerikUretici": false,
+   "izinKapsaminda": true,
+   "alt": "Kırmızı tentesinde \"menemen.\" yazan giriş",
+   "not": "İşletmenin resmî sitesinde (menemenbesiktas.com) 2024'te yayımlanmış; site o tarihte yalnız Beşiktaş şubesini (Şair Veysi Sk. 31/A) anlatıyordu",
+   "galeriKaydi": "/media/foto/menemen-besiktas-fc7e44fbef-960.webp"
+  },
+  {
+   "dosya": "yerel orijinal (depoya eklenmedi): site-ic-mekan.jpg",
+   "oncelik": "ic",
+   "kaynak": "https://web.archive.org/web/20240120112231/https://menemenbesiktas.com/",
+   "hakSahibi": "Menemen",
+   "icerikUretici": false,
+   "izinKapsaminda": true,
+   "alt": "Beyaz tuğla duvarlı salon; çerçeveli afişler, ahşap masa ve sandalyeler",
+   "not": "İşletmenin resmî sitesinde 2024'te yayımlanmış (Beşiktaş şubesi); bugünkü düzen farklı olabilir",
+   "galeriKaydi": "/media/foto/menemen-besiktas-c3d8ecc271-960.webp"
+  },
+  {
+   "dosya": "yerel orijinal (depoya eklenmedi): DfG-F0XDv_H-1.jpg",
+   "oncelik": "menemen",
+   "kaynak": "https://www.instagram.com/menemenbreakfast/p/DfG-F0XDv_H/",
+   "hakSahibi": "Menemen",
+   "icerikUretici": false,
+   "izinKapsaminda": true,
+   "alt": "Çelik tavada menemen; yanında sahanda yumurta, zeytin, biber turşusu ve ekmek",
+   "not": "Resmî Instagram gönderisi, 29.10.2026, 1. kare; şube belirtilmemiş",
+   "galeriKaydi": "/media/foto/menemen-besiktas-57386abb42-960.webp"
+  },
+  {
+   "dosya": "yerel orijinal (depoya eklenmedi): DbyMvQADfHX-2.jpg",
+   "oncelik": "menemen",
+   "kaynak": "https://www.instagram.com/menemenbreakfast/p/DbyMvQADfHX/",
+   "hakSahibi": "Menemen",
+   "icerikUretici": false,
+   "izinKapsaminda": true,
+   "alt": "Tavadaki menemene ekmek banılıyor; yanında domates, salatalık ve biber turşusu",
+   "not": "Resmî Instagram gönderisi, 08.08.2026, 2. kare; yalnız el görünüyor, yüz yok",
+   "galeriKaydi": "/media/foto/menemen-besiktas-bae7274df2-960.webp"
+  },
+  {
+   "dosya": "yerel orijinal (depoya eklenmedi): DbyMvQADfHX-1.jpg",
+   "oncelik": "kahvalti",
+   "kaynak": "https://www.instagram.com/menemenbreakfast/p/DbyMvQADfHX/",
+   "hakSahibi": "Menemen",
+   "icerikUretici": false,
+   "izinKapsaminda": true,
+   "alt": "Üstten kahvaltı sofrası: tavalarda menemen, peynir, zeytin, söğüş ve çay",
+   "not": "Resmî Instagram gönderisi, 08.08.2026, 1. kare",
+   "galeriKaydi": "/media/foto/menemen-besiktas-8939aadfc4-960.webp"
+  },
+  {
+   "dosya": "yerel orijinal (depoya eklenmedi): DfG-F0XDv_H-2.jpg",
+   "oncelik": "kahvalti",
+   "kaynak": "https://www.instagram.com/menemenbreakfast/p/DfG-F0XDv_H/",
+   "hakSahibi": "Menemen",
+   "icerikUretici": false,
+   "izinKapsaminda": true,
+   "alt": "Tavada sahanda üç yumurta; arkada menemen, söğüş, zeytin ve kahvaltılıklar",
+   "not": "Resmî Instagram gönderisi, 29.10.2026, 2. kare",
+   "galeriKaydi": "/media/foto/menemen-besiktas-50fad58c22-960.webp"
+  }
+ ],
+ "secilmeyen": [
+  {
+   "kaynak": "https://www.instagram.com/menemenbreakfast/p/Dev1EJVDgrn/",
+   "neden": "Görsellerde yüzü tanınan kişiler var (müşteri ya da içerik üreticisi olabilir); işletmenin onayı tek başına yetmez"
+  },
+  {
+   "kaynak": "https://www.instagram.com/menemenbreakfast/p/Dfb_br0kcFg/",
+   "neden": "Ahşap desenli duvarlı iç mekân öne çıkıyor; resmî hesap Beşiktaş ve Galata'yı birlikte paylaştığı için şube belli değil"
+  },
+  {
+   "kaynak": "https://www.instagram.com/menemenbreakfast/",
+   "neden": "Reels videoları ve giriş gerektiren hikâyeler/etiketlenen gönderiler incelenmedi; videolar galeriye alınmaz"
+  }
+ ],
+ "uygulandi": {
+  "tarih": "2026-11-13",
+  "arac": "scripts/katalog/menemen-foto.mjs --yaz",
+  "not": "Orijinaller depoda yok; araç yeniden çalıştırılırsa 'orijinal dosya yok' der ve hiçbir şey yazmaz. Kaldırmak için: node scripts/foto-uygula.mjs kaldir menemen-besiktas <src>"
+ }
 }

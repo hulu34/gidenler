@@ -32,8 +32,8 @@
   "sayfadaGorunum": "Menü başlığı 'Resmî menü · arşiv kopyası'; altında: 'işletmenin resmî sitesinin 20.01.2024 tarihli arşiv kopyasından alındı; güncel menü ve fiyat olarak doğrulanmadı, ürünler değişmiş olabilir. Arşivdeki fiyatlar güncel olmadığı için gösterilmiyor.' (menu.archivedAt = 2024-01-20; 13.11.2026)"
  },
  "fotograflar": {
-  "yayimlanan": 0,
-  "neden": "Menemen'e ait fotoğrafların hepsi işletmenin Instagram hesabında ve eski sitesinde; açık lisanslı (Commons vb.) Menemen fotoğrafı bulunamadı. Katalog kuralı: lisanssız restoran görseli eklenmez. Emsal (Japon Erdal): işletme sahibinin yazılı onayı ve rightsRef kaydıyla izinli-fotograflar.json.",
+  "yayimlanan": 6,
+  "neden": "13.11.2026: Gidenler sahibi, işletme sahibiyle doğrudan çalıştığını ve işletmenin kendisine ait görsellerin kullanımına onay verildiğini bildirdi. Yazılı belge yok; kayıtlar bunu açıkça yazıyor.",
   "izinIcinAday": [
    {
     "url": "https://www.instagram.com/menemenbreakfast/p/Dfb_br0kcFg/",
@@ -87,10 +87,17 @@
   "izinMetniOnerisi": "Menemen, aşağıdaki fotoğrafların (ve toplantıda ileteceği yüksek çözünürlüklü özgün dosyaların) Gidenler'de restoran profilinde, Seçki'de (TR/EN) ve Gidenler'in editoryal sosyal medya paylaşımlarında, kırpılarak ve boyutlandırılarak kullanılmasına izin verir. Künye: \"Menemen arşivi\". Tarih ve yetkili adı:",
   "kategoriNotu": "Dış cephe, iç mekân, imza kahvaltılıklar ve servis ayrımı görsellere bakılarak yapılacak; tarayıcı paneli gizli olduğu ve izin bulunmadığı için bu oturumda görseller incelenmedi.",
   "izinSureci": {
-   "durum": "yazılı izin henüz gelmedi (13.11.2026); galeri boş",
+   "durum": "doğrudan onay, yazılı belge yok (13.11.2026); 6 görsel galeride",
    "kayit": "data/katalog/menemen/foto-izin.json (izin, hak sahibi, kapsam, künye, kaynak; görsel başına)",
    "arac": "scripts/katalog/menemen-foto.mjs — izinsiz, hak sahibi işletme olmayan, içerik üreticisine ait ya da kapsam dışı görseli reddeder; sıra: dış cephe, iç mekân, menemen, kahvaltı",
    "icerikUretici": "İçerik üreticilerinin fotoğraf ve videoları için işletmenin izni tek başına yeterli sayılmaz; üreticinin ayrı yazılı izni gerekir"
+  },
+  "secim": {
+   "dis": "resmî site 2024 (Beşiktaş)",
+   "ic": "resmî site 2024 (Beşiktaş)",
+   "menemen": "resmî Instagram 2026 (2 kare)",
+   "kahvalti": "resmî Instagram 2026 (2 kare)",
+   "secilmeyen": "yüzü tanınan kişili 2 kare; şubesi belirsiz ahşap duvarlı iç mekân 2 kare; videolar"
   }
  },
  "videolar": [

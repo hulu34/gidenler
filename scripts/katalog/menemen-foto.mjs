@@ -1,16 +1,18 @@
 /* MENEMEN GALERİSİ · İZİNLİ FOTOĞRAF — data/katalog/menemen/foto-izin.json'daki yazılı izin ve görsel kayıtlarını denetler,
    geçenleri mevcut fotoğraf aracıyla (scripts/foto-uygula.mjs: WebP 480/960/1440, EXIF silinir, kayıt izinli-fotograflar.json)
    işletmenin galerisine ekler. Varsayılan kip yalnız denetimdir; dosyalara --yaz ile yazılır. Production'a bir şey yazmaz.
-   Ret nedenleri: yazılı izin yok ya da eksik; kapsamda "restoran profili" yok; hak sahibi işletme değil; içerik üreticisinin
+   Onay türü ve belgesi olduğu gibi kaydedilir (izin.tur; yazılı belge yoksa "yazılı belge yok" yazılır).
+   Ret nedenleri: onay kaydı yok ya da eksik; kapsamda "restoran profili" yok; hak sahibi işletme değil; içerik üreticisinin
    görseli (işletmenin izni tek başına yetmez); izin kapsamı dışında; orijinal dosya yok; kategori geçersiz.
    Sıra: dış cephe, iç mekân, imza menemen çeşitleri, kahvaltı sunumları, servis, diğer.
    Kullanım: node scripts/katalog/menemen-foto.mjs [izin.json] [--yaz] [--kok=<dizin>] */
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { apply } from "../foto-uygula.mjs";
 const args = process.argv.slice(2);
 const P = args.find((a) => !a.startsWith("--")) ?? "data/katalog/menemen/foto-izin.json";
 const yaz = args.includes("--yaz");
-const kok = args.find((a) => a.startsWith("--kok="))?.slice(6) ?? new URL("../../", import.meta.url).pathname;
+const kok = args.find((a) => a.startsWith("--kok="))?.slice(6) ?? fileURLToPath(new URL("../../", import.meta.url));
 const SIRA = ["dis", "ic", "menemen", "kahvalti", "servis", "diger"];
 const KAT = { dis: "dis", ic: "ic", menemen: "yemek", kahvalti: "yemek", servis: "yemek", diger: "diger" };
 export function denetle(M) {
@@ -37,14 +39,17 @@ export function denetle(M) {
 export function ogeler(M, kabul) {
   const z = M.izin;
   return kabul.map((g) => ({ slug: M.slug, url: g.dosya, sayfa: /^https:\/\//.test(g.kaynak) ? g.kaynak : M.kaynakSayfasi ?? "https://www.instagram.com/menemenbreakfast/", tur: KAT[g.oncelik], alt: g.alt, credit: z.kunye,
-    license: `isletme-izni: ${z.veren} ${z.tarih} tarihli yazılı izin (${z.belge}); kapsam: ${z.kapsam.join(", ")}; hak sahibi: ${g.hakSahibi}${g.ceken ? `; çeken: ${g.ceken}` : ""}; kaynak: ${g.kaynak}` }));
+    license: `isletme-izni: ${z.tur ?? "yazılı izin"}, ${z.tarih} — veren: ${z.veren}; belge: ${z.belge}; kapsam: ${z.kapsam.join(", ")}; hak sahibi: ${g.hakSahibi}${g.ceken ? `; çeken: ${g.ceken}` : ""}; kaynak: ${g.kaynak}${g.not ? `; not: ${g.not}` : ""}` }));
 }
 if (process.argv[1]?.endsWith("menemen-foto.mjs")) {
   const M = JSON.parse(readFileSync(P, "utf8")); const d = denetle(M);
   const out = { kip: !yaz ? "yalnız denetim" : d.hata.length ? "yazılmadı (izin hatası)" : d.kabul.length ? "yazıldı" : "yazılmadı (kabul edilen görsel yok)", hata: d.hata, kabul: d.kabul.map((g) => `${g.oncelik}: ${g.dosya}`), ret: d.ret.map((g) => `${g.dosya ?? "—"}: ${g.neden}`) };
   if (yaz && !d.hata.length && d.kabul.length) {
     const yerel = async (yol) => ({ ok: existsSync(yol), status: existsSync(yol) ? 200 : 404, arrayBuffer: async () => readFileSync(yol) });
+    const kayitYolu = `${kok}/data/real/izinli-fotograflar.json`; const ham = readFileSync(kayitYolu, "utf8");
     out.eklenen = await apply(kok, ogeler(M, d.kabul), yerel);
+    /* kayıt dosyasının özgün girinti biçimi korunur (yalnız eklenen kayıt farkta görünsün) */
+    const girinti = /^\{\n( +)"/.exec(ham)?.[1].length ?? 2; writeFileSync(kayitYolu, JSON.stringify(JSON.parse(readFileSync(kayitYolu, "utf8")), null, girinti) + (ham.endsWith("\n") ? "\n" : ""));
   }
   console.log(JSON.stringify(out, null, 1)); process.exit(d.hata.length && yaz ? 1 : 0);
 }
