@@ -60,17 +60,19 @@ assert.deepEqual((await pool.query('SELECT to_jsonb(r) AS row FROM reviews r ORD
 assert.equal((await fetch(origin+'/mekan/this-venue-does-not-exist/')).status,404);
 // Exercise only the local OAuth initiation endpoint, never Google's servers or callback exchange.
 const identitiesBefore=(await pool.query('SELECT (SELECT count(*) FROM "user") AS users, (SELECT count(*) FROM account) AS accounts')).rows;
-const oauthStart=(requestOrigin,callbackURL)=>fetch(origin+'/api/auth/sign-in/social/',{method:'POST',headers:{Origin:requestOrigin,'Content-Type':'application/json'},body:JSON.stringify({provider:'google',callbackURL,disableRedirect:true})});
+const oauthStart=(requestOrigin,callbackURL,requestCookie)=>fetch(origin+'/api/auth/sign-in/social/',{method:'POST',headers:{Origin:requestOrigin,'Content-Type':'application/json',...(requestCookie?{Cookie:requestCookie}:{})},body:JSON.stringify({provider:'google',callbackURL,disableRedirect:true})});
 const oauth=await oauthStart(origin,origin+'/benim/');assert.equal(oauth.status,200,'Local OAuth initiation');
 const authorization=new URL((await oauth.json()).url);assert.equal(authorization.origin,'https://accounts.google.com');assert.equal(authorization.searchParams.get('redirect_uri'),origin+'/api/auth/callback/google');assert.equal(authorization.searchParams.get('prompt'),'select_account');
 assert.deepEqual(authorization.searchParams.get('scope').split(/\s+/).sort(),['email','openid','profile']);assert.ok(authorization.searchParams.get('state'));
 const oauthCookies=oauth.headers.getSetCookie();assert.ok(oauthCookies.length);for(const c of oauthCookies){assert.match(c,/HttpOnly/i);assert.match(c,/Secure/i);assert.match(c,/SameSite=Lax/i);}
-assert.equal((await oauthStart('https://untrusted.invalid',origin+'/benim/')).status,403,'OAuth untrusted origin');
+// Better Auth allows a cookie-free social-start URL; it is not an authenticated action.
+// Existing cookies require a trusted origin; return-address validation applies in both cases.
+assert.equal((await oauthStart('https://untrusted.invalid',origin+'/benim/',cookie)).status,403,'OAuth authenticated untrusted origin');
 assert.equal((await oauthStart(origin,'https://untrusted.invalid/')).status,403,'OAuth external return address');
 assert.deepEqual((await pool.query('SELECT (SELECT count(*) FROM "user") AS users, (SELECT count(*) FROM account) AS accounts')).rows,identitiesBefore,'OAuth initiation created an account');
 console.log('HTTP PASS: cross-account PATCH/DELETE denied; moderation 401/403; CSRF, invalid body, tampered/expired session denied; review rows unchanged');
-console.log('HTTP PASS: LOCAL OAuth initiation URI/scopes/cookie flags and origin/return-address guards; no Google exchange and no account created');
+console.log('HTTP PASS: LOCAL OAuth initiation URI/scopes/cookie flags, authenticated origin and return-address guards; no Google exchange and no account created');
 await pool.end();
 console.log('HTTP PASS: append endpoint replay and target guard; prepared session + 3 reviews (A/OSM, A/business, B1) linked correctly; NOT Google OAuth');
-writeFileSync('night-http-evidence.json',JSON.stringify({sha:process.env.GITHUB_SHA??'local-uncommitted',postgres:17,catalog:expectedCatalog,newProfiles:218,newForms:218,b1Warnings:102,sitemapNew:218,anonymousRejected:true,csrfRejected:true,googleOAuthTested:false,localOAuthInitiationOnly:{redirectUri:origin+'/api/auth/callback/google',scopes:['email','openid','profile'],secureHttpOnlySameSiteLax:true,untrustedOriginDenied:true,externalReturnAddressDenied:true,createdAccounts:0},preparedSessionReviews:3,appendEndpointReplay:true,crossAccountEditDenied:true,crossAccountDeleteDenied:true,moderationAccessDenied:true,tamperedSessionRejected:true,expiredSessionRejected:true,rejectedOperationsPreserveReviews:true,results},null,2));
+writeFileSync('night-http-evidence.json',JSON.stringify({sha:process.env.GITHUB_SHA??'local-uncommitted',postgres:17,catalog:expectedCatalog,newProfiles:218,newForms:218,b1Warnings:102,sitemapNew:218,anonymousRejected:true,csrfRejected:true,googleOAuthTested:false,localOAuthInitiationOnly:{redirectUri:origin+'/api/auth/callback/google',scopes:['email','openid','profile'],secureHttpOnlySameSiteLax:true,authenticatedUntrustedOriginDenied:true,externalReturnAddressDenied:true,createdAccounts:0},preparedSessionReviews:3,appendEndpointReplay:true,crossAccountEditDenied:true,crossAccountDeleteDenied:true,moderationAccessDenied:true,tamperedSessionRejected:true,expiredSessionRejected:true,rejectedOperationsPreserveReviews:true,results},null,2));
 console.log('HTTP PASS: 218 profile + 218 form, 102 B1 warning, 218 sitemap, auth/CSRF guards; real Google sign-in NOT tested');
