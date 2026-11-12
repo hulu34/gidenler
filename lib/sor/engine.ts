@@ -73,7 +73,7 @@ const DISHES: Array<{ key: string; label: string; terms: string[]; cuisine: stri
 /* Nitelik yalnız kaynaklı metinde AÇIKÇA geçiyorsa doğrulanmış sayılır; çağrışım (tarihi → turiste uygun) kanıt değildir. */
 const ATTRS: Array<{ key: string; label: string; terms: string[]; evidence: string[] }> = [
   { key: "sakin", label: "sakinlik", terms: ["sakin", "sessiz", "gurultulu olmasin", "gurultusuz", "kalabalik olmasin", "kalabalik istemiyorum"], evidence: ["sakin", "sessiz", "huzurlu"] },
-  { key: "romantik", label: "romantik atmosfer", terms: ["romantik", "ilk bulusma", "first date", "sevgili"], evidence: ["romantik"] },
+  { key: "romantik", label: "romantik atmosfer", terms: ["romantik", "ilk bulusma", "first date"], evidence: ["romantik"] },
   { key: "gosterissiz", label: "gösterişsiz olması", terms: ["gosterisli olmayan", "gosterissiz", "sade", "abartisiz"], evidence: ["gosterissiz", "mutevazi", "tabela yok"] },
   { key: "ekonomik", label: "uygun fiyat", terms: ["uygun fiyat", "ucuz", "ekonomik", "hesapli", "butce", "pahali olmasin", "pahali olmayan", "cebimi yakmayacak", "cep dostu", "fiyati uygun"], evidence: ["uygun fiyat", "ekonomik", "hesapli"] },
   /* saat yalnız kayıtlı açılış saatinden; vejetaryen yalnız kayıtta ya da adda açıkça geçiyorsa */
