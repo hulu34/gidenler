@@ -1768,16 +1768,6 @@
    "puan": 8
   },
   {
-   "gersId": "1b40f1f2-d7ed-4ee7-8843-0941c4b73aef",
-   "ad": "Sevic Restoran",
-   "ilce": "Beyoğlu",
-   "sinif": "B",
-   "eksik": [
-    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
-   ],
-   "neden": []
-  },
-  {
    "gersId": "4ded8735-6a04-448e-acbb-b485b97b8afb",
    "ad": "Uzun Yayla Döner",
    "ilce": "Tuzla",
@@ -2300,26 +2290,6 @@
    "kimlik": "resmî site pasadoneronline.com: ad + telefon (https://pasadoneronline.com/)",
    "osm": null,
    "puan": 7
-  },
-  {
-   "gersId": "cae178ab-8404-48f0-aa5a-0e76c0b5b4fc",
-   "ad": "Limanda Balık Restaurant",
-   "ilce": "Sarıyer",
-   "sinif": "B",
-   "eksik": [
-    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
-   ],
-   "neden": []
-  },
-  {
-   "gersId": "2206116e-5595-47f6-9a61-494dc978c929",
-   "ad": "Türkan Meyhanesi",
-   "ilce": "Kadıköy",
-   "sinif": "B",
-   "eksik": [
-    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
-   ],
-   "neden": []
   },
   {
    "gersId": "2a57bd30-194d-4a96-8c93-224b5eb076e3",

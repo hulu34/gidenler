@@ -546,6 +546,23 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
+   "slug": "sevic-restoran-beyoglu",
+   "gersId": "1b40f1f2-d7ed-4ee7-8843-0941c4b73aef",
+   "lat": 41.034286,
+   "lng": 28.97813,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
    "slug": "anzer-sofrasi-sariyer",
    "gersId": "589c637e-c84e-4e0a-9da0-7129173e44c3",
    "lat": 41.15332,
@@ -627,6 +644,40 @@
     "CDLA-Permissive-2.0"
    ],
    "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "limanda-balik-restaurant-sariyer",
+   "gersId": "cae178ab-8404-48f0-aa5a-0e76c0b5b4fc",
+   "lat": 41.170994,
+   "lng": 29.060703,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "turkan-meyhanesi-kadikoy",
+   "gersId": "2206116e-5595-47f6-9a61-494dc978c929",
+   "lat": 40.987484,
+   "lng": 29.034153,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
    "telefonEslesmesi": true,
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },

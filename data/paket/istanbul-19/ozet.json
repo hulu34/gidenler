@@ -1,12 +1,12 @@
 {
  "dalga": 19,
- "A": 50,
+ "A": 53,
  "sinif": {
   "A": 11,
-  "A-konumsuz": 39
+  "A-konumsuz": 42
  },
  "osmKaydi": 11,
- "isletmeKaydi": 39,
+ "isletmeKaydi": 42,
  "uygunAday": 250,
  "secilen": 250,
  "onEleme": {
@@ -16,7 +16,7 @@
   "acilmadi": 0
  },
  "inceleme": {
-  "B": 156,
+  "B": 153,
   "C": 42,
   "çakışma": 2
  },
@@ -43,7 +43,7 @@
   "sade yağ üreticisi; restoran değil": 1,
   "catering firması; restoran değil": 3,
   "bez çanta üreticisi; restoran değil": 1,
-  "resmî site yalnız http": 4,
+  "resmî site yalnız http": 1,
   "nargile kafe; kafe kapsam dışı": 2,
   "glütensiz fırın; restoran kapsamı dışı": 1,
   "piknik ve düğün alanı; restoran değil": 2,
@@ -73,20 +73,20 @@
   "paket içinde aynı işletme": 1
  },
  "turKaynagi": {
-  "resmî site": 49,
+  "resmî site": 52,
   "OSM": 1
  },
  "ilce": {
   "Zeytinburnu": 1,
   "Çekmeköy": 1,
   "Beylikdüzü": 2,
-  "Beyoğlu": 5,
+  "Beyoğlu": 6,
   "Tuzla": 4,
   "Kartal": 3,
   "Gaziosmanpaşa": 1,
   "Maltepe": 1,
   "Ümraniye": 3,
-  "Sarıyer": 2,
+  "Sarıyer": 3,
   "Üsküdar": 3,
   "Bağcılar": 3,
   "Küçükçekmece": 2,
@@ -100,12 +100,12 @@
   "Şişli": 1,
   "Arnavutköy": 1,
   "Kağıthane": 1,
-  "Kadıköy": 2
+  "Kadıköy": 3
  },
  "tur": {
   "Köfteci": 1,
   "Kebapçı / Ocakbaşı": 11,
-  "Balık restoranı": 7,
+  "Balık restoranı": 8,
   "Pizza": 2,
   "Pideci": 3,
   "Türk mutfağı": 9,
@@ -113,7 +113,7 @@
   "Steakhouse": 2,
   "Dönerci": 4,
   "Kahvaltı": 2,
-  "Meyhane": 3,
+  "Meyhane": 5,
   "Dünya mutfağı": 1,
   "Lokanta": 1,
   "Tantuni": 1,
