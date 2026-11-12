@@ -1,0 +1,42 @@
+name: PR37 actual protected Preview acceptance
+on:
+  push:
+    branches: [inceleme/pr37-preview-20261113]
+permissions:
+  contents: read
+concurrency:
+  group: pr37-hosted-preview
+  cancel-in-progress: false
+jobs:
+  hosted-preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 1e5670453d2897ded4466954fd872089a6487a0d
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install isolated browser test tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/hosted-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/hosted-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Verify isolated Preview, actual responses and responsive UI
+        working-directory: harness
+        env:
+          HOSTED_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/hosted-browser/package.json
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+        run: node scripts/pr37-hosted-preview-check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr37-hosted-preview-evidence
+          path: harness/hosted-preview-evidence/
+          retention-days: 14
