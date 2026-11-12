@@ -16,6 +16,7 @@ for(const r of additions){
  if(r.adresDuzeyi==='sokak'){assert.ok(p.includes('Konum yaklaşık; kapı numarası henüz doğrulanmadı.'));assert.ok(p.includes('Adres (sokak düzeyi)'));assert.ok(!p.includes('mapnik&amp;marker='));assert.ok(!p.includes('map_action=pano'));assert.ok(!p.includes('360° sokak görünümü'));}
  results.push({slug:r.slug,quality:r.adresDuzeyi==='sokak'?'B1':'A',profile:200,form:200});
 }
+const menemen=await get('/mekan/menemen-besiktas/'); assert.ok(menemen.includes('Şair Veysi Sokağı No:31/A')); assert.ok(!menemen.includes('Konum OpenStreetMap adres verisinden'));
 const sitemap=await get('/sitemap.xml');for(const r of additions)assert.ok(sitemap.includes(`/mekan/${r.slug}/`),r.slug+' sitemap');
 const secki=await get('/seckisi/'); for(const slug of ['japon-erdal-beyoglu','menemen-besiktas','neolokal-beyoglu','nicole-beyoglu','mikla-turkey-fusion-beyoglu','yeni-lokanta-beyoglu']) assert.ok(secki.includes('/mekan/'+slug+'/'),slug+' Seçki'); for(const image of ['japon-erdal-dis-cephe-1246.jpg','japon-erdal-cift-yumurtali-1206.jpg']) {assert.ok(secki.includes(image));const r=await fetch(origin+'/media/foto/'+image);assert.equal(r.status,200)}
 for(const p of ['/','/ara/?q=Develi','/sor/','/harita/','/mekan/ciya-sofrasi-kadikoy/','/mekan/japon-erdal-beyoglu/']) await get(p);
@@ -40,5 +41,5 @@ for(const [index,r] of selected.entries()){
 }
 await pool.end();
 console.log('HTTP PASS: append endpoint replay and target guard; prepared session + 3 reviews (A/OSM, A/business, B1) linked correctly; NOT Google OAuth');
-writeFileSync('http-evidence.json',JSON.stringify({sha:'15296643a03746c23ad89fe82556bd425fe0c987',postgres:17,catalog:793,newProfiles:219,newForms:219,b1Warnings:102,sitemapNew:219,anonymousRejected:true,csrfRejected:true,googleOAuthTested:false,preparedSessionReviews:3,appendEndpointReplay:true,results},null,2));
+writeFileSync('http-evidence.json',JSON.stringify({sha:'3ee5de844057046d51238550c5f32f04054537a7',postgres:17,catalog:793,newProfiles:219,newForms:219,b1Warnings:102,sitemapNew:219,anonymousRejected:true,csrfRejected:true,googleOAuthTested:false,preparedSessionReviews:3,appendEndpointReplay:true,results},null,2));
 console.log('HTTP PASS: 219 profile + 219 form, 102 B1 warning, 219 sitemap, auth/CSRF guards; real Google sign-in NOT tested');

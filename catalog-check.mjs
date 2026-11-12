@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 const cwd = 'reviewed';
 const base = 'b95d2844d9ff7641dcfaf6043870e71599d94f51';
-const sha = '15296643a03746c23ad89fe82556bd425fe0c987';
+const sha = '3ee5de844057046d51238550c5f32f04054537a7';
 const git = args => execFileSync('git', args, {cwd,encoding:'utf8'}).trim();
 assert.equal(git(['rev-parse','HEAD']),sha);
 const files = ['data/real/venues.json','data/real/isletme.json'];
