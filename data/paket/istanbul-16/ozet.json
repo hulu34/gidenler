@@ -1,12 +1,12 @@
 {
  "dalga": 16,
- "A": 68,
+ "A": 61,
  "sinif": {
-  "A": 19,
-  "A-konumsuz": 49
+  "A": 16,
+  "A-konumsuz": 45
  },
- "osmKaydi": 19,
- "isletmeKaydi": 49,
+ "osmKaydi": 16,
+ "isletmeKaydi": 45,
  "uygunAday": 775,
  "secilen": 200,
  "onEleme": {
@@ -17,7 +17,7 @@
  },
  "inceleme": {
   "906": 6,
-  "B": 120,
+  "B": 127,
   "C": 6
  },
  "incelemeNeden": {
@@ -49,45 +49,54 @@
   "Esenyurt": 1,
   "Sultangazi": 2,
   "Gaziosmanpaşa": 1,
-  "Büyükçekmece": 2,
-  "Bakırköy": 13,
-  "Bahçelievler": 6,
-  "Küçükçekmece": 4,
-  "Avcılar": 1,
-  "Beylikdüzü": 4,
-  "Bağcılar": 1,
-  "Eyüpsultan": 1,
-  "Başakşehir": 3,
+  "Bakırköy": 12,
   "Beşiktaş": 5,
   "Fatih": 7,
   "Kadıköy": 5,
+  "Büyükçekmece": 2,
+  "Küçükçekmece": 4,
+  "Avcılar": 1,
+  "Beylikdüzü": 4,
+  "Bahçelievler": 4,
+  "Bağcılar": 1,
+  "Başakşehir": 2,
   "Silivri": 1,
   "Üsküdar": 3,
   "Çatalca": 2,
   "Güngören": 1,
   "Şişli": 2,
-  "Maltepe": 1,
-  "Sancaktepe": 1,
   "Kağıthane": 1
  },
  "tur": {
-  "Türk mutfağı": 15,
-  "Balık restoranı": 11,
-  "Pideci": 1,
+  "Türk mutfağı": 14,
+  "Balık restoranı": 10,
+  "Kebapçı / Ocakbaşı": 12,
+  "Burger": 2,
   "Meyhane": 2,
-  "Kebapçı / Ocakbaşı": 13,
   "Tantuni": 1,
-  "Dönerci": 3,
+  "Dönerci": 2,
   "Köfteci": 3,
   "Mantıcı": 2,
   "Steakhouse": 3,
   "Çorbacı": 2,
-  "Pizza": 6,
   "Kahvaltı": 2,
-  "Burger": 2,
+  "Pizza": 4,
   "Lokanta": 1,
   "Karadeniz mutfağı": 1
  },
  "zincirSube": 5,
- "v906Eslesen": 0
+ "v906Eslesen": 0,
+ "kaliteDuzeltmesi": {
+  "tarih": "2026-11-12",
+  "aciklama": "Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (scripts/katalog/adres-dogrula.mjs); bulunamayanlar B'ye indi.",
+  "inenler": [
+   "surmene-pide-bahcelievler",
+   "porto-balik-bakirkoy",
+   "kolcuoglu-ocakbasi-gokturk-eyupsultan",
+   "pizzeria-la-vista-bahcelievler",
+   "pizza-cotta-ve-coffee-basaksehir",
+   "donerci-ali-usta-maltepe",
+   "donerci-celal-usta-sancaktepe"
+  ]
+ }
 }

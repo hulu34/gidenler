@@ -19,23 +19,6 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
-   "slug": "surmene-pide-bahcelievler",
-   "gersId": "a197a49b-bc9b-488b-b160-56062a78bbbd",
-   "lat": 40.995827,
-   "lng": 28.847681,
-   "guven": 1,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Bahçelievler",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
    "slug": "meyvali-kucukcekmece",
    "gersId": "460a5153-47d9-4b18-9243-2940496f8ad1",
    "lat": 41.036331,
@@ -291,23 +274,6 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
-   "slug": "kolcuoglu-ocakbasi-gokturk-eyupsultan",
-   "gersId": "3ab38fcc-3c37-415c-ba61-d25199c9ed65",
-   "lat": 41.177258,
-   "lng": 28.887241,
-   "guven": 0.91,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Eyüpsultan",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
    "slug": "ercan-steakhouse-basaksehir",
    "gersId": "b88e25bd-c15e-4b3f-9fb2-c8098d2f5e1c",
    "lat": 41.088188,
@@ -355,23 +321,6 @@
     "CDLA-Permissive-2.0"
    ],
    "ilceSiniri": "Silivri",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
-   "slug": "pizzeria-la-vista-bahcelievler",
-   "gersId": "3c112018-9c06-44a4-8945-0021d4a53bd2",
-   "lat": 40.996109,
-   "lng": 28.824106,
-   "guven": 1,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Bahçelievler",
    "telefonEslesmesi": true,
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
@@ -440,23 +389,6 @@
     "CDLA-Permissive-2.0"
    ],
    "ilceSiniri": "Fatih",
-   "telefonEslesmesi": true,
-   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
-  },
-  {
-   "slug": "pizza-cotta-ve-coffee-basaksehir",
-   "gersId": "8f7a3b27-e40e-4017-8ceb-d8eec8db1c2b",
-   "lat": 41.117683,
-   "lng": 28.774918,
-   "guven": 0.99,
-   "kaynaklar": [
-    "meta",
-    "Overture"
-   ],
-   "lisans": [
-    "CDLA-Permissive-2.0"
-   ],
-   "ilceSiniri": "Başakşehir",
    "telefonEslesmesi": true,
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },

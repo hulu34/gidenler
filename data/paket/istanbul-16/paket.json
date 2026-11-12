@@ -159,34 +159,6 @@
    "oncelikPuani": 11
   },
   {
-   "slug": "surmene-pide-bahcelievler",
-   "ref": "isletme/surmene-pide-bahcelievler",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Sürmene Pide",
-   "ilce": "Bahçelievler",
-   "adres": "Dereboyu Cd No:5, Bahçelievler",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Pideci",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site surmenepide.com: ad + telefon + sokak + kapı no (https://surmenepide.com/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı/açıklaması: \"Pide\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://surmenepide.com/",
-    "overture:a197a49b-bc9b-488b-b160-56062a78bbbd"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 11
-  },
-  {
    "slug": "meyvali-kucukcekmece",
    "ref": "isletme/meyvali-kucukcekmece",
    "tip": "isletme_kaydi_konumsuz",
@@ -417,38 +389,6 @@
    "oncelikPuani": 11
   },
   {
-   "slug": "porto-balik-bakirkoy",
-   "ref": "way/1243524838",
-   "tip": "osm_kaydi",
-   "ad": "Porto Balık",
-   "ilce": "Bakırköy",
-   "adres": "Yeşilköy İskele Caddesi No:20, Bakırköy",
-   "koordinat": [
-    40.956084,
-    28.821316
-   ],
-   "koordinatGuveni": "OSM restoran kaydı",
-   "tur": "Balık restoranı",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site portobalik.com: ad + telefon + sokak + kapı no (https://portobalik.com/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı/açıklaması: \"BALIK\" (şube düzeyi)",
-    "konum: OSM restoran kaydı way/1243524838 (Overture noktasına 3 m)"
-   ],
-   "kaynak": [
-    "https://www.openstreetmap.org/way/1243524838",
-    "https://portobalik.com/",
-    "overture:d6250dae-aaa0-4597-8056-7bcb1f62aa94"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 11
-  },
-  {
    "slug": "sosta-restaurant-mangalbasi-bahcelievler",
    "ref": "isletme/sosta-restaurant-mangalbasi-bahcelievler",
    "tip": "isletme_kaydi_konumsuz",
@@ -668,34 +608,6 @@
    "kaynak": [
     "https://lagosrestorant.com/",
     "overture:6a643a12-fd1d-4175-95eb-376457b5b436"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 10
-  },
-  {
-   "slug": "kolcuoglu-ocakbasi-gokturk-eyupsultan",
-   "ref": "isletme/kolcuoglu-ocakbasi-gokturk-eyupsultan",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Kolcuoğlu Ocakbaşı Göktürk",
-   "ilce": "Eyüpsultan",
-   "adres": "Telekom Sk. Sinasos İş Merkezi No:2/11, Eyüpsultan",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Kebapçı / Ocakbaşı",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site kolcuoglu.org: ad + telefon + sokak + kapı no (https://www.kolcuoglu.org/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı/açıklaması: \"Ocakbaşı\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://www.kolcuoglu.org/",
-    "overture:3ab38fcc-3c37-415c-ba61-d25199c9ed65"
    ],
    "kontrolTarihi": "2026-11-11",
    "oncelikPuani": 10
@@ -945,34 +857,6 @@
    "oncelikPuani": 9
   },
   {
-   "slug": "pizzeria-la-vista-bahcelievler",
-   "ref": "isletme/pizzeria-la-vista-bahcelievler",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Pizzeria La Vista",
-   "ilce": "Bahçelievler",
-   "adres": "Çobançeşme mahallesi sanayi caddesi nish istanbul sitesi No:44, Bahçelievler",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Pizza",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site pizzerialavista.com: ad + telefon + sokak + kapı no (http://www.pizzerialavista.com/index.php/contact/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı/açıklaması: \"Pizzeria\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://www.pizzerialavista.com/",
-    "overture:3c112018-9c06-44a4-8945-0021d4a53bd2"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 9
-  },
-  {
    "slug": "sirvan-sofrasi-restaurant-fatih",
    "ref": "node/5244803043",
    "tip": "osm_kaydi",
@@ -1176,34 +1060,6 @@
    "kaynak": [
     "https://galeyann.com/",
     "overture:c90299f1-6d56-432b-95b6-6edfecd88b1e"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 9
-  },
-  {
-   "slug": "pizza-cotta-ve-coffee-basaksehir",
-   "ref": "isletme/pizza-cotta-ve-coffee-basaksehir",
-   "tip": "isletme_kaydi_konumsuz",
-   "ad": "Pizza Cotta & Coffee",
-   "ilce": "Başakşehir",
-   "adres": "Adnan Menderes Bulvari A2 Blok No:6, Başakşehir",
-   "koordinat": null,
-   "koordinatGuveni": "yok (Overture önerisi ayrı)",
-   "tur": "Pizza",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A-konumsuz",
-   "zincir": null,
-   "sube": null,
-   "kanit": [
-    "resmî site pizzacotta.com.tr: ad + telefon + sokak + kapı no (https://www.pizzacotta.com.tr/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site başlığı/açıklaması: \"Pizza\" (şube düzeyi)",
-    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
-   ],
-   "kaynak": [
-    "https://www.pizzacotta.com.tr/",
-    "overture:8f7a3b27-e40e-4017-8ceb-d8eec8db1c2b"
    ],
    "kontrolTarihi": "2026-11-11",
    "oncelikPuani": 9
@@ -1721,38 +1577,6 @@
    "oncelikPuani": 8
   },
   {
-   "slug": "donerci-ali-usta-maltepe",
-   "ref": "way/460378600",
-   "tip": "osm_kaydi",
-   "ad": "Dönerci Ali Usta",
-   "ilce": "Maltepe",
-   "adres": "Zuhal Cd No:59, Maltepe",
-   "koordinat": [
-    40.921373,
-    29.156733
-   ],
-   "koordinatGuveni": "OSM restoran kaydı",
-   "tur": "Dönerci",
-   "turKanitDuzeyi": "marka",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A",
-   "zincir": "aliusta.com.tr",
-   "sube": "Maltepe",
-   "kanit": [
-    "resmî şube sayfası aliusta.com.tr: ad + telefon + sokak + kapı no (https://www.donercialiusta.com/iletisim.php)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: resmî site menüsü: döner (marka düzeyi)",
-    "konum: OSM restoran kaydı way/460378600 (Overture noktasına 14 m)"
-   ],
-   "kaynak": [
-    "https://www.openstreetmap.org/way/460378600",
-    "https://www.donercialiusta.com/iletisim.php",
-    "overture:79441279-cd0c-4233-bafc-69dc3180fb70"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 8
-  },
-  {
    "slug": "yuksel-balik-bakirkoy",
    "ref": "way/1243524850",
    "tip": "osm_kaydi",
@@ -1836,38 +1660,6 @@
    "kaynak": [
     "https://saskinbalik.com/",
     "overture:ff901b3b-affb-4485-994a-3db5372bfdbe"
-   ],
-   "kontrolTarihi": "2026-11-11",
-   "oncelikPuani": 8
-  },
-  {
-   "slug": "donerci-celal-usta-sancaktepe",
-   "ref": "node/13812133229",
-   "tip": "osm_kaydi",
-   "ad": "Donerci Celal Usta",
-   "ilce": "Sancaktepe",
-   "adres": "Osmangazi Cd No:20, Sancaktepe",
-   "koordinat": [
-    41.006779,
-    29.21539
-   ],
-   "koordinatGuveni": "OSM restoran kaydı",
-   "tur": "Türk mutfağı",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A",
-   "zincir": "donercicelalusta.com",
-   "sube": "Sancaktepe",
-   "kanit": [
-    "resmî şube sayfası donercicelalusta.com: ad + telefon + sokak + kapı no (https://www.donercicelalusta.com/sancaktepe-sarigazi-subesi/)",
-    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
-    "tür: OSM cuisine \"turkish\" (şube düzeyi)",
-    "konum: OSM restoran kaydı node/13812133229 (Overture noktasına 8 m)"
-   ],
-   "kaynak": [
-    "https://www.openstreetmap.org/node/13812133229",
-    "https://www.donercicelalusta.com/",
-    "overture:892f4788-e26f-4074-bcde-3b11714479c6"
    ],
    "kontrolTarihi": "2026-11-11",
    "oncelikPuani": 8
@@ -1984,5 +1776,18 @@
    "kontrolTarihi": "2026-11-11",
    "oncelikPuani": 8
   }
- ]
+ ],
+ "kaliteDuzeltmesi": {
+  "tarih": "2026-11-12",
+  "aciklama": "Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (scripts/katalog/adres-dogrula.mjs); bulunamayanlar B'ye indi.",
+  "inenler": [
+   "surmene-pide-bahcelievler",
+   "porto-balik-bakirkoy",
+   "kolcuoglu-ocakbasi-gokturk-eyupsultan",
+   "pizzeria-la-vista-bahcelievler",
+   "pizza-cotta-ve-coffee-basaksehir",
+   "donerci-ali-usta-maltepe",
+   "donerci-celal-usta-sancaktepe"
+  ]
+ }
 }
