@@ -73,6 +73,8 @@ export interface Location {
   district?: string;
   neighborhood?: string;
   geo?: GeoPoint;
+  /** Sokak düzeyindeki koordinat bir giriş/kapı noktası değildir. */
+  precision?: "street" | "address" | "building";
 }
 
 /** Mekânla ilgili sosyal medya içeriği (Instagram, X, YouTube, TikTok). Yalnızca doğrulanmış kaynaktan eklenir:

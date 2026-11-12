@@ -1,0 +1,203 @@
+{
+ "_aciklama": "İstanbul ikonik restoran paketi (dalga 14): Michelin dışı, adı bilinen restoranlardan katalogda olmayan ve kanıtı tam olanlar. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json (yayın paketinde). Konum: OSM (© OpenStreetMap katkıcıları, ODbL). Kanıt resmî sitelerden ölçüldü; sayfa içeriği saklanmadı. Google verisi kullanılmadı.",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "nalia-karadeniz-mutfagi-atasehir",
+   "ref": "node/4416261603",
+   "tip": "osm_kaydi",
+   "ad": "Nalia Karadeniz Mutfağı",
+   "ilce": "Ataşehir",
+   "adres": "Prof. Dr. Ali Nihat Tarlan Caddesi No:103, İçerenköy Mahallesi, Ataşehir",
+   "koordinat": [
+    40.967445,
+    29.106718
+   ],
+   "tur": "Karadeniz mutfağı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site nalia.com.tr (şubeler sayfasında ad + sokak eşleşti (2026-11-11); adres OSM kaydında)",
+    "konum: OSM restoran kaydı node/4416261603",
+    "tür: resmî site \"Nalia Karadeniz Mutfağında Karadenizin eşsiz lezzetleri (sayfa açıklaması)\" (marka düzeyi kanıt, tek konseptli markada bu şubeye uygulandı)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4416261603",
+    "https://www.nalia.com.tr/subelerimiz/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "hatay-gurme-atasehir",
+   "ref": "node/6735636587",
+   "tip": "osm_kaydi",
+   "ad": "Hatay Gurme",
+   "ilce": "Ataşehir",
+   "adres": "Kayışdağı Caddesi No:37, Ataşehir",
+   "koordinat": [
+    40.979357,
+    29.107412
+   ],
+   "tur": "Hatay mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site hataygurme.com.tr (ad + sokak eşleşti (2026-11-11); adres OSM kaydında)",
+    "konum: OSM restoran kaydı node/6735636587",
+    "tür: resmî site \"Antakya Mutfağı ve Hatay Sofrası (sayfa başlığı)\" (şube düzeyi kanıt)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6735636587",
+    "https://www.hataygurme.com.tr/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "koyum-pide-kadikoy",
+   "ref": "node/8742332160",
+   "tip": "osm_kaydi",
+   "ad": "Köyüm Pide",
+   "ilce": "Kadıköy",
+   "adres": "Atatürk Caddesi No:11, Sahrayıcedit Mahallesi, Kadıköy",
+   "koordinat": [
+    40.981321,
+    29.080086
+   ],
+   "tur": "Pideci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site koyumpide.com (ad + sokak eşleşti (2026-11-11); adres OSM kaydında)",
+    "konum: OSM restoran kaydı node/8742332160",
+    "tür: resmî site \"Lezzetli pide çeşitleri ve Türk mutfağının en sevilen yemekleri (sayfa açıklaması)\" (şube düzeyi kanıt)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/8742332160",
+    "https://www.koyumpide.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "mis-adana-pendik",
+   "ref": "node/10172634833",
+   "tip": "osm_kaydi",
+   "ad": "Mis Adana",
+   "ilce": "Pendik",
+   "adres": "Emir Sultan Caddesi No:39, Harmandere Mahallesi, Pendik",
+   "koordinat": [
+    40.929474,
+    29.325525
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site misadana.com (ad + sokak eşleşti (2026-11-11); adres OSM kaydında)",
+    "konum: OSM restoran kaydı node/10172634833",
+    "tür: resmî site \"Mis Adana Kebap; Adana Kebabının kalitesini 2009 yılından beri (sayfa başlığı ve açıklaması)\" (şube düzeyi kanıt)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10172634833",
+    "https://www.misadana.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "bedri-usta-ciftehavuzlar-kadikoy",
+   "ref": "node/11150680115",
+   "tip": "osm_kaydi",
+   "ad": "Bedri Usta Çiftehavuzlar",
+   "ilce": "Kadıköy",
+   "adres": "Bağdat Caddesi No:207, Göztepe Mahallesi, Kadıköy",
+   "koordinat": [
+    40.973715,
+    29.056149
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "Bedri Usta",
+   "sube": "Çiftehavuzlar",
+   "kanit": [
+    "resmî şube sayfası bedriusta.com (ad + sokak eşleşti; şube sayfasında sokak + mahalle + kapı no aynı bölümde (2026-11-11))",
+    "konum: OSM restoran kaydı node/11150680115",
+    "tür: resmî site \"Çiftehavuzlar – Bedri Usta – Adana Kebapçısı (şube sayfası başlığı)\" (şube düzeyi kanıt)",
+    "OSM adı \"Bedri Usta Çiftehavuzlar Pide & Lahmacun\"; resmî şube adı kullanıldı."
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11150680115",
+    "https://bedriusta.com/ciftehavuzlar/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "bedri-usta-kalamis-kadikoy",
+   "ref": "node/11425110664",
+   "tip": "osm_kaydi",
+   "ad": "Bedri Usta Kalamış",
+   "ilce": "Kadıköy",
+   "adres": "Münir Nurettin Selçuk Caddesi No:52, Fenerbahçe Mahallesi, Kadıköy",
+   "koordinat": [
+    40.980203,
+    29.039178
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "Bedri Usta",
+   "sube": "Kalamış",
+   "kanit": [
+    "resmî şube sayfası bedriusta.com (ad + sokak eşleşti; şube sayfasında sokak + mahalle + kapı no aynı bölümde (2026-11-11))",
+    "konum: OSM restoran kaydı node/11425110664",
+    "tür: resmî site \"Kalamış – Bedri Usta – Adana Kebapçısı (şube sayfası başlığı)\" (şube düzeyi kanıt)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11425110664",
+    "https://bedriusta.com/kalamis/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  },
+  {
+   "slug": "zeytin-ocakbasi-kadikoy",
+   "ref": "node/13761867407",
+   "tip": "osm_kaydi",
+   "ad": "Zeytin Ocakbaşı",
+   "ilce": "Kadıköy",
+   "adres": "Emin Ali Paşa Caddesi No:95, Bostancı Mahallesi, Kadıköy",
+   "koordinat": [
+    40.958447,
+    29.095509
+   ],
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site zeytinbostanci.com (ad + sokak eşleşti (2026-11-11); adres OSM kaydında)",
+    "konum: OSM restoran kaydı node/13761867407",
+    "tür: resmî site \"Ocakbaşı, kokteyl ve şarap seçkisi (sayfa açıklaması)\" (şube düzeyi kanıt)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13761867407",
+    "https://zeytinbostanci.com/"
+   ],
+   "kontrolTarihi": "2026-11-11"
+  }
+ ]
+}

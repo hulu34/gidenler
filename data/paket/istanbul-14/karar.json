@@ -1,0 +1,28 @@
+{
+ "_aciklama": "Paket 14: B havuzundan (paket 13 / 906 yeniden doğrulaması) yalnız kaynaklı türü eksik olan ve faaliyet kanıtı güçlü kayıtların türü, restoranın resmî sitesindeki kendi tanımından (sayfa başlığı ya da açıklaması) tamamlandı. Belirsiz tanımlar ('geleneksel tatlar', 'şef restoranı') kabul edilmedi. Adres OSM kaydının kendi kapı numaralı adresi. Google verisi yok.",
+ "kontrolTarihi": "2026-11-11",
+ "kayitlar": [
+  { "tip": "osm", "ref": "node/4416261603", "ad": "Nalia Karadeniz Mutfağı", "adres": "Prof. Dr. Ali Nihat Tarlan Caddesi No:103", "mahalle": "İçerenköy",
+    "site": "https://www.nalia.com.tr/subelerimiz/", "kanit": "şubeler sayfasında ad + sokak eşleşti (2026-11-11); adres OSM kaydında",
+    "tur": { "kind": "Karadeniz mutfağı", "cuisine": ["turkish", "regional"], "ifade": "Nalia Karadeniz Mutfağında Karadenizin eşsiz lezzetleri (sayfa açıklaması)", "duzey": "marka" } },
+  { "tip": "osm", "ref": "node/6735636587", "ad": "Hatay Gurme", "adres": "Kayışdağı Caddesi No:37", "mahalle": null,
+    "site": "https://www.hataygurme.com.tr/", "kanit": "ad + sokak eşleşti (2026-11-11); adres OSM kaydında",
+    "tur": { "kind": "Hatay mutfağı", "cuisine": ["turkish", "regional"], "ifade": "Antakya Mutfağı ve Hatay Sofrası (sayfa başlığı)", "duzey": "sube" } },
+  { "tip": "osm", "ref": "node/8742332160", "ad": "Köyüm Pide", "adres": "Atatürk Caddesi No:11", "mahalle": "Sahrayıcedit",
+    "site": "https://www.koyumpide.com/", "kanit": "ad + sokak eşleşti (2026-11-11); adres OSM kaydında",
+    "tur": { "kind": "Pideci", "cuisine": ["turkish", "pide"], "ifade": "Lezzetli pide çeşitleri ve Türk mutfağının en sevilen yemekleri (sayfa açıklaması)", "duzey": "sube" } },
+  { "tip": "osm", "ref": "node/10172634833", "ad": "Mis Adana", "adres": "Emir Sultan Caddesi No:39", "mahalle": "Harmandere",
+    "site": "https://www.misadana.com/", "kanit": "ad + sokak eşleşti (2026-11-11); adres OSM kaydında",
+    "tur": { "kind": "Kebapçı / Ocakbaşı", "cuisine": ["turkish", "kebab"], "ifade": "Mis Adana Kebap; Adana Kebabının kalitesini 2009 yılından beri (sayfa başlığı ve açıklaması)", "duzey": "sube" } },
+  { "tip": "osm", "ref": "node/11150680115", "ad": "Bedri Usta Çiftehavuzlar", "adres": "Bağdat Caddesi No:207", "mahalle": "Göztepe",
+    "site": "https://bedriusta.com/ciftehavuzlar/", "kanit": "ad + sokak eşleşti; şube sayfasında sokak + mahalle + kapı no aynı bölümde (2026-11-11)", "zincir": "Bedri Usta", "sube": "Çiftehavuzlar",
+    "tur": { "kind": "Kebapçı / Ocakbaşı", "cuisine": ["turkish", "kebab"], "ifade": "Çiftehavuzlar – Bedri Usta – Adana Kebapçısı (şube sayfası başlığı)", "duzey": "sube" },
+    "not": "OSM adı \"Bedri Usta Çiftehavuzlar Pide & Lahmacun\"; resmî şube adı kullanıldı." },
+  { "tip": "osm", "ref": "node/11425110664", "ad": "Bedri Usta Kalamış", "adres": "Münir Nurettin Selçuk Caddesi No:52", "mahalle": "Fenerbahçe",
+    "site": "https://bedriusta.com/kalamis/", "kanit": "ad + sokak eşleşti; şube sayfasında sokak + mahalle + kapı no aynı bölümde (2026-11-11)", "zincir": "Bedri Usta", "sube": "Kalamış",
+    "tur": { "kind": "Kebapçı / Ocakbaşı", "cuisine": ["turkish", "kebab"], "ifade": "Kalamış – Bedri Usta – Adana Kebapçısı (şube sayfası başlığı)", "duzey": "sube" } },
+  { "tip": "osm", "ref": "node/13761867407", "ad": "Zeytin Ocakbaşı", "adres": "Emin Ali Paşa Caddesi No:95", "mahalle": "Bostancı",
+    "site": "https://zeytinbostanci.com/", "kanit": "ad + sokak eşleşti (2026-11-11); adres OSM kaydında",
+    "tur": { "kind": "Kebapçı / Ocakbaşı", "cuisine": ["turkish", "kebab"], "ifade": "Ocakbaşı, kokteyl ve şarap seçkisi (sayfa açıklaması)", "duzey": "sube" } }
+ ]
+}

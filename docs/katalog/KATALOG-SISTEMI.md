@@ -13,6 +13,11 @@ Aday bulmaktan Codex'e teslime kadar 10 adım. Hepsi yeniden çalıştırılabil
   - Yalnız ölçüm yapılır: sayfada ad, sokak, mahalle/ilçe ve telefon geçiyor mu.
   - Sayfa içeriği saklanmaz.
   - Sosyal medya ve sipariş platformları resmî site sayılmaz.
+- **MICHELIN Rehberi (resmî rehber sayfası, paket 10+):**
+  - Yalnız ayrım (yıldız / Bib Gourmand / seçki), mutfak kategorisi ve rehber bağlantısı tutulur (`data/katalog/michelin-istanbul-2026.json`).
+  - Rehber metni, fotoğrafı ve koordinatı kopyalanmaz. Koordinat yine yalnız OSM'den gelir.
+  - Faaliyet kanıtı sayılır; tek başına A yapmaz. Ayrıca resmî sitede ad + telefon/sokak ya da OSM kaydında tam adres aranır.
+  - Yıldızsız restoran yıldızlı gösterilmez; ayrım test edilir (`restoranpakettest`).
 - **Google:**
   - Google içeriği bu sistemde hiç kullanılmaz: puan, yorum, fotoğraf, adres yok.
   - Ücretli API çağrısı yok.
@@ -97,6 +102,11 @@ C nedenleri:
 - gösterilen tür addan türemiş ve kaynakla çelişiyor.
 
 ## Mutfak kuralları
+- **Tür kanıtının düzeyi ayrı yazılır** (paket 11+, `turKanitDuzeyi`):
+  - **şube:** türü o şubenin ya da tek konumun kendi sayfası söylüyor.
+  - **marka:** markanın resmî sitesindeki genel tanım. Yalnız tek konseptli markada ve resmî şube listesindeki şubeye uygulanır.
+  - Yetersiz kanıtlı kayıt A'ya yükseltilmez.
+  - Resmî sitesine istenmeyen reklam metinleri sızdırılmış ya da alan adı park edilmiş işletmede site, faaliyet kanıtı sayılmaz.
 - **Etiket yalnız kaynaktan gelir.** Mekânın adı etiket üretmez.
   - Örnek: Japon Erdal'ın adında "Japon" geçer ama kaynakta türk + pide yazar. Japon etiketi verilmez; çelişki rapora not düşülür.
 - **Fine dining, popüler, ödüllü gibi nitelikler OSM'den hiç üretilmez.** Yalnız elle ve yazılı kaynakla verilir.

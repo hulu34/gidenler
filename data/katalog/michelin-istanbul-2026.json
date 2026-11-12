@@ -1,0 +1,698 @@
+{
+ "_aciklama": "MICHELIN Rehberi Türkiye 2026 — İstanbul ili seçkisi (resmî rehber sayfaları, 2026-11-11 kontrol). Yalnız ayrım, mutfak kategorisi ve rehber bağlantısı tutulur; rehber metni, fotoğrafı ve koordinatı kopyalanmaz. Yeşil Yıldız yalnız resmî 2026 duyurusunda adı geçen için işaretlidir.",
+ "kaynak": [
+  "https://guide.michelin.com/en/tr/istanbul-province/restaurants",
+  "https://guide.michelin.com/en/tr/istanbul-province/restaurants/all-starred",
+  "https://guide.michelin.com/en/article/michelin-guide-ceremony/the-michelin-guide-turkiye-reveals-its-2026-restaurant-selection"
+ ],
+ "kontrolTarihi": "2026-11-11",
+ "sayim": {
+  "iki_yildiz": 1,
+  "bir_yildiz": 8,
+  "bib_gourmand": 16,
+  "secki": 60
+ },
+ "restoranlar": [
+  {
+   "michelinSlug": "turk-fatih-tutak",
+   "ad": "TURK FATİH TUTAK",
+   "ayrim": "iki_yildiz",
+   "yesilYildiz": true,
+   "mutfakMichelin": "Modern Cuisine",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak"
+  },
+  {
+   "michelinSlug": "araf-istanbul",
+   "ad": "Araf İstanbul",
+   "ayrim": "bir_yildiz",
+   "mutfakMichelin": "Contemporary",
+   "ilce": "Kadıköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul"
+  },
+  {
+   "michelinSlug": "araka",
+   "ad": "Araka",
+   "ayrim": "bir_yildiz",
+   "mutfakMichelin": "Creative",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka"
+  },
+  {
+   "michelinSlug": "arkestra",
+   "ad": "Arkestra",
+   "ayrim": "bir_yildiz",
+   "mutfakMichelin": "Fusion",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra"
+  },
+  {
+   "michelinSlug": "casa-lavanda",
+   "ad": "Casa Lavanda",
+   "ayrim": "bir_yildiz",
+   "mutfakMichelin": "Traditional Cuisine",
+   "ilce": "Şile",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda"
+  },
+  {
+   "michelinSlug": "mikla",
+   "ad": "Mikla",
+   "ayrim": "bir_yildiz",
+   "mutfakMichelin": "Mediterranean Cuisine",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla"
+  },
+  {
+   "michelinSlug": "neolokal",
+   "ad": "Neolokal",
+   "ayrim": "bir_yildiz",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal"
+  },
+  {
+   "michelinSlug": "nicole",
+   "ad": "Nicole",
+   "ayrim": "bir_yildiz",
+   "mutfakMichelin": "Modern Cuisine",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole"
+  },
+  {
+   "michelinSlug": "sankai-by-nagaya",
+   "ad": "Sankai by Nagaya",
+   "ayrim": "bir_yildiz",
+   "mutfakMichelin": "Japanese Contemporary",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya"
+  },
+  {
+   "michelinSlug": "ahmet-ustam-ocakbası",
+   "ad": "Ahmet Ustam Ocakbaşı",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/ahmet-ustam-ocakbas%C4%B1"
+  },
+  {
+   "michelinSlug": "ali-ocakbası",
+   "ad": "Ali Ocakbaşı Karaköy",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1"
+  },
+  {
+   "michelinSlug": "casius-antioch-kitchen",
+   "ad": "Casius Antioch Kitchen",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Cihangir Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casius-antioch-kitchen"
+  },
+  {
+   "michelinSlug": "cuma",
+   "ad": "Cuma",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Mediterranean Cuisine",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/cuma"
+  },
+  {
+   "michelinSlug": "foxy-nisantası",
+   "ad": "Foxy Nişantaşı",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Contemporary",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/foxy-nisantas%C4%B1"
+  },
+  {
+   "michelinSlug": "karakoy-lokantası",
+   "ad": "Karaköy Lokantası",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/karakoy-lokantas%C4%B1"
+  },
+  {
+   "michelinSlug": "mahir-lokantası",
+   "ad": "Mahir Lokantası",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mahir-lokantas%C4%B1"
+  },
+  {
+   "michelinSlug": "mutfakkoz",
+   "ad": "mutfakkoz",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Kadıköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mutfakkoz"
+  },
+  {
+   "michelinSlug": "nazende-cadde",
+   "ad": "Nazende Cadde",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Kadıköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nazende-cadde"
+  },
+  {
+   "michelinSlug": "pandeli",
+   "ad": "Pandeli",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Fatih",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/pandeli"
+  },
+  {
+   "michelinSlug": "parvus-kalamıs",
+   "ad": "Parvus Kalamış",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Kadıköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/parvus-kalam%C4%B1s"
+  },
+  {
+   "michelinSlug": "sade-bes-denizler-mutfagı",
+   "ad": "SADE \"Beş Denizler Mutfağı\"",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Traditional Cuisine",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sade-bes-denizler-mutfag%C4%B1"
+  },
+  {
+   "michelinSlug": "tatbak",
+   "ad": "Tatbak",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tatbak"
+  },
+  {
+   "michelinSlug": "tavacı-recep-usta-bostancı",
+   "ad": "Tavacı Recep Usta Bostancı",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Maltepe",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tavac%C4%B1-recep-usta-bostanc%C4%B1"
+  },
+  {
+   "michelinSlug": "tershane",
+   "ad": "Tershane",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Hotel Momento 8th Floor (8. kat)",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tershane"
+  },
+  {
+   "michelinSlug": "yanyalı-fehmi-lokantası",
+   "ad": "Yanyalı Fehmi Lokantası",
+   "ayrim": "bib_gourmand",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Kadıköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/yanyal%C4%B1-fehmi-lokantas%C4%B1"
+  },
+  {
+   "michelinSlug": "1924-istanbul",
+   "ad": "1924 İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Russian",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/1924-istanbul"
+  },
+  {
+   "michelinSlug": "29-1195533",
+   "ad": "29",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/29-1195533"
+  },
+  {
+   "michelinSlug": "aheste",
+   "ad": "Aheste",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aheste"
+  },
+  {
+   "michelinSlug": "aida-vino-e-cucina",
+   "ad": "Aida - vino e cucina",
+   "ayrim": "secki",
+   "mutfakMichelin": "Italian",
+   "ilce": "Kadıköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aida-vino-e-cucina"
+  },
+  {
+   "michelinSlug": "aila",
+   "ad": "Aila",
+   "ayrim": "secki",
+   "mutfakMichelin": "Modern Cuisine",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aila"
+  },
+  {
+   "michelinSlug": "akira-back-istanbul",
+   "ad": "Akira Back İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Japanese",
+   "ilce": "Bakırköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/akira-back-istanbul"
+  },
+  {
+   "michelinSlug": "alaf",
+   "ad": "Alaf",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/alaf"
+  },
+  {
+   "michelinSlug": "apartıman-yenikoy",
+   "ad": "Apartıman Yeniköy",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/apart%C4%B1man-yenikoy"
+  },
+  {
+   "michelinSlug": "aqua-1202450",
+   "ad": "AQUA",
+   "ayrim": "secki",
+   "mutfakMichelin": "Fish and Seafood",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aqua-1202450"
+  },
+  {
+   "michelinSlug": "aseka",
+   "ad": "AŞEKA",
+   "ayrim": "secki",
+   "mutfakMichelin": "Seasonal Cuisine",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aseka"
+  },
+  {
+   "michelinSlug": "avlu-restaurant",
+   "ad": "Avlu Restaurant",
+   "ayrim": "secki",
+   "mutfakMichelin": "Contemporary",
+   "ilce": "Fatih",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/avlu-restaurant"
+  },
+  {
+   "michelinSlug": "azur",
+   "ad": "AZUR",
+   "ayrim": "secki",
+   "mutfakMichelin": "Fish and Seafood",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/azur"
+  },
+  {
+   "michelinSlug": "balıkcı-kahraman",
+   "ad": "Balıkçı Kahraman",
+   "ayrim": "secki",
+   "mutfakMichelin": "Fish and Seafood",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/bal%C4%B1kc%C4%B1-kahraman"
+  },
+  {
+   "michelinSlug": "basta-neo-bistro",
+   "ad": "Basta Neo Bistro",
+   "ayrim": "secki",
+   "mutfakMichelin": "European Contemporary",
+   "ilce": "Kadıköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/basta-neo-bistro"
+  },
+  {
+   "michelinSlug": "beyti",
+   "ad": "Beyti",
+   "ayrim": "secki",
+   "mutfakMichelin": "Grills",
+   "ilce": "Bakırköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/beyti"
+  },
+  {
+   "michelinSlug": "biz-istanbul",
+   "ad": "BİZ İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Contemporary",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/biz-istanbul"
+  },
+  {
+   "michelinSlug": "borsa-restaurant",
+   "ad": "Borsa Restaurant",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Üsküdar",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/borsa-restaurant"
+  },
+  {
+   "michelinSlug": "calipso-fish",
+   "ad": "Calipso Fish",
+   "ayrim": "secki",
+   "mutfakMichelin": "Fish and Seafood",
+   "ilce": "Maltepe",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/calipso-fish"
+  },
+  {
+   "michelinSlug": "deraliye",
+   "ad": "Deraliye",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Fatih",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/deraliye"
+  },
+  {
+   "michelinSlug": "eleos-yesilkoy",
+   "ad": "Eleos Yeşilköy",
+   "ayrim": "secki",
+   "mutfakMichelin": "Fish and Seafood",
+   "ilce": "Bakırköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/eleos-yesilkoy"
+  },
+  {
+   "michelinSlug": "fauna",
+   "ad": "Fauna",
+   "ayrim": "secki",
+   "mutfakMichelin": "Italian",
+   "ilce": "Ataşehir",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/fauna"
+  },
+  {
+   "michelinSlug": "gallada",
+   "ad": "GALLADA by Fatih Tutak",
+   "ayrim": "secki",
+   "mutfakMichelin": "Asian Influences",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/gallada"
+  },
+  {
+   "michelinSlug": "giritli",
+   "ad": "Giritli",
+   "ayrim": "secki",
+   "mutfakMichelin": "Mediterranean Cuisine",
+   "ilce": "Fatih",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/giritli"
+  },
+  {
+   "michelinSlug": "gun-lokantası",
+   "ad": "Gün Lokantası",
+   "ayrim": "secki",
+   "mutfakMichelin": "Modern Cuisine",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/gun-lokantas%C4%B1"
+  },
+  {
+   "michelinSlug": "havus-lokantası",
+   "ad": "Havuş Lokantası",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Bakırköy",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/havus-lokantas%C4%B1"
+  },
+  {
+   "michelinSlug": "herise-istanbul",
+   "ad": "Herise İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/herise-istanbul"
+  },
+  {
+   "michelinSlug": "itsumi",
+   "ad": "Itsumi",
+   "ayrim": "secki",
+   "mutfakMichelin": "Japanese",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/itsumi"
+  },
+  {
+   "michelinSlug": "khorasani",
+   "ad": "Khorasani",
+   "ayrim": "secki",
+   "mutfakMichelin": "Traditional Cuisine",
+   "ilce": "Fatih",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/khorasani"
+  },
+  {
+   "michelinSlug": "kıyı",
+   "ad": "Kıyı Restaurant",
+   "ayrim": "secki",
+   "mutfakMichelin": "Fish and Seafood",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/k%C4%B1y%C4%B1"
+  },
+  {
+   "michelinSlug": "liman-istanbul",
+   "ad": "Liman",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/liman-istanbul"
+  },
+  {
+   "michelinSlug": "lokanta-1741",
+   "ad": "Lokanta 1741",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Fatih",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-1741"
+  },
+  {
+   "michelinSlug": "lokanta-by-divan",
+   "ad": "Lokanta by Divan",
+   "ayrim": "secki",
+   "mutfakMichelin": "Modern Cuisine",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-by-divan"
+  },
+  {
+   "michelinSlug": "lokanta-feriye",
+   "ad": "Lokanta Feriye",
+   "ayrim": "secki",
+   "mutfakMichelin": "Mediterranean Cuisine",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-feriye"
+  },
+  {
+   "michelinSlug": "lokanta-limu",
+   "ad": "Lokanta Limu",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-limu"
+  },
+  {
+   "michelinSlug": "maromi-istanbul",
+   "ad": "Maromi İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Sushi",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/maromi-istanbul"
+  },
+  {
+   "michelinSlug": "monteverdi-ristorante",
+   "ad": "Monteverdi Ristorante",
+   "ayrim": "secki",
+   "mutfakMichelin": "Italian",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/monteverdi-ristorante"
+  },
+  {
+   "michelinSlug": "muutto-anatolian-tapas-bar",
+   "ad": "Muutto Anatolian Tapas Bar",
+   "ayrim": "secki",
+   "mutfakMichelin": "Contemporary",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/muutto-anatolian-tapas-bar"
+  },
+  {
+   "michelinSlug": "murver",
+   "ad": "Mürver",
+   "ayrim": "secki",
+   "mutfakMichelin": "Grills",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/murver"
+  },
+  {
+   "michelinSlug": "nobu-1202792",
+   "ad": "Nobu İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Japanese",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nobu-1202792"
+  },
+  {
+   "michelinSlug": "okra-istanbul",
+   "ad": "Okra İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Contemporary",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/okra-istanbul"
+  },
+  {
+   "michelinSlug": "park-fora",
+   "ad": "Park Fora Balık ve Deniz Ürünleri Restoranı",
+   "ayrim": "secki",
+   "mutfakMichelin": "Fish and Seafood",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/park-fora"
+  },
+  {
+   "michelinSlug": "roka-1204963",
+   "ad": "ROKA",
+   "ayrim": "secki",
+   "mutfakMichelin": "Japanese Contemporary",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/roka-1204963"
+  },
+  {
+   "michelinSlug": "ruby",
+   "ad": "Ruby",
+   "ayrim": "secki",
+   "mutfakMichelin": "Mediterranean Cuisine",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/ruby"
+  },
+  {
+   "michelinSlug": "rumelihisari-iskele",
+   "ad": "Rumelihisarı İskele",
+   "ayrim": "secki",
+   "mutfakMichelin": "Fish and Seafood",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/rumelihisari-iskele"
+  },
+  {
+   "michelinSlug": "sapa-istanbul",
+   "ad": "Sapa İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Ataşehir",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sapa-istanbul"
+  },
+  {
+   "michelinSlug": "seraf-mahmutbey",
+   "ad": "Seraf Mahmutbey",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Bağcılar",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/seraf-mahmutbey"
+  },
+  {
+   "michelinSlug": "seraf-vadi",
+   "ad": "Seraf Vadi",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/seraf-vadi"
+  },
+  {
+   "michelinSlug": "sıralı-kebap",
+   "ad": "Sıralı Kebap",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/s%C4%B1ral%C4%B1-kebap"
+  },
+  {
+   "michelinSlug": "spago-1195842",
+   "ad": "Spago Istanbul by Wolfgang Puck",
+   "ayrim": "secki",
+   "mutfakMichelin": "International",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/spago-1195842"
+  },
+  {
+   "michelinSlug": "st-regis-brasserie",
+   "ad": "St. Regis Brasserie",
+   "ayrim": "secki",
+   "mutfakMichelin": "International",
+   "ilce": "Şişli",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/st-regis-brasserie"
+  },
+  {
+   "michelinSlug": "sunset-grill-bar",
+   "ad": "Sunset Grill & Bar",
+   "ayrim": "secki",
+   "mutfakMichelin": "International",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sunset-grill-bar"
+  },
+  {
+   "michelinSlug": "sans",
+   "ad": "Şans Restaurant",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sans"
+  },
+  {
+   "michelinSlug": "telezzuz",
+   "ad": "telezzüz",
+   "ayrim": "secki",
+   "mutfakMichelin": "Vegan",
+   "ilce": "Üsküdar",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/telezzuz"
+  },
+  {
+   "michelinSlug": "terrazza-italia",
+   "ad": "Terrazza Italia",
+   "ayrim": "secki",
+   "mutfakMichelin": "Italian",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/terrazza-italia"
+  },
+  {
+   "michelinSlug": "the-barn-1215529",
+   "ad": "The BARN",
+   "ayrim": "secki",
+   "mutfakMichelin": "Regional European",
+   "ilce": "Silivri",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/the-barn-1215529"
+  },
+  {
+   "michelinSlug": "the-red-balloon",
+   "ad": "The Red Balloon",
+   "ayrim": "secki",
+   "mutfakMichelin": "Mediterranean Cuisine",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/the-red-balloon"
+  },
+  {
+   "michelinSlug": "topaz-1202702",
+   "ad": "Topaz",
+   "ayrim": "secki",
+   "mutfakMichelin": "Mediterranean Cuisine",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/topaz-1202702"
+  },
+  {
+   "michelinSlug": "tugra",
+   "ad": "Tuğra Restaurant",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beşiktaş",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tugra"
+  },
+  {
+   "michelinSlug": "yeni-lokanta",
+   "ad": "Yeni Lokanta",
+   "ayrim": "secki",
+   "mutfakMichelin": "Turkish",
+   "ilce": "Beyoğlu",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/yeni-lokanta"
+  },
+  {
+   "michelinSlug": "zuma-1202456",
+   "ad": "Zuma İstanbul",
+   "ayrim": "secki",
+   "mutfakMichelin": "Japanese Contemporary",
+   "ilce": "Sarıyer",
+   "michelinUrl": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/zuma-1202456"
+  }
+ ]
+}
