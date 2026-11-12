@@ -52,6 +52,7 @@ jobs:
           npx tsx scripts/panel-rezervasyon-test.ts
           npx tsx scripts/gecetest.ts
           npx tsx scripts/ilkkullanicitest.ts
+          npx tsx scripts/medyatest.ts
       - name: Atomic append, rollback and replay in isolated PostgreSQL
         run: npx tsx scripts/night-postgres-test.ts
       - name: Build and serve isolated application with controlled AI

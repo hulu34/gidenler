@@ -23,7 +23,7 @@ for(const [engine,width] of profiles){
   await p.goto(origin+'/yaz/sultan-kosesi-fatih/',{waitUntil:'networkidle'});const draft='Türkçe taslak kontrolü: çığ, öğün, ışık, şef, İstanbul. '.repeat(100);
   await p.getByRole('textbox',{name:'Deneyim metni',exact:true}).fill(draft);await p.locator('[data-otomatik-taslak]').waitFor();await p.reload({waitUntil:'networkidle'});await expect(p.getByRole('textbox',{name:'Deneyim metni',exact:true})).toHaveValue(draft);await fit();
   await p.goto(origin+'/mekan/develi-samatya-fatih/',{waitUntil:'networkidle'});assert.ok((await p.getByRole('link',{name:'Web sitesi ↗',exact:true}).getAttribute('href')).startsWith('https://www.develi1912.com/'));await fit();
-  rows.push({engine,width,controlledAi:true,wrongDistrictRejected:true,explicitAlternativeDistrict:true,reload:true,turkishDraftChars:draft.length,b1Map:true,reservationLink:true});await browser.close();console.log('PASS browser',engine,width);
+  rows.push({engine,width,controlledAi:true,wrongDistrictRejected:true,explicitAlternativeDistrict:true,reload:true,turkishDraftChars:draft.length,b1Map:true,externalWebsiteLink:true});await browser.close();console.log('PASS browser',engine,width);
 }
 // Instagram UA is simulated Chromium; it is not a physical Instagram browser.
 const browser=await chromium.launch();const c=await browser.newContext({viewport:{width:390,height:844},isMobile:true,userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Instagram 390.0'});
