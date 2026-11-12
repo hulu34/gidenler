@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {chromium} from '@playwright/test';
+import {chromium,expect} from '@playwright/test';
 const sha='824613eea6bb392614bd00909f8948696d7d4ba5';
 const plan=JSON.parse(readFileSync('plan.json','utf8'));
 assert.equal(plan.sha,sha);assert.match(plan.host,/^gidenler-[a-z0-9]+-hulu34\.vercel\.app$/);
@@ -61,10 +61,10 @@ for(const [width,height] of [[375,812],[390,844],[1440,1000]]){
  const addressLink=page.getByRole('link',{name:'Adresi haritada ara',exact:true});assert.ok((await addressLink.getAttribute('href')).includes('/maps/search/'));
  await page.goto(origin+'/mekan/sultan-kosesi-fatih/#bilgi',{waitUntil:'networkidle'});await page.screenshot({path:`evidence/b1-${width}.png`});screens++;
  await page.goto(origin+'/yaz/sultan-kosesi-fatih/',{waitUntil:'networkidle'});const draft='Türkçe taslak korunma kontrolü: çığ, öğün, ışık, şef. Bu gerçek bir ziyaret değildir. '.repeat(12);
- await page.getByRole('textbox',{name:'Deneyim metni',exact:true}).fill(draft);await page.reload({waitUntil:'networkidle'});assert.equal(await page.getByRole('textbox',{name:'Deneyim metni',exact:true}).inputValue(),draft);await fit('draft '+width);
+ await page.getByRole('textbox',{name:'Deneyim metni',exact:true}).fill(draft);await page.locator('[data-otomatik-taslak]').waitFor({state:'visible'});await page.reload({waitUntil:'networkidle'});await expect(page.getByRole('textbox',{name:'Deneyim metni',exact:true})).toHaveValue(draft);await fit('draft '+width);
  await page.goto(origin+'/mekan/develi-samatya-fatih/',{waitUntil:'networkidle'});await page.getByRole('heading',{name:'Develi Samatya',exact:true}).waitFor();await fit('A '+width);
  assert.ok((await page.getByRole('link',{name:'Web sitesi ↗',exact:true}).getAttribute('href')).startsWith('https://www.develi1912.com/'));await page.screenshot({path:`evidence/a-${width}.png`});screens++;
- await context.close();
+ check('Browser '+width+' search/profile/map/form draft/reservation',true);await context.close();
 }
 const ctx=await browser.newContext({viewport:{width:390,height:844}});
 await ctx.route('**/*',route=>new URL(route.request().url()).origin===origin?route.continue({headers:{...route.request().headers(),'x-vercel-protection-bypass':bypass,'x-gidenler-test':'1'}}):route.abort());
