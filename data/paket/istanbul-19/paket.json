@@ -1155,6 +1155,34 @@
    "oncelikPuani": 8
   },
   {
+   "slug": "sevic-restoran-beyoglu",
+   "ref": "isletme/sevic-restoran-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Sevic Restoran",
+   "ilce": "Beyoğlu",
+   "adres": "İstiklal Cd No:80/8, Beyoğlu",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Meyhane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sevicrestaurant.com: ad + telefon + sokak (http://www.sevicrestaurant.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (http://www.sevicrestaurant.com/; adres metni Overture)",
+    "tür: resmî site hakkımızda: \"Meyhane kültürünün en eski ve köklü iyi örneklerinden biri\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.sevicrestaurant.com/",
+    "overture:1b40f1f2-d7ed-4ee7-8843-0941c4b73aef"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 7
+  },
+  {
    "slug": "anzer-sofrasi-sariyer",
    "ref": "isletme/anzer-sofrasi-sariyer",
    "tip": "isletme_kaydi_konumsuz",
@@ -1354,6 +1382,62 @@
    "kaynak": [
     "https://kavacikbalikcisi.com/",
     "overture:d8c5926f-97c0-4258-831b-0b2beced33a8"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "limanda-balik-restaurant-sariyer",
+   "ref": "isletme/limanda-balik-restaurant-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Limanda Balık Restaurant",
+   "ilce": "Sarıyer",
+   "adres": "Yeni Mahalle Cd. No:118/A, Sarıyer",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site limandabalik.com: ad + telefon (http://www.limandabalik.com/)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (http://www.limandabalik.com/)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.limandabalik.com/",
+    "overture:cae178ab-8404-48f0-aa5a-0e76c0b5b4fc"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "turkan-meyhanesi-kadikoy",
+   "ref": "isletme/turkan-meyhanesi-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Türkan Meyhanesi",
+   "ilce": "Kadıköy",
+   "adres": "Kuşdili Caddesi No:97/1, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Meyhane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site turkanmeyhanesi.com: ad + telefon + sokak (http://www.turkanmeyhanesi.com/iletisim.html)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (http://www.turkanmeyhanesi.com/iletisim.html)",
+    "tür: resmî site başlığı/açıklaması: \"Meyhane\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.turkanmeyhanesi.com/",
+    "overture:2206116e-5595-47f6-9a61-494dc978c929"
    ],
    "kontrolTarihi": "2026-11-12",
    "oncelikPuani": 7
