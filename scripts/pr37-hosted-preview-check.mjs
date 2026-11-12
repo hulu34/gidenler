@@ -38,6 +38,7 @@ async function ask(query,previous){const r=await json('/api/sor/',{method:'POST'
 try {
  const status=await json('/api/sor/');evidence.runtime=status;save();
  assert.equal(status.env,'preview');assert.equal(status.db,'yalitilmis');assert.equal(status.yalnizUcretsiz,true,'Do not run potentially paid AI');
+ if(process.env.HOSTED_REQUIRE_REAL_AI==='1')assert.equal(status.ai,true,'Real AI acceptance requires a configured provider');
  const db=await json('/api/admin/db/');evidence.database=db;save();
  assert.equal(db.env,'preview');assert.equal(db.db?.writeGuard?.ok,true);assert.ok(db.db.fingerprint);assert.deepEqual(db.migrations.pending,[]);assert.deepEqual(db.migrations.drift,[]);assert.deepEqual(db.migrations.unknown,[]);assert.equal(db.integrity?.ok,true);assert.equal(db.integrity.present,793);
  if(phase==='full'){
@@ -60,6 +61,7 @@ try {
  const badSor=await request('/api/sor/',{method:'POST',headers:{'Content-Type':'application/json','Sec-Fetch-Site':'cross-site'},body:JSON.stringify({query:'Balık seviyorum'})});assert.equal(badSor.status,403);
  const wrongTarget=await request('/api/admin/db/',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','Sec-Fetch-Site':'same-origin'},body:JSON.stringify({action:'seed-add-only',target:'production',confirm:'EVET'})});assert.equal(wrongTarget.status,400);
  evidence.security={anonymousReview:401,crossOriginReview:403,crossSiteSor:403,wrongTargetRejected:400};
+ if(process.env.HOSTED_REQUIRE_REAL_AI==='1')assert.ok(evidence.api.some(r=>r.mode==='ai'),'No actual provider response: fallback is not a real AI acceptance');
  }
  const sitemap=await request('/sitemap.xml');assert.equal(sitemap.status,200);const xml=await sitemap.text();
  const catalog=[...JSON.parse(readFileSync('../candidate/data/real/venues.json')),...JSON.parse(readFileSync('../candidate/data/real/isletme.json'))];
@@ -80,6 +82,7 @@ try {
   async function waitTurn(n){await expect(p.locator('[data-sor-tur]')).toHaveCount(n);await expect(p.locator('[data-sor-tur]').last().locator('[data-sor-mod]')).toBeVisible({timeout:45000});}
   await p.goto(origin+'/sor/?q='+encodeURIComponent(actual),{waitUntil:'domcontentloaded'});await waitTurn(1);
   await expect(p.getByText(/Anladığım:.*balık olmasın.*kırmızı et olmasın.*viski.*özel gün/)).toBeVisible();assert.equal(await p.locator('[data-sor-kart]').count(),0);await fit();
+  await p.screenshot({path:`${out}/first-answer-${engine}-${width}.png`,fullPage:false});
   await p.getByRole('textbox',{name:'Sorun',exact:true}).fill('Balık sevmiyor dedim, neden balık önerdin?');await p.getByRole('button',{name:'Sor',exact:true}).click();await waitTurn(2);
   await expect(p.locator('[data-sor-tur]').last().getByText(/Anladığım:.*kırmızı et olmasın.*viski.*özel gün/)).toBeVisible();assert.equal(await p.locator('[data-sor-kart]').count(),0);assert.equal(await p.getByText(/Anladığım:.*gösterişsiz/).count(),0);await fit();
   await p.screenshot({path:`${out}/negative-${engine}-${width}.png`,fullPage:true});
