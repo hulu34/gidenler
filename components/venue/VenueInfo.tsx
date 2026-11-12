@@ -48,7 +48,7 @@ export function VenueInfo({ entity }: { entity: Entity }) {
       {entity.location?.precision === "street" && <p data-location-precision="street" className="mt-3 border border-line bg-sheet p-3 text-[13px] text-ink-2">Konum yaklaşık; kapı numarası henüz doğrulanmadı. Gitmeden önce giriş adresini işletmeyle teyit et.</p>}
       {entity.isReal && entity.source?.provider === "business" && (
         <p className="mt-2 text-[11.5px] leading-snug text-ink-3">
-          Kimlik bilgisi: işletmenin kendi beyanı ve resmî sitesi · {entity.source.importedAt}. Konum OpenStreetMap adres verisinden, sokak düzeyinde (© OpenStreetMap katkıcıları, ODbL).
+          Kimlik bilgisi: işletmenin kendi beyanı ve resmî sitesi · {entity.source.importedAt}.{entity.location?.geo && <> Konum OpenStreetMap adres verisinden (© OpenStreetMap katkıcıları, ODbL).</>}
         </p>
       )}
       {entity.isReal && entity.source && entity.source.provider !== "business" && (
