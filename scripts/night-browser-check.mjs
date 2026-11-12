@@ -44,6 +44,7 @@ for(const [profileIndex,[engine,width]] of profiles.entries()){
 const limitBrowser=await chromium.launch();
 const limitClient=await limitBrowser.newContext({extraHTTPHeaders:{'x-forwarded-for':'198.51.100.55'}});
 const rateStatuses=[];
+const minuteOffset=Date.now()%60000;if(minuteOffset>50000)await new Promise(resolve=>setTimeout(resolve,60100-minuteOffset));
 for(let n=0;n<13;n++){const r=await limitClient.request.post(origin+'/api/sor/',{data:{query:'Develi Samatya'}});rateStatuses.push(r.status());}
 assert.ok(rateStatuses.slice(0,12).every(s=>s===200));assert.equal(rateStatuses[12],429);
 const separateClient=await limitBrowser.newContext({extraHTTPHeaders:{'x-forwarded-for':'198.51.100.56'}});
