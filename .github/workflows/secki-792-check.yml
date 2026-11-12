@@ -26,8 +26,8 @@ jobs:
       GOOGLE_CLIENT_ID: isolated-invalid
       GOOGLE_CLIENT_SECRET: isolated-invalid
       SECKI_TEST_ORIGIN: http://localhost:3154
-      SECKI_EVIDENCE_PATH: ${{ runner.temp }}/secki-append-evidence.json
-      SECKI_HTTP_EVIDENCE_PATH: ${{ runner.temp }}/secki-http-evidence.json
+      SECKI_EVIDENCE_PATH: /tmp/gidenler-secki-append-evidence.json
+      SECKI_HTTP_EVIDENCE_PATH: /tmp/gidenler-secki-http-evidence.json
       CI: '1'
     steps:
       - uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
         with:
           name: secki-792-isolated-evidence
           path: |
-            ${{ runner.temp }}/secki-append-evidence.json
-            ${{ runner.temp }}/secki-http-evidence.json
+            /tmp/gidenler-secki-append-evidence.json
+            /tmp/gidenler-secki-http-evidence.json
             build-secki.log
             server-secki.log
