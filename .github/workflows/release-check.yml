@@ -1,13 +1,13 @@
-name: Exact 824613e isolated Neon Preview QA
+name: Approved 824613e Production append and verification
 on:
   push:
-    branches: [ops/paket-7-14-preview]
+    branches: [ops/paket-7-14-yayin]
 permissions:
   contents: read
 jobs:
-  preview:
+  publish:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,14 +20,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: npm install --ignore-scripts --no-audit --no-fund
-      - run: npx playwright install --with-deps chromium
-      - name: Guarded isolated Preview API and mobile browser checks
-        run: node preview-check.mjs
+      - name: Exact approved tree and guarded INSERT ONLY Production append
+        run: node production-publish.mjs
         env:
           VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          GITHUB_TOKEN: ${{ github.token }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: isolated-neon-preview-824613e
-          path: evidence/
+          name: production-721b1a1-release-evidence
+          path: publish-evidence/
