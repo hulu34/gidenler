@@ -1,0 +1,153 @@
+[
+ {
+  "slug": "awina-restaurant-atasehir",
+  "tur": "OSM",
+  "yeni": "Türk mutfağı",
+  "osm": {
+   "amenity": "restaurant",
+   "cuisine": "turkish",
+   "name": "Awina Restaurant"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "baskent-aspava-atasehir",
+  "tur": "OSM",
+  "yeni": "Türk mutfağı",
+  "osm": {
+   "amenity": "restaurant",
+   "cuisine": "turkish",
+   "name": "Başkent Aspava"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "constantine-s-ark-fatih",
+  "tur": "OSM",
+  "yeni": "Türk mutfağı",
+  "osm": {
+   "amenity": "restaurant",
+   "cuisine": "turkish",
+   "name": "Constantine's Ark"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "cihangir-sosyal-tesisleri-beyoglu",
+  "tur": "OSM",
+  "yeni": "Türk mutfağı",
+  "osm": {
+   "amenity": "restaurant",
+   "cuisine": "regional",
+   "name": "Cihangir sosyal tesisleri"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "leb-i-derya-beyoglu",
+  "tur": "OSM",
+  "yeni": "Türk mutfağı",
+  "osm": {
+   "amenity": "restaurant",
+   "cuisine": "regional",
+   "name": "Leb-i derya"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "kucuk-ev-sariyer",
+  "tur": "OSM",
+  "yeni": "Türk mutfağı",
+  "osm": {
+   "amenity": "restaurant",
+   "cuisine": "turkish",
+   "name": "Küçük Ev"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "polat-iskembe-esenyurt",
+  "tur": "OSM",
+  "yeni": "Türk mutfağı",
+  "osm": {
+   "amenity": "restaurant",
+   "cuisine": "turkish",
+   "name": "Polat Işkembe"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "kor-agop-beyoglu",
+  "tur": "OSM",
+  "yeni": "Türk mutfağı",
+  "osm": {
+   "amenity": "restaurant",
+   "cuisine": "regional",
+   "name": "Kör Agop"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "zennup-1844-fisekhane-zeytinburnu",
+  "tur": "site",
+  "yeni": "Türk mutfağı",
+  "url": "https://zennup.com.tr/fisekhane-sube-menu/",
+  "status": 200,
+  "gecti": true
+ },
+ {
+  "slug": "cinaralti-mangalbasi-atasehir",
+  "tur": "site",
+  "yeni": "Kebapçı / Ocakbaşı",
+  "url": "https://www.cinaraltimangalbasi.com.tr/",
+  "status": 200,
+  "gecti": true
+ },
+ {
+  "slug": "muhlama-karadeniz-mutfagi-atasehir",
+  "tur": "site",
+  "yeni": "Karadeniz mutfağı",
+  "url": "https://www.muhlama.com.tr/",
+  "status": 200,
+  "gecti": true
+ },
+ {
+  "slug": "nebras-pendik",
+  "tur": "site",
+  "yeni": "Lokanta",
+  "url": "https://www.nebrasyemekmarket.com/",
+  "status": 200,
+  "gecti": true
+ },
+ {
+  "slug": "flake-breakfast-ve-more-kadikoy",
+  "tur": "kategori/OSM",
+  "yeni": "cat.cafe",
+  "osm": {
+   "amenity": "cafe",
+   "cuisine": "breakfast;turkish",
+   "name": "Flake Breakfast & More"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "samatya-cafe-ve-van-kahvalti-salonu-fatih",
+  "tur": "kategori/OSM",
+  "yeni": "cat.cafe",
+  "osm": {
+   "amenity": "cafe",
+   "name": "Samatya Cafe ve Van Kahvaltı Salonu"
+  },
+  "gecti": true
+ },
+ {
+  "slug": "antepli-hunkar-kunefe-kartal",
+  "tur": "kategori/OSM",
+  "yeni": "cat.cafe",
+  "osm": {
+   "amenity": "cafe",
+   "name": "Antepli Hünkar Künefe"
+  },
+  "gecti": true
+ }
+]

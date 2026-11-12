@@ -1,0 +1,33 @@
+{
+ "_aciklama": "Tür ve kategori paketi: resmî sitedeki işletmenin kendi tür tanımının elle okunmuş kararları (paket 14 ölçütü). 'sayfa' tur-site.mjs ölçümündeki sayfa sırası, 'alan' okunan üst bilgi; karar betiği ifadenin o alanda gerçekten geçtiğini yeniden denetler. Belirsiz tanım, yalnız ad, platform sayfası ve doğrulanmamış şube kabul edilmez.",
+ "kabul": {
+  "cinaralti-mangalbasi-atasehir": { "kind": "Kebapçı / Ocakbaşı", "sayfa": 0, "alan": "description", "ifade": "Restoranımızda özenle hazırlanan ızgara çeşitleri, mezeler ve salatalarla", "yer": "ana sayfa açıklaması", "duzey": "şube" },
+  "muhlama-karadeniz-mutfagi-atasehir": { "kind": "Karadeniz mutfağı", "sayfa": 0, "alan": "description", "ifade": "Karadeniz Mutfağının En İyi Temsilcisi", "yer": "ana sayfa açıklaması (JSON-LD servesCuisine: Karadeniz Mutfağı)", "duzey": "şube" },
+  "moston-cafe-restoran-maltepe": { "kind": "Lokanta", "sayfa": 0, "alan": "title", "ifade": "Moston Ev Yemekleri & Zeytinyağlılar", "yer": "Maltepe menü sayfası başlığı", "duzey": "şube" },
+  "menemenci-haydar-cakalli-menemeni-silivri": { "kind": "Kahvaltı", "sayfa": 0, "alan": "description", "ifade": "Çakallı menemen, serpme kahvaltı ve doğal kahvaltı tabağıyla", "yer": "ana sayfa açıklaması", "duzey": "şube" },
+  "zennup-1844-fisekhane-zeytinburnu": { "kind": "Türk mutfağı", "sayfa": 2, "alan": "description", "ifade": "Zennup Fişekhane Şube Menüsü; Buram buram Anadolu kokan sofralarıyla geleneksel Türk mutfağı", "yer": "Fişekhane şube menüsü sayfası açıklaması", "duzey": "şube" },
+  "adile-sultan-ev-yemekleri-umraniye-restorani-umraniye": { "kind": "Lokanta", "sayfa": 0, "alan": "title", "ifade": "Ümraniye Restoran Şube | Adile Sultan Ev Yemekleri", "yer": "Ümraniye şube sayfası başlığı", "duzey": "şube" },
+  "heybet-basaksehir": { "kind": "Dönerci", "sayfa": 0, "alan": "title", "ifade": "Heybet Döner Lokantası", "yer": "ana sayfa başlığı (h1: %100 GERÇEK ET DÖNER)", "duzey": "şube" },
+  "konya-mevlana-bahcelievler": { "kind": "Pideci", "sayfa": 2, "alan": "description", "ifade": "Konya mutfağının etli ekmek, pide ve kebap lezzetlerini Bahçelievler'de sunan restoranımız", "yer": "hakkımızda sayfası açıklaması", "duzey": "şube" },
+  "gunesin-sofrasi-kadikoy": { "kind": "Meyhane", "sayfa": 0, "alan": "title", "ifade": "Guneşin Sofrası – Meyhane", "yer": "ana sayfa başlığı", "duzey": "şube" },
+  "nebras-pendik": { "kind": "Lokanta", "sayfa": 0, "alan": "description", "ifade": "açık büfe yemek, kahvaltı ve ev yemekleri konseptiyle hizmet veren", "yer": "ana sayfa açıklaması", "duzey": "şube" },
+  "sakli-kadeh-maltepe": { "kind": "Meyhane", "sayfa": 0, "alan": "title", "ifade": "Saklı Kadeh Meyhane | Altıntepe Bostancı", "yer": "ana sayfa başlığı", "duzey": "şube" },
+  "petra-roasting-co-besiktas": { "kind": "Kahveci", "sayfa": 0, "alan": "description", "ifade": "taze kavrulmuş çekirdekleriyle başka yerde bulunamayacak bir kahve deneyimi", "yer": "ana sayfa açıklaması", "duzey": "şube" },
+  "bosphorus-brewing-company-sisli": { "kind": "Pub", "sayfa": 0, "alan": "description", "ifade": "Ingiliz Pub atmosferinde", "yer": "ana sayfa açıklaması (OSM amenity=pub ile aynı)", "duzey": "şube" }
+ },
+ "ret": {
+  "cajun-corner-sariyer": "Markanın genel tanımı (\"Çıtır Tavuk ve Burger\"); Sarıyer şubesi resmî şube listesinde doğrulanmadı, marka düzeyi uygulanmadı.",
+  "hasirli-konya-mutfagi-buyukcekmece": "Resmî site yalnız Esenyurt ve Bahçeşehir şubelerini sayıyor; Büyükçekmece kaydı şube listesinde yok.",
+  "cookshop-bayrampasa": "Paylaşılan site (Cookshop ve Lunchbox); menü sayfasındaki \"dünya mutfağı\" marka geneli, şube bölümü yok.",
+  "lunchbox-bayrampasa": "Kayıtlı site Cookshop'a ait; Lunchbox adı sitede geçmiyor.",
+  "trakyum-buyukcekmece": "Sitede yalnız ad (\"Trakyum Mangalbaşı\") ve belirsiz tanım (\"Ezber Bozan … Konsept\"); addan tür üretilmez.",
+  "antik-koy-catalca": "Ad eşleşmedi; site bir doğa/eğlence tesisini anlatıyor (kahvaltı, mangal, hayvanat bahçesi).",
+  "gelik-et-atakoy-istanbul-bakirkoy": "Ad eşleşmedi; açık tür tanımı yok.",
+  "kilisli-omer-usta-atasehir": "Kayıtlı bağlantı bir sipariş platformu sayfası; resmî site değil.",
+  "huqqabaz-mall-of-istanbul-basaksehir": "Site kendini \"En İyi Nargile & En İyi Kahvaltı\" diye tanıtıyor; nargile kafe kapsam kararı sahipte.",
+  "huqqa-uskudar": "Marka tanımı nargile kültürünü öne çıkarıyor; tek konsept değil, şube doğrulanmadı.",
+  "360-istanbul-beyoglu": "Site kendini \"Rooftop Restaurant & Club\" diye tanıtıyor; bar ↔ restoran kategori kararı sahipte.",
+  "gizia-brasserie-kadikoy": "Site açıklaması \"restaurant\"; OSM amenity=bar. Kategori kararı sahipte.",
+  "lucca-besiktas": "JSON-LD Restaurant + BarOrPub ve dünya mutfağı; bar alt türü belirsiz."
+ }
+}

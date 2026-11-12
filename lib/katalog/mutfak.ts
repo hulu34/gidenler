@@ -104,7 +104,7 @@ export function nameHints(name: string): MutfakId[] {
 }
 
 /** Uyumlu sayılan komşu etiketler (ör. addaki "kebap" ile kaynaktaki "turk" çelişki değildir). */
-const COMPATIBLE: Partial<Record<MutfakId, MutfakId[]>> = {
+export const COMPATIBLE: Partial<Record<MutfakId, MutfakId[]>> = {
   kebap: ["turk", "et", "doner", "sokak", "pide"], doner: ["turk", "kebap", "sokak", "tavuk"], pide: ["turk", "kebap", "firin"],
   esnaf: ["turk", "et", "kebap", "kahvalti", "sokak"], meyhane: ["turk", "balik", "bar"], et: ["kebap", "turk", "burger", "esnaf"], kahvalti: ["kafe", "turk", "tatli", "firin", "esnaf"],
   tatli: ["kafe", "firin", "kahvalti", "turk"], kafe: ["tatli", "kahvalti", "firin", "turk"], sokak: ["turk", "kebap", "doner", "tavuk"], balik: ["meyhane", "turk", "dunya"], tavuk: ["doner", "sokak"],

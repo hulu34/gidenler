@@ -2,11 +2,13 @@
    bugünkü sürümü ve bu sürümü oluşturan değişiklik kümesi. Paket kurallarındaki E2 (yerinde kontrol tarihi) ve E3 (yerinde
    anket uygulaması) kanıtları ile kapanma işaretleri (silinmiş öğe, disused:/was: önekleri, amenity değişimi) buradan çıkar.
    OSM API toplu uç noktaları; 100'erli istek, saniyede en çok 1 istek. Yalnız etiketler ve sürüm bilgisi saklanır.
-   Kullanım: node scripts/katalog/faaliyet-osm.mjs <cikti.json> */
+   HEDEF=<dosya>: hedef, dosyadaki slug'lar olur (tür ve kategori paketi aynı ölçümü kullanır).
+   Kullanım: [HEDEF=<dosya>] node scripts/katalog/faaliyet-osm.mjs <cikti.json> */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 const [out] = process.argv.slice(2);
 const V = JSON.parse(readFileSync("data/real/venues.json", "utf8"));
-const hedef = V.filter((v) => (v.wave ?? 0) <= 1 && !v.verifiedAt);
+const HEDEF = process.env.HEDEF ? new Set(readFileSync(process.env.HEDEF, "utf8").split(/\s+/).filter(Boolean)) : null;
+const hedef = V.filter((v) => (HEDEF ? HEDEF.has(v.slug) : (v.wave ?? 0) <= 1 && !v.verifiedAt) && /^(node|way|relation)\//.test(v.ref));
 const R = existsSync(out) ? JSON.parse(readFileSync(out, "utf8")) : { ogeler: {}, changeset: {} };
 const UA = { "user-agent": "gidenler-katalog/1.0 (+https://www.gidenler.com/)" };
 const bekle = () => new Promise((z) => setTimeout(z, 1200));
