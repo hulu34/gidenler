@@ -1,0 +1,240 @@
+{
+ "_aciklama": "Paket 19 elle kararlar (2026-11-12): resmî site değil (dizin, Linktree, ilgisiz firma), kapsam dışı (kafe, bar, büfe, catering, düğün/piknik alanı, gıda üreticisi, çiğ köfte) → C; faaliyet ya da kimlik doğrulanamayan → B.",
+ "kararlar": {
+  "89383353-221a-43aa-a22d-71ebab0029e0": {
+   "ad": "Öz adaklı pide ve börek salonu",
+   "sinif": "C",
+   "neden": "site bir firma dizini (firmasec.com); resmî site değil"
+  },
+  "15dbe096-e741-4979-a775-187739594644": {
+   "ad": "Trabzon Yöre Evi",
+   "sinif": "C",
+   "neden": "site bir yemek kartı dizini; resmî site değil"
+  },
+  "0303ea0d-bb9b-4dae-96c8-a6f96f920c87": {
+   "ad": "Duran Sandwiches Güneşli",
+   "sinif": "C",
+   "neden": "sandviççi; restoran kapsamı dışı"
+  },
+  "f9f4005b-ce44-42e2-8bd4-497d44cabc3b": {
+   "ad": "Secret Garden",
+   "sinif": "C",
+   "neden": "düğün ve davet mekânı; restoran değil"
+  },
+  "944e33ca-1c01-4fd8-ab11-2165ff72cf65": {
+   "ad": "İSteklİ CİĞEr Kebap",
+   "sinif": "C",
+   "neden": "Linktree sayfası; resmî site değil"
+  },
+  "c795bc5e-d608-4399-96d7-5ea8c68f55b2": {
+   "ad": "Yurt Konserve",
+   "sinif": "C",
+   "neden": "konserve üreticisi; restoran değil"
+  },
+  "58d18672-af9c-4b71-a28b-62eb342220c9": {
+   "ad": "Arzum Catering",
+   "sinif": "C",
+   "neden": "catering firması; restoran değil"
+  },
+  "6ace7573-4c6e-467f-bfab-87576d05e5e2": {
+   "ad": "Noya Beach",
+   "sinif": "C",
+   "neden": "plaj kulübü; restoran kapsamı dışı"
+  },
+  "96726318-bea9-46a3-893f-d2734b86c525": {
+   "ad": "Doganbezcanta",
+   "sinif": "C",
+   "neden": "bez çanta üreticisi; restoran değil"
+  },
+  "c0130cd7-63f1-4a6c-90d3-e329812a2e02": {
+   "ad": "The Populist Galataport",
+   "sinif": "C",
+   "neden": "bira barı (craft bira); bar kapsam dışı"
+  },
+  "c35af7c3-90ae-444c-8682-98fc02e90b2e": {
+   "ad": "Pelin Yemek Servisleri",
+   "sinif": "C",
+   "neden": "toplu yemek firması; restoran değil"
+  },
+  "03060b86-db3e-40d0-b236-1dac2a9a78c7": {
+   "ad": "Medcezir Plus",
+   "sinif": "C",
+   "neden": "kendini kafe olarak tanımlıyor"
+  },
+  "b35b51d6-3a85-4585-902c-036d96d2c598": {
+   "ad": "Roksi",
+   "sinif": "C",
+   "neden": "diyet yemek servisi; restoran değil"
+  },
+  "be85f48b-5ceb-4d1c-965c-25fd5a241536": {
+   "ad": "HK Garden Restaurant",
+   "sinif": "C",
+   "neden": "catering firması; restoran değil"
+  },
+  "d49f0801-c03e-4b00-8639-034e569b7aa0": {
+   "ad": "Jain İstanbul",
+   "sinif": "C",
+   "neden": "kokteyl barı; bar kapsam dışı"
+  },
+  "14a34af0-4c74-401e-ad20-10feed052d6b": {
+   "ad": "Dürbün Cafe Restaurant",
+   "sinif": "C",
+   "neden": "nargile kafe; kafe kapsam dışı"
+  },
+  "53c844fa-9e30-4e7d-b8f2-58d2ea6db2c6": {
+   "ad": "Patlıcan Polonezköy",
+   "sinif": "C",
+   "neden": "piknik ve düğün alanı; restoran değil"
+  },
+  "fa127b9c-6b0e-4a36-b731-4e959129a474": {
+   "ad": "Rolla",
+   "sinif": "C",
+   "neden": "glütensiz fırın; restoran kapsamı dışı"
+  },
+  "a03df9ac-5f4d-4e8a-a83b-9480dc536a45": {
+   "ad": "Melek Garden Restaurant",
+   "sinif": "C",
+   "neden": "piknik ve düğün alanı; restoran değil"
+  },
+  "b2f495ab-a58f-4605-993f-309deff0249b": {
+   "ad": "Pamera Garden",
+   "sinif": "C",
+   "neden": "bungalov ve kahvaltı bahçesi; restoran değil"
+  },
+  "1d4e7d77-33ee-4f5f-9b48-840db0a1708e": {
+   "ad": "Değirmen Park",
+   "sinif": "C",
+   "neden": "piknik alanı; restoran değil"
+  },
+  "b290e4ca-2ace-457e-a8d6-ebf175fe943d": {
+   "ad": "Polesan Catering",
+   "sinif": "C",
+   "neden": "catering firması; restoran değil"
+  },
+  "7fa4161f-5466-42bd-b9ce-f870960ff64c": {
+   "ad": "Sanpanino Sandwich",
+   "sinif": "C",
+   "neden": "sandviç ve unlu mamul; restoran kapsamı dışı"
+  },
+  "bd7ee09d-ad29-4cdd-bcc9-2082f36d969a": {
+   "ad": "Mükellef Karakoy",
+   "sinif": "C",
+   "neden": "alan adı kumar spam içeriği gösteriyor; resmî site güvenilir değil"
+  },
+  "c0fb832a-2c3d-48da-99e4-9d4b1d6f3524": {
+   "ad": "Hanzade Bosphorus Restaurant",
+   "sinif": "C",
+   "neden": "tekne turu (yemekli Boğaz turu); restoran değil"
+  },
+  "c01f0d53-7f25-454b-9a59-9de09c624eba": {
+   "ad": "Çilman Proje Danışmanlığı",
+   "sinif": "C",
+   "neden": "şarap mahzeni firması; restoran değil"
+  },
+  "616bdcc1-9fde-42a1-b736-618d90aef0cd": {
+   "ad": "Mülkiyeliler Birliği Lokali",
+   "sinif": "C",
+   "neden": "dernek lokali; halka açık restoran değil"
+  },
+  "49d4594a-1826-4932-ba86-4f66e6074a09": {
+   "ad": "User Food & Products",
+   "sinif": "C",
+   "neden": "gıda üreticisi; restoran değil"
+  },
+  "6447b0f7-3d1e-4b35-9ad1-3f2b8e64d96e": {
+   "ad": "Istanbul Gastronomi",
+   "sinif": "C",
+   "neden": "reklam ajansı sitesi; resmî site değil"
+  },
+  "4528585f-95f9-4c06-86ab-6523db563cde": {
+   "ad": "Özkoyunlu Sadeyağları",
+   "sinif": "C",
+   "neden": "sade yağ üreticisi; restoran değil"
+  },
+  "a72dc1f5-f418-45dc-bba9-78777402cce9": {
+   "ad": "Elazigli Cigkofteci Avcilar Firuzkoy",
+   "sinif": "C",
+   "neden": "çiğ köfteci; kapsam dışı"
+  },
+  "dbd5b9ef-7e1a-4621-83de-83383d45e5bb": {
+   "ad": "Hafifol Diyet Yemek Servisi",
+   "sinif": "C",
+   "neden": "diyet yemek servisi; restoran değil"
+  },
+  "31d618af-4faa-4771-a145-878e58d8bd1a": {
+   "ad": "Sanayi 313",
+   "sinif": "C",
+   "neden": "tasarım stüdyosu sitesi; restoran değil"
+  },
+  "63c22098-0a47-43a0-aa56-a19ca2d25ba0": {
+   "ad": "Dereli Vadi Resturant ve Piknik alanı",
+   "sinif": "C",
+   "neden": "piknik alanı; restoran değil"
+  },
+  "607afd72-1632-498c-a884-017b6af0d69e": {
+   "ad": "Kalia Bahçe Kır Bahçesi ve Restoran",
+   "sinif": "C",
+   "neden": "düğün ve organizasyon bahçesi; restoran değil"
+  },
+  "01143bb2-157b-4b58-b1ab-7d903d427293": {
+   "ad": "New City Lounge Cafe & Restaurant",
+   "sinif": "C",
+   "neden": "nargile kafe; kafe kapsam dışı"
+  },
+  "67335900-884e-4417-94e8-65bf12310404": {
+   "ad": "Duduzar Turistik Tesisleri",
+   "sinif": "C",
+   "neden": "kır düğünü tesisi; restoran değil"
+  },
+  "b5a66a9e-705c-4480-94d6-4b1feb0f7bda": {
+   "ad": "Marmaris Büfe 1964 Kavacık",
+   "sinif": "C",
+   "neden": "büfe; restoran kapsamı dışı"
+  },
+  "8cefe2f1-854e-4e14-bce5-ce0a5f398ba1": {
+   "ad": "Livanur Terrace",
+   "sinif": "C",
+   "neden": "otel sitesi askıya alınmış; faaliyet doğrulanamadı"
+  },
+  "06d451e6-3875-4977-8edd-f1729af9c9f4": {
+   "ad": "Ortaköy Polis Evi",
+   "sinif": "C",
+   "neden": "kurum sosyal tesisi; halka açık restoran olarak doğrulanamadı"
+  },
+  "21760561-5bbc-494c-bf1d-8fc2bb58f7ef": {
+   "ad": "Somtas Avize San As",
+   "sinif": "C",
+   "neden": "avize üreticisi; restoran değil"
+  },
+  "d2ce25cd-2965-4474-96c0-e235cfbe7157": {
+   "ad": "Akademi Doğa",
+   "sinif": "C",
+   "neden": "sanat akademisi sitesi; restoran değil"
+  },
+  "02bf3e0a-8527-446c-8b05-44b31fea3b42": {
+   "ad": "Hatay Gözleme Evi",
+   "sinif": "B",
+   "neden": "resmî sitedeki son içerik 2021; güncel faaliyet doğrulanamadı"
+  },
+  "ae6a5e3b-59a2-406b-92ac-bacbacb512a6": {
+   "ad": "Modena Steak Kebap Fish House",
+   "sinif": "B",
+   "neden": "resmî site başka adla (New Hagia Sophia Steak Kebap Fish House); kimlik uyuşmuyor"
+  },
+  "370c8c73-8f83-4422-8245-38153a98bd74": {
+   "ad": "Mesa Country",
+   "sinif": "B",
+   "neden": "resmî sitede ad farklı (Mesra Country); kimlik uyuşmuyor"
+  },
+  "0511b580-6746-4474-9f52-6a096f731efb": {
+   "ad": "Brezza",
+   "sinif": "B",
+   "neden": "resmî site 2004–2020 diyor; güncel faaliyet doğrulanamadı"
+  },
+  "45bfcff8-acfc-446d-82b9-04221c2c6ebc": {
+   "ad": "Erhan Restaurant",
+   "sinif": "B",
+   "neden": "resmî site şablon metni içeriyor; güncel faaliyet zayıf"
+  }
+ }
+}

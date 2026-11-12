@@ -68,7 +68,11 @@ const michelinPair = (v: RealVenueRecord, o: RealVenueRecord) => MICH.has(fold(v
 /* aynı otel/kompleks içinde ayrı restoranlar (ör. Wyndham Grand Kalamış: Perran Ocakbaşı + Ouzo Roof): ad, telefon ve resmî site alanı ÜÇÜ de farklıysa ayrı mekândır */
 const host = (u?: string) => { try { return new URL(u!).host.replace(/^www\./, ""); } catch { return null; } };
 const separateBiz = (v: RealVenueRecord, o: RealVenueRecord) => fold(v.name).split(" ")[0] !== fold(o.name).split(" ")[0] && !!v.phone && !!o.phone && tel(v.phone) !== tel(o.phone) && !!host(v.website) && !!host(o.website) && host(v.website) !== host(o.website);
-const mallOk = (v: RealVenueRecord, o: RealVenueRecord) => (listed(v) && listed(o) && fold(v.name).split(" ")[0] !== fold(o.name).split(" ")[0]) || michelinPair(v, o) || separateBiz(v, o);
+/* aynı binada farklı bağımsız bölüm (ör. Yaren Sokak No:6/14-15 Miyabi Sushi ile No:6/21 Elbet): ad farklı, ikisinde de iç kapı
+   numarası yazılı ve numaralar (aralıklar dahil) kesişmiyorsa ayrı mekândır. İç kapı numarası yoksa bu istisna uygulanmaz. */
+const units = (a?: string) => { const m = /No\s*[:.]?\s*\d+[A-Za-z]?\s*\/\s*([0-9]+)(?:\s*-\s*([0-9]+))?/i.exec(a ?? ""); if (!m) return null; const lo = +m[1], hi = m[2] ? +m[2] : lo; return hi >= lo && hi - lo <= 20 ? Array.from({ length: hi - lo + 1 }, (_, i) => lo + i) : null; };
+const unitSplit = (v: RealVenueRecord, o: RealVenueRecord) => { const a = units(v.address), b = units(o.address); return fold(v.name).split(" ")[0] !== fold(o.name).split(" ")[0] && !!a && !!b && !a.some((x) => b.includes(x)); };
+const mallOk = (v: RealVenueRecord, o: RealVenueRecord) => (listed(v) && listed(o) && fold(v.name).split(" ")[0] !== fold(o.name).split(" ")[0]) || michelinPair(v, o) || separateBiz(v, o) || unitSplit(v, o);
 if (!B1) ok("aynı bina adresinde (60 m) ikinci kayıt yok (farklı markaların resmî listeli AVM şubeleri hariç)", W.every((v) => ![...all, ...W].some((o) => o !== v && typeof o.lat === "number" && meters(v as { lat: number; lng: number }, o as { lat: number; lng: number }) < 60 && addressKey(undefined, undefined, o.address) === addressKey(undefined, undefined, v.address) && !mallOk(v, o))));
 ok("aynı telefonla ikinci kayıt yok", W.every((v) => tel(v.phone).length < 10 || ![...all, ...W].some((o) => o !== v && tel(o.phone) === tel(v.phone))));
 const chains = P.eklenen.filter((e: { zincir: string | null }) => e.zincir);
