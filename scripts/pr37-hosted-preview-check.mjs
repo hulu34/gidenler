@@ -14,11 +14,17 @@ assert.ok(!process.env.DATABASE_URL&&!process.env.DATABASE_URL_UNPOOLED,'Runner 
 const headers={'x-vercel-protection-bypass':process.env.VERCEL_BYPASS};
 const evidence={sha,preview:origin,environment:'actual-protected-vercel-preview',mockedProvider:false,productionWrites:0,physicalPhone:false,realGoogleOAuth:false,api:[],browser:[],errors:[]};
 let lastSor=0;
-async function pace(){const wait=6500-(Date.now()-lastSor);if(wait>0)await delay(wait);lastSor=Date.now();}
+async function pace(){const wait=15000-(Date.now()-lastSor);if(wait>0)await delay(wait);lastSor=Date.now();}
 async function request(path,options={}){
  assert.ok(path.startsWith('/')&&!path.startsWith('//'));
- if(path==='/api/sor/'&&options.method==='POST')await pace();
- return fetch(origin+path,{...options,headers:{...headers,...options.headers},redirect:'error',signal:AbortSignal.timeout(45000)});
+ for(let attempt=0;attempt<3;attempt++){
+  if(path==='/api/sor/'&&options.method==='POST')await pace();
+  const r=await fetch(origin+path,{...options,headers:{...headers,...options.headers},redirect:'error',signal:AbortSignal.timeout(45000)});
+  if(r.status!==429||attempt===2)return r;
+  const retry=Math.min(90,Math.max(65,Number(r.headers.get('retry-after'))||65));
+  (evidence.rateBackoffs??=[]).push({path,attempt,retrySeconds:retry});save();
+  console.log('Respecting actual Preview 429; waiting',retry,'seconds');await delay(retry*1000);
+ }
 }
 async function json(path,options){const r=await request(path,options);assert.equal(r.status,200,`${path}: ${r.status}`);return r.json();}
 const save=()=>writeFileSync(out+'/result.json',JSON.stringify(evidence,null,2));
@@ -26,7 +32,7 @@ const allCards=r=>[...r.items,...r.alternatives];
 const noFish=r=>assert.ok(allCards(r).every(v=>v.kind!=='Balık restoranı'&&!/bal[iı]k/i.test(v.name)),'Fish escaped exclusion');
 const actual='9. ay sevgililik ayı kutlamasına gidecem. erkek arkadasımla. balık sevmiyor kırmızı et yemiyor ve sadece viski içiyor. onu nereye goturebilirim';
 function fullPreferences(r){assert.ok(r.understood.notCuisines.includes('balik'));assert.deepEqual(r.understood.notFoods,['kirmizi-et']);assert.deepEqual(r.understood.drinks,['viski']);assert.equal(r.understood.occasion,'ozel-gun');assert.deepEqual(r.understood.attrs,[]);assert.equal(allCards(r).length,0);assert.match(r.note??'',/doğrulanmış mekân bulamadım/);}
-async function ask(query,previous){const r=await json('/api/sor/',{method:'POST',headers:{'Content-Type':'application/json','Sec-Fetch-Site':'same-origin',Origin:origin},body:JSON.stringify({query,context:previous?.context??null,shown:previous?.shown??[]})});evidence.api.push({query,...r});save();return r;}
+async function ask(query,previous){const r=await json('/api/sor/',{method:'POST',headers:{'Content-Type':'application/json','Sec-Fetch-Site':'same-origin',Origin:origin},body:JSON.stringify({query,context:previous?.context??null,shown:previous?.shown??[]})});evidence.api.push({query,...r});save();console.log('Actual Preview API response',evidence.api.length,r.mode,r.reason,'cards',r.items.length,r.alternatives.length);return r;}
 try {
  const status=await json('/api/sor/');evidence.runtime=status;save();
  assert.equal(status.env,'preview');assert.equal(status.db,'yalitilmis');assert.equal(status.yalnizUcretsiz,true,'Do not run potentially paid AI');
@@ -72,7 +78,7 @@ try {
   await p.goto(origin+'/yaz/sultan-kosesi-fatih/',{waitUntil:'domcontentloaded'});const draft='Türkçe taslak kontrolü: çığ, öğün, ışık, şef, İstanbul. '.repeat(100);await p.getByRole('textbox',{name:'Deneyim metni',exact:true}).fill(draft);await p.locator('[data-otomatik-taslak]').waitFor();await p.reload({waitUntil:'domcontentloaded'});await expect(p.getByRole('textbox',{name:'Deneyim metni',exact:true})).toHaveValue(draft);await fit();
   await p.goto(origin+'/mekan/develi-samatya-fatih/',{waitUntil:'domcontentloaded'});assert.ok((await p.getByRole('link',{name:'Web sitesi ↗',exact:true}).getAttribute('href')).startsWith('https://www.develi1912.com/'));await fit();
   await p.screenshot({path:`${out}/profile-${engine}-${width}.png`,fullPage:true});
-  evidence.browser.push({engine,width,negativePreferences:true,correctionPreserved:true,reloadIsolation:true,newConversationIsolation:true,positiveFish:true,b1Map:true,turkishDraftChars:draft.length,externalWebsite:true,overflow:false});save();await browser.close();
+  evidence.browser.push({engine,width,negativePreferences:true,correctionPreserved:true,reloadIsolation:true,newConversationIsolation:true,positiveFish:true,b1Map:true,turkishDraftChars:draft.length,externalWebsite:true,overflow:false});save();console.log('Actual Preview browser passed',engine,width);await browser.close();
  }
  assert.deepEqual(evidence.errors,[]);
  evidence.realAiResponses=evidence.api.filter(r=>r.mode==='ai').length;evidence.actualFallbackResponses=evidence.api.filter(r=>r.mode==='veri').length;
