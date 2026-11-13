@@ -1,0 +1,372 @@
+{
+ "slug": "sunset-grill-ve-bar-besiktas",
+ "_kaynak_notu": "Kaynak: resmî site sunsetgrillbar.com (ana sayfa, Menü '2026 ve İletişim sayfaları, 13.11.2026) ve sitedeki yemek menüsü PDF'i (assets/yemek.pdf; dosyada 'Fiyatlarımız 5 Kasım 2026 tarihinden itibaren geçerlidir'). Tatlı ve sushi menüleri ayrı PDF; bu profile alınmadı. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; 4NQLZfOqg2w işletmenin kendi kanalında. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Ulus Parkı'nda, Boğaz manzaralı restoran; işletmeye göre 1994'te açıldı. Menüde mevsime göre Akdeniz, Türk ve Japon mutfaklarından yemekler var; ayrıca sushi bar ve şarap mahzeni bulunuyor.",
+  "provider": "official_site",
+  "url": "https://www.sunsetgrillbar.com/tr-TR/menu",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Sa 12:00-00:00; Su 17:00-00:00",
+  "provider": "official_site",
+  "url": "https://www.sunsetgrillbar.com/tr-TR/menu",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Telefonla: 0212 287 03 57 ya da 0212 287 03 58. 15 kişi ve üzeri gruplar için grup menüleri e-postayla soruluyor (info@sunsetgrillbar.com).",
+  "provider": "official_site",
+  "url": "https://www.sunsetgrillbar.com/tr-TR/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Servis ücreti hesaba dahil değil; gönüllü bahşiş misafirin takdiriyle adisyona ekleniyor.",
+   "provider": "official_site",
+   "url": "https://www.sunsetgrillbar.com/assets/yemek.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Menüdeki fiyatlar 5 Kasım 2026'dan itibaren geçerli; TL, tüm vergiler dahil.",
+   "provider": "official_site",
+   "url": "https://www.sunsetgrillbar.com/assets/yemek.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Bar her gün 18.00'den itibaren açık.",
+   "provider": "official_site",
+   "url": "https://www.sunsetgrillbar.com/tr-TR/menu/bar",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Sushi ve tatlı menüleri ayrı; sitede ayrı dosya olarak yayımlanıyor.",
+   "provider": "official_site",
+   "url": "https://www.sunsetgrillbar.com/tr-TR/menu",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.sunsetgrillbar.com/assets/yemek.pdf",
+  "checkedAt": "2026-11-13",
+  "validFrom": "2026-11-05",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Soğuk Başlangıçlar",
+    "items": [
+     {
+      "name": "Günün Çorbası",
+      "priceTry": 980
+     },
+     {
+      "name": "Somon Tartar",
+      "description": "Avokado, nikiri ve yuzu-hindistan cevizi sos, kürlenmiş somon yumurtası",
+      "priceTry": 1650
+     },
+     {
+      "name": "Deniz Levreği Aguachile",
+      "description": "Tatlı patates püresi, mango-chili salsa, kişniş",
+      "priceTry": 1980
+     },
+     {
+      "name": "Ton Balığı Sashimi",
+      "description": "Jalapeno-yeşil elma sos, yuzu kosho-siyah sarımsak püresi, portakal",
+      "priceTry": 1980
+     },
+     {
+      "name": "Somon Tataki",
+      "description": "Miso ve trüflü soya sos, taze trüf mantarı",
+      "priceTry": 1980
+     },
+     {
+      "name": "Zeytinyağlı Ege Enginarı",
+      "description": "Fava ve domates chutney",
+      "priceTry": 1150
+     },
+     {
+      "name": "Imperial Ossetra Havyar (30 g)",
+      "description": "Blini ve crème fraîche",
+      "priceTry": 5950
+     },
+     {
+      "name": "Steak Tartar",
+      "description": "Tütsülenmiş yoğurt, aji panca ve aji amarillo sos, kurutulmuş ekmek",
+      "priceTry": 1970
+     },
+     {
+      "name": "Gillardeau İstiridye No:2 (2 adet)",
+      "description": "Mignonette; 4 adet 3.980 TL",
+      "priceTry": 1990
+     },
+     {
+      "name": "Dana Carpaccio",
+      "description": "Trüf, yuzu aioli, ev yapımı ekmek",
+      "priceTry": 2600
+     },
+     {
+      "name": "Ton Balığı Taco",
+      "description": "Avokado, sriracha ve Japon mayonez sos",
+      "priceTry": 1680
+     },
+     {
+      "name": "Karışık Zeytinyağlı Tabağı",
+      "priceTry": 1650
+     }
+    ]
+   },
+   {
+    "title": "Sıcak Başlangıçlar",
+    "items": [
+     {
+      "name": "Izgara Bebek Kalamar",
+      "description": "Aji amarillo-bal glaze, kimchi susam, taze otlar",
+      "priceTry": 1940
+     },
+     {
+      "name": "Ahtapot",
+      "description": "Patates püresi, sucuk, zeytin, limon kabuğu",
+      "priceTry": 2900
+     },
+     {
+      "name": "Gyoza",
+      "description": "Yavaş pişirilmiş bonfile, soya zencefil sos, tütsülenmiş yoğurt",
+      "priceTry": 1900
+     },
+     {
+      "name": "Ördek Ciğeri",
+      "description": "Elma ve çilekli chutney, hindistan cevizi kreması, miso sos",
+      "priceTry": 2850
+     },
+     {
+      "name": "Sunset Karides Tempura",
+      "description": "Shiitake mantarı, chili biber ve sarımsaklı mayonez",
+      "priceTry": 2100
+     },
+     {
+      "name": "Mantarlı Mantı",
+      "description": "Hatay tuzlu yoğurdu",
+      "priceTry": 1400
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Kale Salatası",
+      "description": "Keçi peyniri mousse, marine pancar, kinoa, narenciye sos",
+      "priceTry": 1750
+     },
+     {
+      "name": "Sezar Salata",
+      "description": "Izgara tavuk göğsü, parmesan",
+      "priceTry": 1780
+     },
+     {
+      "name": "Izgara Carabineros Karides Salatası",
+      "description": "Yedikule marul, edamame, portakal, narenciye-chili sarımsak sos",
+      "priceTry": 2100
+     },
+     {
+      "name": "Bahçe Yeşillikleri Salatası",
+      "description": "Kırmızı pancar, avokado, çam fıstığı, kişniş, nar ekşisi sos",
+      "priceTry": 1650
+     },
+     {
+      "name": "Buffalo Burrata",
+      "description": "Roka, çeri domates, ızgara armut, kekik yağı, çilek-elma chutney",
+      "priceTry": 1980
+     }
+    ]
+   },
+   {
+    "title": "Makarna ve Risotto",
+    "items": [
+     {
+      "name": "Deniz Mahsullü Risotto",
+      "description": "Karides, ahtapot, deniz tarağı, ıstakoz kuyruğu; safran ve bisque sos",
+      "priceTry": 3250
+     },
+     {
+      "name": "Ev Yapımı Pappardelle",
+      "description": "Yavaş pişirilmiş dana eti, kekik, yıllandırılmış Obruk peyniri",
+      "priceTry": 2950
+     },
+     {
+      "name": "Mantarlı Risotto",
+      "description": "Yabani ızgara mantarlar ve taze siyah trüf",
+      "priceTry": 2650
+     },
+     {
+      "name": "Deniz Mahsullü Spagetti",
+      "description": "Deniz tarağı, karides, ahtapot, vongole; beyaz şarap, fesleğen",
+      "priceTry": 2900
+     },
+     {
+      "name": "Taze Istakoz Linguini (2-3 kişilik)",
+      "description": "Çeri domates, fesleğen, bisque sos, bottarga",
+      "priceTry": 11500
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler",
+    "items": [
+     {
+      "name": "Izgara Kral İstiridye Mantarları",
+      "description": "Umami patates püresi, tahin-kimchi glaze, chimichurri",
+      "priceTry": 1950
+     },
+     {
+      "name": "Izgara Organik Tavuk (300 g)",
+      "description": "Yer fıstığı ezmesi sosu, padron biber, salatalık turşusu",
+      "priceTry": 2700
+     },
+     {
+      "name": "Izgara Bonfile Rossini (150 g)",
+      "description": "Ördek ciğeri (60 g), tereyağlı brioche, demi-glace sos",
+      "priceTry": 3700
+     },
+     {
+      "name": "Izgara Kuzu Sırtı (170 g)",
+      "description": "Firik bulguru ve isli yoğurt",
+      "priceTry": 3500
+     },
+     {
+      "name": "Sunset Fillet (200 g)",
+      "description": "Kuşkonmaz, beyaz trüflü patates terrine, dana jus",
+      "priceTry": 3450
+     },
+     {
+      "name": "Pekin Stili Ördek",
+      "description": "Salatalık ve yeşil soğan, ılık lavaş, hoisin sos",
+      "priceTry": 3450
+     },
+     {
+      "name": "Yoğurtlu Kebap",
+      "description": "Bonfile, köfte, çıtır pide, tütsülenmiş yoğurt, domates sos",
+      "priceTry": 2980
+     },
+     {
+      "name": "Sous Vide Kuzu İncik (220 g)",
+      "description": "Patlıcan beğendi ve dana jus",
+      "priceTry": 3400
+     },
+     {
+      "name": "Josper Fırında Tütsülenmiş Dana Yanak",
+      "description": "Risotto ve pancar turşusu",
+      "priceTry": 2950
+     }
+    ]
+   },
+   {
+    "title": "Kömür Izgaradan Steak'ler (30 gün kuru dinlendirilmiş)",
+    "items": [
+     {
+      "name": "T-Bone Steak (500 g)",
+      "priceTry": 4980
+     },
+     {
+      "name": "Kimchi ile Marine Kuzu Pirzola",
+      "description": "Turşulanmış salatalık",
+      "priceTry": 4300
+     },
+     {
+      "name": "Antrikot (400 g)",
+      "priceTry": 4500
+     },
+     {
+      "name": "New York Steak (400 g)",
+      "priceTry": 4500
+     },
+     {
+      "name": "Dana Pirzola (400 g)",
+      "priceTry": 4950
+     },
+     {
+      "name": "Tomahawk (1 kg, 3 kişilik)",
+      "priceTry": 12980
+     }
+    ]
+   },
+   {
+    "title": "Garnitürler",
+    "items": [
+     {
+      "name": "Sote Yabani Mantarlar",
+      "description": "Zeytinyağı, sarımsak, maydanoz, soya yuzu vinaigrette",
+      "priceTry": 820
+     },
+     {
+      "name": "Trüf Tuzlu Kızarmış Patates",
+      "priceTry": 900
+     },
+     {
+      "name": "Patates Püresi",
+      "description": "Frenk soğanı ve trüf yağı",
+      "priceTry": 550
+     },
+     {
+      "name": "Izgara Bebek Broccolini",
+      "description": "Acılı lime sos",
+      "priceTry": 825
+     },
+     {
+      "name": "Padron Biberi",
+      "description": "Tiradito sos",
+      "priceTry": 845
+     }
+    ]
+   },
+   {
+    "title": "Deniz Ürünleri",
+    "items": [
+     {
+      "name": "Miso Soslu Fırınlanmış Siyah Morina (300 g)",
+      "description": "Japon turbu ve zencefil turşusu",
+      "priceTry": 4700
+     },
+     {
+      "name": "Josper Fırında Kelebek Kesim Bütün Çipura (330 g)",
+      "description": "Frenk soğanı, cibes, yanık limon sos",
+      "priceTry": 3200
+     },
+     {
+      "name": "Izgara Deniz Levreği (200 g)",
+      "description": "Bisque sos, hindistan cevizi sütü, panko",
+      "priceTry": 3800
+     },
+     {
+      "name": "Somon Fillet (200 g)",
+      "description": "Yabani mantarlı risotto, yuzu-tereyağı sos",
+      "priceTry": 2900
+     },
+     {
+      "name": "Izgara Jumbo Karides (240 g)",
+      "description": "Yanık hollandaise sos, frenk soğanı",
+      "priceTry": 3400
+     },
+     {
+      "name": "Günün Yemeği",
+      "description": "Servis ekibine danışılması isteniyor"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=4NQLZfOqg2w",
+   "credit": "Sunset Grill & Bar (işletmenin kanalı) · Aralık 2016",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=mNxrUYqD_Cs",
+   "credit": "Oksijen TV · Mayıs 2024 · kurucu Barış Tansever ile söyleşi",
+   "category": "editor",
+   "sponsored": false
+  }
+ ]
+}

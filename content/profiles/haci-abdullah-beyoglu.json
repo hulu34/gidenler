@@ -1,0 +1,315 @@
+{
+ "slug": "haci-abdullah-beyoglu",
+ "_kaynak_notu": "Kaynak: resmî site haciabdullah.com.tr (Hakkımızda, Menü, İletişim; 13.11.2026). Menü sayfasında fiyat yok; ürün adları ve bölümler aynen alındı (içecekler hariç). Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; ikisi de Beyoğlu'ndaki lokantayı anlatıyor (1888, Atıf Yılmaz Caddesi). Hacı Salih Lokantası ayrı işletme; karıştırılmadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Beyoğlu'nda Atıf Yılmaz Caddesi'nde Osmanlı ve Türk mutfağı lokantası. İşletmenin anlattığına göre 1888'de Karaköy Rıhtımı'nda 'Abdullah Efendi' adıyla açıldı, 1915'te Beyoğlu'na taşındı ve usta-çırak geleneğiyle devredilerek bugüne geldi. Menüde zeytinyağlılar, tas kebap, kuzu tandır ve kaymaklı ayva tatlısı gibi klasikler var.",
+  "provider": "official_site",
+  "url": "https://haciabdullah.com.tr/hakkimizda/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Su 08:00-23:00",
+  "provider": "official_site",
+  "url": "https://haciabdullah.com.tr/hakkimizda/",
+  "checkedAt": "2026-11-13"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://haciabdullah.com.tr/menu/",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": false,
+  "sections": [
+   {
+    "title": "Çorbalar, Pilavlar, Börekler",
+    "items": [
+     {
+      "name": "Günün Çorbası"
+     },
+     {
+      "name": "Et Suyu"
+     },
+     {
+      "name": "Dana Haşlama"
+     },
+     {
+      "name": "Şehriyeli Pilav"
+     },
+     {
+      "name": "İç Pilav"
+     },
+     {
+      "name": "Perde Pilavı"
+     },
+     {
+      "name": "Fasulyeli Pilav"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Karışık Salata"
+     },
+     {
+      "name": "Yeşil Salata"
+     },
+     {
+      "name": "Çoban Salata"
+     },
+     {
+      "name": "Domates Söğüş Salata"
+     },
+     {
+      "name": "Özel Hacı Abdullah Yoğurdu"
+     },
+     {
+      "name": "Cacık"
+     },
+     {
+      "name": "Karışık Turşu"
+     }
+    ]
+   },
+   {
+    "title": "Zeytinyağlı Yemekler",
+    "items": [
+     {
+      "name": "Kereviz"
+     },
+     {
+      "name": "Taze Bakla"
+     },
+     {
+      "name": "Patlıcan Tava"
+     },
+     {
+      "name": "İmam Bayıldı"
+     },
+     {
+      "name": "Yaprak Sarma"
+     },
+     {
+      "name": "Biber Dolma"
+     },
+     {
+      "name": "Patlıcan Dolma"
+     },
+     {
+      "name": "Lahana Sarma"
+     },
+     {
+      "name": "Taze Fasulye"
+     },
+     {
+      "name": "Barbunya Pilaki"
+     },
+     {
+      "name": "Enginar"
+     },
+     {
+      "name": "Karışık Dolma"
+     }
+    ]
+   },
+   {
+    "title": "Türk Mutfağı",
+    "items": [
+     {
+      "name": "Özel Hacı Abdullah Tabağı"
+     },
+     {
+      "name": "Kuzu Tandır"
+     },
+     {
+      "name": "Beğendili Kebap"
+     },
+     {
+      "name": "Kuzu İncik Patlıcanlı"
+     },
+     {
+      "name": "Elbasan Tava"
+     },
+     {
+      "name": "Et Sote Mantarlı"
+     },
+     {
+      "name": "Kuzu İncik Fırın"
+     },
+     {
+      "name": "Tas Kebap"
+     },
+     {
+      "name": "Tavuk Fırın"
+     },
+     {
+      "name": "Beğendili Piliç"
+     },
+     {
+      "name": "Keşkekli Kebap"
+     },
+     {
+      "name": "Manisa Kebabı"
+     }
+    ]
+   },
+   {
+    "title": "Sıcak Sebze Yemekleri",
+    "items": [
+     {
+      "name": "Türlü Fırın"
+     },
+     {
+      "name": "Sebze Sote"
+     },
+     {
+      "name": "Ispanak"
+     },
+     {
+      "name": "Kuru Fasulye"
+     },
+     {
+      "name": "Taze Bezelye"
+     },
+     {
+      "name": "Biber Dolma"
+     },
+     {
+      "name": "Yaprak Sarma"
+     },
+     {
+      "name": "Kabak Dolma"
+     },
+     {
+      "name": "Karışık Dolma"
+     },
+     {
+      "name": "Keşkek"
+     }
+    ]
+   },
+   {
+    "title": "Izgaralar",
+    "items": [
+     {
+      "name": "Karışık Izgara"
+     },
+     {
+      "name": "Kuzu Şiş"
+     },
+     {
+      "name": "Kuzu Pirzola"
+     },
+     {
+      "name": "Bonfile"
+     },
+     {
+      "name": "Biftek"
+     },
+     {
+      "name": "Ciğer Izgara"
+     },
+     {
+      "name": "Tavuk Şiş"
+     },
+     {
+      "name": "Tavuk Fleto"
+     },
+     {
+      "name": "Köfte Izgara"
+     },
+     {
+      "name": "Kaşarlı Köfte"
+     },
+     {
+      "name": "Özel Hacı Abdullah Kebabı"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar ve Taze Meyveler",
+    "items": [
+     {
+      "name": "Ayva Kaymaklı"
+     },
+     {
+      "name": "Ayva Ballı, Muzlu, Kaymaklı"
+     },
+     {
+      "name": "Künefe"
+     },
+     {
+      "name": "Tel Kadayıf"
+     },
+     {
+      "name": "Sütlaç"
+     },
+     {
+      "name": "Meyveli Muhallebi"
+     },
+     {
+      "name": "Aşure"
+     },
+     {
+      "name": "Karışık Dondurma"
+     },
+     {
+      "name": "Çilek Şantili"
+     },
+     {
+      "name": "Muz Şantili"
+     },
+     {
+      "name": "Böğürtlen Şantili"
+     },
+     {
+      "name": "Karışık Meyve"
+     }
+    ]
+   },
+   {
+    "title": "Kompostolar",
+    "items": [
+     {
+      "name": "Böğürtlen Komposto"
+     },
+     {
+      "name": "Nar Komposto"
+     },
+     {
+      "name": "Şeftali Komposto"
+     },
+     {
+      "name": "Kayısı Komposto"
+     },
+     {
+      "name": "Armut Komposto"
+     },
+     {
+      "name": "Elma Komposto"
+     },
+     {
+      "name": "Ayva Komposto"
+     },
+     {
+      "name": "Karışık Komposto"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=msHl7FAJG_s",
+   "credit": "Sen Anlat İstanbul · Ağustos 2024",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=F6r_syELn4I",
+   "credit": "İstanbul Ajansı · Semtin Yerlisi · Ocak 2023",
+   "category": "editor",
+   "sponsored": false
+  }
+ ]
+}

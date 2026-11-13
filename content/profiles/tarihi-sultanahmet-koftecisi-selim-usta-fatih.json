@@ -1,0 +1,44 @@
+{
+ "slug": "tarihi-sultanahmet-koftecisi-selim-usta-fatih",
+ "_kaynak_notu": "Kaynak: resmî site sultanahmetkoftesi.com (ana sayfa ve İletişim; 13.11.2026). Sitede saat yok; katalogdaki saat değiştirilmedi. Telefon katalogda yoktu, iletişim sayfasındaki ilk numara eklendi. Menü eklenmedi: sitede fiyatlı ya da tarihli menü yok, yalnız 'Sultanahmet Lezzetleri' tanıtımı var (tanıtım metnine yazıldı). Markanın başka şubeleri var; bu kayıt Divanyolu No:12. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; Ahmet Cevatzade videosunun açıklamasında Divan Yolu Cd. No:12 adresi yazıyor; 9OEuEzEYlIA işletmenin kendi kanalında. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Sultanahmet'te Divanyolu Caddesi'nde köfteci; işletmeye göre 1920'den beri dört kuşaktır aynı köfteyi yapıyor. Baharat kullanılmadan dana eti, ekmek, soğan ve tuzla hazırlanan ızgara köftenin yanında kuzu şiş, mercimek çorbası, piyaz, pilav ve irmik helvası var.",
+  "provider": "official_site",
+  "url": "https://sultanahmetkoftesi.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 212 520 05 66",
+  "provider": "official_site",
+  "url": "https://sultanahmetkoftesi.com/iletisim/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Markanın Selamiçeşme, Şerifali, Çağlayan ve yurt dışında şubeleri de var; bu kayıt Sultanahmet'teki Divanyolu Caddesi No:12.",
+   "provider": "official_site",
+   "url": "https://sultanahmetkoftesi.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "İkinci telefon: +90 212 513 64 68.",
+   "provider": "official_site",
+   "url": "https://sultanahmetkoftesi.com/iletisim/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=FQkeppQASkw",
+   "credit": "Ahmet Cevatzade · Şubat 2023",
+   "category": "atmosfer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=9OEuEzEYlIA",
+   "credit": "Tarihi Sultanahmet Köftecisi (işletmenin kanalı) · Ocak 2013 · tanıtım filmi",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ]
+}

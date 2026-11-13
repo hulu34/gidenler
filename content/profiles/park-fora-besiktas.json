@@ -1,0 +1,40 @@
+{
+ "slug": "park-fora-besiktas",
+ "_kaynak_notu": "Kaynak: resmî site parkfora.com (ana sayfa, Menü, İletişim, Rezervasyon; 13.11.2026). Menü eklenmedi: menü sayfası görsel kartlardan oluşuyor, ürün adları İngilizce ve fiyat yok. Saat sitede yok (rezervasyon formundaki 12.00–23.30 saat seçenekleri çalışma saati sayılmadı). Video: işletmenin kendi kanalı, sitede bağlantısı var; oEmbed 200, gömmeye açık. Travelling Foodie kısa videosu (zi3MStENCHM) restoranı 'Bebek' diye anlattığı için şube eşleşmesi kesin değil; alınmadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Kuruçeşme sahilinde balık ve deniz ürünleri restoranı; işletmeye göre 1996'dan beri burada. Menüde mevsim balıklarının yanında yıl boyu barbun, levrek ve dil balığı; kral yengeç, ıstakoz, istiridye ve paella var. Dondurma restoranın kendi üretimi.",
+  "provider": "official_site",
+  "url": "https://www.parkfora.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Sitedeki rezervasyon formu, telefon (+90 212 265 50 63) ya da WhatsApp üzerinden.",
+  "provider": "official_site",
+  "url": "https://www.parkfora.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Boğaz manzaralı geniş teras yaz aylarında hizmete açılıyor.",
+   "provider": "official_site",
+   "url": "https://www.parkfora.com/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "teras": true
+  },
+  "provider": "official_site",
+  "url": "https://www.parkfora.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=VY6nnRMmMfw",
+   "credit": "Park Fora (işletmenin kanalı) · Ekim 2020 · gece manzaraları",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ]
+}
