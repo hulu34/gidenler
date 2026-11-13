@@ -66,7 +66,7 @@ async function senaryo(mod: "transaction" | "batch") {
   const t = prof("topaz-beyoglu"); const b1 = await uyg("topaz-beyoglu", t);
   const b2 = await uyg("topaz-beyoglu", { ...t, description: { ...t.description, value: `${t.description.value} (daha yeni)` } });
   const rb = await rollbackProfile(db, (b1 as any).auditId);
-  ok(`${mod} A: daha yeni farklı uygulamayı eski geri alma ezemez`, !rb.ok && (rb as any).error === "newer_change" && (await readProfile(db, "topaz-beyoglu"))?.description?.value.includes("daha yeni"), rb);
+  ok(`${mod} A: daha yeni farklı uygulamayı eski geri alma ezemez`, !rb.ok && (rb as any).error === "newer_change" && (await readProfile(db, "topaz-beyoglu"))?.description?.value.includes("daha yeni") === true, rb);
   ok(`${mod} A: yeniden eskiye geri alma çalışır`, (await rollbackProfile(db, (b2 as any).auditId)).ok && (await rollbackProfile(db, (b1 as any).auditId)).ok && (await readProfile(db, "topaz-beyoglu")) === null);
 
   /* B: 12 profil + 16 video */
