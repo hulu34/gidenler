@@ -4,7 +4,7 @@
    3. Video: mevcut gömme ayrıştırıcısı (lib/media/embed) tanıyor; YouTube; reklam etiketi işaretli.
    4. Uygulama: gömülü veritabanında (PGlite) göçler + 793 kayıt + applyProfile → readProfile menüyü, saati, Instagram'ı ve notları döndürüyor; tekrar uygulama çoğaltmıyor.
    5. Menü bileşeni (ProfileMenu) sunucuda HTML üretiyor: bütün bölüm ve ürün adları var, "₺" yok.
-   6. Katalog ve Seçki dosyaları Production tabanıyla (9a11a3b) aynı; yalnız bu profil eklendi.
+   6. Yayımlanan Menemen kaydı ve ilgili dosyalar güncel Production tabanıyla (2031408) aynı; başka restoranların adres düzeltmeleri bu testin kapsamına girmez.
    Kullanım: npx tsx scripts/menemen-profil-test.ts */
 import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -59,11 +59,13 @@ for (const v of videos ?? []) {
   t("reklam etiketi işaretli", v.sponsored === true && v.category === "influencer");
 }
 
-/* 6. katalog ve Seçki tabanla aynı */
-const BASE = "9a11a3b";
-for (const f of ["data/real/venues.json", "data/real/isletme.json", "data/real/duzeltmeler.json", "data/real/kapanis.json", "content/seckisi/restoranlar.ts"]) {
+/* 6. Menemen kaydı ve ilgili dosyalar yayımlanan tabanla aynı. Diğer restoranların adres düzeltmeleri Menemen testiyle yasaklanmaz. */
+const BASE = "2031408276fc5e4a24223a4e45fa70f656ffb604";
+for (const f of ["data/real/isletme.json", "data/real/duzeltmeler.json", "data/real/kapanis.json", "content/seckisi/restoranlar.ts"]) {
   t(`${f} tabanla aynı`, readFileSync(f, "utf8") === execFileSync("git", ["show", `${BASE}:${f}`], { encoding: "utf8" }));
 }
+const originalMenemen = JSON.parse(execFileSync("git", ["show", `${BASE}:data/real/isletme.json`], { encoding: "utf8" })).find((r: { slug: string }) => r.slug === "menemen-besiktas");
+t("Menemen katalog kaydı Production ile aynı", JSON.stringify(JSON.parse(readFileSync("data/real/isletme.json", "utf8")).find((r: { slug: string }) => r.slug === "menemen-besiktas")) === JSON.stringify(originalMenemen));
 t("katalog 793 kayıt, Menemen bir kez", realVenueRecords.length === 793 && realVenueRecords.filter((r) => r.slug === "menemen-besiktas").length === 1);
 
 async function main() {
