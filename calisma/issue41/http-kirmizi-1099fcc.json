@@ -1,0 +1,1047 @@
+{
+ "tarih": "2026-11-13T03:31:01.798Z",
+ "pass": 43,
+ "fail": 66,
+ "kayit": [
+  {
+   "grup": "",
+   "ad": "Menemen ön koşul: profil ve video uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "ilk ve tekrar uygulama başarılı",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "tekrardan sonra asıl uygulama geri alınabilir (not_latest yok)",
+   "ok": false,
+   "ayrinti": {
+    "action": "profile-rollback",
+    "env": "local",
+    "ok": false,
+    "error": "not_latest"
+   }
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "geri alma sonrası profil yok",
+   "ok": false
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "geri alma sonrası video yok",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-4dcb-7d90-92c5-f6641c840bcf",
+     "external_id": "y9ROjh7FlA0",
+     "credit": "Ömer Uzun · Ağustos 2020 · iç ve dış mekân çekimleri",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "aynı geri almayı tekrar istemek güvenli (veri değişmez)",
+   "ok": false,
+   "ayrinti": {
+    "action": "profile-rollback",
+    "env": "local",
+    "ok": false,
+    "error": "not_latest"
+   }
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "değişiklik yapmayan tekrarın geri alınması zararsız",
+   "ok": false,
+   "ayrinti": {
+    "action": "profile-rollback",
+    "env": "local",
+    "ok": true,
+    "slug": "ulus-29-besiktas",
+    "removed": 0
+   }
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "yeniden uygulama profil ve videoyu geri getirir",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "daha yeni farklı uygulama varken eski geri alma reddedilir",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "yeniden eskiye sırayla geri alma çalışır ve profil tamamen kalkar",
+   "ok": false,
+   "ayrinti": [
+    200,
+    400,
+    {
+     "action": "profile-rollback",
+     "env": "local",
+     "ok": true,
+     "slug": "topaz-beyoglu",
+     "removed": 1
+    },
+    {
+     "action": "profile-rollback",
+     "env": "local",
+     "ok": false,
+     "error": "not_latest"
+    }
+   ]
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "eşzamanlı iki aynı uygulama: tek video ilişkisi, yinelenen yok",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "eşzamanlı uygulamaların ikisi de geri alınınca profil ve video kalmaz",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-4fa0-76fd-ad41-cb33d9bf7efd",
+     "external_id": "ERNWFULvD1k",
+     "credit": "Foodinlife Magazine · Temmuz 2023 · Şef Mevlüt Özkaya ile söyleşi",
+     "sponsored": false,
+     "status": "approved"
+    },
+    {
+     "id": "01a1d2f5-4ff5-7851-86de-a76073af35e2",
+     "external_id": "GyeKtU5u6gs",
+     "credit": "Keşif Perisi · Ocak 2019",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ulus-29-besiktas: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "sunset-grill-ve-bar-besiktas: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "topaz-beyoglu: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "murver-beyoglu: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "lokanta-1741-fatih: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "1924-istanbul-beyoglu: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "alaf-besiktas: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "haci-abdullah-beyoglu: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "kanaat-lokantasi-uskudar: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ciya-sofrasi-kadikoy: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "park-fora-besiktas: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "12 profilde 16 video görünür (yinelenen yok)",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ulus-29-besiktas: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ulus-29-besiktas: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-4dcb-7d90-92c5-f6641c840bcf",
+     "external_id": "y9ROjh7FlA0",
+     "credit": "Ömer Uzun · Ağustos 2020 · iç ve dış mekân çekimleri",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "sunset-grill-ve-bar-besiktas: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "sunset-grill-ve-bar-besiktas: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "med_ortak",
+     "external_id": "4NQLZfOqg2w",
+     "credit": "Sunset Grill & Bar (işletmenin kanalı) · Aralık 2016",
+     "sponsored": false,
+     "status": "approved"
+    },
+    {
+     "id": "01a1d2f5-51a8-740c-9b66-1571dbb2cce5",
+     "external_id": "mNxrUYqD_Cs",
+     "credit": "Oksijen TV · Mayıs 2024 · kurucu Barış Tansever ile söyleşi",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "topaz-beyoglu: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "topaz-beyoglu: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "murver-beyoglu: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "murver-beyoglu: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-4fa0-76fd-ad41-cb33d9bf7efd",
+     "external_id": "ERNWFULvD1k",
+     "credit": "Foodinlife Magazine · Temmuz 2023 · Şef Mevlüt Özkaya ile söyleşi",
+     "sponsored": false,
+     "status": "approved"
+    },
+    {
+     "id": "01a1d2f5-4ff5-7851-86de-a76073af35e2",
+     "external_id": "GyeKtU5u6gs",
+     "credit": "Keşif Perisi · Ocak 2019",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "lokanta-1741-fatih: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "lokanta-1741-fatih: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "1924-istanbul-beyoglu: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "1924-istanbul-beyoglu: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "alaf-besiktas: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "alaf-besiktas: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-5521-7ee8-8059-9429f5967193",
+     "external_id": "0TBFqnYvlpg",
+     "credit": "Gurmoss · Mayıs 2023 · Şef Murat Deniz Temel",
+     "sponsored": false,
+     "status": "approved"
+    },
+    {
+     "id": "01a1d2f5-54dd-76f0-b9d9-87bf14045f0e",
+     "external_id": "R3u43c3tcvY",
+     "credit": "Travelling Foodie · Aralık 2023 · tadım menüsü",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "haci-abdullah-beyoglu: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "haci-abdullah-beyoglu: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-56a6-767b-bd4e-07276a120d4d",
+     "external_id": "F6r_syELn4I",
+     "credit": "İstanbul Ajansı · Semtin Yerlisi · Ocak 2023",
+     "sponsored": false,
+     "status": "approved"
+    },
+    {
+     "id": "01a1d2f5-5609-7639-a504-82d1564d1cdb",
+     "external_id": "msHl7FAJG_s",
+     "credit": "Sen Anlat İstanbul · Ağustos 2024",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "kanaat-lokantasi-uskudar: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "kanaat-lokantasi-uskudar: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-580a-7575-8367-f3b628d2408a",
+     "external_id": "DcD5IMMR6kM",
+     "credit": "Meet Turkey · Ocak 2020 · yemek yazarı Lian Penso ile",
+     "sponsored": false,
+     "status": "approved"
+    },
+    {
+     "id": "01a1d2f5-57c9-79f9-858c-a420568a453b",
+     "external_id": "TbL4A4Cywe4",
+     "credit": "Simge İşmen · Aralık 2023 · videodaki fiyatlar 2023 tarihli",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ciya-sofrasi-kadikoy: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ciya-sofrasi-kadikoy: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-599d-73bd-bcc6-714e8b58aaa1",
+     "external_id": "3-8F3m1Ebzw",
+     "credit": "o yerin hikayesi · Aralık 2019",
+     "sponsored": false,
+     "status": "approved"
+    },
+    {
+     "id": "01a1d2f5-5949-765e-9d93-cd99a4a6156b",
+     "external_id": "FrvG87ZVLkQ",
+     "credit": "Travelling Foodie · Mart 2024",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-5b04-7cac-a7a4-6bbc93debe0e",
+     "external_id": "9OEuEzEYlIA",
+     "credit": "Tarihi Sultanahmet Köftecisi (işletmenin kanalı) · Ocak 2013 · tanıtım filmi",
+     "sponsored": false,
+     "status": "approved"
+    },
+    {
+     "id": "01a1d2f5-5ac0-7e89-bd23-2b8563b92c84",
+     "external_id": "FQkeppQASkw",
+     "credit": "Ahmet Cevatzade · Şubat 2023",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "park-fora-besiktas: hedefli tam geri alma",
+   "ok": false,
+   "ayrinti": [
+    200,
+    null,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "park-fora-besiktas: geri alma sonrası video görünmez",
+   "ok": false,
+   "ayrinti": [
+    {
+     "id": "01a1d2f5-5bfc-7a91-b514-27e798732f88",
+     "external_id": "VY6nnRMmMfw",
+     "credit": "Park Fora (işletmenin kanalı) · Ekim 2020 · gece manzaraları",
+     "sponsored": false,
+     "status": "approved"
+    }
+   ]
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ulus-29-besiktas: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "sunset-grill-ve-bar-besiktas: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "topaz-beyoglu: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "murver-beyoglu: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "lokanta-1741-fatih: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "1924-istanbul-beyoglu: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "alaf-besiktas: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "haci-abdullah-beyoglu: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "kanaat-lokantasi-uskudar: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ciya-sofrasi-kadikoy: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "park-fora-besiktas: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "yeniden uygulamada da 16 video, yinelenen yok",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "son geri almadan sonra 12 profilde video yok",
+   "ok": false
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "turk-fatih-tutak-sisli: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "turk-fatih-tutak-sisli: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "nicole-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "nicole-beyoglu: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "mutfakkoz-kadikoy: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "mutfakkoz-kadikoy: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "cuma-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "cuma-beyoglu: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "fauna-atasehir: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "fauna-atasehir: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "aida-vino-e-cucina-kadikoy: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "aida-vino-e-cucina-kadikoy: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "mikla-turkey-fusion-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "mikla-turkey-fusion-beyoglu: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "aseka-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "aseka-beyoglu: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "calipso-fish-maltepe: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "calipso-fish-maltepe: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "rumelihisari-iskele-sariyer: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "rumelihisari-iskele-sariyer: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "sade-bes-denizler-mutfagi-sisli: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "sade-bes-denizler-mutfagi-sisli: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "deraliye-fatih: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "deraliye-fatih: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "tavaci-recep-usta-bostanci-maltepe: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "tavaci-recep-usta-bostanci-maltepe: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "ali-ocakbasi-karakoy-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200,
+    400,
+    "not_latest"
+   ]
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "ali-ocakbasi-karakoy-beyoglu: yeniden uygula → geri al",
+   "ok": false,
+   "ayrinti": [
+    200,
+    200
+   ]
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "ortak video eklenince önceki atıf ve sponsorluk değişmez",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "ortak video iki mekânda da görünür",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "başka mekânı hedefleyen kaldırma reddedilir ve hiçbir yerde gizlemez",
+   "ok": false,
+   "ayrinti": {
+    "s": 200,
+    "j": {
+     "action": "media-remove",
+     "env": "local",
+     "ok": true
+    }
+   }
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "mekâna özgü kaldırma yalnız o mekândan kaldırır",
+   "ok": false,
+   "ayrinti": {
+    "s": 200,
+    "j": {
+     "action": "media-remove",
+     "env": "local",
+     "ok": true
+    },
+    "pandeli": []
+   }
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "profil geri alınınca ortak videonun öbür mekândaki ilişkisi ve atfı kalır",
+   "ok": false,
+   "ayrinti": {
+    "s": 200,
+    "j": {
+     "action": "profile-rollback",
+     "env": "local",
+     "ok": true,
+     "slug": "sunset-grill-ve-bar-besiktas",
+     "removed": 0
+    }
+   }
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "önceden kaldırılmış video örtük yeniden yayımlanmaz",
+   "ok": false,
+   "ayrinti": {
+    "s": 200,
+    "st": "approved"
+   }
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "watch ve Shorts biçimi aynı video: tek ilişki",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "Kanaat geri alındı; video kalmadı",
+   "ok": false
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "ikinci video bulunamazsa başarı dönmez",
+   "ok": false,
+   "ayrinti": {
+    "s": 207,
+    "j": {
+     "ok": false,
+     "profileOk": true
+    }
+   }
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "ikinci video hatasında profil uygulanmış kalmaz, ilk video bağlanmaz",
+   "ok": true
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "ilk video hatasında da hiçbir şey uygulanmaz",
+   "ok": false,
+   "ayrinti": {
+    "s": 207
+   }
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "oEmbed ağ hatasında hiçbir şey uygulanmaz ve hata açık raporlanır",
+   "ok": false,
+   "ayrinti": {
+    "s": 200
+   }
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "veritabanı ortasında hata: profil ve video ilişkisi kalmaz",
+   "ok": true
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "hatalardan sonra temiz uygulama çalışır",
+   "ok": true
+  },
+  {
+   "grup": "E korunan veri",
+   "ad": "Menemen profili ve sponsorlu videosu değişmedi",
+   "ok": true
+  },
+  {
+   "grup": "E korunan veri",
+   "ad": "kullanıcı, deneyim, Google kimliği ve ortak/kaldırılmış medya kayıtları aynı",
+   "ok": false,
+   "ayrinti": {
+    "u": [
+     {
+      "id": "u_test",
+      "email": "test@example.invalid"
+     }
+    ],
+    "r": [
+     {
+      "id": "rv_test",
+      "place_id": "01a1d2f5-405c-7fdb-aff0-b9c97f3e1523",
+      "status": "published"
+     }
+    ],
+    "pi": [
+     {
+      "n": 794
+     }
+    ],
+    "ortak": [
+     {
+      "id": "med_kaldirilmis",
+      "credit": "test",
+      "sponsored": false,
+      "status": "approved"
+     },
+     {
+      "id": "med_ortak",
+      "credit": "Sunset Grill & Bar (işletmenin kanalı) · Aralık 2016",
+      "sponsored": false,
+      "status": "removed"
+     }
+    ],
+    "ortakBag": [
+     {
+      "media_id": "med_kaldirilmis",
+      "place_id": "01a1d2f5-405c-7fdb-aff0-b99168afbb6d"
+     },
+     {
+      "media_id": "med_ortak",
+      "place_id": "01a1d2f5-405c-7fdb-aff0-b9c97f3e1523"
+     },
+     {
+      "media_id": "med_ortak",
+      "place_id": "01a1d2f5-405e-737f-a2a0-17c96b2ee826"
+     }
+    ]
+   }
+  },
+  {
+   "grup": "E korunan veri",
+   "ad": "hedef dışı mekânların kimlik alanları aynı",
+   "ok": true
+  },
+  {
+   "grup": "E korunan veri",
+   "ad": "katalog 793 mekân",
+   "ok": true
+  }
+ ]
+}
