@@ -1,0 +1,79 @@
+name: Menemen PR38 isolated cloud acceptance
+on:
+  push:
+    branches: [inceleme/pr38-guvenli-kabul-20261113]
+permissions:
+  contents: read
+jobs:
+  cloud-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: audit
+          POSTGRES_PASSWORD: synthetic-audit-only
+          POSTGRES_DB: gidenler_menemen_audit
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      DATABASE_URL: postgres://audit:synthetic-audit-only@127.0.0.1:5432/gidenler_menemen_audit
+      DB_DRIVER: pg
+      DB_ADMIN_LOCAL: '1'
+      VERCEL_ENV: development
+      GIDENLER_TEST_ONLY: pr38-20261113
+      BETTER_AUTH_SECRET: synthetic-isolated-cloud-audit-secret-only-20261113
+      BETTER_AUTH_URL: http://localhost:3178
+      NEXT_PUBLIC_SITE_URL: http://localhost:3178
+      GOOGLE_PLACES_ENABLED: '0'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 2031408276fc5e4a24223a4e45fa70f656ffb604
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install candidate dependencies
+        working-directory: candidate
+        run: npm ci --no-audit --no-fund
+      - name: Source tests, type check and build
+        working-directory: candidate
+        run: |
+          npm run typecheck
+          npx tsx scripts/menemen-foto-test.ts
+          npx tsx scripts/menemen-profil-test.ts
+          npm run test:seo
+          npm run test:foto
+          npm run build
+          git diff --exit-code
+      - name: Prepare synthetic database and test preservation, repeat and rollback
+        working-directory: harness
+        run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr38-cloud-prepare.ts
+      - name: Install independent browsers
+        run: |
+          npm install --prefix "$RUNNER_TEMP/menemen-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/menemen-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Real built profile acceptance
+        working-directory: harness
+        env:
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/menemen-browser/package.json
+        run: |
+          (cd ../candidate && npm start -- -p 3178) > menemen-server.log 2>&1 &
+          node scripts/pr38-cloud-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: menemen-pr38-cloud-evidence
+          path: |
+            harness/menemen-cloud-evidence/
+            harness/menemen-server.log
+          retention-days: 14
