@@ -1,0 +1,39 @@
+name: Combined profiles read-only real Preview address acceptance
+on:
+  push:
+    branches: [inceleme/pr41-adres-vercel-kabul-20261113]
+permissions:
+  contents: read
+jobs:
+  address-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c0af4987c19146841494242e65d1cb0bc4dbe1a8
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install independent browsers
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pr41-address-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/pr41-address-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Verify all three actual addresses on mobile and desktop
+        working-directory: harness
+        env:
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/pr41-address-browser/package.json
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+        run: node scripts/pr41-hosted-address.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr41-hosted-address-evidence
+          path: harness/pr41-address-evidence/
+          retention-days: 14
