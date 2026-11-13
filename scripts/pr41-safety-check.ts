@@ -18,6 +18,18 @@ async function main(){
  const b=await apply(variant),stateB=business(await get(topaz.slug));
  const old=await rollback(a.auditId);assert(old.status===400||old.status===409);assert.deepEqual(business(await get(topaz.slug)),stateB,'old rollback overwrote later update');
  requireRolledBack(await rollback(b.auditId));assert.deepEqual(business(await get(topaz.slug)),stateA);requireRolledBack(await rollback(a.auditId));assert.deepEqual(business(await get(topaz.slug)),original);out.checks.push({label:'newer_application_protected_and_history_unwinds',ok:true});save('safety',out);
+ // Unchanged text with a newly added video is a meaningful change, not a profile no-op.
+ const va=await apply(topaz),videoA=business(await get(topaz.slug));
+ const videoSource=source('ulus-29-besiktas').videos[0];
+ const vb=await apply({...topaz,videos:[videoSource]}),videoB=business(await get(topaz.slug));assert.equal(videoB.videos.length,1);
+ const oldVideo=await rollback(va.auditId);assert(oldVideo.status===400||oldVideo.status===409);assert.deepEqual(business(await get(topaz.slug)),videoB);
+ requireRolledBack(await rollback(vb.auditId));assert.deepEqual(business(await get(topaz.slug)),videoA);requireRolledBack(await rollback(va.auditId));assert.deepEqual(business(await get(topaz.slug)),original);
+ out.checks.push({label:'video_only_change_has_its_own_reversible_operation',ok:true});save('safety',out);
+ // Alternate platform URL forms still identify one video and must not block undoing a repeated operation.
+ const canonical=await apply({...topaz,videos:[videoSource]});const canonicalState=business(await get(topaz.slug));
+ const externalId=new URL(videoSource.url).searchParams.get('v');
+ await apply({...topaz,videos:[{...videoSource,url:'https://www.youtube.com/shorts/'+externalId}]});assert.deepEqual(business(await get(topaz.slug)),canonicalState);
+ requireRolledBack(await rollback(canonical.auditId));assert.deepEqual(business(await get(topaz.slug)),original);out.checks.push({label:'watch_and_shorts_repeat_without_duplicate_or_rollback_lock',ok:true});save('safety',out);
  // Inject a real PostgreSQL error exactly when the second video's place link is inserted.
  await cleanTarget('alaf-besiktas');
  await pool.query("CREATE FUNCTION pr41_fail_video_fixture() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF EXISTS(SELECT 1 FROM media_items WHERE id=NEW.media_id AND external_id='0TBFqnYvlpg') THEN RAISE EXCEPTION 'synthetic second video relation write failure'; END IF; RETURN NEW; END $$");

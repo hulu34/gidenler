@@ -24,7 +24,7 @@ jobs:
       VERCEL_ENV: preview
       PRODUCTION_DB_FINGERPRINT: aaaaaaaaaaaaaaaa
       GIDENLER_TEST_ONLY: pr41-20261113
-      CANDIDATE_SHA: 1099fcc9e061a937e7a4fcf56f2393678020bf29
+      CANDIDATE_SHA: 95e2b06dfc64f3b44dd1eea6bff1b35dd05875a3
       CANDIDATE_KIND: combined
       BETTER_AUTH_SECRET: synthetic-isolated-cloud-audit-secret-only-20261113
       BETTER_AUTH_URL: http://localhost:3189
@@ -38,7 +38,7 @@ jobs:
           persist-credentials: false
       - uses: actions/checkout@v4
         with:
-          ref: 1099fcc9e061a937e7a4fcf56f2393678020bf29
+          ref: 95e2b06dfc64f3b44dd1eea6bff1b35dd05875a3
           path: candidate
           fetch-depth: 0
           persist-credentials: false
@@ -66,7 +66,7 @@ jobs:
         run: |
           set -euo pipefail
           npm run typecheck 2>&1 | tee ../harness/pr41-cloud-evidence/typecheck.log
-          for script in zengin30-profil-test menemen-foto-test menemen-profil-test seotest fototest.mjs dbtest gpuantest katalogtest aramatest sortest panel-rezervasyon-test; do
+          for script in profil-geri-donus-birim-test zengin30-profil-test menemen-foto-test menemen-profil-test seotest fototest.mjs dbtest gpuantest katalogtest aramatest sortest panel-rezervasyon-test; do
             path="scripts/$script"
             [[ "$path" == *.mjs ]] || path="$path.ts"
             env -u DATABASE_URL -u DB_DRIVER -u DB_ADMIN_LOCAL -u VERCEL_ENV -u GOOGLE_PLACES_ENABLED -u PRODUCTION_DB_FINGERPRINT ./node_modules/.bin/tsx "$path" 2>&1 | tee "../harness/pr41-cloud-evidence/$script.log"
@@ -97,10 +97,13 @@ jobs:
       - name: Independent shared video, newer update and partial failure protections
         working-directory: harness
         run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr41-safety-check.ts
+      - name: Concurrent rollback cannot remove committed foreign links or newer revisions
+        working-directory: harness
+        run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr41-race-check.ts
       - name: Publication gate requires actual successful rollback invariants
         working-directory: harness
         run: |
-          node -e 'const r=require("./pr41-cloud-evidence/safety.json"); if(!r.complete || !r.releaseGate) process.exit(1)'
+          node -e 'for(const f of ["safety","races"]){const r=require("./pr41-cloud-evidence/"+f+".json");if(!r.complete || !r.releaseGate) process.exit(1)}'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
