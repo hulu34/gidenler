@@ -81,7 +81,8 @@ async function senaryo(mod: "transaction" | "batch") {
   for (const s of PR40) { const r = await rollbackProfile(db, ids[s]); ok(`${mod} B: ${s} tam geri alma`, r.ok && (await readProfile(db, s)) === null && (await vids(s)).length === 0, r); }
   ok(`${mod} C: ortak video Pandeli'de kalır, atfı değişmez`, (await vids("pandeli-fatih")).some((v) => v.id === "med_ortak" && v.credit === "Önceki atıf" && v.sponsored));
   const kalan = await q(`select m.id, m.external_id, (select count(*)::int from media_places mp where mp.media_id=m.id) bag from media_items m where m.type='embed'`);
-  ok(`${mod} B: oluşturulan video kayıtları geri almayla silinir (Pandeli'deki ortak hariç)`, kalan.length === 1 && kalan[0].id === "med_ortak", kalan);
+  /* issue #41 eşzamanlılık düzeltmesi: geri alma video kaydını silmez, yalnız bu mekânın ilişkisini kaldırır */
+  ok(`${mod} B: geri alma video kayıtlarını silmez; yalnız ortak video bir mekâna bağlı kalır`, kalan.length === 16 && kalan.filter((k) => k.bag > 0).length === 1 && kalan.find((k) => k.bag > 0)?.id === "med_ortak", kalan.filter((k) => k.bag > 0));
 
   /* C: mekâna özgü kaldırma + yanlış mekân */
   const s1 = await uyg("sunset-grill-ve-bar-besiktas");
@@ -112,9 +113,49 @@ async function senaryo(mod: "transaction" | "batch") {
   ok(`${mod} D: ağ hatası bulunamadıdan ayrı raporlanır`, !plan.ok && !plan.items[0].ok && plan.items[0].error === "oembed_unavailable");
   let threw = false;
   try { await uyg("haci-abdullah-beyoglu", h, { failMidway: true }); } catch { threw = true; }
-  ok(`${mod} D: veritabanı ortasında hata → profil, menü görünümü ve video ilişkisi kalmaz`, threw && (await readProfile(db, "haci-abdullah-beyoglu")) === null && (await vids("haci-abdullah-beyoglu")).length === 0 && Number((await q(`select count(*)::int n from media_items where external_id = any($1)`, [h.videos.map((v: any) => v.url.match(/(?:v=|shorts\/)([\w-]{11})/)[1])]))[0].n) === 0);
+  ok(`${mod} D: veritabanı ortasında hata → profil, menü görünümü ve video ilişkisi kalmaz`, threw && (await readProfile(db, "haci-abdullah-beyoglu")) === null && (await vids("haci-abdullah-beyoglu")).length === 0 && Number((await q(`select count(*)::int n from audit_log where action='profile_apply' and detail->>'slug'='haci-abdullah-beyoglu' and (detail->>'effective')::boolean`))[0].n) === 1);
   const temiz = await uyg("haci-abdullah-beyoglu");
   ok(`${mod} D: hatadan sonra temiz uygulama`, temiz.ok && (await vids("haci-abdullah-beyoglu")).length === 2);
+  /* Codex kabul senaryoları: aynı metin + yalnız video değişikliği; watch/Shorts tekrarı */
+  const tp = prof("topaz-beyoglu");
+  const t1 = await uyg("topaz-beyoglu", tp, { videos: [] });
+  const t2 = await uyg("topaz-beyoglu", tp, { videos: [{ url: "https://www.youtube.com/watch?v=CCCCCCCCCCC", credit: "Kanal · 2026", category: "video" }] });
+  ok(`${mod} A: aynı metin + yalnız yeni video ilişkisi etkili yeni uygulamadır`, t1.ok && t2.ok && (t2 as any).effective === true && (await vids("topaz-beyoglu")).length === 1);
+  const rt1 = await rollbackProfile(db, (t1 as any).auditId);
+  ok(`${mod} A: yalnız video değiştiren yeni uygulama varken eski geri alma reddedilir`, !rt1.ok && (rt1 as any).error === "newer_change");
+  const rt2 = await rollbackProfile(db, (t2 as any).auditId);
+  ok(`${mod} A: yeni (video) uygulamanın geri alınması yalnız videoyu kaldırır, profil kalır`, rt2.ok && (await vids("topaz-beyoglu")).length === 0 && (await readProfile(db, "topaz-beyoglu")) !== null);
+  ok(`${mod} A: ardından eski uygulama da geri alınır`, (await rollbackProfile(db, (t1 as any).auditId)).ok && (await readProfile(db, "topaz-beyoglu")) === null);
+  const kq = prof("kanaat-lokantasi-uskudar");
+  const k1 = await uyg("kanaat-lokantasi-uskudar", kq);
+  const k2 = await uyg("kanaat-lokantasi-uskudar", kq, { videos: kq.videos.map((v: any) => ({ ...v, url: v.url.replace("/shorts/", "/watch?v=") })) });
+  ok(`${mod} C: watch/Shorts biçim tekrarı çoğalmaz ve işlemsizdir`, k1.ok && k2.ok && (k2 as any).effective === false && (await vids("kanaat-lokantasi-uskudar")).length === 2);
+  ok(`${mod} C: biçim tekrarı asıl geri almayı kilitlemez`, (await rollbackProfile(db, (k1 as any).auditId)).ok && (await vids("kanaat-lokantasi-uskudar")).length === 0 && (await readProfile(db, "kanaat-lokantasi-uskudar")) === null);
+
+  /* TOCTOU (issue #41, Codex bulgusu): karar okumaları ile yazım arasına başka yazım girer */
+  const m0 = prof("murver-beyoglu");
+  const ma = await uyg("murver-beyoglu", m0);
+  const m2 = { ...m0, notes: [...(m0.notes ?? []).slice(0, 1), { ...(m0.notes ?? [])[0], value: "Yarışta araya giren yeni revizyon notu (test)." }] };
+  let araUyg: any = null;
+  const yaris = await rollbackProfile(db, (ma as any).auditId, "admin", { beforeWrite: async () => { araUyg = await applyProfile(db, parse(m2)); } });
+  const mp = await readProfile(db, "murver-beyoglu");
+  ok(`${mod} TOCTOU: geri alma kararından sonra araya giren yeni revizyon ezilmez (concurrent_change, hiçbir şey yazılmaz)`, araUyg?.ok && !yaris.ok && (yaris as any).error === "concurrent_change" && !!mp?.notes.some((n) => n.value.includes("Yarışta araya giren")) && (await vids("murver-beyoglu")).length === 2, { yaris, araUyg: araUyg?.ok });
+  const rs = await rollbackProfile(db, araUyg.auditId), rs0 = await rollbackProfile(db, (ma as any).auditId);
+  ok(`${mod} TOCTOU: sonra sırayla geri alma çalışır`, rs.ok && rs0.ok && (await readProfile(db, "murver-beyoglu")) === null && (await vids("murver-beyoglu")).length === 0, [rs, rs0]);
+  /* geri alma sırasında başka mekân aynı videoya bağlanır → o ilişki ve kayıt yaşar */
+  const al = prof("alaf-besiktas"); const aa = await uyg("alaf-besiktas", al);
+  const ortakUrl = al.videos[0].url; let araBag: any = null;
+  const ry = await rollbackProfile(db, (aa as any).auditId, "admin", { beforeWrite: async () => { araBag = await addPlaceVideo({ slug: "pandeli-fatih", url: ortakUrl }, fakeFetch, db); } });
+  const pv = await vids("pandeli-fatih");
+  ok(`${mod} TOCTOU: geri alma sırasında başka mekâna eklenen ortak video silinmez ve atfı değişmez`, araBag?.ok && ry.ok && pv.some((v) => ortakUrl.includes(v.external_id)) && (await vids("alaf-besiktas")).length === 0, { ry, pv, araBag });
+  await unlinkPlaceVideo("pandeli-fatih", araBag.id, db);
+  /* uygulama kararından sonra araya giren başka uygulama → ilk uygulama hiçbir şey yazmaz */
+  const c0 = prof("lokanta-1741-fatih"); let araC: any = null;
+  const cv = await planPlaceVideos(db, await pid("lokanta-1741-fatih"), [], fakeFetch);
+  const cy = cv.ok ? await applyProfile(db, parse(c0), { videos: cv, beforeWrite: async () => { araC = await applyProfile(db, parse({ ...c0, description: { ...c0.description, value: `${c0.description.value} (araya giren)` } })); } }) : null;
+  ok(`${mod} TOCTOU: uygulama kararından sonra araya giren uygulama varsa ilk uygulama yazmaz`, araC?.ok && cy && !cy.ok && (cy as any).error === "concurrent_change" && (await readProfile(db, "lokanta-1741-fatih"))?.description?.value.includes("(araya giren)") === true, cy);
+  await rollbackProfile(db, araC.auditId);
+  ok(`${mod} TOCTOU: araya giren uygulama geri alınınca profil kalmaz`, (await readProfile(db, "lokanta-1741-fatih")) === null);
   if (mod === "batch") ok("batch: yazımlar Neon HTTP batch yolundan geçti", batchCalls() > 20, batchCalls());
 
   /* eski kayıt uyumu: issue #41 öncesi uygulama (detail.media yok, ayrı profile_videos günlüğü) */

@@ -1105,7 +1105,13 @@ async function main() {
     const [c1, c2] = await Promise.all([applyProfile(db, b1), applyProfile(db, b2)]);
     const pr4 = await readProfile(db, "pandeli-fatih");
     const first = pr4?.menu?.sections[0].items[0].name;
-    ok("eşzamanlı iki uygulama: ikisi de tamamlanır, sayfa tek ve tam bir sürüm gösterir", c1.ok && c2.ok && (first === "Günün Çorbası (B1)" || first === "Günün Çorbası (B2)") && pr4?.menu?.sections.reduce((a, s) => a + s.items.length, 0) === nItems && pr4?.menu?.sections[1].items[0].name === "Közlenmiş Patlıcan Salatası");
+    /* issue #41: aynı mekâna eşzamanlı iki yazım sıraya girer; kararı eskiyen ikincisi hiçbir şey yazmadan concurrent_change döner */
+    const kazanan = c1.ok ? "Günün Çorbası (B1)" : "Günün Çorbası (B2)";
+    const kaybeden = [c1, c2].find((c) => !c.ok);
+    ok("eşzamanlı iki uygulama: en az biri tamamlanır, kararı eskiyen yazmaz (concurrent_change), sayfa tek ve tam bir sürüm gösterir",
+      (c1.ok || c2.ok) && (!kaybeden || (kaybeden as { error?: string }).error === "concurrent_change") && (c1.ok && c2.ok ? first === "Günün Çorbası (B1)" || first === "Günün Çorbası (B2)" : first === kazanan)
+      && pr4?.menu?.sections.reduce((a, s) => a + s.items.length, 0) === nItems && pr4?.menu?.sections[1].items[0].name === "Közlenmiş Patlıcan Salatası", { c1, c2, first });
+    if (kaybeden) { const tekrar = await applyProfile(db, c1.ok ? b2 : b1); ok("reddedilen eşzamanlı uygulama yeniden denenince uygulanır", tekrar.ok, tekrar); }
     /* yazımın ortasında zorlanan hata → hiçbir şey değişmez */
     const s0 = await snap(); const aud0 = await n("audit_log");
     const broken = structuredClone(input); broken.phone = { ...input.phone!, value: "+90 000 000 00 00" }; broken.menu!.sections[0].items[0].name = "YARIM KALMAMALI";
