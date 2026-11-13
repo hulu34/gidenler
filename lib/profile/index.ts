@@ -4,7 +4,7 @@ import { uuidv7 } from "uuidv7";
 import { z } from "zod";
 import type { Db } from "@/lib/db/client";
 import { auditLog, fieldProvenance, mediaItems, mediaPlaces, menuItems, places, verticalRestaurant } from "@/lib/db/schema";
-import { videoLinkQueries, videoTrace, type VideoPlan } from "@/lib/media/store";
+import { isConcurrentChange, placeGuardQueries, placeVersion, videoLinkQueries, videoTrace, type VideoPlan } from "@/lib/media/store";
 
 /* ──────────────────────────────────────────────────────────────────────────
    RESTORAN PROFİLİ (gerçek mekân) — tanıtım, iletişim, kurallar, olanaklar ve resmî menü.
@@ -89,6 +89,10 @@ export interface ApplyOptions {
   failMidway?: boolean;
   /** önceden doğrulanmış video planı (planPlaceVideos): profil ile AYNI işlemde yazılır; geçersiz plan burada kabul edilmez */
   videos?: Extract<VideoPlan, { ok: true }>;
+  /** yalnız test: okumalar bittikten sonra, yazım işlemi başlamadan önce çağrılır (eşzamanlı yazımı benzetmek için) */
+  beforeWrite?: () => Promise<void>;
+  /** okumaların dayandığı mekân sürümü; verilmezse burada okunur (çağıran video planından ÖNCE okumalı) */
+  version?: number;
 }
 type MediaTrace = ReturnType<typeof videoTrace>;
 
@@ -100,6 +104,7 @@ export async function applyProfile(db: Db, input: ProfileInput, opts: ApplyOptio
   const p = ProfileInput.parse(input);
   const [place] = await db.select().from(places).where(eq(places.slug, p.slug)).limit(1);
   if (!place) return { ok: false as const, error: "no_place" };
+  const version = opts.version ?? await placeVersion(db, place.id);
   const before = await readProfile(db, p.slug);
   const [vr] = await db.select().from(verticalRestaurant).where(eq(verticalRestaurant.placeId, place.id)).limit(1);
   const prov: (typeof fieldProvenance.$inferInsert)[] = [];
@@ -141,7 +146,9 @@ export async function applyProfile(db: Db, input: ProfileInput, opts: ApplyOptio
   const mediaChanged = media.some((m) => m.created || m.relationAdded);
   const effective = fresh.length > 0 || placeChanged || amenitiesChanged || menuNew || mediaChanged;
   const auditId = uuidv7();
-  await atomic(db, (q) => [
+  await opts.beforeWrite?.();
+  try { await atomic(db, (q) => [
+    ...placeGuardQueries(q, place.id, version),
     ...(placeChanged ? [q.update(places).set({ ...upd, updatedAt: new Date() }).where(eq(places.id, place.id))] : []),
     ...(amenitiesChanged ? [q.insert(verticalRestaurant).values({ placeId: place.id, amenities: am }).onConflictDoUpdate({ target: verticalRestaurant.placeId, set: { amenities: am, updatedAt: new Date() } })] : []),
     ...(items.length ? [q.insert(menuItems).values(items).onConflictDoNothing({ target: menuItems.id })] : []),
@@ -152,14 +159,15 @@ export async function applyProfile(db: Db, input: ProfileInput, opts: ApplyOptio
     q.insert(auditLog).values({ id: auditId, actor: opts.actor ?? "admin", action: "profile_apply", refTable: "places", refId: place.id,
       detail: { slug: p.slug, menuVersion: mv, fieldIds: fresh.map((r) => r.id), fields: fresh.map((r) => r.field), unchanged: !effective, effective, menuNew, placeChanged, amenitiesChanged, media,
         before: { place: { address: place.address, phone: place.phone, website: place.website, instagram: place.instagram, openingHours: place.openingHours }, amenities: vr?.amenities ?? null, hadVertical: !!vr, profile: before } } }),
-  ]);
+  ]); } catch (e) { if (isConcurrentChange(e)) return { ok: false as const, error: "concurrent_change" }; throw e; }
   return { ok: true as const, auditId, fields: fresh.length, unchanged: !effective, effective, menuItems: items.length, menuVersion: mv, media };
 }
 
 /* Geri alma sözleşmesi (issue #41)
    · Hedef: bir profile_apply kaydı. Geri alınınca o uygulamanın kaynak kayıtları silinir, kimlik alanları ve olanaklar
-     uygulama öncesine döner, YALNIZ o uygulamanın eklediği video ilişkileri kaldırılır ve yalnız o uygulamanın oluşturduğu
-     (başka mekâna bağlı olmayan) video kayıtları silinir. Önceden var olan ya da ortak videonun atfı/sponsorluğu/durumu değişmez.
+     uygulama öncesine döner, YALNIZ bu mekânın o uygulamanın eklediği video ilişkileri kaldırılır. Video kayıtları (media_items)
+     silinmez; önceden var olan ya da ortak videonun atfı/sponsorluğu/durumu ve başka mekân ilişkileri değişmez.
+   · Eşzamanlılık: karar okumaları ile yazım arasında aynı mekâna başka yazım commit ederse işlem tamamen geri alınır (concurrent_change).
    · Değişiklik yapmamış (effective=false) uygulamalar geçmişi kilitlemez: asıl uygulama geri alınabilir; onları geri almak işlemsizdir.
    · Daha yeni, etkili ve geri alınmamış bir uygulama varsa eski uygulama geri alınmaz (newer_change): yeni değişiklik ezilmez.
    · Aynı geri almayı tekrar istemek veriyi değiştirmez (already). Menü sürümleri ve denetim kayıtları geçmiş olarak kalır.
@@ -168,10 +176,11 @@ type ApplyDetail = { slug: string; fieldIds: string[]; effective?: boolean; unch
   before: { place: Partial<typeof places.$inferInsert>; amenities: unknown; hadVertical: boolean } };
 const isEffective = (d: ApplyDetail) => d.effective ?? !d.unchanged;
 
-export async function rollbackProfile(db: Db, auditId: string, actor = "admin") {
+export async function rollbackProfile(db: Db, auditId: string, actor = "admin", opts: { beforeWrite?: () => Promise<void> } = {}) {
   const [a] = await db.select().from(auditLog).where(and(eq(auditLog.id, auditId), eq(auditLog.action, "profile_apply"))).limit(1);
   if (!a || !a.refId) return { ok: false as const, error: "no_audit" };
   const placeId = a.refId;
+  const version = await placeVersion(db, placeId);
   const d = a.detail as ApplyDetail;
   const applies = await db.select({ id: auditLog.id, at: auditLog.at, detail: auditLog.detail }).from(auditLog)
     .where(and(eq(auditLog.refId, placeId), eq(auditLog.action, "profile_apply"))).orderBy(asc(auditLog.at), asc(auditLog.id));
@@ -181,7 +190,8 @@ export async function rollbackProfile(db: Db, auditId: string, actor = "admin") 
   const idx = applies.findIndex((x) => x.id === auditId);
   const later = applies.slice(idx + 1).filter((x) => !rolled.has(x.id));
   if (!isEffective(d)) {
-    await db.insert(auditLog).values({ id: uuidv7(), actor, action: "profile_rollback", refTable: "places", refId: placeId, detail: { slug: d.slug, of: auditId, noop: true, removedFieldIds: [] } });
+    try { await atomic(db, (q) => [...placeGuardQueries(q, placeId, version), q.insert(auditLog).values({ id: uuidv7(), actor, action: "profile_rollback", refTable: "places", refId: placeId, detail: { slug: d.slug, of: auditId, noop: true, removedFieldIds: [] } })]); }
+    catch (e) { if (isConcurrentChange(e)) return { ok: false as const, error: "concurrent_change" }; throw e; }
     return { ok: true as const, slug: d.slug, noop: true, removed: 0, unlinked: 0, deletedMedia: 0 };
   }
   const newer = later.filter((x) => isEffective(x.detail as ApplyDetail));
@@ -197,20 +207,20 @@ export async function rollbackProfile(db: Db, auditId: string, actor = "admin") 
   /* aynı ilişkiyi geri alınmamış başka bir etkili uygulama da eklediyse (eşzamanlı tekrar) ilişki kalır */
   const active = applies.filter((x) => x.id !== auditId && !rolled.has(x.id) && !covers.includes(x.id) && isEffective(x.detail as ApplyDetail));
   const claimed = new Set(active.flatMap((x) => ((x.detail as ApplyDetail).media ?? []).filter((m) => m.relationAdded || m.created).map((m) => m.mediaId)));
-  const unlink = media.filter((m) => m.relationAdded && !claimed.has(m.mediaId)).map((m) => m.mediaId);
-  const createdIds = media.filter((m) => m.created && !claimed.has(m.mediaId)).map((m) => m.mediaId);
-  const elsewhere = createdIds.length ? await db.select({ mediaId: mediaPlaces.mediaId }).from(mediaPlaces).where(and(inArray(mediaPlaces.mediaId, createdIds), ne(mediaPlaces.placeId, placeId))) : [];
-  const deleteMedia = createdIds.filter((id) => !elsewhere.some((e) => e.mediaId === id));
-  await atomic(db, (q) => [
+  /* video kaydı (media_items) hiçbir zaman silinmez: başka mekâna bağlı olabilir ya da arada bağlanmış olabilir. Yalnız BU mekânın,
+     bu uygulamanın eklediği ilişkisi kaldırılır; bağlantısız kalan kayıt hiçbir sayfada görünmez, yeniden uygulamada aynı kayda bağlanılır. */
+  const unlink = media.filter((m) => (m.relationAdded || m.created) && !claimed.has(m.mediaId)).map((m) => m.mediaId);
+  await opts.beforeWrite?.();
+  try { await atomic(db, (q) => [
+    ...placeGuardQueries(q, placeId, version),
     q.update(places).set({ ...d.before.place, updatedAt: new Date() }).where(eq(places.id, placeId)),
     q.update(verticalRestaurant).set({ amenities: (d.before.amenities ?? null) as never, updatedAt: new Date() }).where(eq(verticalRestaurant.placeId, placeId)),
     ...(d.fieldIds.length ? [q.delete(fieldProvenance).where(inArray(fieldProvenance.id, d.fieldIds))] : []),
     ...(unlink.length ? [q.delete(mediaPlaces).where(and(eq(mediaPlaces.placeId, placeId), inArray(mediaPlaces.mediaId, unlink)))] : []),
-    ...(deleteMedia.length ? [q.delete(mediaItems).where(inArray(mediaItems.id, deleteMedia))] : []),
     q.insert(auditLog).values({ id: uuidv7(), actor, action: "profile_rollback", refTable: "places", refId: placeId,
-      detail: { slug: d.slug, of: auditId, covers, removedFieldIds: d.fieldIds, unlinkedMedia: unlink, deletedMedia: deleteMedia, keptMedia: media.filter((m) => !unlink.includes(m.mediaId)).map((m) => m.mediaId) } }),
-  ]);
-  return { ok: true as const, slug: d.slug, removed: d.fieldIds.length, unlinked: unlink.length, deletedMedia: deleteMedia.length, covers };
+      detail: { slug: d.slug, of: auditId, covers, removedFieldIds: d.fieldIds, unlinkedMedia: unlink, deletedMedia: [], keptMedia: media.filter((m) => !unlink.includes(m.mediaId)).map((m) => m.mediaId) } }),
+  ]); } catch (e) { if (isConcurrentChange(e)) return { ok: false as const, error: "concurrent_change" }; throw e; }
+  return { ok: true as const, slug: d.slug, removed: d.fieldIds.length, unlinked: unlink.length, deletedMedia: 0, covers };
 }
 
 /** Sayfanın okuduğu profil: alan başına en yeni kaynaklı değer, en yeni kontrol günündeki menü. */

@@ -24,7 +24,7 @@ import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
 import { googleMatchStats, matchGoogleBatch, matchGoogleSlugs, setGoogleMatchActive, googleTestFixture, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
 import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
-import { addPlaceVideo, listPlaceVideos, moderateVideoGlobally, planPlaceVideos, unlinkPlaceVideo, type OEmbedSimulation } from "@/lib/media/store";
+import { addPlaceVideo, listPlaceVideos, moderateVideoGlobally, placeVersion, planPlaceVideos, unlinkPlaceVideo, type OEmbedSimulation } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
 import { and, desc, eq, inArray, sql } from "drizzle-orm";
@@ -228,7 +228,7 @@ export async function POST(req: Request) {
         if (body.confirm !== "EVET" || !body.slug || !body.url) break;
         /* var olan video: yalnız ilişki eklenir; atıf/sponsorluk/durum değişmez. Kaldırılmış video örtük yeniden yayımlanmaz (409). */
         const r = await addPlaceVideo({ slug: body.slug, url: body.url, credit: body.credit, category: body.category, verifiedElsewhere: body.verifiedElsewhere === true });
-        return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : r.error === "media_removed" ? 409 : r.error === "oembed_unavailable" ? 502 : 400, headers: H });
+        return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : r.error === "media_removed" || r.error === "concurrent_change" ? 409 : r.error === "oembed_unavailable" ? 502 : 400, headers: H });
       }
       case "profile-apply": {
         /* Restoran profili + videoları TEK yayın işlemi (issue #41):
@@ -247,6 +247,8 @@ export async function POST(req: Request) {
         const simulate = testEnv && (body.simulateVideoFailure === "network" || body.simulateVideoFailure === "not_found") ? body.simulateVideoFailure as OEmbedSimulation : undefined;
         const [pl] = await db.select({ id: places.id }).from(places).where(eq(places.slug, parsed.data.slug)).limit(1);
         if (!pl) return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, applied: false, error: "no_place" }, { status: 400, headers: H });
+        /* mekân sürümü video planından ÖNCE okunur: plan ile yazım arasında aynı mekâna başka yazım commit ederse işlem geri alınır (409) */
+        const version = await placeVersion(db, pl.id);
         const plan = await planPlaceVideos(db, pl.id, videos ?? [], fetch, simulate);
         if (!plan.ok) {
           const errs = plan.items.filter((x) => !x.ok);
@@ -254,9 +256,9 @@ export async function POST(req: Request) {
           return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, applied: false, profileOk: false, error: unavailable ? "video_check_unavailable" : "video_invalid", videos: plan.items, profile: await readProfile(db, parsed.data.slug) }, { status: unavailable ? 502 : 422, headers: H });
         }
         let r;
-        try { r = await applyProfile(db, parsed.data, { failMidway, videos: plan }); }
+        try { r = await applyProfile(db, parsed.data, { failMidway, videos: plan, version }); }
         catch (e) { fresh(profileTag(parsed.data.slug)); fresh(TAG_MEDIA); return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, applied: false, error: "apply_failed_rolled_back", message: e instanceof Error ? e.message.slice(0, 200) : "error", profile: await readProfile(db, parsed.data.slug), videos: await listPlaceVideos(parsed.data.slug) }, { status: 500, headers: H }); }
-        if (!r.ok) return NextResponse.json({ action: "profile-apply", env: envName(), ...r, applied: false }, { status: 400, headers: H });
+        if (!r.ok) return NextResponse.json({ action: "profile-apply", env: envName(), ...r, applied: false }, { status: r.error === "concurrent_change" ? 409 : 400, headers: H });
         fresh(profileTag(parsed.data.slug)); fresh(TAG_MEDIA);
         return NextResponse.json({ action: "profile-apply", env: envName(), ...r, ok: true, applied: true, profileOk: true, videosOk: plan.items.length, videosTotal: plan.items.length,
           videos: plan.items.map((it) => ({ ok: true, id: it.mediaId, platform: it.platform, externalId: it.externalId, created: !it.existing, relationAdded: !it.relationExisted && it.duplicateOf === undefined, ...(it.keptMetadata ? { keptMetadata: it.keptMetadata } : {}), ...(it.duplicateOf !== undefined ? { duplicateOf: it.duplicateOf } : {}) })),
@@ -268,7 +270,7 @@ export async function POST(req: Request) {
         /* yalnız bu uygulamanın kaynak kayıtları ve eklediği video ilişkileri; daha yeni etkili uygulama varsa 409; tekrar istek işlemsiz */
         const r = await rollbackProfile(db, body.auditId);
         if (r.ok) { fresh(profileTag(r.slug)); fresh(TAG_MEDIA); }
-        return NextResponse.json({ action: "profile-rollback", env: envName(), ...r }, { status: r.ok ? 200 : r.error === "newer_change" ? 409 : r.error === "no_audit" ? 404 : 400, headers: H });
+        return NextResponse.json({ action: "profile-rollback", env: envName(), ...r }, { status: r.ok ? 200 : r.error === "newer_change" || r.error === "concurrent_change" ? 409 : r.error === "no_audit" ? 404 : 400, headers: H });
       }
       case "review-hide":
       case "review-restore": {
@@ -291,7 +293,7 @@ export async function POST(req: Request) {
         if (body.confirm !== "EVET" || !body.slug) return NextResponse.json({ error: "slug_required" }, { status: 400, headers: H });
         const u = await unlinkPlaceVideo(body.slug, body.id);
         if (u.ok) fresh(profileTag(body.slug));
-        return NextResponse.json({ action: "media-remove", scope: "place", env: envName(), ...u, ...(u.ok ? { videos: await listPlaceVideos(body.slug) } : {}) }, { status: u.ok ? 200 : 400, headers: H });
+        return NextResponse.json({ action: "media-remove", scope: "place", env: envName(), ...u, ...(u.ok ? { videos: await listPlaceVideos(body.slug) } : {}) }, { status: u.ok ? 200 : u.error === "concurrent_change" ? 409 : 400, headers: H });
       }
       case "google-retry": {
         fresh(TAG_GOOGLE);

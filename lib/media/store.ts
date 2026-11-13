@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { and, desc, eq, inArray, ne } from "drizzle-orm";
+import { and, desc, eq, inArray, ne, sql } from "drizzle-orm";
 import { uuidv7 } from "uuidv7";
 import { getDb, type Db } from "@/lib/db/client";
 import { auditLog, mediaItems, mediaPlaces, places } from "@/lib/db/schema";
@@ -124,6 +124,34 @@ export function videoLinkQueries(q: Db, plan: Extract<VideoPlan, { ok: true }>) 
 export const videoTrace = (plan: Extract<VideoPlan, { ok: true }>) => plan.items.filter((it) => it.duplicateOf === undefined)
   .map((it) => ({ mediaId: it.mediaId, platform: it.platform, externalId: it.externalId, created: !it.existing, relationAdded: !it.relationExisted }));
 
+/* ── Eşzamanlılık önkoşulu (issue #41 A/C) ────────────────────────────────────
+   Kararlar (yeni revizyon var mı, ilişki kimin) işlem öncesinde okunur; Neon HTTP batch etkileşimsiz olduğu için
+   okuma-karar-yazma tek işlemde yapılamaz. Bunun yerine her yazım işlemi şu iki deyimle başlar:
+   1) mekân satırını FOR NO KEY UPDATE ile kilitler: aynı mekâna yazan profil/video işlemleri sıraya girer
+      (yabancı anahtar KEY SHARE kilitleriyle çakışmaz; deneyim/Google yazımları beklemez);
+   2) mekânın denetim kaydı sayısını okumada görülen değerle karşılaştırır; arada başka bir yazım commit ettiyse
+      sıfıra bölme hatası verir ve işlemin TAMAMI geri alınır (sonuç: concurrent_change, yeniden denenebilir).
+   Kilitten sonraki deyim READ COMMITTED'da yeni anlık görüntü alır; kilidi bırakmadan önce commit eden her yazım görünür. */
+const GUARDED_ACTIONS = ["profile_apply", "profile_rollback", "media_link", "media_unlink"];
+export async function placeVersion(db: Db, placeId: string) {
+  const [r] = await db.select({ n: sql<number>`count(*)::int` }).from(auditLog).where(and(eq(auditLog.refId, placeId), inArray(auditLog.action, GUARDED_ACTIONS)));
+  return Number(r?.n ?? 0);
+}
+export function placeGuardQueries(q: Db, placeId: string, version: number): PromiseLike<unknown>[] {
+  return [
+    q.select({ id: places.id }).from(places).where(eq(places.id, placeId)).for("no key update"),
+    q.select({ guard: sql<number>`1 / (case when (select count(*) from audit_log where ref_id = ${placeId} and action in ('profile_apply','profile_rollback','media_link','media_unlink')) = ${version} then 1 else 0 end)` }).from(places).where(eq(places.id, placeId)),
+  ];
+}
+/** Koruma deyiminin hatası mı (sıfıra bölme, SQLSTATE 22012)? Sürücüye göre hata iç içe gelebilir. */
+export function isConcurrentChange(e: unknown): boolean {
+  for (let x: unknown = e, i = 0; x && i < 4; x = (x as { cause?: unknown }).cause, i++) {
+    const o = x as { code?: string; message?: string };
+    if (o.code === "22012" || /division by zero/i.test(o.message ?? "")) return true;
+  }
+  return false;
+}
+
 /** Tek işlem yardımcı: Neon HTTP'de batch (non-interactive transaction), PGlite/pg'de transaction. */
 async function atomicQ(db: Db, build: (q: Db) => PromiseLike<unknown>[]) {
   const batch = (db as unknown as { batch?: (qs: PromiseLike<unknown>[]) => Promise<unknown> }).batch;
@@ -133,7 +161,7 @@ async function atomicQ(db: Db, build: (q: Db) => PromiseLike<unknown>[]) {
 
 export type AddVideoResult =
   | { ok: true; id: string; platform: VideoPlatform; externalId: string; created: boolean; relationAdded: boolean; keptMetadata?: { credit: string | null; sponsored: boolean; status: string } }
-  | { ok: false; error: "no_db" | "no_place" | VideoPlanError };
+  | { ok: false; error: "no_db" | "no_place" | "concurrent_change" | VideoPlanError };
 
 /** Yönetim: mekâna tek video bağlar. Var olan kaydın atfı/sponsorluğu/durumu değişmez; kaldırılmış video yeniden yayımlanmaz. */
 export async function addPlaceVideo(input: { slug: string } & VideoInput, f: typeof fetch = fetch, dbArg?: Db | null): Promise<AddVideoResult> {
@@ -141,11 +169,13 @@ export async function addPlaceVideo(input: { slug: string } & VideoInput, f: typ
   if (!db) return { ok: false, error: "no_db" };
   const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, input.slug)).limit(1);
   if (!p) return { ok: false, error: "no_place" };
+  const version = await placeVersion(db, p.id);
   const plan = await planPlaceVideos(db, p.id, [input], f);
   if (!plan.ok) { const e = plan.items[0]; return { ok: false, error: (e.ok ? "bad_url" : e.error) as VideoPlanError }; }
   const it = plan.items[0];
-  await atomicQ(db, (q) => [...videoLinkQueries(q, plan),
-    q.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "media_link", refTable: "places", refId: p.id, detail: { slug: input.slug, media: videoTrace(plan) } })]);
+  try { await atomicQ(db, (q) => [...placeGuardQueries(q, p.id, version), ...videoLinkQueries(q, plan),
+    q.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "media_link", refTable: "places", refId: p.id, detail: { slug: input.slug, media: videoTrace(plan) } })]); }
+  catch (e) { if (isConcurrentChange(e)) return { ok: false, error: "concurrent_change" }; throw e; }
   return { ok: true, id: it.mediaId, platform: it.platform, externalId: it.externalId, created: !it.existing, relationAdded: !it.relationExisted, ...(it.keptMetadata ? { keptMetadata: it.keptMetadata } : {}) };
 }
 
@@ -156,12 +186,16 @@ export async function unlinkPlaceVideo(slug: string, mediaId: string, dbArg?: Db
   if (!db) return { ok: false as const, error: "no_db" };
   const [p] = await db.select({ id: places.id }).from(places).where(eq(places.slug, slug)).limit(1);
   if (!p) return { ok: false as const, error: "no_place" };
+  const version = await placeVersion(db, p.id);
   const [rel] = await db.select({ m: mediaPlaces.mediaId }).from(mediaPlaces).where(and(eq(mediaPlaces.mediaId, mediaId), eq(mediaPlaces.placeId, p.id))).limit(1);
   if (!rel) return { ok: false as const, error: "not_linked_to_place" };
-  await atomicQ(db, (q) => [
-    q.delete(mediaPlaces).where(and(eq(mediaPlaces.mediaId, mediaId), eq(mediaPlaces.placeId, p.id))),
-    q.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "media_unlink", refTable: "places", refId: p.id, detail: { slug, mediaId } }),
-  ]);
+  try {
+    await atomicQ(db, (q) => [
+      ...placeGuardQueries(q, p.id, version),
+      q.delete(mediaPlaces).where(and(eq(mediaPlaces.mediaId, mediaId), eq(mediaPlaces.placeId, p.id))),
+      q.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "media_unlink", refTable: "places", refId: p.id, detail: { slug, mediaId } }),
+    ]);
+  } catch (e) { if (isConcurrentChange(e)) return { ok: false as const, error: "concurrent_change" }; throw e; }
   const others = await db.select({ placeId: mediaPlaces.placeId }).from(mediaPlaces).where(and(eq(mediaPlaces.mediaId, mediaId), ne(mediaPlaces.placeId, p.id)));
   return { ok: true as const, slug, mediaId, otherPlaces: others.length };
 }
