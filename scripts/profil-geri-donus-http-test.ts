@@ -104,7 +104,10 @@ async function main() {
     const c = prof("murver-beyoglu"); const [c1, c2] = await Promise.all([apply(c), apply(c)]);
     const cv = await vids("murver-beyoglu");
     ok("eşzamanlı iki aynı uygulama: tek video ilişkisi, yinelenen yok", [c1.status, c2.status].some((s) => s === 200) && new Set(cv.map((v) => v.external_id)).size === cv.length && cv.length === c.videos.length, { s: [c1.status, c2.status], cv });
-    for (const a of [c1, c2].filter((z) => z.j?.auditId)) await rollback(a.j.auditId);
+    /* hangisinin "daha yeni" olduğu yarışa bağlı: daha yeni etkili uygulama varken eski reddedilir (409), sonra sırayla geri alınır */
+    let bekleyen = [c1, c2].filter((z) => z.j?.auditId).map((z) => z.j.auditId as string);
+    for (let tur = 0; tur < 3 && bekleyen.length; tur++) { const kalan: string[] = []; for (const id of bekleyen) { const r = await rollback(id); if (r.status === 409) kalan.push(id); } bekleyen = kalan; }
+    ok("eşzamanlı uygulamalar sırayla geri alınabilir (409 yalnız daha yeni uygulama varken)", bekleyen.length === 0, bekleyen);
     ok("eşzamanlı uygulamaların ikisi de geri alınınca profil ve video kalmaz", !(await profVar("murver-beyoglu")) && (await vids("murver-beyoglu")).length === 0, await vids("murver-beyoglu"));
   }
 
