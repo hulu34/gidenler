@@ -24,7 +24,7 @@ jobs:
       VERCEL_ENV: preview
       PRODUCTION_DB_FINGERPRINT: aaaaaaaaaaaaaaaa
       GIDENLER_TEST_ONLY: pr41-20261113
-      CANDIDATE_SHA: 95e2b06dfc64f3b44dd1eea6bff1b35dd05875a3
+      CANDIDATE_SHA: d9ad0b3af77ef540529b5a6b92e9e19ef6014a65
       CANDIDATE_KIND: combined
       BETTER_AUTH_SECRET: synthetic-isolated-cloud-audit-secret-only-20261113
       BETTER_AUTH_URL: http://localhost:3189
@@ -38,7 +38,7 @@ jobs:
           persist-credentials: false
       - uses: actions/checkout@v4
         with:
-          ref: 95e2b06dfc64f3b44dd1eea6bff1b35dd05875a3
+          ref: d9ad0b3af77ef540529b5a6b92e9e19ef6014a65
           path: candidate
           fetch-depth: 0
           persist-credentials: false

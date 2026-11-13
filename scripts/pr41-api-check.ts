@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {TARGETS,PR39_TARGETS,PR40_TARGETS,SHA,pool,source,save,snapshot,folder} from './pr41-fixture';
 import {request,get,apply,rollback,business,requireRolledBack} from './pr41-http';
+import {checkAddresses} from './pr41-address-check';
 const out:any={sha:SHA,productionWrites:0,realYouTubeOembed:true,profiles:[],apply:[],complete:false};
 async function main(){
  let ready=false;for(let i=0;i<90;i++){try{if((await request()).status===200){ready=true;break}}catch{}await new Promise(r=>setTimeout(r,1000))}assert(ready,'Isolated app did not start');
@@ -21,6 +22,7 @@ async function main(){
  }
  assert.equal(out.profiles.length,26);assert.equal(out.apply.reduce((n:number,r:any)=>n+r.videosOk,0),16);assert.deepEqual(await snapshot(),before);assert.deepEqual(business(await get('menemen-besiktas')),menemen);
  assert.deepEqual((await pool.query('SELECT id,slug FROM places')).rows.sort((a:any,b:any)=>a.slug.localeCompare(b.slug)),JSON.parse(readFileSync(folder+'/all-place-ids.json','utf8')));
+ out.addressPatch=await checkAddresses();assert.deepEqual(await snapshot(),before);
  out.pr39Profiles=PR39_TARGETS.length;out.pr40Profiles=PR40_TARGETS.length;out.protectedGroups=Object.keys(before).length;out.untargetedPlaces=before.untargeted_places.n;out.catalog=793;out.menemenUnchanged=true;out.runtime={env:st.body.env,fingerprint:st.body.db.fingerprint};out.complete=true;save('protected-after',await snapshot());save('api',out);console.log(JSON.stringify(out));
 }
 main().then(()=>process.exit(0)).catch(e=>{out.failure=String(e);save('api',out);console.error(e);process.exit(1)});
