@@ -46,6 +46,8 @@
   - Şube eşleşmesi kesin olmayan video alınmadı (Park Fora için "Bebek" diyen kısa video).
   - Eski şefi anlatan video alınmadı (Topaz).
   - Videolar indirilmedi; yalnız bağlantı ve kimlik.
+  - YouTube'da ücretli tanıtım işaretinin görünmemesi, içerik üreticisiyle işletme arasında ticari ilişki olmadığı anlamına gelmez; envanterdeki alan yalnız işaretin görülüp görülmediğini kaydeder.
+  - "İşletmenin kanalı" yalnız resmî siteden bağlantı verilen kanallarda yazılır (Park Fora). Sunset ve Selim Usta videolarında atıf kanal adına daraltıldı (issue #41).
 - **Fotoğraf:** eklenmedi. Hiçbir restoran için işletme izni yok. Wikimedia Commons dosya aramasında ilgili lisanslı görsel çıkmadı.
 - Google verisi, kullanıcı yorumu, puan ve ziyaret verisi kullanılmadı.
 

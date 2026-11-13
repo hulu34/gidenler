@@ -1,6 +1,6 @@
 {
  "slug": "sunset-grill-ve-bar-besiktas",
- "_kaynak_notu": "Kaynak: resmî site sunsetgrillbar.com (ana sayfa, Menü '2026 ve İletişim sayfaları, 13.11.2026) ve sitedeki yemek menüsü PDF'i (assets/yemek.pdf; dosyada 'Fiyatlarımız 5 Kasım 2026 tarihinden itibaren geçerlidir'). Tatlı ve sushi menüleri ayrı PDF; bu profile alınmadı. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; 4NQLZfOqg2w işletmenin kendi kanalında. Google verisi ve fotoğraf yok.",
+ "_kaynak_notu": "Kaynak: resmî site sunsetgrillbar.com (ana sayfa, Menü '2026 ve İletişim sayfaları, 13.11.2026) ve sitedeki yemek menüsü PDF'i (assets/yemek.pdf; dosyada 'Fiyatlarımız 5 Kasım 2026 tarihinden itibaren geçerlidir'). Tatlı ve sushi menüleri ayrı PDF; bu profile alınmadı. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; 4NQLZfOqg2w videosunun kanal adı işletmeyle aynı (@sunsetgrillandbar), ancak resmî siteden bu kanala bağlantı bulunamadı; atıf yalnız kanal adına daraltıldı (issue #41). Google verisi ve fotoğraf yok.",
  "description": {
   "value": "Ulus Parkı'nda, Boğaz manzaralı restoran; işletmeye göre 1994'te açıldı. Menüde mevsime göre Akdeniz, Türk ve Japon mutfaklarından yemekler var; ayrıca sushi bar ve şarap mahzeni bulunuyor.",
   "provider": "official_site",
@@ -358,8 +358,8 @@
  "videos": [
   {
    "url": "https://www.youtube.com/watch?v=4NQLZfOqg2w",
-   "credit": "Sunset Grill & Bar (işletmenin kanalı) · Aralık 2016",
-   "category": "isletme",
+   "credit": "Sunset Grill & Bar YouTube kanalı · Aralık 2016",
+   "category": "video",
    "sponsored": false
   },
   {

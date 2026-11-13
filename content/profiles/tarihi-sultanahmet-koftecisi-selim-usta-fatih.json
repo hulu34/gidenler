@@ -1,6 +1,6 @@
 {
  "slug": "tarihi-sultanahmet-koftecisi-selim-usta-fatih",
- "_kaynak_notu": "Kaynak: resmî site sultanahmetkoftesi.com (ana sayfa ve İletişim; 13.11.2026). Sitede saat yok; katalogdaki saat değiştirilmedi. Telefon katalogda yoktu, iletişim sayfasındaki ilk numara eklendi. Menü eklenmedi: sitede fiyatlı ya da tarihli menü yok, yalnız 'Sultanahmet Lezzetleri' tanıtımı var (tanıtım metnine yazıldı). Markanın başka şubeleri var; bu kayıt Divanyolu No:12. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; Ahmet Cevatzade videosunun açıklamasında Divan Yolu Cd. No:12 adresi yazıyor; 9OEuEzEYlIA işletmenin kendi kanalında. Google verisi ve fotoğraf yok.",
+ "_kaynak_notu": "Kaynak: resmî site sultanahmetkoftesi.com (ana sayfa ve İletişim; 13.11.2026). Sitede saat yok; katalogdaki saat değiştirilmedi. Telefon katalogda yoktu, iletişim sayfasındaki ilk numara eklendi. Menü eklenmedi: sitede fiyatlı ya da tarihli menü yok, yalnız 'Sultanahmet Lezzetleri' tanıtımı var (tanıtım metnine yazıldı). Markanın başka şubeleri var; bu kayıt Divanyolu No:12. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; Ahmet Cevatzade videosunun açıklamasında Divan Yolu Cd. No:12 adresi yazıyor; 9OEuEzEYlIA bir marka tanıtım filmi; kanal adı markayla aynı (@tarihisultanahmetkoftecisi) ama resmî siteden bağlantı bulunamadı ve görüntülerin hangi şubede çekildiği belirtilmiyor; atıf kanal adına daraltıldı, Divanyolu şubesine ait gösterilmedi (issue #41). Google verisi ve fotoğraf yok.",
  "description": {
   "value": "Sultanahmet'te Divanyolu Caddesi'nde köfteci; işletmeye göre 1920'den beri dört kuşaktır aynı köfteyi yapıyor. Baharat kullanılmadan dana eti, ekmek, soğan ve tuzla hazırlanan ızgara köftenin yanında kuzu şiş, mercimek çorbası, piyaz, pilav ve irmik helvası var.",
   "provider": "official_site",
@@ -36,8 +36,8 @@
   },
   {
    "url": "https://www.youtube.com/watch?v=9OEuEzEYlIA",
-   "credit": "Tarihi Sultanahmet Köftecisi (işletmenin kanalı) · Ocak 2013 · tanıtım filmi",
-   "category": "isletme",
+   "credit": "Tarihi Sultanahmet Köftecisi YouTube kanalı · Ocak 2013 · marka tanıtım filmi (çekim yeri belirtilmemiş)",
+   "category": "video",
    "sponsored": false
   }
  ]

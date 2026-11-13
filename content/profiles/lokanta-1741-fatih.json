@@ -1,6 +1,6 @@
 {
  "slug": "lokanta-1741-fatih",
- "_kaynak_notu": "Kaynak: resmî site lokanta1741.com (Türkçe rezervasyon, iletişim ve menü sayfaları, İngilizce ana sayfa ve About; 13.11.2026). Saat çelişkisi: ana sayfada 'hafta içi 16.00–00.00, hafta sonu 12.00–00.00' yazıyor; rezervasyon ve iletişim sayfaları Salı kapalı diyor. Daha ayrıntılı olan rezervasyon/iletişim bilgisi alındı ve çelişki not olarak yazıldı. Menüde tarih yok (validFrom yazılmadı). '+10 gr beluga havyar 1200 TL' satırı çiğ köfteye ilave olarak açıklamaya yazıldı. Video eklenmedi: bulunan tek video (FQqhFpxfrf4) oEmbed'de 403 verdi. Google verisi ve fotoğraf yok.",
+ "_kaynak_notu": "Kaynak: resmî site lokanta1741.com (Türkçe rezervasyon, iletişim ve menü sayfaları, İngilizce ana sayfa ve About; 13.11.2026). Saat çelişkisi: ana sayfada 'hafta içi 16.00–00.00, hafta sonu 12.00–00.00' yazıyor; rezervasyon ve iletişim sayfaları Salı kapalı diyor. Daha ayrıntılı olan rezervasyon/iletişim bilgisi alındı ve çelişki not olarak yazıldı. Menüde tarih yok (validFrom yazılmadı). '+10 gr beluga havyar 1200 TL' satırı çiğ köfteye ilave olarak açıklamaya yazıldı. Video eklenmedi: bulunan tek video (FQqhFpxfrf4) oEmbed'de 403 verdi. Google verisi ve fotoğraf yok. Düzeltme (issue #41, 13.11.2026): resmî kaynak yalnız 15 yaş altı misafir kabul edilmediğini söylüyor; arayüzde 'çocuk alanı yok' gibi okunan kanıtsız cocuk:false olanağı kaldırıldı, yaş kuralı not olarak kaldı.",
  "description": {
   "value": "Cağaloğlu Hamamı'nın içinde çağdaş Türk mutfağı restoranı; servis hamam kubbelerinin altında ya da terasta. Şef Durukan Özgen.",
   "provider": "official_site",
@@ -45,14 +45,6 @@
    "checkedAt": "2026-11-13"
   }
  ],
- "amenities": {
-  "items": {
-   "cocuk": false
-  },
-  "provider": "official_site",
-  "url": "https://lokanta1741.com/tr/rezervasyon/",
-  "checkedAt": "2026-11-13"
- },
  "menu": {
   "provider": "official_site",
   "url": "https://lokanta1741.com/tr/tr-menu/",
