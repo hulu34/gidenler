@@ -17,7 +17,7 @@ import { applyMigrations, type Executor } from "../lib/db/migrate";
 import { realVenueRecords } from "../data/real";
 
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
-const GRUP = new Set((arg("--grup") ?? "A,B,C,D,E").split(","));
+const GRUP = new Set((arg("--grup") ?? "A,B,C,D,F,E").split(","));
 const PORT = Number(arg("--port") ?? 3601), DBPORT = Number(arg("--dbport") ?? 55441);
 const BASE = `http://127.0.0.1:${PORT}`;
 const PR40 = ["ulus-29-besiktas", "sunset-grill-ve-bar-besiktas", "topaz-beyoglu", "murver-beyoglu", "lokanta-1741-fatih", "1924-istanbul-beyoglu", "alaf-besiktas", "haci-abdullah-beyoglu", "kanaat-lokantasi-uskudar", "ciya-sofrasi-kadikoy", "tarihi-sultanahmet-koftecisi-selim-usta-fatih", "park-fora-besiktas"];
@@ -196,6 +196,57 @@ async function main() {
     const iyi = await apply(p);
     ok("hatalardan sonra temiz uygulama çalışır", iyi.status === 200 && (await profVar(s)) && (await vids(s)).length === p.videos.length, { s: iyi.status });
     if (iyi.j?.auditId) await rollback(iyi.j.auditId);
+  }
+
+  /* F: tarayıcı — Chrome 375/390/1440 + WebKit 390. Playwright yolu PW_DIR ile verilir (ör. playwright-core 1.49.1; tarayıcı indirmez).
+     Dış istekler engellenir: gerçek YouTube oynatma test edilmez, yalnız resmî gömme adresi ve oyuncu aç/kapa. */
+  if (GRUP.has("F") && process.env.PW_DIR) {
+    grup = "F tarayıcı";
+    const { chromium, webkit } = require(`${process.env.PW_DIR}/node_modules/playwright-core`);
+    const ekran = "calisma/issue41/ekran"; mkdirSync(ekran, { recursive: true });
+    const audits: Record<string, string> = {};
+    for (const s of PR40) { const a = await apply(prof(s)); audits[s] = a.j?.auditId; ok(`${s}: tarayıcı öncesi uygulandı`, a.status === 200, a.j?.error); }
+    const hedef = [...PR40, "menemen-besiktas", "pandeli-fatih"];
+    const beklenenVideo = async (s: string) => (await vids(s)).length;
+    const hatalar: unknown[] = [];
+    for (const [ad, motor, gen] of [["chrome", chromium, 375], ["chrome", chromium, 390], ["chrome", chromium, 1440], ["webkit", webkit, 390]] as const) {
+      const b = await motor.launch(ad === "chrome" ? { channel: "chrome" } : {});
+      const ctx = await b.newContext({ viewport: { width: gen, height: gen < 600 ? 844 : 1000 }, isMobile: gen < 600 && ad === "chrome", hasTouch: gen < 600 });
+      await ctx.route("**/*", (r: any) => (new URL(r.request().url()).origin === BASE ? r.continue() : r.abort()));
+      const pg2 = await ctx.newPage(); pg2.on("pageerror", (e: Error) => hatalar.push({ ad, gen, e: e.message }));
+      for (const s of hedef) {
+        const res = await pg2.goto(`${BASE}/mekan/${s}/`, { waitUntil: "networkidle" });
+        const n = await beklenenVideo(s);
+        const btn = pg2.getByRole("button", { name: /videosunu burada oynat/ });
+        await pg2.waitForTimeout(300);
+        const sayi = await btn.count();
+        const tasma = await pg2.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
+        const p = s.startsWith("pandeli") ? null : prof(s);
+        const metin = await pg2.locator("main").innerText();
+        const profilGorunur = !p?.description || metin.replace(/\s+/g, " ").includes(p.description.value.slice(0, 40));
+        let oyuncu = sayi === 0;
+        if (sayi > 0) { await btn.first().click(); const fr = pg2.getByRole("dialog").locator("iframe"); await fr.first().waitFor({ timeout: 5000 }).catch(() => null); const src = await fr.first().getAttribute("src").catch(() => null); await pg2.getByRole("button", { name: "Kapat ve restorana dön" }).click().catch(() => null); oyuncu = !!src && src.includes("youtube-nocookie.com/embed/") && (await pg2.getByRole("dialog").count()) === 0; }
+        const sponsor = s === "menemen-besiktas" ? (await pg2.getByText("İşbirliği", { exact: true }).count()) > 0 : true;
+        ok(`${ad} ${gen} ${s}: 200, taşma yok, profil ve ${n} video, oyuncu aç-kapat${s === "menemen-besiktas" ? ", İşbirliği etiketi" : ""}`, res?.status() === 200 && !tasma && profilGorunur && sayi === n && oyuncu && sponsor, { status: res?.status(), tasma, profilGorunur, sayi, n, oyuncu, sponsor });
+        if (["ulus-29-besiktas", "murver-beyoglu", "kanaat-lokantasi-uskudar"].includes(s) && (gen === 390 || gen === 1440)) await pg2.screenshot({ path: `${ekran}/${s}-${ad}-${gen}.png`, fullPage: false });
+      }
+      await b.close();
+    }
+    ok("tarayıcılarda JavaScript hatası yok", hatalar.length === 0, hatalar);
+    for (const s of PR40) await rollback(audits[s]);
+    const b = await chromium.launch({ channel: "chrome" }); const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+    await ctx.route("**/*", (r: any) => (new URL(r.request().url()).origin === BASE ? r.continue() : r.abort()));
+    const pg3 = await ctx.newPage();
+    for (const s of [...PR40, "pandeli-fatih", "menemen-besiktas"]) {
+      await pg3.goto(`${BASE}/mekan/${s}/`, { waitUntil: "networkidle" }); await pg3.waitForTimeout(300);
+      const sayi = await pg3.getByRole("button", { name: /videosunu burada oynat/ }).count();
+      const metin = (await pg3.locator("main").innerText()).replace(/\s+/g, " ");
+      const p = s === "pandeli-fatih" ? null : prof(s);
+      const geriAlindi = s === "pandeli-fatih" ? sayi === 1 : s === "menemen-besiktas" ? sayi === 1 && metin.includes(p!.description.value.slice(0, 40)) : sayi === 0 && !metin.includes(p!.description.value.slice(0, 40));
+      ok(`geri alma sonrası ${s}: ${s === "pandeli-fatih" ? "ortak video yerinde" : s === "menemen-besiktas" ? "Menemen değişmedi" : "profil ve video sayfadan kalktı"}`, geriAlindi, { sayi });
+      if (s === "ulus-29-besiktas") await pg3.screenshot({ path: `${ekran}/${s}-geri-alindi-chrome-390.png` });
+    }
+    await b.close();
   }
 
   if (GRUP.has("E")) {
