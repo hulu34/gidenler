@@ -1,5 +1,5 @@
 {
- "_aciklama": "Menemen Beşiktaş profili (2026-11-12) — kaynak, fotoğraf hakkı ve video kayıtları. Google verisi kullanılmadı. Görsel ya da video kopyalanmadı/indirilmedi.",
+ "_aciklama": "Menemen Beşiktaş profili — kaynak, fotoğraf kullanım onayı ve video kayıtları (13.11.2026). Google verisi kullanılmadı. Altı işletme görselinin işlenmiş WebP kopyaları galeride; video indirilmedi, resmî YouTube oynatıcısıyla gömülür.",
  "isletme": {
   "slug": "menemen-besiktas",
   "ad": "Menemen",
@@ -33,7 +33,7 @@
  },
  "fotograflar": {
   "yayimlanan": 6,
-  "neden": "13.11.2026: Gidenler sahibi, işletme sahibiyle doğrudan çalıştığını ve işletmenin kendisine ait görsellerin kullanımına onay verildiğini bildirdi. Yazılı belge yok; kayıtlar bunu açıkça yazıyor.",
+  "neden": "13.11.2026: İşletme sahibinin kendi görsellerine ilişkin doğrudan kullanım onayı Gidenler sahibi aracılığıyla bildirildi. Yazılı belge yok.",
   "izinIcinAday": [
    {
     "url": "https://www.instagram.com/menemenbreakfast/p/Dfb_br0kcFg/",
@@ -84,8 +84,7 @@
     "aciklama": "Kahvaltının favorilerinden biri: iyi pastırma."
    }
   ],
-  "izinMetniOnerisi": "Menemen, aşağıdaki fotoğrafların (ve toplantıda ileteceği yüksek çözünürlüklü özgün dosyaların) Gidenler'de restoran profilinde, Seçki'de (TR/EN) ve Gidenler'in editoryal sosyal medya paylaşımlarında, kırpılarak ve boyutlandırılarak kullanılmasına izin verir. Künye: \"Menemen arşivi\". Tarih ve yetkili adı:",
-  "kategoriNotu": "Dış cephe, iç mekân, imza kahvaltılıklar ve servis ayrımı görsellere bakılarak yapılacak; tarayıcı paneli gizli olduğu ve izin bulunmadığı için bu oturumda görseller incelenmedi.",
+  "kategoriNotu": "Altı görsel incelendi: bir dış cephe, bir iç mekân, dört ürün fotoğrafı. Dört ürün fotoğrafının Beşiktaş şubesinde çekildiği işletme sahibi tarafından teyit edildi; teyit Gidenler sahibi aracılığıyla 13.11.2026 tarihinde bildirildi. Mimari görseller resmî sitenin 2024 arşivindendir; bugünkü düzen farklı olabilir.",
   "izinSureci": {
    "durum": "doğrudan onay, yazılı belge yok (13.11.2026); 6 görsel galeride",
    "kayit": "data/katalog/menemen/foto-izin.json (izin, hak sahibi, kapsam, künye, kaynak; görsel başına)",

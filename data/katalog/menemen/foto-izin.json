@@ -6,14 +6,19 @@
   "tarih": "2026-11-13",
   "tur": "doğrudan onay — yazılı belge yok",
   "veren": "Menemen işletme sahibi; onay Gidenler sahibi aracılığıyla bildirildi",
-  "belge": "Yazılı belge yok; Gidenler sahibinin 13.11.2026 tarihli sohbet beyanı (işletme sahibiyle doğrudan çalışılıyor; işletmenin kendisine ait görsellerin kullanımına onay)",
+  "belge": "Yazılı belge yok. İşletme sahibinin görsel kullanım onayı, 13.11.2026 tarihinde Gidenler sahibi aracılığıyla bildirildi.",
   "kapsam": [
    "restoran profili ve fotoğraf galerisi",
    "profil kapağı: ana sayfa ve Keşfet kartları, bağlantı önizlemesi (og:image), arama motoru yapılandırılmış verisi (JSON-LD)",
    "kırpma ve boyutlandırma"
   ],
   "kunye": "Menemen",
-  "kapsamNotu": "Kapsam, sitenin bu görselleri fiilen kullandığı yerlerdir (13.11.2026 yerel denetim). Seçki'de kullanılmıyor."
+  "kapsamNotu": "Kapsam, sitenin bu görselleri fiilen kullandığı yerlerdir (13.11.2026 yerel denetim). Seçki'de kullanılmıyor.",
+  "subeTeyidi": {
+   "sube": "Beşiktaş",
+   "tarih": "2026-11-13",
+   "kaynak": "Dört ürün fotoğrafının Beşiktaş şubesinde çekildiği işletme sahibi tarafından teyit edildi; teyit Gidenler sahibi aracılığıyla bildirildi. Yazılı belge yok."
+  }
  },
  "izinSablonu": {
   "tarih": "YYYY-AA-GG",
@@ -68,7 +73,7 @@
    "icerikUretici": false,
    "izinKapsaminda": true,
    "alt": "Çelik tavada menemen; yanında sahanda yumurta, zeytin, biber turşusu ve ekmek",
-   "not": "Resmî Instagram gönderisi, 29.10.2026, 1. kare; şube belirtilmemiş",
+   "not": "Resmî Instagram gönderisi, 29.10.2026, 1. kare; gönderi şubeyi belirtmiyor; Beşiktaş şubesi olduğu 13.11.2026 tarihinde işletme sahibi teyidiyle, Gidenler sahibi aracılığıyla bildirildi",
    "galeriKaydi": "/media/foto/menemen-besiktas-57386abb42-960.webp"
   },
   {
@@ -79,7 +84,7 @@
    "icerikUretici": false,
    "izinKapsaminda": true,
    "alt": "Tavadaki menemene ekmek banılıyor; yanında domates, salatalık ve biber turşusu",
-   "not": "Resmî Instagram gönderisi, 08.08.2026, 2. kare; yalnız el görünüyor, yüz yok",
+   "not": "Resmî Instagram gönderisi, 08.08.2026, 2. kare; yalnız el görünüyor, yüz yok; Beşiktaş şubesi olduğu 13.11.2026 tarihinde işletme sahibi teyidiyle, Gidenler sahibi aracılığıyla bildirildi",
    "galeriKaydi": "/media/foto/menemen-besiktas-bae7274df2-960.webp"
   },
   {
@@ -90,7 +95,7 @@
    "icerikUretici": false,
    "izinKapsaminda": true,
    "alt": "Üstten kahvaltı sofrası: tavalarda menemen, peynir, zeytin, söğüş ve çay",
-   "not": "Resmî Instagram gönderisi, 08.08.2026, 1. kare",
+   "not": "Resmî Instagram gönderisi, 08.08.2026, 1. kare; Beşiktaş şubesi olduğu 13.11.2026 tarihinde işletme sahibi teyidiyle, Gidenler sahibi aracılığıyla bildirildi",
    "galeriKaydi": "/media/foto/menemen-besiktas-8939aadfc4-960.webp"
   },
   {
@@ -101,7 +106,7 @@
    "icerikUretici": false,
    "izinKapsaminda": true,
    "alt": "Tavada sahanda üç yumurta; arkada menemen, söğüş, zeytin ve kahvaltılıklar",
-   "not": "Resmî Instagram gönderisi, 29.10.2026, 2. kare",
+   "not": "Resmî Instagram gönderisi, 29.10.2026, 2. kare; Beşiktaş şubesi olduğu 13.11.2026 tarihinde işletme sahibi teyidiyle, Gidenler sahibi aracılığıyla bildirildi",
    "galeriKaydi": "/media/foto/menemen-besiktas-50fad58c22-960.webp"
   }
  ],
