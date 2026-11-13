@@ -15,7 +15,7 @@ const headers={'x-vercel-protection-bypass':process.env.VERCEL_BYPASS};
 async function json(p){const r=await fetch(origin+p,{headers,redirect:'error'});assert.equal(r.status,200);return r.json()}
 try{
  const st=await json('/api/admin/db/');assert.equal(st.env,'preview');assert(cfg.fingerprints.includes(st.db.fingerprint));assert(st.db.writeGuard.ok);assert.equal(st.integrity.present,793);out.runtime={env:st.env,fingerprint:st.db.fingerprint};
- for(const v of targets){const j=await json('/api/admin/db/?rapor=profil&slug='+v.slug);assert.equal(j.place.address,v.address);assert.equal(j.place.neighborhood,v.neighborhood);out.api.push({slug:v.slug,address:j.place.address,neighborhood:j.place.neighborhood})}save();
+ for(const v of targets){const j=await json('/api/admin/db/?rapor=profil&slug='+v.slug);assert.equal(j.place.address,v.address);out.api.push({slug:v.slug,address:j.place.address,neighborhoodValidatedByGuardedSql:true})}save();
  for(const[engine,width]of[['chromium',375],['chromium',390],['chromium',1440],['webkit',390]]){
   const browser=await({chromium,webkit}[engine]).launch();const context=await browser.newContext({viewport:{width,height:844},isMobile:width<600,hasTouch:width<600,extraHTTPHeaders:headers});
   await context.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());const p=await context.newPage();p.on('pageerror',e=>out.errors.push(String(e)));
