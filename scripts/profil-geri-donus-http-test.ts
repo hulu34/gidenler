@@ -92,6 +92,11 @@ async function main() {
     ok("değişiklik yapmayan tekrarın geri alınması zararsız", r2.status === 200 && !(await profVar("ulus-29-besiktas")), r2.j);
     const a3 = await apply(p);
     ok("yeniden uygulama profil ve videoyu geri getirir", a3.status === 200 && (await profVar("ulus-29-besiktas")) && (await vids("ulus-29-besiktas")).length === (p.videos?.length ?? 0), { s: a3.status, v: (await vids("ulus-29-besiktas")).length });
+    /* uygulanmış profil üstüne aynı içeriğin tekrarı işlemsizdir; onu geri almak asıl uygulamayı kaldırmaz */
+    const a4 = await apply(p); const r4 = await rollback(a4.j?.auditId);
+    ok("uygulanmış profilin tekrarı işlemsiz; tekrarın geri alınması asıl uygulamayı kaldırmaz", a4.status === 200 && a4.j?.effective === false && r4.status === 200 && r4.j?.noop === true && (await profVar("ulus-29-besiktas")), { a4: a4.j?.effective, r4: r4.j });
+    const r3 = await rollback(a3.j?.auditId);
+    ok("grup sonu: yeniden uygulama da geri alınır", r3.status === 200 && !(await profVar("ulus-29-besiktas")) && (await vids("ulus-29-besiktas")).length === 0, r3.j);
     /* daha yeni farklı uygulama eski rollback ile ezilmemeli */
     const t = prof("topaz-beyoglu"); const b1 = await apply(t);
     const t2 = { ...t, description: { ...t.description, value: t.description.value + " (test: daha yeni farklı uygulama)" } };
