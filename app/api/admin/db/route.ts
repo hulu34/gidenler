@@ -24,7 +24,7 @@ import { redisSelfTest } from "@/lib/usage/selftest";
 import { redisAudit } from "@/lib/usage/audit";
 import { googleMatchStats, matchGoogleBatch, matchGoogleSlugs, setGoogleMatchActive, googleTestFixture, pendingGoogleMatches, reviewGoogleMatch, googleEnabled, rollbackGoogleMatches, syncGoogleQueue, googleQueueStats, retryGoogleNoMatch, holdGoogleMatches, googleUsableSlugs } from "@/lib/providers/google";
 import { usageSnapshot, spendReport, googlePause } from "@/lib/usage/counter";
-import { addPlaceVideo, listPlaceVideos, removePlaceVideo } from "@/lib/media/store";
+import { addPlaceVideo, listPlaceVideos, moderateVideoGlobally, planPlaceVideos, unlinkPlaceVideo, type OEmbedSimulation } from "@/lib/media/store";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 import { moderateReview, reviewsTag } from "@/lib/community/reviews";
 import { and, desc, eq, inArray, sql } from "drizzle-orm";
@@ -157,7 +157,7 @@ export async function POST(req: Request) {
   if (!allowed(req)) return nf();
   const site = req.headers.get("sec-fetch-site");
   if (site && site !== "same-origin") return NextResponse.json({ error: "cross_site" }, { status: 403, headers: H });
-  let body: { baselineCount?: number; action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; mapsUrls?: Record<string, string>; emailSha256?: string; placeId?: string; identifierId?: string; admin?: string; mode?: string; simulateFailure?: boolean; auditId?: string } = {};
+  let body: { baselineCount?: number; action?: string; confirm?: string; target?: string; wave?: number; limit?: number; id?: string; decision?: string; slug?: string; url?: string; credit?: string; category?: string; slugs?: string[]; why?: string; verifiedElsewhere?: boolean; profile?: Record<string, unknown>; mapsUrls?: Record<string, string>; emailSha256?: string; placeId?: string; identifierId?: string; admin?: string; mode?: string; simulateFailure?: boolean; simulateVideoFailure?: string; auditId?: string; scope?: string } = {};
   try { body = await req.json(); } catch { /* boş */ }
   if (body.target !== envName()) return NextResponse.json({ error: "target_mismatch", expected: envName() }, { status: 400, headers: H });
   const guard = previewWriteGuard(dbUrl());
@@ -226,37 +226,49 @@ export async function POST(req: Request) {
         fresh(TAG_MEDIA);
         /* Mekâna video bağlantısı (YouTube / Instagram / TikTok). Yalnız kimlik ve atıf saklanır. */
         if (body.confirm !== "EVET" || !body.slug || !body.url) break;
+        /* var olan video: yalnız ilişki eklenir; atıf/sponsorluk/durum değişmez. Kaldırılmış video örtük yeniden yayımlanmaz (409). */
         const r = await addPlaceVideo({ slug: body.slug, url: body.url, credit: body.credit, category: body.category, verifiedElsewhere: body.verifiedElsewhere === true });
-        return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : 400, headers: H });
+        return NextResponse.json({ action: "media-add", env: envName(), ...r, videos: await listPlaceVideos(body.slug) }, { status: r.ok ? 200 : r.error === "media_removed" ? 409 : r.error === "oembed_unavailable" ? 502 : 400, headers: H });
       }
       case "profile-apply": {
-        /* Restoran profili: content/profiles/<slug>.json. Profil kısmı TEK işlemde yazılır (yarıda kalırsa hiçbiri kalmaz);
-           mevcut veri silinmez, önceki değerler ve eklenen kayıtlar denetim kaydında. Videolar ayrı eklenir ve ayrı raporlanır. */
+        /* Restoran profili + videoları TEK yayın işlemi (issue #41):
+           1) Videolar önce doğrulanır (biçim, oEmbed, kaldırılmış kayıt); biri bile geçersizse HİÇBİR ŞEY yazılmaz (422/502).
+           2) Profil alanları, menü, video kayıtları/ilişkileri ve denetim kaydı tek işlemde yazılır (Neon HTTP batch / PostgreSQL
+              transaction); yarıda kalırsa hiçbiri kalmaz (500). Mevcut veri silinmez; var olan videonun atfı/sponsorluğu değişmez. */
         if (body.confirm !== "EVET" || !body.profile) break;
-        const { videos, _kaynak_notu: _n, ...rest } = body.profile as { videos?: { url: string; credit?: string; category?: string; sponsored?: boolean }[]; _kaynak_notu?: string };
+        const { videos, _kaynak_notu: _n, ...rest } = body.profile as { videos?: { url: string; credit?: string; category?: string; sponsored?: boolean; verifiedElsewhere?: boolean }[]; _kaynak_notu?: string };
         void _n;
         const parsed = ProfileInput.safeParse(rest);
         if (!parsed.success) return NextResponse.json({ error: "invalid_profile", issues: parsed.error.issues.slice(0, 8).map((i) => `${i.path.join(".")}: ${i.message}`) }, { status: 400, headers: H });
-        /* zorlanan hata yalnız test ortamında (Preview / yerel) */
-        const failMidway = body.simulateFailure === true && envName() !== "production";
+        if (videos !== undefined && (!Array.isArray(videos) || videos.length > 20 || videos.some((v) => !v || typeof v.url !== "string"))) return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, applied: false, error: "invalid_videos" }, { status: 400, headers: H });
+        /* zorlanan hatalar yalnız test ortamında (Preview / yerel) */
+        const testEnv = envName() !== "production";
+        const failMidway = body.simulateFailure === true && testEnv;
+        const simulate = testEnv && (body.simulateVideoFailure === "network" || body.simulateVideoFailure === "not_found") ? body.simulateVideoFailure as OEmbedSimulation : undefined;
+        const [pl] = await db.select({ id: places.id }).from(places).where(eq(places.slug, parsed.data.slug)).limit(1);
+        if (!pl) return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, applied: false, error: "no_place" }, { status: 400, headers: H });
+        const plan = await planPlaceVideos(db, pl.id, videos ?? [], fetch, simulate);
+        if (!plan.ok) {
+          const errs = plan.items.filter((x) => !x.ok);
+          const unavailable = errs.some((x) => !x.ok && x.error === "oembed_unavailable");
+          return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, applied: false, profileOk: false, error: unavailable ? "video_check_unavailable" : "video_invalid", videos: plan.items, profile: await readProfile(db, parsed.data.slug) }, { status: unavailable ? 502 : 422, headers: H });
+        }
         let r;
-        try { r = await applyProfile(db, parsed.data, { failMidway }); }
-        catch (e) { fresh(profileTag(parsed.data.slug)); return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, error: "apply_failed_rolled_back", message: e instanceof Error ? e.message.slice(0, 200) : "error", profile: await readProfile(db, parsed.data.slug) }, { status: 500, headers: H }); }
-        if (!r.ok) return NextResponse.json({ action: "profile-apply", env: envName(), ...r }, { status: 400, headers: H });
-        const v: Awaited<ReturnType<typeof addPlaceVideo>>[] = [];
-        for (const it of Array.isArray(videos) ? videos.slice(0, 20) : []) v.push(await addPlaceVideo({ slug: parsed.data.slug, url: it.url, credit: it.credit, category: it.category, sponsored: it.sponsored === true }));
-        const vOk = v.filter((x) => x.ok).length;
-        if (v.length) await db.insert(auditLog).values({ id: uuidv7(), actor: "admin", action: "profile_videos", refTable: "places", refId: null, detail: { slug: parsed.data.slug, of: r.auditId, media: v.map((x) => (x.ok ? { id: x.id, created: x.created } : { error: x.error })) } });
+        try { r = await applyProfile(db, parsed.data, { failMidway, videos: plan }); }
+        catch (e) { fresh(profileTag(parsed.data.slug)); fresh(TAG_MEDIA); return NextResponse.json({ action: "profile-apply", env: envName(), ok: false, applied: false, error: "apply_failed_rolled_back", message: e instanceof Error ? e.message.slice(0, 200) : "error", profile: await readProfile(db, parsed.data.slug), videos: await listPlaceVideos(parsed.data.slug) }, { status: 500, headers: H }); }
+        if (!r.ok) return NextResponse.json({ action: "profile-apply", env: envName(), ...r, applied: false }, { status: 400, headers: H });
         fresh(profileTag(parsed.data.slug)); fresh(TAG_MEDIA);
-        const complete = vOk === v.length;
-        return NextResponse.json({ action: "profile-apply", env: envName(), ...r, ok: complete, profileOk: true, videosOk: vOk, videosTotal: v.length, videos: v, profile: await readProfile(db, parsed.data.slug) }, { status: complete ? 200 : 207, headers: H });
+        return NextResponse.json({ action: "profile-apply", env: envName(), ...r, ok: true, applied: true, profileOk: true, videosOk: plan.items.length, videosTotal: plan.items.length,
+          videos: plan.items.map((it) => ({ ok: true, id: it.mediaId, platform: it.platform, externalId: it.externalId, created: !it.existing, relationAdded: !it.relationExisted && it.duplicateOf === undefined, ...(it.keptMetadata ? { keptMetadata: it.keptMetadata } : {}), ...(it.duplicateOf !== undefined ? { duplicateOf: it.duplicateOf } : {}) })),
+          profile: await readProfile(db, parsed.data.slug) }, { headers: H });
       }
       case "profile-rollback": {
         /* Veri geri dönüşü: bir profile_apply kaydını geri alır (kimlik alanları + olanaklar önceki değerine, o uygulamanın kaynak kayıtları kaldırılır). */
         if (body.confirm !== "GERI-AL" || typeof body.auditId !== "string") break;
+        /* yalnız bu uygulamanın kaynak kayıtları ve eklediği video ilişkileri; daha yeni etkili uygulama varsa 409; tekrar istek işlemsiz */
         const r = await rollbackProfile(db, body.auditId);
-        if (r.ok) fresh(profileTag(r.slug));
-        return NextResponse.json({ action: "profile-rollback", env: envName(), ...r }, { status: r.ok ? 200 : 400, headers: H });
+        if (r.ok) { fresh(profileTag(r.slug)); fresh(TAG_MEDIA); }
+        return NextResponse.json({ action: "profile-rollback", env: envName(), ...r }, { status: r.ok ? 200 : r.error === "newer_change" ? 409 : r.error === "no_audit" ? 404 : 400, headers: H });
       }
       case "review-hide":
       case "review-restore": {
@@ -268,8 +280,18 @@ export async function POST(req: Request) {
       }
       case "media-remove": {
         fresh(TAG_MEDIA);
-        if (body.confirm !== "EVET" || !body.id) break;
-        return NextResponse.json({ action: "media-remove", env: envName(), ...(await removePlaceVideo(body.id)) }, { headers: H });
+        /* Mekâna özgü: videoyu YALNIZ bu mekândan kaldırır; video bu mekâna bağlı değilse reddedilir (başka mekân etkilenmez).
+           Her yerde yayından kaldırmak ayrı ve açık küresel moderasyondur: { scope: "global", confirm: "KURESEL" }. */
+        if (!body.id) break;
+        if (body.scope === "global") {
+          if (body.confirm !== "KURESEL") return NextResponse.json({ error: "confirm_required", expected: "KURESEL" }, { status: 400, headers: H });
+          const g = await moderateVideoGlobally(body.id);
+          return NextResponse.json({ action: "media-remove", scope: "global", env: envName(), ...g }, { status: g.ok ? 200 : 404, headers: H });
+        }
+        if (body.confirm !== "EVET" || !body.slug) return NextResponse.json({ error: "slug_required" }, { status: 400, headers: H });
+        const u = await unlinkPlaceVideo(body.slug, body.id);
+        if (u.ok) fresh(profileTag(body.slug));
+        return NextResponse.json({ action: "media-remove", scope: "place", env: envName(), ...u, ...(u.ok ? { videos: await listPlaceVideos(body.slug) } : {}) }, { status: u.ok ? 200 : 400, headers: H });
       }
       case "google-retry": {
         fresh(TAG_GOOGLE);

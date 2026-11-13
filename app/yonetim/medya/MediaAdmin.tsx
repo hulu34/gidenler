@@ -41,8 +41,9 @@ export function MediaAdmin({ venues, env }: { venues: Array<{ slug: string; name
     if (ok) { setUrl(""); setCredit(""); if (Array.isArray(j.videos)) setList(j.videos); }
   };
   const remove = async (id: string) => {
-    const { ok } = await post({ action: "media-remove", id });
-    setMsg({ ok, text: ok ? "Video yayından kaldırıldı (kayıt geçmişte kalır)." : "Kaldırılamadı." });
+    if (!venue) return;
+    const { ok } = await post({ action: "media-remove", slug: venue.slug, id });
+    setMsg({ ok, text: ok ? "Video bu mekândan kaldırıldı (başka mekânlardaki görünümü ve kayıt değişmez)." : "Kaldırılamadı." });
     if (ok) setList((x) => x.filter((v) => v.id !== id));
   };
 
