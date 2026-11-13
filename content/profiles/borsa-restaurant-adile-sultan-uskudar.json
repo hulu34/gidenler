@@ -1,0 +1,404 @@
+{
+ "slug": "borsa-restaurant-adile-sultan-uskudar",
+ "_kaynak_notu": "Kaynak: resmî site borsarestaurants.com (Hakkımızda, Menü, İletişim; 13.11.2026) ve sitedeki ana menü PDF'i (borsa-ana-menu-21.04.2026.pdf; dosyada '21.04.2026 tarihinden itibaren uygulanan fiyatlardır'). PDF'te ürün adları yazı katmanında yok (vektör çizim); sayfalar görüntüye çevrilip okundu, fiyatlar PDF'in yazı katmanındaki fiyat sırasıyla tek tek karşılaştırıldı ve tümü eşleşti. İçecekler alınmadı. Site tek adres veriyor: Vaniköy Cad. Adile Sultan Sarayı No:12; bu kayıtla aynı. Video bulunamadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Kandilli'de, Adile Sultan Sarayı'nda geleneksel Osmanlı ve Türk mutfağı restoranı. Menüde çorbalar, zeytinyağlı soğuk başlangıçlar, içli köfte ve mantı gibi sıcak başlangıçlar, kuzu tandır ve külbastı gibi ana yemekler, kebaplar ve klasik tatlılar var.",
+  "provider": "official_site",
+  "url": "https://www.borsarestaurants.com/tr/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Su 12:00-00:00",
+  "provider": "official_site",
+  "url": "https://www.borsarestaurants.com/tr/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Telefonla: (0216) 460 03 04 ya da (0216) 460 03 05.",
+  "provider": "official_site",
+  "url": "https://www.borsarestaurants.com/tr/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "kandilliborsarestaurant",
+  "provider": "official_site",
+  "url": "https://www.borsarestaurants.com/tr/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Menüdeki fiyatlar 21.04.2026'dan itibaren geçerli; KDV dahil.",
+   "provider": "official_site",
+   "url": "https://www.borsarestaurants.com/static/uploads/2026/06/borsa-ana-menu-21.04.2026.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Özel davetlerde en az 10 kişilik, catering'de en az 20 kişilik talepler değerlendiriliyor.",
+   "provider": "official_site",
+   "url": "https://www.borsarestaurants.com/tr/iletisim",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.borsarestaurants.com/static/uploads/2026/06/borsa-ana-menu-21.04.2026.pdf",
+  "checkedAt": "2026-11-13",
+  "validFrom": "2026-04-21",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Paça Çorbası, İlik ile",
+      "priceTry": 850
+     },
+     {
+      "name": "Günün Çorbası",
+      "priceTry": 435
+     }
+    ]
+   },
+   {
+    "title": "Soğuk Başlangıçlar",
+    "items": [
+     {
+      "name": "Cunda Enginarı, Zeytinyağlı",
+      "priceTry": 655
+     },
+     {
+      "name": "Patlıcan Ekşilisi",
+      "description": "Fırınlanmış Gönen patlıcanı, domates sos",
+      "priceTry": 590
+     },
+     {
+      "name": "Pilaki (ılık)",
+      "description": "Bolu fasulyesi, kuru soğan, karabiber, pul biber",
+      "priceTry": 655
+     },
+     {
+      "name": "Asma Yaprağı Sarma, Zeytinyağlı",
+      "description": "Tokat yöresinden",
+      "priceTry": 610
+     },
+     {
+      "name": "Patlıcan Ezme",
+      "description": "Köz ateşinde, Gönen patlıcanından",
+      "priceTry": 590
+     },
+     {
+      "name": "Humus, Halep Usulü",
+      "description": "Nohut, tahin, kimyon, kavrulmuş Şam fıstığı, kırmızı biber",
+      "priceTry": 590
+     },
+     {
+      "name": "Lakerda",
+      "description": "Torik balığı, roka, tarama, kurutulmuş domates, kapari sos",
+      "priceTry": 1780
+     },
+     {
+      "name": "Atom, Borsa Usulü",
+      "description": "Süzme yoğurt, kırmızı acı biber",
+      "priceTry": 590
+     },
+     {
+      "name": "Muhammara",
+      "description": "Acı tatlı biber salçası, ceviz, zeytinyağı, sarımsak, kırmızı biber",
+      "priceTry": 600
+     }
+    ]
+   },
+   {
+    "title": "Sıcak Başlangıçlar",
+    "items": [
+     {
+      "name": "Fındık Lahmacun",
+      "description": "Taş fırında, acısız ya da acılı, kebap kıyması ve taze baharatlar",
+      "priceTry": 365
+     },
+     {
+      "name": "İçli Köfte (65 g)",
+      "description": "Urfa bulguru, bıçak kıyması, ceviz, yenibahar",
+      "priceTry": 475
+     },
+     {
+      "name": "Su Böreği",
+      "description": "Beyaz peynir ve maydanozlu",
+      "priceTry": 455
+     },
+     {
+      "name": "Keşkek",
+      "description": "Yarma buğday, kuzu gerdanı, nohut",
+      "priceTry": 850
+     },
+     {
+      "name": "Mantı, Ev Yapımı",
+      "description": "Bıçak kıyması, süzme yoğurt, kırmızı biber sos",
+      "priceTry": 960
+     },
+     {
+      "name": "Etli Kara Lahana Sarma, Trabzon Usulü",
+      "description": "Kuzu ve dana kıyması, yoğurt",
+      "priceTry": 955
+     },
+     {
+      "name": "Kuzu Yaprak Ciğer Izgara (160 g)",
+      "description": "Köy usulü patates kavurması ve gavurdağı salata",
+      "priceTry": 1455
+     },
+     {
+      "name": "Kalamar Tava",
+      "description": "Tarator sos, Akdeniz yeşillikleri",
+      "priceTry": 1190
+     },
+     {
+      "name": "Süryani Usulü Haşlanmış İçli Köfte (65 g)",
+      "description": "Yoğurt ve tereyağ sos",
+      "priceTry": 535
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Taze Enginar Salatası",
+      "description": "Kuzukulağı, körpe roka, kurutulmuş domates",
+      "priceTry": 870
+     },
+     {
+      "name": "Roka Salatası",
+      "description": "Taze nane, maydanoz, kiraz domates, kuru nane, sumak",
+      "priceTry": 700
+     },
+     {
+      "name": "Bahçe Salatası",
+      "description": "Tarla yeşillikleri, tulum peyniri, ceviz, nar ekşisi",
+      "priceTry": 720
+     },
+     {
+      "name": "Mevsim Salatası",
+      "description": "Göbek, roka, havuç, kırmızı lahana, domates",
+      "priceTry": 700
+     },
+     {
+      "name": "Çoban Salatası",
+      "description": "Soğan, domates, salatalık, yeşil biber, nane, maydanoz",
+      "priceTry": 700
+     },
+     {
+      "name": "Gavurdağı Salatası",
+      "description": "Ceviz, domates, soğan, pul biber, nar ekşisi",
+      "priceTry": 755
+     },
+     {
+      "name": "Avokado Salatası",
+      "description": "Körpe tarla yeşillikleri, zeytinyağı, limon, hardal sos",
+      "priceTry": 880
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler",
+    "items": [
+     {
+      "name": "Kuzu Tandır, Konya Usulü (400 g)",
+      "description": "Kemikli kuzu eti, hünkâr beğendi, iç pilav",
+      "priceTry": 2115
+     },
+     {
+      "name": "Kuzu Pirzola (240 g)",
+      "description": "Köy usulü patates kavurması, ıspanak püresi",
+      "priceTry": 2160
+     },
+     {
+      "name": "Bonfile Izgara (200 g)",
+      "description": "Ispanak püresi ve patates tava",
+      "priceTry": 2480
+     },
+     {
+      "name": "Dana Pirzola (400 g)",
+      "description": "Ispanak püresi ve elma dilim patates",
+      "priceTry": 3050
+     },
+     {
+      "name": "Kuzu Küşleme (220 g)",
+      "description": "Firik pilavı ve ıspanak püresi; az ya da orta pişmiş tavsiye ediliyor",
+      "priceTry": 2160
+     },
+     {
+      "name": "Kuzu Sırtı (200 g)",
+      "description": "Firik pilavı ve ıspanak püresi",
+      "priceTry": 2160
+     },
+     {
+      "name": "Külbastı, Süt Danası (160 g)",
+      "description": "Taze baharatlı közlenmiş patlıcan, sebzeli firik pilavı",
+      "priceTry": 1920
+     },
+     {
+      "name": "Pideli Köfte, Borsa Usulü (220 g)",
+      "description": "Dana etinden, mandıra yoğurdu",
+      "priceTry": 1635
+     },
+     {
+      "name": "Kasap Köftesi, Borsa Usulü (240 g)",
+      "description": "Dana etinden; patates tava, kırmızı biber sos, ızgara domates ve biber",
+      "priceTry": 1550
+     },
+     {
+      "name": "Piliç Külbastı / Izgara / Şiş (300 g)",
+      "description": "But ya da göğüs; patlıcan beğendi ve bulgur pilavı",
+      "priceTry": 1490
+     }
+    ]
+   },
+   {
+    "title": "Kebaplar",
+    "items": [
+     {
+      "name": "Yaprak Döner (180 g)",
+      "description": "Süt danasından, beyaz pilav",
+      "priceTry": 1530
+     },
+     {
+      "name": "İskender Kebap (220 g)",
+      "description": "Süt dana eti, pide, yoğurt, domates sos",
+      "priceTry": 1720
+     },
+     {
+      "name": "Yoğurtlu Kebap (160 g)",
+      "description": "Kekikli bonfile dilimleri, pide ve közde patlıcan",
+      "priceTry": 2180
+     },
+     {
+      "name": "Kuzu Şiş Kebap (200 g)",
+      "description": "Acılı ya da acısız; lavaş, bulgur pilavı, közde patlıcan, domates, biber",
+      "priceTry": 1795
+     },
+     {
+      "name": "Tarsusi Sebzeli Kebap (180 g)",
+      "description": "Bıçak kıymasından; bulgur pilavı, lavaş, sumaklı soğan",
+      "priceTry": 1575
+     },
+     {
+      "name": "Adana Kebap (180 g)",
+      "description": "Sumaklı soğan, ızgara domates, biber, lavaş",
+      "priceTry": 1550
+     },
+     {
+      "name": "Urfa Kebap (180 g)",
+      "description": "Sumaklı soğan, ızgara domates, biber, lavaş",
+      "priceTry": 1550
+     },
+     {
+      "name": "Sarma Beyti Kebap (180 g)",
+      "description": "Sebzeli; domates sos, tereyağ ve yoğurt",
+      "priceTry": 1670
+     },
+     {
+      "name": "Saray Tepsisi (en az 2 kişilik, 650 g)",
+      "description": "Adana, Urfa, kuzu şiş, patlıcan kebap, kuzu pirzola, piliç şiş; bulgur pilavı",
+      "priceTry": 5100
+     }
+    ]
+   },
+   {
+    "title": "Deniz Ürünleri",
+    "items": [
+     {
+      "name": "Günün Balığı Levrek (200 g)",
+      "description": "Izgara, tava, kâğıtta ya da fırında buğulama",
+      "priceTry": 2185
+     }
+    ]
+   },
+   {
+    "title": "Özel İstekler",
+    "items": [
+     {
+      "name": "Hamburger (180 g)",
+      "description": "Karamelize soğan ve cheddar peyniri",
+      "priceTry": 1455
+     },
+     {
+      "name": "Erişte, Ev Yapımı",
+      "description": "Köy usulü, ızgara sebzeli ve pırasalı, Erzincan tulum peyniri",
+      "priceTry": 875
+     },
+     {
+      "name": "Karışık Turşu, Ev Yapımı",
+      "priceTry": 730
+     },
+     {
+      "name": "Patates Tava",
+      "description": "Adapazarı patatesinden",
+      "priceTry": 515
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Baklava, Fıstıklı, Gaziantep Usulü",
+      "priceTry": 875
+     },
+     {
+      "name": "Fıstıklı Tel Kadayıfı",
+      "description": "Manda kaymağı",
+      "priceTry": 820
+     },
+     {
+      "name": "Hurmalı İncir Tatlısı, Borsa Usulü",
+      "description": "Vanilyalı dondurma",
+      "priceTry": 870
+     },
+     {
+      "name": "Kazandibi",
+      "description": "Kaymaklı dondurma",
+      "priceTry": 725
+     },
+     {
+      "name": "Vişneli Ekmek Kadayıfı",
+      "description": "Manda kaymağı",
+      "priceTry": 720
+     },
+     {
+      "name": "Çikolatalı Sufle",
+      "description": "Vanilyalı dondurma",
+      "priceTry": 845
+     },
+     {
+      "name": "Fırın Sütlaç",
+      "priceTry": 650
+     },
+     {
+      "name": "İrmik Helvası, Antakya Usulü",
+      "description": "Portakallı ve tarçınlı, kaymaklı dondurma",
+      "priceTry": 730
+     },
+     {
+      "name": "Profiterol",
+      "description": "Çikolata sos, çikolata parçaları, vanilyalı dondurma",
+      "priceTry": 850
+     },
+     {
+      "name": "Sorbe Çeşitleri (1 top)",
+      "description": "Mango, frambuaz",
+      "priceTry": 370
+     },
+     {
+      "name": "Maraş Dondurma Çeşitleri (1 top)",
+      "description": "Çilek, çikolata, vanilya, kesme kaymaklı",
+      "priceTry": 370
+     },
+     {
+      "name": "Meyve Tabağı",
+      "priceTry": 1200
+     }
+    ]
+   }
+  ]
+ }
+}
