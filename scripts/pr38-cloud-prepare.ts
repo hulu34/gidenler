@@ -30,6 +30,7 @@ async function main(){
  const otherId=(await pool.query("SELECT id FROM places WHERE slug <> 'menemen-besiktas' ORDER BY id LIMIT 1")).rows[0].id;
  await pool.query("INSERT INTO public.user(id,name,email) VALUES('cloud-synthetic-user','Bulut test hesabı','synthetic@example.invalid')");
  for(const [i,id] of [target,otherId].entries())await pool.query("INSERT INTO reviews(id,place_id,user_id,visited_on,overall,ratings,body,status) VALUES($1,$2,'cloud-synthetic-user','2026-11-01',4,'{}','Yalnız izole kabul testi; kamuya açık değildir.','pending')",['cloud-review-'+i,id]);
+ await pool.query("INSERT INTO google_ratings(slug,place_id,rating,checked_at,source,confidence,import_id,hidden_reason) VALUES('__cloud_fixture_not_a_venue__','synthetic-only',4.4,now(),'synthetic-cloud-fixture','test-only','cloud-only','Not real Google data; isolated preservation fixture')");
  const snap=async()=>{
   const tabs=(await pool.query("SELECT tablename FROM pg_tables WHERE schemaname='public' AND tablename <> '_gidenler_migrations' ORDER BY tablename")).rows.map((r:any)=>r.tablename);
   const protectedRows:any={};
