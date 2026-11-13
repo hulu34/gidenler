@@ -1,0 +1,42 @@
+{
+ "slug": "rumelihisari-iskele-sariyer",
+ "address": {
+  "value": "Yahya Kemal Cd. No:1, 34470 Sarıyer, İstanbul",
+  "provider": "official_site",
+  "url": "https://iskelerumelihisari.com/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 212 263 29 97",
+  "provider": "official_site",
+  "url": "https://iskelerumelihisari.com/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://iskelerumelihisari.com",
+  "provider": "official_site",
+  "url": "https://iskelerumelihisari.com/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "rumelihisariiskele",
+  "provider": "official_site",
+  "url": "https://iskelerumelihisari.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki rezervasyon bağlantısından ya da telefonla.",
+  "provider": "official_site",
+  "url": "https://iskelerumelihisari.com/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://iskelerumelihisari.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "_kaynak_notu": "Resmî site iskelerumelihisari.com ana sayfa, /iletisim, /menu (13.11.2026). Menü sayfasının metni yalnız bölüm başlığı verdi; aktarılmadı. Saat yayımlanmıyor."
+}

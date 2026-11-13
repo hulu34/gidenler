@@ -1,0 +1,63 @@
+{
+ "slug": "calipso-fish-maltepe",
+ "description": {
+  "value": "Küçükyalı'da balık ve deniz ürünleri restoranı. İşletmenin anlatımına göre kurucuları Ziya Kaçar ve Hakan Veli Şahin'in sektördeki deneyimini 2014'te markaya dönüştürdü; menüde ızgara balıklar, deniz mahsullü mezeler ve Ege mutfağından esinlenen yemekler var.",
+  "provider": "official_site",
+  "url": "https://www.calipsorestaurant.com/hakkimizda",
+  "checkedAt": "2026-11-13"
+ },
+ "address": {
+  "value": "Küçükyalı, Cumhuriyet Cd. No:2, 34840 Maltepe, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.calipsorestaurant.com/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 216 489 28 58",
+  "provider": "official_site",
+  "url": "https://www.calipsorestaurant.com/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://www.calipsorestaurant.com",
+  "provider": "official_site",
+  "url": "https://www.calipsorestaurant.com/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "calipsofish",
+  "provider": "official_site",
+  "url": "https://www.calipsorestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki formdan (17.00–22.00 arası saatler); 6 kişiden kalabalık gruplar için telefonla.",
+  "provider": "official_site",
+  "url": "https://www.calipsorestaurant.com/rezervasyon",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Restoranın 50 araçlık otoparkı var.",
+   "provider": "official_site",
+   "url": "https://www.calipsorestaurant.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Sitede çocuk menüsü ve üç set menü yer alıyor.",
+   "provider": "official_site",
+   "url": "https://www.calipsorestaurant.com/menulerimiz",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "otopark": true
+  },
+  "provider": "official_site",
+  "url": "https://www.calipsorestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "_kaynak_notu": "Resmî site calipsorestaurant.com ana sayfa, /hakkimizda, /iletisim, /rezervasyon, /menulerimiz (13.11.2026). Sitedeki misafir yorumları aktarılmadı. Ödül listesi aktarılmadı (Michelin bilgisi katalogdaki michelin alanından gelir). Menü içerikleri sayfa metninde ayrıntılı değil, aktarılmadı."
+}

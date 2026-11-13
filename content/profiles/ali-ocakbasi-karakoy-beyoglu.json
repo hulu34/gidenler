@@ -1,0 +1,36 @@
+{
+ "slug": "ali-ocakbasi-karakoy-beyoglu",
+ "phone": {
+  "value": "+90 212 293 10 11",
+  "provider": "official_site",
+  "url": "https://www.aliocakbasi.com/post/istanbul-karakoy/38.html",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://www.aliocakbasi.com/post/istanbul-karakoy/38.html",
+  "provider": "official_site",
+  "url": "https://www.aliocakbasi.com/post/istanbul-karakoy/38.html",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "aliocakbasi",
+  "provider": "official_site",
+  "url": "https://www.aliocakbasi.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki rezervasyon sayfasından (Karaköy şubesi seçilerek) ya da telefonla.",
+  "provider": "official_site",
+  "url": "https://www.aliocakbasi.com/rezervasyon-yap",
+  "checkedAt": "2026-11-13"
+ },
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://www.aliocakbasi.com/rezervasyon-yap",
+  "checkedAt": "2026-11-13"
+ },
+ "_kaynak_notu": "Resmî site aliocakbasi.com Karaköy şube sayfası ve rezervasyon sayfası (13.11.2026). Marka İstanbul'da Karaköy, Gümüşsuyu ve Suadiye, yurt dışında Amsterdam ve Barselona şubeleri listeliyor; bu profil yalnız Karaköy şubesi. Adres şube sayfasının metninde yok; katalogdaki adres değiştirilmedi. Menü sayfası metin vermedi."
+}

@@ -1,0 +1,62 @@
+{
+ "slug": "cuma-beyoglu",
+ "address": {
+  "value": "Firuzağa Mah., Çukur Cuma Cad. 53/A, 34425 Beyoğlu, İstanbul",
+  "provider": "official_site",
+  "url": "https://cuma.cc/contact",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 212 293 20 62",
+  "provider": "official_site",
+  "url": "https://cuma.cc/contact",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://cuma.cc",
+  "provider": "official_site",
+  "url": "https://cuma.cc/contact",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "cumacukurcuma",
+  "provider": "official_site",
+  "url": "https://cuma.cc/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Su 10:00-16:00,16:00-00:00",
+  "provider": "official_site",
+  "url": "https://cuma.cc/contact",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki rezervasyon sayfasından. Etkinlik ve grup rezervasyonları için telefon ya da e-postayla ekiple iletişime geçilmesi isteniyor.",
+  "provider": "official_site",
+  "url": "https://cuma.cc/reservation",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Her gün 10.00–16.00 arası atıştırmalık menüsü, 16.00–00.00 arası akşam menüsü servis ediliyor.",
+   "provider": "official_site",
+   "url": "https://cuma.cc/contact",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Menüdeki ürünler ve fiyatlar mevsime göre değişebiliyor.",
+   "provider": "official_site",
+   "url": "https://cuma.cc/menus",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://cuma.cc/reservation",
+  "checkedAt": "2026-11-13"
+ },
+ "_kaynak_notu": "Resmî site cuma.cc /contact, /reservation, /menus (13.11.2026). Menü içerikleri sayfa metninde yayımlanmıyor (görsel/etkileşimli), aktarılmadı."
+}

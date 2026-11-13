@@ -1,0 +1,714 @@
+{
+ "_aciklama": "Resmî siteden adres tamamlama denetimi (13.11.2026, scripts/katalog/site-adres.mjs). Kapı numarası ya da adresi eksik 141 B1 dışı kayıttan resmî sitesi açık ve paylaşılmayan 57 kayıt tarandı. venues.json DEĞİŞMEDİ; adaylar elle incelendi, uygulama sahip onayına bağlı.",
+ "ozet": {
+  "taranan": 57,
+  "otomatikAday": 4,
+  "elleRet": 1,
+  "onayBekleyen": 3
+ },
+ "kayitlar": {
+  "karakoy-lokantasi-beyoglu": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Beyoğlu",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "gunaydin-beyoglu": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Beyoğlu",
+   "ad": true,
+   "karar": null,
+   "neden": "adres var ama ilçe yakınında değil",
+   "adayAdres": [
+    "metin: D-Ofis Maslak Büyükdere Cad. No. 249/12 (ilçe yakın değil)",
+    "metin: Büyükhanlı Plaza Dikilitaş Mahallesi Üzengi Sokak No:8 (ilçe yakın değil)",
+    "metin: D-Ofis Maslak Büyükdere Cad. No. 249/12 (ilçe yakın değil)"
+   ]
+  },
+  "viktor-levi-sarap-evi-kadikoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Kadıköy",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": [
+    "JSON-LD: Damacı Sokak (ilçe yakın değil)",
+    "metin: Caferağa Mah. Moda. Cad. Damacı Sk. No:4 (ilçe yakın değil)",
+    "metin: Caferağa Mahallesi Moda Caddesi Damacı Sokak No:4",
+    "metin: Caferağa Mahallesi Moda Caddesi Damacı Sokak No:4",
+    "metin: Caferağa Mahallesi Moda Caddesi Damacı Sokak No:4"
+   ]
+  },
+  "fazil-bey-in-turk-kahvesi-kadikoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Kadıköy",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": []
+  },
+  "last-ottoman-cafe-ve-restaurant-fatih": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Darüssade Sokağı, Fatih",
+   "ilce": "Fatih",
+   "ad": true,
+   "karar": null,
+   "neden": "adres var ama ilçe yakınında değil",
+   "adayAdres": [
+    "JSON-LD: Hoca Paa (ilçe yakın değil)"
+   ]
+  },
+  "bambi-cafe-sisli": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Şişli",
+   "ad": true,
+   "karar": null,
+   "neden": "adres var ama ilçe yakınında değil",
+   "adayAdres": [
+    "metin: Üçpınarlar Cd. No: 3 (ilçe yakın değil)"
+   ]
+  },
+  "kucuk-camlica-kosku-uskudar": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Üsküdar",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": []
+  },
+  "altinkapi-restaurant-fatih": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Turgut Özal Millet Caddesi, Şehremini Mahallesi, Fatih",
+   "ilce": "Fatih",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": []
+  },
+  "bahce-ocakbasi-atasehir": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Ataşehir",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (2) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "JSON-LD: Atatürk Mahallesi, Ali Kuşçu Caddesi, Ataşehir Bulvarı No: 8/1",
+    "metin: Ataşehir Bulvarı No: 8/1",
+    "metin: Ataşehir Bulvarı No: 8/1",
+    "metin: Ataşehir Bulvarı No: 8/1",
+    "metin: Ataşehir Bulvarı No: 8/1",
+    "metin: Ataşehir Bulvarı No: 8/1"
+   ]
+  },
+  "zubeyir-ocakbasi-atasehir": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Ardıç Sokağı, Barbaros Mahallesi, Ataşehir",
+   "ilce": "Ataşehir",
+   "ad": true,
+   "karar": null,
+   "neden": "sokak kayıttakiyle farklı (Ardıç Sokağı ↔ Muhtar Mahallesi İstiklal Caddesi Bekar Sokak No: 28)",
+   "adayAdres": [
+    "metin: Muhtar Mahallesi İstiklal Caddesi Bekar Sokak No: 28",
+    "metin: Muhtar Mahallesi İstiklal Caddesi Bekar Sokak No: 28 (ilçe yakın değil)"
+   ]
+  },
+  "memnun-doner-avcilar": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Duygu Sokağı, Avcılar",
+   "ilce": "Avcılar",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "saray-muhallebicisi-bakirkoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Ataköy 1. Kısım, Bakırköy",
+   "ilce": "Bakırköy",
+   "ad": true,
+   "karar": null,
+   "neden": "sokak kayıttakiyle farklı (Ataköy 1. Kısım ↔ Beyoğlu Şubesi Kuloğlu Mah. İstiklal Cad. No: 107)",
+   "adayAdres": [
+    "JSON-LD: Mahmutbey Mah. 2660 Sok.No:19/41 Bağcılar/İstanbul (ilçe yakın değil)",
+    "metin: Mahmutbey Mah. 2660 Sok.No:19/41 (ilçe yakın değil)",
+    "metin: Mahmutbey Mah. 2660 Sok.No:19/41 (ilçe yakın değil)",
+    "metin: Beyoğlu Şubesi Kuloğlu Mah. İstiklal Cad. No: 107",
+    "metin: Güneşli Şubesi Mahmutbey Mah. 2660. Sok. No:19/A (ilçe yakın değil)",
+    "metin: Vaniköy Şubesi Kandilli Cad. No:39 (ilçe yakın değil)"
+   ]
+  },
+  "neolokal-beyoglu": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "11, Beyoğlu",
+   "ilce": "Beyoğlu",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "cajun-corner-sariyer": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Sarıyer",
+   "ad": true,
+   "karar": null,
+   "neden": "adres var ama ilçe yakınında değil",
+   "adayAdres": [
+    "JSON-LD: Next Level Loft Ofis No: 4/22 (ilçe yakın değil)",
+    "JSON-LD: Next Level Loft Ofis No: 4/22 (ilçe yakın değil)",
+    "JSON-LD: Next Level Loft Ofis No: 4/22 (ilçe yakın değil)",
+    "JSON-LD: Next Level Loft Ofis No: 4/22 (ilçe yakın değil)"
+   ]
+  },
+  "kucuk-ev-sariyer": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Sarıyer",
+   "ad": true,
+   "karar": {
+    "adres": "86 Bilgi Alın Levent Çarşı Cad. No:5",
+    "yer": "metin",
+    "url": "https://www.kucukev.com/iletisim/"
+   },
+   "neden": null,
+   "adayAdres": [
+    "metin: Levent Çarşı Express Çarşı Cad. No:5 (ilçe yakın değil)",
+    "metin: 86 Bilgi Alın Levent Çarşı Cad. No:5"
+   ],
+   "elle": {
+    "sonuc": "ret",
+    "neden": "Bulunan adres Levent Çarşı Cad. (Levent, Beşiktaş); kayıt Sarıyer. Sitede birden çok şube var; ilçe eşleşmesi şube listesinden geldi."
+   }
+  },
+  "yucetepe-kir-gazinosu-adalar": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Adalar",
+   "ad": false,
+   "karar": null,
+   "neden": "site açılmadı (ERR_TLS_CERT_ALTNAME_INVALID)",
+   "adayAdres": []
+  },
+  "durusu-club-restaurant-arnavutkoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Arnavutköy",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "pelikan-balik-ve-restaurant-sancaktepe": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Ulus Caddesi, Sancaktepe",
+   "ilce": "Sancaktepe",
+   "ad": true,
+   "karar": null,
+   "neden": "sokak kayıttakiyle farklı (Ulus Caddesi ↔ Güvercinli Sk. No:1)",
+   "adayAdres": [
+    "metin: Güvercinli Sk. No:1",
+    "metin: Güvercinli Sk. No:1",
+    "metin: Güvercinli Sk. No:1"
+   ]
+  },
+  "cinaralti-durum-maltepe": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Maltepe",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "biget-avcilar": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Londra Asfalti, Avcılar",
+   "ilce": "Avcılar",
+   "ad": true,
+   "karar": null,
+   "neden": "sokak kayıttakiyle farklı (Londra Asfalti ↔ Co. Fatih Mah. Gazi Mustafa Cd No:10)",
+   "adayAdres": [
+    "metin: Co. Fatih Mah. Gazi Mustafa Cd No:10"
+   ]
+  },
+  "kasap-istanbul-catalca": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Çatalca",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": []
+  },
+  "kanatci-haydar-beylikduzu": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "D-100 Güney Yanyolu, Beylikdüzü",
+   "ilce": "Beylikdüzü",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (2) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: Kocasinan Merkez Mahallesi Ahlat Sokak No: 18/A",
+    "metin: Yakuplu Merkez Mahallesi Hürriyet Bulvarı No: 1"
+   ]
+  },
+  "fusion-indian-bakirkoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Bakırköy",
+   "ad": false,
+   "karar": null,
+   "neden": "site açılmadı (CERT_HAS_EXPIRED)",
+   "adayAdres": []
+  },
+  "derin-kofte-ve-burger-pendik": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "İmza Sokak, Pendik",
+   "ilce": "Pendik",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "altin-sofra-kucukcekmece": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Küçükçekmece",
+   "ad": true,
+   "karar": {
+    "adres": "Yeni Mahalle İnönü Caddesi No: 144",
+    "yer": "metin",
+    "url": "https://www.altinsofrakebap.com/iletisim/"
+   },
+   "neden": null,
+   "adayAdres": [
+    "metin: Yeni Mahalle İnönü Caddesi No: 144"
+   ],
+   "elle": {
+    "sonuc": "sahip onayı bekliyor",
+    "neden": "Tek adres, ilçe adı sayfada; kayıtta adres yoktu. Yeni Mahalle İnönü Cad. No:144 Küçükçekmece."
+   }
+  },
+  "moc-coffee-roastery-sariyer": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Sarıyer",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": [
+    "metin: Şakayık Sk. No: 4/A (ilçe yakın değil)",
+    "metin: Halaskargazi Cd. No: 96 (ilçe yakın değil)",
+    "metin: Müşir Abdullah Sk. No:6/2 (ilçe yakın değil)",
+    "metin: Libadiye Cd. No:88 (ilçe yakın değil)",
+    "metin: Yeni Meram Cd. No:51J (ilçe yakın değil)",
+    "metin: Cumhuriyet Cd. No:44/1 (ilçe yakın değil)"
+   ]
+  },
+  "bayindir-restoran-pendik": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Mimar Sinan Caddesi, Fevzi Çakmak, Pendik",
+   "ilce": "Pendik",
+   "ad": true,
+   "karar": {
+    "adres": "Mimar Sinan Cd. No: 23",
+    "yer": "metin",
+    "url": "https://bayindirrestoran.com/iletisim/"
+   },
+   "neden": null,
+   "adayAdres": [
+    "metin: Mimar Sinan Cd. No: 23",
+    "metin: Mimar Sinan Cd. No: 23",
+    "metin: Mimar Sinan Cd. No: 23",
+    "metin: Mimar Sinan Cd. No: 23",
+    "metin: Mimar Sinan Cd. No: 23",
+    "metin: Mimar Sinan Cd. No: 23"
+   ],
+   "elle": {
+    "sonuc": "sahip onayı bekliyor",
+    "neden": "Kayıttaki sokakla aynı; yalnız kapı numarası (No:23) ekleniyor."
+   }
+  },
+  "antula-gurme-beykoz": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Beykoz",
+   "ad": true,
+   "karar": {
+    "adres": "Kavacık Mah. Orhan Veli Kanık Cd. No:38",
+    "yer": "metin",
+    "url": "https://antulagurme.com/iletisim"
+   },
+   "neden": null,
+   "adayAdres": [
+    "metin: Kavacık Mah. Orhan Veli Kanık Cd. No:38",
+    "metin: Kavacık Mah. Orhan Veli Kanık Cd. No:38",
+    "metin: Kavacık Mah. Orhan Veli Kanık Cd. No:38"
+   ],
+   "elle": {
+    "sonuc": "sahip onayı bekliyor",
+    "neden": "Tek adres; Kavacık Beykoz’da. Kayıtta adres yoktu."
+   }
+  },
+  "gelik-et-atakoy-istanbul-bakirkoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Bakırköy",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": [
+    "metin: Kennedy Cd. No:20",
+    "metin: Kennedy Cd. No:20"
+   ]
+  },
+  "pasahan-kunefe-maltepe": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Maltepe",
+   "ad": false,
+   "karar": null,
+   "neden": "site açılmadı (ECONNREFUSED)",
+   "adayAdres": []
+  },
+  "remzi-et-mangal-eyupsultan": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Eyüpsultan",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": [
+    "metin: Peyami Safa Sokak , No 1/A"
+   ]
+  },
+  "maydonoz-doner-cekmekoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Turgut Özal Caddesi, Taşdelen Mahallesi, Çekmeköy",
+   "ilce": "Çekmeköy",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (8) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: Öz Sok., No:19 (ilçe yakın değil)",
+    "metin: KAHTA Karşıyaka Mah. Mustafa Kemal Cad. No:72/B (ilçe yakın değil)",
+    "metin: ADIYAMAN MERKEZ Ulucami Mah. Gölbaşı Cad. No:93/A (ilçe yakın değil)",
+    "metin: ORTAKÖY EKSPRES Plevne Mah. Akpınar Cad. No:6/1 (ilçe yakın değil)",
+    "metin: ÜNİVERSİTE Akbilek Mah. Kemal Nehrozoğlu Cad. No35/A (ilçe yakın değil)",
+    "metin: Mesut Mah. Mehmet Akif Ersoy Cad. No:91/C (ilçe yakın değil)"
+   ]
+  },
+  "antik-koy-catalca": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Doktor Çeşme Caddesi, Çatalca",
+   "ilce": "Çatalca",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": [
+    "JSON-LD: Çatalca – Şehir Merkezi Çıkışı Doktor Çeşme Mevkii",
+    "JSON-LD: Çatalca – Şehir Merkezi Çıkışı Doktor Çeşme Mevkii",
+    "JSON-LD: Çatalca  Şehir Merkezi Çıkışı Doktor Çeşme Mevkii",
+    "JSON-LD: Çatalca – Şehir Merkezi Çıkışı Doktor Çeşme Mevkii"
+   ]
+  },
+  "baskent-aspava-atasehir": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Ataşehir",
+   "ad": false,
+   "karar": null,
+   "neden": "site açılmadı (CERT_HAS_EXPIRED)",
+   "adayAdres": []
+  },
+  "nostalji-cafe-ve-restaurant-sile": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Şile",
+   "ad": false,
+   "karar": null,
+   "neden": "site açılmadı (CERT_HAS_EXPIRED)",
+   "adayAdres": []
+  },
+  "menemenci-haydar-cakalli-menemeni-silivri": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Silivri",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "onda-marina-sariyer": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Gümüşdere Caddesi, Sarıyer",
+   "ilce": "Sarıyer",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": []
+  },
+  "sazeli-florya-bakirkoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Bakırköy",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": []
+  },
+  "glutensiz-ada-maltepe": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Maltepe",
+   "ad": false,
+   "karar": null,
+   "neden": "site açılmadı (DEPTH_ZERO_SELF_SIGNED_CERT)",
+   "adayAdres": []
+  },
+  "bayramoglu-doner-beykoz": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Beykoz",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (3) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: Rüzgarlıbahçe Mh. G-69 Sk. No:2",
+    "metin: Rüzgarlıbahçe Mh. G-69 Sk. No:2",
+    "metin: Adres Rüzgarlıbahçe Mh. G-69 Sk. No:2",
+    "metin: Bayramoğlu Döner Rüzgarlıbahçe Mh. G-69 Sk. No:2"
+   ]
+  },
+  "maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Maltepe",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": [
+    "metin: Pir Sultan Abdal Cad No:8",
+    "metin: Zümrütevler Mah. Pir Sultan Abdal Cad. No: 8",
+    "metin: Cevizli Mahallesi Fatih Caddesi Limonluk Sokağı No: 46"
+   ]
+  },
+  "huqqabaz-mall-of-istanbul-basaksehir": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Süleyman Demirel Bulvarı, Ziya Gökalp Mah., Başakşehir",
+   "ilce": "Başakşehir",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (3) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: Atatürk Cd., No: 104/1",
+    "metin: Yeşilköy-Halkalı Cad., No: 6 (ilçe yakın değil)",
+    "metin: Bağışlı Sk., No: 5 (ilçe yakın değil)",
+    "metin: Osmanlı Blv., No: 4",
+    "metin: Yahya Kemal Cd. No: 6/A (ilçe yakın değil)",
+    "metin: Çark Cad., No: 310/A (ilçe yakın değil)"
+   ]
+  },
+  "hook-balik-pendik": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Pendik",
+   "ad": true,
+   "karar": null,
+   "neden": "adres var ama ilçe yakınında değil",
+   "adayAdres": [
+    "metin: Yenişehir Mahallesi Osmanlı Bulvarı No:4 (ilçe yakın değil)"
+   ]
+  },
+  "aslanbey-ciftligi-pendik": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Kurnaköy-Ömerli Yolu, Emirli Mahallesi, Pendik",
+   "ilce": "Pendik",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": [
+    "metin: Ömerli Bağlantı Yolu No:148",
+    "metin: Ömerli Bağlantı Yolu No:148"
+   ]
+  },
+  "nizam-pide-sisli": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Şişli",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (2) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: Kalyoncu Kulluk Cd. No: 13 (ilçe yakın değil)",
+    "metin: İnceleyin Taksim İstiklal Cd. Büyükparmakkapı Sk. No: 18/A (ilçe yakın değil)",
+    "metin: Harbiye Mekanı İnceleyin Harbiye Halaskargazi Cd. No: 37",
+    "metin: 4 Levent Huzur Mah. Fatih Cad. No:93"
+   ]
+  },
+  "ethem-efendi-kahvalti-atasehir": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Ataşehir",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "konya-mevlana-bahcelievler": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Elvan Sokak, Bahçelievler",
+   "ilce": "Bahçelievler",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (2) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: Elvan Sk. No:1/A",
+    "metin: Elvan Sokak No:1/A",
+    "metin: Elvan Sk. No:1/A",
+    "metin: Elvan Sk. No:1/A",
+    "metin: Adresimiz Elvan Sokak No:1/A",
+    "metin: Elvan Sokak No:1/A"
+   ]
+  },
+  "ercan-pizza-pendik": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Osmanlı Bulvarı, Yenişehir Mahallesi, Pendik",
+   "ilce": "Pendik",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (7) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: Vardar Blv. No:22 (ilçe yakın değil)",
+    "metin: Yıldırım Mah. Eski Edirne Asfaltı Cd. No:239/A (ilçe yakın değil)",
+    "metin: BÜYÜKÇEKMECE Dizdariye Mah. Ihlamur Çiçeği Sk. No:2/B (ilçe yakın değil)",
+    "metin: Alemdağ Cd. No:485",
+    "metin: Kayısı Sk. No:2",
+    "metin: Cumhuriyet Meydanı No:18-19A"
+   ]
+  },
+  "bolpi-gurme-pide-ve-lahmacun-sisli": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Şişli",
+   "ad": false,
+   "karar": null,
+   "neden": "sitede ad yok",
+   "adayAdres": [
+    "JSON-LD: Mehmetçik Cad. No:4/A Fulya (ilçe yakın değil)",
+    "metin: Mehmetçik Cad. No:4/A (ilçe yakın değil)",
+    "metin: 2023 Yemeksepeti Mehmetçik Cad. No:4/A (ilçe yakın değil)"
+   ]
+  },
+  "heybet-basaksehir": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Başakşehir",
+   "ad": true,
+   "karar": null,
+   "neden": "adres var ama ilçe yakınında değil",
+   "adayAdres": [
+    "metin: 44 Aşık Veysel Mh. Cemalpaşa Cad. No:5/162 (ilçe yakın değil)",
+    "metin: Florya Cd. No: 44 (ilçe yakın değil)",
+    "metin: 015fa Cd. No:5 (ilçe yakın değil)",
+    "metin: Esenkent Aşık Veysel Mh. Cemalpaşa Cd. No:5/162 (ilçe yakın değil)",
+    "metin: Florya Cd. No: 44 (ilçe yakın değil)",
+    "metin: 44 Aşık Veysel Mh. Cemalpaşa Cad. No:5/162 (ilçe yakın değil)"
+   ]
+  },
+  "vegan-dukkan-lokanta-beyoglu": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Beyoğlu",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (2) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: Siraselviler Cad. Cihangir Mah. Soganci Sok. No:8/D",
+    "metin: Soğancı Sok. No:8",
+    "metin: Siraselviler Cad. Cihangir Mah. Soganci Sok. No:8/D"
+   ]
+  },
+  "uzunya-sariyer": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Sarıyer",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "pidem-fatih": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Fatih",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "zuga-beach-ve-restaurant-sariyer": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Sarıyer",
+   "ad": true,
+   "karar": null,
+   "neden": "sitede kapı numaralı adres yok",
+   "adayAdres": []
+  },
+  "kardesler-kebap-ve-cafe-beyoglu": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": null,
+   "ilce": "Beyoğlu",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (4) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "JSON-LD: Defterdar Yokuşu No:1/A, Firuzağa Mah.",
+    "metin: Defterdar Yokuşu No:1/A",
+    "metin: İletişim Firuzağa Mah. Firuzağa Camii Sok., No:1A",
+    "metin: Mesafede Firuzağa Mah. Firuzağa Camii Sok. No:1A",
+    "JSON-LD: Defterdar Yokuşu No:1/A, Firuzağa Mah.",
+    "metin: Defterdar Yokuşu No:1/A"
+   ]
+  },
+  "tatar-salim-kadikoy": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Güneşlibahçe Sokağı, Kadıköy",
+   "ilce": "Kadıköy",
+   "ad": true,
+   "karar": null,
+   "neden": "ilçede birden çok adres (5) — şube ayrımı yapılamadı",
+   "adayAdres": [
+    "metin: ATAŞEHİR Atilla İlhan Cd. Efe Sk. No:2/1",
+    "metin: İmamata Sk. No:7",
+    "metin: 56 CADDEBOSTAN Caddebostan Mah. İskele Sokak No:8/A",
+    "metin: Atilla İlhan Cd. Efe Sk. No:2/1",
+    "metin: İmamata Sk. No:7",
+    "metin: Caddebostan Mahallesi İskele Sokak No:8/A"
+   ]
+  },
+  "pizza-rucola-pendik": {
+   "tarih": "2026-11-12",
+   "kayitAdresi": "Osmanlı Bulvarı, Yenişehir Mahallesi, Pendik",
+   "ilce": "Pendik",
+   "ad": true,
+   "karar": null,
+   "neden": "adres var ama ilçe yakınında değil",
+   "adayAdres": [
+    "metin: İzmir Bostanlı Bestekar Sadi Hoşses Sokağı No:42/A (ilçe yakın değil)",
+    "metin: Sanayi Cd. No:29 (ilçe yakın değil)",
+    "metin: 5783 Sk No: 48/C (ilçe yakın değil)"
+   ]
+  }
+ }
+}

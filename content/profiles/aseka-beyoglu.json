@@ -1,0 +1,143 @@
+{
+ "slug": "aseka-beyoglu",
+ "description": {
+  "value": "Karaköy'de yüz yıllık tarihî bir binada, 2022'de açılan restoran. Şef Deniz Erinç'in her mevsim yenilenen menüsü mevsimin ürünlerine dayanıyor; à la carte'ın yanında tadım menüsü ve bar var.",
+  "provider": "official_site",
+  "url": "https://www.aseka.co/about-aseka/",
+  "checkedAt": "2026-11-13"
+ },
+ "address": {
+  "value": "Müeyyedzade Mah. Arapoğlan Sok. No:6, 34425 Karaköy, Beyoğlu, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.aseka.co/",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 530 398 54 04",
+  "provider": "official_site",
+  "url": "https://www.aseka.co/",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://www.aseka.co",
+  "provider": "official_site",
+  "url": "https://www.aseka.co/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "aseka.karakoy",
+  "provider": "official_site",
+  "url": "https://www.aseka.co/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Pazartesi kapalı.",
+   "provider": "official_site",
+   "url": "https://www.aseka.co/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://www.aseka.co/",
+  "checkedAt": "2026-11-13"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.aseka.co/menu/",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": false,
+  "sections": [
+   {
+    "title": "Fine Food (sezon menüsü)",
+    "items": [
+     {
+      "name": "Tater Tots",
+      "description": "house spice, black truffle mayonnaise"
+     },
+     {
+      "name": "Pork Belly Slider",
+      "description": "gochujang aioli, cabbage kimchi, coriander"
+     },
+     {
+      "name": "Steak Tartare",
+      "description": "smoked bone marrow dressing, black garlic lavash, egg yolk cream"
+     },
+     {
+      "name": "Smoked Trout Rillettes",
+      "description": "roe, rice crisp, pickled mustard seeds"
+     },
+     {
+      "name": "Local Green Salad",
+      "description": "citrus vinaigrette"
+     },
+     {
+      "name": "Salt-Baked Beetroot",
+      "description": "feta cheese mousse, sorrel, sunflower dukkah"
+     },
+     {
+      "name": "Line-Caught Sea Bream Crudo",
+      "description": "leche de tigre, grapefruit, Kale pepper"
+     },
+     {
+      "name": "Charred Leek",
+      "description": "ajo blanco, puffed quinoa, Turkish coffee oil, chili"
+     },
+     {
+      "name": "Cauliflower",
+      "description": "sage, pumpkin hummus, pine nuts"
+     },
+     {
+      "name": "Risotto alla Milanese",
+      "description": "shrimp ceviche, preserved lemon, Swiss chard"
+     },
+     {
+      "name": "Agnolotti del Plin",
+      "description": "short rib, chives, breadcrumbs"
+     },
+     {
+      "name": "Gnocchi Carbonara",
+      "description": "Parmesan, pancetta, cured egg yolk"
+     },
+     {
+      "name": "Catch of the Day",
+      "description": "pil pil sauce, potato pavé, capers, seaweed"
+     },
+     {
+      "name": "Grilled Lamb Loin",
+      "description": "au poivre, celeriac purée, grilled wild greens"
+     },
+     {
+      "name": "Dry-Aged Duck Breast",
+      "description": "plum jus, chestnut, leek croquettes"
+     },
+     {
+      "name": "Beef Short Rib Pavé",
+      "description": "freekeh pilaf, smoked buffalo milk yoghurt, muhammara"
+     },
+     {
+      "name": "Candied Quince",
+      "description": "pistachio gelato, financier, yoghurt crémeux"
+     },
+     {
+      "name": "Horchata Rice Pudding",
+      "description": "hazelnut caramel, cinnamon milk shards"
+     },
+     {
+      "name": "Dark Chocolate Tart",
+      "description": "olive oil ice cream, sea salt"
+     },
+     {
+      "name": "Churros",
+      "description": "crème anglaise, chocolate ganache, candied citrus"
+     }
+    ]
+   }
+  ]
+ },
+ "_kaynak_notu": "Resmî site aseka.co ana sayfa, /about-aseka/, /menu/ (13.11.2026; menü sayfası son değişiklik 18.09.2026). Menü sayfası güncel sezon başlığını 'FALL/WINTER 2027' olarak yazıyor; tarih belirsiz olduğu için validFrom verilmedi. Sitedeki menü PDF'leri 'FİYATSIZ' adlı; fiyat aktarılmadı. Perşembe–cumartesi saatleri sayfa metninde boş göründüğü için saat alanı doldurulmadı (yalnız pazartesi kapalı notu)."
+}
