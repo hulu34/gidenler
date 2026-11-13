@@ -10,6 +10,7 @@ const records=JSON.parse(fs.readFileSync('../candidate/data/real/venues.json','u
 const targets=['altin-sofra-kucukcekmece','bayindir-restoran-pendik','antula-gurme-beykoz'].map(s=>records.find(v=>v.slug===s));
 const folder='pr41-address-evidence';fs.mkdirSync(folder,{recursive:true});
 const out={sha:SHA,origin,readOnly:true,productionWrites:0,databaseCredentials:false,api:[],browsers:[],errors:[],complete:false};
+let active;
 const save=()=>fs.writeFileSync(folder+'/address.json',JSON.stringify(out,null,2));
 const headers={'x-vercel-protection-bypass':process.env.VERCEL_BYPASS};
 async function json(p){const r=await fetch(origin+p,{headers,redirect:'error'});assert.equal(r.status,200);return r.json()}
@@ -18,10 +19,10 @@ try{
  for(const v of targets){const j=await json('/api/admin/db/?rapor=profil&slug='+v.slug);assert.equal(j.place.address,v.address);out.api.push({slug:v.slug,address:j.place.address,neighborhoodValidatedByGuardedSql:true})}save();
  for(const[engine,width]of[['chromium',375],['chromium',390],['chromium',1440],['webkit',390]]){
   const browser=await({chromium,webkit}[engine]).launch();const context=await browser.newContext({viewport:{width,height:844},isMobile:width<600,hasTouch:width<600,extraHTTPHeaders:headers});
-  await context.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());const p=await context.newPage();p.on('pageerror',e=>out.errors.push(String(e)));
+  await context.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());const p=await context.newPage();active=p;p.on('pageerror',e=>out.errors.push(String(e)));
   const row={engine,width,addresses:[]};
-  for(const v of targets){assert.equal((await p.goto(origin+'/mekan/'+v.slug+'/',{waitUntil:'networkidle'})).status(),200);assert((await p.locator('#genel').innerText()).includes(v.address),v.slug+' actual address missing');assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);row.addresses.push(v.slug);if(engine==='chromium'&&width===390)await p.screenshot({path:folder+'/'+v.slug+'-390.png',fullPage:true})}
+  for(const v of targets){assert.equal((await p.goto(origin+'/mekan/'+v.slug+'/',{waitUntil:'networkidle'})).status(),200);await p.getByRole('heading',{name:v.name,exact:true}).first().waitFor();assert((await p.locator('body').innerText()).includes(v.address),v.slug+' actual address missing');assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);row.addresses.push(v.slug);if(engine==='chromium'&&width===390)await p.screenshot({path:folder+'/'+v.slug+'-390.png',fullPage:true})}
   out.browsers.push(row);save();await browser.close();
  }
  assert.deepEqual(out.errors,[]);out.complete=true;save();console.log(JSON.stringify(out));
-}catch(e){out.failure=String(e);save();console.error(e);process.exit(1)}
+}catch(e){if(active){await active.screenshot({path:folder+'/failure.png',fullPage:true}).catch(()=>{});fs.writeFileSync(folder+'/failure-visible.txt',await active.locator('body').innerText().catch(()=>''))}out.failure=String(e);save();console.error(e);process.exit(1)}
