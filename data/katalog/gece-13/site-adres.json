@@ -1,10 +1,11 @@
 {
- "_aciklama": "Resmî siteden adres tamamlama denetimi (13.11.2026, scripts/katalog/site-adres.mjs). Kapı numarası ya da adresi eksik 141 B1 dışı kayıttan resmî sitesi açık ve paylaşılmayan 57 kayıt tarandı. venues.json DEĞİŞMEDİ; adaylar elle incelendi, uygulama sahip onayına bağlı.",
+ "_aciklama": "Resmî siteden adres tamamlama denetimi (13.11.2026, scripts/katalog/site-adres.mjs). Kapı numarası ya da adresi eksik 141 B1 dışı kayıttan resmî sitesi açık ve paylaşılmayan 57 kayıt tarandı. Adaylar elle incelendi; sahibin onayladığı 3 adres scripts/katalog/site-adres-uygula.mjs ile venues.json’a yazıldı (13.11.2026).",
  "ozet": {
   "taranan": 57,
   "otomatikAday": 4,
   "elleRet": 1,
-  "onayBekleyen": 3
+  "onayBekleyen": 0,
+  "onaylanan": 3
  },
  "kayitlar": {
   "karakoy-lokantasi-beyoglu": {
@@ -294,8 +295,17 @@
     "metin: Yeni Mahalle İnönü Caddesi No: 144"
    ],
    "elle": {
-    "sonuc": "sahip onayı bekliyor",
-    "neden": "Tek adres, ilçe adı sayfada; kayıtta adres yoktu. Yeni Mahalle İnönü Cad. No:144 Küçükçekmece."
+    "sonuc": "onaylandı",
+    "neden": "Tek adres, ilçe adı sayfada; kayıtta adres yoktu. Yeni Mahalle İnönü Cad. No:144 Küçükçekmece.",
+    "onay": {
+     "tarih": "2026-11-13",
+     "veren": "Gidenler sahibi (sohbette, 13.11.2026)"
+    },
+    "uygulanan": {
+     "adres": "İnönü Caddesi No:144, Yeni Mahalle, Küçükçekmece",
+     "mahalle": "Yeni Mahalle"
+    },
+    "koordinatDenetimi": "OSM Overpass (13.11.2026): \"İnönü Caddesi\" kayıtlı koordinatın 120 m içinde; koordinat değiştirilmedi."
    }
   },
   "moc-coffee-roastery-sariyer": {
@@ -334,8 +344,16 @@
     "metin: Mimar Sinan Cd. No: 23"
    ],
    "elle": {
-    "sonuc": "sahip onayı bekliyor",
-    "neden": "Kayıttaki sokakla aynı; yalnız kapı numarası (No:23) ekleniyor."
+    "sonuc": "onaylandı",
+    "neden": "Kayıttaki sokakla aynı; yalnız kapı numarası (No:23) ekleniyor.",
+    "onay": {
+     "tarih": "2026-11-13",
+     "veren": "Gidenler sahibi (sohbette, 13.11.2026)"
+    },
+    "uygulanan": {
+     "adres": "Mimar Sinan Caddesi No:23, Fevzi Çakmak, Pendik"
+    },
+    "koordinatDenetimi": "OSM Overpass (13.11.2026): \"Mimar Sinan Caddesi\" kayıtlı koordinatın 120 m içinde; koordinat değiştirilmedi."
    }
   },
   "antula-gurme-beykoz": {
@@ -355,8 +373,17 @@
     "metin: Kavacık Mah. Orhan Veli Kanık Cd. No:38"
    ],
    "elle": {
-    "sonuc": "sahip onayı bekliyor",
-    "neden": "Tek adres; Kavacık Beykoz’da. Kayıtta adres yoktu."
+    "sonuc": "onaylandı",
+    "neden": "Tek adres; Kavacık Beykoz’da. Kayıtta adres yoktu.",
+    "onay": {
+     "tarih": "2026-11-13",
+     "veren": "Gidenler sahibi (sohbette, 13.11.2026)"
+    },
+    "uygulanan": {
+     "adres": "Orhan Veli Kanık Caddesi No:38, Kavacık Mahallesi, Beykoz",
+     "mahalle": "Kavacık Mahallesi"
+    },
+    "koordinatDenetimi": "OSM Overpass (13.11.2026): \"Orhan Veli Kanık Caddesi\" kayıtlı koordinatın 120 m içinde; koordinat değiştirilmedi."
    }
   },
   "gelik-et-atakoy-istanbul-bakirkoy": {

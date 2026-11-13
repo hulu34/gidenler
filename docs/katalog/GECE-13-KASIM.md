@@ -38,10 +38,11 @@ Production'a yazılmadı, birleştirme ve deploy yapılmadı. Menemen (PR #38) v
   - Taranan: 57.
 - **Sonuç:** otomatik kuralı 4 kayıt geçti.
   - **1 ret:** Küçük Ev. Bulunan adres Levent (Beşiktaş) şubesi; kayıt Sarıyer.
-  - **3 kayıt sahip onayı bekliyor:**
-    - Altın Sofra (Küçükçekmece): İnönü Cad. No:144;
-    - Bayındır (Pendik): Mimar Sinan Cd. No:23;
-    - Antula Gurme (Beykoz): Orhan Veli Kanık Cd. No:38.
+  - **3 kayıt sahip onayıyla uygulandı (13.11.2026):**
+    - Altın Sofra (Küçükçekmece): İnönü Caddesi No:144, Yeni Mahalle;
+    - Bayındır (Pendik): Mimar Sinan Caddesi No:23, Fevzi Çakmak;
+    - Antula Gurme (Beykoz): Orhan Veli Kanık Caddesi No:38, Kavacık Mahallesi.
+  - Üç sokak da kayıtlı koordinatın 120 m içinde (OSM Overpass); koordinatlar değişmedi.
 - **Elenme nedenleri:**
 
   | Neden | Kayıt |
@@ -54,7 +55,10 @@ Production'a yazılmadı, birleştirme ve deploy yapılmadı. Menemen (PR #38) v
   | Site açılmadı | 6 |
 
 - OSM etiketlerinden tamamlama da denendi ve verim alınmadı: kapı numarası alanında 3 telefon numarası çıktı.
-- `venues.json` değişmedi.
+- **`venues.json`:** yalnız bu 3 kaydın `address` alanı değişti; Altın Sofra ve Antula'ya `neighborhood` eklendi.
+  - Uygulama `scripts/katalog/site-adres-uygula.mjs` ile yapıldı: varsayılan kuru çalıştırma, yazmak için `--yaz`; tekrar çalıştırmak değişiklik yapmaz.
+  - Sor dizininde bu 3 satır güncellendi.
+- **Site haritası:** Altın Sofra ve Antula `sitemap-adressiz.json` listesinde kaldı. Liste testte 39 kayıt olarak sabit; adresleri olduğu için haritada kalıyorlar ve artık JSON-LD de alıyorlar.
 
 ### 3. Yüksek değerli restoran profilleri (öncelik 3)
 14 yeni içerik profili (`content/profiles/<slug>.json`). Hepsi yalnız resmî siteden alındı ve 13.11.2026'da kontrol edildi.
