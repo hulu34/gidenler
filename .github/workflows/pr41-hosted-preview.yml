@@ -1,0 +1,50 @@
+name: PR41 combined profiles actual protected Vercel Preview acceptance
+on:
+  push:
+    branches: [inceleme/pr41-gercek-vercel-kabul-20261113]
+permissions:
+  contents: read
+concurrency:
+  group: pr41-hosted-preview
+  cancel-in-progress: false
+jobs:
+  hosted-preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c0af4987c19146841494242e65d1cb0bc4dbe1a8
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify actual isolated Preview and HTTP operations
+        working-directory: harness
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+        run: node scripts/pr41-hosted-api.mjs
+      - name: Install independent mobile and desktop browsers
+        if: ${{ hashFiles('harness/pr41-bootstrap-only') == '' }}
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pr41-hosted-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/pr41-hosted-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Actual Vercel responsive profile acceptance
+        if: ${{ hashFiles('harness/pr41-bootstrap-only') == '' }}
+        working-directory: harness
+        env:
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/pr41-hosted-browser/package.json
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+        run: node scripts/pr41-hosted-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr41-hosted-preview-evidence
+          path: harness/pr41-hosted-evidence/
+          retention-days: 14
