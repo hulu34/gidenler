@@ -1,0 +1,111 @@
+name: PR41 independent combined rollback acceptance
+on:
+  push:
+    branches: [inceleme/pr41-bagimsiz-kabul-20261113]
+permissions:
+  contents: read
+jobs:
+  cloud-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: audit
+          POSTGRES_PASSWORD: synthetic-audit-only
+          POSTGRES_DB: gidenler_pr41_audit
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      DATABASE_URL: postgres://audit:synthetic-audit-only@127.0.0.1:5432/gidenler_pr41_audit
+      DB_DRIVER: pg
+      DB_ADMIN_LOCAL: '1'
+      VERCEL_ENV: preview
+      PRODUCTION_DB_FINGERPRINT: aaaaaaaaaaaaaaaa
+      GIDENLER_TEST_ONLY: pr41-20261113
+      CANDIDATE_SHA: 1099fcc9e061a937e7a4fcf56f2393678020bf29
+      CANDIDATE_KIND: combined
+      BETTER_AUTH_SECRET: synthetic-isolated-cloud-audit-secret-only-20261113
+      BETTER_AUTH_URL: http://localhost:3189
+      NEXT_PUBLIC_SITE_URL: http://localhost:3189
+      GOOGLE_PLACES_ENABLED: '0'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 1099fcc9e061a937e7a4fcf56f2393678020bf29
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 2031408276fc5e4a24223a4e45fa70f656ffb604
+          path: baseline
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install independently in candidate and baseline
+        run: |
+          (cd candidate && npm ci --no-audit --no-fund) &
+          (cd baseline && npm ci --no-audit --no-fund) &
+          wait
+          test -x candidate/node_modules/.bin/tsx
+          test -x baseline/node_modules/.bin/tsx
+      - name: Prepare isolated PostgreSQL fixture with existing profiles and synthetic protected records
+        working-directory: harness
+        run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr41-prepare.ts
+      - name: Exact source regression, type check and production build
+        working-directory: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck 2>&1 | tee ../harness/pr41-cloud-evidence/typecheck.log
+          for script in zengin30-profil-test menemen-foto-test menemen-profil-test seotest fototest.mjs dbtest gpuantest katalogtest aramatest sortest panel-rezervasyon-test; do
+            path="scripts/$script"
+            [[ "$path" == *.mjs ]] || path="$path.ts"
+            env -u DATABASE_URL -u DB_DRIVER -u DB_ADMIN_LOCAL -u VERCEL_ENV -u GOOGLE_PLACES_ENABLED -u PRODUCTION_DB_FINGERPRINT ./node_modules/.bin/tsx "$path" 2>&1 | tee "../harness/pr41-cloud-evidence/$script.log"
+          done
+          if [ "$CANDIDATE_KIND" = combined ]; then
+            env -u DATABASE_URL -u DB_DRIVER -u DB_ADMIN_LOCAL -u VERCEL_ENV -u GOOGLE_PLACES_ENABLED -u PRODUCTION_DB_FINGERPRINT ./node_modules/.bin/tsx scripts/gece13-profil-test.ts 2>&1 | tee ../harness/pr41-cloud-evidence/pr39-profiles.log
+            ./node_modules/.bin/tsx scripts/katalog/profil-dogrula.ts 2>&1 | tee ../harness/pr41-cloud-evidence/profile-validator.log
+          fi
+          npm run build 2>&1 | tee ../harness/pr41-cloud-evidence/build.log
+          git diff --exit-code
+      - name: Independently compare the three existing red suites with exact Production
+        working-directory: harness
+        run: node scripts/pr41-known-baseline.mjs
+      - name: Install Chromium and WebKit
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pr41-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/pr41-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Independent HTTP: 26 profiles, 16 videos, repeat and complete rollback
+        working-directory: harness
+        run: |
+          (cd ../candidate && NODE_OPTIONS="--import=$GITHUB_WORKSPACE/harness/scripts/pr41-fault-preload.mjs" npm start -- -p 3189) > pr41-server.log 2>&1 &
+          ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr41-api-check.ts
+      - name: Real built profile mobile, desktop and WebKit acceptance
+        working-directory: harness
+        env:
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/pr41-browser/package.json
+        run: node scripts/pr41-browser.mjs
+      - name: Independent shared video, newer update and partial failure protections
+        working-directory: harness
+        run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr41-safety-check.ts
+      - name: Publication gate requires actual successful rollback invariants
+        working-directory: harness
+        run: |
+          node -e 'const r=require("./pr41-cloud-evidence/safety.json"); if(!r.complete || !r.releaseGate) process.exit(1)'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr41-independent-combined-evidence
+          path: |
+            harness/pr41-cloud-evidence/
+            harness/pr41-server.log
+          retention-days: 14
