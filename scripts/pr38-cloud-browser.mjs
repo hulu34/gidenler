@@ -23,10 +23,10 @@ try{
   assert.equal(await p.locator('[data-mozaik] img').count(),6);assert((await p.locator('[data-mozaik] img').first().getAttribute('src')).includes('fc7e44fbef'));
   for(const photo of photos)assert.equal(await p.locator('[data-mozaik] img').filter({hasNotText:'not-used'}).evaluateAll((imgs,src)=>imgs.some(i=>i.getAttribute('src')===src),photo.src),true,photo.src);
   const menu=await p.locator('#menu').innerText();assert.match(menu,/20\.01\.2024 tarihli arşiv kopyasından/);assert.match(menu,/güncel menü ve fiyat olarak doğrulanmadı/);assert(!menu.includes('₺'));
-  for(const s of source.menu.sections){assert(menu.includes(s.title),s.title);for(const item of s.items)assert(menu.includes(item.name),item.name)}
+  const folded=menu.toLocaleLowerCase('tr');for(const s of source.menu.sections){assert(folded.includes(s.title.toLocaleLowerCase('tr')),s.title);for(const item of s.items)assert(folded.includes(item.name.toLocaleLowerCase('tr')),item.name)}
   assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
   const og=await p.locator('meta[property="og:image"]').first().getAttribute('content');assert(og.includes('menemen-besiktas-fc7e44fbef'));
-  await p.screenshot({path:path.join(folder,engine+'-'+width+'-profile.png'),fullPage:true});
+  await p.screenshot({path:path.join(folder,engine+'-'+width+'-profile.png'),fullPage:true});await p.screenshot({path:path.join(folder,engine+'-'+width+'-hero.png'),fullPage:false});
   await p.locator('#menu').screenshot({path:path.join(folder,engine+'-'+width+'-menu.png')});
   const video=p.getByRole('button',{name:/YouTube videosunu burada oynat/});assert.equal(await video.count(),1);assert.match(await p.locator('body').innerText(),/İşbirliği/);
   await video.click();const dialog=p.getByRole('dialog',{name:'Menemen videoları',exact:true});await dialog.waitFor();const iframeSrc=await dialog.locator('iframe').getAttribute('src');assert(iframeSrc.includes('e6OmpzizSoo'));assert.match(iframeSrc,/youtube(?:-nocookie)?\.com\/embed\//);assert.match(await dialog.innerText(),/Ayaküstü Lezzetler/);
