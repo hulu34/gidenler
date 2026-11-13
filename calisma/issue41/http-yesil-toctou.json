@@ -1,0 +1,982 @@
+{
+ "tarih": "2026-11-13T09:29:26.571Z",
+ "pass": 195,
+ "fail": 0,
+ "kayit": [
+  {
+   "grup": "",
+   "ad": "Menemen ön koşul: profil ve video uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "ilk ve tekrar uygulama başarılı",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "tekrardan sonra asıl uygulama geri alınabilir (not_latest yok)",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "geri alma sonrası profil yok",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "geri alma sonrası video yok",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "aynı geri almayı tekrar istemek güvenli (veri değişmez)",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "değişiklik yapmayan tekrarın geri alınması zararsız",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "yeniden uygulama profil ve videoyu geri getirir",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "uygulanmış profilin tekrarı işlemsiz; tekrarın geri alınması asıl uygulamayı kaldırmaz",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "grup sonu: yeniden uygulama da geri alınır",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "daha yeni farklı uygulama varken eski geri alma reddedilir",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "yeniden eskiye sırayla geri alma çalışır ve profil tamamen kalkar",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "eşzamanlı iki aynı uygulama: tek video ilişkisi, yinelenen yok",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "eşzamanlı uygulamalar sırayla geri alınabilir (409 yalnız daha yeni uygulama varken)",
+   "ok": true
+  },
+  {
+   "grup": "A tekrar sonrası geri dönüş",
+   "ad": "eşzamanlı uygulamaların ikisi de geri alınınca profil ve video kalmaz",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ulus-29-besiktas: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "sunset-grill-ve-bar-besiktas: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "topaz-beyoglu: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "murver-beyoglu: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "lokanta-1741-fatih: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "1924-istanbul-beyoglu: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "alaf-besiktas: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "haci-abdullah-beyoglu: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "kanaat-lokantasi-uskudar: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ciya-sofrasi-kadikoy: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "park-fora-besiktas: uygula + tekrar uygula",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "12 profilde 16 video görünür (yinelenen yok)",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ulus-29-besiktas: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ulus-29-besiktas: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "sunset-grill-ve-bar-besiktas: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "sunset-grill-ve-bar-besiktas: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "topaz-beyoglu: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "topaz-beyoglu: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "murver-beyoglu: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "murver-beyoglu: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "lokanta-1741-fatih: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "lokanta-1741-fatih: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "1924-istanbul-beyoglu: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "1924-istanbul-beyoglu: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "alaf-besiktas: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "alaf-besiktas: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "haci-abdullah-beyoglu: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "haci-abdullah-beyoglu: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "kanaat-lokantasi-uskudar: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "kanaat-lokantasi-uskudar: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ciya-sofrasi-kadikoy: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ciya-sofrasi-kadikoy: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "park-fora-besiktas: hedefli tam geri alma",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "park-fora-besiktas: geri alma sonrası video görünmez",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ulus-29-besiktas: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "sunset-grill-ve-bar-besiktas: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "topaz-beyoglu: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "murver-beyoglu: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "lokanta-1741-fatih: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "1924-istanbul-beyoglu: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "alaf-besiktas: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "haci-abdullah-beyoglu: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "kanaat-lokantasi-uskudar: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "ciya-sofrasi-kadikoy: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "park-fora-besiktas: yeniden uygulanır",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "yeniden uygulamada da 16 video, yinelenen yok",
+   "ok": true
+  },
+  {
+   "grup": "B 12 profil + 16 video tam geri dönüş",
+   "ad": "son geri almadan sonra 12 profilde video yok",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "turk-fatih-tutak-sisli: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "turk-fatih-tutak-sisli: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "nicole-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "nicole-beyoglu: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "mutfakkoz-kadikoy: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "mutfakkoz-kadikoy: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "cuma-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "cuma-beyoglu: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "fauna-atasehir: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "fauna-atasehir: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "aida-vino-e-cucina-kadikoy: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "aida-vino-e-cucina-kadikoy: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "mikla-turkey-fusion-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "mikla-turkey-fusion-beyoglu: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "aseka-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "aseka-beyoglu: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "calipso-fish-maltepe: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "calipso-fish-maltepe: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "rumelihisari-iskele-sariyer: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "rumelihisari-iskele-sariyer: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "sade-bes-denizler-mutfagi-sisli: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "sade-bes-denizler-mutfagi-sisli: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "deraliye-fatih: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "deraliye-fatih: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "tavaci-recep-usta-bostanci-maltepe: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "tavaci-recep-usta-bostanci-maltepe: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "ali-ocakbasi-karakoy-beyoglu: uygula → tekrar → asıl uygulamayı geri al",
+   "ok": true
+  },
+  {
+   "grup": "B2 PR39 14 profil zinciri",
+   "ad": "ali-ocakbasi-karakoy-beyoglu: yeniden uygula → geri al",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "ortak video eklenince önceki atıf ve sponsorluk değişmez",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "ortak video iki mekânda da görünür",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "başka mekânı hedefleyen kaldırma reddedilir ve hiçbir yerde gizlemez",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "mekâna özgü kaldırma yalnız o mekândan kaldırır",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "profil geri alınınca ortak videonun öbür mekândaki ilişkisi ve atfı kalır",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "önceden kaldırılmış video örtük yeniden yayımlanmaz",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "watch ve Shorts biçimi aynı video: tek ilişki",
+   "ok": true
+  },
+  {
+   "grup": "C ortak medya",
+   "ad": "Kanaat geri alındı; video kalmadı",
+   "ok": true
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "ikinci video bulunamazsa başarı dönmez",
+   "ok": true
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "ikinci video hatasında profil uygulanmış kalmaz, ilk video bağlanmaz",
+   "ok": true
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "ilk video hatasında da hiçbir şey uygulanmaz",
+   "ok": true
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "oEmbed ağ hatasında hiçbir şey uygulanmaz ve hata açık raporlanır",
+   "ok": true
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "veritabanı ortasında hata: profil ve video ilişkisi kalmaz",
+   "ok": true
+  },
+  {
+   "grup": "D kısmi video hatası",
+   "ad": "hatalardan sonra temiz uygulama çalışır",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "ulus-29-besiktas: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "sunset-grill-ve-bar-besiktas: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "topaz-beyoglu: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "murver-beyoglu: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "lokanta-1741-fatih: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "1924-istanbul-beyoglu: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "alaf-besiktas: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "haci-abdullah-beyoglu: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "kanaat-lokantasi-uskudar: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "ciya-sofrasi-kadikoy: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "tarihi-sultanahmet-koftecisi-selim-usta-fatih: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "park-fora-besiktas: tarayıcı öncesi uygulandı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 ulus-29-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 sunset-grill-ve-bar-besiktas: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 topaz-beyoglu: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 murver-beyoglu: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 lokanta-1741-fatih: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 1924-istanbul-beyoglu: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 alaf-besiktas: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 haci-abdullah-beyoglu: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 kanaat-lokantasi-uskudar: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 ciya-sofrasi-kadikoy: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 tarihi-sultanahmet-koftecisi-selim-usta-fatih: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 park-fora-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 menemen-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat, İşbirliği etiketi",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 375 pandeli-fatih: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 ulus-29-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 sunset-grill-ve-bar-besiktas: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 topaz-beyoglu: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 murver-beyoglu: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 lokanta-1741-fatih: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 1924-istanbul-beyoglu: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 alaf-besiktas: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 haci-abdullah-beyoglu: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 kanaat-lokantasi-uskudar: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 ciya-sofrasi-kadikoy: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 tarihi-sultanahmet-koftecisi-selim-usta-fatih: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 park-fora-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 menemen-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat, İşbirliği etiketi",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 390 pandeli-fatih: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 ulus-29-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 sunset-grill-ve-bar-besiktas: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 topaz-beyoglu: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 murver-beyoglu: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 lokanta-1741-fatih: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 1924-istanbul-beyoglu: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 alaf-besiktas: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 haci-abdullah-beyoglu: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 kanaat-lokantasi-uskudar: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 ciya-sofrasi-kadikoy: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 tarihi-sultanahmet-koftecisi-selim-usta-fatih: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 park-fora-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 menemen-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat, İşbirliği etiketi",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "chrome 1440 pandeli-fatih: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 ulus-29-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 sunset-grill-ve-bar-besiktas: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 topaz-beyoglu: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 murver-beyoglu: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 lokanta-1741-fatih: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 1924-istanbul-beyoglu: 200, taşma yok, profil ve 0 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 alaf-besiktas: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 haci-abdullah-beyoglu: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 kanaat-lokantasi-uskudar: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 ciya-sofrasi-kadikoy: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 tarihi-sultanahmet-koftecisi-selim-usta-fatih: 200, taşma yok, profil ve 2 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 park-fora-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 menemen-besiktas: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat, İşbirliği etiketi",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "webkit 390 pandeli-fatih: 200, taşma yok, profil ve 1 video, oyuncu aç-kapat",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "tarayıcılarda JavaScript hatası yok",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası ulus-29-besiktas: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası sunset-grill-ve-bar-besiktas: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası topaz-beyoglu: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası murver-beyoglu: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası lokanta-1741-fatih: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası 1924-istanbul-beyoglu: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası alaf-besiktas: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası haci-abdullah-beyoglu: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası kanaat-lokantasi-uskudar: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası ciya-sofrasi-kadikoy: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası tarihi-sultanahmet-koftecisi-selim-usta-fatih: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası park-fora-besiktas: profil ve video sayfadan kalktı",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası pandeli-fatih: ortak video yerinde",
+   "ok": true
+  },
+  {
+   "grup": "F tarayıcı",
+   "ad": "geri alma sonrası menemen-besiktas: Menemen değişmedi",
+   "ok": true
+  },
+  {
+   "grup": "E korunan veri",
+   "ad": "Menemen profili ve sponsorlu videosu değişmedi",
+   "ok": true
+  },
+  {
+   "grup": "E korunan veri",
+   "ad": "kullanıcı, deneyim, Google kimliği ve ortak/kaldırılmış medya kayıtları aynı",
+   "ok": true
+  },
+  {
+   "grup": "E korunan veri",
+   "ad": "hedef dışı mekânların kimlik alanları aynı",
+   "ok": true
+  },
+  {
+   "grup": "E korunan veri",
+   "ad": "katalog 793 mekân",
+   "ok": true
+  }
+ ]
+}
