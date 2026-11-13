@@ -67,7 +67,7 @@ jobs:
           for script in gece13-profil-test menemen-foto-test menemen-profil-test seotest fototest.mjs dbtest gpuantest katalogtest aramatest sortest panel-rezervasyon-test; do
             path="scripts/$script"
             [[ "$path" == *.mjs ]] || path="$path.ts"
-            ./node_modules/.bin/tsx "$path" 2>&1 | tee "../harness/pr39-cloud-evidence/$script.log"
+            env -u DATABASE_URL -u DB_DRIVER -u DB_ADMIN_LOCAL -u VERCEL_ENV -u GOOGLE_PLACES_ENABLED -u PRODUCTION_DB_FINGERPRINT ./node_modules/.bin/tsx "$path" 2>&1 | tee "../harness/pr39-cloud-evidence/$script.log"
           done
           ./node_modules/.bin/tsx scripts/katalog/profil-dogrula.ts 2>&1 | tee ../harness/pr39-cloud-evidence/profile-validator.log
           npm run build 2>&1 | tee ../harness/pr39-cloud-evidence/build.log
