@@ -45,6 +45,9 @@ jobs:
       - name: Install candidate dependencies
         working-directory: candidate
         run: npm ci --no-audit --no-fund
+      - name: Prepare synthetic database and test preservation, repeat and rollback
+        working-directory: harness
+        run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr38-cloud-prepare.ts
       - name: Source tests, type check and build
         working-directory: candidate
         run: |
@@ -55,9 +58,6 @@ jobs:
           npm run test:foto
           npm run build
           git diff --exit-code
-      - name: Prepare synthetic database and test preservation, repeat and rollback
-        working-directory: harness
-        run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr38-cloud-prepare.ts
       - name: Install independent browsers
         run: |
           npm install --prefix "$RUNNER_TEMP/menemen-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
