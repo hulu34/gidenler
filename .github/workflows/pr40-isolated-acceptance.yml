@@ -1,0 +1,120 @@
+name: PR40 independent isolated acceptance
+on:
+  push:
+    branches: [inceleme/pr40-bulut-kabul-20261113]
+permissions:
+  contents: read
+jobs:
+  cloud-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - kind: standalone
+            sha: 60b0cf6586c9a44ddd0895d5d1a9725f0d88f295
+          - kind: combined
+            sha: 1099fcc9e061a937e7a4fcf56f2393678020bf29
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: audit
+          POSTGRES_PASSWORD: synthetic-audit-only
+          POSTGRES_DB: gidenler_pr40_audit
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      DATABASE_URL: postgres://audit:synthetic-audit-only@127.0.0.1:5432/gidenler_pr40_audit
+      DB_DRIVER: pg
+      DB_ADMIN_LOCAL: '1'
+      VERCEL_ENV: preview
+      PRODUCTION_DB_FINGERPRINT: aaaaaaaaaaaaaaaa
+      GIDENLER_TEST_ONLY: pr40-20261113
+      CANDIDATE_SHA: ${{ matrix.sha }}
+      CANDIDATE_KIND: ${{ matrix.kind }}
+      BETTER_AUTH_SECRET: synthetic-isolated-cloud-audit-secret-only-20261113
+      BETTER_AUTH_URL: http://localhost:3189
+      NEXT_PUBLIC_SITE_URL: http://localhost:3189
+      GOOGLE_PLACES_ENABLED: '0'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.sha }}
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 2031408276fc5e4a24223a4e45fa70f656ffb604
+          path: baseline
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install independently in candidate and baseline
+        run: |
+          (cd candidate && npm ci --no-audit --no-fund) &
+          (cd baseline && npm ci --no-audit --no-fund) &
+          wait
+          test -x candidate/node_modules/.bin/tsx
+          test -x baseline/node_modules/.bin/tsx
+      - name: Prepare isolated PostgreSQL fixture with existing profiles and synthetic protected records
+        working-directory: harness
+        run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr40-prepare.ts
+      - name: Exact source regression, type check and production build
+        working-directory: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck 2>&1 | tee ../harness/pr40-cloud-evidence/typecheck.log
+          for script in zengin30-profil-test menemen-foto-test menemen-profil-test seotest fototest.mjs dbtest gpuantest katalogtest aramatest sortest panel-rezervasyon-test; do
+            path="scripts/$script"
+            [[ "$path" == *.mjs ]] || path="$path.ts"
+            env -u DATABASE_URL -u DB_DRIVER -u DB_ADMIN_LOCAL -u VERCEL_ENV -u GOOGLE_PLACES_ENABLED -u PRODUCTION_DB_FINGERPRINT ./node_modules/.bin/tsx "$path" 2>&1 | tee "../harness/pr40-cloud-evidence/$script.log"
+          done
+          if [ "$CANDIDATE_KIND" = combined ]; then
+            env -u DATABASE_URL -u DB_DRIVER -u DB_ADMIN_LOCAL -u VERCEL_ENV -u GOOGLE_PLACES_ENABLED -u PRODUCTION_DB_FINGERPRINT ./node_modules/.bin/tsx scripts/gece13-profil-test.ts 2>&1 | tee ../harness/pr40-cloud-evidence/pr39-profiles.log
+            ./node_modules/.bin/tsx scripts/katalog/profil-dogrula.ts 2>&1 | tee ../harness/pr40-cloud-evidence/profile-validator.log
+          fi
+          npm run build 2>&1 | tee ../harness/pr40-cloud-evidence/build.log
+          git diff --exit-code
+      - name: Independently compare the three existing red suites with exact Production
+        working-directory: harness
+        run: node scripts/pr40-known-baseline.mjs
+      - name: Install Chromium and WebKit
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pr40-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/pr40-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Actual HTTP apply 12 profiles and 16 real YouTube videos, bounded rollback and repeat
+        working-directory: harness
+        run: |
+          (cd ../candidate && npm start -- -p 3189) > pr40-server.log 2>&1 &
+          ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr40-api-check.ts
+      - name: Real built profile mobile, desktop and WebKit acceptance
+        working-directory: harness
+        env:
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/pr40-browser/package.json
+        run: node scripts/pr40-browser.mjs
+      - name: Reproduce repeat rollback, shared video and partial failure risks on synthetic fixtures
+        if: ${{ !cancelled() && hashFiles('harness/pr40-cloud-evidence/api.json') != '' }}
+        working-directory: harness
+        run: ../candidate/node_modules/.bin/tsx --tsconfig ../candidate/tsconfig.json scripts/pr40-negative-check.ts
+      - name: Publication gate remains closed for demonstrated rollback failures
+        working-directory: harness
+        run: |
+          node -e 'const r=require("./pr40-cloud-evidence/negative.json"); if(!r.releaseGate) { console.error("PUBLICATION BLOCKED: "+r.blockers.map(x=>x.code).join(", "));process.exit(1) }'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr40-${{ matrix.kind }}-cloud-evidence
+          path: |
+            harness/pr40-cloud-evidence/
+            harness/pr40-server.log
+          retention-days: 14
