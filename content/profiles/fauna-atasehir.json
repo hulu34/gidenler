@@ -53,12 +53,11 @@
  "amenities": {
   "items": {
    "rezervasyon": true,
-   "evcil_hayvan": false,
-   "cocuk": false
+   "evcil_hayvan": false
   },
   "provider": "official_site",
   "url": "https://www.fauna.com.tr/",
   "checkedAt": "2026-11-13"
  },
- "_kaynak_notu": "Resmî site fauna.com.tr ana sayfa (13.11.2026). Kapanış saati yazılmadığı için saat alanı doldurulmadı; günler ve son kabul saati not olarak verildi. Menü sayfası metin olarak okunamadı, aktarılmadı."
+ "_kaynak_notu": "Resmî site fauna.com.tr ana sayfa (13.11.2026). Kapanış saati yazılmadığı için saat alanı doldurulmadı; günler ve son kabul saati not olarak verildi. Menü sayfası metin olarak okunamadı, aktarılmadı. Yaşa bağlı kural 11 yaş altı ile sınırlıdır; tüm çocukların reddedildiğini ima eden genel çocuk=false özelliği kullanılmadı."
 }

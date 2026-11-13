@@ -351,9 +351,14 @@
      "veren": "Gidenler sahibi (sohbette, 13.11.2026)"
     },
     "uygulanan": {
-     "adres": "Mimar Sinan Caddesi No:23, Fevzi Çakmak, Pendik"
+     "adres": "Mimar Sinan Caddesi No:23 A Blok, Fevzi Çakmak, Pendik"
     },
     "koordinatDenetimi": "OSM Overpass (13.11.2026): \"Mimar Sinan Caddesi\" kayıtlı koordinatın 120 m içinde; koordinat değiştirilmedi."
+   },
+   "bagimsizInceleme": {
+    "tarih": "2026-11-13",
+    "url": "https://bayindirrestoran.com/iletisim/",
+    "not": "Resmî iletişim sayfasındaki No:23 A Blok ayrıntısı korundu; koordinat ve kimlik alanları değişmedi."
    }
   },
   "antula-gurme-beykoz": {

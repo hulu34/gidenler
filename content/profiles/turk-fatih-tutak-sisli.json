@@ -38,7 +38,7 @@
  },
  "notes": [
   {
-   "value": "À la carte yok; yalnız şefin 14 tabaklık tadım menüsü var. Site, tadım menüsünü kişi başı 23.900 TL (KDV dahil) olarak veriyor; hesaba ayrıca %12 servis ücreti ekleniyor.",
+   "value": "À la carte yok; yalnız şefin 14 tabaklık tadım menüsü var. Site, tadım menüsünü kişi başı 23.900 TL (KDV dahil) olarak veriyor.",
    "provider": "official_site",
    "url": "https://www.turkft.com/reservation",
    "checkedAt": "2026-11-13"
@@ -71,12 +71,11 @@
  "amenities": {
   "items": {
    "rezervasyon": true,
-   "vegan": false,
-   "otopark": false
+   "vegan": false
   },
   "provider": "official_site",
   "url": "https://www.turkft.com/reservation",
   "checkedAt": "2026-11-13"
  },
- "_kaynak_notu": "Resmî site turkft.com ana sayfa ve /reservation (13.11.2026). Menü kalemleri sitede yayımlanmıyor; yalnız tadım menüsü fiyatı not olarak aktarıldı. Şarap ve içecek eşleşmesi fiyatları aktarılmadı. Michelin bilgisi katalogdaki michelin alanından gelir, burada tekrarlanmadı."
+ "_kaynak_notu": "Resmî site turkft.com ana sayfa ve /reservation (13.11.2026). Menü kalemleri sitede yayımlanmıyor; yalnız tadım menüsü fiyatı not olarak aktarıldı. Şarap ve içecek eşleşmesi fiyatları aktarılmadı. Michelin bilgisi katalogdaki michelin alanından gelir, burada tekrarlanmadı. Bağımsız inceleme: vale olmaması otopark bulunmadığı anlamına gelmediği için otopark özelliği çıkarıldı. Kaynakta yeniden doğrulanamayan %12 servis ücreti iddiası aktarılmadı."
 }

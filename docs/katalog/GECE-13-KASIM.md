@@ -42,7 +42,7 @@ Production'a yazılmadı, birleştirme ve deploy yapılmadı. Menemen (PR #38) v
   - **1 ret:** Küçük Ev. Bulunan adres Levent (Beşiktaş) şubesi; kayıt Sarıyer.
   - **3 kayıt sahip onayıyla uygulandı (13.11.2026):**
     - Altın Sofra (Küçükçekmece): İnönü Caddesi No:144, Yeni Mahalle;
-    - Bayındır (Pendik): Mimar Sinan Caddesi No:23, Fevzi Çakmak;
+    - Bayındır (Pendik): Mimar Sinan Caddesi No:23 A Blok, Fevzi Çakmak;
     - Antula Gurme (Beykoz): Orhan Veli Kanık Caddesi No:38, Kavacık Mahallesi.
   - Üç sokak da kayıtlı koordinatın 120 m içinde (OSM Overpass); koordinatlar değişmedi.
 - **Elenme nedenleri:**
@@ -73,7 +73,7 @@ Production'a yazılmadı, birleştirme ve deploy yapılmadı. Menemen (PR #38) v
   |---|---|
   | TURK Fatih Tutak | Kurallar, ön ödeme, kıyafet; tadım fiyatı not olarak |
   | Nicole | 12.11.2026 tarihli tadım menüsü ve fiyatları |
-  | Mutfakkoz | Menü 27 kalem; 20'si sitede fiyatlı, 7'si fiyatsız bırakıldı |
+  | Mutfakkoz | Menü 27 kalem; 27'sinin fiyatı bağımsız incelemede kaynakta doğrulandı |
   | Mikla | Temsilî prix fixe menü, fiyatlı |
   | Aşeka | Fiyatsız sezon menüsü, 20 kalem |
   | Cuma | Saat, rezervasyon |
@@ -133,3 +133,7 @@ Düzeltme iki yoldan biriyle yapılabilir: veri tarafında 24:00 → 00:00 ve "o
 | Tür | 58 |
 | Kategori | 8 |
 | Mükerrer | 4 |
+
+## Bağımsız içerik incelemesi
+
+Kaynakta tekrar doğrulanamayan TURK %12 servis ücreti çıkarıldı. Vale yok bilgisinden otopark yok sonucu çıkarılmadı. Fauna'nın 11 yaş altı kuralı notta korundu; tüm çocuklara yönelik genel ret özelliği kaldırıldı. Aşeka'nın kaynak sayfasındaki 2027 sezon başlığı belirsizliği görünür not olarak eklendi. Nicole ve bazı iletişim profillerindeki kaynakta bilgi yokmuş gibi duran eski açıklamalar düzeltildi; bu, yeni restoran veya medya eklemez.

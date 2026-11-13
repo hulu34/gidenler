@@ -93,7 +93,8 @@
      },
      {
       "name": "Humus (VG/GF)",
-      "description": "Nohut, tahin, sarımsak, domates, yer fıstığı, yeşil soğan sos, kapari"
+      "description": "Nohut, tahin, sarımsak, domates, yer fıstığı, yeşil soğan sos, kapari",
+      "priceTry": 360
      },
      {
       "name": "Bakla Salatası (VG/GF)",
@@ -117,7 +118,8 @@
      },
      {
       "name": "Soğuk Ciğer Sandviç",
-      "description": "Brioche arasında Arnavut ciğeri, hardallı sos, soğan, maydanoz, dereotu"
+      "description": "Brioche arasında Arnavut ciğeri, hardallı sos, soğan, maydanoz, dereotu",
+      "priceTry": 620
      },
      {
       "name": "Balık Ekmek",
@@ -126,11 +128,13 @@
      },
      {
       "name": "Briyoşa İşkembe",
-      "description": "Brioche arasında dana işkembe, hardallı sos, kuru domates, acı biber, kibrit patates"
+      "description": "Brioche arasında dana işkembe, hardallı sos, kuru domates, acı biber, kibrit patates",
+      "priceTry": 580
      },
      {
       "name": "Dana Dil Sandviç",
-      "description": "Brioche arasında dana dil, hardallı sos, soğan turşusu, pancar"
+      "description": "Brioche arasında dana dil, hardallı sos, soğan turşusu, pancar",
+      "priceTry": 620
      }
     ]
    },
@@ -149,7 +153,8 @@
      },
      {
       "name": "Kuzu Yürek",
-      "description": "Izgara yürek, şehriye pilavı, sotelenmiş mevsim sebzeleri"
+      "description": "Izgara yürek, şehriye pilavı, sotelenmiş mevsim sebzeleri",
+      "priceTry": 890
      },
      {
       "name": "Bıldırcın Şiş (GF)",
@@ -168,7 +173,8 @@
      },
      {
       "name": "Fırında Dana Kaburga (GF)",
-      "description": "Demi glace soslu kaburga dilimleri, patatesli ılık sebze salatası ile"
+      "description": "Demi glace soslu kaburga dilimleri, patatesli ılık sebze salatası ile",
+      "priceTry": 890
      },
      {
       "name": "Porçini & Kuzu Göbeği Sosyete Mantısı (VG)",
@@ -200,7 +206,8 @@
       "priceTry": 130
      },
      {
-      "name": "Fesleğenli Ayran"
+      "name": "Fesleğenli Ayran",
+      "priceTry": 130
      },
      {
       "name": "Kiren (Kızılcık) Ekşisi",
@@ -218,5 +225,5 @@
    }
   ]
  },
- "_kaynak_notu": "Resmî site mutfakkoz.com tek sayfa (13.11.2026): Türkçe menü, fiyatlar sitede yazıldığı gibi; fiyatı yazılmayan kalemler fiyatsız bırakıldı (tahmin yok). Çalışma saatlerinde yalnız kapalı günler yazıyor; açılış-kapanış saati olmadığı için saat alanı doldurulmadı. Menüde geçerlilik tarihi yok."
+ "_kaynak_notu": "Resmî site mutfakkoz.com (13.11.2026 bağımsız kontrol): 27 menü kaleminin tamamının fiyatı kaynakta açıkça görüldü; günün çorbası tam 350 TL, az 300 TL olarak ayrı kalemlerdir. Fiyatlar ve ürün açıklamaları kaynaktan; görsel, kullanıcı yorumu veya Google içeriği aktarılmadı."
 }
