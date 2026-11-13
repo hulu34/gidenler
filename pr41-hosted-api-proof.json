@@ -1,0 +1,792 @@
+{
+  "sha": "c0af4987c19146841494242e65d1cb0bc4dbe1a8",
+  "base": "2031408276fc5e4a24223a4e45fa70f656ffb604",
+  "origin": "https://gidenler-bojwmk7u8-hulu34.vercel.app",
+  "phase": "full",
+  "environment": "actual protected Vercel Preview / isolated Neon HTTP",
+  "productionWrites": 0,
+  "runnerDatabaseCredentials": false,
+  "apply": [
+    {
+      "slug": "alaf-besiktas",
+      "auditId": "01a1d44e-9c31-7e9b-954e-8958f551c592",
+      "videosOk": 2
+    },
+    {
+      "slug": "1924-istanbul-beyoglu",
+      "auditId": "01a1d44e-a932-7ada-a062-ec6476bc9a88",
+      "videosOk": 0
+    },
+    {
+      "slug": "sunset-grill-ve-bar-besiktas",
+      "auditId": "01a1d44e-b6dc-792e-99c3-65d9a05236d7",
+      "videosOk": 2
+    },
+    {
+      "slug": "murver-beyoglu",
+      "auditId": "01a1d44e-c56d-707e-9ae1-02d2d0ab4f80",
+      "videosOk": 2
+    },
+    {
+      "slug": "ulus-29-besiktas",
+      "auditId": "01a1d44e-d443-72df-9d72-4577bdc27c6c",
+      "videosOk": 1
+    },
+    {
+      "slug": "park-fora-besiktas",
+      "auditId": "01a1d44e-e11f-7891-8e63-da0f7bb499db",
+      "videosOk": 1
+    },
+    {
+      "slug": "topaz-beyoglu",
+      "auditId": "01a1d44e-ee58-75d2-9413-ce5aa0927e83",
+      "videosOk": 0
+    },
+    {
+      "slug": "lokanta-1741-fatih",
+      "auditId": "01a1d44e-fb58-778a-b4eb-1412f0defc9f",
+      "videosOk": 0
+    },
+    {
+      "slug": "ciya-sofrasi-kadikoy",
+      "auditId": "01a1d44f-08cf-70f2-99c8-09979f5385ac",
+      "videosOk": 2
+    },
+    {
+      "slug": "haci-abdullah-beyoglu",
+      "auditId": "01a1d44f-1864-7222-aa07-a5d886d40178",
+      "videosOk": 2
+    },
+    {
+      "slug": "kanaat-lokantasi-uskudar",
+      "auditId": "01a1d44f-26fb-7ad9-a83d-d505dec6440c",
+      "videosOk": 2
+    },
+    {
+      "slug": "tarihi-sultanahmet-koftecisi-selim-usta-fatih",
+      "auditId": "01a1d44f-3589-73e2-88fd-9bad40d45d94",
+      "videosOk": 2
+    },
+    {
+      "slug": "turk-fatih-tutak-sisli",
+      "auditId": "01a1d44f-41e5-7dde-b8a6-df21fe6d3ce6",
+      "videosOk": 0
+    },
+    {
+      "slug": "nicole-beyoglu",
+      "auditId": "01a1d44f-4edd-7a4c-a119-cf5fc3570e82",
+      "videosOk": 0
+    },
+    {
+      "slug": "mutfakkoz-kadikoy",
+      "auditId": "01a1d44f-5b3f-7332-bf3a-5c2102e5f130",
+      "videosOk": 0
+    },
+    {
+      "slug": "cuma-beyoglu",
+      "auditId": "01a1d44f-66af-7266-8cfb-7e6357a8b8b1",
+      "videosOk": 0
+    },
+    {
+      "slug": "fauna-atasehir",
+      "auditId": "01a1d44f-72a3-785d-9737-7dd0b4e20801",
+      "videosOk": 0
+    },
+    {
+      "slug": "aida-vino-e-cucina-kadikoy",
+      "auditId": "01a1d44f-7e46-7c21-9855-9eced4a942a2",
+      "videosOk": 0
+    },
+    {
+      "slug": "mikla-turkey-fusion-beyoglu",
+      "auditId": "01a1d44f-8a9e-7c21-9c51-b70e1d1acd71",
+      "videosOk": 0
+    },
+    {
+      "slug": "aseka-beyoglu",
+      "auditId": "01a1d44f-96fb-7158-9fbb-a10d8b6d2f69",
+      "videosOk": 0
+    },
+    {
+      "slug": "calipso-fish-maltepe",
+      "auditId": "01a1d44f-a316-75f3-b805-e02c0ac0d67a",
+      "videosOk": 0
+    },
+    {
+      "slug": "rumelihisari-iskele-sariyer",
+      "auditId": "01a1d44f-aee0-7cec-bccb-e070439feb42",
+      "videosOk": 0
+    },
+    {
+      "slug": "sade-bes-denizler-mutfagi-sisli",
+      "auditId": "01a1d44f-ba4b-7fb7-9ffa-6666fd7d4ac9",
+      "videosOk": 0
+    },
+    {
+      "slug": "deraliye-fatih",
+      "auditId": "01a1d44f-c5c2-7671-8084-5c79a0edfa05",
+      "videosOk": 0
+    },
+    {
+      "slug": "tavaci-recep-usta-bostanci-maltepe",
+      "auditId": "01a1d44f-d144-7ec8-93a4-1c0b0a7217db",
+      "videosOk": 0
+    },
+    {
+      "slug": "ali-ocakbasi-karakoy-beyoglu",
+      "auditId": "01a1d44f-dcbf-76bb-8de5-4d042e2573e1",
+      "videosOk": 0
+    }
+  ],
+  "profiles": [
+    {
+      "slug": "alaf-besiktas",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "1924-istanbul-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "sunset-grill-ve-bar-besiktas",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "murver-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "ulus-29-besiktas",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "park-fora-besiktas",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "topaz-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "lokanta-1741-fatih",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "ciya-sofrasi-kadikoy",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "haci-abdullah-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "kanaat-lokantasi-uskudar",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "tarihi-sultanahmet-koftecisi-selim-usta-fatih",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "turk-fatih-tutak-sisli",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "nicole-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "mutfakkoz-kadikoy",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "cuma-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "fauna-atasehir",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "aida-vino-e-cucina-kadikoy",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "mikla-turkey-fusion-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "aseka-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "calipso-fish-maltepe",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "rumelihisari-iskele-sariyer",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "sade-bes-denizler-mutfagi-sisli",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "deraliye-fatih",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "tavaci-recep-usta-bostanci-maltepe",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    },
+    {
+      "slug": "ali-ocakbasi-karakoy-beyoglu",
+      "originalAuditRollbackAfterRepeat": true,
+      "doubleRollbackSafe": true,
+      "reapplyRollback": true
+    }
+  ],
+  "complete": true,
+  "initial": {
+    "env": "preview",
+    "db": {
+      "fingerprint": "1265628512022075",
+      "writeGuard": {
+        "ok": true
+      }
+    },
+    "migrations": {
+      "applied": [
+        {
+          "tag": "0000_faz0_init",
+          "at": "2026-10-27 15:26:10.880379+00"
+        },
+        {
+          "tag": "0001_deneme_esigi",
+          "at": "2026-10-29 15:20:36.28099+00"
+        },
+        {
+          "tag": "0002_fotograf_arsivi",
+          "at": "2026-11-05 08:48:29.26558+00"
+        },
+        {
+          "tag": "0003_temizlik_ve_sayac",
+          "at": "2026-11-05 08:48:29.328511+00"
+        },
+        {
+          "tag": "0004_cift_gonderim",
+          "at": "2026-11-05 08:48:29.340558+00"
+        },
+        {
+          "tag": "0005_sinyal",
+          "at": "2026-11-05 15:24:58.128905+00"
+        },
+        {
+          "tag": "0006_google_puan",
+          "at": "2026-11-06 08:30:54.184242+00"
+        },
+        {
+          "tag": "0007_google_puan_sayi_bos",
+          "at": "2026-11-06 08:30:54.549866+00"
+        },
+        {
+          "tag": "0008_google_puan_karar",
+          "at": "2026-11-06 13:57:11.487606+00"
+        },
+        {
+          "tag": "0009_kampanya_oneri",
+          "at": "2026-11-08 12:26:42.650409+00"
+        }
+      ],
+      "pending": [],
+      "drift": [],
+      "unknown": []
+    },
+    "integrity": {
+      "ok": true,
+      "expected": 793,
+      "present": 793,
+      "duplicateSlugs": 0,
+      "duplicateOsmRefs": 0,
+      "missingOsmIdentifier": 0,
+      "pilot": 1,
+      "invalidRecords": 0,
+      "restaurantTarget": {
+        "expected": 560,
+        "present": 560
+      }
+    },
+    "duplicateReview": [],
+    "rollback": {
+      "seed": {
+        "places": 793,
+        "linkedUserRows": 21,
+        "safe": false
+      },
+      "migration": {
+        "users": 20,
+        "reviews": 12,
+        "safe": false,
+        "tables": 31
+      },
+      "waves": {
+        "1": {
+          "places": 308,
+          "linkedUserRows": 18,
+          "safe": false
+        },
+        "6": {
+          "places": 117,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "7": {
+          "places": 23,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "8": {
+          "places": 102,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "9": {
+          "places": 25,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "10": {
+          "places": 34,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "11": {
+          "places": 7,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "12": {
+          "places": 5,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "13": {
+          "places": 15,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "14": {
+          "places": 7,
+          "linkedUserRows": 0,
+          "safe": true
+        }
+      }
+    },
+    "quality": {
+      "placesTotal": 793,
+      "byVertical": {
+        "restaurant": 668,
+        "bar": 11,
+        "cafe": 114
+      },
+      "restaurants": 668,
+      "missingRequired": 0,
+      "missingMapPoint": 2,
+      "googlePending": 126,
+      "photoAttributionMissing": 0,
+      "restaurantFields": {
+        "photo": {
+          "count": 2,
+          "pct": 0.3
+        },
+        "phone": {
+          "count": 354,
+          "pct": 53
+        },
+        "website": {
+          "count": 399,
+          "pct": 59.7
+        },
+        "instagram": {
+          "count": 71,
+          "pct": 10.6
+        },
+        "hours": {
+          "count": 323,
+          "pct": 48.4
+        },
+        "menu": {
+          "count": 39,
+          "pct": 5.8
+        },
+        "video": {
+          "count": 25,
+          "pct": 3.7
+        },
+        "google": {
+          "count": 257,
+          "pct": 38.5
+        },
+        "reviews": {
+          "count": 3,
+          "pct": 0.4
+        },
+        "reservation": {
+          "count": 0,
+          "pct": 0
+        },
+        "contact": {
+          "count": 480,
+          "pct": 71.9
+        },
+        "address": {
+          "count": 600,
+          "pct": 89.8
+        }
+      }
+    }
+  },
+  "originalVideos": {
+    "alaf-besiktas": [],
+    "1924-istanbul-beyoglu": [],
+    "sunset-grill-ve-bar-besiktas": [],
+    "murver-beyoglu": [],
+    "ulus-29-besiktas": [],
+    "park-fora-besiktas": [],
+    "topaz-beyoglu": [],
+    "lokanta-1741-fatih": [],
+    "ciya-sofrasi-kadikoy": [
+      {
+        "id": "01a180a4-f773-73c8-bd85-520cd6d595e9",
+        "externalId": "ScfoX3m8Ijs",
+        "credit": "Gezdik Tozduk Doyduk",
+        "sponsored": false
+      },
+      {
+        "id": "01a180a4-f847-70ea-a0b9-521158763488",
+        "externalId": "0YM9bckNVfE",
+        "credit": "Tatlı Kaşifler",
+        "sponsored": false
+      },
+      {
+        "id": "01a180a4-f94c-7e99-9777-72f775043df1",
+        "externalId": "cl98JDpQJiw",
+        "credit": "The Fat Passport",
+        "sponsored": false
+      },
+      {
+        "id": "01a180a4-f9fb-701e-9200-55541dfcf8e9",
+        "externalId": "CnCgj9aDkZI",
+        "credit": "@letseatery",
+        "sponsored": false
+      },
+      {
+        "id": "01a180a4-fb0e-78a8-aa2c-8919e4df41f3",
+        "externalId": "C4vof17Lgdk",
+        "credit": "@kisabimekanarasi",
+        "sponsored": false
+      },
+      {
+        "id": "01a180a4-fbc0-73b8-9ae2-5a4e72221e48",
+        "externalId": "DVquYg1COdV",
+        "credit": "@gezdiktozdukdoyduk",
+        "sponsored": false
+      },
+      {
+        "id": "01a180a4-fcf5-732b-b8b0-52d459c40d33",
+        "externalId": "7690194508650253589",
+        "credit": "@zeynepyildirimtr",
+        "sponsored": false
+      },
+      {
+        "id": "01a180a4-fe12-77a5-97ef-aa40017b6144",
+        "externalId": "7615268156688403733",
+        "credit": "@gezdiktozdukdoyduk",
+        "sponsored": false
+      },
+      {
+        "id": "01a180a8-4830-7da8-9748-163a1e5ffa6b",
+        "externalId": "7565547544919493895",
+        "credit": "@askosusko",
+        "sponsored": false
+      }
+    ],
+    "haci-abdullah-beyoglu": [],
+    "kanaat-lokantasi-uskudar": [],
+    "tarihi-sultanahmet-koftecisi-selim-usta-fatih": [],
+    "turk-fatih-tutak-sisli": [],
+    "nicole-beyoglu": [],
+    "mutfakkoz-kadikoy": [],
+    "cuma-beyoglu": [],
+    "fauna-atasehir": [],
+    "aida-vino-e-cucina-kadikoy": [],
+    "mikla-turkey-fusion-beyoglu": [],
+    "aseka-beyoglu": [],
+    "calipso-fish-maltepe": [],
+    "rumelihisari-iskele-sariyer": [],
+    "sade-bes-denizler-mutfagi-sisli": [],
+    "deraliye-fatih": [],
+    "tavaci-recep-usta-bostanci-maltepe": [],
+    "ali-ocakbasi-karakoy-beyoglu": []
+  },
+  "neonAtomicFailure": {
+    "invalidVideo": 422,
+    "providerFailureSimulation": 502,
+    "midBatchRollback": 500,
+    "partialData": false
+  },
+  "final": {
+    "env": "preview",
+    "db": {
+      "fingerprint": "1265628512022075",
+      "writeGuard": {
+        "ok": true
+      }
+    },
+    "migrations": {
+      "applied": [
+        {
+          "tag": "0000_faz0_init",
+          "at": "2026-10-27 15:26:10.880379+00"
+        },
+        {
+          "tag": "0001_deneme_esigi",
+          "at": "2026-10-29 15:20:36.28099+00"
+        },
+        {
+          "tag": "0002_fotograf_arsivi",
+          "at": "2026-11-05 08:48:29.26558+00"
+        },
+        {
+          "tag": "0003_temizlik_ve_sayac",
+          "at": "2026-11-05 08:48:29.328511+00"
+        },
+        {
+          "tag": "0004_cift_gonderim",
+          "at": "2026-11-05 08:48:29.340558+00"
+        },
+        {
+          "tag": "0005_sinyal",
+          "at": "2026-11-05 15:24:58.128905+00"
+        },
+        {
+          "tag": "0006_google_puan",
+          "at": "2026-11-06 08:30:54.184242+00"
+        },
+        {
+          "tag": "0007_google_puan_sayi_bos",
+          "at": "2026-11-06 08:30:54.549866+00"
+        },
+        {
+          "tag": "0008_google_puan_karar",
+          "at": "2026-11-06 13:57:11.487606+00"
+        },
+        {
+          "tag": "0009_kampanya_oneri",
+          "at": "2026-11-08 12:26:42.650409+00"
+        }
+      ],
+      "pending": [],
+      "drift": [],
+      "unknown": []
+    },
+    "integrity": {
+      "ok": true,
+      "expected": 793,
+      "present": 793,
+      "duplicateSlugs": 0,
+      "duplicateOsmRefs": 0,
+      "missingOsmIdentifier": 0,
+      "pilot": 1,
+      "invalidRecords": 0,
+      "restaurantTarget": {
+        "expected": 560,
+        "present": 560
+      }
+    },
+    "duplicateReview": [],
+    "rollback": {
+      "seed": {
+        "places": 793,
+        "linkedUserRows": 21,
+        "safe": false
+      },
+      "migration": {
+        "users": 20,
+        "reviews": 12,
+        "safe": false,
+        "tables": 31
+      },
+      "waves": {
+        "1": {
+          "places": 308,
+          "linkedUserRows": 18,
+          "safe": false
+        },
+        "6": {
+          "places": 117,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "7": {
+          "places": 23,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "8": {
+          "places": 102,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "9": {
+          "places": 25,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "10": {
+          "places": 34,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "11": {
+          "places": 7,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "12": {
+          "places": 5,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "13": {
+          "places": 15,
+          "linkedUserRows": 0,
+          "safe": true
+        },
+        "14": {
+          "places": 7,
+          "linkedUserRows": 0,
+          "safe": true
+        }
+      }
+    },
+    "quality": {
+      "placesTotal": 793,
+      "byVertical": {
+        "restaurant": 668,
+        "bar": 11,
+        "cafe": 114
+      },
+      "restaurants": 668,
+      "missingRequired": 0,
+      "missingMapPoint": 2,
+      "googlePending": 126,
+      "photoAttributionMissing": 0,
+      "restaurantFields": {
+        "photo": {
+          "count": 2,
+          "pct": 0.3
+        },
+        "phone": {
+          "count": 359,
+          "pct": 53.7
+        },
+        "website": {
+          "count": 401,
+          "pct": 60
+        },
+        "instagram": {
+          "count": 85,
+          "pct": 12.7
+        },
+        "hours": {
+          "count": 332,
+          "pct": 49.7
+        },
+        "menu": {
+          "count": 50,
+          "pct": 7.5
+        },
+        "video": {
+          "count": 33,
+          "pct": 4.9
+        },
+        "google": {
+          "count": 257,
+          "pct": 38.5
+        },
+        "reviews": {
+          "count": 3,
+          "pct": 0.4
+        },
+        "reservation": {
+          "count": 0,
+          "pct": 0
+        },
+        "contact": {
+          "count": 481,
+          "pct": 72
+        },
+        "address": {
+          "count": 602,
+          "pct": 90.1
+        }
+      }
+    }
+  },
+  "pr39Profiles": 14,
+  "pr40Profiles": 12,
+  "targetVideos": 16,
+  "baseline44Unchanged": true,
+  "menemenUnchanged": true
+}
