@@ -23,7 +23,8 @@ const apply=p=>json('/api/admin/db/',{action:'profile-apply',target:'preview',co
 const rollback=auditId=>request('/api/admin/db/',{action:'profile-rollback',target:'preview',confirm:'GERI-AL',auditId});
 function business(j){const{updatedAt,...place}=j.place;return{place,profile:j.profile,videos:j.videos.map(v=>({id:v.id,externalId:v.externalId,credit:v.credit,sponsored:v.sponsored,status:v.status})).sort((a,b)=>a.id.localeCompare(b.id))}}
 async function ready(complete=true){const st=await json('/api/admin/db/');assert.equal(st.env,'preview');assert(cfg.fingerprints.includes(st.db.fingerprint),'Unexpected database fingerprint');assert.notEqual(st.db.fingerprint,'37811a6487ca5441');assert.equal(st.db.writeGuard.ok,true);assert.deepEqual(st.migrations.pending,[]);assert.deepEqual(st.migrations.drift,[]);assert.deepEqual(st.migrations.unknown,[]);if(complete){assert.equal(st.integrity.present,793);assert.equal(st.integrity.ok,true)}return st}
-function verify(j,p){assert(j.profile);for(const k of ['address','phone','website','instagram','hours','description','reservation'])if(p[k]){assert.equal(j.profile[k].value,p[k].value,p.slug+' '+k);assert.equal(j.profile[k].url,p[k].url)}if(p.menu)assert.deepEqual(j.profile.menu.sections,p.menu.sections);assert.equal(j.videos.length,(p.videos??[]).length)}
+function videoId(u){const x=new URL(u);return x.hostname==='youtu.be'?x.pathname.slice(1):x.searchParams.get('v')??x.pathname.split('/').filter(Boolean).at(-1)}
+function verify(j,p,original){assert(j.profile);for(const k of ['address','phone','website','instagram','hours','description','reservation'])if(p[k]){assert.equal(j.profile[k].value,p[k].value,p.slug+' '+k);assert.equal(j.profile[k].url,p[k].url)}if(p.menu)assert.deepEqual(j.profile.menu.sections,p.menu.sections);const expected=new Set([...(original?.videos??[]).map(v=>v.externalId),...(p.videos??[]).map(v=>videoId(v.url))]);assert.deepEqual(new Set(j.videos.map(v=>v.externalId)),expected);for(const old of original?.videos??[])assert.deepEqual(business(j).videos.find(v=>v.id===old.id),old,'existing video metadata changed')}
 async function main(){
  r.initial=await ready(cfg.phase!=='bootstrap');save();
  assert.equal((await request('/api/admin/db/',{action:'profile-apply',target:'production',confirm:'EVET',profile:source(TARGETS[0])})).status,400);
@@ -41,6 +42,7 @@ async function main(){
  const before={};for(const slug of baseline)before[slug]=business(await get(slug));fs.writeFileSync(folder+'/baseline-44-before.json',JSON.stringify(before,null,2));
  assert.equal((await request('/api/admin/db/',{action:'profile-apply',target:'preview',confirm:'EVET',profile:source(TARGETS[0])},{'Sec-Fetch-Site':'cross-site'})).status,403);
  assert.equal((await request('/api/reviews/',{})).status,401);
+ r.originalVideos={};for(const slug of TARGETS){const j=await get(slug);assert.equal(j.profile,null,slug+' prior profile');r.originalVideos[slug]=business(j).videos}save();
  const faultSlug=PR40.find(slug=>(source(slug).videos??[]).length>0),faultProfile=source(faultSlug),faultBefore=business(await get(faultSlug));
  const invalid=await request('/api/admin/db/',{action:'profile-apply',target:'preview',confirm:'EVET',profile:{...faultProfile,videos:[...(faultProfile.videos??[]).slice(0,1),{url:'https://example.invalid/not-a-video',credit:'Synthetic invalid link; never stored'}]}});assert.equal(invalid.status,422);assert.deepEqual(business(await get(faultSlug)),faultBefore);
  const unavailable=await request('/api/admin/db/',{action:'profile-apply',target:'preview',confirm:'EVET',profile:faultProfile,simulateVideoFailure:'network'});assert.equal(unavailable.status,502);assert.deepEqual(business(await get(faultSlug)),faultBefore);
@@ -48,12 +50,12 @@ async function main(){
  r.neonAtomicFailure={invalidVideo:422,providerFailureSimulation:502,midBatchRollback:500,partialData:false};save();
  for(const slug of TARGETS){
   const p=source(slug),original=business(await get(slug));assert.equal(original.profile,null,slug+' must have no prior profile');
-  const first=await apply(p),once=await get(slug);verify(once,p);
+  const first=await apply(p),once=await get(slug);verify(once,p,original);
   const repeat=await apply(p),twice=await get(slug);assert(repeat.unchanged);assert.deepEqual(business(twice),business(once));assert.deepEqual(twice.counts,once.counts);
   const rb=await rollback(first.auditId);assert.equal(rb.status,200,JSON.stringify(rb));assert.deepEqual(business(await get(slug)),original,slug+' full original rollback after repeat');
   const double=await rollback(first.auditId);assert.equal(double.status,200);assert.deepEqual(business(await get(slug)),original);
   const second=await apply(p);assert.equal((await rollback(second.auditId)).status,200);assert.deepEqual(business(await get(slug)),original);
-  const final=await apply(p);verify(await get(slug),p);r.apply.push({slug,auditId:final.auditId,videosOk:(p.videos??[]).length});r.profiles.push({slug,originalAuditRollbackAfterRepeat:true,doubleRollbackSafe:true,reapplyRollback:true});save();
+  const final=await apply(p);verify(await get(slug),p,original);r.apply.push({slug,auditId:final.auditId,videosOk:(p.videos??[]).length});r.profiles.push({slug,originalAuditRollbackAfterRepeat:true,doubleRollbackSafe:true,reapplyRollback:true});save();
  }
  const after={};for(const slug of baseline){after[slug]=business(await get(slug));assert.deepEqual(after[slug],before[slug],slug+' baseline changed')}fs.writeFileSync(folder+'/baseline-44-after.json',JSON.stringify(after,null,2));
  r.final=await ready();r.pr39Profiles=14;r.pr40Profiles=12;r.targetVideos=r.apply.reduce((n,v)=>n+v.videosOk,0);assert.equal(r.targetVideos,16);r.baseline44Unchanged=true;r.menemenUnchanged=true;r.complete=true;save();console.log(JSON.stringify({sha:SHA,profiles:r.profiles.length,videos:r.targetVideos,complete:true}));

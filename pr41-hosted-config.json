@@ -6,6 +6,6 @@
   ],
   "branchId": "br-spring-cherry-bavhyz5y",
   "endpoint": "ep-damp-silence-bal9o52e",
-  "phase": "bootstrap",
+  "phase": "full",
   "sourceSha": "c0af4987c19146841494242e65d1cb0bc4dbe1a8"
 }

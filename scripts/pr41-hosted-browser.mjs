@@ -37,8 +37,9 @@ try{
  assert.equal(await menu.locator('li').count(),n);if(!src.menu.pricesPublished)assert(!visible.includes('₺'));items+=n;
  if(width===390&&engine==='chromium')await menu.screenshot({path:path.join(folder,slug+'-menu-390.png')});row.profiles.push({slug,menuItems:n,prices:src.menu.pricesPublished});
  }else{assert((await p.locator('#menu').innerText()).includes('henüz doğrulanmış'));row.profiles.push({slug,menuItems:0})}
- const buttons=p.getByRole('button',{name:/YouTube videosunu burada oynat/});assert.equal(await buttons.count(),(src.videos??[]).length);const seen=[];
- for(let vi=0;vi<(src.videos??[]).length;vi++){await buttons.nth(vi).click();const dialog=p.getByRole('dialog').filter({has:p.locator('iframe')});await dialog.waitFor();const frame=await dialog.locator('iframe').getAttribute('src');assert(frame.includes('youtube-nocookie.com'));const id=frame.match(/embed\/([^?]+)/)[1];assert((src.videos??[]).some(v=>v.url.includes(id)));seen.push(id);await p.getByRole('button',{name:'Kapat ve restorana dön',exact:true}).click()};assert.equal(new Set(seen).size,(src.videos??[]).length);
+ const expectedVideos=new Set([...(api.originalVideos?.[slug]??[]).map(v=>v.externalId),...(src.videos??[]).map(v=>{const u=new URL(v.url);return u.hostname==='youtu.be'?u.pathname.slice(1):u.searchParams.get('v')??u.pathname.split('/').filter(Boolean).at(-1)})]);
+ const buttons=p.getByRole('button',{name:/YouTube videosunu burada oynat/});assert.equal(await buttons.count(),expectedVideos.size);const seen=[];
+ for(let vi=0;vi<expectedVideos.size;vi++){await buttons.nth(vi).click();const dialog=p.getByRole('dialog').filter({has:p.locator('iframe')});await dialog.waitFor();const frame=await dialog.locator('iframe').getAttribute('src');assert(frame.includes('youtube-nocookie.com'));const id=frame.match(/embed\/([^?]+)/)[1];assert(expectedVideos.has(id));seen.push(id);await p.getByRole('button',{name:'Kapat ve restorana dön',exact:true}).click()};assert.equal(new Set(seen).size,expectedVideos.size);
  if(width===390&&engine==='chromium')await p.screenshot({path:path.join(folder,slug+'-profile-390.png'),fullPage:true});
  }
  assert.equal(items,411);row.newMenuItems=items;
