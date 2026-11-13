@@ -84,7 +84,7 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/pr41-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
           "$RUNNER_TEMP/pr41-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
-      - name: Independent HTTP: 26 profiles, 16 videos, repeat and complete rollback
+      - name: Independent HTTP acceptance of 26 profiles and 16 videos with full rollback
         working-directory: harness
         run: |
           (cd ../candidate && NODE_OPTIONS="--import=$GITHUB_WORKSPACE/harness/scripts/pr41-fault-preload.mjs" npm start -- -p 3189) > pr41-server.log 2>&1 &
