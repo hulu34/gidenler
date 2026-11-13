@@ -1,0 +1,62 @@
+{
+ "slug": "gallada-by-fatih-tutak-beyoglu",
+ "_kaynak_notu": "Kaynak: resmî site galladaistanbul.com (ana sayfa ve Dining; 13.11.2026). Site komut satırı istemcilerine Cloudflare 403 veriyor; sayfalar normal tarayıcıda (doğrulama ya da CAPTCHA çıkmadan) okundu, engel aşılmadı. Menü eklenmedi: 11.10.2026 tarihli menü PDF'leri (gallada-journey-menu-11102026.pdf, gallada-dinner-menu-11102026.pdf) bu ortamda açılamadı; sitede öne çıkarılan tabaklar not olarak yazıldı. Videolar: The Peninsula Hotels (işletme) ve HELLO! Türkiye (Fatih Tutak ile söyleşi, 2023); oEmbed 200, gömmeye açık. Eski ekip üyelerini anlatan içerik üreticisi videosu (2023) alınmadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Karaköy'de The Peninsula Istanbul'un çatı katında Türk-Asya mutfağı restoranı; şef Fatih Tutak ile The Peninsula Istanbul'un ortak projesi. Menü İpek Yolu'nun Türkiye'den Orta Asya ve Çin'e uzanan mutfaklarından esinleniyor; tabaklar paylaşmak için tasarlanmış. 'Journey' tadım menüsü ve alakart menü var.",
+  "provider": "official_site",
+  "url": "https://www.galladaistanbul.com/en/dining",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Tu-Su 18:30-01:00",
+  "provider": "official_site",
+  "url": "https://www.galladaistanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Resmî sitedeki 'Book a Table' bağlantısıyla (SevenRooms), telefonla (+90 212 931 28 88) ya da e-postayla (gallada@galladaistanbul.com).",
+  "provider": "official_site",
+  "url": "https://www.galladaistanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "galladaistanbul",
+  "provider": "official_site",
+  "url": "https://www.galladaistanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Pazartesi kapalı. Üst kattaki Topside Bar her gün 16.00–01.00 arası açık.",
+   "provider": "official_site",
+   "url": "https://www.galladaistanbul.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Sitede öne çıkarılan tabaklar arasında buharda ıstakoz mantısı, Adana kebap mantısı, odun ateşinde dana kaburga ve Gallada baklavası var.",
+   "provider": "official_site",
+   "url": "https://www.galladaistanbul.com/en/dining",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Tüm tabaklar paylaşmak için tasarlanmış; özel yemek odası 20 kişiye kadar.",
+   "provider": "official_site",
+   "url": "https://www.galladaistanbul.com/en/dining",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=ErG_3YCmuFA",
+   "credit": "The Peninsula Hotels (işletmenin kanalı) · Kasım 2024 · Discover Gallada",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=G7b-uR5Lk1E",
+   "credit": "HELLO! Türkiye · Eylül 2023 · Şef Fatih Tutak ile söyleşi",
+   "category": "editor",
+   "sponsored": false
+  }
+ ]
+}
