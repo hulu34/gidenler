@@ -1,4 +1,4 @@
-name: User approved Menemen 2031408 production application
+name: Menemen 2031408 public live verification only
 on:
   push:
     branches: [inceleme/menemen-production-20261113]
@@ -28,11 +28,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Apply only the exact user-approved Menemen profile once
-        working-directory: harness
-        env:
-          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
-        run: node scripts/menemen-approved-production.mjs
       - name: Install independent browser tools
         run: |
           npm install --prefix "$RUNNER_TEMP/menemen-live-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
