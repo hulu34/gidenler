@@ -1,6 +1,6 @@
 {
-  "phase": "preflight",
-  "origin": "https://gidenler-hy9xmwtrx-hulu34.vercel.app",
+  "phase": "apply",
+  "origin": "https://gidenler-5xdvfr41c-hulu34.vercel.app",
   "approvedSha": "c0af4987c19146841494242e65d1cb0bc4dbe1a8",
   "oldProductionSha": "2031408276fc5e4a24223a4e45fa70f656ffb604",
   "productionFingerprint": "37811a6487ca5441",
