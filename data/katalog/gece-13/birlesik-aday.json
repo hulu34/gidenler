@@ -2,7 +2,7 @@
  "_aciklama": "Açık paket PR'larının (paket 15–23) güncel Production'a ve birbirlerine karşı birleşik denetimi. Paket dosyaları değiştirilmedi; yayın kararı ve sırası Codex'te.",
  "ozet": {
   "taban": {
-   "ref": "9a11a3b8a3a35398bcc4242294dce6377670db88",
+   "ref": "2598f96a3a37d083a754431f4fe90aa763580aa2",
    "mekan": 793,
    "sinif": {
     "A": 662,
@@ -24,8 +24,8 @@
     "paket": "paket 16",
     "pr": 19,
     "kayit": 61,
-    "gecerli": 60,
-    "elenen": 1
+    "gecerli": 61,
+    "elenen": 0
    },
    {
     "paket": "paket 17",
@@ -77,20 +77,18 @@
     "elenen": 0
    }
   ],
-  "gecerliYeni": 333,
-  "elenen": 1,
-  "elenenNeden": {
-   "güçlü mükerrer şüphesi": 1
-  },
+  "gecerliYeni": 334,
+  "elenen": 0,
+  "elenenNeden": {},
   "sinif": {
    "A-konumsuz": 238,
-   "A": 95
+   "A": 96
   },
   "kategori": {
-   "cat.restaurant": 333
+   "cat.restaurant": 334
   },
   "ilce": {
-   "Kadıköy": 31,
+   "Kadıköy": 32,
    "Sarıyer": 20,
    "Beşiktaş": 18,
    "Şile": 2,
@@ -128,7 +126,10 @@
    "Eyüpsultan": 1,
    "Esenler": 1
   },
-  "hedefSonrasi": 1126
+  "sahipKarariyla": [
+   "ouzo-roof-restaurant-kadikoy"
+  ],
+  "hedefSonrasi": 1127
  },
  "kabul": [
   {
@@ -449,6 +450,18 @@
    "tur": "Kebapçı / Ocakbaşı",
    "kategori": "cat.restaurant",
    "kanit": "resmî site sirvan-sofrasi.com: ad + telefon + sokak + kapı no (https://www.sirvan-sofrasi.com/) · faaliyet: resmî sitede güncel iletişim bilgisi (2026-11-11) · "
+  },
+  {
+   "paket": "paket 16",
+   "pr": 19,
+   "slug": "ouzo-roof-restaurant-kadikoy",
+   "ad": "Ouzo Roof Restaurant",
+   "ilce": "Kadıköy",
+   "sinif": "A",
+   "tur": "Balık restoranı",
+   "kategori": "cat.restaurant",
+   "kanit": "resmî site ouzorestaurant.com: ad + telefon + sokak + kapı no (https://www.ouzorestaurant.com/) · faaliyet: resmî sitede güncel iletişim bilgisi (2026-11-11) · ",
+   "sahipKarari": "ayri_isletme (2026-11-13, Gidenler sahibi (sohbette, 13.11.2026)): ayni_bina_adresi 40 m: perran-ocakbasi-kadikoy"
   },
   {
    "paket": "paket 16",
@@ -3795,21 +3808,7 @@
    "kanit": "resmî şube sayfası clusterftb.com: ad + telefon + sokak (https://www.clusterftb.com/) · faaliyet: resmî sitede güncel iletişim bilgisi (2026-11-11) · adres: res"
   }
  ],
- "ret": [
-  {
-   "paket": "paket 16",
-   "pr": 19,
-   "slug": "ouzo-roof-restaurant-kadikoy",
-   "ad": "Ouzo Roof Restaurant",
-   "ilce": "Kadıköy",
-   "sinif": "A",
-   "tur": "Balık restoranı",
-   "kategori": "cat.restaurant",
-   "kanit": "resmî site ouzorestaurant.com: ad + telefon + sokak + kapı no (https://www.ouzorestaurant.com/) · faaliyet: resmî sitede güncel iletişim bilgisi (2026-11-11) · ",
-   "neden": "güçlü mükerrer şüphesi — ayni_bina_adresi 40 m: perran-ocakbasi-kadikoy",
-   "kaynakta": "Production"
-  }
- ],
+ "ret": [],
  "bilgi": [
   {
    "paket": "paket 15",
@@ -3822,6 +3821,19 @@
    "kategori": "cat.restaurant",
    "kanit": "Michelin Rehberi 2026: Rehber seçkisi (resmî rehber sayfası, 2026-11-11) · resmî site marriott.com (ad + telefon + sokak eşleşti (2026-11-11)) · adres: rehber +",
    "not": "aynı site alanı marriott.com: 1 kayıt (zincir şubesi)"
+  },
+  {
+   "paket": "paket 16",
+   "pr": 19,
+   "slug": "ouzo-roof-restaurant-kadikoy",
+   "ad": "Ouzo Roof Restaurant",
+   "ilce": "Kadıköy",
+   "sinif": "A",
+   "tur": "Balık restoranı",
+   "kategori": "cat.restaurant",
+   "kanit": "resmî site ouzorestaurant.com: ad + telefon + sokak + kapı no (https://www.ouzorestaurant.com/) · faaliyet: resmî sitede güncel iletişim bilgisi (2026-11-11) · ",
+   "sahipKarari": "ayri_isletme (2026-11-13, Gidenler sahibi (sohbette, 13.11.2026)): ayni_bina_adresi 40 m: perran-ocakbasi-kadikoy",
+   "not": "sahip kararı: perran-ocakbasi-kadikoy ile ayrı işletme — Aynı bina adresi (40 m) ama iki ayrı işletme: Ouzo Roof (balık restoranı, çatı katı, ouzorestaurant.com) ve Perran Ocakbaşı. İki ayrı profil olarak kalır."
   },
   {
    "paket": "paket 18",

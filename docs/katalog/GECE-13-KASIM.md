@@ -9,9 +9,12 @@ Production'a yazılmadı, birleştirme ve deploy yapılmadı. Menemen (PR #38) v
 - **Betik:** `scripts/katalog/birlesik-aday.mjs`.
 - **Çıktı:** `data/katalog/gece-13/birlesik-aday.json`.
 - **Kapsam:** açık paket PR'larındaki 334 yeni kayıt, yani paket 15–23 (PR #15, #19, #20, #21, #23, #24, #26, #30, #31). Kayıtlar güncel Production'a ve birbirlerine karşı yeniden denetlendi.
-- **Sonuç:** 333 geçerli yeni kayıt (95 A, 238 A-konumsuz, hepsi restoran). Hepsi yayımlanırsa katalog 793'ten 1.126'ya çıkar.
-- **Elenen 1 kayıt:** Ouzo Roof Restaurant (paket 16 / PR #19). Production'daki `perran-ocakbasi-kadikoy` ile aynı bina adresinde, 40 m mesafede. Sahip kararı gerekiyor: aynı binada iki ayrı işletme mi?
-- **Bilgi notları (8):** aynı telefon ya da site; zincir şubesi olabilir, mükerrer sayılmadı.
+- **Sonuç:** 334 geçerli yeni kayıt (96 A, 238 A-konumsuz, hepsi restoran). Hepsi yayımlanırsa katalog 793'ten 1.127'ye çıkar. Elenen kayıt yok.
+- **Sahip kararı (13.11.2026):** Ouzo Roof Restaurant (paket 16 / PR #19), Production'daki `perran-ocakbasi-kadikoy` ile aynı bina adresinde, 40 m mesafede. Sahip iki ayrı işletme olduğunu bildirdi. Karar `data/katalog/gece-13/sahip-kararlari.json` dosyasında.
+  - Karar yalnız bu iki slug arasındaki şüpheyi kaldırır.
+  - Kesin mükerrer ve kapanış kontrolleri her zaman çalışır.
+  - Yeniden çalıştırma aynı çıktıyı verir.
+- **Bilgi notları (9):** 8'i aynı telefon ya da site (zincir şubesi olabilir, mükerrer sayılmadı), 1'i sahip kararı.
 - **Az temsil edilen ilçelere katkı:**
 
   | İlçe | Önce | Sonra |
