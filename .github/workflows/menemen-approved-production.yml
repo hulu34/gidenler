@@ -1,0 +1,50 @@
+name: User approved Menemen 2031408 production application
+on:
+  push:
+    branches: [inceleme/menemen-production-20261113]
+    paths:
+      - .github/workflows/menemen-approved-production.yml
+      - scripts/menemen-approved-production.mjs
+      - scripts/menemen-live-check.mjs
+permissions:
+  contents: read
+concurrency:
+  group: menemen-approved-production-2031408
+  cancel-in-progress: false
+jobs:
+  apply-and-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 2031408276fc5e4a24223a4e45fa70f656ffb604
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Apply only the exact user-approved Menemen profile once
+        working-directory: harness
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+        run: node scripts/menemen-approved-production.mjs
+      - name: Install independent browser tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/menemen-live-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/menemen-live-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Verify the public live site without sign-in or content submission
+        working-directory: harness
+        env:
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/menemen-live-browser/package.json
+        run: node scripts/menemen-live-check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: menemen-approved-production-evidence
+          path: harness/menemen-live-evidence/
+          retention-days: 14
