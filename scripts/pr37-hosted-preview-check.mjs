@@ -77,7 +77,7 @@ try {
  for(const [engine,width] of [['chromium',375],['chromium',390],['chromium',1440],['webkit',390]]){
   const browser=await({chromium,webkit}[engine]).launch();const c=await browser.newContext({viewport:{width,height:width<600?844:1000},isMobile:width<600,hasTouch:width<600});
   await c.route('**/*',async route=>{const req=route.request();if(new URL(req.url()).origin!==origin)return route.abort();if(req.method()==='POST'&&new URL(req.url()).pathname==='/api/sor/')await pace();return route.continue({headers:{...req.headers(),...headers}});});
-  const p=await c.newPage();activePage=p;activeProfile={engine,width};p.on('pageerror',e=>evidence.errors.push({engine,width,message:e.message}));
+  const p=await c.newPage();activePage=p;activeProfile={engine,width};p.on('pageerror',e=>{evidence.errors.push({engine,width,message:e.message,stack:e.stack});save()});p.on('requestfailed',r=>{(evidence.networkFailures??=[]).push({engine,width,path:new URL(r.url()).pathname,error:r.failure()?.errorText});save()});
   const fit=async()=>assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth),'horizontal overflow');
   async function waitTurn(n){await expect(p.locator('[data-sor-tur]')).toHaveCount(n);await expect(p.locator('[data-sor-tur]').last().locator('[data-sor-mod]')).toBeVisible({timeout:45000});}
   await p.goto(origin+'/sor/?q='+encodeURIComponent(actual),{waitUntil:'domcontentloaded'});await waitTurn(1);
@@ -94,9 +94,9 @@ try {
   await expect(p.getByRole('combobox',{name:'Ziyaret ayı',exact:true})).toHaveValue(/^\d{4}-\d{2}$/);
   const draft='Türkçe taslak kontrolü: çığ, öğün, ışık, şef, İstanbul. '.repeat(100);await p.getByRole('textbox',{name:'Deneyim metni',exact:true}).fill(draft);
   await expect(p.getByText(`${draft.trim().length} karakter`,{exact:false})).toBeVisible();await p.locator('[data-otomatik-taslak]').waitFor();await p.reload({waitUntil:'networkidle'});await expect(p.getByRole('textbox',{name:'Deneyim metni',exact:true})).toHaveValue(draft);await fit();
-  await p.goto(origin+'/mekan/develi-samatya-fatih/',{waitUntil:'domcontentloaded'});assert.ok((await p.getByRole('link',{name:'Web sitesi ↗',exact:true}).getAttribute('href')).startsWith('https://www.develi1912.com/'));await fit();
+  await p.goto(origin+'/mekan/develi-samatya-fatih/',{waitUntil:'networkidle'});assert.ok((await p.getByRole('link',{name:'Web sitesi ↗',exact:true}).getAttribute('href')).startsWith('https://www.develi1912.com/'));await fit();
   await p.screenshot({path:`${out}/profile-${engine}-${width}.png`,fullPage:true});
-  evidence.browser.push({engine,width,negativePreferences:true,correctionPreserved:true,reloadIsolation:true,newConversationIsolation:true,positiveFish:true,b1Map:true,turkishDraftChars:draft.length,externalWebsite:true,overflow:false});save();console.log('Actual Preview browser passed',engine,width);await browser.close();
+  evidence.browser.push({engine,width,negativePreferences:true,correctionPreserved:true,reloadIsolation:true,newConversationIsolation:true,positiveFish:true,b1Map:true,turkishDraftChars:draft.length,externalWebsite:true,overflow:false});save();console.log('Actual Preview browser passed',engine,width);await p.waitForLoadState('networkidle');await browser.close();
  }
  assert.deepEqual(evidence.errors,[]);
  evidence.realAiResponses=evidence.api.filter(r=>r.mode==='ai').length;evidence.actualFallbackResponses=evidence.api.filter(r=>r.mode==='veri').length;
