@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {TARGETS,ADDRESSES,SHA,BASE,pool,source,save,snapshot,folder,gitJson} from './pr39-fixture';
+const origin='http://localhost:3189';const result:any={sha:SHA,productionWrites:0,environment:'isolated cloud Preview-mode app with PostgreSQL17',apply:[],rollback:[],repeat:[]};
+const delay=(ms:number)=>new Promise(r=>setTimeout(r,ms));
+async function request(path:string,body?:unknown,extra={}){return fetch(origin+path,{method:body?'POST':'GET',redirect:'error',headers:{Origin:origin,'Content-Type':'application/json',...extra},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(60000)})}
+async function json(path:string,body?:unknown){const r=await request(path,body);assert.equal(r.status,200,path+':'+r.status);return r.json()}
+const get=(slug:string)=>json('/api/admin/db/?rapor=profil&slug='+slug);
+const post=(profile:any)=>json('/api/admin/db/',{action:'profile-apply',target:'preview',confirm:'EVET',profile});
+const normalized=(p:any)=>{const{updatedAt,...rest}=p;return rest};
+function checkProfile(j:any,p:any){assert.equal(j.env,'preview');assert.equal(j.slug,p.slug);for(const k of ['address','phone','website','instagram','hours','description','reservation'])if(p[k])assert.equal(j.profile[k].value,p[k].value,p.slug+' '+k);assert.deepEqual(j.profile.notes.map((n:any)=>n.value),(p.notes??[]).map((n:any)=>n.value));if(p.menu){assert.deepEqual(j.profile.menu.sections,p.menu.sections);assert.equal(j.profile.menu.pricesPublished,p.menu.pricesPublished)}assert.equal(j.videos.length,0)}
+async function main(){
+ let ready=false;for(let i=0;i<90;i++){try{const r=await request('/api/admin/db/?rapor=profil&slug=menemen-besiktas');if(r.status===200){ready=true;break}}catch{}await delay(1000)}assert(ready,'Test server unavailable');
+ const st=await json('/api/admin/db/');assert.equal(st.env,'preview');assert.equal(st.db.writeGuard.ok,true);assert.equal(st.integrity.present,793);assert.equal(st.integrity.ok,true);for(const k of ['pending','drift','unknown'])assert.deepEqual(st.migrations[k],[]);result.runtime={environment:st.env,fingerprint:st.db.fingerprint,guard:st.db.writeGuard,catalog:st.integrity.present};
+ const before=JSON.parse(readFileSync(folder+'/protected-before.json','utf8'));assert.deepEqual(await snapshot(),before);const menemen=await get('menemen-besiktas');assert.equal(menemen.profile.menu.sections.flatMap((s:any)=>s.items).length,45);assert.equal(menemen.videos[0].externalId,'e6OmpzizSoo');
+ const wrong=await request('/api/admin/db/',{action:'profile-apply',target:'production',confirm:'EVET',profile:source(TARGETS[0])});assert.equal(wrong.status,400);
+ const csrf=await request('/api/admin/db/',{action:'profile-apply',target:'preview',confirm:'EVET',profile:source(TARGETS[0])},{Origin:'https://untrusted.invalid','Sec-Fetch-Site':'cross-site'});assert.equal(csrf.status,403);
+ const anon=await request('/api/reviews/',{});assert.equal(anon.status,401);
+ const forced=await request('/api/admin/db/',{action:'profile-apply',target:'preview',confirm:'EVET',profile:source(TARGETS[0]),simulateFailure:true});assert.equal(forced.status,500);assert.equal((await forced.json()).error,'apply_failed_rolled_back');assert.equal((await get(TARGETS[0])).profile,null);assert.deepEqual(await snapshot(),before);
+ const excluded=JSON.parse(readFileSync('../candidate/data/katalog/gece-13/birlesik-aday.json','utf8')).kabul.map((r:any)=>r.slug);assert.equal(excluded.length,334);
+ const missing=await request('/api/admin/db/',{action:'profile-apply',target:'preview',confirm:'EVET',profile:{slug:excluded[0],description:{value:'Synthetic no-place guard',provider:'official_site',url:'https://example.invalid/',checkedAt:'2026-11-13'}}});assert.equal(missing.status,400);assert.equal(Number((await pool.query('SELECT count(*) n FROM places')).rows[0].n),793);
+ const originals:any={};for(const slug of TARGETS){const j=await get(slug);assert.equal(j.profile,null);originals[slug]=normalized(j.place);const r=await post(source(slug));assert(r.ok&&r.profileOk);assert.equal(r.videosTotal,0);result.apply.push({slug,auditId:r.auditId,fields:r.fields,menuItems:r.menuItems});checkProfile(await get(slug),source(slug))}
+ assert.deepEqual(await snapshot(),before);
+ for(const r of result.apply){const rb=await json('/api/admin/db/',{action:'profile-rollback',target:'preview',confirm:'GERI-AL',auditId:r.auditId});assert(rb.ok);const j=await get(r.slug);assert.equal(j.profile,null);assert.deepEqual(normalized(j.place),originals[r.slug]);result.rollback.push({slug:r.slug,ok:true})}
+ assert.deepEqual(await snapshot(),before);
+ for(const slug of TARGETS){const r=await post(source(slug));assert(r.ok);checkProfile(await get(slug),source(slug));const counts=(await get(slug)).counts;const repeat=await post(source(slug));assert(repeat.ok&&repeat.unchanged);assert.deepEqual((await get(slug)).counts,counts);result.repeat.push({slug,unchanged:true})}
+ assert.deepEqual(await snapshot(),before);const menemenAfter=await get('menemen-besiktas');assert.deepEqual(menemenAfter,menemen);result.menemenUnchanged=true;
+ const ids=(await pool.query('SELECT id,slug FROM places')).rows.sort((a:any,b:any)=>a.slug.localeCompare(b.slug));assert.deepEqual(ids,JSON.parse(readFileSync(folder+'/all-place-ids.json','utf8')));assert.equal(ids.length,793);assert(!ids.some((r:any)=>excluded.includes(r.slug)));result.excluded334=true;
+ // Separately prove the future three-row address patch is bounded, idempotent and reversible. Never commit it here.
+ const c=await pool.connect();await c.query('BEGIN');try{
+  const old=(await c.query('SELECT * FROM places WHERE slug=ANY($1::text[]) ORDER BY slug',[ADDRESSES])).rows;assert.equal(old.length,3);const current=JSON.parse(readFileSync('../candidate/data/real/venues.json','utf8'));
+  for(const row of old){const expected=current.find((r:any)=>r.slug===row.slug);const r=await c.query('UPDATE places SET address=$1,neighborhood=$2 WHERE id=$3 AND slug=$4 AND address IS NOT DISTINCT FROM $5 AND neighborhood IS NOT DISTINCT FROM $6 RETURNING *',[expected.address,expected.neighborhood??null,row.id,row.slug,row.address,row.neighborhood]);assert.equal(r.rowCount,1);const a=r.rows[0];for(const key of Object.keys(row))if(!['address','neighborhood'].includes(key))assert.deepEqual(a[key],row[key]);const second=await c.query('UPDATE places SET address=$1,neighborhood=$2 WHERE id=$3 AND (address IS DISTINCT FROM $1 OR neighborhood IS DISTINCT FROM $2)',[expected.address,expected.neighborhood??null,row.id]);assert.equal(second.rowCount,0)}
+  await c.query('ROLLBACK');const back=(await pool.query('SELECT * FROM places WHERE slug=ANY($1::text[]) ORDER BY slug',[ADDRESSES])).rows;assert.deepEqual(back,old);result.addressPatch={records:3,changedColumns:['address','neighborhood'],idempotent:true,rolledBack:true};
+ }catch(e){await c.query('ROLLBACK');throw e}finally{c.release()}
+ assert.deepEqual(await snapshot(),before);save('protected-after',await snapshot());result.protectedGroups=Object.keys(before).length;result.untargetedPlaces=before.untargeted_places.n;result.catalog=793;result.security={wrongProductionTarget:400,crossOrigin:403,anonymousReview:401,atomicFailure:500,missing334VenueRejected:400};result.complete=true;save('api',result);console.log(JSON.stringify(result));
+}
+main().then(()=>process.exit(0)).catch(e=>{result.complete=false;result.error=String(e);save('api',result);console.error(e);process.exit(1)});
