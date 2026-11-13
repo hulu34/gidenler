@@ -1,0 +1,194 @@
+{
+ "slug": "mikla-turkey-fusion-beyoglu",
+ "description": {
+  "value": "The Marmara Pera'nın en üst katlarındaki restoran ve teras bar. İşletmenin anlatımına göre Anadolu'nun dört bir yanından seçilmiş ürünleri çağdaş bir yaklaşımla yorumluyor. Üç tabaklı prix fixe à la carte ya da yedi tabaklı tadım menüsü seçilebiliyor; vegan tadım menüsü de var.",
+  "provider": "official_site",
+  "url": "https://www.miklarestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "address": {
+  "value": "The Marmara Pera, Meşrutiyet Cad. No:15, 34430 Beyoğlu, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.miklarestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 212 293 56 56",
+  "provider": "official_site",
+  "url": "https://www.miklarestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://www.miklarestaurant.com",
+  "provider": "official_site",
+  "url": "https://www.miklarestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "miklarestaurant",
+  "provider": "official_site",
+  "url": "https://www.miklarestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Sa 18:00-00:00",
+  "provider": "official_site",
+  "url": "https://www.miklarestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Pazar günleri ve öğle servisinde kapalı. Mutfağa son sipariş 21.30; bar 18.00–02.00 arası açık.",
+   "provider": "official_site",
+   "url": "https://www.miklarestaurant.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Tadım menüleri yalnız masanın tamamına servis ediliyor.",
+   "provider": "official_site",
+   "url": "https://www.miklarestaurant.com/menu",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Sitedeki menü temsilî; işletme menüyü her gün gelen ürüne göre basıyor. Fiyatlara KDV dahil, servis dahil değil.",
+   "provider": "official_site",
+   "url": "https://www.miklarestaurant.com/menu",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "teras": true,
+   "alkol": true,
+   "vegan": true
+  },
+  "provider": "official_site",
+  "url": "https://www.miklarestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.miklarestaurant.com/menu",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Prix fixe à la carte (temsilî menü)",
+    "items": [
+     {
+      "name": "3 tabaklı à la carte menü (kişi başı)",
+      "priceTry": 8500
+     },
+     {
+      "name": "Pea",
+      "description": "Araka & Sultani Pea, Nettle, Wild Mushroom"
+     },
+     {
+      "name": "Lion Fish",
+      "description": "Arugula Paste, Pumpkin Seeds & Flowers, Broad Beans, Sea Beans, Chili"
+     },
+     {
+      "name": "Charred Calamari",
+      "description": "Broad Beans, Shallot, Tarator"
+     },
+     {
+      "name": "Whole Wheat Mantı",
+      "description": "Beef or Vegetable Mantı, Smoked Buffalo Yoghurt, Tomato, Roasted Garlic"
+     },
+     {
+      "name": "Dried Beef Tenderloin",
+      "description": "Red Wine & Rakı Marinated Tenderloin, Fresh Almond, Purslane, Şevketi Bostan, Sumac"
+     },
+     {
+      "name": "Lamb Heart",
+      "description": "Bolet Mushroom, Cress, Pomegranate Vinegar, Malkara Lentil, Sumac, Pickled Gherkin"
+     },
+     {
+      "name": "Smoked Artichoke",
+      "description": "Corn Flour, Broccolini, Antep Chili, Artichoke Vinegar, Dill"
+     },
+     {
+      "name": "Grilled Fish",
+      "description": "Fennel, Bottarga, Halhali Olives, Melissa, Garlic, Wild Cabbage"
+     },
+     {
+      "name": "Pan Fried Fish",
+      "description": "Crayfish, Morel Mushroom, Asparagus, Coriander, Apple Vinegar"
+     },
+     {
+      "name": "Sea Foods Casserole",
+      "description": "İskenderun Prawn, Octopus, Mussels, Clam, Scallop, Calamari, Shallot, Tomato, Halhali Olives, Chili Green Pepper"
+     },
+     {
+      "name": "Charred Beef Short Rib",
+      "description": "Young Potato, Kars Gruyere, Mushroom, Beetroot Molasses"
+     },
+     {
+      "name": "Dry Aged Beef (For Two)",
+      "description": "Asparagus, Young Potato, Mushroom, Reduced Çalkarası Wine, Zucchini Paste, Wild Thyme Paste"
+     },
+     {
+      "name": "Braised Lamb Shank",
+      "description": "Trakya Kıvırcık, Fresh Almond, Camel Sausage, Charred Chard, Sultani Pea"
+     },
+     {
+      "name": "Grilled Lamb",
+      "description": "Smoked Lamb Loin, Apple Molasses, Charred Eggplant, Rock Samphire, Sumac Sour"
+     },
+     {
+      "name": "Black Mulberry Soup",
+      "description": "Tahini Halva Ice Cream, Rakı, Cardamom"
+     },
+     {
+      "name": "Strawberry",
+      "description": "Strawberry Juice & Sour, Basil Ice Cream"
+     },
+     {
+      "name": "Burned Hazelnut Halva",
+      "description": "Rice Pudding, Sarı Çeltik Rice, Kaffir Lime, Strawberry Sorbet"
+     },
+     {
+      "name": "Antep Pistachio",
+      "description": "Soapwort Foam, Ankara Pear, Basil, Terebinth"
+     },
+     {
+      "name": "Caramilized Apple",
+      "description": "Saffron & Yoghurt Ice Cream, Apple Molasses"
+     },
+     {
+      "name": "Bitter Chocolate",
+      "description": "Warm Chocolate, Blackberry Sorbet, Milk Jam, Poppy Seed Paste, Lime, Anis"
+     },
+     {
+      "name": "Cheese & Honey (For Two)",
+      "description": "Anatolian Raw Milk Cheeses, Flower Honey, Walnut, Hardaliye",
+      "priceTry": 2500
+     }
+    ]
+   },
+   {
+    "title": "Tadım menüleri (kişi başı)",
+    "items": [
+     {
+      "name": "Mikla Tasting",
+      "priceTry": 10500
+     },
+     {
+      "name": "6 Glasses of Matching Wine (Option 1)",
+      "priceTry": 5500
+     },
+     {
+      "name": "6 Glasses of Matching Wine (Option 2)",
+      "priceTry": 8000
+     },
+     {
+      "name": "Vegan Tasting",
+      "priceTry": 9600
+     }
+    ]
+   }
+  ]
+ },
+ "_kaynak_notu": "Resmî site miklarestaurant.com ana sayfa ve /menu (13.11.2026). Katalog kaydında site yoktu; alan adı işletme adı, adres ve telefonla eşleşti. Prix fixe kalemleri sitedeki sırayla tek bölümde verildi (sitedeki ONE/TWO/THREE sekme ayrımı metinden kesin okunamadığı için bölünmedi). Tadım menüsü kalemleri ve şarap listesi aktarılmadı. 'Caramilized' sitedeki yazımdır."
+}

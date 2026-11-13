@@ -1,0 +1,50 @@
+{
+ "slug": "sade-bes-denizler-mutfagi-sisli",
+ "address": {
+  "value": "Teşvikiye, Akkavak Sokak No:36, Şişli, İstanbul",
+  "provider": "official_site",
+  "url": "https://sadebesdenizler.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://sadebesdenizler.com",
+  "provider": "official_site",
+  "url": "https://sadebesdenizler.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "sadebesdenizler",
+  "provider": "official_site",
+  "url": "https://sadebesdenizler.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Sa 12:00-00:00",
+  "provider": "official_site",
+  "url": "https://sadebesdenizler.com/iletisim/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki rezervasyon bağlantısından ya da e-postayla.",
+  "provider": "official_site",
+  "url": "https://sadebesdenizler.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Pazar kapalı.",
+   "provider": "official_site",
+   "url": "https://sadebesdenizler.com/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://sadebesdenizler.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "_kaynak_notu": "Resmî site sadebesdenizler.com ana sayfa ve /iletisim (13.11.2026): pazartesi–cuma ve cumartesi 12.00–00.00, pazar kapalı. Menü sayfası metin olarak okunamadı. Telefon sitede yayımlanmıyor; katalogdaki telefon değiştirilmedi."
+}

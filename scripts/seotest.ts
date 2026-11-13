@@ -72,9 +72,12 @@ ok("fotoğrafsız kayıtta kapak yok", coverOf(bare) === null || !!bare.photos?.
 ok("adressiz kayıt girmez", !inVenueSitemap(bare));
 ok("demo girmez", !inVenueSitemap({ ...base, isDemo: true }));
 const bySlug = new Map(realEntities.map((e) => [e.slug, e]));
-ok("adressiz liste 39 tekil gerçek mekân", noAddressOk.length === 39 && new Set(noAddressOk).size === 39 && noAddressOk.every((s) => bySlug.has(s)));
+ok("adressiz istisnalar tekil gerçek mekânlar", new Set(noAddressOk).size === noAddressOk.length && noAddressOk.every((s) => bySlug.has(s)));
+ok("adresli mekân gereksiz istisna olarak tutulmaz", noAddressOk.every((s) => !bySlug.get(s)!.address));
+const completedAddresses = ["altin-sofra-kucukcekmece", "antula-gurme-beykoz"];
+ok("adresi tamamlananlar istisnasız sitemap ve yapılandırılmış veride kalır", completedAddresses.every((s) => { const e = bySlug.get(s)!; return !noAddressOk.includes(s) && !!e.address && inVenueSitemap(e) && venueJsonLd(e, null, false) !== null; }));
 ok("listedekilerin hepsi haritada", noAddressOk.every((s) => inVenueSitemap(bySlug.get(s)!)));
-ok("listede demo girmez", !inVenueSitemap({ ...bySlug.get(noAddressOk[0])!, isDemo: true }));
+ok("listede demo girmez", !inVenueSitemap({ ...(bySlug.get(noAddressOk[0]) ?? base), isDemo: true }));
 ok("listede olmayan adressiz kayıt girmez", !inVenueSitemap(bySlug.get("barba-yani-adalar")!));
 ok("listedekilerde adres vaadi ve işaretleme yok", noAddressOk.every((s) => { const e = bySlug.get(s)!; return e.address || (venueJsonLd(e, null, false) === null && !venueDescription(e, null, false).includes("adres")); }));
 ok("yalnız yayındaki yazılar", articles(false).every((a) => a.status === "yayinda"));

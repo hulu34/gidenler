@@ -1,0 +1,13 @@
+{
+ "_aciklama": "Birleşik aday denetiminde güçlü mükerrer şüphesine verilen sahip kararları. Yalnız adı geçen iki slug arasındaki şüpheyi kaldırır; kesin mükerrer (aynı slug ya da OSM kaydı) ve kapanış kontrolleri her zaman geçerlidir.",
+ "kararlar": [
+  {
+   "slug": "ouzo-roof-restaurant-kadikoy",
+   "karsi": "perran-ocakbasi-kadikoy",
+   "karar": "ayri_isletme",
+   "tarih": "2026-11-13",
+   "veren": "Gidenler sahibi (sohbette, 13.11.2026)",
+   "not": "Aynı bina adresi (40 m) ama iki ayrı işletme: Ouzo Roof (balık restoranı, çatı katı, ouzorestaurant.com) ve Perran Ocakbaşı. İki ayrı profil olarak kalır."
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "slug": "deraliye-fatih",
+ "description": {
+  "value": "Sultanahmet'te, Divanyolu yakınında Osmanlı saray mutfağı restoranı. İşletmenin anlatımına göre saray mutfağının tariflerini Tarihî Yarımada'da sunuyor; menüde çorbalar, soğuk başlangıçlar, deniz ürünleri ve vejetaryen Osmanlı yemekleri var.",
+  "provider": "official_site",
+  "url": "https://deraliyerestaurant.com/anasayfa/",
+  "checkedAt": "2026-11-13"
+ },
+ "address": {
+  "value": "Alemdar Mah. Ticarethane Sk. No:10, Divanyolu Cad., Sultanahmet, Fatih, İstanbul",
+  "provider": "official_site",
+  "url": "https://deraliyerestaurant.com/iletisim/",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 212 520 77 78",
+  "provider": "official_site",
+  "url": "https://deraliyerestaurant.com/iletisim/",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://deraliyerestaurant.com",
+  "provider": "official_site",
+  "url": "https://deraliyerestaurant.com/iletisim/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "deraliye_restaurant_istanbul",
+  "provider": "official_site",
+  "url": "https://deraliyerestaurant.com/anasayfa/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki rezervasyon sayfasından ya da telefonla (+90 212 520 77 78, +90 539 593 77 97).",
+  "provider": "official_site",
+  "url": "https://deraliyerestaurant.com/iletisim/",
+  "checkedAt": "2026-11-13"
+ },
+ "amenities": {
+  "items": {
+   "rezervasyon": true
+  },
+  "provider": "official_site",
+  "url": "https://deraliyerestaurant.com/anasayfa/",
+  "checkedAt": "2026-11-13"
+ },
+ "_kaynak_notu": "Resmî site deraliyerestaurant.com ana sayfa ve /iletisim (13.11.2026). Sitedeki misafir yorumları aktarılmadı. Menü PDF'i (deraliye-menu-tr-2026.pdf) bu ortamda metne çevrilemedi; menü aktarılmadı (sonraki iş). Çalışma saati başlığı var ama metin boş; saat yazılmadı."
+}

@@ -1,0 +1,222 @@
+{
+ "slug": "mutfakkoz-kadikoy",
+ "description": {
+  "value": "Kozyatağı'nda küçük lokanta. Menüde paylaşımlık mezeler, brioche arasında sandviçler (kaburga, ciğer, balık ekmek, işkembe, dana dil) ve sosyete mantısı, rozbif, bıldırcın şiş gibi tabaklar var; vejetaryen, vegan ve glütensiz ürünler menüde işaretli.",
+  "provider": "official_site",
+  "url": "https://mutfakkoz.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "address": {
+  "value": "Kozyatağı Mah. Kaya Sultan Sok. 27B, Kadıköy, İstanbul",
+  "provider": "official_site",
+  "url": "https://mutfakkoz.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 551 636 44 55",
+  "provider": "official_site",
+  "url": "https://mutfakkoz.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://mutfakkoz.com",
+  "provider": "official_site",
+  "url": "https://mutfakkoz.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "mutfakkoz",
+  "provider": "official_site",
+  "url": "https://mutfakkoz.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Telefonla: 0551 636 44 55.",
+  "provider": "official_site",
+  "url": "https://mutfakkoz.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Pazar ve pazartesi kapalı.",
+   "provider": "official_site",
+   "url": "https://mutfakkoz.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Alerji ve beslenme kısıtlarının servis ekibine bildirilmesi isteniyor.",
+   "provider": "official_site",
+   "url": "https://mutfakkoz.com/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "vegan": true
+  },
+  "provider": "official_site",
+  "url": "https://mutfakkoz.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://mutfakkoz.com/",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Çorba",
+    "items": [
+     {
+      "name": "Günün Çorbası (tam)",
+      "priceTry": 350
+     },
+     {
+      "name": "Günün Çorbası (az)",
+      "priceTry": 300
+     }
+    ]
+   },
+   {
+    "title": "Paylaşımlık",
+    "items": [
+     {
+      "name": "Çağla Cacığı (V/GF)",
+      "description": "Kese yoğurdu, çağla turşusu, sarımsak",
+      "priceTry": 360
+     },
+     {
+      "name": "Dana Dil & İşkembe Terin (GF)",
+      "description": "Soğan, mevsim yeşillikleri, kapari, acı sos",
+      "priceTry": 580
+     },
+     {
+      "name": "Humus (VG/GF)",
+      "description": "Nohut, tahin, sarımsak, domates, yer fıstığı, yeşil soğan sos, kapari"
+     },
+     {
+      "name": "Bakla Salatası (VG/GF)",
+      "description": "Taze iç bakla, turşu, mevsim yeşillikleri",
+      "priceTry": 420
+     },
+     {
+      "name": "Patlıcan Salatası (VG/GF)",
+      "description": "Köz patlıcan, domates, salatalık, biber, soğan, sarımsak, maydanoz, dereotu",
+      "priceTry": 400
+     }
+    ]
+   },
+   {
+    "title": "Ayaküstü",
+    "items": [
+     {
+      "name": "Kaburga Brioche",
+      "description": "Brioche arasında tiftik dana kaburga, taze baharatlı sos, karamelize ve taze soğan, domates",
+      "priceTry": 620
+     },
+     {
+      "name": "Soğuk Ciğer Sandviç",
+      "description": "Brioche arasında Arnavut ciğeri, hardallı sos, soğan, maydanoz, dereotu"
+     },
+     {
+      "name": "Balık Ekmek",
+      "description": "Brioche arasında uskumru, taze baharatlı sos, soğan turşusu, pancar",
+      "priceTry": 580
+     },
+     {
+      "name": "Briyoşa İşkembe",
+      "description": "Brioche arasında dana işkembe, hardallı sos, kuru domates, acı biber, kibrit patates"
+     },
+     {
+      "name": "Dana Dil Sandviç",
+      "description": "Brioche arasında dana dil, hardallı sos, soğan turşusu, pancar"
+     }
+    ]
+   },
+   {
+    "title": "Tabakta",
+    "items": [
+     {
+      "name": "Sac Kavurma & Pappardelle",
+      "description": "Dana kontrafile, közlenmiş mevsim sebzeleri, taze makarna",
+      "priceTry": 1350
+     },
+     {
+      "name": "Güveçsiz Alabalık",
+      "description": "Kızarmış fileto balık, mozzarella, incir chutney, domates, bezelye, balık sos, turşu",
+      "priceTry": 890
+     },
+     {
+      "name": "Kuzu Yürek",
+      "description": "Izgara yürek, şehriye pilavı, sotelenmiş mevsim sebzeleri"
+     },
+     {
+      "name": "Bıldırcın Şiş (GF)",
+      "description": "Izgara bıldırcın (fileto), sotelenmiş mevsim sebzeleri, patates püresi, bıldırcın sos (şarap içerir)",
+      "priceTry": 1150
+     },
+     {
+      "name": "Humuslu Ilık Mantar Salatası (VG/GF)",
+      "description": "İstiridye mantarı, enginar, mevsim sebzeleri, kabak çekirdeği, maydanoz, dereotu",
+      "priceTry": 690
+     },
+     {
+      "name": "Rozbif (GF)",
+      "description": "Hardallı rozbif dilimleri (soğuk), patates püresi, frenk üzümü reçeli, turşu, yumurta sarısı",
+      "priceTry": 1200
+     },
+     {
+      "name": "Fırında Dana Kaburga (GF)",
+      "description": "Demi glace soslu kaburga dilimleri, patatesli ılık sebze salatası ile"
+     },
+     {
+      "name": "Porçini & Kuzu Göbeği Sosyete Mantısı (VG)",
+      "description": "Taze yufka içinde mantar, mevsim sebzeleri; sarımsaklı kaju yoğurdu, pul biber, nane",
+      "priceTry": 920
+     }
+    ]
+   },
+   {
+    "title": "Tatlı",
+    "items": [
+     {
+      "name": "Limonlu Peri (V)",
+      "description": "Süt, un, limon kreması, yer fıstığı, tarçın",
+      "priceTry": 340
+     },
+     {
+      "name": "Çikolatalı Krem Brüle (V/GF)",
+      "description": "Bitter çikolata, krema",
+      "priceTry": 380
+     }
+    ]
+   },
+   {
+    "title": "İçecek",
+    "items": [
+     {
+      "name": "Pancarlı Acılı Ayran",
+      "priceTry": 130
+     },
+     {
+      "name": "Fesleğenli Ayran"
+     },
+     {
+      "name": "Kiren (Kızılcık) Ekşisi",
+      "priceTry": 140
+     },
+     {
+      "name": "Maden Suyu",
+      "priceTry": 70
+     },
+     {
+      "name": "Su",
+      "priceTry": 50
+     }
+    ]
+   }
+  ]
+ },
+ "_kaynak_notu": "Resmî site mutfakkoz.com tek sayfa (13.11.2026): Türkçe menü, fiyatlar sitede yazıldığı gibi; fiyatı yazılmayan kalemler fiyatsız bırakıldı (tahmin yok). Çalışma saatlerinde yalnız kapalı günler yazıyor; açılış-kapanış saati olmadığı için saat alanı doldurulmadı. Menüde geçerlilik tarihi yok."
+}

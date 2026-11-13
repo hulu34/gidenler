@@ -1,0 +1,164 @@
+{
+ "slug": "nicole-beyoglu",
+ "description": {
+  "value": "Tomtom Suites binasının en üst katındaki teras restoranı. İşletmenin anlatımına göre bina 1901'de Fransisken rahibeler için yapıldı; restoran adını binanın eski sahiplerinden rahibe Agnès Marthe Nicole'den alıyor. Geleneksel Türk mutfağını çağdaş bir yorumla tadım menüleri hâlinde sunuyor; terastan Tarihî Yarımada ve Adalar görülüyor.",
+  "provider": "official_site",
+  "url": "https://www.nicole.com.tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "address": {
+  "value": "Firuzağa Mah. Boğazkesen Cad. No:18, Tomtom Kaptan Sk., 34425 Beyoğlu, İstanbul",
+  "provider": "official_site",
+  "url": "https://www.nicole.com.tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 212 292 44 67",
+  "provider": "official_site",
+  "url": "https://www.nicole.com.tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://www.nicole.com.tr",
+  "provider": "official_site",
+  "url": "https://www.nicole.com.tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "nicolerestaurant",
+  "provider": "official_site",
+  "url": "https://www.nicole.com.tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Tadım Menüsü No.1 20.30'a kadar servis ediliyor; 21.00'den sonra yalnız Tadım Menüsü No.2 var.",
+   "provider": "official_site",
+   "url": "https://www.nicole.com.tr/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Masadaki tüm misafirlere aynı uzunlukta menü servis ediliyor. Vejetaryen menü için önceden iletişime geçilmesi isteniyor.",
+   "provider": "official_site",
+   "url": "https://www.nicole.com.tr/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Tadım menülerindeki bazı yemekler soğan, sarımsak ve biber içeriyor; işletme yemeklerin içeriğini isteğe göre değiştirmiyor.",
+   "provider": "official_site",
+   "url": "https://www.nicole.com.tr/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Alerjiler rezervasyon sırasında bildirilmeli; menü süt, yumurta, buğday, yer fıstığı, sert kabuklu yemiş ve alkol içerebilir.",
+   "provider": "official_site",
+   "url": "https://www.nicole.com.tr/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "rezervasyon": true,
+   "teras": true,
+   "alkol": true
+  },
+  "provider": "official_site",
+  "url": "https://www.nicole.com.tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.nicole.com.tr/",
+  "checkedAt": "2026-11-13",
+  "validFrom": "2026-11-12",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Tadım Menüsü No.1",
+    "items": [
+     {
+      "name": "Tadım Menüsü No.1 (kişi başı)",
+      "priceTry": 8900
+     },
+     {
+      "name": "Amuse-bouche",
+      "description": "Sweetbread Cream Caramel, Circassian Duck"
+     },
+     {
+      "name": "Homemade sourdough breads with sides"
+     },
+     {
+      "name": "Tarama",
+      "description": "Fish Pastrami, Cured Egg Yolk"
+     },
+     {
+      "name": "“Bolu” Kedibatmaz",
+      "description": "“Diyarbakır” Onion Juice, “Bolu” Keş Cheese, Wild Mushroom"
+     },
+     {
+      "name": "Catch of the Day",
+      "description": "Şevket-i Bostan, Sea Herbs, Crayfish Beurre Monté"
+     },
+     {
+      "name": "Quail & Patty",
+      "description": "Cabbage, Liver Pate, Truffle"
+     },
+     {
+      "name": "“Trakya” Lamb Chops",
+      "description": "Darüzziyafe Meatball, Mutancana Puree, Lamb Jus"
+     },
+     {
+      "name": "Pepeçura",
+      "description": "Sesame Tuile, “Rize” Scented Grape Sorbet and Grape Juice"
+     },
+     {
+      "name": "“Datça” Almond",
+      "description": "Bitter Almond Cookie, Cezerye Ice Cream, Orange Blossom Juice"
+     },
+     {
+      "name": "Petit-four"
+     }
+    ]
+   },
+   {
+    "title": "Eşleşmeler (kişi başı, Tadım Menüsü No.1)",
+    "items": [
+     {
+      "name": "Local wine pairing",
+      "priceTry": 4850
+     },
+     {
+      "name": "All around the world wine pairing",
+      "priceTry": 7800
+     },
+     {
+      "name": "Beer pairing",
+      "priceTry": 3650
+     }
+    ]
+   },
+   {
+    "title": "Tadım Menüsü No.2",
+    "items": [
+     {
+      "name": "Tadım Menüsü No.2 (kişi başı)",
+      "priceTry": 8300
+     },
+     {
+      "name": "Local wine pairing",
+      "priceTry": 4400
+     },
+     {
+      "name": "All around the world wine pairing",
+      "priceTry": 6800
+     },
+     {
+      "name": "Beer pairing",
+      "priceTry": 3100
+     }
+    ]
+   }
+  ]
+ },
+ "_kaynak_notu": "Resmî site nicole.com.tr (13.11.2026). Menü sitede 'last updated as of November 12, 2026' ibaresiyle yayımlanıyor; fiyatlar TL, KDV dahil. No.2 menüsünün yemek listesi sitede ayrıca verilmediği için yalnız fiyatı aktarıldı. Kurumsal tanıtım metni aktarılmadı, özetlendi."
+}
