@@ -1,0 +1,38 @@
+{
+ "slug": "alaf-besiktas",
+ "_kaynak_notu": "Kaynak: resmî site alafkurucesme.com (ana sayfa, Menü, Rezervasyon, İletişim ve 'Rezervasyon Ön Ödeme ve Hüküm Şartları' sayfaları; 13.11.2026). Menü eklenmedi: sitedeki alakart ve tadım PDF'lerinde (29.08.2026) yazı tipleri bozuk kodlanmış, ürün adları ve fiyatlar güvenilir biçimde okunamadı. Saat sitede yok. Videolar: oEmbed 200, gömmeye açık; ücretli tanıtım işareti yok. yKrJfqu93Ao videosu YouTube'da ücretli tanıtım işaretli olduğu için alınmadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Kuruçeşme'de Anadolu mutfağı restoranı; adı 'odun ateşi' anlamına geliyor. İşletme mutfağın ve pişirme tekniklerinin Anadolu kültüründen beslendiğini, şarap listesinde Anadolu'nun endemik üzümlerine ve yerli şaraplara yer verdiğini anlatıyor. Alakart ve tadım menüsü var.",
+  "provider": "official_site",
+  "url": "https://www.alafkurucesme.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Telefon (0532 015 94 19) ya da e-postayla (info@alafkurucesme.com). Rezervasyon, gönderilen bağlantıdan kredi kartıyla ön ödeme yapılınca kesinleşiyor; ön ödeme hesaptan düşülüyor. Grup talepleri için doğrudan iletişim isteniyor.",
+  "provider": "official_site",
+  "url": "https://www.alafkurucesme.com/rezervasyon-%C3%B6n-%C3%B6deme-ve-h%C3%BCk%C3%BCm-%C5%9Fartlar%C4%B1",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Rezervasyon oluşturulduktan sonraki 24 saat içinde iptal edilirse ön ödeme iade ediliyor. Gelinmezse ya da bu süre içinde iptal edilmezse ön ödeme iade edilmiyor.",
+   "provider": "official_site",
+   "url": "https://www.alafkurucesme.com/rezervasyon-%C3%B6n-%C3%B6deme-ve-h%C3%BCk%C3%BCm-%C5%9Fartlar%C4%B1",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=R3u43c3tcvY",
+   "credit": "Travelling Foodie · Aralık 2023 · tadım menüsü",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=0TBFqnYvlpg",
+   "credit": "Gurmoss · Mayıs 2023 · Şef Murat Deniz Temel",
+   "category": "editor",
+   "sponsored": false
+  }
+ ]
+}

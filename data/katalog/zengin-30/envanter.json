@@ -1,0 +1,1473 @@
+{
+ "_aciklama": "30 yüksek değerli restoran için kaynaklı içerik envanteri (13.11.2026). Yalnız resmî site, resmî PDF menüler, YouTube oEmbed ve izleme sayfası üst verisi; Google verisi, kullanıcı yorumu ve puan kullanılmadı. Fotoğraf eklenmedi. Seçim nedenleri doğrulanabilir kaynaklara dayanır (Michelin kaydı, işletmenin kendi anlatımı, ilçe kayıt sayısı); popülerlik sıralaması üretilmedi.",
+ "ozet": {
+  "restoran": 30,
+  "profilYapildi": 12,
+  "menuEklenen": 7,
+  "fiyatliMenu": 6,
+  "videoKontrolEdilen": 43,
+  "videoProfilde": 16,
+  "fotografEklenen": 0
+ },
+ "restoranlar": [
+  {
+   "slug": "gallada-by-fatih-tutak-beyoglu",
+   "ad": "GALLADA by Fatih Tutak",
+   "ilce": "Beyoğlu",
+   "ilceKayitSayisi": 136,
+   "tur": "Asya etkili mutfak",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/gallada)",
+    "Şef Fatih Tutak'ın ikinci restoranı (TURK ile aynı şef; PR #39'daki TURK profiliyle karıştırılmadı)"
+   ],
+   "resmiSite": "https://www.galladaistanbul.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî site Cloudflare 403 veriyor; bot engeli aşılmadı (13.11.2026 yeniden denendi)."
+   ]
+  },
+  {
+   "slug": "sans-restaurant-besiktas",
+   "ad": "Şans Restaurant",
+   "ilce": "Beşiktaş",
+   "ilceKayitSayisi": 63,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sans)",
+    "İşletmeye göre 1992'den beri Levent'te (resmî site)"
+   ],
+   "resmiSite": "https://www.sansrestaurant.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "kısmi",
+    "saat": "yok",
+    "rezervasyon": "var"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Site JavaScript ile açılıyor; menü sekmeli ve yalnız ilk sekme metin olarak okundu, fiyat yok. Tam menü için tarayıcıda sekme sekme okuma gerekli."
+   ]
+  },
+  {
+   "slug": "alaf-besiktas",
+   "ad": "Alaf",
+   "ilce": "Beşiktaş",
+   "ilceKayitSayisi": 63,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/alaf)"
+   ],
+   "resmiSite": "https://www.alafkurucesme.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "okunamadı",
+    "saat": "yok",
+    "rezervasyon": "var (ön ödemeli)"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "R3u43c3tcvY",
+     "url": "https://www.youtube.com/watch?v=R3u43c3tcvY",
+     "kanal": "Travelling Foodie",
+     "baslik": "Alaf Kuruçeşme: Affordable Michelin Bib Gourmand Tasting Menu in Istanbul",
+     "yayin": "2023-12-20",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 745,
+     "profilde": true
+    },
+    {
+     "id": "VwczW6wXzQI",
+     "url": "https://www.youtube.com/watch?v=VwczW6wXzQI",
+     "kanal": "Bukalemoon Film",
+     "baslik": "alaf Kuruçeşme",
+     "yayin": "2020-01-02",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 60,
+     "profilde": false
+    },
+    {
+     "id": "yKrJfqu93Ao",
+     "url": "https://www.youtube.com/watch?v=yKrJfqu93Ao",
+     "kanal": "Old Channel – Archived",
+     "baslik": "Flames, Flocks, and the Essence of Yuruk Cuisine: Alaf Restaurant, Istanbul",
+     "yayin": "2024-10-21",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": true,
+     "sureSn": 392,
+     "profilde": false
+    },
+    {
+     "id": "0TBFqnYvlpg",
+     "url": "https://www.youtube.com/watch?v=0TBFqnYvlpg",
+     "kanal": "Gurmoss",
+     "baslik": "Yörük Mutfağını Dünyaya Tanıtan Şef | Alaf Bistronomi Michelin Seçkisine Nasıl Girdi?",
+     "yayin": "2023-05-01",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 767,
+     "profilde": true
+    }
+   ],
+   "bulgular": [
+    "Alakart ve tadım PDF'leri (29.08.2026) bozuk yazı tipi kodlamalı; ürün ve fiyat okunamadı.",
+    "Rezervasyon kredi kartı ön ödemesiyle kesinleşiyor; 24 saat içinde iptal edilmezse ön ödeme iade edilmiyor.",
+    "Bir video YouTube'da ücretli tanıtım işaretli; alınmadı."
+   ]
+  },
+  {
+   "slug": "1924-istanbul-beyoglu",
+   "ad": "1924 İstanbul",
+   "ilce": "Beyoğlu",
+   "ilceKayitSayisi": 136,
+   "tur": "Rus mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/1924-istanbul)",
+    "İşletmeye göre Beyoğlu'nda 80 yıllık bir restoran geleneğinin yeniden canlandırılması (resmî site)"
+   ],
+   "resmiSite": "https://www.1924istanbul.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "var, fiyatlı, tarihsiz",
+    "saat": "kısmi (açılış saati yok)",
+    "rezervasyon": "var"
+   },
+   "menu": {
+    "url": "https://1924istanbul.com/menu/",
+    "fiyatli": true,
+    "kalem": 55,
+    "fiyatliKalem": 55,
+    "gecerlilik": null
+   },
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Katalogda telefon yoktu; resmî siteden eklendi.",
+    "Pazar kapalı ('haftada altı gün')."
+   ]
+  },
+  {
+   "slug": "sunset-grill-ve-bar-besiktas",
+   "ad": "Sunset Grill & Bar",
+   "ilce": "Beşiktaş",
+   "ilceKayitSayisi": 63,
+   "tur": "Uluslararası mutfak",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sunset-grill-bar)",
+    "İşletmeye göre 1994'ten beri Ulus Parkı'nda (resmî site)"
+   ],
+   "resmiSite": "https://www.sunsetgrillbar.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "var, fiyatlı, 05.11.2026'dan geçerli",
+    "saat": "var",
+    "rezervasyon": "telefon"
+   },
+   "menu": {
+    "url": "https://www.sunsetgrillbar.com/assets/yemek.pdf",
+    "fiyatli": true,
+    "kalem": 54,
+    "fiyatliKalem": 53,
+    "gecerlilik": "2026-11-05"
+   },
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "94dVONJgLjE",
+     "url": "https://www.youtube.com/watch?v=94dVONJgLjE",
+     "kanal": "Ceyhun Delidogan",
+     "baslik": "Sunset Grill Bar - İstanbul  ULUS",
+     "yayin": "2013-03-17",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 79,
+     "profilde": false
+    },
+    {
+     "id": "4NQLZfOqg2w",
+     "url": "https://www.youtube.com/watch?v=4NQLZfOqg2w",
+     "kanal": "Sunset Grill & Bar",
+     "baslik": "SUNSET Grill & Bar, Istanbul",
+     "yayin": "2016-12-12",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 188,
+     "profilde": true
+    },
+    {
+     "id": "vEYETCBkJvs",
+     "url": "https://www.youtube.com/watch?v=vEYETCBkJvs",
+     "kanal": null,
+     "baslik": null,
+     "yayin": null,
+     "oembed": 403,
+     "gomulebilir": false,
+     "ucretliTanitimIsareti": false,
+     "sureSn": null,
+     "profilde": false
+    },
+    {
+     "id": "RIPaYRTOy78",
+     "url": "https://www.youtube.com/watch?v=RIPaYRTOy78",
+     "kanal": "ozan ozkan",
+     "baslik": "İstanbul'un en iyi ve en kaliteli restaurantı Sunset Grill Bar",
+     "yayin": "2016-12-07",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 34,
+     "profilde": false
+    },
+    {
+     "id": "mNxrUYqD_Cs",
+     "url": "https://www.youtube.com/watch?v=mNxrUYqD_Cs",
+     "kanal": "Oksijen TV",
+     "baslik": "Beyaz yaka hâlâ Sunset'e gidebiliyor mu? 30'uncu yılını kutlayan lokantanın kurucusu anlatıyor",
+     "yayin": "2024-05-11",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 1553,
+     "profilde": true
+    }
+   ],
+   "bulgular": [
+    "Servis ücreti dahil değil; gönüllü bahşiş adisyona ekleniyor.",
+    "Tatlı ve sushi menüleri ayrı PDF; profile alınmadı."
+   ]
+  },
+  {
+   "slug": "murver-beyoglu",
+   "ad": "Mürver",
+   "ilce": "Beyoğlu",
+   "ilceKayitSayisi": 136,
+   "tur": "Izgara",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/murver)",
+    "İşletmeye göre İstanbul'un ilk canlı ateş restoranı, 2017 (resmî site)"
+   ],
+   "resmiSite": "https://www.murverrestaurant.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "var, fiyatlı, temsilî",
+    "saat": "not olarak (gün belirtilmemiş)",
+    "rezervasyon": "var"
+   },
+   "menu": {
+    "url": "https://www.murverrestaurant.com/wp-content/uploads/2026/05/Murver-Menu-Dinner-TR.pdf",
+    "fiyatli": true,
+    "kalem": 27,
+    "fiyatliKalem": 26,
+    "gecerlilik": null
+   },
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "GyeKtU5u6gs",
+     "url": "https://www.youtube.com/watch?v=GyeKtU5u6gs",
+     "kanal": "Keşif Perisi",
+     "baslik": "Karaköy Restoranlar; Murver Karaköy",
+     "yayin": "2019-01-07",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 229,
+     "profilde": true
+    },
+    {
+     "id": "ERNWFULvD1k",
+     "url": "https://www.youtube.com/watch?v=ERNWFULvD1k",
+     "kanal": "Foodinlife Magazine",
+     "baslik": "Mürver Restaurant Executive Şefi Mevlüt Özkaya ile Keyifli Bir Sohbet",
+     "yayin": "2023-07-03",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 270,
+     "profilde": true
+    },
+    {
+     "id": "kP74cw6h3TY",
+     "url": "https://www.youtube.com/watch?v=kP74cw6h3TY",
+     "kanal": "cjpattern",
+     "baslik": "In the Kitchen at Murver Restaurant in Istanbul",
+     "yayin": "2019-02-07",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 15,
+     "profilde": false
+    }
+   ],
+   "bulgular": [
+    "Site menüyü 'temsilî örnek' diye sunuyor; profilde açıkça yazıldı.",
+    "Servis dahil değil."
+   ]
+  },
+  {
+   "slug": "yanyali-fehmi-lokantasi-kadikoy",
+   "ad": "Yanyalı Fehmi Lokantası",
+   "ilce": "Kadıköy",
+   "ilceKayitSayisi": 121,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 Bib Gourmand (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/yanyal%C4%B1-fehmi-lokantas%C4%B1)"
+   ],
+   "resmiSite": "https://www.fehmilokantasi.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî sitenin TLS sertifikası alan adıyla eşleşmiyor (ERR_TLS_CERT_ALTNAME_INVALID); güvenlik uyarısı aşılmadı."
+   ]
+  },
+  {
+   "slug": "sirali-kebap-etiler-besiktas",
+   "ad": "Sıralı Kebap Etiler",
+   "ilce": "Beşiktaş",
+   "ilceKayitSayisi": 63,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/s%C4%B1ral%C4%B1-kebap)",
+    "Zincir: Etiler, Ataşehir, Ankara, İzmir, Dubai, Taşkent hesapları sitede"
+   ],
+   "resmiSite": "https://www.siralikebap.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Site yalnız şube Instagram hesaplarını listeliyor; Etiler şubesine özgü menü/saat yok."
+   ]
+  },
+  {
+   "slug": "maromi-istanbul-sisli",
+   "ad": "Maromi İstanbul",
+   "ilce": "Şişli",
+   "ilceKayitSayisi": 49,
+   "tur": "Sushi / Japon",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/maromi-istanbul)",
+    "Divan İstanbul otelinin Japon restoranı"
+   ],
+   "resmiSite": "https://www.divan.com.tr/restoran/maromi-istanbul",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "PDF görsel (06.2026)",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Menü PDF'i (maromi-menu-06-2026.pdf) görsel; metin çıkmadı, bu ortamda PDF sayfa görüntüsü üretilemedi (poppler yok)."
+   ]
+  },
+  {
+   "slug": "ulus-29-besiktas",
+   "ad": "Ulus 29",
+   "ilce": "Beşiktaş",
+   "ilceKayitSayisi": 63,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/29-1195533)"
+   ],
+   "resmiSite": "https://ulus29.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "var, fiyatlı, 07.07.2026'dan geçerli",
+    "saat": "var",
+    "rezervasyon": "var (Rezervin)"
+   },
+   "menu": {
+    "url": "https://ulus29.com/static/uploads/2026/07/Ulus29-Yemek-Temmuz26.pdf",
+    "fiyatli": true,
+    "kalem": 57,
+    "fiyatliKalem": 53,
+    "gecerlilik": "2026-07-07"
+   },
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "y9ROjh7FlA0",
+     "url": "https://www.youtube.com/watch?v=y9ROjh7FlA0",
+     "kanal": "Ömer Uzun",
+     "baslik": "İstanbul'un en güzel manzaralı restoranlarından Ulus 29'un iç ve dış mekan çekimleri",
+     "yayin": "2020-08-23",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 178,
+     "profilde": true
+    },
+    {
+     "id": "AfA0k-PDFyU",
+     "url": "https://www.youtube.com/watch?v=AfA0k-PDFyU",
+     "kanal": "Sihlelesipho",
+     "baslik": "TURKEY 🇹🇷 TRAVEL VLOG: BEST RESTAURANTS TO GO TO IN ISTANBUL",
+     "yayin": "2022-09-11",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 1478,
+     "profilde": false
+    }
+   ],
+   "bulgular": [
+    "Istakozlu linguine, havyar ve kuru dinlendirilmiş etler günlük/kilo fiyatlı; fiyatsız bırakıldı."
+   ]
+  },
+  {
+   "slug": "aheste-beyoglu",
+   "ad": "Aheste",
+   "ilce": "Beyoğlu",
+   "ilceKayitSayisi": 136,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aheste)"
+   ],
+   "resmiSite": "https://ahesterestaurant.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "görsel (JPG)",
+    "saat": "yok",
+    "rezervasyon": "var (rezervem)"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Menü yalnız görsel (tadım ve vejetaryen menü JPG); metin yok, görsel okuma bu turda yapılmadı."
+   ]
+  },
+  {
+   "slug": "park-fora-besiktas",
+   "ad": "Park Fora",
+   "ilce": "Beşiktaş",
+   "ilceKayitSayisi": 63,
+   "tur": "Balık restoranı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/park-fora)",
+    "İşletmeye göre 1996'dan beri Kuruçeşme'de (resmî site)"
+   ],
+   "resmiSite": "https://www.parkfora.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "görsel kartlar, fiyatsız, İngilizce",
+    "saat": "yok",
+    "rezervasyon": "var"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "XrdTI9psJoo",
+     "url": "https://www.youtube.com/watch?v=XrdTI9psJoo",
+     "kanal": "ISTANBUL FIND",
+     "baslik": "Park Fora - ISTANBUL FIND [HD]",
+     "yayin": "2013-03-10",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 32,
+     "profilde": false
+    },
+    {
+     "id": "zi3MStENCHM",
+     "url": "https://www.youtube.com/watch?v=zi3MStENCHM",
+     "kanal": "Travelling Foodie",
+     "baslik": "Michelin Guide Restaurant in Istanbul with a View! 😍 Seafood at Park Fora Restaurant! 🇹🇷",
+     "yayin": "2025-04-17",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 10,
+     "profilde": false
+    },
+    {
+     "id": "C5jqFCvFzQI",
+     "url": "https://www.youtube.com/watch?v=C5jqFCvFzQI",
+     "kanal": "Berrak Berroo",
+     "baslik": "Bogaz'da Rakı Balık Keyfi - Park Fora",
+     "yayin": "2016-05-09",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 45,
+     "profilde": false
+    },
+    {
+     "id": "VY6nnRMmMfw",
+     "url": "https://www.youtube.com/watch?v=VY6nnRMmMfw",
+     "kanal": "Park Fora",
+     "baslik": "Park Fora - Gece Manzaraları",
+     "yayin": "2020-10-05",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 22,
+     "profilde": true
+    }
+   ],
+   "bulgular": [
+    "Bir içerik üreticisi kısa videosu restoranı 'Bebek' diye anlatıyor; şube eşleşmesi kesin olmadığı için alınmadı."
+   ]
+  },
+  {
+   "slug": "tatbak-sisli",
+   "ad": "Tatbak",
+   "ilce": "Şişli",
+   "ilceKayitSayisi": 49,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 Bib Gourmand (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tatbak)"
+   ],
+   "resmiSite": "https://www.tatbak.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Sitedeki /menu/ sayfası 404 veriyor."
+   ]
+  },
+  {
+   "slug": "topaz-beyoglu",
+   "ad": "Topaz",
+   "ilce": "Beyoğlu",
+   "ilceKayitSayisi": 136,
+   "tur": "Akdeniz mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/topaz-1202702)",
+    "İşletmeye göre 2007'den beri Gümüşsuyu'nda (resmî site)"
+   ],
+   "resmiSite": "https://www.topazistanbul.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "var, fiyatlı, Eylül 2026",
+    "saat": "var",
+    "rezervasyon": "var"
+   },
+   "menu": {
+    "url": "https://www.topazistanbul.com/TOPAZ-SONBAHAR2026-MENU.pdf",
+    "fiyatli": true,
+    "kalem": 23,
+    "fiyatliKalem": 23,
+    "gecerlilik": null
+   },
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "_uKMuDX90mA",
+     "url": "https://www.youtube.com/watch?v=_uKMuDX90mA",
+     "kanal": "Şamdan Plus",
+     "baslik": "Topaz Executive Şefi Mahmut Cansever",
+     "yayin": "2022-01-25",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 130,
+     "profilde": false
+    }
+   ],
+   "bulgular": [
+    "Bulunan video (2022) eski şefi anlatıyor; bugünkü şef Tevfik Alparslan. Video alınmadı."
+   ]
+  },
+  {
+   "slug": "lokanta-1741-fatih",
+   "ad": "Lokanta 1741",
+   "ilce": "Fatih",
+   "ilceKayitSayisi": 62,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-1741)",
+    "Cağaloğlu Hamamı içinde (resmî site)"
+   ],
+   "resmiSite": "https://lokanta1741.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "var, fiyatlı, tarihsiz",
+    "saat": "var (çelişkili, not edildi)",
+    "rezervasyon": "var"
+   },
+   "menu": {
+    "url": "https://lokanta1741.com/tr/tr-menu/",
+    "fiyatli": true,
+    "kalem": 25,
+    "fiyatliKalem": 25,
+    "gecerlilik": null
+   },
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "FQqhFpxfrf4",
+     "url": "https://www.youtube.com/watch?v=FQqhFpxfrf4",
+     "kanal": null,
+     "baslik": null,
+     "yayin": null,
+     "oembed": 403,
+     "gomulebilir": false,
+     "ucretliTanitimIsareti": false,
+     "sureSn": null,
+     "profilde": false
+    }
+   ],
+   "bulgular": [
+    "Ana sayfa ile rezervasyon sayfası saatleri çelişiyor (Salı kapalı yalnız rezervasyon/iletişim sayfasında).",
+    "15 yaş altı kabul edilmiyor.",
+    "Tek video oEmbed 403 (gömme kapalı ya da kaldırılmış)."
+   ]
+  },
+  {
+   "slug": "borsa-restaurant-adile-sultan-uskudar",
+   "ad": "Borsa Restaurant Adile Sultan",
+   "ilce": "Üsküdar",
+   "ilceKayitSayisi": 39,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Michelin 2026 rehber seçkisi (katalogdaki rehber kaydı: https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/borsa-restaurant)"
+   ],
+   "resmiSite": "https://www.borsarestaurants.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "PDF (21.04.2026), ürün adları görsel",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Menü PDF'inde fiyatlar metin, ürün adları görsel; eşleme yapılamadı."
+   ]
+  },
+  {
+   "slug": "karakoy-lokantasi-beyoglu",
+   "ad": "Karaköy Lokantası",
+   "ilce": "Beyoğlu",
+   "ilceKayitSayisi": 136,
+   "tur": "Lokanta",
+   "secimNedeni": [
+    "Editör adayı: ikonik lokanta (kaynakla doğrulanmadı)"
+   ],
+   "resmiSite": "http://www.karakoylokantasi.com",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî site tarayıcıda da yalnız 'TR EN' seçimini gösteriyor; içerik yok.",
+    "Katalogda adres ve telefon eksik."
+   ]
+  },
+  {
+   "slug": "ciya-sofrasi-kadikoy",
+   "ad": "Çiya Sofrası",
+   "ilce": "Kadıköy",
+   "ilceKayitSayisi": 121,
+   "tur": "Restoran",
+   "secimNedeni": [
+    "Anadolu mutfağı lokantası; çok sayıda bağımsız gastronomi videosu bulundu (videolarda Netflix Chef's Table bölümü anılıyor)"
+   ],
+   "resmiSite": "http://www.ciya.com.tr",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "günlük, tarihli ama kontrol günü boş",
+    "saat": "var",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "3-8F3m1Ebzw",
+     "url": "https://www.youtube.com/watch?v=3-8F3m1Ebzw",
+     "kanal": "o yerin hikayesi",
+     "baslik": "Çiya Sofrası Kadıköy",
+     "yayin": "2019-12-28",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 656,
+     "profilde": true
+    },
+    {
+     "id": "TLCEMe6YA40",
+     "url": "https://www.youtube.com/watch?v=TLCEMe6YA40",
+     "kanal": "WhatEmmanuelleSees",
+     "baslik": "Çiya Sofrası Restaurant in Kadıköy, İstanbul home style cooking Featured on the Chef's Table!",
+     "yayin": "2021-08-09",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 127,
+     "profilde": false
+    },
+    {
+     "id": "zrVjDHS_c6Q",
+     "url": "https://www.youtube.com/watch?v=zrVjDHS_c6Q",
+     "kanal": "Just Adrift",
+     "baslik": "Çiya Sofrası // Featured on the NETFLIX Series CHEF'S TABLE Best Food We've Had",
+     "yayin": "2020-10-31",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 634,
+     "profilde": false
+    },
+    {
+     "id": "6TKx09mCcgM",
+     "url": "https://www.youtube.com/watch?v=6TKx09mCcgM",
+     "kanal": null,
+     "baslik": null,
+     "yayin": "2026-01-23",
+     "oembed": 401,
+     "gomulebilir": false,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 80,
+     "profilde": false
+    },
+    {
+     "id": "2flglpOZnhI",
+     "url": "https://www.youtube.com/watch?v=2flglpOZnhI",
+     "kanal": "Travel: The Good, The Bad & The Funny",
+     "baslik": "Why Foodies Love Ciya Sofrasi Kadikoy: Incredible Turkish Specialties",
+     "yayin": "2013-04-14",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 138,
+     "profilde": false
+    },
+    {
+     "id": "FrvG87ZVLkQ",
+     "url": "https://www.youtube.com/watch?v=FrvG87ZVLkQ",
+     "kanal": "Travelling Foodie",
+     "baslik": "Ferry To Istanbul Asian Side For The Best Anatolian Food | Ciya Sofrasi",
+     "yayin": "2024-03-06",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 245,
+     "profilde": true
+    },
+    {
+     "id": "GKQ57GNhggQ",
+     "url": "https://www.youtube.com/watch?v=GKQ57GNhggQ",
+     "kanal": "Selçuk Şirin",
+     "baslik": "Şef Musa Dağdeviren: Çiya nasıl dünya markası oldu?",
+     "yayin": "2020-08-07",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 1481,
+     "profilde": false
+    }
+   ],
+   "bulgular": [
+    "Aynı sokakta Çiya Kebap (No:38/A) ve Çiya Kebap 2 (No:32) ayrı mekânlar; videolar Çiya Sofrası başlıklılardan seçildi."
+   ]
+  },
+  {
+   "slug": "haci-abdullah-beyoglu",
+   "ad": "Hacı Abdullah",
+   "ilce": "Beyoğlu",
+   "ilceKayitSayisi": 136,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "İşletmeye göre 1888'de kuruldu (resmî site)"
+   ],
+   "resmiSite": "https://haciabdullah.com.tr/iletisim/",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "var, fiyatsız",
+    "saat": "var",
+    "rezervasyon": "yok"
+   },
+   "menu": {
+    "url": "https://haciabdullah.com.tr/menu/",
+    "fiyatli": false,
+    "kalem": 79,
+    "fiyatliKalem": 0,
+    "gecerlilik": null
+   },
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "18s4-k_odGI",
+     "url": "https://www.youtube.com/watch?v=18s4-k_odGI",
+     "kanal": "Beyoğlu App",
+     "baslik": "Hacı Abdullah Restaurant - Smart Beyoğlu",
+     "yayin": "2016-10-17",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 153,
+     "profilde": false
+    },
+    {
+     "id": "msHl7FAJG_s",
+     "url": "https://www.youtube.com/watch?v=msHl7FAJG_s",
+     "kanal": "SEN ANLAT İSTANBUL",
+     "baslik": "Hacı Abdullah Lokantası - Sen Anlat İstanbul Kendin Gez",
+     "yayin": "2024-08-11",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 147,
+     "profilde": true
+    },
+    {
+     "id": "F18IA4IqNHM",
+     "url": "https://www.youtube.com/watch?v=F18IA4IqNHM",
+     "kanal": "Lezzet",
+     "baslik": "İstanbul'da 1888 yılında kurulan ikonik lokantanın hikayesini dinledik",
+     "yayin": "2024-01-27",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 40,
+     "profilde": false
+    },
+    {
+     "id": "F6r_syELn4I",
+     "url": "https://www.youtube.com/watch?v=F6r_syELn4I",
+     "kanal": "İstanbul Ajansı",
+     "baslik": "SEMTİN YERLİSİ | Hacı Abdullah Lokantası",
+     "yayin": "2023-01-09",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 277,
+     "profilde": true
+    },
+    {
+     "id": "J6kNm-doLGI",
+     "url": "https://www.youtube.com/watch?v=J6kNm-doLGI",
+     "kanal": "ChefStory",
+     "baslik": "Garsonlar Bile 30 Yıllık  | 134 Yıllık Hacı Abdullah'ın Hikayesi",
+     "yayin": "2022-05-27",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 676,
+     "profilde": false
+    }
+   ],
+   "bulgular": [
+    "Hacı Salih Lokantası ayrı işletme; karıştırılmadı."
+   ]
+  },
+  {
+   "slug": "hunkar-sisli",
+   "ad": "Hünkar",
+   "ilce": "Şişli",
+   "ilceKayitSayisi": 49,
+   "tur": "Restoran",
+   "secimNedeni": [
+    "Editör adayı: ikonik lokanta (kaynakla doğrulanmadı)"
+   ],
+   "resmiSite": "https://hunkarlokantasi.com",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî site (hunkarlokantasi.com) 2011 telifli eski bir sayfa ve alakasız bağlantılar ('best travel', 'acil tesisat') gösteriyor; kaynak olarak kullanılmadı. Katalogdaki web adresinin gözden geçirilmesi önerilir."
+   ]
+  },
+  {
+   "slug": "kanaat-lokantasi-uskudar",
+   "ad": "Kanaat Lokantası",
+   "ilce": "Üsküdar",
+   "ilceKayitSayisi": 39,
+   "tur": "Lokanta",
+   "secimNedeni": [
+    "İşletmeye göre 1933'ten beri Kargılı ailesi (resmî site)"
+   ],
+   "resmiSite": "http://www.kanaatlokantasi.com.tr",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "dijital menü açılmadı",
+    "saat": "var",
+    "rezervasyon": "yalnız Ramazan'da iftar"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "TbL4A4Cywe4",
+     "url": "https://www.youtube.com/watch?v=TbL4A4Cywe4",
+     "kanal": "Simge İşmen",
+     "baslik": "Kanaat Lokantası'nın Yemeklerini ve Tatlılarını Deniyoruz",
+     "yayin": "2023-12-22",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 57,
+     "profilde": true
+    },
+    {
+     "id": "sGOjFKoaEM4",
+     "url": "https://www.youtube.com/watch?v=sGOjFKoaEM4",
+     "kanal": null,
+     "baslik": null,
+     "yayin": null,
+     "oembed": 404,
+     "gomulebilir": false,
+     "ucretliTanitimIsareti": false,
+     "sureSn": null,
+     "profilde": false
+    },
+    {
+     "id": "DcD5IMMR6kM",
+     "url": "https://www.youtube.com/watch?v=DcD5IMMR6kM",
+     "kanal": "Meet Turkey",
+     "baslik": "Delicious Turkish food, Crazy Names at Kanaat Lokantası ft. Lian Penso",
+     "yayin": "2020-01-13",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 627,
+     "profilde": true
+    },
+    {
+     "id": "ezEB-1Fg3yk",
+     "url": "https://www.youtube.com/watch?v=ezEB-1Fg3yk",
+     "kanal": "Abartı Testi",
+     "baslik": "BİR LOKANTADA 1.790 TL HESAP ÖDEDİK! 😱 (Pilavdan Kemik Çıktı)",
+     "yayin": "2026-03-13",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 79,
+     "profilde": false
+    },
+    {
+     "id": "jJ9rx1DSzVQ",
+     "url": "https://www.youtube.com/watch?v=jJ9rx1DSzVQ",
+     "kanal": "Altın Rehber",
+     "baslik": "Kanaat Lokantası",
+     "yayin": "2016-07-11",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 210,
+     "profilde": false
+    }
+   ],
+   "bulgular": [
+    "Katalogda telefon yoktu; resmî siteden eklendi.",
+    "Başka şube yok (işletme SSS)."
+   ]
+  },
+  {
+   "slug": "develi-samatya-fatih",
+   "ad": "Develi Samatya",
+   "ilce": "Fatih",
+   "ilceKayitSayisi": 62,
+   "tur": "Antep mutfağı",
+   "secimNedeni": [
+    "Editör adayı: köklü Antep mutfağı markasının Samatya restoranı (kuruluş bilgisi resmî kaynakta doğrulanmadı)"
+   ],
+   "resmiSite": "https://www.develi1912.com/content/restaurant2/samatya.html",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "PDF 2018 (eski)",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Sitedeki Samatya menü PDF'i 26.07.2018 tarihli; güncel sayılmadı, kullanılmadı."
+   ]
+  },
+  {
+   "slug": "tarihi-sultanahmet-koftecisi-selim-usta-fatih",
+   "ad": "Tarihi Sultanahmet Köftecisi Selim Usta",
+   "ilce": "Fatih",
+   "ilceKayitSayisi": 62,
+   "tur": "Restoran",
+   "secimNedeni": [
+    "İşletmeye göre 1920'den beri (resmî site)"
+   ],
+   "resmiSite": "https://www.sultanahmetkoftesi.com",
+   "kontrol": "2026-11-13",
+   "profil": "yapildi",
+   "tamamlanma": {
+    "menu": "yok (yalnız tanıtım)",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [
+    {
+     "id": "FQkeppQASkw",
+     "url": "https://www.youtube.com/watch?v=FQkeppQASkw",
+     "kanal": "Ahmet Cevatzade",
+     "baslik": "Tarihi Sultanahmet Köftecisi, Selim Usta - İstanbul'da Eşsiz köfte lezzeti / İstanbul Türkiye. 4K",
+     "yayin": "2023-02-22",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 697,
+     "profilde": true
+    },
+    {
+     "id": "W0PfNUEAAkI",
+     "url": "https://www.youtube.com/watch?v=W0PfNUEAAkI",
+     "kanal": "Fooduristik Movie",
+     "baslik": "Gerçek ve Tescilli Tarihi Sultanahmet Köftecisi / Selim Usta",
+     "yayin": "2017-06-19",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 125,
+     "profilde": false
+    },
+    {
+     "id": "9OEuEzEYlIA",
+     "url": "https://www.youtube.com/watch?v=9OEuEzEYlIA",
+     "kanal": "Tarihi Sultanahmet Köftecisi",
+     "baslik": "Sultanahmetköftecisi Tanıtım Filmi",
+     "yayin": "2013-01-07",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 787,
+     "profilde": true
+    },
+    {
+     "id": "zKdcDCWzZvk",
+     "url": "https://www.youtube.com/watch?v=zKdcDCWzZvk",
+     "kanal": "SilentWay",
+     "baslik": "“The Oldest Köfte in Istanbul | Sultanahmet Köftecisi 1920\"",
+     "yayin": "2024-10-18",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 174,
+     "profilde": false
+    },
+    {
+     "id": "3VbE5bff2go",
+     "url": "https://www.youtube.com/watch?v=3VbE5bff2go",
+     "kanal": "Ali Gaam",
+     "baslik": "Best Kofte (Meat Balls) since 1920 , Tarihi SultanAhmet kofte in Turkey",
+     "yayin": "2024-07-09",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 201,
+     "profilde": false
+    },
+    {
+     "id": "L1_XL9rQaho",
+     "url": "https://www.youtube.com/watch?v=L1_XL9rQaho",
+     "kanal": "theglobaltrip",
+     "baslik": "60-SECOND EXCURSION: Lunching at Istanbul's famed Sultanahmet Köftecisi",
+     "yayin": "2019-11-26",
+     "oembed": 200,
+     "gomulebilir": true,
+     "ucretliTanitimIsareti": false,
+     "sureSn": 23,
+     "profilde": false
+    }
+   ],
+   "bulgular": [
+    "Markanın başka şubeleri var; video ve profil Divanyolu No:12 ile eşlendi.",
+    "Katalogda telefon yoktu; eklendi."
+   ]
+  },
+  {
+   "slug": "kor-agop-beyoglu",
+   "ad": "Kör Agop",
+   "ilce": "Beyoğlu",
+   "ilceKayitSayisi": 136,
+   "tur": "Restoran",
+   "secimNedeni": [
+    "Editör adayı: ikonik meyhane (kaynakla doğrulanmadı)"
+   ],
+   "resmiSite": "http://www.koragop.com/index_pera.html",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî site bağlantı zaman aşımı (UND_ERR_CONNECT_TIMEOUT)."
+   ]
+  },
+  {
+   "slug": "matbah-fatih",
+   "ad": "Matbah",
+   "ilce": "Fatih",
+   "ilceKayitSayisi": 62,
+   "tur": "Türk mutfağı",
+   "secimNedeni": [
+    "Editör adayı: Sultanahmet'te Osmanlı mutfağı restoranı (kaynakla doğrulanmadı)"
+   ],
+   "resmiSite": "https://www.matbahrestaurant.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî site bağlantısı koptu (UND_ERR_SOCKET)."
+   ]
+  },
+  {
+   "slug": "kalpazankaya-restaurant-adalar",
+   "ad": "Kalpazankaya Restaurant",
+   "ilce": "Adalar",
+   "ilceKayitSayisi": 8,
+   "tur": "Restoran",
+   "secimNedeni": [
+    "Az temsil edilen ilçe: Adalar (8 kayıt)"
+   ],
+   "resmiSite": "https://www.kalpazankaya.com.tr",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî sitenin TLS sertifikası alan adıyla eşleşmiyor."
+   ]
+  },
+  {
+   "slug": "lacivert-beykoz",
+   "ad": "Lacivert",
+   "ilce": "Beykoz",
+   "ilceKayitSayisi": 16,
+   "tur": "Akdeniz mutfağı",
+   "secimNedeni": [
+    "Az temsil edilen ilçe: Beykoz (16 kayıt)"
+   ],
+   "resmiSite": "https://www.lacivertrestaurant.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî sitenin TLS sertifika zinciri doğrulanamadı (UNABLE_TO_VERIFY_LEAF_SIGNATURE)."
+   ]
+  },
+  {
+   "slug": "dodo-balik-restaurant-tuzla",
+   "ad": "Dodo Balik Restaurant",
+   "ilce": "Tuzla",
+   "ilceKayitSayisi": 6,
+   "tur": "Restoran",
+   "secimNedeni": [
+    "Az temsil edilen ilçe: Tuzla (6 kayıt)"
+   ],
+   "resmiSite": "https://www.dodomarin.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Katalogdaki web adresi (dodomarin.com) çözümlenmiyor (ENOTFOUND); faaliyet kanıtı yeniden kontrol edilmeli."
+   ]
+  },
+  {
+   "slug": "doga-cafe-restaurant-alev-hanim-in-mutfagi-catalca",
+   "ad": "Doğa Cafe Restaurant - Alev Hanım'ın Mutfağı",
+   "ilce": "Çatalca",
+   "ilceKayitSayisi": 7,
+   "tur": "Restoran",
+   "secimNedeni": [
+    "Az temsil edilen ilçe: Çatalca (7 kayıt)"
+   ],
+   "resmiSite": "https://www.dogacaferestaurant.com.tr/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "yok",
+    "saat": "yok",
+    "rezervasyon": "yok"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Katalogdaki web adresi çözümlenmiyor (ENOTFOUND); faaliyet kanıtı yeniden kontrol edilmeli."
+   ]
+  },
+  {
+   "slug": "pelikan-balik-ve-restaurant-sancaktepe",
+   "ad": "Pelikan Balık & Restaurant",
+   "ilce": "Sancaktepe",
+   "ilceKayitSayisi": 13,
+   "tur": "Balık restoranı",
+   "secimNedeni": [
+    "Az temsil edilen ilçe: Sancaktepe (13 kayıt)"
+   ],
+   "resmiSite": "https://pelikanbalik.com/",
+   "kontrol": "2026-11-13",
+   "profil": "yapilmadi",
+   "tamamlanma": {
+    "menu": "sekme başlıkları, ürün yok",
+    "saat": "kısmi (hafta içi 10.00–22.00)",
+    "rezervasyon": "telefon"
+   },
+   "menu": null,
+   "fotograf": {
+    "eklenen": 0,
+    "durum": "işletme izni yok",
+    "commons": "ilgili lisanslı görsel bulunamadı (Wikimedia Commons dosya araması, 13.11.2026)",
+    "not": "Resmî site ve Instagram görselleri işletmenin; yazılı ya da doğrudan izin olmadan kullanılmaz."
+   },
+   "videolar": [],
+   "bulgular": [
+    "Resmî sitedeki adres (Abdurrahmangazi Mah., Güvercinli Sk. No:1) katalogdakinden (Ulus Caddesi) farklı; telefonlar da farklı (site 0216 311 21 22 / 0530 833 31 63, katalog 0216 350 37 56). OSM sokak kontrolü yapılamadı (Overpass yanıt vermedi); adres yazılmadı, sahip/Codex kararı gerekli."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "slug": "ciya-sofrasi-kadikoy",
+ "_kaynak_notu": "Kaynak: resmî site ciya.com.tr (ana sayfa, İletişim, Günün Menüsü ve yemek bölümleri; 13.11.2026; site windows-1254 kodlu). Menü eklenmedi: günün menüsü her gün değişiyor ve kontrol günü için girilmemişti; yemek listelerinde fiyat ve tarih yok. Çiya Sofrası (No:43) ile aynı sokaktaki Çiya Kebap (No:38/A) ve Çiya Kebap 2 (No:32) ayrı mekânlar; videolarda başlık ya da anlatımda 'Çiya Sofrası' geçenler seçildi. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Kadıköy Çarşısı'nda Güneşlibahçe Sokağı'nda Anadolu mutfağı lokantası. Menüde bölgesel ve unutulmaya yüz tutmuş yemekler var; günün menüsü her gün değişiyor. Aynı sokakta işletmenin Çiya Kebap ve Çiya Kebap 2 adlı iki ayrı mekânı daha bulunuyor.",
+  "provider": "official_site",
+  "url": "http://www.ciya.com.tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Su 11:00-22:00",
+  "provider": "official_site",
+  "url": "http://www.ciya.com.tr/?menu",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Bu kayıt Çiya Sofrası (Güneşlibahçe Sk. No:43). Çiya Kebap (No:38/A) ve Çiya Kebap 2 (No:32) ayrı mekânlar.",
+   "provider": "official_site",
+   "url": "http://www.ciya.com.tr/?iletisim",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Günün menüsü sitede gün gün yayımlanıyor.",
+   "provider": "official_site",
+   "url": "http://www.ciya.com.tr/?menu",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=FrvG87ZVLkQ",
+   "credit": "Travelling Foodie · Mart 2024",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=3-8F3m1Ebzw",
+   "credit": "o yerin hikayesi · Aralık 2019",
+   "category": "editor",
+   "sponsored": false
+  }
+ ]
+}

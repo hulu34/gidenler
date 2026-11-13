@@ -1,0 +1,374 @@
+{
+ "slug": "ulus-29-besiktas",
+ "_kaynak_notu": "Kaynak: işletmenin resmî sitesi ulus29.com (ana sayfa, 13.11.2026) ve sitede bağlantısı verilen yemek menüsü PDF'i (Ulus29-Yemek-Temmuz26.pdf; dosyada '07.07.2026 tarihinden itibaren uygulanan fiyatlardır'). Fiyatlar PDF'teki satır hizasıyla eşlendi (pypdf layout). Günlük alış fiyatlı kalemler (ıstakozlu linguine, siyah havyar, günün balığı/çorbası) fiyatsız. Kuru dinlendirilmiş etler kilo fiyatıyla satıldığı için fiyatsız bırakıldı. Video: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok. Google verisi kullanılmadı. Fotoğraf eklenmedi (işletme izni yok).",
+ "description": {
+  "value": "Ulus Parkı içinde, Boğaz'a bakan tepede bir restoran. Menüde soğuk ve sıcak başlangıçlar, çiğ deniz ürünleri ve tartarlar, makarna ve risotto, deniz ürünleri ve ateşte pişen etler var.",
+  "provider": "official_site",
+  "url": "https://ulus29.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Fr 12:00-15:00,18:00-02:00; Sa-Su 18:00-02:00",
+  "provider": "official_site",
+  "url": "https://ulus29.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Resmî sitedeki çevrimiçi rezervasyon bağlantısıyla (Rezervin) ya da telefonla: +90 212 358 29 29.",
+  "provider": "official_site",
+  "url": "https://ulus29.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Hafta içi öğle servisi 12.00–15.00, akşam servisi her gün 18.00–02.00; hafta sonu yalnız akşam servisi var.",
+   "provider": "official_site",
+   "url": "https://ulus29.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Menüdeki fiyatlar 07.07.2026'dan itibaren geçerli; TL ve KDV dahil.",
+   "provider": "official_site",
+   "url": "https://ulus29.com/static/uploads/2026/07/Ulus29-Yemek-Temmuz26.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Istakozlu linguine ve siyah havyarın fiyatı günlük alışa göre belirleniyor; günün balığı ve günün çorbası için servis ekibine danışılması isteniyor.",
+   "provider": "official_site",
+   "url": "https://ulus29.com/static/uploads/2026/07/Ulus29-Yemek-Temmuz26.pdf",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://ulus29.com/static/uploads/2026/07/Ulus29-Yemek-Temmuz26.pdf",
+  "checkedAt": "2026-11-13",
+  "validFrom": "2026-07-07",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Soğuk Başlangıçlar ve Salatalar",
+    "items": [
+     {
+      "name": "Meze Tabağı",
+      "description": "Patlıcan ezmesi, muhammara, humus, zeytinyağlı sarma, mini içli köfte",
+      "priceTry": 1600
+     },
+     {
+      "name": "Burrata",
+      "description": "Közlenmiş biber, çektirilmiş balzamik, fındık, domates",
+      "priceTry": 1800
+     },
+     {
+      "name": "Zeytinyağlı Enginar",
+      "description": "Edamame, çam fıstığı",
+      "priceTry": 1400
+     },
+     {
+      "name": "Guacamole",
+      "description": "Kişniş, domates, maydanoz, kırmızı soğan, deniz tuzu, nacho cipsi",
+      "priceTry": 1100
+     },
+     {
+      "name": "Foie Gras",
+      "description": "Elma ve zencefil chutney, Melba tost",
+      "priceTry": 3000
+     },
+     {
+      "name": "Taş Fırında Pancar",
+      "description": "Limon aromalı peynir kreması, pancar yaprakları ve Datça bademli pesto",
+      "priceTry": 1500
+     },
+     {
+      "name": "Taze Çiğ Enginar ve Kuşkonmaz Salatası",
+      "description": "Parmesan, trüf yağı, roka, limon sos",
+      "priceTry": 1700
+     },
+     {
+      "name": "Siyah Pirinç ve Somonlu Kale Salata",
+      "description": "Avokado, kale, nohut çıtırı, Manchego peyniri, beyaz balzamik vinaigrette",
+      "priceTry": 1500
+     },
+     {
+      "name": "Kiraz Domates ve Mersin Karides",
+      "description": "Stracciatella peyniri, kapari, yeşil limon, sirke vinaigrette",
+      "priceTry": 1900
+     },
+     {
+      "name": "Keçi Peyniri ve Izgara Meyve",
+      "description": "Bahçe yeşillikleri, taze nane, kavrulmuş fındık, zencefilli narenciye vinaigrette",
+      "priceTry": 1700
+     }
+    ]
+   },
+   {
+    "title": "Ilık ve Sıcak Başlangıçlar",
+    "items": [
+     {
+      "name": "Izgara Ahtapot (160 g)",
+      "description": "Romesco sos, gremolata, yanık soğan tozu",
+      "priceTry": 2500
+     },
+     {
+      "name": "Bebek Kalamar",
+      "description": "Maydanoz ve kişniş salata",
+      "priceTry": 1800
+     },
+     {
+      "name": "Izgara Kuşkonmaz",
+      "description": "Béarnaise sos, aromatik ekmek kırıntısı",
+      "priceTry": 1300
+     },
+     {
+      "name": "Açık Ateşte Pişmiş Dana Dil",
+      "description": "Tane hardallı rezene salatası, portakal ve zencefil glaze",
+      "priceTry": 1600
+     },
+     {
+      "name": "Izgara Jumbo Karides (150 g)",
+      "description": "Zeytinyağı, sarımsak, acı biber",
+      "priceTry": 2500
+     },
+     {
+      "name": "Kuzu Ciğer Izgara (150 g)",
+      "description": "Karamelize soğan, baharatlı lavaş",
+      "priceTry": 1800
+     },
+     {
+      "name": "Ördekli Çıtır Börek",
+      "description": "Hoisin sos, zencefilli acılı sos",
+      "priceTry": 1600
+     },
+     {
+      "name": "Kuzu Kokoreç (130 g)",
+      "priceTry": 1600
+     },
+     {
+      "name": "29 Köfte",
+      "priceTry": 1600
+     },
+     {
+      "name": "Fındık Lahmacun",
+      "description": "180 g kebap kıymasıyla, acılı ya da acısız",
+      "priceTry": 1000
+     },
+     {
+      "name": "Karides Tempura (150 g)",
+      "description": "Chili aioli",
+      "priceTry": 1850
+     },
+     {
+      "name": "Peynirli ve Trüflü Çıtır",
+      "description": "Gravyer, gorgonzola, beyaz trüf ezmesi, pesto sos, susam",
+      "priceTry": 1000
+     }
+    ]
+   },
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Fransız Soğan Çorbası",
+      "description": "Emmental peyniri, milföy kıtırı",
+      "priceTry": 750
+     },
+     {
+      "name": "Günün Çorbası",
+      "description": "Servis ekibine sorulması isteniyor",
+      "priceTry": 750
+     }
+    ]
+   },
+   {
+    "title": "Makarna ve Risotto",
+    "items": [
+     {
+      "name": "Istakozlu Linguine",
+      "description": "Fiyatı günlük alışa göre belirleniyor"
+     },
+     {
+      "name": "Deniz Mahsulleri Fettuccine",
+      "description": "Karides, kalamar, ahtapot, vongole",
+      "priceTry": 2600
+     },
+     {
+      "name": "Dana Yanak Paccheri",
+      "description": "Adaçaylı tereyağı, parmesan köpüğü, soğan cipsi",
+      "priceTry": 1800
+     },
+     {
+      "name": "Mantarlı Risotto",
+      "description": "Mevsim mantarları, parmesan, siyah trüf püresi",
+      "priceTry": 1800
+     },
+     {
+      "name": "Sebzeli Risotto",
+      "description": "Kestane mantarı, kereviz, karnabahar, brokoli",
+      "priceTry": 1400
+     }
+    ]
+   },
+   {
+    "title": "Marine Balıklar, Tartarlar ve Çiğ Dilimler",
+    "items": [
+     {
+      "name": "Levrek Crudo",
+      "description": "Kapari ve yeşil zeytin tapenade, tarama, limon vinaigrette",
+      "priceTry": 1650
+     },
+     {
+      "name": "Dana Carpaccio (100 g)",
+      "description": "Parmesan dilimleri, yabani roka, beyaz balzamik vinaigrette",
+      "priceTry": 2100
+     },
+     {
+      "name": "Somon Carpaccio",
+      "description": "Meksika biberleri, frenk soğanı, kapari, soğuk sıkım zeytinyağı",
+      "priceTry": 1700
+     },
+     {
+      "name": "Dana Bonfile Tartar (100 g)",
+      "description": "Avokado, limon kreması, balzamik havyar",
+      "priceTry": 1800
+     },
+     {
+      "name": "İstiridye (1 adet)",
+      "description": "Chimichurri sos, acı sos, lime, deniz tuzu",
+      "priceTry": 1200
+     },
+     {
+      "name": "Siyah Havyar",
+      "description": "Klasik servis; fiyatı günlük alışa göre belirleniyor"
+     },
+     {
+      "name": "Marsilya Usulü Deniz Mahsulleri Tabağı",
+      "description": "Kral yengeç bacağı, Gillardeau istiridye, vongole, kürlenmiş somon, karides, ton, somon ve levrek sashimi",
+      "priceTry": 8500
+     }
+    ]
+   },
+   {
+    "title": "Yan Ürünler",
+    "items": [
+     {
+      "name": "Kaju Soslu Brokoli",
+      "priceTry": 600
+     },
+     {
+      "name": "Izgara Köy Biberleri",
+      "description": "Zeytinyağı, limon",
+      "priceTry": 600
+     },
+     {
+      "name": "Fırınlanmış Bebek Patates",
+      "description": "Yağ, limon sos ve kekik",
+      "priceTry": 600
+     },
+     {
+      "name": "Izgara Mevsim Sebzeleri",
+      "priceTry": 700
+     },
+     {
+      "name": "Patlıcan Beğendi",
+      "priceTry": 500
+     },
+     {
+      "name": "Trüflü ve Parmesanlı Kızarmış Patates",
+      "priceTry": 800
+     },
+     {
+      "name": "Taş Fırında Mevsim Mantarları",
+      "description": "Parmesan, demi-glace sos",
+      "priceTry": 650
+     }
+    ]
+   },
+   {
+    "title": "Deniz Mahsulleri",
+    "items": [
+     {
+      "name": "Izgara Deniz Levreği (180 g)",
+      "description": "Bebek enginar ve kuşkonmaz, edamame, çeri domates",
+      "priceTry": 3200
+     },
+     {
+      "name": "Teriyaki Glaze Somon Izgara (180 g)",
+      "description": "Bezelye püresi, brokolini, rezene salatası, teriyaki sos",
+      "priceTry": 2500
+     },
+     {
+      "name": "Taş Fırında Beyaz Şaraplı Midye ve Vongole",
+      "description": "Kızarmış ekşi mayalı ekmek, patates kızartması",
+      "priceTry": 1300
+     },
+     {
+      "name": "Günün Balığı",
+      "description": "Servis ekibine sorulması isteniyor"
+     }
+    ]
+   },
+   {
+    "title": "Etler",
+    "items": [
+     {
+      "name": "Açık Ateşte Pişmiş Dana Etinden Milföy (180 g)",
+      "description": "Patates püresi, kale cipsi",
+      "priceTry": 3100
+     },
+     {
+      "name": "Izgara Organik Piliç",
+      "description": "Brokolini, tavuk jus",
+      "priceTry": 2400
+     },
+     {
+      "name": "Tandırda Ördek (porsiyon 180 g)",
+      "description": "Soya ve mirin marine, Çin yufkası, taze soğan; bütün ördek (1400 g, 3 kişilik) 8.500 TL",
+      "priceTry": 3100
+     },
+     {
+      "name": "Izgara Kuzu Sırtı (190 g)",
+      "description": "Kuzu jus, sote mantar, isli karnabahar püresi",
+      "priceTry": 2750
+     },
+     {
+      "name": "Dana Bonfile (180 g)",
+      "description": "Patates terin, béarnaise ve trüflü demi-glace sos",
+      "priceTry": 2700
+     },
+     {
+      "name": "Yoğurtlu Kebap (200 g)",
+      "description": "Bonfile ya da köfteden; pide, patlıcanlı yoğurt, tereyağı",
+      "priceTry": 2700
+     },
+     {
+      "name": "Izgara Kuzu Pirzola (1 kg)",
+      "description": "Keşkek ve isli yoğurt",
+      "priceTry": 8500
+     },
+     {
+      "name": "Ağır Ateşte Pişmiş Dana Yanak (190 g)",
+      "description": "Kırmızı şarap sos, mevsim sebzeleri ve patates püresi",
+      "priceTry": 2600
+     },
+     {
+      "name": "Tandırda Uzun Pişmiş Dana Kaburga (1100 g)",
+      "description": "Kore usulü marinasyon, Çin yufkası, acı sos, trüflü mayonez, turşular",
+      "priceTry": 8500
+     },
+     {
+      "name": "Kuru Dinlendirilmiş Etler (Tomahawk, Ribeye)",
+      "description": "Ağırlığına göre satılıyor"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=y9ROjh7FlA0",
+   "credit": "Ömer Uzun · Ağustos 2020 · iç ve dış mekân çekimleri",
+   "category": "atmosfer",
+   "sponsored": false
+  }
+ ]
+}

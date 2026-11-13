@@ -1,0 +1,233 @@
+{
+ "slug": "murver-beyoglu",
+ "_kaynak_notu": "Kaynak: resmî site murverrestaurant.com (ana sayfa, Menu, About Us, Reservation; 13.11.2026) ve sitedeki Türkçe akşam yemeği menüsü PDF'i (Murver-Menu-Dinner-TR.pdf, dosya 25.09.2026). Site menüleri 'temsilî örnek' olarak sunuyor ve mevsime göre değiştiğini yazıyor; bu not profilde açıkça var. 'Servis dahil değildir' ibaresi İngilizce akşam menüsünde (Murver-Menu-Dinner-EN.pdf). Saat alanı yazılmadı: sitede akşam servisi için gün belirtilmiyor; saatler not olarak eklendi. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Karaköy'de Novotel Istanbul Bosphorus'un çatı katında; işletmeye göre İstanbul'un ilk canlı ateş restoranı olarak 2017'de açıldı. Yemekler odun, kömür, yemiş kabuğu ve aromatik bitkilerle beslenen ateşte ızgara, tütsü, taş fırın ve döküm tencerede pişiriliyor; mutfak şefi Mevlüt Özkaya.",
+  "provider": "official_site",
+  "url": "https://www.murverrestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Sitedeki rezervasyon bağlantısıyla ya da telefonla: +90 212 372 07 50; WhatsApp: +90 535 570 07 41.",
+  "provider": "official_site",
+  "url": "https://www.murverrestaurant.com/reservation/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Akşam yemeği servisi 18.00–22.00. Bar hafta içi 17.00–00.00, Cuma ve Cumartesi 17.00–01.00.",
+   "provider": "official_site",
+   "url": "https://www.murverrestaurant.com/reservation/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Menü mevsime göre sürekli güncelleniyor; sitedeki menüler yapılanın temsilî örneği olarak sunuluyor.",
+   "provider": "official_site",
+   "url": "https://www.murverrestaurant.com/menu/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Misafirler Novotel Istanbul Bosphorus'un ücretli vale ve kapalı otopark hizmetini kullanabiliyor.",
+   "provider": "official_site",
+   "url": "https://www.murverrestaurant.com/reservation/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Fiyatlar TL ve KDV dahil; servis dahil değil.",
+   "provider": "official_site",
+   "url": "https://www.murverrestaurant.com/wp-content/uploads/2026/05/Murver-Menu-Dinner-EN.pdf",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.murverrestaurant.com/wp-content/uploads/2026/05/Murver-Menu-Dinner-TR.pdf",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Ezmeler ve Atıştırmalıklar",
+    "items": [
+     {
+      "name": "Kuru Cacık",
+      "description": "İslenmiş süzme yoğurt, fırınlanmış sarımsak, salatalık turşusu",
+      "priceTry": 380
+     },
+     {
+      "name": "Gambilya Fava",
+      "description": "Bodrum baklası fava, Halhali zeytin, kaya koruğu, semizotu, dereotlu salsa",
+      "priceTry": 440
+     },
+     {
+      "name": "Ördek Topik",
+      "description": "Tiftiklenmiş ördek, vişne, humus, kavrulmuş ceviz",
+      "priceTry": 440
+     },
+     {
+      "name": "Acı Hibeş",
+      "description": "Manavgat tahinli hibeş, tam buğday kıtırı",
+      "priceTry": 340
+     },
+     {
+      "name": "Pide",
+      "description": "Taş fırında nar ekşili, isotlu ve taze mısırlı ekşi mayalı pide, roka",
+      "priceTry": 380
+     }
+    ]
+   },
+   {
+    "title": "Paylaşımlık Başlangıçlar · Soğuk",
+    "items": [
+     {
+      "name": "Sonbahar Salatası",
+      "description": "Mevsim otları, yeşil elma, kara nohut, maş fasulyesi, narenciye sosu",
+      "priceTry": 700
+     },
+     {
+      "name": "Tütsülenmiş Çipura",
+      "description": "Rezene, kuzukulağı, fermente domates suyu",
+      "priceTry": 690
+     },
+     {
+      "name": "İsli Kuru Et",
+      "description": "Kuru dinlendirilmiş ve tütsülenmiş dana eti, acılı armut chutney, hardal otu",
+      "priceTry": 660
+     },
+     {
+      "name": "Köz Armut",
+      "description": "Fırınlanmış Deveci armut, acılı hardal sos, roka",
+      "priceTry": 550
+     }
+    ]
+   },
+   {
+    "title": "Paylaşımlık Başlangıçlar · Sıcak",
+    "items": [
+     {
+      "name": "Pazı Sarma",
+      "description": "Ağır ateşte dana yanak ve kaburga, Antep fıstığı ve kuş üzümü, hafif acı domates sos",
+      "priceTry": 650
+     },
+     {
+      "name": "Enginar",
+      "description": "Taş fırında zeytinyağlı enginar, kekikli enginar sos, koruk turşusu",
+      "priceTry": 640
+     },
+     {
+      "name": "Taş Fırında Kereviz",
+      "description": "Zeytinyağlı kök kereviz, yeşil elma, portakal, narenciye sos",
+      "priceTry": 475
+     }
+    ]
+   },
+   {
+    "title": "Ateşten",
+    "items": [
+     {
+      "name": "Palamut",
+      "description": "Izgara palamut, ot kavurma, misket limon püresi",
+      "priceTry": 680
+     },
+     {
+      "name": "Külde Kalamar",
+      "description": "Muhammara, közlenmiş zeytinyağlı fındık turbu",
+      "priceTry": 1500
+     },
+     {
+      "name": "Izgara Ahtapot",
+      "description": "Nar ekşili karamelize ahtapot, közlenmiş biber ve domates",
+      "priceTry": 1450
+     },
+     {
+      "name": "Izgara Sucuk",
+      "description": "Közlenmiş patates püresi, acılı Çengelköy salatalık turşusu",
+      "priceTry": 1520
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler · Izgara",
+    "items": [
+     {
+      "name": "Granyöz",
+      "description": "Izgara kuru dinlendirilmiş granyöz, ızgara Yedikule marul",
+      "priceTry": 2100
+     },
+     {
+      "name": "Karides",
+      "description": "Izgara jumbo karides, kuskus, mısır kreması",
+      "priceTry": 2700
+     },
+     {
+      "name": "Organik Tavuk",
+      "description": "Izgara yarım köy tavuğu, fırınlanmış patates, hardal sosu",
+      "priceTry": 1950
+     },
+     {
+      "name": "Kuzu Sırt",
+      "description": "Şişte Trakya Kıvırcık kuzu sırt, tahinli piyaz, patates cipsi, kekikli yoğurt",
+      "priceTry": 2850
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler · Ağır Ateşte",
+    "items": [
+     {
+      "name": "Sebze Türlü",
+      "description": "Taş fırında brokoli, pancar, bebek kabak, pırasa, armut turşusu, Antep fıstığı kreması",
+      "priceTry": 1400
+     },
+     {
+      "name": "Dana Yanak",
+      "description": "Ağır pişmiş dana yanak, karnabahar püresi, sote bebek ıspanak",
+      "priceTry": 2400
+     }
+    ]
+   },
+   {
+    "title": "Büyükler (iki ya da daha fazla kişilik)",
+    "items": [
+     {
+      "name": "Deniz Mahsulleri Yahni",
+      "description": "Otlu balık sosunda kalamar ve kum midyesi, ızgara kaya levreği ve karides",
+      "priceTry": 4900
+     },
+     {
+      "name": "Dana Kaburga",
+      "description": "9 saat pişmiş dana kaburga, siyez bulgur pilavı, çıtır kabak",
+      "priceTry": 5900
+     },
+     {
+      "name": "Trakya Kuzu Kıvırcık",
+      "description": "Mesir macunlu ağır pişmiş kuzu kol, firik pilavı, tuzlu yoğurt, acılı kayısı hoşafı",
+      "priceTry": 5800
+     },
+     {
+      "name": "Bütün Levrek",
+      "description": "Meşede tütsülenmiş bütün levrek, tereyağlı balık sosu, taze ot salatası",
+      "priceTry": 8500
+     },
+     {
+      "name": "Dana Pirzola",
+      "description": "Ağırlık seçenekleri ve fiyat için servis ekibine danışılması isteniyor"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=ERNWFULvD1k",
+   "credit": "Foodinlife Magazine · Temmuz 2023 · Şef Mevlüt Özkaya ile söyleşi",
+   "category": "editor",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=GyeKtU5u6gs",
+   "credit": "Keşif Perisi · Ocak 2019",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ]
+}

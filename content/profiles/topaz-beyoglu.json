@@ -1,0 +1,190 @@
+{
+ "slug": "topaz-beyoglu",
+ "_kaynak_notu": "Kaynak: resmî site topazistanbul.com (ana sayfa ve menü sayfası, 13.11.2026), Sonbahar 2026 yemek menüsü PDF'i ('Fiyatlar Eylül 2026'da güncellenmiştir', gün yazmıyor; validFrom yazılmadı) ve Sonbahar 2026 tadım menüsü PDF'i. Video eklenmedi: bulunan Şamdan Plus videosu (2022) eski şef Mahmut Cansever'i anlatıyor; bugünkü şef Tevfik Alparslan. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Gümüşsuyu'nda, The Artisan Istanbul MGallery otelinin çatı katında Boğaz manzaralı restoran; işletmeye göre 2007'den beri fine dining konseptiyle hizmet veriyor. Mutfak çağdaş Akdeniz; şef Tevfik Alparslan.",
+  "provider": "official_site",
+  "url": "https://www.topazistanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Sa 18:00-00:00",
+  "provider": "official_site",
+  "url": "https://www.topazistanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Resmî sitedeki rezervasyon formu ya da telefonla: +90 531 329 41 11, +90 212 324 23 23.",
+  "provider": "official_site",
+  "url": "https://www.topazistanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Pazar günü kapalı.",
+   "provider": "official_site",
+   "url": "https://www.topazistanbul.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Şefin tadım menüsü kişi başı 6.800 TL, 5 kadeh eşleşmeli şarap 4.200 TL; vegan tadım menüsü 5.500 TL, şarap eşleşmesi 3.400 TL (Sonbahar 2026).",
+   "provider": "official_site",
+   "url": "https://www.topazistanbul.com/TOPAZ-TADIMMENUSU-SONBAHAR26.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Tadım menüsünde masadaki misafirlerin tamamının menülerden birini seçmesi ve en az 2 saat ayırması rica ediliyor.",
+   "provider": "official_site",
+   "url": "https://www.topazistanbul.com/TOPAZ-TADIMMENUSU-SONBAHAR26.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Yemek menüsündeki fiyatlar Eylül 2026'da güncellendi; tüm vergiler dahil.",
+   "provider": "official_site",
+   "url": "https://www.topazistanbul.com/TOPAZ-SONBAHAR2026-MENU.pdf",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.topazistanbul.com/TOPAZ-SONBAHAR2026-MENU.pdf",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Soğuk Başlangıçlar",
+    "items": [
+     {
+      "name": "Ayvalık Barbunya Pilaki ve Bodrum Renkli Kuyruk Karides",
+      "description": "Fermente kök sebze",
+      "priceTry": 1600
+     },
+     {
+      "name": "Çanakkale Pembe Orkinos ve Avokado",
+      "description": "Fermente kişniş özü, havyar jöle",
+      "priceTry": 1800
+     },
+     {
+      "name": "Urla Körpe Enginar ve Kıyı Börülce",
+      "description": "Tatlı bezelye, isli köy yoğurdu",
+      "priceTry": 1600
+     },
+     {
+      "name": "Ege Közde Kaya Barbun Salatası",
+      "description": "Kuzu kulağı, yeşil havyar, bergamot sosu",
+      "priceTry": 1850
+     },
+     {
+      "name": "Konya Küflü Peynir ve Köz Patlıcan Fava",
+      "description": "Yanık biber, patlıcan gevreği",
+      "priceTry": 950
+     },
+     {
+      "name": "Osetra Havyar",
+      "description": "Geleneksel garnitürler ve ılık blini",
+      "priceTry": 2800
+     },
+     {
+      "name": "Jumbo İstiridye",
+      "description": "Zencefil relish, yıllanmış sirke sosu",
+      "priceTry": 1100
+     }
+    ]
+   },
+   {
+    "title": "Sıcak Başlangıçlar",
+    "items": [
+     {
+      "name": "Açık Ateşte İskenderun Karides ve Saçaklı Kerevit",
+      "description": "Fermente havuç ezme, bisque",
+      "priceTry": 1700
+     },
+     {
+      "name": "Bolu Fırında Terbiyeli Pazı Dolma",
+      "description": "Etli ve füme siyez bulgurlu",
+      "priceTry": 1200
+     },
+     {
+      "name": "Babakale Közde Ahtapot",
+      "description": "Kimyon tohumu, bademli biber fava, lime",
+      "priceTry": 2300
+     },
+     {
+      "name": "Üç Aşamalı Kuzu Gerdan Dolgulu Piruhi",
+      "description": "Körpe sarı domates, tereyağlı adaçayı",
+      "priceTry": 1500
+     },
+     {
+      "name": "Odun Ateşinde Kuşkonmaz",
+      "description": "Kuzu göbeği mantar dolması, trüflü yoğurt",
+      "priceTry": 1300
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler",
+    "items": [
+     {
+      "name": "Kıvırcık Süt Kuzu Omuz",
+      "description": "Bostan otu, siyez firik keşkek, borazan mantarı",
+      "priceTry": 2300
+     },
+     {
+      "name": "Odun Ateşinde Şişte Düve Sırtı",
+      "description": "Yaban kuru kayısı, sakızlı patlıcan, nar ekşisi",
+      "priceTry": 2600
+     },
+     {
+      "name": "12 Saat Ağır Ateşte Pişirilmiş Topaz Dana Kaburga",
+      "description": "Kök sebzeli risotto",
+      "priceTry": 2500
+     },
+     {
+      "name": "Ege Olta Fener Balığı",
+      "description": "Buharda pazı, mürekkepli patlıcan, ıstakoz çayı",
+      "priceTry": 2900
+     },
+     {
+      "name": "Geleneksel Yoğurtlu Sultan Kebap",
+      "description": "Hafif acılı biber köpürtme",
+      "priceTry": 2700
+     },
+     {
+      "name": "Deniz Ürünleri Ragu ve Jumbo Karides",
+      "description": "Şampanyayla tatlandırılmış renkli kiraz domatesler",
+      "priceTry": 2700
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Altın Yapraklı %70 Çikolata Terrine",
+      "description": "Kuruyemiş crunch, satsuma sorbe",
+      "priceTry": 850
+     },
+     {
+      "name": "Meyan Kökü ve Çarkıfelek Meyveli Parfe",
+      "description": "Fermente yaban meyve, hibiskus sorbe",
+      "priceTry": 850
+     },
+     {
+      "name": "Dövme Türk Kahveli ve Vişneli Yanık Flan",
+      "description": "Dağ meyveleri",
+      "priceTry": 850
+     },
+     {
+      "name": "Beyaz Çikolata Sufle",
+      "description": "Mavi kelebek çayı ve böğürtlen, fermente sakız köpüğü",
+      "priceTry": 950
+     },
+     {
+      "name": "Kendi Kabuğunda Mevsim Meyveli Sorbeler",
+      "priceTry": 700
+     }
+    ]
+   }
+  ]
+ }
+}

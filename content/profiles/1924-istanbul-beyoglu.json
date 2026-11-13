@@ -1,0 +1,354 @@
+{
+ "slug": "1924-istanbul-beyoglu",
+ "_kaynak_notu": "Kaynak: resmî site 1924istanbul.com (ana sayfa, rezervasyon ve Türkçe menü sayfası, 13.11.2026). Menüde tarih yok (validFrom yazılmadı). Saat alanı yazılmadı: site 'gün boyu açık, haftada altı gün, Pazartesi–Cumartesi son sipariş 23.30' diyor, açılış saati vermiyor; not olarak eklendi. Telefon katalogda yoktu, siteden eklendi. Bu turda video araması yapılmadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "İstiklal Caddesi'nde Olivya Geçidi'nde Rus mutfağı restoranı. İşletme, Beyoğlu'nda 80 yıllık geçmişi olan bu restoranın ayrıntıları araştırılarak yeniden canlandırıldığını anlatıyor. Menüde zakuski mezeleri, havyar, pelmeni ve vareniki, borş, stroganoff ve flambe sunumlar var.",
+  "provider": "official_site",
+  "url": "https://1924istanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 212 243 83 60",
+  "provider": "official_site",
+  "url": "https://1924istanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Sitedeki çevrimiçi formla ya da telefonla: 0212 243 83 60, 0530 896 03 60; e-postayla 09.00–18.00 arası (info@1924istanbul.com). Bar bölümüne açık saatlerde rezervasyonsuz gelinebiliyor.",
+  "provider": "official_site",
+  "url": "https://1924istanbul.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Haftada altı gün, Pazartesi–Cumartesi gün boyu açık; son sipariş 23.30.",
+   "provider": "official_site",
+   "url": "https://1924istanbul.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Tadım menüsü kişi başı 3.750 TL; en az 2 kişi, yalnız tüm masa için ve içecekler hariç. Başlangıç menüsü (turşular, somonlu ve sade tereyağı) kişi başı 120 TL.",
+   "provider": "official_site",
+   "url": "https://1924istanbul.com/menu/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://1924istanbul.com/menu/",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Meze / Zakuski",
+    "items": [
+     {
+      "name": "Dana Etli Piroşki",
+      "priceTry": 375
+     },
+     {
+      "name": "Tvorog Peynirli Piroşki",
+      "priceTry": 300
+     },
+     {
+      "name": "Tarama",
+      "description": "Morina balığı yumurtalı mousse, taze soğanlı blini",
+      "priceTry": 600
+     },
+     {
+      "name": "Rus Salatası",
+      "description": "Kış sebzeleri, tavuk, yumurta, elma",
+      "priceTry": 550
+     },
+     {
+      "name": "Izgara Patlıcan Ruloları",
+      "description": "Ceviz, keçi peyniri, zeytinyağı",
+      "priceTry": 600
+     },
+     {
+      "name": "Çerkez Tavuğu",
+      "description": "Cevizli didiklenmiş tavuk",
+      "priceTry": 500
+     },
+     {
+      "name": "Pancar Pkhali",
+      "description": "Nar, labne, çemen otu, nane",
+      "priceTry": 400
+     },
+     {
+      "name": "Topik",
+      "description": "Çam fıstığı, tarçın, frenk üzümü",
+      "priceTry": 400
+     },
+     {
+      "name": "Füme Somon Krep Ruloları",
+      "description": "Somon havyarı, smetana, frenk soğanı, dereotu",
+      "priceTry": 750
+     },
+     {
+      "name": "Karides ve Avokado Kokteyl Marie Rose",
+      "priceTry": 780
+     },
+     {
+      "name": "Shuba Katmanlı Marine Ringa",
+      "description": "Yumurta, pancar, havuç, patates",
+      "priceTry": 700
+     },
+     {
+      "name": "Dana Tartar",
+      "description": "Hardallı aioli, kapari, trüflü jülyen patates",
+      "priceTry": 990
+     },
+     {
+      "name": "Üç Mantarlı Graten Güveç",
+      "description": "Muskat, eritilmiş havarti peyniri",
+      "priceTry": 450
+     },
+     {
+      "name": "Ev Yapımı Boşnak Dana Bresaola",
+      "description": "Tereyağlı barbunya püresi, tütsülenmiş biber",
+      "priceTry": 650
+     },
+     {
+      "name": "Tütsülenmiş ve Marine Balık Tabağı",
+      "description": "Somon, ringa, alabalık, hamsi, blini",
+      "priceTry": 2500
+     },
+     {
+      "name": "Anadolu Peynir Tabağı",
+      "description": "Doğu Anadolu peynirleri",
+      "priceTry": 1500
+     }
+    ]
+   },
+   {
+    "title": "Havyar",
+    "items": [
+     {
+      "name": "Imperial Beluga, Sevruga ya da Osetra (50 g)",
+      "description": "Sıcak blini ve klasik garnitürlerle",
+      "priceTry": 16000
+     },
+     {
+      "name": "Kırmızı Keta Havyarı (30 g)",
+      "description": "Sıcak blini ve klasik garnitürlerle",
+      "priceTry": 2500
+     }
+    ]
+   },
+   {
+    "title": "Pelmeni",
+    "items": [
+     {
+      "name": "Khinkali, Gürcü Dana Mantısı",
+      "description": "Yoğurt, Gürcü baharatları",
+      "priceTry": 650
+     },
+     {
+      "name": "Pırasa ve Porçini Vareniki",
+      "description": "Patates, pırasa, trüflü mantar yağı, smetana",
+      "priceTry": 600
+     },
+     {
+      "name": "Dana Pelmeni",
+      "description": "Dana jus, karamelize soğan, dereotu, smetana",
+      "priceTry": 700
+     }
+    ]
+   },
+   {
+    "title": "Çorba",
+    "items": [
+     {
+      "name": "Dana Borş Çorbası",
+      "description": "Dana brisket, pancar, lahana, havuç, patates",
+      "priceTry": 450
+     },
+     {
+      "name": "Yengeç Bisque Çorbası",
+      "description": "Pelmeni, tütsülenmiş biber",
+      "priceTry": 500
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Çıtır Ördek Salatası Julienne",
+      "description": "Kök sebzeler, nar, susam",
+      "priceTry": 750
+     },
+     {
+      "name": "Graten Keçi Peyniri ve Pancar Salatası",
+      "description": "Endivyen, yeşil elma, dut pekmezi",
+      "priceTry": 800
+     },
+     {
+      "name": "Baby Ispanak Salatası",
+      "description": "Çilek, ceviz, kuru berberis, hardal tohumu",
+      "priceTry": 650
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemek",
+    "items": [
+     {
+      "name": "Levrek Fileto (250 g)",
+      "description": "Somon havyarı, patates püresi, şampanya sosu",
+      "priceTry": 1900
+     },
+     {
+      "name": "Somon Fileto Champenoise (250 g)",
+      "description": "Keta havyar sosu, patates cipsi, kimyonlu lahana",
+      "priceTry": 1700
+     },
+     {
+      "name": "Dana Schnitzel (160 g)",
+      "description": "Polonya usulü patates salatası, Kiev tereyağı",
+      "priceTry": 1600
+     },
+     {
+      "name": "Kuzu Ciğeri (140 g)",
+      "description": "Çıtır soğan, sumak pekmezi, maydanoz",
+      "priceTry": 1500
+     },
+     {
+      "name": "Dana Kafta Kebabı (200 g)",
+      "description": "Acuka sos, tereyağlı ekşi mayalı ekmek",
+      "priceTry": 1700
+     },
+     {
+      "name": "Dana Stroganoff (150 g)",
+      "description": "Jülyen ve püre patates, Paris mantarı, turşu",
+      "priceTry": 1950
+     },
+     {
+      "name": "Biberli Dana Bonfile (200 g)",
+      "description": "Soğan konfi, karabiber, ev yapımı patates",
+      "priceTry": 2200
+     },
+     {
+      "name": "1924 Portakallı Ördek (yarım)",
+      "description": "Amasya elması, tarçın, ördek jus",
+      "priceTry": 2300
+     },
+     {
+      "name": "Bıldırcın Tabaka",
+      "description": "Kemiksiz; tütsülenmiş paprika, mantar, karabuğday, nar",
+      "priceTry": 1400
+     },
+     {
+      "name": "Tavuk Kievsky (300 g)",
+      "description": "3 otlu tereyağı, patates mücver",
+      "priceTry": 1300
+     },
+     {
+      "name": "Kuzu İncik Konfit (200 g)",
+      "description": "Ratatouille, lobio fasulye ragout",
+      "priceTry": 2400
+     },
+     {
+      "name": "Yavaş Pişmiş Dana Yanak (450 g)",
+      "description": "Balkabağı püresi, kristal soğan, tarçın",
+      "priceTry": 2400
+     }
+    ]
+   },
+   {
+    "title": "Flambe Trolley Özel Sunum",
+    "items": [
+     {
+      "name": "Biberli Dana Bonfile (200 g)",
+      "description": "Konyak, soğan konfit, yeşil karabiber, jülyen patates",
+      "priceTry": 2500
+     },
+     {
+      "name": "Dana Stroganoff (150 g)",
+      "description": "Konyak, jülyen ve püre patates, Paris mantarı",
+      "priceTry": 2200
+     }
+    ]
+   },
+   {
+    "title": "Garnitürler",
+    "items": [
+     {
+      "name": "1924 Ev Yapımı Turşular",
+      "priceTry": 250
+     },
+     {
+      "name": "Jülyen Patates",
+      "priceTry": 250
+     },
+     {
+      "name": "Polonya Usulü Patates Salatası",
+      "priceTry": 250
+     },
+     {
+      "name": "Sote Mevsim Sebzeleri",
+      "priceTry": 250
+     },
+     {
+      "name": "Sade ve Somonlu Tereyağı",
+      "priceTry": 250
+     },
+     {
+      "name": "Patates Püresi",
+      "priceTry": 250
+     },
+     {
+      "name": "Mantarlı Karabuğday",
+      "priceTry": 250
+     }
+    ]
+   },
+   {
+    "title": "Tatlı",
+    "items": [
+     {
+      "name": "1924 Çikolata Faberje",
+      "description": "Ahududu, çikolatalı kek, sıcak vanilya kreması",
+      "priceTry": 650
+     },
+     {
+      "name": "Medovic, Rus Bal Pastası",
+      "description": "Petek bal",
+      "priceTry": 550
+     },
+     {
+      "name": "Kiev Beze Milföy",
+      "description": "Fındıklı beze, çikolata pralin, tereyağı kreması",
+      "priceTry": 600
+     },
+     {
+      "name": "Kestane Profiterol",
+      "description": "Çikolata sos",
+      "priceTry": 600
+     },
+     {
+      "name": "Antep Fıstıklı Baklava",
+      "description": "Sakızlı brûlé krema",
+      "priceTry": 750
+     },
+     {
+      "name": "Pavlova Flambé",
+      "description": "Kırmızı orman meyveleri, brendi",
+      "priceTry": 550
+     },
+     {
+      "name": "Limon Sorbe",
+      "description": "Limon votka shot",
+      "priceTry": 750
+     },
+     {
+      "name": "Dondurma",
+      "description": "Vanilya, çikolata nane, karamel ceviz, yoğurt",
+      "priceTry": 500
+     }
+    ]
+   }
+  ]
+ }
+}

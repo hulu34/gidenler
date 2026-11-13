@@ -1,0 +1,77 @@
+{
+ "slug": "kanaat-lokantasi-uskudar",
+ "_kaynak_notu": "Kaynak: resmî site kanaatlokantasi.com.tr (ana sayfa, Hakkımızda ve SSS, Menü; 13.11.2026). Menü eklenmedi: sitenin 'güncel menü' bağlantısı tas.ink üzerindeki dijital menüye gidiyor; sayfa tarayıcıda da boş açıldı (içerik yüklenmedi). Sitede öne çıkarılan yemekler not olarak yazıldı. Telefon katalogda yoktu, siteden ilk numara eklendi. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; ikisi de Üsküdar'daki lokantada (işletmeye göre başka şube yok). Simge İşmen videosundaki fiyatlar 2023 tarihli. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Üsküdar'da Selmani Pak Caddesi'nde esnaf lokantası. İşletmeye göre 1933'ten beri Kargılı ailesi tarafından işletiliyor; her gün taze hazırlanan 100–120 çeşit sıcak yemek, zeytinyağlı, sütlü tatlı, dondurma ve yoğurt sunuluyor. Başka şubesi yok.",
+  "provider": "official_site",
+  "url": "https://www.kanaatlokantasi.com.tr/hakkimizda",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 216 553 37 91",
+  "provider": "official_site",
+  "url": "https://www.kanaatlokantasi.com.tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Su 07:00-22:30",
+  "provider": "official_site",
+  "url": "https://www.kanaatlokantasi.com.tr/hakkimizda",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Ramazan ayı dışında rezervasyon alınmıyor; Ramazan'da iftar için önceden rezervasyon gerekiyor. 8 kişi ve üzeri gruplardan gelmeden önce telefonla haber vermeleri isteniyor.",
+  "provider": "official_site",
+  "url": "https://www.kanaatlokantasi.com.tr/hakkimizda",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Sitede öne çıkarılan yemekler arasında zeytinyağlı yaprak sarma, Özbek pilavı, tas kebabı, kadınbudu köfte, ekşili köfte, Arnavut ciğeri, kağıt kebabı, kaymaklı ekmek kadayıfı ve kaymaklı ayva tatlısı var.",
+   "provider": "official_site",
+   "url": "https://www.kanaatlokantasi.com.tr/men%C3%BC",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Lokantanın kendi otoparkı yok; işletme yürüme mesafesindeki İSPARK Mimar Sinan ve Katibim katlı otoparklarını öneriyor.",
+   "provider": "official_site",
+   "url": "https://www.kanaatlokantasi.com.tr/hakkimizda",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Ramazan'da paket servis gün boyu sürüyor; masaya servis iftardan yaklaşık 1 saat önce sona eriyor.",
+   "provider": "official_site",
+   "url": "https://www.kanaatlokantasi.com.tr/hakkimizda",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Kredi kartı geçiyor.",
+   "provider": "official_site",
+   "url": "https://www.kanaatlokantasi.com.tr/hakkimizda",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "otopark": false,
+   "cocuk": true
+  },
+  "provider": "official_site",
+  "url": "https://www.kanaatlokantasi.com.tr/hakkimizda",
+  "checkedAt": "2026-11-13"
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/shorts/TbL4A4Cywe4",
+   "credit": "Simge İşmen · Aralık 2023 · videodaki fiyatlar 2023 tarihli",
+   "category": "influencer",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=DcD5IMMR6kM",
+   "credit": "Meet Turkey · Ocak 2020 · yemek yazarı Lian Penso ile",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ]
+}

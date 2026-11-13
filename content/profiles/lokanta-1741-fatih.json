@@ -1,0 +1,187 @@
+{
+ "slug": "lokanta-1741-fatih",
+ "_kaynak_notu": "Kaynak: resmî site lokanta1741.com (Türkçe rezervasyon, iletişim ve menü sayfaları, İngilizce ana sayfa ve About; 13.11.2026). Saat çelişkisi: ana sayfada 'hafta içi 16.00–00.00, hafta sonu 12.00–00.00' yazıyor; rezervasyon ve iletişim sayfaları Salı kapalı diyor. Daha ayrıntılı olan rezervasyon/iletişim bilgisi alındı ve çelişki not olarak yazıldı. Menüde tarih yok (validFrom yazılmadı). '+10 gr beluga havyar 1200 TL' satırı çiğ köfteye ilave olarak açıklamaya yazıldı. Video eklenmedi: bulunan tek video (FQqhFpxfrf4) oEmbed'de 403 verdi. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Cağaloğlu Hamamı'nın içinde çağdaş Türk mutfağı restoranı; servis hamam kubbelerinin altında ya da terasta. Şef Durukan Özgen.",
+  "provider": "official_site",
+  "url": "https://lokanta1741.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo,We,Th 16:00-00:00; Fr-Su 12:00-00:00",
+  "provider": "official_site",
+  "url": "https://lokanta1741.com/tr/rezervasyon/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Sitedeki rezervasyon bağlantısıyla, telefonla ya da WhatsApp'tan: +90 533 145 17 41.",
+  "provider": "official_site",
+  "url": "https://lokanta1741.com/tr/rezervasyon/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Salı günleri kapalı.",
+   "provider": "official_site",
+   "url": "https://lokanta1741.com/tr/rezervasyon/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "15 yaş altı misafir kabul edilmiyor.",
+   "provider": "official_site",
+   "url": "https://lokanta1741.com/tr/rezervasyon/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Sitenin ana sayfasında farklı bir saat yazıyor (hafta içi 16.00–00.00, hafta sonu 12.00–00.00); burada rezervasyon ve iletişim sayfalarındaki bilgi esas alındı.",
+   "provider": "official_site",
+   "url": "https://lokanta1741.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Tadım menüsü kişi başı 7.400 TL; masadaki misafir sayısına göre servis ediliyor.",
+   "provider": "official_site",
+   "url": "https://lokanta1741.com/tr/tr-menu/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "amenities": {
+  "items": {
+   "cocuk": false
+  },
+  "provider": "official_site",
+  "url": "https://lokanta1741.com/tr/rezervasyon/",
+  "checkedAt": "2026-11-13"
+ },
+ "menu": {
+  "provider": "official_site",
+  "url": "https://lokanta1741.com/tr/tr-menu/",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "I",
+    "items": [
+     {
+      "name": "Çiğ köfte",
+      "description": "Menüde 10 gr beluga havyar ilavesi ayrıca 1.200 TL olarak yazılı",
+      "priceTry": 1550
+     },
+     {
+      "name": "Kelle söğüş terrine",
+      "priceTry": 1350
+     },
+     {
+      "name": "Çerkes tavuğu",
+      "priceTry": 1150
+     },
+     {
+      "name": "Balıkçı tepsisi",
+      "description": "Tarama, ahtapot, füme uskumru, akya, sübye",
+      "priceTry": 3600
+     },
+     {
+      "name": "Granyöz ceviche (10 gün yaşlandırılmış)",
+      "priceTry": 1100
+     },
+     {
+      "name": "Yedikule marulu",
+      "priceTry": 1050
+     },
+     {
+      "name": "Ilık enginar kalbi",
+      "priceTry": 1250
+     },
+     {
+      "name": "Humus ve fermente domates suyu",
+      "priceTry": 1050
+     },
+     {
+      "name": "Pancar ve kuzu gerdan",
+      "priceTry": 1250
+     }
+    ]
+   },
+   {
+    "title": "II",
+    "items": [
+     {
+      "name": "Kazlı pide",
+      "priceTry": 2450
+     },
+     {
+      "name": "Uykuluklu Ermeni ciğeri",
+      "priceTry": 1800
+     },
+     {
+      "name": "Lorlu firikli pazı sarması",
+      "priceTry": 1150
+     },
+     {
+      "name": "Fener şiş",
+      "priceTry": 1250
+     },
+     {
+      "name": "Keme mantarlı arpa şehriye lapası",
+      "priceTry": 1950
+     },
+     {
+      "name": "Dana dil",
+      "priceTry": 1400
+     },
+     {
+      "name": "Kemiksiz lokum kanat",
+      "priceTry": 1400
+     }
+    ]
+   },
+   {
+    "title": "III",
+    "items": [
+     {
+      "name": "Palamut pilaki",
+      "priceTry": 2300
+     },
+     {
+      "name": "Yağlı kara",
+      "priceTry": 2600
+     },
+     {
+      "name": "Tiritli mantı",
+      "priceTry": 2600
+     },
+     {
+      "name": "Izgara granyöz (10 gün yaşlandırılmış)",
+      "priceTry": 2600
+     },
+     {
+      "name": "Kuzu yahni",
+      "priceTry": 2600
+     }
+    ]
+   },
+   {
+    "title": "IV · Tatlılar",
+    "items": [
+     {
+      "name": "Tahinli tart ve limon dondurması",
+      "priceTry": 1050
+     },
+     {
+      "name": "Sütlü nuriye, Antep fıstığı, kaymak",
+      "description": "Vejetaryen",
+      "priceTry": 1050
+     },
+     {
+      "name": "Reyhanlı su muhallebisi",
+      "priceTry": 1050
+     },
+     {
+      "name": "Süt reçelli markiz",
+      "priceTry": 1050
+     }
+    ]
+   }
+  ]
+ }
+}
