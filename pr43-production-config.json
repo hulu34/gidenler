@@ -1,0 +1,8 @@
+{
+  "phase": "preflight",
+  "origin": "https://gidenler-hy9xmwtrx-hulu34.vercel.app",
+  "approvedSha": "c0af4987c19146841494242e65d1cb0bc4dbe1a8",
+  "oldProductionSha": "2031408276fc5e4a24223a4e45fa70f656ffb604",
+  "productionFingerprint": "37811a6487ca5441",
+  "authorization": "2026-11-13 user explicitly approved exact PR43 SHA, 26 profiles, 411 menu items, 16 videos, 3 address corrections, catalog793, exclude PR37"
+}

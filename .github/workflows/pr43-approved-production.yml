@@ -1,0 +1,56 @@
+name: PR43 explicitly approved Production operation
+on:
+  push:
+    branches: [ops/pr43-onayli-yayin-20261113]
+    paths:
+      - .github/workflows/pr43-approved-production.yml
+      - scripts/pr43-production.mjs
+      - scripts/pr43-live-browser.mjs
+      - pr43-production-config.json
+      - pr43-production-before.json
+permissions:
+  contents: read
+concurrency:
+  group: pr43-approved-production-c0af498
+  cancel-in-progress: false
+jobs:
+  approved-operation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c0af4987c19146841494242e65d1cb0bc4dbe1a8
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Execute only configured approved phase
+        working-directory: harness
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/pr43-production.mjs
+      - name: Install public acceptance browsers
+        if: ${{ hashFiles('harness/pr43-preflight-only') == '' }}
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pr43-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/pr43-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Verify public live domain without account or review writes
+        if: ${{ hashFiles('harness/pr43-preflight-only') == '' }}
+        working-directory: harness
+        env:
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/pr43-browser/package.json
+        run: node scripts/pr43-live-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr43-approved-production-evidence
+          path: harness/pr43-production-evidence/
+          retention-days: 30
