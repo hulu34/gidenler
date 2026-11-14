@@ -7,7 +7,7 @@ import { BudgetExceededError, NotConfiguredError, extractJson, route } from "@/l
 import { dataBlock, sanitizeUntrusted, sanitizeUserInput } from "@/lib/ai/sanitize";
 import { costOf } from "@/lib/ai/config";
 import { candidatesFor } from "@/lib/ai/router";
-import { IntentSchema, KNOWN, isVocab, answer, detectRefine, fold, mergeIntent, parseQuery, type Answered, type Candidate, type Intent, type Refine } from "./engine";
+import { IntentSchema, KNOWN, isVocab, answer, areaMentioned, detectRefine, fold, mergeIntent, parseQuery, type Answered, type Candidate, type Intent, type Refine } from "./engine";
 import { reserve, settle } from "./harcama";
 import { allowedProviders, coolDown, coolingDown, reserveKota, settleKota } from "./kota";
 import { hakAyir, hakIade } from "./beta";
@@ -102,7 +102,7 @@ async function call(role: "fast" | "primary", system: string, user: string, base
 function applyModel(i: Intent, d: z.infer<typeof ModelIntent>, query: string, drop: string[] = []): Intent {
   /* serbest metin kısa bir ad olmalı: cümlenin tamamı ya da yarısı semt/yemek sayılmaz */
   const q = fold(query), said = (s: string | null | undefined) => { const f = s ? fold(s) : ""; return f.length >= 3 && q.includes(f) && f.split(" ").length <= 3 && f.length <= 30 && f.length <= q.length * 0.6 && !isVocab(f); };
-  const area = KNOWN.areas.find((a) => a === d.area) ?? null;
+  const area = KNOWN.areas.find((a) => a === d.area && areaMentioned(query, a)) ?? null;
   const viaArea = area ? parseQuery(area) : null;
   const out: Intent = { ...i };
   if (!out.area && !out.areaText && !out.notArea && !/\b(disinda|haric|olmasin|degil)/.test(fold(d.area_text ?? ""))) { if (area) { out.area = area; out.district = viaArea?.district ?? null; } else if (said(d.area_text)) out.areaText = d.area_text!.trim().slice(0, 40); }
@@ -150,7 +150,7 @@ export async function sor(req: SorRequest, ctx: { kullanici?: string | null } = 
   if (scope) return finish("veri", null, scope);
   if ((await budgetStatus()).level === "critical") return finish("veri", "budget", answer(intent, { exclude: excl() }));
 
-  const key = cacheKey({ v: "sor2", query, context: req.context ?? null, refine: req.refine ?? null, shown: req.shown ?? [] });
+  const key = cacheKey({ v: "sor3-area-grounded", query, context: req.context ?? null, refine: req.refine ?? null, shown: req.shown ?? [] });
   const hit = await cache<SorResult>().get(key);
   if (hit) return hit;
 

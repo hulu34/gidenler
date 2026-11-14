@@ -41,6 +41,11 @@ const SUBAREAS: Area[] = [
   { name: "Mecidiyeköy", district: "Şişli", lat: 41.0670, lng: 28.9950 }, { name: "Osmanbey", district: "Şişli", lat: 41.0520, lng: 28.9870 }, { name: "Kurtuluş", district: "Şişli", lat: 41.0480, lng: 28.9820 }, { name: "Tophane", district: "Beyoğlu", lat: 41.0280, lng: 28.9810 }, { name: "Beyazıt", district: "Fatih", lat: 41.0100, lng: 28.9640 }, { name: "Aksaray", district: "Fatih", lat: 41.0120, lng: 28.9520 }, { name: "Yeşilköy", district: "Bakırköy", lat: 40.9630, lng: 28.8250 }, { name: "Ataköy", district: "Bakırköy", lat: 40.9840, lng: 28.8560 }, { name: "Arnavutköy Boğaz", district: "Beşiktaş", lat: 41.0680, lng: 29.0430 },
 ];
 const DISTRICTS = [...new Set(VENUES.map((v) => v.district).filter(Boolean))];
+/** Modelin ilçe/semt önerisi yalnız kullanıcının metninde adı veya kayıtlı takma adı geçiyorsa kabul edilir. */
+export function areaMentioned(query: string, area: string): boolean {
+  const q = fold(query), sub = SUBAREAS.find(a => a.name === area);
+  return sub ? [sub.name, ...(sub.aka ?? [])].some(name => hasTerm(q, name)) : DISTRICTS.includes(area) && hasTerm(q, area);
+}
 const CAFE_LIKE = ["Kahveci", "Kafe", "Pastane", "Tatlıcı", "Fırın", "Kahvaltı"];
 
 interface Cuisine { key: string; label: string; terms: string[]; kinds: string[]; text?: string[] }
@@ -171,7 +176,8 @@ export function parseQuery(query: string): Intent & { confident: boolean } {
   if (pm) i.party = Number(pm[1]); else if (pw) i.party = ["iki", "uc", "dort", "bes", "alti", "yedi", "sekiz", "dokuz", "on"].indexOf(pw[1]) + 2;
   const bm = q.match(/\b(\d{2,6}) ?(tl|lira|₺)/);
   if (bm) { i.budgetMax = Number(bm[1]); if (!i.attrs.includes("ekonomik")) i.attrs.push("ekonomik"); }
-  if (named) i.name = named.slug;
+  /* Adı bir karşılaştırma noktası olarak kullanmak, o mekânı istemek değildir. Açık ilçe koşulu korunur. */
+  if (named && !/\b(benzer(?:i|ini|ine)?|alternatif(?:i|ini|ine)?|yerine|gibi)\b/.test(q)) i.name = named.slug;
   return { ...i, confident: !!(i.area || i.cuisine || i.name) };
 }
 
