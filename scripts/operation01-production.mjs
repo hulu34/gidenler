@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 const cfg=JSON.parse(fs.readFileSync('operation01-production.json'));
-const SHA='a225e8c1336fecc2ca6ce1ef67e09d2bb6361481',BASE='c0af4987c19146841494242e65d1cb0bc4dbe1a8';
+const SHA='99568ec6e7385be51af2454330ef536c632b55d3',BASE='a225e8c1336fecc2ca6ce1ef67e09d2bb6361481';
 assert.equal(cfg.approvedSha,SHA);assert(['before','after'].includes(cfg.phase));assert(/^https:\/\/gidenler-[a-z0-9]+-hulu34\.vercel\.app$/.test(cfg.origin));
 assert.equal(execFileSync('git',['-C','candidate','rev-parse','HEAD'],{encoding:'utf8'}).trim(),SHA);
 assert(process.env.VERCEL_BYPASS&&!process.env.DATABASE_URL&&!process.env.GROQ_API_KEY);
