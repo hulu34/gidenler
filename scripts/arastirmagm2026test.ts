@@ -1,0 +1,92 @@
+/* Gault&Millau 2026 kanıtlı aday araştırması — aday dosyasının kalite testi (yalnız okur; katalog dosyalarına yazmaz).
+   1. Katalog korunur: data/real/venues.json + isletme.json taban SHA ile aynı; Production 793 kayıt.
+   2. Güçlü aday standardı: ad, 39 ilçeden biri, kapı numaralı adres, en az bir güncel resmî kaynak + kontrol tarihi, tür ("Restoran" değil), güven "güçlü".
+   3. Tekillik: güçlü adaylar Production'la (ad + ilçe) ve kendi aralarında çakışmaz; PR #48 dalı varsa onun havuzuyla da.
+   4. Puan/yorum yok: rehber puanı, Google verisi, yorum alanı saklanmaz.
+   5. Koordinat yalnız OSM kaynağıyla ve İstanbul sınırları içinde; yoksa A-konumsuz önerisi.
+   6. Her durum gerekçeli: inceleme → eksik + neden; mükerrer → eşleşen; bekleyen kayda kanıt → mevcut kayıt.
+   Kullanım: TABAN=<sha> npx tsx scripts/arastirmagm2026test.ts (TABAN verilmezse origin/feature/investor-v1) */
+import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+
+let ok = 0, fail = 0;
+const t = (ad: string, k: boolean, not: unknown = "") => { if (k) ok++; else { fail++; console.log("KALDI:", ad, typeof not === "string" ? not : JSON.stringify(not).slice(0, 300)); } };
+const J = (p: string) => JSON.parse(readFileSync(p, "utf8"));
+const TABAN = process.env.TABAN ?? "origin/feature/investor-v1";
+const git = (ref: string, p: string) => execFileSync("git", ["show", `${ref}:${p}`], { encoding: "utf8", maxBuffer: 64 << 20 });
+const fold = (s: string) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, " ").trim();
+type Kaynak = { tur: string; url: string; kontrol: string };
+type K = { id: string; ad: string; ilce: string | null; adres?: string; durum: string; kind?: string; categoryId?: string; guven?: string; kaynaklar: Kaynak[];
+  koordinat?: { kaynak: string; ref: string; lat: number; lng: number } | null; kaliteSinifiOnerisi?: string; eksik?: string[]; neden?: string; eslesen?: unknown; mevcutKayit?: string };
+
+/* 1 */
+t("venues.json taban ile aynı", readFileSync("data/real/venues.json", "utf8") === git(TABAN, "data/real/venues.json"));
+t("isletme.json taban ile aynı", readFileSync("data/real/isletme.json", "utf8") === git(TABAN, "data/real/isletme.json"));
+const PROD = [...J("data/real/venues.json"), ...J("data/real/isletme.json")] as { name: string; district: string; slug: string }[];
+t("Production 793 kayıt", PROD.length === 793, PROD.length);
+
+const doc = J("data/arastirma/gm2026/adaylar.json") as { sayim: Record<string, number>; kayitlar: K[] };
+const D = doc.kayitlar;
+const say: Record<string, number> = {};
+for (const x of D) say[x.durum] = (say[x.durum] ?? 0) + 1;
+t("sayım alanı kayıtlarla aynı", JSON.stringify(Object.entries(say).sort()) === JSON.stringify(Object.entries(doc.sayim).sort()), { say, sayim: doc.sayim });
+const DURUM = new Set(["aday-guclu", "inceleme", "bekleyen-kayda-kanit", "mukerrer", "katalogda-ya-da-dalda-var", "kapsam-disi"]);
+t("bilinen durum değerleri", D.every((x) => DURUM.has(x.durum)), [...new Set(D.map((x) => x.durum))]);
+t("id'ler tekil", new Set(D.map((x) => x.id)).size === D.length);
+
+/* 2 */
+const ILCE = new Set((J("data/katalog/istanbul-ilceler.json").ilceler as { ad: string }[]).map((x) => x.ad));
+const G = D.filter((x) => x.durum === "aday-guclu");
+const TARIH = /^\d{4}-\d{2}-\d{2}$/;
+for (const x of G) {
+  const resmi = x.kaynaklar.filter((k) => /resmî/.test(k.tur));
+  const miss = [
+    !x.ad && "ad", !(x.ilce && ILCE.has(x.ilce)) && `ilçe (${x.ilce})`, !(x.adres && /No\s*[:.]?\s*\d/i.test(x.adres)) && `kapı no (${x.adres})`,
+    resmi.length === 0 && "resmî kaynak", !x.kaynaklar.every((k) => /^https:?\/\//.test(k.url) || /^http:\/\//.test(k.url)) && "kaynak URL",
+    !x.kaynaklar.every((k) => TARIH.test(k.kontrol)) && "kontrol tarihi", (!x.kind || x.kind === "Restoran") && `tür (${x.kind})`,
+    !["cat.restaurant", "cat.cafe"].includes(x.categoryId ?? "") && "kategori", x.guven !== "güçlü" && "güven",
+  ].filter(Boolean);
+  t(`${x.id}: güçlü aday standardı`, miss.length === 0, miss.join(", "));
+}
+
+/* 3 */
+const prodNI = new Set(PROD.map((r) => `${fold(r.name)}|${r.district}`));
+const seen = new Set<string>();
+for (const x of G) {
+  const ni = `${fold(x.ad)}|${x.ilce}`;
+  t(`${x.id}: Production'da aynı ad + ilçe yok`, !prodNI.has(ni));
+  t(`${x.id}: adaylar arasında tekil`, !seen.has(ni)); seen.add(ni);
+}
+let havuz: { name: string; district: string }[] = [];
+try {
+  for (let n = 15; n <= 29; n++) for (const f of ["kayitlar.json", "isletme-kayitlari.json"]) {
+    try { havuz = havuz.concat(JSON.parse(git("origin/katalog/gece-2000", `data/paket/istanbul-${n}/${f}`))); } catch { /* paket yok */ }
+  }
+} catch { /* dal yok */ }
+if (havuz.length) {
+  const hNI = new Set(havuz.map((r) => `${fold(r.name)}|${r.district}`));
+  for (const x of G) t(`${x.id}: PR #48 havuzunda aynı ad + ilçe yok`, !hNI.has(`${fold(x.ad)}|${x.ilce}`));
+}
+console.log(`PR #48 havuzu: ${havuz.length ? havuz.length + " kayıt karşılaştırıldı" : "dal bulunamadı, karşılaştırılmadı"}`);
+
+/* 4 */
+const ham = readFileSync("data/arastirma/gm2026/adaylar.json", "utf8");
+t("rehber puanı saklanmıyor", !/TOQUE|(?<![\d/])\d{1,2}([,.]\d)?\s?\/\s?20(?!\d)|Original Tables/i.test(ham));
+t("Google verisi yok", !/google\.(com|com\.tr)\/maps|maps\.app\.goo\.gl|place_id|googlePlaceId/.test(ham));
+t("puan/yorum alanı yok", !/"(rating|reviews?|puan|yorum)"\s*:/.test(ham));
+
+/* 5 */
+for (const x of G) {
+  if (x.koordinat) t(`${x.id}: koordinat OSM ve İstanbul'da`, x.koordinat.kaynak === "OpenStreetMap" && /^(node|way|relation)\/\d+$/.test(x.koordinat.ref) && x.koordinat.lat > 40.8 && x.koordinat.lat < 41.6 && x.koordinat.lng > 27.9 && x.koordinat.lng < 29.95 && x.kaliteSinifiOnerisi === "A");
+  else t(`${x.id}: koordinatsız → A-konumsuz önerisi`, x.kaliteSinifiOnerisi === "A-konumsuz");
+}
+
+/* 6 */
+for (const x of D) {
+  if (x.durum === "inceleme") t(`${x.id}: inceleme gerekçeli`, !!x.neden && (x.eksik ?? []).length > 0);
+  if (x.durum === "mukerrer" || x.durum === "katalogda-ya-da-dalda-var") t(`${x.id}: eşleşen kayıt yazılı`, !!x.eslesen);
+  if (x.durum === "bekleyen-kayda-kanit") t(`${x.id}: mevcut kayıt yazılı`, !!x.mevcutKayit);
+}
+
+console.log(`gm2026 araştırması: ${ok}/${ok + fail} · güçlü ${G.length} · inceleme ${say["inceleme"] ?? 0} · bekleyen kayda kanıt ${say["bekleyen-kayda-kanit"] ?? 0}`);
+process.exit(fail ? 1 : 0);
