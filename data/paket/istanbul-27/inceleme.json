@@ -3231,6 +3231,18 @@
    "puan": 3
   },
   {
+   "gersId": "96256bd7-e47e-44f6-8806-49f6801f1b48",
+   "ad": "Ken Sushi & More Suadiye",
+   "ilce": "Kadıköy",
+   "site": "http://www.kensushiandmore.com/",
+   "sinif": "B",
+   "eksik": [
+    "güçlü mükerrer şüphesi: Production'daki ali-ocakbasi-kadikoy ile aynı bina adresi (6 m); ayrı işletme olduğu sahip kararıyla teyit edilmeli (15.11.2026)"
+   ],
+   "neden": [],
+   "elle": true
+  },
+  {
    "gersId": "0ae7b9b8-4b2e-4c0c-9b07-9059d9edb6ba",
    "ad": "Da-Lupo Trattoria",
    "ilce": "Beşiktaş",

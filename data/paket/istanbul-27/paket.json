@@ -1464,39 +1464,6 @@
    "oncelikPuani": 3
   },
   {
-   "slug": "ken-sushi-kadikoy",
-   "ref": "node/11293703186",
-   "tip": "osm_kaydi",
-   "ad": "Ken Sushi & More Suadiye",
-   "ilce": "Kadıköy",
-   "adres": "Kazım Özalp Sokağı No:60, Kadıköy",
-   "koordinat": [
-    40.959513,
-    29.072978
-   ],
-   "koordinatGuveni": "OSM restoran kaydı",
-   "tur": "Sushi / Japon",
-   "turKanitDuzeyi": "şube",
-   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
-   "sinif": "A",
-   "zincir": "kensushiandmore.com",
-   "sube": "Kadıköy",
-   "kanit": [
-    "resmî şube sayfası kensushiandmore.com: ad + sokak + kapı no (http://www.kensushiandmore.com/category/subeler/78.html)",
-    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
-    "tür: OSM cuisine \"sushi\" (şube düzeyi)",
-    "konum: OSM restoran kaydı node/11293703186 (906 dalındaki kimlik korundu: ken-sushi-kadikoy)"
-   ],
-   "kaynak": [
-    "https://www.openstreetmap.org/node/11293703186",
-    "https://www.kensushiandmore.com/",
-    "overture:96256bd7-e47e-44f6-8806-49f6801f1b48"
-   ],
-   "kontrolTarihi": "2026-11-15",
-   "oncelikPuani": 3,
-   "v906": "ken-sushi-kadikoy"
-  },
-  {
    "slug": "doner-bank-kapali-carsi-fatih",
    "ref": "node/5244807969",
    "tip": "osm_kaydi",

@@ -1,4 +1,4 @@
-/* 2.000 MEKÂN OPERASYONU — paket 15–26 yayın havuzunun kalite testi (yalnız okur; katalog dosyalarına yazmaz).
+/* 2.000 MEKÂN OPERASYONU — paket 15–29 yayın havuzunun kalite testi (yalnız okur; katalog dosyalarına yazmaz).
    1. Mevcut 793 korunur: data/real/venues.json + isletme.json taban SHA'daki hâliyle aynı (git), kimlikler değişmez.
    2. Kabul standardı her kayıtta: ad, ilçe (39 ilçeden), kapı numaralı adres, kaynak URL'si, son kontrol tarihi, güven "güçlü", tür.
    3. Tekillik: slug ve ref Production'la ve paketler arasında çakışmaz; aynı ad + ilçe iki kez yok.
@@ -26,11 +26,13 @@ t("Production 793 kayıt", PROD.length === 793, PROD.length);
 
 const ILCE = new Set((J("data/katalog/istanbul-ilceler.json").ilceler as { ad: string }[]).map((x) => x.ad));
 const pool: R[] = [];
-for (let n = 15; n <= 26; n++) for (const f of ["kayitlar.json", "isletme-kayitlari.json"]) {
+const SON = Number(process.env.SON_PAKET ?? 29), KAFE_P = new Set([26, 29]);
+for (let n = 15; n <= SON; n++) for (const f of ["kayitlar.json", "isletme-kayitlari.json"]) {
   const p = `data/paket/istanbul-${n}/${f}`;
   if (existsSync(p)) for (const r of J(p) as R[]) pool.push({ ...r, _p: n });
 }
-t("havuz 513 kayıt (paket 15–26)", pool.length === 513, pool.length);
+const BEKLENEN = (J("data/katalog/gece-2000/birlesik-aday.json").kabul as unknown[]).length;
+t(`havuz birleşik denetimin kabul sayısına eşit (${BEKLENEN})`, pool.length === BEKLENEN, pool.length);
 
 /* 2 */
 const KAPI = /No\s*[:.]?\s*\d/i;
@@ -74,11 +76,11 @@ for (const [h, rs] of byHost) {
 }
 
 /* 5 */
-const kafe = pool.filter((r) => r._p === 26);
-t("paket 26 tamamı cat.cafe", kafe.length > 0 && kafe.every((r) => r.categoryId === "cat.cafe"));
-t("paket 26 türleri kafe aileleri", kafe.every((r) => ["Pastane", "Fırın", "Tatlıcı", "Kahveci", "Kafe"].includes(r.kind)), [...new Set(kafe.map((r) => r.kind))]);
-t("paket 26'da bar/pub/nargile/lounge adı yok", kafe.every((r) => !/\b(bar|pub|nargile|hookah|lounge|cocktail)\b/i.test(r.name)), kafe.filter((r) => /\b(bar|pub|nargile|hookah|lounge|cocktail)\b/i.test(r.name)).map((r) => r.name));
-t("paket 15–25 tamamı cat.restaurant", pool.filter((r) => r._p < 26).every((r) => r.categoryId === "cat.restaurant"));
+const kafe = pool.filter((r) => KAFE_P.has(r._p));
+t("kafe paketleri (26, 29) tamamı cat.cafe", kafe.length > 0 && kafe.every((r) => r.categoryId === "cat.cafe"));
+t("kafe paketlerinde türler kafe aileleri", kafe.every((r) => ["Pastane", "Fırın", "Tatlıcı", "Kahveci", "Kafe"].includes(r.kind)), [...new Set(kafe.map((r) => r.kind))]);
+t("kafe paketlerinde bar/pub/nargile/lounge adı yok", kafe.every((r) => !/\b(bar|pub|nargile|hookah|lounge|cocktail)\b/i.test(r.name)), kafe.filter((r) => /\b(bar|pub|nargile|hookah|lounge|cocktail)\b/i.test(r.name)).map((r) => r.name));
+t("restoran paketleri tamamı cat.restaurant", pool.filter((r) => !KAFE_P.has(r._p)).every((r) => r.categoryId === "cat.restaurant"));
 
 /* 6 */
 for (const r of pool) {

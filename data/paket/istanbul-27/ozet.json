@@ -1,11 +1,11 @@
 {
  "dalga": 27,
- "A": 54,
+ "A": 53,
  "sinif": {
-  "A": 17,
+  "A": 16,
   "A-konumsuz": 37
  },
- "osmKaydi": 17,
+ "osmKaydi": 16,
  "isletmeKaydi": 37,
  "uygunAday": 399,
  "secilen": 325,
@@ -16,7 +16,7 @@
   "acilmadi": 0
  },
  "inceleme": {
-  "B": 219,
+  "B": 220,
   "çakışma": 27,
   "C": 25
  },
@@ -31,16 +31,17 @@
   "paket içinde aynı işletme": 16,
   "zincir": 25,
   "resmî site yalnız http": 1,
-  "slug çakışması": 1
+  "slug çakışması": 1,
+  "güçlü mükerrer şüphesi": 1
  },
  "turKaynagi": {
   "resmî site": 51,
-  "OSM": 3
+  "OSM": 2
  },
  "ilce": {
   "Beşiktaş": 10,
   "Sarıyer": 1,
-  "Kadıköy": 12,
+  "Kadıköy": 11,
   "Fatih": 5,
   "Şişli": 8,
   "Beyoğlu": 3,
@@ -64,7 +65,7 @@
   "Dönerci": 7,
   "Türk mutfağı": 6,
   "Pizza": 7,
-  "Sushi / Japon": 4,
+  "Sushi / Japon": 3,
   "Lokanta": 2,
   "Burger": 6,
   "Mantıcı": 2,
@@ -73,6 +74,6 @@
   "Asya mutfağı": 1,
   "Pideci": 1
  },
- "zincirSube": 28,
- "v906Eslesen": 5
+ "zincirSube": 27,
+ "v906Eslesen": 4
 }
