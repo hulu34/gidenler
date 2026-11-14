@@ -125,7 +125,14 @@ function matchName(q: string): Venue | null {
   const full = VENUES.filter(v => { const name = fold(v.name); return name.length >= 8 && (q === name || name.split(" ").some(t => t.length >= 3 && !isGeneric(t) && !QUERY_NOISE.has(t) && !NAME_NOISE.has(t))) && (` ${q} `).includes(` ${name} `); })
     .sort((a,b) => fold(b.name).length - fold(a.name).length)[0];
   if (full) return full;
-  const toks = q.split(" ").filter((t) => t.length >= 3);
+  /* Sıralama ifadesinin içindeki kelime yazım hatalı işletme adı değildir:
+     "yüksek" → "Yüksel". Tam ad kontrolü yukarıda korunur; yalnız bulanık
+     ad aramasından eşleşen sıralama ifadesini çıkarırız. */
+  const rankingTerms = ATTRS.find(a => a.key === "populer")!.terms.map(fold).sort((a, b) => b.length - a.length);
+  let nameQuery = ` ${q} `;
+  nameQuery = nameQuery.replace(/\b(?:en )?yuksek puan\w*\b/g, " ");
+  for (const term of rankingTerms) nameQuery = nameQuery.replace(new RegExp(`\\b${term}\\w*\\b`, "g"), " ");
+  const toks = nameQuery.trim().split(/\s+/).filter((t) => t.length >= 3);
   /* soru ekleri ve şehir adı mekân adı değildir: "önerir misin" Misina, "İstanbul'da" İstanbul Emniyet... değildir */
   const own = toks.filter((t) => !isGeneric(t) && !QUERY_NOISE.has(t));
   /* adın tamamı yazıldıysa (≥ 8 harf) sözcükleri genel olsa da o mekândır: "Bodrum Mantı" */

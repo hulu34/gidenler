@@ -475,7 +475,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       {/* Seçki: bu restoranı konu alan yazı, basın ve videolar; yayında yazı yoksa çizilmez */}
       {entity.isReal && <VenueSecki slug={entity.slug} />}
       {/* profil tamlığı: kullanıcı içeriğinden sonra (deneyim ve Seçki önce gelir) */}
-      {entity.isReal && <DataCompleteness c={completenessOf(ent, { googleMatched: google, videos: nVideos + articlesForVenue(entity.slug).reduce((n, a) => n + (a.media?.videos.length ?? 0), 0), menuItems: rp?.menu?.sections.reduce((a, s) => a + s.items.length, 0) ?? 0 })} slug={entity.slug} google={google} />}
+      {entity.isReal && <DataCompleteness c={completenessOf(ent, { googleMatched: google, videos: nVideos + articlesForVenue(entity.slug).reduce((n, a) => n + (a.media?.videos.length ?? 0), 0), menuItems: rp?.menu?.sections.reduce((a, s) => a + s.items.length, 0) ?? 0 })} sourceProvider={entity.source?.provider} />}
 
       {/* ═══════════ SOSYAL MEDYADA — videolar sitede oynar, gönderiler platformunda açılır ═══════════ */}
       <VenueVisuals entity={entity} />

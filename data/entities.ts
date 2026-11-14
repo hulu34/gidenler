@@ -1,6 +1,6 @@
 import type { Entity } from "@/lib/types";
 import { universeEntities } from "@/data/universe";
-import { realEntities } from "@/data/real";
+import { realEntities } from "@/data/real/presentation";
 import { DEMO_VISIBLE } from "@/data/demoFlag";
 
 /**

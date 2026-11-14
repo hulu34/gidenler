@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { realEntities } from "@/data/real";
+import { realEntities } from "@/data/real/presentation";
 import { usePublished } from "@/components/score/PublishedProvider";
 import { SCORE_WAITING, fmtPublished } from "@/lib/score/publishedCards";
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "tsx scripts/sor-index.ts",
+    "prebuild": "tsx scripts/sor-index.ts && tsx scripts/client-catalog.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -25,7 +25,9 @@
     "db:apply": "tsx scripts/db-migrate.ts --apply",
     "test:gpuan": "tsx scripts/gpuantest.ts",
     "test:panel-rezervasyon": "tsx scripts/panel-rezervasyon-test.ts",
-    "test:sor-tercih": "tsx scripts/sor-tercih-test.ts"
+    "test:sor-tercih": "tsx scripts/sor-tercih-test.ts",
+    "catalog:client": "tsx scripts/client-catalog.ts",
+    "test:pr48": "tsx scripts/client-catalog.ts --check && tsx scripts/pr48-kabul-test.tsx"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.7.12",
