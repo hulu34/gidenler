@@ -28,6 +28,14 @@ jobs:
           VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
           GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/operation01-production.mjs
+      - name: Browser tools for live Sor acceptance
+        run: |
+          npm install --prefix "$RUNNER_TEMP/hosted-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/hosted-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Actual live Sor preferences and follow-ups; seven bounded requests
+        env:
+          HOSTED_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/hosted-browser/package.json
+        run: node scripts/operation01-live-sor.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
