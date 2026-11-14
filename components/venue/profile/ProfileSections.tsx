@@ -91,11 +91,56 @@ export function ProfileOverview({ entity, p, googleHours }: { entity: Entity; p:
   );
 }
 
+/** Menüsü eklenmemiş profil: örnek menü gösterilmez; varsa işletmenin resmî sitesine yönlendirir. */
+export function ProfileNoMenu({ website }: { website?: string }) {
+  return (
+    <p className="text-[13.5px] text-ink-2" data-menu-yok>
+      Bu restoranın menüsü henüz doğrulanmış bir kaynaktan eklenmedi. Örnek menü ya da fiyat gösterilmez.
+      {website && <>{" "}Güncel menü ve fiyat için işletmenin resmî sitesine bakabilirsin: <a href={website} target="_blank" rel="noopener noreferrer" data-sinyal="outbound" className="font-semibold underline decoration-line-2 underline-offset-2 hover:text-ink">{host(website)} ↗</a></>}
+    </p>
+  );
+}
+
+const MENU_FOLD_AT = 30, MENU_OPEN_ITEMS = 14;
+
+function MenuSections({ sections }: { sections: NonNullable<PlaceProfile["menu"]>["sections"] }) {
+  return (
+    <div className="gap-x-10 sm:columns-2 [&>section]:mb-6">
+      {sections.map((s) => (
+        <section key={s.title} aria-label={s.title} className="min-w-0 break-inside-avoid">
+          <h3 className="border-b border-line pb-1.5 text-[12px] font-bold uppercase tracking-[0.16em]">{s.title}</h3>
+          <ul className="mt-1">
+            {s.items.map((it) => (
+              <li key={it.name + (it.description ?? "")} className="flex items-baseline justify-between gap-3 border-b border-line/60 py-1.5">
+                <span className="min-w-0">
+                  <span className="text-[14.5px] font-semibold">{it.name}</span>
+                  {it.description && <span className="text-[12.5px] text-ink-3"> · {it.description}</span>}
+                </span>
+                {it.priceTry !== undefined && <span className="tnum shrink-0 text-[13.5px] font-semibold">{tl(it.priceTry)}</span>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}
+
 const tl = (n: number) => `${n.toLocaleString("tr-TR", { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 })} ₺`;
 
+/** "Bilmen gerekenler" içinden menüyü ve fiyatı ilgilendiren notlar (temsilî menü, fiyat geçerliliği, ayrı menüler):
+    menünün hemen üstünde de gösterilir ki fiyatları okuyan kişi bu uyarıyı kaçırmasın. Not metni değişmez, yalnız tekrar edilir. */
+export const menuNotes = (notes: PlaceProfile["notes"] = []) => notes.filter((n) => /men[üu]|fiyat|temsil[iî]|tad[ıi]m/i.test(n.value));
+
 /** Resmî menü: işletmenin yayımladığı bölüm ve yemek adları; fiyat yalnız kaynakta varsa. */
-export function ProfileMenu({ m }: { m: NonNullable<PlaceProfile["menu"]> }) {
+export function ProfileMenu({ m, notes = [] }: { m: NonNullable<PlaceProfile["menu"]>; notes?: PlaceProfile["notes"] }) {
   const n = m.sections.reduce((a, s) => a + s.items.length, 0);
+  const mn = menuNotes(notes);
+  /* uzun menü (mobilde sayfayı çok uzatır): ilk bölümler açık, kalanı katlanır; içerik HTML'de kalır (arama motoru ve ekran okuyucu görür) */
+  let cut = m.sections.length;
+  if (n > MENU_FOLD_AT) { let k = 0; cut = 0; while (cut < m.sections.length && k < MENU_OPEN_ITEMS) k += m.sections[cut++].items.length; }
+  const open = m.sections.slice(0, cut), rest = m.sections.slice(cut);
+  const restN = rest.reduce((a, s) => a + s.items.length, 0);
   return (
     <div className="flex flex-col gap-6">
       <p className="border-l-2 border-accent pl-3 text-[13px] leading-snug text-ink-2">
@@ -109,24 +154,21 @@ export function ProfileMenu({ m }: { m: NonNullable<PlaceProfile["menu"]> }) {
           Kaynak: <a href={m.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line-2 underline-offset-2 hover:text-ink">{PROVIDER[m.provider] ?? m.provider} — menü ({host(m.url)})</a> · son kontrol {trDate(m.checkedAt)}. Günün durumu ve fiyat için işletmeye danış.
         </span>
       </p>
-      <div className="gap-x-10 sm:columns-2 [&>section]:mb-6">
-        {m.sections.map((s) => (
-          <section key={s.title} aria-label={s.title} className="min-w-0 break-inside-avoid">
-            <h3 className="border-b border-line pb-1.5 text-[12px] font-bold uppercase tracking-[0.16em]">{s.title}</h3>
-            <ul className="mt-1">
-              {s.items.map((it) => (
-                <li key={it.name + (it.description ?? "")} className="flex items-baseline justify-between gap-3 border-b border-line/60 py-1.5">
-                  <span className="min-w-0">
-                    <span className="text-[14.5px] font-semibold">{it.name}</span>
-                    {it.description && <span className="text-[12.5px] text-ink-3"> · {it.description}</span>}
-                  </span>
-                  {it.priceTry !== undefined && <span className="tnum shrink-0 text-[13.5px] font-semibold">{tl(it.priceTry)}</span>}
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
+      {mn.length > 0 && (
+        <ul aria-label="Menüyle ilgili notlar" data-menu-notlari className="-mt-3 flex flex-col gap-1 pl-3 text-[12.5px] leading-snug text-ink-2">
+          {mn.map((x) => <li key={x.value}>{x.value}</li>)}
+        </ul>
+      )}
+      <MenuSections sections={open} />
+      {rest.length > 0 && (
+        <details className="group -mt-2" data-menu-devami>
+          <summary className="inline-flex h-11 cursor-pointer list-none items-center rounded-[3px] border border-line-2 px-4 text-[14px] font-semibold hover:border-ink [&::-webkit-details-marker]:hidden">
+            <span className="group-open:hidden">Menünün devamı · {restN} kalem daha ({rest.length} bölüm)</span>
+            <span className="hidden group-open:inline">Menünün devamını gizle</span>
+          </summary>
+          <div className="mt-5"><MenuSections sections={rest} /></div>
+        </details>
+      )}
     </div>
   );
 }
