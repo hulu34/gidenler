@@ -1,0 +1,31 @@
+name: PR49 bounded isolated Preview AI acceptance
+on:
+  push:
+    branches: [inceleme/pr49-ai-bulut-20261115]
+    paths: ['scripts/pr49-cloud-once.mjs', 'scripts/pr49-cloud-target.json', '.github/workflows/pr49-ai-once.yml']
+permissions:
+  contents: read
+concurrency:
+  group: pr49-bounded-preview-only
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Existing protected Preview access only
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+        run: node scripts/pr49-cloud-once.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr49-bounded-ai-evidence
+          path: pr49-cloud-evidence/
+          retention-days: 7
