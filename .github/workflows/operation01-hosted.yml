@@ -45,7 +45,7 @@ jobs:
           PACKAGE_NAME: ${{ matrix.package }}
           VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
           HOSTED_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/hosted-browser/package.json
-        run: node scripts/operation01-hosted.mjs --ui-only
+        run: node scripts/operation01-hosted.mjs --ui-only --webkit-only
       - uses: actions/upload-artifact@v4
         if: always()
         with:
