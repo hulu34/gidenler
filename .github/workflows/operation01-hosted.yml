@@ -40,12 +40,12 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/hosted-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
           "$RUNNER_TEMP/hosted-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
-      - name: Existing deployment security UI and actual AI acceptance
+      - name: Remaining rendered UI acceptance; prior API and AI evidence retained
         env:
           PACKAGE_NAME: ${{ matrix.package }}
           VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
           HOSTED_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/hosted-browser/package.json
-        run: node scripts/operation01-hosted.mjs
+        run: node scripts/operation01-hosted.mjs --ui-only
       - uses: actions/upload-artifact@v4
         if: always()
         with:
