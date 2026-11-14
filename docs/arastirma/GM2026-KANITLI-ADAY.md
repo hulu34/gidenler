@@ -4,6 +4,103 @@ Tarih: 15 Kasım 2026 · Dal: `arastirma/gm2026-kanitli-aday` · Taban: Producti
 
 **Yalnız araştırma verisi.** Kataloğa eklenmedi, veritabanına yazılmadı, Production'da gösterilmez. PR #48'e, Codex'in dallarına, Sor'a ve Google otomasyonuna dokunulmadı. Ücretli servis kullanılmadı.
 
+## İkinci tur — kanıt tamamlama (15 Kasım 2026)
+
+Taban yeniden doğrulandı: Production `99568ec`, katalog 793 kayıt, canlıda 758 aktif mekân. PR #48 (596 aday) ile PR #49'a (Codex, 8 restoranın yalnız Preview kabulü) dokunulmadı. Yeni restoran araştırması açılmadı; yalnız mevcut havuz ilerletildi.
+
+**Kanıt standardı:** Kimlik, doğru şube, kapı numaralı adres ve güncel faaliyet en az iki uygun ve birbirinden bağımsız kaynakla desteklenmeli. Bağımsız sayılan kaynaklar:
+- Gault&Millau 2026;
+- tarihli bağımsız editoryal yazı (ör. yemek.com 2026);
+- işletmenin ya da işletmecisinin (otel, AVM, marka) resmî sayfası.
+
+Şunlar tek başına sayılmadı: Gault&Millau'dan türetilmiş toplayıcı siteler (enprimeurclub, joinpearl, mesprestiges), Instagram ve sipariş platformları. Google puanı ve yorumu hiç kullanılmadı. Erişilemeyen kaynak doğrulanmış gösterilmedi; örneğin OpenTable sayfası zaman aşımına düştüğü için Izaka Terrace incelemede kaldı.
+
+| Soru | Sonuç |
+|---|---|
+| 1. 64 bekleyen adaydan kanıtı tamamlanan | **16** |
+| 2. Hâlâ incelemede | **46** |
+| 3. Reddedilmesi önerilen | **2** |
+| 4. 29 güçlü adayın durumu | **13 iki bağımsız kaynakla hazır**, 16 tek kaynak (2 nitelikli şube + 14 White Burger) |
+| 5. White Burger | 14 şube: her biri markanın güncel resmî listesinde ayrı kapı numarasıyla; ikinci bağımsız kaynak yok. Zincir, bağımsız restoranlardan sonra gelir. Moda adresi için ret önerisi. |
+| 6. Eski yedi kayıt | 3 kabul güncellemesi önerisi, 1 neredeyse tamam, 3 eksik |
+| 7. Production | 793 kayıt / **758 aktif** (yayımlanmış) |
+| 8. Kabul edilirse ulaşılabilecek aktif | aşağıdaki tablo |
+| 9. 2.000 aktife kalan | **1.242** (yalnız yayımlanmış aktiflere göre) |
+| 10. Codex teknik kabulüne hazır | **29 yeni aday** + **3 eski kaydın güncellemesi** (liste aşağıda) |
+
+**Kanıtı tamamlanan 16 kayıt:**
+- **Tarihli bağımsız yazı:** Zübeyir Ocakbaşı Taksim (yemek.com 21.10 ve 22.09.2026), Günaydın Etiler (yemek.com 17.09.2026).
+- **İşletmenin ya da işletmecinin resmî sayfası:**
+  - OCAK (Régie Ottoman otel sitesi);
+  - Nusr-Et Steakhouse Etiler (markanın şube sayfası, aynı telefon ve kapı no);
+  - Restoran Modern (İstanbul Modern);
+  - Atölye (Ritz-Carlton, aynı telefon);
+  - Kubbeli Salon (Pera Palace, Meşrutiyet Cad. No:52);
+  - Filo D'olio Caddebostan (marka sitesi, © 2026);
+  - Caviar Kaspia (Vakko Hotel);
+  - İsokyo (Raffles; kapı numarası Zorlu kompleksinin resmî adresinden).
+- **AVM'nin resmî mağaza rehberi:**
+  - İstinyePark: Cova, Sushi Barba;
+  - Zorlu Center: Fauchon Paris, Bardot, Five O'Clock;
+  - Mall of İstanbul: Otto Bite.
+
+**Kapanış ile faaliyetin ayrılması:**
+- **Hakkasan — ret önerisi.** Markanın resmî sitesi Türkiye'de yalnız Bodrum'u gösteriyor; Mandarin Oriental'in güncel restoran listesinde de yok. Kesin kapanış duyurusu bulunamadı, bu yüzden "kapanmış" değil "kataloğa alınmasın" deniyor.
+- **OCAK — faal.** Alan adı açılmıyordu, ama otelin resmî sitesi restoranı gösteriyor.
+- **Eskiyer ve Papalina — kapanış kanıtı yok.** Alan adları çözülmüyor; bu kapanış kanıtı sayılmadı. Güncel ikinci kaynak da bulunamadı; incelemede kalıyorlar.
+- **Yediden — kapanış işareti.** İstinyePark'ın güncel restoran listesinde yok.
+
+**Ret önerisi (2):**
+- Hakkasan (yukarıda).
+- White Burger Moda: rehberdeki adres markanın güncel şube listesinde yok.
+
+**Hâlâ incelemede (46):**
+- **Faaliyet doğrulandı, yalnız kapı no eksik (3):** Natolia, Paper Moon, Petra Gayrettepe.
+- **Çelişki ya da belirsizlik (13):**
+  - Lipa ve Palude (kimlik), Sushi Manga (şube);
+  - Brasserie Noir (455 ↔ 481), Sofram (sokak), Yeniköy Balıkçısı (No:3 ↔ 15), Pizza Emirgan ve La Boom (14/A ↔ 14/B), Madam Despina, MykOrini;
+  - Hodan (taşınma), Hüsrev ve Nappo (ilçe).
+- **Kapanış işareti (1):** Yediden.
+- **Kimlik ve adres iki kaynakta, güncel faaliyet tek kaynakta (7):** Adana Ocakbaşı, Neni, Catch, Kruton, Lokanta Göktürk, Zaaf, Lokanta Yoğurt.
+- **İkinci bağımsız kaynak bulunamadı (22):**
+  - Villa Bosphorus, Vakko L'atelier, Eskiyer, Papalina, Toro, Sayfiye, Kiff, Kendime;
+  - Josephine, Izaka Terrace, Gram, GOU Society, Efendy, Buselik Beyoğlu, Bronco;
+  - Beymen Brasserie, Batard, Balat Sahil, Backyard, Ali Ocakbaşı Kuruçeşme, Akbabalı, 7Mila.
+
+**Eski yedi kayıt (yeni aday sayılmadı):**
+- **Kabul güncellemesi önerilir:**
+  - Hamdi Eminönü: paket 11'deki "tür eksik" kapandı; resmî site + G&M + OSM `node/262402714`.
+  - Shang Palace: Shangri-La resmî sayfası, aynı adres ve telefon.
+  - Baylan Kadıköy: resmî şube listesi + yemek.com, Istanbul Eats ve Cornucopia, aynı adres.
+- **Neredeyse tamam:** Tam Ocakbaşı (Oksijen 07.11.2025 + G&M; kapı no yalnız G&M'de).
+- **Eksik:** Arnavutköy Balıkçısı, Zula, Strada Suadiye.
+
+**2.000 hedef tablosu (yayımlanmış / Preview kabulü / araştırma ayrı):**
+
+| Katman | Durum | Aktif | 2.000'e kalan |
+|---|---|---:|---:|
+| Production | **yayımlanmış** | **758** | **1.242** |
+| + PR #49'daki 8 kayıt | Codex Preview kabulü; yayın onayı yok | 766 | 1.234 |
+| + PR #50: Codex'e hazır 29 aday + 3 eski kayıt | yalnız araştırma; teknik kabul yapılmadı | 798 | 1.202 |
+| + PR #50: tek kaynaklı 16 aday | yalnız araştırma | 814 | 1.186 |
+| + PR #48'in Codex'in beklettiği 588 adayı | yalnız araştırma | 1.402 | 598 |
+
+**Codex teknik kabulüne hazır 29 aday** — hepsi A-konumsuz; koordinat yazılmadı:
+- **Restoran (21):**
+  - Agata Nişantaşı, Aliée, Atölye, Bardot, Basta! Street Food Bar, Beca;
+  - Caviar Kaspia, Da Vittorio, Filo D'olio Caddebostan, Günaydın Etiler, İsokyo;
+  - Nusr-Et Steakhouse Etiler, OCAK, Olea & Bar, Restoran Modern, Sushi Barba;
+  - Tas Ramen & Sushi Bar, The Lobby, Tuzz, Zübeyir Ocakbaşı Taksim, 16 Roof.
+- **Kafe / pastane (8) — kafe politikası PR #49'da ayrıca bekliyor:**
+  - Baylan Bebek, Baylan Galataport, Cova, Fauchon Paris;
+  - Five O'Clock, Kubbeli Salon (Pera Palace), Otto Bite, The Levant Tahinier.
+
+Sıradaki adım: Önce kalan 46 kaydın kapı numarası ya da ikinci kaynak eksikleri tamamlanmalı. Seyrek ilçeler ve eksik kategoriler için yeni araştırma ancak bundan sonra (bkz. 11. bölüm).
+
+---
+
+## İlk tur (14–15 Kasım)
+
 Dosyalar:
 - `data/arastirma/gm2026/adaylar.json` — denetlenebilir aday dosyası (her kayıtta durum, kaynak URL'leri, kontrol tarihi, dört ayrı değerlendirme, mükerrer kontrolü, güven, eksikler)
 - `data/arastirma/gm2026/eksik-analizi.json` — ilçe ve mutfak türüne göre katalog eksikleri

@@ -30,7 +30,28 @@ const D = doc.kayitlar;
 const say: Record<string, number> = {};
 for (const x of D) say[x.durum] = (say[x.durum] ?? 0) + 1;
 t("sayım alanı kayıtlarla aynı", JSON.stringify(Object.entries(say).sort()) === JSON.stringify(Object.entries(doc.sayim).sort()), { say, sayim: doc.sayim });
-const DURUM = new Set(["aday-guclu", "inceleme", "bekleyen-kayda-kanit", "mukerrer", "katalogda-ya-da-dalda-var", "kapsam-disi"]);
+const DURUM = new Set(["aday-guclu", "inceleme", "ret-onerisi", "bekleyen-kayda-kanit", "mukerrer", "katalogda-ya-da-dalda-var", "kapsam-disi"]);
+/* 0 — 2. tur: 93 yeni aday çifte sayımsız; kaynak ayrımı; iki bağımsız kaynak */
+const YENI = D.filter((x) => ["aday-guclu", "inceleme", "ret-onerisi"].includes(x.durum));
+const gm = YENI.filter((x) => x.id.startsWith("gm26/")), sube = YENI.filter((x) => !x.id.startsWith("gm26/"));
+t("93 yeni aday (G&M + resmî şube listeleri), çifte sayım yok", YENI.length === 93 && gm.length + sube.length === 93 && new Set(YENI.map((x) => x.id)).size === 93, { yeni: YENI.length, gm: gm.length, sube: sube.length });
+t("G&M 2026 İstanbul kaydı 226 (şube listeleri ayrı)", D.filter((x) => x.id.startsWith("gm26/")).length === 226);
+type KH = K & { kabulHazirlik?: { durum: string }; tur2?: { oncekiDurum?: string; bulgu?: string; oneri?: string } };
+for (const x of D as KH[]) {
+  if (x.durum === "aday-guclu") {
+    t(`${x.id}: kabul hazırlık durumu yazılı`, ["codex-teknik-kabule-hazir", "tek-kaynak"].includes(x.kabulHazirlik?.durum ?? ""), x.kabulHazirlik);
+    if (x.kabulHazirlik?.durum === "codex-teknik-kabule-hazir") {
+      const hostlar = new Set(x.kaynaklar.map((k) => { try { return new URL(k.url).host.replace(/^www\./, ""); } catch { return k.url; } }));
+      t(`${x.id}: hazır kayıtta en az iki farklı kaynak alanı`, hostlar.size >= 2, [...hostlar]);
+    }
+    if (x.tur2?.oncekiDurum === "inceleme") t(`${x.id}: incelemeden yükselen kayıtta G&M dışı kaynak`, x.kaynaklar.some((k) => !/gault-millau/.test(k.url)));
+  }
+  if (x.durum === "ret-onerisi") t(`${x.id}: ret gerekçeli`, !!x.neden);
+  if (x.durum === "inceleme" && x.id.startsWith("gm26/")) t(`${x.id}: 2. tur bulgusu yazılı`, !!x.tur2?.bulgu);
+  if (x.durum === "bekleyen-kayda-kanit") t(`${x.id}: eski kayıt için öneri yazılı`, !!x.tur2?.oneri);
+}
+const TOPLAYICI = /enprimeurclub|joinpearl|mesprestiges|instagram\.com|google\./;
+t("toplayıcı site, Instagram ya da Google kaynak olarak yazılmadı", D.every((x) => x.kaynaklar.every((k) => !TOPLAYICI.test(k.url))));
 t("bilinen durum değerleri", D.every((x) => DURUM.has(x.durum)), [...new Set(D.map((x) => x.durum))]);
 t("id'ler tekil", new Set(D.map((x) => x.id)).size === D.length);
 
@@ -42,7 +63,7 @@ for (const x of G) {
   const resmi = x.kaynaklar.filter((k) => /resmî/.test(k.tur));
   const miss = [
     !x.ad && "ad", !(x.ilce && ILCE.has(x.ilce)) && `ilçe (${x.ilce})`, !(x.adres && /No\s*[:.]?\s*\d/i.test(x.adres)) && `kapı no (${x.adres})`,
-    resmi.length === 0 && "resmî kaynak", !x.kaynaklar.every((k) => /^https:?\/\//.test(k.url) || /^http:\/\//.test(k.url)) && "kaynak URL",
+    resmi.length === 0 && !x.kaynaklar.some((k) => /bağımsız|AVM resmî|işletmeci/.test(k.tur)) && "resmî ya da bağımsız güncel kaynak", !x.kaynaklar.every((k) => /^https:?\/\//.test(k.url) || /^http:\/\//.test(k.url)) && "kaynak URL",
     !x.kaynaklar.every((k) => TARIH.test(k.kontrol)) && "kontrol tarihi", (!x.kind || x.kind === "Restoran") && `tür (${x.kind})`,
     !["cat.restaurant", "cat.cafe"].includes(x.categoryId ?? "") && "kategori", x.guven !== "güçlü" && "güven",
   ].filter(Boolean);

@@ -5,10 +5,11 @@
  "sayim": {
   "katalogda-ya-da-dalda-var": 117,
   "kapsam-disi": 10,
-  "aday-guclu": 29,
+  "aday-guclu": 45,
   "mukerrer": 17,
   "bekleyen-kayda-kanit": 7,
-  "inceleme": 64
+  "ret-onerisi": 2,
+  "inceleme": 46
  },
  "kayitlar": [
   {
@@ -95,6 +96,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -169,6 +174,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -256,6 +265,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -301,6 +314,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -341,7 +358,12 @@
    "durum": "bekleyen-kayda-kanit",
    "mevcutKayit": "Production data/paket/istanbul-7/ret.json (node/5296004325, 'fast food türü belirsiz'); G&M 2026 burger türünü veriyor, güncel resmî kaynak yok",
    "kind": "Burger",
-   "categoryId": "cat.restaurant"
+   "categoryId": "cat.restaurant",
+   "tur2": {
+    "tarih": "2026-11-15",
+    "oneri": "eksik",
+    "gerekce": "tür artık kaynaklı (G&M: burger), ama güncel faaliyet ve kapı no ('101A', 'No' yok) yalnız G&M'de"
+   }
   },
   {
    "id": "gm26/white-burger-by-serhat-dogramaci",
@@ -362,12 +384,12 @@
    "categoryId": "cat.restaurant",
    "kind": "Burger",
    "kaynaktaOneCikan": "burger",
-   "durum": "inceleme",
-   "guven": "orta",
+   "durum": "ret-onerisi",
+   "guven": null,
    "eksik": [
     "adres"
    ],
-   "neden": "rehberdeki Moda adresi (Soner Sk. No:6A) markanın güncel şube listesinde yok; Kadıköy şubesi Söğütlüçeşme'de",
+   "neden": "rehberdeki Moda adresi (Soner Sk. No:6A) markanın güncel resmî şube listesinde yok; Kadıköy şubesi Söğütlüçeşme'de (ayrı aday). Bu adres için kayıt açılmaması önerilir.",
    "degerlendirme": {
     "varlik": "G&M 2026",
     "faaliyet": "G&M 2026 rehberinde (2025-12-25); güncel ikinci kaynak var",
@@ -378,6 +400,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "tarih": "2026-11-15"
    }
   },
   {
@@ -402,7 +428,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "kimlik"
    ],
    "neden": "resmî site bugün yanıt vermiyor",
    "degerlendirme": {
@@ -415,6 +441,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "kimlik",
+    "bulgu": "rehber modern Akdeniz/deniz manzaralı restoran anlatıyor; aynı adresteki Lipa (Yenipazar Cad. 25) bağımsız kaynaklarda Boşnak meyhanesi — kimlik çelişkisi"
    }
   },
   {
@@ -461,6 +492,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -498,21 +533,36 @@
      "yayin": "2025-12-24",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://yemek.com/istanbulun-en-iyi-kaburgacilari/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "yemek.com 21.10.2026 güncel listesi: aynı ad ve adres (Şehit Muhtar Mah., Bekar Sok. No:28)"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://yemek.com/en-iyi-kebap-mekanlari/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "yemek.com 22.09.2026 kebap rehberi: aynı adres"
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "url": "https://www.timeout.com/istanbul/restaurants/zuebeyir-ocakbasi",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Time Out: aynı adres ve G&M ile aynı telefon"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Kebapçı / Ocakbaşı",
    "kaynaktaOneCikan": "ocakbaşı",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bugün açılıyor ama adı/adresi metinde okunamadı (içerik betikle yükleniyor); güncel ikinci kaynak yok",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-24); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (bağımsız kaynakla aynı)",
     "tur": "G&M 2026: ocakbaşı"
    },
    "osmAdayi": [
@@ -526,6 +576,20 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Bekar Sokak No:28, Şehit Muhtar",
+   "semt": "Taksim",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî site bugün açılıyor ama adı/adresi metinde okunamadı (içerik betikle yükleniyor); güncel ikinci kaynak yok",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -624,6 +688,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "Hürriyet Daily News şef yazısı + G&M; resmî site yok, Instagram tek başına sayılmadı"
    }
   },
   {
@@ -670,7 +739,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
    "neden": "resmî site bulunamadı; OSM'de aynı noktada Production'daki Yeniköy Lokantası var — ayrım doğrulanmalı",
    "degerlendirme": {
@@ -695,6 +764,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "rehber İskele Sk. No:3, başka kaynak İskele Sk. No:15; OSM'de aynı noktada Production'daki Yeniköy Lokantası"
    }
   },
   {
@@ -719,7 +793,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "adres"
+    "kapanis-isareti"
    ],
    "neden": "adreste kapı no yok; telefon AVM santrali",
    "degerlendirme": {
@@ -732,6 +806,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "kapanis-isareti",
+    "bulgu": "İstinyePark'ın güncel 16 restoranlık listesinde yok (aynı listede Cova, Sushi Barba, Masa var); adreste kapı no da yok"
    }
   },
   {
@@ -769,6 +848,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "otel (Hilton) sayfası otomatik erişime kapalı (403); otel adresi Oymacı Sk. No:20 ile tutarlı"
    }
   },
   {
@@ -825,6 +909,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -874,6 +963,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -911,6 +1005,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -976,6 +1075,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -1103,6 +1207,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -1140,6 +1248,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -1391,6 +1504,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -1407,12 +1524,23 @@
      "yayin": "2025-12-24",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://gazeteoksijen.com/yazarlar/memet-ozer/sehrin-yeni-gozdesi-tam-ocakbasi-256060",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "'Şehrin yeni gözdesi Tam Ocakbaşı', Arnavutköy, 07.11.2025"
     }
    ],
    "durum": "bekleyen-kayda-kanit",
    "mevcutKayit": "Production data/paket/istanbul-6 ve 7 inceleme.json; G&M 2026 ocakbaşı türü ve Bebek Arnavutköy Cad. No:91",
    "kind": "Kebapçı / Ocakbaşı",
-   "categoryId": "cat.restaurant"
+   "categoryId": "cat.restaurant",
+   "tur2": {
+    "tarih": "2026-11-15",
+    "oneri": "neredeyse-tamam",
+    "gerekce": "kimlik ve güncel faaliyet iki kaynakta (Gazete Oksijen 07.11.2025 + G&M 2026 Aralık 2025); kapı no (Bebek Arnavutköy Cad. No:91) yalnız G&M'de"
+   }
   },
   {
    "id": "gm26/madera",
@@ -1471,27 +1599,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "AVM resmî rehberi",
+     "url": "https://istinyepark.com.tr/ist-category/restoran/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "İstinyePark'ın güncel restoran listesinde SUSHI BARBA"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Sushi / Japon",
    "kaynaktaOneCikan": "sushi",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + AVM resmî rehberi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: sushi"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Katar Caddesi, İstinyePark AVM No:73, Pınar",
+   "semt": "İstinye",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî site bulunamadı",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -1516,7 +1661,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "kimlik"
    ],
    "neden": "resmî site açılıyor ama ad/adres metinde okunamadı; OSM kaydı var (node/11453117251, koordinat için uygun)",
    "degerlendirme": {
@@ -1536,6 +1681,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "kimlik",
+    "bulgu": "Göktürk (Arcaidum) şubesi bağımsız kaynakta yok; sipariş platformunda yalnız Etiler şubesi görünüyor"
    }
   },
   {
@@ -1644,7 +1794,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
    "neden": "resmî site açılıyor ama ad dışında bilgi yok; OSM kaydı var (node/12040736645)",
    "degerlendirme": {
@@ -1664,6 +1814,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "rehber Kadir Has Cad. No:10, Time Out 'İskele Caddesi Liman yanı 10' — sokak çelişkisi"
    }
   },
   {
@@ -1685,7 +1840,12 @@
    "durum": "bekleyen-kayda-kanit",
    "mevcutKayit": "feature/bin-mekan 906 havuzu 'Strada Suadiye' (yalnız Google ölçümüyle bekliyor); G&M 2026 Bağdat Cad. No:459 kapı no ve editoryal varlık kanıtı",
    "kind": null,
-   "categoryId": "cat.restaurant"
+   "categoryId": "cat.restaurant",
+   "tur2": {
+    "tarih": "2026-11-15",
+    "oneri": "eksik",
+    "gerekce": "G&M + yalnız toplayıcı siteler (Mes Prestiges); bağımsız güncel kaynak yok"
+   }
   },
   {
    "id": "gm26/st-regis-brasserie",
@@ -1765,12 +1925,23 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "işletmeci resmî sitesi",
+     "url": "https://www.shangri-la.com/istanbul/shangrila/dining/restaurants/shang-palace/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, telefon ve kapı no"
     }
    ],
    "durum": "bekleyen-kayda-kanit",
    "mevcutKayit": "Production data/paket/istanbul-6 ve 7 inceleme.json (node/8493543925); G&M 2026 + Shangri-La resmî sayfası (ad, telefon, kapı no) bugün doğruladı",
    "kind": "Asya mutfağı",
-   "categoryId": "cat.restaurant"
+   "categoryId": "cat.restaurant",
+   "tur2": {
+    "tarih": "2026-11-15",
+    "oneri": "kabul-guncellemesi-onerilir",
+    "gerekce": "G&M 2026 + Shangri-La resmî restoran sayfası: ad, telefon, Hayrettin İskelesi Sk. No:1"
+   }
   },
   {
    "id": "gm26/seraf-vadi",
@@ -1828,6 +1999,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -1987,27 +2163,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "işletmeci resmî sitesi",
+     "url": "https://www.istanbulmodern.org/ziyaret/restoran",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "İstanbul Modern'in 'Restoran Modern' sayfası; müze adresi Tophane İskele Cad. No:1/1"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Modern mutfak",
    "kaynaktaOneCikan": "Akdeniz ve Türk mutfağı",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî sayfa bulunamadı (bulunan alan adı başka işletmenin)",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + işletmeci resmî sitesi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: Akdeniz ve Türk mutfağı"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Tophane İskele Caddesi No:1/1, Kılıç Ali Paşa (İstanbul Modern)",
+   "semt": "Tophane",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî sayfa bulunamadı (bulunan alan adı başka işletmenin)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -2032,7 +2225,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
    "neden": "resmî site bulunamadı",
    "degerlendirme": {
@@ -2045,6 +2238,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "kaynaklarda kapı 14/A ↔ 14/B karışık (La Boom ile aynı bina)"
    }
   },
   {
@@ -2094,6 +2292,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faaliyet doğrulandı (resmî sitede 'Gayrettepe Kafelerimiz' ve saatler); yalnız kapı no yok; ayrıca paket 6 incelemesinde"
    }
   },
   {
@@ -2161,7 +2364,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
    "neden": "resmî site 504 hatası",
    "degerlendirme": {
@@ -2174,6 +2377,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faaliyet doğrulandı (papermoonrestaurants.com İstanbul sayfası, G&M ile aynı telefon, 'Akmerkez Etiler'); yalnız kapı no yok"
    }
   },
   {
@@ -2211,6 +2419,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "kimlik",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -2248,27 +2461,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "AVM resmî rehberi",
+     "url": "https://www.mallofistanbul.com.tr/moicadde",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Mall of İstanbul MOİ Cadde rehberi: '1. Kat Otto Bite'"
     }
    ],
    "categoryId": "cat.cafe",
    "kind": "Tatlıcı",
    "kaynaktaOneCikan": "Anadolu tatlıları, modern pastacılık",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + AVM resmî rehberi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: Anadolu tatlıları, modern pastacılık"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Süleyman Demirel Bulvarı No:9 İç Kapı No:3, Ziya Gökalp (Mall of İstanbul, MOİ Cadde)",
+   "semt": "Mall of İstanbul",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî site bulunamadı",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -2314,6 +2544,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -2394,27 +2628,45 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "işletmeci resmî sitesi",
+     "url": "https://www.regieottoman.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Régie Ottoman otel sitesi 'Ocak Restaurant' bölümünü güncel olarak gösteriyor"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Kebapçı / Ocakbaşı",
    "kaynaktaOneCikan": "şef odaklı ocakbaşı",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî alan adı (ocak.ist) bugün çözülmüyor",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + işletmeci resmî sitesi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: şef odaklı ocakbaşı"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Mimar Vedat Sokak No:5, Hobyar (Régie Ottoman İstanbul)",
+   "semt": "Sirkeci",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî alan adı (ocak.ist) bugün çözülmüyor",
+    "tarih": "2026-11-15"
+   },
+   "not": "ocak.ist alan adının çözülmemesi kapanış kanıtı değildi",
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -2431,21 +2683,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "resmî şube sayfası",
+     "url": "https://www.nusr-et.com.tr/tr/restoranlar/etiler",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "markanın Etiler sayfası: G&M ile aynı telefon ve Nisbetiye Cd No:87"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Steakhouse",
    "kaynaktaOneCikan": "steakhouse, dry-age",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "markanın resmî sitesinde Etiler şubesi okunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + resmî şube sayfası (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (bağımsız kaynakla aynı)",
     "tur": "G&M 2026: steakhouse, dry-age"
    },
    "osmAdayi": [
@@ -2459,6 +2714,20 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Nisbetiye Caddesi No:87, Etiler",
+   "semt": "Etiler",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "markanın resmî sitesinde Etiler şubesi okunamadı",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -2504,7 +2773,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
    "neden": "resmî site bulunamadı",
    "degerlendirme": {
@@ -2517,6 +2786,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "rehber No:481, Time Out No:455 — 481'de ayrı 'Noir Patisserie' olabilir"
    }
   },
   {
@@ -2617,6 +2891,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "kimlik ve adres iki kaynakta aynı (G&M + Time Out, Haldun Taner Sk. 7/1, aynı telefon); güncel ikinci faaliyet kaynağı yok"
    }
   },
   {
@@ -2675,6 +2954,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faaliyet doğrulandı (resmî site © 2026 + Mall of İstanbul rehberi '1. Kat Natolia'); yalnız kapı no hiçbir kaynakta yok"
    }
   },
   {
@@ -2733,6 +3017,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -2770,6 +3059,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -3031,6 +3325,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "kimlik ve adres iki kaynakta aynı (G&M + Time Out, Funda Çıkmazı No:2/6A); Time Out yazısı tarihsiz"
    }
   },
   {
@@ -3047,27 +3346,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "işletmeci resmî sitesi",
+     "url": "https://www.vakkohotel.com/exp/the-art-of-caviar",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Vakko Hotel'in güncel konaklama deneyimi Caviar Kaspia tadımını içeriyor"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Dünya mutfağı",
    "kaynaktaOneCikan": "havyar odaklı Fransız",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı; Sumahan otel sayfasında adı okunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + işletmeci resmî sitesi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: havyar odaklı Fransız"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Kuleli Caddesi No:43, Çengelköy (Vakko Hotel Sumahan)",
+   "semt": "Çengelköy",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî site bulunamadı; Sumahan otel sayfasında adı okunamadı",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -3189,6 +3505,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -3247,6 +3568,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "Michelin 2024/2025 sayfaları aynı adresi veriyor (İstanbul Cad. No:16/E) ama 2026 Michelin listesinde yok; Michelin sayfası 404"
    }
   },
   {
@@ -3359,7 +3685,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
    "neden": "bulunan alan adı başka işletmenin (fotoğraf stüdyosu)",
    "degerlendirme": {
@@ -3372,6 +3698,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "kaynaklarda kapı 14/A ↔ 14 (Pizza Emirgan ile aynı bina); resmî site bulunamadı"
    }
   },
   {
@@ -3388,27 +3719,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "işletmeci resmî sitesi",
+     "url": "https://www.perapalace.com/pages/kubbeli-saloon-tea-lounge",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Pera Palace restoranlar listesinde 'Kubbeli Salon'; adres Meşrutiyet Cad. No:52, G&M ile aynı telefon"
     }
    ],
    "categoryId": "cat.cafe",
    "kind": "Kafe",
    "kaynaktaOneCikan": "çay saati",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "adres"
-   ],
-   "neden": "otel sitesi güncel ama rehber adresinde kapı no yok",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak var",
-    "adres": "rehber adresi — eksik/çelişkili",
+    "faaliyet": "G&M 2026 + işletmeci resmî sitesi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (bağımsız kaynakla aynı)",
     "tur": "G&M 2026: çay saati"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Meşrutiyet Caddesi No:52, Tepebaşı (Pera Palace Hotel)",
+   "semt": "Tepebaşı",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "otel sitesi güncel ama rehber adresinde kapı no yok",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -3446,6 +3794,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "G&M + Time Out (Teşvikiye/Harbiye); kapı 11/A ↔ 11B; güncel ikinci kaynak yok"
    }
   },
   {
@@ -3502,6 +3855,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -3562,6 +3920,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -3681,6 +4044,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -3718,6 +4086,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "OpenTable sayfası var (açılamadı, zaman aşımı) ve Oksijen yazısı; otel sayfası 404 — doğrulanamadı"
    }
   },
   {
@@ -3734,27 +4107,51 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "işletmeci resmî sitesi",
+     "url": "https://www.raffles.com/istanbul/dining/isokyo/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Raffles Istanbul'un İsokyo restoran sayfası (Zorlu Center, 34340)"
+    },
+    {
+     "tur": "AVM resmî adresi",
+     "url": "https://www.zorlucenter.com.tr/iletisim",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "kompleks adresi Vadi Caddesi No:2"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Asya mutfağı",
    "kaynaktaOneCikan": "Çin ve Tayland",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "adres"
-   ],
-   "neden": "Raffles resmî sayfasında güncel, ama adreste kapı no yok",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak var",
-    "adres": "rehber adresi — eksik/çelişkili",
+    "faaliyet": "G&M 2026 + işletmeci resmî sitesi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: Çin ve Tayland"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Vadi Caddesi No:2, Levazım (Zorlu Center, Raffles Istanbul)",
+   "semt": "Zorlu Center",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "Raffles resmî sayfasında güncel, ama adreste kapı no yok",
+    "tarih": "2026-11-15"
+   },
+   "not": "kapı no kompleksin resmî adresinden; Raffles sayfası yalnız 'Zorlu Center' diyor",
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -3832,6 +4229,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -3875,7 +4277,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
    "neden": "resmî site bulunamadı",
    "degerlendirme": {
@@ -3888,6 +4290,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "Time Out röportajında ekip mekân değiştireceğini söylüyor; Hayriye Cad. No:12 güncelliği belirsiz"
    }
   },
   {
@@ -3973,12 +4380,12 @@
    "categoryId": "cat.restaurant",
    "kind": "Asya mutfağı",
    "kaynaktaOneCikan": "modern Kanton, dim sum",
-   "durum": "inceleme",
-   "guven": "orta",
+   "durum": "ret-onerisi",
+   "guven": null,
    "eksik": [
     "faaliyet"
    ],
-   "neden": "Mandarin Oriental'in güncel restoran listesinde yok — kapanmış olabilir",
+   "neden": "kapanış işareti: markanın resmî sitesi (hakkasangroup.com) Türkiye'de yalnız Bodrum'u listeliyor, eski İstanbul sayfası mekânı göstermiyor; Mandarin Oriental Bosphorus'un güncel restoran listesinde (Novikov, Olea & Bar…) yok. Kesin kapanış duyurusu bulunamadı — kataloğa alınmaması önerilir.",
    "degerlendirme": {
     "varlik": "G&M 2026",
     "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
@@ -3989,6 +4396,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "tarih": "2026-11-15"
    }
   },
   {
@@ -4005,12 +4416,23 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "resmî site",
+     "url": "https://hamdi.com.tr/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Eminönü şubesi Tahmis Cad. Kalçın Sokak No:11"
     }
    ],
    "durum": "bekleyen-kayda-kanit",
    "mevcutKayit": "Production data/paket/istanbul-11/inceleme.json (node/262402714) — eksik: kaynaklı tür; G&M 2026 'Geleneksel Mutfak' ile tamamlanır",
    "kind": "Kebapçı / Ocakbaşı",
-   "categoryId": "cat.restaurant"
+   "categoryId": "cat.restaurant",
+   "tur2": {
+    "tarih": "2026-11-15",
+    "oneri": "kabul-guncellemesi-onerilir",
+    "gerekce": "G&M 2026 'Geleneksel Mutfak' (eksik tür tamam) + resmî site hamdi.com.tr: Kalçın Sk. No:11 + OSM node/262402714"
+   }
   },
   {
    "id": "gm26/haci-abdullah-lokantasi",
@@ -4069,27 +4491,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://yemek.com/etilerde-en-iyi-kebap-nerede-yenir/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "yemek.com 17.09.2026: 'Günaydın Etiler' aynı adres"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Kebapçı / Ocakbaşı",
    "kaynaktaOneCikan": "kebap, dry-aged et",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site (gunaydinet.com) şube sayfası 404",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (bağımsız kaynakla aynı)",
     "tur": "G&M 2026: kebap, dry-aged et"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Seheryıldızı Sokak No:6, Etiler",
+   "semt": "Etiler",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî site (gunaydinet.com) şube sayfası 404",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -4148,6 +4587,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -4185,6 +4629,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -4347,27 +4796,50 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "AVM resmî rehberi",
+     "url": "https://www.zorlucenter.com.tr/magazalar",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Zorlu Center mağaza rehberi: 'Five O'Clock Meydan Katı (0)'"
+    },
+    {
+     "tur": "AVM resmî adresi",
+     "url": "https://www.zorlucenter.com.tr/iletisim",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Zorlu Center, Levazım Mah., Vadi Caddesi No:2 (rehberdeki Acarkent ifadesi yerine AVM'nin kendi adresi)"
     }
    ],
    "categoryId": "cat.cafe",
    "kind": "Pastane",
    "kaynaktaOneCikan": "butik pastacılık",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "adres"
-   ],
-   "neden": "rehber adresi Zorlu Center ile Acarkent'i karıştırıyor",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak var",
-    "adres": "rehber adresi — eksik/çelişkili",
+    "faaliyet": "G&M 2026 + AVM resmî rehberi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: butik pastacılık"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Vadi Caddesi No:2, Levazım (Zorlu Center)",
+   "semt": "Zorlu Center",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "rehber adresi Zorlu Center ile Acarkent'i karıştırıyor",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -4384,27 +4856,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "resmî site",
+     "url": "https://www.filodolio.com.tr/our-restaurants.aspx",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "markanın restoran listesi (© 2026) 'Bağdat Caddesi' restoranını gösteriyor; kapı no G&M'den"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "İtalyan",
    "kaynaktaOneCikan": "ev yapımı makarna, odun fırını pizza",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı (PR #48'de ayrı Sarıyer şubesi var)",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + resmî site (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: ev yapımı makarna, odun fırını pizza"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Bağdat Caddesi No:319-321C, Caddebostan",
+   "semt": "Caddebostan",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî site bulunamadı (PR #48'de ayrı Sarıyer şubesi var)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -4464,27 +4953,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "AVM resmî rehberi",
+     "url": "https://www.zorlucenter.com.tr/magazalar",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Zorlu Center mağaza rehberi: 'Fauchon Paris Meydan Katı (0)'"
     }
    ],
    "categoryId": "cat.cafe",
    "kind": "Pastane",
    "kaynaktaOneCikan": "pastacılık, çay, çikolata",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "yalnız markanın küresel sitesi; Zorlu şubesi doğrulanamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + AVM resmî rehberi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: pastacılık, çay, çikolata"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Koru Sokak No:2 D:164, Levazım (Zorlu Center)",
+   "semt": "Zorlu Center",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "yalnız markanın küresel sitesi; Zorlu şubesi doğrulanamadı",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -4563,6 +5069,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -4691,6 +5202,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -4809,27 +5324,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "AVM resmî rehberi",
+     "url": "https://istinyepark.com.tr/ist-category/restoran/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "İstinyePark'ın güncel restoran listesinde COVA"
     }
    ],
    "categoryId": "cat.cafe",
    "kind": "Pastane",
    "kaynaktaOneCikan": "pasta, kruvasan, kahve",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + AVM resmî rehberi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: pasta, kruvasan, kahve"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Katar Caddesi No:11, Pınar (İstinyePark)",
+   "semt": "İstinye",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî site bulunamadı",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -4972,6 +5504,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -5009,6 +5546,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -5129,6 +5671,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -5174,6 +5721,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5238,6 +5789,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5275,6 +5830,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -5312,27 +5872,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "AVM resmî rehberi",
+     "url": "https://www.zorlucenter.com.tr/magazalar",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Zorlu Center mağaza rehberi: 'Bardot Meydan Katı (0)'"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Akdeniz mutfağı",
    "kaynaktaOneCikan": "Akdeniz esinli",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + AVM resmî rehberi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (rehber; ikinci kaynak işletmeyi/kompleksi doğruluyor)",
     "tur": "G&M 2026: Akdeniz esinli"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Vadi Caddesi No:2/208, Levazım (Zorlu Center, Beymen)",
+   "semt": "Zorlu Center",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "resmî site bulunamadı",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5412,6 +5989,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -5456,6 +6038,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -5514,27 +6101,44 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "işletmeci resmî sitesi",
+     "url": "https://www.ritzcarlton.com/en/hotels/istrz-the-ritz-carlton-istanbul/dining/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Ritz-Carlton restoran listesi: 'Atölye Restaurant', G&M ile aynı telefon (+90 212 334 4221); otel adresi Askerocağı Cad. No:6"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Türk mutfağı",
    "kaynaktaOneCikan": "Anadolu mutfağı, mevsimsel",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "Ritz-Carlton sayfasında adı okunamadı (bulunan alan adı başka işletmenin)",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + işletmeci resmî sitesi (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (bağımsız kaynakla aynı)",
     "tur": "G&M 2026: Anadolu mutfağı, mevsimsel"
    },
    "mukerrerKontrol": {
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "adres": "Asker Ocağı Caddesi No:6, Harbiye (The Ritz-Carlton)",
+   "semt": "Elmadağ",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur2": {
+    "oncekiDurum": "inceleme",
+    "oncekiNeden": "Ritz-Carlton sayfasında adı okunamadı (bulunan alan adı başka işletmenin)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5593,12 +6197,23 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "url": "https://www.timeout.com/istanbul/tr/restoranlar/arnavutkoey-balikcisi",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "adres 1. Cadde 4, Arnavutköy"
     }
    ],
    "durum": "bekleyen-kayda-kanit",
    "mevcutKayit": "feature/bin-mekan 'Arnavutköy Balıkçısı' (aynı adres Bebek Arnavutköy Cad. No:4); G&M 2026 editoryal kanıt",
    "kind": "Balık restoranı",
-   "categoryId": "cat.restaurant"
+   "categoryId": "cat.restaurant",
+   "tur2": {
+    "tarih": "2026-11-15",
+    "oneri": "eksik",
+    "gerekce": "kimlik ve adres iki kaynakta (G&M No:4 + Time Out '1. Cadde 4'); güncel faaliyet yalnız G&M"
+   }
   },
   {
    "id": "gm26/arkestra",
@@ -5759,6 +6374,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -5857,6 +6477,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -6013,6 +6638,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "kimlik ve adres iki kaynakta aynı (G&M + yemek.com ocakbaşı yazısı, Baysungur Sk. 2/D); güncel ikinci faaliyet kaynağı yok"
    }
   },
   {
@@ -6050,6 +6680,11 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "tur2": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
    }
   },
   {
@@ -6118,6 +6753,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -6182,6 +6821,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "yalnız markanın resmî sitesi; ikinci bağımsız kaynakta Şişli şubesi farklı yerde (Radisson Blu) anılıyor — doğrulanmalı"
    }
   },
   {
@@ -6209,6 +6852,12 @@
      "url": "https://www.gault-millau.com.tr/baylan-bebek/",
      "kontrol": "2026-11-15",
      "kanitladigi": "markanın türü"
+    },
+    {
+     "tur": "bağımsız işletmeci (kompleks) blogu",
+     "url": "https://galataport.com/tr/blog/pastane-kulturu-istanbulda-100-yil",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Galataport'un kendi blogu 'Baylan Galataport İstanbul şubesi'ni anıyor"
     }
    ],
    "degerlendirme": {
@@ -6224,6 +6873,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: editoryal rehber/kompleks + işletmenin ya da işletmecinin resmî sayfası; koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -6266,6 +6919,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "yalnız markanın resmî sitesi; bağımsız kaynaklarda eski adres Leylak Sk. 13/D görünüyor"
    }
   },
   {
@@ -6285,8 +6942,25 @@
      "url": "https://baylangida.com/iletisim",
      "kontrol": "2026-11-15",
      "kanitladigi": "KADIKÖY ŞUBESİ Muvakkithane Caddesi No: 9/A"
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "url": "https://yemek.com/unlu-kadikoy-mekanlari/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Baylan Kadıköy (tarihli: 2015-09-08)"
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "url": "https://istanbuleats.com/2010/07/baylan-pastanesi-a-slice-of-history/print/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Muvakkithane Cad. 9/A"
     }
-   ]
+   ],
+   "tur2": {
+    "tarih": "2026-11-15",
+    "oneri": "kabul-guncellemesi-onerilir",
+    "gerekce": "resmî şube listesi (Muvakkithane Cad. No:9/A) + bağımsız editoryal aynı adres (yemek.com 2015, Istanbul Eats, Cornucopia); güncel faaliyet resmî listeden"
+   }
   },
   {
    "id": "zincir/white-burger-galataport",
@@ -6329,6 +7003,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6372,6 +7050,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6415,6 +7097,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6458,6 +7144,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6501,6 +7191,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6544,6 +7238,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6587,6 +7285,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6630,6 +7332,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6673,6 +7379,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6716,6 +7426,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6759,6 +7473,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6802,6 +7520,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6845,6 +7567,10 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   },
   {
@@ -6888,7 +7614,29 @@
     "sonuc": "eşleşme yok",
     "kapsam": "Production 793 kayıt + Production data/ altındaki 84 dosya (eski paket inceleme/ret dahil) + 111 uzak dal (PR #48'in 596 adayı dahil): ad, ayırt edici sözcük + ilçe, sokak + kapı no",
     "kontrol": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "tek-kaynak",
+    "not": "şube yalnız markanın resmî listesinde; ikinci bağımsız kaynak yok — zincir, bağımsız restoranlardan sonra"
    }
   }
- ]
+ ],
+ "tur2": {
+  "tarih": "2026-11-15",
+  "ozet": {
+   "incelemedenGucluye": 16,
+   "retOnerisi": 2,
+   "halaInceleme": 46,
+   "kabulHazirlik": {
+    "codex-teknik-kabule-hazir": 29,
+    "tek-kaynak": 16
+   },
+   "eskiKayit": {
+    "eksik": 3,
+    "neredeyse-tamam": 1,
+    "kabul-guncellemesi-onerilir": 3
+   }
+  },
+  "kanitStandardi": "Kimlik, doğru şube, kapı numaralı adres ve güncel faaliyet en az iki uygun ve birbirinden bağımsız kaynakla. Bağımsız sayılan: editoryal rehber (G&M 2026), tarihli bağımsız editoryal yazı, işletmenin/işletmecinin (otel, AVM, marka) resmî sayfası. G&M'den türetilmiş toplayıcı siteler (enprimeurclub, joinpearl, mesprestiges), Instagram ve sipariş platformu tek başına sayılmadı; Google puanı/yorumu hiç kullanılmadı. Erişilemeyen kaynak doğrulanmış gösterilmedi."
+ }
 }
