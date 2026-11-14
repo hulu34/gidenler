@@ -27,7 +27,7 @@ ok(`${D}: ${W.length} kayıt = paket satırı = özet`, W.length > 0 && W.length
 ok("venues.json / isletme.json'a eklenmemiş (bağımsız paket)", !W.some((w) => cat.some((c) => c.ref === w.ref)));
 /* KONUMSUZ İŞLETME KAYDI (paket 15+): koordinatı doğrulanamayan, kimliği/adresi/türü doğrulanmış restoran; sınıf "A-konumsuz", A DEĞİLDİR */
 type KRec = RealVenueRecord & { kaliteSinifi?: string; kalite?: { koordinat?: string } };
-const KZ = (W as KRec[]).filter((v) => v.kaliteSinifi === "A-konumsuz");
+const KZ = (W as KRec[]).filter((v) => (v.kaliteSinifi as string) === "A-konumsuz");
 const geoW = W.filter((v) => !KZ.includes(v as KRec));
 const BIZ = geoW.filter((v) => v.ref.startsWith("isletme/"));
 if (BIZ.length) {
@@ -92,7 +92,7 @@ if (OW.length) {
   ok(`Overture kayıtları (${OW.length}): GERS kimliği, sürüm, kaynak ve lisans var`, OW.every((v) => /^[0-9a-f-]{20,}$/i.test(v.overture!.gersId) && !!v.overture!.release && v.overture!.lisans.length > 0 && v.overture!.lisans.every((l) => ["CDLA-Permissive-2.0", "Apache-2.0", "CC0-1.0"].includes(l)) && v.overture!.kaynaklar.length > 0));
   ok("Overture kimliği paket içinde tekil", new Set(OW.map((v) => v.overture!.gersId)).size === OW.length);
   ok("Overture güveni tek başına kanıt değil: her kayıtta resmî site ölçümü var", OW.every((v) => /resmî (site|şube sayfası) [^ ]+: ad \+ (telefon|sokak)/.test(v.verification ?? "")));
-  ok("koordinat yalnız OSM kaydından (Overture noktası kayda yazılmadı)", OW.every((v) => (v.kaliteSinifi === "A" && /^(node|way|relation)\/\d+$/.test(v.ref) && typeof v.lat === "number") || (v.kaliteSinifi === "A-konumsuz" && v.lat === undefined && v.location === undefined)));
+  ok("koordinat yalnız OSM kaydından (Overture noktası kayda yazılmadı)", OW.every((v) => (v.kaliteSinifi === "A" && /^(node|way|relation)\/\d+$/.test(v.ref) && typeof v.lat === "number") || ((v.kaliteSinifi as string) === "A-konumsuz" && v.lat === undefined && v.location === undefined)));
   ok("paket açıklamasında Overture ve OSM atfı var", /Overture Maps Foundation/.test(P._aciklama ?? "") && /OpenStreetMap/.test(P._aciklama ?? ""));
 }
 /* 906 KİMLİĞİ (paket 20+): 906 dalıyla ortak kayıt ikinci profil açmaz; slug ve OSM kaydı 906'dakiyle aynıdır (V906=<v906.json>) */
