@@ -20,7 +20,8 @@ const ayri = (a, b) => SK.find((k) => k.karar === "ayri_isletme" && ((k.slug ===
 const sinif = (r) => r.ref.startsWith("isletme/") ? (typeof r.lat === "number" ? "A (işletme, OSM konumlu)" : "A-konumsuz") : r.kaliteSinifi === "B1" || r.adresDuzeyi === "sokak" ? "B1" : "A";
 const mevcut = (r) => ({ slug: r.slug, ref: r.ref, osmRef: r.osmRef, name: r.name, district: r.district, lat: r.lat, lng: r.lng, phone: r.phone, website: r.website, address: r.address });
 const paketler = [];
-for (let n = 15; n <= 23; n++) { const k = git(`data/paket/istanbul-${n}/kayitlar.json`) ?? [], b = git(`data/paket/istanbul-${n}/isletme-kayitlari.json`) ?? []; paketler.push({ ad: `paket ${n}`, pr: { 15: 15, 16: 19, 17: 20, 18: 21, 19: 23, 20: 24, 21: 26, 22: 30, 23: 31 }[n], kayitlar: [...k, ...b] }); }
+const SON = Number(process.env.SON_PAKET ?? 23);
+for (let n = 15; n <= SON; n++) { const k = git(`data/paket/istanbul-${n}/kayitlar.json`) ?? [], b = git(`data/paket/istanbul-${n}/isletme-kayitlari.json`) ?? []; paketler.push({ ad: `paket ${n}`, pr: ({ 15: 15, 16: 19, 17: 20, 18: 21, 19: 23, 20: 24, 21: 26, 22: 30, 23: 31 }[n] ?? null), kayitlar: [...k, ...b] }); }
 const kabul = [], ret = [], bilgi = [];
 const havuz = prod.map(mevcut);
 for (const p of paketler) for (const r of p.kayitlar) {
@@ -56,5 +57,5 @@ const ozet = {
   sahipKarariyla: kabul.filter((x) => x.sahipKarari).map((x) => x.slug),
   hedefSonrasi: prod.length + kabul.length,
 };
-writeFileSync(out, JSON.stringify({ _aciklama: "Açık paket PR'larının (paket 15–23) güncel Production'a ve birbirlerine karşı birleşik denetimi. Paket dosyaları değiştirilmedi; yayın kararı ve sırası Codex'te.", ozet, kabul, ret, bilgi }, null, 1) + "\n");
+writeFileSync(out, JSON.stringify({ _aciklama: `Açık paket PR'larının ve yerel paketlerin (paket 15–${SON}) güncel Production'a ve birbirlerine karşı birleşik denetimi. Paket dosyaları değiştirilmedi; yayın kararı ve sırası Codex'te.`, ozet, kabul, ret, bilgi }, null, 1) + "\n");
 console.log(JSON.stringify(ozet, null, 1));

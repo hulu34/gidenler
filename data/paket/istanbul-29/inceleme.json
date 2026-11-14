@@ -1,0 +1,44 @@
+{
+ "_aciklama": "Paket 29 seçiminden A ya da A-konumsuz olamayanlar; her satırda eksik ya da neden.",
+ "kayitlar": [
+  {
+   "gersId": "428c556a-5c05-4283-a759-f187523d4402",
+   "ad": "Zeny Matcha & More",
+   "ilce": "Eyüpsultan",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "b7be159c-cfbe-4205-8d90-dc8aab40aa91",
+   "ad": "Mis Fırın & Cafe",
+   "ilce": "Beşiktaş",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "a7807029-af29-4c4a-add2-9d6f476724b6",
+   "ad": "Mado",
+   "ilce": "Ataşehir",
+   "sinif": "B",
+   "eksik": [
+    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "e7454b74-aaf7-45c4-a9c2-8d25cf98a5ad",
+   "ad": "Ron Nişantaşı",
+   "ilce": "Şişli",
+   "sinif": "çakışma",
+   "neden": [
+    "paket içinde aynı işletme: ron-cafe-sisli"
+   ]
+  }
+ ]
+}

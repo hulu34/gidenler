@@ -1,0 +1,300 @@
+{
+ "_aciklama": "Paket 19 (B havuzu yükseltme): türü eksik B adaylarında tür, restoranın KENDİ resmî sitesindeki öz tanımdan (başlık, açıklama, hakkımızda, menü başlığı, schema.org servesCuisine) doğrulandı (2026-11-12). Addan ya da Overture kategorisinden tür üretilmedi. Kısa ifade ölçümdür; sayfa içeriği saklanmadı.",
+ "kararlar": {
+  "a22b8417-d1e1-45a1-a6c6-b7e3e51f25cf": {
+   "ad": "Tarihi Merkezefendi Köftecisi Ahmet Usta",
+   "kind": "Köfteci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site hakkımızda: \"1962 yılında duyulmaya başladı o meşhur köfte\""
+  },
+  "fedb2a14-9932-4860-9904-2a305727e84b": {
+   "ad": "İmparator Chef",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site schema.org servesCuisine: \"Türk Mutfağı, Kebap, Döner, Lahmacun, Pide\""
+  },
+  "c0011140-c83d-4ba4-bcc6-6f367b8f7ada": {
+   "ad": "Gunesli Iskembe",
+   "kind": "Çorbacı",
+   "cuisine": [
+    "soup"
+   ],
+   "ifade": "resmî site hakkımızda: \"Kelle Paça, Ezogelin Mercimek, Tavuk Suyuna Çorba\""
+  },
+  "b1b37f90-8b77-4ee4-aa05-aec463064725": {
+   "ad": "Bİ YER Et & Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site hakkımızda: \"kaliteli kebap restoranı\""
+  },
+  "4d90efc7-8dec-4912-9730-a1b4db8eb326": {
+   "ad": "Tablacı Güney-Doğu Mutfağı",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site menüsü: \"Güney-Doğu Yöresinden Başlangıçlar\""
+  },
+  "d16d4956-95d6-49fd-ba4f-28d5444649cb": {
+   "ad": "Konyalı Köşk",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site menü başlığı: \"Konya Mutfağı\""
+  },
+  "4246144b-774c-4cd5-b23d-56906b2f3ab7": {
+   "ad": "Pepo's Galata",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Galata Kulesi Yanında Türk Restoranı\""
+  },
+  "483eef09-2390-405c-895a-0291ad431ec1": {
+   "ad": "Karaf Et & Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site hakkımızda: \"Et Kebap Restoranı\""
+  },
+  "867b8392-fdf2-4837-b728-3bbf3cb1579a": {
+   "ad": "Kocaman Restaurant",
+   "kind": "Karadeniz mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Kocaman Karadeniz Mutfağı\""
+  },
+  "a83c2269-f4e1-4a9c-8308-e7535a4e59bc": {
+   "ad": "Green House Restaurant",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site schema.org servesCuisine: \"Türk Mutfağı, Deniz Ürünleri, Izgara, Meze\""
+  },
+  "764b0ed1-a45e-4548-8722-ba65f4ff317f": {
+   "ad": "Hazar Kanat",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site: \"Kebapçıdan Daha Fazlası\", \"kebap çeşitlerinden ızgara lezzetlerine\""
+  },
+  "45a1bf25-cf54-431a-9fd2-3ba01d55f075": {
+   "ad": "Çorba Konağı",
+   "kind": "Çorbacı",
+   "cuisine": [
+    "soup"
+   ],
+   "ifade": "resmî site menüsü: \"Antep Kellepaça, İlik Çorbası, İşkembe\""
+  },
+  "d5bdf55b-4239-40e0-89d4-ef7720179c26": {
+   "ad": "Kenan Usta Ocakbaşı",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site menü başlığı: \"Izgara & Kebaplar\""
+  },
+  "4787b494-cd77-43d9-a98f-55f0a0cbd5aa": {
+   "ad": "Tepe Balık Restaurant Sarıyer",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site hakkında: \"deniz ürünleri restoranı Tepe Balık\""
+  },
+  "401b451e-6b6a-4fc8-8623-a1b53ffa105d": {
+   "ad": "Zekibey İskender",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site: \"Kebap, Pide ve Anadolu Lezzetleri\", \"geleneksel Türk mutfağı\""
+  },
+  "7c143a08-ea4a-460f-b263-24d92f0de8b8": {
+   "ad": "Nefis Et",
+   "kind": "Steakhouse",
+   "cuisine": [
+    "steak_house"
+   ],
+   "ifade": "resmî site hakkımızda: \"kasap-restoran olarak hizmet verdiğimiz bir steakhouse\""
+  },
+  "821c9262-0744-49a5-884d-a8caf6d0e2a3": {
+   "ad": "Sait",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site başlığı: \"En Taze Deniz Ürünleriyle Kendine Has Reçeteler\""
+  },
+  "7c074fe7-ed88-4e7f-b20f-7daf3d02f49b": {
+   "ad": "Nişantaşı Başköşe",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site hakkımızda: \"klasik kebap restoranı anlayışını ... Türk Anadolu mutfağı\""
+  },
+  "99dca767-8b82-4b5b-a65e-f8dadf0def69": {
+   "ad": "Tella Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Gerçek Urfa Kebabı – Odun Ateşinde Lahmacun\""
+  },
+  "f86490dc-64a6-437d-8418-26bad66a719d": {
+   "ad": "Kebapçı Tevfik Usta",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site: \"Kebabın Öncüsü\"; schema.org servesCuisine \"Turkish, Kebab\""
+  },
+  "d8b1bf63-ae48-4af0-a878-a01e68b86688": {
+   "ad": "Sudi Iranian Restaurant",
+   "kind": "Dünya mutfağı",
+   "cuisine": [
+    "international"
+   ],
+   "ifade": "resmî site başlığı: \"Ataşehir İstanbul'da İran Mutfağı\""
+  },
+  "bfb39959-f211-45f3-b74d-d00fed44324a": {
+   "ad": "Olden 1545",
+   "kind": "Dünya mutfağı",
+   "cuisine": [
+    "international"
+   ],
+   "ifade": "resmî site açıklaması: \"dünya mutfağının en özel tatları\""
+  },
+  "31c79cc2-85d0-4a4c-93bc-bc97eda98a85": {
+   "ad": "Sadakatsiz Yeni Nesil Meyhane",
+   "kind": "Meyhane",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site hakkımızda: \"yeni nesil meyhane konsepti\""
+  },
+  "3dd367b1-dea6-4179-9d11-42cd48d17cc0": {
+   "ad": "Tarihi Diyarbakir Cigercisi",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Diyarbakır Tadında Ciğer ve Tüm Kebap Çeşitleri\""
+  },
+  "8e134455-115f-44fa-b228-f5a7983767f3": {
+   "ad": "Beyafi Kasap Döner",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Et Dönerde Tercih Beyafi\""
+  },
+  "6765298d-1537-4728-82fb-ca789a470249": {
+   "ad": "Reşat Efendi",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Fatih'te Osmanlı Mutfağı ve Kebap Restoranı\""
+  },
+  "1b40f1f2-d7ed-4ee7-8843-0941c4b73aef": {
+   "ad": "Sevic Restoran",
+   "kind": "Meyhane",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site hakkımızda: \"Meyhane kültürünün en eski ve köklü iyi örneklerinden biri\""
+  },
+  "589c637e-c84e-4e0a-9da0-7129173e44c3": {
+   "ad": "Anzer Sofrası",
+   "kind": "Karadeniz mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Anzer Sofrası – Karadeniz Lezzetleri\""
+  },
+  "26ded7e7-befc-473f-a306-5aa9798fdd29": {
+   "ad": "Dafni Ateşbaşı",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Hatay Mutfağı'ndan esinlenen lezzetleriyle\""
+  },
+  "ef93fdbc-5b70-40e5-b2a9-0b597ab37ad9": {
+   "ad": "Comlek Kuru Fasulye",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site: \"Türkiye'nin 1 numaralı Kuru Fasülyesi\", \"1999'dan Beri Değişmeyen Lezzet\""
+  },
+  "d9c62c03-8821-4a00-b526-be1162519555": {
+   "ad": "Bence Tantuni",
+   "kind": "Tantuni",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Dünyanın En İyi Tantunicisi\""
+  },
+  "e6cd1fd8-08ea-49ad-9c76-b5523214108b": {
+   "ad": "HD İskender",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site hakkımızda: \"Geleneksel iskender lezzetini ... restoran konsepti ile\""
+  },
+  "c50349c5-6630-4369-b6fd-825710021591": {
+   "ad": "Katoniki",
+   "kind": "Meyhane",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site: \"klasik meyhane konseptini modern dokunuşlarla\""
+  },
+  "14d939db-9dfc-410c-90dd-baa8ed2d78fb": {
+   "ad": "Mutabık Restaurant",
+   "kind": "Steakhouse",
+   "cuisine": [
+    "steak_house"
+   ],
+   "ifade": "resmî site açıklaması: \"Mutabık İstanbul Ataşehir Et Restoranı\""
+  },
+  "6f440366-c1a5-47c3-a9ca-c1dca8081986": {
+   "ad": "Tella Kebap, Bahçekent",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Gerçek Urfa Kebabı – Odun Ateşinde Lahmacun\""
+  }
+ }
+}

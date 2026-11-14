@@ -1,0 +1,73 @@
+{
+ "dalga": 24,
+ "A": 58,
+ "sinif": {
+  "A-konumsuz": 42,
+  "A": 16
+ },
+ "osmKaydi": 16,
+ "isletmeKaydi": 42,
+ "uygunAday": 480,
+ "secilen": 478,
+ "onEleme": {
+  "kanitsiz": 226,
+  "spamPark": 189,
+  "kafeBar": 30,
+  "acilmadi": 1894
+ },
+ "inceleme": {
+  "çakışma": 145,
+  "B": 272,
+  "C": 3
+ },
+ "incelemeNeden": {
+  "OSM kaydı katalogda/pakette": 57,
+  "kapı numarası resmî kaynakta doğrulanmadı": 76,
+  "tür yalnız Overture kategorisinde": 74,
+  "mevcut kayıtla eşleşiyor": 86,
+  "resmî site yalnız http": 19,
+  "tür belirsiz": 8,
+  "kaynaklı tür yok": 127,
+  "adres resmî kaynakta doğrulanmadı": 65,
+  "ilçe resmî sitede geçmiyor": 10,
+  "zincir": 3,
+  "paket içinde aynı işletme": 2
+ },
+ "turKaynagi": {
+  "resmî site": 57,
+  "OSM": 1
+ },
+ "ilce": {
+  "Beykoz": 8,
+  "Fatih": 6,
+  "Beyoğlu": 12,
+  "Sarıyer": 8,
+  "Ümraniye": 3,
+  "Üsküdar": 4,
+  "Beşiktaş": 1,
+  "Tuzla": 1,
+  "Maltepe": 2,
+  "Kadıköy": 8,
+  "Ataşehir": 2,
+  "Pendik": 2,
+  "Çekmeköy": 1
+ },
+ "tur": {
+  "Kahvaltı": 16,
+  "Meyhane": 2,
+  "Balık restoranı": 5,
+  "Dönerci": 3,
+  "İtalyan": 3,
+  "Kebapçı / Ocakbaşı": 8,
+  "Steakhouse": 2,
+  "Burger": 4,
+  "Türk mutfağı": 1,
+  "Pideci": 5,
+  "Asya mutfağı": 3,
+  "Pizza": 3,
+  "Mantıcı": 2,
+  "Sushi / Japon": 1
+ },
+ "zincirSube": 10,
+ "v906Eslesen": 1
+}

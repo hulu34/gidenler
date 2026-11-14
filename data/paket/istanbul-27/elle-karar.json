@@ -1,0 +1,25 @@
+{
+ "_aciklama": "Paket 27 elle sınıf kararları (üreticinin başlık/açıklamadan bulduğu tür yanlış olan adaylar).",
+ "kararlar": {
+  "803779fa-43c8-4c22-8110-2d8e782a07b8": {
+   "sinif": "B",
+   "neden": "tür belirsiz: köfteci; 'steakhouse' kalıbı uygun değil (elle, 15.11.2026)"
+  },
+  "59663e62-6885-4f4a-b378-e6e123089149": {
+   "sinif": "B",
+   "neden": "tür belirsiz: köfteci; 'steakhouse' kalıbı uygun değil (elle, 15.11.2026)"
+  },
+  "c787567e-9b67-415e-94da-5c429a417b9e": {
+   "sinif": "B",
+   "neden": "tür belirsiz: adı steakhouse, sitedeki başlık/açıklama 'pizza' diyor (elle, 15.11.2026)"
+  },
+  "96256bd7-e47e-44f6-8806-49f6801f1b48": {
+   "sinif": "B",
+   "neden": "güçlü mükerrer şüphesi: Production'daki ali-ocakbasi-kadikoy ile aynı bina adresi (6 m); ayrı işletme olduğu sahip kararıyla teyit edilmeli (15.11.2026)"
+  },
+  "8ae7db44-d4c6-424e-8275-bfd678dbc101": {
+   "sinif": "B",
+   "neden": "güçlü mükerrer şüphesi: Production'daki ali-ocakbasi-kadikoy ile aynı bina adresi (6 m); ayrı işletme olduğu sahip kararıyla teyit edilmeli (15.11.2026)"
+  }
+ }
+}

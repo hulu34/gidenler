@@ -1,0 +1,50 @@
+{
+ "_aciklama": "Paket 22 elle kararlar (2026-11-12): restoran olmayan ya da kapsam dışı işletmeler → C.",
+ "kararlar": {
+  "53a4d116-7aa9-4478-8c91-99b8b343e82e": {
+   "ad": "Gazzella",
+   "sinif": "C",
+   "neden": "ev aletleri firması sitesi; restoran değil"
+  },
+  "ade9550e-e049-4855-89c0-3ca68cfa4cb4": {
+   "ad": "Gazi çiğköfte",
+   "sinif": "C",
+   "neden": "çiğ köfteci; kapsam dışı"
+  },
+  "8fe8f053-7d04-4272-8d54-e83c5289c869": {
+   "ad": "AİLE DİŞ Kartal Şubesi",
+   "sinif": "C",
+   "neden": "diş kliniği sitesi; restoran değil"
+  },
+  "b59c81f6-f457-4b67-9077-19715ff39228": {
+   "ad": "Ciğerci Çengelköy",
+   "sinif": "C",
+   "neden": "site başka bir firmaya (akvaryum) ait; resmî site değil"
+  },
+  "f12bad82-69fa-4c5a-a723-4b7a3d9bcca6": {
+   "ad": "Bahçe Büfe Beylikdüzü",
+   "sinif": "C",
+   "neden": "büfe; restoran kapsamı dışı"
+  },
+  "0ef3e9d5-2f65-4b83-a763-cca8e49fab55": {
+   "ad": "Mangalcı Et",
+   "sinif": "C",
+   "neden": "kasap / et satışı; restoran değil"
+  },
+  "c383b502-2995-4e9e-8066-95ac8a53f652": {
+   "ad": "Sultana's Dinner and Belly Dancing Show",
+   "sinif": "C",
+   "neden": "akşam yemekli gösteri mekânı; restoran kapsamı dışı"
+  },
+  "80a56a07-79fc-4fea-a40c-8c3c47d558fe": {
+   "ad": "Procans 4x4",
+   "sinif": "C",
+   "neden": "otomotiv ekipman üreticisi; restoran değil"
+  },
+  "a6e43a54-10e4-4bf4-9a9c-9706a70c930c": {
+   "ad": "Süslü Konak",
+   "sinif": "C",
+   "neden": "düğün ve organizasyon salonu; restoran değil"
+  }
+ }
+}

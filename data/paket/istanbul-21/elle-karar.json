@@ -1,0 +1,150 @@
+{
+ "_aciklama": "Paket 21 elle kararlar (2026-11-12): restoran olmayan ya da kapsam dışı işletmeler (çiğ köfte, börek, pastane, tatlıcı, bar, catering, gıda üreticisi, ilgisiz siteler) → C.",
+ "kararlar": {
+  "aa206423-66ab-4e4b-b9e4-9a97c0e4bb14": {
+   "ad": "Çiğ Köfteci Sırrı Usta",
+   "sinif": "C",
+   "neden": "çiğ köfteci; kapsam dışı"
+  },
+  "c712f1f7-8801-42c8-96a3-d6864393e587": {
+   "ad": "Çiğköfteci Sait",
+   "sinif": "C",
+   "neden": "çiğ köfteci; kapsam dışı"
+  },
+  "3129d214-382c-49be-9e68-a8277cc9627f": {
+   "ad": "Bereket Yufka",
+   "sinif": "C",
+   "neden": "yufka ve unlu mamul üreticisi; restoran değil"
+  },
+  "1347675c-21bd-4695-80c7-7266df721496": {
+   "ad": "Ramazan Bingöl Geleneksel Lezzetler",
+   "sinif": "C",
+   "neden": "yöresel ürün satışı; restoran değil"
+  },
+  "017257b0-0c2b-4838-919e-d8f7dac7be5a": {
+   "ad": "Rasyo Catering",
+   "sinif": "C",
+   "neden": "catering firması; restoran değil"
+  },
+  "809a0746-1c7d-47b5-aeaa-d745e9b10dcd": {
+   "ad": "İstanbul e-Hırdavat",
+   "sinif": "C",
+   "neden": "hırdavat sitesi; restoran değil"
+  },
+  "4a990895-dbc0-4116-993f-1ed28f65d207": {
+   "ad": "Milkport",
+   "sinif": "C",
+   "neden": "süt ürünleri firması; restoran değil"
+  },
+  "efd805dd-d346-4bea-991f-02f0e4657917": {
+   "ad": "Ali Baba",
+   "sinif": "C",
+   "neden": "e-ticaret sitesi; resmî site değil"
+  },
+  "9247c4a0-4816-436e-a17a-eeede1f2c4ad": {
+   "ad": "Tatpita",
+   "sinif": "C",
+   "neden": "börekçi; restoran kapsamı dışı"
+  },
+  "e1abe5a3-0a42-49d3-8d1d-8855a29b183c": {
+   "ad": "Çekmeköy",
+   "sinif": "C",
+   "neden": "belediye sitesi; resmî site değil"
+  },
+  "a3711f0e-5f7d-4bc7-940a-3ecdd7b5f896": {
+   "ad": "Loşşş Sahne Cabaret",
+   "sinif": "C",
+   "neden": "kabare / canlı müzik mekânı; restoran kapsamı dışı"
+  },
+  "dab9a70e-7dcd-41a0-a27e-39de9187452b": {
+   "ad": "Paket Mutfak",
+   "sinif": "C",
+   "neden": "paket servis mutfağı (çok markalı); restoran değil"
+  },
+  "004ba742-b39a-4d41-8bf4-0d87a3dbc345": {
+   "ad": "Yörük Ana",
+   "sinif": "C",
+   "neden": "gıda üreticisi; restoran değil"
+  },
+  "0a40a3fa-8578-40fd-ac77-771d748144fd": {
+   "ad": "Mr. Lezzetleri",
+   "sinif": "C",
+   "neden": "çiğ köfteci; kapsam dışı"
+  },
+  "23978c0d-b197-4d93-b560-3693ad0a1fb2": {
+   "ad": "Balparmak",
+   "sinif": "C",
+   "neden": "bal üreticisi; restoran değil"
+  },
+  "2cbb84a0-513c-45ad-9457-c70f359624a9": {
+   "ad": "Rosa Giardino",
+   "sinif": "C",
+   "neden": "kır düğünü bahçesi; restoran değil"
+  },
+  "bd80e7e4-6673-47a7-adf6-80e66bae06ac": {
+   "ad": "Flamingo Köy",
+   "sinif": "C",
+   "neden": "köy / piknik tesisi; restoran değil"
+  },
+  "f25e3b32-309e-4039-9edd-3bde272dd4ab": {
+   "ad": "Velioğlu Cam Tavan Sistemleri",
+   "sinif": "C",
+   "neden": "cam tavan firması; restoran değil"
+  },
+  "97b1cb68-37a1-4707-9743-6b10d07543a6": {
+   "ad": "Saka Su Etiler Yektili Bayii APC GIDA",
+   "sinif": "C",
+   "neden": "su bayisi; restoran değil"
+  },
+  "6fb70b31-2d6a-4cb6-aeab-6ef8799aa602": {
+   "ad": "Dilek Pastanesi Fabrika",
+   "sinif": "C",
+   "neden": "pastane; restoran kapsamı dışı"
+  },
+  "1867926a-d21b-40c6-9814-5d8b74a3328e": {
+   "ad": "Kurumsalkiraci.com",
+   "sinif": "C",
+   "neden": "kiralama firması; restoran değil"
+  },
+  "1e6f0513-5575-49fe-ac6f-4de41add2321": {
+   "ad": "Diyette Kal",
+   "sinif": "C",
+   "neden": "diyet beslenme hizmeti; restoran değil"
+  },
+  "dfa925b8-4058-4bf5-81aa-8493e7647365": {
+   "ad": "Kakao Gıda",
+   "sinif": "C",
+   "neden": "otomat ve catering firması; restoran değil"
+  },
+  "cef0e307-016e-4c8f-9729-a20539aad658": {
+   "ad": "Manifest Roof",
+   "sinif": "C",
+   "neden": "rooftop bar; bar kapsam dışı"
+  },
+  "f7a76a2b-bbd7-452d-9c46-1b451f93bbc2": {
+   "ad": "Seç-Al Kadıköy Şubesi",
+   "sinif": "C",
+   "neden": "kuruyemiş satışı; restoran değil"
+  },
+  "27b13cdd-b17e-4ab7-8dc9-073428e3ad2f": {
+   "ad": "Hatay Asi Künefe & Kebap",
+   "sinif": "C",
+   "neden": "künefeci (tatlıcı); restoran kapsamı dışı"
+  },
+  "3c7cdf8f-ca3b-4cbb-b3a3-06ae394a62bf": {
+   "ad": "Naia İstanbul",
+   "sinif": "C",
+   "neden": "giyim markası sitesi; restoran değil"
+  },
+  "7af35de9-696c-4695-8335-e2b37cd4cdc7": {
+   "ad": "Xxl waffle & croıssant",
+   "sinif": "C",
+   "neden": "waffle ve kruvasan dükkânı; restoran kapsamı dışı"
+  },
+  "ecc2df9a-76b4-49eb-b7fc-30567abdd695": {
+   "ad": "Döner Üreticileri Derneği",
+   "sinif": "C",
+   "neden": "meslek derneği sitesi; restoran değil"
+  }
+ }
+}

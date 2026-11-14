@@ -1,0 +1,292 @@
+{
+ "_aciklama": "Paket 28 seçiminden A ya da A-konumsuz olamayanlar; her satırda eksik ya da neden.",
+ "kayitlar": [
+  {
+   "gersId": "59d7e5fc-ca60-4161-a223-8cc82d2e8708",
+   "ad": "Kudo Kudo",
+   "ilce": "Bayrampaşa",
+   "site": "https://www.kudokudo.net/",
+   "sinif": "B",
+   "eksik": [
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî site kudokudo.net: ad + sokak + kapı no (https://www.kudokudo.net/)",
+   "osm": "node/6783539312",
+   "puan": 9
+  },
+  {
+   "gersId": "a4280139-2e4f-464e-be8f-c9cb5e4ab00c",
+   "ad": "Ciğerci Dr Doğan",
+   "ilce": "Pendik",
+   "site": "https://www.cigercidrdogan.com/",
+   "sinif": "B",
+   "eksik": [
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî site cigercidrdogan.com: ad + telefon + sokak (https://www.cigercidrdogan.com/)",
+   "osm": "node/13646170752",
+   "puan": 9
+  },
+  {
+   "gersId": "e7398835-8b7a-4730-9b82-b2c2665220d7",
+   "ad": "Kozamesken",
+   "ilce": "Üsküdar",
+   "site": "https://kozamesken.com/",
+   "sinif": "B",
+   "eksik": [
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî site kozamesken.com: ad + telefon + sokak + kapı no (https://kozamesken.com/iletisim/)",
+   "osm": null,
+   "puan": 7
+  },
+  {
+   "gersId": "098a9371-6d37-443b-ad4c-fffaa57abe5c",
+   "ad": "MİLA Balık (Samatya)",
+   "ilce": "Fatih",
+   "site": "https://milabalik.com/",
+   "sinif": "B",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site milabalik.com: ad + telefon + sokak (https://milabalik.com/iletisim-ve-konum/)",
+   "osm": null,
+   "puan": 7
+  },
+  {
+   "gersId": "133d1150-b568-4c45-a235-78ce32cdcd58",
+   "ad": "Huzur Restaurant",
+   "ilce": "Beyoğlu",
+   "site": "https://www.tarihicicekpasaji.com/restoranlar.html",
+   "sinif": "B",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site tarihicicekpasaji.com: ad + sokak (https://www.tarihicicekpasaji.com/restoranlar.html)",
+   "osm": null,
+   "puan": 4
+  },
+  {
+   "gersId": "f96c5e0d-ad48-484e-b5c3-df7d60721f8b",
+   "ad": "Oz Malatya Kebap Salonu",
+   "ilce": "Fatih",
+   "site": "https://www.firsatbufirsat.com/mekan/sun-rise-restaurant-kaya-ramada-plaza?pid=409&aid=522",
+   "sinif": "C",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"doner_kebab_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [
+    "zincir: şube düzeyinde telefon/kapı no eşleşmesi yok"
+   ],
+   "kimlik": "resmî şube sayfası fbf.bz: ad + sokak (https://www.firsatbufirsat.com/firsatlar/c/istanbul)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "6e93a68f-d3d0-4615-936f-51e393519195",
+   "ad": "Doyuyo",
+   "ilce": "Pendik",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: doyuyo-esenyurt"
+   ]
+  },
+  {
+   "gersId": "fbee3240-9675-45e7-a9e1-5d3c88d9fcf2",
+   "ad": "Köz Kanat Ataşehir",
+   "ilce": "Ataşehir",
+   "site": "https://kozkanat.com/",
+   "sinif": "B",
+   "eksik": [
+    "adres resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî şube sayfası kozkanat.com: ad + telefon (https://kozkanat.com/)",
+   "osm": "way/866661195",
+   "puan": 3
+  },
+  {
+   "gersId": "a263652a-fd62-4290-a280-0092a353d9b0",
+   "ad": "Dürümle",
+   "ilce": "Bakırköy",
+   "site": "https://www.durumle.com/",
+   "sinif": "B",
+   "eksik": [
+    "adres resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî şube sayfası durumle.com: ad + telefon (https://www.durumle.com/iletisim)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "04900482-8a4e-4e03-bb2d-9a791fdfa442",
+   "ad": "Dürümle",
+   "ilce": "Arnavutköy",
+   "site": "https://www.durumle.com/",
+   "sinif": "B",
+   "eksik": [
+    "adres resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî şube sayfası durumle.com: ad + telefon (https://www.durumle.com/iletisim)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "83750da5-2e7e-463d-a930-bcea937c1db1",
+   "ad": "Bread's",
+   "ilce": "Bakırköy",
+   "site": "https://www.firsatbufirsat.com/mekan/sun-rise-restaurant-kaya-ramada-plaza?pid=409&aid=522",
+   "sinif": "C",
+   "eksik": [
+    "kaynaklı tür yok"
+   ],
+   "neden": [
+    "zincir: şube düzeyinde telefon/kapı no eşleşmesi yok"
+   ],
+   "kimlik": "resmî şube sayfası fbf.bz: ad + sokak (https://www.firsatbufirsat.com/firsatlar/c/istanbul)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "7935bb77-2ce7-4684-8d47-698704acac8f",
+   "ad": "Urla Balıkçısı",
+   "ilce": "Ataşehir",
+   "site": "https://www.lezzetarasimutfak.com/",
+   "sinif": "B",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî şube sayfası lezzetarasimutfak.com: ad + sokak + kapı no (https://www.lezzetarasimutfak.com/bulut-mutfak/)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "52544a0c-3441-4481-9176-8d945f0023e7",
+   "ad": "Burger Four",
+   "ilce": "Bakırköy",
+   "site": "https://www.lezzetarasimutfak.com/",
+   "sinif": "C",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [
+    "zincir: şube düzeyinde telefon/kapı no eşleşmesi yok"
+   ],
+   "kimlik": "resmî şube sayfası lezzetarasimutfak.com: ad + sokak (https://www.lezzetarasimutfak.com/bulut-mutfak/)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "5ae51c4f-a6c2-492a-a081-995df0c36e82",
+   "ad": "Urla Balıkçısı",
+   "ilce": "Bakırköy",
+   "site": "https://www.lezzetarasimutfak.com/",
+   "sinif": "C",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [
+    "zincir: şube düzeyinde telefon/kapı no eşleşmesi yok"
+   ],
+   "kimlik": "resmî şube sayfası lezzetarasimutfak.com: ad + sokak (https://www.lezzetarasimutfak.com/bulut-mutfak/)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "5cb81fe3-c21e-41d4-847c-c41cdef26ab3",
+   "ad": "Faruk Güllüoğlu",
+   "ilce": "Eyüpsultan",
+   "site": "https://www.farukgullu.com.tr/",
+   "sinif": "C",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [
+    "zincir: şube düzeyinde telefon/kapı no eşleşmesi yok"
+   ],
+   "kimlik": "resmî şube sayfası farukgulluoglu.com.tr: ad + sokak (https://www.farukgullu.com.tr/magaza)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "81370f7f-05b9-4874-92af-2ec6172c2aa3",
+   "ad": "Gaziantep Arzu 1 Kebap Salonu",
+   "ilce": "Şişli",
+   "site": "https://www.firsatbufirsat.com/mekan/sun-rise-restaurant-kaya-ramada-plaza?pid=409&aid=522",
+   "sinif": "C",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [
+    "zincir: şube düzeyinde telefon/kapı no eşleşmesi yok"
+   ],
+   "kimlik": "resmî şube sayfası fbf.bz: ad + sokak (https://www.firsatbufirsat.com/firsatlar/c/istanbul)",
+   "osm": null,
+   "puan": 3
+  },
+  {
+   "gersId": "4cec6b69-873c-467d-9f5d-cc569c0dd4da",
+   "ad": "Dürümle",
+   "ilce": "Sarıyer",
+   "site": "https://www.durumle.com/",
+   "sinif": "B",
+   "eksik": [
+    "adres resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî şube sayfası durumle.com: ad + telefon (https://www.durumle.com/iletisim)",
+   "osm": null,
+   "puan": 2
+  },
+  {
+   "gersId": "f5b40b69-ea2f-48b8-a698-4222c4d65bc9",
+   "ad": "Doyuyo",
+   "ilce": "Beşiktaş",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: doyuyo-esenyurt"
+   ]
+  },
+  {
+   "gersId": "3cf9a893-fec7-4710-b22b-eba979af538a",
+   "ad": "Doyuyo! Mecidiyeköy Cadde",
+   "ilce": "Şişli",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: doyuyo-esenyurt"
+   ]
+  },
+  {
+   "gersId": "56362dd8-356b-42b0-9435-0dfbf11dd28c",
+   "ad": "Faruk Güllüoğlu",
+   "ilce": "Şişli",
+   "site": "https://www.farukgullu.com.tr/",
+   "sinif": "B",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî şube sayfası farukgulluoglu.com.tr: ad + telefon + sokak (https://www.farukgullu.com.tr/magaza)",
+   "osm": null,
+   "puan": 2
+  }
+ ]
+}

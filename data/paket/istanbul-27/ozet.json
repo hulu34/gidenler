@@ -1,0 +1,79 @@
+{
+ "dalga": 27,
+ "A": 53,
+ "sinif": {
+  "A": 16,
+  "A-konumsuz": 37
+ },
+ "osmKaydi": 16,
+ "isletmeKaydi": 37,
+ "uygunAday": 399,
+ "secilen": 325,
+ "onEleme": {
+  "kanitsiz": 0,
+  "spamPark": 0,
+  "kafeBar": 83,
+  "acilmadi": 0
+ },
+ "inceleme": {
+  "B": 220,
+  "çakışma": 27,
+  "C": 25
+ },
+ "incelemeNeden": {
+  "adres resmî kaynakta doğrulanmadı": 59,
+  "kapı numarası resmî kaynakta doğrulanmadı": 92,
+  "kaynaklı tür yok": 88,
+  "tür yalnız Overture kategorisinde": 90,
+  "ilçe resmî sitede geçmiyor": 9,
+  "tür belirsiz": 7,
+  "mevcut kayıtla eşleşiyor": 10,
+  "paket içinde aynı işletme": 16,
+  "zincir": 25,
+  "resmî site yalnız http": 1,
+  "slug çakışması": 1,
+  "güçlü mükerrer şüphesi": 1
+ },
+ "turKaynagi": {
+  "resmî site": 51,
+  "OSM": 2
+ },
+ "ilce": {
+  "Beşiktaş": 10,
+  "Sarıyer": 1,
+  "Kadıköy": 11,
+  "Fatih": 5,
+  "Şişli": 8,
+  "Beyoğlu": 3,
+  "Bağcılar": 1,
+  "Başakşehir": 1,
+  "Eyüpsultan": 1,
+  "Büyükçekmece": 1,
+  "Ataşehir": 1,
+  "Üsküdar": 2,
+  "Silivri": 1,
+  "Çatalca": 1,
+  "Küçükçekmece": 2,
+  "Bakırköy": 2,
+  "Esenyurt": 1,
+  "Arnavutköy": 1
+ },
+ "tur": {
+  "Kebapçı / Ocakbaşı": 8,
+  "Balık restoranı": 2,
+  "Kahvaltı": 3,
+  "Dönerci": 7,
+  "Türk mutfağı": 6,
+  "Pizza": 7,
+  "Sushi / Japon": 3,
+  "Lokanta": 2,
+  "Burger": 6,
+  "Mantıcı": 2,
+  "Steakhouse": 1,
+  "İtalyan": 4,
+  "Asya mutfağı": 1,
+  "Pideci": 1
+ },
+ "zincirSube": 27,
+ "v906Eslesen": 4
+}

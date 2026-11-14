@@ -1,0 +1,347 @@
+{
+ "_aciklama": "İstanbul Overture keşif paketi (dalga 25). Aday Overture Maps Places'ten (© Overture Maps Foundation; kaynak başına lisans: Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0); kimlik, faaliyet, adres ve tür restoranın resmî sitesinden ölçüldü (sayfa içeriği saklanmadı). Koordinat yalnız OSM restoran kaydından (© OpenStreetMap katkıcıları, ODbL); OSM'si olmayanlar A-konumsuz. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json. Google verisi yok.",
+ "kontrolTarihi": "2026-11-14",
+ "eklenen": [
+  {
+   "slug": "flamingo-koy-catalca",
+   "ref": "isletme/flamingo-koy-catalca",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Flamingo Köy",
+   "ilce": "Çatalca",
+   "adres": "Cevizlik Sk No:43, Çatalca",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahvaltı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site flamingokoy.com: ad + telefon + sokak + kapı no (https://flamingokoy.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://flamingokoy.com/; adres metni Overture)",
+    "tür: resmî site (https://flamingokoy.com/): “Köy’e Hoş Geldiniz — Flamingo Köy Açık Büfe Kahvaltı Haftai İçi: 09:30 – 18:00 Arası Sınırsız Serpme Kahvaltı” · Kahvaltı 48 eşleşme, sonraki Balık restoranı 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://flamingokoy.com/",
+    "overture:8ca1d861-0497-4c2e-8019-f6ba4e2c5368"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "akdogan-pasta-ve-kebap-restoran-kucukcekmece",
+   "ref": "isletme/akdogan-pasta-ve-kebap-restoran-kucukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Akdoğan Pasta & Kebap Restoran",
+   "ilce": "Küçükçekmece",
+   "adres": "Zeynebiye Cd No:4, Küçükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site akdoganrestaurant.com: ad + telefon + sokak + kapı no (https://www.akdoganrestaurant.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.akdoganrestaurant.com/; adres metni Overture)",
+    "tür: resmî site (https://www.akdoganrestaurant.com/): “Akdoğan Restoran | İstanbul Küçükçekmece'de Kebap, Döner, Pide & Pizza Halkalı Merkez, Zeynebiye Cd. No:4, 343” · Kebapçı / Ocakbaşı 17 eşleşme (adla uyumlu), en sık Pideci 21 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.akdoganrestaurant.com/",
+    "overture:a832f160-5f32-4aec-af7e-b56daa60cf8e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "haz-kebap-beylikduzu",
+   "ref": "isletme/haz-kebap-beylikduzu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Haz Kebap",
+   "ilce": "Beylikdüzü",
+   "adres": "Beylikdüzü Cd. C Blok No:5, Beylikdüzü",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site hazkebap.com: ad + telefon + sokak (https://www.hazkebap.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.hazkebap.com/; adres metni Overture)",
+    "tür: resmî site (https://www.hazkebap.com/): “Beylikdüzü’nün En İyi Kebapçısı | Haz Kebap - Adana, Urfa, Lahmacun & Izgara Lezzetleri Instagram'da Haz Kebap” · Kebapçı / Ocakbaşı 88 eşleşme, sonraki Pideci 32 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.hazkebap.com/",
+    "overture:599ad644-9195-450f-be57-d90d2646576e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "house-of-medusa-restaurant-fatih",
+   "ref": "node/5108843525",
+   "tip": "osm_kaydi",
+   "ad": "House of Medusa Restaurant",
+   "ilce": "Fatih",
+   "adres": "Yerebatan Cd No:9, Fatih",
+   "koordinat": [
+    41.008764,
+    28.977221
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site medusarestaurant.com: ad + telefon + sokak + kapı no (https://medusarestaurant.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://medusarestaurant.com/; adres metni Overture)",
+    "tür: resmî site (https://medusarestaurant.com/): “Restaurant submits samples from the Ottoman Turkish cuisine predominantly. It is also possible to find many v” · Türk mutfağı 4 eşleşme, sonraki Balık restoranı 0 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5108843525 (Overture noktasına 20 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5108843525",
+    "https://medusarestaurant.com/",
+    "overture:7a466301-a080-4f33-bd42-1f8ba0902267"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "har-kanat-bahcesehir-basaksehir",
+   "ref": "isletme/har-kanat-bahcesehir-basaksehir",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Har Kanat Bahçeşehir",
+   "ilce": "Başakşehir",
+   "adres": "Sanatçilar Sokağı No:2, Başakşehir",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site harkanat.com: ad + telefon + sokak + kapı no (https://harkanat.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://harkanat.com/; adres metni Overture)",
+    "tür: resmî site (https://harkanat.com/): “Kapanış Lezzetlerimizi Keşfedin Meze, et ve kebap çeşitlerimizin tamamını dijital menümüzde inceleyebilirsini” · Kebapçı / Ocakbaşı 3 eşleşme, sonraki Balık restoranı 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://harkanat.com/",
+    "overture:ad8b3aa1-82d0-46f9-b12d-35172fc0d4dc"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "dogakoyu-catalca-catalca",
+   "ref": "isletme/dogakoyu-catalca-catalca",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Doğaköyü Çatalca",
+   "ilce": "Çatalca",
+   "adres": "Cevizlik Sk No:41, Çatalca",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahvaltı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site dogakoyu.com.tr: ad + telefon + sokak + kapı no (https://www.dogakoyu.com.tr/iletisim/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.dogakoyu.com.tr/iletisim/; adres metni Overture)",
+    "tür: resmî site (https://www.dogakoyu.com.tr/): “rayın : 0536 561 4040 İLETİSİM köy havasında kahvaltı ve mangalın en doğal hali İLETİŞİM Doğayla İç İçe, Lezze” · Kahvaltı 5 eşleşme, sonraki Balık restoranı 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.dogakoyu.com.tr/",
+    "overture:8b13c6be-e0b5-4726-a028-5438fdb51448"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "fego-food-beylikduzu",
+   "ref": "isletme/fego-food-beylikduzu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Fego Food",
+   "ilce": "Beylikdüzü",
+   "adres": "Adnan kahveci mahallesi yavuz Sultan Selim bulvarı No:53/A, Beylikdüzü",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Burger",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site fegofood.com.tr: ad + telefon + sokak + kapı no (https://fegofood.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://fegofood.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://fegofood.com.tr/): “z Sizin için seçtiklerimiz Cheeseburger Dana burger köftesi (120 gr.), cheddar peyniri, yeşillik, turşu, özel” · Burger 23 eşleşme, sonraki Dönerci 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://fegofood.com.tr/",
+    "overture:daa47945-c880-4b5b-a98b-c3591406285b"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "bizee-restaurant-kucukcekmece",
+   "ref": "isletme/bizee-restaurant-kucukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Bizee Restaurant",
+   "ilce": "Küçükçekmece",
+   "adres": "241. Sk No:4, Küçükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pideci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site bizee.com.tr: ad + telefon (https://bizee.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://bizee.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://bizee.com.tr/): “Dallas Konfit Konfit Kuzu Kaburga Lamb Ribs Lahmacun Lahmacun Sarımsaklı Lahmacun Garlic lahmacun Kaşarlı Lah” · Pideci 11 eşleşme, sonraki Steakhouse 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://bizee.com.tr/",
+    "overture:9b5b1b5d-e24e-4375-8efd-6014c6e1f7de"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9,
+   "adOverture": "Bizee Restaurant | Lahmacun Kebap Tava"
+  },
+  {
+   "slug": "modena-steak-kebap-fish-house-fatih",
+   "ref": "isletme/modena-steak-kebap-fish-house-fatih",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Modena Steak Kebap Fish House",
+   "ilce": "Fatih",
+   "adres": "Küçük Ayasofya Cd No:46, Fatih",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site turkishsteakhouse.wordpress.com: ad + sokak + kapı no (https://turkishsteakhouse.wordpress.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://turkishsteakhouse.wordpress.com/; adres metni Overture)",
+    "tür: resmî site (https://turkishsteakhouse.wordpress.com/): “New Hagia Sophia Steak Kebap Fish House – Sultanahmet · Yemek Skip to content New Hagia Sophia Steak Kebap Fis” · Kebapçı / Ocakbaşı 5 eşleşme, sonraki Balık restoranı 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://turkishsteakhouse.wordpress.com/",
+    "overture:ae6a5e3b-59a2-406b-92ac-bacbacb512a6"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "tella-kebap-bahcekent-basaksehir",
+   "ref": "isletme/tella-kebap-bahcekent-basaksehir",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Tella Kebap, Bahçekent",
+   "ilce": "Başakşehir",
+   "adres": "Şht. Asteğmen Furkan Işık Blv No:17, Başakşehir",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "tellakebap.com",
+   "sube": "Başakşehir",
+   "kanit": [
+    "resmî şube sayfası tellakebap.com: ad + sokak + kapı no (https://www.tellakebap.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.tellakebap.com/; adres metni Overture)",
+    "tür: resmî site (https://www.tellakebap.com/): “Tella – Gerçek Urfa Kebabı – Odun Ateşinde Lahmacun Ana Sayfa Lezzetlerimiz Hikayemiz Şubelerimiz Galeri İleti” · Kebapçı / Ocakbaşı 40 eşleşme, sonraki Pideci 17 (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.tellakebap.com/",
+    "overture:6f440366-c1a5-47c3-a9ca-c1dca8081986"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "tenedos-gokturk-eyupsultan",
+   "ref": "isletme/tenedos-gokturk-eyupsultan",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Tenedos Göktürk",
+   "ilce": "Eyüpsultan",
+   "adres": "Göktürk Merkez Mh. İstanbul Cd No:28, Eyüpsultan",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site tenedosgokturk.com: ad + telefon + sokak (https://tenedosgokturk.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://tenedosgokturk.com/; adres metni Overture)",
+    "tür: resmî site (https://tenedosgokturk.com/menu): “e Fava Semizotu Ahtapot Söğüş Egeli Patlıcan Levrek Marin Kısır Atom İsli Kuru Cacık Tenedos Ezme Börülce Piya” · Balık restoranı 5 eşleşme, sonraki Steakhouse 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://tenedosgokturk.com/",
+    "overture:dc3ae4c8-808f-446e-ac25-7eaf867c7546"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "the-grungy-kadikoy",
+   "ref": "isletme/the-grungy-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "The Grungy",
+   "ilce": "Kadıköy",
+   "adres": "Ülkü Sk No:1, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Burger",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site thegrungy.com: ad + sokak + kapı no (https://thegrungy.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://thegrungy.com/; adres metni Overture)",
+    "tür: resmî site (https://thegrungy.com/): “l: TR EN Hakkında Ben de birçokları gibi bir burger sevdalısıyım. Candan (karım) ile birlikte seyahat ettiğimi” · Burger 12 eşleşme, sonraki Steakhouse 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://thegrungy.com/",
+    "overture:64f77ef3-e407-4c85-8f18-613ae1d87271"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  }
+ ]
+}

@@ -1,0 +1,633 @@
+{
+ "_aciklama": "İstanbul Overture keşif paketi (dalga 20). Aday Overture Maps Places'ten (© Overture Maps Foundation; kaynak başına lisans: Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0); kimlik, faaliyet, adres ve tür restoranın resmî sitesinden ölçüldü (sayfa içeriği saklanmadı). Koordinat yalnız OSM restoran kaydından (© OpenStreetMap katkıcıları, ODbL); OSM'si olmayanlar A-konumsuz. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json. Google verisi yok.",
+ "kontrolTarihi": "2026-11-12",
+ "eklenen": [
+  {
+   "slug": "kalbur-umraniye",
+   "ref": "node/2514371514",
+   "tip": "osm_kaydi",
+   "ad": "Kalbur Et Kebap",
+   "ilce": "Ümraniye",
+   "adres": "Atabek Sk No:25, Ümraniye",
+   "koordinat": [
+    40.999856,
+    29.143245
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site kalburet.com: ad + telefon + sokak + kapı no (https://www.kalburet.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.kalburet.com/; adres metni Overture)",
+    "tür: OSM cuisine \"regional\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/2514371514 (906 dalındaki kimlik korundu: kalbur-umraniye)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/2514371514",
+    "https://www.kalburet.com/",
+    "overture:0fd8a6d1-eb76-47eb-9782-5ac8e7bc7f1b"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 11,
+   "v906": "kalbur-umraniye"
+  },
+  {
+   "slug": "tadi-bafra-maltepe",
+   "ref": "node/11091867697",
+   "tip": "osm_kaydi",
+   "ad": "Tadı Bafra",
+   "ilce": "Maltepe",
+   "adres": "Bağdat Cad No:328, Maltepe",
+   "koordinat": [
+    40.927364,
+    29.129272
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Pideci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site tadibafra.com: ad + telefon + sokak + kapı no (http://www.tadibafra.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (http://www.tadibafra.com/; adres metni Overture)",
+    "tür: resmî site: \"İstanbul’un en kaliteli pidesi\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/11091867697 (906 dalındaki kimlik korundu: tadi-bafra-maltepe)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11091867697",
+    "http://www.tadibafra.com/",
+    "overture:787f48b6-4aca-4008-a2d8-6c6cf765b292"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 11,
+   "v906": "tadi-bafra-maltepe"
+  },
+  {
+   "slug": "chacha-balik-uskudar",
+   "ref": "node/13084015701",
+   "tip": "osm_kaydi",
+   "ad": "Chacha Balık",
+   "ilce": "Üsküdar",
+   "adres": "Kuleli Caddesi No:47, Üsküdar",
+   "koordinat": [
+    41.054928,
+    29.052074
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site chachabalik.com.tr: ad + telefon + sokak + kapı no (https://www.chachabalik.com.tr/iletisim/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/13084015701 (906 dalındaki kimlik korundu: chacha-balik-uskudar)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13084015701",
+    "https://www.chachabalik.com.tr/",
+    "overture:03e714fc-5a40-4232-bc76-4729fa9f5a5b"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 10,
+   "v906": "chacha-balik-uskudar"
+  },
+  {
+   "slug": "karina-balik-pendik",
+   "ref": "node/12163120241",
+   "tip": "osm_kaydi",
+   "ad": "Karina Balık Restaurant",
+   "ilce": "Pendik",
+   "adres": "Erol Kaya Cd No:193/A, Pendik",
+   "koordinat": [
+    40.877343,
+    29.238399
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site karinabalik.com.tr: ad + telefon + sokak + kapı no (https://karinabalik.com.tr/iletisim/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://karinabalik.com.tr/iletisim/; adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/12163120241 (906 dalındaki kimlik korundu: karina-balik-pendik)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12163120241",
+    "https://karinabalik.com.tr/",
+    "overture:1c4bb420-bb7f-41e5-8821-ed7cd8d3456b"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 10,
+   "v906": "karina-balik-pendik"
+  },
+  {
+   "slug": "senol-kolcuoglu-maltepe",
+   "ref": "node/12742694542",
+   "tip": "osm_kaydi",
+   "ad": "Şenol Kolcuoğlu Restaurant",
+   "ilce": "Maltepe",
+   "adres": "Turgut Özal Blv No:75, Maltepe",
+   "koordinat": [
+    40.940802,
+    29.111386
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site senolkolcuoglu.com: ad + telefon + sokak (https://senolkolcuoglu.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://senolkolcuoglu.com/; adres metni Overture)",
+    "tür: resmî site açıklaması: \"İstanbul’daki ilk metrelik kebabın ev sahibi ... ocakbaşı\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/12742694542 (906 dalındaki kimlik korundu: senol-kolcuoglu-maltepe)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12742694542",
+    "https://senolkolcuoglu.com/",
+    "overture:f7e2161c-6ad1-4c5c-a65a-13c318256192"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 10,
+   "v906": "senol-kolcuoglu-maltepe"
+  },
+  {
+   "slug": "lezafet-kebap-ve-izgara-kartal",
+   "ref": "node/13748897270",
+   "tip": "osm_kaydi",
+   "ad": "Lezafet",
+   "ilce": "Kartal",
+   "adres": "Şeyh Şamil Cd No:15, Kartal",
+   "koordinat": [
+    40.933842,
+    29.214321
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Steakhouse",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site lezafet.com.tr: ad + telefon + sokak + kapı no (https://www.lezafet.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.lezafet.com.tr/; adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Kasap\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/13748897270 (906 dalındaki kimlik korundu: lezafet-kebap-ve-izgara-kartal)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13748897270",
+    "https://www.lezafet.com.tr/",
+    "overture:61d5bf6c-edd7-45ce-b5a2-67bc66fe32a1"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 10,
+   "v906": "lezafet-kebap-ve-izgara-kartal"
+  },
+  {
+   "slug": "filizler-koftecisi-tuzla",
+   "ref": "node/6477203310",
+   "tip": "osm_kaydi",
+   "ad": "Filizler Köftecisi Tuzla",
+   "ilce": "Tuzla",
+   "adres": "Cumhuriyet Caddesi No:135, Tuzla",
+   "koordinat": [
+    40.814833,
+    29.306634
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Köfteci",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "filizler.com",
+   "sube": "Tuzla",
+   "kanit": [
+    "resmî şube sayfası filizler.com: ad + telefon + sokak + kapı no (https://filizler.com/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site açıklaması: \"Köfte, ızgara ve Türk kahvaltısı\" (marka düzeyi)",
+    "konum: OSM restoran kaydı node/6477203310 (906 dalındaki kimlik korundu: filizler-koftecisi-tuzla)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6477203310",
+    "https://filizler.com/",
+    "overture:796b6a77-ea3f-47a9-97e6-88a1cc59eaec"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 9,
+   "v906": "filizler-koftecisi-tuzla"
+  },
+  {
+   "slug": "meat-ve-meet-sisli",
+   "ref": "node/5750197821",
+   "tip": "osm_kaydi",
+   "ad": "Kasap Dursun Meat and Meet",
+   "ilce": "Şişli",
+   "adres": "Silahşör Caddesi No:24, Şişli",
+   "koordinat": [
+    41.057168,
+    28.983987
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Steakhouse",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site meatandmeet.com.tr: ad + telefon + sokak + kapı no (https://www.meatandmeet.com.tr/menu/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site başlığı/açıklaması: \"Kasap\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5750197821 (906 dalındaki kimlik korundu: meat-ve-meet-sisli)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5750197821",
+    "https://www.meatandmeet.com.tr/",
+    "overture:c6288592-25a5-48b6-98fc-f070a972913e"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 9,
+   "v906": "meat-ve-meet-sisli"
+  },
+  {
+   "slug": "babel-ocakbasi-nevizade-beyoglu",
+   "ref": "node/654207749",
+   "tip": "osm_kaydi",
+   "ad": "Babel Ocakbaşı Nevizade",
+   "ilce": "Beyoğlu",
+   "adres": "Kameriye Sk No:5, Beyoğlu",
+   "koordinat": [
+    41.035071,
+    28.977279
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site babelocakbasi.com: ad + telefon + sokak + kapı no (https://www.babelocakbasi.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.babelocakbasi.com/; adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Ocakbaşı\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/654207749 (906 dalındaki kimlik korundu: babel-ocakbasi-nevizade-beyoglu)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/654207749",
+    "https://www.babelocakbasi.com/",
+    "overture:181820b3-08a9-4b3a-b5b0-3f5ee7d2df39"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 9,
+   "v906": "babel-ocakbasi-nevizade-beyoglu"
+  },
+  {
+   "slug": "asitane-fatih",
+   "ref": "node/5113615118",
+   "tip": "osm_kaydi",
+   "ad": "Asitane Restaurant",
+   "ilce": "Fatih",
+   "adres": "Kariye Camii Sokak No:6, Fatih",
+   "koordinat": [
+    41.03087,
+    28.938996
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site asitanerestaurant.com: ad + telefon + sokak + kapı no (https://www.asitanerestaurant.com/iletisim/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: OSM cuisine \"turkish;ottoman\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5113615118 (906 dalındaki kimlik korundu: asitane-fatih)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5113615118",
+    "https://www.asitanerestaurant.com/",
+    "overture:33378f80-9a59-45dc-8562-98b44f6a4ac9"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 9,
+   "v906": "asitane-fatih"
+  },
+  {
+   "slug": "firuzende-beyoglu",
+   "ref": "node/5529400835",
+   "tip": "osm_kaydi",
+   "ad": "Firuzende Galata",
+   "ilce": "Beyoğlu",
+   "adres": "Bereketzade Mahallesi Büyükhendek Caddesi No:5, Beyoğlu",
+   "koordinat": [
+    41.025554,
+    28.974023
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site firuzende.com: ad + telefon (https://firuzende.com/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber)",
+    "tür: OSM cuisine \"turkish\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5529400835 (906 dalındaki kimlik korundu: firuzende-beyoglu)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5529400835",
+    "https://firuzende.com/",
+    "overture:aafcbeb1-f08a-4ea0-af54-08678396aae4"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 8,
+   "v906": "firuzende-beyoglu"
+  },
+  {
+   "slug": "mylos-ayvalik-cunda-mutfagi-kadikoy",
+   "ref": "node/11690027750",
+   "tip": "osm_kaydi",
+   "ad": "Mylos Ayvalik Cunda Mutfagi",
+   "ilce": "Kadıköy",
+   "adres": "Acıbadem Cd. Hukukçular Sitesi Çarşısı Blok No:140/I, Kadıköy",
+   "koordinat": [
+    41.005413,
+    29.046329
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site mylosbalik.com: ad + telefon + sokak (https://mylosbalik.com/)",
+    "adres: resmî sitede schema.org işletme kaydında sokak + kapı no, ilçe adıyla (https://mylosbalik.com/)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/11690027750 (906 dalındaki kimlik korundu: mylos-ayvalik-cunda-mutfagi-kadikoy)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11690027750",
+    "https://mylosbalik.com/",
+    "overture:527a7e75-ab0a-47f8-896a-36ad72784e62"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 8,
+   "v906": "mylos-ayvalik-cunda-mutfagi-kadikoy"
+  },
+  {
+   "slug": "ora-s-steak-ve-burger-uskudar",
+   "ref": "node/13393219583",
+   "tip": "osm_kaydi",
+   "ad": "Ora's Steak and Burgers",
+   "ilce": "Üsküdar",
+   "adres": "Aka Gündüz Sokağı No:22, Üsküdar",
+   "koordinat": [
+    41.022956,
+    29.041231
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Burger",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site orasteakburgers.com: ad + telefon + sokak + kapı no (https://www.orasteakburgers.com/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site başlığı/açıklaması: \"burger\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/13393219583 (906 dalındaki kimlik korundu: ora-s-steak-ve-burger-uskudar)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13393219583",
+    "https://www.orasteakburgers.com/",
+    "overture:603bbf9f-0ca4-454f-82eb-db28b4271611"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 8,
+   "v906": "ora-s-steak-ve-burger-uskudar"
+  },
+  {
+   "slug": "ozgun-kokorec-pendik",
+   "ref": "node/8478454276",
+   "tip": "osm_kaydi",
+   "ad": "Özgün Kokoreç",
+   "ilce": "Pendik",
+   "adres": "Oran Sokak No:3-F, Pendik",
+   "koordinat": [
+    40.913872,
+    29.301335
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kokoreççi",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site ozgunkokorec.com: ad + telefon + sokak + kapı no (https://www.ozgunkokorec.com/iletisim/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site açıklaması: \"kokoreç sektöründe kendini kanıtlamış\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/8478454276 (906 dalındaki kimlik korundu: ozgun-kokorec-pendik)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/8478454276",
+    "https://www.ozgunkokorec.com/",
+    "overture:a1ec060b-e64d-435b-a548-a926daa1d372"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 8,
+   "v906": "ozgun-kokorec-pendik"
+  },
+  {
+   "slug": "burger-sausage-umraniye",
+   "ref": "node/7989103088",
+   "tip": "osm_kaydi",
+   "ad": "Burger&Sausage 200gram",
+   "ilce": "Ümraniye",
+   "adres": "Osmangazi Caddesi No:17A, Ümraniye",
+   "koordinat": [
+    41.006371,
+    29.133734
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Burger",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site 200gramburger.com: ad + telefon + sokak (https://www.200gramburger.com/contactus)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.200gramburger.com/contactus; adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Burger\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/7989103088 (906 dalındaki kimlik korundu: burger-sausage-umraniye)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7989103088",
+    "https://www.200gramburger.com/",
+    "overture:091a36c8-a4ab-4e97-a6ab-65c226542e54"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 8,
+   "v906": "burger-sausage-umraniye"
+  },
+  {
+   "slug": "murat-kebap-kadikoy",
+   "ref": "node/10671810550",
+   "tip": "osm_kaydi",
+   "ad": "Murat Kebap Kadıköy Kebapçı",
+   "ilce": "Kadıköy",
+   "adres": "Ömerpaşa Sokağı No:29, Kadıköy",
+   "koordinat": [
+    40.972494,
+    29.068574
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site muratkebap.dijital.menu: ad + sokak + kapı no (https://muratkebap.dijital.menu/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site başlığı/açıklaması: \"Kebap\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/10671810550 (906 dalındaki kimlik korundu: murat-kebap-kadikoy)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10671810550",
+    "https://muratkebap.dijital.menu/",
+    "overture:04ec7462-6057-4c02-b237-53b02b6ebe06"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 8,
+   "v906": "murat-kebap-kadikoy"
+  },
+  {
+   "slug": "valibey-kebap-ve-kunefe-kadikoy",
+   "ref": "node/10681819243",
+   "tip": "osm_kaydi",
+   "ad": "Valibey Kebap",
+   "ilce": "Kadıköy",
+   "adres": "Bayar Caddesi No:70, Kadıköy",
+   "koordinat": [
+    40.970802,
+    29.099237
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site valibeykebap.com: ad + telefon (http://www.valibeykebap.com/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber)",
+    "tür: resmî site başlığı/açıklaması: \"KEBAP\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/10681819243 (906 dalındaki kimlik korundu: valibey-kebap-ve-kunefe-kadikoy)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10681819243",
+    "http://www.valibeykebap.com/",
+    "overture:bc7eda2d-b993-418d-a792-1482b7121cd0"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 7,
+   "v906": "valibey-kebap-ve-kunefe-kadikoy"
+  },
+  {
+   "slug": "patlican-cafe-ve-ev-yemekleri-kadikoy",
+   "ref": "node/5300905330",
+   "tip": "osm_kaydi",
+   "ad": "Patlican Cafe Ev Yemekleri",
+   "ilce": "Kadıköy",
+   "adres": "Sinan Ercan Caddesi No:9, Kadıköy",
+   "koordinat": [
+    40.969844,
+    29.085912
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Lokanta",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site patlicancafe.com: ad + telefon (https://www.patlicancafe.com/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber)",
+    "tür: resmî site başlığı/açıklaması: \"Ev Yemekleri\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5300905330 (906 dalındaki kimlik korundu: patlican-cafe-ve-ev-yemekleri-kadikoy)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5300905330",
+    "https://www.patlicancafe.com/",
+    "overture:09054863-d396-4647-b86c-8c22452605da"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 7,
+   "v906": "patlican-cafe-ve-ev-yemekleri-kadikoy"
+  },
+  {
+   "slug": "vegan-masa-kadikoy",
+   "ref": "node/12673457441",
+   "tip": "osm_kaydi",
+   "ad": "Vegan Masa (Kadıköy)",
+   "ilce": "Kadıköy",
+   "adres": "Vahapbey Sok No:18/A, Kadıköy",
+   "koordinat": [
+    40.991388,
+    29.027682
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site veganmasa.com: ad + telefon + sokak + kapı no (https://www.veganmasa.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.veganmasa.com/; adres metni Overture)",
+    "tür: OSM cuisine \"turkish;lahmacun;pide\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/12673457441 (906 dalındaki kimlik korundu: vegan-masa-kadikoy)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12673457441",
+    "https://www.veganmasa.com/",
+    "overture:be8b5751-be79-4143-9665-f8eadc267978"
+   ],
+   "kontrolTarihi": "2026-11-12",
+   "oncelikPuani": 7,
+   "v906": "vegan-masa-kadikoy"
+  }
+ ]
+}
