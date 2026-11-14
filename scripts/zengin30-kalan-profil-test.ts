@@ -17,7 +17,7 @@ import { openingHoursSpec } from "../lib/seo";
 import { parseVideoUrl } from "../lib/media/embed";
 
 type Vid = { id: string; gomulebilir: boolean; ucretliTanitimIsareti: boolean; profilde: boolean; yayin: string | null };
-type Kayit = { slug: string; profil: string; durum: string; videolar: Vid[] };
+type Kayit = { slug: string; profil: string; durum: string; kontrol: string; videolar: Vid[] };
 const ENV = JSON.parse(readFileSync("data/katalog/zengin-30-kalan/envanter.json", "utf8")) as { restoranlar: Kayit[] };
 const YAPILDI = ENV.restoranlar.filter((r) => r.profil === "yapildi");
 /* PR #39 (14 profil + 3 adres), PR #40 (12 profil) ve Menemen bu paketin dışında */
@@ -43,7 +43,7 @@ function denetle(slug: string, raw: Record<string, unknown>, kayit: Kayit): stri
   if (input.slug !== slug) e.push("slug dosya adıyla aynı değil");
   if (typeof _kaynak_notu !== "string" || _kaynak_notu.length < 40) e.push("kaynak notu yok");
   const alanlar = [...SINGLE.map((k) => input[k]), ...(input.notes ?? []), input.amenities, input.menu].filter(Boolean) as { provider: string; checkedAt: string; url: string }[];
-  if (!alanlar.every((f) => f.provider === "official_site" && f.checkedAt === "2026-11-13")) e.push("resmî site dışı kaynak ya da farklı kontrol tarihi");
+  if (!alanlar.every((f) => f.provider === "official_site" && f.checkedAt === kayit.kontrol)) e.push("resmî site dışı kaynak ya da envanterdekinden farklı kontrol tarihi");
   const kat = realVenueRecords.find((v) => v.slug === slug);
   const izinli = new Set([kat?.website && host(kat.website), input.website && host(input.website.value)].filter(Boolean));
   const yabanci = alanlar.filter((f) => !izinli.has(host(f.url))).map((f) => host(f.url));
@@ -73,7 +73,8 @@ function denetle(slug: string, raw: Record<string, unknown>, kayit: Kayit): stri
 
 async function main() {
   ok("envanter 18 farklı restoran", ENV.restoranlar.length === 18 && new Set(ENV.restoranlar.map((r) => r.slug)).size === 18);
-  ok("en az 8 yeni profil", YAPILDI.length >= 8, YAPILDI.length);
+  ok("en az 9 yeni profil (8 + Matbah)", YAPILDI.length >= 9, YAPILDI.length);
+  ok("kontrol tarihleri 13 ya da 14.11.2026", YAPILDI.every((r) => r.kontrol === "2026-11-13" || r.kontrol === "2026-11-14"));
   ok("PR #39, PR #40 ve Menemen kayıtları bu pakette yok", ENV.restoranlar.every((r) => !DISARIDA.includes(r.slug)));
   ok("profil dosyası olan her restoran 'yapildi' işaretli", ENV.restoranlar.every((r) => r.profil === "yapildi" || !existsSync(`content/profiles/${r.slug}.json`)));
   ok("riskli kayıtların profili açılmadı", ENV.restoranlar.every((r) => r.durum !== "riskli" || r.profil !== "yapildi"));

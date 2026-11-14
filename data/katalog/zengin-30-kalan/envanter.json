@@ -2,18 +2,18 @@
  "_aciklama": "PR #40 envanterindeki 30 restorandan profili açılmamış 18'inin yeniden araştırması (13.11.2026). Yalnız resmî kaynaklar profile girdi; üçüncü taraf bilgi yalnız bu envanterde, 'doğrulanmadı' notuyla. Google verisi, kullanıcı yorumu ve puan kullanılmadı. Fotoğraf eklenmedi.",
  "ozet": {
   "restoran": 18,
-  "profilYapildi": 8,
+  "profilYapildi": 9,
   "durum": {
-   "tamamlandi": 4,
-   "kismi": 6,
+   "tamamlandi": 5,
+   "kismi": 5,
    "kanit_bekliyor": 1,
    "riskli": 7
   },
-  "menuEklenen": 5,
-  "menuKalemi": 429,
-  "fiyatliKalem": 219,
+  "menuEklenen": 6,
+  "menuKalemi": 454,
+  "fiyatliKalem": 244,
   "videoKontrol": 40,
-  "videoProfilde": 7
+  "videoProfilde": 8
  },
  "restoranlar": [
   {
@@ -586,18 +586,22 @@
    "slug": "matbah-fatih",
    "ad": "Matbah",
    "ilce": "Fatih",
-   "kontrol": "2026-11-13",
-   "durum": "kismi",
+   "kontrol": "2026-11-14",
+   "durum": "tamamlandi",
    "faaliyet": "Resmî site yayında (2026 telif); menü PDF'leri Mayıs 2026 tarihli.",
    "sube": "Caferiye Sok. No:6/1, Ottoman Hotel Imperial — katalogla aynı.",
-   "site": "matbahrestaurant.com (komut satırına bağlantı hatası; tarayıcıda açıldı)",
-   "instagram": "Doğrulanmadı",
+   "site": "matbahrestaurant.com (14.11.2026 komut satırından da açıldı)",
+   "instagram": "Yalnız PDF'te adıyla (MatbahRestaurant); alana yazılmadı",
    "saat": "Sitede yok",
    "rezervasyon": "Sitede rezervasyon sayfası (form)",
-   "menu": "Alakart ve tadım PDF'leri (5 MB ve 3 MB, görsel) bu turda okunamadı",
+   "menu": "Alakart PDF (2026 Summer Menu, dosya 16.05.2026): 6 bölüm, 25 kalem, hepsi fiyatlı; görüntüye çevrilerek okundu",
    "kurallar": [],
-   "profil": "yapilmadi",
-   "menuOzet": null,
+   "profil": "yapildi",
+   "menuOzet": {
+    "bolum": 6,
+    "kalem": 25,
+    "fiyatli": 25
+   },
    "videolar": [
     {
      "id": "JKhLhL0X8IM",
@@ -609,7 +613,7 @@
      "gomulebilir": true,
      "ucretliTanitimIsareti": false,
      "sureSn": 704,
-     "profilde": false
+     "profilde": true
     },
     {
      "id": "eD4GlDO3oBo",

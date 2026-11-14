@@ -70,3 +70,22 @@ Kanıt: `data/katalog/zengin-30-kalan/envanter.json`. Restoran başına şunlar�
 ## Codex'e
 - **Uygulama:** profiller DB'ye uygulanmadı. `profile-apply` ile uygulanır; videolar aynı istekte eklenir.
 - **Yanyalı Fehmi'nin web alanı:** profil `website` alanını `fehmilokantasi.com` yerine `yanyalifehmi.com` yapıyor. Kanıtı: http yönlendirmesi ve sitedeki aynı adres ile telefon.
+
+## 14 Kasım 2026 eki (güncel Production c0af498 üzerine yeniden kuruldu)
+
+Bu dal, eski `profil/zengin-30-kalan` (taban 2031408) dalının iki commit'inin c0af498 üzerine aynen taşınmış hâlidir; PR #39/#40 içerikleri yeniden hazırlanmadı.
+
+**Yeni profil (9.):** Matbah (Sultanahmet, Ottoman Hotel Imperial). Resmî sitenin alakart PDF'i ("2026 Summer Menu", dosya 16.05.2026) görüntüye çevrilerek okundu: 6 bölüm, 25 kalem, hepsi fiyatlı. Menünün yaz menüsü başlıklı olduğu notta açıkça yazıyor. Adres alanı yazılmadı (katalogdaki adres resmî siteyle aynı). Video: Travelling Foodie (Aralık 2023).
+
+**Yayındaki PR #40 profillerine tamamlayıcı menüler:**
+
+| Profil | Menü | Kaynak | Tarih |
+|---|---|---|---|
+| Alaf | 5 bölüm, 19 kalem, fiyatlı (tadım 7.900 ₺, eşleşmeler 4.900 ₺) | Sitenin Menü sayfası; PDF'ler sitenin dosya sunucusunda (irp.cdn-website.com) | 13.11 okundu, 14.11 etag ile değişmediği doğrulandı |
+| Kanaat Lokantası | 10 bölüm, 153 kalem, fiyatlı | Sitenin "güncel menü" bağlantısındaki tas.ink dijital menüsü (herkese açık menü dosyası) | 13.11 okundu, 14.11 bayt bayt aynı |
+
+Notlar aynı gün tarihli tutuldu: `readProfile` yalnız ilk notla aynı `checkedAt` gününe sahip notları okuyor (farklı tarihli not Production'da sessizce görünmez). Bu kural Codex'e ayrıca bildirildi.
+
+**Profil yapılmayanlar (değişmedi):** Sıralı (adres No:79/74 çelişkisi), Karaköy Lokantası (resmî site boş kabuk), Hünkar (iki alan adı da güvenilmez), Kör Agop (şube doğrulanamadı), Develi Samatya (yalnız 2018 menüsü), Kalpazankaya (TLS hatası, aşılmadı), Dodo Balık ve Doğa Cafe (alan adı çözümlenmiyor), Pelikan (adres/telefon çelişkisi, düzeltme önerisi ayrı). Resmî sitenin kapalı olması işletmenin kapandığına kanıt sayılmadı; hiçbirine kapanış işareti konmadı.
+
+Test: `npx tsx scripts/zengin30-kalan-profil-test.ts` 156/156; `npx tsx scripts/zengin30-profil-test.ts` 279/279 (Kanaat'ın dijital menü alan adı ve kalan-18 profilleri için açık istisna listesiyle).

@@ -1,6 +1,6 @@
 {
  "slug": "kanaat-lokantasi-uskudar",
- "_kaynak_notu": "Kaynak: resmî site kanaatlokantasi.com.tr (ana sayfa, Hakkımızda ve SSS, Menü; 13.11.2026). Menü eklenmedi: sitenin 'güncel menü' bağlantısı tas.ink üzerindeki dijital menüye gidiyor; sayfa tarayıcıda da boş açıldı (içerik yüklenmedi). Sitede öne çıkarılan yemekler not olarak yazıldı. Telefon katalogda yoktu, siteden ilk numara eklendi. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; ikisi de Üsküdar'daki lokantada (işletmeye göre başka şube yok). Simge İşmen videosundaki fiyatlar 2023 tarihli. Google verisi ve fotoğraf yok.",
+ "_kaynak_notu": "Kaynak: resmî site kanaatlokantasi.com.tr (ana sayfa, Hakkımızda ve SSS, Menü; 13.11.2026). Menü (tamamlayıcı güncelleme; 13.11.2026 okundu, 14.11.2026 yeniden kontrol): sitenin Menü sayfasındaki 'güncel menü' bağlantısı işletmenin tas.ink dijital menüsüne gidiyor; içerik platformun herkese açık menü dosyasından okundu (sunucu kaydı 04.11.2026, 13 ve 14.11.2026'da bayt bayt aynı). Gizli işaretli kalemler, içecekler, kiloluk ve paket ürünler ile kalori bilgileri alınmadı; validFrom yazılmadı. Sitede öne çıkarılan yemekler not olarak yazıldı. Telefon katalogda yoktu, siteden ilk numara eklendi. Videolar: oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; ikisi de Üsküdar'daki lokantada (işletmeye göre başka şube yok). Simge İşmen videosundaki fiyatlar 2023 tarihli. Google verisi ve fotoğraf yok.",
  "description": {
   "value": "Üsküdar'da Selmani Pak Caddesi'nde esnaf lokantası. İşletmeye göre 1933'ten beri Kargılı ailesi tarafından işletiliyor; her gün taze hazırlanan 100–120 çeşit sıcak yemek, zeytinyağlı, sütlü tatlı, dondurma ve yoğurt sunuluyor. Başka şubesi yok.",
   "provider": "official_site",
@@ -49,6 +49,12 @@
    "provider": "official_site",
    "url": "https://www.kanaatlokantasi.com.tr/hakkimizda",
    "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Dijital menüde fiyatların geçerlilik tarihi yazmıyor; menü dosyası 04.11.2026'da güncellenmiş görünüyor. Günün çeşitleri değişebilir.",
+   "provider": "official_site",
+   "url": "https://7abc0ee3-bfdc-497b-91a6-ef20a58bacec.tas.ink/tr/menu/",
+   "checkedAt": "2026-11-13"
   }
  ],
  "amenities": {
@@ -73,5 +79,733 @@
    "category": "influencer",
    "sponsored": false
   }
- ]
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://7abc0ee3-bfdc-497b-91a6-ef20a58bacec.tas.ink/tr/menu/",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Mercimek Çorbası",
+      "priceTry": 180
+     },
+     {
+      "name": "Ezogelin Çorba",
+      "priceTry": 180
+     },
+     {
+      "name": "Terbiyeli İşkembe Çorbası",
+      "description": "Sirke ve sarımsakla servis edilir",
+      "priceTry": 280
+     },
+     {
+      "name": "Kuzu Ayak Paça Çorbası",
+      "description": "Sirke ve sarımsakla servis edilir",
+      "priceTry": 340
+     },
+     {
+      "name": "Yayla Çorbası",
+      "priceTry": 180
+     },
+     {
+      "name": "Domatesli Pirinç Çorbası",
+      "priceTry": 180
+     },
+     {
+      "name": "Tavuk Suyu Şehriye Çorbası",
+      "priceTry": 180
+     }
+    ]
+   },
+   {
+    "title": "Köfteler",
+    "items": [
+     {
+      "name": "Kadınbudu Köfte",
+      "description": "Dana ve Kuzu etinden",
+      "priceTry": 520
+     },
+     {
+      "name": "İzmir Köfte",
+      "description": "Dana ve Kuzu etinden",
+      "priceTry": 520
+     },
+     {
+      "name": "Ankara Köfte",
+      "description": "Dana ve kuzu etinden",
+      "priceTry": 520
+     },
+     {
+      "name": "Ekşili Köfte",
+      "description": "Dana ve kuzu etinden",
+      "priceTry": 520
+     },
+     {
+      "name": "Sebzeli Köfte",
+      "description": "Dana ve kuzu etinden",
+      "priceTry": 520
+     },
+     {
+      "name": "Izgara Köfte",
+      "description": "150 gr, 15-20 dk pişme süresi vardır",
+      "priceTry": 600
+     },
+     {
+      "name": "Mızrak Köfte",
+      "description": "Dana ve kuzu etinden",
+      "priceTry": 520
+     },
+     {
+      "name": "Fırın Köfte",
+      "description": "Dana ve kuzu etinden",
+      "priceTry": 520
+     },
+     {
+      "name": "Dalyan Köfte",
+      "description": "yumurta ve bezelyeli",
+      "priceTry": 520
+     },
+     {
+      "name": "Kayseri Köfte",
+      "description": "Dana ve kuzu etinden, sarımsak içerir",
+      "priceTry": 520
+     }
+    ]
+   },
+   {
+    "title": "Pilav ve Makarnalar",
+    "items": [
+     {
+      "name": "Pilav",
+      "priceTry": 180
+     },
+     {
+      "name": "Bulgur Pilavı",
+      "priceTry": 180
+     },
+     {
+      "name": "İç Pilav",
+      "priceTry": 250
+     },
+     {
+      "name": "Fırın Makarna",
+      "priceTry": 250
+     },
+     {
+      "name": "Zeytinyağlı Patlıcanlı Pilav",
+      "priceTry": 250
+     },
+     {
+      "name": "Tekke Pilavı(Kuzu Etli)",
+      "priceTry": 550
+     },
+     {
+      "name": "Özbek Pilavı",
+      "priceTry": 750
+     },
+     {
+      "name": "Patates Püresi",
+      "priceTry": 320
+     }
+    ]
+   },
+   {
+    "title": "Sıcak Sebze Yemekleri",
+    "items": [
+     {
+      "name": "Kuru Fasulye",
+      "priceTry": 320
+     },
+     {
+      "name": "Nohut",
+      "priceTry": 320
+     },
+     {
+      "name": "Etli Yaprak Sarma",
+      "description": "Dana ve Kuzu etinden imal edilmiştir",
+      "priceTry": 520
+     },
+     {
+      "name": "Patlıcan Musakka",
+      "description": "Dana ve Kuzu etinden imal edilmiştir",
+      "priceTry": 460
+     },
+     {
+      "name": "Ispanak",
+      "priceTry": 320
+     },
+     {
+      "name": "Etli Lahana Sarma",
+      "description": "Dana ve Kuzu etinden imal edilmiştir",
+      "priceTry": 520
+     },
+     {
+      "name": "Kapuska",
+      "priceTry": 320
+     },
+     {
+      "name": "Taze Fasulye",
+      "priceTry": 320
+     },
+     {
+      "name": "Türlü",
+      "priceTry": 320
+     },
+     {
+      "name": "Terbiyeli Kereviz",
+      "priceTry": 320
+     },
+     {
+      "name": "Etli Biber Dolması",
+      "description": "Dana ve Kuzu etinden imal edilmiştir",
+      "priceTry": 520
+     },
+     {
+      "name": "Karnıyarık",
+      "description": "Dana ve Kuzu etinden imal edilmiştir",
+      "priceTry": 460
+     },
+     {
+      "name": "Pırasalı Kereviz",
+      "priceTry": 320
+     },
+     {
+      "name": "Kıymalı Yumurta",
+      "description": "Dana ve Kuzu etinden imal edilmiştir",
+      "priceTry": 460
+     },
+     {
+      "name": "Güveç Türlü",
+      "description": "Dana etinden imal edilmiştir",
+      "priceTry": 380
+     },
+     {
+      "name": "Beğendi(etsiz)",
+      "priceTry": 380
+     },
+     {
+      "name": "Püre",
+      "priceTry": 320
+     }
+    ]
+   },
+   {
+    "title": "Et, Tavuk ve Balık Yemekleri",
+    "items": [
+     {
+      "name": "Hindi İç Pilavlı Kestaneli",
+      "description": "Hindi etinden",
+      "priceTry": 680
+     },
+     {
+      "name": "Sac Kavurma",
+      "description": "Dana etinden",
+      "priceTry": 680
+     },
+     {
+      "name": "Kuzu Haşlama",
+      "description": "Kuzu etinden",
+      "priceTry": 730
+     },
+     {
+      "name": "Tas Kebabı",
+      "description": "Dana etinden",
+      "priceTry": 680
+     },
+     {
+      "name": "Patlıcan Kebabı",
+      "description": "Dana etinden",
+      "priceTry": 680
+     },
+     {
+      "name": "Soğanlı Kebap",
+      "description": "Dana etinden",
+      "priceTry": 680
+     },
+     {
+      "name": "Kuzu Ciğer Sarma",
+      "description": "Kuzu gömlek yağına sarılmıştır",
+      "priceTry": 600
+     },
+     {
+      "name": "Çiftlik Kebabı(kuzu)",
+      "description": "Kuzu etinden",
+      "priceTry": 730
+     },
+     {
+      "name": "Hünkar Beğendi",
+      "description": "Dana etinden patlıcan, eski kaşar peyniri ihtiva eder",
+      "priceTry": 730
+     },
+     {
+      "name": "Elbasan Tava",
+      "description": "Kuzu etinden yoğurt ihtiva eder",
+      "priceTry": 730
+     },
+     {
+      "name": "Kağıt Kebabı",
+      "description": "Dana etinden",
+      "priceTry": 680
+     },
+     {
+      "name": "Mantarlı Tavuk",
+      "description": "Tavuk etinden",
+      "priceTry": 450
+     },
+     {
+      "name": "Kuzu Kapama",
+      "description": "Kuzu etinden",
+      "priceTry": 730
+     },
+     {
+      "name": "Fırın Bonfile",
+      "description": "Dana etinden",
+      "priceTry": 900
+     },
+     {
+      "name": "Kuzu Kaburga Dolması",
+      "description": "Kuzu etinden, kuş üzümlüdür",
+      "priceTry": 900
+     },
+     {
+      "name": "Döner Kebap",
+      "description": "110 gr Kuzu ve dana etinden karışık(kıyma+et)",
+      "priceTry": 580
+     },
+     {
+      "name": "Yoğurtlu Kebap",
+      "description": "110 gr Kuzu ve dana etinden karışık(kıyma+et)",
+      "priceTry": 680
+     },
+     {
+      "name": "Tavuk Kızartma",
+      "description": "Tavuk etinden",
+      "priceTry": 450
+     },
+     {
+      "name": "Kuzu Fırın",
+      "description": "Kuzu etinden",
+      "priceTry": 730
+     },
+     {
+      "name": "Kuzu Keşkek",
+      "description": "Kuzu etinden",
+      "priceTry": 730
+     },
+     {
+      "name": "Kuzu Kızartma",
+      "description": "Kuzu etinden",
+      "priceTry": 730
+     },
+     {
+      "name": "Fırında Tavuk Şiş",
+      "description": "Tavuk etinden",
+      "priceTry": 450
+     },
+     {
+      "name": "Talaş Kebabı",
+      "description": "Kuzu etinden",
+      "priceTry": 730
+     },
+     {
+      "name": "Güveçte Parmak Kebabı",
+      "description": "Çömlekte kuzu etli patlıcanlı",
+      "priceTry": 730
+     },
+     {
+      "name": "Kuzu Tandır",
+      "description": "Kuzu etinden, iç pilavlı kuş üzümlü",
+      "priceTry": 900
+     },
+     {
+      "name": "Çoban Kavurma",
+      "description": "Kuzu etinden kemikli kaburga tarafından",
+      "priceTry": 680
+     },
+     {
+      "name": "Palamut Pilaki",
+      "description": "Balık eti",
+      "priceTry": 730
+     },
+     {
+      "name": "Dana Rosto"
+     }
+    ]
+   },
+   {
+    "title": "Izgaralar",
+    "items": [
+     {
+      "name": "Izgara Köfte",
+      "description": "150 gr Dana ve kuzu etinden",
+      "priceTry": 600
+     },
+     {
+      "name": "Izgara Kuzu Pirzola(2 KALEM)",
+      "description": "15 dakika bekleme süresi vardır",
+      "priceTry": 900
+     },
+     {
+      "name": "Izgara Kuzu Şiş",
+      "description": "15 dakika bekleme süresi vardır",
+      "priceTry": 900
+     },
+     {
+      "name": "Izgara Bonfile",
+      "description": "15 dakika bekleme süresi vardır",
+      "priceTry": 900
+     },
+     {
+      "name": "Karışık Izgara- Mixed Grills-one skewer of lamb, one lamb chops and three meatballs",
+      "description": "Bir şiş kuzu, tek kalem Kuzu Pirzola ve 3 adet ızgara köfteden(dana kuzu karışık) oluşur.One skewer of lamb, one lamb chops and three meatballs",
+      "priceTry": 1260
+     }
+    ]
+   },
+   {
+    "title": "Zeytinyağlılar",
+    "items": [
+     {
+      "name": "Zeytinyağlı Lahana Sarma",
+      "priceTry": 330
+     },
+     {
+      "name": "Barbunya Pilaki",
+      "priceTry": 320
+     },
+     {
+      "name": "Ispanak Kökü",
+      "priceTry": 320
+     },
+     {
+      "name": "Arnavut Ciğeri",
+      "description": "Dana ciğeri",
+      "priceTry": 530
+     },
+     {
+      "name": "Bakla",
+      "priceTry": 320
+     },
+     {
+      "name": "Bamya",
+      "priceTry": 380
+     },
+     {
+      "name": "Çerkez Tavuğu",
+      "priceTry": 320
+     },
+     {
+      "name": "İmambayıldı",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Enginar",
+      "priceTry": 380
+     },
+     {
+      "name": "Kereviz Dolma",
+      "priceTry": 380
+     },
+     {
+      "name": "Semizotu",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Yaprak Sarma",
+      "priceTry": 330
+     },
+     {
+      "name": "Zeytinyağlı Patlıcan Dolma",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Biber Dolma",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Brüksel Lahanası",
+      "priceTry": 320
+     },
+     {
+      "name": "Kabak Kızartma",
+      "priceTry": 320
+     },
+     {
+      "name": "Patlıcan Kızartma",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Yer elması",
+      "priceTry": 320
+     },
+     {
+      "name": "Patlıcan Salatası",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Enginar Dolma",
+      "priceTry": 380
+     },
+     {
+      "name": "Zeytinyağlı Pırasa",
+      "priceTry": 320
+     },
+     {
+      "name": "Patlıcan Paça",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Soğan Dolması",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Domates Dolması",
+      "priceTry": 320
+     },
+     {
+      "name": "Yoğurtlu Pazı Salatası",
+      "priceTry": 320
+     },
+     {
+      "name": "Fasulye Pilaki",
+      "priceTry": 320
+     },
+     {
+      "name": "Fava",
+      "priceTry": 320
+     },
+     {
+      "name": "Haydari",
+      "priceTry": 320
+     },
+     {
+      "name": "Nohut Pilaki",
+      "priceTry": 320
+     },
+     {
+      "name": "Sultani Bezelye",
+      "priceTry": 320
+     },
+     {
+      "name": "Çılbır",
+      "description": "Yurta ve sarımsak içerir",
+      "priceTry": 320
+     },
+     {
+      "name": "Zeytinyağlı Karnıbahar"
+     }
+    ]
+   },
+   {
+    "title": "Salata",
+    "items": [
+     {
+      "name": "Mevsim Salata",
+      "description": "Carrots, lettuce, purple cabbage an turlip",
+      "priceTry": 190
+     },
+     {
+      "name": "Karışık Turşu",
+      "description": "Cabbage, green and red peppers, cucumbers",
+      "priceTry": 190
+     },
+     {
+      "name": "Çoban Salata",
+      "priceTry": 190
+     },
+     {
+      "name": "Pancar Turşu",
+      "priceTry": 190
+     },
+     {
+      "name": "Cacık",
+      "priceTry": 150
+     },
+     {
+      "name": "Yoğurt",
+      "priceTry": 100
+     },
+     {
+      "name": "Söğüş Salata",
+      "priceTry": 190
+     },
+     {
+      "name": "Piyaz",
+      "priceTry": 270
+     }
+    ]
+   },
+   {
+    "title": "Kompostolar",
+    "items": [
+     {
+      "name": "Şeftali Komposto",
+      "priceTry": 190
+     },
+     {
+      "name": "Ayva Komposto",
+      "priceTry": 190
+     },
+     {
+      "name": "Armut Komposto",
+      "priceTry": 190
+     },
+     {
+      "name": "Vişne Komposto",
+      "priceTry": 190
+     },
+     {
+      "name": "Çilek Komposto",
+      "priceTry": 190
+     },
+     {
+      "name": "Erik Komposto",
+      "priceTry": 190
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Ayva Tatlısı(Kaymaklı)",
+      "description": "Manda kaymağı ile servis edilir",
+      "priceTry": 350
+     },
+     {
+      "name": "Ayva Tatlısı",
+      "priceTry": 270
+     },
+     {
+      "name": "Aşure",
+      "priceTry": 280
+     },
+     {
+      "name": "Samsa Tatlısı",
+      "priceTry": 270
+     },
+     {
+      "name": "Ekmek Kadayıfı(Kaymaklı)",
+      "description": "Manda Kaymağı ile servis edilir",
+      "priceTry": 350
+     },
+     {
+      "name": "Ekmek Kadayıfı(Sade)",
+      "priceTry": 270
+     },
+     {
+      "name": "Kaymaklı Cevizli İncir Tatlısı",
+      "description": "Manda Kaymağı ile servis edilir",
+      "priceTry": 350
+     },
+     {
+      "name": "İncir Tatlısı(kaymaksız)",
+      "priceTry": 270
+     },
+     {
+      "name": "İrmik Helva",
+      "priceTry": 270
+     },
+     {
+      "name": "Gül Tatlısı(cevizli)",
+      "priceTry": 270
+     },
+     {
+      "name": "Kabak Tatlısı Cevizli",
+      "priceTry": 270
+     },
+     {
+      "name": "Kadayıf Dolma",
+      "priceTry": 270
+     },
+     {
+      "name": "Kalburabastı",
+      "priceTry": 270
+     },
+     {
+      "name": "Kazandibi",
+      "priceTry": 270
+     },
+     {
+      "name": "Tavukgöğsü",
+      "priceTry": 270
+     },
+     {
+      "name": "Kaymaçina",
+      "priceTry": 270
+     },
+     {
+      "name": "Kemalpaşa",
+      "priceTry": 270
+     },
+     {
+      "name": "Keşkül",
+      "priceTry": 270
+     },
+     {
+      "name": "Krem Şokola",
+      "priceTry": 270
+     },
+     {
+      "name": "Revani",
+      "priceTry": 270
+     },
+     {
+      "name": "Şekerpare",
+      "priceTry": 270
+     },
+     {
+      "name": "Sütlaç",
+      "priceTry": 270
+     },
+     {
+      "name": "Tel Kadayıf",
+      "priceTry": 270
+     },
+     {
+      "name": "Tulumba",
+      "priceTry": 270
+     },
+     {
+      "name": "Yassı Kadayıf",
+      "priceTry": 270
+     },
+     {
+      "name": "Zerde",
+      "priceTry": 280
+     },
+     {
+      "name": "İlave Kaymak",
+      "description": "Manda Kaymağı (-+50gr)",
+      "priceTry": 120
+     },
+     {
+      "name": "İlave dondurma",
+      "priceTry": 170
+     },
+     {
+      "name": "Su Muhallebisi",
+      "priceTry": 270
+     },
+     {
+      "name": "Vişneli Ekmek Kadayıfı (kaymaklı)",
+      "priceTry": 350
+     },
+     {
+      "name": "Porsiyon Dondurma",
+      "description": "Koyun sütünden",
+      "priceTry": 340
+     },
+     {
+      "name": "Reçel-Kaymak",
+      "priceTry": 200
+     }
+    ]
+   }
+  ]
+ }
 }
