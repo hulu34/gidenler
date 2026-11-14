@@ -13,7 +13,18 @@ const file=out+'/result.json';const ev=fs.existsSync(file)?JSON.parse(fs.readFil
 const save=()=>fs.writeFileSync(file,JSON.stringify(ev,null,2));
 const check=(id,pass)=>{ev.checks.push({id,pass:!!pass});save();assert(pass,id);};
 const catalog=[...JSON.parse(fs.readFileSync('candidate/data/real/venues.json')),...JSON.parse(fs.readFileSync('candidate/data/real/isletme.json'))];const slugs=new Set(catalog.map(v=>v.slug));
-async function request(path,body,extra={}){assert(path.startsWith('/')&&!path.startsWith('//'));const r=await fetch(origin+path,{method:body===undefined?'GET':'POST',headers:{'x-vercel-protection-bypass':process.env.VERCEL_BYPASS,...(body===undefined?{}:{'content-type':'application/json',origin,'sec-fetch-site':'same-origin'}),...extra},...(body===undefined?{}:{body:JSON.stringify(body)}),redirect:'manual',signal:AbortSignal.timeout(25000)});const text=await r.text();let j;try{j=JSON.parse(text)}catch{}ev.http.push({path,status:r.status});save();return {status:r.status,text,j};}
+async function request(path,body,extra={}){
+ assert(path.startsWith('/')&&!path.startsWith('//'));
+ for(let hop=0;hop<3;hop++){
+  const r=await fetch(origin+path,{method:body===undefined?'GET':'POST',headers:{'x-vercel-protection-bypass':process.env.VERCEL_BYPASS,...(body===undefined?{}:{'content-type':'application/json',origin,'sec-fetch-site':'same-origin'}),...extra},...(body===undefined?{}:{body:JSON.stringify(body)}),redirect:'manual',signal:AbortSignal.timeout(25000)});
+  ev.http.push({path,status:r.status});save();
+  if(body===undefined&&[301,302,307,308].includes(r.status)){
+   const next=new URL(r.headers.get('location'),origin);assert.equal(next.origin,origin,'Never forward access secret outside exact Preview');path=next.pathname+next.search;continue;
+  }
+  const text=await r.text();let j;try{j=JSON.parse(text)}catch{}return {status:r.status,text,j};
+ }
+ throw new Error('bounded_same_preview_redirect_limit');
+}
 let lastAsk=0;async function pace(){const wait=15000-(Date.now()-lastAsk);if(wait>0)await delay(wait);lastAsk=Date.now();}
 async function ask(query,previous){await pace();const r=await request('/api/sor/',{query,...(previous?{context:previous.context,shown:previous.shown}:{})});check('sor_http_'+(ev.responses.length+1),r.status===200);ev.responses.push({query,...r.j});save();check('only_catalog_slugs_'+ev.responses.length,[...r.j.items,...r.j.alternatives].every(v=>slugs.has(v.slug)));return r.j;}
 const actual='9. ay sevgililik ayı kutlamasına gidecem. erkek arkadasımla. balık sevmiyor kırmızı et yemiyor ve sadece viski içiyor. onu nereye goturebilirim';
