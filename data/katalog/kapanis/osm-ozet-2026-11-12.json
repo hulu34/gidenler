@@ -1,0 +1,743 @@
+{
+ "_aciklama": "Kapanış paketi OSM özeti: öğenin son sürümü, 2025+ düzenlemelerin changeset açıklaması (ilk 140 karakter) ve ~60 m içindeki OSM not sayısı. © OpenStreetMap katkıcıları, ODbL. Notların çoğu yakındaki başka mekânlarla ilgilidir; kararda yalnız mekânın adını taşıyan notlar kullanıldı.",
+ "tarih": "2026-11-12",
+ "kayitlar": {
+  "aci-biber-kucukcekmece": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2026-03-23",
+    "gorunur": true,
+    "ad": "Acı Biber",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "180278253": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 2
+  },
+  "ala-turk-mutfagi-umraniye": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2025-05-28",
+    "gorunur": true,
+    "ad": "Ala Türk Mutfagi",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "166882467": "Change wheelchair to yes"
+   },
+   "notSayisi": 0
+  },
+  "artlocalist-fatih": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2026-10-10",
+    "gorunur": true,
+    "ad": "Artlocalist",
+    "amenity": "cafe"
+   },
+   "changeset2025": {
+    "173131585": "Created 2 cafes",
+    "190284373": "Removed tracking parameters from URLs (see \"Remove any tracking parameters\" at https://wiki.openstreetmap.org/wiki/Key:website)"
+   },
+   "notSayisi": 1
+  },
+  "bes-bicak-steak-house-kasap-esenyurt": {
+   "osmSonSurum": {
+    "surum": 4,
+    "tarih": "2026-01-24",
+    "gorunur": true,
+    "ad": "Beş Bıçak Steak House - Kasap",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "177645918": "metrobüs"
+   },
+   "notSayisi": 3
+  },
+  "bishop-bakirkoy": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2019-06-04",
+    "gorunur": true,
+    "ad": "Bishop",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "blak-coffee-co-besiktas": {
+   "osmSonSurum": {
+    "surum": 4,
+    "tarih": "2025-12-16",
+    "gorunur": true,
+    "ad": "BLAK Coffee Co.",
+    "amenity": "cafe"
+   },
+   "changeset2025": {
+    "161254992": "Barbaros Bulvarı devasa eklemeler.",
+    "176014364": "Fix addr: tags",
+    "176014420": "Fix addr: tags"
+   },
+   "notSayisi": 2
+  },
+  "cabra-loca-coffee-fatih": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2023-01-31",
+    "gorunur": true,
+    "ad": "Cabra Loca Coffee",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 1
+  },
+  "cekmekoy-nefist-doner-cekmekoy": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2017-12-12",
+    "gorunur": true,
+    "ad": "Çekmeköy Nefist Döner",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "cluster-society-kadikoy": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2025-10-29",
+    "gorunur": true,
+    "ad": "Cluster Society",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "173927139": "İstanbul Suadiye"
+   },
+   "notSayisi": 2
+  },
+  "coffeeboss-istanbul-maltepe": {
+   "osmSonSurum": {
+    "surum": 17,
+    "tarih": "2026-01-10",
+    "gorunur": true,
+    "ad": "CoffeeBoss Istanbul",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "177055177": "notlar çözüldü"
+   },
+   "notSayisi": 2
+  },
+  "curtis-restaurant-ve-bar-besiktas": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2026-06-10",
+    "gorunur": true,
+    "ad": "Curtis Restaurant&Bar",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "183907902": "Marmara Bölgesi (Türkiye): Automatically fix phone number issues: missing country code, extra punctuation"
+   },
+   "notSayisi": 1
+  },
+  "dem-karakoy-beyoglu": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2019-06-08",
+    "gorunur": true,
+    "ad": "Dem Karaköy",
+    "amenity": "cafe"
+   },
+   "changeset2025": {},
+   "notSayisi": 6
+  },
+  "dubb-indian-bosphorus-restaurant-sisli": {
+   "osmSonSurum": {
+    "surum": 5,
+    "tarih": "2025-12-16",
+    "gorunur": true,
+    "ad": "Dubb Indian Bosphorus Restaurant",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "176014364": "Fix addr: tags"
+   },
+   "notSayisi": 1
+  },
+  "emirgan-sutis-besiktas": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2022-11-08",
+    "gorunur": true,
+    "ad": "Emirgan Sütiş",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 2
+  },
+  "ercan-burger-pendik": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2023-01-01",
+    "gorunur": true,
+    "ad": "Ercan Burger",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 2
+  },
+  "et-inn-kebap-ve-steak-kadikoy": {
+   "osmSonSurum": {
+    "surum": 5,
+    "tarih": "2026-07-11",
+    "gorunur": true,
+    "ad": "Et-Inn Kebap&Steak",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175873665": "Addresses in Istanbul have been standardized #osm-tr #maproulette mpr.lt/c/53570/t/313164381",
+    "183907902": "Marmara Bölgesi (Türkiye): Automatically fix phone number issues: missing country code, extra punctuation",
+    "185552992": "m4 metro"
+   },
+   "notSayisi": 2
+  },
+  "fish-var-sariyer": {
+   "osmSonSurum": {
+    "surum": 5,
+    "tarih": "2026-02-24",
+    "gorunur": true,
+    "ad": "Fish Var",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175975243": "Fix addr: tags",
+    "178989866": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 0
+  },
+  "frontiere-istanbul-besiktas": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2023-09-09",
+    "gorunur": true,
+    "ad": "Frontiere İstanbul",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 1
+  },
+  "gardas-cag-kebap-atasehir": {
+   "osmSonSurum": {
+    "surum": 4,
+    "tarih": "2023-10-27",
+    "gorunur": true,
+    "ad": "Gardaş Cağ Kebap",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "gasto-nisantasi-sisli": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2025-12-23",
+    "gorunur": true,
+    "ad": "Gasto Nişantaşı",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "176327223": "Added resturant"
+   },
+   "notSayisi": 1
+  },
+  "gospoda-1882-beykoz": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2025-11-03",
+    "gorunur": true,
+    "ad": "Gospoda 1882",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "174157333": "Addresses in Istanbul have been standardized #osm-tr #maproulette"
+   },
+   "notSayisi": 0
+  },
+  "gram-sisli": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2026-06-10",
+    "gorunur": true,
+    "ad": "Gram",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175977434": "Fix addr: tags",
+    "183907902": "Marmara Bölgesi (Türkiye): Automatically fix phone number issues: missing country code, extra punctuation"
+   },
+   "notSayisi": 0
+  },
+  "haci-ali-ocakbasi-kadikoy": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2022-10-22",
+    "gorunur": true,
+    "ad": "Hacı Ali Ocakbaşı",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 1
+  },
+  "hanedan-et-besiktas": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2024-12-17",
+    "gorunur": true,
+    "ad": "Hanedan Et",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 2
+  },
+  "hira-han-beykoz": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2025-04-26",
+    "gorunur": true,
+    "ad": "Hira Han",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "165464667": "Konumlardaki eksik bilgiler ve yeni konumlar eklendi."
+   },
+   "notSayisi": 0
+  },
+  "kiss-the-frog-seafood-brasserie-sariyer": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2026-03-08",
+    "gorunur": true,
+    "ad": "Kiss The Frog Seafood Brasserie",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "179516248": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 2
+  },
+  "komun-beyoglu": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2019-04-17",
+    "gorunur": true,
+    "ad": "Komün",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 7
+  },
+  "koprualti-sariyer": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2024-03-21",
+    "gorunur": true,
+    "ad": "Köprüaltı",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 2
+  },
+  "lalezar-meyhanesi-sisli": {
+   "osmSonSurum": {
+    "surum": 7,
+    "tarih": "2026-07-03",
+    "gorunur": true,
+    "ad": "Lalezar Meyhanesi",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "164335538": "add wikidata tags",
+    "176014364": "Fix addr: tags",
+    "185030028": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 1
+  },
+  "lunchbox-bayrampasa": {
+   "osmSonSurum": {
+    "surum": 4,
+    "tarih": "2025-12-06",
+    "gorunur": true,
+    "ad": "Lunchbox",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175601638": "Fix \"addr:city\"=\"İstanbul\" #mpr.lt/c/53570"
+   },
+   "notSayisi": 1
+  },
+  "mama-bowl-kozyatagi-kadikoy": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2025-06-14",
+    "gorunur": true,
+    "ad": "Mama Bowl Kozyatağı",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "167606310": "Created a restaurant"
+   },
+   "notSayisi": 1
+  },
+  "marmaris-expres-atasehir": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2019-12-09",
+    "gorunur": true,
+    "ad": "Marmaris Expres",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "memnun-doner-avcilar": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2021-02-05",
+    "gorunur": true,
+    "ad": "Memnun Döner",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "niwa-tuzla": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2026-03-24",
+    "gorunur": true,
+    "ad": "Niwa",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "180332083": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 0
+  },
+  "nusr-et-burger-bebek-besiktas": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2018-07-23",
+    "gorunur": true,
+    "ad": "Nusr-Et Burger Bebek",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 2
+  },
+  "olivia-s-pizzeria-kadikoy": {
+   "osmSonSurum": {
+    "surum": 4,
+    "tarih": "2026-06-10",
+    "gorunur": true,
+    "ad": "Olivia's Pizzeria",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "183907902": "Marmara Bölgesi (Türkiye): Automatically fix phone number issues: missing country code, extra punctuation"
+   },
+   "notSayisi": 0
+  },
+  "ono-restaurant-basaksehir": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2023-09-09",
+    "gorunur": true,
+    "ad": "Ono Restaurant",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "oz-pide-kartal": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2021-07-27",
+    "gorunur": true,
+    "ad": "Öz Pide",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "palulu-cumali-adana-kebapcisi-kadikoy": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2024-10-05",
+    "gorunur": true,
+    "ad": "Palulu Cumali Adana Kebapçısı",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 1
+  },
+  "pidepark-besiktas": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2026-06-06",
+    "gorunur": true,
+    "ad": "Pidepark",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "183759260": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 1
+  },
+  "refik-beyoglu": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2025-01-14",
+    "gorunur": true,
+    "ad": "Refik",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "161352820": "add wikidata tags"
+   },
+   "notSayisi": 11
+  },
+  "rice-house-uskudar": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2026-06-10",
+    "gorunur": true,
+    "ad": "Rice House",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "183907902": "Marmara Bölgesi (Türkiye): Automatically fix phone number issues: missing country code, extra punctuation"
+   },
+   "notSayisi": 1
+  },
+  "ringa-sea-food-besiktas": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2026-06-10",
+    "gorunur": true,
+    "ad": "Ringa Sea Food",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "183907902": "Marmara Bölgesi (Türkiye): Automatically fix phone number issues: missing country code, extra punctuation"
+   },
+   "notSayisi": 0
+  },
+  "tahtalikoy-catalca": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2023-11-04",
+    "gorunur": true,
+    "ad": "Tahtalıköy",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "tepsi-et-basaksehir-basaksehir": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2024-03-21",
+    "gorunur": true,
+    "ad": "Tepsi Et Başakşehir",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "the-hunger-umraniye-limonlu-cadde-umraniye": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2026-09-14",
+    "gorunur": true,
+    "ad": "The Hunger Ümraniye Limonlu Cadde",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "184309885": "the hunger ümraniye limonlu cadde şubesinin açılışı için yapılan değişiklik",
+    "189030090": "üsküdar düzenleme"
+   },
+   "notSayisi": 0
+  },
+  "usturmaca-balik-restorant-beylikduzu": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2018-12-11",
+    "gorunur": true,
+    "ad": "Usturmaca Balik Restorant",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 0
+  },
+  "vagabondo-s-pizzeria-sariyer": {
+   "osmSonSurum": {
+    "surum": 5,
+    "tarih": "2026-03-24",
+    "gorunur": true,
+    "ad": "Vagabondo's Pizzeria",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175975243": "Fix addr: tags",
+    "180363685": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 0
+  },
+  "whisper-kitchen-bar-besiktas": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2026-03-01",
+    "gorunur": true,
+    "ad": "Whisper Kitchen Bar",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "179195599": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 0
+  },
+  "yako-balik-kadikoy": {
+   "osmSonSurum": {
+    "surum": 2,
+    "tarih": "2026-10-29",
+    "gorunur": true,
+    "ad": "Kalis Lokanta",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "188457826": "yeni mekan",
+    "191188883": "değişikilk"
+   },
+   "notSayisi": 1
+  },
+  "yenikoy-kavak-balikcisi-sariyer": {
+   "osmSonSurum": {
+    "surum": 5,
+    "tarih": "2026-03-23",
+    "gorunur": true,
+    "ad": "Yeniköy Kavak Balıkçısı",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175975243": "Fix addr: tags",
+    "180278407": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 0
+  },
+  "zoom-bahce-cafe-restaurant-sisli": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2025-12-05",
+    "gorunur": true,
+    "ad": "Zoom Bahçe Cafe Restaurant",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175567415": "Fix \"addr:city\"=\"İstanbul\" #mpr.lt/c/53570"
+   },
+   "notSayisi": 0
+  },
+  "arda-ocakbasi-umraniye": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2026-06-10",
+    "gorunur": true,
+    "ad": "Arda Ocakbaşı",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "183907902": "Marmara Bölgesi (Türkiye): Automatically fix phone number issues: missing country code, extra punctuation"
+   },
+   "notSayisi": 0
+  },
+  "pizeria-quattro-beyoglu": {
+   "osmSonSurum": {
+    "surum": 6,
+    "tarih": "2026-11-11",
+    "gorunur": false,
+    "ad": null,
+    "amenity": null
+   },
+   "changeset2025": {
+    "191238737": "Aggiornamento",
+    "191795049": "Aggiornamento"
+   },
+   "notSayisi": 7
+  },
+  "privato-cafe-beyoglu": {
+   "osmSonSurum": {
+    "surum": 7,
+    "tarih": "2025-12-15",
+    "gorunur": true,
+    "ad": "Privato Cafe",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175980447": "A start at fixing addr: tags in Fatih"
+   },
+   "notSayisi": 6
+  },
+  "altinkapi-restaurant-fatih": {
+   "osmSonSurum": {
+    "surum": 3,
+    "tarih": "2025-12-15",
+    "gorunur": true,
+    "ad": "Altınkapı Restaurant",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "175980447": "A start at fixing addr: tags in Fatih"
+   },
+   "notSayisi": 0
+  },
+  "burger-hopdaddy-sariyer": {
+   "osmSonSurum": {
+    "surum": 4,
+    "tarih": "2026-03-24",
+    "gorunur": true,
+    "ad": "Burger Hopdaddy",
+    "amenity": "fast_food"
+   },
+   "changeset2025": {
+    "180363711": "Marmara Bölgesi: Fix phone number issues: missing country code, incorrect separators, extra characters, duplicate phone numbers"
+   },
+   "notSayisi": 0
+  },
+  "beso-restaurant-bistro-fatih": {
+   "osmSonSurum": {
+    "surum": 6,
+    "tarih": "2021-03-03",
+    "gorunur": true,
+    "ad": "Beso Restaurant Bistro",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {},
+   "notSayisi": 9
+  },
+  "desi-vibes-fatih": {
+   "osmSonSurum": {
+    "surum": 1,
+    "tarih": "2026-04-30",
+    "gorunur": true,
+    "ad": "Desi vibes",
+    "amenity": "restaurant"
+   },
+   "changeset2025": {
+    "182041940": "Created a restaurant"
+   },
+   "notSayisi": 2
+  }
+ }
+}
