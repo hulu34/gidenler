@@ -220,7 +220,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   return (
     <div className={`mx-auto max-w-[1180px] overflow-x-clip px-5 sm:px-7 ${c.mode === "standard" && scored ? "pb-32 sm:pb-24" : "pb-6 sm:pb-6"}`}>
       {entity.isReal && <SignalBeacon slug={entity.slug} />}
-      {entity.isReal && <JsonLd data={venueJsonLd(ent, ps, articlesForVenue(entity.slug, false).some((x) => !!x.ownership), seoCover?.src)} />}
+      {entity.isReal && <JsonLd data={venueJsonLd(ent, ps, articlesForVenue(entity.slug, false).some((x) => !!x.ownership), seoCover?.src, rp?.menu)} />}
       {/* ═══════════ HERO — kısa ve güçlü: ad · tür · puan · yön · sana göre · tek cümle · eylem ═══════════ */}
       <header className="relative isolate flex flex-col gap-4 pt-7 sm:pt-10">
         {scored && pulse && (

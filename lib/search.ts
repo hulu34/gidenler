@@ -204,6 +204,13 @@ function buildDocs(): SearchDoc[] {
 }
 export const searchDocs = () => (DOCS ??= buildDocs());
 
+let NAMES: Set<string> | null = null;
+/** Bütün kayıtların ad kelimeleri (katlanmış, 3+ harf). */
+const NAME_WORDS = () => (NAMES ??= new Set(searchDocs().flatMap((d) => d.nameWords).filter((w) => w.length >= 3)));
+
+/** Katalogda mahalle olarak yazılmamış ama herkesin konum diye aradığı semtler → ilçesi (yumuşak eşleşme). */
+const AREA_DISTRICT: Record<string, string> = { sultanahmet: "fatih", eminonu: "fatih", sirkeci: "fatih", cagaloglu: "fatih", karakoy: "beyoglu", galata: "beyoglu", cihangir: "beyoglu", tunel: "beyoglu", taksim: "beyoglu", moda: "kadikoy", bebek: "besiktas", ortakoy: "besiktas", kurucesme: "besiktas", nisantasi: "sisli" };
+
 function vocab(): Map<string, "dish" | "loc" | "cat"> {
   if (VOCAB) return VOCAB;
   VOCAB = new Map();
@@ -212,6 +219,7 @@ function vocab(): Map<string, "dish" | "loc" | "cat"> {
     for (const w of ws) { const t = fold(w); if (t.length >= 3 && !VOCAB!.has(t)) { VOCAB!.set(t, kind); DISPLAY.set(t, w.toLocaleLowerCase("tr") === w ? w : w); } }
   };
   for (const d of searchDocs()) { const l = d.card.entity.location; for (const w of [l?.district, l?.city, l?.neighborhood]) if (w) add(w, "loc"); }
+  for (const a of Object.keys(AREA_DISTRICT)) if (!VOCAB.has(a)) VOCAB.set(a, "loc");
   for (const xs of Object.values(DISH_BY_SUB)) for (const x of xs) add(x, "dish");
   for (const xs of Object.values(CAT_KEYWORDS)) for (const x of xs) add(x, "cat");
   return VOCAB;
@@ -251,6 +259,9 @@ export function parseQuery(raw: string): ParsedQuery {
       /* hafif yazım toleransı: sözlükte 1 (≥8 harfte 2) düzenleme uzaklığında tek aday */
       const max = s.length >= 8 ? 2 : 1; let best: [string, number] | null = null;
       for (const [t] of V) { const dd = damerau(s, t, max); if (dd <= max && (!best || dd < best[1])) best = [t, dd]; }
+      /* restoran adında aynen geçen kelime bir konuma düzeltilmez ("çiya" → "Ziya" mahallesi olmaz): içerik olarak kalır, ad eşleşmesi bulur.
+         Yemek/tür düzeltmesi sürer ("kebab" → "kebap"). */
+      if (best && V.get(best[0]) === "loc" && (NAME_WORDS().has(s) || NAME_WORDS().has(w))) best = null;
       if (best) { q.corrections.push([w, best[0]]); s = best[0]; kind = V.get(s); }
     }
     if (seen.has(s)) continue; seen.add(s);
@@ -322,6 +333,7 @@ function locMatch(d: SearchDoc, locations: string[]): SearchHit["loc"] {
     if (d.district.split(" ").includes(l) || d.district === l) return "district";
     if (d.neighborhood.split(" ").includes(l) || d.neighborhood === l) return "neighborhood";
   }
+  for (const l of locations) if (AREA_DISTRICT[l] && d.district === AREA_DISTRICT[l] && !d.neighborhood) return "district";
   for (const l of locations) if (d.city.split(" ").includes(l) || d.city === l) return "city";
   return "none";
 }
@@ -439,7 +451,11 @@ export function searchV3(raw: string, opts: { limit?: number; city?: string; cat
     if (h) { h.tier = "exact"; h.matched = [...h.matched, `${fold(raw)}:ad`]; }
     else hits.push({ card, score: 0, text: 1, loc: "n/a", reason: "", tier: "exact", matched: [`${fold(raw)}:ad`] });
   }
-  hits.sort((a, b) => (named.get(b.card) ?? 0) - (named.get(a.card) ?? 0) || b.score - a.score || (b.card.score ?? 0) - (a.card.score ?? 0) || b.card.experienceCount - a.card.experienceCount);
+  /* konumlu sorgu ("sultanahmet köfte"): aynı ad düzeyindeki eşleşmelerde konumu tutan öne geçer; ad uzunluğu farkı belirleyici olmaz */
+  const nk = (c: SearchDoc["card"]) => { const n = named.get(c) ?? 0; return q.locations.length && n >= 700 && n < 900 ? Math.floor(n / 50) * 50 : n; };
+  const locRank = (h: SearchHit) => (q.locations.length && (h.loc === "district" || h.loc === "neighborhood") ? 1 : 0);
+  for (const h of hits) if (h.loc === "n/a" && q.locations.length) h.loc = locMatch(docs.find((d) => d.card === h.card)!, q.locations);
+  hits.sort((a, b) => nk(b.card) - nk(a.card) || locRank(b) - locRank(a) || (named.get(b.card) ?? 0) - (named.get(a.card) ?? 0) || b.score - a.score || (b.card.score ?? 0) - (a.card.score ?? 0) || b.card.experienceCount - a.card.experienceCount);
   for (const h of hits) h.reason = CLOSED_CONFIRMED.has(h.card.entity.slug) ? "Kalıcı olarak kapandı · profil ve geçmiş deneyimler korunuyor" : reasonFor(h, q, docs.find((d) => d.card === h.card)!);
   const limit = opts.limit ?? 200;
   const exact = hits.filter((h) => h.tier === "exact").slice(0, limit);
