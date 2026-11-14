@@ -1,0 +1,487 @@
+{
+ "_aciklama": "Overture Maps Places (sürüm 2026-10-21.0) ile koordinat önerisi. KAYDA YAZILMADI: bugünkü şema yalnız OSM konumunu kabul ediyor. Eşleşme telefonla (resmî site/Michelin telefonu) yapıldı; rehber noktası yalnız uyum ölçümü için kullanıldı, yazılmadı. Lisans: kaynak başına (Meta/Microsoft: CDLA Permissive 2.0; Foursquare: Apache 2.0). Atıf: © Overture Maps Foundation ve kaynak sağlayıcılar.",
+ "kontrolTarihi": "2026-11-11",
+ "oneriler": [
+  {
+   "slug": "araf-istanbul-kadikoy",
+   "overture": {
+    "gersId": "34f620ba-4077-4404-8d9a-7bb2647d3c4e",
+    "ad": "Araf İstanbul",
+    "kategori": "restaurant",
+    "guven": 0.95,
+    "lat": 40.978226,
+    "lng": 29.093212,
+    "adres": "19 Mayıs Mahallesi Sümer Sokak Sümko N Blok No:1 AG, E İç Kapı No:2",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Kadıköy",
+   "rehberNoktasinaUzaklikM": 66,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "araka-sariyer",
+   "overture": {
+    "gersId": "18256edc-1e14-4771-bf9c-98e9722f418e",
+    "ad": "Araka",
+    "kategori": "restaurant",
+    "guven": 0.99,
+    "lat": 41.117073,
+    "lng": 29.063082,
+    "adres": "Kapalı Bakkal Sk. No:8",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Sarıyer",
+   "rehberNoktasinaUzaklikM": 11,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "arkestra-besiktas",
+   "overture": {
+    "gersId": "bc3c46b7-84ab-46a3-8acd-29d1dce2cd92",
+    "ad": "Arkestra",
+    "kategori": "restaurant",
+    "guven": 0.98,
+    "lat": 41.078331,
+    "lng": 29.031599,
+    "adres": "Dilhayat Sk. No:28",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Beşiktaş",
+   "rehberNoktasinaUzaklikM": 22,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "casa-lavanda-sile",
+   "overture": {
+    "gersId": "07062176-1d21-4627-8ff7-bf5570320299",
+    "ad": "Casa Lavanda Boutique Hotel & Restaurant",
+    "kategori": "hotel",
+    "guven": 0.99,
+    "lat": 41.086834,
+    "lng": 29.512089,
+    "adres": "Lavanda Hotel, Seçilmiş Sok No:2",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Şile",
+   "rehberNoktasinaUzaklikM": 44,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "sankai-by-nagaya-besiktas",
+   "overture": {
+    "gersId": "eaa216f3-fd6b-4a67-a855-4ad9fb3c6931",
+    "ad": "Sankai by Nagaya",
+    "kategori": "restaurant",
+    "guven": 0.99,
+    "lat": 41.077873,
+    "lng": 29.044199,
+    "adres": "Cevdet Paşa Cd. No:34",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Beşiktaş",
+   "rehberNoktasinaUzaklikM": 7,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "parvus-kalamis-kadikoy",
+   "overture": {
+    "gersId": "af92d66a-8db3-42a2-b55d-9e4c88c2ce69",
+    "ad": "Parvus Kalamış",
+    "kategori": "restaurant",
+    "guven": 0.99,
+    "lat": 40.983196,
+    "lng": 29.039631,
+    "adres": "Rüştiye Sk. No:4/A",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Kadıköy",
+   "rehberNoktasinaUzaklikM": 11,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "tershane-beyoglu",
+   "overture": {
+    "gersId": "2c595573-215d-42af-88a6-0f8668e68eec",
+    "ad": "Tershane Karaköy",
+    "kategori": "restaurant",
+    "guven": 0.99,
+    "lat": 41.022797,
+    "lng": 28.973724,
+    "adres": "Tersane Cd. No:24",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Beyoğlu",
+   "rehberNoktasinaUzaklikM": 7,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "aila-sisli",
+   "overture": {
+    "gersId": "e7e2ab45-bcba-4ef8-835a-f29a798bfe86",
+    "ad": "Aila İstanbul",
+    "kategori": "restaurant",
+    "guven": 0.99,
+    "lat": 41.065151,
+    "lng": 29.000364,
+    "adres": "Zes, 85",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Şişli",
+   "rehberNoktasinaUzaklikM": 10,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "eleos-yesilkoy-bakirkoy",
+   "overture": {
+    "gersId": "5f44a317-99d5-4b38-b40f-cc5c33430b7c",
+    "ad": "Eleos Restaurant",
+    "kategori": "restaurant",
+    "guven": 0.99,
+    "lat": 40.957985,
+    "lng": 28.821522,
+    "adres": "Yeşilbahçe Sk. No:7",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Bakırköy",
+   "rehberNoktasinaUzaklikM": 24,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "herise-istanbul-sariyer",
+   "overture": {
+    "gersId": "d5545f35-a2a5-434e-a35b-49ab22b7297d",
+    "ad": "Herise İstanbul",
+    "kategori": "restaurant",
+    "guven": 0.99,
+    "lat": 41.109169,
+    "lng": 29.04056,
+    "adres": "Kongre Cd. No:15/A",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Sarıyer",
+   "rehberNoktasinaUzaklikM": 8,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "kiyi-sariyer",
+   "overture": {
+    "gersId": "50328a75-982d-45f4-914b-84281cd58454",
+    "ad": "Kıyı Restaurant",
+    "kategori": "restaurant",
+    "guven": 0.99,
+    "lat": 41.139233,
+    "lng": 29.054476,
+    "adres": "Haydar Aliyev Cd. No:186 D:A",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Sarıyer",
+   "rehberNoktasinaUzaklikM": 8,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "lokanta-limu-sariyer",
+   "overture": {
+    "gersId": "e94a1f05-e16b-4c5f-8cb8-7bbe0c55f0cc",
+    "ad": "LokantaLimu",
+    "kategori": "restaurant",
+    "guven": 0.98,
+    "lat": 41.117558,
+    "lng": 29.064095,
+    "adres": "Köybaşı Cd. No:158 D:B",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Sarıyer",
+   "rehberNoktasinaUzaklikM": 12,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "ruby-besiktas",
+   "overture": {
+    "gersId": "d4a73ded-87a2-4443-9ec6-0c03abbc83db",
+    "ad": "Joyeux Club",
+    "kategori": "restaurant",
+    "guven": 0.77,
+    "lat": 41.047722,
+    "lng": 29.024733,
+    "adres": "Muallim Naci Cad. Salhane Sok. No:10/2 Ortaköy Beşiktaş",
+    "kaynaklar": [
+     {
+      "veri": "Foursquare",
+      "lisans": "Apache-2.0",
+      "guncelleme": "2024-08-18"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Beşiktaş",
+   "rehberNoktasinaUzaklikM": 22,
+   "oneri": "kullanılmamalı: Overture güveni 0.77"
+  },
+  {
+   "slug": "spago-istanbul-by-wolfgang-puck-sisli",
+   "overture": {
+    "gersId": "7e1f4d6c-b3b5-45a1-b584-24aae3055a14",
+    "ad": "Spago Istanbul",
+    "kategori": "restaurant",
+    "guven": 1,
+    "lat": 41.047764,
+    "lng": 28.99268,
+    "adres": "The St. Regis Istanbul, Mim Kemal Öke Cd. No:35",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Şişli",
+   "rehberNoktasinaUzaklikM": 22,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "st-regis-brasserie-sisli",
+   "overture": {
+    "gersId": "ba3840be-b2fa-4509-ab41-59d7fcfa5c7a",
+    "ad": "St. Regis Brasserie",
+    "kategori": "restaurant",
+    "guven": 1,
+    "lat": 41.047756,
+    "lng": 28.992693,
+    "adres": "Mim Kemal Öke Cd. No:35",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Şişli",
+   "rehberNoktasinaUzaklikM": 14,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "telezzuz-uskudar",
+   "overture": {
+    "gersId": "d716bcce-9806-4791-9348-25d93f3102fc",
+    "ad": "Telezzüz",
+    "kategori": "restaurant",
+    "guven": 0.95,
+    "lat": 41.027409,
+    "lng": 29.042227,
+    "adres": "Koç Group Sports Club, Kuşbakışı Cd. No:16",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Üsküdar",
+   "rehberNoktasinaUzaklikM": 99,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "the-barn-silivri",
+   "overture": {
+    "gersId": "b1226550-3f89-47b6-8684-3adea23ec0e3",
+    "ad": "Grandma's Wonderland",
+    "kategori": "hotel",
+    "guven": 0.98,
+    "lat": 41.136436,
+    "lng": 28.280373,
+    "adres": "Gazitepe Mah, Akoren Caddesi, Çiftlik Evleri No:114",
+    "kaynaklar": [
+     {
+      "veri": "meta",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-12"
+     },
+     {
+      "veri": "Overture",
+      "lisans": "CDLA-Permissive-2.0",
+      "guncelleme": "2026-10-15"
+     }
+    ]
+   },
+   "eslesme": "telefon (resmî site/rehberle aynı)",
+   "ilceSiniri": "Silivri",
+   "rehberNoktasinaUzaklikM": 16,
+   "oneri": "kullanılabilir (telefon eşleşmesi + ilçe sınırı + rehber noktasıyla ≤100 m bağımsız uyum + güven ≥0,9)"
+  },
+  {
+   "slug": "the-red-balloon-beyoglu",
+   "overture": null,
+   "sonuc": "Overture'da telefonla eşleşen kayıt yok"
+  }
+ ]
+}
