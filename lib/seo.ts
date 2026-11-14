@@ -64,7 +64,8 @@ const TYPE: Record<string, string> = { "cat.restaurant": "Restaurant", "cat.cafe
 export const absoluteImage = (src: string) => (src.startsWith("http") ? src : `${SITE}${src}`);
 
 /** image yalnız gerçek, hak kaydı olan kapaktan gelir; Google görseli ve yer tutucu asla. */
-export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelated: boolean, image?: string | null) {
+/** menu: profildeki resmî menü; yalnız güncel kaynak (arşiv kopyası değil) hasMenu olarak işaretlenir ve işletmenin kendi menü adresini gösterir. */
+export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelated: boolean, image?: string | null, menu?: { url: string; archivedAt?: string } | null) {
   if (!e.isReal || e.isDemo || !e.address || !TYPE[e.categoryId]) return null;
   const geo = e.location?.precision === "street" ? undefined : e.location?.geo;
   const hours = openingHoursSpec(e.contact?.openingHours ?? e.hours);
@@ -78,6 +79,7 @@ export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelat
     ...(geo ? { geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng } } : {}),
     ...(e.contact?.phone ? { telephone: e.contact.phone } : {}),
     ...(hours ? { openingHoursSpecification: hours } : {}),
+    ...(menu && !menu.archivedAt && /^https:\/\//.test(menu.url) ? { hasMenu: menu.url } : {}),
     ...(ps?.score != null && !ownershipRelated
       ? { aggregateRating: { "@type": "AggregateRating", ratingValue: ps.score, ratingCount: ps.reviewCount, bestRating: 10, worstRating: 1 } }
       : {}),
