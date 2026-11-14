@@ -1,0 +1,3306 @@
+{
+ "antiochia-beyoglu": {
+  "url": "http://www.antiochiaconcept.com",
+  "status": 200,
+  "final": "http://www.antiochiaconcept.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "kronotrop-cihangir-beyoglu": {
+  "url": "https://www.kronotrop.com.tr",
+  "status": 200,
+  "final": "https://www.kronotrop.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "privato-cafe-beyoglu": {
+  "url": "http://privatocafe.com",
+  "status": 403,
+  "final": "https://www.hugedomains.com/domain_profile.cfm?d=privatocafe.com",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "karakoy-lokantasi-beyoglu": {
+  "url": "http://www.karakoylokantasi.com",
+  "status": 200,
+  "final": "http://www.karakoylokantasi.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "yeni-lokanta-beyoglu": {
+  "url": "https://www.yenilokanta.com",
+  "status": 200,
+  "final": "https://www.yenilokanta.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gunaydin-beyoglu": {
+  "url": "https://gunaydinet.com",
+  "status": 200,
+  "final": "https://gunaydinet.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "viktor-levi-sarap-evi-kadikoy": {
+  "url": "https://www.viktorlevimoda.com",
+  "status": 200,
+  "final": "https://www.viktorlevimoda.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "fazil-bey-in-turk-kahvesi-kadikoy": {
+  "url": "https://www.fazilbey.com.tr",
+  "status": 200,
+  "final": "https://www.fazilbey.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ciya-sofrasi-kadikoy": {
+  "url": "http://www.ciya.com.tr",
+  "status": 200,
+  "final": "http://www.ciya.com.tr/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "ali-ocakbasi-kadikoy": {
+  "url": "https://aliocakbasi.com/post/istanbul-suadiye/40.html",
+  "status": 200,
+  "final": "https://aliocakbasi.com/post/istanbul-suadiye/40.html",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kosebasi-kadikoy": {
+  "url": "https://www.kosebasi.com/sube/cadde",
+  "status": 200,
+  "final": "https://www.kosebasi.com/sube/cadde",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "haci-ali-ocakbasi-kadikoy": {
+  "url": "https://www.hacialiocakbasi.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "borsa-lokantasi-caddebostan-kadikoy": {
+  "url": "https://www.borsaselfservis.com/borsa-caddebostan/iletisim",
+  "status": 200,
+  "final": "https://www.borsaselfservis.com/borsa-caddebostan/iletisim",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sultanahmet-koftecisi-kadikoy": {
+  "url": "https://sultanahmetkoftesi.com/subelerimiz",
+  "status": 404,
+  "final": "https://sultanahmetkoftesi.com/subelerimiz",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "maybe-kadikoy": {
+  "url": "https://www.maybe.com.tr",
+  "status": 200,
+  "final": "https://www.maybe.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "neolokal-beyoglu": {
+  "url": "https://www.neolokal.com",
+  "status": 200,
+  "final": "https://www.neolokal.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bebek-balikci-besiktas": {
+  "url": "https://bebekbalikci.net",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kont-moda-kadikoy": {
+  "url": "http://kont.cafe",
+  "status": 200,
+  "final": "https://kont.cafe/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "emirgan-sutis-besiktas": {
+  "url": "https://www.sutis.com.tr",
+  "status": 200,
+  "final": "https://www.sutis.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sur-balik-restoran-arnavutkoy-besiktas": {
+  "url": "https://surbalik.com",
+  "status": 200,
+  "final": "https://www.surbalik.com/tr",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "feriye-besiktas": {
+  "url": "https://feriye.com",
+  "status": 200,
+  "final": "https://feriye.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "summit-bar-ve-terrace-besiktas": {
+  "url": "https://conradhotels3.hilton.com/en/hotels/turkey/conrad-istanbul-bosphorus-ISTHCCI/amenities/restaurants-summit.html",
+  "status": 403,
+  "final": "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/dining/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "petra-roasting-co-besiktas": {
+  "url": "https://www.petracoffee.com",
+  "status": 200,
+  "final": "https://www.petracoffee.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sofyali-9-restoran-beyoglu": {
+  "url": "https://www.sofyali.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lucca-besiktas": {
+  "url": "https://luccastyle.com",
+  "status": 200,
+  "final": "https://luccastyle.com/en/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "akinti-burnu-balik-restaurant-besiktas": {
+  "url": "https://www.akintiburnu.com",
+  "status": 526,
+  "final": "https://www.akintiburnu.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "baba-sogus-besiktas": {
+  "url": "https://www.shopier.com/s/store/babasakatat",
+  "status": 200,
+  "final": "https://www.shopier.com/s/store/babasakatat",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cantinery-besiktas": {
+  "url": "https://www.cantinery.com",
+  "status": 200,
+  "final": "https://www.cantinery.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "blak-coffee-co-besiktas": {
+  "url": "https://www.blakcoffee.co",
+  "status": 200,
+  "final": "https://blakcoffee.co/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "curtis-restaurant-ve-bar-besiktas": {
+  "url": "https://curtisistanbul.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "durak-bufe-besiktas": {
+  "url": "http://www.durakbufe.com.tr",
+  "status": 429,
+  "final": "http://www.durakbufe.com.tr/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "frontiere-istanbul-besiktas": {
+  "url": "https://www.frontiereistanbul.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "elise-pide-lahmacun-besiktas": {
+  "url": "https://elisepidelahmacun.com",
+  "status": 200,
+  "final": "https://elisepidelahmacun.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lalezar-meyhanesi-sisli": {
+  "url": "https://www3.hilton.com/en/hotels/turkey/hilton-istanbul-bosphorus-ISTHITW/dining/index.html",
+  "status": 403,
+  "final": "https://www.hilton.com/en/hotels/isthitw-hilton-istanbul-bosphorus/dining/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bambi-cafe-sisli": {
+  "url": "http://www.bambicafe.com.tr",
+  "status": 200,
+  "final": "https://www.bambicafe.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kurukahveci-fuat-bey-sisli": {
+  "url": "https://www.kurukahvecifuatbey.com",
+  "status": 200,
+  "final": "https://www.kurukahvecifuatbey.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hunkar-sisli": {
+  "url": "https://hunkarlokantasi.com",
+  "status": 200,
+  "final": "https://www.hunkarlokantasi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cozy-etiler-besiktas": {
+  "url": "https://cozyistanbul.com.tr",
+  "status": 200,
+  "final": "https://cozyistanbul.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "adanali-kebapci-mehmet-sisli": {
+  "url": "https://adanalikebapcimehmet.com",
+  "status": 200,
+  "final": "https://adanalikebapcimehmet.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "dragon-restaurant-sisli": {
+  "url": "http://dragonrest.wpengine.com",
+  "status": 404,
+  "final": "http://dragonrest.wpengine.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "the-hill-cafe-sisli": {
+  "url": "https://thehillcafe.dslink.co",
+  "status": 200,
+  "final": "https://thehillcafe.dslink.co/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "dubb-indian-bosphorus-restaurant-sisli": {
+  "url": "http://bosphorus.dubbindian.com",
+  "status": 404,
+  "final": "http://bosphorus.dubbindian.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "tarihi-sultanahmet-koftecisi-selim-usta-fatih": {
+  "url": "https://www.sultanahmetkoftesi.com",
+  "status": 200,
+  "final": "https://sultanahmetkoftesi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pandeli-fatih": {
+  "url": "https://www.pandeli.com.tr",
+  "status": 200,
+  "final": "https://www.pandeli.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "giritli-fatih": {
+  "url": "http://www.giritlirestoran.com",
+  "status": 200,
+  "final": "http://www.giritlirestoran.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "vefa-bozacisi-1876-fatih": {
+  "url": "https://www.vefa.com.tr",
+  "status": 200,
+  "final": "https://www.vefa.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sultan-s-inn-fatih": {
+  "url": "https://www.sultansinn.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "last-ottoman-cafe-ve-restaurant-fatih": {
+  "url": "https://lastottomancafe.com",
+  "status": 200,
+  "final": "https://lastottomancafe.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "my-home-doner-fatih": {
+  "url": "https://www.myhomedoner.com",
+  "status": 200,
+  "final": "https://www.myhomedoner.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "balikci-sabahattin-fatih": {
+  "url": "https://www.balikcisabahattin.com",
+  "status": 200,
+  "final": "https://www.balikcisabahattin.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kucuk-camlica-kosku-uskudar": {
+  "url": "https://www.beltur.istanbul/tr/toplanti-ve-davetler/detay/kucuk-camlica-kosku",
+  "status": 500,
+  "final": "https://www.beltur.istanbul/tr/toplanti-ve-davetler/detay/kucuk-camlica-kosku",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ismet-baba-uskudar": {
+  "url": "http://ismetbaba.com.tr",
+  "status": 200,
+  "final": "https://ismetbaba.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ekmek-teknesi-uskudar": {
+  "url": "https://kuzguncukekmekteknesi.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "del-mare-uskudar": {
+  "url": "https://www.delmarerestaurant.com",
+  "status": 200,
+  "final": "https://www.delmarerestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kor-agop-beyoglu": {
+  "url": "http://www.koragop.com/index_pera.html",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "katibim-uskudar": {
+  "url": "https://www.katibim.com.tr/tr/katibim-menu",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "altinkapi-restaurant-fatih": {
+  "url": "https://altinkapiiskender.com",
+  "status": 200,
+  "final": "https://expireddomains.com/domain/altinkapiiskender.com?utm_source=redi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nevmekan-selimiye-uskudar": {
+  "url": "https://tesislerimiz.uskudar.bel.tr/tr/main/pages/nevmekan-selimiye/156",
+  "status": 200,
+  "final": "https://tesislerimiz.uskudar.bel.tr/tr/main/pages/nevmekan-selimiye/156",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "rice-house-uskudar": {
+  "url": "https://www.ricehousee.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kiraz-cafe-ve-pastane-uskudar": {
+  "url": "https://www.kirazpasta.com.tr",
+  "status": 200,
+  "final": "https://kirazpasta.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "koprualti-sariyer": {
+  "url": "http://koprualti.kim",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "filizler-koftecisi-uskudar": {
+  "url": "https://filizler.com/uskudar",
+  "status": 200,
+  "final": "https://filizler.com/uskudar",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "moc-coffee-roastery-sariyer": {
+  "url": "https://moc.com.tr",
+  "status": 200,
+  "final": "https://moc.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "brio-italian-istanbul-sariyer": {
+  "url": "http://www.brioistanbul.com",
+  "status": 200,
+  "final": "http://www.brioistanbul.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "azur-sariyer": {
+  "url": "https://azuryenikoy.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "arnavutkoy-balikcisi-sariyer": {
+  "url": "https://arnavutkoybalikcisi.com",
+  "status": 200,
+  "final": "https://arnavutkoybalikcisi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "deniz-park-sariyer": {
+  "url": "http://www.alekodenizpark.com",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "cajun-corner-sariyer": {
+  "url": "https://cajuncorner.com.tr",
+  "status": 200,
+  "final": "https://cajuncorner.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "fiko-ocakbasi-sariyer": {
+  "url": "https://fikoocakbasi.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-hopdaddy-sariyer": {
+  "url": "https://hopdaddyburger.com",
+  "status": 200,
+  "final": "https://hopdaddy-burger.higgsfield.app/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "durumcu-baba-bakirkoy": {
+  "url": "https://www.durumcubaba.com.tr",
+  "status": 200,
+  "final": "https://durumcubaba.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "efe-ocakbasi-yesilkoy-bakirkoy": {
+  "url": "https://www.efeocakbasi.com",
+  "status": 200,
+  "final": "https://www.efeocakbasi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "flake-breakfast-ve-more-kadikoy": {
+  "url": "https://flakebreakfast.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "birecikli-bakirkoy": {
+  "url": "http://www.birecikli.com.tr",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "mizu-bakirkoy": {
+  "url": "https://www.mizu.ist",
+  "status": 200,
+  "final": "https://www.mizu.ist/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "develi-atasehir": {
+  "url": "https://www.develi1912.com/content/restaurant2/atasehir.html",
+  "status": 200,
+  "final": "https://www.develi1912.com/content/restaurant2/atasehir.html",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "etci-mehmet-bakirkoy": {
+  "url": "https://etcimehmet.com",
+  "status": 200,
+  "final": "https://etcimehmet.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cinaralti-mangalbasi-atasehir": {
+  "url": "https://www.cinaraltimangalbasi.com.tr",
+  "status": 200,
+  "final": "https://www.cinaraltimangalbasi.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "zubeyir-ocakbasi-atasehir": {
+  "url": "https://zubeyirocakbasi.com.tr/atasehir.html",
+  "status": 200,
+  "final": "https://zubeyirocakbasi.com.tr/atasehir.html",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bafetto-atasehir": {
+  "url": "https://bafetto.com.tr",
+  "status": 200,
+  "final": "https://bafetto.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hot-pot-king-atasehir": {
+  "url": "https://hotpotking.ist",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "d-orient-buyukada-adalar": {
+  "url": "https://www.vitavien.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bahce-ocakbasi-atasehir": {
+  "url": "https://bahceocakbasi.com",
+  "status": 200,
+  "final": "https://bahceocakbasi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kalpazankaya-restaurant-adalar": {
+  "url": "https://www.kalpazankaya.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bisiklet-kafe-beykoz": {
+  "url": "https://beykoz.bel.tr/sayfa/95/474/bisiklet-kafe",
+  "status": 404,
+  "final": "https://beykoz.bel.tr/sayfa/95/474/bisiklet-kafe",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lucio-coffee-kadikoy": {
+  "url": "https://luciocoffee.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "istek-borek-kartal": {
+  "url": "https://www.istekborek.com",
+  "status": 200,
+  "final": "https://www.istekborek.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nuvo-firin-ve-cafe-kartal": {
+  "url": "https://nuvofirin.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "buselik-meyhane-anadolu-hisari-beykoz": {
+  "url": "https://buselikmeyhane.com",
+  "status": 200,
+  "final": "https://buselikmeyhane.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "doga-kir-lokantasi-arnavutkoy": {
+  "url": "http://dogakirlokantasi.com",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "toros-tantuni-kartal": {
+  "url": "https://www.toros-tantuni.com",
+  "status": 200,
+  "final": "https://www.toros-tantuni.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "beyzade-kunefe-eyupsultan": {
+  "url": "https://www.beyzadekunefe.com",
+  "status": 200,
+  "final": "https://www.beyzadekunefe.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "muhlama-karadeniz-mutfagi-atasehir": {
+  "url": "https://www.muhlama.com.tr/",
+  "status": 200,
+  "final": "https://www.muhlama.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "memnun-doner-avcilar": {
+  "url": "http://www.memnundoner.com/",
+  "status": 200,
+  "final": "http://www.memnundoner.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "serden-erzurum-cag-kebabi-bahcelievler": {
+  "url": "https://serdencagkebabi.com",
+  "status": 200,
+  "final": "https://serdencagkebabi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ono-restaurant-basaksehir": {
+  "url": "https://onorestoran.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "saray-muhallebicisi-bakirkoy": {
+  "url": "http://saraymuhallebicisi.com",
+  "status": 200,
+  "final": "https://online.saraymuhallebicisi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "panorama34-cafe-ve-restaurant-buyukcekmece": {
+  "url": "https://panorama34cafe.com/",
+  "status": 200,
+  "final": "https://panorama34cafe.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cemil-hoca-beylikduzu": {
+  "url": "https://cemilhoca.com.tr",
+  "status": 200,
+  "final": "https://cemilhoca.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "emek-manti-evi-sariyer": {
+  "url": "https://emekmanti.net",
+  "status": 200,
+  "final": "https://www.emekmanti.net/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "manzaram-eyupsultan-eyupsultan": {
+  "url": "https://esbas.bel.tr/tesisler/manzaram-eyupsultan/",
+  "status": 200,
+  "final": "https://esbas.bel.tr/tesisler/manzaram-eyupsultan/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "olden-1772-fatih": {
+  "url": "https://olden1772.com/qr-menu/",
+  "status": 404,
+  "final": "https://olden1772.com/qr-menu/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bafetto-pizza-kartal": {
+  "url": "https://bafetto.com.tr/",
+  "status": 200,
+  "final": "https://bafetto.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "boga-kagithane": {
+  "url": "http://www.bogastekhous.com",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "cooskun-balik-kucukcekmece": {
+  "url": "http://www.coskunbalik.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "beykoz-belediyesi-ortacesme-lokantasi-beykoz": {
+  "url": "http://www.beykoz.bel.tr",
+  "status": 504,
+  "final": "http://www.beykoz.bel.tr/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "razaki-kadikoy": {
+  "url": "https://restaurantguru.com/Razaki-Istanbul",
+  "status": 200,
+  "final": "https://restaurantguru.com/Razaki-Istanbul",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "moston-cafe-restoran-maltepe": {
+  "url": "https://www.mostononline.com",
+  "status": 200,
+  "final": "https://www.mostononline.com/maltepe/Menu",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "catlatan-lokantasi-pendik": {
+  "url": "https://catlatan.com/",
+  "status": 200,
+  "final": "https://catlatan.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kucuk-ev-sariyer": {
+  "url": "https://www.kucukev.com/",
+  "status": 200,
+  "final": "https://www.kucukev.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "villa-restaurant-silivri-silivri": {
+  "url": "https://www.villarestaurantsilivri.com/",
+  "status": 200,
+  "final": "https://www.villarestaurantsilivri.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "dodo-balik-restaurant-tuzla": {
+  "url": "https://www.dodomarin.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pelikan-balik-ve-restaurant-sancaktepe": {
+  "url": "https://pelikanbalik.com/",
+  "status": 200,
+  "final": "https://www.pelikanbalik.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "doga-cafe-restaurant-alev-hanim-in-mutfagi-catalca": {
+  "url": "https://www.dogacaferestaurant.com.tr/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ala-turk-mutfagi-umraniye": {
+  "url": "http://alaturkmutfagi.com",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "basri-baba-istanbul-zeytinburnu": {
+  "url": "https://www.basribaba.com.tr/",
+  "status": 200,
+  "final": "https://basribaba.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bay-manti-uskudar": {
+  "url": "https://baymanti.com/",
+  "status": 200,
+  "final": "https://baymanti.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "beykoz-belediyesi-gumussuyu-kent-lokantasi-beykoz": {
+  "url": "http://www.beykoz.bel.tr",
+  "status": 504,
+  "final": "http://www.beykoz.bel.tr/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "yucetepe-kir-gazinosu-adalar": {
+  "url": "https://yucetepe.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "durusu-club-restaurant-arnavutkoy": {
+  "url": "https://www.durusuclubhotel.com/en/restaurant",
+  "status": 404,
+  "final": "https://www.durusuclubhotel.com/en/restaurant",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gasto-nisantasi-sisli": {
+  "url": "http://www.gasto.com.tr",
+  "status": 200,
+  "final": "http://www.gasto.com.tr/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "biget-avcilar": {
+  "url": "https://biget.com.tr/",
+  "status": 200,
+  "final": "https://www.biget.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "maydonoz-doner-cekmekoy": {
+  "url": "https://maydonozdoner.com/istanbulcekmekoytasdelen/",
+  "status": 200,
+  "final": "https://maydonozdoner.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ziya-sark-sofrasi-bakirkoy": {
+  "url": "http://:www.ziyasark.com.tr",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "sushico-zen-atasehir": {
+  "url": "https://sushico.com.tr",
+  "status": 200,
+  "final": "https://www.sushico.com.tr/tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "amara-sile-ocakbasi-restoran-sile": {
+  "url": "https://amarasile.com",
+  "status": 200,
+  "final": "https://www.amarasile.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "chefet-bayrampasa": {
+  "url": "https://www.chefet.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tepsi-et-basaksehir-basaksehir": {
+  "url": "https://tepsiet.com/",
+  "status": 200,
+  "final": "https://tepsiet.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "poyraz-sahil-balik-restaurant-beykoz": {
+  "url": "https://www.poyrazsahilbalik.com/",
+  "status": 200,
+  "final": "https://www.poyrazsahilbalik.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "beny-burger-house-ve-cafeteria-besiktas": {
+  "url": "https://beny.com.tr/",
+  "status": 200,
+  "final": "https://beny.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "samsaland-bahcelievler": {
+  "url": "https://www.samsaland.com/",
+  "status": 200,
+  "final": "https://samsaland.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kanatci-haydar-beylikduzu": {
+  "url": "http://www.kanatcihaydar.com.tr/",
+  "status": 200,
+  "final": "http://www.kanatcihaydar.com.tr/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "benusen-restoran-kadikoy": {
+  "url": "http://benusenesnaflokantasi.com",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "pilavci-islam-usta-buyukcekmece": {
+  "url": "https://www.pilavciislamusta.com/",
+  "status": 200,
+  "final": "https://www.pilavciislamusta.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "eta-bakery-arena-park-2-kucukcekmece": {
+  "url": "https://www.etabakery.com/",
+  "status": 200,
+  "final": "https://etabakery.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cinaralti-durum-maltepe": {
+  "url": "http://www.cinaraltidurum.com/",
+  "status": 200,
+  "final": "http://www.cinaraltidurum.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "ibb-altinboynuz-sosyal-tesisi-eyupsultan": {
+  "url": "https://tesislerimiz.ibb.istanbul/altinboynuz-sosyal-tesisi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/altinboynuz-sosyal-tesisi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizza-lazza-sancaktepe": {
+  "url": "https://www.pizzalazza.com.tr/",
+  "status": 200,
+  "final": "https://pizzalazza.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "zeytindali-kir-bahcesi-silivri": {
+  "url": "https://zeytindalikirbahcesi.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bayindir-restoran-pendik": {
+  "url": "https://www.bayindirrestoran.com/",
+  "status": 200,
+  "final": "https://bayindirrestoran.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "irmak-et-doner-zeytinburnu": {
+  "url": "https://irmaket.online/",
+  "status": 200,
+  "final": "https://irmaket.online/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kasap-istanbul-catalca": {
+  "url": "https://www.istanbulkasabi.com.tr/",
+  "status": 200,
+  "final": "https://www.istanbulkasabi.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cantinery-istinye-park-sariyer": {
+  "url": "https://www.cantinery.com/",
+  "status": 200,
+  "final": "https://www.cantinery.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kuzguncuk-burger-cafe-uskudar": {
+  "url": "https://www.kuzguncuksteakhouse.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "arda-ocakbasi-umraniye": {
+  "url": "https://www.ardaocakbasi.com/",
+  "status": 200,
+  "final": "https://aseocakbasi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "beso-restaurant-bistro-fatih": {
+  "url": "https://www.restaurantbeso.com/",
+  "status": 200,
+  "final": "https://steak-okinawa.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hukumdar-sofrasi-atasehir": {
+  "url": "http://www.hukumdarsofrasi.com/atasehir.aspx",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "34-restaurant-sisli": {
+  "url": "https://www.hyattrestaurants.com/en/dining/turkey/istanbul/turkish-restaurant-in-harbiye-34-restaurant-istanbul",
+  "status": 404,
+  "final": "https://www.hyattrestaurants.com/en/dining/turkey/istanbul/turkish-restaurant-in-harbiye-34-restaurant-istanbul",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "fusion-indian-bakirkoy": {
+  "url": "https://www.fusionindianrestaurant.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "enbey-doner-avcilar": {
+  "url": "https://enbeydoner.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sembol-ocakbasi-bosphorus-beykoz": {
+  "url": "https://www.sembolocakbasi.com.tr/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ezme-durum-evi-bayrampasa": {
+  "url": "https://ezmedurum.com/",
+  "status": 200,
+  "final": "https://ezmedurum.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sirtaki-meyhanesi-beylikduzu": {
+  "url": "https://www.sirtakimeyhanesi.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "adile-hanim-konagi-beyoglu": {
+  "url": "https://adilehanim.com.tr/",
+  "status": 200,
+  "final": "https://www.adilehanim.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ist-too-besiktas": {
+  "url": "https://www.shangri-la.com/tr/istanbul/shangrila/dining/restaurants/ist-too/",
+  "status": 200,
+  "final": "https://www.shangri-la.com/tr/istanbul/shangrila/dining/restaurants/ist-too/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-eyupsultan-kent-lokantasi-eyupsultan": {
+  "url": "https://tesislerimiz.ibb.istanbul/eyupsultan-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/eyupsultan-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "byzantion-bistro-ve-restaurant-fatih": {
+  "url": "http://www.byzantionbistro.com",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "hasirli-konya-mutfagi-buyukcekmece": {
+  "url": "https://www.hasirli.com/",
+  "status": 200,
+  "final": "https://hasirli.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "chef-taus-kadikoy": {
+  "url": "https://cheftaus.com.tr",
+  "status": 200,
+  "final": "https://cheftaus.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "meshur-rumeli-pilavcisi-maltepe": {
+  "url": "https://www.meshurrumelipilavcisi.com.tr/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tuzla-balikcisi-basaksehir-basaksehir": {
+  "url": "https://tuzlabalikcisi.com/",
+  "status": 200,
+  "final": "https://tuzlabalikcisi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "derin-kofte-ve-burger-pendik": {
+  "url": "http://Derinkofteburger.com",
+  "status": 200,
+  "final": "https://derinkofteburger.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "altin-sofra-kucukcekmece": {
+  "url": "https://www.altinsofrakebap.com/",
+  "status": 200,
+  "final": "https://www.altinsofrakebap.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "fish-var-sariyer": {
+  "url": "https://facebook.com/FISHVAR-93243590792",
+  "status": 200,
+  "final": "https://www.facebook.com/fishvarbalikci",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "coffee-noche-bakirkoy": {
+  "url": "https://coffeenoche.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "catalca-gizli-bahce-catalca": {
+  "url": "http://www.catalcagizlibahce.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "zennup-1844-fisekhane-zeytinburnu": {
+  "url": "https://zennup.com.tr/",
+  "status": 200,
+  "final": "https://zennup.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "adile-sultan-ev-yemekleri-uskudar": {
+  "url": "https://adilesultanevyemekleri.com/",
+  "status": 200,
+  "final": "https://adilesultanevyemekleri.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-serifali-umraniye": {
+  "url": "https://www.burgeryiyelim.com/",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sehzadem-arnavutkoy": {
+  "url": "https://sehzademdoner.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "altin-sini-avcilar": {
+  "url": "https://altinsini.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "menemenci-haydar-cakalli-menemeni-silivri": {
+  "url": "https://menemencihaydar.com/",
+  "status": 200,
+  "final": "https://menemencihaydar.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gelik-et-atakoy-istanbul-bakirkoy": {
+  "url": "https://www.gelik.com.tr/EN/index.html",
+  "status": 404,
+  "final": "https://www.gelik.com.tr/EN/index.html",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "antula-gurme-beykoz": {
+  "url": "https://antulagurme.com/",
+  "status": 200,
+  "final": "https://antulagurme.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "efes-pide-ve-lahmacun-sisli": {
+  "url": "https://efespidelahmacun.com.tr/",
+  "status": 200,
+  "final": "https://efespidelahmacun.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bes-bicak-steak-house-kasap-esenyurt": {
+  "url": "https://www.besbicak.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "heybet-basaksehir": {
+  "url": "https://heybet.com.tr/",
+  "status": 200,
+  "final": "https://heybet.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "remzi-et-mangal-eyupsultan": {
+  "url": "https://remzietmangal.com/",
+  "status": 200,
+  "final": "https://remzietmangal.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cabra-loca-coffee-fatih": {
+  "url": "https://cabraloca.istanbul",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "et-inn-kebap-ve-steak-kadikoy": {
+  "url": "https://etinn.com",
+  "status": 200,
+  "final": "https://etinn.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "selim-kebap-kucukcekmece": {
+  "url": "https://www.selimkebap.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pasahan-kunefe-maltepe": {
+  "url": "https://pasahankunefe.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kabadayi-burger-pendik": {
+  "url": "https://www.yemeksepeti.com/kabadayi-burger-pendik-kaynarca-mah-istanbul?affiliateid=ganbr503813&cid=ganbr503813&status=closed",
+  "status": 200,
+  "final": "https://www.yemeksepeti.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gecci-maslak-sariyer": {
+  "url": "https://gecci.org/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "m-point-cafe-and-restaurant-zeytinburnu": {
+  "url": "https://www.m-point.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "antik-koy-catalca": {
+  "url": "https://www.antikkoy.com/",
+  "status": 200,
+  "final": "https://antikkoy.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cc-lider-pide-tepeustu-otoparkli-sube-umraniye": {
+  "url": "https://www.liderpide.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "suna-nin-yeri-uskudar": {
+  "url": "http://www.sunaninyeri.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "nostalji-cafe-ve-restaurant-sile": {
+  "url": "https://nostaljiotel.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "griffin-bomonti-sisli": {
+  "url": "http://www.griffinglobal.net",
+  "status": 200,
+  "final": "http://www.griffinglobal.net/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "baskent-aspava-atasehir": {
+  "url": "https://kgkasapbaskentaspava.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "niwa-tuzla": {
+  "url": "https://www.niwachinesesushi.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cookshop-bayrampasa": {
+  "url": "https://www.cookshop.com.tr/tr",
+  "status": 404,
+  "final": "https://www.cookshop.com.tr/tr",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "konya-mevlana-bahcelievler": {
+  "url": "https://www.konyamevlana.com.tr/",
+  "status": 200,
+  "final": "https://konyamevlana.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gospoda-1882-beykoz": {
+  "url": "http://gospodapolonezkoy.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "aga-ocakbasi-beyoglu": {
+  "url": "https://www.agaocakbasi.com/",
+  "status": 200,
+  "final": "https://www.agaocakbasi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "just-pizza-gayrettepe-besiktas": {
+  "url": "https://www.justpizzatr.com",
+  "status": 200,
+  "final": "https://justpizzatr.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "trakyum-buyukcekmece": {
+  "url": "https://trakyum.com.tr/",
+  "status": 200,
+  "final": "https://trakyum.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "constantine-s-ark-fatih": {
+  "url": "http://www.constantinesark.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "poyraz-balik-maltepe": {
+  "url": "https://poyrazbalik.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nebras-pendik": {
+  "url": "https://www.nebrasyemekmarket.com/",
+  "status": 200,
+  "final": "https://www.nebrasyemekmarket.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gunesin-sofrasi-kadikoy": {
+  "url": "http://gunesinsofrasi.com",
+  "status": 200,
+  "final": "http://gunesinsofrasi.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "tahtalikoy-catalca": {
+  "url": "http://www.tahtalikoy.com.tr/",
+  "status": 200,
+  "final": "http://www.tahtalikoy.com.tr/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "keyf-i-ala-kokorec-umraniye": {
+  "url": "https://keyfialakokorec.com/",
+  "status": 200,
+  "final": "https://keyfialakokorec.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "istanbul-emniyet-mudurlugu-polis-evi-ortakoy-sosyal-tesisleri-besiktas": {
+  "url": "http://www.polisevi.iem.gov.tr",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "kanaat-lokantasi-uskudar": {
+  "url": "http://www.kanaatlokantasi.com.tr",
+  "status": 200,
+  "final": "https://www.kanaatlokantasi.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lunchbox-bayrampasa": {
+  "url": "https://www.cookshop.com.tr/tr",
+  "status": 404,
+  "final": "https://www.cookshop.com.tr/tr",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "huqqabaz-mall-of-istanbul-basaksehir": {
+  "url": "https://huqqabaz.com/tr/countries/turkiye",
+  "status": 200,
+  "final": "https://huqqabaz.com/tr/countries/turkiye/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ghalia-launge-beykoz": {
+  "url": "https://www.ghalia.com.tr/",
+  "status": 200,
+  "final": "https://www.ghalia.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "guler-ocakbasi-restaurant-sisli": {
+  "url": "https://www.gulerocakbasi.com/",
+  "status": 200,
+  "final": "https://gulerocakbasi.com/web/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lipari-besiktas": {
+  "url": "https://www.arnavutkoylipari.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "desi-vibes-fatih": {
+  "url": "http://desivibesrestaurant.com/menu",
+  "status": 200,
+  "final": "https://sa.pxdx.co/menu",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lagos-tuzla": {
+  "url": "https://www.tuzlagos.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ficcin-beyoglu": {
+  "url": "https://www.ficcin.com/",
+  "status": 200,
+  "final": "https://www.ficcin.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sakli-kadeh-maltepe": {
+  "url": "https://saklikadeh.com.tr",
+  "status": 200,
+  "final": "https://saklikadeh.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pecka-et-ve-mangal-kahvalti-catalca": {
+  "url": "http://peckamangalbasi.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "park-balik-cekmekoy-umraniye": {
+  "url": "https://www.parkbalikcekmekoy.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sefa-restaurant-uskudar": {
+  "url": "https://sefarestaurant.com",
+  "status": 200,
+  "final": "https://sefarestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lokanta-by-divan-sisli": {
+  "url": "https://www.divan.com.tr/restoran/lokanta-by-divan-istanbul",
+  "status": 200,
+  "final": "https://www.divan.com.tr/restoran/lokanta-by-divan-istanbul",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sazeli-florya-bakirkoy": {
+  "url": "https://sazeli.com/",
+  "status": 200,
+  "final": "https://sazeli.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "beeves-steakhouse-atasehir": {
+  "url": "https://www.beevesteak.com",
+  "status": 200,
+  "final": "https://www.beevesteak.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "grace-rooftop-restaurant-fatih": {
+  "url": "https://gracerooftop.com/",
+  "status": 200,
+  "final": "https://gracerooftop.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mavi-balik-besiktas": {
+  "url": "https://www.mavibalik.com/",
+  "status": 200,
+  "final": "https://www.mavibalik.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "villa-park-istanbul-beylikduzu": {
+  "url": "https://villaparkwedding.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizza-bulls-pendik": {
+  "url": "https://www.pizzabulls.com/",
+  "status": 200,
+  "final": "https://www.pizzabulls.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kavurmaci-efe-kemal-kadikoy": {
+  "url": "https://kavurmaciefekemal.com.tr",
+  "status": 200,
+  "final": "https://kavurmaciefekemal.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "onda-marina-sariyer": {
+  "url": "http://www.ondamarina.org/",
+  "status": 500,
+  "final": "http://www.ondamarina.org/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "adile-sultan-ev-yemekleri-umraniye-restorani-umraniye": {
+  "url": "https://adilesultanevyemekleri.com/sube/umraniye/",
+  "status": 200,
+  "final": "https://adilesultanevyemekleri.com/sube/umraniye/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "noodle-house-sisli": {
+  "url": "https://www.noodlehouse.com.tr/",
+  "status": 200,
+  "final": "https://www.noodlehouse.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "dayi-kurek-lahmacun-uskudar": {
+  "url": "https://lezzetdayiyaceker.com/subeler/altunizade",
+  "status": 200,
+  "final": "https://lezzetdayiyaceker.com/subeler/altunizade",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "millet-sofrasi-beykoz": {
+  "url": "http://milletsofrasi.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "foca-balik-restaurant-atasehir": {
+  "url": "https://www.focafishgourmet.com/",
+  "status": 404,
+  "final": "https://www.focafishgourmet.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kebap-hocasi-maltepe": {
+  "url": "https://www.kebaphocasi.com/",
+  "status": 200,
+  "final": "https://www.kebaphocasi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "leb-i-derya-beyoglu": {
+  "url": "http://lebiderya.com",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "baran-lahmacun-beyoglu": {
+  "url": "http://baranlahmacun.com",
+  "status": 200,
+  "final": "https://www.baranlahmacun.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nevale-mutfak-besiktas": {
+  "url": "https://nevalemutfak.dijital.menu/",
+  "status": 200,
+  "final": "https://dijital.menu/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "glutensiz-ada-maltepe": {
+  "url": "https://www.glutensizada.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sandal-balik-sariyer": {
+  "url": "https://yenikoysandalbalik.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "the-hunger-umraniye-limonlu-cadde-umraniye": {
+  "url": "https://thehunger.com.tr/",
+  "status": 200,
+  "final": "https://thehunger.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "isola-sisli": {
+  "url": "https://isolabomonto.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mama-bowl-kozyatagi-kadikoy": {
+  "url": "http://mamabowl.net",
+  "status": 200,
+  "final": "https://www.mamabowl.net/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hacibasar-kebap-atasehir": {
+  "url": "https://hacibasar.com/",
+  "status": 200,
+  "final": "https://hacibasar.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bayramoglu-doner-beykoz": {
+  "url": "http://bayramogludoner.com.tr/",
+  "status": 200,
+  "final": "https://bayramogludoner.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cihangir-sosyal-tesisleri-beyoglu": {
+  "url": "https://tesislerimiz.ibb.istanbul",
+  "status": 200,
+  "final": "https://tesislerimiz.ibb.istanbul/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "isil-garden-rooftop-restaurant-ve-turkish-cuisine-fatih": {
+  "url": "https://isilgardenrestaurant.com/tr/",
+  "status": 200,
+  "final": "https://www.isilgardenrestaurant.com/tr",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "revma-balik-besiktas": {
+  "url": "https://www.revmabalik.com/",
+  "status": 200,
+  "final": "https://www.revmabalik.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "misina-kadikoy": {
+  "url": "https://www.misina.com.tr/goztepe.asp",
+  "status": 404,
+  "final": "https://www.misina.com.tr/goztepe.asp",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "maltepe-belediyesi-seyirtepe-sosyal-tesisleri-maltepe": {
+  "url": "https://maltepematas.com.tr/hizmetlerimiz/seyirtepe-sosyal-tesisleri/",
+  "status": 200,
+  "final": "https://maltepematas.com.tr/hizmetlerimiz/seyirtepe-sosyal-tesisleri/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "aslanbey-ciftligi-pendik": {
+  "url": "https://www.aslanbeyciftligi.com/menu/",
+  "status": 200,
+  "final": "https://www.aslanbeyciftligi.com/menu/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tuzdan-balik-restaurant-pendik": {
+  "url": "https://tuzdanbalik.com/",
+  "status": 200,
+  "final": "https://tuzdanbalik.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "huqqa-uskudar": {
+  "url": "https://huqqa.com",
+  "status": 200,
+  "final": "https://www.huqqa.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "donerci-celal-usta-umraniye-atakent-subesi-umraniye": {
+  "url": "https://www.donercicelalusta.com/",
+  "status": 200,
+  "final": "https://www.donercicelalusta.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tarsus-ocakbasi-taksim-sisli": {
+  "url": "https://www.tarsusocakbasi.com/",
+  "status": 200,
+  "final": "https://tarsusocakbasi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "muptela-kahvalti-brunch-atasehir": {
+  "url": "https://muptelakahvalti.com",
+  "status": 200,
+  "final": "https://muptelakahvalti.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ringa-sea-food-besiktas": {
+  "url": "https://ringaseafood.com",
+  "status": 523,
+  "final": "https://ringaseafood.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gardas-cag-kebap-pendik": {
+  "url": "https://gardascagkebap.com/",
+  "status": 200,
+  "final": "https://gardascagkebap.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "musaade-meyhane-kadikoy": {
+  "url": "https://musaademeyhane.com",
+  "status": 200,
+  "final": "https://musaademeyhane.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tiryaki-restorant-sariyer": {
+  "url": "https://tiryakikebap.com/index.php",
+  "status": 200,
+  "final": "https://tiryakiyenikoy.com/index.php",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ara-gurme-lahmacun-pide-kebap-sisli": {
+  "url": "https://www.aragurme.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tugbis-manti-uskudar": {
+  "url": "https://www.tripadvisor.com/Restaurant_Review-g293974-d2568731-Reviews-Tugbis_Manti_Evi-Istanbul.html",
+  "status": 200,
+  "final": "https://www.tripadvisor.com/Restaurant_Review-g293974-d2568731-Reviews-Tugbis_Manti_Evi-Istanbul.html",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pecenek-doner-atasehir": {
+  "url": "https://www.pecenekdoner.com.tr/",
+  "status": 200,
+  "final": "https://www.pecenekdoner.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizeria-quattro-beyoglu": {
+  "url": "https://pizzeriaquattro.com",
+  "status": 200,
+  "final": "https://pizzeriaquattro.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sakhalin-istanbul-besiktas": {
+  "url": "https://sakhalin.rest/istanbul/tr",
+  "status": 200,
+  "final": "https://sakhalin.rest/istanbul/tr",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "olivia-s-pizzeria-kadikoy": {
+  "url": "http://www.olivi.as",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "ortaklar-kebab-lahmacun-fatih": {
+  "url": "https://wa.me/message/VNZ7REUFZZONL1",
+  "status": 200,
+  "final": "https://api.whatsapp.com/message/VNZ7REUFZZONL1?autoload=1&app_absent=0",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kiss-the-frog-seafood-brasserie-sariyer": {
+  "url": "https://kissthefrog.com.tr",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "vagabondo-s-pizzeria-sariyer": {
+  "url": "https://vagabondosrest.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hook-balik-pendik": {
+  "url": "https://www.hookbalik.com/",
+  "status": 200,
+  "final": "https://www.hookbalik.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizzeria-pera-beyoglu": {
+  "url": "https://www.pizzeriapera.com/",
+  "status": 200,
+  "final": "https://www.pizzeriapera.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "baklava-hanem-sisli": {
+  "url": "https://www.baklavahanem.com.tr/",
+  "status": 200,
+  "final": "https://www.baklavahanem.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "zeynel-gulkardesler-kebap-salonu-uskudar": {
+  "url": "https://zeynelkebap.com/",
+  "status": 200,
+  "final": "https://zeynelkebap.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "onurbalaban-kadikoy": {
+  "url": "https://www.balabanvedatusta.com/",
+  "status": 200,
+  "final": "https://www.balabanvedatusta.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "seven-hills-restaurant-fatih": {
+  "url": "https://www.sevenhillsrestaurant.com/",
+  "status": 200,
+  "final": "https://www.sevenhillsrestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "intiba-doner-maltepe": {
+  "url": "https://www.intiba.com.tr/",
+  "status": 200,
+  "final": "https://www.intiba.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "yenikoy-kavak-balikcisi-sariyer": {
+  "url": "https://kavakbalikcisi.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "zhu-istanbul-sisli": {
+  "url": "https://www.zhuistanbul.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sushi-ve-spice-besiktas": {
+  "url": "https://sushiandspice.com/",
+  "status": 200,
+  "final": "https://www.sushiandspice.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "trattoria-carbonara-besiktas": {
+  "url": "https://www.carbonararestaurant.com",
+  "status": 200,
+  "final": "https://www.carbonararestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizza-pieza-by-divan-kadikoy": {
+  "url": "https://www.divan.com.tr/restoran/pizza-pieza-by-divan",
+  "status": 200,
+  "final": "https://www.divan.com.tr/restoran/pizza-pieza-by-divan",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "miss-pizza-sishane-beyoglu": {
+  "url": "http://www.misspizza.com.tr/en",
+  "status": 404,
+  "final": "http://www.misspizza.com.tr/en",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "yenikoy-lokantasi-sariyer": {
+  "url": "https://facebook.com/yenikoylokantasi",
+  "status": 200,
+  "final": "https://www.facebook.com/yenikoylokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ercan-pizza-pendik": {
+  "url": "https://www.ercanpizza.com/",
+  "status": 200,
+  "final": "https://www.ercanpizza.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nizam-pide-sisli": {
+  "url": "https://www.nizampide.com/",
+  "status": 200,
+  "final": "https://www.nizampide.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ethem-efendi-kahvalti-atasehir": {
+  "url": "https://ethemefendikahvalti.com/subeler/atasehir/",
+  "status": 200,
+  "final": "https://ethemefendikahvalti.com/subeler/atasehir/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "whisper-kitchen-bar-besiktas": {
+  "url": "https://whisperistanbul.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nezih-kebap-yuvalama-sariyer": {
+  "url": "https://www.nezihkebap.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gunaydin-kofte-doner-pendik": {
+  "url": "https://www.gunaydinet.com",
+  "status": 404,
+  "final": "https://www.gunaydinet.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizza-v-kadikoy": {
+  "url": "https://v.pizza/",
+  "status": 200,
+  "final": "https://v.pizza/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mrjade-italy-istanbul-beyoglu": {
+  "url": "https://mrjadeitaly.com",
+  "status": 200,
+  "final": "https://mrjadeitaly.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "karkas-ocakbasi-sariyer": {
+  "url": "https://www.karkasocakbasi.com/",
+  "status": 200,
+  "final": "https://www.karkasocakbasi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sinop-manti-besiktas": {
+  "url": "https://www.sinopmanti.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bolpi-gurme-pide-ve-lahmacun-sisli": {
+  "url": "https://www.yemeksepeti.com/restaurant/pli0/bolpi-gurme-pide-and-lahmacun",
+  "status": 200,
+  "final": "https://www.yemeksepeti.com/restaurant/pli0/bolpi-gurme-pide-and-lahmacun",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "vegan-dukkan-lokanta-beyoglu": {
+  "url": "https://vegandukkanlokanta.com/",
+  "status": 200,
+  "final": "https://www.vegandukkanlokanta.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizzeria-il-pellicano-kadikoy": {
+  "url": "https://www.pizzeriailpellicano.com/",
+  "status": 200,
+  "final": "https://www.pizzeriailpellicano.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "adab-eski-usul-meyhane-sariyer": {
+  "url": "https://adabmeyhanesi.com/",
+  "status": 200,
+  "final": "https://adabmeyhanesi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sa-va-anatolian-breakfast-house-beyoglu": {
+  "url": "https://www.savaanatolianbreakfasthouse.com",
+  "status": 200,
+  "final": "https://www.savaanatolianbreakfasthouse.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kurucesme-balik-besiktas": {
+  "url": "https://kurucesmebalik.com/",
+  "status": 200,
+  "final": "https://kurucesmebalik.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizza-rucola-pendik": {
+  "url": "https://www.pizzarucola.com",
+  "status": 200,
+  "final": "https://www.pizzarucola.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "uzunlar-kebap-atasehir": {
+  "url": "https://uzunlarkebap.com/",
+  "status": 200,
+  "final": "https://uzunlarkebap.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bysteak-sariyer": {
+  "url": "http://www.bysteak.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "donerci-ali-usta-atasehir-atasehir": {
+  "url": "https://www.aliusta.com.tr/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pide-ban-sariyer": {
+  "url": "https://www.pideban.com.tr/",
+  "status": 200,
+  "final": "https://www.pideban.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-pendik": {
+  "url": "https://www.burgeryiyelim.com/",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hanedan-et-besiktas": {
+  "url": "http://hanedanrestaurant.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "gardas-cag-kebap-atasehir": {
+  "url": "https://gardascagkebap.com",
+  "status": 200,
+  "final": "https://gardascagkebap.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pidem-fatih": {
+  "url": "https://pidem.com.tr/",
+  "status": 200,
+  "final": "https://www.pidem.com.tr:443/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mandi-sebam-fatih": {
+  "url": "https://www.mandisebam.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mahmut-bey-doner-pendik": {
+  "url": "https://mahmutbeydoner.com/",
+  "status": 200,
+  "final": "https://mahmutbeydoner.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tatar-salim-kadikoy": {
+  "url": "http://tatarsalim.com.tr",
+  "status": 200,
+  "final": "http://www.tatarsalim.com.tr/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "takanik-balik-park-sariyer": {
+  "url": "https://takanik.com.tr/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "le-mejnun-ocakbasi-atasehir": {
+  "url": "https://mejnunocakbasi.com/",
+  "status": 200,
+  "final": "https://expireddomains.com/domain/mejnunocakbasi.com?utm_source=redi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sushico-pendik": {
+  "url": "https://www.sushico.com.tr",
+  "status": 200,
+  "final": "https://www.sushico.com.tr/tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sanat-ocakbasi-atasehir": {
+  "url": "https://www.sanatocakbasi.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pide-nova-kadikoy": {
+  "url": "http://www.novapide.com/",
+  "status": 0,
+  "final": null,
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "uzunya-sariyer": {
+  "url": "https://www.uzunya.com/",
+  "status": 200,
+  "final": "https://www.uzunya.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "chn-doner-pendik": {
+  "url": "http://www.chndoner.com/",
+  "status": 200,
+  "final": "http://www.chndoner.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "komun-beyoglu": {
+  "url": "https://www.komunistanbul.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "zuga-beach-ve-restaurant-sariyer": {
+  "url": "https://www.zugabeachrestaurant.com",
+  "status": 200,
+  "final": "https://www.zugabeachrestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "seo-kaos-atasehir": {
+  "url": "https://www.seokaos.com",
+  "status": 200,
+  "final": "https://www.seokaos.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ab-bas-waffle-besiktas": {
+  "url": "https://abbaswaffle.com.tr",
+  "status": 200,
+  "final": "https://abbaswaffle.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kardesler-kebap-ve-cafe-beyoglu": {
+  "url": "http://kardeslercihangir.com/",
+  "status": 200,
+  "final": "https://www.kardeslercihangir.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kilisli-omer-usta-atasehir": {
+  "url": "https://www.yemeksepeti.com/restaurant/zyc5/kilisli-omer-usta",
+  "status": 200,
+  "final": "https://www.yemeksepeti.com/restaurant/zyc5/kilisli-omer-usta",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nelipide-kadikoy": {
+  "url": "https://www.nelipide.com/",
+  "status": 200,
+  "final": "https://nelipide.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "oligark-istanbul-besiktas": {
+  "url": "https://oligarkistanbul.com/",
+  "status": 200,
+  "final": "https://oligarkistanbul.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pizzateo-kadikoy": {
+  "url": "https://www.pizzateo.com.tr/",
+  "status": 200,
+  "final": "https://www.pizzateo.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "habil-pizza-beykoz": {
+  "url": "http://www.habilpizza.com/",
+  "status": 200,
+  "final": "http://www.habilpizza.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "blum-coffee-house-besiktas": {
+  "url": "https://www.blumcoffeehouse.com/",
+  "status": 200,
+  "final": "https://www.blumcoffeehouse.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ora-coffee-besiktas": {
+  "url": "https://oracoffee.co",
+  "status": 200,
+  "final": "https://oracoffee.co/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "1kahve-beyoglu": {
+  "url": "http://www.1-kahve.bussiness.site",
+  "status": 200,
+  "final": "http://www.1-kahve.bussiness.site/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "360-istanbul-beyoglu": {
+  "url": "https://360istanbul.com/",
+  "status": 200,
+  "final": "https://360istanbul.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "coffee-sapiens-beyoglu": {
+  "url": "https://www.coffeesapiens.com/",
+  "status": 200,
+  "final": "https://www.coffeesapiens.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kavacoffee-beyoglu": {
+  "url": "https://kavacoffeeroasting.com/",
+  "status": 200,
+  "final": "https://kavacoffeeroasting.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "falafel-house-beyoglu": {
+  "url": "https://www.falafelhouse.net/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "peyra-gelato-beyoglu": {
+  "url": "https://www.peyragalata.com",
+  "status": 200,
+  "final": "https://peyragalata.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "varuna-gezgin-beyoglu": {
+  "url": "https://varunagezgin.com/",
+  "status": 200,
+  "final": "https://varunagezgin.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "yigit-sofram-beyoglu": {
+  "url": "https://yigitsoframkahvalti.com",
+  "status": 200,
+  "final": "https://yigitsoframkahvalti.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "postane-cafe-beyoglu": {
+  "url": "https://postane.co/mekanlar/cafe",
+  "status": 200,
+  "final": "https://postane.co/mekanlar/cafe",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "aga-kapisi-fatih": {
+  "url": "https://agakapisi.com.tr/",
+  "status": 200,
+  "final": "https://www.agakapisi.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "brasserie-prime-kadikoy": {
+  "url": "https://brasserieprime.com.tr/",
+  "status": 200,
+  "final": "https://brasserieprime.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "black-swan-coffee-kadikoy": {
+  "url": "https://blackswancoffeetr.com/",
+  "status": 200,
+  "final": "https://blackswancoffeetr.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kaffa-miro-fatih": {
+  "url": "https://kaffamiro.com/",
+  "status": 200,
+  "final": "https://kaffamiro.com/login",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "semaver-fatih": {
+  "url": "https://semavercafe.com/",
+  "status": 200,
+  "final": "https://www.semavercafe.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gizia-brasserie-kadikoy": {
+  "url": "https://www.giziabrasserie.com/tr/lokasyonlar/suadiye/",
+  "status": 200,
+  "final": "https://www.giziabrasserie.com/tr/lokasyonlar/suadiye/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "carmelo-kadikoy": {
+  "url": "https://coffeecarmelo.com/locations/carmelo-coffee-istanbul-kadikoy-muhurdar-cadde",
+  "status": 200,
+  "final": "https://coffeecarmelo.com/locations/carmelo-coffee-istanbul-kadikoy-muhurdar-cadde",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "concetto-di-caffe-kadikoy": {
+  "url": "https://www.concettodicaffe.com.tr/",
+  "status": 200,
+  "final": "https://www.concettodicaffe.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "glowing-forest-shop-ve-coffee-kadikoy": {
+  "url": "https://www.glowingforest.com/",
+  "status": 200,
+  "final": "https://www.glowingforest.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "j-burger-kadikoy": {
+  "url": "https://jburger.com.tr/",
+  "status": 200,
+  "final": "https://jburger.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tarhun-firin-besiktas": {
+  "url": "https://tarhunfirin.com/anasayfa/",
+  "status": 200,
+  "final": "https://tarhunfirin.com/anasayfa/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "goblin-oyun-kulubu-kadikoy": {
+  "url": "https://www.goblin-store.com/",
+  "status": 200,
+  "final": "https://goblin-store.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mabel-cikolata-kadikoy": {
+  "url": "https://www.mabel.com.tr/tr/magazalarimiz",
+  "status": 200,
+  "final": "https://www.mabel.com.tr/tr/magazalarimiz",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "grandma-suadiye-kadikoy": {
+  "url": "https://www.grandma.com.tr/",
+  "status": 200,
+  "final": "https://www.grandma.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "kernel-coffee-roasters-kadikoy": {
+  "url": "https://kernelcoffee.co",
+  "status": 200,
+  "final": "https://kernelcoffee.co/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mantimia-kadikoy": {
+  "url": "https://www.mantimia.com",
+  "status": 200,
+  "final": "https://www.mantimia.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "juan-valdez-coffee-kadikoy": {
+  "url": "https://www.juanvaldezcoffee.com.tr/sahrayicedit-subesi",
+  "status": 200,
+  "final": "https://juanvaldezcoffee.com.tr/magazalarimiz/sahrayicedit",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "moda-cikolatacisi-kadikoy": {
+  "url": "https://modacikolatacisi.com/",
+  "status": 200,
+  "final": "https://modacikolatacisi.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sagra-kadikoy": {
+  "url": "https://sagra.com.tr",
+  "status": 200,
+  "final": "https://sagra.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "santral-coffee-house-kadikoy": {
+  "url": "http://www.santralcoffee.com/",
+  "status": 200,
+  "final": "http://www.santralcoffee.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "rafine-espresso-bar-kadikoy": {
+  "url": "https://www.rafineespressobar.com/",
+  "status": 200,
+  "final": "https://www.rafineespressobar.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hugg-coffee-kadikoy": {
+  "url": "https://www.huggcoffee.co/",
+  "status": 200,
+  "final": "https://www.huggcoffee.co/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "superr-taco-kadikoy": {
+  "url": "https://superrtaco.com.tr/",
+  "status": 200,
+  "final": "https://superrtaco.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "youme-smash-burgers-kadikoy": {
+  "url": "https://youmecadde.com",
+  "status": 200,
+  "final": "https://youmecadde.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "rune-coffee-roastery-maltepe": {
+  "url": "https://www.runecoffeeroastery.com/",
+  "status": 200,
+  "final": "https://www.runecoffeeroastery.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "voi-cadde-kadikoy": {
+  "url": "https://www.voi.com.tr",
+  "status": 200,
+  "final": "https://www.voi.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "pardon-boulangerie-sariyer": {
+  "url": "https://pardonboulangerie.com.tr/",
+  "status": 200,
+  "final": "https://pardonboulangerie.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cafe-pont-sisli": {
+  "url": "https://cafepont.com",
+  "status": 200,
+  "final": "https://cafepont.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ercan-burger-pendik": {
+  "url": "https://www.ercanburger.com",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-arnavutkoy-kent-lokantasi-demircan-sokak-arnavutkoy": {
+  "url": "https://tesislerimiz.ibb.istanbul/arnavutkoy-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/arnavutkoy-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hakiki-kebap-uskudar": {
+  "url": "https://www.hakikikebap.com/",
+  "status": 200,
+  "final": "https://www.hakikikebap.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-avcilar-kent-lokantasi-samli-sokak-avcilar": {
+  "url": "https://tesislerimiz.ibb.istanbul/avcilar-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/avcilar-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-catalca-kent-lokantasi-ataturk-caddesi-catalca": {
+  "url": "https://tesislerimiz.ibb.istanbul/catalca-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/catalca-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-sultanahmet-kent-lokantasi-salkim-sogut-sk-fatih": {
+  "url": "https://tesislerimiz.ibb.istanbul/sultanahmet-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/sultanahmet-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-capa-kent-lokantasi-capa-sehremini-mahallesi-turgut-ozal-millet-caddesi-fatih": {
+  "url": "https://tesislerimiz.ibb.istanbul/capa-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/capa-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-pendik-kent-lokantasi-bati-mah-sabri-taskin-cad-pendik": {
+  "url": "https://tesislerimiz.ibb.istanbul/pendik-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/pendik-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-safa-tepesi-sosyal-tesisleri-mevlana-cd-sancaktepe": {
+  "url": "https://tesislerimiz.ibb.istanbul/safa-tepesi-sosyal-tesisi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/safa-tepesi-sosyal-tesisi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "vardarli-dondurma-kadikoy": {
+  "url": "http://www.vardarlidondurma.com/",
+  "status": 200,
+  "final": "http://www.vardarlidondurma.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "bosphorus-brewing-company-sisli": {
+  "url": "https://bbcist.com/",
+  "status": 200,
+  "final": "https://bbcist.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-hisarustu-kent-lokantasi-hisarustu-nispetiye-caddesi-sariyer": {
+  "url": "https://tesislerimiz.ibb.istanbul/hisarustu-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/hisarustu-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-sultanbeyli-kent-lokantasi-ataturk-cd-sultanbeyli": {
+  "url": "https://tesislerimiz.ibb.istanbul/sultanbeyli-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/sultanbeyli-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-sultangazi-kent-lokantasi-ugur-mumcu-mah-hoca-ahmet-yesevi-cad-sultangazi": {
+  "url": "https://tesislerimiz.ibb.istanbul/sultangazi-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/sultangazi-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-umraniye-kent-lokantasi-natoyolu-caddesi-umraniye": {
+  "url": "https://tesislerimiz.ibb.istanbul/umraniye-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/umraniye-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "eagle-chinese-gastro-ve-sushi-sisli": {
+  "url": "https://eaglechinese.com.tr",
+  "status": 200,
+  "final": "https://eaglechinese.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sabirtasi-restoran-beyoglu": {
+  "url": "https://www.sabirtasi.com.tr/",
+  "status": 200,
+  "final": "https://www.sabirtasi.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-kucukcekmece-kent-lokantasi-gultepe-mahallesi-kucukcekmece": {
+  "url": "https://tesislerimiz.ibb.istanbul/kucukcekmece-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/kucukcekmece-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-uskudar-kent-lokantasi-mimar-sinan-mahallesi-uskudar": {
+  "url": "https://tesislerimiz.ibb.istanbul/uskudar-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/uskudar-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-sancaktepe-kent-lokantasi-termal-sk-sancaktepe": {
+  "url": "https://tesislerimiz.ibb.istanbul/sancaktepe-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/sancaktepe-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-tuzla-kent-lokantasi-postane-tuzla": {
+  "url": "https://tesislerimiz.ibb.istanbul/tuzla-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/tuzla-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "monstera-coffee-company-uskudar": {
+  "url": "https://menum.co/MONSTERA-COFFEE-COMPANY",
+  "status": 200,
+  "final": "https://menum.co/MONSTERA-COFFEE-COMPANY",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-kent-lokantasi-incirtepe-mahallesi-esenyurt": {
+  "url": "https://tesislerimiz.ibb.istanbul/esenyurt-kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/esenyurt-kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hd-iskender-yenisehir-mahallesi-pendik": {
+  "url": "https://www.hdiskender.com/",
+  "status": 200,
+  "final": "https://www.hdiskender.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cunda-balik-kadikoy": {
+  "url": "https://www.cundabalik.com.tr/",
+  "status": 404,
+  "final": "https://www.cundabalik.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "gallada-by-fatih-tutak-beyoglu": {
+  "url": "https://www.galladaistanbul.com/",
+  "status": 200,
+  "final": "https://www.galladaistanbul.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "turk-fatih-tutak-sisli": {
+  "url": "https://www.turkft.com/",
+  "status": 200,
+  "final": "https://www.turkft.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cuma-beyoglu": {
+  "url": "https://cuma.cc/",
+  "status": 200,
+  "final": "https://cuma.cc/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "aida-vino-e-cucina-kadikoy": {
+  "url": "https://aidavinoecucina.com/",
+  "status": 200,
+  "final": "https://aidavinoecucina.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ibb-bagcilar-kent-lokantasi-cinar-mahallesi-bagcilar": {
+  "url": "https://tesislerimiz.ibb.istanbul/kent-lokantasi/",
+  "status": 404,
+  "final": "https://tesislerimiz.ibb.istanbul/kent-lokantasi",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sans-restaurant-besiktas": {
+  "url": "https://www.sansrestaurant.com/",
+  "status": 200,
+  "final": "https://www.sansrestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sunset-grill-ve-bar-besiktas": {
+  "url": "https://www.sunsetgrillbar.com/",
+  "status": 200,
+  "final": "https://www.sunsetgrillbar.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "etiler-marmaris-mimar-sinan-mahallesi-cekmekoy": {
+  "url": "https://www.etilermarmaris.com.tr/",
+  "status": 200,
+  "final": "https://etilermarmaris.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "alaf-besiktas": {
+  "url": "https://www.alafkurucesme.com/",
+  "status": 200,
+  "final": "https://www.alafkurucesme.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "1924-istanbul-beyoglu": {
+  "url": "https://www.1924istanbul.com/",
+  "status": 200,
+  "final": "https://1924istanbul.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "deraliye-fatih": {
+  "url": "https://deraliyerestaurant.com/",
+  "status": 200,
+  "final": "https://deraliyerestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "aseka-beyoglu": {
+  "url": "https://www.aseka.co/",
+  "status": 200,
+  "final": "https://www.aseka.co/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "terrazza-italia-besiktas": {
+  "url": "https://www.eataly.com.tr/tr/terrazza-italia",
+  "status": 200,
+  "final": "https://www.eataly.com.tr/tr/terrazza-italia",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "murver-beyoglu": {
+  "url": "https://www.murverrestaurant.com/",
+  "status": 200,
+  "final": "https://www.murverrestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "yanyali-fehmi-lokantasi-kadikoy": {
+  "url": "https://www.fehmilokantasi.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "calipso-fish-maltepe": {
+  "url": "https://www.calipsorestaurant.com/",
+  "status": 200,
+  "final": "https://www.calipsorestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mutfakkoz-kadikoy": {
+  "url": "https://mutfakkoz.com/",
+  "status": 200,
+  "final": "https://mutfakkoz.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tavaci-recep-usta-bostanci-maltepe": {
+  "url": "https://tavacirecepusta.com.tr/",
+  "status": 200,
+  "final": "https://tavacirecepusta.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "maromi-istanbul-sisli": {
+  "url": "https://www.divan.com.tr/restoran/maromi-istanbul",
+  "status": 200,
+  "final": "https://www.divan.com.tr/restoran/maromi-istanbul",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "fauna-atasehir": {
+  "url": "https://www.fauna.com.tr/",
+  "status": 200,
+  "final": "https://www.fauna.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ulus-29-besiktas": {
+  "url": "https://ulus29.com/",
+  "status": 200,
+  "final": "https://ulus29.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "matbah-fatih": {
+  "url": "https://www.matbahrestaurant.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "aheste-beyoglu": {
+  "url": "https://ahesterestaurant.com/",
+  "status": 200,
+  "final": "https://ahesterestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "develi-samatya-fatih": {
+  "url": "https://www.develi1912.com/content/restaurant2/samatya.html",
+  "status": 200,
+  "final": "https://www.develi1912.com/content/restaurant2/samatya.html",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "khorasani-fatih": {
+  "url": "https://www.khorasanikebab.com/",
+  "status": 200,
+  "final": "https://khorasanikebab.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "develi-florya-bakirkoy": {
+  "url": "https://www.develi1912.com/content/restaurant2/florya.html",
+  "status": 200,
+  "final": "https://www.develi1912.com/content/restaurant2/florya.html",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "park-fora-besiktas": {
+  "url": "https://www.parkfora.com/",
+  "status": 200,
+  "final": "https://www.parkfora.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lacivert-beykoz": {
+  "url": "https://www.lacivertrestaurant.com/",
+  "status": 200,
+  "final": "https://www.lacivertrestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hayvore-beyoglu": {
+  "url": "https://www.hayvore.com.tr/iletisim/",
+  "status": 200,
+  "final": "https://www.hayvore.com.tr/iletisim/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hatay-medeniyetler-sofrasi-taksim-beyoglu": {
+  "url": "https://www.hataymedeniyetlersofrasi.com.tr/tr/iletisim-bilgileri",
+  "status": 200,
+  "final": "https://www.hataymedeniyetlersofrasi.com.tr/tr/iletisim-bilgileri",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "ali-ocakbasi-karakoy-beyoglu": {
+  "url": "https://www.aliocakbasi.com/post/istanbul-karakoy/38.html",
+  "status": 200,
+  "final": "https://www.aliocakbasi.com/post/istanbul-karakoy/38.html",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sirali-kebap-etiler-besiktas": {
+  "url": "https://www.siralikebap.com/",
+  "status": 200,
+  "final": "https://www.siralikebap.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tike-restoran-besiktas": {
+  "url": "https://tike.com.tr/",
+  "status": 200,
+  "final": "https://tike.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tahtasaray-besiktas": {
+  "url": "https://tahtasaray.com",
+  "status": 200,
+  "final": "https://www.tahtasaray.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "no-19-dining-beyoglu": {
+  "url": "http://no19dining.com/",
+  "status": 200,
+  "final": "https://no19dining.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "house-of-b-kadikoy": {
+  "url": "https://houseofbturkey.com",
+  "status": 200,
+  "final": "https://houseofbturkey.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "sade-bes-denizler-mutfagi-sisli": {
+  "url": "https://sadebesdenizler.com/",
+  "status": 200,
+  "final": "https://sadebesdenizler.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "adam-s-pizza-kadikoy": {
+  "url": "https://www.adamspizza.com",
+  "status": 200,
+  "final": "https://www.adamspizza.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "rumelihisari-iskele-sariyer": {
+  "url": "https://iskelerumelihisari.com/",
+  "status": 200,
+  "final": "https://iskelerumelihisari.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "koco-kadikoy": {
+  "url": "https://www.kocorestaurant.com/",
+  "status": 200,
+  "final": "https://www.kocorestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "leylak-kadikoy": {
+  "url": "https://www.leylakkitchen.com/",
+  "status": 200,
+  "final": "https://www.leylakkitchen.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "perran-ocakbasi-kadikoy": {
+  "url": "https://www.perranocakbasi.com.tr/tr/",
+  "status": 200,
+  "final": "https://www.perranocakbasi.com.tr/tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "vefali-kofteci-kadikoy": {
+  "url": "http://vefalikofteci.com.tr/",
+  "status": 200,
+  "final": "http://vefalikofteci.com/",
+  "https": false,
+  "tarih": "2026-11-12"
+ },
+ "guney-beyoglu": {
+  "url": "https://www.guneyrestaurant.com/",
+  "status": 200,
+  "final": "https://guneyrestaurant.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "koz-kanat-kartal": {
+  "url": "https://kozkanat.com/kartal",
+  "status": 200,
+  "final": "https://kozkanat.com/kartal",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nalia-karadeniz-mutfagi-atasehir": {
+  "url": "https://www.nalia.com.tr/subelerimiz/",
+  "status": 200,
+  "final": "https://nalia.com.tr/subelerimiz/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hatay-gurme-atasehir": {
+  "url": "https://www.hataygurme.com.tr/",
+  "status": 200,
+  "final": "https://www.hataygurme.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "mis-adana-pendik": {
+  "url": "https://www.misadana.com/",
+  "status": 200,
+  "final": "https://www.misadana.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "koyum-pide-kadikoy": {
+  "url": "https://www.koyumpide.com/",
+  "status": 200,
+  "final": "https://www.koyumpide.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "zeytin-ocakbasi-kadikoy": {
+  "url": "https://zeytinbostanci.com/",
+  "status": 200,
+  "final": "https://zeytinbostanci.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hd-iskender-topcular-eyupsultan": {
+  "url": "https://www.hdiskender.com/restoranlarimiz",
+  "status": 200,
+  "final": "https://www.hdiskender.com/restoranlarimiz",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "japon-erdal-beyoglu": {
+  "url": "https://japonerdal.com/",
+  "status": 200,
+  "final": "https://japonerdal.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hd-iskender-fisekhane-caddesi-bakirkoy": {
+  "url": "https://www.hdiskender.com/restoranlarimiz",
+  "status": 200,
+  "final": "https://www.hdiskender.com/restoranlarimiz",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hd-iskender-suleyman-demirel-bulvari-basaksehir": {
+  "url": "https://www.hdiskender.com/restoranlarimiz",
+  "status": 200,
+  "final": "https://www.hdiskender.com/restoranlarimiz",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hd-iskender-cobancesme-kosuyolu-bulvari-bakirkoy": {
+  "url": "https://www.hdiskender.com/restoranlarimiz",
+  "status": 200,
+  "final": "https://www.hdiskender.com/restoranlarimiz",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hd-iskender-fatih-sultan-mehmet-umraniye": {
+  "url": "https://www.hdiskender.com/restoranlarimiz",
+  "status": 200,
+  "final": "https://www.hdiskender.com/restoranlarimiz",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "hd-iskender-mimar-sinan-uskudar": {
+  "url": "https://www.hdiskender.com/restoranlarimiz",
+  "status": 200,
+  "final": "https://www.hdiskender.com/restoranlarimiz",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "usta-donerci-dikilitas-besiktas": {
+  "url": "https://www.ustadonerci.com/tr/iletisim/",
+  "status": 200,
+  "final": "https://www.ustadonerci.com/tr/iletisim/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "cookshop-kennedy-caddesi-zeytinburnu": {
+  "url": "https://www.cookshop.com.tr/tr/subeler/fisekhane",
+  "status": 200,
+  "final": "https://www.cookshop.com.tr/tr/subeler/fisekhane",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bursa-kebap-evi-sehit-metin-kaya-sk-eyupsultan": {
+  "url": "https://www.bursakebapevi.com/restoranlar/",
+  "status": 200,
+  "final": "https://www.bursakebapevi.com/restoranlar/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-atakoy-1-kisim-bakirkoy": {
+  "url": "https://www.burgeryiyelim.com/restoranlar",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/restoranlar",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-kocatepe-bayrampasa": {
+  "url": "https://www.burgeryiyelim.com/restoranlar",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/restoranlar",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bedri-usta-ciftehavuzlar-kadikoy": {
+  "url": "https://bedriusta.com/ciftehavuzlar/",
+  "status": 200,
+  "final": "https://bedriusta.com/ciftehavuzlar/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "bedri-usta-kalamis-kadikoy": {
+  "url": "https://bedriusta.com/kalamis/",
+  "status": 200,
+  "final": "https://bedriusta.com/kalamis/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-ikitelli-osb-basaksehir": {
+  "url": "https://www.burgeryiyelim.com/restoranlar",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/restoranlar",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-baglarbasi-maltepe": {
+  "url": "https://www.burgeryiyelim.com/restoranlar",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/restoranlar",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-ferhatpasa-atasehir": {
+  "url": "https://www.burgeryiyelim.com/restoranlar",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/restoranlar",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-osmaniye-bakirkoy": {
+  "url": "https://www.burgeryiyelim.com/restoranlar",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/restoranlar",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "topaz-beyoglu": {
+  "url": "https://www.topazistanbul.com/",
+  "status": 200,
+  "final": "https://www.topazistanbul.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "lokanta-1741-fatih": {
+  "url": "https://lokanta1741.com/",
+  "status": 200,
+  "final": "https://lokanta1741.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "okra-istanbul-beyoglu": {
+  "url": "https://www.okraistanbul.com/",
+  "status": 200,
+  "final": "https://www.okraistanbul.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "burger-yiyelim-tomtom-beyoglu": {
+  "url": "https://www.burgeryiyelim.com/restoranlar",
+  "status": 200,
+  "final": "https://www.burgeryiyelim.com/restoranlar",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "liman-istanbul-beyoglu": {
+  "url": "https://www.limanistanbul.com/",
+  "status": 200,
+  "final": "https://www.limanistanbul.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "nobu-istanbul-sisli": {
+  "url": "https://www.noburestaurants.com/istanbul/nobu-istanbul-japanese-restaurant-bar-and-lounge/",
+  "status": 200,
+  "final": "https://www.noburestaurants.com/istanbul/nobu-istanbul-japanese-restaurant-bar-and-lounge",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "biz-istanbul-beyoglu": {
+  "url": "https://www.bizistanbul.com.tr/",
+  "status": 200,
+  "final": "https://www.bizistanbul.com.tr/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "yerinde-pide-kadikoy": {
+  "url": "https://yerindepide.com/",
+  "status": 200,
+  "final": "https://yerindepide.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tugra-restaurant-besiktas": {
+  "url": "https://tugrarestaurant.com.tr/en/",
+  "status": 200,
+  "final": "https://tugrarestaurant.com.tr/en/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "borsa-restaurant-adile-sultan-uskudar": {
+  "url": "https://www.borsarestaurants.com/",
+  "status": 200,
+  "final": "https://www.borsarestaurants.com/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "zuma-istanbul-sariyer": {
+  "url": "https://zumarestaurant.com/locations/istanbul/",
+  "status": 200,
+  "final": "https://www.zumarestaurant.com/en/istanbul",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "haci-abdullah-beyoglu": {
+  "url": "https://haciabdullah.com.tr/iletisim/",
+  "status": 200,
+  "final": "https://haciabdullah.com.tr/iletisim/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "itsumi-besiktas": {
+  "url": "https://www.itsumijp.com/contact/",
+  "status": 200,
+  "final": "https://www.itsumijp.com/contact/",
+  "https": true,
+  "tarih": "2026-11-12"
+ },
+ "tatbak-sisli": {
+  "url": "https://www.tatbak.com/",
+  "status": 0,
+  "final": null,
+  "https": true,
+  "tarih": "2026-11-12"
+ }
+}
