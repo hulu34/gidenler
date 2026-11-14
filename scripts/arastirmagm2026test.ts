@@ -1,5 +1,5 @@
 /* Gault&Millau 2026 kanıtlı aday araştırması — aday dosyasının kalite testi (yalnız okur; katalog dosyalarına yazmaz).
-   1. Katalog korunur: data/real/venues.json + isletme.json taban SHA ile aynı; Production 793 kayıt.
+   1. Katalog korunur: data/real/venues.json + isletme.json taban SHA ile aynı; kayıt sayısı tabandan okunur (793 + PR #49'un 8 kaydı = 801).
    2. Güçlü aday standardı: ad, 39 ilçeden biri, kapı numaralı adres, en az bir güncel resmî kaynak + kontrol tarihi, tür ("Restoran" değil), güven "güçlü".
    3. Tekillik: güçlü adaylar Production'la (ad + ilçe) ve kendi aralarında çakışmaz; PR #48 dalı varsa onun havuzuyla da.
    4. Puan/yorum yok: rehber puanı, Google verisi, yorum alanı saklanmaz.
@@ -23,7 +23,8 @@ type K = { id: string; ad: string; ilce: string | null; adres?: string; durum: s
 t("venues.json taban ile aynı", readFileSync("data/real/venues.json", "utf8") === git(TABAN, "data/real/venues.json"));
 t("isletme.json taban ile aynı", readFileSync("data/real/isletme.json", "utf8") === git(TABAN, "data/real/isletme.json"));
 const PROD = [...J("data/real/venues.json"), ...J("data/real/isletme.json")] as { name: string; district: string; slug: string }[];
-t("Production 793 kayıt", PROD.length === 793, PROD.length);
+const TABAN_SAYI = JSON.parse(git(TABAN, "data/real/venues.json")).length + JSON.parse(git(TABAN, "data/real/isletme.json")).length;
+t(`Production kayıt sayısı tabanla aynı (${TABAN_SAYI})`, PROD.length === TABAN_SAYI && TABAN_SAYI >= 793, PROD.length);
 
 const doc = J("data/arastirma/gm2026/adaylar.json") as { sayim: Record<string, number>; kayitlar: K[] };
 const D = doc.kayitlar;

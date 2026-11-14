@@ -6,7 +6,9 @@ Tarih: 15 Kasım 2026 · Dal: `arastirma/gm2026-kanitli-aday` · Taban: Producti
 
 ## Üçüncü tur — kalan 46 kaydın tamamlanması (15 Kasım 2026)
 
-Yeni restoran araştırması açılmadı; Production `99568ec` (758 aktif), PR #48 ve #49'a dokunulmadı. Ana yeni kaynak OGGUSTO'nun 89 İstanbul rehberi oldu: bağımsız editoryal, sayfa başına güncelleme tarihi ve çoğunda adres ile telefon var. Ayrıca Hürriyet, Gazete Oksijen ve Time Out'un tarihli yazıları ile işletmelerin resmî siteleri kullanıldı.
+Yeni restoran araştırması açılmadı; PR #48 ve #49'a dokunulmadı.
+
+**Production değişti:** Codex'in PR #49'u 14.11.2026 23:17 UTC'de birleştirildi. Production dalı artık `174a1c9`: 801 kayıt, **766 aktif**; canlı site de "766 gerçek mekân" gösteriyor. Eklenen 8 kayıt: Araka, Arkestra, Casa Lavanda, Parvus Kalamış, Tershane, Eleos Yeşilköy, Lokanta Limu, Telezzüz. Araştırma dalı yeni Production'la birleştirildi. Test 801 kayda karşı çalıştı; hazır adaylarla çakışma yok. Ana yeni kaynak OGGUSTO'nun 89 İstanbul rehberi oldu: bağımsız editoryal, sayfa başına güncelleme tarihi ve çoğunda adres ile telefon var. Ayrıca Hürriyet, Gazete Oksijen ve Time Out'un tarihli yazıları ile işletmelerin resmî siteleri kullanıldı.
 
 **Güncellik eşiği:** Gault&Millau dışındaki bağımsız kaynak son 12 ay içinde tarihli olmalı (15.11.2025 sonrası) ya da işletmenin/işletmecinin bugün açık resmî sayfası olmalı. 2025 ilkbaharında yazılmış kaynaklar bu yüzden sayılmadı: Zaaf (Hürriyet 04/2025), Lokanta Göktürk (Hürriyet 04/2025), Izaka Terrace (OGGUSTO 02/2024).
 
@@ -66,8 +68,7 @@ Yeni restoran araştırması açılmadı; Production `99568ec` (758 aktif), PR #
 
 | Katman | Durum | Aktif | 2.000'e kalan |
 |---|---|---:|---:|
-| Production | **yayımlanmış** | **758** | **1.242** |
-| + PR #49'daki 8 kayıt | Codex Preview kabulü; yayın onayı yok | 766 | 1.234 |
+| Production `174a1c9` (PR #49'un 8 kaydı dahil) | **yayımlanmış** | **766** | **1.234** |
 | + PR #50: Codex'e hazır 50 aday + 7 eski kayıt | yalnız araştırma; teknik kabul yapılmadı | 823 | 1.177 |
 | + PR #50: tek kaynaklı 16 aday | yalnız araştırma | 839 | 1.161 |
 | + PR #48'in Codex'in beklettiği 588 adayı | yalnız araştırma | 1.427 | 573 |
@@ -91,7 +92,9 @@ Yeni restoran araştırması açılmadı; Production `99568ec` (758 aktif), PR #
 - Petra Şişhane;
 - Kruvasan İstanbul.
 
-Test: `scripts/arastirmagm2026test.ts` 695/695 geçti (yerel; Preview ve Production değil). Testin TypeScript denetimi de temiz.
+Test: `scripts/arastirmagm2026test.ts` 695/695 geçti. Taban `174a1c9` (801 kayıt), yerel çalıştırma; Preview ya da Production testi değil. Testin TypeScript denetimi de temiz.
+
+Not: 3. turun ilk commit'i (`60d5dcc`) Production ilerlediği için 694/695 ile itildi; test sabit 793 bekliyordu. Dal yeni Production'la birleştirildi ve test kayıt sayısını tabandan okuyacak biçimde düzeltildi.
 
 ---
 
