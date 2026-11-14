@@ -24,7 +24,7 @@ import { googleUsable, placeProfile, placeReviews, placeScore, videoCounts } fro
 import { googleRatingOf } from "@/lib/gpuan/read";
 import { businessPanelAllowed } from "@/lib/business/access";
 import { ThresholdBar, ThresholdCard, type ThresholdVenue } from "@/components/venue/ThresholdCard";
-import { ProfileMenu, ProfileOverview, withProfile } from "@/components/venue/profile/ProfileSections";
+import { ProfileMenu, ProfileNoMenu, ProfileOverview, withProfile } from "@/components/venue/profile/ProfileSections";
 import { GidenlerExperiences } from "@/components/venue/GidenlerExperiences";
 import { SignalBeacon } from "@/components/venue/SignalBeacon";
 import { PhotoMosaic } from "@/components/venue/media/PhotoMosaic";
@@ -212,7 +212,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
             )}
           </div>
         ) : entity.isReal && c.showScores ? (
-          <RealVenueNotice entity={entity} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} mapsUrl={mapsUrl} hasMenu={!!rp?.menu} />
+          /* ent: profil (resmî kaynak) telefonu ve sitesi katalogdakinin yerine geçer; katalogda olmayan telefonla da "Ara" çıkar */
+          <RealVenueNotice entity={ent} reviewCount={realReviews.length} score={ps?.score ?? null} scoredFrom={ps?.score != null ? ps.reviewCount : null} confidence={ps?.confidence ?? null} mapsUrl={mapsUrl} hasMenu={!!rp?.menu} hasReservationInfo={!!rp?.reservation} />
         ) : (
           <ComplianceNotice policy={c} noun={category.noun} />
         );
@@ -303,7 +304,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           <section id="menu" aria-labelledby="h-menu" className="scroll-mt-28 mt-12 sm:scroll-mt-32">
             <div className="kunye"><h2 id="h-menu">Menü</h2><span /></div>
             <div className="mt-4">
-              {rp.menu ? <ProfileMenu m={rp.menu} /> : <p className="text-[13.5px] text-ink-2">Bu restoranın menüsü henüz doğrulanmış bir kaynaktan eklenmedi. Örnek menü ya da fiyat gösterilmez.</p>}
+              {rp.menu ? <ProfileMenu m={rp.menu} notes={rp.notes} /> : <ProfileNoMenu website={ent.contact?.website} />}
             </div>
           </section>
         </>
