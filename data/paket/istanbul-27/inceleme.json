@@ -1251,20 +1251,6 @@
    "puan": 5
   },
   {
-   "gersId": "f4c04353-51cf-4095-9304-764c6daa065a",
-   "ad": "Careme Restaurant",
-   "ilce": "Şişli",
-   "site": "http://www.caremerestaurantistanbul.com/",
-   "sinif": "B",
-   "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site caremerestaurantistanbul.com: ad + telefon + sokak (http://www.caremerestaurantistanbul.com/tr/iletisim)",
-   "osm": null,
-   "puan": 5
-  },
-  {
    "gersId": "92d6fb8a-0375-454e-8431-8ea8189c88b5",
    "ad": "Faruk Güllü Ümraniye",
    "ilce": "Ümraniye",
@@ -2403,20 +2389,6 @@
    ]
   },
   {
-   "gersId": "4b904923-be41-4cc5-b658-2852df5a49e5",
-   "ad": "Mr. Hamza Plus",
-   "ilce": "Şişli",
-   "site": "https://mrhamza.net/",
-   "sinif": "B",
-   "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site mrhamza.net: ad + telefon (https://mrhamza.net/)",
-   "osm": null,
-   "puan": 4
-  },
-  {
    "gersId": "a2869e3e-25f7-46dd-8649-1562f4febabc",
    "ad": "Doyuyo",
    "ilce": "Üsküdar",
@@ -3526,15 +3498,10 @@
    "gersId": "9320d37d-1ef4-4455-87df-bb17c3bcf50d",
    "ad": "Naomi Sushi Bar Bebek",
    "ilce": "Beşiktaş",
-   "site": "https://naomi.com.tr/",
-   "sinif": "B",
-   "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî şube sayfası naomi.com.tr: ad + telefon + sokak (https://naomi.com.tr/iletisim/)",
-   "osm": null,
-   "puan": 2
+   "sinif": "çakışma",
+   "neden": [
+    "paket içinde aynı işletme: naomi-sushi-bar-sisli"
+   ]
   },
   {
    "gersId": "3c208f0d-ad55-47e4-b6ef-cd8c1f9ac523",

@@ -359,6 +359,23 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
+   "slug": "careme-restaurant-sisli",
+   "gersId": "f4c04353-51cf-4095-9304-764c6daa065a",
+   "lat": 41.07729,
+   "lng": 29.012486,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
    "slug": "divan-brasserie-bebek-besiktas",
    "gersId": "c21e2536-17ba-4d2c-be43-42c0344e3b93",
    "lat": 41.07756,
@@ -559,6 +576,23 @@
     "CDLA-Permissive-2.0"
    ],
    "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "mr-hamza-plus-sisli",
+   "gersId": "4b904923-be41-4cc5-b658-2852df5a49e5",
+   "lat": 41.050781,
+   "lng": 28.988247,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
    "telefonEslesmesi": true,
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },

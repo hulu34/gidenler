@@ -383,15 +383,11 @@
    "gersId": "f8e6d088-7f51-4b55-af11-8a5e128e518a",
    "ad": "Köşem Restaurant",
    "ilce": "Adalar",
-   "site": "http://www.kosemrestaurant.net/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
    ],
-   "neden": [],
-   "kimlik": "resmî site kosemrestaurant.net: ad + telefon + sokak (http://www.kosemrestaurant.net/)",
-   "osm": null,
-   "puan": 10
+   "neden": []
   },
   {
    "gersId": "276899bd-53c3-4fd9-9616-1ba6796d0a6c",
@@ -484,15 +480,11 @@
    "gersId": "5b82be16-6e68-4b5a-b0f3-d70ea34021bc",
    "ad": "Ada Kahvaltı",
    "ilce": "Adalar",
-   "site": "http://www.adakahvalti.com.tr/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
    ],
-   "neden": [],
-   "kimlik": "resmî site adakahvalti.com.tr: ad + telefon + sokak (http://www.adakahvalti.com.tr/)",
-   "osm": null,
-   "puan": 10
+   "neden": []
   },
   {
    "gersId": "803056e6-ed48-400b-b27a-f5be6c21b268",
@@ -1619,20 +1611,6 @@
    ]
   },
   {
-   "gersId": "00e01282-b662-48e4-86f7-cb530ae3ffdc",
-   "ad": "Palukçu",
-   "ilce": "Fatih",
-   "site": "https://www.palukcubalik.com/",
-   "sinif": "B",
-   "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site palukcubalik.com: ad + telefon + sokak (https://www.palukcubalik.com/iletisim.html)",
-   "osm": "node/5106135562",
-   "puan": 8
-  },
-  {
    "gersId": "eb36448e-34b3-473f-b758-6b7362c854bb",
    "ad": "Adem Baba",
    "ilce": "Beşiktaş",
@@ -1683,15 +1661,11 @@
    "gersId": "2105e35d-2c93-47c2-99d8-de0766757031",
    "ad": "Hisar Balıkçısı",
    "ilce": "Beykoz",
-   "site": "http://www.hisarbalikcisi.com.tr/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
    ],
-   "neden": [],
-   "kimlik": "resmî site hisarbalikcisi.com.tr: ad + telefon (http://www.hisarbalikcisi.com.tr/iletisim.php)",
-   "osm": null,
-   "puan": 8
+   "neden": []
   },
   {
    "gersId": "c45fbc96-c6f1-4aad-9c68-fb5c390e27c0",
@@ -2324,20 +2298,6 @@
    "puan": 8
   },
   {
-   "gersId": "a4b7bb06-6e8c-4de5-a9d5-b44aae582462",
-   "ad": "Burger Blast Ümraniye Finans Şehir",
-   "ilce": "Ümraniye",
-   "site": "https://burger-blast.com/",
-   "sinif": "B",
-   "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site burger-blast.com: ad + telefon + sokak (https://burger-blast.com/)",
-   "osm": "node/12957795632",
-   "puan": 8
-  },
-  {
    "gersId": "dc3bc061-ca31-4c34-bfa5-f9bb3682f09a",
    "ad": "ÇAÇA Restoran",
    "ilce": "Maltepe",
@@ -2401,20 +2361,6 @@
    "neden": [
     "mevcut kayıtla eşleşiyor: anzer-sofrasi-sariyer"
    ]
-  },
-  {
-   "gersId": "4ded8735-6a04-448e-acbb-b485b97b8afb",
-   "ad": "Uzun Yayla Döner",
-   "ilce": "Tuzla",
-   "site": "https://uzunyayladoner.com/",
-   "sinif": "B",
-   "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site uzunyayladoner.com: ad + telefon (https://uzunyayladoner.com/)",
-   "osm": null,
-   "puan": 7
   },
   {
    "gersId": "9b6f6b13-ac77-4537-8b04-ddc9c9468619",
@@ -2669,20 +2615,6 @@
    "neden": [
     "OSM kaydı katalogda/pakette: node/5110347268"
    ]
-  },
-  {
-   "gersId": "5b441bc9-6aa0-4358-9390-221dbc97d8bd",
-   "ad": "Yıldız Saray Kebap Ve Tatlı Salonu",
-   "ilce": "Fatih",
-   "site": "http://www.yildizsaray.com/",
-   "sinif": "B",
-   "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site yildizsaray.com: ad + telefon (http://www.yildizsaray.com/)",
-   "osm": "node/5113486779",
-   "puan": 7
   },
   {
    "gersId": "b570b4c7-b70b-4a2c-b998-41555c1af51e",
@@ -3024,20 +2956,6 @@
    "neden": [
     "OSM kaydı katalogda/pakette: node/10182320902"
    ]
-  },
-  {
-   "gersId": "fc793402-cdc5-4343-9969-5889bc927be9",
-   "ad": "Feraye",
-   "ilce": "Beyoğlu",
-   "site": "https://feraye.net/",
-   "sinif": "B",
-   "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site feraye.net: ad + telefon + sokak (https://feraye.net/)",
-   "osm": null,
-   "puan": 7
   },
   {
    "gersId": "c5102963-08d2-46db-882f-acfc0a15d7aa",
@@ -3690,20 +3608,6 @@
    "puan": 6
   },
   {
-   "gersId": "8cc1f6ce-a1aa-4592-8ba0-189e8a223e62",
-   "ad": "Döner Ağacı",
-   "ilce": "Ataşehir",
-   "site": "https://www.doneragaci.com/",
-   "sinif": "B",
-   "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site doneragaci.com: ad + telefon (https://www.doneragaci.com/iletisim.html)",
-   "osm": "node/7047093862",
-   "puan": 6
-  },
-  {
    "gersId": "786d7179-c791-4b15-bdf9-5a69b09254eb",
    "ad": "Beyazköy Restaurant",
    "ilce": "Beykoz",
@@ -4217,20 +4121,6 @@
    "neden": []
   },
   {
-   "gersId": "a7171ed0-ca56-4205-a56a-51568c0d6161",
-   "ad": "Only Breakfast",
-   "ilce": "Sarıyer",
-   "site": "https://onlyybreakfast.com/",
-   "sinif": "B",
-   "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
-   ],
-   "neden": [],
-   "kimlik": "resmî site onlyybreakfast.com: ad + telefon + sokak (https://onlyybreakfast.com/)",
-   "osm": null,
-   "puan": 6
-  },
-  {
    "gersId": "7ad5a262-7706-42dd-81be-8e9d80316fad",
    "ad": "Woki Point",
    "ilce": "Sarıyer",
@@ -4515,15 +4405,11 @@
    "gersId": "17406a93-9471-437f-9135-0b667a1d7301",
    "ad": "Döneristanbul Fatih",
    "ilce": "Fatih",
-   "site": "http://www.doneristanbul.net/",
    "sinif": "B",
    "eksik": [
-    "kapı numarası resmî kaynakta doğrulanmadı"
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
    ],
-   "neden": [],
-   "kimlik": "resmî site doneristanbul.net: ad + telefon + sokak (http://www.doneristanbul.net/)",
-   "osm": null,
-   "puan": 5
+   "neden": []
   },
   {
    "gersId": "0879c9e8-a4e0-45ae-aeb8-0a55f685558d",
@@ -4754,15 +4640,11 @@
    "gersId": "618fe35d-9682-49fb-9c91-4bc14d4b5576",
    "ad": "Memleket Meyhanesi",
    "ilce": "Kadıköy",
-   "site": "http://www.memleketmeyhanesi.com/",
    "sinif": "B",
    "eksik": [
-    "adres resmî kaynakta doğrulanmadı"
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
    ],
-   "neden": [],
-   "kimlik": "resmî site memleketmeyhanesi.com: ad + telefon (http://www.memleketmeyhanesi.com/)",
-   "osm": null,
-   "puan": 4
+   "neden": []
   },
   {
    "gersId": "68c7722c-b8c0-4c32-8966-d7cb5548195c",

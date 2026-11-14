@@ -155,6 +155,23 @@
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
   {
+   "slug": "uzun-yayla-doner-tuzla",
+   "gersId": "4ded8735-6a04-448e-acbb-b485b97b8afb",
+   "lat": 40.838276,
+   "lng": 29.295713,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Tuzla",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
    "slug": "dereli-vadi-resturant-ve-piknik-alani-beykoz",
    "gersId": "63c22098-0a47-43a0-aa56-a19ca2d25ba0",
    "lat": 41.123844,
@@ -219,6 +236,23 @@
     "CDLA-Permissive-2.0"
    ],
    "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "feraye-beyoglu",
+   "gersId": "fc793402-cdc5-4343-9969-5889bc927be9",
+   "lat": 41.034428,
+   "lng": 28.984732,
+   "guven": 0.97,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
    "telefonEslesmesi": true,
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },
@@ -508,6 +542,23 @@
     "CDLA-Permissive-2.0"
    ],
    "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "only-breakfast-sariyer",
+   "gersId": "a7171ed0-ca56-4205-a56a-51568c0d6161",
+   "lat": 41.10976,
+   "lng": 29.041115,
+   "guven": 0.9,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
    "telefonEslesmesi": true,
    "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
   },

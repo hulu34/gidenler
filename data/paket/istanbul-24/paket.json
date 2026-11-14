@@ -244,6 +244,38 @@
    "oncelikPuani": 8
   },
   {
+   "slug": "palukcu-fatih",
+   "ref": "node/5106135562",
+   "tip": "osm_kaydi",
+   "ad": "Palukçu",
+   "ilce": "Fatih",
+   "adres": "Saray Meydanı Cad No:13, Fatih",
+   "koordinat": [
+    41.016039,
+    28.930221
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site palukcubalik.com: ad + telefon + sokak (https://www.palukcubalik.com/iletisim.html)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (ilçe sayfada) (https://www.palukcubalik.com/iletisim.html)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5106135562 (Overture noktasına 14 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5106135562",
+    "https://www.palukcubalik.com/",
+    "overture:00e01282-b662-48e4-86f7-cb530ae3ffdc"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
    "slug": "afiyet-et-kasap-izgara-umraniye",
    "ref": "isletme/afiyet-et-kasap-izgara-umraniye",
    "tip": "isletme_kaydi_konumsuz",
@@ -384,6 +416,66 @@
    "oncelikPuani": 8
   },
   {
+   "slug": "burger-blast-umraniye-finans-sehir-umraniye",
+   "ref": "node/12957795632",
+   "tip": "osm_kaydi",
+   "ad": "Burger Blast Ümraniye Finans Şehir",
+   "ilce": "Ümraniye",
+   "adres": "Kadirova Caddesi No:1, Ümraniye",
+   "koordinat": [
+    41.002641,
+    29.117393
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Burger",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site burger-blast.com: ad + telefon + sokak (https://burger-blast.com/)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (ilçe sayfada) (https://burger-blast.com/)",
+    "tür: resmî site başlığı/açıklaması: \"Burger\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/12957795632 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12957795632",
+    "https://burger-blast.com/",
+    "overture:a4b7bb06-6e8c-4de5-a9d5-b44aae582462"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "uzun-yayla-doner-tuzla",
+   "ref": "isletme/uzun-yayla-doner-tuzla",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Uzun Yayla Döner",
+   "ilce": "Tuzla",
+   "adres": "Rauf Orbay Cd No:57, Tuzla",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Dönerci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site uzunyayladoner.com: ad + telefon (https://uzunyayladoner.com/)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (https://uzunyayladoner.com/)",
+    "tür: resmî site başlığı/açıklaması: \"DÖNER\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://uzunyayladoner.com/",
+    "overture:4ded8735-6a04-448e-acbb-b485b97b8afb"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
    "slug": "mato-et-restaurant-fatih",
    "ref": "way/373077069",
    "tip": "osm_kaydi",
@@ -439,6 +531,38 @@
    "kaynak": [
     "https://www.derelivadi.net/",
     "overture:63c22098-0a47-43a0-aa56-a19ca2d25ba0"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "yildiz-saray-kebap-ve-tatli-salonu-fatih",
+   "ref": "node/5113486779",
+   "tip": "osm_kaydi",
+   "ad": "Yıldız Saray Kebap Ve Tatlı Salonu",
+   "ilce": "Fatih",
+   "adres": "Fevzi Paşa Cad No:259, Fatih",
+   "koordinat": [
+    41.02635,
+    28.939455
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site yildizsaray.com: ad + telefon (http://www.yildizsaray.com/)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (http://www.yildizsaray.com/)",
+    "tür: resmî site başlığı/açıklaması: \"Kebap\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5113486779 (Overture noktasına 3 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5113486779",
+    "http://www.yildizsaray.com/",
+    "overture:5b441bc9-6aa0-4358-9390-221dbc97d8bd"
    ],
    "kontrolTarihi": "2026-11-14",
    "oncelikPuani": 7
@@ -523,6 +647,34 @@
    "kaynak": [
     "https://www.kozagarden.com/",
     "overture:995ecc3e-b40f-4c8d-9eb1-a4b8289a6549"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "feraye-beyoglu",
+   "ref": "isletme/feraye-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Feraye",
+   "ilce": "Beyoğlu",
+   "adres": "Sıraselviler Cd No:45/1, Beyoğlu",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Meyhane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site feraye.net: ad + telefon + sokak (https://feraye.net/)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (https://feraye.net/)",
+    "tür: resmî site başlığı/açıklaması: \"Meyhane\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://feraye.net/",
+    "overture:fc793402-cdc5-4343-9969-5889bc927be9"
    ],
    "kontrolTarihi": "2026-11-14",
    "oncelikPuani": 7
@@ -747,6 +899,38 @@
    "kaynak": [
     "https://asialounge-tr.com/",
     "overture:641aaa78-772a-4789-a030-590806dd82ef"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "doner-agaci-atasehir",
+   "ref": "node/7047093862",
+   "tip": "osm_kaydi",
+   "ad": "Döner Ağacı",
+   "ilce": "Ataşehir",
+   "adres": "Edabali Caddesi No:43, Ataşehir",
+   "koordinat": [
+    40.984798,
+    29.107368
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Dönerci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site doneragaci.com: ad + telefon (https://www.doneragaci.com/iletisim.html)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (ilçe sayfada) (https://www.doneragaci.com/iletisim.html)",
+    "tür: resmî site başlığı/açıklaması: \"Döner\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/7047093862 (Overture noktasına 6 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7047093862",
+    "https://www.doneragaci.com/",
+    "overture:8cc1f6ce-a1aa-4592-8ba0-189e8a223e62"
    ],
    "kontrolTarihi": "2026-11-14",
    "oncelikPuani": 6
@@ -999,6 +1183,34 @@
    "kaynak": [
     "https://crispyasian.com/",
     "overture:44a30236-999f-418f-9291-25b8003d0e13"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "only-breakfast-sariyer",
+   "ref": "isletme/only-breakfast-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Only Breakfast",
+   "ilce": "Sarıyer",
+   "adres": "Doğanevler Caddesi No:59, Sarıyer",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahvaltı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site onlyybreakfast.com: ad + telefon + sokak (https://onlyybreakfast.com/)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (https://onlyybreakfast.com/)",
+    "tür: resmî site başlığı/açıklaması: \"kahvaltı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://onlyybreakfast.com/",
+    "overture:a7171ed0-ca56-4205-a56a-51568c0d6161"
    ],
    "kontrolTarihi": "2026-11-14",
    "oncelikPuani": 6

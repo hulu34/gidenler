@@ -883,6 +883,34 @@
    "oncelikPuani": 5
   },
   {
+   "slug": "careme-restaurant-sisli",
+   "ref": "isletme/careme-restaurant-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Careme Restaurant",
+   "ilce": "Şişli",
+   "adres": "Büyükdere Cad No:177, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site caremerestaurantistanbul.com: ad + telefon + sokak (http://www.caremerestaurantistanbul.com/tr/iletisim)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (http://www.caremerestaurantistanbul.com/tr/iletisim)",
+    "tür: resmî site başlığı/açıklaması: \"Türk Mutfağı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.caremerestaurantistanbul.com/",
+    "overture:f4c04353-51cf-4095-9304-764c6daa065a"
+   ],
+   "kontrolTarihi": "2026-11-15",
+   "oncelikPuani": 5
+  },
+  {
    "slug": "vegan-masa-besiktas",
    "ref": "node/11011308267",
    "tip": "osm_kaydi",
@@ -1343,6 +1371,34 @@
     "https://www.openstreetmap.org/node/8931029917",
     "https://www.damario.com.tr/",
     "overture:80fbc583-6c47-49d3-ad38-f689a30a98d5"
+   ],
+   "kontrolTarihi": "2026-11-15",
+   "oncelikPuani": 4
+  },
+  {
+   "slug": "mr-hamza-plus-sisli",
+   "ref": "isletme/mr-hamza-plus-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Mr. Hamza Plus",
+   "ilce": "Şişli",
+   "adres": "Kasap Sok No:11, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pizza",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site mrhamza.net: ad + telefon (https://mrhamza.net/)",
+    "adres: resmî sitede iletişim bilgisinde sokak + kapı no, aynı sayfada telefon ve ilçe adı (ilçe sayfada) (https://mrhamza.net/)",
+    "tür: resmî site başlığı/açıklaması: \"Pizza\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://mrhamza.net/",
+    "overture:4b904923-be41-4cc5-b658-2852df5a49e5"
    ],
    "kontrolTarihi": "2026-11-15",
    "oncelikPuani": 4
