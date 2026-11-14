@@ -1,0 +1,166 @@
+{
+  "productionBase": "99568ec6e7385be51af2454330ef536c632b55d3",
+  "candidateSource": "ac9aee93727c2e9c4c02830623385bbcc0df2969",
+  "baseline": 793,
+  "added": 8,
+  "total": 801,
+  "active": 766,
+  "activeRestaurant": 641,
+  "activeCafe": 114,
+  "activeBar": 11,
+  "closed": 35,
+  "records": [
+    {
+      "slug": "araka-sariyer",
+      "status": "accepted_for_preview_only",
+      "checkedAt": "2026-11-14",
+      "reviewedBy": "Codex bağımsız kaynak incelemesi",
+      "sources": [
+        {
+          "type": "official_business",
+          "url": "https://araka.com.tr/contact/"
+        },
+        {
+          "type": "independent_editorial_address",
+          "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka"
+        }
+      ],
+      "branchAndActivityEvidence": "Kapalı Bakkal Sk. 8, Yeniköy/Sarıyer; telefon +905333927223. Resmî sitede menü ve rezervasyon; rehberde aynı adres ve telefon. Saatler kaynaklar arasında farklı olduğu için eklenmedi.",
+      "coordinatesVerified": false,
+      "permissionToPublish": false
+    },
+    {
+      "slug": "arkestra-besiktas",
+      "status": "accepted_for_preview_only",
+      "checkedAt": "2026-11-14",
+      "reviewedBy": "Codex bağımsız kaynak incelemesi",
+      "sources": [
+        {
+          "type": "official_business",
+          "url": "https://arkestra.com.tr/"
+        },
+        {
+          "type": "independent_editorial_address",
+          "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra"
+        }
+      ],
+      "branchAndActivityEvidence": "Dilhayat Sk. 28, Etiler/Beşiktaş; restoran, menü ve rezervasyon bağlantısı. Rehber aynı adres ve telefon. Ritmo/Listening Room ayrı kayıt olarak ithal edilmedi.",
+      "coordinatesVerified": false,
+      "permissionToPublish": false
+    },
+    {
+      "slug": "casa-lavanda-sile",
+      "status": "accepted_for_preview_only",
+      "checkedAt": "2026-11-14",
+      "reviewedBy": "Codex bağımsız kaynak incelemesi",
+      "sources": [
+        {
+          "type": "official_business",
+          "url": "https://www.casalavanda.com.tr/"
+        },
+        {
+          "type": "independent_editorial_address",
+          "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda"
+        }
+      ],
+      "branchAndActivityEvidence": "Ulupelit Köyü Seçilmiş Sk. 2, Şile. Otelin restoranı resmî sitede ayrı restoran rezervasyonuyla mevcut; rehber aynı adresi restoran olarak doğruluyor.",
+      "coordinatesVerified": false,
+      "permissionToPublish": false
+    },
+    {
+      "slug": "parvus-kalamis-kadikoy",
+      "status": "accepted_for_preview_only",
+      "checkedAt": "2026-11-14",
+      "reviewedBy": "Codex bağımsız kaynak incelemesi",
+      "sources": [
+        {
+          "type": "official_business",
+          "url": "https://parvus.com.tr/"
+        },
+        {
+          "type": "independent_editorial_address",
+          "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/parvus-kalam%C4%B1s"
+        }
+      ],
+      "branchAndActivityEvidence": "Zühtüpaşa Rüştiye Sk. 4/A Kadıköy. Resmî site menü ve rezervasyon ile adresi gösteriyor; rehber aynı şube/adres.",
+      "coordinatesVerified": false,
+      "permissionToPublish": false
+    },
+    {
+      "slug": "tershane-beyoglu",
+      "status": "accepted_for_preview_only",
+      "checkedAt": "2026-11-14",
+      "reviewedBy": "Codex bağımsız kaynak incelemesi",
+      "sources": [
+        {
+          "type": "official_business",
+          "url": "https://www.tershanerestaurant.com/"
+        },
+        {
+          "type": "independent_editorial_address",
+          "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/tershane"
+        }
+      ],
+      "branchAndActivityEvidence": "Tersane Cd. 24, Hotel Momento 8. kat Karaköy. Resmî menü/faaliyet anlatımı, adres ve telefon; rehber aynı kat ve adres.",
+      "coordinatesVerified": false,
+      "permissionToPublish": false
+    },
+    {
+      "slug": "eleos-yesilkoy-bakirkoy",
+      "status": "accepted_for_preview_only",
+      "checkedAt": "2026-11-14",
+      "reviewedBy": "Codex bağımsız kaynak incelemesi",
+      "sources": [
+        {
+          "type": "official_business",
+          "url": "https://www.eleosrestaurant.com/yesilkoy/"
+        },
+        {
+          "type": "independent_editorial_address",
+          "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/eleos-yesilkoy"
+        }
+      ],
+      "branchAndActivityEvidence": "Resmî sayfa açıkça Yeşilköy şubesi, restoran/menü; Beyoğlu şubesi ayrı bağlantı. Rehber Yeşilbahçe Sk. 9 Bakırköy adresini bu şubeyle eşliyor. Resmî iletişim alt sayfası alınamadı; kapı adresinin kanıtı rehberdir.",
+      "coordinatesVerified": false,
+      "permissionToPublish": false
+    },
+    {
+      "slug": "lokanta-limu-sariyer",
+      "status": "accepted_for_preview_only",
+      "checkedAt": "2026-11-14",
+      "reviewedBy": "Codex bağımsız kaynak incelemesi",
+      "sources": [
+        {
+          "type": "official_business",
+          "url": "https://lokantalimu.com/"
+        },
+        {
+          "type": "independent_editorial_address",
+          "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/lokanta-limu"
+        }
+      ],
+      "branchAndActivityEvidence": "Köybaşı Cd. 158/B Yeniköy/Sarıyer. Resmî site günlük servis ve rezervasyon, rehber aynı 158 D:B adresi. Molka önceki konsept olarak anlatılıyor; mevcut katalogda bu kimlikle çakışma yok.",
+      "coordinatesVerified": false,
+      "permissionToPublish": false
+    },
+    {
+      "slug": "telezzuz-uskudar",
+      "status": "accepted_for_preview_only",
+      "checkedAt": "2026-11-14",
+      "reviewedBy": "Codex bağımsız kaynak incelemesi",
+      "sources": [
+        {
+          "type": "official_business",
+          "url": "https://www.telezzuz.com/"
+        },
+        {
+          "type": "independent_editorial_address",
+          "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/telezzuz"
+        }
+      ],
+      "branchAndActivityEvidence": "Koç Topluluğu Spor Kulübü, Kuzguncuk Kuşbakışı Cd. 16 Üsküdar. Resmî site bitki temelli restoran, menü, servis ve rezervasyon; rehber aynı tesis/adres.",
+      "coordinatesVerified": false,
+      "permissionToPublish": false
+    }
+  ]
+}

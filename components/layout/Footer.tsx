@@ -38,12 +38,12 @@ export function Footer() {
           {DEMO_VISIBLE ? (
             <>
               İki tür kayıt vardır: &ldquo;Gerçek mekân&rdquo; etiketli işletmelerin kimlik bilgisi
-              OpenStreetMap&apos;ten gelir ve henüz puanı yoktur; &ldquo;demo&rdquo; etiketli kayıtların
+              OpenStreetMap veya işletmenin resmî kaynağına dayanır; &ldquo;demo&rdquo; etiketli kayıtların
               işletmesi, deneyimleri ve dış kaynak puanları prototip için üretilmiştir, gerçek hiçbir
               işletmeye veya kişiye ait değildir.
             </>
           ) : (
-            <>Mekânların kimlik bilgisi © OpenStreetMap katkıcıları (ODbL). Mekân sayfalarındaki Google puanı Google&apos;a aittir ve 5 üzerindendir.</>
+            <>Mekân kimlik bilgileri OpenStreetMap ve işletmelerin resmî kaynaklarına dayanır. OpenStreetMap kaynaklı bilgiler © OpenStreetMap katkıcıları (ODbL). Her kaydın kaynağı profilinde belirtilir. Mekân sayfalarındaki Google puanı Google&apos;a aittir ve 5 üzerindendir.</>
           )}{" "}
           Gidenler puanı 10 üzerindendir ve yalnızca Gidenler&apos;e
           yazılan deneyimlerden hesaplanır — dış kaynak puanlarının ortalaması değildir.

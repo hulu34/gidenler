@@ -1,0 +1,3748 @@
+{
+  "candidates": 596,
+  "acceptedForPreview": 8,
+  "held": [
+    {
+      "slug": "araf-istanbul-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sankai-by-nagaya-besiktas",
+      "reasons": [
+        "source_integrity_failed",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "aila-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "herise-istanbul-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kiyi-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ruby-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "spago-istanbul-by-wolfgang-puck-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "st-regis-brasserie-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "the-barn-silivri",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "the-red-balloon-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "saraykapi-restoran-esenyurt",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sultan-sark-sofrasi-sultangazi",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "necdet-usta-sofrasi-gaziosmanpasa",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ihtiyar-balikci-restaurant-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "felek-mangalbasi-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "konyali-ferdi-usta-ortakoy-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "garden-1897-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "saki-balik-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "antakya-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "affan-ocakbasi-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sirvan-sofrasi-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ouzo-roof-restaurant-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kristal-bufe-goztepe-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kumkapi-hos-seda-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hukumran-sofrasi-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "yuksel-balik-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "balikosman-restaurant-buyukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "meyvali-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "camli-kosk-restaurant-buyukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "avni-baba-avcilar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sanliurfa-gul-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mmy-tantuni-bahcelievler",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "beykent-saray-sac-tava-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "baykuru-bagcilar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sosta-restaurant-mangalbasi-bahcelievler",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "aydinlar-iskender-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "koftecibo-bahcelievler",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ayvaz-doner-iskender-bahcelievler",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ozel-kofte-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bakirkoy-koftecisi-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "anam-manti-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lagosbalik-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ercan-steakhouse-basaksehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "the-dubai-et-mangal-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gurem-iskembe-silivri",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "meos-balik-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cesmidil-cafe-ve-restaurant-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kervan-kasap-restaurant-catalca",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "galeyan-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sakli-sofra-catalca",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kasaptan-burger-gungoren",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bi-tas-corba-sultangazi",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mustakil-22-ocakbasi-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizza-dio-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "adana-kebapcisi-davut-usta-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mantigram-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zeki-aslan-kebap-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "besler-soguk-meze-evi-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bursa-garaj-kebap-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sutis-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mira-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tarihi-karakoy-pilavcisi-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "yumm-pizza-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "veranda-pera-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zerafet-ocakbasi-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizza-grande-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "saskin-balik-efkanin-yeri-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizza-fabrique-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nur-abla-karadeniz-supper-basaksehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "urfa-dan-kebapci-kagithane",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "esto-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "park-adana-et-ve-kebap-cekmekoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kiraca-balik-lokantasi-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tarihi-iskender-kebapcisi-bayrampasa",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "faroz-pide-ve-akcaabat-kofte-salonu-kartal",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tarihi-degustasyon-ocakbasi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "durum-sarayi-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "donerci-ahmet-usta-sancaktepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "beykoz-pide-ve-borek-salonu-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sisore-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "celtik-kebab-and-lahmacun-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kaplan-kebap-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "balikcimiz-hasan-avci-pendik",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "rakofoli-restaurant-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hasan-usta-kebap-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "karisma-sen-balik-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hayat-cihangir-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kipos-balik-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tarihi-cumhuriyet-meyhanesi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kadikoy-midyecisi-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "maksat-ocakbasi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "brand-burger-maltepe-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "meylihane-meyhane-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "birlik-kasap-steakpoint-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "fatih-namli-durum-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nato-lokantasi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kackar-yoresel-lezzetler-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "munhasir-garden-doner-ve-kebap-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "yavuzbey-iskender-sancaktepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lenza-balik-restoran-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "rota-erzurum-cag-kebap-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "konyali-meshur-pilavci-kagithane",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gul-urfa-bayrampasa",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lotus-restaurant-ve-home-sile",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "titiz-lokantasi-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kebbabi-kebap-zeytinburnu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bi-ciger-bi-kebap-kartal",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ziyade-fasil-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "orjinal-bafra-pide-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "uskumru-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "karacabey-kebap-kunefe-maltepe-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "erzurum-cag-kebabi-celal-usta-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mardin-mutfagi-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "koylum-manti-evi-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "aleni-yeni-nesil-meyhane-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mest-balik-restaurant-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mece-balik-ve-kahvalti-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "filika-sariyer-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sehla-zamanin-meyhanesi-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "foca-balik-kucukyali-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "wood-kebap-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zeynep-kamil-kokorec-recep-usta-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ikaria-fish-restaurant-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "guvenbey-doner-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "aydogdu-restaurant-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bulbultepe-kahvalti-ve-balik-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kosk-et-kebap-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "durum-molasi-bayrampasa-doner-bayrampasa",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizzeria-positano-cekmekoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cihangir-ocakbasi-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "eski-babel-ocakbasi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "aheste-et-ve-balik-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "egeli-meyhane-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lale-iskembecisi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "oishii-wok-ve-sushi-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "latife-doner-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sefahat-yeni-nesil-meyhane-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "perihan-meyhane-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "peymane-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "anzelem-et-ve-kebap-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "visneli-meyhane-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "arafat-kofte-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "en-baba-kebab-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lokanta-lobi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gozde-kebap-gaziantep-mutfagi-bahcelievler",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "karakoy-sarihan-iskembe-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kiliza-kebap-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bymuzaffer-besiktas-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "durumcu-mahsun-usta-bagcilar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pleasure-terrace-roof-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bagdat-ocakbasi-gungoren",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "antique-pizzeria-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "miyabi-sushi-ve-japanese-grill-bar-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "olive-anatolian-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "todori-fenerbahce-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "keyif-nevizade-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "doner-plus-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "maranda-doner-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kiva-galataport-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pideban-sariyer-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hattad-doner-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "route-burger-house-karakoy-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "molto-bene-galata-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "rumeli-kale-cafe-ve-restaurant-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pera-thai-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kolcuoglu-bomonti-ocakbasi-kebap-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "manerita-manti-sancaktepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "seyid-usta-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hayalmest-meyhanesi-bostanci-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "babacan-et-lokantasi-silivri",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "niyokki-makarna-piazza-avm-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mekan-kozde-doner-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "muhlama-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cigerhane-florya-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sirke-mutfak-pendik",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "umit-usta-tarihi-adana-metrelik-kebap-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lider-doner-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "villa-cello-istanbul-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "amcabey-doner-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cecconi-s-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cokcok-thai-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizano-pizzeria-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "rosario-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tarihi-merkezefendi-koftecisi-ahmet-usta-zeytinburnu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "buyuk-erzurum-sofrasi-kartal",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "konyali-kosk-gaziosmanpasa",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pepo-s-galata-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kenan-usta-ocakbasi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kokorecci-ugur-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "saafi-doner-bagcilar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "forsa-balik-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nevazen-turk-mutfagi-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bence-tantuni-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sayla-manti-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bi-yer-et-ve-kebap-cekmekoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "calisto-balik-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "il-cortile-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bafra-pidecisi-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nedim-usta-cag-kebap-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "karaf-et-ve-kebap-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tepe-balik-restaurant-sariyer-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zekibey-iskender-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tarihi-saray-pide-evren-bagcilar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sait-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dragos-balik-kartal",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sini-et-balik-restaurant-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "afgan-kebap-esenyurt",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kocaman-restaurant-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "maide-turk-mutfagi-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nefis-et-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hansaray-iskender-bagcilar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bilican-kebap-sultangazi",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zahter-tepsi-et-and-kebap-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "green-house-restaurant-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kebapci-tevfik-usta-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "halim-et-kahvalti-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tella-kebap-basaksehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sultanahmet-corbacisi-kartal",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "filika-meyhane-bakirkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "olden-1545-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sadakatsiz-yeni-nesil-meyhane-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tarihi-diyarbakir-cigercisi-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "arnavutkoy-nokta-tesisleri-arnavutkoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "resat-efendi-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "beyafi-kasap-doner-kagithane",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "casa-mamma-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sevic-restoran-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "anzer-sofrasi-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mevlana-pide-basaksehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "comlek-kuru-fasulye-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dafni-atesbasi-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kavacik-balikcisi-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "limanda-balik-restaurant-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "turkan-meyhanesi-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "katoniki-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mutabik-restaurant-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kalbur-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tadi-bafra-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "chacha-balik-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "karina-balik-pendik",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "senol-kolcuoglu-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lezafet-kebap-ve-izgara-kartal",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "filizler-koftecisi-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "meat-ve-meet-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "babel-ocakbasi-nevizade-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "asitane-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "firuzende-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mylos-ayvalik-cunda-mutfagi-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ora-s-steak-ve-burger-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ozgun-kokorec-pendik",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "burger-sausage-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "murat-kebap-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "valibey-kebap-ve-kunefe-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "patlican-cafe-ve-ev-yemekleri-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "vegan-masa-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gonen-rooftop-ocakbasi-terrace-restaurant-ve-roof-bar-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "haso-ocakbasi-karakoy-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "corbaci-gada-pendik",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizza-v-kucukbakkalkoy-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "donerci-hamit-efendi-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "white-burger-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "karadeniz-mutfagi-erol-usta-efulim-cayeli-kuru-fasulye-gungoren",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kebap-dunyasi-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cekmekoy-sinop-manti-cekmekoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kazanci-iskembe-bagcilar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "usul-doner-silivri",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kilisli-yasar-usta-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "etci-mehmet-burger-yakuplu-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ayvaz-burger-bahcelievler",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "akali-mall-of-istanbul-basaksehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "doga-manti-evi-kagithane",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hasel-doner-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zeffirino-istanbul-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "antep-kuzu-tava-ve-lahmacun-kagithane",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hbs-antakya-ocakbasi-ve-restoran-atasehir-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "turkahvalti-kagithane",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sivekar-bahcesehir-basaksehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "durumcu-esnaf-tuzla-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pergeli-restoran-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ozzie-s-1968-den-beri-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kebo-mahmutbey-bagcilar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "balikci-nevzat-silivri",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "satirdan-lahmacun-serifali-atasehir-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "moana-by-belmira-restaurant-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mahmut-usta-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "beyoglu-esnaf-lokantasi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "endless-pizza-istanbul-pendik-pendik",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "saye-ocakbasi-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "seferbey-doner-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kebapci-etiler-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "chinese-life-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kolcuoglu-nisantasi-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "octo-pizza-suadiye-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "thai-nepal-kitchen-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizza-pico-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cesme-bazlama-kahvalti-nisantasi-1-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nezaf-et-lokantasi-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ekrem-coskun-doner-kagithane",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "laamaacuun-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sentez-rooftop-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kahvalti-naga-putrika-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "odun-atesi-bostanci-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pera-doner-beyoglu-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "donerci-ali-usta-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "suat-usta-mersin-tantuni-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "durak-pide-kartal",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kucukyali-balikcisi-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "okkes-demir-usta-buyukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "burger-zmash-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pileki-pide-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizzeria-capra-cekmekoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bi-iskembe-halkali-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cagistan-erzurum-cag-kebabi-eyupsultan",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kalinka-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hasan-ustam-barbecue-restaurant-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kosuyolu-kebap-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tutsu-by-duvee-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "esenler-pide-lahmacun-ve-doner-salonu-esenler",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "emek-restaurant-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kagithane-gece-donercisi-kagithane",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "jaa-jaa-grill-maslak-1453-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nur-abla-karadeniz-sofrasi-cekmekoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizza-v-bostanci-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sushi-lab-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sushico-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cluster-sisli",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "seafront-lounge-rooftop-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "chez-moi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "set-balik-lokantasi-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tatmix-doner-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "palukcu-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "burger-blast-umraniye-finans-sehir-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mato-et-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "yildiz-saray-kebap-ve-tatli-salonu-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "doner-agaci-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kebapci-murat-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pisikoy-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "la-pitsa-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nizam-pide-galatasaray-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "say-cheese-moda-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gina-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dayi-kurek-lahmacun-pendik",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "akar-selale-park-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "clove-restaurant-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dede-ahmet-kebap-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "digma-restaurant-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "afiyet-et-kasap-izgara-umraniye",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "patlican-polonezkoy-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pamera-garden-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "degirmen-park-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "atiye-bebek-besiktas",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "uzun-yayla-doner-tuzla",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dereli-vadi-resturant-ve-piknik-alani-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kalia-bahce-kir-bahcesi-ve-restoran-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mesa-country-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "koza-garden-beykoz",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "feraye-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "agabeyin-turk-mutfagi-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "asmali-bahce-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kebapci-asker-usta-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "palet-balikcil-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gunay-konyali-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "purtelas-ocakbasi-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pad-thai-cihangir-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "asia-lounge-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hr-italy-karakoy-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kosuyolu-manti-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kaf-cafe-restoran-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "city-teras-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kumiko-sushi-ve-more-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "elmasoglu-manti-uskudar",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "peyre-galata-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sabina-nin-kahvalti-bahcesi-pendik",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "crispy-asian-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "only-breakfast-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "azure-the-bosphorus-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizza-zero-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "erkonyalilar-maltepe",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "durumcu-emmi-atasehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "burgerillas-cekmekoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "n-evet-istanbul-rooftop-restaurant-ve-roof-bar-beyoglu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "burgerlab-steak-and-burger-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bigchefs-sariyer",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "betro-burger-kadikoy-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "house-of-medusa-restaurant-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "flamingo-koy-catalca",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "akdogan-pasta-ve-kebap-restoran-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "haz-kebap-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "har-kanat-bahcesehir-basaksehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dogakoyu-catalca-catalca",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "fego-food-beylikduzu",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bizee-restaurant-kucukcekmece",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "modena-steak-kebap-fish-house-fatih",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tella-kebap-bahcekent-basaksehir",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tenedos-gokturk-eyupsultan",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "the-grungy-kadikoy",
+      "reasons": [
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ruwa-coffee-kartal",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "citir-kahve-uskudar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "altinelek-pastanesi-atasehir",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bohoco-uskudar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "port-of-black-coffee-ve-sandwich-sariyer",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bosnian-borek-pendik",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mums-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "beacon-ist-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cumbali-kahve-fatih",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nev-i-cafe-fatih",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mare-mosso-coffee-fatih",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kanca-kafe-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hide-arnavutkoy-besiktas",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gallant-galata-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hector-louis-coffee-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "balaban-dondurma-profiterol-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mado-buyukcekmece",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "flan-bakery-ve-coffee-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "coffee-gutta-fatih",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "polo-pastanesi-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "asi-kunefeleri-kadikoy-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "moc-osmanbey-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "fiyeli-coffee-besiktas",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "muslum-pasa-kunefe-avcilar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "akmanoglu-firini-eyupsultan",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sardan-dondurma-kucukcekmece",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gostivar-dondurma-beykoz",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tahil-pasta-cafe-tuzla",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "oklava-pastanesi-bahcelievler",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gaziantepli-kunefeci-niyo-bahcelievler",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "en-has-dondurma-kucukcekmece",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "unaski-pasta-cafe-merter-gungoren",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nova-beans-coffee-catalca",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "neves-baklava-ve-soguk-kadayif-bagcilar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "vasla-coffee-ve-roastery-kagithane",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mila-kurabiyka-bayrampasa",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "anisah-coffee-esenyurt",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "chill-coffee-ve-more-bahcelievler",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "stabil-kahve-esenler",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "le-petit-moulin-bakirkoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "korner-kafe-avcilar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dilek-pastanesi-5-etap-basaksehir",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cevre-pastaneleri-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "camlik-ekmek-firini-maltepe",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "saatli-firin-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "coffee-venga-sancaktepe",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "agababa-kadayif-umraniye",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mihman-pasta-ve-cafe-maltepe",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bag-pastaneleri-sancaktepe",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tatbaba-kafe-beylikduzu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "huseyinoglu-baklava-atakent-umraniye",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "baklavaci-muslum-polat-sancaktepe",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bakeryfab-coffee-bakirkoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "creamchocco-yesilkoy-bakirkoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kahveci-kardesler-pendik",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bay-bread-umraniye",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "orhan-kiratli-baklava-esenyurt-esenyurt",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "birinci-tatli-umraniye",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "baldo-organik-dondurma-umraniye",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gourme-coffee-bagcilar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kahve-ambari-umraniye",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tukkan-karakoy-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "voice-of-coffee-bakirkoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kandilli-pastanesi-uskudar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "suadiye-nazar-profiterol-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "coffee-hour-florya-bakirkoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "brema-kahve-atasehir",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "patisserie-idylle-atasehir",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "om-coffee-ve-more-maltepe",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "off-the-record-uskudar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "yenikoy-kahvecisi-sariyer",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bret-artisan-bakery-uskudar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cochet-patisserie-bakirkoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sayinlar-firin-uskudar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "artesso-coffee-sariyer",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gofi-house-coffee-house-ve-eatery-uskudar",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pop-up-coffee-tr-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "thegranma-food-ve-coffee-maltepe",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "nuga-maltepe",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cafe-cambridge-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "moonberry-coffee-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "beyazpark-kafe-sariyer",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "caffe-diverso-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "molecule-coffee-besiktas",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "aum-pasta-ve-cafe-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "khaldi-coffee-fatih",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dukkan-anteke-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mesela-coffee-sariyer",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "saint-martin-istanbul-sariyer",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "recon-coffee-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cihan-pastanesi-besiktas",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mugab-baklava-pendik-pendik",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sayan-baklava-besiktas",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "fuga-coffee-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "reset-coffee-bakery-umraniye",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "but-first-coffee-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "gonul-kahvesi-sultanbeyli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "susam-cafe-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cafe-firuz-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hub962-karakoy-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cafe-kazanci-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pastanbul-sariyer",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "fm-kahve-atasehir",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "likya-coffee-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "olifantes-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "haha-kafe-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "drinkee-coffee-roastery-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ferment-besiktas",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pasifik-pastanesi-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cafe-avanti-kadikoy",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "vaa-coffee-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "h-rman-coffee-ve-matcha-shop-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ancre-istanbul-specialty-coffee-beyoglu",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cafe-obscura-fatih",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "march-nisantasi-sisli",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lunqa-coffee-pendik",
+      "reasons": [
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "namli-kebap-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kosebasi-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "metet-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "serbethane-fatih",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tamara-restaurant-fatih",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pokemate-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "burger-yiyelim-eyupsultan",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cotto-gastro-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "banyan-restaurant-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "vegan-masa-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sahan-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "pizza-locale-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "da-mario-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cesme-bazlama-kahvalti-nisantasi-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "doner-bank-kapali-carsi-fatih",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kaizen-ramen-erenkoy-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "yuksel-balik-tarabya-sariyer",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "limos-cafe-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zucca-pizza-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "the-local-grill-beyoglu",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sofa-erzurum-cag-kebabi-bagcilar-bagcilar",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cagdas-ev-yemekleri-ve-izgara-salonu-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "selmika-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "vintage-burger-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "basaksehir-intiba-doner-basaksehir",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "etci-mehmet-burger-beykent-buyukcekmece",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "limon-kahvalti-galata-beyoglu",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "the-burger-company-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hacibasar-kebap-katmer-bostanci-atasehir",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kovada-manti-besiktas-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "beylerbeyi-pizza-ve-italian-uskudar",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "maydonoz-doner-silivri-silivri",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "boga-steakhouse-koru-catalca",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kiva-bomonti-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "heybet-doner-express-atakent-kucukcekmece",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "the-new-yorker-pizza-cadde-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tella-kebap-atakent-kucukcekmece",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "careme-restaurant-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "divan-brasserie-bebek-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "dubb-kebab-restaurant-fatih",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mezzaluna-bakirkoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "sur-balik-sarayburnu-fatih",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "emporio-ristorante-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "frango-bakirkoy-bakirkoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "doyuyo-esenyurt",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "tasfirin-pide-doner-evi-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mert-manti-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bereket-doner-hadimkoy-arnavutkoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "norm-pizza-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "hi-italia-pasta-restaurant-ve-rooftop-beyoglu",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "mr-hamza-plus-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "barto-s-burger-place-uskudar",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "naomi-sushi-bar-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "il-sorrisino-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "koz-kanat-atasehir",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "coffee-moj-art-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "vinyl-and-coffee-beyoglu",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zarifzade-baklava-ve-dondurma-basaksehir",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bethon-coffee-ve-bakery-kartal",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ikram-borek-esenler",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "rota-istanbul-cafe-ve-restaurant-kucukcekmece",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "begendi-cafe-ve-restaurant-gaziosmanpasa",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "diamond-coffee-bahcelievler",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "cassa-1836-beyoglu",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "kanlica-teras-beykoz",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "yagcioglu-pastanesi-kucukcekmece",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "efsycoffee-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "babazade-baklava-erenkoy-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "donuts-coffee-house-atasehir",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bulvar-patisserie-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "zeron-bakery-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "raw-cafe-and-kitchen-kadikoy",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "bozkaya-baklavalari-hasan-bozkaya-umraniye",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "lilu-co-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "morniva-tr-besiktas",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    },
+    {
+      "slug": "ron-cafe-sisli",
+      "reasons": [
+        "future_verification_date_at_audit",
+        "cafe_policy_pending",
+        "independent_branch_activity_acceptance_not_completed"
+      ]
+    }
+  ]
+}

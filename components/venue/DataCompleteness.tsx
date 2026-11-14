@@ -1,11 +1,12 @@
 "use client";
 
+import React from "react";
 import { COMPLETENESS_KEYS, COMPLETENESS_LABEL, type Completeness } from "@/lib/completeness";
 
 /** Gerçek mekân profilinde hangi bilgilerin gerçekten var olduğu — eksik olan gizlenmez, "yok" yazılır.
     Sunucu: Google eşleşmesi (onaylı/otomatik Place ID), gerçek video sayısı, kendi fotoğraflarımız.
     Tarayıcı: Google fotoğrafları sayfanın tek Google isteğinden (ek istek yok) — gerçekten geldiyse "Fotoğraf" var sayılır. */
-export function DataCompleteness({ c, slug, google = false }: { c: Completeness; slug?: string; google?: boolean }) {
+export function DataCompleteness({ c, sourceProvider }: { c: Completeness; sourceProvider?: "osm" | "business" }) {
   const have = { ...c.have, photo: c.have.photo };
   const keys = COMPLETENESS_KEYS.filter((k) => k !== "google" || have.google);
   const filled = keys.filter((k) => have[k]).length;
@@ -21,7 +22,9 @@ export function DataCompleteness({ c, slug, google = false }: { c: Completeness;
           </li>
         ))}
       </ul>
-      <p className="mt-2 max-w-[62ch] text-[12px] text-ink-3">Yalnız kaynağı olan bilgi &ldquo;var&rdquo; sayılır: Google bilgisi doğrulanmış eşleşmeden, video onaylı içerikten, fotoğraf Gidenler ya da Google kaynaklıdır. Kimlik bilgisi © OpenStreetMap katkıcıları (ODbL).</p>
+      <p className="mt-2 max-w-[62ch] text-[12px] text-ink-3">Yalnız kaynağı olan bilgi &ldquo;var&rdquo; sayılır: Google bilgisi doğrulanmış eşleşmeden, video onaylı içerikten, fotoğraf Gidenler ya da Google kaynaklıdır.{" "}
+        {sourceProvider === "osm" ? "Kimlik bilgisi © OpenStreetMap katkıcıları (ODbL)." : sourceProvider === "business" ? "Kimlik bilgisi işletmenin resmî kaynağına veya beyanına dayanır; kaynak ayrıntıları mekân bilgisinde gösterilir." : "Kimlik bilgisinin kaynağı mekân bilgisinde gösterilir."}
+      </p>
     </section>
   );
 }

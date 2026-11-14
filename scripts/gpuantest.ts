@@ -202,7 +202,16 @@ async function main() {
   ok("değişen puanlar geçmiş tablosunda", Number(hist.rows[0].n) >= writtenAll.length);
 
   console.log("\n8) Arka arkaya engelde nazikçe durma");
-  const day3 = () => new Date(BASE - 36e5);
+  /* Üçüncü çalışma ayrı takvim günüdür. BASE-1 saat, İstanbul 00:00–01:00
+     aralığında day2 ile aynı güne düşüyor ve dueRows haklı olarak atlıyordu. */
+  const day3 = () => new Date(BASE);
+  for (const clock of ["00:00", "00:30", "01:00", "06:00", "08:30", "23:59"]) {
+    const anchor = Date.parse(`2026-11-15T${clock}:00+03:00`);
+    const yesterday = new Date(anchor - 864e5).toISOString();
+    const attempted = { ...row0, attemptAt: yesterday };
+    ok(`takvim sınırı ${clock}: dün denenen bugün yeniden seçilir`, dueRows([attempted], trDay(new Date(anchor)), 1).length === 1);
+    ok(`takvim sınırı ${clock}: aynı gün tekrar seçilmez`, dueRows([attempted], trDay(new Date(yesterday)), 1).length === 0);
+  }
   const allBlocked: Record<string, SourceResult> = Object.fromEntries([...ids.values()].flat().map((g) => [g.externalId, { kind: "blocked", reason: "olağandışı trafik" } as SourceResult]));
   const siteBefore = Object.keys(await loadGoogleRatings(db)).length;
   const callsB: string[] = [];

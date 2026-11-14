@@ -40,7 +40,7 @@ export interface RealVenueRecord {
   lng?: number;
   address?: string;
   adresDuzeyi?: "sokak";
-  kaliteSinifi?: "A" | "B1";
+  kaliteSinifi?: "A" | "B1" | "A-konumsuz";
   phone?: string;
   website?: string;
   instagram?: string;
@@ -74,6 +74,8 @@ const CATS = new Set(["cat.restaurant", "cat.cafe", "cat.bar"]);
 const inIstanbul = (r: RealVenueRecord) => typeof r.lat === "number" && typeof r.lng === "number" && r.lat >= 40.8 && r.lat <= 41.6 && r.lng >= 27.9 && r.lng <= 29.95;
 export function invalidRecord(r: RealVenueRecord): string | null {
   if (!r.name?.trim()) return "name";
+  if (r.kaliteSinifi !== undefined && !["A", "B1", "A-konumsuz"].includes(r.kaliteSinifi)) return "quality";
+  if (r.kaliteSinifi === "A-konumsuz" && (!r.ref?.startsWith("isletme/") || r.lat !== undefined || r.lng !== undefined || r.location !== undefined)) return "quality";
   if (r.ref?.startsWith("isletme/")) {
     /* işletme kaydı: kaynak sayfası zorunlu; konum ya hiç yok (adres zorunlu) ya da kaynaklı ve İstanbul içinde */
     if (r.sourceKind !== "official_site" && r.sourceKind !== "business") return "source";
