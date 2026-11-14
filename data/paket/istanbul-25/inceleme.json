@@ -1,0 +1,96 @@
+{
+ "_aciklama": "Paket 25 seçiminden A ya da A-konumsuz olamayanlar; her satırda eksik ya da neden.",
+ "kayitlar": [
+  {
+   "gersId": "483eef09-2390-405c-895a-0291ad431ec1",
+   "ad": "Karaf Et & Kebap",
+   "ilce": "Ümraniye",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: karaf-et-ve-kebap-umraniye"
+   ]
+  },
+  {
+   "gersId": "6ec66400-e0e4-495d-a68e-e52e71c9d4d0",
+   "ad": "Seafront Lounge Rooftop Restaurant",
+   "ilce": "Fatih",
+   "sinif": "çakışma",
+   "neden": [
+    "OSM kaydı katalogda/pakette: node/9134994817"
+   ]
+  },
+  {
+   "gersId": "d5bdf55b-4239-40e0-89d4-ef7720179c26",
+   "ad": "Kenan Usta Ocakbaşı",
+   "ilce": "Beyoğlu",
+   "sinif": "çakışma",
+   "neden": [
+    "OSM kaydı katalogda/pakette: node/5859766585"
+   ]
+  },
+  {
+   "gersId": "4787b494-cd77-43d9-a98f-55f0a0cbd5aa",
+   "ad": "Tepe Balık Restaurant Sarıyer",
+   "ilce": "Sarıyer",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: tepe-balik-restaurant-sariyer-sariyer"
+   ]
+  },
+  {
+   "gersId": "821c9262-0744-49a5-884d-a8caf6d0e2a3",
+   "ad": "Sait",
+   "ilce": "Beyoğlu",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: sait-beyoglu"
+   ]
+  },
+  {
+   "gersId": "7c143a08-ea4a-460f-b263-24d92f0de8b8",
+   "ad": "Nefis Et",
+   "ilce": "Tuzla",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: nefis-et-tuzla"
+   ]
+  },
+  {
+   "gersId": "764b0ed1-a45e-4548-8722-ba65f4ff317f",
+   "ad": "Hazar Kanat",
+   "ilce": "Bağcılar",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "99dca767-8b82-4b5b-a65e-f8dadf0def69",
+   "ad": "Tella Kebap",
+   "ilce": "Başakşehir",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: tella-kebap-basaksehir"
+   ]
+  },
+  {
+   "gersId": "31c79cc2-85d0-4a4c-93bc-bc97eda98a85",
+   "ad": "Sadakatsiz Yeni Nesil Meyhane",
+   "ilce": "Şişli",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: sadakatsiz-yeni-nesil-meyhane-sisli"
+   ]
+  },
+  {
+   "gersId": "995ecc3e-b40f-4c8d-9eb1-a4b8289a6549",
+   "ad": "Koza Garden",
+   "ilce": "Beykoz",
+   "sinif": "çakışma",
+   "neden": [
+    "mevcut kayıtla eşleşiyor: koza-garden-beykoz"
+   ]
+  }
+ ]
+}

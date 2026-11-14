@@ -1,0 +1,192 @@
+{
+ "_aciklama": "A-konumsuz kayıtlar için Overture Maps Places noktası (sürüm 2026-10-21.0). KAYDA YAZILMADI. Atıf: © Overture Maps Foundation; kaynak başına lisans (Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0).",
+ "oneriler": [
+  {
+   "slug": "flamingo-koy-catalca",
+   "gersId": "8ca1d861-0497-4c2e-8019-f6ba4e2c5368",
+   "lat": 41.189213,
+   "lng": 28.445791,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Çatalca",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "akdogan-pasta-ve-kebap-restoran-kucukcekmece",
+   "gersId": "a832f160-5f32-4aec-af7e-b56daa60cf8e",
+   "lat": 41.031769,
+   "lng": 28.802917,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Küçükçekmece",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "haz-kebap-beylikduzu",
+   "gersId": "599ad644-9195-450f-be57-d90d2646576e",
+   "lat": 41.012184,
+   "lng": 28.647663,
+   "guven": 0.92,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beylikdüzü",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "har-kanat-bahcesehir-basaksehir",
+   "gersId": "ad8b3aa1-82d0-46f9-b12d-35172fc0d4dc",
+   "lat": 41.070122,
+   "lng": 28.688671,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Başakşehir",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "dogakoyu-catalca-catalca",
+   "gersId": "8b13c6be-e0b5-4726-a028-5438fdb51448",
+   "lat": 41.189671,
+   "lng": 28.445492,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Çatalca",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "fego-food-beylikduzu",
+   "gersId": "daa47945-c880-4b5b-a98b-c3591406285b",
+   "lat": 40.995205,
+   "lng": 28.626108,
+   "guven": 0.93,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beylikdüzü",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "bizee-restaurant-kucukcekmece",
+   "gersId": "9b5b1b5d-e24e-4375-8efd-6014c6e1f7de",
+   "lat": 41.040794,
+   "lng": 28.770746,
+   "guven": 0.92,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Küçükçekmece",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "modena-steak-kebap-fish-house-fatih",
+   "gersId": "ae6a5e3b-59a2-406b-92ac-bacbacb512a6",
+   "lat": 41.003418,
+   "lng": 28.974222,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Fatih",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "tella-kebap-bahcekent-basaksehir",
+   "gersId": "6f440366-c1a5-47c3-a9ca-c1dca8081986",
+   "lat": 41.091133,
+   "lng": 28.653233,
+   "guven": 0.92,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Başakşehir",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "tenedos-gokturk-eyupsultan",
+   "gersId": "dc3ae4c8-808f-446e-ac25-7eaf867c7546",
+   "lat": 41.177975,
+   "lng": 28.886789,
+   "guven": 0.88,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Eyüpsultan",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "the-grungy-kadikoy",
+   "gersId": "64f77ef3-e407-4c85-8f18-613ae1d87271",
+   "lat": 40.961788,
+   "lng": 29.075962,
+   "guven": 0.88,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  }
+ ]
+}
