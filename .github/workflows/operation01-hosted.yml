@@ -1,0 +1,54 @@
+name: Operation 01 existing protected Preview acceptance
+on:
+  push:
+    branches: [inceleme/yayin-operasyonu01-kabul-20261114]
+permissions:
+  contents: read
+concurrency:
+  group: operation01-existing-preview
+  cancel-in-progress: false
+jobs:
+  acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - package: security
+            sha: a225e8c1336fecc2ca6ce1ef67e09d2bb6361481
+          - package: sor
+            sha: 99568ec6e7385be51af2454330ef536c632b55d3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.sha }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: One bounded access and isolation probe; no new secret
+        env:
+          PACKAGE_NAME: ${{ matrix.package }}
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+        run: node scripts/operation01-hosted.mjs --probe
+      - name: Install existing browser test recipe only after access passes
+        run: |
+          npm install --prefix "$RUNNER_TEMP/hosted-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/hosted-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Existing deployment security UI and actual AI acceptance
+        env:
+          PACKAGE_NAME: ${{ matrix.package }}
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          HOSTED_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/hosted-browser/package.json
+        run: node scripts/operation01-hosted.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: operation01-${{ matrix.package }}-evidence
+          path: operation01-evidence/
+          retention-days: 14
