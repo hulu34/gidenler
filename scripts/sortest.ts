@@ -179,7 +179,8 @@ async function main() {
   delete process.env.PRODUCTION_DB_FINGERPRINT; ok("yalıtım: parmak izi yoksa kapalı", !previewWriteGuard("postgres://u:p@dal.neon.tech/db").ok);
   if (old.e) process.env.VERCEL_ENV = old.e; else delete process.env.VERCEL_ENV; if (old.f) process.env.PRODUCTION_DB_FINGERPRINT = old.f;
   ok("yalıtım: getDb koruması kodda", /previewWriteGuard\(url\)\.ok\) return \(cached = null\)/.test(readFileSync("lib/db/client.ts", "utf8")));
-  ok("dizin: derlemede kendiliğinden üretilir", /"prebuild": "tsx scripts\/sor-index\.ts"/.test(readFileSync("package.json", "utf8")));
+  const prebuildSteps = JSON.parse(readFileSync("package.json", "utf8")).scripts.prebuild.split("&&").map((step: string) => step.trim());
+  ok("dizin: derlemede kendiliğinden üretilir", prebuildSteps.includes("tsx scripts/sor-index.ts"));
   ok("dizin: güncel", spawnSync("npx", ["tsx", "scripts/sor-index.ts", "--check"]).status === 0);
 
   /* sahte sağlayıcı: AI katmanı kapıları. Gerçek model testi DEĞİL. */
