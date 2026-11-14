@@ -33,6 +33,16 @@
    "neden": []
   },
   {
+   "gersId": "96474a6f-1edc-4500-9e1a-128341bb595e",
+   "ad": "Bonissimo",
+   "ilce": "Esenyurt",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
    "gersId": "4c3c3fa6-b3cb-45bd-9ce9-6ca36a338a60",
    "ad": "Oz Lezzet Borek Salonu",
    "ilce": "Beylikdüzü",
@@ -56,6 +66,16 @@
    "gersId": "f51b73aa-9968-4fa5-9de4-e4aa1c148440",
    "ad": "San Marco's Caffe Shop",
    "ilce": "Bakırköy",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "f365b574-8af2-4ed6-8d58-5361c58453d8",
+   "ad": "FAVELA Coffee & Drink",
+   "ilce": "Küçükçekmece",
    "sinif": "B",
    "eksik": [
     "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
@@ -152,12 +172,42 @@
    "neden": []
   },
   {
+   "gersId": "78e15dd4-b397-47cf-a05b-dc4fafcb9cf6",
+   "ad": "Ustun Pasta Cafe",
+   "ilce": "Ümraniye",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
    "gersId": "af1cf5e7-28a2-4ff6-9d61-d37c6df08bb5",
    "ad": "Bloom Coffee Roastery",
    "ilce": "Üsküdar",
    "sinif": "B",
    "eksik": [
     "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "8e7d7703-1a51-4e59-8c24-1fbf6c6aad05",
+   "ad": "Çamlıca Cafe",
+   "ilce": "Sarıyer",
+   "sinif": "B",
+   "eksik": [
+    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "9e14773b-d85d-4646-8a18-a350af018ea4",
+   "ad": "Coffeeager",
+   "ilce": "Beyoğlu",
+   "sinif": "B",
+   "eksik": [
+    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
    ],
    "neden": []
   },
@@ -169,6 +219,16 @@
    "neden": [
     "paket içinde aynı işletme: dilek-pastanesi-5-etap-basaksehir"
    ]
+  },
+  {
+   "gersId": "58f64afc-7548-4299-99ca-9b7eadb1067e",
+   "ad": "Makarizza",
+   "ilce": "Fatih",
+   "sinif": "B",
+   "eksik": [
+    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+   ],
+   "neden": []
   },
   {
    "gersId": "6883611d-3110-4162-a699-2a51b86f53be",
@@ -187,6 +247,15 @@
    "sinif": "çakışma",
    "neden": [
     "paket içinde aynı işletme: moc-osmanbey-sisli"
+   ]
+  },
+  {
+   "gersId": "f21d7cad-f8d6-488a-bbfe-741e85c65733",
+   "ad": "Gönül Kahvesi Neomarin Avm",
+   "ilce": "Pendik",
+   "sinif": "çakışma",
+   "neden": [
+    "paket içinde aynı işletme: gonul-kahvesi-sultanbeyli"
    ]
   },
   {

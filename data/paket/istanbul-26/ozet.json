@@ -1,14 +1,14 @@
 {
  "dalga": 26,
- "A": 94,
+ "A": 116,
  "sinif": {
-  "A-konumsuz": 76,
-  "A": 18
+  "A-konumsuz": 93,
+  "A": 23
  },
- "osmKaydi": 18,
- "isletmeKaydi": 76,
- "uygunAday": 115,
- "secilen": 115,
+ "osmKaydi": 23,
+ "isletmeKaydi": 93,
+ "uygunAday": 144,
+ "secilen": 144,
  "onEleme": {
   "kanitsiz": 0,
   "spamPark": 0,
@@ -16,19 +16,19 @@
   "acilmadi": 0
  },
  "inceleme": {
-  "B": 16,
-  "çakışma": 4,
+  "B": 22,
+  "çakışma": 5,
   "C": 1
  },
  "incelemeNeden": {
-  "resmî site yalnız http": 12,
+  "resmî site yalnız http": 15,
   "906 kimliğinin OSM öğesi": 1,
-  "ilçe resmî sitede geçmiyor": 3,
-  "paket içinde aynı işletme": 4,
+  "ilçe resmî sitede geçmiyor": 6,
+  "paket içinde aynı işletme": 5,
   "zincir": 1
  },
  "turKaynagi": {
-  "resmî site": 94
+  "resmî site": 116
  },
  "ilce": {
   "Avcılar": 2,
@@ -36,7 +36,8 @@
   "Küçükçekmece": 2,
   "Beykoz": 1,
   "Kartal": 1,
-  "Bahçelievler": 2,
+  "Tuzla": 1,
+  "Bahçelievler": 3,
   "Güngören": 1,
   "Çatalca": 1,
   "Bağcılar": 2,
@@ -44,28 +45,31 @@
   "Bayrampaşa": 1,
   "Esenyurt": 2,
   "Esenler": 1,
-  "Bakırköy": 4,
+  "Bakırköy": 6,
   "Başakşehir": 1,
-  "Şişli": 8,
-  "Maltepe": 4,
-  "Kadıköy": 11,
+  "Şişli": 9,
+  "Maltepe": 5,
+  "Kadıköy": 16,
   "Sancaktepe": 3,
   "Ümraniye": 7,
   "Üsküdar": 7,
   "Ataşehir": 4,
+  "Beylikdüzü": 1,
   "Pendik": 4,
-  "Sarıyer": 5,
-  "Fatih": 5,
-  "Beyoğlu": 7,
+  "Sarıyer": 7,
+  "Beyoğlu": 12,
+  "Fatih": 6,
+  "Beşiktaş": 6,
   "Büyükçekmece": 1,
-  "Beşiktaş": 5
+  "Sultanbeyli": 1
  },
  "tur": {
   "Tatlıcı": 18,
   "Fırın": 14,
   "Kahveci": 45,
+  "Kafe": 22,
   "Pastane": 17
  },
- "zincirSube": 8,
+ "zincirSube": 9,
  "v906Eslesen": 0
 }

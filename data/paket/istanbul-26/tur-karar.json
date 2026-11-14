@@ -1,5 +1,5 @@
 {
- "_aciklama": "Paket 26 (kafe kipi) kaynaklı tür kararları (14.11.2026): resmî sitenin ana sayfası ve menü/ürün sayfalarında pastane/fırın/tatlıcı/kahveci kalıp sayımı; baskın aile ≥3 ve ikinciden 2 kat. Her satır elle gözden geçirildi; üretici, toptancı, dükkân, eğitim kurumu, bar ve platform alan adları elendi (elleRet).",
+ "_aciklama": "Paket 26 (kafe kipi) kaynaklı tür kararları (14.11.2026): resmî sitenin ana sayfası ve menü/ürün sayfalarında pastane/fırın/tatlıcı/kahveci kalıp sayımı; baskın aile ≥3 ve ikinciden 2 kat. Her satır elle gözden geçirildi; üretici, toptancı, dükkân, eğitim kurumu, bar ve platform alan adları elendi (elleRet). Ek: kendini açıkça kafe olarak tanımlayan ve menüsü karışık olan siteler genel 'Kafe' türüyle kabul edildi (başlık alıntısıyla).",
  "kararlar": {
   "d8e90577-deb3-4dd4-b89e-4e21e71c7b3d": {
    "ad": "Karahan pasta Baklava",
@@ -936,6 +936,238 @@
     "coffee_shop"
    ],
    "ifade": "resmî site (https://www.offtherecordistanbul.com/): “,\"description\":\"Kuzguncuk'ta plak dükkânı ve specialty coffee. Yerli ve yabancı plak, CD ve kaset; kargoyla Tü” · Kahveci 10 eşleşme, sonraki Pastane 1"
+  },
+  "78e15dd4-b397-47cf-a05b-dc4fafcb9cf6": {
+   "ad": "Ustun Pasta Cafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “&Uuml;st&uuml;n Pasta&Cafe – Hos Geldiniz”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "810369cf-aab5-4bc0-927f-31521173e963": {
+   "ad": "Gönül Kahvesi",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Gönül Kahvesi – Gönül Kahvesi, kahveye duyduğunuz sevgiyi ve tutkunuzu en iyi şekilde yaşa”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "f21d7cad-f8d6-488a-bbfe-741e85c65733": {
+   "ad": "Gönül Kahvesi Neomarin Avm",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Gönül Kahvesi – Gönül Kahvesi, kahveye duyduğunuz sevgiyi ve tutkunuzu en iyi şekilde yaşa”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "9232b648-c821-4410-9a4c-a668db1c3b37": {
+   "ad": "Haha Kafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Cafe | Haha Kafe | İstanbul”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "4b49ffc5-154a-4ff5-8310-87401d275d10": {
+   "ad": "Hide Arnavutkoy",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Cafe Hide”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "e39d5b7c-2eb7-4318-bdd6-b511e123d708": {
+   "ad": "Yeniköy Kahvecisi",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Yeniköy Kahvecisi | Taze Kavrulmuş Kahve ve Kafe Ürünleri Toptan Tedarik”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "f46db219-6fd5-4ede-90c7-20a0c97fa474": {
+   "ad": "Beyazpark Kafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Beyazpark Kafe - Yeşil Ve Mavi Buluşuyor”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "8e7d7703-1a51-4e59-8c24-1fbf6c6aad05": {
+   "ad": "Çamlıca Cafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Camlica Cafe”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "f897663c-5dcb-4f2d-be42-7da82f907857": {
+   "ad": "Tahıl Pasta Cafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Tahıl Pasta — Yeni Bir Başlangıç”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "3476f472-10f8-4a96-a13a-4e98c20b8832": {
+   "ad": "Thegranma Food&coffee",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “THE GRANMA food & coffee | Menü ve Fiyatlar”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "497c6f9c-cec6-4986-88d4-0c40c00e5268": {
+   "ad": "tatbaba kafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Tatbaba Kafe | Beylikdüzü Kavaklı’da Kahvaltı ve Lezzet”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "3b108ba5-200e-4b33-9cec-9a2abba554cf": {
+   "ad": "Coffee Hour Florya",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Coffee Hour Florya – Kahve Bilimi”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "f073b065-c819-4434-ba07-2a4c0ef39bdd": {
+   "ad": "Kanca Kafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Hoşgeldiniz - Kanca Kafe”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "52eca38c-fd01-4d9e-bb39-dbe173b6225c": {
+   "ad": "Beacon IST",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Beacon Coffee Istanbul”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "71d2cffb-e549-43c6-8b75-17b8fae35c8e": {
+   "ad": "Likya Coffee",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Likya Coffee | Kozyatağı'ında Özel Kahve & Tatlılar”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "f365b574-8af2-4ed6-8d58-5361c58453d8": {
+   "ad": "FAVELA Coffee & Drink",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “FAVELA Coffee & Drink”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "96474a6f-1edc-4500-9e1a-128341bb595e": {
+   "ad": "Bonissimo",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Bonissimo Cafe Esenyurt - Beylikdüzünde bir restoran”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "9b6f9267-f5be-42b0-a6ce-29d16c1d2fc0": {
+   "ad": "Chill Coffee & More",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Chill Coffee & More – chill place, unique tastings”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "ec88dc44-839b-4853-add6-b4eb2aa94bc4": {
+   "ad": "Bakeryfab Coffee",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Home”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "58f64afc-7548-4299-99ca-9b7eadb1067e": {
+   "ad": "Makarizza",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Makarizza — Cafe & Food”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "b2cd9e05-0ad7-445a-bc71-571274b37585": {
+   "ad": "Nev-i Cafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Nevi Cafe – Haliç'te Bir İnci!”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "9e14773b-d85d-4646-8a18-a350af018ea4": {
+   "ad": "Coffeeager",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Ana Sayfa - Coffeeager”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "72e1c6d1-f031-42e4-8866-7ff4be166c1d": {
+   "ad": "Mums",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Taptaze Lezzetler ile Şehrin Kalbinde Sıcak Bir Mola”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "6eb112d3-3723-49aa-91d1-6130763842e2": {
+   "ad": "Aum Pasta&Cafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “İstanbul'un en tatlı mekanı - AUM Pasta & Cafe”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "3f2f6435-d944-45b1-9c14-a16aa65c1efa": {
+   "ad": "Cafe Avanti",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Butik Kahve Dükkanı | Cafe Avanti | İstanbul”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "9eec1392-d7ec-4531-9eb2-202531382cc7": {
+   "ad": "Susam Cafe",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Susam Cafe ve Restoran | Cihangir, Beyoğlu”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "4be918ec-75b6-4695-84e9-18711ea07710": {
+   "ad": "Cafe Firuz",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Cafe Firuz · Cihangir Meydanı'nda kahvaltı, kahve ve yemek · Beyoğlu”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "f1d5f6be-82d3-49ee-9bd3-5937f746c985": {
+   "ad": "Cafe Kazancı",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Cafe Kazancı – Lezzetli Yemekler, Burgerler, Izgaralar, Makarnalar ve Salatalar, Kahvaltıl”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
+  },
+  "ec8946b0-2120-474c-8b41-7167edff8ed7": {
+   "ad": "ancre.istanbul specialty coffee",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Ancre İstanbul”); menüde kahve, pasta ve tatlı birlikte, tek baskın tür yok"
   }
  },
  "elleRet": {
@@ -982,6 +1214,17 @@
   "Espresso&Cocktail Mafia": "kokteyl bar",
   "EKMAŞ": "endüstriyel ekmek üreticisi olabilir",
   "Dem Moda": "çay evi; tür kalıbı yanlış",
-  "Aşşk Kahve": "tür kalıbı yanlış (fırın değil)"
+  "Aşşk Kahve": "tür kalıbı yanlış (fırın değil)",
+  "Filifu Cafe N' Play": "çocuk oyun alanı",
+  "Hero Cafe | Coffee & Collectibles": "koleksiyon mağazası ağırlıklı",
+  "Mayk Cafe": "site Ekşi Sözlük sayfası, resmî kaynak değil",
+  "Sidra Kids Cafe": "çocuk oyun kafesi",
+  "Sato Plus Cafe": "işletme türü belirsiz",
+  "Manhattan Cafe": "site başka bir grubun (Happy Group) sitesi",
+  "Filii Cafe": "organizasyon salonu",
+  "Halkalı Merkez PlayStation Cafe": "PlayStation kafe",
+  "Çırpıcı Cafe": "organizasyon ağırlıklı",
+  "Omar Restaurant": "restoran; kafe türü uygun değil",
+  "Kadim Kahve": "site menü platformu (Gurmenu)"
  }
 }
