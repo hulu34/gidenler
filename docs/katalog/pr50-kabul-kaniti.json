@@ -1,0 +1,1267 @@
+{
+  "researchSha": "f94d102c7febad61e90d4800e3dee59ae5dbc62c",
+  "productionBase": "174a1c9c33f10774aace7f62ab884584dbaba0dd",
+  "checkedAt": "2026-11-15",
+  "total": 818,
+  "active": 783,
+  "activeRestaurant": 658,
+  "activeCafe": 114,
+  "activeBar": 11,
+  "closed": 35,
+  "newRestaurants": 17,
+  "newCafe": 0,
+  "publicationStatus": "NOT_PUBLISHED",
+  "records": [
+    {
+      "candidateId": "gm26/the-levant-tahinier",
+      "name": "The Levant Tahinier",
+      "district": "Zeytinburnu",
+      "categoryId": "cat.cafe",
+      "state": "KARAR_GEREKLI",
+      "reason": "Kafe/pastane ürün politikasının açık yayın kararı yok; restoran KPI ve bu alt paketin dışında.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/the-levant-tahinier/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-25",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://tahinier.com/",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/tas-ramen-sushi-bar",
+      "name": "Tas Ramen & Sushi Bar",
+      "district": "Şişli",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/tas-ramen-sushi-bar-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-25",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://tasramen.com/iletisim/",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://tasramen.com/iletisim/",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/basta-street-food-bar",
+      "name": "Basta! Street Food Bar",
+      "district": "Kadıköy",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/basta-street-food-bar/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-25",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.bastafood.com/iletisim-1",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.bastafood.com/iletisim-1",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/agata-nisantasi",
+      "name": "Agata Nişantaşı",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/agata-nisantasi/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-25",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://agataistanbul.com/",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://agataistanbul.com/",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/the-lobby",
+      "name": "The Lobby",
+      "district": "Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/the-lobby/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-25",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.peninsula.com/en/istanbul/hotel-fine-dining/the-lobby",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.peninsula.com/en/istanbul/hotel-fine-dining/the-lobby",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/zubeyir-ocakbasi-taksim",
+      "name": "Zübeyir Ocakbaşı Taksim",
+      "district": "Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/zubeyir-ocakbasi-taksim-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-24",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://yemek.com/istanbulun-en-iyi-kaburgacilari/",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://yemek.com/en-iyi-kebap-mekanlari/",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.timeout.com/istanbul/restaurants/zuebeyir-ocakbasi",
+          "type": "bağımsız editoryal",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/yenikoy-balikcisi",
+      "name": "Yeniköy Balıkçısı",
+      "district": "Sarıyer",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Bulunan işletme adlı alan adının vCard telefon kaydı şube/reçber iletişimiyle eşleşmiyor; alan adının gerçek işletmeyle bağı bağımsız teyit edilemedi. GM + editoryal adres korunur, doğrudan işletme teyidi açık.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/yenikoy-balikcisi-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-24",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/lokanta-yogurt",
+      "name": "Lokanta Yoğurt",
+      "district": "Üsküdar",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/lokanta-yogurt/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-24",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.hurriyet.com.tr/yazarlar/ebru-erke/cagdas-anadolu-lokantasi-43169380",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/anadolu-yakasinin-en-iyi-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/villa-bosphorus",
+      "name": "Villa Bosphorus",
+      "district": "Üsküdar",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/villa-bosphorus-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-24",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.villabosphorus.com.tr/",
+          "type": "resmî site",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/eskiyer-restaurant",
+      "name": "Eskiyer Restaurant",
+      "district": "Sarıyer",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/eskiyer-restaurant-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-24",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/tuzz",
+      "name": "Tuzz",
+      "district": "Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/tuzz/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-24",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.khaihotel.com/karakoy/",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.khaihotel.com/karakoy/",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/toro-latin-gastro-istanbul",
+      "name": "Toro Latin Gastro İstanbul",
+      "district": "Sarıyer",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/topside-bar-6/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-24",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-terasli-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/aliee-istanbul-taste-by-thomas-buhner",
+      "name": "Aliée İstanbul, Taste by Thomas Bühner",
+      "district": "Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "İşletmeci artık Taste by Aliée adını ve otel için No 11:19 gösteriyor; Thomas Bühner marka/şube devamı ayrıca teyit edilmeli.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/aliee-istanbul-taste-by-thomas-buhner/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-24",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://all.accor.com/hotel/C4K9/index.en.shtml",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/sushi-barba",
+      "name": "Sushi Barba",
+      "district": "Sarıyer",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Rehber AVM No:73, kompleks için diğer kaynakta No:11; iç birim mi dış kapı mı olduğu bağımsız çözülemedi.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/sushi-barba/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://istinyepark.com.tr/ist-category/restoran/",
+          "type": "AVM resmî rehberi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/restoran-modern",
+      "name": "Restoran Modern",
+      "district": "Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/restoran-modern-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.istanbulmodern.org/ziyaret/restoran",
+          "type": "işletmeci resmî sitesi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.istanbulmodern.org/ziyaret/restoran",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/paper-moon",
+      "name": "Paper Moon",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/paper-moon-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.papermoonrestaurants.com/paper-moon-istanbul.html",
+          "type": "resmî marka sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.akmerkez.com.tr/iletisim",
+          "type": "AVM resmî adresi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.papermoonrestaurants.com/paper-moon-istanbul.html",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/otto-bite",
+      "name": "Otto Bite",
+      "district": "Başakşehir",
+      "categoryId": "cat.cafe",
+      "state": "KARAR_GEREKLI",
+      "reason": "Kafe/pastane ürün politikasının açık yayın kararı yok; restoran KPI ve bu alt paketin dışında.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/otto-bite/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.mallofistanbul.com.tr/moicadde",
+          "type": "AVM resmî rehberi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/olea-bar",
+      "name": "Olea & Bar",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/olea-bar/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.mandarinoriental.com/en/istanbul/bosphorus/dine",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.mandarinoriental.com/en/istanbul/bosphorus/dine",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/ocak",
+      "name": "OCAK",
+      "district": "Fatih",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/ocak-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.regieottoman.com/",
+          "type": "işletmeci resmî sitesi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.regieottoman.com/",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/nusr-et-steakhouse-etiler",
+      "name": "Nusr-Et Steakhouse Etiler",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/nusr-et-steakhouse-etiler/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.nusr-et.com.tr/tr/restoranlar/etiler",
+          "type": "resmî şube sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.nusr-et.com.tr/tr/restoranlar/etiler",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/neni-brasserie",
+      "name": "Neni Brasserie",
+      "district": "Kadıköy",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/neni-brasserie-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://gazeteoksijen.com/listeler/bagdat-caddesinin-en-iyi-mekanlari-235744",
+          "type": "bağımsız editoryal (tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/mykorini-istanbul",
+      "name": "MykOrini İstanbul",
+      "district": "Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Rehber Taşkızak Tersanesi 27J; işletme Taşkızak Tersane No:5. Aynı şube/kapı eşleştirmesi açık.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/mykorini-istanbul/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.mykorini.com/",
+          "type": "resmî site",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/catch",
+      "name": "Catch",
+      "district": "Kadıköy",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/catch/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.timeout.com/istanbul/tr/restoranlar/catch",
+          "type": "bağımsız editoryal (tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/caviar-kaspia-bosphorus",
+      "name": "Caviar Kaspia Bosphorus",
+      "district": "Üsküdar",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/caviar-kaspia-bosphorus/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.vakkohotel.com/exp/the-art-of-caviar",
+          "type": "işletmeci resmî sitesi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.vakkohotelbosphorus.com/tr/dining",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/kubbeli-lounge-pera-palace-hotel",
+      "name": "Kubbeli Lounge/Pera Palace Hotel",
+      "district": "Beyoğlu",
+      "categoryId": "cat.cafe",
+      "state": "KARAR_GEREKLI",
+      "reason": "Resmî Kubbeli bağlantısı 404; ayrıca kafe politikası kararı bekleniyor.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/kubbeli-lounge-pera-palace-hotel/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.perapalace.com/pages/kubbeli-saloon-tea-lounge",
+          "type": "işletmeci resmî sitesi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/kruton",
+      "name": "Kruton",
+      "district": "Şişli",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/kruton/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/nisantasinin-en-iyi-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/kendime-istanbul",
+      "name": "Kendime İstanbul",
+      "district": "Kadıköy",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/kendime-istanbul/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/en-iyi-bulusma-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/josephine-istanbul",
+      "name": "Josephine İstanbul",
+      "district": "Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/josephine-istanbul/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbul-iftar-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/isokyo",
+      "name": "İsokyo",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/isokyo-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.raffles.com/istanbul/dining/isokyo/",
+          "type": "işletmeci resmî sitesi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.zorlucenter.com.tr/iletisim",
+          "type": "AVM resmî adresi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.raffles.com/istanbul/dining/isokyo/",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/gunaydin-kebap-restoran",
+      "name": "Günaydın Kebap Restoran",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/gunaydin-kebap-restoran/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://yemek.com/etilerde-en-iyi-kebap-nerede-yenir/",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/gou-society",
+      "name": "GOU Society",
+      "district": "Kadıköy",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/gou-society-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/bagdat-caddesinin-en-iyi-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/five-o-clock",
+      "name": "Five O’Clock",
+      "district": "Beşiktaş",
+      "categoryId": "cat.cafe",
+      "state": "KARAR_GEREKLI",
+      "reason": "Kafe/pastane ürün politikasının açık yayın kararı yok; restoran KPI ve bu alt paketin dışında.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/five-oclock-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.zorlucenter.com.tr/magazalar",
+          "type": "AVM resmî rehberi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.zorlucenter.com.tr/iletisim",
+          "type": "AVM resmî adresi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/filo-d-olio-caddebostan-by-danilo-zanna",
+      "name": "Filo D’olio Caddebostan by Danilo Zanna",
+      "district": "Kadıköy",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Restoran listesi Bağdat Caddesi diyor, resmî ana sayfa İstanbul için yeni adres çok yakında diyor; eski 319-321C adresinde faaliyet yeniden teyit edilmeli.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/filo-dolio-caddebostan-by-danilo-zanna/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.filodolio.com.tr/our-restaurants.aspx",
+          "type": "resmî site",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/fauchon-paris",
+      "name": "Fauchon Paris",
+      "district": "Beşiktaş",
+      "categoryId": "cat.cafe",
+      "state": "KARAR_GEREKLI",
+      "reason": "Kafe/pastane ürün politikasının açık yayın kararı yok; restoran KPI ve bu alt paketin dışında.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/fauchon-paris-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.zorlucenter.com.tr/magazalar",
+          "type": "AVM resmî rehberi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/efendy",
+      "name": "Efendy",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/efendy-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/en-iyi-bulusma-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/da-vittorio-ristorante-italiano",
+      "name": "Da Vittorio Ristorante Italiano",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/da-vittorio-ristorante-italiano-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://all.accor.com/hotel/A477/index.en.shtml",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://all.accor.com/hotel/A477/index.en.shtml",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/cova",
+      "name": "Cova",
+      "district": "Sarıyer",
+      "categoryId": "cat.cafe",
+      "state": "KARAR_GEREKLI",
+      "reason": "Kafe/pastane ürün politikasının açık yayın kararı yok; restoran KPI ve bu alt paketin dışında.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/cova/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://istinyepark.com.tr/ist-category/restoran/",
+          "type": "AVM resmî rehberi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/buselik-meyhane",
+      "name": "Buselik Meyhane",
+      "district": "Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/buselik-meyhane/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-yeni-nesil-meyhaneleri",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://gazeteoksijen.com/gastronomi/istanbulun-en-iyi-yeni-nesil-meyhaneleri-247750",
+          "type": "bağımsız editoryal (tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/bronco",
+      "name": "Bronco",
+      "district": "Sarıyer",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/bronco-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-hamburgercileri",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/nisantasi-beymen-brasserie",
+      "name": "Nişantaşı Beymen Brasserie",
+      "district": "Şişli",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/nisantasi-beymen-brasserie/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/nisantasinin-en-iyi-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/beca",
+      "name": "Beca",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/beca/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://becaistanbul.com/",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://becaistanbul.com/",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/baylan-bebek",
+      "name": "Baylan Bebek",
+      "district": "Beşiktaş",
+      "categoryId": "cat.cafe",
+      "state": "KARAR_GEREKLI",
+      "reason": "Kafe/pastane ürün politikasının açık yayın kararı yok; restoran KPI ve bu alt paketin dışında.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/baylan-bebek/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://baylangida.com/iletisim",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/batard",
+      "name": "Batard",
+      "district": "Şişli",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/batard-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/bomontinin-en-iyi-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/bardot",
+      "name": "Bardot",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/bardot-3/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.zorlucenter.com.tr/magazalar",
+          "type": "AVM resmî rehberi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.zorlucenter.com.tr/magazalar",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/backyard-bistro",
+      "name": "Backyard Bistro",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/backyard-bistro/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/bebek-en-iyi-mekanlar",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/atolye",
+      "name": "Atölye",
+      "district": "Şişli",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/atolye/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.ritzcarlton.com/en/hotels/istrz-the-ritz-carlton-istanbul/dining/",
+          "type": "işletmeci resmî sitesi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.ritzcarlton.com/en/hotels/istrz-the-ritz-carlton-istanbul/dining/",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/ali-ocakbasi",
+      "name": "Ali Ocakbaşı",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/ali-ocakbasi-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-terasli-mekanlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/adana-ocakbasi-kurtulus",
+      "name": "Adana Ocakbaşı Kurtuluş",
+      "district": "Şişli",
+      "categoryId": "cat.restaurant",
+      "state": "BEKLIYOR",
+      "reason": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/adana-ocakbasi-kurtulus/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-et-restoranlari",
+          "type": "bağımsız editoryal (2026, tarihli)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "gm26/16-roof",
+      "name": "16 Roof",
+      "district": "Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "state": "KOD_ADAYINA_KABUL",
+      "reason": "Resmî işletme/otel/kompleks varlık ve güncel hizmet sayfası + bağımsız rehber kimlik/adres eşleşmesi. Henüz Preview/Production kabulü değildir.",
+      "evidence": [
+        {
+          "url": "https://www.gault-millau.com.tr/16-roof-5/",
+          "type": "editoryal rehber",
+          "claimedDate": "2025-12-23",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://all.accor.com/hotel/A5D2/index.en.shtml",
+          "type": "resmî site / işletmeci sayfası",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://all.accor.com/hotel/A5D2/index.en.shtml",
+          "type": "independently verified official operator",
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "candidateId": "sube/baylan-galataport",
+      "name": "Baylan Galataport",
+      "district": "Beyoğlu",
+      "categoryId": "cat.cafe",
+      "state": "KARAR_GEREKLI",
+      "reason": "Kafe/pastane ürün politikasının açık yayın kararı yok; restoran KPI ve bu alt paketin dışında.",
+      "evidence": [
+        {
+          "url": "https://baylangida.com/iletisim",
+          "type": "resmî şube listesi",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://www.gault-millau.com.tr/baylan-bebek/",
+          "type": "editoryal rehber (marka)",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "url": "https://galataport.com/tr/blog/pastane-kulturu-istanbulda-100-yil",
+          "type": "bağımsız işletmeci (kompleks) blogu",
+          "claimedDate": null,
+          "checkedAt": "2026-11-15"
+        }
+      ]
+    }
+  ],
+  "oldSeven": {
+    "applied": 0,
+    "newPlaceIncrease": 0,
+    "note": "Yalnız yedi eski araştırma/ret kaydının kanıt güncellemesi olarak ayrı tutulur; mevcut 801 katalogda oldukları veya yeni yayın sayısına eklendikleri iddia edilmez."
+  },
+  "cautions": [
+    "Telefon alanları kaynaklarda farklı; aktarılmadı.",
+    "TAS OSM koordinatı bağımsız yeniden doğrulanmadığından bu pakette A-konumsuz; harita üretilmez.",
+    "Paper Moon ve İsokyo adresi resmî kompleks adresidir; işletme adı ve kompleks açıkça korunur.",
+    "The Lobby resmî sayfası web okumasında kimlik/adres gösterdi; yerel HTTP isteği 403 verdi.",
+    "Rehber puanları, metinleri, fotoğrafları, menü veya fiyat verileri uygulamaya kopyalanmaz."
+  ]
+}

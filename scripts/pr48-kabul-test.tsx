@@ -29,12 +29,15 @@ async function main() {
   const added = additions as RealVenueRecord[], slugs = new Set(added.map(r => r.slug));
   const base = ["venues.json", "isletme.json"].flatMap(f => JSON.parse(execFileSync("git", ["show", `${BASE}:data/real/${f}`], {encoding:"utf8"}))) as RealVenueRecord[];
   const raw = ["venues.json", "isletme.json"].flatMap(f => JSON.parse(readFileSync(`data/real/${f}`, "utf8"))) as RealVenueRecord[];
-  check("793 eski kayıt alanları aynen korunur", () => assert.deepEqual(raw.filter(r => !slugs.has(r.slug)), base));
-  check("Uygulama 801 toplam / 766 aktif / 641 restoran / 114 kafe okur", () => {
-    assert.equal(realVenueRecords.length, manifest.total); assert.equal(activeEntities.length, manifest.active);
-    assert.equal(activeEntities.filter(e => e.categoryId === "cat.restaurant").length, manifest.activeRestaurant);
-    assert.equal(activeEntities.filter(e => e.categoryId === "cat.cafe").length, manifest.activeCafe);
-    assert.equal(new Set(realVenueRecords.map(r => r.slug)).size, manifest.total);
+  const baseSlugs = new Set(base.map(b => b.slug));
+  check("793 eski kayıt alanları aynen korunur", () => assert.deepEqual(raw.filter(r => baseSlugs.has(r.slug)), base));
+  // Eski paket artık büyüyen katalog için bir koruma alt kümesidir; yeni tam sayım test:pr50 kapısında.
+  check("PR49 tabanı ve sekiz restoran büyüyen katalogda korunur", () => {
+    assert.ok(realVenueRecords.length >= manifest.total); assert.ok(activeEntities.length >= manifest.active);
+    assert.ok(activeEntities.filter(e => e.categoryId === "cat.restaurant").length >= manifest.activeRestaurant);
+    assert.ok(activeEntities.filter(e => e.categoryId === "cat.cafe").length >= manifest.activeCafe);
+    assert.equal(new Set(realVenueRecords.map(r => r.slug)).size, realVenueRecords.length);
+    for (const r of added) assert.deepEqual(raw.find(current=>current.slug===r.slug),r);
   });
   check("Yalnız sekiz onaylı restoran; gelecek tarih ve kafe yok", () => {
     assert.equal(added.length, 8); assert.deepEqual([...slugs].sort(), manifest.records.map(r=>r.slug).sort());
