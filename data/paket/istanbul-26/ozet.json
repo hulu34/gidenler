@@ -1,0 +1,71 @@
+{
+ "dalga": 26,
+ "A": 94,
+ "sinif": {
+  "A-konumsuz": 76,
+  "A": 18
+ },
+ "osmKaydi": 18,
+ "isletmeKaydi": 76,
+ "uygunAday": 115,
+ "secilen": 115,
+ "onEleme": {
+  "kanitsiz": 0,
+  "spamPark": 0,
+  "kafeBar": 2,
+  "acilmadi": 0
+ },
+ "inceleme": {
+  "B": 16,
+  "çakışma": 4,
+  "C": 1
+ },
+ "incelemeNeden": {
+  "resmî site yalnız http": 12,
+  "906 kimliğinin OSM öğesi": 1,
+  "ilçe resmî sitede geçmiyor": 3,
+  "paket içinde aynı işletme": 4,
+  "zincir": 1
+ },
+ "turKaynagi": {
+  "resmî site": 94
+ },
+ "ilce": {
+  "Avcılar": 2,
+  "Eyüpsultan": 1,
+  "Küçükçekmece": 2,
+  "Beykoz": 1,
+  "Kartal": 1,
+  "Bahçelievler": 2,
+  "Güngören": 1,
+  "Çatalca": 1,
+  "Bağcılar": 2,
+  "Kağıthane": 1,
+  "Bayrampaşa": 1,
+  "Esenyurt": 2,
+  "Esenler": 1,
+  "Bakırköy": 4,
+  "Başakşehir": 1,
+  "Şişli": 8,
+  "Maltepe": 4,
+  "Kadıköy": 11,
+  "Sancaktepe": 3,
+  "Ümraniye": 7,
+  "Üsküdar": 7,
+  "Ataşehir": 4,
+  "Pendik": 4,
+  "Sarıyer": 5,
+  "Fatih": 5,
+  "Beyoğlu": 7,
+  "Büyükçekmece": 1,
+  "Beşiktaş": 5
+ },
+ "tur": {
+  "Tatlıcı": 18,
+  "Fırın": 14,
+  "Kahveci": 45,
+  "Pastane": 17
+ },
+ "zincirSube": 8,
+ "v906Eslesen": 0
+}

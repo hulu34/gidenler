@@ -1,0 +1,2710 @@
+{
+ "_aciklama": "İstanbul Overture keşif paketi (dalga 26). Aday Overture Maps Places'ten (© Overture Maps Foundation; kaynak başına lisans: Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0); kimlik, faaliyet, adres ve tür restoranın resmî sitesinden ölçüldü (sayfa içeriği saklanmadı). Koordinat yalnız OSM restoran kaydından (© OpenStreetMap katkıcıları, ODbL); OSM'si olmayanlar A-konumsuz. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json. Google verisi yok.",
+ "kontrolTarihi": "2026-11-14",
+ "eklenen": [
+  {
+   "slug": "muslum-pasa-kunefe-avcilar",
+   "ref": "isletme/muslum-pasa-kunefe-avcilar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Müslüm Paşa Künefe",
+   "ilce": "Avcılar",
+   "adres": "Fatih Sokağı No:28, Avcılar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site muslumpasakunefe.com.tr: ad + telefon + sokak + kapı no (https://www.muslumpasakunefe.com.tr/iletisim/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.muslumpasakunefe.com.tr/iletisim/; adres metni Overture)",
+    "tür: resmî site (https://www.muslumpasakunefe.com.tr/): “unefe.com.tr Müslüm Paşa “Közde kebap, telde künefe: Müslüm Paşa.” Menü En lezzetli künefeler En lezzetli keba” · Tatlıcı 9 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.muslumpasakunefe.com.tr/",
+    "overture:9d7cfba1-0510-4f2e-8899-bf0ee7c6a0af"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "akmanoglu-firini-eyupsultan",
+   "ref": "isletme/akmanoglu-firini-eyupsultan",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Akmanoğlu Fırını",
+   "ilce": "Eyüpsultan",
+   "adres": "Kalenderhane Cd No:29, Eyüpsultan",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site akmanoglu.com.tr: ad + telefon + sokak + kapı no (https://www.akmanoglu.com.tr/Iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.akmanoglu.com.tr/Iletisim; adres metni Overture)",
+    "tür: resmî site (https://www.akmanoglu.com.tr/): “Akmanoğlu Fırını You are using an outdated browser. Please upgrade your browser to improve your experience. GE” · Fırın 27 eşleşme, sonraki Pastane 5 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.akmanoglu.com.tr/",
+    "overture:0b214b4a-bf17-4b65-880a-1d674702fa2d"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "sardan-dondurma-kucukcekmece",
+   "ref": "isletme/sardan-dondurma-kucukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Şardan Dondurma",
+   "ilce": "Küçükçekmece",
+   "adres": "Hürriyet Caddesi No:66A, Küçükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sardan.com.tr: ad + telefon + sokak (https://www.sardan.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.sardan.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.sardan.com.tr/): “﻿ Şardan Dondurma® | Lezzet Diyarı 1932 yılından beri kalitemizden ödün vermeyerek, dondurmacılık mesleğinde Ş” · Tatlıcı 36 eşleşme, sonraki Pastane 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.sardan.com.tr/",
+    "overture:a3206205-7fc2-40f2-86f4-f52ecc6ae6fa"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "gostivar-dondurma-beykoz",
+   "ref": "isletme/gostivar-dondurma-beykoz",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Gostivar Dondurma",
+   "ilce": "Beykoz",
+   "adres": "Ahmet Mithat Cd No:19, Beykoz",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site gostivardondurma.com: ad + telefon + sokak + kapı no (https://www.gostivardondurma.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.gostivardondurma.com/; adres metni Overture)",
+    "tür: resmî site (https://www.gostivardondurma.com/): “Gostivar Dondurma | Beykoz, İstanbul – Dondurma, Tulumba, Trileçe {\"@context\": \"https://schema.org\", \"@type\":” · Tatlıcı 17 eşleşme, sonraki Fırın 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.gostivardondurma.com/",
+    "overture:91795b22-cd7b-417b-8adb-547994c44c26"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "ruwa-coffee-kartal",
+   "ref": "node/13705336714",
+   "tip": "osm_kaydi",
+   "ad": "Ruwa Coffee",
+   "ilce": "Kartal",
+   "adres": "Adnan Kahveci Cd No:106A, Kartal",
+   "koordinat": [
+    40.901882,
+    29.226625
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site ruwacoffee.com.tr: ad + telefon + sokak + kapı no (https://ruwacoffee.com.tr/subelerimiz/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://ruwacoffee.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://ruwacoffee.com.tr/turk-kulturunde-kahvenin-ozel-yeri/): “i olarak kabul edilir. Sosyalleşmenin Aracı: Türk kahvesi, sohbetlerin, muhabbetlerin ve dedikoduların vazgeçi” · Kahveci 7 eşleşme, sonraki Pastane 2 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/13705336714 (Overture noktasına 3 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13705336714",
+    "https://ruwacoffee.com.tr/",
+    "overture:8ace8456-e563-4667-9e75-2e2c153fa51e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "oklava-pastanesi-bahcelievler",
+   "ref": "isletme/oklava-pastanesi-bahcelievler",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Oklava Pastanesi",
+   "ilce": "Bahçelievler",
+   "adres": "Yıldırım Beyazıt Cd No:22/B, Bahçelievler",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site oklava.net: ad + telefon + sokak + kapı no (https://www.oklava.net/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.oklava.net/; adres metni Overture)",
+    "tür: resmî site (https://www.oklava.net/): “w.instagram.com/oklavapastanesi/\" ] } Oklava Pastanesi | Online Pasta Sipariş Sitesi Sipariş Takibi Siparişim” · Pastane 15 eşleşme, sonraki Fırın 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.oklava.net/",
+    "overture:f6168c6b-4e79-46b6-9b17-897e75a56717"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "gaziantepli-kunefeci-niyo-bahcelievler",
+   "ref": "isletme/gaziantepli-kunefeci-niyo-bahcelievler",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Gaziantepli Künefeci Niyo",
+   "ilce": "Bahçelievler",
+   "adres": "Adnan Kahveci Blv No:46, Bahçelievler",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site kunefeciniyo.com: ad + telefon + sokak + kapı no (https://kunefeciniyo.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://kunefeciniyo.com/; adres metni Overture)",
+    "tür: resmî site (https://kunefeciniyo.com/): “z lezzetini tadın. Künefeci Niyo Ürünlerimiz Baklava Çeşitleri KADAYIF ÇEŞİTLERİ KATMER ÇEŞİTLERİ KÜNEFE ÇEŞİT” · Tatlıcı 259 eşleşme, sonraki Fırın 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://kunefeciniyo.com/",
+    "overture:b596e01e-621a-4191-b060-6537458800da"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "en-has-dondurma-kucukcekmece",
+   "ref": "isletme/en-has-dondurma-kucukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "En Has Dondurma",
+   "ilce": "Küçükçekmece",
+   "adres": "Salih Tamcı Sk No:8/A, Küçükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site enhasdondurma.com: ad + telefon + sokak + kapı no (https://enhasdondurma.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://enhasdondurma.com/; adres metni Overture)",
+    "tür: resmî site (https://enhasdondurma.com/): “Enhas Dondurma Menü Neler sunuyoruz? Ürünlerimiz İletişim En güzel anlara bir kaşık mutluluk Neler sunuyoruz?” · Tatlıcı 8 eşleşme, sonraki Pastane 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://enhasdondurma.com/",
+    "overture:ff1be2ce-c4e2-4f99-8660-a444052ed13b"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "unaski-pasta-cafe-merter-gungoren",
+   "ref": "isletme/unaski-pasta-cafe-merter-gungoren",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Unaşkı Pasta Cafe Merter",
+   "ilce": "Güngören",
+   "adres": "Mete Sk No:35, Güngören",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site unaski.com: ad + telefon + sokak + kapı no (https://unaski.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://unaski.com/; adres metni Overture)",
+    "tür: resmî site (https://unaski.com/): “\"> Unaşkı – Pasta/Fırın/Cafe – Lezzetin Kaliteli Adresi… {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"” · Fırın 60 eşleşme, sonraki Pastane 16 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://unaski.com/",
+    "overture:c4bb3c1a-c46c-4dc8-854d-3d531a3473cc"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "nova-beans-coffee-catalca",
+   "ref": "isletme/nova-beans-coffee-catalca",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Nova Beans Coffee",
+   "ilce": "Çatalca",
+   "adres": "Mescit Sk No:1, Çatalca",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site novabeanscoffee.com: ad + telefon + sokak + kapı no (https://novabeanscoffee.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://novabeanscoffee.com/; adres metni Overture)",
+    "tür: resmî site (https://novabeanscoffee.com/): “bir mola verin. \" Menüyü İncele Bize Ulaşın Espresso Shot Espresso Shot Taze kavrulmuş çekirdeklerin büyüleyi” · Kahveci 4 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://novabeanscoffee.com/",
+    "overture:7f954009-fb6d-48f4-a39a-8e6a241e457b"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "neves-baklava-ve-soguk-kadayif-bagcilar",
+   "ref": "isletme/neves-baklava-ve-soguk-kadayif-bagcilar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Neves Baklava & Soğuk Kadayıf",
+   "ilce": "Bağcılar",
+   "adres": "İnönü Cd No:107A, Bağcılar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site nevesbaklava.com: ad + telefon + sokak + kapı no (https://nevesbaklava.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://nevesbaklava.com/; adres metni Overture)",
+    "tür: resmî site (https://nevesbaklava.com/): “Neves Baklava | Geleneksel El Açma Baklava WHATSAPP SİPARİŞ : 0533 351 01 63 BAKLAVA & SOĞUK KADAYIF 0 WhatsAp” · Tatlıcı 150 eşleşme, sonraki Fırın 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://nevesbaklava.com/",
+    "overture:5ffb4235-5876-4da2-91ab-a3b557695a81"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "vasla-coffee-ve-roastery-kagithane",
+   "ref": "isletme/vasla-coffee-ve-roastery-kagithane",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Vasla Coffee & Roastery",
+   "ilce": "Kağıthane",
+   "adres": "Sonbahar Sk No:20, Kağıthane",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site vasla.com.tr: ad + telefon + sokak + kapı no (https://vasla.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://vasla.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://vasla.com.tr/): “Vasla Coffee & Roastery | Kayaşehir, Başakşehir 3. Nesil Kahve, Çalışmaya Uygun Rahat Kafe {\"@context\": \"https” · Kahveci 23 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://vasla.com.tr/",
+    "overture:64b0750d-ff67-421b-b9ad-b5c92bd6a397"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "mila-kurabiyka-bayrampasa",
+   "ref": "isletme/mila-kurabiyka-bayrampasa",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Mila Kurabiyka",
+   "ilce": "Bayrampaşa",
+   "adres": "Park Sk No:3, Bayrampaşa",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site milakurabiyka.com.tr: ad + telefon + sokak + kapı no (https://www.milakurabiyka.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.milakurabiyka.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.milakurabiyka.com.tr/): “Kişiye Özel Tasarım Hediyelikler ve Çikolata - Mila Kurabiyka {\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"Webs” · Pastane 13 eşleşme, sonraki Tatlıcı 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.milakurabiyka.com.tr/",
+    "overture:ca2c6255-6c30-4771-acef-cf208160dbb2"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "anisah-coffee-esenyurt",
+   "ref": "isletme/anisah-coffee-esenyurt",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Anisah Coffee",
+   "ilce": "Esenyurt",
+   "adres": "Zafer mahallesi adile naşit bulvarı No:177, Esenyurt",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site anisahcoffee.com: ad + telefon + sokak + kapı no (https://anisahcoffee.com/pages/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://anisahcoffee.com/pages/iletisim; adres metni Overture)",
+    "tür: resmî site (https://anisahcoffee.com/): “Anisah Coffee Türk Kahvesi, Espresso, Filtre, Kapsül, Hindiba & Toptan Navigation --> Türkçe English Dili Günc” · Kahveci 32 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://anisahcoffee.com/",
+    "overture:47b22c96-03d6-4375-b22c-f903eb239bae"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "stabil-kahve-esenler",
+   "ref": "isletme/stabil-kahve-esenler",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Stabil Kahve",
+   "ilce": "Esenler",
+   "adres": "Giyimkent 5. Sk No:21/A, Esenler",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site stabilkahve.com.tr: ad + telefon + sokak + kapı no (https://stabilkahve.com.tr/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://stabilkahve.com.tr/iletisim; adres metni Overture)",
+    "tür: resmî site (https://stabilkahve.com.tr/): “lerle tek tuşla, her seferinde kıvamında bir espresso. DETAYLAR Ustalar gibi hazırlayın Tamper, süt potu ve ma” · Kahveci 22 eşleşme, sonraki Pastane 4 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://stabilkahve.com.tr/",
+    "overture:b75c242c-4d79-4ec5-ac35-3266bb3451b4"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "le-petit-moulin-bakirkoy",
+   "ref": "isletme/le-petit-moulin-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Le Petit Moulin",
+   "ilce": "Bakırköy",
+   "adres": "Yakut Sk No:11/b, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site lepetitmoulin.com.tr: ad + telefon + sokak + kapı no (https://lepetitmoulin.com.tr/menu/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://lepetitmoulin.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://lepetitmoulin.com.tr/): “lı tuzlu kruvasanlar vardır. Kahve tarafında espresso 155 ₺, latte, cortado, flat white ve cappuccino 225 ₺ ,” · Kahveci 164 eşleşme, sonraki Pastane 82 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://lepetitmoulin.com.tr/",
+    "overture:474f97da-5bd2-48f2-87f1-363640593171"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "korner-kafe-avcilar",
+   "ref": "isletme/korner-kafe-avcilar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Korner Kafe",
+   "ilce": "Avcılar",
+   "adres": "Namık Kemal Cd No:67, Avcılar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site kornerkafe.com.tr: ad + sokak + kapı no (https://www.kornerkafe.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.kornerkafe.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.kornerkafe.com.tr/): “arista\" kahve süsleme sanatçısıdır. Expresso Espresso, İtalya’dan tüm dünyaya yayılan, basınç kullanarak hızlı” · Kahveci 5 eşleşme, sonraki Tatlıcı 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.kornerkafe.com.tr/",
+    "overture:bb070d91-4b78-4442-817d-830c0726bff2"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "dilek-pastanesi-5-etap-basaksehir",
+   "ref": "isletme/dilek-pastanesi-5-etap-basaksehir",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Dilek Pastanesi 5. Etap",
+   "ilce": "Başakşehir",
+   "adres": "Ertuğrul Gazi Cd No:29, Başakşehir",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "dilek.com.tr",
+   "sube": "Başakşehir",
+   "kanit": [
+    "resmî şube sayfası dilek.com.tr: ad + telefon + sokak + kapı no (https://dilek.com.tr/subelerimiz)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://dilek.com.tr/subelerimiz; adres metni Overture)",
+    "tür: resmî site (https://dilek.com.tr/): “Dilek Pastanesi | 1957'den beri pastane, kafe ve restoran {\"@context\":\"https://schema.org\",\"@type\":\"Organizati” · Pastane 36 eşleşme, sonraki Fırın 3 (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://dilek.com.tr/",
+    "overture:26f296cb-24b5-4044-a680-725cc0d0d88e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "cevre-pastaneleri-sisli",
+   "ref": "isletme/cevre-pastaneleri-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Çevre Pastaneleri",
+   "ilce": "Şişli",
+   "adres": "Raşit Rıza Sokağı No:9/A, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site cevrepastaneleri.com: ad + telefon + sokak + kapı no (https://www.cevrepastaneleri.com/iletisim.aspx)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.cevrepastaneleri.com/iletisim.aspx; adres metni Overture)",
+    "tür: resmî site (https://www.cevrepastaneleri.com/): “Tek Pastalar Petifur Pastalar Tatlı Tezgahı Çikolata Tezgahı Spesiyal Çikolata Dekorlu Çikolatalar Söz ve Niş” · Pastane 14 eşleşme, sonraki Fırın 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.cevrepastaneleri.com/",
+    "overture:9f8bbbf0-4aaa-4629-a016-4901e0cfe71e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "camlik-ekmek-firini-maltepe",
+   "ref": "isletme/camlik-ekmek-firini-maltepe",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Çamlık Ekmek Fırını",
+   "ilce": "Maltepe",
+   "adres": "Atatürk Cd No:45, Maltepe",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site camlikekmek.com.tr: ad + sokak + kapı no (https://www.camlikekmek.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.camlikekmek.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.camlikekmek.com.tr/): “Çamlık Ekmek UBER EATS ÇAMLIK EKMEK Kategoriler ☰ Kategoriler × Günlük ve Geleneksel Ekmekler Sağlıklı ve Diye” · Fırın 7 eşleşme, sonraki Pastane 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.camlikekmek.com.tr/",
+    "overture:ab10b109-0368-4466-88eb-0da0ddf085e1"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "saatli-firin-kadikoy",
+   "ref": "isletme/saatli-firin-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Saatli Fırın",
+   "ilce": "Kadıköy",
+   "adres": "Emin Ali Paşa Cd No:96, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site saatlifirin.com: ad + telefon + sokak + kapı no (https://www.saatlifirin.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.saatlifirin.com/; adres metni Overture)",
+    "tür: resmî site (https://www.saatlifirin.com/): “Saatli Fırın {\"@context\":\"https://schema.org\",\"@type\":\"Restaurant\",\"name\":\"Saatli F\\u0131r\\u0131n\",\"descriptio” · Fırın 17 eşleşme, sonraki Tatlıcı 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.saatlifirin.com/",
+    "overture:b915f2df-92d2-420d-8c99-286b31fb51c7"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "coffee-venga-sancaktepe",
+   "ref": "isletme/coffee-venga-sancaktepe",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Coffee Venga",
+   "ilce": "Sancaktepe",
+   "adres": "Ravza Cd No:3, Sancaktepe",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site coffeevenga.com: ad + telefon + sokak + kapı no (https://coffeevenga.com/iletisim/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://coffeevenga.com/hakkimizda/; adres metni Overture)",
+    "tür: resmî site (https://coffeevenga.com/magaza/): “İŞLERİNİZDE KARGO BEDAVA! Ana Sayfa Kahveler Filtre Kahve Espresso Türk Kahvesi Kahve Aksesuarları Fırsat Ürün” · Kahveci 127 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://coffeevenga.com/magaza/",
+    "overture:d2b31536-caef-4fdf-bc0d-9630efbe4ef1"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "agababa-kadayif-umraniye",
+   "ref": "isletme/agababa-kadayif-umraniye",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Ağababa Kadayıf",
+   "ilce": "Ümraniye",
+   "adres": "Tavukçuyolu Cd No:76/A, Ümraniye",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site agababakadayif.com: ad + telefon + sokak + kapı no (https://www.agababakadayif.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.agababakadayif.com/; adres metni Overture)",
+    "tür: resmî site (https://www.agababakadayif.com/): “Ağababa Kadayıf - Online Sipariş Anasayfa İletişim Sepetim Ürün ANASAYFA HAKKIMIZDA TEPSİ KADAYIFLAR KİLOLUK K” · Tatlıcı 49 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.agababakadayif.com/",
+    "overture:5cbc77ef-4afb-4768-8bfc-92256bfe372d"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "citir-kahve-uskudar",
+   "ref": "node/10209390131",
+   "tip": "osm_kaydi",
+   "ad": "Çıtır Kahve",
+   "ilce": "Üsküdar",
+   "adres": "Türkü Sk No:1, Üsküdar",
+   "koordinat": [
+    41.025155,
+    29.015947
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site citirkahve.com: ad + telefon + sokak + kapı no (http://www.citirkahve.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (http://www.citirkahve.com/; adres metni Overture)",
+    "tür: resmî site (http://www.citirkahve.com/): “-> Kahve Çeşitlerimizden bazıları Cappuccino Espresso ve yoğun süt köpüğü ile keyifli ve yumuşak bir içim suna” · Kahveci 9 eşleşme, sonraki Pastane 1 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/10209390131 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10209390131",
+    "http://www.citirkahve.com/",
+    "overture:5dabee9c-18db-42a6-a846-dabf88da5adf"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "mihman-pasta-ve-cafe-maltepe",
+   "ref": "isletme/mihman-pasta-ve-cafe-maltepe",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Mihman Pasta & Cafe",
+   "ilce": "Maltepe",
+   "adres": "Başıbüyük Cd No:7/A, Maltepe",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site mihmanpastacafe.com: ad + telefon + sokak + kapı no (https://www.mihmanpastacafe.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.mihmanpastacafe.com/; adres metni Overture)",
+    "tür: resmî site (https://www.mihmanpastacafe.com/): “PASTALAR YAŞ PASTALAR TEK PASTALAR PETİFUR & EKLER KURU PASTALAR MUHALLEBİLER KURABİYELER TATLILAR KAHVALTI OM” · Pastane 38 eşleşme, sonraki Fırın 15 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.mihmanpastacafe.com/",
+    "overture:a00bfefb-bd9f-4368-816e-a1e0c8c3c69e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "bag-pastaneleri-sancaktepe",
+   "ref": "isletme/bag-pastaneleri-sancaktepe",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Bağ Pastaneleri",
+   "ilce": "Sancaktepe",
+   "adres": "Ebubekir Cd No:17, Sancaktepe",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site bagpastaneleri.com: ad + telefon + sokak + kapı no (https://bagpastaneleri.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://bagpastaneleri.com/; adres metni Overture)",
+    "tür: resmî site (https://bagpastaneleri.com/): “ram Menu Search Menu Previous Next Hediyelik Çikolata Siparişleriniz İçin Sipariş Tel: 0 (545) 973 19 61 Hayal” · Pastane 22 eşleşme, sonraki Tatlıcı 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://bagpastaneleri.com/",
+    "overture:177bec41-8b6d-4bf2-9a28-a856a80e8ca6"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "altinelek-pastanesi-atasehir",
+   "ref": "node/6172085268",
+   "tip": "osm_kaydi",
+   "ad": "Altinelek Pastanesi",
+   "ilce": "Ataşehir",
+   "adres": "Karadeniz Çarşı Sokağı No:2, Ataşehir",
+   "koordinat": [
+    41.001201,
+    29.077498
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site altinelek.com.tr: ad + telefon + sokak + kapı no (https://www.altinelek.com.tr/subeler/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.altinelek.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.altinelek.com.tr/): “Altın Elek Pastane & Cafe – Ataşehir Pasta & Kahvaltı {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"W” · Pastane 30 eşleşme, sonraki Fırın 6 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/6172085268 (Overture noktasına 13 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6172085268",
+    "https://www.altinelek.com.tr/",
+    "overture:5566788f-e8e4-4a51-9362-f3d7c2ca7ef6"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "huseyinoglu-baklava-atakent-umraniye",
+   "ref": "isletme/huseyinoglu-baklava-atakent-umraniye",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Hüseyinoğlu Baklava Atakent",
+   "ilce": "Ümraniye",
+   "adres": "Anafartalar Cd No:11/A, Ümraniye",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site huseyinoglubaklava.com: ad + telefon + sokak + kapı no (https://www.huseyinoglubaklava.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.huseyinoglubaklava.com/; adres metni Overture)",
+    "tür: resmî site (https://www.huseyinoglubaklava.com/): “Hüseyinoğlu Baklava Çeşitleri, Börek ve Soğuk Baklava {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"B” · Tatlıcı 194 eşleşme, sonraki Pastane 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.huseyinoglubaklava.com/",
+    "overture:e120ba23-13a0-47ac-8cf0-0799a528d8b6"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "bohoco-uskudar",
+   "ref": "node/12832490344",
+   "tip": "osm_kaydi",
+   "ad": "BohoCo",
+   "ilce": "Üsküdar",
+   "adres": "Bulgurlu Cd No:85/B, Üsküdar",
+   "koordinat": [
+    41.016806,
+    29.073306
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site bohoco.com.tr: ad + telefon + sokak + kapı no (https://bohoco.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://bohoco.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://bohoco.com.tr/): “manlar Hakkımızda Blog İletişim Tüm Kahveler Espresso Filtre Kahve Türk Kahvesi Tüm Ekipmanlar Hakkımızda Blog” · Kahveci 20 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/12832490344 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12832490344",
+    "https://bohoco.com.tr/",
+    "overture:2242033d-58e4-417b-bb1d-e9b764965ae8"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "baklavaci-muslum-polat-sancaktepe",
+   "ref": "isletme/baklavaci-muslum-polat-sancaktepe",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Baklavacı Müslüm Polat",
+   "ilce": "Sancaktepe",
+   "adres": "Malkoçoğlu Cd No:81, Sancaktepe",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site baklavacimuslumpolat.com: ad + telefon + sokak + kapı no (https://baklavacimuslumpolat.com/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://baklavacimuslumpolat.com/iletisim; adres metni Overture)",
+    "tür: resmî site (https://baklavacimuslumpolat.com/): “Baklavacı Müslüm Polat – Baklava çerşitleri, Ustaların Lezzet Sırları, Tadı Damağınızda Kalacak Tatlar Skip to” · Tatlıcı 190 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://baklavacimuslumpolat.com/",
+    "overture:c6b3b9f9-844e-449c-90dc-d4f93ebf474f"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "creamchocco-yesilkoy-bakirkoy",
+   "ref": "isletme/creamchocco-yesilkoy-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Creamchocco Yeşilköy",
+   "ilce": "Bakırköy",
+   "adres": "İstasyon Cd No:32, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site creamchocco.com: ad + telefon + sokak + kapı no (https://creamchocco.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://creamchocco.com/; adres metni Overture)",
+    "tür: resmî site (https://creamchocco.com/): “iption\":\"Taze tatlılar, cup çeşitleri, Paris ekler ve kahve lezzetleriyle Cream Chocco’da gününüze keyifli bir” · Pastane 18 eşleşme, sonraki Tatlıcı 5 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://creamchocco.com/",
+    "overture:dbe04049-970c-4477-8870-f9798a1d2c63"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "kahveci-kardesler-pendik",
+   "ref": "isletme/kahveci-kardesler-pendik",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Kahveci Kardeşler",
+   "ilce": "Pendik",
+   "adres": "Piramit Sokağı No:5, Pendik",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site shop.kahvecikardesler.com: ad + telefon + sokak (https://www.kahvecikardesler.com/sayfa/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.kahvecikardesler.com/iletisim; adres metni Overture)",
+    "tür: resmî site (https://www.kahvecikardesler.com/): “Kahveci Kardeşler 1982 | Türk Kahvesi - Dibek Kahvesi - Filtre Kahve - Dünya Kahveleri ANASAYFA HAKKIMIZDA İLE” · Kahveci 22 eşleşme, sonraki Pastane 5 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.kahvecikardesler.com/",
+    "overture:03d95561-14d2-4f95-bfdf-8c077db94956"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "bay-bread-umraniye",
+   "ref": "isletme/bay-bread-umraniye",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Bay Bread",
+   "ilce": "Ümraniye",
+   "adres": "Turcan Cd No:24/2, Ümraniye",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site baybread.com.tr: ad + telefon + sokak + kapı no (https://baybread.com.tr/subelerimiz/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://baybread.com.tr/subelerimiz/; adres metni Overture)",
+    "tür: resmî site (https://baybread.com.tr/): “Bay Bread | Yeni Nesil Fırıncılık Skip to content Skip to footer Close Have a Project? info@website.com Want t” · Fırın 41 eşleşme, sonraki Pastane 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://baybread.com.tr/",
+    "overture:7a878ed4-763f-4a00-a167-ed50e94cba4d"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "port-of-black-coffee-ve-sandwich-sariyer",
+   "ref": "node/12840940696",
+   "tip": "osm_kaydi",
+   "ad": "Port Of Black Coffee & Sandwich",
+   "ilce": "Sarıyer",
+   "adres": "Meserburnu Cd No:65, Sarıyer",
+   "koordinat": [
+    41.165985,
+    29.056378
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site portofblack.com: ad + telefon + sokak + kapı no (https://portofblack.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://portofblack.com/; adres metni Overture)",
+    "tür: resmî site (https://portofblack.com/menu/): “Demlemeler Cam Şişe İçecekler Çekirdek Kahve Espresso Bazlı İçecekler Frozens İlaveler Pizzalar Sandviçler Sıc” · Kahveci 10 eşleşme, sonraki Pastane 1 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/12840940696 (Overture noktasına 6 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12840940696",
+    "https://portofblack.com/",
+    "overture:78a898c7-efcf-4633-9f15-2e8ec1de36c6"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "orhan-kiratli-baklava-esenyurt-esenyurt",
+   "ref": "isletme/orhan-kiratli-baklava-esenyurt-esenyurt",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Orhan Kıratlı Baklava Esenyurt",
+   "ilce": "Esenyurt",
+   "adres": "Ufuk Cd No:3, Esenyurt",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site gaziantepbaklavasi.shop: ad + telefon + sokak (https://www.gaziantepbaklavasi.shop/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.gaziantepbaklavasi.shop/; adres metni Overture)",
+    "tür: resmî site (https://www.gaziantepbaklavasi.shop/): “--> Baklava Çeşitleri | Orhan Kıratlı | gaziantepbaklavasi.shop {\"@context\":\"https://schema.org/\",\"@type\":\"Web” · Tatlıcı 45 eşleşme, sonraki Fırın 16 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.gaziantepbaklavasi.shop/",
+    "overture:c8480a38-833c-4275-b459-7ef9515fc47f"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "birinci-tatli-umraniye",
+   "ref": "isletme/birinci-tatli-umraniye",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Birinci Tatlı",
+   "ilce": "Ümraniye",
+   "adres": "Dobra Sk No:13, Ümraniye",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site birincitatli.com: ad + telefon + sokak + kapı no (https://www.birincitatli.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.birincitatli.com/; adres metni Overture)",
+    "tür: resmî site (https://www.birincitatli.com/): “31 & B\\u00f6rek: Tavuk G\\u00f6\\u011fs\\u00fc, Kazandibi, S\\u00fctla\\u00e7, So\\u011fuk Baklava, K\\u0131br\\u0131s” · Tatlıcı 142 eşleşme, sonraki Pastane 41 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.birincitatli.com/",
+    "overture:7e54d299-7ee4-4ee5-b0fc-ddfd78fb02b6"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "baldo-organik-dondurma-umraniye",
+   "ref": "isletme/baldo-organik-dondurma-umraniye",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Baldo Organik Dondurma",
+   "ilce": "Ümraniye",
+   "adres": "Kültür Sk No:23A, Ümraniye",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site baldo.com.tr: ad + telefon + sokak + kapı no (https://baldo.com.tr/pages/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://baldo.com.tr/pages/iletisim; adres metni Overture)",
+    "tür: resmî site (https://baldo.com.tr/): “Baldo Organik - Ballı Dondurma {\"@context\":\"https://schema.org\",\"@type\":\"Website\",\"url\":\"https://baldo.com.tr\"” · Tatlıcı 145 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://baldo.com.tr/",
+    "overture:cec44db5-b3a8-4831-b2f4-dd2edd32dd9d"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "gourme-coffee-bagcilar",
+   "ref": "isletme/gourme-coffee-bagcilar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Gourme Coffee",
+   "ilce": "Bağcılar",
+   "adres": "Atatürk Cd No:27/C, Bağcılar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site gourmecoffee.com: ad + sokak + kapı no (https://gourmecoffee.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://gourmecoffee.com/; adres metni Overture)",
+    "tür: resmî site (https://gourmecoffee.com/): “Gourme Coffee | Özel Seçilmiş Nitelikli Kahve ve Ekipmanlar {\"@context\":\"https://schema.org\",\"@type\":\"Website\"” · Kahveci 17 eşleşme, sonraki Pastane 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://gourmecoffee.com/",
+    "overture:a45d083d-b908-4a33-9633-f59c14d4d7fe"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "bosnian-borek-pendik",
+   "ref": "node/13703830478",
+   "tip": "osm_kaydi",
+   "ad": "Bosnian Börek",
+   "ilce": "Pendik",
+   "adres": "Zafer Cd No:62/A, Pendik",
+   "koordinat": [
+    40.887566,
+    29.22462
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site bosnianborek.com: ad + telefon + sokak + kapı no (https://www.bosnianborek.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.bosnianborek.com/; adres metni Overture)",
+    "tür: resmî site (https://www.bosnianborek.com/): “nianborek.com/#organization\",\"name\":\"Bosnian Börek & Mantı\",\"url\":\"https://bosnianborek.com\",\"logo\":{\"@type\":\"” · Fırın 44 eşleşme, sonraki Tatlıcı 6 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/13703830478 (Overture noktasına 19 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/13703830478",
+    "https://www.bosnianborek.com/",
+    "overture:96a81e84-ffc8-4419-b515-923595ac20fe"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "kahve-ambari-umraniye",
+   "ref": "isletme/kahve-ambari-umraniye",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Kahve Ambarı",
+   "ilce": "Ümraniye",
+   "adres": "Küçüksu Cd No:291, Ümraniye",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site kahveambari.com: ad + telefon + sokak + kapı no (https://kahveambari.com/pages/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://kahveambari.com/pages/iletisim; adres metni Overture)",
+    "tür: resmî site (https://kahveambari.com/): “ve üzeri ücretsiz kargo ! Anasayfa Kahveler Espresso Kahveler Filtre Kahveler Kahve Deneme Setleri Türk Kahve” · Kahveci 27 eşleşme, sonraki Pastane 5 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://kahveambari.com/",
+    "overture:470a8666-bd7a-4d52-ad1a-cdcad8c7f1aa"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "cumbali-kahve-fatih",
+   "ref": "node/5112749116",
+   "tip": "osm_kaydi",
+   "ad": "Cumbalı Kahve",
+   "ilce": "Fatih",
+   "adres": "Kürkçü Çeşmesi Sokağı No:12, Fatih",
+   "koordinat": [
+    41.03303,
+    28.945848
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site cumbalikahve.com: ad + telefon + sokak + kapı no (https://cumbalikahve.com/iletisim/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site (https://cumbalikahve.com/): “nesne Sepette ürün yok. 0.00 ₺ Kavurduğumuz nitelikli kahve çekirdeklerine ve kakao çekirdeklerine internet d” · Kahveci 14 eşleşme, sonraki Pastane 3 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5112749116 (Overture noktasına 6 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5112749116",
+    "https://cumbalikahve.com/",
+    "overture:541b777d-133f-43f1-8e28-7ec3d058eaa4"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "tukkan-karakoy-beyoglu",
+   "ref": "isletme/tukkan-karakoy-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Tükkan Karaköy",
+   "ilce": "Beyoğlu",
+   "adres": "Mumhane Cd No:34, Beyoğlu",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site tukkan.com.tr: ad + telefon + sokak + kapı no (https://tukkan.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://tukkan.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://tukkan.com.tr/menu-tr/): “t, sosis, fırınlanmış baby patates; kızarmış ekşi maya ekmek ile Çırpılmış Yumurta 440 Bazlama ekmeği üzerinde” · Fırın 6 eşleşme, sonraki Kahveci 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://tukkan.com.tr/",
+    "overture:92d69555-7350-4e16-a7ba-ae68c26c4ab0"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "mare-mosso-coffee-fatih",
+   "ref": "node/11019981807",
+   "tip": "osm_kaydi",
+   "ad": "Mare Mosso Coffee",
+   "ilce": "Fatih",
+   "adres": "Leblebiciler Sk No:40/b, Fatih",
+   "koordinat": [
+    41.034077,
+    28.946383
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site maremosso.com.tr: ad + telefon + sokak + kapı no (https://www.maremosso.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.maremosso.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.maremosso.com.tr/): “Mare Mosso Honduras HG EP San Marcos Yöresel Filtre Kahve 250 Gr. Şimdi Keşfet Fiyat 432,00 TL Portakal Aromal” · Kahveci 74 eşleşme, sonraki Pastane 21 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/11019981807 (Overture noktasına 12 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/11019981807",
+    "https://www.maremosso.com.tr/",
+    "overture:70110f09-5363-4373-b516-ccb365787883"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "voice-of-coffee-bakirkoy",
+   "ref": "isletme/voice-of-coffee-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Voice of Coffee",
+   "ilce": "Bakırköy",
+   "adres": "Yakut Sk No:11/A, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site voiceofcoffee.com.tr: ad + telefon + sokak (https://voiceofcoffee.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://voiceofcoffee.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://voiceofcoffee.com.tr/): “e gibi barista içeceklerinin yanında V-60 ve Chemex ile demlenen filtre kahveler, cold brew ve Türk kahvesi bu” · Kahveci 103 eşleşme, sonraki Pastane 42 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://voiceofcoffee.com.tr/",
+    "overture:134bd116-f703-42ec-b36b-544255975e6d"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "kandilli-pastanesi-uskudar",
+   "ref": "isletme/kandilli-pastanesi-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Kandilli Pastanesi",
+   "ilce": "Üsküdar",
+   "adres": "Kandilli İskele Cd No:28, Üsküdar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site kandillipastanesi.com: ad + telefon + sokak (https://kandillipastanesi.com/iletisim/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://kandillipastanesi.com/iletisim/; adres metni Overture)",
+    "tür: resmî site (https://kandillipastanesi.com/): “Kandilli Pastanesi – Luxury Patisserie Kandilli Pastanesi Kandilli Pastanesi; lezzeti dilden dile yayılacak, ü” · Pastane 23 eşleşme, sonraki Fırın 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://kandillipastanesi.com/",
+    "overture:3bc1c57a-ad93-40b2-98e6-3132e0941a7e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "suadiye-nazar-profiterol-kadikoy",
+   "ref": "isletme/suadiye-nazar-profiterol-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Suadiye Nazar Profiterol",
+   "ilce": "Kadıköy",
+   "adres": "Şemsettin Günaltay Cd No:86, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site nazarpastanesi.com: ad + sokak + kapı no (https://nazarprofiterol.com/subeler)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://nazarprofiterol.com/subeler; adres metni Overture)",
+    "tür: resmî site (https://nazarprofiterol.com/): “Nazar Profiterol | 1946'dan Beri İstanbul'un Profiterol Ustası {\"@context\":\"https://schema.org\",\"@type\":\"Baker” · Pastane 556 eşleşme, sonraki Kahveci 50 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://nazarprofiterol.com/",
+    "overture:39ebd5d0-f936-43be-8e04-56b6ace45e24"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "gallant-galata-beyoglu",
+   "ref": "way/717054379",
+   "tip": "osm_kaydi",
+   "ad": "Gallant Galata",
+   "ilce": "Beyoğlu",
+   "adres": "Büyük Hendek Caddesi No:15, Beyoğlu",
+   "koordinat": [
+    41.0259,
+    28.973709
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site gallantgalata.com: ad + telefon + sokak + kapı no (https://gallantgalata.com/)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site (https://gallantgalata.com/): “31m\\u0131z bu yolculukta amac\\u0131m\\u0131z; nitelikli kahve ve g\\u00fcnl\\u00fck tatl\\u0131 \\u00fcretimi ile s” · Kahveci 3 eşleşme, sonraki Pastane 1 (şube düzeyi)",
+    "konum: OSM restoran kaydı way/717054379 (Overture noktasına 15 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/717054379",
+    "https://gallantgalata.com/",
+    "overture:891a23a7-a292-44e7-b7ad-7097d5c7b1b2"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "brema-kahve-atasehir",
+   "ref": "isletme/brema-kahve-atasehir",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Brema kahve",
+   "ilce": "Ataşehir",
+   "adres": "Anadolu Cd No:22, Ataşehir",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site brema.com.tr: ad + telefon + sokak + kapı no (https://brema.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://brema.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://brema.com.tr/): “Brema Coffee Roastery İçeriğe atla Francahise BREMA COFFEE ROASTERY Hakkımızda Brema Coffee Roastery , 2012 yı” · Kahveci 18 eşleşme, sonraki Pastane 8 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://brema.com.tr/",
+    "overture:62d9a034-82a0-4379-9091-b87c441b0443"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "patisserie-idylle-atasehir",
+   "ref": "isletme/patisserie-idylle-atasehir",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Patisserie Idylle",
+   "ilce": "Ataşehir",
+   "adres": "Işıklar Cd No:30, Ataşehir",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site idylle.com.tr: ad + telefon + sokak + kapı no (https://www.idylle.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.idylle.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.idylle.com.tr/): “Patisserie IDYLLE --> ÇİKOLATALAR Sizleri eşsiz bir lezzete sürükleyecek olan el yapımı çikolatalarımızı denem” · Pastane 5 eşleşme, sonraki Tatlıcı 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.idylle.com.tr/",
+    "overture:9fde3f55-2c6d-42b9-94d8-80bf39d29fa5"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "om-coffee-ve-more-maltepe",
+   "ref": "isletme/om-coffee-ve-more-maltepe",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "OM Coffee & More",
+   "ilce": "Maltepe",
+   "adres": "Ali Rıza Çevik Sokak No:1, Maltepe",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site omcoffeeandmore.com: ad + sokak + kapı no (https://omcoffeeandmore.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://omcoffeeandmore.com/; adres metni Overture)",
+    "tür: resmî site (https://omcoffeeandmore.com/): “ription\":\"OM Coffee & More, özenle kavrulmuş nitelikli kahve çekirdekleri ve seçkin kahve ürünleriyle kahve de” · Kahveci 41 eşleşme, sonraki Pastane 7 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://omcoffeeandmore.com/",
+    "overture:6c9646a5-0ec6-4de7-8a15-138d48033274"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "off-the-record-uskudar",
+   "ref": "isletme/off-the-record-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Off The Record",
+   "ilce": "Üsküdar",
+   "adres": "İcadiye Cd No:85, Üsküdar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site offtherecordistanbul.com: ad + telefon + sokak + kapı no (https://www.offtherecordistanbul.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.offtherecordistanbul.com/; adres metni Overture)",
+    "tür: resmî site (https://www.offtherecordistanbul.com/): “,\"description\":\"Kuzguncuk'ta plak dükkânı ve specialty coffee. Yerli ve yabancı plak, CD ve kaset; kargoyla Tü” · Kahveci 10 eşleşme, sonraki Pastane 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.offtherecordistanbul.com/",
+    "overture:d8798f39-bc42-4a08-9e34-45e1028e41b3"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "bret-artisan-bakery-uskudar",
+   "ref": "isletme/bret-artisan-bakery-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Bret Artisan Bakery",
+   "ilce": "Üsküdar",
+   "adres": "Çağla Sok No:1D, Üsküdar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site bret.com.tr: ad + telefon + sokak + kapı no (https://www.bret.com.tr/menu-1)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.bret.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.bret.com.tr/): “--> Bret Artisan Bakery | Ekşi mayalı ekmek atölyesi | Çağla Sokak, Ünalan, Üsküdar/İstanbul, Türkiye {\"@conte” · Fırın 29 eşleşme, sonraki Pastane 6 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.bret.com.tr/",
+    "overture:af39fef7-50b3-4b5c-a1fd-07f0cba1e552"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "hector-louis-coffee-kadikoy",
+   "ref": "node/9318036619",
+   "tip": "osm_kaydi",
+   "ad": "Hector Louis Coffee",
+   "ilce": "Kadıköy",
+   "adres": "Moda Cd No:47, Kadıköy",
+   "koordinat": [
+    40.987474,
+    29.02556
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site hectorlouis.com: ad + telefon + sokak + kapı no (https://www.hectorlouis.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.hectorlouis.com/; adres metni Overture)",
+    "tür: resmî site (https://www.hectorlouis.com/): “venin aroma, gövde ve tat dengesini etkiler. Espresso, filtre ve Türk kahvesi seçeneklerimizi kavurma bölümümü” · Kahveci 98 eşleşme, sonraki Pastane 29 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/9318036619 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9318036619",
+    "https://www.hectorlouis.com/",
+    "overture:362a22ea-f577-473a-97f6-bdad8757a517"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "cochet-patisserie-bakirkoy",
+   "ref": "isletme/cochet-patisserie-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Cochet Patisserie",
+   "ilce": "Bakırköy",
+   "adres": "Yeşilyalı Sk No:9a, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site cochetpatisserie.com: ad + telefon + sokak (https://cochetpatisserie.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://cochetpatisserie.com/; adres metni Overture)",
+    "tür: resmî site (https://cochetpatisserie.com/): “Cochet Patisserie İçeriğe atla Menü Menü Ara Ara Close this search box. COCHET PATISSERIE BAKERY Fransız lezze” · Pastane 30 eşleşme, sonraki Fırın 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://cochetpatisserie.com/",
+    "overture:43740b2d-174d-4245-bb58-032d6a454dcd"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "sayinlar-firin-uskudar",
+   "ref": "isletme/sayinlar-firin-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Sayınlar Fırın",
+   "ilce": "Üsküdar",
+   "adres": "Halk Cd No:70/A, Üsküdar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sayinlarfirin.com: ad + telefon + sokak + kapı no (https://www.sayinlarfirin.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.sayinlarfirin.com/; adres metni Overture)",
+    "tür: resmî site (https://www.sayinlarfirin.com/): “--> Sayınlar Fırın | Glutensiz | Aziz Mahmut Hüdayi, Halk Caddesi No:70, Üsküdar/İstanbul, Türkiye {\"@context\"” · Fırın 14 eşleşme, sonraki Pastane 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.sayinlarfirin.com/",
+    "overture:ceda6868-0f34-4a8c-b2d4-2c901d8a5f61"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "artesso-coffee-sariyer",
+   "ref": "isletme/artesso-coffee-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Artesso Coffee",
+   "ilce": "Sarıyer",
+   "adres": "Taşyoncası Sokak No:1, Sarıyer",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site artessocoffee.com: ad + telefon + sokak + kapı no (https://www.artessocoffee.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.artessocoffee.com/; adres metni Overture)",
+    "tür: resmî site (https://www.artessocoffee.com/): “Artesso Coffee | Nitelikli Çekirdek Kahve & Specialty Coffee | Single Origin & %100 Arabica 800 TL VE ÜZERİ KA” · Kahveci 4 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.artessocoffee.com/",
+    "overture:5c2c4a73-a590-4aec-aa9d-87166727cc74"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "gofi-house-coffee-house-ve-eatery-uskudar",
+   "ref": "isletme/gofi-house-coffee-house-ve-eatery-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "GOFI HOUSE Coffee House & Eatery",
+   "ilce": "Üsküdar",
+   "adres": "Şenol Sk No:2/1, Üsküdar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site gofihouse.com: ad + telefon + sokak + kapı no (https://gofihouse.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://gofihouse.com/; adres metni Overture)",
+    "tür: resmî site (https://gofihouse.com/): “rinin tadını çıkarın. Menü Serpme Kahvaltı + Türk Kahvesi İkramı Güne zengin serpme kahvaltımızla başlayın, ar” · Kahveci 30 eşleşme, sonraki Pastane 6 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://gofihouse.com/",
+    "overture:336a4c58-149d-472f-9d18-f00e3511d8ca"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 7
+  },
+  {
+   "slug": "pop-up-coffee-tr-beyoglu",
+   "ref": "isletme/pop-up-coffee-tr-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Pop Up Coffee TR",
+   "ilce": "Beyoğlu",
+   "adres": "Galip Dede Cd No:105, Beyoğlu",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site popupcoffee.com.tr: ad + telefon + sokak + kapı no (https://www.popupcoffee.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.popupcoffee.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.popupcoffee.com.tr/): “a en iyi kahvenin tadını çıkarın. MENÜ Sıcak Espresso Bazlı İçecekler Take away fiyatlarında farklılıklar olab” · Kahveci 28 eşleşme, sonraki Pastane 6 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.popupcoffee.com.tr/",
+    "overture:8ff007f4-996e-4d4e-ac1a-64653cfe90c0"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "balaban-dondurma-profiterol-kadikoy",
+   "ref": "node/12232024701",
+   "tip": "osm_kaydi",
+   "ad": "Balaban Dondurma Profiterol",
+   "ilce": "Kadıköy",
+   "adres": "Emin Ali Paşa Caddesi No:31, Kadıköy",
+   "koordinat": [
+    40.961994,
+    29.087569
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site m.balabandondurma.com: ad + sokak + kapı no (http://m.balabandondurma.com/subelerimiz.html)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site (http://m.balabandondurma.com/): “﻿ Balaban Dondurma | En iyisinin peşindeyiz | Balaban Profiterol | Balaban Baklava | BALABAN DONDURMA DİYORUZ” · Tatlıcı 3 eşleşme, sonraki Pastane 1 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/12232024701 (Overture noktasına 8 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/12232024701",
+    "http://m.balabandondurma.com/",
+    "overture:8476f145-6921-4237-bd9d-1e3b1f64920d"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "nuga-maltepe",
+   "ref": "isletme/nuga-maltepe",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Nuga",
+   "ilce": "Maltepe",
+   "adres": "Beyaz İnci Çıkmazı Sokak No:6, Maltepe",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site nuga.com.tr: ad + sokak (https://nuga.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://nuga.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://nuga.com.tr/): “Nuga Pasta | Online Pasta & Çikolata Siparişi { \"@context\": \"https://schema.org/\", \"@type\": \"WebSite\", \"name\":” · Pastane 103 eşleşme, sonraki Fırın 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://nuga.com.tr/",
+    "overture:58d37edd-4386-4b52-bc00-7f92e1ed7691"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "cafe-cambridge-kadikoy",
+   "ref": "isletme/cafe-cambridge-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Cafe Cambridge",
+   "ilce": "Kadıköy",
+   "adres": "Kıvanç Sk No:10/A, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site cafecambridge.com.tr: ad + telefon + sokak + kapı no (https://www.cafecambridge.com.tr/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.cafecambridge.com.tr/iletisim; adres metni Overture)",
+    "tür: resmî site (https://www.cafecambridge.com.tr/): “nlar YENİ TÜKENDİ Delonghi Delonghi ECP 3531 Espresso&Cappuccino Makinesi 6999 TL YENİ Cafe Cambridge Cold Bre” · Kahveci 14 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.cafecambridge.com.tr/",
+    "overture:68a64b7d-c0d3-4024-b258-55b5ecdf2c3f"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "moonberry-coffee-sisli",
+   "ref": "isletme/moonberry-coffee-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Moonberry Coffee",
+   "ilce": "Şişli",
+   "adres": "Ergenekon Cd No:109B, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site moonberrycoffee.com: ad + telefon + sokak + kapı no (https://www.moonberrycoffee.com/menu)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.moonberrycoffee.com/; adres metni Overture)",
+    "tür: resmî site (https://www.moonberrycoffee.com/menu): “of page Giriş Moonberry Menu Sıcak Kahveler Espresso Moonberry'nin en üst düzey kahve çekirdeklerinden üretil” · Kahveci 4 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.moonberrycoffee.com/",
+    "overture:b244dbf3-ddce-4bdc-9615-02802f6d9fb7"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "mado-buyukcekmece",
+   "ref": "node/4545657661",
+   "tip": "osm_kaydi",
+   "ad": "Mado",
+   "ilce": "Büyükçekmece",
+   "adres": "Mustafa Kemal Bulvarı No:27, Büyükçekmece",
+   "koordinat": [
+    41.005522,
+    28.541193
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "mado.com.tr",
+   "sube": "Büyükçekmece",
+   "kanit": [
+    "resmî şube sayfası mado.com.tr: ad + telefon + sokak (https://mado.com.tr/yurt-ici-subeler/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://mado.com.tr/yurt-ici-subeler/; adres metni Overture)",
+    "tür: resmî site (https://mado.com.tr/): “Anasayfa - Mado Dondurma {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://mado.com” · Tatlıcı 56 eşleşme, sonraki Pastane 5 (marka düzeyi)",
+    "konum: OSM restoran kaydı node/4545657661 (Overture noktasına 26 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4545657661",
+    "https://mado.com.tr/",
+    "overture:b82ee3eb-c718-4415-92e1-7dfb68663a0c"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "caffe-diverso-kadikoy",
+   "ref": "isletme/caffe-diverso-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Caffe Diverso",
+   "ilce": "Kadıköy",
+   "adres": "Bahçelerarası Sk No:5/B, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site caffediverso.com: ad + telefon + sokak + kapı no (https://caffediverso.com/index.php/about-us-3/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://caffediverso.com/index.php/about-us-3/; adres metni Overture)",
+    "tür: resmî site (https://caffediverso.com/): “o Kahveler ₺ 210,00 – ₺ 840,00 Hızlı görünüm Türk Kahvesi Kahveler ₺ 40,00 – ₺ 400,00 Hızlı görünüm Uganda Kah” · Kahveci 22 eşleşme, sonraki Pastane 7 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://caffediverso.com/",
+    "overture:fb4b73ce-a5b3-4e05-9168-0ba2166197f5"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "molecule-coffee-besiktas",
+   "ref": "isletme/molecule-coffee-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Molecule Coffee",
+   "ilce": "Beşiktaş",
+   "adres": "Şair Nedim Cd No:25/A, Beşiktaş",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site coffeemolecule.com: ad + telefon + sokak + kapı no (https://coffeemolecule.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://coffeemolecule.com/; adres metni Overture)",
+    "tür: resmî site (https://coffeemolecule.com/): “Nitelikli Kahve ve Seramik Ürünleri | Beşiktaş İstanbul {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":[\"” · Kahveci 100 eşleşme, sonraki Pastane 5 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://coffeemolecule.com/",
+    "overture:8bb57746-cd4a-43a6-8b78-be21c1ac839c"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "flan-bakery-ve-coffee-kadikoy",
+   "ref": "node/14271327988",
+   "tip": "osm_kaydi",
+   "ad": "Flân Bakery & Coffee",
+   "ilce": "Kadıköy",
+   "adres": "Prof. Dr. Hulusi Behçet Caddesi No:28B, Kadıköy",
+   "koordinat": [
+    40.969102,
+    29.058537
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site flan.com.tr: ad + telefon + sokak (https://www.flan.com.tr/subelerimiz/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.flan.com.tr/subelerimiz/; adres metni Overture)",
+    "tür: resmî site (https://www.flan.com.tr/): “, \"@type\": [\"Brand\", \"Place\"], \"name\": \"Flan Bakery\", \"alternateName\": \"Flan Bakery\", \"description\": \"Flân Bak” · Fırın 67 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/14271327988 (Overture noktasına 47 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14271327988",
+    "https://www.flan.com.tr/",
+    "overture:f49f0155-0cdc-4961-a6a7-d8ff47203ea4"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "khaldi-coffee-fatih",
+   "ref": "isletme/khaldi-coffee-fatih",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Khaldi Coffee",
+   "ilce": "Fatih",
+   "adres": "Ticarethane Sk No:10, Fatih",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site khaldi.com: ad + telefon + sokak + kapı no (https://khaldi.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://khaldi.com/; adres metni Overture)",
+    "tür: resmî site (https://khaldi.com/): “a.org\",\"@type\":\"Store\",\"name\":\"Khaldi Coffee Roastery\",\"logo\":\"https://cdn.myikas.com/images/df11f23c-e237-45e” · Kahveci 6 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://khaldi.com/",
+    "overture:cf6deafe-c299-41e3-953a-b052e1596231"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "dukkan-anteke-kadikoy",
+   "ref": "isletme/dukkan-anteke-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Dükkan Anteke",
+   "ilce": "Kadıköy",
+   "adres": "Tüccarbaşı sokağı No:25/3, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site dukkananteke.com: ad + telefon + sokak + kapı no (https://www.dukkananteke.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.dukkananteke.com/; adres metni Overture)",
+    "tür: resmî site (https://www.dukkananteke.com/): “Mezeler Baharatlar Pekmezler Turşu Çeşitleri Börek Çeşitleri Diğer Ürünler blog son yazılar Ağu 25 Kireçte Reç” · Fırın 24 eşleşme, sonraki Tatlıcı 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.dukkananteke.com/",
+    "overture:bdcb5b2b-5f2a-4938-8e25-9c50a8f6779d"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "mesela-coffee-sariyer",
+   "ref": "isletme/mesela-coffee-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Mesela Coffee",
+   "ilce": "Sarıyer",
+   "adres": "Yeni Mahalle Cd No:71A, Sarıyer",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site meselacoffee.com: ad + sokak + kapı no (https://www.meselacoffee.com/tr)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.meselacoffee.com/tr; adres metni Overture)",
+    "tür: resmî site (https://www.meselacoffee.com/tr): “EKAN\" Mesela Coffee Menü Brew Classic Coffee Espresso, Double Espresso, Americano, Filter Kahve/Filter Coffee,” · Kahveci 6 eşleşme, sonraki Fırın 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.meselacoffee.com/tr",
+    "overture:a27adaf0-1a5a-480c-8dc6-09b01d9683cd"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "saint-martin-istanbul-sariyer",
+   "ref": "isletme/saint-martin-istanbul-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Saint Martin İstanbul",
+   "ilce": "Sarıyer",
+   "adres": "Kemerburgaz Caddesi No:7Z, Sarıyer",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site stmartin.com.tr: ad + telefon + sokak (https://stmartin.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://stmartin.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://stmartin.com.tr/): “ında %100 Fransız tereyağlı kruvasan ve %100 ekşi mayalı ekmek çeşitlerimiz başta olmak üzere, şeflerimizin öz” · Fırın 5 eşleşme, sonraki Pastane 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://stmartin.com.tr/",
+    "overture:acd8b5e2-a5b9-4df9-8492-029f71ab1039"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "recon-coffee-beyoglu",
+   "ref": "isletme/recon-coffee-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Recon Coffee",
+   "ilce": "Beyoğlu",
+   "adres": "Necatibey Cd No:100, Beyoğlu",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site reconcoffee.com.tr: ad + telefon + sokak + kapı no (https://www.reconcoffee.com.tr/sayfa/hakkimizda)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.reconcoffee.com.tr/sayfa/hakkimizda; adres metni Overture)",
+    "tür: resmî site (https://www.reconcoffee.com.tr/): “RECON COFFEE YÖRESEL KAHVELER ,EKİPMANLAR,TÜRK KAHVESİ,ESPRESSO,FİLTRE KAHVE SEPET Keşfe Başla Çok satan ürünl” · Kahveci 61 eşleşme, sonraki Pastane 3 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.reconcoffee.com.tr/",
+    "overture:40b9ecc9-555d-41e3-b29e-b037ea8e84cb"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "cihan-pastanesi-besiktas",
+   "ref": "isletme/cihan-pastanesi-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Cihan Pastanesi",
+   "ilce": "Beşiktaş",
+   "adres": "Jandarma Mektebi Sk No:7, Beşiktaş",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site cihanpastaneleri.com: ad + telefon + sokak + kapı no (https://www.cihanpastaneleri.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.cihanpastaneleri.com/; adres metni Overture)",
+    "tür: resmî site (https://www.cihanpastaneleri.com/): “eri.com\"} top of page CİHAN PASTANELERİ 1990 PASTRY LOVE HOŞGELDİNİZ Pasta yapmak bir sanattır. Kalbinizi ısıt” · Pastane 5 eşleşme, sonraki Fırın 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.cihanpastaneleri.com/",
+    "overture:74803ad2-4773-4eb3-9436-1e33c57ea409"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "mugab-baklava-pendik-pendik",
+   "ref": "isletme/mugab-baklava-pendik-pendik",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Mugab Baklava Pendik",
+   "ilce": "Pendik",
+   "adres": "Ulubatlı Hasan Cd No:22, Pendik",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "mugabmehmetusta.com.tr",
+   "sube": "Pendik",
+   "kanit": [
+    "resmî şube sayfası mugabmehmetusta.com.tr: ad + telefon + sokak + kapı no (https://www.mugabmehmetusta.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.mugabmehmetusta.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.mugabmehmetusta.com.tr/): “Gelen Özel Lezzetler Tüm Ürünler 01 Fıstıklı Baklava En Çok Satan 02 Midye Baklava Klasik 03 Fıstıklı Dürüm Öz” · Tatlıcı 24 eşleşme, sonraki Pastane 0 (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.mugabmehmetusta.com.tr/",
+    "overture:de913988-3e8a-4960-ad14-ee9867bb100a"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "sayan-baklava-besiktas",
+   "ref": "isletme/sayan-baklava-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Şayan Baklava",
+   "ilce": "Beşiktaş",
+   "adres": "Akçam Cd No:17, Beşiktaş",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sayanbaklava.com: ad + telefon + sokak + kapı no (https://www.sayanbaklava.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.sayanbaklava.com/; adres metni Overture)",
+    "tür: resmî site (https://www.sayanbaklava.com/): “Şayan Baklava {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://www.sayanbaklava.co” · Tatlıcı 1374 eşleşme, sonraki Fırın 15 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.sayanbaklava.com/",
+    "overture:e30aae50-d755-4868-ad95-8f9d03e03b43"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "fuga-coffee-sisli",
+   "ref": "isletme/fuga-coffee-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Fuga Coffee",
+   "ilce": "Şişli",
+   "adres": "Ecza Sokağı No:4/6, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site fugacoffee.co: ad + telefon + sokak + kapı no (https://fugacoffee.co/tr)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://fugacoffee.co/tr; adres metni Overture)",
+    "tür: resmî site (https://fugacoffee.co/tr): “ty grade SCA 80+ çekirdekler Freshly roasted Specialty Coffee · IST. 2023 Her yudumda bir kaçış. Dünyanın en i” · Kahveci 7 eşleşme, sonraki Pastane 2 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://fugacoffee.co/tr",
+    "overture:cbb4ffe9-a9f7-4e5a-bca5-48c727b26d84"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "reset-coffee-bakery-umraniye",
+   "ref": "isletme/reset-coffee-bakery-umraniye",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Reset Coffee Bakery",
+   "ilce": "Ümraniye",
+   "adres": "Alemdağ Cd No:197, Ümraniye",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site resettr.com: ad + sokak (https://www.resettr.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.resettr.com/; adres metni Overture)",
+    "tür: resmî site (https://www.resettr.com/): “--> Reset Coffee Bakery | Patisserie | Canlı DJ {\"@context\":\"https://schema.org/\",\"@type\":\"LocalBusiness\",\"nam” · Fırın 4 eşleşme, sonraki Pastane 1 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.resettr.com/",
+    "overture:790bc845-5468-4bed-96fd-0e1d451ddd44"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 6
+  },
+  {
+   "slug": "coffee-gutta-fatih",
+   "ref": "node/5113486804",
+   "tip": "osm_kaydi",
+   "ad": "Coffee Gutta",
+   "ilce": "Fatih",
+   "adres": "Süleymaniye Cd No:21, Fatih",
+   "koordinat": [
+    41.014588,
+    28.962591
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site shop.coffeegutta.com: ad + sokak (https://shop.coffeegutta.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://shop.coffeegutta.com/; adres metni Overture)",
+    "tür: resmî site (https://shop.coffeegutta.com/): “le Popüler ürünler 3 x 250 Gr Yumuşak İçimli Filtre Kahve Seti 3 x 250 Gr Yumuşak İçimli Filtre Kahve Seti Nor” · Kahveci 11 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5113486804 (Overture noktasına 4 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5113486804",
+    "https://shop.coffeegutta.com/",
+    "overture:6e6db95e-0140-4433-9064-e77fa33f5556"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "polo-pastanesi-sisli",
+   "ref": "node/4736223121",
+   "tip": "osm_kaydi",
+   "ad": "Polo Pastanesi",
+   "ilce": "Şişli",
+   "adres": "Cumhuriyet Cd No:111/A, Şişli",
+   "koordinat": [
+    41.043774,
+    28.986212
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site polopastanesi.com: ad + telefon (http://www.polopastanesi.com/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (http://www.polopastanesi.com/iletisim; adres metni Overture)",
+    "tür: resmî site (http://www.polopastanesi.com/): “Polo Pastanesi +90 212 240 7446 polopastanesi@gmail.com Polo'dan Lezzet Sırları Polo'dan Lezzet Sırları Polo'd” · Pastane 9 eşleşme, sonraki Fırın 4 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/4736223121 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4736223121",
+    "http://www.polopastanesi.com/",
+    "overture:d268f909-d2ca-479d-9506-246810c64012"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "but-first-coffee-sisli",
+   "ref": "isletme/but-first-coffee-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "But First Coffee",
+   "ilce": "Şişli",
+   "adres": "Feriköy Fırın Sok No:5/9, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site butfirstcoffee.com.tr: ad + sokak + kapı no (https://butfirstcoffee.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://butfirstcoffee.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://butfirstcoffee.com.tr/): “But First Coffee - Nitelikli Kahve { \"@context\": \"https://schema.org\", \"@type\": \"BreadcrumbList\", \"itemListEle” · Kahveci 30 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://butfirstcoffee.com.tr/",
+    "overture:d74b2a92-13fc-4646-97d0-8678d17365aa"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "asi-kunefeleri-kadikoy-kadikoy",
+   "ref": "node/9452871482",
+   "tip": "osm_kaydi",
+   "ad": "Asi Künefeleri Kadıköy",
+   "ilce": "Kadıköy",
+   "adres": "Yasa Cd No:38, Kadıköy",
+   "koordinat": [
+    40.990628,
+    29.024685
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site asikunefeleri.com: ad + telefon (https://asikunefe.com/subeler/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://asikunefe.com/subeler/; adres metni Overture)",
+    "tür: resmî site (https://asikunefe.com/): “Anasayfa - Asi Künefe {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://asikun” · Tatlıcı 155 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "konum: OSM restoran kaydı node/9452871482 (Overture noktasına 24 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/9452871482",
+    "https://asikunefe.com/",
+    "overture:7b44c73b-6141-4585-86ec-ed7b7b88cb5f"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "hub962-karakoy-beyoglu",
+   "ref": "isletme/hub962-karakoy-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Hub962 Karaköy",
+   "ilce": "Beyoğlu",
+   "adres": "Kemeraltı Caddesi No:11J, Beyoğlu",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site hub962.com: ad + telefon + sokak (https://hub962.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://hub962.com/; adres metni Overture)",
+    "tür: resmî site (https://hub962.com/): “ahve demleme cihazıdır. Diğer gele... 16 May Cold Brew soğuk kahve nedir? Cold Brew nasıl demlenir? Soğuk Drip” · Kahveci 28 eşleşme, sonraki Pastane 6 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://hub962.com/",
+    "overture:e376d02b-0d26-4e29-9b28-71491f83999f"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "pastanbul-sariyer",
+   "ref": "isletme/pastanbul-sariyer",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Pastanbul",
+   "ilce": "Sarıyer",
+   "adres": "110. Sokak No:24B, Sarıyer",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site pastanbul.com.tr: ad + telefon (https://www.pastanbul.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.pastanbul.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.pastanbul.com.tr/): “hazırlayabilmesi [...] 04 Ağu Cheesecake ve Pasta Çeşitleri Cheesecake ve Pasta Çeşitleri Gün geçtikçe daha f” · Pastane 8 eşleşme, sonraki Fırın 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.pastanbul.com.tr/",
+    "overture:01e9fdba-bbce-4d63-803f-0b4c82c27dfa"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "fm-kahve-atasehir",
+   "ref": "isletme/fm-kahve-atasehir",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Fm Kahve",
+   "ilce": "Ataşehir",
+   "adres": "93. Sk No:58, Ataşehir",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site fmkahve.com: ad + telefon (https://fmkahve.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://fmkahve.com/; adres metni Overture)",
+    "tür: resmî site (https://fmkahve.com/): “urubu Sıcak Çikolata Bitki Çayı French Press Filtre Kahve Kapsül Kahve 0 items 0 items Search Popüler Ürünler” · Kahveci 120 eşleşme, sonraki Pastane 20 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://fmkahve.com/",
+    "overture:30056e2e-fd54-4e2b-96ea-415b543d3a7e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "olifantes-beyoglu",
+   "ref": "isletme/olifantes-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Olifantes",
+   "ilce": "Beyoğlu",
+   "adres": "Meşrutiyet Cd No:6/A, Beyoğlu",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site olifantes.com: ad + sokak + kapı no (https://olifantes.com/pages/contact)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://olifantes.com/pages/contact; adres metni Overture)",
+    "tür: resmî site (https://olifantes.com/): “on. Iced Latte, Iced Americano, Iced Filter, Espresso Freddo, Iced Mocha, Forest Fruit Frappe, Chocolate Frapp” · Kahveci 36 eşleşme, sonraki Pastane 9 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://olifantes.com/",
+    "overture:c91ab031-9eee-46df-8f9a-b8fb7afeef70"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "drinkee-coffee-roastery-kadikoy",
+   "ref": "isletme/drinkee-coffee-roastery-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Drinkee Coffee Roastery",
+   "ilce": "Kadıköy",
+   "adres": "Bağdat Cad No:540/B, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site drinkee.com.tr: ad + sokak + kapı no (https://www.drinkee.com.tr/iletisim/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.drinkee.com.tr/iletisim/; adres metni Overture)",
+    "tür: resmî site (https://www.drinkee.com.tr/): “Drinkee – Coffee Roastery Search for: Type and press Enter. Skip to content 📦 1500 ₺ ve üzeri KARGO ÜCRETSİZ!” · Kahveci 24 eşleşme, sonraki Pastane 4 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.drinkee.com.tr/",
+    "overture:55e9c4fb-05d0-42ea-b4a3-5831a9b9c6b7"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "ferment-besiktas",
+   "ref": "isletme/ferment-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Fermenté",
+   "ilce": "Beşiktaş",
+   "adres": "Emirhan Cd No:71/A, Beşiktaş",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Fırın",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site fermente.com.tr: ad + sokak + kapı no (https://www.fermente.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.fermente.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.fermente.com.tr/): “Fermenté | Dikilitaş’ta artisan ekşi maya ekmek {\"@context\":\"https://schema.org\",\"@type\":\"Bakery\",\"@id\":\"https” · Fırın 84 eşleşme, sonraki Pastane 5 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.fermente.com.tr/",
+    "overture:6ed4e792-06dd-40d9-9530-fab284d234b1"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 5
+  },
+  {
+   "slug": "pasifik-pastanesi-kadikoy",
+   "ref": "isletme/pasifik-pastanesi-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Pasifik Pastanesi",
+   "ilce": "Kadıköy",
+   "adres": "Moda Cd No:76, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pastane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site pasifikpastanesi.com: ad + sokak (https://www.pasifikpastanesi.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.pasifikpastanesi.com/; adres metni Overture)",
+    "tür: resmî site (https://www.pasifikpastanesi.com/): “Kadıköy'de Özel Pasta Siparişi | Pasifik Pastanesi { \"@context\": \"https://schema.org\", \"@graph\": [ { \"@type\":” · Pastane 24 eşleşme, sonraki Fırın 4 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.pasifikpastanesi.com/",
+    "overture:d59d0930-e53f-4ddf-9133-2a780881a246"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 4
+  },
+  {
+   "slug": "vaa-coffee-sisli",
+   "ref": "isletme/vaa-coffee-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Vaa Coffee",
+   "ilce": "Şişli",
+   "adres": "Esentepe Kore Şehitleri Caddesi No:16/1, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site baristaekipman.com: ad + sokak (https://www.baristaekipman.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.baristaekipman.com/; adres metni Overture)",
+    "tür: resmî site (https://www.baristaekipman.com/): “an | Mythos | French Press | Kahve Öğütücü | Cold Brew geri dön toggle menu ALIŞVERİŞ KAHVE AKSESUARLAR KAHVE” · Kahveci 58 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.baristaekipman.com/",
+    "overture:c28f7225-49e7-4466-93e9-c4dab6d5ab99"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 4
+  },
+  {
+   "slug": "h-rman-coffee-ve-matcha-shop-beyoglu",
+   "ref": "isletme/h-rman-coffee-ve-matcha-shop-beyoglu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Härman Coffee & Matcha Shop",
+   "ilce": "Beyoğlu",
+   "adres": "Soğancı Sk No:8a, Beyoğlu",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site harmancoffee.com: ad + sokak (https://harmancoffee.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://harmancoffee.com/; adres metni Overture)",
+    "tür: resmî site (https://harmancoffee.com/pages/menu): “:\\/\\/harmancoffee.com\\/pages\\/menu\" } COFFEE ESPRESSO ESPRESSO FREDDO ESPRESSO FREDDO ESPRESSO FILTER COFFEE F” · Kahveci 8 eşleşme, sonraki Pastane 0 (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://harmancoffee.com/",
+    "overture:0f5d8b2d-d3e8-479d-bafc-324e832bb45e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 4
+  },
+  {
+   "slug": "moc-osmanbey-sisli",
+   "ref": "node/7088073385",
+   "tip": "osm_kaydi",
+   "ad": "MOC Osmanbey",
+   "ilce": "Şişli",
+   "adres": "Halaskargazi Caddesi No:96, Şişli",
+   "koordinat": [
+    41.054217,
+    28.987413
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "moc.com.tr",
+   "sube": "Şişli",
+   "kanit": [
+    "resmî şube sayfası moc.com.tr: ad + sokak + kapı no (https://moc.com.tr/pages/subeler)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site (https://moc.com.tr/): “MOC Coffee Roastery {\"@context\":\"https://schema.org\",\"@type\":\"Website\",\"url\":\"https://moc.com.tr\"} {\"@context\"” · Kahveci 25 eşleşme, sonraki Pastane 0 (marka düzeyi)",
+    "konum: OSM restoran kaydı node/7088073385 (Overture noktasına 10 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/7088073385",
+    "https://moc.com.tr/",
+    "overture:3483f032-da50-43c5-b9b9-84f95e9eca32"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 3
+  },
+  {
+   "slug": "cafe-obscura-fatih",
+   "ref": "isletme/cafe-obscura-fatih",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Cafe Obscura",
+   "ilce": "Fatih",
+   "adres": "Yıldırım Cd No:22, Fatih",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "cafeobscura.com.tr",
+   "sube": "Fatih",
+   "kanit": [
+    "resmî şube sayfası cafeobscura.com.tr: ad + telefon + sokak + kapı no (https://www.cafeobscura.com.tr/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.cafeobscura.com.tr/; adres metni Overture)",
+    "tür: resmî site (https://www.cafeobscura.com.tr/): “sohbet Öne Çıkanlar BARDAK ÇAY PORTAKAL SUYU ESPRESSO TÜRK KAHVESİ CAPPUCCINO MOCHA WHITE MOCHA LATTE KARAMEL” · Kahveci 4 eşleşme, sonraki Pastane 1 (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.cafeobscura.com.tr/",
+    "overture:14b2f619-9a04-4c93-af5b-7f97e701d03e"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 3
+  },
+  {
+   "slug": "march-nisantasi-sisli",
+   "ref": "isletme/march-nisantasi-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Marchì Nişantaşı",
+   "ilce": "Şişli",
+   "adres": "Av. Süreyya Ağaoğlu Sok No:10/A, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tatlıcı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "marchinisantasi.com",
+   "sube": "Şişli",
+   "kanit": [
+    "resmî şube sayfası marchinisantasi.com: ad + telefon + sokak + kapı no (https://www.marchidondurma.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://www.marchidondurma.com/; adres metni Overture)",
+    "tür: resmî site (https://www.marchidondurma.com/): “Marchì Nişantaşı - Nişantaşı Lezzetli Dondurma ve Kahve Noktası { \"@context\": \"https://schema.org\", \"@type\": \"” · Tatlıcı 26 eşleşme, sonraki Pastane 4 (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.marchidondurma.com/",
+    "overture:e8226383-10ae-487d-99a9-acac2fba47a4"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 3
+  },
+  {
+   "slug": "lunqa-coffee-pendik",
+   "ref": "isletme/lunqa-coffee-pendik",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Lunqa Coffee",
+   "ilce": "Pendik",
+   "adres": "Abdi İpekçi Cd No:137/b, Pendik",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "lunqacoffee.com",
+   "sube": "Pendik",
+   "kanit": [
+    "resmî şube sayfası lunqacoffee.com: ad + sokak + kapı no (https://lunqacoffee.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://lunqacoffee.com/; adres metni Overture)",
+    "tür: resmî site (https://lunqacoffee.com/): “fen Popular Coffee Menu Americano Coffee 2/3 espresso, 1/3 streamed milk $4.9 Espresso Coffee 2/3 espresso, 1/” · Kahveci 36 eşleşme, sonraki Pastane 0 (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://lunqacoffee.com/",
+    "overture:0a9ccebc-7ffc-43f1-84f7-0cee3c2b02b8"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 3
+  },
+  {
+   "slug": "fiyeli-coffee-besiktas",
+   "ref": "node/10166108617",
+   "tip": "osm_kaydi",
+   "ad": "Fiyeli Coffee",
+   "ilce": "Beşiktaş",
+   "adres": "Çarşı Cd No:29/a, Beşiktaş",
+   "koordinat": [
+    41.076463,
+    29.016089
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kahveci",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "fiyelicoffee.com",
+   "sube": "Beşiktaş",
+   "kanit": [
+    "resmî şube sayfası fiyelicoffee.com: ad + telefon (https://fiyelicoffee.com/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://fiyelicoffee.com/bize-ulasin/; adres metni Overture)",
+    "tür: resmî site (https://fiyelicoffee.com/): “stagram Twitter Fiyeli Coffee Co. AMERICANO. Espresso . Latte . CappuccIno . Cortado . Mocha KALITA . CHEMEX .” · Kahveci 6 eşleşme, sonraki Pastane 0 (marka düzeyi)",
+    "konum: OSM restoran kaydı node/10166108617 (Overture noktasına 31 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10166108617",
+    "https://fiyelicoffee.com/",
+    "overture:73a16791-189d-476a-8655-ce335bc58003"
+   ],
+   "kontrolTarihi": "2026-11-14",
+   "oncelikPuani": 2
+  }
+ ]
+}

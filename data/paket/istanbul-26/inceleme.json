@@ -1,0 +1,216 @@
+{
+ "_aciklama": "Paket 26 seçiminden A ya da A-konumsuz olamayanlar; her satırda eksik ya da neden.",
+ "kayitlar": [
+  {
+   "gersId": "49d22d5f-c538-4cd7-a1c6-c0a9f4966363",
+   "ad": "Pileki Patisserie",
+   "ilce": "Çekmeköy",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "b8083ad6-358f-4afe-b24c-087c833ed8a9",
+   "ad": "Gaziantepli Bozkaya Baklavalari",
+   "ilce": "Ümraniye",
+   "sinif": "B",
+   "eksik": [
+    "906 kimliğinin OSM öğesi (node/7973724545) güncel OSM çekiminde restoran olarak yok; kimlik korunarak yazılamaz"
+   ],
+   "neden": [],
+   "v906": "gaziantepli-bozkaya-baklavalari-umraniye"
+  },
+  {
+   "gersId": "d8e90577-deb3-4dd4-b89e-4e21e71c7b3d",
+   "ad": "Karahan pasta Baklava",
+   "ilce": "Kartal",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "4c3c3fa6-b3cb-45bd-9ce9-6ca36a338a60",
+   "ad": "Oz Lezzet Borek Salonu",
+   "ilce": "Beylikdüzü",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "35efe712-65d5-46a0-83d2-3eb32c5b1808",
+   "ad": "Şeker Ağacı",
+   "ilce": "Zeytinburnu",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "f51b73aa-9968-4fa5-9de4-e4aa1c148440",
+   "ad": "San Marco's Caffe Shop",
+   "ilce": "Bakırköy",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "21611e65-12c0-4d12-a525-8096a1ad419e",
+   "ad": "Gelateria Bonacci",
+   "ilce": "Küçükçekmece",
+   "sinif": "B",
+   "eksik": [
+    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "61f33770-faf2-422a-8590-fc53d9ef99ec",
+   "ad": "Avrupa Konutları 2 Dilek Pasta Cafe Restoran",
+   "ilce": "Küçükçekmece",
+   "sinif": "çakışma",
+   "neden": [
+    "paket içinde aynı işletme: dilek-pastanesi-5-etap-basaksehir"
+   ]
+  },
+  {
+   "gersId": "a45d3365-496c-41cb-825c-09212cb969f8",
+   "ad": "J'adore Chocolatier",
+   "ilce": "Beyoğlu",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "4a9b7f33-8232-4c1c-a459-51d2d43c4b92",
+   "ad": "Pogaca Pasta&Cafe",
+   "ilce": "Ümraniye",
+   "sinif": "B",
+   "eksik": [
+    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "3ed6dc19-96dd-44b1-b7b0-b5094d789373",
+   "ad": "Mendel's Chocolatier",
+   "ilce": "Beşiktaş",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "d96f640d-78a0-4a0e-83ec-3a9797ee38e8",
+   "ad": "Edward's Coffee",
+   "ilce": "Kadıköy",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "c20bcd41-91c8-4cb2-b596-7cad4f7999d2",
+   "ad": "Petunya Pastanesi",
+   "ilce": "Şişli",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "b07db7d2-70da-4d67-9ba2-0b5aaedc09c1",
+   "ad": "Elan Pastanesi",
+   "ilce": "Kadıköy",
+   "sinif": "B",
+   "eksik": [
+    "ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "5a80bdc3-c648-49af-b108-3fd11a3ac043",
+   "ad": "Çağdaş Börek",
+   "ilce": "Beyoğlu",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "af1cf5e7-28a2-4ff6-9d61-d37c6df08bb5",
+   "ad": "Bloom Coffee Roastery",
+   "ilce": "Üsküdar",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "b63711ef-4a2d-4e15-a46c-f115de71cabe",
+   "ad": "Dilek Pastanesi Bağdat Caddesi",
+   "ilce": "Kadıköy",
+   "sinif": "çakışma",
+   "neden": [
+    "paket içinde aynı işletme: dilek-pastanesi-5-etap-basaksehir"
+   ]
+  },
+  {
+   "gersId": "6883611d-3110-4162-a699-2a51b86f53be",
+   "ad": "Mis Fırın & Cafe",
+   "ilce": "Şişli",
+   "sinif": "B",
+   "eksik": [
+    "resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)"
+   ],
+   "neden": []
+  },
+  {
+   "gersId": "adbca301-6cef-439a-a623-d61dabc5a104",
+   "ad": "MOC Gayrettepe",
+   "ilce": "Şişli",
+   "sinif": "çakışma",
+   "neden": [
+    "paket içinde aynı işletme: moc-osmanbey-sisli"
+   ]
+  },
+  {
+   "gersId": "6d18f2bc-689a-4662-a1dc-f3579299d65a",
+   "ad": "MADO Karaköy Sahil",
+   "ilce": "Beyoğlu",
+   "site": "https://mado.com.tr/",
+   "sinif": "C",
+   "eksik": [],
+   "neden": [
+    "zincir: şube düzeyinde telefon/kapı no eşleşmesi yok"
+   ],
+   "kimlik": "resmî şube sayfası mado.com.tr: ad + sokak (https://mado.com.tr/yurt-ici-subeler/)",
+   "osm": "node/9286889917",
+   "puan": 2
+  },
+  {
+   "gersId": "5c56a5da-0d4f-4b76-96ca-3ea549e51cfb",
+   "ad": "Marchi Zekeriyaköy",
+   "ilce": "Sarıyer",
+   "sinif": "çakışma",
+   "neden": [
+    "paket içinde aynı işletme: march-nisantasi-sisli"
+   ]
+  }
+ ]
+}

@@ -47,7 +47,16 @@ const AILE0 = [
   ["Kahvaltı", ["breakfast"], /\bkahvalt[ıi]\b/i],
   ["Türk mutfağı", ["turkish"], /\b(t[üu]rk mutfa[ğg][ıi]|turkish (& ottoman )?cuisine|ottoman cuisine|anadolu mutfa[ğg][ıi]|osmanl[ıi] mutfa[ğg][ıi]|geleneksel t[üu]rk)\b/i],
 ];
-const AILE = AILE0.map(([k, c, re]) => [k, c, U(re)]);
+/* KAFE_MODU=1 (paket 26+): pastane, fırın, tatlıcı ve kahveciler. Bar, pub, nargile, lounge ve internet kafe kapsam dışı. Restoran kipi değişmez. */
+const KAFE_MODU = process.env.KAFE_MODU === "1";
+const AILE_KAFE0 = [
+  ["Pastane", ["pastry"], /\b(pastane|pastanesi|patisserie|p[âa]tisserie|pasta [çc]e[şs]itleri|ya[şs] pasta|kurabiye|[çc]ikolata|pastry)\b/i],
+  ["Fırın", ["bakery"], /\b(f[ıi]r[ıi]n|f[ıi]r[ıi]n[ıi]|bakery|ek[şs]i mayal[ıi]|ekmek|po[ğg]a[çc]a|simit|bread|sourdough)\b/i],
+  ["Tatlıcı", ["dessert"], /\b(tatl[ıi]c[ıi]|baklava|k[üu]nefe|muhallebi|s[üu]tl[üu] tatl[ıi]|dondurma|gelato|ice cream|lokum)\b/i],
+  ["Kahveci", ["coffee_shop"], /\b(nitelikli kahve|3\. ?nesil|third wave|specialty coffee|kahve kavurma|roastery|espresso bar|filtre kahve|kahve d[üu]kkan|coffee roasters|kahvecisi)\b/i],
+];
+const AILE = (KAFE_MODU ? AILE_KAFE0 : AILE0).map(([k, c, re]) => [k, c, U(re)]);
+const KAFE_DISI = /\b(bar|pub|nargile|hookah|shisha|lounge|internet|club|kul[üu]p|gece kul[üu]b|playstation|oyun salonu)\b/i;
 const OSMK = { seafood: "Balık restoranı", fish: "Balık restoranı", kebab: "Kebapçı / Ocakbaşı", turkish: "Türk mutfağı", pizza: "Pizza", burger: "Burger", sushi: "Sushi / Japon", japanese: "Sushi / Japon", italian: "İtalyan", steak_house: "Steakhouse", breakfast: "Kahvaltı", pide: "Pideci", meyhane: "Meyhane", regional: "Türk mutfağı" };
 const OVK = { turkish_restaurant: ["Türk mutfağı", ["turkish"]], seafood_restaurant: ["Balık restoranı", ["seafood"]], fish_and_chips_restaurant: ["Balık restoranı", ["seafood"]], steakhouse: ["Steakhouse", ["steak_house"]], doner_kebab_restaurant: ["Dönerci", ["turkish", "kebab"]], barbecue_restaurant: ["Kebapçı / Ocakbaşı", ["turkish", "kebab"]], burger_restaurant: ["Burger", ["burger"]], pizza_restaurant: ["Pizza", ["pizza"]], italian_restaurant: ["İtalyan", ["italian"]], breakfast_and_brunch_restaurant: ["Kahvaltı", ["breakfast"]], mediterranean_restaurant: ["Akdeniz mutfağı", ["mediterranean"]], middle_eastern_restaurant: ["Orta Doğu mutfağı", ["middle_eastern"]], sushi_restaurant: ["Sushi / Japon", ["sushi"]], japanese_restaurant: ["Sushi / Japon", ["japanese"]], chinese_restaurant: ["Asya mutfağı", ["chinese"]], asian_restaurant: ["Asya mutfağı", ["asian"]], greek_restaurant: ["Yunan mutfağı", ["greek"]], indian_restaurant: ["Hint mutfağı", ["indian"]], french_restaurant: ["Fransız mutfağı", ["french"]], european_restaurant: ["Avrupa mutfağı", ["european"]], soup_restaurant: ["Çorbacı", ["soup"]], chicken_restaurant: ["Tavuk", ["chicken"]], vegetarian_restaurant: ["Vejetaryen", ["vegetarian"]], lebanese_restaurant: ["Lübnan mutfağı", ["lebanese"]], korean_restaurant: ["Kore mutfağı", ["korean"]], thai_restaurant: ["Tayland mutfağı", ["thai"]] };
 const KAFE = U(/\b(cafe|caf[ée]|kafe|coffee|kahve(ci)?|espresso|\bbar\b|pub|lounge|nargile|hookah|pastane|patisserie|f[ıi]r[ıi]n|bakery|tatl[ıi]c[ıi]|dondurma|gelato|b[öo]rek[çc]i|simit)\b/i);
@@ -69,8 +78,9 @@ for (const a of A) { const o0 = O[a.id]; if (!o0 || (SECIM ? !SECIM.has(a.id) : 
   if (o.spam || o.park) { skip.spamPark++; continue; }
   if (!(o.nameOk && (o.telOk || o.streetOk))) { skip.kanitsiz++; continue; }
   const self = `${o.baslik} ${o.aciklama}`;
-  if (KAFE.test(`${a.ad} ${self}`) && !REST.test(`${a.ad} ${self}`) && !OVK[a.takson]) { skip.kafeBar++; continue; }
-  if (a.osm && ["cafe", "bar", "pub"].includes(a.osm.amenity)) { skip.kafeBar++; continue; }
+  if (!KAFE_MODU && KAFE.test(`${a.ad} ${self}`) && !REST.test(`${a.ad} ${self}`) && !OVK[a.takson]) { skip.kafeBar++; continue; }
+  if (!KAFE_MODU && a.osm && ["cafe", "bar", "pub"].includes(a.osm.amenity)) { skip.kafeBar++; continue; }
+  if (KAFE_MODU && (U(KAFE_DISI).test(`${a.ad} ${self}`) || (a.osm && ["bar", "pub", "nightclub"].includes(a.osm.amenity)))) { skip.kafeBar++; continue; }
   const az = ILCE[a.ilce] ?? 0;
   const puan = (a.zincirAlan ? 0 : 3) + (GASTRO.test(self) ? 3 : 0) + (IKON.test(`${a.ad} ${self}`) || ["seafood_restaurant", "barbecue_restaurant", "turkish_restaurant"].includes(a.takson) ? 2 : 0)
     + (az < 10 ? 3 : az < 25 ? 2 : az < 50 ? 1 : 0) + (o.telOk ? 1 : 0) + (o.streetOk ? 1 : 0) + (o.noOk ? 1 : 0) + (a.osm ? 1 : 0);
@@ -108,7 +118,7 @@ for (const { a: a0, o, puan } of secim) { const a = { ...a0, ad: cleanName(a0.ad
   const osmNameOk = ta.length > 0 && to.length > 0 && ta.filter((w) => to.includes(w)).length >= Math.min(2, ta.length, to.length);
   const osmE = osmE0 && (v9Ok || osmTelOk || osmNameOk) ? osmE0 : null;
   const osmRef = v9Ok ? v9.ref : a.osm?.ref;
-  const osmOk = osmE && ["restaurant", "fast_food"].includes(osmE.tags.amenity);
+  const osmOk = osmE && (KAFE_MODU ? ["cafe", "fast_food"].includes(osmE.tags.amenity) || ["bakery", "pastry", "confectionery"].includes(osmE.tags.shop) : ["restaurant", "fast_food"].includes(osmE.tags.amenity));
   if (ELLE[a.id]) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, site: o.final, sinif: ELLE[a.id].sinif, eksik: ELLE[a.id].sinif === "B" ? [ELLE[a.id].neden] : [], neden: ELLE[a.id].sinif === "C" ? [ELLE[a.id].neden] : [], elle: true }); continue; }
   if (a.v906 && V906M && !v9Ok) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "B", eksik: [`906 eşleşmesi doğrulanmadı (${a.v906}: ilçe ya da OSM kaydı/telefon uyuşmuyor); ayrı işletme olabilir, elle bakılmalı`], neden: [], v906: a.v906 }); continue; }
   if (v9Ok && !osmOk) { inceleme.push({ gersId: a.id, ad: a.ad, ilce: a.ilce, sinif: "B", eksik: [`906 kimliğinin OSM öğesi (${v9.ref}) güncel OSM çekiminde restoran olarak yok; kimlik korunarak yazılamaz`], neden: [], v906: a.v906 }); continue; }
@@ -161,7 +171,7 @@ for (const { a: a0, o, puan } of secim) { const a = { ...a0, ad: cleanName(a0.ad
   const konumTxt = osmOk ? `konum: OSM restoran kaydı ${osmRef} (${v9Ok ? "906 dalındaki kimlik korundu: " + v9.slug : `Overture noktasına ${a.osm.d} m`})` : "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez";
   const verification = `${kimlik} · faaliyet: resmî sitede güncel iletişim bilgisi (${o.tarih}) · adres: ${adresKaynak} · ${turTxt} · ${konumTxt} · aday kaynağı: Overture Maps ${a.id}`;
   const kalite = { kimlik: subeDuzeyi ? "resmî site, şube düzeyi" : "resmî site, marka düzeyi", faaliyet: "resmî site (güncel iletişim)", adres: "kapı numaralı", tur: tur.duzey === "marka" ? "kaynaklı, marka düzeyi" : "kaynaklı", koordinat: osmOk ? "OSM restoran kaydı" : "yok" };
-  const base = { slug, name: v9Ok ? v9.name : a.ad, categoryId: "cat.restaurant", kind: tur.kind, district: ilce, address, ...(phone ? { phone } : {}), website: resmi ?? o.final, cuisine: tur.cuisine, importedAt: tarih };
+  const base = { slug, name: v9Ok ? v9.name : a.ad, categoryId: KAFE_MODU ? "cat.cafe" : "cat.restaurant", kind: tur.kind, district: ilce, address, ...(phone ? { phone } : {}), website: resmi ?? o.final, cuisine: tur.cuisine, importedAt: tarih };
   const v = osmOk
     ? { ref: osmRef, ...base, lat: Math.round((osmE.lat ?? osmE.center.lat) * 1e6) / 1e6, lng: Math.round((osmE.lon ?? osmE.center.lon) * 1e6) / 1e6, osmAmenity: osmE.tags.amenity, wave, verifiedAt: tarih, confidence: "güçlü", verification, overture: ov, kaliteSinifi: "A", kalite }
     : { ref: `isletme/${slug}`, ...base, sourceKind: "official_site", sourceUrl: resmi, wave, verifiedAt: tarih, confidence: "güçlü", verification, overture: ov, kaliteSinifi: "A-konumsuz", kalite };
