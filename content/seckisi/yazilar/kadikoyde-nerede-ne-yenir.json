@@ -1,0 +1,256 @@
+{
+ "kind": "semt",
+ "status": "kontrol",
+ "featured": false,
+ "notice": {
+  "tr": "Bu bir sıralama değil. Mekânlar rota ya da semt düzenine göre sıralandı; fiyatlar işletmelerin yayımladığı menülerden ve değişebilir.",
+  "en": "This is not a ranking. Places are ordered by route or neighbourhood; prices come from the menus the restaurants publish and may change."
+ },
+ "editorial": {
+  "desk": {
+   "tr": "Gidenler Seçki Masası",
+   "en": "The Gidenler Edit desk"
+  },
+  "method": {
+   "tr": "Yalnız işletmelerin resmî yayınlarından derlenmiş Gidenler profillerindeki bilgiler kullanıldı; sıralama, puan ya da popülerlik iddiası yok. Taslak yapay zekâ yardımıyla hazırlandı; yayından önce editör kontrolünden geçer.",
+   "en": "Uses only the details in Gidenler profiles, which are compiled from the restaurants' official publications; there is no ranking, score or popularity claim. The draft was prepared with AI assistance and is checked by an editor before publication."
+  },
+  "visited": false
+ },
+ "preparedAt": "2026-11-14",
+ "publishedAt": null,
+ "updatedAt": null,
+ "newOpening": false,
+ "commercial": {
+  "state": "dogrulanmadi"
+ },
+ "ownership": null,
+ "slug": "kadikoyde-nerede-ne-yenir",
+ "title": {
+  "tr": "Kadıköy'de nerede ne yenir?",
+  "en": "Kadıköy: what to eat where"
+ },
+ "area": {
+  "tr": "Kadıköy",
+  "en": "Kadıköy"
+ },
+ "dek": {
+  "tr": "Çarşıda Anadolu yemekleri, Moda'da şarap evi, Caferağa'da bir şarap ve mutfak adresi ve Kozyatağı'nda küçük bir lokanta: Kadıköy'de dört sofra, ne yediğinizle birlikte.",
+  "en": "Anatolian dishes in the market, a wine house in Moda, a wine-and-kitchen address in Caferağa and a small restaurant in Kozyatağı: four Kadıköy tables, with what to eat at each."
+ },
+ "why": {
+  "tr": "Kadıköy'de aynı ilçede çok farklı sofralar var. Bu taslak, Gidenler'de kaynaklı profili olan dört adresi ne yediğinize göre bir araya getiriyor; hepsinin menüsü ya da iletişim bilgisi işletmenin kendi yayınından.",
+  "en": "Kadıköy holds very different tables within one district. This draft brings together four addresses with sourced Gidenler profiles, grouped by what you eat; every menu and contact detail comes from the restaurant's own publications."
+ },
+ "body": {
+  "tr": [
+   {
+    "h": "Çarşıda Anadolu yemekleri: Çiya Sofrası"
+   },
+   {
+    "p": "Kadıköy Çarşısı'nda, Güneşlibahçe Sokağı No:43'te bir Anadolu mutfağı lokantası. Menüde bölgesel ve unutulmaya yüz tutmuş yemekler var; günün menüsü her gün değişiyor ve işletmenin sitesinde gün gün yayımlanıyor. Aynı sokaktaki Çiya Kebap ve Çiya Kebap 2 ayrı mekânlar; bu adres Çiya Sofrası."
+   },
+   {
+    "h": "Moda'da şarap ve meze: Viktor Levi Şarap Evi"
+   },
+   {
+    "p": "Moda'da, Damacı Sokağı No:4'te şarap evi ve restoran. Menü peynir ve şarap tabaklarından zeytinyağlılara, makarnalardan balık ve et yemeklerine uzanıyor; örneğin yerli peynir tabağı 1.200 ₺, şarap tabağı 2.150 ₺. Menü 06.10.2026 tarihli; servis ve kuver ücreti fiyatlara dahil değil."
+   },
+   {
+    "h": "Caferağa'da şarap ve mutfak: Aida - vino e cucina"
+   },
+   {
+    "p": "Caferağa'da, Ressam Şeref Akdik Sokağı No:10'da adı İtalyanca 'şarap ve mutfak' anlamına gelen bir restoran. İşletmenin sitesi menüyü metin olarak yayımlamadığı için burada yemek ya da fiyat yazmıyoruz; rezervasyon telefonla alınıyor."
+   },
+   {
+    "h": "Kozyatağı'nda ayaküstü ve paylaşımlık: Mutfakkoz"
+   },
+   {
+    "p": "İlçenin Kozyatağı tarafında, Kaya Sultan Sokağı 27B'de küçük bir lokanta. Brioche arasında kaburga, soğuk ciğer, dana dil ve işkembe sandviçleri, paylaşımlık mezeler ve sosyete mantısı, bıldırcın şiş gibi tabaklar var; örneğin kaburga brioche 620 ₺. Vejetaryen, vegan ve glütensiz ürünler menüde işaretli."
+   }
+  ],
+  "en": [
+   {
+    "h": "Anatolian dishes in the market: Çiya Sofrası"
+   },
+   {
+    "p": "An Anatolian restaurant at Güneşlibahçe Sokağı No:43 in the Kadıköy market. The menu covers regional and half-forgotten dishes; the daily menu changes every day and is published day by day on the restaurant's website. Çiya Kebap and Çiya Kebap 2 on the same street are separate places; this address is Çiya Sofrası."
+   },
+   {
+    "h": "Wine and meze in Moda: Viktor Levi Şarap Evi"
+   },
+   {
+    "p": "A wine house and restaurant at Damacı Sokağı No:4 in Moda. The menu runs from cheese and wine platters to olive-oil dishes, pasta, fish and meat; for example, the local cheese platter is 1,200 TRY and the wine platter 2,150 TRY. The menu is dated 06.10.2026; service and cover charges are not included in the prices."
+   },
+   {
+    "h": "Wine and cooking in Caferağa: Aida - vino e cucina"
+   },
+   {
+    "p": "A restaurant whose Italian name means 'wine and kitchen', at Ressam Şeref Akdik Sokağı No:10 in Caferağa. The restaurant's website does not publish its menu as text, so we list no dishes or prices here; reservations are taken by phone."
+   },
+   {
+    "h": "Street-style and sharing plates in Kozyatağı: Mutfakkoz"
+   },
+   {
+    "p": "A small restaurant at Kaya Sultan Sokağı 27B, on the Kozyatağı side of the district. Brioche sandwiches with short rib, cold liver, ox tongue or tripe, sharing meze and plates such as sosyete mantı and quail skewers; for example, the short-rib brioche is 620 TRY. Vegetarian, vegan and gluten-free items are marked on the menu."
+   }
+  ]
+ },
+ "know": {
+  "tr": [
+   "Çiya Sofrası: her gün 11.00–22.00 (işletmenin sitesine göre). Günün menüsü sitede yayımlanıyor.",
+   "Viktor Levi: her gün 12.00–01.00; öğle servisi 12.00–17.30, akşam servisi 17.30–01.00. Rezervasyon telefonla: +90 216 449 93 29.",
+   "Aida: rezervasyon telefonla, 0544 851 51 51.",
+   "Mutfakkoz: pazar ve pazartesi kapalı; rezervasyon telefonla, 0551 636 44 55."
+  ],
+  "en": [
+   "Çiya Sofrası: daily 11:00–22:00 (according to the restaurant's website). The daily menu is published on the site.",
+   "Viktor Levi: daily 12:00–01:00; lunch 12:00–17:30, dinner 17:30–01:00. Reservations by phone: +90 216 449 93 29.",
+   "Aida: reservations by phone, 0544 851 51 51.",
+   "Mutfakkoz: closed Sunday and Monday; reservations by phone, 0551 636 44 55."
+  ]
+ },
+ "venues": [
+  {
+   "slug": "ciya-sofrasi-kadikoy",
+   "role": {
+    "tr": "Çarşı",
+    "en": "Market"
+   }
+  },
+  {
+   "slug": "viktor-levi-sarap-evi-kadikoy",
+   "role": {
+    "tr": "Moda",
+    "en": "Moda"
+   }
+  },
+  {
+   "slug": "aida-vino-e-cucina-kadikoy",
+   "role": {
+    "tr": "Caferağa",
+    "en": "Caferağa"
+   }
+  },
+  {
+   "slug": "mutfakkoz-kadikoy",
+   "role": {
+    "tr": "Kozyatağı",
+    "en": "Kozyatağı"
+   }
+  }
+ ],
+ "sources": [
+  {
+   "title": {
+    "tr": "Çiya Sofrası — ana sayfa, iletişim ve günün menüsü",
+    "en": "Çiya Sofrası — home, contact and daily menu"
+   },
+   "publisher": {
+    "tr": "Çiya (resmî site)",
+    "en": "Çiya (official website)"
+   },
+   "url": "http://www.ciya.com.tr/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Viktor Levi Şarap Evi — menü",
+    "en": "Viktor Levi Şarap Evi — menu"
+   },
+   "publisher": {
+    "tr": "Viktor Levi (resmî site)",
+    "en": "Viktor Levi (official website)"
+   },
+   "url": "https://www.viktorlevimoda.com/menue",
+   "checkedAt": "2026-10-29",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Aida - vino e cucina — iletişim ve rezervasyon",
+    "en": "Aida - vino e cucina — contact and reservations"
+   },
+   "publisher": {
+    "tr": "Aida (resmî site)",
+    "en": "Aida (official website)"
+   },
+   "url": "https://aidavinoecucina.com/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Mutfakkoz — menü ve iletişim",
+    "en": "Mutfakkoz — menu and contact"
+   },
+   "publisher": {
+    "tr": "Mutfakkoz (resmî site)",
+    "en": "Mutfakkoz (official website)"
+   },
+   "url": "https://mutfakkoz.com/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Çiya Sofrası — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Çiya Sofrası — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/ciya-sofrasi-kadikoy/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Viktor Levi Şarap Evi — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Viktor Levi Şarap Evi — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/viktor-levi-sarap-evi-kadikoy/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Aida - vino e cucina — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Aida - vino e cucina — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/aida-vino-e-cucina-kadikoy/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Mutfakkoz — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Mutfakkoz — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/mutfakkoz-kadikoy/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  }
+ ],
+ "cover": {
+  "state": "yok",
+  "gap": {
+   "tr": "Kadıköy için hakkı doğrulanmış semt ya da restoran fotoğrafı henüz seçilmedi.",
+   "en": "No rights-cleared neighbourhood or restaurant photo has been chosen for Kadıköy yet."
+  }
+ }
+}
