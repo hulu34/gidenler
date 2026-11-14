@@ -1,0 +1,210 @@
+{
+ "_aciklama": "Paket 27 kaynaklı tür kararları (15.11.2026): resmî sitenin ana sayfası ve menü/hakkımızda sayfalarında tür kalıbı sayımı; her satır elle gözden geçirildi.",
+ "kararlar": {
+  "0c4c021c-6d3f-44f5-927c-0ddc5bcd839d": {
+   "ad": "Namlı Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://namlikebap.com.tr/): “Namlı Kebap – Yarım Asırdır Ustalıkla Gelen Geleneksel Lezzetler Kurumsal Hakkımızda Dilek, Öneri ve Şikayet G” · Kebapçı / Ocakbaşı 33 eşleşme, sonraki Steakhouse 13"
+  },
+  "0ce0a788-8d0a-4b3f-96da-769312ff4bd0": {
+   "ad": "Kaloni Ayvalık Restaurant",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site (http://www.kaloni.com.tr/hakkimizda.html): “ti bünyesinde 2003 yılı sonunda kurulmuştur. Geleneksel Turk Mutfağı ve Zeytinyağ coğrafyası tarfilerine sadık” · Türk mutfağı 3 eşleşme, sonraki İtalyan 1"
+  },
+  "382c1ff9-0697-4728-ba85-029749dbcdd9": {
+   "ad": "The Local Grill",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.thelocalgrill.com.tr/): “ecek 25 çeşit meze ve ara sıcak Şefin İmzası Kebab \">Vişneli Kebap Şefin İmzası, Doğan Şef'in Antakya'dan geti” · Kebapçı / Ocakbaşı 5 eşleşme, sonraki Balık restoranı 0"
+  },
+  "0c01eba8-a9d0-46ac-b844-09cb3a091856": {
+   "ad": "Başakşehir İntiba Döner",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.intiba.com.tr/): “\"LEZZET ETRAFINDA DÖNER\" --> /intibadoner Sipariş Hattı 0850 644 57 75 KURUMSAL RESTAURANTLAR MENÜ MEDYA SERTİ” · Dönerci 13 eşleşme, sonraki Kebapçı / Ocakbaşı 1"
+  },
+  "5c336aad-763b-4bf7-bf28-80d842268b84": {
+   "ad": "By Beyaz",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (http://www.bybeyaz.com/): “a eklendi! Bayrampa�a �ubesi A��ld�! Bybeyaz Döner Bayrampa�a Demirkap� Caddesi �ubesi aç�ld�! Gaziosmanpa�a �” · Dönerci 7 eşleşme, sonraki Balık restoranı 0"
+  },
+  "c78de01b-8bed-496c-8ccb-ea80069d6ddf": {
+   "ad": "Hacıbaşar - Kebap Katmer Bostancı",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://hacibasar.com/): “m/#organization\",\"name\":\"Hac\\u0131ba\\u015far Kebap\",\"url\":\"https://hacibasar.com\",\"logo\":{\"@type\":\"ImageObject” · Kebapçı / Ocakbaşı 6 eşleşme, sonraki Balık restoranı 0"
+  },
+  "97d3a581-0d11-421e-87ec-b9b4f73dbd53": {
+   "ad": "Tella Kebap Atakent",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.tellakebap.com/): “Tella – Gerçek Urfa Kebabı – Odun Ateşinde Lahmacun Ana Sayfa Lezzetlerimiz Hikayemiz Şubelerimiz Galeri İleti” · Kebapçı / Ocakbaşı 40 eşleşme, sonraki Pideci 17"
+  },
+  "65bf2e0d-b26b-47d9-9682-de7fb9fea332": {
+   "ad": "Banyan Restaurant",
+   "kind": "Asya mutfağı",
+   "cuisine": [
+    "asian"
+   ],
+   "ifade": "resmî site (https://www.banyanrestaurant.com/): “ATSAPP Food for the Soul Banyan’da yaratılan Asya-Türk konsepti, Anadolu’nun eşsiz lezzetlerini Asya pişirme &” · Asya mutfağı 13 eşleşme, sonraki Türk mutfağı 3"
+  },
+  "2c3ac143-d4aa-49b0-b839-d03f5bd79002": {
+   "ad": "Morini",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site (https://www.istanbulmorini.com/): “cene since 2013. A place that quietly blends Italian roots with the rhythm of the city, welcoming guests from” · İtalyan 16 eşleşme, sonraki Pizza 1"
+  },
+  "0e1d5f4b-968b-45d8-923e-bf45b093f34c": {
+   "ad": "Hacıbaşar Kebap ve Baklava",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://hacibasar.com/): “m/#organization\",\"name\":\"Hac\\u0131ba\\u015far Kebap\",\"url\":\"https://hacibasar.com\",\"logo\":{\"@type\":\"ImageObject” · Kebapçı / Ocakbaşı 6 eşleşme, sonraki Balık restoranı 0"
+  },
+  "d8b0d5a4-e2d1-4cf1-9ba2-051e092baaa7": {
+   "ad": "Hacibasar Kebap ve Baklava Acibadem",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://hacibasar.com/): “m/#organization\",\"name\":\"Hac\\u0131ba\\u015far Kebap\",\"url\":\"https://hacibasar.com\",\"logo\":{\"@type\":\"ImageObject” · Kebapçı / Ocakbaşı 6 eşleşme, sonraki Balık restoranı 0"
+  },
+  "0fab1ab5-d21b-4bd7-8143-153d80ef46b4": {
+   "ad": "Sait İskender Laleli Şubesi",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://saitiskender.com/): “Sait İskender {\"@context\":\"http://schema.org\",\"data\":{\"r\":\"1:1!7:2!30:4\"}} Skip to content Hakkımızda Kalite B” · Kebapçı / Ocakbaşı 13 eşleşme (adla uyumlu), en sık Dönerci 25"
+  },
+  "9312de57-3d31-463c-ac73-9ea8a3b0f693": {
+   "ad": "Doyuyo!",
+   "kind": "Burger",
+   "cuisine": [
+    "burger"
+   ],
+   "ifade": "resmî site (https://doyuyo.com/lezzetlerimiz): “itleri bu tepside bir arada. Keşfet! Chicken Burger & Sandviçler Mütevazi olamayacağımız konulardan biri de Ch” · Burger 45 eşleşme, sonraki Balık restoranı 0"
+  },
+  "928fde36-76fa-410f-ad6a-67501a5efe88": {
+   "ad": "Taşfırın Pide Döner Evi",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site (https://www.tasfirinpidekebap.com/): “Kurtuluş Taşfırın | Pide & Döner Evi {\"@context\": \"https://schema.org\", \"@type\": \"Restaurant\", \"name\": \"Taşfır” · Pideci 8 eşleşme (adla uyumlu), en sık Dönerci 13"
+  },
+  "d4ff4dcf-ffe2-4bb5-8dcf-9015f02cf928": {
+   "ad": "Acıbadem İntiba Döner",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.intiba.com.tr/): “\"LEZZET ETRAFINDA DÖNER\" --> /intibadoner Sipariş Hattı 0850 644 57 75 KURUMSAL RESTAURANTLAR MENÜ MEDYA SERTİ” · Dönerci 13 eşleşme, sonraki Kebapçı / Ocakbaşı 1"
+  },
+  "ca584afc-ab53-436c-ba6b-b6223de7218b": {
+   "ad": "Sahan",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://sahan.com/): “yeli Şiş\" }, { \"@type\": \"MenuItem\", \"name\": \"Beyti\" } ] }, { \"@type\": \"MenuSection\", \"name\": \"Fırın\", \"hasMenu” · Kebapçı / Ocakbaşı 72 eşleşme, sonraki Pideci 17"
+  },
+  "e03380b7-9fba-450b-bba6-b84fad7b0d7b": {
+   "ad": "Hi italia Pasta Restaurant & Rooftop",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site (https://hiitalia.com/): “Home - Hi Italia Pasta Restaurant & Rooftop & Roofbar {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Org” · İtalyan 18 eşleşme, sonraki Pizza 6"
+  },
+  "80fbc583-6c47-49d3-ad38-f689a30a98d5": {
+   "ad": "Da Mario",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site (https://www.damario.com.tr/): “İtalyanı olan Da Mario’da İstanbul’un en iyi İtalyan lezzetlerini deneyimlemeye davetlisiniz.\",\"breadcrumb\":{\"” · İtalyan 20 eşleşme, sonraki Balık restoranı 0"
+  },
+  "a2869e3e-25f7-46dd-8649-1562f4febabc": {
+   "ad": "Doyuyo",
+   "kind": "Burger",
+   "cuisine": [
+    "burger"
+   ],
+   "ifade": "resmî site (https://doyuyo.com/lezzetlerimiz): “itleri bu tepside bir arada. Keşfet! Chicken Burger & Sandviçler Mütevazi olamayacağımız konulardan biri de Ch” · Burger 45 eşleşme, sonraki Balık restoranı 0"
+  },
+  "60ad0cd4-9147-49f2-9f24-815ffa14b168": {
+   "ad": "Sahan",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://sahan.com/): “yeli Şiş\" }, { \"@type\": \"MenuItem\", \"name\": \"Beyti\" } ] }, { \"@type\": \"MenuSection\", \"name\": \"Fırın\", \"hasMenu” · Kebapçı / Ocakbaşı 72 eşleşme, sonraki Pideci 17"
+  },
+  "692358d0-3bad-4f72-b929-60ece3131de5": {
+   "ad": "Yamo Sushi Caddebostan",
+   "kind": "Sushi / Japon",
+   "cuisine": [
+    "japanese"
+   ],
+   "ifade": "resmî site (https://www.yamosushi.com/): “Yamo Sushi Loading... Sitemizde size daha iyi hizmet sunabilmek için bazı çerezler kullanılmaktadır. Detaylı b” · Sushi / Japon 5 eşleşme, sonraki Asya mutfağı 1"
+  },
+  "357395ba-806b-4724-ae10-db9a1becbab5": {
+   "ad": "Sahan Kebap, Caddebostan",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://sahan.com/): “yeli Şiş\" }, { \"@type\": \"MenuItem\", \"name\": \"Beyti\" } ] }, { \"@type\": \"MenuSection\", \"name\": \"Fırın\", \"hasMenu” · Kebapçı / Ocakbaşı 72 eşleşme, sonraki Pideci 17"
+  }
+ },
+ "elleRet": {
+  "Mirror Suadiye (83bb16bb)": "kokteyl/bar ağırlıklı; pizza kalıbı türü anlatmıyor",
+  "Karakaya Köfte ve Izgara (552c1bf9)": "köfteci; steakhouse kalıbı yanlış",
+  "Musafir Indian Restaurant Istanbul Turkey (27f65504)": "Hint restoranı; balık kalıbı yanlış",
+  "Panoramic Restaurant (7b1a831e)": "sitede birden çok mutfak (Türk, Osmanlı, deniz ürünleri)",
+  "Cigerhane (68e79ecc)": "ciğerci; kahvaltı kalıbı yanlış",
+  "Mandırra Kahvaltı (27c0c989)": "kahvaltı yeri; pizza kalıbı blog yazısından",
+  "Anadolia Mağaza & Showroom (b0767825)": "mağaza/showroom",
+  "Happy Moon's Cafe Buyaka (8b6c8dcf)": "tür grup sitesinin blog metninden (Happy Group)",
+  "Happy Moon's (1cfcd8be)": "tür grup sitesinin blog metninden (Happy Group)",
+  "Happy Moon's (5d07cf73)": "tür grup sitesinin blog metninden (Happy Group)",
+  "Ataköy Marina Park Happy Moon’s (da53cb5b)": "tür grup sitesinin blog metninden (Happy Group)",
+  "Kuzubeyi Kuzu Cevirme (29c0ac00)": "kuzu çevirme; steakhouse kalıbı uygun değil",
+  "The ONE Brasserie (907ff03f)": "tür grup sitesinin blog metninden (Happy Group)"
+ }
+}
