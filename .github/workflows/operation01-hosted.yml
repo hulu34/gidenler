@@ -10,7 +10,7 @@ concurrency:
 jobs:
   readonly:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,6 +28,14 @@ jobs:
           VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
           GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/operation01-production.mjs
+      - name: Browser tools for public read-only live acceptance
+        run: |
+          npm install --prefix "$RUNNER_TEMP/hosted-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/hosted-browser/node_modules/.bin/playwright" install --with-deps chromium webkit
+      - name: Public Production pages and local draft only; all browser writes blocked
+        env:
+          HOSTED_BROWSER_PACKAGE_JSON: ${{ runner.temp }}/hosted-browser/package.json
+        run: node scripts/operation01-live-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -1,0 +1,25 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {createRequire} from 'node:module';
+const {chromium,webkit,expect}=createRequire(process.env.HOSTED_BROWSER_PACKAGE_JSON)('@playwright/test');
+const origin='https://www.gidenler.com',out='operation01-production-evidence';
+const api=JSON.parse(fs.readFileSync(out+'/after.json'));assert(api.complete&&api.beforeAfterUnchanged);assert.equal(api.approvedSha,'a225e8c1336fecc2ca6ce1ef67e09d2bb6361481');
+const e={sha:api.approvedSha,origin,writes:0,realSignIn:false,checks:[],browsers:[],errors:[],complete:false};const save=()=>fs.writeFileSync(out+'/live-browser.json',JSON.stringify(e,null,2));
+function check(id,ok){e.checks.push({id,pass:!!ok});save();assert(ok,id)}
+const raw=[...JSON.parse(fs.readFileSync('candidate/data/real/venues.json')),...JSON.parse(fs.readFileSync('candidate/data/real/isletme.json'))],slugs=new Set(raw.map(v=>v.slug));assert.equal(slugs.size,793);
+async function get(path){const r=await fetch(origin+path,{method:'GET',redirect:'error',signal:AbortSignal.timeout(25000)});return r;}
+let active;
+try{
+ const health=await get('/api/health/'),h=await health.json();check('production_db_redis_healthy',health.status===200&&h.ok&&h.db==='ok'&&h.redis==='ok');check('public_admin_closed',(await get('/api/admin/db/')).status===404);
+ const sm=await get('/sitemap.xml');check('sitemap_200',sm.status===200);const xml=await sm.text(),urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]),places=urls.filter(u=>u.includes('/mekan/')).map(u=>u.match(/\/mekan\/([^/]+)\//)[1]);check('sitemap_existing_catalog_only',new Set(urls).size===urls.length&&places.every(s=>slugs.has(s))&&places.length===755);e.sitemap={urls:urls.length,venues:places.length};
+ const photos=JSON.parse(fs.readFileSync('candidate/data/real/izinli-fotograflar.json'))['menemen-besiktas'];const assets=new Set(photos.flatMap(p=>[p.src,p.full,...p.srcSet.split(',').map(s=>s.trim().split(' ')[0])]).filter(Boolean));check('menemen_18_assets',assets.size===18);for(const asset of assets){const r=await get(asset);check('asset_'+asset,r.status===200&&/image\/webp/.test(r.headers.get('content-type')))}
+ for(const[engine,width]of [['chromium',390],['chromium',1440],['webkit',390]]){
+  const browser=await({chromium,webkit}[engine]).launch();try{const ctx=await browser.newContext({viewport:{width,height:width<600?844:1000},isMobile:width<600,hasTouch:width<600});await ctx.route('**/*',route=>{const r=route.request();return new URL(r.url()).origin!==origin||!['GET','HEAD'].includes(r.method())?route.abort():route.continue()});const page=await ctx.newPage();active=page;page.on('pageerror',err=>{e.errors.push({engine,width,path:new URL(page.url()).pathname,message:err.message});save()});
+  for(const path of ['/','/kesfet/','/ara/?q=Menemen','/mekan/menemen-besiktas/','/mekan/japon-erdal-beyoglu/','/mekan/ulus-29-besiktas/','/benim/','/sor/','/yaz/menemen-besiktas/']){
+   const r=await page.goto(origin+path,{waitUntil:'domcontentloaded',timeout:30000});check(engine+'_'+width+path,r.status()===200);await expect(page.locator('h1').first()).toBeVisible({timeout:12000});await page.waitForTimeout(1500);check('fit_'+engine+'_'+width+path,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+   if(path==='/mekan/menemen-besiktas/'){check('menemen_menu_'+engine+'_'+width,await page.locator('#menu li').count()===45);check('menemen_photos_'+engine+'_'+width,await page.locator('[data-mozaik] img').count()===6);const v=page.getByRole('button',{name:/YouTube videosunu burada oynat/});check('menemen_video_'+engine+'_'+width,await v.count()===1);await v.click();await expect(page.getByRole('dialog',{name:'Menemen videoları',exact:true})).toBeVisible();check('menemen_video_id_'+engine+'_'+width,(await page.getByRole('dialog',{name:'Menemen videoları',exact:true}).locator('iframe').getAttribute('src')).includes('e6OmpzizSoo'));await page.getByRole('button',{name:'Kapat ve restorana dön',exact:true}).click();await page.screenshot({path:out+'/'+engine+'-'+width+'-menemen.png'});}
+   if(path==='/yaz/menemen-besiktas/'){const box=page.getByRole('textbox',{name:'Deneyim metni',exact:true});await expect(page.getByRole('combobox',{name:'Ziyaret ayı',exact:true})).toHaveValue(/^\d{4}-\d{2}$/);const draft='Yalnız bu tarayıcıda yayın kontrolü: çığ, öğün, İstanbul. '.repeat(30);await box.fill(draft);await page.locator('[data-otomatik-taslak]').waitFor();await page.reload({waitUntil:'domcontentloaded'});await expect(box).toHaveValue(draft);check('local_draft_preserved_'+engine+'_'+width,true)}
+  }
+  e.browsers.push({engine,width,pages:9,localDraft:true});save();
+ }catch(err){await active?.screenshot({path:out+'/'+engine+'-'+width+'-failure.png'}).catch(()=>{});throw err;}finally{await browser.close()}
+ }
+ check('no_browser_errors',e.errors.length===0);e.complete=true;save();console.log(JSON.stringify({complete:true,checks:e.checks.length,browsers:e.browsers,productionWrites:0}));
+}catch(err){e.failure=err.message;save();console.error(err.message);process.exitCode=1;}
