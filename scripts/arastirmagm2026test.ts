@@ -15,7 +15,7 @@ const J = (p: string) => JSON.parse(readFileSync(p, "utf8"));
 const TABAN = process.env.TABAN ?? "origin/feature/investor-v1";
 const git = (ref: string, p: string) => execFileSync("git", ["show", `${ref}:${p}`], { encoding: "utf8", maxBuffer: 64 << 20 });
 const fold = (s: string) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, " ").trim();
-type Kaynak = { tur: string; url: string; kontrol: string };
+type Kaynak = { tur: string; url: string; kontrol: string; kanitladigi?: string };
 type K = { id: string; ad: string; ilce: string | null; adres?: string; durum: string; kind?: string; categoryId?: string; guven?: string; kaynaklar: Kaynak[];
   koordinat?: { kaynak: string; ref: string; lat: number; lng: number } | null; kaliteSinifiOnerisi?: string; eksik?: string[]; neden?: string; eslesen?: unknown; mevcutKayit?: string };
 
@@ -36,7 +36,14 @@ const YENI = D.filter((x) => ["aday-guclu", "inceleme", "ret-onerisi"].includes(
 const gm = YENI.filter((x) => x.id.startsWith("gm26/")), sube = YENI.filter((x) => !x.id.startsWith("gm26/"));
 t("93 yeni aday (G&M + resmî şube listeleri), çifte sayım yok", YENI.length === 93 && gm.length + sube.length === 93 && new Set(YENI.map((x) => x.id)).size === 93, { yeni: YENI.length, gm: gm.length, sube: sube.length });
 t("G&M 2026 İstanbul kaydı 226 (şube listeleri ayrı)", D.filter((x) => x.id.startsWith("gm26/")).length === 226);
-type KH = K & { kabulHazirlik?: { durum: string }; tur2?: { oncekiDurum?: string; bulgu?: string; oneri?: string } };
+type KH = K & { kabulHazirlik?: { durum: string }; tur2?: { oncekiDurum?: string; bulgu?: string; oneri?: string }; tur3?: { oncekiDurum?: string; bulgu?: string } };
+/* 3. tur: incelemeden yükselen her kayıtta son 12 ay içinde tarihli bağımsız kaynak ya da bugün açık resmî/işletmeci sayfası */
+for (const x of D as KH[]) {
+  if (x.tur3?.oncekiDurum !== "inceleme") continue;
+  const yeni = x.kaynaklar.filter((k) => !/gault-millau/.test(k.url));
+  const guncel = yeni.some((k) => /resmî|işletmeci|AVM/.test(k.tur) || /(2025-1[12]|2026|\.2026|12\.2025)/.test(k.kanitladigi ?? ""));
+  t(`${x.id}: 3. turda güncel ikinci kaynak`, yeni.length > 0 && guncel, yeni.map((k) => k.kanitladigi));
+}
 for (const x of D as KH[]) {
   if (x.durum === "aday-guclu") {
     t(`${x.id}: kabul hazırlık durumu yazılı`, ["codex-teknik-kabule-hazir", "tek-kaynak"].includes(x.kabulHazirlik?.durum ?? ""), x.kabulHazirlik);

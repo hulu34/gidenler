@@ -5,11 +5,11 @@
  "sayim": {
   "katalogda-ya-da-dalda-var": 117,
   "kapsam-disi": 10,
-  "aday-guclu": 45,
+  "aday-guclu": 66,
   "mukerrer": 17,
   "bekleyen-kayda-kanit": 7,
   "ret-onerisi": 2,
-  "inceleme": 46
+  "inceleme": 25
  },
  "kayitlar": [
   {
@@ -353,6 +353,12 @@
      "yayin": "2025-12-25",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-hamburgercileri",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Zula Harbiye: Harbiye Çayırı Sok. No:101/1"
     }
    ],
    "durum": "bekleyen-kayda-kanit",
@@ -361,8 +367,13 @@
    "categoryId": "cat.restaurant",
    "tur2": {
     "tarih": "2026-11-15",
-    "oneri": "eksik",
+    "oneri": "kabul-guncellemesi-onerilir",
     "gerekce": "tür artık kaynaklı (G&M: burger), ama güncel faaliyet ve kapı no ('101A', 'No' yok) yalnız G&M'de"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "oneri": "kabul-guncellemesi-onerilir",
+    "gerekce": "OGGUSTO hamburgerciler (13.11.2026): Harbiye Çayırı Sok. No:101/1 (G&M '101A'); tür burger (G&M + OGGUSTO)"
    }
   },
   {
@@ -446,6 +457,11 @@
     "tarih": "2026-11-15",
     "eksik": "kimlik",
     "bulgu": "rehber modern Akdeniz/deniz manzaralı restoran anlatıyor; aynı adresteki Lipa (Yenipazar Cad. 25) bağımsız kaynaklarda Boşnak meyhanesi — kimlik çelişkisi"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "kimlik",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -693,6 +709,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "Hürriyet Daily News şef yazısı + G&M; resmî site yok, Instagram tek başına sayılmadı"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "Hürriyet yazısı 26.04.2025 (son 12 ayın dışında); güncel ikinci kaynak yok"
    }
   },
   {
@@ -731,21 +752,24 @@
      "yayin": "2025-12-24",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 12.10.2026): Yeniköy İskelesi'nin yanında, şef Kaan Kayhan"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Balık restoranı",
    "kaynaktaOneCikan": "balık",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "adres"
-   ],
-   "neden": "resmî site bulunamadı; OSM'de aynı noktada Production'daki Yeniköy Lokantası var — ayrım doğrulanmalı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-24); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: balık"
    },
    "osmAdayi": [
@@ -769,7 +793,22 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "rehber İskele Sk. No:3, başka kaynak İskele Sk. No:15; OSM'de aynı noktada Production'daki Yeniköy Lokantası"
-   }
+   },
+   "adres": "İskele Sokak No:3, Yeniköy",
+   "semt": "Yeniköy",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "rehber İskele Sk. No:3, başka kaynak İskele Sk. No:15; OSM'de aynı noktada Production'daki Yeniköy Lokantası",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
+   },
+   "not": "No:15 başka işletmenin (Yeniköy İskele Restaurant) adresiydi"
   },
   {
    "id": "gm26/yediden",
@@ -811,6 +850,11 @@
     "tarih": "2026-11-15",
     "eksik": "kapanis-isareti",
     "bulgu": "İstinyePark'ın güncel 16 restoranlık listesinde yok (aynı listede Cova, Sushi Barba, Masa var); adreste kapı no da yok"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "kapanis-isareti",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -827,21 +871,30 @@
      "yayin": "2025-12-24",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.hurriyet.com.tr/yazarlar/ebru-erke/cagdas-anadolu-lokantasi-43169380",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Hürriyet 09.05.2026: Lokanta Yoğurt yazısı"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/anadolu-yakasinin-en-iyi-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 22.09.2026): 'Lokanta Yoğurt, Altunizade'"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Türk mutfağı",
    "kaynaktaOneCikan": "yoğurt merkezli Türk mutfağı",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı; Altunizade Suites otel bağlantısı ikincil kaynaklarda",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-24); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: yoğurt merkezli Türk mutfağı"
    },
    "mukerrerKontrol": {
@@ -853,6 +906,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "otel (Hilton) sayfası otomatik erişime kapalı (403); otel adresi Oymacı Sk. No:20 ile tutarlı"
+   },
+   "adres": "Oymacı Sokak No:20, Altunizade (Altunizade Suites)",
+   "semt": "Altunizade",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "otel (Hilton) sayfası otomatik erişime kapalı (403); otel adresi Oymacı Sk. No:20 ile tutarlı",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -888,21 +955,30 @@
      "yayin": "2025-12-24",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 12.10.2026): Villa Bosphorus, Beylerbeyi–Üsküdar"
+    },
+    {
+     "tur": "resmî site",
+     "url": "https://www.villabosphorus.com.tr/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî site bugün açık: 'Beylerbeyi Boğaz Manzaralı Balık Restaurant'"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Balık restoranı",
    "kaynaktaOneCikan": "balık",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "adres"
-   ],
-   "neden": "resmî site yalnız başlık gösteriyor; adres/telefon okunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-24); güncel ikinci kaynak var",
-    "adres": "rehber adresi — eksik/çelişkili",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: balık"
    },
    "mukerrerKontrol": {
@@ -914,6 +990,20 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Beylerbeyi İskele Caddesi No:18A, Beylerbeyi",
+   "semt": "Beylerbeyi",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -968,6 +1058,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -984,21 +1079,24 @@
      "yayin": "2025-12-24",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 12.10.2026): Eski Yer, Yeniköy–Sarıyer, şef Erkan Özçelik"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Balık restoranı",
    "kaynaktaOneCikan": "balık ve meze",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî alan adı bugün çözülmüyor",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-24); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: balık ve meze"
    },
    "mukerrerKontrol": {
@@ -1010,7 +1108,22 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
-   }
+   },
+   "adres": "Köybaşı Caddesi No:58, Yeniköy",
+   "semt": "Yeniköy",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
+   },
+   "not": "resmî alan adının çözülmemesi kapanış kanıtı sayılmadı"
   },
   {
    "id": "gm26/uskumru-restaurant",
@@ -1080,6 +1193,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -1227,21 +1345,24 @@
      "yayin": "2025-12-24",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-terasli-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 08.09.2026): Toro Latin Gastro Bar, Six Senses Kocataş Mansions"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Dünya mutfağı",
    "kaynaktaOneCikan": "Pan-Latin ve Asya",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "otel sitesi otomatik erişimi engelliyor (403)",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-24); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: Pan-Latin ve Asya"
    },
    "mukerrerKontrol": {
@@ -1253,6 +1374,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Meserburnu Caddesi No:5, Sarıyer Merkez (Six Senses Kocataş Mansions)",
+   "semt": "Sarıyer",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -1530,6 +1665,12 @@
      "url": "https://gazeteoksijen.com/yazarlar/memet-ozer/sehrin-yeni-gozdesi-tam-ocakbasi-256060",
      "kontrol": "2026-11-15",
      "kanitladigi": "'Şehrin yeni gözdesi Tam Ocakbaşı', Arnavutköy, 07.11.2025"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-meyhaneleri",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "aynı adres Bebek Arnavutköy Cd No:91"
     }
    ],
    "durum": "bekleyen-kayda-kanit",
@@ -1538,8 +1679,13 @@
    "categoryId": "cat.restaurant",
    "tur2": {
     "tarih": "2026-11-15",
-    "oneri": "neredeyse-tamam",
+    "oneri": "kabul-guncellemesi-onerilir",
     "gerekce": "kimlik ve güncel faaliyet iki kaynakta (Gazete Oksijen 07.11.2025 + G&M 2026 Aralık 2025); kapı no (Bebek Arnavutköy Cad. No:91) yalnız G&M'de"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "oneri": "kabul-guncellemesi-onerilir",
+    "gerekce": "OGGUSTO meyhaneler (25.10.2026) aynı adres Bebek Arnavutköy Cd No:91; Oksijen 07.11.2025; G&M 2026"
    }
   },
   {
@@ -1686,6 +1832,11 @@
     "tarih": "2026-11-15",
     "eksik": "kimlik",
     "bulgu": "Göktürk (Arcaidum) şubesi bağımsız kaynakta yok; sipariş platformunda yalnız Etiler şubesi görünüyor"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "kimlik",
+    "bulgu": "marka faal (OGGUSTO sushi 10.11.2026, aynı şef), ama Göktürk şubesi bağımsız kaynakta doğrulanamadı"
    }
   },
   {
@@ -1819,6 +1970,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "rehber Kadir Has Cad. No:10, Time Out 'İskele Caddesi Liman yanı 10' — sokak çelişkisi"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "resmî site © 2026 ile faal; kapı no 10 ve telefon iki kaynakta aynı, ama sokak adı çelişkili (Kadir Has Cad. ↔ İskele Cad. Liman yanı)"
    }
   },
   {
@@ -1835,6 +1991,12 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/anadolu-yakasinin-en-iyi-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Suadiye, Bağdat Cad. No:459"
     }
    ],
    "durum": "bekleyen-kayda-kanit",
@@ -1843,8 +2005,13 @@
    "categoryId": "cat.restaurant",
    "tur2": {
     "tarih": "2026-11-15",
-    "oneri": "eksik",
+    "oneri": "kabul-guncellemesi-onerilir",
     "gerekce": "G&M + yalnız toplayıcı siteler (Mes Prestiges); bağımsız güncel kaynak yok"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "oneri": "kabul-guncellemesi-onerilir",
+    "gerekce": "OGGUSTO Anadolu Yakası (22.09.2026) aynı adres Bağdat Cad. No:459 + G&M 2026"
    }
   },
   {
@@ -2004,6 +2171,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -2243,6 +2415,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "kaynaklarda kapı 14/A ↔ 14/B karışık (La Boom ile aynı bina)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faaliyet doğrulandı (OGGUSTO pizzacılar 30.07.2026); kapı 14/B (G&M) ↔ 14A (Time Out), telefon aynı"
    }
   },
   {
@@ -2297,6 +2474,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "faaliyet doğrulandı (resmî sitede 'Gayrettepe Kafelerimiz' ve saatler); yalnız kapı no yok; ayrıca paket 6 incelemesinde"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -2356,21 +2538,30 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "resmî marka sayfası",
+     "url": "https://www.papermoonrestaurants.com/paper-moon-istanbul.html",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Paper Moon Istanbul sayfası: 'Akmerkez Etiler', G&M ile aynı telefon"
+    },
+    {
+     "tur": "AVM resmî adresi",
+     "url": "https://www.akmerkez.com.tr/iletisim",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Akmerkez: Kültür Mah., Nispetiye Cd No:56"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "İtalyan",
    "kaynaktaOneCikan": "İtalyan",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "adres"
-   ],
-   "neden": "resmî site 504 hatası",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + resmî marka sayfası (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: İtalyan"
    },
    "mukerrerKontrol": {
@@ -2382,7 +2573,22 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "faaliyet doğrulandı (papermoonrestaurants.com İstanbul sayfası, G&M ile aynı telefon, 'Akmerkez Etiler'); yalnız kapı no yok"
-   }
+   },
+   "adres": "Nispetiye Caddesi No:56, Kültür (Akmerkez)",
+   "semt": "Etiler",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "faaliyet doğrulandı (papermoonrestaurants.com İstanbul sayfası, G&M ile aynı telefon, 'Akmerkez Etiler'); yalnız kapı no yok",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
+   },
+   "not": "kapı no kompleksin resmî adresinden"
   },
   {
    "id": "gm26/palude-restaurant",
@@ -2424,6 +2630,11 @@
     "tarih": "2026-11-15",
     "eksik": "kimlik",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "kimlik",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -2791,6 +3002,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "rehber No:481, Time Out No:455 — 481'de ayrı 'Noir Patisserie' olabilir"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faaliyet doğrulandı (OGGUSTO Bağdat Caddesi 25.09.2026); kapı no ve telefon farklı (G&M No:481 ↔ Time Out 2018 No:455) — taşınmış olabilir"
    }
   },
   {
@@ -2870,21 +3086,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://gazeteoksijen.com/listeler/bagdat-caddesinin-en-iyi-mekanlari-235744",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Oksijen (güncelleme 10.12.2025): aynı adres Haldun Taner Sk. No:7 D:1"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Akdeniz mutfağı",
    "kaynaktaOneCikan": "Fransız-Akdeniz",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî alan adı yönlendiriyor; sitede ad doğrulanamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: Fransız-Akdeniz"
    },
    "mukerrerKontrol": {
@@ -2896,6 +3115,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "kimlik ve adres iki kaynakta aynı (G&M + Time Out, Haldun Taner Sk. 7/1, aynı telefon); güncel ikinci faaliyet kaynağı yok"
+   },
+   "adres": "Haldun Taner Sokak No:7 D:1, Caddebostan",
+   "semt": "Caddebostan",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "kimlik ve adres iki kaynakta aynı (G&M + Time Out, Haldun Taner Sk. 7/1, aynı telefon); güncel ikinci faaliyet kaynağı yok",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -2959,6 +3192,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "faaliyet doğrulandı (resmî site © 2026 + Mall of İstanbul rehberi '1. Kat Natolia'); yalnız kapı no hiçbir kaynakta yok"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faaliyet doğrulandı (resmî site © 2026 + Mall of İstanbul rehberi); kapı no hiçbir birincil kaynakta yok (ikincil kaynaklarda AVM No:7, G&M Otto Bite kaydında No:9 — çelişkili)"
    }
   },
   {
@@ -3022,6 +3260,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -3038,21 +3281,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "resmî site",
+     "url": "https://www.mykorini.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî sitede Tersane İstanbul adresi Taşkızak Tersane Cad. No:5"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Akdeniz mutfağı",
    "kaynaktaOneCikan": "Yunan ve Ege mezeleri",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "adres"
-   ],
-   "neden": "rehber 27J, başka kaynak No:5 diyor — kapı no çelişkisi",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak var",
-    "adres": "rehber adresi — eksik/çelişkili",
+    "faaliyet": "G&M 2026 + resmî site (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: Yunan ve Ege mezeleri"
    },
    "mukerrerKontrol": {
@@ -3064,7 +3310,22 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
-   }
+   },
+   "adres": "Taşkızak Tersane Caddesi No:5, Camiikebir (Tersane İstanbul)",
+   "semt": "Tersane İstanbul",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
+   },
+   "not": "rehberdeki '27J' kompleks içi birim olabilir; resmî adres esas alındı"
   },
   {
    "id": "gm26/myk-restoran",
@@ -3304,21 +3565,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://www.timeout.com/istanbul/tr/restoranlar/catch",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Time Out (yayın 09.12.2025): aynı adres Funda Çıkmazı Sokak 2/6A"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Dünya mutfağı",
    "kaynaktaOneCikan": "Akdeniz-Asya, sushi",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: Akdeniz-Asya, sushi"
    },
    "mukerrerKontrol": {
@@ -3330,6 +3594,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "kimlik ve adres iki kaynakta aynı (G&M + Time Out, Funda Çıkmazı No:2/6A); Time Out yazısı tarihsiz"
+   },
+   "adres": "Funda Çıkmazı Sokak No:2/6A, Caddebostan",
+   "semt": "Caddebostan",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "kimlik ve adres iki kaynakta aynı (G&M + Time Out, Funda Çıkmazı No:2/6A); Time Out yazısı tarihsiz",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -3510,6 +3788,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faaliyet doğrulandı (OGGUSTO meyhaneler 25.10.2026); kapı no çelişkisi sürüyor (5/A ↔ 9 ↔ 22)"
    }
   },
   {
@@ -3573,6 +3856,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "Michelin 2024/2025 sayfaları aynı adresi veriyor (İstanbul Cad. No:16/E) ama 2026 Michelin listesinde yok; Michelin sayfası 404"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "Hürriyet 05.04.2025 ve Michelin 2024/2025 listeleri; son 12 ayda bağımsız kaynak yok"
    }
   },
   {
@@ -3703,6 +3991,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "kaynaklarda kapı 14/A ↔ 14 (Pizza Emirgan ile aynı bina); resmî site bulunamadı"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -3773,21 +4066,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/nisantasinin-en-iyi-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 12.11.2026): Kruvasan İstanbul Mim Kemal Öke Caddesi'ndeki yeni yerinde akşamları 'Kruton' konseptiyle"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Modern mutfak",
    "kaynaktaOneCikan": "modern comfort food, sandviç",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: modern comfort food, sandviç"
    },
    "mukerrerKontrol": {
@@ -3799,7 +4095,22 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "G&M + Time Out (Teşvikiye/Harbiye); kapı 11/A ↔ 11B; güncel ikinci kaynak yok"
-   }
+   },
+   "adres": "Mim Kemal Öke Caddesi No:11/A, Harbiye (Kruvasan İstanbul)",
+   "semt": "Nişantaşı",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "G&M + Time Out (Teşvikiye/Harbiye); kapı 11/A ↔ 11B; güncel ikinci kaynak yok",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
+   },
+   "not": "eski Teşvikiye adresi (Time Out 2016) güncel değil"
   },
   {
    "id": "gm26/kor-agop-restaurant",
@@ -3860,6 +4171,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -3899,21 +4215,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/en-iyi-bulusma-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 17.05.2026): aynı sokak ve G&M ile aynı telefon"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Modern mutfak",
    "kaynaktaOneCikan": "modern mutfak",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: modern mutfak"
    },
    "mukerrerKontrol": {
@@ -3925,6 +4244,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Dr. Kazım Lakay Sokak No:11, Fenerbahçe",
+   "semt": "Fenerbahçe",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -4023,21 +4356,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbul-iftar-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 25.03.2026): Rixos Tersane'nin restoranları Velena ve Josephine Istanbul'da Ramazan 2026 menüsü"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Dünya mutfağı",
    "kaynaktaOneCikan": "modern Fransız",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "otel sayfasında hem 'yakında' hem açık mekân anlatımı var",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: modern Fransız"
    },
    "mukerrerKontrol": {
@@ -4049,7 +4385,22 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
-   }
+   },
+   "adres": "Taşkızak Tersanesi Caddesi No:23/1, Camiikebir (Rixos Tersane)",
+   "semt": "Tersane İstanbul",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
+   },
+   "not": "otel sayfasındaki 'yakında' ifadesi eski"
   },
   {
    "id": "gm26/izaka-terrace",
@@ -4091,6 +4442,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "OpenTable sayfası var (açılamadı, zaman aşımı) ve Oksijen yazısı; otel sayfası 404 — doğrulanamadı"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "bulunan bağımsız yazılar 2024 (OGGUSTO 13.02.2024) ve Oksijen; son 12 ayda kaynak yok; OpenTable açılamadı"
    }
   },
   {
@@ -4234,6 +4590,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -4295,6 +4656,11 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "Time Out röportajında ekip mekân değiştireceğini söylüyor; Hayriye Cad. No:12 güncelliği belirsiz"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faal (OGGUSTO kahvaltı 22.10.2026, G&M ile aynı telefon); muhtemel güncel adres Mim Kemal Öke Cd. No:19 Şişli ('Nişantaşı'ndaki yeni adresi'), ama G&M Aralık 2025 Hayriye Cad. No:12 diyor ve Indagare (2024) sıralamayı netleştirmiyor — taşınma tarihi teyit edilmeli"
    }
   },
   {
@@ -4592,6 +4958,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -4608,21 +4979,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/bagdat-caddesinin-en-iyi-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 25.09.2026): aynı adres ve telefon"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Dünya mutfağı",
    "kaynaktaOneCikan": "İtalyan, Japon, Türk",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: İtalyan, Japon, Türk"
    },
    "mukerrerKontrol": {
@@ -4634,6 +5008,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Vapur Yolu Sokak No:2 D:1A, Suadiye",
+   "semt": "Suadiye",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5048,21 +5436,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/en-iyi-bulusma-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 17.05.2026): aynı adres ve telefon"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Türk mutfağı",
    "kaynaktaOneCikan": "Anadolu mutfağı, modern",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "adres"
-   ],
-   "neden": "resmî site açılıyor ama adres/telefon sitede yok",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak var",
-    "adres": "rehber adresi — eksik/çelişkili",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: Anadolu mutfağı, modern"
    },
    "mukerrerKontrol": {
@@ -5074,6 +5465,20 @@
     "tarih": "2026-11-15",
     "eksik": "adres",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Nisbetiye Caddesi No:13, Levent",
+   "semt": "Levent",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5483,21 +5888,30 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-yeni-nesil-meyhaneleri",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 04.10.2026): aynı adres Meşrutiyet Cad. No:96 Teras"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://gazeteoksijen.com/gastronomi/istanbulun-en-iyi-yeni-nesil-meyhaneleri-247750",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Oksijen 31.07.2025: G&M ile aynı telefon"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Meyhane",
    "kaynaktaOneCikan": "meyhane, Anadolu ve Ege",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı (Beykoz şubesi Production'da, Kadıköy şubesi paket 6 incelemede)",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: meyhane, Anadolu ve Ege"
    },
    "mukerrerKontrol": {
@@ -5509,6 +5923,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Meşrutiyet Caddesi No:96 Teras Kat, Evliya Çelebi",
+   "semt": "Tünel",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5525,21 +5953,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-hamburgercileri",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 13.11.2026): Bronco Vadistanbul, Ayazağa Cendere Cd., G&M ile aynı telefon"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Burger",
    "kaynaktaOneCikan": "American diner",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: American diner"
    },
    "mukerrerKontrol": {
@@ -5551,6 +5982,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Cendere Caddesi No:109 G15, Ayazağa (Vadistanbul)",
+   "semt": "Ayazağa",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5650,21 +6095,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/nisantasinin-en-iyi-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 12.11.2026): Beymen Brasserie, mağaza içinde"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Modern mutfak",
    "kaynaktaOneCikan": "brasserie, mevsimsel",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: brasserie, mevsimsel"
    },
    "mukerrerKontrol": {
@@ -5676,6 +6124,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Bostan Sokak No:23 D:1A, Harbiye (Beymen Nişantaşı)",
+   "semt": "Nişantaşı",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5809,21 +6271,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/bomontinin-en-iyi-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 27.10.2026): Bomonti rehberinde Batard"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Dünya mutfağı",
    "kaynaktaOneCikan": "Türk ve dünya mutfağı, kafe-bistro",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: Türk ve dünya mutfağı, kafe-bistro"
    },
    "mukerrerKontrol": {
@@ -5835,6 +6300,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Silahşör Caddesi No:15/D, Cumhuriyet (Extensa Bomonti)",
+   "semt": "Bomonti",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -5994,6 +6473,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -6010,21 +6494,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/bebek-en-iyi-mekanlar",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 25.09.2026): 'Backyard, Bebeköy'de'"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Dünya mutfağı",
    "kaynaktaOneCikan": "kahvaltıdan tapasa",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "resmî site bulunamadı; OSM kaydı var (node/7750348487)",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: kahvaltıdan tapasa"
    },
    "osmAdayi": [
@@ -6043,6 +6530,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "adres": "Bebeköy Sokak No:4, Bebek",
+   "semt": "Bebek",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -6203,6 +6704,12 @@
      "url": "https://www.timeout.com/istanbul/tr/restoranlar/arnavutkoey-balikcisi",
      "kontrol": "2026-11-15",
      "kanitladigi": "adres 1. Cadde 4, Arnavutköy"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/arnavutkoyde-mutlaka-gitmeniz-gereken-mekanlar",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Arnavutköy Balıkçısı, Bebek Arnavutköy Cd."
     }
    ],
    "durum": "bekleyen-kayda-kanit",
@@ -6211,8 +6718,13 @@
    "categoryId": "cat.restaurant",
    "tur2": {
     "tarih": "2026-11-15",
-    "oneri": "eksik",
+    "oneri": "kabul-guncellemesi-onerilir",
     "gerekce": "kimlik ve adres iki kaynakta (G&M No:4 + Time Out '1. Cadde 4'); güncel faaliyet yalnız G&M"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "oneri": "kabul-guncellemesi-onerilir",
+    "gerekce": "OGGUSTO Arnavutköy (06.11.2026) + Time Out (1. Cadde 4) + G&M No:4"
    }
   },
   {
@@ -6353,21 +6865,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-terasli-mekanlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 08.09.2026): Kuruçeşme'deki kompleksin restoranları arasında Ali Ocakbaşı"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Kebapçı / Ocakbaşı",
    "kaynaktaOneCikan": "ocakbaşı",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "Kuruçeşme şubesi markanın resmî kaynağında doğrulanamadı",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: ocakbaşı"
    },
    "mukerrerKontrol": {
@@ -6379,7 +6894,22 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
-   }
+   },
+   "adres": "Muallim Naci Caddesi No:58, Kuruçeşme (Oligark)",
+   "semt": "Kuruçeşme",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
+   },
+   "not": "aynı adreste Production'daki Oligark ve Ringa ayrı konseptler"
   },
   {
    "id": "gm26/alexandra-cocktail-bar",
@@ -6464,7 +6994,7 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
    "neden": "resmî site bulunamadı",
    "degerlendirme": {
@@ -6482,6 +7012,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "adres",
+    "bulgu": "faaliyet doğrulandı (OGGUSTO 04.10.2026, aynı telefon); kapı no çelişkisi: G&M Tünel Geçidi Pasajı No:11 ↔ OGGUSTO Tünel Geçidi İşhanı No:7"
    }
   },
   {
@@ -6605,21 +7140,24 @@
      "yayin": "2025-12-23",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, telefon, mutfak kategorisi ve 2026 rehberinde yer alma"
+    },
+    {
+     "tur": "bağımsız editoryal (2026, tarihli)",
+     "url": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-et-restoranlari",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "OGGUSTO (güncelleme 28.09.2026): aynı adres ve G&M ile aynı telefon"
     }
    ],
    "categoryId": "cat.restaurant",
    "kind": "Kebapçı / Ocakbaşı",
    "kaynaktaOneCikan": "ciğer, Adana kebabı, uykuluk",
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "bulunan alan adı Kurtuluş adresini/telefonunu göstermiyor",
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
    "degerlendirme": {
     "varlik": "G&M 2026",
-    "faaliyet": "G&M 2026 rehberinde (2025-12-23); güncel ikinci kaynak yok",
-    "adres": "rehber adresi",
+    "faaliyet": "G&M 2026 + bağımsız editoryal (2026, tarihli) (2026-11-15 kontrol)",
+    "adres": "kapı numaralı (G&M; bağımsız kaynak aynı işletmeyi/semti doğruluyor)",
     "tur": "G&M 2026: ciğer, Adana kebabı, uykuluk"
    },
    "osmAdayi": [
@@ -6643,6 +7181,20 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "kimlik ve adres iki kaynakta aynı (G&M + yemek.com ocakbaşı yazısı, Baysungur Sk. 2/D); güncel ikinci faaliyet kaynağı yok"
+   },
+   "adres": "Baysungur Sokak No:2, Ergenekon Caddesi (Kurtuluş)",
+   "semt": "Kurtuluş",
+   "sube": "tek adres (rehber + bağımsız kaynak)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "tur3": {
+    "oncekiDurum": "inceleme",
+    "oncekiBulgu": "kimlik ve adres iki kaynakta aynı (G&M + yemek.com ocakbaşı yazısı, Baysungur Sk. 2/D); güncel ikinci faaliyet kaynağı yok",
+    "tarih": "2026-11-15"
+   },
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (G&M 2026 + tarihli bağımsız yazı ya da resmî/işletmeci sayfası); koordinat yok (A-konumsuz)"
    }
   },
   {
@@ -6685,6 +7237,11 @@
     "tarih": "2026-11-15",
     "eksik": "faaliyet",
     "bulgu": "ikinci tur aramada bağımsız ya da resmî güncel kaynak bulunamadı (yalnız G&M ve G&M'den türetilmiş toplayıcı siteler)"
+   },
+   "tur3": {
+    "tarih": "2026-11-15",
+    "eksik": "faaliyet",
+    "bulgu": "3. turda OGGUSTO'nun 89 İstanbul rehberi, yemek.com ve basın taramasında yeni bağımsız güncel kaynak bulunamadı"
    }
   },
   {
@@ -7638,5 +8195,26 @@
    }
   },
   "kanitStandardi": "Kimlik, doğru şube, kapı numaralı adres ve güncel faaliyet en az iki uygun ve birbirinden bağımsız kaynakla. Bağımsız sayılan: editoryal rehber (G&M 2026), tarihli bağımsız editoryal yazı, işletmenin/işletmecinin (otel, AVM, marka) resmî sayfası. G&M'den türetilmiş toplayıcı siteler (enprimeurclub, joinpearl, mesprestiges), Instagram ve sipariş platformu tek başına sayılmadı; Google puanı/yorumu hiç kullanılmadı. Erişilemeyen kaynak doğrulanmış gösterilmedi."
+ },
+ "tur3": {
+  "tarih": "2026-11-15",
+  "ozet": {
+   "incelemedenGucluye": 21,
+   "halaInceleme": 25,
+   "kabulHazirlik": {
+    "codex-teknik-kabule-hazir": 50,
+    "tek-kaynak": 16
+   },
+   "eskiKayit": {
+    "kabul-guncellemesi-onerilir": 7
+   }
+  },
+  "guncellikEsigi": "Güncel faaliyet için G&M 2026 dışındaki bağımsız kaynak son 12 ay içinde tarihli olmalı (15.11.2025 sonrası) ya da işletmenin/işletmecinin bugün açık resmî sayfası olmalı.",
+  "yeniAdayIpuclari": [
+   "Zula Emaar (Libadiye Cd. No:78, Üsküdar) ve Zula Zorlu şubeleri — OGGUSTO 2026",
+   "Sushi Manga Galataport şubesi — OGGUSTO 2026",
+   "Petra Roasting Co. Şişhane — resmî site",
+   "Kruvasan İstanbul (Mim Kemal Öke Cd. No:11A) — OGGUSTO 2026"
+  ]
  }
 }

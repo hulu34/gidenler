@@ -4,6 +4,97 @@ Tarih: 15 Kasım 2026 · Dal: `arastirma/gm2026-kanitli-aday` · Taban: Producti
 
 **Yalnız araştırma verisi.** Kataloğa eklenmedi, veritabanına yazılmadı, Production'da gösterilmez. PR #48'e, Codex'in dallarına, Sor'a ve Google otomasyonuna dokunulmadı. Ücretli servis kullanılmadı.
 
+## Üçüncü tur — kalan 46 kaydın tamamlanması (15 Kasım 2026)
+
+Yeni restoran araştırması açılmadı; Production `99568ec` (758 aktif), PR #48 ve #49'a dokunulmadı. Ana yeni kaynak OGGUSTO'nun 89 İstanbul rehberi oldu: bağımsız editoryal, sayfa başına güncelleme tarihi ve çoğunda adres ile telefon var. Ayrıca Hürriyet, Gazete Oksijen ve Time Out'un tarihli yazıları ile işletmelerin resmî siteleri kullanıldı.
+
+**Güncellik eşiği:** Gault&Millau dışındaki bağımsız kaynak son 12 ay içinde tarihli olmalı (15.11.2025 sonrası) ya da işletmenin/işletmecinin bugün açık resmî sayfası olmalı. 2025 ilkbaharında yazılmış kaynaklar bu yüzden sayılmadı: Zaaf (Hürriyet 04/2025), Lokanta Göktürk (Hürriyet 04/2025), Izaka Terrace (OGGUSTO 02/2024).
+
+| Ölçü | 2. tur sonrası | 3. tur sonrası |
+|---|---:|---:|
+| 64 bekleyenden kanıtı tamamlanan | 16 | **37** |
+| Hâlâ incelemede | 46 | **25** |
+| Ret önerisi | 2 | 2 |
+| Codex teknik kabulüne hazır (iki bağımsız kaynak) | 29 | **50** (42 restoran + 8 kafe/pastane) |
+| Tek kaynak (14 White Burger + Hamdi Şişli + Basta Kuşdili) | 16 | 16 |
+| Eski 7 kayıt → kabul güncellemesi önerisi | 3 | **7** |
+
+**Bu turda kanıtı tamamlanan 21 kayıt:**
+- **OGGUSTO 2026 rehberleri:**
+  - Adana Ocakbaşı Kurtuluş, Efendy, GOU Society, Kendime, Bronco: aynı adres ve/veya aynı telefon;
+  - Villa Bosphorus, Eskiyer, Yeniköy Balıkçısı: Ekim 2026 balıkçılar rehberi;
+  - Toro: Six Senses Kocataş;
+  - Josephine: Rixos Tersane, Ramazan 2026;
+  - Beymen Brasserie, Batard, Backyard, Buselik Beyoğlu;
+  - Kruton: Kruvasan İstanbul'un Mim Kemal Öke Caddesi'ndeki yeni yeri;
+  - Lokanta Yoğurt;
+  - Ali Ocakbaşı Kuruçeşme: Oligark kompleksi.
+- **Tarihli basın:**
+  - Neni (Oksijen, güncelleme 10.12.2025);
+  - Catch (Time Out, 09.12.2025);
+  - Lokanta Yoğurt (Hürriyet, 09.05.2026).
+- **Resmî kaynaklar:**
+  - MykOrini: resmî adres Taşkızak Tersane Cad. No:5; rehberdeki "27J" kompleks içi birim.
+  - Paper Moon: markanın İstanbul sayfası, aynı telefon; kapı no Akmerkez'in resmî adresinden (Nispetiye Cd. No:56).
+
+**Kapanış ile faaliyetin ayrılması:**
+- **Eskiyer — faal.** OGGUSTO'nun Ekim 2026 rehberinde var; alan adının çözülmemesi kapanış değildi.
+- **Papalina — belirsiz.** Hiçbir güncel bağımsız kaynakta yok; faaliyet doğrulanamadı, kapanış da kanıtlanmadı. İncelemede kalıyor.
+- **Hakkasan ve Yediden:** Durumları değişmedi; Hakkasan için ret önerisi, Yediden için kapanış işareti.
+
+**Hâlâ incelemede (25):**
+- **Adres (11):** Faaliyetleri doğrulandı, kapı numarası eksik ya da çelişkili.
+  - Akbabalı (No:11 ↔ No:7), Brasserie Noir (481 ↔ 455; taşınmış olabilir), Madam Despina, Pizza Emirgan (14/B ↔ 14A);
+  - Hodan (muhtemel yeni adres Mim Kemal Öke Cd. No:19, Şişli; taşınma tarihi teyit edilmeli), Sofram (sokak adı);
+  - Natolia, Petra Gayrettepe (kapı no yok);
+  - Hüsrev ve Nappo (ilçe);
+  - La Boom.
+- **Faaliyet (10):** Son 12 ayda bağımsız kaynak yok.
+  - Zaaf, Lokanta Göktürk, Izaka Terrace, Vakko L'atelier Nişantaşı;
+  - Papalina, Sayfiye, Kiff, Gram Maslak, Balat Sahil, 7Mila.
+- **Kimlik (3):** Lipa (Boşnak meyhanesi ↔ Akdeniz restoranı), Palude (Urla ↔ Zeytinburnu), Sushi Manga (Göktürk şubesi).
+- **Kapanış işareti (1):** Yediden.
+
+**Eski yedi kayıt:** Hepsi kabul güncellemesine hazır.
+- Hamdi Eminönü, Shang Palace, Baylan Kadıköy (2. tur).
+- Tam Ocakbaşı: OGGUSTO 25.10.2026, aynı kapı no.
+- Strada Suadiye: OGGUSTO 22.09.2026, Bağdat Cad. No:459.
+- Arnavutköy Balıkçısı: OGGUSTO 06.11.2026.
+- Zula Harbiye: OGGUSTO 13.11.2026, Harbiye Çayırı Sok. No:101/1.
+
+**2.000 hedef tablosu:**
+
+| Katman | Durum | Aktif | 2.000'e kalan |
+|---|---|---:|---:|
+| Production | **yayımlanmış** | **758** | **1.242** |
+| + PR #49'daki 8 kayıt | Codex Preview kabulü; yayın onayı yok | 766 | 1.234 |
+| + PR #50: Codex'e hazır 50 aday + 7 eski kayıt | yalnız araştırma; teknik kabul yapılmadı | 823 | 1.177 |
+| + PR #50: tek kaynaklı 16 aday | yalnız araştırma | 839 | 1.161 |
+| + PR #48'in Codex'in beklettiği 588 adayı | yalnız araştırma | 1.427 | 573 |
+
+**Codex teknik kabulüne hazır 50 aday** — hepsi A-konumsuz:
+- **Restoran (42):**
+  - 16 Roof, Adana Ocakbaşı Kurtuluş, Agata Nişantaşı, Ali Ocakbaşı Kuruçeşme, Aliée, Atölye, Backyard Bistro;
+  - Bardot, Basta! Street Food Bar, Batard, Beca, Bronco, Buselik Beyoğlu, Catch;
+  - Caviar Kaspia, Da Vittorio, Efendy, Eskiyer, Filo D'olio Caddebostan, GOU Society, Günaydın Etiler;
+  - İsokyo, Josephine, Kendime, Kruton, Lokanta Yoğurt, MykOrini, Neni Brasserie;
+  - Beymen Brasserie, Nusr-Et Steakhouse Etiler, OCAK, Olea & Bar, Paper Moon, Restoran Modern, Sushi Barba;
+  - Tas Ramen, The Lobby, Toro, Tuzz, Villa Bosphorus, Yeniköy Balıkçısı, Zübeyir Ocakbaşı Taksim.
+- **Kafe / pastane (8):** Baylan Bebek, Baylan Galataport, Cova, Fauchon, Five O'Clock, Kubbeli Salon, Otto Bite, The Levant Tahinier.
+
+**İlçe dağılımı:** Beşiktaş 16, Beyoğlu 10, Şişli 6, Kadıköy 6, Sarıyer 6, Üsküdar 3; Zeytinburnu, Başakşehir ve Fatih 1'er.
+- Seyrek ilçeleri bu havuz kapatmıyor (bkz. eksik analizi). Bu ilçeler için ayrı kaynak gerekiyor: belediye esnaf listeleri ve ilçe basını.
+
+**Yeni aday ipuçları** (eklenmedi, yeni araştırmaya geçilmedi):
+- Zula Emaar ve Zula Zorlu şubeleri;
+- Sushi Manga Galataport;
+- Petra Şişhane;
+- Kruvasan İstanbul.
+
+Test: `scripts/arastirmagm2026test.ts` 695/695 geçti (yerel; Preview ve Production değil). Testin TypeScript denetimi de temiz.
+
+---
+
 ## İkinci tur — kanıt tamamlama (15 Kasım 2026)
 
 Taban yeniden doğrulandı: Production `99568ec`, katalog 793 kayıt, canlıda 758 aktif mekân. PR #48 (596 aday) ile PR #49'a (Codex, 8 restoranın yalnız Preview kabulü) dokunulmadı. Yeni restoran araştırması açılmadı; yalnız mevcut havuz ilerletildi.
