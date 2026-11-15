@@ -1,0 +1,236 @@
+{
+  "summary": {
+    "productionBase": "b83883bff72c9e8609cce24fb75feaf6b48748aa",
+    "productionTotal": 833,
+    "productionActive": 798,
+    "productionActiveRestaurant": 673,
+    "poolRows": 1333,
+    "normalizedIdentityGroups": 1286,
+    "crossPoolGroups": 47,
+    "poolCounts": {
+      "PR48": {
+        "BU_PAKET_ADAYI": 1,
+        "CANLIYLA_ESLESTI": 16,
+        "ON_INCELEME_BEKLIYOR": 442,
+        "RESTORAN_PAKETI_DISINDA": 137
+      },
+      "GM2026": {
+        "AYRI_DEGERLENDIRME": 95,
+        "RESTORAN_PAKETI_DISINDA": 9,
+        "CANLIYLA_ESLESTI": 73,
+        "ESKI_ARASTIRMA_KANITI": 4,
+        "ON_INCELEME_BEKLIYOR": 47,
+        "BU_PAKET_ADAYI": 9,
+        "YENI_BULGUYLA_BEKLIYOR": 7
+      },
+      "SEYREK": {
+        "ON_INCELEME_BEKLIYOR": 41,
+        "CANLIYLA_ESLESTI": 5,
+        "AYRI_DEGERLENDIRME": 20,
+        "KANIT_POLITIKASI_TEYIDI_BEKLIYOR": 2,
+        "RESTORAN_PAKETI_DISINDA": 4,
+        "ESKI_ARASTIRMA_KANITI": 2
+      },
+      "906": {
+        "ON_INCELEME_BEKLIYOR": 417,
+        "BU_PAKET_ADAYI": 1,
+        "CANLIYLA_ESLESTI": 1
+      }
+    },
+    "selectedRestaurants": 9,
+    "targetTotal": 842,
+    "targetActive": 807,
+    "targetActiveRestaurant": 682,
+    "activeCafe": 114,
+    "activeBar": 11,
+    "closed": 35,
+    "newProductionRecords": 0,
+    "previewAcceptance": "PENDING",
+    "researchShas": {
+      "pr48": "ac9aee93727c2e9c4c02830623385bbcc0df2969",
+      "pr50": "77bc434e1c7908f1de7a7824366f4f1d624de2d1"
+    },
+    "countCaution": "1333 kaynak satırı benzersiz işletme veya kabul toplamı değildir; eski araştırma kaydına ek kanıt otomatik artış sayılmaz. Shang Palace833te yok; kabul edilip yayımlanırsa gerçekten bir yeni kayıt olur.",
+    "excluded": "Kafe/pastane, Kıbrıs ve diğer bekleyen kayıtlar bu pakete alınmadı."
+  },
+  "records": [
+    {
+      "candidateId": "gm26/lokanta-yogurt",
+      "slug": "lokanta-yogurt-uskudar",
+      "name": "Lokanta Yoğurt",
+      "district": "Üsküdar",
+      "officialSource": "https://www.hilton.com/en/hotels/isterqq-altunizade-suites-istanbul/dining/",
+      "independentSource": "https://www.gault-millau.com.tr/lokanta-yogurt/",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Hotel işletmecisi ayrı Lokanta Yogurt restoranını ve No:20 adresini gösterir; Fami kafe ayrı konsepttir.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "gm26/izaka-terrace",
+      "slug": "izaka-terrace-beyoglu",
+      "name": "Izaka Terrace",
+      "district": "Beyoğlu",
+      "officialSource": "https://izakaterrace.com/iletisim/",
+      "independentSource": "https://www.gault-millau.com.tr/izaka-terrace/",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî iletişim ile bağımsız rehber No:8 ve Gümüşsuyu kimliğini doğrular; kaynaklardaki telefon farkı aktarılmadı.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "gm26/lokanta-gokturk",
+      "slug": "lokanta-gokturk-eyupsultan",
+      "name": "Lokanta Göktürk",
+      "district": "Eyüpsultan",
+      "officialSource": "https://lokantagokturk.com/",
+      "independentSource": "https://www.gault-millau.com.tr/lokanta-gokturk-3/",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Güncel işletme No:16 D:E gösterir. İkinci rehber kaydı24.01.2025 tarihlidir; güncel faaliyet birinci kaynaktan, adres eşleştirmesi iki kaynaktan. 2026 iddiası uydurulmadı.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "gm26/nappo-pizza",
+      "slug": "nappo-pizza-kanyon-sisli",
+      "name": "Nappo Pizza",
+      "district": "Şişli",
+      "officialSource": "https://www.kanyon.com.tr/lezzetler/nappo",
+      "independentSource": "https://www.gault-millau.com.tr/nappo-pizza-5/",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "AVM resmî kiracı sayfası Nappo ve1.katı doğrular; rehber aynı kapı/kat. Şişli ilçesi İşGYO mülk raporuyla teyit edildi.",
+      "additionalSources": [
+        "https://www.isgyo.com.tr/files/630f6c8d-d2ee-408a-b2be-7824326e2796.pdf"
+      ]
+    },
+    {
+      "candidateId": "gm26/shang-palace",
+      "slug": "shang-palace-besiktas",
+      "name": "Shang Palace",
+      "district": "Beşiktaş",
+      "officialSource": "https://www.shangri-la.com/istanbul/shangrila/dining/restaurants/shang-palace/",
+      "independentSource": "https://www.timeout.com/istanbul/restaurants/shang-palace",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Hotel işletmecisi güncel Shang Palace/B1 kaydını doğrular; TimeOut adres kaydı2013 tarihlidir ve güncel faaliyet kanıtı sayılmadı. Mevcut Ist Too aynı otelde farklı ad/konsept; otomatik birleştirilmedi.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "gm26/arnavutkoy-balikcisi",
+      "slug": "arnavutkoy-balikcisi-besiktas",
+      "name": "Arnavutköy Balıkçısı",
+      "district": "Beşiktaş",
+      "officialSource": "https://www.arnavutkoybalikcisirestaurant.com/welcome-en/",
+      "independentSource": "https://www.oggusto.com/gastronomi/istanbul/arnavutkoyde-mutlaka-gitmeniz-gereken-mekanlar",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "İşletmeci Arnavutköy No:4 ve Yeniköy No:125 şubelerini ayrı listeler. Mevcut Sarıyer kaydıyla aynı şube sayılmadı.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "gm26/backyard-bistro",
+      "slug": "backyard-bistro-besiktas",
+      "name": "Backyard Bistro",
+      "district": "Beşiktaş",
+      "officialSource": "https://backyard.com.tr/",
+      "independentSource": "https://www.gault-millau.com.tr/backyard-bistro/",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Geçerli çıplak alan adı kimlik, No:4, rezervasyon ve saatleri gösterir; www sertifika uyuşmazlığı için güvenlik gevşetilmedi.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "gm26/zubeyir-ocakbasi-taksim",
+      "slug": "zubeyir-ocakbasi-taksim-beyoglu",
+      "name": "Zübeyir Ocakbaşı Taksim",
+      "district": "Beyoğlu",
+      "officialSource": "https://www.zubeyirocakbasi.com.tr/taksim.html",
+      "independentSource": "https://www.gault-millau.com.tr/zubeyir-ocakbasi-taksim-3/",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî Taksim şube sayfası ad, No:28 ve rehberdeki telefonla eşleşir; başka şubeye yönlendirilmedi.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "pr48/araf-istanbul-kadikoy",
+      "slug": "araf-istanbul-kadikoy",
+      "name": "Araf İstanbul",
+      "district": "Kadıköy",
+      "officialSource": "https://arafistanbul.com/tr/",
+      "independentSource": "https://guide.michelin.com/tr/tr/istanbul-province/istanbul/restaurant/araf-istanbul",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Çalışan yeni Türkçe site ve iletişim numarası rehberdeki işletmeyle eşleşir; ayrıntılı adres Michelin kaydından doğrulandı. Ödül/yıldız kopyalanmadı.",
+      "additionalSources": []
+    }
+  ],
+  "holds": [
+    {
+      "id": "gm26/adana-ocakbasi-kurtulus",
+      "reason": "Bulunan adanaocakbasi.com.tr Nişantaşı Süleyman Nazif No:1 gösteriyor; aday Kurtuluş Baysungur No:2. Aynı şube varsayılmadı.",
+      "urls": [
+        "https://adanaocakbasi.com.tr/",
+        "https://www.gault-millau.com.tr/adana-ocakbasi-kurtulus/"
+      ]
+    },
+    {
+      "id": "gm26/catch",
+      "reason": "Allpoints Caddebostan Catch kimliğini doğruluyor. Aramada çıkan ve Allpoints üzerinden bağı doğrulanmayan Omni portalı Bağdat No:354; rehber ve TimeOut Funda Çıkmazı2/6A. Portal resmi sayılmadı; kesin şube bağlantısı çözülmeden yeni kayıt bekler.",
+      "urls": [
+        "https://www.allpoints.com.tr/tr/brand.html?marka=catch",
+        "https://catch.omnidiner.com/location",
+        "https://www.timeout.com/istanbul/tr/restoranlar/catch"
+      ]
+    },
+    {
+      "id": "sube/hamdi-restaurant-sisli",
+      "reason": "Marka Şişli19MayısNo2 listeliyor; aynı otelin güncel bağımsız işletmeci yemek sayfasında Hamdi yok. İkinci şube/faaliyet teyidi tamamlanmadı; kapanış hükmü değil.",
+      "urls": [
+        "https://hamdi.com.tr/",
+        "https://www.radissonhotels.com/en-us/hotels/radisson-blu-istanbul-sisli/dining"
+      ]
+    },
+    {
+      "id": "gm26/toro-latin-gastro-istanbul",
+      "reason": "Verilen Six Senses restoran bağlantısı genel otel koleksiyonuna yönlendi; yerel işletme/faaliyet teyidi tamamlanmadı. Rehber slugıtopside-bar-6 olsa da gerçek başlıkToro; URL adı tek başına ret sebebi değil.",
+      "urls": [
+        "https://www.sixsenses.com/en/hotels-resorts/europe/turkey/kocatas-mansions-istanbul/dining/toro-latin-gastro-bar/",
+        "https://www.gault-millau.com.tr/topside-bar-6/"
+      ]
+    },
+    {
+      "id": "gm26/brasserie-noir",
+      "reason": "Bulunan resmi noIrSuadiye kaynağı patisserie konsepti; restoran adayıyla marka/tür devamlılığı açık. Restoran kotasına alınmadı.",
+      "urls": [
+        "https://noirsuadiye.com/"
+      ]
+    },
+    {
+      "id": "gm26/hodan",
+      "reason": "Kaynaklarda BeyoğluHayriyeNo12 ve ŞişliMimKemalÖkeNo19A adresleri var. Güncel resmi işletme/şube teyidi tamamlanmadı.",
+      "urls": [
+        "https://www.gault-millau.com.tr/hodan-5/",
+        "https://www.tripadvisor.com.tr/Restaurant_Review-g293974-d23636329-Reviews-Hodan-Istanbul.html"
+      ]
+    },
+    {
+      "id": "gm26/hamdi-restaurant",
+      "reason": "Resmî site KalçınNo11; bağımsız TimeOut/Falstaff ve2025 rehberNo17. Kapı farkı teyit edilmeden kabul edilmedi.",
+      "urls": [
+        "https://hamdi.com.tr/",
+        "https://www.timeout.com/istanbul/restaurants/hamdi",
+        "https://www.falstaff.com/en/restaurants/hamdi-restaurant-istanbul"
+      ]
+    }
+  ],
+  "identityReview": [
+    {
+      "candidate": "arnavutkoy-balikcisi-besiktas",
+      "other": "arnavutkoy-sosyal-tesisi-besiktas",
+      "nameSimilarity": 0.727,
+      "sameAddress": false
+    }
+  ],
+  "status": "PREVIEW_KABULU_BEKLIYOR"
+}
