@@ -1,6 +1,6 @@
 # Kıbrıs pilotu — kaynaklı ve tekilleştirilmiş restoran adayları (15 Kasım 2026, kanıt tutarlılığı turu dahil)
 
-Dal: `arastirma/kibris-pilot` · Taban: Production `f8131dd` · Veri: `data/arastirma/kibris/adaylar.json` · Test: `scripts/arastirmakibristest.ts`
+Dal: `arastirma/kibris-pilot` · Taban: Production `b83883b` (PR #53 birleşti; ilk teslim `f8131dd` üstündeydi) · Veri: `data/arastirma/kibris/adaylar.json` · Test: `scripts/arastirmakibristest.ts`
 
 **Yalnız araştırma.**
 - Kataloğa eklenmedi, veritabanına yazılmadı, canlıda sayılmaz.
@@ -18,9 +18,9 @@ Bütün uzak dallar ve `data/`, `docs/`, `lib/` tarandı:
 
 | İstanbul hedefi | Sayı |
 |---|---:|
-| Canlı sitede gösterilen aktif mekân | **783** |
-| Production dalı kayıt (PR #51'in 17 kaydı dahil) | 818 |
-| 2.000 aktife kalan (yalnız yayımlanmış aktif) | **1.217** |
+| Canlı sitede gösterilen aktif mekân | **783** (15.11 ölçümü; PR #53 sonrası yeniden ölçülmedi) |
+| Production dalı kayıt (PR #51'in 17 ve PR #53'ün 15 kaydı dahil) | 833 |
+| 2.000 aktife kalan (yalnız yayımlanmış aktif, 783'e göre) | **1.217** |
 
 | Kıbrıs pilotu (yalnız araştırma, canlıda değil) | Kuzey | Güney | Toplam |
 |---|---:|---:|---:|
