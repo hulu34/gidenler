@@ -1,0 +1,21 @@
+/* Suna'nın Yeri ek notu — kalite testi (yalnız okur). #60 dosyası değişmedi; canlı alanlar katalogla aynı; OSM geçmişi tarihli;
+   aynı rehberin iki yılı iki kaynak sayılmadı; sonuç açık ve hiçbir değişiklik önerilmedi. */
+import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+let ok = 0, fail = 0;
+const t = (ad: string, k: boolean, not: unknown = "") => { if (k) ok++; else { fail++; console.log("KALDI:", ad, JSON.stringify(not).slice(0, 300)); } };
+const show = (ref: string, p: string) => execFileSync("git", ["show", `${ref}:${p}`], { encoding: "utf8", maxBuffer: 64 << 20 });
+const E = JSON.parse(readFileSync("data/arastirma/canli-adres-celiski/suna-ek-1.json", "utf8"));
+t("#60 teslim dosyası değişmedi", readFileSync(E.temel.dosya, "utf8") === show(E.temel.sha, E.temel.dosya));
+const TABAN = process.env.TABAN ?? "origin/feature/investor-v1";
+const PV = [...JSON.parse(show(TABAN, "data/real/venues.json")), ...JSON.parse(show(TABAN, "data/real/isletme.json"))] as { slug: string; address?: string; phone?: string; ref?: string }[];
+const p = PV.find((x) => x.slug === E.slug);
+t("canlı alanlar güncel Production ile aynı", !!p && p.address === E.canli.address && p.phone === E.canli.phone && p.ref === E.canli.ref, p);
+t("OSM geçmişi: 5 sürüm, tarihli, kapı/telefon girişi 2014", E.osmGecmisi.surumler.length === 5 && E.osmGecmisi.surumler.every((s: { tarih: string }) => /^\d{4}-\d{2}-\d{2}$/.test(s.tarih)) && /^2014-11-15/.test(E.osmGecmisi.kapiVeTelefonunGirildigiTarih));
+const gm = E.bilinenKaynaklar.filter((k: { kaynak: string }) => /Gault/.test(k.kaynak));
+t("aynı rehberin iki yılı tek kaynak sayıldı", gm.length === 2 && /tek kaynak/.test(E.karsilastirma.alternatifinDayanagi) && gm.some((k: { not: string }) => /iki bağımsız kaynak sayılmadı/.test(k.not)));
+t("sonuç açık, değişiklik yok, durdu", E.sonuc === "ACIK_EKSIK_KANIT" && E.oneri.address === "değişiklik yok" && E.oneri.phone === "değişiklik yok" && E.durdu === true && E.eksikKanit.length > 0);
+const ham = readFileSync("data/arastirma/canli-adres-celiski/suna-ek-1.json", "utf8");
+t("puan/koordinat yok", !/"(rating|puan|lat|lng|lon)"\s*:/.test(ham) && !/\d+([,.]\d)?\/20\b/.test(ham));
+console.log(`suna ek-1: ${ok}/${ok + fail}`);
+process.exit(fail ? 1 : 0);

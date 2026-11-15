@@ -1,0 +1,38 @@
+{
+ "_aciklama": "Suna'nın Yeri — #60 (4bc4810) bulgusuna ek not. Tek sınırlı tur: OSM düğümünün sürüm geçmişi ve zaten bilinen kaynaklar. #60 teslim dosyası değiştirilmedi. Canlı adres düzeltilmedi, veritabanına yazılmadı, yayın yok. İşletmeye mesaj, ücretli kaynak, genel araştırma yok.",
+ "olusturma": "2026-11-15",
+ "temel": {"pr": 60, "sha": "4bc48109e9914db047ddece8291f0e0ae7f5abdc", "dosya": "data/arastirma/canli-adres-celiski/uc-kayit.json"},
+ "slug": "suna-nin-yeri-uskudar",
+ "canli": {"address": "Kandilli İskele Caddesi No:17, Üsküdar", "phone": "+90 216 332 32 41", "ref": "node/2383708227", "website": null},
+ "osmGecmisi": {
+  "kaynak": "https://www.openstreetmap.org/node/2383708227/history/1…5 (sürüm sayfaları; 2026-11-15'te birer kez açıldı)",
+  "surumler": [
+   {"surum": 1, "tarih": "2013-07-13", "degisiklik": "yalnız amenity=restaurant ve ad"},
+   {"surum": 2, "tarih": "2014-11-15", "degisiklik": "addr:street=Kandilli İskele Caddesi, addr:housenumber=17, phone=+90 0216 332 32 41, website=sunaninyeri.com eklendi"},
+   {"surum": 3, "tarih": "2023-01-10", "degisiklik": "adres ve telefon değişmedi"},
+   {"surum": 4, "tarih": "2025-12-13", "degisiklik": "yalnız addr:city 'Üsküdar - İstanbul' → 'İstanbul'; kapı no ve telefon değişmedi"},
+   {"surum": 5, "tarih": "2026-06-10", "degisiklik": "otomatik telefon biçimi düzeltmesi (confusedbuffalo-bot, changeset 183907902: 'missing country code, extra punctuation'); numara aynı"}
+  ],
+  "sonDuzenleme": "2026-06-10 (sürüm 5, bot)",
+  "kapiVeTelefonunGirildigiTarih": "2014-11-15 (sürüm 2)",
+  "yerindeKontrolEtiketi": "yok (check_date / survey:date yok)",
+  "yerelAnlikGoruntu": "scratchpad v906/havuz-tam.json (2026-11-11): lastEdit 2026-06-10, version 5 — sayfa ile aynı"
+ },
+ "bilinenKaynaklar": [
+  {"kaynak": "Gault&Millau Türkiye 2026", "url": "https://www.gault-millau.com.tr/balikci-sabahattin-2/", "tarih": "2025-12-23", "adres": "Kandilli İskele Cad., No:4A", "telefon": "+90 216 308 45 12", "not": "#60'ta açıldı; bu turda yeniden açılmadı"},
+  {"kaynak": "Gault&Millau (önceki yıl girişi)", "url": "https://www.gault-millau.com.tr/en/sunanin-yeri/", "tarih": "2023-12-07", "adres": "Kandilli İskele Cad. No: 4", "telefon": "0216 308 45 12", "not": "aynı rehberin iki yılı — iki bağımsız kaynak sayılmadı"},
+  {"kaynak": "resmî site (canlı kayıttaki eski alan adı)", "url": "http://www.sunaninyeri.com/", "tarih": null, "adres": null, "telefon": null, "not": "DNS'te yok (2026-11-05, 2026-11-15)"},
+  {"kaynak": "Production kalite raporu", "url": "data/katalog/rapor/kalite-production.json", "tarih": null, "adres": null, "telefon": null, "not": "yalnız 'onaylı Google eşleşmesi' — Google faaliyet ya da adres kanıtı sayılmaz"}
+ ],
+ "yeniKaynak": "aranmadı (genel araştırma yok); repo ve yerel anlık görüntülerde başka işletmeci ya da bağımsız kaynak kaydı yok",
+ "karsilastirma": {
+  "canliAlanlarinDayanagi": "yalnız OSM sürüm 2 (2014-11-15); sonraki düzenlemeler kapı no ve telefona dokunmadı, yerinde kontrol etiketi yok",
+  "alternatifinDayanagi": "yalnız Gault&Millau (2023 ve 2025 girişleri; tek kaynak)",
+  "guncelKapiTelefonEslesmesi": "yok: hiçbir güncel kaynak No:17 + 216 332 32 41'i doğrulamıyor; No:4A + 216 308 45 12 de tek kaynakta"
+ },
+ "sonuc": "ACIK_EKSIK_KANIT",
+ "gerekce": "OSM'deki kapı no ve telefon 2014'ten kalma ve o tarihten beri yerinde doğrulanmamış; kaynak eskimiş olabilir. G&M'nin değeri tek kaynakta olduğu için canlı alanı değiştirmeye yetmez.",
+ "oneri": {"address": "değişiklik yok", "phone": "değişiklik yok", "kosul": "G&M dışında güncel bir işletmeci kaynağı ya da tarihli bağımsız kaynak kapı no + telefonu verirse yeniden değerlendirilir (#60'taki koşullu öneri geçerli)"},
+ "eksikKanit": ["güncel işletmeci kaynağı ya da G&M dışında tarihli bağımsız kaynak: kapı no + telefon"],
+ "durdu": true
+}
