@@ -1,0 +1,220 @@
+{
+  "summary": {
+    "productionBase": "d4aa85545cca0b1485db84f411f2d92fae2ca751",
+    "productionTotal": 860,
+    "productionActive": 825,
+    "productionActiveRestaurant": 700,
+    "researchPr": 58,
+    "researchSha": "1269682e04e93f3f9506bba89e74ebc09e961e52",
+    "researchRows": 66,
+    "selectedRestaurants": 10,
+    "targetTotal": 870,
+    "targetActive": 835,
+    "targetActiveRestaurant": 710,
+    "activeCafe": 114,
+    "activeBar": 11,
+    "closed": 35,
+    "newProductionRecords": 0,
+    "previewAcceptance": "PENDING",
+    "excludedExisting": "lokanta-by-divan-sisli",
+    "uncertainPreserved": 53
+  },
+  "records": [
+    {
+      "candidateKey": "madera|sisli",
+      "slug": "madera-sisli",
+      "name": "Madera",
+      "district": "Şişli",
+      "officialSource": "https://www.maderaistanbul.com/",
+      "independentSource": "https://www.gault-millau.com.tr/madera/",
+      "independentPublishedAt": "2025-12-24",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "am’da Madera @ maderaistanbul → Ateşin etrafında buluşalım. Darülbedai Cd. No:4 Lütfi Kırdar Maçka, İstanbul 0536 778 89 20 madera@c-paces.com Davet ve organizasyon için",
+      "guideAddress": "Harbiye Mah., Darülbedai Cad. No:4 Şişli /İstanbul",
+      "note": "Maderia Sushi Bar ile farklı ad ve adrestir. Pazar kahvaltısına ara verildiği notu bütün işletmenin kapalı olduğu şeklinde yorumlanmadı; saat veya kahvaltı hizmeti iddiası aktarılmadı.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "roka istanbul|beyoglu",
+      "slug": "roka-istanbul-beyoglu",
+      "name": "Roka İstanbul",
+      "district": "Beyoğlu",
+      "officialSource": "https://www.rokarestaurant.com/en/roka-galataport-istanbul",
+      "independentSource": "https://www.gault-millau.com.tr/roka-istanbul-5/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "eetAddress\":\"K\\u0131l\\u0131\\u00e7alipa\\u015fa Mah. Meclis-i Mebusan \\nSokak No: 14\\/2E Beyo\\u011flu\\/\\u0130stanbul\",\"addressCountry\":\"T\\u00fcrkiye\",\"postalCode\":\"\"},\"menu",
+      "guideAddress": "Galataport İstanbul, Kılıçali Paşa Mah. Meclis-i Mebusan Sok. O2 Blok, No: 14/2E, 34433 Beyoğlu/İstanbul",
+      "note": "Otomatik HTTP403 sonrası aynı resmî URL normal tarayıcıda açıldı. Görünen adres No:14/2E; engel aşılmadı. Rehber adresi de14/2E. Contemporary Japanese bilgisi işletmeci sayfasında.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "parma sole|sile",
+      "slug": "parma-sole-sile",
+      "name": "Parma Sole",
+      "district": "Şile",
+      "officialSource": "https://www.parmasole.com/",
+      "independentSource": "https://www.gault-millau.com.tr/parma-sole/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "ze kaydolabilirsiniz Email Address Kayıt Teşekkürler. ADRES Kozalı Caddesi No:23 Şile | İstanbul İLETİŞİM rezervasyon@parmasole.com.tr +90 216 738 4020 +90 216 738 4021 B",
+      "guideAddress": "Sahilköy Mah., Kozalı Cad., No:23, Şile/İstanbul",
+      "note": "Resmî sayfa ve rehber aynı Kozalı23 adresi. Eski Overture İtalyan etiketi alınmadı; kaynaklı Modern mutfak türü kullanıldı.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "novikov restaurant|besiktas",
+      "slug": "novikov-restaurant-besiktas",
+      "name": "Novikov Istanbul",
+      "district": "Beşiktaş",
+      "officialSource": "https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul",
+      "independentSource": "https://www.gault-millau.com.tr/novikov-restaurant/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "i - Jumeira Sahili Marakeş Maskat Riyad İstanbul Kuruçeşme, Muallim Naci Caddesi. No. 62, 34345 Beşiktaş, İstanbul Istanbul 34345 moist-reservations@mohg.com +90 212 349",
+      "guideAddress": "Mandarin Oriental Bosphorus, Kuruçeşme, Muallim Naci Cad. No:62, 34345 Beşiktaş/İstanbul",
+      "note": "Mevcut Olea & Bar aynı otel adresinde, farklı restoran konsepti. İşletmecinin yeme-içme dizini Novikov ve Olea’yı ayrı gösterir. Aynı bina/alan adı tek başına mükerrer nedeni sayılmadı.",
+      "additionalSources": [
+        "https://www.mandarinoriental.com/en/istanbul/bosphorus/dine"
+      ]
+    },
+    {
+      "candidateKey": "muutto anatolian tapas bar|beyoglu",
+      "slug": "muutto-anatolian-tapas-bar-beyoglu",
+      "name": "Muutto Anatolian Tapas Bar",
+      "district": "Beyoğlu",
+      "officialSource": "https://www.muutto.com.tr/ulasim",
+      "independentSource": "https://www.gault-millau.com.tr/muutto-anatolian-tapas-bar-5/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "gion\":\"34\",\"postalCode\":\"34433\",\"streetAddress\":\"8 Meclis-i Mebusan Caddesi\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":\"41.0269862\",\"longitude\":\"28.9856071\"},\"url\":\"htt",
+      "guideAddress": "Galataport İstanbul, Kılıçali Paşa, Meclis-i Mebusan Cad. No:8, 34433 Beyoğlu/İstanbul",
+      "note": "Adında Bar geçmesi tek başına kategori nedeni değildir; rehber etiketi Şef restoranı. İşletmecinin adres alanı ve rehber No:8 eşleşiyor. İletişim sayfasında Galataport8, Fişekhane52V ve Moda57/2a ayrı ayrı görülerek şube ayrımı doğrulandı.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "madhu s|besiktas",
+      "slug": "madhus-besiktas",
+      "name": "Madhu’s",
+      "district": "Beşiktaş",
+      "officialSource": "https://www.swissotelthebosphorus.com/madhus/",
+      "independentSource": "https://www.gault-millau.com.tr/madhus-3/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "k a table Access Madhu's Restaurant Address: Visnezade Mah. Acisu Sok. N. 19, 34357 Macka Besiktas Istanbul Phone: +90 549 326 80 05 Email: restaurantreservation.istanbul",
+      "guideAddress": "Swissôtel The Bosphorus, İstanbul, Vişnezade, Acısu Sok., No:19, 34357 Beşiktaş/İstanbul",
+      "note": "Swissôtel işletmeci sayfası Madhu’s restoranını ve No:19 adresini gösterir; rehber aynı şubeyi doğrular. Otelin genel telefonu yerine restoran telefonu iddiası eklenmedi; telefon aktarılmadı.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "inari piku etiler|besiktas",
+      "slug": "inari-piku-etiler-besiktas",
+      "name": "İnari Piku Etiler",
+      "district": "Beşiktaş",
+      "officialSource": "https://www.inariomakase.com/",
+      "independentSource": "https://www.gault-millau.com.tr/inari-piku-etiler-3/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "/ İstanbul +90 212 265 96 01 VIEW ON MAPS Etiler Etiler Mh. Nispetiye Cd. No: 89, 34337 Beşiktaş / İstanbul +90 212 216 35 35 VIEW ON MAPS Vadistanbul Ayazağa Mh. Cendere",
+      "guideAddress": "Etiler, Nisbetiye Cad No: 89, 34337 Beşiktaş/İstanbul",
+      "note": "Yalnız Etiler89. Resmî listedeki Kuruçeşme11, Vadistanbul ve Bodrum farklı şubeler; merkez ofis adresi alınmadı.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "havus lokantasi|bakirkoy",
+      "slug": "havus-lokantasi-bakirkoy",
+      "name": "Havuş Lokantası",
+      "district": "Bakırköy",
+      "officialSource": "https://havus.com.tr/",
+      "independentSource": "https://www.gault-millau.com.tr/9613-2/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "ir Kilis mutfağı. Adres Kısım Mah, Ataköy 2-5-6, Yalı, Rauf Orbay Cd. Kapı No-4 İç Kapı No-7, 34158 Bakırköy/İstanbul Bize Ulaşın +90 533 491 34 79 Çalışma Saatleri Pazar",
+      "guideAddress": "Yalı, Kısım Mah, Ataköy 2-5-6, Rauf Orbay Cad. Kapı No-4, İç Kapı No-7, 34158 Bakırköy/İstanbul",
+      "note": "Resmî ve rehber kapı4/içkapı7 eşleşir. Yalı ile Ataköy 2-5-6 Kısım kaynakta birlikte geçer; mahalle kodu tahmin edilmedi.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "gina|sisli",
+      "slug": "gina-kanyon-sisli",
+      "name": "Gina Kanyon",
+      "district": "Şişli",
+      "officialSource": "https://www.gina.com.tr/",
+      "independentSource": "https://www.gault-millau.com.tr/gina-3/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "REZERVASYON YAP GALATAPORT İSTANBUL REZERVASYON YAP Kanyon Büyükdere Cad. Kanyon Avm No: 164 – A Levent / İstanbul 0212 353 52 86 Galataport İstanbul Kılıçali Paşa Mah.",
+      "guideAddress": "Kanyon AVM, Levent Mah. Büyükdere Cad, No:164/A, 34394 Şişli/İstanbul",
+      "note": "Yalnız Kanyon şubesi164/A. Galataport şubesi10/1E farklı ilçe ve adres. Kanyon’daki başka restoranların185 adresi bu kayda kopyalanmadı; işletmeci ve rehber164/A eşleşir.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "bi nevi deli|besiktas",
+      "slug": "bi-nevi-deli-besiktas",
+      "name": "Bi Nevi Deli",
+      "district": "Beşiktaş",
+      "officialSource": "https://binevideli.com/",
+      "independentSource": "https://www.gault-millau.com.tr/9470-2/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "officialAddressEvidence": "Podcast İletişim THE MARKET ETİLER THE MARKET ETİLER Etiler Dilhayat Sk. No:10/1, Beşiktaş Her Gün, 10.00-22.00 Saatleri arasında; Dine-in, Take-out, Paket Servis MENÜ WH",
+      "guideAddress": "Etiler, Dilhayat Sok., No:10/1, 34337, Beşiktaş/İstanbul",
+      "note": "Resmî sayfanın Etiler kartı ve rehber10/1 eşleşir. Telefon eşleşmesi yapılmış iddia edilmez; telefon aktarılmadı.",
+      "additionalSources": []
+    }
+  ],
+  "holds": [
+    {
+      "candidateKey": "maderia sushi bar|sisli",
+      "name": "Maderia Sushi Bar",
+      "reason": "Kullanıcının doğrudan talimatıyla bekletildi;29–31 teknik adres /29–35 görünür adres farkı bu pakette çözülmez.",
+      "state": "SAHIP_TALIMATIYLA_BEKLIYOR"
+    },
+    {
+      "candidateKey": "the townhouse|kadikoy",
+      "name": "The Townhouse",
+      "reason": "Bar; restoran paketi dışında.",
+      "state": "AYRI_KATEGORI"
+    }
+  ],
+  "identityReview": [
+    {
+      "candidate": "roka-istanbul-beyoglu",
+      "other": "okra-istanbul-beyoglu",
+      "sameAddress": false,
+      "sameHost": false,
+      "similarity": 0.923,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad, şube ve açık adres kanıtları karşılaştırıldı; aynı otel/bina/alan adı tek başına mükerrer nedeni değildir."
+    },
+    {
+      "candidate": "novikov-restaurant-besiktas",
+      "other": "olea-bar-besiktas",
+      "sameAddress": true,
+      "sameHost": true,
+      "similarity": 0.25,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad, şube ve açık adres kanıtları karşılaştırıldı; aynı otel/bina/alan adı tek başına mükerrer nedeni değildir."
+    },
+    {
+      "candidate": "madhus-besiktas",
+      "other": "16-roof-besiktas",
+      "sameAddress": true,
+      "sameHost": false,
+      "similarity": 0.143,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad, şube ve açık adres kanıtları karşılaştırıldı; aynı otel/bina/alan adı tek başına mükerrer nedeni değildir."
+    }
+  ],
+  "status": "PREVIEW_KABULU_BEKLIYOR"
+}
