@@ -12,14 +12,13 @@
   "resmî siteler": "alan adı denemesi + web araması"
  },
  "sayim": {
-  "aday-kosullu": 6,
-  "aday-tam": 4,
+  "aday-tam": 6,
+  "aday-kosullu": 4,
   "inceleme": 14,
   "kapsam-disi": 2
  },
  "operasyonelDagilim": {
-  "güney|aday-kosullu": 2,
-  "güney|aday-tam": 4,
+  "güney|aday-tam": 6,
   "kuzey|aday-kosullu": 4,
   "kuzey|inceleme": 3,
   "güney|inceleme": 11,
@@ -54,35 +53,40 @@
      "yayin": "2026-01-29",
      "kontrol": "2026-11-15",
      "kanitladigi": "Cyprus Mail eleştirisi: LPM, Parklane, Limassol; aynı telefon (25862222); sokak ve kapı no yazıda yok"
+    },
+    {
+     "tur": "bağımsız rehber (otel sayfası)",
+     "url": "https://guide.michelin.com/en/hotels-stays/limassol/parklane-a-luxury-collection-resort-spa-limassol-12660",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "MICHELIN Guide otel sayfası (JSON-LD): Parklane, 11 Giannou Kranidioti Street, Limassol; otel restoranları arasında 'La Petite Maison' adıyla geçiyor. Sayfa tarihsiz; güncellik Cyprus Mail 2026 yazısından"
     }
    ],
    "degerlendirme": {
     "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
-    "sube": "bkz. adresKaniti",
+    "sube": "Limasol şubesi; restoran Parklane otelinde (üç kaynak). Markanın başka ülkelerdeki şubeleri kapsam dışı",
     "faaliyet": "bağımsız yazı 2026-01-29; resmî kaynak 2026-11-15 tarihinde açık",
-    "adres": "ayni-otel-ve-telefon-sokak-kapi-no-tek-kaynak",
+    "adres": "uc-kaynak-otel-adresi-bagimsiz-rehber",
     "tur": "bağımsız yazının konusu / resmî menü: Akdeniz mutfağı"
    },
    "koordinat": null,
    "kaliteSinifiOnerisi": "A-konumsuz",
-   "eksik": [
-    "sokak ve kapı no yalnız resmî kaynakta (bağımsız yazı: 'Parklane, Limassol')"
-   ],
+   "eksik": [],
    "adresKaniti": {
-    "durum": "ayni-otel-ve-telefon-sokak-kapi-no-tek-kaynak",
+    "durum": "uc-kaynak-otel-adresi-bagimsiz-rehber",
     "resmiKaynak": "Parklane, Giannou Kranidioti 11, Pyrgos 4534 (+357 25 862222)",
-    "bagimsizKaynak": "Parklane Hotel, Limassol (CONTACT 25862222) — sokak yok",
+    "bagimsizKaynak": "Cyprus Mail (29.01.2026): LPM, Parklane Hotel, Limassol; 25862222 · MICHELIN Guide: Parklane, 11 Giannou Kranidioti Street, Limassol; restoran 'La Petite Maison'",
     "eslesme": {
-     "sokak": "yalnız resmî kaynak",
-     "kapiNo": "yalnız resmî kaynak",
-     "telefon": "eşleşti",
-     "otel": "eşleşti"
+     "sokak": "eşleşti (resmî + MICHELIN otel sayfası)",
+     "kapiNo": "eşleşti (11; resmî + MICHELIN)",
+     "telefon": "eşleşti (resmî + Cyprus Mail: 25 862222)",
+     "otel": "eşleşti (üç kaynak)",
+     "postaKodu": "farklı: resmî 4534, MICHELIN 56560 — aktarımda resmî kaynaktaki kullanıldı"
     }
    },
-   "durum": "aday-kosullu",
-   "guven": "koşullu",
-   "kosul": "sokak ve kapı no bağımsız kaynakla eşleşmedi; otel ve telefon eşleşti — tam kabul edilmiş kayıt değildir",
-   "not": "otel içindeki marka restoranı; markanın başka ülkelerde şubeleri var — yalnız Limasol şubesi"
+   "durum": "aday-tam",
+   "guven": "güçlü",
+   "not": "otel içindeki marka restoranı; markanın başka ülkelerde şubeleri var — yalnız Limasol şubesi",
+   "teyitTuru_15_11": "MICHELIN Guide otel sayfası sokak ve kapı numarasını bağımsız olarak doğruladı → tam kanıtlı"
   },
   {
    "id": "kibris/oniro-by-the-sea",
@@ -328,35 +332,39 @@
      "yayin": "2026-01-14",
      "kontrol": "2026-11-15",
      "kanitladigi": "Cyprus Mail: Novél restaurant, The Agora Hotel, Lefkara; aynı telefon (24 726000)"
+    },
+    {
+     "tur": "bağımsız rehber (otel sayfası)",
+     "url": "https://guide.michelin.com/at/de/hotels-stays/panolefkara/the-agora-hotel-13555",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "MICHELIN Guide otel sayfası (JSON-LD): The Agora Hotel, 25 Timiou Stavrou, 7700 Pano Lefkara; tel 0035724726000; otelin bistrosu 'Novél'. İngilizce sayfa 404, Almanca sürüm açık. Sayfa tarihsiz; güncellik Cyprus Mail 2026 yazısından"
     }
    ],
    "degerlendirme": {
     "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
-    "sube": "bkz. adresKaniti",
+    "sube": "Pano Lefkara — tek işletme; restoran The Agora Hotel içinde (üç kaynak)",
     "faaliyet": "bağımsız yazı 2026-01-14; resmî kaynak 2026-11-15 tarihinde açık",
-    "adres": "ayni-otel-ve-telefon-sokak-kapi-no-tek-kaynak",
+    "adres": "uc-kaynak-otel-adresi-bagimsiz-rehber",
     "tur": "bağımsız yazının konusu / resmî menü: Kahvaltı"
    },
    "koordinat": null,
    "kaliteSinifiOnerisi": "A-konumsuz",
-   "eksik": [
-    "sokak ve kapı no yalnız resmî kaynakta; yazının harita bileşenindeki adres plus code taşıyor (Google kökenli) — kanıt sayılmadı"
-   ],
+   "eksik": [],
    "adresKaniti": {
-    "durum": "ayni-otel-ve-telefon-sokak-kapi-no-tek-kaynak",
+    "durum": "uc-kaynak-otel-adresi-bagimsiz-rehber",
     "resmiKaynak": "The Agora Hotel, 25 Timiou Stavrou, Pano Lefkara 7700 (+357 24 726000)",
-    "bagimsizKaynak": "Novél restaurant, The Agora Hotel, Lefkara (24 726000) — yazı metninde sokak yok; harita bileşenindeki adres plus code taşıdığı için sayılmadı",
+    "bagimsizKaynak": "Cyprus Mail (14.01.2026): Novél restaurant, The Agora Hotel, Lefkara; 24 726000 · MICHELIN Guide: The Agora Hotel, 25 Timiou Stavrou, Pano Lefkara 7700; 0035724726000; bistro 'Novél'",
     "eslesme": {
-     "sokak": "yalnız resmî kaynak",
-     "kapiNo": "yalnız resmî kaynak",
-     "telefon": "eşleşti",
-     "otel": "eşleşti"
+     "sokak": "eşleşti (resmî + MICHELIN otel sayfası)",
+     "kapiNo": "eşleşti (25; resmî + MICHELIN)",
+     "telefon": "eşleşti (üç kaynak: 24 726000)",
+     "otel": "eşleşti (üç kaynak)"
     }
    },
-   "durum": "aday-kosullu",
-   "guven": "koşullu",
-   "kosul": "sokak ve kapı no bağımsız yazı metninde yok; otel ve telefon eşleşti — tam kabul edilmiş kayıt değildir",
-   "not": "kahvaltı, öğle ve akşam servisi"
+   "durum": "aday-tam",
+   "guven": "güçlü",
+   "not": "kahvaltı, öğle ve akşam servisi",
+   "teyitTuru_15_11": "MICHELIN Guide otel sayfası sokak ve kapı numarasını bağımsız olarak doğruladı → tam kanıtlı"
   },
   {
    "id": "kibris/calamari-restaurant",
@@ -413,7 +421,8 @@
    },
    "durum": "aday-kosullu",
    "guven": "koşullu",
-   "kosul": "adres yer tarifi düzeyinde; yer tarifli adresin kabulü sahip/Codex kararı — tam kabul edilmiş kayıt değildir"
+   "kosul": "adres yer tarifi düzeyinde; yer tarifli adresin kabulü sahip/Codex kararı — tam kabul edilmiş kayıt değildir",
+   "teyitTuru_15_11": "yeni kaynak bulunamadı; yemek.com dışında adres veren editoryal kaynak yok. Kapı no yerel adres biçiminde yok — yer tarifli adres sahip kararı"
   },
   {
    "id": "kibris/bellapais-gardens-restaurant",
@@ -443,6 +452,13 @@
      "yayin": "2026-10-07",
      "kontrol": "2026-11-15",
      "kanitladigi": "yemek.com (07.10.2026): Şehit Fuat Niyazi Sokak, Beylerbeyi, Girne"
+    },
+    {
+     "tur": "bağımsız rehber (2026 listesi)",
+     "url": "https://petitfute.com/v39631-bellapais-beylerbeyi/c1165-restaurants/c1031-cuisines-du-monde",
+     "kontrol": "2026-11-15",
+     "yayin": "2026",
+     "kanitladigi": "Petit Futé 2026 Bellapaïs-Beylerbeyi restoran listesi: BELLAPAIS GARDENS RESTAURANT, Şehit Fuat Niyazi Sokak, Bellapaïs - Beylerbeyi (kapı no yok)"
     }
    ],
    "degerlendirme": {
@@ -455,24 +471,25 @@
    "koordinat": null,
    "kaliteSinifiOnerisi": "A-konumsuz",
    "eksik": [
-    "kapı no",
-    "sokak adı iki dilde farklı yazılmış — aynı yer olduğu varsayıldı, teyit edilmeli"
+    "kapı no (üç kaynakta da yok)",
+    "resmî kaynaktaki sokak adı ('Crusader Road') iki bağımsız kaynaktaki 'Şehit Fuat Niyazi Sokak' ile doğrulanmadı"
    ],
    "adresKaniti": {
     "durum": "ayni-koy-sokak-adi-farkli-kapi-no-yok",
     "resmiKaynak": "Crusader Road, Bellapais (+90 392 815 60 66)",
-    "bagimsizKaynak": "Şehit Fuat Niyazi Sokak, Beylerbeyi, Girne",
+    "bagimsizKaynak": "yemek.com (07.10.2026): Şehit Fuat Niyazi Sokak, Beylerbeyi, Girne · Petit Futé (2026): Şehit Fuat Niyazi Sokak, Bellapaïs - Beylerbeyi",
     "eslesme": {
      "koy": "eşleşti (Bellapais = Beylerbeyi)",
-     "sokak": "farklı ad (Crusader Road / Şehit Fuat Niyazi Sokak) — aynı yol olduğu doğrulanmadı",
+     "sokak": "iki bağımsız kaynakta aynı ('Şehit Fuat Niyazi Sokak'); resmî kaynak 'Crusader Road' — aynı yol olduğu resmî kaynakla doğrulanmadı",
      "kapiNo": "iki kaynakta da yok",
      "telefon": "yazıda yok"
     }
    },
    "durum": "aday-kosullu",
    "guven": "koşullu",
-   "kosul": "sokak adı iki kaynakta farklı; kapı no yok — tam kabul edilmiş kayıt değildir",
-   "not": "otel + restoran; yalnız restoran kaydı"
+   "kosul": "sokak adı iki bağımsız kaynakta aynı ama resmî kaynakta farklı; kapı no yok — tam kabul edilmiş kayıt değildir",
+   "not": "otel + restoran; yalnız restoran kaydı",
+   "teyitTuru_15_11": "Petit Futé 2026 listesi yemek.com'daki sokak adını doğruladı; otel rezervasyon toplayıcılarındaki 'No:3' sayılmadı"
   },
   {
    "id": "kibris/silver-rocks-restaurant",
@@ -531,7 +548,8 @@
    "durum": "aday-kosullu",
    "guven": "koşullu",
    "kosul": "sokak tek kaynakta (yemek.com); resmî kaynak yalnız köy düzeyinde; kapı no yok — tam kabul edilmiş kayıt değildir",
-   "not": "tür yemek.com 'balık restoranları' listesinden"
+   "not": "tür yemek.com 'balık restoranları' listesinden",
+   "teyitTuru_15_11": "yeni editoryal kaynak bulunamadı; yalnız toplayıcı/platform sayfaları (tripaligner, restaurantguru, trip.com) 'Fevzi Çakmak Caddesi' yazıyor — bağımsız sayılmadı"
   },
   {
    "id": "kibris/niazi-s-restaurant-girne",
@@ -591,7 +609,8 @@
    "durum": "aday-kosullu",
    "guven": "koşullu",
    "kosul": "kapı no tek kaynakta; resmî sitenin iki adresi ve iki Girne şubesi arasında şube eşlemesi teyit edilmeli — tam kabul edilmiş kayıt değildir",
-   "not": "markanın Lefkoşa ve Gazimağusa şubeleri ayrı kayıt olur; site başlığı 'Established 1949, Limassol' (markanın kökeni)"
+   "not": "markanın Lefkoşa ve Gazimağusa şubeleri ayrı kayıt olur; site başlığı 'Established 1949, Limassol' (markanın kökeni)",
+   "teyitTuru_15_11": "Lonely Planet sayfası içeriği betikle yükleniyor (okunamadı), Fodor's 403 (aşılmadı). Toplayıcılar (wanderlog, airbnb) 'Kordonboyu, Dome Hotel karşısı' diyor — bağımsız sayılmadı; resmî sitenin iki adresi arasındaki çelişki çözülmedi"
   },
   {
    "id": "kibris/salut-marin-fish-meze-restaurant",

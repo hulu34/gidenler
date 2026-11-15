@@ -24,12 +24,14 @@ Bütün uzak dallar ve `data/`, `docs/`, `lib/` tarandı:
 
 | Kıbrıs pilotu (yalnız araştırma, canlıda değil) | Kuzey | Güney | Toplam |
 |---|---:|---:|---:|
-| Tam kanıtlı aday (iki kaynakta aynı sokak ve kapı no) | 0 | 4 | **4** |
-| Koşullu aday (tam kabul edilmiş değil) | 4 | 2 | **6** |
+| Tam kanıtlı aday | 0 | 6 | **6** |
+| Koşullu aday (tam kabul edilmiş değil) | 4 | 0 | **4** |
 | Bekleyen (inceleme) | 3 | 11 | 14 |
 | Kapsam dışı | 0 | 2 | 2 |
 
-Pilot sınırı 20'ydi; sayı için zayıf kayıt eklenmedi. İlk teslimdeki "9 güçlü aday" satır bazında yeniden kontrol edildi; bkz. aşağıdaki bölüm.
+Pilot sınırı 20'ydi; sayı için zayıf kayıt eklenmedi.
+
+Güncel sayılar koşullu kayıtların teyit turundan sonraki durumdur (bkz. "Koşullu kayıtların teyit turu"). İlk teslimdeki "9 güçlü aday" satır bazında yeniden kontrol edildi; bkz. aşağıdaki bölüm.
 
 ## Bölge etiketleme ilkesi
 
@@ -100,6 +102,24 @@ Tek tur yapıldı, yalnız yeni ve kolay erişilen resmî kaynaklarla:
 | Artio Symposium | Yazıdaki bağlantıdan otel sitesi (elinntraditionalsuites.com) açıldı. Kathikas'ı doğruluyor ama restorandan ve sokak adresinden söz etmiyor → **bekliyor** |
 | Diğer 13 | Yazılarda resmî bağlantı yok (yalnız Instagram/izleyici) → **bekliyor** |
 
+## Koşullu kayıtların teyit turu (15.11.2026)
+
+Altı koşullu kaydın eksikleri yalnız yeni kaynaklarla kapatılmaya çalışıldı:
+- Daha önce kullanılan kaynaklar yeniden taranmadı.
+- Toplayıcı, platform, harita ve otel rezervasyon siteleri kanıt sayılmadı.
+- 403 hatası aşılmadı, işletmelere yazılmadı.
+
+**Kural:** Otel içindeki bir restoran için bağımsız rehberin otel sayfası adres kaynağı sayıldı. Koşulu, sayfanın restoranı adıyla anması. Kimlik ve güncel faaliyet yine 2026 tarihli Cyprus Mail yazısından geliyor. Böylece LPM ve Novél üç kaynakla tam kanıtlı oldu. Bu kural uygun görülmezse iki kayıt koşulluya döner.
+
+| Kayıt | Yeni kaynak | Sonuç | Kalan eksik |
+|---|---|---|---|
+| LPM | MICHELIN Guide otel sayfası: Parklane, **11 Giannou Kranidioti Street**; restoran "La Petite Maison" adıyla geçiyor | **Tam kanıtlı** | Posta kodu kaynaklarda farklı (4534 / 56560); resmî kaynaktaki kullanıldı |
+| Novél | MICHELIN Guide otel sayfası (Almanca sürüm; İngilizce 404): The Agora Hotel, **25 Timiou Stavrou, 7700**; telefon 24 726000; bistro "Novél" | **Tam kanıtlı** | — |
+| Bellapais Gardens | Petit Futé 2026 listesi: "Şehit Fuat Niyazi Sokak, Bellapaïs - Beylerbeyi" | Koşullu | Sokak adı artık iki bağımsız kaynakta aynı. Resmî kaynaktaki "Crusader Road" ile aynı yol olduğu doğrulanmadı. Kapı no yok |
+| Silver Rocks | Yalnız toplayıcı ve platform sayfaları | Koşullu | Fevzi Çakmak Caddesi için editoryal ikinci kaynak yok. Kapı no yok |
+| Calamari | Yeni kaynak yok | Koşullu | Yer tarifli adres kabulü sahip kararı |
+| Niazi's | Lonely Planet içeriği betikle yükleniyor, okunamadı; Fodor's 403 verdi (aşılmadı) | Koşullu | Toplayıcılar "Kordonboyu, Dome Hotel karşısı" diyor ama sayılmadı. Şube ve No:3 çelişkisi sürüyor |
+
 ## Teknik kabul manifesti (15.11.2026, gece)
 
 Dosya: `data/arastirma/kibris/kabul-manifesti.json`.
@@ -109,12 +129,14 @@ Dosya: `data/arastirma/kibris/kabul-manifesti.json`.
 
 | Bölüm | Kuzey | Güney | Toplam |
 |---|---:|---:|---:|
-| Tam kanıtlı | 0 | 4 | **4** |
-| Koşullu | 4 | 2 | **6** |
+| Tam kanıtlı | 0 | 6 | **6** |
+| Koşullu | 4 | 0 | **4** |
 | Bekleyen | 3 | 11 | **14** |
 | Kapsam dışı | 0 | 2 | 2 |
 
-### Tam kanıtlı 4 kaydın aktarım alanları
+Teyit turundan sonraki durum. Kanıt tutarlılığı turundaki 4 tam kayda LPM ve Novél eklendi.
+
+### Tam kanıtlı kayıtların aktarım alanları
 
 | Kayıt | `address` | `phone` (E.164) | `kind` | `website` / `sourceUrl` |
 |---|---|---|---|---|
@@ -122,6 +144,8 @@ Dosya: `data/arastirma/kibris/kabul-manifesti.json`.
 | MasaMoro | Stasandrou 2, 1060 Lefkoşa | boş — resmî kaynakta yok | Dünya mutfağı | masamoro.com |
 | Stavri Kitchen | Kalimnou 6B, 6037 Larnaka | +35724255592 | Burger | stavriskitchen.com |
 | Gourmet Taverna | Dionysou 1-2, 8041 Kato Paphos | +35726933626 | Geleneksel mutfak | gourmettaverna.com |
+| LPM Restaurant & Bar | Parklane Resort, Giannou Kranidioti 11, Pyrgos 4534, Limasol | +35725862222 | Akdeniz mutfağı | lpmrestaurants.com/limassol |
+| Novél (The Agora Hotel) | The Agora Hotel, 25 Timiou Stavrou, 7700 Pano Lefkara | +35724726000 | Kahvaltı | theagorahotel.com |
 
 Her tam kayıtta şunlar var:
 - doğru şube;
@@ -221,15 +245,17 @@ Niazi's koşullu adaya geçti; markanın Lefkoşa ve Gazimağusa şubeleri ayrı
 Bu araştırmada hiçbiri uygulanmadı.
 
 **Sahip kararı:**
-1. **Yer tarifli adres:** Kapı numarası olmayan Kıbrıs adresi (ör. "Hacı Ali Hotel yanı") kabul edilecek mi? Kuzeydeki 4 koşullu adayı doğrudan etkiler.
-2. **Tek kaynaktaki sokak/kapı no:** Otel içi restoranlarda (LPM, Novél) bağımsız kaynağın otel adı ve telefonu eşleşiyorsa, resmî kaynaktaki sokak ve kapı no yeterli mi?
+1. **Yer tarifli ya da kapı numarasız adres:** Kapı numarası olmayan Kıbrıs adresi (ör. "Hacı Ali Hotel yanı") kabul edilecek mi? Kuzeydeki 4 koşullu kaydın hepsini etkiler; kuzeyde hiçbir kaynakta kapı numarası yok.
+2. **Otel sayfası kuralı:** Bağımsız rehberin otel sayfası, restoranı adıyla anıyorsa adres kaynağı sayılsın mı? LPM ve Novél bu kuralla tam kanıtlı oldu; ret durumunda koşulluya dönerler.
 3. **"Kıbrıs mutfağı" türü:** Tür listesine eklenecek mi? Gourmet Taverna şimdilik katalogdaki "Geleneksel mutfak" türünde. İlk teslimdeki "Türk mutfağı" yanlıştı, çünkü bağımsız yazı "Cyprus cuisine" diyor.
 4. **Kesim önceliği:** Pilot yayına hazırlanırken önce tek bir kesim mi, iki kesim birlikte mi?
 
 **Teyit gereksinimi:** Bunlar karar değil, kaynakla kapanır.
-5. **Bellapais Gardens:** Crusader Road ile Şehit Fuat Niyazi Sokak aynı yol mu?
-6. **Silver Rocks:** Fevzi Çakmak Caddesi ikinci bir kaynakta.
-7. **Niazi's:** Kayıt hangi Girne şubesi (Ziya Rızkı Str. / Kordonboyu)? No:3 ikinci bir kaynakta.
+5. **Bellapais Gardens:** İki bağımsız kaynak "Şehit Fuat Niyazi Sokak" diyor. Resmî kaynaktaki "Crusader Road" ile aynı yol mu? Kaynakla kapanmadı.
+6. **Silver Rocks:** Fevzi Çakmak Caddesi için editoryal ikinci kaynak bulunamadı.
+7. **Niazi's:** Kayıt hangi Girne şubesi (Ziya Rızkı Str. / Kordonboyu)? No:3 için ikinci kaynak yok.
+
+Bu üç teyit, açık ve ücretsiz kaynaklarla bu turda kapanmadı. Sonraki yol işletmenin kendisinden ya da yerinde teyit almak; bunun için dış iletişim kararı gerekir.
 
 **Codex/Atlas teknik kabulü:**
 8. Telefon (+90 392 / +357), saat dilimi ve para birimi biçimleri.

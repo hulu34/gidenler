@@ -68,12 +68,12 @@ for (const x of G) {
 }
 
 /* 4b */
-const IKI = "iki-kaynak-sokak-ve-kapi-no";
+const IKI = "iki-kaynak-sokak-ve-kapi-no", OTEL = "uc-kaynak-otel-adresi-bagimsiz-rehber";
 for (const x of G) {
   const a = x.adresKaniti;
   t(`${x.id}: satır bazında adres kanıtı`, !!a && !!a.durum && !!a.resmiKaynak && !!a.bagimsizKaynak && !!a.eslesme && !!a.eslesme.kapiNo, a);
   if (!a) continue;
-  const tamAdres = a.durum === IKI && /^eşleşti/.test(a.eslesme.sokak ?? "") && /^eşleşti/.test(a.eslesme.kapiNo ?? "");
+  const tamAdres = (a.durum === IKI || (a.durum === OTEL && x.kaynaklar.some((k) => /bağımsız rehber/.test(k.tur)) && x.kaynaklar.length >= 3)) && /^eşleşti/.test(a.eslesme.sokak ?? "") && /^eşleşti/.test(a.eslesme.kapiNo ?? "");
   if (x.durum === "aday-tam") {
     t(`${x.id}: tam kanıtlı — iki kaynakta aynı sokak ve kapı no`, tamAdres, a);
     t(`${x.id}: tam kanıtlı — eksik ve koşul yok`, (x.eksik ?? []).length === 0 && !x.kosul, { eksik: x.eksik, kosul: x.kosul });
@@ -86,6 +86,7 @@ for (const x of G) {
 }
 const ad = (s: string) => G.find((x) => x.ad.startsWith(s));
 t("Silver Rocks: sokak tek kaynakta → koşullu", ad("Silver Rocks")?.durum === "aday-kosullu" && /tek-kaynak/.test(ad("Silver Rocks")?.adresKaniti?.durum ?? ""));
+t("otel adresi yolu: bağımsız editoryal kaynak yine var (kimlik + faaliyet)", G.filter((x) => x.adresKaniti?.durum === OTEL).every((x) => x.kaynaklar.some((k) => /bağımsız editoryal/.test(k.tur) && (k.yayin ?? "") >= "2025-11-15")));
 t("Bellapais: sokak adı farkı ayrı durum → koşullu", ad("Bellapais")?.durum === "aday-kosullu" && /sokak-adi-farkli/.test(ad("Bellapais")?.adresKaniti?.durum ?? ""));
 t("kuzeyde kapı no yoksa tam kanıtlı değil", G.filter((x) => /^kuzey/.test(x.bolge.operasyonelBolge) && !/^eşleşti/.test(x.adresKaniti?.eslesme.kapiNo ?? "")).every((x) => x.durum === "aday-kosullu"));
 t("yer tarifli adres tam kanıtlı sayılmadı", G.filter((x) => /yer-tarifi/.test(x.adresKaniti?.durum ?? "")).every((x) => x.durum === "aday-kosullu"));
