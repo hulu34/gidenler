@@ -1,0 +1,48 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {PGlite} from '@electric-sql/pglite';
+import {drizzle} from 'drizzle-orm/pglite';
+import {eq} from 'drizzle-orm';
+import * as schema from '../lib/db/schema';
+import type {Db} from '../lib/db/client';
+import {applyMigrations,type Executor} from '../lib/db/migrate';
+import {seedRealVenues} from '../lib/db/seed';
+import {appendRealVenues} from '../lib/db/appendVenues';
+import {rollbackWave,rollbackWavePreview} from '../lib/db/rollback';
+import {realVenueRecords,activeEntities,realEntities,invalidRecord,type RealVenueRecord} from '../data/real';
+import additions from '../data/paket/toplu-848-kabul/kayitlar.json';
+import manifest from '../docs/katalog/toplu-848-kabul.json';
+import {parseQuery,answer} from '../lib/sor/engine';
+const BASE='792455963ec2be1597fe9954eea69daf0213d7c0';
+let passed=0;function test(name:string,fn:()=>void){fn();console.log('PASS '+name);passed++;}
+async function main(){
+const added=additions as RealVenueRecord[];const slugs=new Set(added.map(r=>r.slug));
+const base=['venues.json','isletme.json'].flatMap(f=>JSON.parse(execFileSync('git',['show',`${BASE}:data/real/${f}`],{encoding:'utf8'}))) as RealVenueRecord[];
+const current=['venues.json','isletme.json'].flatMap(f=>JSON.parse(readFileSync('data/real/'+f,'utf8'))) as RealVenueRecord[];
+test('Eski 848 kayıt tüm alanlarıyla korunur',()=>assert.deepEqual(current.filter(r=>!slugs.has(r.slug)),base));
+test('Tam sayım 860 / 825 aktif / 700 restoran / 114 kafe / 11 bar',()=>{assert.equal(realVenueRecords.length,860);assert.equal(activeEntities.length,825);assert.equal(activeEntities.filter(e=>e.categoryId==='cat.restaurant').length,700);assert.equal(activeEntities.filter(e=>e.categoryId==='cat.cafe').length,114);assert.equal(activeEntities.filter(e=>e.categoryId==='cat.bar').length,11);});
+test('12 aday iki ayrı kaynakla ve canlıya alınmadan izlenir',()=>{assert.equal(manifest.records.length,12);assert.equal(added.length,12);assert.equal(manifest.summary.productionTotal,848);assert.equal(manifest.summary.newProductionRecords,0);for(const r of manifest.records){assert.notEqual(new URL(r.officialSource).hostname,new URL(r.independentSource).hostname);assert.equal(r.decision,'KOD_ADAYINA_KABUL');}});
+test('Her yeni kayıt restoran, tekil, kaynaklı ve koordinatsız',()=>{assert.equal(slugs.size,12);assert.equal(new Set(realVenueRecords.map(r=>r.slug)).size,860);for(const r of added){assert.equal(r.categoryId,'cat.restaurant');assert.equal(invalidRecord(r),null);assert.equal(r.kaliteSinifi,'A-konumsuz');assert.equal(r.lat,undefined);assert.equal(r.lng,undefined);assert.equal(r.osmRef,undefined);assert.equal(realEntities.find(e=>e.slug===r.slug)?.location?.geo,undefined);assert.equal(r.phone,undefined);assert.equal(r.image,undefined);assert.ok(r.verifiedAt!<='2026-11-15');}});
+test('Yasak alanlar ve otomasyon kaynakları aynı',()=>{for(const f of ['.github/workflows/gpuan-gunluk.yml','lib/sor/engine.ts','lib/sor/ask.ts','scripts/gpuan-guncelle.ts','ops/gpuan-yedek.pem','vercel.json','data/real/izinli-fotograflar.json','content/profiles/menemen-besiktas.json'])assert.equal(readFileSync(f,'utf8'),execFileSync('git',['show',`${BASE}:${f}`],{encoding:'utf8'}));});
+test('Yüksek sıralama işletme adına dönüşmez',()=>{assert.equal(parseQuery('En yüksek puanlı restoran hangisi?').name,null);assert.equal(answer(parseQuery('En yüksek puanlı restoran hangisi?')).items.length,0);});
+test('Balık istemeyene yeni balık / sushi odaklı aday gösterilmez',()=>{const a=answer(parseQuery('Balık sevmiyor, kırmızı et yemiyor ve sadece viski içiyor. Sevgililik ay dönümü için nereye gidelim?'));assert.equal(a.items.length,0);});
+const pg=new PGlite();const db=drizzle(pg,{schema}) as unknown as Db;
+const x:Executor={query:async<T>(s:string)=>(await pg.query(s)).rows as T[],transaction:async(ss)=>{await pg.transaction(async tx=>{for(const s of ss)if(!s.startsWith('SELECT pg_advisory'))await tx.query(s)});}};
+await applyMigrations(x);await seedRealVenues(db,base);
+const menemen=(await db.select().from(schema.places).where(eq(schema.places.slug,'menemen-besiktas')))[0];
+await db.insert(schema.user).values({id:'pr50-test-user',name:'LOCAL TEST',email:'pr50@example.test'});
+await db.insert(schema.reviews).values({id:'pr50-old-review',placeId:menemen.id,userId:'pr50-test-user',visitedOn:'2026-11-15',overall:7,body:'LOCAL TEST ONLY',ratings:{}});
+await db.insert(schema.menuItems).values({id:'pr50-old-menu',placeId:menemen.id,rawName:'LOCAL TEST',source:'business'});
+await db.insert(schema.googleRatings).values({slug:menemen.slug,placeId:'TEST ONLY',rating:4.5,reviewCount:12,checkedAt:new Date('2026-11-15'),source:'local-test',confidence:'test',importId:'local-only'});
+const snapshot=async()=>JSON.stringify({places:await db.select().from(schema.places).orderBy(schema.places.id),identifiers:await db.select().from(schema.placeIdentifiers).orderBy(schema.placeIdentifiers.id),users:await db.select().from(schema.user),reviews:await db.select().from(schema.reviews),menu:await db.select().from(schema.menuItems),google:await db.select().from(schema.googleRatings)});
+const before=await snapshot();const first=await appendRealVenues(x,added,848);test('Gerçek ekleme 12 kayıt ve toplam 860',()=>assert.equal(first.total,860));
+const applied=await snapshot();await appendRealVenues(x,added,848);const repeated=await snapshot();test('İkinci uygulama sıfır değişiklik',()=>assert.equal(applied,repeated));
+await assert.rejects(appendRealVenues(x,added,847),/append_baseline_changed/);passed++;console.log('PASS Yanlış taban durur');
+const fresh=(await db.select().from(schema.places).where(eq(schema.places.slug,added[0].slug)))[0];
+await db.insert(schema.reviews).values({id:'pr50-new-review',placeId:fresh.id,userId:'pr50-test-user',visitedOn:'2026-11-15',overall:7,body:'LOCAL TEST ONLY',ratings:{}});
+assert.equal((await rollbackWavePreview(x,[...slugs])).safe,false);await assert.rejects(rollbackWave(x,[...slugs]));passed++;console.log('PASS Kullanıcı deneyimi varsa geri alma reddedilir');
+await db.delete(schema.reviews).where(eq(schema.reviews.id,'pr50-new-review'));await rollbackWave(x,[...slugs]);const restored=await snapshot();test('Hedefli geri alma 848 ve kullanıcı/deneyim/menü/Google verisini korur',()=>assert.equal(restored,before));
+await pg.close();console.log(`TOPLU860: ${passed}/${passed}`);
+}
+main().catch(e=>{console.error(e);process.exitCode=1;});

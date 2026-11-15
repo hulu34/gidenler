@@ -1,0 +1,479 @@
+{
+  "summary": {
+    "productionBase": "792455963ec2be1597fe9954eea69daf0213d7c0",
+    "productionTotal": 848,
+    "productionActive": 813,
+    "productionActiveRestaurant": 688,
+    "researchSha": "4fbd8824cf64c4676b590e80831d3a6fefaefb13",
+    "manifestRows": 883,
+    "manifestCandidateRestaurants": 14,
+    "selectedRestaurants": 12,
+    "targetTotal": 860,
+    "targetActive": 825,
+    "targetActiveRestaurant": 700,
+    "activeCafe": 114,
+    "activeBar": 11,
+    "closed": 35,
+    "newProductionRecords": 0,
+    "previewAcceptance": "PENDING",
+    "manifestComparison": {
+      "CANLIYLA_ESLESTI": 125,
+      "BEKLIYOR": 746,
+      "BU_PAKET_ADAYI": 12
+    },
+    "legacyPoolRows": 1333,
+    "legacyPoolStates": {
+      "CANLIYLA_ESLESTI": 110,
+      "YENI_BULGUYLA_BEKLIYOR": 15,
+      "ON_INCELEME_BEKLIYOR": 922,
+      "BU_PAKET_ADAYI": 17,
+      "RESTORAN_PAKETI_DISINDA": 150,
+      "AYRI_DEGERLENDIRME": 109,
+      "ESKI_ARASTIRMA_KANITI": 6,
+      "BEKLIYOR": 2,
+      "KANIT_POLITIKASI_TEYIDI_BEKLIYOR": 2
+    },
+    "countCaution": "Kaynak satırları benzersiz işletme toplamı değildir. Manifest ve eski havuz toplamları birbirine eklenmez; 906 ayrı bekleyen sınıflandırması olarak kontrol edildi."
+  },
+  "records": [
+    {
+      "candidateKey": "galeyan restaurant|fatih",
+      "slug": "galeyan-restaurant-fatih",
+      "name": "Galeyan Restaurant",
+      "district": "Fatih",
+      "officialSource": "https://galeyann.com/",
+      "independentSource": "https://www.gault-millau.com.tr/galeyan-restaurant-5/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî kaynak 13/B; rehber bina numarası 13. Aynı ad ve sokak; bağımsız kaynak iç kapıyı belirtmiyor.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Sura Design Hotel & Suites Istanbul, Alemdar, Ticarethane Sok., No:13, 34110 Fatih/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Ticarethane Sk No:13/B, Fatih"
+        }
+      ]
+    },
+    {
+      "candidateKey": "mira|besiktas",
+      "slug": "mira-besiktas",
+      "name": "Mira Balık",
+      "district": "Beşiktaş",
+      "officialSource": "https://www.mirabalik.com/iletisim",
+      "independentSource": "https://www.gault-millau.com.tr/mira-balik/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "İşletmecinin İletişim sayfası 70/1; rehber 70. Beşiktaş ilçesindeki Arnavutköy semti; Arnavutköy ilçesi değildir.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Bebek Arnavutköy Cad., No:70, 34345 Beşiktaş/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Bebek Arnavutköy Cd No:70, Beşiktaş"
+        }
+      ]
+    },
+    {
+      "candidateKey": "nato lokantasi|beyoglu",
+      "slug": "nato-lokantasi-beyoglu",
+      "name": "Nato Lokantası",
+      "district": "Beyoğlu",
+      "officialSource": "https://www.natolokantasi.com.tr/",
+      "independentSource": "https://www.gault-millau.com.tr/nato-lokantasi-3/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî site ve rehber aynı Karaköy adresini doğruluyor.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Kemankeş Karamustafa Paşa Mah. Necatibey Cad., Karanlık Fırın Sok. No:4 Karaköy, 34425 Beyoğlu/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Karanlık Fırın Sokak No:4, Beyoğlu"
+        }
+      ]
+    },
+    {
+      "candidateKey": "uskumru|beykoz",
+      "slug": "uskumru-beykoz",
+      "name": "Uskumru",
+      "district": "Beykoz",
+      "officialSource": "https://uskumru.com.tr/",
+      "independentSource": "https://www.gault-millau.com.tr/uskumru-restaurant-5/",
+      "independentPublishedAt": "2025-12-24",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî site ve rehber aynı No:55 adresini doğruluyor.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Anadolu Hisarı, Körfez Cad. No:55, 34810 Beykoz/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Körfez Cd No:55, Beykoz"
+        }
+      ]
+    },
+    {
+      "candidateKey": "cecconi s|beyoglu",
+      "slug": "cecconi-s-beyoglu",
+      "name": "Cecconi’s Istanbul",
+      "district": "Beyoğlu",
+      "officialSource": "https://www.cecconisrestaurants.com/istanbul/",
+      "independentSource": "https://www.gault-millau.com.tr/cecconis-istanbul-5/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "İşletmecinin İstanbul şubesi; dünya çapındaki diğer şubeler dahil edilmez.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Evliya Çelebi, Meşrutiyet Cad. No:56, 34430 Beyoğlu/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Meşrutiyet Cd No:56, Beyoğlu"
+        }
+      ]
+    },
+    {
+      "candidateKey": "cokcok thai|beyoglu",
+      "slug": "cokcok-thai-beyoglu",
+      "name": "CokCok Thai",
+      "district": "Beyoğlu",
+      "officialSource": "https://cokcokthai.com/",
+      "independentSource": "https://www.gault-millau.com.tr/cok-cok-thai-5/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "CokCok Thai ve rehber aynı51/A; CokCok Pera ile birleştirilmez.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Asmalı Mescit, Meşrutiyet Cad. No:51/A, 34430 Beyoğlu/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Meşrutiyet Cd No:51/A, Beyoğlu"
+        }
+      ]
+    },
+    {
+      "candidateKey": "buyuk erzurum sofrasi|kartal",
+      "slug": "buyuk-erzurum-sofrasi-kartal",
+      "name": "Büyük Erzurum Sofrası",
+      "district": "Kartal",
+      "officialSource": "https://buyukerzurumsofrasi.com.tr/iletisim",
+      "independentSource": "https://yemek.com/anadolu-yakasinda-en-iyi-cag-kebabi-nerede-yenir/",
+      "independentPublishedAt": "2026-10-16",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî iletişim sayfası Kordonboyu/Atalar; editoryal Atalar yazar. Sokak ve26/2 aynı; mahalle tahmin edilmez.",
+      "sourceAddresses": [
+        {
+          "pr": "50-seyrek",
+          "adres": "Atalar, Kumlar Cd. No:26/2, Kartal, İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Kumlar Cad. No:26/2, Kartal"
+        }
+      ]
+    },
+    {
+      "candidateKey": "cagistan erzurum cag kebabi|eyupsultan",
+      "slug": "cagistan-erzurum-cag-kebabi-eyupsultan",
+      "name": "Cağistan Erzurum Cağ Kebabı",
+      "district": "Eyüpsultan",
+      "officialSource": "https://www.cagistan.com/",
+      "independentSource": "https://yemek.com/avrupa-yakasinda-en-iyi-cag-kebabi-nerede-yenir/",
+      "independentPublishedAt": "2026-10-27",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî site ve tarihli editoryal aynı Topçular81.",
+      "sourceAddresses": [
+        {
+          "pr": "50-seyrek",
+          "adres": "Topçular Mah., Eyüp Sultan Blv. No:81, Eyüpsultan, İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Eyüp Sultan Blv No:81, Eyüpsultan"
+        }
+      ]
+    },
+    {
+      "candidateKey": "banyan restaurant|besiktas",
+      "slug": "banyan-restaurant-besiktas",
+      "name": "Banyan Restaurant",
+      "district": "Beşiktaş",
+      "officialSource": "https://www.banyanrestaurant.com/contact-us/",
+      "independentSource": "https://www.gault-millau.com.tr/banyan-restaurant-5/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî iletişim No:3, rehber3/3; aynı sokak/işletme/telefon. Katalogda işletmecinin adresi; rehberin ilave birim numarası kaynak farkında tutuldu.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Muallim Naci Cad., Salhane Sok., No:3/3, 34347, Beşiktaş/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Salhane Sk No:3, Beşiktaş"
+        }
+      ]
+    },
+    {
+      "candidateKey": "da mario|besiktas",
+      "slug": "da-mario-besiktas",
+      "name": "Da Mario Etiler",
+      "district": "Beşiktaş",
+      "officialSource": "https://www.damario.com.tr/",
+      "independentSource": "https://www.gault-millau.com.tr/da-mario-etiler/",
+      "independentPublishedAt": "2025-12-23",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Yalnız Etiler; aynı sitede bulunan İstinyePark şubesi başka adres ve ilçedir.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Nispetiye Cad. Dilhayat Sok., No:7 Etiler, Beşiktaş/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Dilhayat Sokak No:7, Beşiktaş"
+        }
+      ]
+    },
+    {
+      "candidateKey": "yuksel balik tarabya|sariyer",
+      "slug": "yuksel-balik-tarabya-sariyer",
+      "name": "Yüksel Balık Tarabya",
+      "district": "Sarıyer",
+      "officialSource": "https://www.yukselbalik.com.tr/",
+      "independentSource": "https://www.gault-millau.com.tr/yuksel-balik-5/",
+      "independentPublishedAt": "2025-12-24",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Tarabya208; Yeşilköy/Bakırköy şubesiyle karıştırılmaz. Sıralama sorularında işletme adı eşleşmesi ayrıca test edilir.",
+      "sourceAddresses": [
+        {
+          "pr": "50-gm2026",
+          "adres": "Tarabya Mah. Sahil Yolu, Haydar Aliyev Cad. No:208, 34457 Sarıyer/İstanbul"
+        },
+        {
+          "pr": 48,
+          "adres": "Haydar Aliyev Cd No:208, Sarıyer"
+        }
+      ]
+    },
+    {
+      "candidateKey": "arjantin burger handmade|avcilar",
+      "slug": "arjantin-burger-handmade-avcilar",
+      "name": "Arjantin Burger Handmade",
+      "district": "Avcılar",
+      "officialSource": "https://arjantinburger.com/",
+      "independentSource": "https://yemek.com/istanbulda-en-iyi-islak-hamburger-nerede-yenir/",
+      "independentPublishedAt": "2026-09-30",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî site gerçek tarayıcıda açıldı; aynı15/A. Beylikdüzü ve Bostancı şubeleri dahil edilmedi.",
+      "sourceAddresses": [
+        {
+          "pr": "50-seyrek",
+          "adres": "Plaj Yolu Sokak No:15/A, Ambarlı"
+        }
+      ]
+    }
+  ],
+  "holds": [
+    {
+      "candidateKey": "alacati gurme i ala|basaksehir",
+      "name": "Alaçatı Gurme-i ALA",
+      "reason": "Sipariş platformu aynı ad/mahalle ve menüyü gösteriyor ancak tam sokak/kapı numarasını yayımlamıyor. Editoryal adres ile aynı işletme/şube bağı bağımsız kabulde tamamlanmadı. Manifestteki üçüncü taraf sahip kararı ifadesi yeni doğrudan kullanıcı onayı sayılmaz.",
+      "state": "BEKLIYOR"
+    },
+    {
+      "candidateKey": "meshur yayla kokoreccisi|bahcelievler",
+      "name": "Meşhur Yayla Kokoreçcisi",
+      "reason": "Sipariş platformu aynı ad/mahalle ve menüyü gösteriyor ancak tam sokak/kapı numarasını yayımlamıyor. Editoryal adres ile aynı işletme/şube bağı bağımsız kabulde tamamlanmadı. Manifestteki üçüncü taraf sahip kararı ifadesi yeni doğrudan kullanıcı onayı sayılmaz.",
+      "state": "BEKLIYOR"
+    }
+  ],
+  "identityReview": [
+    {
+      "candidate": "galeyan-restaurant-fatih",
+      "other": "awina-restaurant-atasehir",
+      "sameDistrict": false,
+      "similarity": 0.765,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "galeyan-restaurant-fatih",
+      "other": "fener-restaurant-fatih",
+      "sameDistrict": true,
+      "similarity": 0.765,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "galeyan-restaurant-fatih",
+      "other": "zuga-beach-ve-restaurant-sariyer",
+      "sameDistrict": false,
+      "similarity": 0.769,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "galeyan-restaurant-fatih",
+      "other": "sans-restaurant-besiktas",
+      "sameDistrict": false,
+      "similarity": 0.788,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "galeyan-restaurant-fatih",
+      "other": "tugra-restaurant-besiktas",
+      "sameDistrict": false,
+      "similarity": 0.765,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "galeyan-restaurant-fatih",
+      "other": "banyan-restaurant-besiktas",
+      "sameDistrict": false,
+      "similarity": 0.857,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "mira-besiktas",
+      "other": "mavi-balik-besiktas",
+      "sameDistrict": true,
+      "similarity": 0.8,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "mira-besiktas",
+      "other": "revma-balik-besiktas",
+      "sameDistrict": true,
+      "similarity": 0.762,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "nato-lokantasi-beyoglu",
+      "other": "karakoy-lokantasi-beyoglu",
+      "sameDistrict": true,
+      "similarity": 0.774,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "nato-lokantasi-beyoglu",
+      "other": "kanaat-lokantasi-uskudar",
+      "sameDistrict": false,
+      "similarity": 0.867,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "nato-lokantasi-beyoglu",
+      "other": "yenikoy-lokantasi-sariyer",
+      "sameDistrict": false,
+      "similarity": 0.774,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "nato-lokantasi-beyoglu",
+      "other": "anadolu-lokantasi-tuzla",
+      "sameDistrict": false,
+      "similarity": 0.839,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "cagistan-erzurum-cag-kebabi-eyupsultan",
+      "other": "serden-erzurum-cag-kebabi-bahcelievler",
+      "sameDistrict": false,
+      "similarity": 0.808,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "banyan-restaurant-besiktas",
+      "other": "dragon-restaurant-sisli",
+      "sameDistrict": false,
+      "similarity": 0.765,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "banyan-restaurant-besiktas",
+      "other": "ono-restaurant-basaksehir",
+      "sameDistrict": false,
+      "similarity": 0.774,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "banyan-restaurant-besiktas",
+      "other": "awina-restaurant-atasehir",
+      "sameDistrict": false,
+      "similarity": 0.848,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "banyan-restaurant-besiktas",
+      "other": "sans-restaurant-besiktas",
+      "sameDistrict": true,
+      "similarity": 0.812,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    },
+    {
+      "candidate": "banyan-restaurant-besiktas",
+      "other": "galeyan-restaurant-fatih",
+      "sameDistrict": false,
+      "similarity": 0.857,
+      "sameAddress": false,
+      "decision": "AYRI_ISLETME",
+      "reason": "Ad benzerliği tek başına birleştirme nedeni değil; ad, şube/ilçe ve açık adresler farklı."
+    }
+  ],
+  "status": "PREVIEW_KABULU_BEKLIYOR"
+}

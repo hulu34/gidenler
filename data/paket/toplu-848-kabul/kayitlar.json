@@ -1,0 +1,254 @@
+[
+  {
+    "ref": "isletme/galeyan-restaurant-fatih",
+    "slug": "galeyan-restaurant-fatih",
+    "name": "Galeyan Restaurant",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Fatih",
+    "address": "Alemdar Mahallesi, Ticarethane Sokak No:13/B, Fatih",
+    "website": "https://galeyann.com/",
+    "cuisine": [
+      "turkish"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://galeyann.com/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/mira-besiktas",
+    "slug": "mira-besiktas",
+    "name": "Mira Balık",
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı",
+    "district": "Beşiktaş",
+    "address": "Bebek Arnavutköy Caddesi No:70/1, Arnavutköy, Beşiktaş",
+    "website": "https://www.mirabalik.com/",
+    "cuisine": [
+      "seafood"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.mirabalik.com/iletisim",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/nato-lokantasi-beyoglu",
+    "slug": "nato-lokantasi-beyoglu",
+    "name": "Nato Lokantası",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Beyoğlu",
+    "address": "Karanlık Fırın Sokak No:4, Kemankeş Karamustafa Paşa, Karaköy, Beyoğlu",
+    "website": "https://www.natolokantasi.com.tr/",
+    "cuisine": [
+      "turkish"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.natolokantasi.com.tr/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/uskumru-beykoz",
+    "slug": "uskumru-beykoz",
+    "name": "Uskumru",
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı",
+    "district": "Beykoz",
+    "address": "Körfez Caddesi No:55, Anadolu Hisarı, Beykoz",
+    "website": "https://uskumru.com.tr/",
+    "cuisine": [
+      "seafood"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://uskumru.com.tr/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/cecconi-s-beyoglu",
+    "slug": "cecconi-s-beyoglu",
+    "name": "Cecconi’s Istanbul",
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan",
+    "district": "Beyoğlu",
+    "address": "Meşrutiyet Caddesi No:56, Evliya Çelebi, Beyoğlu",
+    "website": "https://www.cecconisrestaurants.com/istanbul/",
+    "cuisine": [
+      "italian"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.cecconisrestaurants.com/istanbul/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/cokcok-thai-beyoglu",
+    "slug": "cokcok-thai-beyoglu",
+    "name": "CokCok Thai",
+    "categoryId": "cat.restaurant",
+    "kind": "Asya mutfağı",
+    "district": "Beyoğlu",
+    "address": "Meşrutiyet Caddesi No:51/A, Asmalı Mescit, Beyoğlu",
+    "website": "https://cokcokthai.com/",
+    "cuisine": [
+      "thai"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://cokcokthai.com/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/buyuk-erzurum-sofrasi-kartal",
+    "slug": "buyuk-erzurum-sofrasi-kartal",
+    "name": "Büyük Erzurum Sofrası",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Kartal",
+    "address": "Kumlar Caddesi No:26/2, Atalar, Kartal",
+    "website": "https://buyukerzurumsofrasi.com.tr/",
+    "cuisine": [
+      "kebab"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://buyukerzurumsofrasi.com.tr/iletisim",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/cagistan-erzurum-cag-kebabi-eyupsultan",
+    "slug": "cagistan-erzurum-cag-kebabi-eyupsultan",
+    "name": "Cağistan Erzurum Cağ Kebabı",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Eyüpsultan",
+    "address": "Eyüp Sultan Bulvarı No:81, Topçular, Eyüpsultan",
+    "website": "https://www.cagistan.com/",
+    "cuisine": [
+      "kebab"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.cagistan.com/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/banyan-restaurant-besiktas",
+    "slug": "banyan-restaurant-besiktas",
+    "name": "Banyan Restaurant",
+    "categoryId": "cat.restaurant",
+    "kind": "Asya mutfağı",
+    "district": "Beşiktaş",
+    "address": "Muallim Naci Caddesi, Salhane Sokak No:3, Ortaköy, Beşiktaş",
+    "website": "https://www.banyanrestaurant.com/",
+    "cuisine": [
+      "asian"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.banyanrestaurant.com/contact-us/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/da-mario-besiktas",
+    "slug": "da-mario-besiktas",
+    "name": "Da Mario Etiler",
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan",
+    "district": "Beşiktaş",
+    "address": "Dilhayat Sokak No:7, Etiler, Beşiktaş",
+    "website": "https://www.damario.com.tr/",
+    "cuisine": [
+      "italian"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.damario.com.tr/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/yuksel-balik-tarabya-sariyer",
+    "slug": "yuksel-balik-tarabya-sariyer",
+    "name": "Yüksel Balık Tarabya",
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı",
+    "district": "Sarıyer",
+    "address": "Haydar Aliyev Caddesi No:208, Tarabya, Sarıyer",
+    "website": "https://www.yukselbalik.com.tr/",
+    "cuisine": [
+      "seafood"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.yukselbalik.com.tr/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/arjantin-burger-handmade-avcilar",
+    "slug": "arjantin-burger-handmade-avcilar",
+    "name": "Arjantin Burger Handmade",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Avcılar",
+    "address": "Plaj Yolu Sokak No:15/A, Ambarlı, Avcılar",
+    "website": "https://arjantinburger.com/",
+    "cuisine": [
+      "burger"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://arjantinburger.com/",
+    "wave": 20,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "İşletmeci/şube kimliği ve açık adres, bağımsız tarihli kaynakla karşılaştırıldı. Kanıt: docs/katalog/toplu-848-kabul.json. Saha/telefon teyidi değildir. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  }
+]
