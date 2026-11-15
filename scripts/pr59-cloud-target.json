@@ -1,0 +1,10 @@
+{
+  "origin": "https://gidenler-qoeccs3nw-hulu34.vercel.app",
+  "expectedSha": "1e2d7371cdff84ac67ed26455f64ccc031993e0b",
+  "deploymentId": "7PEP2Fn8GwwF6xFqoG4sSEXEh7pW",
+  "branchId": "br-lucky-fog-babqtpma",
+  "baseline": 860,
+  "target": 870,
+  "activeTarget": 835,
+  "wave": 21
+}
