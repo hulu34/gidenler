@@ -1,0 +1,128 @@
+[
+  {
+    "ref": "isletme/villa-bosphorus-uskudar",
+    "slug": "villa-bosphorus-uskudar",
+    "name": "Villa Bosphorus",
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı",
+    "district": "Üsküdar",
+    "address": "Beylerbeyi İskele Caddesi No:18A, Beylerbeyi, Üsküdar",
+    "website": "https://villabosphorus.com.tr/",
+    "cuisine": [
+      "seafood"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://villabosphorus.com.tr/",
+    "wave": 19,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "Güncel işletmeci/şube kimliği bağımsız adres/faaliyet kaynağıyla karşılaştırıldı. Kanıt: docs/katalog/toplu-842-kabul.json. Saha/telefon teyidi değildir. Koordinat, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/white-burger-koru-florya-bakirkoy",
+    "slug": "white-burger-koru-florya-bakirkoy",
+    "name": "White Burger Koru Florya",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Bakırköy",
+    "address": "Ekşi Nar Sokak No:46 İç Kapı No:1, Şenlikköy (Koru Florya AVM), Bakırköy",
+    "website": "https://whiteburger.com/sube/detay/23",
+    "cuisine": [
+      "burger"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://whiteburger.com/sube/detay/23",
+    "wave": 19,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "Güncel işletmeci/şube kimliği bağımsız adres/faaliyet kaynağıyla karşılaştırıldı. Kanıt: docs/katalog/toplu-842-kabul.json. Saha/telefon teyidi değildir. Koordinat, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/white-burger-nisantasi-sisli",
+    "slug": "white-burger-nisantasi-sisli",
+    "name": "White Burger Nişantaşı",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Şişli",
+    "address": "Teşvikiye Caddesi No:12 İç Kapı No:115, Teşvikiye (City’s Nişantaşı AVM), Şişli",
+    "website": "https://whiteburger.com/sube/detay/2",
+    "cuisine": [
+      "burger"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://whiteburger.com/sube/detay/2",
+    "wave": 19,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "Güncel işletmeci/şube kimliği bağımsız adres/faaliyet kaynağıyla karşılaştırıldı. Kanıt: docs/katalog/toplu-842-kabul.json. Saha/telefon teyidi değildir. Koordinat, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/white-burger-hilltown-maltepe",
+    "slug": "white-burger-hilltown-maltepe",
+    "name": "White Burger Hilltown",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Maltepe",
+    "address": "Siteleryolu Sokak No:1 İç Kapı No:236, Aydınevler (Hilltown Küçükyalı AVM), Maltepe",
+    "website": "https://www.whiteburger.com/subelerimiz",
+    "cuisine": [
+      "burger"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.whiteburger.com/subelerimiz",
+    "wave": 19,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "Güncel işletmeci/şube kimliği bağımsız adres/faaliyet kaynağıyla karşılaştırıldı. Kanıt: docs/katalog/toplu-842-kabul.json. Saha/telefon teyidi değildir. Koordinat, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/white-burger-florentia-village-eyupsultan",
+    "slug": "white-burger-florentia-village-eyupsultan",
+    "name": "White Burger Florentia Village",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Eyüpsultan",
+    "address": "İstanbul Caddesi No:13, İhsaniye (Florentia Village AVM), Eyüpsultan",
+    "website": "https://www.whiteburger.com/subelerimiz",
+    "cuisine": [
+      "burger"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.whiteburger.com/subelerimiz",
+    "wave": 19,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "Güncel işletmeci/şube kimliği bağımsız adres/faaliyet kaynağıyla karşılaştırıldı. Kanıt: docs/katalog/toplu-842-kabul.json. Saha/telefon teyidi değildir. Koordinat, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/white-burger-umraniye",
+    "slug": "white-burger-umraniye",
+    "name": "White Burger Meydan İstanbul",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Ümraniye",
+    "address": "Balkan Caddesi No:62/A, Fatih Sultan Mehmet (Meydan İstanbul AVM), Ümraniye",
+    "website": "https://www.whiteburger.com/subelerimiz",
+    "cuisine": [
+      "burger"
+    ],
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.whiteburger.com/subelerimiz",
+    "wave": 19,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-15",
+    "verifiedAt": "2026-11-15",
+    "confidence": "güçlü",
+    "verification": "Güncel işletmeci/şube kimliği bağımsız adres/faaliyet kaynağıyla karşılaştırıldı. Kanıt: docs/katalog/toplu-842-kabul.json. Saha/telefon teyidi değildir. Koordinat, puan, ödül, fiyat, saat, telefon, görsel veya menü aktarılmadı."
+  }
+]

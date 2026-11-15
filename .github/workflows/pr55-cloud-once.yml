@@ -1,0 +1,36 @@
+name: PR55 bounded isolated Preview acceptance
+on:
+  push:
+    branches: [inceleme/pr55-preview-kabul-20261115]
+    paths: ['scripts/pr55-cloud-acceptance.mjs', 'scripts/pr55-cloud-target.json', 'scripts/pr55-cloud-records.json', '.github/workflows/pr55-cloud-once.yml']
+permissions:
+  contents: read
+concurrency:
+  group: pr55-bounded-preview-only
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install independent browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pr55-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/pr55-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Exact isolated Preview only
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/pr55-browser/package.json
+        run: node scripts/pr55-cloud-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr55-bounded-preview-evidence
+          path: pr55-cloud-evidence/
+          retention-days: 7
