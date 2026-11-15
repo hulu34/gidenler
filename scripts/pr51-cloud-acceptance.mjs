@@ -57,7 +57,13 @@ try{
   await page.getByRole('button',{name:'Beca Restoran · Beşiktaş',exact:true}).click();await page.waitForURL(plan.origin+'/mekan/beca-besiktas/');
   await page.goto(plan.origin+'/yaz/beca-besiktas/',{waitUntil:'networkidle'});assert.ok((await page.locator('body').innerText()).includes('Beca'));
   await page.goto(plan.origin+'/mekan/menemen-besiktas/',{waitUntil:'networkidle'});await page.getByRole('region',{name:'Menü',exact:true}).waitFor();
-  assert.equal(await page.locator('#menu li').count(),45);assert.equal(await page.getByRole('link',{name:'Tüm fotoğraflar (6)',exact:true}).count(),1);assert.equal(await page.getByRole('heading',{name:'Videolar 1',exact:true}).count(),1);
+  assert.equal(await page.locator('#menu li').count(),45,'Menemen must retain 45 archive items');
+  const gallery=page.getByRole('region',{name:'Menemen fotoğrafları',exact:true});
+  assert.equal(await gallery.locator('img').count(),6,'Six source photos must remain in the gallery');
+  const galleryLink=gallery.getByRole('link',{name:width<640?'Tüm fotoğraflar':'Tüm fotoğraflar (6)',exact:true});
+  await galleryLink.waitFor();assert.equal(await galleryLink.getAttribute('href'),'/mekan/menemen-besiktas/fotograflar/');
+  await page.getByRole('heading',{name:'Videolar 1',exact:true}).waitFor();
+  evidence.browser.push({width,menemen:{archiveItems:45,sourcePhotos:6,videos:1},search:'Beca',formTarget:'Beca'});
   assert.deepEqual(errors,[]);await page.screenshot({path:`pr51-cloud-evidence/menemen-${width}.png`,fullPage:false});await context.close();save();
  }
  for(const query of ['En yüksek puanlı restoran hangisi?','Balık sevmiyor, kırmızı et yemiyor ve sadece viski içiyor. Sevgililik ay dönümü için nereye gidelim?'])evidence.queries.push({query,result:await request('/api/sor/',{query})});
