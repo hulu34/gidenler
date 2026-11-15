@@ -1,4 +1,4 @@
-# Kıbrıs pilotu — kaynaklı ve tekilleştirilmiş restoran adayları (15 Kasım 2026)
+# Kıbrıs pilotu — kaynaklı ve tekilleştirilmiş restoran adayları (15 Kasım 2026, kanıt tutarlılığı turu dahil)
 
 Dal: `arastirma/kibris-pilot` · Taban: Production `f8131dd` · Veri: `data/arastirma/kibris/adaylar.json` · Test: `scripts/arastirmakibristest.ts`
 
@@ -24,11 +24,12 @@ Bütün uzak dallar ve `data/`, `docs/`, `lib/` tarandı:
 
 | Kıbrıs pilotu (yalnız araştırma, canlıda değil) | Kuzey | Güney | Toplam |
 |---|---:|---:|---:|
-| Güçlü aday (resmî kaynak + tarihli bağımsız kaynak) | 3 | 6 | **9** |
-| İnceleme | 4 | 11 | 15 |
+| Tam kanıtlı aday (iki kaynakta aynı sokak ve kapı no) | 0 | 4 | **4** |
+| Koşullu aday (tam kabul edilmiş değil) | 4 | 2 | **6** |
+| Bekleyen (inceleme) | 3 | 11 | 14 |
 | Kapsam dışı | 0 | 2 | 2 |
 
-Pilot sınırı 20'ydi. Ölçütü sağlayan 9 kayıtla durduk; sayı için zayıf kayıt eklenmedi.
+Pilot sınırı 20'ydi; sayı için zayıf kayıt eklenmedi. İlk teslimdeki "9 güçlü aday" satır bazında yeniden kontrol edildi; bkz. aşağıdaki bölüm.
 
 ## Bölge etiketleme ilkesi
 
@@ -45,7 +46,61 @@ Her kayıtta iki ayrı alan var, ada tek bir idari ya da hukuki alana indirgenme
 
 Pilotta tampon bölge ya da İngiliz üs bölgelerinde (Dhekelia, Akrotiri/Episkopi) aday yok. Böyle bir kayıt çıkarsa ayrı etiket ve araştırma notu gerekir.
 
-## Doğrulanmış 9 aday
+## Kanıt tutarlılığı turu (15.11.2026)
+
+İlk teslimde 9 aday için "iki kaynak aynı adresi doğruluyor" dendi. Bu genel iddia her satırda iki kaynağın adres metni yan yana okunarak yeniden kontrol edildi. **İddia 4 kayıtta doğru, 5 kayıtta yalnız kısmen doğru.** Bu 5 kayıt ve yeni resmî kaynağı bulunan Niazi's koşullu aday olarak işaretlendi.
+
+Kayıtlardaki yeni alanlar:
+- `adresKaniti`: `durum`, iki kaynağın adres metni ve sokak, kapı no, telefon için ayrı `eslesme`.
+- `kosul`: yalnız koşullu kayıtlarda; tam kabul edilmiş olmadığını yazar.
+
+### İki kaynakla eşleşen gerçek adresler (tam kanıtlı, 4)
+
+| Aday | Resmî kaynak | Bağımsız kaynak (Cyprus Mail yazı metni, "WHERE" satırı) | Telefon |
+|---|---|---|---|
+| Oniro by the Sea | Glikou Nerou 05, Peyia 8560 | Glikou Nerou 05, Peyia, Paphos | eşleşti (7007 7272) |
+| MasaMoro | Stasandrou 2, 1060 Nicosia | Stasandrou 2, Nicosia | resmî sitede yok |
+| Stavri Kitchen | Kalimnou 6b, Larnaca 6037 | Kalimnou 6B, 6037, Larnaca | eşleşti (24 255592) |
+| Gourmet Taverna | 1-2 Dyonisou, 8041 Kato Paphos | Dionysou 1-2, Paphos | eşleşti (26 933626) |
+
+Dyonisou ve Dionysou aynı adın iki harf çevirisi.
+
+### Koşullu adaylar (6) — kanıt durumları ayrı
+
+| Aday | Adres kanıtı durumu | Ne eşleşti | Ne eşleşmedi |
+|---|---|---|---|
+| LPM Restaurant & Bar | `ayni-otel-ve-telefon-sokak-kapi-no-tek-kaynak` | otel (Parklane), telefon 25 862222 | Giannou Kranidioti 11 yalnız resmî sayfada |
+| Novél (The Agora Hotel) | `ayni-otel-ve-telefon-sokak-kapi-no-tek-kaynak` | otel, telefon 24 726000 | 25 Timiou Stavrou yalnız resmî sitede. Yazının harita bileşeninde de var ama plus code taşıyor (Google kökenli), sayılmadı |
+| Calamari | `ayni-yer-tarifi-kapi-no-yok` | "Lapta Oteller Bölgesi, Hacı Ali Hotel yanı" iki kaynakta aynı | sokak ve kapı no iki kaynakta da yok |
+| Bellapais Gardens | `ayni-koy-sokak-adi-farkli-kapi-no-yok` | köy (Bellapais = Beylerbeyi) | **sokak adı farklı:** resmî "Crusader Road", yemek.com "Şehit Fuat Niyazi Sokak"; aynı yol olduğu doğrulanmadı. Kapı no yok |
+| Silver Rocks | `sokak-tek-kaynak-kapi-no-yok` | köy (Lapta) | **adres tek kaynakta:** "Fevzi Çakmak Caddesi" yalnız yemek.com'da; resmî site yalnız "Lapta 99440" ve telefon veriyor. Kapı no yok |
+| Niazi's Restaurant (Girne) | `ayni-sokak-kapi-no-tek-kaynak-sube-belirsiz` | sokak: resmî şube sayfası "Ziya Rızkı Str., Sıdıka Ersoy Apt." ve yemek.com (25.12.2025) "Ziya Rızkı Caddesi No:3" | No:3 yalnız yemek.com'da. Resmî sitenin iletişim sayfası başka adres veriyor ("Kordonboyu Str., Dome Hotel karşısı"). Şube sayfasında aynı adreste ikinci bir Girne şubesi (hızlı servis) var |
+
+**Kuzeyde kapı numarası:** Kuzeydeki 4 adayın hiçbirinde iki kaynakta ortak kapı numarası yok. Bu yüzden kuzeyde tam kanıtlı aday yok. Yer tarifli adres kabul edilirse yalnız Calamari tam kanıtlı olmaya en yakın kayıt; Bellapais ve Silver Rocks yine de sokak teyidi ister.
+
+Bu turda hiçbir ürün kararı uygulanmadı:
+- Yer tarifli adres, "Kıbrıs mutfağı" türü ve kesim önceliği kabul edilmedi.
+- Telefon, saat ve para birimi biçimleri ile Google otomasyonu değişmedi.
+
+Hepsi aşağıda teknik öneri ya da teyit gereksinimi olarak duruyor.
+
+### Bekleyenler için sınırlı tur
+
+Tek tur yapıldı, yalnız yeni ve kolay erişilen resmî kaynaklarla:
+- **Yeni kaynak aranan yerler:** Cyprus Mail yazılarındaki dış bağlantılar ve Niazi's'in kendi şube sayfası.
+- **Kullanılmayan yöntemler:**
+  - Daha önce başarısız olan alan adları yeniden denenmedi.
+  - Erişim engeli aşılmadı.
+  - İşletmelere mesaj gönderilmedi.
+  - Ücretli kaynak kullanılmadı.
+
+| Bekleyen | Sonuç |
+|---|---|
+| Niazi's | Resmî şube sayfası bulundu; sokak eşleşti → **koşullu adaya geçti** |
+| Artio Symposium | Yazıdaki bağlantıdan otel sitesi (elinntraditionalsuites.com) açıldı. Kathikas'ı doğruluyor ama restorandan ve sokak adresinden söz etmiyor → **bekliyor** |
+| Diğer 13 | Yazılarda resmî bağlantı yok (yalnız Instagram/izleyici) → **bekliyor** |
+
+## İlk teslimdeki 9 aday (kaynak özeti)
 
 | Aday | Coğrafi bölge | Operasyon | Tür | Resmî kaynak | Bağımsız kaynak (tarih) | Eksik |
 |---|---|---|---|---|---|---|
@@ -59,11 +114,11 @@ Pilotta tampon bölge ya da İngiliz üs bölgelerinde (Dhekelia, Akrotiri/Episk
 | Bellapais Gardens Restaurant | Girne (Beylerbeyi/Bellapais) | kuzey | Akdeniz | bellapaisgardens.com (Crusader Road) | yemek.com (07.10.2026) | kapı no; sokak adı iki dilde farklı |
 | Silver Rocks Restaurant | Girne (Lapta) | kuzey | Balık | silverrocksrestaurant.com (güncel menü) | yemek.com (07.10.2026) | kapı no; adres yalnız yemek.com'da |
 
-Her kaynak, aday dosyası kurulurken (15.11.2026) yeniden açıldı ve aranan ifade sayfada bulundu. Doğrulanamayan kayıt otomatik olarak incelemeye düşüyor.
+Her kaynak, aday dosyası kurulurken (15.11.2026) yeniden açıldı ve aranan ifade sayfada bulundu. Doğrulanamayan kayıt otomatik olarak incelemeye düşüyor. Tablodaki "Eksik" sütunu ilk teslime aittir; güncel durum yukarıdaki kanıt tutarlılığı bölümündedir.
 
-## Bekleyenler (15)
+## Bekleyenler (14)
 
-- **Adres ve şube çelişkisi (1):** Niazi's (Girne). Resmî site "Kordonboyu Str., Dome Hotel karşısı" diyor, yemek.com "Ziya Rızkı Cad. No:3". Markanın sitesi başka şubeler de listeliyor ve başlığında "Established 1949, Limassol" yazıyor; adanın iki kesiminde marka ve şube ayrımı araştırılmalı.
+Niazi's koşullu adaya geçti; markanın Lefkoşa ve Gazimağusa şubeleri ayrı kayıt olur.
 - **Resmî işletme kaynağı yok (14):** Yalnız tarihli bağımsız yazı var.
   - **Kuzey:** Salut Marin, Lagoon, Archway.
   - **Güney:** Kuzuba, Three and the Cuckoo, Deliyard, Lysiotiki Souvla Pais, Kyparissos, The Farmyard, Artio Symposium, Santerra, Stou Roushia (Larnaka; şube ayrımı gerekli), Lush, Jan Takeaway.
@@ -96,8 +151,22 @@ Her kaynak, aday dosyası kurulurken (15.11.2026) yeniden açıldı ve aranan if
 8. **Koordinat:** Hiç yazılmadı (A-konumsuz). Harita için bağımsız bir açık veri eşleştirmesi (OSM) ayrı bir iş.
 9. **Google puan otomasyonu:** Kıbrıs kayıtları kapsam dışında tutulmalı; yeni API maliyeti olmamalı.
 
-## Sahip kararı gereken konular
+## Eksik kararlar — tek liste
 
-1. **Yer tarifli adres:** Kapı numarası olmayan Kıbrıs adresleri kabul edilecek mi?
-2. **"Kıbrıs mutfağı" türü:** Tür listesine eklenecek mi?
-3. **Kesim önceliği:** Pilot yayına hazırlanırken önce tek bir kesim mi, iki kesim birlikte mi?
+Bu araştırmada hiçbiri uygulanmadı.
+
+**Sahip kararı:**
+1. **Yer tarifli adres:** Kapı numarası olmayan Kıbrıs adresi (ör. "Hacı Ali Hotel yanı") kabul edilecek mi? Kuzeydeki 4 koşullu adayı doğrudan etkiler.
+2. **Tek kaynaktaki sokak/kapı no:** Otel içi restoranlarda (LPM, Novél) bağımsız kaynağın otel adı ve telefonu eşleşiyorsa, resmî kaynaktaki sokak ve kapı no yeterli mi?
+3. **"Kıbrıs mutfağı" türü:** Tür listesine eklenecek mi? (Gourmet Taverna şimdilik "Türk mutfağı" önerisiyle.)
+4. **Kesim önceliği:** Pilot yayına hazırlanırken önce tek bir kesim mi, iki kesim birlikte mi?
+
+**Teyit gereksinimi:** Bunlar karar değil, kaynakla kapanır.
+5. **Bellapais Gardens:** Crusader Road ile Şehit Fuat Niyazi Sokak aynı yol mu?
+6. **Silver Rocks:** Fevzi Çakmak Caddesi ikinci bir kaynakta.
+7. **Niazi's:** Kayıt hangi Girne şubesi (Ziya Rızkı Str. / Kordonboyu)? No:3 ikinci bir kaynakta.
+
+**Codex/Atlas teknik kabulü:**
+8. Telefon (+90 392 / +357), saat dilimi ve para birimi biçimleri.
+9. Bölge modeli ve arama eş anlamlıları.
+10. Kıbrıs'ın Google puan otomasyonu dışında tutulması.
