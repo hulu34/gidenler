@@ -1,0 +1,179 @@
+{
+  "summary": {
+    "productionBase": "259a5307fcd51bbd078ca7beae850b55bb382d1c",
+    "productionTotal": 842,
+    "productionActive": 807,
+    "productionActiveRestaurant": 682,
+    "poolRows": 1333,
+    "poolCounts": {
+      "PR48": {
+        "CANLIYLA_ESLESTI": 17,
+        "YENI_BULGUYLA_BEKLIYOR": 1,
+        "ON_INCELEME_BEKLIYOR": 440,
+        "BU_PAKET_ADAYI": 1,
+        "RESTORAN_PAKETI_DISINDA": 137
+      },
+      "GM2026": {
+        "AYRI_DEGERLENDIRME": 94,
+        "RESTORAN_PAKETI_DISINDA": 9,
+        "CANLIYLA_ESLESTI": 82,
+        "ESKI_ARASTIRMA_KANITI": 4,
+        "ON_INCELEME_BEKLIYOR": 36,
+        "BU_PAKET_ADAYI": 5,
+        "YENI_BULGUYLA_BEKLIYOR": 14
+      },
+      "SEYREK": {
+        "ON_INCELEME_BEKLIYOR": 41,
+        "CANLIYLA_ESLESTI": 5,
+        "AYRI_DEGERLENDIRME": 20,
+        "KANIT_POLITIKASI_TEYIDI_BEKLIYOR": 2,
+        "RESTORAN_PAKETI_DISINDA": 4,
+        "ESKI_ARASTIRMA_KANITI": 2
+      },
+      "906": {
+        "ON_INCELEME_BEKLIYOR": 417,
+        "CANLIYLA_ESLESTI": 2
+      }
+    },
+    "selectedRestaurants": 6,
+    "targetTotal": 848,
+    "targetActive": 813,
+    "targetActiveRestaurant": 688,
+    "activeCafe": 114,
+    "activeBar": 11,
+    "closed": 35,
+    "newProductionRecords": 0,
+    "previewAcceptance": "PENDING",
+    "countCaution": "Kaynak satırları benzersiz kabul değildir; aday/Preview/Production aşamaları ayrıdır. Kafeler,Kıbrıs ve eski yayımlananlar eklenmez."
+  },
+  "records": [
+    {
+      "candidateId": "gm26/villa-bosphorus",
+      "slug": "villa-bosphorus-uskudar",
+      "name": "Villa Bosphorus",
+      "district": "Üsküdar",
+      "officialSource": "https://villabosphorus.com.tr/",
+      "independentSource": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "İşletmecinin tarayıcıda açılan İletişim bölümü ve 09.09.2026 tarihli bağımsız yazı ad, Beylerbeyi, kapı no ve aynı telefonu doğrular. Ham HTML okuyucuda boş olması kapanış sayılmadı; gerçek DOM incelendi.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "zincir/white-burger-bakirkoy",
+      "slug": "white-burger-koru-florya-bakirkoy",
+      "name": "White Burger Koru Florya",
+      "district": "Bakırköy",
+      "officialSource": "https://whiteburger.com/sube/detay/23",
+      "independentSource": "https://www.avmdergi.com/floryanin-yeni-bulusma-noktasi-koru-florya-avm-acildi/",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Markanın güncel şube ayrıntısı tam adres/saat ve faaliyet gösteriyor. 01.09.2026 tarihli bağımsız sektör haberi Koru Florya kiracıları arasında White Burger listeler; şube başka Florya işletmesiyle karıştırılmadı. Telefon, saat ve fiyat aktarılmadı.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "zincir/white-burger-nisantasi",
+      "slug": "white-burger-nisantasi-sisli",
+      "name": "White Burger Nişantaşı",
+      "district": "Şişli",
+      "officialSource": "https://whiteburger.com/sube/detay/2",
+      "independentSource": "https://www.citysnisantasi.com/alisveris?lang=tr",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Markanın güncel ayrıntısı ve AVM kiracı listesi aynı şubeyi gösterir. Eski marka PDFindeki No:162 alınmadı: AVMnin güncel iletişim sayfası da No:12 verir. İç kapı115 marka kaynağı; Mahalle katı AVM kaynağı. Sokak numarası tahmin edilmedi.",
+      "additionalSources": [
+        "https://www.citysnisantasi.com/iletisim"
+      ]
+    },
+    {
+      "candidateId": "zincir/white-burger-hilltown",
+      "slug": "white-burger-hilltown-maltepe",
+      "name": "White Burger Hilltown",
+      "district": "Maltepe",
+      "officialSource": "https://www.whiteburger.com/subelerimiz",
+      "independentSource": "https://hilltownkucukyali.com/tr/marka/white-burger-by-serhat-dogramaci",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Markanın Maltepe/Hilltown adresi ve AVMnin bağımsız kiracı ayrıntısı aynı05358171185 telefonu ve Cadde katını doğrular. İzmir Hilltown ile karıştırılmadı; telefon aktarılmadı.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "zincir/white-burger-eyupsultan",
+      "slug": "white-burger-florentia-village-eyupsultan",
+      "name": "White Burger Florentia Village",
+      "district": "Eyüpsultan",
+      "officialSource": "https://www.whiteburger.com/subelerimiz",
+      "independentSource": "https://www.arnavutkoytakip.com/florentia-village-nerede-nasil-gidilir-magazalari-markalari-ve-ulasim-rehberi/",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Güncel marka şube listesi ile04.11.2026 tarihli yerel haber White Burger kiracısını ve No:13/Eyüpsultan kompleksini eşleştirir. Arnavutköye yakın olmak ilçe değiştirme gerekçesi sayılmadı. Doğrulanmayan iç kapı veya koordinat eklenmedi.",
+      "additionalSources": []
+    },
+    {
+      "candidateId": "white-burger-umraniye",
+      "slug": "white-burger-umraniye",
+      "name": "White Burger Meydan İstanbul",
+      "district": "Ümraniye",
+      "officialSource": "https://www.whiteburger.com/subelerimiz",
+      "independentSource": "https://www.meydan-istanbul.com/alisveris?lang=tr",
+      "checkedAt": "2026-11-15",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Markanın Ümraniye/Meydan İstanbul şubesi ve AVM kiracı listesi aynı işletmeyi doğrular. Henüz açılmamış Finans Merkezi şubesiyle birleştirilmedi; aynı ilçe farklı adresler ayrı tutuldu.",
+      "additionalSources": []
+    }
+  ],
+  "holds": [
+    {
+      "ids": [
+        "zincir/white-burger-galataport",
+        "zincir/white-burger-finanskent",
+        "zincir/white-burger-marmara-park"
+      ],
+      "reason": "Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok.",
+      "urls": [
+        "https://www.whiteburger.com/subelerimiz"
+      ]
+    },
+    {
+      "ids": [
+        "sankai-by-nagaya-besiktas",
+        "gm26/sankai-by-nagaya"
+      ],
+      "reason": "Önceki kaynak bütünlüğü engeli korundu. Resmî kabul edilen sitede alakasız bahis bağlantıları görüldü; bu bağlantılar izlenmedi veya kataloğa taşınmadı. Kapanış veya saldırı teşhisi konmadı; güvenli işletmeci teyidi açık.",
+      "urls": [
+        "https://sankai.com.tr/tr/"
+      ]
+    },
+    {
+      "ids": [
+        "gm26/nisantasi-beymen-brasserie"
+      ],
+      "reason": "Bulunan resmî Brasserie URLsi gerçek tarayıcıda Sayfa Bulunamadı döndü.2024 dönemli şirket raporu tek başına güncel şube faaliyet teyidi sayılmadı; kapanış hükmü yok.",
+      "urls": [
+        "https://www.beymen.com/tr/beymen-brasserie",
+        "https://www.beymengroup.com/en/promisepdf.pdf"
+      ]
+    },
+    {
+      "ids": [
+        "gm26/aliee-istanbul-taste-by-thomas-buhner"
+      ],
+      "reason": "Güncel Accor sayfası Taste by Aliée ve dönüşümlü şef konsepti gösteriyor; eski Thomas Bühner isimli adayın güncel ad/adres devamlılığı ayrı teyit bekler.",
+      "urls": [
+        "https://all.accor.com/hotel/C4K9/index.en.shtml"
+      ]
+    },
+    {
+      "ids": [
+        "zincir/white-burger-pendik"
+      ],
+      "reason": "MRF Cadde faaliyeti destekleniyor; marka Osmanlı Bulvarı1/2T ile tanıtımlardaki Millet Caddesi32 adresinin aynı girişe ait olduğu teyit edilmedi.",
+      "urls": [
+        "https://www.whiteburger.com/subelerimiz",
+        "https://aduence.com/discover/c977713e-4abf-45f6-891f-fcfb197f0ecd?type=brand"
+      ]
+    }
+  ],
+  "identityReview": [],
+  "status": "PREVIEW_KABULU_BEKLIYOR"
+}
