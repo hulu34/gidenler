@@ -1,0 +1,241 @@
+{
+  "summary": {
+    "productionSha": "1e2d7371cdff84ac67ed26455f64ccc031993e0b",
+    "productionTotal": 870,
+    "productionActive": 835,
+    "productionActiveRestaurant": 710,
+    "acceptedCandidates": 6,
+    "previewAdded": 0,
+    "newProductionRecords": 0,
+    "targetTotal": 876,
+    "targetActive": 841,
+    "targetActiveRestaurant": 716,
+    "activeCafe": 114,
+    "activeBar": 11,
+    "closed": 35
+  },
+  "records": [
+    {
+      "candidateKey": "slow bebek|besiktas",
+      "slug": "slow-bebek-besiktas",
+      "name": "Slow Bebek",
+      "district": "Beşiktaş",
+      "address": "Cevdet Paşa Caddesi No:123A, Bebek, Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "kind": "Restoran",
+      "officialSource": "https://slowbebek.com/",
+      "officialSources": [
+        "https://slowbebek.com/"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/slow-bebek/",
+      "independentDate": "2025-12-25",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî site bistro, kahvaltı/öğle/akşam yemekleri ve 123A adresini açıkça gösterir; G&M aynı sokak, kapı ve ilçeyi doğrular. Rehberde olmayan özel mutfak türü üretilmedi.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false
+    },
+    {
+      "candidateKey": "akira back istanbul|bakirkoy",
+      "slug": "akira-back-istanbul-bakirkoy",
+      "name": "Akira Back Istanbul",
+      "district": "Bakırköy",
+      "address": "Rauf Orbay Caddesi No:2/1, İç Kapı:L, Ataköy 2-5-6 Kısım, Bakırköy",
+      "categoryId": "cat.restaurant",
+      "kind": "Şef restoranı",
+      "officialSource": "https://www.istanbulakiraback.com/contact-location",
+      "officialSources": [
+        "https://www.istanbulakiraback.com/contact-location"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/akira-back-istanbul/",
+      "independentDate": "2025-12-23",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Konum bloğu ve rehber 2/1 D:L Bakırköy adresinde eşleşir. Web arama önbelleğindeki altbilgi Balıkesir hatası kopyalanmadı; canlı konum bloğu Bakırköy der.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false
+    },
+    {
+      "candidateKey": "aqua|besiktas",
+      "slug": "aqua-besiktas",
+      "name": "Aqua",
+      "district": "Beşiktaş",
+      "address": "Çırağan Caddesi No:28, Yıldız (Four Seasons Hotel Istanbul at the Bosphorus), Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "kind": "Modern mutfak",
+      "officialSource": "https://www.fourseasons.com/bosphorus/dining/restaurants/aqua/",
+      "officialSources": [
+        "https://www.fourseasons.com/bosphorus/dining/restaurants/aqua/",
+        "https://www.fourseasons.com/bosphorus/getting-here/"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/aqua-5/",
+      "independentDate": "2025-12-23",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Normal tarayıcıda güncel restoran ve otel adresi açıldı; otomatik HTTP403 atlatılmadı. Güncel geçici Taverna37 sunumu ayrı işletme sayılmadı; menü/kalıcı Yunan mutfağı iddiası eklenmedi. Tür G&M Modern Mutfak etiketidir.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false
+    },
+    {
+      "candidateKey": "avlu restaurant|fatih",
+      "slug": "avlu-restaurant-fatih",
+      "name": "Avlu Restaurant",
+      "district": "Fatih",
+      "address": "Tevkifhane Sokak No:1, Cankurtaran (Four Seasons Hotel Istanbul at Sultanahmet), Fatih",
+      "categoryId": "cat.restaurant",
+      "kind": "Geleneksel mutfak",
+      "officialSource": "https://www.fourseasons.com/istanbul/dining/restaurants/avlu-restaurant/",
+      "officialSources": [
+        "https://www.fourseasons.com/istanbul/dining/restaurants/avlu-restaurant/",
+        "https://www.fourseasons.com/istanbul/getting-here/"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/avlu-restaurant-5/",
+      "independentDate": "2025-12-23",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Normal tarayıcıda restoran kimliği ve Tevkifhane1 otel adresi doğrulandı; G&M aynı işletme ve Fatih adresini doğrular. Bosphorus oteliyle karıştırılmaz.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false
+    },
+    {
+      "candidateKey": "seraf vadi|sariyer",
+      "slug": "seraf-vadi-sariyer",
+      "name": "Seraf Vadi",
+      "district": "Sarıyer",
+      "address": "Kemerburgaz Caddesi No:7G, İç Kapı No:7, Ayazağa (Vadistanbul), Sarıyer",
+      "categoryId": "cat.restaurant",
+      "kind": "Geleneksel mutfak",
+      "officialSource": "https://www.seraf.com.tr/seraf-vadi/iletisim/",
+      "officialSources": [
+        "https://www.seraf.com.tr/seraf-vadi/iletisim/"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/seraf-vadi/",
+      "independentDate": "2025-12-23",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Vadi şubesinin resmî iletişim sayfası 7G/7 ve Sarıyer adresini doğrudan doğrular. Aynı adresteki market ayrı restoran sayılmadı; Mahmutbey şubesi değil.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false
+    },
+    {
+      "candidateKey": "udonya japanese restaurant|beyoglu",
+      "slug": "udonya-japanese-restaurant-beyoglu",
+      "name": "Udonya Japanese Restaurant",
+      "district": "Beyoğlu",
+      "address": "Topçu Caddesi No:2, Kocatepe (Point Hotel Taksim giriş katı), Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "kind": "Dünya mutfağı",
+      "officialSource": "https://www.pointhotel.com/taksim/pages/yeme-icme.php",
+      "officialSources": [
+        "https://www.pointhotel.com/taksim/pages/yeme-icme.php"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/udonya-japanese-restaurant-3/",
+      "independentDate": "2025-12-24",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "İşletmeci Udonya’yı otelin giriş katında açıkça tanımlar ve aynı sayfada Topçu2 adresini verir. Rehber Point Hotel Taksim + Topçu + Beyoğlu ile eşleşir; kapı numarasını rehberde varmış gibi göstermeyiz. Otelin diğer restoran/kafesi bu kayıt değildir.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false
+    }
+  ],
+  "holds": [
+    {
+      "name": "Maderia Sushi Bar",
+      "state": "SAHIP_TALIMATIYLA_BEKLIYOR",
+      "reason": "Kullanıcı açıkça bekletiyor; bu pakette incelenmez/eklenmez."
+    },
+    {
+      "name": "Az Çok Thai",
+      "state": "ERISIM_DOGRULANAMADI",
+      "reason": "Tür ve adres kaynakları uyumlu fakat resmî apex/www sayfaları bu ağdan bağlantıyı reddetti. Arama önbelleği canlı erişim kanıtı sayılmadı; bu tur eklenmedi."
+    },
+    {
+      "name": "Chalet",
+      "state": "FAALIYET_BELIRSIZ",
+      "reason": "Arama önbelleğinde temporarily closed metni var; canlı HTTP metninde yalnız pazartesi kapalı yazıyor. Çelişkili faaliyet kanıtı aktif kabul edilmedi."
+    },
+    {
+      "name": "Morini / Parlé",
+      "state": "ADRES_BELIRSIZ",
+      "reason": "Zorlu resmî iletişim Vadi Caddesi2, G&M Morini Koru Sokak2. AVM adıyla sokak eşdeğerliği varsayılmadı."
+    },
+    {
+      "name": "Maromi İstanbul",
+      "state": "ILCE_CELISKISI",
+      "reason": "Rehberler Beyoğlu, başka işletme kaynakları Şişli; bu tur ilçe uydurulmadı."
+    },
+    {
+      "name": "Bado Babadostu Cağ Kebap",
+      "state": "BEKLIYOR",
+      "reason": "Önceki eksik birincil kapı numarası bu tur doğrulanmadı."
+    },
+    {
+      "name": "The Townhouse / Frankie Bar",
+      "state": "AYRI_KATEGORI",
+      "reason": "Restoran paketi dışında bar kayıtları."
+    }
+  ],
+  "identityReview": [
+    {
+      "slug": "slow-bebek-besiktas",
+      "reviewPairs": [],
+      "decision": "Yeni ayrı işletme; benzerlik ve aynı otel alan adı tek başına mükerrer kanıtı sayılmaz."
+    },
+    {
+      "slug": "akira-back-istanbul-bakirkoy",
+      "reviewPairs": [],
+      "decision": "Yeni ayrı işletme; benzerlik ve aynı otel alan adı tek başına mükerrer kanıtı sayılmaz."
+    },
+    {
+      "slug": "aqua-besiktas",
+      "reviewPairs": [],
+      "decision": "Yeni ayrı işletme; benzerlik ve aynı otel alan adı tek başına mükerrer kanıtı sayılmaz."
+    },
+    {
+      "slug": "avlu-restaurant-fatih",
+      "reviewPairs": [
+        {
+          "slug": "34-restaurant-sisli",
+          "name": "34 Restaurant",
+          "district": "Şişli",
+          "address": "Taşkışla Caddesi No:1, Şişli",
+          "website": "https://www.hyattrestaurants.com/en/dining/turkey/istanbul/turkish-restaurant-in-harbiye-34-restaurant-istanbul"
+        },
+        {
+          "slug": "sefa-restaurant-uskudar",
+          "name": "Sefa Restaurant",
+          "district": "Üsküdar",
+          "address": "KISIKLI YOL SOKAK No:2, Üsküdar",
+          "website": "https://sefarestaurant.com"
+        },
+        {
+          "slug": "sans-restaurant-besiktas",
+          "name": "Şans Restaurant",
+          "district": "Beşiktaş",
+          "address": "Palmiye Sokak No:1, Levent Mahallesi, Beşiktaş",
+          "website": "https://www.sansrestaurant.com/"
+        },
+        {
+          "slug": "galeyan-restaurant-fatih",
+          "name": "Galeyan Restaurant",
+          "district": "Fatih",
+          "address": "Alemdar Mahallesi, Ticarethane Sokak No:13/B, Fatih",
+          "website": "https://galeyann.com/"
+        }
+      ],
+      "decision": "Yeni ayrı işletme; benzerlik ve aynı otel alan adı tek başına mükerrer kanıtı sayılmaz."
+    },
+    {
+      "slug": "seraf-vadi-sariyer",
+      "reviewPairs": [],
+      "decision": "Yeni ayrı işletme; benzerlik ve aynı otel alan adı tek başına mükerrer kanıtı sayılmaz."
+    },
+    {
+      "slug": "udonya-japanese-restaurant-beyoglu",
+      "reviewPairs": [],
+      "decision": "Yeni ayrı işletme; benzerlik ve aynı otel alan adı tek başına mükerrer kanıtı sayılmaz."
+    }
+  ],
+  "inventory": "883 araştırma kaydı mevcut870 ile karşılaştırıldı; ad/ilçe ve önceki kimlik bağları inceleme aracı, otomatik kabul değildir.",
+  "status": "YEREL_VE_GERCEK_PREVIEW_KABULU_BEKLIYOR"
+}
