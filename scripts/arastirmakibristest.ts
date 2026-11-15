@@ -5,7 +5,8 @@
    4. Aday: resmî işletme kaynağı + son 12 ayda tarihli bağımsız kaynak, tür, kategori, adres; eksikler açık; koordinat yok.
    4b. Satır bazında adres kanıtı: tam kanıtlı = iki kaynakta aynı sokak ve kapı no; eksiği olan kayıt koşullu (tam kabul edilmiş değil).
    5. Telefon ülke kodu ile operasyon alanı tutarlı (+90 392 ↔ kuzey, +357 ↔ güney).
-   6. Puan, yorum, Google/harita verisi ve koordinat yok.
+   6. Puan, yorum, Google/harita verisi ve koordinat yok (aday dosyası + kabul manifesti).
+   7. Kabul manifesti: tam/koşullu/bekleyen aday dosyasıyla birebir; kuzey ve güney ayrı; tam kayıtta ham adres, eşleşme, gerekçe, boş koordinat, doğrulanmış telefon E.164.
    Kullanım: TABAN=<sha> npx tsx scripts/arastirmakibristest.ts (TABAN verilmezse origin/feature/investor-v1) */
 import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -89,11 +90,41 @@ t("Bellapais: sokak adı farkı ayrı durum → koşullu", ad("Bellapais")?.duru
 t("kuzeyde kapı no yoksa tam kanıtlı değil", G.filter((x) => /^kuzey/.test(x.bolge.operasyonelBolge) && !/^eşleşti/.test(x.adresKaniti?.eslesme.kapiNo ?? "")).every((x) => x.durum === "aday-kosullu"));
 t("yer tarifli adres tam kanıtlı sayılmadı", G.filter((x) => /yer-tarifi/.test(x.adresKaniti?.durum ?? "")).every((x) => x.durum === "aday-kosullu"));
 
+/* 7 — kabul manifesti */
+type MK = { id: string; ad: string; koordinat?: unknown; hamAdres?: { resmiKaynak: string; bagimsizKaynak: string }; karsilastirma?: Record<string, string>; kanitGerekcesi?: string;
+  telefon?: { e164: string | null; dogrulama: string }; bolge?: Bolge; kaynaklar?: Kaynak[]; aktarim?: unknown; kosul?: string };
+const M = JSON.parse(readFileSync("data/arastirma/kibris/kabul-manifesti.json", "utf8")) as {
+  sayim: Record<string, Record<string, number>>; tamKanitli: Record<string, MK[]>; kosullu: Record<string, MK[]>; bekleyen: Record<string, MK[]>; kapsamDisi: Record<string, MK[]> };
+const ids = (o: Record<string, MK[]>) => Object.values(o).flat().map((r) => r.id).sort();
+const dIds = (d: string) => D.filter((x) => x.durum === d).map((x) => x.id).sort();
+t("manifest: tam kanıtlı = aday-tam", JSON.stringify(ids(M.tamKanitli)) === JSON.stringify(dIds("aday-tam")));
+t("manifest: koşullu = aday-kosullu (tama karışmadı)", JSON.stringify(ids(M.kosullu)) === JSON.stringify(dIds("aday-kosullu")));
+t("manifest: bekleyen = inceleme", JSON.stringify(ids(M.bekleyen)) === JSON.stringify(dIds("inceleme")));
+t("manifest: kapsam dışı aynı", JSON.stringify(ids(M.kapsamDisi)) === JSON.stringify(dIds("kapsam-disi")));
+for (const [ad, o] of [["tamKanitli", M.tamKanitli], ["kosullu", M.kosullu], ["bekleyen", M.bekleyen], ["kapsamDisi", M.kapsamDisi]] as const) {
+  t(`manifest: ${ad} sayımı`, M.sayim[ad].toplam === Object.values(o).flat().length && M.sayim[ad]["kuzey"] === (o["kuzey"] ?? []).length && M.sayim[ad]["güney"] === (o["güney"] ?? []).length, M.sayim[ad]);
+  for (const [kesim, rs] of Object.entries(o)) for (const r of rs) t(`manifest: ${r.id} doğru kesimde (${kesim})`, new RegExp(`^${kesim}`).test(K_(r.id).bolge.operasyonelBolge));
+}
+function K_(id: string) { return D.find((x) => x.id === id)!; }
+for (const r of Object.values(M.tamKanitli).flat()) {
+  const ak = (typeof r.aktarim === "object" && r.aktarim ? r.aktarim : {}) as { hazir?: Record<string, unknown>; kararBekleyen?: Record<string, string> };
+  const h = ak.hazir ?? {}, kb = ak.kararBekleyen ?? {};
+  t(`${r.id}: ham adres iki kaynaktan`, !!r.hamAdres?.resmiKaynak && !!r.hamAdres?.bagimsizKaynak);
+  t(`${r.id}: sokak ve kapı no eşleşti`, /^eşleşti/.test(r.karsilastirma?.sokak ?? "") && /^eşleşti/.test(r.karsilastirma?.kapiNo ?? ""));
+  t(`${r.id}: kanıt gerekçesi ve kaynak tarihleri`, !!r.kanitGerekcesi && (r.kaynaklar ?? []).every((k) => TARIH.test(k.kontrol)) && (r.kaynaklar ?? []).some((k) => !!k.yayin));
+  t(`${r.id}: koordinat açıkça boş`, r.koordinat === null && h.lat === null && h.lng === null && h.kaliteSinifi === "A-konumsuz");
+  const tel = r.telefon?.e164 ?? null;
+  t(`${r.id}: telefon yalnız iki kaynakta aynıysa, uluslararası biçimde`, tel === null ? h.phone === null : /^\+357\d{8}$/.test(tel) && /^iki kaynakta aynı/.test(r.telefon!.dogrulama) && h.phone === tel, r.telefon);
+  t(`${r.id}: aktarım alanları`, ["name", "categoryId", "kind", "address", "website", "sourceKind", "sourceUrl", "verifiedAt", "verification"].every((k) => !!h[k]) && h.kind !== "Restoran");
+  t(`${r.id}: ilçe/saat/para kesinleştirilmedi`, !("district" in h) && !("openingHours" in h) && !!kb.district && !!kb.openingHours && !!kb.paraBirimi);
+}
+for (const r of Object.values(M.kosullu).flat()) t(`${r.id}: koşullu kayıt aktarılmıyor`, typeof r.aktarim === "string" && /^yok/.test(r.aktarim as string) && !!r.kosul);
+
 /* 6 */
-const ham = readFileSync("data/arastirma/kibris/adaylar.json", "utf8");
+const ham = readFileSync("data/arastirma/kibris/adaylar.json", "utf8") + readFileSync("data/arastirma/kibris/kabul-manifesti.json", "utf8");
 t("puan/yorum alanı yok", !/"(rating|reviews?|puan|yorum|degerlendirmePuani)"\s*:/.test(ham));
 t("Google/harita verisi yok", !/google\.(com|com\.tr)\/maps|maps\.app\.goo\.gl|place_id|plus\.codes|[0-9A-Z]{4}\+[0-9A-Z]{2,3}/.test(ham));
-t("koordinat yazılmadı", !/"(lat|lng|lon)"\s*:/.test(ham));
+t("koordinat yazılmadı (yalnız açık boş değer)", !/"(lat|lng|lon)"\s*:(?!\s*null\b)/.test(ham));
 
 console.log(`kıbrıs pilotu: ${ok}/${ok + fail} · tam kanıtlı ${TAM.length} · koşullu ${KOS.length} · inceleme ${say["inceleme"] ?? 0} · kapsam dışı ${say["kapsam-disi"] ?? 0}`);
 process.exit(fail ? 1 : 0);

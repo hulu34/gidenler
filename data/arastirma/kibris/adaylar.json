@@ -259,7 +259,7 @@
     "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
    },
    "categoryId": "cat.restaurant",
-   "kind": "Türk mutfağı",
+   "kind": "Geleneksel mutfak",
    "adres": "Dionysou 1-2, 8041 Kato Paphos",
    "kaynaklar": [
     {
@@ -281,7 +281,7 @@
     "sube": "bkz. adresKaniti",
     "faaliyet": "bağımsız yazı 2026-02-18; resmî kaynak 2026-11-15 tarihinde açık",
     "adres": "iki-kaynak-sokak-ve-kapi-no",
-    "tur": "bağımsız yazının konusu / resmî menü: Türk mutfağı"
+    "tur": "bağımsız yazı: 'Cyprus cuisine' → katalogdaki 'Geleneksel mutfak'; 'Kıbrıs mutfağı' türü sahip kararı"
    },
    "koordinat": null,
    "kaliteSinifiOnerisi": "A-konumsuz",
@@ -298,7 +298,7 @@
    },
    "durum": "aday-tam",
    "guven": "güçlü",
-   "not": "geleneksel Kıbrıs mutfağı — katalog tür listesinde karşılığı yok; 'Kıbrıs mutfağı' türü önerilir"
+   "not": "geleneksel Kıbrıs mutfağı — katalogda karşılığı yok; 'Kıbrıs mutfağı' türü kararı açık, şimdilik 'Geleneksel mutfak'"
   },
   {
    "id": "kibris/novel-the-agora-hotel",

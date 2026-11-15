@@ -100,6 +100,71 @@ Tek tur yapıldı, yalnız yeni ve kolay erişilen resmî kaynaklarla:
 | Artio Symposium | Yazıdaki bağlantıdan otel sitesi (elinntraditionalsuites.com) açıldı. Kathikas'ı doğruluyor ama restorandan ve sokak adresinden söz etmiyor → **bekliyor** |
 | Diğer 13 | Yazılarda resmî bağlantı yok (yalnız Instagram/izleyici) → **bekliyor** |
 
+## Teknik kabul manifesti (15.11.2026, gece)
+
+Dosya: `data/arastirma/kibris/kabul-manifesti.json`.
+- Aday dosyasından **ağ erişimi olmadan** türetildi; kanıt taraması yeniden yapılmadı.
+- Kuzey ve güney ayrı anahtarlarda.
+- Tam kanıtlı, koşullu, bekleyen ve kapsam dışı kayıtlar ayrı bölümlerde. Koşullu 6 kayıt tam bölüme karışmıyor; test bunu denetliyor.
+
+| Bölüm | Kuzey | Güney | Toplam |
+|---|---:|---:|---:|
+| Tam kanıtlı | 0 | 4 | **4** |
+| Koşullu | 4 | 2 | **6** |
+| Bekleyen | 3 | 11 | **14** |
+| Kapsam dışı | 0 | 2 | 2 |
+
+### Tam kanıtlı 4 kaydın aktarım alanları
+
+| Kayıt | `address` | `phone` (E.164) | `kind` | `website` / `sourceUrl` |
+|---|---|---|---|---|
+| Oniro by the Sea | Glikou Nerou 05, Peyia 8560, Baf | +35770077272 | Akdeniz mutfağı | oniro.cy |
+| MasaMoro | Stasandrou 2, 1060 Lefkoşa | boş — resmî kaynakta yok | Dünya mutfağı | masamoro.com |
+| Stavri Kitchen | Kalimnou 6B, 6037 Larnaka | +35724255592 | Burger | stavriskitchen.com |
+| Gourmet Taverna | Dionysou 1-2, 8041 Kato Paphos | +35726933626 | Geleneksel mutfak | gourmettaverna.com |
+
+Her tam kayıtta şunlar var:
+- doğru şube;
+- iki kaynak, yayın ve kontrol tarihleriyle;
+- iki kaynağın ham adres metni;
+- sokak, kapı no ve telefon karşılaştırması;
+- kanıt gerekçesi;
+- `bolge` (coğrafi bölge, yerel adlar, operasyonel bölge, hukuki not), yerleşim ve posta kodu.
+
+Hazır aktarım alanları:
+- `name`, `categoryId`, `kind`, `address`, `phone`, `website`;
+- `sourceKind: official_site`, `sourceUrl`, `verifiedAt`;
+- `confidence: güçlü`, `kaliteSinifi: A-konumsuz`, `verification`;
+- `lat`/`lng` açıkça `null`.
+
+Telefon yalnız iki kaynakta aynıysa yazıldı:
+- **MasaMoro:** Numara yalnız bağımsız yazıda geçtiği için boş.
+- **Oniro:** Numara 7000 ile başlayan özel aralıkta; yurt dışından erişimi teyit edilmedi.
+
+**Kesinleştirilmeyen alanlar (`kararBekleyen`):**
+- `slug` ve `ref` biçimi;
+- `district`: Kıbrıs'ta İstanbul ilçe alanının karşılığı;
+- `neighborhood`;
+- `openingHours`: tek kaynakta; saat dilimi de kesinleştirilmedi;
+- para birimi;
+- `importedAt`/`wave`.
+
+Ürün ve bölge gereksinimleri ayrıca YorumS tarafında hazırlanıyor; burada tekrarlanmadı.
+
+### Bekleyen 14 için tek sınırlı tur
+
+Yalnız daha önce kullanılmamış resmî ve yerel kaynaklara bakıldı:
+
+| Kaynak | Sonuç |
+|---|---|
+| Güney: Turizm Bakanlığı lisanslı yeme-içme işletmeleri listesi | Kamuya açık liste bulunamadı (businessincyprus.gov.cy yalnız lisans sürecini anlatıyor) |
+| Kuzey: Turizm ve Çevre Bakanlığı belgeli lokanta listesi | Kamuya açık liste bulunamadı |
+| tastecyprus.com.cy: Turizm Bakanlığı "Taste Cyprus" sertifikalı işletmeler (101 kayıt, son güncelleme 31.01.2023) | 14 bekleyenden hiçbiri listede yok |
+
+**Sonuç:** Yeni kanıt yok, 14 kayıt bekliyor. Kolay erişilen resmî kaynaklar tükendi.
+- Aynı adres ve şube kaynakları yeniden taranmadı.
+- Erişim engeli aşılmadı, işletmelere yazılmadı, ücretli kaynak kullanılmadı.
+
 ## İlk teslimdeki 9 aday (kaynak özeti)
 
 | Aday | Coğrafi bölge | Operasyon | Tür | Resmî kaynak | Bağımsız kaynak (tarih) | Eksik |
@@ -158,7 +223,7 @@ Bu araştırmada hiçbiri uygulanmadı.
 **Sahip kararı:**
 1. **Yer tarifli adres:** Kapı numarası olmayan Kıbrıs adresi (ör. "Hacı Ali Hotel yanı") kabul edilecek mi? Kuzeydeki 4 koşullu adayı doğrudan etkiler.
 2. **Tek kaynaktaki sokak/kapı no:** Otel içi restoranlarda (LPM, Novél) bağımsız kaynağın otel adı ve telefonu eşleşiyorsa, resmî kaynaktaki sokak ve kapı no yeterli mi?
-3. **"Kıbrıs mutfağı" türü:** Tür listesine eklenecek mi? (Gourmet Taverna şimdilik "Türk mutfağı" önerisiyle.)
+3. **"Kıbrıs mutfağı" türü:** Tür listesine eklenecek mi? Gourmet Taverna şimdilik katalogdaki "Geleneksel mutfak" türünde. İlk teslimdeki "Türk mutfağı" yanlıştı, çünkü bağımsız yazı "Cyprus cuisine" diyor.
 4. **Kesim önceliği:** Pilot yayına hazırlanırken önce tek bir kesim mi, iki kesim birlikte mi?
 
 **Teyit gereksinimi:** Bunlar karar değil, kaynakla kapanır.
