@@ -1,0 +1,210 @@
+{
+  "summary": {
+    "productionBase": "f8131ddce3d691a6300e5d9b669e82f53980d73c",
+    "productionTotal": 818,
+    "productionActive": 783,
+    "poolRows": 1333,
+    "poolCounts": {
+      "PR48": {
+        "ON_INCELEME_BEKLIYOR": 443,
+        "CANLIYLA_ESLESTI": 8,
+        "BU_PAKET_ADAYI": 8,
+        "RESTORAN_PAKETI_DISINDA": 137
+      },
+      "GM2026": {
+        "AYRI_DEGERLENDIRME": 96,
+        "RESTORAN_PAKETI_DISINDA": 9,
+        "CANLIYLA_ESLESTI": 65,
+        "ESKI_ARASTIRMA_KANITI": 7,
+        "ON_INCELEME_BEKLIYOR": 59,
+        "BU_PAKET_ADAYI": 8
+      },
+      "SEYREK": {
+        "ON_INCELEME_BEKLIYOR": 41,
+        "BU_PAKET_ADAYI": 2,
+        "AYRI_DEGERLENDIRME": 20,
+        "KANIT_POLITIKASI_TEYIDI_BEKLIYOR": 2,
+        "CANLIYLA_ESLESTI": 3,
+        "RESTORAN_PAKETI_DISINDA": 4,
+        "ESKI_ARASTIRMA_KANITI": 2
+      },
+      "906": {
+        "ON_INCELEME_BEKLIYOR": 418,
+        "CANLIYLA_ESLESTI": 1
+      }
+    },
+    "selectedRestaurants": 15,
+    "targetTotal": 833,
+    "targetActive": 798,
+    "targetActiveRestaurant": 673,
+    "activeCafe": 114,
+    "activeBar": 11,
+    "closed": 35,
+    "newProductionRecords": 0,
+    "publishedPreviouslyFromPR48": 8,
+    "researchShas": {
+      "pr48": "ac9aee93727c2e9c4c02830623385bbcc0df2969",
+      "pr50": "77bc434e1c7908f1de7a7824366f4f1d624de2d1"
+    },
+    "excludedRegion": "Kıbrıs PR52 ayrı araştırma; bu İstanbul havuzuna dahil değil.",
+    "countCaution": "Havuz satırları toplamı benzersiz işletme veya kabul toplamı değildir; havuzlar arası örtüşmeler ayrı tutulur."
+  },
+  "records": [
+    {
+      "slug": "aila-sisli",
+      "candidateId": "pr48/aila-sisli",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://fairmontquasaristanbul.com/restaurant/aila/",
+      "independentSource": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/aila",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Güncel işletmeci kimliği/faaliyeti ile bağımsız rehber adresi uyumlu; saha/telefon teyidi değildir."
+    },
+    {
+      "slug": "herise-istanbul-sariyer",
+      "candidateId": "pr48/herise-istanbul-sariyer",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.heriseistanbul.com.tr/",
+      "independentSource": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/herise-istanbul",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Güncel işletmeci kimliği/faaliyeti ile bağımsız rehber adresi uyumlu; saha/telefon teyidi değildir."
+    },
+    {
+      "slug": "kiyi-sariyer",
+      "candidateId": "pr48/kiyi-sariyer",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.kiyi.com.tr/",
+      "independentSource": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/k%C4%B1y%C4%B1",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Güncel işletmeci kimliği/faaliyeti ile bağımsız rehber adresi uyumlu; saha/telefon teyidi değildir."
+    },
+    {
+      "slug": "ruby-besiktas",
+      "candidateId": "pr48/ruby-besiktas",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.rubyistanbul.com/",
+      "independentSource": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/ruby",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Güncel işletmeci kimliği/faaliyeti ile bağımsız rehber adresi uyumlu; saha/telefon teyidi değildir."
+    },
+    {
+      "slug": "spago-istanbul-by-wolfgang-puck-sisli",
+      "candidateId": "pr48/spago-istanbul-by-wolfgang-puck-sisli",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.marriott.com/en-us/hotels/istxr-the-st-regis-istanbul/dining/",
+      "independentSource": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/spago-1195842",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Aynı otelde ayrı ad, menü ve kat/servis tanımı: Spago çatı, Brasserie zemin/teras; birleştirilmedi."
+    },
+    {
+      "slug": "st-regis-brasserie-sisli",
+      "candidateId": "pr48/st-regis-brasserie-sisli",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.marriott.com/en-us/hotels/istxr-the-st-regis-istanbul/dining/",
+      "independentSource": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/st-regis-brasserie",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Aynı otelde ayrı ad, menü ve kat/servis tanımı: Spago çatı, Brasserie zemin/teras; birleştirilmedi."
+    },
+    {
+      "slug": "the-barn-silivri",
+      "candidateId": "pr48/the-barn-silivri",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.grandmaswonderland.com/en/the-barn/",
+      "independentSource": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/the-barn-1215529",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Güncel işletmeci kimliği/faaliyeti ile bağımsız rehber adresi uyumlu; saha/telefon teyidi değildir."
+    },
+    {
+      "slug": "the-red-balloon-beyoglu",
+      "candidateId": "pr48/the-red-balloon-beyoglu",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://theredballoon.com.tr/",
+      "independentSource": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/the-red-balloon",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Güncel işletmeci kimliği/faaliyeti ile bağımsız rehber adresi uyumlu; saha/telefon teyidi değildir."
+    },
+    {
+      "slug": "neni-brasserie-kadikoy",
+      "candidateId": "gm26/neni-brasserie",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://nenibrasserie.com/",
+      "independentSource": "https://www.gault-millau.com.tr/neni-brasserie-3/",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî işletmeci güncel kimlik/hizmeti, Gault&Millau adresi doğrular. Rehber sayfasının bu tur zaman aşımında aynı günün önceki bağımsız HTTP200 kanıtı korundu. Telefon farklılıkları aktarılmadı."
+    },
+    {
+      "slug": "josephine-istanbul-beyoglu",
+      "candidateId": "gm26/josephine-istanbul",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.tersaneistanbul.com.tr/dining/josephine-istanbul",
+      "independentSource": "https://www.gault-millau.com.tr/josephine-istanbul/",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî işletmeci güncel kimlik/hizmeti, Gault&Millau adresi doğrular. Rehber sayfasının bu tur zaman aşımında aynı günün önceki bağımsız HTTP200 kanıtı korundu. Telefon farklılıkları aktarılmadı."
+    },
+    {
+      "slug": "buselik-meyhane-beyoglu",
+      "candidateId": "gm26/buselik-meyhane",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.buselikmeyhane.com/",
+      "independentSource": "https://www.gault-millau.com.tr/buselik-meyhane/",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Tünel/Beyoğlu şubesi; mevcut Anadolu Hisarı/Beykoz kaydı farklı şube."
+    },
+    {
+      "slug": "bronco-sariyer",
+      "candidateId": "gm26/bronco",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://bronco.com.tr/",
+      "independentSource": "https://www.gault-millau.com.tr/bronco-5/",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî işletmeci güncel kimlik/hizmeti, Gault&Millau adresi doğrular. Rehber sayfasının bu tur zaman aşımında aynı günün önceki bağımsız HTTP200 kanıtı korundu. Telefon farklılıkları aktarılmadı."
+    },
+    {
+      "slug": "batard-sisli",
+      "candidateId": "gm26/batard",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://kojohospitality.com/batard/",
+      "independentSource": "https://www.gault-millau.com.tr/batard-5/",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî işletmeci güncel kimlik/hizmeti, Gault&Millau adresi doğrular. Rehber sayfasının bu tur zaman aşımında aynı günün önceki bağımsız HTTP200 kanıtı korundu. Telefon farklılıkları aktarılmadı."
+    },
+    {
+      "slug": "riva-s-club-cekmekoy",
+      "candidateId": "seyrek/riva-s-club-cekmekoy",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.rivaclub.net/contact",
+      "independentSource": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Konaklama/davet tesisi içindeki restoran/kahvaltı; ziyaret öncesi dışarıdan servis uygunluğu işletmeye sorulmalı."
+    },
+    {
+      "slug": "house-of-fellas-cekmekoy",
+      "candidateId": "seyrek/house-of-fellas-cekmekoy",
+      "checkedAt": "2026-11-15",
+      "officialSource": "https://www.houseoffellas.com/",
+      "independentSource": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+      "decision": "KOD_ADAYINA_KABUL",
+      "note": "Resmî sayfa restoran hizmetini ve No:109 adresini açıkça gösterir; yemek.com aynı adres."
+    }
+  ],
+  "identityReview": [
+    {
+      "candidate": "spago-istanbul-by-wolfgang-puck-sisli",
+      "other": "st-regis-brasserie-sisli",
+      "nameSimilarity": 0.286,
+      "sameAddress": true
+    },
+    {
+      "candidate": "st-regis-brasserie-sisli",
+      "other": "spago-istanbul-by-wolfgang-puck-sisli",
+      "nameSimilarity": 0.204,
+      "sameAddress": true
+    },
+    {
+      "candidate": "neni-brasserie-kadikoy",
+      "other": "gizia-brasserie-kadikoy",
+      "nameSimilarity": 0.759,
+      "sameAddress": false
+    }
+  ],
+  "status": "PREVIEW_KABULU_BEKLIYOR"
+}
