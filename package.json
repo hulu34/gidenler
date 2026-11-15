@@ -14,6 +14,7 @@
     "qa": "tsx scripts/searchqa.ts && tsx scripts/semqa.ts",
     "test:seckisi": "tsx scripts/seckisitest.ts",
     "test:sor": "tsx scripts/sortest.ts",
+    "test:adres-celiski-3": "tsx scripts/arastirmaadresceliski3test.ts",
     "test:arama": "tsx scripts/aramatest.ts",
     "test:anasayfa": "tsx scripts/anasayfatest.ts",
     "test:seo": "tsx scripts/seotest.ts",
