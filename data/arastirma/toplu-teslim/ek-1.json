@@ -1,0 +1,2159 @@
+{
+ "_aciklama": "Toplu teslim manifesti eki 1 — #56 sorunlu havuzundan yalnız 52 çözülemeyen eşleşme ve 14 eksik adres. Tek sınırlı tur: yerel dallar/Production dosyalarında eşleşme + yalnız kayıtlı resmî site ve kayıtlı G&M sayfası birer kez açıldı. Genel tarama, arama motoru, ücretli kaynak, işletmeye mesaj, erişim engeli aşma ve yayın yok. Kataloğa eklenmedi; canlıda sayılmaz.",
+ "olusturma": "2026-11-15",
+ "temel": {
+  "pr": 56,
+  "manifest": "data/arastirma/toplu-teslim/manifest.json",
+  "sha": "4fbd8824cf64c4676b590e80831d3a6fefaefb13"
+ },
+ "canliTaban": {
+  "sha": "d4aa855",
+  "toplam": 860,
+  "aktif": 825,
+  "aktifRestoran": 700,
+  "not": "İş 7924559 (848/813/688) üstünde başladı; #57 (d4aa855) bu iş sürerken Production dalına birleştirildi. Canlı dağıtım doğrulaması Codex/Pilot'ta; bu ekteki kayıtların hiçbiri canlı sayılmaz."
+ },
+ "pr57": {
+  "sha": "d4aa85545cca0b1485db84f411f2d92fae2ca751",
+  "not": "dal ve SHA değiştirilmedi; #57 Codex/Pilot tarafından birleştirildi",
+  "aday": 12,
+  "bekletme": [
+   "alacati gurme i ala|basaksehir",
+   "meshur yayla kokoreccisi|bahcelievler"
+  ]
+ },
+ "sinirliTur": {
+  "tarih": "2026-11-15",
+  "kapsam": {
+   "baska-kayitla-eslesmis": 52,
+   "eksik-adres": 14
+  },
+  "yontem": [
+   "52 kaydın PR #50 eşleşmesi 124 uzak dal + Production 7924559 data/ JSON dosyalarında (44.728 ad kaydı) aynı ilçe şartıyla arandı — ağ erişimi yok",
+   "bağlı kayıtta resmî site kayıtlıysa (23) yalnız o URL bir kez açıldı; 403/engel aşılmadı",
+   "eşleşenlerde tür için yalnız kayıtlı G&M sayfası açıldı (puan ve metin saklanmadı)",
+   "14 eksik adreste kayıtlı yeni resmî URL yok; hiçbir sayfa açılmadı, öncelik ve gerekçe yazıldı"
+  ],
+  "acilanSayfa": {
+   "resmiSite": 23,
+   "gmSayfasi": 15
+  }
+ },
+ "kural": "iyi kanıtlı = yayımlanmamış, #57 dışında; kayıtlı resmî site bugün açık ve adı gösteriyor + G&M 2026 (son 12 ay) ile aynı sokak ve kapı no (telefon ayrıca); tür rehber etiketinden. Kapı numarası yoksa, tür etiketi yoksa ya da resmî sayfa başka işletmeninse belirsiz.",
+ "sayim": {
+  "iyiKanitli": 12,
+  "iyiKategori": {
+   "bar": 1,
+   "restoran": 11
+  },
+  "belirsiz": 53,
+  "belirsizOncelik": {
+   "1": 15,
+   "2": 26,
+   "3": 12
+  },
+  "duzeltme56": 5,
+  "yayimlanmisKayitBulgusu": 8
+ },
+ "iyiKanitli": [
+  {
+   "anahtar": "the townhouse|kadikoy",
+   "ad": "The Townhouse",
+   "ilce": "Kadıköy",
+   "kategori": "bar",
+   "categoryId": "cat.bar",
+   "kind": "Bar",
+   "kindKaynagi": "G&M 2026 rehber kategorisi: BAR",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "Ana Sayfa | The Townhouse - Kitchen & Bar ADRES Suadiye, Plaj Yolu Sk. No:13 34740 Kadıköy, İstanbul info@thetownhouse.com.tr 0216 463 14 15 The Townhouse TownLife Men",
+    "rehber": "Suadiye, Plaj Yolu Sok., No:13, 34740 Kadıköy/İstanbul",
+    "kapiNo": "13",
+    "not": "rehber kategorisi BAR"
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.thetownhouse.com.tr/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/the-red-balloon-6/",
+     "yayin": "2025-12-24",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 24, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/rapor/kalite-906.json",
+     "id": "the-townhouse-kadikoy",
+     "eksik": [
+      "mutfak türü (kaynakta yok)"
+     ]
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-13/inceleme.json",
+     "id": "node/10661685656",
+     "eksik": [
+      "mutfak türü (kaynakta yok)",
+      "telefon",
+      "çalışma saatleri"
+     ],
+     "site": "https://www.thetownhouse.com.tr/"
+    },
+    {
+     "dal": "feature/yayin-906",
+     "dosya": "data/real/sor-index.json",
+     "id": "the-townhouse-kadikoy"
+    },
+    {
+     "dal": "feature/yayin-906",
+     "dosya": "data/real/venues.json",
+     "id": "the-townhouse-kadikoy",
+     "site": "https://www.thetownhouse.com.tr/"
+    }
+   ],
+   "cozulenEksik": [
+    "mutfak türü (kaynakta yok)",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "madera|sisli",
+   "ad": "Madera",
+   "ilce": "Şişli",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Modern mutfak",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Modern Mutfak/Modern Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "am’da Madera @ maderaistanbul → Ateşin etrafında buluşalım. Darülbedai Cd. No:4 Lütfi Kırdar Maçka, İstanbul 0536 778 89 20 madera@c-paces.com Davet ve organizasyon için",
+    "rehber": "Harbiye Mah., Darülbedai Cad. No:4 Şişli /İstanbul",
+    "kapiNo": "4",
+    "not": null
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.maderaistanbul.com/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/madera/",
+     "yayin": "2025-12-24",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 24, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "4c46c258-8de1-41bd-82e6-62a873688b97",
+     "eksik": [
+      "kaynaklı tür yok"
+     ],
+     "site": "https://www.maderaistanbul.com/",
+     "kimlik": "resmî site maderaistanbul.com: ad + telefon + sokak + kapı no (https://www.maderaistanbul.com/)"
+    }
+   ],
+   "cozulenEksik": [
+    "kaynaklı tür yok"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "roka istanbul|beyoglu",
+   "ad": "Roka İstanbul",
+   "ilce": "Beyoğlu",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Dünya mutfağı",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Dünya Mutfağı/International Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "eetAddress\":\"K\\u0131l\\u0131\\u00e7alipa\\u015fa Mah. Meclis-i Mebusan \\nSokak No: 14\\/2E Beyo\\u011flu\\/\\u0130stanbul\",\"addressCountry\":\"T\\u00fcrkiye\",\"postalCode\":\"\"},\"menu",
+    "rehber": "Galataport İstanbul, Kılıçali Paşa Mah. Meclis-i Mebusan Sok. O2 Blok, No: 14/2E, 34433 Beyoğlu/İstanbul",
+    "kapiNo": "14",
+    "not": "resmî JSON-LD No:14/2E (rehber No:14)"
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.rokarestaurant.com/en/roka-galataport-istanbul",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/roka-istanbul-5/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "neden": "resmî sayfa 403 — atlatılmadı; OSM'de nokta yok"
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "neden": "resmî sayfa 403 — atlatılmadı; OSM'de nokta yok"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "f3c9bc4e-dfde-4133-bd20-11da803baebf",
+     "eksik": [
+      "kapı numarası resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.rokarestaurant.com/en/roka-galataport-istanbul",
+     "kimlik": "resmî site rokarestaurant.com: ad + telefon + sokak + kapı no (https://www.rokarestaurant.com/en/roka-galataport-istanbul)"
+    },
+    {
+     "dal": "paket/istanbul-15-konumsuz-pilot",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    }
+   ],
+   "cozulenEksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "parma sole|sile",
+   "ad": "Parma Sole",
+   "ilce": "Şile",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Modern mutfak",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Modern Mutfak/Modern Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "ze kaydolabilirsiniz Email Address Kayıt Teşekkürler. ADRES Kozalı Caddesi No:23 Şile | İstanbul İLETİŞİM rezervasyon@parmasole.com.tr +90 216 738 4020 +90 216 738 4021 B",
+    "rehber": "Sahilköy Mah., Kozalı Cad., No:23, Şile/İstanbul",
+    "kapiNo": "23",
+    "not": null
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.parmasole.com/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/parma-sole/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "f19d828e-00a8-4f3b-af5f-93acd60d8208",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.parmasole.com/",
+     "kimlik": "resmî site parmasole.com.tr: ad + telefon + sokak + kapı no (https://www.parmasole.com/)"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-19/inceleme.json",
+     "id": "f19d828e-00a8-4f3b-af5f-93acd60d8208",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.parmasole.com/",
+     "kimlik": "resmî site parmasole.com.tr: ad + telefon + sokak + kapı no (https://www.parmasole.com/)"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "f19d828e-00a8-4f3b-af5f-93acd60d8208",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.parmasole.com/",
+     "kimlik": "resmî site parmasole.com.tr: ad + telefon + sokak + kapı no (https://www.parmasole.com/)"
+    },
+    {
+     "dal": "paket/istanbul-17-overture",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "f19d828e-00a8-4f3b-af5f-93acd60d8208",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.parmasole.com/",
+     "kimlik": "resmî site parmasole.com.tr: ad + telefon + sokak + kapı no (https://www.parmasole.com/)"
+    },
+    {
+     "dal": "paket/istanbul-18-overture",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "f19d828e-00a8-4f3b-af5f-93acd60d8208",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.parmasole.com/",
+     "kimlik": "resmî site parmasole.com.tr: ad + telefon + sokak + kapı no (https://www.parmasole.com/)"
+    },
+    {
+     "dal": "paket/istanbul-19-b-yukseltme",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "f19d828e-00a8-4f3b-af5f-93acd60d8208",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.parmasole.com/",
+     "kimlik": "resmî site parmasole.com.tr: ad + telefon + sokak + kapı no (https://www.parmasole.com/)"
+    }
+   ],
+   "cozulenEksik": [
+    "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "novikov restaurant|besiktas",
+   "ad": "Novikov Restaurant",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Dünya mutfağı",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Dünya Mutfağı/International Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "i - Jumeira Sahili Marakeş Maskat Riyad İstanbul Kuruçeşme, Muallim Naci Caddesi. No. 62, 34345 Beşiktaş, İstanbul Istanbul 34345 moist-reservations@mohg.com +90 212 349",
+    "rehber": "Mandarin Oriental Bosphorus, Kuruçeşme, Muallim Naci Cad. No:62, 34345 Beşiktaş/İstanbul",
+    "kapiNo": "62",
+    "not": null
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/novikov-restaurant/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-21/inceleme.json",
+     "id": "71587a5b-0333-4813-b73b-6b880fa7121a",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"asian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul",
+     "kimlik": "resmî site mandarinoriental.com: ad + telefon + sokak + kapı no (https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul)"
+    },
+    {
+     "dal": "paket/istanbul-21-overture-075",
+     "dosya": "data/paket/istanbul-21/inceleme.json",
+     "id": "71587a5b-0333-4813-b73b-6b880fa7121a",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"asian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul",
+     "kimlik": "resmî site mandarinoriental.com: ad + telefon + sokak + kapı no (https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul)"
+    },
+    {
+     "dal": "paket/istanbul-22-b-kalan",
+     "dosya": "data/paket/istanbul-21/inceleme.json",
+     "id": "71587a5b-0333-4813-b73b-6b880fa7121a",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"asian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul",
+     "kimlik": "resmî site mandarinoriental.com: ad + telefon + sokak + kapı no (https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul)"
+    },
+    {
+     "dal": "paket/istanbul-23-overture-075-kalan",
+     "dosya": "data/paket/istanbul-21/inceleme.json",
+     "id": "71587a5b-0333-4813-b73b-6b880fa7121a",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"asian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul",
+     "kimlik": "resmî site mandarinoriental.com: ad + telefon + sokak + kapı no (https://www.mandarinoriental.com/tr/istanbul/bosphorus/dine/novikov-istanbul)"
+    }
+   ],
+   "cozulenEksik": [
+    "tür yalnız Overture kategorisinde (\"asian_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "muutto anatolian tapas bar|beyoglu",
+   "ad": "Muutto Anatolian Tapas Bar",
+   "ilce": "Beyoğlu",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Şef restoranı",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Şef Restoranı/Chef Restaurant'",
+   "kindKatalogdaVar": false,
+   "adres": {
+    "resmi": "gion\":\"34\",\"postalCode\":\"34433\",\"streetAddress\":\"8 Meclis-i Mebusan Caddesi\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":\"41.0269862\",\"longitude\":\"28.9856071\"},\"url\":\"htt",
+    "rehber": "Galataport İstanbul, Kılıçali Paşa, Meclis-i Mebusan Cad. No:8, 34433 Beyoğlu/İstanbul",
+    "kapiNo": "8",
+    "not": null
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.muutto.com.tr/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/muutto-anatolian-tapas-bar-5/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "neden": "resmî site yok; OSM'deki muutto başka yerde (Kadıköy, kafe)"
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "neden": "resmî site yok; OSM'deki muutto başka yerde (Kadıköy, kafe)"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "3be3bc31-c25d-4314-8593-32d4780afc35",
+     "eksik": [
+      "kaynaklı tür yok"
+     ],
+     "site": "https://www.muutto.com.tr/",
+     "kimlik": "resmî şube sayfası muutto.com.tr: ad + telefon + sokak (https://www.muutto.com.tr/)"
+    },
+    {
+     "dal": "paket/istanbul-15-konumsuz-pilot",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    }
+   ],
+   "cozulenEksik": [
+    "kaynaklı tür yok"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "madhu s|besiktas",
+   "ad": "Madhu’s",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Dünya mutfağı",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Dünya Mutfağı/International Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "k a table Access Madhu's Restaurant Address: Visnezade Mah. Acisu Sok. N. 19, 34357 Macka Besiktas Istanbul Phone: +90 549 326 80 05 Email: restaurantreservation.istanbul",
+    "rehber": "Swissôtel The Bosphorus, İstanbul, Vişnezade, Acısu Sok., No:19, 34357 Beşiktaş/İstanbul",
+    "kapiNo": "19",
+    "not": null
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.swissotelthebosphorus.com/madhus/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/madhus-3/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "523dbf97-e269-4f70-ad21-67101b351a53",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"indian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.swissotelthebosphorus.com/madhus/",
+     "kimlik": "resmî şube sayfası swissotelthebosphorus.com: ad + telefon + sokak + kapı no (https://www.swissotelthebosphorus.com/madhus/)"
+    }
+   ],
+   "cozulenEksik": [
+    "tür yalnız Overture kategorisinde (\"indian_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "maderia sushi bar|sisli",
+   "ad": "Maderia Sushi Bar",
+   "ilce": "Şişli",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Dünya mutfağı",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Dünya Mutfağı/International Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "\":\"34\",\"postalCode\":\"34371\",\"streetAddress\":\"29-31 Süleyman Nazif Sokak\"},\"telephone\":\"0533 370 05 47\"} {\"@context\":\"https://schema.org/\",\"@type\":\"WebSite\",\"name\":\"Maderi",
+    "rehber": "Lotus Walk AVM, Halaskargazi Mah. Süleyman Nazif Sok., B Blok Sk. 29-35, 34371 Şişli/İstanbul",
+    "kapiNo": "29-35",
+    "not": "resmî JSON-LD 29-31, sayfa metni 29-35 (rehber 29-35)"
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.maderia.com.tr/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/maderia-sushi-bar-3/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-7/inceleme.json",
+     "id": "node/10553924609",
+     "eksik": [
+      "sokak adresi",
+      "mutfak türü (kaynakta yok)",
+      "telefon",
+      "çalışma saatleri"
+     ]
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "801ca7a6-7151-40e5-82bb-e3d2411a8186",
+     "eksik": [
+      "kapı numarası resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.maderia.com.tr/",
+     "kimlik": "resmî site maderia.com.tr: ad + telefon + sokak (https://www.maderia.com.tr/iletisim)"
+    }
+   ],
+   "cozulenEksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "mutfak türü (kaynakta yok)",
+    "sokak adresi",
+    "telefon",
+    "çalışma saatleri"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "inari piku etiler|besiktas",
+   "ad": "İnari Piku Etiler",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Dünya mutfağı",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Dünya Mutfağı / International Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "/ İstanbul +90 212 265 96 01 VIEW ON MAPS Etiler Etiler Mh. Nispetiye Cd. No: 89, 34337 Beşiktaş / İstanbul +90 212 216 35 35 VIEW ON MAPS Vadistanbul Ayazağa Mh. Cendere",
+    "rehber": "Etiler, Nisbetiye Cad No: 89, 34337 Beşiktaş/İstanbul",
+    "kapiNo": "89",
+    "not": "resmî sitede dört şube; kayıt Etiler şubesi"
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.inariomakase.com/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/inari-piku-etiler-3/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "f3a21f53-a324-4439-8113-6d566f390453",
+     "eksik": [
+      "adres resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.inariomakase.com/",
+     "kimlik": "resmî site inariomakase.com: ad + telefon (https://www.inariomakase.com/)"
+    }
+   ],
+   "cozulenEksik": [
+    "adres resmî kaynakta doğrulanmadı"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "havus lokantasi|bakirkoy",
+   "ad": "Havuş Lokantası",
+   "ilce": "Bakırköy",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Geleneksel mutfak",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Geleneksel Mutfak / Traditional Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "ir Kilis mutfağı. Adres Kısım Mah, Ataköy 2-5-6, Yalı, Rauf Orbay Cd. Kapı No-4 İç Kapı No-7, 34158 Bakırköy/İstanbul Bize Ulaşın +90 533 491 34 79 Çalışma Saatleri Pazar",
+    "rehber": "Yalı, Kısım Mah, Ataköy 2-5-6, Rauf Orbay Cad. Kapı No-4, İç Kapı No-7, 34158 Bakırköy/İstanbul",
+    "kapiNo": "4 (iç kapı 7)",
+    "not": "resmî ve rehber aynı: 'Kapı No-4, İç Kapı No-7'"
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://havus.com.tr/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/9613-2/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "neden": "resmî site yok; OSM'de nokta yok"
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "neden": "resmî site yok; OSM'de nokta yok"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "b39e69b3-8955-4088-9450-4a5e94e4b7b3",
+     "eksik": [
+      "kaynaklı tür yok"
+     ],
+     "site": "https://havus.com.tr/",
+     "kimlik": "resmî site havus.com.tr: ad + telefon (https://havus.com.tr/)"
+    },
+    {
+     "dal": "paket/istanbul-15-konumsuz-pilot",
+     "dosya": "data/katalog/michelin-istanbul-2026.json"
+    }
+   ],
+   "cozulenEksik": [
+    "kaynaklı tür yok"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "gina|sisli",
+   "ad": "Gina",
+   "ilce": "Şişli",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Dünya mutfağı",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Dünya Mutfağı / International Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "REZERVASYON YAP GALATAPORT İSTANBUL REZERVASYON YAP Kanyon Büyükdere Cad. Kanyon Avm No: 164 – A Levent / İstanbul 0212 353 52 86 Galataport İstanbul Kılıçali Paşa Mah.",
+    "rehber": "Kanyon AVM, Levent Mah. Büyükdere Cad, No:164/A, 34394 Şişli/İstanbul",
+    "kapiNo": "164",
+    "not": "resmî sitede Kanyon ve Galataport şubeleri ayrı; kayıt Kanyon şubesi"
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://www.gina.com.tr/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no + telefon (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/gina-3/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "eşleşti"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "3951da67-353c-4c2b-b49a-c66399c40df6",
+     "eksik": [
+      "kapı numarası resmî kaynakta doğrulanmadı",
+      "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://www.gina.com.tr/",
+     "kimlik": "resmî şube sayfası gina.com.tr: ad + telefon + sokak (https://www.gina.com.tr/)"
+    }
+   ],
+   "cozulenEksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"italian_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  },
+  {
+   "anahtar": "bi nevi deli|besiktas",
+   "ad": "Bi Nevi Deli",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "categoryId": "cat.restaurant",
+   "kind": "Modern mutfak",
+   "kindKaynagi": "G&M 2026 rehber etiketi: 'Modern Mutfak / Modern Cuisine'",
+   "kindKatalogdaVar": true,
+   "adres": {
+    "resmi": "Podcast İletişim THE MARKET ETİLER THE MARKET ETİLER Etiler Dilhayat Sk. No:10/1, Beşiktaş Her Gün, 10.00-22.00 Saatleri arasında; Dine-in, Take-out, Paket Servis MENÜ WH",
+    "rehber": "Etiler, Dilhayat Sok., No:10/1, 34337, Beşiktaş/İstanbul",
+    "kapiNo": "10",
+    "not": "telefon resmî sayfada eşleşmedi; sokak + kapı no birebir"
+   },
+   "kaynaklar": [
+    {
+     "tur": "resmî site / işletmeci sayfası",
+     "url": "https://binevideli.com/",
+     "yayin": null,
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad + sokak + kapı no (kesit: adres alanı)"
+    },
+    {
+     "tur": "editoryal rehber (G&M 2026)",
+     "url": "https://www.gault-millau.com.tr/9470-2/",
+     "yayin": "2025-12-23",
+     "erisim": "2026-11-15",
+     "kanitladigi": "ad, açık adres, telefon, rehber mutfak etiketi (puan ve metin saklanmadı)"
+    }
+   ],
+   "karsilastirma": {
+    "ad": "eşleşti",
+    "sokak": "eşleşti",
+    "kapiNo": "eşleşti",
+    "telefon": "resmî sayfada bulunamadı"
+   },
+   "faaliyet": {
+    "metin": "resmî site 2026-11-15 tarihinde açık ve adres/telefon gösteriyor; G&M 2026 rehberinde (Aralık 23, 2025)",
+    "tarih": "2026-11-15"
+   },
+   "oncekiKayit": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "d6e4a2c9-2ac5-42c7-bbec-9157cb838141",
+     "eksik": [
+      "tür yalnız Overture kategorisinde (\"vegetarian_restaurant\"); resmî kaynakta doğrulanmadı"
+     ],
+     "site": "https://binevideli.com/",
+     "kimlik": "resmî site bi-nevi.com: ad + sokak + kapı no (https://binevideli.com/)"
+    }
+   ],
+   "cozulenEksik": [
+    "tür yalnız Overture kategorisinde (\"vegetarian_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "pr57": null,
+   "yayin": "yayimlanmadi",
+   "kanitPolitikasi": null
+  }
+ ],
+ "belirsiz": [
+  {
+   "anahtar": "akbabali meyhane|beyoglu",
+   "ad": "Akbabalı Meyhane",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 1,
+   "gerekce": "aynı pasaj: No:11 ↔ No:7 (G&M ↔ OGGUSTO), telefon aynı — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "az cok thai|beyoglu",
+   "ad": "Az Çok Thai",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "sokak + kapı no + telefon resmî site ve G&M'de aynı; G&M sayfasında mutfak etiketi yok — tür kaynaklı değil",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-6/ret.json",
+     "id": "node/9349210859"
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-7/ret.json",
+     "id": "node/9349210859"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "3911aac5-c818-4050-be49-bb16bc1ece0a"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-19/inceleme.json",
+     "id": "3911aac5-c818-4050-be49-bb16bc1ece0a"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://azcokthai.com/",
+    "kod": 200,
+    "ad": true,
+    "sokak": true,
+    "kapi": true,
+    "telefon": true
+   }
+  },
+  {
+   "anahtar": "bado babadostu cag kebap|bahcelievler",
+   "ad": "Bado Babadostu Cağ Kebap",
+   "ilce": "Bahçelievler",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "resmî sayfada adres metni bulunamadı; kapı no yalnız yemek.com'da",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-16/inceleme.json",
+     "id": "c604ad25-c08a-4397-8d3f-92ea0fab1cc0"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-22/inceleme.json",
+     "id": "c604ad25-c08a-4397-8d3f-92ea0fab1cc0"
+    },
+    {
+     "dal": "paket/istanbul-16-overture",
+     "dosya": "data/paket/istanbul-16/inceleme.json",
+     "id": "c604ad25-c08a-4397-8d3f-92ea0fab1cc0"
+    },
+    {
+     "dal": "paket/istanbul-17-overture",
+     "dosya": "data/paket/istanbul-16/inceleme.json",
+     "id": "c604ad25-c08a-4397-8d3f-92ea0fab1cc0"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://www.babadostu.com/",
+    "kod": 200,
+    "ad": true,
+    "sokak": true,
+    "kapi": false,
+    "telefon": false
+   }
+  },
+  {
+   "anahtar": "chalet|besiktas",
+   "ad": "Chalet",
+   "ilce": "Beşiktaş",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "kayıtlı resmî URL Madhu's sayfası; Chalet otel sitesinde yalnız gezinme menüsünde; telefon farklı",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "f6ecc546-99ec-40ce-8b93-c8882d833248"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://www.swissotelthebosphorus.com/madhus/",
+    "kod": 200,
+    "ad": true,
+    "sokak": true,
+    "kapi": true,
+    "telefon": false
+   }
+  },
+  {
+   "anahtar": "frankie|beyoglu",
+   "ad": "Frankie",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "adres kompleks düzeyinde (Galataport O Blok Kat:2, kapı no yok); telefon farklı (rehber 212 286 95 01 ↔ resmî 212 401 05 57)",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "8c17457c-5e25-444d-8ed3-bc7a034c172e"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-22/inceleme.json",
+     "id": "8c17457c-5e25-444d-8ed3-bc7a034c172e"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "8c17457c-5e25-444d-8ed3-bc7a034c172e"
+    },
+    {
+     "dal": "paket/istanbul-17-overture",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "8c17457c-5e25-444d-8ed3-bc7a034c172e"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://www.frankieistanbul.com/",
+    "kod": 200,
+    "ad": true,
+    "sokak": true,
+    "kapi": false,
+    "telefon": false
+   }
+  },
+  {
+   "anahtar": "frankie bar|beyoglu",
+   "ad": "Frankie Bar",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "rehberde restoranla ayrı kayıt; aynı resmî site; kapı no yok ve telefon farklı",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "8c17457c-5e25-444d-8ed3-bc7a034c172e"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-22/inceleme.json",
+     "id": "8c17457c-5e25-444d-8ed3-bc7a034c172e"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "8c17457c-5e25-444d-8ed3-bc7a034c172e"
+    },
+    {
+     "dal": "paket/istanbul-17-overture",
+     "dosya": "data/paket/istanbul-17/inceleme.json",
+     "id": "8c17457c-5e25-444d-8ed3-bc7a034c172e"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://www.frankieistanbul.com/",
+    "kod": 200,
+    "ad": true,
+    "sokak": true,
+    "kapi": false,
+    "telefon": false
+   }
+  },
+  {
+   "anahtar": "la boom|sariyer",
+   "ad": "La Boom",
+   "ilce": "Sarıyer",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 1,
+   "gerekce": "aynı bina: 14/A ↔ 14; resmî site bulunamadı (alan adı başka işletmenin) — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "myk restoran|bakirkoy",
+   "ad": "MYK Restoran",
+   "ilce": "Bakırköy",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "iç kapı çelişkisi: resmî 'Atatürk Cad. No:23C', rehber 'No:23A'; telefon aynı",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "d7b02460-be08-477f-8377-1fb566eea8a7"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://mykrestoran.com.tr/",
+    "kod": 200,
+    "ad": true,
+    "sokak": true,
+    "kapi": false,
+    "telefon": true
+   }
+  },
+  {
+   "anahtar": "madam despina|sisli",
+   "ad": "Madam Despina",
+   "ilce": "Şişli",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 1,
+   "gerekce": "kapı no çelişkisi 5/A ↔ 9 ↔ 22 — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "parle|besiktas",
+   "ad": "Parlé",
+   "ilce": "Beşiktaş",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "ad + telefon resmî sitede aynı; adres AVM düzeyinde (Zorlu Center Meydan Katı), kapı no yok",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "633f342f-27e9-4434-a673-fe8c5a3d6eab"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://www.parle.com.tr/",
+    "kod": 200,
+    "ad": true,
+    "sokak": false,
+    "kapi": false,
+    "telefon": true
+   }
+  },
+  {
+   "anahtar": "pizza emirgan|sariyer",
+   "ad": "Pizza Emirgan",
+   "ilce": "Sarıyer",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 1,
+   "gerekce": "aynı bina (Sakıp Sabancı Cad. 14): iç kapı 14/B ↔ 14A; telefon aynı — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "slow bebek|besiktas",
+   "ad": "Slow Bebek",
+   "ilce": "Beşiktaş",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "sokak + kapı no + telefon resmî site ve G&M'de aynı; G&M sayfasında mutfak etiketi yok — tür kaynaklı değil",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "e9f57261-0bf1-49fb-9a2d-f188a4873c87"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "http://Www.slowbebek.com/",
+    "kod": 200,
+    "ad": true,
+    "sokak": false,
+    "kapi": false,
+    "telefon": true
+   }
+  },
+  {
+   "anahtar": "sofram balik restaurant|silivri",
+   "ad": "Sofram Balık Restaurant",
+   "ilce": "Silivri",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 1,
+   "gerekce": "kapı no 10 ve telefon iki kaynakta aynı; sokak adı çelişkili (Kadir Has Cad. ↔ İskele Cad.) — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "zambak bosnak borekcisi|bayrampasa",
+   "ad": "Zambak Boşnak Börekçisi",
+   "ilce": "Bayrampaşa",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "sokak + kapı no resmî site ve yemek.com'da aynı (19. Sk. No:111/A); tür/kategori etiketi yok (liste konusu Boşnak böreği), kafe/restoran ayrımı yapılmadı",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-16/inceleme.json",
+     "id": "676f934c-2a63-4fab-8a3c-30772e7ea0d9"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-22/inceleme.json",
+     "id": "676f934c-2a63-4fab-8a3c-30772e7ea0d9"
+    },
+    {
+     "dal": "paket/istanbul-16-overture",
+     "dosya": "data/paket/istanbul-16/inceleme.json",
+     "id": "676f934c-2a63-4fab-8a3c-30772e7ea0d9"
+    },
+    {
+     "dal": "paket/istanbul-17-overture",
+     "dosya": "data/paket/istanbul-16/inceleme.json",
+     "id": "676f934c-2a63-4fab-8a3c-30772e7ea0d9"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://www.zambakbosnakborekcisi.com/",
+    "kod": 200,
+    "ad": true,
+    "sokak": false,
+    "kapi": false,
+    "telefon": false
+   }
+  },
+  {
+   "anahtar": "caki restoran|basaksehir",
+   "ad": "Çakı Restoran",
+   "ilce": "Başakşehir",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 1,
+   "gerekce": "resmî sitede iki adres biçimi (Tınaztepe Cad. No:3 / Park Mavera 4 Cadde Dükkanları); editoryal kaynakta kapı no yok",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-18/inceleme.json",
+     "id": "f9ec98da-6af6-4cab-8175-fbf400e56277"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-22/inceleme.json",
+     "id": "f9ec98da-6af6-4cab-8175-fbf400e56277"
+    },
+    {
+     "dal": "paket/istanbul-18-overture",
+     "dosya": "data/paket/istanbul-18/inceleme.json",
+     "id": "f9ec98da-6af6-4cab-8175-fbf400e56277"
+    },
+    {
+     "dal": "paket/istanbul-19-b-yukseltme",
+     "dosya": "data/paket/istanbul-18/inceleme.json",
+     "id": "f9ec98da-6af6-4cab-8175-fbf400e56277"
+    }
+   ],
+   "resmiSiteTuru": {
+    "url": "https://cakirestoran.com/",
+    "kod": 200,
+    "ad": true,
+    "sokak": false,
+    "kapi": false,
+    "telefon": false
+   }
+  },
+  {
+   "anahtar": "acarpark restaurant|silivri",
+   "ad": "Acarpark Restaurant",
+   "ilce": "Silivri",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "bağlı kayıt bulundu ama kayıtlı resmî site yok: ['sokak adresi', 'telefon', 'çalışma saatleri']",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-7/inceleme.json",
+     "id": "node/14208454218"
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "ahmet ustam ocakbasi|sariyer",
+   "ad": "Ahmet Ustam Ocakbaşı",
+   "ilce": "Sarıyer",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî site yok; OSM'de nokta yok)",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "akira back istanbul|bakirkoy",
+   "ad": "Akira Back Istanbul",
+   "ilce": "Bakırköy",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî sayfa 403 — atlatılmadı; OSM'de restoran noktası yok (JW Marriott binası var))",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "apartiman yenikoy|sariyer",
+   "ad": "Apartıman Yeniköy",
+   "ilce": "Sarıyer",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî site yok; OSM'de nokta yok)",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "aqua|besiktas",
+   "ad": "Aqua",
+   "ilce": "Beşiktaş",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî sayfa (fourseasons.com) otomatik isteğe 403 — atlatılmadı; OSM'de restoran noktası yok (yalnız otel binası))",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "avlu restaurant|fatih",
+   "ad": "Avlu Restaurant",
+   "ilce": "Fatih",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî sayfa 403 — atlatılmadı; OSM'de restoran noktası yok (yalnız otel binası))",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "balikci kahraman|sariyer",
+   "ad": "Balıkçı Kahraman",
+   "ilce": "Sarıyer",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (OSM'de nokta yok (İskele Caddesi 15/1, Rumelikavağı); sitede telefon/sokak eşleşmedi)",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "basta neo bistro|kadikoy",
+   "ad": "Basta! Neo-Bistro",
+   "ilce": "Kadıköy",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî site yok; konum yalnız adres noktası (kimlik yalnız rehberde))",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "basak cafe restaurant|basaksehir",
+   "ad": "Başak Cafe Restaurant",
+   "ilce": "Başakşehir",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 2,
+   "gerekce": "yer tarifi ('Vadi Center yanı'); kapı no yok — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "defne bahcesi|basaksehir",
+   "ad": "Defne Bahçesi",
+   "ilce": "Başakşehir",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "bağlı kayıt bulundu ama kayıtlı resmî site yok: ['kapı numarası']",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/rapor/kalite-906.json",
+     "id": "defne-bahcesi-kahvalti-mangal-basaksehir"
+    },
+    {
+     "dal": "feature/yayin-906",
+     "dosya": "data/real/sor-index.json",
+     "id": "defne-bahcesi-kahvalti-mangal-basaksehir"
+    },
+    {
+     "dal": "feature/yayin-906",
+     "dosya": "data/real/venues.json",
+     "id": "defne-bahcesi-kahvalti-mangal-basaksehir"
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "fasuli garden cekmekoy|cekmekoy",
+   "ad": "Fasuli Garden Çekmeköy",
+   "ilce": "Çekmeköy",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 2,
+   "gerekce": "kapı no yalnız yemek.com'da; resmî site URL'si kaydedilmemiş — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "foxy nisantasi|sisli",
+   "ad": "Foxy Nişantaşı",
+   "ilce": "Şişli",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî site zaman aşımı; OSM'de nokta yok)",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "gun lokantasi|beyoglu",
+   "ad": "Gün Lokantası",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî site 404; OSM'de nokta yok)",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "kaen sushi|kadikoy",
+   "ad": "Kaen Sushi",
+   "ilce": "Kadıköy",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "bağlı kayıt bulundu ama kayıtlı resmî site yok: ['resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)']",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-18/inceleme.json",
+     "id": "a1419bad-7f73-4106-8551-6a4b8ecbcf6e"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-22/inceleme.json",
+     "id": "a1419bad-7f73-4106-8551-6a4b8ecbcf6e"
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "a1419bad-7f73-4106-8551-6a4b8ecbcf6e"
+    },
+    {
+     "dal": "paket/istanbul-18-overture",
+     "dosya": "data/paket/istanbul-18/inceleme.json",
+     "id": "a1419bad-7f73-4106-8551-6a4b8ecbcf6e"
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "maromi|beyoglu",
+   "ad": "Maromi",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "paket/istanbul-15-konumsuz-pilot",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "paket/istanbul-16-overture",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "meshur balkan tulumba ve dondurma|eyupsultan",
+   "ad": "Meşhur Balkan Tulumba ve Dondurma",
+   "ilce": "Eyüpsultan",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 2,
+   "gerekce": "resmî site + yemek.com; kapı no hiçbir kaynakta yok — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "meshur rumeli tulumbacisi|bayrampasa",
+   "ad": "Meşhur Rumeli Tulumbacısı",
+   "ilce": "Bayrampaşa",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 2,
+   "gerekce": "kapı no yalnız yemek.com'da; resmî site URL'si kaydedilmemiş — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "monteverdi ristorante|besiktas",
+   "ad": "Monteverdi Ristorante",
+   "ilce": "Beşiktaş",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî site yok; konum Conrad binası (Saray Caddesi 5) bulunuyor ama kimlik yalnız rehberde)",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "morini|besiktas",
+   "ad": "Morini",
+   "ilce": "Beşiktaş",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "bağlı kayıt bulundu ama kayıtlı resmî site yok: ['ilçe resmî sitede geçmiyor (koordinatsız kayıtta ilçe kanıtı gerekir)']",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-27/inceleme.json",
+     "id": "2c3ac143-d4aa-49b0-b839-d03f5bd79002"
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "natolia istanbul|basaksehir",
+   "ad": "Natolia İstanbul",
+   "ilce": "Başakşehir",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 2,
+   "gerekce": "AVM adresi; kapı no hiçbir birincil kaynakta yok — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "nazende cadde|kadikoy",
+   "ad": "Nazende Cadde",
+   "ilce": "Kadıköy",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (resmî site yok; OSM'de nokta yok)",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "prava pita bosnak borekcisi|bayrampasa",
+   "ad": "Prava Pita Boşnak Börekçisi",
+   "ilce": "Bayrampaşa",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "bağlı kayıt bulundu ama kayıtlı resmî site yok: ['fast_food_turu_belirsiz_ya_da_kapsam_disi']",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-7/ret.json",
+     "id": "node/6791304785"
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "seraf vadi|sariyer",
+   "ad": "Seraf Vadi",
+   "ilce": "Sarıyer",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "MICHELIN 2026 + G&M 2026 iki editoryal kaynak; işletmeci/resmî kaynak kaydı yok ya da açılmadı (OSM'de nokta yok; sitede şube telefonu/sokağı eşleşmedi)",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-10/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/paket/istanbul-12/inceleme.json",
+     "id": null
+    },
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "id": null
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "tere|beyoglu",
+   "ad": "Tere",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "bağlı kayıt bulundu ama kayıtlı resmî site yok: ['resmî site yalnız http (işletme kaydı https kaynak bağlantısı ister)']",
+   "bagliKayitlar": [
+    {
+     "dal": "katalog/gece-2000",
+     "dosya": "data/paket/istanbul-24/inceleme.json",
+     "id": "38ab9ce1-ef51-4b37-bc05-8e5ae4af3213"
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "udonya japanese restaurant|beyoglu",
+   "ad": "Udonya Japanese Restaurant",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 2,
+   "gerekce": "bağlı kayıt bulundu ama kayıtlı resmî site yok: ['kapı numarası']",
+   "bagliKayitlar": [
+    {
+     "dal": "feature/investor-v1",
+     "dosya": "data/katalog/rapor/kalite-906.json",
+     "id": "udonya-japanese-restaurant-beyoglu"
+    },
+    {
+     "dal": "feature/yayin-906",
+     "dosya": "data/real/sor-index.json",
+     "id": "udonya-japanese-restaurant-beyoglu"
+    },
+    {
+     "dal": "feature/yayin-906",
+     "dosya": "data/real/venues.json",
+     "id": "udonya-japanese-restaurant-beyoglu"
+    }
+   ],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "ibb cirpici kent lokantasi|zeytinburnu",
+   "ad": "İBB Çırpıcı Kent Lokantası",
+   "ilce": "Zeytinburnu",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 2,
+   "gerekce": "park girişi adresi; kapı no yok — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "brasserie noir|kadikoy",
+   "ad": "Brasserie Noir",
+   "ilce": "Kadıköy",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 3,
+   "gerekce": "No:481 (G&M 2025) ↔ No:455 (Time Out 2018); taşınma olabilir — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "fes cafe|silivri",
+   "ad": "Fes Cafe",
+   "ilce": "Silivri",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "grandma s wonderland|silivri",
+   "ad": "Grandma’s Wonderland",
+   "ilce": "Silivri",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "hodan|beyoglu",
+   "ad": "Hodan",
+   "ilce": "Beyoğlu",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 3,
+   "gerekce": "olası taşınma: Hayriye Cad. No:12 ↔ Mim Kemal Öke Cd. No:19 — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "husrev lokantalari|besiktas",
+   "ad": "Hüsrev Lokantaları",
+   "ilce": "Beşiktaş",
+   "kaynakKodu": "eksik-adres",
+   "oncelik": 3,
+   "gerekce": "rehber Gayrettepe/Beşiktaş, resmî site Esentepe — ilçe belirsiz — bu turda yeni kaynak açılmadı (kayıtlı resmî URL yok ya da kapı no hiçbir kaynakta yok)",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "masa restaurant|sariyer",
+   "ad": "Masa Restaurant",
+   "ilce": "Sarıyer",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "natolia|basaksehir",
+   "ad": "Natolia",
+   "ilce": "Başakşehir",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "pierre loti tepesi turistik tesisleri|eyupsultan",
+   "ad": "Pierre Loti Tepesi Turistik Tesisleri",
+   "ilce": "Eyüpsultan",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "sahil cafe 1a|buyukcekmece",
+   "ad": "Sahil Cafe 1A",
+   "ilce": "Büyükçekmece",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "seraf restaurant|bagcilar",
+   "ad": "Seraf Restaurant",
+   "ilce": "Bağcılar",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "the red balloon|sariyer",
+   "ad": "The Red Balloon",
+   "ilce": "Sarıyer",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  },
+  {
+   "anahtar": "sirdanci remzi|esenyurt",
+   "ad": "Şırdancı Remzi",
+   "ilce": "Esenyurt",
+   "kaynakKodu": "baska-kayitla-eslesmis",
+   "oncelik": 3,
+   "gerekce": "PR #50 eşleşmesi yerel dal/Production dosyalarında bulunamadı",
+   "bagliKayitlar": [],
+   "resmiSiteTuru": null
+  }
+ ],
+ "duzeltmeler56": [
+  {
+   "anahtar": "lokanta by divan istanbul|sisli",
+   "alan": "teslim/yayin",
+   "eski": "sorunlu / yayimlanmadi",
+   "yeni": "yayimlandi",
+   "slug": "lokanta-by-divan-sisli",
+   "gerekce": "Production 'Lokanta by Divan' aynı ilçe ve aynı adres (Asker Ocağı Cad. No:1); #56 ad farkı ('İstanbul' eki) nedeniyle eşleşmeyi kaçırdı"
+  },
+  {
+   "anahtar": "nappo pizza|",
+   "alan": "ilce",
+   "eski": "Şişli (kaynakta ilçe yok; Production kaydından)",
+   "yeni": null,
+   "ilceProduction": "Şişli",
+   "gerekce": "ilçe alanına açıklama yazılmamalı; kaynak (G&M) ilçe vermiyor. Production değeri ayrı alanda; tahminle doldurulmadı"
+  },
+  {
+   "anahtar": "alacati gurme i ala|basaksehir",
+   "alan": "kanitPolitikasi",
+   "eski": "sahip kararı 15.11.2026: tarihli editoryal + sipariş platformu sayfası iki kaynak sayılır",
+   "yeni": "DOGRULANMAMIS",
+   "dayanak": "Bu Claude oturumunda kullanıcının 15.11.2026 tarihli 'Platform + editoryal yeter' mesajı. 'Sahip kararı' ifadesi kişiyi doğrulanmış biçimde belirtmiyordu; Codex/Pilot hattında doğrudan kullanıcı onayı olarak doğrulanmadı.",
+   "not": "#57 iki kaydı bu gerekçeyle bekletti: platform sayfası tam sokak/kapı yayımlamıyor, editoryal adresle şube bağı bağımsız kabulde tamamlanmadı. Kabul için Harun'un doğrudan teyidi gerekir"
+  },
+  {
+   "anahtar": "meshur yayla kokoreccisi|bahcelievler",
+   "alan": "kanitPolitikasi",
+   "eski": "sahip kararı 15.11.2026: tarihli editoryal + sipariş platformu sayfası iki kaynak sayılır",
+   "yeni": "DOGRULANMAMIS",
+   "dayanak": "Bu Claude oturumunda kullanıcının 15.11.2026 tarihli 'Platform + editoryal yeter' mesajı. 'Sahip kararı' ifadesi kişiyi doğrulanmış biçimde belirtmiyordu; Codex/Pilot hattında doğrudan kullanıcı onayı olarak doğrulanmadı.",
+   "not": "#57 iki kaydı bu gerekçeyle bekletti: platform sayfası tam sokak/kapı yayımlamıyor, editoryal adresle şube bağı bağımsız kabulde tamamlanmadı. Kabul için Harun'un doğrudan teyidi gerekir"
+  },
+  {
+   "anahtar": "pita cafe bosnak boregi|avcilar",
+   "alan": "kanitPolitikasi",
+   "eski": "sahip kararı 15.11.2026: tarihli editoryal + sipariş platformu sayfası iki kaynak sayılır",
+   "yeni": "DOGRULANMAMIS",
+   "dayanak": "Bu Claude oturumunda kullanıcının 15.11.2026 tarihli 'Platform + editoryal yeter' mesajı. 'Sahip kararı' ifadesi kişiyi doğrulanmış biçimde belirtmiyordu; Codex/Pilot hattında doğrudan kullanıcı onayı olarak doğrulanmadı.",
+   "not": "#57 iki kaydı bu gerekçeyle bekletti: platform sayfası tam sokak/kapı yayımlamıyor, editoryal adresle şube bağı bağımsız kabulde tamamlanmadı. Kabul için Harun'un doğrudan teyidi gerekir"
+  }
+ ],
+ "yayimlanmisKayitBulgulari": [
+  {
+   "kayit": "Eleos Yeşilköy",
+   "slug": "eleos-yesilkoy-bakirkoy",
+   "bulgu": "kapı no çelişkisi: G&M 2026 'Yeşilbahçe Sok. No:5' ↔ #48 ve Production 'Yeşilbahçe Sokak No:9'",
+   "kaynak": "#56 manifest kaynakAdresleri + Production; YorumS dry-run de bildirdi"
+  },
+  {
+   "kayit": "Suna’nın Yeri",
+   "slug": "suna-nin-yeri-uskudar",
+   "bulgu": "G&M 2026 'Kandilli İskele Cad. No:4A' ↔ Production 'Kandilli İskele Caddesi No:17'",
+   "kaynak": "#56 manifest + Production"
+  },
+  {
+   "kayit": "Deraliye Restaurant",
+   "slug": "deraliye-fatih",
+   "bulgu": "G&M 2026 'Ticarethane Sok. No:13' ↔ Production 'Ticarethane Sokak No:10'",
+   "kaynak": "#56 manifest + Production"
+  },
+  {
+   "kayit": "1924 İstanbul",
+   "slug": "1924-istanbul-beyoglu",
+   "bulgu": "manifestte kapı no boş: Asmalı Mescit, Olivya Gç. 7-A, 34435 Beyoğlu/İstanbul",
+   "kaynak": "#56 manifest (YorumS 'beş kayıtta kapı yok' bulgusuyla sayı aynı; liste YorumS'tan gelince karşılaştırılmalı)"
+  },
+  {
+   "kayit": "Pandeli",
+   "slug": "pandeli-fatih",
+   "bulgu": "manifestte kapı no boş: Rüstempaşa Mah., Balık Pazarı kapısı Sok., Mısır Çarşısı İçi 1, D:2, 34110 Fatih/İstanbul",
+   "kaynak": "#56 manifest (YorumS 'beş kayıtta kapı yok' bulgusuyla sayı aynı; liste YorumS'tan gelince karşılaştırılmalı)"
+  },
+  {
+   "kayit": "Lokanta Göktürk",
+   "slug": "lokanta-gokturk-eyupsultan",
+   "bulgu": "manifestte kapı no boş: Göktürk Merkez Mah., İstanbul Cad., NeoVista Sitesi, 16/E Eyüpsultan/İstanbul",
+   "kaynak": "#56 manifest (YorumS 'beş kayıtta kapı yok' bulgusuyla sayı aynı; liste YorumS'tan gelince karşılaştırılmalı)"
+  },
+  {
+   "kayit": "Liman İstanbul",
+   "slug": "liman-istanbul-beyoglu",
+   "bulgu": "manifestte kapı no boş: Galataport İstanbul, Kılıçali Paşa Mah., Meclis-i Mebusan Sk. O2 Blok Beyoğlu/İstanbul",
+   "kaynak": "#56 manifest (YorumS 'beş kayıtta kapı yok' bulgusuyla sayı aynı; liste YorumS'tan gelince karşılaştırılmalı)"
+  },
+  {
+   "kayit": "Kör Agop Restaurant",
+   "slug": "kor-agop-beyoglu",
+   "bulgu": "manifestte kapı no boş: Şehsuvar Bey MAh., Ördekli Bakkal Sok., Fatih/İstanbul",
+   "kaynak": "#56 manifest (YorumS 'beş kayıtta kapı yok' bulgusuyla sayı aynı; liste YorumS'tan gelince karşılaştırılmalı)"
+  }
+ ]
+}
