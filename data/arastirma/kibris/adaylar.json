@@ -39,7 +39,7 @@
    },
    "categoryId": "cat.restaurant",
    "kind": "Akdeniz mutfağı",
-   "adres": "Giannou Kranidioti 11, Parklane Resort, Pyrgos 4534, Limasol",
+   "adres": "Giannou Kranidioti 11, Parklane Resort, Pyrgos, Limasol",
    "kaynaklar": [
     {
      "tur": "resmî işletme kaynağı",
@@ -80,13 +80,16 @@
      "kapiNo": "eşleşti (11; resmî + MICHELIN)",
      "telefon": "eşleşti (resmî + Cyprus Mail: 25 862222)",
      "otel": "eşleşti (üç kaynak)",
-     "postaKodu": "farklı: resmî 4534, MICHELIN 56560 — aktarımda resmî kaynaktaki kullanıldı"
+     "postaKodu": "açık — çelişki: resmî 4534, MICHELIN 56560; adres posta kodsuz"
     }
    },
    "durum": "aday-tam",
    "guven": "güçlü",
    "not": "otel içindeki marka restoranı; markanın başka ülkelerde şubeleri var — yalnız Limasol şubesi",
-   "teyitTuru_15_11": "MICHELIN Guide otel sayfası sokak ve kapı numarasını bağımsız olarak doğruladı → tam kanıtlı"
+   "teyitTuru_15_11": "MICHELIN Guide otel sayfası sokak ve kapı numarasını bağımsız olarak doğruladı → tam kanıtlı",
+   "acikAlanlar": {
+    "postaKodu": "açık — çelişki: resmî 4534, MICHELIN 56560; adres posta kodsuz yazıldı"
+   }
   },
   {
    "id": "kibris/oniro-by-the-sea",

@@ -2,7 +2,80 @@
  "_aciklama": "Kıbrıs pilotu — teknik kabul manifesti (yalnız araştırma). Uygulama kataloğuna aktarılmadı, veritabanına yazılmadı, canlıda sayılmaz. Kuzey ve güney ayrı bölgesel veri. Hukuki statü, saat dilimi, para birimi ve eksik adres kabulü kesinleştirilmedi. Puan, yorum, ziyaret ve koordinat yok.",
  "olusturma": "2026-11-15",
  "kaynakDosya": "data/arastirma/kibris/adaylar.json (kanıt taraması c184108; bu manifest ağ erişimi olmadan türetildi)",
- "kabulKurali": "Tam kanıtlı = resmî işletme kaynağı + son 12 ayda tarihli bağımsız kaynak (kimlik, güncel faaliyet); sokak ve kapı no resmî kaynakla en az bir bağımsız kaynakta aynı (otel içi restoranda restoranı adıyla anan bağımsız rehberin otel sayfası). Kapı numarası olmayan ya da sokak/şubesi tek kaynakta kalan kayıt tam kabul edilmez (koşullu).",
+ "kabulKurali": "Tam kanıtlı = resmî işletme kaynağı + son 12 ayda tarihli bağımsız kaynak (kimlik, güncel faaliyet); sokak ve kapı no resmî kaynakla en az bir bağımsız kaynakta aynı. Otel sayfası kuralı (Dot koordinasyonu, 15.11.2026): bağımsız rehberin otel sayfası yalnız restoranı açıkça adıyla ve aynı tesiste tanımlıyorsa adresi destekleyen kanıt sayılır; faaliyet kanıtının ya da gerçek Preview kabulünün yerine geçmez. Kapı numarası olmayan ya da sokak/şubesi tek kaynakta kalan kayıt tam kabul edilmez (koşullu).",
+ "teslim": {
+  "kayitlar": [
+   "kibris/lpm-restaurant-bar-limassol",
+   "kibris/oniro-by-the-sea",
+   "kibris/masamoro",
+   "kibris/stavri-kitchen",
+   "kibris/gourmet-taverna",
+   "kibris/novel-the-agora-hotel"
+  ],
+  "canliSayilmaz": true,
+  "canliTaban": "Production b83883b (PR #53): 833 kayıt / 798 aktif (Pilot doğrulaması, 15.11.2026) — bu adaylar dahil değil",
+  "disarida": {
+   "kosullu": [
+    "kibris/calamari-restaurant",
+    "kibris/bellapais-gardens-restaurant",
+    "kibris/silver-rocks-restaurant",
+    "kibris/niazi-s-restaurant-girne"
+   ],
+   "bekleyen": 14
+  },
+  "acikBolgeAdresKararlari": [
+   {
+    "konu": "district / bölge eşlemesi",
+    "durum": "açık",
+    "not": "İstanbul ilçe alanının Kıbrıs karşılığı yok; cografiBolge + yerlesim hazır, district boş. Bölge modeli YorumS/Codex gereksinimiyle belirlenecek"
+   },
+   {
+    "konu": "slug ve ref biçimi",
+    "durum": "açık",
+    "not": "öneri '<ad>-<bolge>-kibris' ve 'kibris/<slug>'; Codex kararı"
+   },
+   {
+    "konu": "LPM posta kodu",
+    "durum": "açık",
+    "not": "resmî 4534, MICHELIN 56560; adres posta kodsuz yazıldı"
+   },
+   {
+    "konu": "neighborhood",
+    "durum": "açık",
+    "not": "kaynaklarda mahalle yok; boş"
+   },
+   {
+    "konu": "koordinat",
+    "durum": "açık",
+    "not": "lat/lng null; açık veri eşleştirmesi ayrı iş, uydurma yok"
+   },
+   {
+    "konu": "telefon",
+    "durum": "kısmen açık",
+    "not": "5 kayıtta iki kaynakta aynı numara E.164; MasaMoro boş (yalnız bağımsız kaynakta); Oniro 7000 aralığı — yurt dışı erişimi teyit edilmedi"
+   },
+   {
+    "konu": "saat dilimi, çalışma saati, para birimi",
+    "durum": "kesinleştirilmedi",
+    "not": "aktarılmaz; operasyonel varsayım alanları yalnız not"
+   },
+   {
+    "konu": "hukuki statü",
+    "durum": "kesinleştirilmedi",
+    "not": "bolge.hukukiNot tarafsız not; hüküm değil. 6 kaydın hepsi güney operasyon alanında"
+   },
+   {
+    "konu": "tür",
+    "durum": "kısmen açık",
+    "not": "Gourmet 'Geleneksel mutfak' ('Kıbrıs mutfağı' kararı açık); Oniro ve Novél tür teyidi teknik kabulde"
+   },
+   {
+    "konu": "Preview kabulü",
+    "durum": "yapılmadı",
+    "not": "bu manifest araştırma teslimidir; gerçek Preview kabulü Codex/Pilot'ta"
+   }
+  ]
+ },
  "sayim": {
   "tamKanitli": {
    "kuzey": 0,
@@ -64,7 +137,7 @@
      "otel": "eşleşti (üç kaynak)",
      "postaKodu": "farklı: resmî 4534, MICHELIN 56560 — aktarımda resmî kaynaktaki kullanıldı"
     },
-    "kanitGerekcesi": "Kimlik ve güncel faaliyet: resmî sayfa + Cyprus Mail (29.01.2026), aynı otel ve telefon. Sokak ve kapı no: resmî sayfa ile MICHELIN Guide otel sayfası (restoranı 'La Petite Maison' adıyla anıyor) aynı — 11 Giannou Kranidioti. Posta kodu kaynaklarda farklı; resmî kaynaktaki kullanıldı.",
+    "kanitGerekcesi": "Kimlik ve güncel faaliyet: resmî sayfa + Cyprus Mail (29.01.2026), aynı otel ve telefon. Sokak ve kapı no: resmî sayfa ile MICHELIN Guide otel sayfası (restoranı 'La Petite Maison' adıyla anıyor) aynı — 11 Giannou Kranidioti. Posta kodu kaynaklarda çelişiyor (4534 / 56560); açık alan, aktarılmadı.",
     "bolge": {
      "ada": "Kıbrıs",
      "cografiBolge": "Limasol bölgesi",
@@ -73,7 +146,7 @@
      "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
     },
     "yerlesim": "Pyrgos (Limasol)",
-    "postaKodu": "4534",
+    "postaKodu": null,
     "telefon": {
      "e164": "+35725862222",
      "dogrulama": "iki kaynakta aynı: resmî '+357 25 862222', Cyprus Mail '25862222' (MICHELIN'deki 25 862 000 otel santrali, kullanılmadı)"
@@ -81,12 +154,15 @@
     "koordinat": null,
     "koordinatNotu": "boş — uydurma yok; açık veri eşleştirmesi (ör. OSM) ayrı iş",
     "tur": "Akdeniz mutfağı — bağımsız yazı Fransız-Akdeniz (French Riviera)",
+    "acikAlanlar": {
+     "postaKodu": "açık — kaynaklar çelişiyor: resmî LPM sayfası 4534, MICHELIN otel sayfası 56560; aktarımda yazılmadı"
+    },
     "aktarim": {
      "hazir": {
       "name": "LPM Restaurant & Bar Limassol",
       "categoryId": "cat.restaurant",
       "kind": "Akdeniz mutfağı",
-      "address": "Parklane Resort, Giannou Kranidioti 11, Pyrgos 4534, Limasol",
+      "address": "Parklane Resort, Giannou Kranidioti 11, Pyrgos, Limasol",
       "phone": "+35725862222",
       "website": "https://lpmrestaurants.com/limassol/",
       "sourceKind": "official_site",
@@ -154,6 +230,7 @@
     "koordinat": null,
     "koordinatNotu": "boş — uydurma yok; açık veri eşleştirmesi (ör. OSM) ayrı iş",
     "tur": "Akdeniz mutfağı — bağımsız yazı 'Modern Mediterranean'; yazı mekânı beach club'a yakın anlatıyor, tür teyidi teknik kabulde",
+    "acikAlanlar": {},
     "aktarim": {
      "hazir": {
       "name": "Oniro by the Sea",
@@ -227,6 +304,7 @@
     "koordinat": null,
     "koordinatNotu": "boş — uydurma yok; açık veri eşleştirmesi (ör. OSM) ayrı iş",
     "tur": "Dünya mutfağı — bağımsız yazı 'Tacos'; katalogda Meksika türü yok",
+    "acikAlanlar": {},
     "aktarim": {
      "hazir": {
       "name": "MasaMoro",
@@ -300,6 +378,7 @@
     "koordinat": null,
     "koordinatNotu": "boş — uydurma yok; açık veri eşleştirmesi (ör. OSM) ayrı iş",
     "tur": "Burger — resmî menü burger ağırlıklı; bağımsız yazı 'International'. Ad yazımı: resmî 'Stavri Kitchen', yazı 'Stavris Kitchen'",
+    "acikAlanlar": {},
     "aktarim": {
      "hazir": {
       "name": "Stavri Kitchen",
@@ -373,6 +452,7 @@
     "koordinat": null,
     "koordinatNotu": "boş — uydurma yok; açık veri eşleştirmesi (ör. OSM) ayrı iş",
     "tur": "Geleneksel mutfak — bağımsız yazı 'Cyprus cuisine'; 'Kıbrıs mutfağı' türü sahip kararı",
+    "acikAlanlar": {},
     "aktarim": {
      "hazir": {
       "name": "Gourmet Taverna",
@@ -453,6 +533,7 @@
     "koordinat": null,
     "koordinatNotu": "boş — uydurma yok; açık veri eşleştirmesi (ör. OSM) ayrı iş",
     "tur": "Kahvaltı — bağımsız yazı kahvaltı odaklı; MICHELIN 'Akdeniz bistrosu' diyor; tür teyidi teknik kabulde",
+    "acikAlanlar": {},
     "aktarim": {
      "hazir": {
       "name": "Novél (The Agora Hotel)",

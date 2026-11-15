@@ -119,6 +119,15 @@ for (const r of Object.values(M.tamKanitli).flat()) {
   t(`${r.id}: aktarım alanları`, ["name", "categoryId", "kind", "address", "website", "sourceKind", "sourceUrl", "verifiedAt", "verification"].every((k) => !!h[k]) && h.kind !== "Restoran");
   t(`${r.id}: ilçe/saat/para kesinleştirilmedi`, !("district" in h) && !("openingHours" in h) && !!kb.district && !!kb.openingHours && !!kb.paraBirimi);
 }
+const MT = M as unknown as { teslim: { kayitlar: string[]; canliSayilmaz: boolean; disarida: { kosullu: string[]; bekleyen: number }; acikBolgeAdresKararlari: { konu: string; durum: string }[] } };
+t("teslim: yalnız tam kanıtlı kayıtlar", JSON.stringify([...MT.teslim.kayitlar].sort()) === JSON.stringify(dIds("aday-tam")));
+t("teslim: koşullu ve bekleyen dışarıda", JSON.stringify([...MT.teslim.disarida.kosullu].sort()) === JSON.stringify(dIds("aday-kosullu")) && MT.teslim.disarida.bekleyen === dIds("inceleme").length && MT.teslim.kayitlar.every((i) => !MT.teslim.disarida.kosullu.includes(i)));
+t("teslim: canlı sayılmaz", MT.teslim.canliSayilmaz === true);
+t("teslim: açık bölge/adres kararları listeli", ["district", "slug", "posta kodu", "saat dilimi", "hukuki"].every((k) => MT.teslim.acikBolgeAdresKararlari.some((c) => c.konu.toLocaleLowerCase("tr").includes(k))));
+{ const l = Object.values(M.tamKanitli).flat().find((r) => r.id === "kibris/lpm-restaurant-bar-limassol") as MK & { postaKodu?: string | null; acikAlanlar?: Record<string, string>; aktarim: { hazir: { address: string } } };
+  t("LPM: posta kodu çelişkisi açık alan, yanlış kesinlik yok", !!l && l.postaKodu === null && /4534/.test(l.acikAlanlar?.postaKodu ?? "") && /56560/.test(l.acikAlanlar?.postaKodu ?? "") && !/4534|56560/.test(l.aktarim.hazir.address)); }
+for (const r of Object.values(M.tamKanitli).flat().filter((r) => K_(r.id).adresKaniti?.durum === OTEL))
+  t(`${r.id}: otel sayfası restoranı adıyla anıyor`, K_(r.id).kaynaklar.some((k) => /bağımsız rehber/.test(k.tur) && /'[^']+' adıyla|bistrosu '|bistro '/.test(k.kanitladigi ?? "")));
 for (const r of Object.values(M.kosullu).flat()) t(`${r.id}: koşullu kayıt aktarılmıyor`, typeof r.aktarim === "string" && /^yok/.test(r.aktarim as string) && !!r.kosul);
 
 /* 6 */

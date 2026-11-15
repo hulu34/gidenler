@@ -18,9 +18,11 @@ Bütün uzak dallar ve `data/`, `docs/`, `lib/` tarandı:
 
 | İstanbul hedefi | Sayı |
 |---|---:|
-| Canlı sitede gösterilen aktif mekân | **783** (15.11 ölçümü; PR #53 sonrası yeniden ölçülmedi) |
+| Canlı aktif mekân (Production `b83883b`, Pilot doğrulaması 15.11.2026) | **798** |
 | Production dalı kayıt (PR #51'in 17 ve PR #53'ün 15 kaydı dahil) | 833 |
-| 2.000 aktife kalan (yalnız yayımlanmış aktif, 783'e göre) | **1.217** |
+| 2.000 aktife kalan (yalnız yayımlanmış aktif) | **1.202** |
+
+Kıbrıs adayları bu sayılara dahil değil ve canlı sayılmaz.
 
 | Kıbrıs pilotu (yalnız araştırma, canlıda değil) | Kuzey | Güney | Toplam |
 |---|---:|---:|---:|
@@ -109,16 +111,49 @@ Altı koşullu kaydın eksikleri yalnız yeni kaynaklarla kapatılmaya çalış�
 - Toplayıcı, platform, harita ve otel rezervasyon siteleri kanıt sayılmadı.
 - 403 hatası aşılmadı, işletmelere yazılmadı.
 
-**Kural:** Otel içindeki bir restoran için bağımsız rehberin otel sayfası adres kaynağı sayıldı. Koşulu, sayfanın restoranı adıyla anması. Kimlik ve güncel faaliyet yine 2026 tarihli Cyprus Mail yazısından geliyor. Böylece LPM ve Novél üç kaynakla tam kanıtlı oldu. Bu kural uygun görülmezse iki kayıt koşulluya döner.
+**Otel sayfası kuralı** (Dot koordinasyonu ile kabul edildi, 15.11.2026):
+- Bağımsız rehberin otel sayfası, ancak restoranı açıkça adıyla ve aynı tesiste tanımlıyorsa adresi destekleyen kanıt sayılır.
+- Bu kural faaliyet kanıtının ya da gerçek Preview kabulünün yerine geçmez.
+- LPM ve Novél'de kimlik ve güncel faaliyet 2026 tarihli Cyprus Mail yazısından geliyor.
+- MICHELIN otel sayfaları restoranları adıyla anıyor: Parklane'deki "La Petite Maison" ve The Agora Hotel'deki "Novél" bistrosu.
 
 | Kayıt | Yeni kaynak | Sonuç | Kalan eksik |
 |---|---|---|---|
-| LPM | MICHELIN Guide otel sayfası: Parklane, **11 Giannou Kranidioti Street**; restoran "La Petite Maison" adıyla geçiyor | **Tam kanıtlı** | Posta kodu kaynaklarda farklı (4534 / 56560); resmî kaynaktaki kullanıldı |
+| LPM | MICHELIN Guide otel sayfası: Parklane, **11 Giannou Kranidioti Street**; restoran "La Petite Maison" adıyla geçiyor | **Tam kanıtlı** | **Posta kodu açık alan:** resmî 4534, MICHELIN 56560. Adres posta kodsuz yazıldı |
 | Novél | MICHELIN Guide otel sayfası (Almanca sürüm; İngilizce 404): The Agora Hotel, **25 Timiou Stavrou, 7700**; telefon 24 726000; bistro "Novél" | **Tam kanıtlı** | — |
 | Bellapais Gardens | Petit Futé 2026 listesi: "Şehit Fuat Niyazi Sokak, Bellapaïs - Beylerbeyi" | Koşullu | Sokak adı artık iki bağımsız kaynakta aynı. Resmî kaynaktaki "Crusader Road" ile aynı yol olduğu doğrulanmadı. Kapı no yok |
 | Silver Rocks | Yalnız toplayıcı ve platform sayfaları | Koşullu | Fevzi Çakmak Caddesi için editoryal ikinci kaynak yok. Kapı no yok |
 | Calamari | Yeni kaynak yok | Koşullu | Yer tarifli adres kabulü sahip kararı |
 | Niazi's | Lonely Planet içeriği betikle yükleniyor, okunamadı; Fodor's 403 verdi (aşılmadı) | Koşullu | Toplayıcılar "Kordonboyu, Dome Hotel karşısı" diyor ama sayılmadı. Şube ve No:3 çelişkisi sürüyor |
+
+## Teslim notu (15.11.2026)
+
+**Teslim edilenler:** `kabul-manifesti.json` → `teslim.kayitlar`. Güneydeki 6 tam kanıtlı kayıt:
+- Oniro by the Sea
+- MasaMoro
+- Stavri Kitchen
+- Gourmet Taverna
+- LPM
+- Novél
+
+**Dışarıda tutulanlar:**
+- 4 koşullu kayıt (kuzey);
+- 14 bekleyen.
+
+Bu, bir araştırma teslimidir:
+- Canlı sayılmaz.
+- Gerçek Preview kabulü Codex ve Pilot tarafında.
+
+**Açık bölge ve adres kararları** (`teslim.acikBolgeAdresKararlari`):
+- `district` eşlemesi;
+- `slug` ve `ref` biçimi;
+- LPM posta kodu;
+- mahalle;
+- koordinat;
+- telefon: MasaMoro boş, Oniro 7000 aralığında;
+- saat dilimi, çalışma saati ve para birimi (kesinleştirilmedi);
+- hukuki statü (yalnız tarafsız not);
+- tür: "Kıbrıs mutfağı" kararı açık; Oniro ve Novél teyidi gerekiyor.
 
 ## Teknik kabul manifesti (15.11.2026, gece)
 
@@ -144,7 +179,7 @@ Teyit turundan sonraki durum. Kanıt tutarlılığı turundaki 4 tam kayda LPM v
 | MasaMoro | Stasandrou 2, 1060 Lefkoşa | boş — resmî kaynakta yok | Dünya mutfağı | masamoro.com |
 | Stavri Kitchen | Kalimnou 6B, 6037 Larnaka | +35724255592 | Burger | stavriskitchen.com |
 | Gourmet Taverna | Dionysou 1-2, 8041 Kato Paphos | +35726933626 | Geleneksel mutfak | gourmettaverna.com |
-| LPM Restaurant & Bar | Parklane Resort, Giannou Kranidioti 11, Pyrgos 4534, Limasol | +35725862222 | Akdeniz mutfağı | lpmrestaurants.com/limassol |
+| LPM Restaurant & Bar | Parklane Resort, Giannou Kranidioti 11, Pyrgos, Limasol (posta kodu açık) | +35725862222 | Akdeniz mutfağı | lpmrestaurants.com/limassol |
 | Novél (The Agora Hotel) | The Agora Hotel, 25 Timiou Stavrou, 7700 Pano Lefkara | +35724726000 | Kahvaltı | theagorahotel.com |
 
 Her tam kayıtta şunlar var:
