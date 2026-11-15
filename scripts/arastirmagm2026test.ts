@@ -117,5 +117,31 @@ for (const x of D) {
   if (x.durum === "bekleyen-kayda-kanit") t(`${x.id}: mevcut kayıt yazılı`, !!x.mevcutKayit);
 }
 
+/* 8 — seyrek ilçeler araştırması (data/arastirma/seyrek/adaylar.json) */
+const SY = J("data/arastirma/seyrek/adaylar.json") as { sayim: Record<string, number>; kayitlar: (K & { kaynakAdresi?: string; kabulHazirlik?: { durum: string } })[] };
+const sSay: Record<string, number> = {};
+for (const x of SY.kayitlar) sSay[x.durum] = (sSay[x.durum] ?? 0) + 1;
+t("seyrek: sayım kayıtlarla aynı", JSON.stringify(Object.entries(sSay).sort()) === JSON.stringify(Object.entries(SY.sayim).sort()), { sSay, sayim: SY.sayim });
+t("seyrek: id'ler tekil", new Set(SY.kayitlar.map((x) => x.id)).size === SY.kayitlar.length);
+t("seyrek: durumlar bilinen", SY.kayitlar.every((x) => ["aday-guclu", "inceleme", "bekleyen-kayda-kanit", "katalogda-ya-da-dalda-var"].includes(x.durum)));
+const gmAd = new Set(D.filter((x) => ["aday-guclu", "inceleme"].includes(x.durum)).map((x) => `${fold(x.ad)}|${x.ilce}`));
+for (const x of SY.kayitlar) {
+  if (x.durum === "aday-guclu") {
+    const editoryal = x.kaynaklar.find((k) => /bağımsız/.test(k.tur)) as (Kaynak & { yayinGuncelleme?: string }) | undefined;
+    t(`${x.id}: güçlü — tarihli bağımsız kaynak son 12 ayda`, !!editoryal && (editoryal.yayinGuncelleme ?? "") >= "2025-11-15", editoryal);
+    t(`${x.id}: güçlü — resmî site ikinci kaynak`, x.kaynaklar.some((k) => /resmî/.test(k.tur)));
+    t(`${x.id}: güçlü — kapı no, ilçe, tür`, !!x.adres && /No\s*[:.]?\s*\d/i.test(x.adres) && ILCE.has(x.ilce ?? "") && !!x.kind && x.kind !== "Restoran");
+    t(`${x.id}: güçlü — A-konumsuz, koordinat yok`, x.kaliteSinifiOnerisi === "A-konumsuz" && !x.koordinat);
+    t(`${x.id}: güçlü — Codex'e hazır işaretli`, x.kabulHazirlik?.durum === "codex-teknik-kabule-hazir");
+  }
+  if (["aday-guclu", "inceleme"].includes(x.durum)) {
+    t(`${x.id}: Production'da aynı ad + ilçe yok`, !prodNI.has(`${fold(x.ad)}|${x.ilce}`));
+    t(`${x.id}: PR #50 G&M adaylarıyla çakışmıyor`, !gmAd.has(`${fold(x.ad)}|${x.ilce}`));
+  }
+  if (x.durum === "inceleme") t(`${x.id}: inceleme gerekçeli`, !!x.neden && (x.eksik ?? []).length > 0);
+}
+const sHam = readFileSync("data/arastirma/seyrek/adaylar.json", "utf8");
+t("seyrek: platform puanı/yorum ve Google verisi yok", !/"(rating|reviews?|puan|yorum|degerlendirme)"\s*:|google\.(com|com\.tr)\/maps|place_id/.test(sHam));
+
 console.log(`gm2026 araştırması: ${ok}/${ok + fail} · güçlü ${G.length} · inceleme ${say["inceleme"] ?? 0} · bekleyen kayda kanıt ${say["bekleyen-kayda-kanit"] ?? 0}`);
 process.exit(fail ? 1 : 0);
