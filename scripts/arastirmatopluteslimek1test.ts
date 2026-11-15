@@ -5,13 +5,15 @@
    4. Belirsizlerin öncelik ve gerekçesi var; kapı numarasız ya da tür etiketsiz kayıt iyi değil.
    5. Platform+editoryal istisnası doğrulanmamış işaretli; YorumS/yayımlanmış kayıt bulguları düzeltilmeden kayıtlı.
    6. Puan/yorum/koordinat yok.
-   Kullanım: TABAN=<sha> npx tsx scripts/arastirmatopluteslimek1test.ts */
+   Kullanım: TABAN=<sha> GUNCEL=<ref> npx tsx scripts/arastirmatopluteslimek1test.ts (TABAN verilmezse #56 SHA'sı, GUNCEL verilmezse origin/feature/investor-v1) */
 import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 
 let ok = 0, fail = 0;
 const t = (ad: string, k: boolean, not: unknown = "") => { if (k) ok++; else { fail++; console.log("KALDI:", ad, typeof not === "string" ? not : JSON.stringify(not).slice(0, 300)); } };
-const TABAN = process.env.TABAN ?? "origin/feature/investor-v1";
+const E0 = JSON.parse(readFileSync("data/arastirma/toplu-teslim/ek-1.json", "utf8")) as { temel: { sha: string } };
+const TABAN = process.env.TABAN ?? E0.temel.sha; /* ekin katalog tabanı = #56 (Production 7924559) */
+const GUNCEL = process.env.GUNCEL ?? "origin/feature/investor-v1"; /* güncel Production dalı (iş sürerken ilerleyebilir) */
 const show = (ref: string, p: string) => execFileSync("git", ["show", `${ref}:${p}`], { encoding: "utf8", maxBuffer: 256 << 20 });
 type Kaynak = { tur: string; url: string; yayin: string | null; erisim: string };
 type Iyi = { anahtar: string; ad: string; ilce: string; kategori: string; categoryId: string; kind: string | null; kindKaynagi: string; adres: { resmi: string | null; rehber: string; kapiNo: string | null };
@@ -38,6 +40,7 @@ t("sayım tutarlı", E.sayim.iyiKanitli === E.iyiKanitli.length && E.sayim.belir
 /* 3 */
 const P57 = JSON.parse(show(E.pr57.sha, "docs/katalog/toplu-848-kabul.json")) as { records: { slug: string; candidateKey: string }[]; holds: { candidateKey: string }[] };
 const p57 = new Set([...P57.records.map((r) => r.candidateKey), ...P57.holds.map((h) => h.candidateKey)]);
+const GPV = [...JSON.parse(show(GUNCEL, "data/real/venues.json")), ...JSON.parse(show(GUNCEL, "data/real/isletme.json"))] as { name: string; district: string }[];
 const fold = (s: string) => s.replace(/ı/g, "i").replace(/İ/g, "i").toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
 for (const x of E.iyiKanitli) {
   const resmi = x.kaynaklar.find((k) => /resmî/.test(k.tur)), gm = x.kaynaklar.find((k) => /G&M 2026/.test(k.tur));
@@ -45,6 +48,7 @@ for (const x of E.iyiKanitli) {
   t(`${x.ad}: ad, sokak ve kapı no eşleşti; kapı no dolu`, x.karsilastirma.ad === "eşleşti" && x.karsilastirma.sokak === "eşleşti" && x.karsilastirma.kapiNo === "eşleşti" && !!x.adres.kapiNo && !!x.adres.resmi && !!x.adres.rehber);
   t(`${x.ad}: tür rehber etiketinden, kategori ayrı`, !!x.kind && /G&M 2026 rehber/.test(x.kindKaynagi) && ["restoran", "kafe", "bar"].includes(x.kategori) && /^cat\./.test(x.categoryId));
   t(`${x.ad}: yayımlanmamış ve Production'da aynı ilçede aynı ad yok`, x.yayin === "yayimlanmadi" && !PV.some((p) => fold(p.name) === fold(x.ad) && fold(p.district) === fold(x.ilce)));
+  t(`${x.ad}: güncel Production'da (${GUNCEL}) da aynı ilçede aynı ad yok`, !GPV.some((p) => fold(p.name) === fold(x.ad) && fold(p.district) === fold(x.ilce)));
   t(`${x.ad}: #57 dışında`, x.pr57 === null && !p57.has(x.anahtar));
   t(`${x.ad}: erişim tarihleri`, x.kaynaklar.every((k) => /^\d{4}-\d{2}-\d{2}$/.test(k.erisim)));
 }

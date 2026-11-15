@@ -7,15 +7,15 @@
   "sha": "4fbd8824cf64c4676b590e80831d3a6fefaefb13"
  },
  "canliTaban": {
-  "sha": "7924559",
-  "toplam": 848,
-  "aktif": 813,
-  "aktifRestoran": 688,
-  "not": "#57 (d4aa855) 12 restoranın Preview kabulünü tamamladı; Harun'un kesin SHA onayı bekleniyor — yayımlanmadı, canlı sayılmadı"
+  "sha": "d4aa855",
+  "toplam": 860,
+  "aktif": 825,
+  "aktifRestoran": 700,
+  "not": "İş 7924559 (848/813/688) üstünde başladı; #57 (d4aa855) bu iş sürerken Production dalına birleştirildi. Canlı dağıtım doğrulaması Codex/Pilot'ta; bu ekteki kayıtların hiçbiri canlı sayılmaz."
  },
  "pr57": {
   "sha": "d4aa85545cca0b1485db84f411f2d92fae2ca751",
-  "not": "dal ve SHA değiştirilmedi",
+  "not": "dal ve SHA değiştirilmedi; #57 Codex/Pilot tarafından birleştirildi",
   "aday": 12,
   "bekletme": [
    "alacati gurme i ala|basaksehir",

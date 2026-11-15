@@ -6,8 +6,8 @@ Dal: `arastirma/toplu-teslim-ek-1` (#56 `4fbd882` üstünde) · Ek: `data/arasti
 - #56 manifesti değişmedi; test bunu `4fbd882` ile karşılaştırıyor.
 - Kataloğa eklenmedi, veritabanına yazılmadı, canlıda sayılmaz.
 - #57 (`d4aa855`) ve kabul dalı değişmedi.
-- #57'nin Preview kabulünü tamamladığı 12 restoran, Harun'un kesin SHA onayı beklediği için canlı sayılmadı.
-- Canlı taban: Production `7924559`, 848 kayıt / 813 aktif / 688 aktif restoran.
+- #57'nin 12 restoranı bu ekin kapsamında değil; bu ekteki hiçbir kayıt canlı sayılmaz.
+- Canlı taban: İş Production `7924559` (848 kayıt / 813 aktif / 688 aktif restoran) üstünde başladı. #57 bu iş sürerken birleşti ve Production dalı `d4aa855` oldu (860 kayıt / 825 aktif / 700 aktif restoran). Canlı dağıtım doğrulaması Codex ve Pilot'ta.
 
 ## Kapsam ve tek sınırlı tur
 
