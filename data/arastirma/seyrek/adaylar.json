@@ -14,18 +14,19 @@
    "productionda": 17,
    "not": "İBB resmî listesi tesislerimiz.ibb.istanbul/kentlokantalari; 17 şube zaten Production'da"
   },
-  "migrosYemek": "denendi: 5 adaydan hiçbiri adla bulunamadı (aynı adlı başka şubeler) — verimsiz"
+  "migrosYemek": "Web aramasıyla 30 aday arandı: 4'ü aynı ad + mahalleyle bulundu (Pita Cafe, Yayla Kokoreççisi, Alaçatı Gurme-i Ala, Başak Cafe); diğerleri platformda yok ya da farklı şube. Yemeksepeti 403 ile otomatik erişimi engelliyor (aşılmadı); Getir/Trendyol giriş istiyor."
  },
  "sayim": {
-  "inceleme": 48,
-  "aday-guclu": 3,
+  "inceleme": 43,
+  "aday-guclu": 6,
   "katalogda-ya-da-dalda-var": 21,
+  "kapsam-disi": 2,
   "bekleyen-kayda-kanit": 2
  },
  "ilce": {
   "Çekmeköy": 9,
   "Büyükçekmece": 5,
-  "Başakşehir": 6,
+  "Başakşehir": 4,
   "Silivri": 5,
   "Avcılar": 3,
   "Eyüpsultan": 1,
@@ -65,7 +66,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/kamuran-cikolata-tatli-kahvalti-cekmekoy",
@@ -92,7 +97,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/peride-cekmekoy",
@@ -119,7 +128,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/nesve-cekmekoy-cekmekoy",
@@ -146,7 +159,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/riva-s-club-cekmekoy",
@@ -210,7 +227,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "platformda aranmadı (mesire alanı / lounge / çiftlik — sipariş platformunda olması beklenmedi)"
+   }
   },
   {
    "id": "seyrek/house-of-fellas-cekmekoy",
@@ -301,7 +322,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/geppetto-buyukcekmece",
@@ -328,7 +353,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/madame-s-eat-drink-more-buyukcekmece",
@@ -355,7 +384,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/bablean-buyukcekmece",
@@ -382,7 +415,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/sahil-cafe-1a-buyukcekmece",
@@ -431,7 +468,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "platformda aranmadı (mesire alanı / lounge / çiftlik — sipariş platformunda olması beklenmedi)"
+   }
   },
   {
    "id": "seyrek/alacati-gurme-i-ala-basaksehir",
@@ -447,18 +488,28 @@
      "yayinGuncelleme": "2026-11-10",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "sipariş platformu",
+     "url": "https://www.migros.com.tr/yemek/alacati-gurme-i-ala-basaksehir-bahcesehir-1-kisim-mah-st-1f624",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "'Alaçatı Gurme-i Ala, Başakşehir (Bahçeşehir 1. Kısım Mah.)', güncel menü (platform puanı/yorumu saklanmadı)"
     }
    ],
    "sosyalMedya": {
     "url": "https://www.instagram.com/alacatigurmeiala/",
     "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
    },
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
+   "adres": "Doğa Parkı Caddesi NG Blok No:13-15, Bahçeşehir 1. Kısım",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (sahip kararı 15.11.2026): yemek.com tarihli editoryal (açık adres) + sipariş platformu sayfası (aynı ad ve mahalle, bugün güncel menü)"
+   }
   },
   {
    "id": "seyrek/huqqabaz-bahcesehir-golet-basaksehir",
@@ -480,12 +531,12 @@
     "url": "https://www.instagram.com/huqqabaz/",
     "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
    },
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "durum": "kapsam-disi",
+   "neden": "nargile salonu zinciri — restoran/kafe kapsamı dışında",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/yaseminli-bahce-basaksehir",
@@ -512,7 +563,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/caki-restoran-basaksehir",
@@ -559,12 +614,12 @@
     "url": "https://www.instagram.com/huqqabaz/",
     "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
    },
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "durum": "kapsam-disi",
+   "neden": "nargile salonu zinciri — restoran/kafe kapsamı dışında",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/basak-cafe-restaurant-basaksehir",
@@ -580,6 +635,12 @@
      "yayinGuncelleme": "2026-11-10",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "sipariş platformu",
+     "url": "https://www.migros.com.tr/yemek/basak-cafe-restaurant-basaksehir-basak-mah-st-2c6fb",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad ve mahalle, güncel menü"
     }
    ],
    "sosyalMedya": {
@@ -589,9 +650,9 @@
    "durum": "inceleme",
    "guven": "orta",
    "eksik": [
-    "faaliyet"
+    "adres"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "iki bağımsız kaynakla faal (yemek.com 10.11.2026 + Migros Yemek 'Başak Cafe & Restaurant, Başakşehir (Başak Mah.)'), ama kapı no yok ('Sular Vadisi, Vadi Center yanı')"
   },
   {
    "id": "seyrek/cafe-sultanahmetli-basaksehir",
@@ -618,7 +679,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/natolia-basaksehir",
@@ -748,7 +813,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/hayat-bahcem-silivri",
@@ -775,7 +844,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/uskup-restaurant-cafe-silivri",
@@ -802,7 +875,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/acarpark-restaurant-silivri",
@@ -906,7 +983,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "platformda aranmadı (mesire alanı / lounge / çiftlik — sipariş platformunda olması beklenmedi)"
+   }
   },
   {
    "id": "seyrek/sare-tantuni-avcilar",
@@ -933,7 +1014,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/meshur-balkan-tulumba-ve-dondurma-eyupsultan",
@@ -1090,7 +1175,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/pierre-loti-tepesi-turistik-tesisleri-eyupsultan",
@@ -1144,7 +1233,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/kalpakchi-cafe-store-bahcelievler",
@@ -1171,7 +1264,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/sirdanci-guney-adana-zeytinburnu",
@@ -1198,7 +1295,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/konak-iskembe-kelle-paca-bagcilar",
@@ -1225,7 +1326,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/sirdanci-dayi-kucukcekmece",
@@ -1252,7 +1357,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/sirdanci-remzi-esenyurt",
@@ -1300,7 +1409,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/gurme-mardin-bahcelievler",
@@ -1327,7 +1440,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/buyuk-erzurum-sofrasi-kartal",
@@ -1380,7 +1497,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/zambak-bosnak-borekcisi-bayrampasa",
@@ -1437,8 +1558,8 @@
    "ad": "Pita Cafe Boşnak Böreği",
    "ilce": "Avcılar",
    "kaynakAdresi": "Merkez Mahallesi, Reşitpaşa Caddesi No:14, Avcılar, İstanbul",
-   "categoryId": "cat.restaurant",
-   "kind": null,
+   "categoryId": "cat.cafe",
+   "kind": "Fırın",
    "kaynaklar": [
     {
      "tur": "bağımsız editoryal (tarihli)",
@@ -1446,18 +1567,28 @@
      "yayinGuncelleme": "2026-10-12",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "sipariş platformu",
+     "url": "https://www.migros.com.tr/yemek/pita-cafe-bosnak-boregi-avcilar-merkez-mah-st-2525b",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "'Pita Cafe & Boşnak Böreği, Avcılar (Merkez Mah.)', güncel menü (platform puanı/yorumu saklanmadı)"
     }
    ],
    "sosyalMedya": {
     "url": "https://www.instagram.com/pitacafee/",
     "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
    },
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
+   "adres": "Reşitpaşa Caddesi No:14, Merkez",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (sahip kararı 15.11.2026): yemek.com tarihli editoryal (açık adres) + sipariş platformu sayfası (aynı ad ve mahalle, bugün güncel menü)"
+   }
   },
   {
    "id": "seyrek/arjantin-burger-handmade-avcilar",
@@ -1510,18 +1641,28 @@
      "yayinGuncelleme": "2026-09-30",
      "kontrol": "2026-11-15",
      "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "sipariş platformu",
+     "url": "https://www.migros.com.tr/yemek/meshur-yayla-kokoreccisi-bahcelievler-bahcelievler-merkez-mah-st-1dd6a",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "'Meşhur Yayla Kokoreççisi, Bahçelievler (Bahçelievler Merkez Mah.)', güncel menü; platform mahalleyi 'Bahçelievler Merkez' diye yazıyor (platform puanı/yorumu saklanmadı)"
     }
    ],
    "sosyalMedya": {
     "url": "https://www.instagram.com/meshur_yayla_kokorec/",
     "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
    },
-   "durum": "inceleme",
-   "guven": "orta",
-   "eksik": [
-    "faaliyet"
-   ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
+   "adres": "Mahmut Ardıç Sokak No:18, Bahçelievler",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (sahip kararı 15.11.2026): yemek.com tarihli editoryal (açık adres) + sipariş platformu sayfası (aynı ad ve mahalle, bugün güncel menü)"
+   }
   },
   {
    "id": "seyrek/seraf-restaurant-bagcilar",
@@ -1566,7 +1707,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/gaziantepli-altinoglu-baklavalari-kartal",
@@ -1593,7 +1738,11 @@
    "eksik": [
     "faaliyet"
    ],
-   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı"
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
   },
   {
    "id": "seyrek/kutuk-ev-cafe-restaurant-bahcelievler",
@@ -1955,5 +2104,6 @@
    "neden": "Production data/ altındaki eski paket incelemesinde bekliyor; İBB resmî şube sayfası bugün adresle yayında; bağımsız ikinci kaynak bulunamadı",
    "mevcutKayit": "Production data/paket inceleme (eski paket)"
   }
- ]
+ ],
+ "kanitStandardi": "İki bağımsız kaynak. Sahip kararı (15.11.2026, 'Platform + editoryal yeter'): son 12 ayda tarihli, açık adresli bağımsız editoryal kayıt + güncel sipariş platformu sayfası (aynı ad ve ilçe/mahalle, bugün menüyle açık) yeterlidir. Platform puanı/yorumu saklanmaz; Instagram ve Google kanıt sayılmaz."
 }

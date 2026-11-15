@@ -123,13 +123,14 @@ const sSay: Record<string, number> = {};
 for (const x of SY.kayitlar) sSay[x.durum] = (sSay[x.durum] ?? 0) + 1;
 t("seyrek: sayım kayıtlarla aynı", JSON.stringify(Object.entries(sSay).sort()) === JSON.stringify(Object.entries(SY.sayim).sort()), { sSay, sayim: SY.sayim });
 t("seyrek: id'ler tekil", new Set(SY.kayitlar.map((x) => x.id)).size === SY.kayitlar.length);
-t("seyrek: durumlar bilinen", SY.kayitlar.every((x) => ["aday-guclu", "inceleme", "bekleyen-kayda-kanit", "katalogda-ya-da-dalda-var"].includes(x.durum)));
+t("seyrek: durumlar bilinen", SY.kayitlar.every((x) => ["aday-guclu", "inceleme", "bekleyen-kayda-kanit", "katalogda-ya-da-dalda-var", "kapsam-disi"].includes(x.durum)));
+t("seyrek: sipariş platformu kaynaklı her güçlü kayıtta tarihli editoryal de var", SY.kayitlar.filter((x) => x.durum === "aday-guclu" && x.kaynaklar.some((k) => /sipariş platformu/.test(k.tur))).every((x) => x.kaynaklar.some((k) => /bağımsız editoryal/.test(k.tur))));
 const gmAd = new Set(D.filter((x) => ["aday-guclu", "inceleme"].includes(x.durum)).map((x) => `${fold(x.ad)}|${x.ilce}`));
 for (const x of SY.kayitlar) {
   if (x.durum === "aday-guclu") {
     const editoryal = x.kaynaklar.find((k) => /bağımsız/.test(k.tur)) as (Kaynak & { yayinGuncelleme?: string }) | undefined;
     t(`${x.id}: güçlü — tarihli bağımsız kaynak son 12 ayda`, !!editoryal && (editoryal.yayinGuncelleme ?? "") >= "2025-11-15", editoryal);
-    t(`${x.id}: güçlü — resmî site ikinci kaynak`, x.kaynaklar.some((k) => /resmî/.test(k.tur)));
+    t(`${x.id}: güçlü — ikinci kaynak resmî site ya da sipariş platformu (sahip kararı 15.11)`, x.kaynaklar.some((k) => /resmî|sipariş platformu/.test(k.tur)));
     t(`${x.id}: güçlü — kapı no, ilçe, tür`, !!x.adres && /No\s*[:.]?\s*\d/i.test(x.adres) && ILCE.has(x.ilce ?? "") && !!x.kind && x.kind !== "Restoran");
     t(`${x.id}: güçlü — A-konumsuz, koordinat yok`, x.kaliteSinifiOnerisi === "A-konumsuz" && !x.koordinat);
     t(`${x.id}: güçlü — Codex'e hazır işaretli`, x.kabulHazirlik?.durum === "codex-teknik-kabule-hazir");

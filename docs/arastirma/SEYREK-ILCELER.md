@@ -1,4 +1,49 @@
-# Seyrek ilçeler — ilk araştırma turu (15 Kasım 2026)
+# Seyrek ilçeler — araştırma (15 Kasım 2026)
+
+## 2. tur — "Platform + editoryal yeter" kararıyla
+
+**Sahip kararı (15.11.2026):** Son 12 ayda tarihli, açık adresli bağımsız editoryal kayıt ve güncel bir sipariş platformu sayfası birlikte iki kaynak sayılır. Platform sayfası aynı adı ve aynı ilçe/mahalleyi göstermeli ve bugün menüsüyle açık olmalı. Platform puanı ya da yorumu saklanmaz.
+
+**Platformlara erişim:**
+- **Migros Yemek:** Sayfalar okunabiliyor, ama restoran site haritası yok ve sitenin arama sayfası robots kuralıyla kapalı (kullanılmadı). Sayfalar web aramasıyla bulundu.
+- **Yemeksepeti:** Otomatik erişimi 403 ile engelliyor; engel aşılmadı.
+- **Getir / Trendyol:** Adres seçimi ve giriş istiyor.
+
+**Sonuç:** Migros'ta 30 aday arandı. 4'ü aynı ad ve mahalleyle bulundu; diğerleri platformda yok ya da yalnız başka şubeleri var.
+
+| Aday | İlçe | Adres (yemek.com) | Platform sayfası | Sonuç |
+|---|---|---|---|---|
+| Pita Cafe & Boşnak Böreği | Avcılar | Reşitpaşa Cad. No:14, Merkez | Avcılar (Merkez Mah.) | **Codex'e hazır** |
+| Meşhur Yayla Kokoreççisi | Bahçelievler | Mahmut Ardıç Sok. No:18 | Bahçelievler (Bahçelievler Merkez Mah.) | **Codex'e hazır** |
+| Alaçatı Gurme-i Ala | Başakşehir | Doğa Parkı Cad. NG Blok No:13-15, Bahçeşehir 1. Kısım | Başakşehir (Bahçeşehir 1. Kısım Mah.) | **Codex'e hazır** |
+| Başak Cafe & Restaurant | Başakşehir | Sular Vadisi, Vadi Center yanı | Başakşehir (Başak Mah.) | faal, kapı no yok → inceleme |
+
+HuQQabaz'ın iki şubesi nargile salonu olduğu için kapsam dışına alındı.
+
+**Seyrek ilçelerde toplam (iki tur):**
+
+| Durum | Sayı |
+|---|---:|
+| Codex teknik kabulüne hazır | **6** (Çekmeköy 2, Avcılar 2, Bahçelievler 1, Başakşehir 1) |
+| İnceleme | 43 |
+| Kapsam dışı (nargile salonu) | 2 |
+| Bekleyen eski kayda kanıt | 2 |
+| Zaten katalogda ya da dallarda | 21 |
+
+**2.000 hedefi:**
+
+| Katman | Aktif | 2.000'e kalan |
+|---|---:|---:|
+| **Production (yayımlanmış)** | **766** | **1.234** |
+| + PR #50 G&M hazır 50 + 7 eski kayıt + seyrek 6 (yalnız araştırma) | 829 | 1.171 |
+
+**Değerlendirme:** Karar bir kapı açtı, ama verim sınırlı. Esenler, Gaziosmanpaşa, Kağıthane ve Sultangazi için tarihli bir editoryal kayıt olmadığından platform eşleşmesi de kurulamıyor. Bu ilçeler için editoryal kaynak gerekiyor: yerel basın ve belediye rehberleri. Platformda yalnız görünen işletmeler bu kuralla tek başına kabul edilemez.
+
+Test: `scripts/arastirmagm2026test.ts` 871/871 (yerel).
+
+---
+
+## 1. tur
 
 Dal: `arastirma/gm2026-kanitli-aday` (PR #50) · Taban: Production `174a1c9` (801 kayıt / **766 aktif**) · Veri: `data/arastirma/seyrek/adaylar.json`
 
