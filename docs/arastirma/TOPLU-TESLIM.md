@@ -1,6 +1,6 @@
 # Toplu teslim manifesti — PR #48 + PR #50 (15 Kasım 2026)
 
-Dal: `arastirma/toplu-teslim-manifesti` · Taban: Production `259a530` (PR #54) · Manifest: `data/arastirma/toplu-teslim/manifest.json` · Test: `scripts/arastirmatopluteslimtest.ts`
+Dal: `arastirma/toplu-teslim-manifesti` · Taban: Production `7924559` (PR #55 birleşti; iş #54 `259a530` üstünde başladı) · Manifest: `data/arastirma/toplu-teslim/manifest.json` · Test: `scripts/arastirmatopluteslimtest.ts`
 
 **Yalnız araştırma teslimi.**
 - Kataloğa eklenmedi, veritabanına yazılmadı, canlıda sayılmaz.
@@ -8,17 +8,19 @@ Dal: `arastirma/toplu-teslim-manifesti` · Taban: Production `259a530` (PR #54) 
 - Kaynaklar yeniden taranmadı. Manifest, araştırma dosyalarından ağ erişimi olmadan türetildi:
   - PR #48 `ac9aee9`: `data/katalog/gece-2000/birlesik-aday.json` ve `data/paket/istanbul-15…29/paket.json`;
   - PR #50 `77bc434`: `data/arastirma/gm2026/adaylar.json` ve `data/arastirma/seyrek/adaylar.json`.
-- PR #48, #50, #55 ve #52 dalları değişmedi.
+- PR #48, #50, #55 ve #52 dalları değişmedi. #55, bu iş sürerken Codex/Pilot tarafından Production'a birleştirildi.
 
 ## Canlı taban
 
-| Production `259a530` (PR #54) | Sayı |
-|---|---:|
-| Toplam kayıt | 842 |
-| Aktif | **807** (restoran 682, kafe 114, bar 11) |
-| Kapalı (kesin) | 35 |
+| Production | Toplam | Aktif | Aktif restoran | Kafe | Bar | Kapalı |
+|---|---:|---:|---:|---:|---:|---:|
+| #54 `259a530` (verilen taban) | 842 | 807 | 682 | 114 | 11 | 35 |
+| #55 `7924559` (güncel Production dalı) | **848** | **813** | 688 | 114 | 11 | 35 |
 
-Bu sayılar Codex'in #55 özetiyle aynı. Test, `data/real` dosyalarından yeniden hesaplıyor.
+- `259a530` sayıları Codex'in #55 özetiyle aynı.
+- `7924559`, #55'in 6 restoranını ekliyor.
+- Test, sayıları `data/real` dosyalarından yeniden hesaplıyor.
+- Canlı dağıtımın doğrulaması Codex ve Pilot'ta.
 
 ## Sonuç
 
@@ -26,8 +28,8 @@ Bu sayılar Codex'in #55 özetiyle aynı. Test, `data/real` dosyalarından yenid
 |---|---:|
 | Kaynak satırı (#48: 596, #50 G&M: 244, #50 seyrek: 74) | 914 |
 | Benzersiz kayıt (tekilleştirme sonrası) | **883** |
-| Yayımlanmış (Production'da) | 119 |
-| #55 ile çakışan (6 aday + 7 bekletme) | 13 |
+| Yayımlanmış (Production `7924559`'da; #55'in 6 adayı dahil) | 125 |
+| #55 bekletmesi (yayımlanmadı) | 7 |
 | **Uygun paket** | **15** (restoran 14, kafe 1) |
 | Sorunlu (gerekçeli ayrı liste) | 736 |
 
@@ -76,12 +78,12 @@ Hepsi yayımlanmamış ve #55'in dışında. Hiçbirinde Codex'in önceki beklet
 
 Sorunlu kayıtların türleri: 537 restoran, 150 kafe, 49 belirsiz (kaynakta kategori yok). Bir kayıtta birden çok sorun varsa hepsi `sorunlar` alanında.
 
-### Yayımlanmış (119) ve #55 (13)
+### Yayımlanmış (125) ve #55 bekletmeleri (7)
 
 - **Yayımlanmış kayıtlar:** `yayin.slug` alanı Production slug'ını gösteriyor. Bunlar yeni kayıt olarak sayılmaz.
 - **#55 kayıtları:** Dal `7924559` değiştirilmedi.
-  - **6 aday:** Villa Bosphorus ve 5 White Burger şubesi.
-  - **7 bekletme:** Sankai, Beymen Brasserie, Taste by Aliée ve 4 White Burger şubesi (Galataport, Finanskent, Marmara Park, Pendik).
+  - **6 aday:** Villa Bosphorus ve 5 White Burger şubesi. #55 birleştiği için yayımlananlar arasında; `pr55` alanında "#55 adayı" işareti duruyor.
+  - **7 bekletme:** Sankai, Beymen Brasserie, Taste by Aliée ve 4 White Burger şubesi (Galataport, Finanskent, Marmara Park, Pendik). `teslim: pr55` altında, gerekçeleriyle.
   - Bu 13 kayıt pakete alınmadı.
 
 ## Kayıt alanları

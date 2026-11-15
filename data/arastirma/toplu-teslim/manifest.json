@@ -2,14 +2,15 @@
  "_aciklama": "Toplu teslim manifesti — PR #48 ve PR #50 araştırma kanıtlarının tek, makine okunur birleşimi. Kaynaklar yeniden taranmadı; satırlar araştırma dosyalarından ağ erişimi olmadan türetildi. Kataloğa eklenmedi, veritabanına yazılmadı, canlıda sayılmaz. Gerçek Preview ve yayın Codex kabul hattında; Production için Harun'un kesin SHA onayı gerekir.",
  "olusturma": "2026-11-15",
  "canliTaban": {
-  "pr": 54,
-  "sha": "259a530",
-  "toplam": 842,
-  "aktif": 807,
+  "pr": 55,
+  "sha": "7924559",
+  "not": "Production dalı; #54 259a530 (842/807) üstüne #55'in 6 restoranı birleşti. Canlı dağıtım doğrulaması Codex/Pilot'ta",
+  "toplam": 848,
+  "aktif": 813,
   "kapali": 35,
   "aktifKategori": {
    "cat.cafe": 114,
-   "cat.restaurant": 682,
+   "cat.restaurant": 688,
    "cat.bar": 11
   }
  },
@@ -30,7 +31,7 @@
  "pr55": {
   "dal": "codex/restoran-toplu-kabul-20261115",
   "sha": "7924559",
-  "not": "Pilot kabulünü bitiriyor; dal ve SHA değiştirilmedi. Bu manifest #55 adaylarını ve bekletmelerini yalnız işaretler.",
+  "not": "Codex/Pilot tarafından Production'a birleştirildi; dal ve SHA bu çalışmada değiştirilmedi. 6 aday yayımlananlar arasında; 7 bekletme ayrı işaretli.",
   "aday": [
    "gm26/villa-bosphorus",
    "white-burger-umraniye",
@@ -70,8 +71,8 @@
   "kaynakSatiri": 914,
   "benzersizKayit": 883,
   "teslim": {
-   "yayimlandi": 119,
-   "pr55": 13,
+   "yayimlandi": 125,
+   "pr55": 7,
    "sorunlu": 736,
    "paket": 15
   },
@@ -1342,9 +1343,20 @@
     "rol": "#55 bekletmesi",
     "neden": "Önceki kaynak bütünlüğü engeli korundu. Resmî kabul edilen sitede alakasız bahis bağlantıları görüldü; bu bağlantılar izlenmedi veya kataloğa taşınmadı. Kapanış veya saldırı teşhisi konmadı; güvenli işletmeci teyidi açık."
    },
-   "codexOncekiKarar": null,
+   "codexOncekiKarar": [
+    {
+     "dosya": "PR #55 (toplu-842) bekletme",
+     "karar": "BEKLETME",
+     "neden": "Önceki kaynak bütünlüğü engeli korundu. Resmî kabul edilen sitede alakasız bahis bağlantıları görüldü; bu bağlantılar izlenmedi veya kataloğa taşınmadı. Kapanış veya saldırı teşhisi konmadı; güvenli işletmeci teyidi açık."
+    }
+   ],
    "teslim": "pr55",
-   "sorunlar": [],
+   "sorunlar": [
+    {
+     "kod": "codex-onceki-bekletme",
+     "gerekce": "PR #55 (toplu-842) bekletme: BEKLETME — Önceki kaynak bütünlüğü engeli korundu. Resmî kabul edilen sitede alakasız bahis bağlantıları görüldü; bu bağlantılar izlenmedi veya kataloğa taşınmadı. Kapanış veya saldırı teşhisi konmadı; güvenli işletmeci teyidi açık."
+    }
+   ],
    "celiski": null
   },
   {
@@ -19301,8 +19313,10 @@
     }
    ],
    "yayin": {
-    "durum": "yayimlanmadi",
-    "slug": null,
+    "durum": "yayimlandi",
+    "slug": [
+     "white-burger-umraniye"
+    ],
     "kapali": null
    },
    "kanitPolitikasi": null,
@@ -19312,13 +19326,8 @@
     "karar": "KOD_ADAYINA_KABUL"
    },
    "codexOncekiKarar": null,
-   "teslim": "pr55",
-   "sorunlar": [
-    {
-     "kod": "bagimsiz-kaynak-yok",
-     "gerekce": "resmî site + harita verisi (Overture/OSM); son 12 ayda tarihli bağımsız kaynak yok — harita kaydı faaliyet kanıtı değil"
-    }
-   ],
+   "teslim": "yayimlandi",
+   "sorunlar": [],
    "celiski": null
   },
   {
@@ -42270,8 +42279,10 @@
     }
    ],
    "yayin": {
-    "durum": "yayimlanmadi",
-    "slug": null,
+    "durum": "yayimlandi",
+    "slug": [
+     "villa-bosphorus-uskudar"
+    ],
     "kapali": null
    },
    "kanitPolitikasi": null,
@@ -42282,19 +42293,19 @@
    },
    "codexOncekiKarar": [
     {
+     "dosya": "PR #55 (toplu-842)",
+     "karar": "KOD_ADAYINA_KABUL",
+     "slug": "villa-bosphorus-uskudar"
+    },
+    {
      "dosya": "PR #51 (pr50-kabul-kaniti)",
      "inceledigiSha": "f94d102",
      "karar": "BEKLIYOR",
      "neden": "Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı."
     }
    ],
-   "teslim": "pr55",
-   "sorunlar": [
-    {
-     "kod": "codex-onceki-bekletme",
-     "gerekce": "PR #51 (pr50-kabul-kaniti): BEKLIYOR — Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı."
-    }
-   ],
+   "teslim": "yayimlandi",
+   "sorunlar": [],
    "celiski": null
   },
   {
@@ -43322,6 +43333,11 @@
    },
    "codexOncekiKarar": [
     {
+     "dosya": "PR #55 (toplu-842) bekletme",
+     "karar": "BEKLETME",
+     "neden": "Güncel Accor sayfası Taste by Aliée ve dönüşümlü şef konsepti gösteriyor; eski Thomas Bühner isimli adayın güncel ad/adres devamlılığı ayrı teyit bekler."
+    },
+    {
      "dosya": "PR #51 (pr50-kabul-kaniti)",
      "inceledigiSha": "f94d102",
      "karar": "BEKLIYOR",
@@ -43330,6 +43346,10 @@
    ],
    "teslim": "pr55",
    "sorunlar": [
+    {
+     "kod": "codex-onceki-bekletme",
+     "gerekce": "PR #55 (toplu-842) bekletme: BEKLETME — Güncel Accor sayfası Taste by Aliée ve dönüşümlü şef konsepti gösteriyor; eski Thomas Bühner isimli adayın güncel ad/adres devamlılığı ayrı teyit bekler."
+    },
     {
      "kod": "codex-onceki-bekletme",
      "gerekce": "PR #51 (pr50-kabul-kaniti): BEKLIYOR — İşletmeci artık Taste by Aliée adını ve otel için No 11:19 gösteriyor; Thomas Bühner marka/şube devamı ayrıca teyit edilmeli."
@@ -51017,6 +51037,11 @@
    },
    "codexOncekiKarar": [
     {
+     "dosya": "PR #55 (toplu-842) bekletme",
+     "karar": "BEKLETME",
+     "neden": "Bulunan resmî Brasserie URLsi gerçek tarayıcıda Sayfa Bulunamadı döndü.2024 dönemli şirket raporu tek başına güncel şube faaliyet teyidi sayılmadı; kapanış hükmü yok."
+    },
+    {
      "dosya": "PR #51 (pr50-kabul-kaniti)",
      "inceledigiSha": "f94d102",
      "karar": "BEKLIYOR",
@@ -51025,6 +51050,10 @@
    ],
    "teslim": "pr55",
    "sorunlar": [
+    {
+     "kod": "codex-onceki-bekletme",
+     "gerekce": "PR #55 (toplu-842) bekletme: BEKLETME — Bulunan resmî Brasserie URLsi gerçek tarayıcıda Sayfa Bulunamadı döndü.2024 dönemli şirket raporu tek başına güncel şube faaliyet teyidi sayılmadı; kapanış hükmü yok."
+    },
     {
      "kod": "codex-onceki-bekletme",
      "gerekce": "PR #51 (pr50-kabul-kaniti): BEKLIYOR — Güncel resmî işletme/operatör veya doğrudan işletme teyidi bu kontrolde tamamlanmadı. İki editoryal yazı tek başına doğrudan işletme teyidi sayılmadı."
@@ -53354,12 +53383,22 @@
     "rol": "#55 bekletmesi",
     "neden": "Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
    },
-   "codexOncekiKarar": null,
+   "codexOncekiKarar": [
+    {
+     "dosya": "PR #55 (toplu-842) bekletme",
+     "karar": "BEKLETME",
+     "neden": "Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
+    }
+   ],
    "teslim": "pr55",
    "sorunlar": [
     {
      "kod": "tek-kaynak",
      "gerekce": "yalnız markanın resmî kaynağı; bağımsız şube kanıtı yok"
+    },
+    {
+     "kod": "codex-onceki-bekletme",
+     "gerekce": "PR #55 (toplu-842) bekletme: BEKLETME — Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
     }
    ],
    "celiski": null
@@ -53421,12 +53460,22 @@
     "rol": "#55 bekletmesi",
     "neden": "Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
    },
-   "codexOncekiKarar": null,
+   "codexOncekiKarar": [
+    {
+     "dosya": "PR #55 (toplu-842) bekletme",
+     "karar": "BEKLETME",
+     "neden": "Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
+    }
+   ],
    "teslim": "pr55",
    "sorunlar": [
     {
      "kod": "tek-kaynak",
      "gerekce": "yalnız markanın resmî kaynağı; bağımsız şube kanıtı yok"
+    },
+    {
+     "kod": "codex-onceki-bekletme",
+     "gerekce": "PR #55 (toplu-842) bekletme: BEKLETME — Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
     }
    ],
    "celiski": null
@@ -53488,12 +53537,22 @@
     "rol": "#55 bekletmesi",
     "neden": "Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
    },
-   "codexOncekiKarar": null,
+   "codexOncekiKarar": [
+    {
+     "dosya": "PR #55 (toplu-842) bekletme",
+     "karar": "BEKLETME",
+     "neden": "Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
+    }
+   ],
    "teslim": "pr55",
    "sorunlar": [
     {
      "kod": "tek-kaynak",
      "gerekce": "yalnız markanın resmî kaynağı; bağımsız şube kanıtı yok"
+    },
+    {
+     "kod": "codex-onceki-bekletme",
+     "gerekce": "PR #55 (toplu-842) bekletme: BEKLETME — Markanın güncel şube listesinde Yakında/Çok Yakında; aktif kabul yok."
     }
    ],
    "celiski": null
@@ -53555,12 +53614,22 @@
     "rol": "#55 bekletmesi",
     "neden": "MRF Cadde faaliyeti destekleniyor; marka Osmanlı Bulvarı1/2T ile tanıtımlardaki Millet Caddesi32 adresinin aynı girişe ait olduğu teyit edilmedi."
    },
-   "codexOncekiKarar": null,
+   "codexOncekiKarar": [
+    {
+     "dosya": "PR #55 (toplu-842) bekletme",
+     "karar": "BEKLETME",
+     "neden": "MRF Cadde faaliyeti destekleniyor; marka Osmanlı Bulvarı1/2T ile tanıtımlardaki Millet Caddesi32 adresinin aynı girişe ait olduğu teyit edilmedi."
+    }
+   ],
    "teslim": "pr55",
    "sorunlar": [
     {
      "kod": "tek-kaynak",
      "gerekce": "yalnız markanın resmî kaynağı; bağımsız şube kanıtı yok"
+    },
+    {
+     "kod": "codex-onceki-bekletme",
+     "gerekce": "PR #55 (toplu-842) bekletme: BEKLETME — MRF Cadde faaliyeti destekleniyor; marka Osmanlı Bulvarı1/2T ile tanıtımlardaki Millet Caddesi32 adresinin aynı girişe ait olduğu teyit edilmedi."
     }
    ],
    "celiski": null
@@ -53613,8 +53682,10 @@
     }
    ],
    "yayin": {
-    "durum": "yayimlanmadi",
-    "slug": null,
+    "durum": "yayimlandi",
+    "slug": [
+     "white-burger-koru-florya-bakirkoy"
+    ],
     "kapali": null
    },
    "kanitPolitikasi": null,
@@ -53623,14 +53694,15 @@
     "slug": "white-burger-koru-florya-bakirkoy",
     "karar": "KOD_ADAYINA_KABUL"
    },
-   "codexOncekiKarar": null,
-   "teslim": "pr55",
-   "sorunlar": [
+   "codexOncekiKarar": [
     {
-     "kod": "tek-kaynak",
-     "gerekce": "yalnız markanın resmî kaynağı; bağımsız şube kanıtı yok"
+     "dosya": "PR #55 (toplu-842)",
+     "karar": "KOD_ADAYINA_KABUL",
+     "slug": "white-burger-koru-florya-bakirkoy"
     }
    ],
+   "teslim": "yayimlandi",
+   "sorunlar": [],
    "celiski": null
   },
   {
@@ -53745,8 +53817,10 @@
     }
    ],
    "yayin": {
-    "durum": "yayimlanmadi",
-    "slug": null,
+    "durum": "yayimlandi",
+    "slug": [
+     "white-burger-florentia-village-eyupsultan"
+    ],
     "kapali": null
    },
    "kanitPolitikasi": null,
@@ -53755,14 +53829,15 @@
     "slug": "white-burger-florentia-village-eyupsultan",
     "karar": "KOD_ADAYINA_KABUL"
    },
-   "codexOncekiKarar": null,
-   "teslim": "pr55",
-   "sorunlar": [
+   "codexOncekiKarar": [
     {
-     "kod": "tek-kaynak",
-     "gerekce": "yalnız markanın resmî kaynağı; bağımsız şube kanıtı yok"
+     "dosya": "PR #55 (toplu-842)",
+     "karar": "KOD_ADAYINA_KABUL",
+     "slug": "white-burger-florentia-village-eyupsultan"
     }
    ],
+   "teslim": "yayimlandi",
+   "sorunlar": [],
    "celiski": null
   },
   {
@@ -53941,8 +54016,10 @@
     }
    ],
    "yayin": {
-    "durum": "yayimlanmadi",
-    "slug": null,
+    "durum": "yayimlandi",
+    "slug": [
+     "white-burger-nisantasi-sisli"
+    ],
     "kapali": null
    },
    "kanitPolitikasi": null,
@@ -53951,14 +54028,15 @@
     "slug": "white-burger-nisantasi-sisli",
     "karar": "KOD_ADAYINA_KABUL"
    },
-   "codexOncekiKarar": null,
-   "teslim": "pr55",
-   "sorunlar": [
+   "codexOncekiKarar": [
     {
-     "kod": "tek-kaynak",
-     "gerekce": "yalnız markanın resmî kaynağı; bağımsız şube kanıtı yok"
+     "dosya": "PR #55 (toplu-842)",
+     "karar": "KOD_ADAYINA_KABUL",
+     "slug": "white-burger-nisantasi-sisli"
     }
    ],
+   "teslim": "yayimlandi",
+   "sorunlar": [],
    "celiski": null
   },
   {
@@ -54073,8 +54151,10 @@
     }
    ],
    "yayin": {
-    "durum": "yayimlanmadi",
-    "slug": null,
+    "durum": "yayimlandi",
+    "slug": [
+     "white-burger-hilltown-maltepe"
+    ],
     "kapali": null
    },
    "kanitPolitikasi": null,
@@ -54083,14 +54163,15 @@
     "slug": "white-burger-hilltown-maltepe",
     "karar": "KOD_ADAYINA_KABUL"
    },
-   "codexOncekiKarar": null,
-   "teslim": "pr55",
-   "sorunlar": [
+   "codexOncekiKarar": [
     {
-     "kod": "tek-kaynak",
-     "gerekce": "yalnız markanın resmî kaynağı; bağımsız şube kanıtı yok"
+     "dosya": "PR #55 (toplu-842)",
+     "karar": "KOD_ADAYINA_KABUL",
+     "slug": "white-burger-hilltown-maltepe"
     }
    ],
+   "teslim": "yayimlandi",
+   "sorunlar": [],
    "celiski": null
   },
   {
