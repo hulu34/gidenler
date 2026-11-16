@@ -32,5 +32,7 @@ jobs:
         if: always()
         with:
           name: pr71-bounded-preview-evidence
-          path: pr71-cloud-evidence/
+          path: |
+            pr71-cloud-evidence/*.png
+            pr71-cloud-evidence/public-summary.json
           retention-days: 7

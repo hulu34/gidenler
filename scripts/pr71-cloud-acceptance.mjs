@@ -12,9 +12,9 @@ assert.ok(records.every(x=>x.categoryId==='cat.restaurant'&&x.kaliteSinifi==='A-
 const secret=process.env.VERCEL_BYPASS;assert.ok(secret,'Existing Preview access must be available');
 const expectedHosts=['ep-proud-mud-ba4yqh9k.c-8.eu-central-1.aws.neon.tech','ep-proud-mud-ba4yqh9k-pooler.c-8.eu-central-1.aws.neon.tech'];
 const fingerprints=expectedHosts.map(x=>createHash('sha256').update(x).digest('hex').slice(0,16));
-const evidence={plan,at:new Date().toISOString(),seedRequests:0,sorRequests:0,productionWrites:0,browser:[],queries:[]};
+const evidence={plan,at:new Date().toISOString(),seedRequests:0,sorRequests:0,productionWrites:0,stage:"preflight",browser:[],queries:[]};
 mkdirSync('pr71-cloud-evidence',{recursive:true});
-const save=()=>writeFileSync('pr71-cloud-evidence/result.json',JSON.stringify(evidence,null,2));
+const save=()=>{writeFileSync('pr71-cloud-evidence/result.json',JSON.stringify(evidence,null,2));writeFileSync('pr71-cloud-evidence/public-summary.json',JSON.stringify({plan,stage:evidence.stage,at:evidence.at,seedRequests:evidence.seedRequests,sorRequests:evidence.sorRequests,productionWrites:0,browser:evidence.browser,queries:evidence.queries.map(q=>({mode:q.result.mode,reason:q.result.reason,model:q.result.model,items:q.result.items.map(v=>v.slug),notCuisines:q.result.understood.notCuisines,notFoods:q.result.understood.notFoods,drinks:q.result.understood.drinks})),completed:evidence.completed??false,error:evidence.completed===false?'acceptance_failed':null},null,2));};
 async function request(path,body){
  assert.ok(path==='/api/health/'||path==='/api/sor/'||path==='/api/admin/db/'||path.startsWith('/api/admin/db/?rapor=profil&slug='));
  if(body&&path==='/api/admin/db/'){assert.equal(body.action,'seed-add-only');assert.equal(body.target,'preview');assert.equal(body.baselineCount,876);assert.deepEqual(body.slugs,records.map(x=>x.slug));assert.ok(++evidence.seedRequests<=2);}
@@ -30,6 +30,7 @@ try{
  assert.ok(fingerprints.includes(initial.db.fingerprint),'Physical Preview compute fingerprint must match');assert.notEqual(initial.db.fingerprint,'37811a6487ca5441');
  assert.ok([876,879].includes(initial.integrity.present));assert.deepEqual(initial.migrations.pending,[]);assert.deepEqual(initial.migrations.drift,[]);assert.deepEqual(initial.migrations.unknown,[]);
  evidence.initial={status,admin:initial};evidence.health=await request('/api/health/');assert.equal(evidence.health.db,'ok');save();
+ evidence.stage='append';save();
  const menemenBefore=await request('/api/admin/db/?rapor=profil&slug=menemen-besiktas');
  const body={action:'seed-add-only',confirm:'EVET',target:'preview',baselineCount:876,slugs:records.map(x=>x.slug)};
  const added=await request('/api/admin/db/',body);assert.equal(added.total,879);assert.equal(added.integrity.ok,true);evidence.append=added;save();
@@ -40,9 +41,10 @@ try{
  const final=await request('/api/admin/db/');assert.equal(final.integrity.expected,879);assert.equal(final.integrity.present,879);assert.equal(final.integrity.ok,true);
  assert.equal(final.rollback.waves['23'].safe,true,'Target-only rollback must have no new user relations');
  for(const k of ['users','reviews'])assert.equal(final.rollback.migration[k],initial.rollback.migration[k]);evidence.final=final;save();
+ evidence.stage='sitemap';save();
  const sitemapResponse=await fetch(plan.origin+'/sitemap.xml',{headers:{'x-vercel-protection-bypass':secret},redirect:'manual',signal:AbortSignal.timeout(30000)});assert.equal(sitemapResponse.status,200);const sitemap=await sitemapResponse.text();assert.ok(records.every(r=>sitemap.includes('/mekan/'+r.slug+'/')));evidence.sitemap={newThreeAll:true,urls:(sitemap.match(/<loc>/g)||[]).length};
  const require=createRequire(process.env.BROWSER_PACKAGE_JSON);const {chromium}=require('@playwright/test');browser=await chromium.launch({headless:true});
- for(const width of [1440,390]){
+ for(const width of [1440,390]){evidence.stage='browser-'+width;save();
   const context=await browser.newContext({viewport:{width,height:960}});
   await context.route('**/*',async route=>{const headers={...route.request().headers()};delete headers['x-vercel-protection-bypass'];if(new URL(route.request().url()).origin===plan.origin)headers['x-vercel-protection-bypass']=secret;await route.continue({headers});});
   const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -68,8 +70,9 @@ try{
   evidence.browser.push({width,menemen:{archiveItems:45,sourcePhotos:6,videos:1},search:'Monteverdi Ristorante',formTarget:'Monteverdi Ristorante'});
   assert.deepEqual(errors,[]);await page.screenshot({path:`pr71-cloud-evidence/menemen-${width}.png`,fullPage:false});await context.close();save();
  }
+ evidence.stage='real-ai';save();
  for(const query of ['En yüksek puanlı restoran hangisi?','Balık sevmiyor, kırmızı et yemiyor ve sadece viski içiyor. Sevgililik ay dönümü için nereye gidelim?'])evidence.queries.push({query,result:await request('/api/sor/',{query})});
  assert.equal(evidence.queries[0].result.understood.name,null);const negative=evidence.queries[1].result;assert.equal(negative.items.length,0);assert.ok(negative.understood.notCuisines.includes('balik'));assert.ok(negative.understood.notFoods.includes('kirmizi-et'));assert.ok(negative.understood.drinks.includes('viski'));
  const previous=evidence.queries[1].result; const followup=await request('/api/sor/',{query:'Balık sevmiyor dedim, neden balık önerdin?',context:previous.context}); evidence.queries.push({query:'Balık sevmiyor dedim, neden balık önerdin?',result:followup}); assert.equal(followup.items.length,0); assert.ok(followup.understood.notCuisines.includes('balik')); assert.ok(followup.understood.notFoods.includes('kirmizi-et')); assert.ok(followup.understood.drinks.includes('viski'));
  assert.ok(evidence.queries.some(q=>q.result.mode==='ai'&&q.result.model),'At least one real model response required; fallback is not AI acceptance'); evidence.completed=true;save();console.log(JSON.stringify({completed:true,profiles:evidence.browser.length,seedRequests:evidence.seedRequests,sorRequests:evidence.sorRequests,db:'isolated879',productionWrites:0}));
-}catch(e){evidence.completed=false;evidence.error=e.message;save();console.error(e.message);process.exitCode=1;}finally{await browser?.close();}
+}catch(e){evidence.completed=false;evidence.error=e.message;save();console.error(JSON.stringify({error:'acceptance_failed',stage:evidence.stage}));process.exitCode=1;}finally{await browser?.close();}
