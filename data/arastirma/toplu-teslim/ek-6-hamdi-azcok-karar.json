@@ -1,0 +1,367 @@
+{
+ "_aciklama": "Ek 6 — Hamdi Eminönü kapı no 11/17 çelişkisi ve Az Çok Thai kategori incelemesi. Araştırma ve kanıt teslimi; kabul, Preview, DB ya da Production değildir. Codex bağımsız inceler. #65'teki iki 'TAMAMLANDI' iddiası koşullu kaldı; ek-3 dosyası değiştirilmedi.",
+ "olusturma": "2026-11-16",
+ "temel": {
+  "pr69": "750f4cdeb7ed57c378bd9d5f0d00c7e3e4b73456",
+  "pr65": "886200a6281fcb97e78403dfb7ce2624cc410e3a",
+  "production": "2b437577f4a02197482fb90e46b5f75a3f0b96df"
+ },
+ "canliTaban": {
+  "sha": "2b437577f4a02197482fb90e46b5f75a3f0b96df",
+  "toplam": 876,
+  "aktif": 841,
+  "kapali": 35,
+  "aktifKategori": {
+   "cat.cafe": 114,
+   "cat.restaurant": 716,
+   "cat.bar": 11
+  },
+  "not": "Bu işte değişmedi."
+ },
+ "kapsam": {
+  "kayitlar": [
+   "hamdi restaurant|fatih",
+   "az cok thai|beyoglu"
+  ],
+  "disarida": [
+   "Hamdi Şişli (ayrı kayıt)",
+   "Şahan Ataşehir ve Monteverdi (Pilot birleşik havuzu)",
+   "Maderia",
+   "Suna'nın Yeri",
+   "Liman kayıtları",
+   "Kör Agop",
+   "diğer tüm adaylar"
+  ]
+ },
+ "kullanim": {
+  "acilanUrl": 5,
+  "yenidenKullanilan": 2,
+  "arama": 0,
+  "ucretli": false,
+  "isletmeyeMesaj": false,
+  "erisimEngeliAsma": false,
+  "not": "Yeni açılanlar: Time Out, Falstaff, G&M (Hamdi); Az Çok Thai TR ana sayfa ve Food sayfası. Resmî Hamdi ve Az Çok Thai EN ana sayfası #65'te bugün alınan kopyadan okundu."
+ },
+ "canliTekillestirme": {
+  "hamdiEminonu": "canlıda yok",
+  "azCokThai": "canlıda yok",
+  "kontrol": "2b437577f4a02197482fb90e46b5f75a3f0b96df venues.json + isletme.json; ad, sokak ve kapı adı arandı. Yalnız ilgisiz Dönerci Hamdi Usta (Kadıköy) bulundu."
+ },
+ "kayitlar": [
+  {
+   "anahtar": "hamdi restaurant|fatih",
+   "ad": "Hamdi Restaurant",
+   "sube": {
+    "bu": "Eminönü (Fatih) — Tahmis Cad., Kalçın Sok.",
+    "ayriKayit": {
+     "anahtar": "hamdi restaurant sisli|sisli",
+     "adres": "19 Mayıs Mah. 19 Mayıs Cad. No:2 Şişli",
+     "telefon": "+90 212 375 00 16",
+     "not": "Ayrı kayıt; bu turda değiştirilmedi."
+    }
+   },
+   "ilce": "Fatih",
+   "soru": "Resmî site ve G&M 2026 Kalçın Sok. No:11; Codex'in bağımsız kaynakları (TimeOut, Falstaff, '2025 rehberi') No:17. No:17 eski numara mı, başka giriş/şube mi, yazım hatası mı?",
+   "kaynaklar": [
+    {
+     "kaynak": "hamdi.com.tr (işletmecinin resmî sitesi)",
+     "tur": "resmî site",
+     "url": "https://hamdi.com.tr/",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "yayin": null,
+     "guncelleme": null,
+     "tarihNotu": "Sayfada yayın/güncelleme tarihi yok; erişim tarihi bugün (sayfa #65 turunda alındı, yeniden açılmadı).",
+     "subeAdi": "HAMDİ RESTAURANT - EMİNÖNÜ",
+     "hamAdres": "Tahmis Cad. Kalçın Sokak No:11 Eminönü - İstanbul",
+     "sokak": "Tahmis Cad. / Kalçın Sokak",
+     "kapiNo": "11",
+     "icKapi": null,
+     "telefon": [
+      "+90 533 658 80 11",
+      "+90 212 528 03 90"
+     ],
+     "kanitladigi": [
+      "şube adı",
+      "sokak",
+      "kapı no (11)",
+      "faaliyet (bugün şube listesinde)"
+     ],
+     "not": "Aynı sayfada Şişli şubesi ayrı satırda: 19 Mayıs Cad. No:2, T: +90 212 375 00 16. Eminönü kaydına karıştırılmadı."
+    },
+    {
+     "kaynak": "Gault&Millau Türkiye 2026",
+     "tur": "editoryal rehber",
+     "url": "https://www.gault-millau.com.tr/hamdi-restaurant/",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "yayin": "2025-12-23",
+     "guncelleme": null,
+     "tarihNotu": "Sayfadaki datePublished 2025-12-23T13:38:25Z.",
+     "subeAdi": "Hamdi Restaurant (metinde Eminönü)",
+     "hamAdres": "Rüstem Paşa Mah. Tahmis Cad., Kalçın Sok. No:11, 34116 Fatih/İstanbul",
+     "sokak": "Tahmis Cad. / Kalçın Sok.",
+     "kapiNo": "11",
+     "icKapi": null,
+     "telefon": [
+      "+90 212 528 09 30"
+     ],
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no (11)",
+      "posta kodu 34116",
+      "tür: Geleneksel Mutfak"
+     ],
+     "not": "Telefon resmî siteden farklı (528 09 30 ↔ 528 03 90); dönüştürülmedi."
+    },
+    {
+     "kaynak": "Time Out Istanbul",
+     "tur": "bağımsız editoryal (mekân sayfası)",
+     "url": "https://www.timeout.com/istanbul/restaurants/hamdi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "yayin": "2024-04-09",
+     "guncelleme": "2024-04-10",
+     "tarihNotu": "Sayfa verisi: createdDate 2011-04-22, publishDate 2024-04-09, dateModified 2024-04-10T09:59:53Z. Adres alanının hangi tarihte girildiği sayfada yok.",
+     "subeAdi": "Hamdi Restaurant (Fatih)",
+     "hamAdres": "Tahmis Caddesi Kalçın Sokak 17 İstanbul",
+     "sokak": "Tahmis Caddesi / Kalçın Sokak",
+     "kapiNo": "17",
+     "icKapi": null,
+     "telefon": [
+      "+90 (212) 528 03 90"
+     ],
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no (17)"
+     ],
+     "not": "Telefon resmî sitenin sabit hattıyla aynı; aynı Eminönü işletmesi, Şişli değil. Çalışma saati \"Open daily 12.00-23.00\"."
+    },
+    {
+     "kaynak": "Falstaff (restoran dizini)",
+     "tur": "bağımsız dizin kaydı (puan/yorum yok, \"Rate now\")",
+     "url": "https://www.falstaff.com/en/restaurants/hamdi-restaurant-istanbul",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "yayin": null,
+     "guncelleme": "2026-10-21",
+     "tarihNotu": "Yalnız sayfa düzeyinde article:modified_time 2026-10-21T06:51:28+02:00 var; adres alanının güncellendiğini göstermiyor. Sayfada 'migrations_id:f-res-2191' (taşınmış eski kayıt), eski alan adı www.hamdirestorant.com.tr ve eski posta kodu 34010 var.",
+     "subeAdi": "Hamdi Restaurant",
+     "hamAdres": "Tahmis Caddesi, Kalcin Sokak 17, 34010 Istanbul, Turkey",
+     "sokak": "Tahmis Caddesi / Kalcin Sokak",
+     "kapiNo": "17",
+     "icKapi": null,
+     "telefon": [
+      "+90 (212) 5280390"
+     ],
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no (17)"
+     ],
+     "not": "Telefon resmî sitenin sabit hattıyla aynı. Pazar \"Closed\" diyor, Time Out \"Open daily\" diyor; saat bilgisi de kaynaklar arasında tutarsız."
+    },
+    {
+     "kaynak": "'2025 rehberi' (Codex #54 gerekçesinde geçiyor)",
+     "tur": "bilinmiyor",
+     "url": null,
+     "erisim": null,
+     "http": null,
+     "yayin": null,
+     "guncelleme": null,
+     "tarihNotu": "Yerel kayıtlarda (docs/katalog/toplu-833-kabul.json urls alanı, #50, #56, #65) bu rehberin URL'si yok. Açılmadı, aranmadı.",
+     "subeAdi": null,
+     "hamAdres": null,
+     "sokak": null,
+     "kapiNo": "17 (yalnız Codex gerekçesine göre)",
+     "icKapi": null,
+     "telefon": [],
+     "kanitladigi": [],
+     "not": "Doğrulanmadı; karşılaştırmada kanıt olarak kullanılmadı."
+    }
+   ],
+   "tarihOlcumu": {
+    "timeOut": "Ölçüldü: son güncelleme 2024-04-10, G&M 2026 sayfasından (2025-12-23) yaklaşık 20 ay eski. Ama daha eski olması No:17'nin geçersiz olduğunu kanıtlamaz.",
+    "falstaff": "'Eski' denemez: sayfa düzeyindeki güncelleme 2026-10-21 G&M'den yeni. Eski kayıt işaretleri (taşınma kimliği, eski alan adı, eski posta kodu) var ama adres alanının tarihi ölçülemiyor.",
+    "rehber2025": "Ölçülemedi: URL yok."
+   },
+   "hipotezler": [
+    {
+     "hipotez": "Eski numara (numaralandırma değişikliği)",
+     "sonuc": "KANITLANMADI",
+     "gerekce": "Hiçbir kaynakta No:17→No:11 değişikliği ya da eski numara ifadesi yok."
+    },
+    {
+     "hipotez": "Aynı binanın başka girişi",
+     "sonuc": "KANITLANMADI",
+     "gerekce": "Hiçbir kaynak iki giriş ya da iki kapı numarası vermiyor; resmî site yalnız No:11 diyor."
+    },
+    {
+     "hipotez": "Başka şube",
+     "sonuc": "DESTEKLENMIYOR",
+     "gerekce": "Dört kaynak da aynı sokağı (Tahmis Cad. / Kalçın Sok.) veriyor. Time Out ve Falstaff'ın telefonu resmî Eminönü sabit hattıyla (212 528 03 90) aynı; Şişli şubesi 19 Mayıs Cad. No:2 ve başka telefon. Resmî site Eminönü'de tek şube listeliyor."
+    },
+    {
+     "hipotez": "Yazım hatası",
+     "sonuc": "KANITLANMADI",
+     "gerekce": "İki bağımsız kaynak aynı 17 değerini veriyor; tek bir yazım hatası varsayımına dayanak yok."
+    }
+   ],
+   "sonuc": "BEKLIYOR",
+   "sonucGerekce": "Aynı Eminönü işletmesi (sokak ve resmî telefon ortak). Kapı numarası çelişkisi AÇIK: güncel iki kaynak (resmî site bugün, G&M 2025-12-23) No:11; iki bağımsız kaynak (Time Out 2024-04-10, Falstaff tarihsiz adres alanı) No:17. No:17'nin eski numara, başka giriş ya da yazım hatası olduğunu gösteren açık kaynak yok. Resmî site ve G&M'nin aynı olması çelişkiyi kendiliğinden kapatmaz.",
+   "kalanEksik": [
+    "No:17'nin niteliğini açıklayan açık kaynak (numara değişikliği, ikinci giriş ya da düzeltme) yok",
+    "Codex'in andığı 2025 rehberinin URL'si yerel kayıtlarda yok"
+   ],
+   "kapanabilecekYol": [
+    "Tarihli bağımsız bir kaynağın No:11 vermesi, ya da bir kaynağın numara değişikliğini açıkça yazması",
+    "ÖNERİ (standart değişikliği, varsayılmadı): 'Güncel resmî kaynak + daha yeni tarihli bağımsız rehber aynı kapıyı veriyorsa, daha eski tarihli ya da tarihsiz dizin kaydı çelişki sayılmaz' kuralı. Karar Harun/Codex'in; bu turda uygulanmadı."
+   ],
+   "telefon": {
+    "deger": null,
+    "gerekce": "Resmî 212 528 03 90 (Time Out ve Falstaff da aynı) ↔ G&M 212 528 09 30. Birbirine dönüştürülmedi; kayıt hazırlanırsa telefon alanı boş kalır.",
+    "kaynaklar": {
+     "resmi": [
+      "+90 212 528 03 90",
+      "+90 533 658 80 11"
+     ],
+     "gm2026": [
+      "+90 212 528 09 30"
+     ],
+     "timeOut": [
+      "+90 212 528 03 90"
+     ],
+     "falstaff": [
+      "+90 212 528 03 90"
+     ]
+    }
+   },
+   "kabulHazir": false,
+   "otomatikKabul": false
+  },
+  {
+   "anahtar": "az cok thai|beyoglu",
+   "ad": "Az Çok Thai",
+   "ilce": "Beyoğlu",
+   "adres": "Kuloğlu Mah., Ağa Külhani Sok. No:12/A, Beyoğlu",
+   "kapiNo": "12/A",
+   "sube": "tek şube (Cihangir); başka şube iddiası yok",
+   "soru": "İşletmecinin metnindeki 'café setting' ifadesi işletme türünü mü, yalnız ortamı mı anlatıyor? Restoran mı kafe mi?",
+   "kaynaklar": [
+    {
+     "kaynak": "azcokthai.com ana sayfa (EN)",
+     "url": "https://azcokthai.com/",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "yayin": null,
+     "guncelleme": null,
+     "tarihNotu": "#65 turunda alındı, yeniden açılmadı.",
+     "ifadeler": [
+      "street food inspired authentic Thai food … in a warm, friendly and stylish café setting where we look forward to serving you lunch and dinner",
+      "Authentic Thai Delights in a Chic Café Ambiance",
+      "We are open every day of the week from 12:00 to 22:00",
+      "Our menu features a wide range of authentic Thai dishes"
+     ],
+     "kanitladigi": [
+      "hizmet: öğle ve akşam yemeği",
+      "mutfak: Tay",
+      "kafe kelimesi ortam niteleyicisi (setting / ambiance)",
+      "adres No 12/A, telefon, saat"
+     ]
+    },
+    {
+     "kaynak": "azcokthai.com Türkçe ana sayfa",
+     "url": "https://azcokthai.com/tr/homepage-turkce/",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "yayin": null,
+     "guncelleme": null,
+     "tarihNotu": "Sayfada tarih yok.",
+     "ifadeler": [
+      "sıcak, dostane ve şık bir kafe ortamında öğle ve akşam yemeği hizmeti sunarak",
+      "Şık Kafe Atmosferinde Otantik Tay Lezzetleri",
+      "Az Çok Thai restoranımıza sizi bekliyoruz"
+     ],
+     "kanitladigi": [
+      "işletmecinin öz tanımı: 'restoranımız'",
+      "'kafe' yalnız 'kafe ortamında' / 'kafe atmosferinde' olarak ortamı niteliyor",
+      "hizmet: öğle ve akşam yemeği"
+     ]
+    },
+    {
+     "kaynak": "azcokthai.com Food sayfası",
+     "url": "https://azcokthai.com/food/",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "yayin": null,
+     "guncelleme": null,
+     "tarihNotu": "Sayfada tarih yok.",
+     "ifadeler": [
+      "Experience Authentic Thai Cuisine at Az Çok Thai | Best Thai Restaurant in Istanbul (sayfa başlığı)",
+      "Whether you're in the mood for a light lunch or a full-blown dinner",
+      "Chef Khun Nuch (Nutjarin Plasri) works as the Executive Chef"
+     ],
+     "kanitladigi": [
+      "hizmet: hafif öğle yemeğinden tam akşam yemeğine",
+      "yönetici şef",
+      "başlıkta restoran öz tanımı (destekleyici; tek başına karar dayanağı değil)"
+     ]
+    }
+   ],
+   "sema": {
+    "bulgu": "Sitenin yapısal verisinde Restaurant ya da CafeOrCoffeeShop türü yok (yalnız WordPress WebPage/Article/WebSite).",
+    "etkisi": "Şema işareti karar dayanağı değil."
+   },
+   "menu": {
+    "bulgu": "Ana sayfa güncel menü PDF'lerine bağlantı veriyor (wp-content/uploads/2026/08/Azcokthai-big-food-menu-.pdf).",
+    "acildi": false,
+    "gerekce": "Yemek servisi işletmecinin metninde açık; karar için PDF indirilmesi gerekmedi. Menü ya da yemek eşleşmesi oluşturulmadı."
+   },
+   "degerlendirme": [
+    "Öz tanım: Türkçe sayfa işletmeyi 'restoranımız' diye tanımlıyor; 'kafe' kelimesi her iki dilde de yalnız ortam niteleyicisi ('kafe ortamında', 'café setting', 'Café Ambiance').",
+    "Hizmet modeli: her gün 12:00–22:00 öğle ve akşam yemeği servisi; Tay ana yemekleri, yönetici şef, \"light lunch or full-blown dinner\".",
+    "Kahve/pastane odaklı bir kafe hizmetini gösteren ifade yok.",
+    "Tek bir kelime ya da metatag ile karar verilmedi; şema işareti yok."
+   ],
+   "sonuc": "RESTORAN_ONERISI",
+   "sonucGerekce": "İşletmeci kendini restoran olarak tanımlıyor ve ana hizmeti öğle/akşam yemeği servisi; 'café' ifadesi ortamı anlatıyor, işletme türünü değil.",
+   "kalanEksik": [
+    "Kategori önerisinin Codex tarafından bağımsız teyidi",
+    "Codex #62'de resmî siteye kendi ağından erişemedi (ERISIM_DOGRULANAMADI); bu durum Codex'in kendi hattında açık"
+   ],
+   "sayimEtkisi": "Yok. Ortak kayıtta kategori 'belirsiz' kalır; öneri ayrı alanda. Restoran KPI'sına, mevcut 114 kafeye ya da 716 aktif restorana eklenmedi.",
+   "kabulHazir": false,
+   "otomatikKabul": false
+  }
+ ],
+ "ozet": {
+  "hamdi": "BEKLIYOR",
+  "azCokThai": "RESTORAN_ONERISI",
+  "kabulEdilen": 0,
+  "kabulHazir": 0
+ },
+ "sayilar": {
+  "arastirmaKaydi": {
+   "kanitBekliyor": {
+    "restoran": 537,
+    "kafe": 151,
+    "bar": 0,
+    "belirsiz": 21,
+    "toplam": 709
+   },
+   "not": "Ek 6 durum ya da kategori sayımını değiştirmedi."
+  },
+  "kodAdayi": 0,
+  "previewaUygulanan": 0,
+  "canli": {
+   "toplam": 876,
+   "aktif": 841,
+   "aktifRestoran": 716,
+   "kafe": 114,
+   "bar": 11,
+   "kapali": 35
+  }
+ }
+}

@@ -1,5 +1,5 @@
 {
- "_aciklama": "Ortak araştırma manifestinin GÜNCEL durumu. Taban #63 yayın uzlaşması (ek-2) + #65/#66 sonuçları + #67 engel grupları; üstüne #68'de belgelenen kimlik düzeltmeleri uygulandı. Eski ek dosyaları ve kabul raporları değiştirilmedi (tarihî kayıt). Uygulama kataloğu, veritabanı, Pilot kabul dalı, Preview ve Production değişmedi. YorumS ve kabul havuzu bu dosyayı kullanır.",
+ "_aciklama": "Ortak araştırma manifestinin GÜNCEL durumu. Taban #63 yayın uzlaşması (ek-2) + #65/#66 sonuçları + #67 engel grupları; üstüne #68'de belgelenen kimlik düzeltmeleri uygulandı. Eski ek dosyaları ve kabul raporları değiştirilmedi (tarihî kayıt). Uygulama kataloğu, veritabanı, Pilot kabul dalı, Preview ve Production değişmedi. YorumS ve kabul havuzu bu dosyayı kullanır. Ek 6 (Hamdi Eminönü kapı no, Az Çok Thai kategori) sonuçları engel alanına ve ayrı öneri alanına işlendi; durum ve kategori sayımları değişmedi.",
  "olusturma": "2026-11-16",
  "temel": {
   "pr63": {
@@ -15,7 +15,8 @@
   },
   "pr63Sha": "f88fa1cf6f99b784232a4f0460c067cd071c718f",
   "pr67": "bcd7f79ff5c02edd128a92a2382ce5c133bdaa76",
-  "pr68": "247fa00b5d1da11821be875962a08fa994a17ad3"
+  "pr68": "247fa00b5d1da11821be875962a08fa994a17ad3",
+  "pr69": "750f4cdeb7ed57c378bd9d5f0d00c7e3e4b73456"
  },
  "canliTaban": {
   "sha": "2b437577f4a02197482fb90e46b5f75a3f0b96df",
@@ -91,8 +92,8 @@
   "engelGrubu": {
    "ERISIM": 2,
    "BAGIMSIZ": 573,
-   "ADRES_SUBE": 23,
-   "KANIT_TAMAM_KARAR_BEKLIYOR": 3,
+   "ADRES_SUBE": 24,
+   "KANIT_TAMAM_KARAR_BEKLIYOR": 2,
    "KAFE_POLITIKASI": 8,
    "ISLETMECI": 39,
    "FAALIYET": 8,
@@ -102,13 +103,18 @@
    "KATEGORI": 1
   },
   "engelGrubuFarkPlana": {
-   "KIMLIK": -1,
-   "ADRES_SUBE": 1,
-   "ISLETMECI_VE_BAGIMSIZ": 1
+   "KANIT_TAMAM_KARAR_BEKLIYOR": -1,
+   "ISLETMECI_VE_BAGIMSIZ": 1,
+   "ADRES_SUBE": 2,
+   "KIMLIK": -1
   },
   "kimlik": {
    "BELIRSIZ": 8,
    "GUVENLI_ESLESME": 1
+  },
+  "engelGrubuFarkPr69": {
+   "KANIT_TAMAM_KARAR_BEKLIYOR": -1,
+   "ADRES_SUBE": 1
   }
  },
  "degisiklikler": [
@@ -312,6 +318,57 @@
     "dosya": "data/arastirma/toplu-teslim/ek-5-kimlik-uzlastirma.json"
    },
    "gerekce": "Kimlik güvenli eşleşti; kalan engel kaynak/faaliyet eksiği (yalnız yemek.com)"
+  },
+  {
+   "tarih": "2026-11-16",
+   "anahtar": "hamdi restaurant|fatih",
+   "alan": "engel",
+   "onceki": {
+    "grup": "KANIT_TAMAM_KARAR_BEKLIYOR",
+    "altGrup": "ek3-tamamlandi",
+    "dayanak": "#65"
+   },
+   "yeni": {
+    "grup": "ADRES_SUBE",
+    "altGrup": "kapi-no-celiskisi-acik",
+    "dayanak": "ek-6"
+   },
+   "kaynak": {
+    "pr": null,
+    "sha": null,
+    "dosya": "data/arastirma/toplu-teslim/ek-6-hamdi-azcok-karar.json",
+    "not": "bu teslim; SHA commit sonrası PR açıklamasında"
+   },
+   "gerekce": "#65 resmî site + G&M No:11 ile 'tamamlandı' demişti. Codex'in kayıtlı No:17 kaynakları (Time Out 2024-04-10, Falstaff) açıldı: aynı Eminönü işletmesi, kapı no 17. Numara değişikliği ya da ikinci giriş kanıtı yok; çelişki açık. Durum kanıt bekliyor olarak kalır."
+  },
+  {
+   "tarih": "2026-11-16",
+   "anahtar": "az cok thai|beyoglu",
+   "alan": "engel/kategoriOnerisi",
+   "onceki": {
+    "engel": {
+     "grup": "KANIT_TAMAM_KARAR_BEKLIYOR",
+     "altGrup": "ek3-tamamlandi",
+     "dayanak": "#65"
+    },
+    "kategoriOnerisi": null
+   },
+   "yeni": {
+    "engel": {
+     "grup": "KANIT_TAMAM_KARAR_BEKLIYOR",
+     "altGrup": "kategori-onerisi-codex-teyidi",
+     "dayanak": "ek-6"
+    },
+    "kategoriOnerisi": "RESTORAN_ONERISI",
+    "kategori": "belirsiz"
+   },
+   "kaynak": {
+    "pr": null,
+    "sha": null,
+    "dosya": "data/arastirma/toplu-teslim/ek-6-hamdi-azcok-karar.json",
+    "not": "bu teslim; SHA commit sonrası PR açıklamasında"
+   },
+   "gerekce": "İşletmecinin Türkçe sayfası 'restoranımız' diyor; 'kafe' yalnız ortamı niteliyor; öğle ve akşam yemeği servisi. Kategori alanı değiştirilmedi; öneri ayrı alanda."
   }
  ],
  "kayitlar": [
@@ -15864,8 +15921,13 @@
    "notlar": null,
    "engel": {
     "grup": "KANIT_TAMAM_KARAR_BEKLIYOR",
-    "altGrup": "ek3-tamamlandi",
-    "dayanak": "#65"
+    "altGrup": "kategori-onerisi-codex-teyidi",
+    "dayanak": "ek-6"
+   },
+   "kategoriOnerisi": {
+    "sonuc": "RESTORAN_ONERISI",
+    "dosya": "data/arastirma/toplu-teslim/ek-6-hamdi-azcok-karar.json",
+    "not": "Kategori alanı 'belirsiz' kaldı; öneri Codex teyidine kadar sayıma girmez."
    }
   },
   {
@@ -20044,9 +20106,14 @@
    ],
    "notlar": null,
    "engel": {
-    "grup": "KANIT_TAMAM_KARAR_BEKLIYOR",
-    "altGrup": "ek3-tamamlandi",
-    "dayanak": "#65"
+    "grup": "ADRES_SUBE",
+    "altGrup": "kapi-no-celiskisi-acik",
+    "dayanak": "ek-6"
+   },
+   "ek6": {
+    "sonuc": "BEKLIYOR",
+    "dosya": "data/arastirma/toplu-teslim/ek-6-hamdi-azcok-karar.json",
+    "not": "#65'teki 'TAMAMLANDI' koşullu kaldı; kapı no 11/17 çelişkisi açık, telefon boş kalır."
    }
   },
   {
@@ -25094,5 +25161,14 @@
     "dayanak": "#66"
    }
   }
- ]
+ ],
+ "ekler": {
+  "ek6": {
+   "dosya": "data/arastirma/toplu-teslim/ek-6-hamdi-azcok-karar.json",
+   "kayitlar": [
+    "hamdi restaurant|fatih",
+    "az cok thai|beyoglu"
+   ]
+  }
+ }
 }

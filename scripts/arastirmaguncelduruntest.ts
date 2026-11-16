@@ -26,7 +26,7 @@ t("883 kayıt, ek-2 ile aynı anahtarlar", K.length === 883 && E2.every((r) => X
 const DEGISEN = ["kor agop restaurant|fatih", "liman istanbul|beyoglu"];
 const ozet = (r: any) => JSON.stringify([r.durum, r.altDurum, r.kategori, r.canli?.slug ?? null]);
 t("yalnız Kör Agop ve Liman'ın durum/canlı bağı değişti", E2.filter((r) => ozet(r) !== ozet(X.get(r.anahtar))).map((r) => r.anahtar).sort().join() === "kor agop restaurant|fatih,liman istanbul|beyoglu");
-t("diğer kayıtların ek-2 alanları aynen korundu", E2.filter((r) => !DEGISEN.includes(r.anahtar)).every((r) => { const y = { ...X.get(r.anahtar) }; delete y.kimlik; delete y.engel; if (y.canli && r.canli) y.canli = { ...y.canli, aktif: r.canli.aktif }; return JSON.stringify(y) === JSON.stringify(r); }));
+t("diğer kayıtların ek-2 alanları aynen korundu", E2.filter((r) => !DEGISEN.includes(r.anahtar)).every((r) => { const y = { ...X.get(r.anahtar) }; delete y.kimlik; delete y.engel; delete y.ek6; delete y.kategoriOnerisi; /* ek-6 alanları ayrı testte */ if (y.canli && r.canli) y.canli = { ...y.canli, aktif: r.canli.aktif }; return JSON.stringify(y) === JSON.stringify(r); }));
 const P = [...JSON.parse(show(GUNCEL, "data/real/venues.json")), ...JSON.parse(show(GUNCEL, "data/real/isletme.json"))] as any[];
 const kap = JSON.parse(show(GUNCEL, "data/real/kapanis.json"));
 const KAP = new Set(Object.entries(kap).filter(([a, b]: any) => a !== "_aciklama" && b?.state === "closed_confirmed").map(([a]) => a));
@@ -49,7 +49,7 @@ t("durum × kategori sayımı satırlarla tutarlı", Object.keys(tab).every((d) 
 const ys = new Set(yay.flatMap((r) => r.canli.slug));
 t("yayımlanmış slug ve manifest dışı canlı sayısı tutarlı", D.sayim.yayimlandiSlug === ys.size && D.sayim.canliKatalogManifestDisi === P.length - ys.size);
 t("engel grubu sayımı tutarlı", Object.entries(D.sayim.engelGrubu).every(([g, n]) => K.filter((r) => r.engel?.grup === g).length === n) && K.filter((r) => r.durum === "kanit-bekliyor").every((r) => !!r.engel));
-t("değişiklik günlüğü: tarih, önceki/yeni, kaynak SHA, gerekçe", D.degisiklikler.length > 0 && D.degisiklikler.every((d: any) => d.tarih === "2026-11-16" && "onceki" in d && d.yeni !== undefined && d.kaynak.sha === T68 && d.gerekce) && DEGISEN.every((a) => D.degisiklikler.some((d: any) => d.anahtar === a)));
+t("değişiklik günlüğü: tarih, önceki/yeni, kaynak SHA, gerekçe", D.degisiklikler.length > 0 && D.degisiklikler.filter((d: any) => d.kaynak.pr === 68).length === 12 && D.degisiklikler.filter((d: any) => d.kaynak.pr === 68).every((d: any) => d.tarih === "2026-11-16" && "onceki" in d && d.yeni !== undefined && d.kaynak.sha === T68 && d.gerekce) && DEGISEN.every((a) => D.degisiklikler.some((d: any) => d.anahtar === a)));
 t("puan/koordinat yok", !/"(rating|puan|score|lat|lng|lon)"\s*:/.test(ham));
 console.log(`güncel durum: ${ok}/${ok + fail}`);
 process.exit(fail ? 1 : 0);
