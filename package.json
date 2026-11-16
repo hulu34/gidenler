@@ -21,6 +21,7 @@
     "test:toplu-teslim-ek4": "tsx scripts/arastirmatopluteslimek4test.ts",
     "test:engel-plani": "tsx scripts/arastirmaengelplanitest.ts",
     "test:toplu-teslim-ek5": "tsx scripts/arastirmatopluteslimek5test.ts",
+    "test:guncel-durum": "tsx scripts/arastirmaguncelduruntest.ts",
     "test:arama": "tsx scripts/aramatest.ts",
     "test:anasayfa": "tsx scripts/anasayfatest.ts",
     "test:seo": "tsx scripts/seotest.ts",
