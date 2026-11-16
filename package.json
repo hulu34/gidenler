@@ -34,7 +34,8 @@
     "test:toplu842": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-842-kabul-test.ts",
     "test:toplu848": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-848-kabul-test.ts",
     "test:toplu860": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-860-kabul-test.ts",
-    "test:toplu870": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-870-kabul-test.ts"
+    "test:toplu870": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-870-kabul-test.ts",
+    "test:toplu876": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-876-kabul-test.ts"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.7.12",
