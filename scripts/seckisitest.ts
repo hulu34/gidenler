@@ -21,10 +21,10 @@ for (const a of ALL_ARTICLES) for (const v of a.venues)
 
 /* 3) İlk paket: yalnız editör onayıyla yayımlanan Japon Erdal yayında; geri kalanı kontrol bekliyor */
 const pkg = ALL_ARTICLES.filter((a) => a.status !== "taslak");
-ok("ilk pakette 7 içerik", pkg.length === 7, pkg.map((a) => a.kind).join(","));
+ok("ilk paket 7 içerik + 3 semt rehberi pilotu (kontrol)", pkg.length === 10, pkg.map((a) => a.kind).join(","));
 const je0 = pkg.find((a) => a.slug === "japon-erdal-dort-pide-bir-efsane");
 ok("yalnız Japon Erdal yayında; diğerleri kontrol bekliyor", pkg.every((a) => a === je0 ? a.status === "yayinda" && a.publishedAt === "2026-10-30" : a.status === "kontrol" && a.publishedAt === null));
-ok("türler: 2 hikâye, 3 keşif, 1 mutfaktan, 1 semt", ["hikaye:2", "kesif:3", "mutfak:1", "semt:1"].every((k) => { const [kind, n] = k.split(":"); return pkg.filter((a) => a.kind === kind).length === Number(n); }));
+ok("türler: 2 hikâye, 3 keşif, 1 mutfaktan, 4 semt", ["hikaye:2", "kesif:3", "mutfak:1", "semt:4"].every((k) => { const [kind, n] = k.split(":"); return pkg.filter((a) => a.kind === kind).length === Number(n); }));
 ok("ziyaret iddiası yok (hepsi visited=false)", pkg.every((a) => a.editorial.visited === false));
 ok("yeni açılan restoran iddiası yok", pkg.every((a) => a.newOpening === false));
 const je = pkg.find((a) => a.venues.some((v) => v.slug === "japon-erdal-beyoglu"));
@@ -52,7 +52,7 @@ ok("lisanslı kapakta lisans ve kaynak bağlantısı var", pkg.every((a) => a.co
 /* 4) Görünürlük */
 ok("Production'da kontrol bekleyen görünmez", articles(false).length === 1 && articles(false)[0] === je0);
 ok("Production'da Seçki bağlantısı var (yayında yazı var)", seckiNavVisible(false) === true);
-ok("Preview'da 7 yazı listelenir", articles(true).length === 7);
+ok("Preview'da 10 yazı listelenir (7 + 3 semt pilotu)", articles(true).length === 10);
 ok("taslak Preview'da da görünmez", !articles(true).some((a) => a.status === "taslak") && articleBySlug("taslak-denetim-kaydi", true) === null);
 ok("taslak okunabilir listede yok", !readableArticles(true).some((a) => a.slug === "taslak-denetim-kaydi"));
 ok("reviewVisible: preview", reviewVisible({ VERCEL_ENV: "preview" }) === true);
@@ -82,7 +82,7 @@ ok("\"en\" slug olarak reddedilir", bad({ slug: "en" }));
 const secs = sections(articles(true), []);
 ok("bölüm sırası", secs.map((s) => s.key).join(",") === "hikaye,kesif,mutfak,semt", secs.map((s) => s.key).join(","));
 ok("puan ve deneyim bölümleri boşken görünmez", !secs.some((s) => s.key === "puan" || s.key === "deneyimler"));
-ok("profilde yalnız o restoranın yazısı; Production'da kontrol bekleyen yok", articlesForVenue("japon-erdal-beyoglu", false).length === 1 && articlesForVenue("pandeli-fatih", false).length === 0 && articlesForVenue("pandeli-fatih", true).length === 1);
+ok("profilde yalnız o restoranın yazısı; Production'da kontrol bekleyen yok", articlesForVenue("japon-erdal-beyoglu", false).length === 1 && articlesForVenue("pandeli-fatih", false).length === 0 && articlesForVenue("pandeli-fatih", true).length === 2);
 ok("Production'da yalnız ana hikâye bölümü var", sections(articles(false), []).map((x) => x.key).join() === "hikaye");
 
 /* 7) Etkinlikler: süresi geçen ve iptal edilen çıkar, ertelenen yeni tarihiyle kalır (test verisi; yayına girmez) */

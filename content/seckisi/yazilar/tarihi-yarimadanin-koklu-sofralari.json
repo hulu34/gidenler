@@ -1,0 +1,303 @@
+{
+ "kind": "semt",
+ "status": "kontrol",
+ "featured": false,
+ "notice": {
+  "tr": "Bu bir sıralama değil. Mekânlar rota ya da semt düzenine göre sıralandı; fiyatlar işletmelerin yayımladığı menülerden ve değişebilir.",
+  "en": "This is not a ranking. Places are ordered by route or neighbourhood; prices come from the menus the restaurants publish and may change."
+ },
+ "editorial": {
+  "desk": {
+   "tr": "Gidenler Seçki Masası",
+   "en": "The Gidenler Edit desk"
+  },
+  "method": {
+   "tr": "Yalnız işletmelerin resmî yayınlarından derlenmiş Gidenler profillerindeki bilgiler kullanıldı; sıralama, puan ya da popülerlik iddiası yok. Taslak yapay zekâ yardımıyla hazırlandı; yayından önce editör kontrolünden geçer.",
+   "en": "Uses only the details in Gidenler profiles, which are compiled from the restaurants' official publications; there is no ranking, score or popularity claim. The draft was prepared with AI assistance and is checked by an editor before publication."
+  },
+  "visited": false
+ },
+ "preparedAt": "2026-11-14",
+ "publishedAt": null,
+ "updatedAt": null,
+ "newOpening": false,
+ "commercial": {
+  "state": "dogrulanmadi"
+ },
+ "ownership": null,
+ "slug": "tarihi-yarimadanin-koklu-sofralari",
+ "title": {
+  "tr": "Tarihî Yarımada'nın köklü sofraları",
+  "en": "Long-standing tables of the Historic Peninsula"
+ },
+ "area": {
+  "tr": "Tarihî Yarımada",
+  "en": "Historic Peninsula"
+ },
+ "dek": {
+  "tr": "Mısır Çarşısı'nda 1901'den bir lokanta, Divanyolu'nda 1920'den bir köfteci, Cankurtaran'da ahşap bir konakta balık, saray mutfağı ve 300 yıllık bir hamamın içinde bugünün mutfağı.",
+  "en": "A restaurant from 1901 in the Spice Bazaar, a köfte house from 1920 on Divanyolu, fish in a wooden house in Cankurtaran, palace cooking, and today's cooking inside a 300-year-old bathhouse."
+ },
+ "why": {
+  "tr": "Tarihî Yarımada'da eski bir binada ya da uzun bir aile geçmişiyle süren sofralar var. Bu taslak, kuruluş ve bina bilgisini işletmelerin kendi anlatımından alarak beş adresi bir araya getiriyor; tarihler işletmelerin beyanıdır.",
+  "en": "The Historic Peninsula has tables that continue in old buildings or with long family histories. This draft brings together five addresses, taking founding and building details from the restaurants' own accounts; dates are the restaurants' statements."
+ },
+ "body": {
+  "tr": [
+   {
+    "h": "Mısır Çarşısı: Pandeli"
+   },
+   {
+    "p": "Mısır Çarşısı'nın içinde, Balık Pazarı Kapısı tarafında bir lokanta; işletmeye göre 1901'de Pandeli Çobanoğlu tarafından açıldı ve salonları mavi çinileriyle anılıyor. Menüde zeytinyağlılar, Pandeli'nin patlıcan böreği, hünkâr beğendi ve kâğıtta levrek gibi klasik İstanbul yemekleri var. Menü 01.02.2026 tarihli ve fiyat yayımlamıyor."
+   },
+   {
+    "h": "Divanyolu: Tarihi Sultanahmet Köftecisi Selim Usta"
+   },
+   {
+    "p": "Divanyolu Caddesi No:12'de bir köfteci; işletmeye göre 1920'den beri dört kuşaktır aynı köfteyi yapıyor. Baharat kullanılmadan dana eti, ekmek, soğan ve tuzla hazırlanan ızgara köftenin yanında kuzu şiş, mercimek çorbası, piyaz ve irmik helvası var. Çevrede benzer adlı başka köfteciler de bulunduğu için tabeladaki Selim Usta adına ve kapı numarasına dikkat etmek gerekiyor."
+   },
+   {
+    "h": "Cankurtaran: Balıkçı Sabahattin"
+   },
+   {
+    "p": "Sultanahmet'in arkasında, Seyit Hasan Kuyu Sokağı No:1'de bir balık lokantası; işletmenin anlatımına göre 1927 yapımı ahşap bir konakta hizmet veriyor ve aile kökeni Trilye'ye dayanıyor. Menüde balık böreği ve fener kavurma gibi deniz mezeleri, mevsim balıkları ve kabuklular var. Lokantayı ayrı bir yazıda da anlattık."
+   },
+   {
+    "h": "Sultanahmet: Deraliye"
+   },
+   {
+    "p": "Alemdar Mahallesi'nde, Ticarethane Sokağı No:10'da Divanyolu'na yakın bir Osmanlı saray mutfağı restoranı. İşletmenin anlatımına göre saray mutfağının tariflerini sunuyor; menüde çorbalar, soğuk başlangıçlar, deniz ürünleri ve vejetaryen Osmanlı yemekleri var. Menü PDF'i henüz profile aktarılmadığı için burada yemek ve fiyat yazmıyoruz."
+   },
+   {
+    "h": "Cağaloğlu: Lokanta 1741"
+   },
+   {
+    "p": "İşletmenin 300 yıllık geçmişiyle andığı Cağaloğlu Hamamı'nın içinde çağdaş Türk mutfağı; servis hamam kubbelerinin altında ya da terasta, şef Durukan Özgen. Burada köklü olan bina; restoranın kendisi yeni bir yorum. Menüde kazlı pide 2.450 ₺, tiritli mantı 2.600 ₺; tadım menüsü kişi başı 7.400 ₺."
+   }
+  ],
+  "en": [
+   {
+    "h": "Spice Bazaar: Pandeli"
+   },
+   {
+    "p": "A restaurant inside the Spice Bazaar, by the Balık Pazarı gate; according to the restaurant it was opened in 1901 by Pandeli Çobanoğlu, and its rooms are known for their blue tiles. The menu has olive-oil dishes, Pandeli's aubergine börek, hünkâr beğendi and sea bass baked in paper among classic Istanbul dishes. The menu is dated 01.02.2026 and publishes no prices."
+   },
+   {
+    "h": "Divanyolu: Tarihi Sultanahmet Köftecisi Selim Usta"
+   },
+   {
+    "p": "A köfte house at Divanyolu Caddesi No:12; according to the restaurant it has made the same köfte for four generations since 1920. Alongside grilled köfte made without spices from beef, bread, onion and salt, there are lamb skewers, lentil soup, piyaz and semolina helva. Other köfte houses with similar names operate nearby, so look for the Selim Usta name on the sign and the door number."
+   },
+   {
+    "h": "Cankurtaran: Balıkçı Sabahattin"
+   },
+   {
+    "p": "A fish restaurant at Seyit Hasan Kuyu Sokağı No:1, behind Sultanahmet; in the restaurant's words it operates in a wooden house built in 1927 and the family's roots go back to Trilye. The menu has seafood meze such as fish börek and fried monkfish, seasonal fish and shellfish. We also cover the restaurant in a separate piece."
+   },
+   {
+    "h": "Sultanahmet: Deraliye"
+   },
+   {
+    "p": "An Ottoman palace-cuisine restaurant at Ticarethane Sokağı No:10 in Alemdar, near Divanyolu. In the restaurant's words it serves recipes of the palace kitchen; the menu has soups, cold starters, seafood and vegetarian Ottoman dishes. Its menu PDF has not yet been added to the profile, so we list no dishes or prices here."
+   },
+   {
+    "h": "Cağaloğlu: Lokanta 1741"
+   },
+   {
+    "p": "Contemporary Turkish cooking inside the Cağaloğlu Hamam, which the restaurant describes as having 300 years of history; service is under the bathhouse domes or on the terrace, with chef Durukan Özgen. What is long-standing here is the building; the restaurant itself is a new take. The menu has kazlı pide at 2,450 TRY and tiritli mantı at 2,600 TRY; the tasting menu is 7,400 TRY per person."
+   }
+  ]
+ },
+ "know": {
+  "tr": [
+   "Pandeli: rezervasyon talepleri 12.00–18.00 arası saatler için; onay e-postası gelmedikçe kesin değil. Yalnız tatlı, çay ve kahve için misafir kabul edilmiyor.",
+   "Selim Usta: telefon +90 212 520 05 66; markanın başka semtlerde de şubeleri var, bu adres Divanyolu No:12.",
+   "Balıkçı Sabahattin: öğle menüsü 12.00–16.00, kişi başı 35 €; rezervasyon sitedeki sayfadan, telefonla ya da WhatsApp'tan.",
+   "Deraliye: rezervasyon sitedeki sayfadan ya da +90 212 520 77 78.",
+   "Lokanta 1741: salı kapalı; 15 yaş altı misafir kabul edilmiyor. Rezervasyon +90 533 145 17 41."
+  ],
+  "en": [
+   "Pandeli: reservation requests are taken for 12:00–18:00; a booking is not confirmed until the confirmation e-mail arrives. Guests are not seated for dessert, tea or coffee only.",
+   "Selim Usta: phone +90 212 520 05 66; the brand has branches in other districts, this address is Divanyolu No:12.",
+   "Balıkçı Sabahattin: lunch menu 12:00–16:00, 35 € per person; book via its site, by phone or WhatsApp.",
+   "Deraliye: book via its site or +90 212 520 77 78.",
+   "Lokanta 1741: closed Tuesday; guests under 15 are not admitted. Reservations +90 533 145 17 41."
+  ]
+ },
+ "venues": [
+  {
+   "slug": "pandeli-fatih",
+   "role": {
+    "tr": "Mısır Çarşısı",
+    "en": "Spice Bazaar"
+   }
+  },
+  {
+   "slug": "tarihi-sultanahmet-koftecisi-selim-usta-fatih",
+   "role": {
+    "tr": "Divanyolu",
+    "en": "Divanyolu"
+   }
+  },
+  {
+   "slug": "balikci-sabahattin-fatih",
+   "role": {
+    "tr": "Cankurtaran",
+    "en": "Cankurtaran"
+   }
+  },
+  {
+   "slug": "deraliye-fatih",
+   "role": {
+    "tr": "Sultanahmet",
+    "en": "Sultanahmet"
+   }
+  },
+  {
+   "slug": "lokanta-1741-fatih",
+   "role": {
+    "tr": "Cağaloğlu",
+    "en": "Cağaloğlu"
+   }
+  }
+ ],
+ "sources": [
+  {
+   "title": {
+    "tr": "Pandeli — menü (PDF) ve rezervasyon",
+    "en": "Pandeli — menu (PDF) and reservations"
+   },
+   "publisher": {
+    "tr": "Pandeli (resmî site)",
+    "en": "Pandeli (official website)"
+   },
+   "url": "https://www.pandeli.com.tr/PANDELI-MENU.pdf",
+   "checkedAt": "2026-10-28",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Tarihi Sultanahmet Köftecisi — ana sayfa ve iletişim",
+    "en": "Tarihi Sultanahmet Köftecisi — home and contact"
+   },
+   "publisher": {
+    "tr": "Tarihi Sultanahmet Köftecisi (resmî site)",
+    "en": "Tarihi Sultanahmet Köftecisi (official website)"
+   },
+   "url": "https://sultanahmetkoftesi.com/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Balıkçı Sabahattin — menü ve rezervasyon",
+    "en": "Balıkçı Sabahattin — menu and reservations"
+   },
+   "publisher": {
+    "tr": "Balıkçı Sabahattin (resmî site)",
+    "en": "Balıkçı Sabahattin (official website)"
+   },
+   "url": "https://www.balikcisabahattin.com",
+   "checkedAt": "2026-10-29",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Deraliye — ana sayfa ve iletişim",
+    "en": "Deraliye — home and contact"
+   },
+   "publisher": {
+    "tr": "Deraliye (resmî site)",
+    "en": "Deraliye (official website)"
+   },
+   "url": "https://deraliyerestaurant.com/iletisim/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Lokanta 1741 — menü ve rezervasyon",
+    "en": "Lokanta 1741 — menu and reservations"
+   },
+   "publisher": {
+    "tr": "Lokanta 1741 (resmî site)",
+    "en": "Lokanta 1741 (official website)"
+   },
+   "url": "https://lokanta1741.com/tr/tr-menu/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Pandeli — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Pandeli — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/pandeli-fatih/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Tarihi Sultanahmet Köftecisi Selim Usta — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Tarihi Sultanahmet Köftecisi Selim Usta — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/tarihi-sultanahmet-koftecisi-selim-usta-fatih/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Balıkçı Sabahattin — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Balıkçı Sabahattin — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/balikci-sabahattin-fatih/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Deraliye — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Deraliye — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/deraliye-fatih/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Lokanta 1741 — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Lokanta 1741 — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/lokanta-1741-fatih/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  }
+ ],
+ "cover": {
+  "state": "yok",
+  "gap": {
+   "tr": "Tarihî Yarımada için hakkı doğrulanmış fotoğraf henüz seçilmedi. Aday: Selim Usta cephesinin Commons'taki CC BY-SA dosyaları (envanterde; şube ve lisans kontrolü bekliyor).",
+   "en": "No rights-cleared photo has been chosen for the Historic Peninsula yet. Candidate: CC BY-SA files of the Selim Usta frontage on Commons (in the inventory; branch and licence check pending)."
+  }
+ }
+}
