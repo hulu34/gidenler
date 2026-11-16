@@ -1,0 +1,879 @@
+{
+ "_aciklama": "Toplu teslim eki 3 — #63 kanıt bekleyen restoranlarından kanıtı tamamlanmaya en yakın 20 kayıt için tek sınırlı kanıt turu. Yalnız kaydın belirli eksiği/çelişkisi için gereken kaynak bir kez açıldı; mevcut kanıtlar yeniden taranmadı. Ücretli kaynak, işletmeye mesaj, erişim engeli aşma yok. Gerçek yorum/yemek eşleşmesi üretilmedi. Uygulama kataloğu, veritabanı, kabul dalları, Preview ve Production değişmedi. YorumS ekipleri için tek ortak manifesttir.",
+ "olusturma": "2026-11-16",
+ "temel": {
+  "pr63": {
+   "sha": "f88fa1cf6f99b784232a4f0460c067cd071c718f",
+   "dosya": "data/arastirma/toplu-teslim/ek-2-yayin-uzlasma.json"
+  }
+ },
+ "canliTaban": {
+  "pr": 62,
+  "sha": "2b437577f4a02197482fb90e46b5f75a3f0b96df",
+  "toplam": 876,
+  "aktif": 841,
+  "aktifRestoran": 716
+ },
+ "kapsamDisi": {
+  "canli876": "canlı kayıtlar",
+  "pilotMonteverdi": {
+   "pr": 64,
+   "sha": "40239d6fb6d6cd9434153ab54373095eba9f7e19",
+   "anahtar": "monteverdi ristorante|besiktas",
+   "not": "Pilot hazırladı, Preview izni bekliyor; incelenmedi"
+  },
+  "maderia": "maderia sushi bar|sisli — kullanıcı beklemesi",
+  "suna": "suna nin yeri|uskudar — belirsizlik #60/#61'de açık",
+  "mukerrerSupheli": "#63 mükerrer şüphesi 6 kayıt aday sayılmadı",
+  "pilotSonTur": "#64 kabul dosyasında Pilot'un bu tur bakıp beklettiği Balıkçı Kahraman, Ahmet Ustam Ocakbaşı, Fasuli Garden, Tere, Chalet, Morini/Parlé, Maromi, Bado yinelenmedi (Az Çok Thai hariç: yalnız resmî site erişimi denendi)"
+ },
+ "secim": {
+  "havuz": "#63 kanit-bekliyor + kategori restoran (537); Az Çok Thai #63'te kategori belirsiz, tür eksiği kendi eksiğinin parçası olduğu için dahil",
+  "kural": "Tek, adı konmuş eksik ya da çelişki; kayıtlı bir resmî/işletmeci URL'si ya da tarihli iki bağımsız kaynak zaten var. 'bagimsiz-kaynak-yok' (561) ve 'eksik-faaliyet' havuzu genel araştırma gerektirdiği için seçilmedi.",
+  "grupA": "12 kayıt: resmî/işletmeci URL'si kayıtlı; adres/kapı/şube/faaliyet çelişkisi",
+  "grupB": "8 kayıt: G&M 2026 + 2026 tarihli ikinci editoryal var; eksik yalnız işletmeci kaynağı"
+ },
+ "kural": {
+  "tamamlandi": "resmî/işletmeci kaynağı bugün açık ve ad + sokak + kapı no gösteriyor; son 12 ayda tarihli bağımsız kaynak aynı ad, sokak ve kapı noyu veriyor; faaliyet resmî kaynakta güncel. Telefon ayrıca karşılaştırılır, eşleşmezse aktarılmaz.",
+  "bekliyor": "bu koşullardan biri eksik; kalan eksik kayıtta yazılı",
+  "subeAyrimi": "kanıt kaydın anahtarındaki şubeden farklı bir şubeyi tam kanıtlıyor; diğer şube bekliyor",
+  "sayilmayan": "Google/harita puanı ve Maps; toplayıcı siteler (joinpearl, mesprestiges, enprimeurclub, tripaligner vb.); arama önbelleği; Instagram",
+  "ayniRehber": "aynı rehberin farklı yılları tek kaynak"
+ },
+ "sayim": {
+  "secilen": 20,
+  "tamamlandi": 2,
+  "subeAyrimi": 1,
+  "bekliyor": 17,
+  "tamKanitliKayit": 3,
+  "grup": {
+   "A": 12,
+   "B": 8
+  },
+  "acilanUrl": 25,
+  "arama": 4
+ },
+ "yorumsNotu": "Bu ek yalnız kimlik/adres/faaliyet kanıtıdır. Yorum, yemek, puan ya da menü eşleşmesi içermez; bu alanlar için kayıt üretilmemeli.",
+ "kayitlar": [
+  {
+   "anahtar": "az cok thai|beyoglu",
+   "ad": "Az Çok Thai",
+   "ilce": "Beyoğlu",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63'te belirsiz; resmî site bugün öğle/akşam Tayland yemeği servisi gösteriyor (restoran önerisi, Codex onaylamalı)",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "ek1-belirsiz-oncelik-1",
+    "kategori": "belirsiz"
+   },
+   "eksik": "Codex #62/#64: resmî site bu ağdan açılamadı; #58: G&M'de mutfak etiketi yok (tür kaynaksız)",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/az-cok-thai/ (2025-12-25): Ağa Külhanı Sok. No: 12/A · +90 212 251 18 11 — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://azcokthai.com/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Kuloğlu Mahallesi, Ağa Külhani Sokak, No 12/A Beyoğlu/İstanbul · +90 212 251 18 11 · her gün 12:00–22:00 · 'authentic Thai food… lunch and dinner'",
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no",
+      "telefon",
+      "faaliyet (bugün açık, çalışma saati)",
+      "tür: Tayland mutfağı"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "TAMAMLANDI",
+   "tamamlanan": {
+    "adres": "Kuloğlu Mah., Ağa Külhani Sok. No:12/A, Beyoğlu",
+    "kapiNo": "12/A",
+    "telefon": "resmî site ve G&M aynı",
+    "faaliyet": "resmî site bugün açık + G&M 2026",
+    "tur": "Tayland mutfağı (resmî site metni)"
+   },
+   "kalanEksik": [],
+   "not": "Resmî metin 'café setting' ifadesi de kullanıyor; öğle ve akşam yemeği servisi var. Restoran/kafe ayrımı Codex kabulünde onaylanmalı; tür etiketi resmî siteden alındı, rehberden değil."
+  },
+  {
+   "anahtar": "hamdi restaurant|fatih",
+   "ad": "Hamdi Restaurant",
+   "ilce": "Fatih",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "Codex: resmî site Kalçın No:11; TimeOut/Falstaff ve 2025 rehberi No:17 — kapı farkı",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/hamdi-restaurant/ (2025-12-23): Kalçın Sok. No:11 · +90 212 528 09 30 — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://hamdi.com.tr/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "HAMDİ RESTAURANT - EMİNÖNÜ Tahmis Cad. Kalçın Sokak No:11 Eminönü · +90 533 658 80 11 · +90 212 528 03 90 (ayrıca Şişli şubesi listeli)",
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no",
+      "faaliyet (şube listesinde)"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "TAMAMLANDI",
+   "tamamlanan": {
+    "adres": "Rüstem Paşa Mah., Tahmis Cad., Kalçın Sok. No:11, Fatih",
+    "kapiNo": "11",
+    "telefon": "eşleşmedi (resmî 212 528 03 90 ↔ G&M 212 528 09 30); telefon aktarılmamalı",
+    "faaliyet": "resmî site bugün şube listesinde + G&M 2026"
+   },
+   "kalanEksik": [],
+   "not": "Güncel iki kaynak (resmî site bugün, G&M 2026) No:11'de aynı. Codex'in No:17 kaynakları yeniden taranmadı; onlar bu ikisinden eski ya da tarihsiz. Çelişkinin kapanması Codex kabulünün kararı; telefon farkı nedeniyle telefon alanı boş bırakılmalı."
+  },
+  {
+   "anahtar": "sahan|kadikoy",
+   "ad": "Sahan",
+   "ilce": "Kadıköy",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "adres-celiskisi",
+    "kategori": "restoran"
+   },
+   "eksik": "#56: G&M 2026 adresi Ataşehir (Kardelen Sok. No:4), #48 adresi Kadıköy (Bağdat Cad. No:461) — farklı kapı",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/sahan-atasehir/ (2025-12-23): Barbaros, Kardelen Sok. No:4 Ataşehir · +90 216 315 37 37 — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://sahan.com/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Adresimiz Barbaros, Kardelen Sk. No:4, 34746 Ataşehir/İstanbul · T. (0216) 315 37 37 · çalışma saatleri",
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no",
+      "telefon",
+      "faaliyet"
+     ]
+    },
+    {
+     "url": "https://sahan.com/subelerimiz/",
+     "tur": "resmî şube listesi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Suadiye: Suadiye Mah. Bağdat Cad. No:461 KADIKÖY · 0 216 771 47 47 (ayrıca Kurtköy)",
+     "kanitladigi": [
+      "Kadıköy şubesinin ad, sokak, kapı no, telefonu"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "SUBE_AYRIMI",
+   "tamamlanan": {
+    "sube": "Ataşehir",
+    "onerilenAnahtar": "sahan|atasehir",
+    "adres": "Barbaros Mah., Kardelen Sok. No:4, Ataşehir",
+    "kapiNo": "4",
+    "telefon": "resmî site ve G&M aynı",
+    "faaliyet": "resmî site bugün açık + G&M 2026"
+   },
+   "kalanEksik": [
+    "Kadıköy (Suadiye, Bağdat Cad. No:461) şubesi: yalnız resmî şube listesi var; son 12 ayda tarihli bağımsız kaynak yok"
+   ],
+   "not": "#56 iki ayrı şubeyi tek anahtarda birleştirmiş. Ataşehir şubesi ayrı kayıt olarak tam kanıtlı; canlıda ve manifestte ayrı Ataşehir kaydı yok. Kadıköy şubesi bekliyor. Mükerrer değil, şube ayrımı."
+  },
+  {
+   "anahtar": "mykorini istanbul|beyoglu",
+   "ad": "MykOrini İstanbul",
+   "ilce": "Beyoğlu",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "Codex: rehber Taşkızak Tersanesi 27J, işletme No:5 — aynı kapı mı",
+   "mevcutKanit": [],
+   "kontroller": [
+    {
+     "url": "https://www.mykorini.com/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Camiikebir Mah., Taşkızak Tersane Cad., No: 5, Beyoğlu · +90 (501) 385 59 70 · Tersane İstanbul (Rixos Tersane)",
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no",
+      "telefon",
+      "faaliyet"
+     ]
+    },
+    {
+     "url": "https://www.gault-millau.com.tr/mykorini-istanbul/",
+     "tur": "editoryal rehber (çelişki için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Aralık 23, 2025 · Taşkızak Tersanesi Cad., Camiikebir Mah. 27J · +90 501 385 59 70",
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "telefon; kapı 27J"
+     ]
+    },
+    {
+     "url": "https://www.tersaneistanbul.com/",
+     "tur": "kompleks resmî sitesi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Mykorini, 27J ya da No:5 metni bulunamadı",
+     "kanitladigi": null
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "27J ile No:5'in aynı giriş olduğunu gösteren kaynak yok (telefon ve sokak aynı)"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "filo d olio caddebostan by danilo zanna|kadikoy",
+   "ad": "Filo D’olio Caddebostan by Danilo Zanna",
+   "ilce": "Kadıköy",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "Codex: resmî ana sayfa 'yeni adres çok yakında'; 319-321C'de faaliyet yeniden teyit edilmeli",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/filo-dolio-caddebostan-by-danilo-zanna/ (2025-12-23) — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.filodolio.com.tr/our-restaurants.aspx",
+     "tur": "resmî restoran listesi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "İstanbul satırı: 'YENİ ADRES ÇOK YAKINDA — Filo D'olio deneyimi çok yakında yeni adresinde'; Bağdat Caddesi 319-321C adresi yok (yalnız Vadistanbul adresi açık)",
+     "kanitladigi": [
+      "eski adreste faaliyetin desteklenmediği"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Caddebostan şubesinin güncel adresi ve faaliyeti; resmî kaynak yeni adresi henüz vermiyor"
+   ],
+   "not": "Kapanış hükmü değil; taşınma işareti."
+  },
+  {
+   "anahtar": "il cortile|beyoglu",
+   "ad": "Il Cortile",
+   "ilce": "Beyoğlu",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "adres-celiskisi",
+    "kategori": "restoran"
+   },
+   "eksik": "#56: G&M No:14 D:20 ↔ #48 No:20/A",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/il-cortile-ristorante-pizzeria-5/ (2025-12-23): Galata Kulesi Sok. No:14 D:20 · +90 212 244 26 74 — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://ilcortileistanbul.com/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Bereketzade Mahallesi Galata Kulesi Sokak No:20/A, Beyoğlu · +90 212 244 26 74 · her gün 12:00–23:00 · Ecole St. Pierre avlusu",
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no 20/A",
+      "telefon",
+      "faaliyet"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "No:20/A'yı veren tarihli bağımsız kaynak yok; G&M 14 D:20 diyor (telefon aynı)"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "dafni atesbasi|uskudar",
+   "ad": "Dafni Ateşbaşı",
+   "ilce": "Üsküdar",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "adres-celiskisi",
+    "kategori": "restoran"
+   },
+   "eksik": "#56: G&M Babanakkaş Sok. No:56 ↔ #48 Nakkaştepe Yolu No:56",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/dafni-atesbasi/ (2025-12-23): Kuzguncuk Yolu, Babanakkaş Sok., No:56 · +90 533 918 08 27 — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.dafniatesbasi.com/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Kuzguncuk, Nakkaştepe Yolu No:56, 34632 Üsküdar · +90 533 918 0827 · çalışma saatleri (başlıkta 'Nakkaştepe Mezarlığı no 56')",
+     "kanitladigi": [
+      "ad",
+      "sokak",
+      "kapı no",
+      "telefon",
+      "faaliyet"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Sokak adı iki kaynakta farklı (Nakkaştepe Yolu ↔ Babanakkaş Sok.); telefon ve kapı no aynı, sokak eşdeğerliği kanıtlanmadı"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "akali mall of istanbul|basaksehir",
+   "ad": "Akali Mall of İstanbul",
+   "ilce": "Başakşehir",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "adres-celiskisi",
+    "kategori": "restoran"
+   },
+   "eksik": "#56: G&M adresi marka merkezi (Maçka Residences), #48 Mall of İstanbul",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/akali/ (2025-12-25): marka merkezi adresi — şube kanıtı değil, yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.akali.co/subeler",
+     "tur": "resmî şube listesi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "07. Mall of İstanbul Başakşehir · 2025 · Ziya Gökalp Mah., Süleyman Demirel Bulvarı No:7 Başakşehir · ortak santral +90 212 227 4242",
+     "kanitladigi": [
+      "şube adı",
+      "sokak",
+      "kapı no",
+      "faaliyet (listede)"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Mall of İstanbul şubesi için son 12 ayda tarihli bağımsız kaynak yok"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "sushi barba|sariyer",
+   "ad": "Sushi Barba",
+   "ilce": "Sarıyer",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "Codex: rehber AVM No:73, diğer kaynak No:11 — iç birim/dış kapı",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/sushi-barba/ (2025-12-23): İstinye Park AVM No:73 — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://istinyepark.com.tr/ist-category/restoran/",
+     "tur": "AVM resmî rehberi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Yönlendirme: istinyepark.com.tr/foods/kategori/restoran · 'SUSHI BARBA 1. Kat' — kapı no yok",
+     "kanitladigi": [
+      "AVM içinde faaliyet (listede)"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "AVM kapı/birim numarası resmî kaynakta yok; No:73 ↔ No:11 çözülmedi"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "white burger pendik|pendik",
+   "ad": "White Burger Pendik",
+   "ilce": "Pendik",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "Codex: Osmanlı Bulvarı 1/2T ile tanıtımlardaki Millet Caddesi 32 aynı giriş mi",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/white-burger-3/ — marka düzeyi, şube kanıtı değil"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.whiteburger.com/subelerimiz",
+     "tur": "resmî şube listesi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Pendik MRF Cadde · Yenişehir Mah. Osmanlı Bulvarı No: 1/2T Pendik · 0530 391 13 34",
+     "kanitladigi": [
+      "şube adı",
+      "sokak",
+      "kapı no",
+      "telefon",
+      "faaliyet (listede)"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Şube düzeyinde tarihli bağımsız kaynak yok; Millet Caddesi 32 ile ilişki çözülmedi"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "adana ocakbasi kurtulus|sisli",
+   "ad": "Adana Ocakbaşı Kurtuluş",
+   "ilce": "Şişli",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "Codex: adanaocakbasi.com.tr Nişantaşı gösteriyor; aday Kurtuluş Baysungur No:2",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/adana-ocakbasi-kurtulus/ (2025-12-23): Baysungur Sok. No:2 Kurtuluş — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.adanaocakbasi.com.tr/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "'Bugün Nişantaşı'nda aynı geleneği yaşatıyor' · Halaskargazi Mah. Süleyman Nazif Sk. No:1 Nişantaşı Şişli · 0540 669 0101; Kurtuluş adresi yok",
+     "kanitladigi": [
+      "Kurtuluş şubesinin resmî sitede olmadığı"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Kurtuluş adresinde güncel işletmeci kaynağı yok; resmî site yalnız Nişantaşı'nı veriyor (taşınma olabilir, kanıtlanmadı)"
+   ],
+   "not": "Kapanış hükmü değil. Nişantaşı adresi ayrı bir aday olarak bu ekte değerlendirilmedi."
+  },
+  {
+   "anahtar": "caki restoran|basaksehir",
+   "ad": "Çakı Restoran",
+   "ilce": "Başakşehir",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "A",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "ek1-belirsiz-oncelik-1",
+    "kategori": "restoran"
+   },
+   "eksik": "#58: resmî sitede iki adres biçimi; editoryal kaynakta kapı no yok",
+   "mevcutKanit": [
+    "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/ (2026-11-10): Park Mavera 4 Cadde Dükkanları — kapı no yok, yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://cakirestoran.com/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Kayabaşı, Park Mavera 4 Cadde Dükkanları 34480 Başakşehir · +90 532 309 22 54 · her gün 09:00–23:00; bugün tek adres biçimi, kapı no yok",
+     "kanitladigi": [
+      "ad",
+      "site/blok adresi",
+      "telefon",
+      "faaliyet"
+     ]
+    }
+   ],
+   "arama": null,
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Kapı numarası hiçbir kaynakta yok (adres yalnız site/dükkân bloğu düzeyinde)"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "ali ocakbasi|besiktas",
+   "ad": "Ali Ocakbaşı",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "B",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "PR #51: güncel resmî işletme/operatör teyidi yok; iki editoryal kaynak (G&M 2026 + 2026 tarihli editoryal) tek başına yetmez",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/ali-ocakbasi-5/ (2025-12-23) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-terasli-mekanlari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.gault-millau.com.tr/ali-ocakbasi-5/",
+     "tur": "editoryal rehber (yalnız web sitesi bağlantısı için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfada işletmenin web sitesi bağlantısı yok",
+     "kanitladigi": null
+    }
+   ],
+   "arama": [
+    "Bu turda arama yapılmadı (düşük kullanım sınırı)"
+   ],
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "efendy|besiktas",
+   "ad": "Efendy",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "B",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "PR #51: güncel resmî işletme/operatör teyidi yok; iki editoryal kaynak (G&M 2026 + 2026 tarihli editoryal) tek başına yetmez",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/efendy-3/ (2025-12-23) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/en-iyi-bulusma-mekanlari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.gault-millau.com.tr/efendy-3/",
+     "tur": "editoryal rehber (yalnız web sitesi bağlantısı için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfada işletmenin web sitesi bağlantısı yok",
+     "kanitladigi": null
+    },
+    {
+     "url": "https://efendyistanbul.com/",
+     "tur": "olası resmî alan adı (aramada toplayıcı bağlantısından)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Başlık 'Çok Yakında - Efendy İstanbul'; adres, telefon yok",
+     "kanitladigi": null
+    }
+   ],
+   "arama": [
+    "Arama 'Efendy restoran Nisbetiye Caddesi 13 Levent resmi site': yalnız MICHELIN (bağımsız rehber, işletmeci değil), TimeOut ve toplayıcılar"
+   ],
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "eskiyer restaurant|sariyer",
+   "ad": "Eskiyer Restaurant",
+   "ilce": "Sarıyer",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "B",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "PR #51: güncel resmî işletme/operatör teyidi yok; iki editoryal kaynak (G&M 2026 + 2026 tarihli editoryal) tek başına yetmez",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/eskiyer-restaurant-5/ (2025-12-24) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.gault-millau.com.tr/eskiyer-restaurant-5/",
+     "tur": "editoryal rehber (yalnız web sitesi bağlantısı için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfada işletmenin web sitesi bağlantısı yok",
+     "kanitladigi": null
+    }
+   ],
+   "arama": [
+    "Bu turda arama yapılmadı (düşük kullanım sınırı)"
+   ],
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "gou society|kadikoy",
+   "ad": "GOU Society",
+   "ilce": "Kadıköy",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "B",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "PR #51: güncel resmî işletme/operatör teyidi yok; iki editoryal kaynak (G&M 2026 + 2026 tarihli editoryal) tek başına yetmez",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/gou-society-3/ (2025-12-23) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/bagdat-caddesinin-en-iyi-mekanlari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.gault-millau.com.tr/gou-society-3/",
+     "tur": "editoryal rehber (yalnız web sitesi bağlantısı için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfada işletmenin web sitesi bağlantısı yok",
+     "kanitladigi": null
+    }
+   ],
+   "arama": [
+    "Arama 'GOU Society Suadiye Vapur Yolu Sokak restoran': yalnız toplayıcılar (joinpearl, mesprestiges, enprimeurclub) ve gazeteoksijen köşe yazısı; işletmeci kaynağı yok"
+   ],
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "gunaydin kebap restoran|besiktas",
+   "ad": "Günaydın Kebap Restoran",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "B",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "PR #51: güncel resmî işletme/operatör teyidi yok; iki editoryal kaynak (G&M 2026 + 2026 tarihli editoryal) tek başına yetmez",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/gunaydin-kebap-restoran/ (2025-12-23) — yeniden açılmadı",
+    "https://yemek.com/etilerde-en-iyi-kebap-nerede-yenir/ — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.gault-millau.com.tr/gunaydin-kebap-restoran/",
+     "tur": "editoryal rehber (yalnız web sitesi bağlantısı için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfada işletmenin web sitesi bağlantısı yok",
+     "kanitladigi": null
+    },
+    {
+     "url": "https://www.gunaydinet.com/",
+     "tur": "2007 tarihli blogdaki alan adı",
+     "erisim": "2026-11-16",
+     "http": 404,
+     "bulgu": "Sayfa yok",
+     "kanitladigi": null
+    }
+   ],
+   "arama": [
+    "Arama 'Günaydın Etiler Seheryıldızı Sokak No 6 kebap restoran şube': TimeOut, yemek.com, toplayıcılar; işletmeci kaynağı yok"
+   ],
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "kendime istanbul|kadikoy",
+   "ad": "Kendime İstanbul",
+   "ilce": "Kadıköy",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "B",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "PR #51: güncel resmî işletme/operatör teyidi yok; iki editoryal kaynak (G&M 2026 + 2026 tarihli editoryal) tek başına yetmez",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/kendime-istanbul/ (2025-12-23) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/en-iyi-bulusma-mekanlari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.gault-millau.com.tr/kendime-istanbul/",
+     "tur": "editoryal rehber (yalnız web sitesi bağlantısı için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfada işletmenin web sitesi bağlantısı yok",
+     "kanitladigi": null
+    }
+   ],
+   "arama": [
+    "Arama 'Kendime İstanbul Fenerbahçe Dr. Kazım Lakay Sokak restoran': yalnız toplayıcılar ve OGGUSTO; işletmeci kaynağı yok"
+   ],
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "kruton|sisli",
+   "ad": "Kruton",
+   "ilce": "Şişli",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "B",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "PR #51: güncel resmî işletme/operatör teyidi yok; iki editoryal kaynak (G&M 2026 + 2026 tarihli editoryal) tek başına yetmez",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/kruton/ (2025-12-23) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/nisantasinin-en-iyi-mekanlari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.gault-millau.com.tr/kruton/",
+     "tur": "editoryal rehber (yalnız web sitesi bağlantısı için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfada işletmenin web sitesi bağlantısı yok",
+     "kanitladigi": null
+    }
+   ],
+   "arama": [
+    "Bu turda arama yapılmadı (düşük kullanım sınırı)"
+   ],
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+   ],
+   "not": null
+  },
+  {
+   "anahtar": "yenikoy balikcisi|sariyer",
+   "ad": "Yeniköy Balıkçısı",
+   "ilce": "Sarıyer",
+   "kategori": "restoran",
+   "kategoriKaynagi": "#63 kategorisi",
+   "grup": "B",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-onceki-bekletme",
+    "kategori": "restoran"
+   },
+   "eksik": "PR #51: güncel resmî işletme/operatör teyidi yok; iki editoryal kaynak (G&M 2026 + 2026 tarihli editoryal) tek başına yetmez",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/yenikoy-balikcisi-3/ (2025-12-24) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-balikcilari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.gault-millau.com.tr/yenikoy-balikcisi-3/",
+     "tur": "editoryal rehber (yalnız web sitesi bağlantısı için yeniden açıldı)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfada işletmenin web sitesi bağlantısı yok",
+     "kanitladigi": null
+    }
+   ],
+   "arama": [
+    "Bu turda arama yapılmadı (düşük kullanım sınırı)"
+   ],
+   "sonuc": "BEKLIYOR",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+   ],
+   "not": null
+  }
+ ]
+}
