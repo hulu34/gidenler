@@ -1,0 +1,968 @@
+{
+ "slug": "yanyali-fehmi-lokantasi-kadikoy",
+ "_kaynak_notu": "Kaynak: işletmenin resmî sitesi yanyalifehmi.com (Türkçe ana sayfa, Hakkımızda, Yemek Çeşitleri, Rezervasyon, İletişim; 13.11.2026). Katalogdaki fehmilokantasi.com adresinin https sürümü geçersiz sertifika veriyor; http sürümü geçerli sertifikalı yanyalifehmi.com'a yönleniyor (güvenlik uyarısı aşılmadı). Site ve web alanı bu yüzden yanyalifehmi.com olarak yazıldı. 'Yemek Çeşitleri' sayfası lokantanın yemek repertuvarı; günlük menü değişiyor ve fiyat yayımlanmıyor. Vejetaryen bölümü diğer bölümlerdeki kalemleri tekrar ettiği için, içecekler ve küver de menü olmadığı için alınmadı. Telefon katalogda yoktu, iletişim sayfasından eklendi. Videolar: işletmenin kendi kanalı ve ChefStory (Yemeksepeti); oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Kadıköy Çarşısı'nda, Yağlıkçı İsmail Sokağı'nda Türk ve Osmanlı mutfağı lokantası. İşletmenin anlattığına göre Yanya'dan göç eden Fehmi Efendi lokantayı 1919'da Kadıköy'de açtı; bugün aile tarafından sürdürülüyor. Yemek listesinde çorbalar, etli yemekler, köfteler, zeytinyağlılar ve sütlü tatlılar var; Yanya köfte işletmenin öne çıkardığı yemek.",
+  "provider": "official_site",
+  "url": "https://yanyalifehmi.com/tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "phone": {
+  "value": "+90 216 336 33 33",
+  "provider": "official_site",
+  "url": "https://yanyalifehmi.com/tr/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "website": {
+  "value": "https://yanyalifehmi.com",
+  "provider": "official_site",
+  "url": "https://yanyalifehmi.com/tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "yanyalifehmi",
+  "provider": "official_site",
+  "url": "https://yanyalifehmi.com/tr/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Su 10:30-22:30",
+  "provider": "official_site",
+  "url": "https://yanyalifehmi.com/tr/hakkimizda",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Sitedeki rezervasyon formu WhatsApp üzerinden gönderiliyor; telefonla da: 0216 336 33 33.",
+  "provider": "official_site",
+  "url": "https://yanyalifehmi.com/tr/rezervasyon",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Yemek listesi lokantanın repertuvarı; günlük menü değişiyor. Sitede fiyat yayımlanmıyor.",
+   "provider": "official_site",
+   "url": "https://yanyalifehmi.com/tr/yemek_cesitleri",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Sitede ayrıca vejetaryen yemekler listesi var.",
+   "provider": "official_site",
+   "url": "https://yanyalifehmi.com/tr/yemek_cesitleri",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://yanyalifehmi.com/tr/yemek_cesitleri",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": false,
+  "sections": [
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Tavuk Suyu Çorba",
+      "description": "Tavuk, şehriye"
+     },
+     {
+      "name": "Ezogelin Çorbası",
+      "description": "Mercimek, bulgur"
+     },
+     {
+      "name": "Et Suyu Çorba",
+      "description": "Kuzu eti suyui patates, havuç"
+     },
+     {
+      "name": "Kereviz Çorbası",
+      "description": "Kereviz"
+     },
+     {
+      "name": "Tarhana",
+      "description": "Tarhana, dana kıyma"
+     },
+     {
+      "name": "Yayla Çorbası",
+      "description": "Pirinç, yoğurt"
+     },
+     {
+      "name": "Pirinç Çorbası",
+      "description": "Kırık pirinç, domates"
+     },
+     {
+      "name": "Mercimek Çorbası",
+      "description": "Mercimek"
+     },
+     {
+      "name": "Şehriye Çorbası",
+      "description": "Şehriye, tavuk"
+     },
+     {
+      "name": "Sebze Çorbası",
+      "description": "Havuç, kabak, fasulye, patates, patlıcan, pirinç, lahana, domates"
+     },
+     {
+      "name": "Ispanak Çorbası",
+      "description": "Ispanak"
+     },
+     {
+      "name": "Dil Çorbası",
+      "description": "Dil, yoğurt"
+     },
+     {
+      "name": "Düğün Çorbası",
+      "description": "Kuzu eti, yoğurt"
+     },
+     {
+      "name": "Domates Çorbası",
+      "description": "Domates"
+     },
+     {
+      "name": "İşkembe Çorbası",
+      "description": "İşkembe, yoğurt"
+     },
+     {
+      "name": "Paça Çorbası",
+      "description": "Paça, yoğurt"
+     },
+     {
+      "name": "Brokoli Çorbası",
+      "description": "Brokoli"
+     },
+     {
+      "name": "Borç Çorbası",
+      "description": "Kuzu eti, yoğurt"
+     },
+     {
+      "name": "Bamya Çorbası",
+      "description": "Bamya, dana eti"
+     }
+    ]
+   },
+   {
+    "title": "Etler",
+    "items": [
+     {
+      "name": "Elbasan",
+      "description": "Kuzu eti, beşamel sos"
+     },
+     {
+      "name": "Kağıt Kebabı",
+      "description": "Kuzu eti, patates, patlıcan, bezelye, domates, biber"
+     },
+     {
+      "name": "Tas Kebabı",
+      "description": "Kuzu veya dana eti, domates"
+     },
+     {
+      "name": "Patlıcan Kebabı",
+      "description": "Kuzu veya dana eti, patlıcan, domates, biber"
+     },
+     {
+      "name": "Çerkez Tavuğu",
+      "description": "Tavuk, ceviz, karabiber"
+     },
+     {
+      "name": "Bezelyeli Kebap",
+      "description": "Bezelye, kuzu eti"
+     },
+     {
+      "name": "Paşa Kebabı",
+      "description": "Patlıcan, kuzu eti, mantar, domates, biber kaşar"
+     },
+     {
+      "name": "İstim Kebabı",
+      "description": "Kuzu eti, patlıcan"
+     },
+     {
+      "name": "Çöp Şiş",
+      "description": "Kuzu eti, patlıcan, domates, biber"
+     },
+     {
+      "name": "Kuzu Fırın",
+      "description": "Kuzu eti , domates, patates, biber"
+     },
+     {
+      "name": "Tavuk Kızartma",
+      "description": "Tavuk, patates, biber, domates"
+     },
+     {
+      "name": "Dana Rosto",
+      "description": "Dana eti, patates"
+     },
+     {
+      "name": "Beğendili Kebap (etli)",
+      "description": "Patlıcan, sut, un, kaşar, kuzu veya dana etli"
+     },
+     {
+      "name": "Kuzu Tandır",
+      "description": "Kuzu eti"
+     },
+     {
+      "name": "Yoğurtlu Kebap",
+      "description": "Dana eti, pide, domates sos, yoğurt, istenirse tereyağ"
+     },
+     {
+      "name": "Pideli Kebap",
+      "description": "Dana eti, pide, domates sos, istenirse tereyağ"
+     },
+     {
+      "name": "Orman Kebap",
+      "description": "Kuzu eti, patates, bezelye, havuç, kekik"
+     },
+     {
+      "name": "Çömlek Kebap (Güveç)",
+      "description": "Kuzu eti, patlıcan, fasulye, domates, biber, soğan, sarımsak"
+     },
+     {
+      "name": "Şehriyeli Kuzu Güveç",
+      "description": "Kuzu eti, şehriye, domates, biber"
+     },
+     {
+      "name": "Kus-Kuslu Kuzu Güveç",
+      "description": "Kuzu eti, kus-kus, domates, biber"
+     },
+     {
+      "name": "Saray Kebap",
+      "description": "Kuzu eti, mantar, kaşar peyniri, yumurta, un, süt, biber"
+     },
+     {
+      "name": "Kuzu Ciğer Sarma",
+      "description": "Kuzu ciğeri, kuzu gömleği, pirinç, fıstık, üzüm, nane, karabiber"
+     },
+     {
+      "name": "Et Sote",
+      "description": "Kuzu eti, domates, mantar, biber"
+     },
+     {
+      "name": "Tavuk Sote",
+      "description": "Tavuk, mantar, domates, biber"
+     },
+     {
+      "name": "Keşkek",
+      "description": "Buğday, kuzu eti"
+     },
+     {
+      "name": "Bostan Kebabı",
+      "description": "Kuzu eti, soğan, patlıcan, biber"
+     }
+    ]
+   },
+   {
+    "title": "Haşlamalar",
+    "items": [
+     {
+      "name": "Tavuk Haşlama",
+      "description": "Tavuk"
+     },
+     {
+      "name": "Koyun Haşlama",
+      "description": "Kuzu eti, domates"
+     },
+     {
+      "name": "Kuzu Haşlama",
+      "description": "Kuzu eti, patates, havuç"
+     },
+     {
+      "name": "Kuzu Kapama",
+      "description": "Pazı, kuzu eti, soğan"
+     }
+    ]
+   },
+   {
+    "title": "Köfteler",
+    "items": [
+     {
+      "name": "Kadın Budu Köfte",
+      "description": "(Meatballs with Rice Dipped in Egg Batter and Fried)"
+     },
+     {
+      "name": "İzmir Köfte",
+      "description": "Dana kıyma, patates, domates"
+     },
+     {
+      "name": "Fırın Köfte",
+      "description": "Dana kıyma, patates, domates"
+     },
+     {
+      "name": "Ekşili Köfte",
+      "description": "Dana kıyma, pirinç, havuç, bezelye"
+     },
+     {
+      "name": "Kuru Köfte",
+      "description": "Dana kıyma, patates, biber"
+     },
+     {
+      "name": "Dalyan Köfte",
+      "description": "Dana kıyma, havuç, bezelye"
+     },
+     {
+      "name": "Yoğurtlu Köfte",
+      "description": "Dana kıyma, havuç, bezelye"
+     },
+     {
+      "name": "Hasanpaşa Köfte",
+      "description": "Dana kıyma, biber, püre"
+     },
+     {
+      "name": "Elbasan Köfte",
+      "description": "Dana kıyma, beşamel sos"
+     },
+     {
+      "name": "Lüfer Tava"
+     },
+     {
+      "name": "Barbunya"
+     },
+     {
+      "name": "Uskumru"
+     },
+     {
+      "name": "Kalkan"
+     },
+     {
+      "name": "Kılıç"
+     },
+     {
+      "name": "Hamsi"
+     },
+     {
+      "name": "İstavrit"
+     },
+     {
+      "name": "Tekir"
+     },
+     {
+      "name": "Çinekop"
+     },
+     {
+      "name": "Çipura"
+     },
+     {
+      "name": "Levrek"
+     },
+     {
+      "name": "Alabalık"
+     },
+     {
+      "name": "Somon"
+     },
+     {
+      "name": "Palamut"
+     }
+    ]
+   },
+   {
+    "title": "Izgaralar",
+    "items": [
+     {
+      "name": "Şiş Köfte",
+      "description": "Dana eti, kuzu eti"
+     },
+     {
+      "name": "Şiş Köfte (acılı)",
+      "description": "Dana eti, kuzu eti"
+     },
+     {
+      "name": "Izgara Köfte",
+      "description": "Dana eti, kuzu eti"
+     },
+     {
+      "name": "Şiş Kebap",
+      "description": "Kuzu eti, patates, pilav"
+     },
+     {
+      "name": "Pirzola",
+      "description": "Kuzu pirzola"
+     },
+     {
+      "name": "Bonfile",
+      "description": "Dana bonfile, patates"
+     },
+     {
+      "name": "Biftek (antrikot)",
+      "description": "Dana eti"
+     },
+     {
+      "name": "Böbrek",
+      "description": "Kuzu böbrek, patates, domates"
+     },
+     {
+      "name": "Ciğer",
+      "description": "Kuzu ciğer, soğan"
+     },
+     {
+      "name": "Döner",
+      "description": "Dana eti, patates, domates"
+     },
+     {
+      "name": "Tavuk Çevirme",
+      "description": "Tavuk"
+     },
+     {
+      "name": "Kuzu Çevirme",
+      "description": "Kuzu eti, iç pilav, patates"
+     },
+     {
+      "name": "Tavuk Şiş",
+      "description": "Tavuk, domates, biber"
+     }
+    ]
+   },
+   {
+    "title": "Pilavlar",
+    "items": [
+     {
+      "name": "Sade Pilav",
+      "description": "Pirinç"
+     },
+     {
+      "name": "Domatesli Pilav",
+      "description": "Domates, pirinç"
+     },
+     {
+      "name": "İç Pilav",
+      "description": "Pirinç, kuzu ciğer, kuş üzümü, fıstık"
+     },
+     {
+      "name": "Özbek Pilavı",
+      "description": "Patlıcan, kuzu eti, bezelye, dere otu, pirinç"
+     },
+     {
+      "name": "Mantarlı Pilav",
+      "description": "Pirinç, mantar, kaşar"
+     },
+     {
+      "name": "Safranlı Pilav",
+      "description": "Pirinç, safran"
+     },
+     {
+      "name": "Bulgur Pilavı",
+      "description": "Bulgur, kuzu eti"
+     },
+     {
+      "name": "Nohutlu Pilav",
+      "description": "Pirinç, nohut"
+     },
+     {
+      "name": "Etli Pilav",
+      "description": "Pirinç, kuzu eti"
+     }
+    ]
+   },
+   {
+    "title": "Hamur İşleri",
+    "items": [
+     {
+      "name": "Ispanaklı Börek",
+      "description": "Ispanak, yumurta, süt, un"
+     },
+     {
+      "name": "Peynirli Börek",
+      "description": "Peynir, maydanoz, milföy"
+     },
+     {
+      "name": "Mercimekli Börek",
+      "description": "Mercimek, yumurta, süt, un"
+     },
+     {
+      "name": "Kıymalı Börek",
+      "description": "Kıyma, maydanoz, yumurta, süt, un"
+     },
+     {
+      "name": "Patatesli Börek",
+      "description": "Patates, maydanoz, yumurta, süt, un"
+     },
+     {
+      "name": "Talaş Böreği",
+      "description": "Kuzu eti, soğan, milföy"
+     },
+     {
+      "name": "Mantı",
+      "description": "Dana eti, hamur, kıyma, yoğurt, nane"
+     },
+     {
+      "name": "Pizza",
+      "description": "Pizza hamuru, domates sos, isteğe bağlı; sucuk, jambon, mantar, domates, biber, kaşar peynir, yumurta"
+     }
+    ]
+   },
+   {
+    "title": "Makarnalar",
+    "items": [
+     {
+      "name": "Fırın Makarna- Baked Spaghetti",
+      "description": "Beşamel sos, fırın makarna"
+     },
+     {
+      "name": "Domatesli Makarna",
+      "description": "Makarna, domates"
+     },
+     {
+      "name": "Çubuk Makarna",
+      "description": "Makarna, domates"
+     },
+     {
+      "name": "Erişte",
+      "description": "Erişte, domates"
+     }
+    ]
+   },
+   {
+    "title": "Sebzeler",
+    "items": [
+     {
+      "name": "Mercimek",
+      "description": "Mercimek, kıyma"
+     },
+     {
+      "name": "Kapuska",
+      "description": "Lahana, kıyma"
+     },
+     {
+      "name": "Kabak Kalye",
+      "description": "Kabak, kemikli kuzu eti"
+     },
+     {
+      "name": "Enginar Kıraten",
+      "description": "Enginar, tavuk, beşamel sos, kıyma"
+     },
+     {
+      "name": "Patlıcan Kıraten",
+      "description": "Patlıcan, beşamel sos, kıyma"
+     },
+     {
+      "name": "Kabak Kıraten",
+      "description": "Kabak, peynir, yumurta"
+     },
+     {
+      "name": "Semizotu",
+      "description": "Semizotu, kıyma"
+     },
+     {
+      "name": "Ispanak",
+      "description": "Ispanak, kıyma"
+     },
+     {
+      "name": "Ispanak Yumurtalı",
+      "description": "Ispanak, yumurta"
+     },
+     {
+      "name": "Kereviz",
+      "description": "Kereviz, kemikli kuzu eti"
+     },
+     {
+      "name": "Lahana Sarma",
+      "description": "Lahana, pirinç, kıyma"
+     },
+     {
+      "name": "Yaprak Sarma",
+      "description": "Yaprak, pirinç, kıyma"
+     },
+     {
+      "name": "Pazı Sarma",
+      "description": "Pazı, pirinç, kıyma"
+     },
+     {
+      "name": "Kabak Dolma",
+      "description": "Kabak, pirinç, kıyma"
+     },
+     {
+      "name": "Domates Dolma",
+      "description": "Domates, pirinç, kıyma"
+     },
+     {
+      "name": "Biber Dolma",
+      "description": "Biber, pirinç, kıyma"
+     },
+     {
+      "name": "Patlıcan Dolma",
+      "description": "Patlıcan, pirinç, kıyma"
+     },
+     {
+      "name": "Kırmızı Biber Dolma",
+      "description": "Kırmızı biber, pirinç, kıyma"
+     },
+     {
+      "name": "Türlü Fırın",
+      "description": "Taze fasulye, kabak, patlıcan, kemikli kuzu eti"
+     },
+     {
+      "name": "Bezelye",
+      "description": "Bezelye, kemikli kuzu eti"
+     },
+     {
+      "name": "Bamya",
+      "description": "Bamya"
+     },
+     {
+      "name": "Karnıyarık",
+      "description": "Patlıcan, kıyma, domates, biber"
+     },
+     {
+      "name": "Musakka Patlıcan",
+      "description": "Patlıcan, kıyma, domates, biber"
+     },
+     {
+      "name": "Taze Fasulye",
+      "description": "Taze fasulye, kemikli kuzu eti"
+     },
+     {
+      "name": "Pırasa",
+      "description": "Pırasa, kemikli kuzu eti, pirinç"
+     },
+     {
+      "name": "Soya",
+      "description": "Soya, kemikli kuzu eti"
+     },
+     {
+      "name": "Börülce",
+      "description": "Börülce, kemikli kuzu eti"
+     },
+     {
+      "name": "Karnıbahar",
+      "description": "Karnıbahar, kıyma, domates"
+     },
+     {
+      "name": "Türlü",
+      "description": "Taze fasulye, bamya, kabak, patlıcan, kemikli kuzu eti"
+     },
+     {
+      "name": "Hünkar Beğendi (sade)",
+      "description": "Patlıcan, süt, kaşar, un"
+     }
+    ]
+   },
+   {
+    "title": "Zeytinyağlılar",
+    "items": [
+     {
+      "name": "Soya Fasulye",
+      "description": "Soya, zeytinyağ"
+     },
+     {
+      "name": "İmam Bayıldı",
+      "description": "Patlıcan, soğan, sarımsak, domates, maydanoz"
+     },
+     {
+      "name": "Biber Dolma",
+      "description": "Pirinç, kuş üzümü, tarçın, dolmalık fıstık, dolmalık biber"
+     },
+     {
+      "name": "Yaprak Sarma",
+      "description": "Yaprak, pirinç, kuş üzümü, dolmalık fıstık"
+     },
+     {
+      "name": "Lahana Sarma",
+      "description": "Lahana, pirinç, kuş üzümü, dolmalık fıstık"
+     },
+     {
+      "name": "Enginar",
+      "description": "Enginar, havuç, bezelye, arpacık soğan, iç bakla"
+     },
+     {
+      "name": "Taze Fasulye",
+      "description": "Taze fasulye, domates"
+     },
+     {
+      "name": "Fasulye Pilaki",
+      "description": "Kuru fasulye, havuç, sarımsak"
+     },
+     {
+      "name": "Yer Elması",
+      "description": "Yer elması, havuç"
+     },
+     {
+      "name": "Pırasa",
+      "description": "Pırasa, havuç, pirinç"
+     },
+     {
+      "name": "Barbunya Pilaki",
+      "description": "Barbunya, havuç, sarımsak"
+     },
+     {
+      "name": "Bakla",
+      "description": "Bakla, yeşil soğan, dere otu"
+     },
+     {
+      "name": "Börülce",
+      "description": "Börülce, sarımsak, domates"
+     },
+     {
+      "name": "Portakallı Kereviz",
+      "description": "Kereviz, portakal, sarımsak"
+     },
+     {
+      "name": "Kereviz",
+      "description": "Kereviz, havuç"
+     }
+    ]
+   },
+   {
+    "title": "Kuru Sebzeler",
+    "items": [
+     {
+      "name": "Kuru Fasulye",
+      "description": "Kuru fasulye, domates, kemikli kuzu eti"
+     },
+     {
+      "name": "Nohut",
+      "description": "Nohut, domates, kemikli kuzu eti"
+     },
+     {
+      "name": "Patates",
+      "description": "Patates, domates"
+     },
+     {
+      "name": "İşkembeli Nohut",
+      "description": "Nohut, domates, işkembe"
+     },
+     {
+      "name": "Pastırmalı Kuru Fasulye",
+      "description": "Kuru fasulye, domates, pastırma"
+     }
+    ]
+   },
+   {
+    "title": "Tavalar ve Yahniler",
+    "items": [
+     {
+      "name": "Patlıcan Tava",
+      "description": "Patlıcan, domates, biber, sos"
+     },
+     {
+      "name": "Patates Tava",
+      "description": "Patates"
+     },
+     {
+      "name": "Ciğer Tava",
+      "description": "Ciğer, soğan, domates, sarımsak"
+     },
+     {
+      "name": "Elbasan Tava",
+      "description": "Kuzu eti, un, yumurta, süt, yoğurt"
+     },
+     {
+      "name": "Omlet Tava",
+      "description": "Yumurta, maydonoz, peynir"
+     },
+     {
+      "name": "Kuzu Ciğer Sarma",
+      "description": "Kuzu ciğeri, kuzu gömleği, fıstık, domates, dereotu, pirinç, kıyma"
+     },
+     {
+      "name": "Papaz Yahni",
+      "description": "Arpacık soğan, kuzu eti, kekik"
+     },
+     {
+      "name": "Mantarlı Tavuk Yahni",
+      "description": "Tavuk, havuç, biber, mantar, domates"
+     },
+     {
+      "name": "Acem Tavuğu",
+      "description": "Tavuk, pirinç, maydanoz, fıstık, yumurta"
+     },
+     {
+      "name": "Tavuk Kraten",
+      "description": "Tavul, beşamel sos"
+     },
+     {
+      "name": "Mücver",
+      "description": "Kabak, peynir, yumurta, un"
+     },
+     {
+      "name": "Biber Tava",
+      "description": "Biber, domates"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Yeşil Salata",
+      "description": "Kıvırcık veya göbek"
+     },
+     {
+      "name": "Domates Salata",
+      "description": "Domates"
+     },
+     {
+      "name": "Çoban Salata",
+      "description": "Salatalık, biber, domates, soğan, mısır, pancar"
+     },
+     {
+      "name": "Mevsim Salata",
+      "description": "Göbek, kırmızı lahana, havuç, turp, mısır, domates"
+     },
+     {
+      "name": "Cacık",
+      "description": "Yoğurt, salatalık, dereotu"
+     },
+     {
+      "name": "Havuç Salata",
+      "description": "Havuç, domates, zeytin, mısır"
+     },
+     {
+      "name": "Turp Salata",
+      "description": "Turp"
+     },
+     {
+      "name": "Yoğurt"
+     },
+     {
+      "name": "Turşu"
+     },
+     {
+      "name": "Brokoli Salata"
+     }
+    ]
+   },
+   {
+    "title": "Sütlü Tatlılar",
+    "items": [
+     {
+      "name": "Sütlaç",
+      "description": "Pirinç, süt"
+     },
+     {
+      "name": "Güllaç",
+      "description": "Süt, gülsuyu"
+     },
+     {
+      "name": "Su Muhallebisi",
+      "description": "Süt, un, gülsuyu"
+     },
+     {
+      "name": "Tavuk Göğsü",
+      "description": "Tavuk, pirinç, süt"
+     },
+     {
+      "name": "Kazandibi",
+      "description": "Tavuk, pirinç, süt"
+     },
+     {
+      "name": "Elmasiye",
+      "description": "Limon, çilek, süt"
+     },
+     {
+      "name": "Krem Karamel",
+      "description": "Yumurta, süt"
+     },
+     {
+      "name": "Krem Şokella",
+      "description": "Çikolata, süt"
+     },
+     {
+      "name": "Dondurma",
+      "description": "Süt, meyva"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Ayva Tatlısı",
+      "description": "Ayva"
+     },
+     {
+      "name": "Kabak Tatlısı",
+      "description": "Kabak"
+     },
+     {
+      "name": "Tel Kadayıf",
+      "description": "Tel kadayıf, ceviz"
+     },
+     {
+      "name": "Ekmek Kadayıf",
+      "description": "Kadayıf"
+     },
+     {
+      "name": "Baklava",
+      "description": "Ceviz, fıstık, un, nişasta"
+     },
+     {
+      "name": "Tulumba Tatlısı",
+      "description": "Yumurta, un"
+     },
+     {
+      "name": "Lokma",
+      "description": "Yumurta, un"
+     },
+     {
+      "name": "İrmik Helvası",
+      "description": "İrmik, fıstık"
+     },
+     {
+      "name": "Un Helvası",
+      "description": "Un"
+     },
+     {
+      "name": "Kemalpaşa",
+      "description": "Kemalpaia"
+     },
+     {
+      "name": "Höşmerim",
+      "description": "İrmik, peynir"
+     },
+     {
+      "name": "Şekerpare",
+      "description": "Un, fındık, pudra şekeri"
+     },
+     {
+      "name": "Yassı Kadayıf",
+      "description": "Kadayıf, yumurta"
+     },
+     {
+      "name": "Zerde",
+      "description": "Safran, pirinç"
+     },
+     {
+      "name": "Aşure",
+      "description": "Nohut, pirinç, buğday, kayısı, fındık, incir"
+     }
+    ]
+   },
+   {
+    "title": "Kompostolar",
+    "items": [
+     {
+      "name": "Elma Kompostosu"
+     },
+     {
+      "name": "Çilek Kompostosu"
+     },
+     {
+      "name": "Vişne Kompostosu"
+     },
+     {
+      "name": "Kayısı Kompostosu"
+     },
+     {
+      "name": "Ayva Kompostosu"
+     },
+     {
+      "name": "Erik Kompostosu"
+     },
+     {
+      "name": "Şeftali Kompostosu"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/shorts/vYNKHMtCUeo",
+   "credit": "Yanyalı Fehmi Lokantası (işletmenin kanalı) · Ekim 2022 · Yanya köfte",
+   "category": "isletme",
+   "sponsored": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=Jc-gjxzE-1w",
+   "credit": "ChefStory · Mayıs 2023 · üçüncü kuşak Fehmican Sönmezler ile",
+   "category": "editor",
+   "sponsored": false
+  }
+ ]
+}

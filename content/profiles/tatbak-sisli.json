@@ -1,0 +1,38 @@
+{
+ "slug": "tatbak-sisli",
+ "_kaynak_notu": "Kaynak: resmî site tatbak.com (ana sayfa, 13.11.2026). Sitenin menü sayfası 404 veriyor; menü eklenmedi. Saat: sitede Pazartesi–Cuma ve Cumartesi 11:00–21:00; Pazar yazmıyor, saat alanına yalnız yazılan günler girdi. Ana sayfadaki kamuoyu duyurusu (bir haberle ilgisi olmadığına dair) profile alınmadı. Video: Kartal Gökberk (Mayıs 2024) kısa videosu; oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; Nişantaşı'ndaki tek şube. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Nişantaşı'nda, Akkavak Sokağı'nda Gaziantep mutfağı restoranı; işletmeye göre 1960'tan beri aynı lezzetleri sürdürüyor ve başka şubesi yok. Antep usulü sarımsaklı lahmacun işletmenin öne çıkardığı yemekler arasında.",
+  "provider": "official_site",
+  "url": "https://www.tatbak.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Sa 11:00-21:00",
+  "provider": "official_site",
+  "url": "https://www.tatbak.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "İşletmenin başka yerde şubesi yok.",
+   "provider": "official_site",
+   "url": "https://www.tatbak.com/",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "İletişim için ikinci telefon: (0212) 246 13 06.",
+   "provider": "official_site",
+   "url": "https://www.tatbak.com/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "videos": [
+  {
+   "url": "https://www.youtube.com/shorts/Rl2gNFGwINc",
+   "credit": "Kartal Gökberk · Mayıs 2024 · lahmacun",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ]
+}

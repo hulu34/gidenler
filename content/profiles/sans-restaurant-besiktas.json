@@ -1,0 +1,30 @@
+{
+ "slug": "sans-restaurant-besiktas",
+ "_kaynak_notu": "Kaynak: resmî site sansrestaurant.com (Türkçe ana sayfa ve Menü; 13.11.2026; site JavaScript ile açılıyor, tarayıcıda okundu). Menü eklenmedi: sitedeki menü tarihsiz, kalemlerin çoğu mevsimlik (kuşkonmaz, morel) ve yalnız bir kalemde fiyat var; güncelliği doğrulanamadı. Sitede bağlantısı verilen Fuudy sayfası bir paket servis platformu; resmî menü sayılmadı. Saat sitede yok. Sitedeki misafir yorumları (Tripadvisor) aktarılmadı. Video bulunamadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Levent'te, bahçe içindeki iki katlı bir villada Akdeniz ve çağdaş Türk mutfağı restoranı; işletmeye göre 1992'den beri hizmet veriyor ve menüsü mevsime göre değişiyor.",
+  "provider": "official_site",
+  "url": "https://www.sansrestaurant.com/tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Resmî sitedeki rezervasyon bağlantısıyla (Check&Place) ya da telefonla: +90 212 280 38 38.",
+  "provider": "official_site",
+  "url": "https://www.sansrestaurant.com/tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "sansrestaurant",
+  "provider": "official_site",
+  "url": "https://www.sansrestaurant.com/tr/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Bahar ve yaz aylarında bahçede 120 kişiye kadar oturmalı, 250 kişiye kadar kokteyl düzeninde özel davetler yapılabiliyor.",
+   "provider": "official_site",
+   "url": "https://www.sansrestaurant.com/tr/",
+   "checkedAt": "2026-11-13"
+  }
+ ]
+}

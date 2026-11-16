@@ -1,0 +1,179 @@
+{
+ "slug": "aheste-beyoglu",
+ "_kaynak_notu": "Kaynak: resmî site ahesterestaurant.com (ana sayfa, Gallery/iletişim bölümü ve Türkçe QR menü sayfası; 13.11.2026). Menü yalnız görsel: sayfadaki iki Türkçe görsel (02-tadim-menusu-tr.jpg ve 04-vejetaryen-menu-tr.jpg) okundu; fiyatlar ürün adıyla aynı satırda; görselde '6 Mart 2026 tarihinde güncellenmiştir'. Vejetaryen menüdeki kalemlerin çoğu ana menüde de var; aynı kalem iki kez yazılmadı, yalnız vejetaryen menüye özgü olanlar ayrı bölümde. İngilizce /eat sayfasında 2026 tarihli ayrı fotoğraflar var; bu profilde kullanılmadı. Video: İstanbul Gourmet Guide (2018), oEmbed 200, gömmeye açık. 'Galata'da' diyen Smart Beyoğlu videosu şube eşleşmesi kesin olmadığı için alınmadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Asmalımescit'te, Meşrutiyet Caddesi'nde bir restoran. Menüde dudi pilavı, Urla enginar konfi, rakı kalamar, kokoreç, dana pöç ve kuzu incik gibi tabaklar; ayrıca tadım menüsü ve vejetaryen tadım menüsü var.",
+  "provider": "official_site",
+  "url": "https://ahesterestaurant.com/qr-menu",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Su 17:30-22:30",
+  "provider": "official_site",
+  "url": "https://ahesterestaurant.com/gallery",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Resmî sitedeki çevrimiçi rezervasyon bağlantısıyla (Rezervem) ya da telefonla: 212 243 26 33.",
+  "provider": "official_site",
+  "url": "https://ahesterestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "instagram": {
+  "value": "ahestepera",
+  "provider": "official_site",
+  "url": "https://ahesterestaurant.com/",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Tadım menüsü ve vejetaryen tadım menüsü kişi başı 4.800 TL; 5 kadeh şarap eşleşmesi +3.200 TL, Türk artizan peynirleri +1.000 TL.",
+   "provider": "official_site",
+   "url": "https://ahesterestaurant.com/qr-menu",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Hesaba servis ücreti eklenmiyor; fiyatlar TL ve KDV dahil, 6 Mart 2026'da güncellendi.",
+   "provider": "official_site",
+   "url": "https://ahesterestaurant.com/qr-menu",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://ahesterestaurant.com/qr-menu",
+  "checkedAt": "2026-11-13",
+  "validFrom": "2026-03-06",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Bölüm 1",
+    "items": [
+     {
+      "name": "Dudi Pilavı",
+      "description": "Çıtır soğan ile",
+      "priceTry": 950
+     },
+     {
+      "name": "Yedikule Salatası",
+      "description": "Izgara sebzeler ve peynir ile",
+      "priceTry": 950
+     },
+     {
+      "name": "Kuru Dolma",
+      "description": "Tahinli sos ile",
+      "priceTry": 1200
+     },
+     {
+      "name": "İsli Palamut",
+      "description": "Zencefilli koruk sos ile",
+      "priceTry": 950
+     },
+     {
+      "name": "Tuna Kadayıf",
+      "description": "Nar ekşisi mayonez ile",
+      "priceTry": 1600
+     }
+    ]
+   },
+   {
+    "title": "Bölüm 2",
+    "items": [
+     {
+      "name": "Urla Enginar Konfi",
+      "description": "Püre ve çıtırlar ile",
+      "priceTry": 1350
+     },
+     {
+      "name": "Kereviz",
+      "description": "Rakula salatası ile",
+      "priceTry": 1100
+     },
+     {
+      "name": "Balkabağı Dolgulu Makarna",
+      "description": "Yanık tereyağı ile",
+      "priceTry": 1200
+     },
+     {
+      "name": "Rakı Kalamar",
+      "description": "Ezine kreması ve rakı ile",
+      "priceTry": 1250
+     },
+     {
+      "name": "Izgara Dana Dil",
+      "description": "Rezene salatası ile",
+      "priceTry": 1450
+     },
+     {
+      "name": "Dana Pöç",
+      "description": "Mantar köpüğü ile",
+      "priceTry": 1650
+     },
+     {
+      "name": "Kokoreç",
+      "description": "Yassı ekmek ve biber turşusu ile",
+      "priceTry": 1400
+     }
+    ]
+   },
+   {
+    "title": "Bölüm 3",
+    "items": [
+     {
+      "name": "Levrek",
+      "description": "Yeşil salata ile",
+      "priceTry": 2500
+     },
+     {
+      "name": "Tavuk Konfi",
+      "description": "Kepse pilavı ile",
+      "priceTry": 2500
+     },
+     {
+      "name": "Kuzu İncik",
+      "description": "Soğan dolması ve cibes ızgara ile",
+      "priceTry": 2700
+     }
+    ]
+   },
+   {
+    "title": "Vejetaryen Menüye Özgü",
+    "items": [
+     {
+      "name": "Karpuzlu Kadayıf",
+      "description": "Nar ekşisi mayonez ile",
+      "priceTry": 1600
+     },
+     {
+      "name": "Mevsim Mantarları",
+      "description": "Yumurta sarısı ve nar ekşisi ile",
+      "priceTry": 900
+     }
+    ]
+   },
+   {
+    "title": "Tadım Menüsü (kişi başı)",
+    "items": [
+     {
+      "name": "Tadım Menüsü",
+      "description": "Yedikule salatası, topik kraker, dudi pilavı; tuna kadayıf, kereviz ve rakula salatası, tarama; Urla enginar konfi, rakı kalamar; dana pöç ve mantar köpüğü ya da levrek ve kombu salatası; tatlı: kazandibi ve tarçınlı dondurma, ıhlamurlu taş kadayıf",
+      "priceTry": 4800
+     },
+     {
+      "name": "Vejetaryen Tadım Menüsü",
+      "description": "Yedikule salatası, topik kraker, dudi pilavı; tulum peynirli çıtır baklava, kereviz, karpuzlu kadayıf; Urla enginar konfi, kuru dolma; balkabağı dolgulu makarna ya da mevsim mantarları; tatlı: ıhlamurlu taş kadayıf, çıtır balkabağı",
+      "priceTry": 4800
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=pKc5fNuTt5U",
+   "credit": "İstanbul Gourmet Guide · Eylül 2018",
+   "category": "atmosfer",
+   "sponsored": false
+  }
+ ]
+}

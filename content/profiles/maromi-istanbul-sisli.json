@@ -1,0 +1,589 @@
+{
+ "slug": "maromi-istanbul-sisli",
+ "_kaynak_notu": "Kaynak: Divan'ın resmî sitesindeki Maromi İstanbul sayfası (divan.com.tr, 13.11.2026) ve sayfadaki menü PDF'i (maromi-menu-06-2026.pdf; dosyada 'Fiyat değişim tarihi: 10.06.2026'). PDF yalnız görsel; menü sayfa görüntüsünden okundu, her fiyat ürün adıyla aynı satırda; kesit sınırlarında eksik kalem olmadığı ayrı kesitle kontrol edildi. Saat alanı yazılmadı: sayfada birbiriyle çelişen dört saat bilgisi var (07:00–23:00; 18:00–23:00; 12:00–23:00; öğle 12:00–15:00 ve akşam 18:30–22:30); yalnız tüm metinlerin ortak söylediği Pazar kapalı bilgisi not olarak yazıldı. Bu kayıt Divan İstanbul'daki şube (Asker Ocağı Cad. No:1); Kalamış ve Ankara şubeleri ayrı. Video: işletmenin (Divan Life) kendi kanalı; oEmbed 200, gömmeye açık. Şef videosu (2021) alınmadı. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Divan İstanbul otelinde, Elmadağ'da Japon restoranı. Menüde çorbalar, soğuk ve sıcak başlangıçlar, nigiri, sashimi, maki ve uramaki çeşitleri, tempura ve ana yemekler; ayrıca kaiseki, omakase ve iki kişilik syabu syabu seti var.",
+  "provider": "official_site",
+  "url": "https://www.divan.com.tr/restoran/maromi-istanbul",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Telefonla: +90 212 315 56 18; Divan sitesindeki rezervasyon formu da kullanılabiliyor. Omakase menüsü için bir gün önceden rezervasyon gerekiyor.",
+  "provider": "official_site",
+  "url": "https://www.divan.com.tr/restoran/maromi-istanbul",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Pazar günü kapalı.",
+   "provider": "official_site",
+   "url": "https://www.divan.com.tr/restoran/maromi-istanbul",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Omakase menüsü 8.000 TL (şefin seçimi, bir gün önceden rezervasyonla); standart kaiseki menüsü 4.500 TL; iki kişilik syabu syabu seti 7.500 TL.",
+   "provider": "official_site",
+   "url": "https://www.divan.com.tr/Divan/media/Divan/restaurant/restaurant-menu/maromi-menu-06-2026.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Menüdeki fiyatlar 10.06.2026'da değişti; TL ve KDV dahil.",
+   "provider": "official_site",
+   "url": "https://www.divan.com.tr/Divan/media/Divan/restaurant/restaurant-menu/maromi-menu-06-2026.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Maromi'nin Kalamış ve Ankara'da da şubeleri var; bu kayıt Divan İstanbul'daki şube.",
+   "provider": "official_site",
+   "url": "https://www.divan.com.tr/restoran/maromi-istanbul",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.divan.com.tr/Divan/media/Divan/restaurant/restaurant-menu/maromi-menu-06-2026.pdf",
+  "checkedAt": "2026-11-13",
+  "validFrom": "2026-06-10",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Shirumono · Çorbalar",
+    "items": [
+     {
+      "name": "Miso-Siru",
+      "description": "Soya fasulyesi ezmesi çorbası",
+      "priceTry": 360
+     },
+     {
+      "name": "Spicy Miso",
+      "description": "Acılı miso çorbası",
+      "priceTry": 550
+     },
+     {
+      "name": "Udon / Soba",
+      "description": "Udon noodle çorbası",
+      "priceTry": 660
+     },
+     {
+      "name": "Tempura Udon / Soba",
+      "description": "Udon noodle çorbası, tempura",
+      "priceTry": 850
+     }
+    ]
+   },
+   {
+    "title": "Reisai · Soğuk Başlangıçlar",
+    "items": [
+     {
+      "name": "Tako Su",
+      "description": "Salatalıklı ahtapot",
+      "priceTry": 660
+     },
+     {
+      "name": "Maguro Çiğ Köfte",
+      "description": "Ton tartar, kırmızı soğan",
+      "priceTry": 870
+     },
+     {
+      "name": "Sake Tataki",
+      "description": "Somon tartar",
+      "priceTry": 760
+     },
+     {
+      "name": "Three Color Carpaccio",
+      "description": "Somon, ton, levrek sashimi",
+      "priceTry": 1100
+     },
+     {
+      "name": "Kimuchi",
+      "description": "Çin lahanası, sarımsak",
+      "priceTry": 410
+     }
+    ]
+   },
+   {
+    "title": "Salada · Salatalar",
+    "items": [
+     {
+      "name": "Sake Kawa Ponzu",
+      "description": "Somon derisi salatası",
+      "priceTry": 390
+     },
+     {
+      "name": "Artichoke Miso Sigure",
+      "description": "Misolu enginar salatası",
+      "priceTry": 550
+     },
+     {
+      "name": "Goma Wakame Kyurisu",
+      "description": "Yosun salatası",
+      "priceTry": 590
+     },
+     {
+      "name": "Maromi Salata",
+      "description": "Yeşil salata, somon parçaları",
+      "priceTry": 580
+     }
+    ]
+   },
+   {
+    "title": "Onsai · Sıcak Başlangıçlar",
+    "items": [
+     {
+      "name": "Edamame",
+      "description": "Haşlanmış soya fasulyesi",
+      "priceTry": 360
+     },
+     {
+      "name": "Dashi Maki Tamago",
+      "description": "Geleneksel Japon omleti",
+      "priceTry": 400
+     },
+     {
+      "name": "Tori Kara Age",
+      "description": "Kızarmış tavuk",
+      "priceTry": 570
+     },
+     {
+      "name": "Ebi Gyoza",
+      "description": "Karidesli Japon mantısı",
+      "priceTry": 610
+     },
+     {
+      "name": "Agedashi Tofu",
+      "description": "Dashi soslu kızarmış tofu",
+      "priceTry": 450
+     },
+     {
+      "name": "Yaki-Tori",
+      "description": "Izgara tavuk şiş",
+      "priceTry": 500
+     },
+     {
+      "name": "Koebi Kakiage",
+      "description": "Kızarmış çimçim karides",
+      "priceTry": 670
+     },
+     {
+      "name": "Gohan",
+      "description": "Pirinç",
+      "priceTry": 320
+     },
+     {
+      "name": "Sake Korokke",
+      "description": "Somon, patates, peynir",
+      "priceTry": 540
+     },
+     {
+      "name": "Ebi Chili",
+      "description": "Acılı karides",
+      "priceTry": 920
+     }
+    ]
+   },
+   {
+    "title": "Shusai · Ana Yemekler",
+    "items": [
+     {
+      "name": "Yasai Tempura",
+      "description": "Karışık sebze tempura",
+      "priceTry": 620
+     },
+     {
+      "name": "Tempura Mori",
+      "description": "Kızarmış karides ve sebze",
+      "priceTry": 1100
+     },
+     {
+      "name": "Ebi Tempura (5 adet)",
+      "description": "Karides",
+      "priceTry": 1700
+     },
+     {
+      "name": "Sake Teriyaki",
+      "description": "Somon teriyaki",
+      "priceTry": 1700
+     },
+     {
+      "name": "Yaki Soba",
+      "description": "Noodle, biftek, havuç, soğan, yeşil biber, lahana",
+      "priceTry": 1200
+     },
+     {
+      "name": "Ebi Cha-Han",
+      "description": "Soğan, karides, havuç, yumurtalı pilav",
+      "priceTry": 750
+     },
+     {
+      "name": "Gyuniku Toban Yaki",
+      "description": "Bonfile, mevsim sebzeleri",
+      "priceTry": 2100
+     }
+    ]
+   },
+   {
+    "title": "Set Menüler",
+    "items": [
+     {
+      "name": "Kaiseki Menü (Standart Course)",
+      "description": "Maguro çiğ köfte, dobin mushi, sashimi, tempura, goma wakame, pirinç üzerinde somon teriyaki, matcha dondurma",
+      "priceTry": 4500
+     },
+     {
+      "name": "Omakase Menü",
+      "description": "Şefin seçimi; bir gün önceden rezervasyon",
+      "priceTry": 8000
+     },
+     {
+      "name": "Syabu Syabu Set (2 kişilik)",
+      "description": "Edamame, sashimi, goma wakame kyurisu, syabu syabu, matcha dondurma",
+      "priceTry": 7500
+     }
+    ]
+   },
+   {
+    "title": "Nigiri (2 adet)",
+    "items": [
+     {
+      "name": "Maguro",
+      "description": "Ton balığı",
+      "priceTry": 640
+     },
+     {
+      "name": "Toro",
+      "description": "Yağlı ton",
+      "priceTry": 660
+     },
+     {
+      "name": "Shime-Saba",
+      "description": "Marine edilmiş uskumru",
+      "priceTry": 440
+     },
+     {
+      "name": "Sake",
+      "description": "Somon",
+      "priceTry": 530
+     },
+     {
+      "name": "Suzuki",
+      "description": "Levrek",
+      "priceTry": 460
+     },
+     {
+      "name": "Hamachi",
+      "description": "Sarı kuyruk",
+      "priceTry": 480
+     },
+     {
+      "name": "Tamago",
+      "description": "Tatlı yumurta omleti",
+      "priceTry": 350
+     },
+     {
+      "name": "Ebi",
+      "description": "Karides",
+      "priceTry": 650
+     },
+     {
+      "name": "Tako",
+      "description": "Ahtapot",
+      "priceTry": 460
+     },
+     {
+      "name": "Unagi",
+      "description": "Yılan balığı",
+      "priceTry": 750
+     },
+     {
+      "name": "Sake Tempura",
+      "description": "Somon tempura",
+      "priceTry": 520
+     },
+     {
+      "name": "Aburi Sake (5 adet)",
+      "description": "Mühürlü somon",
+      "priceTry": 1050
+     },
+     {
+      "name": "Yaki Niku (5 adet)",
+      "description": "Mühürlü bonfile",
+      "priceTry": 1100
+     }
+    ]
+   },
+   {
+    "title": "Sashimi (5 adet)",
+    "items": [
+     {
+      "name": "Maguro",
+      "description": "Ton balığı",
+      "priceTry": 950
+     },
+     {
+      "name": "Toro",
+      "description": "Yağlı ton",
+      "priceTry": 1000
+     },
+     {
+      "name": "Sake",
+      "description": "Somon",
+      "priceTry": 840
+     },
+     {
+      "name": "Suzuki",
+      "description": "Levrek",
+      "priceTry": 660
+     },
+     {
+      "name": "Shime-Saba",
+      "description": "Marine edilmiş uskumru",
+      "priceTry": 410
+     },
+     {
+      "name": "Hamachi",
+      "description": "Sarı kuyruk",
+      "priceTry": 980
+     },
+     {
+      "name": "Ebi",
+      "description": "Karides",
+      "priceTry": 1300
+     },
+     {
+      "name": "Tako",
+      "description": "Ahtapot",
+      "priceTry": 750
+     },
+     {
+      "name": "Unagi",
+      "description": "Yılan balığı",
+      "priceTry": 1050
+     }
+    ]
+   },
+   {
+    "title": "Temaki (1 adet)",
+    "items": [
+     {
+      "name": "Ebiten",
+      "description": "Kızarmış karides",
+      "priceTry": 540
+     },
+     {
+      "name": "Spicy Tuna",
+      "description": "Acılı ton balığı",
+      "priceTry": 620
+     },
+     {
+      "name": "Sake Avokado",
+      "description": "Somon ve avokado",
+      "priceTry": 540
+     },
+     {
+      "name": "Yahata",
+      "description": "Yılan balığı",
+      "priceTry": 660
+     }
+    ]
+   },
+   {
+    "title": "Gun-kan (1 adet)",
+    "items": [
+     {
+      "name": "Ikura",
+      "description": "Somon yumurtası",
+      "priceTry": 650
+     },
+     {
+      "name": "Negitoro",
+      "description": "Yağlı ton ve yeşil soğan",
+      "priceTry": 500
+     },
+     {
+      "name": "Wasabi Tobiko",
+      "description": "Wasabili havyar",
+      "priceTry": 500
+     },
+     {
+      "name": "Kani",
+      "description": "Okyanus yengeci",
+      "priceTry": 540
+     },
+     {
+      "name": "Tobiko",
+      "description": "Uçan balık yumurtası",
+      "priceTry": 480
+     }
+    ]
+   },
+   {
+    "title": "Hosomaki (4 adet)",
+    "items": [
+     {
+      "name": "Kappa Maki",
+      "description": "Salatalık",
+      "priceTry": 300
+     },
+     {
+      "name": "Avokado Maki",
+      "description": "Avokado",
+      "priceTry": 300
+     },
+     {
+      "name": "Tekka Maki",
+      "description": "Ton balığı",
+      "priceTry": 440
+     },
+     {
+      "name": "Sake Maki",
+      "description": "Somon",
+      "priceTry": 520
+     },
+     {
+      "name": "Sake Avokado Maki",
+      "description": "Somon ve avokado",
+      "priceTry": 540
+     },
+     {
+      "name": "Negitoro Maki",
+      "description": "Yağlı ton ve yeşil soğan",
+      "priceTry": 620
+     },
+     {
+      "name": "Sake Kawa Maki",
+      "description": "Somon derisi",
+      "priceTry": 310
+     }
+    ]
+   },
+   {
+    "title": "Uramaki (4 adet)",
+    "items": [
+     {
+      "name": "Spicy Tuna",
+      "description": "Acılı ton balığı",
+      "priceTry": 620
+     },
+     {
+      "name": "Rainbow",
+      "description": "Sashimi çeşitleri",
+      "priceTry": 620
+     },
+     {
+      "name": "Boston",
+      "description": "Somon ve krem peynir",
+      "priceTry": 620
+     },
+     {
+      "name": "Battera",
+      "description": "Marine uskumru",
+      "priceTry": 520
+     },
+     {
+      "name": "California",
+      "description": "Avokado, karides ve havyar",
+      "priceTry": 550
+     },
+     {
+      "name": "Sake Tempura",
+      "description": "Somon tempura",
+      "priceTry": 530
+     },
+     {
+      "name": "Dragon",
+      "description": "Yılan balığı ve avokado",
+      "priceTry": 630
+     },
+     {
+      "name": "Yahata",
+      "description": "Yılan balığı",
+      "priceTry": 660
+     },
+     {
+      "name": "Yaki Sake Avokado",
+      "description": "Izgara somon ve avokado",
+      "priceTry": 530
+     },
+     {
+      "name": "Ebiten",
+      "description": "Kızarmış karides",
+      "priceTry": 540
+     },
+     {
+      "name": "Suzuten (5 adet)",
+      "description": "Avokado, levrek tempura",
+      "priceTry": 610
+     },
+     {
+      "name": "Fried Sushi (5 adet)",
+      "description": "Karides tempura, avokado, kıtır soğan",
+      "priceTry": 700
+     },
+     {
+      "name": "Hamachi Yuzu Roll (6 adet)",
+      "description": "Sarı kuyruk, avokado, yuzu",
+      "priceTry": 680
+     },
+     {
+      "name": "Tropical (6 adet)",
+      "description": "Mango, avokado, somon, levrek, maguro",
+      "priceTry": 680
+     }
+    ]
+   },
+   {
+    "title": "Chirashi",
+    "items": [
+     {
+      "name": "Chirashi Sushi",
+      "description": "Taze balık çeşitleri, pirinç",
+      "priceTry": 1400
+     },
+     {
+      "name": "Sake Chirashi",
+      "description": "Somon, pirinç",
+      "priceTry": 1250
+     }
+    ]
+   },
+   {
+    "title": "Moriawase",
+    "items": [
+     {
+      "name": "16'lı Rolls Combo",
+      "description": "California, Rainbow, Boston, Dragon",
+      "priceTry": 1600
+     },
+     {
+      "name": "16'lı Makikosan Combo",
+      "description": "California, Ebiten, Spicy Tuna, Yaki Sake Avokado",
+      "priceTry": 1700
+     },
+     {
+      "name": "24'lü Maromi Combo",
+      "description": "Sake avokado maki, negitoro maki, unagi, maguro, ebi, tamago, saba ve sake nigiri",
+      "priceTry": 3200
+     },
+     {
+      "name": "10'lu Sashimi Moriawase",
+      "description": "Ton balığı, somon, levrek",
+      "priceTry": 1300
+     },
+     {
+      "name": "24'lü Big Sashimi Moriawase",
+      "description": "Ton balığı, levrek, karides, hamachi, uskumru",
+      "priceTry": 3100
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=EHW9OOewAsQ",
+   "credit": "Divan Life (işletmenin kanalı) · Haziran 2019 · Maromi Nerede?",
+   "category": "isletme",
+   "sponsored": false
+  }
+ ]
+}

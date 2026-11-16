@@ -1,6 +1,6 @@
 {
  "slug": "alaf-besiktas",
- "_kaynak_notu": "Kaynak: resmî site alafkurucesme.com (ana sayfa, Menü, Rezervasyon, İletişim ve 'Rezervasyon Ön Ödeme ve Hüküm Şartları' sayfaları; 13.11.2026). Menü eklenmedi: sitedeki alakart ve tadım PDF'lerinde (29.08.2026) yazı tipleri bozuk kodlanmış, ürün adları ve fiyatlar güvenilir biçimde okunamadı. Saat sitede yok. Videolar: oEmbed 200, gömmeye açık; ücretli tanıtım işareti yok. yKrJfqu93Ao videosu YouTube'da ücretli tanıtım işaretli olduğu için alınmadı. Google verisi ve fotoğraf yok.",
+ "_kaynak_notu": "Kaynak: resmî site alafkurucesme.com (ana sayfa, Menü, Rezervasyon, İletişim ve 'Rezervasyon Ön Ödeme ve Hüküm Şartları' sayfaları; 13.11.2026). Menü (tamamlayıcı güncelleme; 13.11.2026 okundu, 14.11.2026 yeniden kontrol): Menü sayfasındaki Alacarte ve Tadım PDF'leri sitenin kendi dosya sunucusunda (irp.cdn-website.com; dosyalar 29.08.2026, 14.11.2026'da etag ile değişmediği doğrulandı). Yazı katmanı bozuk kodlu olduğu için sayfalar görüntüye çevrilip okundu; her fiyat ürün adıyla aynı satırda. Menüde '28.08.2026 tarihinde güncellenmiştir' yazıyor; geçerlilik başlangıcı olarak değil not olarak verildi. Saat sitede yok. Videolar: oEmbed 200, gömmeye açık; ücretli tanıtım işareti yok. yKrJfqu93Ao videosu YouTube'da ücretli tanıtım işaretli olduğu için alınmadı. Google verisi ve fotoğraf yok.",
  "description": {
   "value": "Kuruçeşme'de Anadolu mutfağı restoranı; adı 'odun ateşi' anlamına geliyor. İşletme mutfağın ve pişirme tekniklerinin Anadolu kültüründen beslendiğini, şarap listesinde Anadolu'nun endemik üzümlerine ve yerli şaraplara yer verdiğini anlatıyor. Alakart ve tadım menüsü var.",
   "provider": "official_site",
@@ -19,6 +19,12 @@
    "provider": "official_site",
    "url": "https://www.alafkurucesme.com/rezervasyon-%C3%B6n-%C3%B6deme-ve-h%C3%BCk%C3%BCm-%C5%9Fartlar%C4%B1",
    "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Menüdeki fiyatlar 28.08.2026'da güncellendi; KDV dahil, tek kişi için.",
+   "provider": "official_site",
+   "url": "https://www.alafkurucesme.com/menu",
+   "checkedAt": "2026-11-13"
   }
  ],
  "videos": [
@@ -34,5 +40,133 @@
    "category": "editor",
    "sponsored": false
   }
- ]
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.alafkurucesme.com/menu",
+  "checkedAt": "2026-11-13",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Başlangıç",
+    "items": [
+     {
+      "name": "Şanlıurfa Kıyma",
+      "description": "Şanlıurfa usulüyle hazırlanan, elde satırla kıyılmış dana kıyma",
+      "priceTry": 1980
+     },
+     {
+      "name": "Sultani Bezelye",
+      "description": "Tatlı lor, kuşboku Antep fıstığı ile fesleğen sos",
+      "priceTry": 1880
+     },
+     {
+      "name": "İsli Et",
+      "description": "İsli ve tuzlanmış et, 2 yıl olgunlaşmış tulum peyniri, lavanta balı ve köy yufkası",
+      "priceTry": 2300
+     },
+     {
+      "name": "Torik Lakerda",
+      "description": "Tütsülenmiş torik balığı, zeytinyağlı pilaki, tarama ve kıtır gofret",
+      "priceTry": 2600
+     }
+    ]
+   },
+   {
+    "title": "Ara Sıcak",
+    "items": [
+     {
+      "name": "Alaşehir Kapama",
+      "description": "El açması geleneksel börek, et suyu dashi ile tamamlanır",
+      "priceTry": 2400
+     },
+     {
+      "name": "Klasikleşmiş Alaf Pidelerinden — İsli Kuzu Kaburga ve Ot Salatası",
+      "description": "Pide formunda, taze otlarla birlikte tütsülenmiş kuzu kaburga",
+      "priceTry": 2650
+     },
+     {
+      "name": "Izgara Çanakkale Kalamar",
+      "description": "Kalamar kolajeni ve mürekkep sos",
+      "priceTry": 2820
+     },
+     {
+      "name": "İsotlu Izgara Kuzu Kaburga",
+      "description": "Şanlıurfa isotuyla ızgara edilmiş kuzu kaburga; elle yenir",
+      "priceTry": 2620
+     },
+     {
+      "name": "Kuzu Uykuluk",
+      "description": "Közlenmiş sarımsak, çektirilmiş et suyu",
+      "priceTry": 2470
+     },
+     {
+      "name": "Trakya'dan Mevsimin Mantarları",
+      "description": "Fermente ayı mantarı püresi, ızgara sezon mantarı ve fındık, yumurta sarısı",
+      "priceTry": 2100
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemek",
+    "items": [
+     {
+      "name": "Günün Balığı",
+      "description": "Izgara pişmiş günün balığı, karidesli yuvalama",
+      "priceTry": 3700
+     },
+     {
+      "name": "Ekmek Arası Kuzu İncik",
+      "description": "Ağır ateşte bir gece pişmiş, tereyağlı hamurla kaplanmış, paylaşımlık kuzu incik",
+      "priceTry": 3900
+     },
+     {
+      "name": "Gaziantepli Dana Bonfile",
+      "description": "Dana bonfile, ot salatası, çıtır patates ve demi-glace sos",
+      "priceTry": 3400
+     },
+     {
+      "name": "Kuzu ve Kuzu",
+      "description": "Kuzu sırtı, kuzu jus, kuzu kebap ve domatesli yaz pilavı",
+      "priceTry": 4900
+     }
+    ]
+   },
+   {
+    "title": "Tatlı",
+    "items": [
+     {
+      "name": "Denizli Kale Biberi, Çikolata ve Tire Karadut",
+      "description": "Kale biberi çikolatayla buluşur, Tire karadut ile tamamlanır",
+      "priceTry": 1400
+     },
+     {
+      "name": "Deniz Şef'in Baklavası",
+      "description": "2013'ten beri bir klasik; kuşboku Antep fıstığı ve çıtır katmanlar",
+      "priceTry": 1400
+     }
+    ]
+   },
+   {
+    "title": "Tadım Menüsü (kişi başı)",
+    "items": [
+     {
+      "name": "Tadım Menüsü",
+      "description": "Şefin ikramlıkları; ardından İstanbul balık sofrası, Çanakkale kalamarı ve deniz otları, Manisa Alaşehir'li çıtır marul, Alaf şarküteri, sorbe; kuzunun 3 hali; Denizli kale biberi ve çikolata; petit fours",
+      "priceTry": 7900
+     },
+     {
+      "name": "5 Kadeh Şarap Eşleşmesi",
+      "description": "Anadolu'nun endemik üzümlerinden şaraplar",
+      "priceTry": 4900
+     },
+     {
+      "name": "5 Kadeh Kokteyl Eşleşmesi",
+      "description": "Mutfak teknikleriyle hazırlanmış damıtılmış kokteyller",
+      "priceTry": 4900
+     }
+    ]
+   }
+  ]
+ }
 }

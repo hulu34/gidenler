@@ -1,0 +1,327 @@
+{
+ "slug": "lacivert-beykoz",
+ "_kaynak_notu": "Kaynak: resmî site lacivertrestaurant.com (ana sayfa, Hakkımızda, Menü, İletişim; 13.11.2026) ve sitedeki Türkçe menü PDF'i (Lacivert-Menu-Ekim26-TR.pdf, dosya 10.11.2026; menüde '01.11.2026 tarihinden itibaren uygulanan fiyatlardır'). Sitenin TLS zinciri bazı istemcilerde eksik ara sertifika nedeniyle doğrulanamıyor (Node); curl ile sertifika doğrulaması başarılı, güvenlik uyarısı aşılmadı. Günün balıkları kilo fiyatıyla satıldığı için pişirme yöntemleri not olarak yazıldı, fiyat yazılmadı. Video eklenmedi: bulunan tanıtım ve şef videoları önceki şefleri (Hüseyin Ceylan, Melih Demirel) anlatıyor; menüde bugünkü şef Rıdvan Külçek. Google verisi ve fotoğraf yok.",
+ "description": {
+  "value": "Anadolu Hisarı'nda, Boğaz kıyısında Akdeniz mutfağı restoranı. İşletme 'Yerele Saygı' ilkesiyle Akdeniz mutfağını modern dokunuşlarla buluşturduğunu anlatıyor. Menüde klasik mezeler, çiğ seçkiler, deniz ürünleri, günün balıkları ve şefin tadım menüsü var; şef Rıdvan Külçek.",
+  "provider": "official_site",
+  "url": "https://www.lacivertrestaurant.com/tr/hakkimizda",
+  "checkedAt": "2026-11-13"
+ },
+ "hours": {
+  "value": "Mo-Sa 12:00-00:00; Su 10:00-14:30,15:30-00:00",
+  "provider": "official_site",
+  "url": "https://www.lacivertrestaurant.com/tr/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "reservation": {
+  "value": "Resmî sitedeki çevrimiçi rezervasyon bağlantısıyla (Rezervin) ya da telefonla: +90 216 413 37 53, +90 216 413 42 24.",
+  "provider": "official_site",
+  "url": "https://www.lacivertrestaurant.com/tr/iletisim",
+  "checkedAt": "2026-11-13"
+ },
+ "notes": [
+  {
+   "value": "Pazar günü 10.00–14.30 arası brunch servisi var; akşam servisi 15.30'da başlıyor.",
+   "provider": "official_site",
+   "url": "https://www.lacivertrestaurant.com/tr/iletisim",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Şefin tadım menüsü kişi başı 8.500 TL, şarap eşleşmesiyle 12.500 TL; tüm masa için sunuluyor.",
+   "provider": "official_site",
+   "url": "https://www.lacivertrestaurant.com/static/uploads/2026/11/Lacivert-Menu-Ekim26-TR.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Günün balıkları mostra tezgâhından seçiliyor ve kilogram fiyatıyla satılıyor; çiğ, buğulama, ızgara, tuzda ya da kavurma olarak hazırlanabiliyor.",
+   "provider": "official_site",
+   "url": "https://www.lacivertrestaurant.com/static/uploads/2026/11/Lacivert-Menu-Ekim26-TR.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Menüdeki fiyatlar 01.11.2026'dan itibaren geçerli; TL ve KDV dahil.",
+   "provider": "official_site",
+   "url": "https://www.lacivertrestaurant.com/static/uploads/2026/11/Lacivert-Menu-Ekim26-TR.pdf",
+   "checkedAt": "2026-11-13"
+  },
+  {
+   "value": "Özel davetlerde en az 10 kişilik talepler değerlendiriliyor.",
+   "provider": "official_site",
+   "url": "https://www.lacivertrestaurant.com/",
+   "checkedAt": "2026-11-13"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.lacivertrestaurant.com/static/uploads/2026/11/Lacivert-Menu-Ekim26-TR.pdf",
+  "checkedAt": "2026-11-13",
+  "validFrom": "2026-11-01",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Şefin Seçkileri",
+    "items": [
+     {
+      "name": "Pancar",
+      "description": "Pancar şeritleri ve yarı kurutulmuş pancar; Ağmatca peyniri, çavdar kıtırı, tarçınlı ceviz krokanı, su teresi",
+      "priceTry": 790
+     },
+     {
+      "name": "Pazı",
+      "description": "Yeşil mercimek ve pirinçli bat sarma; ceviz, domates, reyhan, kuru nane, karamelize kefir sosu",
+      "priceTry": 860
+     },
+     {
+      "name": "Kereviz",
+      "description": "Kereviz milföyü; yeşil elma, siyah trüf, trüflü kereviz sosu",
+      "priceTry": 1490
+     },
+     {
+      "name": "Deniz Tarağı",
+      "description": "Ilık deniz tarağı tartarı; Osetra havyarı, vin blanc sosu",
+      "priceTry": 1790
+     },
+     {
+      "name": "Barbun",
+      "description": "Düşük ısıda pişirilmiş barbun; essence de rouget, yeşil elmalı karamelize rezene, karabuğday patlağı",
+      "priceTry": 2150
+     },
+     {
+      "name": "Bamya Çiçeği",
+      "description": "Koruk turşusuyla bamya çiçeği; buğday, domates, biber, sarımsak, turp",
+      "priceTry": 860
+     },
+     {
+      "name": "Mercan",
+      "description": "Tek taraflı ızgara mercan; patates kreması, fermente bal kabağı, mandalina-miso emülsiyonu",
+      "priceTry": 3700
+     },
+     {
+      "name": "Dil Balığı",
+      "description": "Tavada kızarmış dil balığı; sıcak soya-yuzu sosu, kavrulmuş file badem",
+      "priceTry": 2450
+     },
+     {
+      "name": "Istakoz",
+      "description": "Tereyağında poşe ıstakoz; kereviz püresi, trüf, ıstakoz köpüğü",
+      "priceTry": 4650
+     },
+     {
+      "name": "Dana Yanak",
+      "description": "Karamelize renkli havuçlar, patates turşusu, bordelaise sos",
+      "priceTry": 2950
+     }
+    ]
+   },
+   {
+    "title": "Klasik Mezeler",
+    "items": [
+     {
+      "name": "Vişneli Yaprak Sarma",
+      "description": "Kuş üzümü, çam fıstığı, maydanoz",
+      "priceTry": 720
+     },
+     {
+      "name": "Uskumru Ezmesi",
+      "description": "Füme uskumru, kapari, frenk soğanı, krem peynir",
+      "priceTry": 790
+     },
+     {
+      "name": "Humus",
+      "description": "Hardal tohumu turşusu, salatalık, kırmızı soğan, acı yağ, mini turp",
+      "priceTry": 690
+     },
+     {
+      "name": "Tekmilli Fava",
+      "description": "Kırmızı soğan, kıtır soğan cipsi, kakule, dereotu",
+      "priceTry": 690
+     },
+     {
+      "name": "Kabak Borani",
+      "description": "Süzme yoğurt, acı zeytinyağı, tava ekmeği, karamelize soğan",
+      "priceTry": 720
+     },
+     {
+      "name": "Atom",
+      "description": "Ceviz, taze biberler",
+      "priceTry": 650
+     },
+     {
+      "name": "Köz Patlıcan Ezmesi",
+      "description": "Erken hasat zeytinyağı, semizotu",
+      "priceTry": 720
+     },
+     {
+      "name": "Tarama",
+      "description": "Somon havyarı, turp, kurutulmuş zeytin, simit kraker",
+      "priceTry": 790
+     },
+     {
+      "name": "Nazuktan",
+      "description": "Manda kaymağı, sumaklı salata",
+      "priceTry": 720
+     },
+     {
+      "name": "Lacivert Topik",
+      "description": "Karamelize soğan, tahin, çam fıstığı, tarçın, karanfil, kaşık salata",
+      "priceTry": 780
+     },
+     {
+      "name": "Deniz Mahsulleri Çorba",
+      "description": "Balık parçaları, renkli biberler, midye çeşitleri",
+      "priceTry": 890
+     }
+    ]
+   },
+   {
+    "title": "Çiğ Seçkiler",
+    "items": [
+     {
+      "name": "Levrek Marin",
+      "description": "Dijon hardalı, turunç suyu, rezene, narenciye parçaları",
+      "priceTry": 1200
+     },
+     {
+      "name": "Çipura Carpaccio",
+      "description": "Kırmızı soğan, kapari, maydanoz, fesleğen, acı zeytinyağı",
+      "priceTry": 1950
+     },
+     {
+      "name": "Akya Ceviche",
+      "description": "Rocoto leche de tigre, tatlı patates, salatalık, kırmızı soğan, kişniş",
+      "priceTry": 970
+     },
+     {
+      "name": "Karides Söğüş",
+      "description": "Erken hasat zeytinyağı, sumak dashi",
+      "priceTry": 1200
+     },
+     {
+      "name": "Karides Avokado Enginar",
+      "description": "Hardal, erken hasat zeytinyağı, dereotu",
+      "priceTry": 990
+     },
+     {
+      "name": "Boğaz Toriği Lakerda",
+      "description": "Kırmızı soğan, kapari, limon, erken hasat zeytinyağı",
+      "priceTry": 800
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Roka Domates Salatası",
+      "description": "Pembe domates, roka, nar ekşisi, İzmir tulum peyniri",
+      "priceTry": 890
+     },
+     {
+      "name": "Domates Salatası",
+      "description": "Kırmızı soğan, salatalık, frenk soğanı, soya-balzamik sos",
+      "priceTry": 920
+     },
+     {
+      "name": "Yağlı Marul Salatası",
+      "description": "Yuzu vinaigrette, turp, salatalık, maydanoz, dereotu, frenk soğanı",
+      "priceTry": 950
+     }
+    ]
+   },
+   {
+    "title": "Ara Sıcaklar",
+    "items": [
+     {
+      "name": "Kızarmış Girit Kabağı",
+      "description": "Naneli ve sumaklı yoğurt",
+      "priceTry": 750
+     },
+     {
+      "name": "Sebze Tempura",
+      "description": "Mevsimin sebzeleri, kaparili ve hardallı yoğurt sos",
+      "priceTry": 890
+     },
+     {
+      "name": "Tropita",
+      "description": "Kızarmış Ezine peyniri, sıcak bal, susam, çörek otu",
+      "priceTry": 890
+     },
+     {
+      "name": "Izgara Enginar Kalbi",
+      "description": "Bezelye, edamame, taze baharat yağı",
+      "priceTry": 960
+     },
+     {
+      "name": "Izgara Bebek Kalamar",
+      "description": "Sarımsaklı ve taze baharatlı zeytinyağı",
+      "priceTry": 2100
+     },
+     {
+      "name": "Sahanda Kerevit",
+      "description": "Mantar, arpacık soğanı, biber, domates, sarımsak, Mihaliç peyniri",
+      "priceTry": 2100
+     },
+     {
+      "name": "Kalamar Tava",
+      "description": "Tarator sos",
+      "priceTry": 1950
+     },
+     {
+      "name": "Tereyağlı Karides",
+      "description": "Renkli biberler, kurutulmuş domates, sarımsak, hafif acı pul biber",
+      "priceTry": 1890
+     },
+     {
+      "name": "Ahtapot Kolu",
+      "description": "Semizotu salatası, tütsülenmiş acı biber sosu",
+      "priceTry": 2100
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler",
+    "items": [
+     {
+      "name": "Günün Balıkları",
+      "description": "Mostra tezgâhından seçiliyor; kilogram fiyatı üzerinden satılıyor"
+     },
+     {
+      "name": "Zahmetsiz Izgara Levrek (2 kişilik)",
+      "description": "Bütün levrek (800–900 g), roka yaprakları, fırınlanmış patates",
+      "priceTry": 4400
+     },
+     {
+      "name": "Laksa Soslu Levrek",
+      "description": "Levrek (150 g), cibes, rezene salatası, laksa sos",
+      "priceTry": 2450
+     },
+     {
+      "name": "Izgara Kuzu Pirzola",
+      "description": "3 kalem kuzu pirzola (250 g), soğan dolması, biber relish, kuzu jus",
+      "priceTry": 2950
+     },
+     {
+      "name": "Dana Bonfile",
+      "description": "Dana bonfile (200 g), siyah trüf, patates püresi, sote mantar, bordelaise sos",
+      "priceTry": 3200
+     }
+    ]
+   },
+   {
+    "title": "Paylaşımlık Tabaklar",
+    "items": [
+     {
+      "name": "Portekiz Paellası Arroz de Marisco (2 kişilik)",
+      "description": "Kalamar, midye, karides, biber ezmesi, kişniş, limon, pul biber, taze domatesli pilav",
+      "priceTry": 4000
+     },
+     {
+      "name": "Deniz Mahsullü Linguine (2 kişilik)",
+      "description": "Karides, bebek kalamar, midye, kum midyesi, San Marzano domates sos, fesleğen",
+      "priceTry": 3900
+     }
+    ]
+   }
+  ]
+ }
+}

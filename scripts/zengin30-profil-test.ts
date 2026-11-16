@@ -17,6 +17,10 @@ import { parseVideoUrl } from "../lib/media/embed";
 type Vid = { id: string; gomulebilir: boolean; ucretliTanitimIsareti: boolean; profilde: boolean; yayin: string | null };
 const ENV = JSON.parse(readFileSync("data/katalog/zengin-30/envanter.json", "utf8")) as { restoranlar: { slug: string; profil: string; videolar: Vid[]; secimNedeni: string[] }[] };
 const YAPILDI = ENV.restoranlar.filter((r) => r.profil === "yapildi");
+/* Kalan 18 paketinde (data/katalog/zengin-30-kalan) profili yapılanlar bu testin dışında, kendi testinde denetlenir */
+const KALAN = new Set((JSON.parse(readFileSync("data/katalog/zengin-30-kalan/envanter.json", "utf8")) as { restoranlar: { slug: string; profil: string }[] }).restoranlar.filter((r) => r.profil === "yapildi").map((r) => r.slug));
+/* Yayından sonra eklenen tamamlayıcı menüler: resmî sitenin bağlandığı dijital menü alan adı (Kanaat → tas.ink) */
+const EK_ALAN: Record<string, string> = { "kanaat-lokantasi-uskudar": "7abc0ee3-bfdc-497b-91a6-ef20a58bacec.tas.ink" };
 /* PR #39 (14 profil + 3 adres) ve Menemen (PR #38) bu çalışmanın dışında */
 const DISARIDA = ["turk-fatih-tutak-sisli", "nicole-beyoglu", "mutfakkoz-kadikoy", "cuma-beyoglu", "fauna-atasehir", "aida-vino-e-cucina-kadikoy", "mikla-turkey-fusion-beyoglu",
   "aseka-beyoglu", "calipso-fish-maltepe", "rumelihisari-iskele-sariyer", "sade-bes-denizler-mutfagi-sisli", "deraliye-fatih", "tavaci-recep-usta-bostanci-maltepe",
@@ -32,7 +36,7 @@ async function main() {
   ok("en az 10 profil geliştirildi", YAPILDI.length >= 10, YAPILDI.length);
   ok("her restoranın seçim nedeni var", ENV.restoranlar.every((r) => r.secimNedeni.length > 0), ENV.restoranlar.filter((r) => !r.secimNedeni.length).map((r) => r.slug));
   ok("PR #39 ve Menemen kayıtları envanterde yok", ENV.restoranlar.every((r) => !DISARIDA.includes(r.slug)));
-  ok("profil dosyası olan ama 'yapildi' işaretli olmayan restoran yok", ENV.restoranlar.every((r) => r.profil === "yapildi" || !existsSync(`content/profiles/${r.slug}.json`)));
+  ok("profil dosyası olan ama 'yapildi' işaretli olmayan restoran yok", ENV.restoranlar.every((r) => r.profil === "yapildi" || KALAN.has(r.slug) || !existsSync(`content/profiles/${r.slug}.json`)));
 
   const pg = new PGlite(); const db = drizzle(pg, { schema }) as unknown as Db;
   const x: Executor = { async query<T>(t: string) { return (await pg.query(t)).rows as T[]; }, async transaction(st: string[]) { await pg.transaction(async (tx) => { for (const s of st) { if (s.startsWith("SELECT pg_advisory")) continue; await tx.query(s); } }); } };
@@ -50,7 +54,7 @@ async function main() {
     if (!p.success) continue;
     const input = p.data;
     ok(`${slug}: tüm alanlar resmî siteden, 13.11.2026 kontrollü`, [...SINGLE.map((k) => input[k]), ...(input.notes ?? []), input.amenities, input.menu].filter(Boolean).every((f) => f!.provider === "official_site" && f!.checkedAt === "2026-11-13"));
-    ok(`${slug}: kaynak alan adı kayıttaki resmî siteyle aynı`, (() => { const h = (u: string) => new URL(u).host.replace(/^www\./, ""); const site = h(realVenueRecords.find((v) => v.slug === slug)!.website!.replace(/^(?!https?:)/, "https://")); return [...SINGLE.map((k) => input[k]), ...(input.notes ?? []), input.amenities, input.menu].filter(Boolean).every((f) => h(f!.url) === site); })());
+    ok(`${slug}: kaynak alan adı kayıttaki resmî siteyle aynı`, (() => { const h = (u: string) => new URL(u).host.replace(/^www\./, ""); const site = h(realVenueRecords.find((v) => v.slug === slug)!.website!.replace(/^(?!https?:)/, "https://")); return [...SINGLE.map((k) => input[k]), ...(input.notes ?? []), input.amenities, input.menu].filter(Boolean).every((f) => h(f!.url) === site || h(f!.url) === EK_ALAN[slug]); })());
     if (input.hours) ok(`${slug}: saat JSON-LD'ye çevrilir`, !!openingHoursSpec(input.hours.value), input.hours.value);
     if (input.amenities) ok(`${slug}: olanak anahtarları sayfada tanımlı`, Object.keys(input.amenities.items).every((k) => AMENITY.has(k)));
     if (input.menu) {

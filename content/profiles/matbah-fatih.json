@@ -1,0 +1,218 @@
+{
+ "slug": "matbah-fatih",
+ "description": {
+  "value": "Sultanahmet'te, Ayasofya ile Caferağa Medresesi arasında, Ottoman Hotel Imperial'in içinde Osmanlı saray mutfağı restoranı. İşletmenin anlatımına göre menüler saray kütüphanelerindeki kitap ve belgeler üzerine yapılan araştırmayla hazırlandı; menüde her yemeğin yanında tarifin yüzyılı ve ürünün geldiği yer yazıyor.",
+  "provider": "official_site",
+  "url": "https://www.matbahrestaurant.com/",
+  "checkedAt": "2026-11-14"
+ },
+ "phone": {
+  "value": "+90 212 514 61 51",
+  "provider": "official_site",
+  "url": "https://www.matbahrestaurant.com/contact.php",
+  "checkedAt": "2026-11-14"
+ },
+ "website": {
+  "value": "https://www.matbahrestaurant.com/",
+  "provider": "official_site",
+  "url": "https://www.matbahrestaurant.com/",
+  "checkedAt": "2026-11-14"
+ },
+ "reservation": {
+  "value": "İşletmenin sitesindeki rezervasyon sayfasından ya da telefonla; grup ve etkinlik rezervasyonları için ayrı iletişim bölümü var.",
+  "provider": "official_site",
+  "url": "https://www.matbahrestaurant.com/contact.php",
+  "checkedAt": "2026-11-14"
+ },
+ "notes": [
+  {
+   "value": "Sitede yayımlanan alakart menü '2026 Summer Menu' başlıklı (dosya 16.05.2026). Mevsim menüsü değiştiyse ürünler ve fiyatlar farklı olabilir.",
+   "provider": "official_site",
+   "url": "https://www.matbahrestaurant.com/menu.php",
+   "checkedAt": "2026-11-14"
+  },
+  {
+   "value": "Menüdeki fiyatlar TL ve KDV dahil; menü, coğrafi işaretli ürünler kullanıldığını yazıyor.",
+   "provider": "official_site",
+   "url": "https://www.matbahrestaurant.com/pdf/alakart_menu.pdf",
+   "checkedAt": "2026-11-14"
+  },
+  {
+   "value": "Hafta içi 15.00–17.00 arası şefle Osmanlı mutfağı kursu düzenleniyor; kişi başı 249 €, 2 gün önceden rezervasyon gerekiyor.",
+   "provider": "official_site",
+   "url": "https://www.matbahrestaurant.com/pdf/alakart_menu.pdf",
+   "checkedAt": "2026-11-14"
+  }
+ ],
+ "menu": {
+  "provider": "official_site",
+  "url": "https://www.matbahrestaurant.com/pdf/alakart_menu.pdf",
+  "checkedAt": "2026-11-14",
+  "pricesPublished": true,
+  "sections": [
+   {
+    "title": "Çorbalar",
+    "items": [
+     {
+      "name": "Toyga Aşı Çorbası",
+      "priceTry": 400,
+      "description": "14. yy · yarma buğday, sarımsak ve nohutlu yoğurt çorbası; soğuk servis edilir"
+     },
+     {
+      "name": "Safran Soslu Süzme Mercimek Çorbası",
+      "priceTry": 400,
+      "description": "17. yy · limon, tereyağı ve hafif acı sosla"
+     }
+    ]
+   },
+   {
+    "title": "Soğuk İştah Açıcılar",
+    "items": [
+     {
+      "name": "Vişneli Yaprak Sarması",
+      "priceTry": 650,
+      "description": "18. yy · pirinç, soğan, kuş üzümü ve çam fıstığıyla, vişne taneleriyle pişirilen zeytinyağlı sarma"
+     },
+     {
+      "name": "Karidesli Kalamar Dolması",
+      "priceTry": 850,
+      "description": "18. yy · pirinç, soğan, kuş üzümü, çam fıstığı ve karides"
+     },
+     {
+      "name": "Nohut Lokması (Humus)",
+      "priceTry": 550,
+      "description": "15. yy · kuş üzümlü, çam fıstıklı ve tarçınlı nohut ezmesi"
+     },
+     {
+      "name": "İmam Bayıldı",
+      "priceTry": 600,
+      "description": "18. yy · zeytinyağında pişirilmiş bütün patlıcan dolması"
+     },
+     {
+      "name": "Karışık Türk Peynir Tabağı",
+      "priceTry": 750,
+      "description": "Eski Kars kaşarı, ezine, beyaz peynir, Mihaliç, sepet ve burgu peyniri"
+     }
+    ]
+   },
+   {
+    "title": "Sıcak İştah Açıcılar",
+    "items": [
+     {
+      "name": "Ballı Gemici Böreği",
+      "priceTry": 950,
+      "description": "15. yy · yedi çeşit Türk peyniri, maydanoz ve bezelyeyle el açması yufkada; kuş üzümlü balla"
+     },
+     {
+      "name": "Dane-i Sarı",
+      "priceTry": 750,
+      "description": "15. yy · nohut ve safran soslu pirinç pilavı"
+     },
+     {
+      "name": "İstiridye Mantarlı Çerkez Peyniri",
+      "priceTry": 850,
+      "description": "15. yy · ev yapımı istiridye mantarı turşusu ve ızgara Çerkez peyniri"
+     },
+     {
+      "name": "El Açması Reştiyye",
+      "priceTry": 750,
+      "description": "1539 · tereyağı, ceviz, eski kaşar ve maydanozla el yapımı erişte"
+     }
+    ]
+   },
+   {
+    "title": "Salatalar",
+    "items": [
+     {
+      "name": "Nar Ekşili Çoban Salatası",
+      "priceTry": 425
+     },
+     {
+      "name": "Balcan Turşusu",
+      "priceTry": 450,
+      "description": "15. yy · defne yaprağı, sirke ve sarımsakla patlıcan turşusu"
+     },
+     {
+      "name": "Dövme Hıyar Salatası Yoğurtlu (Cacık)",
+      "priceTry": 450,
+      "description": "Yoğurt, salatalık, nane ve sarımsak"
+     }
+    ]
+   },
+   {
+    "title": "Ana Yemekler",
+    "items": [
+     {
+      "name": "Kavun Dolması",
+      "priceTry": 1950,
+      "description": "15. yy · dana eti, pirinç, badem, dolmalık fıstık ve kuş üzümüyle doldurulup fırınlanmış kavun"
+     },
+     {
+      "name": "Halep Dolması (vejetaryen)",
+      "priceTry": 1750,
+      "description": "15. yy · patlıcan, pirinç, tarçın, kakule, kuru nane, safran"
+     },
+     {
+      "name": "Mahmudiye",
+      "priceTry": 1850,
+      "description": "15. yy · badem, kayısı, razaki üzümü, bal, tarçın ve limonla güveçte köy piliçi"
+     },
+     {
+      "name": "Yufka Bohçasında Beğendili Kuzu İncik",
+      "priceTry": 2850,
+      "description": "14. yy · köz patlıcan beğendisi üzerinde, yufka içinde kuzu incik"
+     },
+     {
+      "name": "Erikli Kuzu Gerdan",
+      "priceTry": 2200,
+      "description": "14. yy · kayısı, mürdüm eriği, kereviz ve pekmezle tencere yemeği"
+     },
+     {
+      "name": "Kâğıtta Deniz Levreği",
+      "priceTry": 2250,
+      "description": "17. yy · kişniş, limon, dereotu, sebzeler ve badem"
+     }
+    ]
+   },
+   {
+    "title": "Tatlılar",
+    "items": [
+     {
+      "name": "Baklava (dondurmalı)",
+      "priceTry": 800,
+      "description": "14. yy · el açması yufka, ceviz, tereyağı, bal"
+     },
+     {
+      "name": "Helatiye",
+      "priceTry": 600,
+      "description": "18. yy · gül şerbetinde sakızlı su muhallebisi, badem, Antep fıstığı ve meyve"
+     },
+     {
+      "name": "Fırın Sütlaç Fındıklı",
+      "priceTry": 550,
+      "description": "15. yy · pirinç, damla sakızı ve yumurta sarısıyla"
+     },
+     {
+      "name": "Levzine",
+      "priceTry": 550,
+      "description": "15. yy · badem unu helvası"
+     },
+     {
+      "name": "Şeftali Tatlısı Dondurmalı (Hanım Sultan usulü)",
+      "priceTry": 550,
+      "description": "15. yy · şeftali, esmer şeker, karanfil, kek, Maraş dondurması"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "url": "https://www.youtube.com/watch?v=JKhLhL0X8IM",
+   "credit": "Travelling Foodie · Aralık 2023",
+   "category": "influencer",
+   "sponsored": false
+  }
+ ],
+ "_kaynak_notu": "Kaynak: resmî site matbahrestaurant.com (ana sayfa, Menus, Contact; 14.11.2026) ve sitedeki alakart menü PDF'i (pdf/alakart_menu.pdf; 'Alacart Menüsü WEB', oluşturma 16.05.2026, sunucu 23.05.2026; '2026 Summer Menu'). PDF'in yazısı karakter kodsuz vektör olduğu için sayfalar görüntüye çevrilip okundu; 25 kalemin hepsi fiyatlı. Yüzyıl ve yöre bilgisi açıklamaya kısaltılarak yazıldı; gramajlar alınmadı. Adres alanı yazılmadı: katalogdaki adres (Caferiye Sokak No:6/1) resmî siteyle aynı. Saat sitede yok. Instagram yalnız PDF'te adıyla geçiyor; alana yazılmadı. Menüdeki Michelin 2024 ve Gault&Millau 2026 rozetleri aktarılmadı (Michelin bilgisi katalogdan gelir). Video: Travelling Foodie (13.12.2023), oEmbed 200, gömmeye açık, ücretli tanıtım işareti yok; Matbah'ın Sultanahmet'teki restoranında. Diğer menü PDF'leri (balık, grup, tadım, özel günler) alınmadı; 'yaz_menu_2015.pdf' eski. Görsel eklenmedi: menüdeki fotoğraflar işletmenin, izin yok."
+}
