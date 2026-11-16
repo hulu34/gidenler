@@ -1,0 +1,7062 @@
+{
+ "_aciklama": "Toplu engel ve karar planı — yalnız mevcut manifestlerden (#56, #58, #63, #65, #66) türetildi. Yeni web taraması, ücretli kaynak, işletmeye mesaj yok. Hiçbir kayıt kabul edilmedi ya da durumu değiştirilmedi; kaynak türü önerileri mevcut standarda uygunluk varsayımı içermez. Katalog, veritabanı, Preview, Production ve kabul dalları değişmedi.",
+ "olusturma": "2026-11-16",
+ "temel": {
+  "pr63": "f88fa1cf6f99b784232a4f0460c067cd071c718f",
+  "pr65": "886200a6281fcb97e78403dfb7ce2624cc410e3a",
+  "pr66": "02b7f32dab2fddfa8a1881631c2a51ef3815cf45"
+ },
+ "canliTaban": {
+  "pr": 62,
+  "sha": "2b437577f4a02197482fb90e46b5f75a3f0b96df",
+  "toplam": 876,
+  "aktif": 841
+ },
+ "kapsam": "#63'te kanit-bekliyor durumundaki 708 kayıt (537 restoran, 151 kafe, 20 belirsiz); #65 ve #66 sonuçları ilgili kayıtların grubunu belirler. Her kayıt tek ana gruba girer; ek etkenler 'bayraklar'da.",
+ "gruplar": {
+  "BAGIMSIZ": "resmî/işletmeci kaynağı var, son 12 ayda tarihli bağımsız kaynak yok",
+  "ISLETMECI": "tarihli bağımsız/editoryal kaynak var, işletmeci kaynağı yok",
+  "ISLETMECI_VE_BAGIMSIZ": "tek tarihli editoryal ya da 12 aydan eski kaynak; ikisi de eksik",
+  "ADRES_SUBE": "adres, kapı, sokak, ilçe ya da şube çelişkisi; kompleks düzeyi adres",
+  "KIMLIK": "araştırma eşleşmesi ya da şube kimliği bulunamadı",
+  "FAALIYET": "'yakında', taşınma, ad değişikliği, 404, kapanış işareti",
+  "KATEGORI": "tür/kategori kaynakta yok",
+  "KAFE_POLITIKASI": "Codex: kafe/pastane yayın kararı gerekli",
+  "POLITIKA": "platform + editoryal istisnası doğrulanmamış",
+  "ERISIM": "403 ya da kaynak bütünlüğü engeli",
+  "KANIT_TAMAM_KARAR_BEKLIYOR": "#65 kanıtı tamamladı; kabul kararı Codex/Pilot"
+ },
+ "sayim": {
+  "kayit": 708,
+  "grupKategori": {
+   "BAGIMSIZ": {
+    "restoran": 436,
+    "kafe": 137,
+    "belirsiz": 0,
+    "toplam": 573
+   },
+   "ISLETMECI": {
+    "restoran": 24,
+    "kafe": 2,
+    "belirsiz": 13,
+    "toplam": 39
+   },
+   "ISLETMECI_VE_BAGIMSIZ": {
+    "restoran": 38,
+    "kafe": 2,
+    "belirsiz": 0,
+    "toplam": 40
+   },
+   "ADRES_SUBE": {
+    "restoran": 17,
+    "kafe": 1,
+    "belirsiz": 4,
+    "toplam": 22
+   },
+   "KIMLIK": {
+    "restoran": 7,
+    "kafe": 0,
+    "belirsiz": 2,
+    "toplam": 9
+   },
+   "FAALIYET": {
+    "restoran": 8,
+    "kafe": 0,
+    "belirsiz": 0,
+    "toplam": 8
+   },
+   "KATEGORI": {
+    "restoran": 1,
+    "kafe": 0,
+    "belirsiz": 0,
+    "toplam": 1
+   },
+   "KAFE_POLITIKASI": {
+    "restoran": 0,
+    "kafe": 8,
+    "belirsiz": 0,
+    "toplam": 8
+   },
+   "POLITIKA": {
+    "restoran": 2,
+    "kafe": 1,
+    "belirsiz": 0,
+    "toplam": 3
+   },
+   "ERISIM": {
+    "restoran": 2,
+    "kafe": 0,
+    "belirsiz": 0,
+    "toplam": 2
+   },
+   "KANIT_TAMAM_KARAR_BEKLIYOR": {
+    "restoran": 2,
+    "kafe": 0,
+    "belirsiz": 1,
+    "toplam": 3
+   }
+  },
+  "altGrup": {
+   "BAGIMSIZ": {
+    "resmi-var-bagimsiz-yok": 564,
+    "sube-duzeyi-bagimsiz-yok": 9
+   },
+   "ISLETMECI": {
+    "editoryal-var-isletmeci-yok": 38,
+    "sube-sayfasi-yok": 1
+   },
+   "ISLETMECI_VE_BAGIMSIZ": {
+    "tek-tarihli-editoryal": 31,
+    "kaynak-12-aydan-eski": 9
+   },
+   "ADRES_SUBE": {
+    "kapi-celiskisi": 2,
+    "sokak-celiskisi": 1,
+    "kapi-no-yok-kompleks": 9,
+    "adres-celiskisi": 8,
+    "sube-kimligi": 1,
+    "ilce-celiskisi": 1
+   },
+   "KIMLIK": {
+    "arastirma-eslesmesi-bulunamadi": 9
+   },
+   "FAALIYET": {
+    "kapanis-isareti-eksik": 1,
+    "ad-degisikligi": 1,
+    "tasinma-yeni-adres-yok": 1,
+    "resmi-sayfa-404": 1,
+    "tasinma-isareti": 1,
+    "yakinda": 3
+   },
+   "KATEGORI": {
+    "tur-kaynakta-yok": 1
+   },
+   "KAFE_POLITIKASI": {
+    "codex-karar-gerekli": 8
+   },
+   "POLITIKA": {
+    "platform-editoryal-dogrulanmamis": 3
+   },
+   "ERISIM": {
+    "kaynak-butunlugu": 1,
+    "http-403": 1
+   },
+   "KANIT_TAMAM_KARAR_BEKLIYOR": {
+    "ek3-sube_ayrimi": 1,
+    "ek3-tamamlandi": 2
+   }
+  },
+  "bayraklar": {
+   "kafe-politikasi": 151,
+   "kategori-belirsiz": 21,
+   "kapi-no-yok": 9,
+   "kamu-isletmeci": 4
+  }
+ },
+ "sayiAnlami": "kaynakTurleri.etkiAraligi ve kararTablosu.kayit grup büyüklüğüdür (etki üst sınırı); çözülecek kayıt sayısı ya da verim tahmini değildir.",
+ "kaynakTurleri": [
+  {
+   "kaynak": "Resmî şube sayfası / marka şube listesi",
+   "cozebilecegi": [
+    "ISLETMECI (şube sayfası yok)",
+    "BAGIMSIZ (şube düzeyi)"
+   ],
+   "etkiAraligi": 10,
+   "standartDurumu": "ÖNERİ — manifestlerde 'resmî şube listesi' resmî kaynak olarak kayıtlı; ancak bağımsız kaynağın yerini tutmaz. Standarda uygunluğu Codex kabulünde teyit edilmeli, varsayılmadı.",
+   "karar": "Codex teyidi"
+  },
+  {
+   "kaynak": "İşletmenin doğrulanmış resmî sosyal hesabı",
+   "cozebilecegi": [
+    "ISLETMECI",
+    "ISLETMECI_VE_BAGIMSIZ (yalnız işletmeci yarısı)"
+   ],
+   "etkiAraligi": 79,
+   "standartDurumu": "ÖNERİ — mevcut kural: Instagram tek başına kanıt değil; otomatik Instagram okuması bu hatta reddedildi. 'Doğrulanmış hesap' tanımı ve erişim yolu belirlenmeden kullanılamaz.",
+   "karar": "Harun"
+  },
+  {
+   "kaynak": "Belediye/kamu işletmeci kaydı (ör. İBB tesis sayfası)",
+   "cozebilecegi": [
+    "BAGIMSIZ (kamu işletmeli lokantalar)"
+   ],
+   "etkiAraligi": 4,
+   "standartDurumu": "ÖNERİ — İBB sayfası işletmecinin kendi kaynağıdır; bağımsız kaynak sayılıp sayılmayacağı belirsiz. İBB'nin üç şubesi dahil hiçbir kayıt bu plan nedeniyle kabul edilmedi.",
+   "karar": "Harun"
+  },
+  {
+   "kaynak": "Belediye işyeri ruhsatı / kamu sicili sorgusu",
+   "cozebilecegi": [
+    "BAGIMSIZ",
+    "ISLETMECI_VE_BAGIMSIZ",
+    "FAALIYET"
+   ],
+   "etkiAraligi": 621,
+   "standartDurumu": "ÖNERİ — işletmeden bağımsız kamu kaydı adres ve faaliyeti gösterebilir; ancak tarih (ruhsat tarihi eski olabilir), erişim (form/captcha aşılamaz) ve KVKK uygunluğu belirsiz. Denenmedi.",
+   "karar": "Harun (+ hukuk/erişim kontrolü)"
+  },
+  {
+   "kaynak": "Yeni yıl rehberleri (G&M 2027, MICHELIN 2027) yayımlandığında yerel toplu eşleştirme",
+   "cozebilecegi": [
+    "BAGIMSIZ",
+    "ISLETMECI_VE_BAGIMSIZ (bağımsız yarısı)",
+    "ADRES_SUBE (kapı güncellemesi)"
+   ],
+   "etkiAraligi": 635,
+   "standartDurumu": "Mevcut standarda uygun görünüyor (tarihli bağımsız kaynak); aynı rehberin iki yılı tek kaynak kuralı geçerli. Takvime bağlı, tek seferlik yerel birleştirme.",
+   "karar": "Karar gerekmez (yayın takvimi)"
+  },
+  {
+   "kaynak": "Yerel basın / açılış haberi",
+   "cozebilecegi": [
+    "BAGIMSIZ"
+   ],
+   "etkiAraligi": null,
+   "standartDurumu": "Mevcut standarda uygun (tarihli bağımsız); ancak #66'da 3 hedefli aramada sonuç 0. Toplu tur için verimsiz, yalnız belirli tetikleyiciyle.",
+   "karar": "Karar gerekmez"
+  },
+  {
+   "kaynak": "Rezervasyon / sipariş platformu",
+   "cozebilecegi": [
+    "POLITIKA",
+    "ISLETMECI_VE_BAGIMSIZ"
+   ],
+   "etkiAraligi": 3,
+   "standartDurumu": "Mevcut standartta bağımsız sayılmıyor; platform + editoryal istisnası #58'den beri DOGRULANMAMIS.",
+   "karar": "Harun (doğrudan teyit)"
+  },
+  {
+   "kaynak": "İşletmeyle doğrudan teyit (telefon/e-posta)",
+   "cozebilecegi": [
+    "ADRES_SUBE",
+    "FAALIYET",
+    "KIMLIK"
+   ],
+   "etkiAraligi": 39,
+   "standartDurumu": "Şu an yasak (işletmeye mesaj yok). Kanıt türü olarak da tanımlı değil.",
+   "karar": "Harun"
+  }
+ ],
+ "kararTablosu": [
+  {
+   "konu": "Kanıtı tamam, karar bekleyen 3 kayıt (Hamdi kapı çelişkisi, Az Çok Thai kategorisi, Şahan Ataşehir)",
+   "kayit": 3,
+   "kim": "Codex/Pilot kabulü",
+   "standartDegisir": false
+  },
+  {
+   "konu": "'Yakında' / taşınma beklemeleri için aynı resmî sayfanın tarihli yeniden kontrolü",
+   "kayit": 5,
+   "kim": "Araştırma (takvimli, tek istek)",
+   "standartDegisir": false
+  },
+  {
+   "konu": "Yeni rehber yılı yayımlanınca yerel toplu eşleştirme",
+   "kayit": 635,
+   "kim": "Araştırma (takvimli)",
+   "standartDegisir": false
+  },
+  {
+   "konu": "Araştırma eşleşmesi bulunamayan kayıtların yerel dal verisinden yeniden bağlanması",
+   "kayit": 9,
+   "kim": "Araştırma (yerel, ağ yok)",
+   "standartDegisir": false
+  },
+  {
+   "konu": "Erişim engeli / kaynak bütünlüğü kayıtları",
+   "kayit": 2,
+   "kim": "Bekletme sürer (403 aşılmaz)",
+   "standartDegisir": false
+  },
+  {
+   "konu": "Doğrulanmış resmî sosyal hesap işletmeci kaynağı sayılır mı; erişim yolu ne",
+   "kayit": 79,
+   "kim": "Harun",
+   "standartDegisir": true
+  },
+  {
+   "konu": "Kamu kaydı (belediye ruhsatı ya da kamu işletmeci sayfası) bağımsız kaynak sayılır mı",
+   "kayit": 4,
+   "kim": "Harun",
+   "standartDegisir": true,
+   "not": "Ruhsat sorgusu yolu seçilirse BAGIMSIZ havuzunun tamamını (573) etkileyebilir"
+  },
+  {
+   "konu": "Kapı numarası olmayan kompleks düzeyi adres (AVM katı, park girişi, site dükkânları) kabul edilir mi",
+   "kayit": 9,
+   "kim": "Harun",
+   "standartDegisir": true
+  },
+  {
+   "konu": "Platform + editoryal istisnası için doğrudan teyit",
+   "kayit": 3,
+   "kim": "Harun",
+   "standartDegisir": true
+  },
+  {
+   "konu": "Kafe/pastane yayın politikası",
+   "kayit": 8,
+   "kim": "Harun",
+   "standartDegisir": true,
+   "not": "Kanıt bekleyen kafelerin tamamı 151; canlı kafe sayısı 114 sabit"
+  },
+  {
+   "konu": "İşletmeyle doğrudan iletişime izin",
+   "kayit": 39,
+   "kim": "Harun",
+   "standartDegisir": true
+  },
+  {
+   "konu": "Kategori kuralı (börekçi, kahvaltıcı, meyhane/bar ayrımı)",
+   "kayit": 21,
+   "kim": "Harun/Codex",
+   "standartDegisir": true
+  }
+ ],
+ "oneri": [
+  "Aynı havuzda kayıt kayıt arama turu açılmasın: #66'da 19 kayıtta 0 tamamlanma; bağımsız kaynak havuzu (573) aramayla kapanmıyor.",
+  "Önce Harun kararları: sosyal hesap, kamu kaydı ve kompleks adres kararları en büyük grupları açar. Her karar için tek kural yazılıp toplu uygulanmalı.",
+  "Karar gerektirmeyen tek yüksek verimli kaldıraç takvimli yerel eşleştirme: G&M/MICHELIN yeni yılı yayımlanınca manifest bir kez yeniden birleştirilir.",
+  "'Yakında' ve taşınma beklemeleri için tek istekli tarihli yeniden kontrol yeterli; kayıt başına araştırma gerekmez.",
+  "Kabul havuzu yalnız kanıtı tamamlanmış kayıtlarla beslenir; plan hiçbir kaydı kabul etmez."
+ ],
+ "kayitlar": [
+  {
+   "anahtar": "sankai by nagaya|besiktas",
+   "kategori": "restoran",
+   "grup": "ERISIM",
+   "altGrup": "kaynak-butunlugu",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "saraykapi restoran|esenyurt",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sultan sark sofrasi|sultangazi",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "necdet usta sofrasi|gaziosmanpasa",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ihtiyar balikci restaurant|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "felek mangalbasi|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "konyali ferdi usta ortakoy|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "garden 1897 restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "saki balik|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "antakya restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "affan ocakbasi|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sirvan sofrasi restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ouzo roof restaurant|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kristal bufe goztepe|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kumkapi hos seda|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hukumran sofrasi|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "yuksel balik|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "balikosman restaurant|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "meyvali|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "camli kosk restaurant|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "avni baba|avcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sanliurfa gul|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mmy tantuni|bahcelievler",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "beykent saray sac tava|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "baykuru|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sosta restaurant mangalbasi|bahcelievler",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "aydinlar iskender|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "koftecibo|bahcelievler",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ayvaz doner iskender|bahcelievler",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ozel kofte|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bakirkoy koftecisi|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "anam manti|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "lagosbalik|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ercan steakhouse|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "the dubai et mangal|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gurem iskembe|silivri",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "meos balik|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cesmidil cafe restaurant|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kervan kasap restaurant|catalca",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sakli sofra|catalca",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kasaptan burger|gungoren",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bi tas corba|sultangazi",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mustakil 22 ocakbasi|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizza dio|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "adana kebapcisi davut usta|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mantigram|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zeki aslan kebap|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "besler soguk meze evi|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bursa garaj kebap|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sutis|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tarihi karakoy pilavcisi|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "yumm pizza|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "veranda pera|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zerafet ocakbasi|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizza grande|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "saskin balik efkanin yeri|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizza fabrique|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nur abla karadeniz supper|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "urfa dan kebapci|kagithane",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "esto restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "park adana et kebap|cekmekoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kiraca balik lokantasi|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tarihi iskender kebapcisi|bayrampasa",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "faroz pide ve akcaabat kofte salonu|kartal",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tarihi degustasyon ocakbasi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "durum sarayi|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "donerci ahmet usta|sancaktepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "beykoz pide ve borek salonu|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sisore|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "celtik kebab and lahmacun|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kaplan kebap|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "balikcimiz hasan avci|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "rakofoli restaurant|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hasan usta kebap|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "karisma sen balik|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hayat cihangir|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kipos balik|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tarihi cumhuriyet meyhanesi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kadikoy midyecisi|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "maksat ocakbasi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "brand burger maltepe|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "meylihane meyhane|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "birlik kasap steakpoint|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "fatih namli durum|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kackar yoresel lezzetler|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "munhasir garden doner kebap|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "yavuzbey iskender|sancaktepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "lenza balik restoran|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "rota erzurum cag kebap|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "konyali meshur pilavci|kagithane",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gul urfa|bayrampasa",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "lotus restaurant home|sile",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "titiz lokantasi|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kebbabi kebap|zeytinburnu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bi ciger bi kebap|kartal",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ziyade fasil|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "orjinal bafra pide|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "karacabey kebap kunefe maltepe|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "erzurum cag kebabi celal usta|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mardin mutfagi|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "koylum manti evi|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "aleni yeni nesil meyhane|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mest balik restaurant|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mece balik ve kahvalti|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "filika sariyer|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sehla zamanin meyhanesi|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "foca balik kucukyali|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "wood kebap|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zeynep kamil kokorec recep usta|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ikaria fish restaurant|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "guvenbey doner|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "aydogdu restaurant|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bulbultepe kahvalti ve balik|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kosk et kebap|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "durum molasi bayrampasa doner|bayrampasa",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizzeria positano|cekmekoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cihangir ocakbasi|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "eski babel ocakbasi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "aheste et balik|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "egeli meyhane|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "lale iskembecisi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "oishii wok sushi|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "latife doner|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sefahat yeni nesil meyhane|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "perihan meyhane|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "peymane|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "anzelem et kebap|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "visneli meyhane|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "arafat kofte|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "en baba kebab|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "lokanta lobi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gozde kebap gaziantep mutfagi|bahcelievler",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "karakoy sarihan iskembe|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kiliza kebap|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bymuzaffer besiktas|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "durumcu mahsun usta|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pleasure terrace roof restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bagdat ocakbasi|gungoren",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "antique pizzeria|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "miyabi sushi ve japanese grill bar|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "olive anatolian restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "todori fenerbahce|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "keyif nevizade|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "doner plus|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "maranda doner|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kiva galataport|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pideban sariyer|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hattad doner|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "route burger house karakoy|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "molto bene galata|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "rumeli kale cafe restaurant|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pera thai|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kolcuoglu bomonti ocakbasi kebap|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "manerita manti|sancaktepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "seyid usta|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hayalmest meyhanesi bostanci|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "babacan et lokantasi|silivri",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "niyokki makarna piazza avm|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mekan kozde doner|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "muhlama|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cigerhane florya|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sirke mutfak|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "umit usta tarihi adana metrelik kebap|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "lider doner|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "villa cello istanbul|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "amcabey doner|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizano pizzeria|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "rosario|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tarihi merkezefendi koftecisi ahmet usta|zeytinburnu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "konyali kosk|gaziosmanpasa",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pepo s galata|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kenan usta ocakbasi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kokorecci ugur|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "saafi doner|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "forsa balik restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nevazen turk mutfagi|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bence tantuni|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sayla manti|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bi yer et kebap|cekmekoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "calisto balik|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "il cortile|beyoglu",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-celiskisi",
+   "dayanak": "#65",
+   "ek2AltDurum": "adres-celiskisi",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bafra pidecisi|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nedim usta cag kebap|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "karaf et kebap|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tepe balik restaurant sariyer|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zekibey iskender|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tarihi saray pide evren|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sait|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "dragos balik|kartal",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sini et balik restaurant|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "afgan kebap|esenyurt",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kocaman restaurant|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "maide turk mutfagi|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nefis et|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hansaray iskender|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bilican kebap|sultangazi",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zahter tepsi et and kebap|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "green house restaurant|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kebapci tevfik usta|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "halim et kahvalti|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tella kebap|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sultanahmet corbacisi|kartal",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "filika meyhane|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "olden 1545|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sadakatsiz yeni nesil meyhane|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tarihi diyarbakir cigercisi|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "arnavutkoy nokta tesisleri|arnavutkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "resat efendi|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "beyafi kasap doner|kagithane",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "casa mamma|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sevic restoran|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "anzer sofrasi|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mevlana pide|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "comlek kuru fasulye|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "dafni atesbasi|uskudar",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "sokak-celiskisi",
+   "dayanak": "#65",
+   "ek2AltDurum": "adres-celiskisi",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kavacik balikcisi|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "limanda balik restaurant|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "turkan meyhanesi|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "katoniki|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mutabik restaurant|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kalbur|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tadi bafra|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "chacha balik|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "karina balik|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "senol kolcuoglu|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "lezafet kebap izgara|kartal",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "filizler koftecisi|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "meat meet|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "babel ocakbasi nevizade|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "asitane|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "firuzende|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mylos ayvalik cunda mutfagi|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ora s steak burger|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ozgun kokorec|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "burger sausage|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "murat kebap|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "valibey kebap kunefe|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "patlican cafe ev yemekleri|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "vegan masa|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gonen rooftop ocakbasi terrace restaurant roof bar|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "haso ocakbasi karakoy|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "corbaci gada|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizza v kucukbakkalkoy|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "donerci hamit efendi|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "karadeniz mutfagi erol usta efulim cayeli kuru fasulye|gungoren",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kebap dunyasi|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cekmekoy sinop manti|cekmekoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kazanci iskembe|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "usul doner|silivri",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kilisli yasar usta|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "etci mehmet burger yakuplu|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ayvaz burger|bahcelievler",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "akali mall of istanbul|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "adres-celiskisi",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "doga manti evi|kagithane",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hasel doner|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zeffirino istanbul|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "antep kuzu tava lahmacun|kagithane",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hbs antakya ocakbasi restoran atasehir|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "turkahvalti|kagithane",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sivekar bahcesehir|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "durumcu esnaf tuzla|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pergeli restoran|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ozzie s 1968 den beri|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kebo mahmutbey|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "balikci nevzat|silivri",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "satirdan lahmacun serifali atasehir|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "moana by belmira restaurant|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mahmut usta|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "beyoglu esnaf lokantasi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "endless pizza istanbul pendik|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "saye ocakbasi|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "seferbey doner|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kebapci etiler|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "chinese life|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kolcuoglu nisantasi|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "octo pizza suadiye|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "thai nepal kitchen|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizza pico|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cesme bazlama kahvalti nisantasi 1|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nezaf et lokantasi|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ekrem coskun doner|kagithane",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "laamaacuun|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sentez rooftop restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kahvalti naga putrika|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "odun atesi bostanci|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pera doner beyoglu|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "donerci ali usta|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "suat usta mersin tantuni|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "durak pide|kartal",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kucukyali balikcisi|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "okkes demir usta|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "burger zmash|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pileki pide|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizzeria capra|cekmekoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bi iskembe halkali|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kalinka|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hasan ustam barbecue restaurant|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kosuyolu kebap|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tutsu by duvee|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "esenler pide lahmacun ve doner salonu|esenler",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "emek restaurant|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kagithane gece donercisi|kagithane",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "jaa jaa grill maslak 1453|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nur abla karadeniz sofrasi|cekmekoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sushi lab|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sushico|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cluster|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "seafront lounge rooftop restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "chez moi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "set balik lokantasi|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tatmix doner|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "palukcu|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "burger blast umraniye finans sehir|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mato et restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "yildiz saray kebap ve tatli salonu|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "doner agaci|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kebapci murat|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pisikoy|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "la pitsa|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "say cheese moda|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gina|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "dayi kurek lahmacun|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "akar selale park|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "clove restaurant|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "dede ahmet kebap|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "digma restaurant|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "afiyet et kasap izgara|umraniye",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "patlican polonezkoy|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pamera garden|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "degirmen park|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "atiye bebek|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "uzun yayla doner|tuzla",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "dereli vadi resturant ve piknik alani|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kalia bahce kir bahcesi ve restoran|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mesa country|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "koza garden|beykoz",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "feraye|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "agabeyin turk mutfagi|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "asmali bahce|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kebapci asker usta|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "palet balikcil|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gunay konyali|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "purtelas ocakbasi|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pad thai cihangir|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "asia lounge|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hr italy karakoy|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kosuyolu manti|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kaf cafe restoran|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "city teras|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kumiko sushi more|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "elmasoglu manti|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "peyre galata|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sabina nin kahvalti bahcesi|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "crispy asian|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "only breakfast|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "azure the bosphorus|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizza zero|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "erkonyalilar|maltepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "durumcu emmi|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "burgerillas|cekmekoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "n evet istanbul rooftop restaurant roof bar|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "burgerlab steak and burger|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bigchefs|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "betro burger kadikoy|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "house of medusa restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "flamingo koy|catalca",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "akdogan pasta kebap restoran|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "haz kebap|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "har kanat bahcesehir|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "dogakoyu catalca|catalca",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "fego food|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bizee restaurant|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "modena steak kebap fish house|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tella kebap bahcekent|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tenedos gokturk|eyupsultan",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "the grungy|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ruwa coffee|kartal",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "citir kahve|uskudar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "altinelek pastanesi|atasehir",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bohoco|uskudar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "port of black coffee sandwich|sariyer",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bosnian borek|pendik",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "mums|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "beacon ist|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cumbali kahve|fatih",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "nev i cafe|fatih",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "mare mosso coffee|fatih",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "kanca kafe|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "hide arnavutkoy|besiktas",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "gallant galata|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "hector louis coffee|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "balaban dondurma profiterol|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "mado|buyukcekmece",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "flan bakery coffee|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "coffee gutta|fatih",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "polo pastanesi|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "asi kunefeleri kadikoy|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "moc osmanbey|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "fiyeli coffee|besiktas",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "muslum pasa kunefe|avcilar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "akmanoglu firini|eyupsultan",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "sardan dondurma|kucukcekmece",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "gostivar dondurma|beykoz",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "tahil pasta cafe|tuzla",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "oklava pastanesi|bahcelievler",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "gaziantepli kunefeci niyo|bahcelievler",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "en has dondurma|kucukcekmece",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "unaski pasta cafe merter|gungoren",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "nova beans coffee|catalca",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "neves baklava soguk kadayif|bagcilar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "vasla coffee roastery|kagithane",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "mila kurabiyka|bayrampasa",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "anisah coffee|esenyurt",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "chill coffee more|bahcelievler",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "stabil kahve|esenler",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "le petit moulin|bakirkoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "korner kafe|avcilar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "dilek pastanesi 5 etap|basaksehir",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cevre pastaneleri|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "camlik ekmek firini|maltepe",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "saatli firin|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "coffee venga|sancaktepe",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "agababa kadayif|umraniye",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "mihman pasta cafe|maltepe",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bag pastaneleri|sancaktepe",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "tatbaba kafe|beylikduzu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "huseyinoglu baklava atakent|umraniye",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "baklavaci muslum polat|sancaktepe",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bakeryfab coffee|bakirkoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "creamchocco yesilkoy|bakirkoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "kahveci kardesler|pendik",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bay bread|umraniye",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "orhan kiratli baklava esenyurt|esenyurt",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "birinci tatli|umraniye",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "baldo organik dondurma|umraniye",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "gourme coffee|bagcilar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "kahve ambari|umraniye",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "tukkan karakoy|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "voice of coffee|bakirkoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "kandilli pastanesi|uskudar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "suadiye nazar profiterol|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "coffee hour florya|bakirkoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "brema kahve|atasehir",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "patisserie idylle|atasehir",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "om coffee more|maltepe",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "off the record|uskudar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "yenikoy kahvecisi|sariyer",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bret artisan bakery|uskudar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cochet patisserie|bakirkoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "sayinlar firin|uskudar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "artesso coffee|sariyer",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "gofi house coffee house eatery|uskudar",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "pop up coffee tr|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "thegranma food coffee|maltepe",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "nuga|maltepe",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cafe cambridge|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "moonberry coffee|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "beyazpark kafe|sariyer",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "caffe diverso|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "molecule coffee|besiktas",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "aum pasta cafe|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "khaldi coffee|fatih",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "dukkan anteke|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "mesela coffee|sariyer",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "saint martin istanbul|sariyer",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "recon coffee|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cihan pastanesi|besiktas",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "mugab baklava pendik|pendik",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "sayan baklava|besiktas",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "fuga coffee|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "reset coffee bakery|umraniye",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "but first coffee|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "gonul kahvesi|sultanbeyli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "susam cafe|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cafe firuz|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "hub962 karakoy|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cafe kazanci|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "pastanbul|sariyer",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "fm kahve|atasehir",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "likya coffee|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "olifantes|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "haha kafe|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "drinkee coffee roastery|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "fermente|besiktas",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "pasifik pastanesi|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cafe avanti|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "vaa coffee|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "harman coffee matcha shop|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "ancre istanbul specialty coffee|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cafe obscura|fatih",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "marchi nisantasi|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "lunqa coffee|pendik",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "kosebasi|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "metet|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "serbethane|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tamara restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pokemate|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "burger yiyelim|eyupsultan",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cotto gastro|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "vegan masa|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sahan|kadikoy",
+   "kategori": "restoran",
+   "grup": "KANIT_TAMAM_KARAR_BEKLIYOR",
+   "altGrup": "ek3-sube_ayrimi",
+   "dayanak": "#65",
+   "ek2AltDurum": "adres-celiskisi",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizza locale|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cesme bazlama kahvalti nisantasi|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "doner bank kapali carsi|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kaizen ramen erenkoy|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "limos cafe|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zucca pizza|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "the local grill|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sofa erzurum cag kebabi bagcilar|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cagdas ev yemekleri ve izgara salonu|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "selmika|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "vintage burger|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "basaksehir intiba doner|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "etci mehmet burger beykent|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "limon kahvalti galata|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "the burger company|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kovada manti besiktas|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "beylerbeyi pizza italian|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "maydonoz doner silivri|silivri",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "boga steakhouse koru|catalca",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kiva bomonti|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "heybet doner express atakent|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "the new yorker pizza cadde|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tella kebap atakent|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "careme restaurant|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "divan brasserie bebek|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "dubb kebab restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mezzaluna|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sur balik sarayburnu|fatih",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "emporio ristorante|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "frango bakirkoy|bakirkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "doyuyo|esenyurt",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tasfirin pide doner evi|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mert manti|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bereket doner hadimkoy|arnavutkoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "norm pizza|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hi italia pasta restaurant rooftop|beyoglu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mr hamza plus|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "barto s burger place|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "naomi sushi bar|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "il sorrisino|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "koz kanat|atasehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "coffee moj art|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "vinyl and coffee|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "zarifzade baklava ve dondurma|basaksehir",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bethon coffee bakery|kartal",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "ikram borek|esenler",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "rota istanbul cafe restaurant|kucukcekmece",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "begendi cafe restaurant|gaziosmanpasa",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "diamond coffee|bahcelievler",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "cassa 1836|beyoglu",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "kanlica teras|beykoz",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "yagcioglu pastanesi|kucukcekmece",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "efsycoffee|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "babazade baklava erenkoy|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "donuts coffee house|atasehir",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bulvar patisserie|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "zeron bakery|besiktas",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "raw cafe and kitchen|kadikoy",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bozkaya baklavalari hasan bozkaya|umraniye",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "lilu co|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "morniva tr|besiktas",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "ron cafe|sisli",
+   "kategori": "kafe",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "parle|besiktas",
+   "kategori": "belirsiz",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": [
+    "kategori-belirsiz",
+    "kapi-no-yok"
+   ]
+  },
+  {
+   "anahtar": "the levant tahinier|zeytinburnu",
+   "kategori": "kafe",
+   "grup": "KAFE_POLITIKASI",
+   "altGrup": "codex-karar-gerekli",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "az cok thai|beyoglu",
+   "kategori": "belirsiz",
+   "grup": "KANIT_TAMAM_KARAR_BEKLIYOR",
+   "altGrup": "ek3-tamamlandi",
+   "dayanak": "#65",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "zula|sisli",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "eski-kayit-kaniti",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "lipa pendik|pendik",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eksik-kimlik",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zaaf|besiktas",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "yenikoy balikcisi|sariyer",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "yediden|sariyer",
+   "kategori": "restoran",
+   "grup": "FAALIYET",
+   "altGrup": "kapanis-isareti-eksik",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-kapanis-isareti",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "vakko l atelier nisantasi|sisli",
+   "kategori": "kafe",
+   "grup": "ISLETMECI",
+   "altGrup": "sube-sayfasi-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "eskiyer restaurant|sariyer",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "papalina|bakirkoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "toro latin gastro istanbul|sariyer",
+   "kategori": "restoran",
+   "grup": "ERISIM",
+   "altGrup": "http-403",
+   "dayanak": "#66",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "the red balloon|sariyer",
+   "kategori": "belirsiz",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "tere|beyoglu",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "aliee istanbul taste by thomas buhner|beyoglu",
+   "kategori": "restoran",
+   "grup": "FAALIYET",
+   "altGrup": "ad-degisikligi",
+   "dayanak": "#66",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "tam ocakbasi|besiktas",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eski-kayit-kaniti",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sushi barba|sariyer",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kapi-no-yok"
+   ]
+  },
+  {
+   "anahtar": "sushi manga|eyupsultan",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eksik-kimlik",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sofram balik restaurant|silivri",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "adres-celiskisi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "strada by cafe cadde|kadikoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eski-kayit-kaniti",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sayfiye|bakirkoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pizza emirgan|sariyer",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "adres-celiskisi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "palude restaurant|zeytinburnu",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "sube-kimligi",
+   "dayanak": "#66",
+   "ek2AltDurum": "eksik-kimlik",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "otto bite|basaksehir",
+   "kategori": "kafe",
+   "grup": "KAFE_POLITIKASI",
+   "altGrup": "codex-karar-gerekli",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "brasserie noir|kadikoy",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "adres-celiskisi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nazende cadde|kadikoy",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "natolia istanbul|basaksehir",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kapi-no-yok"
+   ]
+  },
+  {
+   "anahtar": "mykorini istanbul|beyoglu",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-celiskisi",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "myk restoran|bakirkoy",
+   "kategori": "belirsiz",
+   "grup": "ADRES_SUBE",
+   "altGrup": "adres-celiskisi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "morini|besiktas",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "monteverdi ristorante|besiktas",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "masa restaurant|sariyer",
+   "kategori": "belirsiz",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "catch|kadikoy",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "adres-celiskisi",
+   "dayanak": "#66",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "maromi|beyoglu",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "madam despina|sisli",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "adres-celiskisi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "la boom|sariyer",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kubbeli lounge pera palace hotel|beyoglu",
+   "kategori": "kafe",
+   "grup": "KAFE_POLITIKASI",
+   "altGrup": "codex-karar-gerekli",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "kruton|sisli",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kiff|besiktas",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kendime istanbul|kadikoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kaen sushi|kadikoy",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "husrev lokantalari|besiktas",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "ilce-celiskisi",
+   "dayanak": "#66",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hodan|beyoglu",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "adres-celiskisi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hamdi restaurant|fatih",
+   "kategori": "restoran",
+   "grup": "KANIT_TAMAM_KARAR_BEKLIYOR",
+   "altGrup": "ek3-tamamlandi",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gunaydin kebap restoran|besiktas",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gun lokantasi|beyoglu",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "gram restaurant|sariyer",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gou society|kadikoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "frankie|beyoglu",
+   "kategori": "belirsiz",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": [
+    "kategori-belirsiz",
+    "kapi-no-yok"
+   ]
+  },
+  {
+   "anahtar": "frankie bar|beyoglu",
+   "kategori": "belirsiz",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": [
+    "kategori-belirsiz",
+    "kapi-no-yok"
+   ]
+  },
+  {
+   "anahtar": "foxy nisantasi|sisli",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "five o clock|besiktas",
+   "kategori": "kafe",
+   "grup": "KAFE_POLITIKASI",
+   "altGrup": "codex-karar-gerekli",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "filo d olio caddebostan by danilo zanna|kadikoy",
+   "kategori": "restoran",
+   "grup": "FAALIYET",
+   "altGrup": "tasinma-yeni-adres-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "fauchon paris|besiktas",
+   "kategori": "kafe",
+   "grup": "KAFE_POLITIKASI",
+   "altGrup": "codex-karar-gerekli",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "efendy|besiktas",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cova|sariyer",
+   "kategori": "kafe",
+   "grup": "KAFE_POLITIKASI",
+   "altGrup": "codex-karar-gerekli",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "chalet|besiktas",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "nisantasi beymen brasserie|sisli",
+   "kategori": "restoran",
+   "grup": "FAALIYET",
+   "altGrup": "resmi-sayfa-404",
+   "dayanak": "#66",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "baylan bebek|besiktas",
+   "kategori": "kafe",
+   "grup": "KAFE_POLITIKASI",
+   "altGrup": "codex-karar-gerekli",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "basta neo bistro|kadikoy",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "balikci kahraman|sariyer",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "balat sahil restoran|fatih",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "apartiman yenikoy|sariyer",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "ali ocakbasi|besiktas",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "akbabali meyhane|beyoglu",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "adres-celiskisi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ahmet ustam ocakbasi|sariyer",
+   "kategori": "belirsiz",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "adana ocakbasi kurtulus|sisli",
+   "kategori": "restoran",
+   "grup": "FAALIYET",
+   "altGrup": "tasinma-isareti",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "7mila|fatih",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hamdi restaurant sisli|sisli",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "baylan galataport|beyoglu",
+   "kategori": "kafe",
+   "grup": "KAFE_POLITIKASI",
+   "altGrup": "codex-karar-gerekli",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-onceki-bekletme",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "baylan kadikoy|kadikoy",
+   "kategori": "kafe",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "eski-kayit-kaniti",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "white burger galataport|beyoglu",
+   "kategori": "restoran",
+   "grup": "FAALIYET",
+   "altGrup": "yakinda",
+   "dayanak": "#66",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger finanskent|umraniye",
+   "kategori": "restoran",
+   "grup": "FAALIYET",
+   "altGrup": "yakinda",
+   "dayanak": "#66",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger marmara park|esenyurt",
+   "kategori": "restoran",
+   "grup": "FAALIYET",
+   "altGrup": "yakinda",
+   "dayanak": "Codex",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger pendik|pendik",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "#65",
+   "ek2AltDurum": "codex-bekletme",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger basaksehir|basaksehir",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "tek-kaynak",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger uskudar|uskudar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "tek-kaynak",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger yenikoy|sariyer",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "tek-kaynak",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger kadikoy|kadikoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "tek-kaynak",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger beylikduzu|beylikduzu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "tek-kaynak",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "white burger besiktas|besiktas",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "sube-duzeyi-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "tek-kaynak",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "orman kahvesi cafe restoran|cekmekoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kamuran cikolata tatli kahvalti|cekmekoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "peride|cekmekoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nesve cekmekoy|cekmekoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "fatma bacinin yeri|cekmekoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "fasuli garden cekmekoy|cekmekoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kibris yore evi|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "geppetto|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "madame s eat drink more|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "bablean|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sahil cafe 1a|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "mazzaya lounge|buyukcekmece",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "alacati gurme i ala|basaksehir",
+   "kategori": "restoran",
+   "grup": "POLITIKA",
+   "altGrup": "platform-editoryal-dogrulanmamis",
+   "dayanak": "#58/#63",
+   "ek2AltDurum": "kanit-politikasi-dogrulanmamis",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "yaseminli bahce|basaksehir",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "caki restoran|basaksehir",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#65",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": [
+    "kapi-no-yok"
+   ]
+  },
+  {
+   "anahtar": "basak cafe restaurant|basaksehir",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kapi-no-yok"
+   ]
+  },
+  {
+   "anahtar": "cafe sultanahmetli|basaksehir",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "natolia|basaksehir",
+   "kategori": "restoran",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "defne bahcesi|basaksehir",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "fes cafe|silivri",
+   "kategori": "restoran",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kiyi beach cafe|silivri",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hayat bahcem|silivri",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "uskup restaurant cafe|silivri",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "acarpark restaurant|silivri",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "grandma s wonderland|silivri",
+   "kategori": "restoran",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "karaca at ciftligi|silivri",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sare tantuni|avcilar",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "meshur balkan tulumba ve dondurma|eyupsultan",
+   "kategori": "kafe",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kafe-politikasi",
+    "kapi-no-yok"
+   ]
+  },
+  {
+   "anahtar": "meshur rumeli tulumbacisi|bayrampasa",
+   "kategori": "kafe",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "bado babadostu cag kebap|bahcelievler",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "van kahvalti lounge beylikduzu|esenyurt",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pierre loti tepesi turistik tesisleri|eyupsultan",
+   "kategori": "restoran",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "koner etli ekmek|sultangazi",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kalpakchi cafe store|bahcelievler",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sirdanci guney adana|zeytinburnu",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "konak iskembe kelle paca|bagcilar",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sirdanci dayi|kucukcekmece",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sirdanci remzi|esenyurt",
+   "kategori": "restoran",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sirdanci mehmet|zeytinburnu",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gurme mardin|bahcelievler",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pasa konagi cag kebap|kartal",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "zambak bosnak borekcisi|bayrampasa",
+   "kategori": "restoran",
+   "grup": "KATEGORI",
+   "altGrup": "tur-kaynakta-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-1",
+   "bayraklar": [
+    "kategori-belirsiz"
+   ]
+  },
+  {
+   "anahtar": "prava pita bosnak borekcisi|bayrampasa",
+   "kategori": "restoran",
+   "grup": "ISLETMECI",
+   "altGrup": "editoryal-var-isletmeci-yok",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "pita cafe bosnak boregi|avcilar",
+   "kategori": "kafe",
+   "grup": "POLITIKA",
+   "altGrup": "platform-editoryal-dogrulanmamis",
+   "dayanak": "#58/#63",
+   "ek2AltDurum": "kanit-politikasi-dogrulanmamis",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "meshur yayla kokoreccisi|bahcelievler",
+   "kategori": "restoran",
+   "grup": "POLITIKA",
+   "altGrup": "platform-editoryal-dogrulanmamis",
+   "dayanak": "#58/#63",
+   "ek2AltDurum": "kanit-politikasi-dogrulanmamis",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "seraf restaurant|bagcilar",
+   "kategori": "restoran",
+   "grup": "KIMLIK",
+   "altGrup": "arastirma-eslesmesi-bulunamadi",
+   "dayanak": "#58",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-3",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cigerci usta|bahcelievler",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "gaziantepli altinoglu baklavalari|kartal",
+   "kategori": "kafe",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "tek-tarihli-editoryal",
+   "dayanak": "#56/#58",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": [
+    "kafe-politikasi"
+   ]
+  },
+  {
+   "anahtar": "kutuk ev cafe restaurant|bahcelievler",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hollywood cafe|bahcelievler",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "big house|bahcelievler",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kanatci haydar|bahcelievler",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "balikci ersin|bahcelievler",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cakir menemen cumali cakir|bagcilar",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "sivas evi sukru usta|bagcilar",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "cotanak pide|bagcilar",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "nohut durumcu hamo nun yeri|gungoren",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "hizmet kardesler firinli kasap|cekmekoy",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "kebapci cetin usta|gungoren",
+   "kategori": "restoran",
+   "grup": "ISLETMECI_VE_BAGIMSIZ",
+   "altGrup": "kaynak-12-aydan-eski",
+   "dayanak": "#56",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ahmet usta tarihi merkezefendi koftecisi|zeytinburnu",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#56",
+   "ek2AltDurum": "bagimsiz-kaynak-yok",
+   "bayraklar": null
+  },
+  {
+   "anahtar": "ibb cirpici kent lokantasi|zeytinburnu",
+   "kategori": "restoran",
+   "grup": "ADRES_SUBE",
+   "altGrup": "kapi-no-yok-kompleks",
+   "dayanak": "#66",
+   "ek2AltDurum": "ek1-belirsiz-oncelik-2",
+   "bayraklar": [
+    "kapi-no-yok",
+    "kamu-isletmeci"
+   ]
+  },
+  {
+   "anahtar": "ibb silivri kent lokantasi|silivri",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eksik-faaliyet",
+   "bayraklar": [
+    "kamu-isletmeci"
+   ]
+  },
+  {
+   "anahtar": "ibb sarigazi kent lokantasi|sancaktepe",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eski-kayit-kaniti",
+   "bayraklar": [
+    "kamu-isletmeci"
+   ]
+  },
+  {
+   "anahtar": "ibb cekmekoy kent lokantasi|cekmekoy",
+   "kategori": "restoran",
+   "grup": "BAGIMSIZ",
+   "altGrup": "resmi-var-bagimsiz-yok",
+   "dayanak": "#66",
+   "ek2AltDurum": "eski-kayit-kaniti",
+   "bayraklar": [
+    "kamu-isletmeci"
+   ]
+  }
+ ]
+}
