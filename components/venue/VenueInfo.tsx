@@ -10,6 +10,9 @@ export function trHours(h: string): string {
     .replace(/\bPH\s+(closed|off)\b/gi, "resmî tatillerde kapalı")
     .replace(/\b(closed|off)\b/gi, "kapalı")
     .replace(/\s*;\s*/g, " · ")
+    /* aynı günün iki servisi: "12:00-15:00,18:00-02:00" → "12.00–15.00, 18.00–02.00" (mobilde doğru kırılsın) */
+    .replace(/(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})/g, "$1–$2")
+    .replace(/,\s*(?=\d)/g, ", ")
     .replace(/(\d{2}):(\d{2})/g, "$1.$2");
 }
 

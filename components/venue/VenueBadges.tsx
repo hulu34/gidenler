@@ -28,7 +28,7 @@ export function VenueBadges({ entityId }: { entityId: string }) {
 /* Gerçek mekân, henüz deneyim yok: puan uydurulmaz; ilk deneyime çağrı. */
 const QUICK = "inline-flex h-11 items-center rounded-[3px] border border-line-2 px-3.5 text-[14px] font-semibold hover:border-ink";
 
-export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredFrom = null, confidence = null, mapsUrl, hasMenu = false }: { mapsUrl?: string; hasMenu?: boolean; entity: Entity; reviewCount?: number; score?: number | null; scoredFrom?: number | null; confidence?: string | null }) {
+export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredFrom = null, confidence = null, mapsUrl, hasMenu = false, hasReservationInfo = false }: { mapsUrl?: string; hasMenu?: boolean; hasReservationInfo?: boolean; entity: Entity; reviewCount?: number; score?: number | null; scoredFrom?: number | null; confidence?: string | null }) {
   return (
     <div className="flex flex-col gap-3 border-l-2 border-pos pl-4">
       {score !== null ? (
@@ -47,6 +47,8 @@ export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredF
       <div className="flex flex-wrap items-center gap-2">
         <Link href={`/yaz/${entity.slug}/`} className="inline-flex h-11 items-center rounded-[3px] bg-accent px-4 text-[14px] font-semibold text-on-accent">Deneyim yaz</Link>
         {hasMenu && <a href="#menu" className={QUICK}>Menü</a>}
+        {/* işletmenin kendi rezervasyon yolu (profil bilgisi); Gidenler rezervasyon almaz, bu yüzden "rezervasyon yap" denmez */}
+        {hasReservationInfo && <a href="#bilgi" className={QUICK} data-aksiyon="rezervasyon-bilgisi">Rezervasyon bilgisi</a>}
         {mapsUrl && <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={QUICK} data-aksiyon="harita">Haritada aç</a>}
         {entity.contact?.phone && <a href={`tel:${entity.contact.phone.replace(/[^+\d]/g, "")}`} className={QUICK} data-aksiyon="ara">Ara</a>}
         {/* yalnız bağlantı denetiminden geçen (çalışan) web sitesi; rezervasyon sağlayıcısı olmadığı için "rezervasyon yap" denmez */}
