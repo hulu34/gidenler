@@ -19,6 +19,7 @@
     "test:toplu-teslim-ek2": "tsx scripts/arastirmatopluteslimek2test.ts",
     "test:toplu-teslim-ek3": "tsx scripts/arastirmatopluteslimek3test.ts",
     "test:toplu-teslim-ek4": "tsx scripts/arastirmatopluteslimek4test.ts",
+    "test:engel-plani": "tsx scripts/arastirmaengelplanitest.ts",
     "test:arama": "tsx scripts/aramatest.ts",
     "test:anasayfa": "tsx scripts/anasayfatest.ts",
     "test:seo": "tsx scripts/seotest.ts",
