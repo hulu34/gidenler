@@ -4,12 +4,12 @@
     "productionTotal": 876,
     "productionActive": 841,
     "productionActiveRestaurant": 716,
-    "acceptedCandidates": 2,
+    "acceptedCandidates": 3,
     "previewAdded": 0,
     "newProductionRecords": 0,
-    "targetTotal": 878,
-    "targetActive": 843,
-    "targetActiveRestaurant": 718,
+    "targetTotal": 879,
+    "targetActive": 844,
+    "targetActiveRestaurant": 719,
     "activeCafe": 114,
     "activeBar": 11,
     "closed": 35
@@ -86,6 +86,29 @@
           }
         ]
       }
+    },
+    {
+      "candidateKey": "az cok thai|beyoglu",
+      "slug": "az-cok-thai-beyoglu",
+      "name": "Az Çok Thai",
+      "district": "Beyoğlu",
+      "address": "Kuloğlu Mahallesi, Ağa Külhani Sokak No:12/A, Beyoğlu",
+      "categoryId": "cat.restaurant",
+      "kind": "Asya mutfağı",
+      "officialSource": "https://azcokthai.com/tr/homepage-turkce/",
+      "officialSources": [
+        "https://azcokthai.com/tr/homepage-turkce/",
+        "https://azcokthai.com/food/"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/az-cok-thai/",
+      "independentDate": "2025-12-25",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "researchPr": 70,
+      "researchSha": "73a07d5c06371414ced3254be277de732186d8e0",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false,
+      "note": "PR70 kategori önerisi, resmî Türkçe sayfadaki restoran öz tanımı ve öğle/akşam servisiyle Codex tarafından bağımsız doğrulandı. G&M sayfası da gerçek tarayıcıda tarih/adres/tür eşleşmesiyle açıldı. Kafe atmosferi işletme türü sayılmadı. Başarısız otomatik web fetch yerine gerçek tarayıcı sonucu kullanıldı. Yalnız olgusal kimlik/adres/kategori; rehber metni, puan, görsel, menü veya ödül aktarılmadı."
     }
   ],
   "sourceDelivery": {
@@ -100,16 +123,12 @@
   },
   "holds": [
     {
-      "candidateKey": "az cok thai|beyoglu",
-      "decision": "KATEGORI_KARARI_BEKLIYOR",
-      "reason": "PR65 kimlik/adres/telefon eşleşmesini tamamladı; café setting ifadesine karşı öğle/akşam Thai yemek servisi var. Bu birleşik restoran paketinde kategori kararı verilmiş varsayılmadı. Bu tur resmî site web aracında zaman aşımı; yeni erişim başarısı iddia edilmez.",
-      "evidenceStatus": "TAMAMLANDI"
-    },
-    {
       "candidateKey": "hamdi restaurant|fatih",
       "decision": "ADRES_CELISKISI_KAPANMADI",
-      "reason": "Resmî site ve G&M No11 desteği var; önceki No17 kaynakları yeniden karşılaştırılmadı. PR65 tamamlandı etiketi eski çelişkiyi kendiliğinden kapatmaz. Resmî5280390 ve G&M5280930 telefonları farklı; aktarılmaz.",
-      "evidenceStatus": "TAMAMLANDI"
+      "reason": "PR70: resmî site ve G&M No11, Time Out (10.04.2024) ve Falstaff (adres alanı tarihsiz) No17. Falstaff sayfa tarihi 21.10.2026 olduğundan eski sayılmaz. Eski numara/ikinci giriş/yazım hatası kanıtlanmadı; telefon 5280390 ile 5280930 farklı. Bu paket Hamdi içermez.",
+      "evidenceStatus": "BEKLIYOR",
+      "researchPr": 70,
+      "researchSha": "73a07d5c06371414ced3254be277de732186d8e0"
     },
     {
       "candidateKey": "sahan|kadikoy",
@@ -275,14 +294,22 @@
     }
   ],
   "currentResearchEntry": {
-    "pr": 69,
-    "sha": "750f4cdeb7ed57c378bd9d5f0d00c7e3e4b73456",
+    "pr": 70,
+    "sha": "73a07d5c06371414ced3254be277de732186d8e0",
     "path": "data/arastirma/toplu-teslim/guncel-durum.json",
-    "blobSha": "2c65a9a989d39ea907646e1bd1253959faafe1ee",
+    "blobSha": "c24f50ffacb8b1f919442f7dbb47638469e93ee2",
     "researchRows": 883,
     "publishedResearchRows": 152,
     "awaitingEvidenceRows": 709,
     "notLiveCatalogCounts": true,
     "note": "Kimlik uzlaşması güncel girişten okunur; tarihî ekler/test fixtureları yeniden yazılmadı. Araştırma verisi kataloğa ithal edilmedi."
+  },
+  "clarificationDelivery": {
+    "pr": 70,
+    "sha": "73a07d5c06371414ced3254be277de732186d8e0",
+    "path": "data/arastirma/toplu-teslim/ek-6-hamdi-azcok-karar.json",
+    "independentlyAccepted": 1,
+    "held": 1,
+    "automaticAcceptance": false
   }
 }

@@ -40,5 +40,26 @@
       "turkish"
     ],
     "verification": "İşletmecinin ana sayfasındaki Kardelen No:4 / 0216 315 37 37, PR65 içindeki tarihli G&M 2026 Ataşehir kanıtıyla eşleşir. Şube listesindeki Ataşehir Vega No:18 / 315 36 36 ve Suadiye Bağdat No:461 farklıdır; aktarılmadı. Kaynak: docs/katalog/birlesik-876-kabul.json. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat aktarılmadı."
+  },
+  {
+    "ref": "isletme/az-cok-thai-beyoglu",
+    "slug": "az-cok-thai-beyoglu",
+    "name": "Az Çok Thai",
+    "categoryId": "cat.restaurant",
+    "kind": "Asya mutfağı",
+    "district": "Beyoğlu",
+    "address": "Kuloğlu Mahallesi, Ağa Külhani Sokak No:12/A, Beyoğlu",
+    "website": "https://azcokthai.com/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://azcokthai.com/tr/homepage-turkce/",
+    "wave": 23,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-16",
+    "verifiedAt": "2026-11-16",
+    "confidence": "güçlü",
+    "cuisine": [
+      "thai"
+    ],
+    "verification": "İşletmecinin Türkçe sayfasındaki restoran öz tanımı ve öğle/akşam servisi bağımsız tarayıcıda doğrulandı. Kafe ifadesi ortamı tanımlar. No:12/A, G&M 25.12.2025 adresiyle eşleşir. Kanıt: docs/katalog/birlesik-876-kabul.json. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat aktarılmadı."
   }
 ]
