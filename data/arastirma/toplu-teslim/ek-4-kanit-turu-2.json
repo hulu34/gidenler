@@ -1,0 +1,857 @@
+{
+ "_aciklama": "Toplu teslim eki 4 — #63 havuzunda, #65 dışında kalan ve kanıtı tamamlanmaya en yakın restoranlar için ikinci sınırlı toplu kanıt turu. Yalnız adı konmuş eksik/çelişki için kaynak açıldı; mevcut kanıtlar yeniden taranmadı. Resmî kanıt eksikliği editoryal ya da başka bir iddiayla örtülmedi. Ücretli kaynak, işletmeye mesaj, erişim engeli aşma yok. Katalog, veritabanı, kabul dalları, Preview ve Production değişmedi. Sonuçlar toplu kabul havuzu içindir; kayıt başına yayın talebi yok. YorumS aynı manifesti kullanır.",
+ "olusturma": "2026-11-16",
+ "temel": {
+  "pr63": "f88fa1cf6f99b784232a4f0460c067cd071c718f",
+  "pr65": "886200a6281fcb97e78403dfb7ce2624cc410e3a"
+ },
+ "canliTaban": {
+  "pr": 62,
+  "sha": "2b437577f4a02197482fb90e46b5f75a3f0b96df",
+  "toplam": 876,
+  "aktif": 841,
+  "aktifRestoran": 716
+ },
+ "kapsamDisi": {
+  "canli876": true,
+  "pr64VePilotBirlesikAday": [
+   "monteverdi ristorante|besiktas",
+   "sahan|kadikoy (Ataşehir No:4 şubesi)"
+  ],
+  "pr65Kayitlari": [
+   "adana ocakbasi kurtulus|sisli",
+   "akali mall of istanbul|basaksehir",
+   "ali ocakbasi|besiktas",
+   "az cok thai|beyoglu",
+   "caki restoran|basaksehir",
+   "dafni atesbasi|uskudar",
+   "efendy|besiktas",
+   "eskiyer restaurant|sariyer",
+   "filo d olio caddebostan by danilo zanna|kadikoy",
+   "gou society|kadikoy",
+   "gunaydin kebap restoran|besiktas",
+   "hamdi restaurant|fatih",
+   "il cortile|beyoglu",
+   "kendime istanbul|kadikoy",
+   "kruton|sisli",
+   "mykorini istanbul|beyoglu",
+   "sahan|kadikoy",
+   "sushi barba|sariyer",
+   "white burger pendik|pendik",
+   "yenikoy balikcisi|sariyer"
+  ],
+  "acikKalanlar": [
+   "hamdi restaurant|fatih (adres çelişkisi)",
+   "az cok thai|beyoglu (kategori)"
+  ],
+  "maderia": "maderia sushi bar|sisli",
+  "suna": "suna nin yeri|uskudar",
+  "mukerrer": "#63 mükerrer şüphesi (6)",
+  "pilotIncelenen": [
+   "balikci kahraman|sariyer",
+   "ahmet ustam ocakbasi|sariyer",
+   "fasuli garden cekmekoy|cekmekoy",
+   "tere|beyoglu",
+   "chalet|besiktas",
+   "morini|besiktas",
+   "parle|besiktas",
+   "maromi|beyoglu",
+   "bado babadostu cag kebap|bahcelievler"
+  ]
+ },
+ "secim": {
+  "havuz": "#63 kanit-bekliyor + restoran, #65 ve kapsam dışılar hariç",
+  "kural": "Adı konmuş tek eksik; kayıtlı işletmeci URL'si, adres ya da tarihli kaynak zaten var. 'bagimsiz-kaynak-yok' (561) ve yalnız yemek.com'a dayanan 'eksik-faaliyet' kayıtları genel araştırma gerektirdiği için seçilmedi.",
+  "seçilmeyenNot": "White Burger şube kayıtları (tek kaynak), Hamdi Şişli, Sankai (kaynak bütünlüğü engeli), Brasserie Noir/Hodan (Codex tür/taşınma bekletmesi), Akbabalı/Madam Despina/Pizza Emirgan/La Boom/Sofram (kayıtlı işletmeci URL'si yok, kapı çelişkisi yalnız arama ile çözülebilir) bu tura alınmadı."
+ },
+ "kural": {
+  "tamamlandi": "resmî/işletmeci kaynağı bugün açık ve ad + sokak + kapı no gösteriyor; son 12 ayda tarihli bağımsız kaynak aynı ad, sokak ve kapı noyu veriyor; faaliyet resmî kaynakta güncel",
+  "bekliyor": "koşullardan biri eksik; kalan eksik yazılı",
+  "tahminiAlanAdi": "tahmini alan adı denemesi yalnız içerik ad + adresle eşleşirse kanıt sayılır; park sayfası ya da çözülmeyen alan adı kanıt değildir",
+  "sayilmayan": "Google/Maps, toplayıcı siteler, arama önbelleği, Instagram; editoryal kaynak işletmeci kaynağı yerine sayılmaz"
+ },
+ "sayim": {
+  "secilen": 19,
+  "tamamlandi": 0,
+  "bekliyor": 19,
+  "bekleyisNedeni": {
+   "isletmeci-kaynagi-yok": 6,
+   "bagimsiz-kaynak-yok": 3,
+   "faaliyet-yakinda": 2,
+   "kapi-no-yok": 1,
+   "ad-surekliligi": 1,
+   "erisim-engeli": 1,
+   "resmi-sayfa-yok": 1,
+   "adres-celiskisi": 1,
+   "kategori-belirsiz": 1,
+   "ilce-belirsiz": 1,
+   "sube-kimligi": 1
+  },
+  "acilanUrl": 16,
+  "farkliUrl": 15,
+  "arama": 6,
+  "canliTekillestirme": {
+   "canlida-yok": 19
+  }
+ },
+ "kayitlar": [
+  {
+   "anahtar": "ibb cirpici kent lokantasi|zeytinburnu",
+   "ad": "İBB Çırpıcı Kent Lokantası",
+   "ilce": "Zeytinburnu",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": null,
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "ek1-belirsiz-oncelik-2"
+   },
+   "eksik": "Kapı no yok: İBB sayfası + Evrensel (23.10.2026) var, adres 'Çırpıcı Şehir Parkı girişi'",
+   "mevcutKanit": [
+    "https://tesislerimiz.ibb.istanbul/tesis/cirpici-kent-lokantasi — yeniden açılmadı",
+    "https://www.evrensel.net/haber/6006331/ibb-yeni-kent-lokantasini-zeytinburnunda-acti — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://tesislerimiz.ibb.istanbul/tesis/cirpici-kent-lokantasi",
+     "tur": "işletmeci resmî sayfası (İBB)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Adres alanında yalnız 'Çırpıcı Kent Lokantası'; metinde 'Çırpıcı Parkı'nın girişinde'; telefon 444 1 034 (İBB santrali)"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "kapi-no-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Kapı numarası hiçbir kaynakta yok (park girişi düzeyinde adres)"
+   ]
+  },
+  {
+   "anahtar": "ibb silivri kent lokantasi|silivri",
+   "ad": "İBB Silivri Kent Lokantası",
+   "ilce": "Silivri",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Akgün, Alibey, Mehmet Silivrili Cd. NO:23/B, 34570 Silivri/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eksik-faaliyet"
+   },
+   "eksik": "Bağımsız ikinci kaynak yok (yalnız İBB sayfası)",
+   "mevcutKanit": [
+    "https://tesislerimiz.ibb.istanbul/tesis/silivri-kent-lokantasi — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://tesislerimiz.ibb.istanbul/tesis/silivri-kent-lokantasi",
+     "tur": "işletmeci resmî sayfası (İBB)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Akgün, Alibey, Mehmet Silivrili Cd. NO:23/B, 34570 Silivri · 444 1 034"
+    }
+   ],
+   "arama": [
+    {
+     "sorgu": "Silivri Kent Lokantası açıldı Mehmet Silivrili Caddesi İBB",
+     "tarih": "2026-11-16",
+     "bulgu": "Silivri şubesi için haber yok; yalnız başka ilçelerin açılış haberleri"
+    }
+   ],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "bagimsiz-kaynak-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Son 12 ayda tarihli bağımsız kaynak yok"
+   ]
+  },
+  {
+   "anahtar": "ibb sarigazi kent lokantasi|sancaktepe",
+   "ad": "İBB Sarıgazi Kent Lokantası",
+   "ilce": "Sancaktepe",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Emek Mah. Namık Kemal Cad. No: 77 SANCAKTEPE, 34785 Sancaktepe/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eski-kayit-kaniti"
+   },
+   "eksik": "Bağımsız ikinci kaynak yok (yalnız İBB sayfası; eski Production paket kaydı)",
+   "mevcutKanit": [
+    "https://tesislerimiz.ibb.istanbul/tesis/sarigazi-kent-lokantasi — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://tesislerimiz.ibb.istanbul/tesis/sarigazi-kent-lokantasi",
+     "tur": "işletmeci resmî sayfası (İBB)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Emek Mah. Namık Kemal Cad. No: 77, 34785 Sancaktepe · 444 1 034"
+    }
+   ],
+   "arama": [
+    {
+     "sorgu": "Sarıgazi Kent Lokantası Namık Kemal Caddesi açıldı",
+     "tarih": "2026-11-16",
+     "bulgu": "Sarıgazi şubesi için haber yok"
+    }
+   ],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": [
+     {
+      "slug": "ibb-sancaktepe-kent-lokantasi-termal-sk-sancaktepe",
+      "ad": "İBB Sancaktepe Kent Lokantası",
+      "benzerlik": 0.786,
+      "adres": "Termal Sk. No:7, Sancaktepe",
+      "karar": "AYRI (sokak/kapı farklı)"
+     }
+    ]
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "bagimsiz-kaynak-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Son 12 ayda tarihli bağımsız kaynak yok"
+   ]
+  },
+  {
+   "anahtar": "ibb cekmekoy kent lokantasi|cekmekoy",
+   "ad": "İBB Çekmeköy Kent Lokantası",
+   "ilce": "Çekmeköy",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Sultançiftliği, Turgut Özal Cd. no : 94, 34265 Çekmeköy/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eski-kayit-kaniti"
+   },
+   "eksik": "Bağımsız ikinci kaynak yok (yalnız İBB sayfası; eski Production paket kaydı)",
+   "mevcutKanit": [
+    "https://tesislerimiz.ibb.istanbul/tesis/cekmekoy-kent-lokantasi — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://tesislerimiz.ibb.istanbul/tesis/cekmekoy-kent-lokantasi",
+     "tur": "işletmeci resmî sayfası (İBB)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sultançiftliği, Turgut Özal Cd. no: 94, 34265 Çekmeköy · 444 1 034 (metinde Taşdelen Mahallesi)"
+    }
+   ],
+   "arama": [
+    {
+     "sorgu": "Çekmeköy Kent Lokantası Turgut Özal Caddesi açıldı",
+     "tarih": "2026-11-16",
+     "bulgu": "Çekmeköy şubesi için haber yok"
+    }
+   ],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "bagimsiz-kaynak-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Son 12 ayda tarihli bağımsız kaynak yok",
+    "Mahalle farkı: adres Sultançiftliği, metin Taşdelen"
+   ]
+  },
+  {
+   "anahtar": "aliee istanbul taste by thomas buhner|beyoglu",
+   "ad": "Aliée İstanbul, Taste by Thomas Bühner",
+   "ilce": "Beyoğlu",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Taşkızak Tersanesi Caddesi No:11, Camiikebir (Tersane İstanbul)",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme"
+   },
+   "eksik": "Codex: işletmeci 'Taste by Aliée' gösteriyor; Thomas Bühner adının güncel devamı teyit bekliyor",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/aliee-istanbul-taste-by-thomas-buhner/ (2025-12-24) — yeniden açılmadı",
+    "https://all.accor.com/hotel/C4K9/index.en.shtml — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://all.accor.com/hotel/C4K9/index.en.shtml",
+     "tur": "işletmeci (otel) resmî sayfası",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Aliée Istanbul, Taşkızak Tersanesi Cad. No 11:19 Beyoğlu; 'Taste by Aliee experience'; Thomas Bühner adı yok"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "ad-surekliligi",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Rehberdeki 'Taste by Thomas Bühner' ile bugünkü 'Taste by Aliée'nin aynı restoran olduğu kanıtlanmadı; ad değişikliği varsayılmadı"
+   ]
+  },
+  {
+   "anahtar": "toro latin gastro istanbul|sariyer",
+   "ad": "Toro Latin Gastro İstanbul",
+   "ilce": "Sarıyer",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Meserburnu Caddesi No:5, Sarıyer Merkez (Six Senses Kocataş Mansions)",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme"
+   },
+   "eksik": "Codex: Six Senses restoran bağlantısı otel koleksiyonuna yönlendi; işletmeci teyidi yok",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/topside-bar-6/ (2025-12-24) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-terasli-mekanlari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.sixsenses.com/en/hotels-resorts/europe/turkey/kocatas-mansions-istanbul/dining/toro-latin-gastro-bar/",
+     "tur": "işletmeci (otel) restoran sayfası",
+     "erisim": "2026-11-16",
+     "http": 403,
+     "bulgu": "Otomatik erişim reddedildi; engel aşılmadı"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": [
+     {
+      "slug": "brio-italian-istanbul-sariyer",
+      "ad": "Brio İtalian İstanbul",
+      "benzerlik": 0.638,
+      "adres": "Kilyos Caddesi No:322, Uskumruköy Mahallesi, Sarıyer",
+      "karar": "AYRI (sokak/kapı farklı)"
+     }
+    ]
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "erisim-engeli",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "İşletmeci sayfası okunamadı (HTTP 403)"
+   ]
+  },
+  {
+   "anahtar": "nisantasi beymen brasserie|sisli",
+   "ad": "Nişantaşı Beymen Brasserie",
+   "ilce": "Şişli",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Bostan Sokak No:23 D:1A, Harbiye (Beymen Nişantaşı)",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme"
+   },
+   "eksik": "Codex: resmî Brasserie URL'si \"Sayfa Bulunamadı\"",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/nisantasi-beymen-brasserie/ (2025-12-23) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/nisantasinin-en-iyi-mekanlari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.beymen.com/tr/beymen-brasserie",
+     "tur": "işletmeci resmî sayfası",
+     "erisim": "2026-11-16",
+     "http": 404,
+     "bulgu": "Sayfa yok (16.11.2026 de)"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "resmi-sayfa-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Güncel işletmeci kaynağı yok; kapanış hükmü değil"
+   ]
+  },
+  {
+   "anahtar": "catch|kadikoy",
+   "ad": "Catch",
+   "ilce": "Kadıköy",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Funda Çıkmazı Sokak No:2/6A, Caddebostan",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme"
+   },
+   "eksik": "Codex: Allpoints kimliği doğruluyor; adres Funda Çıkmazı 2/6A ↔ Bağdat No:354 çözülmedi",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/catch/ (2025-12-23) — yeniden açılmadı",
+    "https://www.timeout.com/istanbul/tr/restoranlar/catch — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.allpoints.com.tr/tr/brand.html?marka=catch",
+     "tur": "grup resmî marka sayfası",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Sayfa bugün 'Midpoint' marka içeriği gösteriyor; Catch adresi yok"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "adres-celiskisi",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "İşletmeci kaynağında şube adresi yok; kapı çelişkisi çözülmedi"
+   ]
+  },
+  {
+   "anahtar": "zambak bosnak borekcisi|bayrampasa",
+   "ad": "Zambak Boşnak Börekçisi",
+   "ilce": "Bayrampaşa",
+   "kategori": "restoran",
+   "kategoriNotu": "kaynakta restoran/kafe ayrımı yok; #63 kategorisi korundu, kabulde doğrulanmalı",
+   "sube": "Kocatepe Mahallesi, 19. Sokak No:111/A, Bayrampaşa, İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "ek1-belirsiz-oncelik-1"
+   },
+   "eksik": "#58: adres resmî site ve yemek.com'da aynı; tür/kategori etiketi yok",
+   "mevcutKanit": [
+    "https://yemek.com/istanbulda-en-iyi-bosnak-boregi-nerede-yenir/ (2026-10-12) — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.zambakbosnakborekcisi.com/",
+     "tur": "resmî site",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Kocatepe, 19. Sk. No:111/A, 34045 Bayrampaşa · (0542) 229 42 02 · 08:00–18:00 · çevrimiçi satış mağazası ve teslimat; restoran ya da oturma alanı ifadesi yok"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "kategori-belirsiz",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Restoran/kafe/fırın ayrımı kaynakta yok; kategori tahminle atanmadı"
+   ]
+  },
+  {
+   "anahtar": "white burger finanskent|umraniye",
+   "ad": "White Burger Finanskent",
+   "ilce": "Ümraniye",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Finans Caddesi No:4R, Finanskent",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme"
+   },
+   "eksik": "Codex: şube listesinde 'Yakında'",
+   "mevcutKanit": [
+    "https://www.whiteburger.com/subelerimiz — yeniden açılmadı",
+    "https://www.gault-millau.com.tr/white-burger-3/ — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.whiteburger.com/subelerimiz",
+     "tur": "resmî şube listesi (aynı gün #65 turunda alınan sayfa)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Finans Merkezi (Çok Yakında) · Finans Cad. No:4R Ümraniye"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": [
+     {
+      "slug": "white-burger-umraniye",
+      "ad": "White Burger Meydan İstanbul",
+      "benzerlik": 0.667,
+      "adres": "Balkan Caddesi No:62/A, Fatih Sultan Mehmet (Meydan İstanbul AVM), Ümraniye",
+      "karar": "AYRI (sokak/kapı farklı)"
+     }
+    ]
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "faaliyet-yakinda",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Şube hâlâ 'Çok Yakında'; faaliyet yok"
+   ]
+  },
+  {
+   "anahtar": "white burger galataport|beyoglu",
+   "ad": "White Burger Galataport",
+   "ilce": "Beyoğlu",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Meclis-i Mebusan Caddesi No:8/9F, Kılıçali Paşa",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "codex-bekletme"
+   },
+   "eksik": "Codex: şube listesinde 'Yakında'",
+   "mevcutKanit": [
+    "https://www.whiteburger.com/subelerimiz — yeniden açılmadı",
+    "https://www.gault-millau.com.tr/white-burger-3/ — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.whiteburger.com/subelerimiz",
+     "tur": "resmî şube listesi (aynı gün #65 turunda alınan sayfa)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "İstanbul Galataport (Yakında) · Meclis-i Mebusan Cad. No:8/9F Beyoğlu"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "faaliyet-yakinda",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Şube hâlâ 'Yakında'; faaliyet yok"
+   ]
+  },
+  {
+   "anahtar": "papalina|bakirkoy",
+   "ad": "Papalina",
+   "ilce": "Bakırköy",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Marinapark Papalina Balık, Ataköy 1. Kısım Mah., Rauf Orbay Cad., No:16 Z36, 34158 Bakırköy/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eksik-faaliyet"
+   },
+   "eksik": "Resmî alan adı çözülmüyordu; yalnız G&M (2025-12-24)",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/papalina/ (2025-12-24) — yeniden açılmadı"
+   ],
+   "kontroller": [],
+   "arama": [
+    {
+     "sorgu": "Papalina balık restoran Ataköy Marinapark resmi site",
+     "tarih": "2026-11-16",
+     "bulgu": "Resmî site yok; TimeOut (tarihsiz) ve toplayıcılar"
+    }
+   ],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "isletmeci-kaynagi-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "İşletmeci kaynağı ve ikinci tarihli bağımsız kaynak yok"
+   ]
+  },
+  {
+   "anahtar": "lipa pendik|pendik",
+   "ad": "Lipa Pendik",
+   "ilce": "Pendik",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Sapanbağları Mah.Yenipazar Cad., No:25, Pendik/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eksik-kimlik"
+   },
+   "eksik": "Resmî site yanıt vermiyordu; yalnız G&M (2025-12-25)",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/lipa-pendik/ (2025-12-25) — yeniden açılmadı"
+   ],
+   "kontroller": [],
+   "arama": [
+    {
+     "sorgu": "Lipa Pendik restoran Yenipazar Caddesi No 25",
+     "tarih": "2026-11-16",
+     "bulgu": "yalnız toplayıcı siteler (joinpearl, enprimeurclub, mesprestiges, migros/yemek, yandex) ve ilgisiz sonuçlar; kanıt sayılmadı; Culinary Backstreets tarihsiz"
+    }
+   ],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "isletmeci-kaynagi-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "İşletmeci kaynağı ve ikinci tarihli bağımsız kaynak yok"
+   ]
+  },
+  {
+   "anahtar": "sushi manga|eyupsultan",
+   "ad": "Sushi Manga",
+   "ilce": "Eyüpsultan",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Göktürk Merkez Mah. 1. Begonya Sok. No:2 Arcaidum 3, 34077 Eyüpsultan/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eksik-kimlik"
+   },
+   "eksik": "Resmî site ad/adres metni okunamıyordu; Göktürk şubesi bağımsız kaynakta yok",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/sushi-manga-5/ (2025-12-23) — yeniden açılmadı"
+   ],
+   "kontroller": [],
+   "arama": [
+    {
+     "sorgu": "Sushi Manga Göktürk Arcaidum Begonya Sokak",
+     "tarih": "2026-11-16",
+     "bulgu": "Göktürk/Arcaidum adresi hiçbir sonuçta yok; yalnız Etiler sipariş listesi ve toplayıcılar"
+    }
+   ],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "isletmeci-kaynagi-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Göktürk şubesi için işletmeci ya da bağımsız kaynak yok"
+   ]
+  },
+  {
+   "anahtar": "tam ocakbasi|besiktas",
+   "ad": "Tam Ocakbaşı",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Arnavutköy, Bebek Arnavutköy Cad. No:91, 34215 Beşiktaş/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eski-kayit-kaniti"
+   },
+   "eksik": "İki tarihli editoryal var (G&M 2025-12-24, OGGUSTO 2026, Gazete Oksijen); işletmeci kaynağı yok",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/tam-ocakbasi/ (2025-12-24) — yeniden açılmadı",
+    "https://gazeteoksijen.com/yazarlar/memet-ozer/sehrin-yeni-gozdesi-tam-ocakbasi-256060 — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-meyhaneleri — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://tamocakbasi.com/",
+     "tur": "tahmini alan adı denemesi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Squarespace 'Coming Soon' park sayfası; işletme adı/adres yok — kanıt değil"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "isletmeci-kaynagi-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "İşletmeci kaynağı yok; editoryal kaynaklar onun yerine sayılmadı"
+   ]
+  },
+  {
+   "anahtar": "strada by cafe cadde|kadikoy",
+   "ad": "Strada by Cafe Cadde",
+   "ilce": "Kadıköy",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Suadiye, Bağdat Cad. No:459, 34740 Kadıköy/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eski-kayit-kaniti"
+   },
+   "eksik": "G&M 2025-12-23 + OGGUSTO 2026; işletmeci kaynağı yok",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/strada-by-cafe-cadde/ (2025-12-23) — yeniden açılmadı",
+    "https://www.oggusto.com/gastronomi/istanbul/anadolu-yakasinin-en-iyi-mekanlari — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.cafecadde.com/",
+     "tur": "tahmini alan adı denemesi",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "/lander'a yönlendiren park sayfası — kanıt değil"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "isletmeci-kaynagi-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "İşletmeci kaynağı yok"
+   ]
+  },
+  {
+   "anahtar": "7mila|fatih",
+   "ad": "7Mila",
+   "ilce": "Fatih",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Innova Sultanahmet Hotel, Binbirdirek, Piyer Loti Cad., No:6/8, 34122, Fatih/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eksik-faaliyet"
+   },
+   "eksik": "Otel sitesinde restoran adı geçmiyordu; yalnız G&M (2025-12-23)",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/7mila/ (2025-12-23) — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.innovasultanahmet.com/",
+     "tur": "otel resmî sitesi (tahmini alan adı; içerik oteli doğruluyor)",
+     "erisim": "2026-11-16",
+     "http": 200,
+     "bulgu": "Yeme-içme: 'Teras A la carte Restoran & Lounge Bar, Revan Ana Restoran'; 7mila adı yok"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "isletmeci-kaynagi-yok",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "İşletmeci kaynağında 7mila adı yok; Teras restoranla aynı olduğu varsayılmadı"
+   ]
+  },
+  {
+   "anahtar": "husrev lokantalari|besiktas",
+   "ad": "Hüsrev Lokantaları",
+   "ilce": "Beşiktaş",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Gayrettepe, Yıldız Posta Cad. No:48/1, 34349 Beşiktaş/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "ek1-belirsiz-oncelik-3"
+   },
+   "eksik": "Rehber Gayrettepe/Beşiktaş, resmî site Esentepe — ilçe belirsiz",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/husrev-lokantalari-3/ (2025-12-23) — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.husrevlokantalari.com/",
+     "tur": "tahmini alan adı denemesi",
+     "erisim": "2026-11-16",
+     "http": 0,
+     "bulgu": "Alan adı çözülmedi — kanıt değil"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": []
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "ilce-belirsiz",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Resmî kaynak açılamadı; ilçe belirsizliği sürüyor"
+   ]
+  },
+  {
+   "anahtar": "palude restaurant|zeytinburnu",
+   "ad": "Palude Restaurant",
+   "ilce": "Zeytinburnu",
+   "kategori": "restoran",
+   "kategoriNotu": null,
+   "sube": "Kennedy Cad. A Blok No:54AB, 34025 Zeytinburnu/İstanbul",
+   "ek2": {
+    "durum": "kanit-bekliyor",
+    "altDurum": "eksik-kimlik"
+   },
+   "eksik": "Rehber metni Urla'dan söz ediyor, adres Zeytinburnu — şube kimliği belirsiz",
+   "mevcutKanit": [
+    "https://www.gault-millau.com.tr/palude-restaurant/ (2025-12-23) — yeniden açılmadı"
+   ],
+   "kontroller": [
+    {
+     "url": "https://www.paludeurla.com/",
+     "tur": "tahmini alan adı denemesi",
+     "erisim": "2026-11-16",
+     "http": 0,
+     "bulgu": "Alan adı çözülmedi — kanıt değil"
+    }
+   ],
+   "arama": [],
+   "canliTekillestirme": {
+    "yontem": "canlı #62 kataloğu (876): aynı ilçede ad benzerliği ≥0,6 ya da ad kapsaması; aday varsa sokak + kapı no karşılaştırıldı",
+    "sonuc": "canlida-yok",
+    "adaylar": [
+     {
+      "slug": "m-point-cafe-and-restaurant-zeytinburnu",
+      "ad": "M-Point Cafe and restaurant",
+      "benzerlik": 0.636,
+      "adres": "Yeni Çiftlik Caddesi No:49, Zeytinburnu",
+      "karar": "AYRI (sokak/kapı farklı)"
+     }
+    ]
+   },
+   "sonuc": "BEKLIYOR",
+   "bekleyisNedeni": "sube-kimligi",
+   "tamamlanan": null,
+   "kalanEksik": [
+    "Zeytinburnu şubesi için işletmeci kaynağı yok"
+   ]
+  }
+ ]
+}
