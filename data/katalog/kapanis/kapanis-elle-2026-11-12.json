@@ -1,0 +1,684 @@
+{
+ "_aciklama": "Kapanış işaretleri paketi — elle incelenmiş kanıtlar (2026-11-12). Kimlik alanları (ad, şube, adres, telefon, OSM) karar betiği tarafından katalogdan doldurulur. Sinyal: kapanış | açık | isim | taşınma | kimlik. Güç: güçlü | zayıf. 'Google' kaynaklı sinyaller önceki kapanış denetiminden gelir; bu pakette yeni Google okuması yapılmadı. Arama sonuç özetleri ve açılmayan sayfalar zayıf sayılır.",
+ "tarih": "2026-11-12",
+ "kural": [
+  {
+   "slug": "kiss-the-frog-seafood-brasserie-sariyer",
+   "islem": "ikinci-kaynak",
+   "durum": "closed_confirmed",
+   "tur": "işletme kapanışı",
+   "guven": "yüksek",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki denetim)",
+     "url": null,
+     "tarih": "2026-11-06",
+     "guc": "güçlü",
+     "not": "tam görünüm, elle bakıldı; kapanis.json kaydı"
+    },
+    {
+     "sinyal": "kapanış",
+     "kaynak": "OSM notu (Organic Maps, sahadan)",
+     "url": "https://www.openstreetmap.org/note/4804655",
+     "tarih": "2025-06-13",
+     "guc": "güçlü",
+     "not": "POI adı Kiss The Frog Seafood Brasserie; \"geschlossen\""
+    }
+   ],
+   "ek": "12 Kasım: Google dışı ikinci kaynak — OSM notu 4804655 (13.06.2025, Organic Maps): kullanıcı mekânı yerinde bulamadığını \"geschlossen\" diye bildirmiş",
+   "sources": [
+    "https://www.openstreetmap.org/note/4804655"
+   ]
+  },
+  {
+   "slug": "yako-balik-kadikoy",
+   "islem": "not",
+   "durum": "closed_confirmed",
+   "tur": "isim değişikliği ya da yeni işletme (belirsiz)",
+   "guven": "düşük",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki denetim)",
+     "url": null,
+     "tarih": "2026-11-06",
+     "guc": "güçlü",
+     "not": "tam görünüm, elle bakıldı"
+    },
+    {
+     "sinyal": "isim",
+     "kaynak": "OSM öğe geçmişi",
+     "url": "https://www.openstreetmap.org/node/14143942795/history",
+     "tarih": "2026-10-29",
+     "guc": "güçlü",
+     "not": "sürüm 2'de ad \"Kalis Lokanta\"; changeset 191188883"
+    }
+   ],
+   "ek": "12 Kasım: OSM öğesi 29.10.2026'da (changeset 191188883) \"Kalis Lokanta\" adına çevrilmiş. Bu, isim değişikliği ya da aynı yerde yeni işletme olabilir; kapanışın ikinci kaynağı sayılmadı. Kalis Lokanta bu profile dönüştürülmez; ayrı aday olarak incelenmeli",
+   "sources": [
+    "https://www.openstreetmap.org/node/14143942795/history"
+   ]
+  },
+  {
+   "slug": "mama-bowl-kozyatagi-kadikoy",
+   "islem": "not",
+   "durum": "closed_confirmed",
+   "tur": "çelişkili kanıt (zayıf)",
+   "guven": "orta",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki denetim)",
+     "url": null,
+     "tarih": "2026-11-06",
+     "guc": "güçlü",
+     "not": "tam görünüm, elle bakıldı"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "Resmî site",
+     "url": "http://mamabowl.net",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "site açık, çalışma saati yazıyor; tarihli değil"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "OSM notu (CoMaps, sahadan)",
+     "url": "https://www.openstreetmap.org/note/4841718",
+     "tarih": "2025-07-06",
+     "guc": "zayıf",
+     "not": "Migros'un yerine açıldığını bildiriyor; kapanıştan önceki tarih"
+    }
+   ],
+   "ek": "12 Kasım: zayıf çelişki — resmî site açık ve çalışma saati yazıyor; OSM notu 4841718 (06.07.2025) mekânın Migros'un yerine açıldığını bildiriyor. Kapanıştan sonra açık olduğunu gösteren tarihli kanıt yok; kayıt değiştirilmedi",
+   "sources": [
+    "https://www.openstreetmap.org/note/4841718"
+   ]
+  },
+  {
+   "slug": "et-inn-kebap-ve-steak-kadikoy",
+   "islem": "not",
+   "durum": "closed_suspected",
+   "tur": "çelişkili kanıt (zayıf)",
+   "guven": "düşük",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki denetim)",
+     "url": null,
+     "tarih": "2026-11-06",
+     "guc": "zayıf",
+     "not": "tek şubeli işletmenin sitesi açıkken; önceki notta çelişkili"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "Resmî site",
+     "url": "https://etinn.com",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "HTTP 200, içerik okunamadı"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "Sipariş platformu (arama sonucu)",
+     "url": "https://www.yemeksepeti.com/en/et-inn-kebap-steak-kadikoy-sahrayicedit-mah-istanbul",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "Sahrayıcedit şubesi listeli; sayfa açılmadı"
+    }
+   ],
+   "ek": "12 Kasım: açık olduğuna dair zayıf işaretler (resmî site yanıt veriyor ama içerik okunamadı; sipariş platformunda Sahrayıcedit şubesi listeli). Güçlü kanıt yok; şüphe olarak kalıyor"
+  },
+  {
+   "slug": "blak-coffee-co-besiktas",
+   "islem": "not",
+   "durum": "closed_suspected",
+   "tur": "çelişkili kanıt (zayıf)",
+   "guven": "düşük",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki denetim)",
+     "url": null,
+     "tarih": "2026-11-07",
+     "guc": "zayıf",
+     "not": "eşleşme yok; konumda (11 m) kapalı kayıt"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "Sipariş platformu (arama sonucu)",
+     "url": "https://www.migros.com.tr/yemek/blak-coffee-co-besiktas-cihannuma-mah-st-247f6",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "Cihannüma şubesi listeli; sayfa açılmadı"
+    }
+   ],
+   "ek": "12 Kasım: sipariş platformunda aynı semtte (Cihannüma) şube listeli; resmî sitede ad var, adres/telefon yok. Güçlü kanıt yok; şüphe olarak kalıyor"
+  },
+  {
+   "slug": "komun-beyoglu",
+   "islem": "not",
+   "durum": "closed_suspected",
+   "tur": "işletme kapanışı (olası)",
+   "guven": "düşük",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki denetim)",
+     "url": null,
+     "tarih": "2026-11-07",
+     "guc": "zayıf",
+     "not": "eşleşme yok; konumda (5 m) kapalı kayıt"
+    },
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Resmî alan adı",
+     "url": "https://www.komunistanbul.com/",
+     "tarih": "2026-11-05",
+     "guc": "zayıf",
+     "not": "DNS'te yok"
+    },
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Rehber (arama sonucu)",
+     "url": "https://www.tripadvisor.com/Restaurant_Review-g293974-d8521531-Reviews-Komun-Istanbul.html",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "İlk Belediye Cd. 7/A \"CLOSED\"; sayfa açılmadı; kayıtta adres yok, aynı şube olduğu doğrulanmadı"
+    }
+   ],
+   "ek": "12 Kasım: resmî alan adı DNS'te yok (05.11); rehber aramasında İlk Belediye Cd. 7/A şubesi \"kapalı\" görünüyor (sayfa açılmadı, kayıtta adres yok). Mekâna özgü güçlü kanıt yok; şüphe olarak kalıyor"
+  },
+  {
+   "slug": "pizeria-quattro-beyoglu",
+   "islem": "yeni-supheli",
+   "durum": null,
+   "tur": "belirsiz (işletme kapanışı ya da taşınma)",
+   "guven": "düşük",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "OSM öğe geçmişi",
+     "url": "https://www.openstreetmap.org/node/5590542222/history",
+     "tarih": "2026-11-11",
+     "guc": "güçlü",
+     "not": "öğe silindi (changeset 191795049, açıklama \"Aggiornamento\"); önceki sürümü 30.10.2026'da aynı açıklamayla düzenlenmiş"
+    },
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Resmî alan adı",
+     "url": "https://pizzeriaquattro.com",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "\"Bu web sitesi satılıktır\""
+    },
+    {
+     "sinyal": "taşınma",
+     "kaynak": "Rehber (arama sonucu)",
+     "url": "https://www.tripadvisor.com/Restaurant_Review-g293974-d31326406-Reviews-Pizzeria_Quattro_Taksim-Istanbul.html",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "ayrı ve daha yeni bir \"Pizzeria Quattro Taksim\" kaydı var; sayfa açılmadı"
+    }
+   ],
+   "kayit": {
+    "state": "closed_suspected",
+    "checkedAt": "2026-11-12",
+    "google": "Kullanılmadı",
+    "match": "—",
+    "official": "Resmî alan adı satılık (pizzeriaquattro.com, 12.11.2026)",
+    "confidence": "düşük",
+    "note": "Google dışı iki işaret: OSM öğesi 11.11.2026'da silindi (changeset 191795049); resmî alan adı satılık. Rehberde ayrı bir \"Pizzeria Quattro Taksim\" kaydı olduğu için taşınma da olabilir — elle doğrulanmalı. Sitede değişiklik yok",
+    "sources": [
+     "https://www.openstreetmap.org/node/5590542222/history",
+     "https://www.openstreetmap.org/changeset/191795049",
+     "https://pizzeriaquattro.com"
+    ]
+   }
+  }
+ ],
+ "sahip": [
+  {
+   "slug": "arda-ocakbasi-umraniye",
+   "tur": "isim değişikliği",
+   "guven": "yüksek",
+   "oneri": "Kapanma şüphesi kaldırılsın (reopened). Ad \"Ase Ocakbaşı\" olarak değişmiş; ad düzeltmesi ayrı sahip kararı (aynı profil korunur, ikinci profil açılmaz)",
+   "etki": "Görünür etki yok (şüphe sitede gösterilmiyor); kalite sınıfı A'ya çıkar.",
+   "kimlikKaniti": "aynı adres (Baraj Yolu No:44, Ümraniye), kayıttaki telefon (0532 178 27 32) ve ardaocakbasi.com e-postası yeni adlı sitede; eski alan adı yeni siteye yönleniyor",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki günlük çalışma)",
+     "url": null,
+     "tarih": "2026-11-07",
+     "guc": "zayıf",
+     "not": "sınırlı görünüm"
+    },
+    {
+     "sinyal": "isim",
+     "kaynak": "Resmî site",
+     "url": "https://aseocakbasi.com/",
+     "tarih": "2026-11-12",
+     "guc": "güçlü",
+     "not": "ardaocakbasi.com → aseocakbasi.com yönlendirmesi; \"Ase Ocakbaşı\" adı"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "Resmî site",
+     "url": "https://aseocakbasi.com/",
+     "tarih": "2026-11-12",
+     "guc": "güçlü",
+     "not": "aynı adres, aynı telefon, info@ardaocakbasi.com"
+    }
+   ],
+   "yama": {
+    "state": "reopened",
+    "checkedAt": "2026-11-12",
+    "official": "Resmî alan adı (ardaocakbasi.com) aseocakbasi.com'a yönleniyor; sitede \"Ase Ocakbaşı\" adıyla aynı adres (Esenkent, Baraj Yolu No:44, Ümraniye), kayıttaki telefon (0532 178 27 32) ve info@ardaocakbasi.com",
+    "confidence": "yüksek",
+    "note": "Kapalı DEĞİL: işletme aynı adres ve telefonla \"Ase Ocakbaşı\" adını kullanıyor (isim değişikliği). Ad düzeltmesi sahip kararı",
+    "sources": [
+     "https://aseocakbasi.com/"
+    ]
+   },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu",
+    "kapsamDisi": "Profil adının \"Ase Ocakbaşı\" yapılması bu onaya dahil değildi; ayrı onaylandı (adDuzeltme)"
+   }
+  },
+  {
+   "slug": "the-hunger-umraniye-limonlu-cadde-umraniye",
+   "tur": "çelişkili kanıt (güçlü)",
+   "guven": "düşük",
+   "oneri": "Kesin kapalı kaydı şüpheye indirilsin (closed_confirmed → closed_suspected)",
+   "etki": "GÖRÜNÜR: profildeki \"Kalıcı olarak kapandı\" notu kalkar; mekân önerilere, Sor'a ve popüler listelere döner; Google puanı varsa yeniden gösterilir.",
+   "kimlikKaniti": "markanın şube listesindeki ad kayıttaki şube adıyla aynı (\"Ümraniye Limonlu Cadde\"); şube sayfasında adres okunamadı",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki denetim)",
+     "url": null,
+     "tarih": "2026-11-06",
+     "guc": "güçlü",
+     "not": "tam görünüm"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "Resmî şube listesi",
+     "url": "https://thehunger.com.tr/subeler",
+     "tarih": "2026-11-12",
+     "guc": "güçlü",
+     "not": "\"Ümraniye Limonlu Cadde\" listede"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "OSM changeset",
+     "url": "https://www.openstreetmap.org/changeset/184309885",
+     "tarih": "2026-06-19",
+     "guc": "zayıf",
+     "not": "\"şubesinin açılışı için yapılan değişiklik\""
+    }
+   ],
+   "yama": {
+    "state": "closed_suspected",
+    "checkedAt": "2026-11-12",
+    "official": "Markanın resmî şube listesinde (thehunger.com.tr/subeler, 12.11.2026) \"Ümraniye Limonlu Cadde\" var; OSM öğesi 19.06.2026'da \"şubesinin açılışı için yapılan değişiklik\" açıklamasıyla eklenmiş",
+    "confidence": "düşük",
+    "note": "Çelişen Google dışı kanıt: şube resmî listede ve OSM'de 2026'da açılış kaydı var. Google'daki kalıcı kapalı kayıt eski bir işletmeye ait olabilir — elle doğrulanmalı",
+    "sources": [
+     "https://thehunger.com.tr/subeler",
+     "https://www.openstreetmap.org/changeset/184309885"
+    ]
+   },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu"
+   }
+  },
+  {
+   "slug": "emirgan-sutis-besiktas",
+   "tur": "şube kapanışı",
+   "guven": "orta",
+   "oneri": "Kapanış kesinleştirilsin (closed_suspected → closed_confirmed); marka açık, yalnız bu şube",
+   "etki": "GÖRÜNÜR: profilde \"Kalıcı olarak kapandı\" notu çıkar; önerilerden, Sor'dan ve popüler listelerden çıkar; Google puanı gösterilmez.",
+   "kimlikKaniti": "kayıt OSM'de \"Emirgan Sütiş\" adıyla Bebek Arnavutköy Caddesi No:101-103'te; markanın listesinde Emirgan şubesi ayrı duruyor, Arnavutköy yok",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Google (önceki denetim)",
+     "url": null,
+     "tarih": "2026-11-07",
+     "guc": "zayıf",
+     "not": "eşleşme yok; konumda (6 m) kalıcı kapalı kayıt"
+    },
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Resmî şube listesi",
+     "url": "https://www.sutis.com.tr/subeler/",
+     "tarih": "2026-11-12",
+     "guc": "güçlü",
+     "not": "İstanbul şubeleri listeleniyor; Arnavutköy yok"
+    }
+   ],
+   "yama": {
+    "state": "closed_confirmed",
+    "checkedAt": "2026-11-12",
+    "official": "Markanın resmî şube listesinde (sutis.com.tr/subeler, 12.11.2026) Arnavutköy şubesi yok; Emirgan dahil İstanbul şubeleri listeleniyor. Kayıt Bebek Arnavutköy Caddesi No:101-103 adresinde",
+    "confidence": "orta",
+    "note": "Şube kapanışı (marka açık): resmî şube listesinden düşmüş; mevcut kapanma şüphesiyle uyumlu. İki bağımsız sinyal",
+    "sources": [
+     "https://www.sutis.com.tr/subeler/"
+    ]
+   },
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Üçü de onay\")",
+    "kapsam": "yalnız yama'daki kapanış durumu"
+   }
+  }
+ ],
+ "kalsin": {
+  "artlocalist-fatih": {
+   "tur": "belirsiz",
+   "guven": "düşük",
+   "neden": "Rehber sayfaları eski; ne kapanış ne açık kanıtı.",
+   "kanitlar": [
+    {
+     "sinyal": "açık",
+     "kaynak": "Rehber (arama sonucu)",
+     "url": "https://www.tripadvisor.co.uk/Restaurant_Review-g293974-d17728363-Reviews-Artlocalist-Istanbul.html",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "tarihsiz rehber kaydı"
+    }
+   ]
+  },
+  "bes-bicak-steak-house-kasap-esenyurt": {
+   "tur": "belirsiz",
+   "guven": "düşük",
+   "neden": "Resmî site zaman aşımı; rehber kayıtları güncel değil.",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Resmî site",
+     "url": "https://www.besbicak.com/",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "bağlantı zaman aşımı"
+    }
+   ]
+  },
+  "cabra-loca-coffee-fatih": {
+   "tur": "belirsiz (şube)",
+   "guven": "düşük",
+   "neden": "Marka açık; Fatih şubesi resmî kaynakta doğrulanmadı.",
+   "kanitlar": [
+    {
+     "sinyal": "açık",
+     "kaynak": "Rehber (arama sonucu)",
+     "url": "https://www.tripadvisor.com/Restaurant_Review-g293974-d25291951-Reviews-Cabra_Loca-Istanbul.html",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "Hobyar şubesi; tarihsiz"
+    }
+   ]
+  },
+  "dem-karakoy-beyoglu": {
+   "tur": "taşınma (olası)",
+   "guven": "düşük",
+   "neden": "Rehberde \"Artık Kapalı\" başlığı var ama sayfa giriş istiyor; 2017 haberi mekânın yeni yere taşındığını anlatıyor, eski adresi vermiyor. Kayıttaki adresin eski mi yeni mi olduğu bilinmiyor.",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Rehber (arama sonucu)",
+     "url": "https://tr.foursquare.com/v/dem-karak%C3%B6y/5141c977e4b013ea87527016",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "başlıkta \"Artık Kapalı\"; sayfa giriş istiyor"
+    },
+    {
+     "sinyal": "taşınma",
+     "kaynak": "Haber",
+     "url": "https://www.elle.com.tr/extra/radarimizda/dem-karakoy-yeni-hikayesiyle-yeni-yerinde",
+     "tarih": "2017-11-06",
+     "guc": "zayıf",
+     "not": "Bankalar Caddesi alt sokağına taşındı"
+    }
+   ]
+  },
+  "ercan-burger-pendik": {
+   "tur": "kimlik / olası mükerrer",
+   "guven": "düşük",
+   "neden": "Marka açık; Pendik şubesi rehberlerde başka adreste (Erol Kaya Cd.). Kayıt Ercan Pizza ile aynı adreste.",
+   "kanitlar": [
+    {
+     "sinyal": "kimlik",
+     "kaynak": "OSM notu",
+     "url": "https://www.openstreetmap.org/note/4406741",
+     "tarih": "2024-08-28",
+     "guc": "zayıf",
+     "not": "aynı noktada \"Ercan Pizza\" bildirimi"
+    }
+   ]
+  },
+  "fish-var-sariyer": {
+   "tur": "belirsiz",
+   "guven": "düşük",
+   "neden": "Platform ve rehber sayfaları açık görünüyor; tarihli kanıt yok.",
+   "kanitlar": [
+    {
+     "sinyal": "açık",
+     "kaynak": "Platform sayfası (arama sonucu)",
+     "url": "https://fishvar.eatbu.com/",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "resmî site sayılmadı"
+    }
+   ]
+  },
+  "haci-ali-ocakbasi-kadikoy": {
+   "tur": "belirsiz",
+   "guven": "düşük",
+   "neden": "Resmî alan adı DNS'te yok; yakındaki \"inşaat\" notu mekâna özgü değil.",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Resmî alan adı",
+     "url": "https://www.hacialiocakbasi.com",
+     "tarih": "2026-11-05",
+     "guc": "zayıf",
+     "not": "DNS'te yok"
+    }
+   ]
+  },
+  "hanedan-et-besiktas": {
+   "tur": "belirsiz",
+   "guven": "düşük",
+   "neden": "Kayıtta adres yok; resmî iletişim sayfası boş döndü.",
+   "kanitlar": [
+    {
+     "sinyal": "açık",
+     "kaynak": "Rehber (arama sonucu)",
+     "url": "https://www.meyhankoli.com/restoran/istanbul-besiktas-hanedan-restaurant-et-balik-665",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "tarihsiz"
+    }
+   ]
+  },
+  "lunchbox-bayrampasa": {
+   "tur": "belirsiz",
+   "guven": "düşük",
+   "neden": "Kayıtlı site Cookshop'a ait; ek kanıt yok.",
+   "kanitlar": []
+  },
+  "marmaris-expres-atasehir": {
+   "tur": "belirsiz",
+   "guven": "düşük",
+   "neden": "Yalnız eski rehber kaydı.",
+   "kanitlar": []
+  },
+  "nusr-et-burger-bebek-besiktas": {
+   "tur": "kimlik (şube/marka karışık)",
+   "guven": "düşük",
+   "neden": "Aynı adreste marka adı karışık (burger / steakhouse); şube kimliği doğrulanmadı.",
+   "kanitlar": [
+    {
+     "sinyal": "kimlik",
+     "kaynak": "Rehber (arama sonucu)",
+     "url": "https://www.zomato.com/tr/istanbul/nusr-et-burger-bebek-istanbul/info",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "aynı adres birkaç adla"
+    }
+   ]
+  },
+  "ringa-sea-food-besiktas": {
+   "tur": "belirsiz",
+   "guven": "düşük",
+   "neden": "Resmî site yanıt vermiyor; rehberler 2019–2022.",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Resmî site",
+     "url": "https://ringaseafood.com",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "yanıt yok"
+    }
+   ]
+  }
+ },
+ "acikIsaret": {
+  "privato-cafe-beyoglu": {
+   "tur": "tek zayıf işaret",
+   "guven": "düşük",
+   "neden": "Resmî alan adı satışta; rehberlerde ve OSM'de açık. Şüphe açılmadı; site bağlantısı kaldırılmalı.",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Resmî alan adı",
+     "url": "http://privatocafe.com",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "hugedomains.com'a yönleniyor"
+    }
+   ]
+  },
+  "altinkapi-restaurant-fatih": {
+   "tur": "tek zayıf işaret",
+   "guven": "düşük",
+   "neden": "Alan adının süresi dolmuş. Şüphe açılmadı; site bağlantısı kaldırılmalı.",
+   "kanitlar": [
+    {
+     "sinyal": "kapanış",
+     "kaynak": "Resmî alan adı",
+     "url": "http://altinkapiiskender.com",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "expireddomains.com'a yönleniyor"
+    }
+   ]
+  },
+  "burger-hopdaddy-sariyer": {
+   "tur": "tek zayıf işaret",
+   "guven": "düşük",
+   "neden": "Alan adı otomatik üretilmiş bir sayfaya yönleniyor. Şüphe açılmadı; site bağlantısı kaldırılmalı.",
+   "kanitlar": [
+    {
+     "sinyal": "kimlik",
+     "kaynak": "Resmî alan adı",
+     "url": "http://hopdaddyburger.com",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "higgsfield.app'e yönleniyor"
+    }
+   ]
+  },
+  "beso-restaurant-bistro-fatih": {
+   "tur": "kimlik / olası mükerrer",
+   "guven": "düşük",
+   "neden": "Alan adı başka işletmeye (steak-okinawa) yönleniyor; Byzantion Bistro ile olası mükerrer çift. Elle karar.",
+   "kanitlar": [
+    {
+     "sinyal": "kimlik",
+     "kaynak": "Resmî alan adı",
+     "url": "http://restaurantbeso.com",
+     "tarih": "2026-11-12",
+     "guc": "zayıf",
+     "not": "steak-okinawa.com'a yönleniyor"
+    }
+   ]
+  },
+  "desi-vibes-fatih": {
+   "tur": "açık (site düşmüş)",
+   "guven": "orta",
+   "neden": "Site park alanında; OSM'de 2025–2026 yerinde kanıt var. Açık; site bağlantısı kaldırılmalı.",
+   "kanitlar": [
+    {
+     "sinyal": "açık",
+     "kaynak": "OSM (Every Door, yerinde)",
+     "url": "https://www.openstreetmap.org/changeset/182041940",
+     "tarih": "2026-04-30",
+     "guc": "güçlü",
+     "not": "check_date 2025-10-29"
+    }
+   ]
+  }
+ },
+ "sahipKararlari": [
+  {
+   "konu": "yalnız Google (tek sinyal) dayanaklı 27 kesin kapanış",
+   "karar": "kesin kalsın",
+   "tarih": "2026-11-12",
+   "kaynak": "sahip (sohbet yanıtı: \"Kesin kalsın\")",
+   "kapsam": "kapanis-karar.mjs çıktısındaki kesinKapanis listesinde sinif = \"yalnız Google (tek sinyal)\" olan kayıtlar",
+   "etki": "kapanis.json değişmez; kayıtlar kesin kapalı kalır. İki bağımsız sinyal kuralı yeni kesinleştirmelere uygulanır, bu kayıtlara geriye dönük uygulanmadı.",
+   "yenidenDegerlendirme": "Kayıtlardan birinde Google dışı açık sinyali (resmî site, OSM yerinde kontrol, sahadan not) çıkarsa o kayıt ayrıca incelenir."
+  }
+ ],
+ "adDuzeltme": [
+  {
+   "slug": "arda-ocakbasi-umraniye",
+   "eskiAd": "Arda Ocakbaşı",
+   "yeniAd": "Ase Ocakbaşı",
+   "tur": "isim değişikliği",
+   "guven": "yüksek",
+   "kimlikKaniti": "aynı adres (Baraj Yolu No:44, Ümraniye), kayıttaki telefon (0532 178 27 32) ve ardaocakbasi.com e-postası yeni adlı sitede; eski alan adı yeni siteye yönleniyor",
+   "kanitlar": [
+    {
+     "sinyal": "isim",
+     "kaynak": "Resmî site",
+     "url": "https://aseocakbasi.com/",
+     "tarih": "2026-11-12",
+     "guc": "güçlü",
+     "not": "ardaocakbasi.com → aseocakbasi.com yönlendirmesi; \"Ase Ocakbaşı\" adı"
+    },
+    {
+     "sinyal": "açık",
+     "kaynak": "Resmî site",
+     "url": "https://aseocakbasi.com/",
+     "tarih": "2026-11-12",
+     "guc": "güçlü",
+     "not": "aynı adres, aynı telefon, info@ardaocakbasi.com"
+    }
+   ],
+   "korunan": "slug (profil adresi), OSM ref, adres, telefon, koordinat, tür, kategori ve diğer bütün alanlar; aynı profil, ikinci profil açılmaz",
+   "etki": "Profil başlığı, arama, Sor ve SEO başlığı yeni adı gösterir. Eski adla (\"Arda\") aramada profil bulunmaz; eski profil adresi çalışır. Google puanı günlük kontrolünde ad benzerliği düşeceği için eşleşme yeniden onaya düşebilir (otomasyon değişmedi). OSM öğesinde ad hâlâ \"Arda Ocakbaşı\".",
+   "onay": {
+    "karar": "onaylandı",
+    "tarih": "2026-11-12",
+    "kaynak": "sahip (sohbet yanıtı: \"Evet, adı değiştir\")",
+    "kapsam": "yalnız venues.json'daki name alanı"
+   }
+  }
+ ]
+}
