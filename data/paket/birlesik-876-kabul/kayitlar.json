@@ -1,0 +1,44 @@
+[
+  {
+    "ref": "isletme/monteverdi-ristorante-besiktas",
+    "slug": "monteverdi-ristorante-besiktas",
+    "name": "Monteverdi Ristorante",
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan",
+    "district": "Beşiktaş",
+    "address": "Saray Caddesi No:5, Cihannüma (Conrad Istanbul Bosphorus), Beşiktaş",
+    "website": "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/dining/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/dining/",
+    "wave": 23,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-16",
+    "verifiedAt": "2026-11-16",
+    "confidence": "güçlü",
+    "cuisine": [
+      "italian"
+    ],
+    "verification": "İşletmecinin güncel restoran ve otel sayfaları normal tarayıcıda açıldı; Conrad içindeki Monteverdi adı ve Saray Caddesi No:5 adresi araştırma manifestindeki bağımsız rehber kaydı ve MICHELIN sayfasıyla karşılaştırıldı. Kanıt: docs/katalog/birlesik-876-kabul.json. Oteldeki Manzara, Monet ve Summit ile aynı işletme sayılmaz. Koordinat, OSM kimliği, puan, ödül, fiyat, saat, telefon, fotoğraf ve menü aktarılmadı."
+  },
+  {
+    "ref": "isletme/sahan-atasehir",
+    "slug": "sahan-atasehir",
+    "name": "Sahan Ataşehir",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Ataşehir",
+    "address": "Kardelen Sokak No:4, Barbaros Mahallesi, Ataşehir",
+    "website": "https://sahan.com/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://sahan.com/",
+    "wave": 23,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-16",
+    "verifiedAt": "2026-11-16",
+    "confidence": "güçlü",
+    "cuisine": [
+      "turkish"
+    ],
+    "verification": "İşletmecinin ana sayfasındaki Kardelen No:4 / 0216 315 37 37, PR65 içindeki tarihli G&M 2026 Ataşehir kanıtıyla eşleşir. Şube listesindeki Ataşehir Vega No:18 / 315 36 36 ve Suadiye Bağdat No:461 farklıdır; aktarılmadı. Kaynak: docs/katalog/birlesik-876-kabul.json. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat aktarılmadı."
+  }
+]

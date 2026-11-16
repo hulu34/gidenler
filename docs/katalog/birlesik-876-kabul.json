@@ -1,0 +1,288 @@
+{
+  "summary": {
+    "productionSha": "2b437577f4a02197482fb90e46b5f75a3f0b96df",
+    "productionTotal": 876,
+    "productionActive": 841,
+    "productionActiveRestaurant": 716,
+    "acceptedCandidates": 2,
+    "previewAdded": 0,
+    "newProductionRecords": 0,
+    "targetTotal": 878,
+    "targetActive": 843,
+    "targetActiveRestaurant": 718,
+    "activeCafe": 114,
+    "activeBar": 11,
+    "closed": 35
+  },
+  "records": [
+    {
+      "candidateKey": "monteverdi ristorante|besiktas",
+      "slug": "monteverdi-ristorante-besiktas",
+      "name": "Monteverdi Ristorante",
+      "district": "Beşiktaş",
+      "address": "Saray Caddesi No:5, Cihannüma (Conrad Istanbul Bosphorus), Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "kind": "İtalyan",
+      "officialSource": "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/dining/",
+      "officialSources": [
+        "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/dining/",
+        "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/monteverdi-ristorante-3/",
+      "independentDate": "2025-12-23",
+      "independentSupplement": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/monteverdi-ristorante",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "researchPr": 56,
+      "researchSha": "4fbd8824cf64c4676b590e80831d3a6fefaefb13",
+      "researchExtraPr": 58,
+      "researchExtraSha": "1269682e04e93f3f9506bba89e74ebc09e961e52",
+      "note": "Eksik olan işletmeci kaydı Hilton restoran/otel sayfalarında tamamlandı. Otomatik HTTP 403 normal tarayıcıda site açılarak doğrulandı; koruma aşılmadı. G&M tarih/adres kanıtı mevcut Claude tesliminden korunur; bu tur G&M zaman aşımına uğradı, yeni erişim başarısı iddia edilmez. MICHELIN sayfası web aracında adres ve İtalyan/Pizza türüyle eşleşti; yerel HTTP202 boş yanıtı kabul sayılmadı. Yalnız olgusal kimlik/adres/tür aktarılır; rehber metni/puanı/görseli/ödülü aktarılmaz.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false,
+      "applicationOriginPr": 64,
+      "applicationOriginSha": "40239d6fb6d6cd9434153ab54373095eba9f7e19"
+    },
+    {
+      "candidateKey": "sahan|atasehir",
+      "researchCandidateKey": "sahan|kadikoy",
+      "slug": "sahan-atasehir",
+      "name": "Sahan Ataşehir",
+      "district": "Ataşehir",
+      "address": "Kardelen Sokak No:4, Barbaros Mahallesi, Ataşehir",
+      "categoryId": "cat.restaurant",
+      "kind": "Kebapçı / Ocakbaşı",
+      "officialSource": "https://sahan.com/",
+      "officialSources": [
+        "https://sahan.com/",
+        "https://sahan.com/subelerimiz/"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/sahan-atasehir/",
+      "independentDate": "2025-12-23",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "researchPr": 65,
+      "researchSha": "886200a6281fcb97e78403dfb7ce2624cc410e3a",
+      "note": "PR65 özgün anahtarı Kadıköy olsa da iki kaynak Ataşehir Kardelen No4 / 3153737 kaydını kanıtlar. Kod adayı yalnız Ataşehir. Güncel işletmeci şube sayfasında Vega No18 / 3153636, Suadiye No461 / 7714747 ayrı; bu numaralar ve telefonlar birleştirilmedi. Site kebap/Türk-Gaziantep yemeklerini ve restoran öz tanımını açıkça verir; tür resmî kaynaktan, yemek/menü eşleşmesi üretilmedi.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false,
+      "branchSeparation": {
+        "accepted": {
+          "district": "Ataşehir",
+          "street": "Kardelen",
+          "door": "4",
+          "phoneEvidenceOnly": "02163153737"
+        },
+        "notAccepted": [
+          {
+            "branch": "Ataşehir Vega",
+            "door": "18",
+            "phoneEvidenceOnly": "02163153636"
+          },
+          {
+            "branch": "Suadiye/Kadıköy",
+            "door": "461",
+            "phoneEvidenceOnly": "02167714747"
+          }
+        ]
+      }
+    }
+  ],
+  "sourceDelivery": {
+    "pr": 65,
+    "sha": "886200a6281fcb97e78403dfb7ce2624cc410e3a",
+    "reviewed": 20,
+    "researchCompletedClaims": 3,
+    "independentlyAcceptedFromDelivery": 1,
+    "conditionalClaimsHeld": 2,
+    "alreadyPending": 17,
+    "partialBranchHeld": "sahan|kadikoy"
+  },
+  "holds": [
+    {
+      "candidateKey": "az cok thai|beyoglu",
+      "decision": "KATEGORI_KARARI_BEKLIYOR",
+      "reason": "PR65 kimlik/adres/telefon eşleşmesini tamamladı; café setting ifadesine karşı öğle/akşam Thai yemek servisi var. Bu birleşik restoran paketinde kategori kararı verilmiş varsayılmadı. Bu tur resmî site web aracında zaman aşımı; yeni erişim başarısı iddia edilmez.",
+      "evidenceStatus": "TAMAMLANDI"
+    },
+    {
+      "candidateKey": "hamdi restaurant|fatih",
+      "decision": "ADRES_CELISKISI_KAPANMADI",
+      "reason": "Resmî site ve G&M No11 desteği var; önceki No17 kaynakları yeniden karşılaştırılmadı. PR65 tamamlandı etiketi eski çelişkiyi kendiliğinden kapatmaz. Resmî5280390 ve G&M5280930 telefonları farklı; aktarılmaz.",
+      "evidenceStatus": "TAMAMLANDI"
+    },
+    {
+      "candidateKey": "sahan|kadikoy",
+      "decision": "KADIKOY_SUBESI_BEKLIYOR",
+      "reason": "Bağdat No461 için tarihli bağımsız şube kanıtı yok; Ataşehir kanıtı bu şubeye taşınmadı."
+    },
+    {
+      "candidateKey": "mykorini istanbul|beyoglu",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "27J ile No:5'in aynı giriş olduğunu gösteren kaynak yok (telefon ve sokak aynı)"
+      ]
+    },
+    {
+      "candidateKey": "filo d olio caddebostan by danilo zanna|kadikoy",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Caddebostan şubesinin güncel adresi ve faaliyeti; resmî kaynak yeni adresi henüz vermiyor"
+      ]
+    },
+    {
+      "candidateKey": "il cortile|beyoglu",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "No:20/A'yı veren tarihli bağımsız kaynak yok; G&M 14 D:20 diyor (telefon aynı)"
+      ]
+    },
+    {
+      "candidateKey": "dafni atesbasi|uskudar",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Sokak adı iki kaynakta farklı (Nakkaştepe Yolu ↔ Babanakkaş Sok.); telefon ve kapı no aynı, sokak eşdeğerliği kanıtlanmadı"
+      ]
+    },
+    {
+      "candidateKey": "akali mall of istanbul|basaksehir",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Mall of İstanbul şubesi için son 12 ayda tarihli bağımsız kaynak yok"
+      ]
+    },
+    {
+      "candidateKey": "sushi barba|sariyer",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "AVM kapı/birim numarası resmî kaynakta yok; No:73 ↔ No:11 çözülmedi"
+      ]
+    },
+    {
+      "candidateKey": "white burger pendik|pendik",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Şube düzeyinde tarihli bağımsız kaynak yok; Millet Caddesi 32 ile ilişki çözülmedi"
+      ]
+    },
+    {
+      "candidateKey": "adana ocakbasi kurtulus|sisli",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Kurtuluş adresinde güncel işletmeci kaynağı yok; resmî site yalnız Nişantaşı'nı veriyor (taşınma olabilir, kanıtlanmadı)"
+      ]
+    },
+    {
+      "candidateKey": "caki restoran|basaksehir",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Kapı numarası hiçbir kaynakta yok (adres yalnız site/dükkân bloğu düzeyinde)"
+      ]
+    },
+    {
+      "candidateKey": "ali ocakbasi|besiktas",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+      ]
+    },
+    {
+      "candidateKey": "efendy|besiktas",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+      ]
+    },
+    {
+      "candidateKey": "eskiyer restaurant|sariyer",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+      ]
+    },
+    {
+      "candidateKey": "gou society|kadikoy",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+      ]
+    },
+    {
+      "candidateKey": "gunaydin kebap restoran|besiktas",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+      ]
+    },
+    {
+      "candidateKey": "kendime istanbul|kadikoy",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+      ]
+    },
+    {
+      "candidateKey": "kruton|sisli",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+      ]
+    },
+    {
+      "candidateKey": "yenikoy balikcisi|sariyer",
+      "decision": "KANIT_BEKLIYOR",
+      "reason": [
+        "Güncel işletmeci/resmî kaynak (ad + adres) bulunamadı"
+      ]
+    },
+    {
+      "candidateKey": "maderia sushi bar|sisli",
+      "decision": "SAHIP_BEKLETMESI",
+      "reason": "İncelenmez, kabul edilmez."
+    },
+    {
+      "candidateKey": "suna nin yeri|uskudar",
+      "decision": "MEVCUT_ADRES_BEKLETMESI",
+      "reason": "#60/#61 açık; canlı adres/telefon değiştirilmez."
+    },
+    {
+      "candidateKey": "liman istanbul|beyoglu",
+      "decision": "YENI_ADAY_DEGIL_AYRI_KIMLIKLER_KORUNUR",
+      "reason": "Liman İstanbul/Galataport ve Liman Karaköy/Fermeneciler birleştirilmez."
+    },
+    {
+      "candidateKey": "kor agop restaurant|fatih",
+      "decision": "SUBE_KIMLIGI_BELIRSIZ",
+      "reason": "Fatih araştırması Beyoğlu Pera slug ile yayımlanmış sayılmaz; ikisi birleştirilmez."
+    }
+  ],
+  "status": "YEREL_BIRLESIK_ADAY_GERCEK_PREVIEW_YOK",
+  "pr64Preserved": {
+    "sha": "40239d6fb6d6cd9434153ab54373095eba9f7e19",
+    "changed": false
+  },
+  "identityReview": [
+    {
+      "slug": "sahan-atasehir",
+      "reviewPairs": [
+        {
+          "name": "Paşahan Künefe",
+          "slug": "pasahan-kunefe-maltepe",
+          "address": null
+        }
+      ],
+      "decision": "No4 Ataşehir ayrı kimlik; Vega18 ve Suadiye461 aktarılmaz."
+    }
+  ],
+  "currentResearchEntry": {
+    "pr": 69,
+    "sha": "750f4cdeb7ed57c378bd9d5f0d00c7e3e4b73456",
+    "path": "data/arastirma/toplu-teslim/guncel-durum.json",
+    "blobSha": "2c65a9a989d39ea907646e1bd1253959faafe1ee",
+    "researchRows": 883,
+    "publishedResearchRows": 152,
+    "awaitingEvidenceRows": 709,
+    "notLiveCatalogCounts": true,
+    "note": "Kimlik uzlaşması güncel girişten okunur; tarihî ekler/test fixtureları yeniden yazılmadı. Araştırma verisi kataloğa ithal edilmedi."
+  }
+}
