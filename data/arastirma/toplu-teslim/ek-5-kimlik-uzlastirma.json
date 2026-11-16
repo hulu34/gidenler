@@ -1,0 +1,337 @@
+{
+ "_aciklama": "Toplu teslim eki 5 — #67 planındaki 9 kimlik/eşleşme kaydının yerel uzlaştırması ve #63 için iki düzeltme önerisi. Yalnız yerel manifest, katalog ve dal dosyaları okundu; yeni web araştırması, ücret ve dış iletişim yok. Ad benzerliği tek başına birleştirme gerekçesi sayılmadı; şube, adres, telefon ve kayıt kimlikleri karşılaştırıldı. Hiçbir kayıt yayına hazır ilan edilmedi; kaynak/faaliyet eksikleri ayrı kalıyor. Kabul standardı, canlı katalog, DB, Preview, Production, Pilot birleşik dalı, Hamdi/Az Çok Thai ve kullanıcı beklemeleri değişmedi.",
+ "olusturma": "2026-11-16",
+ "temel": {
+  "pr67": "bcd7f79ff5c02edd128a92a2382ce5c133bdaa76",
+  "pr63": "f88fa1cf6f99b784232a4f0460c067cd071c718f"
+ },
+ "canliTaban": {
+  "pr": 62,
+  "sha": "2b437577f4a02197482fb90e46b5f75a3f0b96df",
+  "toplam": 876
+ },
+ "yerelKapsam": [
+  "feature/investor-v1 @ 2b43757 (canlı ve data/ altı)",
+  "katalog/gece-2000 @ ac9aee9",
+  "feature/bin-mekan @ fde27dd",
+  "arastirma/gm2026-kanitli-aday @ 77bc434"
+ ],
+ "kural": {
+  "GUVENLI_ESLESME": "aynı ad ve aynı adres + kapı no ya da aynı kayıt kimliği",
+  "AYRI_ISLETME": "farklı ilçe/adres/kimlik ve aynılığı gösteren ortak alan yok",
+  "BELIRSIZ": "ortak alanlar var ama adres/kapı/telefon karşılaştırılamıyor ya da çelişiyor; ya da iddia edilen eş yerelde bulunamadı"
+ },
+ "sayim": {
+  "kayit": 9,
+  "sonuc": {
+   "GUVENLI_ESLESME": 1,
+   "BELIRSIZ": 8
+  },
+  "karsilastirma": {
+   "AYNI_KAYIT": 1,
+   "AYRI": 4,
+   "BELIRSIZ": 6
+  },
+  "duzeltmeOnerisi": 2
+ },
+ "kayitlar": [
+  {
+   "anahtar": "grandma s wonderland|silivri",
+   "kayitKimligi": "seyrek/grandma-s-wonderland-silivri",
+   "adres": "Gazitepe Mah., Ören Çiftlik Evleri, Akören Caddesi No:114, Silivri",
+   "telefon": null,
+   "sonuc": "GUVENLI_ESLESME",
+   "karsilastirmalar": [
+    {
+     "hedef": "#48 hattı Overture öneri kaydı",
+     "kaynakDal": "katalog/gece-2000 @ ac9aee9",
+     "dosya": "data/paket/istanbul-15/overture-oneri.json",
+     "kayitKimligi": "overture:b1226550-3f89-47b6-8684-3adea23ec0e3",
+     "ad": "Grandma's Wonderland",
+     "ilce": null,
+     "adres": "Gazitepe Mah, Akoren Caddesi, Çiftlik Evleri No:114",
+     "telefon": null,
+     "karar": "AYNI_KAYIT",
+     "gerekce": "Aynı ad; aynı mahalle, cadde ve kapı no (114). #50'nin \"katalog/gece-2000\" eşleşmesi bu kayıt."
+    },
+    {
+     "hedef": "canlı kayıt",
+     "kaynakDal": "feature/investor-v1 @ 2b43757",
+     "dosya": "data/real/venues.json",
+     "kayitKimligi": "grandma-suadiye-kadikoy",
+     "ad": "Grandma Suadiye",
+     "ilce": "Kadıköy",
+     "adres": "Bağdat Caddesi No:396, Suadiye",
+     "telefon": null,
+     "karar": "AYRI",
+     "gerekce": "Farklı ilçe ve adres; yalnız ad benzerliği."
+    }
+   ],
+   "not": "Eşi canlı değil; #48 hattındaki Overture önerisi. Overture kategorisi 'hotel' (harita verisi, tür kanıtı değil). Kanıt eksikleri ayrı kalıyor: yalnız yemek.com var, işletmeci kaynağı yok.",
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  },
+  {
+   "anahtar": "the red balloon|sariyer",
+   "kayitKimligi": "gm26/the-red-balloon",
+   "adres": "Yeniköy, Güzelce Ali Paşa Cad. Salih Ağa Sk. No:5, Sarıyer",
+   "telefon": "0532 434 34 95",
+   "sonuc": "BELIRSIZ",
+   "karsilastirmalar": [
+    {
+     "hedef": "canlı kayıt",
+     "kaynakDal": "feature/investor-v1 @ 2b43757",
+     "dosya": "data/real/isletme.json",
+     "kayitKimligi": "the-red-balloon-beyoglu",
+     "ad": "The Red Balloon",
+     "ilce": "Beyoğlu",
+     "adres": "İstiklal Caddesi No:153/4, Kuloğlu, Beyoğlu",
+     "telefon": "+90 532 434 34 95 (#48 paket 15 karar.json)",
+     "karar": "BELIRSIZ",
+     "gerekce": "Aynı ad ve aynı telefon, farklı ilçe ve adres. Taşınma mı ikinci şube mi, yerel kanıtla ayrılamıyor."
+    }
+   ],
+   "not": "Yayımlanmış sayılmadı. Ayrı not: G&M (24.12.2025) Sarıyer adresi veriyor; canlı Beyoğlu adresinin güncelliği ayrıca incelenmeli (canlı alan değiştirilmedi).",
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  },
+  {
+   "anahtar": "masa restaurant|sariyer",
+   "kayitKimligi": "gm26/masa-restaurant",
+   "adres": "İstinye Park AVM, Tarabya Bayırı Cad. No:11 D:486, Sarıyer",
+   "telefon": "+90 212 345 53 23",
+   "sonuc": "BELIRSIZ",
+   "karsilastirmalar": [
+    {
+     "hedef": "#48 inceleme kaydı",
+     "kaynakDal": "katalog/gece-2000 @ ac9aee9",
+     "dosya": "data/paket/istanbul-17|19|24/inceleme.json",
+     "kayitKimligi": "overture:efce4963-66bf-4b1d-8039-f02a9628b998",
+     "ad": "Masa İstanbul",
+     "ilce": "Sarıyer",
+     "adres": null,
+     "telefon": null,
+     "karar": "BELIRSIZ",
+     "gerekce": "Aynı ilçe, site masarestaurant.com.tr. Yerel kayıtta adres ve telefon değeri yok; 'ad + telefon + sokak' notu var ama değerler saklanmamış. Kapı karşılaştırılamadı."
+    }
+   ],
+   "not": null,
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  },
+  {
+   "anahtar": "natolia|basaksehir",
+   "kayitKimligi": "seyrek/natolia-basaksehir",
+   "adres": "Ziya Gökalp Mah., Süleyman Demirel Blv., Mall of İstanbul, MOI Cadde Kuzey Girişi, Başakşehir",
+   "telefon": null,
+   "sonuc": "BELIRSIZ",
+   "karsilastirmalar": [
+    {
+     "hedef": "manifest kaydı",
+     "kaynakDal": "arastirma/gm2026-kanitli-aday @ 77bc434",
+     "dosya": "data/arastirma/gm2026/adaylar.json",
+     "kayitKimligi": "gm26/natolia-istanbul (manifest: natolia istanbul|basaksehir)",
+     "ad": "Natolia İstanbul",
+     "ilce": "Başakşehir",
+     "adres": "Mall Of İstanbul, Ziya Gökalp Mah., Süleyman Demirel Bulv.",
+     "telefon": "+90 533 576 01 01",
+     "karar": "BELIRSIZ",
+     "gerekce": "Aynı AVM ve ilçe; ikisinde de kapı no yok; seyrek kaydında telefon yok. Tür farklı (Kahvaltı ↔ Türk mutfağı). Olası manifest-içi mükerrer, kanıtlanmadı."
+    },
+    {
+     "hedef": "#48 hattı inceleme kaydı",
+     "kaynakDal": "katalog/gece-2000 @ ac9aee9",
+     "dosya": "data/paket/istanbul-6|7/inceleme.json",
+     "kayitKimligi": "node/12510981391",
+     "ad": "Anatolia",
+     "ilce": "Beyoğlu",
+     "adres": null,
+     "telefon": null,
+     "karar": "AYRI",
+     "gerekce": "Farklı ilçe; ad yalnız harf dizisi olarak benziyor."
+    }
+   ],
+   "not": null,
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  },
+  {
+   "anahtar": "sahil cafe 1a|buyukcekmece",
+   "kayitKimligi": "seyrek/sahil-cafe-1a-buyukcekmece",
+   "adres": "Kumburgaz Mah., Kufalı Sok., Büyükçekmece",
+   "telefon": null,
+   "sonuc": "BELIRSIZ",
+   "karsilastirmalar": [],
+   "not": "#50'nin 'PROD-dosya, katalog/gece-2000' eşleşmesi dört yerel dalda (Production, katalog/gece-2000, feature/bin-mekan, gm2026) yeniden üretilemedi. Mükerrer sayılmadı; eşi de kanıtlanmadı.",
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  },
+  {
+   "anahtar": "fes cafe|silivri",
+   "kayitKimligi": "seyrek/fes-cafe-silivri",
+   "adres": "Piri Mehmet Paşa Mah., Albay Yunus Dirik Sok. No:40, Silivri",
+   "telefon": null,
+   "sonuc": "BELIRSIZ",
+   "karsilastirmalar": [],
+   "not": "#50'nin 'katalog/gece-2000' eşleşmesi dört yerel dalda yeniden üretilemedi. Mükerrer sayılmadı; eşi de kanıtlanmadı.",
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  },
+  {
+   "anahtar": "pierre loti tepesi turistik tesisleri|eyupsultan",
+   "kayitKimligi": "seyrek/pierre-loti-tepesi-turistik-tesisleri-eyupsultan",
+   "adres": "Merkez Mah., İdris Köşkü Cad., Eyüpsultan",
+   "telefon": null,
+   "sonuc": "BELIRSIZ",
+   "karsilastirmalar": [
+    {
+     "hedef": "canlı kayıt",
+     "kaynakDal": "feature/investor-v1 @ 2b43757",
+     "dosya": "data/real/venues.json",
+     "kayitKimligi": "pierre-loti-kahvehanesi-eyupsultan (node/414982463)",
+     "ad": "Pierre Loti Kahvehanesi",
+     "ilce": "Eyüpsultan",
+     "adres": null,
+     "telefon": null,
+     "karar": "BELIRSIZ",
+     "gerekce": "Tesisler kompleksi ile içindeki kahvehane aynı işletme mi ayrı birim mi belirsiz; canlı kayıtta adres yok, kategori kafe."
+    }
+   ],
+   "not": "Yayımlanmış sayılmadı.",
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  },
+  {
+   "anahtar": "sirdanci remzi|esenyurt",
+   "kayitKimligi": "seyrek/sirdanci-remzi-esenyurt",
+   "adres": "Radius Residence, Doğan Araslı Blv., 138. Sok., Esenyurt",
+   "telefon": null,
+   "sonuc": "BELIRSIZ",
+   "karsilastirmalar": [
+    {
+     "hedef": "#48 inceleme kaydı",
+     "kaynakDal": "katalog/gece-2000 @ ac9aee9",
+     "dosya": "data/paket/istanbul-16/inceleme.json",
+     "kayitKimligi": "overture:ac5af56a-c2c1-4232-ae1c-72ebfddba2ec",
+     "ad": "Şırdancı Paçacı Remzi",
+     "ilce": "Esenyurt",
+     "adres": null,
+     "telefon": null,
+     "karar": "BELIRSIZ",
+     "gerekce": "Aynı ilçe, benzer ad, site sirdancipacaciremzi.com. Yerel kayıtta adres yok; kapı karşılaştırılamadı."
+    },
+    {
+     "hedef": "canlı kayıt",
+     "kaynakDal": "feature/investor-v1 @ 2b43757",
+     "dosya": "data/real/venues.json",
+     "kayitKimligi": "remzi-et-mangal-eyupsultan",
+     "ad": "Remzi Et Mangal",
+     "ilce": "Eyüpsultan",
+     "adres": null,
+     "telefon": null,
+     "karar": "AYRI",
+     "gerekce": "Farklı ilçe ve ad."
+    }
+   ],
+   "not": null,
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  },
+  {
+   "anahtar": "seraf restaurant|bagcilar",
+   "kayitKimligi": "seyrek/seraf-restaurant-bagcilar",
+   "adres": "Mahmutbey, Peyami Safa Cd. 38/D, Bağcılar",
+   "telefon": null,
+   "sonuc": "BELIRSIZ",
+   "karsilastirmalar": [
+    {
+     "hedef": "MICHELIN 2026 listesi (yerel)",
+     "kaynakDal": "feature/investor-v1 @ 2b43757",
+     "dosya": "data/katalog/michelin-istanbul-2026.json",
+     "kayitKimligi": "michelin:seraf-mahmutbey",
+     "ad": "Seraf Mahmutbey",
+     "ilce": "Bağcılar",
+     "adres": null,
+     "telefon": null,
+     "karar": "BELIRSIZ",
+     "gerekce": "Aynı ilçe ve semt (Mahmutbey); yerel listede adres yok, kapı karşılaştırılamadı."
+    },
+    {
+     "hedef": "canlı kayıt",
+     "kaynakDal": "feature/investor-v1 @ 2b43757",
+     "dosya": "data/real/isletme.json",
+     "kayitKimligi": "seraf-vadi-sariyer",
+     "ad": "Seraf Vadi",
+     "ilce": "Sarıyer",
+     "adres": "Kemerburgaz Caddesi No:7G, İç Kapı No:7, Ayazağa (Vadistanbul), Sarıyer",
+     "telefon": null,
+     "karar": "AYRI",
+     "gerekce": "Aynı marka, farklı şube (ilçe ve adres farklı)."
+    }
+   ],
+   "not": null,
+   "yayinaHazir": false,
+   "kanitEksikleriAyri": true
+  }
+ ],
+ "duzeltmeOnerileri63": [
+  {
+   "anahtar": "kor agop restaurant|fatih",
+   "ek2Durum": "yayimlandi (canlı kor-agop-beyoglu ile #56 yayın bağı)",
+   "oneri": "Yayımlanmış sayılmasın; durum kanit-bekliyor, alt neden şube ilişkisi belirsiz. Canlı Beyoğlu kaydı değişmez.",
+   "kanit": {
+    "manifest": {
+     "kaynak": "G&M (23.12.2025) via gm26/kor-agop-restaurant",
+     "adres": "Şehsuvar Bey Mah., Ördekli Bakkal Sok., Fatih (kapı no yok)",
+     "telefon": "+90 212 517 23 35"
+    },
+    "canli": {
+     "slug": "kor-agop-beyoglu",
+     "adres": "Asmalı Mescit Sokak No:55, Beyoğlu",
+     "telefon": "+90 212 249 51 33",
+     "website": "http://www.koragop.com/index_pera.html"
+    }
+   },
+   "gerekce": "Adres, ilçe ve telefon farklı. Canlı kaydın sitesi 'pera' sayfası, markanın birden fazla şubesi olabileceğini gösteriyor ama Fatih şubesini kanıtlamıyor. #50 'mukerrer' notu da ilçe farkını yazmıştı. Pilot raporuyla uyumlu.",
+   "sayimEtkisi": {
+    "ek2": {
+     "yayimlandi": "153 → 152",
+     "kanitBekliyor": "708 → 709 (restoran 537 → 538)"
+    }
+   },
+   "uygulandi": false
+  },
+  {
+   "anahtar": "liman istanbul|beyoglu",
+   "ek2Durum": "yayimlandi; iki canlı slug'a bağlı ve 'olası çift kayıt' notlu",
+   "oneri": "Yalnız liman-istanbul-beyoglu'ya bağlansın; liman-karakoy-beyoglu bağı kaldırılsın; 'olası çift kayıt' notu geri çekilsin. İki canlı kayıt ayrı kimliktir, mükerrer sayılmaz.",
+   "kanit": {
+    "manifest": {
+     "kaynak": "G&M (23.12.2025) via gm26/liman-istanbul",
+     "adres": "Galataport, Kılıçali Paşa Mah., Meclis-i Mebusan Sk. O2 Blok",
+     "telefon": "+90 212 877 09 48"
+    },
+    "canliEsi": {
+     "slug": "liman-istanbul-beyoglu",
+     "adres": "Meclis-i Mebusan Sokak No:8, Galataport O2 Blok, Kılıçali Paşa Mahallesi, Beyoğlu",
+     "telefon": "+90 212 877 09 48"
+    },
+    "canliAyri": {
+     "slug": "liman-karakoy-beyoglu",
+     "adres": "Fermeneciler Caddesi, Arap Cami, Beyoğlu",
+     "ref": "node/12512834776",
+     "kaliteSinifi": "B1"
+    }
+   },
+   "gerekce": "Galataport kaydıyla sokak, blok ve telefon aynı; Fermeneciler kaydı farklı sokakta ve ayrı OSM kimliğinde. #56 bağı ad benzerliğinden geldi.",
+   "sayimEtkisi": {
+    "ek2": {
+     "yayimlandiSlug": "154 → 153",
+     "canliKatalogManifestDisi": "722 → 723",
+     "yayimlandi": "değişmez (153)"
+    }
+   },
+   "uygulandi": false
+  }
+ ]
+}
