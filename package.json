@@ -16,6 +16,7 @@
     "test:sor": "tsx scripts/sortest.ts",
     "test:toplu-teslim": "tsx scripts/arastirmatopluteslimtest.ts",
     "test:toplu-teslim-ek1": "tsx scripts/arastirmatopluteslimek1test.ts",
+    "test:toplu-teslim-ek2": "tsx scripts/arastirmatopluteslimek2test.ts",
     "test:arama": "tsx scripts/aramatest.ts",
     "test:anasayfa": "tsx scripts/anasayfatest.ts",
     "test:seo": "tsx scripts/seotest.ts",
