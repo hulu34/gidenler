@@ -1,0 +1,129 @@
+{
+  "summary": {
+    "productionSha": "2b437577f4a02197482fb90e46b5f75a3f0b96df",
+    "productionTotal": 876,
+    "productionActive": 841,
+    "productionActiveRestaurant": 716,
+    "acceptedCandidates": 1,
+    "previewAdded": 0,
+    "newProductionRecords": 0,
+    "targetTotal": 877,
+    "targetActive": 842,
+    "targetActiveRestaurant": 717,
+    "activeCafe": 114,
+    "activeBar": 11,
+    "closed": 35
+  },
+  "records": [
+    {
+      "candidateKey": "monteverdi ristorante|besiktas",
+      "slug": "monteverdi-ristorante-besiktas",
+      "name": "Monteverdi Ristorante",
+      "district": "Beşiktaş",
+      "address": "Saray Caddesi No:5, Cihannüma (Conrad Istanbul Bosphorus), Beşiktaş",
+      "categoryId": "cat.restaurant",
+      "kind": "İtalyan",
+      "officialSource": "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/dining/",
+      "officialSources": [
+        "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/dining/",
+        "https://www.hilton.com/en/hotels/isthcci-conrad-istanbul-bosphorus/"
+      ],
+      "independentSource": "https://www.gault-millau.com.tr/monteverdi-ristorante-3/",
+      "independentDate": "2025-12-23",
+      "independentSupplement": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/monteverdi-ristorante",
+      "checkedAt": "2026-11-16",
+      "decision": "KOD_ADAYINA_KABUL",
+      "researchPr": 56,
+      "researchSha": "4fbd8824cf64c4676b590e80831d3a6fefaefb13",
+      "researchExtraPr": 58,
+      "researchExtraSha": "1269682e04e93f3f9506bba89e74ebc09e961e52",
+      "note": "Eksik olan işletmeci kaydı Hilton restoran/otel sayfalarında tamamlandı. Otomatik HTTP 403 normal tarayıcıda site açılarak doğrulandı; koruma aşılmadı. G&M tarih/adres kanıtı mevcut Claude tesliminden korunur; bu tur G&M zaman aşımına uğradı, yeni erişim başarısı iddia edilmez. MICHELIN sayfası web aracında adres ve İtalyan/Pizza türüyle eşleşti; yerel HTTP202 boş yanıtı kabul sayılmadı. Yalnız olgusal kimlik/adres/tür aktarılır; rehber metni/puanı/görseli/ödülü aktarılmaz.",
+      "location": "KOORDINAT_YOK",
+      "productionApplied": false
+    }
+  ],
+  "holds": [
+    {
+      "name": "Maderia Sushi Bar",
+      "state": "SAHIP_TALIMATIYLA_BEKLIYOR",
+      "reason": "Kullanıcı açıkça bekletiyor; bu pakette incelenmez/eklenmez."
+    },
+    {
+      "name": "Az Çok Thai",
+      "state": "ERISIM_DOGRULANAMADI",
+      "reason": "Tür ve adres kaynakları uyumlu fakat resmî apex/www sayfaları bu ağdan bağlantıyı reddetti. Arama önbelleği canlı erişim kanıtı sayılmadı; bu tur eklenmedi."
+    },
+    {
+      "name": "Chalet",
+      "state": "FAALIYET_BELIRSIZ",
+      "reason": "Arama önbelleğinde temporarily closed metni var; canlı HTTP metninde yalnız pazartesi kapalı yazıyor. Çelişkili faaliyet kanıtı aktif kabul edilmedi."
+    },
+    {
+      "name": "Morini / Parlé",
+      "state": "ADRES_BELIRSIZ",
+      "reason": "Zorlu resmî iletişim Vadi Caddesi2, G&M Morini Koru Sokak2. AVM adıyla sokak eşdeğerliği varsayılmadı."
+    },
+    {
+      "name": "Maromi İstanbul",
+      "state": "ILCE_CELISKISI",
+      "reason": "Rehberler Beyoğlu, başka işletme kaynakları Şişli; bu tur ilçe uydurulmadı."
+    },
+    {
+      "name": "Bado Babadostu Cağ Kebap",
+      "state": "BEKLIYOR",
+      "reason": "Önceki eksik birincil kapı numarası bu tur doğrulanmadı."
+    },
+    {
+      "name": "The Townhouse / Frankie Bar",
+      "state": "AYRI_KATEGORI",
+      "reason": "Restoran paketi dışında bar kayıtları."
+    },
+    {
+      "name": "Balıkçı Kahraman",
+      "state": "ISLETMECI_KAYNAGI_ACILMADI",
+      "reason": "Mevcut resmî site bu tur HTTP500; harita/arama önbelleği faaliyet kanıtı yerine konmadı."
+    },
+    {
+      "name": "Ahmet Ustam Ocakbaşı",
+      "state": "ADRES_AYRINTISI_ACIK",
+      "reason": "Resmî site kapı8, MICHELIN8/1 ve farklı posta kodu. Yapı/iç kapı eşdeğerliği bu pakette varsayılmadı."
+    },
+    {
+      "name": "Fasuli Garden Çekmeköy",
+      "state": "BIRINCIL_ADRES_EKSIK",
+      "reason": "Resmî sayfada kapı numarası okunamadı; üçüncü taraf Google yorumları kanıt olarak aktarılmadı."
+    },
+    {
+      "name": "Tere",
+      "state": "KIMLIK_DONUSUMU_INCELEMESI",
+      "reason": "İşletmeci Topaz’ın yerinde açıldığını bildiriyor; mevcut Topaz kaydının yerine/geçişine ilişkin karar olmadan ayrı yeni kayıt sayılmadı."
+    }
+  ],
+  "status": "YEREL_VE_GERCEK_PREVIEW_KABULU_BEKLIYOR",
+  "identityReview": [
+    {
+      "slug": "monteverdi-ristorante-besiktas",
+      "sharedHotel": [
+        {
+          "name": "Summit Bar & Terrace",
+          "slug": "summit-bar-ve-terrace-besiktas",
+          "address": "Saray Caddesi No:5, Cihannüma Mahallesi, Beşiktaş",
+          "website": "https://conradhotels3.hilton.com/en/hotels/turkey/conrad-istanbul-bosphorus-ISTHCCI/amenities/restaurants-summit.html"
+        },
+        {
+          "name": "Tuğra Restaurant",
+          "slug": "tugra-restaurant-besiktas",
+          "address": "Çırağan Caddesi No:32, Çırağan Sarayı, Beşiktaş",
+          "website": "https://tugrarestaurant.com.tr/en/"
+        },
+        {
+          "name": "Borsa Restaurant Adile Sultan",
+          "slug": "borsa-restaurant-adile-sultan-uskudar",
+          "address": "Vaniköy Caddesi No:12, Adile Sultan Sarayı, Üsküdar",
+          "website": "https://www.borsarestaurants.com/"
+        }
+      ],
+      "decision": "Monteverdi adı mevcut876 içinde yok; Conrad bünyesindeki ayrı restoran konsepti, Manzara/Monet/Summit otomatik birleştirilmez."
+    }
+  ]
+}
