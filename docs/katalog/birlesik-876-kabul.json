@@ -63,28 +63,19 @@
       "decision": "KOD_ADAYINA_KABUL",
       "researchPr": 65,
       "researchSha": "886200a6281fcb97e78403dfb7ce2624cc410e3a",
-      "note": "PR65 özgün anahtarı Kadıköy olsa da iki kaynak Ataşehir Kardelen No4 / 3153737 kaydını kanıtlar. Kod adayı yalnız Ataşehir. Güncel işletmeci şube sayfasında Vega No18 / 3153636, Suadiye No461 / 7714747 ayrı; bu numaralar ve telefonlar birleştirilmedi. Site kebap/Türk-Gaziantep yemeklerini ve restoran öz tanımını açıkça verir; tür resmî kaynaktan, yemek/menü eşleşmesi üretilmedi.",
+      "note": "İşletmeci ana sayfası ve tarihli G&M Ataşehir kaydı Kardelen No:4 adresini destekler. Şube sayfası aynı Ataşehir için Vega No:18 ve farklı telefon verir; iki ayrı Ataşehir şubesi olduğu kanıtlanmadı. Tek Ataşehir kaydı No:4 ile tutulur; kapı numarası farkı açık belirsizliktir. Suadiye/Kadıköy bilgileri aktarılmaz. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat aktarılmadı.",
       "location": "KOORDINAT_YOK",
       "productionApplied": false,
-      "branchSeparation": {
-        "accepted": {
-          "district": "Ataşehir",
-          "street": "Kardelen",
-          "door": "4",
-          "phoneEvidenceOnly": "02163153737"
-        },
-        "notAccepted": [
-          {
-            "branch": "Ataşehir Vega",
-            "door": "18",
-            "phoneEvidenceOnly": "02163153636"
-          },
-          {
-            "branch": "Suadiye/Kadıköy",
-            "door": "461",
-            "phoneEvidenceOnly": "02167714747"
-          }
-        ]
+      "addressEvidence": {
+        "selectedDoor": "4",
+        "selectedSources": [
+          "https://sahan.com/",
+          "https://www.gault-millau.com.tr/sahan-atasehir/"
+        ],
+        "conflictingSource": "https://sahan.com/subelerimiz/",
+        "conflictingDoor": "18",
+        "separateAtasehirBranchesProven": false,
+        "resolution": "Tek Ataşehir kaydı; No:4 kaynak tercihi, kapı numarası farkı açık belirsizlik. Telefon ve koordinat aktarılmaz."
       }
     },
     {
@@ -290,7 +281,7 @@
           "address": null
         }
       ],
-      "decision": "No4 Ataşehir ayrı kimlik; Vega18 ve Suadiye461 aktarılmaz."
+      "decision": "Tek Ataşehir kimliği; No4 kaynak tercihidir, Vega No18 ayrı şube sayılmaz. Suadiye/Kadıköy kaydı aktarılmaz."
     }
   ],
   "currentResearchEntry": {
