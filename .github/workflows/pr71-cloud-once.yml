@@ -2,7 +2,7 @@ name: PR71 bounded isolated Preview acceptance
 on:
   push:
     branches: [inceleme/pr71-preview-kabul-20261116]
-    paths: ['scripts/pr71-cloud-acceptance.mjs', 'scripts/pr71-media-readonly.mjs', 'scripts/pr71-cloud-target.json', 'scripts/pr71-cloud-records.json', '.github/workflows/pr71-cloud-once.yml']
+    paths: ['scripts/pr71-cloud-acceptance.mjs', 'scripts/pr71-media-readonly.mjs', 'scripts/pr71-final-readonly.mjs', 'scripts/pr71-cloud-target.json', 'scripts/pr71-cloud-records.json', '.github/workflows/pr71-cloud-once.yml']
 permissions:
   contents: read
 concurrency:
@@ -27,7 +27,7 @@ jobs:
         env:
           VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
           BROWSER_PACKAGE_JSON: ${{ runner.temp }}/pr71-browser/package.json
-        run: node scripts/pr71-media-readonly.mjs
+        run: node scripts/pr71-final-readonly.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
