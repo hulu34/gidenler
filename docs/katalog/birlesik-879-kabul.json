@@ -1,0 +1,181 @@
+{
+  "status": "LOCAL_CANDIDATE_PREVIEW_NOT_AUTHORIZED",
+  "productionSha": "f4ebf2fe6304f1d83a959493cbca3668b65d5fe4",
+  "productionTree": "af780e09dfb0f891fa2854a6de67d81644b3eec2",
+  "summary": {
+    "productionTotal": 879,
+    "productionActive": 844,
+    "acceptedCodeCandidates": 5,
+    "previewAdded": 0,
+    "newProductionRecords": 0,
+    "targetTotal": 884,
+    "targetActive": 849,
+    "activeRestaurants": 724,
+    "cafes": 114,
+    "bars": 11,
+    "closed": 35
+  },
+  "researchComparison": {
+    "productionSha": "f4ebf2fe6304f1d83a959493cbca3668b65d5fe4",
+    "productionTree": "af780e09dfb0f891fa2854a6de67d81644b3eec2",
+    "catalogTotal": 879,
+    "researchPr": 70,
+    "researchSha": "73a07d5c06371414ced3254be277de732186d8e0",
+    "researchBlob": "c24f50ffacb8b1f919442f7dbb47638469e93ee2",
+    "researchRows": 883,
+    "originalResearchStates": {
+      "yayimlandi": 152,
+      "kanit-bekliyor": 709,
+      "mukerrer": 6,
+      "kapsam-disi-veya-ret": 14,
+      "kabul-adayi": 1,
+      "kullanici-beklemesi": 1
+    },
+    "comparisons": {
+      "no-exact-match": 728,
+      "existing-live-link": 155
+    },
+    "note": "Name/district equality only requests identity review. Entire883 row pool compared; fresh evidence checks bounded to seven priorities; five selected. Az and Monteverdi publication linked from approvedPR71, SahanKadikoy is not linked to newAtasehir branch.",
+    "distinctLiveLinkedSlugs": 154
+  },
+  "records": [
+    {
+      "candidateKey": "il cortile|beyoglu",
+      "slug": "il-cortile-beyoglu",
+      "name": "Il Cortile",
+      "district": "Beyoğlu",
+      "address": "Bereketzade Mahallesi, Galata Kulesi Sokak No:20/A, Beyoğlu",
+      "kind": "İtalyan",
+      "categoryId": "cat.restaurant",
+      "cuisine": [
+        "italian"
+      ],
+      "officialSource": "https://ilcortileistanbul.com/en/contact",
+      "independentSource": "https://chooseistanbul.com/en/restaurants/il-cortile-galata",
+      "independentDate": "2026-08-25",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "addressNote": "Resmî iletişim ve güncel bağımsız editoryal kayıt No20/A üzerinde eşleşir. Eski rehberdeki No14 D20 ayrı şube sayılmaz; güncel iki kaynaktaki adres seçildi.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "dafni atesbasi|uskudar",
+      "slug": "dafni-atesbasi-uskudar",
+      "name": "Dafni Ateşbaşı",
+      "district": "Üsküdar",
+      "address": "Kuzguncuk, Nakkaştepe Yolu No:56, Üsküdar",
+      "kind": "Kebapçı / Ocakbaşı",
+      "categoryId": "cat.restaurant",
+      "cuisine": [
+        "turkish"
+      ],
+      "officialSource": "https://www.dafniatesbasi.com/",
+      "independentSource": "https://www.gault-millau.com.tr/dafni-atesbasi/",
+      "independentDate": "2025-12-23",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "addressNote": "Resmî No56 adresi seçildi. Rehber Kuzguncuk Yolu/Babanakkaş Sokak diye yazar; ad, Üsküdar ve telefon eşleşir. Yol adlarının eşdeğerliği veya ayrı şube iddia edilmez; telefon kataloğa aktarılmaz.",
+      "additionalSources": []
+    },
+    {
+      "candidateKey": "parle|besiktas",
+      "slug": "parle-zorlu-besiktas",
+      "name": "Parlé",
+      "district": "Beşiktaş",
+      "address": "Levazım Mahallesi, Vadi Caddesi No:2, Zorlu Center AVM Meydan Katı, Beşiktaş",
+      "kind": "Fransız / Akdeniz",
+      "categoryId": "cat.restaurant",
+      "cuisine": [
+        "french",
+        "mediterranean"
+      ],
+      "officialSource": "https://www.d-ream.com.tr/en/our-brands/parle",
+      "independentSource": "https://www.gault-millau.com.tr/parle-3/",
+      "independentDate": "2026-01-06",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "addressNote": "İşletmeci, AVM kiracı sayfası ve rehber aynı Zorlu Meydan Katı kaydıdır. Vadi Caddesi No2 kompleksin resmî iletişim adresidir, restoranın iç kapı numarası diye sunulmaz. Eski Koru Sokak ifadesinin Vadi ile eşdeğerliği iddia edilmez.",
+      "additionalSources": [
+        "https://www.zorlucenter.com.tr/avm/magazalar/yiyecek-icecek/parle",
+        "https://www.zorlucenter.com.tr/iletisim/"
+      ]
+    },
+    {
+      "candidateKey": "sushi barba|sariyer",
+      "slug": "sushi-barba-istinyepark-sariyer",
+      "name": "Sushi Barba İstinyePark İstanbul",
+      "district": "Sarıyer",
+      "address": "Pınar Mahallesi, Katar Caddesi, İstinyePark AVM, 1. Kat Birim No:89, Sarıyer",
+      "kind": "Asya mutfağı",
+      "categoryId": "cat.restaurant",
+      "cuisine": [
+        "japanese"
+      ],
+      "officialSource": "https://sushibarba.com/locations/",
+      "independentSource": "https://www.gault-millau.com.tr/sushi-barba/",
+      "independentDate": "2025-12-23",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "addressNote": "İşletmeci İstanbul ile İzmir şubelerini ayrı listeler. İstanbul AVM sayfasının güncel 1.Kat Birim89 bilgisi seçildi. Rehberdeki No73 ile eski dış kapı No11 iç/dış kapı eşdeğeri diye sunulmaz; ayrı şube üretilmez. Kaynak telefonları farklı olduğundan hiçbir telefon aktarılmaz.",
+      "additionalSources": [
+        "https://istinyepark.com.tr/foods/sushi-barba"
+      ]
+    },
+    {
+      "candidateKey": "akbabali meyhane|beyoglu",
+      "slug": "akbabali-meyhane-beyoglu",
+      "name": "Akbabalı Meyhane",
+      "district": "Beyoğlu",
+      "address": "Asmalımescit Mahallesi, Tünel Geçidi İşhanı No:7, Beyoğlu",
+      "kind": "Meyhane",
+      "categoryId": "cat.restaurant",
+      "cuisine": [
+        "turkish"
+      ],
+      "officialSource": "https://www.akbabali.com/tr/index.html",
+      "independentSource": "https://kadinvizyon.com.tr/istanbulun-en-iyi-yeni-nesil-meyhaneleri-2026-rehberi/",
+      "independentDate": "2026-09-23",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "addressNote": "İşletmeci ve tarihli bağımsız yayın No7 üzerinde eşleşir. Eski G&M No11 kaydı ek işletme sayılmaz; güncel iki kaynak adresi tercih edildi.",
+      "additionalSources": [
+        "https://www.allpoints.com.tr/en/brand.html?brand=akbabali"
+      ]
+    }
+  ],
+  "holds": [
+    {
+      "key": "maderia sushi bar|sisli",
+      "reason": "Kullanıcının açık bekletmesi; araştırma ve kabul kapsamı dışında."
+    },
+    {
+      "key": "chalet|besiktas",
+      "reason": "Resmî otel sayfasında geçici kapanış bilgisi var; aktif kabul edilmedi.",
+      "source": "https://www.swissotel.com.tr/hotels/istanbul/dining/chalet/"
+    },
+    {
+      "key": "pizza emirgan|sariyer",
+      "reason": "Bu tur resmî işletmeci ana sayfası alınamadı; eski menü PDF veya harita görünürlüğü güncel faaliyet sayılmadı.",
+      "source": "https://emirgangroup.com/"
+    },
+    {
+      "key": "hamdi restaurant|fatih",
+      "reason": "Bu pakete yeniden araştırma açılmadı; önceki bekletme korundu."
+    },
+    {
+      "key": "suna nin yeri|uskudar",
+      "reason": "Mevcut profil/adres bekletmesi korunur; bu paket yalnız yeni kayıt ekler."
+    }
+  ],
+  "policy": [
+    "Mekân tekilliği ad/kapı numarası benzerliğiyle otomatik birleştirilmez.",
+    "Seçilen adresin kaynağı ve kalan fark açık; kesin koordinat üretilmez.",
+    "Yalnız restoran; kafe/bar/Kıbrıs ve canlı düzeltmeler kapsam dışında.",
+    "Araştırma aday, kod adayı, Preview ve Production sayımları ayrı."
+  ],
+  "sourceAccess": [
+    "Bazı G&M detay URLleri başlangıçta zaman aşımı/403 verdi. Parlé 2026 kategori indeksinden tıklanarak gerçek detay içerik ve tarih okundu.",
+    "Il Cortile için alınamayan G&M detay sayfası doğrulanmış sayılmadı; güncel ChooseIstanbul editoryal kaydı ve resmî iletişim sayfası kullanıldı.",
+    "Arama sonucu puanları veya Google/OSM varlığı kabul kanıtı olarak kullanılmadı."
+  ]
+}

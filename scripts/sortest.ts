@@ -181,7 +181,7 @@ async function main() {
   ok("yalıtım: getDb koruması kodda", /previewWriteGuard\(url\)\.ok\) return \(cached = null\)/.test(readFileSync("lib/db/client.ts", "utf8")));
   const prebuildSteps = JSON.parse(readFileSync("package.json", "utf8")).scripts.prebuild.split("&&").map((step: string) => step.trim());
   ok("dizin: derlemede kendiliğinden üretilir", prebuildSteps.includes("tsx scripts/sor-index.ts"));
-  ok("dizin: güncel", spawnSync("npx", ["tsx", "scripts/sor-index.ts", "--check"]).status === 0);
+  ok("dizin: güncel", spawnSync(process.execPath, ["--import", "tsx", "scripts/sor-index.ts", "--check"]).status === 0);
 
   /* sahte sağlayıcı: AI katmanı kapıları. Gerçek model testi DEĞİL. */
   process.env.AI_PRIMARY_PROVIDER = "groq"; process.env.AI_PRIMARY_MODEL = "openai/gpt-oss-120b"; process.env.GROQ_API_KEY = "test"; delete process.env.AI_FAST_PROVIDER; process.env.AI_MONTHLY_BUDGET_USD = "100"; resetAIConfig();
