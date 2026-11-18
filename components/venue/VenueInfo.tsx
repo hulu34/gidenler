@@ -1,3 +1,4 @@
+import { safeVenueWebsite } from "@/lib/venueLinkSafety";
 import type { Entity } from "@/lib/types";
 import { fmtBand, priceBandsOf } from "@/lib/venue";
 
@@ -32,7 +33,7 @@ export function VenueInfo({ entity }: { entity: Entity }) {
     </span>
   )]);
   if (c?.phone) rows.push(["Telefon", <a key="p" href={`tel:${c.phone.replace(/[^\d+]/g, "")}`} className="tnum hover:text-accent-ink">{c.phone}</a>]);
-  if (c?.website) rows.push(["Web", <a key="w" href={c.website} target="_blank" rel="noopener noreferrer" className="break-all hover:text-accent-ink">{c.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</a>]);
+  if (c?.website && safeVenueWebsite(c.website)) rows.push(["Web", <a key="w" href={c.website} target="_blank" rel="noopener noreferrer" className="break-all hover:text-accent-ink">{c.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</a>]);
   if (c?.instagram) rows.push(["Instagram", <a key="i" href={`https://www.instagram.com/${c.instagram}/`} target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink">@{c.instagram}</a>]);
 
   return (
@@ -57,7 +58,7 @@ export function VenueInfo({ entity }: { entity: Entity }) {
           <a href={`https://www.openstreetmap.org/edit?${entity.source.ref.replace("/", "=")}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-ink">kaynakta düzelt</a>.
         </p>
       )}
-      {entity.source?.address && entity.address === entity.source.address.value && (
+      {entity.source?.address && safeVenueWebsite(entity.source.address.url) && entity.address === entity.source.address.value && (
         <p className="mt-2 text-[11.5px] leading-snug text-ink-3">
           Adres kaynağı: <a href={entity.source.address.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-ink">İşletmenin resmî sitesi</a> · son kontrol {entity.source.address.checkedAt.split("-").reverse().join(".")}
         </p>

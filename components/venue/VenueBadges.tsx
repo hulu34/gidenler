@@ -1,3 +1,4 @@
+import { safeVenueWebsite } from "@/lib/venueLinkSafety";
 import Link from "next/link";
 import type { Entity } from "@/lib/types";
 import { areaKindRank, g100Rank, G100 } from "@/lib/venue";
@@ -50,7 +51,7 @@ export function RealVenueNotice({ entity, reviewCount = 0, score = null, scoredF
         {mapsUrl && <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={QUICK} data-aksiyon="harita">Haritada aç</a>}
         {entity.contact?.phone && <a href={`tel:${entity.contact.phone.replace(/[^+\d]/g, "")}`} className={QUICK} data-aksiyon="ara">Ara</a>}
         {/* yalnız bağlantı denetiminden geçen (çalışan) web sitesi; rezervasyon sağlayıcısı olmadığı için "rezervasyon yap" denmez */}
-        {entity.contact?.website && <a href={entity.contact.website} target="_blank" rel="noopener noreferrer" data-sinyal="outbound" className={QUICK} data-aksiyon="web">Web sitesi ↗</a>}
+        {entity.contact?.website && safeVenueWebsite(entity.contact.website) && <a href={entity.contact.website} target="_blank" rel="noopener noreferrer" data-sinyal="outbound" className={QUICK} data-aksiyon="web">Web sitesi ↗</a>}
       </div>
       <PlaceStatusButtons entityId={entity.id} />
     </div>

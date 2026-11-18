@@ -16,7 +16,7 @@ const J = (p) => JSON.parse(readFileSync(p, "utf8"));
 const RAW = new Map(J(rawP).elements.map((e) => [`${e.type}/${e.id}`, e])); const H = new Map(J(hp).adaylar.map((a) => [a.ref, a]));
 const Z = J(zp); const EX = existing.flatMap(J); const F = J("data/katalog/istanbul-ilceler.json");
 const taken = new Set(EX.map((v) => v.slug)), exRef = new Set(EX.map((v) => v.ref));
-const KIND = { turk: "Türk mutfağı", esnaf: "Lokanta", kebap: "Kebapçı / Ocakbaşı", doner: "Dönerci", pide: "Pideci", balik: "Balık restoranı", meyhane: "Meyhane", et: "Steakhouse", burger: "Burger", pizza: "Pizza", japon: "Sushi / Japon", asya: "Asya mutfağı", kahvalti: "Kahvaltı", dunya: "Dünya mutfağı", vegan: "Vegan", tavuk: "Tavuk", sokak: "Sokak lezzeti" };
+const KIND = { turk: "Türk mutfağı", esnaf: "Lokanta", kebap: "Kebapçı / Ocakbaşı", doner: "Dönerci", pide: "Pideci", balik: "Deniz ürünleri", meyhane: "Meyhane", et: "Steakhouse", burger: "Burger", pizza: "Pizza", japon: "Sushi / Japon", asya: "Asya mutfağı", kahvalti: "Kahvaltı", dunya: "Dünya mutfağı", vegan: "Vegan", tavuk: "Tavuk", sokak: "Sokak lezzeti" };
 const NOT_R = new Set(["kafe", "bar", "tatli", "firin"]);
 const cnt = (a) => a.reduce((m, k) => (m[k] = (m[k] ?? 0) + 1, m), {});
 /* markanın OSM şubelerindeki mutfak etiketleri (çoğunluk) */

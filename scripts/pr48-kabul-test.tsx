@@ -58,7 +58,7 @@ async function main() {
     assert.match(renderToStaticMarkup(<DataCompleteness c={c} sourceProvider="osm"/>),/OpenStreetMap/);
   });
   // Sadece testteki aday: kabul listesine/sunucu kataloğuna eklenmez.
-  const fixture: Venue = {slug:"test-yuksel-balik",name:"Yüksel Balık",kind:"Balık restoranı",district:"Bakırköy",neighborhood:null,address:null,lat:null,lng:null,hours:null,description:null,notes:[],menu:[],priceRange:null,secki:null};
+  const fixture: Venue = {slug:"test-yuksel-balik",name:"Yüksel Balık",kind:"Deniz ürünleri",district:"Bakırköy",neighborhood:null,address:null,lat:null,lng:null,hours:null,description:null,notes:[],menu:[],priceRange:null,secki:null};
   VENUES.push(fixture);
   try {
     for(const q of ["En yüksek puanlı restoran hangisi","Yüksek puanlı restoran arıyorum","Puanı yüksek balık restoranı","En yüksek puan alan restoran"]) {

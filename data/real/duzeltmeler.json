@@ -223,8 +223,8 @@
   "checkedAt": "2026-11-05"
  },
  "gelik-et-atakoy-istanbul-bakirkoy": {
-  "website": "https://www.gelik.com.tr/",
-  "websiteWhy": "Kayıtlı alt sayfa 404 veriyor (https://www.gelik.com.tr/EN/index.html); aynı alan adının ana sayfası çalışıyor (05.11.2026)",
+  "website": null,
+  "websiteWhy": "2026-11-18: gelik.com.tr ana sayfasında restoranla ilgisiz casino/kumar tanıtımı ve harici bağlantılar yeniden doğrulandı. Site bağlantısı geçici gizlendi; restoran/telefon korunur. Domain yönlendirmesi veya aktif zararlı yazılım iddiası değildir.",
   "checkedAt": "2026-11-05"
  },
  "cabra-loca-coffee-fatih": {
@@ -361,5 +361,47 @@
   "website": null,
   "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.komunistanbul.com/",
   "checkedAt": "2026-11-05"
+ },
+ "my-home-doner-fatih": {
+  "kind": "Dönerci",
+  "cuisine": [
+   "turkish",
+   "doner"
+  ],
+  "sourceUrl": "https://myhomedoner.com/",
+  "checkedAt": "2026-11-18",
+  "why": "Resmî menü İskender, porsiyon döner, pilav üstü, tombik ve dürüm döner üzerine; eski OSM kebab/burger yan etiketleri ana mutfak değildir."
+ },
+ "massa-bistro-turkish-kitchen-fatih": {
+  "kind": "Türk mutfağı",
+  "cuisine": [
+   "turkish",
+   "kebab"
+  ],
+  "sourceUrl": "https://massa-bistro.com/menu/",
+  "checkedAt": "2026-11-18",
+  "why": "Resmî menü kebap, pide, meze ve Türk mutfağı ana yemekleri sunuyor; balık seçeneği restoranı deniz ürünleri uzmanı yapmaz."
+ },
+ "isil-garden-rooftop-restaurant-ve-turkish-cuisine-fatih": {
+  "kind": "Türk mutfağı",
+  "cuisine": [
+   "turkish",
+   "kebab"
+  ],
+  "sourceUrl": "https://www.isilgardenrestaurant.com/tr/menu",
+  "checkedAt": "2026-11-18",
+  "why": "Resmî menü Türk/Osmanlı yemekleri, kebap, pide, kahvaltı ve diğer yemekler içeriyor; deniz ürünleri yalnız bir bölüm."
+ },
+ "nezih-kebap-yuvalama-sariyer": {
+  "website": null,
+  "websiteWhy": "2026-11-18: Kullanıcı eski nezihkebap.com sitesinin kumar alanına yönlendiğini bildirdi. Alan adı güvenlik için bastırıldı; restoran açık tutuldu, alternatif site eklenmedi."
+ },
+ "takanik-balik-park-sariyer": {
+  "website": null,
+  "websiteWhy": "2026-11-18: Canlı Takanık bağlantısının bahis içeriğine yönlendiği doğrulandı. takanik.com.tr güvenlik için bastırıldı; restoran açık tutuldu, alternatif site eklenmedi."
+ },
+ "kucuk-ev-sariyer": {
+  "website": null,
+  "websiteWhy": "2026-11-18: kucukev.com ana sayfasında restoranla ilgisiz casino/kumar tanıtımı ve harici bağlantılar yeniden doğrulandı. Site bağlantısı geçici gizlendi; restoran/telefon korunur. Domain yönlendirmesi veya aktif zararlı yazılım iddiası değildir."
  }
 }

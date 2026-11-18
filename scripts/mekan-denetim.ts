@@ -20,7 +20,7 @@ const meters = (a: RealVenueRecord, b: RealVenueRecord) => {
 };
 /* adında açık tür ipucu olan kelimeler → beklenen tür (kayıttaki tür bununla çelişiyorsa C) */
 const NAME_KIND: Array<[RegExp, RegExp, string]> = [
-  [/\bburger\b/, /burger/i, "Burger"], [/\bpizz/, /pizza/i, "Pizza"], [/\bbalik|\bfish\b|\bbalikci/, /balık/i, "Balık restoranı"],
+  [/\bburger\b/, /burger/i, "Burger"], [/\bpizz/, /pizza/i, "Pizza"], [/\bbalik|\bfish\b|\bbalikci/, /balık/i, "Deniz ürünleri"],
   [/\bkebap|\bkebab|\bocakbasi|\bdurum\b/, /kebap|ocakbaşı|döner/i, "Kebapçı / Ocakbaşı"], [/\bdoner/, /döner|kebap/i, "Dönerci"],
   [/\bmeyhane/, /meyhane/i, "Meyhane"], [/\bsushi\b/, /sushi|japon/i, "Sushi / Japon"], [/\bpide|\bpideci/, /pide/i, "Pideci"],
   [/\bmanti/, /mantı/i, "Mantıcı"], [/\bkahvalti|\bbreakfast\b/, /kahvaltı/i, "Kahvaltı"], [/\bsteak|\bsteakhouse/, /steak|et/i, "Steakhouse"],

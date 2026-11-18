@@ -26,7 +26,7 @@ export const DISH_BY_SUB: Record<string, string[]> = {
   "Restoran": ["akşam yemeği", "restoran"],
   "Kebapçı / Ocakbaşı": ["kebap", "adana", "urfa", "ocakbaşı", "dürüm", "lahmacun", "et", "şiş"],
   "Meyhane": ["meze", "rakı", "balık", "meyhane", "rakı balık"],
-  "Balık restoranı": ["balık", "levrek", "çupra", "deniz ürünleri", "meze", "kalamar"],
+  "Deniz ürünleri": ["balık", "levrek", "çupra", "deniz ürünleri", "meze", "kalamar"],
   "Steakhouse": ["steak", "et", "biftek", "dry age", "antrikot"],
   "Fine dining": ["tadım menüsü", "şef", "fine dining", "degustasyon"],
   "Sushi / Japon": ["sushi", "sashimi", "omakase", "japon", "nigiri", "maki", "sake"],

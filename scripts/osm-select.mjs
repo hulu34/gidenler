@@ -51,7 +51,7 @@ export function classify(t) {
   if (/\bpizz/.test(nn)) return { categoryId: "cat.restaurant", kind: "Pizza" };
   if (/steak/.test(nn)) return { categoryId: "cat.restaurant", kind: "Steakhouse" };
   if (/\bsushi/.test(nn)) return { categoryId: "cat.restaurant", kind: "Sushi / Japon" };
-  if (any("fish", "seafood") || /\bbalik|balikci|\bfish\b/.test(nn)) return { categoryId: "cat.restaurant", kind: "Balık restoranı" };
+  if (any("fish", "seafood") || /\bbalik|balikci|\bfish\b/.test(nn)) return { categoryId: "cat.restaurant", kind: "Deniz ürünleri" };
   if (any("kebab") || /kebap|kebab|ocakbasi/.test(nn)) return { categoryId: "cat.restaurant", kind: "Kebapçı / Ocakbaşı" };
   if (any("doner", "döner") || /doner/.test(nn)) return { categoryId: "cat.restaurant", kind: "Dönerci" };
   if (any("pide", "lahmacun") || /pide|lahmacun/.test(nn)) return { categoryId: "cat.restaurant", kind: "Pideci" };

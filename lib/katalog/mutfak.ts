@@ -21,7 +21,7 @@ export const MUTFAK: Record<MutfakId, { ad: string; grup: "Türk" | "Dünya" | "
   kebap: { ad: "Kebap ve ocakbaşı", grup: "Türk" },
   doner: { ad: "Döner", grup: "Türk" },
   pide: { ad: "Pide ve lahmacun", grup: "Türk" },
-  balik: { ad: "Balık ve deniz ürünleri", grup: "Diğer" },
+  balik: { ad: "Deniz ürünleri", grup: "Diğer" },
   meyhane: { ad: "Meyhane", grup: "Türk" },
   et: { ad: "Et ve steakhouse", grup: "Diğer" },
   burger: { ad: "Burger", grup: "Dünya" },
@@ -147,7 +147,7 @@ export function kindConflict(kind: string | undefined, d: MutfakDenetimi, name: 
 
 export const KIND_TO_MUTFAK: Record<string, MutfakId | null> = {
   "Meyhane": "meyhane", "Burger": "burger", "Pizza": "pizza", "Steakhouse": "et", "Sushi / Japon": "japon", "Ramen": "japon",
-  "Balık restoranı": "balik", "Kebapçı / Ocakbaşı": "kebap", "Dönerci": "doner", "Pideci": "pide", "Mantıcı": "esnaf",
+  "Balık restoranı": "balik", "Deniz ürünleri": "balik", "Kebapçı / Ocakbaşı": "kebap", "Dönerci": "doner", "Pideci": "pide", "Mantıcı": "esnaf",
   "Kahvaltı": "kahvalti", "Tatlıcı": "tatli", "Lokanta": "esnaf", "Kahveci": "kafe", "Pastane": "tatli", "Fırın": "firin",
   "Kafe": "kafe", "Bar": "bar", "Pub": "bar", "Kokteyl bar": "bar", "Restoran": null,
 };

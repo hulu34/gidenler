@@ -108,6 +108,8 @@ export interface Entity {
   experienceTotal?: number;
   /** Alt tür etiketi: "Meyhane", "Butik otel", "Tiyatro oyunu"… (arama ve kartlar için). */
   subcategory?: string;
+  /** Resmî menüyle doğrulanmış ana tür; ham yan etiketler bunu geçersiz kılamaz. */
+  menuVerifiedKind?: string;
   /** Veri yoğunluğu katmanı: A = tam, B = zengin, C = keşif kaydı. */
   tier?: "A" | "B" | "C";
   /** Sosyal medya içerikleri (bkz. MediaLink). */

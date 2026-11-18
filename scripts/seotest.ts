@@ -52,9 +52,9 @@ ok("puan varsa gerçek değer, ölçek 10", scored.aggregateRating?.ratingValue 
 ok("sahiplik ilişkisinde aggregateRating yok", !("aggregateRating" in (venueJsonLd(base, { score: 8.8, reviewCount: 5 }, true) as object)));
 ok("Google alanı yok", !/google/i.test(JSON.stringify(ld)));
 
-/* tür düzeltmesi: yalnız listedeki kayıt değişir */
+/* Güncel Production kategorisi: yalnız tam eski etiket normalize edilir; diğer tür değişimleri düzeltme listesiyle birebir eşleşmelidir. */
 const fixed = Object.entries(duzeltmeler as Record<string, { kind?: string }>).filter(([, f]) => f.kind).map(([k]) => k);
-const kindChanged = (rawVenues as { slug: string; kind: string }[]).filter((r) => realEntities.find((e) => e.slug === r.slug)?.subcategory !== r.kind).map((r) => r.slug);
+const kindChanged = (rawVenues as { slug: string; kind: string }[]).filter((r) => realEntities.find((e) => e.slug === r.slug)?.subcategory !== (r.kind === "Balık restoranı" ? "Deniz ürünleri" : r.kind)).map((r) => r.slug);
 ok("tür yalnız düzeltme listesindekilerde değişir", [...kindChanged].sort().join() === [...fixed].sort().join(), kindChanged.join());
 ok("Seyirtepe Restoran, kategori aynı", realEntities.find((e) => e.slug === fixed[0])?.subcategory === "Restoran" && realEntities.find((e) => e.slug === fixed[0])?.categoryId === "cat.restaurant");
 ok("ilk 457 kayıt korunur, yeni dalgalar eklenir", realEntities.length === (rawVenues as unknown[]).length + (isletmeRaw as unknown[]).length && (isletmeRaw as Array<{ slug: string }>).some((b) => b.slug === "japon-erdal-beyoglu") && (rawVenues as Array<{ wave?: number }>).filter((v) => (v.wave ?? 0) < 2).length === 456);

@@ -133,14 +133,19 @@ export function mergeRealVenues(osm: RealVenueRecord[], biz: RealVenueRecord[]) 
 const merged = mergeRealVenues(raw as RealVenueRecord[], isletme as RealVenueRecord[]);
 /** İnceleme adayı çiftler (otomatik birleştirilmez). */
 export const realVenueReview = merged.review;
-/* Kaynağa dayalı elle düzeltmeler (duzeltmeler.json): venues.json elle düzenlenmediği için aktarım yenilense de korunur. Yalnız tür. */
+/* Kaynağa dayalı elle düzeltmeler (duzeltmeler.json): venues.json elle düzenlenmediği için aktarım yenilense de korunur. Tür ve resmî menüyle doğrulanmış ana mutfak. Ham OSM kanıtı korunur. */
 /* Web sitesi düzeltmesi: bağlantı denetiminde ölü (DNS yok / 404) çıkan adres kaldırılır (null) ya da aynı alan adının
    çalışan ana sayfasına çevrilir. Neden ve tarih websiteWhy alanında; başka alan değişmez. */
-type Fix = { kind?: string; website?: string | null; websiteWhy?: string };
+type Fix = { cuisine?: string[]; kind?: string; website?: string | null; websiteWhy?: string };
 export const realVenueRecords = merged.records.map((r) => {
   const fix = (duzeltmeler as Record<string, Fix>)[r.slug];
-  if (!fix) return r;
-  let out = fix.kind ? { ...r, kind: fix.kind } : r;
+  // Ham OSM türü kanıtta kalır; gösterimde güncel kategori adı kullanılır.
+  let out = { ...r, kind: r.kind === "Balık restoranı" ? "Deniz ürünleri" : r.kind };
+  if (!fix) return out;
+  if (fix.kind) out = { ...out, kind: fix.kind === "Balık restoranı" ? "Deniz ürünleri" : fix.kind };
+  // Menüden doğrulanan ana mutfak: menüde geçen her yemek ayrı restoran türü değildir.
+  // Kaynak izlenebilirliği için venues.json içindeki OSM etiketlerine dokunulmaz.
+  if (fix.cuisine) out = { ...out, cuisine: fix.cuisine };
   if ("website" in fix) out = { ...out, website: fix.website ?? undefined };
   return out;
 });
@@ -162,6 +167,7 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   isReal: true,
   tier: "B",
   subcategory: r.kind,
+  ...((duzeltmeler as Record<string, Fix>)[r.slug]?.cuisine ? { menuVerifiedKind: r.kind } : {}),
   experienceTotal: 0,
   location: { city: "İstanbul", district: r.district, neighborhood: r.neighborhood, precision: r.adresDuzeyi === "sokak" ? "street" : r.location?.precision, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
   address: VERIFIED_ADDRESSES[r.slug]?.value ?? r.address,

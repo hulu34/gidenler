@@ -1,7 +1,7 @@
 {
-  "status": "LOCAL_CANDIDATE_PREVIEW_NOT_AUTHORIZED",
-  "productionSha": "bcaef512ca8a5feac20b07c36a006bfd97d19750",
-  "productionTree": "74d2ae4de0e741f7aa2207f1da4a436430874f55",
+  "status": "RECONCILED_CANDIDATE_NEW_PREVIEW_NOT_AUTHORIZED",
+  "productionSha": "197520e1e0247728d7bc08c626d0c24630d69a12",
+  "productionTree": "847434568b306e4d51744dd14542109d0c927307",
   "summary": {
     "productionTotal": 884,
     "productionActive": 849,
@@ -18,8 +18,8 @@
     "closed": 35
   },
   "researchComparison": {
-    "productionSha": "bcaef512ca8a5feac20b07c36a006bfd97d19750",
-    "productionTree": "74d2ae4de0e741f7aa2207f1da4a436430874f55",
+    "productionSha": "197520e1e0247728d7bc08c626d0c24630d69a12",
+    "productionTree": "847434568b306e4d51744dd14542109d0c927307",
     "catalogTotal": 884,
     "researchRows": 883,
     "researchPr": 70,
@@ -295,5 +295,20 @@
     "Cipriani veRebel web okuyucusunda alınamadı; normal tarayıcıda şube,adres ve mutfak doğrulandı.",
     "On önerinin işletmeci sayfaları normal tarayıcıda yeniden açıldı; Jie içinFişekhane sekmesi seçildi.",
     "Cipriani PDFsi,Jie QRmenüsü veHona bağlımenüsü tamamı incelenmiş sayılmaz; geniş tür için işletmeci tanımı kullanıldı."
-  ]
+  ],
+  "reconciliation": {
+    "previousCandidate": "655e572d021620296d1451bd9e0570ae4dbeef2f",
+    "baseSha": "197520e1e0247728d7bc08c626d0c24630d69a12",
+    "preservedCommits": [
+      "7cb4a8093bae1e0f09c037dc02777f2410fdae8b",
+      "c6f936237f76a318b50bf3b135cf04e2fc146305",
+      "197520e1e0247728d7bc08c626d0c24630d69a12"
+    ],
+    "generatedIndexes": "regenerated from combined current Production + exact same eight records",
+    "historicalTest": "preserve current precise category-label allowlist and historical884subset; current892strict gate separate",
+    "previousPreview": "passed for655e572 only; does not accept this new commit",
+    "newPreviewAuthorization": "required exact new SHA",
+    "productionAuthorization": "not granted",
+    "semanticFix": "Exact generic deniz urun* phrase removed only from fuzzy business-name matching after full-name lookup; Deniz Park false match no longer consumes cuisine terms; controlled AI/rules2failures fixed. No new suggestion logic."
+  }
 }

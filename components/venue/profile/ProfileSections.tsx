@@ -1,3 +1,4 @@
+import { blockedVenueHost, safeVenueWebsite, mentionsBlockedVenueHost } from "@/lib/venueLinkSafety";
 import type { Entity } from "@/lib/types";
 import type { PlaceProfile, ProfileField } from "@/lib/profile";
 import { trHours } from "@/components/venue/VenueInfo";
@@ -21,6 +22,7 @@ export const trDate = (d: string) => { const [y, m, g] = d.split("-"); return `$
 const host = (u: string) => u.replace(/^https?:\/\/(www\.)?/, "").split(/[/#?]/)[0];
 
 function Src({ f }: { f: { provider: string; url: string; checkedAt: string } }) {
+  if (blockedVenueHost(f.url)) return <span className="text-[11px] text-ink-3">Eski kaynak bağlantısı güvenlik nedeniyle gösterilmiyor.</span>;
   return (
     <span className="text-[11px] text-ink-3">
       Kaynak: <a href={f.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line-2 underline-offset-2 hover:text-ink">{PROVIDER[f.provider] ?? f.provider} ({host(f.url)})</a> · son kontrol {trDate(f.checkedAt)}
@@ -30,15 +32,15 @@ function Src({ f }: { f: { provider: string; url: string; checkedAt: string } })
 
 /** Profil verisini sayfanın diğer bölümleri (rezervasyon iletişim bağlantıları, veri tamlığı) için kimliğe işler. */
 export function withProfile(e: Entity, p: PlaceProfile | null): Entity {
-  if (!p) return e;
+  if (!p) return { ...e, contact: { ...e.contact, website: safeVenueWebsite(e.contact?.website) } };
   return {
     ...e,
     ...(p.address ? { address: p.address.value } : {}),
     ...(p.hours ? { hours: p.hours.value } : {}),
     contact: {
       ...e.contact,
+      website: safeVenueWebsite(p.website?.value ?? e.contact?.website),
       ...(p.phone ? { phone: p.phone.value } : {}),
-      ...(p.website ? { website: p.website.value } : {}),
       ...(p.instagram ? { instagram: p.instagram.value } : {}),
       ...(p.hours ? { openingHours: p.hours.value } : {}),
     },
@@ -54,9 +56,9 @@ export function ProfileOverview({ entity, p, googleHours }: { entity: Entity; p:
     ? <span className="tnum">{trHours(p.hours.value)}</span>
     : <span className="text-ink-2">İşletmenin resmî kaynağında yayımlanmıyor.{googleHours ? " Google'daki saatler aşağıdaki Google bölümünde." : ""}</span>, p.hours]);
   if (p.phone) rows.push(["Telefon", <a key="p" href={`tel:${p.phone.value.replace(/[^\d+]/g, "")}`} className="tnum hover:text-accent-ink">{p.phone.value}</a>, p.phone]);
-  if (p.website) rows.push(["Web", <a key="w" href={p.website.value} target="_blank" rel="noopener noreferrer" className="break-all hover:text-accent-ink">{host(p.website.value)}</a>, p.website]);
+  if (p.website && safeVenueWebsite(p.website.value)) rows.push(["Web", <a key="w" href={p.website.value} target="_blank" rel="noopener noreferrer" className="break-all hover:text-accent-ink">{host(p.website.value)}</a>, p.website]);
   if (p.instagram) rows.push(["Instagram", <a key="i" href={`https://www.instagram.com/${p.instagram.value}/`} target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink">@{p.instagram.value}</a>, p.instagram]);
-  if (p.reservation) rows.push(["Rezervasyon", p.reservation.value, p.reservation]);
+  if (p.reservation && !mentionsBlockedVenueHost(p.reservation.value)) rows.push(["Rezervasyon", p.reservation.value, p.reservation]);
   const amen = p.amenities ? Object.entries(p.amenities.items).filter(([k]) => AMENITY[k]).map(([k, v]) => AMENITY[k][v ? 0 : 1]) : [];
   /* aynı kaynak ve gün tek satırda: bilgi tablosunun altında */
   const srcs = [...new Map([p.description, ...rows.map((r) => r[2]), ...p.notes, p.amenities ?? undefined].filter((f): f is NonNullable<typeof f> => !!f).map((f) => [`${f.provider}|${host(f.url)}|${f.checkedAt}`, f])).values()];
@@ -106,7 +108,7 @@ export function ProfileMenu({ m }: { m: NonNullable<PlaceProfile["menu"]> }) {
           : <>{" · "}{m.pricesPublished ? <>fiyatlar kaynaktaki gibi; son kontrol {trDate(m.checkedAt)}</> : <>işletme bu menüde fiyat yayımlamıyor</>}</>}.
         <br />
         <span className="text-[11.5px] text-ink-3">
-          Kaynak: <a href={m.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line-2 underline-offset-2 hover:text-ink">{PROVIDER[m.provider] ?? m.provider} — menü ({host(m.url)})</a> · son kontrol {trDate(m.checkedAt)}. Günün durumu ve fiyat için işletmeye danış.
+          Kaynak: {blockedVenueHost(m.url) ? "Eski menü bağlantısı güvenlik nedeniyle gösterilmiyor" : (<a href={m.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line-2 underline-offset-2 hover:text-ink">{PROVIDER[m.provider] ?? m.provider} — menü ({host(m.url)})</a>)} · son kontrol {trDate(m.checkedAt)}. Günün durumu ve fiyat için işletmeye danış.
         </span>
       </p>
       <div className="gap-x-10 sm:columns-2 [&>section]:mb-6">

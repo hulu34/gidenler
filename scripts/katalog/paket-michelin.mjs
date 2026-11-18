@@ -20,7 +20,7 @@ const AYRIM = { iki_yildiz: "İki Yıldız", bir_yildiz: "Bir Yıldız", bib_gou
 /* Michelin mutfak kategorisi → Gidenler türü (açık gastronomi tanımı; addan değil) */
 const MUTFAK = {
   "Turkish": ["Türk mutfağı", "turkish"], "Modern Cuisine": ["Modern mutfak", null], "Contemporary": ["Çağdaş mutfak", null],
-  "Mediterranean Cuisine": ["Akdeniz mutfağı", "mediterranean"], "Fish and Seafood": ["Balık restoranı", "seafood"],
+  "Mediterranean Cuisine": ["Akdeniz mutfağı", "mediterranean"], "Fish and Seafood": ["Deniz ürünleri", "seafood"],
   "Japanese": ["Sushi / Japon", "japanese"], "Japanese Contemporary": ["Sushi / Japon", "japanese"], "Sushi": ["Sushi / Japon", "sushi"],
   "Italian": ["İtalyan", "italian"], "Grills": ["Izgara", null], "Seasonal Cuisine": ["Mevsimsel mutfak", null],
   "Asian Influences": ["Asya etkili mutfak", "asian"], "International": ["Uluslararası mutfak", "international"], "Russian": ["Rus mutfağı", "russian"],
