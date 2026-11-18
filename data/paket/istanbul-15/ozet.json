@@ -1,0 +1,37 @@
+{
+ "dalga": 15,
+ "A": 18,
+ "osmKaydi": 0,
+ "isletmeKaydi": 18,
+ "elenen": 0,
+ "michelin": {
+  "bir_yildiz": 5,
+  "bib_gourmand": 2,
+  "secki": 11
+ },
+ "ilce": {
+  "Kadıköy": 2,
+  "Sarıyer": 4,
+  "Beşiktaş": 3,
+  "Şile": 1,
+  "Beyoğlu": 2,
+  "Şişli": 3,
+  "Bakırköy": 1,
+  "Üsküdar": 1,
+  "Silivri": 1
+ },
+ "tur": {
+  "Çağdaş mutfak": 1,
+  "Yaratıcı mutfak": 1,
+  "Füzyon": 1,
+  "Geleneksel mutfak": 1,
+  "Sushi / Japon": 1,
+  "Türk mutfağı": 4,
+  "Modern mutfak": 1,
+  "Balık restoranı": 2,
+  "Akdeniz mutfağı": 2,
+  "Uluslararası mutfak": 2,
+  "Vegan": 1,
+  "Avrupa bölge mutfağı": 1
+ }
+}

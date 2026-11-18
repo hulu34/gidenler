@@ -31,6 +31,31 @@ const bySlug = new Map(M.restoranlar.map((r) => [r.michelinSlug, r]));
 const recs = [], rows = [], drop = [];
 for (const k of K.kayitlar) {
   const mi = bySlug.get(k.m); if (!mi) { drop.push({ m: k.m, neden: "Michelin listesinde yok" }); continue; }
+  /* KONUMSUZ İŞLETME KAYDI (paket 15+): kimlik, faaliyet, kapı numaralı adres ve tür doğrulanmış; açık ve izinli kaynakta
+     doğrulanmış koordinat yok. lat/lng ve location YAZILMAZ; harita noktası gösterilmez. Sınıf "A-konumsuz" (A değildir). */
+  if (k.tip === "konumsuz") {
+    const ilce = k.ilce ?? mi.ilce;
+    if (!F.ilceler.some((d) => d.ad === ilce)) { drop.push({ m: k.m, neden: `geçersiz ilçe: ${ilce}` }); continue; }
+    if (!k.site || !/No:\s*\d/.test(k.adres)) { drop.push({ m: k.m, neden: "resmî site ya da kapı numarası yok" }); continue; }
+    const [kind, cuisine] = MUTFAK[mi.mutfakMichelin] ?? [null, null];
+    if (!kind) { drop.push({ m: k.m, neden: `mutfak kategorisi eşlenmedi: ${mi.mutfakMichelin}` }); continue; }
+    if ([...EX, ...recs].some((v) => fold(v.name) === fold(k.ad) && fold(v.district ?? "") === fold(ilce))) { drop.push({ m: k.m, neden: "aynı ilçede aynı adlı kayıt" }); continue; }
+    const slug = `${slugify(k.ad)}-${slugify(ilce)}`.replace(/--+/g, "-");
+    if (taken.has(slug)) { drop.push({ m: k.m, neden: "slug çakışması" }); continue; } taken.add(slug);
+    const address = [k.adres, k.mahalle ? `${k.mahalle} Mahallesi` : null, ilce].filter(Boolean).join(", ");
+    const siteTxt = `resmî site ${new URL(k.site).host.replace(/^www\./, "")} (${k.kanit})`;
+    const verification = `Michelin Rehberi 2026: ${AYRIM[mi.ayrim]}${mi.yesilYildiz ? " + Yeşil Yıldız" : ""} (resmî rehber sayfası, ${K.kontrolTarihi}) · ${siteTxt} · adres: rehber + resmî site (kapı numaralı) · tür: rehber mutfak kategorisi "${mi.mutfakMichelin}" · koordinat yazılmadı: OSM'de doğrulanmış konum yok, bugünkü şema yalnız OSM konumunu kabul ediyor; harita noktası gösterilmez`;
+    const michelin = { ayrim: mi.ayrim, ...(mi.yesilYildiz ? { yesilYildiz: true } : {}), yil: 2026, url: mi.michelinUrl };
+    const v = { ref: `isletme/${slug}`, slug, name: k.ad, categoryId: "cat.restaurant", kind, district: ilce, ...(k.mahalle ? { neighborhood: `${k.mahalle} Mahallesi` } : {}), address,
+      ...(k.telefon ? { phone: k.telefon } : {}), website: k.site, ...(cuisine ? { cuisine: [cuisine] } : {}), importedAt: tarih,
+      sourceKind: "official_site", sourceUrl: k.site, wave, verifiedAt: tarih, confidence: "güçlü", verification, michelin,
+      kaliteSinifi: "A-konumsuz", kalite: { kimlik: "resmî site + Michelin 2026", faaliyet: "Michelin 2026 + resmî site", adres: "kapı numaralı (rehber + resmî site)", koordinat: "yok" } };
+    recs.push(v);
+    rows.push({ slug, ref: v.ref, tip: "isletme_kaydi_konumsuz", ad: k.ad, ilce, adres: address, koordinat: null, tur: kind, faaliyet: "açık (Michelin Rehberi 2026 seçkisinde; resmî site)", sinif: "A-konumsuz",
+      michelin: AYRIM[mi.ayrim] + (mi.yesilYildiz ? " + Yeşil Yıldız" : ""), zincir: null, sube: k.sube ?? null, kanit: [verification, ...(k.not ? [k.not] : [])],
+      kaynak: [mi.michelinUrl, k.site], kontrolTarihi: tarih });
+    continue;
+  }
   const locRef = k.tip === "osm" ? k.ref : k.konum; const e = OSM.get(locRef);
   if (!e) { drop.push({ m: k.m, neden: `OSM öğesi bulunamadı: ${locRef}` }); continue; }
   if (k.tip === "osm" && exRef.has(k.ref)) { drop.push({ m: k.m, neden: "OSM kaydı katalogda" }); continue; }

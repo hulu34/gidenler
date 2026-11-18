@@ -1,0 +1,165 @@
+{
+ "_aciklama": "Paket 21 (Overture güven 0,75–0,9): tür restoranın kendi resmî sitesindeki öz tanımdan doğrulandı (2026-11-12); addan ya da Overture kategorisinden tür üretilmedi.",
+ "kararlar": {
+  "c2125b4c-ca92-4c49-964f-e26a5835bcdf": {
+   "ad": "Balcan Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site: \"Dünyanın ilk lezzet garantili kebabı\""
+  },
+  "8181e68b-cc15-402b-a0c2-39cb08a3128d": {
+   "ad": "Karadeniz Mutfağı Erol Usta Efulim Çayeli kuru fasulye",
+   "kind": "Karadeniz mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Karadeniz Mutfağı\""
+  },
+  "cda8acee-0d13-4963-8c6b-b4fe57367a44": {
+   "ad": "Kazancı İşkembe",
+   "kind": "Çorbacı",
+   "cuisine": [
+    "soup"
+   ],
+   "ifade": "resmî site açıklaması: \"17 çeşit çorba\""
+  },
+  "90364c78-a776-4b6e-968e-3e3cdcf97a79": {
+   "ad": "Kilisli Yaşar Usta",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Kebap ve Kilis Mutfağı\""
+  },
+  "f7c8c306-707f-4cea-add4-24721b94ba87": {
+   "ad": "Usul Döner",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Usulüne Uygun Döner\""
+  },
+  "1d0e01fb-a030-4978-b509-43447e63e0fc": {
+   "ad": "Antep Kuzu Tava & Lahmacun",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Antep mutfağının lezzetleri\""
+  },
+  "6a90ad38-7592-441c-9c04-54e1e3af9e22": {
+   "ad": "HBS Antakya Ocakbaşı & Restoran Ataşehir",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site: \"Antakya Mutfağı\""
+  },
+  "c330c86d-7f74-4b5b-959b-5d5b7f92a57b": {
+   "ad": "Dürümcü Esnaf Tuzla",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site schema.org servesCuisine: \"Türk Mutfağı, Gaziantep Mutfağı, Kebap, Dürüm\""
+  },
+  "dc561a07-c9ff-487a-ab8a-33480f29e14c": {
+   "ad": "Pergeli Restoran",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Pergeli Restoran - Kuzu - Kebap - Lahmacun\""
+  },
+  "22c2b39b-1e2c-4f7e-a652-c2e16ee5aefd": {
+   "ad": "Çorbacı Gada",
+   "kind": "Çorbacı",
+   "cuisine": [
+    "soup"
+   ],
+   "ifade": "resmî site başlığı: \"Geleneksel Yöresel Mevsim Çorbaları\""
+  },
+  "84a51335-9285-40ab-b301-2d1deaf57ecf": {
+   "ad": "Ozzie's 1968’Den Beri",
+   "kind": "Kokoreççi",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Ozzie's 1968 Uykuluklu Kokoreç\""
+  },
+  "1736a458-eaac-4b29-a352-3cfdc96eef7c": {
+   "ad": "Balıkçı Nevzat",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site: \"Gerçek Balık Lezzeti\", \"Taptaze Deniz Lezzetleri\""
+  },
+  "62d62660-2716-4912-9fa6-5ee1a38a46dd": {
+   "ad": "Moana By Belmira Restaurant",
+   "kind": "Dünya mutfağı",
+   "cuisine": [
+    "international"
+   ],
+   "ifade": "resmî site açıklaması: \"dünya mutfağından seçkin lezzetler\""
+  },
+  "98a11d44-5ded-442c-9d02-11912b6a13e1": {
+   "ad": "Beyoğlu Esnaf Lokantası",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site: \"sulu yemek\", \"Türk mutfağının geleneksel tatları\""
+  },
+  "e5938173-ccf3-46ee-8844-18c13271ae48": {
+   "ad": "Dürümcü Esnaf Paşabahçe - Beykoz",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site schema.org servesCuisine: \"Türk Mutfağı, Gaziantep Mutfağı, Kebap, Dürüm\""
+  },
+  "eb10a777-45f8-4f0f-aa40-7109210c61a3": {
+   "ad": "Arnavut İşi",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site: \"Arnavut İşi, sadece bir lokanta değil\""
+  },
+  "d7620c71-115a-44f4-a3e9-4234f399540d": {
+   "ad": "Laamaacuun",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site başlığı: \"İstanbulun en iyi lahmacunu\""
+  },
+  "6f26df08-f3a0-4095-ac13-09c07735d5b4": {
+   "ad": "Sentez Rooftop Restaurant",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site schema.org servesCuisine: \"Anatolian, Mediterranean, Turkish\""
+  },
+  "ba254324-0c08-4e97-8f73-eca817f32149": {
+   "ad": "Balıkçı Nevzat",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site: \"Gerçek Balık Lezzeti\", \"Taptaze Deniz Lezzetleri\""
+  }
+ }
+}

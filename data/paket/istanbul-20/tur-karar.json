@@ -1,0 +1,72 @@
+{
+ "_aciklama": "Paket 20 (906 ortak kayıtlar): tür, restoranın kendi resmî sitesindeki öz tanımdan doğrulandı (2026-11-12); addan ya da Overture kategorisinden tür üretilmedi.",
+ "kararlar": {
+  "796b6a77-ea3f-47a9-97e6-88a1cc59eaec": {
+   "ad": "Filizler Köftecisi Tuzla",
+   "kind": "Köfteci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site açıklaması: \"Köfte, ızgara ve Türk kahvaltısı\""
+  },
+  "a1ec060b-e64d-435b-a548-a926daa1d372": {
+   "ad": "Özgün Kokoreç",
+   "kind": "Kokoreççi",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site açıklaması: \"kokoreç sektöründe kendini kanıtlamış\""
+  },
+  "b60be486-6acb-4738-a3b3-5c308fe4e7ef": {
+   "ad": "Dönerci Celal Usta",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Nesilden Nesile Gelen Et Dönerin Ustası\""
+  },
+  "f7e2161c-6ad1-4c5c-a65a-13c318256192": {
+   "ad": "Şenol Kolcuoğlu Restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site açıklaması: \"İstanbul’daki ilk metrelik kebabın ev sahibi ... ocakbaşı\""
+  },
+  "787f48b6-4aca-4008-a2d8-6c6cf765b292": {
+   "ad": "Tadı Bafra",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site: \"İstanbul’un en kaliteli pidesi\""
+  },
+  "f5055926-5424-47e0-bb71-e1d6363480ba": {
+   "ad": "Ehlihan",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site: \"enfes ev yemekleri ... Ehlihan Lokantaları\""
+  },
+  "86a15f1f-6675-4815-a54c-33f07d3e5b71": {
+   "ad": "Della Fame",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site menü başlığı: \"Italian Flavors\""
+  },
+  "494faac6-6177-4184-a591-a35f966c668b": {
+   "ad": "Lokanta Safderun Feshane",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site açıklaması: \"eşsiz bir Türk mutfağı gastronomisi deneyimi\""
+  }
+ }
+}

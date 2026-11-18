@@ -1,0 +1,72 @@
+{
+ "_aciklama": "İstanbul Overture keşif paketi (dalga 28). Aday Overture Maps Places'ten (© Overture Maps Foundation; kaynak başına lisans: Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0); kimlik, faaliyet, adres ve tür restoranın resmî sitesinden ölçüldü (sayfa içeriği saklanmadı). Koordinat yalnız OSM restoran kaydından (© OpenStreetMap katkıcıları, ODbL); OSM'si olmayanlar A-konumsuz. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json. Google verisi yok.",
+ "kontrolTarihi": "2026-11-15",
+ "eklenen": [
+  {
+   "slug": "il-sorrisino-kadikoy",
+   "ref": "node/14002213816",
+   "tip": "osm_kaydi",
+   "ad": "Il Sorrisino",
+   "ilce": "Kadıköy",
+   "adres": "Özpark Çk. Sk No:4, Kadıköy",
+   "koordinat": [
+    40.987597,
+    29.032833
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Pizza",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site ilsorrisino.com: ad + telefon + sokak + kapı no (https://ilsorrisino.com/iletisim/)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://ilsorrisino.com/iletisim/; adres metni Overture)",
+    "tür: OSM cuisine \"pizza\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/14002213816 (906 dalındaki kimlik korundu: il-sorrisino-kadikoy)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/14002213816",
+    "https://ilsorrisino.com/",
+    "overture:3d519288-2338-4d59-95c1-105136004374"
+   ],
+   "kontrolTarihi": "2026-11-15",
+   "oncelikPuani": 7,
+   "v906": "il-sorrisino-kadikoy"
+  },
+  {
+   "slug": "koz-kanat-atasehir",
+   "ref": "way/866661195",
+   "tip": "osm_kaydi",
+   "ad": "Köz Kanat & Kebap",
+   "ilce": "Ataşehir",
+   "adres": "Doruk Sok No:7/A, Ataşehir",
+   "koordinat": [
+    40.987766,
+    29.124106
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "kozkanat.com",
+   "sube": "Ataşehir",
+   "kanit": [
+    "resmî şube sayfası kozkanat.com: ad + sokak + kapı no (https://kozkanat.com/iletisim)",
+    "adres: resmî sitede yazılan sokak + kapı no birlikte (https://kozkanat.com/iletisim; adres metni Overture)",
+    "tür: OSM cuisine \"turkish\" (şube düzeyi)",
+    "konum: OSM restoran kaydı way/866661195 (906 dalındaki kimlik korundu: koz-kanat-atasehir)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/866661195",
+    "https://kozkanat.com/",
+    "overture:43aa2c90-c6bd-4f8d-bfbd-0e9624670ce5"
+   ],
+   "kontrolTarihi": "2026-11-15",
+   "oncelikPuani": 6,
+   "v906": "koz-kanat-atasehir"
+  }
+ ]
+}

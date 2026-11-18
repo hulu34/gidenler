@@ -1,0 +1,186 @@
+{
+ "_aciklama": "Paket 20 seçiminden A ya da A-konumsuz olamayanlar; her satırda eksik ya da neden.",
+ "kayitlar": [
+  {
+   "gersId": "494faac6-6177-4184-a591-a35f966c668b",
+   "ad": "Lokanta Safderun Feshane",
+   "ilce": "Eyüpsultan",
+   "site": "https://lokantasafderun.com/",
+   "sinif": "B",
+   "eksik": [
+    "adres resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site lokantasafderun.com: ad + telefon (https://lokantasafderun.com/category/subeler/237.html)",
+   "osm": "node/13664450301",
+   "puan": 12
+  },
+  {
+   "gersId": "cc4eb24d-a6a2-42d4-a965-21038b99bea4",
+   "ad": "HaNi Restaurant",
+   "ilce": "Kadıköy",
+   "site": "https://www.hanirestaurant.com/",
+   "sinif": "B",
+   "eksik": [
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî site hanirestaurant.com: ad + telefon + sokak + kapı no (https://www.hanirestaurant.com/)",
+   "osm": "node/11347258198",
+   "puan": 10
+  },
+  {
+   "gersId": "6d48eed0-e944-46de-a48e-14440f2d9511",
+   "ad": "Han Restaurant",
+   "ilce": "Kadıköy",
+   "site": "https://hanrestoran.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site hanrestoran.com: ad + telefon + sokak + kapı no (https://hanrestoran.com/menu/)",
+   "osm": "node/10285694909",
+   "puan": 9
+  },
+  {
+   "gersId": "3e337b1c-0348-481f-bf08-0419646356f7",
+   "ad": "5. Kat Restaurant",
+   "ilce": "Beyoğlu",
+   "site": "https://5kat.com/",
+   "sinif": "B",
+   "eksik": [
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site 5kat.com: ad + telefon + sokak + kapı no (https://5kat.com/)",
+   "osm": "node/2525724953",
+   "puan": 9
+  },
+  {
+   "gersId": "b44167b8-cc4c-442c-965a-6abc1d275ead",
+   "ad": "Venge",
+   "ilce": "Beşiktaş",
+   "site": "http://www.venge.com.tr/",
+   "sinif": "B",
+   "eksik": [
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site venge.com.tr: ad + telefon + sokak (http://www.venge.com.tr/)",
+   "osm": "node/10282190509",
+   "puan": 8
+  },
+  {
+   "gersId": "b60be486-6acb-4738-a3b3-5c308fe4e7ef",
+   "ad": "Dönerci Celal Usta",
+   "ilce": "Ümraniye",
+   "site": "https://www.donercicelalusta.com/",
+   "sinif": "B",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî şube sayfası donercicelalusta.com: ad + telefon + sokak + kapı no (https://www.donercicelalusta.com/serifali-mahallesi-umraniye-subesi/)",
+   "osm": "node/583222546",
+   "puan": 8
+  },
+  {
+   "gersId": "8bff2ab1-9ecd-4373-aa3a-b3922a233dd9",
+   "ad": "Dönerci Etiler",
+   "ilce": "Beşiktaş",
+   "site": "http://www.dsu.com.tr/",
+   "sinif": "B",
+   "eksik": [
+    "kaynaklı tür yok"
+   ],
+   "neden": [],
+   "kimlik": "resmî site dsu.com.tr: ad + sokak + kapı no (http://www.dsu.com.tr/)",
+   "osm": "node/10736517605",
+   "puan": 8
+  },
+  {
+   "gersId": "f5055926-5424-47e0-bb71-e1d6363480ba",
+   "ad": "Ehlihan",
+   "ilce": "Fatih",
+   "site": "https://efeyavuz6060.wixsite.com/ehlihan-org",
+   "sinif": "B",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site efeyavuz6060.wixsite.com: ad + telefon + sokak (https://efeyavuz6060.wixsite.com/ehlihan-org)",
+   "osm": "node/5109654689",
+   "puan": 8
+  },
+  {
+   "gersId": "0b9da309-0433-4698-9edd-436f9edd475b",
+   "ad": "Kastamonu Pastırmacısı",
+   "ilce": "Başakşehir",
+   "sinif": "B",
+   "eksik": [
+    "906 eşleşmesi doğrulanmadı (moni-restoran-cafe-kadikoy: ilçe ya da OSM kaydı/telefon uyuşmuyor); ayrı işletme olabilir, elle bakılmalı"
+   ],
+   "neden": [],
+   "v906": "moni-restoran-cafe-kadikoy"
+  },
+  {
+   "gersId": "86a15f1f-6675-4815-a54c-33f07d3e5b71",
+   "ad": "Della Fame",
+   "ilce": "Ataşehir",
+   "site": "https://dellafame.com.tr/",
+   "sinif": "B",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site dellafame.com.tr: ad + telefon + sokak + kapı no (https://dellafame.com.tr/iletisim/)",
+   "osm": "node/12438404894",
+   "puan": 8
+  },
+  {
+   "gersId": "b5e20596-7cc8-4b27-b8aa-298dfbb17a24",
+   "ad": "Paçacım Ataşehir Çorbacı",
+   "ilce": "Ataşehir",
+   "site": "https://www.pacacim.com/",
+   "sinif": "B",
+   "eksik": [
+    "kapı numarası resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"soup_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site pacacim.com: ad + telefon + sokak (https://www.pacacim.com/)",
+   "osm": "node/10133848230",
+   "puan": 7
+  },
+  {
+   "gersId": "ec120458-05e0-43c0-be43-9c07f535f4c7",
+   "ad": "Amedros Cafe",
+   "ilce": "Fatih",
+   "site": "https://www.amedroscafe.com/",
+   "sinif": "B",
+   "eksik": [
+    "adres resmî kaynakta doğrulanmadı",
+    "tür yalnız Overture kategorisinde (\"turkish_restaurant\"); resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site amedroscafe.com: ad + telefon (https://www.amedroscafe.com/)",
+   "osm": "node/5108843725",
+   "puan": 7
+  },
+  {
+   "gersId": "94c6d5c8-3a05-4cf0-acf9-6e41a2941888",
+   "ad": "Kawaii Chinese & Sushi",
+   "ilce": "Ataşehir",
+   "site": "https://www.kawaii.com.tr/",
+   "sinif": "B",
+   "eksik": [
+    "adres resmî kaynakta doğrulanmadı"
+   ],
+   "neden": [],
+   "kimlik": "resmî site kawaii.com.tr: ad + telefon (https://www.kawaii.com.tr/)",
+   "osm": "node/10006248184",
+   "puan": 6
+  }
+ ]
+}

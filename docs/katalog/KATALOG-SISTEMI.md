@@ -18,6 +18,11 @@ Aday bulmaktan Codex'e teslime kadar 10 adım. Hepsi yeniden çalıştırılabil
   - Rehber metni, fotoğrafı ve koordinatı kopyalanmaz. Koordinat yine yalnız OSM'den gelir.
   - Faaliyet kanıtı sayılır; tek başına A yapmaz. Ayrıca resmî sitede ad + telefon/sokak ya da OSM kaydında tam adres aranır.
   - Yıldızsız restoran yıldızlı gösterilmez; ayrım test edilir (`restoranpakettest`).
+- **Koordinat ve konumsuz kayıt (paket 15+):**
+  - OSM tek zorunlu kaynak değildir.
+  - Kimliği, faaliyeti, kapı numaralı adresi ve türü doğrulanmış ama koordinatı doğrulanamayan restoran, işletme kaydı olarak koordinatsız eklenir: `kaliteSinifi: "A-konumsuz"`, `lat/lng` ve `location` yok, harita noktası gösterilmez.
+  - A sınıfının anlamı değişmedi.
+  - İzinli ikinci koordinat kaynağı (Overture) öneridir; şema desteği Codex'te (`KALITE-MODELI-ONERI.md`, `CODEX-KOORDINAT-ONERISI.md`).
 - **Google:**
   - Google içeriği bu sistemde hiç kullanılmaz: puan, yorum, fotoğraf, adres yok.
   - Ücretli API çağrısı yok.

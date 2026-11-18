@@ -1,0 +1,88 @@
+{
+ "_aciklama": "Paket 18: türü yalnız Overture kategorisinde olan adaylar resmî sitenin başlık/açıklama/menüsüyle doğrulandı (2026-11-11).",
+ "kararlar": {
+  "9f494f1e-f85d-4e44-bb9a-5d1e5978be73": {
+   "ad": "Babacan Et Lokantası",
+   "kind": "Steakhouse",
+   "cuisine": [
+    "steak_house"
+   ],
+   "ifade": "resmî site başlığı: \"Babacan Et Lokantası | 1978’den Bugüne\""
+  },
+  "96ee0e2b-8e92-41ff-a43f-177e3644da22": {
+   "ad": "Meşhur Arnavut Ciğercisi İsmail Usta",
+   "kind": "Ciğerci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Meşhur Arnavut Ciğercisi – 1945’den Gelen Lezzet\""
+  },
+  "0021c6ce-6c97-4d08-82bb-427128f5eac2": {
+   "ad": "Muhlama",
+   "kind": "Karadeniz mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Muhlama Karadeniz Mutfağı\""
+  },
+  "012b0572-29d0-4198-8744-33cc2f4744f7": {
+   "ad": "Molto bene galata",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site başlığı: \"Italian Restaurant, Handmade Pasta & Pizza\""
+  },
+  "5f61c0c7-625e-4084-97f7-ae0b3e43a6b0": {
+   "ad": "Ciğerhane Florya",
+   "kind": "Ciğerci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"İstanbul’un en iyi ciğercisi | Kuzu Ciğer Şiş\""
+  },
+  "81b53bef-5c02-4344-af92-d3bc55cf4a5e": {
+   "ad": "Gürkan Şef Vadistanbul",
+   "kind": "Steakhouse",
+   "cuisine": [
+    "steak_house"
+   ],
+   "ifade": "resmî site başlığı: \"Türkiye’nin en iyi et şeflerinden | Steak Food\""
+  },
+  "15a036a9-78c7-44dd-bced-d23b43ee6218": {
+   "ad": "Poyraz Karadeniz Pidecisi",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site başlığı: \"Poyraz Karadeniz Pidecisi – Geleneksel Gurme Lezzetler\""
+  },
+  "297ba30d-d771-4f42-aeea-35a0fc654144": {
+   "ad": "Chicken Co.",
+   "kind": "Tavuk",
+   "cuisine": [
+    "chicken"
+   ],
+   "ifade": "resmî site başlığı: \"Çıtır Tavuk, Burger ve Sıcak Lezzetler\""
+  },
+  "2b4a03f9-8da1-499f-9d4b-16270af2864d": {
+   "ad": "Döner Plus",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Döner Plus & Lahmacun Plus | Kebap Plus\""
+  },
+  "fedea574-8cee-4456-bad4-5bf3dbc117c1": {
+   "ad": "Niyokki Makarna Piazza AVM",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site başlığı: \"Niyokki Doğal Makarna Evi\""
+  }
+ }
+}

@@ -1,0 +1,1679 @@
+{
+ "_aciklama": "A-konumsuz kayıtlar için Overture Maps Places noktası (sürüm 2026-10-21.0). KAYDA YAZILMADI. Atıf: © Overture Maps Foundation; kaynak başına lisans (Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0).",
+ "oneriler": [
+  {
+   "slug": "muslum-pasa-kunefe-avcilar",
+   "gersId": "9d7cfba1-0510-4f2e-8899-bf0ee7c6a0af",
+   "lat": 40.980785,
+   "lng": 28.723272,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Avcılar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "akmanoglu-firini-eyupsultan",
+   "gersId": "0b214b4a-bf17-4b65-880a-1d674702fa2d",
+   "lat": 41.047508,
+   "lng": 28.932817,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Eyüpsultan",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "sardan-dondurma-kucukcekmece",
+   "gersId": "a3206205-7fc2-40f2-86f4-f52ecc6ae6fa",
+   "lat": 40.99107,
+   "lng": 28.779615,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Küçükçekmece",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "gostivar-dondurma-beykoz",
+   "gersId": "91795b22-cd7b-417b-8adb-547994c44c26",
+   "lat": 41.13702,
+   "lng": 29.086245,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "tahil-pasta-cafe-tuzla",
+   "gersId": "f897663c-5dcb-4f2d-be42-7da82f907857",
+   "lat": 40.841011,
+   "lng": 29.305511,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Tuzla",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "oklava-pastanesi-bahcelievler",
+   "gersId": "f6168c6b-4e79-46b6-9b17-897e75a56717",
+   "lat": 40.995148,
+   "lng": 28.835321,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bahçelievler",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "gaziantepli-kunefeci-niyo-bahcelievler",
+   "gersId": "b596e01e-621a-4191-b060-6537458800da",
+   "lat": 41.002129,
+   "lng": 28.863466,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bahçelievler",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "en-has-dondurma-kucukcekmece",
+   "gersId": "ff1be2ce-c4e2-4f99-8660-a444052ed13b",
+   "lat": 40.995819,
+   "lng": 28.776335,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Küçükçekmece",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "unaski-pasta-cafe-merter-gungoren",
+   "gersId": "c4bb3c1a-c46c-4dc8-854d-3d531a3473cc",
+   "lat": 41.00489,
+   "lng": 28.88471,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Güngören",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "nova-beans-coffee-catalca",
+   "gersId": "7f954009-fb6d-48f4-a39a-8e6a241e457b",
+   "lat": 41.143433,
+   "lng": 28.460413,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Çatalca",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "neves-baklava-ve-soguk-kadayif-bagcilar",
+   "gersId": "5ffb4235-5876-4da2-91ab-a3b557695a81",
+   "lat": 41.058525,
+   "lng": 28.831142,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bağcılar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "vasla-coffee-ve-roastery-kagithane",
+   "gersId": "64b0750d-ff67-421b-b9ad-b5c92bd6a397",
+   "lat": 41.091785,
+   "lng": 28.999346,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kağıthane",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "mila-kurabiyka-bayrampasa",
+   "gersId": "ca2c6255-6c30-4771-acef-cf208160dbb2",
+   "lat": 41.037487,
+   "lng": 28.911762,
+   "guven": 0.95,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bayrampaşa",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "anisah-coffee-esenyurt",
+   "gersId": "47b22c96-03d6-4375-b22c-f903eb239bae",
+   "lat": 41.014008,
+   "lng": 28.681742,
+   "guven": 0.94,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Esenyurt",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "chill-coffee-ve-more-bahcelievler",
+   "gersId": "9b6f9267-f5be-42b0-a6ce-29d16c1d2fc0",
+   "lat": 40.996574,
+   "lng": 28.865433,
+   "guven": 0.93,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bahçelievler",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "stabil-kahve-esenler",
+   "gersId": "b75c242c-4d79-4ec5-ac35-3266bb3451b4",
+   "lat": 41.068874,
+   "lng": 28.870409,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Esenler",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "le-petit-moulin-bakirkoy",
+   "gersId": "474f97da-5bd2-48f2-87f1-363640593171",
+   "lat": 40.978889,
+   "lng": 28.871975,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bakırköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "korner-kafe-avcilar",
+   "gersId": "bb070d91-4b78-4442-817d-830c0726bff2",
+   "lat": 40.984039,
+   "lng": 28.716494,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Avcılar",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "dilek-pastanesi-5-etap-basaksehir",
+   "gersId": "26f296cb-24b5-4044-a680-725cc0d0d88e",
+   "lat": 41.102818,
+   "lng": 28.803562,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Başakşehir",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "cevre-pastaneleri-sisli",
+   "gersId": "9f8bbbf0-4aaa-4629-a016-4901e0cfe71e",
+   "lat": 41.067497,
+   "lng": 28.999578,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "camlik-ekmek-firini-maltepe",
+   "gersId": "ab10b109-0368-4466-88eb-0da0ddf085e1",
+   "lat": 40.942245,
+   "lng": 29.143974,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Maltepe",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "saatli-firin-kadikoy",
+   "gersId": "b915f2df-92d2-420d-8c99-286b31fb51c7",
+   "lat": 40.958797,
+   "lng": 29.093969,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "coffee-venga-sancaktepe",
+   "gersId": "d2b31536-caef-4fdf-bc0d-9630efbe4ef1",
+   "lat": 41.00388,
+   "lng": 29.228851,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sancaktepe",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "agababa-kadayif-umraniye",
+   "gersId": "5cbc77ef-4afb-4768-8bfc-92256bfe372d",
+   "lat": 41.013672,
+   "lng": 29.134319,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ümraniye",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "mihman-pasta-ve-cafe-maltepe",
+   "gersId": "a00bfefb-bd9f-4368-816e-a1e0c8c3c69e",
+   "lat": 40.955574,
+   "lng": 29.144419,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Maltepe",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "bag-pastaneleri-sancaktepe",
+   "gersId": "177bec41-8b6d-4bf2-9a28-a856a80e8ca6",
+   "lat": 40.990944,
+   "lng": 29.228224,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sancaktepe",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "tatbaba-kafe-beylikduzu",
+   "gersId": "497c6f9c-cec6-4986-88d4-0c40c00e5268",
+   "lat": 40.977707,
+   "lng": 28.655233,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beylikdüzü",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "huseyinoglu-baklava-atakent-umraniye",
+   "gersId": "e120ba23-13a0-47ac-8cf0-0799a528d8b6",
+   "lat": 41.014904,
+   "lng": 29.100578,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ümraniye",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "baklavaci-muslum-polat-sancaktepe",
+   "gersId": "c6b3b9f9-844e-449c-90dc-d4f93ebf474f",
+   "lat": 40.969845,
+   "lng": 29.231831,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sancaktepe",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "bakeryfab-coffee-bakirkoy",
+   "gersId": "ec88dc44-839b-4853-add6-b4eb2aa94bc4",
+   "lat": 40.996868,
+   "lng": 28.873085,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bakırköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "creamchocco-yesilkoy-bakirkoy",
+   "gersId": "dbe04049-970c-4477-8870-f9798a1d2c63",
+   "lat": 40.959446,
+   "lng": 28.823059,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bakırköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kahveci-kardesler-pendik",
+   "gersId": "03d95561-14d2-4f95-bfdf-8c077db94956",
+   "lat": 40.8787,
+   "lng": 29.232071,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Pendik",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "bay-bread-umraniye",
+   "gersId": "7a878ed4-763f-4a00-a167-ed50e94cba4d",
+   "lat": 41.001923,
+   "lng": 29.144968,
+   "guven": 0.95,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ümraniye",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "orhan-kiratli-baklava-esenyurt-esenyurt",
+   "gersId": "c8480a38-833c-4275-b459-7ef9515fc47f",
+   "lat": 41.012878,
+   "lng": 28.666782,
+   "guven": 0.94,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Esenyurt",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "birinci-tatli-umraniye",
+   "gersId": "7e54d299-7ee4-4ee5-b0fc-ddfd78fb02b6",
+   "lat": 41.01392,
+   "lng": 29.149576,
+   "guven": 0.92,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ümraniye",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "baldo-organik-dondurma-umraniye",
+   "gersId": "cec44db5-b3a8-4831-b2f4-dd2edd32dd9d",
+   "lat": 41.015209,
+   "lng": 29.089241,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ümraniye",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "gourme-coffee-bagcilar",
+   "gersId": "a45d083d-b908-4a33-9633-f59c14d4d7fe",
+   "lat": 41.029202,
+   "lng": 28.828882,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bağcılar",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "kahve-ambari-umraniye",
+   "gersId": "470a8666-bd7a-4d52-ad1a-cdcad8c7f1aa",
+   "lat": 41.061066,
+   "lng": 29.104076,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ümraniye",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "tukkan-karakoy-beyoglu",
+   "gersId": "92d69555-7350-4e16-a7ba-ae68c26c4ab0",
+   "lat": 41.025288,
+   "lng": 28.979773,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "voice-of-coffee-bakirkoy",
+   "gersId": "134bd116-f703-42ec-b36b-544255975e6d",
+   "lat": 40.978886,
+   "lng": 28.871958,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bakırköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kandilli-pastanesi-uskudar",
+   "gersId": "3bc1c57a-ad93-40b2-98e6-3132e0941a7e",
+   "lat": 41.073372,
+   "lng": 29.058647,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "suadiye-nazar-profiterol-kadikoy",
+   "gersId": "39ebd5d0-f936-43be-8e04-56b6ace45e24",
+   "lat": 40.965195,
+   "lng": 29.088133,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "coffee-hour-florya-bakirkoy",
+   "gersId": "3b108ba5-200e-4b33-9cec-9a2abba554cf",
+   "lat": 40.980213,
+   "lng": 28.792791,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bakırköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "brema-kahve-atasehir",
+   "gersId": "62d9a034-82a0-4379-9091-b87c441b0443",
+   "lat": 40.981628,
+   "lng": 29.177313,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ataşehir",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "patisserie-idylle-atasehir",
+   "gersId": "9fde3f55-2c6d-42b9-94d8-80bf39d29fa5",
+   "lat": 40.985195,
+   "lng": 29.108929,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ataşehir",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "om-coffee-ve-more-maltepe",
+   "gersId": "6c9646a5-0ec6-4de7-8a15-138d48033274",
+   "lat": 40.93763,
+   "lng": 29.12035,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Maltepe",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "off-the-record-uskudar",
+   "gersId": "d8798f39-bc42-4a08-9e34-45e1028e41b3",
+   "lat": 41.033661,
+   "lng": 29.031582,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "yenikoy-kahvecisi-sariyer",
+   "gersId": "e39d5b7c-2eb7-4318-bdd6-b511e123d708",
+   "lat": 41.142139,
+   "lng": 29.041286,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "bret-artisan-bakery-uskudar",
+   "gersId": "af39fef7-50b3-4b5c-a1fd-07f0cba1e552",
+   "lat": 41.005337,
+   "lng": 29.06609,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "cochet-patisserie-bakirkoy",
+   "gersId": "43740b2d-174d-4245-bb58-032d6a454dcd",
+   "lat": 40.958942,
+   "lng": 28.823483,
+   "guven": 0.94,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Bakırköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "sayinlar-firin-uskudar",
+   "gersId": "ceda6868-0f34-4a8c-b2d4-2c901d8a5f61",
+   "lat": 41.019596,
+   "lng": 29.013395,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "artesso-coffee-sariyer",
+   "gersId": "5c2c4a73-a590-4aec-aa9d-87166727cc74",
+   "lat": 41.11615,
+   "lng": 29.012964,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "gofi-house-coffee-house-ve-eatery-uskudar",
+   "gersId": "336a4c58-149d-472f-9d18-f00e3511d8ca",
+   "lat": 41.049477,
+   "lng": 29.057571,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "pop-up-coffee-tr-beyoglu",
+   "gersId": "8ff007f4-996e-4d4e-ac1a-64653cfe90c0",
+   "lat": 41.025578,
+   "lng": 28.975006,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "thegranma-food-ve-coffee-maltepe",
+   "gersId": "3476f472-10f8-4a96-a13a-4e98c20b8832",
+   "lat": 40.946529,
+   "lng": 29.111092,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Maltepe",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "nuga-maltepe",
+   "gersId": "58d37edd-4386-4b52-bc00-7f92e1ed7691",
+   "lat": 40.937927,
+   "lng": 29.140696,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Maltepe",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "cafe-cambridge-kadikoy",
+   "gersId": "68a64b7d-c0d3-4024-b258-55b5ecdf2c3f",
+   "lat": 40.992294,
+   "lng": 29.028372,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "moonberry-coffee-sisli",
+   "gersId": "b244dbf3-ddce-4bdc-9615-02802f6d9fb7",
+   "lat": 41.054111,
+   "lng": 28.982075,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "beyazpark-kafe-sariyer",
+   "gersId": "f46db219-6fd5-4ede-90c7-20a0c97fa474",
+   "lat": 41.163441,
+   "lng": 29.049431,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "caffe-diverso-kadikoy",
+   "gersId": "fb4b73ce-a5b3-4e05-9168-0ba2166197f5",
+   "lat": 40.954685,
+   "lng": 29.098072,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "molecule-coffee-besiktas",
+   "gersId": "8bb57746-cd4a-43a6-8b78-be21c1ac839c",
+   "lat": 41.043335,
+   "lng": 29.002121,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beşiktaş",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "aum-pasta-ve-cafe-kadikoy",
+   "gersId": "6eb112d3-3723-49aa-91d1-6130763842e2",
+   "lat": 41.005981,
+   "lng": 29.04665,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "khaldi-coffee-fatih",
+   "gersId": "cf6deafe-c299-41e3-953a-b052e1596231",
+   "lat": 41.008785,
+   "lng": 28.97612,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Fatih",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "dukkan-anteke-kadikoy",
+   "gersId": "bdcb5b2b-5f2a-4938-8e25-9c50a8f6779d",
+   "lat": 40.977745,
+   "lng": 29.08346,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "mesela-coffee-sariyer",
+   "gersId": "a27adaf0-1a5a-480c-8dc6-09b01d9683cd",
+   "lat": 41.170452,
+   "lng": 29.059185,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "saint-martin-istanbul-sariyer",
+   "gersId": "acd8b5e2-a5b9-4df9-8492-029f71ab1039",
+   "lat": 41.111961,
+   "lng": 28.987165,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "recon-coffee-beyoglu",
+   "gersId": "40b9ecc9-555d-41e3-b29e-b037ea8e84cb",
+   "lat": 41.025738,
+   "lng": 28.979235,
+   "guven": 0.95,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "cihan-pastanesi-besiktas",
+   "gersId": "74803ad2-4773-4eb3-9436-1e33c57ea409",
+   "lat": 41.047993,
+   "lng": 29.005569,
+   "guven": 0.95,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beşiktaş",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "mugab-baklava-pendik-pendik",
+   "gersId": "de913988-3e8a-4960-ad14-ee9867bb100a",
+   "lat": 40.885044,
+   "lng": 29.22677,
+   "guven": 0.94,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Pendik",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "sayan-baklava-besiktas",
+   "gersId": "e30aae50-d755-4868-ad95-8f9d03e03b43",
+   "lat": 41.087013,
+   "lng": 29.010014,
+   "guven": 0.93,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beşiktaş",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "fuga-coffee-sisli",
+   "gersId": "cbb4ffe9-a9f7-4e5a-bca5-48c727b26d84",
+   "lat": 41.078781,
+   "lng": 29.009773,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "reset-coffee-bakery-umraniye",
+   "gersId": "790bc845-5468-4bed-96fd-0e1d451ddd44",
+   "lat": 41.023487,
+   "lng": 29.112904,
+   "guven": 0.9,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ümraniye",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "but-first-coffee-sisli",
+   "gersId": "d74b2a92-13fc-4646-97d0-8678d17365aa",
+   "lat": 41.056358,
+   "lng": 28.981544,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "gonul-kahvesi-sultanbeyli",
+   "gersId": "810369cf-aab5-4bc0-927f-31521173e963",
+   "lat": 40.968819,
+   "lng": 29.260817,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sultanbeyli",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "susam-cafe-beyoglu",
+   "gersId": "9eec1392-d7ec-4531-9eb2-202531382cc7",
+   "lat": 41.030697,
+   "lng": 28.985113,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "cafe-firuz-beyoglu",
+   "gersId": "4be918ec-75b6-4695-84e9-18711ea07710",
+   "lat": 41.031044,
+   "lng": 28.982468,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "hub962-karakoy-beyoglu",
+   "gersId": "e376d02b-0d26-4e29-9b28-71491f83999f",
+   "lat": 41.025356,
+   "lng": 28.977201,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "cafe-kazanci-beyoglu",
+   "gersId": "f1d5f6be-82d3-49ee-9bd3-5937f746c985",
+   "lat": 41.033894,
+   "lng": 28.986988,
+   "guven": 0.98,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "pastanbul-sariyer",
+   "gersId": "01e9fdba-bbce-4d63-803f-0b4c82c27dfa",
+   "lat": 41.117516,
+   "lng": 29.001867,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "fm-kahve-atasehir",
+   "gersId": "30056e2e-fd54-4e2b-96ea-415b543d3a7e",
+   "lat": 40.989624,
+   "lng": 29.185276,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ataşehir",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "likya-coffee-kadikoy",
+   "gersId": "71d2cffb-e549-43c6-8b75-17b8fae35c8e",
+   "lat": 40.962944,
+   "lng": 29.097527,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "olifantes-beyoglu",
+   "gersId": "c91ab031-9eee-46df-8f9a-b8fb7afeef70",
+   "lat": 41.033756,
+   "lng": 28.977091,
+   "guven": 0.96,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "haha-kafe-sisli",
+   "gersId": "9232b648-c821-4410-9a4c-a668db1c3b37",
+   "lat": 41.050602,
+   "lng": 28.994413,
+   "guven": 0.95,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "drinkee-coffee-roastery-kadikoy",
+   "gersId": "55e9c4fb-05d0-42ea-b4a3-5831a9b9c6b7",
+   "lat": 40.953537,
+   "lng": 29.094584,
+   "guven": 0.94,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "ferment-besiktas",
+   "gersId": "6ed4e792-06dd-40d9-9530-fab284d234b1",
+   "lat": 41.056992,
+   "lng": 29.004183,
+   "guven": 0.92,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beşiktaş",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "pasifik-pastanesi-kadikoy",
+   "gersId": "d59d0930-e53f-4ddf-9133-2a780881a246",
+   "lat": 40.986309,
+   "lng": 29.025343,
+   "guven": 1,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "cafe-avanti-kadikoy",
+   "gersId": "3f2f6435-d944-45b1-9c14-a16aa65c1efa",
+   "lat": 40.989044,
+   "lng": 29.080158,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "vaa-coffee-sisli",
+   "gersId": "c28f7225-49e7-4466-93e9-c4dab6d5ab99",
+   "lat": 41.072948,
+   "lng": 29.011791,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Microsoft",
+    "Overture",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "h-rman-coffee-ve-matcha-shop-beyoglu",
+   "gersId": "0f5d8b2d-d3e8-479d-bafc-324e832bb45e",
+   "lat": 41.032692,
+   "lng": 28.984035,
+   "guven": 0.95,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "ancre-istanbul-specialty-coffee-beyoglu",
+   "gersId": "ec8946b0-2120-474c-8b41-7167edff8ed7",
+   "lat": 41.034782,
+   "lng": 28.9863,
+   "guven": 0.9,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "cafe-obscura-fatih",
+   "gersId": "14b2f619-9a04-4c93-af5b-7f97e701d03e",
+   "lat": 41.030132,
+   "lng": 28.951025,
+   "guven": 0.99,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Fatih",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "march-nisantasi-sisli",
+   "gersId": "e8226383-10ae-487d-99a9-acac2fba47a4",
+   "lat": 41.049931,
+   "lng": 28.995672,
+   "guven": 0.97,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Şişli",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "lunqa-coffee-pendik",
+   "gersId": "0a9ccebc-7ffc-43f1-84f7-0cee3c2b02b8",
+   "lat": 40.879246,
+   "lng": 29.28615,
+   "guven": 0.91,
+   "kaynaklar": [
+    "Overture",
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Pendik",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  }
+ ]
+}

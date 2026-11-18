@@ -1,0 +1,294 @@
+{
+ "_aciklama": "A-konumsuz kayıtlar için Overture Maps Places noktası (sürüm 2026-10-21.0). KAYDA YAZILMADI. Atıf: © Overture Maps Foundation; kaynak başına lisans (Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0).",
+ "oneriler": [
+  {
+   "slug": "durak-pide-kartal",
+   "gersId": "ec219d54-6178-4ecd-8682-99ba29875780",
+   "lat": 40.893761,
+   "lng": 29.217625,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kartal",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kucukyali-balikcisi-maltepe",
+   "gersId": "66882996-ff9a-4109-90bd-c4e2e21252b8",
+   "lat": 40.948174,
+   "lng": 29.113731,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Maltepe",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "okkes-demir-usta-buyukcekmece",
+   "gersId": "9d61b65e-d8d2-4ff4-bc17-8875d3db3a19",
+   "lat": 41.000923,
+   "lng": 28.538332,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Büyükçekmece",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "burger-zmash-sariyer",
+   "gersId": "7cd0e711-1658-4418-be72-81ff2ed6a914",
+   "lat": 41.100574,
+   "lng": 29.05204,
+   "guven": 0.97,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "pileki-pide-sariyer",
+   "gersId": "a80194f0-b3f4-41f2-b86a-e22f32c050bd",
+   "lat": 41.161648,
+   "lng": 29.046724,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "pizzeria-capra-cekmekoy",
+   "gersId": "e3e094df-369f-4a85-9f43-12b96cbc112e",
+   "lat": 41.033672,
+   "lng": 29.172174,
+   "guven": 0.97,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Çekmeköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "bi-iskembe-halkali-kucukcekmece",
+   "gersId": "0e427301-b7d0-45d8-804e-32c66f96894c",
+   "lat": 41.037647,
+   "lng": 28.787989,
+   "guven": 0.95,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Küçükçekmece",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "cagistan-erzurum-cag-kebabi-eyupsultan",
+   "gersId": "f0c4a2b0-f07e-4cee-ada3-2a678d37fcb4",
+   "lat": 41.041012,
+   "lng": 28.927443,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Eyüpsultan",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kalinka-beyoglu",
+   "gersId": "fad5acd2-0347-4822-9b90-4c8704b3caa8",
+   "lat": 41.029808,
+   "lng": 28.974562,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "hasan-ustam-barbecue-restaurant-beyoglu",
+   "gersId": "ee85f263-0eca-4133-9aec-ab9e655d76b1",
+   "lat": 41.035831,
+   "lng": 28.981203,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kosuyolu-kebap-kadikoy",
+   "gersId": "033b417f-9803-4e2f-a624-ef14fd1caaba",
+   "lat": 41.006252,
+   "lng": 29.038475,
+   "guven": 0.94,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "tutsu-by-duvee-besiktas",
+   "gersId": "9e44def8-56c4-422f-aff0-5ad496d02a59",
+   "lat": 41.054298,
+   "lng": 28.999788,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beşiktaş",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "esenler-pide-lahmacun-ve-doner-salonu-esenler",
+   "gersId": "8b6935c6-7a5a-4df2-b6b2-7073c451dc00",
+   "lat": 41.033962,
+   "lng": 28.893723,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Esenler",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "emek-restaurant-beyoglu",
+   "gersId": "709234fa-5397-436a-982d-c926591d4286",
+   "lat": 41.026192,
+   "lng": 28.971201,
+   "guven": 0.92,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kagithane-gece-donercisi-kagithane",
+   "gersId": "1adc5bf7-79b2-4283-9082-cdcbbdf39918",
+   "lat": 41.079189,
+   "lng": 28.973125,
+   "guven": 0.9,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kağıthane",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "jaa-jaa-grill-maslak-1453-sariyer",
+   "gersId": "6258034c-826d-4c51-9478-4db42abc182b",
+   "lat": 41.115837,
+   "lng": 29.010426,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "nur-abla-karadeniz-sofrasi-cekmekoy",
+   "gersId": "e2c96e41-9f99-42d5-8360-9a2c716c6017",
+   "lat": 41.036194,
+   "lng": 29.160524,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Çekmeköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  }
+ ]
+}

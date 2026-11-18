@@ -1,0 +1,102 @@
+{
+ "dalga": 16,
+ "A": 61,
+ "sinif": {
+  "A": 16,
+  "A-konumsuz": 45
+ },
+ "osmKaydi": 16,
+ "isletmeKaydi": 45,
+ "uygunAday": 775,
+ "secilen": 200,
+ "onEleme": {
+  "kanitsiz": 672,
+  "spamPark": 268,
+  "kafeBar": 53,
+  "acilmadi": 3001
+ },
+ "inceleme": {
+  "906": 6,
+  "B": 127,
+  "C": 6
+ },
+ "incelemeNeden": {
+  "tür yalnız Overture kategorisinde": 42,
+  "kapı numarası resmî kaynakta doğrulanmadı": 31,
+  "kaynaklı tür yok": 22,
+  "906 havuzundaki kayıtla ortak": 6,
+  "işletme türü belirsiz": 2,
+  "tür": 10,
+  "tür belirsiz": 9,
+  "çiğ köfte": 2,
+  "tür çelişkili": 3,
+  "resmî site gıda firması": 1,
+  "çok konseptli grubun canlı müzik şubesi; bu şubenin türü belirsiz": 1,
+  "adres resmî kaynakta doğrulanmadı": 34,
+  "ilçe resmî sitede geçmiyor": 4,
+  "resmî site \"Olive Hill Village\"; restoran mı yaşam alanı mı belirsiz": 1,
+  "otel kafesi; resmî site otel sitesi, restoran kimliği yok": 1,
+  "balıkçı/su ürünleri satışı; restoran olduğu doğrulanmadı": 1,
+  "resmî site kendini nargile kafe ve okey salonu olarak tanıtıyor": 1,
+  "resmî site künefe markası": 1,
+  "sitede eğlence mekânı tanımı": 1
+ },
+ "turKaynagi": {
+  "resmî site": 62,
+  "OSM": 6
+ },
+ "ilce": {
+  "Esenyurt": 1,
+  "Sultangazi": 2,
+  "Gaziosmanpaşa": 1,
+  "Bakırköy": 12,
+  "Beşiktaş": 5,
+  "Fatih": 7,
+  "Kadıköy": 5,
+  "Büyükçekmece": 2,
+  "Küçükçekmece": 4,
+  "Avcılar": 1,
+  "Beylikdüzü": 4,
+  "Bahçelievler": 4,
+  "Bağcılar": 1,
+  "Başakşehir": 2,
+  "Silivri": 1,
+  "Üsküdar": 3,
+  "Çatalca": 2,
+  "Güngören": 1,
+  "Şişli": 2,
+  "Kağıthane": 1
+ },
+ "tur": {
+  "Türk mutfağı": 14,
+  "Balık restoranı": 10,
+  "Kebapçı / Ocakbaşı": 12,
+  "Burger": 2,
+  "Meyhane": 2,
+  "Tantuni": 1,
+  "Dönerci": 2,
+  "Köfteci": 3,
+  "Mantıcı": 2,
+  "Steakhouse": 3,
+  "Çorbacı": 2,
+  "Kahvaltı": 2,
+  "Pizza": 4,
+  "Lokanta": 1,
+  "Karadeniz mutfağı": 1
+ },
+ "zincirSube": 5,
+ "v906Eslesen": 0,
+ "kaliteDuzeltmesi": {
+  "tarih": "2026-11-12",
+  "aciklama": "Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (scripts/katalog/adres-dogrula.mjs); bulunamayanlar B'ye indi.",
+  "inenler": [
+   "surmene-pide-bahcelievler",
+   "porto-balik-bakirkoy",
+   "kolcuoglu-ocakbasi-gokturk-eyupsultan",
+   "pizzeria-la-vista-bahcelievler",
+   "pizza-cotta-ve-coffee-basaksehir",
+   "donerci-ali-usta-maltepe",
+   "donerci-celal-usta-sancaktepe"
+  ]
+ }
+}

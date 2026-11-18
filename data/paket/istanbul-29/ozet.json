@@ -1,0 +1,54 @@
+{
+ "dalga": 29,
+ "A": 21,
+ "sinif": {
+  "A-konumsuz": 19,
+  "A": 2
+ },
+ "osmKaydi": 2,
+ "isletmeKaydi": 19,
+ "uygunAday": 25,
+ "secilen": 25,
+ "onEleme": {
+  "kanitsiz": 0,
+  "spamPark": 0,
+  "kafeBar": 1,
+  "acilmadi": 0
+ },
+ "inceleme": {
+  "B": 3,
+  "çakışma": 1
+ },
+ "incelemeNeden": {
+  "resmî site yalnız http": 2,
+  "ilçe resmî sitede geçmiyor": 1,
+  "paket içinde aynı işletme": 1
+ },
+ "turKaynagi": {
+  "resmî site": 21
+ },
+ "ilce": {
+  "Başakşehir": 1,
+  "Kartal": 1,
+  "Esenler": 1,
+  "Küçükçekmece": 2,
+  "Gaziosmanpaşa": 1,
+  "Bahçelievler": 1,
+  "Şişli": 4,
+  "Beyoğlu": 2,
+  "Beykoz": 1,
+  "Kadıköy": 3,
+  "Ataşehir": 1,
+  "Beşiktaş": 2,
+  "Ümraniye": 1
+ },
+ "tur": {
+  "Tatlıcı": 3,
+  "Fırın": 4,
+  "Kafe": 7,
+  "Kahveci": 5,
+  "Pastane": 2
+ },
+ "zincirSube": 1,
+ "v906Eslesen": 0
+}

@@ -1,0 +1,49 @@
+{
+ "dalga": 25,
+ "A": 12,
+ "sinif": {
+  "A-konumsuz": 11,
+  "A": 1
+ },
+ "osmKaydi": 1,
+ "isletmeKaydi": 11,
+ "uygunAday": 22,
+ "secilen": 22,
+ "onEleme": {
+  "kanitsiz": 0,
+  "spamPark": 0,
+  "kafeBar": 0,
+  "acilmadi": 0
+ },
+ "inceleme": {
+  "çakışma": 9,
+  "B": 1
+ },
+ "incelemeNeden": {
+  "mevcut kayıtla eşleşiyor": 7,
+  "OSM kaydı katalogda/pakette": 2,
+  "resmî site yalnız http": 1
+ },
+ "turKaynagi": {
+  "resmî site": 12
+ },
+ "ilce": {
+  "Çatalca": 2,
+  "Küçükçekmece": 2,
+  "Beylikdüzü": 2,
+  "Fatih": 2,
+  "Başakşehir": 2,
+  "Eyüpsultan": 1,
+  "Kadıköy": 1
+ },
+ "tur": {
+  "Kahvaltı": 2,
+  "Kebapçı / Ocakbaşı": 5,
+  "Türk mutfağı": 1,
+  "Burger": 2,
+  "Pideci": 1,
+  "Balık restoranı": 1
+ },
+ "zincirSube": 1,
+ "v906Eslesen": 0
+}

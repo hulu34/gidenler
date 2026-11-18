@@ -1,0 +1,99 @@
+{
+ "_aciklama": "Paket 22 (B havuzunun kalanı): tür restoranın kendi resmî sitesindeki öz tanımdan doğrulandı (2026-11-12); addan ya da Overture kategorisinden tür üretilmedi.",
+ "kararlar": {
+  "9d61b65e-d8d2-4ff4-bc17-8875d3db3a19": {
+   "ad": "Ökkeş Demir usta",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site: \"Büyükçekmece'de Antep Lezzetleri\", \"Gaziantep'in tescilli tarifleri\""
+  },
+  "0e427301-b7d0-45d8-804e-32c66f96894c": {
+   "ad": "Bi İşkembe Halkalı",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site hakkımızda: \"Geleneksel Türk mutfağının en özel tatları\""
+  },
+  "79441279-cd0c-4233-bafc-69dc3180fb70": {
+   "ad": "Dönerci Ali Usta",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Dönerci Ali Usta - Döner Hattı\""
+  },
+  "e0c6753f-47c9-4d13-b3dc-807056638e4d": {
+   "ad": "Cucci Bruschetta",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site: \"Italian Restaurant\""
+  },
+  "9e44def8-56c4-422f-aff0-5ad496d02a59": {
+   "ad": "Tütsü by Düvee",
+   "kind": "Steakhouse",
+   "cuisine": [
+    "steak_house"
+   ],
+   "ifade": "resmî site başlığı: \"Brisket, Steak & Açık Ateş Restoranı\""
+  },
+  "cfa86795-0a22-4fee-8eb4-18d7efdcb370": {
+   "ad": "Tella Kebap, Esenkent",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Gerçek Urfa Kebabı – Odun Ateşinde Lahmacun\""
+  },
+  "f0c4a2b0-f07e-4cee-ada3-2a678d37fcb4": {
+   "ad": "Cağistan Erzurum Cağ Kebabı",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site: \"Nefis Cağ Kebabı\", \"Erzurum Cağ Kebabı\""
+  },
+  "8b6935c6-7a5a-4df2-b6b2-7073c451dc00": {
+   "ad": "Esenler Pide Lahmacun ve Döner Salonu",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site açıklaması: \"Döner, Pide ve Lahmacun Salonu ... lezzetli pide çeşitleri\""
+  },
+  "73241339-cd4b-4006-b2c5-f9bb7f12be12": {
+   "ad": "Suat Usta Mersin Tantuni",
+   "kind": "Tantuni",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Damağınızda Kalan Tantuni Lezzeti\""
+  },
+  "709234fa-5397-436a-982d-c926591d4286": {
+   "ad": "Emek Restaurant",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Türk & Osmanlı Mutfağı\" (1973'ten beri)"
+  },
+  "e2c96e41-9f99-42d5-8360-9a2c716c6017": {
+   "ad": "Nur Abla Karadeniz Sofrası",
+   "kind": "Karadeniz mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site: \"Gerçek Karadeniz Mutfağı\""
+  }
+ }
+}

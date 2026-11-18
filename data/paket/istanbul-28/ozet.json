@@ -1,0 +1,43 @@
+{
+ "dalga": 28,
+ "A": 2,
+ "sinif": {
+  "A": 2
+ },
+ "osmKaydi": 2,
+ "isletmeKaydi": 0,
+ "uygunAday": 30,
+ "secilen": 22,
+ "onEleme": {
+  "kanitsiz": 0,
+  "spamPark": 0,
+  "kafeBar": 15,
+  "acilmadi": 0
+ },
+ "inceleme": {
+  "B": 11,
+  "C": 6,
+  "çakışma": 3
+ },
+ "incelemeNeden": {
+  "kaynaklı tür yok": 13,
+  "kapı numarası resmî kaynakta doğrulanmadı": 9,
+  "tür yalnız Overture kategorisinde": 1,
+  "zincir": 6,
+  "mevcut kayıtla eşleşiyor": 3,
+  "adres resmî kaynakta doğrulanmadı": 4
+ },
+ "turKaynagi": {
+  "OSM": 2
+ },
+ "ilce": {
+  "Kadıköy": 1,
+  "Ataşehir": 1
+ },
+ "tur": {
+  "Pizza": 1,
+  "Türk mutfağı": 1
+ },
+ "zincirSube": 1,
+ "v906Eslesen": 2
+}
