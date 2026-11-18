@@ -1,3 +1,4 @@
+import { safeVenueWebsite } from "@/lib/venueLinkSafety";
 import Link from "next/link";
 import type { Entity } from "@/lib/types";
 import { canReserve, isPartner, slotsOf } from "@/lib/reservation";
@@ -21,7 +22,7 @@ export function ReservationBlock({ entity }: { entity: Entity }) {
   const tel = c?.phone?.replace(/[^\d+]/g, "");
   const links = [
     tel && { href: `tel:${tel}`, label: "Ara", sub: c!.phone! },
-    c?.website && { href: c.website, label: "Web sitesi", sub: c.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "").slice(0, 34), ext: true },
+    c?.website && safeVenueWebsite(c.website) && { href: c.website, label: "Web sitesi", sub: c.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "").slice(0, 34), ext: true },
     c?.instagram && { href: `https://www.instagram.com/${c.instagram}/`, label: "Instagram", sub: `@${c.instagram}`, ext: true },
   ].filter(Boolean) as { href: string; label: string; sub: string; ext?: boolean }[];
   return (

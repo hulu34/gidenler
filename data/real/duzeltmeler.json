@@ -391,5 +391,13 @@
   "sourceUrl": "https://www.isilgardenrestaurant.com/tr/menu",
   "checkedAt": "2026-11-18",
   "why": "Resmî menü Türk/Osmanlı yemekleri, kebap, pide, kahvaltı ve diğer yemekler içeriyor; deniz ürünleri yalnız bir bölüm."
+ },
+ "nezih-kebap-yuvalama-sariyer": {
+  "website": null,
+  "websiteWhy": "2026-11-18: Kullanıcı eski nezihkebap.com sitesinin kumar alanına yönlendiğini bildirdi. Alan adı güvenlik için bastırıldı; restoran açık tutuldu, alternatif site eklenmedi."
+ },
+ "takanik-balik-park-sariyer": {
+  "website": null,
+  "websiteWhy": "2026-11-18: Canlı Takanık bağlantısının bahis içeriğine yönlendiği doğrulandı. takanik.com.tr güvenlik için bastırıldı; restoran açık tutuldu, alternatif site eklenmedi."
  }
 }
