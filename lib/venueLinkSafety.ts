@@ -6,11 +6,11 @@ export function blockedVenueHost(value?: string | null): boolean {
   try {
     const u = new URL(value.trim().startsWith('//') ? `https:${value.trim()}` : /^https?:/i.test(value.trim()) ? value.trim() : `https://${value.trim()}`);
     const host = u.hostname.toLowerCase().replace(/\.$/, '');
-    return ['nezihkebap.com', 'takanik.com.tr'].some(blocked => host === blocked || host.endsWith(`.${blocked}`));
+    return ['nezihkebap.com', 'takanik.com.tr', 'gelik.com.tr', 'kucukev.com'].some(blocked => host === blocked || host.endsWith(`.${blocked}`));
   } catch { return false; }
 }
 export const safeVenueWebsite = (value?: string | null): string | undefined => value && !blockedVenueHost(value) ? value : undefined;
 /** Rezervasyon açıklaması URL yerine serbest metin de olabilir. */
 export function mentionsBlockedVenueHost(value: string): boolean {
-  return /(?:^|[^a-z\d.-])(?:[a-z\d-]+\.)*(?:nezihkebap\.com|takanik\.com\.tr)(?=$|[^a-z\d.-]|\.(?=$|[\s/:?#]))/i.test(value);
+  return /(?:^|[^a-z\d.-])(?:[a-z\d-]+\.)*(?:nezihkebap\.com|takanik\.com\.tr|gelik\.com\.tr|kucukev\.com)(?=$|[^a-z\d.-]|\.(?=$|[\s/:?#]))/i.test(value);
 }
