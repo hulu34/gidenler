@@ -1,0 +1,10 @@
+{"_aciklama":"Gerçek tarayıcıda (Claude yerleşik tarayıcı) yerel Production derlemesi (721b1a1, next start) üzerinde görsel inceleme. Yalnız burada listelenen profiller görsel olarak incelendi; diğerleri yalnız otomatik denetimden geçti.","tarih":"2026-11-12","kontroller":[
+{"slug":"sultan-kosesi-fatih","sinif":"B1","genislik":375,"sonuc":"Geçti","not":"yatay taşma yok; 'Konum yaklaşık; kapı numarası henüz doğrulanmadı' uyarısı görünüyor; 'Adres (sokak düzeyi)' satırı var. Sorun: 360° bağlantısı kesin koordinatla açılıyor (kod düzeyi, PR #22)"},
+{"slug":"sultan-kosesi-fatih","sinif":"B1","genislik":1280,"sonuc":"Geçti","not":"uyarı görünüyor; aynı 360° bağlantı sorunu"},
+{"slug":"japon-erdal-beyoglu","sinif":"işletme kaydı (koordinatsız)","genislik":375,"sonuc":"Geçti","not":"'harita noktası henüz yok' görünüyor; izinli fotoğraf yüklendi; kırık görsel yok. Sorun: 'Konum OpenStreetMap adres verisinden' atfı (PR #14)"},
+{"slug":"japon-erdal-beyoglu","sinif":"işletme kaydı (koordinatsız)","genislik":1280,"sonuc":"Geçti","not":"aynı"},
+{"slug":"aci-biber-kucukcekmece","sinif":"kapalı","genislik":375,"sonuc":"Geçti","not":"'Kalıcı olarak kapandı. Son kontrol 6 Kasım 2026' bildirimi görünüyor"},
+{"slug":"ismet-baba-uskudar","sinif":"A","genislik":1280,"sonuc":"Geçti","not":"Commons kapak fotoğrafı yüklendi; lisans (CC BY-SA 4.0) ve atıf görünüyor"},
+{"slug":"tahtasaray-besiktas","sinif":"A","genislik":1280,"sonuc":"Geçti","not":"kapı numaralı adres ve OSM harita bağlantısı; B1 uyarısı yok (doğru)"},
+{"slug":"kronotrop-cihangir-beyoglu","sinif":"kafe","genislik":1280,"sonuc":"Geçti","not":"kafe kategorisinde; restoranla karışmıyor"},
+{"slug":"(8 profil, fetch)","genislik":375,"sonuc":"Geçti","not":"tahtasaray, sultan-kosesi, japon-erdal, aci-biber, kronotrop, ismet-baba, deniz-park, beso: 200"}]}
