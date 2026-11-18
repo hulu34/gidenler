@@ -1,0 +1,299 @@
+{
+  "status": "LOCAL_CANDIDATE_PREVIEW_NOT_AUTHORIZED",
+  "productionSha": "bcaef512ca8a5feac20b07c36a006bfd97d19750",
+  "productionTree": "74d2ae4de0e741f7aa2207f1da4a436430874f55",
+  "summary": {
+    "productionTotal": 884,
+    "productionActive": 849,
+    "proposed": 10,
+    "acceptedCodeCandidates": 8,
+    "heldFromProposals": 2,
+    "previewAdded": 0,
+    "newProductionRecords": 0,
+    "targetTotal": 892,
+    "targetActive": 857,
+    "activeRestaurants": 732,
+    "cafes": 114,
+    "bars": 11,
+    "closed": 35
+  },
+  "researchComparison": {
+    "productionSha": "bcaef512ca8a5feac20b07c36a006bfd97d19750",
+    "productionTree": "74d2ae4de0e741f7aa2207f1da4a436430874f55",
+    "catalogTotal": 884,
+    "researchRows": 883,
+    "researchPr": 70,
+    "researchSha": "73a07d5c06371414ced3254be277de732186d8e0",
+    "researchBlob": "c24f50ffacb8b1f919442f7dbb47638469e93ee2",
+    "comparisons": {
+      "existing-live-link": 160,
+      "no-verified-exact-link": 723
+    },
+    "distinctLiveLinkedSlugs": 159,
+    "localProposals": 10,
+    "localAccepted": 8,
+    "localHeld": 2,
+    "note": "883 eski araştırma satırının mevcut doğrulanmış kimlik bağları884katalogla tekrar denetlendi; yayımlananPR72beşli açık kabul kimlikleri eklendi. Ad/ilçe benzerliği tek başına birleştirilmez.10yerel öneri883satırın dışında. PR73Kıbrıs ayrı; bu pakete alınmadı."
+  },
+  "records": [
+    {
+      "independentSource": "https://www.yemeksepeti.com/restaurant/l2pm/bcante-l2pm/reviews",
+      "independentDate": "2026-06-07",
+      "independentDateType": "platform_review_date",
+      "freshness": "güçlü",
+      "menuSource": "https://www.bcante.com/en/bcantemenu?location=Mecit+Ali+Sokak",
+      "menuEvidence": [
+        "Cheeseburger",
+        "Truffle",
+        "Mushroom"
+      ],
+      "addressNote": "İşletmeci ve Yemeksepeti aynı Türkali/Mecit Ali/Alper Apt16A adresinde eşleşir. CB2024yazısı tarihî ek kanıttır; platformdaki2026tarihi ziyaretçi kaydıdır, editörün ziyaret tarihi veya Gidenler yorumu değildir.",
+      "additionalSources": [
+        "https://culinarybackstreets.com/stories/istanbul/best-bites-2024-9"
+      ],
+      "slug": "bcante-besiktas",
+      "name": "Bcante",
+      "district": "Beşiktaş",
+      "address": "Mecit Ali Sokak, Alper Apt. No:16A, Türkali Mahallesi, Beşiktaş",
+      "kind": "Burger",
+      "categoryId": "cat.restaurant",
+      "officialSource": "https://www.bcante.com/",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "location": "KOORDINAT_YOK",
+      "taxonomyChangeScope": "NEW_RECORD_ONLY"
+    },
+    {
+      "independentSource": "https://culinarybackstreets.com/stories/istanbul/antakya-isi-sokak-lezzetleri",
+      "independentDate": "2025-02-17",
+      "independentDateType": "original_editorial_republished",
+      "republishedAt": "2026-11-18",
+      "freshness": "orta",
+      "menuSource": "https://www.antakyaisisokaklezzetleri.com/",
+      "menuEvidence": [
+        "Lahmacun",
+        "Humus",
+        "Ciğer kebabı",
+        "Tavuk şiş"
+      ],
+      "addressNote": "İşletmeci18/A, CB18yazar;2026başlıklı Yemek.com yazısı18/Aile eşleşir. CBilk yayın2025-02-17, yeniden yayın2026-11-18; yeniden yayın yeni ziyaret değildir. Sosyal biyografideki20numarası aynı kapı/ayrı şube diye sunulmaz.",
+      "additionalSources": [
+        "https://yemek.com/istanbulda-kaburga-dolmasi-nerede-yenir/"
+      ],
+      "supplementDate": {
+        "year": "2026",
+        "exactDayKnown": false,
+        "type": "editorial_list_year"
+      },
+      "slug": "antakya-isi-sokak-lezzetleri-beyoglu",
+      "name": "Antakya İşi Sokak Lezzetleri",
+      "district": "Beyoğlu",
+      "address": "Sahne Sokak No:18/A (Tarihi Balık Pazarı), Hüseyinağa Mahallesi, Beyoğlu",
+      "kind": "Hatay mutfağı",
+      "categoryId": "cat.restaurant",
+      "officialSource": "https://www.antakyaisisokaklezzetleri.com/",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "location": "KOORDINAT_YOK",
+      "taxonomyChangeScope": "NEW_RECORD_ONLY"
+    },
+    {
+      "independentSource": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-italyan-restoranlari",
+      "independentDate": "2026-10-16",
+      "independentDateType": "editorial_list",
+      "freshness": "güçlü",
+      "menuSource": "https://www.cipriani.com/_files/ugd/a187ac_4900d5ebbed54d40b71c3aa55135f4c5.pdf",
+      "menuEvidence": [
+        "Resmî İstanbul sayfası Harry’s Bar ve İtalyan mutfağını açıkça tanımlar; bağlı PDF tamamı bu tur okunmadı"
+      ],
+      "addressNote": "Resmî İstanbul şubesi ve Oggusto BronzNo4/Park Hyatt Maçka Palas adresinde eşleşir. Başka otel veya şehirdeki Cipriani şubesi üretilmez. Siteye normal tarayıcıdan ulaşıldı.",
+      "additionalSources": [],
+      "slug": "cipriani-istanbul-sisli",
+      "name": "Cipriani İstanbul",
+      "district": "Şişli",
+      "address": "Bronz Sokak No:4 (Park Hyatt İstanbul – Maçka Palas), Teşvikiye Mahallesi, Şişli",
+      "kind": "İtalyan",
+      "categoryId": "cat.restaurant",
+      "officialSource": "https://cipriani.com/cipriani-istanbul",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "location": "KOORDINAT_YOK",
+      "taxonomyChangeScope": "NEW_RECORD_ONLY"
+    },
+    {
+      "independentSource": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-uzak-dogu-restoranlari",
+      "independentDate": "2026-11-12",
+      "independentDateType": "editorial_list",
+      "freshness": "güçlü",
+      "menuSource": "https://korecanrestaurantistanbul.com/",
+      "menuEvidence": [
+        "Bibimbab",
+        "Bulgogi",
+        "Kimchi Jjigae"
+      ],
+      "addressNote": "Resmî Cankurtaran MeydanıNo10 ile bağımsız Cankurtaran MeydanıSokakNo10aynı kimliği destekler. Kore menüsü işletmeci sayfasından okundu. İzin/alkol/telefon/saat aktarılmadı.",
+      "additionalSources": [],
+      "slug": "korecan-korean-restaurant-fatih",
+      "name": "Korecan Korean Restaurant",
+      "district": "Fatih",
+      "address": "Cankurtaran Meydanı Sokak No:10, Cankurtaran Mahallesi, Fatih",
+      "kind": "Asya mutfağı",
+      "categoryId": "cat.restaurant",
+      "officialSource": "https://korecanrestaurantistanbul.com/",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "location": "KOORDINAT_YOK",
+      "taxonomyChangeScope": "NEW_RECORD_ONLY"
+    },
+    {
+      "independentSource": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-iyi-uzak-dogu-restoranlari",
+      "independentDate": "2026-11-12",
+      "independentDateType": "editorial_list",
+      "freshness": "güçlü",
+      "menuSource": "https://thejie.com.tr/",
+      "menuEvidence": [
+        "İşletmeci Çin,Japon,Tay mutfağı yaklaşımı; bağlı QR menünün tamamı bu tur okunmadı"
+      ],
+      "addressNote": "Normal tarayıcıda Fişekhane iletişim sekmesi seçilerek Kennedy52/11okundu; bağımsız yayın aynı kapıyı verir. Ataşehir/Bulvar216ayrı şubedir, eklenmedi; Zennup/Cookshop ile birleşmez.",
+      "additionalSources": [
+        "https://thejie.com.tr/istanbul-uzak-dogu-fisekhane/"
+      ],
+      "slug": "jie-fisekhane-zeytinburnu",
+      "name": "Jie Fişekhane",
+      "district": "Zeytinburnu",
+      "address": "Kennedy Caddesi No:52/11 (Fişekhane), Kazlıçeşme Mahallesi, Zeytinburnu",
+      "kind": "Asya mutfağı",
+      "categoryId": "cat.restaurant",
+      "officialSource": "https://thejie.com.tr/",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "location": "KOORDINAT_YOK",
+      "taxonomyChangeScope": "NEW_RECORD_ONLY"
+    },
+    {
+      "independentSource": "https://www.oggusto.com/gastronomi/istanbul/cihangir-en-iyi-mekanlar",
+      "independentDate": "2026-07-13",
+      "independentDateType": "editorial_list",
+      "freshness": "orta",
+      "menuSource": "https://www.jashistanbul.com/menu/",
+      "menuEvidence": [
+        "Topik",
+        "Meze tabağı",
+        "Uskumru dolma",
+        "Yaprak ciğer"
+      ],
+      "addressNote": "İşletmeci No9ve PürtelaşHasanEfendi mahallesi seçildi; Oggusto Cihangir bölge adını kullanır. İki kaynaktaki telefon farkı nedeniyle telefon eklenmez. Kınalıada ayrı şube, üretilmedi.",
+      "additionalSources": [
+        "https://www.jashistanbul.com/hikayemiz/"
+      ],
+      "slug": "jash-cihangir-beyoglu",
+      "name": "Jash Cihangir",
+      "district": "Beyoğlu",
+      "address": "Pürtelaş Hasan Efendi Mahallesi, Cihangir Caddesi No:9, Beyoğlu",
+      "kind": "Meyhane",
+      "categoryId": "cat.restaurant",
+      "officialSource": "https://www.jashistanbul.com/contact/",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "location": "KOORDINAT_YOK",
+      "taxonomyChangeScope": "NEW_RECORD_ONLY"
+    },
+    {
+      "independentSource": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-lezzetli-street-food-restoranlari",
+      "independentDate": "2026-11-17",
+      "independentDateType": "editorial_list",
+      "freshness": "güçlü",
+      "menuSource": "https://rebel.food/",
+      "menuDate": "2026-11-01",
+      "menuEvidence": [
+        "Casa Smashed",
+        "Oklahoma Onion",
+        "Crispy Chicken"
+      ],
+      "addressNote": "İşletmeci81/B, bağımsız yayın81yazar; marka,Reşitpaşa,sokak ve işletme hesabı eşleşir. Kapı eki farkı kaydedilir; paket servis mutfakları yeni şube sayılmaz.",
+      "additionalSources": [],
+      "slug": "rebel-burgers-sariyer",
+      "name": "Rebel Burgers",
+      "district": "Sarıyer",
+      "address": "Kongre Caddesi No:81/B, Reşitpaşa Mahallesi, Sarıyer",
+      "kind": "Burger",
+      "categoryId": "cat.restaurant",
+      "officialSource": "https://rebel.food/",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "location": "KOORDINAT_YOK",
+      "taxonomyChangeScope": "NEW_RECORD_ONLY"
+    },
+    {
+      "independentSource": "https://www.al-monitor.com/newsletter/2026-09-11/behind-turkeys-diplomatic-doors",
+      "independentDate": "2026-09-11",
+      "independentDateType": "venue_editorial_feature",
+      "freshness": "güçlü",
+      "menuSource": "https://honaist.com/",
+      "menuEvidence": [
+        "Resmî sayfada Eski Türk/Doğu Asya mutfağı ve à la carte/omakase açıklaması; bağlı menünün tamamı bu tur okunmadı"
+      ],
+      "addressNote": "İşletmeci ve11Eylül2026Al-Monitor mekân yazısı Firuzağa/Türkgücü70/Aüzerinde eşleşir. Oggusto49A/Pürtelaş farkı açıklanmamış kalır; aynı kapı veya ikinci şube denmez. Güncel iki eşleşen kaynak seçilir.",
+      "additionalSources": [
+        "https://www.oggusto.com/gastronomi/istanbul/cihangir-en-iyi-mekanlar"
+      ],
+      "slug": "hona-beyoglu",
+      "name": "Hona",
+      "district": "Beyoğlu",
+      "address": "Firuzağa Mahallesi, Türkgücü Caddesi No:70/A, Beyoğlu",
+      "kind": "Asya mutfağı",
+      "categoryId": "cat.restaurant",
+      "officialSource": "https://honaist.com/",
+      "checkedAt": "2026-11-18",
+      "decision": "KOD_ADAYINA_KABUL",
+      "location": "KOORDINAT_YOK",
+      "taxonomyChangeScope": "NEW_RECORD_ONLY"
+    }
+  ],
+  "holds": [
+    {
+      "slug": "markus-restaurant-sariyer",
+      "reason": "2025-08-07 tarihli kapanış duyurusu sosyal hesap aynasında görüldü; açık duran işletmeci sitesi ve daha yeni dizinler çelişkiyi gidermiyor. Birincil duyuru/yeniden açılış teyidi yok; aktif kabul edilmedi, kesin kapalı hükmü de verilmedi. G&M adresi No42; önerinin iki kaynak42-43 diye yazması doğru değildi.",
+      "sources": [
+        "https://markusrestaurant.com/iletisim/",
+        "https://www.gault-millau.com.tr/markus-restaurant/",
+        "https://www.findglocal.com/TR/Istanbul/525432811154798/Restaurant-Markus"
+      ],
+      "status": "FAALIYET_CELISKISI_BEKLIYOR"
+    },
+    {
+      "slug": "lahmacun-sanati-umraniye",
+      "reason": "İşletmeci adresi ve kebap/lahmacun menüsü açıldı; bağımsız Culinary Backstreets kaydı2024-12-20. Bu tur daha yeni, kimliği eşleşen bağımsız faaliyet kanıtı bulunamadı. Tarihsiz işletmeci sayfası ve23aylık yazı güncel açılış teyidi sayılmadı.",
+      "sources": [
+        "https://lahmacunsanati.com.tr/iletisim.asp",
+        "https://lahmacunsanati.com.tr/",
+        "https://culinarybackstreets.com/stories/istanbul/best-bites-2024-9"
+      ],
+      "status": "FAALIYET_TAZELIGI_BEKLIYOR"
+    },
+    {
+      "slug": "maderia-sushi-bar-sisli",
+      "status": "KULLANICI_BEKLETMESI",
+      "reason": "Kullanıcının açık bekletmesi; bu tur araştırılmadı/kabul edilmedi."
+    },
+    {
+      "slug": "mama-bowl-moda",
+      "status": "SUBE_KIMLIGI_BEKLIYOR",
+      "reason": "Mevcut Kozyatağı ile eşzamanlı ayrı şube kanıtı yok; katalog kaydı değişmedi."
+    }
+  ],
+  "policy": [
+    "Yalnız8yeni İstanbul restoranı; eski884kaydın bütün alanları aynı.",
+    "Konum/OSM,puan,telefon,saat,medya,menü,fiyat eklenmez.",
+    "Telif/sitemap/tarama tarihi veya yeniden yayın yeni faaliyet teyidi değildir.",
+    "Menü tanımları yeni kaydın mevcut türünü seçmek içindir; mevcut taksonomi ve restoran kategorileri bu pakette değiştirilmez.",
+    "Google06.00/08.30,Excel,şifreliyedek,Menemen,Sor ve güvenlik kodu aynı.",
+    "Neon/Vercel/DB/workflow değişikliği ve gerçekPreview sonSHAonayından önce yok."
+  ],
+  "sourceAccess": [
+    "Web okuyucusu CBsayfalarında403verdi; normal tarayıcıdan içerik okundu. Engelleme/paywall aşılmadı.",
+    "Cipriani veRebel web okuyucusunda alınamadı; normal tarayıcıda şube,adres ve mutfak doğrulandı.",
+    "On önerinin işletmeci sayfaları normal tarayıcıda yeniden açıldı; Jie içinFişekhane sekmesi seçildi.",
+    "Cipriani PDFsi,Jie QRmenüsü veHona bağlımenüsü tamamı incelenmiş sayılmaz; geniş tür için işletmeci tanımı kullanıldı."
+  ]
+}

@@ -36,7 +36,8 @@
     "test:toplu860": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-860-kabul-test.ts",
     "test:toplu870": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-870-kabul-test.ts",
     "test:birlesik876": "tsx scripts/client-catalog.ts --check && tsx scripts/birlesik-876-kabul-test.ts",
-    "test:birlesik879": "tsx scripts/client-catalog.ts --check && tsx scripts/birlesik-879-kabul-test.ts"
+    "test:birlesik879": "tsx scripts/client-catalog.ts --check && tsx scripts/birlesik-879-kabul-test.ts",
+    "test:birlesik884": "tsx scripts/client-catalog.ts --check && tsx scripts/birlesik-884-kabul-test.ts"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.7.12",
