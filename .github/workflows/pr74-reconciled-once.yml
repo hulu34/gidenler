@@ -1,0 +1,38 @@
+name: PR74 reconciled bounded Preview acceptance
+on:
+  push:
+    branches: [inceleme/pr74-9a2f2f4-preview-kabul-20261118]
+    paths: ['scripts/pr74-reconciled-acceptance.mjs', 'scripts/pr74-reconciled-target.json', 'scripts/pr74-reconciled-records.json', '.github/workflows/pr74-reconciled-once.yml']
+permissions:
+  contents: read
+concurrency:
+  group: pr74-reconciled-bounded-preview-only
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install independent browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pr74-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/pr74-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Exact isolated Preview only
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/pr74-browser/package.json
+        run: node scripts/pr74-reconciled-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr74-reconciled-bounded-preview-evidence
+          path: |
+            pr74-reconciled-evidence/*.png
+            pr74-reconciled-evidence/public-summary.json
+          retention-days: 7

@@ -1,0 +1,10 @@
+{
+  "origin": "https://gidenler-2pmtsehif-hulu34.vercel.app",
+  "expectedSha": "9a2f2f482b65709e862397911438d99b06230e2c",
+  "deploymentId": "FrjcEjxLspDwZf5Zf9uN5bn9hTkA",
+  "targetTotal": 892,
+  "targetActive": 857,
+  "baseline": 884,
+  "existingPreviewCount": 892,
+  "pr": 74
+}
