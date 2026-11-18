@@ -11,7 +11,7 @@ import { GOOGLE_CHANGE, HOME_LIST, HYPE_RULES } from "@/lib/homeConfig";
 import { SIGNAL_WEIGHT, type SignalRow } from "@/lib/signals";
 
 export interface GRating { rating: number; count: number | null; checkedAt: string; mapsUrl: string | null }
-export interface RankEntity { slug: string; name: string; categoryId: string; subcategory?: string; tags?: string[]; location?: { district?: string } }
+export interface RankEntity { slug: string; name: string; categoryId: string; subcategory?: string; menuVerifiedKind?: string; tags?: string[]; location?: { district?: string } }
 export interface GItem { slug: string; name: string; kind: string; district: string; rating: number; count: number | null; checkedAt: string; mapsUrl: string | null }
 export interface GCategory { key: string; label: string; items: GItem[]; pool: number }
 
@@ -24,7 +24,7 @@ export const G_CATEGORIES: Array<{ key: string; label: string; test: (e: RankEnt
   { key: "turk", label: "Türk mutfağı", test: (e) => rest(e) && (has(e, "turkish", "regional", "local") || kindIs(e, "Lokanta", "Mantıcı", "Pideci", "Kebapçı / Ocakbaşı", "Dönerci")) },
   { key: "lokanta", label: "Esnaf lokantaları", test: (e) => rest(e) && (kindIs(e, "Lokanta") || /lokanta|esnaf/i.test(e.name)) },
   { key: "kebap", label: "Kebap ve ocakbaşı", test: (e) => rest(e) && (kindIs(e, "Kebapçı / Ocakbaşı") || has(e, "kebab", "barbecue")) },
-  { key: "balik", label: "Balık ve deniz ürünleri", test: (e) => rest(e) && (kindIs(e, "Balık restoranı") || has(e, "seafood", "fish")) },
+  { key: "balik", label: "Deniz ürünleri", test: (e) => rest(e) && (e.menuVerifiedKind ? e.menuVerifiedKind === "Deniz ürünleri" : (kindIs(e, "Deniz ürünleri") || has(e, "seafood", "fish"))) },
   { key: "meyhane", label: "Meyhaneler", test: (e) => rest(e) && kindIs(e, "Meyhane") },
   { key: "pide", label: "Pide ve lahmacun", test: (e) => rest(e) && (kindIs(e, "Pideci") || has(e, "pide", "lahmacun")) },
   { key: "italyan", label: "İtalyan ve pizza", test: (e) => rest(e) && (kindIs(e, "Pizza") || has(e, "italian", "pizza", "pasta")) },

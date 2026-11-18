@@ -323,7 +323,7 @@ async function main() {
 
   console.log("\n10) Sıralama (Google verisi, 100+ değerlendirme)");
   const fake: Record<string, { rating: number; count: number; checkedAt: string; mapsUrl: string | null }> = {};
-  const balik = realVenueRecords.filter((r) => r.kind === "Balık restoranı").slice(0, 6).map((r) => r.slug);
+  const balik = realVenueRecords.filter((r) => r.kind === "Deniz ürünleri").slice(0, 6).map((r) => r.slug);
   balik.forEach((s, i) => (fake[s] = { rating: 4 + i * 0.1, count: i === 5 ? 40 : 500, checkedAt: new Date().toISOString(), mapsUrl: null }));
   const th = googleRankedThemes(fake, new Set()).find((t) => t.key === "balik");
   ok("tür içinde yüksek puan önde, 100'den az değerlendirme sıralamaya girmez", !!th && th.items[0].slug === balik[4] && !th.items.some((i) => i.slug === balik[5]) && th.few.some((i) => i.slug === balik[5]), th);

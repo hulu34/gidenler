@@ -29,7 +29,7 @@ const byKey = new Map(G_CATEGORIES.map((c) => [c.key, c]));
 const ent = new Map(realEntities.map((e) => [e.slug, e]));
 ok("her kategorideki her mekân o kategorinin gerçek türünde", cats.every((c) => c.items.every((x) => byKey.get(c.key)!.test(ent.get(x.slug)!))));
 ok("yalnız gerçek veri bulunan kategoriler açılır (en az 3)", cats.every((c) => c.pool >= HOME_LIST.minCategory));
-ok("Balık kategorisinde yalnız balık / deniz ürünü", (cats.find((c) => c.key === "balik")?.items ?? []).every((x) => { const e = ent.get(x.slug)!; return e.subcategory === "Balık restoranı" || (e.tags ?? []).some((t) => ["seafood", "fish"].includes(t)); }));
+ok("Balık kategorisinde yalnız balık / deniz ürünü", (cats.find((c) => c.key === "balik")?.items ?? []).every((x) => { const e = ent.get(x.slug)!; return e.subcategory === "Deniz ürünleri" || (e.tags ?? []).some((t) => ["seafood", "fish"].includes(t)); }));
 ok("Kafeler yalnız kafe, Tüm restoranlar yalnız restoran", (cats.find((c) => c.key === "kafe")?.items ?? []).every((x) => ent.get(x.slug)!.categoryId === "cat.cafe") && all.items.every((x) => ent.get(x.slug)!.categoryId === "cat.restaurant"));
 /* kapalı ve vitrin kuralı */
 const closedSlug = [...CLOSED_CONFIRMED][0];

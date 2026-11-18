@@ -361,5 +361,35 @@
   "website": null,
   "websiteWhy": "Alan adı DNS'te yok (05.11.2026, iki ayrı ağdan): https://www.komunistanbul.com/",
   "checkedAt": "2026-11-05"
+ },
+ "my-home-doner-fatih": {
+  "kind": "Dönerci",
+  "cuisine": [
+   "turkish",
+   "doner"
+  ],
+  "sourceUrl": "https://myhomedoner.com/",
+  "checkedAt": "2026-11-18",
+  "why": "Resmî menü İskender, porsiyon döner, pilav üstü, tombik ve dürüm döner üzerine; eski OSM kebab/burger yan etiketleri ana mutfak değildir."
+ },
+ "massa-bistro-turkish-kitchen-fatih": {
+  "kind": "Türk mutfağı",
+  "cuisine": [
+   "turkish",
+   "kebab"
+  ],
+  "sourceUrl": "https://massa-bistro.com/menu/",
+  "checkedAt": "2026-11-18",
+  "why": "Resmî menü kebap, pide, meze ve Türk mutfağı ana yemekleri sunuyor; balık seçeneği restoranı deniz ürünleri uzmanı yapmaz."
+ },
+ "isil-garden-rooftop-restaurant-ve-turkish-cuisine-fatih": {
+  "kind": "Türk mutfağı",
+  "cuisine": [
+   "turkish",
+   "kebab"
+  ],
+  "sourceUrl": "https://www.isilgardenrestaurant.com/tr/menu",
+  "checkedAt": "2026-11-18",
+  "why": "Resmî menü Türk/Osmanlı yemekleri, kebap, pide, kahvaltı ve diğer yemekler içeriyor; deniz ürünleri yalnız bir bölüm."
  }
 }

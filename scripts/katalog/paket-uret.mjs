@@ -11,7 +11,7 @@ const wave = Number(waveS);
 const H = JSON.parse(readFileSync(hp, "utf8")), K = JSON.parse(readFileSync(kp, "utf8"));
 const EX = existing.flatMap((p) => JSON.parse(readFileSync(p, "utf8")));
 const taken = new Set(EX.map((v) => v.slug));
-const KIND = { turk: "Türk mutfağı", esnaf: "Lokanta", kebap: "Kebapçı / Ocakbaşı", doner: "Dönerci", pide: "Pideci", balik: "Balık restoranı", meyhane: "Meyhane", et: "Steakhouse", burger: "Burger", pizza: "Pizza", japon: "Sushi / Japon", asya: "Asya mutfağı", kahvalti: "Kahvaltı", tatli: "Tatlıcı", kafe: "Kahveci", bar: "Bar", dunya: "Dünya mutfağı", vegan: "Vegan", tavuk: "Tavuk", sokak: "Sokak lezzeti", firin: "Fırın" };
+const KIND = { turk: "Türk mutfağı", esnaf: "Lokanta", kebap: "Kebapçı / Ocakbaşı", doner: "Dönerci", pide: "Pideci", balik: "Deniz ürünleri", meyhane: "Meyhane", et: "Steakhouse", burger: "Burger", pizza: "Pizza", japon: "Sushi / Japon", asya: "Asya mutfağı", kahvalti: "Kahvaltı", tatli: "Tatlıcı", kafe: "Kahveci", bar: "Bar", dunya: "Dünya mutfağı", vegan: "Vegan", tavuk: "Tavuk", sokak: "Sokak lezzeti", firin: "Fırın" };
 const cat = (a) => (a.amenity === "bar" || a.amenity === "pub" || a.amenity === "biergarten") && a.mutfak.labels[0]?.id !== "meyhane" ? "cat.bar" : (a.amenity === "cafe" || a.amenity === "ice_cream") ? "cat.cafe" : "cat.restaurant";
 const SEHIR = process.env.SEHIR ?? "istanbul";
 const TERS = process.env.TERS ? JSON.parse(readFileSync(process.env.TERS, "utf8")) : {};

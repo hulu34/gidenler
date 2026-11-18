@@ -102,7 +102,7 @@ function balancedProfiles(list: Array<{ slug: string; fields: number }>, n: numb
    En az MIN_RANK_REVIEWS değerlendirmesi olan sıralanır; azı ayrı ve sırasız gösterilir. */
 const G_THEMES: Array<{ key: string; label: string; re: RegExp }> = [
   { key: "hepsi", label: "Tümü", re: /./ },
-  { key: "balik", label: "Balık", re: /^Balık restoranı$/ }, { key: "meyhane", label: "Meyhane", re: /^Meyhane$/ },
+  { key: "balik", label: "Deniz ürünleri", re: /^Deniz ürünleri$/ }, { key: "meyhane", label: "Meyhane", re: /^Meyhane$/ },
   { key: "kebap", label: "Kebap", re: /^Kebapçı \/ Ocakbaşı$/ }, { key: "lokanta", label: "Lokanta", re: /^Lokanta$/ },
   { key: "pide", label: "Pide", re: /^Pideci$/ }, { key: "kahvalti", label: "Kahvaltı", re: /^Kahvaltı$/ },
 ];

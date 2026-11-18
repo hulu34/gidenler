@@ -23,7 +23,7 @@ const EX = existing.flatMap(J); const taken = new Set(EX.map((v) => v.slug)), ex
 const NOT_RESTAURANT = new Set(["kafe", "bar", "tatli", "firin"]);
 const PRIORITY = new Set(["turk", "esnaf", "kebap", "doner", "pide", "balik", "meyhane", "pizza", "japon", "asya", "et", "kahvalti", "dunya", "burger", "sokak", "tavuk", "vegan"]);
 const ONSITE = /^(StreetComplete|Every ?Door)/i, MOBILE = /^(Organic ?Maps|CoMaps|OsmAnd|Go ?Map|Vespucci|MAPS\.ME)/i;
-const KIND = { turk: "Türk mutfağı", esnaf: "Lokanta", kebap: "Kebapçı / Ocakbaşı", doner: "Dönerci", pide: "Pideci", balik: "Balık restoranı", meyhane: "Meyhane", et: "Steakhouse", burger: "Burger", pizza: "Pizza", japon: "Sushi / Japon", asya: "Asya mutfağı", kahvalti: "Kahvaltı", dunya: "Dünya mutfağı", vegan: "Vegan", tavuk: "Tavuk", sokak: "Sokak lezzeti" };
+const KIND = { turk: "Türk mutfağı", esnaf: "Lokanta", kebap: "Kebapçı / Ocakbaşı", doner: "Dönerci", pide: "Pideci", balik: "Deniz ürünleri", meyhane: "Meyhane", et: "Steakhouse", burger: "Burger", pizza: "Pizza", japon: "Sushi / Japon", asya: "Asya mutfağı", kahvalti: "Kahvaltı", dunya: "Dünya mutfağı", vegan: "Vegan", tavuk: "Tavuk", sokak: "Sokak lezzeti" };
 const cnt = (arr) => arr.reduce((m, k) => (m[k] = (m[k] ?? 0) + 1, m), {});
 const clean = (h) => (h ?? "").replace(/^no\s*[:.]?\s*/i, "").trim();
 const out = { A: [], B: [], C: [] }; const ret = []; const kafeBar = { kafe: 0, bar: 0, tatli_firin: 0, ornek: [] }; const zincirOzet = { dogrulanan: [], kanitsiz: 0, kapsamDisi: {} };

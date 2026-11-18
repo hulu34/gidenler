@@ -51,7 +51,7 @@ const CASES: Array<[string, string, (r: R) => unknown]> = [
   ["Galata'da güzel bir akşam yemeği için nereye gidelim?", "Beyoğlu, kafe yok", (r) => dist(r, "Beyoğlu") && r.items.every((i) => !["Kahveci", "Kafe", "Pastane"].includes(i.kind))],
   ["Karaköy'de romantik ama çok gösterişli olmayan bir yer öner.", "Beyoğlu, romantik doğrulanmadı", (r) => dist(r, "Beyoğlu") && has(r, /omantik atmosfer.*doğrulanamadı/) && r.items.every((i) => i.slug !== "japon-erdal-beyoglu")],
   ["Karaköy'de akşam yemeği", "Karaköy akşam", (r) => dist(r, "Beyoğlu")],
-  ["Balık yiyebileceğimiz sakin bir restoran?", "balık, sakinlik dürüst", (r) => kind(r, "Balık restoranı") && has(r, /Sakinlik kayıtlarımızla doğrulanamadı|sakinlik için ipucu/)],
+  ["Balık yiyebileceğimiz sakin bir restoran?", "balık, sakinlik dürüst", (r) => kind(r, "Deniz ürünleri") && has(r, /Sakinlik kayıtlarımızla doğrulanamadı|sakinlik için ipucu/)],
   ["Turist arkadaşımı İstanbul'da nereye götüreyim?", "dayanak yok: liste uydurmaz, sorar", (r) => r.items.length === 0 && r.question],
   ["Uygun fiyatlı ama kaliteli bir esnaf lokantası öner.", "lokanta, fiyat dürüst", (r) => kind(r, "Lokanta") && has(r, /Fiyat bilgisi kayıtlı değil|Menüde fiyatlar|uygun fiyatla/)],
   ["Güzel bir mekân olsun, çok gürültülü olmasın.", "dayanak yok: sorar", (r) => r.question && r.items.length === 0 && has(r, /akinlik/)],
@@ -62,10 +62,10 @@ const CASES: Array<[string, string, (r: R) => unknown]> = [
   ["atasehirde kebap", "karaktersiz", (r) => dist(r, "Ataşehir") && kind(r, "Kebapçı / Ocakbaşı")],
   ["galatada samsun pidesi", "karaktersiz", (r) => first(r, "japon-erdal-beyoglu")],
   ["Atashehir'de kebab", "yazım hatası", (r) => dist(r, "Ataşehir") && kind(r, "Kebapçı / Ocakbaşı")],
-  ["Kadikoyde baluk", "yazım hatası", (r) => dist(r, "Kadıköy") && kind(r, "Balık restoranı")],
+  ["Kadikoyde baluk", "yazım hatası", (r) => dist(r, "Kadıköy") && kind(r, "Deniz ürünleri")],
   ["Beşiktaş'ta 4 kişi burger", "çoklu tercih, kişi", (r) => dist(r, "Beşiktaş") && kind(r, "Burger") && r.understood.party === 4],
   ["Kadıköy'de ucuz ve sakin kahvaltı", "çoklu tercih", (r) => r.understood.attrs.includes("ekonomik") && r.understood.attrs.includes("sakin") && r.understood.cuisine === "kahvalti"],
-  ["Üsküdar'da manzaralı balık", "çoklu tercih", (r) => dist(r, "Üsküdar") && kind(r, "Balık restoranı")],
+  ["Üsküdar'da manzaralı balık", "çoklu tercih", (r) => dist(r, "Üsküdar") && kind(r, "Deniz ürünleri")],
   ["Nişantaşı'nda ilk buluşma", "alt semt, romantik", (r) => r.understood.area === "Nişantaşı" && dist(r, "Şişli")],
   ["Beyoğlu'nda meyhane", "tür", (r) => kind(r, "Meyhane")],
   ["Fatih'te döner", "tür", (r) => dist(r, "Fatih") && kind(r, "Dönerci")],
@@ -207,7 +207,7 @@ async function main() {
   ok("AI: model zorunlu koşulu silemez, koşul dışı mekân seçemez", dr.understood.area === "Ataşehir" && dr.understood.cuisine === "kebap" && dr.items.every((i) => i.district === "Ataşehir"), dr.items);
   say({ action: "new", area: null, area_text: "Deniz ürünü yiyebileceğimiz iyi bir yer", cuisine: null, dish: null, term: "deniz ürünü yiyebileceğimiz iyi", attrs: [], picks: [] });
   const ft = await sor({ query: "Deniz ürünü yiyebileceğimiz iyi bir yer ai9" });
-  ok("AI: cümlenin tamamı semt ya da terim sayılmaz", ft.understood.areaText === null && ft.understood.term === null && ft.items.length > 0 && ft.items.every((i) => i.kind === "Balık restoranı"), ft.understood);
+  ok("AI: cümlenin tamamı semt ya da terim sayılmaz", ft.understood.areaText === null && ft.understood.term === null && ft.items.length > 0 && ft.items.every((i) => i.kind === "Deniz ürünleri"), ft.understood);
   say({ action: "refine", picks: [] }); const bx = await sor({ query: "Sarıyer'de balık ai10" });
   say({ action: "new", area: "Beykoz", area_text: null, cuisine: null, dish: null, term: null, attrs: [], picks: [] });
   const bk = await sor({ query: "Beykoz tarafı olsun ai10", context: bx.context, shown: bx.shown });
