@@ -1,0 +1,9 @@
+{
+  "origin": "https://gidenler-rojn1sfj5-hulu34.vercel.app",
+  "expectedSha": "bcaef512ca8a5feac20b07c36a006bfd97d19750",
+  "deploymentId": "G1DJUJ4VXtNjdEQYJoi7WR5BaVNK",
+  "targetTotal": 884,
+  "targetActive": 849,
+  "baseline": 879,
+  "pr": 72
+}

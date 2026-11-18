@@ -1,0 +1,108 @@
+[
+  {
+    "ref": "isletme/il-cortile-beyoglu",
+    "slug": "il-cortile-beyoglu",
+    "name": "Il Cortile",
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan",
+    "district": "Beyoğlu",
+    "address": "Bereketzade Mahallesi, Galata Kulesi Sokak No:20/A, Beyoğlu",
+    "website": "https://ilcortileistanbul.com/en/contact",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://ilcortileistanbul.com/en/contact",
+    "wave": 24,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-18",
+    "verifiedAt": "2026-11-18",
+    "confidence": "güçlü",
+    "cuisine": [
+      "italian"
+    ],
+    "verification": "Resmî iletişim ve güncel bağımsız editoryal kayıt No20/A üzerinde eşleşir. Eski rehberdeki No14 D20 ayrı şube sayılmaz; güncel iki kaynaktaki adres seçildi. Kanıt: docs/katalog/birlesik-879-kabul.json. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat eklenmedi."
+  },
+  {
+    "ref": "isletme/dafni-atesbasi-uskudar",
+    "slug": "dafni-atesbasi-uskudar",
+    "name": "Dafni Ateşbaşı",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Üsküdar",
+    "address": "Kuzguncuk, Nakkaştepe Yolu No:56, Üsküdar",
+    "website": "https://www.dafniatesbasi.com/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.dafniatesbasi.com/",
+    "wave": 24,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-18",
+    "verifiedAt": "2026-11-18",
+    "confidence": "güçlü",
+    "cuisine": [
+      "turkish"
+    ],
+    "verification": "Resmî No56 adresi seçildi. Rehber Kuzguncuk Yolu/Babanakkaş Sokak diye yazar; ad, Üsküdar ve telefon eşleşir. Yol adlarının eşdeğerliği veya ayrı şube iddia edilmez; telefon kataloğa aktarılmaz. Kanıt: docs/katalog/birlesik-879-kabul.json. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat eklenmedi."
+  },
+  {
+    "ref": "isletme/parle-zorlu-besiktas",
+    "slug": "parle-zorlu-besiktas",
+    "name": "Parlé",
+    "categoryId": "cat.restaurant",
+    "kind": "Fransız / Akdeniz",
+    "district": "Beşiktaş",
+    "address": "Levazım Mahallesi, Vadi Caddesi No:2, Zorlu Center AVM Meydan Katı, Beşiktaş",
+    "website": "https://www.d-ream.com.tr/en/our-brands/parle",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.d-ream.com.tr/en/our-brands/parle",
+    "wave": 24,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-18",
+    "verifiedAt": "2026-11-18",
+    "confidence": "güçlü",
+    "cuisine": [
+      "french",
+      "mediterranean"
+    ],
+    "verification": "İşletmeci, AVM kiracı sayfası ve rehber aynı Zorlu Meydan Katı kaydıdır. Vadi Caddesi No2 kompleksin resmî iletişim adresidir, restoranın iç kapı numarası diye sunulmaz. Eski Koru Sokak ifadesinin Vadi ile eşdeğerliği iddia edilmez. Kanıt: docs/katalog/birlesik-879-kabul.json. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat eklenmedi."
+  },
+  {
+    "ref": "isletme/sushi-barba-istinyepark-sariyer",
+    "slug": "sushi-barba-istinyepark-sariyer",
+    "name": "Sushi Barba İstinyePark İstanbul",
+    "categoryId": "cat.restaurant",
+    "kind": "Asya mutfağı",
+    "district": "Sarıyer",
+    "address": "Pınar Mahallesi, Katar Caddesi, İstinyePark AVM, 1. Kat Birim No:89, Sarıyer",
+    "website": "https://sushibarba.com/locations/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://sushibarba.com/locations/",
+    "wave": 24,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-18",
+    "verifiedAt": "2026-11-18",
+    "confidence": "güçlü",
+    "cuisine": [
+      "japanese"
+    ],
+    "verification": "İşletmeci İstanbul ile İzmir şubelerini ayrı listeler. İstanbul AVM sayfasının güncel 1.Kat Birim89 bilgisi seçildi. Rehberdeki No73 ile eski dış kapı No11 iç/dış kapı eşdeğeri diye sunulmaz; ayrı şube üretilmez. Kaynak telefonları farklı olduğundan hiçbir telefon aktarılmaz. Kanıt: docs/katalog/birlesik-879-kabul.json. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat eklenmedi."
+  },
+  {
+    "ref": "isletme/akbabali-meyhane-beyoglu",
+    "slug": "akbabali-meyhane-beyoglu",
+    "name": "Akbabalı Meyhane",
+    "categoryId": "cat.restaurant",
+    "kind": "Meyhane",
+    "district": "Beyoğlu",
+    "address": "Asmalımescit Mahallesi, Tünel Geçidi İşhanı No:7, Beyoğlu",
+    "website": "https://www.akbabali.com/tr/index.html",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.akbabali.com/tr/index.html",
+    "wave": 24,
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-18",
+    "verifiedAt": "2026-11-18",
+    "confidence": "güçlü",
+    "cuisine": [
+      "turkish"
+    ],
+    "verification": "İşletmeci ve tarihli bağımsız yayın No7 üzerinde eşleşir. Eski G&M No11 kaydı ek işletme sayılmaz; güncel iki kaynak adresi tercih edildi. Kanıt: docs/katalog/birlesik-879-kabul.json. Koordinat, OSM kimliği, puan, fotoğraf, menü, fiyat, telefon ve saat eklenmedi."
+  }
+]
