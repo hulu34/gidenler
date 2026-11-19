@@ -1,0 +1,87 @@
+{
+ "_aciklama": "Üç canlı kayıttaki adres çelişkisinin kanıt çözümlemesi. Ayrı teslim; #58 kabul paketine katılmadı. Canlı adres düzeltilmedi, veritabanına yazılmadı, yayın yok. Yalnız mevcut kayıtlı kaynaklar birer kez yeniden açıldı (Suna'nın Yeri için ek olarak G&M'nin 2023 sayfası); genel araştırma yok.",
+ "olusturma": "2026-11-15",
+ "canliTaban": {"dal": "feature/investor-v1", "sha": "d4aa855", "not": "alanlar data/real/venues.json ve isletme.json'dan"},
+ "girdiler": {
+  "yorumsDevirListesi": {"dosya": "yemekyorum ve restoranyorum/teslim/gece10-kimlik-eslestirme/cikti/devir-listesi.json", "manifest": "#56 4fbd882", "kapsadigi": ["eleos yesilkoy|bakirkoy"], "not": "Suna'nın Yeri ve Deraliye devir listesinde yok; #58 ekinin yayımlanmış kayıt bulgularından geliyor"},
+  "manifest56": "data/arastirma/toplu-teslim/manifest.json @ 4fbd882 (kaynakAdresleri)",
+  "codexKabul": "docs/katalog/pr48-kabul-kaniti.json (Eleos, 2026-11-14); data/paket/istanbul-10/paket.json + karar.json (Deraliye, 2026-11-11)",
+  "duzeltmeler": "data/real/duzeltmeler.json (Suna'nın Yeri web sitesi, 2026-11-05)"
+ },
+ "kayitlar": [
+  {
+   "slug": "eleos-yesilkoy-bakirkoy",
+   "ad": "Eleos Yeşilköy",
+   "canli": {"address": "Yeşilbahçe Sokak No:9, Yeşilköy Mahallesi, Bakırköy", "phone": "+90 212 663 39 11", "website": "https://www.eleosrestaurant.com/yesilkoy", "ref": "isletme/eleos-yesilkoy-bakirkoy", "sourceKind": "official_site", "verifiedAt": "2026-11-14",
+    "verificationOzet": "Codex (pr48-kabul-kaniti): resmî iletişim alt sayfası alınamadı; kapı adresinin kanıtı Michelin rehberi"},
+   "kanitlar": [
+    {"kaynak": "resmî şube sayfası", "url": "https://www.eleosrestaurant.com/yesilkoy/", "erisim": "2026-11-15", "sayfaTarihi": "2015-07-27 (JSON-LD yayın tarihi; sayfa bugün açık)", "adres": "Yeşilbahçe Sokak No.9 Yeşilköy / İstanbul (sayfada mahalle 'Ümraniye Mahallesi' yazılı)", "telefon": "(0212) 663 39 11"},
+    {"kaynak": "MICHELIN Guide 2026", "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/eleos-yesilkoy", "erisim": "2026-11-15", "sayfaTarihi": "2025-12-04 (dateModified)", "adres": "Yeşilköy mahallesi, Yeşilbahçe Sokak No:9, Bakırköy, 34149", "telefon": "+90 212 663 39 11"},
+    {"kaynak": "Gault&Millau Türkiye 2026", "url": "https://www.gault-millau.com.tr/eleosrestaurant/", "erisim": "2026-11-15", "sayfaTarihi": "2025-12-23", "adres": "Yeşilbahçe Sok. No:5 Yeşilköy, Bakırköy", "telefon": "+90 212 663 39 11"}
+   ],
+   "analiz": {
+    "ayniSube": "evet: üç kaynakta aynı ad, aynı sokak ve aynı telefon (212 663 39 11)",
+    "kaynakEskimis": "belirlenemedi: No:5 yalnız G&M'de; G&M (23.12.2025), Michelin'den (04.12.2025) daha yeni ama resmî şube sayfası bugün de No.9 gösteriyor",
+    "kapiAyrimi": "kanıt yok: hiçbir kaynak No:5'i ayrı giriş, dış kapı ya da iç kapı olarak tanımlamıyor"
+   },
+   "sonuc": "canlı adres destekleniyor",
+   "gerekce": "No:9 iki kaynakta (işletmenin resmî şube sayfası, bugün + MICHELIN 2026); No:5 tek kaynakta (G&M 2026). Codex kabulünde eksik kalan resmî kaynak teyidi artık var.",
+   "onerilenAlanDegisikligi": [
+    {"alan": "address", "oneri": "değişiklik yok"},
+    {"alan": "verification", "oneri": "isteğe bağlı not: 'resmî şube sayfası da Yeşilbahçe Sk. No.9 ve aynı telefon (2026-11-15)'", "durum": "öneri — uygulanmadı"}
+   ],
+   "eksikKanit": ["G&M'nin No:5 yazmasının nedeni (rehber hatası mı, ikinci giriş mi) kaynakla açıklanmadı", "resmî sayfadaki 'Ümraniye Mahallesi' ifadesi canlıdaki 'Yeşilköy Mahallesi' ile uyuşmuyor; Michelin Yeşilköy diyor — mahalle alanı değiştirilmemeli"],
+   "durum": "COZULDU_DEGISIKLIK_YOK"
+  },
+  {
+   "slug": "suna-nin-yeri-uskudar",
+   "ad": "Suna'nın Yeri",
+   "canli": {"address": "Kandilli İskele Caddesi No:17, Üsküdar", "phone": "+90 216 332 32 41", "website": null, "websiteNotu": "data/real/duzeltmeler.json: http://www.sunaninyeri.com/ DNS'te yok (2026-11-05)", "ref": "node/2383708227", "sourceKind": "OSM (wave 1, importedAt 2026-10-27)", "verifiedAt": null,
+    "verificationOzet": "canlı kayıtta işletmeci ya da editoryal adres kanıtı yok; adres ve telefon OSM kaydından (OSM düzenleme tarihi bu çalışmada okunmadı)"},
+   "kanitlar": [
+    {"kaynak": "resmî site (canlı kayıttaki eski alan adı)", "url": "http://www.sunaninyeri.com/", "erisim": "2026-11-15", "sayfaTarihi": null, "adres": null, "telefon": null, "not": "yanıt yok (alan adı çözülmüyor) — 05.11.2026 bulgusuyla aynı"},
+    {"kaynak": "Gault&Millau Türkiye 2026 (#50'de kayıtlı URL; adres çubuğundaki slug 'balikci-sabahattin-2', sayfa içeriği Suna'nın Yeri)", "url": "https://www.gault-millau.com.tr/balikci-sabahattin-2/", "erisim": "2026-11-15", "sayfaTarihi": "2025-12-23", "adres": "Kandilli İskele Cad., No:4A, 34684 Üsküdar", "telefon": "+90 216 308 45 12"},
+    {"kaynak": "Gault&Millau (önceki yıl sayfası; önceden kayıtlı değildi, aynı rehberin eski girişi)", "url": "https://www.gault-millau.com.tr/en/sunanin-yeri/", "erisim": "2026-11-15", "sayfaTarihi": "2023-12-07", "adres": "Kandilli, Kandilli İskele Cad. No: 4, 34684 Üsküdar", "telefon": "0216 308 45 12"},
+    {"kaynak": "OSM (canlı kaydın kaynağı)", "url": "https://www.openstreetmap.org/node/2383708227", "erisim": null, "sayfaTarihi": null, "adres": "Kandilli İskele Caddesi No:17", "telefon": "+90 216 332 32 41", "not": "bu çalışmada açılmadı; canlı alanlardan aktarıldı"}
+   ],
+   "analiz": {
+    "ayniSube": "olası ama doğrulanmadı: ad ve sokak (Kandilli İskele Cad.) aynı; kapı no (17 ↔ 4/4A) ve telefon (216 332 32 41 ↔ 216 308 45 12) farklı",
+    "kaynakEskimis": "canlı kayıt eskimiş olabilir: G&M 2023 ve 2025 girişlerinin ikisi No:4/4A ve 216 308 45 12 diyor; canlı adres ve telefon yalnız OSM'de, OSM tarihi bilinmiyor, resmî alan adı kapalı. Taşınma ya da numaralandırma değişikliği kanıtlanmadı",
+    "kapiAyrimi": "kanıt yok: '4A' ile '4' aynı yapının dış/iç kapısı olabilir, ama 17 ile ilişkisi hiçbir kaynakta yok"
+   },
+   "sonuc": "açık — canlı adres ve telefon doğrulanmadı",
+   "gerekce": "Canlı alanları destekleyen işletmeci ya da editoryal kaynak yok. İki G&M girişi aynı rehberin iki yılı olduğu için birbirinden bağımsız sayılmaz; tek başına canlı adresi değiştirmeye yetmez.",
+   "onerilenAlanDegisikligi": [
+    {"alan": "address", "oneri": "şimdilik değişiklik yok; ikinci bağımsız kaynak G&M ile eşleşirse 'Kandilli İskele Caddesi No:4A, Üsküdar' önerilir", "durum": "koşullu öneri — uygulanmadı"},
+    {"alan": "phone", "oneri": "şimdilik değişiklik yok; aynı koşulla '+90 216 308 45 12' önerilir", "durum": "koşullu öneri — uygulanmadı"}
+   ],
+   "eksikKanit": ["güncel işletmeci kaynağı (çalışan resmî site, işletmeci sosyal hesabı bu çalışmada kanıt sayılmadı) ya da G&M dışında tarihli bağımsız bir kaynak: kapı no ve telefon", "OSM node/2383708227'nin son düzenleme tarihi ve kaynağı"],
+   "durum": "ACIK_EKSIK_KANIT"
+  },
+  {
+   "slug": "deraliye-fatih",
+   "ad": "Deraliye",
+   "canli": {"address": "Ticarethane Sokak No:10, Alemdar Mahallesi, Fatih", "phone": "+90 212 520 77 78", "website": "https://deraliyerestaurant.com/", "ref": "node/5108843074", "sourceKind": "OSM + Michelin 2026 + resmî site (paket 10)", "verifiedAt": "2026-11-11",
+    "verificationOzet": "paket 10: resmî site 'ad+telefon+sokak' (kapı no resmî sitede ayrıca belirtilmemiş); adres rehber + resmî site/OSM"},
+   "kanitlar": [
+    {"kaynak": "resmî site", "url": "https://deraliyerestaurant.com/", "erisim": "2026-11-15", "sayfaTarihi": "2025-02-18 (JSON-LD; sayfa bugün açık)", "adres": "Divanyolu Cad, Alemdar Mah Ticarethane Sk, No:10, Sultanahmet / Fatih 34122", "telefon": "+90 212 520 77 78"},
+    {"kaynak": "MICHELIN Guide 2026", "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/deraliye", "erisim": "2026-11-15", "sayfaTarihi": "2025-12-04 (dateModified)", "adres": "Divanyolu Caddesi, Alemdar Mahallesi, Ticarethane Sokak No:10, Sultan Ahmet, Fatih 34110", "telefon": "+90 212 520 77 78"},
+    {"kaynak": "Gault&Millau Türkiye 2026", "url": "https://www.gault-millau.com.tr/deraliye-restaurant/", "erisim": "2026-11-15", "sayfaTarihi": "2025-12-23", "adres": "Alemdar Mah., Ticaret Hane Sok., No:13 Fatih", "telefon": "+90 539 593 77 97"}
+   ],
+   "analiz": {
+    "ayniSube": "resmî site ile MICHELIN aynı şube (No:10, aynı telefon). G&M girişi aynı ad ve sokakta ama kapı no (13) ve telefon (mobil 539 593 77 97) farklı; aynı şube olduğu kanıtlanmadı",
+    "kaynakEskimis": "canlı kayıt güncel kaynaklarla uyumlu: resmî site bugün ve MICHELIN 2025-12 No:10 gösteriyor",
+    "kapiAyrimi": "kanıt yok: No:13'ün ikinci bir giriş ya da başka işletme olduğu kaynakta belirtilmiyor. Bilgi: aynı sokakta No:13, #57'de yayımlanan Galeyan Restaurant'ın (Sura Design Hotel) adresi — bu yalnız gözlem, ilişki çıkarılmadı"
+   },
+   "sonuc": "canlı adres destekleniyor",
+   "gerekce": "No:10 iki kaynakta (resmî site JSON-LD ve iletişim bölümü, bugün + MICHELIN 2026), ikisinde de canlı telefon. G&M'deki No:13 ve mobil telefon tek kaynakta.",
+   "onerilenAlanDegisikligi": [
+    {"alan": "address", "oneri": "değişiklik yok"},
+    {"alan": "verification", "oneri": "isteğe bağlı not: 'resmî site kapı no'yu da gösteriyor (Ticarethane Sk. No:10, 2026-11-15)'", "durum": "öneri — uygulanmadı"}
+   ],
+   "eksikKanit": ["G&M'deki No:13 ve +90 539 593 77 97 numarasının neye ait olduğu (ikinci şube, rezervasyon hattı ya da rehber hatası) kaynakla açıklanmadı"],
+   "durum": "COZULDU_DEGISIKLIK_YOK"
+  }
+ ],
+ "ozet": {"cozulduDegisiklikYok": 2, "acik": 1, "uygulananDegisiklik": 0, "canliyaYazilan": 0}
+}
