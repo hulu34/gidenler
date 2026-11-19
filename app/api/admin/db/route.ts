@@ -18,6 +18,8 @@ import { appendRealVenues } from "@/lib/db/appendVenues";
 import { seedRealVenues, verifyRealVenues } from "@/lib/db/seed";
 import { rollbackSeed, rollbackSeedPreview, rollbackMigration, rollbackMigrationPreview, rollbackWave, rollbackWavePreview } from "@/lib/db/rollback";
 import { realVenueRecords, realVenueReview } from "@/data/real";
+import { catalogPreviewRequestAllowed } from "@/lib/catalogRegion";
+import { readKibrisPreviewEvidence } from "@/lib/kibrisPreviewEvidence";
 import { dbFingerprint, previewWriteGuard } from "@/lib/db/fingerprint";
 import { missingByRestaurant, qualityReport } from "@/lib/db/quality";
 import { redisSelfTest } from "@/lib/usage/selftest";
@@ -68,6 +70,17 @@ const fail = (e: unknown, status = 500) =>
 
 export async function GET(req: Request) {
   if (!allowed(req)) return nf();
+  // Dedicated bounded Preview evidence: never invokes migrationStatus or a write path.
+  if (new URL(req.url).searchParams.get("rapor") === "masamoro-preview") {
+    if (!catalogPreviewRequestAllowed(req.headers.get("host"))) return nf();
+    const url = DEMO_VISIBLE ? undefined : process.env.DATABASE_URL;
+    if (!url) return NextResponse.json({ error: "no_database" }, { status: 503, headers: H });
+    try {
+      const db = await readKibrisPreviewEvidence(executorFor(url), url);
+      return NextResponse.json({ env: envName(), sourceSha: process.env.VERCEL_GIT_COMMIT_SHA ?? null,
+        pilot: { slug: "masamoro-lefkosa-guney-kibris", count: realVenueRecords.filter(r => r.bolge !== undefined).length }, db }, { headers: H });
+    } catch { return NextResponse.json({ error: "pilot_read_failed" }, { status: 503, headers: H }); }
+  }
   /* ?rapor=google → eşleşme sayıları, onay bekleyenler (yalnız place_id + bizim kayıtlarımız), SKU bazında kullanım */
   if (new URL(req.url).searchParams.get("rapor") === "google") {
     try { return NextResponse.json({ env: envName(), enabled: googleEnabled(), stats: await googleMatchStats(), queue: await googleQueueStats(), pending: await pendingGoogleMatches(), usage: await usageSnapshot(), spend: await spendReport(), pause: await googlePause() }, { headers: H }); }

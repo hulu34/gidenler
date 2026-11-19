@@ -1,10 +1,10 @@
 {
-  "_kapsam": "Yalnız izole yerel QA kaynağı; gerçek katalog/DB girdisi veya kabul edilmiş açık restoran değildir.",
+  "_kapsam": "Yalnız izole yerel QA ve işleme özel onaylanacak korumalı Preview pilot kaynağı; Production katalog/DB girdisi veya kabul edilmiş açık restoran değildir.",
   "manifestId": "kibris/masamoro",
-  "kimlikKarari": "Yerel sözleşme önerisinde slug ve business ref sabit: masamoro-lefkosa-kibris / isletme/masamoro-lefkosa-kibris. Manifest kimliği kibris/masamoro korunur. Production kimlik tahsisi ve yayın onayı değildir.",
+  "kimlikKarari": "Yerel sözleşme önerisinde slug ve business ref sabit: masamoro-lefkosa-guney-kibris / isletme/masamoro-lefkosa-guney-kibris. Manifest kimliği kibris/masamoro korunur. Production kimlik tahsisi ve yayın onayı değildir.",
   "record": {
-    "ref": "isletme/masamoro-lefkosa-kibris",
-    "slug": "masamoro-lefkosa-kibris",
+    "ref": "isletme/masamoro-lefkosa-guney-kibris",
+    "slug": "masamoro-lefkosa-guney-kibris",
     "name": "MasaMoro",
     "categoryId": "cat.restaurant",
     "kind": "Dünya mutfağı",

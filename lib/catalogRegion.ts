@@ -25,10 +25,29 @@ export function validCatalogRegion(value: unknown): value is MekanBolgesi {
 export const regionCity = (b: MekanBolgesi) => REGIONS[b.bolge].tr;
 export const regionLabel = (b: MekanBolgesi) => `${regionCity(b)} (${b.kesim === "guney" ? "güney" : "kuzey"}) · Kıbrıs`;
 type Scoped = { bolge?: unknown };
-/** Local QA only. A Next production build (including Preview) cannot enable this pilot. */
+export const KIBRIS_PREVIEW_BRANCH = "inceleme/masamoro-preview-kabul-v1";
+export const KIBRIS_PREVIEW_CONTRACT = "masamoro-v1";
+/** Public build marker alone grants nothing: actual server Preview context is required. */
+export function catalogPreviewEnabled(): boolean {
+  return typeof window === "undefined" && process.env.VERCEL_ENV === "preview"
+    && process.env.VERCEL_GIT_COMMIT_REF === KIBRIS_PREVIEW_BRANCH
+    && process.env.NEXT_PUBLIC_KIBRIS_PILOT === "true"
+    && process.env.NEXT_PUBLIC_KIBRIS_PREVIEW_CONTRACT === KIBRIS_PREVIEW_CONTRACT
+    && /^[a-z0-9-]+\.vercel\.app$/.test(process.env.VERCEL_URL ?? "");
+}
+/** Only the immutable deployment host; branch aliases/custom domains are not pilot entry points. */
+export function catalogPreviewRequestAllowed(host: string | null): boolean {
+  return catalogPreviewEnabled() && host === process.env.VERCEL_URL;
+}
+declare global { interface Window { __GIDENLER_KIBRIS_PREVIEW__?: { enabled: boolean; host: string } } }
+/** Local QA or explicit bounded Preview. Production cannot enable the server source. */
 export function catalogPilotEnabled(): boolean {
-  return (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test")
-    && process.env.VERCEL_ENV !== "production" && process.env.NEXT_PUBLIC_KIBRIS_PILOT === "true";
+  if (process.env.NEXT_PUBLIC_KIBRIS_PILOT !== "true") return false;
+  if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") return process.env.VERCEL_ENV !== "production";
+  if (typeof window !== "undefined") return process.env.NEXT_PUBLIC_KIBRIS_PREVIEW_CONTRACT === KIBRIS_PREVIEW_CONTRACT
+    && window.__GIDENLER_KIBRIS_PREVIEW__?.enabled === true
+    && window.__GIDENLER_KIBRIS_PREVIEW__.host === window.location.hostname;
+  return catalogPreviewEnabled();
 }
 /** Invalid regional metadata never falls back to Istanbul. */
 export const catalogVisible = (r: Scoped) => r.bolge === undefined

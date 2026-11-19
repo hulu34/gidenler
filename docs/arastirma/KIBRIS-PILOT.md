@@ -1,6 +1,6 @@
 # Kıbrıs araştırması — güncel Production üzerinde yerel inceleme
 
-Durum: **Tek MasaMoro fixture ile yerel normal veri yolu kabulü geçti. Uzak Preview, DB aktarımı veya yayın kabulü yok.**
+Durum: **Yerel normal veri yolu kabulü geçti; sınırlı gerçek Preview hazırlığı yeni görevle genişletildi. Uzak Preview, DB aktarımı veya yayın kabulü yok. Güncel kapsam MASAMORO-PREVIEW-KABUL.md belgesindedir; aşağıdaki yerel-only sınırı önceki c0f0045 aşamasının tarihsel kaydıdır.**
 
 19 Kasım 2026. Production tabanı `9a2f2f482b65709e862397911438d99b06230e2c`; araştırma kaynağı PR #52 `29b9c9b74a32e5c320e9e1a507c2e2291c1563e4`. Bu çalışma ayrı yerel kopyadadır. Uzak dala gönderim, PR birleştirme, deploy, DB işlemi veya hesap/ortam ayarı yapılmadı.
 

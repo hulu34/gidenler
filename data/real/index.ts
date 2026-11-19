@@ -5,7 +5,8 @@ import duzeltmeler from "./duzeltmeler.json";
 import izinliFotograflar from "./izinli-fotograflar.json";
 import { CLOSED_CONFIRMED } from "@/lib/closure";
 import neolokalProfile from "@/content/profiles/neolokal-beyoglu.json";
-import { catalogVisible, regionCity, validCatalogRegion, type MekanBolgesi } from "@/lib/catalogRegion";
+import masaMoroFixture from "../arastirma/kibris/masamoro-fixture.json";
+import { catalogPilotEnabled, catalogVisible, istanbulCatalogScope, regionCity, validCatalogRegion, type MekanBolgesi } from "@/lib/catalogRegion";
 
 /* ==========================================================================
    GERÇEK MEKÂNLAR (V8) — kimlik verisi OpenStreetMap'ten (© OpenStreetMap katkıcıları, ODbL).
@@ -167,7 +168,9 @@ export function mergeRealVenues(osm: RealVenueRecord[], input: RealVenueInput[])
   });
   return { records: [...kept, ...biz], dropped, review };
 }
-const merged = mergeRealVenues(raw as RealVenueRecord[], isletme as RealVenueRecord[]);
+// A single explicit source fixture. Never imports the six-candidate research manifest.
+const pilotSource = catalogPilotEnabled() ? [masaMoroFixture.record as unknown as RealVenueInput] : [];
+const merged = mergeRealVenues(raw as RealVenueRecord[], [...isletme as RealVenueRecord[], ...pilotSource]);
 /** İnceleme adayı çiftler (otomatik birleştirilmez). */
 export const realVenueReview = merged.review;
 /* Kaynağa dayalı elle düzeltmeler (duzeltmeler.json): venues.json elle düzenlenmediği için aktarım yenilense de korunur. Tür ve resmî menüyle doğrulanmış ana mutfak. Ham OSM kanıtı korunur. */
@@ -222,4 +225,4 @@ export const realEntities: Entity[] = realVenueRecords.filter(catalogVisible).ma
   image: permittedImage(r.slug) ?? (r.image ? { src: LOCAL_COVER.has(r.slug) ? `${MEDIA}/${r.slug}-kapak-480.webp` : r.image.src, alt: r.name, credit: `${r.image.credit} · ${r.image.license}` } : undefined),
 }));
 /** Aktif öneri havuzu: kalıcı kapandığı doğrulanan mekânlar (lib/closure.ts) çıkarılır. Profil ve arama realEntities'i kullanır. */
-export const activeEntities: Entity[] = realEntities.filter((e) => !CLOSED_CONFIRMED.has(e.slug));
+export const activeEntities: Entity[] = realEntities.filter((e) => istanbulCatalogScope(e) && !CLOSED_CONFIRMED.has(e.slug));

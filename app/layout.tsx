@@ -1,6 +1,9 @@
 import { CoverProvider } from "@/components/venue/VenueCover";
 import { liveCovers } from "@/lib/live";
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import { headers } from "next/headers";
+import { catalogPreviewEnabled, catalogPreviewRequestAllowed } from "@/lib/catalogRegion";
 
 /* Yazı karakterleri npm üzerinden self-host edilir: üçüncü taraf CDN'e
    istek gitmez (hız + KVKK), build ağ erişimi gerektirmez. */
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
   /* paylaşım kartı (WhatsApp, Instagram DM, X): görsel app/opengraph-image.tsx */
   openGraph: { siteName: "Gidenler", locale: "tr_TR", type: "website" },
   /* Yatırımcı demosu arama motorlarına tamamen kapalı. */
-  ...(DEMO_VISIBLE ? { robots: { index: false, follow: false, nocache: true } } : {}),
+  ...(DEMO_VISIBLE || catalogPreviewEnabled() ? { robots: { index: false, follow: false, nocache: true } } : {}),
 };
 
 export const viewport: Viewport = {
@@ -41,9 +44,13 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Only the explicitly armed Preview becomes request-rendered; normal Production remains unchanged.
+  const preview = catalogPreviewEnabled();
+  const pilotRequest = preview && catalogPreviewRequestAllowed((await headers()).get("host"));
   return (
     <html lang="tr">
       <body>
+        {preview && <Script id="gidenler-kibris-preview-context" strategy="beforeInteractive">{`window.__GIDENLER_KIBRIS_PREVIEW__=${JSON.stringify({ enabled: pilotRequest, host: process.env.VERCEL_URL })};`}</Script>}
         <a
           href="#icerik"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-2 focus:text-on-accent"

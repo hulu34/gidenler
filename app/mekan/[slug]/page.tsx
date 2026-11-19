@@ -5,7 +5,8 @@ import type { Metadata } from "next";
 
 import { entities } from "@/data/entities";
 import { getTopic } from "@/lib/api";
-import { regionLabel } from "@/lib/catalogRegion";
+import { catalogPilotEnabled, catalogPreviewEnabled, catalogPreviewRequestAllowed, regionLabel } from "@/lib/catalogRegion";
+import { headers } from "next/headers";
 import { pulseOf } from "@/lib/pulse";
 import { Pulse } from "@/components/viz/Pulse";
 import { PlaceSeal } from "@/components/viz/PlaceSeal";
@@ -74,7 +75,13 @@ import { consensusLabel } from "@/lib/semantic";
 import { cardOf } from "@/lib/api";
 
 export function generateStaticParams() {
-  return entities.map((e) => ({ slug: e.slug }));
+  // Pilot profiles must be request-gated, never emitted as public static HTML.
+  return entities.filter(e => e.bolge === undefined).map((e) => ({ slug: e.slug }));
+}
+
+async function pilotRouteAllowed() {
+  if (!catalogPreviewEnabled()) return process.env.NODE_ENV !== "production" && catalogPilotEnabled();
+  return catalogPreviewRequestAllowed((await headers()).get("host"));
 }
 
 export async function generateMetadata({
@@ -84,7 +91,8 @@ export async function generateMetadata({
   const t = getTopic(slug);
   if (!t) return { title: "Bulunamadı" };
   const e = t.entity;
-  if (e.bolge) return { title: `${e.name} · ${regionLabel(e.bolge)} (yerel pilot)`,
+  if (e.bolge && !(await pilotRouteAllowed())) return { title: "Bulunamadı", robots: { index: false, follow: false } };
+  if (e.bolge) return { title: `${e.name} · ${regionLabel(e.bolge)} (pilot)`,
     description: venueDescription(e, null, false), robots: { index: false, follow: false } };
   /* Demo kayıtlar arama motorlarına kapalı; başlıkta puan ve "gerçek deneyim" iddiası yok. */
   if (e.isDemo) return { title: `${e.name} (demo kayıt)`, description: "Prototip için üretilmiş demo kayıt; gerçek bir işletme değildir.", robots: { index: false, follow: false } };
@@ -139,6 +147,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params;
   const t = getTopic(slug);
   if (!t) notFound();
+  if (t.entity.bolge && !(await pilotRouteAllowed())) notFound();
 
   const { entity, category, schema, intelligence: I, expertExperiences, experiences, nearby } = t;
   const c = category.compliance;
