@@ -1,0 +1,1011 @@
+{
+ "_aciklama": "Kıbrıs pilot araştırması — yalnız araştırma; kataloğa eklenmedi, veritabanına yazılmadı, canlıda sayılmaz. İstanbul sayılarından ayrı raporlanır. Harita/Google, platform puanı, yorum ve koordinat kullanılmadı.",
+ "kontrolTarihi": "2026-11-15",
+ "taban": "origin/feature/investor-v1 f8131dd (İstanbul: 818 kayıt; canlı 783 aktif)",
+ "kanitStandardi": "Tam kanıtlı aday (aday-tam): resmî işletme kaynağı (bugün açık) + son 12 ayda tarihli bağımsız editoryal kaynak; ikisi aynı adı, sokağı ve kapı numarasını yazıyor. Koşullu aday (aday-kosullu): iki kaynak aynı işletmeyi ve yeri gösteriyor ama sokak/kapı no/şube yalnız bir kaynakta, farklı ya da yok; 'kosul' ve 'adresKaniti' alanlarında yazılı, tam kabul edilmiş değil. Bağımsız kaynakta yalnız harita bileşeninden (plus code) gelen adres sayılmaz.",
+ "kaynakTaramasi": {
+  "yemek.com": "Girne balık restoranları (07.10.2026), Kıbrıs yılbaşı (25.12.2025); Lefkoşa yazısı 2024 — eşik dışı",
+  "Cyprus Mail": "2026 restoran eleştirileri: 19 yazı; adres yazı metnindeki WHERE satırından alındı",
+  "sinirliTur_15_11": "bekleyen 15 için yalnız yazılardaki bağlantılar ve Niazi's şube sayfası açıldı; daha önce başarısız alan adları yeniden denenmedi, erişim engeli aşılmadı, işletmelere yazılmadı, ücretli kaynak yok",
+  "Gault&Millau Türkiye 2026": "Kıbrıs kaydı yok",
+  "Michelin": "Kıbrıs rehberi yok",
+  "resmî siteler": "alan adı denemesi + web araması"
+ },
+ "sayim": {
+  "aday-tam": 6,
+  "aday-kosullu": 4,
+  "inceleme": 14,
+  "kapsam-disi": 2
+ },
+ "operasyonelDagilim": {
+  "güney|aday-tam": 6,
+  "kuzey|aday-kosullu": 4,
+  "kuzey|inceleme": 3,
+  "güney|inceleme": 11,
+  "güney|kapsam-disi": 2
+ },
+ "kayitlar": [
+  {
+   "id": "kibris/lpm-restaurant-bar-limassol",
+   "ad": "LPM Restaurant & Bar Limassol",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Limasol bölgesi",
+    "yerelAdlar": "Limasol / Limassol / Lemesos",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Akdeniz mutfağı",
+   "adres": "Giannou Kranidioti 11, Parklane Resort, Pyrgos, Limasol",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://lpmrestaurants.com/limassol/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî sayfa (JSON-LD): Parklane, Giannou Kranidioti 11, Pyrgos 4534"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/01/29/restaurant-review-when-the-weekend-began-tastefully-at-parklanes-la-petite-maison",
+     "yayin": "2026-01-29",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Cyprus Mail eleştirisi: LPM, Parklane, Limassol; aynı telefon (25862222); sokak ve kapı no yazıda yok"
+    },
+    {
+     "tur": "bağımsız rehber (otel sayfası)",
+     "url": "https://guide.michelin.com/en/hotels-stays/limassol/parklane-a-luxury-collection-resort-spa-limassol-12660",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "MICHELIN Guide otel sayfası (JSON-LD): Parklane, 11 Giannou Kranidioti Street, Limassol; otel restoranları arasında 'La Petite Maison' adıyla geçiyor. Sayfa tarihsiz; güncellik Cyprus Mail 2026 yazısından"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "Limasol şubesi; restoran Parklane otelinde (üç kaynak). Markanın başka ülkelerdeki şubeleri kapsam dışı",
+    "faaliyet": "bağımsız yazı 2026-01-29; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "uc-kaynak-otel-adresi-bagimsiz-rehber",
+    "tur": "bağımsız yazının konusu / resmî menü: Akdeniz mutfağı"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [],
+   "adresKaniti": {
+    "durum": "uc-kaynak-otel-adresi-bagimsiz-rehber",
+    "resmiKaynak": "Parklane, Giannou Kranidioti 11, Pyrgos 4534 (+357 25 862222)",
+    "bagimsizKaynak": "Cyprus Mail (29.01.2026): LPM, Parklane Hotel, Limassol; 25862222 · MICHELIN Guide: Parklane, 11 Giannou Kranidioti Street, Limassol; restoran 'La Petite Maison'",
+    "eslesme": {
+     "sokak": "eşleşti (resmî + MICHELIN otel sayfası)",
+     "kapiNo": "eşleşti (11; resmî + MICHELIN)",
+     "telefon": "eşleşti (resmî + Cyprus Mail: 25 862222)",
+     "otel": "eşleşti (üç kaynak)",
+     "postaKodu": "açık — çelişki: resmî 4534, MICHELIN 56560; adres posta kodsuz"
+    }
+   },
+   "durum": "aday-tam",
+   "guven": "güçlü",
+   "not": "otel içindeki marka restoranı; markanın başka ülkelerde şubeleri var — yalnız Limasol şubesi",
+   "teyitTuru_15_11": "MICHELIN Guide otel sayfası sokak ve kapı numarasını bağımsız olarak doğruladı → tam kanıtlı",
+   "acikAlanlar": {
+    "postaKodu": "açık — çelişki: resmî 4534, MICHELIN 56560; adres posta kodsuz yazıldı"
+   }
+  },
+  {
+   "id": "kibris/oniro-by-the-sea",
+   "ad": "Oniro by the Sea",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Baf bölgesi",
+    "yerelAdlar": "Baf / Paphos / Pafos — Peyia (Pegeia)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Akdeniz mutfağı",
+   "adres": "Glikou Nerou 05, Peyia 8560, Baf",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://oniro.cy/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî site: Glikou Nerou 05, Peyia 8560; tel 70077272; © 2026"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/05/08/restaurant-review-paphos-favourite-back-to-the-good-old-days",
+     "yayin": "2026-05-08",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Cyprus Mail: Glikou Nerou 05, Peyia; aynı telefon (7007 7272)"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "bkz. adresKaniti",
+    "faaliyet": "bağımsız yazı 2026-05-08; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "iki-kaynak-sokak-ve-kapi-no",
+    "tur": "bağımsız yazının konusu / resmî menü: Akdeniz mutfağı"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [],
+   "adresKaniti": {
+    "durum": "iki-kaynak-sokak-ve-kapi-no",
+    "resmiKaynak": "Glikou Nerou 05, Peyia 8560 (tel 70077272)",
+    "bagimsizKaynak": "WHERE Glikou Nerou 05, Peyia, Paphos (CONTACT 7007 7272)",
+    "eslesme": {
+     "sokak": "eşleşti",
+     "kapiNo": "eşleşti",
+     "telefon": "eşleşti"
+    }
+   },
+   "durum": "aday-tam",
+   "guven": "güçlü",
+   "not": "eleştiri mekânı 'restorandan çok beach club' diye anlatıyor; tür teyidi teknik kabulde"
+  },
+  {
+   "id": "kibris/masamoro",
+   "ad": "MasaMoro",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Lefkoşa (güney kesim)",
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Dünya mutfağı",
+   "adres": "Stasandrou 2, 1060 Lefkoşa",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://masamoro.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî site (JSON-LD): Stasandrou 2, 1060 Nicosia"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/10/23/nicosia-taco-spot-with-something-to-prove",
+     "yayin": "2026-10-23",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Cyprus Mail: MasaMoro, Stasandrou 2, Nicosia; tel 99 058176"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "bkz. adresKaniti",
+    "faaliyet": "bağımsız yazı 2026-10-23; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "iki-kaynak-sokak-ve-kapi-no",
+    "tur": "bağımsız yazının konusu / resmî menü: Dünya mutfağı"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [],
+   "adresKaniti": {
+    "durum": "iki-kaynak-sokak-ve-kapi-no",
+    "resmiKaynak": "Stasandrou 2, 1060 Nicosia (JSON-LD)",
+    "bagimsizKaynak": "WHERE MasaMoro, Stasandrou 2, Nicosia",
+    "eslesme": {
+     "sokak": "eşleşti",
+     "kapiNo": "eşleşti",
+     "telefon": "resmî sitede telefon bulunamadı (yazıda 99 058176)"
+    }
+   },
+   "durum": "aday-tam",
+   "guven": "güçlü",
+   "not": "taco (Meksika) — katalogda 'Dünya mutfağı'"
+  },
+  {
+   "id": "kibris/stavri-kitchen",
+   "ad": "Stavri Kitchen",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Larnaka bölgesi",
+    "yerelAdlar": "Larnaka / Larnaca / Larnaka",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Burger",
+   "adres": "Kalimnou 6B, 6037 Larnaka",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://stavriskitchen.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî site: Kalimnou 6b, Larnaca 6037; +357 24 255592"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/11/06/simple-restaurant-with-the-michelin-touch",
+     "yayin": "2026-11-06",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Cyprus Mail: Kalimnou 6B, 6037 Larnaca; aynı telefon (24255592)"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "bkz. adresKaniti",
+    "faaliyet": "bağımsız yazı 2026-11-06; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "iki-kaynak-sokak-ve-kapi-no",
+    "tur": "bağımsız yazının konusu / resmî menü: Burger"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [],
+   "adresKaniti": {
+    "durum": "iki-kaynak-sokak-ve-kapi-no",
+    "resmiKaynak": "Kalimnou 6b, Larnaca 6037 (+357 24 255592)",
+    "bagimsizKaynak": "Where: Kalimnou 6B, 6037, Larnaca",
+    "eslesme": {
+     "sokak": "eşleşti",
+     "kapiNo": "eşleşti",
+     "telefon": "eşleşti"
+    }
+   },
+   "durum": "aday-tam",
+   "guven": "güçlü",
+   "not": "yazıda 'Stavris Kitchen', resmî adı 'Stavri Kitchen'"
+  },
+  {
+   "id": "kibris/gourmet-taverna",
+   "ad": "Gourmet Taverna",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Baf bölgesi",
+    "yerelAdlar": "Baf / Paphos / Pafos — Kato Paphos",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Geleneksel mutfak",
+   "adres": "Dionysou 1-2, 8041 Kato Paphos",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://www.gourmettaverna.com/contact-us/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî iletişim sayfası: 1-2 Dyonisou, 8041 Kato Paphos; tel 26933626"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/02/18/restaurant-review-welcoming-traditional-cyprus-food-on-a-cold-night",
+     "yayin": "2026-02-18",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Cyprus Mail: Gourmet Taverna, Dionysou 1-2, Paphos; aynı telefon"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "bkz. adresKaniti",
+    "faaliyet": "bağımsız yazı 2026-02-18; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "iki-kaynak-sokak-ve-kapi-no",
+    "tur": "bağımsız yazı: 'Cyprus cuisine' → katalogdaki 'Geleneksel mutfak'; 'Kıbrıs mutfağı' türü sahip kararı"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [],
+   "adresKaniti": {
+    "durum": "iki-kaynak-sokak-ve-kapi-no",
+    "resmiKaynak": "1-2 Dyonisou, 8041 Kato Paphos (tel 26933626)",
+    "bagimsizKaynak": "WHERE: Gourmet Taverna, Dionysou 1-2, Paphos (CONTACT: 26 933626)",
+    "eslesme": {
+     "sokak": "eşleşti (Dyonisou/Dionysou harf çevirisi)",
+     "kapiNo": "eşleşti",
+     "telefon": "eşleşti"
+    }
+   },
+   "durum": "aday-tam",
+   "guven": "güçlü",
+   "not": "geleneksel Kıbrıs mutfağı — katalogda karşılığı yok; 'Kıbrıs mutfağı' türü kararı açık, şimdilik 'Geleneksel mutfak'"
+  },
+  {
+   "id": "kibris/novel-the-agora-hotel",
+   "ad": "Novél (The Agora Hotel)",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Larnaka bölgesi",
+    "yerelAdlar": "Pano Lefkara (Larnaka ili)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "adres": "The Agora Hotel, Pano Lefkara 7700",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://www.theagorahotel.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "otelin resmî sitesi: 'NOVÉL', Pano Lefkara 7700, +357 24 726000"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/01/14/restaurant-review-great-spot-for-artisanal-breakfast",
+     "yayin": "2026-01-14",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "Cyprus Mail: Novél restaurant, The Agora Hotel, Lefkara; aynı telefon (24 726000)"
+    },
+    {
+     "tur": "bağımsız rehber (otel sayfası)",
+     "url": "https://guide.michelin.com/at/de/hotels-stays/panolefkara/the-agora-hotel-13555",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "MICHELIN Guide otel sayfası (JSON-LD): The Agora Hotel, 25 Timiou Stavrou, 7700 Pano Lefkara; tel 0035724726000; otelin bistrosu 'Novél'. İngilizce sayfa 404, Almanca sürüm açık. Sayfa tarihsiz; güncellik Cyprus Mail 2026 yazısından"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "Pano Lefkara — tek işletme; restoran The Agora Hotel içinde (üç kaynak)",
+    "faaliyet": "bağımsız yazı 2026-01-14; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "uc-kaynak-otel-adresi-bagimsiz-rehber",
+    "tur": "bağımsız yazının konusu / resmî menü: Kahvaltı"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [],
+   "adresKaniti": {
+    "durum": "uc-kaynak-otel-adresi-bagimsiz-rehber",
+    "resmiKaynak": "The Agora Hotel, 25 Timiou Stavrou, Pano Lefkara 7700 (+357 24 726000)",
+    "bagimsizKaynak": "Cyprus Mail (14.01.2026): Novél restaurant, The Agora Hotel, Lefkara; 24 726000 · MICHELIN Guide: The Agora Hotel, 25 Timiou Stavrou, Pano Lefkara 7700; 0035724726000; bistro 'Novél'",
+    "eslesme": {
+     "sokak": "eşleşti (resmî + MICHELIN otel sayfası)",
+     "kapiNo": "eşleşti (25; resmî + MICHELIN)",
+     "telefon": "eşleşti (üç kaynak: 24 726000)",
+     "otel": "eşleşti (üç kaynak)"
+    }
+   },
+   "durum": "aday-tam",
+   "guven": "güçlü",
+   "not": "kahvaltı, öğle ve akşam servisi",
+   "teyitTuru_15_11": "MICHELIN Guide otel sayfası sokak ve kapı numarasını bağımsız olarak doğruladı → tam kanıtlı"
+  },
+  {
+   "id": "kibris/calamari-restaurant",
+   "ad": "Calamari Restaurant",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Girne bölgesi",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia — Lapta (Lapithos)",
+    "operasyonelBolge": "kuzey — Kıbrıs Türk yönetimindeki alan (yerel kurumlar: KKTC)",
+    "telefonUlkeKodu": "+90 392",
+    "paraBirimiVarsayimi": "TRY (sahada EUR/GBP de kabul edilebilir — işletme bazında doğrulanmalı)",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Balık restoranı",
+   "adres": "Lapta Oteller Bölgesi, Hacı Ali Hotel yanı, Lapta, Girne",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://calamarirestaurant.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî site (JSON-LD): Lapta Oteller Bölgesi, Hacı Ali Hotel yanı; +90 392 821 3666"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "yayin": "2026-10-07",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "yemek.com (07.10.2026): aynı adres"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "bkz. adresKaniti",
+    "faaliyet": "bağımsız yazı 2026-10-07; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "ayni-yer-tarifi-kapi-no-yok",
+    "tur": "bağımsız yazının konusu / resmî menü: Balık restoranı"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [
+    "kapı no (yerel adres biçimi: yer tarifi)"
+   ],
+   "adresKaniti": {
+    "durum": "ayni-yer-tarifi-kapi-no-yok",
+    "resmiKaynak": "Lapta Oteller Bölgesi, Hacı Ali Hotel yanı (+90 392 821 3666)",
+    "bagimsizKaynak": "Lapta Oteller Bölgesi, Hacı Ali Hotel Yanı, Lapta/Girne",
+    "eslesme": {
+     "yerTarifi": "eşleşti",
+     "sokak": "iki kaynakta da yok",
+     "kapiNo": "iki kaynakta da yok",
+     "telefon": "yazıda yok"
+    }
+   },
+   "durum": "aday-kosullu",
+   "guven": "koşullu",
+   "kosul": "adres yer tarifi düzeyinde; yer tarifli adresin kabulü sahip/Codex kararı — tam kabul edilmiş kayıt değildir",
+   "teyitTuru_15_11": "yeni kaynak bulunamadı; yemek.com dışında adres veren editoryal kaynak yok. Kapı no yerel adres biçiminde yok — yer tarifli adres sahip kararı"
+  },
+  {
+   "id": "kibris/bellapais-gardens-restaurant",
+   "ad": "Bellapais Gardens Restaurant",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Girne bölgesi",
+    "yerelAdlar": "Girne / Kyrenia — Beylerbeyi (Bellapais / Bellapaïs)",
+    "operasyonelBolge": "kuzey — Kıbrıs Türk yönetimindeki alan (yerel kurumlar: KKTC)",
+    "telefonUlkeKodu": "+90 392",
+    "paraBirimiVarsayimi": "TRY (sahada EUR/GBP de kabul edilebilir — işletme bazında doğrulanmalı)",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Akdeniz mutfağı",
+   "adres": "Beylerbeyi (Bellapais), Girne — sokak: Crusader Road (resmî) / Şehit Fuat Niyazi Sokak (yemek.com)",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://www.bellapaisgardens.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî site: Crusader Road, Bellapais, North Cyprus; +90 392 815 60 66 (site © 2024)"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "yayin": "2026-10-07",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "yemek.com (07.10.2026): Şehit Fuat Niyazi Sokak, Beylerbeyi, Girne"
+    },
+    {
+     "tur": "bağımsız rehber (2026 listesi)",
+     "url": "https://petitfute.com/v39631-bellapais-beylerbeyi/c1165-restaurants/c1031-cuisines-du-monde",
+     "kontrol": "2026-11-15",
+     "yayin": "2026",
+     "kanitladigi": "Petit Futé 2026 Bellapaïs-Beylerbeyi restoran listesi: BELLAPAIS GARDENS RESTAURANT, Şehit Fuat Niyazi Sokak, Bellapaïs - Beylerbeyi (kapı no yok)"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "bkz. adresKaniti",
+    "faaliyet": "bağımsız yazı 2026-10-07; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "ayni-koy-sokak-adi-farkli-kapi-no-yok",
+    "tur": "bağımsız yazının konusu / resmî menü: Akdeniz mutfağı"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [
+    "kapı no (üç kaynakta da yok)",
+    "resmî kaynaktaki sokak adı ('Crusader Road') iki bağımsız kaynaktaki 'Şehit Fuat Niyazi Sokak' ile doğrulanmadı"
+   ],
+   "adresKaniti": {
+    "durum": "ayni-koy-sokak-adi-farkli-kapi-no-yok",
+    "resmiKaynak": "Crusader Road, Bellapais (+90 392 815 60 66)",
+    "bagimsizKaynak": "yemek.com (07.10.2026): Şehit Fuat Niyazi Sokak, Beylerbeyi, Girne · Petit Futé (2026): Şehit Fuat Niyazi Sokak, Bellapaïs - Beylerbeyi",
+    "eslesme": {
+     "koy": "eşleşti (Bellapais = Beylerbeyi)",
+     "sokak": "iki bağımsız kaynakta aynı ('Şehit Fuat Niyazi Sokak'); resmî kaynak 'Crusader Road' — aynı yol olduğu resmî kaynakla doğrulanmadı",
+     "kapiNo": "iki kaynakta da yok",
+     "telefon": "yazıda yok"
+    }
+   },
+   "durum": "aday-kosullu",
+   "guven": "koşullu",
+   "kosul": "sokak adı iki bağımsız kaynakta aynı ama resmî kaynakta farklı; kapı no yok — tam kabul edilmiş kayıt değildir",
+   "not": "otel + restoran; yalnız restoran kaydı",
+   "teyitTuru_15_11": "Petit Futé 2026 listesi yemek.com'daki sokak adını doğruladı; otel rezervasyon toplayıcılarındaki 'No:3' sayılmadı"
+  },
+  {
+   "id": "kibris/silver-rocks-restaurant",
+   "ad": "Silver Rocks Restaurant",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Girne bölgesi",
+    "yerelAdlar": "Girne / Kyrenia — Lapta (Lapithos)",
+    "operasyonelBolge": "kuzey — Kıbrıs Türk yönetimindeki alan (yerel kurumlar: KKTC)",
+    "telefonUlkeKodu": "+90 392",
+    "paraBirimiVarsayimi": "TRY (sahada EUR/GBP de kabul edilebilir — işletme bazında doğrulanmalı)",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Balık restoranı",
+   "adres": "Fevzi Çakmak Caddesi, Lapta, Girne",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://silverrocksrestaurant.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî site: güncel restoran/kafe/havuz menüsü (adres ve telefon yok)"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "yayin": "2026-10-07",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "yemek.com (07.10.2026): Fevzi Çakmak Caddesi, Lapta, Girne"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "bkz. adresKaniti",
+    "faaliyet": "bağımsız yazı 2026-10-07; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "sokak-tek-kaynak-kapi-no-yok",
+    "tur": "bağımsız yazının konusu / resmî menü: Balık restoranı"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [
+    "kapı no",
+    "adres yalnız yemek.com'da; resmî sitede adres/telefon yok"
+   ],
+   "adresKaniti": {
+    "durum": "sokak-tek-kaynak-kapi-no-yok",
+    "resmiKaynak": "Lapta 99440 (+90 533 862 19 02; sokak yok)",
+    "bagimsizKaynak": "Fevzi Çakmak Caddesi, Lapta, Girne",
+    "eslesme": {
+     "koy": "eşleşti (Lapta)",
+     "sokak": "yalnız yemek.com",
+     "kapiNo": "iki kaynakta da yok",
+     "telefon": "yazıda yok"
+    }
+   },
+   "durum": "aday-kosullu",
+   "guven": "koşullu",
+   "kosul": "sokak tek kaynakta (yemek.com); resmî kaynak yalnız köy düzeyinde; kapı no yok — tam kabul edilmiş kayıt değildir",
+   "not": "tür yemek.com 'balık restoranları' listesinden",
+   "teyitTuru_15_11": "yeni editoryal kaynak bulunamadı; yalnız toplayıcı/platform sayfaları (tripaligner, restaurantguru, trip.com) 'Fevzi Çakmak Caddesi' yazıyor — bağımsız sayılmadı"
+  },
+  {
+   "id": "kibris/niazi-s-restaurant-girne",
+   "ad": "Niazi's Restaurant (Girne)",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Girne bölgesi",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia — merkez",
+    "operasyonelBolge": "kuzey — Kıbrıs Türk yönetimindeki alan (yerel kurumlar: KKTC)",
+    "telefonUlkeKodu": "+90 392",
+    "paraBirimiVarsayimi": "TRY (sahada EUR/GBP de kabul edilebilir — işletme bazında doğrulanmalı)",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "categoryId": "cat.restaurant",
+   "kind": "Kebap",
+   "adres": "Ziya Rızkı Caddesi No:3 (Sıdıka Ersoy Apt.), Girne merkez",
+   "kaynaklar": [
+    {
+     "tur": "resmî işletme kaynağı",
+     "url": "https://niazis.com/branches/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "resmî şube sayfası: 'Kyrenia — the original Niazi's restaurant', Ziya Rızkı Str. Sıdıka Ersoy Apt.; 0392 444 1949; menü kebap/ızgara"
+    },
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "yayin": "2025-12-25",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "yemek.com (25.12.2025): Niazi's Restaurant, Ziya Rızkı Caddesi No:3, Girne Merkez"
+    }
+   ],
+   "degerlendirme": {
+    "kimlik": "resmî kaynak + bağımsız yazı aynı işletme",
+    "sube": "bkz. adresKaniti",
+    "faaliyet": "bağımsız yazı 2025-12-25; resmî kaynak 2026-11-15 tarihinde açık",
+    "adres": "ayni-sokak-kapi-no-tek-kaynak-sube-belirsiz",
+    "tur": "bağımsız yazının konusu / resmî menü: Kebap"
+   },
+   "koordinat": null,
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "eksik": [
+    "kapı no yalnız yemek.com'da",
+    "resmî site iki adres veriyor: şube sayfası Ziya Rızkı Str., iletişim sayfası 'Kordonboyu Str., Dome Hotel karşısı' (0392 815 2160)",
+    "şube sayfasında aynı adreste ikinci bir Girne şubesi (hızlı servis) ve Kordonboyu'nda ayrı telefonlu bir işletme var — hangi şubenin kayıt olduğu teyit edilmeli"
+   ],
+   "adresKaniti": {
+    "durum": "ayni-sokak-kapi-no-tek-kaynak-sube-belirsiz",
+    "resmiKaynak": "şube sayfası: Ziya Rızkı Str., Sıdıka Ersoy Apt., Kyrenia (0392 444 1949); iletişim sayfası: Kordonboyu Str., Dome Hotel karşısı (0392 815 2160)",
+    "bagimsizKaynak": "Ziya Rızkı Caddesi No:3, Girne Merkez",
+    "eslesme": {
+     "sokak": "eşleşti (şube sayfası)",
+     "kapiNo": "yalnız yemek.com",
+     "telefon": "yazıda yok",
+     "sube": "resmî site içinde iki farklı adres; aynı adla iki Girne şubesi"
+    }
+   },
+   "durum": "aday-kosullu",
+   "guven": "koşullu",
+   "kosul": "kapı no tek kaynakta; resmî sitenin iki adresi ve iki Girne şubesi arasında şube eşlemesi teyit edilmeli — tam kabul edilmiş kayıt değildir",
+   "not": "markanın Lefkoşa ve Gazimağusa şubeleri ayrı kayıt olur; site başlığı 'Established 1949, Limassol' (markanın kökeni)",
+   "teyitTuru_15_11": "Lonely Planet sayfası içeriği betikle yükleniyor (okunamadı), Fodor's 403 (aşılmadı). Toplayıcılar (wanderlog, airbnb) 'Kordonboyu, Dome Hotel karşısı' diyor — bağımsız sayılmadı; resmî sitenin iki adresi arasındaki çelişki çözülmedi"
+  },
+  {
+   "id": "kibris/salut-marin-fish-meze-restaurant",
+   "ad": "Salut Marin Fish & Meze Restaurant",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Girne bölgesi",
+    "operasyonelBolge": "kuzey — Kıbrıs Türk yönetimindeki alan (yerel kurumlar: KKTC)",
+    "telefonUlkeKodu": "+90 392",
+    "paraBirimiVarsayimi": "TRY (sahada EUR/GBP de kabul edilebilir — işletme bazında doğrulanmalı)",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız yemek.com (07.10.2026; 20 Temmuz Kordonboyu Cad. No:118, Girne Eski Liman); resmî site bulunamadı (yalnız Instagram — kanıt sayılmadı)",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/lagoon-fish-restaurant",
+   "ad": "Lagoon Fish Restaurant",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Girne bölgesi",
+    "operasyonelBolge": "kuzey — Kıbrıs Türk yönetimindeki alan (yerel kurumlar: KKTC)",
+    "telefonUlkeKodu": "+90 392",
+    "paraBirimiVarsayimi": "TRY (sahada EUR/GBP de kabul edilebilir — işletme bazında doğrulanmalı)",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız yemek.com (07.10.2026; Turgut Tahsin Sokak No:49-50, Girne); resmî site bulunamadı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/archway-restaurant",
+   "ad": "Archway Restaurant",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Lefkoşa (kuzey kesim, Surlariçi)",
+    "operasyonelBolge": "kuzey — Kıbrıs Türk yönetimindeki alan (yerel kurumlar: KKTC)",
+    "telefonUlkeKodu": "+90 392",
+    "paraBirimiVarsayimi": "TRY (sahada EUR/GBP de kabul edilebilir — işletme bazında doğrulanmalı)",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız yemek.com (25.12.2025; Asmaaltı Sokak, Surlariçi — kapı no yok); bilinen alan adı satışta",
+   "eksik": [
+    "adres/şube"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/kuzuba",
+   "ad": "Kuzuba",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Lefkoşa (güney kesim)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "Cyprus Mail (27.03.2026; 54 Kyriakou Matsi Ave.) + Wiz Guide 2025 sıralaması; resmî işletme kaynağı bulunamadı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/03/27/restaurant-review-fusion-restaurant-gets-the-balance-right",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/three-and-the-cuckoo-3-kai-o-koukos",
+   "ad": "Three and the Cuckoo (3 Kai O Koukos)",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Lefkoşa (güney kesim)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (24.07.2026; 49 Antistratigou Evaggelou Floraki); resmî site bulunamadı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/07/24/the-cyprus-taverna-serving-wagyu-souvlaki",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/deliyard",
+   "ad": "Deliyard",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Lefkoşa (güney kesim)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (26.06.2026; Esperidon 17); resmî site bulunamadı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/06/26/a-taste-of-modern-nicosia",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/lysiotiki-souvla-pais",
+   "ad": "Lysiotiki Souvla Pais",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Lefkoşa (güney kesim)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (28.01.2026; Daidalou 18); resmî site bulunamadı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/01/28/why-the-neighbourhood-taverna-still-matters",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/kyparissos-tavern",
+   "ad": "Kyparissos Tavern",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Baf bölgesi (Kathikas)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (30.10.2026; Aki Kleanthous Ave., Kathikas — kapı no yok); resmî site bulunamadı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/10/30/a-gastronomic-heaven-in-the-hills",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/the-farmyard",
+   "ad": "The Farmyard",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Baf bölgesi (Kathikas)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (03.07.2026; Kathikas — kapı no yok); resmî site bağlantısı doğrulanamadı; telefon kaynaklar arasında farklı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/07/03/why-this-pan-asian-gem-is-among-cyprus-best-restaurants",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/artio-symposium-elinn-traditional-suites",
+   "ad": "Artio Symposium (Elinn Traditional Suites)",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Baf bölgesi (Kathikas)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (03.04.2026; Ticharion 31); yazıdaki bağlantıdan otel sitesi (elinntraditionalsuites.com) 15.11.2026'da açıldı ama restorandan (Artio) ve adresten söz etmiyor — resmî restoran kaynağı sayılmadı; o tarihte yalnız hafta sonu açıktı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/04/03/restaurant-review-the-very-best-of-cypriot-cuisine",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/santerra-restrobar",
+   "ad": "Santerra Restrobar",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Baf bölgesi",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (04.09.2026; Ayios Theodoros 2); resmî site bulunamadı",
+   "eksik": [
+    "resmî işletme kaynağı"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/09/04/authentic-eastern-european-flavours-at-great-prices",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/stou-roushia-larnaka",
+   "ad": "Stou Roushia (Larnaka)",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Larnaka bölgesi",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (12.06.2026; Nikolaou Laniti — kapı no yok); markanın Lefkoşa ve Kato Drys şubeleri de var — şube ayrımı gerekli",
+   "eksik": [
+    "adres/şube"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/06/12/we-went-looking-for-a-traditional-cypriot-meal-and-found-it-in-larnaca",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/lush",
+   "ad": "Lush",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Larnaka bölgesi",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (11.03.2026; Tasou Mitsopoulou, Makenzy — kapı no yok)",
+   "eksik": [
+    "adres/şube"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/03/11/restaurant-review-nostalgia-served-it-better",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/jan-takeaway",
+   "ad": "Jan Takeaway",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Baf bölgesi (Yeroskipou)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "neden": "yalnız Cyprus Mail (02.10.2026; Arch. Makariou III Ave. 62); paket servis ağırlıklı — kapsam teyidi gerekli",
+   "eksik": [
+    "adres/şube"
+   ],
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/10/02/lebanese-food-gem-hiding-in-plain-sight-in-paphos-suburb",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/the-a-burgers",
+   "ad": "The A Burgers",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Lefkoşa (güney kesim)",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "kapsam-disi",
+   "neden": "seyyar yemek aracı (food truck) — sabit mekân değil",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/08/28/mad-dogs-and-burger-men",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "kibris/the-ship-inn",
+   "ad": "The Ship Inn",
+   "bolge": {
+    "ada": "Kıbrıs",
+    "cografiBolge": "Limasol bölgesi",
+    "operasyonelBolge": "güney — Kıbrıs Cumhuriyeti hükümetinin fiilî kontrolündeki alan",
+    "telefonUlkeKodu": "+357",
+    "paraBirimiVarsayimi": "EUR",
+    "hukukiNot": "Ada tek coğrafi birim olarak etiketlenir; yerel yönetim/operasyon alanı ayrı tutulur. Kıbrıs'ın siyasi-hukuki statüsü uluslararası olarak tartışmalıdır (kuzeydeki yönetimi yalnız Türkiye tanır). Bu alan hukuki bir hüküm değil, adres, telefon, para birimi ve mevzuat gibi operasyonel varsayımlar içindir."
+   },
+   "durum": "kapsam-disi",
+   "neden": "pub — restoran kapsamı dışında",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://cyprus-mail.com/2026/06/19/limassol-institution-that-still-gets-the-basics-right",
+     "kontrol": "2026-11-15"
+    }
+   ]
+  }
+ ]
+}
