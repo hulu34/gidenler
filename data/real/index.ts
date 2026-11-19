@@ -5,6 +5,7 @@ import duzeltmeler from "./duzeltmeler.json";
 import izinliFotograflar from "./izinli-fotograflar.json";
 import { CLOSED_CONFIRMED } from "@/lib/closure";
 import neolokalProfile from "@/content/profiles/neolokal-beyoglu.json";
+import { catalogVisible, regionCity, validCatalogRegion, type MekanBolgesi } from "@/lib/catalogRegion";
 
 /* ==========================================================================
    GERÇEK MEKÂNLAR (V8) — kimlik verisi OpenStreetMap'ten (© OpenStreetMap katkıcıları, ODbL).
@@ -28,6 +29,9 @@ const MEDIA = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/media/commons`;
 const LOCAL_COVER = new Set(["ismet-baba-uskudar", "beyti-lokanta-bakirkoy"]);
 
 export interface RealVenueRecord {
+  bolge?: MekanBolgesi;
+  /** Original research identity, retained in raw exports; not shipped to UI. */
+  researchId?: string;
   ref: string;            // "node/123" ya da işletme beyanı için "isletme/<slug>"
   slug: string;
   name: string;
@@ -72,7 +76,26 @@ export const sourceOf = (r: Pick<RealVenueRecord, "ref">): "osm" | "business" =>
 const CATS = new Set(["cat.restaurant", "cat.cafe", "cat.bar"]);
 /** Zorunlu alanlar: ad, konum (lat/lng + semt, İstanbul içinde), kategori, kaynak (OSM ref ya da işletme), slug. */
 const inIstanbul = (r: RealVenueRecord) => typeof r.lat === "number" && typeof r.lng === "number" && r.lat >= 40.8 && r.lat <= 41.6 && r.lng >= 27.9 && r.lng <= 29.95;
-export function invalidRecord(r: RealVenueRecord): string | null {
+export type RealVenueInput = Omit<RealVenueRecord, "lat" | "lng" | "phone"> & { lat?: number | null; lng?: number | null; phone?: string | null };
+/** Only the new regional ingress permits JSON null as unknown. Legacy validation is unchanged. */
+export function normalizeRealVenueRecord(input: RealVenueInput): RealVenueRecord {
+  if (input.bolge === undefined) return input as RealVenueRecord;
+  const out = { ...input } as RealVenueRecord;
+  if (input.lat === null) delete out.lat;
+  if (input.lng === null) delete out.lng;
+  if (input.phone === null) delete out.phone;
+  return out;
+}
+export function invalidRecord(input: RealVenueInput): string | null {
+  const r = normalizeRealVenueRecord(input);
+  const regional = r.bolge !== undefined;
+  if (regional) {
+    if (!validCatalogRegion(r.bolge)) return "region";
+    // This pilot has no verified geometry or OSM identity. Do not expand its evidence scope.
+    if (r.kaliteSinifi !== "A-konumsuz" || !r.ref?.startsWith("isletme/")) return "quality";
+    if (r.lat !== undefined || r.lng !== undefined || r.location !== undefined || r.osmRef !== undefined) return "location";
+    if (r.district?.trim()) return "district"; // never manufacture an Istanbul district
+  }
   if (!r.name?.trim()) return "name";
   if (r.kaliteSinifi !== undefined && !["A", "B1", "A-konumsuz"].includes(r.kaliteSinifi)) return "quality";
   if (r.kaliteSinifi === "A-konumsuz" && (!r.ref?.startsWith("isletme/") || r.lat !== undefined || r.lng !== undefined || r.location !== undefined)) return "quality";
@@ -86,7 +109,7 @@ export function invalidRecord(r: RealVenueRecord): string | null {
     if (hasGeo && (!inIstanbul(r) || r.location?.provider !== "osm" || !OSM_REF.test(r.location.ref))) return "location";
     if (!hasGeo && !r.address?.trim()) return "address";
   } else if (!inIstanbul(r)) return "location";
-  if (!r.district) return "district";
+  if (!regional && !r.district) return "district";
   if (!CATS.has(r.categoryId)) return "category";
   if (!REF.test(r.ref)) return "source";
   if (!r.slug) return "slug";
@@ -114,7 +137,21 @@ export function reviewCandidate(o: RealVenueRecord, b: RealVenueRecord): "ayni_s
     && meters({ lat: b.lat, lng: b.lng }, { lat: o.lat, lng: o.lng }) <= 150) return "ayni_ad_150m";
   return b.district === o.district ? "ayni_ad_ayni_ilce" : null;
 }
-export function mergeRealVenues(osm: RealVenueRecord[], biz: RealVenueRecord[]) {
+export function mergeRealVenues(osm: RealVenueRecord[], input: RealVenueInput[]) {
+  const stable = (v: unknown): unknown => Array.isArray(v) ? v.map(stable) : v && typeof v === "object"
+    ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b)).map(([k, x]) => [k, stable(x)])) : v;
+  const biz: RealVenueRecord[] = [], refs = new Map<string, RealVenueRecord>(), slugs = new Map<string, RealVenueRecord>();
+  for (const row of input) {
+    const r = normalizeRealVenueRecord(row);
+    if (r.bolge !== undefined && invalidRecord(r)) throw new Error(`invalid_regional_record:${r.slug}:${invalidRecord(r)}`);
+    if (r.bolge !== undefined && osm.some(o => o.slug === r.slug || o.ref === r.ref)) throw new Error(`regional_identity_conflict:${r.ref}`);
+    const previous = refs.get(r.ref) ?? slugs.get(r.slug);
+    if (previous && (r.bolge !== undefined || previous.bolge !== undefined)) {
+      if (JSON.stringify(stable(previous)) !== JSON.stringify(stable(r))) throw new Error(`regional_identity_conflict:${r.ref}`);
+      continue;
+    }
+    biz.push(r); refs.set(r.ref, r); slugs.set(r.slug, r);
+  }
   const dropped = osm.filter((o) => duplicateOfBusiness(o, biz));
   const review: { business: string; osm: string; reason: string }[] = [];
   const kept = osm.filter((o) => !dropped.includes(o)).map((o) => {
@@ -158,7 +195,8 @@ const permittedImage = (slug: string) => { const c = PERMITTED[slug]?.[0]; retur
 /* Gösterim düzeltmesi; tohum/ekleme girdisi olan realVenueRecords ve mevcut DB satırı değişmez. */
 const VERIFIED_ADDRESSES: Record<string, typeof neolokalProfile.address> = { [neolokalProfile.slug]: neolokalProfile.address };
 
-export const realEntities: Entity[] = realVenueRecords.map((r) => ({
+export const realEntities: Entity[] = realVenueRecords.filter(catalogVisible).map((r) => ({
+  ...(r.bolge ? { bolge: r.bolge } : {}),
   id: `ent.r.${r.slug}`,
   slug: r.slug,
   name: r.name,
@@ -169,7 +207,7 @@ export const realEntities: Entity[] = realVenueRecords.map((r) => ({
   subcategory: r.kind,
   ...((duzeltmeler as Record<string, Fix>)[r.slug]?.cuisine ? { menuVerifiedKind: r.kind } : {}),
   experienceTotal: 0,
-  location: { city: "İstanbul", district: r.district, neighborhood: r.neighborhood, precision: r.adresDuzeyi === "sokak" ? "street" : r.location?.precision, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
+  location: { city: r.bolge ? regionCity(r.bolge) : "İstanbul", district: r.district || (r.bolge ? undefined : r.district), neighborhood: r.neighborhood, precision: r.adresDuzeyi === "sokak" ? "street" : r.location?.precision, geo: typeof r.lat === "number" && typeof r.lng === "number" ? { lat: r.lat, lng: r.lng } : undefined },
   address: VERIFIED_ADDRESSES[r.slug]?.value ?? r.address,
   hours: r.openingHours,
   tags: r.cuisine,

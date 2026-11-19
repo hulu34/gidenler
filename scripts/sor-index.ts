@@ -5,10 +5,11 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { realEntities } from "../data/real";
 import { articles } from "../lib/seckisi";
+import { istanbulCatalogScope } from "../lib/catalogRegion";
 
 const list = articles(false);
 const flat = (v: unknown): string => (typeof v === "string" ? v : Array.isArray(v) ? v.map(flat).join(" ") : v && typeof v === "object" ? Object.entries(v as object).filter(([k]) => !["en", "url", "src", "sourceUrl", "href"].includes(k)).map(([, x]) => flat(x)).join(" ") : "");
-const out = realEntities.filter((e) => !e.isDemo).map((e) => {
+const out = realEntities.filter((e) => !e.isDemo && istanbulCatalogScope(e)).map((e) => {
   const f = `content/profiles/${e.slug}.json`;
   const p = existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : null;
   const items = (p?.menu?.sections ?? []).flatMap((s: { items?: Array<{ name: string; priceTry?: number }> }) => s.items ?? []) as Array<{ name: string; priceTry?: number }>;

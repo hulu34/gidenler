@@ -1,6 +1,6 @@
 # Kıbrıs araştırması — güncel Production üzerinde yerel inceleme
 
-Durum: **Şu nedenle bekliyor: bölge ve normal veri yolu kabulü tamamlanmadı.**
+Durum: **Tek MasaMoro fixture ile yerel normal veri yolu kabulü geçti. Uzak Preview, DB aktarımı veya yayın kabulü yok.**
 
 19 Kasım 2026. Production tabanı `9a2f2f482b65709e862397911438d99b06230e2c`; araştırma kaynağı PR #52 `29b9c9b74a32e5c320e9e1a507c2e2291c1563e4`. Bu çalışma ayrı yerel kopyadadır. Uzak dala gönderim, PR birleştirme, deploy, DB işlemi veya hesap/ortam ayarı yapılmadı.
 
@@ -23,38 +23,32 @@ Durum: **Şu nedenle bekliyor: bölge ve normal veri yolu kabulü tamamlanmadı.
 | MasaMoro | Önceki manifestin Stasandrou 2 / güney Lefkoşa kimliği fixture kaynağıdır. Telefon doğrulanmadığı için boş, koordinatlar bilinmiyor. Resmî sayfanın bu turdaki metin çıkarımı adresi göstermedi; 15 Kasım adres kanıtı 19 Kasım yeniden doğrulaması gibi sunulmaz. |
 | Stavri Kitchen | Önceki kaynak kaydı korunur; bu yerel tur güncel açık işletme kabulü vermez. |
 
-## MasaMoro normal-yol teşhisi
+## Yerel normal-yol düzeltmesi
 
-`data/arastirma/kibris/masamoro-fixture.json`: `alan=kibris`, `bolge=lefkosa`, `kesim=guney`. Manifest id `kibris/masamoro` korunur. Test slug/ref'i geçicidir; kalıcı kimlik/slug kararı değildir. Bilinmeyen koordinat ve telefon boş; sahte OSM kimliği veya İstanbul ilçesi yoktur.
+İlk incelemenin sekiz başarısız kapısı bu yerel geliştirmede giderildi. `scripts/kibris-pilot-test.mjs`, aynı kaynak fixture'ını normal ham katalog girişinde kullanır; gerçek `client-catalog.ts` ve `sor-index.ts` üreticilerini boş geçici klasörde çalıştırır; gerçek istemci yükleyicisi, arama, `getTopic` detail/route veri modeli ve gerçek VenueInfo bileşeni üzerinden kabul yapar. Sonradan indeks satırı eklenmez. Gerçek HTTP/tarayıcı testi değildir.
 
-`scripts/arastirma-kibris-normal-yol.mjs` kaynak fixture'ını yalnız bellekte ham katalog girişine ekler; değişmemiş gerçek `scripts/client-catalog.ts` üreticisini geçici boş klasörde çalıştırır ve çıktıyı gerçek arama/detail yükleyicisine verir. Arama indeksine sonradan satır enjekte etmez. Kalıcı katalog veya veritabanına yazmaz; geçici dosyaları sonunda kaldırır.
+- `RealVenueInput` bölgesel girişte null telefon/koordinatı bilinmiyor sayar ve normalleştirir. İstanbul validator'ının eski null/konum/ilçe kuralları korunur. Kıbrıs pilotu yalnız kaynaklı `A-konumsuz` işletme kaydı kabul eder; sayısal koordinat, 0,0, tek eksen, OSM kimliği ve sahte İstanbul ilçesi reddedilir.
+- YorumS `MekanBolgesi` alanları ve bölge kimlikleri temel alındı. Bu yerel sözleşmede kesim her zaman açıkça zorunlu: `alan=kibris`, `bolge=lefkosa`, `kesim=guney`. Bilinmeyen bölge, çelişen kesim ve ek özel alanlar reddedilir.
+- Ham kayıt → entity → gerçek istemci üreticisi → arama/detail boyunca bölge korunur. Şehir `Lefkoşa`; profil bilgi satırı ve başlık `Lefkoşa (güney) · Kıbrıs` gösterir. Bilinmeyen geometri pin/OSM atfı üretmez, pilot için yanlış İstanbul harita arama bağlantısı üretilmez.
+- Varsayılan pilot kapalıdır. Açmak için yalnız yerel `NODE_ENV=development` veya `test` ve `NEXT_PUBLIC_KIBRIS_PILOT=true` gerekir. `NODE_ENV=production` ya da `VERCEL_ENV=production` her durumda kapatır. Standard Vercel Preview üretim derlemesi de kapalıdır; bu sınır gevşetilmedi.
+- Açık yerel pilotta üretilmiş eski istemci artifact'ı Production'a verilse bile istemci yükleyicisi bölgesel kaydı filtreler. Pilot kapalıyken veya Production'da `getEntity`/`getTopic` yok; arama ve statik parametre kaynağına girmez.
+- Kimlik tekilliği normal kaynak birleştiricisinde sağlanır: aynı ref/slug ve aynı normalize içerik tek kayıt; çelişen içerik, başka ref/slug veya eski İstanbul kaydıyla çakışma hata verir, veri ezilmez. Bu gerçek DB replay testi değildir.
+- Pilot noindex'tir; kamu JSON-LD ve sitemap'e girmez. İstanbul/TR damgası basmak yerine pilotta yapılandırılmış veri hiç üretilmez. Ülke/para/saat dilimi alanı tahmin edilmez.
+- Google/Excel ve Sor üreticisi bölgesel kayıtları açıkça dışlar. Kaynak fixture yerelde açıkken bile Sor çıktısı byte düzeyinde aynı kalır. Günlük workflow/Excel geçmişi/yedek dosyaları değiştirilmedi.
+- Mevcut seed/append kodu bölgesel girdiyi DB yürütücüsüne dokunmadan reddeder (`regional_database_import_not_enabled`). Bu bir veri tabanı bölge migrasyonu değildir; hiçbir DB durumu değiştirilmedi.
 
-Mevcut normal yolun kabulü **başarısızdır**:
+## Kabul ve sınırlar
 
-1. JSON null koordinat `quality` hatası; bilinmeyen null'lar kaldırılınca boş İstanbul ilçesi `district` hatası verir.
-2. Entity dönüşümünde bölge kaybolur. Sunucu, UI üreticisi ve UI yükleyicisinde İstanbul varsayımları bulunur.
-3. Arama ve detail modeli Production/pilot kapalı durumda fixture'ı görünür kılar; gerçek bir pilot kapısı yoktur. Bu yalnız geçici test girdisidir, canlı sızıntı değildir.
-4. Kaynak birleştiricisi aynı işletme kimliği iki kez verilince iki satır tutar. Bu DB tekrar uygulama testi değildir; gerçek importer/DB tekrarı ayrıca doğrulanmalıdır.
-5. SEO İstanbul/TR üretir. Adres/ülke modeli kararlaştırılmadan yayınlanamaz.
+- Normal yol: **52/52** yerel kontrol geçti, DB çağrısı **0**. Kaynakların, İstanbul 892 entity içeriğinin, 857 aktif sayısının ve dört İstanbul arama sorgusunun tam sonuçlarının korunması sınandı.
+- Araştırma bütünlüğü **310/310**; bu altı açık restoran kabulü değildir.
+- Arama **49/49**: 892/892 kendi ad/ascii, 770/770 tek harf eksik. SEO **51/51**, ana sayfa **31/31**, Sor **322/322**; kategori ve dört zararlı host regresyonları geçti. AI sağlayıcıları bu paketlerde taklittir.
+- Güncel dosyaların typecheck/derleme sonucu teslim QA raporundadır. Mevcut kilitli bağımlılıklar kullanılır, temiz yeni kurulum iddiası yoktur.
+- HTTP, gerçek tarayıcı/mobil, gerçek AI, e-posta, RY/YY normal importer ve gerçek DB replay/rollback kabulü yapılmadı. Genel DB/medya/Google PGlite paketleri, herhangi bir DB durumu değiştirmeme sınırı nedeniyle çalıştırılmadı; eski hata sayıları yeni kabul diye sunulmaz.
 
-Geçen korumalar: eski 892 entity aynen kalır; dört İstanbul arama sorgusunun tam sonuçları aynıdır; bilinmeyen geometri pin üretmez; işletme ref ve ham kanıt listesi korunur; mevcut Google/Excel listesi değişmez. Son filtre işletme/koordinat kuralından gelir; açık bir Kıbrıs bölge filtresi henüz yoktur.
+Çalıştırma: `node scripts/kibris-pilot-test.mjs --report /private/tmp/pr52-yerel-kabul.json`. Araştırma: `TABAN=9a2f2f482b65709e862397911438d99b06230e2c node --import tsx scripts/arastirmakibristest.ts`. Katalog üreticileri `--check` ile mevcut 892 satırlık artifact'ları aynı bulmalıdır.
 
-## En küçük güvenli geliştirme ve Preview planı
+## Sonraki kapılar
 
-1. Gidenler normal katalog/seed/export sözleşmesinde bölge kimliği, null geometri normalleştirmesi, kalıcı ref/slug ve tekrarlanabilir işletme tekilliği açıkça tanımlanmalı. İstanbul validator gevşetilmemeli; Kıbrıs'a özel açık kapsam eklenmeli.
-2. Aynı bölge sunucu entity, istemci üreticisi, arama/detail ve SEO boyunca korunmalı. Pilot varsayılan kapalı olmalı; Production'da bayrak açık olsa bile ayrı yayın kararı olmadan kayıt görünmemeli. Kaynak kanıtı ham kayıtta korunmalı, gereksiz ayrıntı istemciye taşınmamalı.
-3. Google 06.00/08.30, Excel ve yedek kapsamı İstanbul olarak korunmalı. Koordinat eklenmesi veya işletme filtresinin ileride açılması Kıbrıs'ı otomatik kapsamına almamalı. Mevcut workflow'lar bu işte değişmez.
-4. YorumS importer bölge/null geometri/ilçe analizi mevcut sorumludadır; burada aynı adapter yazılmadı. Normal aktarım → RY → YY arama/detail ve tekrarlama kanıtı ayrı, projeler ve DB'ler ayrıdır.
-5. Oniro aktif paket dışında kalmalı. Diğer beşin güncel kaynak/faaliyet kabulü ve ürün kararları tamamlanmalı. Bu yerel araştırma commit'i yayın adayı değildir.
-6. Uygulama düzeltmelerinin son kesin SHA'sı oluşunca yalnız o kapsam için kullanıcıdan Preview izni istenmeli. Mevcut Neon dalı silinmemeli/sıfırlanmamalı; fiziksel Production ayrımı ve başlangıç sayıları doğrulanmalı. Mevcut kullanıcı/deneyimler korunmalı; yalnız onaylı fixture uygulanmalı, tekrar ve hedefli geri alma sınanmalı.
-7. Korumalı gerçek dağıtılmış Preview'da masaüstü/mobil arama → detail, bölge/ülke, haritasız görünüm, bayrak kapalı/Production gizliliği, Sor bölge izolasyonu, İstanbul regresyonu ve Google dışlama kabulü yapılmalı. READY/derleme smoke'u kabul sayılmaz. Gerekli bulut testi ve geçici erişimler son SHA için ayrıca onaylanmalı ve iş sonunda temizlenmeli.
-8. Bütün kabul kapıları geçtikten sonra Production için ayrı işleme özel açık onay alınmalı. Bu çalışma Preview veya Production yetkisi vermez.
+[YorumS için kısa sözleşme](KIBRIS-VERI-SOZLESMESI.md) bu yerel modelin aktarım sınırlarını tanımlar. RY/YY depoları ve importer'ları değiştirilmedi. İlk kapsam yalnız MasaMoro fixture'ıdır; diğer beş için güncel faaliyet kabulü verilmez. Oniro mevsimsel beklemede, Onar ve PR73 dışarıda kalır.
 
-## Testler ve tekrar çalıştırma
-
-Eski PR52 araştırma testi güncel Production tabanı üzerinde **306/306** geçti. Kaynak düzeltmeleri sonrası araştırma testi **310/310**. Bunlar araştırma bütünlüğüdür, entegrasyon kabulü değildir.
-
-- `TABAN=9a2f2f482b65709e862397911438d99b06230e2c node --import tsx scripts/arastirmakibristest.ts`
-- `node scripts/arastirma-kibris-normal-yol.mjs --report /private/tmp/pr52-normal-yol.json`
-
-İkinci komut teknik kabul başarısız olduğu için **1** çıkış kodu verir; hata gizlenmez. Rapor her kapıyı ayrı gösterir. Gerçek e-posta, hesap, DB, RY/YY importer, canlı AI ve tarayıcı/Preview kabulü bu testin kapsamında değildir. Yeni bağımlılık kurulmadı; mevcut kilitli bağımlılıklar kullanıldı.
+Bu yerel commit yayına veya açık Preview pilotuna hazır sürüm olarak sunulmaz. Gerçek Preview için uygulama ortamı/pilot kapısı ve gerekirse bölgesel DB sözleşmesi ayrı sınırlandırılmalı; son kesin SHA ve veri/erişim kapsamı üzerinden izin alınmalıdır. Mevcut kapalı model, Production güvenliğini korur ve standart Preview'da kendiliğinden açılmaz. Production için ayrıca işleme özel açık onay gerekir.

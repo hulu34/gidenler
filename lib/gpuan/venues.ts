@@ -1,6 +1,7 @@
 import venuesJson from "@/data/real/venues.json";
 import { realVenueRecords } from "@/data/real";
 import type { Venue } from "./core";
+import { istanbulCatalogScope } from "@/lib/catalogRegion";
 
 /* Excel'in mekân listesi: data/real/venues.json (kayıt düzeltmeleri uygulanmış hâliyle).
    İşletme beyanıyla eklenen kayıtlar (data/real/isletme.json) bu listeye kendiliğinden girmez; INCLUDE_BUSINESS ile açılır. */
@@ -9,6 +10,7 @@ const inJson = new Set((venuesJson as Array<{ slug: string }>).map((v) => v.slug
 
 export function sheetVenues(): Venue[] {
   return realVenueRecords
+    .filter(istanbulCatalogScope)
     .filter((r) => INCLUDE_BUSINESS || inJson.has(r.slug))
     .filter((r) => r.lat != null && r.lng != null)
     .map((r) => ({

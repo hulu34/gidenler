@@ -21,6 +21,7 @@ const legacyOf = (slug: string) => `ent.r.${slug}`;
 const ex = (col: string) => sql.raw(`excluded."${col}"`);
 
 export async function seedRealVenues(db: Db, records: RealVenueRecord[], now = new Date()) {
+  if (records.some(r => r.bolge !== undefined)) throw new Error("regional_database_import_not_enabled");
   if (!records.length) return { inserted: 0, updated: 0, total: 0 };
   /* Zorunlu alanı eksik tek kayıt bile varsa hiçbir şey yazılmaz. */
   const bad = records.map((r) => [r.slug, invalidRecord(r)] as const).filter(([, e]) => e);

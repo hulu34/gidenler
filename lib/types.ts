@@ -22,6 +22,7 @@
      · Regüle kategorilerde platform puan üretmez, hüküm kurmaz.
    ========================================================================== */
 
+import type { MekanBolgesi } from "./catalogRegion";
 export type ID = string;
 export type ISODate = string;
 
@@ -91,6 +92,8 @@ export interface MediaLink {
 }
 
 export interface Entity {
+  /** Regional pilot scope, absent on all existing Istanbul records. */
+  bolge?: MekanBolgesi;
   id: ID;
   slug: string;
   name: string;

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 
 import { entities } from "@/data/entities";
 import { getTopic } from "@/lib/api";
+import { regionLabel } from "@/lib/catalogRegion";
 import { pulseOf } from "@/lib/pulse";
 import { Pulse } from "@/components/viz/Pulse";
 import { PlaceSeal } from "@/components/viz/PlaceSeal";
@@ -83,6 +84,8 @@ export async function generateMetadata({
   const t = getTopic(slug);
   if (!t) return { title: "Bulunamadı" };
   const e = t.entity;
+  if (e.bolge) return { title: `${e.name} · ${regionLabel(e.bolge)} (yerel pilot)`,
+    description: venueDescription(e, null, false), robots: { index: false, follow: false } };
   /* Demo kayıtlar arama motorlarına kapalı; başlıkta puan ve "gerçek deneyim" iddiası yok. */
   if (e.isDemo) return { title: `${e.name} (demo kayıt)`, description: "Prototip için üretilmiş demo kayıt; gerçek bir işletme değildir.", robots: { index: false, follow: false } };
   if (e.isReal) {
@@ -178,7 +181,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const { photos: ownPhotos, hasCover } = profilePhotos(entity, livePhotos, registry);
   const seoCover = coverOf(entity, covers[entity.slug]);
   /* Koordinatı olmayan mekânda da Haritalar bağlantısı: ücretsiz arama adresi */
-  const mapsUrl = mapLinks(entity)?.googleMaps ?? (entity.isReal ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.location?.district ?? ""} İstanbul`)}` : undefined);
+  const mapsUrl = entity.bolge ? undefined : mapLinks(entity)?.googleMaps ?? (entity.isReal ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${entity.name} ${entity.location?.district ?? ""} İstanbul`)}` : undefined);
   const profileNav: TopicSection[] = rp ? [
     { id: "genel", label: "Genel bakış" },
     { id: "menu", label: "Menü" },
@@ -242,7 +245,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-3">
             <CategoryGlyph entity={entity} />
             <span className="text-ink-2">{entity.subcategory ?? category.label}</span>
-            {(district || (entity.location?.city && entity.location.city !== "İstanbul")) && (<><span aria-hidden>·</span><span>{[entity.location?.city !== "İstanbul" ? entity.location?.city : null, district, entity.location?.neighborhood && entity.location.neighborhood !== district ? entity.location.neighborhood : null].filter(Boolean).join(" · ")}</span></>)}
+            {(district || (entity.location?.city && entity.location.city !== "İstanbul")) && (<><span aria-hidden>·</span><span>{entity.bolge ? regionLabel(entity.bolge) : [entity.location?.city !== "İstanbul" ? entity.location?.city : null, district, entity.location?.neighborhood && entity.location.neighborhood !== district ? entity.location.neighborhood : null].filter(Boolean).join(" · ")}</span></>)}
             {PRICE(entity.priceLevel) && (<><span aria-hidden>·</span><span className="tnum">{PRICE(entity.priceLevel)}</span></>)}
             {entity.isDemo && <Badge tone="demo" className="ml-1">Demo kayıt</Badge>}
             {entity.isReal && <span className="ml-1 rounded-full border border-pos px-2 py-px text-[9.5px] tracking-[0.14em] text-pos-ink">Gerçek mekân</span>}

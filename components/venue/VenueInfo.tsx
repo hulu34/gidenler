@@ -1,6 +1,7 @@
 import { safeVenueWebsite } from "@/lib/venueLinkSafety";
 import type { Entity } from "@/lib/types";
 import { fmtBand, priceBandsOf } from "@/lib/venue";
+import { regionLabel } from "@/lib/catalogRegion";
 
 /* OSM opening_hours → okunur Türkçe (yalnızca gün/ibare çevirisi; saatler aynen). */
 const DAY: Record<string, string> = { Mo: "Pzt", Tu: "Sal", We: "Çar", Th: "Per", Fr: "Cum", Sa: "Cmt", Su: "Paz" };
@@ -21,6 +22,7 @@ export function VenueInfo({ entity }: { entity: Entity }) {
   const c = entity.contact;
   const rows: Array<[string, React.ReactNode]> = [];
   rows.push(["Tür", entity.subcategory ?? "—"]);
+  if (entity.bolge) rows.push(["Bölge", regionLabel(entity.bolge)]);
   if (entity.address) rows.push([entity.location?.precision === "street" ? "Adres (sokak düzeyi)" : "Adres", entity.address]);
   else if (entity.location?.district) rows.push(["Semt", [entity.location.neighborhood, entity.location.district].filter(Boolean).join(", ")]);
   if (entity.hours) rows.push(["Saatler", <span key="h" className="tnum">{entity.isReal ? trHours(entity.hours) : entity.hours}</span>]);

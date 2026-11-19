@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (DEMO_VISIBLE) return [];
   const list = articles(false);
   /* Kimlikte adresi olmayan mekânın adresi kaynaklı profilden gelebilir; sayfa da onu gösterir. */
-  const addressed = await Promise.all(realEntities.filter((e) => e.isReal && !e.isDemo).map(async (e) => (inVenueSitemap(e) || (await placeProfile(e.slug))?.address ? e : null)));
+  const addressed = await Promise.all(realEntities.filter((e) => e.isReal && !e.isDemo && e.bolge === undefined).map(async (e) => (inVenueSitemap(e) || (await placeProfile(e.slug))?.address ? e : null)));
   const pair = (slug?: string) => ({ tr: `${SITE}${hrefOf("tr", slug)}`, en: `${SITE}${hrefOf("en", slug)}` });
   return [
     ...STATIC.map((p) => ({ url: `${SITE}${p}` })),

@@ -10,6 +10,7 @@ const fields = ["name", "address", "phone", "website", "instagram", "openingHour
  * Kısmi hata bütün işlemi geri alır. Aynı slug/kimlik farklı içerikle varsa yayını durdurur.
  * baselineCount, bu paketin DIŞINDA korunması gereken mevcut mekân sayısıdır. */
 export async function appendRealVenues(x: Executor, records: RealVenueRecord[], baselineCount: number) {
+  if (records.some(r => r.bolge !== undefined)) throw new Error("regional_database_import_not_enabled");
   if (!records.length || !Number.isInteger(baselineCount) || baselineCount < 0) throw new Error("invalid_append_plan");
   if (new Set(records.map(r => r.slug)).size !== records.length || new Set(records.map(r => r.ref)).size !== records.length) throw new Error("duplicate_append_input");
   for (const r of records) if (invalidRecord(r) || r.image) throw new Error(`invalid_append_record:${r.slug}`);

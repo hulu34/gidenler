@@ -1,6 +1,7 @@
 import type { Entity } from "@/lib/types";
 import { SCORE_WAITING, fmtPublished } from "@/lib/score/publishedCards";
 import noAddressOk from "@/data/real/sitemap-adressiz.json";
+import { catalogVisible, regionLabel } from "./catalogRegion";
 
 /* ARAMA MOTORU KURALLARI — saf yardımcılar (veritabanı ve ağ yok).
    · Yalnız sayfada gerçekten bulunan bilgi söylenir ve işaretlenir. Google kaynaklı veri (puan, saat, fotoğraf) buraya girmez;
@@ -16,6 +17,7 @@ const joinTr = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -
 
 /** Meta açıklama: yalnız sayfada bulunan alanları sayar. */
 export function venueDescription(e: Entity, ps: PublishedScore | null, hasMenu: boolean) {
+  if (!catalogVisible(e)) return "";
   const where = [e.subcategory, e.location?.district].filter(Boolean).join(" · ");
   const has = [
     ...(hasMenu ? ["menü"] : []),
@@ -23,7 +25,7 @@ export function venueDescription(e: Entity, ps: PublishedScore | null, hasMenu: 
     ...(e.contact?.phone || e.contact?.website ? ["iletişim"] : []),
     ...(e.contact?.openingHours ?? e.hours ? ["çalışma saatleri"] : []),
   ];
-  const head = `${e.name}${where ? ` (${where}, İstanbul)` : ""}`;
+  const head = `${e.name}${where ? ` (${where}, ${e.bolge ? regionLabel(e.bolge) : "İstanbul"})` : ""}`;
   const score = ps?.score != null ? `Gidenler puanı ${fmtPublished(ps.score)}/10 (${ps.reviewCount} deneyim).` : SCORE_WAITING;
   return `${head}${has.length ? `: ${joinTr(has)} bilgisi` : ""}. ${score}`;
 }
@@ -65,6 +67,8 @@ export const absoluteImage = (src: string) => (src.startsWith("http") ? src : `$
 
 /** image yalnız gerçek, hak kaydı olan kapaktan gelir; Google görseli ve yer tutucu asla. */
 export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelated: boolean, image?: string | null) {
+  // Research pilot is noindex, with no public structured data/country assertion.
+  if (e.bolge !== undefined) return null;
   if (!e.isReal || e.isDemo || !e.address || !TYPE[e.categoryId]) return null;
   const geo = e.location?.precision === "street" ? undefined : e.location?.geo;
   const hours = openingHoursSpec(e.contact?.openingHours ?? e.hours);
@@ -89,4 +93,4 @@ export function venueJsonLd(e: Entity, ps: PublishedScore | null, ownershipRelat
 const NO_ADDRESS_OK = new Set<string>(noAddressOk);
 
 /** Site haritasına girecek mekân: gerçek, adresi var ya da kontrol edilmiş listede. Adres tamamlanınca kendiliğinden girer. */
-export const inVenueSitemap = (e: Entity) => !!e.isReal && !e.isDemo && (!!e.address || NO_ADDRESS_OK.has(e.slug));
+export const inVenueSitemap = (e: Entity) => e.bolge === undefined && !!e.isReal && !e.isDemo && (!!e.address || NO_ADDRESS_OK.has(e.slug));
