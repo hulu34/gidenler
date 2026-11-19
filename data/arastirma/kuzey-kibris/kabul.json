@@ -1,0 +1,158 @@
+{
+ "_aciklama": "Toplu kabul önerisi: yalnız 'dogrulandi' kayıtlar. Uygulanmadı. 'city' ve 'region' alanları mevcut RealVenueRecord şemasında yok; teknik plan KUZEY-KIBRIS-TEKNIK.md. 'precision: poi' mevcut şemada yok (address|building).",
+ "taban": "f4ebf2fe6304f1d83a959493cbca3668b65d5fe4",
+ "kayitSayisi": 5,
+ "hedefKosullu": {
+  "dogrudanTabana": {
+   "toplam": 884,
+   "aktif": 849,
+   "aktifRestoran": 724
+  },
+  "not_": "Sayılar yalnız bu paket uygulanırsa; İstanbul sayımına karıştırılmamalı, ayrı şehir olarak raporlanmalı"
+ },
+ "kayitlar": [
+  {
+   "ref": "isletme/fogo-steak-brasserie-bar-iskele-kibris",
+   "slug": "fogo-steak-brasserie-bar-iskele-kibris",
+   "name": "Fogo Steak & Brasserie & Bar",
+   "categoryId": "cat.restaurant",
+   "kind": "Steakhouse",
+   "district": "İskele",
+   "neighborhood": "Long Beach (Grand Sapphire Resort)",
+   "address": "Cevizli Mahallesi, Makenzi Sokak / Güven Sokak No:1 (Grand Sapphire Resort), İskele",
+   "sourceKind": "official_site",
+   "sourceUrl": "https://grandsapphireresort.com/en/restaurant/fogo-steak-and-brasserie-and-bar",
+   "importedAt": "2026-11-18",
+   "verifiedAt": "2026-11-18",
+   "confidence": "güçlü",
+   "verification": "Otel resmî sayfası (sokak + kapı) + cyprus-faq (2026-10, İskele) + OSM yapı kaydı (aynı ad, işletmeci bağlantısı). Sokak tek kaynakta; konum OSM'den.",
+   "city": "İskele",
+   "region": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele"
+   },
+   "lat": 35.25069,
+   "lng": 33.896563,
+   "location": {
+    "provider": "osm",
+    "ref": "way/1488499475",
+    "precision": "building"
+   },
+   "kaliteSinifi": "A"
+  },
+  {
+   "ref": "isletme/epic-burger-iskele-kibris",
+   "slug": "epic-burger-iskele-kibris",
+   "name": "Epic Burger İskele",
+   "categoryId": "cat.restaurant",
+   "kind": "Burger",
+   "district": "İskele",
+   "neighborhood": "Yeni İskele (Park Residence)",
+   "address": "Park Residence, Yeni İskele, İskele",
+   "sourceKind": "business",
+   "sourceUrl": "https://yemek.com/masterchef-yarismacilarinin-restoranlari/",
+   "importedAt": "2026-11-18",
+   "verifiedAt": "2026-11-18",
+   "confidence": "orta",
+   "verification": "İki bağımsız yayıncı (yemek.com 2026-07, cyprus-faq 2026-10) aynı İskele işletmesini anıyor (36 ay içinde iki editoryal = orta). Adres site adı düzeyinde; konum OSM düğümünden (2026-10 düzenlemesi).",
+   "city": "İskele",
+   "region": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele"
+   },
+   "lat": 35.262748,
+   "lng": 33.906865,
+   "location": {
+    "provider": "osm",
+    "ref": "node/14324323772",
+    "precision": "poi"
+   },
+   "kaliteSinifi": "A"
+  },
+  {
+   "ref": "isletme/niazis-restaurant-girne-kibris",
+   "slug": "niazis-restaurant-girne-kibris",
+   "name": "Niazi's Restaurant",
+   "categoryId": "cat.restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "district": "Girne",
+   "neighborhood": "Girne merkez",
+   "address": "Ziya Rızkı Caddesi No:3 (Sıdıka Ersoy Apt.), Girne",
+   "sourceKind": "official_site",
+   "sourceUrl": "https://niazis.com/branches/",
+   "importedAt": "2026-11-18",
+   "verifiedAt": "2026-11-18",
+   "confidence": "güçlü",
+   "verification": "Resmî şube sayfası + yemek.com (2025-12) aynı cadde; kapı no yemek.com'dan. cyprus-faq (2026-07) güncelliği destekliyor. PR #52 koşulu (şube eşleşmesi) şube sayfasıyla kapandı: Girne'deki 'original' kebap restoranı Ziya Rızkı Caddesi'nde.",
+   "city": "Girne",
+   "region": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne"
+   },
+   "kaliteSinifi": "A-konumsuz"
+  },
+  {
+   "ref": "isletme/silver-rocks-restaurant-girne-kibris",
+   "slug": "silver-rocks-restaurant-girne-kibris",
+   "name": "Silver Rocks Restaurant",
+   "categoryId": "cat.restaurant",
+   "kind": "Balık restoranı",
+   "district": "Girne",
+   "neighborhood": "Lapta",
+   "address": "Fevzi Çakmak Caddesi, Lapta, Girne",
+   "sourceKind": "official_site",
+   "sourceUrl": "https://silverrocksrestaurant.com/",
+   "importedAt": "2026-11-18",
+   "verifiedAt": "2026-11-18",
+   "confidence": "güçlü",
+   "verification": "Resmî site (kimlik, güncel menü) + yemek.com (2026-10, sokak) + OSM düğümü (aynı ad, Lapta kıyısı). Sokak tek kaynakta; konum OSM'den.",
+   "city": "Girne",
+   "region": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne"
+   },
+   "lat": 35.35205,
+   "lng": 33.164111,
+   "location": {
+    "provider": "osm",
+    "ref": "node/2172301342",
+    "precision": "poi"
+   },
+   "kaliteSinifi": "A"
+  },
+  {
+   "ref": "isletme/archway-restaurant-girne-kibris",
+   "slug": "archway-restaurant-girne-kibris",
+   "name": "Archway Restaurant",
+   "categoryId": "cat.restaurant",
+   "kind": "Geleneksel mutfak",
+   "district": "Girne",
+   "neighborhood": "Zeytinlik",
+   "address": "Dereboyu Sokak No:7, Zeytinlik, Girne",
+   "sourceKind": "official_site",
+   "sourceUrl": "https://archwaycyprus.com/",
+   "importedAt": "2026-11-18",
+   "verifiedAt": "2026-11-18",
+   "confidence": "güçlü",
+   "verification": "Resmî site (sokak + kapı) + cyprus-faq (2026-07/10, Girne) + OSM düğümü (check_date 2026-08-22, Zeytinlik). Sokak tek kaynakta; konum OSM'den.",
+   "city": "Girne",
+   "region": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne"
+   },
+   "lat": 35.331004,
+   "lng": 33.296492,
+   "location": {
+    "provider": "osm",
+    "ref": "node/2334714575",
+    "precision": "poi"
+   },
+   "kaliteSinifi": "A"
+  }
+ ]
+}

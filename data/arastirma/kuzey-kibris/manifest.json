@@ -1,0 +1,5957 @@
+{
+ "_aciklama": "Kuzey Kıbrıs toplu restoran araştırması (İskele → Girne → Lefkoşa). Araştırma manifestidir: kataloğa eklenmedi, canlıda sayılmaz. PR #52 (Güney Kıbrıs pilotu) değiştirilmedi.",
+ "kontrolTarihi": "2026-11-18",
+ "taban": {
+  "productionDal": "feature/investor-v1",
+  "sha": "f4ebf2fe6304f1d83a959493cbca3668b65d5fe4",
+  "toplam": 879,
+  "aktif": 844,
+  "aktifRestoran": 719
+ },
+ "bolgeModeli": {
+  "ada": "Kıbrıs",
+  "operasyonelBolge": "kuzey — Kıbrıs Türk yönetimindeki alan (yalnız operasyonel etiket; hukuki hüküm değildir)",
+  "ilceler": [
+   "Lefkoşa",
+   "Girne",
+   "İskele",
+   "Gazimağusa",
+   "Güzelyurt",
+   "Lefke"
+  ],
+  "kapsam": [
+   "İskele",
+   "Girne",
+   "Lefkoşa"
+  ],
+  "sehirAlani": "Gidenler şehir seçimi için ilçe adı kullanılır (İskele / Girne / Lefkoşa); Türkiye il-plaka modeli kullanılmaz",
+  "telefon": "+90 392 (sabit) / +90 533, 542, 548 (mobil) — kayıtlarda telefon saklanmaz",
+  "paraBirimi": "TRY (resmî); kayıtlarda fiyat yok",
+  "saatDilimi": "IANA 'Asia/Famagusta' (kuzey için ayrı bölge; 2017'den beri Asia/Nicosia ile aynı kurallar) — kayıtlarda saat yok",
+  "harita": "Koordinat yalnız OSM (ODbL) kaydından ve ilçe alanı içindeyse; Google kaynaklı konum yok",
+  "osmIlceAlanlari": {
+   "İskele": "relation/10090475",
+   "Girne": "relation/3264494",
+   "Lefkoşa": "relation/11974267"
+  }
+ },
+ "kanitStandardi": {
+  "dogrulandi": "Kimlik iki bağımsız kaynakta (işletmeci kaynağı + tarihli bağımsız editoryal ≤24 ay; ya da iki farklı yayıncıdan tarihli editoryal ≤36 ay = orta güven). Faaliyet: tarihli bağımsız kaynak ≤24 ay. Adres/konum: sokak düzeyinde adres en az bir kaynakta ve çelişkisiz + (ikinci kaynakta aynı sokak ya da aynı adlı OSM kaydının ilçe alanı içindeki koordinatı). Kapı farkı engel değil.",
+  "kosullu": "Kimlik ve faaliyet karşılanıyor; adres yer tarifi/köy düzeyinde, sokak çelişkisi, şube belirsizliği, tek kaynaklı adres ya da kategori kararı var. Kabul edilmiş sayılmaz.",
+  "inceleme": "Tek uygun kaynak, işletmeci kaynağı yalnız sosyal hesap, tarih eşiği dışı ya da kimlik belirsiz.",
+  "ret": "Kapanmış, restoran kapsamı dışı (bar, pub, otel gala programı) ya da başka kayıtla aynı.",
+  "kaynakSayilmayanlar": "Google puan/yorum/harita (plus code dâhil), toplayıcı siteler (tripaligner, wanderlog, airbnb, foursquare, joinpearl, enprimeurclub, mesprestiges, trip.com), toplu üretilmiş rehber metinleri (northcypruseducation.com), Instagram tek başına. Aynı yayıncının iki yazısı tek kaynak sayılır (cyprus-faq).",
+  "tarihNotu": "Bütün bağımsız tarihler yazı düzeyindedir (liste yazısı/okur oylaması/haber); mekâna özel ziyaret tarihi değildir. cyprus-faq tarihleri site haritasındaki son değişiklik tarihidir.",
+  "platformYolu": "Oturumdaki kullanıcı mesajı (18.11.2026) editoryal + güncel sipariş platformu eşleşmesine izin veriyor; kuzeyde erişilebilir bir sipariş platformu bulunamadı (Bitayka geri bildirim sitesine dönüşmüş; Wolt/Foody güneyde). Bu yolla kabul edilen kayıt yok."
+ },
+ "sayim": {
+  "İskele": {
+   "arastirilan": 27,
+   "dogrulanan": 2,
+   "incelemede": 23,
+   "kosullu": 1,
+   "inceleme": 22,
+   "reddedilen": 2
+  },
+  "Girne": {
+   "arastirilan": 53,
+   "dogrulanan": 3,
+   "incelemede": 44,
+   "kosullu": 5,
+   "inceleme": 39,
+   "reddedilen": 6
+  },
+  "Lefkoşa": {
+   "arastirilan": 20,
+   "dogrulanan": 0,
+   "incelemede": 20,
+   "kosullu": 0,
+   "inceleme": 20,
+   "reddedilen": 0
+  },
+  "TOPLAM": {
+   "arastirilan": 100,
+   "dogrulanan": 5,
+   "incelemede": 87,
+   "kosullu": 6,
+   "inceleme": 81,
+   "reddedilen": 8
+  }
+ },
+ "kayitlar": [
+  {
+   "id": "kuzey-kibris/fogo-steak-brasserie-bar-iskele-kibris",
+   "slugOnerisi": "fogo-steak-brasserie-bar-iskele-kibris",
+   "ad": "Fogo Steak & Brasserie & Bar",
+   "adVaryantlari": [
+    "Fogo Steak Bar",
+    "Fogo"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": "Long Beach (Grand Sapphire Resort)",
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Steakhouse"
+   },
+   "adres": {
+    "metin": "Cevizli Mahallesi, Makenzi Sokak / Güven Sokak No:1 (Grand Sapphire Resort), İskele",
+    "duzey": "sokak"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/1488499475",
+    "lat": 35.25069,
+    "lng": 33.896563,
+    "osmAd": "Fogo Steak & Brasserie & Bar",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-03-13",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ötüken",
+    "enYakinYerlesimKm": 2.8,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "kaynakli-koordinat"
+   },
+   "isletmeciKaynagi": {
+    "tur": "otel resmî restoran sayfası",
+    "url": "https://grandsapphireresort.com/en/restaurant/fogo-steak-and-brasserie-and-bar",
+    "adres": "Cevizli Mahallesi, Makenzi Street, Güven Street No:1, İskele",
+    "kontrol": "2026-11-18",
+    "not": "Sayfa restoranı adıyla ve aynı tesiste tanımlıyor; © 2024"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "İskele başlığı altında 'Fogo Steak Bar' (adres yok)",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "dogrulandi",
+   "guven": "güçlü",
+   "gerekce": "Otel resmî sayfası (sokak + kapı) + cyprus-faq (2026-10, İskele) + OSM yapı kaydı (aynı ad, işletmeci bağlantısı). Sokak tek kaynakta; konum OSM'den.",
+   "isaretler": [
+    "otel içi restoran: halka açıklık sayfada yazmıyor",
+    "bağımsız kaynak sokak vermiyor; konum OSM yapı kaydından"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/epic-burger-iskele-kibris",
+   "slugOnerisi": "epic-burger-iskele-kibris",
+   "ad": "Epic Burger İskele",
+   "adVaryantlari": [
+    "Epic Burger"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": "Yeni İskele (Park Residence)",
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Burger"
+   },
+   "adres": {
+    "metin": "Park Residence, Yeni İskele, İskele",
+    "duzey": "site-adi"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/14324323772",
+    "lat": 35.262748,
+    "lng": 33.906865,
+    "osmAd": "Epic Burger",
+    "osmTur": "fast_food",
+    "osmSonDuzenleme": "2026-10-27",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Bahçeler",
+    "enYakinYerlesimKm": 2.7,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "kaynakli-koordinat"
+   },
+   "isletmeciKaynagi": {
+    "tur": "yalnız sosyal hesap",
+    "url": "https://www.instagram.com/epicburgercyprus",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": "İşletmeci sitesi bulunamadı; sosyal hesap kaynak sayılmadı"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/masterchef-yarismacilarinin-restoranlari/",
+     "tarih": "2026-07-24",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "Epic Burger İskele, Park Residence, Yeni İskele; MasterChef yarışmacılarının işlettiği adres",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "İskele başlığı altında 'Epic Burger'",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com",
+    "yemek.com"
+   ],
+   "durum": "dogrulandi",
+   "guven": "orta",
+   "gerekce": "İki bağımsız yayıncı (yemek.com 2026-07, cyprus-faq 2026-10) aynı İskele işletmesini anıyor (36 ay içinde iki editoryal = orta). Adres site adı düzeyinde; konum OSM düğümünden (2026-10 düzenlemesi).",
+   "isaretler": [
+    "işletmeci kaynağı yok (orta güven)",
+    "Girne'deki 'Epic Burger Girne' ayrı şube; bu kayıtla birleştirilmedi"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/pera-mackenzie-iskele-kibris",
+   "slugOnerisi": "pera-mackenzie-iskele-kibris",
+   "ad": "Pera Mackenzie",
+   "adVaryantlari": [
+    "Pera Beach Club",
+    "Pera"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": "Long Beach",
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Akdeniz mutfağı"
+   },
+   "adres": {
+    "metin": "Long Beach sahili, Yeni İskele, İskele (yer tarifi)",
+    "duzey": "yer-tarifi"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/1488499480",
+    "lat": 35.248499,
+    "lng": 33.902973,
+    "osmAd": "Pera Mackenzie",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-10-14",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ötüken",
+    "enYakinYerlesimKm": 3.2,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site",
+    "url": "https://peramackenzie.com/",
+    "adres": "Yeni İskele / K.K.T.C.",
+    "kontrol": "2026-11-18",
+    "not": "Sitede 18–21 Kasım 2026 tarihli etkinlik takvimi; restoran + beach club + konser alanı"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/iskele-long-beach/",
+     "tarih": "2026-08-14",
+     "tarihTuru": "bölge yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "'Pera Beach Club' Long Beach'in güney kesiminde: plaj, restoran, bar",
+     "kontrol": "2026-11-18",
+     "yasAy": 3
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "kosullu",
+   "guven": null,
+   "gerekce": "Resmî site + cyprus-faq (2026-08) + OSM yapı kaydı. Koşul: adres yer tarifi; bağımsız kaynaktaki ad 'Pera Beach Club'; işletme ağırlıklı beach club/etkinlik alanı (kategori kararı).",
+   "isaretler": [
+    "yer tarifli adres (sahip kararı)",
+    "kategori: beach club + restoran",
+    "northcypruseducation.com (2026-05-27) toplu üretilmiş rehber metni; kaynak sayılmadı"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/courtyard-delicious-iskele-kibris",
+   "slugOnerisi": "courtyard-delicious-iskele-kibris",
+   "ad": "Courtyard Delicious (Courtyard Long Beach Holiday Resort)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/1122452090",
+    "lat": 35.256629,
+    "lng": 33.898011,
+    "osmAd": "Courtyard restobar",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2022-12-17",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Aygün",
+    "enYakinYerlesimKm": 3.2,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci kaynağı bulunamadı (otelin resmî sitesi erişilemedi); yalnız cyprus-faq + OSM",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/lucca-restaurant-iskele-kibris",
+   "slugOnerisi": "lucca-restaurant-iskele-kibris",
+   "ad": "Lucca Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/6545797871",
+    "lat": 35.261667,
+    "lng": 33.899776,
+    "osmAd": "Lucca resaurant",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2022-04-15",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "İskele",
+    "enYakinYerlesimKm": 2.7,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci kaynağı bulunamadı; yalnız cyprus-faq ('Luca') + OSM (2022)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/cafe-bakery-paris-iskele-kibris",
+   "slugOnerisi": "cafe-bakery-paris-iskele-kibris",
+   "ad": "Cafe-Bakery Paris",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kahvaltı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/9569249713",
+    "lat": 35.261163,
+    "lng": 33.902916,
+    "osmAd": "Cafe-Bakery Paris",
+    "osmTur": "cafe",
+    "osmSonDuzenleme": "2026-10-11",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "İskele",
+    "enYakinYerlesimKm": 2.9,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Kafe/fırın; işletmeci kaynağı yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/hilltop-bar-restaurant-iskele-kibris",
+   "slugOnerisi": "hilltop-bar-restaurant-iskele-kibris",
+   "ad": "Hilltop Bar & Restaurant (Şafaköy)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    },
+    {
+     "tur": "okur mektubu (blog)",
+     "yayinci": "cyprusscene",
+     "url": "https://cyprusscene.blogspot.com/2024/04/reader-mail.html",
+     "tarih": "2024-04",
+     "tarihTuru": "okur mektubu",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 31
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci kaynağı yok; cyprusscene okur mektubu 2024-04 (31 ay, okur içeriği)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/mia-bella-iskele-kibris",
+   "slugOnerisi": "mia-bella-iskele-kibris",
+   "ad": "Mia Bella",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Boğaz başlığı altında yalnız cyprus-faq; işletmeci ve konum kaynağı yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/seasons-restaurant-iskele-kibris",
+   "slugOnerisi": "seasons-restaurant-iskele-kibris",
+   "ad": "Seasons Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Boğaz başlığı altında yalnız cyprus-faq; işletmeci ve konum kaynağı yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/yannagis-restaurant-iskele-kibris",
+   "slugOnerisi": "yannagis-restaurant-iskele-kibris",
+   "ad": "Yannagis Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Geleneksel mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Karpaz başlığı altında yalnız cyprus-faq; köy ve işletmeci kaynağı yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/hemingways-resto-bar-iskele-kibris",
+   "slugOnerisi": "hemingways-resto-bar-iskele-kibris",
+   "ad": "Hemingway's Resto-Bar (Karpaz Gate Marina)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2288587773",
+    "lat": 35.557732,
+    "lng": 34.231519,
+    "osmAd": "Hemingways",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2013-05-04",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Sipahi",
+    "enYakinYerlesimKm": 1.8,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Marina sitesi 522 hatası verdi (aşılmadı); OSM kaydı 2013",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/lush-beach-club-iskele-kibris",
+   "slugOnerisi": "lush-beach-club-iskele-kibris",
+   "ad": "Lush Beach Club",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/1958641207",
+    "lat": 35.24704,
+    "lng": 33.903487,
+    "osmAd": "Lush beach bar",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2022-06-19",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ötüken",
+    "enYakinYerlesimKm": 3.2,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/iskele-long-beach/",
+     "tarih": "2026-08-14",
+     "tarihTuru": "bölge yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 3
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci kaynağı yok; OSM 2022",
+   "isaretler": [
+    "PR #52'deki 'Lush' (Larnaka, güney) ayrı işletme; birleştirilmedi"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil (güneydeki aynı adlı işletmeden ayrı)",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/mackenzie-iskele-kibris",
+   "slugOnerisi": "mackenzie-iskele-kibris",
+   "ad": "Mackenzie (Long Beach)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Akdeniz mutfağı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/1567034428",
+    "lat": 35.259605,
+    "lng": 33.910507,
+    "osmAd": "Mackenzi̇ Bay",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-10-10",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Bahçeler",
+    "enYakinYerlesimKm": 3.0,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/iskele-long-beach/",
+     "tarih": "2026-08-14",
+     "tarihTuru": "bölge yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 3
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq 'Mackenzie' ile OSM 'Mackenzi̇ Bay' aynı işletme mi belirsiz; Pera Mackenzie ile karışma riski; işletmeci kaynağı yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/komo-burger-iskele-kibris",
+   "slugOnerisi": "komo-burger-iskele-kibris",
+   "ad": "Komo Burger",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Burger"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/14322067928",
+    "lat": 35.250459,
+    "lng": 33.900293,
+    "osmAd": "Komo Burger",
+    "osmTur": "fast_food",
+    "osmSonDuzenleme": "2026-10-26",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ötüken",
+    "enYakinYerlesimKm": 3.1,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site",
+    "url": "https://komoburgercyp.com/",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": ""
+   },
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci sitesi (No:18 Duygu Sokak, Long Beach; © 2026) + OSM; tarihli bağımsız kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/hacinin-yeri-kebab-house-iskele-kibris",
+   "slugOnerisi": "hacinin-yeri-kebab-house-iskele-kibris",
+   "ad": "Hacı'nın Yeri Kebab House",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/14324323773",
+    "lat": 35.26337,
+    "lng": 33.906228,
+    "osmAd": "Hacı'nın Yeri Kebab House",
+    "osmTur": "fast_food",
+    "osmSonDuzenleme": "2026-10-27",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Bahçeler",
+    "enYakinYerlesimKm": 2.6,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site",
+    "url": "https://hacininyeri.com/",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": ""
+   },
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci sitesi (Sahil yolu, Yeni İskele) + OSM; tarihli bağımsız kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/lokkum-restaurant-iskele-kibris",
+   "slugOnerisi": "lokkum-restaurant-iskele-kibris",
+   "ad": "Lokkum Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/1573501429",
+    "lat": 35.278506,
+    "lng": 33.919584,
+    "osmAd": "Lokkum",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-10-30",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Bahçeler",
+    "enYakinYerlesimKm": 1.1,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site",
+    "url": "https://lokkum.net/",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": ""
+   },
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci sitesi adres vermiyor; tarihli bağımsız kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/livana-hotel-restaurant-iskele-kibris",
+   "slugOnerisi": "livana-hotel-restaurant-iskele-kibris",
+   "ad": "Livana Hotel Restaurant (Dipkarpaz)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2083226916",
+    "lat": 35.600055,
+    "lng": 34.43512,
+    "osmAd": "Livana Hotel",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2025-11-28",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Polatpaşa",
+    "enYakinYerlesimKm": 4.1,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site",
+    "url": "https://www.livanahotel.com/",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": ""
+   },
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Otel sitesi (Karpaz Milli Parkı, Dipkarpaz; © 2019); tarihli bağımsız kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/big-sand-beach-restaurant-iskele-kibris",
+   "slugOnerisi": "big-sand-beach-restaurant-iskele-kibris",
+   "ad": "Big Sand Beach Restaurant (Karpaz)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2084768180",
+    "lat": 35.644885,
+    "lng": 34.553667,
+    "osmAd": "Big Sand Beach Reasturant & Bungalows",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2012-12-27",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ersinpaşa",
+    "enYakinYerlesimKm": 15.5,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site",
+    "url": "http://www.bigsandbeach.com/",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": ""
+   },
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci sitesi (© 2026) adres vermiyor; OSM 2012; bağımsız kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/caleo-fine-dining-iskele-kibris",
+   "slugOnerisi": "caleo-fine-dining-iskele-kibris",
+   "ad": "Caleo Fine Dining",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/9569248595",
+    "lat": 35.262737,
+    "lng": 33.901324,
+    "osmAd": "Caleo fine dining",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-10-10",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "İskele",
+    "enYakinYerlesimKm": 2.7,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız OSM (2026-10); işletmeci ve bağımsız kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/petek-pastanesi-iskele-kibris",
+   "slugOnerisi": "petek-pastanesi-iskele-kibris",
+   "ad": "Petek Pastanesi (İskele)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/5731107878",
+    "lat": 35.281806,
+    "lng": 33.922401,
+    "osmAd": "Petek Pastanesi",
+    "osmTur": "cafe",
+    "osmSonDuzenleme": "2018-06-30",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Bahçeler",
+    "enYakinYerlesimKm": 1.0,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprusscene.com",
+     "url": "https://cyprusscene.com/2024/01/05/review-of-petek-patisserie-in-iskele/",
+     "tarih": "2024-01-05",
+     "tarihTuru": "eleştiri (yayın)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 34
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprusscene 2024-01 (34 ay); pastane; tazelik eşiği dışında",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/iskele-balik-evi-iskele-kibris",
+   "slugOnerisi": "iskele-balik-evi-iskele-kibris",
+   "ad": "İskele Balık Evi (Boğaz)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/5556461021",
+    "lat": 35.289015,
+    "lng": 33.931324,
+    "osmAd": "İskele Balik Evı",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2018-04-16",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Bahçeler",
+    "enYakinYerlesimKm": 1.7,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız OSM (2018) ve dizin sayfası; bağımsız editoryal yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/kemalin-yeri-iskele-kibris",
+   "slugOnerisi": "kemalin-yeri-iskele-kibris",
+   "ad": "Kemalin Yeri (Boğaz)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/1958641101",
+    "lat": 35.313033,
+    "lng": 33.952088,
+    "osmAd": "Kemalin Yeri",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2012-10-11",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Boğaz",
+    "enYakinYerlesimKm": 0.3,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız OSM (2012) ve toplayıcı siteler",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/kiyi-restaurant-iskele-kibris",
+   "slugOnerisi": "kiyi-restaurant-iskele-kibris",
+   "ad": "Kıyı Restaurant (Boğaz)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/435917830",
+    "lat": 35.306606,
+    "lng": 33.945179,
+    "osmAd": "Kıyı",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2019-12-26",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Boğaz",
+    "enYakinYerlesimKm": 1.1,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız OSM (2019) ve toplayıcı siteler",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/alevkayali-restaurant-iskele-kibris",
+   "slugOnerisi": "alevkayali-restaurant-iskele-kibris",
+   "ad": "Alevkayalı Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2080553179",
+    "lat": 35.569953,
+    "lng": 34.261014,
+    "osmAd": "Alevkayali Restaurant",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2012-12-23",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Sipahi",
+    "enYakinYerlesimKm": 4.5,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "OSM (2012) + Lonely Planet (tarihsiz)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/pisces-and-spices-iskele-kibris",
+   "slugOnerisi": "pisces-and-spices-iskele-kibris",
+   "ad": "Pisces and Spices (Boğaz limanı)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": null,
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprusscene.com",
+     "url": "https://cyprusscene.com/2020/08/31/pisces-and-spices-so-much-more-than-just-a-cute-name/",
+     "tarih": "2020-08-31",
+     "tarihTuru": "tanıtım (yayın)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 75
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprusscene 2020 (75 ay)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/kaya-artemis-resort-iskele-kibris",
+   "slugOnerisi": "kaya-artemis-resort-iskele-kibris",
+   "ad": "Kaya Artemis Resort (gala programı)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": "Bafra Turizm Bölgesi",
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": null,
+    "kind": null
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "tarih": "2025-12-25",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "otel gala programı",
+     "kontrol": "2026-11-18",
+     "yasAy": 11
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "ret",
+   "guven": null,
+   "gerekce": "yemek.com yılbaşı yazısında otel gala programı olarak geçiyor; restoran kaydı değil (otel içi à la carte restoranlar misafire özel)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/concorde-luxury-resort-iskele-kibris",
+   "slugOnerisi": "concorde-luxury-resort-iskele-kibris",
+   "ad": "Concorde Luxury Resort (gala programı)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "İskele",
+    "sehir": "İskele",
+    "cografiBolge": "Mesarya kıyısı ve Karpaz yarımadası (doğu kıyı)",
+    "yerlesim": "Bafra Turizm Bölgesi",
+    "yerelAdlar": "İskele / Trikomo"
+   },
+   "kategori": {
+    "categoryId": null,
+    "kind": null
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "tarih": "2025-12-25",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "otel gala programı",
+     "kontrol": "2026-11-18",
+     "yasAy": 11
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "ret",
+   "guven": null,
+   "gerekce": "yemek.com yılbaşı yazısında otel gala programı olarak geçiyor; restoran kaydı değil",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/niazis-restaurant-girne-kibris",
+   "slugOnerisi": "niazis-restaurant-girne-kibris",
+   "ad": "Niazi's Restaurant",
+   "adVaryantlari": [
+    "Niazi's",
+    "Niazis"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Girne merkez",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı"
+   },
+   "adres": {
+    "metin": "Ziya Rızkı Caddesi No:3 (Sıdıka Ersoy Apt.), Girne",
+    "duzey": "sokak"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": {
+    "tur": "resmî şube sayfası",
+    "url": "https://niazis.com/branches/",
+    "adres": "Ziya Rızkı Str. Sıdıka Ersoy Apt. Kyrenia",
+    "kontrol": "2026-11-18",
+    "not": "'Kyrenia — the original Niazi's'; karşıdaki balık restoranı (Kordonboyu) ve Lefkoşa/Mağusa şubeleri ayrı"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "tarih": "2025-12-25",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "Niazi's Restaurant, Ziya Rızkı Caddesi No:3, Girne Merkez",
+     "kontrol": "2026-11-18",
+     "yasAy": 11
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Niazi's — imza kebaplarıyla bilinen Girne klasiği",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "okur oylamasında 7.",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com",
+    "yemek.com"
+   ],
+   "durum": "dogrulandi",
+   "guven": "güçlü",
+   "gerekce": "Resmî şube sayfası + yemek.com (2025-12) aynı cadde; kapı no yemek.com'dan. cyprus-faq (2026-07) güncelliği destekliyor. PR #52 koşulu (şube eşleşmesi) şube sayfasıyla kapandı: Girne'deki 'original' kebap restoranı Ziya Rızkı Caddesi'nde.",
+   "isaretler": [
+    "koordinat yok (A-konumsuz): OSM'deki 'Niazi's Take Away' ayrı birim, kullanılmadı",
+    "kapı no tek kaynakta (kapı kuralı: engel değil)"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": "kibris/niazi-s-restaurant-girne",
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/silver-rocks-restaurant-girne-kibris",
+   "slugOnerisi": "silver-rocks-restaurant-girne-kibris",
+   "ad": "Silver Rocks Restaurant",
+   "adVaryantlari": [
+    "Silver Rocks"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Lapta",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": "Fevzi Çakmak Caddesi, Lapta, Girne",
+    "duzey": "sokak"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2172301342",
+    "lat": 35.35205,
+    "lng": 33.164111,
+    "osmAd": "Silver Rocks (with pool & sea access)",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2013-02-24",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Tınaztepe",
+    "enYakinYerlesimKm": 0.6,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "kaynakli-koordinat"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site (menü)",
+    "url": "https://silverrocksrestaurant.com/",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": "Restoran, kafe ve havuz menüleri yayında; adres yok"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "tarih": "2026-10-07",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "Silver Rocks Restaurant, Fevzi Çakmak Caddesi, Lapta, Girne",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "dogrulandi",
+   "guven": "güçlü",
+   "gerekce": "Resmî site (kimlik, güncel menü) + yemek.com (2026-10, sokak) + OSM düğümü (aynı ad, Lapta kıyısı). Sokak tek kaynakta; konum OSM'den.",
+   "isaretler": [
+    "OSM düğümü 2013'ten; konum yerinde/harita kontrolü önerilir",
+    "kapı no yok"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": "kibris/silver-rocks-restaurant",
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/archway-restaurant-girne-kibris",
+   "slugOnerisi": "archway-restaurant-girne-kibris",
+   "ad": "Archway Restaurant",
+   "adVaryantlari": [
+    "Archway"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Zeytinlik",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Geleneksel mutfak"
+   },
+   "adres": {
+    "metin": "Dereboyu Sokak No:7, Zeytinlik, Girne",
+    "duzey": "sokak"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2334714575",
+    "lat": 35.331004,
+    "lng": 33.296492,
+    "osmAd": "Archway",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-09-29",
+    "osmCheckDate": "2026-08-22",
+    "enYakinYerlesim": "Zeytinlik",
+    "enYakinYerlesimKm": 0.5,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "kaynakli-koordinat"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site",
+    "url": "https://archwaycyprus.com/",
+    "adres": "Dereboyu sokak No: 7 Zeytinlik, Girne",
+    "kontrol": "2026-11-18",
+    "not": "© 2025; Kıbrıs geleneksel mutfağı"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Archway Restaurant — geleneksel Kıbrıs restoranı (Girne listesi)",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Kyrenia başlığı altında",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "dogrulandi",
+   "guven": "güçlü",
+   "gerekce": "Resmî site (sokak + kapı) + cyprus-faq (2026-07/10, Girne) + OSM düğümü (check_date 2026-08-22, Zeytinlik). Sokak tek kaynakta; konum OSM'den.",
+   "isaretler": [
+    "yemek.com yılbaşı yazısı (2025-12) 'Archway Restaurant'ı Lefkoşa Surlariçi Asmaaltı Sokak'ta veriyor: ayrı işletme ya da hata; o satır Lefkoşa'da inceleme olarak ayrı tutuldu",
+    "bağımsız kaynak sokak vermiyor"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/calamari-restaurant-girne-kibris",
+   "slugOnerisi": "calamari-restaurant-girne-kibris",
+   "ad": "Calamari Restaurant",
+   "adVaryantlari": [
+    "Calamari"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Lapta",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": "Lapta Oteller Bölgesi, Hacı Ali Hotel yanı, Lapta, Girne (yer tarifi)",
+    "duzey": "yer-tarifi"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/1809108170",
+    "lat": 35.350753,
+    "lng": 33.175932,
+    "osmAd": "Calamari",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2012-08-10",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Türk Mahallesi",
+    "enYakinYerlesimKm": 0.8,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site",
+    "url": "https://calamarirestaurant.com/",
+    "adres": "Lapta Oteller Bölgesi, Hacı Ali Hotel yanı",
+    "kontrol": "2026-11-18",
+    "not": "JSON-LD adres"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "tarih": "2026-10-07",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "aynı yer tarifi",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Lapta'daki deniz ürünleri restoranı",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com",
+    "yemek.com"
+   ],
+   "durum": "kosullu",
+   "guven": null,
+   "gerekce": "Resmî site + yemek.com (2026-10) + cyprus-faq (2026-07) aynı yer tarifini ve köyü veriyor; OSM düğümü konum önerisi. Koşul: yer tarifli adres kabulü (PR #52'den açık sahip kararı).",
+   "isaretler": [
+    "yer tarifli adres",
+    "OSM düğümü 2012'den: konum önerisi, doğrulanmış değil"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": "kibris/calamari-restaurant",
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/bellapais-gardens-restaurant-girne-kibris",
+   "slugOnerisi": "bellapais-gardens-restaurant-girne-kibris",
+   "ad": "Bellapais Gardens Restaurant",
+   "adVaryantlari": [
+    "Bellapais Gardens"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Beylerbeyi (Bellapais)",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Akdeniz mutfağı"
+   },
+   "adres": {
+    "metin": "Beylerbeyi (Bellapais), Girne — sokak çelişkili",
+    "duzey": "yerlesim"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": {
+    "tur": "otel + restoran resmî sitesi",
+    "url": "https://www.bellapaisgardens.com/",
+    "adres": "Crusader Road, Bellapais",
+    "kontrol": "2026-11-18",
+    "not": "© 2024"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "tarih": "2026-10-07",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "Şehit Fuat Niyazi Sokak, Beylerbeyi",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Bellapais'teki butik otel restoranı",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız rehber",
+     "yayinci": "Petit Futé",
+     "url": "https://petitfute.com/v39631-bellapais-beylerbeyi/c1165-restaurants/c1031-cuisines-du-monde",
+     "tarih": "2026",
+     "tarihTuru": "rehber listesi (yıl); 18.11'de 403 verdi, PR #52 okumasından",
+     "adresVerir": true,
+     "mekanBilgisi": "Şehit Fuat Niyazi Sokak",
+     "kontrol": "2026-11-18",
+     "yasAy": null
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com",
+    "yemek.com"
+   ],
+   "durum": "kosullu",
+   "guven": null,
+   "gerekce": "Kimlik ve faaliyet güçlü (resmî + iki bağımsız yayıncı). Koşul: resmî sitede 'Crusader Road', bağımsız kaynaklarda 'Şehit Fuat Niyazi Sokak' — aynı yolun iki adı olduğu kanıtlanmadı; koordinat yok.",
+   "isaretler": [
+    "sokak adı çelişkisi"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": "kibris/bellapais-gardens-restaurant",
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/peris-fish-restaurant-girne-kibris",
+   "slugOnerisi": "peris-fish-restaurant-girne-kibris",
+   "ad": "Peri's Fish Restaurant",
+   "adVaryantlari": [
+    "Peri's"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Karaoğlanoğlu",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": "Ömer Kurt Sokak No:17, Karaoğlanoğlu, Girne",
+    "duzey": "sokak"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": {
+    "tur": "alan adı satışta",
+    "url": "https://perisrestaurant.com/",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": "Alan adı satılık sayfasına yönleniyor; işletmeci kaynağı yok"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "tarih": "2026-10-07",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "Ömer Kurt Sokak No:17, Karaoğlanoğlu",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Peri's Fish Restaurant (adres yok)",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com",
+    "yemek.com"
+   ],
+   "durum": "kosullu",
+   "guven": null,
+   "gerekce": "İki bağımsız yayıncı (yemek.com 2026-10, cyprus-faq 2026-07) = orta. Koşul: OSM'de 'Peri's Liman' (Girne limanı) ayrı şube; cyprus-faq hangi şubeyi andığını yazmıyor; adres tek kaynakta.",
+   "isaretler": [
+    "şube belirsiz (Karaoğlanoğlu / Liman)",
+    "işletmeci alan adı satışta"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/de-niros-bistro-cafe-girne-kibris",
+   "slugOnerisi": "de-niros-bistro-cafe-girne-kibris",
+   "ad": "De Niro's Bistro Cafe",
+   "adVaryantlari": [
+    "De Niro's",
+    "Deniro's"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Girne merkez (Park AVM)",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": "Park AVM, Ziya Rızkı Caddesi, Girne",
+    "duzey": "sokak"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": {
+    "tur": "işletmecinin komisyonsuz sipariş sayfası",
+    "url": "https://denirospaket.dijital.menu/",
+    "adres": "Park Avm, Ziya Rızkı Cd, Girne 99300",
+    "kontrol": "2026-11-18",
+    "not": "cyprus-faq'ın bağladığı sayfa"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "De Niro's — Avrupa ve Türk mutfağı",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Kyrenia başlığı altında",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "kosullu",
+   "guven": null,
+   "gerekce": "İşletmeci sipariş sayfası (sokak) + cyprus-faq (2026-07/10). Koşul: adres tek kaynakta, koordinat yok; işletme 'bistro cafe' (kategori kararı).",
+   "isaretler": [
+    "adres tek kaynakta",
+    "kategori: bistro/kafe"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/gillham-tapas-wine-bar-girne-kibris",
+   "slugOnerisi": "gillham-tapas-wine-bar-girne-kibris",
+   "ad": "Gillham Tapas & Wine Bar (Gillham Vineyard Hotel)",
+   "adVaryantlari": [
+    "Gillham"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Ilgaz",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Akdeniz mutfağı"
+   },
+   "adres": {
+    "metin": "Gillham Vineyard Hotel, Ilgaz, Girne (yer tarifi)",
+    "duzey": "yerlesim"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/7928727185",
+    "lat": 35.324354,
+    "lng": 33.220057,
+    "osmAd": "Gillham Wineyard",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2020-12-23",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ilgaz",
+    "enYakinYerlesimKm": 0.1,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "otel resmî sitesi",
+    "url": "https://gillhamvineyard.com/contact-us/",
+    "adres": "Gillham Vineyard Hotel, Ilgaz, Kyrenia",
+    "kontrol": "2026-11-18",
+    "not": "Otelde tapas bar ve şef restoranı"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Gillham Tapas & Wine Bar",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "kosullu",
+   "guven": null,
+   "gerekce": "Otel resmî sitesi + cyprus-faq (2026-07) + OSM. Koşul: adres köy düzeyinde; şarap barı mı restoran mı (kategori); OSM adı 'Gillham Wineyard'.",
+   "isaretler": [
+    "yer tarifli adres",
+    "kategori: şarap barı / restoran"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/kybele-restaurant-girne-kibris",
+   "slugOnerisi": "kybele-restaurant-girne-kibris",
+   "ad": "Kybele Restaurant",
+   "adVaryantlari": [
+    "Kybele"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Beylerbeyi (Bellapais)",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Steakhouse"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yerlesim"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2147122525",
+    "lat": 35.307546,
+    "lng": 33.354931,
+    "osmAd": "Kybele",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2013-02-08",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Beylerbeyi",
+    "enYakinYerlesimKm": 0.1,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": {
+    "tur": "resmî site (eski)",
+    "url": "https://www.kybele.biz/index.php/en/",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": "Site © 2015; adres metni yok"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "Bellapais Manastırı yakınında, biftekleriyle bilinen restoran",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "İşletmeci sitesi güncel değil (© 2015), adres yok; OSM kaydı 2013. Tek güncel kaynak cyprus-faq.",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/zephyros-balik-restorani-girne-kibris",
+   "slugOnerisi": "zephyros-balik-restorani-girne-kibris",
+   "ad": "Zephyros Balık Restoranı (Merit Crystal Cove)",
+   "adVaryantlari": [
+    "Zephyros"
+   ],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": "Alsancak",
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": {
+    "tur": "otel resmî sitesi",
+    "url": "https://www.merithotels.com/en/merit-crystal-cove-hotel",
+    "adres": null,
+    "kontrol": "2026-11-18",
+    "not": "Otelin resmî restoran listesinde 'Lambusa Fish Restaurant' var, 'Zephyros' yok"
+   },
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (haber)",
+     "yayinci": "sabah.com.tr",
+     "url": "https://www.sabah.com.tr/magazin/kibrista-tarih-ve-lezzet-bulustu-7691785",
+     "tarih": "2026-10-31",
+     "tarihTuru": "haber (yayın)",
+     "adresVerir": false,
+     "mekanBilgisi": "Merit Crystal Cove'un Zephyros Balık Restoranı; dokuz aylık yenilemeden sonra yeniden açılış",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "sabah.com.tr"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Ad çelişkisi: haber (2026-10-31) 'Zephyros', otelin resmî sayfası 'Lambusa'. Yeniden adlandırma kanıtı yok.",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/salut-marin-fish-meze-restaurant-girne-kibris",
+   "slugOnerisi": "salut-marin-fish-meze-restaurant-girne-kibris",
+   "ad": "Salut Marin Fish & Meze Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "tarih": "2026-10-07",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "adresli kayıt",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız yemek.com (2026-10; 20 Temmuz Kordonboyu Cd. No:118, Eski Liman); işletmeci sitesi yok (PR #52 ile aynı)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": "kibris/salut-marin-fish-meze-restaurant",
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/lagoon-fish-restaurant-girne-kibris",
+   "slugOnerisi": "lagoon-fish-restaurant-girne-kibris",
+   "ad": "Lagoon Fish Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/3202897256",
+    "lat": 35.341008,
+    "lng": 33.315395,
+    "osmAd": "Lagoon",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-09-28",
+    "osmCheckDate": "2026-08-13",
+    "enYakinYerlesim": "Aşağı Girne",
+    "enYakinYerlesimKm": 0.3,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "tarih": "2026-10-07",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "adresli kayıt",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com (2026-10; Turgut Tahsin Sk. No:49-50) + OSM; işletmeci sitesi ve ikinci bağımsız kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": "kibris/lagoon-fish-restaurant",
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/grida-balik-restaurant-girne-kibris",
+   "slugOnerisi": "grida-balik-restaurant-girne-kibris",
+   "ad": "Grida Balık Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/483051958",
+    "lat": 35.329945,
+    "lng": 33.36456,
+    "osmAd": "Grida Balık - Fish Restaurant",
+    "osmTur": "cafe",
+    "osmSonDuzenleme": "2024-05-14",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ozanköy",
+    "enYakinYerlesimKm": 1.5,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/girnenin-en-iyi-balik-restoranlari/",
+     "tarih": "2026-10-07",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "adresli kayıt",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com (2026-10; Hazreti Ömer Cd. No:20/1, Çatalköy) + OSM (kafe etiketi); işletmeci ve ikinci bağımsız kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/alta-marea-girne-kibris",
+   "slugOnerisi": "alta-marea-girne-kibris",
+   "ad": "Alta Marea",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Akdeniz mutfağı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq + Instagram (sosyal hesap kaynak sayılmadı)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/epic-burger-girne-kibris",
+   "slugOnerisi": "epic-burger-girne-kibris",
+   "ad": "Epic Burger Girne",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Burger"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq + Instagram; İskele şubesinden ayrı",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/bond-gastro-pub-girne-kibris",
+   "slugOnerisi": "bond-gastro-pub-girne-kibris",
+   "ad": "Bond Gastro Pub",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq + Instagram; gastropub (kategori)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/take-eat-easy-girne-kibris",
+   "slugOnerisi": "take-eat-easy-girne-kibris",
+   "ad": "Take Eat Easy",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq + Instagram",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/da-vinci-irina-girne-kibris",
+   "slugOnerisi": "da-vinci-irina-girne-kibris",
+   "ad": "Da Vinci Irina",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Resmî site Cloudflare doğrulaması istedi (aşılmadı); yalnız cyprus-faq",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/the-house-lounge-bar-restaurant-girne-kibris",
+   "slugOnerisi": "the-house-lounge-bar-restaurant-girne-kibris",
+   "ad": "The House Lounge Bar & Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2152554558",
+    "lat": 35.338965,
+    "lng": 33.321741,
+    "osmAd": "The House;Yukarı Girne Muhtarlığı",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-09-08",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Yukarı Girne Eski Türk",
+    "enYakinYerlesimKm": 0.1,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq + OSM; işletmeci kaynağı yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/basilic-girne-kibris",
+   "slugOnerisi": "basilic-girne-kibris",
+   "ad": "Basilic",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq + Instagram",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/driftwood-girne-kibris",
+   "slugOnerisi": "driftwood-girne-kibris",
+   "ad": "Driftwood (Lapta)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2327112037",
+    "lat": 35.351264,
+    "lng": 33.16978,
+    "osmAd": "Driftwood",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-11-01",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Türk Mahallesi",
+    "enYakinYerlesimKm": 0.8,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprusscene.com",
+     "url": "https://cyprusscene.com/2024/01/10/review-of-driftwood-bar-and-restaurant-in-lapta/",
+     "tarih": "2024-01-10",
+     "tarihTuru": "eleştiri (yayın)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 34
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq (2026-07) + cyprusscene (2024-01) + OSM (2026-11); işletmeci kaynağı yalnız Instagram — iki bağımsız yayıncı var ama cyprusscene 34 ay (eşik dışı)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/kibet-steak-house-girne-kibris",
+   "slugOnerisi": "kibet-steak-house-girne-kibris",
+   "ad": "Kıbet Steak House",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Steakhouse"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/604694608",
+    "lat": 35.333624,
+    "lng": 33.333331,
+    "osmAd": "Kibet",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2018-07-03",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Karakum",
+    "enYakinYerlesimKm": 0.8,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq + Instagram + OSM (2018)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/turan-restaurant-girne-kibris",
+   "slugOnerisi": "turan-restaurant-girne-kibris",
+   "ad": "Turan Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Dünya mutfağı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq + Instagram; turanrestaurant.com İstanbul'daki başka işletme",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/mano-girne-kibris",
+   "slugOnerisi": "mano-girne-kibris",
+   "ad": "Mano",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Asya mutfağı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq + Instagram",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/chinese-house-girne-kibris",
+   "slugOnerisi": "chinese-house-girne-kibris",
+   "ad": "Chinese House",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Asya mutfağı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Resmî site (© 2024) adres vermiyor; yalnız cyprus-faq",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/azra-claires-girne-kibris",
+   "slugOnerisi": "azra-claires-girne-kibris",
+   "ad": "Azra Claire's",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Asya mutfağı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/barduck-gastro-bar-girne-kibris",
+   "slugOnerisi": "barduck-gastro-bar-girne-kibris",
+   "ad": "BarDuck Gastro Bar",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/4751872221",
+    "lat": 35.33608,
+    "lng": 33.304525,
+    "osmAd": "Bar Duck",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2023-06-13",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Yukarı Girne Değirmentaşı",
+    "enYakinYerlesimKm": 0.9,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    },
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq (iki yazı, aynı yayıncı) + Instagram + OSM; gastrobar (kategori)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/movie-cafe-girne-kibris",
+   "slugOnerisi": "movie-cafe-girne-kibris",
+   "ad": "Movie Cafe",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kahvaltı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq + Instagram; kafe",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/hectors-pizza-girne-kibris",
+   "slugOnerisi": "hectors-pizza-girne-kibris",
+   "ad": "Hector's Pizza",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Pizza"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq; hectorspizza.com ABD'deki başka işletme",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/real-kitchen-girne-kibris",
+   "slugOnerisi": "real-kitchen-girne-kibris",
+   "ad": "Real Kitchen",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/dolce-italian-restaurant-bar-girne-kibris",
+   "slugOnerisi": "dolce-italian-restaurant-bar-girne-kibris",
+   "ad": "Dolce Italian Restaurant & Bar",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/9685261917",
+    "lat": 35.340939,
+    "lng": 33.285115,
+    "osmAd": "Dolce Italia",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2024-02-26",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Zeytinlik",
+    "enYakinYerlesimKm": 1.0,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq + OSM (2024)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/sea-point-girne-kibris",
+   "slugOnerisi": "sea-point-girne-kibris",
+   "ad": "Sea Point",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Balık restoranı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/sunas-beach-girne-kibris",
+   "slugOnerisi": "sunas-beach-girne-kibris",
+   "ad": "Suna's Beach",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/tahta-palas-kahvalti-girne-kibris",
+   "slugOnerisi": "tahta-palas-kahvalti-girne-kibris",
+   "ad": "Tahta Palas Kahvaltı (Alsancak)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kahvaltı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq; kahvaltı salonu",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/kasaba-da-kahvalti-girne-kibris",
+   "slugOnerisi": "kasaba-da-kahvalti-girne-kibris",
+   "ad": "Kasaba da Kahvaltı",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kahvaltı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq; kahvaltı kafesi",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/ezic-peanuts-girne-kibris",
+   "slugOnerisi": "ezic-peanuts-girne-kibris",
+   "ad": "Eziç Peanuts",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq okur oylaması; zincir, şube belirtilmemiş",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/simple-cafe-girne-kibris",
+   "slugOnerisi": "simple-cafe-girne-kibris",
+   "ad": "Simple Cafe",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kahvaltı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/10270976509",
+    "lat": 35.33737,
+    "lng": 33.305435,
+    "osmAd": "Simple Cafe",
+    "osmTur": "cafe",
+    "osmSonDuzenleme": "2022-12-18",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Yukarı Girne Değirmentaşı",
+    "enYakinYerlesimKm": 0.9,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq okur oylaması + OSM; kafe",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/sova-cafe-girne-kibris",
+   "slugOnerisi": "sova-cafe-girne-kibris",
+   "ad": "Sova Cafe",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kahvaltı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/6437105285",
+    "lat": 35.332811,
+    "lng": 33.328788,
+    "osmAd": "SOVA Cafe",
+    "osmTur": "cafe",
+    "osmSonDuzenleme": "2019-04-29",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Yukarı Girne Eski Türk",
+    "enYakinYerlesimKm": 0.9,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq okur oylaması + OSM (2019); kafe",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/uncle-sams-girne-kibris",
+   "slugOnerisi": "uncle-sams-girne-kibris",
+   "ad": "Uncle Sam's",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Burger"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/5734317781",
+    "lat": 35.330424,
+    "lng": 33.334807,
+    "osmAd": "Uncle Sam's",
+    "osmTur": "cafe",
+    "osmSonDuzenleme": "2018-07-02",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Doğanköy",
+    "enYakinYerlesimKm": 0.5,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq okur oylaması + OSM; şube belirsiz",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/manipeni-pizzeria-grill-girne-kibris",
+   "slugOnerisi": "manipeni-pizzeria-grill-girne-kibris",
+   "ad": "Manipeni Pizzeria & Grill",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Pizza"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/533523530",
+    "lat": 35.334483,
+    "lng": 33.331412,
+    "osmAd": "Manipeni Pizzeria & Grill",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2017-10-19",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Yukarı Girne Eski Türk",
+    "enYakinYerlesimKm": 0.9,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq okur oylaması + OSM (2017)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/cafe-amelia-girne-kibris",
+   "slugOnerisi": "cafe-amelia-girne-kibris",
+   "ad": "Cafe Amelia",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kahvaltı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq okur oylaması; kafe",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/girne-lavash-girne-kibris",
+   "slugOnerisi": "girne-lavash-girne-kibris",
+   "ad": "Girne Lavash",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq okur oylaması (2026-04); başka kaynak yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/pasa-lahmacun-girne-kibris",
+   "slugOnerisi": "pasa-lahmacun-girne-kibris",
+   "ad": "Paşa Lahmacun",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Pideci"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-mekanlari/",
+     "tarih": "2024-02-22",
+     "tarihTuru": "gezi yazısı (yayın); adresler plus code biçiminde (Google kökenli, kanıt sayılmaz)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 33
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com 2024-02 (33 ay; plus code adres)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/kibris-evi-girne-kibris",
+   "slugOnerisi": "kibris-evi-girne-kibris",
+   "ad": "Kıbrıs Evi",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Geleneksel mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/3256825284",
+    "lat": 35.341772,
+    "lng": 33.321099,
+    "osmAd": "Kibris Evi",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2015-01-04",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Girne",
+    "enYakinYerlesimKm": 0.2,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Lonely Planet (tarihsiz) + OSM (2015)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/levant-girne-kibris",
+   "slugOnerisi": "levant-girne-kibris",
+   "ad": "Levant (Karmi)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2518834728",
+    "lat": 35.317892,
+    "lng": 33.256037,
+    "osmAd": "Levant",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2013-11-03",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Karaman",
+    "enYakinYerlesimKm": 0.1,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprusscene.com",
+     "url": "https://cyprusscene.com/2024/04/19/review-of-the-levant-restaurant-karmi-kyrenia/",
+     "tarih": "2024-04-19",
+     "tarihTuru": "eleştiri (yayın)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 31
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprusscene 2024-04 (31 ay) + OSM (2013)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/royal-rafters-girne-kibris",
+   "slugOnerisi": "royal-rafters-girne-kibris",
+   "ad": "Royal Rafters (Ozanköy)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/151516417",
+    "lat": 35.32469,
+    "lng": 33.351542,
+    "osmAd": "Rafters Restaurant & Bar",
+    "osmTur": "bar",
+    "osmSonDuzenleme": "2024-07-02",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ozanköy",
+    "enYakinYerlesimKm": 0.6,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprusscene.com",
+     "url": "https://cyprusscene.com/2024/01/22/review-of-royal-rafters-restaurant-ozankoy/",
+     "tarih": "2024-01-22",
+     "tarihTuru": "eleştiri (yayın)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 34
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprusscene 2024-01 (34 ay) + OSM (bar etiketi)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/nima-restaurant-lounge-bar-girne-kibris",
+   "slugOnerisi": "nima-restaurant-lounge-bar-girne-kibris",
+   "ad": "Nima Restaurant & Lounge Bar",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/205139719",
+    "lat": 35.342345,
+    "lng": 33.318608,
+    "osmAd": "Nima",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2025-01-30",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Aşağı Girne",
+    "enYakinYerlesimKm": 0.3,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Resmî site + OSM; ödül bilgisi yalnız toplayıcı sitelerde; tarihli bağımsız editoryal yok",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/happy-panda-girne-kibris",
+   "slugOnerisi": "happy-panda-girne-kibris",
+   "ad": "Happy Panda",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": null,
+    "kind": null
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal (okur oylaması)",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/produkty-pitaniya/luchshii-restoran-girne-po-mneniyu-chitatelei-cyprus-faq/",
+     "tarih": "2026-04-30",
+     "tarihTuru": "okur oylaması (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 7
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "ret",
+   "guven": null,
+   "gerekce": "cyprus-faq okur oylaması (2026-04) kapandığını yazıyor",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/cafe-george-girne-kibris",
+   "slugOnerisi": "cafe-george-girne-kibris",
+   "ad": "Cafe George",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": null,
+    "kind": null
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "ret",
+   "guven": null,
+   "gerekce": "İngiliz pub'ı; restoran kapsamı dışında",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/black-horse-bar-girne-kibris",
+   "slugOnerisi": "black-horse-bar-girne-kibris",
+   "ad": "Black Horse Bar",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": null,
+    "kind": null
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-girne/",
+     "tarih": "2026-07-18",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 4
+    },
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "ret",
+   "guven": null,
+   "gerekce": "bar; restoran kapsamı dışında",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/cratos-premium-hotel-girne-kibris",
+   "slugOnerisi": "cratos-premium-hotel-girne-kibris",
+   "ad": "Cratos Premium Hotel (gala programı)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": null,
+    "kind": null
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "tarih": "2025-12-25",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "adresli kayıt",
+     "kontrol": "2026-11-18",
+     "yasAy": 11
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "ret",
+   "guven": null,
+   "gerekce": "otel gala programı; restoran kaydı değil",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/elexus-hotel-girne-kibris",
+   "slugOnerisi": "elexus-hotel-girne-kibris",
+   "ad": "Elexus Hotel (gala programı)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": null,
+    "kind": null
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "tarih": "2025-12-25",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "adresli kayıt",
+     "kontrol": "2026-11-18",
+     "yasAy": 11
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "ret",
+   "guven": null,
+   "gerekce": "otel gala programı; restoran kaydı değil",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/merit-royal-diamond-girne-kibris",
+   "slugOnerisi": "merit-royal-diamond-girne-kibris",
+   "ad": "Merit Royal Diamond (gala programı)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Girne",
+    "sehir": "Girne",
+    "cografiBolge": "Girne kuzey kıyısı ve Beşparmak eteği",
+    "yerlesim": null,
+    "yerelAdlar": "Girne / Kyrenia / Keryneia"
+   },
+   "kategori": {
+    "categoryId": null,
+    "kind": null
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "tarih": "2025-12-25",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "adresli kayıt",
+     "kontrol": "2026-11-18",
+     "yasAy": 11
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "ret",
+   "guven": null,
+   "gerekce": "otel gala programı; restoran kaydı değil",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/archway-restaurant-lefkosa-kibris",
+   "slugOnerisi": "archway-restaurant-lefkosa-kibris",
+   "ad": "Archway Restaurant (Surlariçi)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Geleneksel mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-yilbasi-mekanlari/",
+     "tarih": "2025-12-25",
+     "tarihTuru": "liste yazısı (yayın)",
+     "adresVerir": true,
+     "mekanBilgisi": "adresli kayıt",
+     "kontrol": "2026-11-18",
+     "yasAy": 11
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "yemek.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com (2025-12) Asmaaltı Sokak, Surlariçi diyor; bilinen işletmeci sitesi Archway'i Girne/Zeytinlik'te gösteriyor — kimlik belirsiz (PR #52 ile aynı kayıt)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": "kibris/archway-restaurant",
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/lush-cafe-bar-lefkosa-kibris",
+   "slugOnerisi": "lush-cafe-bar-lefkosa-kibris",
+   "ad": "Lush Cafe & Bar",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/5169538536",
+    "lat": 35.179605,
+    "lng": 33.35845,
+    "osmAd": "Lush Cafe",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2021-01-13",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Mahmut Paşa",
+    "enYakinYerlesimKm": 0.1,
+    "alanKaniti": "Overpass: relation/11974267 (Lefkoşa ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq (2026-10) + OSM (Tanzimat Sokak, 2021); işletmeci kaynağı yok",
+   "isaretler": [
+    "PR #52'deki 'Lush' (Larnaka, güney) ayrı işletme; birleştirilmedi"
+   ],
+   "mukerrer": {
+    "sonuc": "tekil (güneydeki aynı adlı işletmeden ayrı)",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/sora-rooftop-lefkosa-kibris",
+   "slugOnerisi": "sora-rooftop-lefkosa-kibris",
+   "ad": "Sora Rooftop",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq; sorarooftop.com Brezilya'daki başka işletme",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/maza-lefkosa-kibris",
+   "slugOnerisi": "maza-lefkosa-kibris",
+   "ad": "Maza",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq; mazarestaurant.com 'yakında' sayfası (faaliyet ya da adres kanıtı değil)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/brasserie-caglayan-lefkosa-kibris",
+   "slugOnerisi": "brasserie-caglayan-lefkosa-kibris",
+   "ad": "Brasserie Çağlayan",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq; caglayanrestaurant.com Antalya'daki başka işletme",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/the-kitchen-by-mardo-lefkosa-kibris",
+   "slugOnerisi": "the-kitchen-by-mardo-lefkosa-kibris",
+   "ad": "The Kitchen by Mardo",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq; Mardo zinciri, şube belirsiz (OSM'de 6 Mardo kaydı)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/califorian-restaurant-lefkosa-kibris",
+   "slugOnerisi": "califorian-restaurant-lefkosa-kibris",
+   "ad": "Califorian Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Uluslararası mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "way/435601631",
+    "lat": 35.185862,
+    "lng": 33.351305,
+    "osmAd": "Califorian Restaurant",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2024-09-19",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Köşklüçiftlik",
+    "enYakinYerlesimKm": 0.3,
+    "alanKaniti": "Overpass: relation/11974267 (Lefkoşa ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "cyprus-faq + OSM (Köşklüçiftlik, 2024) + Lonely Planet (tarihsiz); alan adı park sayfası",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/bigos-lefkosa-kibris",
+   "slugOnerisi": "bigos-lefkosa-kibris",
+   "ad": "Bigos",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Burger"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq; bigosburger.com İzmir'deki başka işletme",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/burger-toons-lefkosa-kibris",
+   "slugOnerisi": "burger-toons-lefkosa-kibris",
+   "ad": "Burger Toons",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Burger"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "cyprus-faq.com",
+     "url": "https://cyprus-faq.com/en/north/mesta/luchshie-restorany-severnogo-kipra/",
+     "tarih": "2026-10-20",
+     "tarihTuru": "liste yazısı (site haritası son değişikliği)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 1
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [
+    "cyprus-faq.com"
+   ],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız cyprus-faq",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/hamur-lefkosa-kibris",
+   "slugOnerisi": "hamur-lefkosa-kibris",
+   "ad": "Hamur",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-mekanlari/",
+     "tarih": "2024-02-22",
+     "tarihTuru": "gezi yazısı (yayın); adresler plus code biçiminde (Google kökenli, kanıt sayılmaz)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 33
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com 2024-02 (33 ay; plus code adres)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/saraba-ev-yemekleri-lefkosa-kibris",
+   "slugOnerisi": "saraba-ev-yemekleri-lefkosa-kibris",
+   "ad": "Saraba Ev Yemekleri",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Lokanta"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/12439524603",
+    "lat": 35.176332,
+    "lng": 33.364917,
+    "osmAd": "Saraba Ev Yemekleri",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2024-12-21",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Selimiye",
+    "enYakinYerlesimKm": 0.1,
+    "alanKaniti": "Overpass: relation/11974267 (Lefkoşa ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-mekanlari/",
+     "tarih": "2024-02-22",
+     "tarihTuru": "gezi yazısı (yayın); adresler plus code biçiminde (Google kökenli, kanıt sayılmaz)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 33
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com 2024-02 (33 ay) + OSM + Lonely Planet (tarihsiz)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/cember-restaurant-lefkosa-kibris",
+   "slugOnerisi": "cember-restaurant-lefkosa-kibris",
+   "ad": "Çember Restaurant",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/2168010410",
+    "lat": 35.204868,
+    "lng": 33.331469,
+    "osmAd": "Çember Restaurant",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2025-04-30",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Göçmenköy",
+    "enYakinYerlesimKm": 0.7,
+    "alanKaniti": "Overpass: relation/11974267 (Lefkoşa ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-mekanlari/",
+     "tarih": "2024-02-22",
+     "tarihTuru": "gezi yazısı (yayın); adresler plus code biçiminde (Google kökenli, kanıt sayılmaz)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 33
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com 2024-02 (33 ay) + OSM (2025); ikinci tarihli bağımsız kaynak yalnız toplayıcı sitelerde",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/sabir-lokantasi-lefkosa-kibris",
+   "slugOnerisi": "sabir-lokantasi-lefkosa-kibris",
+   "ad": "Sabır Lokantası",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Lokanta"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-mekanlari/",
+     "tarih": "2024-02-22",
+     "tarihTuru": "gezi yazısı (yayın); adresler plus code biçiminde (Google kökenli, kanıt sayılmaz)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 33
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com 2024-02 (33 ay; plus code adres)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/altinore-firin-kebap-lefkosa-kibris",
+   "slugOnerisi": "altinore-firin-kebap-lefkosa-kibris",
+   "ad": "Altınöre Fırın Kebap (Hamitköy)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [
+    {
+     "tur": "bağımsız editoryal",
+     "yayinci": "yemek.com",
+     "url": "https://yemek.com/kibris-mekanlari/",
+     "tarih": "2024-02-22",
+     "tarihTuru": "gezi yazısı (yayın); adresler plus code biçiminde (Google kökenli, kanıt sayılmaz)",
+     "adresVerir": false,
+     "mekanBilgisi": "ad düzeyinde anılıyor",
+     "kontrol": "2026-11-18",
+     "yasAy": 33
+    }
+   ],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "yemek.com 2024-02 (33 ay; plus code adres)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/sedirhan-lefkosa-kibris",
+   "slugOnerisi": "sedirhan-lefkosa-kibris",
+   "ad": "Sedirhan (Büyük Han)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Geleneksel mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/3256824833",
+    "lat": 35.176187,
+    "lng": 33.362509,
+    "osmAd": "Sedirhan",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2015-01-14",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "İplik Pazarı - Korkut Efendi",
+    "enYakinYerlesimKm": 0.1,
+    "alanKaniti": "Overpass: relation/11974267 (Lefkoşa ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Lonely Planet (tarihsiz) + OSM (2015)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/huzur-agac-lefkosa-kibris",
+   "slugOnerisi": "huzur-agac-lefkosa-kibris",
+   "ad": "Huzur Ağaç",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Geleneksel mutfak"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Lonely Planet (tarihsiz); OSM kaydı Girne ilçesinde (huzuragac.com, 2013) — konum çelişkisi",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/el-sabor-lefkosa-kibris",
+   "slugOnerisi": "el-sabor-lefkosa-kibris",
+   "ad": "El Sabor",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Dünya mutfağı"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "T-Vine 2021 (Selimiye Sokak; 63 ay) + Lonely Planet (tarihsiz)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/mosaic-restaurant-bar-lefkosa-kibris",
+   "slugOnerisi": "mosaic-restaurant-bar-lefkosa-kibris",
+   "ad": "Mosaic Restaurant & Bar",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Restoran"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/5221993169",
+    "lat": 35.176435,
+    "lng": 33.363787,
+    "osmAd": "Mosaic Restaurant & Bar",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2017-11-17",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Selimiye",
+    "enYakinYerlesimKm": 0.0,
+    "alanKaniti": "Overpass: relation/11974267 (Lefkoşa ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Lonely Planet (tarihsiz) + OSM (2017)",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/omerli-meyhane-lefkosa-kibris",
+   "slugOnerisi": "omerli-meyhane-lefkosa-kibris",
+   "ad": "Ömerli Meyhane (Gönyeli)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Meyhane"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": {
+    "kaynak": "osm",
+    "ref": "node/4379064098",
+    "lat": 35.238023,
+    "lng": 33.292959,
+    "osmAd": "Ömerli Meyhane",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2018-12-26",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Gönyeli",
+    "enYakinYerlesimKm": 2.7,
+    "alanKaniti": "Overpass: relation/11974267 (Lefkoşa ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   },
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız OSM (2018) ve Foursquare listesi",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  },
+  {
+   "id": "kuzey-kibris/mezze-meyhane-lefkosa-kibris",
+   "slugOnerisi": "mezze-meyhane-lefkosa-kibris",
+   "ad": "Mezze Meyhane (Gönyeli)",
+   "adVaryantlari": [],
+   "bolge": {
+    "ada": "Kıbrıs",
+    "operasyonelBolge": "kuzey",
+    "ilce": "Lefkoşa",
+    "sehir": "Lefkoşa",
+    "cografiBolge": "Lefkoşa'nın kuzey kesimi ve Mesarya ovası batısı",
+    "yerlesim": null,
+    "yerelAdlar": "Lefkoşa / Nicosia / Lefkosia (yalnız kuzey kesim)"
+   },
+   "kategori": {
+    "categoryId": "cat.restaurant",
+    "kind": "Meyhane"
+   },
+   "adres": {
+    "metin": null,
+    "duzey": "yok"
+   },
+   "koordinat": null,
+   "isletmeciKaynagi": null,
+   "bagimsizKaynaklar": [],
+   "tarihliBagimsizYayincilar24Ay": [],
+   "durum": "inceleme",
+   "guven": null,
+   "gerekce": "Yalnız Foursquare listesi",
+   "isaretler": [],
+   "mukerrer": {
+    "sonuc": "tekil",
+    "pr52Id": null,
+    "istanbulCanli": "yok"
+   }
+  }
+ ]
+}

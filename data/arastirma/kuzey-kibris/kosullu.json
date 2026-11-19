@@ -1,0 +1,113 @@
+{
+ "_aciklama": "Koşullu kayıtlar: kabul edilmiş sayılmaz; her biri için açık koşul ve konum/adres doğrulama önerisi.",
+ "kayitlar": [
+  {
+   "id": "kuzey-kibris/pera-mackenzie-iskele-kibris",
+   "ad": "Pera Mackenzie",
+   "ilce": "İskele",
+   "koşul": "Resmî site + cyprus-faq (2026-08) + OSM yapı kaydı. Koşul: adres yer tarifi; bağımsız kaynaktaki ad 'Pera Beach Club'; işletme ağırlıklı beach club/etkinlik alanı (kategori kararı).",
+   "isaretler": [
+    "yer tarifli adres (sahip kararı)",
+    "kategori: beach club + restoran",
+    "northcypruseducation.com (2026-05-27) toplu üretilmiş rehber metni; kaynak sayılmadı"
+   ],
+   "konumOnerisi": {
+    "kaynak": "osm",
+    "ref": "way/1488499480",
+    "lat": 35.248499,
+    "lng": 33.902973,
+    "osmAd": "Pera Mackenzie",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2026-10-14",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ötüken",
+    "enYakinYerlesimKm": 3.2,
+    "alanKaniti": "Overpass: relation/10090475 (İskele ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   }
+  },
+  {
+   "id": "kuzey-kibris/calamari-restaurant-girne-kibris",
+   "ad": "Calamari Restaurant",
+   "ilce": "Girne",
+   "koşul": "Resmî site + yemek.com (2026-10) + cyprus-faq (2026-07) aynı yer tarifini ve köyü veriyor; OSM düğümü konum önerisi. Koşul: yer tarifli adres kabulü (PR #52'den açık sahip kararı).",
+   "isaretler": [
+    "yer tarifli adres",
+    "OSM düğümü 2012'den: konum önerisi, doğrulanmış değil"
+   ],
+   "konumOnerisi": {
+    "kaynak": "osm",
+    "ref": "node/1809108170",
+    "lat": 35.350753,
+    "lng": 33.175932,
+    "osmAd": "Calamari",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2012-08-10",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Türk Mahallesi",
+    "enYakinYerlesimKm": 0.8,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   }
+  },
+  {
+   "id": "kuzey-kibris/bellapais-gardens-restaurant-girne-kibris",
+   "ad": "Bellapais Gardens Restaurant",
+   "ilce": "Girne",
+   "koşul": "Kimlik ve faaliyet güçlü (resmî + iki bağımsız yayıncı). Koşul: resmî sitede 'Crusader Road', bağımsız kaynaklarda 'Şehit Fuat Niyazi Sokak' — aynı yolun iki adı olduğu kanıtlanmadı; koordinat yok.",
+   "isaretler": [
+    "sokak adı çelişkisi"
+   ],
+   "konumOnerisi": null
+  },
+  {
+   "id": "kuzey-kibris/peris-fish-restaurant-girne-kibris",
+   "ad": "Peri's Fish Restaurant",
+   "ilce": "Girne",
+   "koşul": "İki bağımsız yayıncı (yemek.com 2026-10, cyprus-faq 2026-07) = orta. Koşul: OSM'de 'Peri's Liman' (Girne limanı) ayrı şube; cyprus-faq hangi şubeyi andığını yazmıyor; adres tek kaynakta.",
+   "isaretler": [
+    "şube belirsiz (Karaoğlanoğlu / Liman)",
+    "işletmeci alan adı satışta"
+   ],
+   "konumOnerisi": null
+  },
+  {
+   "id": "kuzey-kibris/de-niros-bistro-cafe-girne-kibris",
+   "ad": "De Niro's Bistro Cafe",
+   "ilce": "Girne",
+   "koşul": "İşletmeci sipariş sayfası (sokak) + cyprus-faq (2026-07/10). Koşul: adres tek kaynakta, koordinat yok; işletme 'bistro cafe' (kategori kararı).",
+   "isaretler": [
+    "adres tek kaynakta",
+    "kategori: bistro/kafe"
+   ],
+   "konumOnerisi": null
+  },
+  {
+   "id": "kuzey-kibris/gillham-tapas-wine-bar-girne-kibris",
+   "ad": "Gillham Tapas & Wine Bar (Gillham Vineyard Hotel)",
+   "ilce": "Girne",
+   "koşul": "Otel resmî sitesi + cyprus-faq (2026-07) + OSM. Koşul: adres köy düzeyinde; şarap barı mı restoran mı (kategori); OSM adı 'Gillham Wineyard'.",
+   "isaretler": [
+    "yer tarifli adres",
+    "kategori: şarap barı / restoran"
+   ],
+   "konumOnerisi": {
+    "kaynak": "osm",
+    "ref": "node/7928727185",
+    "lat": 35.324354,
+    "lng": 33.220057,
+    "osmAd": "Gillham Wineyard",
+    "osmTur": "restaurant",
+    "osmSonDuzenleme": "2020-12-23",
+    "osmCheckDate": null,
+    "enYakinYerlesim": "Ilgaz",
+    "enYakinYerlesimKm": 0.1,
+    "alanKaniti": "Overpass: relation/3264494 (Girne ilçesi) alanı içinde",
+    "lisans": "ODbL 1.0 — © OpenStreetMap katkıcıları",
+    "durum": "konum-onerisi"
+   }
+  }
+ ]
+}
