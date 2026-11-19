@@ -1,0 +1,42 @@
+{
+  "_kapsam": "Yerel normal-yol teşhisi; katalog/DB girdisi veya onaylı slug kararı değildir.",
+  "manifestId": "kibris/masamoro",
+  "kimlikKarari": "Manifest id korunur; geçici test slug/ref aşağıda. Kalıcı biçim onay bekler.",
+  "record": {
+    "ref": "isletme/masamoro-lefkosa-kibris",
+    "slug": "masamoro-lefkosa-kibris",
+    "name": "MasaMoro",
+    "categoryId": "cat.restaurant",
+    "kind": "Dünya mutfağı",
+    "district": "",
+    "address": "Stasandrou 2, 1060 Lefkoşa",
+    "kaliteSinifi": "A-konumsuz",
+    "lat": null,
+    "lng": null,
+    "phone": null,
+    "sourceKind": "official_site",
+    "sourceUrl": "https://masamoro.com/",
+    "verifiedAt": "2026-11-15",
+    "importedAt": "2026-11-19",
+    "bolge": {
+      "alan": "kibris",
+      "bolge": "lefkosa",
+      "kesim": "guney"
+    },
+    "provenance": [
+      {
+        "tur": "resmî işletme kaynağı",
+        "url": "https://masamoro.com/",
+        "kontrol": "2026-11-15",
+        "kanitladigi": "resmî site (JSON-LD): Stasandrou 2, 1060 Nicosia"
+      },
+      {
+        "tur": "bağımsız editoryal (tarihli)",
+        "url": "https://cyprus-mail.com/2026/10/23/nicosia-taco-spot-with-something-to-prove",
+        "yayin": "2026-10-23",
+        "kontrol": "2026-11-15",
+        "kanitladigi": "Cyprus Mail: MasaMoro, Stasandrou 2, Nicosia; tel 99 058176"
+      }
+    ]
+  }
+}
