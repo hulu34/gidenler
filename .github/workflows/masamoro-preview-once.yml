@@ -1,0 +1,52 @@
+name: MasaMoro exact Preview once
+on:
+  push:
+    branches: [inceleme/masamoro-bulut-kabul-20261120]
+    paths: ['scripts/masamoro-deployment-preflight.mjs', '.github/workflows/masamoro-preview-once.yml']
+permissions:
+  contents: read
+concurrency:
+  group: masamoro-preview-238995b6-once
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify exact application and extract unchanged driver
+        run: |
+          test "$(git merge-base HEAD 238995b6b08cf3e5fe0d0fcffe1b53fa90cccfc0)" = 238995b6b08cf3e5fe0d0fcffe1b53fa90cccfc0
+          git diff --name-only 238995b6b08cf3e5fe0d0fcffe1b53fa90cccfc0 HEAD > "$RUNNER_TEMP/changed-files"
+          python3 - <<'PYSAFE'
+          from pathlib import Path
+          import os
+          changed=set((Path(os.environ['RUNNER_TEMP'])/'changed-files').read_text().splitlines())
+          assert changed=={'scripts/masamoro-deployment-preflight.mjs','.github/workflows/masamoro-preview-once.yml'}
+          PYSAFE
+          git show 238995b6b08cf3e5fe0d0fcffe1b53fa90cccfc0:scripts/masamoro-preview-kabul.mjs > "$RUNNER_TEMP/masamoro-candidate.mjs"
+      - name: Install pinned independent browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/masamoro-browser" --ignore-scripts --no-audit --no-fund @playwright/test@1.56.1
+          "$RUNNER_TEMP/masamoro-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Only the exact protected isolated Preview
+        env:
+          VERCEL_BYPASS: ${{ secrets.VERCEL_BYPASS }}
+          BROWSER_PACKAGE_JSON: ${{ runner.temp }}/masamoro-browser/package.json
+          CANDIDATE_DRIVER: ${{ runner.temp }}/masamoro-candidate.mjs
+        run: node scripts/masamoro-deployment-preflight.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: masamoro-238995b6-readonly-preview
+          path: |
+            masamoro-preview-evidence/*.png
+            masamoro-preview-evidence/public-summary.json
+          retention-days: 7
+          if-no-files-found: ignore
