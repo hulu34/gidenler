@@ -37,6 +37,8 @@
     "test:toplu870": "tsx scripts/client-catalog.ts --check && tsx scripts/toplu-870-kabul-test.ts",
     "test:birlesik876": "tsx scripts/client-catalog.ts --check && tsx scripts/birlesik-876-kabul-test.ts",
     "test:birlesik879": "tsx scripts/client-catalog.ts --check && tsx scripts/birlesik-879-kabul-test.ts",
+    "test:semt-harita": "tsx scripts/semt-harita-test.ts",
+    "harita:sinirlar": "node scripts/harita-sinirlar.mjs",
     "test:birlesik884": "tsx scripts/client-catalog.ts --check && tsx scripts/birlesik-884-kabul-test.ts"
   },
   "dependencies": {
