@@ -1,0 +1,446 @@
+{
+ "_aciklama": "Eksik analizi — yalnız araştırma. Production aktif = yayımlanmış ve kesin kapalı olmayan kayıt; PR #48 = yayımlanmamış aday; buArastirmaGuclu = bu araştırmanın güçlü adayları. Puan ya da sıralama değildir.",
+ "tarih": "2026-11-15",
+ "productionAktif": 758,
+ "pr48": 596,
+ "ilce": [
+  {
+   "ilce": "Esenler",
+   "nufus2025": 419878,
+   "productionAktif": 0,
+   "yuzBinKisiBasina": 0.0,
+   "pr48": 3,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 3
+  },
+  {
+   "ilce": "Bağcılar",
+   "nufus2025": 707635,
+   "productionAktif": 2,
+   "yuzBinKisiBasina": 0.3,
+   "pr48": 10,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 12
+  },
+  {
+   "ilce": "Gaziosmanpaşa",
+   "nufus2025": 478395,
+   "productionAktif": 2,
+   "yuzBinKisiBasina": 0.4,
+   "pr48": 3,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 5
+  },
+  {
+   "ilce": "Güngören",
+   "nufus2025": 251242,
+   "productionAktif": 1,
+   "yuzBinKisiBasina": 0.4,
+   "pr48": 4,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 5
+  },
+  {
+   "ilce": "Kağıthane",
+   "nufus2025": 446420,
+   "productionAktif": 2,
+   "yuzBinKisiBasina": 0.4,
+   "pr48": 9,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 11
+  },
+  {
+   "ilce": "Sultangazi",
+   "nufus2025": 529306,
+   "productionAktif": 2,
+   "yuzBinKisiBasina": 0.4,
+   "pr48": 3,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 5
+  },
+  {
+   "ilce": "Sultanbeyli",
+   "nufus2025": 378908,
+   "productionAktif": 2,
+   "yuzBinKisiBasina": 0.5,
+   "pr48": 1,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 3
+  },
+  {
+   "ilce": "Esenyurt",
+   "nufus2025": 1003905,
+   "productionAktif": 6,
+   "yuzBinKisiBasina": 0.6,
+   "pr48": 5,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 12
+  },
+  {
+   "ilce": "Küçükçekmece",
+   "nufus2025": 785270,
+   "productionAktif": 6,
+   "yuzBinKisiBasina": 0.8,
+   "pr48": 15,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 21
+  },
+  {
+   "ilce": "Çekmeköy",
+   "nufus2025": 315959,
+   "productionAktif": 3,
+   "yuzBinKisiBasina": 0.9,
+   "pr48": 7,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 10
+  },
+  {
+   "ilce": "Bahçelievler",
+   "nufus2025": 539035,
+   "productionAktif": 6,
+   "yuzBinKisiBasina": 1.1,
+   "pr48": 10,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 16
+  },
+  {
+   "ilce": "Silivri",
+   "nufus2025": 240029,
+   "productionAktif": 3,
+   "yuzBinKisiBasina": 1.2,
+   "pr48": 6,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 9
+  },
+  {
+   "ilce": "Başakşehir",
+   "nufus2025": 536797,
+   "productionAktif": 7,
+   "yuzBinKisiBasina": 1.3,
+   "pr48": 11,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 19
+  },
+  {
+   "ilce": "Beylikdüzü",
+   "nufus2025": 422988,
+   "productionAktif": 6,
+   "yuzBinKisiBasina": 1.4,
+   "pr48": 12,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 19
+  },
+  {
+   "ilce": "Tuzla",
+   "nufus2025": 313865,
+   "productionAktif": 5,
+   "yuzBinKisiBasina": 1.6,
+   "pr48": 14,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 19
+  },
+  {
+   "ilce": "Ümraniye",
+   "nufus2025": 728913,
+   "productionAktif": 12,
+   "yuzBinKisiBasina": 1.6,
+   "pr48": 23,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 36
+  },
+  {
+   "ilce": "Kartal",
+   "nufus2025": 475630,
+   "productionAktif": 8,
+   "yuzBinKisiBasina": 1.7,
+   "pr48": 9,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 17
+  },
+  {
+   "ilce": "Avcılar",
+   "nufus2025": 440663,
+   "productionAktif": 8,
+   "yuzBinKisiBasina": 1.8,
+   "pr48": 3,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 11
+  },
+  {
+   "ilce": "Büyükçekmece",
+   "nufus2025": 283239,
+   "productionAktif": 5,
+   "yuzBinKisiBasina": 1.8,
+   "pr48": 5,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 10
+  },
+  {
+   "ilce": "Zeytinburnu",
+   "nufus2025": 275471,
+   "productionAktif": 6,
+   "yuzBinKisiBasina": 2.2,
+   "pr48": 2,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 9
+  },
+  {
+   "ilce": "Bayrampaşa",
+   "nufus2025": 272978,
+   "productionAktif": 7,
+   "yuzBinKisiBasina": 2.6,
+   "pr48": 4,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 11
+  },
+  {
+   "ilce": "Eyüpsultan",
+   "nufus2025": 425216,
+   "productionAktif": 11,
+   "yuzBinKisiBasina": 2.6,
+   "pr48": 4,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 16
+  },
+  {
+   "ilce": "Sancaktepe",
+   "nufus2025": 507500,
+   "productionAktif": 13,
+   "yuzBinKisiBasina": 2.6,
+   "pr48": 6,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 19
+  },
+  {
+   "ilce": "Arnavutköy",
+   "nufus2025": 358469,
+   "productionAktif": 10,
+   "yuzBinKisiBasina": 2.8,
+   "pr48": 2,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 12
+  },
+  {
+   "ilce": "Maltepe",
+   "nufus2025": 525044,
+   "productionAktif": 17,
+   "yuzBinKisiBasina": 3.2,
+   "pr48": 26,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 44
+  },
+  {
+   "ilce": "Pendik",
+   "nufus2025": 752033,
+   "productionAktif": 27,
+   "yuzBinKisiBasina": 3.6,
+   "pr48": 12,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 40
+  },
+  {
+   "ilce": "Beykoz",
+   "nufus2025": 246833,
+   "productionAktif": 14,
+   "yuzBinKisiBasina": 5.7,
+   "pr48": 18,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 32
+  },
+  {
+   "ilce": "Çatalca",
+   "nufus2025": 81143,
+   "productionAktif": 6,
+   "yuzBinKisiBasina": 7.4,
+   "pr48": 6,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 12
+  },
+  {
+   "ilce": "Üsküdar",
+   "nufus2025": 514294,
+   "productionAktif": 38,
+   "yuzBinKisiBasina": 7.4,
+   "pr48": 24,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 63
+  },
+  {
+   "ilce": "Bakırköy",
+   "nufus2025": 218204,
+   "productionAktif": 19,
+   "yuzBinKisiBasina": 8.7,
+   "pr48": 23,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 43
+  },
+  {
+   "ilce": "Ataşehir",
+   "nufus2025": 412125,
+   "productionAktif": 39,
+   "yuzBinKisiBasina": 9.5,
+   "pr48": 21,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 60
+  },
+  {
+   "ilce": "Sarıyer",
+   "nufus2025": 344883,
+   "productionAktif": 35,
+   "yuzBinKisiBasina": 10.1,
+   "pr48": 36,
+   "buArastirmaGuclu": 1,
+   "olasiToplam": 72
+  },
+  {
+   "ilce": "Şile",
+   "nufus2025": 50090,
+   "productionAktif": 6,
+   "yuzBinKisiBasina": 12.0,
+   "pr48": 2,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 8
+  },
+  {
+   "ilce": "Şişli",
+   "nufus2025": 261959,
+   "productionAktif": 44,
+   "yuzBinKisiBasina": 16.8,
+   "pr48": 35,
+   "buArastirmaGuclu": 3,
+   "olasiToplam": 82
+  },
+  {
+   "ilce": "Fatih",
+   "nufus2025": 351786,
+   "productionAktif": 62,
+   "yuzBinKisiBasina": 17.6,
+   "pr48": 42,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 104
+  },
+  {
+   "ilce": "Kadıköy",
+   "nufus2025": 458573,
+   "productionAktif": 116,
+   "yuzBinKisiBasina": 25.3,
+   "pr48": 72,
+   "buArastirmaGuclu": 3,
+   "olasiToplam": 191
+  },
+  {
+   "ilce": "Beşiktaş",
+   "nufus2025": 165895,
+   "productionAktif": 59,
+   "yuzBinKisiBasina": 35.6,
+   "pr48": 37,
+   "buArastirmaGuclu": 7,
+   "olasiToplam": 103
+  },
+  {
+   "ilce": "Adalar",
+   "nufus2025": 17489,
+   "productionAktif": 8,
+   "yuzBinKisiBasina": 45.7,
+   "pr48": 0,
+   "buArastirmaGuclu": 0,
+   "olasiToplam": 8
+  },
+  {
+   "ilce": "Beyoğlu",
+   "nufus2025": 215991,
+   "productionAktif": 135,
+   "yuzBinKisiBasina": 62.5,
+   "pr48": 71,
+   "buArastirmaGuclu": 5,
+   "olasiToplam": 211
+  }
+ ],
+ "tur": [
+  {
+   "tur": "Balık ve deniz ürünleri",
+   "productionAktif": 83,
+   "pr48": 52,
+   "buArastirmaGuclu": 0
+  },
+  {
+   "tur": "Ocakbaşı ve kebap",
+   "productionAktif": 123,
+   "pr48": 124,
+   "buArastirmaGuclu": 0
+  },
+  {
+   "tur": "Lokanta / esnaf lokantası",
+   "productionAktif": 14,
+   "pr48": 11,
+   "buArastirmaGuclu": 0
+  },
+  {
+   "tur": "Meyhane",
+   "productionAktif": 7,
+   "pr48": 21,
+   "buArastirmaGuclu": 0
+  },
+  {
+   "tur": "Japon",
+   "productionAktif": 17,
+   "pr48": 9,
+   "buArastirmaGuclu": 1
+  },
+  {
+   "tur": "Kore",
+   "productionAktif": 3,
+   "pr48": 3,
+   "buArastirmaGuclu": 0
+  },
+  {
+   "tur": "Asya (Çin, Tay, diğer)",
+   "productionAktif": 10,
+   "pr48": 8,
+   "buArastirmaGuclu": 1
+  },
+  {
+   "tur": "İtalyan / pizza",
+   "productionAktif": 59,
+   "pr48": 38,
+   "buArastirmaGuclu": 2
+  },
+  {
+   "tur": "Kahvaltı",
+   "productionAktif": 19,
+   "pr48": 33,
+   "buArastirmaGuclu": 1
+  },
+  {
+   "tur": "Steakhouse",
+   "productionAktif": 23,
+   "pr48": 15,
+   "buArastirmaGuclu": 0
+  },
+  {
+   "tur": "Modern / çağdaş / şef",
+   "productionAktif": 4,
+   "pr48": 2,
+   "buArastirmaGuclu": 4
+  },
+  {
+   "tur": "Pastane / tatlıcı",
+   "productionAktif": 17,
+   "pr48": 40,
+   "buArastirmaGuclu": 3
+  }
+ ],
+ "editoryalKapsama": {
+  "gaultMillau2026Istanbul": 226,
+  "gm2026Durum": {
+   "katalogda-ya-da-dalda-var": 117,
+   "kapsam-disi": 10,
+   "aday-guclu": 12,
+   "mukerrer": 17,
+   "bekleyen-kayda-kanit": 6,
+   "inceleme": 64
+  },
+  "michelin2026Istanbul": 85,
+  "michelin2026ProductionAktifteYaklasik": 51
+ }
+}

@@ -1,0 +1,2109 @@
+{
+ "_aciklama": "Seyrek ilçeler araştırması — yalnız araştırma verisi; kataloğa eklenmedi, veritabanına yazılmadı. Google verisi, platform puanı ve yorum yok. Instagram otomatik okunmadı, kanıt sayılmadı.",
+ "kontrolTarihi": "2026-11-15",
+ "taban": "origin/feature/investor-v1 174a1c9 (801 kayıt / 766 aktif)",
+ "kaynakTaramasi": {
+  "yemekCom": {
+   "yazi": 135,
+   "istanbulKaydi": 832,
+   "seyrekIlceKaydi": 70,
+   "not": "son 12 ayda güncellenen İstanbul mekân listeleri (sitemap lastmod) + Bahçelievler (2025-01) ve Bağcılar–Güngören–Zeytinburnu (2023) yazıları"
+  },
+  "kentLokantasi": {
+   "sube": 22,
+   "productionda": 17,
+   "not": "İBB resmî listesi tesislerimiz.ibb.istanbul/kentlokantalari; 17 şube zaten Production'da"
+  },
+  "migrosYemek": "Web aramasıyla 30 aday arandı: 4'ü aynı ad + mahalleyle bulundu (Pita Cafe, Yayla Kokoreççisi, Alaçatı Gurme-i Ala, Başak Cafe); diğerleri platformda yok ya da farklı şube. Yemeksepeti 403 ile otomatik erişimi engelliyor (aşılmadı); Getir/Trendyol giriş istiyor."
+ },
+ "sayim": {
+  "inceleme": 43,
+  "aday-guclu": 6,
+  "katalogda-ya-da-dalda-var": 21,
+  "kapsam-disi": 2,
+  "bekleyen-kayda-kanit": 2
+ },
+ "ilce": {
+  "Çekmeköy": 9,
+  "Büyükçekmece": 5,
+  "Başakşehir": 4,
+  "Silivri": 5,
+  "Avcılar": 3,
+  "Eyüpsultan": 1,
+  "Bayrampaşa": 1,
+  "Esenyurt": 1,
+  "Sultangazi": 1,
+  "Bahçelievler": 8,
+  "Zeytinburnu": 3,
+  "Bağcılar": 3,
+  "Küçükçekmece": 1,
+  "Kartal": 2,
+  "Güngören": 2
+ },
+ "kayitlar": [
+  {
+   "id": "seyrek/orman-kahvesi-cafe-restoran-cekmekoy",
+   "ad": "Orman Kahvesi Cafe & Restoran",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Nişantepe Mahallesi, Saray Caddesi No:321, Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/ormankahvesii/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/kamuran-cikolata-tatli-kahvalti-cekmekoy",
+   "ad": "Kamuran Çikolata Tatlı Kahvaltı",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Nişantepe Mahallesi, Gökkaya Caddesi No:5/AA, Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/kamurancikolata/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/peride-cekmekoy",
+   "ad": "Peride",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Taşdelen Mahallesi, Sırrı Çelik Bulvarı No:4, Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/peride_lezzet_atolyesi/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/nesve-cekmekoy-cekmekoy",
+   "ad": "Neşve Çekmeköy",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Taşdelen Mahallesi, Turgut Özal Caddesi No:133/B, Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/nesvecekmekoy/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/riva-s-club-cekmekoy",
+   "ad": "Riva’s Club",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Sırapınar Mahallesi, Taşlı Armut Sokak No:7, Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "resmî site",
+     "url": "http://www.rivaclub.net/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad ve aynı adres:  : Konu : Mesajınız : İletişim Bilgilerimiz Sırapınar Köyü, Taşlı Armut Sokak (Kasaba Sitesi Arka Çıkışı) No:7"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/rivasclub/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "adres": "Taşlı Armut Sokak No:7, Sırapınar (Ömerli)",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "eksik": [],
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: yemek.com (2026, tarihli) + işletmenin resmî sitesi (bugün, aynı sokak ve kapı no)"
+   }
+  },
+  {
+   "id": "seyrek/fatma-bacinin-yeri-cekmekoy",
+   "ad": "Fatma Bacının Yeri",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Koçullu Mahallesi, Koçullu Mesire Alanı, Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/fatmabacininyeri34/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "platformda aranmadı (mesire alanı / lounge / çiftlik — sipariş platformunda olması beklenmedi)"
+   }
+  },
+  {
+   "id": "seyrek/house-of-fellas-cekmekoy",
+   "ad": "House of Fellas",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Merkez Mahallesi, Çavuşbaşı Caddesi No:109, Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "resmî site",
+     "url": "https://www.houseoffellas.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad ve aynı adres: ouse of FELLAS 0216 639 10 12 [email protected] Merkez Mah. Çavuşbaşı Cad. No: 109 Çekmeköy/İSTANBUL Anasayfa "
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/houseoffellas/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "adres": "Çavuşbaşı Caddesi No:109, Merkez",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "eksik": [],
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: yemek.com (2026, tarihli) + işletmenin resmî sitesi (bugün, aynı sokak ve kapı no)"
+   }
+  },
+  {
+   "id": "seyrek/fasuli-garden-cekmekoy-cekmekoy",
+   "ad": "Fasuli Garden Çekmeköy",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Merkez Mahallesi, Çavuşbaşı Caddesi No:105/A, Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/cekmekoyun-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/fasulirestoran/?hl=tr",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "adres"
+   ],
+   "neden": "resmî site faal ve adı gösteriyor ama adres/kapı no yok"
+  },
+  {
+   "id": "seyrek/kibris-yore-evi-buyukcekmece",
+   "ad": "Kıbrıs Yöre Evi",
+   "ilce": "Büyükçekmece",
+   "kaynakAdresi": "Dizdariye Mahallesi, Kültür Park İçi Yolu, Hediye Sokak No:11, Büyükçekmece",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/buyukcekmecenin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/kibrisyoreevi/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/geppetto-buyukcekmece",
+   "ad": "Geppetto",
+   "ilce": "Büyükçekmece",
+   "kaynakAdresi": "Atatürk Mahallesi, Kordonboyu Caddesi, Zeki Müren Sokak No:107/A, Büyükçekmece",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/buyukcekmecenin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/geppetto.tr/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/madame-s-eat-drink-more-buyukcekmece",
+   "ad": "Madame’s Eat | Drink & More",
+   "ilce": "Büyükçekmece",
+   "kaynakAdresi": "Sinanoba Mahallesi, Hayırlı Sokak, C Blok No:1/4, Büyükçekmece",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/buyukcekmecenin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/madamestr/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/bablean-buyukcekmece",
+   "ad": "BABLEAN",
+   "ilce": "Büyükçekmece",
+   "kaynakAdresi": "Mimaroba Mahallesi, Fesleğen Sokak No:8P, Büyükçekmece",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/buyukcekmecenin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/babcaff/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/sahil-cafe-1a-buyukcekmece",
+   "ad": "Sahil Cafe 1A",
+   "ilce": "Büyükçekmece",
+   "kaynakAdresi": "Kumburgaz Mahallesi, Kufalı Sokak, Büyükçekmece",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/buyukcekmecenin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya",
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/mazzaya-lounge-buyukcekmece",
+   "ad": "Mazzaya Lounge",
+   "ilce": "Büyükçekmece",
+   "kaynakAdresi": "Cumhuriyet Mahallesi, Yıldıray Çınar Sokak No:47/A, Büyükçekmece",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/buyukcekmecenin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/mazzayalounge/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "platformda aranmadı (mesire alanı / lounge / çiftlik — sipariş platformunda olması beklenmedi)"
+   }
+  },
+  {
+   "id": "seyrek/alacati-gurme-i-ala-basaksehir",
+   "ad": "Alaçatı Gurme-i ALA",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Bahçeşehir 1. Kısım Mahallesi, Doğa Parkı Caddesi, NG Blok No:13-15, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "sipariş platformu",
+     "url": "https://www.migros.com.tr/yemek/alacati-gurme-i-ala-basaksehir-bahcesehir-1-kisim-mah-st-1f624",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "'Alaçatı Gurme-i Ala, Başakşehir (Bahçeşehir 1. Kısım Mah.)', güncel menü (platform puanı/yorumu saklanmadı)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/alacatigurmeiala/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
+   "adres": "Doğa Parkı Caddesi NG Blok No:13-15, Bahçeşehir 1. Kısım",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (sahip kararı 15.11.2026): yemek.com tarihli editoryal (açık adres) + sipariş platformu sayfası (aynı ad ve mahalle, bugün güncel menü)"
+   }
+  },
+  {
+   "id": "seyrek/huqqabaz-bahcesehir-golet-basaksehir",
+   "ad": "HuQQabaz Bahçeşehir Gölet",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Bahçeşehir 1. Kısım Mahallesi, Doğa Parkı Caddesi, I Blok No:13-15/IA, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/huqqabaz/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "kapsam-disi",
+   "neden": "nargile salonu zinciri — restoran/kafe kapsamı dışında",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/yaseminli-bahce-basaksehir",
+   "ad": "Yaseminli Bahçe",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Bahçeşehir 2. Kısım Mahallesi, Lale Sokak ve Atatürk Bulvarı kesişimi, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/yaseminlibahce_/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/caki-restoran-basaksehir",
+   "ad": "Çakı Restoran",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Kayabaşı Mahallesi, Park Mavera 4 Cadde Dükkanları, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/cakirestoran/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/huqqabaz-kayasehir-basaksehir",
+   "ad": "HuQQabaz Kayaşehir",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Kayabaşı Mahallesi, Tınaztepe Caddesi, Park Mavera 4 Sitesi No:3, HC-HD-HE, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/huqqabaz/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "kapsam-disi",
+   "neden": "nargile salonu zinciri — restoran/kafe kapsamı dışında",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/basak-cafe-restaurant-basaksehir",
+   "ad": "Başak Cafe Restaurant",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Başak Mahallesi, Sular Vadisi, Vadi Center yanı, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "sipariş platformu",
+     "url": "https://www.migros.com.tr/yemek/basak-cafe-restaurant-basaksehir-basak-mah-st-2c6fb",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad ve mahalle, güncel menü"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/basakcaferestaurant/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "adres"
+   ],
+   "neden": "iki bağımsız kaynakla faal (yemek.com 10.11.2026 + Migros Yemek 'Başak Cafe & Restaurant, Başakşehir (Başak Mah.)'), ama kapı no yok ('Sular Vadisi, Vadi Center yanı')"
+  },
+  {
+   "id": "seyrek/cafe-sultanahmetli-basaksehir",
+   "ad": "Cafe Sultanahmetli",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Başakşehir Mahallesi, Ortaçgil Sokak No:2, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/sultanahmetlirestaurant/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/natolia-basaksehir",
+   "ad": "Natolia",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Ziya Gökalp Mahallesi, Süleyman Demirel Bulvarı, Mall of İstanbul, MOI Cadde Kuzey Girişi, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/natolia.istanbul/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PR50"
+   ]
+  },
+  {
+   "id": "seyrek/defne-bahcesi-basaksehir",
+   "ad": "Defne Bahçesi",
+   "ilce": "Başakşehir",
+   "kaynakAdresi": "Şahintepe Mahallesi, Cebeci Sokak No:13/A, Başakşehir",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/basaksehirin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/defnebahcesiii/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya",
+    "feature/bin-mekan"
+   ]
+  },
+  {
+   "id": "seyrek/fes-cafe-silivri",
+   "ad": "Fes Cafe",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Piri Mehmet Paşa Mahallesi, Albay Yunus Dirik Sokak No:40, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/silivrifescafe/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/villa-restaurant-silivri-silivri",
+   "ad": "Villa Restaurant Silivri",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Mimar Sinan Mahallesi, Fahrettin Berktaş Sokak No:3, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/villarestaurantsilivri/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD",
+    "PROD-dosya",
+    "butce/kalici-taban"
+   ]
+  },
+  {
+   "id": "seyrek/kiyi-beach-cafe-silivri",
+   "ad": "Kıyı Beach Cafe",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Semizkumlar Mahallesi, Atakan Sokak No:3, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/kiyibeach/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/hayat-bahcem-silivri",
+   "ad": "Hayat Bahçem",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Selimpaşa Mahallesi, 256. Cadde No:29, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/hayatbahcemrestaurant/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/uskup-restaurant-cafe-silivri",
+   "ad": "Üsküp Restaurant & Cafe",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Selimpaşa Mahallesi, Kadir Has Caddesi No:24, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/uskup1985/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/acarpark-restaurant-silivri",
+   "ad": "Acarpark Restaurant",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Ortaköy Mahallesi, Hümayun Caddesi No:1/3, TEM Metro Tesisleri, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/acarparkrestaurant/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya"
+   ]
+  },
+  {
+   "id": "seyrek/zeytindali-kir-bahcesi-silivri",
+   "ad": "ZeytinDalı Kır Bahçesi",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Gazitepe Mahallesi, Taşkınlar Çıkmaz Sokak No:12, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/zeytindalisilivri/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD",
+    "PROD-dosya",
+    "butce/kalici-taban"
+   ]
+  },
+  {
+   "id": "seyrek/grandma-s-wonderland-silivri",
+   "ad": "Grandma’s Wonderland",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Gazitepe Mahallesi, Ören Çiftlik Evleri, Akören Caddesi No:114, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/grandmaswonderland/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/karaca-at-ciftligi-silivri",
+   "ad": "Karaca At Çiftliği",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Kurfallı Mahallesi, Sancaktar Caddesi No:32, Silivri",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/silivrinin-en-iyi-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-11-10",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/karacaatciftligi/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "platformda aranmadı (mesire alanı / lounge / çiftlik — sipariş platformunda olması beklenmedi)"
+   }
+  },
+  {
+   "id": "seyrek/sare-tantuni-avcilar",
+   "ad": "Sare Tantuni",
+   "ilce": "Avcılar",
+   "kaynakAdresi": "Mustafa Kemal Paşa Mahallesi, Avcılar Kavşağı No:1, Avcılar.",
+   "categoryId": "cat.restaurant",
+   "kind": "Sokak lezzeti",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-tantuni-nerede-yenir/",
+     "yayinGuncelleme": "2026-11-03",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/saretantuni/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/meshur-balkan-tulumba-ve-dondurma-eyupsultan",
+   "ad": "Meşhur Balkan Tulumba ve Dondurma",
+   "ilce": "Eyüpsultan",
+   "kaynakAdresi": "Alibeyköy Mahallesi, Gaziosmanpaşa Caddesi, Eyüpsultan/İstanbul.",
+   "categoryId": "cat.cafe",
+   "kind": "Tatlıcı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/en-iyi-tulumba-tatlisi-nerede-yenir/",
+     "yayinGuncelleme": "2026-11-02",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "resmî site",
+     "url": "http://www.meshurbalkantulumba.com",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad ve semt (Alibeyköy, Eyüpsultan), © 2026"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/meshurbalkantulumba/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "adres"
+   ],
+   "neden": "resmî site faal (© 2026) ve 'Alibeyköy, Eyüpsultan' diyor; yemek.com 2026 ile iki bağımsız kaynak — yalnız kapı no eksik"
+  },
+  {
+   "id": "seyrek/meshur-rumeli-tulumbacisi-bayrampasa",
+   "ad": "Meşhur Rumeli Tulumbacısı",
+   "ilce": "Bayrampaşa",
+   "kaynakAdresi": "Vatan Mahallesi, Çarşı Caddesi No:66, Bayrampaşa/İstanbul.",
+   "categoryId": "cat.cafe",
+   "kind": "Tatlıcı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/en-iyi-tulumba-tatlisi-nerede-yenir/",
+     "yayinGuncelleme": "2026-11-02",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "adres"
+   ],
+   "neden": "resmî site faal ve adı gösteriyor ama adres/kapı no yok"
+  },
+  {
+   "id": "seyrek/cagistan-erzurum-cag-kebabi-eyupsultan",
+   "ad": "Cağistan Erzurum Cağ Kebabı",
+   "ilce": "Eyüpsultan",
+   "kaynakAdresi": "Topçular Mah., Eyüp Sultan Blv. No:81, Eyüpsultan, İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/avrupa-yakasinda-en-iyi-cag-kebabi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-27",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/cagistan/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya",
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/bado-babadostu-cag-kebap-bahcelievler",
+   "ad": "Bado Babadostu Cağ Kebap",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Kocasinan Merkez Mah., Mahmutbey Cad. No:204, Bahçelievler / İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/avrupa-yakasinda-en-iyi-cag-kebabi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-27",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/badocag_kebap/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/serden-erzurum-cag-kebabi-bahcelievler",
+   "ad": "Serden Erzurum Cağ Kebabı",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Şirinevler Mah., Bayburt Sok. No:10, Bahçelievler, İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/avrupa-yakasinda-en-iyi-cag-kebabi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-27",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD",
+    "PROD-dosya",
+    "butce/kalici-taban"
+   ]
+  },
+  {
+   "id": "seyrek/van-kahvalti-lounge-beylikduzu-esenyurt",
+   "ad": "Van Kahvaltı Lounge Beylikdüzü",
+   "ilce": "Esenyurt",
+   "kaynakAdresi": "Barbaros Hayrettin Paşa Mahallesi, Sağlam Residence No:20D, Esenyurt/İstanbul.",
+   "categoryId": "cat.restaurant",
+   "kind": "Kahvaltı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/beylikduzu-kahvalti-mekanlari/",
+     "yayinGuncelleme": "2026-10-30",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/vankahvaltilounge/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/pierre-loti-tepesi-turistik-tesisleri-eyupsultan",
+   "ad": "Pierre Loti Tepesi Turistik Tesisleri",
+   "ilce": "Eyüpsultan",
+   "kaynakAdresi": "Merkez Mahallesi, İdris Köşkü Caddesi, Eyüpsultan, İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbuldaki-cay-mekanlari/",
+     "yayinGuncelleme": "2026-09-29",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/pierrelotitepesi/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD",
+    "PROD-dosya",
+    "butce/kalici-taban"
+   ]
+  },
+  {
+   "id": "seyrek/koner-etli-ekmek-sultangazi",
+   "ad": "KONER Etli Ekmek",
+   "ilce": "Sultangazi",
+   "kaynakAdresi": "Eski Habipler, Çınarlı Cd. No:4 D:6A, 34070 Sultangazi/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-yaglama-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-21",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/koneretliekmek/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/kalpakchi-cafe-store-bahcelievler",
+   "ad": "Kalpakchi Cafe Store",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Şirinevler, Mareşal Fevzi Çakmak 5. Sk. No:12/A, 34188 Bahçelievler/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-yaglama-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-21",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/kalpakchii",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/sirdanci-guney-adana-zeytinburnu",
+   "ad": "Şırdancı Güney Adana",
+   "ilce": "Zeytinburnu",
+   "kaynakAdresi": "Veliefendi, 74. Sk. No:70/F, 34025 Zeytinburnu/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Sokak lezzeti",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-sirdan-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-21",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/sirdanci_guney_adana/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/konak-iskembe-kelle-paca-bagcilar",
+   "ad": "Konak İşkembe - Kelle Paça",
+   "ilce": "Bağcılar",
+   "kaynakAdresi": "Çınar, Osmangazi Cd. No:34 D:36, 34200 Bağcılar/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Sokak lezzeti",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-sirdan-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-21",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/konakiskembee/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/sirdanci-dayi-kucukcekmece",
+   "ad": "Şırdancı Dayı",
+   "ilce": "Küçükçekmece",
+   "kaynakAdresi": "Yeşilova, Yeşilova Yan Yolu 70/A, 34100 Küçükçekmece/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Sokak lezzeti",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-sirdan-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-21",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/sirdanci.dayi/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/sirdanci-remzi-esenyurt",
+   "ad": "Şırdancı Remzi",
+   "ilce": "Esenyurt",
+   "kaynakAdresi": "Radius Residence, Doğan Araslı Bulvarı, 138. Sokak, Esenyurt/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Sokak lezzeti",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-sirdan-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-21",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/sirdanci-mehmet-zeytinburnu",
+   "ad": "Şırdancı Mehmet",
+   "ilce": "Zeytinburnu",
+   "kaynakAdresi": "Gökalp Mah., 48. Sk. No:3/A, 34025 Zeytinburnu/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-mumbar-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-21",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/sirdancimehmet/?hl=tr",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/gurme-mardin-bahcelievler",
+   "ad": "Gurme Mardin",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Soğanlı Mahallesi, Orkide Sokak, No:4, Bahçelievler/İstanbul.",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-kaburga-dolmasi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-19",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/gurmemardin/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/buyuk-erzurum-sofrasi-kartal",
+   "ad": "Büyük Erzurum Sofrası",
+   "ilce": "Kartal",
+   "kaynakAdresi": "Atalar, Kumlar Cd. No:26/2, Kartal, İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/anadolu-yakasinda-en-iyi-cag-kebabi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-16",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/buyukerzurumsofrasi/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya",
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/pasa-konagi-cag-kebap-kartal",
+   "ad": "Paşa Konağı Cağ Kebap",
+   "ilce": "Kartal",
+   "kaynakAdresi": "Yakacık Çarşı, Dolayoba Cd. No:36, Kartal, İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/anadolu-yakasinda-en-iyi-cag-kebabi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-16",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/tarihierzurumkebapcisi/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/zambak-bosnak-borekcisi-bayrampasa",
+   "ad": "Zambak Boşnak Börekçisi",
+   "ilce": "Bayrampaşa",
+   "kaynakAdresi": "Kocatepe Mahallesi, 19. Sokak No:111/A, Bayrampaşa, İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-bosnak-boregi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/zambakbosnakborekcisi/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/prava-pita-bosnak-borekcisi-bayrampasa",
+   "ad": "Prava Pita Boşnak Börekçisi",
+   "ilce": "Bayrampaşa",
+   "kaynakAdresi": "Kocatepe Mahallesi, Şehit Kamil Balkan Caddesi No:12, Bayrampaşa, İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-bosnak-boregi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/pravapita/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya"
+   ]
+  },
+  {
+   "id": "seyrek/pita-cafe-bosnak-boregi-avcilar",
+   "ad": "Pita Cafe Boşnak Böreği",
+   "ilce": "Avcılar",
+   "kaynakAdresi": "Merkez Mahallesi, Reşitpaşa Caddesi No:14, Avcılar, İstanbul",
+   "categoryId": "cat.cafe",
+   "kind": "Fırın",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-bosnak-boregi-nerede-yenir/",
+     "yayinGuncelleme": "2026-10-12",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "sipariş platformu",
+     "url": "https://www.migros.com.tr/yemek/pita-cafe-bosnak-boregi-avcilar-merkez-mah-st-2525b",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "'Pita Cafe & Boşnak Böreği, Avcılar (Merkez Mah.)', güncel menü (platform puanı/yorumu saklanmadı)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/pitacafee/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
+   "adres": "Reşitpaşa Caddesi No:14, Merkez",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (sahip kararı 15.11.2026): yemek.com tarihli editoryal (açık adres) + sipariş platformu sayfası (aynı ad ve mahalle, bugün güncel menü)"
+   }
+  },
+  {
+   "id": "seyrek/arjantin-burger-handmade-avcilar",
+   "ad": "Arjantin Burger Handmade",
+   "ilce": "Avcılar",
+   "kaynakAdresi": "Ambarlı Mahallesi, Plaj Yolu Sokak No:15/A, Avcılar/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Burger",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-islak-hamburger-nerede-yenir/",
+     "yayinGuncelleme": "2026-09-30",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "resmî site",
+     "url": "http://arjantinburger.com/",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad ve aynı adres: {\"@id\":\"http://arjantinburger.com/#/schema/logo/image/\"}}]} Ambarlı, Plaj Yolu Sok. 15/A, Avcılar/İstanbul 0 ("
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/arjantinburger/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "adres": "Plaj Yolu Sokak No:15/A, Ambarlı",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "eksik": [],
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak: yemek.com (2026, tarihli) + işletmenin resmî sitesi (bugün, aynı sokak ve kapı no)"
+   }
+  },
+  {
+   "id": "seyrek/meshur-yayla-kokoreccisi-bahcelievler",
+   "ad": "Meşhur Yayla Kokoreçcisi",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Bahçelievler Mahallesi, Mahmut Ardıç Sokak No:18, Bahçelievler/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Sokak lezzeti",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbulda-en-iyi-kokorec-nerede-yenir/",
+     "yayinGuncelleme": "2026-09-30",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    },
+    {
+     "tur": "sipariş platformu",
+     "url": "https://www.migros.com.tr/yemek/meshur-yayla-kokoreccisi-bahcelievler-bahcelievler-merkez-mah-st-1dd6a",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "'Meşhur Yayla Kokoreççisi, Bahçelievler (Bahçelievler Merkez Mah.)', güncel menü; platform mahalleyi 'Bahçelievler Merkez' diye yazıyor (platform puanı/yorumu saklanmadı)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/meshur_yayla_kokorec/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "aday-guclu",
+   "guven": "güçlü",
+   "eksik": [],
+   "adres": "Mahmut Ardıç Sokak No:18, Bahçelievler",
+   "kaliteSinifiOnerisi": "A-konumsuz",
+   "koordinat": null,
+   "kabulHazirlik": {
+    "durum": "codex-teknik-kabule-hazir",
+    "not": "iki bağımsız kaynak (sahip kararı 15.11.2026): yemek.com tarihli editoryal (açık adres) + sipariş platformu sayfası (aynı ad ve mahalle, bugün güncel menü)"
+   }
+  },
+  {
+   "id": "seyrek/seraf-restaurant-bagcilar",
+   "ad": "Seraf Restaurant",
+   "ilce": "Bağcılar",
+   "kaynakAdresi": "Mahmutbey, Peyami Safa Cd. 38/D, 34218 Bağcılar/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/en-iyi-kebap-mekanlari/",
+     "yayinGuncelleme": "2026-09-22",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya",
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/cigerci-usta-bahcelievler",
+   "ad": "Ciğerci Usta",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Şirinevler Mahallesi, Fetih Caddesi No:12, Bahçelievler/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/avrupa-yakasinda-en-iyi-ciger-nerede-yenir/",
+     "yayinGuncelleme": "2026-09-17",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/gaziantepli-altinoglu-baklavalari-kartal",
+   "ad": "Gaziantepli Altınoğlu Baklavaları",
+   "ilce": "Kartal",
+   "kaynakAdresi": "Orhantepe Mahallesi, Saraylar Caddesi No:52, Kartal/İstanbul",
+   "categoryId": "cat.cafe",
+   "kind": "Tatlıcı",
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/anadolu-yakasinda-en-iyi-baklava-nerede-yenir/",
+     "yayinGuncelleme": "2026-09-18",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "sosyalMedya": {
+    "url": "https://www.instagram.com/altinoglubaklavaa/",
+    "not": "yemek.com'un verdiği hesap; otomatik okunmadı, kanıt sayılmadı"
+   },
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "yalnız yemek.com (tarihli); resmî site/ikinci bağımsız kaynak bulunamadı ya da açılmadı",
+   "platformAramasi": {
+    "tarih": "2026-11-15",
+    "sonuc": "Migros Yemek'te ad + ilçe ile bulunamadı (web araması); Yemeksepeti otomatik erişimi engelliyor (403), Getir/Trendyol giriş istiyor"
+   }
+  },
+  {
+   "id": "seyrek/kutuk-ev-cafe-restaurant-bahcelievler",
+   "ad": "Kütük Ev Cafe & Restaurant",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Bahçelievler, Şht. Yaşar Erol Akansel Sk. No:8, 34180 Bahçelievler/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbul-bahcelievler-mekanlari/",
+     "yayinGuncelleme": "2025-01-02",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2025-01-02)"
+  },
+  {
+   "id": "seyrek/hollywood-cafe-bahcelievler",
+   "ad": "Hollywood Cafe",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Bahçelievler, Adnan Kahveci Blv. No: 87, 34180 Bahçelievler/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbul-bahcelievler-mekanlari/",
+     "yayinGuncelleme": "2025-01-02",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2025-01-02)"
+  },
+  {
+   "id": "seyrek/big-house-bahcelievler",
+   "ad": "Big House",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Bahçelievler, Adnan Kahveci Blv. No:95, 34180 Bahçelievler/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbul-bahcelievler-mekanlari/",
+     "yayinGuncelleme": "2025-01-02",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2025-01-02)"
+  },
+  {
+   "id": "seyrek/kanatci-haydar-bahcelievler",
+   "ad": "Kanatçı Haydar",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Kocasinan Merkez, Mahallesi, Ahlat Sk. 18/A, 34186 Bahçelievler/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbul-bahcelievler-mekanlari/",
+     "yayinGuncelleme": "2025-01-02",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya"
+   ]
+  },
+  {
+   "id": "seyrek/balikci-ersin-bahcelievler",
+   "ad": "Balıkçı Ersin",
+   "ilce": "Bahçelievler",
+   "kaynakAdresi": "Ferit Selim Paşa Caddesi, Düzgün Sk. No:12/A, 34544 Bahçelievler/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/istanbul-bahcelievler-mekanlari/",
+     "yayinGuncelleme": "2025-01-02",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2025-01-02)"
+  },
+  {
+   "id": "seyrek/cakir-menemen-cumali-cakir-bagcilar",
+   "ad": "Çakır Menemen Cumali Çakır",
+   "ilce": "Bağcılar",
+   "kaynakAdresi": "Göztepe, Karanfil Sokağı No: 65/A, Bağcılar/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/bagcilar-gungoren-zeytinburnu-mekanlari/",
+     "yayinGuncelleme": "2023-10-20",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2023-10-20)"
+  },
+  {
+   "id": "seyrek/sivas-evi-sukru-usta-bagcilar",
+   "ad": "Sivas Evi Şükrü Usta",
+   "ilce": "Bağcılar",
+   "kaynakAdresi": "100. Yıl, Barbaros Cd. No:79, Bağcılar/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/bagcilar-gungoren-zeytinburnu-mekanlari/",
+     "yayinGuncelleme": "2023-10-20",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2023-10-20)"
+  },
+  {
+   "id": "seyrek/cotanak-pide-bagcilar",
+   "ad": "Çotanak Pide",
+   "ilce": "Bağcılar",
+   "kaynakAdresi": "Kazımkarabekir, No:, Mehmet Akif Blv. No:79, Bağcılar/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/bagcilar-gungoren-zeytinburnu-mekanlari/",
+     "yayinGuncelleme": "2023-10-20",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya",
+    "feature/bin-mekan"
+   ]
+  },
+  {
+   "id": "seyrek/nohut-durumcu-hamo-nun-yeri-gungoren",
+   "ad": "Nohut Dürümcü Hamo'nun Yeri",
+   "ilce": "Güngören",
+   "kaynakAdresi": "Merkez, İkbal Sk. No:9, 34164 Güngören/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/bagcilar-gungoren-zeytinburnu-mekanlari/",
+     "yayinGuncelleme": "2023-10-20",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2023-10-20)"
+  },
+  {
+   "id": "seyrek/hizmet-kardesler-firinli-kasap-cekmekoy",
+   "ad": "Hizmet Kardeşler Fırınlı Kasap",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Güngören, İkbal Sk. NO:13, 34788 Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/bagcilar-gungoren-zeytinburnu-mekanlari/",
+     "yayinGuncelleme": "2023-10-20",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2023-10-20); kaynaktaki ilçe/posta kodu tutarsız (Güngören ↔ 34788 Çekmeköy)"
+  },
+  {
+   "id": "seyrek/kebapci-cetin-usta-gungoren",
+   "ad": "Kebapçı Çetin Usta",
+   "ilce": "Güngören",
+   "kaynakAdresi": "Merkez Güngören Caddesi, İkbal Sk. No:14/A, Güngören/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/bagcilar-gungoren-zeytinburnu-mekanlari/",
+     "yayinGuncelleme": "2023-10-20",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "inceleme",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ],
+   "neden": "kaynak 12 aydan eski (2023-10-20)"
+  },
+  {
+   "id": "seyrek/ahmet-usta-tarihi-merkezefendi-koftecisi-zeytinburnu",
+   "ad": "Ahmet Usta Tarihi Merkezefendi Köftecisi",
+   "ilce": "Zeytinburnu",
+   "kaynakAdresi": "Merkezefendi, Dere Sk. No:14, 34025 Zeytinburnu/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": null,
+   "kaynaklar": [
+    {
+     "tur": "bağımsız editoryal (tarihli)",
+     "url": "https://yemek.com/bagcilar-gungoren-zeytinburnu-mekanlari/",
+     "yayinGuncelleme": "2023-10-20",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "ad, açık adres, liste konusu (tür)"
+    }
+   ],
+   "durum": "katalogda-ya-da-dalda-var",
+   "eslesen": [
+    "PROD-dosya",
+    "katalog/gece-2000"
+   ]
+  },
+  {
+   "id": "seyrek/ibb-cirpici-kent-lokantasi",
+   "ad": "İBB Çırpıcı Kent Lokantası",
+   "ilce": "Zeytinburnu",
+   "kaynakAdresi": null,
+   "categoryId": "cat.restaurant",
+   "kind": "Lokanta",
+   "kaynaklar": [
+    {
+     "tur": "işletmeci resmî sayfası",
+     "url": "https://tesislerimiz.ibb.istanbul/tesis/cirpici-kent-lokantasi",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "İBB Kent Lokantası şube sayfası (ad, adres)"
+    },
+    {
+     "tur": "bağımsız haber (2026, tarihli)",
+     "url": "https://www.evrensel.net/haber/6006331/ibb-yeni-kent-lokantasini-zeytinburnunda-acti",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "22. Kent Lokantası Zeytinburnu Çırpıcı Şehir Parkı'nda açıldı (23.10.2026)"
+    }
+   ],
+   "durum": "inceleme",
+   "neden": "kimlik ve güncel faaliyet iki bağımsız kaynakta (İBB resmî sayfa + Evrensel 23.10.2026), ama kapı no yok ('Çırpıcı Şehir Parkı girişi')",
+   "guven": "orta",
+   "eksik": [
+    "adres"
+   ]
+  },
+  {
+   "id": "seyrek/ibb-silivri-kent-lokantasi",
+   "ad": "İBB Silivri Kent Lokantası",
+   "ilce": "Silivri",
+   "kaynakAdresi": "Akgün, Alibey, Mehmet Silivrili Cd. NO:23/B, 34570 Silivri/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Lokanta",
+   "kaynaklar": [
+    {
+     "tur": "işletmeci resmî sayfası",
+     "url": "https://tesislerimiz.ibb.istanbul/tesis/silivri-kent-lokantasi",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "İBB Kent Lokantası şube sayfası (ad, adres)"
+    }
+   ],
+   "durum": "inceleme",
+   "neden": "yalnız İBB resmî sayfası (Mehmet Silivrili Cd. No:23/B); bağımsız ikinci kaynak bulunamadı",
+   "guven": "orta",
+   "eksik": [
+    "faaliyet"
+   ]
+  },
+  {
+   "id": "seyrek/ibb-sarigazi-kent-lokantasi",
+   "ad": "İBB Sarıgazi Kent Lokantası",
+   "ilce": "Sancaktepe",
+   "kaynakAdresi": "Emek Mah. Namık Kemal Cad. No: 77 SANCAKTEPE, 34785 Sancaktepe/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Lokanta",
+   "kaynaklar": [
+    {
+     "tur": "işletmeci resmî sayfası",
+     "url": "https://tesislerimiz.ibb.istanbul/tesis/sarigazi-kent-lokantasi",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "İBB Kent Lokantası şube sayfası (ad, adres)"
+    }
+   ],
+   "durum": "bekleyen-kayda-kanit",
+   "neden": "Production data/ altındaki eski paket incelemesinde bekliyor; İBB resmî şube sayfası bugün adresle yayında; bağımsız ikinci kaynak bulunamadı",
+   "mevcutKayit": "Production data/paket inceleme (eski paket)"
+  },
+  {
+   "id": "seyrek/ibb-cekmekoy-kent-lokantasi",
+   "ad": "İBB Çekmeköy Kent Lokantası",
+   "ilce": "Çekmeköy",
+   "kaynakAdresi": "Sultançiftliği, Turgut Özal Cd. no : 94, 34265 Çekmeköy/İstanbul",
+   "categoryId": "cat.restaurant",
+   "kind": "Lokanta",
+   "kaynaklar": [
+    {
+     "tur": "işletmeci resmî sayfası",
+     "url": "https://tesislerimiz.ibb.istanbul/tesis/cekmekoy-kent-lokantasi",
+     "kontrol": "2026-11-15",
+     "kanitladigi": "İBB Kent Lokantası şube sayfası (ad, adres)"
+    }
+   ],
+   "durum": "bekleyen-kayda-kanit",
+   "neden": "Production data/ altındaki eski paket incelemesinde bekliyor; İBB resmî şube sayfası bugün adresle yayında; bağımsız ikinci kaynak bulunamadı",
+   "mevcutKayit": "Production data/paket inceleme (eski paket)"
+  }
+ ],
+ "kanitStandardi": "İki bağımsız kaynak. Sahip kararı (15.11.2026, 'Platform + editoryal yeter'): son 12 ayda tarihli, açık adresli bağımsız editoryal kayıt + güncel sipariş platformu sayfası (aynı ad ve ilçe/mahalle, bugün menüyle açık) yeterlidir. Platform puanı/yorumu saklanmaz; Instagram ve Google kanıt sayılmaz."
+}
