@@ -5,6 +5,7 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/navigation";
 import { AtlasEtiket, AtlasIcon, AtlasSayi } from "./AtlasPrimitives";
 import styles from "./atlas.module.css";
+import { mobilAtlasEtiketleri } from "@/lib/harita/atlas-etiketleri";
 import { atlasKumeleri } from "@/lib/harita/atlas-pinleri";
 import sinirlar from "@/data/harita/ilceler.json";
 import { activeEntities } from "@/data/real/presentation";
@@ -194,6 +195,17 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
     return { f: filtre === "secki" ? "var(--accent-soft)" : fill(filtre), o: 0.35 + 0.65 * (n / maxN) };
   };
   const boxes = useMemo(() => new Map(parcalar.map((p) => [p.id, bbox([p.shape])])), [parcalar]);
+  const etiketler = useMemo(() => {
+    const candidates = parcalar.filter((p) => !p.baglam && (!mahalle || p.secili)).flatMap((p) => {
+      const b = boxes.get(p.id)!;
+      const large = b.w >= hedef.w * (ilce ? .09 : .042);
+      if (!large && !(!ilce && p.yerler.length >= 20 && b.w >= hedef.w * .014)) return [];
+      const [x, y] = labelAt(p.shape);
+      return [{ id: p.id, ad: p.ad, x, y, n: p.yerler.length }];
+    });
+    return !ilce && widthPx < 520 ? mobilAtlasEtiketleri(candidates, hedef, widthPx) : candidates;
+  }, [boxes, hedef, ilce, mahalle, parcalar, widthPx]);
+
 
   /* ---------- panel ---------- */
   const say = useMemo(() => grupSay(bolgeYerler.map((y) => y.kind)), [bolgeYerler]);
@@ -222,12 +234,17 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   const seciliYer = seciliSlug && pinSlugs.has(seciliSlug) ? listede.find((y) => y.slug === seciliSlug) : undefined;
   const satiriGoster = (slug: string) => {
     const row = document.getElementById(`semt-mekan-${slug}`);
+    const profile = row?.querySelector<HTMLAnchorElement>("a[href]");
+    if (!row || !profile) return false;
+    // Focus without a native scroll; then reveal the result with one deliberate scroll.
+    profile.focus({ preventScroll: true });
     gorunumeGetir(row);
+    return true;
   };
   function mekanSec(y: Yer, yon: "listeye" | "haritaya" | "burada", klavye = false) {
     if (yon === "listeye") {
       setAcik((s) => s[y.grup] ? s : { ...s, [y.grup]: true });
-      if (seciliYer?.slug === y.slug) satiriGoster(y.slug);
+      if (seciliYer?.slug === y.slug && satiriGoster(y.slug)) listedeGoster.current = false;
       else listedeGoster.current = true;
     } else if (yon === "haritaya") {
       gorunumeGetir(atlasHeading.current);
@@ -242,10 +259,9 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   useEffect(() => {
     if (seciliSlug && !seciliYer) { listedeGoster.current = false; setSeciliSlug(null); }
     else if (seciliYer && listedeGoster.current) {
-      listedeGoster.current = false;
-      satiriGoster(seciliYer.slug);
+      if (satiriGoster(seciliYer.slug)) listedeGoster.current = false;
     }
-  }, [seciliSlug, seciliYer]);
+  }, [acik, seciliSlug, seciliYer]);
 
   const bolumler = useMemo(() => {
     if (filtre !== "tumu") return [{ key: filtre, ad: filtre === "secki" ? "Gidenler Seçkisi" : GRUP.get(filtre)!.ad, yerler: sirala(listede) }];
@@ -254,6 +270,7 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   const baslik = mahalle ?? ilce?.ad ?? (d.yaka ? YAKA_AD[d.yaka] : "İstanbul");
   const ust = [mahalle && ilce ? ilce.ad : null, ilce || mahalle ? null : d.yaka ? "İstanbul" : null].filter(Boolean).join(" · ") || (ilce ? YAKA_AD[ilce.yaka] : "Semt semt");
   const bas = baskin(bolgeYerler.map((y) => y.kind));
+  const ilceListesineAyrilan = !ilce ? bolgeYerler.filter((y) => gecer(y) && konumDogrulanmadi(y.slug)).length : 0;
   const atanmamis = ilce && mah?.mahalleler.length && !mahalle ? (YER_BY_ILCE.get(ilce.slug) ?? []).filter((y) => !atama.has(y.slug)).length : 0;
   const cipler = [...say.filter((s) => s.key !== "diger"), ...say.filter((s) => s.key === "diger")];
   const gorunenCip = tumCip ? cipler : cipler.slice(0, 4);
@@ -310,7 +327,7 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
         </div>
         <div className={styles.heroMetrics} aria-label="Atlas kapsamı">
           <AtlasSayi value={ILCELER.length} label="ilçe" />
-          <AtlasSayi value={YERLER.length} label="katalogda mekân" />
+          <AtlasSayi value={YERLER.length} label="aktif katalog kaydı" />
         </div>
       </header>
 
@@ -422,14 +439,11 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
               })}
               {ilce && mah && <path d={pathD(ilce)} fill="none" stroke="var(--accent)" strokeWidth="1.2" strokeOpacity=".63" vectorEffect="non-scaling-stroke" pointerEvents="none" />}
 
-              {parcalar.filter((p) => !p.baglam && (!mahalle || p.secili)).map((p) => {
-                const b = boxes.get(p.id)!; const large = b.w >= box.w * (ilce ? .09 : .042);
-                if (!large && !(!ilce && p.yerler.length >= 20 && b.w >= box.w * .014)) return null;
-                const [x, y] = labelAt(p.shape);
-                return <text key={`l:${p.id}`} x={x} y={y} fontSize={Math.max(ilce ? 18 : 16, box.w * 10 / widthPx)} textAnchor="middle"
+              {etiketler.map(({ id, ad, x, y }) => (
+                <text key={`l:${id}`} x={x} y={y} fontSize={Math.max(ilce ? 18 : 16, box.w * 10 / widthPx)} textAnchor="middle"
                   className={styles.mapLabel} strokeWidth={3.2 * box.w / widthPx}
-                  pointerEvents="none">{p.ad}</text>;
-              })}
+                  pointerEvents="none" aria-hidden="true">{ad}</text>
+              ))}
 
               {kumeler.map((k) => {
                 const [x, y] = k.xy, group = k.yerler.length > 1, scale = box.w / widthPx;
@@ -522,6 +536,7 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
               <AtlasSayi value={listede.length} label={filtre === "tumu" ? "mekân" : "sonuç"} />
             </div>
             <p className={styles.detailDescription}>{bas && bas !== "diger" ? <>Katalogda en çok <strong>{GRUP.get(bas)!.ad.toLocaleLowerCase("tr")}</strong>.</> : "Buradaki kayıtlı mekânları türüne göre keşfet."}</p>
+            {ilceListesineAyrilan > 0 && <p className={styles.unplaced}>{ilceListesineAyrilan} mekânın konumu doğrulanmadı; yalnız kendi ilçe listesinde gösteriliyor.</p>}
             {atanmamis > 0 && <p className={styles.unplaced}>{atanmamis} kaydın mahallesi belirsiz; yalnız ilçe listesinde.</p>}
             <div className={styles.filters} role="group" aria-label="Mekân türü">
               <Cip on={filtre === "tumu"} onClick={() => setFiltre("tumu")}>Tümü</Cip>
@@ -569,7 +584,7 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
                             <AtlasIcon name="arrow" size={15} />
                           </Link>
                           {ilce && pinSlugs.has(y.slug) && (
-                            <button type="button" className={styles.showPin} aria-label={`${y.name} haritada göster`} aria-pressed={picked}
+                            <button type="button" className={styles.showPin} aria-label={picked ? `${y.name}: Haritada seçili` : `${y.name} haritada göster`} aria-pressed={picked}
                               onClick={(e) => mekanSec(y, "haritaya", e.detail === 0)}>
                               <AtlasIcon name={picked ? "check" : "pin"} size={15} />{picked ? "Haritada seçili" : "Haritada göster"}
                             </button>

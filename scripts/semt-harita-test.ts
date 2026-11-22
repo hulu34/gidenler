@@ -5,6 +5,7 @@ import path from "node:path";
 import assert from "node:assert/strict";
 import sinirlar from "../data/harita/ilceler.json";
 import { activeEntities } from "../data/real/presentation";
+import { mobilAtlasEtiketleri } from "../lib/harita/atlas-etiketleri";
 import { atlasKumeleri } from "../lib/harita/atlas-pinleri";
 import { haritaSorgusu, mahalleGorunumu, mahalleYukleyici } from "../lib/harita/mahalle-yukleme";
 import {
@@ -210,6 +211,17 @@ t("Caferağa mobil: Çiya ve HD İskender ayrı doğrulanabilir seçimler, üst 
   for (const [i, g] of groups.entries()) for (const h of groups.slice(i + 1)) {
     assert.ok(Math.hypot(g.xy[0] - h.xy[0], g.xy[1] - h.xy[1]) >= 32 * factor);
   }
+});
+
+t("dar şehir haritasında çakışan düşük öncelikli etiket gizlenir, uzak etiket kalır", () => {
+  const frame = { x: 0, y: 0, w: 319, h: 220 };
+  const labels = [
+    { id: "dusuk", ad: "Şişli", x: 114, y: 93, n: 18 },
+    { id: "yuksek", ad: "Beyoğlu", x: 100, y: 90, n: 90 },
+    { id: "uzak", ad: "Kadıköy", x: 238, y: 147, n: 100 },
+  ];
+  assert.deepEqual(mobilAtlasEtiketleri(labels, frame, 319).map(({ id }) => id), ["uzak", "yuksek"]);
+  assert.equal(labels.length, 3); // görsel etiket seçimi bölge verisini değiştirmez
 });
 
 async function tekrarDeneTesti() {
