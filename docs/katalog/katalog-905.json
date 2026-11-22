@@ -1,0 +1,171 @@
+{
+  "status": "LOCAL_APPEND_ONLY_NO_REMOTE_NO_RELEASE",
+  "baselineSha": "9a2f2f482b65709e862397911438d99b06230e2c",
+  "base": {
+    "total": 892,
+    "active": 857,
+    "activeRestaurant": 732
+  },
+  "target": {
+    "total": 905,
+    "active": 870,
+    "activeRestaurant": 745
+  },
+  "localAdded": 13,
+  "previewAdded": 0,
+  "productionAdded": 0,
+  "sources": [
+    {
+      "slug": "suimaki-sisli",
+      "branch": "Teşvikiye (tek lokasyon)",
+      "operatorAddress": "Av. Süreyya Ağaoğlu Sokak, Köşe Apt. No:10C, Teşvikiye Mahallesi, Şişli",
+      "operatorSource": "https://www.suimaki.com/",
+      "activitySource": "https://www.oggusto.com/gastronomi/istanbul/istanbulun-en-yeni-mekanlari",
+      "activityDate": "2026-11-19",
+      "activityDateMeaning": "editorial update; not a visit date",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-mimar-sinan-esenler",
+      "branch": "Esenler",
+      "operatorAddress": "Mimar Sinan Mahallesi Davutpaşa Caddesi No:15/A Esenler",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-esenler-mimar-sinan-mah-st-1f076",
+      "activityDate": "2026-11-02",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-merkez-gaziosmanpasa",
+      "branch": "Gaziosmanpaşa",
+      "operatorAddress": "Merkez Mahallesi Salih Paşa Caddesi No:6 Gaziosmanpaşa",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-gaziosmanpasa-merkez-mah-st-2e6b5",
+      "activityDate": "2026-10-29",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-karadeniz-gaziosmanpasa",
+      "branch": "Venezia",
+      "operatorAddress": "Karadeniz Mahallesi Eski Edirne Asfaltı Venezia Avm No:408 Gaziosmanpaşa",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-gaziosmanpasa-karadeniz-mah-st-313cd",
+      "activityDate": "2026-11-12",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-sancaktepe-bagcilar",
+      "branch": "Bağcılar",
+      "operatorAddress": "Sancaktepe Mahallesi Çarşı Caddesi No:12/A Bağcılar",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-bagcilar-sancaktepe-mah-st-3266c",
+      "activityDate": "2026-09-27",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-15-temmuz-bagcilar",
+      "branch": "Oasis Cadde",
+      "operatorAddress": "15 Temmuz Mahallesi Bahar Caddesi Nurol Park E Blok No:45 İç Kapı No:1845 Bağcılar",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-bagcilar-15-temmuz-mah-st-2f7b3",
+      "activityDate": "2026-11-01",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-turgut-ozal-esenyurt",
+      "branch": "Torium",
+      "operatorAddress": "Turgut Özal Mahallesi E5 Yanyolu Üzeri Torıum Avm No:50 İç Kapı No:289 Esenyurt",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-esenyurt-turgut-ozal-mah-st-2f7b1",
+      "activityDate": "2026-10-24",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-barbaros-hayrettin-pasa-esenyurt",
+      "branch": "Esenyurt",
+      "operatorAddress": "Barbaros Hayrettin Paşa Mahallesi 1988.Sokak No:2E/11 Esenyurt",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-esenyurt-barbaros-hayrettin-pasa-mah-st-1f07d",
+      "activityDate": "2026-11-21",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-yesilpinar-eyupsultan",
+      "branch": "Vialand",
+      "operatorAddress": "Yeşilpınar Mahallesi Metinkaya Sokak Vialand Avm No:11/A Eyüpsultan",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-eyup-yesilpinar-mah-st-1f07e",
+      "activityDate": "2026-11-13",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-silivrikapi-fatih",
+      "branch": "Kocamustafapaşa",
+      "operatorAddress": "Silivrikapı Mahallesi Kuvayi Milliye Caddesi No:2 Kocamustafapaşa Fatih",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-fatih-silivrikapi-mah-st-1f081",
+      "activityDate": "2026-10-24",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-kemalpasa-kucukcekmece",
+      "branch": "Sefaköy",
+      "operatorAddress": "Kemalpaşa Mahallesi Halkalı Caddesi No:149/1A Küçükçekmece",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-kucukcekmece-kemalpasa-mah-st-1e86e",
+      "activityDate": "2026-11-12",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-merkez-kagithane",
+      "branch": "Kağıthane",
+      "operatorAddress": "Merkez Mahallesi Sadabad Caddesi No:46A Kağıthane",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-kagithane-merkez-mah-st-2ce2c",
+      "activityDate": "2026-11-21",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-zeytinlik-bakirkoy",
+      "branch": "Bakırköy",
+      "operatorAddress": "Zeytinlik Mahallesi Fişekhane Caddesi No:18 Bakırköy",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-bakirkoy-zeytinlik-mah-st-1f074",
+      "activityDate": "2026-10-29",
+      "activityDateMeaning": "dated order review shown under the exact named branch; neither Gidenler review nor in-person visit proof",
+      "addressSourceScope": "Official exact street/door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    }
+  ],
+  "holds": {
+    "burger-yiyelim-yenisehir-pendik": "Lens deferred until legacy addressless Pendik identity independently resolved",
+    "mama-bowl-kitchen-moda-kadikoy": "Relocation/identity decision; neither new branch nor catalogue edit"
+  },
+  "nearbyNotDuplicates": {
+    "burger-yiyelim-zeytinlik-bakirkoy": "official Zeytinlik No:18 separate from existing Capacity, Ataköy 1.Kısım No:7",
+    "burger-yiyelim-yesilpinar-eyupsultan": "Bursa Kebap Evi is different Vialand tenant, not Burger Yiyelim",
+    "suimaki-sisli": "TAS Ramen & Sushi Bar same street No:7B, different operator and business"
+  }
+}
