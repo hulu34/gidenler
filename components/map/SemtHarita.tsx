@@ -8,7 +8,7 @@ import { useGoogleRatings } from "@/components/google/GoogleRatings";
 import { usePublished } from "@/components/score/PublishedProvider";
 import { fmtPublished } from "@/lib/score/publishedCards";
 import {
-  GRUP, TUR_GRUPLARI, YAKA_AD, baskin, bbox, fit, grupOf, grupSay, labelAt, mahalleAta, norm, pathD, project, sirala,
+  GRUP, TUR_GRUPLARI, YAKA_AD, baskin, bbox, fit, grupOf, grupSay, haritaKoordinati, haritaListesinde, konumDogrulanmadi, labelAt, mahalleAta, norm, pathD, project, sirala,
   type Box, type Ilce, type Mahalle, type Proj, type Yaka,
 } from "@/lib/harita/semt";
 import { haritaSorgusu, mahalleGorunumu, mahalleYukleyici, type Durum, type MahalleYukleme } from "@/lib/harita/mahalle-yukleme";
@@ -31,7 +31,7 @@ interface Yer {
 const YERLER: Yer[] = activeEntities.flatMap((e) => {
   const ilce = e.location?.district ? ILCE_BY_NORM.get(norm(e.location.district)) : undefined;
   if (!ilce) return [];
-  const geo = e.location?.geo;
+  const geo = haritaKoordinati(e.slug, e.location?.geo);
   return [{
     slug: e.slug, name: e.name, kind: e.subcategory, grup: grupOf(e.subcategory), ilce: ilce.slug, district: ilce.ad,
     neighborhood: e.location?.neighborhood, address: e.address, lat: geo?.lat, lng: geo?.lng, xy: geo ? project(PROJ, geo.lat, geo.lng) : undefined,
@@ -161,7 +161,9 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   /* ---------- panel ---------- */
   const say = useMemo(() => grupSay(bolgeYerler.map((y) => y.kind)), [bolgeYerler]);
   const seckiN = bolgeYerler.filter((y) => seckiSet.has(y.slug)).length;
-  const listede = useMemo(() => bolgeYerler.filter(gecer).map((y) => ({ ...y, g: google[y.slug] ?? null })), [bolgeYerler, gecer, google]);
+  const listede = useMemo(() => bolgeYerler
+    .filter((y) => haritaListesinde(y.slug, !!ilce, !!mahalle) && gecer(y))
+    .map((y) => ({ ...y, g: google[y.slug] ?? null })), [bolgeYerler, gecer, google, ilce, mahalle]);
   const seciliYer = seciliSlug && ilce ? listede.find((y) => y.slug === seciliSlug && y.xy) : undefined;
   const satiriGoster = (slug: string) => document.getElementById(`semt-mekan-${slug}`)?.scrollIntoView({ block: "nearest" });
   function mekanSec(y: Yer, noktadan: boolean) {
@@ -378,6 +380,7 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
                           <span className="min-w-0">
                             <span className="block truncate text-[14.5px] font-semibold group-hover:text-accent-ink">{y.name}{seckiSet.has(y.slug) && <span className="ml-1.5 align-[1px] text-[9.5px] font-bold uppercase tracking-[0.12em] text-accent-ink">Seçki</span>}</span>
                             <span className="block truncate text-[12px] text-ink-3">{sub}{y.kind && y.kind !== sub ? ` · ${y.kind}` : ""}</span>
+                            {konumDogrulanmadi(y.slug) && <span className="block text-[12px] text-ink-2">Konum doğrulanmadı</span>}
                           </span>
                           <span className="tnum flex shrink-0 flex-col items-end text-right">
                             {y.g ? <span className="text-[13.5px] font-bold" title={`Google puanı ${f1(y.g.rating)}/5. Gidenler puanı değildir.`}>★ {f1(y.g.rating)}{y.g.count != null && <span className="ml-1 text-[11.5px] font-medium text-ink-3">({y.g.count.toLocaleString("tr-TR")})</span>}</span>

@@ -7,7 +7,7 @@ import sinirlar from "../data/harita/ilceler.json";
 import { activeEntities } from "../data/real/presentation";
 import { haritaSorgusu, mahalleGorunumu, mahalleYukleyici } from "../lib/harita/mahalle-yukleme";
 import {
-  TUR_GRUPLARI, baskin, bbox, grupOf, grupSay, inShape, labelAt, mahalleAta, norm, project, sirala,
+  TUR_GRUPLARI, baskin, bbox, grupOf, grupSay, haritaKoordinati, haritaListesinde, inShape, konumDogrulanmadi, labelAt, mahalleAta, norm, project, sirala,
   type Ilce, type Mahalle, type Proj,
 } from "../lib/harita/semt";
 
@@ -119,6 +119,28 @@ t("Kadıköy örneği: mahallelere dağılım ve baskın tür", () => {
   const mahs = new Set([...a.values()].map((v) => v.ad));
   console.log(`  Kadıköy: ${xs.length} mekân, ${mahs.size} mahalle; baskın ${baskin(xs.map((y) => y.kind))}; ilk üç grup ${grupSay(xs.map((y) => y.kind)).slice(0, 3).map((g) => `${g.key}:${g.n}`).join(" ")}`);
   assert.ok(mahs.size >= 8); assert.ok(bbox([kad]).w > 0);
+});
+
+t("Tuğbiş tek Üsküdar kaydı; konumu doğrulanmadı, pin ve mahalle ataması yok", () => {
+  const matches = activeEntities.filter((e) => e.slug === "tugbis-manti-uskudar");
+  assert.equal(matches.length, 1);
+  const e = matches[0]!;
+  assert.equal(e.location?.district, "Üsküdar");
+  const geo = e.location?.geo;
+  assert.ok(geo, "ham katalog koordinatı korunmalı");
+  assert.ok(konumDogrulanmadi(e.slug));
+  assert.equal(haritaKoordinati(e.slug, geo), undefined);
+  assert.equal(haritaListesinde(e.slug, true, false), true);
+  assert.equal(haritaListesinde(e.slug, true, true), false);
+  assert.equal(haritaListesinde(e.slug, false, false), false);
+  const v = { slug: e.slug, neighborhood: e.location?.neighborhood, address: e.address, ...geo };
+  for (const slug of ["uskudar", "kadikoy"]) {
+    assert.equal(mahalleAta(PROJ, [v], MAH.get(slug)!).has(e.slug), false);
+    assert.equal(mahalleAta(PROJ, [{ ...v, lat: 41.006759, lng: 29.047067 }], MAH.get(slug)!).has(e.slug), false);
+  }
+  // An unreviewed slug is not inferred to be a conflict merely from this coordinate.
+  assert.equal(haritaKoordinati("baska-mekan", geo), geo);
+  assert.equal(haritaListesinde("baska-mekan", true, true), true);
 });
 
 /* ---------- yükleme ve doğrudan bağlantı regresyonları ---------- */

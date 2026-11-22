@@ -92,6 +92,20 @@ export function labelAt(s: Shape): [number, number] {
 
 /* ---------- mekân → mahalle ---------- */
 export interface Yer { slug: string; district?: string; neighborhood?: string; address?: string; lat?: number; lng?: number }
+
+// Only evidence-reviewed conflicts belong here; a simplified polygon mismatch
+// alone is not a reason to suppress a pin or reassign a catalog district.
+// Tuğbiş: merchant address supports Üsküdar, but public coordinates do not
+// reconcile the district/neighborhood layers. Do not infer a replacement pin.
+const KONUM_DOGRULANMADI = new Set(["tugbis-manti-uskudar"]);
+
+export const konumDogrulanmadi = (slug: string) => KONUM_DOGRULANMADI.has(slug);
+export function haritaKoordinati<T>(slug: string, geo: T | undefined): T | undefined {
+  return konumDogrulanmadi(slug) ? undefined : geo;
+}
+export function haritaListesinde(slug: string, ilceSecili: boolean, mahalleSecili: boolean): boolean {
+  return !konumDogrulanmadi(slug) || (ilceSecili && !mahalleSecili);
+}
 export type MahalleKaynak = "konum" | "adres" | "yakin";
 /** Kıyıda (sadeleştirilmiş sınırın hemen dışında) kalan nokta için en yakın mahalleye izin verilen en büyük uzaklık (~400 m). */
 export const YAKIN_ESIK = 15;
@@ -119,6 +133,7 @@ export function mahalleAta(proj: Proj, yerler: Yer[], mahalleler: Mahalle[]): Ma
   const byName = new Map(mahalleler.map((m) => [norm(m.ad), m.ad]));
   const boxes = mahalleler.map((m) => bbox([m]));
   for (const v of yerler) {
+    if (konumDogrulanmadi(v.slug)) continue;
     if (typeof v.lat === "number" && typeof v.lng === "number") {
       const [x, y] = project(proj, v.lat, v.lng);
       const i = mahalleler.findIndex((m, j) => { const b = boxes[j]; return x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h && inShape(x, y, m); });
