@@ -5,6 +5,7 @@ import path from "node:path";
 import assert from "node:assert/strict";
 import sinirlar from "../data/harita/ilceler.json";
 import { activeEntities } from "../data/real/presentation";
+import { haritaSorgusu, mahalleGorunumu, mahalleYukleyici } from "../lib/harita/mahalle-yukleme";
 import {
   TUR_GRUPLARI, baskin, bbox, grupOf, grupSay, inShape, labelAt, mahalleAta, norm, project, sirala,
   type Ilce, type Mahalle, type Proj,
@@ -120,4 +121,65 @@ t("Kadıköy örneği: mahallelere dağılım ve baskın tür", () => {
   assert.ok(mahs.size >= 8); assert.ok(bbox([kad]).w > 0);
 });
 
-console.log(`\n${ok} test geçti${process.exitCode ? ", hata var" : ""}`);
+/* ---------- yükleme ve doğrudan bağlantı regresyonları ---------- */
+const kad = { ilce: "kadikoy", mahalleKey: "acibadem" };
+const usk = { ilce: "uskudar" };
+const kadDosya = { ilce: "Kadıköy", mahalleler: MAH.get("kadikoy")! };
+const uskDosya = { ilce: "Üsküdar", mahalleler: MAH.get("uskudar")! };
+
+t("Acıbadem bağlantısı yükleme ve hata sırasında mahalle ve türü korur", () => {
+  for (const durum of ["bekliyor", "hata"] as const) {
+    const v = mahalleGorunumu(kad, { ilce: "kadikoy", durum });
+    assert.equal(v.yuklemeDurumu, durum);
+    assert.equal(v.mahalle, undefined);
+    assert.equal(haritaSorgusu(kad, v.urlMahalle, "kebap"), "ilce=kadikoy&mahalle=acibadem&tur=kebap");
+  }
+});
+t("geç Kadıköy sonucu Üsküdar'a taşınmaz; iki Acıbadem farklıdır", () => {
+  const a = kadDosya.mahalleler.find((m) => norm(m.ad) === "acibadem");
+  const b = uskDosya.mahalleler.find((m) => norm(m.ad) === "acibadem");
+  assert.ok(a && b);
+  assert.notEqual(a.osm, b.osm);
+  const gec = mahalleGorunumu(usk, { ilce: "kadikoy", durum: "hazir", dosya: kadDosya });
+  assert.equal(gec.mah, null);
+  assert.equal(gec.yuklemeDurumu, "bekliyor");
+  const hazir = mahalleGorunumu(usk, { ilce: "uskudar", durum: "hazir", dosya: uskDosya });
+  assert.equal(hazir.mahalle, undefined);
+  assert.equal(haritaSorgusu(usk, hazir.urlMahalle, "tumu"), "ilce=uskudar");
+  const secim = { ...usk, mahalleKey: "acibadem" };
+  assert.equal(mahalleGorunumu(secim, { ilce: "uskudar", durum: "hazir", dosya: uskDosya }).mahalle, "Acıbadem");
+});
+t("geçersiz mahalle yalnız dosya yüklendikten sonra URL'den temizlenir", () => {
+  const d = { ...kad, mahalleKey: "olmayan" };
+  assert.equal(mahalleGorunumu(d, null).urlMahalle, "olmayan");
+  const sonuc = mahalleGorunumu(d, { ilce: "kadikoy", durum: "hazir", dosya: kadDosya });
+  assert.equal(sonuc.mahalle, undefined);
+  assert.equal(haritaSorgusu(d, sonuc.urlMahalle, "tumu"), "ilce=kadikoy");
+});
+
+async function tekrarDeneTesti() {
+  let cagrilar = 0;
+  const yukle = mahalleYukleyici(async () => {
+    if (++cagrilar === 1) throw new Error("geçici yükleme hatası");
+    return kadDosya;
+  });
+  const ilk = yukle("kadikoy");
+  assert.equal(yukle("kadikoy"), ilk);
+  await assert.rejects(ilk, /geçici yükleme hatası/);
+  const ikinci = yukle("kadikoy");
+  assert.notEqual(ikinci, ilk);
+  const dosya = await ikinci;
+  assert.equal(yukle("kadikoy"), ikinci);
+  assert.equal(cagrilar, 2);
+  const v = mahalleGorunumu(kad, { ilce: "kadikoy", durum: "hazir", dosya });
+  assert.equal(v.mahalle, "Acıbadem");
+  assert.equal(haritaSorgusu(kad, v.urlMahalle, "tumu"), "ilce=kadikoy&mahalle=acibadem");
+}
+
+tekrarDeneTesti().then(() => {
+  ok++;
+  console.log("✓ reddedilen yükleme önbellekten çıkar ve gerçek deneme Acıbadem'i geri getirir");
+}, (e: unknown) => {
+  console.error("✗ mahalle içe aktarma yeniden denemesi", e);
+  process.exitCode = 1;
+}).then(() => console.log(`\n${ok} test geçti${process.exitCode ? ", hata var" : ""}`));

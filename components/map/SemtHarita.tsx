@@ -11,6 +11,7 @@ import {
   GRUP, TUR_GRUPLARI, YAKA_AD, baskin, bbox, fit, grupOf, grupSay, labelAt, mahalleAta, norm, pathD, project, sirala,
   type Box, type Ilce, type Mahalle, type Proj, type Yaka,
 } from "@/lib/harita/semt";
+import { haritaSorgusu, mahalleGorunumu, mahalleYukleyici, type Durum, type MahalleYukleme } from "@/lib/harita/mahalle-yukleme";
 
 /* SEMT HARİTASI — "hangi semtte ne yenir". İstanbul → yaka → ilçe → mahalle; bölge rengi baskın tür grubu.
    Sınırlar ve mekân konumları OpenStreetMap'ten (ODbL). Kullanıcı konumu alınmaz; dış harita servisine istek gitmez.
@@ -39,15 +40,10 @@ const YERLER: Yer[] = activeEntities.flatMap((e) => {
 const YER_BY_ILCE = new Map<string, Yer[]>();
 for (const y of YERLER) YER_BY_ILCE.set(y.ilce, [...(YER_BY_ILCE.get(y.ilce) ?? []), y]);
 
-type MahalleDosya = { ilce: string; mahalleler: Mahalle[] };
-const mahalleCache = new Map<string, Promise<MahalleDosya>>();
-const loadMahalle = (slug: string) => {
-  if (!mahalleCache.has(slug)) mahalleCache.set(slug, import(`../../data/harita/mahalle/${slug}.json`).then((m) => (m.default ?? m) as MahalleDosya));
-  return mahalleCache.get(slug)!;
-};
+const loadMahalle = mahalleYukleyici((slug) =>
+  import(`../../data/harita/mahalle/${slug}.json`).then((m) => m.default ?? m));
 
 type Filtre = "tumu" | "secki" | string;
-interface Durum { yaka?: Yaka; ilce?: string; mahalle?: string }
 
 /* viewBox geçişi (hareket azaltma tercihinde anında). */
 function useAnimatedBox(target: Box) {
@@ -77,50 +73,54 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   const seckiSet = useMemo(() => new Set(secki), [secki]);
   const [d, setD] = useState<Durum>({});
   const [filtre, setFiltre] = useState<Filtre>("tumu");
-  const [mah, setMah] = useState<MahalleDosya | null>(null);
+  const [yukleme, setYukleme] = useState<MahalleYukleme | null>(null);
+  const [deneme, setDeneme] = useState(0);
+  const [urlHazir, setUrlHazir] = useState(false);
+  const { mah, mahalle, urlMahalle, yuklemeDurumu } = mahalleGorunumu(d, yukleme);
   const [hover, setHover] = useState<string | null>(null);
+  const [seciliSlug, setSeciliSlug] = useState<string | null>(null);
+  const listedeGoster = useRef(false);
   const [acik, setAcik] = useState<Record<string, boolean>>({});
   const [tumCip, setTumCip] = useState(false);
   const [q, setQ] = useState("");
-  const pendingMahalle = useRef<string | null>(null);
 
   /* Adres çubuğu: ?ilce=kadikoy&mahalle=caddebostan&tur=kebap (paylaşılabilir; geçmişe yazılmaz). */
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
     const il = p.get("ilce"); const ya = p.get("yaka"); const tur = p.get("tur");
-    if (il && ILCE_BY.has(il)) { setD({ yaka: ILCE_BY.get(il)!.yaka, ilce: il }); pendingMahalle.current = p.get("mahalle"); }
+    if (il && ILCE_BY.has(il)) setD({ yaka: ILCE_BY.get(il)!.yaka, ilce: il, mahalleKey: norm(p.get("mahalle") ?? "") || undefined });
     else if (ya === "avrupa" || ya === "anadolu") setD({ yaka: ya });
     if (tur && (tur === "secki" || GRUP.has(tur))) setFiltre(tur);
+    setUrlHazir(true);
   }, []);
   useEffect(() => {
-    const p = new URLSearchParams();
-    if (d.ilce) p.set("ilce", d.ilce); else if (d.yaka) p.set("yaka", d.yaka);
-    if (d.mahalle) p.set("mahalle", norm(d.mahalle));
-    if (filtre !== "tumu") p.set("tur", filtre);
-    const s = p.toString();
-    window.history.replaceState(window.history.state, "", `${window.location.pathname}${s ? `?${s}` : ""}`);
-  }, [d, filtre]);
+    if (!urlHazir) return;
+    const s = haritaSorgusu(d, urlMahalle, filtre);
+    window.history.replaceState(window.history.state, "", `${window.location.pathname}${s ? `?${s}` : ""}${window.location.hash}`);
+  }, [d, filtre, urlHazir, urlMahalle]);
 
-  /* İlçe seçilince o ilçenin mahalleleri ayrı parça olarak yüklenir. */
+  /* Keep loading/error separate from an empty catalog. Ignore old-district results. */
   useEffect(() => {
-    if (!d.ilce) { setMah(null); return; }
-    let live = true; setMah(null);
-    loadMahalle(d.ilce).then((m) => {
-      if (!live) return; setMah(m);
-      const want = pendingMahalle.current; pendingMahalle.current = null;
-      if (want) { const hit = m.mahalleler.find((x) => norm(x.ad) === want); if (hit) setD((s) => ({ ...s, mahalle: hit.ad })); }
-    }).catch(() => live && setMah({ ilce: "", mahalleler: [] }));
+    const ilce = d.ilce;
+    if (!ilce) { setYukleme(null); return; }
+    let live = true;
+    setYukleme({ ilce, durum: "bekliyor" });
+    loadMahalle(ilce).then((dosya) => {
+      if (live) setYukleme({ ilce, durum: "hazir", dosya });
+    }).catch(() => {
+      if (live) setYukleme({ ilce, durum: "hata" });
+    });
     return () => { live = false; };
-  }, [d.ilce]);
+  }, [d.ilce, deneme]);
 
   const atama = useMemo(() => (d.ilce && mah ? mahalleAta(PROJ, YER_BY_ILCE.get(d.ilce) ?? [], mah.mahalleler) : new Map<string, { ad: string }>()), [d.ilce, mah]);
 
   const ilce = d.ilce ? ILCE_BY.get(d.ilce)! : null;
   const bolgeYerler = useMemo(() => {
-    if (ilce) { const xs = YER_BY_ILCE.get(ilce.slug) ?? []; return d.mahalle ? xs.filter((y) => atama.get(y.slug)?.ad === d.mahalle) : xs; }
+    if (ilce) { const xs = YER_BY_ILCE.get(ilce.slug) ?? []; return mahalle ? xs.filter((y) => atama.get(y.slug)?.ad === mahalle) : xs; }
     if (d.yaka) return YERLER.filter((y) => ILCE_BY.get(y.ilce)!.yaka === d.yaka);
     return YERLER;
-  }, [ilce, d.mahalle, d.yaka, atama]);
+  }, [ilce, mahalle, d.yaka, atama]);
 
   const gecer = useCallback((y: Yer) => filtre === "tumu" || (filtre === "secki" ? seckiSet.has(y.slug) : y.grup === filtre), [filtre, seckiSet]);
 
@@ -132,13 +132,13 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
       for (const y of YER_BY_ILCE.get(ilce.slug) ?? []) { const a = atama.get(y.slug)?.ad; if (a) by.set(a, [...(by.get(a) ?? []), y]); }
       const ctx: Parca[] = ILCELER.filter((i) => i.slug !== ilce.slug).map((i) => ({ id: i.slug, ad: i.ad, shape: i, yerler: [], baglam: true, tikla: () => setD({ yaka: i.yaka, ilce: i.slug }) }));
       if (!mah || !mah.mahalleler.length) return [...ctx, { id: ilce.slug, ad: ilce.ad, shape: ilce, yerler: YER_BY_ILCE.get(ilce.slug) ?? [], tikla: () => {} }];
-      return [...ctx, ...mah.mahalleler.map((m) => ({ id: `m:${m.osm}`, ad: m.ad, shape: m, yerler: by.get(m.ad) ?? [], secili: d.mahalle === m.ad, tikla: () => setD((s) => ({ ...s, mahalle: s.mahalle === m.ad ? undefined : m.ad })) }))];
+      return [...ctx, ...mah.mahalleler.map((m) => ({ id: `m:${m.osm}`, ad: m.ad, shape: m, yerler: by.get(m.ad) ?? [], secili: mahalle === m.ad, tikla: () => setD((s) => ({ ...s, mahalleKey: s.mahalleKey === norm(m.ad) ? undefined : norm(m.ad) })) }))];
     }
     return ILCELER.map((i) => ({
       id: i.slug, ad: i.ad, shape: i, yerler: YER_BY_ILCE.get(i.slug) ?? [], baglam: !!d.yaka && i.yaka !== d.yaka,
       tikla: () => setD({ yaka: i.yaka, ilce: i.slug }),
     }));
-  }, [ilce, mah, atama, d.mahalle, d.yaka]);
+  }, [ilce, mah, atama, mahalle, d.yaka]);
 
   const hedef = useMemo(() => {
     if (ilce) return fit(bbox([ilce]), ASPECT, 0.05);
@@ -162,14 +162,32 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   const say = useMemo(() => grupSay(bolgeYerler.map((y) => y.kind)), [bolgeYerler]);
   const seckiN = bolgeYerler.filter((y) => seckiSet.has(y.slug)).length;
   const listede = useMemo(() => bolgeYerler.filter(gecer).map((y) => ({ ...y, g: google[y.slug] ?? null })), [bolgeYerler, gecer, google]);
+  const seciliYer = seciliSlug && ilce ? listede.find((y) => y.slug === seciliSlug && y.xy) : undefined;
+  const satiriGoster = (slug: string) => document.getElementById(`semt-mekan-${slug}`)?.scrollIntoView({ block: "nearest" });
+  function mekanSec(y: Yer, noktadan: boolean) {
+    if (noktadan) {
+      setAcik((s) => s[y.grup] ? s : { ...s, [y.grup]: true });
+      if (seciliYer?.slug === y.slug) satiriGoster(y.slug);
+      else listedeGoster.current = true;
+    }
+    setSeciliSlug(y.slug);
+  }
+  useEffect(() => {
+    if (seciliSlug && !seciliYer) { listedeGoster.current = false; setSeciliSlug(null); }
+    else if (seciliYer && listedeGoster.current) {
+      listedeGoster.current = false;
+      satiriGoster(seciliYer.slug);
+    }
+  }, [seciliSlug, seciliYer]);
+
   const bolumler = useMemo(() => {
     if (filtre !== "tumu") return [{ key: filtre, ad: filtre === "secki" ? "Gidenler Seçkisi" : GRUP.get(filtre)!.ad, yerler: sirala(listede) }];
     return say.map((s) => ({ key: s.key, ad: GRUP.get(s.key)!.ad, yerler: sirala(listede.filter((y) => y.grup === s.key)) })).filter((b) => b.yerler.length);
   }, [filtre, listede, say]);
-  const baslik = d.mahalle ?? ilce?.ad ?? (d.yaka ? YAKA_AD[d.yaka] : "İstanbul");
-  const ust = [d.mahalle && ilce ? ilce.ad : null, ilce || d.mahalle ? null : d.yaka ? "İstanbul" : null].filter(Boolean).join(" · ") || (ilce ? YAKA_AD[ilce.yaka] : "Semt semt");
+  const baslik = mahalle ?? ilce?.ad ?? (d.yaka ? YAKA_AD[d.yaka] : "İstanbul");
+  const ust = [mahalle && ilce ? ilce.ad : null, ilce || mahalle ? null : d.yaka ? "İstanbul" : null].filter(Boolean).join(" · ") || (ilce ? YAKA_AD[ilce.yaka] : "Semt semt");
   const bas = baskin(bolgeYerler.map((y) => y.kind));
-  const atanmamis = ilce && mah?.mahalleler.length && !d.mahalle ? (YER_BY_ILCE.get(ilce.slug) ?? []).filter((y) => !atama.has(y.slug)).length : 0;
+  const atanmamis = ilce && mah?.mahalleler.length && !mahalle ? (YER_BY_ILCE.get(ilce.slug) ?? []).filter((y) => !atama.has(y.slug)).length : 0;
   const cipler = [...say.filter((s) => s.key !== "diger"), ...say.filter((s) => s.key === "diger")];
   const gorunenCip = tumCip ? cipler : cipler.slice(0, 7);
 
@@ -187,15 +205,14 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   }, [q]);
   const git = (s: (typeof sonuc)[number]) => {
     setQ("");
-    if (s.t === "mahalle") { pendingMahalle.current = s.mahalle; if (d.ilce === s.ilce && mah) { const hit = mah.mahalleler.find((x) => norm(x.ad) === s.mahalle); setD((x) => ({ ...x, mahalle: hit?.ad })); pendingMahalle.current = null; return; } }
-    setD({ yaka: ILCE_BY.get(s.ilce)!.yaka, ilce: s.ilce });
+    setD({ yaka: ILCE_BY.get(s.ilce)!.yaka, ilce: s.ilce, mahalleKey: s.t === "mahalle" ? s.mahalle : undefined });
   };
 
   const kirinti: { ad: string; to: Durum | null }[] = [
     { ad: "İstanbul", to: {} },
     ...(d.yaka ? [{ ad: YAKA_AD[d.yaka], to: { yaka: d.yaka } as Durum }] : []),
     ...(ilce ? [{ ad: ilce.ad, to: { yaka: ilce.yaka, ilce: ilce.slug } as Durum }] : []),
-    ...(d.mahalle ? [{ ad: d.mahalle, to: null }] : []),
+    ...(mahalle ? [{ ad: mahalle, to: null }] : []),
   ];
 
   return (
@@ -227,7 +244,7 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
               return (
                 <path key={p.id} d={pathD(p.shape)} fill={f} fillOpacity={o} fillRule="evenodd"
                   stroke={on ? "var(--accent)" : p.baglam ? "var(--map-edge)" : hov ? "var(--ink)" : n || filtre !== "tumu" ? "var(--map-edge)" : "var(--line-2)"} strokeWidth={on ? 2.5 : hov ? 1.6 : 1}
-                  vectorEffect="non-scaling-stroke" className={`cursor-pointer transition-[fill-opacity] ${d.mahalle && !on && !p.baglam ? "opacity-70" : ""}`}
+                  vectorEffect="non-scaling-stroke" className={`cursor-pointer transition-[fill-opacity] ${mahalle && !on && !p.baglam ? "opacity-70" : ""}`}
                   role="button" tabIndex={p.baglam ? -1 : 0} aria-pressed={on}
                   aria-label={`${p.ad}: ${n} mekân${bg && bg !== "diger" ? `, en çok ${GRUP.get(bg)!.ad}` : ""}`}
                   onClick={p.tikla} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); p.tikla(); } }}
@@ -239,8 +256,24 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
 
             {/* mekân noktaları (ilçe görünümünde) */}
             {ilce && (YER_BY_ILCE.get(ilce.slug) ?? []).filter((y) => y.xy && gecer(y)).map((y) => {
-              const sec = d.mahalle ? atama.get(y.slug)?.ad === d.mahalle : true; const h = hover === y.slug;
-              return <circle key={y.slug} cx={y.xy![0]} cy={y.xy![1]} r={(h ? 7 : 3.6) * u} className={h ? "fill-accent" : sec ? "fill-ink" : "fill-ink-3"} opacity={sec ? 0.9 : 0.35} pointerEvents="none" />;
+              const sec = !mahalle || atama.get(y.slug)?.ad === mahalle;
+              const picked = seciliYer?.slug === y.slug;
+              const h = hover === y.slug || picked;
+              return (
+                <g key={y.slug}>
+                  <circle cx={y.xy![0]} cy={y.xy![1]} r={(h ? 7 : 3.6) * u}
+                    className={h ? "fill-accent" : sec ? "fill-ink" : "fill-ink-3"}
+                    opacity={sec ? 0.9 : 0.35} pointerEvents="none" />
+                  {sec && (
+                    <circle cx={y.xy![0]} cy={y.xy![1]} r={15 * u} fill="transparent" stroke="transparent"
+                      role="button" tabIndex={-1} aria-label={`${y.name}, listede göster`} aria-pressed={picked}
+                      className="cursor-pointer focus:stroke-ink"
+                      onClick={() => mekanSec(y, true)}
+                      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); mekanSec(y, true); } }}
+                      onMouseEnter={() => setHover(y.slug)} onMouseLeave={() => setHover((prev) => prev === y.slug ? null : prev)} />
+                  )}
+                </g>
+              );
             })}
 
             {/* etiketler */}
@@ -301,6 +334,15 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
             {bolgeYerler.length} mekân{bas && bas !== "diger" ? <> · en çok <span className="font-semibold text-ink">{GRUP.get(bas)!.ad.toLocaleLowerCase("tr")}</span></> : null}
             {atanmamis > 0 && <span className="text-ink-3"> · {atanmamis} kaydın mahallesi belirsiz, yalnız ilçe listesinde</span>}
           </p>
+          {yuklemeDurumu === "bekliyor" && (
+            <p role="status" className="mt-2 text-[13px] text-ink-2">Mahalle sınırları yükleniyor. Şimdilik ilçe listesi gösteriliyor.</p>
+          )}
+          {yuklemeDurumu === "hata" && (
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-[13px] text-ink-2">
+              <p role="status">Mahalle sınırları yüklenemedi. İlçe listesi kullanılabilir.</p>
+              <button type="button" onClick={() => setDeneme((n) => n + 1)} className="border border-line-2 px-2.5 py-1 font-semibold text-ink hover:border-ink">Tekrar dene</button>
+            </div>
+          )}
           <div className="mt-3 flex flex-wrap gap-1.5" role="group" aria-label="Tür">
             <Cip on={filtre === "tumu"} onClick={() => setFiltre("tumu")}>Tümü</Cip>
             {seckiN > 0 && <Cip on={filtre === "secki"} onClick={() => setFiltre("secki")}>Seçki <span className="tnum opacity-70">{seckiN}</span></Cip>}
@@ -311,8 +353,8 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4 sm:px-5">
-          {bolumler.length === 0 && (
-            <p className="py-6 text-[14px] text-ink-2">{d.mahalle ? "Bu mahallede bu türde kayıt henüz yok." : "Bu bölgede bu türde kayıt henüz yok."}</p>
+          {listede.length === 0 && (
+            <p className="py-6 text-[14px] text-ink-2">{mahalle ? "Bu mahallede bu türde kayıt henüz yok." : "Bu bölgede bu türde kayıt henüz yok."}</p>
           )}
           {bolumler.map((b) => {
             const all = acik[b.key] || filtre !== "tumu"; const xs = all ? b.yerler : b.yerler.slice(0, LIST_CAP);
@@ -327,7 +369,11 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
                     const sub = ilce ? (atama.get(y.slug)?.ad ?? y.district) : y.district;
                     const p = published[y.slug];
                     return (
-                      <li key={y.slug} onMouseEnter={() => setHover(y.slug)} onMouseLeave={() => setHover((h) => (h === y.slug ? null : h))}>
+                      <li key={y.slug} id={`semt-mekan-${y.slug}`}
+                        className={seciliYer?.slug === y.slug ? "bg-sheet px-2" : undefined}
+                        onMouseEnter={() => setHover(y.slug)} onMouseLeave={() => setHover((h) => (h === y.slug ? null : h))}
+                        onFocus={() => setHover(y.slug)}
+                        onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setHover((h) => h === y.slug ? null : h); }}>
                         <Link href={`/mekan/${y.slug}/`} className="group flex items-baseline justify-between gap-3 py-2">
                           <span className="min-w-0">
                             <span className="block truncate text-[14.5px] font-semibold group-hover:text-accent-ink">{y.name}{seckiSet.has(y.slug) && <span className="ml-1.5 align-[1px] text-[9.5px] font-bold uppercase tracking-[0.12em] text-accent-ink">Seçki</span>}</span>
@@ -339,6 +385,12 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
                             {p?.score != null && <span className="text-[11px] font-semibold text-accent-ink">Gidenler {fmtPublished(p.score)}</span>}
                           </span>
                         </Link>
+                        {ilce && y.xy && (
+                          <button type="button" aria-label={`${y.name} haritada göster`} aria-pressed={seciliYer?.slug === y.slug}
+                            onClick={() => mekanSec(y, false)} className="mb-2 min-h-7 text-[11.5px] font-semibold text-accent-ink hover:underline">
+                            {seciliYer?.slug === y.slug ? "Haritada seçili" : "Haritada göster"}
+                          </button>
+                        )}
                       </li>
                     );
                   })}
