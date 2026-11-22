@@ -93,6 +93,12 @@
   --q-bad:         #a8262d;  /* 0–4.9   kötü      — kırmızı */
   --q-exceptional-soft: #e3efea; --q-verygood-soft: #e4f2ee; --q-good-soft: #f6efdc;
   --q-average-soft: #f8e9df; --q-weak-soft: #f6e5dd; --q-bad-soft: #f7e3e4;
+
+  /* Semt haritası: bölgenin baskın tür grubu (yalnız harita dolgusu; metin rengi değil). */
+  --map-kebap: #efcfb6;   --map-ev: #ead9a8;     --map-deniz: #bcd6e2;  --map-kahvalti: #f2e5a2;
+  --map-kahve: #dcc8b2;   --map-burger: #ebbcb2; --map-pizza: #d6e2b2;  --map-dunya: #cdd0ef;
+  --map-modern: #c4e1d3;  --map-meyhane: #e0cbe5; --map-steak: #d6b6a6; --map-sokak: #f3d39c;
+  --map-diger: #e6e5e0;   --map-bos: #ffffff;    --map-ctx: #e9e8e4;    --map-edge: #ffffff;   --map-water: #edf1f3;
 }
 
 /* --- tokenları Tailwind renk uzayına bağla --- */
