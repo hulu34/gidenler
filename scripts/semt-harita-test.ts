@@ -5,9 +5,10 @@ import path from "node:path";
 import assert from "node:assert/strict";
 import sinirlar from "../data/harita/ilceler.json";
 import { activeEntities } from "../data/real/presentation";
+import { atlasKumeleri } from "../lib/harita/atlas-pinleri";
 import { haritaSorgusu, mahalleGorunumu, mahalleYukleyici } from "../lib/harita/mahalle-yukleme";
 import {
-  TUR_GRUPLARI, baskin, bbox, grupOf, grupSay, haritaKoordinati, haritaListesinde, inShape, konumDogrulanmadi, labelAt, mahalleAta, norm, project, sirala,
+  TUR_GRUPLARI, baskin, bbox, fit, grupOf, grupSay, haritaKoordinati, haritaListesinde, inShape, konumDogrulanmadi, labelAt, mahalleAta, norm, project, sirala,
   type Ilce, type Mahalle, type Proj,
 } from "../lib/harita/semt";
 
@@ -177,6 +178,38 @@ t("geçersiz mahalle yalnız dosya yüklendikten sonra URL'den temizlenir", () =
   const sonuc = mahalleGorunumu(d, { ilce: "kadikoy", durum: "hazir", dosya: kadDosya });
   assert.equal(sonuc.mahalle, undefined);
   assert.equal(haritaSorgusu(d, sonuc.urlMahalle, "tumu"), "ilce=kadikoy");
+});
+
+t("yakın pinler bir seçenek grubu, gerçek koordinatlar sabit, ayrı grup merkezleri çakışmaz", () => {
+  const a = { slug: "a", xy: [0, 0] as const };
+  const b = { slug: "b", xy: [24, 0] as const };
+  const c = { slug: "c", xy: [51, 0] as const };
+  const d = { slug: "d", xy: [125, 0] as const };
+  const groups = atlasKumeleri([d, a, c, b], 1);
+  assert.deepEqual(groups.map((g) => g.yerler.map((v) => v.slug)), [["a", "b", "c"], ["d"]]);
+  assert.deepEqual(a.xy, [0, 0]);
+  assert.deepEqual(groups[0].xy, [25, 0]);
+  assert.ok(Math.abs(groups[1].xy[0] - groups[0].xy[0]) >= 32);
+});
+t("Caferağa mobil: Çiya ve HD İskender ayrı doğrulanabilir seçimler, üst üste gizli hedef yok", () => {
+  const kadikoy = MAH.get("kadikoy")!;
+  const caferaga = kadikoy.find((m) => norm(m.ad) === "caferaga")!;
+  const xs = yerler.filter((y) => y.district === "Kadıköy");
+  const atama = mahalleAta(PROJ, xs, kadikoy);
+  const points = xs.flatMap((v) => v.lat != null && v.lng != null && atama.get(v.slug)?.ad === caferaga.ad
+    ? [{ slug: v.slug, xy: project(PROJ, v.lat, v.lng) }]
+    : []);
+  const box = fit(bbox([caferaga]), 1.45, .24);
+  const factor = box.w / 319;
+  const groups = atlasKumeleri(points, factor);
+  const ciya = points.find((v) => v.slug === "ciya-sofrasi-kadikoy");
+  const hd = points.find((v) => v.slug === "hd-iskender-caferaga-mahallesi-kadikoy");
+  assert.ok(ciya && hd && ciya.slug !== hd.slug);
+  const opts = groups.flatMap((g) => g.yerler);
+  assert.equal(opts.filter((v) => v === ciya || v === hd).length, 2);
+  for (const [i, g] of groups.entries()) for (const h of groups.slice(i + 1)) {
+    assert.ok(Math.hypot(g.xy[0] - h.xy[0], g.xy[1] - h.xy[1]) >= 32 * factor);
+  }
 });
 
 async function tekrarDeneTesti() {

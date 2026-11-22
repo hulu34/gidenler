@@ -1,14 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { AtlasEtiket, AtlasIcon, AtlasSayi } from "./AtlasPrimitives";
+import styles from "./atlas.module.css";
+import { atlasKumeleri } from "@/lib/harita/atlas-pinleri";
 import sinirlar from "@/data/harita/ilceler.json";
 import { activeEntities } from "@/data/real/presentation";
 import { useGoogleRatings } from "@/components/google/GoogleRatings";
 import { usePublished } from "@/components/score/PublishedProvider";
 import { fmtPublished } from "@/lib/score/publishedCards";
 import {
-  GRUP, TUR_GRUPLARI, YAKA_AD, baskin, bbox, fit, grupOf, grupSay, haritaKoordinati, haritaListesinde, konumDogrulanmadi, labelAt, mahalleAta, norm, pathD, project, sirala,
+  GRUP, YAKA_AD, baskin, bbox, fit, grupOf, grupSay, haritaKoordinati, haritaListesinde, konumDogrulanmadi, labelAt, mahalleAta, norm, pathD, project, sirala,
   type Box, type Ilce, type Mahalle, type Proj, type Yaka,
 } from "@/lib/harita/semt";
 import { haritaSorgusu, mahalleGorunumu, mahalleYukleyici, type Durum, type MahalleYukleme } from "@/lib/harita/mahalle-yukleme";
@@ -68,6 +72,20 @@ const fill = (g: string | null) => (g ? `var(--map-${g})` : "var(--map-bos)");
 const f1 = (x: number) => x.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 export function SemtHarita({ secki = [] }: { secki?: string[] }) {
+  const router = useRouter();
+  const searchId = useId();
+  const [searchFocus, setSearchFocus] = useState(false);
+  const [searchIndex, setSearchIndex] = useState(-1);
+  const [kumeId, setKumeId] = useState<string | null>(null);
+  const [widthPx, setWidthPx] = useState(375);
+  const [paylasim, setPaylasim] = useState<"bos" | "kopya" | "sec">("bos");
+  const atlasHeading = useRef<HTMLHeadingElement>(null);
+  const mapRef = useRef<SVGSVGElement>(null);
+  const listHeading = useRef<HTMLHeadingElement>(null);
+  const clusterHeading = useRef<HTMLHeadingElement>(null);
+  const clusterTrigger = useRef<SVGGElement | null>(null);
+  const moveClusterFocus = useRef(false);
+  const shareInput = useRef<HTMLInputElement>(null);
   const google = useGoogleRatings();
   const published = usePublished();
   const seckiSet = useMemo(() => new Set(secki), [secki]);
@@ -83,6 +101,24 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   const [acik, setAcik] = useState<Record<string, boolean>>({});
   const [tumCip, setTumCip] = useState(false);
   const [q, setQ] = useState("");
+
+  useEffect(() => {
+    const svg = mapRef.current;
+    if (!svg) return;
+    const sync = () => setWidthPx(Math.max(1, Math.round(svg.getBoundingClientRect().width)));
+    sync();
+    if (!window.ResizeObserver) return;
+    const observer = new ResizeObserver(sync);
+    observer.observe(svg);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    setKumeId(null);
+    setPaylasim("bos");
+  }, [d, filtre]);
+  useEffect(() => {
+    if (paylasim === "sec") shareInput.current?.select();
+  }, [paylasim]);
 
   /* Adres çubuğu: ?ilce=kadikoy&mahalle=caddebostan&tur=kebap (paylaşılabilir; geçmişe yazılmaz). */
   useEffect(() => {
@@ -141,10 +177,12 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   }, [ilce, mah, atama, mahalle, d.yaka]);
 
   const hedef = useMemo(() => {
-    if (ilce) return fit(bbox([ilce]), ASPECT, 0.05);
+    const aktifMahalle = mah?.mahalleler.find((m) => m.ad === mahalle);
+    if (aktifMahalle) return fit(bbox([aktifMahalle]), ASPECT, 0.24);
+    if (ilce) return fit(bbox([ilce]), ASPECT, 0.11);
     if (d.yaka) return fit(bbox(ILCELER.filter((i) => i.yaka === d.yaka)), ASPECT, 0.03);
     return fit(bbox(ILCELER), ASPECT, 0.02);
-  }, [ilce, d.yaka]);
+  }, [ilce, d.yaka, mah, mahalle]);
   const box = useAnimatedBox(hedef);
 
   const maxN = useMemo(() => Math.max(1, ...parcalar.filter((p) => !p.baglam).map((p) => p.yerler.filter(gecer).length)), [parcalar, gecer]);
@@ -156,7 +194,6 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
     return { f: filtre === "secki" ? "var(--accent-soft)" : fill(filtre), o: 0.35 + 0.65 * (n / maxN) };
   };
   const boxes = useMemo(() => new Map(parcalar.map((p) => [p.id, bbox([p.shape])])), [parcalar]);
-  const u = box.w / 1000; // 1000 birimlik görünüm ölçeği
 
   /* ---------- panel ---------- */
   const say = useMemo(() => grupSay(bolgeYerler.map((y) => y.kind)), [bolgeYerler]);
@@ -164,15 +201,43 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   const listede = useMemo(() => bolgeYerler
     .filter((y) => haritaListesinde(y.slug, !!ilce, !!mahalle) && gecer(y))
     .map((y) => ({ ...y, g: google[y.slug] ?? null })), [bolgeYerler, gecer, google, ilce, mahalle]);
-  const seciliYer = seciliSlug && ilce ? listede.find((y) => y.slug === seciliSlug && y.xy) : undefined;
-  const satiriGoster = (slug: string) => document.getElementById(`semt-mekan-${slug}`)?.scrollIntoView({ block: "nearest" });
-  function mekanSec(y: Yer, noktadan: boolean) {
-    if (noktadan) {
+  const visibleNoktalar = useMemo(() => listede.flatMap((y) => {
+    if (!ilce || !y.xy) return [];
+    const [x, yy] = y.xy, { x: x0, y: y0, w, h } = hedef;
+    return x >= x0 && x <= x0 + w && yy >= y0 && yy <= y0 + h ? [{ ...y, xy: y.xy }] : [];
+  }), [hedef, ilce, listede]);
+  const kumeler = useMemo(() => atlasKumeleri(visibleNoktalar, hedef.w / widthPx), [visibleNoktalar, hedef.w, widthPx]);
+  const acikKume = kumeId == null ? undefined : kumeler.find((k) => k.id === kumeId);
+  const pinSlugs = useMemo(() => new Set(visibleNoktalar.map((y) => y.slug)), [visibleNoktalar]);
+  useEffect(() => {
+    if (!acikKume || !moveClusterFocus.current) return;
+    moveClusterFocus.current = false;
+    gorunumeGetir(clusterHeading.current);
+    clusterHeading.current?.focus({ preventScroll: true });
+  }, [acikKume]);
+  function kumeyiKapat() {
+    setKumeId(null);
+    clusterTrigger.current?.focus({ preventScroll: true });
+  }
+  const seciliYer = seciliSlug && pinSlugs.has(seciliSlug) ? listede.find((y) => y.slug === seciliSlug) : undefined;
+  const satiriGoster = (slug: string) => {
+    const row = document.getElementById(`semt-mekan-${slug}`);
+    gorunumeGetir(row);
+  };
+  function mekanSec(y: Yer, yon: "listeye" | "haritaya" | "burada", klavye = false) {
+    if (yon === "listeye") {
       setAcik((s) => s[y.grup] ? s : { ...s, [y.grup]: true });
       if (seciliYer?.slug === y.slug) satiriGoster(y.slug);
       else listedeGoster.current = true;
+    } else if (yon === "haritaya") {
+      gorunumeGetir(atlasHeading.current);
+      if (klavye) atlasHeading.current?.focus({ preventScroll: true });
     }
     setSeciliSlug(y.slug);
+  }
+  function listeyeGit() {
+    gorunumeGetir(listHeading.current);
+    listHeading.current?.focus({ preventScroll: true });
   }
   useEffect(() => {
     if (seciliSlug && !seciliYer) { listedeGoster.current = false; setSeciliSlug(null); }
@@ -191,7 +256,7 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   const bas = baskin(bolgeYerler.map((y) => y.kind));
   const atanmamis = ilce && mah?.mahalleler.length && !mahalle ? (YER_BY_ILCE.get(ilce.slug) ?? []).filter((y) => !atama.has(y.slug)).length : 0;
   const cipler = [...say.filter((s) => s.key !== "diger"), ...say.filter((s) => s.key === "diger")];
-  const gorunenCip = tumCip ? cipler : cipler.slice(0, 7);
+  const gorunenCip = tumCip ? cipler : cipler.slice(0, 4);
 
   /* ---------- arama ---------- */
   const sonuc = useMemo(() => {
@@ -206,9 +271,27 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
     return [...ilceS, ...mahS, ...yerS];
   }, [q]);
   const git = (s: (typeof sonuc)[number]) => {
-    setQ("");
+    setQ(""); setSearchIndex(-1); setSearchFocus(false);
+    if (s.t === "yer") { router.push(`/mekan/${s.id}/`); return; }
     setD({ yaka: ILCE_BY.get(s.ilce)!.yaka, ilce: s.ilce, mahalleKey: s.t === "mahalle" ? s.mahalle : undefined });
   };
+  function ilceAc(slug: string) {
+    const next = ILCE_BY.get(slug);
+    setD(next ? { yaka: next.yaka, ilce: next.slug } : d.yaka ? { yaka: d.yaka } : {});
+  }
+  const aramaAcik = searchFocus && norm(q).length >= 2;
+  const bolgeTuru = mahalle ? "Mahalle" : ilce ? "İlçe" : d.yaka ? "Yaka" : "Şehir";
+  const format = (n: number) => n.toLocaleString("tr-TR");
+  const paylasimSorgusu = haritaSorgusu(d, urlMahalle, filtre);
+  const paylasimYolu = `/harita/${paylasimSorgusu ? `?${paylasimSorgusu}` : ""}`;
+  async function baglantiyiKopyala() {
+    try {
+      await navigator.clipboard.writeText(new URL(paylasimYolu, window.location.origin).href);
+      setPaylasim("kopya");
+    } catch {
+      setPaylasim("sec");
+    }
+  }
 
   const kirinti: { ad: string; to: Durum | null }[] = [
     { ad: "İstanbul", to: {} },
@@ -218,206 +301,311 @@ export function SemtHarita({ secki = [] }: { secki?: string[] }) {
   ];
 
   return (
-    <div className="mt-6 grid gap-5 lg:grid-cols-[1.55fr_1fr] lg:gap-6" data-semt-harita>
-      {/* HARİTA */}
-      <div className="relative flex min-w-0 flex-col">
-        <div className="relative border-2 border-line-strong bg-[var(--map-water)]">
-          <div className="absolute left-3 top-3 z-10 w-[min(320px,calc(100%-24px))]">
-            <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => { if (e.key === "Escape") setQ(""); }} placeholder="Mekân, semt ya da tür ara" aria-label="Mekân, semt ya da tür ara"
-              className="h-10 w-full border border-line-2 bg-paper px-3 text-[14px] outline-none placeholder:text-ink-3 focus:border-accent" />
-            {sonuc.length > 0 && (
-              <ul className="mt-1 max-h-[300px] overflow-y-auto border border-line-strong bg-paper shadow-[var(--shadow-1)]" role="listbox">
-                {sonuc.map((s) => (
-                  <li key={`${s.t}:${s.id}`}>
-                    {s.t === "yer"
-                      ? <Link href={`/mekan/${s.id}/`} className="flex items-baseline justify-between gap-3 px-3 py-2 text-[13.5px] hover:bg-sheet"><span className="font-semibold">{s.ad}</span><span className="shrink-0 text-[11.5px] text-ink-3">{s.alt}</span></Link>
-                      : <button type="button" onClick={() => git(s)} className="flex w-full items-baseline justify-between gap-3 px-3 py-2 text-left text-[13.5px] hover:bg-sheet"><span className="font-semibold">{s.ad}</span><span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.12em] text-ink-3">{s.t === "ilce" ? "İlçe" : `Mahalle · ${s.alt}`}</span></button>}
-                  </li>
-                ))}
-              </ul>
-            )}
+    <div className={styles.atlas} data-semt-harita>
+      <header className={styles.hero}>
+        <div>
+          <div className={styles.masthead}><span />Gidenler rehberi <span className={styles.mastDivider} /> İstanbul</div>
+          <h1>İstanbul’u <em>semt semt</em> keşfet.</h1>
+          <p>Bir bölge seç, mahallesine yaklaş, oradaki mekânlara bak.</p>
+        </div>
+        <div className={styles.heroMetrics} aria-label="Atlas kapsamı">
+          <AtlasSayi value={ILCELER.length} label="ilçe" />
+          <AtlasSayi value={YERLER.length} label="katalogda mekân" />
+        </div>
+      </header>
+
+      <div className={styles.workbench}>
+        <section className={styles.mapCard} aria-labelledby="atlas-harita">
+          <div className={styles.mapHead}>
+            <div className={styles.mapName}>
+              <span className={styles.brandIcon}><AtlasIcon name="layers" size={21} /></span>
+              <div><AtlasEtiket>Gidenler Atlası</AtlasEtiket><h2 id="atlas-harita" ref={atlasHeading} tabIndex={-1}>Semt haritası</h2></div>
+            </div>
+            <button type="button" className={styles.utility} onClick={baglantiyiKopyala}>
+              <AtlasIcon name={paylasim === "kopya" ? "check" : "share"} size={17} />
+              <span>{paylasim === "kopya" ? "Kopyalandı" : "Paylaş"}</span>
+            </button>
+          </div>
+          {paylasim === "kopya" && <span className={styles.srOnly} role="status">Harita bağlantısı kopyalandı.</span>}
+          {paylasim === "sec" && <label className={styles.shareFallback}>Bağlantıyı kopyala
+            <input ref={shareInput} readOnly value={typeof window !== "undefined" ? new URL(paylasimYolu, window.location.origin).href : paylasimYolu} />
+          </label>}
+
+          <div className={styles.searchBar}>
+            <div className={styles.searchBox} role="search" aria-label="Haritada ara">
+              <AtlasIcon name="search" />
+              <input
+                value={q} onFocus={() => setSearchFocus(true)} onBlur={() => { setSearchFocus(false); setSearchIndex(-1); }}
+                role="combobox" aria-expanded={aramaAcik} aria-autocomplete="list" aria-controls={aramaAcik ? searchId : undefined}
+                aria-activedescendant={aramaAcik && searchIndex >= 0 ? `${searchId}-${searchIndex}` : undefined}
+                aria-label="İlçe, mahalle veya mekân ara" placeholder="İlçe, mahalle veya mekân ara"
+                onChange={(e) => { setQ(e.target.value); setSearchFocus(true); setSearchIndex(-1); }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") { setSearchFocus(false); setSearchIndex(-1); return; }
+                  if ((e.key === "ArrowDown" || e.key === "ArrowUp") && sonuc.length) {
+                    e.preventDefault(); setSearchFocus(true);
+                    setSearchIndex((i) => e.key === "ArrowDown" ? (i + 1) % sonuc.length : (i <= 0 ? sonuc.length - 1 : i - 1));
+                  }
+                  if (e.key === "Enter" && aramaAcik && sonuc.length) {
+                    e.preventDefault(); git(sonuc[searchIndex >= 0 ? searchIndex : 0]);
+                  }
+                }} />
+              {aramaAcik && (
+                <>
+                  <ul className={styles.suggestions} role="listbox" id={searchId} aria-label="Harita arama sonuçları">
+                    {sonuc.map((s, i) => (
+                      <li id={`${searchId}-${i}`} key={`${s.t}:${s.id}`} role="option" aria-selected={searchIndex === i}
+                        onMouseDown={(e) => e.preventDefault()} onMouseEnter={() => setSearchIndex(i)} onClick={() => git(s)}>
+                        <AtlasIcon name={s.t === "yer" ? "pin" : "layers"} size={16} />
+                        <span>{s.ad}<small>{s.t === "ilce" ? `İlçe · ${s.alt}` : s.t === "mahalle" ? `Mahalle · ${s.alt}` : s.alt}</small></span>
+                        <AtlasIcon name="arrow" size={15} />
+                      </li>
+                    ))}
+                  </ul>
+                  {!sonuc.length && <span className={styles.zeroSuggestion} role="status">Eşleşme bulunamadı.</span>}
+                </>
+              )}
+            </div>
+            <label className={styles.districtSelect}>
+              <span className={styles.srOnly}>İlçe seç</span>
+              <select aria-label="İlçe seç" value={ilce?.slug ?? ""} onChange={(e) => ilceAc(e.target.value)}>
+                <option value="">İlçe seç</option>
+                {ILCELER.map((i) => <option key={i.slug} value={i.slug}>{i.ad}</option>)}
+              </select>
+            </label>
           </div>
 
-          <svg viewBox={`${box.x} ${box.y} ${box.w} ${box.h}`} className="block h-auto w-full touch-manipulation select-none" role="group"
-            aria-label={`${baslik} haritası: bölgeler en çok bulunan türe göre renkli`} style={{ aspectRatio: `${ASPECT}` }}>
-            {parcalar.map((p) => {
-              const { f, o } = renk(p); const on = p.secili; const hov = hover === p.id;
-              const n = p.yerler.filter(gecer).length; const bg = baskin(p.yerler.map((y) => y.kind));
-              return (
-                <path key={p.id} d={pathD(p.shape)} fill={f} fillOpacity={o} fillRule="evenodd"
-                  stroke={on ? "var(--accent)" : p.baglam ? "var(--map-edge)" : hov ? "var(--ink)" : n || filtre !== "tumu" ? "var(--map-edge)" : "var(--line-2)"} strokeWidth={on ? 2.5 : hov ? 1.6 : 1}
-                  vectorEffect="non-scaling-stroke" className={`cursor-pointer transition-[fill-opacity] ${mahalle && !on && !p.baglam ? "opacity-70" : ""}`}
-                  role="button" tabIndex={p.baglam ? -1 : 0} aria-pressed={on}
-                  aria-label={`${p.ad}: ${n} mekân${bg && bg !== "diger" ? `, en çok ${GRUP.get(bg)!.ad}` : ""}`}
-                  onClick={p.tikla} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); p.tikla(); } }}
-                  onMouseEnter={() => setHover(p.id)} onMouseLeave={() => setHover((h) => (h === p.id ? null : h))}>
-                  <title>{`${p.ad} · ${n} mekân${bg && bg !== "diger" ? ` · en çok ${GRUP.get(bg)!.ad.toLocaleLowerCase("tr")}` : ""}`}</title>
-                </path>
-              );
-            })}
-
-            {/* mekân noktaları (ilçe görünümünde) */}
-            {ilce && (YER_BY_ILCE.get(ilce.slug) ?? []).filter((y) => y.xy && gecer(y)).map((y) => {
-              const sec = !mahalle || atama.get(y.slug)?.ad === mahalle;
-              const picked = seciliYer?.slug === y.slug;
-              const h = hover === y.slug || picked;
-              return (
-                <g key={y.slug}>
-                  <circle cx={y.xy![0]} cy={y.xy![1]} r={(h ? 7 : 3.6) * u}
-                    className={h ? "fill-accent" : sec ? "fill-ink" : "fill-ink-3"}
-                    opacity={sec ? 0.9 : 0.35} pointerEvents="none" />
-                  {sec && (
-                    <circle cx={y.xy![0]} cy={y.xy![1]} r={15 * u} fill="transparent" stroke="transparent"
-                      role="button" tabIndex={-1} aria-label={`${y.name}, listede göster`} aria-pressed={picked}
-                      className="cursor-pointer focus:stroke-ink"
-                      onClick={() => mekanSec(y, true)}
-                      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); mekanSec(y, true); } }}
-                      onMouseEnter={() => setHover(y.slug)} onMouseLeave={() => setHover((prev) => prev === y.slug ? null : prev)} />
-                  )}
-                </g>
-              );
-            })}
-
-            {/* etiketler */}
-            {parcalar.filter((p) => !p.baglam).map((p) => {
-              /* Büyük bölgeye ad + baskın tür; küçük ama kalabalık ilçeye (Beyoğlu, Beşiktaş…) yalnız ad. */
-              const b = boxes.get(p.id)!; const buyuk = b.w >= box.w * (ilce ? 0.075 : 0.05);
-              const kalabalik = !ilce && p.yerler.length >= 20 && b.w >= box.w * 0.014;
-              if (!buyuk && !kalabalik) return null;
-              const [x, y] = labelAt(p.shape); const bg = buyuk ? baskin(p.yerler.map((v) => v.kind)) : null;
-              const fs = (ilce ? 15 : 13) * u * (buyuk ? 1 : 0.8);
-              return (
-                <g key={`l:${p.id}`} pointerEvents="none" textAnchor="middle" style={{ paintOrder: "stroke" }} stroke="var(--paper)" strokeWidth={3 * u} strokeLinejoin="round">
-                  <text x={x} y={y} fontSize={fs} fontWeight={700} fill="var(--ink)" fontFamily="var(--font-ui)">{p.ad}</text>
-                  {bg && bg !== "diger" && <text x={x} y={y + fs * 1.05} fontSize={fs * 0.6} fontWeight={700} letterSpacing={fs * 0.08} fill="var(--ink-2)" fontFamily="var(--font-ui)">{GRUP.get(bg)!.kisa.toLocaleUpperCase("tr")}</text>}
-                </g>
-              );
-            })}
-          </svg>
-
-          {/* kırıntı */}
-          <nav aria-label="Harita düzeyi" className="flex flex-wrap items-center gap-1 border-t-2 border-line-strong bg-paper px-3 py-2">
+          <nav className={styles.breadcrumb} aria-label="Harita düzeyi">
             {kirinti.map((k, i) => {
               const son = i === kirinti.length - 1;
               return (
-                <span key={k.ad} className="flex items-center gap-1">
-                  {i > 0 && <span aria-hidden className="text-[12px] text-ink-3">›</span>}
+                <span key={k.ad}>
+                  {i > 0 && <span className={styles.crumbSep} aria-hidden="true">›</span>}
                   {son || !k.to
-                    ? <span aria-current="location" className="inline-flex h-7 items-center bg-ink px-2.5 text-[12px] font-semibold text-paper">{k.ad}</span>
-                    : <button type="button" onClick={() => setD(k.to!)} className="inline-flex h-7 items-center border border-line-2 bg-paper px-2.5 text-[12px] font-semibold hover:border-ink">{k.ad}</button>}
+                    ? <span aria-current="location" className={styles.crumbCurrent}>{k.ad}</span>
+                    : <button type="button" onClick={() => setD(k.to!)}>{k.ad}</button>}
                 </span>
               );
             })}
-            {!d.yaka && !ilce && (["avrupa", "anadolu"] as Yaka[]).map((y) => (
-              <button key={y} type="button" onClick={() => setD({ yaka: y })} className="inline-flex h-7 items-center border border-line-2 bg-paper px-2.5 text-[12px] font-semibold hover:border-ink">{YAKA_AD[y]}</button>
-            ))}
+            {!d.yaka && !ilce && (
+              <div className={styles.sides}>
+                {(["avrupa", "anadolu"] as const).map((y) => (
+                  <button key={y} type="button" onClick={() => setD({ yaka: y })}>{y === "avrupa" ? "Avrupa" : "Anadolu"}</button>
+                ))}
+              </div>
+            )}
           </nav>
-        </div>
 
-        {/* lejant */}
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5" aria-label="Renkler">
-          {filtre === "tumu"
-            ? TUR_GRUPLARI.filter((g) => parcalar.some((p) => !p.baglam && baskin(p.yerler.map((y) => y.kind)) === g.key)).map((g) => (
-                <span key={g.key} className="inline-flex items-center gap-1.5 text-[12px] text-ink-2"><span aria-hidden className="h-3 w-3 border border-line-2" style={{ background: fill(g.key) }} />{g.ad}</span>
-              ))
-            : <span className="text-[12px] text-ink-2">Koyu bölgede {filtre === "secki" ? "Seçki mekânı" : GRUP.get(filtre)!.ad.toLocaleLowerCase("tr")} daha çok.</span>}
-        </div>
-        <p className="mt-2 text-[11.5px] leading-snug text-ink-3">
-          Sınırlar ve konumlar © OpenStreetMap katkıcıları (ODbL). Renk, bölgedeki Gidenler kayıtlarında en çok bulunan türdür; bütün semti değil, kataloğumuzu anlatır.
-        </p>
-      </div>
+          <div className={styles.canvas}>
+            <span className={styles.canvasLabel}><span />{baslik}</span>
+            <span className={styles.compass} aria-hidden="true">↑<small>K</small></span>
+            <svg ref={mapRef} viewBox={`${box.x} ${box.y} ${box.w} ${box.h}`} className={styles.svg} role="group"
+              aria-label={`${baslik} haritası: bölgeler katalogdaki türlere göre renkli`} style={{ aspectRatio: `${ASPECT}` }}>
+              {parcalar.map((p) => {
+                const { f, o } = renk(p); const on = p.secili; const hov = hover === p.id;
+                const n = p.yerler.filter(gecer).length; const bg = baskin(p.yerler.map((y) => y.kind));
+                const selectable = !(ilce && !mah?.mahalleler.length && p.id === ilce.slug);
+                return (
+                  <path key={p.id} d={pathD(p.shape)} fill={f} fillOpacity={o} fillRule="evenodd"
+                    stroke={on ? "var(--accent)" : hov ? "var(--ink-2)" : "var(--map-edge)"} strokeWidth={on ? 2.6 : hov ? 1.5 : 1}
+                    vectorEffect="non-scaling-stroke" className={selectable ? styles.region : undefined}
+                    opacity={mahalle && !on ? 0.63 : 1}
+                    role={selectable ? "button" : undefined} tabIndex={selectable && !p.baglam ? 0 : -1}
+                    aria-pressed={selectable && ilce && !p.baglam && mah ? !!p.secili : undefined}
+                    aria-label={`${p.ad}: ${n} mekân${bg && bg !== "diger" ? `, en çok ${GRUP.get(bg)!.ad}` : ""}`}
+                    onClick={selectable ? p.tikla : undefined}
+                    onKeyDown={(e) => { if (selectable && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); p.tikla(); } }}
+                    onMouseEnter={() => setHover(p.id)} onMouseLeave={() => setHover((h) => (h === p.id ? null : h))}>
+                    <title>{`${p.ad} · ${n} mekân`}</title>
+                  </path>
+                );
+              })}
+              {ilce && mah && <path d={pathD(ilce)} fill="none" stroke="var(--accent)" strokeWidth="1.2" strokeOpacity=".63" vectorEffect="non-scaling-stroke" pointerEvents="none" />}
 
-      {/* PANEL */}
-      <aside className="flex min-w-0 flex-col border-2 border-line-strong bg-paper lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:self-start" aria-live="polite">
-        <div className="border-b border-line px-4 pb-3 pt-4 sm:px-5">
-          <p className="label">{ust}</p>
-          <h2 className="mt-1 font-[family-name:var(--font-brand)] text-[clamp(2rem,5vw,2.75rem)] leading-[0.95] tracking-[-0.01em]">{baslik}</h2>
-          <p className="tnum mt-2 text-[13px] text-ink-2">
-            {bolgeYerler.length} mekân{bas && bas !== "diger" ? <> · en çok <span className="font-semibold text-ink">{GRUP.get(bas)!.ad.toLocaleLowerCase("tr")}</span></> : null}
-            {atanmamis > 0 && <span className="text-ink-3"> · {atanmamis} kaydın mahallesi belirsiz, yalnız ilçe listesinde</span>}
-          </p>
-          {yuklemeDurumu === "bekliyor" && (
-            <p role="status" className="mt-2 text-[13px] text-ink-2">Mahalle sınırları yükleniyor. Şimdilik ilçe listesi gösteriliyor.</p>
+              {parcalar.filter((p) => !p.baglam && (!mahalle || p.secili)).map((p) => {
+                const b = boxes.get(p.id)!; const large = b.w >= box.w * (ilce ? .09 : .042);
+                if (!large && !(!ilce && p.yerler.length >= 20 && b.w >= box.w * .014)) return null;
+                const [x, y] = labelAt(p.shape);
+                return <text key={`l:${p.id}`} x={x} y={y} fontSize={Math.max(ilce ? 18 : 16, box.w * 10 / widthPx)} textAnchor="middle"
+                  className={styles.mapLabel} strokeWidth={3.2 * box.w / widthPx}
+                  pointerEvents="none">{p.ad}</text>;
+              })}
+
+              {kumeler.map((k) => {
+                const [x, y] = k.xy, group = k.yerler.length > 1, scale = box.w / widthPx;
+                const picked = k.yerler.some((y) => y.slug === seciliYer?.slug);
+                const title = group ? `${k.yerler.length} yakın mekân. Listeden seç` : `${k.yerler[0].name}, listede göster`;
+                function activate(trigger: SVGGElement, keyboard: boolean) {
+                  if (!group) { mekanSec(k.yerler[0], "listeye"); return; }
+                  if (acikKume?.id === k.id) { kumeyiKapat(); return; }
+                  clusterTrigger.current = trigger;
+                  moveClusterFocus.current = keyboard;
+                  setKumeId(k.id);
+                }
+                return (
+                  <g key={k.id} role="button" tabIndex={group ? 0 : -1} aria-label={title}
+                    aria-expanded={group ? acikKume?.id === k.id : undefined}
+                    aria-pressed={group ? undefined : picked} className={styles.mapPin} onClick={(e) => activate(e.currentTarget, false)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(e.currentTarget, true); }
+                      if (e.key === "Escape" && acikKume?.id === k.id) kumeyiKapat();
+                    }}>
+                    <circle cx={x} cy={y} r={14 * scale} fill="transparent" />
+                    <circle cx={x} cy={y} r={(group ? 11 : 3.4) * scale}
+                      fill={picked ? "var(--accent)" : "var(--ink)"} stroke="var(--paper)" strokeWidth={1.4 * scale} />
+                    {group && <text x={x} y={y} textAnchor="middle" dominantBaseline="central" fill="var(--paper)" fontSize={10 * scale} pointerEvents="none" fontWeight={700}>{k.yerler.length}</text>}
+                    <title>{title}</title>
+                  </g>
+                );
+              })}
+
+              {seciliYer?.xy && <g pointerEvents="none" aria-hidden="true">
+                <circle cx={seciliYer.xy[0]} cy={seciliYer.xy[1]} r={9 * box.w / widthPx}
+                  fill="none" stroke="var(--accent)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                <circle cx={seciliYer.xy[0]} cy={seciliYer.xy[1]} r={5 * box.w / widthPx}
+                  fill="var(--accent)" stroke="var(--paper)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+              </g>}
+            </svg>
+          </div>
+
+          <div className={styles.mapFooter}>
+            <div className={styles.mapLegend}>
+              <span className={styles.legendDot} style={{ background: filtre === "tumu" ? "var(--map-deniz)" : filtre === "secki" ? "var(--accent-soft)" : fill(filtre) }} />
+              <span>{filtre === "tumu" ? "Renk: bölgede en çok bulunan tür" : filtre === "secki" ? "Koyu renk: daha fazla Seçki mekânı" : `Koyu renk: daha fazla ${GRUP.get(filtre)?.ad.toLocaleLowerCase("tr")}`}</span>
+            </div>
+            {mah && ilce && (
+              <label className={styles.neighborhood}>
+                <span className={styles.srOnly}>Mahalle seç</span>
+                <select aria-label="Mahalle seç" value={urlMahalle ?? ""} onChange={(e) => setD((state) => ({ ...state, mahalleKey: e.target.value || undefined }))}>
+                  <option value="">Tüm mahalleler</option>
+                  {mah.mahalleler.map((m) => <option key={m.osm} value={norm(m.ad)}>{m.ad}</option>)}
+                </select>
+              </label>
+            )}
+          </div>
+          {yuklemeDurumu === "bekliyor" && <p className={styles.loadNote} role="status">Mahalle sınırları yükleniyor. İlçe listesi açık.</p>}
+          {yuklemeDurumu === "hata" && <div className={styles.loadNote}>
+            <p role="status">Mahalle sınırları yüklenemedi. İlçe listesi kullanılabilir.</p>
+            <button className={styles.utility} type="button" onClick={() => setDeneme((n) => n + 1)}>Tekrar dene</button>
+          </div>}
+          {acikKume && (
+            <section className={styles.cluster} aria-label="Yakın mekânlar" onKeyDown={(e) => { if (e.key === "Escape") kumeyiKapat(); }}>
+              <div className={styles.clusterHead}>
+                <div><AtlasEtiket>Yakın noktalar</AtlasEtiket><h3 ref={clusterHeading} tabIndex={-1}>{acikKume.yerler.length} mekândan birini seç</h3></div>
+                <button type="button" className={styles.utility} aria-label="Yakın mekân listesini kapat" onClick={kumeyiKapat}><AtlasIcon name="close" /></button>
+              </div>
+              <div className={styles.clusterList}>
+                {[...acikKume.yerler].sort((a, b) => a.name.localeCompare(b.name, "tr")).map((y) => (
+                  <button key={y.slug} type="button" aria-pressed={seciliYer?.slug === y.slug} onClick={() => mekanSec(y, "burada")}>
+                    <span>{y.name}</span><AtlasIcon name={seciliYer?.slug === y.slug ? "check" : "pin"} size={16} />
+                  </button>
+                ))}
+              </div>
+            </section>
           )}
-          {yuklemeDurumu === "hata" && (
-            <div className="mt-2 flex flex-wrap items-center gap-2 text-[13px] text-ink-2">
-              <p role="status">Mahalle sınırları yüklenemedi. İlçe listesi kullanılabilir.</p>
-              <button type="button" onClick={() => setDeneme((n) => n + 1)} className="border border-line-2 px-2.5 py-1 font-semibold text-ink hover:border-ink">Tekrar dene</button>
+          {seciliYer && (
+            <div className={styles.selection}>
+              <div className={styles.selectionLabel} role="status"><AtlasIcon name="pin" /><strong>{seciliYer.name}</strong></div>
+              <button type="button" className={styles.utility} onClick={() => mekanSec(seciliYer, "listeye")}>Listede göster <AtlasIcon name="arrow" size={15} /></button>
             </div>
           )}
-          <div className="mt-3 flex flex-wrap gap-1.5" role="group" aria-label="Tür">
-            <Cip on={filtre === "tumu"} onClick={() => setFiltre("tumu")}>Tümü</Cip>
-            {seckiN > 0 && <Cip on={filtre === "secki"} onClick={() => setFiltre("secki")}>Seçki <span className="tnum opacity-70">{seckiN}</span></Cip>}
-            {gorunenCip.map((s) => <Cip key={s.key} on={filtre === s.key} onClick={() => setFiltre(s.key)}>{GRUP.get(s.key)!.kisa} <span className="tnum opacity-70">{s.n}</span></Cip>)}
-            {!tumCip && cipler.length > 7 && <Cip on={false} onClick={() => setTumCip(true)}>+{cipler.length - 7}</Cip>}
-            {filtre !== "tumu" && filtre !== "secki" && !say.some((s) => s.key === filtre) && <Cip on onClick={() => setFiltre("tumu")}>{GRUP.get(filtre)?.kisa} <span className="tnum opacity-70">0</span></Cip>}
-          </div>
-        </div>
+          <p className={styles.attribution}>Sınırlar ve konumlar © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap katkıcıları (ODbL)</a>. Renkler yalnız Gidenler kataloğunu anlatır.</p>
+        </section>
 
-        <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4 sm:px-5">
-          {listede.length === 0 && (
-            <p className="py-6 text-[14px] text-ink-2">{mahalle ? "Bu mahallede bu türde kayıt henüz yok." : "Bu bölgede bu türde kayıt henüz yok."}</p>
-          )}
-          {bolumler.map((b) => {
-            const all = acik[b.key] || filtre !== "tumu"; const xs = all ? b.yerler : b.yerler.slice(0, LIST_CAP);
-            return (
-              <section key={b.key} className="pt-4">
-                <h3 className="flex items-center gap-3 text-[10.5px] font-bold uppercase tracking-[0.16em] text-ink-3">
-                  <span aria-hidden className="h-2.5 w-2.5 border border-line-2" style={{ background: b.key === "secki" ? "var(--accent-soft)" : fill(b.key) }} />
-                  {b.ad}<span className="tnum font-semibold">{b.yerler.length}</span><span aria-hidden className="h-px flex-1 bg-line" />
-                </h3>
-                <ol className="mt-1 divide-y divide-line">
-                  {xs.map((y) => {
-                    const sub = ilce ? (atama.get(y.slug)?.ad ?? y.district) : y.district;
-                    const p = published[y.slug];
-                    return (
-                      <li key={y.slug} id={`semt-mekan-${y.slug}`}
-                        className={seciliYer?.slug === y.slug ? "bg-sheet px-2" : undefined}
-                        onMouseEnter={() => setHover(y.slug)} onMouseLeave={() => setHover((h) => (h === y.slug ? null : h))}
-                        onFocus={() => setHover(y.slug)}
-                        onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setHover((h) => h === y.slug ? null : h); }}>
-                        <Link href={`/mekan/${y.slug}/`} className="group flex items-baseline justify-between gap-3 py-2">
-                          <span className="min-w-0">
-                            <span className="block truncate text-[14.5px] font-semibold group-hover:text-accent-ink">{y.name}{seckiSet.has(y.slug) && <span className="ml-1.5 align-[1px] text-[9.5px] font-bold uppercase tracking-[0.12em] text-accent-ink">Seçki</span>}</span>
-                            <span className="block truncate text-[12px] text-ink-3">{sub}{y.kind && y.kind !== sub ? ` · ${y.kind}` : ""}</span>
-                            {konumDogrulanmadi(y.slug) && <span className="block text-[12px] text-ink-2">Konum doğrulanmadı</span>}
-                          </span>
-                          <span className="tnum flex shrink-0 flex-col items-end text-right">
-                            {y.g ? <span className="text-[13.5px] font-bold" title={`Google puanı ${f1(y.g.rating)}/5. Gidenler puanı değildir.`}>★ {f1(y.g.rating)}{y.g.count != null && <span className="ml-1 text-[11.5px] font-medium text-ink-3">({y.g.count.toLocaleString("tr-TR")})</span>}</span>
-                              : <span className="text-[12px] text-ink-3">—</span>}
-                            {p?.score != null && <span className="text-[11px] font-semibold text-accent-ink">Gidenler {fmtPublished(p.score)}</span>}
-                          </span>
-                        </Link>
-                        {ilce && y.xy && (
-                          <button type="button" aria-label={`${y.name} haritada göster`} aria-pressed={seciliYer?.slug === y.slug}
-                            onClick={() => mekanSec(y, false)} className="mb-2 min-h-7 text-[11.5px] font-semibold text-accent-ink hover:underline">
-                            {seciliYer?.slug === y.slug ? "Haritada seçili" : "Haritada göster"}
-                          </button>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ol>
-                {!all && b.yerler.length > LIST_CAP && (
-                  <button type="button" onClick={() => setAcik((s) => ({ ...s, [b.key]: true }))} className="mt-1 text-[12.5px] font-semibold text-accent-ink hover:underline">
-                    {b.yerler.length - LIST_CAP} mekân daha
-                  </button>
-                )}
-              </section>
-            );
-          })}
-          <p className="mt-5 border-t border-line pt-3 text-[11.5px] leading-snug text-ink-3">★ Google puanı, 5 üzerinden; parantezde Google değerlendirme sayısı. Gidenler puanı ayrıdır ve yalnız yeterli deneyim olduğunda görünür.</p>
-        </div>
-      </aside>
+        <button type="button" onClick={listeyeGit} className={styles.mobileResults}><AtlasIcon name="list" /><span><small>{baslik}</small><strong>{format(listede.length)} mekânı gör</strong></span><AtlasIcon name="arrow" /></button>
+
+        <aside className={styles.detail} aria-labelledby="atlas-mekanlar">
+          <header className={styles.detailHead}>
+            <div className={styles.detailKicker}><AtlasEtiket>Bölge dosyası</AtlasEtiket><span>{bolgeTuru} {ust !== "Semt semt" && `· ${ust}`}</span></div>
+            <div className={styles.detailTitle}>
+              <h2 id="atlas-mekanlar" ref={listHeading} tabIndex={-1}>{baslik}</h2>
+              <AtlasSayi value={listede.length} label={filtre === "tumu" ? "mekân" : "sonuç"} />
+            </div>
+            <p className={styles.detailDescription}>{bas && bas !== "diger" ? <>Katalogda en çok <strong>{GRUP.get(bas)!.ad.toLocaleLowerCase("tr")}</strong>.</> : "Buradaki kayıtlı mekânları türüne göre keşfet."}</p>
+            {atanmamis > 0 && <p className={styles.unplaced}>{atanmamis} kaydın mahallesi belirsiz; yalnız ilçe listesinde.</p>}
+            <div className={styles.filters} role="group" aria-label="Mekân türü">
+              <Cip on={filtre === "tumu"} onClick={() => setFiltre("tumu")}>Tümü</Cip>
+              {(seckiN > 0 || filtre === "secki") && <Cip on={filtre === "secki"} onClick={() => setFiltre("secki")} tone="var(--accent-soft)">Seçki <span>{seckiN}</span></Cip>}
+              {gorunenCip.map((s) => <Cip key={s.key} on={filtre === s.key} tone={fill(s.key)} onClick={() => setFiltre(s.key)}>{GRUP.get(s.key)!.kisa} <span>{s.n}</span></Cip>)}
+              {!tumCip && cipler.length > 4 && <Cip on={false} onClick={() => setTumCip(true)}>+{cipler.length - 4} tür</Cip>}
+              {tumCip && cipler.length > 4 && <Cip on={false} onClick={() => setTumCip(false)}>Daha az</Cip>}
+              {filtre !== "tumu" && filtre !== "secki" && !gorunenCip.some((s) => s.key === filtre) && (
+                <Cip on onClick={() => setFiltre("tumu")} tone={fill(filtre)}>{GRUP.get(filtre)?.kisa}<span aria-label="Filtreyi kaldır">×</span></Cip>
+              )}
+            </div>
+          </header>
+
+          <div className={styles.results}>
+            {!listede.length && (
+              <div className={styles.empty}><AtlasIcon name="scope" size={27} />
+                <strong>Bu seçimde mekân yok.</strong><p>Başka bir tür veya bölge seçerek keşfe devam et.</p>
+                {filtre !== "tumu" && <button className={styles.utility} type="button" onClick={() => setFiltre("tumu")}>Filtreyi kaldır</button>}
+              </div>
+            )}
+            {bolumler.map((b) => {
+              if (!b.yerler.length) return null;
+              const all = acik[b.key] || filtre !== "tumu";
+              const xs = all ? b.yerler : b.yerler.slice(0, LIST_CAP);
+              return (
+                <section key={b.key} className={styles.resultGroup}>
+                  <h3><span style={{ background: b.key === "secki" ? "var(--accent-soft)" : fill(b.key) }} />{b.ad}<small>{b.yerler.length}</small></h3>
+                  <ol>
+                    {xs.map((y) => {
+                      const sub = ilce ? (atama.get(y.slug)?.ad ?? y.district) : y.district;
+                      const p = published[y.slug];
+                      const picked = seciliYer?.slug === y.slug;
+                      return (
+                        <li key={y.slug} id={`semt-mekan-${y.slug}`} className={styles.venueRow} data-selected={picked}>
+                          <Link href={`/mekan/${y.slug}/`} className={styles.venueLink}>
+                            <div className={styles.venueMain}>
+                              <strong>{y.name}</strong>{seckiSet.has(y.slug) && <small>Seçki</small>}
+                              <span>{sub}{y.kind && y.kind !== sub ? ` · ${y.kind}` : ""}</span>
+                              {konumDogrulanmadi(y.slug) && <span>Konum doğrulanmadı</span>}
+                            </div>
+                            {(y.g || p?.score != null) && <span className={styles.score}>
+                              {y.g && <><strong title={`Google puanı ${f1(y.g.rating)}/5. Gidenler puanı değildir.`}>★ {f1(y.g.rating)}</strong><small>Google{y.g.count != null && ` · ${format(y.g.count)}`}</small></>}
+                              {p?.score != null && <small className={styles.gidenlerScore}>Gidenler {fmtPublished(p.score)}</small>}
+                            </span>}
+                            <AtlasIcon name="arrow" size={15} />
+                          </Link>
+                          {ilce && pinSlugs.has(y.slug) && (
+                            <button type="button" className={styles.showPin} aria-label={`${y.name} haritada göster`} aria-pressed={picked}
+                              onClick={(e) => mekanSec(y, "haritaya", e.detail === 0)}>
+                              <AtlasIcon name={picked ? "check" : "pin"} size={15} />{picked ? "Haritada seçili" : "Haritada göster"}
+                            </button>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ol>
+                  {!all && b.yerler.length > LIST_CAP && (
+                    <button type="button" onClick={() => setAcik((s) => ({ ...s, [b.key]: true }))} className={styles.more}>
+                      {b.yerler.length - LIST_CAP} mekân daha <AtlasIcon name="arrow" size={15} />
+                    </button>
+                  )}
+                </section>
+              );
+            })}
+            <p className={styles.scoreNote}>Google puanı 5 üzerinden. Gidenler puanı ayrı gösterilir ve yalnız yeterli deneyim olduğunda görünür.</p>
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }
 
-function Cip({ on, onClick, children }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
+function gorunumeGetir(element: Element | null) {
+  if (!element) return;
+  element.scrollIntoView({
+    block: "start",
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+  });
+}
+
+function Cip({ on, onClick, tone, children }: { on: boolean; onClick: () => void; tone?: string; children: React.ReactNode }) {
   return (
-    <button type="button" onClick={onClick} aria-pressed={on}
-      className={`inline-flex h-7 items-center gap-1 border px-2.5 text-[12.5px] font-semibold ${on ? "border-ink bg-ink text-paper" : "border-line-2 hover:border-ink"}`}>
-      {children}
+    <button type="button" onClick={onClick} aria-pressed={on} className={styles.chip}>
+      {tone && <i aria-hidden="true" style={{ background: tone }} />}{children}
     </button>
   );
 }
