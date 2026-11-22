@@ -1,0 +1,102 @@
+{
+ "dalga": 17,
+ "A": 80,
+ "sinif": {
+  "A": 28,
+  "A-konumsuz": 52
+ },
+ "osmKaydi": 28,
+ "isletmeKaydi": 52,
+ "uygunAday": 1064,
+ "secilen": 250,
+ "onEleme": {
+  "kanitsiz": 903,
+  "spamPark": 476,
+  "kafeBar": 84,
+  "acilmadi": 2042
+ },
+ "inceleme": {
+  "906": 17,
+  "B": 148,
+  "C": 5
+ },
+ "incelemeNeden": {
+  "kaynaklı tür yok": 59,
+  "tür yalnız Overture kategorisinde": 31,
+  "906 havuzundaki kayıtla ortak": 17,
+  "resmî site düğün/davet organizasyonu; restoran kimliği belirsiz": 1,
+  "resmî site yalnız http": 9,
+  "kapı numarası resmî kaynakta doğrulanmadı": 40,
+  "tür belirsiz": 7,
+  "doğa/park mekânı; restoran kimliği belirsiz": 1,
+  "adres resmî kaynakta doğrulanmadı": 20,
+  "ilçe resmî sitede geçmiyor": 3,
+  "resmî site catering ve organizasyon firması": 1,
+  "resmî site su ürünleri ticaret firması; restoran değil": 1,
+  "OSM türleri karışık": 1,
+  "resmî site kendini restoran, pub, kafe ve meyhane olarak tanıtıyor; restoran/bar karışık": 1,
+  "resmî site bakım sayfası": 1,
+  "resmî site online et satışı": 1,
+  "resmî site toptan et ve tavuk satışı; restoran değil": 1,
+  "resmî site balıkçılık firması": 1
+ },
+ "turKaynagi": {
+  "resmî site": 81,
+  "OSM": 5
+ },
+ "ilce": {
+  "Çekmeköy": 2,
+  "Tuzla": 5,
+  "Bayrampaşa": 3,
+  "Kartal": 2,
+  "Beyoğlu": 14,
+  "Maltepe": 12,
+  "Sancaktepe": 2,
+  "Beykoz": 5,
+  "Pendik": 1,
+  "Kadıköy": 8,
+  "Fatih": 5,
+  "Ataşehir": 5,
+  "Kağıthane": 1,
+  "Şile": 1,
+  "Zeytinburnu": 1,
+  "Ümraniye": 3,
+  "Sarıyer": 4,
+  "Üsküdar": 1,
+  "Bahçelievler": 1,
+  "Beşiktaş": 2,
+  "Bağcılar": 1,
+  "Güngören": 1
+ },
+ "tur": {
+  "Kebapçı / Ocakbaşı": 24,
+  "Balık restoranı": 17,
+  "Dönerci": 6,
+  "Pideci": 5,
+  "Türk mutfağı": 6,
+  "Meyhane": 9,
+  "Burger": 1,
+  "Steakhouse": 1,
+  "Lokanta": 4,
+  "Mantıcı": 1,
+  "Kokoreççi": 1,
+  "Pizza": 1,
+  "Çorbacı": 2,
+  "Sushi / Japon": 1,
+  "Köfteci": 1
+ },
+ "zincirSube": 4,
+ "v906Eslesen": 0,
+ "kaliteDuzeltmesi": {
+  "tarih": "2026-11-12",
+  "aciklama": "Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (scripts/katalog/adres-dogrula.mjs); bulunamayanlar B'ye indi.",
+  "inenler": [
+   "kurufasulye-diyari-atasehir",
+   "pizzeria-capra-cekmekoy",
+   "arada-bir-tantuni-sariyer",
+   "cagistan-erzurum-cag-kebabi-eyupsultan",
+   "kebap-ci-mecidiyekoy-sisli",
+   "adana-il-siniri-nisantasi-sisli"
+  ]
+ }
+}

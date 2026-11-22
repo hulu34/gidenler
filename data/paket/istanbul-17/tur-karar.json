@@ -1,0 +1,235 @@
+{
+ "_aciklama": "Paket 17: türü yalnız Overture kategorisinde olan adaylar resmî sitenin başlık/açıklama/menüsüyle doğrulandı (2026-11-11). Kısa ifade ölçümdür.",
+ "kararlar": {
+  "13bb27d2-4b48-4a10-b70c-42fbeebe2a9c": {
+   "ad": "Tarihi Iskender Kebapcisi",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Tarihi İskender Kebapcısı\"; menü: kebap, döner"
+  },
+  "37a8d5cf-16fe-4531-b7db-247a2de48e09": {
+   "ad": "Konyali Meshur Pilavci",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Konyalı Meşhur Pilavcı\"; menü: ev yemekleri"
+  },
+  "7aa40593-3521-4eb4-a1ea-0028ec0d5763": {
+   "ad": "Gül Urfa",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Gül Urfa Çorba, Kebap ve Lahmacun\""
+  },
+  "1e55dbd6-8014-444c-bf65-d422701f8c3f": {
+   "ad": "Titiz Lokantası",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Titiz Lokantası – Yılların Lezzeti\""
+  },
+  "9636d07d-1a99-4248-b452-a64248cef1b0": {
+   "ad": "Çeltik Kebab and Lahmacun",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Çeltik Kebap ve Lahmacun | 1974'ten Beri\""
+  },
+  "7d84d803-eb6b-43d0-98b5-f4edd449785b": {
+   "ad": "Koylum Manti Evi",
+   "kind": "Mantıcı",
+   "cuisine": [
+    "turkish",
+    "dumplings"
+   ],
+   "ifade": "resmî site başlığı: \"Maltepe Mantıcı - Maltepe Ev Yemekleri\""
+  },
+  "803056e6-ed48-400b-b27a-f5be6c21b268": {
+   "ad": "Tepeli Konya Mutfagi",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Konya Mutfağı'nın İstanbul'daki ... Temsilcisi\""
+  },
+  "bc1c74b2-4528-49ab-97ea-769f9e22722b": {
+   "ad": "Antepli Ustadim",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site menüsü: kebap ağırlıklı"
+  },
+  "a7332716-fd39-47db-839d-7c677b508099": {
+   "ad": "Rakofoli Restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Karaköy Manzaralı Ocakbaşı Restoran\""
+  },
+  "27754090-242a-4d03-a393-080842b6b316": {
+   "ad": "Hayat Cihangir",
+   "kind": "Meyhane",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Cihangir'de Meyhane\""
+  },
+  "636fc99e-31a5-4abe-8201-54813e90cf31": {
+   "ad": "Kurufasulye Diyari",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Kuru Fasülyeden Fazlası\""
+  },
+  "1fded78e-f6ee-4d5b-b825-6517912d2ba6": {
+   "ad": "Karagöz Sofrası",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site menüsü: çorbalar, kebaplar, taş fırın, döner"
+  },
+  "b5785d82-97fc-4e16-8e5c-55ba2c6251a0": {
+   "ad": "Köfteci Mahmut",
+   "kind": "Köfteci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site menüsü: köfte"
+  },
+  "d5e31004-60b3-4771-87f4-9ae0cf9fd693": {
+   "ad": "Bülbültepe Kahvaltı ve Balık",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood",
+    "breakfast"
+   ],
+   "ifade": "resmî site başlığı: \"Garipçe Serpme Kahvaltı & Izgara Balık\""
+  },
+  "ea8edb7c-cf0c-4e10-963b-3f564c051a02": {
+   "ad": "Saklı Kubbe Restaurant",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site menüsü: pide ağırlıklı"
+  },
+  "9e5ff9d6-9fb3-4349-bd29-dede9b155334": {
+   "ad": "Nato Lokantası",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Karaköy'ün değişmeyen lezzeti.. Türk mutfağı\""
+  },
+  "e2b8a8a6-c71e-4c43-826b-9a7df268cb78": {
+   "ad": "Lale İşkembecisi",
+   "kind": "Çorbacı",
+   "cuisine": [
+    "soup"
+   ],
+   "ifade": "resmî site başlığı: \"Lale İşkembecisi 1960 | Çorbanın Halisi\""
+  },
+  "f0c4a2b0-f07e-4cee-ada3-2a678d37fcb4": {
+   "ad": "Cağistan Erzurum Cağ Kebabı",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Erzurum Cağ Kebabı\""
+  },
+  "fddc6a89-6565-4326-aa6d-d184581c777c": {
+   "ad": "Münhasır Garden Döner & Kebap",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"İstiklal'de Döner, İskender, Kebap\""
+  },
+  "bbbc846d-7b1c-4ba2-90df-6acaba20eaf2": {
+   "ad": "Arafat Köfte",
+   "kind": "Köfteci",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"1986'dan Beri Eminönü'nün Köftecisi\""
+  },
+  "9daa017a-817b-4f21-8679-6b2f859aa33b": {
+   "ad": "Gözde Kebap Gaziantep Mutfağı",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Gözde Kebap Gaziantep Mutfağı\"; menü: kebap"
+  },
+  "949ac157-b20f-40c4-8de8-fb5c1063d637": {
+   "ad": "Karaköy Sarıhan İşkembe",
+   "kind": "Çorbacı",
+   "cuisine": [
+    "soup"
+   ],
+   "ifade": "resmî site başlığı: \"Sarıhan İşkembe & Restaurant | Geleneksel\""
+  },
+  "7c5ad5d0-9648-4704-b2ad-916c19563cda": {
+   "ad": "Kiliza Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site başlığı: \"Adana, Antep ve Kilis Mutfağı\""
+  },
+  "efce4963-66bf-4b1d-8039-f02a9628b998": {
+   "ad": "Masa İstanbul",
+   "kind": "Dünya mutfağı",
+   "cuisine": [
+    "international"
+   ],
+   "ifade": "resmî site başlığı: \"Dünya Mutfağının En Özel Lezzetleri\""
+  },
+  "ea51405e-3e65-4f1b-baa7-33f6e3c6d5c0": {
+   "ad": "Arada Bir Tantuni",
+   "kind": "Tantuni",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site sayfası: tantuni"
+  },
+  "ba1c2dd4-a266-4058-becd-405c2bd52e3d": {
+   "ad": "Mardin Mutfagi",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish",
+    "regional"
+   ],
+   "ifade": "resmî site başlığı: \"Mardin Mutfağı – Kadim Medeniyetler Mutfağı | Yöresel Lezzetler\""
+  },
+  "64650a49-95cf-4eb1-92e6-1e757ef276ab": {
+   "ad": "Zeynep Kamil Kokoreç Recep Usta",
+   "kind": "Kokoreççi",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site başlığı: \"Leziz Kokoreç\""
+  }
+ }
+}

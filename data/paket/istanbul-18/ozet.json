@@ -1,0 +1,91 @@
+{
+ "dalga": 18,
+ "A": 32,
+ "sinif": {
+  "A-konumsuz": 18,
+  "A": 14
+ },
+ "osmKaydi": 14,
+ "isletmeKaydi": 18,
+ "uygunAday": 814,
+ "secilen": 250,
+ "onEleme": {
+  "kanitsiz": 903,
+  "spamPark": 476,
+  "kafeBar": 84,
+  "acilmadi": 2042
+ },
+ "inceleme": {
+  "906": 9,
+  "B": 199,
+  "C": 10
+ },
+ "incelemeNeden": {
+  "adres resmî kaynakta doğrulanmadı": 68,
+  "kapı numarası resmî kaynakta doğrulanmadı": 57,
+  "tür belirsiz": 6,
+  "resmî site başka işletmenin": 1,
+  "kaynaklı tür yok": 84,
+  "çiğ köfte": 2,
+  "resmî site yalnız http": 4,
+  "906 havuzundaki kayıtla ortak": 9,
+  "yemek kursu; restoran değil": 1,
+  "tür yalnız Overture kategorisinde": 51,
+  "resmî site catering firması": 1,
+  "resmî site bağlantısı başka işletmenin sayfası": 1,
+  "zincir": 3,
+  "ilçe resmî sitede geçmiyor": 3,
+  "kafe/brasserie markası": 1,
+  "ad ev ürünleri dükkânını gösteriyor; restoran olduğu belirsiz": 1,
+  "resmî site \"Polonezköy Et Mangal\"; tür": 1,
+  "Overture adı ile resmî sitedeki ad": 1
+ },
+ "turKaynagi": {
+  "resmî site": 33,
+  "OSM": 1
+ },
+ "ilce": {
+  "Beyoğlu": 8,
+  "Beşiktaş": 2,
+  "Fatih": 3,
+  "Kadıköy": 3,
+  "Şişli": 3,
+  "Sarıyer": 3,
+  "Sancaktepe": 1,
+  "Maltepe": 2,
+  "Silivri": 1,
+  "Üsküdar": 1,
+  "Beykoz": 1,
+  "Bakırköy": 1,
+  "Pendik": 1,
+  "Ümraniye": 1,
+  "Ataşehir": 1
+ },
+ "tur": {
+  "Pizza": 2,
+  "Sushi / Japon": 1,
+  "Türk mutfağı": 3,
+  "Meyhane": 2,
+  "Balık restoranı": 1,
+  "Dönerci": 6,
+  "Burger": 1,
+  "İtalyan": 4,
+  "Kahvaltı": 3,
+  "Asya mutfağı": 2,
+  "Kebapçı / Ocakbaşı": 3,
+  "Mantıcı": 1,
+  "Steakhouse": 1,
+  "Karadeniz mutfağı": 1,
+  "Ciğerci": 1
+ },
+ "zincirSube": 5,
+ "v906Eslesen": 0,
+ "kaliteDuzeltmesi": {
+  "tarih": "2026-11-12",
+  "aciklama": "Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (scripts/katalog/adres-dogrula.mjs); bulunamayanlar B'ye indi.",
+  "inenler": [
+   "gurkan-sef-vadistanbul-sariyer",
+   "poyraz-karadeniz-pidecisi-bakirkoy"
+  ]
+ }
+}

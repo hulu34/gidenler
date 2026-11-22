@@ -1,0 +1,243 @@
+{
+ "_aciklama": "Paket 25 kaynaklı tür kararları (14.11.2026): önceki paketlerde (16–23) yalnız türü eksik kalan adaylar; resmî sitenin ana sayfası ve menü/hakkımızda sayfalarında tür kalıbı sayımı. Her karar elle gözden geçirildi; yalnız işletme türü ve mutfağı açık olanlar kabul edildi.",
+ "kararlar": {
+  "8ca1d861-0497-4c2e-8019-f6ba4e2c5368": {
+   "ad": "Flamingo Köy",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://flamingokoy.com/): “Köy’e Hoş Geldiniz — Flamingo Köy Açık Büfe Kahvaltı Haftai İçi: 09:30 – 18:00 Arası Sınırsız Serpme Kahvaltı” · Kahvaltı 48 eşleşme, sonraki Balık restoranı 0"
+  },
+  "a832f160-5f32-4aec-af7e-b56daa60cf8e": {
+   "ad": "Akdoğan Pasta & Kebap Restoran",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.akdoganrestaurant.com/): “Akdoğan Restoran | İstanbul Küçükçekmece'de Kebap, Döner, Pide & Pizza Halkalı Merkez, Zeynebiye Cd. No:4, 343” · Kebapçı / Ocakbaşı 17 eşleşme (adla uyumlu), en sık Pideci 21"
+  },
+  "599ad644-9195-450f-be57-d90d2646576e": {
+   "ad": "Haz Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.hazkebap.com/): “Beylikdüzü’nün En İyi Kebapçısı | Haz Kebap - Adana, Urfa, Lahmacun & Izgara Lezzetleri Instagram'da Haz Kebap” · Kebapçı / Ocakbaşı 88 eşleşme, sonraki Pideci 32"
+  },
+  "7a466301-a080-4f33-bd42-1f8ba0902267": {
+   "ad": "House of Medusa Restaurant",
+   "kind": "Türk mutfağı",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site (https://medusarestaurant.com/): “Restaurant submits samples from the Ottoman Turkish cuisine predominantly. It is also possible to find many v” · Türk mutfağı 4 eşleşme, sonraki Balık restoranı 0"
+  },
+  "ad8b3aa1-82d0-46f9-b12d-35172fc0d4dc": {
+   "ad": "Har Kanat Bahçeşehir",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://harkanat.com/): “Kapanış Lezzetlerimizi Keşfedin Meze, et ve kebap çeşitlerimizin tamamını dijital menümüzde inceleyebilirsini” · Kebapçı / Ocakbaşı 3 eşleşme, sonraki Balık restoranı 0"
+  },
+  "8b13c6be-e0b5-4726-a028-5438fdb51448": {
+   "ad": "Doğaköyü Çatalca",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://www.dogakoyu.com.tr/): “rayın : 0536 561 4040 İLETİSİM köy havasında kahvaltı ve mangalın en doğal hali İLETİŞİM Doğayla İç İçe, Lezze” · Kahvaltı 5 eşleşme, sonraki Balık restoranı 0"
+  },
+  "daa47945-c880-4b5b-a98b-c3591406285b": {
+   "ad": "Fego Food",
+   "kind": "Burger",
+   "cuisine": [
+    "burger"
+   ],
+   "ifade": "resmî site (https://fegofood.com.tr/): “z Sizin için seçtiklerimiz Cheeseburger Dana burger köftesi (120 gr.), cheddar peyniri, yeşillik, turşu, özel” · Burger 23 eşleşme, sonraki Dönerci 2"
+  },
+  "764b0ed1-a45e-4548-8722-ba65f4ff317f": {
+   "ad": "Hazar Kanat",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (http://hazarkanat.com/): “00 Dana dil, dana yanak, kuzu kelle karışımı Adana Kebap 340.00 125 gr. Adana kebap. Pilav, közlenmiş biber, k” · Kebapçı / Ocakbaşı 155 eşleşme, sonraki Pideci 36"
+  },
+  "99dca767-8b82-4b5b-a65e-f8dadf0def69": {
+   "ad": "Tella Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.tellakebap.com/): “Tella – Gerçek Urfa Kebabı – Odun Ateşinde Lahmacun Ana Sayfa Lezzetlerimiz Hikayemiz Şubelerimiz Galeri İleti” · Kebapçı / Ocakbaşı 40 eşleşme, sonraki Pideci 17"
+  },
+  "483eef09-2390-405c-895a-0291ad431ec1": {
+   "ad": "Karaf Et & Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://karafrestoran.com/): “et Rezervasyon Hoşgeldiniz KARAF RESTORAN Et Kebap Restoranı Rezervasyon Hoşgeldiniz KARAF RESTORAN Közde Pişe” · Kebapçı / Ocakbaşı 12 eşleşme, sonraki Pideci 3"
+  },
+  "6ec66400-e0e4-495d-a68e-e52e71c9d4d0": {
+   "ad": "Seafront Lounge Rooftop Restaurant | Sultanahmet",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site (https://seafrontlounge.com/): “.com\\/wp-content\\/uploads\\/2026\\/08\\/premium-seafood-dining-032.jpg\",\"datePublished\":\"2023-06-09T08:55:09+00:0” · Balık restoranı 142 eşleşme, sonraki Türk mutfağı 26"
+  },
+  "d5bdf55b-4239-40e0-89d4-ef7720179c26": {
+   "ad": "Kenan Usta Ocakbaşı",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://kenanusta.com.tr/): “Rezervasyon Rezervasyon Ana Sayfa Kenan Usta Ocakbaşı Menu Fotoğraflar Blog İletişim Rezervasyon Kurabiye Soka” · Kebapçı / Ocakbaşı 35 eşleşme, sonraki Sushi / Japon 1"
+  },
+  "4787b494-cd77-43d9-a98f-55f0a0cbd5aa": {
+   "ad": "Tepe Balık Restaurant Sarıyer",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site (https://tepebalik.com/): “601 59 02 09:00 - 00:00 HAFTANIN 7 GÜNÜ Tepe Balık'a Hoş Geldiniz Sarıyer'in eşsiz deniz manzarasında, ister b” · Balık restoranı 17 eşleşme, sonraki Meyhane 0"
+  },
+  "821c9262-0744-49a5-884d-a8caf6d0e2a3": {
+   "ad": "Sait",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site (https://www.sait.com.tr/): “sine giren ve Gault & Millau Gourmand Table “Deniz Ürünleri” ödülüne layık görülen Sait Restoran, gastronomi d” · Balık restoranı 4 eşleşme, sonraki Meyhane 0"
+  },
+  "7c143a08-ea4a-460f-b263-24d92f0de8b8": {
+   "ad": "Nefis Et",
+   "kind": "Steakhouse",
+   "cuisine": [
+    "steak_house"
+   ],
+   "ifade": "resmî site (https://www.nefiset.com.tr/): “Hizmet 1975 yılında Kestanelik’te küçük bir kasap dükkanında başlayan “NEFİS ET”, kurulduğu günden bugüne müş” · Steakhouse 5 eşleşme, sonraki Balık restoranı 0"
+  },
+  "31c79cc2-85d0-4a4c-93bc-bc97eda98a85": {
+   "ad": "Sadakatsiz Yeni Nesil Meyhane",
+   "kind": "Meyhane",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site (https://sadakatsiznisantasi.com/): “işantaşı İstanbul\",\"description\":\"Yeni Nesil Meyhane\",\"publisher\":{\"@id\":\"https:\\/\\/sadakatsiznisantasi.com\\/#” · Meyhane 6 eşleşme, sonraki Balık restoranı 0"
+  },
+  "ae6a5e3b-59a2-406b-92ac-bacbacb512a6": {
+   "ad": "Modena Steak Kebap Fish House",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://turkishsteakhouse.wordpress.com/): “New Hagia Sophia Steak Kebap Fish House – Sultanahmet · Yemek Skip to content New Hagia Sophia Steak Kebap Fis” · Kebapçı / Ocakbaşı 5 eşleşme, sonraki Balık restoranı 0"
+  },
+  "995ecc3e-b40f-4c8d-9eb1-a4b8289a6549": {
+   "ad": "Koza Garden",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://www.kozagarden.com/): “0\",\"description\":\"Koza Garden: Polonezköy'de kahvaltı, et mangal keyfi ve organizasyonlar için ideal mekan. Do” · Kahvaltı 67 eşleşme, sonraki Steakhouse 2"
+  },
+  "6f440366-c1a5-47c3-a9ca-c1dca8081986": {
+   "ad": "Tella Kebap, Bahçekent",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.tellakebap.com/): “Tella – Gerçek Urfa Kebabı – Odun Ateşinde Lahmacun Ana Sayfa Lezzetlerimiz Hikayemiz Şubelerimiz Galeri İleti” · Kebapçı / Ocakbaşı 40 eşleşme, sonraki Pideci 17"
+  },
+  "dc3ae4c8-808f-446e-ac25-7eaf867c7546": {
+   "ad": "Tenedos Göktürk",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site (https://tenedosgokturk.com/menu): “e Fava Semizotu Ahtapot Söğüş Egeli Patlıcan Levrek Marin Kısır Atom İsli Kuru Cacık Tenedos Ezme Börülce Piya” · Balık restoranı 5 eşleşme, sonraki Steakhouse 2"
+  },
+  "64f77ef3-e407-4c85-8f18-613ae1d87271": {
+   "ad": "The Grungy",
+   "kind": "Burger",
+   "cuisine": [
+    "burger"
+   ],
+   "ifade": "resmî site (https://thegrungy.com/): “l: TR EN Hakkında Ben de birçokları gibi bir burger sevdalısıyım. Candan (karım) ile birlikte seyahat ettiğimi” · Burger 12 eşleşme, sonraki Steakhouse 2"
+  },
+  "9b5b1b5d-e24e-4375-8efd-6014c6e1f7de": {
+   "ad": "Bizee Restaurant | Lahmacun Kebap Tava",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site (https://bizee.com.tr/): “Dallas Konfit Konfit Kuzu Kaburga Lamb Ribs Lahmacun Lahmacun Sarımsaklı Lahmacun Garlic lahmacun Kaşarlı Lah” · Pideci 11 eşleşme, sonraki Steakhouse 3"
+  }
+ },
+ "elleRet": {
+  "Gunesli Iskembe": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Makriköy": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Trabzon Yöre Evi": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Tarihi Kısıklı Fasulyecisi": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Yurt Konserve": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Intiba": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Noya Beach": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Arch Bistro": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Albura Kathisma": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Tatmix Döner": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Dede Ahmet Kebap": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Köy Konağı Restourant Çekmeköy": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Digma Restaurant": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Patlıcan Polonezköy": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Sanpanino Sandwich": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Pamera Garden": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Değirmen Park": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "muratchef": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Atiye Bebek": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Kujna Restaurant": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Çilman Proje Danışmanlığı": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Konya Mevlana Restaurant": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Veli Usta Tantuni": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Beyafi Kasap Döner": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Sevic Restoran": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Bebe İçli Köfte": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Mato Et Restaurant": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Dereli Vadi Resturant ve Piknik alanı": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Old House Restaurant": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Comlek Kuru Fasulye": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Kalia Bahçe Kır Bahçesi ve Restoran": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Marmaris Büfe 1964 Kavacık": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Ramazan Bingol Et Lokantasi": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Mesa Country": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Ortaköy Polis Evi": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Mutabık Restaurant": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Asmalı Bahçe": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "The Voir İstanbul": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Palet Balıkçıl": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Nice Istanbul": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Antepli Ustadim": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Güzelburç Antakya": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Pilavla": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Saimbeyli Kavurma": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Sultanahmet Rooftop": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Happy Moon's Vadi İstanbul": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "CLOVE Restaurant": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Saklı Kubbe Restaurant": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "AcayipLezzet": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)",
+  "Chicken Co.": "otomatik tür kararı elle reddedildi (tür ya da işletme türü belirsiz/yanlış)"
+ }
+}

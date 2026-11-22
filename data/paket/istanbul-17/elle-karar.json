@@ -1,0 +1,56 @@
+{
+ "_aciklama": "Paket 17 elle denetim (2026-11-11).",
+ "tarih": "2026-11-11",
+ "kararlar": {
+  "e3778bd2-2f67-4c93-9493-b54f123756f0": {
+   "ad": "Set Balık Lokantası",
+   "sinif": "B",
+   "neden": "resmî site bakım sayfası (Maintenance) gösteriyor; güncel faaliyet kanıtı zayıf"
+  },
+  "f5fac413-6f8c-4a3b-833e-e7dafcb64c53": {
+   "ad": "Chez Moi",
+   "sinif": "B",
+   "neden": "resmî site kendini restoran, pub, kafe ve meyhane olarak tanıtıyor; restoran/bar karışık"
+  },
+  "e69c8f37-47dc-4cb8-ada2-882656fa1aa2": {
+   "ad": "Akar Şelale Park",
+   "sinif": "B",
+   "neden": "doğa/park mekânı; restoran kimliği belirsiz"
+  },
+  "36a78ec3-2516-47fa-b00c-158446196f98": {
+   "ad": "Afiyet Et Kasap Izgara",
+   "sinif": "B",
+   "neden": "resmî site online et satışı (kasap); restoran bölümü doğrulanmadı"
+  },
+  "6ec66400-e0e4-495d-a68e-e52e71c9d4d0": {
+   "ad": "Seafront Lounge Rooftop Restaurant",
+   "sinif": "B",
+   "neden": "OSM türleri karışık (kahvaltı, balık, steak); otel çatı restoranı, tür belirsiz"
+  },
+  "51aff520-fc0d-41aa-956f-58689cae10b2": {
+   "ad": "Group Sagun",
+   "sinif": "C",
+   "neden": "resmî site su ürünleri ticaret firması; restoran değil"
+  },
+  "d8eb31a5-ba71-4b74-be73-313fa8c1ee6a": {
+   "ad": "Miraç Et",
+   "sinif": "C",
+   "neden": "resmî site toptan et ve tavuk satışı; restoran değil"
+  },
+  "07c9e5c4-6e42-4720-8bb2-96e2962523bc": {
+   "ad": "Balik Ye Restoran",
+   "sinif": "C",
+   "neden": "resmî site balıkçılık firması (Sağdıçlar Balıkçılık); restoran kimliği yok"
+  },
+  "411df49d-abe0-435c-a6ef-3cfc53a8b773": {
+   "ad": "N-fes Türk Mutfağı",
+   "sinif": "C",
+   "neden": "resmî site catering ve organizasyon firması"
+  },
+  "3f46930f-8e26-4bf0-8463-bc911a53ab3f": {
+   "ad": "Adli Restaurant",
+   "sinif": "C",
+   "neden": "resmî site düğün/davet organizasyonu; restoran kimliği belirsiz"
+  }
+ }
+}

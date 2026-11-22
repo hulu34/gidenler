@@ -1,0 +1,1793 @@
+{
+ "_aciklama": "İstanbul Overture keşif paketi (dalga 16). Aday Overture Maps Places'ten (© Overture Maps Foundation; kaynak başına lisans: Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0); kimlik, faaliyet, adres ve tür restoranın resmî sitesinden ölçüldü (sayfa içeriği saklanmadı). Koordinat yalnız OSM restoran kaydından (© OpenStreetMap katkıcıları, ODbL); OSM'si olmayanlar A-konumsuz. kayitlar.json → venues.json, isletme-kayitlari.json → isletme.json. Google verisi yok.",
+ "kontrolTarihi": "2026-11-11",
+ "eklenen": [
+  {
+   "slug": "saraykapi-restoran-esenyurt",
+   "ref": "node/2277552851",
+   "tip": "osm_kaydi",
+   "ad": "Saraykapı Restoran",
+   "ilce": "Esenyurt",
+   "adres": "Hürriyet Cd No:1, Esenyurt",
+   "koordinat": [
+    41.015984,
+    28.649369
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site saraykapi.com.tr: ad + telefon + sokak + kapı no (http://www.saraykapi.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site açıklaması: \"Sac Tava, Döner, Lahmacun\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/2277552851 (Overture noktasına 9 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/2277552851",
+    "https://www.saraykapi.com.tr/",
+    "overture:15be6591-0c3d-4d1f-b46f-06c47dee19f8"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 12
+  },
+  {
+   "slug": "sultan-sark-sofrasi-sultangazi",
+   "ref": "node/5291873154",
+   "tip": "osm_kaydi",
+   "ad": "Sultan Şark Sofrası",
+   "ilce": "Sultangazi",
+   "adres": "Eski Edirne Asf No:618/B, Sultangazi",
+   "koordinat": [
+    41.100485,
+    28.863278
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sultansark.com: ad + telefon + sokak + kapı no (https://www.sultansark.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: OSM cuisine \"turkish\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5291873154 (Overture noktasına 13 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5291873154",
+    "https://www.sultansark.com/",
+    "overture:48e89b63-961d-409f-ba95-a0ae4fa65324"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 12
+  },
+  {
+   "slug": "necdet-usta-sofrasi-gaziosmanpasa",
+   "ref": "node/5284636307",
+   "tip": "osm_kaydi",
+   "ad": "Necdet Usta Sofrası",
+   "ilce": "Gaziosmanpaşa",
+   "adres": "Cumhuriyet Meydanı No:28, Gaziosmanpaşa",
+   "koordinat": [
+    41.057648,
+    28.912673
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site necdetustasofrasi.com.tr: ad + telefon + sokak + kapı no (https://necdetustasofrasi.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: OSM cuisine \"turkish\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5284636307 (Overture noktasına 4 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5284636307",
+    "https://necdetustasofrasi.com.tr/",
+    "overture:27924eb0-632c-491e-ba17-25a536169fcf"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 12
+  },
+  {
+   "slug": "balikosman-restaurant-buyukcekmece",
+   "ref": "isletme/balikosman-restaurant-buyukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "BalıkOsman Restaurant",
+   "ilce": "Büyükçekmece",
+   "adres": "Cumhuriyet Cd No:42, Büyükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site balikosman.com.tr: ad + telefon + sokak + kapı no (https://balikosman.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://balikosman.com.tr/",
+    "overture:6662ef59-07b9-468c-bf57-3dd2ba25a0d6"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "ihtiyar-balikci-restaurant-bakirkoy",
+   "ref": "way/1246974579",
+   "tip": "osm_kaydi",
+   "ad": "İhtiyar Balıkçı Restaurant",
+   "ilce": "Bakırköy",
+   "adres": "İskele Cd No:24, Bakırköy",
+   "koordinat": [
+    40.956374,
+    28.821362
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site ihtiyarbalikci.com: ad + telefon + sokak + kapı no (https://ihtiyarbalikci.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: OSM cuisine \"seafood\" (şube düzeyi)",
+    "konum: OSM restoran kaydı way/1246974579 (Overture noktasına 2 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1246974579",
+    "https://ihtiyarbalikci.com/",
+    "overture:a8403ede-5bb8-4d7e-94c2-06adad6a7b26"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "meyvali-kucukcekmece",
+   "ref": "isletme/meyvali-kucukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Meyvalı",
+   "ilce": "Küçükçekmece",
+   "adres": "Merkez Cami Sk No:6, Küçükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site meyvali.com.tr: ad + telefon + sokak + kapı no (https://www.meyvali.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Geleneksel Türk\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.meyvali.com.tr/",
+    "overture:460a5153-47d9-4b18-9243-2940496f8ad1"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "camli-kosk-restaurant-buyukcekmece",
+   "ref": "isletme/camli-kosk-restaurant-buyukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Camlı Köşk Restaurant",
+   "ilce": "Büyükçekmece",
+   "adres": "Sahilyolu Sk No:25, Büyükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site camlikoskrestaurant.com: ad + telefon + sokak + kapı no (https://www.camlikoskrestaurant.com/iletisim)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.camlikoskrestaurant.com/",
+    "overture:3a46c7bd-6254-4bfd-a1ef-9143134c4501"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11,
+   "adOverture": "Camlı Köşk Restaurant – Büyükçekmece Balık Restoranı, Sahilde Deniz Manzaralı"
+  },
+  {
+   "slug": "avni-baba-avcilar",
+   "ref": "isletme/avni-baba-avcilar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Avni Baba",
+   "ilce": "Avcılar",
+   "adres": "Dr. Sadık Ahmet Cd No:2, Avcılar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Meyhane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site avnibabaninyeri.com: ad + telefon + sokak + kapı no (https://www.avnibabaninyeri.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Meyhane\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.avnibabaninyeri.com/",
+    "overture:753bb288-3e25-4f89-aceb-e3e8e2887509"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "sanliurfa-gul-beylikduzu",
+   "ref": "isletme/sanliurfa-gul-beylikduzu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Şanlıurfa Gül",
+   "ilce": "Beylikdüzü",
+   "adres": "Kuştepe Cd No:3, Beylikdüzü",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site xn--anlurfagl-x9a19cer.com: ad + telefon + sokak + kapı no (https://xn--anlurfagl-x9a19cer.com/iletisim)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Adana & Urfa Kebap ve Lahmacun\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://xn--anlurfagl-x9a19cer.com/",
+    "overture:7d45d9c3-b11c-4b47-a9b6-de279c58f399"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11,
+   "adOverture": "şanlıurfa gül"
+  },
+  {
+   "slug": "felek-mangalbasi-bakirkoy",
+   "ref": "node/5216386721",
+   "tip": "osm_kaydi",
+   "ad": "Felek Mangalbaşı",
+   "ilce": "Bakırköy",
+   "adres": "Kennedy Cad No:29, Bakırköy",
+   "koordinat": [
+    40.976021,
+    28.880025
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site felekmangalbasi.com: ad + telefon + sokak + kapı no (https://www.felekmangalbasi.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Ocakbaşı\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5216386721 (Overture noktasına 11 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5216386721",
+    "https://www.felekmangalbasi.com/",
+    "overture:53c3b4bd-bce4-4b93-bb6a-65bca40b4822"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "mmy-tantuni-bahcelievler",
+   "ref": "isletme/mmy-tantuni-bahcelievler",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Mmy Tantuni",
+   "ilce": "Bahçelievler",
+   "adres": "Cemal Ulusoy Cd No:21, Bahçelievler",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Tantuni",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site mmytantuni.com: ad + telefon + sokak + kapı no (https://www.mmytantuni.com/iletisim/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Tantuni Tutkusu\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.mmytantuni.com/",
+    "overture:e5ae7663-606b-4902-ae28-937224a50fda"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "beykent-saray-sac-tava-beylikduzu",
+   "ref": "isletme/beykent-saray-sac-tava-beylikduzu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Beykent Saray Sac Tava",
+   "ilce": "Beylikdüzü",
+   "adres": "Yavuz Sultan Selim Blv No:43, Beylikdüzü",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site beykentsaraysactava.com: ad + telefon + sokak + kapı no (http://www.beykentsaraysactava.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site menüsü: sac tava, kebap, pide, döner (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.beykentsaraysactava.com/",
+    "overture:a4eee865-8c72-4968-9357-707a4783d4f3"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "baykuru-bagcilar",
+   "ref": "isletme/baykuru-bagcilar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Baykuru",
+   "ilce": "Bağcılar",
+   "adres": "Hoca Ahmet Yesevi Cd No:15, Bağcılar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site baykuru.com.tr: ad + telefon + sokak + kapı no (https://www.baykuru.com.tr/rezervasyon)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"çayeli fasülye\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.baykuru.com.tr/",
+    "overture:3f6aaebe-c8f7-4908-ad84-42bcd6f19567"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "sosta-restaurant-mangalbasi-bahcelievler",
+   "ref": "isletme/sosta-restaurant-mangalbasi-bahcelievler",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Sosta Restaurant Mangalbaşı",
+   "ilce": "Bahçelievler",
+   "adres": "İzzettin Çalışlar Cd No:60, Bahçelievler",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sosta.com.tr: ad + telefon + sokak + kapı no (http://www.sosta.com.tr/Page/Contact)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Sosta Mangalbaşı\"; menü: et, ızgara (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.sosta.com.tr/",
+    "overture:c3bd2a25-e2bb-4eff-9fde-bfc0b6b293dd"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "aydinlar-iskender-kucukcekmece",
+   "ref": "isletme/aydinlar-iskender-kucukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Aydınlar İskender",
+   "ilce": "Küçükçekmece",
+   "adres": "Halkalı Cd No:185/A, Küçükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Dönerci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site aydinlariskender.com: ad + telefon + sokak + kapı no (https://www.aydinlariskender.com/online-ordering)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site menüsü: iskender, döner, köfte, pide (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.aydinlariskender.com/online-ordering",
+    "overture:d8aaf7e0-758c-4b44-bf06-3f44e62d989f"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "koftecibo-bahcelievler",
+   "ref": "isletme/koftecibo-bahcelievler",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Köftecibo",
+   "ilce": "Bahçelievler",
+   "adres": "Arifağa Sk No:17/A, Bahçelievler",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Köfteci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site koftecibo.com.tr: ad + telefon + sokak + kapı no (https://koftecibo.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Yenibosna Köfteci\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://koftecibo.com.tr/",
+    "overture:1af70c3e-3257-4623-97e8-48a7862d2482"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 11
+  },
+  {
+   "slug": "ayvaz-doner-iskender-bahcelievler",
+   "ref": "isletme/ayvaz-doner-iskender-bahcelievler",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Ayvaz Döner İskender",
+   "ilce": "Bahçelievler",
+   "adres": "Fetih Cd No:47/A, Bahçelievler",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Dönerci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site ayvazdoner.com: ad + telefon + sokak (https://ayvazdoner.com/)",
+    "adres: resmî sitede iletişim bloğunda sokak + \"No 47/A\" (https://ayvazdoner.com/iletisim)",
+    "tür: resmî site başlığı/açıklaması: \"Döner\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://ayvazdoner.com/",
+    "overture:e8016f9c-7b46-4690-9bc1-7fc98d151239"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "ozel-kofte-bakirkoy",
+   "ref": "isletme/ozel-kofte-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Özel Köfte",
+   "ilce": "Bakırköy",
+   "adres": "Olgunlar Sokağı No:19/C, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Köfteci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site oz-elkofte.com: ad + telefon + sokak + kapı no (http://www.oz-elkofte.com/iletisim)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site menüsü: köfte (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.oz-elkofte.com/",
+    "overture:9915ef8a-ede5-4b1f-a1fe-e8d3195833b9"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "bakirkoy-koftecisi-bakirkoy",
+   "ref": "isletme/bakirkoy-koftecisi-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Bakirkoy Koftecisi",
+   "ilce": "Bakırköy",
+   "adres": "Hüsreviye Sk No:10, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Köfteci",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site bakirkoykoftecisi.com: ad + telefon + sokak + kapı no (https://bakirkoykoftecisi.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Köfte Bizde Yenir\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://bakirkoykoftecisi.com/",
+    "overture:8b9abb96-e0b7-407c-9866-c4aad09a74e5"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "anam-manti-bakirkoy",
+   "ref": "isletme/anam-manti-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Anam Mantı",
+   "ilce": "Bakırköy",
+   "adres": "Ebuziya Cd No:70, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Mantıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site anammanti.com: ad + telefon + sokak + kapı no (https://anammanti.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"El Açması Mantı, Gözleme & Ev Yemekleri\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://anammanti.com.tr/",
+    "overture:ab89be4e-d511-4e52-a651-387d465810b6"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "lagosbalik-bakirkoy",
+   "ref": "isletme/lagosbalik-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Lagosbalık",
+   "ilce": "Bakırköy",
+   "adres": "Basınköy Mh. İstanbul Cad No:45, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site lagosrestorant.com: ad + telefon + sokak + kapı no (https://lagosrestorant.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://lagosrestorant.com/",
+    "overture:6a643a12-fd1d-4175-95eb-376457b5b436"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 10
+  },
+  {
+   "slug": "ercan-steakhouse-basaksehir",
+   "ref": "isletme/ercan-steakhouse-basaksehir",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Ercan Steakhouse",
+   "ilce": "Başakşehir",
+   "adres": "Atatürk Blv No:112, Başakşehir",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Steakhouse",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site ercansteakhouse.com: ad + telefon + sokak + kapı no (https://www.ercansteakhouse.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Steakhouse\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.ercansteakhouse.com/",
+    "overture:b88e25bd-c15e-4b3f-9fb2-c8098d2f5e1c"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "konyali-ferdi-usta-ortakoy-besiktas",
+   "ref": "node/4161524049",
+   "tip": "osm_kaydi",
+   "ad": "Konyalı Ferdi Usta Ortaköy",
+   "ilce": "Beşiktaş",
+   "adres": "Muallim Naci Cd No:25/A, Beşiktaş",
+   "koordinat": [
+    41.048463,
+    29.026067
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site konyaliferdiusta.com: ad + telefon + sokak + kapı no (https://www.konyaliferdiusta.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Konya’dan Ortaköy’e Bir Lezzet Hikâyesi\"; menü: kebap (şube düzeyi)",
+    "konum: OSM restoran kaydı node/4161524049 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4161524049",
+    "https://www.konyaliferdiusta.com/",
+    "overture:a4531f0d-12eb-4e32-ba0c-4d0505f2e57e"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "garden-1897-restaurant-fatih",
+   "ref": "node/5244801877",
+   "tip": "osm_kaydi",
+   "ad": "Garden 1897 Restaurant",
+   "ilce": "Fatih",
+   "adres": "Demirci Reşit Sokağı No:5, Fatih",
+   "koordinat": [
+    41.004117,
+    28.972529
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site garden1897.com: ad + telefon + sokak + kapı no (https://www.garden1897.com/contact)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: resmî site başlığı/açıklaması: \"Turkish & Ottoman cuisine\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5244801877 (Overture noktasına 12 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5244801877",
+    "https://www.garden1897.com/",
+    "overture:6092af85-a9fc-41be-b95c-acf3ca7c8e1e"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "saki-balik-kadikoy",
+   "ref": "node/6700739113",
+   "tip": "osm_kaydi",
+   "ad": "Saki Balık",
+   "ilce": "Kadıköy",
+   "adres": "Caddebostan İskele Sk No:17/A, Kadıköy",
+   "koordinat": [
+    40.964771,
+    29.066199
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sakibalik.com: ad + telefon + sokak + kapı no (http://www.sakibalik.com/iletisim/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/6700739113 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6700739113",
+    "https://www.sakibalik.com/",
+    "overture:b3513a72-d629-4f24-b915-87ddc3c96347"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "antakya-restaurant-fatih",
+   "ref": "node/5244809877",
+   "tip": "osm_kaydi",
+   "ad": "Antakya Restaurant",
+   "ilce": "Fatih",
+   "adres": "Divan-I Ali Sok No:12, Fatih",
+   "koordinat": [
+    41.008429,
+    28.968318
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site antakyarestaurant.com.tr: ad + telefon + sokak + kapı no (http://www.antakyarestaurant.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Türk Mutfağı, Beyazıt\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5244809877 (Overture noktasına 9 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5244809877",
+    "https://www.antakyarestaurant.com.tr/",
+    "overture:23793cd1-b1c3-4933-8f4a-8db82d74faf9"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "the-dubai-et-mangal-bakirkoy",
+   "ref": "isletme/the-dubai-et-mangal-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "The Dubai Et Mangal",
+   "ilce": "Bakırköy",
+   "adres": "Kennedy Cad No:37, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Steakhouse",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site thedubaiet.com: ad + sokak + kapı no (https://www.thedubaiet.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"İstanbul’un En İyi Et Restaurant’ı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.thedubaiet.com/",
+    "overture:15708614-0d1a-424c-a4e4-627d0a13732e"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "gurem-iskembe-silivri",
+   "ref": "isletme/gurem-iskembe-silivri",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Gürem İşkembe",
+   "ilce": "Silivri",
+   "adres": "Albay Yunus Dirik Cd No:42, Silivri",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Çorbacı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site guremiskembe.com: ad + telefon + sokak + kapı no (https://www.guremiskembe.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Bir kase çorba. Koca bir gelenek.\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.guremiskembe.com/",
+    "overture:cf251245-3bdb-4fa0-be32-7e2a26787cd4"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "affan-ocakbasi-kadikoy",
+   "ref": "node/4582772256",
+   "tip": "osm_kaydi",
+   "ad": "Affan Ocakbaşı",
+   "ilce": "Kadıköy",
+   "adres": "Dr. Faruk Ayanoğlu Cd No:1/D, Kadıköy",
+   "koordinat": [
+    40.976592,
+    29.047817
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site affanocakbasi.com: ad + telefon + sokak + kapı no (https://www.affanocakbasi.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Ocakbaşı\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/4582772256 (Overture noktasına 7 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/4582772256",
+    "https://www.affanocakbasi.com/",
+    "overture:67dab7fc-4f70-44a8-9cc4-9d0beb0b8a07"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "sirvan-sofrasi-restaurant-fatih",
+   "ref": "node/5244803043",
+   "tip": "osm_kaydi",
+   "ad": "Şirvan Sofrasi Restaurant",
+   "ilce": "Fatih",
+   "adres": "Küçük Ayasofya Cd No:71, Fatih",
+   "koordinat": [
+    41.002906,
+    28.973413
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sirvan-sofrasi.com: ad + telefon + sokak + kapı no (https://www.sirvan-sofrasi.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Kebap\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5244803043 (Overture noktasına 12 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5244803043",
+    "https://www.sirvan-sofrasi.com/",
+    "overture:244ce005-aeb7-4189-92ef-10701626c974"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "meos-balik-bakirkoy",
+   "ref": "isletme/meos-balik-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Meos Balık",
+   "ilce": "Bakırköy",
+   "adres": "Yeşilköy Halkalı Cad No:93, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site meosbalik.com: ad + sokak + kapı no (http://www.meosbalik.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.meosbalik.com/",
+    "overture:dd80aa5e-e453-423f-90f3-b5263c50b990"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "cesmidil-cafe-ve-restaurant-uskudar",
+   "ref": "isletme/cesmidil-cafe-ve-restaurant-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Çeşmidil Cafe & Restaurant",
+   "ilce": "Üsküdar",
+   "adres": "İskele Cd No:2, Üsküdar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahvaltı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site cesmidil.com: ad + telefon + sokak + kapı no (https://www.cesmidil.com/iletisim.html)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Çeşmidil Kahvaltı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.cesmidil.com/",
+    "overture:baaaddfc-3a45-4f4f-b853-13e612384bad"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "kervan-kasap-restaurant-catalca",
+   "ref": "isletme/kervan-kasap-restaurant-catalca",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Kervan Kasap Restaurant",
+   "ilce": "Çatalca",
+   "adres": "Ferhatpaşa Mah. Çatalca Yolu Cad No:187, Çatalca",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Steakhouse",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site kervankasap.com: ad + telefon + sokak + kapı no (https://kervankasap.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Kasap\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://kervankasap.com/",
+    "overture:06dfb2e2-8556-4a84-beac-4b3efef6ed4e"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "ouzo-roof-restaurant-kadikoy",
+   "ref": "node/6586178186",
+   "tip": "osm_kaydi",
+   "ad": "Ouzo Roof Restaurant",
+   "ilce": "Kadıköy",
+   "adres": "Fener Kalamış Cd No:38, Kadıköy",
+   "koordinat": [
+    40.977311,
+    29.041316
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site ouzorestaurant.com: ad + telefon + sokak + kapı no (https://www.ouzorestaurant.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/6586178186 (Overture noktasına 27 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/6586178186",
+    "https://www.ouzorestaurant.com/",
+    "overture:f5678154-de23-49bd-a9ca-3fe03471e471"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "kristal-bufe-goztepe-kadikoy",
+   "ref": "node/1902991719",
+   "tip": "osm_kaydi",
+   "ad": "Kristal Büfe Göztepe",
+   "ilce": "Kadıköy",
+   "adres": "Bağdat Caddesi No:229, Kadıköy",
+   "koordinat": [
+    40.971928,
+    29.059404
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Burger",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site kristalbufe.com.tr: ad + telefon + sokak + kapı no (https://kristalbufe.com.tr/subelerimiz.html)",
+    "adres: OSM kaydı (addr:street + addr:housenumber) + resmî sitede sokak",
+    "tür: OSM cuisine \"burger\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/1902991719 (Overture noktasına 4 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/1902991719",
+    "https://kristalbufe.com.tr/",
+    "overture:31beda7d-d151-4978-b826-7c22b6203c34"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "galeyan-restaurant-fatih",
+   "ref": "isletme/galeyan-restaurant-fatih",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Galeyan Restaurant",
+   "ilce": "Fatih",
+   "adres": "Ticarethane Sk No:13/B, Fatih",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site galeyann.com: ad + telefon + sokak + kapı no (https://galeyann.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Türk Mutfağı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://galeyann.com/",
+    "overture:c90299f1-6d56-432b-95b6-6edfecd88b1e"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "kumkapi-hos-seda-fatih",
+   "ref": "node/10178410606",
+   "tip": "osm_kaydi",
+   "ad": "Kumkapı Hoş Seda",
+   "ilce": "Fatih",
+   "adres": "Samsa Sk No:1, Fatih",
+   "koordinat": [
+    41.004202,
+    28.964584
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site hossedarestaurant.com.tr: ad + telefon + sokak + kapı no (https://www.hossedarestaurant.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: OSM cuisine \"regional\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/10178410606 (Overture noktasına 7 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/10178410606",
+    "https://www.hossedarestaurant.com.tr/",
+    "overture:dd55a0fe-2f65-4841-904d-d53c1f3d8cb9"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "hukumran-sofrasi-fatih",
+   "ref": "node/5087179433",
+   "tip": "osm_kaydi",
+   "ad": "Hükümran Sofrası",
+   "ilce": "Fatih",
+   "adres": "İmrahor İlyasbey Cd No:133, Fatih",
+   "koordinat": [
+    40.994685,
+    28.925438
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site hukumransofrasi.com: ad + telefon + sokak + kapı no (https://www.hukumransofrasi.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Aile Mangalbaşı / Restaurant\" (şube düzeyi)",
+    "konum: OSM restoran kaydı node/5087179433 (Overture noktasına 5 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/node/5087179433",
+    "https://www.hukumransofrasi.com/",
+    "overture:540c2371-13d9-4854-b6ff-914bfd95c208"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "sakli-sofra-catalca",
+   "ref": "isletme/sakli-sofra-catalca",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Saklı Sofra",
+   "ilce": "Çatalca",
+   "adres": "Benzinlik Arkası Sok No:12/1, Çatalca",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kahvaltı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site saklisofra.com: ad + telefon + sokak + kapı no (https://saklisofra.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Kahvaltı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://saklisofra.com/",
+    "overture:5a309c42-9b38-43bd-912c-259079ab5110"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "kasaptan-burger-gungoren",
+   "ref": "isletme/kasaptan-burger-gungoren",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Kasaptan Burger",
+   "ilce": "Güngören",
+   "adres": "İnönü Cd No:15/A, Güngören",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Burger",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site kasaptanburger.com.tr: ad + telefon + sokak + kapı no (https://kasaptanburger.com.tr/iletisim/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Burger\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://kasaptanburger.com.tr/",
+    "overture:7a297718-adbf-45b0-b529-4e83c3631823"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "bi-tas-corba-sultangazi",
+   "ref": "isletme/bi-tas-corba-sultangazi",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Bi'tas Çorba",
+   "ilce": "Sultangazi",
+   "adres": "Atatürk Blv No:41/D, Sultangazi",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Çorbacı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site bitascorba.com: ad + telefon + sokak + kapı no (https://bitascorba.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Sultangazi’nin meşhur çorbacısı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://bitascorba.com/",
+    "overture:c8340415-2d35-4dd8-9632-019055d8b8ba"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "mustakil-22-ocakbasi-bakirkoy",
+   "ref": "isletme/mustakil-22-ocakbasi-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Müstakil 22 Ocakbaşı",
+   "ilce": "Bakırköy",
+   "adres": "İskele Cd No:22, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site mustakil22.com: ad + sokak + kapı no (https://www.mustakil22.com/iletisim/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Ocakbaşı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.mustakil22.com/",
+    "overture:883595f5-cc7b-4b37-98fb-d0ec010c0e17"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "pizza-dio-beylikduzu",
+   "ref": "isletme/pizza-dio-beylikduzu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Pizza Dio",
+   "ilce": "Beylikdüzü",
+   "adres": "Bestekar Sk No:1, Beylikdüzü",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pizza",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site pizzadio.com: ad + telefon + sokak + kapı no (https://pizzadio.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Pizza\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://pizzadio.com/",
+    "overture:7257d416-4492-438b-9ac5-4fe1e17dc9d3"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "adana-kebapcisi-davut-usta-uskudar",
+   "ref": "isletme/adana-kebapcisi-davut-usta-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Adana Kebapçısı Davut Usta",
+   "ilce": "Üsküdar",
+   "adres": "Libadiye Cd No:16A, Üsküdar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site adanakebapcisidavutusta.com: ad + telefon + sokak + kapı no (https://adanakebapcisidavutusta.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Kebapçısı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://adanakebapcisidavutusta.com/",
+    "overture:4f9a28d0-c4b6-448e-8cf7-104153e3fafc"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "mantigram-beylikduzu",
+   "ref": "isletme/mantigram-beylikduzu",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Mantigram",
+   "ilce": "Beylikdüzü",
+   "adres": "Nadir Sokağı No:1, Beylikdüzü",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Mantıcı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site mantigram.com: ad + telefon + sokak + kapı no (https://www.mantigram.com/iletisim/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Mantı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.mantigram.com/",
+    "overture:03d7b740-5e62-4fee-b539-88911b6b737e"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "zeki-aslan-kebap-uskudar",
+   "ref": "isletme/zeki-aslan-kebap-uskudar",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Zeki Aslan Kebap",
+   "ilce": "Üsküdar",
+   "adres": "Prof. Dr. Beynun Akyavaş Cd No:33/DA, Üsküdar",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site zekiaslankebap.com: ad + telefon + sokak + kapı no (https://www.zekiaslankebap.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Kebap\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.zekiaslankebap.com/",
+    "overture:b31b5ca8-c991-493c-9cac-01cedfb29fbf"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "besler-soguk-meze-evi-kucukcekmece",
+   "ref": "isletme/besler-soguk-meze-evi-kucukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Besler Soguk Meze Evi",
+   "ilce": "Küçükçekmece",
+   "adres": "Kader Sk No:9/a, Küçükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site beslermeze.com.tr: ad + telefon + sokak + kapı no (https://www.beslermeze.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"geleneksel Türk\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.beslermeze.com.tr/",
+    "overture:6f8d90b9-e29d-4ee0-bdb3-80c9bdc53190"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 9
+  },
+  {
+   "slug": "bursa-garaj-kebap-besiktas",
+   "ref": "isletme/bursa-garaj-kebap-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Bursa Garaj Kebap",
+   "ilce": "Beşiktaş",
+   "adres": "Hanımeli Sk No:2, Beşiktaş",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site bursagaraj.com.tr: ad + telefon + sokak + kapı no (https://www.bursagaraj.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Kebap\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.bursagaraj.com.tr/",
+    "overture:6fade52e-a54a-4411-8a4f-cd67c09141ed"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "sutis-sisli",
+   "ref": "isletme/sutis-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Sütis",
+   "ilce": "Şişli",
+   "adres": "Ergenekon Cd No:35/A, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site sutispangalti.com: ad + telefon + sokak + kapı no (https://www.sutispangalti.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site menüsü: kebap, kahvaltı, döner, pide (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.sutispangalti.com/",
+    "overture:0da820a7-e297-404d-99d1-70186065016f"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "mira-besiktas",
+   "ref": "isletme/mira-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Mira",
+   "ilce": "Beşiktaş",
+   "adres": "Bebek Arnavutköy Cd No:70, Beşiktaş",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site mirabalik.com: ad + telefon + sokak + kapı no (https://www.mirabalik.com/iletisim)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.mirabalik.com/",
+    "overture:c135eb44-e51f-4968-9692-d1a2cc24da9d"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "tarihi-karakoy-pilavcisi-besiktas",
+   "ref": "isletme/tarihi-karakoy-pilavcisi-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Tarihi Karaköy Pilavcısı",
+   "ilce": "Beşiktaş",
+   "adres": "Ortabahçe Cd No:3, Beşiktaş",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Lokanta",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site tarihikarakoypilavcisi.com: ad + telefon + sokak + kapı no (https://tarihikarakoypilavcisi.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Ev Yemekleri\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://tarihikarakoypilavcisi.com/",
+    "overture:ac12f9e8-5e63-4fe8-adc6-e56bf5277e96"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "yumm-pizza-bakirkoy",
+   "ref": "isletme/yumm-pizza-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Yumm Pizza",
+   "ilce": "Bakırköy",
+   "adres": "Yüce Tarla Cd No:50, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pizza",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site yummpizza.net: ad + telefon + sokak + kapı no (https://yummpizza.net/iletisim/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Pizza\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://yummpizza.net/",
+    "overture:8f990daa-13b6-4e15-b84c-1097633b075c"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "veranda-pera-sisli",
+   "ref": "isletme/veranda-pera-sisli",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Veranda Pera",
+   "ilce": "Şişli",
+   "adres": "Asker Ocağı Cd No:6, Şişli",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Meyhane",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site verandapera.com: ad + telefon + sokak + kapı no (https://www.verandapera.com/hours-location/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Meyhane\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.verandapera.com/",
+    "overture:deafbbe9-638c-4ceb-97d8-d1abda131c28"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "zerafet-ocakbasi-besiktas",
+   "ref": "isletme/zerafet-ocakbasi-besiktas",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Zerafet Ocakbaşı",
+   "ilce": "Beşiktaş",
+   "adres": "Nisbetiye Cd No:21/A, Beşiktaş",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site zerafet.net: ad + telefon + sokak + kapı no (https://zerafet.net/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Ocakbaşı\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://zerafet.net/",
+    "overture:efe1ba7f-ac31-4e8b-936d-4aa62dea9b74"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "yuksel-balik-bakirkoy",
+   "ref": "way/1243524850",
+   "tip": "osm_kaydi",
+   "ad": "Yüksel Balık",
+   "ilce": "Bakırköy",
+   "adres": "İskele Cd No:18, Bakırköy",
+   "koordinat": [
+    40.956932,
+    28.821911
+   ],
+   "koordinatGuveni": "OSM restoran kaydı",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A",
+   "zincir": "yukselbalik.com.tr",
+   "sube": "Bakırköy",
+   "kanit": [
+    "resmî şube sayfası yukselbalik.com.tr: ad + telefon + sokak + kapı no (https://www.yukselbalik.com.tr/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (marka düzeyi)",
+    "konum: OSM restoran kaydı way/1243524850 (Overture noktasına 28 m)"
+   ],
+   "kaynak": [
+    "https://www.openstreetmap.org/way/1243524850",
+    "https://www.yukselbalik.com.tr/",
+    "overture:4354fd16-b783-4a7b-a416-45e9f71fec67"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "pizza-grande-bakirkoy",
+   "ref": "isletme/pizza-grande-bakirkoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Pizza Grande",
+   "ilce": "Bakırköy",
+   "adres": "İskele Cd No:6, Bakırköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pizza",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site pizza-grande.com: ad + telefon + sokak + kapı no (https://www.pizza-grande.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Pizza Grande, Ekşi Maya\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.pizza-grande.com/",
+    "overture:e6fe1ab3-b5c2-40e3-b37d-4e535b4a915e"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "saskin-balik-efkanin-yeri-kadikoy",
+   "ref": "isletme/saskin-balik-efkanin-yeri-kadikoy",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Saskin Balik Efkanin Yeri",
+   "ilce": "Kadıköy",
+   "adres": "Noter Sk No:8, Kadıköy",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Balık restoranı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site saskinbalik.com: ad + telefon + sokak + kapı no (https://saskinbalik.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Balık\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://saskinbalik.com/",
+    "overture:ff901b3b-affb-4485-994a-3db5372bfdbe"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "pizza-fabrique-kucukcekmece",
+   "ref": "isletme/pizza-fabrique-kucukcekmece",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Pizza Fabrique",
+   "ilce": "Küçükçekmece",
+   "adres": "Yarımburgaz Cd No:68/B, Küçükçekmece",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Pizza",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site pizzafabrique.com: ad + sokak + kapı no (https://pizzafabrique.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı/açıklaması: \"Pizza\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://pizzafabrique.com/",
+    "overture:14df967f-39c5-40cb-8d48-988ec0f76611"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "nur-abla-karadeniz-supper-basaksehir",
+   "ref": "isletme/nur-abla-karadeniz-supper-basaksehir",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Nur Abla Karadeniz Supper",
+   "ilce": "Başakşehir",
+   "adres": "Süleyman Demirel Blv No:523, Başakşehir",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Karadeniz mutfağı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "nurabla.com.tr",
+   "sube": "Başakşehir",
+   "kanit": [
+    "resmî şube sayfası nurabla.com.tr: ad + telefon + sokak + kapı no (https://nurabla.com.tr/iletisim/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Gerçek Karadeniz Sofrası\" (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://nurabla.com.tr/",
+    "overture:f9918ff1-08d5-4942-ae87-8534cc3c08e6"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "urfa-dan-kebapci-kagithane",
+   "ref": "isletme/urfa-dan-kebapci-kagithane",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Urfa'dan Kebapcı",
+   "ilce": "Kağıthane",
+   "adres": "Anadolu Cd No:28, Kağıthane",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Kebapçı / Ocakbaşı",
+   "turKanitDuzeyi": "marka",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": "urfadan.com",
+   "sube": "Kağıthane",
+   "kanit": [
+    "resmî şube sayfası urfadan.com: ad + telefon + sokak + kapı no (https://www.urfadan.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Kebap, Lahmacun ve Pide\" (marka düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.urfadan.com/",
+    "overture:874a4088-8116-4eec-8073-52b03c889873"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  },
+  {
+   "slug": "esto-restaurant-fatih",
+   "ref": "isletme/esto-restaurant-fatih",
+   "tip": "isletme_kaydi_konumsuz",
+   "ad": "Esto Restaurant",
+   "ilce": "Fatih",
+   "adres": "Çatalçeşme Sk No:29/E, Fatih",
+   "koordinat": null,
+   "koordinatGuveni": "yok (Overture önerisi ayrı)",
+   "tur": "Türk mutfağı",
+   "turKanitDuzeyi": "şube",
+   "faaliyet": "açık (resmî sitede güncel iletişim bilgisi, kontrol tarihi)",
+   "sinif": "A-konumsuz",
+   "zincir": null,
+   "sube": null,
+   "kanit": [
+    "resmî site estorestaurant.com: ad + telefon + sokak + kapı no (https://www.estorestaurant.com/)",
+    "adres: resmî sitede sokak + kapı no (adres metni Overture)",
+    "tür: resmî site başlığı: \"Authentic Turkish Dining\" (şube düzeyi)",
+    "koordinat yazılmadı: OSM'de restoran kaydı yok, bugünkü şema Overture konumunu kabul etmiyor; harita noktası gösterilmez"
+   ],
+   "kaynak": [
+    "https://www.estorestaurant.com/",
+    "overture:e3b4fd59-15cd-4664-9770-291601e64549"
+   ],
+   "kontrolTarihi": "2026-11-11",
+   "oncelikPuani": 8
+  }
+ ],
+ "kaliteDuzeltmesi": {
+  "tarih": "2026-11-12",
+  "aciklama": "Overture adres metninden yazılan sokak + kapı no resmî sitede birlikte yeniden arandı (scripts/katalog/adres-dogrula.mjs); bulunamayanlar B'ye indi.",
+  "inenler": [
+   "surmene-pide-bahcelievler",
+   "porto-balik-bakirkoy",
+   "kolcuoglu-ocakbasi-gokturk-eyupsultan",
+   "pizzeria-la-vista-bahcelievler",
+   "pizza-cotta-ve-coffee-basaksehir",
+   "donerci-ali-usta-maltepe",
+   "donerci-celal-usta-sancaktepe"
+  ]
+ }
+}

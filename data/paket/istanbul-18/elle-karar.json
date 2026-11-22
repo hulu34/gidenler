@@ -1,0 +1,56 @@
+{
+ "_aciklama": "Paket 18 elle denetim (2026-11-11).",
+ "tarih": "2026-11-11",
+ "kararlar": {
+  "683d0932-1ccb-457d-88c7-769ca232238f": {
+   "ad": "Ziyafet Çiğ Köfte",
+   "sinif": "C",
+   "neden": "çiğ köfte: kapsam dışı"
+  },
+  "06b7ac53-0b5b-45de-b5f7-eb1414d4b6e9": {
+   "ad": "Elazığlı Çiğköfteci",
+   "sinif": "C",
+   "neden": "çiğ köfte: kapsam dışı"
+  },
+  "005778cf-f1dc-4737-a2dc-b39ae05a3914": {
+   "ad": "Cooking Alaturka",
+   "sinif": "C",
+   "neden": "yemek kursu; restoran değil"
+  },
+  "a7d9f656-9983-45eb-8a4b-3ef2683f7319": {
+   "ad": "Juno",
+   "sinif": "C",
+   "neden": "resmî site catering firması"
+  },
+  "b864cdc6-ed91-4ca8-97ff-0032ff81727c": {
+   "ad": "Karadeniz Tadal Pide Salonu",
+   "sinif": "C",
+   "neden": "resmî site bağlantısı başka işletmenin sayfası (Özsaray İskender kampanya sayfası)"
+  },
+  "e80bff60-a0f0-4c30-b511-ceacd6cd117b": {
+   "ad": "Happy Moon's Hilltown AVM",
+   "sinif": "C",
+   "neden": "kafe/brasserie markası (resmî tanım: kafe); restoran sayısına katılmaz"
+  },
+  "aa799eff-1b54-4f3b-84a5-38f4868d731f": {
+   "ad": "Restohan Kebap Bomonti",
+   "sinif": "C",
+   "neden": "resmî site başka işletmenin (Resto Lordom)"
+  },
+  "d7288318-cfdc-43e3-8651-e45b37c19ce3": {
+   "ad": "Evtat Ev Ürünleri",
+   "sinif": "B",
+   "neden": "ad ev ürünleri dükkânını gösteriyor; restoran olduğu belirsiz"
+  },
+  "995ecc3e-b40f-4c8d-9eb1-a4b8289a6549": {
+   "ad": "Koza Garden",
+   "sinif": "B",
+   "neden": "resmî site \"Polonezköy Et Mangal\"; tür (kahvaltı) çelişkili, mekân türü belirsiz"
+  },
+  "43fd8d58-8f2e-4d88-a677-963a7afb0174": {
+   "ad": "AĞAbeyİN TÜRk MutfaĞI",
+   "sinif": "B",
+   "neden": "Overture adı ile resmî sitedeki ad (\"Ağa Türk Mutfağı\") tutarsız; doğru işletme adı doğrulanmadı"
+  }
+ }
+}

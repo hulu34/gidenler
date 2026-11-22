@@ -1,0 +1,242 @@
+{
+ "_aciklama": "Paket 29 (kafe kipi, Overture güven 0,75–0,9) kaynaklı tür kararları (15.11.2026). Bu güven aralığında mekân olmayan işletme oranı yüksek; her satır elle gözden geçirildi.",
+ "kararlar": {
+  "1091230d-0918-44c4-872f-3e6658700532": {
+   "ad": "Bozkaya Baklavaları - Hasan Bozkaya",
+   "kind": "Tatlıcı",
+   "cuisine": [
+    "dessert"
+   ],
+   "ifade": "resmî site (https://www.bozkayabaklava.com/): “evler \\u015eubesidir. Gaziantep' in en leziz baklava \\u00e7e\\u015fitlerini deneyimlemek i\\u00e7in \\u015fubemiz” · Tatlıcı 66 eşleşme, sonraki Fırın 3"
+  },
+  "a7807029-af29-4c4a-add2-9d6f476724b6": {
+   "ad": "Mado",
+   "kind": "Tatlıcı",
+   "cuisine": [
+    "dessert"
+   ],
+   "ifade": "resmî site (https://mado.com.tr/): “Anasayfa - Mado Dondurma {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://mado.com” · Tatlıcı 56 eşleşme, sonraki Pastane 5"
+  },
+  "3487930b-8dfa-426f-8abb-b416aff222c6": {
+   "ad": "Bethon Coffee & Bakery",
+   "kind": "Fırın",
+   "cuisine": [
+    "bakery"
+   ],
+   "ifade": "resmî site (https://bethon-coffee-bakery.dijital.menu/): “Bethon Coffee & Bakery | Menü ve Fiyatlar Türkçe Açık Bugün 24 saat açık — Bethon Coffee & Bakery — Çavuşoğlu” · Fırın 9 eşleşme, sonraki Pastane 0"
+  },
+  "d2fb5681-ca57-4eab-8a0c-2e9dabb3a64b": {
+   "ad": "İkram Börek",
+   "kind": "Fırın",
+   "cuisine": [
+    "bakery"
+   ],
+   "ifade": "resmî site (https://www.ikramborek.com/): “ikram börek Bu sitede arayın Yerleştirilmiş dosyalar Ana içeriğe atla Gezinme çubuğuna atla ikram börek ikram” · Fırın 25 eşleşme (adla uyumlu), en sık Tatlıcı 27"
+  },
+  "428c556a-5c05-4283-a759-f187523d4402": {
+   "ad": "Zeny Matcha & More",
+   "kind": "Kahveci",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site (http://zenymatcha.co/): “Coffee & Matcha House Her Yudumda Bir Ritüel Espresso'dan matcha'ya, smoothie'den artisan tatlılara — Zeny'de” · Kahveci 10 eşleşme, sonraki Pastane 0"
+  },
+  "d40fe370-4f2b-431d-8bcc-584d9958110d": {
+   "ad": "Zarifzade Baklava ve Dondurma - Başakşehir",
+   "kind": "Tatlıcı",
+   "cuisine": [
+    "dessert"
+   ],
+   "ifade": "resmî site (https://zarifzade.com.tr/): “Zarifzade Baklava {\"@context\":\"https://schema.org\",\"@type\":\"Website\",\"url\":\"https://zarifzade.com.tr\"} {\"@cont” · Tatlıcı 85 eşleşme, sonraki Pastane 0"
+  },
+  "8fbd1b3f-a184-4b45-9023-dca14c0ce598": {
+   "ad": "Raw Cafe and Kitchen",
+   "kind": "Kahveci",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site (https://rawcafekitchen.com/menu): “cekler & kahveler ☕ Çay 45 ₺ Fincan Çay 65 ₺ Türk Kahvesi 130 ₺ Damla Sakızlı Türk Kahvesi 150 ₺ Sıcak Çikolat” · Kahveci 6 eşleşme, sonraki Pastane 2"
+  },
+  "5b740aa4-1e23-403b-9437-69d6cdea3468": {
+   "ad": "Vınyl and Coffee",
+   "kind": "Kahveci",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site (https://www.vinylandcoffee.com.tr/menu): “melody; a strong Anatolian symphony in a cup Espresso ₺120/ ₺150 Short but powerful, like a rock intro Espress” · Kahveci 6 eşleşme, sonraki Fırın 3"
+  },
+  "d03e97a2-d73e-4ebc-9b8f-a6c7398f6437": {
+   "ad": "Zeron Bakery",
+   "kind": "Fırın",
+   "cuisine": [
+    "bakery"
+   ],
+   "ifade": "resmî site (https://www.zeronbakery.com.tr/): “Zeron Bakery | Günlük Üretim - Maksimum Tazelik - Kusursuz Tat {\"@context\":\"https://schema.org\",\"@graph\":[{\"@t” · Fırın 195 eşleşme, sonraki Tatlıcı 3"
+  },
+  "e7454b74-aaf7-45c4-a9c2-8d25cf98a5ad": {
+   "ad": "Ron Nişantaşı",
+   "kind": "Fırın",
+   "cuisine": [
+    "bakery"
+   ],
+   "ifade": "resmî site (https://www.ron-cafe.com/): “’yi kurmuş oldu. Denediniz mi? Morning Plate ekşi maya ekmek, sayas peyniri, isli dana sosis, çırpılmış yumurt” · Fırın 3 eşleşme, sonraki Tatlıcı 1"
+  },
+  "933260a2-8ab0-49e4-bf2d-9e8452f28210": {
+   "ad": "Ron Cafe",
+   "kind": "Fırın",
+   "cuisine": [
+    "bakery"
+   ],
+   "ifade": "resmî site (https://www.ron-cafe.com/): “’yi kurmuş oldu. Denediniz mi? Morning Plate ekşi maya ekmek, sayas peyniri, isli dana sosis, çırpılmış yumurt” · Fırın 3 eşleşme, sonraki Tatlıcı 1"
+  },
+  "b7be159c-cfbe-4205-8d90-dc8aab40aa91": {
+   "ad": "Mis Fırın & Cafe",
+   "kind": "Fırın",
+   "cuisine": [
+    "bakery"
+   ],
+   "ifade": "resmî site (http://www.misfirincilik.com/): “Mis Fırın \" taze ürün mükemmel lezzet \" - ANASAYFA By using this website, you agree to the use of cookies as d” · Fırın 27 eşleşme, sonraki Pastane 11"
+  },
+  "e5f4688e-556f-4ef4-a65d-e5d79f6a5f34": {
+   "ad": "Coffee Moj'art",
+   "kind": "Kahveci",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site (https://www.coffeemojart.com/): “’ın büyüleyici atmosferinde; özenle seçilmiş nitelikli kahve çekirdeklerini, usta ellerden çıkan imza lezzetle” · Kahveci 3 eşleşme, sonraki Pastane 0"
+  },
+  "7965008b-302a-4ce0-9e36-663f371978de": {
+   "ad": "Bulvar Patisserie",
+   "kind": "Pastane",
+   "cuisine": [
+    "pastry"
+   ],
+   "ifade": "resmî site (https://bulvarpatisserie.com/): “Bulvar Patisserie | Bulvar Pastanesi +90 544 188 34 53 0 Tüm Ürünler Söz-Nişan-Düğün Pastaları Doğum Günü Past” · Pastane 43 eşleşme, sonraki Fırın 0"
+  },
+  "e3023c60-0c7f-4961-851a-a08dff7a2f04": {
+   "ad": "WE süreyya",
+   "kind": "Kahveci",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site (https://www.wesureyya.com/category/urunler): “e Large Medium Small XLarge Öğütme Aeropress Chemex Cold Brew Espresso Filtre Kahve French Press Mokapot V60 Ç” · Kahveci 8 eşleşme, sonraki Pastane 0"
+  },
+  "f8d6dd1a-3441-45be-89e4-33708d11ae26": {
+   "ad": "EfsyCoffee",
+   "kind": "Kahveci",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site (https://www.efsycoffee.com/): “tutkuyu arıyorsanız, doğru yerdesiniz. MENÜ Espresso Bazlı Kahveler Espresso 100₺ İmza espresso shotımız cesu” · Kahveci 46 eşleşme, sonraki Pastane 3"
+  },
+  "ea726661-3f46-47fc-8d4c-07b0495af3c3": {
+   "ad": "Babazade Baklava Erenköy",
+   "kind": "Tatlıcı",
+   "cuisine": [
+    "dessert"
+   ],
+   "ifade": "resmî site (https://www.babazadebaklava.com/): “Babazade Baklava | El Açması Baklava & Kadayıf & Börek İstanbul – Gaziantepli Babazade Baklava İçeriğe atla Fa” · Tatlıcı 22 eşleşme, sonraki Fırın 1"
+  },
+  "9baabb35-c4c6-4aad-ad18-9bbd7820bf23": {
+   "ad": "Yağcıoğlu Pastanesi",
+   "kind": "Pastane",
+   "cuisine": [
+    "pastry"
+   ],
+   "ifade": "resmî site (https://www.yagcioglupastaneleri.com/): “Yağcıoğlu Pastaneleri | İstanbul Pastanesi { \"@context\": \"https://schema.org\", \"@graph\": [ { \"@type\": \"Organiz” · Pastane 5 eşleşme, sonraki Fırın 2"
+  },
+  "9bfac548-bb21-41a7-88db-9acfc9dc4b91": {
+   "ad": "Diamond Coffee",
+   "kind": "Kahveci",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site (https://diamondcoffee.com.tr/): “z. Menümüzü Keşfet Diamond Coffee Elmas Kule Nitelikli Kahve Taze Kavrulmuş Espresso Flat White V60 Brew Cold” · Kahveci 24 eşleşme, sonraki Pastane 9"
+  },
+  "ea83dfdd-6178-4d99-8269-5db9d24ecc59": {
+   "ad": "Kanlıca Teras",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Kanlıca Teras Cafe”); menüde kahve, pasta ve yiyecek birlikte, tek baskın tür yok"
+  },
+  "3e57ea28-8235-4ca3-a903-7aeaa6f0f9db": {
+   "ad": "Beğendi Cafe & Restaurant",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Ana Sayfa | Beğendi Cafe & Restoran”); menüde kahve, pasta ve yiyecek birlikte, tek baskın tür yok"
+  },
+  "c8e9a851-0946-43d8-814f-a35e9f583a34": {
+   "ad": "Cassa 1836",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “CASSA1836 | Geçmişin Mirası, Bugünün Cassa’sı”); menüde kahve, pasta ve yiyecek birlikte, tek baskın tür yok"
+  },
+  "2e223326-2123-4583-b7a9-f7c400ba3fca": {
+   "ad": "lilu+co",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “lilu+co – Kahve Dükkanı”); menüde kahve, pasta ve yiyecek birlikte, tek baskın tür yok"
+  },
+  "2cc35130-3d7e-4d79-97ec-d1264e7345db": {
+   "ad": "Morniva.tr",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Morniva Coffee & Waffle”); menüde kahve, pasta ve yiyecek birlikte, tek baskın tür yok"
+  },
+  "76479646-24b6-4f15-824e-d800ffe8ab68": {
+   "ad": "Donuts Coffee House",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Taze Donut ve Kahve | Donuts Coffee House”); menüde kahve, pasta ve yiyecek birlikte, tek baskın tür yok"
+  },
+  "530ea9ec-a92d-4f55-b6c7-5f7713f5ab13": {
+   "ad": "Rota İstanbul Cafe & Restaurant",
+   "kind": "Kafe",
+   "cuisine": [
+    "coffee_shop"
+   ],
+   "ifade": "resmî site kendini kafe olarak tanımlıyor (başlık: “Home - Rota İstanbul”); menüde kahve, pasta ve yiyecek birlikte, tek baskın tür yok"
+  }
+ },
+ "elleRet": {
+  "Manav Reyonu (2a36374c)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "KahveKirala (58196789)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Bng-tech Soft Dondurma/Frozen Yoğurt/Gelato Makineleri (06ed6447)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Lugano Caffè Türkiye (4b28602c)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Pakel ÇİKolata (0e975b2e)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Pasta Malzemeleri (2903aaae)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Chicolatte (dfcf10a6)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Chicolatte (11b5daee)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Rafinette (3e8a8500)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Blue Jasmine Kitchen (3806a0a4)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Holistic Caffe (8a8418de)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Monart Chocolatier (fa75002b)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Espresso Makinesi Servisi (118b84e6)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Neftat Kurabiye (12d3f827)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Karpuz cafe (0e425c57)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Gastrolab (3dfe9262)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Mimarcı mimarlık mühendislik ltd.şti. (39aa693e)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Hermosa Chocolate and Macaron (b6d6e95d)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Pasta Sipariş Et (74ef9410)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Chocco'm (c090e861)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "NATURA GIDA SAN. ve TİC. A.Ş. (f118d4a1)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Sehri Maras Dondurmacisi (205a4af9)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Catalcadan Eksi Mayali Ekmek (87d28b96)": "mekân değil ya da oturma yeri kanıtı yok (makine/ekipman, toptancı, üretici, çevrim içi sipariş, mağaza) — elle, 15.11.2026",
+  "Cabra Coffee Roasters (900c8d63)": "kahve çekirdeği satıcısı / ortak çalışma alanı / şube belirsiz — elle, 15.11.2026",
+  "İlter's Coffeeworks Kemankeş, Karaköy (b052267f)": "kahve çekirdeği satıcısı / ortak çalışma alanı / şube belirsiz — elle, 15.11.2026",
+  "O SAHNE (b78c77c8)": "kahve çekirdeği satıcısı / ortak çalışma alanı / şube belirsiz — elle, 15.11.2026",
+  "Calibre Coffee (93fea3d9)": "kahve çekirdeği satıcısı / ortak çalışma alanı / şube belirsiz — elle, 15.11.2026"
+ }
+}

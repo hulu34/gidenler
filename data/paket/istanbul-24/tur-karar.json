@@ -1,0 +1,338 @@
+{
+ "_aciklama": "Paket 24 kaynaklı tür kararları (14.11.2026): resmî sitenin ana sayfası ve menü/hakkımızda sayfalarında tür kalıbı sayımı (scratchpad tur-tara.py); baskın aile ≥3 eşleşme ve ikinciden 2 kat, ya da adda geçen tür sitede de ≥3 kez. Catering ve kafe ağırlıklı siteler elendi; 4 karar elle reddedildi (elle-ret).",
+ "kararlar": {
+  "bc1c74b2-4528-49ab-97ea-769f9e22722b": {
+   "ad": "Antepli Ustadim",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (http://www.antepliustadim.com/): “ize harika sunumlar hazırlamktayız. KEBAPLAR ADANA KEBAP x URFA KEBAP x FIRIN ÇEŞİTLERİ TAVA ÇEŞİTLERİ ARA SIC” · Kebapçı / Ocakbaşı 26 eşleşme, sonraki Pideci 9"
+  },
+  "5f159a98-92d4-43eb-ac3e-7a91b8885c30": {
+   "ad": "Tatmix Döner",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.tatmix.net/): “urme Sokak Lezzetleri\",\"description\":\"Tatmix döner, lahmacun, pide, çorba ve daha fazlasını keşfedin. Menüyü i” · Dönerci 73 eşleşme (adla uyumlu), en sık Pideci 205"
+  },
+  "8fbb4f8c-d4f3-448e-b49a-3c37d34852bf": {
+   "ad": "CLOVE Restaurant",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site (https://www.clove.ist/): “listered in Clove's own wood-fired oven. The pasta, made fresh in the kitchen every day. Line-caught fish from” · İtalyan 5 eşleşme, sonraki Balık restoranı 0"
+  },
+  "837d45d6-c92b-4702-b119-984fd935e9ab": {
+   "ad": "Dede Ahmet Kebap",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://dedeahmet.com/): “erli Misafirlerimiz, Son günlerde Dede Ahmet Kebap’a gösterdiğiniz yoğun ilgi için içtenlikle teşekkür ederiz.” · Kebapçı / Ocakbaşı 15 eşleşme, sonraki Balık restoranı 0"
+  },
+  "ea8edb7c-cf0c-4e10-963b-3f564c051a02": {
+   "ad": "Saklı Kubbe Restaurant",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site (http://www.saklikubbe.com/menu/): “300 gr) 495₺ Grilled Chicken PİDELER Kaşarlı Pide 375₺ Kashar Cheese Pide Kuşbaşı Pide 420₺ Diced Meat Pide Su” · Pideci 30 eşleşme, sonraki Kebapçı / Ocakbaşı 9"
+  },
+  "82551274-6066-4db4-91b8-997d1462b8e6": {
+   "ad": "Köy Konağı Restourant Çekmeköy",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (http://koykonagi.com/): “Gerçek Tadı Lezzetin Gerçek Tadı Hosgeldiniz Kahvaltı & Izgara \"Doğal Sofra, Gerçek Lezzet!\" Menüye Göz At Köy” · Kahvaltı 32 eşleşme, sonraki Steakhouse 1"
+  },
+  "311eaa5d-201a-405b-bc54-75e57af95a58": {
+   "ad": "Digma Restaurant",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://digma.com.tr/): “Digma Beykoz | Kahvaltı, Steakhouse & Kır Düğünü İshaklı · Beykoz · İstanbul Digma 25.000 m² bahçe restoran İç” · Kahvaltı 70 eşleşme, sonraki Steakhouse 18"
+  },
+  "53c844fa-9e30-4e7d-b8f2-58d2ea6db2c6": {
+   "ad": "Patlıcan Polonezköy",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://www.patlicanpolonezkoy.com/): “ar yüksek, organizas... Daha fazla Açık Büfe Kahvaltı Şehrin içinde doğayı, yeşili, oksijeni ve huzuru ayağını” · Kahvaltı 17 eşleşme, sonraki Balık restoranı 0"
+  },
+  "b2f495ab-a58f-4605-993f-309deff0249b": {
+   "ad": "Pamera Garden",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://pameragarden.com/): “if alacağınızı umuyoruz. Daha Fazlası Pamera Serpme Kahvaltı Keyfi Hafta sonunun en güzel yanı Pamera Garden’” · Kahvaltı 8 eşleşme, sonraki Balık restoranı 1"
+  },
+  "1d4e7d77-33ee-4f5f-9b48-840db0a1708e": {
+   "ad": "Değirmen Park",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://degirmenpark.com/): “yle söz ettirmeye devam ediyoruz. Hakkımızda Kahvaltı Serpme Köy Kahvaltısı İstanbul’umuzun sahil ilçesi Beyko” · Kahvaltı 10 eşleşme, sonraki Steakhouse 3"
+  },
+  "1c02a344-644c-4e88-a2d8-78a38820a039": {
+   "ad": "Atiye Bebek",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site (https://www.atiyebebek.com/): “beriye Yağlı Beyaz Peynir Sıcaklar ✦ Dinamit Karides ✦ Kremalı ve Etli Pazı Sarma Ana Yemekler ✦ Fırında Dana” · Balık restoranı 6 eşleşme, sonraki Mantıcı 2"
+  },
+  "67b3c556-c7ba-42ab-a29e-f3307a87d863": {
+   "ad": "AcayipLezzet",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site (https://www.acayiplezzet.com/): “t Özel terbiyeli Dana Lokum... Acayip Lezzet Pide çeşitleri... ANA SAYFA HAKKIMIZDA MENÜ İLETİŞİM Ahi Evran, Ç” · Pideci 3 eşleşme, sonraki Balık restoranı 1"
+  },
+  "d2add991-7e6b-4d14-90d5-d9dd888aec08": {
+   "ad": "Mato Et Restaurant",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://matoet.com.tr/): “00 Büryan (kemiksiz 100 gr) ₺ 580,00 Karışık Kebap ₺ 1.200,00 Karışık Et Tabağı ₺ 1.400,00 Acılı Kebap ₺ 580,0” · Kebapçı / Ocakbaşı 22 eşleşme, sonraki Pideci 5"
+  },
+  "63c22098-0a47-43a0-aa56-a19ca2d25ba0": {
+   "ad": "Dereli Vadi Resturant ve Piknik alanı",
+   "kind": "Steakhouse",
+   "cuisine": [
+    "steak_house"
+   ],
+   "ifade": "resmî site (https://www.derelivadi.net/): “ze de Asla Yedirmeyeceğiz” Felsefesine Sahip Kasap Hizmeti. Et Menümüz İçeceklerimiz Sıcak İçecekler Daima Taz” · Steakhouse 9 eşleşme, sonraki Kahvaltı 4"
+  },
+  "607afd72-1632-498c-a884-017b6af0d69e": {
+   "ad": "Kalia Bahçe Kır Bahçesi ve Restoran",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://kaliabahce.com/): “bahce.com/wp-content/uploads/2025/07/cropped-kahvalti-organizasyon-250x80-2.jpg\",\"contentUrl\":\"https://kaliaba” · Kahvaltı 16 eşleşme, sonraki Kebapçı / Ocakbaşı 5"
+  },
+  "370c8c73-8f83-4422-8245-38153a98bd74": {
+   "ad": "Mesa Country",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://mesracountry.com/): “u ile hizmet vermektedir. Geleneksel organik serpme köy kahvaltısı ile doğanın kalbinde mutlu bir güne başlaya” · Kahvaltı 5 eşleşme, sonraki Balık restoranı 0"
+  },
+  "297ba30d-d771-4f42-aeea-35a0fc654144": {
+   "ad": "Chicken Co.",
+   "kind": "Burger",
+   "cuisine": [
+    "burger"
+   ],
+   "ifade": "resmî site (http://www.chickenco.co/): “Chickenco | Çıtır Tavuk, Burger ve Sıcak Lezzetler Her gün 09:00 - 01:45 +90 212 342 08 23 Ara WhatsApp Chicke” · Burger 4 eşleşme, sonraki Balık restoranı 0"
+  },
+  "9072ffcd-d3fc-4c6d-9a71-eebdcf667153": {
+   "ad": "Asmalı Bahçe",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.kadikoyasmalibahce.com/): “atıyoruz. Gerçek lezzet, gerçek keyif. 🍢 Usta Ocakbaşı 🍷 Özel Mezeler M S A ⭐ 4.6 Puan 1.000+ Google Yorumu Dü” · Kebapçı / Ocakbaşı 3 eşleşme, sonraki Meyhane 1"
+  },
+  "838c3428-d475-4d78-9c5d-b48759007d2d": {
+   "ad": "Kebapçı Asker Usta",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://www.askerusta.com.tr/): “Kebapçı Asker Usta 1940' dan beri Adana'dan gelen lezzet Asker Usta Ana Sayfa Asker Usta Basında Şubelerimiz İ” · Kebapçı / Ocakbaşı 13 eşleşme, sonraki Balık restoranı 0"
+  },
+  "33ffc8ff-46e5-4923-86a9-74b4f86512cc": {
+   "ad": "Palet Balıkçıl",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site (https://www.paletbalikcil.com/): “ferah Restoran'ımızda onlarca çeşit meze ve balık menüsü ile, tecrübeli şeflerimiz, güleryüzlü ekibimizle değ” · Balık restoranı 10 eşleşme, sonraki Türk mutfağı 1"
+  },
+  "eb33b7ef-72b2-477c-bf18-e7711cc335b5": {
+   "ad": "Gunay Konyali",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site (https://gunaykonyali.com/): “iniz. Ürünlerimiz Etli Ekmek Kıymalı Kaşarlı Pide Kuşbaşılı Pide Kuşbaşılı Kaşarlı Pide Kuzu Tandır Sac Kavurm” · Pideci 27 eşleşme, sonraki Balık restoranı 0"
+  },
+  "641aaa78-772a-4789-a030-590806dd82ef": {
+   "ad": "Asia Lounge",
+   "kind": "Asya mutfağı",
+   "cuisine": [
+    "asian"
+   ],
+   "ifade": "resmî site (https://asialounge-tr.com/): “i) – but also through amicable, joyful South Asian tradition, art & Hospitality. This is not just a typical Pr” · Asya mutfağı 5 eşleşme, sonraki Balık restoranı 0"
+  },
+  "ab6dcb5e-89e6-4e7e-a0dc-4b61a03565c4": {
+   "ad": "Alpek Restaurant",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (http://www.alpekrestaurant.com/): “da olan iddamıza hak vereceksiniz. Açık Büfe Kahvaltı Kahvaltıda Sınır Tanımıyoruz. Her sabah 08:00-10:30 saat” · Kahvaltı 4 eşleşme, sonraki Balık restoranı 0"
+  },
+  "d0ca116c-c8dd-4e07-be56-1c9d3b5bfdde": {
+   "ad": "Kilisli Fiko",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (http://www.kilislifiko.com/): “\"search_term_string\"}}],\"inLanguage\":\"tr\"}]} Kebapçısı Kilisli Fiko 1981’den beri Kadıköy’ün Meşhur KİLİSLİ Fİ” · Kebapçı / Ocakbaşı 32 eşleşme, sonraki Steakhouse 3"
+  },
+  "1c206e09-9226-44a9-89a7-76cdd73d5ef0": {
+   "ad": "Kumiko Sushi & More",
+   "kind": "Sushi / Japon",
+   "cuisine": [
+    "japanese"
+   ],
+   "ifade": "resmî site (https://kumikosushi.com.tr/): “Online Sipariş | Kumiko Sushi & More {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Place\",\"@id\":\"https:” · Sushi / Japon 49 eşleşme, sonraki Asya mutfağı 13"
+  },
+  "38e3a128-8c0a-4544-8cc6-c4f36b941325": {
+   "ad": "Peyre Galata",
+   "kind": "Balık restoranı",
+   "cuisine": [
+    "seafood"
+   ],
+   "ifade": "resmî site (https://peyregalata.com/menu/): “ka ARA SICAKLAR - Cin Yufkasına Sarılı Çıtır Karides 600₺ Sweet chili sos Çıtır Kalamar 610₺ Patates tava, tar” · Balık restoranı 5 eşleşme, sonraki Steakhouse 2"
+  },
+  "4cf52471-9baf-4c15-8263-2d7805fb9a41": {
+   "ad": "Yaşaroğulları Damak Tadı",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site (https://yasarogullari.wixsite.com/yasarogullarii/yemek-cesitleri): “r. Ezo Gelin Çorbası press to zoom Kuşbaşılı Pide press to zoom Sucuklu Kaşarlı Pide press to zoom Kaşarlı Pid” · Pideci 3 eşleşme, sonraki Dönerci 1"
+  },
+  "833757aa-416e-46e6-b933-fe3be6bb560a": {
+   "ad": "Deniz Lokantası",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site (http://www.denizlokantasi.com/): “ki İstanbul’dan kareler. Blog Kış çorbaları, esnaf lokantası, etsiz seçenekler ve daha fazlası. Google’da bizi” · Lokanta 6 eşleşme, sonraki Balık restoranı 2"
+  },
+  "6250bf0c-650f-464e-b52b-5aeda89b05c6": {
+   "ad": "Azure The Bosphorus",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://azurethebosphorus.com/tr): “ounge | AZURE The BOSPHORUS HAKKIMIZDA YEMEK KAHVALTI NARGİLE MENÜ İLETİŞİM — TR / EN HAKKIMIZDA YEMEK KAHVALT” · Kahvaltı 30 eşleşme, sonraki Balık restoranı 2"
+  },
+  "9383d5e3-5221-4fdb-af0d-87281f455f4b": {
+   "ad": "Kebapçı Murat",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (https://kebapcimurat.com.tr/): “//kebapcimurat.com.tr/#organization\",\"name\":\"Kebap\\u00e7\\u0131 Murat Topkap\\u0131 Suri\\u00e7i\",\"url\":\"https://” · Kebapçı / Ocakbaşı 16 eşleşme, sonraki Asya mutfağı 4"
+  },
+  "3beb3dd5-e2d9-4c00-bec8-8e4a67b7ee30": {
+   "ad": "Petek Büfe",
+   "kind": "Dönerci",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (http://www.petekbufe.com.tr/): “adını bilenlere afiyetler diler. Menülerimiz Döner Çeşitleri Sosisli Çeşitleri Tost Çeşitleri Sandviç Çeşitler” · Dönerci 6 eşleşme, sonraki Burger 2"
+  },
+  "d111a012-fbdf-4718-afae-c5969f1ef3b5": {
+   "ad": "Erkonyalilar",
+   "kind": "Pideci",
+   "cuisine": [
+    "turkish",
+    "pide"
+   ],
+   "ifade": "resmî site (https://www.erkonyalilar.com.tr/menu/): “fırın ürünleri Etli Ekmek Kuşbaşılı Mevlana Pide Kavurmalı Pide Yumurtalı Etli Ekmek Peynirli Pide Peynirli S” · Pideci 22 eşleşme, sonraki Kebapçı / Ocakbaşı 10"
+  },
+  "ca42e261-19d8-46ee-99d4-251bc8b58be7": {
+   "ad": "Pişiköy",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (https://www.pisikoy.com/): “ümünü Göster MENÜ Pişi Gözleme Çi Börek Pişi Kahvaltı Vegan Pişiler Vegan Gözleme Vegan Çi Börek Vegan Kahvalt” · Kahvaltı 26 eşleşme, sonraki Türk mutfağı 2"
+  },
+  "38ab9ce1-ef51-4b37-bc05-8e5ae4af3213": {
+   "ad": "Tere",
+   "kind": "Kebapçı / Ocakbaşı",
+   "cuisine": [
+    "turkish",
+    "kebab"
+   ],
+   "ifade": "resmî site (http://www.tereistanbul.com/): “Tere Tere Şehre yeni bir ocakbaşı geldi... Rezervasyon Yap Hakkımızda Şehre yeni bir ocakbaşı geldi... Tere, o” · Kebapçı / Ocakbaşı 8 eşleşme, sonraki Pideci 2"
+  },
+  "6fbba8e2-24ff-421c-94bb-0fd20028d81b": {
+   "ad": "Esnaf Cengiz Çorba Dünyası",
+   "kind": "Lokanta",
+   "cuisine": [
+    "turkish"
+   ],
+   "ifade": "resmî site (http://www.denizlokantasi.com/): “ki İstanbul’dan kareler. Blog Kış çorbaları, esnaf lokantası, etsiz seçenekler ve daha fazlası. Google’da bizi” · Lokanta 6 eşleşme, sonraki Balık restoranı 2"
+  },
+  "b16bfee3-4660-4f6c-be49-21d4597c7d44": {
+   "ad": "Say Cheese Moda",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site (https://saycheesepasta.com/): “Say Cheese Pasta – El Yapımı Taze Makarna | Kadıköy Moda & Beşiktaş Akaretler MENU İLETİŞİM Ana Sayfa Menu (TR” · İtalyan 5 eşleşme, sonraki Balık restoranı 0"
+  },
+  "eb7004f8-e52b-4e14-92ea-d7e91db4001b": {
+   "ad": "Kilyos Yeşil Çiftlik Restoran",
+   "kind": "Kahvaltı",
+   "cuisine": [
+    "breakfast"
+   ],
+   "ifade": "resmî site (http://www.yesilciftlik.net/): “yfa Hakkimizda Hizmetlerimiz Men� Kir D�g�n� Kahvalti Foto Galeri Kilyos Hakkinda Harita ve Lokasyon En mutlu” · Kahvaltı 6 eşleşme, sonraki Balık restoranı 0"
+  },
+  "620a548c-2db7-4e45-a9f4-38bb3cf3d204": {
+   "ad": "Gina",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site (https://www.gina.com.tr/): “Gina | İtalyan Lezzetleri ve Şıklığın Buluşma Noktası {\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"W” · İtalyan 27 eşleşme, sonraki Balık restoranı 0"
+  },
+  "252e6e0e-1bb1-48ff-a08b-41faacec03c5": {
+   "ad": "Say Cheese Akaretler",
+   "kind": "İtalyan",
+   "cuisine": [
+    "italian"
+   ],
+   "ifade": "resmî site (https://saycheesepasta.com/): “Say Cheese Pasta – El Yapımı Taze Makarna | Kadıköy Moda & Beşiktaş Akaretler MENU İLETİŞİM Ana Sayfa Menu (TR” · İtalyan 5 eşleşme, sonraki Balık restoranı 0"
+  }
+ },
+ "elleRet": {
+  "Magic Akademi": "akademi/kurs; restoran olduğu ayrıca doğrulanmadı",
+  "Çiğköfteci Selim Bey": "çiğ köfte; kalıp 'kebapçı' diyor, tür ailesi listede yok",
+  "Sanpanino Sandwich": "sandviççi; 'pizza' kalıbı türü doğru anlatmıyor",
+  "Çifa Cafe & Restaurant": "kafe ağırlıklı; 'steakhouse' kalıbı zayıf"
+ }
+}

@@ -1,0 +1,719 @@
+{
+ "_aciklama": "A-konumsuz kayıtlar için Overture Maps Places noktası (sürüm 2026-10-21.0). KAYDA YAZILMADI. Atıf: © Overture Maps Foundation; kaynak başına lisans (Meta/Microsoft CDLA-Permissive-2.0, Foursquare Apache-2.0, AllThePlaces CC0-1.0).",
+ "oneriler": [
+  {
+   "slug": "akar-selale-park-beykoz",
+   "gersId": "e69c8f37-47dc-4cb8-ada2-882656fa1aa2",
+   "lat": 41.124218,
+   "lng": 29.251865,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "clove-restaurant-sariyer",
+   "gersId": "8fbb4f8c-d4f3-448e-b49a-3c37d34852bf",
+   "lat": 41.109825,
+   "lng": 29.031237,
+   "guven": 0.94,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "dede-ahmet-kebap-uskudar",
+   "gersId": "837d45d6-c92b-4702-b119-984fd935e9ab",
+   "lat": 41.020702,
+   "lng": 29.031019,
+   "guven": 0.93,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "digma-restaurant-beykoz",
+   "gersId": "311eaa5d-201a-405b-bc54-75e57af95a58",
+   "lat": 41.133694,
+   "lng": 29.278305,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "afiyet-et-kasap-izgara-umraniye",
+   "gersId": "36a78ec3-2516-47fa-b00c-158446196f98",
+   "lat": 41.020752,
+   "lng": 29.124449,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ümraniye",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "patlican-polonezkoy-beykoz",
+   "gersId": "53c844fa-9e30-4e7d-b8f2-58d2ea6db2c6",
+   "lat": 41.125721,
+   "lng": 29.256338,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "pamera-garden-beykoz",
+   "gersId": "b2f495ab-a58f-4605-993f-309deff0249b",
+   "lat": 41.134434,
+   "lng": 29.277056,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "degirmen-park-beykoz",
+   "gersId": "1d4e7d77-33ee-4f5f-9b48-840db0a1708e",
+   "lat": 41.127193,
+   "lng": 29.258347,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "atiye-bebek-besiktas",
+   "gersId": "1c02a344-644c-4e88-a2d8-78a38820a039",
+   "lat": 41.073082,
+   "lng": 29.044201,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beşiktaş",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "uzun-yayla-doner-tuzla",
+   "gersId": "4ded8735-6a04-448e-acbb-b485b97b8afb",
+   "lat": 40.838276,
+   "lng": 29.295713,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Tuzla",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "dereli-vadi-resturant-ve-piknik-alani-beykoz",
+   "gersId": "63c22098-0a47-43a0-aa56-a19ca2d25ba0",
+   "lat": 41.123844,
+   "lng": 29.238573,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kalia-bahce-kir-bahcesi-ve-restoran-maltepe",
+   "gersId": "607afd72-1632-498c-a884-017b6af0d69e",
+   "lat": 40.961121,
+   "lng": 29.171831,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Maltepe",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "mesa-country-beykoz",
+   "gersId": "370c8c73-8f83-4422-8245-38153a98bd74",
+   "lat": 41.127121,
+   "lng": 29.264114,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "koza-garden-beykoz",
+   "gersId": "995ecc3e-b40f-4c8d-9eb1-a4b8289a6549",
+   "lat": 41.125816,
+   "lng": 29.257141,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beykoz",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "feraye-beyoglu",
+   "gersId": "fc793402-cdc5-4343-9969-5889bc927be9",
+   "lat": 41.034428,
+   "lng": 28.984732,
+   "guven": 0.97,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "agabeyin-turk-mutfagi-uskudar",
+   "gersId": "43fd8d58-8f2e-4d88-a677-963a7afb0174",
+   "lat": 41.021183,
+   "lng": 29.017172,
+   "guven": 0.97,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "asmali-bahce-kadikoy",
+   "gersId": "9072ffcd-d3fc-4c6d-9a71-eebdcf667153",
+   "lat": 40.988762,
+   "lng": 29.032894,
+   "guven": 0.97,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "kebapci-asker-usta-sariyer",
+   "gersId": "838c3428-d475-4d78-9c5d-b48759007d2d",
+   "lat": 41.116375,
+   "lng": 29.022331,
+   "guven": 0.96,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "palet-balikcil-sariyer",
+   "gersId": "33ffc8ff-46e5-4923-86a9-74b4f86512cc",
+   "lat": 41.114769,
+   "lng": 29.058422,
+   "guven": 0.91,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "gunay-konyali-kadikoy",
+   "gersId": "eb33b7ef-72b2-477c-bf18-e7711cc335b5",
+   "lat": 41.009354,
+   "lng": 29.036846,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "purtelas-ocakbasi-beyoglu",
+   "gersId": "84134763-dcb9-4545-b453-a35a41c2ca02",
+   "lat": 41.031601,
+   "lng": 28.986549,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "pad-thai-cihangir-beyoglu",
+   "gersId": "44b1fdfd-53ee-4ae8-b481-877e83e0e0ae",
+   "lat": 41.030025,
+   "lng": 28.982136,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "asia-lounge-fatih",
+   "gersId": "641aaa78-772a-4789-a030-590806dd82ef",
+   "lat": 41.017536,
+   "lng": 28.950653,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Fatih",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "hr-italy-karakoy-beyoglu",
+   "gersId": "cf9923a8-ef7d-4e2d-93c5-0f56459bd768",
+   "lat": 41.023144,
+   "lng": 28.976742,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kosuyolu-manti-kadikoy",
+   "gersId": "6477ec76-bdc4-49e1-9636-63c9844009b0",
+   "lat": 41.006287,
+   "lng": 29.038017,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kaf-cafe-restoran-uskudar",
+   "gersId": "a35e5862-f2c5-4457-b2e8-3f945ba7c6fd",
+   "lat": 41.024925,
+   "lng": 29.060177,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "city-teras-beyoglu",
+   "gersId": "bdbf13db-f6c8-40ff-b215-3c8840944dbc",
+   "lat": 41.030087,
+   "lng": 28.973331,
+   "guven": 0.95,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "kumiko-sushi-ve-more-beyoglu",
+   "gersId": "1c206e09-9226-44a9-89a7-76cdd73d5ef0",
+   "lat": 41.034969,
+   "lng": 28.988398,
+   "guven": 0.94,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "elmasoglu-manti-uskudar",
+   "gersId": "562aa9f2-301c-45d0-8355-e7c82e7a700b",
+   "lat": 41.026089,
+   "lng": 29.019873,
+   "guven": 0.93,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Üsküdar",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "peyre-galata-beyoglu",
+   "gersId": "38e3a128-8c0a-4544-8cc6-c4f36b941325",
+   "lat": 41.023376,
+   "lng": 28.973783,
+   "guven": 0.93,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "sabina-nin-kahvalti-bahcesi-pendik",
+   "gersId": "f1301491-b3d6-47f1-aef1-81712e8617bc",
+   "lat": 40.880478,
+   "lng": 29.226101,
+   "guven": 0.91,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Pendik",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "crispy-asian-kadikoy",
+   "gersId": "44a30236-999f-418f-9291-25b8003d0e13",
+   "lat": 40.995823,
+   "lng": 29.053652,
+   "guven": 0.9,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "only-breakfast-sariyer",
+   "gersId": "a7171ed0-ca56-4205-a56a-51568c0d6161",
+   "lat": 41.10976,
+   "lng": 29.041115,
+   "guven": 0.9,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "azure-the-bosphorus-beyoglu",
+   "gersId": "6250bf0c-650f-464e-b52b-5aeda89b05c6",
+   "lat": 41.030415,
+   "lng": 28.988428,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "pizza-zero-sariyer",
+   "gersId": "ea92d7f9-25ca-4612-97bb-f30b1342936f",
+   "lat": 41.209164,
+   "lng": 29.021591,
+   "guven": 1,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "erkonyalilar-maltepe",
+   "gersId": "d111a012-fbdf-4718-afae-c5969f1ef3b5",
+   "lat": 40.94136,
+   "lng": 29.127937,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Maltepe",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "durumcu-emmi-atasehir",
+   "gersId": "9e97c252-d2ff-40df-8b74-0be6cca81ef6",
+   "lat": 40.985119,
+   "lng": 29.108166,
+   "guven": 0.95,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Ataşehir",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "burgerillas-cekmekoy",
+   "gersId": "68a8c5c5-6dff-4332-aa26-6f76c4dde279",
+   "lat": 41.031586,
+   "lng": 29.172867,
+   "guven": 0.95,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Çekmeköy",
+   "telefonEslesmesi": false,
+   "koordinatGuveni": "KO3 değil (telefon eşleşmesi yok)"
+  },
+  {
+   "slug": "n-evet-istanbul-rooftop-restaurant-ve-roof-bar-beyoglu",
+   "gersId": "d8483dbe-4c1b-4ed7-8673-136906ffbb61",
+   "lat": 41.034172,
+   "lng": 28.981594,
+   "guven": 0.99,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Beyoğlu",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "burgerlab-steak-and-burger-sariyer",
+   "gersId": "c51754ab-fe57-495a-a4f6-79d2db182090",
+   "lat": 41.108192,
+   "lng": 29.00741,
+   "guven": 0.98,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "bigchefs-sariyer",
+   "gersId": "ea772fad-bfbd-4806-a3e8-564e3c7d51a4",
+   "lat": 41.093018,
+   "lng": 29.035,
+   "guven": 0.97,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Sarıyer",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  },
+  {
+   "slug": "betro-burger-kadikoy-kadikoy",
+   "gersId": "30f3d1de-e3f2-4011-bbf8-77228485a9ea",
+   "lat": 40.988388,
+   "lng": 29.027451,
+   "guven": 0.97,
+   "kaynaklar": [
+    "meta",
+    "Overture"
+   ],
+   "lisans": [
+    "CDLA-Permissive-2.0"
+   ],
+   "ilceSiniri": "Kadıköy",
+   "telefonEslesmesi": true,
+   "koordinatGuveni": "KO3 adayı (tek kaynak: telefon resmî siteyle aynı; bağımsız ikinci konum kaynağı yok)"
+  }
+ ]
+}

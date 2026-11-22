@@ -1,0 +1,56 @@
+{
+ "dalga": 20,
+ "A": 19,
+ "sinif": {
+  "A": 19
+ },
+ "osmKaydi": 19,
+ "isletmeKaydi": 0,
+ "uygunAday": 32,
+ "secilen": 32,
+ "onEleme": {
+  "kanitsiz": 0,
+  "spamPark": 0,
+  "kafeBar": 0,
+  "acilmadi": 0
+ },
+ "inceleme": {
+  "B": 13
+ },
+ "incelemeNeden": {
+  "adres resmî kaynakta doğrulanmadı": 3,
+  "kaynaklı tür yok": 2,
+  "tür yalnız Overture kategorisinde": 5,
+  "kapı numarası resmî kaynakta doğrulanmadı": 4,
+  "906 eşleşmesi doğrulanmadı": 1
+ },
+ "turKaynagi": {
+  "OSM": 4,
+  "resmî site": 15
+ },
+ "ilce": {
+  "Ümraniye": 2,
+  "Maltepe": 2,
+  "Üsküdar": 2,
+  "Pendik": 2,
+  "Kartal": 1,
+  "Tuzla": 1,
+  "Şişli": 1,
+  "Beyoğlu": 2,
+  "Fatih": 1,
+  "Kadıköy": 5
+ },
+ "tur": {
+  "Türk mutfağı": 4,
+  "Pideci": 1,
+  "Balık restoranı": 3,
+  "Kebapçı / Ocakbaşı": 4,
+  "Steakhouse": 2,
+  "Köfteci": 1,
+  "Burger": 2,
+  "Kokoreççi": 1,
+  "Lokanta": 1
+ },
+ "zincirSube": 1,
+ "v906Eslesen": 19
+}
