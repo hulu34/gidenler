@@ -1,0 +1,116 @@
+{
+  "status": "LOCAL_EK2_APPEND_ONLY_AWAITING_REVIEW",
+  "productionBaseline": "9a2f2f482b65709e862397911438d99b06230e2c",
+  "stagedBaseline": "def101fe9aecf563c663f6632621d0b8ae8d33db",
+  "earlierStage": {
+    "total": 905,
+    "active": 870,
+    "activeRestaurant": 745,
+    "added": 13
+  },
+  "target": {
+    "total": 913,
+    "active": 878,
+    "activeRestaurant": 753,
+    "addedInEk2": 8,
+    "addedCumulative": 21
+  },
+  "previewAdded": 0,
+  "productionAdded": 0,
+  "sources": [
+    {
+      "slug": "burger-yiyelim-maresal-cakmak-gungoren",
+      "branch": "Camlıkahve",
+      "operatorAddress": "Mareşal Çakmak Mahallesi Bağcılar Caddesi No:130/A Güngören",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-gungoren-maresal-cakmak-mah-st-355db",
+      "activityDate": "2026-11-14",
+      "activityDateMeaning": "Dated order review under exact named branch; neither Gidenler review nor in-person visit evidence.",
+      "addressSourceScope": "Official street and door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-kavakli-beylikduzu",
+      "branch": "Kavaklı",
+      "operatorAddress": "Kavaklı Mahallesi Oğuzhan Caddesi No:23F Beylikdüzü",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-beylikduzu-kavakli-mah-st-23d89",
+      "activityDate": "2026-11-20",
+      "activityDateMeaning": "Dated order review under exact named branch; neither Gidenler review nor in-person visit evidence.",
+      "addressSourceScope": "Official street and door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-tahtakale-avcilar",
+      "branch": "Ispartakule",
+      "operatorAddress": "Tahtakale Mahallesi Faruk Nafiz Çamlıbel Caddesi Bizim Evler 6 No:2 Avcılar",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-avcilar-tahtakale-mah-st-1e870",
+      "activityDate": "2026-11-15",
+      "activityDateMeaning": "Dated order review under exact named branch; neither Gidenler review nor in-person visit evidence.",
+      "addressSourceScope": "Official street and door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-atakent-kucukcekmece",
+      "branch": "Arena Park",
+      "operatorAddress": "Atakent Mahallesi Çiçekli Vadi Caddesi Arena Park No:1 Küçükcekmece",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-kucukcekmece-atakent-mah-st-2bfe7",
+      "activityDate": "2026-11-16",
+      "activityDateMeaning": "Dated order review under exact named branch; neither Gidenler review nor in-person visit evidence.",
+      "addressSourceScope": "Official street and door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-cennet-kucukcekmece",
+      "branch": "Cennet",
+      "operatorAddress": "Cennet Mahallesi Hürriyet Caddesi No:53/C Küçükçekmece",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-kucukcekmece-cennet-mah-st-1e873",
+      "activityDate": "2026-11-15",
+      "activityDateMeaning": "Dated order review under exact named branch; neither Gidenler review nor in-person visit evidence.",
+      "addressSourceScope": "Official street and door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-yesiltepe-zeytinburnu",
+      "branch": "Zeytinburnu",
+      "operatorAddress": "Yeşiltepe Mahallesi 58.Bulvar Caddesi No:70/A Zeytinburnu",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-zeytinburnu-yesiltepe-mah-st-2de2d",
+      "activityDate": "2026-11-22",
+      "activityDateMeaning": "Dated order review under exact named branch; neither Gidenler review nor in-person visit evidence.",
+      "addressSourceScope": "Official street and door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-kordonboyu-kartal",
+      "branch": "Kartal",
+      "operatorAddress": "Kordonboyu Mahallesi Ankara Caddesi No:42 Kartal",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-kartal-kordonboyu-mah-st-2da47",
+      "activityDate": "2026-10-29",
+      "activityDateMeaning": "Dated order review under exact named branch; neither Gidenler review nor in-person visit evidence.",
+      "addressSourceScope": "Official street and door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    },
+    {
+      "slug": "burger-yiyelim-cumhuriyet-sisli",
+      "branch": "Şişli",
+      "operatorAddress": "Cumhuriyet Mahallesi Halaskargazi Caddesi No:107/A Şişli",
+      "operatorSource": "https://www.burgeryiyelim.com/restoranlar",
+      "activitySource": "https://www.migros.com.tr/yemek/burger-yiyelim-sisli-cumhuriyet-mah-st-1e292",
+      "activityDate": "2026-11-21",
+      "activityDateMeaning": "Dated order review under exact named branch; neither Gidenler review nor in-person visit evidence.",
+      "addressSourceScope": "Official street and door; independent brand and neighborhood corroboration",
+      "independentlyCheckedAt": "2026-11-22"
+    }
+  ],
+  "holds": {
+    "burger-yiyelim-basak-basaksehir": "Terasium / previous Başakşehir alias history not resolved",
+    "burger-yiyelim-kayabasi-basaksehir": "Kayaşehir / previous Başakşehir alias history not resolved",
+    "burger-yiyelim-yenisehir-pendik": "Lens hold unchanged",
+    "mama-bowl-kitchen-moda-kadikoy": "Relocation hold unchanged"
+  }
+}
