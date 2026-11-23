@@ -1,0 +1,275 @@
+[
+  {
+    "ref": "isletme/suimaki-sisli",
+    "slug": "suimaki-sisli",
+    "name": "Suimaki",
+    "categoryId": "cat.restaurant",
+    "kind": "Sushi / Japon",
+    "district": "Şişli",
+    "neighborhood": "Teşvikiye",
+    "address": "Av. Süreyya Ağaoğlu Sokak, Köşe Apt. No:10C, Teşvikiye Mahallesi, Şişli",
+    "website": "https://www.suimaki.com/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.suimaki.com/",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "sushi"
+    ],
+    "verification": "İşletmecinin kendi sitesinde Teşvikiye, Av. Süreyya Ağaoğlu Sokak, Köşe Apt. No:10C adresi ve suşi menüsü açıkça yer alıyor. Oggusto, 19 Kasım 2026 güncellemeli yazısında aynı marka, ayırt edici Push-Pop konsepti, Teşvikiye/Şişli ve işletmeci alan adını eşleştiriyor; sokak ve kapı bilgisi yalnız işletmeciden. Koordinat, telefon, saat, görsel, puan veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-mimar-sinan-esenler",
+    "slug": "burger-yiyelim-mimar-sinan-esenler",
+    "name": "Burger Yiyelim Esenler",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Esenler",
+    "neighborhood": "Mimar Sinan",
+    "address": "Mimar Sinan Mahallesi Davutpaşa Caddesi No:15/A Esenler",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Esenler şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-11-02 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-merkez-gaziosmanpasa",
+    "slug": "burger-yiyelim-merkez-gaziosmanpasa",
+    "name": "Burger Yiyelim Gaziosmanpaşa",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Gaziosmanpaşa",
+    "neighborhood": "Merkez",
+    "address": "Merkez Mahallesi Salih Paşa Caddesi No:6 Gaziosmanpaşa",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Gaziosmanpaşa şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-10-29 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-karadeniz-gaziosmanpasa",
+    "slug": "burger-yiyelim-karadeniz-gaziosmanpasa",
+    "name": "Burger Yiyelim Venezia",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Gaziosmanpaşa",
+    "neighborhood": "Karadeniz",
+    "address": "Karadeniz Mahallesi Eski Edirne Asfaltı Venezia Avm No:408 Gaziosmanpaşa",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Venezia şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-11-12 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-sancaktepe-bagcilar",
+    "slug": "burger-yiyelim-sancaktepe-bagcilar",
+    "name": "Burger Yiyelim Bağcılar",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Bağcılar",
+    "neighborhood": "Sancaktepe",
+    "address": "Sancaktepe Mahallesi Çarşı Caddesi No:12/A Bağcılar",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Bağcılar şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-09-27 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-15-temmuz-bagcilar",
+    "slug": "burger-yiyelim-15-temmuz-bagcilar",
+    "name": "Burger Yiyelim Oasis Cadde",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Bağcılar",
+    "neighborhood": "15 Temmuz",
+    "address": "15 Temmuz Mahallesi Bahar Caddesi Nurol Park E Blok No:45 İç Kapı No:1845 Bağcılar",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Oasis Cadde şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-11-01 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-turgut-ozal-esenyurt",
+    "slug": "burger-yiyelim-turgut-ozal-esenyurt",
+    "name": "Burger Yiyelim Torium",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Esenyurt",
+    "neighborhood": "Turgut Özal",
+    "address": "Turgut Özal Mahallesi E5 Yanyolu Üzeri Torıum Avm No:50 İç Kapı No:289 Esenyurt",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Torium şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-10-24 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-barbaros-hayrettin-pasa-esenyurt",
+    "slug": "burger-yiyelim-barbaros-hayrettin-pasa-esenyurt",
+    "name": "Burger Yiyelim Esenyurt",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Esenyurt",
+    "neighborhood": "Barbaros Hayrettin Paşa",
+    "address": "Barbaros Hayrettin Paşa Mahallesi 1988.Sokak No:2E/11 Esenyurt",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Esenyurt şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-11-21 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-yesilpinar-eyupsultan",
+    "slug": "burger-yiyelim-yesilpinar-eyupsultan",
+    "name": "Burger Yiyelim Vialand",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Eyüpsultan",
+    "neighborhood": "Yeşilpınar",
+    "address": "Yeşilpınar Mahallesi Metinkaya Sokak Vialand Avm No:11/A Eyüpsultan",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Vialand şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-11-13 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-silivrikapi-fatih",
+    "slug": "burger-yiyelim-silivrikapi-fatih",
+    "name": "Burger Yiyelim Kocamustafapaşa",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Fatih",
+    "neighborhood": "Silivrikapı",
+    "address": "Silivrikapı Mahallesi Kuvayi Milliye Caddesi No:2 Kocamustafapaşa Fatih",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Kocamustafapaşa şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-10-24 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-kemalpasa-kucukcekmece",
+    "slug": "burger-yiyelim-kemalpasa-kucukcekmece",
+    "name": "Burger Yiyelim Sefaköy",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Küçükçekmece",
+    "neighborhood": "Kemalpaşa",
+    "address": "Kemalpaşa Mahallesi Halkalı Caddesi No:149/1A Küçükçekmece",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Sefaköy şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-11-12 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-merkez-kagithane",
+    "slug": "burger-yiyelim-merkez-kagithane",
+    "name": "Burger Yiyelim Kağıthane",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Kağıthane",
+    "neighborhood": "Merkez",
+    "address": "Merkez Mahallesi Sadabad Caddesi No:46A Kağıthane",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Kağıthane şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-11-21 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  },
+  {
+    "ref": "isletme/burger-yiyelim-zeytinlik-bakirkoy",
+    "slug": "burger-yiyelim-zeytinlik-bakirkoy",
+    "name": "Burger Yiyelim Bakırköy",
+    "categoryId": "cat.restaurant",
+    "kind": "Burger",
+    "district": "Bakırköy",
+    "neighborhood": "Zeytinlik",
+    "address": "Zeytinlik Mahallesi Fişekhane Caddesi No:18 Bakırköy",
+    "website": "https://www.burgeryiyelim.com/restoranlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.burgeryiyelim.com/restoranlar",
+    "kaliteSinifi": "A-konumsuz",
+    "verifiedAt": "2026-11-22",
+    "confidence": "güçlü",
+    "cuisine": [
+      "burger"
+    ],
+    "verification": "İşletmecinin resmî şube listesinde Bakırköy şubesinin tam adresi var. Migros Yemek aynı marka, ilçe ve mahalledeki ayrı şube sayfasında burger menüsü ve 2026-10-29 tarihli sipariş değerlendirmesi gösteriyor. Sokak ve kapı resmî kaynaktan alınmıştır. Yorum, puan, saat, telefon, görsel, koordinat veya menü ürünü aktarılmadı.",
+    "wave": 26
+  }
+]
