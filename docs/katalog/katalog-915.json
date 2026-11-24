@@ -1,0 +1,51 @@
+{
+  "status": "local_uncommitted_candidate",
+  "baseCommit": "a7a13e2bcd432e68e2211c3d7a51158446099455",
+  "productionBaseline": "9a2f2f482b65709e862397911438d99b06230e2c",
+  "localAdded": 3,
+  "productionAdded": 0,
+  "previewAdded": 0,
+  "verifiedAt": "2026-11-23",
+  "expected": {
+    "total": 915,
+    "active": 880,
+    "activeRestaurants": 755
+  },
+  "sources": [
+    {
+      "slug": "durumle-marmara-park-esenyurt",
+      "officialSource": "https://www.durumle.com/subeler/istanbul/esenyurt",
+      "activitySource": "https://www.sikayetvar.com/durumle/durumle-subesinde-cig-tavuk-durum-ve-saglik-riski",
+      "activityDate": "2026-10-15",
+      "activityEvidenceType": "bagimsiz_fiili_kayit",
+      "categoryEvidence": "İşletmeci menüsü: tavuk ve et döner dürümler (https://www.durumle.com/lezzetler)",
+      "additionalIdentitySources": [
+        "https://www.marmarapark.com/gastronomi/dueruemle/"
+      ]
+    },
+    {
+      "slug": "perran-ocakbasi-macka-besiktas",
+      "officialSource": "https://www.perranocakbasi.com.tr/tr/subelerimiz/",
+      "activitySource": "https://www.ekonomim.com/yasam/doubletree-by-hilton-istanbul-mackada-perran-ocakbasi-acildi-haberi-931541",
+      "activityDate": "2026-11-16",
+      "activityEvidenceType": "bagimsiz_haber",
+      "categoryEvidence": "İşletmeci ocakbaşı konsepti (canlıdaki Kalamış şubesinin türü ile aynı); haber ocakbaşı restoranı diyor",
+      "additionalIdentitySources": []
+    },
+    {
+      "slug": "bigchefs-mrf-cadde-pendik",
+      "officialSource": "https://bigchefs.com.tr/subeler/bigchefs-mrf-cadde/",
+      "activitySource": "https://www.geccemekan.com/haber/kurtkoye-yeni-bulusma-adresi-bigchefs-mrf-cadde-acildi-2271.html",
+      "activityDate": "2026-11-13",
+      "activityEvidenceType": "bagimsiz_haber",
+      "categoryEvidence": "İşletmeci menüsü (marka geneli all-day dining; şubeye özel menü yok) — canlıdaki Cookshop benzeri tür",
+      "additionalIdentitySources": []
+    }
+  ],
+  "holds": [
+    {
+      "slug": "il-gattopardo-galataport-beyoglu",
+      "reason": "İleriye dönük açılış duyurusu, tescil ve işletmeci rezervasyon sayfası ayrı ayrı; açılış sonrası bağımsız fiilî servis kanıtı yok."
+    }
+  ]
+}

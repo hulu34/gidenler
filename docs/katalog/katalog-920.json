@@ -1,0 +1,172 @@
+{
+  "status": "local_uncommitted_candidate",
+  "baseCommit": "a7a13e2bcd432e68e2211c3d7a51158446099455",
+  "priorLocal": 915,
+  "priorLocalDigest": {
+    "data/real/isletme.json": "062f31e7e9cd22682ca368ea5c098071f3efa77f8959c7d534a938797fcc9a2a",
+    "data/real/presentation.json": "ec6f63f9f2d5cdae589d94db3524e3851e39a175013cf117bc0c301714c1b318",
+    "data/real/sor-index.json": "552f23993f7788d975398d745aa0d88310a8ac81b5a08488fc68fc5df52a2ef4"
+  },
+  "localAdded": 5,
+  "productionAdded": 0,
+  "previewAdded": 0,
+  "expected": {
+    "total": 920,
+    "active": 885,
+    "activeRestaurants": 760
+  },
+  "sources": [
+    {
+      "slug": "ibb-silivri-kent-lokantasi-silivri",
+      "priorCandidateId": "seyrek/ibb-silivri-kent-lokantasi",
+      "officialSource": "https://tesislerimiz.ibb.istanbul/tesis/silivri-kent-lokantasi",
+      "sources": [
+        {
+          "url": "https://tesislerimiz.ibb.istanbul/tesis/silivri-kent-lokantasi",
+          "tur": "isletmeci (İBB)",
+          "tarih": "2026-11-23",
+          "tarihTuru": "kontrol (sayfa tarihsiz)"
+        },
+        {
+          "url": "https://www.silivri.bel.tr/haber/baskan-balcioglu-kent-lokantasi-nda-vatandaslarla-bir-araya-geldi/1780",
+          "tur": "bagimsiz (ilçe belediyesi haberi)",
+          "tarih": "2026-03-03",
+          "tarihTuru": "haber tarihi"
+        },
+        {
+          "url": "https://www.kartal24.com/146127-ibb-kent-lokantasi",
+          "tur": "bagimsiz (yerel rehber)",
+          "tarih": "2026-09-05",
+          "tarihTuru": "datePublished"
+        }
+      ],
+      "categoryEvidence": "İBB Kent Lokantası işletme modeli (günlük dört çeşit ev yemeği; Kartal24); canlıdaki diğer İBB kent lokantalarıyla aynı tür"
+    },
+    {
+      "slug": "ibb-cekmekoy-kent-lokantasi-cekmekoy",
+      "priorCandidateId": "seyrek/ibb-cekmekoy-kent-lokantasi",
+      "officialSource": "https://tesislerimiz.ibb.istanbul/tesis/cekmekoy-kent-lokantasi",
+      "sources": [
+        {
+          "url": "https://tesislerimiz.ibb.istanbul/tesis/cekmekoy-kent-lokantasi",
+          "tur": "isletmeci (İBB)",
+          "tarih": "2026-11-23",
+          "tarihTuru": "kontrol"
+        },
+        {
+          "url": "https://cekmekoy.bel.tr/guncel/haber/yatirim/cekmekoy-kent-lokantasi-hizmete-basladi",
+          "tur": "bagimsiz (ilçe belediyesi)",
+          "tarih": "2026-04-03",
+          "tarihTuru": "haber tarihi"
+        },
+        {
+          "url": "https://sancaktepeses.com/amp/haber/cekmekoyde-ilk-kent-lokantasi-hizmete-acildi-27088",
+          "tur": "bagimsiz (yerel haber)",
+          "tarih": "2026-04-03",
+          "tarihTuru": "datePublished"
+        },
+        {
+          "url": "https://www.kartal24.com/146127-ibb-kent-lokantasi",
+          "tur": "bagimsiz (yerel rehber)",
+          "tarih": "2026-09-05",
+          "tarihTuru": "datePublished"
+        }
+      ],
+      "categoryEvidence": "İBB Kent Lokantası işletme modeli"
+    },
+    {
+      "slug": "ibb-sarigazi-kent-lokantasi-sancaktepe",
+      "priorCandidateId": "seyrek/ibb-sarigazi-kent-lokantasi",
+      "officialSource": "https://tesislerimiz.ibb.istanbul/tesis/sarigazi-kent-lokantasi",
+      "sources": [
+        {
+          "url": "https://tesislerimiz.ibb.istanbul/tesis/sarigazi-kent-lokantasi",
+          "tur": "isletmeci (İBB)",
+          "tarih": "2026-11-23",
+          "tarihTuru": "kontrol"
+        },
+        {
+          "url": "https://www.dha.com.tr/yerel-haberler/istanbul/21inci-kent-lokantasi-sancaktepede-acildi-2894621",
+          "tur": "bagimsiz (ajans haberi)",
+          "tarih": "2026-06-19",
+          "tarihTuru": "haber tarihi"
+        },
+        {
+          "url": "https://www.kartal24.com/146127-ibb-kent-lokantasi",
+          "tur": "bagimsiz (yerel rehber)",
+          "tarih": "2026-09-05",
+          "tarihTuru": "datePublished"
+        }
+      ],
+      "categoryEvidence": "İBB Kent Lokantası işletme modeli"
+    },
+    {
+      "slug": "gunaydin-etiler-besiktas",
+      "priorCandidateId": "gm26/gunaydin-kebap-restoran",
+      "officialSource": "https://gunaydinet.com/kebap-steakhouse/",
+      "sources": [
+        {
+          "url": "https://gunaydinet.com/kebap-steakhouse/",
+          "tur": "isletmeci (şube dizini)",
+          "tarih": "2026-07-10",
+          "tarihTuru": "sayfa dateModified"
+        },
+        {
+          "url": "https://yemek.com/etilerde-en-iyi-kebap-nerede-yenir/",
+          "tur": "bagimsiz (editoryal)",
+          "tarih": "2026-09-17",
+          "tarihTuru": "yayın"
+        },
+        {
+          "url": "https://www.gault-millau.com.tr/gunaydin-etiler-4/",
+          "tur": "bagimsiz (rehber)",
+          "tarih": "2025-01-24",
+          "tarihTuru": "rehber sayfası (2025)"
+        }
+      ],
+      "categoryEvidence": "yemek.com: Adana, Urfa, beyti, kuzu şiş, patlıcan kebabı; G&M: kebaplar, dry-aged etler (G&M etiketi 'Modern Mutfak' — menü içeriği kebapçı)"
+    },
+    {
+      "slug": "kruvasan-istanbul-sisli",
+      "priorCandidateId": "gm26/kruton",
+      "officialSource": "https://kruvasan.com.tr/sik-sorulanlar",
+      "sources": [
+        {
+          "url": "https://kruvasan.com.tr/sik-sorulanlar",
+          "tur": "isletmeci",
+          "tarih": "2026-11-23",
+          "tarihTuru": "kontrol (© 2026)"
+        },
+        {
+          "url": "https://kruvasan.com.tr/kruton",
+          "tur": "isletmeci",
+          "tarih": "2026-11-23",
+          "tarihTuru": "kontrol"
+        },
+        {
+          "url": "https://kruvasan.com.tr/menu",
+          "tur": "isletmeci (menü)",
+          "tarih": "2026-11-23",
+          "tarihTuru": "kontrol"
+        },
+        {
+          "url": "https://www.oggusto.com/gastronomi/istanbul/nisantasinin-en-iyi-mekanlari",
+          "tur": "bagimsiz (editoryal)",
+          "tarih": "2026-11-17",
+          "tarihTuru": "dateModified (yayın 2026-08-12)"
+        }
+      ],
+      "categoryEvidence": "İşletmeci menüsü: Kruton alakart (çorba, salata, soğuk/sıcak başlangıç, ev yapımı makarna) + kahvaltı; Oggusto: akşam bistro"
+    }
+  ],
+  "holds": [
+    "zula-emaar-uskudar",
+    "il-gattopardo-galataport-beyoglu",
+    "burger-yiyelim-sancaktepe-bagcilar"
+  ],
+  "scopeNotes": [
+    "Çekmeköy ilçe düzeyinde: iki mahalle adı ve eski ad dışarıda.",
+    "Kruvasan İstanbul yalnız bir satır; ek adlar ve ayrı servis kayıtları kamu kataloğuna aktarılmadı.",
+    "İnönü metro Sancaktepe eski adres çelişkisi ayrı; mevcut satır değiştirilmedi."
+  ]
+}

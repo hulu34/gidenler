@@ -1,0 +1,58 @@
+{
+  "status": "local_uncommitted_candidate",
+  "baseCommit": "a7a13e2bcd432e68e2211c3d7a51158446099455",
+  "priorLocal": 920,
+  "priorLocalDigest": {
+    "data/real/isletme.json": "5a810245f0c0713c0492fa11893ad2a5e6a7cde09915a55d58131531c7051193",
+    "data/real/presentation.json": "911536a69f1c9c2be2b2315170e46a9db7a56175ca790b20fe7d9de96e79124d",
+    "data/real/sor-index.json": "fbeb00d122a97ddf4db39611de89af91502cfec3feed5ecf3911e0e30a065dcc"
+  },
+  "localAdded": 1,
+  "productionAdded": 0,
+  "previewAdded": 0,
+  "verifiedAt": "2026-11-24",
+  "expected": {
+    "total": 921,
+    "active": 886,
+    "activeRestaurants": 761
+  },
+  "sources": [
+    {
+      "slug": "il-gattopardo-galataport-beyoglu",
+      "officialSource": "https://gattopardo.restaurant/location/istanbul/",
+      "officialMenu": "https://gattopardo.restaurant/wp-content/uploads/2026/11/Il-Gattopardo-Istanbul-A-La-Carte-Menu-EN-1.pdf",
+      "activitySource": "https://www.wonderlandmagazine.com/2026/11/18/lets-go-shopping-in-istanbul/",
+      "activityEvidenceType": "independent_firsthand_service",
+      "activityPublicationDate": "2026-11-18",
+      "exactVisitDate": null,
+      "activityNote": "Yazar Galataport COMMUNITÉ içindeki şubede öğle yemeği ve tatlı servisini kendi deneyimi olarak aktarıyor. Yayın tarihi ziyaret tarihi olarak kullanılmadı.",
+      "corroboration": {
+        "url": "https://www.trendsetteristanbul.com/il-gattopardo-istanbul-acildi/",
+        "publicationDate": "2026-11-02",
+        "reportedServingSince": "2026-10-21",
+        "claim": "Mekânın 21 Ekim'den beri konuk ağırladığı aktarılır; yazarın ziyaret tarihi olarak kullanılmadı."
+      },
+      "identityRegistry": {
+        "url": "https://www.ito.org.tr/documents/Qr_Code/111126.pdf#page=14",
+        "registrationListFrom": "2026-11-05",
+        "registrationListThrough": "2026-11-11",
+        "claim": "Şube tescili ve adres eşleşmesi; açılış veya yemek tarihi değildir."
+      },
+      "scope": "indoor_dining_room_only",
+      "terraceExcluded": true,
+      "entrancePinVerified": false
+    }
+  ],
+  "priorHoldResolution": {
+    "slug": "il-gattopardo-galataport-beyoglu",
+    "priorDocs": [
+      "docs/katalog/katalog-915.json",
+      "docs/katalog/katalog-920.json"
+    ],
+    "reason": "Önceki eksik olan bağımsız fiilî servis kanıtı Wonderland ile karşılandı; eski manifest ve dosyaları değiştirilmedi."
+  },
+  "holds": [
+    "zula-emaar-uskudar",
+    "burger-yiyelim-sancaktepe-bagcilar"
+  ]
+}

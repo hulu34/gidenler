@@ -1,0 +1,108 @@
+[
+  {
+    "ref": "isletme/ibb-silivri-kent-lokantasi-silivri",
+    "slug": "ibb-silivri-kent-lokantasi-silivri",
+    "name": "İBB Silivri Kent Lokantası",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Silivri",
+    "address": "Alibey Mahallesi, Mehmet Silivrili Caddesi No:23/B, Silivri",
+    "website": "https://tesislerimiz.ibb.istanbul/tesis/silivri-kent-lokantasi",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://tesislerimiz.ibb.istanbul/tesis/silivri-kent-lokantasi",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-23",
+    "verifiedAt": "2026-11-23",
+    "confidence": "güçlü",
+    "verification": "İBB tesis sayfası şube ve adresi doğrular. Silivri Belediyesi 3 Mart 2026 tarihli servis buluşmasını, 5 Eylül tarihli yerel rehber şubeyi hizmet verenler arasında bildirir.",
+    "wave": 29,
+    "neighborhood": "Alibey",
+    "cuisine": [
+      "turkish"
+    ]
+  },
+  {
+    "ref": "isletme/ibb-cekmekoy-kent-lokantasi-cekmekoy",
+    "slug": "ibb-cekmekoy-kent-lokantasi-cekmekoy",
+    "name": "İBB Çekmeköy Kent Lokantası",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Çekmeköy",
+    "address": "Turgut Özal Cd. No:94, Çekmeköy",
+    "website": "https://tesislerimiz.ibb.istanbul/tesis/cekmekoy-kent-lokantasi",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://tesislerimiz.ibb.istanbul/tesis/cekmekoy-kent-lokantasi",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-23",
+    "verifiedAt": "2026-11-23",
+    "confidence": "güçlü",
+    "verification": "İBB, ilçe belediyesi ve yerel rehber şube, cadde ve kapıda birleşir; mahalle adı uyuşmadığı için eklenmedi. İlçe belediyesinin 3 Nisan açılış haberi ile 5 Eylül tarihli hizmet rehberi faaliyet dayanaklarıdır.",
+    "wave": 29,
+    "cuisine": [
+      "turkish"
+    ]
+  },
+  {
+    "ref": "isletme/ibb-sarigazi-kent-lokantasi-sancaktepe",
+    "slug": "ibb-sarigazi-kent-lokantasi-sancaktepe",
+    "name": "İBB Sarıgazi Kent Lokantası",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Sancaktepe",
+    "address": "Emek Mahallesi, Namık Kemal Caddesi No:77, Sancaktepe",
+    "website": "https://tesislerimiz.ibb.istanbul/tesis/sarigazi-kent-lokantasi",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://tesislerimiz.ibb.istanbul/tesis/sarigazi-kent-lokantasi",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-23",
+    "verifiedAt": "2026-11-23",
+    "confidence": "güçlü",
+    "verification": "İBB tesis sayfası Emek şubesi ve adresi, DHA 19 Haziran açılışı ve 5 Eylül tarihli yerel rehber faaliyeti destekler. İBB kapı bilgisi temel alındı. İnönü metro şubesi ayrıdır.",
+    "wave": 29,
+    "neighborhood": "Emek",
+    "cuisine": [
+      "turkish"
+    ]
+  },
+  {
+    "ref": "isletme/gunaydin-etiler-besiktas",
+    "slug": "gunaydin-etiler-besiktas",
+    "name": "Günaydın Etiler",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Beşiktaş",
+    "address": "Etiler Mahallesi, Seheryıldızı Sokak No:6, Beşiktaş",
+    "website": "https://gunaydinet.com/kebap-steakhouse/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://gunaydinet.com/kebap-steakhouse/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-23",
+    "verifiedAt": "2026-11-23",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin şube dizini Etiler işletmesini, 17 Eylül tarihli yemek.com yazısı ve Gault&Millau şube adresini doğrular. Yemek türü kebap menüsüne dayanır; dizindeki başka şubeye giden konum bağlantısı kullanılmadı.",
+    "wave": 29,
+    "neighborhood": "Etiler",
+    "cuisine": [
+      "turkish",
+      "kebab"
+    ]
+  },
+  {
+    "ref": "isletme/kruvasan-istanbul-sisli",
+    "slug": "kruvasan-istanbul-sisli",
+    "name": "Kruvasan İstanbul",
+    "categoryId": "cat.restaurant",
+    "kind": "Modern mutfak",
+    "district": "Şişli",
+    "address": "Mim Kemal Öke Caddesi No:11, Şişli",
+    "website": "https://kruvasan.com.tr/sik-sorulanlar",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://kruvasan.com.tr/sik-sorulanlar",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-23",
+    "verifiedAt": "2026-11-23",
+    "confidence": "güçlü",
+    "verification": "İşletmeci tek adres ve tek hizmet işletmesi olduğunu doğrular. Oggusto yazısı aynı işletmedeki akşam konseptini anlatır; işletmecinin menüsü ve saatleri destekler. Rehber güncelleme tarihi bir ziyaret tarihi değildir.",
+    "wave": 29
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "ref": "isletme/durumle-marmara-park-esenyurt",
+    "slug": "durumle-marmara-park-esenyurt",
+    "name": "Dürümle Marmara Park",
+    "categoryId": "cat.restaurant",
+    "kind": "Dönerci",
+    "district": "Esenyurt",
+    "neighborhood": "Mevlana",
+    "address": "Mevlana Mahallesi, Çelebi Mehmet Caddesi, Marmarapark AVM A Blok No:33 A/549, Esenyurt",
+    "website": "https://www.durumle.com/subeler/istanbul/esenyurt",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.durumle.com/subeler/istanbul/esenyurt",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-23",
+    "verifiedAt": "2026-11-23",
+    "confidence": "güçlü",
+    "verification": "Şube adresi işletmeci listesi ve AVM diziniyle eşleşir. 15 Ekim tarihli bağımsız kayıt aynı şubedeki faaliyeti gösterir. Resmî menü döner dürümlerini doğrular.",
+    "wave": 28,
+    "cuisine": [
+      "doner"
+    ]
+  },
+  {
+    "ref": "isletme/perran-ocakbasi-macka-besiktas",
+    "slug": "perran-ocakbasi-macka-besiktas",
+    "name": "Perran Ocakbaşı Maçka",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Beşiktaş",
+    "neighborhood": "Vişnezade",
+    "address": "Vişnezade Mahallesi, Bayıldım Caddesi No:12, Hilton DoubleTree Roof Kat:7, Beşiktaş",
+    "website": "https://www.perranocakbasi.com.tr/tr/subelerimiz/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.perranocakbasi.com.tr/tr/subelerimiz/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-23",
+    "verifiedAt": "2026-11-23",
+    "confidence": "güçlü",
+    "verification": "İşletmeci Maçka şubesini DoubleTree çatı katında listeler; 16 Kasım tarihli haber aynı şubenin açıldığını bildirir. Kalamış farklı şubedir.",
+    "wave": 28,
+    "cuisine": [
+      "turkish",
+      "kebab"
+    ]
+  },
+  {
+    "ref": "isletme/bigchefs-mrf-cadde-pendik",
+    "slug": "bigchefs-mrf-cadde-pendik",
+    "name": "BigChefs MRF Cadde",
+    "categoryId": "cat.restaurant",
+    "kind": "Dünya mutfağı",
+    "district": "Pendik",
+    "neighborhood": "Yenişehir",
+    "address": "Yenişehir Mahallesi, Osmanlı Bulvarı No:1 D:3K, Pendik",
+    "website": "https://bigchefs.com.tr/subeler/bigchefs-mrf-cadde/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://bigchefs.com.tr/subeler/bigchefs-mrf-cadde/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-23",
+    "verifiedAt": "2026-11-23",
+    "confidence": "güçlü",
+    "verification": "İşletmeci MRF Cadde şubesinin adresini ve saatlerini listeler; 13 Kasım tarihli haber aynı şubenin açıldığını bildirir. Lens farklı şubedir. Tür, markanın genel menüsüne dayanır; şubeye özgü menü doğrulanmadı.",
+    "wave": 28
+  }
+]

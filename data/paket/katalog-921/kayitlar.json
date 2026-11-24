@@ -1,0 +1,24 @@
+[
+  {
+    "ref": "isletme/il-gattopardo-galataport-beyoglu",
+    "slug": "il-gattopardo-galataport-beyoglu",
+    "name": "Il Gattopardo",
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan",
+    "district": "Beyoğlu",
+    "neighborhood": "Kılıçali Paşa",
+    "address": "Kılıçali Paşa Mahallesi, Meclis-i Mebusan Caddesi, COMMUNITÉ Galataport, G Blok No:14B, Beyoğlu",
+    "website": "https://gattopardo.restaurant/location/istanbul/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://gattopardo.restaurant/location/istanbul/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-24",
+    "verifiedAt": "2026-11-24",
+    "confidence": "güçlü",
+    "verification": "İşletmeci ve İTO aynı Galataport şube adresini doğrular. Wonderland'ın 18 Kasım 2026 tarihli yazısı aynı şubede fiilî öğle servisini birinci elden anlatır; yemeğin kesin tarihi verilmez. Şube menüsü İtalyan mutfağını doğrular. Yalnız kapalı restoran salonu değerlendirilmiştir; giriş noktası doğrulanmamıştır.",
+    "wave": 30,
+    "cuisine": [
+      "italian"
+    ]
+  }
+]
