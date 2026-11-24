@@ -1,0 +1,684 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "99a2b463f36b6207c5d6176f28a3324c98d4d1d2",
+  "sourceDelivery": {
+    "createdAt": "2026-11-24",
+    "status": "YEREL_TESLIM_YAYIN_YOK",
+    "scope": "24 Kasım tek araştırma teslimi; yeni seri araştırma yok"
+  },
+  "prior": {
+    "total": 921,
+    "active": 886,
+    "activeRestaurants": 761
+  },
+  "priorDigest": {
+    "data/real/isletme.json": "382714b5d2083deba66d1ff118f9d226087b0dd3c9276d43705513a47772488b",
+    "data/real/presentation.json": "a49522f40faa261f0f989ef2fe9e970875d6181622dd59d2428dbd54c90faa66",
+    "data/real/sor-index.json": "c5957243221305ee91af434b9acb3aa9dcec3c9ea06440330947d359ea70ba22"
+  },
+  "localAdded": 26,
+  "productionAdded": 0,
+  "previewAdded": 0,
+  "expected": {
+    "total": 947,
+    "active": 912,
+    "activeRestaurants": 787,
+    "activeCafes": 114,
+    "activeBars": 11,
+    "inactive": 35
+  },
+  "groups": {
+    "Adile Sultan Ev Yemekleri": 14,
+    "Dürümle": 12
+  },
+  "rules": {
+    "coordinatesAdded": false,
+    "avmCenterUsedAsRestaurantPin": false,
+    "googleDataUsed": false,
+    "newResearchStarted": false
+  },
+  "sources": [
+    {
+      "slug": "adile-sultan-ev-yemekleri-alibeykoy-eyupsultan",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Alibeyköy",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/alibeykoy/",
+      "officialDate": "2026-10-25",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-eyup-karadolap-mah-st-2ba0b",
+      "independentDate": "2026-11-06",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-basaksehir-basaksehir",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Başakşehir",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/basaksehir/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-basaksehir-ziya-gokalp-mah-st-201f3",
+      "independentDate": "2026-11-02",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "huqqabaz-mall-of-istanbul-basaksehir",
+          "Süleyman Demirel Bulvarı, Ziya Gökalp Mah., Başakşehir"
+        ]
+      ],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-bayrampasa-bayrampasa",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Bayrampaşa",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/bayrampasa/",
+      "officialDate": "2026-08-17",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-bayrampasa-kocatepe-mah-st-1e001",
+      "independentDate": "2026-11-03",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "cookshop-bayrampasa",
+          "Şehir Parkı Caddesi No:111, Kocatepe Mahallesi, Bayrampaşa"
+        ],
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "lunchbox-bayrampasa",
+          "Şehir Parkı Caddesi No:111, Kocatepe Mahallesi, Bayrampaşa"
+        ]
+      ],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-beylikduzu-beylikduzu",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Beylikdüzü",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/beylikduzu/",
+      "officialDate": "2026-08-17",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-beylikduzu-adnan-kahveci-mah-st-1b5f0",
+      "independentDate": "2026-10-15",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-esenyurt-cumhuriyet-esenyurt",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Esenyurt-Cumhuriyet",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/esenyurt-cumhuriyet/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-esenyurt-piri-reis-mah-necip-fazil-kisakurek-cad-st-31d65",
+      "independentDate": "2026-11-20",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-kagithane-kagithane",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Kağıthane",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/kagithane/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-kagithane-merkez-mah-st-1b61f",
+      "independentDate": "2026-11-13",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-kartal-cavusoglu-kartal",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Kartal-Çavuşoğlu",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/kartal-cavusoglu/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-kartal-cavusoglu-mah-st-1c32f",
+      "independentDate": "2026-11-21",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-kucukcekmece-tevfikbey-kucukcekmece",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Küçükçekmece-Tevfikbey",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/kucukcekmece-tevfikbey/",
+      "officialDate": "2026-08-25",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-kucukcekmece-tevfikbey-mah-st-2c85c",
+      "independentDate": "2026-11-06",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-mimaroba-buyukcekmece",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Mimaroba",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/mimaroba/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-buyukcekmece-mimaroba-mah-st-201f2",
+      "independentDate": "2026-11-12",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-sancaktepe-abdurrahmangazi-sancaktepe",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Sancaktepe-Abdurrahmangazi",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/sancaktepe-abdurrahmangazi/",
+      "officialDate": "2026-10-25",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-sancaktepe-abdurrahmangazi-mah-st-29f3d",
+      "independentDate": "2026-11-04",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-sefakoy-kucukcekmece",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Sefaköy",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/sefakoy/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-kucukcekmece-yesilova-mah-st-1c32e",
+      "independentDate": "2026-11-12",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-tekstilkent-esenler",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Tekstilkent",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/tekstilkent/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-esenler-oruc-reis-mah-st-2c9a6",
+      "independentDate": "2026-11-11",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-umraniye-site-umraniye",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Ümraniye-Site",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/umraniye-site/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-umraniye-site-mah-st-2da99",
+      "independentDate": "2026-11-02",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [
+        [
+          "AYNI_MARKA_AYNI_ILCE",
+          "adile-sultan-ev-yemekleri-umraniye-restorani-umraniye",
+          "Gelibolu Caddesi No:5A, Atakent, Ümraniye"
+        ]
+      ],
+      "reviewNotes": [
+        {
+          "slug": "adile-sultan-ev-yemekleri-umraniye-site-umraniye",
+          "tur": "mukerrer",
+          "neden": "Aynı ilçede katalogda adile-sultan-ev-yemekleri-umraniye-restorani-umraniye var (Atakent Mah., Gelibolu Cad. No:5A, aktif). Aday ise Site Mah., Atay Cad. No:90-92A. Resmî sitede iki ayrı şube sayfası var (/sube/umraniye/ = Gelibolu Cad., /sube/umraniye-site/ = Atay Cad.). Ayrı şube, mükerrer değil. Yalnız not olarak kalsın.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-zeytinburnu-zeytinburnu",
+      "brand": "Adile Sultan Ev Yemekleri",
+      "branch": "Zeytinburnu",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/zeytinburnu/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-zeytinburnu-cirpici-mah-st-1b607",
+      "independentDate": "2026-11-23",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Lokanta",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "durumle-hilltown-avm-maltepe",
+      "brand": "Dürümle",
+      "branch": "Hilltown AVM",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-maltepe-aydinevler-mah-st-200ab",
+      "independentDate": "2026-10-22",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "white-burger-hilltown-maltepe",
+          "Siteleryolu Sokak No:1 İç Kapı No:236, Aydınevler (Hilltown Küçükyalı AVM), Maltepe"
+        ]
+      ],
+      "reviewNotes": [
+        {
+          "slug": "durumle-hilltown-avm-maltepe",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: istanbul-7 inceleme listesinde OSM node/12441420570 'Dürümle Maltepe' var (sokak adresi yok, OSM kontrol tarihi 2025-04-29). Maltepe'de resmî dört şube var (Piazza, Hilltown, MaltepePark, Mesa Cadde). Katalogda yok, mükerrer değil. OSM noktasıyla eşleştirmeden önce konum karşılaştırılmalı.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-capitol-avm-uskudar",
+      "brand": "Dürümle",
+      "branch": "Capitol AVM",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-uskudar-altunizade-mah-st-1e1c1",
+      "independentDate": "2026-10-20",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": [
+        {
+          "slug": "durumle-capitol-avm-uskudar",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: istanbul-27 inceleme listesinde 'Dürümle Üsküdar' B kaydı var (gersId 4f000487…, adres doğrulanmamış). Üsküdar'da resmî üç şube var (Capitol, Emaar, Nev Çarşı), hangisi olduğu belli değil. Katalogda yok, mükerrer değil.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-atlaspark-avm-sultanbeyli",
+      "brand": "Dürümle",
+      "branch": "Atlaspark AVM",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-sultanbeyli-abdulrahmangazi-mah-st-24f05",
+      "independentDate": "2026-10-24",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "durumle-demir-country-avm-beylikduzu",
+      "brand": "Dürümle",
+      "branch": "Demir Country AVM",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-beylikduzu-kavakli-mah-st-200b8",
+      "independentDate": "2026-11-07",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "durumle-istmarina-avm-kartal",
+      "brand": "Dürümle",
+      "branch": "İstmarina AVM",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-kartal-kordon-boyu-mah-st-200b0",
+      "independentDate": "2026-10-30",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "burger-yiyelim-kordonboyu-kartal",
+          "Kordonboyu Mahallesi Ankara Caddesi No:42 Kartal"
+        ]
+      ],
+      "reviewNotes": []
+    },
+    {
+      "slug": "durumle-perlavista-avm-beylikduzu",
+      "brand": "Dürümle",
+      "branch": "Perlavista AVM",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-beylikduzu-adnan-kahveci-mah-st-24edb",
+      "independentDate": "2026-11-14",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "durumle-baglarbasi-cadde-gaziosmanpasa",
+      "brand": "Dürümle",
+      "branch": "Bağlarbaşi Cadde",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-gaziosmanpasa-baglarbasi-mah-st-23330",
+      "independentDate": "2026-11-21",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": [
+        {
+          "slug": "durumle-baglarbasi-cadde-gaziosmanpasa",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: gece-2000 dalında istanbul-23 (gersId 46d8d065…) ve istanbul-27 (gersId 59f7eeab…) inceleme listelerinde iki ayrı 'Dürümle Gaziosmanpaşa' B kaydı var, ikisinin de adresi doğrulanmamış. Resmî listede GOP'ta iki şube var (Venezia AVM ve Bağlarbaşı Cadde), biri bu aday olabilir. Kataloğa girmemiş, mükerrer sayılmaz. Birleştirmede aynı gersId ikinci kez eklenmesin.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-metropol-avm-atasehir",
+      "brand": "Dürümle",
+      "branch": "Metropol AVM",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-atasehir-ataturk-mah-st-24f7b",
+      "independentDate": "2026-10-19",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": [
+        {
+          "slug": "durumle-metropol-avm-atasehir",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: istanbul-7 ret listesinde OSM node/13073825102 'Dürümle Ataşehir' var (ret nedeni: fast_food türü belirsiz). Ataşehir'de resmî iki şube var (Optimum, Metropol). Katalogda yok, mükerrer değil. Önceki ret gerekçesi tür sorusu olduğu için kategori kararı tutarlı olmalı.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-zorlu-center-besiktas",
+      "brand": "Dürümle",
+      "branch": "Zorlu Center",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-besiktas-levazim-mah-st-282ab",
+      "independentDate": "2026-10-06",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "sakhalin-istanbul-besiktas",
+          "Koru Sokak No:2, Levazım Mahallesi Zorlu Center, Beşiktaş"
+        ],
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "terrazza-italia-besiktas",
+          "Koru Sokak No:2, Zorlu Center, Levazım Mahallesi, Beşiktaş"
+        ],
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "isokyo-besiktas",
+          "Vadi Caddesi No:2, Levazım (Zorlu Center, Raffles Istanbul), Beşiktaş"
+        ],
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "bardot-besiktas",
+          "Vadi Caddesi No:2/208, Levazım (Zorlu Center, Beymen), Beşiktaş"
+        ],
+        [
+          "AYNI_ADRES_FARKLI_MARKA",
+          "parle-zorlu-besiktas",
+          "Levazım Mahallesi, Vadi Caddesi No:2, Zorlu Center AVM Meydan Katı, Beşiktaş"
+        ]
+      ],
+      "reviewNotes": []
+    },
+    {
+      "slug": "durumle-besiktas-ihlamurdere-cadde-besiktas",
+      "brand": "Dürümle",
+      "branch": "Beşiktaş Ihlamurdere Cadde",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-besiktas-sinanpasa-mah-ihlamurdere-st-2af79",
+      "independentDate": "2026-09-23",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": []
+    },
+    {
+      "slug": "durumle-akyaka-park-avm-umraniye",
+      "brand": "Dürümle",
+      "branch": "Akyaka Park AVM",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-umraniye-inkilap-mah-st-2f2c0",
+      "independentDate": "2026-09-03",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": [
+        {
+          "slug": "durumle-akyaka-park-avm-umraniye",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: istanbul-7 ret listesinde OSM node/12055675517 'Dürümle Ümraniye' var (ret nedeni: fast_food türü belirsiz). Ümraniye'de resmî altı şube var, hangisi olduğu belli değil. Katalogda yok, mükerrer değil.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-kartal-ugur-mumcu-cadde-kartal",
+      "brand": "Dürümle",
+      "branch": "Kartal Uğur Mumcu Cadde",
+      "officialSource": "https://www.durumle.com/subeler/istanbul",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-24)",
+      "independentSource": "https://www.migros.com.tr/yemek/durumle-kartal-ugur-mumcu-mah-st-32cb5",
+      "independentDate": "2026-10-03",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-24",
+      "kind": "Dönerci",
+      "dedupNotes": [],
+      "reviewNotes": []
+    }
+  ],
+  "priorUnpublishedReviewMatches": [
+    {
+      "slug": "durumle-hilltown-avm-maltepe",
+      "notes": [
+        {
+          "slug": "durumle-hilltown-avm-maltepe",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: istanbul-7 inceleme listesinde OSM node/12441420570 'Dürümle Maltepe' var (sokak adresi yok, OSM kontrol tarihi 2025-04-29). Maltepe'de resmî dört şube var (Piazza, Hilltown, MaltepePark, Mesa Cadde). Katalogda yok, mükerrer değil. OSM noktasıyla eşleştirmeden önce konum karşılaştırılmalı.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-capitol-avm-uskudar",
+      "notes": [
+        {
+          "slug": "durumle-capitol-avm-uskudar",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: istanbul-27 inceleme listesinde 'Dürümle Üsküdar' B kaydı var (gersId 4f000487…, adres doğrulanmamış). Üsküdar'da resmî üç şube var (Capitol, Emaar, Nev Çarşı), hangisi olduğu belli değil. Katalogda yok, mükerrer değil.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-baglarbasi-cadde-gaziosmanpasa",
+      "notes": [
+        {
+          "slug": "durumle-baglarbasi-cadde-gaziosmanpasa",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: gece-2000 dalında istanbul-23 (gersId 46d8d065…) ve istanbul-27 (gersId 59f7eeab…) inceleme listelerinde iki ayrı 'Dürümle Gaziosmanpaşa' B kaydı var, ikisinin de adresi doğrulanmamış. Resmî listede GOP'ta iki şube var (Venezia AVM ve Bağlarbaşı Cadde), biri bu aday olabilir. Kataloğa girmemiş, mükerrer sayılmaz. Birleştirmede aynı gersId ikinci kez eklenmesin.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-metropol-avm-atasehir",
+      "notes": [
+        {
+          "slug": "durumle-metropol-avm-atasehir",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: istanbul-7 ret listesinde OSM node/13073825102 'Dürümle Ataşehir' var (ret nedeni: fast_food türü belirsiz). Ataşehir'de resmî iki şube var (Optimum, Metropol). Katalogda yok, mükerrer değil. Önceki ret gerekçesi tür sorusu olduğu için kategori kararı tutarlı olmalı.",
+          "oneri": "not_dus"
+        }
+      ]
+    },
+    {
+      "slug": "durumle-akyaka-park-avm-umraniye",
+      "notes": [
+        {
+          "slug": "durumle-akyaka-park-avm-umraniye",
+          "tur": "mukerrer",
+          "neden": "Önceki inceleme eşleşmesi: istanbul-7 ret listesinde OSM node/12055675517 'Dürümle Ümraniye' var (ret nedeni: fast_food türü belirsiz). Ümraniye'de resmî altı şube var, hangisi olduğu belli değil. Katalogda yok, mükerrer değil.",
+          "oneri": "not_dus"
+        }
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "adile-sultan-ev-yemekleri-tuzla-postane-tuzla",
+      "name": "Adile Sultan Ev Yemekleri Tuzla-Postane",
+      "reason": "Resmî sayfadaki Postane restoran metni ile Tuzla-Yayla paket servis başlığı/şeması ve bağımsız URL kimliği çelişiyor; güncel adres ve oturmalı restoran hizmeti bağımsız doğrulanamadı.",
+      "decision": "HOLD"
+    }
+  ],
+  "existingHolds": [
+    {
+      "ad": "Adile Sultan Ev Yemekleri Halkalı",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "İşletmecinin bağladığı Migros sayfası 404.",
+      "kaynak": "https://adilesultanevyemekleri.com/sube/halkali/"
+    },
+    {
+      "ad": "Adile Sultan Ev Yemekleri Bahçelievler",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Şube sayfasında platform bağlantısı yok; tarihli bağımsız kaynak bulunamadı.",
+      "kaynak": "https://adilesultanevyemekleri.com/sube/bahcelievler/"
+    },
+    {
+      "ad": "Adile Sultan Ev Yemekleri Mahmutbey",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Aynı.",
+      "kaynak": "https://adilesultanevyemekleri.com/sube/mahmutbey-bagcilar/"
+    },
+    {
+      "ad": "Adile Sultan Ev Yemekleri Sultan Selim",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Aynı.",
+      "kaynak": "https://adilesultanevyemekleri.com/sube/sultan-selim-kagithane/"
+    },
+    {
+      "ad": "Adile Sultan Ev Yemekleri Tuzla-Aydınlı",
+      "durum": "BEKLIYOR_RESTORAN_ADRESI",
+      "neden": "Şube sayfasında 'Restoranda yemek için' adresi yok.",
+      "kaynak": "https://adilesultanevyemekleri.com/sube/tuzla-aydinli/"
+    },
+    {
+      "ad": "Adile Sultan Ev Yemekleri Üsküdar-Mimar Sinan",
+      "durum": "BEKLIYOR_MUKERRER_SUPHESI",
+      "neden": "Canlıdaki adressiz adile-sultan-ev-yemekleri-uskudar kaydının hangi şube olduğu belirsiz.",
+      "kaynak": "https://adilesultanevyemekleri.com/sube/uskudar-mimar-sinan/"
+    },
+    {
+      "ad": "Adile Sultan: Bağlar, Cevizlibağ",
+      "durum": "BEKLIYOR_HIZMET_TURU",
+      "neden": "Resmî dizinde hizmet türü yazılı değil."
+    },
+    {
+      "ad": "Adile Sultan: kalan ~30 Restoran şubesi (Acıbadem, Altayçeşme, Altunizade, Ataşehir-Örnek, Batı Ataşehir, Dudullu, Fikirtepe, Göztepe, İçerenköy, Kadıköy, Kavacık, Kozyatağı, Küçükyalı, Kurtköy, Libadiye, Maltepe-Cevizli, Pendik ×2, Şerifali, Suadiye, Zümrütevler, Ataköy, Bakırköy, Balat, Beşiktaş, Beyoğlu, Fındıkzade, Levent, Maslak, Mecidiyeköy, Mimaroba dışı Avrupa, Nişantaşı, Ortaköy, Şişli ×2, Halkalı hariç)",
+      "durum": "SONRAKI_DILIM",
+      "neden": "Bu turda seyrek ilçeler öncelendi; şube sayfaları okunmadı."
+    },
+    {
+      "ad": "Dürümle Vadi İstanbul AVM (Sarıyer)",
+      "durum": "BEKLIYOR_TAZELIK",
+      "neden": "Migros son değerlendirme 12.02.2026 (>90 gün)."
+    },
+    {
+      "ad": "Dürümle Emaar AVM (Üsküdar)",
+      "durum": "BEKLIYOR_TAZELIK",
+      "neden": "Migros son değerlendirme 10.02.2026 (>90 gün)."
+    },
+    {
+      "ad": "Dürümle Viaport Kurtköy / Kurtköy Lens; Capacity / Airport; Canpark / Limonlubahçe; Aqua Florya / Flyinn / Koru Florya",
+      "durum": "BEKLIYOR_SUBE_KARISIK",
+      "neden": "Aynı mahallede birden çok resmî şube, tek Migros sayfası (9 şube)."
+    },
+    {
+      "ad": "Dürümle: Migros sayfası aramada çıkmayan 62 şube",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Resmî adres var; aynı şubenin tarihli bağımsız kaynağı bulunmadı."
+    },
+    {
+      "ad": "Bereket Döner (77 İstanbul şubesi)",
+      "durum": "BEKLIYOR_RESMI_ADRES",
+      "neden": "Resmî adresler belgelenmemiş JS uç noktasından yükleniyor; erişilmedi. 03.11.2026 blogu yalnız ilçe+şube adı veriyor."
+    },
+    "zula-emaar-uskudar (HOLD)",
+    "burger-yiyelim-sancaktepe-bagcilar (tadilat HOLD)",
+    "Clove İstinyePark (eski bekleyenle aynı, faaliyet eksik)",
+    "Da Mario İstinyePark, Ranchero Kanyon, Zula Kanyon, Zula Zorlu (tarihli faaliyet eksik)",
+    "Burger Yiyelim Lens/Terasium/Kayaşehir (kimlik HOLD)",
+    "Mama Bowl Moda (taşınma kararı)"
+  ],
+  "scopeNotes": [
+    "Ümraniye-Site, katalogdaki Ümraniye-Atakent şubesinden ayrı adrestedir; mevcut kayıt korunur.",
+    "Dürümle için beş eski yayımlanmamış inceleme eşleşmesi katalog kaydı sayılmadı; kaynak kimliği üretmeden şube tekilliği korundu.",
+    "AVM adlı kayıtların hiçbirine lat/lng/location/OSM kimliği eklenmedi; AVM merkezi restoran pini değildir."
+  ]
+}
