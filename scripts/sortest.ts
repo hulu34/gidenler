@@ -84,7 +84,9 @@ async function main() {
     const good = !!chk(r);
     ok(`${q} · ${what}`, good, r.items.map((i) => `${i.name}/${i.kind}/${i.district}`));
     ok(`${q}: yalnız kayıtlı mekân, profil bağlantısı doğru`, r.items.every((i) => SLUGS.has(i.slug) && i.href === `/mekan/${i.slug}/` && by(i.slug).name === i.name));
-    ok(`${q}: 5'ten fazla öneri yok, puan uydurulmaz`, r.items.length <= 5 && !has(r, /\/10|yıldız/));
+    // Adreslerdeki kapı numaralarını (ör. 1/103) öneri metnindeki puanla karıştırma.
+    const generatedCopy = [r.note, r.question, r.altLabel, ...[...r.items, ...r.alternatives].flatMap((item) => [...item.why, ...item.caveats])];
+    ok(`${q}: 5'ten fazla öneri yok, puan uydurulmaz`, r.items.length <= 5 && generatedCopy.every((line) => !/\/10|yıldız/.test(line ?? "")));
     ok(`${q}: model yoksa açıkça söylenir`, r.mode === "veri" && r.reason === "not_configured");
     rows.push(`${good ? "GEÇTİ" : "KALDI"} | ${q} | ${r.items.slice(0, 3).map((i) => `${i.name} (${i.kind}, ${i.district})`).join("; ") || "-"} | ${r.items[0]?.why[0] ?? r.relaxed ?? r.note ?? ""}`);
   }
