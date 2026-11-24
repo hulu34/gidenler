@@ -1,0 +1,326 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "9d6b0c1e3feede9faef29a45b307fc8077d4aacc",
+  "sourceDelivery": {
+    "path": "teslim-25kasim-dilim3/manifest.json",
+    "sha256": "fa017d05449a2662fe54604736f3aaa8c94349866ef59074f3a85358d456a90c"
+  },
+  "prior": {
+    "total": 997,
+    "active": 962,
+    "activeRestaurants": 837
+  },
+  "expected": {
+    "total": 1004,
+    "active": 969,
+    "activeRestaurants": 844
+  },
+  "localAdded": 7,
+  "productionAdded": 0,
+  "decisions": {
+    "acibadem": {
+      "slug": "hacibasar-kebap-baklava-acibadem-kadikoy",
+      "evidence": "İşletmeci Acıbadem Caddesi No:67/A'yı verir, ilçe belirtmez. Ödeme ağının kendi üye işyeri listesi aynı işletmeci, şube ve No:67/A için Acıbadem Mahallesi / Kadıköy yazar; Migros şube etiketiyle uyumlu.",
+      "merchantDirectory": "https://metropolcard.com/uye-isyerleri/"
+    },
+    "kaleCenter": {
+      "slug": "bursa-kebap-evi-kale-center-avm-gungoren",
+      "neighborhood": "Güven",
+      "evidence": "Bursa Kebap Evi aynı AVM'yi Eski Londra Asfaltı 89-91/320 olarak listeler. AVM işletmecisi ve Usta Dönerci, Güngören Kale AVM'yi aynı cadde ve 89 numarada Güven Mahallesi olarak verir. 320 Bursa Kebap Evi iç kapı numarasıdır; yalnız mahalle düzeltildi.",
+      "branch": "https://www.bursakebapevi.com/restoranlar/",
+      "mall": "https://kalecenter.com.tr/tr/contact",
+      "otherTenant": "https://www.ustadonerci.com/tr/restoranlar/istanbul-avrupa/gungoren/istanbul-avrupa-gungoren-kale-avm/"
+    },
+    "olivium": "HD İskender beklemede. Ek Beştelsiz kaydı Telsiz ile çelişkiyi çözmez."
+  },
+  "sources": [
+    {
+      "isletmeci": "Usta Dönerci",
+      "sube": "Starcity AVM",
+      "name": "Usta Dönerci Starcity AVM",
+      "slugOneri": "usta-donerci-starcity-avm-bahcelievler",
+      "district": "Bahçelievler",
+      "neighborhood": "Yenibosna Merkez",
+      "address": "Yenibosna Merkez Mah. Değirmenbahçe Cad. No:34/1, Starcity Outlet AVM Kat:2 No:102",
+      "categoryId": "cat.restaurant",
+      "kind": "Dönerci",
+      "turDayanagi": "İşletmecinin ilçe bazlı 'Restoranlar' sayfası (TAB Gıda); 997 tabanındaki Usta Dönerci Beşiktaş ile aynı tür",
+      "officialSource": "https://www.ustadonerci.com/tr/restoranlar/istanbul-avrupa/bahcelievler/",
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/usta-donerci-bahcelievler-yenibosna-merkez-mah-st-1b4a5",
+      "independentSourceNote": "Platform şube sayfası; URL ilçe+mahallesi resmî adresle eşleşiyor, o mahallede aynı işletmecinin ikinci resmî şubesi yok.",
+      "independentDate": "2026-11-16",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "not": "Bahçelievler'deki diğer resmî şube Metroport AVM (Bahçelievler Mah.); onun Migros sayfasının son değerlendirmesi 14.10.2025 (bekliyor).",
+      "checkedAt": "2026-11-25",
+      "location": "KOORDINAT_YOK",
+      "decision": "KABUL_ADAYI_YAYIN_DEGIL",
+      "dedup": [],
+      "dedupNot": "Çakışma yok."
+    },
+    {
+      "isletmeci": "Usta Dönerci",
+      "sube": "Capacity AVM",
+      "name": "Usta Dönerci Capacity AVM",
+      "slugOneri": "usta-donerci-capacity-avm-bakirkoy",
+      "district": "Bakırköy",
+      "neighborhood": "Ataköy 1. Kısım",
+      "address": "Ataköy 1. Kısım Mah. Fişekhane Cad. No:7/177, Capacity AVM",
+      "categoryId": "cat.restaurant",
+      "kind": "Dönerci",
+      "turDayanagi": "İşletmecinin ilçe bazlı 'Restoranlar' sayfası (TAB Gıda); 997 tabanındaki Usta Dönerci Beşiktaş ile aynı tür",
+      "officialSource": "https://www.ustadonerci.com/tr/restoranlar/istanbul-avrupa/bakirkoy/",
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/usta-donerci-bakirkoy-atakoy-1-kisim-st-1aa63",
+      "independentSourceNote": "Platform şube sayfası; URL ilçe+mahallesi resmî adresle eşleşiyor, o mahallede aynı işletmecinin ikinci resmî şubesi yok.",
+      "independentDate": "2026-10-31",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "not": "Bakırköy'deki diğer resmî şubeler Marmara Forum (Osmaniye) ve Koru Florya (Şenlikköy).",
+      "checkedAt": "2026-11-25",
+      "location": "KOORDINAT_YOK",
+      "decision": "KABUL_ADAYI_YAYIN_DEGIL",
+      "dedup": [
+        {
+          "tur": "AYNI_ADRES_FARKLI_MARKA",
+          "slug": "burger-yiyelim-atakoy-1-kisim-bakirkoy",
+          "ad": "Burger Yiyelim",
+          "adres": "Fişekhane Caddesi No:7, Ataköy 1.Kısım Mahallesi, Bakırköy"
+        },
+        {
+          "tur": "AYNI_ADRES_FARKLI_MARKA",
+          "slug": "pidem-capacity-bakirkoy",
+          "ad": "Pidem Capacity",
+          "adres": "Ataköy 1. Kısım Mah. Fişekhane Cad. Capacity AVM No:7/24"
+        }
+      ],
+      "dedupNot": "Aynı AVM'de tabandaki Burger Yiyelim ve Pidem Capacity; farklı işletmeci."
+    },
+    {
+      "isletmeci": "Hacıbaşar Kebap & Baklava",
+      "sube": "Erenköy",
+      "name": "Hacıbaşar Kebap & Baklava Erenköy",
+      "slugOneri": "hacibasar-kebap-baklava-erenkoy-kadikoy",
+      "district": "Kadıköy",
+      "neighborhood": "Erenköy",
+      "address": "Erenköy Mah. Şemsettin Günaltay Cd. No:143",
+      "categoryId": "cat.restaurant",
+      "kind": "Kebapçı / Ocakbaşı",
+      "turDayanagi": "İşletmecinin 'Şubelerimiz' sayfası; kebap restoranı; tabandaki Hacıbaşar Kebap Ataşehir ile aynı tür",
+      "officialSource": "https://hacibasar.com/subelerimiz/",
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/hacibasar-kebap-baklava-kadikoy-erenkoy-mah-st-1e730",
+      "independentSourceNote": "Platform şube sayfası; URL ilçe+mahallesi resmî adresle eşleşiyor, o mahallede aynı işletmecinin ikinci resmî şubesi yok.",
+      "independentDate": "2026-10-28",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "not": null,
+      "checkedAt": "2026-11-25",
+      "location": "KOORDINAT_YOK",
+      "decision": "KABUL_ADAYI_YAYIN_DEGIL",
+      "dedup": [
+        {
+          "tur": "AYNI_ADRES_FARKLI_MARKA",
+          "slug": "mantimia-kadikoy",
+          "ad": "Mantımia",
+          "adres": "Şemsettin Günaltay Caddesi No:187, Erenköy Mahallesi, Kadıköy"
+        },
+        {
+          "tur": "AYNI_ADRES_FARKLI_MARKA",
+          "slug": "santral-coffee-house-kadikoy",
+          "ad": "Santral Coffee House",
+          "adres": "Şemsettin Günaltay Caddesi No:179/E, Erenköy Mahallesi, Kadıköy"
+        }
+      ],
+      "dedupNot": "Aynı caddede tabandaki Mantımia (No:187) ve Santral Coffee House (No:179/E); farklı işletme ve kapı."
+    },
+    {
+      "isletmeci": "Hacıbaşar Kebap & Baklava",
+      "sube": "Göztepe",
+      "name": "Hacıbaşar Kebap & Baklava Göztepe",
+      "slugOneri": "hacibasar-kebap-baklava-goztepe-kadikoy",
+      "district": "Kadıköy",
+      "neighborhood": "Göztepe",
+      "address": "Tütüncü Mehmet Efendi Cad. No:48, Göztepe",
+      "categoryId": "cat.restaurant",
+      "kind": "Kebapçı / Ocakbaşı",
+      "turDayanagi": "İşletmecinin 'Şubelerimiz' sayfası; kebap restoranı; tabandaki Hacıbaşar Kebap Ataşehir ile aynı tür",
+      "officialSource": "https://hacibasar.com/subelerimiz/",
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/hacibasar-kebap-baklava-kadikoy-goztepe-mah-st-1e733",
+      "independentSourceNote": "Platform şube sayfası; URL ilçe+mahallesi resmî adresle eşleşiyor, o mahallede aynı işletmecinin ikinci resmî şubesi yok.",
+      "independentDate": "2026-10-29",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "not": "Resmî adreste 'Göztepe' semt adı; mahalle Migros'la aynı.",
+      "checkedAt": "2026-11-25",
+      "location": "KOORDINAT_YOK",
+      "decision": "KABUL_ADAYI_YAYIN_DEGIL",
+      "dedup": [
+        {
+          "tur": "AYNI_ADRES_FARKLI_MARKA",
+          "slug": "adile-sultan-ev-yemekleri-goztepe-kadikoy",
+          "ad": "Adile Sultan Ev Yemekleri Göztepe",
+          "adres": "Göztepe Mahallesi, Tütüncü Mehmet Efendi Caddesi, No:45/B"
+        }
+      ],
+      "dedupNot": "Aynı caddede tabandaki Adile Sultan Göztepe (No:45/B); farklı işletme ve kapı."
+    },
+    {
+      "isletmeci": "Hacıbaşar Kebap & Baklava",
+      "sube": "Acıbadem",
+      "name": "Hacıbaşar Kebap & Baklava Acıbadem",
+      "slugOneri": "hacibasar-kebap-baklava-acibadem-kadikoy",
+      "district": "Kadıköy",
+      "neighborhood": "Acıbadem",
+      "address": "Acıbadem Cad. No:67/A, Acıbadem",
+      "categoryId": "cat.restaurant",
+      "kind": "Kebapçı / Ocakbaşı",
+      "turDayanagi": "İşletmecinin 'Şubelerimiz' sayfası; kebap restoranı; tabandaki Hacıbaşar Kebap Ataşehir ile aynı tür",
+      "officialSource": "https://hacibasar.com/subelerimiz/",
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/hacibasar-kebap-baklava-kadikoy-acibadem-mah-st-1e731",
+      "independentSourceNote": "Platform şube sayfası; URL ilçe+mahallesi resmî adresle eşleşiyor, o mahallede aynı işletmecinin ikinci resmî şubesi yok.",
+      "independentDate": "2026-11-17",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "not": "Resmî adreste ilçe yazmıyor; resmî listede tek Acıbadem şubesi; ilçe Migros sayfasından (Kadıköy).",
+      "checkedAt": "2026-11-25",
+      "location": "KOORDINAT_YOK",
+      "decision": "KABUL_ADAYI_YAYIN_DEGIL",
+      "dedup": [],
+      "dedupNot": "Çakışma yok."
+    },
+    {
+      "isletmeci": "Mersin Yaprak Tantuni",
+      "sube": "Kadıköy",
+      "name": "Mersin Yaprak Tantuni Kadıköy",
+      "slugOneri": "mersin-yaprak-tantuni-kadikoy-kadikoy",
+      "district": "Kadıköy",
+      "neighborhood": "Rasimpaşa",
+      "address": "Rasimpaşa Mah. Rıhtım Cd. No:32/A Kat:2",
+      "categoryId": "cat.restaurant",
+      "kind": "Kebapçı / Ocakbaşı",
+      "turDayanagi": "İşletmecinin 'Şubelerimiz' sayfası; tantuni salonu; tabandaki tantuni kayıtlarıyla aynı tür",
+      "officialSource": "https://mersinyapraktantuni.com.tr/subeler.php",
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/mersin-yaprak-tantuni-kadikoy-rasimpasa-mah-st-2f489",
+      "independentSourceNote": "Platform şube sayfası; URL ilçe+mahallesi resmî adresle eşleşiyor, o mahallede aynı işletmecinin ikinci resmî şubesi yok.",
+      "independentDate": "2026-11-06",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "not": null,
+      "checkedAt": "2026-11-25",
+      "location": "KOORDINAT_YOK",
+      "decision": "KABUL_ADAYI_YAYIN_DEGIL",
+      "dedup": [],
+      "dedupNot": "Çakışma yok."
+    },
+    {
+      "isletmeci": "Mersin Yaprak Tantuni",
+      "sube": "Maslak",
+      "name": "Mersin Yaprak Tantuni Maslak",
+      "slugOneri": "mersin-yaprak-tantuni-maslak-sariyer",
+      "district": "Sarıyer",
+      "neighborhood": "Huzur",
+      "address": "Huzur Mah. Eski Büyükdere Cd. No:85",
+      "categoryId": "cat.restaurant",
+      "kind": "Kebapçı / Ocakbaşı",
+      "turDayanagi": "İşletmecinin 'Şubelerimiz' sayfası; tantuni salonu; tabandaki tantuni kayıtlarıyla aynı tür",
+      "officialSource": "https://mersinyapraktantuni.com.tr/subeler.php",
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/mersin-yaprak-tantuni-sariyer-huzur-mah-st-1acdf",
+      "independentSourceNote": "Platform şube sayfası; URL ilçe+mahallesi resmî adresle eşleşiyor, o mahallede aynı işletmecinin ikinci resmî şubesi yok.",
+      "independentDate": "2026-11-22",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "not": null,
+      "checkedAt": "2026-11-25",
+      "location": "KOORDINAT_YOK",
+      "decision": "KABUL_ADAYI_YAYIN_DEGIL",
+      "dedup": [],
+      "dedupNot": "Çakışma yok."
+    }
+  ],
+  "holdsPreserved": [
+    {
+      "ad": "Usta Dönerci Metroport (Bahçelievler)",
+      "durum": "BEKLIYOR_TAZELIK",
+      "neden": "Migros son değerlendirme 14.10.2025."
+    },
+    {
+      "ad": "Usta Dönerci Capitol (Üsküdar)",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Migros sayfasında tarihli değerlendirme yok."
+    },
+    {
+      "ad": "Usta Dönerci Gaziosmanpaşa (Migros: Karadeniz Mah.)",
+      "durum": "BEKLIYOR_SUBE_KIMLIGI",
+      "neden": "Resmî listede Gaziosmanpaşa'da yalnız TEM AVM (Mevlana Mah.); ayrıca son değerlendirme 20.06.2026."
+    },
+    {
+      "ad": "Usta Dönerci diğer resmî şubeler (Esenyurt ×2, Güngören Kale, Silivri Vega, Avcılar Pelikan, Bağcılar 212, Bayrampaşa Forum, Zeytinburnu Olivium, Beylikdüzü Perlavista, Küçükçekmece ×2, Sultanbeyli Plato, Pendik Mehmetçik)",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Resmî tam adres var; aramada eşleşen Migros sayfası çıkmadı."
+    },
+    {
+      "ad": "Hacıbaşar Maltepe Altayçeşme",
+      "durum": "BEKLIYOR_TAZELIK",
+      "neden": "Migros son değerlendirme 16.08.2026 (101 gün)."
+    },
+    {
+      "ad": "Hacıbaşar Kozyatağı, Bostancı, Ümraniye Çamlık (Migros)",
+      "durum": "BEKLIYOR_SUBE_KIMLIGI",
+      "neden": "Migros mahallesi resmî listedeki adresle örtüşmüyor (resmî: 19 Mayıs Mah.; Bostancı listede yok; Çamlık resmî listede 'Pendik')."
+    },
+    {
+      "ad": "Hacıbaşar Bahçeşehir, Çekmeköy, Pendik",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Resmî adres var; Migros sayfası bulunamadı."
+    },
+    {
+      "ad": "Mersin Yaprak Tantuni Bağcılar (Migros Bağlar Mah.)",
+      "durum": "BEKLIYOR_ADRES_CELISKISI",
+      "neden": "Resmî adres 'Güneşli, Bağlar, Koçman Cd. … Bahçelievler' yazıyor; Bağlar Mah. Bağcılar'da."
+    },
+    {
+      "ad": "Mersin Yaprak Tantuni Esenyurt, Beylikdüzü",
+      "durum": "BEKLIYOR_SUBE_KIMLIGI",
+      "neden": "Migros mahallesi (Koza, Cumhuriyet) resmî adreslerle (İncirtepe, Beylikdüzü Mah.) örtüşmüyor."
+    },
+    {
+      "ad": "Dürümcü Esnaf (Bağcılar 212, Beykoz, Ümraniye Çarşı, Kadıköy Göztepe)",
+      "durum": "BEKLIYOR_TAZELIK",
+      "neden": "Resmî adres ve Migros eşleşmesi var; son değerlendirmeler 05.05 ve 13.07.2026 ya da tarih yok. Migros'taki Esenler, Şirinevler, Mecidiyeköy, Üsküdar-Barbaros sayfaları resmî listede yok."
+    },
+    {
+      "ad": "Tadım Pide (Bağcılar, Güngören, Çağlayan, Zeytinburnu, Küçükçekmece)",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Resmî şube sayfalarında tam adres var (site 2018 tarihli); Migros'taki 'Tadım Pide' sayfaları resmî mahallelerle eşleşmiyor."
+    },
+    {
+      "ad": "Urfa'dan Kebapçı (Kağıthane Hamidiye, Okmeydanı; Eyüpsultan Güzeltepe)",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Yerel işletme, resmî sitede tam adres ve bahçeli salon var; Migros sayfası yok, Getir artık tarihsiz Trendyol Go'ya yönleniyor, Yemeksepeti kullanılmadı."
+    },
+    {
+      "ad": "Kilis Kebapçısı (Silivri, Alipaşa Mah.)",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Yerel işletme, resmî sitede salon ve masa rezervasyonu var; Migros sayfası yok; bulunan rehberler 10.2025 ve 12.2025 (>90 gün)."
+    },
+    {
+      "ad": "Usta Pideci",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "İşletmeci yalnız kendi kanalları ve Yemeksepeti ile sipariş aldığını yazıyor; Migros yok; şube adresleri sayfada yüklenmiyor."
+    },
+    {
+      "ad": "Kolcuoğlu (Florya E-5, Göktürk)",
+      "durum": "BEKLIYOR_RESMI_ADRES",
+      "neden": ".com.tr alan adı satılık, .com 403; resmî şube listesi yok."
+    },
+    {
+      "ad": "Nizipli Ocakbaşı Bağcılar",
+      "durum": "BEKLIYOR_SUBE_KIMLIGI",
+      "neden": "Resmî adres Çınar Mah.; Migros sayfası Fevzi Çakmak Mah.; site curl ile yanıt vermiyor."
+    },
+    {
+      "ad": "İBB Zeytinburnu Kent Lokantası",
+      "durum": "BEKLIYOR_RESMI_ADRES",
+      "neden": "Önceki dilimden; durum değişmedi."
+    }
+  ]
+}

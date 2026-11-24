@@ -1,0 +1,156 @@
+[
+  {
+    "ref": "isletme/usta-donerci-starcity-avm-bahcelievler",
+    "slug": "usta-donerci-starcity-avm-bahcelievler",
+    "name": "Usta Dönerci Starcity AVM",
+    "categoryId": "cat.restaurant",
+    "kind": "Dönerci",
+    "district": "Bahçelievler",
+    "neighborhood": "Yenibosna Merkez",
+    "address": "Yenibosna Merkez Mah. Değirmenbahçe Cad. No:34/1, Starcity Outlet AVM Kat:2 No:102",
+    "website": "https://www.ustadonerci.com/tr/restoranlar/istanbul-avrupa/bahcelievler/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.ustadonerci.com/tr/restoranlar/istanbul-avrupa/bahcelievler/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin listesi şube adresini doğrular. Aynı şubenin son platform değerlendirmesi 2026-11-16; tarih faaliyet tazeliği için kullanıldı.",
+    "wave": 34,
+    "cuisine": [
+      "doner"
+    ]
+  },
+  {
+    "ref": "isletme/usta-donerci-capacity-avm-bakirkoy",
+    "slug": "usta-donerci-capacity-avm-bakirkoy",
+    "name": "Usta Dönerci Capacity AVM",
+    "categoryId": "cat.restaurant",
+    "kind": "Dönerci",
+    "district": "Bakırköy",
+    "neighborhood": "Ataköy 1. Kısım",
+    "address": "Ataköy 1. Kısım Mah. Fişekhane Cad. No:7/177, Capacity AVM",
+    "website": "https://www.ustadonerci.com/tr/restoranlar/istanbul-avrupa/bakirkoy/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.ustadonerci.com/tr/restoranlar/istanbul-avrupa/bakirkoy/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin listesi şube adresini doğrular. Aynı şubenin son platform değerlendirmesi 2026-10-31; tarih faaliyet tazeliği için kullanıldı.",
+    "wave": 34,
+    "cuisine": [
+      "doner"
+    ]
+  },
+  {
+    "ref": "isletme/hacibasar-kebap-baklava-erenkoy-kadikoy",
+    "slug": "hacibasar-kebap-baklava-erenkoy-kadikoy",
+    "name": "Hacıbaşar Kebap & Baklava Erenköy",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Kadıköy",
+    "neighborhood": "Erenköy",
+    "address": "Erenköy Mah. Şemsettin Günaltay Cd. No:143",
+    "website": "https://hacibasar.com/subelerimiz/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://hacibasar.com/subelerimiz/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin listesi şube adresini doğrular. Aynı şubenin son platform değerlendirmesi 2026-10-28; tarih faaliyet tazeliği için kullanıldı.",
+    "wave": 34,
+    "cuisine": [
+      "kebab"
+    ]
+  },
+  {
+    "ref": "isletme/hacibasar-kebap-baklava-goztepe-kadikoy",
+    "slug": "hacibasar-kebap-baklava-goztepe-kadikoy",
+    "name": "Hacıbaşar Kebap & Baklava Göztepe",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Kadıköy",
+    "neighborhood": "Göztepe",
+    "address": "Tütüncü Mehmet Efendi Cad. No:48, Göztepe",
+    "website": "https://hacibasar.com/subelerimiz/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://hacibasar.com/subelerimiz/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin listesi şube adresini doğrular. Aynı şubenin son platform değerlendirmesi 2026-10-29; tarih faaliyet tazeliği için kullanıldı.",
+    "wave": 34,
+    "cuisine": [
+      "kebab"
+    ]
+  },
+  {
+    "ref": "isletme/hacibasar-kebap-baklava-acibadem-kadikoy",
+    "slug": "hacibasar-kebap-baklava-acibadem-kadikoy",
+    "name": "Hacıbaşar Kebap & Baklava Acıbadem",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Kadıköy",
+    "neighborhood": "Acıbadem",
+    "address": "Acıbadem Cad. No:67/A, Acıbadem",
+    "website": "https://hacibasar.com/subelerimiz/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://hacibasar.com/subelerimiz/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin listesi şube adresini doğrular. MetropolCard üye işyeri kaydı aynı kapı numarası için Kadıköy ilçesini belirtir. Aynı şubenin son platform değerlendirmesi 2026-11-17; tarih faaliyet tazeliği için kullanıldı.",
+    "wave": 34,
+    "cuisine": [
+      "kebab"
+    ]
+  },
+  {
+    "ref": "isletme/mersin-yaprak-tantuni-kadikoy-kadikoy",
+    "slug": "mersin-yaprak-tantuni-kadikoy-kadikoy",
+    "name": "Mersin Yaprak Tantuni Kadıköy",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Kadıköy",
+    "neighborhood": "Rasimpaşa",
+    "address": "Rasimpaşa Mah. Rıhtım Cd. No:32/A Kat:2",
+    "website": "https://mersinyapraktantuni.com.tr/subeler.php",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://mersinyapraktantuni.com.tr/subeler.php",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin listesi şube adresini doğrular. Aynı şubenin son platform değerlendirmesi 2026-11-06; tarih faaliyet tazeliği için kullanıldı.",
+    "wave": 34,
+    "cuisine": [
+      "turkish"
+    ]
+  },
+  {
+    "ref": "isletme/mersin-yaprak-tantuni-maslak-sariyer",
+    "slug": "mersin-yaprak-tantuni-maslak-sariyer",
+    "name": "Mersin Yaprak Tantuni Maslak",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Sarıyer",
+    "neighborhood": "Huzur",
+    "address": "Huzur Mah. Eski Büyükdere Cd. No:85",
+    "website": "https://mersinyapraktantuni.com.tr/subeler.php",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://mersinyapraktantuni.com.tr/subeler.php",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin listesi şube adresini doğrular. Aynı şubenin son platform değerlendirmesi 2026-11-22; tarih faaliyet tazeliği için kullanıldı.",
+    "wave": 34,
+    "cuisine": [
+      "turkish"
+    ]
+  }
+]
