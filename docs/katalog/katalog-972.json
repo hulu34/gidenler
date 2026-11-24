@@ -1,0 +1,559 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "79d3cda69f76558f47d9fa681d30fd296f73b4ea",
+  "sourceDelivery": {
+    "createdAt": "2026-11-25",
+    "status": "YEREL_TESLIM_YAYIN_YOK",
+    "scope": "25 Kasım tek araştırma teslimi; yeni araştırma hattı yok"
+  },
+  "prior": {
+    "total": 947,
+    "active": 912,
+    "activeRestaurants": 787
+  },
+  "priorDigest": {
+    "data/real/isletme.json": "a326c59ce59a8251158d6ffefab61e61ba8dc3f1a5bd439f4bd5f9182a562e59",
+    "data/real/presentation.json": "2ac685b27cd591312cd1beecc7e2f99ebcd48147bbd017c9a5c2de74a34f9da7",
+    "data/real/sor-index.json": "33442b2b31e195053bb03afd84e941ef1ae72fb6ca5761b96348efc2295868b5"
+  },
+  "localAdded": 25,
+  "productionAdded": 0,
+  "previewAdded": 0,
+  "expected": {
+    "total": 972,
+    "active": 937,
+    "activeRestaurants": 812,
+    "activeCafes": 114,
+    "activeBars": 11,
+    "inactive": 35
+  },
+  "groups": {
+    "Adile Sultan Ev Yemekleri": 25
+  },
+  "rules": {
+    "coordinatesAdded": false,
+    "avmCenterUsedAsRestaurantPin": false,
+    "googleDataUsed": false,
+    "newResearchStarted": false
+  },
+  "sources": [
+    {
+      "slug": "adile-sultan-ev-yemekleri-altaycesme-maltepe",
+      "branch": "Altayçeşme",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/altaycesme/",
+      "officialDate": "2026-08-25",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-maltepe-altaycesme-mah-st-2ece1",
+      "independentDate": "2026-10-28",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-altunizade-uskudar",
+      "branch": "Altunizade",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/altunizade/",
+      "officialDate": "2026-08-23",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-uskudar-barbaros-mah-st-1b60c",
+      "independentDate": "2026-10-30",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": [
+          "adile-sultan-ev-yemekleri-uskudar",
+          "borsa-restaurant-adile-sultan-uskudar"
+        ],
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": "Canlıdaki adressiz Üsküdar kaydı Acıbadem'e daha yakın; Altunizade ayrı şube sayıldı (not)."
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-atakoy-bakirkoy",
+      "branch": "Ataköy",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/atakoy/",
+      "officialDate": "2026-08-16",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-bakirkoy-atakoy-mah-st-1dc5a",
+      "independentDate": "2026-11-13",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-atasehir-ornek-atasehir",
+      "branch": "Ataşehir-Örnek",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/atasehir-ornek/",
+      "officialDate": "2026-08-17",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-atasehir-ornek-mah-st-2ba03",
+      "independentDate": "2026-11-20",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-bakirkoy-bakirkoy",
+      "branch": "Bakırköy",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/bakirkoy/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-bakirkoy-kartaltepe-mah-st-1b5ee",
+      "independentDate": "2026-11-24",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-balat-yavuz-sultan-selim-fatih",
+      "branch": "Balat-Yavuz Sultan Selim",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/balat/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-fatih-yavuz-sultan-selim-mah-st-1b60b",
+      "independentDate": "2026-11-21",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-besiktas-besiktas",
+      "branch": "Beşiktaş",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/besiktas-merkez/",
+      "officialDate": "2026-11-17",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-besiktas-cihannuma-mah-st-1f2e0",
+      "independentDate": "2026-11-20",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": "Migros sayfa etiketi 'Cihannüma Mah.'; resmî adres Türkali Mah. — bağlantıyı işletmecinin kendi şube sayfası veriyor."
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-beyoglu-beyoglu",
+      "branch": "Beyoğlu",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/beyoglu/",
+      "officialDate": "2026-08-25",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-beyoglu-sehit-muhtar-mah-st-31e6c",
+      "independentDate": "2026-11-24",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-dudullu-umraniye",
+      "branch": "Dudullu",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/dudullu/",
+      "officialDate": "2026-08-25",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-umraniye-necip-fazil-mah-st-2ed54",
+      "independentDate": "2026-10-20",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": [
+          "adile-sultan-ev-yemekleri-umraniye-restorani-umraniye"
+        ],
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-fikirtepe-kadikoy",
+      "branch": "Fikirtepe",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/fikirtepe/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-kadikoy-merdivenkoy-mah-st-1b618",
+      "independentDate": "2026-11-08",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-findikzade-fatih",
+      "branch": "Fındıkzade",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/findikzade/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-fatih-silivrikapi-mah-st-1b609",
+      "independentDate": "2026-11-17",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-goztepe-kadikoy",
+      "branch": "Göztepe",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/goztepe/",
+      "officialDate": "2026-09-17",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-kadikoy-goztepe-mah-st-1b61b",
+      "independentDate": "2026-10-14",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-icerenkoy-atasehir",
+      "branch": "İçerenköy",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/icerenkoy/",
+      "officialDate": "2026-09-22",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-atasehir-icerenkoy-mah-st-18f6a",
+      "independentDate": "2026-11-24",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-kavacik-beykoz",
+      "branch": "Kavacık",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/kavacik/",
+      "officialDate": "2026-08-23",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-beykoz-otagtepe-mah-st-2d8a4",
+      "independentDate": "2026-11-20",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": "Migros etiketi 'Otağtepe Mah.'; resmî adres Kavacık Mah., Otağtepe Cd."
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-kozyatagi-kadikoy",
+      "branch": "Kozyatağı",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/kozyatagi/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-kadikoykozyatagi-mah-st-1b61e",
+      "independentDate": "2026-11-07",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-kurtkoy-pendik",
+      "branch": "Kurtköy",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/kurtkoy/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-pendik-kurtkoy-mah-st-1be87",
+      "independentDate": "2026-10-28",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-libadiye-uskudar",
+      "branch": "Libadiye",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/libadiye/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-uskudar-bulgurlu-mah-st-1b60a",
+      "independentDate": "2026-11-14",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": [
+          "adile-sultan-ev-yemekleri-uskudar",
+          "borsa-restaurant-adile-sultan-uskudar"
+        ],
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-maltepe-cevizli-maltepe",
+      "branch": "Maltepe-Cevizli",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/maltepe-cevizli/",
+      "officialDate": null,
+      "officialDateType": "tarihsiz (kontrol 2026-11-25)",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-maltepe-cevizli-mah-st-1b617",
+      "independentDate": "2026-11-23",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-mecidiyekoy-sisli",
+      "branch": "Mecidiyeköy",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/mecidiyekoy/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-sisli-gulbahar-mah-st-1c803",
+      "independentDate": "2026-11-24",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-ortakoy-besiktas",
+      "branch": "Ortaköy",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/ortakoy/",
+      "officialDate": "2026-08-01",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-besiktas-mecidiye-mah-st-2d3ef",
+      "independentDate": "2026-11-21",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-pendik-fevzi-cakmak-pendik",
+      "branch": "Pendik-Fevzi Çakmak",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/pendik-fevzi-cakmak/",
+      "officialDate": "2026-08-23",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-pendik-fevzi-cakmak-mah-st-287c3",
+      "independentDate": "2026-11-12",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-pendik-merkez-pendik",
+      "branch": "Pendik-Merkez",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/pendik-merkez/",
+      "officialDate": "2026-08-13",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-pendik-yeni-mah-st-2cdf0",
+      "independentDate": "2026-11-07",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-sisli-kurtulus-sisli",
+      "branch": "Şişli-Kurtuluş",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/sisli-kurtulus/",
+      "officialDate": "2026-08-25",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-sisli-cumhuriyet-mah-st-23331",
+      "independentDate": "2026-11-23",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": "İşletmecinin verdiği Migros bağlantısı bugün 'Kurtuluş Mah.' sayfasına yönleniyor; resmî adres Bozkurt Mah. (Kurtuluş semti)."
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-sisli-sisli",
+      "branch": "Şişli",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/sisli/",
+      "officialDate": "2026-04-10",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-sisli-halide-edip-adivar-mah-st-1b610",
+      "independentDate": "2026-11-18",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": "yok",
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": null
+    },
+    {
+      "slug": "adile-sultan-ev-yemekleri-uskudar-mimar-sinan-uskudar",
+      "branch": "Üsküdar-Mimar Sinan",
+      "officialSource": "https://adilesultanevyemekleri.com/sube/uskudar-mimar-sinan/",
+      "officialDate": "2026-08-01",
+      "officialDateType": "sayfa dateModified",
+      "independentSource": "https://www.migros.com.tr/yemek/adile-sultan-ev-yemekleri-uskudar-mimar-sinan-mah-st-28d07",
+      "independentDate": "2026-11-06",
+      "independentDateType": "platform_son_siparis_degerlendirmesi (yalnız tarih)",
+      "checkedAt": "2026-11-25",
+      "kind": "Lokanta",
+      "dedup": {
+        "canliAyniIlceAdile": [
+          "adile-sultan-ev-yemekleri-uskudar",
+          "borsa-restaurant-adile-sultan-uskudar"
+        ],
+        "onceki24Kasim": "çakışma yok"
+      },
+      "note": "24.11 teslimde mükerrer şüphesiyle bekletilmişti. Canlıdaki adressiz adile-sultan-ev-yemekleri-uskudar kaydının koordinatı (41.0009, 29.0521) Acıbadem'e denk; Mimar Sinan/Ahmediye ~4 km uzakta. Bu yüzden ayrı şube sayıldı; Acıbadem bekletildi."
+    }
+  ],
+  "resolvedSeparations": {
+    "uskudarMimarSinan": {
+      "slug": "adile-sultan-ev-yemekleri-uskudar-mimar-sinan-uskudar",
+      "existingGenericSlug": "adile-sultan-ev-yemekleri-uskudar",
+      "decision": "ayrı şube; Mimar Sinan/Ahmediye resmî adresli, mevcut koordinat Acıbadem tarafında",
+      "acibadem": "HOLD"
+    },
+    "neighborhoodDeviations": [
+      {
+        "slug": "adile-sultan-ev-yemekleri-besiktas-besiktas",
+        "officialNeighborhood": "Türkali",
+        "note": "Migros sayfa etiketi 'Cihannüma Mah.'; resmî adres Türkali Mah. — bağlantıyı işletmecinin kendi şube sayfası veriyor."
+      },
+      {
+        "slug": "adile-sultan-ev-yemekleri-kavacik-beykoz",
+        "officialNeighborhood": "Kavacık",
+        "note": "Migros etiketi 'Otağtepe Mah.'; resmî adres Kavacık Mah., Otağtepe Cd."
+      },
+      {
+        "slug": "adile-sultan-ev-yemekleri-sisli-kurtulus-sisli",
+        "officialNeighborhood": "Bozkurt",
+        "note": "İşletmecinin verdiği Migros bağlantısı bugün 'Kurtuluş Mah.' sayfasına yönleniyor; resmî adres Bozkurt Mah. (Kurtuluş semti)."
+      }
+    ]
+  },
+  "holdsPreserved": [
+    {
+      "ad": "Adile Sultan Acıbadem (Üsküdar)",
+      "durum": "BEKLIYOR_MUKERRER_SUPHESI",
+      "neden": "Canlıdaki adressiz adile-sultan-ev-yemekleri-uskudar kaydının koordinatı Acıbadem'e denk; aynı şube olabilir."
+    },
+    {
+      "ad": "Adile Sultan Küçükyalı (Maltepe)",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "İşletmecinin bağladığı Migros sayfası 404."
+    },
+    {
+      "ad": "Adile Sultan Zümrütevler (Maltepe)",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "İşletmecinin bağladığı Migros sayfası 404."
+    },
+    {
+      "ad": "Adile Sultan Maslak (Sarıyer)",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Migros sayfası açık, tarihli değerlendirme yok."
+    },
+    {
+      "ad": "Adile Sultan Şerifali (Ümraniye)",
+      "durum": "BEKLIYOR_TAZELIK",
+      "neden": "Migros son değerlendirme 05.08.2026 (>90 gün)."
+    },
+    {
+      "ad": "Adile Sultan Kadıköy, Levent, Nişantaşı, Suadiye",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Şube sayfasında platform bağlantısı yok."
+    },
+    {
+      "ad": "Adile Sultan Batı Ataşehir",
+      "durum": "BEKLIYOR_HIZMET_CELISKISI",
+      "neden": "Dizinde 'Restoran', şube sayfası başlığı 'Paket Servis Şube'."
+    },
+    {
+      "ad": "Adile Sultan Bağlar, Cevizlibağ",
+      "durum": "BEKLIYOR_RESTORAN_ADRESI",
+      "neden": "Şube sayfasında 'Restoranda yemek için' adresi yok."
+    },
+    {
+      "ad": "24.11 teslimden devreden Adile Sultan bekleyenleri",
+      "durum": "DEVAM",
+      "neden": "Tuzla-Postane (denetim), Halkalı (404), Bahçelievler/Mahmutbey/Sultan Selim (bağlantı yok), Tuzla-Aydınlı (restoran adresi yok). Üsküdar-Mimar Sinan bu teslimde kabul adayına geçti."
+    },
+    {
+      "ad": "Dürümle: Migros sayfası bulunmayan şubeler",
+      "durum": "BEKLIYOR_TARIHLI_FAALIYET",
+      "neden": "Bu turdaki üç ilçe araması yeni şube sayfası çıkarmadı."
+    }
+  ],
+  "scopeNotes": [
+    "Mevcut adressiz Üsküdar kaydı değiştirilmedi; yeni Mimar Sinan kaydı koordinatsız eklendi.",
+    "Altunizade ve Libadiye ayrı resmî adresli şubelerdir; Borsa Restaurant Adile Sultan ayrı markadır.",
+    "Beşiktaş, Kavacık ve Şişli-Kurtuluş için resmî şube adresindeki mahalle esas alındı; platform mahalle etiketi yalnız nottur."
+  ]
+}
