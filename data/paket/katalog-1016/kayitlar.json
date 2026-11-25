@@ -1,0 +1,159 @@
+[
+  {
+    "ref": "isletme/son-lokanta-fenerbahce-kadikoy",
+    "slug": "son-lokanta-fenerbahce-kadikoy",
+    "name": "Son Lokanta",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Kadıköy",
+    "neighborhood": "Fenerbahçe",
+    "address": "Fenerbahçe, Dr. Faruk Ayanoğlu Caddesi No:21/1A, Kadıköy",
+    "website": "https://sonlokanta.com/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://sonlokanta.com/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Mezeler ve deniz ürünleri, dana yanak ile palamut gibi ana yemekler ve masalı servis. İşletmecinin mahalle adı Fenerbahçe.",
+    "wave": 39,
+    "cuisine": [
+      "mediterranean",
+      "seafood"
+    ]
+  },
+  {
+    "ref": "isletme/caca-restoran-kucukyali-maltepe",
+    "slug": "caca-restoran-kucukyali-maltepe",
+    "name": "Çaça Restoran",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Maltepe",
+    "neighborhood": "Çınar",
+    "address": "Çınar Mah., Turgut Özal Bulvarı No:85, Küçükyalı, Maltepe",
+    "website": "https://cacarestoran.com/iletisim/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://cacarestoran.com/iletisim/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Küçükyalı No:85'te masalı modern Türk mutfağı, kömür ızgarası, et yemekleri ve mezeler.",
+    "wave": 39,
+    "cuisine": [
+      "turkish"
+    ]
+  },
+  {
+    "ref": "isletme/olive-hill-village-bahcesehir-basaksehir",
+    "slug": "olive-hill-village-bahcesehir-basaksehir",
+    "name": "Olive Hill Village",
+    "categoryId": "cat.restaurant",
+    "kind": "İtalyan mutfağı",
+    "district": "Başakşehir",
+    "neighborhood": "Bahçeşehir 1. Kısım",
+    "address": "Bahçeşehir 1. Kısım, Doğaparkı Cad. No:13-15AC, Cadde No:9 A Blok, Başakşehir",
+    "website": "https://www.olivehillvillage.com/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.olivehillvillage.com/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmeci ve ziyaret yazısı pizzaları, makarnaları, risotto ve ana yemekleri doğruluyor. Kokteyl servisi de var.",
+    "wave": 39,
+    "cuisine": [
+      "italian"
+    ]
+  },
+  {
+    "ref": "isletme/kun-restaurant-zeytinburnu",
+    "slug": "kun-restaurant-zeytinburnu",
+    "name": "KÜN Restaurant",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Zeytinburnu",
+    "neighborhood": "Kazlıçeşme",
+    "address": "Kazlıçeşme Mah., Abay Cad. No:167, Zeytinburnu (Mövenpick Hotel İstanbul Marmara Sea)",
+    "website": "https://all.accor.com/hotel/B8B6/index.en.shtml",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://all.accor.com/hotel/B8B6/index.en.shtml",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Accor No:167 adresindeki Mövenpick tesisinde KÜN'ü adıyla restoran olarak listeliyor. Yazı aynı çatı katında masalı servis, meze ve ızgara yemeklerini anlatıyor.",
+    "wave": 39,
+    "cuisine": [
+      "turkish"
+    ]
+  },
+  {
+    "ref": "isletme/gusina-in-the-hood-uskumrukoy-sariyer",
+    "slug": "gusina-in-the-hood-uskumrukoy-sariyer",
+    "name": "Gusina in the Hood Uskumruköy",
+    "categoryId": "cat.restaurant",
+    "kind": "Dünya mutfağı",
+    "district": "Sarıyer",
+    "neighborhood": "Uskumruköy",
+    "address": "Uskumruköy, Kilyos Caddesi No:246, Ormanada Sitesi, Sarıyer",
+    "website": "https://gusinaistanbul.com/hood/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://gusinaistanbul.com/hood/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Resmî Hood şubesi Ormanada No:246, odun fırını pizzası ve taze makarna. Ziyaret yazısı Uskumruköy'de iç ve dış oturma alanlarını tanımlıyor.",
+    "wave": 39,
+    "cuisine": [
+      "italian",
+      "international"
+    ]
+  },
+  {
+    "ref": "isletme/malva-istanbul-harbiye-sisli",
+    "slug": "malva-istanbul-harbiye-sisli",
+    "name": "Malva İstanbul",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Şişli",
+    "neighborhood": "Harbiye",
+    "address": "Hilton İstanbul Bosphorus, Cumhuriyet Caddesi No:50, Harbiye, Şişli",
+    "website": "https://malvaistanbul.com/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://malvaistanbul.com/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Hilton No:50 Harbiye tesisinde Malva'yı adıyla restoran olarak listeliyor. Restoranın alakart ve tadım menüsü, çağdaş Türk mutfağını doğruluyor. Ekim köşe yazısının indekslenen metni Hilton İstanbul'daki açılışı tanımlıyor.",
+    "wave": 39,
+    "cuisine": [
+      "turkish"
+    ]
+  },
+  {
+    "ref": "isletme/7-mehmet-istanbul-tersane-beyoglu",
+    "slug": "7-mehmet-istanbul-tersane-beyoglu",
+    "name": "7 Mehmet İstanbul",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Beyoğlu",
+    "neighborhood": "Camiikebir",
+    "address": "Camiikebir Mah., Taşkızak Tersanesi Cad. No:51A, Beyoğlu",
+    "website": "https://7mehmet.com/tr/7-mehmet-istanbul",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://7mehmet.com/tr/7-mehmet-istanbul",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Resmî İstanbul şube sayfası Tersane No:51A'yı ve Antalya'dan ayrı restoranı doğruluyor. Müdavim Tersane şubesinin masalı servis ve menüsünü belgeliyor. 27 Ağustos kabul eşiğine dahil.",
+    "wave": 39,
+    "cuisine": [
+      "turkish",
+      "mediterranean"
+    ]
+  }
+]

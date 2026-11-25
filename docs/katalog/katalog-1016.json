@@ -1,0 +1,119 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "1ebd79df893ff6a647919f61b67b6937e108ee12",
+  "sourceDelivery": {
+    "path": "teslim-25kasim-editoryal-2/manifest.json",
+    "sha256": "ff60c108078dbbe507c1eb09c486d90c762c925967f4e16e0e49a93e3cf39d92"
+  },
+  "prior": {
+    "total": 1009,
+    "active": 974,
+    "activeRestaurants": 849
+  },
+  "expected": {
+    "total": 1016,
+    "active": 981,
+    "activeRestaurants": 856
+  },
+  "additionsByScope": {
+    "bagdatCaddesi": 0,
+    "caddeCevresi": 1,
+    "maltepeCaddeDisi": 1,
+    "digerIstanbul": 5
+  },
+  "sources": [
+    {
+      "slug": "son-lokanta-fenerbahce-kadikoy",
+      "scope": "cadde_cevresi",
+      "official": "https://sonlokanta.com/",
+      "datedSource": "https://mudavim.net/son-lokanta-feneryolu/",
+      "visibleDate": "2026-09-24",
+      "deliveryDate": "2026-09-23",
+      "menu": "Kendi sitesinde menü bölümü (#menu)",
+      "evidence": "Mezeler ve deniz ürünleri, dana yanak ile palamut gibi ana yemekler ve masalı servis. İşletmecinin mahalle adı Fenerbahçe."
+    },
+    {
+      "slug": "caca-restoran-kucukyali-maltepe",
+      "scope": "maltepe_cadde_disi",
+      "official": "https://cacarestoran.com/iletisim/",
+      "datedSource": "https://mudavim.net/caca-restoran/",
+      "visibleDate": "2026-11-11",
+      "deliveryDate": "2026-11-08",
+      "menu": "https://cacarestoran.com/menu/ (görsel menü sayfası)",
+      "evidence": "Küçükyalı No:85'te masalı modern Türk mutfağı, kömür ızgarası, et yemekleri ve mezeler."
+    },
+    {
+      "slug": "olive-hill-village-bahcesehir-basaksehir",
+      "scope": "diger_istanbul",
+      "official": "https://www.olivehillvillage.com/",
+      "datedSource": "https://mudavim.net/olive-hill-village/",
+      "visibleDate": "2026-11-09",
+      "deliveryDate": "2026-11-07",
+      "menu": "https://www.olivehillvillage.com/menu/MENU-OLIVEHILL-food.pdf?v=1.9 (yemek menüsü PDF)",
+      "evidence": "İşletmeci ve ziyaret yazısı pizzaları, makarnaları, risotto ve ana yemekleri doğruluyor. Kokteyl servisi de var."
+    },
+    {
+      "slug": "kun-restaurant-zeytinburnu",
+      "scope": "diger_istanbul",
+      "official": "https://all.accor.com/hotel/B8B6/index.en.shtml",
+      "datedSource": "https://mudavim.net/kun-restaurant/",
+      "visibleDate": "2026-11-03",
+      "deliveryDate": "2026-10-31",
+      "menu": "Doğrulanmadı (kunrestoran.com 403 verdi, aşılmadı)",
+      "evidence": "Accor No:167 adresindeki Mövenpick tesisinde KÜN'ü adıyla restoran olarak listeliyor. Yazı aynı çatı katında masalı servis, meze ve ızgara yemeklerini anlatıyor.",
+      "limitation": "Restoranın kendi menüsü tekrar okunmadı; yemek türü tesis ve ziyaret yazısından."
+    },
+    {
+      "slug": "gusina-in-the-hood-uskumrukoy-sariyer",
+      "scope": "diger_istanbul",
+      "official": "https://gusinaistanbul.com/hood/",
+      "datedSource": "https://mudavim.net/gusina-uskumrukoy/",
+      "visibleDate": "2026-09-22",
+      "deliveryDate": "2026-09-14",
+      "menu": "https://gusinaistanbul.com/hood/menu/yemek",
+      "evidence": "Resmî Hood şubesi Ormanada No:246, odun fırını pizzası ve taze makarna. Ziyaret yazısı Uskumruköy'de iç ve dış oturma alanlarını tanımlıyor."
+    },
+    {
+      "slug": "malva-istanbul-harbiye-sisli",
+      "scope": "diger_istanbul",
+      "official": "https://malvaistanbul.com/",
+      "datedSource": "https://www.koseyazarioku.com/yazar/muge-akgun/yeni-kent-yeni-konsept-yeni-sef-10-10-2026.html",
+      "visibleDate": "2026-10-10",
+      "deliveryDate": "2026-10-10",
+      "menu": "https://malvaistanbul.com/wp-content/uploads/2026/10/a-la-carte-final-.pdf (alakart, Ekim 2026)",
+      "evidence": "Hilton No:50 Harbiye tesisinde Malva'yı adıyla restoran olarak listeliyor. Restoranın alakart ve tadım menüsü, çağdaş Türk mutfağını doğruluyor. Ekim köşe yazısının indekslenen metni Hilton İstanbul'daki açılışı tanımlıyor.",
+      "hotelDining": "https://www.hilton.com/tr/hotels/isthitw-hilton-istanbul-bosphorus/dining/",
+      "hotelAddress": "https://www.hilton.com/tr/hotels/isthitw-hilton-istanbul-bosphorus/",
+      "limitation": "Hürriyet doğrudan açılamadı; aynı köşenin indekslenen alıntısı 10 Ekim tarihini ve Hilton Bosphorus'ta açılışı gösterdi."
+    },
+    {
+      "slug": "7-mehmet-istanbul-tersane-beyoglu",
+      "scope": "diger_istanbul",
+      "official": "https://7mehmet.com/tr/7-mehmet-istanbul",
+      "datedSource": "https://mudavim.net/7-mehmet-tersane-istanbul/",
+      "visibleDate": "2026-08-27",
+      "deliveryDate": "2026-10-10",
+      "menu": "https://qr.finedinemenu.com/7-mehmet-restaurant-menue/menu/6a7dff2f77e7aaeb9278419a",
+      "evidence": "Resmî İstanbul şube sayfası Tersane No:51A'yı ve Antalya'dan ayrı restoranı doğruluyor. Müdavim Tersane şubesinin masalı servis ve menüsünü belgeliyor. 27 Ağustos kabul eşiğine dahil.",
+      "limitation": "Hürriyet doğrudan açılamadı; eşik günü dahil olan şubeye özel Müdavim kaynağı kullanıldı."
+    }
+  ],
+  "holds": [
+    {
+      "name": "Kalis Lokanta",
+      "reason": "Kalis 65/A ve tabandaki Yako Balık 65 aynı cadde/bina ve aynı rezervasyon telefonuna işaret ediyor. Halefiyet veya ayrı işletme doğrulanmadı; Yako korunuyor.",
+      "evidence": [
+        "https://mudavim.net/kalis-lokanta/",
+        "https://kalislokanta.com/"
+      ]
+    },
+    {
+      "name": "Doras Restaurant & Bar",
+      "reason": "Müdavim fiziksel restoranı doğruluyor. Restoranın resmî adres ve menü sayfaları yeniden açılamadı; No:60 birinci elden doğrulanamadı.",
+      "evidence": [
+        "https://mudavim.net/doras-istanbul/",
+        "https://dorasistanbul.com/bar-restaurant"
+      ]
+    }
+  ]
+}
