@@ -1,0 +1,42 @@
+[
+  {
+    "ref": "isletme/durumcu-emmi-atasehir",
+    "slug": "durumcu-emmi-atasehir",
+    "name": "Dürümcü Emmi Ataşehir",
+    "categoryId": "cat.restaurant",
+    "kind": "Kebapçı / Ocakbaşı",
+    "district": "Ataşehir",
+    "neighborhood": "Küçükbakkalköy",
+    "address": "Küçükbakkalköy Mah., Işıklar Caddesi No:37 D:2A, Ataşehir",
+    "website": "https://durumcuemmi.com.tr/iletisim.html",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://durumcuemmi.com.tr/iletisim.html",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmeci No:37 D:2A ve 10 Eylül 2026 yeniden açılışını doğrular. 26 Eylül tarihli Maxi Magazin haberi Ataşehir Küçükbakkalköy'de yeniden faaliyete geçildiğini bildirir. İşletme menüsünde Antep kebapları, dürüm ve lahmacun bulunur.",
+    "wave": 40,
+    "cuisine": ["kebab", "turkish"]
+  },
+  {
+    "ref": "isletme/tunel-lokantasi-beyoglu",
+    "slug": "tunel-lokantasi-beyoglu",
+    "name": "Tünel Lokantası",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Beyoğlu",
+    "neighborhood": "Asmalı Mescit",
+    "address": "İstiklal Caddesi No:182, Ring Stone Hotels Bosphorus, Beyoğlu",
+    "website": "https://tunellokantasi.com/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://ringstonehotels.com/bosphorus/fnb/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Ring Stone Hotels Bosphorus, No:182 adresindeki tesiste Tünel Lokantası'nı adıyla listeler. Müdavim'in sayfasında görülen 13 Eylül 2026 tarihli yazı aynı otelin terasındaki masalı servisi ve Anadolu mutfağına dayalı yemekleri anlatır.",
+    "wave": 40,
+    "cuisine": ["turkish"]
+  }
+]

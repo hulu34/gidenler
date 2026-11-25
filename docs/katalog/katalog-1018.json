@@ -1,0 +1,27 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "ead17446e3704c9e13ef071a820e42eaf9a7c6fb",
+  "sourceDelivery": "teslim-25kasim-bekleyen-dar/manifest.json",
+  "prior": { "total": 1016, "active": 981, "activeRestaurants": 856 },
+  "expected": { "total": 1018, "active": 983, "activeRestaurants": 858 },
+  "additionsByScope": { "bagdatCaddesi": 0, "digerIstanbul": 2 },
+  "sources": [
+    {
+      "slug": "durumcu-emmi-atasehir",
+      "official": "https://durumcuemmi.com.tr/iletisim.html",
+      "menu": "https://durumcuemmi.com.tr/menu.html",
+      "datedOpeningCoverage": "https://maximagazin.com/magazin/gastronomi-dunyasinda-yeni-lezzetler-ve-onemli-gelismeler/",
+      "visibleDate": "2026-09-26",
+      "audit": "Hürriyet 25 Eylül bağlantısı açılamadı. Aynı Ataşehir şubesinin yeniden açılışı 26 Eylül tarihli haber ve işletmecinin 10 Eylül beyanıyla doğrulandı. pr48 bekleme listesi tarihsel belge olarak korunuyor. Aynı bina numarasında Gardaş Cağ Kebap kapalı kayıt olarak korunuyor. Emmi D:2A ve ayrı işletme kimliğiyle ekleniyor; eski Kadıköy şubesi eklenmedi."
+    },
+    {
+      "slug": "tunel-lokantasi-beyoglu",
+      "hotelDining": "https://ringstonehotels.com/bosphorus/fnb/",
+      "menu": "https://tunellokantasi.com/menu",
+      "datedVisit": "https://mudavim.net/tunel-lokantasi/",
+      "visibleDate": "2026-09-13",
+      "deliveryDate": "2026-09-10",
+      "audit": "Otel aynı tesiste restoranı adıyla listeliyor, Müdavim aynı otel terasını ve yemek servisini doğruluyor. Sayfada görülen tarih 13 Eylül. Kategori, ziyaret yazısındaki masalı modern Anadolu mutfağına dayanıyor."
+    }
+  ]
+}
