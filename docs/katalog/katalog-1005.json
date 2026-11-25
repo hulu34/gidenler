@@ -1,0 +1,33 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "0c5f61d5f4ab77d309d728d1ab0cb7d748352bc3",
+  "sourceDelivery": {
+    "path": "teslim-25kasim-editoryal-1/manifest.json",
+    "sha256": "395e13a21247207acc37cf567afa2d7263a65c3020ca395f94cb17d02c3ece2f"
+  },
+  "prior": {
+    "total": 1004,
+    "active": 969,
+    "activeRestaurants": 844
+  },
+  "expected": {
+    "total": 1005,
+    "active": 970,
+    "activeRestaurants": 845
+  },
+  "accepted": {
+    "slug": "durumle-cekmekoy-park-avm-cekmekoy",
+    "officialUrl": "https://www.durumle.com/subeler/istanbul",
+    "officialCheck": "Teslimde şube adresi doğrulanmış; bu turda resmî listeye bağımsız erişim sağlanamadı.",
+    "industryReport": "https://perakende.org/durumle-istanbul-cekmekoy-park-avmde-yeni-restoranini-acti/",
+    "reportDate": "2026-10-19",
+    "evidence": "Perakende.org müşterilere açılışı, aynı ilçe, AVM, 31E, B1 ve mağaza 78 ile bildiriyor. Gastrofill yeniden okunamadı; iki bağımsız teyit sayılmadı. Tarih haberin yayınına aittir."
+  },
+  "held": {
+    "slug": "seraf-mahmutbey-bagcilar",
+    "officialUrl": "https://www.seraf.com.tr/seraf-mahmutbey/iletisim/",
+    "editorialUrl": "https://yemek.com/en-iyi-kebap-mekanlari/",
+    "michelinUrl": "https://guide.michelin.com/tr/tr/istanbul-province/istanbul/restaurant/seraf-mahmutbey",
+    "evidence": "Peyami Safa 38/D aynı Mahmutbey şubesini tanımlar ve Seraf Vadi'den ayrıdır. Yemek.com genel rehber metninde güncel şube faaliyeti için somut tarihli gözlem yok; teslimdeki 24 Kasım yayın metadatası bu turda doğrulanamadı. Michelin adresi destekler; eski seçki duyurusu tazelik kanıtı değildir."
+  }
+}

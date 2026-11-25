@@ -1,0 +1,24 @@
+[
+  {
+    "ref": "isletme/durumle-cekmekoy-park-avm-cekmekoy",
+    "slug": "durumle-cekmekoy-park-avm-cekmekoy",
+    "name": "Dürümle Çekmeköy Park AVM",
+    "categoryId": "cat.restaurant",
+    "kind": "Dönerci",
+    "district": "Çekmeköy",
+    "neighborhood": "Mehmet Akif",
+    "address": "Mehmet Akif Mah. Necip Fazıl Kısakürek Cad. No:31E, Çekmeköy Park AVM 1. Bodrum Kat Mağaza No:78",
+    "website": "https://www.durumle.com/subeler/istanbul",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://www.durumle.com/subeler/istanbul",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Teslimdeki resmî şube kaydı ile 19.10.2026 tarihli sektör haberi aynı Çekmeköy Park AVM şubesini, 31E ve 78 numaralarıyla tanımlar. Haber şubenin müşterilere açıldığını bildirir.",
+    "wave": 35,
+    "cuisine": [
+      "doner"
+    ]
+  }
+]
