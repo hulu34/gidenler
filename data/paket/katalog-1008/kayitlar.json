@@ -1,0 +1,47 @@
+[
+  {
+    "ref": "isletme/manze-istanbul-suadiye-kadikoy",
+    "slug": "manze-istanbul-suadiye-kadikoy",
+    "name": "Manzé İstanbul",
+    "district": "Kadıköy",
+    "neighborhood": "Suadiye",
+    "address": "Suadiye, Selim Ragıp Emeç Sokak No:6, Kadıköy",
+    "website": "https://manzeistanbul.com/contact.html",
+    "sourceUrl": "https://manzeistanbul.com/contact.html",
+    "cuisine": [
+      "international"
+    ],
+    "verification": "İşletmeci Suadiye No:6 adresini, yemek menüsünü ve rezervasyonu doğrular. Teslim, 05.09.2026 tarihli Hürriyet yazısında aynı mekâna ilk el ziyaret aktarıyor.",
+    "categoryId": "cat.restaurant",
+    "kind": "Dünya mutfağı",
+    "sourceKind": "official_site",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "wave": 37
+  },
+  {
+    "ref": "isletme/the-galliard-metropol-istanbul-atasehir",
+    "slug": "the-galliard-metropol-istanbul-atasehir",
+    "name": "The Galliard Metropol İstanbul",
+    "district": "Ataşehir",
+    "neighborhood": "Atatürk",
+    "address": "Atatürk Mahallesi, Ataşehir Bulvarı, Metropol İstanbul AVM, Ataşehir",
+    "website": "https://www.thegalliard.com/tr/metropol-istanbul",
+    "sourceUrl": "https://www.thegalliard.com/tr/metropol-istanbul",
+    "cuisine": [
+      "mediterranean",
+      "turkish"
+    ],
+    "verification": "İşletmecinin Metropol şube sayfası brasserie yemek servisini tanımlar. AVM’nin 1–30 Kasım 2026 tarihli hafta içi öğle kampanyası aynı şubedeki yemek servisini destekler.",
+    "categoryId": "cat.restaurant",
+    "kind": "Dünya mutfağı",
+    "sourceKind": "official_site",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "wave": 37
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "8cc1b39c4399dded9096f65795717ef490d070c7",
+  "sourceDelivery": {
+    "path": "teslim-25kasim-cevre-avm/manifest.json",
+    "sha256": "c6761fc18b17267326d8a54f5bf2afaff8c1af9b6be15fd0de84692ded483768"
+  },
+  "prior": {
+    "total": 1006,
+    "active": 971,
+    "activeRestaurants": 846
+  },
+  "expected": {
+    "total": 1008,
+    "active": 973,
+    "activeRestaurants": 848
+  },
+  "additionsByScope": {
+    "bagdatCaddesi": 0,
+    "caddeCevresi": 1,
+    "avmPilotu": 1
+  },
+  "sources": [
+    {
+      "slug": "manze-istanbul-suadiye-kadikoy",
+      "officialAddress": "https://manzeistanbul.com/contact.html",
+      "officialMenu": "https://manzeistanbul.com/menu.html",
+      "visit": {
+        "url": "https://www.hurriyet.com.tr/kelebek/hurriyet-cumartesi/mahallenin-yeni-gozdesi-43296598",
+        "tarih": "2026-09-05",
+        "not": "Hürriyet Cumartesi yazarının ilk el ziyareti ('bir cuma akşamı uğradım'); 81 gün önce, 90 gün içinde"
+      },
+      "audit": "Resmî No:6, yemek menüsü ve rezervasyon doğrulandı. Hürriyet yeniden açılamadı; tarih ve ilk el ziyaret kanıtı teslimden. D:A resmî adreste yer almadığı için kullanılmadı."
+    },
+    {
+      "slug": "the-galliard-metropol-istanbul-atasehir",
+      "officialBranch": "https://www.thegalliard.com/tr/metropol-istanbul",
+      "mallDirectory": "https://www.metropolistanbul.com/magazalar/galliard",
+      "campaignUrl": "https://www.metropolistanbul.com/firsatlarimiz/ogle-menusu-25-indirim",
+      "campaignValidity": "01.11.2026 – 30.11.2026",
+      "audit": "Resmî şube, AVM kiracısı ve tarihli yemek kampanyası doğrulandı. AVM’nin metin görünümünde kat bilgisi tekrar okunamadı; katalog adresine eklenmedi."
+    }
+  ]
+}
