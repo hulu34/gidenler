@@ -1,0 +1,21 @@
+[
+  {
+    "ref": "isletme/2tek-alaf-caddebostan-kadikoy",
+    "slug": "2tek-alaf-caddebostan-kadikoy",
+    "name": "2Tek Alaf Caddebostan",
+    "categoryId": "cat.restaurant",
+    "kind": "Türk mutfağı",
+    "district": "Kadıköy",
+    "neighborhood": "Caddebostan",
+    "address": "Caddebostan, Bağdat Caddesi No:303 D:1A, Kadıköy",
+    "sourceKind": "business",
+    "sourceUrl": "https://www.reztoran.com/restoranlar/2tek-alaf-caddebostan",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "Şubeye özel rezervasyon sağlayıcısı No:303 D:1A adresini ve Caddebostan şube kimliğini doğrular. Müdavim'in 23.10.2026 tarihli ilk el yazısı masalı servisi, Anadolu mutfağından sıcak tabakları, pideleri ve güveçleri belgeler.",
+    "wave": 38,
+    "cuisine": ["turkish"]
+  }
+]

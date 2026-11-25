@@ -1,0 +1,18 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "20216356d21931155e109ae3aafc3cc4172e87a4",
+  "prior": { "total": 1008, "active": 973, "activeRestaurants": 848 },
+  "expected": { "total": 1009, "active": 974, "activeRestaurants": 849 },
+  "additionsByScope": { "bagdatCaddesi": 1, "caddeCevresi": 0, "avmPilotu": 0 },
+  "accepted": {
+    "slug": "2tek-alaf-caddebostan-kadikoy",
+    "branchReservationProvider": "https://www.reztoran.com/restoranlar/2tek-alaf-caddebostan",
+    "providerVerification": "Adres 303 D:1A. Sayfanın rezervasyon bağlantısının hedef başlığı 2TEK ALAF CADDEBOSTAN. Form gönderilmedi. Sayfadaki anlık kapalı etiketi kalıcı kapanış kanıtı sayılmadı.",
+    "editorialSource": "https://mudavim.net/2tek-alaf-caddebostan/",
+    "editorialDisplayedDate": "2026-10-23",
+    "categoryEvidence": "Müdavim şubeyi restoran olarak tanımlıyor ve masalı servisin yanı sıra pide, güveç, kuzu kaburga ve ızgara gibi yemekler sayıyor. Türk mutfağı, katalogda bu yemek odağını temsil ediyor.",
+    "formerTenantSource": "https://thenorthshield.com/the-north-shield-caddebostan/",
+    "formerTenantDecision": "North Shield sayfası 303/1A adresini doğruluyor. Müdavim, 2Tek Alaf'ın eski pub'ın yerine açıldığını bildiriyor. Caddebostan pub kaydı tabanda bulunmuyor; mevcut veya kapalı hiçbir satır güncellenmedi.",
+    "branchSeparation": "Alaf Beşiktaş, Kuruçeşme Caddesi No:19 ve mevcut ref korunuyor. Burger Yiyelim No:303 ayrı markadır; mevcut kaydında iç kapı belirtilmiyor."
+  }
+}
