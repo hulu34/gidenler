@@ -1,0 +1,350 @@
+{
+ "kind": "semt",
+ "status": "kontrol",
+ "featured": false,
+ "notice": {
+  "tr": "Bu bir sıralama değil. Mekânlar rota ya da semt düzenine göre sıralandı; fiyatlar işletmelerin yayımladığı menülerden ve değişebilir.",
+  "en": "This is not a ranking. Places are ordered by route or neighbourhood; prices come from the menus the restaurants publish and may change."
+ },
+ "editorial": {
+  "desk": {
+   "tr": "Gidenler Seçki Masası",
+   "en": "The Gidenler Edit desk"
+  },
+  "method": {
+   "tr": "Yalnız işletmelerin resmî yayınlarından derlenmiş Gidenler profillerindeki bilgiler kullanıldı; sıralama, puan ya da popülerlik iddiası yok. Taslak yapay zekâ yardımıyla hazırlandı; yayından önce editör kontrolünden geçer.",
+   "en": "Uses only the details in Gidenler profiles, which are compiled from the restaurants' official publications; there is no ranking, score or popularity claim. The draft was prepared with AI assistance and is checked by an editor before publication."
+  },
+  "visited": false
+ },
+ "preparedAt": "2026-11-14",
+ "publishedAt": null,
+ "updatedAt": null,
+ "newOpening": false,
+ "commercial": {
+  "state": "dogrulanmadi"
+ },
+ "ownership": null,
+ "slug": "beyoglu-gastronomi-rotasi-karakoyden-cihangire",
+ "title": {
+  "tr": "Beyoğlu gastronomi rotası: Karaköy'den Cihangir'e",
+  "en": "A Beyoğlu food route: from Karaköy to Cihangir"
+ },
+ "area": {
+  "tr": "Beyoğlu",
+  "en": "Beyoğlu"
+ },
+ "dek": {
+  "tr": "Karaköy'de ateş ve mevsim mutfağı, yokuşun yukarısında Pera'da iki köklü adres, Cihangir ve Çukurcuma'da gün boyu açık bir mekân ve bir tadım menüsü.",
+  "en": "Fire and seasonal cooking in Karaköy, two long-standing addresses up the hill in Pera, and an all-day place and a tasting menu in Cihangir and Çukurcuma."
+ },
+ "why": {
+  "tr": "Beyoğlu'nun sahilden tepeye uzanan mahalleleri farklı sofralar sunuyor. Bu taslak, Gidenler'de kaynaklı profili olan altı adresi Karaköy'den Cihangir'e doğru bir rota sırasıyla bir araya getiriyor.",
+  "en": "Beyoğlu's neighbourhoods, rising from the waterfront to the hilltop, offer very different tables. This draft brings together six addresses with sourced Gidenler profiles in route order from Karaköy towards Cihangir."
+ },
+ "body": {
+  "tr": [
+   {
+    "h": "Karaköy: Mürver"
+   },
+   {
+    "p": "Novotel Istanbul Bosphorus'un çatı katında; işletmeye göre İstanbul'un ilk canlı ateş restoranı olarak 2017'de açıldı. Yemekler odun, kömür ve yemiş kabuğuyla beslenen ateşte, taş fırında ve döküm tencerede pişiyor; örneğin külde kalamar 1.500 ₺. İşletme sitedeki menülerin temsilî örnek olduğunu ve mevsime göre değiştiğini yazıyor."
+   },
+   {
+    "h": "Karaköy: AŞEKA"
+   },
+   {
+    "p": "Müeyyedzade Mahallesi'nde, Arapoğlan Sokağı No:6'da yüz yıllık bir binada 2022'de açılan restoran. Şef Deniz Erinç'in menüsü her mevsim yenileniyor; à la carte'ın yanında tadım menüsü ve bar var. Sitedeki sezon menüsünde fiyat yayımlanmıyor."
+   },
+   {
+    "h": "Pera: Mikla"
+   },
+   {
+    "p": "The Marmara Pera'nın en üst katlarındaki restoran ve teras bar. İşletmenin anlatımına göre Anadolu'nun dört bir yanından seçilmiş ürünleri çağdaş bir yaklaşımla yorumluyor; üç tabaklı prix fixe à la carte ya da yedi tabaklı tadım menüsü seçilebiliyor, vegan tadım menüsü de var. Site, menünün temsilî olduğunu ve her gün gelen ürüne göre basıldığını yazıyor."
+   },
+   {
+    "h": "Pera: 1924 İstanbul"
+   },
+   {
+    "p": "İstiklal Caddesi'nde, Olivya Geçidi'nde bir Rus mutfağı restoranı; işletme bu restoranın Beyoğlu'ndaki geçmişini araştırarak yeniden canlandırıldığını anlatıyor. Menüde zakuski mezeleri, pelmeni ve vareniki, borş ve stroganoff var; tadım menüsü kişi başı 3.750 ₺, en az 2 kişi."
+   },
+   {
+    "h": "Çukurcuma: Cuma"
+   },
+   {
+    "p": "Çukur Cuma Caddesi 53/A'da gün boyu açık bir restoran. Her gün 10.00–16.00 arası atıştırmalık menüsü, 16.00–00.00 arası akşam menüsü servis ediliyor; işletme ürünlerin ve fiyatların mevsime göre değişebildiğini yazıyor."
+   },
+   {
+    "h": "Cihangir tarafı: Nicole"
+   },
+   {
+    "p": "Firuzağa Mahallesi'nde, Tomtom Suites binasının en üst katındaki teras restoranı; bina işletmeye göre 1901'de yapıldı. Geleneksel Türk mutfağını çağdaş bir yorumla tadım menüleri hâlinde sunuyor; menü sitede 12.11.2026 tarihli, Tadım Menüsü No.1 kişi başı 8.900 ₺. Cihangir'in kahvaltı ve kebap adreslerini ayrı bir semt yazısında anlattık."
+   }
+  ],
+  "en": [
+   {
+    "h": "Karaköy: Mürver"
+   },
+   {
+    "p": "On the rooftop of Novotel Istanbul Bosphorus; according to the restaurant it opened in 2017 as Istanbul's first live-fire restaurant. Dishes are cooked over fire fed with wood, charcoal and nut shells, in a stone oven and in cast-iron pots; for example, ember-cooked squid is 1,500 TRY. The restaurant says the menus on its site are representative samples that change with the seasons."
+   },
+   {
+    "h": "Karaköy: AŞEKA"
+   },
+   {
+    "p": "A restaurant opened in 2022 in a hundred-year-old building at Arapoğlan Sokağı No:6 in Müeyyedzade. Chef Deniz Erinç's menu changes every season; alongside the à la carte there is a tasting menu and a bar. The seasonal menu on the site publishes no prices."
+   },
+   {
+    "h": "Pera: Mikla"
+   },
+   {
+    "p": "A restaurant and terrace bar on the top floors of The Marmara Pera. In the restaurant's words it reinterprets produce from across Anatolia with a contemporary approach; guests choose a three-course prix fixe à la carte or a seven-course tasting menu, and there is a vegan tasting menu. The site says the menu is representative and is printed daily according to the produce that arrives."
+   },
+   {
+    "h": "Pera: 1924 İstanbul"
+   },
+   {
+    "p": "A Russian restaurant in Olivya Geçidi on İstiklal Caddesi; the restaurant says it was revived after researching its history in Beyoğlu. The menu has zakuski starters, pelmeni and vareniki, borscht and stroganoff; the tasting menu is 3,750 TRY per person, minimum 2 people."
+   },
+   {
+    "h": "Çukurcuma: Cuma"
+   },
+   {
+    "p": "An all-day restaurant at Çukur Cuma Caddesi 53/A. A snack menu is served daily 10:00–16:00 and a dinner menu 16:00–00:00; the restaurant notes that dishes and prices may change with the seasons."
+   },
+   {
+    "h": "Towards Cihangir: Nicole"
+   },
+   {
+    "p": "A terrace restaurant on the top floor of the Tomtom Suites building in Firuzağa; according to the restaurant, the building dates from 1901. It serves traditional Turkish cooking in a contemporary key as tasting menus; the menu on the site is dated 12.11.2026, and Tasting Menu No.1 is 8,900 TRY per person. We cover Cihangir's breakfast and kebab addresses in a separate neighbourhood piece."
+   }
+  ]
+ },
+ "know": {
+  "tr": [
+   "Mürver: akşam servisi 18.00–22.00; rezervasyon sitedeki bağlantıyla ya da +90 212 372 07 50. Fiyatlara servis dahil değil.",
+   "AŞEKA: pazartesi kapalı; telefon +90 530 398 54 04.",
+   "Mikla: pazartesi–cumartesi 18.00–00.00, pazar ve öğle kapalı; mutfağa son sipariş 21.30.",
+   "1924 İstanbul: pazartesi–cumartesi gün boyu açık, son sipariş 23.30; telefon +90 212 243 83 60.",
+   "Cuma: rezervasyon sitedeki sayfadan; telefon +90 212 293 20 62.",
+   "Nicole: Tadım Menüsü No.1 20.30'a kadar; 21.00'den sonra yalnız No.2. Alerjiler rezervasyonda bildirilmeli."
+  ],
+  "en": [
+   "Mürver: dinner 18:00–22:00; book via the link on its site or +90 212 372 07 50. Service is not included in prices.",
+   "AŞEKA: closed Monday; phone +90 530 398 54 04.",
+   "Mikla: Monday–Saturday 18:00–00:00, closed Sunday and at lunch; last kitchen orders 21:30.",
+   "1924 İstanbul: open all day Monday–Saturday, last orders 23:30; phone +90 212 243 83 60.",
+   "Cuma: book via the page on its site; phone +90 212 293 20 62.",
+   "Nicole: Tasting Menu No.1 until 20:30; after 21:00 only No.2. Allergies should be noted when booking."
+  ]
+ },
+ "venues": [
+  {
+   "slug": "murver-beyoglu",
+   "role": {
+    "tr": "Karaköy",
+    "en": "Karaköy"
+   }
+  },
+  {
+   "slug": "aseka-beyoglu",
+   "role": {
+    "tr": "Karaköy",
+    "en": "Karaköy"
+   }
+  },
+  {
+   "slug": "mikla-turkey-fusion-beyoglu",
+   "role": {
+    "tr": "Pera",
+    "en": "Pera"
+   }
+  },
+  {
+   "slug": "1924-istanbul-beyoglu",
+   "role": {
+    "tr": "Pera",
+    "en": "Pera"
+   }
+  },
+  {
+   "slug": "cuma-beyoglu",
+   "role": {
+    "tr": "Çukurcuma",
+    "en": "Çukurcuma"
+   }
+  },
+  {
+   "slug": "nicole-beyoglu",
+   "role": {
+    "tr": "Cihangir tarafı",
+    "en": "Towards Cihangir"
+   }
+  }
+ ],
+ "sources": [
+  {
+   "title": {
+    "tr": "Mürver — akşam menüsü (PDF) ve rezervasyon",
+    "en": "Mürver — dinner menu (PDF) and reservations"
+   },
+   "publisher": {
+    "tr": "Mürver (resmî site)",
+    "en": "Mürver (official website)"
+   },
+   "url": "https://www.murverrestaurant.com/wp-content/uploads/2026/05/Murver-Menu-Dinner-TR.pdf",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "AŞEKA — hakkında ve menü",
+    "en": "AŞEKA — about and menu"
+   },
+   "publisher": {
+    "tr": "AŞEKA (resmî site)",
+    "en": "AŞEKA (official website)"
+   },
+   "url": "https://www.aseka.co/menu/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Mikla — menü",
+    "en": "Mikla — menu"
+   },
+   "publisher": {
+    "tr": "Mikla (resmî site)",
+    "en": "Mikla (official website)"
+   },
+   "url": "https://www.miklarestaurant.com/menu",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "1924 İstanbul — menü ve rezervasyon",
+    "en": "1924 İstanbul — menu and reservations"
+   },
+   "publisher": {
+    "tr": "1924 İstanbul (resmî site)",
+    "en": "1924 İstanbul (official website)"
+   },
+   "url": "https://1924istanbul.com/menu/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Cuma — iletişim ve rezervasyon",
+    "en": "Cuma — contact and reservations"
+   },
+   "publisher": {
+    "tr": "Cuma (resmî site)",
+    "en": "Cuma (official website)"
+   },
+   "url": "https://cuma.cc/contact",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Nicole — tadım menüleri",
+    "en": "Nicole — tasting menus"
+   },
+   "publisher": {
+    "tr": "Nicole (resmî site)",
+    "en": "Nicole (official website)"
+   },
+   "url": "https://www.nicole.com.tr/",
+   "checkedAt": "2026-11-13",
+   "kind": "isletme"
+  },
+  {
+   "title": {
+    "tr": "Mürver — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Mürver — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/murver-beyoglu/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "AŞEKA — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "AŞEKA — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/aseka-beyoglu/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Mikla — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Mikla — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/mikla-turkey-fusion-beyoglu/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "1924 İstanbul — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "1924 İstanbul — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/1924-istanbul-beyoglu/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Cuma — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Cuma — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/cuma-beyoglu/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  },
+  {
+   "title": {
+    "tr": "Nicole — Gidenler profili (kaynaklı bilgi ve menü)",
+    "en": "Nicole — Gidenler profile (sourced details and menu)"
+   },
+   "publisher": {
+    "tr": "Gidenler",
+    "en": "Gidenler"
+   },
+   "url": "https://www.gidenler.com/mekan/nicole-beyoglu/",
+   "checkedAt": "2026-11-14",
+   "kind": "gidenler"
+  }
+ ],
+ "cover": {
+  "state": "yok",
+  "gap": {
+   "tr": "Beyoğlu rotası için hakkı doğrulanmış semt ya da restoran fotoğrafı henüz seçilmedi.",
+   "en": "No rights-cleared neighbourhood or restaurant photo has been chosen for the Beyoğlu route yet."
+  }
+ }
+}
