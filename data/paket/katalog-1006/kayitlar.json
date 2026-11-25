@@ -1,0 +1,25 @@
+[
+  {
+    "ref": "isletme/wings-ribs-caddebostan-kadikoy",
+    "slug": "wings-ribs-caddebostan-kadikoy",
+    "name": "Wings&Ribs Caddebostan",
+    "categoryId": "cat.restaurant",
+    "kind": "Dünya mutfağı",
+    "district": "Kadıköy",
+    "neighborhood": "Caddebostan",
+    "address": "Bağdat Caddesi No:290, Caddebostan, Kadıköy",
+    "website": "https://wingsandribs.com.tr/",
+    "sourceKind": "official_site",
+    "sourceUrl": "https://wingsandribs.com.tr/",
+    "kaliteSinifi": "A-konumsuz",
+    "importedAt": "2026-11-25",
+    "verifiedAt": "2026-11-25",
+    "confidence": "güçlü",
+    "verification": "İşletmecinin sitesi Bağdat Caddesi 290 adresini ve kanat/kaburga odağını doğrular. Müdavim'in Caddebostan yazısı masalı servis ile kanat, kaburga ve burger ağırlıklı yemek menüsünü belgeler.",
+    "wave": 36,
+    "cuisine": [
+      "international",
+      "barbecue"
+    ]
+  }
+]

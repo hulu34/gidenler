@@ -1,0 +1,31 @@
+{
+  "status": "local_candidate_not_deployed",
+  "baseCommit": "3ef9e050d3b078164f5332bed3ee764a4e2c6263",
+  "sourceDelivery": {
+    "path": "teslim-25kasim-bagdat-1/manifest.json",
+    "sha256": "25968955c70163e01c6c475a9b1817d9042dccf4b41000d30a8e02980eda0f14"
+  },
+  "prior": {
+    "total": 1005,
+    "active": 970,
+    "activeRestaurants": 845
+  },
+  "expected": {
+    "total": 1006,
+    "active": 971,
+    "activeRestaurants": 846
+  },
+  "accepted": {
+    "slug": "wings-ribs-caddebostan-kadikoy",
+    "officialUrl": "https://wingsandribs.com.tr/",
+    "editorialUrl": "https://mudavim.net/wingsribs-caddebostan/",
+    "publicationDateReportedByDelivery": "2026-11-04",
+    "visibleEditorialDate": "2026-11-21",
+    "dateNote": "Teslim 4 Kasım ilk yayın, 21 Kasım güncelleme diyor. Bu turda sayfada 21 Kasım görüldü; ilk yayın ve ziyaret günü bağımsız doğrulanmadı.",
+    "classification": "Masalı servis ve kanat, kaburga, burger gibi ana yemeklerden dolayı restoran. Bira ve kokteyl de sunuyor. Mevcut Dünya mutfağı türü, Amerikan diner odağını kapsıyor."
+  },
+  "held": {
+    "slug": "maydonoz-doner-idealtepe-maltepe",
+    "reason": "Teslimin verdiği No:247 ile aynı şubenin oturmalı servis kanıtı birlikte doğrulanana kadar eklenmedi. Sipariş değerlendirmesi tek başına masalı servisi göstermez."
+  }
+}
