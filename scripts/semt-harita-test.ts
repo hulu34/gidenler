@@ -110,6 +110,20 @@ t("katalogdaki her tür bir gruba bağlı (yalnız genel 'Restoran' diğer)", ()
   assert.deepEqual(diger, ["Restoran"], `gruba bağlanmamış tür: ${diger.filter((k) => k !== "Restoran").join(", ")} — lib/harita/semt.ts TUR_GRUPLARI'na ekle`);
   assert.equal(new Set(TUR_GRUPLARI.map((g) => g.key)).size, TUR_GRUPLARI.length);
 });
+t("İtalyan türleri aynı Atlas filtresinde, Olive Hill adresiyle ve pinsiz listelenir", () => {
+  const e = activeEntities.find((venue) => venue.slug === "olive-hill-village-bahcesehir-basaksehir");
+  assert.ok(e);
+  assert.equal(e.subcategory, "İtalyan mutfağı");
+  assert.equal(e.location?.district, "Başakşehir");
+  assert.deepEqual(grupSay(["Pizza", "İtalyan", e.subcategory]), [{ key: "pizza", n: 3 }]);
+  assert.equal(grupOf(e.subcategory), "pizza");
+  assert.equal(haritaKoordinati(e.slug, e.location?.geo), undefined);
+  assert.equal(haritaListesinde(e.slug, true, true), true);
+  const v = { slug: e.slug, neighborhood: e.location?.neighborhood, address: e.address };
+  assert.deepEqual(mahalleAta(PROJ, [v], MAH.get("basaksehir")!).get(e.slug), {
+    ad: "Bahçeşehir 1. Kısım", kaynak: "adres",
+  });
+});
 t("her tür grubu için harita rengi tanımlı", () => {
   const css = fs.readFileSync("app/globals.css", "utf8");
   for (const g of TUR_GRUPLARI) assert.ok(css.includes(`--map-${g.key}:`), `--map-${g.key} yok`);

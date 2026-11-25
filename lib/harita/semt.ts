@@ -31,7 +31,7 @@ export const TUR_GRUPLARI: TurGrubu[] = [
   { key: "kahvalti", ad: "Kahvaltı", kisa: "Kahvaltı", kinds: ["Kahvaltı", "Kahvaltıcı"] },
   { key: "kahve", ad: "Kahve ve tatlı", kisa: "Kahve", kinds: ["Kahveci", "Kafe", "Fırın", "Tatlıcı", "Pastane"] },
   { key: "burger", ad: "Burger", kisa: "Burger", kinds: ["Burger"] },
-  { key: "pizza", ad: "Pizza ve İtalyan", kisa: "Pizza", kinds: ["Pizza", "İtalyan"] },
+  { key: "pizza", ad: "Pizza ve İtalyan", kisa: "Pizza", kinds: ["Pizza", "İtalyan", "İtalyan mutfağı"] },
   { key: "dunya", ad: "Dünya mutfağı", kisa: "Dünya mutfağı", kinds: ["Dünya mutfağı", "Sushi / Japon", "Asya mutfağı", "Asya etkili mutfak", "Uluslararası mutfak", "Rus mutfağı", "Akdeniz mutfağı", "Fransız / Akdeniz", "Avrupa bölge mutfağı", "Füzyon"] },
   { key: "modern", ad: "Modern mutfak", kisa: "Modern", kinds: ["Modern mutfak", "Çağdaş mutfak", "Şef restoranı", "Mevsimsel mutfak", "Yaratıcı mutfak", "Vegan"] },
   { key: "meyhane", ad: "Meyhane ve bar", kisa: "Meyhane", kinds: ["Meyhane", "Bar", "Pub"] },
